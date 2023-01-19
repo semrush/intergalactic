@@ -173,10 +173,10 @@ SBaseTrigger[state='valid'] {
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-danger, #ffaeb5);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 
   &[keyboardFocused] {
-    border-color: var(--intergalactic-border-danger-active, #d1002f);
+    border-color: var(--intergalactic-border-critical-active, #d1002f);
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
   }
 }

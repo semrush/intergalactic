@@ -1,7 +1,7 @@
 @import './var.css';
 
 SCircle {
-  fill: var(--intergalactic-chart-palette-order-green, #59ddaa);
+  fill: var(--intergalactic-chart-palette-order-2, #59ddaa);
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   fill-opacity: 0.5;

@@ -57,7 +57,7 @@ SColumn[use='primary'] {
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
 }
 
@@ -115,7 +115,7 @@ SColumn[resizable] {
   border-right: 1px solid transparent;
 
   &:hover:after {
-    border-right-color: var(--intergalactic-border-table-accent-border, #a9abb6);
+    border-right-color: var(--intergalactic-border-table-accent, #a9abb6);
   }
 
   &:after {

@@ -4,6 +4,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Primary background of the interface which contains the main data and information.",
     "components": [
       "base-trigger",
       "card",
@@ -32,6 +33,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Hover state of the primary background of the interface which contains the main data and information.",
     "components": [
       "base-trigger",
       "dropdown-menu",
@@ -43,6 +45,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Active (selected) state of the primary background of the interface which contains the main data and information.",
     "components": [
       "base-trigger",
       "flags"
@@ -53,6 +56,7 @@
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
+    "description": "Accent background of the message with regular information.",
     "components": [
       "base-trigger",
       "notice-global",
@@ -64,6 +68,7 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
+    "description": "Accent background of the message or banner with information about the successful result.",
     "components": [
       "notice-global"
     ]
@@ -73,6 +78,7 @@
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
+    "description": "Accent background of a message or a banner with a critical information.",
     "components": [
       "counter",
       "notice-bubble",
@@ -84,6 +90,7 @@
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
+    "description": "Accent background of a message or a banner with a warning information.",
     "components": [
       "counter",
       "notice-global"
@@ -94,6 +101,7 @@
     "type": "color",
     "rawValue": "{yellow.100}",
     "computedValue": "#fce081",
+    "description": "Accent background of the information you want to highlight.",
     "components": [
       "feature-popover"
     ]
@@ -103,6 +111,7 @@
     "type": "color",
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
+    "description": "Accent background for the advertising banners and controls.",
     "components": []
   },
   {
@@ -110,6 +119,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Accented muted background for a message with regular information.",
     "components": [
       "notice-global"
     ]
@@ -119,6 +129,7 @@
     "type": "color",
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
+    "description": "Inverted version of the primary background of the interface that contains the main data and information.",
     "components": [
       "notice-bubble"
     ]
@@ -128,6 +139,7 @@
     "type": "color",
     "rawValue": "{gray.700}",
     "computedValue": "#2b2e38",
+    "description": "Hover state for the inverted version of the primary background of the interface that contains the main data and information.",
     "components": []
   },
   {
@@ -135,6 +147,7 @@
     "type": "color",
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
+    "description": "Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information.",
     "components": [
       "drag-and-drop"
     ]
@@ -144,6 +157,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Secondary background of the interface which contains the main data and information.",
     "components": [
       "drag-and-drop",
       "input",
@@ -156,6 +170,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
       "color-picker",
       "time-picker"
@@ -166,6 +181,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
+    "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
     "components": [
       "flags",
       "time-picker"
@@ -176,6 +192,7 @@
     "type": "color",
     "rawValue": "{blue.50}",
     "computedValue": "#e9f7ff",
+    "description": "Secondary background of a message with regular information.",
     "components": [
       "notice"
     ]
@@ -185,6 +202,7 @@
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
+    "description": "Hover state of the secondary background of a message with regular information.",
     "components": []
   },
   {
@@ -192,6 +210,7 @@
     "type": "color",
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
+    "description": "Active (selected) state of the secondary background of a message with regular information.",
     "components": []
   },
   {
@@ -199,6 +218,7 @@
     "type": "color",
     "rawValue": "{green.50}",
     "computedValue": "#dbfee8",
+    "description": "Secondary background of the message with success information you want to accent.",
     "components": [
       "notice"
     ]
@@ -208,6 +228,7 @@
     "type": "color",
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
+    "description": "Hover state of the secondary background of the message with success information you want to accent.",
     "components": []
   },
   {
@@ -215,6 +236,7 @@
     "type": "color",
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
+    "description": "Active (selected) state of the secondary background of the message with success information you want to accent.",
     "components": []
   },
   {
@@ -222,6 +244,7 @@
     "type": "color",
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
+    "description": "Secondary background of the message with critical information you want to accent.",
     "components": [
       "notice"
     ]
@@ -231,6 +254,7 @@
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
+    "description": "Hover state of the secondary background of the message with critical information you want to accent.",
     "components": []
   },
   {
@@ -238,6 +262,7 @@
     "type": "color",
     "rawValue": "{red.200}",
     "computedValue": "#ffaeb5",
+    "description": "Active (selected) state of the secondary background of the message with critical information you want to accent.",
     "components": []
   },
   {
@@ -245,6 +270,7 @@
     "type": "color",
     "rawValue": "{orange.50}",
     "computedValue": "#fff3d9",
+    "description": "Secondary background of the message with warning information you want to accent.",
     "components": [
       "notice"
     ]
@@ -254,6 +280,7 @@
     "type": "color",
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
+    "description": "Hover state of the secondary background of the message with warning information you want to accent.",
     "components": []
   },
   {
@@ -261,6 +288,7 @@
     "type": "color",
     "rawValue": "{orange.200}",
     "computedValue": "#ffb26e",
+    "description": "Active (selected) state of the secondary background of the message with critical information you want to accent.",
     "components": []
   },
   {
@@ -268,6 +296,7 @@
     "type": "color",
     "rawValue": "{yellow.50}",
     "computedValue": "#fdf7c8",
+    "description": "Secondary background of the information you want to highlight.",
     "components": []
   },
   {
@@ -275,6 +304,7 @@
     "type": "color",
     "rawValue": "{yellow.100}",
     "computedValue": "#fce081",
+    "description": "Hover state of the secondary background of the information you want to highlight.",
     "components": []
   },
   {
@@ -282,6 +312,7 @@
     "type": "color",
     "rawValue": "{yellow.200}",
     "computedValue": "#fdc23c",
+    "description": "Active (selected) state of the secondary background of the information you want to highlight.",
     "components": []
   },
   {
@@ -289,6 +320,7 @@
     "type": "color",
     "rawValue": "{violet.50}",
     "computedValue": "#f9f2ff",
+    "description": "Secondary background for the advertising message you want to accent.",
     "components": []
   },
   {
@@ -296,6 +328,7 @@
     "type": "color",
     "rawValue": "{violet.100}",
     "computedValue": "#edd9ff",
+    "description": "Hover state of the secondary background for the advertising message you want to accent.",
     "components": []
   },
   {
@@ -303,6 +336,7 @@
     "type": "color",
     "rawValue": "{violet.200}",
     "computedValue": "#dcb8ff",
+    "description": "Active (selected) state of the secondary background for the advertising message you want to accent.",
     "components": []
   },
   {
@@ -310,7 +344,7 @@
     "type": "color",
     "rawValue": "{yellow.300}, 0.4",
     "computedValue": "rgba(239, 152, 0, 0.4)",
-    "description": "Use it for highlighting the search results in the list.",
+    "description": "Highlighting the search results.",
     "components": []
   },
   {
@@ -318,7 +352,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0.2",
     "computedValue": "rgba(0, 143, 248, 0.2)",
-    "description": "Use it for focusing values in the input.",
+    "description": "Focusing values in the input.",
     "components": []
   },
   {
@@ -326,6 +360,7 @@
     "type": "color",
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
+    "description": "Primary text.",
     "components": [
       "base-trigger",
       "breadcrumbs",
@@ -358,6 +393,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Secondary text.",
     "components": [
       "breadcrumbs",
       "button",
@@ -383,6 +419,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
+    "description": "Placeholder text only.",
     "components": [
       "base-trigger",
       "date-picker",
@@ -396,6 +433,7 @@
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
+    "description": "Text associated with success states and data.",
     "components": []
   },
   {
@@ -403,6 +441,7 @@
     "type": "color",
     "rawValue": "{green.600}",
     "computedValue": "#055345",
+    "description": "Hover and active states for the text associated with success states and data.",
     "components": []
   },
   {
@@ -410,6 +449,7 @@
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
+    "description": "Text associated with critical states and data.",
     "components": []
   },
   {
@@ -417,6 +457,7 @@
     "type": "color",
     "rawValue": "{red.600}",
     "computedValue": "#8e0016",
+    "description": "Hover and active states for the text associated with critical states and data.",
     "components": []
   },
   {
@@ -424,6 +465,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Inverted version of the primary text.",
     "components": [
       "button",
       "counter",
@@ -441,6 +483,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.75",
     "computedValue": "rgba(255, 255, 255, 0.75)",
+    "description": "Inverted version of the secondary text.",
     "components": []
   },
   {
@@ -448,6 +491,7 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
+    "description": "Link text.",
     "components": [
       "base-trigger",
       "button",
@@ -461,6 +505,7 @@
     "type": "color",
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
+    "description": "Hover and active states for the link text.",
     "components": [
       "base-trigger",
       "format-text",
@@ -473,7 +518,7 @@
     "type": "color",
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
-    "description": "Use these styles on dark background.",
+    "description": "Inverted version of the link text. Use on dark background only.",
     "components": []
   },
   {
@@ -481,7 +526,7 @@
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
-    "description": "Use these styles on dark background.",
+    "description": "Hover and active states of the inverted version of the link text. Use on dark background only.",
     "components": []
   },
   {
@@ -489,6 +534,7 @@
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
+    "description": "Visited link text.",
     "components": [
       "link"
     ]
@@ -498,6 +544,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Hint link text.",
     "components": [
       "d3-chart",
       "format-text"
@@ -508,6 +555,7 @@
     "type": "color",
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
+    "description": "Hover and active states of the hint link text.",
     "components": [
       "breadcrumbs",
       "format-text",
@@ -520,7 +568,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
-    "description": "Use these styles on dark background.",
+    "description": "Inverted version of the hint link text.",
     "components": []
   },
   {
@@ -528,7 +576,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
-    "description": "Use these styles on dark background.",
+    "description": "Hover and active states of the inverted version of the hint link text.",
     "components": []
   },
   {
@@ -536,7 +584,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
-    "description": "Use with font-size ≥20px.",
+    "description": "Secondary text. Use with font-size ≥20px.",
     "components": [
       "typography"
     ]
@@ -546,7 +594,7 @@
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
-    "description": "Use with font-size ≥20px.",
+    "description": "Link text with font-size ≥20px.",
     "components": []
   },
   {
@@ -554,7 +602,7 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
-    "description": "Use with font-size ≥20px.",
+    "description": "Hover and active states of the link text with font-size ≥20px.",
     "components": []
   },
   {
@@ -562,7 +610,7 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
-    "description": "Use with font-size ≥20px.",
+    "description": "Text with font-size ≥20px associated with success states and data.",
     "components": []
   },
   {
@@ -570,7 +618,7 @@
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
-    "description": "Use with font-size ≥20px.",
+    "description": "Hover and active states of the text with font-size ≥20px associated with success states and data.",
     "components": []
   },
   {
@@ -578,7 +626,7 @@
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
-    "description": "Use with font-size ≥20px.",
+    "description": "Text with font-size ≥20px associated with critical states and data.",
     "components": []
   },
   {
@@ -586,7 +634,7 @@
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
-    "description": "Use with font-size ≥20px.",
+    "description": "Hover and active states of the text with font-size ≥20px associated with critical states and data.",
     "components": []
   },
   {
@@ -594,7 +642,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
-    "description": "Use it for all neutral primary borders.",
+    "description": "Neutral primary border.",
     "components": [
       "base-trigger",
       "button",
@@ -624,7 +672,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
-    "description": "Use it for subtle secondary borders like all Poppers have.",
+    "description": "Subtle secondary border.",
     "components": [
       "card",
       "color-picker",
@@ -641,7 +689,7 @@
     "type": "color",
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
-    "description": "Use it for borders in Notice and input fields.",
+    "description": "Subtle secondary border in the informational message.",
     "components": [
       "notice"
     ]
@@ -651,7 +699,7 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
-    "description": "Use it for borders in focused input fileds.",
+    "description": "Active border in focused input filed.",
     "components": [
       "base-trigger",
       "color-picker",
@@ -668,7 +716,7 @@
     "type": "color",
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
-    "description": "Use it for borders in Notice and input fields.",
+    "description": "Subtle secondary border in the successful message and input field.",
     "components": [
       "base-trigger",
       "input",
@@ -680,7 +728,7 @@
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
-    "description": "Use it for borders in focused input fields.",
+    "description": "Active border in the focused input field with valid state.",
     "components": [
       "inline-input",
       "input",
@@ -688,11 +736,11 @@
     ]
   },
   {
-    "name": "--intergalactic-border-danger",
+    "name": "--intergalactic-border-critical",
     "type": "color",
     "rawValue": "{red.200}",
     "computedValue": "#ffaeb5",
-    "description": "Use it for borders in Notice and input fields.",
+    "description": "Subtle secondary border in the critical message and invalid input field.",
     "components": [
       "base-trigger",
       "input",
@@ -700,11 +748,11 @@
     ]
   },
   {
-    "name": "--intergalactic-border-danger-active",
+    "name": "--intergalactic-border-critical-active",
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
-    "description": "Use it for borders in focused input fields.",
+    "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state.",
     "components": [
       "base-trigger",
       "inline-input",
@@ -719,7 +767,7 @@
     "type": "color",
     "rawValue": "{orange.200}",
     "computedValue": "#ffb26e",
-    "description": "Use it for borders in Notice.",
+    "description": "Subtle secondary border in the warning message.",
     "components": [
       "notice"
     ]
@@ -729,6 +777,7 @@
     "type": "color",
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
+    "description": "Active border in components with warning intention.",
     "components": []
   },
   {
@@ -736,7 +785,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
-    "description": "Use it for borders of controls on the dark or color background.",
+    "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
       "spin",
@@ -748,7 +797,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
-    "description": "Use it as an invert borders on the dark or color background.",
+    "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
     "components": [
       "tag"
     ]
@@ -758,16 +807,17 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
-    "description": "Use only for the dark Tooltip.",
+    "description": "Border of the Tooltip with dark theme.",
     "components": [
       "tooltip"
     ]
   },
   {
-    "name": "--intergalactic-border-table-accent-border",
+    "name": "--intergalactic-border-table-accent",
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
+    "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table.",
     "components": [
       "data-table"
     ]
@@ -777,6 +827,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
+    "description": "Subtle background of the Switch control.",
     "components": [
       "switch"
     ]
@@ -786,6 +837,7 @@
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
+    "description": "Background of the regular primary control.",
     "components": [
       "button",
       "checkbox",
@@ -800,6 +852,7 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
+    "description": "Hover state of the regular primary control.",
     "components": [
       "button",
       "checkbox",
@@ -811,6 +864,7 @@
     "type": "color",
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
+    "description": "Active (selected) state of the regular primary control.",
     "components": [
       "button"
     ]
@@ -820,6 +874,7 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
+    "description": "Background of the primary control with successful theme.",
     "components": [
       "button",
       "switch"
@@ -830,6 +885,7 @@
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
+    "description": "Hover state of the primary control with successful theme.",
     "components": [
       "button"
     ]
@@ -839,6 +895,7 @@
     "type": "color",
     "rawValue": "{green.600}",
     "computedValue": "#055345",
+    "description": "Active (selected) state of the primary control with successful theme.",
     "components": [
       "button"
     ]
@@ -848,6 +905,7 @@
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
+    "description": "Background of the primary control with danger theme.",
     "components": [
       "button",
       "checkbox",
@@ -859,6 +917,7 @@
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
+    "description": "Hover state of the primary control with danger theme.",
     "components": [
       "button",
       "checkbox"
@@ -869,6 +928,7 @@
     "type": "color",
     "rawValue": "{red.600}",
     "computedValue": "#8e0016",
+    "description": "Active (selected) state of the primary control with danger theme.",
     "components": [
       "button"
     ]
@@ -878,6 +938,7 @@
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
+    "description": "Background of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -887,6 +948,7 @@
     "type": "color",
     "rawValue": "{violet.600}",
     "computedValue": "#5925ab",
+    "description": "Hover state of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -896,6 +958,7 @@
     "type": "color",
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
+    "description": "Active (selected) state of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -905,6 +968,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Inverted background of the primary control.",
     "components": [
       "button"
     ]
@@ -914,6 +978,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Hover state of the inverted primary control.",
     "components": [
       "button"
     ]
@@ -923,6 +988,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Active (selected) state of the inverted primary control.",
     "components": [
       "button",
       "notice-bubble"
@@ -933,6 +999,7 @@
     "type": "color",
     "rawValue": "{gray.400}, 0.1",
     "computedValue": "rgba(138, 142, 155, 0.1)",
+    "description": "Background of the regular secondary control.",
     "components": [
       "button"
     ]
@@ -942,6 +1009,7 @@
     "type": "color",
     "rawValue": "{gray.400}, 0.2",
     "computedValue": "rgba(138, 142, 155, 0.2)",
+    "description": "Hover state of the regular secondary control.",
     "components": [
       "base-trigger",
       "button"
@@ -952,6 +1020,7 @@
     "type": "color",
     "rawValue": "{gray.400}, 0.3",
     "computedValue": "rgba(138, 142, 155, 0.3)",
+    "description": "Active (selected) state of the regular secondary control.",
     "components": [
       "button"
     ]
@@ -961,6 +1030,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0.1",
     "computedValue": "rgba(0, 143, 248, 0.1)",
+    "description": "Background of the accent secondary control.",
     "components": [
       "button"
     ]
@@ -970,6 +1040,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0.2",
     "computedValue": "rgba(0, 143, 248, 0.2)",
+    "description": "Hover state of the accent secondary control.",
     "components": [
       "base-trigger",
       "button",
@@ -981,6 +1052,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0.3",
     "computedValue": "rgba(0, 143, 248, 0.3)",
+    "description": "Active (selected) state of the accent secondary control.",
     "components": [
       "base-trigger",
       "button"
@@ -991,6 +1063,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.05",
     "computedValue": "rgba(255, 255, 255, 0.05)",
+    "description": "Background of the inverted version of the secondary control.",
     "components": [
       "button"
     ]
@@ -1000,6 +1073,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.1",
     "computedValue": "rgba(255, 255, 255, 0.1)",
+    "description": "Hover state of the inverted version of the secondary control.",
     "components": [
       "button"
     ]
@@ -1009,6 +1083,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
+    "description": "Active (selected) state of the inverted version of the secondary control.",
     "components": [
       "button"
     ]
@@ -1018,6 +1093,7 @@
     "type": "color",
     "rawValue": "{gray.400}, 0",
     "computedValue": "rgba(138, 142, 155, 0)",
+    "description": "Background of the regular tertiary control.",
     "components": [
       "button"
     ]
@@ -1027,6 +1103,7 @@
     "type": "color",
     "rawValue": "{gray.400}, 0.2",
     "computedValue": "rgba(138, 142, 155, 0.2)",
+    "description": "Hover state of the regular tertiary control.",
     "components": [
       "button"
     ]
@@ -1036,6 +1113,7 @@
     "type": "color",
     "rawValue": "{gray.400}, 0.3",
     "computedValue": "rgba(138, 142, 155, 0.3)",
+    "description": "Active (selected) state of the regular tertiary control.",
     "components": [
       "button"
     ]
@@ -1045,6 +1123,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0",
     "computedValue": "rgba(0, 143, 248, 0)",
+    "description": "Background of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
     ]
@@ -1054,6 +1133,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0.2",
     "computedValue": "rgba(0, 143, 248, 0.2)",
+    "description": "Hover state of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
     ]
@@ -1063,6 +1143,7 @@
     "type": "color",
     "rawValue": "{blue.400}, 0.3",
     "computedValue": "rgba(0, 143, 248, 0.3)",
+    "description": "Active (selected) state of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
     ]
@@ -1072,6 +1153,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0",
     "computedValue": "rgba(255, 255, 255, 0)",
+    "description": "Background of the inverted version of the tertiary control.",
     "components": [
       "button"
     ]
@@ -1081,6 +1163,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.1",
     "computedValue": "rgba(255, 255, 255, 0.1)",
+    "description": "Hover state of the inverted version of the tertiary control.",
     "components": [
       "button"
     ]
@@ -1090,6 +1173,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
+    "description": "Active (selected) state of the inverted version of the tertiary control.",
     "components": [
       "button"
     ]
@@ -1099,6 +1183,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Primary neutral icon.",
     "components": [
       "base-trigger",
       "format-text",
@@ -1111,6 +1196,7 @@
     "type": "color",
     "rawValue": "{gray.600}",
     "computedValue": "#484a54",
+    "description": "Hover and active (selected) states of the primary neutral icon.",
     "components": [
       "fullscreen-modal",
       "notice"
@@ -1121,6 +1207,7 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
+    "description": "Primary link-lookalike icon.",
     "components": []
   },
   {
@@ -1128,6 +1215,7 @@
     "type": "color",
     "rawValue": "{blue.600}",
     "computedValue": "#044792",
+    "description": "Hover and active (selected) states of the primary link-lookalike icon.",
     "components": []
   },
   {
@@ -1135,6 +1223,7 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
+    "description": "Primary successful icon.",
     "components": [
       "notice"
     ]
@@ -1144,6 +1233,7 @@
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
+    "description": "Hover and active (selected) states of the primary successful icon.",
     "components": [
       "notice"
     ]
@@ -1153,6 +1243,7 @@
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
+    "description": "Primary critical icon.",
     "components": [
       "notice"
     ]
@@ -1162,6 +1253,7 @@
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
+    "description": "Hover and active (selected) states of the primary critical icon.",
     "components": [
       "notice"
     ]
@@ -1171,6 +1263,7 @@
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
+    "description": "Primary warning icon.",
     "components": [
       "button",
       "dot",
@@ -1182,6 +1275,7 @@
     "type": "color",
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
+    "description": "Hover and active (selected) states of the primary warning icon.",
     "components": [
       "button",
       "notice"
@@ -1192,6 +1286,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Inverted version of the primary icon.",
     "components": [
       "notice-global"
     ]
@@ -1201,6 +1296,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Hover and active (selected) states of the inverted version of the primary icon.",
     "components": [
       "notice-global"
     ]
@@ -1210,7 +1306,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
-    "description": "#A9ABB6",
+    "description": "Secondary neutral icon.",
     "components": [
       "breadcrumbs",
       "card",
@@ -1230,6 +1326,7 @@
     "type": "color",
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
+    "description": "Hover and active (selected) states of the secondary neutral icon.",
     "components": [
       "data-table",
       "fullscreen-modal",
@@ -1245,6 +1342,7 @@
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
+    "description": "Secondary link-lookalike icon.",
     "components": [
       "d3-chart"
     ]
@@ -1254,6 +1352,7 @@
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
+    "description": "Hover and active (selected) states of the secondary link-lookalike icon.",
     "components": []
   },
   {
@@ -1261,6 +1360,7 @@
     "type": "color",
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
+    "description": "Secondary successful icon.",
     "components": [
       "inline-input"
     ]
@@ -1270,6 +1370,7 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
+    "description": "Hover and active (selected) states of the secondary successful icon.",
     "components": [
       "inline-input"
     ]
@@ -1279,6 +1380,7 @@
     "type": "color",
     "rawValue": "{red.300}",
     "computedValue": "#ff8786",
+    "description": "Secondary critical icon.",
     "components": []
   },
   {
@@ -1286,6 +1388,7 @@
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
+    "description": "Hover and active (selected) states of the secondary critical icon.",
     "components": []
   },
   {
@@ -1293,6 +1396,7 @@
     "type": "color",
     "rawValue": "{orange.300}",
     "computedValue": "#ff8c43",
+    "description": "Secondary warning icon.",
     "components": []
   },
   {
@@ -1300,6 +1404,7 @@
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
+    "description": "Hover and active (selected) states of the secondary warning icon.",
     "components": []
   },
   {
@@ -1307,7 +1412,7 @@
     "type": "color",
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
-    "description": "semrush/intergalactic/tree/feature/introduce-design-tokens-test",
+    "description": "Color for the default non-interactive icon.",
     "components": []
   },
   {
@@ -1315,6 +1420,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Default date-picker cell background.",
     "components": [
       "date-picker"
     ]
@@ -1324,6 +1430,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
+    "description": "Color for marking the cell with the current date, month or year in the date-picker.",
     "components": []
   },
   {
@@ -1331,6 +1438,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Hover state of the default date-picker cell background.",
     "components": [
       "date-picker"
     ]
@@ -1340,6 +1448,7 @@
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
+    "description": "Background for the cell which is included in the date range in the date-picker.",
     "components": [
       "date-picker"
     ]
@@ -1349,6 +1458,7 @@
     "type": "color",
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
+    "description": "Hover state of the background for the cell which is included in the date range in the date-picker.",
     "components": [
       "date-picker"
     ]
@@ -1358,6 +1468,7 @@
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
+    "description": "Active (selected) date-picker cell background.",
     "components": [
       "date-picker"
     ]
@@ -1367,6 +1478,7 @@
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
+    "description": "Hover for the active (selected) date-picker cell background.",
     "components": [
       "date-picker"
     ]
@@ -1383,6 +1495,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Default background color for the list item in the dropdown-menu.",
     "components": []
   },
   {
@@ -1390,6 +1503,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Hover state of the default background color for the list item in the dropdown-menu.",
     "components": []
   },
   {
@@ -1397,6 +1511,7 @@
     "type": "color",
     "rawValue": "{blue.100}, 0.7",
     "computedValue": "rgba(196, 229, 254, 0.7)",
+    "description": "Active (selected) state of the default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown-menu",
       "select"
@@ -1407,6 +1522,7 @@
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
+    "description": "Hover state for the selected state of the default background color for the list item in the dropdown-menu.",
     "components": [
       "dropdown-menu",
       "select"
@@ -1417,6 +1533,7 @@
     "type": "color",
     "rawValue": "{yellow.100}, 0.3",
     "computedValue": "rgba(252, 224, 129, 0.3)",
+    "description": "Color of the outer border of the FeaturePopover.Spot.",
     "components": []
   },
   {
@@ -1424,6 +1541,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Background color of the ProgressBar.",
     "components": [
       "progress-bar"
     ]
@@ -1433,6 +1551,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
+    "description": "Hover state of the background color of the ProgressBar.",
     "components": []
   },
   {
@@ -1440,7 +1559,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.2",
     "computedValue": "rgba(255, 255, 255, 0.2)",
-    "description": "#FFFFFF",
+    "description": "Inverted version of the background color of the ProgressBar.",
     "components": [
       "progress-bar"
     ]
@@ -1450,6 +1569,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.4",
     "computedValue": "rgba(255, 255, 255, 0.4)",
+    "description": "Hover state for the inverted version of the background color of the ProgressBar.",
     "components": []
   },
   {
@@ -1457,6 +1577,7 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
+    "description": "Value color of the ProgressBar.",
     "components": []
   },
   {
@@ -1464,6 +1585,7 @@
     "type": "color",
     "rawValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
     "computedValue": "linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%)",
+    "description": "Value with gradient for the ProgressBar.",
     "components": [
       "progress-bar"
     ]
@@ -1473,6 +1595,7 @@
     "type": "color",
     "rawValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
     "computedValue": "linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%)",
+    "description": "Null value gradient for the ProgressBar.",
     "components": [
       "progress-bar"
     ]
@@ -1482,6 +1605,7 @@
     "type": "color",
     "rawValue": "#000000",
     "computedValue": "#000000",
+    "description": "Base value background for the ProgressBar. It is used to create gradients for the values.",
     "components": [
       "progress-bar"
     ]
@@ -1491,6 +1615,7 @@
     "type": "color",
     "rawValue": "{gray.100}, 0.8",
     "computedValue": "rgba(224, 225, 233, 0.8)",
+    "description": "Default color for the Skeleton.",
     "components": [
       "skeleton"
     ]
@@ -1500,6 +1625,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
+    "description": "Inverted version of the default color for the Skeleton.",
     "components": [
       "skeleton"
     ]
@@ -1509,6 +1635,7 @@
     "type": "color",
     "rawValue": "{orange.300}",
     "computedValue": "#ff8c43",
+    "description": "Beta status of the feature.",
     "components": []
   },
   {
@@ -1516,6 +1643,7 @@
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
+    "description": "Admin mode of the feature.",
     "components": []
   },
   {
@@ -1523,6 +1651,7 @@
     "type": "color",
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
+    "description": "New status of the feature.",
     "components": []
   },
   {
@@ -1530,6 +1659,7 @@
     "type": "color",
     "rawValue": "{red.300}",
     "computedValue": "#ff8786",
+    "description": "Alpha status of the feature.",
     "components": []
   },
   {
@@ -1537,6 +1667,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
+    "description": "\"Soon\" status of the feature.",
     "components": []
   },
   {
@@ -1544,6 +1675,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Inverted version of the background of the feature status.",
     "components": []
   },
   {
@@ -1551,6 +1683,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Background of the header cell in the primary Table.",
     "components": [
       "data-table"
     ]
@@ -1560,6 +1693,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Background of the hovered header cell in the primary Table.",
     "components": [
       "data-table"
     ]
@@ -1569,6 +1703,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Background of the active header cell in the primary Table.",
     "components": [
       "data-table"
     ]
@@ -1578,6 +1713,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Background of the header cell in the secondary Table.",
     "components": [
       "data-table"
     ]
@@ -1594,6 +1730,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Background of the default cell in the Table.",
     "components": []
   },
   {
@@ -1601,6 +1738,7 @@
     "type": "color",
     "rawValue": "{gray.100}, 0.5",
     "computedValue": "rgba(224, 225, 233, 0.5)",
+    "description": "Background of the default hovered cell in the Table.",
     "components": []
   },
   {
@@ -1608,6 +1746,7 @@
     "type": "color",
     "rawValue": "{gray.100}, 0.8",
     "computedValue": "rgba(224, 225, 233, 0.8)",
+    "description": "Background of the default active cell in the Table.",
     "components": []
   },
   {
@@ -1615,6 +1754,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Background of the unread cell in the Table.",
     "components": [
       "data-table"
     ]
@@ -1624,6 +1764,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Background of the cell used for Accordion or actions row, in the Table.",
     "components": []
   },
   {
@@ -1631,6 +1772,7 @@
     "type": "color",
     "rawValue": "{blue.50}",
     "computedValue": "#e9f7ff",
+    "description": "Background of the selected cell in the Table.",
     "components": [
       "data-table"
     ]
@@ -1640,6 +1782,7 @@
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
+    "description": "Background of the hovered selected cell in the Table.",
     "components": [
       "data-table"
     ]
@@ -1649,6 +1792,7 @@
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
+    "description": "Background of the active selected cell in the Table.",
     "components": []
   },
   {
@@ -1656,6 +1800,7 @@
     "type": "color",
     "rawValue": "{green.50}",
     "computedValue": "#dbfee8",
+    "description": "Background of the cell with new information in the Table.",
     "components": [
       "data-table"
     ]
@@ -1665,6 +1810,7 @@
     "type": "color",
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
+    "description": "Background of the hovered cell with new information in the Table.",
     "components": [
       "data-table"
     ]
@@ -1674,6 +1820,7 @@
     "type": "color",
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
+    "description": "Background of the active cell with new information in the Table.",
     "components": []
   },
   {
@@ -1681,6 +1828,7 @@
     "type": "color",
     "rawValue": "{red.50}",
     "computedValue": "#fff0f7",
+    "description": "Background of the cell with critical information in the Table.",
     "components": [
       "data-table"
     ]
@@ -1690,6 +1838,7 @@
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
+    "description": "Background of the hovered cell with critical information in the Table.",
     "components": [
       "data-table"
     ]
@@ -1699,6 +1848,7 @@
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
+    "description": "Background of the active cell with critical information in the Table.",
     "components": []
   },
   {
@@ -1706,6 +1856,7 @@
     "type": "color",
     "rawValue": "{orange.50}",
     "computedValue": "#fff3d9",
+    "description": "Background of the cell with warning information in the Table.",
     "components": [
       "data-table"
     ]
@@ -1715,6 +1866,7 @@
     "type": "color",
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
+    "description": "Background of the hovered cell with warning information in the Table.",
     "components": [
       "data-table"
     ]
@@ -1724,6 +1876,7 @@
     "type": "color",
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
+    "description": "Background of the active cell with warning information in the Table.",
     "components": []
   },
   {
@@ -1731,6 +1884,7 @@
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
+    "description": "Primary brand color.",
     "components": []
   },
   {
@@ -1738,6 +1892,7 @@
     "type": "color",
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
+    "description": "Secondary brand color.",
     "components": []
   },
   {
@@ -1745,7 +1900,7 @@
     "type": "color",
     "rawValue": "#bd081c",
     "computedValue": "#bd081c",
-    "description": "#BD081C",
+    "description": "Pinterest brand color.",
     "components": []
   },
   {
@@ -1753,7 +1908,7 @@
     "type": "color",
     "rawValue": "#e4405f",
     "computedValue": "#e4405f",
-    "description": "#E4405F",
+    "description": "Instagram brand color.",
     "components": []
   },
   {
@@ -1761,7 +1916,7 @@
     "type": "color",
     "rawValue": "#ff0000",
     "computedValue": "#ff0000",
-    "description": "#FF0000",
+    "description": "Youtube brand color.",
     "components": []
   },
   {
@@ -1769,7 +1924,7 @@
     "type": "color",
     "rawValue": "#3b5998",
     "computedValue": "#3b5998",
-    "description": "#3B5998",
+    "description": "Facebook brand color.",
     "components": []
   },
   {
@@ -1777,7 +1932,7 @@
     "type": "color",
     "rawValue": "#1a7ab2",
     "computedValue": "#1a7ab2",
-    "description": "#1A7AB2",
+    "description": "LinkedIn brand color.",
     "components": []
   },
   {
@@ -1785,7 +1940,7 @@
     "type": "color",
     "rawValue": "#2bafeb",
     "computedValue": "#2bafeb",
-    "description": "#2BAFEB",
+    "description": "Twitter brand color.",
     "components": []
   },
   {
@@ -1793,7 +1948,7 @@
     "type": "color",
     "rawValue": "#1a0dab",
     "computedValue": "#1a0dab",
-    "description": "#1A0DAB",
+    "description": "Google brand color for the link.",
     "components": []
   },
   {
@@ -1801,7 +1956,7 @@
     "type": "color",
     "rawValue": "#016723",
     "computedValue": "#016723",
-    "description": "#016723",
+    "description": "Google green brand color for the link.",
     "components": []
   },
   {
@@ -1809,7 +1964,7 @@
     "type": "color",
     "rawValue": "#1a73e8",
     "computedValue": "#1a73e8",
-    "description": "#1A73E8",
+    "description": "Google My Business brand color.",
     "components": []
   },
   {
@@ -1817,6 +1972,7 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)",
+    "description": "Default shadow of the Card.",
     "components": [
       "card"
     ]
@@ -1826,7 +1982,7 @@
     "type": "boxShadow",
     "rawValue": "3px 3px 30px 0px rgba({gray.800}, 0.15)",
     "computedValue": "3px 3px 30px 0px rgba(25, 27, 35, 0.15)",
-    "description": "transition: all 500ms;",
+    "description": "Hover state for the shadow of the Card with hover state.",
     "components": []
   },
   {
@@ -1834,6 +1990,7 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 12px 40px 0px rgba({gray.800}, 0.16)",
     "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16)",
+    "description": "Shadow for show that element are being drag-and-drop.",
     "components": []
   },
   {
@@ -1841,7 +1998,7 @@
     "type": "boxShadow",
     "rawValue": "0px 3px 8px 0px rgba({gray.800}, 0.2)",
     "computedValue": "0px 3px 8px 0px rgba(25, 27, 35, 0.2)",
-    "description": "[gray800, .2]",
+    "description": "Default shadow if the Modal window.",
     "components": [
       "modal"
     ]
@@ -1851,6 +2008,7 @@
     "type": "boxShadow",
     "rawValue": "0px 1px 12px 0px rgba({gray.800}, 0.15)",
     "computedValue": "0px 1px 12px 0px rgba(25, 27, 35, 0.15)",
+    "description": "Default shadow of all Poppers, Dropdowns and Tooltips.",
     "components": [
       "d3-chart",
       "dropdown",
@@ -1864,6 +2022,7 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px rgba({blue.400}, 0.3)",
     "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.3)",
+    "description": "Default keyboard focus styles.",
     "components": [
       "accordion",
       "base-trigger",
@@ -1899,6 +2058,7 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.3)",
     "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.3)",
+    "description": "Keyboard focus styles for elements with invalid state.",
     "components": [
       "base-trigger",
       "checkbox",
@@ -1913,6 +2073,7 @@
     "type": "boxShadow",
     "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.3)",
     "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.3)",
+    "description": "Keyboard focus styles for elements with valid state.",
     "components": [
       "inline-input",
       "input",
@@ -2294,7 +2455,7 @@
     "type": "sizing",
     "rawValue": "{scale-indent}*7",
     "computedValue": "28px",
-    "description": "Use for default size of the controls.",
+    "description": "Default size of the controls.",
     "components": [
       "input",
       "pills",
@@ -2306,7 +2467,7 @@
     "type": "sizing",
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
-    "description": "Use for large size of the controls.",
+    "description": "Large size of the controls.",
     "components": [
       "input",
       "pills",
@@ -2318,6 +2479,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*0.5",
     "computedValue": "2px",
+    "description": "2px",
     "components": [
       "base-trigger",
       "checkbox",
@@ -2342,6 +2504,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*1",
     "computedValue": "4px",
+    "description": "4px",
     "components": [
       "badge",
       "base-trigger",
@@ -2376,6 +2539,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*2",
     "computedValue": "8px",
+    "description": "8px",
     "components": [
       "base-trigger",
       "breadcrumbs",
@@ -2417,6 +2581,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*3",
     "computedValue": "12px",
+    "description": "12px",
     "components": [
       "base-trigger",
       "button",
@@ -2447,6 +2612,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*4",
     "computedValue": "16px",
+    "description": "16px",
     "components": [
       "carousel",
       "color-picker",
@@ -2472,6 +2638,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*5",
     "computedValue": "20px",
+    "description": "20px",
     "components": [
       "card",
       "errors",
@@ -2487,6 +2654,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*6",
     "computedValue": "24px",
+    "description": "24px",
     "components": [
       "errors",
       "format-text",
@@ -2501,6 +2669,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*8",
     "computedValue": "32px",
+    "description": "32px",
     "components": [
       "errors",
       "feature-popover",
@@ -2516,6 +2685,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*10",
     "computedValue": "40px",
+    "description": "40px",
     "components": [
       "errors",
       "feedback-form",
@@ -2530,6 +2700,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*14",
     "computedValue": "56px",
+    "description": "56px",
     "components": [
       "side-panel"
     ]
@@ -2539,6 +2710,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*20",
     "computedValue": "80px",
+    "description": "80px",
     "components": [
       "errors",
       "fullscreen-modal"
@@ -2549,6 +2721,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*24",
     "computedValue": "96px",
+    "description": "96px",
     "components": []
   },
   {
@@ -2556,6 +2729,7 @@
     "type": "spacing",
     "rawValue": "{scale-indent}*30",
     "computedValue": "120px",
+    "description": "120px",
     "components": []
   },
   {
@@ -2631,7 +2805,7 @@
     "type": "opacity",
     "rawValue": "0.3",
     "computedValue": "0.3",
-    "description": "Variable for disabled state. Use it for all controls to make them look disabled.",
+    "description": "Use for the disabled state of all kind of the controls and elements.",
     "components": [
       "accordion",
       "base-trigger",
@@ -2791,6 +2965,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Default Tooltip background.",
     "components": [
       "tooltip"
     ]
@@ -2800,6 +2975,7 @@
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
+    "description": "Warning Tooltip background.",
     "components": [
       "tooltip"
     ]
@@ -2809,6 +2985,7 @@
     "type": "color",
     "rawValue": "{gray.800}",
     "computedValue": "#191b23",
+    "description": "Inverted version of the default Tooltip background.",
     "components": [
       "tooltip"
     ]
@@ -2818,6 +2995,7 @@
     "type": "color",
     "rawValue": "rgba(255, 255, 255, 0.5)",
     "computedValue": "rgba(255, 255, 255, 0.5)",
+    "description": "Neutral border of the components that are combined with neighbor-location property.",
     "components": [
       "button"
     ]
@@ -2827,6 +3005,7 @@
     "type": "color",
     "rawValue": "rgba(0, 0, 0, 0.5)",
     "computedValue": "rgba(0, 0, 0, 0.5)",
+    "description": "Inverted border of the components that are combined with neighbor-location property.",
     "components": [
       "button"
     ]
@@ -2836,6 +3015,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to right, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "description": "Left-to-right fade shadow for the ScrollArea.",
     "components": [
       "scroll-area"
     ]
@@ -2845,6 +3025,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to left, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "description": "Right-to-left fade shadow for the ScrollArea.",
     "components": [
       "scroll-area"
     ]
@@ -2854,6 +3035,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to bottom, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "description": "Top-to-bottom fade shadow for the ScrollArea.",
     "components": [
       "scroll-area"
     ]
@@ -2863,6 +3045,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to top, rgba($gray.800, 0.1) 20.55%, rgba($gray.white, 0.0001) 100%)",
     "computedValue": "linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%)",
+    "description": "Bottom-to-top fade shadow for the ScrollArea.",
     "components": [
       "scroll-area"
     ]
@@ -2872,6 +3055,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to right, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "description": "Left-to-right fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
       "dropdown-menu"
     ]
@@ -2881,6 +3065,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to left, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "description": "Right-to-left fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
       "dropdown-menu"
     ]
@@ -2890,6 +3075,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to top, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "description": "Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
       "dropdown-menu"
     ]
@@ -2899,6 +3085,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to bottom, rgba($gray.white, 1) 34.38%, rgba($gray.white, 0) 100%)",
     "computedValue": "linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%)",
+    "description": "Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu.",
     "components": [
       "dropdown-menu"
     ]
@@ -2908,6 +3095,7 @@
     "type": "color",
     "rawValue": "{gray.800}, 0.3",
     "computedValue": "rgba(25, 27, 35, 0.3)",
+    "description": "Background color for ScrollBar.",
     "components": [
       "scroll-area"
     ]
@@ -2917,6 +3105,7 @@
     "type": "color",
     "rawValue": "{gray.100}, 0.5",
     "computedValue": "rgba(224, 225, 233, 0.5)",
+    "description": "Primary gray tag.",
     "components": []
   },
   {
@@ -2924,6 +3113,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Hover and active (selected) state of the primary gray tag.",
     "components": []
   },
   {
@@ -2931,6 +3121,7 @@
     "type": "color",
     "rawValue": "{blue.100}, 0.5",
     "computedValue": "rgba(196, 229, 254, 0.5)",
+    "description": "Primary blue tag.",
     "components": []
   },
   {
@@ -2938,6 +3129,7 @@
     "type": "color",
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
+    "description": "Hover and active (selected) state of the primary blue tag.",
     "components": []
   },
   {
@@ -2945,6 +3137,7 @@
     "type": "color",
     "rawValue": "{green.100}, 0.5",
     "computedValue": "rgba(158, 242, 201, 0.5)",
+    "description": "Primary green tag.",
     "components": []
   },
   {
@@ -2952,6 +3145,7 @@
     "type": "color",
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
+    "description": "Hover and active (selected) state of the primary green tag.",
     "components": []
   },
   {
@@ -2959,6 +3153,7 @@
     "type": "color",
     "rawValue": "{orange.100}, 0.5",
     "computedValue": "rgba(255, 220, 162, 0.5)",
+    "description": "Primary orange tag.",
     "components": []
   },
   {
@@ -2966,6 +3161,7 @@
     "type": "color",
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
+    "description": "Hover and active (selected) state of the primary orange tag.",
     "components": []
   },
   {
@@ -2973,6 +3169,7 @@
     "type": "color",
     "rawValue": "{red.100}, 0.5",
     "computedValue": "rgba(255, 215, 223, 0.5)",
+    "description": "Primary red tag.",
     "components": []
   },
   {
@@ -2980,6 +3177,7 @@
     "type": "color",
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
+    "description": "Hover and active (selected) state of the primary red tag.",
     "components": []
   },
   {
@@ -2987,6 +3185,7 @@
     "type": "color",
     "rawValue": "{violet.100}, 0.5",
     "computedValue": "rgba(237, 217, 255, 0.5)",
+    "description": "Primary violet tag.",
     "components": []
   },
   {
@@ -2994,6 +3193,7 @@
     "type": "color",
     "rawValue": "{violet.100}",
     "computedValue": "#edd9ff",
+    "description": "Hover and active (selected) state of the primary violet tag.",
     "components": []
   },
   {
@@ -3001,6 +3201,7 @@
     "type": "color",
     "rawValue": "{yellow.100}, 0.5",
     "computedValue": "rgba(252, 224, 129, 0.5)",
+    "description": "Primary yellow tag.",
     "components": []
   },
   {
@@ -3008,6 +3209,7 @@
     "type": "color",
     "rawValue": "{yellow.100}",
     "computedValue": "#fce081",
+    "description": "Hover and active (selected) state of the primary yellow tag.",
     "components": []
   },
   {
@@ -3015,6 +3217,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.15",
     "computedValue": "rgba(255, 255, 255, 0.15)",
+    "description": "Primary white tag.",
     "components": [
       "tag"
     ]
@@ -3024,6 +3227,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
+    "description": "Hover and active (selected) state of the primary white tag.",
     "components": [
       "tag"
     ]
@@ -3033,6 +3237,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Gray text for the primary gray tag.",
     "components": []
   },
   {
@@ -3040,6 +3245,7 @@
     "type": "color",
     "rawValue": "{blue.500}",
     "computedValue": "#006dca",
+    "description": "Blue text for the primary blue tag.",
     "components": []
   },
   {
@@ -3047,6 +3253,7 @@
     "type": "color",
     "rawValue": "{green.500}",
     "computedValue": "#007c65",
+    "description": "Green text for the primary green tag.",
     "components": []
   },
   {
@@ -3054,6 +3261,7 @@
     "type": "color",
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
+    "description": "Orange text for the primary orange tag.",
     "components": []
   },
   {
@@ -3061,6 +3269,7 @@
     "type": "color",
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
+    "description": "Red text for the primary red tag.",
     "components": []
   },
   {
@@ -3068,6 +3277,7 @@
     "type": "color",
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
+    "description": "Violet text for the primary violet tag.",
     "components": []
   },
   {
@@ -3075,6 +3285,7 @@
     "type": "color",
     "rawValue": "{yellow.500}",
     "computedValue": "#a75800",
+    "description": "Yellow text for the primary yellow tag.",
     "components": []
   },
   {
@@ -3082,6 +3293,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "White text for the primary white tag.",
     "components": []
   },
   {
@@ -3089,6 +3301,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Background color for the default secondary tag.",
     "components": []
   },
   {
@@ -3096,6 +3309,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
+    "description": "Hover and active states of the background color for the default secondary tag.",
     "components": [
       "tag"
     ]
@@ -3105,6 +3319,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0",
     "computedValue": "rgba(255, 255, 255, 0)",
+    "description": "White secondary tag.",
     "components": []
   },
   {
@@ -3112,7 +3327,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0",
     "computedValue": "rgba(255, 255, 255, 0)",
-    "description": "Only text color changes",
+    "description": "Hover state of the secondary white tag.",
     "components": []
   },
   {
@@ -3120,6 +3335,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.1",
     "computedValue": "rgba(255, 255, 255, 0.1)",
+    "description": "Active state of the secondary white tag.",
     "components": []
   },
   {
@@ -3127,6 +3343,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Gray text for the default secondary tag.",
     "components": []
   },
   {
@@ -3134,180 +3351,205 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "White text for the secondary white tag.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-blue",
+    "name": "--intergalactic-chart-palette-order-1",
     "type": "color",
     "rawValue": "{blue.300}",
     "computedValue": "#2bb3ff",
+    "description": "1 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
     ]
   },
   {
-    "name": "--intergalactic-chart-palette-order-green",
+    "name": "--intergalactic-chart-palette-order-2",
     "type": "color",
     "rawValue": "{green.200}",
     "computedValue": "#59ddaa",
+    "description": "2 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
     ]
   },
   {
-    "name": "--intergalactic-chart-palette-order-orange",
+    "name": "--intergalactic-chart-palette-order-3",
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
+    "description": "3 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-pink",
+    "name": "--intergalactic-chart-palette-order-4",
     "type": "color",
     "rawValue": "{pink.300}",
     "computedValue": "#f67cf2",
+    "description": "4 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-yellow",
+    "name": "--intergalactic-chart-palette-order-5",
     "type": "color",
     "rawValue": "{yellow.200}",
     "computedValue": "#fdc23c",
+    "description": "5 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-violet",
+    "name": "--intergalactic-chart-palette-order-6",
     "type": "color",
     "rawValue": "{violet.400}",
     "computedValue": "#ab6cfe",
+    "description": "6 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-red",
+    "name": "--intergalactic-chart-palette-order-7",
     "type": "color",
     "rawValue": "{red.300}",
     "computedValue": "#ff8786",
+    "description": "7 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-salad",
+    "name": "--intergalactic-chart-palette-order-8",
     "type": "color",
     "rawValue": "{salad.200}",
     "computedValue": "#9bd85d",
+    "description": "8 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-blue-second-order",
+    "name": "--intergalactic-chart-palette-order-9",
     "type": "color",
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
+    "description": "9 color in the default list of colors for charts.",
     "components": [
       "d3-chart"
     ]
   },
   {
-    "name": "--intergalactic-chart-palette-order-green-second-order",
+    "name": "--intergalactic-chart-palette-order-10",
     "type": "color",
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
+    "description": "10 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-orange-second-order",
+    "name": "--intergalactic-chart-palette-order-11",
     "type": "color",
     "rawValue": "{orange.200}",
     "computedValue": "#ffb26e",
+    "description": "11 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-pink-second-order",
+    "name": "--intergalactic-chart-palette-order-12",
     "type": "color",
     "rawValue": "{pink.400}",
     "computedValue": "#e14adf",
+    "description": "12 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-yellow-second-order",
+    "name": "--intergalactic-chart-palette-order-13",
     "type": "color",
     "rawValue": "{yellow.300}",
     "computedValue": "#ef9800",
+    "description": "13 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-violet-second-order",
+    "name": "--intergalactic-chart-palette-order-14",
     "type": "color",
     "rawValue": "{violet.200}",
     "computedValue": "#dcb8ff",
+    "description": "14 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-red-second-order",
+    "name": "--intergalactic-chart-palette-order-15",
     "type": "color",
     "rawValue": "{red.400}",
     "computedValue": "#ff4953",
+    "description": "15 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-salad-second-order",
+    "name": "--intergalactic-chart-palette-order-16",
     "type": "color",
     "rawValue": "{salad.300}",
     "computedValue": "#66c030",
+    "description": "16 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-blue-third-order",
+    "name": "--intergalactic-chart-palette-order-17",
     "type": "color",
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
+    "description": "17 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-green-third-order",
+    "name": "--intergalactic-chart-palette-order-18",
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
+    "description": "18 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-orange-third-order",
+    "name": "--intergalactic-chart-palette-order-19",
     "type": "color",
     "rawValue": "{orange.300}",
     "computedValue": "#ff8c43",
+    "description": "19 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-pink-third-order",
+    "name": "--intergalactic-chart-palette-order-20",
     "type": "color",
     "rawValue": "{pink.200}",
     "computedValue": "#ffa9fa",
+    "description": "20 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-yellow-third-order",
+    "name": "--intergalactic-chart-palette-order-21",
     "type": "color",
     "rawValue": "{yellow.400}",
     "computedValue": "#d87900",
+    "description": "21 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-violet-third-order",
+    "name": "--intergalactic-chart-palette-order-22",
     "type": "color",
     "rawValue": "{violet.300}",
     "computedValue": "#c695ff",
+    "description": "22 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-red-third-order",
+    "name": "--intergalactic-chart-palette-order-23",
     "type": "color",
     "rawValue": "{red.200}",
     "computedValue": "#ffaeb5",
+    "description": "23 color in the default list of colors for charts.",
     "components": []
   },
   {
-    "name": "--intergalactic-chart-palette-order-salad-third-order",
+    "name": "--intergalactic-chart-palette-order-24",
     "type": "color",
     "rawValue": "{salad.400}",
     "computedValue": "#35a21e",
+    "description": "24 color in the default list of colors for charts.",
     "components": []
   },
   {
@@ -3315,6 +3557,7 @@
     "type": "color",
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
+    "description": "Use it to show total value.",
     "components": []
   },
   {
@@ -3322,6 +3565,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
+    "description": "Use it to indicate voids, missing or some other data.",
     "components": [
       "d3-chart"
     ]
@@ -3331,6 +3575,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Use it to show null value.",
     "components": [
       "d3-chart"
     ]
@@ -3340,6 +3585,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Default chart grid line.",
     "components": []
   },
   {
@@ -3347,6 +3593,7 @@
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
+    "description": "X-axis line on the chart grid.",
     "components": [
       "d3-chart"
     ]
@@ -3356,6 +3603,7 @@
     "type": "color",
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
+    "description": "Accent line for the hover state on the chart grid.",
     "components": []
   },
   {
@@ -3363,6 +3611,7 @@
     "type": "color",
     "rawValue": "{gray.500}",
     "computedValue": "#6c6e79",
+    "description": "Text label on the chart grid.",
     "components": [
       "d3-chart"
     ]
@@ -3372,6 +3621,7 @@
     "type": "color",
     "rawValue": "{gray.200}, 0.3",
     "computedValue": "rgba(196, 199, 207, 0.3)",
+    "description": "Background color for the hover state of a bar on the chart grid.",
     "components": [
       "d3-chart"
     ]
@@ -3381,6 +3631,7 @@
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
+    "description": "Default background color of a bar in the BarChart.",
     "components": []
   },
   {
@@ -3388,6 +3639,7 @@
     "type": "color",
     "rawValue": "{gray.200}, 0.2",
     "computedValue": "rgba(196, 199, 207, 0.2)",
+    "description": "Use for highlighting the period on the chart grid.",
     "components": [
       "d3-chart"
     ]
@@ -3397,6 +3649,7 @@
     "type": "color",
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
+    "description": "Border of the dot that appears on the chart grid when hovered over.",
     "components": [
       "d3-chart"
     ]
@@ -3406,6 +3659,7 @@
     "type": "color",
     "rawValue": "{gray.400}",
     "computedValue": "#8a8e9b",
+    "description": "Background color for the clickable date on the X-axis of the chart grid.",
     "components": []
   },
   {
@@ -3413,6 +3667,7 @@
     "type": "color",
     "rawValue": "{green.400}, 0.2",
     "computedValue": "rgba(0, 159, 129, 0.2)",
+    "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid.",
     "components": []
   }
 ]
