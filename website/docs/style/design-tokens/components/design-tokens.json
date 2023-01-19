@@ -353,7 +353,9 @@
     "rawValue": "{blue.400}, 0.2",
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Focusing values in the input.",
-    "components": []
+    "components": [
+      "date-picker"
+    ]
   },
   {
     "name": "--intergalactic-text-primary",
@@ -423,7 +425,6 @@
     "description": "Placeholder text only.",
     "components": [
       "base-trigger",
-      "date-picker",
       "inline-input",
       "input",
       "textarea"
