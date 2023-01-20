@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
-import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { resolve as resolvePath } from 'path';
 
 test('Users can interact with ProgressBar via VoiceOver', async ({ page, voiceOver }) => {

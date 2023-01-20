@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { test, expect } from 'vitest';
+import { render } from '../testing-library';
+import { test, expect } from '../vitest';
 
 export const shouldSupportRef = (Component, Wrapper = React.Fragment, props = {}) => {
   test('ref should return DOM-node', () => {

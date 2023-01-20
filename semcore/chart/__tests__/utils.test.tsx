@@ -1,4 +1,4 @@
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
 import { normalizeCurvePoints, filterDotPoints } from '../src/utils';
 import { colors } from '../src/utils/colors';
 /**

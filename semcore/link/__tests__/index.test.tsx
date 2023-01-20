@@ -1,10 +1,13 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import Calendar from '@semcore/icon/Calendar/m';
 
-const { cleanup, render, axe } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Link from '../src';
 import CheckM from '@semcore/icon/Check/m';
 import EditXS from '@semcore/icon/Edit/m';

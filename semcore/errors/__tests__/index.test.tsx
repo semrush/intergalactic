@@ -1,8 +1,9 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 
-const { axe, render, cleanup } = testing;
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Error, {
   AccessDenied,

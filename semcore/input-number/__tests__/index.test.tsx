@@ -1,7 +1,9 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { cleanup, fireEvent, render, axe } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 
 import InputNumber from '../src';
 

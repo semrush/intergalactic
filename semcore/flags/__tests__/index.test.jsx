@@ -1,21 +1,18 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { render, cleanup, axe } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import Flags from '../src';
 
 describe('Flags', () => {
   beforeEach(cleanup);
 
   test('Should support className with name country without space', () => {
-    try {
-      const { getByTestId } = render(<Flags data-testid="flags" iso2="EH" />);
+    const { getByTestId } = render(<Flags data-testid="flags" iso2="EH" />);
 
-      expect(getByTestId('flags').classList[1]).toMatch(/^flag-western-sahara-/);
-      console.log('x');
-    } catch {
-      // console.log('err:', err);
-    }
+    expect(getByTestId('flags').classList[1]).toMatch(/^flag-western-sahara-/);
   });
 
   test.skip('Should support className with name country and ,', () => {

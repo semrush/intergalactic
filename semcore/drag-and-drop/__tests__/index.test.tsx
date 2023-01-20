@@ -1,11 +1,11 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import DnD from '../src';
 import Badge from '@semcore/badge';
 import LinkedInS from '@semcore/icon/LinkedIn/m';
 import TabPanel from '@semcore/tab-panel';
-const { cleanup } = testing;
+import { cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('DragAndDrop', () => {
   beforeEach(cleanup);

@@ -1,10 +1,10 @@
 import React from 'react';
-import { snapshot, testing } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
 import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-
-const { render, axe, cleanup, fireEvent, act } = testing;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 function fakeTemporaryBlock(rect) {
   const originalCreateElement = global.document.createElement;

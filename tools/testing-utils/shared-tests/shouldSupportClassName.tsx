@@ -1,6 +1,6 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { test, expect } from 'vitest';
+import { render } from '../testing-library';
+import { test, expect } from '../vitest';
 
 export const shouldSupportClassName = (Component, Wrapper = React.Fragment, props = {}) => {
   test('should support className extending', () => {
@@ -12,6 +12,6 @@ export const shouldSupportClassName = (Component, Wrapper = React.Fragment, prop
       </Wrapper>,
     );
 
-    expect(getByTestId('component').attributes.class.value).toContain(className);
+    expect(getByTestId('component').attributes.getNamedItem('class').value).toContain(className);
   });
 };

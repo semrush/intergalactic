@@ -1,11 +1,13 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup } from '@semcore/testing-utils/testing-library';
+
 import { Text } from '@semcore/typography';
 import SettingsM from '@semcore/icon/Settings/m';
-const { cleanup } = testing;
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Card from '../src';
 
 describe('Card', () => {

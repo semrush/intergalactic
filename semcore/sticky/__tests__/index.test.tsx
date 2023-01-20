@@ -1,8 +1,9 @@
-import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { cleanup } = testing;
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { describe, beforeEach, } from '@semcore/testing-utils/vitest';
+import { cleanup } from '@semcore/testing-utils/testing-library';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Sticky from '../src';
 
 describe('Sticky', () => {

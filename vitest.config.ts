@@ -32,8 +32,8 @@ export default defineConfig({
         replacement: resolvePath(__dirname, 'tools/esbuild-plugin-semcore/$1'),
       },
       {
-        find: /^@semcore\/jest-preset-ui/,
-        replacement: resolvePath(__dirname, 'tools/jest-preset-ui/src/index.ts'),
+        find: /^@semcore\/testing-utils\/(.*)/,
+        replacement: resolvePath(__dirname, 'tools/testing-utils/$1'),
       },
       {
         find: /^@semcore\/([\w-]*)$/,
@@ -65,6 +65,7 @@ export default defineConfig({
       '.cache',
     ],
     environment: 'happy-dom',
+    setupFiles: resolvePath(__dirname, 'tools/testing-utils/setupTests'),
   },
   define: {
     'global.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',

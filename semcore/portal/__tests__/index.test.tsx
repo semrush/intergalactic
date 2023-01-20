@@ -1,7 +1,6 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { cleanup, render } = testing;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import Portal, { PortalProvider } from '../src';
 
 describe('Portal', () => {

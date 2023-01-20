@@ -3,15 +3,7 @@ import * as util from 'util';
 import * as path from 'path';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { act } from './testing';
-import { expect } from 'vitest';
-import * as axeMatchers from 'vitest-axe/matchers';
-import { toHaveStyle } from '@testing-library/jest-dom/matchers';
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
-expect.extend({ toMatchImageSnapshot, toHaveStyle });
-expect.extend(axeMatchers);
-class NamedNodeMap { }
-window.NamedNodeMap = NamedNodeMap;
+import { act } from './testing-library';
 
 const post = util.promisify(request.post);
 const config: { path?: string } = {};
@@ -20,15 +12,11 @@ if (process.cwd().includes('semcore')) {
   config.path = path.resolve(process.cwd(), '../../.env');
 }
 
-global.HTMLElement.prototype.detachEvent = function (type, listener) {
-  this.removeEventListener(type.replace('on', ''), listener);
-};
-
 require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };
 
-export async function snapshot(Component, options?: {}) {
+export const snapshot = async (Component, options?: {}) => {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
@@ -124,7 +112,7 @@ export async function snapshot(Component, options?: {}) {
   }
 
   return body;
-}
+};
 
 snapshot.ProxyProps = function (props) {
   const { children, ...others } = props;

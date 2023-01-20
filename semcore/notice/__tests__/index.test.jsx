@@ -1,9 +1,12 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { render, cleanup, axe } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import Notice, { NoticeSmart } from '../src';
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Notice', () => {
   beforeEach(cleanup);

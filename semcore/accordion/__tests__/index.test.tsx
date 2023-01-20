@@ -1,8 +1,10 @@
 import React from 'react';
-import { snapshot, testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import Accordion from '../src';
-const { axe, render, fireEvent, cleanup } = testing;
 
 describe('Accordion', () => {
   beforeEach(cleanup);

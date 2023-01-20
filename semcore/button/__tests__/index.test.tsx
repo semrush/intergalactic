@@ -1,15 +1,15 @@
 import React from 'react';
 
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-
-const { render, act } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
+import { render } from '@semcore/testing-utils/testing-library';
 
 import NeighborLocation from '@semcore/neighbor-location';
 import { Flex } from '@semcore/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Button from '../src';
+
 
 describe('Button', () => {
   // beforeEach(cleanup);

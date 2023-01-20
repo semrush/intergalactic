@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, render, cleanup, fireEvent } = testing;
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Tooltip from '@semcore/tooltip';
+import { axe } from '@semcore/testing-utils/axe';
 
 import InputTags from '../src';
 

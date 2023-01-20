@@ -44,7 +44,7 @@ const metas = await Promise.all(
       bundle: true,
       logLevel: 'error',
       plugins: [esbuildPluginSemcoreSourcesResolve('.')],
-      external: ['@semcore/jest-preset-ui/e2e-stand', '@playwright/*', '*.png', '*.css'],
+      external: ['@semcore/testing-utils/e2e-stand', '@playwright/*', '*.png', '*.css'],
     }),
   ),
 );

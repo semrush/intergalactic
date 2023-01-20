@@ -1,7 +1,8 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render, axe, act } = testing;
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Tooltip from '../src';
 

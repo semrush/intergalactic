@@ -1,12 +1,14 @@
 import React from 'react';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import InlineInput from '../src/InlineInput';
 import SerpM from '@semcore/icon/Serp/m';
 
-const { cleanup, fireEvent, render, axe, act } = testing;
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Input from '../src';
 
 const makePlayground = () => (

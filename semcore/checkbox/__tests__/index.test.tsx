@@ -1,10 +1,13 @@
 import React from 'react';
-import { testing, shared, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-import Checkbox from '../src';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
-const { cleanup, render, axe } = testing;
-const { shouldSupportClassName, shouldSupportRef } = shared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+
+import Checkbox from '../src';
 
 describe('Checkbox', () => {
   beforeEach(cleanup);

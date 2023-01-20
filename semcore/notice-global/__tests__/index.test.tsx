@@ -1,8 +1,9 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
-const { render, fireEvent, cleanup } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 
 import NoticeGlobal from '../src';
 

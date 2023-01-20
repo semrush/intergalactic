@@ -1,6 +1,10 @@
+import { render, cleanup, axe, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 import Sticky from '@semcore/sticky';
 import ProgressBar from '@semcore/progress-bar';
 import Divider from '@semcore/divider';
@@ -18,9 +22,7 @@ import resolveColor from '@semcore/utils/lib/color';
 
 import DataTable, { ROW_GROUP } from '../src';
 
-const { render, cleanup, axe, act } = testing;
-
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 const data = [
   {

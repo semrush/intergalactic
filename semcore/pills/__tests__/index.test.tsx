@@ -1,10 +1,11 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi, act } from '@semcore/testing-utils/vitest';
 import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 
-const { render, fireEvent, cleanup, axe, act } = testing;
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Pills from '../src';
 
@@ -88,10 +89,16 @@ describe('PillGroup', () => {
     const spyRight = jest.fn();
 
     const { getByTestId } = render(
-      <Pills behavior='tabs'>
-        <Pills.Item value={1} onFocus={spyLeft}>1</Pills.Item>
-        <Pills.Item data-testid={'pill'} value={2}>2</Pills.Item>
-        <Pills.Item value={3} onFocus={spyRight}>3</Pills.Item>
+      <Pills behavior="tabs">
+        <Pills.Item value={1} onFocus={spyLeft}>
+          1
+        </Pills.Item>
+        <Pills.Item data-testid={'pill'} value={2}>
+          2
+        </Pills.Item>
+        <Pills.Item value={3} onFocus={spyRight}>
+          3
+        </Pills.Item>
       </Pills>,
     );
     const pill = getByTestId('pill');
@@ -109,9 +116,11 @@ describe('PillGroup', () => {
     const spy = jest.fn();
 
     const { getByTestId } = render(
-      <Pills behavior='radio' onChange={spy} value={2}>
+      <Pills behavior="radio" onChange={spy} value={2}>
         <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item data-testid={'pill'} value={2}>2</Pills.Item>
+        <Pills.Item data-testid={'pill'} value={2}>
+          2
+        </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
       </Pills>,
     );
@@ -153,7 +162,7 @@ describe('PillGroup', () => {
 
   test('should support additional elements as props', async () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const Addon = React.forwardRef(function({ forwardRef, Children, Root, ...p }, ref) {
+    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop
@@ -180,7 +189,7 @@ describe('PillGroup', () => {
     expect(
       await snapshot(
         <Pills>
-          <Pills.Item id='item'>Item 1</Pills.Item>
+          <Pills.Item id="item">Item 1</Pills.Item>
           <Pills.Item>Item 2</Pills.Item>
         </Pills>,
         {
@@ -193,7 +202,7 @@ describe('PillGroup', () => {
     expect(
       await snapshot(
         <Pills>
-          <Pills.Item id='item' selected>
+          <Pills.Item id="item" selected>
             Item 1
           </Pills.Item>
           <Pills.Item>Item 2</Pills.Item>
@@ -216,7 +225,7 @@ describe('PillGroup', () => {
           </Pills.Item.Addon>
           <Pills.Item.Text>Item 1</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Badge bg='orange'>beta</Badge>
+            <Badge bg="orange">beta</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item>
@@ -228,7 +237,7 @@ describe('PillGroup', () => {
         <Pills.Item>
           <Pills.Item.Text>Item 3</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Badge bg='orange'>beta</Badge>
+            <Badge bg="orange">beta</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item>Item 4</Pills.Item>
@@ -238,8 +247,8 @@ describe('PillGroup', () => {
       </Pills>
     );
 
-    expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot();
-    expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot();
   });
 
   test('Should correct render for different number Items', async () => {
@@ -278,8 +287,8 @@ describe('PillGroup', () => {
       </>
     );
 
-    expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot();
-    expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot();
+    expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot();
   });
 
   test('a11y', async () => {
@@ -288,7 +297,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid='tab-4'>
+        <Pills.Item value={4} data-testid="tab-4">
           4
         </Pills.Item>
       </Pills>,
@@ -302,11 +311,11 @@ describe('PillGroup', () => {
 
   test('a11y behavior radio', async () => {
     const { getByTestId, container } = render(
-      <Pills value={1} behavior='radio'>
+      <Pills value={1} behavior="radio">
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid='tab-4'>
+        <Pills.Item value={4} data-testid="tab-4">
           4
         </Pills.Item>
       </Pills>,

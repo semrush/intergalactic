@@ -1,7 +1,6 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { cleanup, fireEvent, render } = testing;
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 
 import OutsideClick from '../src';
 

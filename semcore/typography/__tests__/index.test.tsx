@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, } from '@semcore/testing-utils/vitest';
 import Check from '@semcore/icon/Check/m';
 import Question from '@semcore/icon/Question/m';
 import { Blockquote, List, Text, Hint } from '../src';
 
-const { cleanup, render, axe } = testing;
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 
 describe('Text', () => {
   beforeEach(cleanup);

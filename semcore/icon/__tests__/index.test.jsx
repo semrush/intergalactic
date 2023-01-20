@@ -1,9 +1,10 @@
 import React from 'react';
-import { snapshot, testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Icon from '../src';
 
-const { render, cleanup, fireEvent, axe } = testing;
+import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Icon', () => {
   beforeEach(cleanup);

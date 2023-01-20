@@ -1,10 +1,10 @@
 import React from 'react';
-import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
-const { cleanup, fireEvent, render, act } = testing;
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Popper from '../src';
 
 describe('Popper', () => {

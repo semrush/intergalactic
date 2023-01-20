@@ -1,9 +1,10 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import ColorPicker, { PaletteManager } from '../src';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
-const { cleanup, fireEvent, render, axe, act } = testing;
+import ColorPicker, { PaletteManager } from '../src';
 
 describe('ColorPicker', () => {
   beforeEach(cleanup);

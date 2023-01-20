@@ -1,8 +1,9 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { cleanup } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup } from '@semcore/testing-utils/testing-library';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import FormatText from '../src';
 
 describe('FormatText', () => {

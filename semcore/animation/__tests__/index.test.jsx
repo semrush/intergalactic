@@ -1,10 +1,7 @@
-import { testing } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
 describe('Animation', () => {
-  beforeEach(testing.cleanup);
-
-  test('TODO', () => {
+  test.todo('TODO', () => {
     expect(true).toEqual(true);
   });
 });

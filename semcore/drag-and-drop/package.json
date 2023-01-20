@@ -23,9 +23,6 @@
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
@@ -36,7 +33,7 @@
     "@playwright/test": "1.25.1",
     "@semcore/badge": "*",
     "@semcore/icon": "*",
-    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/testing-utils": "1.0.0",
     "@semcore/tab-panel": "*",
     "@types/react": "18.0.21"
   }

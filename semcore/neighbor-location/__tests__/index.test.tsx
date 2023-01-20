@@ -1,8 +1,7 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
 import NeighborLocation from '../src';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
-const { cleanup, render } = testing;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
 const NeighborLocationItem: any = function ({ neighborlocation, ...other }) {
   return (

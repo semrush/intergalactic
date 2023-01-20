@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+
 import Badge from '../src';
 
-const { cleanup, axe, render } = testing;
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Badge', () => {
   beforeEach(cleanup);

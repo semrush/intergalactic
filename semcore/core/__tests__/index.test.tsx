@@ -1,10 +1,9 @@
 import React, { HTMLAttributes } from 'react';
-import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
-import { expect, test, describe, beforeEach, vi } from 'vitest';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 
-const { cleanup, fireEvent, render } = testing;
-
-const { shouldSupportRef } = testsShared;
+const { shouldSupportRef } = sharedTests;
 import createComponent, {
   createBaseComponent,
   Component,

@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Switch, { inputProps } from '../src';
 
-const { cleanup, fireEvent, render, axe } = testing;
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 
 describe('Switch', () => {
   beforeEach(cleanup);

@@ -1,8 +1,8 @@
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
-import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { resolve as resolvePath } from 'path';
-import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
+import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 import { writeFile } from 'fs/promises';
 
 test('Users can interact with FilterTrigger via VoiceOver', async ({

@@ -1,5 +1,5 @@
 {
-  "name": "@semcore/jest-preset-ui",
+  "name": "@semcore/testing-utils",
   "version": "1.0.0",
   "description": "",
   "main": "./index.ts",
@@ -16,8 +16,6 @@
     "babel-jest": "29.0.1",
     "babel-plugin-transform-import-meta": "2.2.0",
     "dotenv": "16.0.1",
-    "identity-obj-proxy": "3.0.0",
-    "jest-canvas-mock": "2.4.0",
     "jest-image-snapshot": "2.9.0",
     "react": "*",
     "react-dom": "*",
@@ -31,11 +29,6 @@
   "peerDependencies": {
     "@guidepup/guidepup": "*",
     "@semcore/esbuild-plugin-semcore": "*",
-    "esbuild": "*",
-    "jest": "29.0.1",
-    "jest-environment-jsdom": "29.0.1"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
+    "esbuild": "*"
   }
 }

@@ -1,3 +1,5 @@
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
+
 import {
   DataStructureHints,
   makeDataHintsContainer as makeHints,
@@ -12,7 +14,6 @@ import {
 } from '../src/a11y/insights';
 import { serialize } from '../src/a11y/serialize';
 import { localizedMessages as translations } from '../src/a11y/translations/view/__intergalactic-dynamic-locales';
-import { assert, expect, test, describe, beforeEach, vi } from 'vitest';
 
 const pixelArtToPointsList = (space: string) =>
   space
