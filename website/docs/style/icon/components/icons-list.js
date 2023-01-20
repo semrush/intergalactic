@@ -1533,6 +1533,12 @@ const iconsList = {
       tags: ['twitter', 'logo', 'лого', 'social', 'твиттер'],
     },
     {
+      name: 'TwitterCarousel',
+      size: ['l', 'm'],
+      group: 'Social',
+      tags: ['twitter', 'logo', 'лого', 'social', 'твиттер', 'carousel', 'serp'],
+    },
+    {
       name: 'Vk',
       size: ['l', 'm'],
       group: 'Social',
@@ -2255,6 +2261,17 @@ const iconsList = {
       ],
     },
     {
+      name: 'AddressPack',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'address',
+        'pack',
+        'адрес',
+        'serp',
+      ],
+    },
+    {
       name: 'Adult',
       size: ['l', 'm'],
       group: 'Misc',
@@ -2621,6 +2638,25 @@ const iconsList = {
       ],
     },
     {
+      name: 'Event',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'calendar',
+        'календарь',
+        'date',
+        'year',
+        'month',
+        'day',
+        'год',
+        'месяц',
+        'день',
+        'дата',
+        'event',
+        'serp',
+      ],
+    },
+    {
       name: 'Events',
       size: ['l', 'm'],
       group: 'Misc',
@@ -2713,6 +2749,20 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Misc',
       tags: ['feature', 'featured', 'video', 'serp', 'видео', 'серп'],
+    },
+    {
+      name: 'FindResultsOn',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['find',
+      'results',
+      'magnifier',
+      'glass',
+      'лупа',
+      'найти',
+      'найденный',
+      'результаты',
+      'serp'],
     },
     {
       name: 'Fish',
@@ -2956,6 +3006,12 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Misc',
       tags: ['infinity', 'eight', 'бесконечность', 'loop', '8', 'number'],
+    },
+    {
+      name: 'InterestingFinds',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['interesting', 'finds', 'интересные', 'находки', 'результаты', 'выдача', 'serp'],
     },
     {
       name: 'Jewelry',
@@ -3215,6 +3271,23 @@ const iconsList = {
       ],
     },
     {
+      name: 'PopularProducts',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'popular',
+        'product',
+        'популярный',
+        'продукт',
+        'shopping',
+        'commence',
+        'buy',
+        'purchase',
+        'купить',
+        'serp',
+      ],
+    },
+    {
       name: 'Printing',
       size: ['l', 'm'],
       group: 'Misc',
@@ -3265,6 +3338,18 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Misc',
       tags: ['recreation', 'entertainment', 'outdoor', 'mountain', 'отдых', 'развлечение', 'горы'],
+    },
+    {
+      name: 'RelatedProducts',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['related', 'product', 'похожий', 'продукт', 'shopping', 'commence', 'buy', 'purchase', 'купить', 'serp'],
+    },
+    {
+      name: 'RelatedSearches',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['related', 'search', 'похожий', 'поиск', 'serp'],
     },
     {
       name: 'Religion',
@@ -3331,6 +3416,14 @@ const iconsList = {
       tags: ['security', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит'],
     },
     {
+      name: 'SeeResultsAbout',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'see', 'results', 'about', 'смотреть', 'результаты', 'list', 'serp',
+      ],
+    },
+    {
       name: 'Sent',
       size: ['l', 'm'],
       group: 'Misc',
@@ -3361,6 +3454,12 @@ const iconsList = {
         'всплывашка',
         'серп',
       ],
+    },
+    {
+      name: 'ShortVideos',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['video', 'видео', 'play', 'воспроизвести', 'preview', 'short', 'serp'],
     },
     {
       name: 'Smoking',
@@ -3409,6 +3508,12 @@ const iconsList = {
       size: ['l', 'm'],
       group: 'Misc',
       tags: ['tile', 'плитка', 'view', 'menu', 'меню', 'sort', 'сортировка'],
+    },
+    {
+      name: 'TopStories',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['top', 'stories', 'banner', 'document', 'serp'],
     },
     {
       name: 'Toxic',
@@ -3564,6 +3669,12 @@ const iconsList = {
         'browser',
         'браузер',
       ],
+    },
+    {
+      name: 'WebStories',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['web', 'stories', 'веб', 'сториз', 'serp',],
     },
     {
       name: 'Wine',
