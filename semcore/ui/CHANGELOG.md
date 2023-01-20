@@ -1,3 +1,17 @@
+## [13.6.0] - 2023-01-20
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed animation in React strict mode for `RadialTree` and `Donut`.
+
+### @semcore/icon
+
+- **Added** Added `TwitterCarousel`, `TopStories`, `WebStories`, `FindResultsOn`, `InterestingFinds`, `Event`, `SeeResultsAbout`, `PopularProducts`, `RelatedProducts`, `AddressPack`, `RelatedSearches`, `ShortVideos`, `NotificationNo` icons.
+
+### @semcore/utils
+
+- **Changed** Put all css `:hover` selectors into `@media(hover: hover)` block.
+
 ## [13.5.0] - 2023-01-19
 
 ### @semcore/accordion
