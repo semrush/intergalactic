@@ -38,7 +38,7 @@ const runCommand = async <Command extends keyof typeof makeCommand>(
   commandName: Command,
   ...args: ArgumentTypes<typeof makeCommand[Command]>
 ) => {
-  return await execa.command(makeCommand[commandName].apply(null, args), { shell: true });
+  return await execa.commandSync(makeCommand[commandName].apply(null, args), { shell: true });
 };
 
 const MAP_BABEL_ENV = {
@@ -47,7 +47,7 @@ const MAP_BABEL_ENV = {
 } as const;
 
 // eslint-disable-next-line no-console
-console.log(`running builder from dir ${process.cwd()}\n`);
+console.log(`running builder from dir ${workingDir}\n`);
 
 await runCommand('CLEANUP');
 
