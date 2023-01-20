@@ -4,11 +4,6 @@ import execa from 'execa';
 import mri from 'mri';
 import { resolve as resolvePath } from 'path';
 import { fileURLToPath } from 'url';
-import postcss from 'postcss';
-import postcssNesting from 'postcss-nesting';
-import postcssHoverMediaFeature from 'postcss-hover-media-feature';
-import glob from 'fast-glob';
-import { readFile, writeFile } from 'fs/promises';
 
 const argv = mri<{
   source: string;
@@ -92,19 +87,3 @@ if (argv.modules) {
   if (source.includes('jsx') || source.includes('js')) await runCommand('COPY_TYPES', 'types');
   if (source.includes('tsx') || source.includes('ts')) await runCommand('TYPES', 'types');
 }
-
-const shadowCssFiles = await glob('./lib/**/*.shadow.css', { cwd: workingDir });
-await Promise.all(
-  shadowCssFiles.map(async (filePath) => {
-    const shadowCssFilePath = resolvePath(workingDir, filePath);
-    const cssContent = await readFile(shadowCssFilePath, 'utf-8');
-    const result = await postcss([postcssNesting(), postcssHoverMediaFeature()]).process(
-      cssContent,
-      {
-        from: shadowCssFilePath,
-        to: shadowCssFilePath,
-      },
-    );
-    await writeFile(shadowCssFilePath, result.css);
-  }),
-);

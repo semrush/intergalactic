@@ -3,7 +3,6 @@ const presetEnv = require('postcss-preset-env');
 const atImport = require('postcss-import-sync2');
 const cssnano = require('cssnano');
 const postcssColorMod = require('postcss-color-mod-function');
-const postcssNesting = require('postcss-nesting');
 const postcssHoverMediaFeature = require('postcss-hover-media-feature');
 
 const inlineCssVariables = require('./inline-css-variables');
@@ -51,7 +50,6 @@ module.exports = function (options) {
         ),
       ),
     ),
-    postcssNesting(),
     postcssHoverMediaFeature(),
   ];
   return postcss(processorPlugins);

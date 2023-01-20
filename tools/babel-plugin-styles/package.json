@@ -19,7 +19,6 @@
     "postcss-color-mod-function": "3.0.3",
     "postcss-hover-media-feature": "^1.0.2",
     "postcss-import-sync2": "1.2.0",
-    "postcss-nesting": "^10.2.0",
     "postcss-preset-env": "6.7.0",
     "postcss-value-parser": "4.1.0",
     "string-hash": "1.1.3",
