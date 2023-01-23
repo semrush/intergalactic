@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.8] - 2023-01-23
+
+### Fixed
+
+- Fixed definition of users locale.
+
 ## [2.8.7] - 2023-01-19
 
 ### Fixed
