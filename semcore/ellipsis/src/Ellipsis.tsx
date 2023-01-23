@@ -27,6 +27,41 @@ type AsPropsMiddle = {
   containerRef?: RefObject<HTMLElement | null>;
 };
 
+
+function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boolean {
+
+  if (element && !multiline) {
+    const { width: currentWidth } = element.getBoundingClientRect();
+
+    element.style.width = 'max-content';
+    element.style.overflow = 'initial';
+
+    const { width: initialWidth } = element.getBoundingClientRect();
+
+    element.style.width = '';
+    element.style.overflow = '';
+
+    return currentWidth < initialWidth;
+  }
+
+  if (element && multiline) {
+    const { height: currentHeight } = element.getBoundingClientRect();
+
+    element.style.webkitLineClamp = 'unset';
+    element.style.overflow = 'initial';
+
+    const { height: initialHeight } = element.getBoundingClientRect();
+
+    element.style.webkitLineClamp = '';
+    element.style.overflow = '';
+
+    return currentHeight < initialHeight;
+  }
+
+  return false;
+}
+
+
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
   static style = style;
@@ -35,10 +70,25 @@ class RootEllipsis extends Component<AsProps> {
     tooltip: true,
   };
 
+  state = {
+    visible: false,
+  };
+
+  textRef = React.createRef<HTMLElement>();
+
+  handlerVisibleChange = (visible: boolean) => {
+    const { maxLine = 1 } = this.asProps;
+    const $text = this.textRef.current;
+    if (isTextOverflowing($text, maxLine > 1)) {
+      this.setState({ visible });
+    }
+  };
+
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
     const { styles, Children, maxLine, tooltip, trim, containerRect, containerRef } = this.asProps;
+    const { visible } = this.state;
     const text = reactToText(getOriginChildren(Children));
 
     if (trim === 'middle') {
@@ -54,8 +104,8 @@ class RootEllipsis extends Component<AsProps> {
     }
     if (tooltip) {
       return sstyled(styles)(
-        <SContainer interaction="hover" title={text}>
-          <SEllipsis render={Box} maxLine={maxLine}>
+        <SContainer interaction='hover' title={text} visible={visible} onVisibleChange={this.handlerVisibleChange}>
+          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
             <Children />
           </SEllipsis>
         </SContainer>,
@@ -106,7 +156,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   if (tooltip) {
     return sstyled(styles)(
       <SContainerMiddle
-        interaction="hover"
+        interaction={text.length > displayedSymbols ? 'hover' : 'none'}
         title={text}
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
