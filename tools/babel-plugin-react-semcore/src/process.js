@@ -82,9 +82,11 @@ module.exports = function (baseImport, themeImports, pluginOptions) {
   const raw = createImports([baseImport, ...themeImports]);
   const { css, messages } = processor.process(raw, { from: baseImport });
   const { tokens, hash } = messages.find((m) => m.plugin === 'postcss-shadow-styles');
-  const purgedStyles = execPurgeCss(css, pluginOptions.purgeCSS);
+  // temporal fix after adding `postcss-hover-media-feature` package
+  // const purgedStyles = execPurgeCss(css, pluginOptions.purgeCSS);
   const data = {
-    css: purgedStyles,
+    // css: purgedStyles,
+    css,
     tokens,
     hash,
   };

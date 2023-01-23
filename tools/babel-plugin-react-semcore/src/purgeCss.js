@@ -14,7 +14,7 @@ cssPurge.purgeCSS(
     ...options,
   },
   (err, css) => {
-    let res = {};
+    const res = {};
     if (err) res.error = err.message;
     if (css) res.css = css;
     process.stdout.write(JSON.stringify(res));
