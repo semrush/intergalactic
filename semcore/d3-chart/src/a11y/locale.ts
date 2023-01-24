@@ -6,7 +6,8 @@ export const normalizeLocale = (
   for (const locale in translations) {
     translationNames[locale.toLowerCase()] = locale;
   }
-  providedLocale = providedLocale ?? globalThis?.navigator?.language ?? 'en';
+  providedLocale =
+    providedLocale ?? isAvailableLocale(globalThis?.navigator?.language, translations) ?? 'en';
   let locale = providedLocale.toLowerCase();
   if (locale.includes('-') && !translations[locale]) {
     const [localeBase] = locale.split('-');
@@ -26,4 +27,15 @@ export const normalizeLocale = (
     return null;
   }
   return locale;
+};
+
+const isAvailableLocale = (locale: string, translations: { [locale: string]: {} }) => {
+  if (typeof locale !== 'string') {
+    return undefined;
+  }
+  const [localeBase] = locale.split('-');
+  if (!translations[localeBase]) {
+    return undefined;
+  }
+  return localeBase;
 };
