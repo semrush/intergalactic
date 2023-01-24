@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.9] - 2023-01-24
+
+### Fixed
+
+- Fixed and changed min height of `Bar`.
+
 ## [2.8.8] - 2023-01-23
 
 ### Fixed
