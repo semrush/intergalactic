@@ -101,14 +101,16 @@ SColumn[active] SSortIcon {
   position: relative;
 }
 
+SColumn[sortIconFloat] SSortWrapper {
+  width: 0;
+  flex-basis: 0;
+}
+
 SColumn[active] SSortWrapper {
   display: block;
   width: 16px;
+  flex-basis: 20px;
   margin-left: var(--intergalactic-spacing-1x, 4px);
-}
-
-SColumn[sortIconFloat] SSortWrapper {
-  width: 0;
 }
 
 SColumn[resizable] {
@@ -156,7 +158,7 @@ SSortIcon {
 
 SSortWrapper {
   display: none;
-  flex-shrink: 999;
+  flex-shrink: 99999;
   position: relative;
   flex-basis: 20px;
   height: 0;

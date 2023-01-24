@@ -55,29 +55,16 @@ function CellHeadInner(props, ref) {
   const SSortWrapper = 'div';
   const SCellHeadIconAsc = SortAsc;
   const SCellHeadIconDesc = SortDesc;
-  const { children, borderRight, borderLeft, ...other } = props;
-  const { active, sorting, use, styles } = other;
-  const style = {};
-
-  if (borderRight) {
-    style.borderRight = '1px solid #e0e1e9';
-  }
-
-  if (borderLeft) {
-    style.borderLeft = '1px solid #e0e1e9';
-  }
+  const { styles, children, sorting, active, align } = props;
 
   return sstyled(styles)(
     <SCellHead
       ref={ref}
       tag="th"
       noWrap
-      use={use}
-      active={active}
-      sorting={sorting}
       tabIndex={sorting && 0}
-      style={style}
-      {...other}
+      sortIconFloat={align === 'right'}
+      {...props}
     >
       <SCellHeadContent>
         {children}
