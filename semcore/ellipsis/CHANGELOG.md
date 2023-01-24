@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.0] - 2023-01-24
+
+### Added
+
+- Stopped showing tooltip if text is not truncated.
+
 ## [1.1.8] - 2023-01-20
 
 ### Changed
@@ -9,8 +15,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [1.1.6] - 2023-01-10
-
-## [1.1.5] - 2023-01-09
 
 ### Changed
 

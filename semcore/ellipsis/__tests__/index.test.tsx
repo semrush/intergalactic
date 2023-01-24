@@ -3,7 +3,7 @@ import { snapshot, testing } from '@semcore/jest-preset-ui';
 import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
 
-const { render, axe, cleanup } = testing;
+const { render, axe, cleanup, fireEvent, act } = testing;
 
 describe('Ellipsis', () => {
   afterEach(cleanup);
@@ -54,6 +54,7 @@ describe('Ellipsis', () => {
     };
 
     class ResizeObserver {
+      private cb: any;
       constructor(cb) {
         this.cb = cb;
       }
@@ -76,6 +77,76 @@ describe('Ellipsis', () => {
     );
 
     expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Show tooltip', async () => {
+    jest.useFakeTimers();
+
+    function fakeBoundingClientRect(node) {
+      if (!node) return;
+      node.getBoundingClientRect = () => {
+        if (node.style.overflow === 'initial') {
+          return {
+            width: 400
+          }
+        }
+        return {
+          width: 200
+        }
+      }
+    }
+
+    const { getByTestId, baseElement } = render(
+      <Box w={200}>
+        <Ellipsis data-testid="text" ref={fakeBoundingClientRect}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
+          doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
+          voluptas. Aliquam eos expedita illo quasi unde!
+        </Ellipsis>
+      </Box>
+    );
+
+    const text = getByTestId('text')
+    fireEvent.mouseEnter(text);
+    act(() => jest.runAllTimers());
+
+    expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).not.toBe(null)
+
+    jest.useRealTimers();
+  });
+
+  test('Dont show tooltip', async () => {
+    jest.useFakeTimers();
+
+    function fakeBoundingClientRect(node) {
+      if (!node) return;
+      node.getBoundingClientRect = () => {
+        if (node.style.overflow === 'initial') {
+          return {
+            width: 100
+          }
+        }
+        return {
+          width: 200
+        }
+      }
+    }
+
+    const { getByTestId, baseElement } = render(
+      <Box w={200}>
+        <Ellipsis data-testid="text" ref={fakeBoundingClientRect}>
+          Lorem ipsum dolor sit amet
+        </Ellipsis>
+      </Box>
+    );
+
+    const text = getByTestId('text')
+    fireEvent.mouseEnter(text);
+    act(() => jest.runAllTimers());
+
+    expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).toBe(null)
+
+    jest.useRealTimers();
   });
 
   test('a11y', async () => {
