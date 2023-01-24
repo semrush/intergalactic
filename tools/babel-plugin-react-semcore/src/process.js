@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { execFileSync } = require('child_process');
 const stringHash = require('string-hash');
 const replaceAll = require('string.prototype.replaceall');
 const { postcss } = require('@semcore/babel-plugin-styles');
@@ -29,27 +28,6 @@ function Cache() {
 
 function createImports(paths) {
   return paths.map((path) => `@import '${path}';`).join('\n');
-}
-
-function execPurgeCss(styles, purgeCSSOptions) {
-  const stringBUF = Buffer.from(styles, 'utf8');
-  const options = JSON.stringify(purgeCSSOptions);
-
-  const stdout = execFileSync(
-    'node',
-    [path.resolve(__dirname, 'purgeCss.js'), stringBUF, options],
-    {
-      encoding: 'utf-8',
-    },
-  );
-
-  try {
-    const { css, err } = JSON.parse(stdout);
-    if (err) throw new Error(err);
-    if (css) return css;
-  } catch (e) {
-    throw new Error(e.message);
-  }
 }
 
 const storage = new Cache();
@@ -82,10 +60,7 @@ module.exports = function (baseImport, themeImports, pluginOptions) {
   const raw = createImports([baseImport, ...themeImports]);
   const { css, messages } = processor.process(raw, { from: baseImport });
   const { tokens, hash } = messages.find((m) => m.plugin === 'postcss-shadow-styles');
-  // temporal fix after adding `postcss-hover-media-feature` package
-  // const purgedStyles = execPurgeCss(css, pluginOptions.purgeCSS);
   const data = {
-    // css: purgedStyles,
     css,
     tokens,
     hash,
@@ -95,4 +70,3 @@ module.exports = function (baseImport, themeImports, pluginOptions) {
   return data;
 };
 module.exports.PLACEHOLDER_REPLACER = postcss.PLACEHOLDER_REPLACER;
-module.exports.execPurgeCss = execPurgeCss;

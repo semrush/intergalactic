@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@semcore/babel-plugin-styles": "^1.7",
-    "css-purge": "3.1.8",
     "find-package-json": "1.2.0",
     "semver": "7.3.5",
     "string-hash": "1.1.3",

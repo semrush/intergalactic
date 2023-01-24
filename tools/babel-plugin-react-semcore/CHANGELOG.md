@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.6.3] - 2023-01-25
+## [4.7.0] - 2023-01-25
 
-### Fixed
+### Changed
 
-- Temporal fix after adding `postcss-hover-media-feature` package: `css-purge` package was disabled.
+- Removed `css-purge` package due to build errors and lack of support from maintainers.
 
 ## [4.6.2] - 2023-01-24
 
