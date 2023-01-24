@@ -91,6 +91,14 @@ SCellHead[use='secondary'] {
   border-color: var(--intergalactic-border-table-accent, #a9abb6);
 }
 
+SCellHead[borderLeft] {
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SCellHead[borderRight] {
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
 SCellHead[sorting] {
   cursor: pointer;
 
@@ -99,7 +107,7 @@ SCellHead[sorting] {
   }
 
   &:hover SSortWrapper {
-    opacity: 1;
+    display: block;
   }
 }
 
@@ -115,24 +123,30 @@ SCellHead[active] SCellHeadIconDesc {
   position: relative;
 }
 
+SColumn[sortIconFloat] SSortWrapper {
+  width: 0;
+  flex-basis: 0;
+}
+
 SCellHead[active] SSortWrapper {
+  display: block;
   width: 16px;
+  flex-basis: 20px;
   margin-left: var(--intergalactic-spacing-1x, 4px);
-  opacity: 1;
 }
 
 SSortWrapper {
-  flex-shrink: 999;
+  display: none;
+  flex-shrink: 99999;
   position: relative;
-  width: 20px;
+  flex-basis: 20px;
   height: 0;
-  opacity: 0;
 }
 
 SSortWrapper:before {
   content: '';
   position: absolute;
-  top: 0;
+  top: -2px;
   right: 0;
   width: 20px;
   height: 16px;

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.11] - 2023-01-20
+
+### Fixed
+
+- Fix floating sort icon to right align.
+
 ## [3.3.10] - 2023-01-20
 
 ### Changed
@@ -9,10 +15,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/scroll-area` [4.2.6 ~> 4.2.7]).
 
 ## [3.3.7] - 2023-01-11
-
-## [3.3.6] - 2023-01-10
-
-## [3.3.5] - 2023-01-09
 
 ### Changed
 
