@@ -2,9 +2,9 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.2.0] - 2023-01-24
+## [1.1.9] - 2023-01-24
 
-### Added
+### Fixed
 
 - Stopped showing tooltip if text is not truncated.
 
