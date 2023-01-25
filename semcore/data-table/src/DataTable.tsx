@@ -291,7 +291,7 @@ class RootDefinitionTable extends Component<AsProps> {
           sort[0] === name
             ? sort[1]
             : column?.sortDirection ||
-              (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
+            (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
         props: {
           name,
           flex: flex === 'inherit' ? undefined : flex,
@@ -428,13 +428,7 @@ class RootDefinitionTable extends Component<AsProps> {
                 ...groupedColumns,
               });
             } else if (!exclude[column.name] && !rowsGroupedNames[column.name]) {
-              return {
-                name: column.name,
-                cssVar: column.varWidth,
-                fixed: column.fixed,
-                data: null,
-                cellPropsLayers: cellPropsLayers[column.name] || [],
-              };
+              return undefined;
             }
           })
           .filter((column) => column !== undefined)
