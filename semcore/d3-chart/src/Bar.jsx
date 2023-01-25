@@ -75,6 +75,7 @@ class BarRoot extends Component {
       yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
       offset[1] -
       (height <= hMin ? hMin : 0);
+    // const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1] - (Object.is(d[y], 0) ? hMin : 0);
     const barX = xScale(d[x]) + offset[0];
     const handleClick = (event) => onClick?.(d, event);
     const width = widthProps || getBandwidth(xScale);

@@ -366,6 +366,32 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('should render the minimum height for bars with a height of zero and close to zero', async () => {
+    const data = [
+      { time: 0, stack1: 0 },
+      { time: 1, stack1: 0.05 },
+      { time: 2, stack1: 0.1 },
+      { time: 3, stack1: 0.5 },
+      { time: 4, stack1: 1 },
+      { time: 5, stack1: 10 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should render StackBar chart correctly', async () => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
