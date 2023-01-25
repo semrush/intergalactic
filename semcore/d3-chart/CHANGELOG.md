@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed and changed minimal height of `Bar`.
+- Fixed and changed minimum height of `Bar`.
 
 ## [2.8.8] - 2023-01-23
 

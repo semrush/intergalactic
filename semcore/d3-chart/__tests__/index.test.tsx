@@ -349,7 +349,7 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should not render Bar if radius more than bar height', async () => {
+  test('should render Bar with radius = height if radius > height', async () => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
@@ -359,7 +359,7 @@ describe('Bar chart', () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Bar x="time" y="stack1" duration={0} r="15" />
+        <Bar x="time" y="stack1" duration={0} r={15} />
       </Plot>
     );
 
