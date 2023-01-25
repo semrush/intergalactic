@@ -10,3 +10,4 @@ vue-semcore/**
 crowdin.yml
 tools/generator-component/**
 pnpm-lock.yaml
+comparison
