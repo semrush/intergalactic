@@ -8,6 +8,15 @@ import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
+const calcPartHeight = (barHeight, minHeight, height) => {
+  // need for the correct rendering of negative values (bar should be under Y-axis)
+  if (barHeight <= 0) {
+    return Object.is(barHeight, 0) ? minHeight : 0;
+  }
+  // need for the correct rendering of the minimum positive values
+  return height <= minHeight ? minHeight : 0;
+};
+
 class BarRoot extends Component {
   static displayName = 'Bar';
   static style = style;
@@ -74,8 +83,7 @@ class BarRoot extends Component {
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
       offset[1] -
-      (height <= hMin ? hMin : 0);
-    // const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1] - (Object.is(d[y], 0) ? hMin : 0);
+      calcPartHeight(d[y], hMin, height);
     const barX = xScale(d[x]) + offset[0];
     const handleClick = (event) => onClick?.(d, event);
     const width = widthProps || getBandwidth(xScale);

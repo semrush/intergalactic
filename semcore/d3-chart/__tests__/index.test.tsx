@@ -370,10 +370,11 @@ describe('Bar chart', () => {
     const data = [
       { time: 0, stack1: 0 },
       { time: 1, stack1: 0.05 },
-      { time: 2, stack1: 0.1 },
-      { time: 3, stack1: 0.5 },
-      { time: 4, stack1: 1 },
-      { time: 5, stack1: 10 },
+      { time: 2, stack1: 0.5 },
+      { time: 3, stack1: 1 },
+      { time: 4, stack1: 10 },
+      { time: 5, stack1: -0.05 },
+      { time: 6, stack1: -0 },
     ];
 
     const component = (
