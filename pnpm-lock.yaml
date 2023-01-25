@@ -1842,6 +1842,7 @@ importers:
       fs-extra: 9.1.0
       postcss: 8.2.13
       postcss-color-mod-function: 3.0.3
+      postcss-combine-duplicated-selectors: ^10.0.3
       postcss-hover-media-feature: ^1.0.2
       postcss-import-sync2: 1.2.0
       postcss-preset-env: 6.7.0
@@ -1858,6 +1859,7 @@ importers:
       fs-extra: 9.1.0
       postcss: 8.2.13
       postcss-color-mod-function: 3.0.3
+      postcss-combine-duplicated-selectors: 10.0.3_postcss@8.2.13
       postcss-hover-media-feature: 1.0.2_postcss@8.2.13
       postcss-import-sync2: 1.2.0_postcss@8.2.13
       postcss-preset-env: 6.7.0
@@ -14615,7 +14617,7 @@ packages:
       postcss: ^8.2.2
     dependencies:
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -14726,6 +14728,16 @@ packages:
       postcss: 8.2.13
       postcss-value-parser: 4.2.0
     dev: true
+
+  /postcss-combine-duplicated-selectors/10.0.3_postcss@8.2.13:
+    resolution: {integrity: sha512-IP0BmwFloCskv7DV7xqvzDXqMHpwdczJa6ZvIW8abgHdcIHs9mCJX2ltFhu3EwA51ozp13DByng30+Ke+eIExA==}
+    engines: {node: ^10.0.0 || ^12.0.0 || >=14.0.0}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.11
+    dev: false
 
   /postcss-convert-values/4.0.1:
     resolution: {integrity: sha512-Kisdo1y77KUC0Jmn0OXU/COOJbzM8cImvw1ZFsBgBgMgb1iL23Zs/LXRe3r+EZqM3vGYKdQ2YJVQ5VkJI+zEJQ==}
@@ -15074,7 +15086,7 @@ packages:
       caniuse-api: 3.0.0
       cssnano-utils: 3.1.0_postcss@8.2.13
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
     dev: true
 
   /postcss-minify-font-values/4.0.2:
@@ -15158,7 +15170,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
     dev: true
 
   /postcss-nested/5.0.5_postcss@8.2.13:
@@ -15556,7 +15568,6 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
-    dev: false
 
   /postcss-svgo/4.0.3:
     resolution: {integrity: sha512-NoRbrcMWTtUghzuKSoIm6XV+sJdvZ7GZSc3wdBN0W19FTtp2ko8NqLsgoh/m9CzNhU3KLPvQmjIwtaNFkaFTvw==}
@@ -15594,7 +15605,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
     dev: true
 
   /postcss-value-parser/3.3.1:
@@ -17685,7 +17696,7 @@ packages:
     dependencies:
       browserslist: 4.21.4
       postcss: 8.2.13
-      postcss-selector-parser: 6.0.10
+      postcss-selector-parser: 6.0.11
     dev: true
 
   /stylis/4.1.2:
