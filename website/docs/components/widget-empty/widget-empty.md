@@ -77,8 +77,8 @@ Use this state, when for some reason there is no data or system cannot show it. 
 
 | Wide widget                                       | Medium widget                                           | Text                                                           |
 | ------------------------------------------------- | ------------------------------------------------------- | -------------------------------------------------------------- |
-| ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | Title: "We have no data to show". Description: {Hint message}. |
-| ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | Title: "We have no data to show". Description: {Hint message}. |
+| ![big widget empty](static/big-empty.png)         | ![medium widget empty](static/medium-empty.png)         | Title: "Nothing found". Description: {Hint message}. |
+| ![big widget empty](static/big-empty-filters.png) | ![medium widget empty](static/medium-empty-filters.png) | Title: "Nothing found". Description: {Hint message}. |
 
 > **Be brief**. Do not write too much text in these states. Two or three short sentences are enough.
 
@@ -149,7 +149,7 @@ Show the following instead of the data in this case:
 
 | Wide widget                               | Medium widget                                   | Text                                                                                                                                           |
 | ----------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![big widget error](static/big-error.png) | ![medium widget error](static/medium-error.png) | Title: "Something went wrong". Description: "Don't worry though, we are aware of the issue and are working to fix it. Please try again later". |
+| ![big widget error](static/big-error.png) | ![medium widget error](static/medium-error.png) | Title: "Something went wrong". Description: "We are aware of the issue and are working to fix it. Please try again later". |
 
 If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
@@ -184,7 +184,7 @@ Show the following instead of the data in this case:
 
 | Wide widget                                 | Medium widget                                     | Text                                                                                                                                              |
 | ------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![big widget error](static/big-error-2.png) | ![medium widget error](static/medium-error-2.png) | Title: "Something went wrong". Description: "Try {filtering/searching/sorting} data again. If the problem persists, please contact us at {email}" |
+| ![big widget error](static/big-error-2.png) | ![medium widget error](static/medium-error-2.png) | Title: "Something went wrong". Description: "Please try again later. If the problem persists, contact us at {email}" |
 
 If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
