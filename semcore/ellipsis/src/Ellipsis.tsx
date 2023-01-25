@@ -27,38 +27,41 @@ type AsPropsMiddle = {
   containerRef?: RefObject<HTMLElement | null>;
 };
 
+const createMeasurerElement = (element: HTMLElement) => {
+  const styleElement = window.getComputedStyle(element, null);
+  const temporaryElement = document.createElement('temporary-block');
+  temporaryElement.style.display = 'inline-block';
+  temporaryElement.style.padding = '0';
+  temporaryElement.style.position = 'absolute';
+  temporaryElement.style.right = '150%';
+  temporaryElement.style.bottom = '150%';
+  temporaryElement.style.visibility = 'hidden';
+  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
+  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
+  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
+
+  temporaryElement.innerHTML = element.innerHTML;
+  return temporaryElement;
+};
 
 function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boolean {
+  if (!element) return false;
 
-  if (element && !multiline) {
-    const { width: currentWidth } = element.getBoundingClientRect();
-
-    element.style.width = 'max-content';
-    element.style.overflow = 'initial';
-
-    const { width: initialWidth } = element.getBoundingClientRect();
-
-    element.style.width = '';
-    element.style.overflow = '';
-
-    return currentWidth < initialWidth;
+  const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
+  const measuringElement = createMeasurerElement(element);
+  let currentSize, initialSize;
+  document.body.appendChild(measuringElement);
+  if (multiline) {
+    currentSize = currentHeight;
+    measuringElement.style.width = `${currentWidth}px`;
+    initialSize = measuringElement.getBoundingClientRect().height;
+  } else {
+    currentSize = currentWidth;
+    measuringElement.style.whiteSpace = 'nowrap';
+    initialSize = measuringElement.getBoundingClientRect().width;
   }
-
-  if (element && multiline) {
-    const { height: currentHeight } = element.getBoundingClientRect();
-
-    element.style.webkitLineClamp = 'unset';
-    element.style.overflow = 'initial';
-
-    const { height: initialHeight } = element.getBoundingClientRect();
-
-    element.style.webkitLineClamp = '';
-    element.style.overflow = '';
-
-    return currentHeight < initialHeight;
-  }
-
-  return false;
+  document.body.removeChild(measuringElement);
+  return currentSize < initialSize;
 }
 
 
@@ -76,12 +79,13 @@ class RootEllipsis extends Component<AsProps> {
 
   textRef = React.createRef<HTMLElement>();
 
-  handlerVisibleChange = (visible: boolean) => {
+  showTooltip() {
     const { maxLine = 1 } = this.asProps;
-    const $text = this.textRef.current;
-    if (isTextOverflowing($text, maxLine > 1)) {
-      this.setState({ visible });
-    }
+    return isTextOverflowing(this.textRef.current, maxLine > 1)
+  };
+
+  handlerVisibleChange = (visible: boolean) => {
+    this.setState({ visible: visible && this.showTooltip() });
   };
 
   render() {
@@ -134,7 +138,6 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     dateSpan.innerHTML = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
-    dateSpan.remove();
 
     setDimension({
       fontSize: window
@@ -143,6 +146,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         .getPropertyValue('font-size'),
       symbolWidth: rect.width,
     });
+    document.body.removeChild(dateSpan);
   }, []);
 
   const STail = 'span';
