@@ -27,6 +27,15 @@ pluginTester({
       },
     },
     {
+      title: 'Optimizes CSS',
+      fixture: absolutePath('__fixtures__/theme/optimize-css/index.js'),
+      outputFixture: absolutePath('__fixtures__/theme/optimize-css/index.expected.js'),
+      pluginOptions: {
+        theme: absolutePath('__fixtures__/__theme_fixture__'),
+        findPackage,
+      },
+    },
+    {
       title: 'Applies semcore theme',
       fixture: absolutePath('__fixtures__/theme/semcore-theme/color.js'),
       outputFixture: absolutePath('__fixtures__/theme/semcore-theme/color.expected.js'),
