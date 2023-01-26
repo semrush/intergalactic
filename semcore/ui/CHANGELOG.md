@@ -1,3 +1,14 @@
+## [13.6.1] - 2023-01-26
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed and changed minimum height of `Bar`.
+- **Fixed** Fixed definition of users locale.
+
+### @semcore/data-table
+
+- **Fixed** Fix floating sort icon to right align.
+
 ## [13.6.0] - 2023-01-20
 
 ### @semcore/d3-chart
