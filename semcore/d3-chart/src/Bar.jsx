@@ -8,6 +8,15 @@ import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
+const calcPartBarY = (y, minHeight, height) => {
+  // need for the correct rendering of negative values (bar should be under Y-axis)
+  if (y <= 0) {
+    return Object.is(y, 0) ? minHeight : 0;
+  }
+  // need for the correct rendering of the minimum positive values
+  return height <= minHeight ? minHeight : 0;
+};
+
 class BarRoot extends Component {
   static displayName = 'Bar';
   static style = style;
@@ -17,7 +26,7 @@ class BarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
-    hMin: 4,
+    hMin: 2,
   };
 
   getBackgroundProps(props, index) {
@@ -67,10 +76,15 @@ class BarRoot extends Component {
     } = this.asProps;
 
     const [xScale, yScale] = scale;
-    const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1] - (Object.is(d[y], 0) ? hMin : 0);
+    const absHeight = Math.abs(
+      yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
+    );
+    const height = Math.max(absHeight, hMin);
+    const barY =
+      yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
+      offset[1] -
+      calcPartBarY(d[y], hMin, height);
     const barX = xScale(d[x]) + offset[0];
-    const height =
-      Math.abs(yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0))) || hMin;
     const handleClick = (event) => onClick?.(d, event);
     const width = widthProps || getBandwidth(xScale);
     const dSvg = getRect({
@@ -152,7 +166,7 @@ function Background(props) {
 }
 
 function getRect({ x, y, width, height, radius, position }) {
-  if (height <= radius) return '';
+  if (height < radius) radius = height;
   if (radius) {
     if (position === 'top')
       return roundedPath(x, y, width, height, radius, true, true, false, false);
