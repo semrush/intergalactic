@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.0] - 2023-01-26
+
+### Added
+
+- Added `postcss-combine-duplicated-selectors` package to optimize CSS files.
+
 ## [1.7.0] - 2023-01-20
 
 ### Changed

@@ -103,14 +103,12 @@ function getThemeCssPathsList(theme) {
  *   theme: packageName (@semcore/theme-sellerly),
  *   score: string,
  *   postcss: Object,
- *   purgeCSS: Object, purgeCSS config object - http://rbtech.github.io/css-purge/,
  *   verbose: writes plugin's output to stdout
  * }
  */
 const DEFAULT_OPTIONS = {
   scope: '@semcore',
   postcss: {},
-  purgeCSS: {},
   findPackage: (filename) => {
     return finderPackageJson(filename).next().value;
   },

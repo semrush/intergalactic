@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.7.0] - 2023-01-26
+
+### Removed
+
+- Removed `css-purge` package due to build errors and lack of support from maintainers.
+
 ## [4.6.2] - 2023-01-24
 
 ### Changed

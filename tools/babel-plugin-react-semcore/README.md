@@ -37,4 +37,3 @@ Webpack:
 | Option   | Type                            | Description                                                                                                                      |
 | -------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | theme    | `string` or `string[]`          | This option applies theme to `@semcore` components.                                                                              |
-| purgeCSS | `Object` = `{ shorten: false }` | This option forwards options to [css-purge](http://rbtech.github.io/css-purge/) tool, which removes duplicates from built styles |
