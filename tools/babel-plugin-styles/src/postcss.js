@@ -4,6 +4,7 @@ const atImport = require('postcss-import-sync2');
 const cssnano = require('cssnano');
 const postcssColorMod = require('postcss-color-mod-function');
 const postcssHoverMediaFeature = require('postcss-hover-media-feature');
+const combineSelectors = require('postcss-combine-duplicated-selectors');
 
 const inlineCssVariables = require('./inline-css-variables');
 const shadowStyles = require('./postcss-shadow-styles');
@@ -51,6 +52,7 @@ module.exports = function (options) {
       ),
     ),
     postcssHoverMediaFeature(),
+    combineSelectors(),
   ];
   return postcss(processorPlugins);
 };

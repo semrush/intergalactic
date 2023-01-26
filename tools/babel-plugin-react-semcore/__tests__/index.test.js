@@ -27,12 +27,11 @@ pluginTester({
       },
     },
     {
-      title: 'Applies purgeCSS options',
-      fixture: absolutePath('__fixtures__/theme/purgeCSS/index.js'),
-      outputFixture: absolutePath('__fixtures__/theme/purgeCSS/index.expected.js'),
+      title: 'Optimizes CSS',
+      fixture: absolutePath('__fixtures__/theme/optimize-css/index.js'),
+      outputFixture: absolutePath('__fixtures__/theme/optimize-css/index.expected.js'),
       pluginOptions: {
         theme: absolutePath('__fixtures__/__theme_fixture__'),
-        purgeCSS: { shorten: true },
         findPackage,
       },
     },
