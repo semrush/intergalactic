@@ -42,7 +42,7 @@ function walkRule(nodes = [], parentNode, generateClassName, tokens) {
 
 function walkVar(nodes, hash, variables) {
   nodes.forEach((node) => {
-    if (node.type === 'word' && /^--/.test(node.value)) {
+    if (node.type === 'word' && /^--(?!intergalactic-)/.test(node.value)) {
       variables[node.value] = node.value = `${node.value}_${hash}`;
     }
     if (node.nodes?.length) {
@@ -132,7 +132,6 @@ module.exports = (opts) => {
         Declaration(Declaration) {
           if (!Declaration[processed]) {
             if (Declaration.value.includes('var(')) {
-              if (Declaration.value.includes('var(--intergalactic-')) return;
               const rootNode = ValueParser(Declaration.value);
               walkVar(rootNode.nodes, hash, tokens);
               Declaration.value = rootNode.toString();

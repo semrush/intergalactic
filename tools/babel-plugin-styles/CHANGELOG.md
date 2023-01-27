@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.8.1] - 2023-01-27
+
+### Fixed
+
+- Fixed variable transformation error when using the special name `--intergalactic-*`.
+
 ## [1.8.0] - 2023-01-26
 
 ### Added
