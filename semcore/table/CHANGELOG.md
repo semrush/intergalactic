@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.12] - 2023-01-26
+
+### Changed
+
+- Changed bottom border color of header row as in documentation.
+
 ## [3.3.11] - 2023-01-20
 
 ### Fixed

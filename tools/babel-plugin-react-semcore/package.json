@@ -1,6 +1,6 @@
 {
   "name": "@semcore/babel-plugin-react-semcore",
-  "version": "4.6.2",
+  "version": "4.7.1",
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@semcore/babel-plugin-styles": "^1.7",
-    "css-purge": "3.1.8",
     "find-package-json": "1.2.0",
     "semver": "7.3.5",
     "string-hash": "1.1.3",

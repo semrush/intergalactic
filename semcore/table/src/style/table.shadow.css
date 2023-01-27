@@ -12,7 +12,7 @@ thead SRow {
   border: none;
 
   &:last-child {
-    border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
+    border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   }
 }
 

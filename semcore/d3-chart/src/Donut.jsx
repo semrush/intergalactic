@@ -47,7 +47,7 @@ function transitionRadiusPie({ data, selector, duration, innerRadius, outerRadiu
     .selection()
     .select(selector)
     .interrupt()
-    .transition(t)
+    .transition()
     .duration(duration)
     .attrTween('d', function() {
       const [min, max] = outerRadiusMinMax;

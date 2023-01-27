@@ -7,12 +7,12 @@ var _ref =
     /*__reshadow_css_start__*/
     (__css__(
       /*__inner_css_start__*/
-      '.___SButton_1hjym_gg_{padding:0 20px;background:purple}.___SButton_1hjym_gg_._theme_default_1hjym_gg_{background:#bada55}',
-      '1hjym_gg_',
+      '.___SButton_c5m54_gg_{padding:0 20px;background:purple}.___SButton_c5m54_gg_._theme_default_c5m54_gg_{background:red;background:#bada55}',
+      'c5m54_gg_',
     ),
     {
-      __SButton: `___SButton_1hjym_gg_`,
-      _theme_default: `_theme_default_1hjym_gg_`,
+      __SButton: `___SButton_c5m54_gg_`,
+      _theme_default: `_theme_default_c5m54_gg_`,
     }),
   styles = _extends({}, _ref);
 

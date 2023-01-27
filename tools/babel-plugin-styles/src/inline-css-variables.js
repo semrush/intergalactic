@@ -120,6 +120,7 @@ module.exports = () => {
         Declaration: (declaration) => {
           if (!declaration[processed]) {
             if (declaration.value.includes('var(')) {
+              // This is bug :-(
               if (declaration.value.includes('var(--intergalactic-')) return;
               declaration.value = transformValueAST(
                 valuesParser(declaration.value),
