@@ -27,6 +27,44 @@ type AsPropsMiddle = {
   containerRef?: RefObject<HTMLElement | null>;
 };
 
+const createMeasurerElement = (element: HTMLElement) => {
+  const styleElement = window.getComputedStyle(element, null);
+  const temporaryElement = document.createElement('temporary-block');
+  temporaryElement.style.display = 'inline-block';
+  temporaryElement.style.padding = '0';
+  temporaryElement.style.position = 'absolute';
+  temporaryElement.style.right = '150%';
+  temporaryElement.style.bottom = '150%';
+  temporaryElement.style.visibility = 'hidden';
+  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
+  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
+  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
+
+  temporaryElement.innerHTML = element.innerHTML;
+  return temporaryElement;
+};
+
+function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boolean {
+  if (!element) return false;
+
+  const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
+  const measuringElement = createMeasurerElement(element);
+  let currentSize, initialSize;
+  document.body.appendChild(measuringElement);
+  if (multiline) {
+    currentSize = currentHeight;
+    measuringElement.style.width = `${currentWidth}px`;
+    initialSize = measuringElement.getBoundingClientRect().height;
+  } else {
+    currentSize = currentWidth;
+    measuringElement.style.whiteSpace = 'nowrap';
+    initialSize = measuringElement.getBoundingClientRect().width;
+  }
+  document.body.removeChild(measuringElement);
+  return currentSize < initialSize;
+}
+
+
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
   static style = style;
@@ -35,10 +73,26 @@ class RootEllipsis extends Component<AsProps> {
     tooltip: true,
   };
 
+  state = {
+    visible: false,
+  };
+
+  textRef = React.createRef<HTMLElement>();
+
+  showTooltip() {
+    const { maxLine = 1 } = this.asProps;
+    return isTextOverflowing(this.textRef.current, maxLine > 1)
+  };
+
+  handlerVisibleChange = (visible: boolean) => {
+    this.setState({ visible: visible && this.showTooltip() });
+  };
+
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
     const { styles, Children, maxLine, tooltip, trim, containerRect, containerRef } = this.asProps;
+    const { visible } = this.state;
     const text = reactToText(getOriginChildren(Children));
 
     if (trim === 'middle') {
@@ -54,8 +108,8 @@ class RootEllipsis extends Component<AsProps> {
     }
     if (tooltip) {
       return sstyled(styles)(
-        <SContainer interaction="hover" title={text}>
-          <SEllipsis render={Box} maxLine={maxLine}>
+        <SContainer interaction='hover' title={text} visible={visible} onVisibleChange={this.handlerVisibleChange}>
+          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
             <Children />
           </SEllipsis>
         </SContainer>,
@@ -84,7 +138,6 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     dateSpan.innerHTML = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
-    dateSpan.remove();
 
     setDimension({
       fontSize: window
@@ -93,6 +146,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         .getPropertyValue('font-size'),
       symbolWidth: rect.width,
     });
+    document.body.removeChild(dateSpan);
   }, []);
 
   const STail = 'span';
@@ -106,7 +160,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   if (tooltip) {
     return sstyled(styles)(
       <SContainerMiddle
-        interaction="hover"
+        interaction={text.length > displayedSymbols ? 'hover' : 'none'}
         title={text}
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
