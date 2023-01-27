@@ -373,8 +373,7 @@ class RootDefinitionTable extends Component<AsProps> {
             groupData: { [columnName: string]: unknown };
           };
         } = {};
-        const groupedColumns: { [columnname: string]: true } = {};
-        const ungroupedColumns: { [columnname: string]: true } = {};
+        const columnsWithoutRowGroup: { [columnname: string]: true } = {};
         for (const rowKey in row) {
           const columnNames = rowKey.split('/');
           if (columnNames.length >= 2) {
@@ -383,16 +382,19 @@ class RootDefinitionTable extends Component<AsProps> {
                 groupedColumns: columnNames,
                 groupData: row[rowKey] as { [columnName: string]: unknown },
               };
-              groupedColumns[rowKey] = true;
+              columnsWithoutRowGroup[column] = true;
             }
           } else {
-            ungroupedColumns[rowKey] = true;
+            columnsWithoutRowGroup[rowKey] = true;
           }
         }
+
         const rowsGroup = row[ROW_GROUP] || [];
         const rowsGroupedNames = Object.fromEntries(
           rowsGroup
             .map((subRow) => Object.keys(subRow))
+            .flat()
+            .map(key => key.split('/'))
             .flat()
             .map((key) => [key, true]),
         );
@@ -424,14 +426,21 @@ class RootDefinitionTable extends Component<AsProps> {
               // TODO: make it work not only with first group
               isGroup = true;
               return parseData(rowsGroup, {
-                ...ungroupedColumns,
-                ...groupedColumns,
+                ...exclude,
+                ...columnsWithoutRowGroup,
               });
             } else if (!exclude[column.name] && !rowsGroupedNames[column.name]) {
-              return undefined;
+              // add empty cell if it is not present in data
+              return {
+                name: column.name,
+                cssVar: column.varWidth,
+                fixed: column.fixed,
+                data: null,
+                cellPropsLayers: cellPropsLayers[column.name] || [],
+              };
             }
           })
-          .filter((column) => column !== undefined)
+          .filter((column) => column)
           .map((column) => column!);
 
         cells.flatRowData = row;
@@ -454,7 +463,7 @@ class RootDefinitionTable extends Component<AsProps> {
         render={Box}
         __excludeProps={['data']}
         ref={this.tableRef}
-        role="table"
+        role='table'
         aria-rowcount={(data ?? []).length}
       >
         <Children />
