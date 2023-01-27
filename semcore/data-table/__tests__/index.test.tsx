@@ -707,6 +707,58 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Row and Column merging', async () => {
+    const data = [
+      {
+        keyword: 'ebay buy',
+        [ROW_GROUP]: [
+          {
+            ['kd/cpc']: '77.8',
+            vol: '32,500,000',
+          },
+          {
+            ['kd/cpc']: '-',
+            vol: 'n/a',
+          },
+          {
+            kd: '75.89',
+            cpc: '$0',
+            vol: '21,644,290',
+          },
+        ],
+      },
+      {
+        keyword: 'www.ebay.com',
+        [ROW_GROUP]: [
+          {
+            ['kd/cpc']: '11.2',
+            vol: '65,457,920',
+          },
+          {
+            kd: '10',
+            cpc: '$0.65',
+            vol: '47,354,640',
+          },
+        ],
+      },
+    ];
+
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head>
+            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="kd" children="KD,%" />
+            <DataTable.Column name="cpc" children="CPC" />
+            <DataTable.Column name="vol" children="Vol." />
+          </DataTable.Head>
+          <DataTable.Body />
+        </DataTable>
+      </div>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('Secondary table', async () => {
     const component = (
       <div style={{ width: 800 }}>

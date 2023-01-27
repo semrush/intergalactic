@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.7.10] - 2023-01-27
+## [3.7.11] - 2023-01-27
+
+### Fixed
+
+- Fixed view of cells when using cell grouping and columns at the same time.
 
 ## [3.7.9] - 2023-01-20
 
