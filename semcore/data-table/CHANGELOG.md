@@ -2,6 +2,10 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.10] - 2023-01-27
+
+### Fixed scrollbar display when column is fixed.
+
 ## [3.7.9] - 2023-01-20
 
 ### Fixed
