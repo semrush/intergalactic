@@ -45,7 +45,7 @@
   white-space: break-spaces;
   transition: color 0.5s;
 }
-.categoryContainer:hover .categoryItem,
+.categoryContainer:hover a:not(.categoryItemDisabled),
 .categoryContainer:hover .categoryIcon {
   color: #ff622d;
 }
