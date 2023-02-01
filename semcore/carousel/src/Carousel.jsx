@@ -105,7 +105,8 @@ class CarouselRoot extends Component {
           };
         },
         () => {
-          if (index !== 0) {
+          const { items } = this.state;
+          if (items.length < index && index !== 0) {
             this.slideToValue(this.indexIndicator, index);
           }
         },
