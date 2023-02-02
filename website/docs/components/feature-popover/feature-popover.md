@@ -123,8 +123,8 @@ The element appears according to the timings you prescribe. It is hidden only by
 ### General recommendations
 
 - Use FeaturePopover only to display promotional or training information. **The purpose of FeaturePopover is to emphasize a function and/or explain why the user needs it, as well as to give reasons to use it.**
-- Remember the user path and the context, in which he will see FeaturePopover. Show FeaturePopover ad hoc and do not overload the message with unnecessary information.
-- Always allow the user to close FeaturePopover. Do not force the user to use a feature if he does not need it now.
+- Remember the user path and the context, in which they will see FeaturePopover. Show FeaturePopover ad hoc and do not overload the message with unnecessary information.
+- Always allow the user to close FeaturePopover. Do not force the user to use a feature if they do not need it now.
 - Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to `Info` icons, fake links and so on. Yes, your new feature is very cool, but keep your temper in check. 😏
 - Make sure that FeaturePopover does not cover important information that the user needs in the context of use.
 
