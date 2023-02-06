@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.12] - 2023-02-06
+
+### Fixed
+
+- Fixed display `Card.Title` with `Ellipsis` component.
+
 ## [4.2.11] - 2023-01-20
 
 ### Changed

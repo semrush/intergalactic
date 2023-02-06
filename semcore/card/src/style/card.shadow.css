@@ -12,7 +12,7 @@ SCard {
 }
 
 SWrapper {
-  display: inline-flex;
+  display: flex;
   align-items: center;
 }
 
