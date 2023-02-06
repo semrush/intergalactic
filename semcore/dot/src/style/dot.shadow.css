@@ -19,20 +19,20 @@ SDot[size='xl'] {
   /* disable-tokens-validator */
   padding: 3px 4px;
   /* disable-tokens-validator */
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 SDot[size='l'] {
   height: 12px;
   min-width: 12px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: 100%;
 }
 
 SDot[size='m'] {
   height: 6px;
   min-width: 6px;
   /* disable-tokens-validator */
-  border-radius: 3px;
+  border-radius: 100%;
 }
 
 SDot[up] {
