@@ -4,6 +4,8 @@ fileSource: utils
 tabName: Tokens
 ---
 
+> Design tokens are available for use from @semcore/ui@13.5.0 version
+
 @## Description
 
 Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.
