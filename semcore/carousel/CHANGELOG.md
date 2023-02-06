@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.2.11] - 2023-02-01
 
-### Fixed 
+### Fixed
 
 - Fixed freezing when slide index is greater than number of slides.
 
@@ -13,12 +13,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
-
-## [2.2.7] - 2023-01-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [2.2.1] - 2022-12-13
 
