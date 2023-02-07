@@ -13,6 +13,7 @@
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js ./searchIndexUpload.ts"
   },
   "dependencies": {
+    "@semrush-amplitude/amplitude-client": "^0.3.5",
     "algoliasearch": "4.8.4",
     "classnames": "2.2.6",
     "d3-scale": "3.3.0",
