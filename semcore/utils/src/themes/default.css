@@ -394,11 +394,11 @@
   /* Youtube brand color. */
   --intergalactic-brand-youtube: #ff0000;
   /* Facebook brand color. */
-  --intergalactic-brand-facebook: #3b5998;
+  --intergalactic-brand-facebook: #1877f2;
   /* LinkedIn brand color. */
-  --intergalactic-brand-linkedIn: #1a7ab2;
+  --intergalactic-brand-linkedIn: #0a66c2;
   /* Twitter brand color. */
-  --intergalactic-brand-twitter: #2bafeb;
+  --intergalactic-brand-twitter: #1d9bf0;
   /* Google brand color for the link. */
   --intergalactic-brand-google-blue: #1a0dab;
   /* Google green brand color for the link. */
@@ -495,14 +495,28 @@
   --intergalactic-spacing-24x: 96px;
   /* 120px */
   --intergalactic-spacing-30x: 120px;
-  /* Use only for checkbox and placeholder addons. */
   --intergalactic-rounded-small: 4px;
-  /* Use for all inputs and controls, widgets. */
   --intergalactic-rounded-medium: 6px;
-  /* Use for all inputs and controls, widgets. */
   --intergalactic-rounded-large: 12px;
-  /* Use for Tag. */
   --intergalactic-rounded-extra-large: 24px;
+  /* Use for rounding addons and small controls like Checkbox. */
+  --intergalactic-addon-rounded: 4px;
+  /* Use for rounding Badge. */
+  --intergalactic-badge-rounded: 6px;
+  /* Use for rounding Counter. */
+  --intergalactic-counter-rounded: 12px;
+  /* Use for rounding Tag. */
+  --intergalactic-tag-rounded: 12px;
+  /* Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc. */
+  --intergalactic-control-rounded: 6px;
+  /* Use for rounding bars: ProgressBar, SliderBar, etc. */
+  --intergalactic-progress-bar-rounded: 6px;
+  /* Use for rounding surfaces like Card, blocks, widgets, Notice, etc. */
+  --intergalactic-surface-rounded: 6px;
+  /* Use for rounding all kinds of poppers and dropdowns. */
+  --intergalactic-popper-rounded: 6px;
+  /* Use for rounding modal dialogs. */
+  --intergalactic-modal-rounded: 12px;
   /* Use for the disabled state of all kind of the controls and elements. */
   --intergalactic-disabled-opacity: 0.3;
   /* Extra small screens (small phones). */

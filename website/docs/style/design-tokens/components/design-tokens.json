@@ -1924,24 +1924,24 @@
   {
     "name": "--intergalactic-brand-facebook",
     "type": "color",
-    "rawValue": "#3b5998",
-    "computedValue": "#3b5998",
+    "rawValue": "#1877F2",
+    "computedValue": "#1877F2",
     "description": "Facebook brand color.",
     "components": []
   },
   {
     "name": "--intergalactic-brand-linkedIn",
     "type": "color",
-    "rawValue": "#1a7ab2",
-    "computedValue": "#1a7ab2",
+    "rawValue": "#0A66C2",
+    "computedValue": "#0A66C2",
     "description": "LinkedIn brand color.",
     "components": []
   },
   {
     "name": "--intergalactic-brand-twitter",
     "type": "color",
-    "rawValue": "#2bafeb",
-    "computedValue": "#2bafeb",
+    "rawValue": "#1D9BF0",
+    "computedValue": "#1D9BF0",
     "description": "Twitter brand color.",
     "components": []
   },
@@ -2737,7 +2737,6 @@
     "type": "borderRadius",
     "rawValue": "4px",
     "computedValue": "4px",
-    "description": "Use only for checkbox and placeholder addons.",
     "components": [
       "checkbox",
       "select"
@@ -2748,7 +2747,6 @@
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "description": "Use for all inputs and controls, widgets.",
     "components": [
       "badge",
       "base-trigger",
@@ -2781,7 +2779,6 @@
     "type": "borderRadius",
     "rawValue": "12px",
     "computedValue": "12px",
-    "description": "Use for all inputs and controls, widgets.",
     "components": [
       "counter",
       "modal",
@@ -2793,11 +2790,82 @@
     "type": "borderRadius",
     "rawValue": "24px",
     "computedValue": "24px",
-    "description": "Use for Tag.",
     "components": [
       "switch",
       "tag"
     ]
+  },
+  {
+    "name": "--intergalactic-addon-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-small}",
+    "computedValue": "4px",
+    "description": "Use for rounding addons and small controls like Checkbox.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-badge-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-medium}",
+    "computedValue": "6px",
+    "description": "Use for rounding Badge.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-counter-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-large}",
+    "computedValue": "12px",
+    "description": "Use for rounding Counter.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-tag-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-large}",
+    "computedValue": "12px",
+    "description": "Use for rounding Tag.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-medium}",
+    "computedValue": "6px",
+    "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-progress-bar-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-medium}",
+    "computedValue": "6px",
+    "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-surface-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-medium}",
+    "computedValue": "6px",
+    "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-popper-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-medium}",
+    "computedValue": "6px",
+    "description": "Use for rounding all kinds of poppers and dropdowns.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-modal-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-large}",
+    "computedValue": "12px",
+    "description": "Use for rounding modal dialogs.",
+    "components": []
   },
   {
     "name": "--intergalactic-disabled-opacity",
