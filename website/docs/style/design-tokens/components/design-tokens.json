@@ -559,7 +559,6 @@
     "computedValue": "#484a54",
     "description": "Hover and active states of the hint link text.",
     "components": [
-      "breadcrumbs",
       "format-text",
       "side-panel",
       "typography"
@@ -790,6 +789,7 @@
     "description": "Inverted version of the neutral primary border. Use it for borders on the dark or color background.",
     "components": [
       "button",
+      "divider",
       "spin",
       "tab-panel"
     ]
@@ -2757,7 +2757,6 @@
       "carousel",
       "d3-chart",
       "date-picker",
-      "dot",
       "drag-and-drop",
       "dropdown",
       "dropdown-menu",
