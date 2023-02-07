@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import FocusLock from 'react-focus-lock';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
-import { FadeInOut, Transform } from '@semcore/animation';
+import { FadeInOut, Slide } from '@semcore/animation';
 import Portal, { PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
@@ -14,13 +14,6 @@ import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 
 import style from './style/side-panel.shadow.css';
-
-const placementTransformMap = {
-  top: ['translate(0, -100%)', 'translate(0, 0)'],
-  right: ['translate(100%, 0)', 'translate(0, 0)'],
-  bottom: ['translate(0, 100%)', 'translate(0, 0)'],
-  left: ['translate(-100%, 0)', 'translate(0, 0)'],
-};
 
 class RootSidePanel extends Component {
   static displayName = 'SidePanel';
@@ -124,12 +117,10 @@ function Overlay(props) {
   return sstyled(props.styles)(<SOverlay render={FadeInOut} />);
 }
 
-const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, ...other }, ref) {
-  return <FocusLock ref={ref} lockProps={other} disabled={disableEnforceFocus} {...other} />;
-});
-
-const TransformWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
-  return <Transform tag={FocusLockWrapper} ref={ref} as={tag} {...other} />;
+const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, tag, ...other }, ref) {
+  return (
+    <FocusLock ref={ref} as={tag} lockProps={other} disabled={disableEnforceFocus} {...other} />
+  );
 });
 
 function Panel(props) {
@@ -147,13 +138,15 @@ function Panel(props) {
     <>
       {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
       <SPanel
-        render={TransformWrapper}
-        tag={Box}
+        render={FocusLockWrapper}
+        tag={Slide}
+        visible={visible}
+        initialAnimation={true}
+        slideOrigin={placement}
         ref={sidebarRef}
         tabIndex={-1}
         returnFocus={true}
         autoFocus={true}
-        transform={placementTransformMap[placement]}
       >
         <PortalProvider value={sidebarRef}>
           {closable && <SidePanel.Close />}

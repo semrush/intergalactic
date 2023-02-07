@@ -46,6 +46,7 @@ SBar {
   background-size: 12px;
   background-color: var(--intergalactic-control-primary-info, #008ff8);
   cursor: pointer;
+  transition: 0.1s width;
 }
 
 SKnob {
@@ -59,6 +60,7 @@ SKnob {
   border: 5px solid var(--intergalactic-control-primary-info, #008ff8);
   cursor: pointer;
   transform: translate(-50%, -50%);
+  transition: 0.1s left;
 
   &:hover {
     border-color: var(--intergalactic-control-primary-info-hover, #006dca);

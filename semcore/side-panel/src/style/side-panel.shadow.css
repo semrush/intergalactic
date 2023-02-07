@@ -57,33 +57,6 @@ SPanel[placement='left'] {
   left: 0;
 }
 
-.panel-right--enter {
-  transform: translate(100%, 0);
-}
-.panel-left--enter {
-  transform: translate(-100%, 0);
-}
-.panel-bottom--enter {
-  transform: translate(0, 100%);
-}
-.panel-right--enter-active,
-.panel-left--enter-active,
-.panel-bottom--enter-active,
-.panel-right--exit,
-.panel-left--exit,
-.panel-bottom--exit {
-  transform: translate(0, 0);
-}
-.panel-right--exit-active {
-  transform: translate(100%, 0);
-}
-.panel-left--exit-active {
-  transform: translate(-100%, 0);
-}
-.panel-bottom--exit-active {
-  transform: translate(0, 100%);
-}
-
 SClose {
   cursor: pointer;
   position: absolute;

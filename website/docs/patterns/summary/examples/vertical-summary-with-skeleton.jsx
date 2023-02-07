@@ -5,6 +5,7 @@ import Tooltip from '@semcore/ui/tooltip';
 import Skeleton from '@semcore/ui/skeleton';
 import styled from 'styled-components';
 import '@semcore/ui/utils/style/var.css';
+import { AnimatedNumber } from '@semcore/ui/counter/src';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
@@ -49,7 +50,7 @@ const Demo = () => {
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                42
+                <AnimatedNumber value={42} formatValue={Math.round} delay={300} />
               </Text>
               <Text size={100} color="gray-500" tag="p">
                 no change
@@ -74,7 +75,7 @@ const Demo = () => {
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                66.6K
+                <AnimatedNumber value={247653} formatValue={Math.round} />
               </Text>
               <Text size={100} color="gray-500" tag="p">
                 no change
@@ -99,7 +100,7 @@ const Demo = () => {
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                27K
+                <AnimatedNumber value={908} formatValue={Math.round} />
               </Text>
               <Text size={100} color="green-500" tag="p">
                 ↑+12
@@ -124,7 +125,7 @@ const Demo = () => {
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} fontWeight="bold" mr={2} tag="a">
-                145
+                <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
               </Text>
               <Text size={100} color="green-500" tag="p">
                 ↑+13

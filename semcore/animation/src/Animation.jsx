@@ -1,6 +1,7 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
+import { WithAnimationControl } from '@semcore/utils/lib/AnimationControlProvider';
 
 import style from './style/animate.shadow.css';
 
@@ -17,6 +18,7 @@ class Animation extends Component {
     delay: 0,
     keyframes: [],
     initialAnimation: false,
+    timingFunction: 'ease-out',
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -41,9 +43,11 @@ class Animation extends Component {
 
   render() {
     const SAnimation = Root;
-    const { styles, keyframes, initialAnimation } = this.asProps;
-    const duration = propToArray(this.asProps.duration);
-    const delay = propToArray(this.asProps.delay);
+    const { styles, keyframes, initialAnimation, timingFunction, animationControl } = this.asProps;
+    const duration =
+      animationControl === 'animations-disabled' ? [0, 0] : propToArray(this.asProps.duration);
+    const delay =
+      animationControl === 'animations-disabled' ? [0, 0] : propToArray(this.asProps.delay);
     const { render, wasInvisible } = this.state;
 
     if (!render) return null;
@@ -56,6 +60,7 @@ class Animation extends Component {
         durationFinalize={`${duration[1]}ms`}
         delayInitialize={`${delay[0]}ms`}
         delayFinalize={`${delay[1]}ms`}
+        timingFunction={timingFunction}
         keyframesInitialize={wasInvisible || initialAnimation ? keyframes[0] : undefined}
         keyframesFinalize={keyframes[1]}
       />,
@@ -63,4 +68,4 @@ class Animation extends Component {
   }
 }
 
-export default createComponent(Animation);
+export default WithAnimationControl(createComponent(Animation));

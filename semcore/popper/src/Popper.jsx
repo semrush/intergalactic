@@ -15,6 +15,7 @@ import useEventListener from '@semcore/utils/lib/use/useEventListener';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { Scale } from '@semcore/animation';
 
 import createPopper from './createPopper';
 
@@ -324,7 +325,7 @@ class Popper extends Component {
   }
 
   getPopperProps() {
-    const { visible, disablePortal, interaction, popperZIndex, ...other } = this.asProps;
+    const { visible, disablePortal, interaction, popperZIndex, placement, ...other } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -349,6 +350,7 @@ class Popper extends Component {
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
       style: popperZIndex !== undefined ? { zIndex: popperZIndex } : null,
+      placement,
     };
   }
 
@@ -458,14 +460,14 @@ function PopperPopper(props) {
   // https://github.com/facebook/react/issues/11387
   const handlerStopPropagation = useCallback((e) => e.stopPropagation(), []);
 
-  if (!visible) return null;
-
   return sstyled(styles)(
     <Portal disablePortal={disablePortal}>
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={FocusLockWrapper}
-          tag={Box}
+          tag={Scale}
+          visible={visible}
+          duration={[100, 50]}
           ref={ref}
           disableEnforceFocus={disableEnforceFocus}
           shards={[triggerRef]}

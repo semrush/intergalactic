@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import FocusLock from 'react-focus-lock';
-import { FadeInOut } from '@semcore/animation';
+import { FadeInOut, Slide } from '@semcore/animation';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
 import { Box } from '@semcore/flex-box';
@@ -114,12 +114,13 @@ function Window(props) {
   const { Children, styles, visible, closable } = props;
   const windowRef = useRef(null);
 
-  if (!visible) return null;
-
   return sstyled(styles)(
     <SWindow
       render={FocusLockWrapper}
-      tag={Box}
+      tag={Slide}
+      initialAnimation={true}
+      slideOrigin="top"
+      visible={visible}
       ref={windowRef}
       returnFocus={true}
       tabIndex={-1}

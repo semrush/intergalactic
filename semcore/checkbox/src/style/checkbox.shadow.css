@@ -43,6 +43,7 @@ SCheckbox {
     background: var(--intergalactic-bg-primary-neutral, #ffffff);
     border: 1px solid;
     border-radius: var(--intergalactic-addon-rounded, 4px);
+    transition: 0.1s all ease-in-out;
   }
 
   &::after {

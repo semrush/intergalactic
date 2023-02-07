@@ -24,20 +24,35 @@ class Switch extends Component {
   };
 
   inputRef = React.createRef();
+  state = { active: false };
 
   constructor(props) {
     super(props);
     this.forceUpdate = this.forceUpdate.bind(this);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('mouseup', this.handleMouseUp);
+  }
+  handleMouseUp = () => {
+    this.setState({ active: false });
+    window.removeEventListener('mouseup', this.handleMouseUp);
+  };
+  handleMouseDown = () => {
+    this.setState({ active: true });
+    window.addEventListener('mouseup', this.handleMouseUp);
+  };
+
   getValueProps() {
     const { theme, uid } = this.asProps;
+    const { active } = this.state;
 
     return {
       theme,
       ref: this.inputRef,
       $rootForceUpdate: this.forceUpdate,
       uid,
+      active,
     };
   }
 
@@ -53,7 +68,7 @@ class Switch extends Component {
     const checked = this.inputRef.current?.checked;
 
     return sstyled(styles)(
-      <SSwitch render={Box} tag="label" checked={checked}>
+      <SSwitch render={Box} tag="label" checked={checked} onMouseDown={this.handleMouseDown}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -123,6 +138,7 @@ class Value extends Component {
       neighborLocation,
       theme,
       uid,
+      active,
       ...other
     } = this.asProps;
 
@@ -142,6 +158,7 @@ class Value extends Component {
               keyboardFocused={keyboardFocused}
               neighborLocation={neighborLocation}
               checked={inputProps.checked}
+              active={active}
               use:theme={useTheme}
               use:color={color}
               {...toggleProps}

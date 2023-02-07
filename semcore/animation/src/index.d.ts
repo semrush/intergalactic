@@ -1,6 +1,15 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 
+type CssTimingFunction =
+  | 'ease'
+  | 'ease-in'
+  | 'ease-out'
+  | 'ease-in-out'
+  | 'linear'
+  | 'step-start'
+  | 'step-end';
+
 export interface IAnimationProps extends IBoxProps {
   /** The property is responsible for the visibility of the element */
   visible?: boolean;
@@ -20,6 +29,10 @@ export interface IAnimationProps extends IBoxProps {
    * @default false
    */
   initialAnimation?: boolean;
+  /**
+   * @default ease-out
+   */
+  timingFunction?: CssTimingFunction;
 }
 
 export interface ICollapseProps extends IAnimationProps {
@@ -39,9 +52,39 @@ export interface ITransformProps extends IAnimationProps {
   transform?: [string, string];
 }
 
+export interface IScaleProps extends IAnimationProps {
+  /** Placement of appearing block
+   */
+  placement:
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end';
+}
+
+export interface ISlideProps extends IAnimationProps {
+  /** Placement of appearing block
+   */
+  placement:
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end';
+}
+
 declare const Animation: <T>(props: CProps<IAnimationProps & T>) => ReturnEl;
 declare const Collapse: <T>(props: CProps<ICollapseProps & T>) => ReturnEl;
 declare const FadeInOut: <T>(props: CProps<IFadeInOutProps & T>) => ReturnEl;
 declare const Transform: <T>(props: CProps<ITransformProps & T>) => ReturnEl;
+declare const Scale: <T>(props: CProps<IScaleProps & T>) => ReturnEl;
+declare const Slide: <T>(props: CProps<ISlideProps & T>) => ReturnEl;
 
-export { Animation, Collapse, FadeInOut, Transform };
+export { Animation, Collapse, FadeInOut, Transform, Scale, Slide };

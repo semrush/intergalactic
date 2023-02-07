@@ -1187,6 +1187,7 @@ importers:
   semcore/popper:
     specifiers:
       '@popperjs/core': 2.9.2
+      '@semcore/animation': ^1
       '@semcore/flex-box': ^4
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/neighbor-location': ^3
@@ -1199,6 +1200,7 @@ importers:
       resize-observer-polyfill: 1.5.1
     dependencies:
       '@popperjs/core': 2.9.2
+      '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
       '@semcore/neighbor-location': link:../neighbor-location
       '@semcore/outside-click': link:../outside-click

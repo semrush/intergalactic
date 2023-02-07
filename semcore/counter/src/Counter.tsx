@@ -5,7 +5,9 @@ import resolveColor, { brightness } from '@semcore/utils/lib/color';
 
 import style from './style/counter.shadow.css';
 
-class Counter extends Component {
+class Counter extends Component<{
+  theme: 'warning' | 'danger' | string;
+}> {
   static displayName = 'Counter';
 
   static style = style;
@@ -26,3 +28,4 @@ class Counter extends Component {
 }
 
 export default createComponent(Counter);
+export * from './AnimatedNumber';

@@ -10,13 +10,20 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 
 import style from './style/filter-trigger.shadow.css';
 
 class RootFilterTrigger extends Component {
   static displayName = 'FilterTrigger';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    animatedSizeEnhance({
+      animateProps: ['width'],
+      onChangeOf: ['value'],
+    }),
+  ];
   static defaultProps = {
     i18n: localizedMessages,
     locale: 'en',
