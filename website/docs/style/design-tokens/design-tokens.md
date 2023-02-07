@@ -43,3 +43,4 @@ To learn more about the tokens names see [Token naming structure section](/style
 @import design-tokens
 
 @page design-tokens-usage
+@page design-tokens-usage-development
