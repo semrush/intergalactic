@@ -74,4 +74,5 @@ Theme for React components subtree may be applied via `<ThemeProvider />`.
 @example theme-provider
 
 @page design-tokens-usage
+@page design-tokens-code
 @page design-tokens-usage-development
