@@ -89,8 +89,12 @@ const year2022 = [
   ...generateSprint(dayjs('2022-01-10'), dayjs('2022-03-04')),
   ...generateSprint(dayjs('2022-03-14'), dayjs('2022-12-30')),
 ];
+const year2023 = [
+  ...generateSprint(dayjs('2022-01-09'), dayjs('2022-03-03')),
+  ...generateSprint(dayjs('2022-03-20'), dayjs('2022-12-30')),
+];
 
-const dateSprint = [...year2020, ...year2021, ...year2022];
+const dateSprint = [...year2020, ...year2021, ...year2022, ...year2023];
 const components = {
   'Q1 2020': [
     { text: 'z-index', size: { kit: '1/13' } },
@@ -222,6 +226,12 @@ const components = {
     { text: 'Components animation', size: { ui: '7/15', kit: '11/15' } },
     { text: 'A11y components enhancement', size: { ui: '1/15', kit: '1/7' } },
   ],
+  'Q1 2023': [
+    { text: 'Design Tokens and Themes onboarding', size: { ui: '1/11', kit: '1/11' } },
+    { text: 'Radar chart', size: { ui: '1/9', kit: '4/9' } },
+    { text: 'Components animation', size: { kit: '5/9' } },
+    { text: 'Bottom sheet', size: { ui: '9/15', kit: '11/15' } },
+  ],
 };
 
 function Gant(props) {
@@ -273,7 +283,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(11);
+  const [value, setValue] = useState(12);
   let TabContent = null;
 
   switch (value) {
@@ -312,6 +322,9 @@ function Roadmap() {
       break;
     case 11:
       TabContent = <Gant sprint={dateSprint.slice(72, 80)} components={components['Q4 2022']} />;
+      break;
+    case 12:
+      TabContent = <Gant sprint={dateSprint.slice(80, 87)} components={components['Q1 2023']} />;
       break;
   }
   return (
