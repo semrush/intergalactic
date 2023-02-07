@@ -1,3 +1,22 @@
+## [13.6.2] - 2023-02-07
+
+### @semcore/carousel
+
+- **Fixed** Fixed freezing when slide index is greater than number of slides.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed animation for `Donut`.
+- **Changed** Changed minimum height in types for `Bar`.
+
+### @semcore/data-table
+
+- **Fixed** Fixed view of cells when using cell grouping and columns at the same time.
+
+### @semcore/ellipsis
+
+- **Fixed** Stopped showing tooltip if text is not truncated.
+
 ## [13.6.1] - 2023-01-26
 
 ### @semcore/d3-chart
