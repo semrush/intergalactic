@@ -193,6 +193,11 @@ class Popper extends Component {
         : { [name]: optionsModifiers[name] },
     }));
 
+    modifiersOptions.push({
+      name: 'computeStyles',
+      options: { gpuAcceleration: false },
+    });
+
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
     this.popper.current = createPopper(this.triggerRef.current, this.popperRef.current, {
       placement,
