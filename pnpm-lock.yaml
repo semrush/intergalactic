@@ -1660,7 +1660,7 @@ importers:
       '@semcore/breakpoints': link:../breakpoints
       '@semcore/button': link:../button
       '@semcore/card': link:../card
-      '@semcore/carousel': 2.2.10_@semcore+core@semcore+core
+      '@semcore/carousel': link:../carousel
       '@semcore/checkbox': link:../checkbox
       '@semcore/color-picker': link:../color-picker
       '@semcore/core': link:../core
@@ -4671,19 +4671,6 @@ packages:
       '@semcore/spin': 4.2.3_@semcore+core@1.13.10
       '@semcore/utils': 3.44.1_@semcore+core@1.13.10
 
-  /@semcore/carousel/2.2.10_@semcore+core@semcore+core:
-    resolution: {integrity: sha512-w0fOQBxyBkjrD/rloCMlJRXjDIkthiW/QVUyw5iwUEpxZto6uhGyeCiKbzACM54wNxcbmsAaqpBlcnrVfAg/tg==}
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 4.7.3_@semcore+core@semcore+core
-      '@semcore/icon': 3.5.0_@semcore+core@semcore+core
-      '@semcore/utils': 3.44.1_@semcore+core@semcore+core
-    dev: false
-
   /@semcore/checkbox/6.3.3_@semcore+core@1.13.10:
     resolution: {integrity: sha512-AQAtywpUzsTUoQti0VeJAMWT7YvPhhi8OkZj0kdQAbk5CBhOC7SLdFSrZZ5ZRhITpMDZxbvY1BQYFjwYSj2oHw==}
     peerDependencies:
@@ -4943,20 +4930,6 @@ packages:
       classnames: 2.2.6
       hoist-non-react-statics: 3.3.2
       nano-css: 5.3.4
-
-  /@semcore/utils/3.44.1_@semcore+core@semcore+core:
-    resolution: {integrity: sha512-taL3wItFikpqjzvbwI10eO3tJIoCbqJjev+VWnOm1zGeJvo9XgBHYQ36V1U47HZVLNuJVWZm1m8dZCEMMOrTcg==}
-    peerDependencies:
-      '@semcore/core': ^1
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@semcore/core': link:semcore/core
-      classnames: 2.2.6
-      hoist-non-react-statics: 3.3.2
-      nano-css: 5.3.4
-    dev: false
 
   /@semrush-amplitude/amplitude-client/0.3.5:
     resolution: {integrity: sha512-dSD6eBhrMLVnfKmVMKg3fijjXVHD0DfbM55qv02W7CXcjYQ4HS75v84s3Rp5n59n86Gmu/zSto1XOC+QeHWxQA==, tarball: http://artifactory.semrush.net/artifactory/api/npm/npm/@semrush-amplitude/amplitude-client/-/@semrush-amplitude/amplitude-client-0.3.5.tgz}
