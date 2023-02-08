@@ -42,7 +42,7 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
   ],
   define: {
     'process.env.PUBLIC_PATH': JSON.stringify(process.env.PUBLIC_PATH || '/'),
-    'process.env.NODE_ENV': process.env.NODE_ENV,
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
     'process.env.AMPLITUDE_API_KEY': JSON.stringify(process.env.AMPLITUDE_API_KEY),
   },
   loader: {
