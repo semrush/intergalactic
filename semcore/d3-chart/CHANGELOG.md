@@ -7,6 +7,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+### Fixed
+
+- Fixed display of `Bar` with height 0 - it is not rendered.
 
 ## [2.8.11] - 2023-01-27
 
