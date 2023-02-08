@@ -61,3 +61,5 @@ semcore/illustration/**/*.d.ts
 # Fix
 
 !semcore/icon/Stoller/**
+!semcore/icon/color/YoutubeAlt/**
+!semcore/icon/color/YoutubeRed/**
