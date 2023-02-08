@@ -68,7 +68,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0
       semver: 5.6.0
-      simple-git: 3.15.0
+      simple-git: 3.16.0
       tsm: 2.2.2
       typescript: 4.5.5
       typescript-plugin-css-modules: 2.2.0
@@ -107,7 +107,7 @@ importers:
       eslint-import-resolver-alias: 1.1.2_fkfqfehjtk7sk2efaqbgxsuasa
       eslint-import-resolver-typescript: 2.0.0_myxbwluo6p3kuxjcyp342zygci
       eslint-import-resolver-workspaces: 1.0.9
-      eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-import: 2.26.0_ltarx3mb3fncbeyjafrj7vwgky
       eslint-plugin-no-cyrillic-string: 1.0.5_eslint@8.14.0
       eslint-plugin-prettier: 3.1.2_6w23y4twy4x3invpuc47pdc7dq
       eslint-plugin-react: 7.29.4_eslint@8.14.0
@@ -128,7 +128,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       semver: 5.6.0
-      simple-git: 3.15.0
+      simple-git: 3.16.0
       tsm: 2.2.2
       typescript: 4.5.5
       typescript-plugin-css-modules: 2.2.0_typescript@4.5.5
@@ -1936,7 +1936,7 @@ importers:
       marked-ast: 0.3.0
       marked-ast-markdown: 2.1.0
       semver: 5.6.0
-      simple-git: 3.15.0
+      simple-git: 3.16.0
       tsm: 2.2.2
     dependencies:
       '@semcore/continuous-delivery': link:../continuous-delivery
@@ -1946,7 +1946,7 @@ importers:
       marked-ast: 0.3.0
       marked-ast-markdown: 2.1.0
       semver: 5.6.0
-      simple-git: 3.15.0
+      simple-git: 3.16.0
       tsm: 2.2.2
     devDependencies:
       '@types/fs-extra': 9.0.13
@@ -1982,7 +1982,7 @@ importers:
       marked-ast-markdown: 2.1.0
       p-limit: 4.0.0
       semver: 5.6.0
-      simple-git: 3.15.0
+      simple-git: 3.16.0
       tsm: 2.2.2
     dependencies:
       '@semcore/changelog-handler': link:../changelog-handler
@@ -1996,7 +1996,7 @@ importers:
       marked-ast-markdown: 2.1.0
       p-limit: 4.0.0
       semver: 5.6.0
-      simple-git: 3.15.0
+      simple-git: 3.16.0
       tsm: 2.2.2
     devDependencies:
       '@types/fs-extra': 9.0.13
@@ -4534,6 +4534,8 @@ packages:
       '@semcore/utils': 3.44.1_@semcore+core@1.13.10
       dotenv: 8.6.0
       superagent: 3.7.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /@mailchimp/mailchimp_marketing/3.0.74:
@@ -7783,11 +7785,21 @@ packages:
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.0.0
 
   /debug/3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.1.3
       supports-color: 5.5.0
@@ -8878,7 +8890,7 @@ packages:
     peerDependencies:
       eslint-plugin-import: '>=1.4.0'
     dependencies:
-      eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-import: 2.26.0_ltarx3mb3fncbeyjafrj7vwgky
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
@@ -8886,6 +8898,8 @@ packages:
     dependencies:
       debug: 3.2.7
       resolve: 1.22.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /eslint-import-resolver-typescript/2.0.0_myxbwluo6p3kuxjcyp342zygci:
@@ -8897,7 +8911,7 @@ packages:
     dependencies:
       debug: 4.3.4
       eslint: 8.14.0
-      eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-import: 2.26.0_ltarx3mb3fncbeyjafrj7vwgky
       is-glob: 4.0.3
       resolve: 1.22.1
       tiny-glob: 0.2.9
@@ -8913,34 +8927,58 @@ packages:
       find-yarn-workspace-root: 1.2.1
       pkg-up: 3.1.0
       tsconfig-paths: 3.14.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
-  /eslint-module-utils/2.7.4_eslint@8.14.0:
+  /eslint-module-utils/2.7.4_ixivqp3p37uuswbgv6lwb7llmm:
     resolution: {integrity: sha512-j4GT+rqzCoRKHwURX7pddtIPGySnX9Si/cgMI5ztrcqOPtk5dDEeZ34CQVPphnqkJytlc97Vuk05Um2mJ3gEQA==}
     engines: {node: '>=4'}
     peerDependencies:
+      '@typescript-eslint/parser': '*'
       eslint: '*'
+      eslint-import-resolver-node: '*'
+      eslint-import-resolver-typescript: '*'
+      eslint-import-resolver-webpack: '*'
     peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
       eslint:
         optional: true
+      eslint-import-resolver-node:
+        optional: true
+      eslint-import-resolver-typescript:
+        optional: true
+      eslint-import-resolver-webpack:
+        optional: true
     dependencies:
+      '@typescript-eslint/parser': 5.10.2_sdq423wcawycjzugemfabbjutq
       debug: 3.2.7
       eslint: 8.14.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.0.0_myxbwluo6p3kuxjcyp342zygci
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
-  /eslint-plugin-import/2.26.0_eslint@8.14.0:
+  /eslint-plugin-import/2.26.0_ltarx3mb3fncbeyjafrj7vwgky:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
     engines: {node: '>=4'}
     peerDependencies:
+      '@typescript-eslint/parser': '*'
       eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
     dependencies:
+      '@typescript-eslint/parser': 5.10.2_sdq423wcawycjzugemfabbjutq
       array-includes: 3.1.5
       array.prototype.flat: 1.3.0
       debug: 2.6.9
       doctrine: 2.1.0
       eslint: 8.14.0
       eslint-import-resolver-node: 0.3.6
-      eslint-module-utils: 2.7.4_eslint@8.14.0
+      eslint-module-utils: 2.7.4_ixivqp3p37uuswbgv6lwb7llmm
       has: 1.0.3
       is-core-module: 2.10.0
       is-glob: 4.0.3
@@ -8948,6 +8986,10 @@ packages:
       object.values: 1.1.5
       resolve: 1.22.1
       tsconfig-paths: 3.14.1
+    transitivePeerDependencies:
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
+      - supports-color
     dev: true
 
   /eslint-plugin-no-cyrillic-string/1.0.5_eslint@8.14.0:
@@ -9267,6 +9309,8 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   /expand-tilde/2.0.2:
     resolution: {integrity: sha512-A5EmesHW6rfnZ9ysHQjPdJRni0SRar0tjtG5MNtm9n5TUvsYU8oozprtRD4AqHxcZWWlVuAmQo2nWKfN9oyjTw==}
@@ -9380,6 +9424,8 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   /extsprintf/1.3.0:
     resolution: {integrity: sha512-11Ndz7Nv+mvAC1j0ktTa7fAb0vLyGGX+rMHNBYQviQDGU0Hw7lhctJANqbPhu9nV9/izT/IntTgZ7Im/9LJs9g==}
@@ -9659,6 +9705,8 @@ packages:
     dependencies:
       fs-extra: 4.0.3
       micromatch: 3.1.10
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /findup-sync/2.0.0:
@@ -13262,6 +13310,8 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   /micromatch/4.0.5:
     resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
@@ -13439,6 +13489,8 @@ packages:
       regex-not: 1.0.2
       snapdragon: 0.8.2
       to-regex: 3.0.2
+    transitivePeerDependencies:
+      - supports-color
 
   /native-request/1.1.0:
     resolution: {integrity: sha512-uZ5rQaeRn15XmpgE0xoPL8YWqcX90VtCFglYwAgkvKM5e8fog+vePLAhHxuuv/gRkrQxIeh5U3q9sMNUrENqWw==}
@@ -16881,8 +16933,8 @@ packages:
   /signal-exit/3.0.7:
     resolution: {integrity: sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==}
 
-  /simple-git/3.15.0:
-    resolution: {integrity: sha512-FiWoMPlcYHQ+ApRihUsGjC/ZmIlWj62S6MBCwOunczvXcLQt+9ZdrysDrR6QVepkRQfEAaBXrN2QtJKrN6zbtg==}
+  /simple-git/3.16.0:
+    resolution: {integrity: sha512-zuWYsOLEhbJRWVxpjdiXl6eyAyGo/KzVW+KFhhw9MqEEJttcq+32jTWSGyxTdf9e/YCohxRE+9xpWFj9FdiJNw==}
     dependencies:
       '@kwsites/file-exists': 1.1.1
       '@kwsites/promise-deferred': 1.1.1
@@ -16953,6 +17005,8 @@ packages:
       source-map: 0.5.7
       source-map-resolve: 0.5.3
       use: 3.1.1
+    transitivePeerDependencies:
+      - supports-color
 
   /sort-keys-length/1.0.1:
     resolution: {integrity: sha512-GRbEOUqCxemTAk/b32F2xa8wDTs+Z1QHOkbhJDQTvv/6G3ZkbJ+frYWsTcc7cBB3Fu4wy4XlLCuNtJuMn7Gsvw==}
@@ -17450,6 +17504,8 @@ packages:
       mime: 1.6.0
       qs: 6.10.3
       readable-stream: 2.3.7
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /superagent/3.8.1:
