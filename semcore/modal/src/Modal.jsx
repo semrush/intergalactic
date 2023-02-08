@@ -15,6 +15,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -106,7 +107,7 @@ class ModalRoot extends Component {
 }
 
 const FocusLockWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
-  return <FocusLock ref={ref} as={tag} lockProps={other} {...other} />;
+  return <FocusLock ref={ref} as={tag} lockProps={propsForElement(other)} {...other} />;
 });
 
 function Window(props) {
@@ -116,8 +117,8 @@ function Window(props) {
 
   return sstyled(styles)(
     <SWindow
-      render={FocusLockWrapper}
-      tag={Slide}
+      render={Slide}
+      tag={FocusLockWrapper}
       initialAnimation={true}
       slideOrigin="top"
       visible={visible}

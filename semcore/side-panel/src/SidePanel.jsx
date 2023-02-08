@@ -12,6 +12,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 
 import style from './style/side-panel.shadow.css';
 
@@ -119,7 +120,13 @@ function Overlay(props) {
 
 const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, tag, ...other }, ref) {
   return (
-    <FocusLock ref={ref} as={tag} lockProps={other} disabled={disableEnforceFocus} {...other} />
+    <FocusLock
+      ref={ref}
+      as={tag}
+      lockProps={propsForElement(other)}
+      disabled={disableEnforceFocus}
+      {...other}
+    />
   );
 });
 
@@ -138,8 +145,8 @@ function Panel(props) {
     <>
       {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
       <SPanel
-        render={FocusLockWrapper}
-        tag={Slide}
+        render={Slide}
+        tag={FocusLockWrapper}
         visible={visible}
         initialAnimation={true}
         slideOrigin={placement}

@@ -14,6 +14,7 @@ import pick from '@semcore/utils/lib/pick';
 import useEventListener from '@semcore/utils/lib/use/useEventListener';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import logger from '@semcore/utils/lib/logger';
+import propsForElement from '@semcore/utils/lib/propsForElement';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale } from '@semcore/animation';
 
@@ -405,6 +406,7 @@ const FocusLockWrapper = React.forwardRef(function (
   { tag, disableEnforceFocus, returnFocusRef, returnFocus, ...other },
   ref,
 ) {
+  const lockProps = propsForElement(other);
   const [eventLock, setEventLock] = useState(false);
   const [nodesLock, setNodesLock] = useState(false);
 
@@ -441,7 +443,7 @@ const FocusLockWrapper = React.forwardRef(function (
       ref={useForkRef(popperRef, ref)}
       as={tag}
       disabled={disableEnforceFocus || nodesLock || eventLock}
-      lockProps={other}
+      lockProps={lockProps}
       returnFocus={returnFocus}
       {...other}
     />
@@ -469,8 +471,8 @@ function PopperPopper(props) {
     <Portal disablePortal={disablePortal}>
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
-          render={FocusLockWrapper}
-          tag={Scale}
+          render={Scale}
+          tag={FocusLockWrapper}
           visible={visible}
           duration={[100, 50]}
           ref={ref}

@@ -8,26 +8,42 @@ export interface IWithAutoFocusEnhanceProps {
   autoFocus?: Boolean | Number;
 }
 
-function animatedSizeEnhance({ animateProps, onChangeOf }: { animateProps: ('wdith' | 'height')[], onChangeOf: string[] }) {
+let uniqueId = 0;
+
+function animatedSizeEnhance({
+  animateProps,
+  onChangeOf,
+}: {
+  animateProps: ('wdith' | 'height')[];
+  onChangeOf: string[];
+}) {
   return (props) => {
     const { ref, __animatedEnhanceInstanceId, ...other } = props;
     const nodeRef = React.createRef<HTMLElement>();
     const lastSizesRef = React.useRef<number[]>([]);
     const prevPropsRef = React.useRef(props);
-    const animatedSizeInstanceIdRef = React.useRef(Math.random());
+    const animatedSizeInstanceIdRef = React.useRef(uniqueId++);
     const animationControl = useAnimationControlContext();
 
     prevPropsRef.current = props;
 
     React.useLayoutEffect(() => {
-      if (animationControl === 'animations-disabled') return;
-      if (__animatedEnhanceInstanceId !== undefined && __animatedEnhanceInstanceId !== animatedSizeInstanceIdRef.current) return;
-      if (!nodeRef.current) return;
-      if (lastSizesRef.current.every(value => value === undefined)) {
+      if (animationControl === 'animations-disabled') {
+        return;
+      }
+      if (
+        __animatedEnhanceInstanceId !== undefined &&
+        __animatedEnhanceInstanceId !== animatedSizeInstanceIdRef.current
+      )
+        return;
+      if (!nodeRef.current) {
+        return;
+      }
+      if (lastSizesRef.current.every((value) => value === undefined)) {
         for (let i = 0; i < animateProps.length; i++) {
           lastSizesRef.current[i] = nodeRef.current.getBoundingClientRect()[animateProps[i]];
         }
-        return
+        return;
       }
 
       const sizes: number[] = [];
@@ -38,7 +54,7 @@ function animatedSizeEnhance({ animateProps, onChangeOf }: { animateProps: ('wdi
           sizes[i] = undefined;
         }
       }
-      if (sizes.every(value => value === undefined)) return;
+      if (sizes.every((value) => value === undefined)) return;
 
       nodeRef.current.style.transition = 'none';
       for (let i = 0; i < animateProps.length; i++) {
@@ -48,17 +64,17 @@ function animatedSizeEnhance({ animateProps, onChangeOf }: { animateProps: ('wdi
       const handleTransitionEnd = () => {
         clearTimeout(timeout);
         if (!nodeRef.current) return;
-        nodeRef.current.style.transition = null
+        nodeRef.current.style.transition = null;
         for (let i = 0; i < animateProps.length; i++) {
-          nodeRef.current.style[animateProps[i]] = null
+          nodeRef.current.style[animateProps[i]] = null;
         }
         nodeRef.current.removeEventListener('transitionend', handleTransitionEnd);
         nodeRef.current.removeEventListener('transitioncancel', handleTransitionEnd);
-      }
+      };
       const animationFrame = requestAnimationFrame(() => {
         if (!nodeRef.current) return;
-        nodeRef.current.addEventListener('transitionend', handleTransitionEnd)
-        nodeRef.current.addEventListener('transitioncancel', handleTransitionEnd)
+        nodeRef.current.addEventListener('transitionend', handleTransitionEnd);
+        nodeRef.current.addEventListener('transitioncancel', handleTransitionEnd);
         nodeRef.current.style.transition = '0.1s all';
         for (let i = 0; i < animateProps.length; i++) {
           lastSizesRef.current[i] = sizes[i];
@@ -69,8 +85,12 @@ function animatedSizeEnhance({ animateProps, onChangeOf }: { animateProps: ('wdi
       return () => {
         cancelAnimationFrame(animationFrame);
         handleTransitionEnd();
-      }
-    }, [__animatedEnhanceInstanceId, animationControl, ...onChangeOf.map(propName => props[propName])])
+      };
+    }, [
+      __animatedEnhanceInstanceId,
+      animationControl,
+      ...onChangeOf.map((propName) => props[propName]),
+    ]);
 
     return {
       ref: useForkRef(ref, nodeRef),
