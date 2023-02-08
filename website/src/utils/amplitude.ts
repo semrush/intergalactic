@@ -1,4 +1,4 @@
-import amplitudeHttp from '@semrush-amplitude/amplitude-client';
+import amplitudeHttp from './amplitude-client';
 
 export const initAmplitude = () => {
   const apiKey = process.env.AMPLITUDE_API_KEY;

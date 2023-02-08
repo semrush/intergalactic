@@ -2372,7 +2372,6 @@ importers:
       '@babel/plugin-proposal-optional-chaining': 7.18.9
       '@babel/preset-env': 7.19.1
       '@babel/preset-react': 7.12.1
-      '@semrush-amplitude/amplitude-client': ^0.3.5
       '@types/express': 4.17.1
       '@types/mdast': 3.0.10
       '@types/node': 14.14.22
@@ -2400,6 +2399,7 @@ importers:
       mdast-util-gfm: 2.0.1
       mdast-util-to-hast: 12.1.1
       micromark-extension-gfm: 2.0.1
+      nanoid: 3.3.4
       node-watch: 0.7.3
       normalize.css: 8.0.1
       picocolors: 1.0.0
@@ -2423,8 +2423,8 @@ importers:
       tsm: 2.2.2
       typescript: 4.1.3
       unified: 10.1.2
+      whatwg-fetch: 3.6.2
     dependencies:
-      '@semrush-amplitude/amplitude-client': 0.3.5
       algoliasearch: 4.8.4
       classnames: 2.2.6
       d3-scale: 3.3.0
@@ -2435,6 +2435,7 @@ importers:
       final-form: 4.20.7
       final-form-focus: 1.1.2_final-form@4.20.7
       lz-string: 1.4.4
+      nanoid: 3.3.4
       normalize.css: 8.0.1
       prism-react-renderer: 1.0.2_react@18.2.0
       prismjs: 1.27.0
@@ -2452,6 +2453,7 @@ importers:
       react-virtualized: 9.22.3_biqbaboplfbrettd7655fr4n2y
       reflect-metadata: 0.1.13
       styled-components: 5.0.1_biqbaboplfbrettd7655fr4n2y
+      whatwg-fetch: 3.6.2
     devDependencies:
       '@babel/core': 7.19.1
       '@babel/plugin-proposal-class-properties': 7.18.6_@babel+core@7.19.1
@@ -4930,13 +4932,6 @@ packages:
       classnames: 2.2.6
       hoist-non-react-statics: 3.3.2
       nano-css: 5.3.4
-
-  /@semrush-amplitude/amplitude-client/0.3.5:
-    resolution: {integrity: sha512-dSD6eBhrMLVnfKmVMKg3fijjXVHD0DfbM55qv02W7CXcjYQ4HS75v84s3Rp5n59n86Gmu/zSto1XOC+QeHWxQA==, tarball: http://artifactory.semrush.net/artifactory/api/npm/npm/@semrush-amplitude/amplitude-client/-/@semrush-amplitude/amplitude-client-0.3.5.tgz}
-    dependencies:
-      nanoid: 3.3.4
-      whatwg-fetch: 3.6.2
-    dev: false
 
   /@sinclair/typebox/0.24.51:
     resolution: {integrity: sha512-1P1OROm/rdubP5aFDSZQILU0vrLCJ4fvHt6EoqHEM+2D/G5MK3bIaymUKLit8Js9gbns5UyJnkP/TZROLw4tUA==}
