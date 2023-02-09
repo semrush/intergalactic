@@ -90,8 +90,8 @@ const year2022 = [
   ...generateSprint(dayjs('2022-03-14'), dayjs('2022-12-30')),
 ];
 const year2023 = [
-  ...generateSprint(dayjs('2022-01-09'), dayjs('2022-03-03')),
-  ...generateSprint(dayjs('2022-03-20'), dayjs('2022-12-30')),
+  ...generateSprint(dayjs('2023-01-09'), dayjs('2023-03-03')),
+  ...generateSprint(dayjs('2023-03-20'), dayjs('2023-12-30')),
 ];
 
 const dateSprint = [...year2020, ...year2021, ...year2022, ...year2023];
@@ -193,8 +193,17 @@ function Gant(props) {
       <Row_Column className="gantt__row gantt__row--lines" size={lengthSprint}>
         {sprint.map((date, index) => {
           const currentDate = dayjs();
+          // console.log('index', index);
+          // console.log('lengthSprint', lengthSprint);
           if (index === lengthSprint) return null;
+          // console.log('date', date);
+          // console.log('currentDate', currentDate);
+          // console.log("sprint[index + 1].subtract(1, 'day')", sprint[index + 1].subtract(1, 'day'));
+          console.log('index', index)
+          console.log('date < currentDate', date < currentDate);
+          console.log("sprint[index + 1].subtract(1, 'day') > currentDate", sprint[index + 1].subtract(1, 'day') > currentDate);
           if (date < currentDate && sprint[index + 1].subtract(1, 'day') > currentDate) {
+            console.log('INDIDEEEEE');
             return <span className="marker" key={date} />;
           }
           return <span key={date} />;
