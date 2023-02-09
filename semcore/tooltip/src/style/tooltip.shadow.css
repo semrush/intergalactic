@@ -1,7 +1,7 @@
 STooltip {
   position: relative;
   padding: var(--intergalactic-spacing-3x, 12px);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
   color: var(--intergalactic-text-primary, #191b23);
   font-size: var(--intergalactic-fs-200, 14px);

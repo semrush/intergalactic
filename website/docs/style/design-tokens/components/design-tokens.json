@@ -2737,42 +2737,14 @@
     "type": "borderRadius",
     "rawValue": "4px",
     "computedValue": "4px",
-    "components": [
-      "checkbox",
-      "select"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-rounded-medium",
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "components": [
-      "badge",
-      "base-trigger",
-      "button",
-      "card",
-      "carousel",
-      "d3-chart",
-      "date-picker",
-      "drag-and-drop",
-      "dropdown",
-      "dropdown-menu",
-      "feature-popover",
-      "feedback-form",
-      "input",
-      "notice",
-      "notice-bubble",
-      "pills",
-      "progress-bar",
-      "select",
-      "slider",
-      "tab-panel",
-      "textarea",
-      "time-picker",
-      "tooltip",
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-rounded-large",
@@ -2780,8 +2752,6 @@
     "rawValue": "12px",
     "computedValue": "12px",
     "components": [
-      "counter",
-      "modal",
       "wizard"
     ]
   },
@@ -2801,7 +2771,10 @@
     "rawValue": "{rounded-small}",
     "computedValue": "4px",
     "description": "Use for rounding addons and small controls like Checkbox.",
-    "components": []
+    "components": [
+      "checkbox",
+      "select"
+    ]
   },
   {
     "name": "--intergalactic-badge-rounded",
@@ -2809,7 +2782,9 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding Badge.",
-    "components": []
+    "components": [
+      "badge"
+    ]
   },
   {
     "name": "--intergalactic-counter-rounded",
@@ -2817,7 +2792,9 @@
     "rawValue": "{rounded-large}",
     "computedValue": "12px",
     "description": "Use for rounding Counter.",
-    "components": []
+    "components": [
+      "counter"
+    ]
   },
   {
     "name": "--intergalactic-tag-rounded",
@@ -2833,7 +2810,21 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all form controls: Button, FilterTrigger, Input, Textarea, Pills, etc.",
-    "components": []
+    "components": [
+      "base-trigger",
+      "button",
+      "carousel",
+      "date-picker",
+      "dropdown-menu",
+      "input",
+      "pills",
+      "select",
+      "slider",
+      "tab-panel",
+      "textarea",
+      "time-picker",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-progress-bar-rounded",
@@ -2841,7 +2832,9 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
-    "components": []
+    "components": [
+      "progress-bar"
+    ]
   },
   {
     "name": "--intergalactic-surface-rounded",
@@ -2849,7 +2842,14 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding surfaces like Card, blocks, widgets, Notice, etc.",
-    "components": []
+    "components": [
+      "card",
+      "carousel",
+      "drag-and-drop",
+      "feedback-form",
+      "notice",
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-popper-rounded",
@@ -2857,7 +2857,12 @@
     "rawValue": "{rounded-medium}",
     "computedValue": "6px",
     "description": "Use for rounding all kinds of poppers and dropdowns.",
-    "components": []
+    "components": [
+      "d3-chart",
+      "dropdown",
+      "feature-popover",
+      "tooltip"
+    ]
   },
   {
     "name": "--intergalactic-modal-rounded",
@@ -2865,7 +2870,10 @@
     "rawValue": "{rounded-large}",
     "computedValue": "12px",
     "description": "Use for rounding modal dialogs.",
-    "components": []
+    "components": [
+      "modal",
+      "wizard"
+    ]
   },
   {
     "name": "--intergalactic-disabled-opacity",

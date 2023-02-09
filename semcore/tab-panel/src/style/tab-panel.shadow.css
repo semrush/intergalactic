@@ -13,8 +13,8 @@ STabPanelItem {
   height: 32px;
   color: var(--intergalactic-text-secondary, #6c6e79);
   border: 1px solid transparent;
-  border-radius: var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px) 0
-    0;
+  border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px)
+    0 0;
   background: transparent;
   align-items: center;
   justify-content: center;

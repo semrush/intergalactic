@@ -2,7 +2,7 @@ STextarea {
   height: auto;
   color: var(--intergalactic-text-primary, #191b23);
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   outline: none;
   width: 100%;
   box-sizing: border-box;
