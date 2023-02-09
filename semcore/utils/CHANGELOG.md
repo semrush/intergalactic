@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.46.1] - 2023-01-20
+
+### Changed
+
+- Changed design tokens facebook color (`#3b5998` -> `#1877f2`).
+- Changed design tokens linkedIn color (`#1a7ab2` -> `#0a66c2`).
+- Changed design tokens twitter color (`#2bafeb` -> `#1d9bf0`).
+
 ## [3.46.0] - 2023-01-20
 
 ### Changed

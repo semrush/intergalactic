@@ -2,13 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.3.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-addon-rounded`).
+
 ## [6.3.7] - 2023-01-20
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
-
-## [6.3.5] - 2023-01-10
 
 ## [6.3.4] - 2023-01-09
 
