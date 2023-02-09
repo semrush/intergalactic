@@ -193,17 +193,8 @@ function Gant(props) {
       <Row_Column className="gantt__row gantt__row--lines" size={lengthSprint}>
         {sprint.map((date, index) => {
           const currentDate = dayjs();
-          // console.log('index', index);
-          // console.log('lengthSprint', lengthSprint);
           if (index === lengthSprint) return null;
-          // console.log('date', date);
-          // console.log('currentDate', currentDate);
-          // console.log("sprint[index + 1].subtract(1, 'day')", sprint[index + 1].subtract(1, 'day'));
-          console.log('index', index)
-          console.log('date < currentDate', date < currentDate);
-          console.log("sprint[index + 1].subtract(1, 'day') > currentDate", sprint[index + 1].subtract(1, 'day') > currentDate);
           if (date < currentDate && sprint[index + 1].subtract(1, 'day') > currentDate) {
-            console.log('INDIDEEEEE');
             return <span className="marker" key={date} />;
           }
           return <span key={date} />;
