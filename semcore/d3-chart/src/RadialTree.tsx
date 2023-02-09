@@ -5,6 +5,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { shade } from '@semcore/utils/lib/color';
 import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createElement from './createElement';
 import { measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
@@ -165,6 +166,7 @@ class RadialTreeBase extends Component<RootAsProps> {
 
   runAppearAnimation() {
     const { duration, uid } = this.asProps;
+    if (!canUseDOM()) return;
     const preferReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')?.matches;
 
     /** using `!(>)` instead of `<=` to get true on NaN and non numbers stuff  */

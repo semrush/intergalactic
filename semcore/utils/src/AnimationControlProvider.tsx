@@ -1,4 +1,5 @@
 import React from 'react';
+import canUseDOM from './canUseDOM';
 
 type AnimationControl = 'animations-disabled' | 'animations-enabled';
 export const animationControlContext = React.createContext<AnimationControl | undefined>(undefined);
@@ -8,7 +9,7 @@ const useInternalAnimationControlContext = (override: AnimationControl | undefin
   const initValue = React.useMemo(() => {
     if (context) return context;
     if (override) return override;
-    if (!window) return 'animations-disabled';
+    if (!canUseDOM()) return 'animations-disabled';
     return window.matchMedia('(prefers-reduced-motion: reduce)')?.matches
       ? 'animations-disabled'
       : 'animations-enabled';
