@@ -31,7 +31,7 @@ SBreadcrumbsItem {
 
   &:hover {
     text-decoration: underline;
-    color: var(--intergalactic-text-hint-hover-active, #484a54);
+    color: var(--intergalactic-text-primary, #191b23);
   }
 }
 

@@ -1,7 +1,7 @@
 SDropdownPopper {
   position: relative;
   background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-popper-rounded, 6px);
   box-sizing: border-box;
   border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   white-space: normal;
