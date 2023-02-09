@@ -8,7 +8,7 @@ SSwitch {
 
 SSwitch[size] {
   & SToggle {
-    border-radius: var(--intergalactic-rounded-extra-large, 24px);
+    border-radius: var(--intergalactic-switch-rounded, 24px);
   }
 }
 
