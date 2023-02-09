@@ -92,7 +92,7 @@ SStepDescription {
 SContent {
   padding: var(--intergalactic-spacing-10x, 40px);
   width: 100%;
-  border-radius: 0 var(--intergalactic-rounded-large, 12px) var(--intergalactic-rounded-large, 12px)
+  border-radius: 0 var(--intergalactic-modal-rounded, 12px) var(--intergalactic-modal-rounded, 12px)
     0;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
 }

@@ -2760,10 +2760,7 @@
     "type": "borderRadius",
     "rawValue": "24px",
     "computedValue": "24px",
-    "components": [
-      "switch",
-      "tag"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-addon-rounded",
@@ -2799,10 +2796,22 @@
   {
     "name": "--intergalactic-tag-rounded",
     "type": "borderRadius",
-    "rawValue": "{rounded-large}",
-    "computedValue": "12px",
+    "rawValue": "{rounded-extra-large}",
+    "computedValue": "24px",
     "description": "Use for rounding Tag.",
-    "components": []
+    "components": [
+      "tag"
+    ]
+  },
+  {
+    "name": "--intergalactic-switch-rounded",
+    "type": "borderRadius",
+    "rawValue": "{rounded-extra-large}",
+    "computedValue": "24px",
+    "description": "Use for rounding Switch.",
+    "components": [
+      "switch"
+    ]
   },
   {
     "name": "--intergalactic-control-rounded",
@@ -2869,7 +2878,7 @@
     "type": "borderRadius",
     "rawValue": "{rounded-large}",
     "computedValue": "12px",
-    "description": "Use for rounding modal dialogs.",
+    "description": "Use for rounding all kinds of big modal dialogs (e.g., Modal, Wizard).",
     "components": [
       "modal",
       "wizard"
@@ -3384,7 +3393,7 @@
     "type": "color",
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
-    "description": "Hover and active states of the background color for the default secondary tag.",
+    "description": "Hover and active (selected) states of the background color for the default secondary tag.",
     "components": [
       "tag"
     ]
@@ -3398,15 +3407,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-tag-secondary-white-hover",
-    "type": "color",
-    "rawValue": "{gray.white}, 0",
-    "computedValue": "rgba(255, 255, 255, 0)",
-    "description": "Hover state of the secondary white tag.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-tag-secondary-white-active",
+    "name": "--intergalactic-tag-secondary-white-hover-active",
     "type": "color",
     "rawValue": "{gray.white}, 0.1",
     "computedValue": "rgba(255, 255, 255, 0.1)",
