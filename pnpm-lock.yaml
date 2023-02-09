@@ -2095,7 +2095,7 @@ importers:
       identity-obj-proxy: 3.0.0
       jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
-      jest-image-snapshot: 2.9.0
+      jest-image-snapshot: 6.1.0
       react: '*'
       react-dom: '*'
       request: 2.88.2
@@ -2111,7 +2111,7 @@ importers:
       identity-obj-proxy: 3.0.0
       jest-axe: 6.0.0
       jest-canvas-mock: 2.4.0
-      jest-image-snapshot: 2.9.0
+      jest-image-snapshot: 6.1.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       request: 2.88.2
@@ -11358,6 +11358,10 @@ packages:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
 
+  /glur/1.1.2:
+    resolution: {integrity: sha512-l+8esYHTKOx2G/Aao4lEQ0bnHWg4fWtJbVoZZT9Knxi01pB8C80BR85nONLFwkkQoFRCmXY+BUcGZN3yZ2QsRA==}
+    dev: false
+
   /google-auth-library/7.14.1:
     resolution: {integrity: sha512-5Rk7iLNDFhFeBYc3s8l1CqzbEBcdhwR193RlD4vSNFajIcINKI8W8P0JLmBpwymHqqWbX34pJDQu39cSy/6RsA==}
     engines: {node: '>=10'}
@@ -12956,19 +12960,21 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /jest-image-snapshot/2.9.0:
-    resolution: {integrity: sha512-ih/DwdW2AWjQLgTZeaXDH1qMw7g346t6RUK+2KVGXX8c4tNpTinSKR3h059AWhFQGxlZpBZ/dds3DMigosUcdw==}
-    engines: {node: '>=6.0.0'}
+  /jest-image-snapshot/6.1.0:
+    resolution: {integrity: sha512-LZYoks6V1HAkYqyi80gUjMWVsa++Oy0fckAGMLBQseVweZT9AmJNKAINwHLqX1fpeMy2hTG5CCEe4IUX2N3Nmg==}
+    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     peerDependencies:
-      jest: '>=20 <=24'
+      jest: '>=20 <=29'
     dependencies:
-      chalk: 1.1.3
+      chalk: 4.1.2
       get-stdin: 5.0.1
+      glur: 1.1.2
       lodash: 4.17.21
       mkdirp: 0.5.6
-      pixelmatch: 4.0.2
+      pixelmatch: 5.3.0
       pngjs: 3.4.0
       rimraf: 2.7.1
+      ssim.js: 3.5.0
     dev: false
 
   /jest-leak-detector/29.1.2:
@@ -15382,11 +15388,11 @@ packages:
     resolution: {integrity: sha512-8V9+HQPupnaXMA23c5hvl69zXvTwTzyAYasnkb0Tts4XvO4CliqONMOnvlq26rkhLC3nWDFBJf73LU1e1VZLaQ==}
     engines: {node: '>= 6'}
 
-  /pixelmatch/4.0.2:
-    resolution: {integrity: sha512-J8B6xqiO37sU/gkcMglv6h5Jbd9xNER7aHzpfRdNmV4IbQBzBpe4l9XmbG+xPF/znacgu2jfEw+wHffaq/YkXA==}
+  /pixelmatch/5.3.0:
+    resolution: {integrity: sha512-o8mkY4E/+LNUf6LzX96ht6k6CEDi65k9G2rjMtBe9Oo+VPKSvl+0GKHuH/AlG+GA5LPG/i5hrekkxUc3s2HU+Q==}
     hasBin: true
     dependencies:
-      pngjs: 3.4.0
+      pngjs: 6.0.0
     dev: false
 
   /pkg-dir/3.0.0:
@@ -15454,7 +15460,6 @@ packages:
   /pngjs/6.0.0:
     resolution: {integrity: sha512-TRzzuFRRmEoSW/p1KVAmiOgPco2Irlah+bGFCeNfJXxxYGwSw7YwAOAcd7X28K/m5bjBWKsC29KyoMfHbypayg==}
     engines: {node: '>=12.13.0'}
-    dev: true
 
   /pngquant-bin/6.0.1:
     resolution: {integrity: sha512-Q3PUyolfktf+hYio6wsg3SanQzEU/v8aICg/WpzxXcuCMRb7H2Q81okfpcEztbMvw25ILjd3a87doj2N9kvbpQ==}
