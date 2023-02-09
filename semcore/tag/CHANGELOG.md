@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.11] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-extra-large` -> `--intergalactic-tag-rounded`).
+
 ## [4.4.10] - 2023-01-20
 
 ### Changed

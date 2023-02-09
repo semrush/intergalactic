@@ -10,7 +10,7 @@ SInput {
   box-sizing: border-box;
 
   & input:-webkit-autofill {
-    border-radius: var(--intergalactic-rounded-medium, 6px);
+    border-radius: var(--intergalactic-control-rounded, 6px);
     -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
 
     & ~ SOutline {
@@ -64,7 +64,7 @@ SOutline {
   bottom: 0;
   left: 0;
   border: 1px solid;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   z-index: -1;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
 }

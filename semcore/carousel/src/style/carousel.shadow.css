@@ -13,7 +13,7 @@ SItem {
   max-width: 100%;
   box-sizing: border-box;
   transform: var(--transform);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-surface-rounded, 6px);
   overflow: hidden;
 }
 
@@ -29,7 +29,7 @@ SIndicator {
   display: block;
   width: 12px;
   height: 12px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   background-color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   object-fit: cover;
