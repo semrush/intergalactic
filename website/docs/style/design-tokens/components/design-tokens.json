@@ -2751,9 +2751,7 @@
     "type": "borderRadius",
     "rawValue": "12px",
     "computedValue": "12px",
-    "components": [
-      "wizard"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-rounded-extra-large",
@@ -2790,7 +2788,8 @@
     "computedValue": "12px",
     "description": "Use for rounding Counter.",
     "components": [
-      "counter"
+      "counter",
+      "dot"
     ]
   },
   {
@@ -2828,7 +2827,6 @@
       "input",
       "pills",
       "select",
-      "slider",
       "tab-panel",
       "textarea",
       "time-picker",
@@ -2842,7 +2840,8 @@
     "computedValue": "6px",
     "description": "Use for rounding bars: ProgressBar, SliderBar, etc.",
     "components": [
-      "progress-bar"
+      "progress-bar",
+      "slider"
     ]
   },
   {
@@ -2856,8 +2855,7 @@
       "carousel",
       "drag-and-drop",
       "feedback-form",
-      "notice",
-      "notice-bubble"
+      "notice"
     ]
   },
   {
@@ -2870,6 +2868,7 @@
       "d3-chart",
       "dropdown",
       "feature-popover",
+      "notice-bubble",
       "tooltip"
     ]
   },

@@ -13,7 +13,7 @@ SSlider {
     left: 0;
     height: 4px;
     width: 100%;
-    border-radius: var(--intergalactic-control-rounded, 6px);
+    border-radius: var(--intergalactic-progress-bar-rounded, 6px);
     background-color: var(--intergalactic-border-secondary, #e0e1e9);
   }
   &:hover:before {
@@ -41,7 +41,7 @@ SBar {
   left: 0;
   overflow: hidden;
   height: 4px;
-  border-radius: var(--intergalactic-control-rounded, 6px);
+  border-radius: var(--intergalactic-progress-bar-rounded, 6px);
   box-sizing: border-box;
   background-size: 12px;
   background-color: var(--intergalactic-control-primary-info, #008ff8);
