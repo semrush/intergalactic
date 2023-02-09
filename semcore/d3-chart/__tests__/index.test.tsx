@@ -366,7 +366,7 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should render the minimum height for bars with a height of zero and close to zero', async () => {
+  test('should render the minimum height for bars with a height close to zero', async () => {
     const data = [
       { time: 0, stack1: 0 },
       { time: 1, stack1: 0.05 },
@@ -375,6 +375,31 @@ describe('Bar chart', () => {
       { time: 4, stack1: 10 },
       { time: 5, stack1: -0.05 },
       { time: 6, stack1: -0 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render Bar chart without data correctly', async () => {
+    const data = [
+      { time: 0, stack1: 0 },
+      { time: 1, stack1: null},
+      { time: 2, stack1: 10 },
+      { time: 3, stack1: null },
+      { time: 4, stack1: -0 },
     ];
 
     const component = (
@@ -407,38 +432,6 @@ describe('Bar chart', () => {
           <StackBar.Bar y="stack1" duration={0} />
           <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
         </StackBar>
-      </Plot>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should Bar support minimal height for empty value', async () => {
-    const component = (
-      <Plot
-        data={data.map((item) => {
-          item.stack1 = 0;
-          item.stack2 = 0;
-          item.stack3 = -0;
-          return item;
-        })}
-        scale={[xScale, yScale]}
-        width={width}
-        height={height}
-      >
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <GroupBar x="time">
-          <GroupBar.Bar y="stack1" duration={0} />
-          <GroupBar.Bar y="stack2" hMin={10} duration={0} color="orange" />
-          <GroupBar.Bar y="stack3" duration={0} color="green" />
-        </GroupBar>
-        <XAxis position={0} />
       </Plot>
     );
 
