@@ -45,7 +45,7 @@ Since many SVG elements don't support nesting, they are rendered sequentially. F
 </Line>
 ```
 
-CSS is responsible for all the chart styles. See [Themes](/style/themes) for more information on how to customize it.
+CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/#themes) for more information on how to customize it.
 
 @## Base
 

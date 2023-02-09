@@ -1,10 +1,8 @@
 ---
-title: When to use design tokens
+title: Usage in development
 ---
 
 @## Use for global states
-
-Design tokens are used to standardize design elements such as colors, typography, spacing, etc. across an organization. Global states refer to common visual states shared across the design system such as hover, focus, active, disabled, etc.
 
 Design tokens are ideal for global states because they help ensure consistent visual representation and behavior across the design system. Using design tokens for global states also makes it easier to update and maintain the product, as changes can be made in a centralized location.
 

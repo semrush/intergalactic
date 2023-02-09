@@ -54,7 +54,7 @@ This approach provides more flexibility:
 
 You can change the default styles for your project. We have design tokens that you can change in each component individually or globally throughout the project.
 
-We also have [a mechanism](/style/themes/) for changing our styles, this allows us to completely change the design of components and extend components with new properties.
+We also have [a mechanism](/style/design-tokens/#themes/) for changing our styles, this allows us to completely change the design of components and extend components with new properties.
 
 ### Controlled & uncontrolled
 
