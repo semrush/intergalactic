@@ -25,17 +25,17 @@ const Demo = () => {
         <Button use="primary" onClick={handleSecondOpen}>
           Open modal
         </Button>
-        <Modal visible={visibleSecond} onClose={handleSecondClose}>
-          <Text size={200} mb={3} tag="p">
-            Your changes will be lost if you don't save them.
-          </Text>
-          <Button use="primary" theme="success" onClick={handleSecondClose}>
-            Save changes
-          </Button>
-          <Button ml={2} onClick={handleSecondClose}>
-            Cancel
-          </Button>
-        </Modal>
+      </Modal>
+      <Modal visible={visibleSecond} onClose={handleSecondClose}>
+        <Text size={200} mb={3} tag="p">
+          Your changes will be lost if you don't save them.
+        </Text>
+        <Button use="primary" theme="success" onClick={handleSecondClose}>
+          Save changes
+        </Button>
+        <Button ml={2} onClick={handleSecondClose}>
+          Cancel
+        </Button>
       </Modal>
     </>
   );
