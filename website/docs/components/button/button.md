@@ -160,14 +160,15 @@ In case when you need to show that button connects or links to some other servic
 
 ![brand button](static/button-brand.png)
 
-It may also be necessary to check the manuals of the following brands:
-- [Google](https://developers.google.com/identity/branding-guidelines?hl=ru)
-- [Facebook](https://developers.facebook.com/docs/facebook-login/userexperience) or [this one](https://about.meta.com/brand/resources/facebookapp/guidelines/)
-- [Instagram](https://about.meta.com/brand/resources/instagram/instagram-brand/)
-- [LinkedIn](https://brand.linkedin.com/policies)
-- [Twitter](https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview)
-- [Youtube](https://developers.google.com/youtube/terms/branding-guidelines) or [this one](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
-- [Pinterest](https://business.pinterest.com/en-us/brand-guidelines/).
+It may also be helpful checking the following branding guidelines:
+
+- [Sign-In Branding Guidelines](https://developers.google.com/identity/branding-guidelines?hl=ru) from Google
+- [User Experience Design](https://developers.facebook.com/docs/facebook-login/userexperience) and [Brand Overview](https://about.meta.com/brand/resources/facebookapp/guidelines/) from Facebook
+- [Brand Overview](https://about.meta.com/brand/resources/instagram/instagram-brand/) from Instagram
+- [LinkedIn branding policies](https://brand.linkedin.com/policies) from LinkedIn
+- [Тут другой гайд должен быть](https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview) from Twitter
+- [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview) from Youtube
+- [How to use the Pinterest brand in your marketing](https://business.pinterest.com/en-us/brand-guidelines/) from Pinterest
 
 @## Grouped buttons
 
