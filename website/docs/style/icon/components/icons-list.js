@@ -4024,13 +4024,13 @@ const iconsList = {
       tags: ['yahoo', 'яхху', 'logo', 'лого'],
     },
     {
-      name: 'YoutubeRed',
+      name: 'YoutubeInvert',
       size: ['l', 'm'],
       group: 'Color',
       tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип'],
     },
     {
-      name: 'YoutubeAlt',
+      name: 'YoutubeColored',
       size: ['l', 'm'],
       group: 'Color',
       tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип'],

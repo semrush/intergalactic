@@ -12,7 +12,7 @@
     "transform": "pnpm icon-transform-svg",
     "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=./transform-svg-legacy.config.js && pnpm run transform --configFile=./transform-svg.config.js",
     "test": "jest",
-    "clean": "ls -d */ | egrep -v \"__tests__|src|svg|svg-new|node_modules|Stoller\" | xargs rm -rf"
+    "clean": "node clean.js"
   },
   "dependencies": {
     "@semcore/flex-box": "^4",
