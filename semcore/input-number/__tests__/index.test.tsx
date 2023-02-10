@@ -140,7 +140,7 @@ describe('InputNumber', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    expect(await snapshot(component, { selector: 'body', width: 420, height: 66 })).toMatchImageSnapshot();
   });
 
   test('Should support showControls prop', async () => {
