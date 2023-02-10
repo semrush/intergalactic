@@ -7,6 +7,7 @@ import resolveColor from '@semcore/utils/lib/color';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 import style from './style/switch.shadow.css';
 
@@ -32,6 +33,7 @@ class Switch extends Component {
   }
 
   componentWillUnmount() {
+    if (!canUseDOM()) return;
     window.removeEventListener('mouseup', this.handleMouseUp);
   }
   handleMouseUp = () => {
