@@ -160,6 +160,15 @@ In case when you need to show that button connects or links to some other servic
 
 ![brand button](static/button-brand.png)
 
+It may also be necessary to check the manuals of the following brands:
+- [Google](https://developers.google.com/identity/branding-guidelines?hl=ru)
+- [Facebook](https://developers.facebook.com/docs/facebook-login/userexperience) or [this one](https://about.meta.com/brand/resources/facebookapp/guidelines/)
+- [Instagram](https://about.meta.com/brand/resources/instagram/instagram-brand/)
+- [LinkedIn](https://brand.linkedin.com/policies)
+- [Twitter](https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview)
+- [Youtube](https://developers.google.com/youtube/terms/branding-guidelines) or [this one](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
+- [Pinterest](https://business.pinterest.com/en-us/brand-guidelines/).
+
 @## Grouped buttons
 
 To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
