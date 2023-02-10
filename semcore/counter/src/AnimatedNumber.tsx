@@ -20,12 +20,9 @@ export const AnimatedNumber = <Tag extends ((keyof JSX.IntrinsicElements) | Reac
 } & (Tag extends React.FC ? ReactFCProps<Tag> : Tag extends React.ComponentClass ? ReactComponentProps<Tag> : Tag extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[Tag] : {})
 ): React.ReactNode => {
   const ref = React.useRef(null);
+  const { easing = easeInOutSine, formatValue = defaultFormatValue, duration = 300, delay = 0, initValue = 0, value, ...restProps } = props;
   const Tag: any = props.tag ?? 'div';
-  const formatValue = props.formatValue ?? defaultFormatValue;
-  const easing = props.easing ?? easeInOutSine;
-  const duration = props.duration ?? 300;
-  const delay = props.delay ?? 0;
-  const animationRef = React.useRef({ animationStart: -1, animationFrame: -1, fromValue: props.initValue ?? 0, toValue: props.value });
+  const animationRef = React.useRef({ animationStart: -1, animationFrame: -1, fromValue: initValue, toValue: value });
   const handleNextAnimationFrame = React.useCallback(() => {
     if (!ref.current) return;
     if (Date.now() - animationRef.current.animationStart > delay) {
@@ -44,12 +41,11 @@ export const AnimatedNumber = <Tag extends ((keyof JSX.IntrinsicElements) | Reac
   }, [easing, formatValue, duration, delay]);
   React.useLayoutEffect(() => {
     ref.current.innerText = formatValue(animationRef.current.fromValue);
-    animationRef.current.toValue = props.value;
+    animationRef.current.toValue = value;
     animationRef.current.animationStart = Date.now();
     handleNextAnimationFrame();
     return () => cancelAnimationFrame(animationRef.current.animationFrame)
-  }, [handleNextAnimationFrame, props.value]);
+  }, [handleNextAnimationFrame, value]);
 
-
-  return <Tag ref={ref}>{formatValue(props.value)}</Tag>
+  return <Tag ref={ref} {...restProps}>{formatValue(value)}</Tag>
 };
