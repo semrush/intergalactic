@@ -24,17 +24,17 @@ export interface IAnimatedNumberBaseProps {
 }
 
 export const AnimatedNumber = <
-  Tag extends keyof JSX.IntrinsicElements | React.Component | React.FC,
+  Tag extends keyof JSX.IntrinsicElements | React.ComponentClass | React.FC,
 >(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   props: IAnimatedNumberBaseProps & {
     tag?: Tag;
-  } & (Tag extends keyof JSX.IntrinsicElements
-      ? JSX.IntrinsicElements[Tag]
-      : Tag extends React.Component
-      ? ReactComponentProps<Tag>
-      : Tag extends React.FC
+  } & (Tag extends React.FC
       ? ReactFCProps<Tag>
+      : Tag extends React.ComponentClass
+      ? ReactComponentProps<Tag>
+      : Tag extends keyof JSX.IntrinsicElements
+      ? JSX.IntrinsicElements[Tag]
       : {}),
 ) => React.ReactNode;
 
