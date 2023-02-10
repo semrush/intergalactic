@@ -75,7 +75,7 @@ SStepper {
 
 SStepNumber {
   display: inline-block;
-  min-width: 24px;
+  min-width: 20px;
 }
 
 SCompleted {
