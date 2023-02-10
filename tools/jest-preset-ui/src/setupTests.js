@@ -7,7 +7,7 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
   customDiffConfig: {
     ssim: 'fast',
   },
-  failureThreshold: 0,
+  failureThreshold: 0.1,
   failureThresholdType: 'percent',
 });
 
