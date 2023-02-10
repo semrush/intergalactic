@@ -2,7 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.8.1] - 2023-02-09
+## [3.9.0] - 2023-02-09
+
+### BREAK
+
+- Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
+- Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
 
 ## [3.8.0] - 2023-01-20
 

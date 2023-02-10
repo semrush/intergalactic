@@ -49,6 +49,7 @@ semcore/icon/**/*.d.ts
 !semcore/icon/src/**/*.js
 !semcore/icon/**/*.config.js
 !semcore/icon/src/**/*.d.ts
+!semcore/icon/clean.js
 
 # Illustration
 semcore/illustration/**/*.js
@@ -61,3 +62,5 @@ semcore/illustration/**/*.d.ts
 # Fix
 
 !semcore/icon/Stoller/**
+!semcore/icon/color/YoutubeAlt/**
+!semcore/icon/color/YoutubeRed/**
