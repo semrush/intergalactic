@@ -18,7 +18,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest-axe": "6.0.0",
     "jest-canvas-mock": "2.4.0",
-    "jest-image-snapshot": "6.1.0",
+    "jest-image-snapshot": "2.9.0",
     "react": "*",
     "react-dom": "*",
     "request": "2.88.2"

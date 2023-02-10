@@ -2,14 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.13] - 2023-02-10
+
+### Fixed
+
+- Fixed display of `Bar` with height 0 - it is should not be rendered.
+
 ## [2.8.12] - 2023-02-09
 
 ### Changed
 
 - Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
-### Fixed
-
-- Fixed display of `Bar` with height 0 - it is should not be rendered.
 
 ## [2.8.11] - 2023-01-27
 
