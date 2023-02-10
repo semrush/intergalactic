@@ -28,5 +28,4 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['/generator-component/'],
   testEnvironment: 'jsdom',
-  reporters: ['default', 'jest-image-snapshot/src/outdated-snapshot-reporter.js'],
 };
