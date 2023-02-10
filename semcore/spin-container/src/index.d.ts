@@ -1,6 +1,7 @@
 import { PropGetterFn, ReturnEl, CProps } from '@semcore/core';
 import { ISpinProps } from '@semcore/spin';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { IBoxProps } from '@semcore/flex-box';
+import { IFadeInOutProps } from '@semcore/animation';
 
 export interface ISpinContainerProps extends IBoxProps, ISpinProps {
   /**
@@ -17,6 +18,8 @@ export interface ISpinContainerProps extends IBoxProps, ISpinProps {
   loading?: boolean;
 }
 
+export interface ISpinOverlayProps extends IBoxProps, IFadeInOutProps {}
+
 export interface ISpinContainerContext {
   getOverlayProps: PropGetterFn;
 }
@@ -31,7 +34,7 @@ export interface ISpinContainerOverlayProps extends IBoxProps {
 declare const SpinContainer: (<T>(
   props: CProps<ISpinContainerProps & T, ISpinContainerContext>,
 ) => ReturnEl) & {
-  Content: typeof Box;
+  Content: <T>(props: CProps<ISpinOverlayProps> & T) => ReturnEl;
   Overlay: <T>(props: ISpinContainerOverlayProps & T) => ReturnEl;
 };
 

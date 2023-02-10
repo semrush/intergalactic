@@ -33,6 +33,10 @@ export interface IAnimationProps extends IBoxProps {
    * @default ease-out
    */
   timingFunction?: CssTimingFunction;
+  /**
+   * @default false
+   */
+  animationsDisabled?: boolean;
 }
 
 export interface ICollapseProps extends IAnimationProps {

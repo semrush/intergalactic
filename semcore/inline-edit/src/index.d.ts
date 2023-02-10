@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropGetterFn } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
+import { IFadeInOutProps } from '@semcore/animation';
 
 /* utils type */
 type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
@@ -29,8 +30,8 @@ export interface IInlineEditProps extends IBoxProps {
   locale?: string;
 }
 
-export interface IInlineEditViewProps extends IBoxProps {}
-export interface IInlineEditEditProps extends IBoxProps {}
+export interface IInlineEditViewProps extends IBoxProps, IFadeInOutProps {}
+export interface IInlineEditEditProps extends IBoxProps, IFadeInOutProps {}
 
 interface IInputCtx {
   getViewProps: PropGetterFn;

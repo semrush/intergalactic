@@ -1,10 +1,11 @@
 import { CProps, ReturnEl } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
+import { IFadeInOutProps } from '@semcore/animation';
 
 export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral' | string;
 
-export interface INoticeGlobalProps {
+export interface INoticeGlobalProps extends IFadeInOutProps {
   /**
    * Notice theme
    * @default neutral

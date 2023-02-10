@@ -1,11 +1,9 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
-import { useAnimationControlContext } from '../AnimationControlProvider';
 import { useForkRef } from '../ref';
 
-export interface IWithAutoFocusEnhanceProps {
-  /** Native autofocus, but with support for working inside modals, you can also transmit the number of ms before focus is triggered */
-  autoFocus?: Boolean | Number;
+export interface IWithAnimatedSizeEnhanceProps {
+  animationsDisabled?: boolean
 }
 
 let uniqueId = 0;
@@ -23,14 +21,11 @@ function animatedSizeEnhance({
     const lastSizesRef = React.useRef<number[]>([]);
     const prevPropsRef = React.useRef(props);
     const animatedSizeInstanceIdRef = React.useRef(uniqueId++);
-    const animationControl = useAnimationControlContext();
 
     prevPropsRef.current = props;
 
     React.useLayoutEffect(() => {
-      if (animationControl === 'animations-disabled') {
-        return;
-      }
+      if (props.animationsDisabled) return;
       if (
         __animatedEnhanceInstanceId !== undefined &&
         __animatedEnhanceInstanceId !== animatedSizeInstanceIdRef.current
@@ -88,7 +83,7 @@ function animatedSizeEnhance({
       };
     }, [
       __animatedEnhanceInstanceId,
-      animationControl,
+      props.animationsDisabled,
       ...onChangeOf.map((propName) => props[propName]),
     ]);
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { WithAnimationControl } from '@semcore/utils/lib/AnimationControlProvider';
 
 import style from './style/animate.shadow.css';
 
@@ -19,6 +18,7 @@ class Animation extends Component {
     keyframes: [],
     initialAnimation: false,
     timingFunction: 'ease-out',
+    animationsDisabled: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -43,11 +43,10 @@ class Animation extends Component {
 
   render() {
     const SAnimation = Root;
-    const { styles, keyframes, initialAnimation, timingFunction, animationControl } = this.asProps;
-    const duration =
-      animationControl === 'animations-disabled' ? [0, 0] : propToArray(this.asProps.duration);
-    const delay =
-      animationControl === 'animations-disabled' ? [0, 0] : propToArray(this.asProps.delay);
+    const { styles, keyframes, initialAnimation, timingFunction, animationsDisabled } =
+      this.asProps;
+    const duration = animationsDisabled ? [0, 0] : propToArray(this.asProps.duration);
+    const delay = animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
     const { render, wasInvisible } = this.state;
 
     if (!render) return null;
@@ -68,4 +67,4 @@ class Animation extends Component {
   }
 }
 
-export default WithAnimationControl(createComponent(Animation));
+export default createComponent(Animation);
