@@ -106,7 +106,7 @@ class ModalRoot extends Component {
 }
 
 const FocusLockWrapper = React.forwardRef(function (props, ref) {
-  return <FocusLock ref={ref} as={Slide} lockProps={props} {...props} />;
+  return <FocusLock ref={ref} {...props} />;
 });
 
 function Window(props) {
@@ -116,21 +116,19 @@ function Window(props) {
 
   return sstyled(styles)(
     <SWindow
-      render={FocusLockWrapper}
+      render={Slide}
       initialAnimation={true}
       slideOrigin="top"
       visible={visible}
-      ref={windowRef}
-      returnFocus={true}
-      tabIndex={-1}
-      autoFocus={true}
       role="dialog"
       aria-modal={true}
     >
-      <PortalProvider value={windowRef}>
-        {closable && <Modal.Close />}
-        <Children />
-      </PortalProvider>
+      <FocusLockWrapper returnFocus={true} autoFocus={true} ref={windowRef} tabIndex={-1}>
+        <PortalProvider value={windowRef}>
+          {closable && <Modal.Close />}
+          <Children />
+        </PortalProvider>
+      </FocusLockWrapper>
     </SWindow>,
   );
 }

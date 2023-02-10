@@ -118,9 +118,7 @@ function Overlay(props) {
 }
 
 const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, ...other }, ref) {
-  return (
-    <FocusLock ref={ref} as={Slide} lockProps={other} disabled={disableEnforceFocus} {...other} />
-  );
+  return <FocusLock ref={ref} lockProps={other} disabled={disableEnforceFocus} {...other} />;
 });
 
 function Panel(props) {
@@ -138,25 +136,24 @@ function Panel(props) {
     <>
       {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
       <SPanel
-        render={FocusLockWrapper}
+        render={Slide}
         visible={visible}
         initialAnimation={true}
         slideOrigin={placement}
         ref={sidebarRef}
-        tabIndex={-1}
-        returnFocus={true}
-        autoFocus={true}
       >
-        <PortalProvider value={sidebarRef}>
-          {closable && <SidePanel.Close />}
-          {advanceMode ? (
-            <Children />
-          ) : (
-            <SidePanel.Body>
+        <FocusLockWrapper tabIndex={-1} returnFocus={true} autoFocus={true}>
+          <PortalProvider value={sidebarRef}>
+            {closable && <SidePanel.Close />}
+            {advanceMode ? (
               <Children />
-            </SidePanel.Body>
-          )}
-        </PortalProvider>
+            ) : (
+              <SidePanel.Body>
+                <Children />
+              </SidePanel.Body>
+            )}
+          </PortalProvider>
+        </FocusLockWrapper>
       </SPanel>
     </>,
   );

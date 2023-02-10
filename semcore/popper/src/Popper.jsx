@@ -439,7 +439,6 @@ const FocusLockWrapper = React.forwardRef(function (
   return (
     <FocusLock
       ref={useForkRef(popperRef, ref)}
-      as={Scale}
       disabled={disableEnforceFocus || nodesLock || eventLock}
       lockProps={lockProps}
       returnFocus={returnFocus}
@@ -469,16 +468,11 @@ function PopperPopper(props) {
     <Portal disablePortal={disablePortal}>
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
-          render={FocusLockWrapper}
+          render={Scale}
           visible={visible}
           duration={[100, 50]}
           ref={ref}
-          disableEnforceFocus={disableEnforceFocus}
           shards={[triggerRef]}
-          returnFocus={interaction === 'click'}
-          returnFocusRef={triggerRef}
-          autoFocus={false}
-          tabIndex={0}
           onClick={handlerStopPropagation}
           onContextMenu={handlerStopPropagation}
           onDoubleClick={handlerStopPropagation}
@@ -506,9 +500,17 @@ function PopperPopper(props) {
           onReset={handlerStopPropagation}
           onSubmit={handlerStopPropagation}
         >
-          <PortalProvider value={ref}>
-            <Children />
-          </PortalProvider>
+          <FocusLockWrapper
+            disableEnforceFocus={disableEnforceFocus}
+            returnFocus={interaction === 'click'}
+            returnFocusRef={triggerRef}
+            autoFocus={false}
+            tabIndex={0}
+          >
+            <PortalProvider value={ref}>
+              <Children />
+            </PortalProvider>
+          </FocusLockWrapper>
         </SPopper>
       </NeighborLocation>
     </Portal>,
