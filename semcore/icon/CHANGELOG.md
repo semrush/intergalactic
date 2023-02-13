@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.0] - 2023-02-13
+
+### Added
+
+- Added `JavaScript` icon.
+
 ## [3.9.0] - 2023-02-09
 
 ### BREAK

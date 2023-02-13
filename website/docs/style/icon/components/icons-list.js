@@ -3951,6 +3951,12 @@ const iconsList = {
       tags: ['hubspot', 'хабспот', 'logo', 'лого'],
     },
     {
+      name: 'JavaScript',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['logo', 'лого', 'js', 'javascript', 'джава', 'скрипт'],
+    },
+    {
       name: 'LookerStudio',
       size: ['l', 'm'],
       group: 'Color',
