@@ -1,3 +1,150 @@
+## [13.7.0] - 2023-02-13
+
+### @semcore/icon
+
+- **BREAK** Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
+- **BREAK** Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
+
+### @semcore/badge
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-badge-rounded`).
+
+### @semcore/base-trigger
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/breadcrumbs
+
+- **Fixed** Fixed hovered state color.
+
+### @semcore/button
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/card
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/carousel
+
+- **Changed** Split rounding design tokens (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded` and `--intergalactic-control-rounded`).
+
+### @semcore/checkbox
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-addon-rounded`).
+
+### @semcore/counter
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-counter-rounded`).
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed display of `Bar` with height 0 - it is should not be rendered.
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/date-picker
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/divider
+
+- **Fixed** Fixed inverted state colors.
+
+### @semcore/dot
+
+- **Fixed** Fixed `m` and `l` sizes rounding.
+
+### @semcore/drag-and-drop
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-surface-rounded`).
+
+### @semcore/dropdown
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/dropdown-menu
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/feature-popover
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/feedback-form
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/input
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/modal
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+
+### @semcore/notice
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/notice-bubble
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/pills
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/progress-bar
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-progress-bar-rounded`).
+
+### @semcore/scroll-area
+
+- **Fixed** Fixed scroll bars rounding (`3px` -> `4px`).
+
+### @semcore/select
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/slider
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-progress-bar-rounded`).
+
+### @semcore/switch
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-extra-large` -> `--intergalactic-switch-rounded`).
+
+### @semcore/tab-panel
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/tag
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-extra-large` -> `--intergalactic-tag-rounded`).
+
+### @semcore/textarea
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/time-picker
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/tooltip
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/utils
+
+- **Changed** Changed design tokens facebook color (`#3b5998` -> `#1877f2`).
+- **Changed** Changed design tokens linkedIn color (`#1a7ab2` -> `#0a66c2`).
+- **Changed** Changed design tokens twitter color (`#2bafeb` -> `#1d9bf0`).
+
+### @semcore/wizard
+
+- **Fixed** Fixed issue with scroll on small screen
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`, `--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+
 ## [13.6.2] - 2023-02-07
 
 ### @semcore/carousel
