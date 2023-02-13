@@ -166,7 +166,7 @@ It may also be helpful checking the following branding guidelines:
 - Facebook — [User Experience Design](https://developers.facebook.com/docs/facebook-login/userexperience) and [Brand Overview](https://about.meta.com/brand/resources/facebookapp/guidelines/)
 - Instagram — [Brand Overview](https://about.meta.com/brand/resources/instagram/instagram-brand/)
 - LinkedIn — [LinkedIn branding policies](https://brand.linkedin.com/policies)
-- Twitter — [Тут другой гайд должен быть](https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview)
+- Twitter — [Brand Guidelines](https://about.twitter.com/en/who-we-are/brand-toolkit)
 - Youtube — [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
 - Pinterest — [How to use the Pinterest brand in your marketing](https://business.pinterest.com/en-us/brand-guidelines/)
 
