@@ -2,22 +2,37 @@ import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
+import { useForkRef } from '@semcore/utils/lib/ref';
 
 function Scale(props, ref) {
+  const [placement, setPlacement] = React.useState(props.placement);
   const keyframesKey = React.useMemo(() => {
-    if (props.placement.startsWith('left')) return 'left';
-    if (props.placement.startsWith('right')) return 'right';
-    if (props.placement.startsWith('bottom')) return 'bottom';
-    if (props.placement.startsWith('top')) return 'top';
+    if (placement.startsWith('left')) return 'scale-left';
+    if (placement.startsWith('right')) return 'scale-right';
+    if (placement.startsWith('bottom')) return 'scale-bottom';
+    if (placement.startsWith('top')) return 'scale-top';
 
-    return 'top';
-  }, [props.placement]);
+    return 'opacity';
+  }, [placement]);
+
+  const popperCheckRef = React.useRef();
+  const forkedRef = useForkRef(ref, popperCheckRef);
+
+  React.useEffect(() => {
+    if (placement && placement !== 'auto') return;
+    if (!popperCheckRef.current) return;
+    const timeout = setTimeout(() => {
+      const placement = popperCheckRef.current.dataset.popperPlacement;
+      if (placement) setPlacement(placement);
+    }, 0);
+    return () => clearTimeout(timeout);
+  }, [props.visible]);
 
   return sstyled(style)(
     <Animation
-      ref={ref}
+      ref={forkedRef}
       {...props}
-      keyframes={[style[`@scale-${keyframesKey}-in`], style[`@scale-${keyframesKey}-out`]]}
+      keyframes={[style[`@${keyframesKey}-in`], style[`@${keyframesKey}-out`]]}
     />,
   );
 }

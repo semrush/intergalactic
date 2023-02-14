@@ -31,10 +31,26 @@
     opacity: 0;
   }
 }
+@keyframes opacity-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opacity-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 @keyframes scale-left-in {
   from {
     opacity: 0;
-    transform: translateX(20px) scaleX(0.6);
+    transform: translateX(20px) scaleX(0.9);
   }
   to {
     opacity: 1;
@@ -44,7 +60,7 @@
 @keyframes scale-right-in {
   from {
     opacity: 0;
-    transform: translateX(-20px) scaleX(0.6);
+    transform: translateX(-20px) scaleX(0.9);
   }
   to {
     opacity: 1;
@@ -54,7 +70,7 @@
 @keyframes scale-top-in {
   from {
     opacity: 0;
-    transform: translateY(20px) scaleY(0.6);
+    transform: translateY(20px) scaleY(0.9);
   }
   to {
     opacity: 1;
@@ -64,7 +80,7 @@
 @keyframes scale-bottom-in {
   from {
     opacity: 0;
-    transform: translateY(-20px) scaleY(0.6);
+    transform: translateY(-20px) scaleY(0.9);
   }
   to {
     opacity: 1;
@@ -74,7 +90,7 @@
 @keyframes scale-left-out {
   to {
     opacity: 0;
-    transform: translateX(20px) scaleX(0.6);
+    transform: translateX(20px) scaleX(0.9);
   }
   from {
     opacity: 1;
@@ -84,7 +100,7 @@
 @keyframes scale-right-out {
   to {
     opacity: 0;
-    transform: translateX(-20px) scaleX(0.6);
+    transform: translateX(-20px) scaleX(0.9);
   }
   from {
     opacity: 1;
@@ -94,7 +110,7 @@
 @keyframes scale-top-out {
   to {
     opacity: 0;
-    transform: translateY(20px) scaleY(0.6);
+    transform: translateY(20px) scaleY(0.9);
   }
   from {
     opacity: 1;
@@ -104,7 +120,7 @@
 @keyframes scale-bottom-out {
   to {
     opacity: 0;
-    transform: translateY(-20px) scaleY(0.6);
+    transform: translateY(-20px) scaleY(0.9);
   }
   from {
     opacity: 1;
