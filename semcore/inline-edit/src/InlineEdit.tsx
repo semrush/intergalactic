@@ -96,7 +96,7 @@ const Edit: React.FC<AsProps> = (props) => {
     <SEdit
       render={FadeInOut}
       visible={visible}
-      duration={200}
+      duration={parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration'))}
       aria-hidden={!visible}
       exiting={!visible}
     />,

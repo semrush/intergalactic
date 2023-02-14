@@ -470,7 +470,10 @@ function PopperPopper(props) {
         <SPopper
           render={Scale}
           visible={visible}
-          duration={[100, 50]}
+          duration={[
+            parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
+            parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')) / 2,
+          ]}
           ref={ref}
           shards={[triggerRef]}
           onClick={handlerStopPropagation}

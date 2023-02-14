@@ -75,7 +75,7 @@ const Demo = () => {
             </Text>
             <Flex alignItems="baseline">
               <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                <AnimatedNumber value={247653} formatValue={Math.round} />
+                <AnimatedNumber value={24765} formatValue={Math.round} />
               </Text>
               <Text size={100} color="gray-500" tag="p">
                 no change

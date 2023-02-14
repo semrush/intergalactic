@@ -23,7 +23,7 @@ const Notices = (props) => {
         key={notice.uid}
         initialAnimation={notice.initialAnimation}
         visible={notice.visible === undefined ? true : notice.visible}
-        duration={250}
+        duration={parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration'))}
         keyframes={[styles['@enter'], styles['@exit']]}
       >
         <SView {...notice} styles={notice.styles || styles} getI18nText={props.getI18nText} />

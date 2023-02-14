@@ -34,7 +34,7 @@
 @keyframes scale-left-in {
   from {
     opacity: 0;
-    transform: translateX(40%) scaleX(0.6);
+    transform: translateX(20px) scaleX(0.6);
   }
   to {
     opacity: 1;
@@ -44,7 +44,7 @@
 @keyframes scale-right-in {
   from {
     opacity: 0;
-    transform: translateX(-40%) scaleX(0.6);
+    transform: translateX(-20px) scaleX(0.6);
   }
   to {
     opacity: 1;
@@ -54,7 +54,7 @@
 @keyframes scale-top-in {
   from {
     opacity: 0;
-    transform: translateY(40%) scaleY(0.6);
+    transform: translateY(20px) scaleY(0.6);
   }
   to {
     opacity: 1;
@@ -64,7 +64,7 @@
 @keyframes scale-bottom-in {
   from {
     opacity: 0;
-    transform: translateY(-40%) scaleY(0.6);
+    transform: translateY(-20px) scaleY(0.6);
   }
   to {
     opacity: 1;
@@ -74,7 +74,7 @@
 @keyframes scale-left-out {
   to {
     opacity: 0;
-    transform: translateX(40%) scaleX(0.6);
+    transform: translateX(20px) scaleX(0.6);
   }
   from {
     opacity: 1;
@@ -84,7 +84,7 @@
 @keyframes scale-right-out {
   to {
     opacity: 0;
-    transform: translateX(-40%) scaleX(0.6);
+    transform: translateX(-20px) scaleX(0.6);
   }
   from {
     opacity: 1;
@@ -94,7 +94,7 @@
 @keyframes scale-top-out {
   to {
     opacity: 0;
-    transform: translateY(40%) scaleY(0.6);
+    transform: translateY(20px) scaleY(0.6);
   }
   from {
     opacity: 1;
@@ -104,7 +104,7 @@
 @keyframes scale-bottom-out {
   to {
     opacity: 0;
-    transform: translateY(-40%) scaleY(0.6);
+    transform: translateY(-20px) scaleY(0.6);
   }
   from {
     opacity: 1;
@@ -114,7 +114,7 @@
 @keyframes slide-top-in {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-100px);
   }
   to {
     opacity: 1;
@@ -128,13 +128,13 @@
   }
   to {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-100px);
   }
 }
 @keyframes slide-bottom-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(100px);
   }
   to {
     opacity: 1;
@@ -148,13 +148,13 @@
   }
   to {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(100px);
   }
 }
 @keyframes slide-left-in {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-100px);
   }
   to {
     opacity: 1;
@@ -168,13 +168,13 @@
   }
   to {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-100px);
   }
 }
 @keyframes slide-right-in {
   from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(100px);
   }
   to {
     opacity: 1;
@@ -188,7 +188,7 @@
   }
   to {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(100px);
   }
 }
 @keyframes transform-enter {

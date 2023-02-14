@@ -70,7 +70,7 @@ function animatedSizeEnhance({
         if (!nodeRef.current) return;
         nodeRef.current.addEventListener('transitionend', handleTransitionEnd);
         nodeRef.current.addEventListener('transitioncancel', handleTransitionEnd);
-        nodeRef.current.style.transition = '0.1s all';
+        nodeRef.current.style.transition = 'var(--dev_test_animations_duration, 200ms) all ease-in-out';
         for (let i = 0; i < animateProps.length; i++) {
           lastSizesRef.current[i] = sizes[i];
           nodeRef.current.style[animateProps[i]] = sizes[i] + 'px';

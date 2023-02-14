@@ -65,22 +65,22 @@ class RootSidePanel extends Component {
   }
 
   getOverlayProps() {
-    const { visible, duration } = this.asProps;
+    const { visible /*, duration*/ } = this.asProps;
     return {
       visible,
-      duration,
+      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
       delay: this.calculateDelayAnimation('overlay'),
     };
   }
 
   getPanelProps() {
-    const { placement, visible, closable, duration } = this.asProps;
+    const { placement, visible, closable /*, duration*/ } = this.asProps;
 
     return {
       visible,
       placement,
       closable,
-      duration,
+      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
       disableEnforceFocus: !this.isUsedOverlay(),
       delay: this.calculateDelayAnimation('panel'),
       onOutsideClick: this.handleOutsideClick,

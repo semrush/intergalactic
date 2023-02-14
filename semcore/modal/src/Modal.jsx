@@ -44,16 +44,16 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { duration, visible } = this.asProps;
+    const { /*duration,*/ visible } = this.asProps;
     return {
-      duration,
+      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
       visible,
       onOutsideClick: this.handleOutsideClick,
     };
   }
 
   getWindowProps() {
-    const { visible, closable, getI18nText, uid } = this.asProps;
+    const { visible, closable, getI18nText, uid /*duration*/ } = this.asProps;
     const { hasTitle } = this.state;
     return {
       visible,
@@ -61,6 +61,7 @@ class ModalRoot extends Component {
       onKeyDown: this.handleKeyDown,
       'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
+      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
     };
   }
 
@@ -111,7 +112,7 @@ const FocusLockWrapper = React.forwardRef(function (props, ref) {
 
 function Window(props) {
   const SWindow = Root;
-  const { Children, styles, visible, closable } = props;
+  const { Children, styles, visible, closable, duration } = props;
   const windowRef = useRef(null);
 
   return sstyled(styles)(
@@ -122,6 +123,7 @@ function Window(props) {
       visible={visible}
       role="dialog"
       aria-modal={true}
+      duration={duration}
     >
       <FocusLockWrapper returnFocus={true} autoFocus={true} ref={windowRef} tabIndex={-1}>
         <PortalProvider value={windowRef}>

@@ -14,7 +14,7 @@ SItemToggle[disabled] {
 
 SItemChevron {
   transform: rotate(0deg);
-  transition: transform 250ms ease-out;
+  transition: transform var(--dev_test_animations_duration, 200ms) ease-out;
 
   &[selected] {
     transform: rotate(90deg);

@@ -14,11 +14,19 @@ import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
+import Input from '@semcore/input';
+import Button from '@semcore/button';
 import { logEvent } from '../utils/amplitude';
 
 function Header(props) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
+  const [animationsDuration, setAnimationsDurations] = useState(200);
+  const applyAnimationsDuration = React.useCallback(() => {
+    document.body.style.setProperty('--dev_test_animations_duration', `${animationsDuration}ms`);
+  }, [animationsDuration]);
+  React.useEffect(applyAnimationsDuration, []);
+
   return (
     <header className={styles.header}>
       <div className={styles.headerMain}>
@@ -76,6 +84,13 @@ function Header(props) {
         ) : (
           <SearchL onClick={() => setSearchVisible(true)} />
         )}
+      </div>
+      <div className={styles.tmp}>
+        All animations duration (ms):
+        <Input w={100} mx={2}>
+          <Input.Value type="number" value={animationsDuration} onChange={setAnimationsDurations} />
+        </Input>
+        <Button onClick={applyAnimationsDuration}>Apply</Button>
       </div>
       <nav className={styles.nav} aria-label="Relevant links">
         <Tooltip>
