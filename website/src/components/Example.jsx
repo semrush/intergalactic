@@ -9,12 +9,14 @@ import { logEvent } from '../utils/amplitude';
 class Example extends React.PureComponent {
   render() {
     const { raw, children } = this.props;
-    const [category, component, , exampleName] = raw.path.split('/');
+    const [category, component, , exampleName] = raw.path
+      ? raw.path.split('/')
+      : [undefined, undefined, undefined, undefined];
     const eventProperties = {
       group: 'int_patterns',
       category,
       component,
-      example: exampleName.slice(exampleName.length - 4),
+      example: exampleName ? exampleName.slice(exampleName.length - 4) : undefined,
     };
     return (
       <div className={`example ${styles.exampleWrapper}`}>
