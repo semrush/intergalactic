@@ -17,7 +17,7 @@ const dataToLzCompressedJson = (data) => {
   return base64;
 };
 
-export default ({ raw: { code: ExampleRawComponent, path } }) => {
+export default ({ raw: { code: ExampleRawComponent, path }, onClick }) => {
   const dependencies = {};
   const lines = ExampleRawComponent.split('\n');
   for (const line of lines) {
@@ -67,6 +67,7 @@ ${ExampleRawComponent}`,
   });
 
   const openHandler = useCallback(() => {
+    onClick();
     if (window.dataLayer) {
       dataLayer.push({
         event: 'semrush',

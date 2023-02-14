@@ -6,17 +6,29 @@ import ChevronRightXS from '@semcore/icon/ChevronRight/m';
 import WarningM from '@semcore/icon/Warning/m';
 import Tooltip from '@semcore/tooltip';
 import cx from 'classnames';
+import { logEvent } from '../utils/amplitude';
 import styles from './SideBarNavigation.module.css';
 
 const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   const { category, page } = useParams();
   const [collapseCategories, setCollapseCategories] = useState([category]);
-  const handleClick = (currentCategory) => {
+  const handleClickCategory = (currentCategory) => {
+    logEvent('left_menu:click', {
+      group: 'int_main',
+      label: currentCategory,
+    });
     if (collapseCategories.includes(currentCategory.route)) {
       setCollapseCategories(collapseCategories.filter((route) => route !== currentCategory.route));
     } else {
       setCollapseCategories(collapseCategories.concat(currentCategory.route));
     }
+  };
+  const handleClickCategoryItem = (categoryItem) => {
+    onNavigate ? onNavigate() : undefined;
+    logEvent('left_menu:click', {
+      group: 'int_main',
+      label: categoryItem,
+    });
   };
 
   return (
@@ -29,10 +41,10 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
               className={cx(styles.categoryContainer, styles.categoryTitle)}
               key={`category-${i}`}
               tabIndex={0}
-              onClick={() => handleClick(currentCategory)}
+              onClick={() => handleClickCategory(currentCategory)}
               onKeyDown={() => {
                 if (event.code === 'Enter' || event.code === 'Space') {
-                  handleClick(currentCategory);
+                  handleClickCategory(currentCategory);
                 }
               }}
             >
@@ -54,27 +66,27 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
               )}
             </div>
             <IF condition={isOpen} key={`if-${i}`}>
-              {currentCategory.children.map((p, i) => {
+              {currentCategory.children.map((item, i) => {
                 return (
                   <div
                     className={cx(
                       styles.categoryContainer,
-                      p.route === `${category}/${page}` && styles.categoryItemActive,
+                      item.route === `${category}/${page}` && styles.categoryItemActive,
                     )}
                     key={`icon-container-${i}`}
                   >
                     <Link
                       className={cx(
                         styles.categoryItem,
-                        p.metadata.disabled && styles.categoryItemDisabled,
+                        item.metadata.disabled && styles.categoryItemDisabled,
                       )}
-                      onClick={onNavigate}
-                      to={`/${p.route}/`}
+                      onClick={() => handleClickCategoryItem(item)}
+                      to={`/${item.route}/`}
                       key={`page-${i}`}
-                      aria-disabled={!!p.metadata.disabled}
-                      dangerouslySetInnerHTML={{ __html: p.title }}
+                      aria-disabled={!!item.metadata.disabled}
+                      dangerouslySetInnerHTML={{ __html: item.title }}
                     />
-                    {!!p.metadata.deprecated && (
+                    {!!item.metadata.deprecated && (
                       <Tooltip title="Deprecated component">
                         <WarningM className={styles.categoryIcon} />
                       </Tooltip>

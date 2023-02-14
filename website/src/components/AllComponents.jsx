@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { routes } from '@navigation';
+import { logEvent } from '../utils/amplitude';
 import styles from './AllComponents.module.css';
 
 const List = ({ navigation = [] }) => {
@@ -20,6 +21,13 @@ const List = ({ navigation = [] }) => {
                 className={styles.linkStyled}
                 to={`/${page.route}/`}
                 onMouseEnter={() => prefetch(page.route)}
+                onClick={() =>
+                  logEvent('initial_principles:click', {
+                    group: 'int_main',
+                    block: category.title,
+                    label: page.title,
+                  })
+                }
               >
                 {page.title}
               </Link>
