@@ -96,10 +96,10 @@ export const Docs = ({ route, tokens, tabs, pageTitle }) => {
                 type="tab"
                 className={styles.tabLineItem}
                 onClick={() =>
-                  logEvent(`tab_${(tab.metadata.tabName || tab.title).toLowerCase()}:click`, {
+                  logEvent('tab:click', {
                     group: 'int_patterns',
                     page: pageTitle,
-                    tab,
+                    tab: (tab.metadata.tabName || tab.title).toLowerCase(),
                   })
                 }
               >

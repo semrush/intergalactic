@@ -71,18 +71,13 @@ const amplitudeHttp = {
   /**
    *
    * @param {string} apiKey
-   * @param {string} userId
    * @param {object} options
    * @param {function|undefined} options.getExternalConsentStatusCb
    * @param {function|undefined} options.amplitudeFetchCb
-   * @param {boolean|undefined} options.isLogger
    * @returns {amplitudeHttp}
    */
-  init(apiKey, userId = undefined, options = {}) {
-    console.log('init');
-    console.log('apiKey', apiKey);
+  init(apiKey, options = {}) {
     this.apiKey = apiKey;
-    this.userId = userId;
     this.options = options;
     this.getExternalConsentStatusCb =
       options && typeof options.getExternalConsentStatusCb === 'function'
@@ -92,16 +87,11 @@ const amplitudeHttp = {
       options && typeof options.amplitudeFetchCb === 'function'
         ? options.amplitudeFetchCb
         : undefined;
-    this.isLogger = options ? options.isLogger : undefined;
     this.deviceId = getCookie(AMPLITUDE_COOKIE_NAME);
     this.sessionId = Date.now();
 
     if (getIsConsented(this.getExternalConsentStatusCb)) {
       this.setDeviceId();
-    }
-
-    if (this.isLogger) {
-      console.log('amplitude-client: initialized');
     }
 
     return this;
@@ -114,15 +104,11 @@ const amplitudeHttp = {
    * @returns {Promise<amplitudeHttp>}
    */
   async sendUserProperties(userProperties, method = 'set') {
-    const { apiKey, userId, deviceId, sessionId, getExternalConsentStatusCb } = this;
+    const { apiKey, deviceId, sessionId, getExternalConsentStatusCb } = this;
     let identification = '';
     const isConsentGotten = getIsConsented(getExternalConsentStatusCb);
-    const isUnregisteredUserWithoutConsent = !isConsentGotten && !userId;
 
-    if (
-      !this.areParamsCorrect(userId, deviceId, sessionId, apiKey) ||
-      isUnregisteredUserWithoutConsent
-    ) {
+    if (!this.areParamsCorrect(deviceId, sessionId, apiKey)) {
       return this;
     }
 
@@ -131,7 +117,6 @@ const amplitudeHttp = {
     try {
       identification = JSON.stringify([
         {
-          user_id: userId,
           device_id: preparedDeviceId,
           user_properties: {
             [`$${method}`]: userProperties,
@@ -153,10 +138,6 @@ const amplitudeHttp = {
       })
         .then(() => {
           resolve(this);
-
-          if (this.isLogger) {
-            console.log('amplitude-client: user properties have been sent');
-          }
         })
         .catch((error) => {
           this.handleErrorAmplitudeRequest(error);
@@ -172,19 +153,15 @@ const amplitudeHttp = {
    * @returns {Promise<amplitudeHttp>}
    */
   async logEvent(eventType, eventArguments = {}) {
-    const { apiKey, userId, deviceId, sessionId, getExternalConsentStatusCb } = this;
+    const { apiKey, deviceId, sessionId, getExternalConsentStatusCb } = this;
     const isConsentGotten = getIsConsented(getExternalConsentStatusCb);
-    const isUnregisteredUserWithoutConsent = !isConsentGotten && !userId;
     let body = '';
 
     if (isConsentGotten) {
       this.setDeviceId();
     }
 
-    if (
-      !this.areParamsCorrect(userId, deviceId, sessionId, apiKey) ||
-      isUnregisteredUserWithoutConsent
-    ) {
+    if (!this.areParamsCorrect(deviceId, sessionId, apiKey)) {
       return this;
     }
 
@@ -195,7 +172,6 @@ const amplitudeHttp = {
         device_id: preparedDeviceId,
         session_id: preparedSessionId,
         event_type: eventType,
-        user_id: userId,
         ...eventArguments,
       },
     ];
@@ -213,8 +189,6 @@ const amplitudeHttp = {
       return this;
     }
 
-    console.log('body', body);
-
     fetch(AMPLITUDE_HTTP_HANDLER, {
       method: 'POST',
       headers: {
@@ -224,7 +198,7 @@ const amplitudeHttp = {
       body,
     })
       .then((response) => {
-        if (this.isLogger && response && response.code !== 400) {
+        if (response && response.code !== 400) {
           console.log(`amplitude-client: ${JSON.stringify(events)}`);
         }
       })
@@ -245,14 +219,13 @@ const amplitudeHttp = {
 
   /**
    * Check all params that were set during the initialization
-   * @param userId
    * @param deviceId
    * @param sessionId
    * @param apiKey
    * @returns {boolean}
    */
-  areParamsCorrect(userId, deviceId, sessionId, apiKey) {
-    if (!(userId || deviceId) && !sessionId) {
+  areParamsCorrect(deviceId, sessionId, apiKey) {
+    if (!deviceId && !sessionId) {
       console.error('amplitude-client: please call init function before');
       return false;
     }

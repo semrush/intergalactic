@@ -7,7 +7,7 @@ export const initAmplitude = () => {
     return;
   }
 
-  amplitudeHttp.init(apiKey, undefined);
+  amplitudeHttp.init(apiKey);
 };
 
 export const logEvent = (eventType: string, eventProperties: Record<string, any> = {}) => {
