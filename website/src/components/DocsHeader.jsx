@@ -12,6 +12,7 @@ import WarningM from '@semcore/ui/icon/Warning/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
 import RouterLink from './RouterLink.jsx';
+import { logEvent } from '../utils/amplitude';
 
 import styles from './DocsHeader.module.css';
 
@@ -24,9 +25,9 @@ const tooltipStyles = css`
   }
 `;
 
-function VersionLink({ to, version }) {
+function VersionLink({ to, version, onClick }) {
   return (
-    <RouterLink to={to} mx={1} aria-label={`Component version ${version}`}>
+    <RouterLink to={to} mx={1} aria-label={`Component version ${version}`} onClick={onClick}>
       {version}
     </RouterLink>
   );
@@ -44,7 +45,17 @@ export default function (props) {
         {version && changelogUrl && (
           <>
             <Divider orientation="vertical" h={16} m={'4px 4px 0 8px'} />
-            <VersionLink to={`/${changelogUrl}/#${version}`} version={version} />
+            <VersionLink
+              to={`/${changelogUrl}/#${version}`}
+              version={version}
+              onClick={() =>
+                logEvent('version:click', {
+                  group: 'int_comp',
+                  label: version,
+                  page: title,
+                })
+              }
+            />
           </>
         )}
         {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
@@ -60,7 +71,18 @@ export default function (props) {
       </Text>
       <Flex className={styles.overlay} mb={4} tag="nav" aria-label="External links">
         <Box mr={5}>
-          <Link size={300} color="#171A22" target="_blank" href="https://www.figma.com/@semrush">
+          <Link
+            size={300}
+            color="#171A22"
+            target="_blank"
+            href="https://www.figma.com/@semrush"
+            onClick={() =>
+              logEvent('figma_btn:click', {
+                group: 'int_charts',
+                page: title,
+              })
+            }
+          >
             <Link.Addon>
               <FigmaM />
             </Link.Addon>
@@ -74,6 +96,12 @@ export default function (props) {
                 color="#171A22"
                 target="_blank"
                 href={`https://www.npmjs.com/package/@semcore/ui`}
+                onClick={() =>
+                  logEvent('npm_btn:click', {
+                    group: 'int_table',
+                    page: title,
+                  })
+                }
               >
                 <Link.Addon>
                   <BracketsCodeM />
@@ -87,6 +115,12 @@ export default function (props) {
                 color="#171A22"
                 target="_blank"
                 href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
+                onClick={() =>
+                  logEvent('github_btn:click', {
+                    group: 'int_filter',
+                    page: title,
+                  })
+                }
               >
                 <Link.Addon>
                   <GitHubM width={18} height={18} />
@@ -106,6 +140,12 @@ export default function (props) {
                 color="#171A22"
                 target="_blank"
                 href={`https://github.com/semrush/intergalactic/edit/master/website/docs/${sourcePath}`}
+                onClick={() =>
+                  logEvent('edit_page_btn:click', {
+                    group: 'int_filter',
+                    page: title,
+                  })
+                }
               >
                 <Link.Addon>
                   <EditM color="#898D9A" />
