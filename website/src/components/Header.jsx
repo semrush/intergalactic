@@ -14,6 +14,7 @@ import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
+import { logEvent } from '../utils/amplitude';
 
 function Header(props) {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -62,6 +63,11 @@ function Header(props) {
           wrapperClassName={cx(styles.searchWrapper, !searchVisible && styles.mobileSearchHidden)}
           placeholder="What brings you here, Sole Survivor?"
           onItemSelect={() => setSearchVisible(false)}
+          onFocus={() =>
+            logEvent('search:click', {
+              group: 'int_main',
+            })
+          }
         />
       </div>
       <div className={styles.searchIcon}>

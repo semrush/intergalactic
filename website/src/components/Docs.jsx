@@ -4,13 +4,13 @@ import Prismjs from 'prismjs';
 import 'prismjs/components/prism-jsx';
 import TabLine from '@semcore/tab-line';
 import Badge from '@semcore/badge';
-import { css } from '@semcore/core';
 import { routes } from '@navigation';
 import { RenderMarkdown } from './Markdown';
 import { SideBar, SidebarWrapper } from './SideBar';
 import NavLink from './NavLink';
 import ImageFromModal from './ImageFromModal';
 import scrollToHash from '../utils/scrollToHash';
+import { logEvent } from '../utils/amplitude';
 import styles from './Docs.module.css';
 
 const BLOCKQUOTE_A11Y_MAP = {
@@ -42,7 +42,7 @@ function useScrollHash(options = {}) {
   };
 }
 
-export const Docs = ({ route, tokens, tabs }) => {
+export const Docs = ({ route, tokens, tabs, pageTitle }) => {
   const match = useRouteMatch();
   const [contentModal, setContentModal] = useState(false);
   const contentRef = useRef(null);
@@ -76,7 +76,7 @@ export const Docs = ({ route, tokens, tabs }) => {
         type: 'text',
       });
     } else {
-      console.warn(`[${match.url}] Invalid value "${tab.metadata.a11y}" for "a11y" field`);
+      console.warn(`[${match.url}] Invalid value "${activeTab.metadata.a11y}" for "a11y" field`);
     }
   }
 
@@ -95,6 +95,13 @@ export const Docs = ({ route, tokens, tabs }) => {
                 onMouseEnter={() => prefetch(route)}
                 type="tab"
                 className={styles.tabLineItem}
+                onClick={() =>
+                  logEvent('tab:click', {
+                    group: 'int_patterns',
+                    page: pageTitle,
+                    tab: (tab.metadata.tabName || tab.title).toLowerCase(),
+                  })
+                }
               >
                 <TabLine.Item.Text>{tab.metadata.tabName || tab.title}</TabLine.Item.Text>
                 {tab.metadata.a11y && (
