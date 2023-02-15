@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.9.0] - 2023-02-15
+
+### Changed
+
+- Removed `postcss-combine-duplicated-selectors` as far as it was breaking css injection processing.
+- Removed `cssnano` due to [poor support of css rules merging](https://github.com/cssnano/cssnano/issues/805).
+- Added `csso` as a main css optimization package.
+
 ## [1.8.1] - 2023-01-27
 
 ### Fixed
