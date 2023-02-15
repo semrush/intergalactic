@@ -7,6 +7,7 @@ import { useResizeObserver } from './useResizeObserver';
 import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import pick from '@semcore/utils/lib/pick';
 
 type AsProps = {
   maxLine?: number;
@@ -16,6 +17,7 @@ type AsProps = {
   containerRect?: { width: number };
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
+  includeTooltipProps?: string[];
 };
 
 type AsPropsMiddle = {
@@ -25,7 +27,28 @@ type AsPropsMiddle = {
   containerRect?: { width: number };
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
+  tooltipProps: { [propName: string]: unknown };
 };
+
+const defaultTooltipProps = [
+  'title',
+  'theme',
+  'strategy',
+  'modifiers',
+  'placement',
+  'interaction',
+  'timeout',
+  'visible',
+  'defaultVisible',
+  'onVisibleChange',
+  'offset',
+  'preventOverflow',
+  'arrow',
+  'flip',
+  'computeStyles',
+  'eventListeners',
+  'onFirstUpdate',
+];
 
 const createMeasurerElement = (element: HTMLElement) => {
   const styleElement = window.getComputedStyle(element, null);
@@ -64,13 +87,13 @@ function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boo
   return currentSize < initialSize;
 }
 
-
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
   static style = style;
   static defaultProps: AsProps = {
     trim: 'end',
     tooltip: true,
+    includeTooltipProps: defaultTooltipProps,
   };
 
   state = {
@@ -81,8 +104,8 @@ class RootEllipsis extends Component<AsProps> {
 
   showTooltip() {
     const { maxLine = 1 } = this.asProps;
-    return isTextOverflowing(this.textRef.current, maxLine > 1)
-  };
+    return isTextOverflowing(this.textRef.current, maxLine > 1);
+  }
 
   handlerVisibleChange = (visible: boolean) => {
     this.setState({ visible: visible && this.showTooltip() });
@@ -91,9 +114,19 @@ class RootEllipsis extends Component<AsProps> {
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
-    const { styles, Children, maxLine, tooltip, trim, containerRect, containerRef } = this.asProps;
+    const {
+      styles,
+      Children,
+      maxLine,
+      tooltip,
+      trim,
+      containerRect,
+      containerRef,
+      includeTooltipProps,
+    } = this.asProps;
     const { visible } = this.state;
     const text = reactToText(getOriginChildren(Children));
+    const tooltipProps = pick(this.asProps, includeTooltipProps);
 
     if (trim === 'middle') {
       return sstyled(styles)(
@@ -103,12 +136,19 @@ class RootEllipsis extends Component<AsProps> {
           tooltip={tooltip}
           containerRect={containerRect}
           containerRef={containerRef}
+          tooltipProps={tooltipProps}
         />,
       );
     }
     if (tooltip) {
       return sstyled(styles)(
-        <SContainer interaction='hover' title={text} visible={visible} onVisibleChange={this.handlerVisibleChange}>
+        <SContainer
+          interaction="hover"
+          title={text}
+          visible={visible}
+          onVisibleChange={this.handlerVisibleChange}
+          {...tooltipProps}
+        >
           <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
             <Children />
           </SEllipsis>
@@ -124,7 +164,7 @@ class RootEllipsis extends Component<AsProps> {
 }
 
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
-  const { styles, text, tooltip, containerRect, containerRef } = props;
+  const { styles, text, tooltip, containerRect, containerRef, tooltipProps } = props;
   const resizeElement = useRef<HTMLElement | null>(null);
   const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
@@ -164,6 +204,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
         title={text}
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
+        {...tooltipProps}
       >
         <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
         <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
