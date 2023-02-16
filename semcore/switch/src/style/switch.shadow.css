@@ -63,6 +63,9 @@ SSwitch[disabled] {
   & SToggle {
     cursor: default;
   }
+  & SAddon {
+    cursor: default;
+  }
 }
 
 SSwitch[checked] {
@@ -133,6 +136,10 @@ SSlider[checked] {
 SInput {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
+}
+
+SAddon {
+  cursor: pointer;
 }
 
 SAddon[neighborLocation='right'] {
