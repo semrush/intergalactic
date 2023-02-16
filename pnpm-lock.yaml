@@ -1594,7 +1594,7 @@ importers:
       '@semcore/drag-and-drop': 2.4.12
       '@semcore/dropdown': 3.4.7
       '@semcore/dropdown-menu': 3.6.10
-      '@semcore/ellipsis': 1.2.0
+      '@semcore/ellipsis': 1.2.1
       '@semcore/email': 1.0.2
       '@semcore/errors': 3.9.3
       '@semcore/feature-popover': 3.2.15
@@ -1635,7 +1635,7 @@ importers:
       '@semcore/spin': 4.2.8
       '@semcore/spin-container': 6.2.9
       '@semcore/sticky': 2.4.8
-      '@semcore/switch': 4.3.8
+      '@semcore/switch': 4.3.9
       '@semcore/tab-line': 3.2.8
       '@semcore/tab-panel': 3.3.8
       '@semcore/tag': 4.4.13
