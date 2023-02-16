@@ -4,7 +4,7 @@ fileSource: utils
 tabName: Tokens
 ---
 
-> Design tokens are available for use from @semcore/ui@13.5.0 version
+> Design tokens are available for use from **@semcore/ui@13.5.0** version.
 
 @## Description
 
@@ -73,9 +73,49 @@ Theme for React components subtree may be applied via `<ThemeProvider />`.
 
 @example theme-provider
 
-@## Steps for creating your own theme
+@## Creating your own theme
 
----
+**First of all, answer these questions for your case:**
+
+1. Do you want to use the components of the Intergalactic design system and need a completely different look and feel for them?
+2. Is your product not a Semrush core product?
+
+If the answer to all the questions above is yes, then you definitely need a theme that is different from the default one.
+
+### Step one. Design new theme
+
+Creating a theme usually starts with design. In fact, this is the most time-consuming part.
+
+There are several ways (and, of course, there are more than the two that we offer next!). You can choose the one that suits you best based on your case.
+
+Let's take a look at the two main theme creation situations: local and global.
+
+#### **Local theme: you need to try on a new theme for a component or part of the design system**
+
+In this case we recommend you using [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files, and it can help you save time trying new values for tokens of your new theme.
+
+> There you can find playgrounds with the description of creating a new theme for the Intergalactic Design System with the plugin: internal (link will be here soon), public (link will be here soon).
+
+#### **Global theme: you need to develop a theme for the entire design system**
+
+In this case, you need to take more steps.
+
+1. Duplicate [the library with tokens and three main libraries with components](/get-started-guide/work-figma/#core_libraries).
+2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playgrounds: internal (link will be here soon), public (link will be here soon).
+3. Test and try on the theme for all components of the library in the theme playground.
+4. Save the json of the theme, and either give it to the developers, or commit it yourself.
+5. Voila! You are awesome!
+
+### Step two. Connect the new theme to the components in code
+
+This is where the magic of converting the json file with tokens into a new theme for the design system components begins.
+
+You can make this many ways. We recommend you to check:
+
+- [Themes section](/style/design-tokens/#themes);
+- [Usage in development](/style/design-tokens/design-tokens-usage-development/);
+- [Example for custom component](/style/design-tokens/design-tokens-code/);
+- [CSS Injection guide](/style/css-injection/).
 
 @page design-tokens-usage
 @page design-tokens-usage-development
