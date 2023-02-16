@@ -1,3 +1,18 @@
+## [13.8.0] - 2023-02-16
+
+### @semcore/ellipsis
+
+- **Added** Supported passing tooltip props.
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Fixed wrong intergalactic components filtering path.
+- **Fixed** Fixed invalid syntax producing with multiple locales.
+
+### @semcore/icon
+
+- **Added** Added `JavaScript` icon.
+
 ## [13.7.0] - 2023-02-13
 
 ### @semcore/icon
