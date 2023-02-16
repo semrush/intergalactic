@@ -1,3 +1,13 @@
+## [13.8.1] - 2023-02-16
+
+### @semcore/ellipsis
+
+- **Fixed** Ellipsis wasn't working when tooltip was disabled.
+
+### @semcore/switch
+
+- **Fixed** Text on left and right sides of the Switch are using with "pointer" cursor when component is not disabled.
+
 ## [13.8.0] - 2023-02-16
 
 ### @semcore/ellipsis
