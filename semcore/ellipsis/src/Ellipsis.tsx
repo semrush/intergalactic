@@ -114,6 +114,7 @@ class RootEllipsis extends Component<AsProps> {
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
+    const SNoTooltipContainer = Box;
     const {
       styles,
       Children,
@@ -156,9 +157,11 @@ class RootEllipsis extends Component<AsProps> {
       );
     }
     return sstyled(styles)(
-      <SEllipsis render={Box} maxLine={maxLine}>
-        <Children />
-      </SEllipsis>,
+      <SNoTooltipContainer>
+        <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+          <Children />
+        </SEllipsis>
+      </SNoTooltipContainer>,
     );
   }
 }
