@@ -20,7 +20,7 @@ import Page from './pages/Page';
 import NotFound from './pages/NotFound';
 import ContactUs from './pages/ContactUs';
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production' && window !== 'undefined') {
   initAmplitude();
 }
 
