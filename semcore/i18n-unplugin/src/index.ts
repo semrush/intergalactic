@@ -25,6 +25,11 @@ export const semcoreI18nUnplugin: UnpluginInstance<Options> = createUnplugin((op
       const allLocales = sameDirFiles
         .filter((filename) => filename.endsWith('.json'))
         .map((filename) => filename.substring(0, filename.length - '.json'.length));
+
+      if (options?.bundleLocales?.length === 0) {
+        throw new Error(`At least one locale should be mentioned in "bundleLocales" list.`);
+      }
+
       if (options?.includeLocales || options?.bundleLocales) {
         for (const locale of [
           ...(options?.includeLocales ?? []),

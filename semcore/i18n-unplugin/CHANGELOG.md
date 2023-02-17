@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.0.5] - 2023-02-17
+
+### Fixed
+
+- Added error message for empty `bundleLocale` list in plugin options.
+
 ## [0.0.4] - 2023-02-16
 
 ### Fixed
