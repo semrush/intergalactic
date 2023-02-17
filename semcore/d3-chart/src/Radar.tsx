@@ -144,22 +144,22 @@ class PolygonRoot extends Component {
   }
 
   render() {
-    const { Element: SPolygon, styles, d3, data } = this.asProps;
+    const { Element: SPolygon, styles, d3, data, color } = this.asProps;
     return sstyled(styles)(
-      <SPolygon render='path' d={d3(data)} />,
+      <SPolygon render='path' d={d3(data)} color={color} />,
     );
   }
 }
 
 function PolygonLine(props) {
-  const { Element: SPolygonLine, styles, d3, d3AxisLine, data, size, scale, categories } = props;
+  const { Element: SPolygonLine, styles, d3, color, data, size, scale, categories } = props;
   return sstyled(styles)(
-    <SPolygonLine render='path' d={d3(data)} />,
+    <SPolygonLine render='path' d={d3(data)} color={color} />,
   );
 }
 
 function PolygonDot(props) {
-  const { Element: SPolygonDot, styles, d3Axis, d3AxisLine, data, size, scale, categories } = props;
+  const { Element: SPolygonDot, styles, d3Axis, color, data, size, scale, categories } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
     const radius = scale(value) / 2;
@@ -171,6 +171,7 @@ function PolygonDot(props) {
         render='circle'
         cx={cx}
         cy={cy}
+        color={color}
       />,
     );
   });
