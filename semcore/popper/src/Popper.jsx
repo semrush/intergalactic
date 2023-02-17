@@ -451,8 +451,9 @@ const FocusLockWrapper = React.forwardRef(function (
     <FocusLock
       ref={useForkRef(popperRef, ref)}
       disabled={disableEnforceFocus || nodesLock || eventLock}
-      lockProps={lockProps}
+      lockProps={{ ...lockProps, style: { display: 'contents', ...(lockProps.style ?? {}) } }}
       returnFocus={returnFocus}
+      style={{ display: 'contents' }}
       {...lockProps}
     />
   );

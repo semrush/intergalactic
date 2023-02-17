@@ -126,7 +126,14 @@ function Overlay(props) {
 }
 
 const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, ...other }, ref) {
-  return <FocusLock ref={ref} lockProps={other} disabled={disableEnforceFocus} {...other} />;
+  return (
+    <FocusLock
+      ref={ref}
+      disabled={disableEnforceFocus}
+      {...other}
+      lockProps={{ ...other, style: { display: 'contents', ...(other.style ?? {}) } }}
+    />
+  );
 });
 
 function Panel(props) {
