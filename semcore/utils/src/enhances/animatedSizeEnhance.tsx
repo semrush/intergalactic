@@ -3,20 +3,20 @@ import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
 
 export interface IWithAnimatedSizeEnhanceProps {
-  animationsDisabled?: boolean
+  animationsDisabled?: boolean;
 }
 
 let uniqueId = 0;
 
 function animatedSizeEnhance({
-  animateProps,
-  onChangeOf,
+  animateProps = [],
+  onChangeOf = [],
 }: {
   animateProps: ('wdith' | 'height')[];
   onChangeOf: string[];
 }) {
   return (props) => {
-    const { ref, __animatedEnhanceInstanceId, ...other } = props;
+    const { ref, __animatedEnhanceInstanceId, duration, ...other } = props;
     const nodeRef = React.createRef<HTMLElement>();
     const lastSizesRef = React.useRef<number[]>([]);
     const prevPropsRef = React.useRef(props);
@@ -70,7 +70,7 @@ function animatedSizeEnhance({
         if (!nodeRef.current) return;
         nodeRef.current.addEventListener('transitionend', handleTransitionEnd);
         nodeRef.current.addEventListener('transitioncancel', handleTransitionEnd);
-        nodeRef.current.style.transition = 'var(--dev_test_animations_duration, 200ms) all ease-in-out';
+        nodeRef.current.style.transition = `${duration}ms all ease-in-out`;
         for (let i = 0; i < animateProps.length; i++) {
           lastSizesRef.current[i] = sizes[i];
           nodeRef.current.style[animateProps[i]] = sizes[i] + 'px';
@@ -84,6 +84,7 @@ function animatedSizeEnhance({
     }, [
       __animatedEnhanceInstanceId,
       props.animationsDisabled,
+      duration,
       ...onChangeOf.map((propName) => props[propName]),
     ]);
 

@@ -45,17 +45,7 @@ class Animation extends Component {
     const SAnimation = Root;
     const { styles, keyframes, initialAnimation, timingFunction, animationsDisabled } =
       this.asProps;
-    const duration = animationsDisabled
-      ? [0, 0]
-      : Array.isArray(this.asProps.duration)
-      ? [
-          parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
-          parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')) / 2,
-        ]
-      : [
-          parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
-          parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
-        ];
+    const duration = animationsDisabled ? [0, 0] : propToArray(this.asProps.duration);
     const delay = animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
     const { render, wasInvisible } = this.state;
 

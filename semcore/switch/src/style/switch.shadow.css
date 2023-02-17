@@ -126,7 +126,7 @@ SSlider {
   /* margin: 0 var(--intergalactic-spacing-05x, 2px); */
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
   transform: translateX(-50%) scaleX(1);
-  transition: transform var(--dev_test_animations_duration, 200ms) ease-in-out;
+  transition: transform calc(var(--intergalactic-duration-switch, 100) * 1ms) ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-around;

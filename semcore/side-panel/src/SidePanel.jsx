@@ -12,15 +12,23 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/side-panel.shadow.css';
 
 class RootSidePanel extends Component {
   static displayName = 'SidePanel';
   static style = style;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-modal',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
     placement: 'right',
-    duration: 350,
     closable: true,
   };
 
@@ -65,22 +73,22 @@ class RootSidePanel extends Component {
   }
 
   getOverlayProps() {
-    const { visible /*, duration*/ } = this.asProps;
+    const { visible, duration } = this.asProps;
     return {
       visible,
-      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
+      duration,
       delay: this.calculateDelayAnimation('overlay'),
     };
   }
 
   getPanelProps() {
-    const { placement, visible, closable /*, duration*/ } = this.asProps;
+    const { placement, visible, closable, duration } = this.asProps;
 
     return {
       visible,
       placement,
       closable,
-      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
+      duration,
       disableEnforceFocus: !this.isUsedOverlay(),
       delay: this.calculateDelayAnimation('panel'),
       onOutsideClick: this.handleOutsideClick,

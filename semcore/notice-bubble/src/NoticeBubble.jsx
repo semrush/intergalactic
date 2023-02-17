@@ -11,11 +11,15 @@ import CloseIcon from '@semcore/icon/Close/m';
 import { Timer } from './utils';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/notice-bubble.shadow.css';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
+  const ref = React.useRef();
+  const durationStr = useCssVariable('--intergalactic-duration-popper', '200', ref);
+  const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
 
   return data.map((notice) => {
     return sstyled(styles)(
@@ -23,8 +27,9 @@ const Notices = (props) => {
         key={notice.uid}
         initialAnimation={notice.initialAnimation}
         visible={notice.visible === undefined ? true : notice.visible}
-        duration={parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration'))}
+        duration={duration}
         keyframes={[styles['@enter'], styles['@exit']]}
+        ref={ref}
       >
         <SView {...notice} styles={notice.styles || styles} getI18nText={props.getI18nText} />
       </Animation>,

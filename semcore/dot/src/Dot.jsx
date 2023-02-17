@@ -7,6 +7,7 @@ import { Animation } from '@semcore/animation';
 import { Box } from '@semcore/flex-box';
 import Portal from '@semcore/portal';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/dot.shadow.css';
 
@@ -35,10 +36,17 @@ class Dot extends Component {
   static style = style;
   static defaultProps = {
     size: 'm',
-    duration: 300,
     keyframes: [styleDot['@enter'], styleDot['@exit']],
   };
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [
+    uniqueIDEnhancement(),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-counter',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
 
   render() {
     const SDot = Root;

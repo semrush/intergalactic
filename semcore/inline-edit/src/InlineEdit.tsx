@@ -4,6 +4,7 @@ import { Box } from '@semcore/flex-box';
 import { FadeInOut } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/inline-edit.shadow.css';
 
@@ -91,14 +92,18 @@ class InlineEdit extends Component<AsProps> {
 const Edit: React.FC<AsProps> = (props) => {
   const visible = props.editable;
   const SEdit = Root;
+  const ref = React.useRef();
+  const durationStr = useCssVariable('--intergalactic-duration-control', '200', ref);
+  const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
 
   return sstyled(props.styles)(
     <SEdit
       render={FadeInOut}
       visible={visible}
-      duration={parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration'))}
+      duration={duration}
       aria-hidden={!visible}
       exiting={!visible}
+      ref={ref}
     />,
   ) as React.ReactElement;
 };

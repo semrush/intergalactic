@@ -16,6 +16,7 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale } from '@semcore/animation';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import createPopper from './createPopper';
 
@@ -58,7 +59,15 @@ class Popper extends Component {
     excludeRefs: [],
   };
 
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [
+    uniqueIDEnhancement(),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-popper',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
 
   eventsInteractionMap = {
     click: {
@@ -330,7 +339,8 @@ class Popper extends Component {
   }
 
   getPopperProps() {
-    const { visible, disablePortal, interaction, popperZIndex, placement, ...other } = this.asProps;
+    const { visible, disablePortal, interaction, popperZIndex, placement, duration, ...other } =
+      this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -356,6 +366,7 @@ class Popper extends Component {
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
       style: popperZIndex !== undefined ? { zIndex: popperZIndex } : null,
       placement,
+      duration,
     };
   }
 
@@ -458,6 +469,7 @@ function PopperPopper(props) {
     triggerRef,
     interaction,
     controlsLength,
+    duration,
   } = props;
   const ref = useRef(null);
 
@@ -470,10 +482,7 @@ function PopperPopper(props) {
         <SPopper
           render={Scale}
           visible={visible}
-          duration={[
-            parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
-            parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')) / 2,
-          ]}
+          duration={[duration, duration / 2]}
           ref={ref}
           shards={[triggerRef]}
           onClick={handlerStopPropagation}

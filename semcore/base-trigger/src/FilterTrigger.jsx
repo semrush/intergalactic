@@ -11,6 +11,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/filter-trigger.shadow.css';
 
@@ -19,6 +20,12 @@ class RootFilterTrigger extends Component {
   static style = style;
   static enhance = [
     i18nEnhance(localizedMessages),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-control',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
     animatedSizeEnhance({
       animateProps: ['width'],
       onChangeOf: ['value'],

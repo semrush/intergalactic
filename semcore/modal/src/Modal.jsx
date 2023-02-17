@@ -15,13 +15,22 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-modal',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
-    duration: 200,
     closable: true,
     i18n: localizedMessages,
     locale: 'en',
@@ -44,16 +53,16 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { /*duration,*/ visible } = this.asProps;
+    const { duration, visible } = this.asProps;
     return {
-      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
+      duration,
       visible,
       onOutsideClick: this.handleOutsideClick,
     };
   }
 
   getWindowProps() {
-    const { visible, closable, getI18nText, uid /*duration*/ } = this.asProps;
+    const { visible, closable, getI18nText, uid, duration } = this.asProps;
     const { hasTitle } = this.state;
     return {
       visible,
@@ -61,7 +70,7 @@ class ModalRoot extends Component {
       onKeyDown: this.handleKeyDown,
       'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
-      duration: parseInt(document.body.style.getPropertyValue('--dev_test_animations_duration')),
+      duration,
     };
   }
 

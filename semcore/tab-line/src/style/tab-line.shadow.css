@@ -78,7 +78,7 @@ STabLineItem::after {
 }
 
 SIndicator {
-  transition: transform var(--dev_test_animations_duration, 200ms) ease;
+  transition: transform calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
   background-color: var(--intergalactic-border-info-active, #006dca);
   will-change: transform;
 }
