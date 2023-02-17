@@ -2,7 +2,7 @@
   "name": "@semcore/ui",
   "version": "13.8.1",
   "license": "MIT",
-  "module": "./index.js",
+  "module": "./index.mjs",
   "sideEffects": false,
   "scripts": {
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
