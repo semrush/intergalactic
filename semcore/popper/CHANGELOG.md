@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.15.3] - 2023-02-09
+## [4.16.0] - 2023-02-20
+
+### Added
+
+- Added appear and disappear animation.
 
 ## [4.15.2] - 2023-01-20
 

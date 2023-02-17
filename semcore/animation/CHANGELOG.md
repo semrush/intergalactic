@@ -2,9 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.8.11] - 2023-02-09
+## [1.9.0] - 2023-02-20
 
-## [1.8.10] - 2023-01-20
+### Added
+
+- Added prop `animationsDisabled` to disable components' animation.
+- Added prop `timingFunction` to control animation easing.
+- Added `<Scale />` and `<Slide />` animation components.
+
+## [1.8.11] - 2023-02-09
 
 ### Changed
 
