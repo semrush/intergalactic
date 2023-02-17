@@ -3586,7 +3586,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Default chart grid line.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
