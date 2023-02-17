@@ -99,7 +99,7 @@ export const Docs = ({ route, tokens, tabs, pageTitle }) => {
                   logEvent('tab:click', {
                     group: 'int_patterns',
                     page: pageTitle,
-                    tab: (tab.metadata.tabName || tab.title).toLowerCase(),
+                    tab: tab.metadata.tabName || tab.title,
                   })
                 }
               >

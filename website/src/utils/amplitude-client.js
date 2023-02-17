@@ -196,15 +196,9 @@ const amplitudeHttp = {
         Accept: 'application/json',
       },
       body,
-    })
-      .then((response) => {
-        if (response && response.code !== 400) {
-          console.log(`amplitude-client: ${JSON.stringify(events)}`);
-        }
-      })
-      .catch((error) => {
-        this.handleErrorAmplitudeRequest(error);
-      });
+    }).catch((error) => {
+      this.handleErrorAmplitudeRequest(error);
+    });
 
     return this;
   },
