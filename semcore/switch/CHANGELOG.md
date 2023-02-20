@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.0] - 2023-02-20
+
+### Changed
+
+- Animation duration now might be controlled with design tokens.
+
+### Added
+
+- Little animation of switch active state.
+
 ## [4.3.10] - 2023-02-17
 
 ### Fixed

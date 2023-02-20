@@ -24,6 +24,7 @@ SSwitch[size='m'] {
   & SSlider {
     width: 8px;
     height: 8px;
+    border-radius: 4px;
   }
 }
 
@@ -39,6 +40,7 @@ SSwitch[size='l'] {
   & SSlider {
     width: 16px;
     height: 16px;
+    border-radius: 8px;
   }
 }
 
@@ -54,6 +56,7 @@ SSwitch[size='xl'] {
   & SSlider {
     width: 20px;
     height: 20px;
+    border-radius: 10px;
   }
 }
 
@@ -83,6 +86,9 @@ SToggle {
   position: relative;
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 SToggle[checked][theme='info'] {
@@ -117,20 +123,23 @@ SToggle[neighborLocation='right'] {
 }
 
 SSlider {
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  margin: 0 var(--intergalactic-spacing-05x, 2px);
+  /* margin: 0 var(--intergalactic-spacing-05x, 2px); */
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
-  transform: translateX(0) translateY(-50%);
-  transition: transform 0.3s;
+  transform: translateX(-50%) scaleX(1);
+  transition: transform calc(var(--intergalactic-duration-switch, 100) * 1ms) ease-in-out;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  &[checked] {
+    transform: translateX(50%) scaleX(1);
+  }
 }
 
-SSlider[checked] {
-  transform: translateX(100%) translateY(-50%);
+SToggle[active] SSlider {
+  transform: translateX(-50%) scaleX(1.15) translateX(1px);
+  &[checked] {
+    transform: translateX(50%) scaleX(1.15) translateX(-1px);
+  }
 }
 
 SInput {

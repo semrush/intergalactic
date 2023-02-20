@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2023-02-20
+
+### Added
+
+- Added triggers width animation triggered by change of `value` prop.
+
 ## [3.4.12] - 2023-02-13
 
 ### Changed

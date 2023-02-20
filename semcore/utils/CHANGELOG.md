@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.47.0] - 2023-02-20
+
+### Added
+
+- Added semcore enhance to animate component dimensions on change of specific props.
+
 ## [3.46.1] - 2023-01-20
 
 ### Changed

@@ -173,7 +173,8 @@ for (const token in values) {
   } else if (
     types[token] === 'sizing' ||
     types[token] === 'spacing' ||
-    types[token] === 'borderRadius'
+    types[token] === 'borderRadius' ||
+    types[token] === 'other'
   ) {
     values[token] = resolveToken(values[token]);
   }

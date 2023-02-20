@@ -10,3 +10,12 @@ import Counter from '@semcore/ui/counter';
 ```
 
 @typescript ICounterProps
+
+@## AnimatedNumber
+
+```jsx
+import { AnimatedNumber } from '@semcore/ui/counter';
+<AnimatedNumber />;
+```
+
+@typescript IAnimatedNumberBaseProps

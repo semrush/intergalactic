@@ -2492,7 +2492,6 @@
       "notice-global",
       "radio",
       "select",
-      "switch",
       "tag",
       "typography",
       "wizard"
@@ -3743,6 +3742,103 @@
     "rawValue": "{green.400}, 0.2",
     "computedValue": "rgba(0, 159, 129, 0.2)",
     "description": "Background color for the \"Start tracking\" date on the X-axis of the chart grid.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-extra-slow",
+    "type": "other",
+    "rawValue": "500",
+    "computedValue": "500",
+    "description": "Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-slow",
+    "type": "other",
+    "rawValue": "400",
+    "computedValue": "400",
+    "description": "Should be used for more larger scale animations (such as page transitions)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-medium",
+    "type": "other",
+    "rawValue": "300",
+    "computedValue": "300",
+    "description": "Should be used for more complex effects (such as Modal)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-fast",
+    "type": "other",
+    "rawValue": "200",
+    "computedValue": "200",
+    "description": "Should be used for more complex effects (such as Dropdown or Accordion)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-extra-fast",
+    "type": "other",
+    "rawValue": "100",
+    "computedValue": "100",
+    "description": "Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-switch",
+    "type": "other",
+    "rawValue": "{duration-extra-fast}",
+    "computedValue": "100",
+    "description": "Use for small controls like Switch or Slider.",
+    "components": [
+      "switch"
+    ]
+  },
+  {
+    "name": "--intergalactic-duration-popper",
+    "type": "other",
+    "rawValue": "{duration-fast}",
+    "computedValue": "200",
+    "description": "Use for components based on popper like Tooltip, Dropdown or Filter trigger.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-control",
+    "type": "other",
+    "rawValue": "{duration-fast}",
+    "computedValue": "200",
+    "description": "Use for small controls like Checkbox or Radio.",
+    "components": [
+      "checkbox",
+      "radio",
+      "slider",
+      "tab-line"
+    ]
+  },
+  {
+    "name": "--intergalactic-duration-modal",
+    "type": "other",
+    "rawValue": "{duration-fast}",
+    "computedValue": "200",
+    "description": "Use for Modal, Fullscreen Modal, Side panel or other kind of windows.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-duration-accordion",
+    "type": "other",
+    "rawValue": "{duration-fast}",
+    "computedValue": "200",
+    "description": "Use for Accordion.",
+    "components": [
+      "accordion"
+    ]
+  },
+  {
+    "name": "--intergalactic-duration-counter",
+    "type": "other",
+    "rawValue": "{duration-fast}",
+    "computedValue": "200",
+    "description": "Use for Summary or Counter.",
     "components": []
   }
 ]
