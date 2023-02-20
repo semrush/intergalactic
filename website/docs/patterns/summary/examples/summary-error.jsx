@@ -4,6 +4,7 @@ import { Text } from '@semcore/ui/typography';
 import Tooltip from '@semcore/ui/tooltip';
 import WarningM from '@semcore/ui/icon/Warning/m';
 import styled from 'styled-components';
+import { AnimatedNumber } from '@semcore/ui/counter/src';
 import '@semcore/ui/utils/style/var.css';
 
 const BoxBlock = styled(Box)`
@@ -62,7 +63,7 @@ const Demo = () => {
         </Tooltip>
         <Flex alignItems="baseline">
           <Text size={500} color="gray-800" fontWeight="bold" mr={2} tag="a">
-            145
+            <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
           </Text>
           <Text size={100} color="green-500" tag="p">
             ↑+12

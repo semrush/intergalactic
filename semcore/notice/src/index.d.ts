@@ -1,11 +1,12 @@
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps } from '@semcore/flex-box';
 import { IIconProps } from '@semcore/icon';
+import { IFadeInOutProps } from '@semcore/animation';
 
 export type NoticeTheme = 'danger' | 'warning' | 'success' | 'info' | string;
 export type NoticeUse = 'primary' | 'secondary';
 
-export interface INoticeProps extends IBoxProps {
+export interface INoticeProps extends IBoxProps, IFadeInOutProps {
   /** Property for managing visibility of Notice */
   hidden?: boolean;
   /** Notice type

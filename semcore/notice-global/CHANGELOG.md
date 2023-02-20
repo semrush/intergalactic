@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.5.0] - 2023-02-20
+
+### Changed
+
+- Animation duration now might be controlled with design tokens.
+
 ## [1.4.13] - 2023-02-13
 
 ### Changed

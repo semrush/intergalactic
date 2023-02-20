@@ -7,8 +7,10 @@ export type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
+export const useContextTokens = () => React.useContext(themeContext);
+
 export const useContextTheme = (ref: React.RefObject<HTMLElement>) => {
-  const tokens = React.useContext(themeContext);
+  const tokens = useContextTokens();
   const tokensKey = React.useMemo(() => {
     if (!tokens) return '';
     return Object.entries(tokens)

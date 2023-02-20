@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.14] - 2023-02-11
+
+### Fixed
+
+- Added check for the presence of DON at start of animation for `RadialTree`.
+
 ## [2.8.13] - 2023-02-10
 
 ### Fixed

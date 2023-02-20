@@ -1,27 +1,7 @@
 import React, { useCallback, useState, useRef } from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
-
-const style = sstyled.css`
-  @keyframes enter {
-    from {
-      overflow: hidden;
-      height: 0;
-    }
-    to {
-      height: var(--height);
-    }
-  }
-
-  @keyframes exit {
-    from {
-      height: var(--height);
-    }
-    to {
-      height: 0;
-    }
-  }
-`;
+import style from './style/keyframes.shadow.css';
 
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
@@ -60,7 +40,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
       onAnimationStart={handlerAnimationStart}
       onAnimationEnd={handlerAnimationEnd}
       height={height}
-      keyframes={[style['@enter'], style['@exit']]}
+      keyframes={[style['@collapse-enter'], style['@collapse-exit']]}
     />,
   );
 }

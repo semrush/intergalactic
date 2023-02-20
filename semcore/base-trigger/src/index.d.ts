@@ -4,8 +4,13 @@ import { Box, IBoxProps } from '@semcore/flex-box';
 import Dot from '@semcore/dot';
 import { INeighborItemProps } from '@semcore/neighbor-location';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { IWithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 
-export interface IBaseTriggerProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {
+export interface IBaseTriggerProps
+  extends IBoxProps,
+    INeighborItemProps,
+    IKeyboardFocusProps,
+    IWithAnimatedSizeEnhanceProps {
   /**
    * Trigger size
    * @default m

@@ -3,16 +3,19 @@ import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
 
-function FadeInOut(props, ref) {
+function Slide(props, ref) {
   return sstyled(style)(
     <Animation
       ref={ref}
       {...props}
-      keyframes={[style['@fade-in-out-enter'], style['@fade-in-out-exit']]}
+      keyframes={[
+        style[`@slide-${props.slideOrigin}-in`],
+        style[`@slide-${props.slideOrigin}-out`],
+      ]}
     />,
   );
 }
 
-FadeInOut.displayName = 'FadeInOut';
+Slide.displayName = 'Slide';
 
-export default createBaseComponent(FadeInOut);
+export default createBaseComponent(Slide);

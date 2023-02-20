@@ -5,12 +5,26 @@ import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
+import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/base-trigger.shadow.css';
 
 class RootBaseTrigger extends Component {
   static displayName = 'BaseTrigger';
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [
+    keyboardFocusEnhance(),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-control',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+    animatedSizeEnhance({
+      animateProps: ['width'],
+      onChangeOf: ['value'],
+    }),
+  ];
   static style = style;
   static defaultProps = {
     size: 'm',
