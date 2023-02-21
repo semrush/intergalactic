@@ -270,7 +270,7 @@ class Body extends Component<AsProps, State> {
         >
           <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SBody render={Box} role="rowgroup">
-              {holdHeight && <SHeightHold hMin={holdHeight} aria-hidden={true} />}
+              {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
               {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
             </SBody>
