@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.4.11] - 2023-02-13
+## [4.4.13] - 2023-02-21
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
 
 ## [4.4.10] - 2023-02-13
 

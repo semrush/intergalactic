@@ -8,6 +8,7 @@ import Tooltip from '@semcore/tooltip';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import { brightness } from '@semcore/utils/lib/color';
 import Copy from '@components/Copy';
+import Fuse from 'fuse.js';
 
 export const ColorPreview = ({ color }) => {
   if (!color.startsWith('#') && !color.startsWith('rgba(')) return null;
@@ -30,16 +31,13 @@ export const ColorPreview = ({ color }) => {
 
 const DesignTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
+  const tokensIndex = React.useMemo(
+    () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'rawValue', 'description'] }),
+    [tokens],
+  );
   const filteredTokens = React.useMemo(
-    () =>
-      tokens.filter(({ name, rawValue, description }) => {
-        if (!filter) return true;
-        if (name?.toLowerCase().includes(filter.toLowerCase())) return true;
-        if (rawValue?.toLowerCase().includes(filter.toLowerCase())) return true;
-        if (description?.toLowerCase().includes(filter.toLowerCase())) return true;
-        return false;
-      }),
-    [filter],
+    () => (filter ? tokensIndex.search(filter).map(({ item }) => item) : tokens),
+    [tokens, tokensIndex, filter],
   );
 
   const nameHeaderRef = React.useRef(null);
@@ -57,7 +55,7 @@ const DesignTokens = ({ tokens }) => {
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
-          <DataTable.Column name="name" children="Token name" ref={nameHeaderRef} />
+          <DataTable.Column name="name" children="Token name" ref={nameHeaderRef} wMin={300} />
           <DataTable.Column name="value" children="Value" ref={valueHeaderRef} />
           <DataTable.Column name="description" children="Description" ref={descriptionHeaderRef} />
           <DataTable.Column name="components" children="Used in" />

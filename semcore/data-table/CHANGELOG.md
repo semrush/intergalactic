@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.7.14] - 2023-02-13
+## [3.7.16] - 2023-02-20
+
+### Fixed
+
+- Fixed empty table body with virtual scroll enabled displays unexpected "0".
+
+## [3.7.15] - 2023-02-20
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.46.1 ~> 3.47.0]).
 
 ## [3.7.13] - 2023-02-13
 

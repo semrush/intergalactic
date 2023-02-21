@@ -44,6 +44,7 @@ SValue {
     background: var(--intergalactic-bg-primary-neutral, #ffffff);
     border: 1px solid;
     border-radius: 50%;
+    transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
   }
 
   &::after {

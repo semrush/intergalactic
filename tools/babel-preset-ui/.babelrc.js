@@ -11,7 +11,11 @@ module.exports = function (babel, opts = {}) {
       '@babel/plugin-proposal-export-default-from',
       '@babel/plugin-proposal-class-properties',
       'babel-plugin-preval',
-      '@babel/plugin-transform-runtime',
+      [
+        '@babel/plugin-transform-runtime', {
+            version: require('@babel/runtime/package.json').version,
+        }
+      ],
       [
         '@semcore/babel-plugin-recharts',
         {

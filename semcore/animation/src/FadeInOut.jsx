@@ -1,30 +1,15 @@
 import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
-
-const style = sstyled.css`
-  @keyframes enter {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes exit {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-`;
+import style from './style/keyframes.shadow.css';
 
 function FadeInOut(props, ref) {
   return sstyled(style)(
-    <Animation ref={ref} {...props} keyframes={[style['@enter'], style['@exit']]} />,
+    <Animation
+      ref={ref}
+      {...props}
+      keyframes={[style['@fade-in-out-enter'], style['@fade-in-out-exit']]}
+    />,
   );
 }
 

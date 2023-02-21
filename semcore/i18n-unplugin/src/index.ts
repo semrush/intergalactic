@@ -13,7 +13,7 @@ export const semcoreI18nUnplugin: UnpluginInstance<Options> = createUnplugin((op
     name: 'semcore-i18n-unplugin',
     loadInclude(id) {
       return (
-        id.includes('/semcore/') &&
+        id.includes('/@semcore/') &&
         (id.endsWith('/__intergalactic-dynamic-locales.ts') ||
           id.endsWith('/__intergalactic-dynamic-locales.js') ||
           id.endsWith('/__intergalactic-dynamic-locales.cjs') ||
@@ -25,6 +25,11 @@ export const semcoreI18nUnplugin: UnpluginInstance<Options> = createUnplugin((op
       const allLocales = sameDirFiles
         .filter((filename) => filename.endsWith('.json'))
         .map((filename) => filename.substring(0, filename.length - '.json'.length));
+
+      if (options?.bundleLocales?.length === 0) {
+        throw new Error(`At least one locale should be mentioned in "bundleLocales" list.`);
+      }
+
       if (options?.includeLocales || options?.bundleLocales) {
         for (const locale of [
           ...(options?.includeLocales ?? []),
@@ -43,7 +48,9 @@ export const semcoreI18nUnplugin: UnpluginInstance<Options> = createUnplugin((op
       );
       const asyncLocales = filteredLocales.filter((locale) => !syncLocales.includes(locale));
 
-      const imports = syncLocales.map((locale) => `import ${locale} from "./${locale}.json";`);
+      const imports = syncLocales
+        .map((locale) => `import ${locale} from "./${locale}.json";`)
+        .join('\n');
       const prefix = `export const localizedMessages = {`;
       const loaders = asyncLocales.map(
         (locale) => `["${locale}"]: () => import('./${locale}.json')`,

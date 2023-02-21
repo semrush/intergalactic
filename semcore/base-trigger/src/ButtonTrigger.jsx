@@ -4,12 +4,26 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import BaseTrigger from './BaseTrigger';
 import Spin from '@semcore/spin';
+import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/button-trigger.shadow.css';
 
 class RootButtonTrigger extends Component {
   static displayName = 'ButtonTrigger';
   static style = style;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-control',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+    animatedSizeEnhance({
+      animateProps: ['width'],
+      onChangeOf: ['value'],
+    }),
+  ];
 
   render() {
     const SButtonAddon = ButtonTrigger.Addon;

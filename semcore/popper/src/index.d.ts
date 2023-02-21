@@ -11,6 +11,7 @@ import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IOutsideClickProps } from '@semcore/outside-click';
 import { IPortalProps } from '@semcore/portal';
 import { IBoxProps } from '@semcore/flex-box';
+import { IScaleProps } from '@semcore/animation';
 import { INeighborLocationProps } from '@semcore/neighbor-location';
 import { IUniqueIDProps } from '@semcore/utils/lib/uniqueID';
 
@@ -23,7 +24,11 @@ export type Strategy = Options['strategy'];
 export type Modifiers = Options['modifiers'];
 export type Placement = Options['placement'];
 
-export interface IPopperProps extends IOutsideClickProps, IPortalProps, IUniqueIDProps {
+export interface IPopperProps
+  extends IOutsideClickProps,
+    IPortalProps,
+    IUniqueIDProps,
+    IScaleProps {
   /**
    * Popper can have different positioning options
    * @default absolute

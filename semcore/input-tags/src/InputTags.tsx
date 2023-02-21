@@ -7,7 +7,7 @@ import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
 
-export interface IInputTagsValueProps extends IInputValueProps {}
+export interface IInputTagsValueProps extends IInputValueProps { }
 
 export type InputTagsSize = 'l' | 'm';
 
@@ -50,6 +50,7 @@ const MAP_SIZES_TAG = {
 class InputTags extends Component<IInputTagsProps> {
   static displayName = 'InputTags';
   static style = style;
+
   static defaultProps = {
     size: 'm',
     delimiters: [',', ';', '|', 'Enter', 'Tab'],

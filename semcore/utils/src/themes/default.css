@@ -738,4 +738,26 @@
   --intergalactic-chart-x-axis-accent-period-active: #8a8e9b;
   /* Background color for the "Start tracking" date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-data-start-tracking: rgba(0, 159, 129, 0.2);
+  /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
+  --intergalactic-duration-extra-slow: 500;
+  /* Should be used for more larger scale animations (such as page transitions) */
+  --intergalactic-duration-slow: 400;
+  /* Should be used for more complex effects (such as Modal) */
+  --intergalactic-duration-medium: 300;
+  /* Should be used for more complex effects (such as Dropdown or Accordion) */
+  --intergalactic-duration-fast: 200;
+  /* Should be used for simpler effects and relatively small-sized animations (such as fades or color changes) */
+  --intergalactic-duration-extra-fast: 100;
+  /* Use for small controls like Switch or Slider. */
+  --intergalactic-duration-switch: 100;
+  /* Use for components based on popper like Tooltip, Dropdown or Filter trigger. */
+  --intergalactic-duration-popper: 200;
+  /* Use for small controls like Checkbox or Radio. */
+  --intergalactic-duration-control: 200;
+  /* Use for Modal, Fullscreen Modal, Side panel or other kind of windows. */
+  --intergalactic-duration-modal: 200;
+  /* Use for Accordion. */
+  --intergalactic-duration-accordion: 200;
+  /* Use for Summary or Counter. */
+  --intergalactic-duration-counter: 200;
 }
