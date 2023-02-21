@@ -20,7 +20,7 @@ export const useContextTheme = (ref: React.RefObject<HTMLElement>) => {
   // const effectHook = React.useInsertionEffect || React.useLayoutEffect;
   const effectHook = React.useLayoutEffect;
   effectHook(() => {
-    if (!ref.current) return;
+    if (!ref.current || !ref.current.style || !ref.current.style.setProperty) return;
     for (const token in tokens) {
       ref.current.style.setProperty(token, tokens[token]);
     }
