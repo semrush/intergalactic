@@ -1,3 +1,86 @@
+## [13.9.0] - 2023-02-21
+
+### @semcore/accordion
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/animation
+
+- **Added** Added prop `animationsDisabled` to disable components' animation.
+- **Added** Added prop `timingFunction` to control animation easing.
+- **Added** Added `<Scale />` and `<Slide />` animation components.
+
+### @semcore/base-trigger
+
+- **Added** Added triggers width animation triggered by change of `value` prop.
+
+### @semcore/checkbox
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/counter
+
+- **Added** Added `<AnimatedNumber />` exported component.
+
+### @semcore/d3-chart
+
+- **Fixed** Added check for the presence of DON at start of animation for `RadialTree`.
+
+### @semcore/data-table
+
+- **Fixed** Fixed empty table body with virtual scroll enabled displays unexpected "0".
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Added error message for empty `bundleLocale` list in plugin options.
+
+### @semcore/inline-edit
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/modal
+
+- **Added** Added appear and disappear animation.
+
+### @semcore/notice-bubble
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/notice-global
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/popper
+
+- **Added** Added appear and disappear animation.
+
+### @semcore/radio
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/side-panel
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/slider
+
+- **Added** Added value change animation.
+
+### @semcore/switch
+
+- **Changed** Animation duration now might be controlled with design tokens.
+- **Added** Little animation of switch active state.
+- **Fixed** Fixed double click call.
+
+### @semcore/tab-panel
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/utils
+
+- **Fixed** In some cases `<ThemeProvider />` was breaking rendering process.
+- **Added** Added semcore enhance to animate component dimensions on change of specific props.
+
 ## [13.8.1] - 2023-02-16
 
 ### @semcore/ellipsis
