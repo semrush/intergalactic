@@ -2392,6 +2392,7 @@ importers:
       final-form: 4.20.7
       final-form-focus: 1.1.2
       find-package-json: 1.2.0
+      fuse.js: ^6.6.2
       hast-util-to-html: 8.0.3
       lz-string: 1.4.4
       mdast: 3.0.0
@@ -2434,6 +2435,7 @@ importers:
       express: 4.18.1
       final-form: 4.20.7
       final-form-focus: 1.1.2_final-form@4.20.7
+      fuse.js: 6.6.2
       lz-string: 1.4.4
       nanoid: 3.3.4
       normalize.css: 8.0.1
@@ -9948,6 +9950,11 @@ packages:
 
   /functions-have-names/1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  /fuse.js/6.6.2:
+    resolution: {integrity: sha512-cJaJkxCCxC8qIIcPBF9yGxY0W/tVZS3uEISDxhYIdtk8OL93pe+6Zj7LjCqVV4dzbqcriOZ+kQ/NE4RXZHsIGA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /gaxios/4.3.3:
     resolution: {integrity: sha512-gSaYYIO1Y3wUtdfHmjDUZ8LWaxJQpiavzbF5Kq53akSzvmVg0RfyOcFDbO1KJ/KCGRFz2qG+lS81F0nkr7cRJA==}
