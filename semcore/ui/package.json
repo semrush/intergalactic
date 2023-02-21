@@ -85,7 +85,7 @@
     "@semcore/utils": "3.47.1",
     "@semcore/widget-empty": "3.9.5",
     "@semcore/wizard": "1.2.17",
-    "@semcore/i18n-unplugin": "0.0.4"
+    "@semcore/i18n-unplugin": "0.0.5"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
