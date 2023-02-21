@@ -14,8 +14,6 @@ import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
-import Input from '@semcore/input';
-import Button from '@semcore/button';
 import { logEvent } from '../utils/amplitude';
 
 function Header() {

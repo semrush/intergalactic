@@ -3,6 +3,7 @@ import { withRouter, useLocation } from 'react-router-dom';
 import { InstantSearch, Highlight } from 'react-instantsearch/dom';
 import { connectAutoComplete, connectStateResults } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
+import { logEvent } from '../utils/amplitude';
 
 import IF from '@semcore/utils/lib/if';
 import { Box } from '@semcore/flex-box';
@@ -43,6 +44,11 @@ const showList = (hits, pages, content) => {
           key={item.objectID}
           value={item.slug}
           disabled={item.disabled}
+          onClick={() => {
+            logEvent('search:click', {
+              dropdown: `${item.title.toLowerCase()} ${item.category.toLowerCase()}`,
+            });
+          }}
         >
           <div className={styles.optionText}>
             <Highlight
@@ -73,6 +79,11 @@ const showList = (hits, pages, content) => {
           key={item.objectID}
           value={item.slug}
           disabled={item.disabled}
+          onClick={() => {
+            logEvent('search:click', {
+              dropdown: `${item.title.toLowerCase()} ${item.category.toLowerCase()}`,
+            });
+          }}
         >
           <div className={styles.optionText}>
             <Highlight
