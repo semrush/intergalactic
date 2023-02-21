@@ -18,8 +18,6 @@ There are base and semantic token sets in our design system.
 
 **Semantic (alias) tokens** relate to a specific component or context of usage. They refer to the base tokens.
 
-![semantic tokens](static/semantic-tokens.png)
-
 Semantic tokens include tokens for:
 
 - colors;
@@ -29,9 +27,11 @@ Semantic tokens include tokens for:
 - box-shadows;
 - border-radius.
 
+![semantic tokens](static/semantic-tokens.png)
+
 @## Token naming structure
 
-Token name is the same in both Figma and code, except for the theme name which is added to the token in the code.
+Token name is the same in both Figma and code, except for the theme/project name which is added to the token in the code.
 
 For example, compare token for primary neutral background:
 
