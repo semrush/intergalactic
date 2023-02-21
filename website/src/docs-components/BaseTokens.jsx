@@ -6,19 +6,17 @@ import DataTable from '@semcore/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
 import Copy from '@components/Copy';
 import { ColorPreview } from './DesignTokens';
+import Fuse from 'fuse.js';
 
 const BaseTokens = ({ tokens }) => {
   const [filter, setFilter] = React.useState('');
+  const tokensIndex = React.useMemo(
+    () => new Fuse(tokens, { isCaseSensitive: false, keys: ['name', 'value', 'description'] }),
+    [tokens],
+  );
   const filteredTokens = React.useMemo(
-    () =>
-      tokens.filter(({ name, value, description }) => {
-        if (!filter) return true;
-        if (name?.toLowerCase().includes(filter.toLowerCase())) return true;
-        if (value?.toLowerCase().includes(filter.toLowerCase())) return true;
-        if (description?.toLowerCase().includes(filter.toLowerCase())) return true;
-        return false;
-      }),
-    [filter],
+    () => (filter ? tokensIndex.search(filter).map(({ item }) => item) : tokens),
+    [tokens, tokensIndex, filter],
   );
 
   const nameHeaderRef = React.useRef(null);
