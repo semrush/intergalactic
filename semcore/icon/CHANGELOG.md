@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.11.0] - 2023-02-21
+
+### BREAK
+
+- Removed `FeauturedImage` icon, use `FeaturedImage` instead.
+- Removed `FeauturedImage` icon, use `FeaturedImage` instead.
+
 ## [3.10.2] - 2023-02-21
 
 ### Changed
