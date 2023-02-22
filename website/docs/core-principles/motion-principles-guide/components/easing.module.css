@@ -1,0 +1,65 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding-bottom: 2rem;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 16px;
+  column-gap: 50px;
+}
+.chart {
+  border-left: 1px solid #e0e1e9; /* to replace with --intergalactic-border-secondary */
+  border-bottom: 1px solid #e0e1e9; /* to replace with --intergalactic-border-secondary */
+  stroke: #8649e1; /*to replace with  --intergalactic-control-primary-advertising-active */
+  fill: none;
+  box-sizing: border-box;
+}
+.description {
+  color: #6c6e79; /* to replace with --intergalactic-text-secondary */
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.slider {
+  background: #f4f5f9; /* to replace with --intergalactic-bg-secondary-neutral */
+  border-radius: 4px;
+  padding: 28px 20px;
+  position: relative;
+  width: 250px;
+}
+.sliderLine {
+  background: #e0e1e9; /* to replace with --intergalactic-bg-primary-neutral-active */
+  border-radius: 4px;
+  height: 4px;
+}
+.sliderThumb {
+  background-color: #8649e1; /* to replace with  --intergalactic-control-primary-advertising-active */
+  border: 2px solid #fff; /* to replace with --intergalactic-border-primary-invert */
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  border-radius: 18px;
+  transition-duration: 100ms;
+  transition-property: left;
+  box-shadow: 0px 2px 8px rgba(50, 50, 71, 0.16);
+  transition-timing-function: ease-in-out;
+}
+.container:hover .sliderThumb {
+  transition-duration: 1000ms;
+  left: calc(100% - 12px - 32px);
+}
