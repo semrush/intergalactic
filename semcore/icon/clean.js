@@ -17,6 +17,8 @@ const ignoreFiles = [
   'Stoller',
   'YoutubeAlt',
   'YoutubeRed',
+  'FeauturedImage',
+  'FeauturedVideo',
   'package.json',
   'clean.js',
   '.npmignore',
