@@ -14,8 +14,6 @@ import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
-import Input from '@semcore/input';
-import Button from '@semcore/button';
 import { logEvent } from '../utils/amplitude';
 
 function Header() {
@@ -39,7 +37,7 @@ function Header() {
           )}
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
-          <a className={styles.devportalLink} href="/">
+          <a className={styles.devportalLink} href="/" onClick={() => logEvent('logo_dev:click')}>
             <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" aria-hidden="true" />
             <Tooltip>
               <Tooltip.Trigger className={styles.devportalLink__mobile}>
@@ -57,6 +55,7 @@ function Header() {
             className={styles.intergalacticLink}
             aria-label="Go to Intergalactic Design System main page"
             to="/"
+            onClick={() => logEvent('logo_intergalactic:click')}
           >
             Intergalactic
           </Link>
