@@ -485,7 +485,6 @@ function PopperPopper(props) {
           visible={visible}
           duration={[duration, duration / 2]}
           ref={ref}
-          shards={[triggerRef]}
           onClick={handlerStopPropagation}
           onContextMenu={handlerStopPropagation}
           onDoubleClick={handlerStopPropagation}
@@ -519,6 +518,7 @@ function PopperPopper(props) {
             returnFocusRef={triggerRef}
             autoFocus={false}
             tabIndex={0}
+            shards={[triggerRef]}
           >
             <PortalProvider value={ref}>
               <Children />
