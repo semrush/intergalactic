@@ -28,5 +28,8 @@ function FeauturedImage({
   }));
 }
 
+// eslint-disable-next-line no-console
+console.warn(true, 'The "FeauturedImage" icon is deprecated. Use the "FeaturedImage"', 'Icon');
+
 FeauturedImage.displayName = 'FeauturedImage';
 export default createBaseComponent(FeauturedImage);

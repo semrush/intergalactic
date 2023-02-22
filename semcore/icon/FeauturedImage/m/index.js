@@ -49,4 +49,7 @@ FeauturedImage.displayName = 'FeauturedImage';
 
 var _default = (0, _core.createBaseComponent)(FeauturedImage);
 
+// eslint-disable-next-line no-console
+console.warn(true, 'The "FeauturedImage" icon is deprecated. Use the "FeaturedImage"', 'Icon');
+
 exports["default"] = _default;

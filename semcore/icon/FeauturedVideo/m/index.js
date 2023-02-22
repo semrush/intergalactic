@@ -49,4 +49,7 @@ FeauturedVideo.displayName = 'FeauturedVideo';
 
 var _default = (0, _core.createBaseComponent)(FeauturedVideo);
 
+// eslint-disable-next-line no-console
+console.warn(true, 'The "FeauturedVideo" icon is deprecated. Use the "FeaturedVideo"', 'Icon');
+
 exports["default"] = _default;

@@ -2,9 +2,9 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.11.0] - 2023-02-21
+## [3.11.0] - 2023-02-22
 
-### BREAK
+### Fixed
 
 - Removed `FeauturedImage` icon, use `FeaturedImage` instead.
 - Removed `FeauturedImage` icon, use `FeaturedImage` instead.
@@ -23,7 +23,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.9.0] - 2023-02-09
 
-### BREAK
+### Fixed
 
 - Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
 - Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
@@ -48,7 +48,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.6.0] - 2023-01-10
 
-### BREAK
+### Fixed
 
 - Remove `Stoller` icon, use `Stroller` instead.
 
