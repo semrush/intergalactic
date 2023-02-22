@@ -26,19 +26,13 @@ Motion provides a visual response to an action, seamless transitions between sta
 
 @## Durations
 
-| token      | value   | usage                                                                                                                             |
-| ---------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| extra-slow | `500ms` | Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) |
-| slow       | `400ms` | Should be used for more larger scale animations (such as page transitions)                                                        |
-| medium     | `300ms` | Should be used for more complex effects (such as Modal)                                                                           |
-| fast       | `200ms` | Should be used for more complex effects (such as Dropdown or Accordion)                                                           |
-| extra-fast | `100ms` | Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)                         |
-| switch     | `100ms` | Use for small controls like Switch or Slider.                                                                                     |
-| popper     | `200ms` | Use for components based on popper like Tooltip, Dropdown or Filter trigger.                                                      |
-| control    | `200ms` | Use for small controls like Checkbox or Radio.                                                                                    |
-| modal      | `200ms` | Use for Modal, Fullscreen Modal, Side panel or other kind of windows.                                                             |
-| accordion  | `200ms` | Use for Accordion.                                                                                                                |
-| counter    | `200ms` | Use for Summary or Counter.                                                                                                       |
+| Token            | Value   | Usage                                                                                                                             |
+| ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| extra-slow       | `500ms` | Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) |
+| slow             | `400ms` | Should be used for more larger scale animations (such as page transitions)                                                        |
+| medium           | `300ms` | Should be used for more complex effects (such as Modal)                                                                           |
+| fast             | `200ms` | Should be used for more complex effects (such as Dropdown or Accordion)                                                           |
+| extra-fast       | `100ms` | Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)                         |
 
 @## Easing
 
