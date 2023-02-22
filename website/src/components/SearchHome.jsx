@@ -44,11 +44,11 @@ const showList = (hits, pages, content) => {
           key={item.objectID}
           value={item.slug}
           disabled={item.disabled}
-          onClick={() => {
+          onClick={() =>
             logEvent('search:click', {
               dropdown: `${item.title.toLowerCase()} ${item.category.toLowerCase()}`,
-            });
-          }}
+            })
+          }
         >
           <div className={styles.optionText}>
             <Highlight
