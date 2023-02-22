@@ -3834,6 +3834,12 @@ const iconsList = {
       tags: ['wordpress', 'site', 'blog', 'engine', 'вордпресс', 'блог'],
     },
     {
+      name: 'Confluence',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['logo', 'confluence', 'логотип', 'лого', 'конфлюенс'],
+    },
+    {
       name: 'Figma',
       size: ['l', 'm'],
       group: 'Color',
