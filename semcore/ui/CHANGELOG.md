@@ -1,3 +1,9 @@
+## [13.9.1] - 2023-02-22
+
+### @semcore/popper
+
+- **Fixed** Fixed popper autofocus wasn't working if popper contains any focusable elements.
+
 ## [13.9.0] - 2023-02-21
 
 ### @semcore/accordion
