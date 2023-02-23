@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.12.1] - 2023-02-23
+
+### Fixed
+
+- Fixed path for `Confluence`, `GoogleCloud`, `Hubspot`, `JavaScript`, `LookerStudio`, icons.
+
 ## [3.12.0] - 2023-02-22
 
 ### Added
