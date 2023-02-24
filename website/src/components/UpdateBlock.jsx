@@ -15,7 +15,7 @@ const tooltipStyles = css`
     background-color: #f71939 !important;
     border-color: #f71939 !important;
     max-width: 500px;
-    font-size: 16px;
+    font-size: var(--intergalactic-fs-300);
   }
   SArrow {
     &:before {
@@ -31,12 +31,12 @@ const ButtonSubscribe = css`
   SButton {
     height: 56px !important;
     width: 200px;
-    border-radius: 6px !important;
+    border-radius: var(--intergalactic-rounded-medium) !important;
     background: #ff622d !important;
     border-color: #ff622d !important;
     font-size: 18px !important;
     color: #fff !important;
-    margin-bottom: 16px;
+    margin-bottom: var(--intergalactic-spacing-4x);
     &:hover {
       background: #b23300 !important;
       border-color: #b23300 !important;

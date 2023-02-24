@@ -7,7 +7,7 @@
   .updateWrapper {
     grid-template-columns: 1fr;
     margin-left: 0;
-    padding: 0 0 56px;
+    padding: 0 0 var(--intergalactic-spacing-14x);
   }
 }
 @media (max-width: 415px) {
@@ -20,8 +20,8 @@
   grid-row: 1;
   grid-column: 1;
   font-size: 18px;
-  line-height: 150%;
-  margin-right: 40px;
+  line-height: var(--intergalactic-lh-300);
+  margin-right: var(--intergalactic-spacing-10x);
 }
 @media (max-width: 767px) {
   .info {
@@ -31,24 +31,24 @@
 
 .header {
   font-size: 40px;
-  line-height: 120%;
-  margin: 48px 0 16px;
+  line-height: var(--intergalactic-lh-400);
+  margin: calc(12 * var(--intergalactic-spacing-1x)) 0 var(--intergalactic-spacing-4x);
 }
 @media (max-width: 767px) {
   .header {
     font-size: 30px;
-    line-height: 120%;
+    line-height: var(--intergalactic-lh-400);
   }
 }
 
 .terms {
-  font-size: 16px;
+  font-size: var(--intergalactic-fs-300);
   color: #898d9a;
 }
 .terms a {
   color: #1a55ed;
   text-decoration: none;
-  margin-left: 5px;
+  margin-left: calc(var(--intergalactic-spacing-1x) + 1px);
 }
 .terms a:hover {
   text-decoration: underline;
@@ -57,7 +57,7 @@
 .updatesImg {
   grid-row: 1;
   grid-column: 2;
-  margin-right: 56px;
+  margin-right: var(--intergalactic-spacing-14x);
 }
 @media (max-width: 767px) {
   .updatesImg {
@@ -69,19 +69,19 @@
   height: 56px !important;
   font-size: 18px !important;
   width: 296px;
-  margin: 0 16px 16px 0;
+  margin: 0 var(--intergalactic-spacing-4x) var(--intergalactic-spacing-4x) 0;
 }
 @media (max-width: 767px) {
   .inputSubscribe {
     width: 100%;
-    margin: 0 0 16px;
+    margin: 0 0 var(--intergalactic-spacing-4x);
   }
 }
 
 .inputHidden {
   position: absolute;
-  top: -100px;
-  left: -100px;
+  top: calc(-25 * var(--intergalactic-spacing-1x));
+  left: calc(-25 * var(--intergalactic-spacing-1x));
 }
 
 .subscribed {
@@ -89,9 +89,9 @@
   align-items: center;
   font-size: 21px;
   color: #575c66;
-  line-height: 150%;
+  line-height: var(--intergalactic-lh-300);
 }
 .subscribed svg {
   width: 38px;
-  margin-right: 19px;
+  margin-right: calc(var(--intergalactic-spacing-5x) - 1px);
 }

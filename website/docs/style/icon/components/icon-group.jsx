@@ -10,16 +10,16 @@ import Copy from '@components/Copy';
 
 const Section = styled.div`
   margin-top: ${({ mt }) => mt && `${mt}px`};
-  margin-bottom: 36px;
-  font-size: 16px;
-  line-height: 1.5;
+  margin-bottom: calc(9 * var(--intergalactic-spacing-1x));
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
 `;
 
 const List = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 12px;
-  border-radius: 6px;
+  padding: var(--intergalactic-spacing-3x);
+  border-radius: var(--intergalactic-rounded-medium);
   border: solid 1px #d1d4db;
 `;
 
@@ -28,10 +28,10 @@ const PreviewIcon = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 10px 14px;
+  padding: 0 calc(var(--intergalactic-spacing-2x) + 2px) calc(var(--intergalactic-spacing-3x) + 2px);
   width: 118px;
   height: 82px;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
   border: 2px solid transparent;
   box-sizing: border-box;
   outline: none;
@@ -45,9 +45,9 @@ const PreviewIcon = styled.div`
   }
 
   span {
-    margin-top: 10px;
+    margin-top: calc(var(--intergalactic-spacing-2x) + 2px);
     width: 100%;
-    font-size: 14px;
+    font-size: var(--intergalactic-fs-200);
     line-height: 1.33;
     color: #575c66;
     text-align: center;
@@ -63,7 +63,7 @@ const PanelIcon = styled.div`
   left: 0;
   display: flex;
   justify-content: center;
-  padding: 20px 70px;
+  padding: var(--intergalactic-spacing-5x) 70px;
   width: 100%;
   box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.15);
   background: #fff;
@@ -74,11 +74,11 @@ const PanelIcon = styled.div`
 const PreviewChangeIcon = styled.div`
   position: relative;
   display: flex;
-  padding: 0 16px;
+  padding: 0 var(--intergalactic-spacing-4x);
   justify-content: center;
   align-items: center;
   height: 60px;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
   background-color: #e9ebef;
   font-size: 13px;
   cursor: pointer;

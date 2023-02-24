@@ -1,14 +1,15 @@
 .exampleWrapper {
-  margin: 10px auto;
-  border-radius: 6px;
+  margin: calc(var(--intergalactic-spacing-2x) + 2px) auto;
+  border-radius: var(--intergalactic-rounded-medium);
+  /* change to token */
   box-shadow: rgb(204, 204, 204) 0 0 1px 1px;
 }
 
 .view {
   width: 100%;
-  padding: 24px;
+  padding: var(--intergalactic-spacing-6x);
   box-sizing: border-box;
-  font-size: 12px;
+  font-size: var(--intergalactic-fs-100);
 }
 
 .codeView {
@@ -21,19 +22,20 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 4px 0 4px 4px;
+  padding: var(--intergalactic-spacing-1x) 0 var(--intergalactic-spacing-1x)
+    var(--intergalactic-spacing-1x);
   background-color: rgba(1, 22, 39, 0.8);
 }
 
 .codeViewControls {
   position: sticky;
-  top: 16px;
+  top: var(--intergalactic-spacing-4x);
 }
 
 .stylesIcons {
   display: inline-block;
   cursor: pointer;
-  margin-right: 16px;
+  margin-right: var(--intergalactic-spacing-4x);
 }
 .stylesIcons > span {
   display: inline-block;

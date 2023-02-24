@@ -18,10 +18,10 @@ import styles from './DocsHeader.module.css';
 
 const tooltipStyles = css`
   STooltip[theme] {
-    padding: 12px;
+    padding: var(--intergalactic-spacing-3x);
     border: 1px solid #d1d4db;
     box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
-    border-radius: 6px;
+    border-radius: var(--intergalactic-rounded-medium);
   }
 `;
 

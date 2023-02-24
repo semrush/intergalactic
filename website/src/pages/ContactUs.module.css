@@ -3,7 +3,8 @@
   position: relative;
   grid-template-rows: 1fr 6fr;
   grid-template-columns: repeat(2, 1fr);
-  padding: 152px 100px 250px;
+  padding: calc(38 * var(--intergalactic-spacing-1x)) calc(25 * var(--intergalactic-spacing-1x))
+    calc(62.5 * var(--intergalactic-spacing-1x));
   max-width: 1140px;
   margin: 0 auto;
 }
@@ -12,38 +13,40 @@
   line-height: 110%;
   color: #171a22;
   margin: 0;
-  margin-bottom: 5px;
+  margin-bottom: calc(var(--intergalactic-spacing-1x) + 1px);
 }
 .content ul {
-  padding: 0 24px;
+  padding: 0 var(--intergalactic-spacing-6x);
 }
 .content li {
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x);
 }
 .content a {
   color: #1a55ed;
   text-decoration: none;
-  margin-left: 5px;
+  margin-left: calc(var(--intergalactic-spacing-1x) + 1px);
 }
 .content a:hover {
   text-decoration: underline;
 }
 @media (max-width: 1024px) {
   .content {
-    padding-bottom: 96px;
+    padding-bottom: var(--intergalactic-spacing-24x);
   }
 }
 @media (max-width: 767px) {
   .content {
     grid-template-rows: 0.5fr 2fr 3fr;
     grid-template-columns: 1fr;
-    padding: 152px 55px 96px;
+    padding: calc(38 * var(--intergalactic-spacing-1x)) calc(var(--intergalactic-spacing-14x) - 1px)
+      var(--intergalactic-spacing-24x);
   }
 }
 @media (max-width: 414px) {
   .content {
     grid-template-rows: 0fr 2fr 3fr;
-    padding: 136px 35px 96px;
+    padding: calc(34 * var(--intergalactic-spacing-1x)) calc(var(--intergalactic-spacing-8x) + 3px)
+      var(--intergalactic-spacing-24x);
   }
   .content h1 {
     font-size: 30px;
@@ -55,7 +58,7 @@
   grid-column: 1 / span 3;
   flex-direction: column;
   color: #575c66;
-  margin-bottom: 56px;
+  margin-bottom: var(--intergalactic-spacing-14x);
   text-align: center;
 }
 @media (max-width: 767px) {
@@ -72,7 +75,7 @@
 .github {
   grid-row: 2;
   grid-column: 1;
-  margin: 0 16px 0;
+  margin: 0 var(--intergalactic-spacing-4x) 0;
 }
 @media (max-width: 767px) {
   .github {
@@ -83,29 +86,30 @@
 .email {
   grid-row: 2;
   grid-column: 2;
-  margin: 0 16px 0;
+  margin: 0 var(--intergalactic-spacing-4x) 0;
 }
 @media (max-width: 767px) {
   .email {
     grid-row: 3;
     grid-column: 1;
     margin: 0;
-    margin-top: 40px;
+    margin-top: var(--intergalactic-spacing-10x);
   }
 }
 
 .text {
   background-color: #f6f7f8;
-  padding: 12px 24px 24px;
-  margin-top: 24px;
-  border-radius: 6px;
+  padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-6x)
+    var(--intergalactic-spacing-6x);
+  margin-top: var(--intergalactic-spacing-6x);
+  border-radius: var(--intergalactic-rounded-medium);
 }
 
 .subtitle {
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--intergalactic-semi-bold);
   font-size: 18px;
-  line-height: 150%;
+  line-height: var(--intergalactic-lh-300);
   color: #000000;
   margin: 12px 0;
 }
@@ -113,23 +117,23 @@
 .title {
   margin: 0;
   font-size: 30px;
-  font-weight: 600;
-  line-height: 120%;
+  font-weight: var(--intergalactic-semi-bold);
+  line-height: var(--intergalactic-lh-400);
   color: #000000;
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x);
   white-space: nowrap;
 }
 @media (max-width: 767px) {
   .title {
-    font-size: 24px;
+    font-size: var(--intergalactic-fs-500);
   }
 }
 
 .postman {
   position: absolute;
   width: 480px;
-  right: 0px;
-  bottom: 40px;
+  right: 0;
+  bottom: var(--intergalactic-spacing-10x);
 }
 @media (max-width: 1024px) {
   .postman {

@@ -49,17 +49,17 @@ SPickerFormat {
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   color: var(--intergalactic-text-secondary, #6c6e79);
-  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  background-color: var(--intergalactic-bg-secondary-neutral, #ffffff);
 
   &:hover {
     color: var(--intergalactic-text-secondary, #6c6e79);
-    background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
+    background-color: var(--intergalactic-bg-secondary-neutral-hover, #f4f5f9);
   }
 
   &:active,
   &[active] {
     color: var(--intergalactic-text-secondary, #6c6e79);
-    background-color: var(--intergalactic-bg-secondary-neutral-active, #c4c7cf);
+    background-color: var(--intergalactic-bg-secondary-neutral-active, #e0e1e9);
   }
 }
 

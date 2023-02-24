@@ -1,12 +1,12 @@
 .container {
-  margin-top: 20px;
+  margin-top: var(--intergalactic-spacing-5x);
 }
 
 .title {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 20px 0;
+  margin: var(--intergalactic-spacing-5x) 0;
 }
 
 .requiredMark {
@@ -26,18 +26,18 @@
 }
 
 .propertyCell {
-  padding: 18px 0;
-  padding-right: 6px;
+  padding: calc(var(--intergalactic-spacing-4x) + 2px) 0;
+  padding-right: calc(var(--intergalactic-spacing-1x) + 2px);
   border-bottom: 1px solid #cccccc;
 }
 .propertyDetails {
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: calc(var(--intergalactic-spacing-1x) + 1px);
 }
 
 .descriptionCell {
-  padding: 18px 0;
+  padding: calc(var(--intergalactic-spacing-4x) + 2px) 0;
   border-bottom: 1px solid #cccccc;
 }
 .descriptionCell code {
@@ -63,9 +63,9 @@
 
 .propertyNameAnchor {
   position: absolute;
-  left: -20px;
-  top: 3px;
-  padding-right: 4px;
+  left: calc(-1 * var(--intergalactic-spacing-5x));
+  top: calc(var(--intergalactic-spacing-1x) - 1px);
+  padding-right: var(--intergalactic-spacing-1x);
   opacity: 0;
   transition: opacity 0.2s ease-in;
   cursor: pointer;
@@ -76,7 +76,7 @@
 }
 
 .propertyName {
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x);
   position: relative;
 }
 .propertyCell:hover .propertyNameAnchor {
@@ -86,8 +86,9 @@
 .deprecated {
   display: inline-flex;
   align-items: center;
-  column-gap: 4px;
-  padding: 4px;
+  column-gap: var(--intergalactic-spacing-1x);
+  padding: var(--intergalactic-spacing-1x);
+  /* change to token */
   background: rgba(247, 25, 57, 0.15);
   color: #f71939;
   fill: #f71939;

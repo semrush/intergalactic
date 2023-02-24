@@ -1,6 +1,7 @@
 .sideBarWrapper {
   position: sticky;
-  padding: 48px 32px 132px 0;
+  padding: calc(12 * var(--intergalactic-spacing-1x)) var(--intergalactic-spacing-8x)
+    calc(var(--intergalactic-spacing-30x) + var(--intergalactic-spacing-8x)) 0;
   box-sizing: border-box;
   top: 100px;
   display: flex;
@@ -9,16 +10,16 @@
   overflow-y: auto;
 }
 .navLink {
-  font-size: 16px;
+  font-size: var(--intergalactic-fs-300);
   cursor: pointer;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 12px;
-  color: #171a22;
+  padding-top: var(--intergalactic-spacing-2x);
+  padding-bottom: var(--intergalactic-spacing-2x);
+  padding-left: var(--intergalactic-spacing-3x);
+  color: var(--intergalactic-text-primary);
   text-decoration: none;
 }
 .navLinkActive {
-  color: #ff622d;
+  color: var(--intergalactic-brand-primary);
 }
 .navLink:hover {
   transition: all 0.5s;
@@ -28,7 +29,7 @@
   cursor: pointer;
   position: sticky;
   top: calc(100vh - 11px - 72px);
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x);
   margin-left: calc(100% - 72px);
   display: flex;
   align-items: center;
@@ -36,12 +37,12 @@
   height: 72px;
   width: 72px;
   box-sizing: border-box;
-  background: #d1d4db;
+  background-color: var(--intergalactic-control-tertiary-neutral);
   border-radius: 20px 0 0 20px;
 }
 .buttonUp svg {
   fill: #fff;
 }
 .buttonUp:hover {
-  background-color: #898d9a;
+  background-color: var(--intergalactic-control-tertiary-neutral-hover);
 }

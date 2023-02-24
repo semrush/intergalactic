@@ -43,8 +43,8 @@
   {
     "name": "--intergalactic-bg-primary-neutral-active",
     "type": "color",
-    "rawValue": "{gray.100}",
-    "computedValue": "#e0e1e9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "description": "Active (selected) state of the primary background of the interface which contains the main data and information.",
     "components": [
       "base-trigger",
@@ -109,8 +109,8 @@
   {
     "name": "--intergalactic-bg-primary-advertising",
     "type": "color",
-    "rawValue": "{violet.700}",
-    "computedValue": "#421983",
+    "rawValue": "{violet.100}",
+    "computedValue": "#edd9ff",
     "description": "Accent background for the advertising banners and controls.",
     "components": []
   },
@@ -155,8 +155,8 @@
   {
     "name": "--intergalactic-bg-secondary-neutral",
     "type": "color",
-    "rawValue": "{gray.50}",
-    "computedValue": "#f4f5f9",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "description": "Secondary background of the interface which contains the main data and information.",
     "components": [
       "drag-and-drop",
@@ -168,8 +168,8 @@
   {
     "name": "--intergalactic-bg-secondary-neutral-hover",
     "type": "color",
-    "rawValue": "{gray.100}",
-    "computedValue": "#e0e1e9",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
     "description": "Hover state of the secondary background of the interface which contains the main data and information.",
     "components": [
       "color-picker",
@@ -179,8 +179,8 @@
   {
     "name": "--intergalactic-bg-secondary-neutral-active",
     "type": "color",
-    "rawValue": "{gray.200}",
-    "computedValue": "#c4c7cf",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the secondary background of the interface which contains the main data and information.",
     "components": [
       "flags",
@@ -356,6 +356,13 @@
     "components": [
       "date-picker"
     ]
+  },
+  {
+    "name": "--intergalactic-bg-tertiary-neutral",
+    "type": "color",
+    "rawValue": "{gray.50}",
+    "computedValue": "#f4f5f9",
+    "components": []
   },
   {
     "name": "--intergalactic-text-primary",
@@ -936,21 +943,11 @@
     ]
   },
   {
-    "name": "--intergalactic-control-primary-advertising-active",
-    "type": "color",
-    "rawValue": "{violet.500}",
-    "computedValue": "#8649e1",
-    "description": "Background of the advertising primary control.",
-    "components": [
-      "wizard"
-    ]
-  },
-  {
     "name": "--intergalactic-control-primary-advertising",
     "type": "color",
-    "rawValue": "{violet.600}",
-    "computedValue": "#5925ab",
-    "description": "Hover state of the advertising primary control.",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
+    "description": "Background of the advertising primary control.",
     "components": [
       "wizard"
     ]
@@ -958,8 +955,18 @@
   {
     "name": "--intergalactic-control-primary-advertising-hover",
     "type": "color",
-    "rawValue": "{violet.700}",
-    "computedValue": "#421983",
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
+    "description": "Hover state of the advertising primary control.",
+    "components": [
+      "wizard"
+    ]
+  },
+  {
+    "name": "--intergalactic-control-primary-advertising-active",
+    "type": "color",
+    "rawValue": "{orange.600}",
+    "computedValue": "#8b1500",
     "description": "Active (selected) state of the advertising primary control.",
     "components": [
       "wizard"
@@ -1093,8 +1100,8 @@
   {
     "name": "--intergalactic-control-tertiary-neutral",
     "type": "color",
-    "rawValue": "{gray.400}, 0",
-    "computedValue": "rgba(138, 142, 155, 0)",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "description": "Background of the regular tertiary control.",
     "components": [
       "button"
@@ -1103,8 +1110,8 @@
   {
     "name": "--intergalactic-control-tertiary-neutral-hover",
     "type": "color",
-    "rawValue": "{gray.400}, 0.2",
-    "computedValue": "rgba(138, 142, 155, 0.2)",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "description": "Hover state of the regular tertiary control.",
     "components": [
       "button"
@@ -1113,8 +1120,8 @@
   {
     "name": "--intergalactic-control-tertiary-neutral-active",
     "type": "color",
-    "rawValue": "{gray.400}, 0.3",
-    "computedValue": "rgba(138, 142, 155, 0.3)",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
     "description": "Active (selected) state of the regular tertiary control.",
     "components": [
       "button"
@@ -1123,8 +1130,8 @@
   {
     "name": "--intergalactic-control-tertiary-info",
     "type": "color",
-    "rawValue": "{blue.400}, 0",
-    "computedValue": "rgba(0, 143, 248, 0)",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "description": "Background of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
@@ -1133,8 +1140,8 @@
   {
     "name": "--intergalactic-control-tertiary-info-hover",
     "type": "color",
-    "rawValue": "{blue.400}, 0.2",
-    "computedValue": "rgba(0, 143, 248, 0.2)",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
     "description": "Hover state of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
@@ -1143,8 +1150,8 @@
   {
     "name": "--intergalactic-control-tertiary-info-active",
     "type": "color",
-    "rawValue": "{blue.400}, 0.3",
-    "computedValue": "rgba(0, 143, 248, 0.3)",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the accent and link-lookalike tertiary control.",
     "components": [
       "button"
@@ -1972,8 +1979,8 @@
   {
     "name": "--intergalactic-box-shadow-card",
     "type": "boxShadow",
-    "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
-    "computedValue": "0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)",
+    "rawValue": "10px 10px 45px 0px rgba({gray.800}, 0.14)",
+    "computedValue": "10px 10px 45px 0px rgba(25, 27, 35, 0.14)",
     "description": "Default shadow of the Card.",
     "components": [
       "card"
@@ -2018,6 +2025,14 @@
       "side-panel",
       "tooltip"
     ]
+  },
+  {
+    "name": "--intergalactic-box-shadow-header",
+    "type": "boxShadow",
+    "rawValue": "5px 8px 25px 0px rgba({gray.800}, 0.10)",
+    "computedValue": "5px 8px 25px 0px rgba(25, 27, 35, 0.1)",
+    "description": "Default shadow of the top menu/header",
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus",

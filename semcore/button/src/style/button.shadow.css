@@ -188,33 +188,30 @@ SButton[theme='secondary-invert'] {
 
 SButton[theme='tertiary-info'] {
   color: var(--intergalactic-text-link, #006dca);
-  background-color: var(--intergalactic-control-tertiary-info, rgba(0, 143, 248, 0));
+  background-color: var(--intergalactic-control-tertiary-info, #ffffff);
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-info-hover, rgba(0, 143, 248, 0.2));
+    background-color: var(--intergalactic-control-tertiary-info-hover, #ffffff);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-control-tertiary-info-active, rgba(0, 143, 248, 0.3));
+    background-color: var(--intergalactic-control-tertiary-info-active, #e0e1e9);
   }
 }
 
 SButton[theme='tertiary-muted'] {
   color: var(--intergalactic-text-secondary, #6c6e79);
-  background-color: var(--intergalactic-control-tertiary-neutral, rgba(138, 142, 155, 0));
+  background-color: var(--intergalactic-control-tertiary-neutral, #e0e1e9);
 
   &:hover {
-    background-color: var(--intergalactic-control-tertiary-neutral-hover, rgba(138, 142, 155, 0.2));
+    background-color: var(--intergalactic-control-tertiary-neutral-hover, #c4c7cf);
     color: var(--intergalactic-text-primary, #191b23);
   }
 
   &:active,
   &[active] {
-    background-color: var(
-      --intergalactic-control-tertiary-neutral-active,
-      rgba(138, 142, 155, 0.3)
-    );
+    background-color: var(--intergalactic-control-tertiary-neutral-active, #c4c7cf);
     color: var(--intergalactic-text-primary, #191b23);
   }
 }

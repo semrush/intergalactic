@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 300px;
   height: 200px;
-  padding: 20px;
+  padding: var(--intergalactic-spacing-5x);
   box-sizing: border-box;
 `;
 

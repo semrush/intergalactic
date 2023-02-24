@@ -1,13 +1,15 @@
+@import '@semcore/ui/utils/src/themes/default.css';
+
 .gantt {
   display: grid;
   position: relative;
   box-sizing: border-box;
-  margin-bottom: 40px;
+  margin-bottom: var(--intergalactic-spacing-10x);
 }
 
 .gantt__row {
   display: grid;
-  background-color: #fff;
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 
 .gantt__row--lines {
@@ -52,9 +54,9 @@
 
 .gantt__row--months span {
   text-align: center;
-  font-size: 14px;
+  font-size: var(--intergalactic-fs-200);
   align-self: center;
-  padding: 20px 0;
+  padding: var(--intergalactic-spacing-5x) 0;
   color: #575c66;
   z-index: 1;
 }
@@ -62,16 +64,16 @@
 .gantt__row-bars {
   list-style: none;
   display: grid;
-  padding: 9px 0;
+  padding: calc(var(--intergalactic-spacing-2x) + 1px) 0;
   margin: 0;
-  grid-gap: 8px 0;
+  grid-gap: var(--intergalactic-spacing-2x) 0;
 }
 
 .gantt__row-bars li {
   text-align: center;
-  font-size: 14px;
+  font-size: var(--intergalactic-fs-200);
   min-height: 15px;
-  padding: 5px 12px;
+  padding: calc(var(--intergalactic-spacing-1x) + 1px) var(--intergalactic-spacing-3x);
   overflow: hidden;
   position: relative;
   border-radius: 20px;

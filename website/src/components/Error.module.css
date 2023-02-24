@@ -1,13 +1,15 @@
 .content {
-  padding: 200px 90px 96px 160px;
+  padding: calc(5 * var(--intergalactic-spacing-10x)) calc(var(--intergalactic-spacing-20x) + 10px)
+    var(--intergalactic-spacing-24x) calc(2 * var(--intergalactic-spacing-20x));
   display: flex;
   justify-content: center;
   font-size: 18px;
-  line-height: 150%;
+  line-height: var(--intergalactic-lh-300);
 }
 @media (max-width: 767px) {
   .content {
-    padding: 80px 56px 96px 56px;
+    padding: var(--intergalactic-spacing-20x) var(--intergalactic-spacing-14x)
+      var(--intergalactic-spacing-24x) var(--intergalactic-spacing-14x);
     flex-direction: column;
   }
 }
@@ -20,7 +22,7 @@
   white-space: nowrap;
 }
 .info a {
-  margin-right: 5px;
+  margin-right: calc(var(--intergalactic-spacing-1x) + 1px);
   color: #1a55ed;
   text-decoration: none;
 }
@@ -31,11 +33,11 @@
   .info {
     width: 525px;
     white-space: normal;
-    margin-left: 40px;
+    margin-left: var(--intergalactic-spacing-10x);
   }
 }
 
 .spaceman {
   width: 400px;
-  margin-right: 72px;
+  margin-right: calc(18 * var(--intergalactic-spacing-1x));
 }

@@ -2,10 +2,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: var(--intergalactic-spacing-4x);
   border: 2px solid transparent;
   background: #f6f7f8;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
   margin-bottom: 0 !important;
   text-decoration: none;
   color: #171a22;
@@ -13,6 +13,7 @@
 .card:hover {
   cursor: pointer;
   border: 2px solid #0071cd;
+  /* change to token */
   box-shadow: 5px 8px 25px 0 #898d9a33;
   transition: all ease-in-out 100ms;
   text-decoration: underline;
@@ -29,6 +30,6 @@
   left: 0;
 }
 .title {
-  margin-top: 12px;
+  margin-top: var(--intergalactic-spacing-3x);
   white-space: break-spaces;
 }

@@ -8,7 +8,7 @@
 }
 
 .categoryItem {
-  margin: 0 8px 8px 0;
+  margin: 0 var(--intergalactic-spacing-2x) var(--intergalactic-spacing-2x) 0;
 }
 .categoryItem:last-child {
   margin-bottom: 0;
@@ -16,15 +16,15 @@
 
 .title {
   margin: 0;
-  font-size: 24px;
-  margin-bottom: 8px;
-  font-weight: 700;
+  font-size: var(--intergalactic-fs-500);
+  margin-bottom: var(--intergalactic-spacing-2x);
+  font-weight: var(--intergalactic-bold);
 }
 
 .linkStyled {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #171a22;
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  color: var(--intergalactic-text-primary);
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
@@ -38,8 +38,9 @@
 .linkDisabled {
   display: inline-block;
   vertical-align: middle;
-  font-size: 16px;
+  font-size: var(--intergalactic-fs-300);
   line-height: 1.25;
+  /* need to change to token */
   color: #ccc;
   text-decoration: none;
   cursor: default;

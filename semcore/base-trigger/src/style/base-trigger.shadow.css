@@ -50,7 +50,7 @@ SBaseTrigger {
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-bg-primary-neutral-active, #e0e1e9);
+    background-color: var(--intergalactic-bg-primary-neutral-active, #f4f5f9);
   }
 }
 
