@@ -16,19 +16,19 @@ export default () => (
       But I do love the taste of a <Text tag="em">good burger</Text>. Mm-mm-mm.
     </Text>
     <Text size={600} tag="h3" fontWeight={500} mb={4} mt={0}>
-      H3, 33px
+      H3, 32px
     </Text>
     <Text tag="p" mb={2} mt={0}>
       But I do love the taste of a <Text color="green">good burger</Text>. Mm-mm-mm.
     </Text>
     <Text size={500} tag="h4" fontWeight={500} mb={3} mt={0}>
-      H4, 25px
+      H4, 24px
     </Text>
     <Text tag="p" mb={2} mt={0}>
       But I do love the taste of a <Hint>good burger</Hint>. Mm-mm-mm.
     </Text>
     <Text size={400} tag="h5" fontWeight={500} mb={2} mt={0}>
-      H5, 19px
+      H5, 20px
     </Text>
     <Text tag="p" mb={2} mt={0}>
       But I do love the taste of a <Text tag="s">good burger</Text>. Mm-mm-mm.
