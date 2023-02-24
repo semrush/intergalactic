@@ -55,7 +55,7 @@ The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
 @## Color usage
 
-- Use [chart palette](/data-display/chart-palette/) and follow the the recommendations it has.
+- Use [color palette](/data-display/color-palette/) and follow the the recommendations it has.
 - **You can color the histogram bars in different colors when this can be useful for easier reading of the chart.** But use it carefully. _For example, you need to highlight a certain gradation of ranges. In this case, you can choose the appropriate colors from the chart palette._
 
 ![colors in histogram](static/color-yes-no.png)

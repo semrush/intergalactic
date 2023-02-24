@@ -47,7 +47,7 @@ See information in the [Typography guide](/style/typography/typography-a11y/).
 
 @## Color and contrast
 
-See information in the [Color guide](/style/palette/palette-a11y/).
+See information in the [Color guide](/style/design-tokens/).
 
 @## Graphics and images
 
