@@ -140,6 +140,10 @@ STabLineItem[neighborLocation='left'] {
     &::after {
       transition: none;
     }
+    &[selected]::after {
+      transition-delay: 0;
+      transition: none;
+    }
   }
 
   SCaret {
