@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter, useLocation } from 'react-router-dom';
 import { InstantSearch, Highlight } from 'react-instantsearch/dom';
 import { connectAutoComplete, connectStateResults } from 'react-instantsearch/connectors';
@@ -10,6 +10,7 @@ import { Box } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import SearchM from '@semcore/icon/Search/m';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
+import CloseM from '@semcore/icon/Close/m';
 import cx from 'classnames';
 
 const ru = require('convert-layout/ru');
@@ -133,6 +134,7 @@ const Search = ({
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
   const location = useLocation();
+  const [value, setValue] = useState(ru.toEn(currentRefinement) || '');
 
   useEffect(() => {
     refine('');
@@ -160,8 +162,9 @@ const Search = ({
               <input
                 role="search"
                 aria-label="Search for a component"
-                value={ru.toEn(currentRefinement)}
+                value={value}
                 onChange={(e) => {
+                  setValue(ru.toEn(e.currentTarget.value));
                   refine(ru.toEn(e.currentTarget.value));
                   action.visible(true);
                   action.highlightedIndex(0);
@@ -175,7 +178,17 @@ const Search = ({
                 onFocus={onFocus}
               />
               <div className={styles.iconSearchWrapper}>
-                <SearchM className={styles.searchIcon} />
+                {value.length > 0 ? (
+                  <CloseM
+                    className={styles.closeIcon}
+                    onClick={() => {
+                      setValue('');
+                      refine('');
+                    }}
+                  />
+                ) : (
+                  <SearchM className={styles.searchIcon} />
+                )}
               </div>
             </>
           );

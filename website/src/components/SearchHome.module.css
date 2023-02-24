@@ -67,8 +67,15 @@
 .searchIcon {
   cursor: default;
 }
+.closeIcon {
+  cursor: pointer;
+}
+
 @media (max-width: 415px) {
   .searchIcon {
+    display: none;
+  }
+  .closeIcon {
     display: none;
   }
 }
