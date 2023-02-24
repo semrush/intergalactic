@@ -127,7 +127,7 @@
 
 .formatText pre:not([class]) {
   font-size: 0.85rem;
-  line-height: 1.42;
+  line-height: var(--intergalactic-lh-200);
   background: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
   overflow: auto;
@@ -286,7 +286,7 @@
 
 .formatText pre code {
   background: none;
-  line-height: 1.42;
+  line-height: var(--intergalactic-lh-200);
 }
 
 .formatText small {

@@ -19,7 +19,7 @@
 .info {
   grid-row: 1;
   grid-column: 1;
-  font-size: 18px;
+  font-size: calc(var(--intergalactic-fs-300) + 2px);
   line-height: var(--intergalactic-lh-300);
   margin-right: var(--intergalactic-spacing-10x);
 }
@@ -30,13 +30,13 @@
 }
 
 .header {
-  font-size: 40px;
+  font-size: calc(var(--intergalactic-fs-700) + 4px);
   line-height: var(--intergalactic-lh-400);
   margin: calc(12 * var(--intergalactic-spacing-1x)) 0 var(--intergalactic-spacing-4x);
 }
 @media (max-width: 767px) {
   .header {
-    font-size: 30px;
+    font-size: calc(var(--intergalactic-fs-600) - 2px);
     line-height: var(--intergalactic-lh-400);
   }
 }
@@ -67,7 +67,7 @@
 
 .inputSubscribe {
   height: 56px !important;
-  font-size: 18px !important;
+  font-size: calc(var(--intergalactic-fs-300) + 2px) !important;
   width: 296px;
   margin: 0 var(--intergalactic-spacing-4x) var(--intergalactic-spacing-4x) 0;
 }
@@ -87,7 +87,7 @@
 .subscribed {
   display: flex;
   align-items: center;
-  font-size: 21px;
+  font-size: calc(var(--intergalactic-fs-400) - 1px);
   color: #575c66;
   line-height: var(--intergalactic-lh-300);
 }

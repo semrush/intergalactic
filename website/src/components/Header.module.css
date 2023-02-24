@@ -9,8 +9,7 @@
   height: 80px;
   box-sizing: border-box;
   background: var(--intergalactic-bg-secondary-neutral);
-  /* need to change to token */
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--intergalactic-box-shadow-header);
   z-index: 499;
   display: flex;
   column-gap: var(--intergalactic-spacing-8x);
@@ -47,8 +46,8 @@
   margin-top: var(--intergalactic-spacing-1x);
   font-family: 'Factor A';
   text-align: center;
-  font-size: 22px;
-  line-height: 130%;
+  font-size: calc(var(--intergalactic-fs-400) + 2px);
+  line-height: calc(var(--intergalactic-lh-400) + 10%);
   color: var(--intergalactic-brand-primary);
   font-weight: var(--intergalactic-bold);
 }
@@ -67,14 +66,14 @@
   text-decoration: underline;
 }
 .intergalacticLink {
-  color: #ff642d !important;
+  color: var(--intergalactic-brand-primary) !important;
 }
 
 .headerTooltip {
   font-size: var(--intergalactic-fs-100);
-  border: 1px solid #d1d4db;
-  /* change to token */
-  box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
+  border: 1px solid var(--intergalactic-border-secondary);
+  box-shadow: var(--intergalactic-box-shadow-popper);
+  background-color: var(--intergalactic-tooltip-default);
   z-index: 1000;
 }
 .linkDivider {
@@ -85,7 +84,7 @@
   max-width: 354px;
 }
 .menuIcon {
-  color: var(--gray-800);
+  color: var(--intergalactic-icon-non-interactive);
   cursor: pointer;
   display: none;
   margin-right: var(--intergalactic-spacing-1x);
@@ -94,23 +93,23 @@
   padding: calc(7 * var(--intergalactic-spacing-7x)) var(--intergalactic-spacing-8x);
 }
 .activeMenuIcon {
-  background-color: #f6f7f8;
+  background-color: var(--intergalactic-control-tertiary-info-active);
 }
 .searchIcon {
-  color: var(--gray-800);
+  color: var(--intergalactic-icon-non-interactive);
   cursor: pointer;
   display: none;
 }
 
 .mobileMenu {
-  background-color: #f6f7f8;
+  background-color: var(--intergalactic-bg-tertiary-neutral);
   display: none;
   min-width: 320px;
   max-width: 100vw;
   position: fixed;
   left: 0;
   top: var(--intergalactic-spacing-20x);
-  height: calc(100vh - 80px);
+  height: calc(100vh - var(--intergalactic-spacing-20x));
   overflow: auto;
 }
 .mobileMenuLinks {
@@ -217,7 +216,7 @@
     right: var(--intergalactic-spacing-5x);
   }
   .searchWrapper input::placeholder {
-    color: white;
+    color: var(--intergalactic-bg-secondary-neutral);
   }
   .activeSearch {
     display: none;

@@ -13,7 +13,7 @@
   transform: translate(-100%, -50%);
   opacity: 0;
   padding: calc(var(--intergalactic-spacing-1x) + 1px);
-  line-height: 16px;
+  line-height: var(--intergalactic-lh-300);
 }
 .heading svg:hover {
   color: #333;

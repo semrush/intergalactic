@@ -11,8 +11,8 @@
 }
 
 .main h3 {
-  font-size: 18px;
-  line-height: 110%;
+  font-size: calc(var(--intergalactic-fs-300) + 2px);
+  line-height: var(--intergalactic-lh-700);
   margin: var(--intergalactic-spacing-8x) 0 var(--intergalactic-spacing-4x) 0;
   font-weight: var(--intergalactic-bold);
 }

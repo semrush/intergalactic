@@ -39,7 +39,7 @@
   display: inline-block;
   vertical-align: middle;
   font-size: var(--intergalactic-fs-300);
-  line-height: 1.25;
+  line-height: var(--intergalactic-lh-600);
   /* need to change to token */
   color: #ccc;
   text-decoration: none;

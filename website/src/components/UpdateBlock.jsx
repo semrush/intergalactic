@@ -34,7 +34,7 @@ const ButtonSubscribe = css`
     border-radius: var(--intergalactic-rounded-medium) !important;
     background: #ff622d !important;
     border-color: #ff622d !important;
-    font-size: 18px !important;
+    font-size: calc(var(--intergalactic-fs-300) + 2px) !important;
     color: #fff !important;
     margin-bottom: var(--intergalactic-spacing-4x);
     &:hover {

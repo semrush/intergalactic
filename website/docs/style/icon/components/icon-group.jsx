@@ -48,7 +48,7 @@ const PreviewIcon = styled.div`
     margin-top: calc(var(--intergalactic-spacing-2x) + 2px);
     width: 100%;
     font-size: var(--intergalactic-fs-200);
-    line-height: 1.33;
+    line-height: var(--intergalactic-lh-100);
     color: #575c66;
     text-align: center;
     text-overflow: ellipsis;
@@ -80,7 +80,7 @@ const PreviewChangeIcon = styled.div`
   height: 60px;
   border-radius: var(--intergalactic-rounded-medium);
   background-color: #e9ebef;
-  font-size: 13px;
+  font-size: calc(var(--intergalactic-fs-100) + 1px);
   cursor: pointer;
 
   &:hover {

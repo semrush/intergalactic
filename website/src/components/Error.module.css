@@ -3,7 +3,7 @@
     var(--intergalactic-spacing-24x) calc(2 * var(--intergalactic-spacing-20x));
   display: flex;
   justify-content: center;
-  font-size: 18px;
+  font-size: calc(var(--intergalactic-fs-300) + 2px);
   line-height: var(--intergalactic-lh-300);
 }
 @media (max-width: 767px) {
