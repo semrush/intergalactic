@@ -24,6 +24,7 @@ title: Charts
 @page histogram-chart
 
 @page line-chart
+@page radar-chart
 @page radial-tree-chart
 @page scatterplot-chart
 @page venn-chart
@@ -35,5 +36,4 @@ title: Charts
 @page kagi-chart
 @page lollipop-chart
 @page polar-chart
-@page radar-chart
 @page quadrant-chart
