@@ -96,7 +96,7 @@ SDropZone {
 
 SDropZone[dropPreview],
 SDraggable[dropPreview] {
-  background-color: var(--intergalactic-bg-secondary-neutral, #ffffff);
+  background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
 }
 SDropZone[dark][dropPreview],
 SDraggable[dark][dropPreview] {

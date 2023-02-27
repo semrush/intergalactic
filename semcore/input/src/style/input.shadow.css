@@ -42,7 +42,7 @@ SValue {
   }
 
   &:not(:disabled):read-only ~ SOutline {
-    background: var(--intergalactic-bg-secondary-neutral, #ffffff);
+    background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   }
 
   &:disabled {

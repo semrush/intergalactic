@@ -11,7 +11,7 @@
 .content h1 {
   font-size: calc(var(--intergalactic-fs-800) + 2px);
   line-height: var(--intergalactic-lh-700);
-  color: var( --intergalactic-text-primary);
+  color: var(--intergalactic-text-primary);
   margin: 0;
   margin-bottom: calc(var(--intergalactic-spacing-1x) + 1px);
 }

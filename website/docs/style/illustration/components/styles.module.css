@@ -76,7 +76,7 @@
 
 .search {
   border-radius: var(--intergalactic-rounded-medium);
-  color: var( --intergalactic-text-primary);
+  color: var(--intergalactic-text-primary);
 }
 
 .search input::placeholder {

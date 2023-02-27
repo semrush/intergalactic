@@ -10,7 +10,7 @@ STextarea {
   resize: var(--resize);
 
   &:read-only {
-    background-color: var(--intergalactic-bg-secondary-neutral, #ffffff);
+    background-color: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
   }
 
   &:disabled {

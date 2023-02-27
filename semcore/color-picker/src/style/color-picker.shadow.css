@@ -85,7 +85,7 @@ SPlusButton {
   cursor: pointer;
 
   &:hover {
-    background-color: var(--intergalactic-bg-secondary-neutral-hover, #f4f5f9);
+    background-color: var(--intergalactic-bg-secondary-neutral-hover, #e0e1e9);
   }
 }
 
