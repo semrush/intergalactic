@@ -14,7 +14,7 @@ tabName: Design
 - data in the interface is placed tightly, you need to save space;
 - transferring data to the system is not the main task of the interface (for example, additional information and notes in cards).
 
-> Do not use such an input in a [form](/components/form/) along with regular inputs (see the example in the UX/UI use section below).
+> Do not use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
 
 @## Appearance
 

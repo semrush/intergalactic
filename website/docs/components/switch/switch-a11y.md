@@ -26,7 +26,7 @@ The list below describes roles and attributes that component already has.
 @## Considerations for developers
 
 - You can add optional labels to your toggles, just make sure the label element includes an `id` and the toggle button includes an `aria-labelledby` tag that match.
-- Make sure you [check the contrast of the toggle text](/style/palette/palette-a11y/) against the background (if text is used).
+- Make sure you [check the contrast of the toggle text](/style/design-tokens/) against the background (if text is used).
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-toggles).
 

@@ -23,7 +23,7 @@ The input for entering the phone number has several display options depending on
 - user's country and/or number format,
 - whether we need phone numbers of users from the same country.
 
-When we know the user's country, it is important to display flag of the country in the input – this helps us visually navigate through the entered data faster. _For example, in [Form](/components/form/) guide._
+When we know the user's country, it is important to display flag of the country in the input – this helps us visually navigate through the entered data faster. _For example, in [Form](/patterns/form/) guide._
 
 > Be sure to add the `Phone number` label to the input if it doesn't have any visual indication of the mask type, country code, or format.
 

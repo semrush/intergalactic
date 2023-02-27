@@ -114,7 +114,7 @@ You can add an icon for an additional action on the right of the item.
 | Case          | Appearance example                        | Description                                                                                                                                                                                                                                      |
 | ------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Delete item   | ![delete-item](static/item-delete.png)    | If a list item can be deleted, use the Trash icon.                                                                                                                                                                                               |
-| Drag and drop | ![dragging](static/dragging-dropdown.png) | For list items drag and drop use MoveAlt icon with `--icon-secondary-neutral` color. Show it while hovering the item and change the cursor to `move`. Read more about drag and drop of the items in [Drag and drop](/componrnts/drag-and-drop/). |
+| Drag and drop | ![dragging](static/dragging-dropdown.png) | For list items drag and drop use MoveAlt icon with `--icon-secondary-neutral` color. Show it while hovering the item and change the cursor to `move`. Read more about drag and drop of the items in [Drag and drop](/components/drag-and-drop/). |
 
 ### Reset button
 
@@ -130,7 +130,7 @@ The reset button appears only if any item from the list is selected. After user 
 
 You can put addon before and after the text inside the list item:
 
-- [Icon](/components/icon/),
+- [Icon](/style/icon/),
 - [Flag](/components/flag/),
 - [Badge](/components/badge/),
 - user picture or avatar,
