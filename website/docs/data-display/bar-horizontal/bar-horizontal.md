@@ -130,13 +130,15 @@ When you hover over a dot without data, show tooltip with the `n/a` value. We al
 
 @## Initial loading
 
-When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
 ![skeleton](static/skeleton.png)
 
-More information about this state see in the guide for [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/).
+
+Use the `--skeleton-bg` color token for the skeleton background color.
 
 @page bar-horizontal-a11y
 @page bar-horizontal-api
