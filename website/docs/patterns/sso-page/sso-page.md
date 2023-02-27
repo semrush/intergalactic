@@ -74,7 +74,7 @@ As soon as the free user reaches the limit for using the tool, a limit window ap
 
 When you open a modal window, the first empty input must get the `focus` state.
 
-You can read more about the behavior of forms in [Form](/components/form/).
+You can read more about the behavior of forms in [Form](/patterns/form/).
 
 ### Data processing
 

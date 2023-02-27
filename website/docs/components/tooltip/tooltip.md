@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Tooltip** is a component to display all sorts of tips. It's a wrapper over [Popper component](/components/popper/).
+**Tooltip** is a component to display all sorts of tips. It's a wrapper over [Popper component](/utils/popper/).
 
 Tooltip's differences from [Dropdown](/components/dropdown/):
 
