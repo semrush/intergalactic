@@ -131,7 +131,7 @@ The reset button appears only if any item from the list is selected. After user 
 You can put addon before and after the text inside the list item:
 
 - [Icon](/style/icon/),
-- [Flag](/components/flag/),
+- [Flag](/components/flags/),
 - [Badge](/components/badge/),
 - user picture or avatar,
 - or even control such as [Link](/components/link/) or [Button](/components/button/).
