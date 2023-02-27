@@ -19,7 +19,7 @@ tabName: Design
 
 @## Location
 
-This component is always located on the top of the report or product. 
+This component is usually located on the top of the report or product.
 
 ![feedback notice location on top](static/send-feedback-notice-on-top.png)
 
