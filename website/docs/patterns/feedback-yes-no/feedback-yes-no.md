@@ -19,9 +19,13 @@ tabName: Design
 
 @## Location
 
-This component is always located on the top of the report or product.
+This component is always located on the top of the report or product. 
 
-![feedback notice location](static/send-feedback-yes-no-notice.png)
+![feedback notice location on top](static/send-feedback-notice-on-top.png)
+
+And next to the feature you want feedback on.
+
+![feedback notice location next to the feature](static/send-feedback-notice-next-to-feature.png)
 
 @## Styles
 
