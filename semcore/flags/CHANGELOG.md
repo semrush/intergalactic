@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.00] - 2023-02-28
+
+### Added
+
+- New European Union flag has been added to the set.
+
 ## [3.3.11] - 2023-02-21
 
 ### Changed
