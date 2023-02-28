@@ -44,6 +44,14 @@ Modal window must have a CTA or main button. The "Cancel" button and "Close" ico
 
 We also recommend you to use controls with L size in modal windows.
 
+@## Notice
+
+The notice should be located next to the place that triggers the alert.
+
+For example, if the user tried to submit a project title and failed, the notice should be placed next to the buttons, not right after the title.
+
+![modal with notice](static/m-notice.png)
+
 @## Dual-zone modal window
 
 For the dual-zone modal window use:
