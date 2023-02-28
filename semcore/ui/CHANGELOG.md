@@ -1,3 +1,13 @@
+## [13.10.0] - 2023-02-28
+
+### @semcore/animation
+
+- **Fixed** Fixed `ISlideProps` interface structure.
+
+### @semcore/icon
+
+- **Fixed** Fixed path for `Confluence`, `GoogleCloud`, `Hubspot`, `JavaScript`, `LookerStudio` icons.
+
 ## [13.9.1] - 2023-02-22
 
 ### @semcore/popper
