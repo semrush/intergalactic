@@ -48,7 +48,7 @@ We also recommend you to use controls with L size in modal windows.
 
 The notice should be located next to the place that triggers the alert.
 
-For example, if the user tried to submit a project title and failed, the notice should be placed next to the buttons, not right after the title.
+For example, if the user tried to submit a project title and failed, the notice should be placed next to the buttons.
 
 ![modal with notice](static/m-notice.png)
 
