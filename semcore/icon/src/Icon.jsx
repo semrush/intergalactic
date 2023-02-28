@@ -65,12 +65,12 @@ function Icon(props, ref) {
 
   return (
     <SIcon
+      role={interactive ? 'button' : undefined}
+      aria-hidden={interactive ? undefined : 'true'}
       {...propsForElement(propsWithKeyboardEnhance)}
       style={Object.assign({}, style, propsWithKeyboardEnhance.style, props.style)}
       className={cn(className, propsWithKeyboardEnhance.className, props.className) || undefined}
       onKeyDown={onKeyDown}
-      role={interactive ? 'button' : undefined}
-      aria-hidden={interactive ? undefined : 'true'}
       ref={forkedRef}
     />
   );
