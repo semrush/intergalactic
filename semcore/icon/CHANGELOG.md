@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.13.1] - 2023-02-28
+
+### Fixed
+
+- Fixed DOM attributes `aria-hidden` and `role` were not overridable.
+
 ## [3.13.0] - 2023-02-24
 
 ### Fixed
