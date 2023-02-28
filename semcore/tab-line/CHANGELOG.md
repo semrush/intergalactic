@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.0] - 2023-02-23
+
+### Fixed
+
+- Fixed underline width glitching by rebuilding internal animation mechanism.
+
 ## [3.2.10] - 2023-02-21
 
 ### Changed

@@ -48,16 +48,25 @@ STabLineItem {
     text-decoration: none;
   }
 
+  &::before,
   &::after {
     content: '';
+    position: absolute;
     left: 0;
+    bottom: -1px;
+    height: 3px;
     width: 100%;
     background-color: transparent;
-    transition: background-color 0.2s;
   }
-
-  &:hover::after {
+  &::before {
+    transition: background-color calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
+  }
+  &:hover::before {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
+  }
+  &[selected]::after {
+    transition-delay: calc(var(--intergalactic-duration-control, 200) * 1ms);
+    background-color: var(--intergalactic-border-info-active, #006dca);
   }
 
   & SText:not(:last-child) {
@@ -68,19 +77,12 @@ STabLineItem {
     margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 }
-
-SIndicator,
-STabLineItem::after {
+SCaret {
   position: absolute;
-  display: block;
   bottom: -1px;
   height: 3px;
-}
-
-SIndicator {
-  transition: transform calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
   background-color: var(--intergalactic-border-info-active, #006dca);
-  will-change: transform;
+  transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
 }
 
 STabLineItem[selected] {
@@ -134,12 +136,17 @@ STabLineItem[neighborLocation='left'] {
 
 @media (prefers-reduced-motion) {
   STabLineItem {
+    &::before,
     &::after {
+      transition: none;
+    }
+    &[selected]::after {
+      transition-delay: 0;
       transition: none;
     }
   }
 
-  SIndicator {
-    transition: none;
+  SCaret {
+    display: none;
   }
 }
