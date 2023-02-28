@@ -129,7 +129,7 @@
   font-size: 0.85rem;
   line-height: var(--intergalactic-lh-200);
   background: hsla(0, 0%, 0%, 0.04);
-  border-radius: 3px;
+  border-radius: calc(var(--intergalactic-rounded-small) - 1px);
   overflow: auto;
   padding: 1.5rem;
 }
@@ -273,13 +273,13 @@
 .formatText th {
   vertical-align: top;
   text-align: left;
-  border-bottom: 1px solid #d1d4db;
+  border-bottom: 1px solid var(--intergalactic-border-primary);
   padding: 0.75rem 0.5rem calc(0.75rem - 1px);
 }
 
 .formatText code {
   background-color: hsla(266, 99%, 71%, 0.17);
-  border-radius: 4px;
+  border-radius: var(--intergalactic-rounded-small);
   font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
   padding: calc(0.5 * var(--intergalactic-spacing-1x));
 }

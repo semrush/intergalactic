@@ -37,12 +37,13 @@
   height: 72px;
   width: 72px;
   box-sizing: border-box;
-  background-color: var(--intergalactic-control-tertiary-neutral);
-  border-radius: 20px 0 0 20px;
+  background-color: var(--intergalactic-control-lift-me-up);
+  border-radius: calc(var(--intergalactic-rounded-extra-large) - 4px) 0 0
+    calc(var(--intergalactic-rounded-extra-large) - 4px);
 }
 .buttonUp svg {
-  fill: #fff;
+  fill: var(--intergalactic-bg-tertiary-neutral);
 }
 .buttonUp:hover {
-  background-color: var(--intergalactic-control-tertiary-neutral-hover);
+  background-color: var(--intergalactic-control-lift-me-up-hover);
 }

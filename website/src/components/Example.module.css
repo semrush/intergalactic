@@ -1,8 +1,9 @@
 .exampleWrapper {
   margin: calc(var(--intergalactic-spacing-2x) + 2px) auto;
   border-radius: var(--intergalactic-rounded-medium);
-  /* change to token */
+  /* change to token? */
   box-shadow: rgb(204, 204, 204) 0 0 1px 1px;
+  /* border: 1px solid var(--intergalactic-border-secondary); */
 }
 
 .view {
@@ -24,6 +25,7 @@
   right: 0;
   padding: var(--intergalactic-spacing-1x) 0 var(--intergalactic-spacing-1x)
     var(--intergalactic-spacing-1x);
+  /* change to token? */
   background-color: rgba(1, 22, 39, 0.8);
 }
 
@@ -44,8 +46,10 @@
 .stylesIcons svg {
   width: 22px;
   height: 22px;
+  /* change to token? */
   fill: #898d9a;
 }
 .stylesIcons svg:hover {
+  /* change to token? */
   opacity: 0.8;
 }

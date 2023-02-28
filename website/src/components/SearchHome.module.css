@@ -1,10 +1,9 @@
 .popper {
-  background-color: var(--intergalactic-bg-secondary-neutral);
+  background-color: var(--intergalactic-dropdown-menu-item);
   color: var(--intergalactic-text-primary);
   z-index: 1100;
-  /* need to change to token */
-  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 6px 6px;
+  box-shadow: var(--intergalactic-box-shadow-popper);
+  border-radius: 0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium);
   overflow: hidden;
   border: none;
 }
@@ -41,8 +40,9 @@
   border-radius: var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium) 0 0;
 }
 .input:focus {
-  /* need to change to token */
+  /* change to token? */
   border: 1px solid #171a22;
+  /* border: 1px solid var(--intergalactic-border-info-active); */
 }
 
 .input::placeholder {
@@ -88,7 +88,7 @@
     calc(16 * var(--intergalactic-spacing-1x));
   display: flex;
   flex-direction: column;
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
 }
 
 .notFoundImg {
@@ -119,7 +119,7 @@
   align-items: center;
   padding-left: var(--intergalactic-spacing-1x);
   font-size: var(--intergalactic-fs-100);
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
 }
 
 .optionHeader {
@@ -132,6 +132,7 @@
 }
 
 .highlightMark mark {
+  /* change to token? */
   background: rgba(255, 232, 77, 0.5);
 }
 

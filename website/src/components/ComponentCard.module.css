@@ -4,22 +4,21 @@
   flex-direction: column;
   padding: var(--intergalactic-spacing-4x);
   border: 2px solid transparent;
-  background: #f6f7f8;
+  background: var(--intergalactic-bg-secondary-neutral);
   border-radius: var(--intergalactic-rounded-medium);
   margin-bottom: 0 !important;
   text-decoration: none;
-  color: #171a22;
+  color: var(--intergalactic-text-primary);
 }
 .card:hover {
   cursor: pointer;
-  border: 2px solid #0071cd;
-  /* change to token */
-  box-shadow: 5px 8px 25px 0 #898d9a33;
+  border: 2px solid var(--intergalactic-border-info-active);
+  box-shadow: var(--intergalactic-box-shadow-card);
   transition: all ease-in-out 100ms;
   text-decoration: underline;
 }
 .card[disabled] {
-  opacity: 0.4;
+  opacity: calc(var(--intergalactic-disabled-opacity) + 0.1);
   pointer-events: none;
 }
 .linkUi {

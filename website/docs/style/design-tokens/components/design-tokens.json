@@ -153,13 +153,6 @@
     ]
   },
   {
-    "name": "--intergalactic-bg-primary-service",
-    "type": "color",
-    "rawValue": "{violet.100}",
-    "computedValue": "#edd9ff",
-    "components": []
-  },
-  {
     "name": "--intergalactic-bg-secondary-neutral",
     "type": "color",
     "rawValue": "{gray.50}",
@@ -1126,27 +1119,6 @@
     ]
   },
   {
-    "name": "--intergalactic-control-secondary-navigation",
-    "type": "color",
-    "rawValue": "{gray.white}",
-    "computedValue": "#ffffff",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-control-secondary-navigation-hover",
-    "type": "color",
-    "rawValue": "{gray.50}",
-    "computedValue": "#f4f5f9",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-control-secondary-navigation-active",
-    "type": "color",
-    "rawValue": "{gray.100}",
-    "computedValue": "#e0e1e9",
-    "components": []
-  },
-  {
     "name": "--intergalactic-control-tertiary-neutral",
     "type": "color",
     "rawValue": "{gray.400}, 0",
@@ -1237,21 +1209,21 @@
     ]
   },
   {
-    "name": "--intergalactic-control-tertiary-navigation",
+    "name": "--intergalactic-control-lift-me-up",
     "type": "color",
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "components": []
   },
   {
-    "name": "--intergalactic-control-tertiary-navigation-hover",
+    "name": "--intergalactic-control-lift-me-up-hover",
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
     "components": []
   },
   {
-    "name": "--intergalactic-control-tertiary-navigation-active",
+    "name": "--intergalactic-control-lift-me-up-active",
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",

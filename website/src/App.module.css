@@ -7,8 +7,7 @@
 }
 
 .skipToContent {
-  /* change to token */
-  background: #ffffff;
+  background: var(--intergalactic-bg-tertiary-neutral);
   top: var(--intergalactic-spacing-3x);
   left: var(--intergalactic-spacing-3x);
   padding: var(--intergalactic-spacing-4x);

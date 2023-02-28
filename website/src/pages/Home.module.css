@@ -169,10 +169,10 @@
 .initialPrinciples {
   position: relative;
   overflow: hidden;
-  box-shadow: var(--intergalactic-box-shadow-card);
+  box-shadow: var(--intergalactic-box-shadow-principles);
   margin: calc(var(--intergalactic-spacing-1x) + 2px) calc(var(--intergalactic-spacing-4x) - 1px);
   padding: var(--intergalactic-spacing-6x);
-  background-color: var(--intergalactic-bg-secondary-neutral);
+  background-color: var(--intergalactic-bg-tertiary-neutral);
   border-radius: var(--intergalactic-rounded-medium);
   z-index: 99;
 }
@@ -321,7 +321,7 @@
 }
 
 .tab > div:first-child > div {
-  background-color: #ff622d;
+  background-color: var(--intergalactic-bg-primary-warning);
   height: 2px;
 }
 
@@ -337,19 +337,19 @@
 }
 
 .category {
-  columns: 6 160px;
+  columns: 6 calc(2 * var(--intergalactic-spacing-20x));
 }
 
 .uxPatterns .category {
-  columns: 2 160px;
+  columns: 2 calc(2 * var(--intergalactic-spacing-20x));
 }
 
 .filters .category {
-  columns: 1 160px;
+  columns: 1 calc(2 * var(--intergalactic-spacing-20x));
 }
 
 .devDocs .category {
-  columns: 1 160px;
+  columns: 1 calc(2 * var(--intergalactic-spacing-20x));
 }
 
 .category .component .linkStyled {
@@ -361,7 +361,7 @@
 .cards {
   display: grid;
   grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
+  grid-template-columns: repeat(auto-fill, calc(44 * var(--intergalactic-spacing-1x)));
   grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
   width: 100%;
   margin: 0;
@@ -382,7 +382,7 @@
 }
 
 .linkDisabled {
-  color: #ccc;
+  opacity: calc(var(--intergalactic-disabled-opacity) - 0.1);
   text-decoration: none;
   cursor: default;
   pointer-events: none;
@@ -433,7 +433,7 @@
   position: sticky;
   top: var(--intergalactic-spacing-20x);
   height: calc(100vh - var(--intergalactic-spacing-20x));
-  background: var(--intergalactic-bg-tertiary-neutral);
+  background: var(--intergalactic-bg-secondary-neutral);
   max-width: 250px;
 }
 

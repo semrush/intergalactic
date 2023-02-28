@@ -23,7 +23,7 @@
 .colorPreview {
   width: 18px;
   height: 18px;
-  border-radius: 4px;
+  border-radius: var(--intergalactic-rounded-small);
   display: inline-block;
   margin-right: var(--intergalactic-spacing-2x);
   border: 1px solid transparent;
@@ -32,5 +32,6 @@
 
 .usages {
   color: #6c6e79;
+  /* TODO change to token */
   border-bottom: 1px dashed #6c6e79;
 }

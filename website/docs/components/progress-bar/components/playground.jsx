@@ -9,7 +9,7 @@ const SIZES = ['l', 'm', 's'];
 const Wrapper = styled.div`
   width: 300px;
   border-radius: 5px;
-  padding: var(--intergalactic-spacing-5x);
+  padding: 20px;
 `;
 
 const LayoutPreview = (props) => <Wrapper>{props.children}</Wrapper>;

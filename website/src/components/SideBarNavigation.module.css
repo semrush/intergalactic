@@ -58,6 +58,5 @@
 .categoryItemDisabled {
   cursor: default;
   pointer-events: none;
-  /* need to change to token */
-  color: #ccc;
+  opacity: calc(var(--intergalactic-disabled-opacity) - 0.1);
 }

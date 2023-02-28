@@ -8,8 +8,8 @@
   align-items: center;
   height: 80px;
   box-sizing: border-box;
-  background: var(--intergalactic-bg-secondary-neutral);
-  box-shadow: var(--intergalactic-box-shadow-header);
+  background: var(--intergalactic-bg-tertiary-neutral);
+  box-shadow: var(--intergalactic-box-shadow-top-menu);
   z-index: 499;
   display: flex;
   column-gap: var(--intergalactic-spacing-8x);
@@ -93,7 +93,7 @@
   padding: calc(7 * var(--intergalactic-spacing-7x)) var(--intergalactic-spacing-8x);
 }
 .activeMenuIcon {
-  background-color: var(--intergalactic-control-tertiary-info-active);
+  background-color: var(--intergalactic-bg-secondary-neutral);
 }
 .searchIcon {
   color: var(--intergalactic-icon-non-interactive);
@@ -102,7 +102,7 @@
 }
 
 .mobileMenu {
-  background-color: var(--intergalactic-bg-tertiary-neutral);
+  background-color: var(--intergalactic-bg-secondary-neutral);
   display: none;
   min-width: 320px;
   max-width: 100vw;

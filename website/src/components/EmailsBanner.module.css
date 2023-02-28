@@ -3,10 +3,9 @@
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 3fr;
   overflow: hidden;
-  /* change to token */
-  box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
+  box-shadow: var(--intergalactic-box-shadow-popper);
   border-radius: var(--intergalactic-rounded-medium);
-  background-color: #fff;
+  background-color: var(--intergalactic-bg-tertiary-neutral);
 }
 @media (max-width: 767px) {
   .emailsWrapper {

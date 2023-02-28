@@ -40,8 +40,7 @@
   vertical-align: middle;
   font-size: var(--intergalactic-fs-300);
   line-height: var(--intergalactic-lh-600);
-  /* need to change to token */
-  color: #ccc;
+  opacity: calc(var(--intergalactic-disabled-opacity) - 0.1);
   text-decoration: none;
   cursor: default;
   pointer-events: none;

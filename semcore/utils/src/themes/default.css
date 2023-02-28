@@ -25,7 +25,6 @@
   --intergalactic-bg-primary-invert-hover: #2b2e38;
   /* Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information. */
   --intergalactic-bg-primary-invert-active: #484a54;
-  --intergalactic-bg-primary-service: #edd9ff;
   /* Secondary background of the interface which contains the main data and information. */
   --intergalactic-bg-secondary-neutral: #f4f5f9;
   /* Hover state of the secondary background of the interface which contains the main data and information. */
@@ -204,9 +203,6 @@
   --intergalactic-control-secondary-invert-hover: rgba(255, 255, 255, 0.1);
   /* Active (selected) state of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert-active: rgba(255, 255, 255, 0.3);
-  --intergalactic-control-secondary-navigation: #ffffff;
-  --intergalactic-control-secondary-navigation-hover: #f4f5f9;
-  --intergalactic-control-secondary-navigation-active: #e0e1e9;
   /* Background of the regular tertiary control. */
   --intergalactic-control-tertiary-neutral: rgba(138, 142, 155, 0);
   /* Hover state of the regular tertiary control. */
@@ -225,9 +221,9 @@
   --intergalactic-control-tertiary-invert-hover: rgba(255, 255, 255, 0.1);
   /* Active (selected) state of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
-  --intergalactic-control-tertiary-navigation: #e0e1e9;
-  --intergalactic-control-tertiary-navigation-hover: #c4c7cf;
-  --intergalactic-control-tertiary-navigation-active: #c4c7cf;
+  --intergalactic-control-lift-me-up: #e0e1e9;
+  --intergalactic-control-lift-me-up-hover: #c4c7cf;
+  --intergalactic-control-lift-me-up-active: #c4c7cf;
   /* Primary neutral icon. */
   --intergalactic-icon-primary-neutral: #6c6e79;
   /* Hover and active (selected) states of the primary neutral icon. */
