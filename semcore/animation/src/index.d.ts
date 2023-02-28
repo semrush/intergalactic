@@ -71,17 +71,9 @@ export interface IScaleProps extends IAnimationProps {
 }
 
 export interface ISlideProps extends IAnimationProps {
-  /** Placement of appearing block
+  /** Direction from which slide animation will be performed
    */
-  placement:
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
+  slideOrigin?: 'top' | 'bottom' | 'left' | 'right';
 }
 
 declare const Animation: <T>(props: CProps<IAnimationProps & T>) => ReturnEl;

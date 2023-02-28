@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.9.2] - 2023-02-28
+
+### Fixed
+
+- Fixed `ISlideProps` interface structure.
+
 ## [1.9.1] - 2023-02-21
 
 ### Changed
