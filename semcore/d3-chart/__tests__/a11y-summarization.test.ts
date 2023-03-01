@@ -741,7 +741,7 @@ describe('Plot a11y summarization', () => {
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
-      translations,
+      translations: translations.en,
     });
 
     expect(text.includes('0')).toBeTruthy();
@@ -767,7 +767,7 @@ describe('Plot a11y summarization', () => {
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 120, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
-      translations,
+      translations: translations.en,
     });
 
     const limit = 550;
@@ -798,7 +798,7 @@ describe('Plot a11y summarization', () => {
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
-      translations,
+      translations: translations.en,
     });
 
     expect(text.includes('0')).toBeTruthy();
@@ -823,9 +823,9 @@ describe('Plot a11y summarization', () => {
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
 
-    const locale = { locale: 'ES', translations: { ES: {} } };
+    const locale = { locale: 'ES', translations: {} };
     for (const messageId in translations.en) {
-      locale.translations.ES[messageId] = 'EcmaScript';
+      locale.translations[messageId] = 'EcmaScript';
     }
 
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), locale);
@@ -841,15 +841,13 @@ describe('Plot a11y summarization', () => {
 
     const locale = {
       locale: 'en',
-      translations: {
-        en: new Proxy(translations.en, {
-          get(target, property) {
-            if (typeof property === 'symbol') return;
-            usedMessages.add(property);
-            return target[property];
-          },
-        }),
-      },
+      translations: new Proxy(translations.en, {
+        get(target, property) {
+          if (typeof property === 'symbol') return;
+          usedMessages.add(property);
+          return target[property];
+        },
+      }),
     };
 
     serialize(
@@ -1214,7 +1212,9 @@ describe('Plot a11y summarization', () => {
       {
         locale: 'en',
         translations: {
-          en: { ...translations.en, 'time-series-local-trend': '%TREND%', ellipsis: '%ELLIPSIS%' },
+          ...translations.en,
+          'time-series-local-trend': '%TREND%',
+          ellipsis: '%ELLIPSIS%',
         },
       },
     );
