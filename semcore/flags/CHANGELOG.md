@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.2] - 2023-03-01
+
+### Fixed
+
+- European Union flag with 2x size was fixed again and never again :D.
+
 ## [3.4.1] - 2023-03-01
 
 ### Fixed
