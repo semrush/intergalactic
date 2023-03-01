@@ -7,8 +7,10 @@ export const summarize = (
   hints: DataStructureHints,
   config: DataSummarizationConfig,
   locale: NavigatorLanguage['language'],
+  translations: { [messageId: string]: string },
+  availableLocales: { [localeId: string]: any },
 ) => {
   const analyzedData = extractDataInsights(data, hints, config);
-  const summary = serialize(analyzedData, config, { locale });
+  const summary = serialize(analyzedData, config, { locale, translations, availableLocales });
   return summary;
 };

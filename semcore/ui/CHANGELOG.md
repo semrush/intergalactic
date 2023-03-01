@@ -1,3 +1,9 @@
+## [13.11.1] - 2023-03-01
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed summary generation was broken after i18n enhancement release.
+
 ## [13.11.0] - 2023-03-01
 
 ### @semcore/flags

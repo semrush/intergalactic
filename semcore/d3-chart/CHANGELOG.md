@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.18] - 2023-02-28
+
+### Fixed
+
+- Fixed summary generation was broken after i18n enhancement release.
+
 ## [2.8.17] - 2023-02-28
 
 ### Changed
