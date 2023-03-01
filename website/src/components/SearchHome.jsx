@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter, useLocation } from 'react-router-dom';
-import { InstantSearch, Highlight } from 'react-instantsearch/dom';
+import { InstantSearch, Highlight, Configure } from 'react-instantsearch/dom';
 import { connectAutoComplete, connectStateResults } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
 import { logEvent } from '../utils/amplitude';
@@ -18,9 +18,11 @@ const ru = require('convert-layout/ru');
 import observatory from '../static/search/observatory.svg';
 import CONFIG from '../algolia';
 import Divider from '@semcore/divider';
+import { getCookie, AMPLITUDE_COOKIE_NAME } from '../utils/cookie';
 import styles from './SearchHome.module.css';
 
 const algoliaClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
+const userToken = getCookie(AMPLITUDE_COOKIE_NAME);
 const searchClient = {
   search(requests) {
     if (requests.every(({ params }) => !params.query)) {
@@ -210,6 +212,7 @@ const SuggestSearch = withRouter(connectAutoComplete(connectStateResults(Search)
 function SearchHome(props) {
   return (
     <InstantSearch searchClient={searchClient} indexName={CONFIG.ALGOLIA_INDEX}>
+      <Configure userToken={userToken} />
       <SuggestSearch {...props} visible={true} />
     </InstantSearch>
   );
