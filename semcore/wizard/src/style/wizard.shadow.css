@@ -17,8 +17,8 @@ SSidebar {
   max-width: 220px;
   flex-shrink: 0;
   box-sizing: border-box;
-  border-radius: var(--intergalactic-rounded-large, 12px) 0 0
-    var(--intergalactic-rounded-large, 12px);
+  border-radius: var(--intergalactic-modal-rounded, 12px) 0 0
+    var(--intergalactic-modal-rounded, 12px);
   @media (max-width: 1060px) {
     width: 44px;
   }
@@ -34,7 +34,7 @@ SSidebarHeader {
 SStepper {
   display: flex;
   font-size: var(--intergalactic-fs-200, 14px);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   cursor: pointer;
   position: relative;
@@ -63,7 +63,7 @@ SStepper {
     }
     &:hover SStepDescription {
       display: block;
-      border-radius: var(--intergalactic-rounded-medium, 6px);
+      border-radius: var(--intergalactic-control-rounded, 6px);
       white-space: nowrap;
       overflow: auto;
     }
@@ -75,7 +75,7 @@ SStepper {
 
 SStepNumber {
   display: inline-block;
-  min-width: 24px;
+  min-width: 20px;
 }
 
 SCompleted {
@@ -92,7 +92,7 @@ SStepDescription {
 SContent {
   padding: var(--intergalactic-spacing-10x, 40px);
   width: 100%;
-  border-radius: 0 var(--intergalactic-rounded-large, 12px) var(--intergalactic-rounded-large, 12px)
+  border-radius: 0 var(--intergalactic-modal-rounded, 12px) var(--intergalactic-modal-rounded, 12px)
     0;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
 }

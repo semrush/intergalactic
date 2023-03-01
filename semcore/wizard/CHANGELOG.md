@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.15] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0], `@semcore/modal` [3.4.5 ~> 3.4.6]).
+
+## [1.2.14] - 2023-02-10
+
+### Fixed
+
+- Fixed issue with scroll on small screen
+
+## [1.2.13] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`, `--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+
 ## [1.2.12] - 2023-01-20
 
 ### Changed

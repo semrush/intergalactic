@@ -11,11 +11,11 @@ export default () => {
     <React.Fragment>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
       <SidePanel visible={visible} onClose={() => setVisible(false)}>
-        <List size={400} marker={null}>
+        <List size={300} marker={null}>
           {['Features', 'Pricing', 'Resources', 'Company', 'Extra tools'].map((name, i, arr) => (
             <React.Fragment key={i}>
               <List.Item>{name}</List.Item>
-              {i < arr.length - 1 && <Divider my={2} />}
+              {i < arr.length - 1}
             </React.Fragment>
           ))}
         </List>

@@ -170,7 +170,11 @@ for (const token in values) {
     values[token] = resolveColor(values[token]);
   } else if (types[token] === 'boxShadow') {
     values[token] = values[token].split('; ').map(replaceColors).join(', ');
-  } else if (types[token] === 'sizing' || types[token] === 'spacing') {
+  } else if (
+    types[token] === 'sizing' ||
+    types[token] === 'spacing' ||
+    types[token] === 'borderRadius'
+  ) {
     values[token] = resolveToken(values[token]);
   }
 }

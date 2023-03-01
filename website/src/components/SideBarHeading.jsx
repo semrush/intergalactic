@@ -4,9 +4,10 @@ import ArrowUpM from '@semcore/icon/ArrowUp/m';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
+import { logEvent } from '../utils/amplitude';
 import styles from './SideBarHeading.module.css';
 
-function SideBarHeading({ headings }) {
+function SideBarHeading({ headings, pageTitle }) {
   const { pathname } = useLocation();
   const [activeId, setActiveId] = React.useState();
 
@@ -35,6 +36,13 @@ function SideBarHeading({ headings }) {
             offset={-140}
             duration={200}
             delay={0}
+            onClick={() =>
+              logEvent(`right_menu:click`, {
+                group: 'int_patterns',
+                page: pageTitle,
+                link: heading.html,
+              })
+            }
           >
             {heading.html}
           </Link>

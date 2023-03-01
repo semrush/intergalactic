@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.16] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+
+## [3.3.15] - 2023-02-13
+
+## [3.3.14] - 2023-02-09
+
+## [3.3.13] - 2023-02-06
+
+### Fixed
+
+- Fixed colgroup calculation for a table with one header level.
+
 ## [3.3.12] - 2023-01-26
 
 ### Changed

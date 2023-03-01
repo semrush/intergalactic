@@ -71,7 +71,7 @@ Don't use link component for the text that doesn't lead to another page or perfo
 
 > _Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
 >
-> _Links should not be too large on mobile. Very large links that take up much of the viewport can be accidently activated, such as when a user touches the screen to scroll up or down._
+> _Links should not be too large on mobile. Very large links that take up much of the viewport can be accidentally activated, such as when a user touches the screen to scroll up or down._
 >
 > [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
 
@@ -89,7 +89,7 @@ Always add quotation marks inside the link.
 
 ![link-name](static/name-example-4.png)
 
-If the sentence ends with e-mail, URL, domain, which is a link, then do not put a period at the end of the sentence - users often copy the address and may accidentally capture the period as well.
+If the sentence ends with email, URL, domain, which is a link, then do not put a period at the end of the sentence - users often copy the address and may accidentally capture the period as well.
 
 ![link-name](static/name-example-5.png)
 

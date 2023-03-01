@@ -1,7 +1,9 @@
-import { CProps } from '@semcore/core';
+import { CProps, ReturnEl } from '@semcore/core';
 import { RefObject } from 'react';
+import { IBoxProps } from '@semcore/flex-box';
+import { ITooltipProps } from '@semcore/tooltip';
 
-export interface IEllipsisProps {
+export interface IEllipsisProps extends IBoxProps, ITooltipProps {
   /**
    * Rows count in multiline Ellipsis
    * @default 1
@@ -26,6 +28,10 @@ export interface IEllipsisProps {
    * Explicit sizes of container text should be trimmed in
    **/
   containerRect?: { width: number };
+  /** List of props that will be passed to tooltip
+   * @default ['title', 'theme', 'strategy', 'modifiers', 'placement', 'interaction', 'timeout', 'visible', 'defaultVisible', 'onVisibleChange', 'offset', 'preventOverflow', 'arrow', 'flip', 'computeStyles', 'eventListeners', 'onFirstUpdate']
+   */
+  includeTooltipProps?: string[];
 }
 
 declare const useResizeObserver: (

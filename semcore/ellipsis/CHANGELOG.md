@@ -2,7 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.1.9] - 2023-01-24
+## [1.2.1] - 2023-02-16
+
+### Fixed
+
+- Ellipsis wasn't working when tooltip was disabled.
+
+## [1.2.0] - 2023-02-15
+
+### Added
+
+- Supported passing tooltip props.
+
+## [1.1.10] - 2023-02-09
 
 ### Fixed
 

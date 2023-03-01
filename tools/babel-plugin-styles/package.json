@@ -1,6 +1,6 @@
 {
   "name": "@semcore/babel-plugin-styles",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "main": "src/index.js",
   "scripts": {
     "test": "echo 'no test =('"
@@ -12,12 +12,11 @@
     "@babel/plugin-syntax-jsx": "7.18.6",
     "chokidar": "3.5.1",
     "css-selector-tokenizer": "0.7.3",
-    "cssnano": "4.1.10",
     "find-package-json": "1.2.0",
     "fs-extra": "9.1.0",
     "postcss": "8.2.13",
     "postcss-color-mod-function": "3.0.3",
-    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-csso": "^6.0.1",
     "postcss-hover-media-feature": "^1.0.2",
     "postcss-import-sync2": "1.2.0",
     "postcss-preset-env": "6.7.0",

@@ -7,7 +7,7 @@ var _ref =
     /*__reshadow_css_start__*/
     (__css__(
       /*__inner_css_start__*/
-      '.___SButton_15pdn_gg_{padding:0 20px;background:purple}.___SButton_15pdn_gg_._theme_default_15pdn_gg_{background:red;background:#bada55;box-shadow:0 0 0 black}',
+      '.___SButton_15pdn_gg_{padding:0 20px;background:purple}.___SButton_15pdn_gg_._theme_default_15pdn_gg_{background:red;background:#bada55;box-shadow:0 0 0#000}',
       '15pdn_gg_',
     ),
     {

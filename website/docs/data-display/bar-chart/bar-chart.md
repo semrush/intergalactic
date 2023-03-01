@@ -40,6 +40,22 @@ On the other hand, color can focus attention on a specific portion of data. For 
 
 ![bar chart colors yes-no examples](static/example-4.png)
 
+### Min-height and outliers (big values)
+
+In some cases some of the values in the data can be very different from the majority of values. If you show this picture as it is, then large values will have all the attention, while the rest of the data will look like null.
+
+> **The bar has a min-height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
+
+![bar chart with outlier](static/outlier.png)
+
+**Recommended solution for this case: make the scale not linear, but logarithmic.** In this case, the data will align with each other and remain comparable, and our outliers will still be the largest (although not so large).
+
+![bar chart with outlier](static/outlier-1.png)
+
+> You can read the **[article about other solutions](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).**
+
+If there are very large values, you may choose a different chart type which is better suited to solve your problem. Perhaps your visualization needs to focus on these large values?
+
 @## Legend
 
 If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title is not enough.
@@ -100,24 +116,6 @@ For such cases, you can add the possibility to switch the data display from bar 
 Keep in mind a reasonable order of values on the axes. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
 
 ![sorting bar chart](static/sort-yes-no.png)
-
-### Big values (outliers)
-
-In some cases some of the values in our data are very different from the majority of values. If you show this picture as it is, with a zero value on the Y-axis, then large values will draw all the attention to themselves, while the rest of the data will appear to be zero.
-
-> **The bar has a min-height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
-
-![bar chart with outlier](static/outlier.png)
-
-#### Solution options
-
-**Recommended option. Make the scale not linear, but logarithmic.** In this case, the data will align with each other and remain comparable, and our outliers will still be the largest (although not so large).
-
-![bar chart with outlier](static/outlier-1.png)
-
-> You can read the **[article about other solutions](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).**
-
-If there are very large values, you may choose a different chart type which is better suited to solve yoyr problem. Perhaps your visualization needs to focus on these large values?
 
 ### Chart as an entry point
 

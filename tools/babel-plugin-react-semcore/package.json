@@ -1,13 +1,13 @@
 {
   "name": "@semcore/babel-plugin-react-semcore",
-  "version": "4.7.1",
+  "version": "4.7.2",
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
     "test": "jest --no-cache"
   },
   "dependencies": {
-    "@semcore/babel-plugin-styles": "^1.7",
+    "@semcore/babel-plugin-styles": "^1.8.1",
     "find-package-json": "1.2.0",
     "semver": "7.3.5",
     "string-hash": "1.1.3",

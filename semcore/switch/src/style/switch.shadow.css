@@ -8,7 +8,7 @@ SSwitch {
 
 SSwitch[size] {
   & SToggle {
-    border-radius: var(--intergalactic-rounded-extra-large, 24px);
+    border-radius: var(--intergalactic-switch-rounded, 24px);
   }
 }
 
@@ -61,6 +61,9 @@ SSwitch[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
 
   & SToggle {
+    cursor: default;
+  }
+  & SAddon {
     cursor: default;
   }
 }
@@ -133,6 +136,10 @@ SSlider[checked] {
 SInput {
   position: absolute;
   clip: rect(1px, 1px, 1px, 1px);
+}
+
+SAddon {
+  cursor: pointer;
 }
 
 SAddon[neighborLocation='right'] {

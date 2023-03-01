@@ -14,7 +14,7 @@ _For example, you added a new tab to the report. In this case, you can highlight
 
 **Main features of the component:**
 
-- Badge can not be deleted or added by a user. Badge is added to the elements by the system according to the rules described below in the table.
+- Badge cannot be deleted or added by a user. Badge is added to the elements by the system according to the rules described below in the table.
 - Badge is not clickable.
 - Do not use badge for filtering the data.
 

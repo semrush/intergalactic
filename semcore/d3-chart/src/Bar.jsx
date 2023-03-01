@@ -79,7 +79,7 @@ class BarRoot extends Component {
     const absHeight = Math.abs(
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
-    const height = Math.max(absHeight, hMin);
+    const height = Number(d[y]) === 0 ? 0 : Math.max(absHeight, hMin);
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
       offset[1] -

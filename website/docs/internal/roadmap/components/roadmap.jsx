@@ -89,69 +89,13 @@ const year2022 = [
   ...generateSprint(dayjs('2022-01-10'), dayjs('2022-03-04')),
   ...generateSprint(dayjs('2022-03-14'), dayjs('2022-12-30')),
 ];
+const year2023 = [
+  ...generateSprint(dayjs('2023-01-09'), dayjs('2023-03-03')),
+  ...generateSprint(dayjs('2023-03-20'), dayjs('2023-12-30')),
+];
 
-const dateSprint = [...year2020, ...year2021, ...year2022];
+const dateSprint = [...year2020, ...year2021, ...year2022, ...year2023];
 const components = {
-  'Q1 2020': [
-    { text: 'z-index', size: { kit: '1/13' } },
-    { text: 'a11y', size: { kit: '1/13' } },
-    { text: 'Intergalactic enchancement 💪', size: { kit: '1/7' } },
-    { text: 'Pagination', name: 'pagination', size: { kit: '3/7' } },
-    { text: 'Fullscreen modal 👑', size: { ui: '3/7' } },
-    { text: 'ChartHead', size: { kit: '5/7' } },
-    { text: 'ChartLegend', size: { kit: '5/7' } },
-    { text: 'Drag & drop', size: { ui: '5/11' } },
-    { text: 'FullscreenModal', size: { ui: '5/11', kit: '11/13' } },
-    { text: 'Component 2.0', size: { kit: '7/13' } },
-    { text: 'ComplexExport', size: { ui: '9/11' } },
-    { text: 'DivergingBar Chart', size: { ui: '11/13' } },
-    { text: 'WizardModal 🧙🏻', size: { ui: '1/13' } },
-    { text: 'ColorPicker input', size: { ui: '1/13' } },
-  ],
-  'Q2 2020': [
-    { text: 'Component 2.0', size: { kit: '1/15' } },
-    { text: 'FullscreenModal', size: { kit: '1/5' } },
-    { text: 'Themes enchancement 💪', size: { kit: '3/9' } },
-    { text: 'Drag & drop', size: { kit: '5/15' } },
-    { text: 'PanelSummary', size: { ui: '5/15' } },
-    { text: 'Funnel chart', size: { ui: '9/13' } },
-    { text: 'Table enchancement 💪', name: 'table', size: { kit: '13/15' } },
-    { text: 'TableData 💪', size: { kit: '13/15' } },
-    { text: 'Counter', size: { kit: '13/15' } },
-    { text: 'WizardModal 🧙🏻', size: { ui: '1/15' } },
-  ],
-  'Q3 2020': [
-    { text: 'Documentation enchancement 💪', size: { kit: '1/15' } },
-    { text: 'TableData 💪', size: { kit: '1/11' } },
-    { text: 'Relise system research', size: { kit: '1/9' } },
-    { text: 'SidePanel (Drawer)', size: { ui: '1/7', kit: '3/7' } },
-    { text: 'Intergalactic enchancement 💪', size: { ui: '3/15' } },
-    { text: 'Counter', size: { kit: '5/7' } },
-    { text: 'ProjectSelect', size: { ui: '5/11' } },
-    { text: 'Drag & drop', size: { kit: '7/11' } },
-    { text: 'Funnel chart', size: { ui: '7/11' } },
-    { text: 'Chart library research', size: { kit: '11/15' } },
-    { text: 'Filters', size: { ui: '9/15' } },
-    { text: 'a11y recommendations', size: { ui: '13/15' } },
-    { text: 'MediaModal', size: { ui: '13/15' } },
-  ],
-  'Q4 2020': [
-    { text: 'Documentation enchancement 💪', size: { kit: '1/13' } },
-    { text: 'Intergalactic redesign 🎨', size: { ui: '1/5', kit: '5/13' } },
-    { text: 'MediaModal', size: { ui: '1/3', kit: '1/5' } },
-    { text: 'Filter Search', size: { ui: '1/3' } },
-    { text: 'Advanced filters', size: { ui: '1/3' } },
-    { text: 'Chart library research', size: { kit: '1/7' } },
-    { text: 'PanelSummary', size: { ui: '1/7' } },
-    { text: 'New brand styles implementation research', size: { ui: '3/13' } },
-    { text: 'Other filter guides', size: { ui: '3/13' } },
-    { text: 'New chart library', size: { kit: '7/13' } },
-    {
-      text: 'DataTable checkboxes functionality',
-      size: { ui: '9/11', kit: '11/13' },
-    },
-    { text: 'WYSIWYG', size: { ui: '11/13' } },
-  ],
   'Q1 2021': [
     { text: 'Wake up sprint ⏰', size: { kit: '1/3' } },
     { text: 'Mobile first guides', size: { ui: '3/9' } },
@@ -222,6 +166,12 @@ const components = {
     { text: 'Components animation', size: { ui: '7/15', kit: '11/15' } },
     { text: 'A11y components enhancement', size: { ui: '1/15', kit: '1/7' } },
   ],
+  'Q1 2023': [
+    { text: 'Design Tokens and Themes onboarding', size: { ui: '1/11', kit: '1/11' } },
+    { text: 'Radar chart', size: { ui: '1/8', kit: '4/9' } },
+    { text: 'Components animation', size: { kit: '5/9' } },
+    { text: 'BottomSheet (draft name)', size: { ui: '9/15', kit: '11/15' } },
+  ],
 };
 
 function Gant(props) {
@@ -273,45 +223,36 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(11);
+  const [value, setValue] = useState(8);
   let TabContent = null;
 
   switch (value) {
     case 0:
-      TabContent = <Gant sprint={dateSprint.slice(0, 7)} components={components['Q1 2020']} />;
-      break;
-    case 1:
-      TabContent = <Gant sprint={dateSprint.slice(6, 14)} components={components['Q2 2020']} />;
-      break;
-    case 2:
-      TabContent = <Gant sprint={dateSprint.slice(13, 21)} components={components['Q3 2020']} />;
-      break;
-    case 3:
-      TabContent = <Gant sprint={dateSprint.slice(20, 27)} components={components['Q4 2020']} />;
-      break;
-    case 4:
       TabContent = <Gant sprint={dateSprint.slice(26, 33)} components={components['Q1 2021']} />;
       break;
-    case 5:
+    case 1:
       TabContent = <Gant sprint={dateSprint.slice(32, 39)} components={components['Q2 2021']} />;
       break;
-    case 6:
+    case 2:
       TabContent = <Gant sprint={dateSprint.slice(38, 47)} components={components['Q3 2021']} />;
       break;
-    case 7:
+    case 3:
       TabContent = <Gant sprint={dateSprint.slice(46, 53)} components={components['Q4 2021']} />;
       break;
-    case 8:
+    case 4:
       TabContent = <Gant sprint={dateSprint.slice(53, 61)} components={components['Q1 2022']} />;
       break;
-    case 9:
+    case 5:
       TabContent = <Gant sprint={dateSprint.slice(60, 67)} components={components['Q2 2022']} />;
       break;
-    case 10:
+    case 6:
       TabContent = <Gant sprint={dateSprint.slice(66, 73)} components={components['Q3 2022']} />;
       break;
-    case 11:
+    case 7:
       TabContent = <Gant sprint={dateSprint.slice(72, 80)} components={components['Q4 2022']} />;
+      break;
+    case 8:
+      TabContent = <Gant sprint={dateSprint.slice(80, 87)} components={components['Q1 2023']} />;
       break;
   }
   return (

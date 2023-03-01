@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.17] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.4.16 ~> 3.4.17]).
+
+## [3.4.16] - 2023-02-13
+
+## [3.4.15] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
 ## [3.4.14] - 2023-01-20
 
 ### Changed

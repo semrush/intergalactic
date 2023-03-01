@@ -6,7 +6,7 @@ import Tooltip from '@semcore/tooltip';
 import Tag from '@semcore/tag';
 import AllComponents from '../components/AllComponents';
 // import EmailsBanner from '../components/EmailsBanner';
-import whale from '../static/illustration/whale-pic-christmas.svg';
+import whale from '../static/illustration/whale.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
@@ -24,6 +24,7 @@ import WarningM from '@semcore/icon/Warning/m';
 import Error from '../components/Error';
 import styles from './Home.module.css';
 import cx from 'classnames';
+import { logEvent } from '../utils/amplitude';
 
 const mappingTableToImg = {
   principles: {
@@ -93,7 +94,7 @@ const getTabByTitle = (titles, className) => {
         titles[0] === 'Charts' ? (
           getChart(titles[0])
         ) : titles[0] === 'Table' ? (
-          <Table titles={titles[0]} />
+          <Table title={titles[0]} />
         ) : (
           getComponents(titles[0])
         )
@@ -124,8 +125,8 @@ const getTooltip = (title) => {
   return url ? <img src={url} alt={title} /> : undefined;
 };
 
-const getComponents = (titles) => {
-  const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
+const getComponents = (title) => {
+  const items = navigationTree.filter((nav) => !nav.metadata.hide && title.includes(nav.title));
   const getList = (child) => {
     if (child.elem.metadata.disabled) {
       return (
@@ -138,7 +139,17 @@ const getComponents = (titles) => {
     return (
       <Tooltip placement="left" w={'fit-content'} key={child.elem.title}>
         <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component}>
-          <Link className={styles.linkStyled} to={`/${child.elem.route}/`}>
+          <Link
+            className={styles.linkStyled}
+            to={`/${child.elem.route}/`}
+            onClick={() =>
+              logEvent('tabs_comp:click', {
+                group: 'int_main',
+                tab: title,
+                label: child.elem.title,
+              })
+            }
+          >
             {child.elem.title}
           </Link>
           {child.elem.metadata.beta && (
@@ -166,8 +177,8 @@ const getComponents = (titles) => {
   return <div className={styles.category}>{listItems}</div>;
 };
 
-const getChart = (titles) => {
-  const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
+const getChart = (title) => {
+  const items = navigationTree.filter((nav) => !nav.metadata.hide && title.includes(nav.title));
   const getList = (child) => {
     return (
       <ComponentCard
@@ -177,12 +188,29 @@ const getChart = (titles) => {
         disabled={!!child.elem.metadata.disabled}
         text={child.elem.title}
         href={child.elem.route}
+        onClick={() =>
+          logEvent('tabs_comp:click', {
+            group: 'int_main',
+            tab: title,
+            label: child.elem.title,
+          })
+        }
       />
     );
   };
 
   const getDocs = (item) => (
-    <Link to={item.route} key={item.route}>
+    <Link
+      to={item.route}
+      key={item.route}
+      onClick={() =>
+        logEvent('tabs_comp:click', {
+          group: 'int_main',
+          tab: title,
+          label: item.title,
+        })
+      }
+    >
       {item.title}
     </Link>
   );
@@ -223,11 +251,21 @@ const getChart = (titles) => {
 
 const tableDataContext = React.createContext({});
 
-const Table = ({ titles }) => {
-  const items = navigationTree.filter((nav) => !nav.metadata.hide && titles.includes(nav.title));
+const Table = ({ title }) => {
+  const items = navigationTree.filter((nav) => !nav.metadata.hide && title.includes(nav.title));
   const getDocs = items[0].children.map((item) => (
     <Flex alignItems="center">
-      <Link to={item.route} key={item.route}>
+      <Link
+        to={item.route}
+        key={item.route}
+        onClick={() =>
+          logEvent('tabs_comp:click', {
+            group: 'int_main',
+            tab: title,
+            label: item.title,
+          })
+        }
+      >
         {item.title}
       </Link>
       {item.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
@@ -256,6 +294,13 @@ const Table = ({ titles }) => {
               image={getImageName(heading.html)}
               text={heading.html}
               href={`${heading.route}#${heading.id}`}
+              onClick={() =>
+                logEvent('tabs_comp:click', {
+                  group: 'int_main',
+                  tab: title,
+                  label: heading.html,
+                })
+              }
             />
           ))}
         </div>
@@ -270,6 +315,13 @@ const Table = ({ titles }) => {
               image={getImageName(heading.html)}
               text={heading.html}
               href={`${heading.route}#${heading.id}`}
+              onClick={() =>
+                logEvent('tabs_comp:click', {
+                  group: 'int_main',
+                  tab: title,
+                  label: heading.html,
+                })
+              }
             />
           ))}
         </div>
@@ -325,13 +377,43 @@ function Home() {
             <img className={styles.whaleImg} src={whale} alt="Whale" aria-hidden="true" />
             <section className={styles.started} role="region" aria-label="Get started links">
               <h2>Get started</h2>
-              <Link to="/get-started-guide/dev-starter-guide/" rel="noopener noreferrer">
+              <Link
+                to="/get-started-guide/dev-starter-guide/"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  logEvent('initial_principles:click', {
+                    group: 'int_main',
+                    block: 'Get started',
+                    label: 'For developers',
+                  })
+                }
+              >
                 For developers <ArrowXS />
               </Link>
-              <Link to="/get-started-guide/dis-starter-guide/" rel="noopener noreferrer">
+              <Link
+                to="/get-started-guide/dis-starter-guide/"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  logEvent('initial_principles:click', {
+                    group: 'int_main',
+                    block: 'Get started',
+                    label: 'For designers',
+                  })
+                }
+              >
                 For designers <ArrowXS />
               </Link>
-              <Link to="/get-started-guide/work-figma/" rel="noopener noreferrer">
+              <Link
+                to="/get-started-guide/work-figma/"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  logEvent('initial_principles:click', {
+                    group: 'int_main',
+                    block: 'Get started',
+                    label: 'Figma libraries',
+                  })
+                }
+              >
                 Figma libraries <ArrowXS />
               </Link>
             </section>

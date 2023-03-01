@@ -2,21 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.14] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+
+## [2.2.13] - 2023-02-13
+
+## [2.2.12] - 2023-02-09
+
+### Changed
+
+- Split rounding design tokens (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded` and `--intergalactic-control-rounded`).
+
+## [2.2.11] - 2023-02-01
+
+### Fixed
+
+- Fixed freezing when slide index is greater than number of slides.
+
 ## [2.2.10] - 2023-01-20
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
-
-## [2.2.7] - 2023-01-11
-
-## [2.2.6] - 2023-01-10
-
-## [2.2.5] - 2023-01-09
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [2.2.1] - 2022-12-13
 
@@ -31,8 +41,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Design tokens based theming.
 
 ## [2.1.7] - 2022-11-08
-
-## [2.1.6] - 2022-10-30
 
 ### Fixed
 

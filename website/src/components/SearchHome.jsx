@@ -117,6 +117,7 @@ const Search = ({
   onItemSelect,
   placeholder,
   className,
+  onFocus,
 }) => {
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
@@ -160,6 +161,7 @@ const Search = ({
                   !!currentRefinement && visible && styles.inputOpen,
                   className,
                 )}
+                onFocus={onFocus}
               />
               <div className={styles.iconSearchWrapper}>
                 <SearchM className={styles.searchIcon} />

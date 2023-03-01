@@ -5,7 +5,7 @@ SCounter {
   line-height: normal;
   box-sizing: border-box;
   vertical-align: middle;
-  border-radius: var(--intergalactic-rounded-large, 12px);
+  border-radius: var(--intergalactic-counter-rounded, 12px);
   font-weight: var(--intergalactic-medium, 500);
 
   color: var(--intergalactic-text-secondary, #6c6e79);

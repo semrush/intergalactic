@@ -12,6 +12,24 @@ SAxisTick {
   fill: transparent;
 }
 
+SAxisLine[active] {
+  stroke: var(--intergalactic-chart-grid-y-accent-hover-line, #a9abb6);
+}
+
+SAxisLabel {
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 12px;
+}
+
+SAxisLabel[yDirection] {
+  text-anchor: var(--yDirection);
+}
+
+SAxisLabel[xDirection] {
+  dominant-baseline: var(--xDirection);
+}
+
 SPolygon {
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   opacity: 0.2;
@@ -28,6 +46,10 @@ SPolygonDot {
   fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
 }
 
+SPolygonDot[transparent] {
+  opacity: 0.3;
+}
+
 SPolygonDot[color] {
   fill: var(--color);
 }
@@ -38,6 +60,14 @@ SPolygonLine {
   fill: transparent;
 }
 
+SPolygonLine[transparent] {
+  opacity: 0.3;
+}
+
 SPolygonLine[color] {
   stroke: var(--color);
+}
+
+SPieRect {
+  fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
 }

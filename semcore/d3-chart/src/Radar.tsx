@@ -1,51 +1,168 @@
-import React from 'react';
-import { transition } from 'd3-transition';
-import { Component, sstyled, ReturnEl } from '@semcore/core';
+import React, { cloneElement } from 'react';
+import { Component, ReturnEl, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { lineRadial, curveLinearClosed } from 'd3-shape';
-import { scaleLinear } from 'd3-scale';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import trottle from '@semcore/utils/lib/rafTrottle';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
+import { polygonContains } from 'd3-polygon';
+import { line, lineRadial, curveLinearClosed, curveCardinalClosed, arc } from 'd3-shape';
 import createElement from './createElement';
+import { CONSTANT, eventToPoint, measureText } from './utils';
+import IContext from './types/context';
+import { MapProps } from './types';
 
 import style from './style/radar.shadow.css';
 
-function getPosition(i, range, func, total) {
-  const radians = 2 * Math.PI;
-  return range * (1 - 1 * func((total - i) * radians / total));
+
+interface IRadarProps extends IContext {
+  /**
+   * домейн
+   * */
+  scale: any
+  /**
+   * @default 'polygon'
+   * */
+  type?: 'polygon' | 'circle',
+  /**
+   * Отступ
+   * */
+  offset?: number
 }
 
-function getHorizontalPosition(i, range, total) {
-  return getPosition(i, range, Math.sin, total);
+interface IRadarAxisProps extends IContext {
+
 }
 
-function getVerticalPosition(i, range, total) {
-  return getPosition(i, range, Math.cos, total);
+interface IRadarAxisTicksProps {}
+
+interface IRadarAxisLabelsProps {}
+
+interface IRadialPolygonProps extends IContext {}
+
+interface IRadialPolygonLineProps {}
+
+interface IRadialPolygonDotProps {}
+
+interface IRadarHoverProps extends IContext {}
+
+function getAngle(i, range, func, total) {
+  const angle = (total - i) * 2 * Math.PI / total;
+  return range * (1 - func(angle)) - range;
 }
 
-class RadarRoot extends Component {
+function getRadianPosition(i, range, total) {
+  return [
+    getAngle(i, range, Math.sin, total),
+    getAngle(i, range, Math.cos, total),
+  ];
+}
+
+function getDirectionLabel(i, total) {
+  const angle = -Math.PI / 2 + (i / total) * (Math.PI * 2);
+  return [
+    angle === Math.PI / 2 ? 'hanging' : angle === -Math.PI / 2 ? 'initial' : 'middle',
+    Math.abs(angle) === Math.PI / 2 ? 'middle' : angle < Math.PI / 2 ? 'start' : 'end',
+  ];
+}
+
+function computeTextWidth(texts, textSize, defaultWidth = 50) {
+  const widths = texts.map((text) => {
+    if (typeof text === 'string') {
+      return measureText(text, textSize);
+    }
+    if (React.isValidElement(text)) {
+      // @ts-ignore
+      return text.props?.width || defaultWidth;
+    }
+    return defaultWidth;
+  });
+  return Math.max(...widths);
+}
+
+function getTicks(tickSize, radius) {
+  let ticks = 0;
+  while (Math.trunc(radius / (tickSize / 2)) > ticks) {
+    ticks += 1;
+  }
+  return [...Array(ticks).keys()].reduce((ticks, t, i, total) => {
+    if (i) ticks.push(i / total.length);
+    return ticks;
+  }, []);
+}
+
+function pieContains([startAngle, endAngle, radius]: number[], [x, y]) {
+  const distance = Math.sqrt(x ** 2 + y ** 2);
+  if (distance > radius) return false;
+
+  let angle = Math.atan2(y, x) + Math.PI / 2;
+  if (angle < 0) {
+    // angle from 0 to 6.28...
+    angle += 2 * Math.PI;
+  }
+  if (startAngle < 0) {
+    if (angle < endAngle) {
+      angle += Math.abs(startAngle);
+    } else {
+      angle += Math.abs(startAngle) - Math.PI * 2;
+    }
+    endAngle += Math.abs(startAngle);
+    startAngle = 0;
+  }
+  return angle > startAngle && angle < endAngle;
+}
+
+function getOffsetLabelPosition(xDirection, yDirection, width, height) {
+  let xOffset = 0;
+  let yOffset = 0;
+  switch (`${xDirection}-${yDirection}`) {
+    case 'initial-middle':
+      yOffset = height / 2;
+      break;
+    case 'middle-start':
+      xOffset = -width / 2;
+      break;
+    case 'hanging-middle':
+      yOffset = -height / 2;
+      break;
+    case 'middle-end':
+      xOffset = width / 2;
+      break;
+  }
+  return [xOffset, yOffset];
+}
+
+class RadarRoot extends Component<IRadarProps> {
   static displayName = 'Line';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 
   Element!: React.FC<{ children?: React.ReactNode; render: string }>;
 
+  computeOffset = 0;
+
+  categoriesKey = null;
+
+  textSize = 12;
+
+  static defaultProps = {
+    type: 'polygon',
+  };
+
   get id() {
-    const { uid, id } = this.asProps;
+    const { id, uid } = this.asProps;
     return id || uid;
+  }
+
+  get offset() {
+    const { offset } = this.asProps;
+    return offset || this.computeOffset;
   }
 
   getAxisProps() {
     return {
-      d3Axis: this.d3Axis,
-    };
-  }
-
-  getAxisTicksProps() {
-    const { data, scale } = this.asProps;
-    const ticks = scale[0].ticks(5).slice(1).slice(0, -1);
-    return {
-      data,
-      ticks,
-      d3AxisTicks: this.d3AxisTicks,
+      offset: this.offset,
+      textSize: this.textSize,
+      type: this.asProps.type,
     };
   }
 
@@ -53,46 +170,37 @@ class RadarRoot extends Component {
     const { data, scale } = this.asProps;
 
     return {
-      data: data[dataKey],
-      scale: scale[0]
+      offset: this.offset,
+      data: data[dataKey] || [],
+      scale,
     };
   }
 
-  createRadial(value, angle) {
-    const { scale } = this.asProps;
-    const scaleAxis = scale[0];
-    return lineRadial()
-      .curve(curveLinearClosed)
-      .radius((d, i) => {
-        return scaleAxis(value) / 2;
-      })
-      .angle((d, i) => {
-        return ((i / angle) * 2 * Math.PI);
-      });
+  getHoverProps() {
+    return {
+      type: this.asProps.type,
+      offset: this.offset,
+      categories: this.asProps.data[this.categoriesKey],
+    };
   }
 
   render() {
     const SRadar = this.Element;
-    const { style, size, data, scale } = this.asProps;
+    const { Children, style, size, data, offset } = this.asProps;
     const [width, height] = size;
-    const { categories } = data;
-    const scaleAxis = scale[0];
-    this.d3Axis = lineRadial()
-      .curve(curveLinearClosed)
-      .radius((d, i) => {
-        return scaleAxis(scaleAxis.domain()[1]) / 2;
-      })
-      .angle((d, i) => {
-        return ((i / categories.length) * 2 * Math.PI);
+
+    if (!offset) {
+      let dataKey;
+      React.Children.toArray(getOriginChildren(Children)).forEach((child) => {
+        if (React.isValidElement(child) && child.type === Radar.Axis) {
+          dataKey = child.props.dataKey;
+        }
       });
-    this.d3AxisTicks = lineRadial()
-      .curve(curveLinearClosed)
-      .radius((d, i, categories) => {
-        return scaleAxis(categories.tick) / 2;
-      })
-      .angle((d, i) => {
-        return ((i / categories.length) * 2 * Math.PI);
-      });
+      if (dataKey) {
+        this.computeOffset = computeTextWidth(data[dataKey], this.textSize);
+        this.categoriesKey = dataKey;
+      }
+    }
 
     return sstyled(style)(
       <SRadar
@@ -110,12 +218,14 @@ class PolygonRoot extends Component {
   static displayName = 'Polygon';
   static style = style;
 
-  static defaultProps = ({ scale, data, dataKey }) => {
+  static defaultProps = ({ scale, curve = curveLinearClosed, size, offset }) => {
+    scale.range([0, (Math.min(size[0], size[1]) / 2) - offset]);
+
     return {
       d3: lineRadial()
-        .curve(curveLinearClosed)
-        .radius((d, i, categories) => {
-          return scale(data[i] || 0) / 2;
+        .curve(curve)
+        .radius((d) => {
+          return scale(d || 0);
         })
         .angle((d, i, data) => {
           return ((i / data.length) * 2 * Math.PI);
@@ -124,47 +234,46 @@ class PolygonRoot extends Component {
   };
 
   getDotProps() {
-    const { data, scale, color } = this.asProps;
-
+    const { data, scale, color, transparent } = this.asProps;
     return {
       data,
       scale,
       color,
-      // categories,
+      transparent,
     };
   }
 
   getLineProps() {
-    const { d3, data, color } = this.asProps;
+    const { d3, data, color, transparent } = this.asProps;
     return {
       data,
       color,
+      transparent,
       d3,
     };
   }
 
   render() {
-    const { Element: SPolygon, styles, d3, data, color } = this.asProps;
+    const { Element: SPolygon, styles, d3, data, color, fill } = this.asProps;
     return sstyled(styles)(
-      <SPolygon render='path' d={d3(data)} color={color} />,
+      <SPolygon render='path' d={d3(data)} color={fill || color} />,
     );
   }
 }
 
 function PolygonLine(props) {
-  const { Element: SPolygonLine, styles, d3, color, data, size, scale, categories } = props;
+  const { Element: SPolygonLine, styles, d3, color, data, transparent } = props;
   return sstyled(styles)(
-    <SPolygonLine render='path' d={d3(data)} color={color} />,
+    <SPolygonLine render='path' d={d3(data)} color={color} transparent={transparent} />,
   );
 }
 
 function PolygonDot(props) {
-  const { Element: SPolygonDot, styles, d3Axis, color, data, size, scale, categories } = props;
+  const { Element: SPolygonDot, styles, color, data, scale, transparent } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
-    const radius = scale(value) / 2;
-    const cx = getHorizontalPosition(i, radius, data.length) - radius;
-    const cy = getVerticalPosition(i, radius, data.length) - radius;
+    const radius = scale(value);
+    const [cx, cy] = getRadianPosition(i, radius, data.length);
     return sstyled(styles)(
       <SPolygonDot
         key={i}
@@ -172,56 +281,307 @@ function PolygonDot(props) {
         cx={cx}
         cy={cy}
         color={color}
+        transparent={transparent}
       />,
     );
   });
 }
 
-function Axis(props) {
-  const { Element: SAxis, styles, d3Axis, d3AxisLine, data, size, scale } = props;
-  const SAxisLine = 'line';
-  const { categories } = data;
-  const scaleAxis = scale[0];
-  const radius = scaleAxis(scaleAxis.domain()[1]) / 2;
-  // const rScale = scaleLinear()
-  //   .domain([-0, 10])
-  //   .range([0, size[0] / 2]);
+class AxisRoot extends Component {
+  static displayName = 'Polygon';
+  static style = style;
 
-  return sstyled(styles)(
-    <>
-      <SAxis render='path' d={d3Axis(categories)} />
-      {categories.map((category, i) => {
-        const x = getHorizontalPosition(i, radius, categories.length) - radius;
-        const y = getVerticalPosition(i, radius, categories.length) - radius;
-        return sstyled(styles)(
-          <React.Fragment key={i}>
-            <SAxisLine key={i} x1={0} y1={0} x2={x} y2={y} />,
-            <text x={x} y={y}>{category}</text>
-          </React.Fragment>,
-        );
-      })}
-    </>,
-  );
+  static defaultProps = ({ data, dataKey }) => {
+    const categories = data[dataKey];
+    return {
+      categories,
+    };
+  };
+
+  unsubscribeTooltipVisible = null;
+
+  state = {
+    activeLineIndex: null,
+  };
+
+  createLineRadial(radius, total) {
+    return lineRadial()
+      .curve(curveLinearClosed)
+      .radius((d, i) => {
+        return radius;
+      })
+      .angle((d, i) => {
+        return ((i / total) * 2 * Math.PI);
+      });
+  }
+
+  getTicksProps({ tickSize = 100 }) {
+    const { data, offset, categories, size, type } = this.asProps;
+    const radius = (Math.min(size[0], size[1]) / 2) - offset;
+    return {
+      type,
+      data,
+      categories,
+      ticks: getTicks(tickSize, radius),
+      offset,
+      d3: this.createLineRadial(radius, categories.length),
+    };
+  }
+
+  getLabelsProps() {
+    const { offset, categories, textSize } = this.asProps;
+    return {
+      categories,
+      textSize,
+      offset: offset - 10,
+    };
+  }
+
+  handlerTooltipVisible = (visible, { index }) => {
+    this.setState({
+      activeLineIndex: index,
+    });
+  };
+
+  componentDidMount() {
+    const { eventEmitter } = this.asProps;
+    this.unsubscribeTooltipVisible = eventEmitter.subscribe('onTooltipVisible', this.handlerTooltipVisible);
+  }
+
+  componentWillUnmount() {
+    if (this.unsubscribeTooltipVisible) {
+      this.unsubscribeTooltipVisible();
+    }
+  }
+
+  render() {
+    const { Element: SAxis, styles, categories, size, offset, type } = this.asProps;
+    const { activeLineIndex } = this.state;
+    const diam = Math.min(size[0], size[1]);
+    const radius = (diam / 2) - offset;
+    const total = categories.length;
+
+    return sstyled(styles)(
+      <>
+        {type === 'circle' ? <SAxis render='circle' cx={0} cy={0} r={radius} /> :
+          <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />}
+        {categories.map((category, i) => {
+          const [x, y] = getRadianPosition(i, radius, total);
+          const { className } = sstyled(styles).cn('SAxisLine', {
+            active: activeLineIndex === i,
+          });
+          return <line key={i} x1={0} y1={0} x2={x} y2={y} className={className} />;
+        })}
+      </>,
+    );
+  }
 }
 
 function AxisTicks(props) {
-  const { Element: SAxisTick, styles, d3AxisTicks, ticks, data } = props;
-  const { categories } = data;
-  return sstyled(styles)(
-    <g className='Ticks'>
-      {ticks.map((tick, i) => {
-        categories.tick = tick;
-        return sstyled(styles)(
-          <SAxisTick render='path' key={i} d={d3AxisTicks(categories)} />,
-        );
-      })}
-    </g>,
-  );
+  const { Element: SAxisTick, styles, size, ticks, d3, categories, offset, type } = props;
+  const radius = (Math.min(size[0], size[1]) / 2) - offset;
+
+  return ticks.map((tick, i) => {
+    d3.radius(() => radius * tick);
+    return sstyled(styles)(
+      type === 'circle' ? <SAxisTick key={i} render='circle' cx={0} cy={0} r={radius * tick} /> :
+        <SAxisTick render='path' key={i} d={d3(categories)} />,
+    );
+  });
 }
 
-function AxisLabel() {
-  return null;
+function AxisLabels(props) {
+  const { Element: SAxisLabel, styles, textSize, size, offset, categories } = props;
+  const radius = (Math.min(size[0], size[1]) / 2) - offset;
+
+  return categories.map((category, i) => {
+    const [x, y] = getRadianPosition(i, radius, categories.length);
+    const [xDirection, yDirection] = getDirectionLabel(i, categories.length);
+    if (typeof category === 'string') {
+      const lines = category.split('\n');
+      return sstyled(styles)(
+        <SAxisLabel
+          key={i}
+          render='text'
+          childrenPosition='inside'
+          x={x}
+          y={y}
+          xDirection={xDirection}
+          yDirection={yDirection}
+        >
+          {lines.map((lineText, lineIndex) => (
+            <tspan
+              x={x}
+              y={y + (lineIndex - (lines.length - 1) / 2) * textSize}
+              key={`#${lineIndex}-${lineText}`}
+            >
+              {lineText}
+            </tspan>
+          ))}
+        </SAxisLabel>,
+      );
+    }
+    if (React.isValidElement(category)) {
+      const { width = 0, height = 0 } = category?.props;
+      const [xOffset, yOffset] = getOffsetLabelPosition(xDirection, yDirection, width, height);
+      return cloneElement(category, {
+        key: i,
+        x: x - width / 2 - xOffset,
+        y: y - height / 2 - yOffset,
+      });
+    }
+  });
 }
+
+class Hover extends Component {
+
+  state = {
+    index: null,
+  };
+
+  virtualElement = canUseDOM() ? document.createElement('div') : {};
+
+  unsubscribeMouseMoveRoot = null;
+  unsubscribeMouseLeaveRoot = null;
+
+  generateGetBoundingClientRect(x = 0, y = 0) {
+    return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
+  }
+
+  getPolygon(index) {
+    const { categories, size, offset } = this.asProps;
+    const total = categories.length;
+    const diam = Math.min(size[0], size[1]);
+    const radius = (diam / 2) - offset;
+    const prevIndex = (index - 1 + total) % total;
+    const nextIndex = (index + 1 + total) % total;
+    const [prevX1, prevY1] = getRadianPosition(prevIndex, radius, total);
+    const [x, y] = getRadianPosition(index, radius, total);
+    const [nextX1, nextY1] = getRadianPosition(nextIndex, radius, total);
+    return [
+      [0, 0],
+      [(prevX1 + x) / 2, (prevY1 + y) / 2],
+      [x, y],
+      [(nextX1 + x) / 2, (nextY1 + y) / 2],
+    ];
+  }
+
+  getPie(index) {
+    const { categories, size, offset } = this.asProps;
+    const angle = Math.PI * 2 / categories.length;
+    const radius = Math.min(size[0], size[1]) / 2 - offset;
+    return [
+      index * angle - angle / 2,
+      (index + 1) * angle - angle / 2,
+      radius,
+    ];
+  }
+
+  getIndex(point) {
+    const { categories, type } = this.asProps;
+    let index;
+    if (type == 'circle') {
+      index = categories.findIndex((c, i) => pieContains(this.getPie(i), point));
+    } else {
+      index = categories.findIndex((c, i) => polygonContains(this.getPolygon(i), point));
+    }
+    return index === -1 ? null : index;
+  }
+
+  handlerMouseMoveRoot = trottle((e) => {
+    const { eventEmitter, size, rootRef } = this.asProps;
+    const point = eventToPoint(e, rootRef.current);
+    const diam = Math.min(size[0], size[1]);
+    const centerX = point[0] - diam / 2;
+    const centerY = point[1] - diam / 2;
+    const { clientX, clientY } = e;
+    // @ts-ignore
+    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(
+      clientX,
+      clientY,
+    );
+    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+
+    const index = this.getIndex([centerX, centerY]);
+
+    this.setState({
+      index,
+    }, () => {
+      eventEmitter.emit(
+        'onTooltipVisible',
+        index !== null,
+        { index },
+        this.virtualElement,
+      );
+    });
+  });
+
+  handlerMouseLeaveRoot = trottle((e) => {
+    this.setState({
+      index: null,
+    }, () => {
+      this.asProps.eventEmitter.emit('onTooltipVisible', false, { index: null });
+    });
+  });
+
+  componentDidMount() {
+    const { eventEmitter } = this.asProps;
+    this.unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveRoot', (e) => {
+      e.persist();
+      this.handlerMouseMoveRoot(e);
+    });
+    this.unsubscribeMouseLeaveRoot = eventEmitter.subscribe(
+      'onMouseLeaveRoot',
+      this.handlerMouseLeaveRoot,
+    );
+  }
+
+  componentWillUnmount() {
+    if (this.unsubscribeMouseMoveRoot) {
+      this.unsubscribeMouseMoveRoot();
+    }
+    if (this.unsubscribeMouseLeaveRoot) {
+      this.unsubscribeMouseLeaveRoot();
+    }
+  }
+
+  render() {
+    const { styles, type } = this.asProps;
+    const { index } = this.state;
+    const SPieRect = this.Element;
+
+    if (index !== null) {
+      if (type === 'circle') {
+        const [startAngle, endAngle, radius] = this.getPie(index);
+        const circle = arc()
+          .innerRadius(0)
+          .outerRadius(radius)
+          .startAngle(startAngle)
+          .endAngle(endAngle);
+        return sstyled(styles)(
+          <SPieRect
+            render='path'
+            // @ts-ignore
+            d={circle()}
+          />,
+        );
+      } else {
+        return sstyled(styles)(
+          <SPieRect
+            render='path'
+            // @ts-ignore
+            d={line()(this.getPolygon(index))}
+          />,
+        );
+      }
+    }
+  }
+}
+
+const Axis = createElement(AxisRoot, {
+  Ticks: AxisTicks,
+  Labels: AxisLabels,
+});
 
 const Polygon = createElement(PolygonRoot, {
   Line: PolygonLine,
@@ -229,11 +589,21 @@ const Polygon = createElement(PolygonRoot, {
 });
 
 const Radar = createElement(RadarRoot, {
-  Axis: [Axis, {
-    Ticks: AxisTicks,
-    Label: AxisLabel,
-  }],
+  Axis,
   Polygon,
-});
+  Hover,
+}) as (<T>(
+  props: MapProps<IRadarProps & T>,
+) => ReturnEl) & {
+  Axis: (<T>(props: MapProps<IRadarAxisProps & T>) => ReturnEl) & {
+    Ticks: <T>(props: MapProps<IRadarAxisTicksProps & T>) => ReturnEl;
+    Labels: <T>(props: MapProps<IRadarAxisLabelsProps & T>) => ReturnEl;
+  };
+  Polygon: (<T>(props: MapProps<IRadialPolygonProps & T>) => ReturnEl) & {
+    Line: <T>(props: MapProps<IRadialPolygonLineProps & T>) => ReturnEl;
+    Dot: <T>(props: MapProps<IRadialPolygonDotProps & T>) => ReturnEl;
+  };
+  Hover: (<T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl)
+};
 
 export default Radar;

@@ -116,6 +116,12 @@ When adding custom components to `<DataTable.Body/>` they will be inserted at th
 
 @example add-body
 
+@## Custom footer cells
+
+To reuse size of columns, use css variables `var(--<%column-name%>_width)`.
+
+@example summary
+
 @## Accordion in the table
 
 We use the `@semcore/ui/accordion` component to extend the functionality of the string.

@@ -5,7 +5,7 @@ deprecated: true
 ---
 
 > 🚨 The current `@semcore/email` package is deprecated and using it is not recommended. A new major version is under way.
-
+>
 > If you're a Semrush designer, you can find all the basic design components, blocks, and styles for product emails in the **[internal Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164).**
 
 @## Typography and styles

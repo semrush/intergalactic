@@ -107,6 +107,9 @@ class Value extends Component {
     if (e.keyCode === 13) this.handlers.checked(!this.asProps.checked, e);
   };
 
+  // because clicking on label causes a click on input
+  handlerInputClick = (e) => e.stopPropagation()
+
   render() {
     const SToggle = Box;
     const SInput = Box;
@@ -152,6 +155,7 @@ class Value extends Component {
                 aria-checked={inputProps.checked}
                 aria-readonly={inputProps.disabled}
                 {...inputProps}
+                onClick={callAllEventHandlers(this.handlerInputClick, inputProps.click)}
                 onKeyDown={callAllEventHandlers(this.handleKeyDown, inputProps.onKeyDown)}
               />
               <SSlider checked={inputProps.checked}>

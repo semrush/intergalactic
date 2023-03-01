@@ -14,7 +14,7 @@ const Copy: React.FC<
     await navigator.clipboard.writeText(props.toCopy);
 
     setView(props.copiedToast ?? 'Copied! You are awesome!');
-  }, [props.copiedToast, props.toCopy]);
+  }, [props.copiedToast, props.toCopy, props.onClick]);
   React.useEffect(() => {
     if (!view) return;
     const timeout = setTimeout(() => {

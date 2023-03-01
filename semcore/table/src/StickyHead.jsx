@@ -96,6 +96,21 @@ function calculateWidthTh(nodeTable) {
     }
   }
 
+  if (listTrInsideHead.length > 0) {
+    const firstRowIndex = 0;
+    const tr = listTrInsideHead[firstRowIndex];
+    const listTdInsideTr = tr.getElementsByTagName('th');
+    const amountTd = listTdInsideTr.length;
+
+    for (let indexTd = 0; indexTd < amountTd;) {
+      const th = listTdInsideTr[indexTd];
+      if (listWidthTh[firstRowIndex][indexTd] === undefined) {
+        listWidthTh[firstRowIndex][indexTd] = th.offsetWidth;
+      }
+      indexTd += th.colSpan;
+    }
+  }
+
   return listWidthTh;
 }
 
