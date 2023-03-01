@@ -1,3 +1,17 @@
+## [13.11.0] - 2023-03-01
+
+### @semcore/flags
+
+- **Added** New European Union flag has been added to the set.
+
+### @semcore/icon
+
+- **Fixed** Fixed DOM attributes `aria-hidden` and `role` were not overridable.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed underline width glitching by rebuilding internal animation mechanism.
+
 ## [13.10.0] - 2023-02-28
 
 ### @semcore/animation
