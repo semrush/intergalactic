@@ -339,8 +339,16 @@ class Popper extends Component {
   }
 
   getPopperProps() {
-    const { visible, disablePortal, interaction, popperZIndex, placement, duration, ...other } =
-      this.asProps;
+    const {
+      visible,
+      disablePortal,
+      interaction,
+      popperZIndex,
+      placement,
+      duration,
+      animationsDisabled,
+      ...other
+    } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -367,6 +375,7 @@ class Popper extends Component {
       style: popperZIndex !== undefined ? { zIndex: popperZIndex } : null,
       placement,
       duration,
+      animationsDisabled,
     };
   }
 
@@ -471,6 +480,7 @@ function PopperPopper(props) {
     interaction,
     controlsLength,
     duration,
+    animationsDisabled,
   } = props;
   const ref = useRef(null);
 
@@ -482,6 +492,7 @@ function PopperPopper(props) {
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={Scale}
+          animationsDisabled={animationsDisabled}
           visible={visible}
           duration={[duration, duration / 2]}
           ref={ref}

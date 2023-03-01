@@ -73,16 +73,17 @@ class RootSidePanel extends Component {
   }
 
   getOverlayProps() {
-    const { visible, duration } = this.asProps;
+    const { visible, duration, animationsDisabled } = this.asProps;
     return {
       visible,
       duration,
       delay: this.calculateDelayAnimation('overlay'),
+      animationsDisabled,
     };
   }
 
   getPanelProps() {
-    const { placement, visible, closable, duration } = this.asProps;
+    const { placement, visible, closable, duration, animationsDisabled } = this.asProps;
 
     return {
       visible,
@@ -93,6 +94,7 @@ class RootSidePanel extends Component {
       delay: this.calculateDelayAnimation('panel'),
       onOutsideClick: this.handleOutsideClick,
       onKeyDown: this.handleSidebarKeyDown,
+      animationsDisabled,
     };
   }
 
@@ -125,13 +127,16 @@ function Overlay(props) {
   return sstyled(props.styles)(<SOverlay render={FadeInOut} />);
 }
 
-const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, ...other }, ref) {
+const FocusLockWrapper = React.forwardRef(function (
+  { disableEnforceFocus, returnFocus, ...other },
+  ref,
+) {
   return (
     <FocusLock
       ref={ref}
       disabled={disableEnforceFocus}
       {...other}
-      lockProps={{ ...other, style: { display: 'contents', ...(other.style ?? {}) } }}
+      lockProps={{ ...other, returnFocus, style: { display: 'contents', ...(other.style ?? {}) } }}
     />
   );
 });
