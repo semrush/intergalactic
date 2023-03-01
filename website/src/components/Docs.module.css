@@ -28,19 +28,12 @@
   margin-bottom: 32px;
   overflow-x: auto;
   overflow-y: hidden;
+  --intergalactic-border-info-active: #ff622d;
 }
 
 .tabLine .tabLineItem {
   min-width: auto;
   font-weight: 700;
-}
-
-.tabLine > div {
-  background-color: #ff622d;
-  bottom: 0;
-}
-
-.tabLineItem:hover::after {
   bottom: 0;
 }
 
