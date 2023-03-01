@@ -2,11 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.2.15] - 2023-02-13
+## [3.2.22] - 2023-03-01
+
+### Fixed
+
+- Fixed `animationsDisabled` prop passing.
+
+## [3.2.20] - 2023-02-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [3.2.18] - 2023-02-22
+
+## [3.2.17] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/animation` [1.9.0 ~> 1.9.1]).
 
 ## [3.2.14] - 2023-02-13
 

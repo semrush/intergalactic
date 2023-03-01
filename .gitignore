@@ -64,3 +64,5 @@ semcore/illustration/**/*.d.ts
 !semcore/icon/Stoller/**
 !semcore/icon/color/YoutubeAlt/**
 !semcore/icon/color/YoutubeRed/**
+!semcore/icon/FeauturedImage/**
+!semcore/icon/FeauturedVideo/**

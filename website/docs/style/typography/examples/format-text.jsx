@@ -16,19 +16,19 @@ export default () => (
       But I do love the taste of a <em>good burger</em>. Mm-mm-mm.
     </p>
     <h3>
-      H3, <small>33px</small>
+      H3, <small>32px</small>
     </h3>
     <p>
       But I do love the taste of a <a>good burger</a> . Mm-mm-mm.
     </p>
     <h4>
-      H4, <small>25px</small>
+      H4, <small>24px</small>
     </h4>
     <p>
       But I do love the taste of a <abbr>good burger</abbr>. Mm-mm-mm.
     </p>
     <h5>
-      H5, <small>19px</small>
+      H5, <small>20px</small>
     </h5>
     <p>
       But I do love the taste of a <s>good burger</s>. Mm-mm-mm.

@@ -2,6 +2,38 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.8.19] - 2023-03-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.3 ~> 4.16.4]).
+
+## [2.8.18] - 2023-02-28
+
+### Fixed
+
+- Fixed summary generation was broken after i18n enhancement release.
+
+## [2.8.17] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [2.8.16] - 2023-02-22
+
+## [2.8.15] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [2.8.14] - 2023-02-11
+
+### Fixed
+
+- Added check for the presence of DON at start of animation for `RadialTree`.
+
 ## [2.8.13] - 2023-02-10
 
 ### Fixed

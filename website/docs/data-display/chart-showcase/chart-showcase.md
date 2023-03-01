@@ -19,7 +19,7 @@ Compare values of items in a list that has no particular order.
 
 _For example: Compare audience in a list of selected domains versus the whole market._
 
-@import chart-group {"group": ["bar", "histogram", "horizontalBar", "donut", "bubble", "lollipop"]}
+@import chart-group {"group": ["bar", "histogram", "horizontalBar", "areaStacked", "donut", "radar", "bubble", "lollipop"]}
 
 @## Ranking
 
@@ -51,7 +51,7 @@ Show the distribution within a set of values.
 
 _For example: Show the distribution of leaders, niche players and game changeres in the market._
 
-@import chart-group {"group": ["histogram", "stackedHistogram", "area", "areaStacked", "scatterplot", "bubble", "heatmap", "lollipop", "radar", "polar", "quadrant", "alluvial"]}
+@import chart-group {"group": ["histogram", "stackedHistogram", "area", "areaStacked", "scatterplot", "bubble", "radar", "heatmap", "lollipop", "polar", "quadrant", "alluvial"]}
 
 @## Correlation
 
@@ -67,7 +67,7 @@ Show the deviation, difference, or gap between two sets of values.
 
 _For example: Show the deviation between actual and target audience of the website._
 
-@import chart-group {"group": ["bar", "histogram", "area", "areaStacked", "scatterplot", "lollipop"]}
+@import chart-group {"group": ["bar", "histogram", "area", "areaStacked", "scatterplot", "radar", "lollipop"]}
 
 @## Geographical values
 

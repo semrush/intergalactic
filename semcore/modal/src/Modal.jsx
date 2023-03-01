@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import FocusLock from 'react-focus-lock';
-import { FadeInOut } from '@semcore/animation';
+import { FadeInOut, Slide } from '@semcore/animation';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
 import { Box } from '@semcore/flex-box';
@@ -15,13 +15,22 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-modal',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
-    duration: 200,
     closable: true,
     i18n: localizedMessages,
     locale: 'en',
@@ -44,16 +53,17 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { duration, visible } = this.asProps;
+    const { duration, visible, animationsDisabled } = this.asProps;
     return {
       duration,
       visible,
       onOutsideClick: this.handleOutsideClick,
+      animationsDisabled,
     };
   }
 
   getWindowProps() {
-    const { visible, closable, getI18nText, uid } = this.asProps;
+    const { visible, closable, getI18nText, uid, duration, animationsDisabled } = this.asProps;
     const { hasTitle } = this.state;
     return {
       visible,
@@ -61,6 +71,8 @@ class ModalRoot extends Component {
       onKeyDown: this.handleKeyDown,
       'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
+      duration,
+      animationsDisabled,
     };
   }
 
@@ -105,32 +117,31 @@ class ModalRoot extends Component {
   }
 }
 
-const FocusLockWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
-  return <FocusLock ref={ref} as={tag} lockProps={other} {...other} />;
+const FocusLockWrapper = React.forwardRef(function (props, ref) {
+  return <FocusLock ref={ref} {...props} lockProps={{ style: { display: 'contents' } }} />;
 });
 
 function Window(props) {
   const SWindow = Root;
-  const { Children, styles, visible, closable } = props;
+  const { Children, styles, visible, closable, duration } = props;
   const windowRef = useRef(null);
-
-  if (!visible) return null;
 
   return sstyled(styles)(
     <SWindow
-      render={FocusLockWrapper}
-      tag={Box}
-      ref={windowRef}
-      returnFocus={true}
-      tabIndex={-1}
-      autoFocus={true}
+      render={Slide}
+      initialAnimation={true}
+      slideOrigin="top"
+      visible={visible}
       role="dialog"
       aria-modal={true}
+      duration={duration}
     >
-      <PortalProvider value={windowRef}>
-        {closable && <Modal.Close />}
-        <Children />
-      </PortalProvider>
+      <FocusLockWrapper returnFocus={true} autoFocus={true} ref={windowRef} tabIndex={-1}>
+        <PortalProvider value={windowRef}>
+          {closable && <Modal.Close />}
+          <Children />
+        </PortalProvider>
+      </FocusLockWrapper>
     </SWindow>,
   );
 }

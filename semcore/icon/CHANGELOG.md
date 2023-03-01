@@ -2,6 +2,37 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.13.1] - 2023-02-28
+
+### Fixed
+
+- Fixed DOM attributes `aria-hidden` and `role` were not overridable.
+
+## [3.13.0] - 2023-02-24
+
+### Fixed
+
+- Fixed path for `Confluence`, `GoogleCloud`, `Hubspot`, `JavaScript`, `LookerStudio` icons.
+
+## [3.12.0] - 2023-02-22
+
+### Added
+
+- Added `Confluence` icon.
+
+## [3.11.0] - 2023-02-22
+
+### Fixed
+
+- Removed `FeauturedImage` icon, use `FeaturedImage` instead.
+- Removed `FeauturedImage` icon, use `FeaturedImage` instead.
+
+## [3.10.2] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
 ## [3.10.0] - 2023-02-13
 
 ### Added
@@ -10,7 +41,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.9.0] - 2023-02-09
 
-### BREAK
+### Fixed
 
 - Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
 - Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
@@ -35,7 +66,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.6.0] - 2023-01-10
 
-### BREAK
+### Fixed
 
 - Remove `Stoller` icon, use `Stroller` instead.
 

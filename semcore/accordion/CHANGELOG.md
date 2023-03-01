@@ -2,6 +2,28 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.5] - 2023-03-01
+
+## [4.3.4] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [4.3.2] - 2023-02-22
+
+## [4.3.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [4.3.0] - 2023-02-20
+
+### Changed
+
+- Animation duration now might be controlled with design tokens.
+
 ## [4.2.15] - 2023-02-13
 
 ### Changed

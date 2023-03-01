@@ -18,13 +18,13 @@
   margin-left: 8px;
 }
 
-.tabs > div:last-child {
-  background-color: #ff622d;
+.tabs {
+  --intergalactic-border-info-active: #ff622d;
 }
 
 .promoWrapper {
   display: grid;
-  grid-template-rows: 0.7fr 0.7fr 1.5fr;
+  grid-template-rows: 0.7fr 0.7fr 1.2fr;
   grid-template-columns: repeat(4, 1fr);
   padding: 48px 0 12px;
 }
@@ -330,7 +330,6 @@
 
 .category {
   columns: 6 160px;
-  line-height: 2;
 }
 
 .uxPatterns .category {

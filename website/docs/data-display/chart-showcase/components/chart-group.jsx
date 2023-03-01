@@ -101,7 +101,7 @@ const group = {
   radar: {
     title: 'Radar chart',
     route: '/data-display/radar-chart',
-    disabled: true,
+    disabled: false,
     type: 'charts',
   },
   polar: {

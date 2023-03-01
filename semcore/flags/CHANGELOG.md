@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.1] - 2023-03-01
+
+### Fixed
+
+- European Union flag with 2x size was fixed.
+
+## [3.4.0] - 2023-02-28
+
+### Added
+
+- New European Union flag has been added to the set.
+
+## [3.3.11] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
 ## [3.3.9] - 2023-02-09
 
 ## [3.3.8] - 2023-01-20

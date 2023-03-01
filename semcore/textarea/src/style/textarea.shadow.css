@@ -20,6 +20,21 @@ STextarea {
   &::placeholder {
     color: var(--intergalactic-text-placeholder, #a9abb6);
   }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-button,
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track-piece,
+  &::-webkit-scrollbar-corner,
+  &::-webkit-resizer {
+    /* all: initial; */
+    border-radius: var(--intergalactic-control-rounded, 6px);
+  }
+}
+* {
+  scrollbar-color: initial;
+  scrollbar-width: initial;
 }
 
 STextarea[size='m'] {

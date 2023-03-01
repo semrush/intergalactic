@@ -350,5 +350,16 @@
   "--intergalactic-chart-grid-period-bg": "rgba(196, 199, 207, 0.2)",
   "--intergalactic-chart-grid-border": "#ffffff",
   "--intergalactic-chart-x-axis-accent-period-active": "#8a8e9b",
-  "--intergalactic-chart-x-axis-accent-data-start-tracking": "rgba(0, 159, 129, 0.2)"
+  "--intergalactic-chart-x-axis-accent-data-start-tracking": "rgba(0, 159, 129, 0.2)",
+  "--intergalactic-duration-extra-slow": "500",
+  "--intergalactic-duration-slow": "400",
+  "--intergalactic-duration-medium": "300",
+  "--intergalactic-duration-fast": "200",
+  "--intergalactic-duration-extra-fast": "100",
+  "--intergalactic-duration-switch": "100",
+  "--intergalactic-duration-popper": "200",
+  "--intergalactic-duration-control": "200",
+  "--intergalactic-duration-modal": "200",
+  "--intergalactic-duration-accordion": "200",
+  "--intergalactic-duration-counter": "200"
 }

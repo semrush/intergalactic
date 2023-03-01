@@ -1,6 +1,6 @@
 {
   "name": "intergalactic-documentation",
-  "version": "1.21.2",
+  "version": "1.21.8",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "express": "4.18.1",
     "final-form": "4.20.7",
     "final-form-focus": "1.1.2",
+    "fuse.js": "^6.6.2",
     "lz-string": "1.4.4",
     "nanoid": "3.3.4",
     "normalize.css": "8.0.1",

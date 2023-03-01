@@ -17,6 +17,8 @@ class Animation extends Component {
     delay: 0,
     keyframes: [],
     initialAnimation: false,
+    timingFunction: 'ease-out',
+    animationsDisabled: false,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -41,9 +43,10 @@ class Animation extends Component {
 
   render() {
     const SAnimation = Root;
-    const { styles, keyframes, initialAnimation } = this.asProps;
-    const duration = propToArray(this.asProps.duration);
-    const delay = propToArray(this.asProps.delay);
+    const { styles, keyframes, initialAnimation, timingFunction, animationsDisabled } =
+      this.asProps;
+    const duration = animationsDisabled ? [0, 0] : propToArray(this.asProps.duration);
+    const delay = animationsDisabled ? [0, 0] : propToArray(this.asProps.delay);
     const { render, wasInvisible } = this.state;
 
     if (!render) return null;
@@ -56,6 +59,7 @@ class Animation extends Component {
         durationFinalize={`${duration[1]}ms`}
         delayInitialize={`${delay[0]}ms`}
         delayFinalize={`${delay[1]}ms`}
+        timingFunction={timingFunction}
         keyframesInitialize={wasInvisible || initialAnimation ? keyframes[0] : undefined}
         keyframesFinalize={keyframes[1]}
       />,

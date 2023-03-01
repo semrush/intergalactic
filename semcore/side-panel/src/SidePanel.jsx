@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import FocusLock from 'react-focus-lock';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
-import { FadeInOut, Transform } from '@semcore/animation';
+import { FadeInOut, Slide } from '@semcore/animation';
 import Portal, { PortalProvider } from '@semcore/portal';
 import OutsideClick from '@semcore/outside-click';
 import CloseIcon from '@semcore/icon/Close/l';
@@ -12,22 +12,23 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/side-panel.shadow.css';
-
-const placementTransformMap = {
-  top: ['translate(0, -100%)', 'translate(0, 0)'],
-  right: ['translate(100%, 0)', 'translate(0, 0)'],
-  bottom: ['translate(0, 100%)', 'translate(0, 0)'],
-  left: ['translate(-100%, 0)', 'translate(0, 0)'],
-};
 
 class RootSidePanel extends Component {
   static displayName = 'SidePanel';
   static style = style;
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-modal',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
     placement: 'right',
-    duration: 350,
     closable: true,
   };
 
@@ -72,16 +73,17 @@ class RootSidePanel extends Component {
   }
 
   getOverlayProps() {
-    const { visible, duration } = this.asProps;
+    const { visible, duration, animationsDisabled } = this.asProps;
     return {
       visible,
       duration,
       delay: this.calculateDelayAnimation('overlay'),
+      animationsDisabled,
     };
   }
 
   getPanelProps() {
-    const { placement, visible, closable, duration } = this.asProps;
+    const { placement, visible, closable, duration, animationsDisabled } = this.asProps;
 
     return {
       visible,
@@ -92,6 +94,7 @@ class RootSidePanel extends Component {
       delay: this.calculateDelayAnimation('panel'),
       onOutsideClick: this.handleOutsideClick,
       onKeyDown: this.handleSidebarKeyDown,
+      animationsDisabled,
     };
   }
 
@@ -124,12 +127,18 @@ function Overlay(props) {
   return sstyled(props.styles)(<SOverlay render={FadeInOut} />);
 }
 
-const FocusLockWrapper = React.forwardRef(function ({ disableEnforceFocus, ...other }, ref) {
-  return <FocusLock ref={ref} lockProps={other} disabled={disableEnforceFocus} {...other} />;
-});
-
-const TransformWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
-  return <Transform tag={FocusLockWrapper} ref={ref} as={tag} {...other} />;
+const FocusLockWrapper = React.forwardRef(function (
+  { disableEnforceFocus, returnFocus, ...other },
+  ref,
+) {
+  return (
+    <FocusLock
+      ref={ref}
+      disabled={disableEnforceFocus}
+      {...other}
+      lockProps={{ ...other, returnFocus, style: { display: 'contents', ...(other.style ?? {}) } }}
+    />
+  );
 });
 
 function Panel(props) {
@@ -147,24 +156,24 @@ function Panel(props) {
     <>
       {visible && <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[sidebarRef]} />}
       <SPanel
-        render={TransformWrapper}
-        tag={Box}
+        render={Slide}
+        visible={visible}
+        initialAnimation={true}
+        slideOrigin={placement}
         ref={sidebarRef}
-        tabIndex={-1}
-        returnFocus={true}
-        autoFocus={true}
-        transform={placementTransformMap[placement]}
       >
-        <PortalProvider value={sidebarRef}>
-          {closable && <SidePanel.Close />}
-          {advanceMode ? (
-            <Children />
-          ) : (
-            <SidePanel.Body>
+        <FocusLockWrapper tabIndex={-1} returnFocus={true} autoFocus={true}>
+          <PortalProvider value={sidebarRef}>
+            {closable && <SidePanel.Close />}
+            {advanceMode ? (
               <Children />
-            </SidePanel.Body>
-          )}
-        </PortalProvider>
+            ) : (
+              <SidePanel.Body>
+                <Children />
+              </SidePanel.Body>
+            )}
+          </PortalProvider>
+        </FocusLockWrapper>
       </SPanel>
     </>,
   );

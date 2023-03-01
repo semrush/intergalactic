@@ -5,6 +5,7 @@ import { Collapse as CollapseAnimate } from '@semcore/animation';
 import ChevronRight from '@semcore/icon/ChevronRight/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/accordion.shadow.css';
 
@@ -13,8 +14,15 @@ class RootAccordion extends Component {
   static style = style;
   static defaultProps = {
     defaultValue: [],
-    duration: 350,
   };
+  static enhance = [
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-accordion',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
 
   uncontrolledProps() {
     return {

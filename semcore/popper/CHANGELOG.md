@@ -2,7 +2,35 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.15.3] - 2023-02-09
+## [4.16.4] - 2023-03-01
+
+### Fixed
+
+- Fixed `animationsDisabled` prop passing.
+
+## [4.16.3] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [4.16.2] - 2023-02-22
+
+### Fixed
+
+- Fixed popper autofocus wasn't working if popper contains any focusable elements.
+
+## [4.16.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/neighbor-location` [3.1.15 ~> 3.1.16], `@semcore/outside-click` [2.5.14 ~> 2.5.15], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [4.16.0] - 2023-02-20
+
+### Added
+
+- Added appear and disappear animation.
 
 ## [4.15.2] - 2023-01-20
 

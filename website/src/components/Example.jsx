@@ -16,7 +16,7 @@ class Example extends React.PureComponent {
       group: 'int_patterns',
       category,
       component,
-      example: exampleName ? exampleName.slice(exampleName.length - 4) : undefined,
+      example: exampleName ? exampleName.slice(0, exampleName.length - 4) : undefined,
     };
     return (
       <div className={`example ${styles.exampleWrapper}`}>

@@ -2,6 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.6] - 2023-03-01
+
+### Fixed
+
+- Fixed `animationsDisabled` prop passing.
+
+## [2.3.4] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [2.3.2] - 2023-02-22
+
+## [2.3.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/portal` [2.5.8 ~> 2.5.9], `@semcore/outside-click` [2.5.14 ~> 2.5.15], `@semcore/icon` [3.10.1 ~> 3.10.2]).
+
+## [2.3.0] - 2023-02-20
+
+### Changed
+
+- Animation duration now might be controlled with design tokens.
+
 ## [2.2.14] - 2023-02-13
 
 ### Changed

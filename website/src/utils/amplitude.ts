@@ -7,7 +7,7 @@ export const initAmplitude = () => {
 };
 
 export const logEvent = (eventType: string, eventProperties: Record<string, any> = {}) => {
-  if (process.env.NODE_ENV === 'development') return;
+  if (process.env.NODE_ENV !== 'production') return;
 
   amplitudeHttp.logEvent(eventType, { event_properties: eventProperties });
 };

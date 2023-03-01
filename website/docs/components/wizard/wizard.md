@@ -182,7 +182,7 @@ Here are some situations that should have a universal solution in all products.
 
 After submitting the form, when validating the inputs, all invalid inputs are highlighted. And the first invalid input gets the focus.
 
-For more information about validation, see the [Validation guide](/components/validation/).
+For more information about validation, see the [Validation guide](/patterns/validation-form/).
 
 ![wizard form validation](static/validation.png)
 

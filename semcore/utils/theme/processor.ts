@@ -139,7 +139,7 @@ const resolveToken = (token: string) => {
     }
     return `${parseFloat(resolvedValue) * parseFloat(factor)}px`;
   } else if (token.startsWith('{') && token.endsWith('}')) {
-    const resolvedToken = values[token.substring(1, token.length - 1)];
+    const resolvedToken = values[token.substring(1, token.length - 1).replace(/\./g, '-')];
     if (!resolvedToken || resolvedToken.startsWith('{')) {
       throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
     }
@@ -173,7 +173,8 @@ for (const token in values) {
   } else if (
     types[token] === 'sizing' ||
     types[token] === 'spacing' ||
-    types[token] === 'borderRadius'
+    types[token] === 'borderRadius' ||
+    types[token] === 'other'
   ) {
     values[token] = resolveToken(values[token]);
   }
