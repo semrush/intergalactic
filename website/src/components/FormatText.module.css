@@ -161,9 +161,8 @@
 }
 
 .formatText blockquote.--info {
-  /* chnage to token */
-  background: #e9f7ff;
-  border-color: #8ecdff;
+  background: var(--intergalactic-bg-secondary-info);
+  border-color: var(--intergalactic-border-info);
 }
 
 .formatText blockquote *:last-child {
@@ -279,7 +278,7 @@
 }
 
 .formatText code {
-  background-color: hsla(266, 99%, 71%, 0.17);
+  background-color: var(--intergalactic-bg-secondary-advertising);
   border-radius: var(--intergalactic-rounded-small);
   font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
   padding: calc(0.5 * var(--intergalactic-spacing-1x));

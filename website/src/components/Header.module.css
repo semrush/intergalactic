@@ -10,7 +10,7 @@
   box-sizing: border-box;
   background: var(--intergalactic-bg-tertiary-neutral);
   box-shadow: var(--intergalactic-box-shadow-top-menu);
-  z-index: 499;
+  z-index: calc(var(--intergalactic-z-index-overlay) + 1);
   display: flex;
   column-gap: var(--intergalactic-spacing-8x);
 }
@@ -74,7 +74,7 @@
   border: 1px solid var(--intergalactic-border-secondary);
   box-shadow: var(--intergalactic-box-shadow-popper);
   background-color: var(--intergalactic-tooltip-default);
-  z-index: 1000;
+  z-index: var(--intergalactic-z-index-tooltip);
 }
 .linkDivider {
   align-self: center;

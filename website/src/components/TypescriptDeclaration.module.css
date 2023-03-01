@@ -41,8 +41,7 @@
   border-bottom: 1px solid var(--intergalactic-border-secondary);
 }
 .descriptionCell code {
-  /* change to token? */
-  background-color: rgba(87, 92, 102, 0.1);
+  background-color: var(--intergalactic-bg-secondary-advertising);
   border-radius: var(--intergalactic-rounded-small);
 }
 .descriptionCell code::before,
@@ -70,12 +69,10 @@
   opacity: 0;
   transition: opacity 0.2s ease-in;
   cursor: pointer;
-  /* change to token? */
-  color: #a6b0b3;
+  color: var(--intergalactic-icon-secondary-neutral);
 }
 .propertyNameAnchor:hover {
-  /* change to token? */
-  color: #333333;
+  color: var(--intergalactic-icon-secondary-neutral-hover-active);
 }
 
 .propertyName {

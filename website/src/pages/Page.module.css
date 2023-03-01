@@ -37,7 +37,7 @@
   .mobileSelect.mobileSelect {
     display: block;
     position: fixed;
-    z-index: 498;
+    z-index: var(--intergalactic-z-index-overlay);
     width: 100%;
     margin-bottom: var(--intergalactic-spacing-8x);
     border-radius: 0 !important;

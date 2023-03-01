@@ -28,7 +28,7 @@
 .buttonUp {
   cursor: pointer;
   position: sticky;
-  top: calc(100vh - 11px - 72px);
+  top: calc(100vh - calc(25 * var(--intergalactic-spacing-1x)) - 72px);
   margin-bottom: var(--intergalactic-spacing-2x);
   margin-left: calc(100% - 72px);
   display: flex;

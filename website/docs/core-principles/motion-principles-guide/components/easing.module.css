@@ -56,8 +56,7 @@
   border-radius: calc(var(--intergalactic-rounded-large) + var(--intergalactic-rounded-medium));
   transition-duration: 100ms;
   transition-property: left;
-  /* change to token? */
-  box-shadow: 0px 2px 8px rgba(50, 50, 71, 0.16);
+  box-shadow: var(--intergalactic-box-shadow-popper);
   transition-timing-function: ease-in-out;
 }
 .container:hover .sliderThumb {

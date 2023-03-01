@@ -1,7 +1,7 @@
 .popper {
   background-color: var(--intergalactic-dropdown-menu-item);
   color: var(--intergalactic-text-primary);
-  z-index: 1100;
+  z-index: var(--intergalactic-z-index-popper);
   box-shadow: var(--intergalactic-box-shadow-popper);
   border-radius: 0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium);
   overflow: hidden;
@@ -40,9 +40,7 @@
   border-radius: var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium) 0 0;
 }
 .input:focus {
-  /* change to token? */
-  border: 1px solid #171a22;
-  /* border: 1px solid var(--intergalactic-border-info-active); */
+  border: 1px solid var(--intergalactic-border-info-active);
 }
 
 .input::placeholder {
@@ -132,8 +130,7 @@
 }
 
 .highlightMark mark {
-  /* change to token? */
-  background: rgba(255, 232, 77, 0.5);
+  background: var(--intergalactic-bg-secondary-highlight);
 }
 
 .arrowRightIcon {

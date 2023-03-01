@@ -55,7 +55,6 @@
   width: 100%;
   box-shadow: var(--intergalactic-box-shadow-top-menu);
   background: var(--intergalactic-bg-primary-neutral);
-  z-index: 2;
   box-sizing: border-box;
 }
 

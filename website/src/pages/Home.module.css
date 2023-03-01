@@ -174,7 +174,6 @@
   padding: var(--intergalactic-spacing-6x);
   background-color: var(--intergalactic-bg-tertiary-neutral);
   border-radius: var(--intergalactic-rounded-medium);
-  z-index: 99;
 }
 
 @media (max-width: 1140px) {
@@ -256,7 +255,6 @@
   position: absolute;
   left: 32%;
   bottom: -35%;
-  z-index: -1;
 }
 
 @media (max-width: 1140px) {
@@ -271,7 +269,6 @@
   position: absolute;
   left: 50%;
   top: 44%;
-  z-index: -1;
 }
 
 @media (max-width: 1140px) {
@@ -286,7 +283,6 @@
   position: absolute;
   left: 52%;
   bottom: 18%;
-  z-index: -1;
 }
 
 @media (max-width: 1140px) {

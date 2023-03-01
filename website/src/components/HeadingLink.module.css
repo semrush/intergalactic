@@ -6,8 +6,7 @@
 }
 .heading svg {
   cursor: pointer;
-  /* change to token? */
-  color: #a6b0b3;
+  color: var(--intergalactic-icon-secondary-neutral);
   position: absolute;
   top: 50%;
   left: 0;
@@ -17,6 +16,5 @@
   line-height: var(--intergalactic-lh-300);
 }
 .heading svg:hover {
-  /* change to token? */
-  color: #333;
+  color: var(--intergalactic-icon-secondary-neutral-hover-active);
 }

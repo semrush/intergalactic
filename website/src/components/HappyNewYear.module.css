@@ -23,7 +23,7 @@
   top: calc(-1 * (var(--intergalactic-spacing-4x) - 1px));
   white-space: nowrap;
   width: 100%;
-  z-index: 100;
+  z-index: var(--intergalactic-z-index-overlay);
 }
 
 .christmasLights {
