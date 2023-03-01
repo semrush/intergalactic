@@ -143,11 +143,16 @@ export const serialize = (
   {
     locale,
     translations,
-  }: { locale: string; translations?: { [locale: string]: { [messageId: string]: string } } },
+    availableLocales,
+  }: {
+    locale: string;
+    translations?: { [messageId: string]: string };
+    availableLocales?: { [localeId: string]: any };
+  },
 ): string | null => {
   if (insights.length === 0) return null;
 
-  const intl = getIntl(locale, translations);
+  const intl = getIntl(locale, translations, availableLocales);
 
   const dataRnageSummary = intl.formatList(
     dataRange.map((range) => {

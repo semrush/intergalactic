@@ -22,7 +22,10 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
 }) => {
   const SPlotA11yView = Root;
   const translations = useAsyncI18nMessages(localizedMessages, locale);
-  const intl = React.useMemo(() => getIntl(locale, translations), [locale]);
+  const intl = React.useMemo(
+    () => getIntl(locale, translations, localizedMessages),
+    [locale, translations, localizedMessages],
+  );
   const config = React.useMemo(() => makeDataSummarizationConfig(providedConfig), [providedConfig]);
   const data = React.useMemo(
     () => (Array.isArray(providedData) ? providedData : [providedData]),
@@ -95,10 +98,10 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
       return;
     }
     setTimeout(() => {
-      setSummary(summarize(providedData, hints, config, locale));
+      setSummary(summarize(providedData, hints, config, locale, translations, localizedMessages));
       setGeneratingSummary(false);
     }, 0);
-  }, [providedData, hints, config, locale]);
+  }, [providedData, hints, config, locale, translations, localizedMessages]);
 
   const handleSkip = React.useCallback(() => {
     if (!plotRef.current) return;
