@@ -103,7 +103,8 @@ class FeaturePopoverPopper extends Component {
   render() {
     const SFeaturePopover = Root;
     const SClose = Close;
-    const { Children, styles, visible, closeIcon, duration, $onCloseClick } = this.asProps;
+    const { Children, styles, visible, closeIcon, duration, $onCloseClick, animationsDisabled } =
+      this.asProps;
 
     return sstyled(styles)(
       <Popper.Popper disableEnforceFocus>
@@ -112,6 +113,7 @@ class FeaturePopoverPopper extends Component {
           duration={duration}
           keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
           initialAnimation
+          animationsDisabled={animationsDisabled}
         >
           <SFeaturePopover render={Box}>
             {closeIcon ? <SClose onClick={$onCloseClick} /> : null}

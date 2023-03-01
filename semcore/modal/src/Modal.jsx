@@ -53,16 +53,17 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { duration, visible } = this.asProps;
+    const { duration, visible, animationsDisabled } = this.asProps;
     return {
       duration,
       visible,
       onOutsideClick: this.handleOutsideClick,
+      animationsDisabled,
     };
   }
 
   getWindowProps() {
-    const { visible, closable, getI18nText, uid, duration } = this.asProps;
+    const { visible, closable, getI18nText, uid, duration, animationsDisabled } = this.asProps;
     const { hasTitle } = this.state;
     return {
       visible,
@@ -71,6 +72,7 @@ class ModalRoot extends Component {
       'aria-label': hasTitle ? undefined : getI18nText('title'),
       'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
       duration,
+      animationsDisabled,
     };
   }
 

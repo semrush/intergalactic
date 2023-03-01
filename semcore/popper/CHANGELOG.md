@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.4] - 2023-03-01
+
+### Fixed
+
+- Fixed `animationsDisabled` prop passing.
+
 ## [4.16.3] - 2023-02-28
 
 ### Changed
