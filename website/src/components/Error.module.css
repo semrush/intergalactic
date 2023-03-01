@@ -23,7 +23,7 @@
 }
 .info a {
   margin-right: calc(var(--intergalactic-spacing-1x) + 1px);
-  color: #1a55ed;
+  color: var(--intergalactic-text-link);
   text-decoration: none;
 }
 .info a:hover {

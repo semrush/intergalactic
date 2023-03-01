@@ -2,9 +2,6 @@
   text-transform: capitalize;
   margin-right: calc(var(--intergalactic-spacing-3x) - 2px);
 }
-.componentTitle small {
-  color: gray;
-}
 
 .list {
   padding: 0;

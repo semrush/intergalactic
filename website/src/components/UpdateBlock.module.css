@@ -43,10 +43,10 @@
 
 .terms {
   font-size: var(--intergalactic-fs-300);
-  color: #898d9a;
+  color: var(--intergalactic-text-secondary);
 }
 .terms a {
-  color: #1a55ed;
+  color: var(--intergalactic-text-link);
   text-decoration: none;
   margin-left: calc(var(--intergalactic-spacing-1x) + 1px);
 }
@@ -88,7 +88,7 @@
   display: flex;
   align-items: center;
   font-size: calc(var(--intergalactic-fs-400) - 1px);
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
   line-height: var(--intergalactic-lh-300);
 }
 .subscribed svg {

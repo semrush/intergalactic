@@ -31,7 +31,6 @@
 }
 
 .usages {
-  color: #6c6e79;
-  /* TODO change to token */
-  border-bottom: 1px dashed #6c6e79;
+  color: var(--intergalactic-text-hint);
+  border-bottom: 1px dashed var(--intergalactic-text-hint);
 }

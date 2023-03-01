@@ -88,7 +88,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                     />
                     {!!item.metadata.deprecated && (
                       <Tooltip title="Deprecated component">
-                        <WarningM className={styles.categoryIcon} color="gray-800" />
+                        <WarningM className={styles.categoryIcon} />
                       </Tooltip>
                     )}
                   </div>

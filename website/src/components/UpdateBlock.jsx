@@ -12,14 +12,14 @@ import styles from './UpdateBlock.module.css';
 
 const tooltipStyles = css`
   STooltip {
-    background-color: #f71939 !important;
-    border-color: #f71939 !important;
+    background-color: var(--intergalactic-tooltip-warning) !important;
+    border-color: var(--intergalactic-border-critical-active) !important;
     max-width: 500px;
     font-size: var(--intergalactic-fs-300);
   }
   SArrow {
     &:before {
-      border-color: #f71939 !important;
+      border-color: var(--intergalactic-border-critical-active) !important;
     }
   }
   SButton[disabled] {
@@ -32,14 +32,14 @@ const ButtonSubscribe = css`
     height: 56px !important;
     width: 200px;
     border-radius: var(--intergalactic-rounded-medium) !important;
-    background: #ff622d !important;
-    border-color: #ff622d !important;
+    background: var(--intergalactic-control-primary-brand) !important;
+    border-color: var(--intergalactic-control-primary-brand) !important;
     font-size: calc(var(--intergalactic-fs-300) + 2px) !important;
-    color: #fff !important;
+    color: var(--intergalactic-text-primary-invert) !important;
     margin-bottom: var(--intergalactic-spacing-4x);
     &:hover {
-      background: #b23300 !important;
-      border-color: #b23300 !important;
+      background: var(--intergalactic-control-primary-brand-hover) !important;
+      border-color: var(--intergalactic-control-primary-brand-hover) !important;
     }
     &[disabled] {
       opacity: 1 !important;

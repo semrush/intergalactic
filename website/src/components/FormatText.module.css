@@ -142,7 +142,7 @@
 }
 
 .formatText table tbody tr:hover {
-  background-color: #f0f0f4;
+  background-color: var(--intergalactic-table-td-cell-hover);
 }
 
 .formatText fieldset {
@@ -161,6 +161,7 @@
 }
 
 .formatText blockquote.--info {
+  /* chnage to token */
   background: #e9f7ff;
   border-color: #8ecdff;
 }
@@ -290,5 +291,5 @@
 }
 
 .formatText small {
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
 }

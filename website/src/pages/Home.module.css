@@ -14,12 +14,12 @@
 }
 
 .componentDeprecated {
-  color: #8a8e9b;
+  color: var(--intergalactic-icon-secondary-neutral-hover-active);
   margin-left: var(--intergalactic-spacing-2x);
 }
 
 .tabs {
-  --intergalactic-border-info-active: #ff622d;
+  --intergalactic-border-info-active: var(--intergalactic-brand-primary);
 }
 
 .promoWrapper {

@@ -61,8 +61,8 @@ class PanelChangeIcon extends PureComponent {
               data-original-title="Download"
             />
             <Icon width={20} height={20} />
-            <span style={{ marginLeft: 8, color: '#898D9A' }}>
-              <span style={{ color: '#171A22' }}>{size.toUpperCase()}</span>
+            <span className={styles.iconSizes}>
+              <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
               {` (${iconSize}x${iconSize}px)`}
             </span>
           </div>
@@ -80,8 +80,8 @@ class PanelChangeIcon extends PureComponent {
       <Copy copiedToast="Copied!" toCopy={importText} key={index} trigger="click">
         <div className={styles.previewChangeIcon}>
           <Icon width={20} height={20} />
-          <span style={{ marginLeft: 8, color: '#898D9A' }}>
-            <span style={{ color: '#171A22' }}>{size.toUpperCase()}</span>
+          <span className={styles.iconSizes}>
+            <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
             {` (${iconSize}x${iconSize}px)`}
           </span>
         </div>

@@ -22,7 +22,7 @@
   margin-bottom: var(--intergalactic-spacing-2x);
 }
 .content a {
-  color: #1a55ed;
+  color: var(--intergalactic-text-link);
   text-decoration: none;
   margin-left: calc(var(--intergalactic-spacing-1x) + 1px);
 }
@@ -57,7 +57,7 @@
   grid-row: 1;
   grid-column: 1 / span 3;
   flex-direction: column;
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
   margin-bottom: var(--intergalactic-spacing-14x);
   text-align: center;
 }
@@ -98,7 +98,6 @@
 }
 
 .text {
-  background-color: #f6f7f8;
   padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-6x)
     var(--intergalactic-spacing-6x);
   margin-top: var(--intergalactic-spacing-6x);
@@ -110,8 +109,8 @@
   font-weight: var(--intergalactic-semi-bold);
   font-size: calc(var(--intergalactic-fs-300) + 2px);
   line-height: var(--intergalactic-lh-300);
-  color: #000000;
-  margin: 12px 0;
+  color: var(--intergalactic-text-primary);
+  margin: var(--intergalactic-spacing-3x) 0;
 }
 
 .title {
@@ -119,7 +118,7 @@
   font-size: calc(var(--intergalactic-fs-600) - 2px);
   font-weight: var(--intergalactic-semi-bold);
   line-height: var(--intergalactic-lh-400);
-  color: #000000;
+  color: var(--intergalactic-text-primary);
   margin-bottom: var(--intergalactic-spacing-2x);
   white-space: nowrap;
 }

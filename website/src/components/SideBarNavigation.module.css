@@ -31,7 +31,7 @@
 }
 
 .categoryIcon {
-  color: #8a8e9b;
+  color: var(--intergalactic-icon-secondary-neutral-hover-active);
   margin-top: calc(var(--intergalactic-spacing-1x) + 1px);
 }
 .categoryItem {

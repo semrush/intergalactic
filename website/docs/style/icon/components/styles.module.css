@@ -89,3 +89,12 @@
   bottom: 0;
   left: 0;
 }
+
+.iconSizes {
+  color: var(--intergalactic-text-secondary);
+  margin-left: var(--intergalactic-spacing-2x);
+}
+
+.iconSizeTitle {
+  color: var(--intergalactic-text-primary);
+}
