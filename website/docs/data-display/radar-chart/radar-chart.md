@@ -76,6 +76,15 @@ In some cases — especially if there are three or four variables — you can cu
 
 ![radar chart with curved polygons as data sets](static/curved-radar-1.png)
 
+### Area
+
+You can display your data sets with filled areas or without filled areas. Radar chart with filled areas makes charts more attention-grabbing and helps to visually engage your audience.
+
+To enable or disable the area, use the `area` property with the same color as the line, but with 20% opacity. Areas are enabled by default.
+
+![radar chart with data sets with filled areas on the grid](static/area.png)
+![radar chart with data sets without filled areas on the grid](static/area-false.png)
+
 ### Size
 
 Size can be set through the `width` and `height` properties ([check API](/data-display/d3-chart/d3-chart-api/#plot)). Chart components don't have maximum and minimum size.
@@ -134,14 +143,6 @@ Your charts could look like this:
 
 ![radar chart with curved data sets](static/curved-radar-1.png)
 ![radar chart with curved data sets](static/curved-radar-2.png)
-
-@## Radar area chart
-
-In some cases, you can display data sets as filled areas. It makes charts more attention-grabbing and helps to visually engage your audience.
-
-To fill the area, use the `area` property with the same color as the line, but with 20% opacity:
-
-![radar chart with data sets as filled areas on the grid](static/area.png)
 
 @## Legend
 
