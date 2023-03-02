@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2023-03-02
+
+### Fixed
+
+- Fixed automatic scrolling to selected option on popper open wasn't working.
+
+### Added
+
+- Added prop `scrollToSelected` to control should be popper view scrolled to selected option on it's open.
+
 ## [3.4.23] - 2023-03-01
 
 ### Changed
