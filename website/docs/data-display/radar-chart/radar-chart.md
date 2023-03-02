@@ -88,11 +88,11 @@ But in case if you have more than four variables, you can also display the grid 
 | ----------------- | ---------------- |
 | ![radar chart with circular grid instead of a polygon](static/circle-type-2.png) | ![radar chart with circular grid instead of a polygon](static/circle-type-3.png) |
 
-### Area
+### Filled areas
 
 You can display your data sets with filled areas or without filled areas. Radar chart with filled areas makes charts more attention-grabbing and helps to visually engage your audience.
 
-To enable or disable the area, use the `area` property with the same color as the line, but with 20% opacity. Areas are enabled by default.
+Areas use the same color as the line, but with 20% opacity. Areas are enabled by default. To disable the area, use the `fill="transparent"` property.
 
 ![radar chart with data sets with filled areas on the grid](static/area.png)
 ![radar chart with data sets without filled areas on the grid](static/area-false.png)
