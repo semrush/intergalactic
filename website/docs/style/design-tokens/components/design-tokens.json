@@ -646,6 +646,13 @@
     "components": []
   },
   {
+    "name": "--intergalactic-text-advertising",
+    "type": "color",
+    "rawValue": "{violet.700}",
+    "computedValue": "#421983",
+    "components": []
+  },
+  {
     "name": "--intergalactic-border-primary",
     "type": "color",
     "rawValue": "{gray.200}",
@@ -2016,6 +2023,13 @@
     "rawValue": "#1a73e8",
     "computedValue": "#1a73e8",
     "description": "Google My Business brand color.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-brand-tertiary",
+    "type": "color",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
     "components": []
   },
   {

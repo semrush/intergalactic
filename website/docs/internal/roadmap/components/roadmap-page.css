@@ -72,8 +72,7 @@
 
 .gantt__row-bars__ui {
   background-color: var(--intergalactic-chart-palette-order-14);
-  /* change to token? */
-  color: var(--violet-700);
+  color: var(--intergalactic-text-advertising);
 }
 
 .gantt__row-bars__kit {
