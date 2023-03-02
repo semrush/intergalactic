@@ -22,12 +22,12 @@ SAxisLabel {
   font-size: 12px;
 }
 
-SAxisLabel[yDirection] {
-  text-anchor: var(--yDirection);
+SAxisLabel[xDirection] {
+  text-anchor: var(--xDirection);
 }
 
-SAxisLabel[xDirection] {
-  dominant-baseline: var(--xDirection);
+SAxisLabel[yDirection] {
+  dominant-baseline: var(--yDirection);
 }
 
 SPolygon {

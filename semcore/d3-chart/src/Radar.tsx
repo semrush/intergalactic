@@ -33,17 +33,23 @@ interface IRadarAxisProps extends IContext {
 
 }
 
-interface IRadarAxisTicksProps {}
+interface IRadarAxisTicksProps {
+}
 
-interface IRadarAxisLabelsProps {}
+interface IRadarAxisLabelsProps {
+}
 
-interface IRadialPolygonProps extends IContext {}
+interface IRadialPolygonProps extends IContext {
+}
 
-interface IRadialPolygonLineProps {}
+interface IRadialPolygonLineProps {
+}
 
-interface IRadialPolygonDotProps {}
+interface IRadialPolygonDotProps {
+}
 
-interface IRadarHoverProps extends IContext {}
+interface IRadarHoverProps extends IContext {
+}
 
 function getAngle(i, range, func, total) {
   const angle = (total - i) * 2 * Math.PI / total;
@@ -60,19 +66,19 @@ function getRadianPosition(i, range, total) {
 function getDirectionLabel(i, total) {
   const angle = -Math.PI / 2 + (i / total) * (Math.PI * 2);
   return [
-    angle === Math.PI / 2 ? 'hanging' : angle === -Math.PI / 2 ? 'initial' : 'middle',
     Math.abs(angle) === Math.PI / 2 ? 'middle' : angle < Math.PI / 2 ? 'start' : 'end',
+    angle === Math.PI / 2 ? 'mathematical' : angle === -Math.PI / 2 ? 'alphabetic' : 'middle',
   ];
 }
 
-function computeTextWidth(texts, textSize, defaultWidth = 50) {
+function computeTextWidth(texts, textSize, defaultWidth = 50, defaultHeight = 20) {
   const widths = texts.map((text) => {
     if (typeof text === 'string') {
       return measureText(text, textSize);
     }
     if (React.isValidElement(text)) {
       // @ts-ignore
-      return text.props?.width || defaultWidth;
+      return Math.max(text.props?.width || defaultWidth, text.props?.height || defaultHeight);
     }
     return defaultWidth;
   });
@@ -111,24 +117,24 @@ function pieContains([startAngle, endAngle, radius]: number[], [x, y]) {
   return angle > startAngle && angle < endAngle;
 }
 
-function getOffsetLabelPosition(xDirection, yDirection, width, height) {
+export function getOffsetLabelPosition(xDirection, yDirection, width, height) {
   let xOffset = 0;
   let yOffset = 0;
   switch (`${xDirection}-${yDirection}`) {
-    case 'initial-middle':
+    case 'middle-alphabetic':
       yOffset = height / 2;
       break;
-    case 'middle-start':
+    case 'start-middle':
       xOffset = -width / 2;
       break;
-    case 'hanging-middle':
+    case 'middle-mathematical':
       yOffset = -height / 2;
       break;
-    case 'middle-end':
+    case 'end-middle':
       xOffset = width / 2;
       break;
   }
-  return [xOffset, yOffset];
+  return [xOffset + width / 2, yOffset + height / 2];
 }
 
 class RadarRoot extends Component<IRadarProps> {
@@ -155,7 +161,7 @@ class RadarRoot extends Component<IRadarProps> {
 
   get offset() {
     const { offset } = this.asProps;
-    return offset || this.computeOffset;
+    return offset ?? this.computeOffset;
   }
 
   getAxisProps() {
@@ -189,17 +195,18 @@ class RadarRoot extends Component<IRadarProps> {
     const { Children, style, size, data, offset } = this.asProps;
     const [width, height] = size;
 
-    if (!offset) {
-      let dataKey;
-      React.Children.toArray(getOriginChildren(Children)).forEach((child) => {
-        if (React.isValidElement(child) && child.type === Radar.Axis) {
-          dataKey = child.props.dataKey;
-        }
-      });
-      if (dataKey) {
-        this.computeOffset = computeTextWidth(data[dataKey], this.textSize);
-        this.categoriesKey = dataKey;
+    let dataKey;
+    React.Children.toArray(getOriginChildren(Children)).forEach((child) => {
+      if (React.isValidElement(child) && child.type === Radar.Axis) {
+        dataKey = child.props.dataKey;
       }
+    });
+    if (dataKey) {
+      if (offset === undefined) {
+        // +5 because font might not be loaded and just in case)
+        this.computeOffset = computeTextWidth(data[dataKey], this.textSize) + 5;
+      }
+      this.categoriesKey = dataKey;
     }
 
     return sstyled(style)(
@@ -357,8 +364,8 @@ class AxisRoot extends Component {
   render() {
     const { Element: SAxis, styles, categories, size, offset, type } = this.asProps;
     const { activeLineIndex } = this.state;
-    const diam = Math.min(size[0], size[1]);
-    const radius = (diam / 2) - offset;
+    const radius = (Math.min(size[0], size[1]) / 2) - offset;
+    console.log(offset);
     const total = categories.length;
 
     return sstyled(styles)(
@@ -426,8 +433,8 @@ function AxisLabels(props) {
       const [xOffset, yOffset] = getOffsetLabelPosition(xDirection, yDirection, width, height);
       return cloneElement(category, {
         key: i,
-        x: x - width / 2 - xOffset,
-        y: y - height / 2 - yOffset,
+        x: x - xOffset,
+        y: y - yOffset,
       });
     }
   });
