@@ -146,8 +146,8 @@
 
 ### @semcore/icon
 
-- **BREAK** Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
-- **BREAK** Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
+- **Changed** Renamed `YoutubeAlt` icon to `YoutubeColored`.
+- **Changed** Renamed `YoutubeRed` icon to `YoutubeInvert`.
 
 ### @semcore/badge
 
@@ -408,7 +408,7 @@
 
 ### @semcore/icon
 
-- **BREAK** Remove `Stoller` icon, use `Stroller` instead.
+- **Changed** Renamed `Stoller` icon to `Stroller`.
 
 ### @semcore/animation
 
@@ -971,7 +971,7 @@
 
 ### @semcore/icon
 
-- **BREAK** Remove `AppBlock` icon, use `AppsBlock` instead.
+- **Changed** Renamed `AppBlock` icon to `AppsBlock`.
 - **Added** Added icon Stoller.
 - **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
 - **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
