@@ -66,15 +66,19 @@ You can turn off axes and variables if needed. It's especially helpful for small
 
 ![example of simplified mini radar chart without visible additional lines](static/mini-radar-1.png)
 
-### Curve
+### Curved data set
 
-In some cases — especially if there are three or four variables — you can curve polygons (data sets).
+If there are three or four variables you can curve polygons (data sets).
 
 > To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
 >
 > You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
 ![radar chart with curved polygons as data sets](static/curved-radar-1.png)
+
+### Circular grid
+
+If you have more than four variables, you can also display the grid as a circle instead of a polygon.
 
 ### Area
 
