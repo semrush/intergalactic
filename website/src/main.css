@@ -2,6 +2,7 @@
 @import 'prismjs/themes/prism.css';
 @import './fonts.css';
 @import '@semcore/ui/utils/src/themes/default.css';
+@import './utils/default-theme.css';
 
 html {
   font-family: var(--intergalactic-base), -apple-system, sans-serif, Arial;
