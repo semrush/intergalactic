@@ -68,7 +68,7 @@ You can turn off axes and variables if needed. It's especially helpful for small
 
 ### Curved data set
 
-If there are three or four variables you can curve polygons (data sets).
+You can curve polygons (data sets), if needed.
 
 > To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
 >
@@ -78,7 +78,15 @@ If there are three or four variables you can curve polygons (data sets).
 
 ### Circular grid
 
-If you have more than four variables, you can also display the grid as a circle instead of a polygon.
+If there are three or four variables grid is displayed as a circle.
+
+![radar chart with three variables and circular grid](static/circle-type-1.png)
+
+But in case if you have more than four variables, you can also display the grid as a circle instead of a polygon. Use `type="circle"` in this case.
+
+| Grid as a polygon | Grid as a circle |
+| ----------------- | ---------------- |
+| ![radar chart with circular grid instead of a polygon](static/circle-type-2.png) | ![radar chart with circular grid instead of a polygon](static/circle-type-3.png) |
 
 ### Area
 
