@@ -33,7 +33,7 @@ It is used in most cases in our tools.
 
 ![normal_active](static/normal_active.png)
 
-### Advanced pills 👑
+### Advanced pills (king-size 👑)
 
 In some tools, the pills can act as a block with shared metrics. Pills can be made "main" if they contain the target figures of the report. What is their difference from the usual pills:
 
@@ -41,6 +41,16 @@ In some tools, the pills can act as a block with shared metrics. Pills can be ma
 - they may have additional controls inside (usually adding/moving data by clicking on a link).
 
 ![pills-summary](static/pills-summary.png)
+
+### Pill for adding new item
+
+Note that this type is design-only yet.
+
+|        | Appearance                                       |
+| ------ | ------------------------------------------------ |
+| normal | ![pills-add-normal](static/pills-add-normal.png) |
+| hover  | ![normal_active](static/pills-add-hover.png)     |
+| active | ![normal_active](static/pills-add-active.png)    |
 
 @## Interaction
 
@@ -54,14 +64,6 @@ In some tools, the pills can act as a block with shared metrics. Pills can be ma
 | disabled                               | ![normal_disabled](static/disabled.png)      |
 | disabled pill                          | ![normal_disabled](static/disabled-pill.png) |
 | loading                                | ![normal_loading](static/loading.png)        |
-
-### The state for adding the pills
-
-|        | Appearance                                       |
-| ------ | ------------------------------------------------ |
-| normal | ![pills-add-normal](static/pills-add-normal.png) |
-| hover  | ![normal_active](static/pills-add-hover.png)     |
-| active | ![normal_active](static/pills-add-active.png)    |
 
 @## Use in UX/UI
 
