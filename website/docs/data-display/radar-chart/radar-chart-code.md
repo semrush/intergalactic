@@ -43,7 +43,7 @@ You must use the `<Radar.Hover/>` component to add interactivity.
 
 @example tooltip
 
-@## Circe
+@## Circle
 
 To make the chart round, you need to pass the parameter `type="circle"`. 
 You can also round the polygons by passing the "curve" parameter from D3 into them.
