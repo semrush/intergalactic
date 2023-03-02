@@ -22,6 +22,9 @@ import { getCookie, AMPLITUDE_COOKIE_NAME } from '../utils/cookie';
 import styles from './SearchHome.module.css';
 
 const algoliaClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
+/* To utilize synonyms in Algolia, a userToken parameter is required. However, since the website 
+does not have any registered usernames or users, the randomly generated string known as the deviceId, 
+which is stored in cookies, is used as the userToken instead, sourced from Amplitude. */
 const userToken = getCookie(AMPLITUDE_COOKIE_NAME);
 const searchClient = {
   search(requests) {
