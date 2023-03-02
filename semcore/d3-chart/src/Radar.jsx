@@ -1,55 +1,15 @@
 import React, { cloneElement } from 'react';
-import { Component, ReturnEl, sstyled } from '@semcore/core';
+import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { polygonContains } from 'd3-polygon';
-import { line, lineRadial, curveLinearClosed, curveCardinalClosed, arc } from 'd3-shape';
+import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
 import { CONSTANT, eventToPoint, measureText } from './utils';
-import IContext from './types/context';
-import { MapProps } from './types';
 
 import style from './style/radar.shadow.css';
-
-
-interface IRadarProps extends IContext {
-  /**
-   * домейн
-   * */
-  scale: any
-  /**
-   * @default 'polygon'
-   * */
-  type?: 'polygon' | 'circle',
-  /**
-   * Отступ
-   * */
-  offset?: number
-}
-
-interface IRadarAxisProps extends IContext {
-
-}
-
-interface IRadarAxisTicksProps {
-}
-
-interface IRadarAxisLabelsProps {
-}
-
-interface IRadialPolygonProps extends IContext {
-}
-
-interface IRadialPolygonLineProps {
-}
-
-interface IRadialPolygonDotProps {
-}
-
-interface IRadarHoverProps extends IContext {
-}
 
 function getAngle(i, range, func, total) {
   const angle = (total - i) * 2 * Math.PI / total;
@@ -96,7 +56,7 @@ function getTicks(tickSize, radius) {
   }, []);
 }
 
-function pieContains([startAngle, endAngle, radius]: number[], [x, y]) {
+function pieContains([startAngle, endAngle, radius]) {
   const distance = Math.sqrt(x ** 2 + y ** 2);
   if (distance > radius) return false;
 
@@ -137,18 +97,14 @@ export function getOffsetLabelPosition(xDirection, yDirection, width, height) {
   return [xOffset + width / 2, yOffset + height / 2];
 }
 
-class RadarRoot extends Component<IRadarProps> {
+class RadarRoot extends Component {
   static displayName = 'Line';
   static style = style;
   static enhance = [uniqueIDEnhancement()];
 
-  Element!: React.FC<{ children?: React.ReactNode; render: string }>;
-
   computeOffset = 0;
 
   categoriesKey = null;
-
-  textSize = 12;
 
   static defaultProps = {
     type: 'polygon',
@@ -162,6 +118,11 @@ class RadarRoot extends Component<IRadarProps> {
   get offset() {
     const { offset } = this.asProps;
     return offset ?? this.computeOffset;
+  }
+
+  get textSize() {
+    const { textSize } = this.asProps;
+    return textSize ?? 12;
   }
 
   getAxisProps() {
@@ -240,7 +201,7 @@ class PolygonRoot extends Component {
     };
   };
 
-  getDotProps() {
+  getDotsProps() {
     const { data, scale, color, transparent } = this.asProps;
     return {
       data,
@@ -275,7 +236,7 @@ function PolygonLine(props) {
   );
 }
 
-function PolygonDot(props) {
+function PolygonDots(props) {
   const { Element: SPolygonDot, styles, color, data, scale, transparent } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
@@ -314,7 +275,7 @@ class AxisRoot extends Component {
   createLineRadial(radius, total) {
     return lineRadial()
       .curve(curveLinearClosed)
-      .radius((d, i) => {
+      .radius(() => {
         return radius;
       })
       .angle((d, i) => {
@@ -335,12 +296,12 @@ class AxisRoot extends Component {
     };
   }
 
-  getLabelsProps() {
+  getLabelsProps({ labelOffset = 10 }) {
     const { offset, categories, textSize } = this.asProps;
     return {
       categories,
       textSize,
-      offset: offset - 10,
+      offset: offset - labelOffset,
     };
   }
 
@@ -365,7 +326,6 @@ class AxisRoot extends Component {
     const { Element: SAxis, styles, categories, size, offset, type } = this.asProps;
     const { activeLineIndex } = this.state;
     const radius = (Math.min(size[0], size[1]) / 2) - offset;
-    console.log(offset);
     const total = categories.length;
 
     return sstyled(styles)(
@@ -487,7 +447,7 @@ class Hover extends Component {
   getIndex(point) {
     const { categories, type } = this.asProps;
     let index;
-    if (type == 'circle') {
+    if (type === 'circle') {
       index = categories.findIndex((c, i) => pieContains(this.getPie(i), point));
     } else {
       index = categories.findIndex((c, i) => polygonContains(this.getPolygon(i), point));
@@ -523,7 +483,7 @@ class Hover extends Component {
     });
   });
 
-  handlerMouseLeaveRoot = trottle((e) => {
+  handlerMouseLeaveRoot = trottle(() => {
     this.setState({
       index: null,
     }, () => {
@@ -592,25 +552,13 @@ const Axis = createElement(AxisRoot, {
 
 const Polygon = createElement(PolygonRoot, {
   Line: PolygonLine,
-  Dot: PolygonDot,
+  Dots: PolygonDots,
 });
 
 const Radar = createElement(RadarRoot, {
   Axis,
   Polygon,
   Hover,
-}) as (<T>(
-  props: MapProps<IRadarProps & T>,
-) => ReturnEl) & {
-  Axis: (<T>(props: MapProps<IRadarAxisProps & T>) => ReturnEl) & {
-    Ticks: <T>(props: MapProps<IRadarAxisTicksProps & T>) => ReturnEl;
-    Labels: <T>(props: MapProps<IRadarAxisLabelsProps & T>) => ReturnEl;
-  };
-  Polygon: (<T>(props: MapProps<IRadialPolygonProps & T>) => ReturnEl) & {
-    Line: <T>(props: MapProps<IRadialPolygonLineProps & T>) => ReturnEl;
-    Dot: <T>(props: MapProps<IRadialPolygonDotProps & T>) => ReturnEl;
-  };
-  Hover: (<T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl)
-};
+});
 
 export default Radar;

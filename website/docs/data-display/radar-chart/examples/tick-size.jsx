@@ -17,11 +17,11 @@ export default () => {
         </Radar.Axis>
         <Radar.Polygon dataKey='data_1' color={colors['orange-04']}>
           <Radar.Polygon.Line />
-          <Radar.Polygon.Dot />
+          <Radar.Polygon.Dots />
         </Radar.Polygon>
         <Radar.Polygon dataKey='data_2' color={colors['violet-04']}>
           <Radar.Polygon.Line />
-          <Radar.Polygon.Dot />
+          <Radar.Polygon.Dots />
         </Radar.Polygon>
       </Radar>
     </Plot>

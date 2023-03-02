@@ -19,7 +19,7 @@ It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and 
 
 @example color
 
-@## Fill
+@## Background color
 
 You can use the `fill="transparent"` property to make polygons transparent.
 

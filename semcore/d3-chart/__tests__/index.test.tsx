@@ -25,6 +25,7 @@ import {
   Area,
   StackedArea,
   ReferenceLine,
+  Radar
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -2546,6 +2547,42 @@ describe('d3 charts visual regression', () => {
             <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
             <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
           </Venn>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot({
+      // because 0.00012044219843687642% different from snapshot 😬
+      failureThreshold: 0.0001,
+    });
+  });
+
+  test('should render radar', async () => {
+    const data = {
+      'categories': ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
+      'data_1': [1, 3, 5, 5, 9, 2],
+      'data_2': [5, 2, 1, 2, 7, 6],
+    }
+
+    const scale = scaleLinear().domain([0, 10]);
+
+    const Component: React.FC = () => {
+      return (
+        <Plot data={data} width={300} height={300}>
+          <Radar scale={scale}>
+            <Radar.Axis dataKey='categories'>
+              <Radar.Axis.Ticks />
+              <Radar.Axis.Labels />
+            </Radar.Axis>
+            <Radar.Polygon dataKey='data_1'>
+              <Radar.Polygon.Line />
+              <Radar.Polygon.Dot />
+            </Radar.Polygon>
+            <Radar.Polygon dataKey='data_2' color="red">
+              <Radar.Polygon.Line />
+              <Radar.Polygon.Dot />
+            </Radar.Polygon>
+          </Radar>
         </Plot>
       );
     };
