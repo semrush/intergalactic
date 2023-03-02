@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Removed
 
-- Removed automatic setting of aria-hidden to true.
+- Removed automatic setting of `aria-hidden` to `true`.
 
 ## [3.13.1] - 2023-02-28
 
