@@ -56,7 +56,7 @@ function getTicks(tickSize, radius) {
   }, []);
 }
 
-function pieContains([startAngle, endAngle, radius]) {
+function pieContains([startAngle, endAngle, radius], [x, y]) {
   const distance = Math.sqrt(x ** 2 + y ** 2);
   if (distance > radius) return false;
 
