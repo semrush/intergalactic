@@ -21,7 +21,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
   if (versionPatches.length === 1) {
     commitMessage += ` version of `;
   } else {
-    commitMessage += `versions of `;
+    commitMessage += ` versions of `;
   }
   commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
   const pnpmOptions = process.argv.includes('--dry-run')
