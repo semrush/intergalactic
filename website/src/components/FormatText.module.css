@@ -278,7 +278,8 @@
 }
 
 .formatText code {
-  background-color: var(--intergalactic-bg-secondary-advertising);
+  /* background-color: var(--intergalactic-bg-secondary-advertising); */
+  background-color: var(--intergalactic-tag-primary-violet-normal);
   border-radius: var(--intergalactic-rounded-small);
   font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
   padding: calc(0.5 * var(--intergalactic-spacing-1x));

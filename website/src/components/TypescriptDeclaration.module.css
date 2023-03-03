@@ -41,7 +41,7 @@
   border-bottom: 1px solid var(--intergalactic-border-secondary);
 }
 .descriptionCell code {
-  background-color: var(--intergalactic-bg-secondary-advertising);
+  background-color: var(--intergalactic-tag-primary-violet-normal);
   border-radius: var(--intergalactic-rounded-small);
 }
 .descriptionCell code::before,
