@@ -96,14 +96,14 @@ Let's take a look at the two main theme creation situations: local and global.
 
 In this case we recommend you using [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files, and it can help you save time trying new values for tokens of your new theme.
 
-> There you can find playgrounds with the description of creating a new theme for our design system: internal (link will be here soon), public (link will be here soon).
+> There you can find playground with the description of creating a new theme for our design system: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
 
 #### **Global theme: you need to develop a theme for the entire design system**
 
 In this case, you need to take more steps.
 
 1. Duplicate [the library with tokens and three main libraries with components](/get-started-guide/work-figma/#core_libraries).
-2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playgrounds: internal (link will be here soon), public (link will be here soon).
+2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playground: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
 3. Test and try on the theme for all components of the library in the theme playground.
 4. Save the JSON of the theme, and either give it to the developers, or commit it yourself.
 5. Voila! You are awesome!
