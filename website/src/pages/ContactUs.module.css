@@ -98,6 +98,7 @@
 }
 
 .text {
+  background-color: var(--intergalactic-bg-secondary-neutral);
   padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-6x)
     var(--intergalactic-spacing-6x);
   margin-top: var(--intergalactic-spacing-6x);

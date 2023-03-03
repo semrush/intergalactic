@@ -19,7 +19,7 @@
   align-items: center;
   padding: 0 calc(var(--intergalactic-spacing-2x) + 2px) calc(var(--intergalactic-spacing-3x) + 2px);
   width: 118px;
-  height: 140px;
+  height: 82px;
   border-radius: var(--intergalactic-rounded-medium);
   border: 2px solid transparent;
   box-sizing: border-box;

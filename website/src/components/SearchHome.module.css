@@ -41,6 +41,7 @@
 }
 .input:focus {
   border: 1px solid var(--intergalactic-border-info-active);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 .input::placeholder {

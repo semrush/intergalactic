@@ -42,7 +42,7 @@
     calc(var(--intergalactic-rounded-extra-large) - 4px);
 }
 .buttonUp svg {
-  fill: var(--intergalactic-bg-tertiary-neutral);
+  fill: var(--intergalactic-icon-non-interactive);
 }
 .buttonUp:hover {
   background-color: var(--intergalactic-control-lift-me-up-hover);
