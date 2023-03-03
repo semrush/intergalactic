@@ -1,108 +1,12 @@
 import * as ReactDOM from 'react-dom';
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 
 import Tooltip from '@semcore/ui/tooltip';
 import { Col, Row } from '@semcore/ui/grid';
 import Pills from '@semcore/pills';
 import OutsideClick from '@semcore/ui/outside-click';
 import Copy from '@components/Copy';
-
-const Section = styled.div`
-  margin-top: ${({ mt }) => mt && `${mt}px`};
-  margin-bottom: 36px;
-  font-size: 16px;
-  line-height: 1.5;
-`;
-
-const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 12px;
-  border-radius: 6px;
-  border: solid 1px #d1d4db;
-`;
-
-const PreviewIcon = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 10px 14px;
-  width: 118px;
-  height: 82px;
-  border-radius: 6px;
-  border: 2px solid transparent;
-  box-sizing: border-box;
-  outline: none;
-
-  &:hover {
-    cursor: pointer;
-    background-color: #e9ebef;
-  }
-  &:focus {
-    border-color: #0071cd;
-  }
-
-  span {
-    margin-top: 10px;
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.33;
-    color: #575c66;
-    text-align: center;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-`;
-
-const PanelIcon = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  padding: 20px 70px;
-  width: 100%;
-  box-shadow: 0 -2px 5px 0 rgba(0, 0, 0, 0.15);
-  background: #fff;
-  z-index: 2;
-  box-sizing: border-box;
-`;
-
-const PreviewChangeIcon = styled.div`
-  position: relative;
-  display: flex;
-  padding: 0 16px;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  border-radius: 6px;
-  background-color: #e9ebef;
-  font-size: 13px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 112, 204, 0.15);
-  }
-`;
-
-const PanelIconList = styled.div`
-  display: flex;
-
-  & div {
-    margin-right: 12px;
-  }
-`;
-
-const AreaLink = styled.a`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-`;
+import styles from './styles.module.css';
 
 // 😩
 function modalLayout() {
@@ -146,8 +50,9 @@ class PanelChangeIcon extends PureComponent {
       const url = `semcore/icon/${old ? 'svg' : 'svg-new'}/${includeGroupName}/${nameSvg}.svg`;
       return (
         <Tooltip title="Download!" key={index}>
-          <PreviewChangeIcon>
-            <AreaLink
+          <div className={styles.previewChangeIcon}>
+            <a
+              className={styles.areaLink}
               rel="noopener noreferrer"
               download={url}
               target="_blank"
@@ -156,11 +61,11 @@ class PanelChangeIcon extends PureComponent {
               data-original-title="Download"
             />
             <Icon width={20} height={20} />
-            <span style={{ marginLeft: 8, color: '#898D9A' }}>
-              <span style={{ color: '#171A22' }}>{size.toUpperCase()}</span>
+            <span className={styles.iconSizes}>
+              <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
               {` (${iconSize}x${iconSize}px)`}
             </span>
-          </PreviewChangeIcon>
+          </div>
         </Tooltip>
       );
     }
@@ -173,13 +78,13 @@ class PanelChangeIcon extends PureComponent {
 
     return (
       <Copy copiedToast="Copied!" toCopy={importText} key={index} trigger="click">
-        <PreviewChangeIcon>
+        <div className={styles.previewChangeIcon}>
           <Icon width={20} height={20} />
-          <span style={{ marginLeft: 8, color: '#898D9A' }}>
-            <span style={{ color: '#171A22' }}>{size.toUpperCase()}</span>
+          <span className={styles.iconSizes}>
+            <span className={styles.iconSizeTitle}>{size.toUpperCase()}</span>
             {` (${iconSize}x${iconSize}px)`}
           </span>
-        </PreviewChangeIcon>
+        </div>
       </Copy>
     );
   };
@@ -189,7 +94,7 @@ class PanelChangeIcon extends PureComponent {
     const { action } = this.state;
 
     return (
-      <PanelIcon>
+      <div className={styles.panelIcon}>
         <OutsideClick
           onOutsideClick={() => {
             const node = modalLayout();
@@ -217,20 +122,20 @@ class PanelChangeIcon extends PureComponent {
             </Pills>
           </Col>
           <Col>
-            <PanelIconList>
+            <div className={styles.panelIconList}>
               {dataIcons.icons
                 .filter((icon) => icon.name === name)[0]
                 .size.map(this.renderIconSize)}
-            </PanelIconList>
+            </div>
           </Col>
         </Row>
-      </PanelIcon>
+      </div>
     );
   }
 }
 
 export const ListIcons = ({ data, icons, json, old = false }) => (
-  <List>
+  <div className={styles.list}>
     {data.map((icon, index) => {
       const Icon = icons[icon.name];
       if (!Icon) {
@@ -239,9 +144,9 @@ export const ListIcons = ({ data, icons, json, old = false }) => (
       }
 
       return (
-        <PreviewIcon
+        <div
+          className={styles.previewIcon}
           tabIndex={0}
-          // active={this.state.activeIcon === icon.name}
           key={index}
           data-name={icon.name}
           onClick={() => {
@@ -255,10 +160,10 @@ export const ListIcons = ({ data, icons, json, old = false }) => (
         >
           <Icon width={20} height={20} />
           <span>{icon.name}</span>
-        </PreviewIcon>
+        </div>
       );
     })}
-  </List>
+  </div>
 );
 
 const Context = React.createContext();
@@ -272,9 +177,9 @@ export default function ({ title }) {
   const filterIcons = dataIcons.icons.filter((icon) => icon.group === title);
 
   return (
-    <Section>
+    <div className={styles.section}>
       <h3>{title}</h3>
       <ListIcons data={filterIcons} {...context} />
-    </Section>
+    </div>
   );
 }

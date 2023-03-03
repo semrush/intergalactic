@@ -358,6 +358,13 @@
     ]
   },
   {
+    "name": "--intergalactic-bg-tertiary-neutral",
+    "type": "color",
+    "rawValue": "{gray.white}",
+    "computedValue": "#ffffff",
+    "components": []
+  },
+  {
     "name": "--intergalactic-text-primary",
     "type": "color",
     "rawValue": "{gray.800}",
@@ -636,6 +643,13 @@
     "rawValue": "{red.500}",
     "computedValue": "#d1002f",
     "description": "Hover and active states of the text with font-size ≥20px associated with critical states and data.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-text-advertising",
+    "type": "color",
+    "rawValue": "{violet.700}",
+    "computedValue": "#421983",
     "components": []
   },
   {
@@ -997,6 +1011,27 @@
     ]
   },
   {
+    "name": "--intergalactic-control-primary-brand",
+    "type": "color",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-primary-brand-hover",
+    "type": "color",
+    "rawValue": "{orange.500}",
+    "computedValue": "#c33909",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-primary-brand-active",
+    "type": "color",
+    "rawValue": "{orange.600}",
+    "computedValue": "#8b1500",
+    "components": []
+  },
+  {
     "name": "--intergalactic-control-secondary-neutral",
     "type": "color",
     "rawValue": "{gray.400}, 0.1",
@@ -1179,6 +1214,27 @@
     "components": [
       "button"
     ]
+  },
+  {
+    "name": "--intergalactic-control-lift-me-up",
+    "type": "color",
+    "rawValue": "{gray.100}",
+    "computedValue": "#e0e1e9",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-lift-me-up-hover",
+    "type": "color",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-control-lift-me-up-active",
+    "type": "color",
+    "rawValue": "{gray.200}",
+    "computedValue": "#c4c7cf",
+    "components": []
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
@@ -1970,6 +2026,13 @@
     "components": []
   },
   {
+    "name": "--intergalactic-brand-tertiary",
+    "type": "color",
+    "rawValue": "{orange.400}",
+    "computedValue": "#ff642d",
+    "components": []
+  },
+  {
     "name": "--intergalactic-box-shadow-card",
     "type": "boxShadow",
     "rawValue": "0px 0px 1px 0px rgba({gray.800}, 0.16); 0px 1px 2px 0px rgba({gray.800}, 0.12)",
@@ -2018,6 +2081,20 @@
       "side-panel",
       "tooltip"
     ]
+  },
+  {
+    "name": "--intergalactic-box-shadow-top-menu",
+    "type": "boxShadow",
+    "rawValue": "5px 8px 25px 0px rgba({gray.800}, 0.10)",
+    "computedValue": "5px 8px 25px 0px rgba(25, 27, 35, 0.1)",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-box-shadow-principles",
+    "type": "boxShadow",
+    "rawValue": "10px 10px 45px 0px rgba({gray.800}, 0.14)",
+    "computedValue": "10px 10px 45px 0px rgba(25, 27, 35, 0.14)",
+    "components": []
   },
   {
     "name": "--intergalactic-keyboard-focus",
@@ -3787,7 +3864,7 @@
   {
     "name": "--intergalactic-duration-switch",
     "type": "other",
-    "rawValue": "{duration-extra-fast}",
+    "rawValue": "{duration.extra-fast}",
     "computedValue": "100",
     "description": "Use for small controls like Switch or Slider.",
     "components": [

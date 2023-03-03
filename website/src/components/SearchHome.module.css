@@ -1,9 +1,9 @@
 .popper {
-  background-color: #fff;
-  color: #171a22;
-  z-index: 1100;
-  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 6px 6px;
+  background-color: var(--intergalactic-dropdown-menu-item);
+  color: var(--intergalactic-text-primary);
+  z-index: var(--intergalactic-z-index-popper);
+  box-shadow: var(--intergalactic-box-shadow-popper);
+  border-radius: 0 0 var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium);
   overflow: hidden;
   border: none;
 }
@@ -13,12 +13,12 @@
 }
 @media (max-width: 767px) {
   .inputWrapper {
-    margin-right: 32px;
+    margin-right: var(--intergalactic-spacing-8x);
   }
 }
 @media (max-width: 415px) {
   .inputWrapper {
-    margin: 0 55px 0 8px;
+    margin: 0 calc(var(--intergalactic-spacing-14x) - 1px) 0 var(--intergalactic-spacing-2x);
     width: 85%;
   }
 }
@@ -26,32 +26,34 @@
 .input {
   height: 46px;
   width: 100%;
-  padding-left: 12px;
-  padding-right: 35px;
+  padding-left: var(--intergalactic-spacing-3x);
+  padding-right: calc(var(--intergalactic-spacing-8x) + 3px);
   box-sizing: border-box;
-  font-size: 16px;
-  border: 1px solid #d1d4db;
+  font-size: var(--intergalactic-fs-300);
+  border: 1px solid var(--intergalactic-border-primary);
   outline: none;
   text-overflow: ellipsis;
-  border-radius: 6px 6px 6px 6px;
+  border-radius: var(--intergalactic-rounded-medium);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 .inputOpen {
-  border-radius: 6px 6px 0 0;
+  border-radius: var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium) 0 0;
 }
 .input:focus {
-  border: 1px solid #171a22;
+  border: 1px solid var(--intergalactic-border-info-active);
+  box-shadow: var(--intergalactic-keyboard-focus);
 }
 
 .input::placeholder {
-  color: #898d9a;
+  color: var(--intergalactic-text-placeholder);
   text-overflow: ellipsis;
 }
 
 .iconSearchWrapper {
   position: absolute;
-  right: 12px;
-  top: 14px;
-  color: #171a22;
+  right: var(--intergalactic-spacing-3x);
+  top: calc(var(--intergalactic-spacing-3x) + 2px);
+  color: var(--intergalactic-icon-non-interactive);
 }
 @media (max-width: 415px) {
   .iconSearchWrapper {
@@ -81,58 +83,59 @@
 }
 
 .notFound {
-  padding: 24px 68px 64px;
+  padding: var(--intergalactic-spacing-6x) calc(17 * var(--intergalactic-spacing-1x))
+    calc(16 * var(--intergalactic-spacing-1x));
   display: flex;
   flex-direction: column;
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
 }
 
 .notFoundImg {
-  margin: 0 auto 8px auto;
+  margin: 0 auto var(--intergalactic-spacing-2x) auto;
 }
 
 .notFoundText {
-  font-size: 14px;
+  font-size: var(--intergalactic-fs-200);
   text-align: center;
 }
 
 .option {
-  padding: 0 28px;
+  padding: 0 calc(7 * var(--intergalactic-spacing-1x));
   height: 54px;
   display: block !important;
-  font-size: 16px;
+  font-size: var(--intergalactic-fs-300);
   text-decoration: none;
 }
 
 .optionText {
-  padding-left: 4px;
-  font-size: 14px;
+  padding-left: var(--intergalactic-spacing-1x);
+  font-size: var(--intergalactic-fs-200);
   text-decoration: none;
 }
 
 .optionPlace {
   display: flex;
   align-items: center;
-  padding-left: 4px;
-  font-size: 12px;
-  color: #575c66;
+  padding-left: var(--intergalactic-spacing-1x);
+  font-size: var(--intergalactic-fs-100);
+  color: var(--intergalactic-text-secondary);
 }
 
 .optionHeader {
-  padding: 8px 12px;
+  padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-3x);
   height: 21px;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: var(--intergalactic-bold);
+  font-size: var(--intergalactic-fs-200);
   display: flex;
   align-items: end;
 }
 
 .highlightMark mark {
-  background: rgba(255, 232, 77, 0.5);
+  background: var(--intergalactic-bg-secondary-highlight);
 }
 
 .arrowRightIcon {
-  margin: 0 4px;
+  margin: 0 var(--intergalactic-spacing-1x);
   cursor: default;
 }
 @media (max-width: 415px) {

@@ -1,8 +1,8 @@
 .title {
-  font-size: 40px;
-  line-height: 120%;
+  font-size: calc(var(--intergalactic-fs-700) + 4px);
+  line-height: var(--intergalactic-lh-400);
   margin: 0;
-  margin-bottom: 4px;
+  margin-bottom: var(--intergalactic-spacing-1x);
 }
 
 .packageLogo {
@@ -11,13 +11,13 @@
 }
 
 .deprecatedIcon {
-  margin-left: 4px;
+  margin-left: var(--intergalactic-spacing-1x);
 }
 
 @media (max-width: 415px) {
   .title {
-    font-size: 30px;
-    line-height: 120%;
+    font-size: calc(var(--intergalactic-fs-600) - 2px);
+    line-height: var(--intergalactic-lh-400);
   }
 }
 @media (max-width: 767px) {

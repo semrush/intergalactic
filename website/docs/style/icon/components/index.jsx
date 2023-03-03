@@ -18,9 +18,9 @@ const NotFound = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: var(--intergalactic-spacing-10x);
   margin: auto;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
   border: solid 1px #d1d4db;
 `;
 
