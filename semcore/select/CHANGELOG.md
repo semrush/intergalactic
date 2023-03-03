@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.0] - 2023-03-02
+## [3.5.0] - 2023-03-03
 
 ### Fixed
 
@@ -10,7 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added prop `scrollToSelected` to control should be popper view scrolled to selected option on it's open.
+- Added prop `scrollToSelected` to control automatic scroll to selected option on popper open.
 
 ## [3.4.23] - 2023-03-01
 
