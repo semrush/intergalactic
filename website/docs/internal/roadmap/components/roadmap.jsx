@@ -6,12 +6,13 @@ import Tabs from '@semcore/ui/tab-panel';
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
 import { css } from '@semcore/ui/core';
+import './roadmap-page.css';
 
 const styles = css`
   STabPanelItem {
     &:active,
     &[active] {
-      color: #ff622d;
+      color: var(--intergalactic-control-primary-brand);
     }
   }
 `;
@@ -26,7 +27,7 @@ const LinkComponent = styled(Link)`
 
 const Oval = styled.span`
   display: inline-block;
-  margin-right: 8px;
+  margin-right: var(--intergalactic-spacing-2x);
   width: 16px;
   height: 16px;
   border-radius: 50%;
@@ -36,7 +37,7 @@ const Oval = styled.span`
 const Legenda = styled.ul`
   display: flex;
   padding: 0;
-  margin: 0 0 16px !important;
+  margin: 0 0 var(--intergalactic-spacing-4x) !important;
   list-style: none;
 
   li {
@@ -46,14 +47,14 @@ const Legenda = styled.ul`
 
   li:first-child {
     span {
-      background: rgba(184, 128, 255, 0.4);
+      background: var(--intergalactic-chart-palette-order-14);
     }
   }
 
   li:nth-child(2) {
-    margin-left: 24px;
+    margin-left: var(--intergalactic-spacing-6x);
     span {
-      background: #b880ff;
+      background: var(--intergalactic-chart-palette-order-6);
     }
   }
 `;

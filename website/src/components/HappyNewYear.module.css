@@ -9,7 +9,7 @@
   border-radius: 50%;
   display: inline-block;
   height: 20px;
-  margin: 25px 20px;
+  margin: calc(var(--intergalactic-spacing-6x) + 1px) var(--intergalactic-spacing-5x);
   position: relative;
   width: 20px;
 }
@@ -20,15 +20,15 @@
   pointer-events: none;
   position: fixed;
   right: 0;
-  top: -15px;
+  top: calc(-1 * (var(--intergalactic-spacing-4x) - 1px));
   white-space: nowrap;
   width: 100%;
-  z-index: 100;
+  z-index: var(--intergalactic-z-index-overlay);
 }
 
 .christmasLights {
   top: auto;
-  bottom: -15px;
+  bottom: calc(-1 * (var(--intergalactic-spacing-4x) - 1px));
   transform: scale(-1);
 }
 
@@ -40,14 +40,14 @@
   height: 10px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  top: -9px;
-  left: 5px;
+  top: calc(-1 * (var(--intergalactic-spacing-2x) + 1px));
+  left: calc(var(--intergalactic-spacing-1x) + 1px);
 }
 
 .christmasLights li:after {
   content: '';
-  top: -23px;
-  left: 10px;
+  top: calc(-1 * (var(--intergalactic-spacing-6x) - 1px));
+  left: calc(var(--intergalactic-spacing-2x) + 2px);
   position: absolute;
   width: 60px;
   height: 20px;
@@ -60,7 +60,7 @@
 }
 
 .christmasLights li:first-child {
-  margin-left: -40px;
+  margin-left: calc(-1 * var(--intergalactic-spacing-10x));
 }
 
 .christmasLights li:nth-child(2n + 1) {
