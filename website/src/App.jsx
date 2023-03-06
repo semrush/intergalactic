@@ -5,7 +5,6 @@ import Helmet from 'react-helmet';
 import icon from 'static/favicon/favicon.png';
 import iconRotate from 'static/favicon/favicon-rotate.png';
 import './main.css';
-import './roadmap-page.css';
 import { HappyNewYear } from './components/HappyNewYear';
 import { initAmplitude } from './utils/amplitude';
 

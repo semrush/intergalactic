@@ -46,6 +46,18 @@ function getScrollParent(element) {
   return getScrollParent(getParentNode(element));
 }
 
+function getOffsetWidth(node) {
+  if (node == null) {
+    return undefined;
+  }
+
+  if (node.getBoundingClientRect == null) {
+    return node.offsetWidth;
+  }
+
+  return node.getBoundingClientRect().width;
+}
+
 function calculateWidthTh(nodeTable) {
   const thead = nodeTable && nodeTable.getElementsByTagName('thead')[0];
   if (!nodeTable || !thead) return [];
@@ -67,7 +79,7 @@ function calculateWidthTh(nodeTable) {
 
       if (th.colSpan === 1 && th.rowSpan === 1) {
         if (indexTr === 0) {
-          listWidthTh[indexTr].push(th.offsetWidth);
+          listWidthTh[indexTr].push(getOffsetWidth(th));
           currentCellCursor += 1;
         } else {
           while (
@@ -77,7 +89,7 @@ function calculateWidthTh(nodeTable) {
           ) {
             emptyCellIndex += 1;
           }
-          listWidthTh[indexTr][emptyCellIndex] = th.offsetWidth;
+          listWidthTh[indexTr][emptyCellIndex] = getOffsetWidth(th);
           currentCellCursor = emptyCellIndex;
         }
         continue;
@@ -85,12 +97,12 @@ function calculateWidthTh(nodeTable) {
       if (th.rowSpan > 1) {
         [...new Array(th.rowSpan)].map((_, indexRowSpan) => {
           listWidthTh[indexRowSpan] = listWidthTh[indexRowSpan] || [];
-          listWidthTh[indexRowSpan][currentCellCursor] = th.offsetWidth;
+          listWidthTh[indexRowSpan][currentCellCursor] = getOffsetWidth(th);
         });
         currentCellCursor += 1;
       }
       if (th.colSpan > 1) {
-        listWidthTh[indexTr].push(...[...new Array(th.colSpan)].map(() => undefined));
+        listWidthTh[indexTr].push(...new Array(th.colSpan).fill(undefined));
         currentCellCursor += th.colSpan;
       }
     }
@@ -105,7 +117,7 @@ function calculateWidthTh(nodeTable) {
     for (let indexTd = 0; indexTd < amountTd;) {
       const th = listTdInsideTr[indexTd];
       if (listWidthTh[firstRowIndex][indexTd] === undefined) {
-        listWidthTh[firstRowIndex][indexTd] = th.offsetWidth;
+        listWidthTh[firstRowIndex][indexTd] = getOffsetWidth(th);
       }
       indexTd += th.colSpan;
     }

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.23] - 2023-03-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.13.1 ~> 3.13.2]).
+
+## [3.3.22] - 2023-03-01
+
+### Fixed
+
+- Fixed colgroup calculation
+
 ## [3.3.21] - 2023-03-01
 
 ## [3.3.20] - 2023-02-24

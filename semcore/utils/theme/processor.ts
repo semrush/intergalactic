@@ -12,6 +12,9 @@ const dirname = resolvePath(fileURLToPath(import.meta.url), '..');
 const { base, tokens } = JSON.parse(
   await fs.readFile(resolvePath(dirname, './tokens.json'), 'utf-8'),
 );
+const excludeTokens = JSON.parse(
+  await fs.readFile(resolvePath(dirname, './exclude-tokens.json'), 'utf-8'),
+);
 
 const values: { [tokenName: string]: string } = {};
 const usages: { [tokenName: string]: string[] } = {};
@@ -180,23 +183,51 @@ for (const token in values) {
   }
 }
 
+let processedTokens: { name: string; value: string; description: string }[] = [];
 const prefix = 'intergalactic';
-const themeCssLines: string[] = [];
-const themeJson = {};
-themeCssLines.push(':root {');
 for (const token in values) {
-  if (descriptions[token]) themeCssLines.push(`  /* ${descriptions[token]} */`);
-  const fullName = `--${prefix}-${token}`;
-  themeCssLines.push(`  ${fullName}: ${values[token]};`);
-  themeJson[fullName] = values[token];
+  processedTokens.push({
+    name: `--${prefix}-${token}`,
+    description: descriptions[token],
+    value: values[token],
+  });
 }
-themeCssLines.push('}');
 
-await fs.writeFile('./semcore/utils/src/themes/default.css', themeCssLines.join('\n'));
-await fs.writeFile(
-  './semcore/utils/src/themes/default.json',
-  JSON.stringify(themeJson, null, 2) + '\n',
-);
+const tokensToCss = (tokens: { name: string; value: string; description: string }[]) => {
+  const cssLines: string[] = [];
+  cssLines.push(':root {');
+  for (const token of tokens) {
+    if (token.description) cssLines.push(`  /* ${token.description} */`);
+    cssLines.push(`  ${token.name}: ${token.value};`);
+  }
+  cssLines.push('}');
+  return cssLines.join('\n');
+};
+const tokensToJson = (tokens: { name: string; value: string; description: string }[]) => {
+  const themeFile = {};
+  for (const token of tokens) {
+    themeFile[token.name] = token.value;
+  }
+  return JSON.stringify(themeFile, null, 2) + '\n';
+};
+
+for (const excludeToPath in excludeTokens) {
+  const excludeList: string[] = excludeTokens[excludeToPath];
+  const excludedTokens: typeof processedTokens = [];
+  processedTokens = processedTokens.filter((token) => {
+    const exclude = excludeList.includes(token.name);
+    if (exclude) excludedTokens.push(token);
+    return !exclude;
+  });
+
+  if (excludedTokens.length > 0) {
+    await fs.writeFile(`${excludeToPath}.css`, tokensToCss(excludedTokens));
+    await fs.writeFile(`${excludeToPath}.json`, tokensToJson(excludedTokens));
+  }
+}
+
+await fs.writeFile('./semcore/utils/src/themes/default.css', tokensToCss(processedTokens));
+await fs.writeFile('./semcore/utils/src/themes/default.json', tokensToJson(processedTokens));
 
 const projectCssPaths = (
   await glob('./semcore/*/src/**/*.shadow.css', {

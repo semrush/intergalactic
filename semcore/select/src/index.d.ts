@@ -65,6 +65,11 @@ export interface ISelectProps<T extends SelectValue = SelectValue>
    */
   name?: string;
   locale?: string;
+  /**
+   * If enabled, after opening select popper view will be scrolled to selected option or, if there are multiple selected options, to the first selected option.
+   * @default true
+   */
+  scrollToSelected?: boolean;
 }
 
 export interface ISelectOption {

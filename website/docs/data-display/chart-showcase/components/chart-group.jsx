@@ -151,10 +151,10 @@ const Cards = styled.div`
   display: grid;
   grid-template-rows: max-content;
   grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: 12px 12px;
+  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
   width: 100%;
   margin: 0;
-  margin-top: 12px;
+  margin-top: var(--intergalactic-spacing-3x);
   padding: 0;
 `;
 

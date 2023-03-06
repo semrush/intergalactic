@@ -29,6 +29,15 @@ function getEmptyValue(multiselect) {
   return multiselect ? [] : null;
 }
 
+const scrollToNode = (node) => {
+  if (!node) return;
+  if (!node.scrollIntoView) return;
+  node.scrollIntoView({
+    block: 'nearest',
+    inline: 'nearest',
+  });
+};
+
 class RootSelect extends Component {
   static displayName = 'Select';
 
@@ -40,6 +49,7 @@ class RootSelect extends Component {
     size: 'm',
     defaultValue: getEmptyValue(props.multiselect),
     defaultVisible: false,
+    scrollToSelected: true,
     i18n: localizedMessages,
     locale: 'en',
   });
@@ -122,9 +132,8 @@ class RootSelect extends Component {
     const other = {};
     this._optionSelected = selected;
 
-    if (selected && !this.isScrolledToFirstOption) {
-      other.ref = this.firstSelectedOptionRef;
-      this.isScrolledToFirstOption = true;
+    if (selected) {
+      other.ref = this.handleOptionNode;
     }
 
     return {
@@ -136,6 +145,21 @@ class RootSelect extends Component {
       ...other,
     };
   }
+
+  lastHandleOptionNodeCall = -1;
+  handleOptionNode = (node) => {
+    if (!this.asProps.scrollToSelected) return;
+    if (Date.now() - this.lastHandleOptionNodeCall < 30) return;
+    this.lastHandleOptionNodeCall = Date.now();
+    setTimeout(() => {
+      // in most cases 10ms timeout works perfectly and scrolls before user can see it
+      if (this.asProps.visible) scrollToNode(node);
+    }, 10);
+    setTimeout(() => {
+      // in rare cases 10ms timeout it not enough so 30ms timeout saves the day
+      if (this.asProps.visible) scrollToNode(node);
+    }, 30);
+  };
 
   getOptionCheckboxProps(props) {
     const { size } = this.asProps;
@@ -193,35 +217,6 @@ class RootSelect extends Component {
     this.handlers.value(emptyValue, e);
     this.handlers.visible(false);
   };
-
-  scrollToSelectedOption() {
-    setTimeout(() => {
-      this.firstSelectedOptionRef.current?.scrollIntoView({
-        block: 'nearest',
-        inline: 'nearest',
-      });
-    }, 0);
-  }
-
-  componentDidMount() {
-    const { visible } = this.asProps;
-    if (visible) {
-      this.scrollToSelectedOption();
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { visible } = this.asProps;
-    if (visible) {
-      this.isScrolledToFirstOption = false;
-
-      if (prevProps.visible === undefined) {
-        if (prevState.visible !== visible) this.scrollToSelectedOption();
-      } else {
-        if (prevProps.visible !== visible) this.scrollToSelectedOption();
-      }
-    }
-  }
 
   render() {
     const { Children, options, multiselect, value, ...other } = this.asProps;

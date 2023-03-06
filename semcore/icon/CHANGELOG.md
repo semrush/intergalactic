@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.13.2] - 2023-03-02
+
+### Removed
+
+- Removed automatic setting of `aria-hidden` to `true`.
+
 ## [3.13.1] - 2023-02-28
 
 ### Fixed
@@ -24,8 +30,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Removed `FeauturedImage` icon, use `FeaturedImage` instead.
-- Removed `FeauturedImage` icon, use `FeaturedImage` instead.
+- Renamed `FeauturedImage` icon to `FeaturedImage`.
 
 ## [3.10.2] - 2023-02-21
 
@@ -41,10 +46,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.9.0] - 2023-02-09
 
-### Fixed
+### Changed
 
-- Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
-- Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
+- Renamed `YoutubeAlt` icon to `YoutubeColored`.
+- Renamed `YoutubeRed` icon to `YoutubeInvert`.
 
 ## [3.8.0] - 2023-01-20
 
@@ -68,7 +73,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Remove `Stoller` icon, use `Stroller` instead.
+- Renamed `Stoller` icon to `Stroller`.
 
 ## [3.5.1] - 2023-01-09
 
@@ -138,9 +143,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.0.0] - 2022-10-10
 
-### BREAK
+### Fixed
 
-- Remove `AppBlock` icon, use `AppsBlock` instead.
+- Renamed `AppBlock` icon to `AppsBlock`.
 
 ### Changed
 

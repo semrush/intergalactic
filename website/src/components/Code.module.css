@@ -1,7 +1,7 @@
 .pre {
   overflow: auto;
   margin: 0 !important;
-  padding: 8px 16px;
-  font-size: 16px;
-  line-height: 1.2em;
+  padding: var(--intergalactic-spacing-2x) var(--intergalactic-spacing-4x);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-400);
 }

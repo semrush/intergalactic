@@ -2,28 +2,27 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 0 40px;
+  padding: 0 var(--intergalactic-spacing-10x);
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   height: 80px;
   box-sizing: border-box;
-  color: #fff;
-  background: #ffffff;
-  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.1);
-  z-index: 499;
+  background: var(--intergalactic-bg-tertiary-neutral);
+  box-shadow: var(--intergalactic-box-shadow-top-menu);
+  z-index: calc(var(--intergalactic-z-index-overlay) + 1);
   display: flex;
-  column-gap: 32px;
+  column-gap: var(--intergalactic-spacing-8x);
 }
 .header a {
-  color: #171a22;
+  color: var(--intergalactic-text-primary);
   text-decoration: none;
 }
 
 .headerMain {
   display: flex;
   align-items: center;
-  column-gap: 32px;
+  column-gap: var(--intergalactic-spacing-8x);
   flex: 2;
 }
 
@@ -32,11 +31,11 @@
   align-items: center;
   justify-content: flex-end;
   flex-wrap: nowrap;
-  column-gap: 24px;
+  column-gap: var(--intergalactic-spacing-6x);
   flex: 1;
 }
 .item {
-  font-size: 16px;
+  font-size: var(--intergalactic-fs-300);
 }
 .item:hover {
   text-decoration: underline;
@@ -44,17 +43,17 @@
 .logo {
   display: flex;
   align-items: center;
-  margin-top: 4px;
+  margin-top: var(--intergalactic-spacing-1x);
   font-family: 'Factor A';
   text-align: center;
-  font-size: 22px;
-  line-height: 130%;
-  color: #ff622d;
-  font-weight: 700;
+  font-size: calc(var(--intergalactic-fs-400) + 2px);
+  line-height: calc(var(--intergalactic-lh-400) + 10%);
+  color: var(--intergalactic-brand-primary);
+  font-weight: var(--intergalactic-bold);
 }
 .semrushLogo {
-  margin-right: 8px;
-  margin-bottom: 6px;
+  margin-right: var(--intergalactic-spacing-2x);
+  margin-bottom: calc(var(--intergalactic-spacing-1x) + 2px);
   width: 30px;
   height: 30px;
 }
@@ -67,14 +66,15 @@
   text-decoration: underline;
 }
 .intergalacticLink {
-  color: #ff642d !important;
+  color: var(--intergalactic-brand-primary) !important;
 }
 
 .headerTooltip {
-  font-size: 12px;
-  border: 1px solid #d1d4db;
-  box-shadow: 5px 8px 25px rgba(137, 141, 154, 0.2);
-  z-index: 1000;
+  font-size: var(--intergalactic-fs-100);
+  border: 1px solid var(--intergalactic-border-secondary);
+  box-shadow: var(--intergalactic-box-shadow-popper);
+  background-color: var(--intergalactic-tooltip-default);
+  z-index: var(--intergalactic-z-index-tooltip);
 }
 .linkDivider {
   align-self: center;
@@ -83,47 +83,45 @@
   flex: 1;
   max-width: 354px;
 }
-.searchField {
-  flex: 1;
-}
 .menuIcon {
-  color: var(--gray-800);
+  color: var(--intergalactic-icon-non-interactive);
   cursor: pointer;
   display: none;
-  margin-right: 4px;
+  margin-right: var(--intergalactic-spacing-1x);
   width: 24px;
   height: 24px;
-  padding: 28px 32px;
+  padding: calc(7 * var(--intergalactic-spacing-7x)) var(--intergalactic-spacing-8x);
 }
 .activeMenuIcon {
-  background-color: #f6f7f8;
+  background-color: var(--intergalactic-bg-secondary-neutral);
 }
 .searchIcon {
-  color: var(--gray-800);
+  color: var(--intergalactic-icon-non-interactive);
   cursor: pointer;
   display: none;
 }
 
 .mobileMenu {
-  background-color: #f6f7f8;
+  background-color: var(--intergalactic-bg-secondary-neutral);
   display: none;
   min-width: 320px;
   max-width: 100vw;
   position: fixed;
   left: 0;
-  top: 80px;
-  height: calc(100vh - 80px);
+  top: var(--intergalactic-spacing-20x);
+  height: calc(100vh - var(--intergalactic-spacing-20x));
   overflow: auto;
 }
 .mobileMenuLinks {
   display: flex;
   flex-direction: column;
-  padding: 40px 40px 40px 48px;
-  row-gap: 20px;
+  padding: var(--intergalactic-spacing-10x) var(--intergalactic-spacing-10x)
+    var(--intergalactic-spacing-10x) calc(12 * var(--intergalactic-spacing-1x));
+  row-gap: var(--intergalactic-spacing-5x);
 }
 
 .mobileMenuDivider {
-  padding: 10px 40px;
+  padding: calc(var(--intergalactic-spacing-2x) + 2px) var(--intergalactic-spacing-10x);
   display: none;
 }
 .mobileMenuNavigation {
@@ -142,18 +140,18 @@
   }
   .header {
     padding: 0;
-    padding-right: 20px;
+    padding-right: var(--intergalactic-spacing-5x);
   }
   .searchWrapper {
     max-width: 100%;
-    margin-left: 32px;
+    margin-left: var(--intergalactic-spacing-8x);
   }
   .mobileMenu {
     display: block;
   }
   .menuIcon {
     display: block;
-    padding: 28px 32px;
+    padding: calc(7 * var(--intergalactic-spacing-1x)) var(--intergalactic-spacing-8x);
   }
   .semrushLogo {
     display: none;
@@ -173,19 +171,19 @@
     display: none;
   }
   .searchWrapper {
-    margin-left: 20px;
+    margin-left: var(--intergalactic-spacing-5x);
     margin-right: 0;
   }
   .searchIcon {
     display: flex;
     position: absolute;
-    right: 12px;
+    right: var(--intergalactic-spacing-3x);
   }
   .iconSearchWrapper {
     display: none !important;
   }
   .searchIcon {
-    margin-right: 20px;
+    margin-right: var(--intergalactic-spacing-5x);
   }
   .activeSearch {
     display: none;
@@ -202,23 +200,23 @@
     display: block;
   }
   .menuIcon {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: var(--intergalactic-spacing-5x);
+    padding-left: var(--intergalactic-spacing-5x);
   }
   .mobileSearchHidden {
     display: none;
   }
   .searchWrapper {
-    margin-left: 20px;
+    margin-left: var(--intergalactic-spacing-5x);
     margin-right: 0;
   }
   .searchIcon {
     display: flex;
     position: absolute;
-    right: 20px;
+    right: var(--intergalactic-spacing-5x);
   }
   .searchWrapper input::placeholder {
-    color: white;
+    color: var(--intergalactic-bg-secondary-neutral);
   }
   .activeSearch {
     display: none;

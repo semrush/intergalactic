@@ -1,3 +1,34 @@
+## [13.11.2] - 2023-03-03
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed summary generation was broken after i18n enhancement release.
+
+### @semcore/feature-popover
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+### @semcore/flags
+
+- **Fixed** European Union flag with 2x size was fixed again and never again :D.
+- **Fixed** European Union flag with 2x size was fixed.
+
+### @semcore/icon
+
+- **Removed** Removed automatic setting of `aria-hidden` to `true`.
+
+### @semcore/modal
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+### @semcore/popper
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
 ## [13.11.1] - 2023-03-01
 
 ### @semcore/d3-chart
@@ -144,11 +175,6 @@
 
 ## [13.7.0] - 2023-02-13
 
-### @semcore/icon
-
-- **BREAK** Removed `YoutubeAlt` icon, use `YoutubeColored` instead.
-- **BREAK** Removed `YoutubeRed` icon, use `YoutubeInvert` instead.
-
 ### @semcore/badge
 
 - **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-badge-rounded`).
@@ -217,6 +243,11 @@
 ### @semcore/feedback-form
 
 - **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/icon
+
+- **Changed** Renamed `YoutubeAlt` icon to `YoutubeColored`.
+- **Changed** Renamed `YoutubeRed` icon to `YoutubeInvert`.
 
 ### @semcore/input
 
@@ -406,10 +437,6 @@
 
 ## [13.2.13] - 2023-01-11
 
-### @semcore/icon
-
-- **BREAK** Remove `Stoller` icon, use `Stroller` instead.
-
 ### @semcore/animation
 
 - **Fixed** Fixed flickering in `Collapse` animation.
@@ -429,6 +456,10 @@
 ### @semcore/flags
 
 - **Fixed** Fixed internal imports after babel transformation were causing "named import from json" errors in some bundlers.
+
+### @semcore/icon
+
+- **Changed** Renamed `Stoller` icon to `Stroller`.
 
 ### @semcore/inline-input
 
@@ -969,13 +1000,6 @@
 
 - **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
 
-### @semcore/icon
-
-- **BREAK** Remove `AppBlock` icon, use `AppsBlock` instead.
-- **Added** Added icon Stoller.
-- **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
-- **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
-
 ### @semcore/neighbor-location
 
 - **BREAK** The approach to determining neighbors has been changed.
@@ -1026,6 +1050,13 @@
 ### @semcore/errors
 
 - **Changed** Moved svg illustrations to `@semcore/illustration` component.
+
+### @semcore/icon
+
+- **Changed** Renamed `AppBlock` icon to `AppsBlock`.
+- **Added** Added icon Stoller.
+- **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
+- **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
 
 ### @semcore/illustration
 
