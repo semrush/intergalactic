@@ -65,7 +65,7 @@ const amplitudeHttp = {
       this.setDeviceId();
     }
 
-    this.logEvent('initial_app', { theme });
+    this.logEvent('init_app', { theme });
 
     return this;
   },
