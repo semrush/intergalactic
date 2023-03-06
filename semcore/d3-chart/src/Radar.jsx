@@ -23,7 +23,7 @@ function getRadianPosition(i, range, total) {
   ];
 }
 
-function getDirectionLabel(i, total) {
+function getLabelDirection(i, total) {
   const angle = -Math.PI / 2 + (i / total) * (Math.PI * 2);
   return [
     Math.abs(angle) === Math.PI / 2 ? 'middle' : angle < Math.PI / 2 ? 'start' : 'end',
@@ -77,7 +77,7 @@ function pieContains([startAngle, endAngle, radius], [x, y]) {
   return angle > startAngle && angle < endAngle;
 }
 
-export function getOffsetLabelPosition(xDirection, yDirection, width, height) {
+export function getLabelOffsetPosition(xDirection, yDirection, width, height) {
   let xOffset = 0;
   let yOffset = 0;
   switch (`${xDirection}-${yDirection}`) {
@@ -96,6 +96,8 @@ export function getOffsetLabelPosition(xDirection, yDirection, width, height) {
   }
   return [xOffset + width / 2, yOffset + height / 2];
 }
+
+const MINIMUM_OFFSET = 5;
 
 class RadarRoot extends Component {
   static displayName = 'Line';
@@ -165,7 +167,7 @@ class RadarRoot extends Component {
     if (dataKey) {
       if (offset === undefined) {
         // +5 because font might not be loaded and just in case)
-        this.computeOffset = computeTextWidth(data[dataKey], this.textSize) + 5;
+        this.computeOffset = computeTextWidth(data[dataKey], this.textSize) + MINIMUM_OFFSET;
       }
       this.categoriesKey = dataKey;
     }
@@ -363,7 +365,7 @@ function AxisLabels(props) {
 
   return categories.map((category, i) => {
     const [x, y] = getRadianPosition(i, radius, categories.length);
-    const [xDirection, yDirection] = getDirectionLabel(i, categories.length);
+    const [xDirection, yDirection] = getLabelDirection(i, categories.length);
     if (typeof category === 'string') {
       const lines = category.split('\n');
       return sstyled(styles)(
@@ -390,7 +392,7 @@ function AxisLabels(props) {
     }
     if (React.isValidElement(category)) {
       const { width = 0, height = 0 } = category?.props;
-      const [xOffset, yOffset] = getOffsetLabelPosition(xDirection, yDirection, width, height);
+      const [xOffset, yOffset] = getLabelOffsetPosition(xDirection, yDirection, width, height);
       return cloneElement(category, {
         key: i,
         x: x - xOffset,
