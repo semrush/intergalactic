@@ -544,6 +544,8 @@ class Hover extends Component {
         );
       }
     }
+
+    return null;
   }
 }
 
