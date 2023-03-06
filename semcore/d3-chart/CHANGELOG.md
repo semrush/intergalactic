@@ -4,7 +4,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.9.0] - 2023-03-06
 
-### Added 
+### Added
 
 - Added a new chart type `Radar`.
 
