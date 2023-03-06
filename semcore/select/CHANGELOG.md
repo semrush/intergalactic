@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+
+## [3.5.0] - 2023-03-03
+
+### Fixed
+
+- Fixed automatic scrolling to selected option on popper open wasn't working.
+
+### Added
+
+- Added prop `scrollToSelected` to control automatic scroll to selected option on popper open.
+
 ## [3.4.24] - 2023-03-03
 
 ### Changed
@@ -10,23 +21,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.4.22] - 2023-03-01
 
-## [3.4.21] - 2023-02-24
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.2 ~> 3.5.3], `@semcore/icon` [3.12.0 ~> 3.13.0]).
 
 ## [3.4.20] - 2023-02-22
 
-## [3.4.19] - 2023-02-21
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.0 ~> 3.5.1], `@semcore/checkbox` [6.4.0 ~> 6.4.1], `@semcore/divider` [3.2.9 ~> 3.2.10], `@semcore/dropdown-menu` [3.6.11 ~> 3.6.12], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/input` [3.5.9 ~> 3.5.10], `@semcore/utils` [3.47.0 ~> 3.47.1]).
 
 ## [3.4.16] - 2023-02-13
-
-## [3.4.15] - 2023-02-09
 
 ### Changed
 
@@ -51,8 +56,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/dropdown-menu` [3.6.5 ~> 3.6.6]).
 
 ## [3.4.8] - 2023-01-10
-
-## [3.4.7] - 2023-01-09
 
 ### Changed
 
