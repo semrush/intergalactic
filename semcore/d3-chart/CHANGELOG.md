@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.9.0] - 2023-03-06
+
+### Added 
+
+- Added a new chart type `Radar`.
+
 ## [2.8.19] - 2023-03-01
 
 ### Changed

@@ -249,3 +249,6 @@ Consider using other chart type — e.g. Bar chart.
 If there are multiple data series, the filled-in color should be transparent.
 
 ![](static/multiple-sets-yes-no.png)
+
+@page radar-chart-api
+@page radar-chart-code

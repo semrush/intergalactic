@@ -3737,7 +3737,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Default chart grid line.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-x-axis",
@@ -3755,7 +3757,9 @@
     "rawValue": "{gray.300}",
     "computedValue": "#a9abb6",
     "description": "Accent line for the hover state on the chart grid.",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-chart-grid-text-label",

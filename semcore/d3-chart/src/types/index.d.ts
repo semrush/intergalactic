@@ -40,6 +40,9 @@ export { default as RadialTree } from './RadialTree';
 // eslint-disable-next-line import/no-unresolved
 export * from './RadialTree';
 
+export { default as Radar } from './Radar';
+export * from './Radar';
+
 export { default as Donut } from './Donut';
 export * from './Donut';
 
