@@ -111,7 +111,7 @@ const PageView = ({ route, page }) => {
           </div>
         </Col>
         <Col md={0} span={2}>
-          <SideBarHeading headings={page.headings} pageTitle={rootRoute.title} />
+          <SideBarHeading headings={page.headings} pageTitle={rootRoute.title} categoryRoute={category.route} />
         </Col>
       </Row>
     </>

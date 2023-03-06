@@ -24,9 +24,10 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
     }
   };
   const handleClickCategoryItem = (categoryItem) => {
+    const groupAnalytics = categoryItem.route.split('/')[0];
     onNavigate ? onNavigate() : undefined;
     logEvent('left_menu:click', {
-      group: 'int_main',
+      group: groupAnalytics,
       label: categoryItem.metadata.title || categoryItem.title,
     });
   };
