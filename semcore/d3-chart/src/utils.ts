@@ -228,8 +228,9 @@ export const measureText = memoize((text: string, fontSize?: number) => {
   span.style.display = 'inline-block';
   document.body.append(span);
   const textWidth = span.offsetWidth;
+  const textHeight = span.offsetHeight;
   span.remove();
-  return textWidth;
+  return Math.max(textWidth, textHeight);
 });
 
 let idCounter = 0;
