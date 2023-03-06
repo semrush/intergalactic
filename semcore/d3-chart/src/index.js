@@ -15,7 +15,7 @@ export { default as Bubble } from './Bubble';
 export { default as RadialTree } from './RadialTree';
 export { default as Donut } from './Donut';
 export { default as Venn } from './Venn';
-export { default as Radar, getOffsetLabelPosition } from './Radar';
+export { default as Radar, getLabelOffsetPosition } from './Radar';
 
 export { default as Tooltip } from './Tooltip';
 

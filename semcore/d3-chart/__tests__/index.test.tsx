@@ -2576,11 +2576,11 @@ describe('d3 charts visual regression', () => {
             </Radar.Axis>
             <Radar.Polygon dataKey='data_1'>
               <Radar.Polygon.Line />
-              <Radar.Polygon.Dot />
+              <Radar.Polygon.Dots />
             </Radar.Polygon>
             <Radar.Polygon dataKey='data_2' color="red">
               <Radar.Polygon.Line />
-              <Radar.Polygon.Dot />
+              <Radar.Polygon.Dots />
             </Radar.Polygon>
           </Radar>
         </Plot>
