@@ -1,3 +1,22 @@
+## [13.12.0] - 2023-03-06
+
+### @semcore/d3-chart
+
+- **Added** Added a new chart type `Radar`.
+
+### @semcore/dropdown
+
+- **Fixed** Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
+### @semcore/select
+
+- **Fixed** Fixed automatic scrolling to selected option on popper open wasn't working.
+- **Added** Added prop `scrollToSelected` to control automatic scroll to selected option on popper open.
+
 ## [13.11.2] - 2023-03-03
 
 ### @semcore/d3-chart
