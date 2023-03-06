@@ -61,6 +61,7 @@ class Dropdown extends Component {
 
   handlerTriggerKeyDown = (e) => {
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
+    if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
 
     if (['Enter', ' '].includes(e.key)) {
       e.preventDefault();

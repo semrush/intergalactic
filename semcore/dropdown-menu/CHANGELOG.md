@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.15] - 2023-03-06
+
+### Fixed
+
+- Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
 ## [3.6.14] - 2023-03-01
 
 ### Changed
