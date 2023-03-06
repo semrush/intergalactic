@@ -44,6 +44,7 @@ class DropdownMenuRoot extends Component {
     const amount = e.shiftKey ? 5 : 1;
 
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
+    if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
     if (!KEYS.includes(e.key)) return;
 
     e.preventDefault();

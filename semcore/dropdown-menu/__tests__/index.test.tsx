@@ -22,6 +22,20 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
+  test('Should correct press Enter in textarea', () => {
+    const spy = jest.fn();
+    const { getByTestId } = render(
+      <DropdownMenu onVisibleChange={spy} interaction="focus">
+        <DropdownMenu.Trigger tag="textarea" data-testid="textarea" />
+      </DropdownMenu>,
+    );
+
+    const textarea = getByTestId('textarea');
+
+    fireEvent.keyDown(textarea, { key: 'Enter', which: 13, keyCode: 13 });
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   test('Renders correctly', async () => {
     const Component = (
       <DropdownMenu>
