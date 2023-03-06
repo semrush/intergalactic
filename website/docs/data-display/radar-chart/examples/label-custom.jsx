@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear } from 'd3-scale';
-import { Plot, Radar, getOffsetLabelPosition } from '@semcore/ui/d3-chart';
+import { Plot, Radar, getLabelOffsetPosition } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Tag from '@semcore/ui/tag';
 
@@ -20,7 +20,7 @@ export default () => {
             {(props) => {
               const width = maxLabelWidth;
               const height = 20;
-              const [xOffset, yOffset] = getOffsetLabelPosition(props.xDirection, props.yDirection, width, height);
+              const [xOffset, yOffset] = getLabelOffsetPosition(props.xDirection, props.yDirection, width, height);
               return {
                 tag: 'g',
                 children: (
