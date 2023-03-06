@@ -1,7 +1,7 @@
 .list {
   padding: 0;
   list-style: none;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 var(--intergalactic-spacing-5x);
 }
 
 .listItem {
@@ -10,14 +10,14 @@
 }
 
 .listItem + .listItem {
-  margin-top: 10px;
+  margin-top: calc(var(--intergalactic-spacing-3x) - 2px);
 }
 .listItem p {
   margin: 0;
 }
 
 .tagStyled {
-  margin-right: 16px;
-  width: 80px;
+  margin-right: var(--intergalactic-spacing-4x);
+  width: var(--intergalactic-spacing-20x);
   flex-shrink: 0;
 }

@@ -71,6 +71,7 @@
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
   /* Focusing values in the input. */
   --intergalactic-bg-highlight-focus: rgba(0, 143, 248, 0.2);
+  --intergalactic-bg-tertiary-neutral: #ffffff;
   /* Primary text. */
   --intergalactic-text-primary: #191b23;
   /* Secondary text. */
@@ -121,6 +122,7 @@
   --intergalactic-text-large-critical: #ff4953;
   /* Hover and active states of the text with font-size ≥20px associated with critical states and data. */
   --intergalactic-text-large-critical-hover-active: #d1002f;
+  --intergalactic-text-advertising: #421983;
   /* Neutral primary border. */
   --intergalactic-border-primary: #c4c7cf;
   /* Subtle secondary border. */
@@ -181,6 +183,9 @@
   --intergalactic-control-primary-invert-hover: #f4f5f9;
   /* Active (selected) state of the inverted primary control. */
   --intergalactic-control-primary-invert-active: #e0e1e9;
+  --intergalactic-control-primary-brand: #ff642d;
+  --intergalactic-control-primary-brand-hover: #c33909;
+  --intergalactic-control-primary-brand-active: #8b1500;
   /* Background of the regular secondary control. */
   --intergalactic-control-secondary-neutral: rgba(138, 142, 155, 0.1);
   /* Hover state of the regular secondary control. */
@@ -405,6 +410,7 @@
   --intergalactic-brand-google-green: #016723;
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
+  --intergalactic-brand-tertiary: #ff642d;
   /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
     0px 1px 2px 0px rgba(25, 27, 35, 0.12);

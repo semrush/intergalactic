@@ -66,15 +66,36 @@ You can turn off axes and variables if needed. It's especially helpful for small
 
 ![example of simplified mini radar chart without visible additional lines](static/mini-radar-1.png)
 
-### Curve
+### Curved data set
 
-In some cases — especially if there are three or four variables — you can curve polygons (data sets).
+You can curve polygons (data sets), if needed.
 
 > To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
 >
 > You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
 ![radar chart with curved polygons as data sets](static/curved-radar-1.png)
+
+### Circular grid
+
+If there are three or four variables grid is displayed as a circle.
+
+![radar chart with three variables and circular grid](static/circle-type-1.png)
+
+But in case if you have more than four variables, you can also display the grid as a circle instead of a polygon. Use `type="circle"` in this case.
+
+| Grid as a polygon | Grid as a circle |
+| ----------------- | ---------------- |
+| ![radar chart with circular grid instead of a polygon](static/circle-type-2.png) | ![radar chart with circular grid instead of a polygon](static/circle-type-3.png) |
+
+### Filled areas
+
+You can display your data sets with filled areas or without filled areas. Radar chart with filled areas makes charts more attention-grabbing and helps to visually engage your audience.
+
+Areas use the same color as the line, but with 20% opacity. Areas are enabled by default. To disable the area, use the `fill="transparent"` property.
+
+![radar chart with data sets with filled areas on the grid](static/area.png)
+![radar chart with data sets without filled areas on the grid](static/area-false.png)
 
 ### Size
 
@@ -134,14 +155,6 @@ Your charts could look like this:
 
 ![radar chart with curved data sets](static/curved-radar-1.png)
 ![radar chart with curved data sets](static/curved-radar-2.png)
-
-@## Radar area chart
-
-In some cases, you can display data sets as filled areas. It makes charts more attention-grabbing and helps to visually engage your audience.
-
-To fill the area, use the `area` property with the same color as the line, but with 20% opacity:
-
-![radar chart with data sets as filled areas on the grid](static/area.png)
 
 @## Legend
 

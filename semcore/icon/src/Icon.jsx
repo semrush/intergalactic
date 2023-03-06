@@ -19,7 +19,6 @@ function Icon(props, ref) {
       width: 16,
       height: 16,
       viewBox: '0 0 16 16',
-      'aria-hidden': true,
       focusable: props.interactive,
       ...props,
     },

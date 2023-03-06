@@ -61,7 +61,6 @@ function Header() {
           </Link>
         </div>
         <SearchHome
-          className={styles.searchField}
           wrapperClassName={cx(styles.searchWrapper, !searchVisible && styles.mobileSearchHidden)}
           placeholder="What brings you here, Sole Survivor?"
           onItemSelect={() => setSearchVisible(false)}

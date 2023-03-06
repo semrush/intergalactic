@@ -1,10 +1,11 @@
 .modalWindow {
   width: 50%;
   height: 100%;
-  color: #171a22;
+  color: var(--intergalactic-text-primary);
   margin-right: initial;
   background: white;
-  padding: 24px 32px 32px;
+  padding: var(--intergalactic-spacing-6x) var(--intergalactic-spacing-8x)
+    var(--intergalactic-spacing-8x);
   position: relative;
   box-sizing: border-box;
   border-radius: 0;

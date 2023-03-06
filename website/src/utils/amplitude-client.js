@@ -1,35 +1,6 @@
 import 'whatwg-fetch';
 import { nanoid } from 'nanoid';
-
-/**
- *
- * @param {string} name
- * @returns {string}
- */
-const getCookie = (name) => {
-  const cookie = {};
-
-  document.cookie.split(';').forEach((el) => {
-    const [k, v] = el.split('=');
-    cookie[k.trim()] = v;
-  });
-
-  return cookie[name] || '';
-};
-
-/**
- *
- * @param {string} cname
- * @param {string} cvalue
- * @param {number} exdays
- */
-const setCookie = (cname, cvalue, exdays) => {
-  const d = new Date();
-  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-  const expires = `expires=${d.toUTCString()}`;
-
-  document.cookie = `${cname}=${cvalue};${expires};path=/;SameSite=None;Secure`;
-};
+import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
 
 /**
  *
@@ -51,8 +22,6 @@ const getIsConsented = (getExternalProviderConsentStatus) => {
 
 const AMPLITUDE_HTTP_HANDLER = 'https://api.amplitude.com/2/httpapi';
 const AMPLITUDE_HTTP_IDENTIFY_HANDLER = 'https://api.amplitude.com/identify';
-const AMPLITUDE_COOKIE_NAME = '_ampl';
-const AMPLITUDE_COOKIE_EXP_DATE = 30;
 
 const amplitudeHttp = {
   /**

@@ -6,15 +6,15 @@
 }
 .heading svg {
   cursor: pointer;
-  color: #a6b0b3;
+  color: var(--intergalactic-icon-secondary-neutral);
   position: absolute;
   top: 50%;
   left: 0;
   transform: translate(-100%, -50%);
   opacity: 0;
-  padding: 5px;
-  line-height: 16px;
+  padding: calc(var(--intergalactic-spacing-1x) + 1px);
+  line-height: var(--intergalactic-lh-300);
 }
 .heading svg:hover {
-  color: #333;
+  color: var(--intergalactic-icon-secondary-neutral-hover-active);
 }
