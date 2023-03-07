@@ -10,11 +10,11 @@ A **confirmation modal dialog** asks the user if they're sure that they want to 
 
 The dialog must have a clear descriptive message that explains what is happening. The user should be able to understand the message and have controls to act.
 
-The dialog is built using the [Modal](components/modal/) component.
+The dialog is built using the [Modal](/components/modal/) component.
 
 @## Component appearing
 
-> Description of the component for modal windows can be found in the [Modal](components/modal/). For cancel actions see [NoticeBubble](/components/notice-bubble/).
+> Description of the component for modal windows can be found in the [Modal](/components/modal/). For cancel actions see [NoticeBubble](/components/notice-bubble/).
 
 When the user is about to take an irreversible action, like permanently deleting an item, or when they're about to lose unsaved data, you need to ask them in advance if they understand what’s going to happen.
 

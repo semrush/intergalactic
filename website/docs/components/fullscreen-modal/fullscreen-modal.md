@@ -76,7 +76,7 @@ If the title of the window is very long and it does not fit into the space, coll
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them is placed with `align: left`.
-- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider a [default modal window](components/modal) in this case**.
+- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider a [default modal window](/components/modal) in this case**.
 
 | Single-zone modal window                  | Dual-zone modal window                    |
 | ----------------------------------------- | ----------------------------------------- |
