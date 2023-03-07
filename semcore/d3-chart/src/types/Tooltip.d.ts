@@ -28,7 +28,7 @@ declare const Tooltip: (<T>(
   Popper: <T>(props: MapProps<ComponentProps<typeof Popper.Popper> & T>) => ReturnEl;
   Title: <T>(props: MapProps<IBoxProps & T>) => ReturnEl;
   Dot: <T>(props: MapProps<IBoxProps & { color?: string } & T>) => ReturnEl;
-  Footer: <T>(props: MapProps<T>) => null;
+  Footer: <T>(props: MapProps<IBoxProps & T>) => ReturnEl;
 };
 
 export default Tooltip;
