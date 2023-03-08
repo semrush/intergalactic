@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
 @## Description
 
@@ -93,7 +93,7 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 | Chart with one category           | ![bar chart with hover](/data-display/bar-chart/static/bar-chart-hover.png)                  |
 | Chart with two or more categories | ![bar chart with two values and hover](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830).
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
 @## Use in UX/UI
 

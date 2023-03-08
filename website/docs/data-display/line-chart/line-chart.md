@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/chart/).
+> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/d3-chart).
 
 @## Description
 
@@ -56,7 +56,7 @@ If there are a lot of categories on the chart, the tooltip shows dots and values
 
 ![tooltip with values for many dots](static/popover-2.png)
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830).
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
 @## Edge cases
 
