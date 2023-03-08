@@ -87,7 +87,7 @@ If the list includes more than 10 values, add a search input. Otherwise, it will
 
 ### Select all
 
-If you have more than 3 values, add the `Select all` option at the very beginning of the list. When everything is selected, change it to `Deselect all`. 
+If you have more than three values, add the `Select all` option at the very beginning of the list. When everything is selected, change it to `Deselect all`.
 
 ![multiselect scroll](static/multiselect-all.png)
 
@@ -110,16 +110,16 @@ In long lists (for example, in the list of countries), the values selected by th
 | **The select does not have a label**. If more than 2 values are selected, add them to the `N selected` construction.                 | ![multiselect trigger](static/multiselect-trigger-4.png) |
 
 ### Search
-If user search something and click `Select all` or `Deselect all`, all **'visible'** results will be selected or deselected. All other values, those that have not been searched for, do not change their state.
 
-For example, if user selected value 'Gunship' and then search for other 'A' bands, click `Select all`, 3 more visible bands will be selected. As a result, 4 values will be checked. 
+If user searches for something and clicks `Select all` or `Deselect all`, all found results will be selected or deselected. Other values, those that have not been searched for, do not change their state.
 
-![multiselect search results](static/multiselect-something-found.png)
+For example, if the user has selected the "Gunship" and then search for the "A" bands, then clicked `Select all`, three more visible bands will be selected. As a result, four values will be marked as selected (three bands that started with "A" and the previously checked "Gunship").
 
-Do not show `Select all` or `Deselect all` at a time if the user has searched and got no results.
+![multiselect with search results](static/multiselect-something-found.png)
 
-![multiselect no data](static/multiselect-nothing-found.png)
+Do not show `Select all` or `Deselect all` at the time when the user has searched and got no results.
 
+![multiselect with no data](static/multiselect-nothing-found.png)
 
 ### Limit on value selection
 
