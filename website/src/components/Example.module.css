@@ -1,5 +1,5 @@
 .exampleWrapper {
-  margin: calc(var(--intergalactic-spacing-2x) + 2px) auto;
+  margin: calc(var(--intergalactic-spacing-2x)) auto calc(var(--intergalactic-spacing-10x));
   border-radius: var(--intergalactic-rounded-medium);
   box-shadow: rgb(204, 204, 204) 0 0 1px 1px;
 }
