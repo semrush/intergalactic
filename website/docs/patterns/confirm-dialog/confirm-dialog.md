@@ -1,6 +1,6 @@
 ---
 title: Confirmation modal dialog
-fileSource: confirm-dialog
+fileSource: modal
 tabName: Design
 ---
 
