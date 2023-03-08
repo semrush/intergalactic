@@ -105,6 +105,12 @@ Axis titles are formed in the same way as ticks and additional lines.
 
 @example axis-titles
 
+@## Tooltip
+
+You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
+
+@example tooltip
+
 @## Adaptive chart
 
 For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-api) and can help you flexibly adjust the chart size.
