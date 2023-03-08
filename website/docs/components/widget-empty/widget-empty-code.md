@@ -3,7 +3,7 @@ title: Example
 fileSource: widget-empty
 ---
 
-@## NoData example
+@## No Data example
 
 The template already has the title. You should only transfer the data type and description.
 
@@ -11,16 +11,24 @@ The template already has the title. You should only transfer the data type and d
 
 @example no-data
 
+@## Nothing Found example
+
+@example nothing-found
+
 @## Error example
 
 The template already has the title and the image. You should only transfer the description and additional elements if necessary.
 
 @example error
 
-@## Setup Tool example
+@## Custom examples
 
 You can create custom messages. For example, "[Set up your tool](/components/widget-empty/#set_up_your_tool)" message.
 
 To get the link to the image use the function `getIconPath` from the package.
 
 @example setup
+
+There you can find other examples of a custom message you can create with WidgetEmpty component.
+
+@example custom
