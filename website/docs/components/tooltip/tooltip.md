@@ -60,7 +60,7 @@ Arrow can be placed either in the middle of the component or next to any side. S
 
 ### Margins inside the data
 
-To make tooltip data more readable we recommend you the following margins between the labels and values. You also can find the detailed recommendations for tooltip margins in [Data visualization](/data-display/chart/#ac9830) and [Summary](/patterns/summary/#a16f52).
+To make tooltip data more readable we recommend you the following margins between the labels and values. You also can find the detailed recommendations for tooltip margins in [Data visualization](/data-display/d3-chart/#tooltip) and [Summary](/patterns/summary/#difference_value).
 
 ![tooltip example](static/tooltip-margins.png)
 

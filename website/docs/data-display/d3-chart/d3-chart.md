@@ -1,149 +1,158 @@
 ---
-title: D3 chart concept and API
+title: D3 chart principles
 fileSource: d3-chart
-tabName: Concept and code
+tabName: Design
 docs: true
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+@## Chart widget anatomy
 
-These components serve as the base for building charts from your data in the product.
+In our interfaces, data is usually placed in [Card](/components/card/), which consists of:
 
-They don't manipulate your data, and will not try to calculate, sort or check it in any way. Data manipulation is the product's job, not the component's.
+![widget-scheme](static/widget-paddings.png)
 
-Charts are a complex component that cannot be applied in a single line. That's why its API may seem a bit inflated, since it supports all the concepts of our design system.
+1. **Header:**
 
-@## Concept
+   1. Title (`margin-bottom: 8px;`)
+   2. Additional information under the heading (`margin-bottom: 8px;`) — _optional_
+   3. General widget controls (export or view settings, etc.) — _optional_
 
-- We want to provide you with a convenient way to use the imperative d3 style with React's declarative approach.
-- All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
-- We try to provide access to each SVG node, so you could modify it if needed.
+2. **[Divider](/components/divider/)**
 
-Each element that you place on the chart is based on a real SVG element or a group of elements. For example, when you render `<Line/>`, you will get an SVG (`<line d = {...}>`). All properties you pass to `<Line/>` will go to the native SVG `<line d = {...}>` tag.
+3. **Body:**
 
-When you render `<Line.Dots/>` (dots on a line plot), you get a set of `<circle cx = {...} cy = {...}/>`. So all properties you pass to <Line.Dots/> will also go to the native SVG `<circle cx = {...} cy = {...}/>` tag.
+   1. Top controls (filters, buttons, etc.) — _optional_
+   2. Chart — axes, values and chart itself (`margin-top: 20px;`)
+   3. Bottom controls (`margin-top: 20px;`) — _optional_
 
-For a point change in the properties of each specific dot, you need to pass a function that will be called at each dot with the calculated properties of this dot:
+> Optional elements mean that their presence depends on the case you are solving in your interface.
 
-```jsx
-<Line.Dots>
-  {(props) => {
-    return {
-      // ...your_props
-    };
-  }}
-</Line.Dots>
-```
+@## Card header
 
-> You also can put functions into single elements if your properties are calculated dynamically.
+### Title
 
-Since many SVG elements don't support nesting, they are rendered sequentially. For example, this code example doesn't nest `<circle/>` in `<line/>`, but draws them one after another:
+**The chart shall have a title** which briefly and clearly indicates what data is shown on the chart. If the chart belongs to a table or report's [Summary](/patterns/summary/), and the title is far from the chart, then keep an eye on the margins between widgets. The user shall clearly understand what data is on the chart.
 
-```jsx
-<Line>
-  <Line.Dots />
-</Line>
-```
+The title can be clickable.
 
-CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/#themes) for more information on how to customize it.
+Place M size [Info](/style/icon/) icon next to the title.
 
-@## Base
+| Appearance                           | Styles                                                                                                                                                                                                                                                                                               |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300;`, `font-weight: var(--bold);`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
 
-Any SVG container must have absolute values for its size.
+### Description
 
-See [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more information about the types of `scale`, as well as their `range` and `domain`.
+**The header may have a description text.** It usually contains information about maximum/minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
 
-> The `range` of the horizontal `scale` is inverted, so that the axes origin is at the bottom left corner.
+| Appearance                             | Styles                                                                                             |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200;`) and `--text-secondary` token for color. |
 
-@example common
+@## Chart controls
 
-@## Paddings & margins
+For detailed information about chart controls, see [Chart controls](/data-display/chart-controls/).
 
-SVG size and chart plot size are usually different to prevent the clipping of additional items such as axes, axis values, and the legend.
+@## Collapsing rows
 
-That's why values in `scale.range ()` are set with a shift.
+You can collapse card rows if necessary. See more information in the [Chart controls](/data-display/chart-controls/#adbaac) guide.
 
-@example margin
+@## Legend
 
-@## Axes
+**Legend** is an additional visual information that explains the data on the chart.
 
-When you pass `scale` to the root component it also sets the coordinate axes. However, you still need to specify them for them to render.
+The legend can work as a filter or be unclickable representation of the data. For more information about the legend and its types, see [Chart legend](/data-display/chart-legend/).
 
-- `XAxis/YAxis` are the axis lines.
-- `ticks` are the values on the axis.
+@## Grid and axes
 
-It is also possible to have multiple axes with different positions.
+**Axes** help user navigate the data and relate values to each other.
 
-You can get the number of ticks from the `scale.ticks` or `scale.domain` method. To calculate an approximate number of ticks, divide the chart size by the size of a one tick.
+> Please don't make the additional lines bright and colored — the emphasis should be on the data, not on the grid.
 
-> According to the design guide, `YAxis` is hidden by default `(hide = true)`.
+![axes-scheme](static/axes-scheme.png)
 
-@example axis
+![axes-scheme](static/axes-scheme2.png)
 
-@## Axis values
+- The **Y axis** is hidden by default.
+- The color of additional axes is `--chart-grid-line`.
+- Color of the X axis and additional active lines on the grid (if needed) — `--chart-grid-x-axis`.
+- Left and right margin to the Y axis values is 16px.
+- `margin-top` of the X axis values is 12px.
 
-You can change the values and properties on the axis by passing a function.
+### Minimum and maximum number of axes
 
-The default tag is `<text/>`, but you can change it by defining the `tag` property. For example, you can change it to `foreignObject` for inserting `html` components.
+To make it easier to track changes, use 3-5 additional horizontal guides. Round the values on the axes, like _25K − 20K − 15K − 10K_, instead of using exact values like _24.8K − 20.0K − 15.2K − 10.2K_.
 
-> The function arguments contain calculated XY coordinates that you can use to shift the object as needed.
+> **The recommended minimum height of the chart is 118px.** For such a chart, it is recommended to display 3 additional horizontal guides. Keep in mind that it can be difficult to read changes on the charts that has such small height.
 
-@example axis-ticks
+Minimum (small) chart height has 3 additional horizontal guides.
 
-@## Additional lines
+![min-height](static/min-height.png)
 
-Additional lines are formed in the same way as ticks.
+**The maximum height of the chart is up to your case.** For high-height charts, use no more than 5-6 additional horizontal guides.
 
-> To make things easier, ticks can be specified on the `Axis` component itself, and it will be automatically passed to `<Axis.Ticks/>` and `<Axis.Grid/>`.
+![max-height](static/max-height.png)
 
-@example axis-grid
+@## Tooltip
 
-@## Axes titles
+When hovering over any part of the chart, show a tooltip with data for the dot or dots.
 
-Axis titles are formed in the same way as ticks and additional lines.
+The tooltip is displayed even for the dots with no data. In this case, we show `n/a` instead of the value and recommend adding a note about the forecast.
 
-> By default, the title is set to the right for the Oy axis, and at the top for the Ox axis. However, you can change this condition by passing the desired location to `position`: `right`, `top`, `left`, or `bottom`.
+![tooltip-scheme](static/tooltip-scheme.png)
 
-@example axis-titles
+The tooltip appears next to the cursor. It is always located inside the chart container. _In other words, if the dot is near the upper or lower border of the chart area, the tooltip will position within the chart area._
 
-@## Adaptive chart
+- The tooltip shows data for all the lines for the selected date.
+- For tooltip title use the date or data category name. For easy comparison, the values shall be right-aligned.
+- The tooltip can contain the total value.
+- If several charts have the same timeline under each other, then they can be synchronized — when you hover over one of the charts, the hover is triggered on the other. This is quite useful for comparing data.
 
-For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-api) and can help you flexibly adjust the chart size.
+> As a rule, we do not put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
 
-> `ResponsiveContainer` supports the `aspect` property — the aspect ratio between the width and height of a chart.
+### Styles
 
-```jsx
-<ResponsiveContainer aspect={1}> // width = height ...</ResponsiveContainer>
-```
+The data tooltip shall always be displayed relative to the dot with an 8px margin.
 
-@example responsive
+| Appearance                                                                                      | Styles description                                                                                                          |
+| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![tooltip paddings](static/tooltip-paddings.png) ![tooltip margins](static/tooltip-margins.png) | The inner tooltip padding is 12px.                                                                                          |
+| ![one-dot](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
+| ![one-dot](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--chart-grid-bar-chart-hover`                                           |
 
-@## Chart legend
+### Cases
 
-See [Chart legend](/data-display/chart-legend/) for a guide on how to implement a clickable chart legend.
+| Case                     | Appearance                               | Styles description                                                                                                                                                                          |
+| ------------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`.                                                                                               |
+| Several dots             | ![many-dots](static/tooltip-2.png)       |
+| Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                                                               |
+| Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--chart-grid-y-accent-hover-line` token for color. |
 
-@example legend
+@## Trend and average value
 
-@## Reference line
+To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--chart-palette-order-total-amount)`. Similarly, we can display total values.
 
-@example reference-line
+- Dots on the line are optional.
+- The legend must have a checkbox for the trend line. On the charts, the universal color for the checkbox is `--chart-palette-order-total-amount`.
 
-@## Synchronous charts
+![checkbox total legend](static/trend.png)
 
-You can pass a common `eventEmitter` to synchronize the charts.
+@## Data loading
 
-> Be careful when choosing the `scale` for the axis, since it's common across different charts.
+During initial data loading, the widget displays the [Skeleton](/components/skeleton/) instead of the chart.
 
-@example sync-charts
+If the chart has a title, it should be displayed during the initial loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-@## Export to image (png, jpeg, webp)
+> Note that every chart has it's own skeleton. For more information see guides for every chart type.
 
-@example export-in-image
+@## Edge cases
 
-@## Initial loading
+The particular edge cases differ for different chart types, so see them in the documentation for specific chart you need.
 
-Use [Skeleton](/components/skeleton/) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
+General recommendations of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 
+@page d3-chart-code
 @page d3-chart-api
 @page d3-chart-a11y
 @page d3-chart-changelog

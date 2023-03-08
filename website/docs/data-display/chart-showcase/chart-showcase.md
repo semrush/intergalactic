@@ -7,8 +7,8 @@ docs: true
 
 We use many types of charts in the interface. Each of them is designed to visualize different cases and data.
 
-- [Grid & axes](/data-display/chart/#a9e6f0)
-- [Chart tooltip](/data-display/chart/#ac9830)
+- [Grid & axes](/data-display/d3-chart/#grid_and_axes)
+- [Chart tooltip](/data-display/d3-chart/#tooltip)
 - [Chart legend](/data-display/chart-legend/)
 
 > Note that some chart types are in the development yet (they aren't clickable).

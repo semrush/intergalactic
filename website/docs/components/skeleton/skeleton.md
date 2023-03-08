@@ -102,7 +102,7 @@ General recommendations:
 - Do not show axes and labels.
 - Replace legend with Skeleton.
 
-For a detailed guide, see the [Chart principles](/data-display/chart/).
+For a detailed guide, see the [Chart principles](/data-display/d3-chart).
 
 ### Buttons and links
 
@@ -197,7 +197,7 @@ In addition, the following components should never use Skeleton, as they should 
 
 - Pills should be active while initial loading of the table.
 - The legend is replaced by Skeleton “bones" of the same size. But if the legend values are known in advance, show it while initial loading.
-- The chart is replaced with the Skeleton corresponding to the chart type. See more in [Chart principles](/data-display/chart/).
+- The chart is replaced with the Skeleton corresponding to the chart type. See more in [Chart principles](/data-display/d3-chart).
 
 ![skeleton-chart](static/chart.png)
 

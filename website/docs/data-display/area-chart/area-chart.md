@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
 @## Description
 
@@ -42,7 +42,7 @@ We recommend you to display the dots on lines either when there are few of them 
 
 When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830) or [Line chart](/data-display/line-chart/).
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
 
 @## Edge cases
 
