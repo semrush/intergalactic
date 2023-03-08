@@ -114,8 +114,14 @@ const tokenHandlers = {
       </div>
     );
   },
-  typescriptDeclaration: ({ declaration, dependencies }) => {
-    return <TypescriptDeclarationView declaration={declaration} dependencies={dependencies} />;
+  typescriptDeclaration: ({ declaration, dependencies, route }) => {
+    return (
+      <TypescriptDeclarationView
+        declaration={declaration}
+        dependencies={dependencies}
+        route={route}
+      />
+    );
   },
 };
 

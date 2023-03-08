@@ -5,8 +5,8 @@ import { logEvent } from '../utils/amplitude';
 
 import styles from './HeadingLink.module.css';
 
-function HeadingLink({ level, id, children, style, route, title = '' }) {
-  const [group, page] = route ? route.split('/') : ['', ''];
+function HeadingLink({ level, id, children, style, route = '', title = '' }) {
+  const [group, page] = route.split('/');
   return React.createElement(`h${level}`, {
     className: styles.heading,
     as: `h${level}`,

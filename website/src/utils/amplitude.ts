@@ -1,11 +1,10 @@
 import { parse } from 'bowser';
 import amplitudeHttp from './amplitude-client';
 
-const systemInfo = parse(window.navigator.userAgent);
-const language = window.navigator.language;
-
 export const initAmplitude = () => {
   const apiKey = '1e1d36fa96573d0839c6c3ccaffb7f62';
+  const systemInfo = parse(window.navigator.userAgent);
+  const language = window.navigator.language;
 
   amplitudeHttp.init(apiKey).sendUserProperties({
     browser: `${systemInfo.browser.name} ${systemInfo.browser.version}`,
