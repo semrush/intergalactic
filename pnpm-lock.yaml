@@ -2380,6 +2380,7 @@ importers:
       '@types/react': 18.0.21
       '@types/supertest': 2.0.8
       algoliasearch: 4.8.4
+      bowser: ^2.11.0
       classnames: 2.2.6
       convert-layout: 0.11.1
       d3-scale: 3.3.0
@@ -2429,6 +2430,7 @@ importers:
       whatwg-fetch: 3.6.2
     dependencies:
       algoliasearch: 4.8.4
+      bowser: 2.11.0
       classnames: 2.2.6
       d3-scale: 3.3.0
       d3-shape: 3.1.0
@@ -6459,6 +6461,10 @@ packages:
 
   /boolbase/1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
+
+  /bowser/2.11.0:
+    resolution: {integrity: sha512-AlcaJBi/pqqJBIQ8U9Mcpc9i8Aqxn88Skv5d+xBX006BY5u8N3mGLHa5Lgppa7L/HfwgwLgZ6NYs+Ag6uUmJRA==}
+    dev: false
 
   /boxen/4.2.0:
     resolution: {integrity: sha512-eB4uT9RGzg2odpER62bBwSLvUeGC+WbRjjyyFhGsKnc8wp/m0+hQsMUvUe3H2V0D5vw0nBdO1hCJoZo5mKeuIQ==}

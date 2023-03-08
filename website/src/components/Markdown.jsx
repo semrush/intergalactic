@@ -17,9 +17,9 @@ const tokenHandlers = {
   text: ({ html }) => {
     return <FormatText html={html} />;
   },
-  heading: ({ html, level, id }) => {
+  heading: ({ html, level, id, route }) => {
     return (
-      <HeadingLink level={level} id={id}>
+      <HeadingLink level={level} id={id} route={route} title={html}>
         <span dangerouslySetInnerHTML={{ __html: html }} />
       </HeadingLink>
     );

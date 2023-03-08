@@ -14,8 +14,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   const [collapseCategories, setCollapseCategories] = useState([category]);
   const handleClickCategory = (currentCategory) => {
     logEvent('left_menu:click', {
-      group: 'int_main',
-      label: currentCategory.metadata.title || currentCategory.title,
+      label: currentCategory.route,
     });
     if (collapseCategories.includes(currentCategory.route)) {
       setCollapseCategories(collapseCategories.filter((route) => route !== currentCategory.route));
@@ -24,11 +23,11 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
     }
   };
   const handleClickCategoryItem = (categoryItem) => {
-    const groupAnalytics = categoryItem.route.split('/')[0];
+    const [group, label] = categoryItem.route.split('/');
     onNavigate ? onNavigate() : undefined;
     logEvent('left_menu:click', {
-      group: groupAnalytics,
-      label: categoryItem.metadata.title || categoryItem.title,
+      group,
+      label,
     });
   };
 

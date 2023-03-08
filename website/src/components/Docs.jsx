@@ -86,7 +86,7 @@ export const Docs = ({ route, tokens, tabs, pageTitle }) => {
         <TabLine value={match.url} size="l" underlined={false} className={styles.tabLine}>
           {tabs.map((tab) => {
             const { route } = tab;
-            const groupAnalytics = tab.route.split('/')[0];
+            const [group, page] = route.split('/');
             return (
               <TabLine.Item
                 key={route}
@@ -98,9 +98,9 @@ export const Docs = ({ route, tokens, tabs, pageTitle }) => {
                 className={styles.tabLineItem}
                 onClick={() =>
                   logEvent('tab:click', {
-                    group: groupAnalytics,
-                    page: pageTitle,
-                    tab: tab.metadata.tabName || tab.title,
+                    group,
+                    page,
+                    tab: (tab.metadata.tabName || tab.title).toLowerCase(),
                   })
                 }
               >

@@ -106,12 +106,13 @@ const PageView = ({ route, page }) => {
               sourcePath={page.sourcePath}
               changelogUrl={changelogRoute?.route}
               deprecated={!!rootRoute.metadata?.deprecated}
+              route={rootRoute.route}
             />
             <Docs tokens={page.tokens} tabs={tabs} route={page.route} pageTitle={rootRoute.title} />
           </div>
         </Col>
         <Col md={0} span={2}>
-          <SideBarHeading headings={page.headings} pageTitle={rootRoute.title} categoryRoute={category.route} />
+          <SideBarHeading headings={page.headings} route={rootRoute.route} />
         </Col>
       </Row>
     </>

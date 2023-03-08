@@ -7,9 +7,10 @@ import cx from 'classnames';
 import { logEvent } from '../utils/amplitude';
 import styles from './SideBarHeading.module.css';
 
-function SideBarHeading({ headings, pageTitle, categoryRoute }) {
+function SideBarHeading({ headings, route }) {
   const { pathname } = useLocation();
   const [activeId, setActiveId] = React.useState();
+  const [group, page] = route.split('/');
 
   React.useEffect(() => {
     setActiveId(headings.length ? headings[0].id : undefined);
@@ -37,9 +38,9 @@ function SideBarHeading({ headings, pageTitle, categoryRoute }) {
             duration={200}
             delay={0}
             onClick={() =>
-              logEvent(`right_menu:click`, {
-                group: categoryRoute,
-                page: pageTitle,
+              logEvent('right_menu:click', {
+                group,
+                page,
                 link: heading.html,
               })
             }
