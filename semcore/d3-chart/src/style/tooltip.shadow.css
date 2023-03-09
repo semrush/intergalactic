@@ -33,3 +33,12 @@ SDot {
 SDot[color] {
   background: var(--color);
 }
+
+SFooter {
+  background: var(--intergalactic-bg-secondary-neutral, #f4f5f9);
+  padding: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-3x, 12px);
+  border-radius: 0 0 var(--intergalactic-rounded-medium, 6px)
+    var(--intergalactic-rounded-medium, 6px);
+  margin: var(--intergalactic-spacing-3x, 12px) calc(-1 * var(--intergalactic-spacing-3x, 12px))
+    calc(-1 * var(--intergalactic-spacing-3x, 12px));
+}

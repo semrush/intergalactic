@@ -130,8 +130,12 @@ function Dot(props) {
   );
 }
 
-function Footer() {
-  return null;
+function Footer(props) {
+  const { styles } = props;
+  const SFooter = Root;
+  return sstyled(styles)(
+    <SFooter render={Box} __excludeProps={['data', 'scale']}/>,
+  );
 }
 
 const Tooltip = createElement(TooltipRoot, {

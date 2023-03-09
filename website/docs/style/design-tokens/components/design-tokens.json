@@ -159,6 +159,7 @@
     "computedValue": "#f4f5f9",
     "description": "Secondary background of the interface which contains the main data and information.",
     "components": [
+      "d3-chart",
       "drag-and-drop",
       "input",
       "textarea",
@@ -2587,6 +2588,7 @@
       "card",
       "color-picker",
       "counter",
+      "d3-chart",
       "data-table",
       "dropdown-menu",
       "feature-popover",
@@ -2820,7 +2822,9 @@
     "type": "borderRadius",
     "rawValue": "6px",
     "computedValue": "6px",
-    "components": []
+    "components": [
+      "d3-chart"
+    ]
   },
   {
     "name": "--intergalactic-rounded-large",
