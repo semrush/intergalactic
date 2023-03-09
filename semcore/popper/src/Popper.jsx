@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import FocusLock from 'react-focus-lock';
-import { getFocusableIn } from 'focus-lock';
+import React, { useCallback, useRef } from 'react';
+
 import ResizeObserver from 'resize-observer-polyfill';
 
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
@@ -8,11 +7,10 @@ import { Box } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
-import { setRef, useCallbackRef, useForkRef } from '@semcore/utils/lib/ref';
+import { setRef } from '@semcore/utils/lib/ref';
+import { usePopupFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
-import useEventListener from '@semcore/utils/lib/use/useEventListener';
-import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale } from '@semcore/animation';
@@ -421,53 +419,6 @@ function Trigger(props) {
   );
 }
 
-const FocusLockWrapper = React.forwardRef(function (
-  { disableEnforceFocus, returnFocusRef, returnFocus, ...lockProps },
-  ref,
-) {
-  const [eventLock, setEventLock] = useState(false);
-  const [nodesLock, setNodesLock] = useState(false);
-
-  const popperRef = useCallbackRef(null, (node) => {
-    if (!node) {
-      setNodesLock(false);
-      return;
-    }
-    const hasFocusableChild = [...(node.children ?? [])].some(
-      (child) => getFocusableIn(child).length > 0,
-    );
-
-    setNodesLock(!hasFocusableChild);
-  });
-
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-react-fc
-  useEventListener(window, 'mousedown', () => setEventLock(true), true);
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-react-fc
-  useEventListener(window, 'keydown', () => setEventLock(false), true);
-
-  useEffect(() => {
-    return () => {
-      if (!returnFocus || !eventLock || !canUseDOM()) return;
-      setTimeout(() => {
-        if (!document.activeElement || document.activeElement === document.body) {
-          returnFocusRef.current?.focus();
-        }
-      }, 0);
-    };
-  }, [returnFocus, eventLock]);
-
-  return (
-    <FocusLock
-      ref={useForkRef(popperRef, ref)}
-      disabled={disableEnforceFocus || nodesLock || eventLock}
-      lockProps={{ ...lockProps, style: { display: 'contents', ...(lockProps.style ?? {}) } }}
-      returnFocus={returnFocus}
-      style={{ display: 'contents' }}
-      {...lockProps}
-    />
-  );
-});
-
 function PopperPopper(props) {
   const SPopper = Root;
   const {
@@ -478,6 +429,7 @@ function PopperPopper(props) {
     disableEnforceFocus,
     triggerRef,
     interaction,
+    autoFocus,
     controlsLength,
     duration,
     animationsDisabled,
@@ -486,6 +438,13 @@ function PopperPopper(props) {
 
   // https://github.com/facebook/react/issues/11387
   const handlerStopPropagation = useCallback((e) => e.stopPropagation(), []);
+
+  usePopupFocusLock(
+    ref,
+    autoFocus,
+    interaction === 'click' ? triggerRef : null,
+    !visible || disableEnforceFocus,
+  );
 
   return sstyled(styles)(
     <Portal disablePortal={disablePortal}>
@@ -523,18 +482,9 @@ function PopperPopper(props) {
           onReset={handlerStopPropagation}
           onSubmit={handlerStopPropagation}
         >
-          <FocusLockWrapper
-            disableEnforceFocus={disableEnforceFocus}
-            returnFocus={interaction === 'click'}
-            returnFocusRef={triggerRef}
-            autoFocus={false}
-            tabIndex={0}
-            shards={[triggerRef]}
-          >
-            <PortalProvider value={ref}>
-              <Children />
-            </PortalProvider>
-          </FocusLockWrapper>
+          <PortalProvider value={ref}>
+            <Children />
+          </PortalProvider>
         </SPopper>
       </NeighborLocation>
     </Portal>,

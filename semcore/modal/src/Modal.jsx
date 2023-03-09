@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react';
-import FocusLock from 'react-focus-lock';
 import { FadeInOut, Slide } from '@semcore/animation';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
@@ -16,6 +15,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import { usePopupFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -117,14 +117,12 @@ class ModalRoot extends Component {
   }
 }
 
-const FocusLockWrapper = React.forwardRef(function (props, ref) {
-  return <FocusLock ref={ref} {...props} lockProps={{ style: { display: 'contents' } }} />;
-});
-
 function Window(props) {
   const SWindow = Root;
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = useRef(null);
+
+  usePopupFocusLock(windowRef, true, 'auto', !visible);
 
   return sstyled(styles)(
     <SWindow
@@ -135,13 +133,12 @@ function Window(props) {
       role="dialog"
       aria-modal={true}
       duration={duration}
+      ref={windowRef}
     >
-      <FocusLockWrapper returnFocus={true} autoFocus={true} ref={windowRef} tabIndex={-1}>
-        <PortalProvider value={windowRef}>
-          {closable && <Modal.Close />}
-          <Children />
-        </PortalProvider>
-      </FocusLockWrapper>
+      <PortalProvider value={windowRef}>
+        {closable && <Modal.Close />}
+        <Children />
+      </PortalProvider>
     </SWindow>,
   );
 }
