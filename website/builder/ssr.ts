@@ -79,7 +79,7 @@ for (const outputPath in outputs) {
 const docsDir = resolvePath('docs');
 const distDir = resolvePath('dist');
 
-const { navigationTree } = await buildNavigation(docsDir);
+const { navigationTree, existingRoutes } = await buildNavigation(docsDir);
 globalThis.__ssr = true;
 
 // eslint-disable-next-line import/extensions
@@ -149,7 +149,12 @@ const renderPage = async (route, navigationNode?) => {
 
   if (navigationNode) {
     const articlePath = resolvePath(docsDir, navigationNode.filePath);
-    const articleData = await buildArticle(docsDir, articlePath, navigationNode.filePath);
+    const articleData = await buildArticle(
+      docsDir,
+      articlePath,
+      navigationNode.filePath,
+      existingRoutes,
+    );
     const preprocessedArticleData = preprocessArticleData(navigationNode, articleData);
     codeEntry = preprocessedArticleData.codeEntry;
     preloadPageData = preprocessedArticleData.preloadPageData;

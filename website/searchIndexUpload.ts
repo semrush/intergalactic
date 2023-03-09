@@ -37,7 +37,7 @@ const index = client.initIndex(CONFIG.ALGOLIA_INDEX);
 const indexIcons = client.initIndex(CONFIG.ALGOLIA_INDEX_ICONS);
 const indexIllustrations = client.initIndex(CONFIG.ALGOLIA_INDEX_ILLUSTRATIONS);
 
-const { navigationTree } = await buildNavigation(docsDir);
+const { navigationTree, existingRoutes } = await buildNavigation(docsDir);
 
 const objects: {
   objectID: number;
@@ -53,7 +53,7 @@ let objectId = 1;
 
 const traverse = async (node, parentNode?) => {
   const articlePath = resolvePath(docsDir, node.filePath);
-  const article = await buildArticle(docsDir, articlePath, node.filePath);
+  const article = await buildArticle(docsDir, articlePath, node.filePath, existingRoutes);
 
   if (node.hasContent && node.title) {
     objects.push({

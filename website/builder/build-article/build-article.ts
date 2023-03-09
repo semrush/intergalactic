@@ -7,7 +7,7 @@ import {
 import {
   resolve as resolvePath,
   dirname as resolveDirname,
-  relative as resolveRealtivePath,
+  relative as resolveRelativePath,
 } from 'path';
 import {
   fsExists,
@@ -90,7 +90,11 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
 
 let uniqueId = 0;
 const mathVersionRegx = /\[(.*)\]/;
-const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
+const normalizeMarkdown = (
+  ast: MarkdownRoot,
+  relativePath: string,
+  existingRoutes: { [routName: string]: boolean },
+) => {
   const imagesUrls: { [id: string]: string } = {};
   const traverseTokens = (token: MarkdownToken | MarkdownRoot) => {
     if (token.type === 'image') {
@@ -106,7 +110,23 @@ const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
     }
     if (token.type === 'link') {
       if (token.url.startsWith('/')) {
-        token.url = (process.env.PUBLIC_PATH || '/') + token.url.substring(1);
+        let path = token.url.substring(1);
+        let route = path;
+        if (route.includes('#')) route = route.substring(0, route.indexOf('#'));
+        if (route.includes('?')) route = route.substring(0, route.indexOf('?'));
+        if (route.endsWith('/')) route = route.substring(0, route.length - 1);
+        if (existingRoutes && !existingRoutes[route]) {
+          console.log({ route, existingRoutes });
+          throw Error(
+            `Link ${path} (${JSON.stringify(
+              token.children,
+            )}) from ${relativePath} references to non-existing page.`,
+          );
+        }
+        if (!path.endsWith('/') && !path.includes('?') && !path.includes('#')) {
+          path += '/';
+        }
+        token.url = (process.env.PUBLIC_PATH || '/') + path;
       }
     }
     if ('children' in token) {
@@ -308,6 +328,7 @@ export const buildArticle = async (
   docsDir: string,
   fullPath: string,
   relativePath: string,
+  existingRoutes?: { [routName: string]: boolean },
 ): Promise<{
   tokens: Token[];
   title: string;
@@ -325,7 +346,7 @@ export const buildArticle = async (
   const metaHeight = text.split('\n').length - textWithoutMeta.split('\n').length;
 
   const markdownAst = parseMarkdown(textWithoutMeta);
-  const { imagesUrls } = normalizeMarkdown(markdownAst, docsDir);
+  const { imagesUrls } = normalizeMarkdown(markdownAst, docsDir, existingRoutes);
 
   const dependencies: string[] = [];
   const legacyHeaderHashes: { [legacyHash: string]: string } = {};
@@ -443,7 +464,8 @@ export const buildArticle = async (
               const subArticle = await buildArticle(
                 docsDir,
                 filePath,
-                resolveRealtivePath(docsDir, filePath),
+                resolveRelativePath(docsDir, filePath),
+                existingRoutes,
               );
 
               dependencies.push(filePath, ...subArticle.dependencies);

@@ -64,6 +64,7 @@ export const buildNavigation = async (docsDir: string) => {
       },
     ]),
   );
+  const existingRoutes: { [route: string]: boolean } = { '': true };
   const navigationRoutes: { [route: string]: number[] } = {};
   const navigationParents: { [route: string]: number[] } = {};
   const navigationPrevSibling: { [route: string]: number[] } = {};
@@ -89,6 +90,7 @@ export const buildNavigation = async (docsDir: string) => {
       };
 
       const chain = [...parentChain, i];
+      existingRoutes[dir] = true;
       navigationRoutes[dir] = chain;
       navigationParents[dir] = parentChain;
 
@@ -105,6 +107,7 @@ export const buildNavigation = async (docsDir: string) => {
   return {
     navigationMap,
     navigationTree,
+    existingRoutes,
     chains: {
       navigationRoutes,
       navigationParents,
