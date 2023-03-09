@@ -10,7 +10,7 @@ tabName: Design
 
 **Checkbox** is a component for selecting one or more values or options.
 
-The Checkbox component is used to select one or more options from a list. It displays whether the option is selected or not. It's commonly used for group settings and allows users to choose any number of options.
+The checkbox component is used to select one or more options from a list. It displays whether the option is selected or not. It's commonly used for group settings and allows users to choose any number of options.
 
 ![selection-scheme](static/check-or-toggle.png)
 
@@ -20,7 +20,7 @@ Multi-selection, which is commonly used in filters, is the exception to the imag
 
 ### Sizes
 
-**Checkbox has two sizes: M and L**. The text label is always positioned to the right of the checkbox.
+Checkbox has two sizes: M and L. The text label is always positioned to the right of the checkbox.
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
@@ -68,8 +68,8 @@ Text label may contain a [Link](/components/link).
 @## Interaction
 
 - Hovering over the "Checkbox and text" area changes the cursor to a pointer.
-- Clicking anywhere on the Checkbox and text area changes the state of the checkbox.
-- If the checkbox text contains a link or pseudo-link, clicking on the link area doesn't change the checkbox state.
+- Clicking anywhere on the "Checkbox and text" area changes the state of the checkbox.
+- If the text label contains a link or pseudo-link, clicking on the link area doesn't change the checkbox state.
 - When the checkbox is disabled, the text and related words should also be "disabled." It's recommended to include a tooltip explaining why the checkbox is disabled.
 
 ### States
