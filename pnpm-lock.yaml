@@ -1045,7 +1045,6 @@ importers:
       '@semcore/typography': ^4
       '@semcore/utils': ^3.31.2
       '@types/react': 18.0.21
-      react-focus-lock: 2.9.1
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -1054,7 +1053,6 @@ importers:
       '@semcore/portal': link:../portal
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
-      react-focus-lock: 2.9.1_@types+react@18.0.21
     devDependencies:
       '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
       '@playwright/test': 1.25.1
@@ -1324,7 +1322,6 @@ importers:
       '@semcore/typography': ^4.0.1
       '@semcore/utils': ^3.31.2
       '@types/react': 18.0.21
-      react-focus-lock: 2.9.1
     dependencies:
       '@semcore/animation': link:../animation
       '@semcore/flex-box': link:../flex-box
@@ -1333,7 +1330,6 @@ importers:
       '@semcore/portal': link:../portal
       '@semcore/typography': link:../typography
       '@semcore/utils': link:../utils
-      react-focus-lock: 2.9.1_@types+react@18.0.21
     devDependencies:
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
       '@types/react': 18.0.21
