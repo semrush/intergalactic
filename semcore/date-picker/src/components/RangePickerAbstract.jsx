@@ -54,6 +54,8 @@ class RangePickerAbstract extends Component {
 
   state = {
     dirtyValue: [],
+    // To remove after removing button trigger
+    defaultInteraction: 'focus',
   };
 
   uncontrolledProps() {
@@ -171,12 +173,19 @@ class RangePickerAbstract extends Component {
     return [];
   }
 
+  setDefaultInteractionToClick = () => {
+    if (this.state.defaultInteraction === 'click') return;
+    this.setState({ defaultInteraction: 'click' });
+  };
+
   getTriggerProps() {
     const { value, size } = this.asProps;
+
     return {
       size,
       empty: !value[0] && !value[1],
       onKeyDown: this.handlerKeyDown,
+      setDefaultInteractionToClick: this.setDefaultInteractionToClick,
     };
   }
 
@@ -327,12 +336,13 @@ class RangePickerAbstract extends Component {
 
   render() {
     const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
+    const { defaultInteraction } = this.state;
 
     return sstyled(styles)(
       <Root
         render={Dropdown}
         use:aria-label={providedAriaLabel}
-        interaction="focus"
+        interaction={defaultInteraction}
         __excludeProps={['onChange', 'value']}
       >
         <Children />
