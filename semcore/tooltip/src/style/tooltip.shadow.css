@@ -26,7 +26,7 @@ STooltip[theme='invert'] {
 
 STooltip[theme='warning'] {
   background-color: var(--intergalactic-tooltip-warning, #ffd7df);
-  border: 1px solid var(--intergalactic-control-primary-critical, #ff4953);
+  border: 1px solid var(--intergalactic-border-critical-active, #d1002f);
 }
 
 STooltip[data-popper-reference-hidden] {
