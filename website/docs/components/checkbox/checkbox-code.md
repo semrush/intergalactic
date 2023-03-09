@@ -4,7 +4,7 @@ title: Example
 
 @## Partial selection
 
-Don't forget to observe the margins between checkboxes, as described in the guide 😊
+Make sure to follow the guide's instructions on checkbox spacing.
 
 @example indeterminate
 
