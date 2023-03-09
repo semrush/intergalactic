@@ -3609,6 +3609,16 @@
 - **Added** Добавлен hook usePreventScroll, блокирующий скролл страницы
 - **Added** Добавилась возможность передавать ref в element для useEventListener.
 
+## [13.13.1] - 2023-03-09
+
+### @semcore/date-picker
+
+- **Fixed** Fixed broken interaction of deprecated button trigger.
+
+### @semcore/tooltip
+
+- **Fixed** Fixed tooltip borders color.
+
 ## [0.0.1] - 2020-07-27
 
 ### Global
