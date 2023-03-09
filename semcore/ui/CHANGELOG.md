@@ -2,11 +2,13 @@
 
 ### @semcore/d3-chart
 
+- **Added** Added footer in d3 Tooltip.
 - **Fixed** Added backward compatibility with react 16.9.
 
 ### @semcore/slider
 
 - **Fixed** Fixed non-enumerable slider with provided minimal value.
+- **Fixed** Fixed component typings.
 
 ## [13.12.0] - 2023-03-06
 
