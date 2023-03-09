@@ -32,6 +32,7 @@ SColumn {
   align-items: flex-start;
   flex-grow: 1;
   font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   position: relative;
@@ -87,8 +88,9 @@ SColumn[sortable] {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
 
-  &:hover SSortWrapper {
-    display: block;
+  &:not([active]):hover SSortWrapper {
+    display: inline-flex;
+    margin-left: -16px;
   }
 }
 
@@ -97,19 +99,8 @@ SColumn[use='primary'][active] {
   width: 100%;
 }
 
-SColumn[active] SSortIcon {
-  position: relative;
-}
-
-SColumn[sortIconFloat] SSortWrapper {
-  width: 0;
-  flex-basis: 0;
-}
-
 SColumn[active] SSortWrapper {
-  display: block;
-  width: 16px;
-  flex-basis: 20px;
+  display: inline-flex;
   margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
@@ -151,29 +142,24 @@ SCell[borderRight] {
 
 SSortIcon {
   fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
-  position: absolute;
-  top: -2px;
-  right: 0;
+  position: relative;
 }
 
 SSortWrapper {
   display: none;
-  flex-shrink: 99999;
   position: relative;
-  flex-basis: 20px;
-  height: 0;
 }
 
-SSortWrapper:before {
+SSortWrapper::before {
   content: '';
   position: absolute;
-  top: -2px;
+  top: 0;
   right: 0;
-  width: 20px;
-  height: 16px;
+  width: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  height: 100%;
 }
 
-SColumn[use='primary'] SSortWrapper:before {
+SColumn[use='primary'] SSortWrapper::before {
   background: linear-gradient(
     270deg,
     var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,

@@ -55,7 +55,7 @@ function CellHeadInner(props, ref) {
   const SSortWrapper = 'div';
   const SCellHeadIconAsc = SortAsc;
   const SCellHeadIconDesc = SortDesc;
-  const { styles, children, sorting, active, align } = props;
+  const { styles, children, sorting, active } = props;
 
   return sstyled(styles)(
     <SCellHead
@@ -63,7 +63,6 @@ function CellHeadInner(props, ref) {
       tag="th"
       noWrap
       tabIndex={sorting && 0}
-      sortIconFloat={align === 'right'}
       {...props}
     >
       <SCellHeadContent>
