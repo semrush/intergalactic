@@ -1,3 +1,13 @@
+## [13.12.1] - 2023-03-09
+
+### @semcore/d3-chart
+
+- **Fixed** Added backward compatibility with react 16.9.
+
+### @semcore/slider
+
+- **Fixed** Fixed non-enumerable slider with provided minimal value.
+
 ## [13.12.0] - 2023-03-06
 
 ### @semcore/d3-chart

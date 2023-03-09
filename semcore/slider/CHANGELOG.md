@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.2] - 2023-03-09
+
+### Fixed
+
+- Fixed non-enumerable slider with provided minimal value.
+
 ## [3.4.1] - 2023-02-21
 
 ### Changed
