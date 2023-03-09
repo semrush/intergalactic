@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.20] - 2023-03-09
+
+### Fixed
+
+- Fixed broken interaction of deprecated button trigger.
+
 ## [3.6.19] - 2023-03-06
 
 ### Changed
