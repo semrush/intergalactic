@@ -131,7 +131,7 @@ SSortWrapper::before {
   position: absolute;
   top: 0;
   right: 0;
-  width: 20px;
+  width: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
   height: 100%;
 }
 

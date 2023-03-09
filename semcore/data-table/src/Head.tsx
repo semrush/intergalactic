@@ -153,12 +153,12 @@ class Head extends Component<AsProps> {
 
     logger.warn(
       sticky,
-      "'sticky' property is deprecated, use '<Sticky/>' wrapper",
+      '\'sticky\' property is deprecated, use \'<Sticky/>\' wrapper',
       this.asProps['data-ui-name'] || Head.displayName,
     );
 
     return sstyled(styles)(
-      <SHeadWrapper sticky={sticky} role="rowgroup">
+      <SHeadWrapper sticky={sticky} role='rowgroup'>
         <ScrollArea
           styles={scrollStyles}
           use:left={`${offsetLeftSum}px`}
@@ -167,7 +167,7 @@ class Head extends Component<AsProps> {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
-            <SHead render={Box} role="row">
+            <SHead render={Box} role='row'>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>
