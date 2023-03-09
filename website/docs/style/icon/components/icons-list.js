@@ -3870,7 +3870,7 @@ const iconsList = {
       tags: ['google', 'analytics', 'гугл', 'аналитика', 'logo', 'лого'],
     },
     {
-      name: 'GoogleBusinessProfile',
+      name: 'GoogleMyBusiness',
       size: ['l', 'm'],
       group: 'Color',
       tags: [
