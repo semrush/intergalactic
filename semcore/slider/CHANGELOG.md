@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Fixed non-enumerable slider with provided minimal value.
+- Fixed component typings.
 
 ## [3.4.1] - 2023-02-21
 
