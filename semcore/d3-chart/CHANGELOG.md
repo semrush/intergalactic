@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.10.0] - 2023-03-07
+
+### Added
+
+- Added footer in `Tooltip`.
+
 ## [2.9.1] - 2023-03-06
 
 ### Fixed
