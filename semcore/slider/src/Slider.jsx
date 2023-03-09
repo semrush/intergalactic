@@ -6,11 +6,11 @@ import reactToText from '@semcore/utils/lib/reactToText';
 
 import style from './style/slider.shadow.css';
 
-function convertValueToPercent(value, min, max) {
+const convertValueToPercent = (value, min, max) => {
   if (value > max) return 100;
   if (value < min) return 0;
   return ((value - min) / (max - min)) * 100;
-}
+};
 
 class SliderRoot extends Component {
   static displayName = 'Slider';
@@ -119,8 +119,8 @@ class SliderRoot extends Component {
       const relativeValue = newLeft / sliderSize;
       const relativeStep = step / (max - min);
       const countSteps = Math.round(relativeValue / relativeStep);
-      const NumericValue = countSteps * step + min;
-      const resolvedValue = options ? options[countSteps * step]?.value : NumericValue;
+      const numericValue = countSteps * step + min;
+      const resolvedValue = options ? options[countSteps * step]?.value : numericValue;
 
       this.handlers.value(resolvedValue, event);
     }
@@ -148,8 +148,9 @@ class SliderRoot extends Component {
 
   getNumericValue = () => {
     const { value, options, min, max, defaultValue } = this.asProps;
-    const resolvedIndex = options ? options.findIndex((option) => option.value === value) : value;
-    if (options && resolvedIndex === -1) return defaultValue;
+    if (!options) return value;
+    const resolvedIndex = options.findIndex((option) => option.value === value);
+    if (resolvedIndex === -1) return defaultValue;
     if (resolvedIndex < min) return min;
     if (min !== undefined) {
       if (resolvedIndex + min > max) return max;
@@ -175,8 +176,8 @@ class SliderRoot extends Component {
 
     const defaultMin = options ? 0 : undefined;
     const defaultMax = options ? options.length : undefined;
-    const NumericValue = this.getNumericValue();
-    const label = this.resolveLabel(NumericValue);
+    const numericValue = this.getNumericValue();
+    const label = this.resolveLabel(numericValue);
 
     return sstyled(styles)(
       <>
@@ -194,7 +195,7 @@ class SliderRoot extends Component {
           aria-valuemin={min ?? defaultMin}
           aria-valuemax={max ?? defaultMax}
           aria-valuetext={label}
-          aria-valuenow={NumericValue}
+          aria-valuenow={numericValue}
         >
           <Children />
           <SInput tag="input" type="hidden" value={value ?? ''} name={name} aria-hidden />
