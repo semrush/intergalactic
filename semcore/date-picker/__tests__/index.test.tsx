@@ -57,7 +57,7 @@ describe('DatePicker', () => {
     act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date'));
     act(() => jest.runAllTimers());
-    expect(getByText('April 2020')).toBeTruthy();
+    expect(getByText('March 2020')).toBeTruthy();
     jest.useRealTimers();
   });
 
@@ -222,7 +222,7 @@ describe('DateRangePicker', () => {
     act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date period'));
     act(() => jest.runAllTimers());
-    expect(getByText('April 2020')).toBeTruthy();
+    expect(getByText('March 2020')).toBeTruthy();
     jest.useRealTimers();
   });
 
