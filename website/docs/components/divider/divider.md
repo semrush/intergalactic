@@ -8,20 +8,20 @@ tabName: Design
 
 @## Description
 
-**Divider** is a component for separating content/components visually and in a semantic way.
+**Divider** is a component that visually and semantically separates content or components.
 
 @## Types
 
 Divider has two types: `primary` and `secondary`. Secondary type helps to separate and show the connection between two parts of the content.
 
-|        | Appearance                           | Styles                                      |
+| Type       | Appearance                           | Styles                                      |
 | ------ | ------------------------------------ | ------------------------------------------- |
-| solid  | ![solid-divider](static/solid.png)   | `border: 1px solid var(--border-primary);`  |
-| dashed | ![dashed-divider](static/dashed.png) | `border: 1px dashed var(--border-primary);` |
+| `primary`  | ![solid-divider](static/solid.png)   | `border: 1px solid var(--border-primary);`  |
+| `secondary` | ![dashed-divider](static/dashed.png) | `border: 1px dashed var(--border-primary);` |
 
 @## Orientation
 
-|            | Example                                         |
+| Orientation           | Example                                         |
 | ---------- | ----------------------------------------------- |
 | horizontal | ![horizontal-divider](static/default-theme.png) |
 | vertical   | ![vertical-divider](static/solid.png)           |
@@ -30,19 +30,19 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 
 The divider can be used either on a light or dark/colored background.
 
-|         | Appearance                                   | Styles                                            |
+| Theme        | Appearance                                   | Styles                                            |
 | ------- | -------------------------------------------- | ------------------------------------------------- |
 | default | ![default-divider](static/default-theme.png) | `border: 1px solid var(--border-primary);`        |
 | invert  | ![invert-divider](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert);` |
 
 @## Use in UX/UI
 
-The divider helps distinguish parts of content whether they are different or similar in meaning.
+The divider separates content visually and semantically, whether it is different or similar in meaning.
 
 | Case                                                                                                                    | Example                          |
 | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Contact infromation needs to be visually separeted from the form                                                        | ![divider-use](static/use-1.png) |
-| Information about report's data should be visually separated from the form, but should save it's connection to the form | ![divider-use](static/use-2.png) |
+| Contact information needs to be visually separated from the form.                                                        | ![divider-use](static/use-1.png) |
+| Separate information about a report's data visually from the form, but maintain its connection to the form. | ![divider-use](static/use-2.png) |
 
 @page divider-a11y
 @page divider-api
