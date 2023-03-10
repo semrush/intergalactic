@@ -97,7 +97,7 @@ SCalendarUnit[today]SCalendarUnit[endSelected] {
 }
 
 SCalendarUnit[selected] {
-  background: var(--intergalactic-date-picker-cell-active, #2bb3ff);
+  background: var(--intergalactic-date-picker-cell-range, #c4e5fe);
   border-radius: 0;
   color: var(--intergalactic-text-primary, #191b23);
 
