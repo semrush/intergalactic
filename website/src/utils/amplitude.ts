@@ -7,7 +7,6 @@ export const initAmplitude = () => {
   const language = window.navigator.language;
 
   amplitudeHttp.init(apiKey).sendUserProperties({
-    browser: `${systemInfo.browser.name} ${systemInfo.browser.version}`,
     OS: `${systemInfo.os.name} ${systemInfo.os.versionName} v${systemInfo.os.version}`,
     platform: `${systemInfo.platform.vendor} ${systemInfo.platform.type}`,
     language,
