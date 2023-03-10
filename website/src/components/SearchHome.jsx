@@ -215,7 +215,7 @@ const SuggestSearch = withRouter(connectAutoComplete(connectStateResults(Search)
 function SearchHome(props) {
   return (
     <InstantSearch searchClient={searchClient} indexName={CONFIG.ALGOLIA_INDEX}>
-      <Configure userToken={userToken} />
+      {userToken && <Configure userToken={userToken} />}
       <SuggestSearch {...props} visible={true} />
     </InstantSearch>
   );

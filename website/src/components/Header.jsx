@@ -64,11 +64,7 @@ function Header() {
           wrapperClassName={cx(styles.searchWrapper, !searchVisible && styles.mobileSearchHidden)}
           placeholder="What brings you here, Sole Survivor?"
           onItemSelect={() => setSearchVisible(false)}
-          onFocus={() =>
-            logEvent('search:click', {
-              group: 'int_main',
-            })
-          }
+          onFocus={() => logEvent('search:click')}
         />
       </div>
       <div className={styles.searchIcon}>
