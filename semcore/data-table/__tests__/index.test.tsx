@@ -176,22 +176,38 @@ describe('DataTable', () => {
   });
 
   test('Sorting', async () => {
-    const component = (
-      <div style={{ width: 800 }}>
-        <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
-          <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" sortable id="row" />
-            <DataTable.Column name="cpc" children="CPC" sortable />
-            <DataTable.Column name="vol" children="Vol." sortable />
-          </DataTable.Head>
-          <DataTable.Body />
-        </DataTable>
-      </div>
-    );
+    const component = function(justifyContent) {
+      return (
+        <div style={{ width: 800 }}>
+          <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
+            <DataTable.Head>
+              <DataTable.Column name="keyword" children="Keyword" />
+              <DataTable.Column name="kd" children="KD,%" justifyContent={justifyContent} sortable id="row" />
+              <DataTable.Column name="cpc" children="CPC" sortable />
+              <DataTable.Column name="vol" children="Vol." sortable />
+            </DataTable.Head>
+            <DataTable.Body />
+          </DataTable>
+        </div>
+      );
+    }
 
     expect(
-      await snapshot(component, {
+      await snapshot(component('flex-start'), {
+        actions: {
+          hover: '#row',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component('center'), {
+        actions: {
+          hover: '#row',
+        },
+      }),
+    ).toMatchImageSnapshot();
+    expect(
+      await snapshot(component('flex-end'), {
         actions: {
           hover: '#row',
         },
