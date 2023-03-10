@@ -1,8 +1,7 @@
 {
   "./website/src/utils/default-theme": [
     "--intergalactic-control-lift-me-up",
-    "--intergalactic-control-lift-me-up-hover",
-    "--intergalactic-control-lift-me-up-active",
+    "--intergalactic-control-lift-me-up-hover-active",
     "--intergalactic-box-shadow-top-menu",
     "--intergalactic-box-shadow-principles"
   ]

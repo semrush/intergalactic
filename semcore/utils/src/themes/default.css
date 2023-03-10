@@ -741,7 +741,7 @@
   /* Border of the dot that appears on the chart grid when hovered over. */
   --intergalactic-chart-grid-border: #ffffff;
   /* Background color for the clickable date on the X-axis of the chart grid. */
-  --intergalactic-chart-x-axis-accent-period-active: #8a8e9b;
+  --intergalactic-chart-x-axis-accent-period-active: #6c6e79;
   /* Background color for the "Start tracking" date on the X-axis of the chart grid. */
   --intergalactic-chart-x-axis-accent-data-start-tracking: rgba(0, 159, 129, 0.2);
   /* Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) */
