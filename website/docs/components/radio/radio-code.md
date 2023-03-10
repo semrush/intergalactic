@@ -3,6 +3,6 @@ title: Example
 fileSource: radio
 ---
 
-@## Example of working with 'RadioGroup'
+@## RadioGroup example
 
 @example group
