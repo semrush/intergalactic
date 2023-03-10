@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.13.3] - 2023-03-09
-
-### Fixed
-
-- Fixed `GoogleMyBusiness` icon.
-
 ## [3.13.2] - 2023-03-02
 
 ### Removed
