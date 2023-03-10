@@ -56,11 +56,11 @@ const useFocusBorders = (disabled) => {
   }, [id, disabled]);
 };
 
-export const usePopupFocusLock = (
-  popupRef: React.RefObject<HTMLElement>,
+export const useFocusLock = (
+  trapRef: React.RefObject<HTMLElement>,
   autoFocus: boolean,
-  returnFocusRef: React.RefObject<HTMLElement> | null | 'auto',
-  disabled: boolean,
+  returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
+  disabled?: boolean,
 ) => {
   useFocusBorders(disabled);
 
@@ -71,46 +71,49 @@ export const usePopupFocusLock = (
     if (event.relatedTarget && !autoTriggerRef.current)
       autoTriggerRef.current = event.relatedTarget;
     Promise.resolve().then(() => {
-      if (!popupRef.current) return;
-      if (focusInside(popupRef.current)) return;
+      if (!trapRef.current) return;
+      if (focusInside(trapRef.current)) return;
 
-      moveFocusInside(popupRef.current, event.target);
+      moveFocusInside(trapRef.current, event.target);
     });
   }, []);
-  const handleMouseDown = React.useCallback(() => (lastUserInteractionRef.current = 'mouse'), []);
-  const handleKeyDown = React.useCallback(() => (lastUserInteractionRef.current = 'keyboard'), []);
+  const handleMouseEvent = React.useCallback(() => (lastUserInteractionRef.current = 'mouse'), []);
+  const handleKeyboardEvent = React.useCallback(
+    () => (lastUserInteractionRef.current = 'keyboard'),
+    [],
+  );
   const returnFocus = React.useCallback(() => {
     if (lastUserInteractionRef.current === 'mouse') return;
-    if (typeof returnFocusRef === 'object' && returnFocusRef?.current)
-      moveFocusInside(returnFocusRef?.current, popupRef.current!);
-    if (returnFocusRef === 'auto' && autoTriggerRef.current) {
-      moveFocusInside(autoTriggerRef.current, popupRef.current!);
+    if (typeof returnFocusTo === 'object' && returnFocusTo?.current)
+      moveFocusInside(returnFocusTo?.current, trapRef.current!);
+    if (returnFocusTo === 'auto' && autoTriggerRef.current) {
+      moveFocusInside(autoTriggerRef.current, trapRef.current!);
     }
-  }, []);
+  }, [returnFocusTo]);
   React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM()) return;
-    if (!popupRef.current) return;
-    if (getFocusableIn(popupRef.current).length === 0) return;
+    if (!trapRef.current) return;
+    if (getFocusableIn(trapRef.current).length === 0) return;
 
     document.body.addEventListener('focusin', handleFocusIn);
-    document.body.addEventListener('mousedown', handleMouseDown);
-    document.body.addEventListener('touchstart', handleMouseDown);
-    document.body.addEventListener('keydown', handleKeyDown);
+    document.body.addEventListener('mousedown', handleMouseEvent);
+    document.body.addEventListener('touchstart', handleMouseEvent);
+    document.body.addEventListener('keydown', handleKeyboardEvent);
 
     if (autoFocus)
       moveFocusInside(
-        popupRef.current,
-        typeof returnFocusRef === 'object' ? returnFocusRef?.current! : document.body,
+        trapRef.current,
+        typeof returnFocusTo === 'object' ? returnFocusTo?.current! : document.body,
       );
 
     return () => {
       document.body.removeEventListener('focusin', handleFocusIn);
-      document.body.removeEventListener('mousedown', handleMouseDown);
-      document.body.removeEventListener('touchstart', handleMouseDown);
-      document.body.removeEventListener('keydown', handleKeyDown);
+      document.body.removeEventListener('mousedown', handleMouseEvent);
+      document.body.removeEventListener('touchstart', handleMouseEvent);
+      document.body.removeEventListener('keydown', handleKeyboardEvent);
       returnFocus();
       autoTriggerRef.current = null;
     };
-  }, [disabled, autoFocus]);
+  }, [disabled, autoFocus, returnFocusTo, returnFocus]);
 };

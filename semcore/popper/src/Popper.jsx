@@ -8,7 +8,7 @@ import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
 import { setRef } from '@semcore/utils/lib/ref';
-import { usePopupFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import logger from '@semcore/utils/lib/logger';
@@ -439,7 +439,7 @@ function PopperPopper(props) {
   // https://github.com/facebook/react/issues/11387
   const handlerStopPropagation = useCallback((e) => e.stopPropagation(), []);
 
-  usePopupFocusLock(
+  useFocusLock(
     ref,
     autoFocus,
     interaction === 'click' ? triggerRef : null,

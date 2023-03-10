@@ -15,7 +15,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { Text } from '@semcore/typography';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import { usePopupFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -122,7 +122,7 @@ function Window(props) {
   const { Children, styles, visible, closable, duration } = props;
   const windowRef = useRef(null);
 
-  usePopupFocusLock(windowRef, true, 'auto', !visible);
+  useFocusLock(windowRef, true, 'auto', !visible);
 
   return sstyled(styles)(
     <SWindow

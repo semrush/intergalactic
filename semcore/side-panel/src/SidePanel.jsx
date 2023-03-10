@@ -12,7 +12,7 @@ import usePreventScroll from '@semcore/utils/lib/use/usePreventScroll';
 import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
-import { usePopupFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/side-panel.shadow.css';
 
@@ -138,7 +138,7 @@ function Panel(props) {
 
   const sidebarRef = useRef(null);
 
-  usePopupFocusLock(sidebarRef, true, 'auto', !visible);
+  useFocusLock(sidebarRef, true, 'auto', !visible);
 
   return sstyled(styles)(
     <>
