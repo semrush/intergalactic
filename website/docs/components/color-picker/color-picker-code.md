@@ -4,30 +4,33 @@ title: Example
 
 @## PaletteManager
 
-Using PaletteManager you can add custom colors by entering color in hexadecimal format in input and after this clicking on check icon inside input or pressing Enter on keyboard. In addition, you can remove custom colors by clicking on close icon on each item.
+PaletteManager lets you add your own colors by typing in the hexadecimal code and clicking the check icon or pressing Enter. To remove custom colors, simply click the `Close` icon on each item.
 
 @example defaultExtended
 
-@## Validation input
+@## Input validation
 
-Let's say you want to disable the ability to enter a white color. You can use your own validation function for entered value in input instead of default validation function. For this purpose please use `onChange` prop from `PaletteManager.InputColor` like in the next example.
+To prevent users from entering white as a color option, replace the default validation function in `PaletteManager.InputColor` with your own custom validation function using the `onChange` prop. Here is an example:
 
 @example inputValidation
 
 @## Custom trigger
 
-You can customize all parts of ColorPicker by yourself including trigger.
+You have complete control over the appearance of ColorPicker, including the trigger.
 
 @example customTrigger
 
-@## Ways how to use
+@## Several ways to use component
 
-There are several ways how you can add colors. First one is using prop `colors` on `ColorPicker.Colors` for default colors and on `PaletteManager` for custom colors which you can edit (add and remove). The second way is using `ColorPicker.Item` and `PaletteManager.Item`. By the second way you can use your own components instead of default items. Next two examples are the same.
+There are multiple ways to add colors in ColorPicker;
+
+- The first method is to use the `colors` prop in `ColorPicker.Colors` for default colors, and in `PaletteManager` for customizable colors that can be added or removed.
+- The second method is to use `ColorPicker.Item` and `PaletteManager.Item`, which allows for the use of custom components instead of default items. The next two examples are identical.
 
 @example howToUse
 
 @## Items with tooltips
 
-You can use default items with other components. For example, with `Tooltip`.
+You can use default items with other components. For example, with [Tooltip](/components/tooltip).
 
 @example withTooltips
