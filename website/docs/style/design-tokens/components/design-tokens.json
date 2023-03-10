@@ -1223,14 +1223,7 @@
     "components": []
   },
   {
-    "name": "--intergalactic-control-lift-me-up-hover",
-    "type": "color",
-    "rawValue": "{gray.200}",
-    "computedValue": "#c4c7cf",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-control-lift-me-up-active",
+    "name": "--intergalactic-control-lift-me-up-hover-active",
     "type": "color",
     "rawValue": "{gray.200}",
     "computedValue": "#c4c7cf",
@@ -3815,8 +3808,8 @@
   {
     "name": "--intergalactic-chart-x-axis-accent-period-active",
     "type": "color",
-    "rawValue": "{gray.400}",
-    "computedValue": "#8a8e9b",
+    "rawValue": "{gray.500}",
+    "computedValue": "#6c6e79",
     "description": "Background color for the clickable date on the X-axis of the chart grid.",
     "components": []
   },
