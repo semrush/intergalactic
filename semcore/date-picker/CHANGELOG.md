@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.21] - 2023-03-10
+
+### Fixed
+
+- Fixed design token for selected period
+
 ## [3.6.20] - 2023-03-09
 
 ### Fixed
