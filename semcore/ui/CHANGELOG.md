@@ -1,4 +1,10 @@
-## [13.12.1] - 2023-03-09
+## [13.13.1] - 2023-03-10
+
+### @semcore/tooltip
+
+- **Fixed** Fixed tooltip borders color.
+
+## [13.13.0] - 2023-03-09
 
 ### @semcore/d3-chart
 
@@ -3608,16 +3614,6 @@
 - **Added** Добавлена функция brightness в color для вычисления контраста
 - **Added** Добавлен hook usePreventScroll, блокирующий скролл страницы
 - **Added** Добавилась возможность передавать ref в element для useEventListener.
-
-## [13.13.1] - 2023-03-09
-
-### @semcore/date-picker
-
-- **Fixed** Fixed broken interaction of deprecated button trigger.
-
-### @semcore/tooltip
-
-- **Fixed** Fixed tooltip borders color.
 
 ## [0.0.1] - 2020-07-27
 
