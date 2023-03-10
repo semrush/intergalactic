@@ -59,9 +59,13 @@ const amplitudeHttp = {
     this.deviceId = getCookie(AMPLITUDE_COOKIE_NAME);
     this.sessionId = Date.now();
 
+    const theme = 'original';
+
     if (getIsConsented(this.getExternalConsentStatusCb)) {
       this.setDeviceId();
     }
+
+    this.logEvent('init_app', { theme });
 
     return this;
   },

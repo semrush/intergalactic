@@ -9,7 +9,7 @@ import formatTextStyles from './FormatText.module.css';
 import styles from './ChangelogByComponent.module.css';
 
 const ChangelogByComponent = ({ blocks }) => {
-  return blocks.map(({ title, components, id }) => (
+  return blocks.map(({ title, components, id, route }) => (
     <span key={title} className={formatTextStyles.formatText}>
       <HeadingLink
         level={2}
@@ -19,6 +19,8 @@ const ChangelogByComponent = ({ blocks }) => {
           lineHeight: '110%',
           margin: '32px 0 16px 0',
         }}
+        route={route}
+        title={title}
       >
         <Text bold>{title}</Text>
       </HeadingLink>
