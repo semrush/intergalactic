@@ -118,7 +118,7 @@ const formatValuesList = (
 
     const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
 
-    if (value === label) return value;
+    if (String(value) === String(label)) return value;
 
     return intl.formatMessage({ id: 'value-labeled' }, { label, value });
   });
@@ -314,7 +314,7 @@ export const serialize = (
     );
 
     return sumamry;
-  } else if (dataType === 'grouped-values') {
+  } else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
     const groupInsights = insights as ComparisonNode[];
     const valueCounts = groupInsights.map((group) => group.values.length);
     const minValuesCount = Math.min(...valueCounts);

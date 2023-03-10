@@ -155,6 +155,8 @@ class RadarRoot extends Component {
     const { Children, style, size, data, offset } = this.asProps;
     const [width, height] = size;
 
+    this.asProps.dataHintsHandler.establishDataType('indexed-groups');
+
     let dataKey;
     React.Children.toArray(getOriginChildren(Children)).forEach((child) => {
       if (React.isValidElement(child) && child.type === Radar.Axis) {
@@ -201,12 +203,14 @@ class PolygonRoot extends Component {
   };
 
   getDotsProps() {
-    const { data, scale, color, transparent } = this.asProps;
+    const { data, scale, color, transparent, dataKey, dataHintsHandler } = this.asProps;
     return {
       data,
       scale,
       color,
       transparent,
+      categoryKey: dataKey,
+      dataHintsHandler,
     };
   }
 
@@ -234,10 +238,11 @@ function PolygonLine(props) {
 }
 
 function PolygonDots(props) {
-  const { Element: SPolygonDot, styles, color, data, scale, transparent } = props;
+  const { Element: SPolygonDot, styles, color, data, scale, transparent, categoryKey } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
     const radius = scale(value);
+    props.dataHintsHandler.describeGroupedValues(categoryKey, `${categoryKey}.${i}`);
     const [cx, cy] = getRadianPosition(i, radius, data.length);
     return sstyled(styles)(
       <SPolygonDot
@@ -371,6 +376,8 @@ function AxisLabels(props) {
     const [x, y] = getRadianPosition(i, radius, categories.length);
     const [xDirection, yDirection] = getLabelDirection(i, categories.length);
     if (typeof category === 'string') {
+      props.dataHintsHandler.labelKey('value', i, category);
+
       const lines = category.split('\n');
       return sstyled(styles)(
         <SAxisLabel
