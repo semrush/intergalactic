@@ -151,8 +151,14 @@ type ComponentChangelogBlock = {
   changes: { type: string; text: string }[];
   id: string;
   level: number;
+  route: string;
 };
-const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: number) => {
+const makeChangelog = (
+  markdownAst: MarkdownRoot,
+  fullPath: string,
+  metaHeight: number,
+  route: string,
+) => {
   const blocks: ComponentChangelogBlock[] = [];
   let currentBlock: ComponentChangelogBlock | null = null;
   let currentType: string = 'Unknown';
@@ -169,6 +175,7 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
         changes: [],
         id,
         level: token.depth,
+        route,
       };
       blocks.push(currentBlock);
     } else if (currentBlock) {
@@ -208,12 +215,14 @@ type GlobalChangelogBlock = {
   }[];
   id: string;
   level: number;
+  route: string;
 };
 
 const makeChangelogByComponent = (
   markdownAst: MarkdownRoot,
   fullPath: string,
   metaHeight: number,
+  route: string,
 ) => {
   const blocks: GlobalChangelogBlock[] = [];
   let currentBlock: GlobalChangelogBlock | null = null;
@@ -231,6 +240,7 @@ const makeChangelogByComponent = (
         components: [],
         id,
         level: token.depth,
+        route,
       };
       blocks.push(currentBlock);
     } else if (currentBlock) {
@@ -318,6 +328,7 @@ type Token =
       type: 'typescriptDeclaration';
       declaration: unknown;
       dependencies: { [dependantName: string]: unknown };
+      route: string;
     }
   | {
       type: 'text';
@@ -544,7 +555,8 @@ export const buildArticle = async (
               dependencies.push(filePath);
 
               if (componentName === 'ui') {
-                const blocks = makeChangelogByComponent(markdownAst, fullPath, metaHeight);
+                const route = resolveDirname(relativePath);
+                const blocks = makeChangelogByComponent(markdownAst, fullPath, metaHeight, route);
                 blocks.forEach((block) => {
                   const tokenHead = {
                     type: 'heading',
@@ -560,7 +572,8 @@ export const buildArticle = async (
                   blocks,
                 };
               } else {
-                const blocks = makeChangelog(markdownAst, fullPath, metaHeight);
+                const route = resolveDirname(relativePath);
+                const blocks = makeChangelog(markdownAst, fullPath, metaHeight, route);
                 blocks.forEach((block) => {
                   const tokenHead = {
                     type: 'heading',
@@ -586,6 +599,7 @@ export const buildArticle = async (
                 type: 'typescriptDeclaration',
                 declaration: typing.declaration,
                 dependencies: typing.dependencies,
+                route: resolveDirname(relativePath),
               };
             }
             if (text.startsWith('@table-caption ')) {

@@ -34,8 +34,19 @@ function VersionLink({ to, version, onClick }) {
 }
 
 export default function (props) {
-  const { title, category, fileSource, sourcePath, beta, version, changelogUrl, deprecated } =
-    props;
+  const {
+    title,
+    category,
+    fileSource,
+    sourcePath,
+    beta,
+    version,
+    changelogUrl,
+    deprecated,
+    route,
+  } = props;
+
+  const [group, page] = route.split('/');
 
   return (
     <Box mb={8}>
@@ -50,9 +61,9 @@ export default function (props) {
               version={version}
               onClick={() =>
                 logEvent('version:click', {
-                  group: 'int_comp',
+                  group,
+                  page,
                   label: version,
-                  page: title,
                 })
               }
             />
@@ -78,8 +89,8 @@ export default function (props) {
             href="https://www.figma.com/@semrush"
             onClick={() =>
               logEvent('figma_btn:click', {
-                group: 'int_charts',
-                page: title,
+                group,
+                page,
               })
             }
           >
@@ -98,8 +109,8 @@ export default function (props) {
                 href={`https://www.npmjs.com/package/@semcore/ui`}
                 onClick={() =>
                   logEvent('npm_btn:click', {
-                    group: 'int_table',
-                    page: title,
+                    group,
+                    page,
                   })
                 }
               >
@@ -117,8 +128,8 @@ export default function (props) {
                 href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
                 onClick={() =>
                   logEvent('github_btn:click', {
-                    group: 'int_filter',
-                    page: title,
+                    group,
+                    page,
                   })
                 }
               >
@@ -142,8 +153,8 @@ export default function (props) {
                 href={`https://github.com/semrush/intergalactic/edit/master/website/docs/${sourcePath}`}
                 onClick={() =>
                   logEvent('edit_page_btn:click', {
-                    group: 'int_filter',
-                    page: title,
+                    group,
+                    page,
                   })
                 }
               >

@@ -6,10 +6,13 @@ import WarningIcon from '@semcore/icon/Warning/m';
 import { SideBarContext } from './SideBar/SideBarWrapper';
 import styles from './TypescriptDeclaration.module.css';
 import scrollToHash from '../utils/scrollToHash';
+import { logEvent } from '../utils/amplitude';
 
-const PropertyName = ({ name, parentName, children }) => {
+const PropertyName = ({ name, parentName, children, route = '' }) => {
   const id = `${parentName}.${name}`;
+  const [group, page] = route.split('/');
   const handleClick = (e) => {
+    logEvent('title:click', { group, page, tab: 'api', name });
     scrollToHash(id);
   };
   return (
@@ -20,8 +23,9 @@ const PropertyName = ({ name, parentName, children }) => {
   );
 };
 
-const TypeView = ({ typeParts, dependencies }) => {
+const TypeView = ({ typeParts, dependencies, route = '' }) => {
   const { inspectTyping } = React.useContext(SideBarContext);
+  const [group, page] = route.split('/');
   return (
     <code className={styles.typeText}>
       {typeParts.map((part, index) => {
@@ -29,7 +33,11 @@ const TypeView = ({ typeParts, dependencies }) => {
         if (typeof part === 'object') {
           return (
             <a
-              onClick={inspectTyping(dependencies[part.referenceTo])}
+              onClick={() => {
+                (group || page) &&
+                  logEvent('props:click', { group, page, tab: 'api', label: part.displayText });
+                inspectTyping(dependencies[part.referenceTo])();
+              }}
               key={`${part}_${index}`}
               className={styles.interactiveTypeReference}
             >
@@ -46,12 +54,18 @@ export const TypescriptDeclarationView = ({
   namePrefix,
   declaration: { entity, name, inheritance, properties, type },
   dependencies,
+  route,
 }) => {
   const inheritanceList = [];
   for (let i = 0; i < inheritance?.length; i++) {
     if (i !== 0) inheritanceList.push(', ');
     inheritanceList.push(
-      <TypeView key={i} typeParts={inheritance.slice(i, i + 1)} dependencies={dependencies} />,
+      <TypeView
+        key={i}
+        typeParts={inheritance.slice(i, i + 1)}
+        dependencies={dependencies}
+        route={route}
+      />,
     );
   }
   return (
@@ -89,7 +103,7 @@ export const TypescriptDeclarationView = ({
               return (
                 <tr key={i}>
                   <td className={styles.propertyCell}>
-                    <PropertyName parentName={name} name={property.name}>
+                    <PropertyName parentName={name} name={property.name} route={route}>
                       {property.name}
                       {!property.isOptional && <span className={styles.requiredMark}>*</span>}
                     </PropertyName>
