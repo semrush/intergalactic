@@ -9,6 +9,7 @@ import createComponent, {
   Component,
   IComponentProps,
   CORE_COMPONENT,
+  css,
 } from '../src';
 
 /*
@@ -730,6 +731,43 @@ describe('Props from context', () => {
       </Test>,
     );
     expect(getByTestId('value').id).toBe('test');
+  });
+
+  test('should support context styles and component styles at the same time', () => {
+    const stylesRoot = css`
+      .STest {
+        background: red;
+      }
+    `;
+    const stylesChildren = css`
+      .STest {
+        background: green;
+      }
+    `;
+
+    class TestRoot extends Component {
+      static style = stylesRoot;
+      render() {
+        const { Root } = this;
+        const STest = Root;
+        const { children } = this.props;
+        return (
+          <>
+            <STest render="div">test</STest>
+            {children}
+          </>
+        );
+      }
+    }
+    const Test = createComponent(TestRoot) as any;
+    const { getByTestId } = render(
+      <Test data-testid="root">
+        <Test data-testid="children" styles={stylesChildren} />
+      </Test>,
+    );
+
+    expect(getByTestId('root').style).toMatchObject({ background: 'red' });
+    expect(getByTestId('children').style).toMatchObject({ background: 'green' });
   });
 });
 
