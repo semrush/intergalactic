@@ -2687,6 +2687,7 @@
     "components": [
       "carousel",
       "color-picker",
+      "data-table",
       "date-picker",
       "drag-and-drop",
       "errors",
