@@ -93,7 +93,7 @@ class Head extends Component<AsProps> {
         resizable={column.resizable}
         sortable={column.sortable}
         // sortIconReserv={column.props.justifyContent?.includes('center')}
-        sortIconReserv={column.sortIconReserv}
+        // sortIconReserv={column.sortIconReserv}
         borderLeft={isGroup ? false : column.borderLeft}
         borderRight={isGroup ? false : column.borderRight}
         active={isGroup ? false : column.active}

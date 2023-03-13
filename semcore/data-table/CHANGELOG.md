@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Changed the presentation of the sort icon. Now she always runs into the text.
+- Changed the presentation of the sort icon. Now it always runs into the text.
 
 ## [3.7.21] - 2023-03-13
 

@@ -43,6 +43,7 @@ export type Column<
     children: React.ReactNode[];
     resizable: boolean;
     sortable: boolean | SortDirection;
+    // sortIconReserv
     sortDirection: SortDirection;
     vBorders: boolean;
     borderLeft: boolean;

@@ -108,7 +108,7 @@ SCellHead[sorting] {
 
   &:not([active]):hover SSortWrapper {
     display: inline-flex;
-    margin-left: -16px;
+    margin-left: calc(-1 * var(--intergalactic-spacing-4x, 16px));
   }
 }
 
@@ -131,7 +131,7 @@ SSortWrapper::before {
   position: absolute;
   top: 0;
   right: 0;
-  width: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  width: 20px;
   height: 100%;
 }
 
