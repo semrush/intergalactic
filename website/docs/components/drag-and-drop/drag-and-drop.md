@@ -4,26 +4,24 @@ fileSource: drag-and-drop
 tabName: Design
 ---
 
-<!-- All styles for dark background are hidden to comments because they need to be a separate theme -->
+<!-- All styles for dark background are hidden to comments, because they need to be a separate theme -->
 
 @## Description
 
-**Drag & drop** is a component for the elements dragging in the interface (change their order and sometimes their properties).
+**Drag and drop** is a component that allows user to move elements within the interface, changing their order and sometimes their properties.
 
-> Frequent case of using the drag & drop in our interface is dropdowns with the order of columns in the table (the so-called **Table settings** controls).
+> One common use case is reordering columns in a table, using dropdowns known as "Table settings controls".
 
-The component is meant for imitating physical dragging of objects, so the following is the most important for it:
+The component imitates the physical dragging of objects, and two essential considerations for this are:
 
-- It should be obvious, which elements or parts of the interface you may drag and where.
-- It should be visually shown during dragging, that the element is dragged and where it can be dragged.
+- Clearly indicating which interface elements can be dragged and where.
+- Providing visual cues during dragging to show that the element is being moved and where it can be placed.
 
 ### Component composition
 
-`DragAndDrop` is a container wrapping the required area for drag & drop operation.
-`DropZone` is the interface area, where the element can be dropped.
-`Draggable` is the element you may drag.
+`DnD` is a container that wraps the necessary area for drag and drop functionality. The `DropZone` is where the element can be dropped, and the `Draggable` is the element you can move.
 
-![scheme](static/dragdrop-scheme.png)
+![](static/dragdrop-scheme.png)
 
 @## Appearance
 
@@ -31,31 +29,29 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 ### Icon for identification of the possibility to drag the object
 
-`MoveAlt` icon is recommended to be shown upon hover over the element which can be dragged. For icon color use `--icon-secondary-neutral` token.
+When hovering over a draggable element, it's recommended to display the `MoveAlt` icon, which should use the `--icon-secondary-neutral` token for its color.
 
-![drag icon](static/drag-hover.png)
+![](static/drag-hover.png)
 
 <!-- |                      | Appearance example                         | Token              |
 | -------------------- | ------------------------------------------ | ------------------- |
-| For light background | ![drag icon](static/drag-hover.png)        | `fill: var(--icon-secondary-neutral);` |
-| For dark background  | ![drag icon](static/drag-hover-invert.png) | `fill: var(--icon-secondary-neutral);` | -->
+| For light background | ![](static/drag-hover.png)        | `fill: var(--icon-secondary-neutral);` |
+| For dark background  | ![](static/drag-hover-invert.png) | `fill: var(--icon-secondary-neutral);` | -->
 
 ### Shadow of the object which can be dragged
 
 `--box-shadow-dnd` token is used for the shadow.
 
-![dragging example](static/dragging-dnd.png)
+![](static/dragging.png)
 
 <!-- |                      | Appearance example                              | Styles                                            |
 | -------------------- | ----------------------------------------------- | ------------------------------------------------- |
-| For light background | ![dragging example](static/dragging-dnd.png)    | `box-shadow: 0 2px 5px 0 rgba(gray-80, .16);`     |
-| For dark background  | ![dragging example](static/dragging-invert.png) | `box-shadow: 0 2px 5px 0 rgba(138,142,155, .25);` | -->
+| For light background | ![](static/dragging.png)    | `box-shadow: 0 2px 5px 0 rgba(gray-80, .16);`     |
+| For dark background  | ![](static/dragging-invert.png) | `box-shadow: 0 2px 5px 0 rgba(138,142,155, .25);` | -->
 
 @## Area for dragging
 
-- It is the area you may grab with a long click of the mouse or using the keyboard, and drag a large object (card, table line etc.) or something.
-- For such area we use the pattern which appears upon hovering over the area or moving to the element using `Tab`.
-- The pattern may be placed both horizontally (as in the card) and vertically (as in the table line).
+The area for dragging is where you can click and hold the mouse or use the keyboard to move a large object, like a card or table row. We recommend using the dotted pattern that appears when user hovers over the area or use the `Tab` key to navigate to the element. This pattern can be placed both horizontally, as in the case of cards, and vertically, as in table rows.
 
 ![draggable zone](static/draggable-card.png)
 
@@ -63,94 +59,95 @@ The component is meant for imitating physical dragging of objects, so the follow
 
 <!-- |                      | Appearance example                                                               | Styles                    |
 | -------------------- | -------------------------------------------------------------------------------- | ------------------------- |
-| For light background | ![draggable zone](static/draggable-card.png) ![drag zone](static/drag-table.png) | `background: --gray-200;` |
-| For dark background  | ![draggable zone](static/draggable-card-invert.png)                              | `background: --gray-200;` | -->
+| For light background | ![](static/draggable-card.png) ![drag zone](static/drag-table.png) | `background: --gray-200;` |
+| For dark background  | ![](static/draggable-card-invert.png)                              | `background: --gray-200;` | -->
 
 @## Area for dropping
 
-In the `default` state the large area where the element can be placed has dashed border. Upon hovering over such area its styles are not changed, in order not to create the impression that the area is clickable.
+By default, the element's placement area is marked with a dashed border. If user hovers over this area, its styles should remain unchanged to avoid giving the impression that it is clickable.
 
-![droppable zone](static/droppable-zone.png)
+Use `border: 1px dashed var(--border-primary)` for border styles.
 
-![droppable zone with hover](static/default-and-hover.png)
+![](static/droppable-zone.png)
 
-Use `border: 1px dashed var(--border-primary);` for border styles.
+![](static/default-and-hover.png)
 
 <!-- |                      | Appearance example                                                                                      | Styles                                |
 | -------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| For light background | ![droppable zone](static/droppable-zone.png) ![droppable zone with hover](static/default-and-hover.png) | `border: 1px dashed rgba(gray-200);`  |
-| For dark background  | ![droppable zone](static/droppable-zone-invert.png)                                                     | `border: 1px dashed rgba(white, .3);` | -->
+| For light background | ![](static/droppable-zone.png) ![](static/default-and-hover.png) | `border: 1px dashed rgba(gray-200);`  |
+| For dark background  | ![](static/droppable-zone-invert.png)                                                     | `border: 1px dashed rgba(white, .3);` | -->
 
-@## Highlighting the area
+@## Area highlighting
 
-Upon dragging the object to the area where the element can be dragged, it should be obligatorily highlighted.
+When the object is dragged to the area where the element can be placed, area must be highlighted.
 
-![dragging hover](static/dragging-dnd.png)
+Use `--bg-primary-neutral-hover` token for background-color and `border: 1px dashed var(--border-primary)` for border styles.
 
-![dragging hover](static/drag-card.png)
+![](static/dragging.png)
 
-Use `--bg-primary-neutral-hover` token for background-color and `border: 1px dashed var(--border-primary);` for border styles.
+![](static/drag-card.png)
 
 <!-- |                      | Appearance example                                                                           | Styles                                 |
 | -------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------- |
-| For light background | ![dragging hover](static/dragging-dnd.png) ![dragging hover](static/drag-card.png)           | `border: 1px dashed rgba(--gray-200);` |
-| For dark background  | ![dragging hover](static/dragging-invert.png) ![dragging hover](static/drag-card-invert.png) | `border: 1px dashed rgba(white, .3);`  | -->
+| For light background | ![](static/dragging.png) ![](static/drag-card.png)           | `border: 1px dashed rgba(--gray-200);` |
+| For dark background  | ![](static/dragging-invert.png) ![](static/drag-card-invert.png) | `border: 1px dashed rgba(white, .3);`  | -->
 
-@## Where drag and drop can be used
+@## Where to use
 
-| Components                                | Appearance example                                                                                      |
+| Component                                | Appearance example                                                                                      |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [Accordion](/components/accordion/)       | ![accordion with drag & drop](static/drag-accordion.png)                                                |
-| [Card](/components/card/)                 | ![card with drag & drop](static/draggable-card.png) ![card with drag & drop](static/drag-card.png)      |
-| [Table](/table-group/table/)              | ![table with drag & drop](static/drag-table.png) ![table with drag & drop](static/drag-table2.png)      |
-| [TabPanel](/components/tab-panel/)        | ![tabpanel with drag & drop](static/drag-tabpanel.png)                                                  |
-| [Select/Multiselect](/components/select/) | ![select with drag & drop](static/drag-default.png) ![select with drag & drop](static/dragging-dnd.png) |
+| [Accordion](/components/accordion/)       | ![](static/drag-accordion.png)                                                |
+| [Card](/components/card/)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
+| [Table](/table-group/table/)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
+| [TabPanel](/components/tab-panel/)        | ![](static/drag-tabpanel.png)                                                  |
+| [Select/Multiselect](/components/select/) | ![](static/drag-default.png) ![](static/dragging.png) |
 
 @## Interaction
 
 ### Cursor
 
-> Upon dragging both the clickable and non-clickable element, long click on any part of the element changes the cursor for `move` — dragging is started 🕺🏻
+When dragging either a clickable or non-clickable element, a long click on any part of the element will change the cursor to a "move" cursor, indicating that dragging has begun.
 
 ### States of draggable element
 
-Upon dragging the axis is not blocked, the element may be dragged to any part of the page, but added only to certain areas ☝🏻
+When dragging, the axis is not restricted, allowing the element to be moved anywhere on the page but only added to certain areas.
 
-| State    | Appearance example                                              | Styles                                                                                                                                                                                                                                                                                                        |
+| State    | Appearance example                                              | Description                                                                                                                                                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| default  | ![default](static/drag-default.png)                             | In default status the `MoveAlt` icon / pattern with dots is not shown.                                                                                                                                                                                                                                        |
-| hover    | ![hover](static/drag-hover.png) ![hover](static/drag-table.png) | Upon hover over the element the `MoveAlt` icon / pattern with dots of the corresponding size (depending on the size of the component where the icon should be placed) is shown. If the element has hover, the element is highlighted. Upon `hover` over the `MoveAlt` icon the cursor is changed into `move`. |
-| dragging | ![dragging](static/dragging-dnd.png)                            | The dragged object changes its box-shadow to the `--box-shadow-dnd` token.                                                                                                                                                                                                                                    |
-| no-drop  | ![no-drop](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor is changed into `not-allowed`.                                                                                                                                                                                                           |
+| default  | ![](static/drag-default.png)                             | Do not show the `MoveAlt` icon and pattern with dots in default state.                                                                                                                                                                                                                                        |
+| hover    | ![](static/drag-hover.png) ![](static/drag-table.png) | If the element is hovered over, a `MoveAlt` icon or pattern with dots is displayed, indicating that the component can be moved. If the `MoveAlt` icon is hovered over, the cursor changes to `move`. |
+| dragging | ![](static/dragging.png)                            | The dragged object changes its box-shadow to the `--box-shadow-dnd` token.                                                                                                                                                                                                                                    |
+| no-drop  | ![](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                                                           |
 
 ### States of droppable area
 
-| State    | Appearance example                                                                        | Styles                                                                                                                                                                                                                                                                               |
+| State    | Appearance example                                                                        | Description                                                                                                                                                                                                                                                                               |
 | -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| default  | ![droppable zone](static/droppable-zone.png)                                              | In the default condition the large area where the element can be placed has dashed border. Inside such zone you may place the text describing what can be dropped into this area and appropriate according to the context. For the text use the secondary text — `--text-secondary`. |
-| hover    | ![droppable zone](static/default-and-hover.png)                                           | The color of the border upon hover over the zone, where the object may be dragged, is not changed.                                                                                                                                                                                   |
-| dragging | ![dragging hover](static/drag-card.png) ![table with drag & drop](static/drag-table2.png) | Upon hover over the area where the element can be dropped it changes the color. If the object is dragged in the list of analogous objects, upon dragging they are drawn apart, showing the drop zone with `--bg-secondary-neutral-hover` as background-color.                        |
-| no-drop  | ![no-drop](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor is just changed into `not-allowed`.                                                                                                                                                                             |
+| default  | ![](static/droppable-zone.png)                                              | By default, the area where the element can be placed is marked with a dashed border. You can place text inside this area to describe what can be dropped there, using the secondary text color (`--text-secondary`) that is appropriate for the context. |
+| hover    | ![](static/default-and-hover.png)                                           | The border color of the area where an object can be dragged is not changed when hovered over.                                                                                                                                                                                   |
+| dragging | ![](static/drag-card.png) ![](static/drag-table2.png) | Hovering over the area where an element can be dropped changes its color. When dragging an object in a list of similar objects, they are separated, and the drop zone changes the background color to `--bg-secondary-neutral-hover`.       |
+| no-drop  | ![](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                             |
 
-### Mouse
+<!-- ### Mouse
 
 - Simple click on the object does not start dragging.
 - Click with small shift (as some people call it, “sloppy click”) and long click start dragging and the dragged object obtains the styles for this condition.
 - `Esc` — cancels dragging using the mouse.
-- `Tab` and `Enter` — do nothing.
+- `Tab` and `Enter` — do nothing. -->
 
 @## Use in UX/UI
 
-This component is meant for imitating physical dragging of objects, so it is important to remember the following upon its implementation:
+This component imitates physically dragging objects, so keep the following in mind when implementing it:
 
-- Show visually (using the icons, text etc.) that the element is draggable.
-- Show the area where the draggable element can be placed.
-- It is not recommended to place the draggable element and the area where it can be placed far away from each other.
+- Visually indicate that the element is draggable using icons or text.
+- Display the area where the element can be placed.
+- Avoid placing the draggable element and its drop area too far apart.
 
-> Upon interaction with the draggable elements it is important to use the corresponding cursors: `move`, `grab`, `grabbing`.
+> Use appropriate cursors such as `move`, `grab`, or `grabbing` when interacting with draggable elements.
 
-- It is important to remember that the short and long clicks are not the same. The long click is used when the draggable object is clickable.
-- To show visually during dragging (the so called `DragEvent`), that the element is dragged - to add the required styles to the element.
+Note that short and long clicks have different meanings, with long clicks used for clickable draggable objects.
+
+Apply the required styles to show that an element is being dragged during the `DragEvent`.
 
 @page drag-and-drop-a11y
 @page drag-and-drop-api
