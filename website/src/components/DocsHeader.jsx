@@ -165,13 +165,9 @@ export default function (props) {
               </Link>
             </Tooltip.Trigger>
             <Tooltip.Popper>
-              <Text tag="p" mb={1}>
-                If you find an error, typo, do not pass by 🙏
+              <Text tag="p">
+                If you notice an error or typo, please help us find and fix it. Fork the project and send us the changes. Thank you!
               </Text>
-              <Text tag="p" mb={1}>
-                Fork the project and send us changes.
-              </Text>
-              Thank you 🖤
             </Tooltip.Popper>
           </Tooltip>
         </Box>
