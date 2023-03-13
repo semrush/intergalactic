@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.8] - 2023-03-09
+
+### Fixed
+
+- Fixed focus locking and returning.
+
 ## [2.3.7] - 2023-03-03
 
 ### Changed
