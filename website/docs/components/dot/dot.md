@@ -8,77 +8,79 @@ tabName: Design
 
 @## Description
 
-**Dot 🍊** is a component that marks updates in the interface. _For example, it shows that a new item has appeared in the button, select, tab, filter or dropdown-menu._
+**Dot** is a component that marks updates in the interface. For example, it shows that a new item has appeared in the button, selection, tab, filter, or dropdown menu.
 
-> Keep in mind that dot is not used to display the status of the feature, new data types or tabs in the report. It cannot be green, red, blue or other colors. **It can only be orange**.
+> Keep in mind that a dot is not used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
 
-**You can use it in order to:**
+**You can use it to:**
 
-- draw the user’s attention to the controls and menu items, within which any update has been implemented. _In other words, by clicking an item with Dot, the user will find an item also marked with Dot (it's graphical rhyme for user experience 🕺🏻)._
-- show new notifications to the user. _For example, this pattern works in a blog._
+- draw the user's attention to updated controls and menu items. Clicking an item with a dot will reveal other items marked with a dot.
+- show new notifications, like in a blog.
 
-> Dot must disappear after the user clicks/hovers over an item with a dot. The details of these cases are below.
+> Dot must disappear after user clicks/hovers over an item with a dot. See the details of these cases below.
 
 @## Appearance
 
-The Dot component can appear above the control and inside the list. **If it shows an update in the control, it is located in the upper right corner above the component.**
+### Sizes and margins
 
-![dot-scheme](static/dot-scheme.png)
+The component has two sizes: M and L.
 
-If Dot points to a new element in the list inside the [Dropdown-menu](/components/dropdown-menu/), it is located to the right of the item text and has a smaller size.
+| Size                    | Margins | Usage         |
+| ----------------------- | ---------- | ---------------------------------------------------- |
+| M    | ![dot-m](static/dot-m.png)     | Use it to mark text items inside the list.               |
+|      | ![dot-margins-s](static/s-margins.png)      |     |
+|      | ![dot-in-list](static/mc-notifications-yes.png) | Use it to mark images/controls inside the list.     |
+| L    | ![dot-l](static/dot-l.png)                      | Use it to mark controls from the outside.           |
+|      | ![dot-margins-l](static/l-margins.png)  |                                                         |
+| L with a counter inside | ![dot-xl](static/dot-on.png)                    | Use it to mark controls from the outside and show the number of updates. |
+|      | ![dot-margins-xl](static/xl-margins.png)        |                                                                             |
 
-![dot-scheme](static/dot-scheme-2.png)
+@## Location
 
-@## Sizes and margins
+Dot component can be set to the up right corner of the control or inside the list. In cases where a dot is above the component, it is always has `transform: translate (30%, -30%)`.
 
-The component has two sizes. In cases where a dot is above the component, it is always shifted in this way: `transform: translate (30%, -30%);`.
+If dot shows an update in the control, locate it in the upper right corner above the component. Use `size="l"` and `up` props.
 
-| Size                    | Appearance                                      | Styles                                         | Usage                                                                           |
-| ----------------------- | ----------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------- |
-| L with a counter inside | ![dot-xl](static/dot-on.png)                    | `background-color: var(--bg-primary-warning);` | It helps to mark the controls from the outside and shows the number of updates. |
-|                         | ![dot-margins-xl](static/xl-margins.png)        |                                                |                                                                                 |
-| L                       | ![dot-l](static/dot-l.png)                      | `background-color: var(--bg-primary-warning);` | It is used to mark the controls from the outside.                               |
-|                         | ![dot-margins-l](static/l-margins.png)          |                                                |                                                                                 |
-| M                       | ![dot-m](static/dot-m.png)                      | `margin-left: 4px;`                            | It's used to mark text items inside the list.                                   |
-|                         | ![dot-margins-s](static/s-margins.png)          |                                                |                                                                                 |
-|                         | ![dot-in-list](static/mc-notifications-yes.png) | `top: -1px; right: -1px;`                      | It's used to mark images/controls inside the list.                              |
+![](static/bg.png)
+
+If dot points to a new element in the list inside the [DropdownMenu](/components/dropdown-menu/), it is located to the right of the item text and has a smaller size (use `size="m"` prop).
+
+![](static/s-margins.png)
 
 @## Counter
 
-There may be a counter with the number of notifications inside the dot. See [Counter](/components/counter/) for more information about this case.
+The dot may contain a notification counter, and for more information about this, you can refer to the [Counter](/components/counter) for more information about this case.
 
-> If the dot contains a counter, it grows in size, respectively.
+> When the dot has a counter, it increases in size accordingly.
 
-|                   | Appearance                                |
+|                   | Appearance example                        |
 | ----------------- | ----------------------------------------- |
 | without a counter | ![dot-without-counter](static/button.png) |
 | with a counter    | ![dot-with-counter](static/counter.png)   |
 
-If there is one update, we show a dot without a counter inside.
+If there is one update, show a dot without a counter inside.
 
 ![icon-with-dot](static/icon.png)
 
-If there are more than nine updates, shorten the value displayed in the counter to 9+.
+If there are more than nine updates, shorten the value displayed in the counter to 9+. When the counter with a large value is used inside the dot, it “grows” only inside the control.
 
-> Note that this feature is not yet implemented in the component.
+> Note that this behavior is not implemented in the component.
 
 ![overflown-counter](static/counter-2.png)
 
-@## Examples of usage with different controls
+@## Usage with different controls
 
-The dot has a universal basic size so that it can be used with controls of different types and sizes.
+The dot has a standard size, making it compatible with controls of various types and sizes.
 
 ![buttons with dot](static/buttons.png)
+
+![buttons with dot](static/buttons-2.png)
 
 ![select with dot](static/select-2.png)
 
 ![pills with dot](static/pills.png)
 
 ![tabs with dot](static/tabs.png)
-
-When the counter with a large value is used inside the dot, it “grows” only inside the control.
-
-![buttons with dot](static/buttons-2.png)
 
 @## Interaction
 
