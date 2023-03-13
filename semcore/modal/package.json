@@ -19,8 +19,7 @@
     "@semcore/outside-click": "^2",
     "@semcore/portal": "^2",
     "@semcore/typography": "^4",
-    "@semcore/utils": "^3.31.2",
-    "react-focus-lock": "2.9.1"
+    "@semcore/utils": "^3.31.2"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
