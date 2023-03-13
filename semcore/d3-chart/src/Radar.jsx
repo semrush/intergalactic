@@ -12,15 +12,12 @@ import { CONSTANT, eventToPoint, measureText } from './utils';
 import style from './style/radar.shadow.css';
 
 function getAngle(i, range, func, total) {
-  const angle = (total - i) * 2 * Math.PI / total;
+  const angle = ((total - i) * 2 * Math.PI) / total;
   return range * (1 - func(angle)) - range;
 }
 
 function getRadianPosition(i, range, total) {
-  return [
-    getAngle(i, range, Math.sin, total),
-    getAngle(i, range, Math.cos, total),
-  ];
+  return [getAngle(i, range, Math.sin, total), getAngle(i, range, Math.cos, total)];
 }
 
 function getLabelDirection(i, total) {
@@ -158,6 +155,8 @@ class RadarRoot extends Component {
     const { Children, style, size, data, offset } = this.asProps;
     const [width, height] = size;
 
+    this.asProps.dataHintsHandler.establishDataType('indexed-groups');
+
     let dataKey;
     React.Children.toArray(getOriginChildren(Children)).forEach((child) => {
       if (React.isValidElement(child) && child.type === Radar.Axis) {
@@ -176,8 +175,8 @@ class RadarRoot extends Component {
       <SRadar
         aria-hidden
         id={this.id}
-        render='g'
-        childrenPosition='inside'
+        render="g"
+        childrenPosition="inside"
         transform={`translate(${width / 2},${height / 2})`}
       />,
     );
@@ -189,7 +188,7 @@ class PolygonRoot extends Component {
   static style = style;
 
   static defaultProps = ({ scale, curve = curveLinearClosed, size, offset }) => {
-    scale.range([0, (Math.min(size[0], size[1]) / 2) - offset]);
+    scale.range([0, Math.min(size[0], size[1]) / 2 - offset]);
 
     return {
       d3: lineRadial()
@@ -198,18 +197,20 @@ class PolygonRoot extends Component {
           return scale(d || 0);
         })
         .angle((d, i, data) => {
-          return ((i / data.length) * 2 * Math.PI);
+          return (i / data.length) * 2 * Math.PI;
         }),
     };
   };
 
   getDotsProps() {
-    const { data, scale, color, transparent } = this.asProps;
+    const { data, scale, color, transparent, dataKey, dataHintsHandler } = this.asProps;
     return {
       data,
       scale,
       color,
       transparent,
+      categoryKey: dataKey,
+      dataHintsHandler,
     };
   }
 
@@ -225,29 +226,28 @@ class PolygonRoot extends Component {
 
   render() {
     const { Element: SPolygon, styles, d3, data, color, fill } = this.asProps;
-    return sstyled(styles)(
-      <SPolygon render='path' d={d3(data)} color={fill || color} />,
-    );
+    return sstyled(styles)(<SPolygon render="path" d={d3(data)} color={fill || color} />);
   }
 }
 
 function PolygonLine(props) {
   const { Element: SPolygonLine, styles, d3, color, data, transparent } = props;
   return sstyled(styles)(
-    <SPolygonLine render='path' d={d3(data)} color={color} transparent={transparent} />,
+    <SPolygonLine render="path" d={d3(data)} color={color} transparent={transparent} />,
   );
 }
 
 function PolygonDots(props) {
-  const { Element: SPolygonDot, styles, color, data, scale, transparent } = props;
+  const { Element: SPolygonDot, styles, color, data, scale, transparent, categoryKey } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
     const radius = scale(value);
+    props.dataHintsHandler.describeGroupedValues(categoryKey, `${categoryKey}.${i}`);
     const [cx, cy] = getRadianPosition(i, radius, data.length);
     return sstyled(styles)(
       <SPolygonDot
         key={i}
-        render='circle'
+        render="circle"
         cx={cx}
         cy={cy}
         color={color}
@@ -281,13 +281,13 @@ class AxisRoot extends Component {
         return radius;
       })
       .angle((d, i) => {
-        return ((i / total) * 2 * Math.PI);
+        return (i / total) * 2 * Math.PI;
       });
   }
 
   getTicksProps({ tickSize = 100 }) {
     const { data, offset, categories, size, type } = this.asProps;
-    const radius = (Math.min(size[0], size[1]) / 2) - offset;
+    const radius = Math.min(size[0], size[1]) / 2 - offset;
     return {
       type,
       data,
@@ -315,7 +315,10 @@ class AxisRoot extends Component {
 
   componentDidMount() {
     const { eventEmitter } = this.asProps;
-    this.unsubscribeTooltipVisible = eventEmitter.subscribe('onTooltipVisible', this.handlerTooltipVisible);
+    this.unsubscribeTooltipVisible = eventEmitter.subscribe(
+      'onTooltipVisible',
+      this.handlerTooltipVisible,
+    );
   }
 
   componentWillUnmount() {
@@ -327,13 +330,16 @@ class AxisRoot extends Component {
   render() {
     const { Element: SAxis, styles, categories, size, offset, type } = this.asProps;
     const { activeLineIndex } = this.state;
-    const radius = (Math.min(size[0], size[1]) / 2) - offset;
+    const radius = Math.min(size[0], size[1]) / 2 - offset;
     const total = categories.length;
 
     return sstyled(styles)(
       <>
-        {type === 'circle' ? <SAxis render='circle' cx={0} cy={0} r={radius} /> :
-          <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />}
+        {type === 'circle' ? (
+          <SAxis render="circle" cx={0} cy={0} r={radius} />
+        ) : (
+          <SAxis render="path" d={this.createLineRadial(radius, total)(categories)} />
+        )}
         {categories.map((category, i) => {
           const [x, y] = getRadianPosition(i, radius, total);
           const { className } = sstyled(styles).cn('SAxisLine', {
@@ -348,31 +354,36 @@ class AxisRoot extends Component {
 
 function AxisTicks(props) {
   const { Element: SAxisTick, styles, size, ticks, d3, categories, offset, type } = props;
-  const radius = (Math.min(size[0], size[1]) / 2) - offset;
+  const radius = Math.min(size[0], size[1]) / 2 - offset;
 
   return ticks.map((tick, i) => {
     d3.radius(() => radius * tick);
     return sstyled(styles)(
-      type === 'circle' ? <SAxisTick key={i} render='circle' cx={0} cy={0} r={radius * tick} /> :
-        <SAxisTick render='path' key={i} d={d3(categories)} />,
+      type === 'circle' ? (
+        <SAxisTick key={i} render="circle" cx={0} cy={0} r={radius * tick} />
+      ) : (
+        <SAxisTick render="path" key={i} d={d3(categories)} />
+      ),
     );
   });
 }
 
 function AxisLabels(props) {
   const { Element: SAxisLabel, styles, textSize, size, offset, categories } = props;
-  const radius = (Math.min(size[0], size[1]) / 2) - offset;
+  const radius = Math.min(size[0], size[1]) / 2 - offset;
 
   return categories.map((category, i) => {
     const [x, y] = getRadianPosition(i, radius, categories.length);
     const [xDirection, yDirection] = getLabelDirection(i, categories.length);
     if (typeof category === 'string') {
+      props.dataHintsHandler.labelKey('value', i, category);
+
       const lines = category.split('\n');
       return sstyled(styles)(
         <SAxisLabel
           key={i}
-          render='text'
-          childrenPosition='inside'
+          render="text"
+          childrenPosition="inside"
           x={x}
           y={y}
           xDirection={xDirection}
@@ -403,7 +414,6 @@ function AxisLabels(props) {
 }
 
 class Hover extends Component {
-
   state = {
     index: null,
   };
@@ -421,7 +431,7 @@ class Hover extends Component {
     const { categories, size, offset } = this.asProps;
     const total = categories.length;
     const diam = Math.min(size[0], size[1]);
-    const radius = (diam / 2) - offset;
+    const radius = diam / 2 - offset;
     const prevIndex = (index - 1 + total) % total;
     const nextIndex = (index + 1 + total) % total;
     const [prevX1, prevY1] = getRadianPosition(prevIndex, radius, total);
@@ -437,13 +447,9 @@ class Hover extends Component {
 
   getPie(index) {
     const { categories, size, offset } = this.asProps;
-    const angle = Math.PI * 2 / categories.length;
+    const angle = (Math.PI * 2) / categories.length;
     const radius = Math.min(size[0], size[1]) / 2 - offset;
-    return [
-      index * angle - angle / 2,
-      (index + 1) * angle - angle / 2,
-      radius,
-    ];
+    return [index * angle - angle / 2, (index + 1) * angle - angle / 2, radius];
   }
 
   getIndex(point) {
@@ -473,24 +479,25 @@ class Hover extends Component {
 
     const index = this.getIndex([centerX, centerY]);
 
-    this.setState({
-      index,
-    }, () => {
-      eventEmitter.emit(
-        'onTooltipVisible',
-        index !== null,
-        { index },
-        this.virtualElement,
-      );
-    });
+    this.setState(
+      {
+        index,
+      },
+      () => {
+        eventEmitter.emit('onTooltipVisible', index !== null, { index }, this.virtualElement);
+      },
+    );
   });
 
   handlerMouseLeaveRoot = trottle(() => {
-    this.setState({
-      index: null,
-    }, () => {
-      this.asProps.eventEmitter.emit('onTooltipVisible', false, { index: null });
-    });
+    this.setState(
+      {
+        index: null,
+      },
+      () => {
+        this.asProps.eventEmitter.emit('onTooltipVisible', false, { index: null });
+      },
+    );
   });
 
   componentDidMount() {
@@ -529,7 +536,7 @@ class Hover extends Component {
           .endAngle(endAngle);
         return sstyled(styles)(
           <SPieRect
-            render='path'
+            render="path"
             // @ts-ignore
             d={circle()}
           />,
@@ -537,7 +544,7 @@ class Hover extends Component {
       } else {
         return sstyled(styles)(
           <SPieRect
-            render='path'
+            render="path"
             // @ts-ignore
             d={line()(this.getPolygon(index))}
           />,
