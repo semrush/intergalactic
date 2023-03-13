@@ -203,7 +203,7 @@ console.info(`Generating sitemap.xml`);
 const sitemapStream = new SitemapStream({ hostname: 'https://developer.semrush.com' });
 const pipedSitemapStream = Readable.from(
   Object.keys(existingRoutes).map((route) => ({
-    url: `/intergalactic/${route}` + route ? '/' : '',
+    url: `/intergalactic/${route}` + (route ? '/' : ''),
   })),
 ).pipe(sitemapStream);
 const sitemapXml = await streamToPromise(pipedSitemapStream).then((data) => data.toString());
