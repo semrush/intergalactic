@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.11.0] - 2023-03-13
+
+### Changed
+
+- Much improved a11y summary generation for `Radar` chart.
+
 ## [2.10.0] - 2023-03-07
 
 ### Added
