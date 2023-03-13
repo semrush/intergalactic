@@ -1,7 +1,7 @@
 {
   "name": "@semcore/fullscreen-modal",
   "description": "Semrush FullscreenModal Component",
-  "version": "2.2.21",
+  "version": "2.2.22",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
