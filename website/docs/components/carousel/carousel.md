@@ -96,7 +96,7 @@ Default animation properties:
 
 @## Use in UX/UI
 
-If you're using a carousel in the hope that people will see a variety of content, be aware that some people will only see the first frame or nothing at all. So make sure that important content is also deliberately placed on the other page . Consider using a static carousel or just an image instead of a rotating one.
+When using a carousel, keep in mind that some users may only see the first frame or nothing at all. Therefore, it's important to intentionally place essential content on each frame. Consider using a static carousel or a single image instead of a rotating one.
 
 |       | Advice                                                                                                 | Description                                                                                                                                                                                                                                                                           |
 | ----- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -1,7 +1,6 @@
 ---
+title: Concept and code
 fileSource: d3-chart
-tabName: Concept and code
-docs: true
 ---
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).

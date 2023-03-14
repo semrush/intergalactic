@@ -13,7 +13,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 
 @typescript IRadarProps
 
-@## Radar axis
+@## Radar.Axis
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -23,7 +23,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 
 @typescript IRadarAxisProps
 
-@## Radar axis label
+@## Radar.Axis.Labels
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -33,7 +33,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 
 @typescript IRadarAxisLabelsProps
 
-@## Radar axis tick
+@## Radar.Axis.Ticks
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -43,7 +43,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 
 @typescript IRadarAxisTicksProps
 
-@## Radar polygon
+@## Radar.Polygon
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -53,7 +53,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 
 @typescript IRadialPolygonProps
 
-@## Radar polygon line
+@## Radar.Polygon.Line
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
@@ -63,7 +63,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 
 @typescript IRadialPolygonLineProps
 
-@## Radar polygon dots
+@## Radar.Polygon.Dots
 
 ```js
 import { Radar } from '@semcore/ui/d3-chart';

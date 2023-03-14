@@ -10,6 +10,8 @@ import {
 } from 'path';
 import { buildArticle, serializeArticle } from './build-article/build-article';
 import { createHash } from 'crypto';
+import { SitemapStream, streamToPromise } from 'sitemap';
+import { Readable } from 'stream';
 
 const fsExists = async (path: string) => {
   try {
@@ -196,4 +198,14 @@ await Promise.all(
     console.info(`SSR special routes: ${specialRoutesProgress++}/${specialRoutes.length}`);
   }),
 );
+
+console.info(`Generating sitemap.xml`);
+const sitemapStream = new SitemapStream({ hostname: 'https://developer.semrush.com' });
+const pipedSitemapStream = Readable.from(
+  Object.keys(existingRoutes).map((route) => ({
+    url: `/intergalactic/${route}` + (route ? '/' : ''),
+  })),
+).pipe(sitemapStream);
+const sitemapXml = await streamToPromise(pipedSitemapStream).then((data) => data.toString());
+await fs.writeFile(resolvePath(distDir, 'sitemap.xml'), sitemapXml);
 console.info(`SSR: Done`);

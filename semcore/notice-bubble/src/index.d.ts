@@ -83,7 +83,30 @@ declare const NoticeBubbleContainer: (<T>(
   Info: typeof NoticeBubble;
   Warning: typeof NoticeBubbleWarning;
 };
-declare const NoticeBubbleManager: INoticeBubbleManager;
+declare class NoticeBubbleManager implements INoticeBubbleManager {
+  /**
+   * Adding a notice.
+   * Takes the props properties of NoticeBubble.
+   *  Returns an object with the uid and the update, remove functions.
+   * */
+  add(props: object): {
+    uid: string;
+    update: (props: object) => boolean;
+    remove: () => boolean;
+  };
+  /**
+   * Updates the notice by uid.
+   * Takes the uid-unique identifier and the props-properties of NoticeBubble.
+   *  Returns a successful or unsuccessful update.
+   * */
+  update(uid: string, props: object): boolean;
+  /**
+   * Deletes the notice by uid.
+   * Takes an uid-unique identifier.
+   * Returns a successful or unsuccessful deletion.
+   * */
+  remove(uid: string): boolean;
+}
 
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };
 export default NoticeBubbleManager;

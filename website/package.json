@@ -1,6 +1,6 @@
 {
   "name": "intergalactic-documentation",
-  "version": "1.21.11",
+  "version": "1.21.14",
   "description": "",
   "author": "",
   "license": "MIT",
@@ -42,6 +42,7 @@
     "react-scroll": "1.8.7",
     "react-virtualized": "9.22.3",
     "reflect-metadata": "0.1.13",
+    "sitemap": "^7.1.1",
     "styled-components": "5.0.1",
     "whatwg-fetch": "3.6.2"
   },

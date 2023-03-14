@@ -45,5 +45,5 @@
   fill: var(--intergalactic-icon-non-interactive);
 }
 .buttonUp:hover {
-  background-color: var(--intergalactic-control-lift-me-up-hover);
+  background-color: var(--intergalactic-control-lift-me-up-hover-active);
 }

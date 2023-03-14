@@ -6,15 +6,15 @@ function Demo() {
   return (
     <div>
       <RadioGroup name="radio" value={value} onChange={(v) => setValue(v)}>
-        <Radio mr={2}>
+        <Radio mr={3}>
           <Radio.Value value="1" />
           <Radio.Text>Value 1</Radio.Text>
         </Radio>
-        <Radio mr={2}>
+        <Radio mr={3}>
           <Radio.Value value="2" />
           <Radio.Text>Value 2</Radio.Text>
         </Radio>
-        <Radio mr={2}>
+        <Radio mr={3}>
           <Radio.Value value="3" />
           <Radio.Text>Value 3</Radio.Text>
         </Radio>
