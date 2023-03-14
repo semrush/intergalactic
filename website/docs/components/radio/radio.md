@@ -72,8 +72,8 @@ Text label may contain a [Link](/components/link).
 | --------- | -------------------------------------------------------- |
 | unchecked | ![unchecked-radiobutton](static/radiobutton-default.png) |
 | checked   | ![checked-radiobutton](static/radiobutton-checked.png)   |
-| disabled  | ![disabled-radiobutton](static/radiobutton-disabled.png) |
-| invalid   | ![invalid-radiobutton](static/radiobutton-invalid.png)   |
+| Disabled  | ![disabled-radiobutton](static/radiobutton-disabled.png) |
+| Invalid   | ![invalid-radiobutton](static/radiobutton-invalid.png)   |
 
 @## Use in UX/UI
 

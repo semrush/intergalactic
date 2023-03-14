@@ -48,13 +48,13 @@ For actual examples of inputs for entering a phone number, see the [Example tab]
 
 ### We don't know the country and/or phone number format
 
-| normal                                           | focus                                                  | filled                                                  |
+| Normal                                           | Focus                                                  | filled                                                  |
 | ------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------- |
 | ![input phone default](static/input-phone-1.png) | ![input phone default](static/input-phone-1-focus.png) | ![input phone default](static/input-phone-1-filled.png) |
 
 ### We know the country, but we don't know the phone number format
 
-|                       | normal                                             | focus                                                    | filled                                                    |
+|                       | Normal                                             | Focus                                                    | filled                                                    |
 | --------------------- | -------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------- |
 | One country           | ![input phone default](static/input-phone-2.png)   | ![input phone default](static/input-phone-2-focus.png)   | ![input phone default](static/input-phone-2-filled.png)   |
 | More than one country | ![input phone default](static/input-phone-2-2.png) | ![input phone default](static/input-phone-2-2-focus.png) | ![input phone default](static/input-phone-2-2-filled.png) |
@@ -63,7 +63,7 @@ For actual examples of inputs for entering a phone number, see the [Example tab]
 
 This option is most suitable when you collect phones from users from one or a limited number of countries.
 
-|                       | normal                                             | focus                                                    | filled                                                    |
+|                       | Normal                                             | Focus                                                    | filled                                                    |
 | --------------------- | -------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------- |
 | One country           | ![input phone default](static/input-phone-3.png)   | ![input phone default](static/input-phone-3-focus.png)   | ![input phone default](static/input-phone-3-filled.png)   |
 | More than one country | ![input phone default](static/input-phone-3-2.png) | ![input phone default](static/input-phone-3-2-focus.png) | ![input phone default](static/input-phone-3-2-filled.png) |

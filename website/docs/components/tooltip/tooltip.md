@@ -24,9 +24,9 @@ Tooltip has themes: `default`, `invert` for using on a dark background and `warn
 
 | Theme   | Appearance                                 | Styles                                                                                                                                 |
 | ------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Default | ![default-theme](static/default-theme.png) | `background-color: var(--tooltip-default);`, `border: 1px solid var(--border-secondary);`, `box-shadow: var(--box-shadow-popper);`     |
-| Invert  | ![invert-theme](static/invert-theme.png)   | `background-color: var(--tooltip-invert);`, `border: 1px solid var(--border-tooltip-invert);`, `box-shadow: var(--box-shadow-popper);` |
-| Warning | ![alert-theme](static/alert-theme.png)     | `background-color: var(--tooltip-warning);`, `border: 1px solid var(--border-danger-active);`, `box-shadow: var(--box-shadow-popper);` |
+| Default | ![default-theme](static/default-theme.png) | `background-color: var(--tooltip-default)`, `border: 1px solid var(--border-secondary)`, `box-shadow: var(--box-shadow-popper)`     |
+| Invert  | ![invert-theme](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
+| Warning | ![alert-theme](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
 
 @## Maximum width and offset
 

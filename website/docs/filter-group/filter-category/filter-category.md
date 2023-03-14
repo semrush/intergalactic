@@ -15,7 +15,7 @@ When working with the category filter, the user should:
 
 @## Appearance
 
-For trigger use [Select](/components/select/) with `min-width: 102px;` and [FilterTrigger](/components/filter-trigger/) with `min-width: 160px;`.
+For trigger use [Select](/components/select/) with `min-width: 102px` and [FilterTrigger](/components/filter-trigger/) with `min-width: 160px`.
 
 It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or cannot understand what category is selected.
 

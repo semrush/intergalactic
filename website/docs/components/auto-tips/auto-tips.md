@@ -36,7 +36,7 @@ Use combobox when usual input, select or autocomplete are not appropriate for yo
 
 The list with items opens as soon as input gets `focus`.
 
-![combobox](static/combobox-example.png)
+![](static/combobox-example.png)
 
 > Unlike the autocomplete, combobox has no items filtration. If user have entered `abc` into the input, all items will remain in the list, but the list will be scrolled up to the first item, which starts with `abc`.
 
@@ -51,7 +51,7 @@ Combobox validation works similarly to the other forms. You can find the detaile
 
 If your interface needs more time to load the items list, show [Spin](/components/spin/) in the input.
 
-![combobox with spinner](static/spinner.png)
+![](static/spinner.png)
 
 @## AutoComplete, AutoSuggest
 
@@ -69,20 +69,20 @@ Clicking an item in the list selects it and the DropdownMenu closes.
 
 | State                | Appearance example                                         |
 | -------------------- | ---------------------------------------------------------- |
-| Default              | ![default state](static/default.png)                       |
-| Start typing         | ![typing state](static/start.png)                          |
-| Loading results      | ![loading state](static/loading-1.png)                     |
-| Something went wrong | ![error state](static/error.png)                           |
-| Results              | ![results state](static/results.png)                       |
-| Loading results      | ![loading state](static/loading-2.png)                     |
-| Nothing found        | ![nothing found state](static/nothing-found-auto-tips.png) |
+| Default              | ![](static/default.png)                       |
+| Start typing         | ![](static/start.png)                          |
+| Loading results      | ![](static/loading-1.png)                     |
+| Something went wrong | ![](static/error.png)                           |
+| Results              | ![](static/results.png)                       |
+| Loading results      | ![](static/loading-2.png)                     |
+| Nothing found        | ![](static/nothing-found-auto-tips.png) |
 
 @## Usage examples
 
 | Search type                                            | Appearance example                       |
 | ------------------------------------------------------ | ---------------------------------------- |
-| Combobox in the [TimePicker](/components/time-picker/) | ![combobox](static/combobox.png)         |
-| AutoComplete                                           | ![autocomplete](static/autocomplete.png) |
+| Combobox in the [TimePicker](/components/time-picker/) | ![](static/combobox.png)         |
+| AutoComplete                                           | ![](static/autocomplete.png) |
 
 @page auto-tips-a11y
 @page auto-tips-code

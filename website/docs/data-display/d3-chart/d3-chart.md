@@ -13,8 +13,8 @@ In our interfaces, data is usually placed in [Card](/components/card/), which co
 
 1. **Header:**
 
-   1. Title (`margin-bottom: 8px;`)
-   2. Additional information under the heading (`margin-bottom: 8px;`) — _optional_
+   1. Title (`margin-bottom: 8px`)
+   2. Additional information under the heading (`margin-bottom: 8px`) — _optional_
    3. General widget controls (export or view settings, etc.) — _optional_
 
 2. **[Divider](/components/divider/)**
@@ -22,8 +22,8 @@ In our interfaces, data is usually placed in [Card](/components/card/), which co
 3. **Body:**
 
    1. Top controls (filters, buttons, etc.) — _optional_
-   2. Chart — axes, values and chart itself (`margin-top: 20px;`)
-   3. Bottom controls (`margin-top: 20px;`) — _optional_
+   2. Chart — axes, values and chart itself (`margin-top: 20px`)
+   3. Bottom controls (`margin-top: 20px`) — _optional_
 
 > Optional elements mean that their presence depends on the case you are solving in your interface.
 
@@ -39,7 +39,7 @@ Place M size [Info](/style/icon/) icon next to the title.
 
 | Appearance                           | Styles                                                                                                                                                                                                                                                                                               |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300;`, `font-weight: var(--bold);`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
+| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
 
 ### Description
 
@@ -47,7 +47,7 @@ Place M size [Info](/style/icon/) icon next to the title.
 
 | Appearance                             | Styles                                                                                             |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200;`) and `--text-secondary` token for color. |
+| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200`) and `--text-secondary` token for color. |
 
 @## Chart controls
 

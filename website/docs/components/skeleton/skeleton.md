@@ -25,8 +25,8 @@ All skeleton “bones” have `border-radius` of 4px.
 
 | Theme  | Appearance example                     | Styles                                    |
 | ------ | -------------------------------------- | ----------------------------------------- |
-| dark   | ![theme-light](static/theme-light.png) | `background: var(--skeleton-bg);`.        |
-| invert | ![theme-dark](static/theme-dark.png)   | `background: var(--skeleton-bg-invert);`. |
+| Dark   | ![theme-light](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
+| Invert | ![theme-dark](static/theme-dark.png)   | `background: var(--skeleton-bg-invert)`. |
 
 @## Animation
 

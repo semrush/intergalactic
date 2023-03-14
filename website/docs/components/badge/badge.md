@@ -28,17 +28,17 @@ Use the following badges in the products depending on the status of the feature 
 
 | Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
 | -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![admin](static/admin.png) | `--blue-300`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge is not visible to the other users.                                                                                                                                         |
-| ![alpha](static/alpha.png) | `--red-300`    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it is unstable, and may be changed significantly over time or be disabled. |
-| ![beta](static/beta.png)   | `--orange-300` | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                  |
-| ![new](static/new.png)     | `--green-300`  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                      |
-| ![soon](static/soon.png)   | `--gray-300`   | It can be set on “placeholders” for collecting feedback.                                                                                                                                                                                                                                  |
+| ![](static/admin.png) | `--blue-300`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge is not visible to the other users.                                                                                                                                         |
+| ![](static/alpha.png) | `--red-300`    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it is unstable, and may be changed significantly over time or be disabled. |
+| ![](static/beta.png)   | `--orange-300` | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                  |
+| ![](static/new.png)     | `--green-300`  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                      |
+| ![](static/soon.png)   | `--gray-300`   | It can be set on “placeholders” for collecting feedback.                                                                                                                                                                                                                                  |
 
 ### Usage on dark/colored background
 
 Every badge can be inverted like this:
 
-![inverted](static/inverted.png)
+![](static/inverted.png)
 
 Use `--gray-white` color for the background and `--gray-800` for the text color.
 
@@ -48,23 +48,23 @@ The feature status can be shown inside most of the components and controls.
 
 ### Button
 
-![primary button](static/button_primary.png)
+![](static/button_primary.png)
 
-![secondary button](static/button_secondary.png)
+![](static/button_secondary.png)
 
 ### Pill
 
-![pills group](static/pills.png)
+![](static/pills.png)
 
 ### Feature status in the notification
 
-![notice](static/notice.png)
+![](static/notice.png)
 
 ### Badge vs. Tag
 
 Do not confuse [Tag](/components/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
 
-![yes-no image](static/table-yes-no.png)
+![](static/table-yes-no.png)
 
 @## Location
 
@@ -74,9 +74,9 @@ Badge is usually placed to the right of the element. As an exception, in the [No
 
 | Component/block     | Appearance example                        |
 | ------------------- | ----------------------------------------- |
-| Product header      | ![report header](static/product-head.png) |
-| Landing page header | ![page header](static/landing-header.png) |
-| Widget              | ![widget](static/widget.png)              |
+| Product header      | ![](static/product-head.png) |
+| Landing page header | ![](static/landing-header.png) |
+| Widget              | ![](static/widget.png)              |
 
 @page badge-a11y
 @page badge-api
