@@ -23,7 +23,7 @@ const Tab = styled(Flex)`
   &:last-child {
     border-bottom: 0;
   }
-  ${({ selected }) => (selected ? `background: #fff; color: #333` : `color: #fff`)};
+  ${({ selected }) => (selected ? `background: #fff; color: #333;` : `color: #fff`)};
 `;
 
 const NavigationItem = ({ onClick, value, stepNavigation }) => (
