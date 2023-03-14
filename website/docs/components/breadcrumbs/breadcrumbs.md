@@ -24,34 +24,34 @@ Links inside this component have custom styles.
 
 > The last item in the breadcrumbs is always non-clickable.
 
-![breadcrumbs style](static/breadcrumbs.png)
+![](static/breadcrumbs.png)
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
-| Link                | `font-size: var(--fs-200);`, `color: var(--text-hint);`, `cursor: pointer;`, no `line-height`. |
-| `ChevronRight` icon | `color: var(--icon-secondary-neutral);`, `cursor: default;`                              |
+| Link                | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
+| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                              |
 
 ### Margins
 
 Margins between the links inside the breadcrumbs is 8px.
 
-![breadcrumbs margins](static/margins.png)
+![](static/margins.png)
 
 @## Long links truncation
 
 If there is not enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
 
-![breadcrumbs ellipsis](static/ellipsis.png)
+![](static/ellipsis.png)
 
 @## Interaction
 
-![breadcrumbs hover](static/hover.png)
+![](static/hover.png)
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
-| normal | `font-size: var(--fs-200);`, `color: var(--text-hint);`, `cursor: pointer;`, no `line-height`. |
-| hover  | `color: var(--text-hint-hover-active);` + underline                                       |
-| active | `color: var(--text-primary);`, `cursor: default;`                                         |
+| Normal | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
+| Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
+| Active | `color: var(--text-primary)`, `cursor: default`                                         |
 
 @## Use in UX/UI
 

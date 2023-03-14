@@ -46,13 +46,13 @@ If trigger has a maximum width, then collapse long values into the ellipsis. Whe
 
 | State         | ButtonTrigger                                    | LinkTrigger                                                | LinkTrigger with the color of text                          |
 | ------------- | ------------------------------------------------ | ---------------------------------------------------------- | ----------------------------------------------------------- |
-| default       | ![default](static/primary-default.png)           | ![secondary-default](static/inline-select-placeholder.png) | ![tertiary-default](static/tertiary-select-placeholder.png) |
-| hover, active | ![hover-active](static/primary-hover-active.png) | ![secondary-hover](static/inline-select-hover.png)         | ![tertiary-hover](static/tertiary-select-hover.png)         |
+| Default       | ![default](static/primary-default.png)           | ![secondary-default](static/inline-select-placeholder.png) | ![tertiary-default](static/tertiary-select-placeholder.png) |
+| Hover, active | ![hover-active](static/primary-hover-active.png) | ![secondary-hover](static/inline-select-hover.png)         | ![tertiary-hover](static/tertiary-select-hover.png)         |
 | placeholder   | ![placeholder](static/primary-placeholder.png)   | ![secondary-default](static/inline-select-placeholder.png) | ![tertiary-default](static/tertiary-select-placeholder.png) |
-| loading       | ![loading](static/primary-loading.png)           | ![secondary-loading](static/inline-select-loading.png)     | ![tertiary-loading](static/tertiary-select-loading.png)     |
-| valid         | ![valid](static/primary-valid.png)               | ![secondary-valid](static/inline-select-valid.png)         | ![tertiary-valid](static/inline-select-valid.png)           |
-| invalid       | ![invalid](static/primary-invalid.png)           | ![secondary-invalid](static/inline-select-invalid.png)     | ![tertiary-invalid](static/inline-select-invalid.png)       |
-| disabled      | ![disabled](static/primary-disabled.png)         | ![secondary-disabled](static/inline-select-disabled.png)   | ![tertiary-disabled](static/tertiary-select-disabled.png)   |
+| Loading       | ![loading](static/primary-loading.png)           | ![secondary-loading](static/inline-select-loading.png)     | ![tertiary-loading](static/tertiary-select-loading.png)     |
+| Valid         | ![valid](static/primary-valid.png)               | ![secondary-valid](static/inline-select-valid.png)         | ![tertiary-valid](static/inline-select-valid.png)           |
+| Invalid       | ![invalid](static/primary-invalid.png)           | ![secondary-invalid](static/inline-select-invalid.png)     | ![tertiary-invalid](static/inline-select-invalid.png)       |
+| Disabled      | ![disabled](static/primary-disabled.png)         | ![secondary-disabled](static/inline-select-disabled.png)   | ![tertiary-disabled](static/tertiary-select-disabled.png)   |
 
 @## Trigger content
 

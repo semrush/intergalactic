@@ -21,8 +21,8 @@ tabName: Design
 
 | Element                 | Styles                                      |
 | ----------------------- | ------------------------------------------- |
-| `ScrollArea.Bar`        | `background: transparent;`                  |
-| `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background);` |
+| `ScrollArea.Bar`        | `background: transparent`                  |
+| `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background)` |
 
 @## Interaction
 

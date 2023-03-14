@@ -31,8 +31,8 @@ Here we have compiled recommendations for content styles in modal windows.
 
 @## Title and text
 
-- For title in confirm windows use text with 20px size (`--fs-400; --lh-400;`). For title in all other window types use text with 24px size (`--fs-500; --lh-500;`).
-- For paragraph text use 14px size (`--fs-300; --lh-300;`).
+- For title in confirm windows use text with 20px size (`--fs-400`, `--lh-400`). For title in all other window types use text with 24px size (`--fs-500`, `--lh-500`).
+- For paragraph text use 14px size (`--fs-300`, `--lh-300`).
 
 ![modal title and buttons](static/s-confirm.png)
 
@@ -56,7 +56,7 @@ For example, if the user tried to submit a project title and failed, the notice 
 
 For the dual-zone modal window use:
 
-```
+```css
 background-color: var(--bg-secondary-neutral);
 ```
 

@@ -14,7 +14,7 @@ tabName: Design
 
 @## Component composition
 
-![button's paddings and margins](static/margins.png)
+![](static/margins.png)
 
 `Button.Text` has margins on the right and left sides. You can add addons before and after the text. As addons you can use:
 
@@ -29,8 +29,8 @@ Addon before the text has margin-left, while the trailing addon has margin-right
 
 | Button size  | Icon size | Appearance example             | Description                                                                                                              |
 | ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **L (40px)** | M         | ![button L](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
-| **M (28px)** | M         | ![button M](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
+| **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+| **M (28px)** | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 
 @## Button width
 
@@ -42,15 +42,15 @@ w="100%"
 
 It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it is not good to make the button small-sized in such cases.
 
-![button width example](static/button-width.png)
+![](static/button-width.png)
 
 It is important that the CTA is always visually more significant than the secondary button due to its color and size. So don't hesitate to make button wider if necessary.
 
-![button width example](static/button-width2.png)
+![](static/button-width2.png)
 
 If you need to use a single button we recommend you to set it's width to at least 120px.
 
-![button width example](static/button-width3.png)
+![](static/button-width3.png)
 
 @## Button types
 
@@ -60,25 +60,25 @@ Intergalactic design system has three button types (`use` in API). All button ty
 
 Main accent button for filters and basic actions on the page.
 
-| normal                              | hover                             | active                              | loading                               | disabled                                |
+| Normal                              | Hover                             | Active                              | Loading                               | Disabled                                |
 | ----------------------------------- | --------------------------------- | ----------------------------------- | ------------------------------------- | --------------------------------------- |
-| ![normal](static/button-normal.png) | ![hover](static/button-hover.png) | ![active](static/button-active.png) | ![loading](static/button-loading.png) | ![disabled](static/button-disabled.png) |
+| ![](static/button-normal.png) | ![](static/button-hover.png) | ![](static/button-active.png) | ![](static/button-loading.png) | ![](static/button-disabled.png) |
 
 ### Secondary
 
 Default non-accent button for secondary/repetitive actions on the page.
 
-| normal                          | hover                                | active                                 | loading                                  | disabled                                   |
+| Normal                          | Hover                                | Active                                 | Loading                                  | Disabled                                   |
 | ------------------------------- | ------------------------------------ | -------------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| ![normal](static/secondary.png) | ![hover](static/secondary-hover.png) | ![active](static/secondary-active.png) | ![loading](static/secondary-loading.png) | ![disabled](static/secondary-disabled.png) |
+| ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
 
 ### Tertiary
 
 Button type for third-party actions on the page. The tertiary button can be used when there is enough space and a large click area is needed.
 
-| normal                         | hover                               | active                                | loading                                 | disabled                                  |
+| Normal                         | Hover                               | Active                                | Loading                                 | Disabled                                  |
 | ------------------------------ | ----------------------------------- | ------------------------------------- | --------------------------------------- | ----------------------------------------- |
-| ![normal](static/tertiary.png) | ![hover](static/tertiary-hover.png) | ![active](static/tertiary-active.png) | ![loading](static/tertiary-loading.png) | ![disabled](static/tertiary-disabled.png) |
+| ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
 
 @## Themes
 
@@ -86,25 +86,25 @@ For the primary button you can use themes according to the visual hierarchy on t
 
 | Info                                 | Success                                    | Danger                                   |
 | ------------------------------------ | ------------------------------------------ | ---------------------------------------- |
-| ![info button](static/info-butt.png) | ![success button](static/success-butt.png) | ![danger button](static/danger-butt.png) |
+| ![](static/info-butt.png) | ![](static/success-butt.png) | ![](static/danger-butt.png) |
 
 ### Invert theme
 
 Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
 
-|           | normal                                       | hover                                      | active                                       | loading                                        | disabled                                         |
+|           | Normal                                       | Hover                                      | Active                                       | Loading                                        | Disabled                                         |
 | --------- | -------------------------------------------- | ------------------------------------------ | -------------------------------------------- | ---------------------------------------------- | ------------------------------------------------ |
-| Primary   | ![normal](static/invert-normal.png)          | ![hover](static/invert-hover.png)          | ![active](static/invert-active.png)          | ![loading](static/invert-loading.png)          | ![disabled](static/invert-disabled.png)          |
-| Secondary | ![normal](static/invert-second-normal.png)   | ![hover](static/invert-second-hover.png)   | ![active](static/invert-second-active.png)   | ![loading](static/invert-second-loading.png)   | ![disabled](static/invert-second-disabled.png)   |
-| Tertiary  | ![normal](static/invert-tertiary-normal.png) | ![hover](static/invert-tertiary-hover.png) | ![active](static/invert-tertiary-active.png) | ![loading](static/invert-tertiary-loading.png) | ![disabled](static/invert-tertiary-disabled.png) |
+| Primary   | ![](static/invert-normal.png)          | ![](static/invert-hover.png)          | ![](static/invert-active.png)          | ![](static/invert-loading.png)          | ![](static/invert-disabled.png)          |
+| Secondary | ![](static/invert-second-normal.png)   | ![](static/invert-second-hover.png)   | ![](static/invert-second-active.png)   | ![](static/invert-second-loading.png)   | ![](static/invert-second-disabled.png)   |
+| Tertiary  | ![](static/invert-tertiary-normal.png) | ![](static/invert-tertiary-hover.png) | ![](static/invert-tertiary-active.png) | ![](static/invert-tertiary-loading.png) | ![](static/invert-tertiary-disabled.png) |
 
 @## Margins between buttons
 
 **The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-| L (40px)                         | M (28px)                         |
-| :------------------------------- | :------------------------------- |
-| ![margin L](static/margin-1.png) | ![margin M](static/margin-2.png) |
+| L (40px)                 | M (28px)                 |
+| ------------------------ | ------------------------ |
+| ![](static/margin-1.png) | ![](static/margin-2.png) |
 
 @## Use in UX/UI
 
@@ -141,15 +141,15 @@ We recommend using the icon-only button if:
 
 Button label always starts with a capital letter.
 
-![capitalize](static/capitalize.png)
+![](static/capitalize.png)
 
 **Button label shall not exceed three words.** Too wordy controls are difficult to read. Try to fit the desired meaning into the short label.
 
-![max length](static/max-length.png)
+![](static/max-length.png)
 
 The label of the button should clearly indicate what happens after user clicks it.
 
-![action](static/define-action.png)
+![](static/define-action.png)
 
 @## Branded buttons
 
@@ -158,7 +158,7 @@ In case when you need to show that button connects or links to some other servic
 - You can color the button in a branded color when you need to focus user's attention.
 - You can use secondary button with the branded icon inside. This is the safest option in relation to saving the visual hierarchy of the product.
 
-![brand button](static/button-brand.png)
+![](static/button-brand.png)
 
 It may also be helpful checking the following branding guidelines:
 

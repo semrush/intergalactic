@@ -12,7 +12,7 @@ tabName: Design
 
 The checkbox component is used to select one or more options from a list. It displays whether the option is selected or not. It's commonly used for group settings and allows users to choose any number of options.
 
-![selection-scheme](static/check-or-toggle.png)
+![](static/check-or-toggle.png)
 
 Multi-selection, which is commonly used in filters, is the exception to the image above.
 
@@ -24,8 +24,8 @@ Checkbox has two sizes: M and L. The text label is always positioned to the righ
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
-| M (16px * 16px) | ![m](static/size-m.png) |
-| L (20px * 20px) | ![l](static/size-l.png) |
+| M (16px * 16px) | ![](static/size-m.png) |
+| L (20px * 20px) | ![](static/size-l.png) |
 
 ### Margins
 
@@ -33,8 +33,8 @@ The spacing between options may differ based on the context in which they are us
 
 | Size (px)        | Margins      |
 | ---------------- | ----------------------- |
-| M (16px * 16px) | ![m](static/margins-m.png) ![m](static/vert-m.png) |
-| L (20px * 20px) | ![l](static/margins-l.png) ![l](static/vert-l.png) |
+| M (16px * 16px) | ![](static/margins-m.png) ![](static/vert-m.png) |
+| L (20px * 20px) | ![](static/margins-l.png) ![](static/vert-l.png) |
 
 @## Checkbox with a paragraph
 
@@ -42,28 +42,28 @@ All checkbox sizes can be used with the corresponding text paragraphs.
 
 | Checkbox size (px) | Paragraph size (px)                        | Appearance example                |
 | ------------------ | -------------------------------------- | -------------------------------------- |
-| M (16px * 16px)   | 14px (use `--fs-200, --lh-200` tokens) | ![m paragraph](static/paragraph-m.png) |
-| L (20px * 20px)   | 16px (use `--fs-300, --lh-300` tokens) | ![l paragraph](static/paragraph-l.png) |
+| M (16px * 16px)   | 14px (use `--fs-200, --lh-200` tokens) | ![](static/paragraph-m.png) |
+| L (20px * 20px)   | 16px (use `--fs-300, --lh-300` tokens) | ![](static/paragraph-l.png) |
 
 @## Checkbox with Info icon
 
 Add an `Info` icon next to the checkbox label to provide more information about checkbox's purpose. User can hover over the icon to see a tooltip with additional details.
 
-![checkbox with info icon](static/info-icon.png)
+![](static/info-icon.png)
 
 > Info icon should have `margin-left: 4px`.
 
-![checkbox with info icon](static/info-icon-margin.png)
+![](static/info-icon-margin.png)
 
 @## Checkbox with a link inside
 
 Text label may contain a [Link](/components/link).
 
-![checkbox with info icon](static/link.png)
+![](static/link.png)
 
 > Note, that the checkbox text hover zone shouldn't include a link.
 
-![checkbox with info icon](static/link-hover-zone.png)
+![](static/link-hover-zone.png)
 
 @## Interaction
 
@@ -76,13 +76,13 @@ Text label may contain a [Link](/components/link).
 
 | State                 | Appearance example                                               |
 | --------------------- | ---------------------------------------------------------------- |
-| normal                | ![unchecked](static/state-unchecked.png)                         |
-| checked               | ![checked](static/state-checked.png)                             |
-| indeterminate         | ![indeterminate](static/state-indetermenate.png)                 |
-| indeterminate invalid | ![invalid-indeterminate](static/state-indetermenate-invalid.png) |
-| checked invalid       | ![invalid-checked](static/state-checked-invalid.png)             |
-| disabled              | ![disabled](static/state-disabled.png)                           |
-| invalid               | ![invalid](static/state-invalid.png)                             |
+| Normal                | ![](static/state-unchecked.png)                         |
+| checked               | ![](static/state-checked.png)                             |
+| indeterminate         | ![](static/state-indetermenate.png)                 |
+| indeterminate invalid | ![](static/state-indetermenate-invalid.png) |
+| checked invalid       | ![](static/state-checked-invalid.png)             |
+| Disabled              | ![](static/state-disabled.png)                           |
+| Invalid               | ![](static/state-invalid.png)                             |
 
 @## Checkbox group
 
@@ -92,7 +92,7 @@ To save the user's time, use the "Select all" and "Deselect all" options for che
 - "Deselect all" deselects all checkboxes at all levels.
 - If at least one checkbox is checked at any level, "Deselect all" changes to "Select all".
 
-![checkbox group](static/group-1.png) ![checkbox group](static/group-2.png) ![checkbox group](static/group-3.png)
+![](static/group-1.png) ![](static/group-2.png) ![](static/group-3.png)
 
 If you have a checkbox tree, the top-level checkbox has three states:
 
@@ -102,7 +102,7 @@ If you have a checkbox tree, the top-level checkbox has three states:
 
 > If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
 
-![checkbox tree](static/tree.png)
+![](static/tree.png)
 
 If you use a combination of the checkbox tree and "Select all" and "Deselect all" buttons, the behavior is the following:
 
@@ -113,17 +113,17 @@ If you use a combination of the checkbox tree and "Select all" and "Deselect all
 
 When user clicks on a checkbox with the `indeterminate` state, all sub-level checkboxes get `checked` state.
 
-![select and deselect](static/select-all.png) ![select and deselect](static/deselect-all.png)
+![](static/select-all.png) ![](static/deselect-all.png)
 
 @## Use in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 
-![vertical-align-only](static/checkboxes_yes_no.png)
+![](static/checkboxes_yes_no.png)
 
 - **Use positive language for checkbox labels** to clarify the action taken when the checkbox is enabled. Avoid negative wording, such as "Don't send me more email," which would mean that the user need to check the box to prevent something from happening.
 
-![be-positive ;)](static/checkboxelabel_yes_no.png)
+![](static/checkboxelabel_yes_no.png)
 
 Here are some other checkbox recommendations:
 

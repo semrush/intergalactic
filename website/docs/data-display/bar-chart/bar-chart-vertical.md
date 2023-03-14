@@ -20,7 +20,7 @@ fileSource: d3-chart
 
 | Number of categories | Appearance example                                                                         | Styles                                                         |
 | -------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| One                  | ![bar chart with one category of values](/data-display/bar-chart/static/bar-chart.png)     | The upper part of the column shall have `border-radius: 2px;`. |
+| One                  | ![bar chart with one category of values](/data-display/bar-chart/static/bar-chart.png)     | The upper part of the column shall have `border-radius: 2px`. |
 | Two                  | ![bar chart with two categories of values](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                         |
 
 > If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.

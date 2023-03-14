@@ -7,7 +7,7 @@ fileSource: sticky
 
 @## Sticky
 
-The component is a wrap over CSS `position: sticky;`.
+The component is a wrap over CSS `position: sticky`.
 
 ```js
 import Sticky from '@semcore/ui/sticky';

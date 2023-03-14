@@ -20,11 +20,11 @@ Widget’s “empty” state usually includes the following:
 
 |                     | Description, styles                                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Image in svg format | `margin-bottom: 12px;`, `width: 80px;`, `height: 80px;`                                                                  |
-| Title               | Text with 16px size (`--fs-300; --lh-300;`), `--text-secondary` token for color and `margin-bottom: var(--spacing-1x);`. |
-| Description         | Text with 14px size (`--fs-200; ----lh-200;`) and `--text-secondary` token for color.                                    |
-| Button (optional)   | Button with M size and `var(--spacing-4x);`                                                                              |
-| Select (optional)   | Select with M size and `margin-bottom: var(--spacing-1x);`                                                               |
+| Image in svg format | `margin-bottom: 12px`, `width: 80px`, `height: 80px`                                                                  |
+| Title               | Text with 16px size (`--fs-300; --lh-300`), `--text-secondary` token for color and `margin-bottom: var(--spacing-1x)`. |
+| Description         | Text with 14px size (`--fs-200; ----lh-200`) and `--text-secondary` token for color.                                    |
+| Button (optional)   | Button with M size and `var(--spacing-4x)`                                                                              |
+| Select (optional)   | Select with M size and `margin-bottom: var(--spacing-1x)`                                                               |
 
 > If widget has a title, it should be displayed in the “empty” state, too.
 
@@ -44,7 +44,7 @@ The content of the “empty” state is centered horizontally and vertically in 
 
 ### Minimum height (for edge cases)
 
-There are cases when it is required to reduce the height of the widget with “empty” state for saving the space on the page. In these cases the widget's `min-height: 188px;`. The title becomes the description (use styles from the table above), it is recommended to be reduced up to one sentence.
+There are cases when it is required to reduce the height of the widget with “empty” state for saving the space on the page. In these cases the widget's `min-height: 188px`. The title becomes the description (use styles from the table above), it is recommended to be reduced up to one sentence.
 
 ![widget extra empty](static/big-extra-empty.png)
 

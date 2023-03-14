@@ -51,9 +51,9 @@ If necessary, you can use a number as a placeholder inside this type of input.
 
 | State      | L (40px)                                     | M (28px)                                     | Styles                                                             |
 | ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------ |
-| default    | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                                                                    |
-| hover      | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           |                                                                    |
-| focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           | Icon use `--icon-secondary-neutral` token for color.               |
+| Default    | ![default state](static/l-placeholder.png)   | ![default state](static/m-placeholder.png)   |                                                                    |
+| Hover      | ![hover state](static/l-hover.png)           | ![hover state](static/m-hover.png)           |                                                                    |
+| Focus      | ![focus state](static/l-focus.png)           | ![focus state](static/m-focus.png)           | Icon use `--icon-secondary-neutral` token for color.               |
 | Icon hover | ![icon hover state](static/l-icon-hover.png) | ![icon hover state](static/m-icon-hover.png) | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
 
 @## Validation
@@ -73,7 +73,7 @@ To enter a range of numbers, you need two InputNumbers grouped together.
 
 > You can use **"From"** and **"To"** as placeholders in such inputs.
 
-| Size (height in px) | default                                                  | focus                                              |
+| Size (height in px) | Default                                                  | Focus                                              |
 | ------------------- | -------------------------------------------------------- | -------------------------------------------------- |
 | M (28px)            | ![default state input range](static/m-range-default.png) | ![focus state for input range](static/m-range.png) |
 | L (40px)            | ![default state input range](static/l-range-default.png) | ![focus state for input range](static/l-range.png) |
