@@ -57,7 +57,7 @@ We have several modal window types:
 
 | Styles                                                                 | Example                                 |
 | ---------------------------------------------------------------------- | --------------------------------------- |
-| `border-radius: var(--rounded-large);`, `padding: var(--spacing-10x);` | ![modal paddings](static/container.png) |
+| `border-radius: var(--rounded-large)`, `padding: var(--spacing-10x)` | ![modal paddings](static/container.png) |
 
 ### Close button (optional)
 

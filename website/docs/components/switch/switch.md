@@ -22,9 +22,9 @@ You also can add a text label to switch input. The text of enabled option use `-
 
 |     | Appearance and margins                     | Styles                                                                                                                            |
 | --- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| XL  | ![xl switch](static/switch-on-text-xl.png) | `width: 44px;`, `height: 24px;`, circle size is 20px, `font-size: var(--fs-300);`, margin between the control and the text is 8px |
-| L   | ![l switch](static/switch-on-text-l.png)   | `width: 36px;`, `height: 20px;`, circle size is 16px, `font-size: var(--fs-200);`, margin between the control and the text is 8px |
-| M   | ![m switch](static/switch-on-text-m.png)   | `width: 20px;`, `height: 12px;`, circle size is 8px, `font-size: var(--fs-100);`, margin between the control and the text is 8px  |
+| XL  | ![xl switch](static/switch-on-text-xl.png) | `width: 44px`, `height: 24px`, circle size is 20px, `font-size: var(--fs-300)`, margin between the control and the text is 8px |
+| L   | ![l switch](static/switch-on-text-l.png)   | `width: 36px`, `height: 20px`, circle size is 16px, `font-size: var(--fs-200)`, margin between the control and the text is 8px |
+| M   | ![m switch](static/switch-on-text-m.png)   | `width: 20px`, `height: 12px`, circle size is 8px, `font-size: var(--fs-100)`, margin between the control and the text is 8px  |
 
 @## Themes
 
@@ -52,9 +52,9 @@ Switch has three possible states: off, on, and disabled. To change the state, us
 
 | State    | Appearance                                                                              | Styles                                                                                                 |
 | -------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| off      | ![off switch](static/off.png)                                                           | `background: var(--control-switch-bg);`                                                                |
-| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background: var(--control-primary-success);` или `background: var(--control-primary-info);`           |
-| disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/) token. |
+| off      | ![off switch](static/off.png)                                                           | `background: var(--control-switch-bg)`                                                                |
+| on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background: var(--control-primary-success)` или `background: var(--control-primary-info)`           |
+| Disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/) token. |
 
 @## Use in UX/UI
 

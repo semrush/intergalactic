@@ -59,9 +59,9 @@ This chart doesn't need tooltip.
 
 | State   | Appearance example                              | Styles                                                                                                                                                                                                                                                    |
 | ------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| default | ![value in a default state](static/default.png) | In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
-| hover   | ![value in a hover state](static/hover.png)     | For the text's hover state use the next color hue. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. **Do not change the color of the additional line and the circle bullet.**                                                                        |
-| active  | ![value in an active state](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
+| Default | ![value in a default state](static/default.png) | In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
+| Hover   | ![value in a hover state](static/hover.png)     | For the text's hover state use the next color hue. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. **Do not change the color of the additional line and the circle bullet.**                                                                        |
+| Active  | ![value in an active state](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
 
 @## Animation
 

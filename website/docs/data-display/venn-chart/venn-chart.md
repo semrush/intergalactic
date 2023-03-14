@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/d3-chart).
+> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
 @## Description
 
@@ -82,8 +82,8 @@ If legend label is very long, wrap it to the next line.
 
 |         | Appearance example                         | Styles                                                                                                |
 | ------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| default | ![venn chart default](static/venn-big.png) | The fill transparency is 50%, stroke size is 2px.                                                     |
-| hover   | ![venn chart hover](static/venn-hover.png) | When hovering, the transparency of the fill for the sector that the user hovered over changes by 70%. |
+| Default | ![venn chart default](static/venn-big.png) | The fill transparency is 50%, stroke size is 2px.                                                     |
+| Hover   | ![venn chart hover](static/venn-hover.png) | When hovering, the transparency of the fill for the sector that the user hovered over changes by 70%. |
 
 @## Tooltip
 

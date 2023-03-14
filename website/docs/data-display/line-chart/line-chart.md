@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/d3-chart).
+> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
 @## Description
 

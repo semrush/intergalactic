@@ -18,11 +18,11 @@ There are two types of tables in our design system – [primary](../table-primar
 
 | Content                                | Styles                                     |
 | -------------------------------------- | ------------------------------------------ |
-| Text in the header                     | `font-size: var(--fs-100);`, `color: var(--text-primary);` |
-| The text in the row                    | `font-size: var(--fs-200);`, `color: var(--text-primary);` |
-| Secondary text                         | `color: var(--text-secondary);`                  |
-| Stand alone icon                       | icon with M size, `color: var(--icon-secondary-neutral);`    |
-| The icon next to the text              | icon with M size, `color: var(--icon-secondary-neutral);`    |
+| Text in the header                     | `font-size: var(--fs-100)`, `color: var(--text-primary)` |
+| The text in the row                    | `font-size: var(--fs-200)`, `color: var(--text-primary)` |
+| Secondary text                         | `color: var(--text-secondary)`                  |
+| Stand alone icon                       | icon with M size, `color: var(--icon-secondary-neutral)`    |
+| The icon next to the text              | icon with M size, `color: var(--icon-secondary-neutral)`    |
 | Checkbox in the header and in the cell | [Checkbox](/components/checkbox/) with M size  |
 
 @## Sorting
@@ -59,12 +59,12 @@ If the entire row is in the `disabled` state, it should not have the `hover` sta
 
 | State                    | Appearance                                   | Styles                                                                                                                                                                          |
 | ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Default, hover           | ![default hover](static/default-hover.png)   | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary);`. When you `hover` on, background color changes to `background: var(--table-td-cell-hover);`. |
-| Unread, unread hover     | ![unread hover](static/unread-hover.png)     | `background-color: var(--table-td-cell-unread);`. The `hover` state is the same as default cell has.                                                                                                |
-| Selected, selected hover | ![selected hover](static/selected-hover.png) | `background-color: var(--table-td-cell-selected);`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-selected-hover);`.                                                              |
-| New, new hover           | ![new hover](static/new-hover.png)           | `background-color: var(--table-td-cell-new);`. When you `hover` on, the background color changes to `background-color: background-color: var(--table-td-cell-new-hover);`.                                          |
-| Error, error hover       | ![danger hover](static/danger-hover.png)     | `background-color: var(--table-td-cell-critical);`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-critical-hover);`.                                                                |
-| Warning, warning hover   | ![warning hover](static/warning-hover.png)   | `background-color: var(--table-td-cell-warning);`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-warning-hover);`.                                                          |
+| Default, hover           | ![default hover](static/default-hover.png)   | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)`. When you `hover` on, background color changes to `background: var(--table-td-cell-hover)`. |
+| Unread, unread hover     | ![unread hover](static/unread-hover.png)     | `background-color: var(--table-td-cell-unread)`. The `hover` state is the same as default cell has.                                                                                                |
+| Selected, selected hover | ![selected hover](static/selected-hover.png) | `background-color: var(--table-td-cell-selected)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-selected-hover)`.                                                              |
+| New, new hover           | ![new hover](static/new-hover.png)           | `background-color: var(--table-td-cell-new)`. When you `hover` on, the background color changes to `background-color: background-color: var(--table-td-cell-new-hover)`.                                          |
+| Error, error hover       | ![danger hover](static/danger-hover.png)     | `background-color: var(--table-td-cell-critical)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-critical-hover)`.                                                                |
+| Warning, warning hover   | ![warning hover](static/warning-hover.png)   | `background-color: var(--table-td-cell-warning)`. When you `hover` on, the background color changes to `background-color: var(--table-td-cell-warning-hover)`.                                                          |
 | Current, current hover   | ![current hover](static/current-hover.png)   | The row is tagged with tag `You`. The `hover` state is the same as the `default` state.                                                                                         |
 | Loading                  | ![loading hover](static/loading-hover.png)   | Change opacity of the elements inside a row to `--disabled-opacity`. Spin has size XS.                                                                                                                           |
 | Limit, limit hover       | ![limit](static/limit.png)                   | For limiting rows use `--overlay-limitation-secondary` token. The `hover` state is the same as the default state has.                                                |

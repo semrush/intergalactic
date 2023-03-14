@@ -46,7 +46,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 |                | Appearance example                          | Styles                                 |
 | -------------- | ------------------------------------------- | -------------------------------------- |
-| One category   | ![bar-chart one value](static/one-cat.png)  | `border-radius: 2px;`                  |
+| One category   | ![bar-chart one value](static/one-cat.png)  | `border-radius: 2px`                  |
 | Two categories | ![bar-chart two values](static/two-cat.png) | The margin between two columns is 4px. |
 
 > If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
@@ -57,7 +57,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 | Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| `margin: 8px 0px;`                                                                                         | ![bar-chart margins](static/margins-1.png) |
+| `margin: 8px 0px`                                                                                         | ![bar-chart margins](static/margins-1.png) |
 | The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![bar-chart margins](static/margins-2.png) |
 | The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![bar-chart margins](static/margins-3.png) |
 

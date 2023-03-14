@@ -57,8 +57,8 @@ Addons are slots inside the input to the left or right of the text for additiona
 
 |                                                               | Appearance example                               | Margins                                                | Icon size and color                             |
 | ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------- |
-| For components with text less than 24px (including that size) | ![leading addon](static/leading-addon-focus.png) | ![leading addon](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral);` |
-| For components with text larger than 24px                     | ![leading addon](static/leading-addon-big.png)   | ![leading addon](static/leading-addon-big-margins.png) | L size, `color: var(--icon-secondary-neutral);` |
+| For components with text less than 24px (including that size) | ![leading addon](static/leading-addon-focus.png) | ![leading addon](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral)` |
+| For components with text larger than 24px                     | ![leading addon](static/leading-addon-big.png)   | ![leading addon](static/leading-addon-big-margins.png) | L size, `color: var(--icon-secondary-neutral)` |
 
 ### Permanent placeholder
 
@@ -105,12 +105,12 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 
 | State         | Appearance example                       | Styles                                                                                                                                             |
 | ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal        | ![normal state](static/normal.png)       | `border-bottom: 1px solid var(--border-primary);`                                                                                                  |
-| Focus         | ![focus state](static/focus.png)         | `border-bottom: 1px solid var(--border-info-active);`, `box-shadow: var(--keyboard-focus);`                                                        |
-| Invalid       | ![invalid state](static/invalid.png)     | `border-bottom: 1px solid var(--border-danger-active);`                                                                                            |
-| Invalid focus | ![focus state](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active);`, `box-shadow: var(--keyboard-focus-invalid);`                                              |
-| Valid         | ![valid state](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active);`                                                                                           |
-| Valid focus   | ![focus state](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active);`, `box-shadow: var(--keyboard-focus-valid);`                                               |
+| Normal        | ![normal state](static/normal.png)       | `border-bottom: 1px solid var(--border-primary)`                                                                                                  |
+| Focus         | ![focus state](static/focus.png)         | `border-bottom: 1px solid var(--border-info-active)`, `box-shadow: var(--keyboard-focus)`                                                        |
+| Invalid       | ![invalid state](static/invalid.png)     | `border-bottom: 1px solid var(--border-danger-active)`                                                                                            |
+| Invalid focus | ![focus state](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active)`, `box-shadow: var(--keyboard-focus-invalid)`                                              |
+| Valid         | ![valid state](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active)`                                                                                           |
+| Valid focus   | ![focus state](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                               |
 | Loading       | ![loading state](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/) token). |
 
 @## Save и Cancel icon buttons
