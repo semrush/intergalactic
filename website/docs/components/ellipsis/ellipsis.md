@@ -24,11 +24,11 @@ tabName: Design
 
 @## Appearance
 
-To include an ellipsis, use `…` (HTML symbol `&hellip;`).
+To include an ellipsis, use `…` (HTML symbol `&hellip`).
 
 **Shortcuts:**
 
-- OS X: `Opt + ;`
+- OS X: `Opt + `
 - Win: `alt + 0133`
 
 @## Types

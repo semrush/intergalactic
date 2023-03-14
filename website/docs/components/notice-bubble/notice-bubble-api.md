@@ -24,7 +24,7 @@ Container - div in the body via the portal (`React.Portal`). It is inserted once
 
 @## NoticeBubble
 
-`import { NoticeBubble } from '@semcore/ui/notice-bubble';`
+`import { NoticeBubble } from '@semcore/ui/notice-bubble'`
 
 JSX-view of the notice; it subscribes to the component lifespan and calls the corresponding methods of the Manager (`NoticeBubbleManager`).
 
@@ -32,7 +32,7 @@ JSX-view of the notice; it subscribes to the component lifespan and calls the co
 
 @## NoticeBubbleWarning
 
-`import { NoticeBubbleWarning } from '@semcore/ui/notice-bubble';`
+`import { NoticeBubbleWarning } from '@semcore/ui/notice-bubble'`
 
 JSX-view of the notice; it subscribes to the component lifespan and calls the corresponding methods of the Manager (`NoticeBubbleManager`).
 

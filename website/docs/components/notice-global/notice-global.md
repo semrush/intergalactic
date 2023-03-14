@@ -39,31 +39,31 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 ### Neutral
 
-Use it for neutral messages about the whole website. Notice has `background-color: var(--bg-primary-muted);`.
+Use it for neutral messages about the whole website. Notice has `background-color: var(--bg-primary-muted)`.
 
 ![global-notice](static/gnotice-neutral.png)
 
 ### Info
 
-Use it for collecting feedback for the whole website. Notice has `background-color: var(--bg-primary-info);`.
+Use it for collecting feedback for the whole website. Notice has `background-color: var(--bg-primary-info)`.
 
 ![global-notice](static/gnotice-info.png)
 
 ### Success
 
-Use it for success message concerning the whole website. Notice has `background-color: var(--bg-primary-success);`.
+Use it for success message concerning the whole website. Notice has `background-color: var(--bg-primary-success)`.
 
 ![global-notice](static/gnotice-success.png)
 
 ### Warning
 
-Use it for important but not critical errors/warnings concerning the whole website. Notice has `background-color: var(--bg-primary-warning);`.
+Use it for important but not critical errors/warnings concerning the whole website. Notice has `background-color: var(--bg-primary-warning)`.
 
 ![global-notice](static/gnotice-warning.png)
 
 ### Danger
 
-Use it for a serious error/problem message concerning the whole website. Notice has `background-color: var(--bg-primary-critical;`.
+Use it for a serious error/problem message concerning the whole website. Notice has `background-color: var(--bg-primary-critical`.
 
 ![global-notice](static/gnotice-danger.png)
 

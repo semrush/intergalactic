@@ -28,9 +28,9 @@ Our ProgressBar has three sizes.
 
 | Size | Appearance                               | Styles                                                   | Where to use                                                          |
 | ---- | ---------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------- |
-| L    | ![L sise progressbar](static/size-l.png) | `height: 12px;`, `border-radius: var(--rounded-medium);` | Use in modal windows, on the start screen when launching the product. |
-| M    | ![M size progressbar](static/size-m.png) | `height: 8px;`, `border-radius: var(--rounded-medium);`  | Use inside the product.                                               |
-| S    | ![S size progressbar](static/size-s.png) | `height: 4px;`, `border-radius: var(--rounded-medium);`  | Use in widgets inside reports/products.                               |
+| L    | ![L sise progressbar](static/size-l.png) | `height: 12px`, `border-radius: var(--rounded-medium)` | Use in modal windows, on the start screen when launching the product. |
+| M    | ![M size progressbar](static/size-m.png) | `height: 8px`, `border-radius: var(--rounded-medium)`  | Use inside the product.                                               |
+| S    | ![S size progressbar](static/size-s.png) | `height: 4px`, `border-radius: var(--rounded-medium)`  | Use in widgets inside reports/products.                               |
 
 @## Themes and styles
 
@@ -40,8 +40,8 @@ Both themes use `--progress-bar-value` token for color with the gradient pattern
 
 | Theme  | Appearance                                            | Styles                                       |
 | ------ | ----------------------------------------------------- | -------------------------------------------- |
-| invert | ![progressbar with invert theme](static/size-l.png)   | `background: var(--progress-bar-bg);`        |
-| dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: var(--progress-bar-bg-invert);` |
+| Invert | ![progressbar with invert theme](static/size-l.png)   | `background: var(--progress-bar-bg)`        |
+| Dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: var(--progress-bar-bg-invert)` |
 
 @## Interaction
 

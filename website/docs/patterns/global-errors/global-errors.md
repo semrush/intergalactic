@@ -12,8 +12,8 @@ tabName: Design
 
 Composition, styles, and margins of the message:
 
-- For an image in svg format use `width: 240px;`, `height: 240px;`, `margin-right: 40px;`.
-- For title use text with 36px size (`--fs-700; --lh-700;`), `--text-primary` color and `margin-bottom: 16px`.
+- For an image in svg format use `width: 240px`, `height: 240px`, `margin-right: 40px`.
+- For title use text with 36px size (`--fs-700; --lh-700`), `--text-primary` color and `margin-bottom: 16px`.
 - For message text use text with 14px size (`--fs-200`,`--lh-200`), `--text-primary` color and `margin-bottom: 24px`.
 - For CTA use buttons with L size (optional).
 - Captcha (optional).
@@ -31,7 +31,7 @@ Composition, styles, and margins of the message:
 
 ### Positioning on the page
 
-The message is centered horizontally and vertically. Give a container with an error message a relative height — `height: height: 70vh;`.
+The message is centered horizontally and vertically. Give a container with an error message a relative height — `height: height: 70vh`.
 
 ![global errors positioning](static/ge_page-not-found.png)
 

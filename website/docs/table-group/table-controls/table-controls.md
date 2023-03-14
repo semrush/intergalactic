@@ -27,7 +27,7 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 - The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. Icon has M size and `--icon-secondary-neutral` token for color.
 - The row that opened additional data from must remain highlighted. The `active` state of a row has `--table-td-cell-active` token as background color.
 - When the row with accordion is opened, the `ChevronRight` icon should change to `ChevronDown` of the same size and color.
-- The row inside the accordion has `background-color: var(--table-td-cell-actions-accordion);` and `border-bottom: 1px solid var(--border-table-accent);`. It is necessary so that when several rows with accordion are opened, they do not visually merge with each other.
+- The row inside the accordion has `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-table-accent)`. It is necessary so that when several rows with accordion are opened, they do not visually merge with each other.
 
 ![table with accordion](static/accordion.png)
 
@@ -38,7 +38,7 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 
 ![table with accordion](static/accordion-2.png)
 
-In the `active` state, the cell must be additionally highlighted with the `background-color: var(--table-td-cell-active);`. And the `ChevronRight` icon changes to `ChevronDown` icon of the same size and color.
+In the `active` state, the cell must be additionally highlighted with the `background-color: var(--table-td-cell-active)`. And the `ChevronRight` icon changes to `ChevronDown` icon of the same size and color.
 
 ![table with accordion](static/accordion-3.png)
 
@@ -98,7 +98,7 @@ If there are any other clickable icons in the row, then the edit icon should alw
 
 @## Highlighting content
 
-When searching a table, sometimes you need to highlight the match in the data. In this case, highlight what you've found with the `background-color: var(--bg-highlight-results);`.
+When searching a table, sometimes you need to highlight the match in the data. In this case, highlight what you've found with the `background-color: var(--bg-highlight-results)`.
 
 ![table highlight](static/table-highlight.png)
 
@@ -206,7 +206,7 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 | Appearance                                         | Styles                                                                              |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| ![action row scroll](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion);` and `border-bottom: 1px solid var(--border-secondary);` |
+| ![action row scroll](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-secondary)` |
 
 ### The actions and rules of use
 

@@ -27,13 +27,13 @@ The component has two sizes: M and L.
 
 | Size                    | Margins | Usage         |
 | ----------------------- | ---------- | ---------------------------------------------------- |
-| M    | ![dot-m](static/dot-m.png)     | Use it to mark text items inside the list.               |
-|      | ![dot-margins-s](static/s-margins.png)      |     |
-|      | ![dot-in-list](static/mc-notifications-yes.png) | Use it to mark images/controls inside the list.     |
-| L    | ![dot-l](static/dot-l.png)                      | Use it to mark controls from the outside.           |
-|      | ![dot-margins-l](static/l-margins.png)  |                                                         |
-| L with a counter inside | ![dot-xl](static/dot-on.png)                    | Use it to mark controls from the outside and show the number of updates. |
-|      | ![dot-margins-xl](static/xl-margins.png)        |                                                                             |
+| M    | ![](static/dot-m.png)     | Use it to mark text items inside the list.               |
+|      | ![](static/s-margins.png)      |     |
+|      | ![](static/mc-notifications-yes.png) | Use it to mark images/controls inside the list.     |
+| L    | ![](static/dot-l.png)                      | Use it to mark controls from the outside.           |
+|      | ![](static/l-margins.png)  |                                                         |
+| L with a counter inside | ![](static/dot-on.png)                    | Use it to mark controls from the outside and show the number of updates. |
+|      | ![](static/xl-margins.png)        |                                                                             |
 
 @## Location
 
@@ -55,32 +55,32 @@ The dot may contain a notification counter, and for more information about this,
 
 |                   | Appearance example                        |
 | ----------------- | ----------------------------------------- |
-| without a counter | ![dot-without-counter](static/button.png) |
-| with a counter    | ![dot-with-counter](static/counter.png)   |
+| without a counter | ![](static/button.png) |
+| with a counter    | ![](static/counter.png)   |
 
 If there is one update, show a dot without a counter inside.
 
-![icon-with-dot](static/icon.png)
+![](static/icon.png)
 
 If there are more than nine updates, shorten the value displayed in the counter to 9+. When the counter with a large value is used inside the dot, it “grows” only inside the control.
 
 > Note that this behavior is not implemented in the component.
 
-![overflown-counter](static/counter-2.png)
+![](static/counter-2.png)
 
 @## Usage with different controls
 
 The dot has a standard size, making it compatible with controls of various types and sizes.
 
-![buttons with dot](static/buttons.png)
+![](static/buttons.png)
 
-![buttons with dot](static/buttons-2.png)
+![](static/buttons-2.png)
 
-![select with dot](static/select-2.png)
+![](static/select-2.png)
 
-![pills with dot](static/pills.png)
+![](static/pills.png)
 
-![tabs with dot](static/tabs.png)
+![](static/tabs.png)
 
 @## Interaction
 

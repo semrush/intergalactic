@@ -48,9 +48,9 @@ Note that this type is design-only yet.
 
 |        | Appearance                                       |
 | ------ | ------------------------------------------------ |
-| normal | ![pills-add-normal](static/pills-add-normal.png) |
-| hover  | ![normal_active](static/pills-add-hover.png)     |
-| active | ![normal_active](static/pills-add-active.png)    |
+| Normal | ![pills-add-normal](static/pills-add-normal.png) |
+| Hover  | ![normal_active](static/pills-add-hover.png)     |
+| Active | ![normal_active](static/pills-add-active.png)    |
 
 @## Interaction
 
@@ -59,11 +59,11 @@ Note that this type is design-only yet.
 |                                        | Appearance                                   |
 | -------------------------------------- | -------------------------------------------- |
 | skeleton (initial loading of the page) | ![normal_loading](static/skeleton.png)       |
-| normal, active                         | ![normal_active](static/normal_active.png)   |
-| hover                                  | ![normal_hover](static/hover.png)            |
-| disabled                               | ![normal_disabled](static/disabled.png)      |
-| disabled pill                          | ![normal_disabled](static/disabled-pill.png) |
-| loading                                | ![normal_loading](static/loading.png)        |
+| Normal, active                         | ![normal_active](static/normal_active.png)   |
+| Hover                                  | ![normal_hover](static/hover.png)            |
+| Disabled                               | ![normal_disabled](static/disabled.png)      |
+| Disabled pill                          | ![normal_disabled](static/disabled-pill.png) |
+| Loading                                | ![normal_loading](static/loading.png)        |
 
 @## Use in UX/UI
 

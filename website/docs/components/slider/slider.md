@@ -59,9 +59,9 @@ You can show values under the input.
 
 | State        | Description                                                                                                                                                 | Appearance                                                              |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| default      | Knob size is `20px * 20px`.                                                                                                                                 | ![default slider styles](static/default.png)                            |
-| hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. Change the cursor to `pointer`. | ![slider hover](static/bar-hover.png) ![slider hover](static/hover.png) |
-| active/focus | The slider knob scales to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state.                              | ![slider active](static/active.png)                                     |
+| Default      | Knob size is `20px * 20px`.                                                                                                                                 | ![default slider styles](static/default.png)                            |
+| Hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. Change the cursor to `pointer`. | ![slider hover](static/bar-hover.png) ![slider hover](static/hover.png) |
+| Active/focus | The slider knob scales to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state.                              | ![slider active](static/active.png)                                     |
 
 ### Linked input
 
@@ -73,7 +73,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 | State        | Description                                                                                                 | Appearance                                           |
 | ------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| active/focus | By clicking on the input, the slider knob is pulled to the corresponding value and gets the `active` state. | ![slider with linked input](static/linked-input.png) |
+| Active/focus | By clicking on the input, the slider knob is pulled to the corresponding value and gets the `active` state. | ![slider with linked input](static/linked-input.png) |
 
 - If the input has a maximum value, and the user entered a value greater than the maximum, show a warning tooltip with an appropriate message.
 

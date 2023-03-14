@@ -24,7 +24,7 @@ Use the carousel as an additional highlight of important website features and in
 3. Slide with content: `Carousel.Item`. Slide contains image, video or another type of information.
 4. Container for items: `Carousel.Container`.
 
-![carousel scheme](static/carousel-scheme.png)
+![](static/carousel-scheme.png)
 
 @## Appearance
 
@@ -34,25 +34,25 @@ Component has default styles, but you can change them depending on your task.
 
 |                         | Default styles                                                        |
 | ----------------------- | --------------------------------------------------------------------- |
-| Navigation buttons      | Use L size for Chevron icons, `color: var(--icon-secondary-neutral);` |
-| Slides number indicator | `indicator size: 12px * 12px;` `color: var(--bg-secondary-neutral);`  |
-| Content slide           | `border-radius: var(--rounded-medium);`                               |
+| Navigation buttons      | Use L size for Chevron icons, `color: var(--icon-secondary-neutral)` |
+| Slides number indicator | `indicator size: 12px * 12px` `color: var(--bg-secondary-neutral)`  |
+| Content slide           | `border-radius: var(--rounded-medium)`                               |
 
 Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) should be stretched to the height of the content.
 
-![click zone scheme](static/click-zone-scheme.png)
+![](static/click-zone-scheme.png)
 
 ### Margins
 
-![carousel margins](static/carousel-margins-1.png)
+![](static/carousel-margins-1.png)
 
-![carousel margins](static/carousel-margins-2.png)
+![](static/carousel-margins-2.png)
 
 ### Example with dark background
 
 This example has the same styles as the example on the light background.
 
-![carousel with dark background](static/carousel-dark.png)
+![](static/carousel-dark.png)
 
 @## States
 
@@ -62,30 +62,20 @@ Navigation buttons are always center aligned.
 
 | State    | Arrearance example                      | Styles                                               |
 | -------- | --------------------------------------- | ---------------------------------------------------- |
-| default  | ![default button](static/default.png)   | `color: var(--icon-secondary-neutral);`              |
-| hover    | ![button with hover](static/hover.png)  | `color: var(--icon-secondary-neutral-hover-active);` |
-| disabled | ![disabled button](static/disabled.png) | `opacity: var(--disabled-opacity);`                  |
-
-<!-- ![center aligned buttons example](static/arrows-1.png)
-
-![center aligned buttons example](static/arrows-2.png)
-
-In the fullscreen mode, the navigation buttons don't cover the content.
-
-![fullscreen buttons example](static/fullscreen-1.png)
-
-![fullscreen buttons example](static/fullscreen-2.png) -->
+| Default  | ![](static/default.png)   | `color: var(--icon-secondary-neutral)`              |
+| Hover    | ![](static/hover.png)  | `color: var(--icon-secondary-neutral-hover-active)` |
+| Disabled | ![](static/disabled.png) | `opacity: var(--disabled-opacity)`                  |
 
 ### Slides number indicators
 
-![slides number indicators states](static/default-indicators.png)
+![](static/default-indicators.png)
 
 | State    | Styles                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------- |
-| default  | `color: var(--bg-secondary-neutral);`, `border: 1px solid var(--border-secondary);`       |
-| hover    | `color: var(--bg-secondary-neutral-hover);`, `border: 1px solid var(--border-secondary);` |
-| active   | `color: var(--bg-primary-muted);`                                                         |
-| disabled | `opacity: var(--disabled-opacity);`                                                       |
+| Default  | `color: var(--bg-secondary-neutral)`, `border: 1px solid var(--border-secondary)`       |
+| Hover    | `color: var(--bg-secondary-neutral-hover)`, `border: 1px solid var(--border-secondary)` |
+| Active   | `color: var(--bg-primary-muted)`                                                         |
+| Disabled | `opacity: var(--disabled-opacity)`                                                       |
 
 @## Animation
 
