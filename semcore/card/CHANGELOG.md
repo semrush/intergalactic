@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.0] - 2023-03-15
+
+### Removed
+
+- Removed `Card.Title` wrapper
+
 ## [4.2.22] - 2023-03-13
 
 ### Changed
