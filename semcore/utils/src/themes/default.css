@@ -304,9 +304,25 @@
   /* Value color of the ProgressBar. */
   --intergalactic-progress-bar-value: #009f81;
   /* Value with gradient for the ProgressBar. */
-  --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%);
+  --intergalactic-progress-bar-value-gradient: linear-gradient(
+    -45deg,
+    rgba(0, 159, 129, 0.9) 25%,
+    rgba(0, 159, 129, 1) 0%,
+    rgba(0, 159, 129, 1) 50%,
+    rgba(0, 159, 129, 0.9) 0%,
+    rgba(0, 159, 129, 0.9) 75%,
+    rgba(0, 159, 129, 1) 0%
+  );
   /* Null value gradient for the ProgressBar. */
-  --intergalactic-progress-bar-pattern-gradient: linear-gradient(-45deg, rgba(224, 225, 233, 0.9) 25%, rgba(224, 225, 233, 1) 0%, rgba(224, 225, 233, 1) 50%, rgba(224, 225, 233, 0.9) 0%, rgba(224, 225, 233, 0.9) 75%, rgba(224, 225, 233, 1) 0%);
+  --intergalactic-progress-bar-pattern-gradient: linear-gradient(
+    -45deg,
+    rgba(224, 225, 233, 0.9) 25%,
+    rgba(224, 225, 233, 1) 0%,
+    rgba(224, 225, 233, 1) 50%,
+    rgba(224, 225, 233, 0.9) 0%,
+    rgba(224, 225, 233, 0.9) 75%,
+    rgba(224, 225, 233, 1) 0%
+  );
   /* Base value background for the ProgressBar. It is used to create gradients for the values. */
   --intergalactic-progress-bar-value-bg: #000000;
   /* Default color for the Skeleton. */
@@ -321,7 +337,11 @@
   --intergalactic-table-th-primary-cell-active: #e0e1e9;
   /* Background of the header cell in the secondary Table. */
   --intergalactic-table-th-secondary-cell: #ffffff;
-  --intergalactic-table-th-gradient: linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%);
+  --intergalactic-table-th-gradient: linear-gradient(
+    to right,
+    rgba(224, 225, 233, 0) 0%,
+    rgba(224, 225, 233, 1) 100%
+  );
   /* Background of the default cell in the Table. */
   --intergalactic-table-td-cell: #ffffff;
   /* Background of the default hovered cell in the Table. */
@@ -367,11 +387,11 @@
   /* Youtube brand color. */
   --intergalactic-brand-youtube: #ff0000;
   /* Facebook brand color. */
-  --intergalactic-brand-facebook: #1877F2;
+  --intergalactic-brand-facebook: #1877f2;
   /* LinkedIn brand color. */
-  --intergalactic-brand-linkedIn: #0A66C2;
+  --intergalactic-brand-linkedIn: #0a66c2;
   /* Twitter brand color. */
-  --intergalactic-brand-twitter: #1D9BF0;
+  --intergalactic-brand-twitter: #1d9bf0;
   /* Google brand color for the link. */
   --intergalactic-brand-google-blue: #1a0dab;
   /* Google green brand color for the link. */
@@ -380,11 +400,13 @@
   --intergalactic-brand-google-my-business: #1a73e8;
   --intergalactic-brand-tertiary: #ff642d;
   /* Default shadow of the Card. */
-  --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12);
+  --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
+    0px 1px 2px 0px rgba(25, 27, 35, 0.12);
   /* Hover state for the shadow of the Card with hover state. */
   --intergalactic-box-shadow-card-hover: 3px 3px 30px 0px rgba(25, 27, 35, 0.15);
   /* Shadow for show that element are being drag-and-drop. */
-  --intergalactic-box-shadow-dnd: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 12px 40px 0px rgba(25, 27, 35, 0.16);
+  --intergalactic-box-shadow-dnd: 0px 0px 1px 0px rgba(25, 27, 35, 0.16),
+    0px 12px 40px 0px rgba(25, 27, 35, 0.16);
   /* Default shadow if the Modal window. */
   --intergalactic-box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
   /* Default shadow of all Poppers, Dropdowns and Tooltips. */
@@ -527,21 +549,53 @@
   /* Inverted border of the components that are combined with neighbor-location property. */
   --intergalactic-neighbor-location-invert: rgba(0, 0, 0, 0.5);
   /* Left-to-right fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-left: linear-gradient(to right, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-left: linear-gradient(
+    to right,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
   /* Right-to-left fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-right: linear-gradient(to left, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-right: linear-gradient(
+    to left,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
   /* Top-to-bottom fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-top: linear-gradient(to bottom, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-top: linear-gradient(
+    to bottom,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
   /* Bottom-to-top fade shadow for the ScrollArea. */
-  --intergalactic-scroll-area-shadow-bottom: linear-gradient(to top, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
+  --intergalactic-scroll-area-shadow-bottom: linear-gradient(
+    to top,
+    rgba(25, 27, 35, 0.1) 20.55%,
+    rgba(255, 255, 255, 0.0001) 100%
+  );
   /* Left-to-right fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-left: linear-gradient(to right, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-left: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
   /* Right-to-left fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-right: linear-gradient(to left, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-right: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
   /* Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(to top, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
   /* Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu. */
-  --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(to bottom, rgba(255, 255, 255, 1) 34.38%, rgba(255, 255, 255, 0) 100%);
+  --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 34.38%,
+    rgba(255, 255, 255, 0) 100%
+  );
   /* Background color for ScrollBar. */
   --intergalactic-scroll-bar-background: rgba(25, 27, 35, 0.3);
   /* Primary gray tag. */
