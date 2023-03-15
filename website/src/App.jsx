@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.css';
 import { BrowserRouter, StaticRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
@@ -7,6 +7,8 @@ import iconRotate from 'static/favicon/favicon-rotate.png';
 import './main.css';
 import { HappyNewYear } from './components/HappyNewYear';
 import { initAmplitude } from './utils/amplitude';
+import lightTheme from '@semcore/utils/src/themes/light.json';
+import darkTheme from '@semcore/utils/src/themes/dark.json';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -44,6 +46,16 @@ const Router = !globalThis.__ssr
     };
 
 export function App() {
+  const [currentTheme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const theme = currentTheme === 'light' ? Object.entries(lightTheme) : Object.entries(darkTheme);
+    const r = document.querySelector(':root');
+    for (let i = 0; i < theme.length; i++) {
+      r.style.setProperty(theme[i][0], theme[i][1]);
+    }
+  }, [currentTheme]);
+
   return (
     <>
       <Helmet>
@@ -62,7 +74,7 @@ export function App() {
           <a className={styles.skipToContent} href="#main-content">
             Skip to content
           </a>
-          <Header />
+          <Header theme={currentTheme} setTheme={setTheme} />
           <Switch>
             <Route exact path="/">
               <Home />

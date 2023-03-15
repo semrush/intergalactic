@@ -13,7 +13,7 @@
 
 .wrapperPlayground {
   display: flex;
-  border: 1px solid #dee3e5;
+  border: 1px solid var(--intergalactic-border-secondary);
   overflow: hidden;
   border-radius: var(--intergalactic-rounded-medium);
   height: auto;
@@ -62,8 +62,8 @@
   width: 30%;
   padding: var(--intergalactic-spacing-8x);
   font-size: var(--intergalactic-fs-200);
-  background-color: #f9f9f9;
-  border-left: 1px solid #dee3e5;
+  background-color: var(--intergalactic-bg-secondary-neutral);
+  border-left: 1px solid var(--intergalactic-border-secondary);
   overflow-y: auto;
 }
 

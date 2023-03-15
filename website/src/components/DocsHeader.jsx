@@ -84,7 +84,6 @@ export default function (props) {
         <Box mr={5}>
           <Link
             size={300}
-            color="#171A22"
             target="_blank"
             href="https://www.figma.com/@semrush"
             onClick={() =>
@@ -104,7 +103,6 @@ export default function (props) {
             <Box mr={5}>
               <Link
                 size={300}
-                color="#171A22"
                 target="_blank"
                 href={`https://www.npmjs.com/package/@semcore/ui`}
                 onClick={() =>
@@ -115,15 +113,14 @@ export default function (props) {
                 }
               >
                 <Link.Addon>
-                  <BracketsCodeM />
+                  <BracketsCodeM color="var(--intergalactic-icon-non-interactive)" />
                 </Link.Addon>
-                <Link.Text>NPM</Link.Text>
+                <Link.Text className={styles.linkText}>NPM</Link.Text>
               </Link>
             </Box>
             <Box mr={5}>
               <Link
                 size={300}
-                color="#171A22"
                 target="_blank"
                 href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
                 onClick={() =>
@@ -134,7 +131,11 @@ export default function (props) {
                 }
               >
                 <Link.Addon>
-                  <GitHubM width={18} height={18} />
+                  <GitHubM
+                    color="var(--intergalactic-icon-non-interactive)"
+                    width={18}
+                    height={18}
+                  />
                 </Link.Addon>
               </Link>
             </Box>
@@ -148,7 +149,6 @@ export default function (props) {
             <Tooltip.Trigger>
               <Link
                 size={300}
-                color="#171A22"
                 target="_blank"
                 href={`https://github.com/semrush/intergalactic/edit/master/website/docs/${sourcePath}`}
                 onClick={() =>
@@ -159,14 +159,15 @@ export default function (props) {
                 }
               >
                 <Link.Addon>
-                  <EditM color="#898D9A" />
+                  <EditM color="var(--intergalactic-icon-non-interactive)" />
                 </Link.Addon>
-                <Link.Text>Edit page</Link.Text>
+                <Link.Text className={styles.linkText}>Edit page</Link.Text>
               </Link>
             </Tooltip.Trigger>
             <Tooltip.Popper>
               <Text tag="p">
-                If you notice an error or typo, please help us find and fix it. Fork the project and send us the changes. Thank you!
+                If you notice an error or typo, please help us find and fix it. Fork the project and
+                send us the changes. Thank you!
               </Text>
             </Tooltip.Popper>
           </Tooltip>

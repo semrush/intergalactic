@@ -56,6 +56,7 @@
   margin-bottom: calc(var(--intergalactic-spacing-1x) + 2px);
   width: 30px;
   height: 30px;
+  fill: var(--intergalactic-brand-tertiary);
 }
 .devportalLink {
   display: flex;
@@ -135,6 +136,9 @@
 }
 
 @media (max-width: 768px) {
+  .themeToggle {
+    display: none;
+  }
   .headerMain {
     column-gap: 0;
   }

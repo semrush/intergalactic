@@ -1,6 +1,8 @@
 :root {
-  --intergalactic-control-lift-me-up: #e0e1e9;
-  --intergalactic-control-lift-me-up-hover-active: #c4c7cf;
-  --intergalactic-box-shadow-top-menu: 5px 8px 25px 0px rgba(25, 27, 35, 0.1);
-  --intergalactic-box-shadow-principles: 10px 10px 45px 0px rgba(25, 27, 35, 0.14);
+  --intergalactic-control-lift-me-up: #6c6e79;
+  --intergalactic-control-lift-me-up-hover-active: #484a54;
+  /* Default shadow of the top-menu. */
+  --intergalactic-box-shadow-top-menu: 5px 8px 25px 0px rgba(25, 27, 35, 0.4);
+  /* Default shadow of the principles card. */
+  --intergalactic-box-shadow-principles: 10px 10px 45px 0px rgba(25, 27, 35, 0.3);
 }

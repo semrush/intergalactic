@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
-import mobileLogo from '../static/logo/semrush-logo.svg';
 import HamburgerL from '@semcore/icon/Hamburger/l';
 import CloseL from '@semcore/icon/Close/l';
 import SearchL from '@semcore/icon/Search/l';
+import TimeDayL from '@semcore/icon/TimeDay/l';
+import TimeNightL from '@semcore/icon/TimeNight/l';
+import SemrushL from '@semcore/icon/Semrush/l';
+import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import SearchHome from './SearchHome';
 import SideBarNavigation from './SideBarNavigation';
 import Divider from '@semcore/divider';
@@ -16,7 +19,7 @@ import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
 import { logEvent } from '../utils/amplitude';
 
-function Header() {
+function Header({ theme, setTheme }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
 
@@ -38,7 +41,7 @@ function Header() {
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
           <a className={styles.devportalLink} href="/" onClick={() => logEvent('logo_dev:click')}>
-            <img src={mobileLogo} className={styles.semrushLogo} alt="Logo" aria-hidden="true" />
+            <SemrushL className={styles.semrushLogo} />
             <Tooltip>
               <Tooltip.Trigger className={styles.devportalLink__mobile}>
                 <span className={styles.devportalTitle} aria-label="Go to Semrush Developer Portal">
@@ -96,12 +99,27 @@ function Header() {
             href="https://github.com/semrush/intergalactic"
             target="_blank"
             rel="noopener noreferrer nofollow"
-            color="#171a22"
+            color="var(--intergalactic-icon-non-interactive)"
           >
             GitHub
           </LinkKit>
         </span>
       </nav>
+      <span className={styles.themeToggle}>
+        {theme === 'light' ? (
+          <TimeNightL
+            interactive
+            color="var(--intergalactic-icon-non-interactive)"
+            onClick={() => setTheme('dark')}
+          />
+        ) : (
+          <TimeDayL
+            interactive
+            color="var(--intergalactic-icon-non-interactive)"
+            onClick={() => setTheme('light')}
+          />
+        )}
+      </span>
       {menuVisible && (
         <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
           <nav className={styles.mobileMenu}>
@@ -122,6 +140,22 @@ function Header() {
               >
                 GitHub
               </a>
+              <span>
+                {`${capitalizeFirstLetter(theme)} theme`}
+                {theme === 'light' ? (
+                  <TimeNightL
+                    interactive
+                    color="var(--intergalactic-icon-non-interactive)"
+                    onClick={() => setTheme('dark')}
+                  />
+                ) : (
+                  <TimeDayL
+                    interactive
+                    color="var(--intergalactic-icon-non-interactive)"
+                    onClick={() => setTheme('light')}
+                  />
+                )}
+              </span>
             </div>
             <div className={styles.mobileMenuDivider}>
               <Divider orientation="horizontal" />

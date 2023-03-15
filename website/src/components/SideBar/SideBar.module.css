@@ -3,7 +3,7 @@
   height: 100%;
   color: var(--intergalactic-text-primary);
   margin-right: initial;
-  background: white;
+  background: var(--intergalactic-bg-primary-neutral);
   padding: var(--intergalactic-spacing-6x) var(--intergalactic-spacing-8x)
     var(--intergalactic-spacing-8x);
   position: relative;
