@@ -8,13 +8,32 @@ export interface INoticeBubbleContainerProps extends IBoxProps, IPortalProps {
   locale?: string;
 }
 
+export interface INoticeBubbleProps extends IBoxProps {
+  /**
+   * Notice visibility.
+   */
+  visible?: boolean;
+  /**
+   * Control under the notice children.
+   * */
+  action?: React.ReactNode;
+  /**
+   * Callback triggered by "Close" icon click.
+   * */
+  onClose?: (e?: React.SyntheticEvent) => void;
+  /**
+   * Notice content.
+   * */
+  children: React.ReactNode;
+}
 export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
   readonly type?: 'info';
-  /** Notice display duration
-   * @default 5000
+  /**
+   * Notice display duration.
    */
   duration?: number;
-  /** Enables animation on first rendering
+  /**
+   * Enables animation on first rendering.
    * @default false
    */
   initialAnimation?: boolean;
@@ -23,89 +42,83 @@ export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
 export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
   readonly type?: 'warning';
   /**
-   * Notice display duration
-   * @default 0
+   * Notice display duration.
    */
   duration?: number;
-  /** Enables animation on first rendering
+  /**
+   * Enables animation on first rendering.
    * @default false
    */
   initialAnimation?: boolean;
 }
 
-export interface INoticeBubbleProps extends IBoxProps {
-  /**
-   * Manager instance
-   * @default NoticeBubbleManager()
-   */
-  manager?: INoticeBubbleManager;
-  /**
-   * Notice visibility
-   */
-  visible?: boolean;
-  /** Adds controls (buttons, etc.) */
-  action?: React.ReactNode;
-
-  /** Triggered when the notice is closed */
-  onClose?: (e?: React.SyntheticEvent) => void;
-}
-
 export interface INoticeBubbleManager {
   /**
-   * Adding a notice.
-   * Takes the props properties of NoticeBubble.
-   *  Returns an object with the uid and the update, remove functions.
+   * Creates and shows a notice.
    * */
-  add: (props: object) => {
+  add: (props: INoticeBubbleInfoProps | INoticeBubbleWarningProps) => {
     uid: string;
-    update: (props: object) => boolean;
+    update: (
+      props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
+    ) => boolean;
     remove: () => boolean;
   };
   /**
-   * Updates the notice by uid.
-   * Takes the uid-unique identifier and the props-properties of NoticeBubble.
-   *  Returns a successful or unsuccessful update.
+   * Updates notice by uid.
    * */
-  update: (uid: string, props: object) => boolean;
+  update: (
+    uid: string,
+    props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
+  ) => boolean;
   /**
-   * Deletes the notice by uid.
-   * Takes an uid-unique identifier.
-   * Returns a successful or unsuccessful deletion.
+   * Removes notice by uid.
    * */
   remove: (uid: string) => boolean;
 }
 
+/**
+ * @deprecated use `NoticeBubbleManager` instead.
+ * */
 declare const NoticeBubble: <T>(props: INoticeBubbleInfoProps & T) => ReturnEl;
+/**
+ * @deprecated use `NoticeBubbleManager` instead.
+ * */
 declare const NoticeBubbleWarning: <T>(props: INoticeBubbleWarningProps & T) => ReturnEl;
 declare const NoticeBubbleContainer: (<T>(
   props: CProps<INoticeBubbleContainerProps & T>,
 ) => ReturnEl) & {
+  /**
+   * @deprecated use `NoticeBubbleManager` instead.
+   * */
   Info: typeof NoticeBubble;
+
+  /**
+   * @deprecated use `NoticeBubbleManager` instead.
+   * */
   Warning: typeof NoticeBubbleWarning;
 };
 declare class NoticeBubbleManager implements INoticeBubbleManager {
   /**
-   * Adding a notice.
-   * Takes the props properties of NoticeBubble.
-   *  Returns an object with the uid and the update, remove functions.
+   * Creates and shows a notice.
    * */
-  add(props: object): {
+  add: (props: INoticeBubbleInfoProps | INoticeBubbleWarningProps) => {
     uid: string;
-    update: (props: object) => boolean;
+    update: (
+      props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
+    ) => boolean;
     remove: () => boolean;
   };
   /**
-   * Updates the notice by uid.
-   * Takes the uid-unique identifier and the props-properties of NoticeBubble.
-   *  Returns a successful or unsuccessful update.
+   * Updates notice by uid.
    * */
-  update(uid: string, props: object): boolean;
+  update: (
+    uid: string,
+    props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
+  ) => boolean;
   /**
-   * Deletes the notice by uid.
-   * Takes an uid-unique identifier.
-   * Returns a successful or unsuccessful deletion.
+   * Removes notice by uid.
    * */
-  remove(uid: string): boolean;
+  remove: (uid: string) => boolean;
 }
 
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };

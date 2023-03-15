@@ -23,9 +23,7 @@ class NoticeBubbleManager {
       type: 'info',
       ...props,
       onClose: callAllEventHandlers(props.onClose, () => {
-        if (props.visible === undefined) {
-          manager.remove(props.uid);
-        }
+        manager.remove(props.uid);
       }),
     };
   }
@@ -36,7 +34,11 @@ class NoticeBubbleManager {
 
   add(props) {
     const uid = this.counter++;
-    const item = this.createItem({ uid, ...props });
+    const item = this.createItem({
+      uid,
+      visible: props.initialAnimation ? true : undefined,
+      ...props,
+    });
     this.items.push(item);
     this.emit();
     return {
@@ -62,7 +64,14 @@ class NoticeBubbleManager {
   remove(uid) {
     const index = this.items.findIndex((item) => item.uid === uid);
     if (index !== -1) {
-      this.items.splice(index, 1);
+      this.items[index].visible = false;
+      setTimeout(() => {
+        const index = this.items.findIndex((item) => item.uid === uid);
+        if (index !== -1) {
+          this.items.splice(index, 1);
+          this.emit();
+        }
+      }, 1000);
       this.emit();
       return true;
     }

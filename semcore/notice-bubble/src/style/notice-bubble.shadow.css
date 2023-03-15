@@ -1,5 +1,4 @@
-SInfo,
-SWarning,
+SBubble,
 SView {
   position: relative;
   margin-bottom: var(--intergalactic-spacing-3x, 12px);
@@ -10,19 +9,25 @@ SView {
   border-radius: var(--intergalactic-popper-rounded, 6px);
   overflow: hidden;
   box-sizing: border-box;
+  color: var(--intergalactic-text-primary-invert, #ffffff);
+  gap: var(--intergalactic-spacing-2x, 8px);
+
+  &[type='info'] {
+    background: var(--intergalactic-bg-primary-invert, #191b23);
+  }
+  &[type='warning'] {
+    background: var(--intergalactic-bg-primary-critical, #ff4953);
+  }
 }
 
-SInfo {
-  background: var(--intergalactic-bg-primary-invert, #191b23);
-}
-
-SWarning {
-  background: var(--intergalactic-bg-primary-critical, #ff4953);
+SContent {
+  flex-direction: column;
+  gap: var(--intergalactic-spacing-2x, 8px);
+  flex: 1;
 }
 
 SMessage {
   font-size: var(--intergalactic-fs-200, 14px);
-  color: var(--intergalactic-text-primary-invert, #ffffff);
   line-height: var(--intergalactic-lh-100, 133%);
 }
 
@@ -39,10 +44,6 @@ SDismiss {
   }
 }
 
-SAction {
-  margin-top: var(--intergalactic-spacing-2x, 8px);
-}
-
 SNoticeBubble {
   width: 300px;
   position: fixed;
@@ -55,20 +56,32 @@ SNoticeBubble {
   }
 }
 
+SMessage a {
+  color: var(--intergalactic-text-link-invert, #8ecdff);
+}
+
 @keyframes enter {
   from {
     transform: translate(100%, 0);
+    max-height: 0;
+    overflow: hidden;
   }
   to {
     transform: translate(0, 0);
+    max-height: 100vh;
+    overflow: hidden;
   }
 }
 
 @keyframes exit {
   from {
+    max-height: 100vh;
+    overflow: hidden;
     opacity: 1;
   }
   to {
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
   }
 }
