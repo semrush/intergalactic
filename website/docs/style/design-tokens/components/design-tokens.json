@@ -529,7 +529,9 @@
     "rawValue": "{blue.200}",
     "computedValue": "#8ecdff",
     "description": "Inverted version of the link text. Use on dark background only.",
-    "components": []
+    "components": [
+      "notice-bubble"
+    ]
   },
   {
     "name": "--intergalactic-text-link-invert-hover",
