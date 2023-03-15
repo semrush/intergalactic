@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.7.0] - 2023-03-15
+
+### Added
+
+- Properties to add icons to notices.
+- `NoticeBubbleManager` method typings.
+- Documentation examples.
+
+### Fixed
+
+- Disappear animation of stacked notices.
+- Warning notices were not removable.
+- Default links color.
+
+### Changed
+
+- Deprecated adding notices by `NoticeBubble` and `NoticeBubbleWarning` without `NoticeBubbleManager`.
+
 ## [4.6.8] - 2023-03-13
 
 ### Changed
