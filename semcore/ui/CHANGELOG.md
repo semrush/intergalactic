@@ -1,3 +1,40 @@
+## [13.14.0] - 2023-03-15
+
+### @semcore/d3-chart
+
+- **Changed** Much improved a11y summary generation for `Radar` chart.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed color of selected period.
+
+### @semcore/modal
+
+- **Fixed** Fixed focus locking and returning.
+
+### @semcore/notice-bubble
+
+- **Added** Properties to add icons to notices.
+- **Added** `NoticeBubbleManager` method typings.
+- **Added** Documentation examples.
+- **Fixed** Disappear animation of stacked notices.
+- **Fixed** Warning notices were not removable.
+- **Fixed** Default links color.
+- **Changed** Deprecated adding notices by `NoticeBubble` and `NoticeBubbleWarning` without `NoticeBubbleManager`.
+- **Fixed** Fixed typings of exported `NoticeBubbleManager`.
+
+### @semcore/popper
+
+- **Fixed** Fixed focus locking and returning.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed focus locking and returning.
+
+### @semcore/utils
+
+- **Added** Added `lib/use/useFocusLock` util to control focus lock in popup components (like `Popper`-based, `Modal` and `Sidebar`).
+
 ## [13.13.1] - 2023-03-10
 
 ### @semcore/tooltip
