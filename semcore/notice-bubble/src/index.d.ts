@@ -101,7 +101,7 @@ declare class NoticeBubbleManager implements INoticeBubbleManager {
   /**
    * Creates and shows a notice.
    * */
-  add: (props: INoticeBubbleInfoProps | INoticeBubbleWarningProps) => {
+  add(props: INoticeBubbleInfoProps | INoticeBubbleWarningProps): {
     uid: string;
     update: (
       props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
@@ -111,14 +111,14 @@ declare class NoticeBubbleManager implements INoticeBubbleManager {
   /**
    * Updates notice by uid.
    * */
-  update: (
+  update(
     uid: string,
     props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
-  ) => boolean;
+  ): boolean;
   /**
    * Removes notice by uid.
    * */
-  remove: (uid: string) => boolean;
+  remove(uid: string): boolean;
 }
 
 export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };
