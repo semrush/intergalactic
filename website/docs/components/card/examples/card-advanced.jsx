@@ -20,7 +20,7 @@ export default () => (
     <Card.Header>
       <Flex alignItems="center" justifyContent="space-between">
         <Flex alignItems="center">
-          <Card.Title w="234px" noWrap inline hint={tooltipContent}>
+          <Card.Title hint={tooltipContent}>
             Market Traffic vs Selected Domains Trends
           </Card.Title>
         </Flex>
