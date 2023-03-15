@@ -5,6 +5,7 @@ const { render, fireEvent, cleanup, act } = testing;
 
 import {
   NoticeBubbleContainer,
+  NoticeBubbleManager,
   NoticeBubble as NoticeBubbleImport,
   NoticeBubbleWarning as NoticeBubbleWarningImport,
 } from '../src';
@@ -70,16 +71,18 @@ describe('NoticeBubble', () => {
   shouldSupportRef(NoticeBubble);
 
   test('should support handler for close', () => {
+    const manager = new NoticeBubbleManager();
     const spy = jest.fn();
-    const { getByTitle } = render(<NoticeBubble onClose={spy} />);
+    const { getByTitle } = render(<NoticeBubble onClose={spy} manager={manager} />);
     fireEvent.click(getByTitle('Close'));
     expect(spy).toBeCalled();
   });
 
   test('should support closing after some time', () => {
+    const manager = new NoticeBubbleManager();
     jest.useFakeTimers();
     const spy = jest.fn();
-    render(<NoticeBubble duration={300} onClose={spy} />);
+    render(<NoticeBubble duration={300} onClose={spy} manager={manager} />);
 
     act(() => jest.runAllTimers());
 
@@ -88,9 +91,10 @@ describe('NoticeBubble', () => {
   });
 
   test('should support the possibility of not closing', () => {
+    const manager = new NoticeBubbleManager();
     jest.useFakeTimers();
     const spy = jest.fn();
-    render(<NoticeBubble duration={0} onClose={spy} />);
+    render(<NoticeBubble duration={0} onClose={spy} manager={manager} />);
 
     act(() => jest.runAllTimers());
 
@@ -99,10 +103,17 @@ describe('NoticeBubble', () => {
   });
 
   test('should support hover for icon close', async () => {
+    const manager = new NoticeBubbleManager();
     const component = (
       <>
-        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
-        <NoticeBubbleImport id="notice">Message</NoticeBubbleImport>
+        <NoticeBubbleContainer
+          style={{ position: 'static', width: 'auto' }}
+          disablePortal
+          manager={manager}
+        />
+        <NoticeBubbleImport id="notice" manager={manager}>
+          Message
+        </NoticeBubbleImport>
       </>
     );
     expect(
@@ -111,11 +122,12 @@ describe('NoticeBubble', () => {
   });
 
   test('should support show more one notice', () => {
+    const manager = new NoticeBubbleManager();
     render(
       <React.Fragment>
-        <NoticeBubbleContainer data-testid="container" />
-        <NoticeBubbleImport data-testid="notice-1" visible />
-        <NoticeBubbleImport data-testid="notice-2" visible />
+        <NoticeBubbleContainer data-testid="container" manager={manager} />
+        <NoticeBubbleImport data-testid="notice-1" visible manager={manager} />
+        <NoticeBubbleImport data-testid="notice-2" visible manager={manager} />
       </React.Fragment>,
     );
 
@@ -125,10 +137,11 @@ describe('NoticeBubble', () => {
   });
 
   test('should support render outside dom', () => {
+    const manager = new NoticeBubbleManager();
     render(
       <React.Fragment>
-        <NoticeBubbleContainer data-testid="container" />
-        <NoticeBubbleImport data-testid="notice" visible />
+        <NoticeBubbleContainer data-testid="container" manager={manager} />
+        <NoticeBubbleImport data-testid="notice" visible manager={manager} />
       </React.Fragment>,
     );
 
@@ -137,24 +150,37 @@ describe('NoticeBubble', () => {
   });
 
   test('should render correctly', async () => {
+    const manager = new NoticeBubbleManager();
     const component = (
       <>
-        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
-        <NoticeBubbleWarningImport>Message</NoticeBubbleWarningImport>
-        <NoticeBubbleImport>Message</NoticeBubbleImport>
+        <NoticeBubbleContainer
+          style={{ position: 'static', width: 'auto' }}
+          disablePortal
+          manager={manager}
+        />
+        <NoticeBubbleWarningImport manager={manager}>Message</NoticeBubbleWarningImport>
+        <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
       </>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('should support action node', async () => {
+    const manager = new NoticeBubbleManager();
     const component = (
       <>
-        <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
-        <NoticeBubbleWarningImport action={<button data-testid="action">Action</button>}>
+        <NoticeBubbleContainer
+          style={{ position: 'static', width: 'auto' }}
+          disablePortal
+          manager={manager}
+        />
+        <NoticeBubbleWarningImport
+          action={<button data-testid="action">Action</button>}
+          manager={manager}
+        >
           Message
         </NoticeBubbleWarningImport>
-        <NoticeBubbleImport action={<button data-testid="action">Action</button>}>
+        <NoticeBubbleImport action={<button data-testid="action">Action</button>} manager={manager}>
           Message
         </NoticeBubbleImport>
       </>
@@ -163,10 +189,11 @@ describe('NoticeBubble', () => {
   });
 
   test('Should render correctly for screen size 760px', async () => {
+    const manager = new NoticeBubbleManager();
     const component = (
       <>
-        <NoticeBubbleContainer disablePortal />
-        <NoticeBubbleImport>Message</NoticeBubbleImport>
+        <NoticeBubbleContainer disablePortal manager={manager} />
+        <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
       </>
     );
     expect(
