@@ -7,29 +7,36 @@ export interface IRadarProps extends IContext {
   /**
    * Scale for radar element
    * */
-  scale: any
+  scale: any;
   /**
    * Graph type to be displayed
    * @default 'polygon'
    * */
-  type?: 'polygon' | 'circle',
+  type?: 'polygon' | 'circle';
   /**
    * Indent from the edge of svg to graph
    * */
-  offset?: number
+  offset?: number;
 
   /**
    * Label font size
    * @default 12
    * */
-  textSize?: number
+  textSize?: number;
+
+  /**
+   * Base angle of chart rotation
+   * @default 0
+   * @example Math.PI/3
+   * */
+  angleOffset?: number;
 }
 
 export interface IRadarAxisProps extends IContext {
   /**
    * Sets the field name for categories
    * */
-  dataKey: string
+  dataKey: string;
 }
 
 export interface IRadarAxisTicksProps {
@@ -37,7 +44,7 @@ export interface IRadarAxisTicksProps {
    * Distance between auxiliary lines
    * @default 100
    * */
-  tickSize?: number
+  tickSize?: number;
 }
 
 export interface IRadarAxisLabelsProps {
@@ -45,14 +52,14 @@ export interface IRadarAxisLabelsProps {
    * Indent from graph to label
    * @default 10
    * */
-  labelOffset?: number
+  labelOffset?: number;
 }
 
 export interface IRadialPolygonProps extends IContext {
   /**
    * Sets the field name for data
    * */
-  dataKey: string
+  dataKey: string;
   /**
    * Curve method
    * @default curveLinearClosed
@@ -61,29 +68,28 @@ export interface IRadialPolygonProps extends IContext {
   /**
    * Sets the color of the entire polygon
    * */
-  color?: string
+  color?: string;
   /**
    * Sets the fill color
    * */
-  fill?: string
+  fill?: string;
 }
 
 export interface IRadialPolygonLineProps {
   /**
    * Sets the line color
    * */
-  color?: string
+  color?: string;
 }
 
 export interface IRadialPolygonDotsProps {
   /**
    * Sets the dot color
    * */
-  color?: string
+  color?: string;
 }
 
-export interface IRadarHoverProps extends IContext {
-}
+export interface IRadarHoverProps extends IContext {}
 
 declare const Radar: (<T>(props: MapProps<IRadarProps & T>) => ReturnEl) & {
   Axis: (<T>(props: MapProps<IRadarAxisProps & T>) => ReturnEl) & {
@@ -94,7 +100,7 @@ declare const Radar: (<T>(props: MapProps<IRadarProps & T>) => ReturnEl) & {
     Line: <T>(props: MapProps<IRadialPolygonLineProps & T>) => ReturnEl;
     Dots: <T>(props: MapProps<IRadialPolygonDotsProps & T>) => ReturnEl;
   };
-  Hover: (<T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl)
+  Hover: <T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl;
 };
 
 export default Radar;
