@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.12.0] - 2023-03-16
+
+### Added
+
+- Add `angleOffset` parameter to `Radar` chart.
+
 ## [2.11.1] - 2023-03-16
 
 ### Changed

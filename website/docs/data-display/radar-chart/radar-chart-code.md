@@ -14,7 +14,7 @@ You can modify the range or use a non-linear scale.
 
 @## Color
 
-You can change the color by passing the `color` property to the `<Radar.Polygon/>`. 
+You can change the color by passing the `color` property to the `<Radar.Polygon/>`.
 It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and `<Radar.Polygon.Dots/>`.
 
 @example color
@@ -45,7 +45,7 @@ You must use the `<Radar.Hover/>` component to add interactivity.
 
 @## Circle
 
-To make the chart round, you need to pass the parameter `type="circle"`. 
+To make the chart round, you need to pass the parameter `type="circle"`.
 You can also round the polygons by passing the "curve" parameter from D3 into them.
 
 @example curve
@@ -55,3 +55,9 @@ You can also round the polygons by passing the "curve" parameter from D3 into th
 To change the distance between the grid lines, you need to change the value of the `tickSize` parameter.
 
 @example tick-size
+
+@## Rotated
+
+To change base angle of the chart, set `angleOffset` (in radians) parameter.
+
+@example rotate

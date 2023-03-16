@@ -11,21 +11,43 @@ import { CONSTANT, eventToPoint, measureText } from './utils';
 
 import style from './style/radar.shadow.css';
 
-function getAngle(i, range, func, total) {
-  const angle = ((total - i) * 2 * Math.PI) / total;
+const clampAngle = (angle) => {
+  angle = angle % (2 * Math.PI);
+  if (angle < 0) angle += 2 * Math.PI;
+  return angle;
+};
+
+function getBoxAxesValue(i, range, axes, total, angleOffset) {
+  const func = axes === 'y' ? Math.sin : Math.cos;
+
+  const angle = clampAngle(((total - i) * 2 * Math.PI) / total + angleOffset);
   return range * (1 - func(angle)) - range;
 }
 
-function getRadianPosition(i, range, total) {
-  return [getAngle(i, range, Math.sin, total), getAngle(i, range, Math.cos, total)];
+function getRadianPosition(i, range, total, angleOffset) {
+  return [
+    getBoxAxesValue(i, range, 'y', total, angleOffset),
+    getBoxAxesValue(i, range, 'x', total, angleOffset),
+  ];
 }
 
-function getLabelDirection(i, total) {
-  const angle = -Math.PI / 2 + (i / total) * (Math.PI * 2);
-  return [
-    Math.abs(angle) === Math.PI / 2 ? 'middle' : angle < Math.PI / 2 ? 'start' : 'end',
-    angle === Math.PI / 2 ? 'mathematical' : angle === -Math.PI / 2 ? 'alphabetic' : 'middle',
-  ];
+const getLabelXPlacement = (i, total, angleOffset) => {
+  const angle = clampAngle((i / total) * (Math.PI * 2) - angleOffset);
+  if (angle >= Math.PI + Math.PI * (8 / 9) || angle <= Math.PI * (1 / 9)) return 'middle';
+  if (angle >= Math.PI * (8 / 9) && angle <= Math.PI + Math.PI * (1 / 9)) return 'middle';
+
+  return angle < Math.PI ? 'start' : 'end';
+};
+const getLabelYPlacement = (i, total, angleOffset) => {
+  const angle = clampAngle((i / total) * (Math.PI * 2) - angleOffset);
+  if (angle >= Math.PI + Math.PI * (8 / 9) || angle <= Math.PI * (1 / 9)) return 'alphabetic';
+  if (angle >= Math.PI * (8 / 9) && angle <= Math.PI + Math.PI * (1 / 9)) return 'mathematical';
+
+  return 'middle';
+};
+
+function getLabelPlacement(i, total, angleOffset) {
+  return [getLabelXPlacement(i, total, angleOffset), getLabelYPlacement(i, total, angleOffset)];
 }
 
 function computeTextWidth(texts, textSize, defaultWidth = 50, defaultHeight = 20) {
@@ -107,6 +129,7 @@ class RadarRoot extends Component {
 
   static defaultProps = {
     type: 'polygon',
+    angleOffset: 0,
   };
 
   get id() {
@@ -129,16 +152,18 @@ class RadarRoot extends Component {
       offset: this.offset,
       textSize: this.textSize,
       type: this.asProps.type,
+      angleOffset: this.asProps.angleOffset,
     };
   }
 
   getPolygonProps({ dataKey }) {
-    const { data, scale } = this.asProps;
+    const { data, scale, angleOffset } = this.asProps;
 
     return {
       offset: this.offset,
       data: data[dataKey] || [],
       scale,
+      angleOffset,
     };
   }
 
@@ -147,6 +172,7 @@ class RadarRoot extends Component {
       type: this.asProps.type,
       offset: this.offset,
       categories: this.asProps.data[this.categoriesKey],
+      angleOffset: this.asProps.angleOffset,
     };
   }
 
@@ -187,7 +213,7 @@ class PolygonRoot extends Component {
   static displayName = 'Polygon';
   static style = style;
 
-  static defaultProps = ({ scale, curve = curveLinearClosed, size, offset }) => {
+  static defaultProps = ({ scale, curve = curveLinearClosed, size, offset, angleOffset }) => {
     scale.range([0, Math.min(size[0], size[1]) / 2 - offset]);
 
     return {
@@ -197,13 +223,14 @@ class PolygonRoot extends Component {
           return scale(d || 0);
         })
         .angle((d, i, data) => {
-          return (i / data.length) * 2 * Math.PI;
+          return (i / data.length) * 2 * Math.PI - angleOffset;
         }),
     };
   };
 
   getDotsProps() {
-    const { data, scale, color, transparent, dataKey, dataHintsHandler } = this.asProps;
+    const { data, scale, color, transparent, dataKey, dataHintsHandler, angleOffset } =
+      this.asProps;
     return {
       data,
       scale,
@@ -211,6 +238,7 @@ class PolygonRoot extends Component {
       transparent,
       categoryKey: dataKey,
       dataHintsHandler,
+      angleOffset,
     };
   }
 
@@ -238,12 +266,21 @@ function PolygonLine(props) {
 }
 
 function PolygonDots(props) {
-  const { Element: SPolygonDot, styles, color, data, scale, transparent, categoryKey } = props;
+  const {
+    Element: SPolygonDot,
+    styles,
+    color,
+    data,
+    scale,
+    transparent,
+    categoryKey,
+    angleOffset,
+  } = props;
   return data.map((value, i) => {
     if (value === null || value === undefined) return;
     const radius = scale(value);
     props.dataHintsHandler.describeGroupedValues(categoryKey, `${categoryKey}.${i}`);
-    const [cx, cy] = getRadianPosition(i, radius, data.length);
+    const [cx, cy] = getRadianPosition(i, radius, data.length, angleOffset);
     return sstyled(styles)(
       <SPolygonDot
         key={i}
@@ -299,11 +336,12 @@ class AxisRoot extends Component {
   }
 
   getLabelsProps({ labelOffset = 10 }) {
-    const { offset, categories, textSize } = this.asProps;
+    const { offset, categories, textSize, angleOffset } = this.asProps;
     return {
       categories,
       textSize,
       offset: offset - labelOffset,
+      angleOffset,
     };
   }
 
@@ -328,7 +366,7 @@ class AxisRoot extends Component {
   }
 
   render() {
-    const { Element: SAxis, styles, categories, size, offset, type } = this.asProps;
+    const { Element: SAxis, styles, categories, size, offset, type, angleOffset } = this.asProps;
     const { activeLineIndex } = this.state;
     const radius = Math.min(size[0], size[1]) / 2 - offset;
     const total = categories.length;
@@ -341,7 +379,7 @@ class AxisRoot extends Component {
           <SAxis render="path" d={this.createLineRadial(radius, total)(categories)} />
         )}
         {categories.map((category, i) => {
-          const [x, y] = getRadianPosition(i, radius, total);
+          const [x, y] = getRadianPosition(i, radius, total, angleOffset);
           const { className } = sstyled(styles).cn('SAxisLine', {
             active: activeLineIndex === i,
           });
@@ -369,12 +407,12 @@ function AxisTicks(props) {
 }
 
 function AxisLabels(props) {
-  const { Element: SAxisLabel, styles, textSize, size, offset, categories } = props;
+  const { Element: SAxisLabel, styles, textSize, size, offset, categories, angleOffset } = props;
   const radius = Math.min(size[0], size[1]) / 2 - offset;
 
   return categories.map((category, i) => {
-    const [x, y] = getRadianPosition(i, radius, categories.length);
-    const [xDirection, yDirection] = getLabelDirection(i, categories.length);
+    const [x, y] = getRadianPosition(i, radius, categories.length, angleOffset);
+    const [xDirection, yDirection] = getLabelPlacement(i, categories.length, angleOffset);
     if (typeof category === 'string') {
       props.dataHintsHandler.labelKey('value', i, category);
 
@@ -428,15 +466,15 @@ class Hover extends Component {
   }
 
   getPolygon(index) {
-    const { categories, size, offset } = this.asProps;
+    const { categories, size, offset, angleOffset } = this.asProps;
     const total = categories.length;
     const diam = Math.min(size[0], size[1]);
     const radius = diam / 2 - offset;
     const prevIndex = (index - 1 + total) % total;
     const nextIndex = (index + 1 + total) % total;
-    const [prevX1, prevY1] = getRadianPosition(prevIndex, radius, total);
-    const [x, y] = getRadianPosition(index, radius, total);
-    const [nextX1, nextY1] = getRadianPosition(nextIndex, radius, total);
+    const [prevX1, prevY1] = getRadianPosition(prevIndex, radius, total, angleOffset);
+    const [x, y] = getRadianPosition(index, radius, total, angleOffset);
+    const [nextX1, nextY1] = getRadianPosition(nextIndex, radius, total, angleOffset);
     return [
       [0, 0],
       [(prevX1 + x) / 2, (prevY1 + y) / 2],
@@ -446,10 +484,14 @@ class Hover extends Component {
   }
 
   getPie(index) {
-    const { categories, size, offset } = this.asProps;
+    const { categories, size, offset, angleOffset } = this.asProps;
     const angle = (Math.PI * 2) / categories.length;
     const radius = Math.min(size[0], size[1]) / 2 - offset;
-    return [index * angle - angle / 2, (index + 1) * angle - angle / 2, radius];
+    return [
+      index * angle - angle / 2 - angleOffset,
+      (index + 1) * angle - angle / 2 - angleOffset,
+      radius,
+    ];
   }
 
   getIndex(point) {
