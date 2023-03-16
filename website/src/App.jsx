@@ -46,7 +46,22 @@ const Router = !globalThis.__ssr
     };
 
 export function App() {
-  const [currentTheme, setTheme] = useState('light');
+  const themeStorageKey = 'theme-preference';
+
+  const getThemePreference = () => {
+    if (localStorage.getItem(themeStorageKey)) {
+      return localStorage.getItem(themeStorageKey);
+    } else {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+  };
+
+  const setTheme = (theme) => {
+    setCurrentTheme(theme);
+    localStorage.setItem(themeStorageKey, theme);
+  };
+
+  const [currentTheme, setCurrentTheme] = useState(getThemePreference());
 
   useEffect(() => {
     const theme = currentTheme === 'light' ? Object.entries(lightTheme) : Object.entries(darkTheme);
