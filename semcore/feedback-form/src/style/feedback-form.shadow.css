@@ -21,11 +21,7 @@ SSuccess {
   align-items: center;
   flex-direction: column;
   width: 320px;
-  padding: calc(
-      var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-2x, 8px) +
-        var(--intergalactic-spacing-05x, 2px)
-    )
-    var(--intergalactic-spacing-8x, 32px) var(--intergalactic-spacing-8x, 32px);
+  padding: var(--intergalactic-spacing-10x, 40px);
   box-sizing: border-box;
 }
 
