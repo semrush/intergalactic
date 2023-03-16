@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.14.0] - 2023-03-16
+
+### Changed
+
+- Changed logic of merging component styles and context styles due to losing context styles before.
+
 ## [1.13.19] - 2023-03-16
 
 ### Changed
