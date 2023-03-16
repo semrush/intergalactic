@@ -1,5 +1,5 @@
 {
-  "./website/src/utils/default-theme": [
+  "./website/src/utils/{theme}-theme": [
     "--intergalactic-control-lift-me-up",
     "--intergalactic-control-lift-me-up-hover-active",
     "--intergalactic-box-shadow-top-menu",
