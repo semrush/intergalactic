@@ -2745,7 +2745,6 @@
     "components": [
       "errors",
       "feature-popover",
-      "feedback-form",
       "format-text",
       "fullscreen-modal",
       "notice-global",
