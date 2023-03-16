@@ -1,3 +1,9 @@
+## [13.16.0] - 2023-03-16
+
+### @semcore/core
+
+- **Changed** Changed logic of merging component styles and context styles due to losing context styles before.
+
 ## [13.15.0] - 2023-03-16
 
 ### @semcore/d3-chart
