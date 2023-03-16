@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.0] - 2023-03-16
+
+### Fixed
+
+- Fixed padding for the success state of the feedback form.
+
 ## [5.3.12] - 2023-03-13
 
 ### Changed
