@@ -1,3 +1,13 @@
+## [13.15.0] - 2023-03-16
+
+### @semcore/d3-chart
+
+- **Added** Add `angleOffset` parameter to `Radar` chart.
+
+### @semcore/errors
+
+- **Changed** Changed Title's font-weight from `bold` to `semi-bold`.
+
 ## [13.14.1] - 2023-03-16
 
 ### @semcore/feedback-form
