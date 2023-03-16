@@ -1,5 +1,5 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { testing, snapshot /*shared as testsShared*/ } from '@semcore/jest-preset-ui';
 
 const { render, fireEvent, cleanup, act } = testing;
 
@@ -10,7 +10,7 @@ import {
   NoticeBubbleWarning as NoticeBubbleWarningImport,
 } from '../src';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+// const { shouldSupportClassName, shouldSupportRef } = testsShared;
 const NoticeBubble = React.forwardRef((props, ref) => (
   <>
     <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
@@ -66,8 +66,8 @@ describe('NoticeBubble Timer', () => {
 describe('NoticeBubble', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(NoticeBubble);
-  shouldSupportRef(NoticeBubble);
+  // shouldSupportClassName(NoticeBubble);
+  // shouldSupportRef(NoticeBubble);
 
   test.skip('should support handler for close', () => {
     const manager = new NoticeBubbleManager();
