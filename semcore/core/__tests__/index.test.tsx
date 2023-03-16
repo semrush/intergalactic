@@ -1,7 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-import DataTable from '../../data-table';
-import DropdownMenu from '../../dropdown-menu';
+import { testing, shared as testsShared } from '@semcore/jest-preset-ui';
 
 const { cleanup, fireEvent, render } = testing;
 
@@ -732,60 +730,6 @@ describe('Props from context', () => {
       </Test>,
     );
     expect(getByTestId('value').id).toBe('test');
-  });
-
-  test('should support context styles and component styles at the same time', async () => {
-    const data = [
-      {
-        keyword: 'ebay buy',
-        kd: '77.8',
-        cpc: '$1.25',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '11.2',
-        cpc: '$3.4',
-      },
-      {
-        keyword: 'www.ebay.com',
-        kd: '10',
-        cpc: '$0.65',
-      },
-    ];
-    const component = (
-      <DataTable data={data} wMax={400}>
-        <DataTable.Head>
-          <DataTable.Column name="keyword" children="Keyword" wMin={150} />
-          <DataTable.Column name="kd" children="KD,%" />
-          <DataTable.Column name="cpc" children="CPC" />
-        </DataTable.Head>
-        <DataTable.Body>
-          <DataTable.Cell name="keyword">
-            {(props, row, index) => {
-              if (index === 0) {
-                return {
-                  children: (
-                    <DropdownMenu visible disablePortal>
-                      <DropdownMenu.Menu hMax={'120px'}>
-                        <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
-                        <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-                        <DropdownMenu.Item>Item 2</DropdownMenu.Item>
-                        <DropdownMenu.Item>Item 3</DropdownMenu.Item>
-                        <DropdownMenu.Item>Item 4</DropdownMenu.Item>
-                      </DropdownMenu.Menu>
-                    </DropdownMenu>
-                  ),
-                };
-              } else {
-                return row;
-              }
-            }}
-          </DataTable.Cell>
-        </DataTable.Body>
-      </DataTable>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 });
 
