@@ -1,7 +1,7 @@
 {
   "name": "@semcore/animation",
   "description": "Semrush Animation Component",
-  "version": "1.9.3",
+  "version": "1.9.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
