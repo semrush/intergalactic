@@ -225,8 +225,14 @@ for (const theme of themes) {
     });
 
     if (excludedTokens.length > 0) {
-      await fs.writeFile(`${excludeToPath}.css`, tokensToCss(excludedTokens));
-      await fs.writeFile(`${excludeToPath}.json`, tokensToJson(excludedTokens));
+      const path = excludeToPath.replace('{theme}', theme);
+      await fs.writeFile(`${path}.css`, tokensToCss(excludedTokens));
+      await fs.writeFile(`${path}.json`, tokensToJson(excludedTokens));
+      if (theme === defaultTheme) {
+        const path = excludeToPath.replace('{theme}', 'default');
+        await fs.writeFile(`${path}.css`, tokensToCss(excludedTokens));
+        await fs.writeFile(`${path}.json`, tokensToJson(excludedTokens));
+      }
     }
   }
 
