@@ -49,10 +49,12 @@ export function App() {
   const themeStorageKey = 'theme-preference';
 
   const getThemePreference = () => {
-    if (localStorage.getItem(themeStorageKey)) {
-      return localStorage.getItem(themeStorageKey);
-    } else {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (typeof window !== 'undefined') {
+      if (localStorage.getItem(themeStorageKey)) {
+        return localStorage.getItem(themeStorageKey);
+      } else {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
     }
   };
 
@@ -65,9 +67,11 @@ export function App() {
 
   useEffect(() => {
     const theme = currentTheme === 'light' ? Object.entries(lightTheme) : Object.entries(darkTheme);
-    const r = document.querySelector(':root');
-    for (let i = 0; i < theme.length; i++) {
-      r.style.setProperty(theme[i][0], theme[i][1]);
+    if (typeof window !== 'undefined') {
+      const r = document.querySelector(':root');
+      for (let i = 0; i < theme.length; i++) {
+        r.style.setProperty(theme[i][0], theme[i][1]);
+      }
     }
   }, [currentTheme]);
 
