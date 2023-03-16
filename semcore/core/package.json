@@ -1,7 +1,7 @@
 {
   "name": "@semcore/core",
   "description": "Semrush Core Component",
-  "version": "1.13.19",
+  "version": "1.14.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
