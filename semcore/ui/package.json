@@ -24,7 +24,7 @@
     "@semcore/carousel": "2.2.22",
     "@semcore/checkbox": "6.4.3",
     "@semcore/color-picker": "1.4.21",
-    "@semcore/core": "1.13.19",
+    "@semcore/core": "1.14.0",
     "@semcore/counter": "2.3.3",
     "@semcore/data-table": "3.7.22",
     "@semcore/date-picker": "3.6.23",
