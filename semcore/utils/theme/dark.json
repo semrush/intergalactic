@@ -436,7 +436,7 @@
       },
       "secondary": {
         "neutral": {
-          "value": "rgba(54, 56, 67, 1)",
+          "value": "rgba(45, 48, 62, 1)",
           "type": "color",
           "description": "Secondary background of the interface which contains the main data and information."
         },
@@ -526,7 +526,7 @@
           "description": "Active (selected) state of the secondary background of the information you want to highlight."
         },
         "advertising": {
-          "value": "rgba(82, 53, 136, 1)",
+          "value": "rgba(75, 49, 125, 1)",
           "type": "color",
           "description": "Secondary background for the advertising message you want to accent."
         },
@@ -1968,7 +1968,7 @@
           "description": "Hover and active (selected) state of the primary red tag."
         },
         "violet-normal": {
-          "value": "rgba(75, 49, 125, 1)",
+          "value": "rgba(95, 62, 157, 1)",
           "type": "color",
           "description": "Primary violet tag."
         },

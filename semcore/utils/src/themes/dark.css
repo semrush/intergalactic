@@ -26,7 +26,7 @@
   /* Active (selected) state for the inverted version of the primary background of the interface that contains the main data and information. */
   --intergalactic-bg-primary-invert-active: #484a54;
   /* Secondary background of the interface which contains the main data and information. */
-  --intergalactic-bg-secondary-neutral: rgba(54, 56, 67, 1);
+  --intergalactic-bg-secondary-neutral: rgba(45, 48, 62, 1);
   /* Hover state of the secondary background of the interface which contains the main data and information. */
   --intergalactic-bg-secondary-neutral-hover: #e0e1e9;
   /* Active (selected) state of the secondary background of the interface which contains the main data and information. */
@@ -62,7 +62,7 @@
   /* Active (selected) state of the secondary background of the information you want to highlight. */
   --intergalactic-bg-secondary-highlight-active: #fdc23c;
   /* Secondary background for the advertising message you want to accent. */
-  --intergalactic-bg-secondary-advertising: rgba(82, 53, 136, 1);
+  --intergalactic-bg-secondary-advertising: rgba(75, 49, 125, 1);
   /* Hover state of the secondary background for the advertising message you want to accent. */
   --intergalactic-bg-secondary-advertising-hover: #edd9ff;
   /* Active (selected) state of the secondary background for the advertising message you want to accent. */
@@ -587,14 +587,14 @@
   /* Bottom-to-top fade shadow for the ScrollArea inside the DropdownMenu. */
   --intergalactic-scroll-area-dropdown-menu-bottom: linear-gradient(
     to top,
-    rgba(255, 255, 255, 1) 34.38%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(43, 46, 56, 1) 34.38%,
+    rgba(54, 56, 67, 0) 100%
   );
   /* Top-to-bottom fade shadow for the ScrollArea inside the DropdownMenu. */
   --intergalactic-scroll-area-dropdown-menu-top: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 1) 34.38%,
-    rgba(255, 255, 255, 0) 100%
+    rgba(43, 46, 56, 1) 34.38%,
+    rgba(54, 56, 67, 0) 100%
   );
   /* Background color for ScrollBar. */
   --intergalactic-scroll-bar-background: rgba(25, 27, 35, 0.3);
@@ -619,7 +619,7 @@
   /* Hover and active (selected) state of the primary red tag. */
   --intergalactic-tag-primary-red-hover-active: #ffd7df;
   /* Primary violet tag. */
-  --intergalactic-tag-primary-violet-normal: rgba(75, 49, 125, 1);
+  --intergalactic-tag-primary-violet-normal: rgba(95, 62, 157, 1);
   /* Hover and active (selected) state of the primary violet tag. */
   --intergalactic-tag-primary-violet-hover-active: #edd9ff;
   /* Primary yellow tag. */
