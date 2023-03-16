@@ -1,3 +1,13 @@
+## [13.14.1] - 2023-03-16
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed padding for the success state of the feedback form.
+
+### @semcore/utils
+
+- **Fixed** Fixed focus lock might cause infinite focus war when multiple focus locks exist on same page.
+
 ## [13.14.0] - 2023-03-15
 
 ### @semcore/d3-chart

@@ -56,6 +56,9 @@ const useFocusBorders = (disabled) => {
   }, [id, disabled]);
 };
 
+// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+const focusLockUsers = new Set<HTMLElement>();
+
 export const useFocusLock = (
   trapRef: React.RefObject<HTMLElement>,
   autoFocus: boolean,
@@ -72,7 +75,7 @@ export const useFocusLock = (
       autoTriggerRef.current = event.relatedTarget;
     Promise.resolve().then(() => {
       if (!trapRef.current) return;
-      if (focusInside(trapRef.current)) return;
+      if (focusInside([trapRef.current, ...focusLockUsers])) return;
 
       moveFocusInside(trapRef.current, event.target);
     });
@@ -90,6 +93,16 @@ export const useFocusLock = (
       moveFocusInside(autoTriggerRef.current, trapRef.current!);
     }
   }, [returnFocusTo]);
+  React.useEffect(() => {
+    if (typeof trapRef !== 'object' || trapRef === null) return;
+    const node = trapRef.current;
+    if (!node) return;
+    focusLockUsers.add(node);
+    return () => {
+      if (!node) return;
+      focusLockUsers.delete(node);
+    };
+  }, [trapRef]);
   React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM()) return;
