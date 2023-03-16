@@ -148,7 +148,7 @@ If your widget has width less than 300px, you may leave just the title with styl
 
 ### User has done something wrong
 
-It's a version of the "Something went wrong" state for the cases when user did something wrong and we need to help him/her deal with the situation.
+It's a case when user did something wrong and we need to help him/her dealing with the situation.
 
 Show the following instead of the data in this case:
 
