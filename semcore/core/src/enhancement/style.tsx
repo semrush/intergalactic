@@ -12,6 +12,9 @@ function Enhancement(childComponents, Context) {
       return Boolean(Component.style || Component[STATIC_COMPONENT]);
     },
     init: function (props, WrapperComponent) {
+      if (props.styles) {
+        this[STYLES_SELF] = props.styles;
+      }
       if (WrapperComponent.style) {
         this[STYLES_SELF] = sstyled.merge(WrapperComponent.style, props._styles);
       }
@@ -30,7 +33,7 @@ function Enhancement(childComponents, Context) {
     asProps: function ({ _styles, styles, ...props }) {
       return {
         ...props,
-        styles: styles || this[STYLES_SELF],
+        styles: this[STYLES_SELF],
       };
     },
     wrapperProps: function ({ styles, ...props }) {
