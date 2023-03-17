@@ -65,10 +65,10 @@ class TooltipRoot extends Component {
           <Children />
         ) : (
           <>
-            <Tooltip.Trigger {...other}>
+            <Tooltip.Trigger>
               <Children />
             </Tooltip.Trigger>
-            <Tooltip.Popper>{title}</Tooltip.Popper>
+            <Tooltip.Popper {...other}>{title}</Tooltip.Popper>
           </>
         )}
       </Root>
