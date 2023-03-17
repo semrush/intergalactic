@@ -46,7 +46,7 @@ class TooltipRoot extends Component {
 
   render() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { Children, title, offset, ...other } = this.asProps;
+    const { Children, title, offset, w, ...other } = this.asProps;
 
     const advanceMode = isAdvanceMode(Children, [
       Tooltip.Trigger.displayName,
@@ -65,10 +65,10 @@ class TooltipRoot extends Component {
           <Children />
         ) : (
           <>
-            <Tooltip.Trigger>
+            <Tooltip.Trigger {...other}>
               <Children />
             </Tooltip.Trigger>
-            <Tooltip.Popper {...other}>{title}</Tooltip.Popper>
+            <Tooltip.Popper w={w}>{title}</Tooltip.Popper>
           </>
         )}
       </Root>

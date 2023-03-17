@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.4.0] - 2023-03-20
+## [5.3.18] - 2023-03-20
 
-### Changed
+### Added
 
-- Changed direction of outside props from `Tooltip.Trigger` to `Tooltip.Popper`.
+- Added the ability to set the width of the `Tooltip.Popper` when using the component in a non-expanded variant by throwing props.
 
 ## [5.3.17] - 2023-03-16
 
