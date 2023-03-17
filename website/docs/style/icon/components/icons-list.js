@@ -3858,6 +3858,12 @@ const iconsList = {
       tags: ['git', 'lab', 'гитлаб', 'гитхаб', 'гит', 'repo', 'logo', 'лого'],
     },
     {
+      name: 'GitHubInvert',
+      size: ['l', 'm'],
+      group: 'Color',
+      tags: ['git', 'lab', 'гитлаб', 'гитхаб', 'гит', 'repo', 'logo', 'лого'],
+    },
+    {
       name: 'GoogleAds',
       size: ['l', 'm'],
       group: 'Color',
