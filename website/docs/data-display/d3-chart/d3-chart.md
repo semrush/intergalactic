@@ -39,7 +39,7 @@ Place M size [Info](/style/icon/) icon next to the title.
 
 | Appearance                           | Styles                                                                                                                                                                                                                                                                                               |
 | ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300; --lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
+| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
 
 ### Description
 
@@ -47,7 +47,7 @@ Place M size [Info](/style/icon/) icon next to the title.
 
 | Appearance                             | Styles                                                                                             |
 | -------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200; --lh-200`) and `--text-secondary` token for color. |
+| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color. |
 
 @## Chart controls
 

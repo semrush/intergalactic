@@ -74,7 +74,7 @@ The padding between title and content:
 
 ### Header
 
-For panel's title use 16px text (`--fs-300; --lh-300`) with `font-weight: var(--bold)`.
+For panel's title use 16px text (`--fs-300`, `--lh-300`) with `font-weight: var(--bold)`.
 
 > Pin header when scrolling large content inside the SidePanel.
 
