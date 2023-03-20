@@ -39,19 +39,35 @@ In case you are using a non-native element, be sure to assign a `role` attribute
 
 Controls and inputs should support navigation using a keyboard, touch devices and voice assistants.
 
-- Make sure that controls and inputs have a recognizable `focus` state, while links have a `visited` state.
-- Make sure that clickable elements are easy to recognize.
-- Use [skip to main content](https://www.a11yproject.com/posts/2013-05-11-skip-nav-links/) links.
+- Make sure that controls and inputs have a recognizable `focus` state.
+- Make sure that interactive elements are easy to recognize.
+- Use ["Skip to main content"](https://www.a11yproject.com/posts/2013-05-11-skip-nav-links/) links.
 
-> It's recommended to create elements that are hidden for the sighted users, but available for the visually impaired. This can be achieved by moving an element far off the left edge of the screen with the use of the `sr_only` class.
+In the case when you need to create a visually hidden element that should be read only by screen reader, use the following CSS:
+
+```CSS
+position: absolute;
+top: auto;
+overflow: hidden;
+clip: rect(1px, 1px, 1px, 1px);
+width: 1px;
+height: 1px;
+white-space: nowrap;
+```
 
 @## Forms
 
-Make sure that your markup and order of form tabs are consistent and logical.
+Make sure that your markup and keyboard focus order are consistent and logical.
 
-- Bind `label` to all form controls (input, select and others). For example, `<label for=''name''>Name:</label><input id=''name'' type=''text''>`.
-- Make sure that the `placeholder` attribute is not used in place of the `label` tag. There is an exception to this rule – small forms with one or two fields (search or login forms). Go to [WHATWG](https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder) to learn more.
-- Groups of form elements (for example, checkboxes and radio buttons) must be combined by `fieldset` and described in `legend`. It's important for `input type="radio"` and `input type="checkbox"`.
+- Bind `label` to all form controls (input, select and others). For example:
+
+```html
+<label for='name'>Name:</label>
+<input id='name' type='text'>
+```
+
+- Make sure that the `placeholder` attribute is not used in place of the `label` tag. Refer to [WHATWG](https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder) to learn more. All form fields should have valid labels that do not rely on placeholder text. In the case of a search field, a magnifying glass icon can serve the purpose of a visual label, as long as the search input still has a programmatic label that is not derived from placeholder text.
+- Groups of form elements (for example, checkboxes and radio buttons) must be combined by `fieldset` and described in `legend`. It's important for `input type="radio"` and `input type="checkbox"`. Fieldsets and legends can also be used to group sets of related inputs, and they should be used when there are multiple fields with the same label. _For example, fields for a shipping address can be distinguished from fields for a billing address by grouping them in fieldsets with distinct labels._
 
 @## Interactive area (live regions)
 
