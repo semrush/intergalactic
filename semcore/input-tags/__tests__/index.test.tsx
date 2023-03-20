@@ -107,6 +107,19 @@ describe('InputTags', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test("renders prop hMin", async () => {
+
+    const component = (
+      <InputTags hMin={100}>
+        {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
+          <InputTags.Tag key={idx}>{tag}</InputTags.Tag>
+        ))}
+        <InputTags.Value />
+      </InputTags>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should call onClick', async () => {
     const onClick = jest.fn();
     const { getByTestId } = render(
