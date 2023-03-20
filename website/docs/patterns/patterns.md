@@ -15,6 +15,8 @@ title: UX patterns
 @page project-create
 @page project-select
 @page success-state
+@page proximity-principle
+
 <!-- @page sso-page -->
 
 @page summary
