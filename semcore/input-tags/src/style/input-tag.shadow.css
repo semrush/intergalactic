@@ -1,8 +1,16 @@
 SInputTags {
   box-sizing: border-box;
   cursor: text;
+  align-items: flex-start;
   /* reset for ScrollArea because cut box-shadow */
   overflow: initial;
+}
+
+SContainer {
+  padding: 1px 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
 }
 
 SInputTags > div > div {
@@ -18,15 +26,13 @@ SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 SInputTags[size='m'] {
   min-height: 28px;
   height: auto;
-  padding: var(--intergalactic-spacing-05x, 2px)
-    calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+  padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
 }
 
 SInputTags[size='l'] {
   min-height: 40px;
   height: auto;
-  padding: var(--intergalactic-spacing-05x, 2px)
-    calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
+  padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
 }
 
 STag[size='m'] {

@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.15] - 2023-03-20
+
+### Fixed
+
+- Fixed tag display when crossing the border during scroll.
+- Fixed tag alignment when set minimum height.
+
 ## [3.3.14] - 2023-03-16
 
 ### Changed
@@ -10,15 +17,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.3.10] - 2023-02-09
 
-## [3.3.9] - 2023-01-20
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/input` [3.5.6 ~> 3.5.7]).
 
 ## [3.3.7] - 2023-01-10
-
-## [3.3.6] - 2023-01-09
 
 ### Changed
 
