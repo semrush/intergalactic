@@ -69,9 +69,11 @@ Make sure that your markup and keyboard focus order are consistent and logical.
 - Make sure that the `placeholder` attribute is not used in place of the `label` tag. Refer to [WHATWG](https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder) to learn more. All form fields should have valid labels that do not rely on placeholder text. In the case of a search field, a magnifying glass icon can serve the purpose of a visual label, as long as the search input still has a programmatic label that is not derived from placeholder text.
 - Groups of form elements (for example, checkboxes and radio buttons) must be combined by `fieldset` and described in `legend`. It's important for `input type="radio"` and `input type="checkbox"`. Fieldsets and legends can also be used to group sets of related inputs, and they should be used when there are multiple fields with the same label. _For example, fields for a shipping address can be distinguished from fields for a billing address by grouping them in fieldsets with distinct labels._
 
-@## Interactive area (live regions)
+@## Dynamic content (live regions)
 
-Interactive areas include:
+When content on a webpage updates without needing to refresh the page, it's called dynamic content. This could be a region or a widget. If the change is simple and not interactive, it should be labeled as a live region using the `aria-live` attribute.
+
+Dynamic content usually includes:
 
 - chats;
 - progress bars and timers;
@@ -81,17 +83,13 @@ Interactive areas include:
 - sports stats;
 - other similar elements.
 
-To mark an area on the page as interactive, add the ARIA attribute `aria-live=""` or a special ARIA role to any parent element:
+Live regions need to exist in the DOM from the initial page load. And they should not be overused. There should not be too many live regions within a single page, and the content within a live region should be short. Live regions should not be used for entire sections of content.
 
-- `alert`;
-- `status`;
-- `log`;
-- `timer`;
-- `marquee`.
+To mark an area that has dynamic content, use the ARIA attribute `aria-live=""` with a special ARIA role, you can learn more about in the section below.
+
+> It's recommended being careful with using redundant attributes like `role="alert"` with `aria-live="assertive"`. These roles are very well supported without the redundant aria-live attributes, and in some cases using the redundant attributes may do more harm than good.
 
 ### ARIA roles
-
-Roles are needed to make changes to all children elements within the interactive areas available to screen readers. This way screen readers will know how to handle updates to the content of these elements.
 
 | ARIA role   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -101,32 +99,31 @@ Roles are needed to make changes to all children elements within the interactive
 | **Marquee** | This type of area contains information that changes rapidly. This role is similar to `log`, but in this case, the order in which the information is updated does not matter. Good examples of where you can use `role="marquee"` are tickers and currency rates. It's recommended to use the `role="marquee"` role in combination with the `aria-live="off"` attribute.                                                                              |
 | **Timer**   | This role is needed for areas with counters that count down time in a normal and reverse order. The `role="timer"` element should have the `aria-live="off"` attribute for full compatibility with all devices and browsers.                                                                                                                                                                                                                         |
 
-> If you need the screen reader to announce changes after a certain period of time, you can implement it with JavaScript. To do that, switch `aria-live="off"` to `aria-live="polite"` after the necessary period of time (for example, 60 minutes).
-
-@## JavaScript
-
-- Use unobtrusive JavaScript.
-- Don't call functions in markup.
-- Use JS alternatives for users who have it disabled or in environments where it's not available.
-
 @## Non-text content (images, media)
 
-Images should be described in text in such a way that the voice assistant can adequately describe the content of the picture.
+### General requirements
 
-Provide a text alternative to the audio information to make it accessible to the deaf and hard of hearing. This also applies to search engines, which have no “sense of hearing”.
-
-- Use appropriate `alt` text 😏 . Don't use more than 125 characters, since most screen readers can't read text longer than that.
-- Transcribe the audio content.
+- Images should be described in text in such a way that screen reader can adequately describe the content of the picture. Use appropriate `alt` text. Alternative text can be as long as it needs to be in order to sufficiently describe the image, but it's recommended to keep it concise and not too long for better user experience.
+- Provide a text alternative to the audio content.
 - Add names to all elements of controls and information entry (such as `Search` or `Submit`).
 - Synchronize subtitles with audio in videos content.
-- If you use tests, be sure to provide a short description.
+- When you have forms that include tests, provide a brief description at the start explaining the type of test and possible outcomes.
 - Don't autoplay audio.
 - Avoid [pictures and icons in pseudo-elements](http://simplyaccessible.com/article/three-pitfalls-text-alternatives/).
 
-**Exceptions**:
+### Decorative elements
 
-- icons;
-- decorative elements (backgrounds, dividers, etc.);
-- tests and captcha.
+Elements that are purely decorative and don't have any meaning in the user interface - such as background images, icons, and dividers - don't require a text alternative.
 
-> To exclude specific images, leave their `alt` attribute blank and screen readers will ignore them instead of trying to read the filename.
+To exclude specific images, leave their `alt` attribute blank and screen readers will ignore them instead of trying to read the filename.
+
+### Complex images and visualization
+
+Complex visualization presented in the form of charts, maps, and others formats, should include a textual representation of the data. This could be in separate paragraphs or tables that are easily accessible to all users, or in some cases, hidden from sighted users.
+
+### Useful links
+
+For writing good alternative text and determining if images need a text alternative or not, refer to these resources:
+
+- [The W3C Web Accessibility Initiative Images Tutorial](https://www.w3.org/WAI/tutorials/images/)
+- [The W3C Web Accessibility Initiative alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
