@@ -8,7 +8,40 @@ See information in the [Typography guide](/style/typography/typography-a11y/).
 
 @## Color and contrast
 
-See information in the [Color guide](/style/design-tokens/).
+### Use of color
+
+To ensure everyone can understand and differentiate visual elements, avoid relying solely on color. Different people see colors in different ways, and some may even be colorblind.
+
+To use color thoughtfully, consider adding another indicator such as a visible border, label, underline, or icon. If you use charts and graphics that rely heavily on color, add other visual differences like hatching patterns or labels. It's also helpful to [learn about color blindness](https://webaim.org/articles/visual/colorblind) and use a Figma plugin or browser extension to verify the accessibility of your designs.
+
+Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html) to know more about use of color.
+
+### Text color contrast
+
+Making text highly-contrasted against the background helps people read and interact with your interface more easily.
+
+Based on current criteria, the contrast ratio should meet these minimums:
+
+- Text smaller than 24px or 19px bold should have a contrast ratio of at least 4.5:1.
+- Text larger than 24px or 19px bold should have a contrast ratio of at least 3:1.
+
+Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html) to know more about color contrast.
+
+### Non-text color contrast
+
+All graphics and components must have a contrast ratio of at least 3:1 compared to the surrounding colors, unless they are purely decorative. This rule applies to icons, charts, infographics, controls, and any states like hover or active. However, inactive components, states, and purely decorative elements are exempt from these contrast ratio requirements.
+
+Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html) to know more about non-text color contrast.
+
+@## Focus visible
+
+Ensuring that users can easily identify which element has the keyboard focus is essential for keyboard users to navigate a page. To achieve this:
+
+- Make sure the focus state is distinct from the mouse hover state, so the user can see the difference.
+- Use a strong, visible focus indicator for interactive elements, such as links, buttons, and form fields.
+- Ensure the focus indicator has a 3:1 color contrast ratio against the background.
+
+Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html) to know more about visible focus.
 
 @## Layout and structure
 
@@ -18,25 +51,31 @@ Make sure that user can easily understand the meaning and structure of the page 
 
 > **Why it's important**
 >
-> - It allows users to quickly find the necessary information and solve their problems.
+> - It allows users to quickly find the necessary information and solve their cases.
 > - It helps users quickly understand what's happening on the page.
 
 **Requirements:**
 
-- All content and design of the page should fit into the logical structure of the headings.
+- All content and design of the page should have meaningful sequence and fit into the logical structure.
 - Make sure that users can navigate the site in multiple ways: with a table of contents, a sitemap, links between pages, and search on the website.
 - Screen readers should read the information in the same order it is displayed.
 - Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading should not be marked up as H1 in the code. Also, don't use plain text for headings.
 
-@## Scaling
+Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html) to know more about meaningful sequence.
+
+@## Scaling and resizing
 
 Make sure that when you zoom in to 200%, the page is still readable and functional, and the user doesn't need to scroll horizontally to see everything.
+
+People should be also able to increase the size of text to up to 200%. This helps those with partial sight to read your content comfortably. Although this change is implemented in code, it's important to keep it in mind when designing page layouts. Check that the text can flow at a larger size and is not limited by a fixed-width or fixed-height layout.
 
 > **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
 
 Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
 
 This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
+
+Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html) to know more about scaling and resizing criteria.
 
 @## Graphics and images
 
