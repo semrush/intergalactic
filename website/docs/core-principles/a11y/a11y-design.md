@@ -2,31 +2,19 @@
 title: Design requirements
 ---
 
-@## General principles
+@## Typography
 
-These principles were inspired by the [article from the Google design team](https://design.google/library/designers-guide-accessibility-research/) 🖤
+See information in the [Typography guide](/style/typography/typography-a11y/).
 
-- Try accessibility technologies on yourself.
-- Develop your empathy and open-mindedness to new things.
-- Be humble and willing to admit your own ignorance.
-- Work with different people and technologies. Involve different stakeholders in your research.
-- Test on your target audience and beyond.
+@## Color and contrast
 
-@## Scaling
-
-Make sure that when you zoom in to 200%, the page is still readable and functional, and the user doesn't need to scroll horizontally to see everything.
-
-> **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
-
-Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
-
-This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
+See information in the [Color guide](/style/design-tokens/).
 
 @## Layout and structure
 
 Make sure that user can easily understand the meaning and structure of the page and complete the required task. The design should help the user find key information quickly and easily.
 
-![headings](/core-principles/a11y/static/structure.png)
+![The illustration has two sections: "Don't" on the left and "Good" on the right. In the "Don't" section, there are incorrect HTML tags, such as h4 for "Your first report", h1 for "Group your marketing activities by goals", and h6 for the paragraph that follows. The "Good" side shows the proper usage of HTML tags: h1 for "Your first report", h2 for "Group your marketing activities by goals", and p for the paragraph that follows.](/core-principles/a11y/static/structure.png)
 
 > **Why it's important**
 >
@@ -38,16 +26,17 @@ Make sure that user can easily understand the meaning and structure of the page 
 - All content and design of the page should fit into the logical structure of the headings.
 - Make sure that users can navigate the site in multiple ways: with a table of contents, a sitemap, links between pages, and search on the website.
 - Screen readers should read the information in the same order it is displayed.
-- Try not to use modal windows. Screen readers don't work well with pop-up objects.
 - Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading should not be marked up as H1 in the code. Also, don't use plain text for headings.
 
-@## Typography
+@## Scaling
 
-See information in the [Typography guide](/style/typography/typography-a11y/).
+Make sure that when you zoom in to 200%, the page is still readable and functional, and the user doesn't need to scroll horizontally to see everything.
 
-@## Color and contrast
+> **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
 
-See information in the [Color guide](/style/design-tokens/).
+Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
+
+This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
 
 @## Graphics and images
 
@@ -55,16 +44,16 @@ Make sure that user understands all content, including charts, icons, and images
 
 ### Graphics
 
-- Don't use graphics if the problem can be solved with text.
-- Make sure all graphics are accompanied by a clear and brief description.
+- Don't use graphics if your case can be solved with text.
+- Make sure all graphics are accompanied by a clear text description. However, decorative graphics don't require a text alternative.
 - Use icons as additional visual cues, not decorations, and only where it's really necessary. Choose easily recognizable icons (for example, a trash can for deleting something).
 - Don't forget about contrast when placing text on an image. Use a solid background or make the image darker.
 
 ### Data visualization
 
-- To immerse the user in the context, provide a brief description for the visualizations.
+- Provide a text description for the data visualizations.
 - Make sure data and specifications are clearly labeled.
-- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them.
+- Provide sufficient contrast between the presented data (for example, lines in charts), so that colorblind users can distinguish between them. Getting a 3:1 contrast ratio between all colors in a data visualization can be hard. We recommend including other visual cues such as a difference in pattern and/or the use of textual labels (we plan to implement some solutions in our charts library).
 
 ### Alternate versions
 
@@ -79,14 +68,14 @@ Make sure that your media content (videos, images, etc.) is accessible to hearin
 
 **Requirements**:
 
-- Add subtitles or a transcript to your audio and video content to make it accessible to the hard-of-hearing and the users who don't speak the language the content is presented in.
+- Add subtitles and a transcript to your audio and video content to make it accessible to the hard-of-hearing and the users who don't speak the language the content is presented in.
 - Avoid harmful design elements. Make sure that you don't have elements that flash more than three times per second.
 
 > Animated website elements, flickering or flashing logos or ads can cause a seizure in people suffering from photosensitive epilepsy.
 
 @## Forms
 
-![forms](/core-principles/a11y/static/forms.png)
+![The illustration is in two parts; "Don't" on the left and "Good" on the right. In the "Don't" section, two input fields are shown - one labeled "Phone number" and the other labeled "Company name." There are no helpful hints or placeholders. The "Good" side shows a more user-friendly form. The first input is labeled "Phone number" and includes the USA flag and telephone code, so the user doesn't need to remember it. The second input is labeled "Company name" and includes the placeholder "Enter keywords you need." There's also a hint below the input box that says "E.g., if your company is 'Apple,' then type in 'iPhone, Mac'."](/core-principles/a11y/static/forms.png)
 
 Provide instructions and hints to help users avoid mistakes when filling out a form.
 
@@ -109,9 +98,9 @@ Provide instructions and hints to help users avoid mistakes when filling out a f
 > - [Error Prevention ›](https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data)
 > - [Name, Role, Value ›](https://www.w3.org/TR/WCAG21/#name-role-value)
 
-@## Captions and instructions
+@## Labels and instructions
 
-Make sure that the captions for the elements clearly indicate what will happen when the user clicks on them.
+Make sure that the labels for the elements clearly indicate what will happen when the user clicks on them.
 
 **Requirements**:
 
@@ -119,7 +108,7 @@ Make sure that the captions for the elements clearly indicate what will happen w
 - **Links should be an organic part of a sentence**. For example, it's better to write: _"In the new version of the iPhone application, we added support for the Cyrillic alphabet"_ — instead of _"In the new application for the iPhone, we added support for the Cyrillic alphabet. Download"_. Sentences like this are easier to understand for all users, and especially for those who use screen readers.
 - **If clicking on a link leads to the download of a document, let the user know**. If your link leads to a PDF file, write: _"Download instructions in PDF"_. This is important for mobile users with data caps.
 
-![captions](/core-principles/a11y/static/captions.png)
+![The illustration has two sides; "Don't" on the left and "Good" on the right. In the "Don't" section, the text says "You can see all plans and pricing lists here." Only the word "here" is colored blue to indicate it's a link. In the "Good" section, the entire text "all plans and pricing lists here" is colored like a link.](/core-principles/a11y/static/labels.png)
 
 - **Make sure that the instructions can be followed by hearing or visually impaired users**.
 
@@ -136,8 +125,6 @@ Make sure that the captions for the elements clearly indicate what will happen w
 
 @## Touch targets
 
-![touch targets](/core-principles/a11y/static/click-zone.png)
-
 Make sure that the touch targets of the items are large enough and are easily accessible.
 
 **Requirements**:
@@ -145,6 +132,8 @@ Make sure that the touch targets of the items are large enough and are easily ac
 - **Make sure that it's possible to reach the main controls with your thumb on both hands, even on larger phones**.
 - **Set target areas to at least 44px**. An average adult's fingertip size is around 10mm, so you'll need to increase the size of the target area around your icons to make them easier to hit.
 - **Separate tappable elements with a 8px margin**. This will help the user hit the element they're aiming for.
+
+![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "You need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
 
 > **Useful resources**
 >
@@ -155,8 +144,6 @@ Make sure that the touch targets of the items are large enough and are easily ac
 > - [Placing buttons where they are easy to access ›](https://www.w3.org/TR/mobile-accessibility-mapping/#h-placing-buttons-where-they-are-easy-to-access)
 
 @## Text readability
-
-Make the text simple.
 
 > **Why it's important**
 >
