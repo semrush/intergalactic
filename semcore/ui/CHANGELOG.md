@@ -1,3 +1,13 @@
+## [13.17.1] - 2023-03-21
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed `Radar` chart with negative rotation hover handling.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed alignment cursor when there are no tags.
+
 ## [13.17.0] - 2023-03-21
 
 ### @semcore/icon
