@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.0] - 2023-03-21
+
+### Changed
+
+- Updated `Error` view texts in all languages.
+- Updated `NoData` view texts in all languages.
+
 ## [3.9.7] - 2023-03-16
 
 ### Changed
