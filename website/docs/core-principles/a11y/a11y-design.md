@@ -1,5 +1,5 @@
 ---
-title: UI/UX requirements
+title: Design requirements
 ---
 
 @## General principles
