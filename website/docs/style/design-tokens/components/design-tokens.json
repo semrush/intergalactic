@@ -2529,6 +2529,7 @@
     "description": "Default size of the controls.",
     "components": [
       "input",
+      "input-tags",
       "pills",
       "time-picker"
     ]
@@ -2541,6 +2542,7 @@
     "description": "Large size of the controls.",
     "components": [
       "input",
+      "input-tags",
       "pills",
       "time-picker"
     ]

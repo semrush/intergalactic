@@ -79,21 +79,18 @@ function pieContains([startAngle, endAngle, radius], [x, y]) {
   const distance = Math.sqrt(x ** 2 + y ** 2);
   if (distance > radius) return false;
 
-  let angle = Math.atan2(y, x) + Math.PI / 2;
-  if (angle < 0) {
-    // angle from 0 to 6.28...
-    angle += 2 * Math.PI;
-  }
-  if (startAngle < 0) {
-    if (angle < endAngle) {
-      angle += Math.abs(startAngle);
-    } else {
-      angle += Math.abs(startAngle) - Math.PI * 2;
-    }
-    endAngle += Math.abs(startAngle);
-    startAngle = 0;
-  }
-  return angle > startAngle && angle < endAngle;
+  startAngle = clampAngle(startAngle);
+  endAngle = clampAngle(endAngle);
+  startAngle = startAngle < endAngle ? startAngle : startAngle - 2 * Math.PI;
+
+  const angle = clampAngle(Math.atan2(y, x) + Math.PI / 2);
+  const prevAngle = angle - Math.PI * 2;
+  const nextAngle = angle + Math.PI * 2;
+
+  if (angle > startAngle && angle < endAngle) return true;
+  if (prevAngle > startAngle && prevAngle < endAngle) return true;
+  if (nextAngle > startAngle && nextAngle < endAngle) return true;
+  return false;
 }
 
 export function getLabelOffsetPosition(xDirection, yDirection, width, height) {
