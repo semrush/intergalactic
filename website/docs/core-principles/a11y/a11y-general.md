@@ -18,7 +18,7 @@ Most of the HTML elements already have default roles and do not need a role attr
 
 In case you are using a non-native element, be sure to assign a `role` attribute to it, depending on its function in the interface, so screen readers can tell the user which part of the interface they are in.
 
-**Some notes to consider:**
+**Notes to consider:**
 
 - The area of ​​the page that contains information about the site should be wrapped in the `header` tag.
 - Areas with links to different pages of the site, application screens or sections of the same document must be wrapped in the `nav` tag.
