@@ -1687,7 +1687,7 @@ importers:
       '@semcore/input': link:../input
       '@semcore/input-mask': link:../input-mask
       '@semcore/input-number': link:../input-number
-      '@semcore/input-tags': link:../input-tags
+      '@semcore/input-tags': 3.3.14_@semcore+core@semcore+core
       '@semcore/link': link:../link
       '@semcore/modal': 3.5.9_@semcore+core@semcore+core
       '@semcore/neighbor-location': link:../neighbor-location
@@ -2609,7 +2609,7 @@ packages:
       slash: 2.0.0
       source-map: 0.5.7
     optionalDependencies:
-      chokidar: 3.5.1
+      chokidar: 3.5.3
       chokidarAt2: /chokidar/2.1.8
     transitivePeerDependencies:
       - supports-color
@@ -5118,6 +5118,20 @@ packages:
       text-mask-core: 5.1.2
     dev: false
 
+  /@semcore/input-tags/3.3.14_@semcore+core@semcore+core:
+    resolution: {integrity: sha512-AFpm3LsxOVO0U7+MR9xt0yARWb9yPB1tl+eEvINU7QW/ycXkE93BoNKW1ulTA3PeuxL840pYYhSdV2vu2NTg+A==}
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/input': 3.5.12_@semcore+core@semcore+core
+      '@semcore/scroll-area': 4.2.12_@semcore+core@semcore+core
+      '@semcore/tag': 4.4.21_@semcore+core@semcore+core
+      '@semcore/utils': 3.47.3_@semcore+core@semcore+core
+    dev: false
+
   /@semcore/input/3.5.12_@semcore+core@semcore+core:
     resolution: {integrity: sha512-/aY4o1hJOF4PrgUKQZAeY2VpbaRvfAonsXUDDyU/btyrHh/HSdt/e9cU7VlHakOLWUcMXDI20sqZEjQkbKhHqQ==}
     peerDependencies:
@@ -7405,6 +7419,7 @@ packages:
       readdirp: 3.5.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: false
 
   /chokidar/3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
@@ -16535,6 +16550,7 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: 2.3.1
+    dev: false
 
   /readdirp/3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
@@ -17009,7 +17025,7 @@ packages:
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      chokidar: 3.5.1
+      chokidar: 3.5.3
       immutable: 4.1.0
       source-map-js: 1.0.2
     dev: true

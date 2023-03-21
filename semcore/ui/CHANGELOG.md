@@ -1,3 +1,19 @@
+## [13.17.0] - 2023-03-21
+
+### @semcore/icon
+
+- **Added** Added `GitHubInvert` icon.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed tag display when crossing the border during scroll.
+- **Fixed** Fixed tag alignment when set minimum height.
+
+### @semcore/widget-empty
+
+- **Changed** Updated `Error` view texts in all languages.
+- **Changed** Updated `NoData` view texts in all languages.
+
 ## [13.16.0] - 2023-03-16
 
 ### @semcore/core
