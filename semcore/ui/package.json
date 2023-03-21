@@ -83,7 +83,7 @@
     "@semcore/tooltip": "5.3.17",
     "@semcore/typography": "4.3.21",
     "@semcore/utils": "3.47.3",
-    "@semcore/widget-empty": "3.9.7",
+    "@semcore/widget-empty": "3.10.0",
     "@semcore/wizard": "1.2.25",
     "@semcore/i18n-unplugin": "0.0.5"
   },
