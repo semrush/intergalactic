@@ -24,13 +24,13 @@ SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
 }
 
 SInputTags[size='m'] {
-  min-height: 28px;
+  min-height: var(--intergalactic-form-control-m, 28px);
   height: auto;
   padding: 0 calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
 }
 
 SInputTags[size='l'] {
-  min-height: 40px;
+  min-height: var(--intergalactic-form-control-l, 40px);
   height: auto;
   padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
 }
@@ -47,9 +47,18 @@ STag[editable] {
   cursor: pointer;
 }
 
+SInputTags[size='m'] SValue {
+  height: calc(var(--intergalactic-form-control-m, 28px) - var(--intergalactic-spacing-1x, 4px));
+}
+
+SInputTags[size='l'] SValue {
+  height: calc(var(--intergalactic-form-control-l, 40px) - var(--intergalactic-spacing-1x, 4px));
+}
+
 SValue {
   padding: 0 !important;
-  margin: var(--intergalactic-spacing-05x, 2px);
+  margin-left: var(--intergalactic-spacing-05x, 2px);
+  margin-right: var(--intergalactic-spacing-05x, 2px);
 }
 
 SSpacer {
