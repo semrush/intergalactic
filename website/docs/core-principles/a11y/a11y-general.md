@@ -123,7 +123,7 @@ Complex visualization presented in the form of charts, maps, and others formats,
 
 ### Useful links
 
-For writing good alternative text and determining if images need a text alternative or not, refer to these resources:
+To write effective alternative text and decide whether or not an image requires a text alternative, check out these resources:
 
 - [The W3C Web Accessibility Initiative Images Tutorial](https://www.w3.org/WAI/tutorials/images/)
 - [The W3C Web Accessibility Initiative alt Decision Tree](https://www.w3.org/WAI/tutorials/images/decision-tree/)
