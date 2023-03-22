@@ -22,7 +22,7 @@ a11y: AA
 @## Considerations for designers
 
 - Tag text should be clear and concise.
-- Make sure to [check the contrast of the tag text against the background](/style/design-tokens/).
+- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design/#color_and_contrast).
 - Tag that is used as a link for filtering content should also follow the accessibility guidlines for [Link](/components/link/link-a11y/).
 
 @## Resources

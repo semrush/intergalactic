@@ -59,7 +59,7 @@ The remaining headings are used for the content part of products and landing pag
 
 A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
 
-![](static/secondary_info.png)
+![](static/secondary-info.png)
 
 @## Heading for mobile devices
 
