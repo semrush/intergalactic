@@ -47,13 +47,13 @@ class FeedbackForm extends Component {
 
   render() {
     const SFeedbackForm = Box;
-    const { Children, styles, loading, forwardRef, ...other } = this.asProps;
+    const { Children, styles, forwardRef, loading, background, theme, ...other } = this.asProps;
 
     return (
       <Form decorators={[this.focusDecorator]} {...other}>
         {(api) =>
           sstyled(styles)(
-            <SpinContainer size="xl" loading={loading === undefined ? api.submitting : loading}>
+            <SpinContainer background={background} theme={theme} size="xl" loading={loading === undefined ? api.submitting : loading}>
               <SFeedbackForm
                 tag="form"
                 noValidate

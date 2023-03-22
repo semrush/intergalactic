@@ -25,8 +25,9 @@ SOverlay {
 SOverlay[theme='invert'] {
   background-color: var(--intergalactic-overlay-secondary, rgba(25, 27, 35, 0.4));
 }
+
 SOverlay[theme='dark'] {
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: var(--intergalactic-overlay-limitation-secondary, rgba(255, 255, 255, 0.85));
 }
 
 SOverlay[theme='custom'] {

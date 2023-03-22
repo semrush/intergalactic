@@ -3056,7 +3056,9 @@
     "rawValue": "{gray.white}, 0.85",
     "computedValue": "rgba(255, 255, 255, 0.85)",
     "description": "Use as a secondary cover of the content under the messages about limitations.",
-    "components": []
+    "components": [
+      "spin-container"
+    ]
   },
   {
     "name": "--intergalactic-z-index-deep",
