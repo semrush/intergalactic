@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.11] - 2023-03-22
+
+### Fixed
+
+- Toggles attributes `aria-expanded` and `aria-controls` were not applied when accordion section was closed.
+
 ## [4.3.10] - 2023-03-22
 
 ### Changed

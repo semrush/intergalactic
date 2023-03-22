@@ -79,8 +79,8 @@ export class RootItem extends Component {
       onClick: disabled ? undefined : this.handleClick,
       id: `igc-${uid}-${value}-toggle`,
       role: 'button',
-      'aria-expanded': selected || undefined,
-      'aria-controls': selected ? `igc-${uid}-${value}-collapse` : undefined,
+      'aria-expanded': selected ? 'true' : 'false',
+      'aria-controls': `igc-${uid}-${value}-collapse`,
     };
   }
 
