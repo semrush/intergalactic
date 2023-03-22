@@ -12,7 +12,7 @@ const Demo = () => (
             <Link.Addon>
               <Accordion.Item.Chevron />
             </Link.Addon>
-            <Link.Text>{`Section ${index + 1}`}</Link.Text>
+            <Link.Text tag="h3" my={0} inline>{`Section ${index + 1}`}</Link.Text>
           </Link>
         </Accordion.Item.Toggle>
         <Accordion.Item.Collapse>
