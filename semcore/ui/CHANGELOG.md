@@ -6,6 +6,10 @@
 - **Changed** Added `noticeBubbleDefaultManager` export that is equal to the default export.
 - **Changed** Deprecated default export. `noticeBubbleDefaultManager` is recommended as a drop-in replacement.
 
+### @semcore/utils
+
+- **Fixed** Focus locked tab navigation might cause scrolling to the end or to the start of the page.
+
 ## [13.17.1] - 2023-03-21
 
 ### @semcore/d3-chart
