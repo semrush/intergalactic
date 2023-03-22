@@ -3,7 +3,7 @@ title: Components
 ---
 
 @page accordion
-@page auto-tips
+@page auto-suggest
 @page badge
 @page breadcrumbs
 @page button

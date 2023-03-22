@@ -84,5 +84,5 @@ Activating an item in the list selects it and the DropdownMenu closes.
 | Combobox in the [TimePicker](/components/time-picker/) | ![](static/combobox.png)         |
 | AutoComplete                                           | ![](static/autocomplete.png) |
 
-@page auto-tips-a11y
-@page auto-tips-code
+@page auto-suggest-a11y
+@page auto-suggest-code

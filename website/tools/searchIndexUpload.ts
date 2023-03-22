@@ -1,15 +1,15 @@
 import dotenv from 'dotenv';
 
 // eslint-disable-next-line import/extensions
-import CONFIG from './src/algolia.js';
+import CONFIG from '../src/algolia.js';
 // eslint-disable-next-line import/extensions
-import dataIcons from './docs/style/icon/components/icons-list.js';
-import dataIllustrations from './docs/style/illustration/components/illustrations-list.js';
+import dataIcons from '../docs/style/icon/components/icons-list.js';
+import dataIllustrations from '../docs/style/illustration/components/illustrations-list.js';
 
 import algoliasearch from 'algoliasearch';
-import { buildNavigation } from './builder/navigation';
+import { buildNavigation } from '../builder/navigation';
 import { resolve as resolvePath } from 'path';
-import { buildArticle } from './builder/build-article/build-article';
+import { buildArticle } from '../builder/build-article/build-article';
 
 dotenv.config();
 

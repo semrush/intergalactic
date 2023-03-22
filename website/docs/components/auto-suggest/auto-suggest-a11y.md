@@ -32,4 +32,4 @@ See detailed information for the controlling dropdown with the keyboard in the [
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 
-@include auto-tips-a11y-report
+@include auto-suggest-a11y-report

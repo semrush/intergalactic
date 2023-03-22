@@ -19,5 +19,5 @@
       "utils/*": ["src/utils/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "builder", "deploy.ts", "searchIndexUpload.ts"]
+  "exclude": ["node_modules", "dist", "builder", "deploy.ts", "tools/searchIndexUpload.ts"]
 }
