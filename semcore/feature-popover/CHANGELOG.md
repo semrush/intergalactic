@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.28] - 2023-03-22
+
+### Fixed
+
+- Add tabIndex for Icon close.
+
 ## [3.2.27] - 2023-03-22
 
 ### Changed

@@ -116,7 +116,7 @@ class FeaturePopoverPopper extends Component {
           animationsDisabled={animationsDisabled}
         >
           <SFeaturePopover render={Box}>
-            {closeIcon ? <SClose onClick={$onCloseClick} /> : null}
+            {closeIcon ? <SClose interactive onClick={$onCloseClick} /> : null}
             <Children />
           </SFeaturePopover>
         </Animation>
