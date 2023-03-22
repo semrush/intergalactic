@@ -1,3 +1,11 @@
+## [13.17.2] - 2023-03-22
+
+### @semcore/notice-bubble
+
+- **Fixed** Default export typings wasn't corresponding to the runtime one.
+- **Changed** Added `noticeBubbleDefaultManager` export that is equal to the default export.
+- **Changed** Deprecated default export. `noticeBubbleDefaultManager` is recommended as a drop-in replacement.
+
 ## [13.17.1] - 2023-03-21
 
 ### @semcore/d3-chart

@@ -79,5 +79,7 @@ class NoticeBubbleManager {
   }
 }
 
+const noticeBubbleDefaultManager = new NoticeBubbleManager();
+
 export { NoticeBubbleManager };
-export default new NoticeBubbleManager();
+export default noticeBubbleDefaultManager;
