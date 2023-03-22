@@ -8,7 +8,7 @@ Counter is a straight-forward component that does not require special compliance
 @## Considerations for designers
 
 - Counter text should be clear and concise.
-- Make sure to [check the contrast of the counter text against the background](/style/design-tokens/).
+- Make sure to [check the contrast of the counter text against the background](/core-principles/a11y/a11y-design/#color_and_contrast).
 
 @## Other recommendations
 
