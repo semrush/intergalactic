@@ -3,22 +3,9 @@ title: A11y
 a11y: AA
 ---
 
-@## What component has
-
-### Roles & attributes
+@## Considerations for developers
 
 According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (e.g., `button`, `link`).
-
-The list below describes roles and attributes that component already has.
-
-| Role     | Attribute            | Element           | Usage                                                                                                                                                                                                                     |
-| -------- | -------------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|          | `aria-hidden="true"` | `img`, `svg`      | Hides images from the assistive technologies, because this element is auxiliary and should not be played by a screen reader.                                                                                              |
-|          | `aria-label`         | `div`             | Defines a string value that labels an interactive element. It is required props for buttons without text content.                                                                                                         |
-|          | `aria-labelledby`    | `div`             | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content.                                                     |
-| `button` |                      | `div`, `a`, `svg` | Icon gets `role="button"` automatically, if you add prop `interactive` to it. Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`. |
-
-@## Considerations for developers
 
 - The best way to make SVGs accessible to Assistive Technologies like screen readers and speech recognition tools is to put it directly into your HTML using the `<svg>` tag.
 - Icon also might be interactive, just use role `button` or `link` for it (see the table below). Note that icon gets `role="button"` automatically, if you add prop `interactive` to it.
@@ -33,10 +20,11 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 | Role     | Attribute         | Element           | Usage                                                                                                                                                                                                                     |
 | -------- | ----------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `button` |                   | `div`, `a`, `svg` | Icon gets `role="button"` automatically, if you add prop `interactive` to it. Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`. |
-| `link`   |                   | `img`, `svg`      | Identifies the `img`/`svg` element as a link.                                                                                                                                                                             |
+|          | `aria-hidden="true"` | `img`, `svg`      | Hides images from the assistive technologies, because this element is auxiliary and should not be played by a screen reader.                                                                                              |
 |          | `aria-label`      | `div`             | Defines a string value that labels an interactive element. It is required props for buttons without text content.                                                                                                         |
 |          | `aria-labelledby` | `div`             | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content.                                                     |
+| `button` |                   | `div`, `a`, `svg` | Icon gets `role="button"` automatically, if you add prop `interactive` to it. Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`. |
+| `link`   |                   | `img`, `svg`      | Identifies the `img`/`svg` element as a link.                                                                                                                                                                             |
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs).
 
