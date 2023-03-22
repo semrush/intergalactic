@@ -121,5 +121,16 @@ declare class NoticeBubbleManager implements INoticeBubbleManager {
   remove(uid: string): boolean;
 }
 
-export { NoticeBubbleContainer, NoticeBubble, NoticeBubbleWarning, NoticeBubbleManager };
-export default NoticeBubbleManager;
+const noticeBubbleDefaultManager = new NoticeBubbleManager();
+
+export {
+  NoticeBubbleContainer,
+  NoticeBubble,
+  NoticeBubbleWarning,
+  NoticeBubbleManager,
+  noticeBubbleDefaultManager,
+};
+/**
+ * @deprecated Use `import { noticeBubbleDefaultManager } from ...` instead
+ */
+export default new NoticeBubbleManager();

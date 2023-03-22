@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.7.3] - 2023-03-22
+
+### Fixed
+
+- Default export typings wasn't corresponding to the runtime one.
+
+### Changed
+
+- Added `noticeBubbleDefaultManager` export that is equal to the default export.
+- Deprecated default export. `noticeBubbleDefaultManager` is recommended as a drop-in replacement.
+
 ## [4.7.2] - 2023-03-17
 
 ### Changed
