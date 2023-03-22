@@ -26,6 +26,8 @@ _Source — [A11y style guide](https://a11y-style-guide.com/style-guide/section-
 
 Make sure that the user can easily read the text on the page.
 
+- **Headings should be chosen to represent the actual hierarchical structure of the page.**
+
 - **Use a font size sufficient for comfortable reading**. The minimal font size for the body text is 16 pixels, but this size may vary depending on the font style.
 
 - **Set the paragraph width for comfortable reading**. Don't make paragraphs too long or too short: 45 to 75 characters is an acceptable length, 66 is optimal. Shorter text is good for forms, image captions, and unimportant notes.
@@ -39,8 +41,7 @@ Make sure that the user can easily read the text on the page.
   - Has unique characters that cannot be confused with each other, for example `0` and `O`
   - Supports all necessary symbols and styles
 
-- **Use headings to draw the user's attention to the page
-  hierarchy**. Make sure that the headings differ from the main text in size, thickness, style, and color. This will ensure visual consistency and readability with the main text.
+- **Use headings to draw the user's attention to the page hierarchy**. Make sure that the headings differ from the main text in size, thickness, style, and color. This will ensure visual consistency and readability with the main text.
 
 - **Determine the height of the text for optimal reading**. The larger the font size and line thickness, the larger the spacing should be. For the body text, the spacing to font size ratio should be around 1.4–1.65, for headings — 1–1.3, for captions and short lines — around 1.3. Lines that are spaced too tightly or too loosely make text less readable, so finding a new line becomes more difficult.
 
