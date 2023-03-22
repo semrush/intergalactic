@@ -2,10 +2,6 @@
 title: Design requirements
 ---
 
-@## Typography
-
-See information in the [Typography guide](/style/typography/typography-a11y/).
-
 @## Color and contrast
 
 ### Use of color
@@ -32,6 +28,10 @@ Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-aud
 All graphics and components must have a contrast ratio of at least 3:1 compared to the surrounding colors, unless they are purely decorative. This rule applies to icons, charts, infographics, controls, and any states like hover or active. However, inactive components, states, and purely decorative elements are exempt from these contrast ratio requirements.
 
 Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html) to know more about non-text color contrast.
+
+@## Typography
+
+Refer to the [Typography guide](/style/typography/typography-a11y/) for the detailed recommendations.
 
 @## Focus visible
 

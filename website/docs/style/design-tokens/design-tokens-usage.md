@@ -6,7 +6,7 @@ title: Usage in design
 
 Basically, design tokens are atoms of the design system's visual styles. Think of them as values stored as predefined styles for predefined purposes, elements, and components.
 
-![token description](static/token-description.png)
+![](static/token-description.png)
 
 @## Token sets
 
@@ -14,7 +14,7 @@ There are base and semantic token sets in our design system.
 
 **Base tokens** represent the theme's global palette. Changing their values will affect semantic tokens. Therefore, by changing the palette, you can create new themes. For creating new palette you can use tools like [Huetone](https://huetone.ardov.me/).
 
-![base tokens](static/base-tokens.png)
+![](static/base-tokens.png)
 
 **Semantic (alias) tokens** relate to a specific component or context of usage. They refer to the base tokens.
 
@@ -27,7 +27,7 @@ Semantic tokens include tokens for:
 - box-shadows;
 - border-radius.
 
-![semantic tokens](static/semantic-tokens.png)
+![](static/semantic-tokens.png)
 
 @## Token naming structure
 
@@ -52,19 +52,19 @@ Semantic tokens are context-specific, so they are used according to the intentio
 - `date-picker` token group for DatePicker;
 - etc.
 
-![tokens usage example](static/token-usage1.png)
+![](static/token-usage1.png)
 
-![tokens usage example](static/token-usage2.png)
+![](static/token-usage2.png)
 
-![tokens usage example](static/token-usage3.png)
+![](static/token-usage3.png)
 
 Base tokens can be used for new elements and components which are not in the Intergalactic Design System yet, but only if semantic tokens are not suitable.
 
-![tokens usage example](static/token-usage4.png)
+![](static/token-usage4.png)
 
 @## How to make a new theme
 
-_Section is currently in progress ✍️_
+Please see the detailed process explained in the Figma file: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
 
 <!-- @## Default palette (old)
 
