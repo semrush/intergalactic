@@ -1,9 +1,9 @@
 import { default as NoticeBubbleContainer } from './NoticeBubble';
 export * from './NoticeBubble';
 
-import { default as NoticeBubbleManager } from './NoticeBubbleManager';
+import { default as noticeBubbleDefaultManager } from './NoticeBubbleManager';
 
 export * from './NoticeBubbleManager';
 
-export default NoticeBubbleManager;
-export { NoticeBubbleContainer };
+export default noticeBubbleDefaultManager;
+export { NoticeBubbleContainer, noticeBubbleDefaultManager };
