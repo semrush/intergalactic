@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.0] - 2023-03-22
+
+### Added
+
+- Added properties `backgrouund` and `theme` responsible for spinner theme.
+
 ## [5.3.15] - 2023-03-22
 
 ### Changed

@@ -73,6 +73,34 @@ describe('FeedbackForm', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Should correct render spinner', async () => {
+    const component = (
+      <FeedbackForm loading>
+        LOADING
+        <br/>
+        LOADING
+        <br/>
+        LOADING
+      </FeedbackForm>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('Should correct work props for spinner theme', async () => {
+    const component = (
+      <FeedbackForm loading background='#878dfd85' theme='invert'>
+        LOADING
+        <br/>
+        LOADING
+        <br/>
+        LOADING
+      </FeedbackForm>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <FeedbackForm>
