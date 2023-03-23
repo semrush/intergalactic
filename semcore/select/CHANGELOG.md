@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.6] - 2023-03-23
+
+### Fixed
+
+- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- `aria-activedescendant` was applied to selected option but not on focused one.
+- Option keys are now based on option value.
+
 ## [3.5.5] - 2023-03-22
 
 ### Changed
