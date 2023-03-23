@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.48.0] - 2023-03-23
+
+### Added
+
+- Added internal util `ScreenReaderOnly` to declaratively put screen reader only text in the components.
+
 ## [3.47.4] - 2023-03-22
 
 ### Fixed
