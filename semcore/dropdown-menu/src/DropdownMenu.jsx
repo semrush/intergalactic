@@ -70,14 +70,16 @@ class DropdownMenuRoot extends Component {
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
 
     return {
       size,
       id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
+      'aria-controls': `igc-${uid}-popper`,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'aria-expanded': visible ? 'true' : 'false',
+      'aria-activedescendant': highlightedIndex,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
@@ -170,9 +172,6 @@ class DropdownMenuRoot extends Component {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
-      setTimeout(() => {
-        this.highlightedItemRef.current?.focus();
-      }, 0);
     }
   }
 
@@ -204,8 +203,7 @@ function List(props) {
   return sstyled(props.styles)(
     <SDropdownMenuList
       render={ScrollAreaComponent}
-      role="menu"
-      aria-activedescendant={props.index}
+      role="listbox"
       shadow={true}
       styles={scrollStyles}
     />,
