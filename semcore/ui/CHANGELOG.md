@@ -1,3 +1,51 @@
+## [13.18.0] - 2023-03-23
+
+### @semcore/accordion
+
+- **Fixed** Toggles attributes `aria-expanded` and `aria-controls` were not applied when accordion section was closed.
+
+### @semcore/badge
+
+- **Fixed** Made Badge visible for screen readers again.
+
+### @semcore/card
+
+- **Fixed** Made `<Card.Title />` `hint` available for screen readers.
+
+### @semcore/d3-chart
+
+- **Added** Added `additionalFields` in `a11yAltTextConfig` for extra text description to the data when using a screen reader
+
+### @semcore/dropdown
+
+- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+
+### @semcore/dropdown-menu
+
+- **Added** Added `z-index: 0` to `DropdownMenu.List` so that it doesn't overlap the focus border of neighboring elements.
+- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** Navigating options with keyboard now doesn't trigger browser focus.
+- **Fixed** `aria-activedescendant` now is properly updated on keyboard navigation.
+
+### @semcore/feature-popover
+
+- **Fixed** Add tabIndex for Icon close.
+
+### @semcore/feedback-form
+
+- **Added** Added properties `backgrouund` and `theme` responsible for spinner theme.
+
+### @semcore/select
+
+- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** `aria-activedescendant` was applied to selected option but not on focused one.
+- **Fixed** Option keys are now based on option value.
+- **Fixed** Removed unexpected tabIndex=-1.
+
+### @semcore/utils
+
+- **Added** Added internal util `ScreenReaderOnly` to declaratively put screen reader only text in the components.
+
 ## [13.17.2] - 2023-03-22
 
 ### @semcore/notice-bubble
