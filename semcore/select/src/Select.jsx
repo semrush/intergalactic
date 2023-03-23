@@ -235,7 +235,7 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} tabIndex={-1} role="button" />
+          <Select.Trigger {...other} role="button" />
           <Select.Menu>
             {options.map((option) => {
               return (
