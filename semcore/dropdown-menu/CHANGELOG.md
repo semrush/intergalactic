@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.19] - 2023-03-23
+
+### Fixed
+
+- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- Navigating options with keyboard now doesn't trigger browser focus.
+- `aria-activedescendant` now is properly updated on keyboard navigation.
+
 ## [3.6.18] - 2023-03-22
 
 ### Changed
