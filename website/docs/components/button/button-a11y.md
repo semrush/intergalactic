@@ -27,8 +27,9 @@ The list below describes roles and attributes that component already has.
 @## Considerations for developers
 
 - A `<button>` tag does not need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
+- Ensure visual labels and programmatic labels match.
 - Just like links, you can add `class="visuallyhidden"` with descriptive text to give more context to the button's purpose.
-- If a button contains an `<img>` element, make sure to set its alt attribute. If it contains an icon, use aria-label to describe the icon instead.
+- Usually, SVG icons should be hidden from screen readers on a button that has a text label.
 - You can use `<input type="image">` to make a graphical button. It takes a `src` and `alt` attribute just like traditional images.
 - Button states are important, not just button styling! If you are only toggling classes to visually manage state of your components, you are likely not appropriately conveying that state to users of assistive technologies.
 - If there is no text in the button, it is necessary to add aria-label with a button description.
