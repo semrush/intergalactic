@@ -84,10 +84,11 @@ class RootSelect extends Component {
 
     return {
       id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-list` : undefined,
+      'aria-controls': `igc-${uid}-list`,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
       'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
+      'aria-expanded': visible ? 'true' : 'false',
       empty: isEmptyValue(value),
       size,
       value,
@@ -236,9 +237,14 @@ class RootSelect extends Component {
         <Root render={DropdownMenu}>
           <Select.Trigger {...other} tabIndex={-1} role="button" />
           <Select.Menu>
-            {options.map((option, i) => {
+            {options.map((option) => {
               return (
-                <Select.Option key={i} id={option.value} aria-selected={value === i} {...option}>
+                <Select.Option
+                  key={option.value}
+                  id={option.value}
+                  aria-selected={value === option.value}
+                  {...option}
+                >
                   {multiselect && <Select.Option.Checkbox />}
                   {option.children}
                 </Select.Option>
@@ -266,15 +272,7 @@ const isInputTriggerTag = (tag) => {
   return false;
 };
 
-function Trigger({
-  Children,
-  name,
-  uid,
-  value,
-  $hiddenRef,
-  tag: Tag = ButtonTrigger,
-  getI18nText,
-}) {
+function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger, getI18nText }) {
   const hasInputTrigger = isInputTriggerTag(Tag);
 
   return (
@@ -284,9 +282,6 @@ function Trigger({
       placeholder={getI18nText('selectPlaceholder')}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
       role={(hasInputTrigger && 'combobox') || undefined}
-      aria-activedescendant={
-        (hasInputTrigger && value && `igc-${uid}-option-${value}`) || undefined
-      }
     >
       {addonTextChildren(
         Children,
