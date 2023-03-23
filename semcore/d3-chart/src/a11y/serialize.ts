@@ -154,7 +154,7 @@ export const serialize = (
 
   const intl = getIntl(locale, translations, availableLocales);
 
-  const dataRnageSummary = intl.formatList(
+  const dataRangeSummary = intl.formatList(
     dataRange.map((range) => {
       const from = formatValue(intl, range.from, {
         siblingsTimeMark: range.to,
@@ -241,8 +241,8 @@ export const serialize = (
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
 
-    if (dataRnageSummary.length > 0) {
-      return `${summary}\n${dataRnageSummary}`;
+    if (dataRangeSummary.length > 0) {
+      return `${summary}\n${dataRangeSummary}`;
     }
 
     return summary;
@@ -293,8 +293,8 @@ export const serialize = (
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
 
-    if (dataRnageSummary.length > 0) {
-      return `${summary}\n${dataRnageSummary}`;
+    if (dataRangeSummary.length > 0) {
+      return `${summary}\n${dataRangeSummary}`;
     }
 
     return summary;
@@ -308,12 +308,10 @@ export const serialize = (
       maxListSymbols,
     });
 
-    const sumamry = intl.formatMessage(
+    return intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: entitiesList, label: dataTitle },
     );
-
-    return sumamry;
   } else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
     const groupInsights = insights as ComparisonNode[];
     const valueCounts = groupInsights.map((group) => group.values.length);
