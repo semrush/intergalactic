@@ -74,9 +74,10 @@ class Dropdown extends Component {
 
     return {
       id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
+      'aria-controls': `igc-${uid}-popper`,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
       'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'aria-expanded': visible ? 'true' : 'false',
       onKeyDown: this.handlerTriggerKeyDown,
     };
   }
