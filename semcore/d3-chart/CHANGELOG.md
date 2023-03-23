@@ -7,7 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added `additionalFields` in `a11yAltTextConfig` for extra text description to the data when using a screen reader
- 
+
 ## [2.12.2] - 2023-03-22
 
 ### Changed
