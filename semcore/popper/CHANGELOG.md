@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.9] - 2023-03-24
+
+### Fixed
+
+- Fixed rendering `Popper` in `Modal`.
+
 ## [4.16.8] - 2023-03-23
 
 ### Changed

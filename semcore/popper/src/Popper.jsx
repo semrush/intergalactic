@@ -13,7 +13,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { Scale } from '@semcore/animation';
+// import { Scale } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import createPopper from './createPopper';
@@ -200,10 +200,10 @@ class Popper extends Component {
         : { [name]: optionsModifiers[name] },
     }));
 
-    modifiersOptions.push({
-      name: 'computeStyles',
-      options: { gpuAcceleration: false },
-    });
+    // modifiersOptions.push({
+    //   name: 'computeStyles',
+    //   options: { gpuAcceleration: false },
+    // });
 
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
     this.popper.current = createPopper(this.triggerRef.current, this.popperRef.current, {
@@ -446,11 +446,14 @@ function PopperPopper(props) {
     !visible || disableEnforceFocus,
   );
 
+  if (!visible) return null;
+
   return sstyled(styles)(
     <Portal disablePortal={disablePortal}>
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
-          render={Scale}
+          // render={Scale}
+          tag={Box}
           animationsDisabled={animationsDisabled}
           visible={visible}
           duration={[duration, duration / 2]}
