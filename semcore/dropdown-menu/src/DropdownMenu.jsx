@@ -85,9 +85,10 @@ class DropdownMenuRoot extends Component {
   }
 
   getListProps() {
-    const { size } = this.asProps;
+    const { size, uid } = this.asProps;
     return {
       size,
+      uid,
       index: this.asProps.highlightedIndex,
     };
   }
@@ -199,11 +200,13 @@ class DropdownMenuRoot extends Component {
 
 function List(props) {
   const SDropdownMenuList = Root;
+  const { uid } = props;
 
   return sstyled(props.styles)(
     <SDropdownMenuList
       render={ScrollAreaComponent}
-      role="listbox"
+      role="menu"
+      aria-labelledby={`igc-${uid}-trigger`}
       shadow={true}
       styles={scrollStyles}
     />,
