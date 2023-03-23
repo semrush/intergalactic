@@ -35,7 +35,7 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 @## Resources
 
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html) gives core recommendations for the accessible components.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-media.html) gives recommendations for the accessible components.
 - [Accessible SVGs](https://css-tricks.com/accessible-svgs/) contains information about the laccessible SVG.
 - [W3 link examples](https://www.w3.org/WAI/ARIA/apg/example-index/link/link.html) has detailed information about the link accessible behavior.
 - [Icon links and icon buttons](https://a11y-101.com/development/icons-and-links).
