@@ -16,23 +16,17 @@ a11y: AA
 | `Space`, `Enter`               | Selects the option and closes the dropdown.                                                                                               |
 | `Esc`                          | Closes the dropdown and returns focus to the AutoSuggest trigger.                                                                         |
 
+See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_dropdown).
+
 ### Roles and attributes
 
-- `tabindex="0"` includes the element in the `Tab` sequence.
-- For more information about the radio or checkbox list see [Radiobutton](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
-- For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_dropdown).
-
-@## Considerations for developers
-
-- The `<fieldset>` surrounds the entire grouping of checkboxes or radio buttons. The `<legend>` provides a description for the grouping.
-- Some assistive technology reads the legend text for each fieldset, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.
-- For select elements with groups of options, the `optgroup` element can be used to indicate such groups. The `label` attribute of the `optgroup` element is used to provide a label for the group. This is especially useful for lists with many related options.
-
-Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists).
+- For more information about the radio or checkbox list, see [Radiobutton](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
+- For information about the dropdown behavior, see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_dropdown).
+- Fo more information about the input behavior, refer to [Input](/components/input/input-a11y/).
 
 @## Resources
 
-[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives core recommendations for the accessible select menus and lists.
+[A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives recommendations for the accessible select menus and lists.
 
 @## Other recommendations
 
