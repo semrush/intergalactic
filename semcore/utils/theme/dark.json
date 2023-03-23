@@ -1,10 +1,10 @@
 {
   "base": {
-    "white": {
-      "value": "#ffffff",
-      "type": "color"
-    },
     "gray": {
+      "white": {
+        "value": "#ffffff",
+        "type": "color"
+      },
       "50": {
         "value": "#f4f5f9",
         "type": "color",
