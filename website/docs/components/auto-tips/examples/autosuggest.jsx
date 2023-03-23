@@ -1,98 +1,76 @@
 import React from 'react';
 import Select from '@semcore/ui/select';
 import Input from '@semcore/ui/input';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
 
-function setBoldWord(searchValue, value) {
-  const title = {
-    __html: value.toLowerCase(),
-  };
-  if (searchValue) {
-    const re = new RegExp(searchValue.toLowerCase(), 'g');
-    title.__html = title.__html.replace(
-      re,
-      `<span style="font-weight: bold; padding: 2px 0">${searchValue}</span>`,
-    );
+const Highlight = ({ highlight, children }) => {
+  let html = children.toLowerCase();
+  if (highlight) {
+    const re = new RegExp(highlight.toLowerCase(), 'g');
+    html = html.replace(re, `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`);
   }
-  return <span dangerouslySetInnerHTML={title} />;
-}
+  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+};
 
-class Demo extends React.PureComponent {
-  timer = null;
-  state = { value: '', options: [] };
-  changeValue = (value) => this.setState({ value });
-  handleChange = (value) => {
-    this.changeValue(value);
-    this.debounceSend(value);
+const debounce = (func, timeout) => {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(...args);
+    }, timeout);
   };
-  debounceSend = (value) => {
-    if (!this.timer) {
-      this.timer = setTimeout(() => {
-        this.timer = null;
-        this.sendData(value);
-      }, 250);
-    }
-  };
-  sendData = (value) => {
-    fetch(`https://suggestions.semrush.com/?type=domain&q=${value}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        let options = json.results.map((item) => ({
-          value: item.value.replace(/.\w+$/g, ''),
-          title: item.value.replace(/.\w+$/g, ''),
-        }));
-        if (!options.length && value.length > 0) {
-          options = [
-            {
-              value: null,
-              title: `Nothing found`,
-            },
-          ];
-        }
-        if (!value.length) {
-          options = [];
-        }
-        this.setState({ options });
-      })
-      .catch(console.error);
-  };
-  handleSelect = (value) => {
-    this.changeValue(value);
-    this.debounceSend(value);
-    return false;
-  };
-  componentWillUnmount() {
-    this.timer = null;
+};
+
+const fetchData = async (query) => {
+  if (!query) return [];
+  const response = await fetch(`https://suggestions.semrush.com/?type=domain&q=${query}`);
+  if (response.ok) {
+    const data = await response.json();
+    if (data.results.length === 0) return [];
+    return data.results.map((item) => item.value).map((value) => ({ value, title: value }));
+  } else {
+    const error = await response.json();
+    console.error(error);
   }
-  render() {
-    const { value, options } = this.state;
+};
 
-    return (
-      <Select interaction="focus" onChange={this.handleSelect} value={null}>
-        <Select.Trigger tag={Input}>
-          {() => (
-            <Input.Value
-              value={value}
-              placeholder="Type domain or URL"
-              onChange={this.handleChange}
-            />
-          )}
-        </Select.Trigger>
-        {options.length > 0 && (
-          <Select.Menu>
-            {options.map((option, idx) => {
-              const { value: optionValue, title } = option;
-              return (
-                <Select.Option value={optionValue} key={idx}>
-                  {setBoldWord(value, title)}
+const Demo = () => {
+  const [query, setQuery] = React.useState('');
+  const [suggestions, setSuggestions] = React.useState([]);
+  const loadSuggestions = React.useCallback(
+    debounce((query) => fetchData(query).then((suggestions) => setSuggestions(suggestions)), 300),
+    [],
+  );
+  React.useEffect(() => {
+    loadSuggestions(query);
+  }, [query]);
+
+  return (
+    <>
+      <Text tag="label" htmlFor="website-autosuggest">
+        Your website
+      </Text>
+      <Box mt={2}>
+        <Select id="website-autosuggest" interaction="focus" onChange={setQuery} value={query}>
+          <Select.Trigger tag={Input}>
+            {() => (
+              <Input.Value value={query} placeholder="Type domain or URL" onChange={setQuery} />
+            )}
+          </Select.Trigger>
+          {suggestions.length > 0 && (
+            <Select.Menu>
+              {suggestions.map((option) => (
+                <Select.Option value={option.value} key={option.value}>
+                  <Highlight highlight={query}>{option.title}</Highlight>
                 </Select.Option>
-              );
-            })}
-          </Select.Menu>
-        )}
-      </Select>
-    );
-  }
-}
+              ))}
+            </Select.Menu>
+          )}
+        </Select>
+      </Box>
+    </>
+  );
+};
 export default Demo;
