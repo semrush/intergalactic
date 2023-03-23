@@ -2,11 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.14] - 2023-03-23
+
+### Fixed
+
+- Made Badge visible for screen readers again.
+
 ## [3.3.13] - 2023-03-22
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4]).
+  a
 
 ## [3.3.8] - 2023-02-09
 
