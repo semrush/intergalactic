@@ -63,6 +63,7 @@ export type DataSummarizationConfig = {
   groupsLimit: number;
   disable: boolean;
   override: string | undefined;
+  additionalFields: string[];
 };
 export type PartialDataSummarizationConfig = DeepPartial<DataSummarizationConfig>;
 
@@ -188,4 +189,5 @@ export const makeDataSummarizationConfig = (
     notableDiff: undefined,
     ...(config?.movingAverage ?? {}),
   },
+  additionalFields: [...config.additionalFields]
 });

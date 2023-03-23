@@ -36,6 +36,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
     fromHints.push(...hints.fields.verticalAxes);
     fromHints.push(...hints.fields.horizontalAxes);
     fromHints.push(...hints.fields.valueAxes);
+    fromHints.push(...config.additionalFields);
     fromHints.push(...Object.keys(hints.fields.values));
 
     fromHints = [...new Set(fromHints)].filter((key) => key in data[0]);

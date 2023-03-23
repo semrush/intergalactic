@@ -85,6 +85,9 @@ export type PlotSummarizerConfig = {
    * @default false
    * **/
   groupsLimit?: number;
+  /** Additional field for extra text description to the data
+   * **/
+  additionalFields?: string[];
 };
 
 export type MapProps<Props, Ctx = {}, UCProps = {}> = Props & {
