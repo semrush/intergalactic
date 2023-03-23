@@ -9,6 +9,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
 - `aria-activedescendant` was applied to selected option but not on focused one.
 - Option keys are now based on option value.
+- Removed unexpected tabIndex=-1.
 
 ## [3.5.5] - 2023-03-22
 
