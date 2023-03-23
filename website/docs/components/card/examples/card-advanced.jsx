@@ -19,10 +19,8 @@ export default () => (
   <Card>
     <Card.Header>
       <Flex alignItems="center" justifyContent="space-between">
-        <Flex alignItems="center">
-          <Card.Title hint={tooltipContent}>
-            Market Traffic vs Selected Domains Trends
-          </Card.Title>
+        <Flex alignItems="center" tag="h4">
+          <Card.Title hint={tooltipContent}>Market Traffic vs Selected Domains Trends</Card.Title>
         </Flex>
         <Flex alignItems="center">
           <Text size={200} color="#6C6E79" mr={2}>

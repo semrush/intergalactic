@@ -30,7 +30,9 @@ function Demo() {
             .filter((item) => saved[item])
             .map((item) => (
               <Card key={item} mr={4}>
-                <Card.Title>{titles[item]}</Card.Title>
+                <Card.Title tag="h4" inline my={0}>
+                  {titles[item]}
+                </Card.Title>
               </Card>
             ))}
         </DnD.DropZone>
@@ -42,7 +44,9 @@ function Demo() {
           <Col span={4} mb={4} key={item}>
             <DnD.Draggable placement="top" id={item}>
               <Card>
-                <Card.Title>{titles[item]}</Card.Title>
+                <Card.Title tag="h4" inline my={0}>
+                  {titles[item]}
+                </Card.Title>
               </Card>
             </DnD.Draggable>
           </Col>
