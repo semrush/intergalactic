@@ -82,7 +82,9 @@ const Demo = () => {
   return (
     <Card>
       <Flex mb={2} alignItems="center">
-        <Card.Title hint="This is just an example of line chart">Chart heading</Card.Title>
+        <Card.Title tag="h4" inline hint="This is just an example of line chart" my={0}>
+          Chart heading
+        </Card.Title>
         <Dropdown placement="bottom-end">
           <Dropdown.Trigger
             tag={SettingsS}

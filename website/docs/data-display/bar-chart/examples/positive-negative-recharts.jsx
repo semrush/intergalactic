@@ -70,7 +70,9 @@ const Demo = () => {
   };
   return (
     <Card my="24px" pt="20px" px="24px" pb="24px" wMax="800px">
-      <Card.Title hint="This is just an example of bar chart">Keywords</Card.Title>
+      <Card.Title tag="h4" inline hint="This is just an example of bar chart" my={0}>
+        Keywords
+      </Card.Title>
       <ResponsiveContainer height={180}>
         <BarChart stackOffset="sign" data={data}>
           <Legend verticalAlign="top">
