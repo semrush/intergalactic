@@ -4,6 +4,7 @@ import { Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import Tooltip from '@semcore/tooltip';
 import InfoM from '@semcore/icon/Info/m';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 import style from './style/card.shadow.css';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
@@ -42,9 +43,12 @@ function Title(props) {
     <>
       <STitle render={Text} />
       {hint && (
-        <STooltip title={hint}>
-          <SIcon />
-        </STooltip>
+        <>
+          <ScreenReaderOnly>{hint}</ScreenReaderOnly>
+          <STooltip title={hint}>
+            <SIcon />
+          </STooltip>
+        </>
       )}
     </>,
   );
