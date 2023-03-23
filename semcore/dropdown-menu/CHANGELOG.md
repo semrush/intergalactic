@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.20] - 2023-03-23
+
+### Added
+
+- Added `z-index: 0` to `DropdownMenu.List` so that it doesn't overlap the focus border of neighboring elements.
+
 ## [3.6.19] - 2023-03-23
 
 ### Fixed

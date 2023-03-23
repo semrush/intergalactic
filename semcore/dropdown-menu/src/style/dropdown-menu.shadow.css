@@ -5,6 +5,7 @@ SDropdownMenuList {
   min-height: 26px;
   min-width: 32px;
   box-sizing: content-box;
+  z-index: 0;
 }
 
 SDropdownMenuItem {
