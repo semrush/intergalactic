@@ -189,5 +189,5 @@ export const makeDataSummarizationConfig = (
     notableDiff: undefined,
     ...(config?.movingAverage ?? {}),
   },
-  additionalFields: [...config.additionalFields]
+  additionalFields: [...config?.additionalFields ?? []]
 });
