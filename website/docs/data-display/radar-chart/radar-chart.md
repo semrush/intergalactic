@@ -62,7 +62,7 @@ Radar charts are most beneficial when there are a few items to compare. That is 
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | ![radar chart with 3 minimum variables](static/variables-minimum.png) | ![radar chart with 10 maximum variables](static/variables-maximum.png) |
 
-You can turn off axes and variables if needed. It's especially helpful for small-sized charts like the following one:
+You can turn off grid ticks and labels if needed. It can be helpful for small-sized charts like the following one:
 
 ![example of simplified mini radar chart without visible additional lines](static/mini-radar-1.png)
 
