@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.9.8] - 2023-03-24
+
+### Added
+
+- Added `pointer-events` properties to scale group `keyframes` to avoid problems with overlapping elements and changing the cursor.
+
 ## [1.9.7] - 2023-03-24
 
 ### Changed
