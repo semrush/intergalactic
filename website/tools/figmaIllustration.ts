@@ -2,7 +2,9 @@ import fetch from 'node-fetch';
 import * as fs from 'fs';
 import sharp from 'sharp';
 import * as dotenv from 'dotenv';
+import pLimit from 'p-limit';
 
+const limit = pLimit(1);
 const FIGMA_PROJECT_ID = '74268036';
 
 dotenv.config();
@@ -13,8 +15,8 @@ if (!process.env.FIGMA_API_KEY) {
 
 const figmaKey = process.env.FIGMA_API_KEY;
 
-const downloadIllustration = async() => {
-   const createFolder = async(ch, category, fileId) => {
+const downloadIllustrations = async() => {
+   const getIllustration = async(ch, category, fileId) => {
     const folderName = `./docs/${category}/${ch.name.toLowerCase().split(' ').join('-')}/static`;
 
      if (fs.existsSync(folderName)) {
@@ -39,7 +41,7 @@ const downloadIllustration = async() => {
           const fileName = `${il.name}.png`;
           console.log('illustration', fileName);
           } catch (error) {
-            console.error(error);
+            console.error(error.message);
           }
       }
     }
@@ -55,9 +57,14 @@ const downloadIllustration = async() => {
           const data: {name?: string, document?: { children: string[] }} = await response.json();
           const category = data.name.toLowerCase().split(' ').join('-');
           console.log('category', category);
-          data.document.children.forEach(ch => createFolder(ch, category, fileId))
+          const downloadPromises = data.document.children.map(ch =>
+            limit(async () => {
+              await getIllustration(ch, category, fileId);
+            })
+          )
+          await Promise.all(downloadPromises);
         } catch (error) {
-          console.error(error);
+          console.error(error.message);
         }
       }
   }
@@ -77,7 +84,7 @@ const downloadIllustration = async() => {
   }
 };
 
-downloadIllustration().catch((error) => {
+downloadIllustrations().catch((error) => {
   console.error('Loading error', error);
 });
 
