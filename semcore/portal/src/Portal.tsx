@@ -20,8 +20,8 @@ function Portal(props: IFunctionProps<IPortalProps>) {
   const { Children, disablePortal } = props;
   const container = useContext(PortalContext);
   const [mountNode, setMountNode] = useState(getNodeByRef(container));
-  const containerPseudoRef = React.useMemo(() => ({ current: container }), [container]);
-  useContextTheme(containerPseudoRef as any);
+  const childrenRef = React.useRef(null);
+  useContextTheme(childrenRef);
 
   useEffect(() => {
     if (!disablePortal) {
@@ -30,10 +30,10 @@ function Portal(props: IFunctionProps<IPortalProps>) {
   }, [container, disablePortal]);
 
   if (disablePortal) {
-    return <Children />;
+    return <Children ref={childrenRef} />;
   }
 
-  return mountNode ? createPortal(<Children />, mountNode) : null;
+  return mountNode ? createPortal(<Children ref={childrenRef} />, mountNode) : null;
 }
 
 Portal.displayName = 'Portal';
