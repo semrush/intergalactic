@@ -65,7 +65,7 @@ The difference between these types of search is conceptual. In the AutoComplete 
 
 As the user enters information into the input, the item list is filtered and only the results matching the entered data remain in the list.
 
-Clicking an item in the list selects it and the DropdownMenu closes.
+Activating an item in the list selects it and the DropdownMenu closes.
 
 | State                | Appearance example                                         |
 | -------------------- | ---------------------------------------------------------- |

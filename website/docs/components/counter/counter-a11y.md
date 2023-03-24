@@ -3,7 +3,9 @@ title: A11y
 a11y: AA
 ---
 
-Counter is a straight-forward component that does not require special compliance for accessibility.
+Counter component doesn't require any special accessibility considerations, but make sure to include it in the reading order so screen readers can access it. Since it's not interactive, it doesn't need to be in the focus (tab) order.
+
+Avoid the use of aria-labels on `span` elements.
 
 @## Considerations for designers
 

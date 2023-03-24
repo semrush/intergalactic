@@ -8,13 +8,13 @@ title: Example
 
 @example base
 
-@## Customizing the trigger
+@## Custom trigger
 
 You can add your own styles to the trigger or change its `tag`.
 
 @example trigger
 
-@## Styles for the selected element
+@## Selected element styles
 
 To find out whether an element is selected or not, pass the function into the body of the element.
 
