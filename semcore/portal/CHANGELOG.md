@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.15] - 2023-03-24
+
+### Fixed
+
+- Design tokens based theme may leak to the whole page while applied to portal based components such as dropdowns, tooltips and modals.
+
 ## [2.5.14] - 2023-03-24
 
 ### Changed
@@ -9,8 +15,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1]).
 
 ## [2.5.7] - 2023-02-09
-
-## [2.5.6] - 2023-01-20
 
 ### Changed
 
