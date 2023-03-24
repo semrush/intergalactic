@@ -1,7 +1,7 @@
 {
   "name": "@semcore/time-picker",
   "description": "Semrush TimePicker Component",
-  "version": "3.4.32",
+  "version": "3.4.33",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
