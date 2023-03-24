@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.48.1] - 2023-03-23
+
+### Removed
+
+- Removed `Status` group in semantic tokens.
+
+### Changed
+
+- Moved the gray-white token in front of the gray-50, slightly tweaked the order.
+
 ## [3.48.0] - 2023-03-23
 
 ### Added
