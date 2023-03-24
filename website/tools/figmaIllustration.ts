@@ -16,18 +16,21 @@ if (!process.env.FIGMA_API_KEY) {
 const figmaKey = process.env.FIGMA_API_KEY;
 
 const downloadIllustrations = async() => {
-   const getIllustration = async(ch, category, fileId) => {
-    const folderName = `./docs/${category}/${ch.name.toLowerCase().split(' ').join('-')}/static`;
+  const chosenPath = process.argv.slice(2);
 
-     if (fs.existsSync(folderName)) {
-      for (const il of ch.children) {
+  const getIllustration = async(children, category, fileId) => {
+    const folderName = `./docs/${category}/${children.name.toLowerCase().split(' ').join('-')}/static`;
+    console.log('page', children.name);
+
+    if (fs.existsSync(folderName)) {
+      for (const illustration of children.children) {
         try {
         const response = await fetch(
-          `https://api.figma.com/v1/images/${fileId}?ids=${il.id}&format=png`,
+          `https://api.figma.com/v1/images/${fileId}?ids=${illustration.id}&format=png`,
           { headers: { 'X-Figma-Token': figmaKey } });
 
         const data: {images?: {id: string, name: string}} = await response.json();
-            const imageUrl = data.images[il.id];
+            const imageUrl = data.images[illustration.id];
 
             fetch(imageUrl)
               .then(res => res.arrayBuffer())
@@ -35,10 +38,10 @@ const downloadIllustrations = async() => {
                 const buffer = Buffer.from(arrayBuffer);
                 sharp(buffer)
                   .png({ quality: 90 })
-                  .toFile(folderName + `/${il.name}.png`)
+                  .toFile(folderName + `/${illustration.name}.png`)
               });
 
-          const fileName = `${il.name}.png`;
+          const fileName = `${illustration.name}.png`;
           console.log('illustration', fileName);
           } catch (error) {
             console.error(error.message);
@@ -54,12 +57,12 @@ const downloadIllustrations = async() => {
 
       if (response.ok) {
         try {
-          const data: {name?: string, document?: { children: string[] }} = await response.json();
+          const data: {name?: string, document?: { children: {name: string}[] }} = await response.json();
           const category = data.name.toLowerCase().split(' ').join('-');
           console.log('category', category);
-          const downloadPromises = data.document.children.map(ch =>
+          const downloadPromises = data.document.children.filter(file => (chosenPath.length !==2 || file.name.toLowerCase() === chosenPath[1].toLowerCase())).map(children =>
             limit(async () => {
-              await getIllustration(ch, category, fileId);
+              await getIllustration(children, category, fileId);
             })
           )
           await Promise.all(downloadPromises);
@@ -75,9 +78,8 @@ const downloadIllustrations = async() => {
 
   if (response.ok) {
     try {
-      const data: {files?: {key: string }[]} = await response.json();
-      data.files.forEach(file => getIllustrationList(file.key))
-
+      const data: {files?: {key: string, name: string}[]} = await response.json();
+      data.files.filter(file => (!chosenPath.length || file.name.toLowerCase() === chosenPath[0])).map(file => getIllustrationList(file.key))
     } catch (error) {
       console.error(error);
     }
@@ -87,6 +89,7 @@ const downloadIllustrations = async() => {
 downloadIllustrations().catch((error) => {
   console.error('Loading error', error);
 });
+// When calling the script, the first argument can be a filename and the second argument a page name in the file
 
 
 
