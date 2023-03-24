@@ -42,8 +42,8 @@ All checkbox sizes can be used with the corresponding text paragraphs.
 
 | Checkbox size (px) | Paragraph size (px)                        | Appearance example                |
 | ------------------ | -------------------------------------- | -------------------------------------- |
-| M (16px * 16px)   | 14px (use `--fs-200, --lh-200` tokens) | ![](static/paragraph-m.png) |
-| L (20px * 20px)   | 16px (use `--fs-300, --lh-300` tokens) | ![](static/paragraph-l.png) |
+| M (16px * 16px)   | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
+| L (20px * 20px)   | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
 @## Checkbox with Info icon
 

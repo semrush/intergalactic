@@ -25,6 +25,7 @@ The list below describes roles and attributes that component already has.
 
 | Role | Attribute    | Element | Usage                                                                                                                                                   |
 | ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `combobox` |        | `div`   | The `combobox` role identifies an element as an input that controls another element, such as a `listbox` or `grid`, that can dynamically pop up to help the user set the value of that input. |
 |      | `aria-label` | `div`   | The `aria-label` attribute defines a string value that labels an interactive element.                                                                   |
 |      | `tabIndex`   | `div`   | Makes the trigger focusable and includes it in the page `Tab` sequence. This approach to managing focus is described in the section on roving tabindex. |
 

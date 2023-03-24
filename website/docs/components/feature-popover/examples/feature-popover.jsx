@@ -29,7 +29,7 @@ const Demo = () => {
             }}
           />
           <div>
-            <Text size={300} bold tag="p" mb={1}>
+            <Text size={300} bold tag="h3" mb={1}>
               Work with your team!
             </Text>
             <Text mb={4} size={200} tag="p">
