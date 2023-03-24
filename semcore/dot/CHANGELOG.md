@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.18] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes on dot.
+
 ## [4.2.17] - 2023-03-24
 
 ### Changed

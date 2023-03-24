@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.14] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes in modals.
+
 ## [3.5.13] - 2023-03-24
 
 ### Changed
