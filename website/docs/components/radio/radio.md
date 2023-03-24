@@ -36,8 +36,8 @@ All radiobutton sizes can be used with the corresponding text paragraphs.
 
 | Radio button size (px) | Paragraph size (px)                        | Appearance example                             |
 | ---------------------- | -------------------------------------- | --------------------------------------------------- |
-| M (16px * 16px)       | 14px (use `--fs-200, --lh-200` tokens) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
-| L (20px * 20px)       | 16px (use `--fs-300, --lh-300` tokens) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
+| M (16px * 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
+| L (20px * 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
 
 @## Radiobutton with Info icon
 
