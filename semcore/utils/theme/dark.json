@@ -1,6 +1,10 @@
 {
   "base": {
     "gray": {
+      "white": {
+        "value": "#ffffff",
+        "type": "color"
+      },
       "50": {
         "value": "#f4f5f9",
         "type": "color",
@@ -37,10 +41,6 @@
       },
       "800": {
         "value": "#191b23",
-        "type": "color"
-      },
-      "white": {
-        "value": "#ffffff",
         "type": "color"
       }
     },
@@ -1206,38 +1206,6 @@
         "value": "{gray.white}, 0.3",
         "type": "color",
         "description": "Inverted version of the default color for the Skeleton."
-      }
-    },
-    "status": {
-      "beta": {
-        "value": "{orange.300}",
-        "type": "color",
-        "description": "Beta status of the feature."
-      },
-      "admin": {
-        "value": "{blue.300}",
-        "type": "color",
-        "description": "Admin mode of the feature."
-      },
-      "new": {
-        "value": "{green.300}",
-        "type": "color",
-        "description": "New status of the feature."
-      },
-      "alpha": {
-        "value": "{red.300}",
-        "type": "color",
-        "description": "Alpha status of the feature."
-      },
-      "soon": {
-        "value": "{gray.300}",
-        "type": "color",
-        "description": "\"Soon\" status of the feature."
-      },
-      "invert": {
-        "value": "{gray.white}",
-        "type": "color",
-        "description": "Inverted version of the background of the feature status."
       }
     },
     "table": {

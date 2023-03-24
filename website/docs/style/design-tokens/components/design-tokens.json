@@ -1684,54 +1684,6 @@
     ]
   },
   {
-    "name": "--intergalactic-status-beta",
-    "type": "color",
-    "rawValue": "{orange.300}",
-    "computedValue": "#ff8c43",
-    "description": "Beta status of the feature.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-status-admin",
-    "type": "color",
-    "rawValue": "{blue.300}",
-    "computedValue": "#2bb3ff",
-    "description": "Admin mode of the feature.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-status-new",
-    "type": "color",
-    "rawValue": "{green.300}",
-    "computedValue": "#00c192",
-    "description": "New status of the feature.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-status-alpha",
-    "type": "color",
-    "rawValue": "{red.300}",
-    "computedValue": "#ff8786",
-    "description": "Alpha status of the feature.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-status-soon",
-    "type": "color",
-    "rawValue": "{gray.300}",
-    "computedValue": "#a9abb6",
-    "description": "\"Soon\" status of the feature.",
-    "components": []
-  },
-  {
-    "name": "--intergalactic-status-invert",
-    "type": "color",
-    "rawValue": "{gray.white}",
-    "computedValue": "#ffffff",
-    "description": "Inverted version of the background of the feature status.",
-    "components": []
-  },
-  {
     "name": "--intergalactic-table-th-primary-cell",
     "type": "color",
     "rawValue": "{gray.50}",

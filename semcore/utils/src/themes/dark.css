@@ -331,18 +331,6 @@
   --intergalactic-skeleton-bg: #484a54;
   /* Inverted version of the default color for the Skeleton. */
   --intergalactic-skeleton-bg-invert: rgba(255, 255, 255, 0.3);
-  /* Beta status of the feature. */
-  --intergalactic-status-beta: #ff8c43;
-  /* Admin mode of the feature. */
-  --intergalactic-status-admin: #2bb3ff;
-  /* New status of the feature. */
-  --intergalactic-status-new: #00c192;
-  /* Alpha status of the feature. */
-  --intergalactic-status-alpha: #ff8786;
-  /* "Soon" status of the feature. */
-  --intergalactic-status-soon: #a9abb6;
-  /* Inverted version of the background of the feature status. */
-  --intergalactic-status-invert: #ffffff;
   /* Background of the header cell in the primary Table. */
   --intergalactic-table-th-primary-cell: rgba(62, 64, 75, 1);
   /* Background of the hovered header cell in the primary Table. */
