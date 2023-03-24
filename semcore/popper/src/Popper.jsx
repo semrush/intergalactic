@@ -15,6 +15,7 @@ import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
 import createPopper from './createPopper';
 
@@ -445,6 +446,8 @@ function PopperPopper(props) {
     interaction === 'click' ? triggerRef : null,
     !visible || disableEnforceFocus,
   );
+
+  useContextTheme(ref, visible);
 
   return sstyled(styles)(
     <Portal disablePortal={disablePortal}>

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.10] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes in poppers.
+
 ## [4.16.9] - 2023-03-24
 
 ### Changed

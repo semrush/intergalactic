@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.49.0] - 2023-03-24
+
+### Added
+
+- Supported portalled local theme reapplying in class-based components.
+
 ## [3.48.1] - 2023-03-23
 
 ### Removed

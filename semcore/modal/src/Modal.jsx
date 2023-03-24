@@ -16,6 +16,7 @@ import { Text } from '@semcore/typography';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
@@ -148,6 +149,7 @@ function Overlay(props) {
   const { Children, styles, onOutsideClick, visible } = props;
   const overlayRef = useRef(null);
   usePreventScroll(visible);
+  useContextTheme(overlayRef, visible);
 
   return sstyled(styles)(
     <SOverlay render={FadeInOut} ref={overlayRef}>

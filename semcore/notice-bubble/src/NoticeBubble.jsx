@@ -12,6 +12,7 @@ import { Timer } from './utils';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
+import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 
 import style from './style/notice-bubble.shadow.css';
 
@@ -40,7 +41,7 @@ const Notices = (props) => {
 class NoticeBubbleContainerRoot extends Component {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), contextThemeEnhance()];
   static defaultProps = {
     manager,
     i18n: localizedMessages,
@@ -75,12 +76,12 @@ class NoticeBubbleContainerRoot extends Component {
 
   render() {
     const SNoticeBubble = Root;
-    const { Children, styles, disablePortal, getI18nText } = this.asProps;
+    const { Children, styles, disablePortal, getI18nText, ref } = this.asProps;
     const { notices, warnings } = this.state;
 
     return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
-        <SNoticeBubble render={Box} role="alert" aria-live="assertive">
+        <SNoticeBubble render={Box} role="alert" aria-live="assertive" ref={ref}>
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
           <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />

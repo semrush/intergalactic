@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.14] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes in side panels.
+
 ## [2.3.13] - 2023-03-24
 
 ### Changed

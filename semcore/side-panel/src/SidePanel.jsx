@@ -13,6 +13,7 @@ import { Text } from '@semcore/typography';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
 import style from './style/side-panel.shadow.css';
 
@@ -123,8 +124,10 @@ class RootSidePanel extends Component {
 
 function Overlay(props) {
   const SOverlay = Root;
+  const overlayRef = useRef(null);
   usePreventScroll(props.visible);
-  return sstyled(props.styles)(<SOverlay render={FadeInOut} />);
+  useContextTheme(overlayRef, props.visible);
+  return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} />);
 }
 
 function Panel(props) {
