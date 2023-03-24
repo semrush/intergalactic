@@ -23,7 +23,7 @@ tabName: Design
 
 All component elements are mandatory.
 
-![feature-popover scheme](static/spotlight-scheme.png)
+![](static/spotlight-scheme.png)
 
 ### Title
 
@@ -68,8 +68,8 @@ There are two types of the FeaturePopover: basic and extended. **They differ in 
 
 | Type                                                                                                                                    | Appearance                                       |
 | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40 \* 40px.                 | ![feature-popover](static/spotlight-default.png) |
-| **Extended**. The additional Illustration captures the essence of the message metaphorically. The area to be illustrated is 80 \* 80px. | ![feature-popover](static/spotlight-big.png)     |
+| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40 * 40px.                 | ![](static/spotlight-default.png) |
+| **Extended**. The additional Illustration captures the essence of the message metaphorically. The area to be illustrated is 80 * 80px. | ![](static/spotlight-big.png)     |
 
 @## Themes
 
@@ -91,9 +91,9 @@ Basic and extended types have maximum width:
 
 #### Content
 
-![feature-popover](static/spotlight-paddings.png)
+![](static/spotlight-paddings.png)
 
-![feature-popover](static/spotlight-content-paddings.png)
+![](static/spotlight-content-paddings.png)
 
 Paddings of the container are 16px (padding-right is 32px).
 
@@ -108,9 +108,9 @@ Recommendations for indents and content sizes:
 
 The dot is always located in the lower corner of the control.
 
-![feature-popover](static/spotlight-dot.png)
+![](static/spotlight-dot.png)
 
-![feature-popover](static/spotlight-sizes.png)
+![](static/spotlight-sizes.png)
 
 @## Appearance and hiding
 
