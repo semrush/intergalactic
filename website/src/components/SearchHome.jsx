@@ -145,6 +145,18 @@ const Search = ({
     refine('');
   }, [location]);
 
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key !== 'k') return;
+      if (!event.ctrlKey && !event.metaKey) return;
+      ref.current?.focus();
+    };
+    document.body.addEventListener('keydown', handleKeyDown);
+
+    return () => document.body.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <Select
       interaction="focus"
@@ -181,6 +193,7 @@ const Search = ({
                   className,
                 )}
                 onFocus={onFocus}
+                ref={ref}
               />
               <div className={styles.iconSearchWrapper}>
                 {value.length > 0 ? (
