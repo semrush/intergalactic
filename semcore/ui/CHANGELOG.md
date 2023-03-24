@@ -1,3 +1,39 @@
+## [13.19.0] - 2023-03-24
+
+### @semcore/animation
+
+- **Added** Added `pointer-events` properties to scale group `keyframes` to avoid problems with overlapping elements and changing the cursor.
+
+### @semcore/dot
+
+- **Fixed** Fixed local themes on dot.
+
+### @semcore/modal
+
+- **Fixed** Fixed local themes in modals.
+
+### @semcore/notice-bubble
+
+- **Fixed** Fixed local themes in notice bubbles.
+
+### @semcore/popper
+
+- **Fixed** Fixed local themes in poppers.
+
+### @semcore/portal
+
+- **Removed** Non-working portalled local theme reapplying.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed local themes in side panels.
+
+### @semcore/utils
+
+- **Added** Supported portalled local theme reapplying in class-based components.
+- **Removed** Removed `Status` group in semantic tokens.
+- **Changed** Moved the gray-white token in front of the gray-50, slightly tweaked the order.
+
 ## [13.18.0] - 2023-03-23
 
 ### @semcore/accordion
