@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
 import HamburgerL from '@semcore/icon/Hamburger/l';
@@ -7,7 +7,6 @@ import SearchL from '@semcore/icon/Search/l';
 import TimeDayL from '@semcore/icon/TimeDay/l';
 import TimeNightL from '@semcore/icon/TimeNight/l';
 import SemrushL from '@semcore/icon/Semrush/l';
-import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import SearchHome from './SearchHome';
 import SideBarNavigation from './SideBarNavigation';
 import Divider from '@semcore/divider';
@@ -18,10 +17,26 @@ import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
 import { logEvent } from '../utils/amplitude';
+import { getThemePreference } from '../utils/theme';
 
 function Header({ theme, setTheme }) {
   const [menuVisible, setMenuVisible] = useState(false);
   const [searchVisible, setSearchVisible] = useState(false);
+
+  useLayoutEffect(() => {
+    const currentTheme = getThemePreference();
+    setTheme(currentTheme);
+  }, []);
+
+  const renderThemeToggle = useCallback(() => {
+    if (theme) {
+      return theme === 'light' ? (
+        <TimeNightL aria-label="Turn on the dark theme" />
+      ) : (
+        <TimeDayL aria-label="Turn on the light theme" />
+      );
+    }
+  }, [theme]);
 
   return (
     <header className={styles.header}>
@@ -105,20 +120,11 @@ function Header({ theme, setTheme }) {
           </LinkKit>
         </span>
       </nav>
-      <span className={styles.themeToggle}>
-        {theme === 'light' ? (
-          <TimeNightL
-            interactive
-            color="var(--intergalactic-icon-non-interactive)"
-            onClick={() => setTheme('dark')}
-          />
-        ) : (
-          <TimeDayL
-            interactive
-            color="var(--intergalactic-icon-non-interactive)"
-            onClick={() => setTheme('light')}
-          />
-        )}
+      <span
+        className={styles.themeToggle}
+        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+      >
+        {renderThemeToggle()}
       </span>
       {menuVisible && (
         <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
@@ -140,20 +146,19 @@ function Header({ theme, setTheme }) {
               >
                 GitHub
               </a>
-              <span>
-                {`${capitalizeFirstLetter(theme)} theme`}
+              <span
+                className={styles.mobileThemeToggle}
+                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              >
+                {`${theme === 'light' ? 'Dark' : 'Light'} theme`}
                 {theme === 'light' ? (
                   <TimeNightL
+                    ml={3}
                     interactive
                     color="var(--intergalactic-icon-non-interactive)"
-                    onClick={() => setTheme('dark')}
                   />
                 ) : (
-                  <TimeDayL
-                    interactive
-                    color="var(--intergalactic-icon-non-interactive)"
-                    onClick={() => setTheme('light')}
-                  />
+                  <TimeDayL ml={3} interactive color="var(--intergalactic-icon-non-interactive)" />
                 )}
               </span>
             </div>

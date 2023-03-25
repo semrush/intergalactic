@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import { Box, Flex } from '@semcore/flex-box';
@@ -7,12 +7,14 @@ import Divider from '@semcore/divider';
 import BracketsCodeM from '@semcore/icon/BracketsCode/m';
 import FigmaM from '@semcore/icon/color/Figma/m';
 import GitHubM from '@semcore/icon/color/GitHub/m';
+import GitHubInvertM from '@semcore/icon/color/GitHubInvert/m';
 import EditM from '@semcore/icon/Edit/m';
 import WarningM from '@semcore/ui/icon/Warning/m';
 import { css } from '@semcore/core';
 import Tag from '@semcore/tag';
-import RouterLink from './RouterLink.jsx';
+import RouterLink from './RouterLink';
 import { logEvent } from '../utils/amplitude';
+import { getThemePreference } from '../utils/theme';
 
 import styles from './DocsHeader.module.css';
 
@@ -45,8 +47,13 @@ export default function (props) {
     deprecated,
     route,
   } = props;
-
   const [group, page] = route.split('/');
+  const [theme, setTheme] = useState('');
+
+  useLayoutEffect(() => {
+    const currentTheme = getThemePreference();
+    setTheme(currentTheme);
+  }, [getThemePreference()]);
 
   return (
     <Box mb={8}>
@@ -131,18 +138,18 @@ export default function (props) {
                 }
               >
                 <Link.Addon>
-                  <GitHubM
-                    color="var(--intergalactic-icon-non-interactive)"
-                    width={18}
-                    height={18}
-                  />
+                  {theme === 'light' ? (
+                    <GitHubM width={18} height={18} />
+                  ) : (
+                    <GitHubInvertM width={18} height={18} />
+                  )}
                 </Link.Addon>
               </Link>
             </Box>
           </>
         )}
         <Box mr={5}>
-          <Divider h="20px" orientation="vertical" style={{ backgroundColor: '#D1D4DB' }} />
+          <Divider h="20px" orientation="vertical" />
         </Box>
         <Box mr={4}>
           <Tooltip styles={tooltipStyles}>
@@ -173,7 +180,7 @@ export default function (props) {
           </Tooltip>
         </Box>
       </Flex>
-      <Divider orientation="horizontal" style={{ backgroundColor: '#D1D4DB' }} />
+      <Divider orientation="horizontal" />
     </Box>
   );
 }

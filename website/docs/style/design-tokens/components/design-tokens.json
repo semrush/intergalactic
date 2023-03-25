@@ -24,7 +24,6 @@
       "side-panel",
       "slider",
       "switch",
-      "tooltip",
       "wizard"
     ]
   },
@@ -380,6 +379,7 @@
       "d3-chart",
       "data-table",
       "date-picker",
+      "dropdown-menu",
       "errors",
       "feature-popover",
       "format-text",
@@ -387,6 +387,7 @@
       "inline-input",
       "input",
       "modal",
+      "notice",
       "pagination",
       "pills",
       "product-head",

@@ -7,8 +7,7 @@ import iconRotate from 'static/favicon/favicon-rotate.png';
 import './main.css';
 import { HappyNewYear } from './components/HappyNewYear';
 import { initAmplitude } from './utils/amplitude';
-import lightTheme from '@semcore/utils/src/themes/light.json';
-import darkTheme from '@semcore/utils/src/themes/dark.json';
+import { THEME_STORAGE_KEY, getThemePreference, addTheme } from './utils/theme';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -46,34 +45,16 @@ const Router = !globalThis.__ssr
     };
 
 export function App() {
-  const themeStorageKey = 'theme-preference';
-
-  const getThemePreference = () => {
-    if (typeof window !== 'undefined') {
-      if (localStorage.getItem(themeStorageKey)) {
-        return localStorage.getItem(themeStorageKey);
-      } else {
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
-    }
-  };
-
-  const setTheme = (theme) => {
-    setCurrentTheme(theme);
-    localStorage.setItem(themeStorageKey, theme);
-  };
-
   const [currentTheme, setCurrentTheme] = useState(getThemePreference());
 
   useEffect(() => {
-    const theme = currentTheme === 'light' ? Object.entries(lightTheme) : Object.entries(darkTheme);
-    if (typeof window !== 'undefined') {
-      const r = document.querySelector(':root');
-      for (let i = 0; i < theme.length; i++) {
-        r.style.setProperty(theme[i][0], theme[i][1]);
-      }
-    }
+    addTheme();
   }, [currentTheme]);
+
+  const setTheme = (theme) => {
+    setCurrentTheme(theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  };
 
   return (
     <>

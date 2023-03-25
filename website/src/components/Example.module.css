@@ -10,6 +10,8 @@
   padding: var(--intergalactic-spacing-6x);
   box-sizing: border-box;
   font-size: var(--intergalactic-fs-100);
+  background-color: var(--intergalactic-bg-primary-neutral);
+  color: var(--intergalactic-text-primary);
 }
 
 .codeView {

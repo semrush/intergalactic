@@ -12,6 +12,8 @@ import { createPlayground, Playground } from '../components/playground';
 import Code from '../components/Code';
 import Copy from '../components/Copy';
 import styles from './PlaygroundGeneration.module.css';
+import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
 
 Playground.createWidget('empty', () => {
   return null;
@@ -179,13 +181,15 @@ class PlaygroundView extends React.Component {
     return (
       <div className={styles.wrapperPlayground} aria-hidden="true">
         <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%' }}>
-          <div className={styles.resultView} style={{ backgroundColor }}>
-            <LayoutPreview>{result}</LayoutPreview>
-            <PaintPlaygroundView
-              backgroundColor={backgroundColor}
-              onChange={this.onChangeBackground}
-            />
-          </div>
+          <ThemeProvider tokens={lightThemeTokens}>
+            <div className={styles.resultView} style={{ backgroundColor }}>
+              <LayoutPreview>{result}</LayoutPreview>
+              <PaintPlaygroundView
+                backgroundColor={backgroundColor}
+                onChange={this.onChangeBackground}
+              />
+            </div>
+          </ThemeProvider>
           <div className={styles.resultCode}>
             <Code lang="jsx" block>
               {source}

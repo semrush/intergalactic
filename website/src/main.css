@@ -1,7 +1,6 @@
 @import 'normalize.css/normalize.css';
 @import 'prismjs/themes/prism.css';
 @import './fonts.css';
-@import './utils/default-theme.css';
 
 html {
   font-family: var(--intergalactic-base), -apple-system, sans-serif, Arial;

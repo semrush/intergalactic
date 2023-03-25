@@ -6,6 +6,7 @@ SDropdownMenuList {
   min-width: 32px;
   box-sizing: content-box;
   z-index: 0;
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SDropdownMenuItem {
@@ -18,6 +19,7 @@ SDropdownMenuItem {
   width: 100%;
   text-align: left;
   line-height: normal;
+  color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
     background-color: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);

@@ -5,7 +5,11 @@ import styles from './ImageFromModal.module.css';
 function ImageFromModal({ content, ...other }) {
   return (
     <Modal visible={!!content} {...other}>
-      <div src={styles.imageContainer} dangerouslySetInnerHTML={{ __html: content }} role="img" />
+      <div
+        className={styles.imageContainer}
+        dangerouslySetInnerHTML={{ __html: content }}
+        role="img"
+      />
     </Modal>
   );
 }

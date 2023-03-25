@@ -27,7 +27,7 @@ const getHeadingOptions = (headings) => {
     value: option.id,
     label: option.html,
     children: (
-      <Text mx={5} color={'#171a22'}>
+      <Text mx={5} color="var(--intergalactic-text-primary)">
         {option.html}
       </Text>
     ),

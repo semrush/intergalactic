@@ -42,7 +42,7 @@
     margin-bottom: var(--intergalactic-spacing-8x);
     border-radius: 0 !important;
     top: var(--intergalactic-spacing-20x);
-    background-color: var(--intergalactic-bg-primary-neutral) !important;
+    background-color: var(--intergalactic-bg-secondary-neutral) !important;
     border: 1px solid var(--intergalactic-border-primary);
     border-style: solid none solid none;
   }
