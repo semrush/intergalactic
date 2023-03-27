@@ -38,5 +38,6 @@
   "view-go-to-table": "Skip to plot data table",
   "view-data-summary": "Data summary",
   "view-summary-placeholder": "Generating chart data summary",
-  "view-table": "Data table"
+  "view-table": "Data table",
+  "data-not-available": "n/a"
 }
