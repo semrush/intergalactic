@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
 import HamburgerL from '@semcore/icon/Hamburger/l';
@@ -27,6 +27,22 @@ function Header({ theme, setTheme }) {
     const currentTheme = getThemePreference();
     setTheme(currentTheme);
   }, []);
+
+  const renderThemeToggle = useCallback(() => {
+    if (theme) {
+      return theme === 'light' ? (
+        <TimeNightL
+          color="var(--intergalactic-icon-non-interactive)"
+          aria-label="Turn on the dark theme"
+        />
+      ) : (
+        <TimeDayL
+          color="var(--intergalactic-icon-non-interactive)"
+          aria-label="Turn on the light theme"
+        />
+      );
+    }
+  }, [theme]);
 
   return (
     <header className={styles.header}>
@@ -114,17 +130,7 @@ function Header({ theme, setTheme }) {
         className={styles.themeToggle}
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       >
-        {theme === 'light' ? (
-          <TimeNightL
-            color="var(--intergalactic-icon-non-interactive)"
-            aria-label="Turn on the dark theme"
-          />
-        ) : (
-          <TimeDayL
-            color="var(--intergalactic-icon-non-interactive)"
-            aria-label="Turn on the light theme"
-          />
-        )}
+        {renderThemeToggle()}
       </span>
       {menuVisible && (
         <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
