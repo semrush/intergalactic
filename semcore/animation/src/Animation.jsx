@@ -53,7 +53,7 @@ class Animation extends Component {
     wasInvisible: !this.props.visible,
   };
 
-  animationContext = makeAnimationContextValue(); // TBD TO MAKE NESTED !!!!!!!!!!!!!!
+  animationContext = makeAnimationContextValue();
 
   onAnimationStart = () => {
     const { animationsDisabled, parentAnimationContext } = this.asProps;
