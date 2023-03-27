@@ -181,7 +181,10 @@ class PlaygroundView extends React.Component {
 
     return (
       <div className={styles.wrapperPlayground} aria-hidden="true">
-        <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%', backgroundColor  }}>
+        <div
+          className={styles.workArea}
+          style={{ width: !hasWidget ? '100%' : '70%', backgroundColor }}
+        >
           <ThemeProvider tokens={backgroundColor === 'white' ? lightThemeTokens : darkThemeTokens}>
             <div className={styles.resultView} style={{ backgroundColor }}>
               <LayoutPreview>{result}</LayoutPreview>

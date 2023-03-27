@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useLayoutEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
 import HamburgerL from '@semcore/icon/Hamburger/l';
@@ -27,16 +27,6 @@ function Header({ theme, setTheme }) {
     const currentTheme = getThemePreference();
     setTheme(currentTheme);
   }, []);
-
-  const renderThemeToggle = useCallback(() => {
-    if (theme) {
-      return theme === 'light' ? (
-        <TimeNightL aria-label="Turn on the dark theme" />
-      ) : (
-        <TimeDayL aria-label="Turn on the light theme" />
-      );
-    }
-  }, [theme]);
 
   return (
     <header className={styles.header}>
@@ -114,7 +104,7 @@ function Header({ theme, setTheme }) {
             href="https://github.com/semrush/intergalactic"
             target="_blank"
             rel="noopener noreferrer nofollow"
-            color="var(--intergalactic-icon-non-interactive)"
+            color="var(--intergalactic-text-primary)"
           >
             GitHub
           </LinkKit>
@@ -124,7 +114,17 @@ function Header({ theme, setTheme }) {
         className={styles.themeToggle}
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       >
-        {renderThemeToggle()}
+        {theme === 'light' ? (
+          <TimeNightL
+            color="var(--intergalactic-icon-non-interactive)"
+            aria-label="Turn on the dark theme"
+          />
+        ) : (
+          <TimeDayL
+            color="var(--intergalactic-icon-non-interactive)"
+            aria-label="Turn on the light theme"
+          />
+        )}
       </span>
       {menuVisible && (
         <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
@@ -154,11 +154,15 @@ function Header({ theme, setTheme }) {
                 {theme === 'light' ? (
                   <TimeNightL
                     ml={3}
-                    interactive
                     color="var(--intergalactic-icon-non-interactive)"
+                    aria-label="Turn on the dark theme"
                   />
                 ) : (
-                  <TimeDayL ml={3} interactive color="var(--intergalactic-icon-non-interactive)" />
+                  <TimeDayL
+                    ml={3}
+                    color="var(--intergalactic-icon-non-interactive)"
+                    aria-label="Turn on the light theme"
+                  />
                 )}
               </span>
             </div>
