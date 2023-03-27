@@ -9,6 +9,7 @@ import Tooltip from '@semcore/tooltip';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
 import pick from '@semcore/utils/lib/pick';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/feedback-form.shadow.css';
 
@@ -93,7 +94,7 @@ const TooltipProps = [
   'onFirstUpdate',
 ];
 
-function Item({ Children, tag, ...props }) {
+function Item({ Children, tag, uid, ...props }) {
   const tooltipProps = pick(props, TooltipProps);
   const ItemRoot = Root;
 
@@ -105,13 +106,11 @@ function Item({ Children, tag, ...props }) {
           ...input,
           state: invalid ? 'invalid' : 'normal',
           'aria-invalid': invalid ? true : false,
-          'aria-errormessage': meta.error,
+          'aria-errormessage': uid,
         };
         return (
           <Tooltip
-            title={meta.error}
             visible={invalid && meta.active}
-            inline={false}
             theme="warning"
             placement="left"
             flip={{
@@ -119,19 +118,25 @@ function Item({ Children, tag, ...props }) {
             }}
             {...tooltipProps}
           >
-            {tag && <ItemRoot render={tag} {...inputProps} />}
-            {typeof Children.origin === 'function' &&
-              Children.origin({
-                input: inputProps,
-                meta,
-                ...other,
-              })}
+            <Tooltip.Trigger inline={false}>
+              {tag && <ItemRoot render={tag} {...inputProps} />}
+              {typeof Children.origin === 'function' &&
+                Children.origin({
+                  input: inputProps,
+                  meta,
+                  ...other,
+                })}
+            </Tooltip.Trigger>
+            <Tooltip.Popper id={uid}>
+              {meta.error}
+            </Tooltip.Popper>
           </Tooltip>
         );
       }}
     </Field>
   );
 }
+Item.enhance = [uniqueIDEnhancement()]
 
 function Success(props) {
   const { Children, styles } = props;
