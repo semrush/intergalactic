@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.4] - 2023-03-27
+
+### Fixed
+
+- Added a11y error binding to field.
+
 ## [5.4.3] - 2023-03-24
 
 ### Changed
