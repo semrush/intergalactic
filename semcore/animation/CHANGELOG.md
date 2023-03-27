@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.0] - 2023-03-27
+
+### Added
+
+- Animation context that allows children components react to parent animation execution.
+
 ## [1.9.9] - 2023-03-28
 
 ### Changed
