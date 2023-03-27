@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.3] - 2023-03-27
+
+### Fixed
+
+- Added correct display when there is no data in a11y table.
+
 ## [2.13.2] - 2023-03-24
 
 ### Changed
