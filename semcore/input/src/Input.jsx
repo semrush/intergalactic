@@ -29,6 +29,14 @@ class Input extends Component {
 
   bindHandlerValueFocused = (focused) => () => this.setState({ focused });
 
+  onPaste = (e) => {
+    e.preventDefault();
+    this.inputRef.current?.scrollIntoView({
+      block: 'nearest',
+      behavior: 'smooth',
+    });
+  };
+
   getAddonProps() {
     const { disabled } = this.asProps;
     return {
@@ -46,6 +54,7 @@ class Input extends Component {
       state,
       onFocus: this.bindHandlerValueFocused(true),
       onBlur: this.bindHandlerValueFocused(false),
+      onPaste: this.onPaste,
     };
   }
 
