@@ -14,6 +14,7 @@ import Copy from '../components/Copy';
 import styles from './PlaygroundGeneration.module.css';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
+import darkThemeTokens from '@semcore/utils/lib/themes/dark.json';
 
 Playground.createWidget('empty', () => {
   return null;
@@ -143,12 +144,12 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
           />
         </Radio>
         <Radio>
-          <Radio.Value style={{ display: 'none' }} value="#333" checked={color === '#333'} />
+          <Radio.Value style={{ display: 'none' }} value="#1E2231" checked={color === '#1E2231'} />
           <div
             className={styles.chooseBackgroundColor}
             style={{
-              backgroundColor: '#333',
-              borderColor: color === '#333' ? '#2595e4' : '#e3e3e3',
+              backgroundColor: '#1E2231',
+              borderColor: color === '#1E2231' ? '#2595e4' : '#e3e3e3',
             }}
           />
         </Radio>
@@ -180,8 +181,8 @@ class PlaygroundView extends React.Component {
 
     return (
       <div className={styles.wrapperPlayground} aria-hidden="true">
-        <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%' }}>
-          <ThemeProvider tokens={lightThemeTokens}>
+        <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%', backgroundColor  }}>
+          <ThemeProvider tokens={backgroundColor === 'white' ? lightThemeTokens : darkThemeTokens}>
             <div className={styles.resultView} style={{ backgroundColor }}>
               <LayoutPreview>{result}</LayoutPreview>
               <PaintPlaygroundView

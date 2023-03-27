@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.28] - 2023-03-28
+
+### Added
+
+- Added design tokens to `TotalPages` component.
+
 ## [3.5.27] - 2023-03-28
 
 ### Changed
