@@ -89,7 +89,7 @@
   column-gap: var(--intergalactic-spacing-1x);
   padding: var(--intergalactic-spacing-1x);
   background: var(--intergalactic-tag-primary-red-normal);
-  color: var(--intergalactic-text-critical);
+  color: var(--intergalactic-tag-primary-red-text);
   fill: var(--intergalactic-bg-primary-critical);
   border-radius: calc(var(--intergalactic-rounded-large) - 2px);
 }

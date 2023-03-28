@@ -46,6 +46,10 @@ SPeriod {
   margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
+SInputMask {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
 SIndicator {
   color: var(--intergalactic-text-secondary, #6c6e79);
 }

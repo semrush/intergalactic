@@ -24,6 +24,10 @@
   font-weight: var(--intergalactic-bold);
 }
 
+.main code {
+  text-shadow: none;
+}
+
 .tabLine {
   margin-bottom: var(--intergalactic-spacing-8x);
   overflow-x: auto;

@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 import { nanoid } from 'nanoid';
 import { getCookie, setCookie, AMPLITUDE_COOKIE_NAME, AMPLITUDE_COOKIE_EXP_DATE } from './cookie';
+import { getThemePreference } from './theme';
 
 /**
  *
@@ -59,7 +60,7 @@ const amplitudeHttp = {
     this.deviceId = getCookie(AMPLITUDE_COOKIE_NAME);
     this.sessionId = Date.now();
 
-    const theme = 'original';
+    const theme = getThemePreference();
 
     if (getIsConsented(this.getExternalConsentStatusCb)) {
       this.setDeviceId();

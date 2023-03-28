@@ -13,6 +13,7 @@
   font-weight: var(--intergalactic-regular);
   letter-spacing: 0;
   text-align: left;
+  color: var(--intergalactic-text-primary);
 }
 @media (max-width: 767px) {
   .footerWrapper {
@@ -34,10 +35,11 @@
   grid-row: 2;
   grid-column: 1;
   display: flex;
+  align-items: center;
   font-size: var(--intergalactic-fs-200);
 }
-.logo img {
-  margin-left: var(--intergalactic-spacing-1x);
+.logo svg {
+  margin-left: var(--intergalactic-spacing-2x);
 }
 @media (max-width: 767px) {
   .logo {

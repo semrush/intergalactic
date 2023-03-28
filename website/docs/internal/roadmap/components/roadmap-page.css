@@ -79,3 +79,7 @@
   background-color: var(--intergalactic-chart-palette-order-6);
   color: var(--intergalactic-text-primary-invert);
 }
+
+.tabs {
+  --intergalactic-border-primary-invert: var(--intergalactic-bg-primary-neutral);
+}

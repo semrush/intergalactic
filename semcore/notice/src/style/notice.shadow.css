@@ -7,6 +7,7 @@ SNotice {
   border-style: solid;
   border-width: 1px;
   border-radius: var(--intergalactic-surface-rounded, 6px);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SNotice[theme='info'] {

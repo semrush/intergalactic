@@ -1,8 +1,6 @@
 @import 'normalize.css/normalize.css';
 @import 'prismjs/themes/prism.css';
 @import './fonts.css';
-@import '@semcore/ui/utils/src/themes/default.css';
-@import './utils/default-theme.css';
 
 html {
   font-family: var(--intergalactic-base), -apple-system, sans-serif, Arial;
@@ -14,6 +12,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: var(--intergalactic-bg-primary-neutral);
 }
 
 code {

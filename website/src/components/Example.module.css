@@ -1,7 +1,8 @@
 .exampleWrapper {
   margin: calc(var(--intergalactic-spacing-2x)) auto calc(var(--intergalactic-spacing-10x));
   border-radius: var(--intergalactic-rounded-medium);
-  box-shadow: rgb(204, 204, 204) 0 0 1px 1px;
+  border: 1px solid var(--intergalactic-border-secondary);
+  overflow: hidden;
 }
 
 .view {
@@ -9,6 +10,8 @@
   padding: var(--intergalactic-spacing-6x);
   box-sizing: border-box;
   font-size: var(--intergalactic-fs-100);
+  background-color: var(--intergalactic-bg-primary-neutral);
+  color: var(--intergalactic-text-primary);
 }
 
 .codeView {

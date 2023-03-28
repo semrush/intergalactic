@@ -905,17 +905,17 @@
       },
       "tertiary": {
         "neutral": {
-          "value": "{gray.400}, 0.2",
+          "value": "{gray.400}, 0",
           "type": "color",
           "description": "Background of the regular tertiary control."
         },
         "neutral-hover": {
-          "value": "{gray.400}, 0.3",
+          "value": "{gray.400}, 0.2",
           "type": "color",
           "description": "Hover state of the regular tertiary control."
         },
         "neutral-active": {
-          "value": "{gray.400}, 0.4",
+          "value": "{gray.400}, 0.3",
           "type": "color",
           "description": "Active (selected) state of the regular tertiary control."
         },
@@ -954,11 +954,7 @@
         "value": "{gray.500}",
         "type": "color"
       },
-      "lift-me-up-hover": {
-        "value": "{gray.600}",
-        "type": "color"
-      },
-      "lift-me-up-active": {
+      "lift-me-up-hover-active": {
         "value": "{gray.600}",
         "type": "color"
       }
