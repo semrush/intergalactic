@@ -84,7 +84,7 @@ TabLine is always placed under the [ProductHead](/components/product-head/) of t
 
 ![tabs-margins](static/tabs-margins.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
 

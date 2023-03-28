@@ -95,7 +95,7 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### Start the axes from zero
 

@@ -68,7 +68,7 @@ This option is most suitable when you collect phones from users from one or a li
 | One country           | ![input phone default](static/input-phone-3.png)   | ![input phone default](static/input-phone-3-focus.png)   | ![input phone default](static/input-phone-3-filled.png)   |
 | More than one country | ![input phone default](static/input-phone-3-2.png) | ![input phone default](static/input-phone-3-2-focus.png) | ![input phone default](static/input-phone-3-2-filled.png) |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 It is recommended that the width of the input field for entering the phone number to be as clear as possible for the user to know how much information they need to enter. Most often, this width does not exceed 160px-250px for all input sizes.
 

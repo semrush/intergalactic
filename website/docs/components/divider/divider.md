@@ -35,7 +35,7 @@ The divider can be used either on a light or dark/colored background.
 | Default | ![](static/default-theme.png) | `border: 1px solid var(--border-primary)`        |
 | Invert  | ![](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert)` |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 The divider separates content visually and semantically, whether it is different or similar in meaning.
 

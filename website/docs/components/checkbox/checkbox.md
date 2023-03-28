@@ -115,7 +115,7 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 
 ![](static/select-all.png) ![](static/deselect-all.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 

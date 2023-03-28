@@ -52,7 +52,7 @@ Addons inside TabLine.Item has the same margins as addons inside the [Button](/c
 | Initial loading | ![initial loading state](static/initial-loading.png) | When it is necessary to show that the data in the counter inside the TabPanel.Item is being loaded for the first time, use [Skeleton](/components/skeleton/) with the size of the text's line-height.                 |
 | Loading         | ![loading state](static/loading.png)                 | When it is necessary to show that the data in the counter inside the TabPanel.Item is being loaded, use [Spin](/components/spin/) with the smallest size (the sizes are the same as in [Button](/components/button)). |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
 

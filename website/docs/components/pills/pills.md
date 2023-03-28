@@ -65,7 +65,7 @@ Note that this type is design-only yet.
 | Disabled pill                          | ![normal_disabled](static/disabled-pill.png) |
 | Loading                                | ![normal_loading](static/loading.png)        |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 Pills are used for:
 

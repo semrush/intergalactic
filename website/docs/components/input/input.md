@@ -78,7 +78,7 @@ You can place [Counter](/components/counter/) inside the input or next to its la
 | M (28px)            | ![input with counter](static/counter-M.png) | ![input with counter](static/counter-in-m.png) |
 | L (40px)            | ![input with counter](static/counter-L.png) | ![input with counter](static/counter-in-l.png) |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 1. Use input only for single-line fields. If you need to enter a large amount of data use [Textarea](/components/textarea/).
 2. Label the inputs so user can understand at a glance what data needs to be entered.

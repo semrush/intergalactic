@@ -67,7 +67,7 @@ To format values that the user enters use [InputMask](/components/input-mask/).
 
 See detailed information about the form validation in [Validation](/patterns/validation-form/).
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### Vertical form layout vs. horizontal form layout
 

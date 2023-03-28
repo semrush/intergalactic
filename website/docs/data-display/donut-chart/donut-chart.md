@@ -172,7 +172,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![donut with skeleton](static/donut-skeleton.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 > **It is not recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
 
