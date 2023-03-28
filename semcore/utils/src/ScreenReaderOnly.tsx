@@ -1,18 +1,22 @@
 import React from 'react';
-import createComponent, { sstyled, Root } from '@semcore/core';
 
-// @ts-ignore
-import style from './ScreenReaderOnly.shadow.css';
-
-const ScreenReaderOnlyRoot = (props: { children: React.ReactNode }) => {
-  const SScreenReaderOnlyRoot = Root;
-  return sstyled(style)(
-    <SScreenReaderOnlyRoot render="span">{props.children}</SScreenReaderOnlyRoot>,
+export const ScreenReaderOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <span
+      style={{
+        position: 'absolute',
+        width: 1,
+        height: 1,
+        padding: 0,
+        margin: -1,
+        overflow: 'hidden',
+        clip: 'rect(0, 0, 0, 0)',
+        whiteSpace: 'nowrap',
+        borderWidth: 0,
+      }}
+    >
+      {children}
+    </span>
   );
 };
-
-ScreenReaderOnlyRoot.displayName = 'ScreenReaderOnlyRoot';
-
-export const ScreenReaderOnly = createComponent(ScreenReaderOnlyRoot) as React.FC<{
-  children: React.ReactNode;
-}>;
+ScreenReaderOnly.displayName = 'ScreenReaderOnlyRoot';
