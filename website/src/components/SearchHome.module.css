@@ -35,6 +35,8 @@
   text-overflow: ellipsis;
   border-radius: var(--intergalactic-rounded-medium);
   background-color: var(--intergalactic-bg-primary-neutral);
+  color: var(--intergalactic-text-primary);
+  caret-color: var(--intergalactic-text-primary);
 }
 .inputOpen {
   border-radius: var(--intergalactic-rounded-medium) var(--intergalactic-rounded-medium) 0 0;

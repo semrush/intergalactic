@@ -10,6 +10,10 @@ SPrevPage {
   margin-left: var(--intergalactic-spacing-2x, 8px);
 }
 
+SLabel {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
 SLabel:not(:first-child) {
   margin-left: var(--intergalactic-spacing-4x, 16px);
 }
@@ -17,11 +21,13 @@ SLabel:not(:first-child) {
 STotalPages {
   align-self: center;
   line-height: normal;
+  color: var(--intergalactic-text-link, #006dca);
 }
 
 STotalPagesLabel {
   margin-left: var(--intergalactic-spacing-2x, 8px);
   margin-right: var(--intergalactic-spacing-1x, 4px);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 STotalLastPages {

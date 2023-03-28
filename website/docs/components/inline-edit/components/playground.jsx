@@ -33,7 +33,7 @@ const Preview = (preview) => {
       w={100}
       onBlurBehavior={'confirm'}
     >
-      <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+      <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center', color: '#000' }}>
         {text}
         <EditM onClick={() => setEditable('true')} />
       </InlineEdit.View>

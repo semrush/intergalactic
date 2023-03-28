@@ -93,6 +93,10 @@ SPickerFormat[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
+STimePickerSeparator {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
 STimePickerSeparator[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   pointer-events: none;

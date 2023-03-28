@@ -205,11 +205,11 @@
   /* Active (selected) state of the inverted version of the secondary control. */
   --intergalactic-control-secondary-invert-active: rgba(255, 255, 255, 0.3);
   /* Background of the regular tertiary control. */
-  --intergalactic-control-tertiary-neutral: rgba(138, 142, 155, 0.2);
+  --intergalactic-control-tertiary-neutral: rgba(138, 142, 155, 0);
   /* Hover state of the regular tertiary control. */
-  --intergalactic-control-tertiary-neutral-hover: rgba(138, 142, 155, 0.3);
+  --intergalactic-control-tertiary-neutral-hover: rgba(138, 142, 155, 0.2);
   /* Active (selected) state of the regular tertiary control. */
-  --intergalactic-control-tertiary-neutral-active: rgba(138, 142, 155, 0.4);
+  --intergalactic-control-tertiary-neutral-active: rgba(138, 142, 155, 0.3);
   /* Background of the accent and link-lookalike tertiary control. */
   --intergalactic-control-tertiary-info: rgba(0, 143, 248, 0);
   /* Hover state of the accent and link-lookalike tertiary control. */
@@ -222,8 +222,6 @@
   --intergalactic-control-tertiary-invert-hover: rgba(255, 255, 255, 0.1);
   /* Active (selected) state of the inverted version of the tertiary control. */
   --intergalactic-control-tertiary-invert-active: rgba(255, 255, 255, 0.3);
-  --intergalactic-control-lift-me-up-hover: #484a54;
-  --intergalactic-control-lift-me-up-active: #484a54;
   /* Primary neutral icon. */
   --intergalactic-icon-primary-neutral: #a9abb6;
   /* Hover and active (selected) states of the primary neutral icon. */

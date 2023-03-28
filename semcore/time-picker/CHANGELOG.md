@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.37] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to `Separator` component.
+
 ## [3.4.36] - 2023-03-28
 
 ### Changed

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.19] - 2023-03-28
+
+### Changed
+
+- Changed color in default and focused states as in `Figma`.
+
 ## [4.4.18] - 2023-03-28
 
 ### Changed

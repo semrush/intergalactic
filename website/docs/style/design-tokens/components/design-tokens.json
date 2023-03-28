@@ -24,7 +24,6 @@
       "side-panel",
       "slider",
       "switch",
-      "tooltip",
       "wizard"
     ]
   },
@@ -380,21 +379,27 @@
       "d3-chart",
       "data-table",
       "date-picker",
+      "dropdown",
+      "dropdown-menu",
       "errors",
       "feature-popover",
       "format-text",
       "fullscreen-modal",
       "inline-input",
       "input",
+      "input-mask",
       "modal",
+      "notice",
       "pagination",
       "pills",
       "product-head",
+      "radio",
       "side-panel",
       "switch",
       "tab-line",
       "tab-panel",
       "textarea",
+      "time-picker",
       "tooltip",
       "typography"
     ]
@@ -435,6 +440,7 @@
       "base-trigger",
       "inline-input",
       "input",
+      "input-mask",
       "textarea"
     ]
   },
@@ -507,6 +513,7 @@
       "button",
       "format-text",
       "link",
+      "pagination",
       "tab-panel"
     ]
   },

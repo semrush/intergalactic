@@ -237,7 +237,11 @@ class Separator extends Component {
 
   render() {
     const STimePickerSeparator = Root;
-    return <STimePickerSeparator render={Box} onClick={this.handlerClick} aria-hidden="true" />;
+    const { styles } = this.asProps;
+
+    return sstyled(styles)(
+      <STimePickerSeparator render={Box} onClick={this.handlerClick} aria-hidden="true" />,
+    );
   }
 }
 

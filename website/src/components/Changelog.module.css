@@ -21,3 +21,31 @@
   width: var(--intergalactic-spacing-20x);
   flex-shrink: 0;
 }
+
+.greenContainer {
+  background-color: var(--intergalactic-tag-primary-green-normal) !important;
+}
+.greenText {
+  color: var(--intergalactic-tag-primary-green-text);
+}
+
+.blueContainer {
+  background-color: var(--intergalactic-tag-primary-blue-normal) !important;
+}
+.blueText {
+  color: var(--intergalactic-tag-primary-blue-text);
+}
+
+.orangeContainer {
+  background-color: var(--intergalactic-tag-primary-orange-normal) !important;
+}
+.orangeText {
+  color: var(--intergalactic-tag-primary-orange-text);
+}
+
+.redContainer {
+  background-color: var(--intergalactic-tag-primary-red-normal) !important;
+}
+.redText {
+  color: var(--intergalactic-tag-primary-red-text);
+}
