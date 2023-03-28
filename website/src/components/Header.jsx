@@ -16,6 +16,7 @@ import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
+import Button from '@semcore/button';
 import { logEvent } from '../utils/amplitude';
 import { getThemePreference } from '../utils/theme';
 
@@ -31,15 +32,9 @@ function Header({ theme, setTheme }) {
   const renderThemeToggle = useCallback(() => {
     if (theme) {
       return theme === 'light' ? (
-        <TimeNightL
-          color="var(--intergalactic-icon-non-interactive)"
-          aria-label="Turn on the dark theme"
-        />
+        <TimeNightL color="var(--intergalactic-icon-non-interactive)" />
       ) : (
-        <TimeDayL
-          color="var(--intergalactic-icon-non-interactive)"
-          aria-label="Turn on the light theme"
-        />
+        <TimeDayL color="var(--intergalactic-icon-non-interactive)" />
       );
     }
   }, [theme]);
@@ -126,12 +121,17 @@ function Header({ theme, setTheme }) {
           </LinkKit>
         </span>
       </nav>
-      <span
+      <Button
+        use="tertiary"
+        theme="muted"
+        size="l"
+        w={40}
         className={styles.themeToggle}
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+        aria-label={theme === 'light' ? 'Turn on the dark theme' : 'Turn on the light theme'}
       >
         {renderThemeToggle()}
-      </span>
+      </Button>
       {menuVisible && (
         <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
           <nav className={styles.mobileMenu}>
@@ -152,25 +152,24 @@ function Header({ theme, setTheme }) {
               >
                 GitHub
               </a>
-              <span
-                className={styles.mobileThemeToggle}
+              <Button
+                use="secondary"
+                size="l"
+                w={149}
+                mt={2}
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
               >
-                {`${theme === 'light' ? 'Dark' : 'Light'} theme`}
-                {theme === 'light' ? (
-                  <TimeNightL
-                    ml={3}
-                    color="var(--intergalactic-icon-non-interactive)"
-                    aria-label="Turn on the dark theme"
-                  />
-                ) : (
-                  <TimeDayL
-                    ml={3}
-                    color="var(--intergalactic-icon-non-interactive)"
-                    aria-label="Turn on the light theme"
-                  />
-                )}
-              </span>
+                <Button.Addon ml={0}>
+                  {theme === 'light' ? (
+                    <TimeNightL ml={3} color="var(--intergalactic-icon-non-interactive)" />
+                  ) : (
+                    <TimeDayL ml={3} color="var(--intergalactic-icon-non-interactive)" />
+                  )}
+                </Button.Addon>
+                <Button.Text className={styles.mobileThemeToggleLabel}>{`${
+                  theme === 'light' ? 'Dark' : 'Light'
+                } theme`}</Button.Text>
+              </Button>
             </div>
             <div className={styles.mobileMenuDivider}>
               <Divider orientation="horizontal" />

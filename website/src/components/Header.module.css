@@ -103,19 +103,6 @@
   display: none;
 }
 
-.themeToggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--intergalactic-rounded-medium);
-}
-.themeToggle:hover {
-  background-color: var(--intergalactic-control-tertiary-neutral-hover);
-}
-
 .mobileMenu {
   background-color: var(--intergalactic-bg-secondary-neutral);
   display: none;
@@ -143,16 +130,8 @@
   display: none;
 }
 
-.mobileThemeToggle {
-  display: flex;
-  align-items: center;
-  height: 40px;
-  width: 140px;
-  border-radius: var(--intergalactic-rounded-medium);
-}
-.mobileThemeToggle:hover {
-  cursor: pointer;
-  background-color: var(--intergalactic-control-tertiary-neutral-hover);
+.mobileThemeToggleLabel {
+  color: var(--intergalactic-text-primary);
 }
 
 @media (max-width: 970px) {
