@@ -1,3 +1,17 @@
+## [13.20.0] - 2023-03-28
+
+### @semcore/animation
+
+- **Added** Animation context that allows children components react to parent animation execution.
+
+### @semcore/portal
+
+- **Added** Supported ignoring parent portals nesting via `ignorePortalsStacking`.
+
+### @semcore/utils
+
+- **Added** Small internal util for context consuming in class-based components.
+
 ## [13.19.1] - 2023-03-28
 
 ### @semcore/d3-chart
