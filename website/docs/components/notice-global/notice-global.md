@@ -126,7 +126,7 @@ In cases where a user on the site has two or more global messages to display, pr
 - Higher priority for messages that require a response from the user or contain controls to close or exit a special mode.
 - Messages without controls inside have lower priority. Show them after a user has interacted with a higher priority message.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - You can notify about the following: website mode (e.g., admin), system status (error, failure, end of works).
 - Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in one line.

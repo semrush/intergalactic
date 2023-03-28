@@ -53,7 +53,7 @@ _For example, the counter in the table title has the same text size as the title
 
 The counter should always be positioned to the right of other interface elements, because it's an additional data.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 Use a counter to display an element that changes numerically.
 

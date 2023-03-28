@@ -84,7 +84,7 @@ Default animation properties:
 - Animation duration — `300`.
 - Animation easing function — `ease-in-out`.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 When using a carousel, keep in mind that some users may only see the first frame or nothing at all. Therefore, it's important to intentionally place essential content on each frame. Consider using a static carousel or a single image instead of a rotating one.
 

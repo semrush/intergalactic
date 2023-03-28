@@ -61,7 +61,7 @@ Hided this section because it's for the dark theme.
 
 ![default-yes](static/default-yes.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 Don't use link component for the text that doesn't lead to another page or perform an action. Do not mislead users.
 

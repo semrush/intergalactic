@@ -141,7 +141,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ![error](static/error.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 > Technically, categories do not have nesting, it is purely visual to distinguish between categories.
 >

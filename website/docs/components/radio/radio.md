@@ -75,7 +75,7 @@ Text label may contain a [Link](/components/link).
 | Disabled  | ![disabled-radiobutton](static/radiobutton-disabled.png) |
 | Invalid   | ![invalid-radiobutton](static/radiobutton-invalid.png)   |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 - **Use positive language for radiobutton labels** to clarify the action taken when the radiobutton is enabled.

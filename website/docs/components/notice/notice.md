@@ -164,7 +164,7 @@ The advertising notice differs from the regular one by advertising illustrations
 
 ![notice-no](static/notice-no.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### General
 

@@ -46,7 +46,7 @@ Add a tooltip on hover to truncated items to show the entire text string, or phr
 
 ![](static/ellipsis-end-tooltp.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### Long URL links
 

@@ -47,7 +47,7 @@ The informer consists of:
 
 See detailed infromation in the [Tooltip guide](/components/tooltip/).
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 If the Info icon hides additional information about the control in a group of controls (for example, in filters), then pay attention to margins.
 
