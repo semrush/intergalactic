@@ -29,12 +29,13 @@ class Input extends Component {
 
   bindHandlerValueFocused = (focused) => () => this.setState({ focused });
 
-  onPaste = (e) => {
-    e.preventDefault();
-    this.inputRef.current?.scrollIntoView({
-      block: 'nearest',
-      behavior: 'smooth',
-    });
+  // componentDidUpdate(prevProps) {
+    // this.inputRef.current?.scrollIntoView(false);
+  // }
+
+  onPaste = () => {
+    // e.preventDefault();
+    // this.inputRef.current?.scrollIntoView(false);
   };
 
   getAddonProps() {
