@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.49.1] - 2023-03-28
+
+### Fixed
+
+- Utils package was breaking building via webpack and vite.
+
 ## [3.49.0] - 2023-03-24
 
 ### Added
