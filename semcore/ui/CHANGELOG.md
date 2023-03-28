@@ -1,3 +1,17 @@
+## [13.19.1] - 2023-03-28
+
+### @semcore/d3-chart
+
+- **Fixed** Added correct display when there is no data in a11y table.
+
+### @semcore/feedback-form
+
+- **Fixed** Added a11y error binding to field.
+
+### @semcore/utils
+
+- **Fixed** Utils package was breaking building via webpack and vite.
+
 ## [13.19.0] - 2023-03-24
 
 ### @semcore/animation
