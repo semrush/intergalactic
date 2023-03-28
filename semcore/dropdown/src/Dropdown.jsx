@@ -83,12 +83,14 @@ class Dropdown extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
 
     return {
       id: `igc-${uid}-popper`,
       'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
       tabIndex: 0,
+      disablePortal,
+      ignorePortalsStacking,
     };
   }
 

@@ -94,13 +94,15 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
 
     return {
       tabIndex: 0,
       onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
       'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
+      disablePortal,
+      ignorePortalsStacking,
     };
   }
 

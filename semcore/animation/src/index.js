@@ -1,4 +1,4 @@
-export { default as Animation } from './Animation';
+export { default as Animation, animationContext } from './Animation';
 
 export { default as Transform } from './Transform';
 
