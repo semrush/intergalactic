@@ -11,7 +11,7 @@ const FIGMA_PROJECT_ID = '74268036';
 dotenv.config();
 
 if (!process.env.FIGMA_API_KEY) {
-  throw new Error('Create .env file and insert FIGMA_API_KEY variable');
+  throw new Error('Create .env file and insert FIGMA_API_KEY variable that can be generated on https://www.figma.com/developers/api#authentication');
 }
 
 const figmaKey = process.env.FIGMA_API_KEY;
