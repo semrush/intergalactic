@@ -53,7 +53,7 @@ If there is not enough place for the breadcrumbs (screen is too small or the tex
 | Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
 | Active | `color: var(--text-primary)`, `cursor: default`                                         |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 The recommended order of the navigation levels in the breadcrumbs:
 

@@ -46,7 +46,7 @@ Styles of the textarea in different states correspond to the styles of the [Inpu
 | Valid   | ![valid input](static/m-valid.png)     | ![input with valid focus](static/m-valid-focus.png)       |                                          |                                          |
 | Invalid | ![invalid input](static/m-invalid.png) | ![ininput with invalid focus](static/m-invalid-focus.png) |                                          |                                          |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - Textarea is useful when user needs to enter a large amount of data. If user needs to enter 1-3 words, use [Input](/components/input/) instead.
 - Name the textarea in such a way that user understands what data should be entered.

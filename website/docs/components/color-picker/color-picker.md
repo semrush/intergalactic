@@ -138,7 +138,7 @@ To help users fix the invalid input, add the following message to the tooltip: "
 
 ![](static/validation.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 Components that you can use as a trigger for the ColorPicker:
 

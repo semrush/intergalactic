@@ -106,7 +106,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 | ------------------------ | ------------------------ |
 | ![](static/margin-1.png) | ![](static/margin-2.png) |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - Try to have one call-to-action button on the page in the modal window. _For example, one green button._
 - We recommend you do not disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.

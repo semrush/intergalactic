@@ -112,7 +112,7 @@ In some cases (e.g., for advertising purposes) you can format text and add other
 
 ![advanced-example-2](static/tooltip-advanced-2.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 Main recommendations:
 

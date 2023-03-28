@@ -231,7 +231,7 @@ Skeletonize them same way as Summury.
 
 ![skeleton-big-pills](static/big-pills.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 **Use Skeleton only for displaying dynamic information.** Information that can be shown at once and will not change should be shown immediately.
 
