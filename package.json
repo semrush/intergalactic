@@ -30,7 +30,7 @@
   },
   "private": true,
   "devDependencies": {
-    "@babel/runtime": "7.19.0",
+    "@babel/runtime": "7.17.9",
     "@crowdin/cli": "3.7.9",
     "@guidepup/playwright": "0.6.1",
     "@jridgewell/set-array": "^1.1.2",
