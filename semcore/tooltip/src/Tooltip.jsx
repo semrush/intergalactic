@@ -37,10 +37,12 @@ class TooltipRoot extends Component {
   }
 
   getPopperProps() {
-    const { theme, uid } = this.asProps;
+    const { theme, uid, disablePortal, ignorePortalsStacking } = this.asProps;
     return {
       id: `igc-${uid}-popper`,
       theme,
+      disablePortal,
+      ignorePortalsStacking,
     };
   }
 

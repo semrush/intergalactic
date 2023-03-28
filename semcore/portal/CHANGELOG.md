@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.0] - 2023-03-27
+
+### Added
+
+- Supported ignoring parent portals nesting via `ignorePortalsStacking`.
+
 ## [2.5.17] - 2023-03-28
 
 ### Changed

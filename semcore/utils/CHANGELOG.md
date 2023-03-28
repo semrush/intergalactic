@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.0] - 2023-03-27
+
+### Added
+
+- Small internal util for context consuming in class-based components.
+
 ## [3.49.1] - 2023-03-28
 
 ### Fixed
