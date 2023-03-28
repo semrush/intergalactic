@@ -13,7 +13,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { Scale } from '@semcore/animation';
+import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
@@ -30,6 +30,17 @@ function someArray(arr1, arr2) {
     return arr2.indexOf(i) !== -1;
   });
 }
+
+const useUpdatePopperEveryFrame = (popperRef) => {
+  const nextAnimationFrameRef = React.useRef(-1);
+  const handleAnimationFrame = React.useCallback((until) => {
+    if (until < Date.now()) return;
+    popperRef.current?.update();
+    nextAnimationFrameRef.current = requestAnimationFrame(() => handleAnimationFrame(until));
+  }, []);
+  React.useEffect(() => () => cancelAnimationFrame(nextAnimationFrameRef.current), []);
+  return handleAnimationFrame;
+};
 
 const MODIFIERS_OPTIONS = [
   'offset',
@@ -375,6 +386,7 @@ class Popper extends Component {
       placement,
       duration,
       animationsDisabled,
+      popper: this.popper,
     };
   }
 
@@ -427,6 +439,7 @@ function PopperPopper(props) {
     styles,
     visible,
     disablePortal,
+    ignorePortalsStacking,
     disableEnforceFocus,
     triggerRef,
     interaction,
@@ -434,6 +447,7 @@ function PopperPopper(props) {
     controlsLength,
     duration,
     animationsDisabled,
+    popper,
   } = props;
   const ref = useRef(null);
 
@@ -449,8 +463,31 @@ function PopperPopper(props) {
 
   useContextTheme(ref, visible);
 
+  const updatePopperEveryFrame = useUpdatePopperEveryFrame(popper);
+  const handleAnimationStart = React.useCallback(
+    (duration) => {
+      if (duration > 0) {
+        updatePopperEveryFrame(Date.now() + Math.min(duration, 2000));
+      }
+    },
+    [updatePopperEveryFrame],
+  );
+  const handleAnimationEnd = React.useCallback(() => {
+    popper.current?.update();
+  }, []);
+  const animationCtx = React.useContext(animationContext);
+  React.useEffect(() => {
+    if (!ignorePortalsStacking) return;
+    const unsubscribeAnimationStart = animationCtx.onAnimationStart(handleAnimationStart);
+    const unsubscribeAnimationEnd = animationCtx.onAnimationEnd(handleAnimationEnd);
+    return () => {
+      unsubscribeAnimationStart();
+      unsubscribeAnimationEnd();
+    };
+  }, [animationCtx, ignorePortalsStacking]);
+
   return sstyled(styles)(
-    <Portal disablePortal={disablePortal}>
+    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={Scale}
