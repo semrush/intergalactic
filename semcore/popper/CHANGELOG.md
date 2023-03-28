@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.11] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.8 ~> 1.9.9], `@semcore/flex-box` [4.7.16 ~> 4.7.17], `@semcore/neighbor-location` [3.1.22 ~> 3.1.23], `@semcore/outside-click` [2.5.21 ~> 2.5.22], `@semcore/utils` [3.49.0 ~> 3.49.1]).
+
 ## [4.16.10] - 2023-03-24
 
 ### Fixed
