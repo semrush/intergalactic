@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useCallback, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-jsx';
+import 'prism-themes/themes/prism-night-owl.css';
 import TabLine from '@semcore/tab-line';
 import Badge from '@semcore/badge';
 import { routes } from '@navigation';
@@ -42,7 +43,7 @@ function useScrollHash(options = {}) {
   };
 }
 
-export const Docs = ({ route, tokens, tabs, pageTitle }) => {
+export const Docs = ({ tokens, tabs }) => {
   const match = useRouteMatch();
   const [contentModal, setContentModal] = useState(false);
   const contentRef = useRef(null);

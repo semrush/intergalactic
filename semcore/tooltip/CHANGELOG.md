@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.3.24] - 2023-03-28
+
+### Fixed
+
+- Fixed tooltip border color for default theme.
+
 ## [5.3.23] - 2023-03-28
 
 ### Changed

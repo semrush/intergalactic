@@ -28,6 +28,24 @@
         })(window, document, 'script', 'dataLayer', 'GTM-PP7RKT7');
       }
     </script>
+    <script type="text/javascript">
+      (function () {
+        const getThemePreference = () => {
+          const THEME_STORAGE_KEY = 'theme-preference';
+          if (localStorage.getItem(THEME_STORAGE_KEY)) {
+            return localStorage.getItem(THEME_STORAGE_KEY);
+          } else {
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+        };
+        const currentTheme = getThemePreference();
+        if (currentTheme === 'light') {
+          document.write('<link rel="stylesheet" type="text/css" href="/light.css" />');
+        } else {
+          document.write('<link rel="stylesheet" type="text/css" href="/dark.css" />');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root">

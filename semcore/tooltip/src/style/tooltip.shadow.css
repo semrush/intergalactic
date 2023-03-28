@@ -49,7 +49,7 @@ SArrow[theme='default'] {
   border-color: var(--intergalactic-border-secondary, #e0e1e9);
 
   &:before {
-    border-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+    border-color: var(--intergalactic-tooltip-default, #ffffff);
   }
 }
 

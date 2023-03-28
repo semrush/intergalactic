@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
+import cx from 'classnames';
 import { getLabel } from './Changelog';
 import HeadingLink from './HeadingLink.jsx';
 
@@ -58,15 +59,15 @@ const ChangelogByComponent = ({ blocks }) => {
       switch (section.props.children) {
         case 'Added':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="green-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.greenContainer)} size="l">
+              <Tag.Text className={styles.greenText}>{section}</Tag.Text>
             </Tag>
           );
           break;
         case 'Fixed':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="blue-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.blueContainer)} size="l">
+              <Tag.Text className={styles.blueText}>{section}</Tag.Text>
             </Tag>
           );
           break;
@@ -74,16 +75,16 @@ const ChangelogByComponent = ({ blocks }) => {
         case 'Removed':
         case 'Deprecated':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="orange-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.orangeContainer)} size="l">
+              <Tag.Text className={styles.orangeText}>{section}</Tag.Text>
             </Tag>
           );
           break;
         case 'BREAK':
         case 'Security':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="red-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.redContainer)} size="l">
+              <Tag.Text className={styles.redText}>{section}</Tag.Text>
             </Tag>
           );
       }

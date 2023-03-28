@@ -13,6 +13,7 @@ SRadio[disabled] {
 
 SText {
   margin-left: var(--intergalactic-spacing-2x, 8px);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SText[size='m'] {
