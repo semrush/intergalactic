@@ -16,6 +16,7 @@ import { navigationTree } from '@navigation';
 import styles from './Header.module.css';
 import cx from 'classnames';
 import Tooltip from '@semcore/tooltip';
+import { Text } from '@semcore/typography';
 import Button from '@semcore/button';
 import { logEvent } from '../utils/amplitude';
 import { getThemePreference } from '../utils/theme';
@@ -101,7 +102,9 @@ function Header({ theme, setTheme }) {
             </span>
           </Tooltip.Trigger>
           <Tooltip.Popper className={styles.headerTooltip}>
-            Chrome extension is available only for users registered in the corporate mail
+            <Text size={200}>
+              Chrome extension is available only for users registered in the corporate mail
+            </Text>
           </Tooltip.Popper>
         </Tooltip>
         <span className={styles.item}>
