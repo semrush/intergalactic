@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.23] - 2023-03-29
+
+### Added
+
+- Added auto scroll when paste and enter items.
+
 ## [3.3.22] - 2023-03-28
 
 ### Changed
