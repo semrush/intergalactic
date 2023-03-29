@@ -71,16 +71,6 @@ SSwitch[disabled] {
   }
 }
 
-SSwitch[checked] {
-  & SAddon[neighborLocation='right'] {
-    color: var(--intergalactic-text-secondary, #6c6e79);
-  }
-
-  & SAddon[neighborLocation='left'] {
-    color: var(--intergalactic-text-primary, #191b23);
-  }
-}
-
 SToggle {
   background: var(--intergalactic-control-switch-bg, #a9abb6);
   position: relative;
@@ -157,6 +147,23 @@ SAddon[neighborLocation='right'] {
 
 SAddon[neighborLocation='left'] {
   color: var(--intergalactic-text-secondary, #6c6e79);
+}
+
+SAddon[neighborLocation='left']:nth-child(2) {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
+SSwitch[checked] {
+  & SAddon[neighborLocation='right'] {
+    color: var(--intergalactic-text-secondary, #6c6e79);
+  }
+  & SAddon[neighborLocation='right']:nth-last-child(2) {
+    color: var(--intergalactic-text-primary, #191b23);
+  }
+
+  & SAddon[neighborLocation='left'] {
+    color: var(--intergalactic-text-primary, #191b23);
+  }
 }
 
 @media (prefers-reduced-motion) {

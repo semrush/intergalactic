@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.10] - 2023-03-29
+
+### Fixed
+
+- Fixed that switch with single label was turning label into secondary text color.
+
 ## [4.4.9] - 2023-03-28
 
 ### Changed
