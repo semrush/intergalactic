@@ -59,12 +59,6 @@ class InputTags extends Component<IInputTagsProps> {
 
   _input = React.createRef<HTMLInputElement>();
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.children[0].length !== this.asProps.children[0].length) {
-      this._input.current?.scrollIntoView(false);
-    }
-  }
-
   setFocusInput = (e) => {
     const inputRef = this._input.current;
     if (inputRef && e.target !== inputRef) {
@@ -86,6 +80,7 @@ class InputTags extends Component<IInputTagsProps> {
       event.preventDefault();
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
+      setTimeout(() => this._input.current?.scrollIntoView(false), 0);
     }
 
     if (key === 'Backspace' && !value) {
@@ -111,6 +106,7 @@ class InputTags extends Component<IInputTagsProps> {
       }
       onAppend?.(tagsToBeAdded, event);
     }
+    setTimeout(() => this._input.current?.scrollIntoView(false), 0);
   };
 
   bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
