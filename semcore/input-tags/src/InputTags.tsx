@@ -7,7 +7,7 @@ import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
 
-export interface IInputTagsValueProps extends IInputValueProps { }
+export interface IInputTagsValueProps extends IInputValueProps {}
 
 export type InputTagsSize = 'l' | 'm';
 
@@ -80,6 +80,7 @@ class InputTags extends Component<IInputTagsProps> {
       event.preventDefault();
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
+      setTimeout(() => this._input.current?.scrollIntoView(false), 0);
     }
 
     if (key === 'Backspace' && !value) {
@@ -105,6 +106,7 @@ class InputTags extends Component<IInputTagsProps> {
       }
       onAppend?.(tagsToBeAdded, event);
     }
+    setTimeout(() => this._input.current?.scrollIntoView(false), 0);
   };
 
   bindHandlerTagClick = (editable: boolean) => (event: React.MouseEvent) => {
