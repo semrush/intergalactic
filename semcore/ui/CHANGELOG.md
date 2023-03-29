@@ -1,3 +1,45 @@
+## [13.20.1] - 2023-03-29
+
+### @semcore/date-picker
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/dropdown
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/dropdown-menu
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/input-mask
+
+- **Changed** Changed color in default and focused states as in `Figma`.
+
+### @semcore/notice
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/pagination
+
+- **Added** Added design tokens to `TotalPages` component.
+
+### @semcore/radio
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/switch
+
+- **Fixed** Fixed that switch with single label was turning label into secondary text color.
+
+### @semcore/time-picker
+
+- **Added** Added default color (`--intergalactic-text-primary`) to `Separator` component.
+
+### @semcore/tooltip
+
+- **Fixed** Fixed tooltip border color for default theme.
+
 ## [13.20.0] - 2023-03-28
 
 ### @semcore/animation
