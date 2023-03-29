@@ -16,7 +16,6 @@ import {
   ScatterPlot,
   HoverLine,
   HoverRect,
-  Tooltip,
   RadialTree,
   Line,
   Donut,
@@ -561,22 +560,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverLine} x='x' wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].x}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Line</Tooltip.Dot>
-                      <Text bold>{data[xIndex].y ?? 'n/a'}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <Area x='x' y='y'>
+          <Area x="x" y="y" duration={0}>
             <Area.Null />
             <Area.Dots />
           </Area>
@@ -716,28 +700,9 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} x='category' wMin={100}>
-            {({ xIndex }) => ({
-              children: (
-                <>
-                  <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                  <Flex justifyContent='space-between'>
-                    <Tooltip.Dot mr={4}>Bar 1</Tooltip.Dot>
-                    <Text bold>{data[xIndex].bar1}</Text>
-                  </Flex>
-                  <Flex mt={2} justifyContent='space-between'>
-                    <Tooltip.Dot mr={4} color={colors['green-02']}>
-                      Bar 2
-                    </Tooltip.Dot>
-                    <Text bold>{data[xIndex].bar2}</Text>
-                  </Flex>
-                </>
-              ),
-            })}
-          </Tooltip>
-          <GroupBar x='category'>
-            <GroupBar.Bar y='bar1' />
-            <GroupBar.Bar y='bar2' color={colors['green-02']} />
+          <GroupBar x="category">
+            <GroupBar.Bar y="bar1" duration={0} />
+            <GroupBar.Bar y="bar2" color={colors['green-02']} duration={0} />
           </GroupBar>
         </Plot>
       );
@@ -779,31 +744,8 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} x='category' wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4} color={colors['green-02']}>
-                        Positive
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].bar1}</Text>
-                    </Flex>
-                    <Flex justifyContent='space-between' mt={2}>
-                      <Tooltip.Dot mr={4} color={colors['orange-04']}>
-                        Negative
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].bar2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <Bar x='category' y='bar1' color={colors['green-02']} />
-          <Bar x='category' y='bar2' color={colors['orange-04']} />
+          <Bar x="category" y="bar1" color={colors['green-02']} duration={0} />
+          <Bar x="category" y="bar2" color={colors['orange-04']} duration={0} />
           <XAxis position={0} />
         </Plot>
       );
@@ -844,14 +786,15 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <HoverLine x='category' />
-          <HoverRect x='category' />
-          <Bar x='category' y='bar' />
+          <HoverLine x="category" />
+          <HoverRect x="category" />
+          <Bar x="category" y="bar" duration={0} />
           <Line
             x='category'
             y='bar'
             color={resolveColor('wall')}
             style={{ strokeWidth: 3, strokeDasharray: 5 }}
+            duration={0}
           >
             <Line.Dots display />
           </Line>
@@ -894,7 +837,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Bar x='category' y='bar' />
+          <Bar x="category" y="bar" duration={0} />
         </Plot>
       );
     };
@@ -928,22 +871,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} y='category' wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Bar</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <HorizontalBar x='bar' y='category'>
+          <HorizontalBar x="bar" y="category" duration={0}>
             <HorizontalBar.Background />
           </HorizontalBar>
         </Plot>
@@ -984,30 +912,9 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
             <XAxis.Grid />
           </XAxis>
-          <Tooltip tag={HoverRect} y='category' wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Bar 1</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar1}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Tooltip.Dot mr={4} color={colors['green-02']}>
-                        Bar 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <GroupBar y='category'>
-            <GroupBar.HorizontalBar x='bar1' />
-            <GroupBar.HorizontalBar x='bar2' color={colors['green-02']} />
+          <GroupBar y="category">
+            <GroupBar.HorizontalBar x="bar1" duration={0} />
+            <GroupBar.HorizontalBar x="bar2" color={colors['green-02']} duration={0} />
           </GroupBar>
         </Plot>
       );
@@ -1046,27 +953,51 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
             <XAxis.Grid />
           </XAxis>
-          <Tooltip tag={HoverRect} y='category' wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Bar</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <HorizontalBar x='bar' y='category' />
+          <HorizontalBar x="bar" y="category" duration={0} />
         </Plot>
       );
     };
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render bar-horizontal with zero and null values correctly', async () => {
+    const data = [
+      { category: 'Category 1', bar: 1 },
+      { category: 'Category 2', bar: 0 },
+      { category: 'Category 3', bar: 7 },
+      { category: 'Category 4', bar: 0.05 },
+      { category: 'Category 5', bar: null },
+    ];
+
+    const MARGIN = 40;
+    const width = 500;
+    const height = 300;
+
+    const xScale = scaleLinear()
+      .range([MARGIN * 2, width - MARGIN])
+      .domain([0, 10]);
+
+    const yScale = scaleBand()
+      .range([height - MARGIN, MARGIN])
+      .domain(data.map((d) => d.category))
+      .paddingInner(0.4)
+      .paddingOuter(0.2);
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis hide={false}>
+          <YAxis.Ticks />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+          <XAxis.Grid />
+        </XAxis>
+        <HorizontalBar x="bar" y="category" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('should render bar-label', async () => {
@@ -1095,7 +1026,7 @@ describe('d3 charts visual regression', () => {
           <YAxis>
             <YAxis.Ticks />
           </YAxis>
-          <HorizontalBar x='bar' y='category'>
+          <HorizontalBar x="bar" y="category" duration={0}>
             {({ value, x, y, width, height }) => {
               return {
                 children: (
@@ -1150,21 +1081,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Bubble x='x' y='y' value='value' />
-          <Tooltip>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag='div'>X axis {data[xIndex].x}</Text>
-                    <Text tag='div'>Y axis {data[xIndex].y}</Text>
-                    <Text tag='div'>Value {data[xIndex].value}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <Bubble x="x" y="y" value="value" duration={0} />
         </Plot>
       );
     };
@@ -1203,21 +1120,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Bubble data={data} x='x' y='y' value='value' label='label' color='color' />
-          <Tooltip>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag='div'>X axis {data[xIndex].x}</Text>
-                    <Text tag='div'>Y axis {data[xIndex].y}</Text>
-                    <Text tag='div'>Value {data[xIndex].value}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <Bubble data={data} x="x" y="y" value="value" label="label" color="color" duration={0} />
         </Plot>
       );
     };
@@ -1256,7 +1159,7 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
             <XAxis.Grid />
           </XAxis>
-          <Line x='x' y='y' />
+          <Line x="x" y="y" duration={0} />
         </Plot>
       );
     };
@@ -1297,7 +1200,7 @@ describe('d3 charts visual regression', () => {
               })}
             </YAxis.Ticks>
           </YAxis>
-          <Line x='x' y='y' />
+          <Line x="x" y="y" duration={0} />
         </Plot>
       );
     };
@@ -1426,7 +1329,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
           </XAxis>
-          <Line x='x' y='y' />
+          <Line x="x" y="y" duration={0} />
         </Plot>
       );
     };
@@ -1584,7 +1487,7 @@ describe('d3 charts visual regression', () => {
             <XAxis ticks={xScale.ticks()}>
               <XAxis.Ticks />
             </XAxis>
-            <Line x='x' y='y'>
+            <Line x="x" y="y" duration={0}>
               <Line.Dots display />
             </Line>
           </Plot>
@@ -1699,6 +1602,7 @@ describe('d3 charts visual regression', () => {
                     y={item.name}
                     color={MAP_THEME[item.name]}
                     opacity={item.opacity ? 0.3 : 1}
+                    duration={0}
                   />
                 ),
             )}
@@ -1739,7 +1643,7 @@ describe('d3 charts visual regression', () => {
           height={height}
           style={{ border: '1px solid' }}
         >
-          <Line x='x' y='y' />
+          <Line x="x" y="y" duration={0} />
         </Plot>
       );
     };
@@ -1786,20 +1690,6 @@ describe('d3 charts visual regression', () => {
             <Donut.Pie dataKey='c' color={colors['violet-04']} name='Pie 3' />
             <Donut.Label>Example</Donut.Label>
           </Donut>
-          <Tooltip>
-            {({ dataKey, name }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{name}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Text bold>{data[dataKey]}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
@@ -1877,20 +1767,6 @@ describe('d3 charts visual regression', () => {
               </Text>
             </Donut.Label>
           </Donut>
-          <Tooltip>
-            {({ dataKey, name }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{name}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Text bold>{data[dataKey]}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
@@ -1931,7 +1807,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Line x='x' y='y'>
+          <Line x="x" y="y" duration={0}>
             <Line.Dots display />
           </Line>
         </Plot>
@@ -2142,22 +2018,8 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <ScatterPlot x='x' y='y1' value='value' color='#2BB3FF' valueColor='#008ff8' />
-          <ScatterPlot x='x' y='y2' value='value' color='#59DDAA' valueColor='#00C192' />
-          <Tooltip>
-            {({ xIndex, x, y, value }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag='div'>X axis {data[xIndex][x]}</Text>
-                    <Text tag='div'>Y axis {data[xIndex][y]}</Text>
-                    <Text tag='div'>Value {data[xIndex][value]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <ScatterPlot x="x" y="y1" value="value" color="#2BB3FF" valueColor="#008ff8" />
+          <ScatterPlot x="x" y="y2" value="value" color="#59DDAA" valueColor="#00C192" />
         </Plot>
       );
     };
@@ -2196,21 +2058,8 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <ScatterPlot x='x' y='y1' color='#2BB3FF' />
-          <ScatterPlot x='x' y='y2' color='#59DDAA' />
-          <Tooltip>
-            {({ xIndex, x, y, color }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Dot color={color}>Data</Tooltip.Dot>
-                    <Text tag='div'>X axis {data[xIndex][x]}</Text>
-                    <Text tag='div'>Y axis {data[xIndex][y]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <ScatterPlot x="x" y="y1" color="#2BB3FF" />
+          <ScatterPlot x="x" y="y2" color="#59DDAA" />
         </Plot>
       );
     };
@@ -2249,21 +2098,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <ScatterPlot x='x' y='y' value='value' />
-          <Tooltip>
-            {({ xIndex, x, y, value }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag='div'>X axis {data[xIndex][x]}</Text>
-                    <Text tag='div'>Y axis {data[xIndex][y]}</Text>
-                    <Text tag='div'>Value {data[xIndex][value]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <ScatterPlot x="x" y="y" value="value" />
         </Plot>
       );
     };
@@ -2307,35 +2142,8 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks ticks={data.map((d) => +d.time)} />
           </XAxis>
-          <Tooltip tag={HoverLine} x='time' wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].time}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack1 ?? 'n/a'}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Tooltip.Dot mr={4} color={colors['green-02']}>
-                        Stack 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack2 ?? 'n/a'}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Tooltip.Dot mr={4} color={colors['orange-04']}>
-                        Stack 3
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack3 ?? 'n/a'}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <StackedArea x='time'>
-            <StackedArea.Area y='stack1'>
+          <StackedArea x="time">
+            <StackedArea.Area y="stack1">
               <StackedArea.Area.Null />
               <StackedArea.Area.Dots />
             </StackedArea.Area>
@@ -2386,34 +2194,9 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} x='category' wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack1}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Tooltip.Dot mr={4} color={colors['blue-02']}>
-                        Stack 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack2}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Box mr={4}>Total</Box>
-                      <Text bold>{data[xIndex].stack1 + data[xIndex].stack2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <StackBar x='category'>
-            <StackBar.Bar y='stack1' />
-            <StackBar.Bar y='stack2' color={colors['blue-02']} />
+          <StackBar x="category">
+            <StackBar.Bar y="stack1" duration={0} />
+            <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
           </StackBar>
         </Plot>
       );
@@ -2453,34 +2236,9 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
             <XAxis.Grid />
           </XAxis>
-          <Tooltip tag={HoverRect} y='category' wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent='space-between'>
-                      <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar1}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Tooltip.Dot mr={4} color={colors['blue-02']}>
-                        Stack 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar2}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Box mr={4}>Total</Box>
-                      <Text bold>{data[yIndex].bar1 + data[yIndex].bar2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <StackBar y='category'>
-            <StackBar.HorizontalBar x='bar1' />
-            <StackBar.HorizontalBar x='bar2' color={colors['blue-02']} />
+          <StackBar y="category">
+            <StackBar.HorizontalBar x="bar1" duration={0} />
+            <StackBar.HorizontalBar x="bar2" color={colors['blue-02']} duration={0} />
           </StackBar>
         </Plot>
       );
