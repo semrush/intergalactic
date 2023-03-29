@@ -1,3 +1,9 @@
+## [13.20.2] - 2023-03-29
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating height of `Bar` component.
+
 ## [13.20.1] - 2023-03-29
 
 ### @semcore/date-picker
