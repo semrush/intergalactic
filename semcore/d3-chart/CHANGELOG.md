@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.5] - 2023-03-29
+
+### Fixed
+
+- Fixed calculating height of `Bar` component.
+
 ## [2.13.4] - 2023-03-28
 
 ### Changed
