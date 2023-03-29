@@ -62,11 +62,41 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
     );
   }
 
-  const internalDependencies = typing.dependencies.filter((dependency) => repoTypings[dependency]);
-
-  const dependencies = Object.fromEntries(
-    internalDependencies.map((dependency) => [dependency, `~~~%%%@typing/${dependency}%%%~~~`]),
-  );
+  const processedDependencies = {};
+  const resolveDependencies = (dependencies) =>
+    Object.fromEntries(
+      dependencies
+        .filter(
+          (dependency) =>
+            repoTypings[dependency] &&
+            !dependencies[dependency] &&
+            !processedDependencies[dependency],
+        )
+        .map((dependency) => {
+          processedDependencies[dependency] = true;
+          const typing = repoTypings[dependency];
+          const properties = typing.declaration.properties.map(
+            ({ name, isOptional, type, description, params }) => ({
+              name,
+              isOptional,
+              type,
+              params,
+              description: markdownTokenToHtml(parseMarkdown(description)),
+            }),
+          );
+          return [
+            dependency,
+            {
+              declaration: {
+                ...typing.declaration,
+                properties,
+              },
+              dependencies: resolveDependencies(typing.dependencies ?? []),
+            },
+          ];
+        }),
+    );
+  const dependencies = resolveDependencies(typing.dependencies ?? []);
 
   const properties = typing.declaration.properties.map(
     ({ name, isOptional, type, description, params }) => ({
@@ -89,7 +119,7 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
 };
 
 let uniqueId = 0;
-const mathVersionRegx = /\[(.*)\]/;
+const mathVersionRegex = /\[(.*)\]/;
 const normalizeMarkdown = (
   ast: MarkdownRoot,
   relativePath: string,
@@ -116,7 +146,6 @@ const normalizeMarkdown = (
         if (route.includes('?')) route = route.substring(0, route.indexOf('?'));
         if (route.endsWith('/')) route = route.substring(0, route.length - 1);
         if (existingRoutes && !existingRoutes[route]) {
-          console.log({ route, existingRoutes });
           throw Error(
             `Link ${path} (${JSON.stringify(
               token.children,
@@ -166,7 +195,7 @@ const makeChangelog = (
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
       const title = markdownTokenToHtml(token.children[0]);
-      const matchVersion = title.match(mathVersionRegx);
+      const matchVersion = title.match(mathVersionRegex);
       const version = (matchVersion && matchVersion[1]) ?? '';
       const id = generateHeadingId(`v.${version}`);
       currentBlock = {
@@ -231,7 +260,7 @@ const makeChangelogByComponent = (
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
       const title = markdownTokenToHtml(token.children[0]);
-      const matchVersion = title.match(mathVersionRegx);
+      const matchVersion = title.match(mathVersionRegex);
       const version = (matchVersion && matchVersion[1]) ?? '';
       const id = generateHeadingId(`v.${version}`);
       currentBlock = {
@@ -659,6 +688,7 @@ export const serializeArticle = (pageData) => {
     beta,
     legacyHeaderHashes,
   });
+
   stringified = stringified.replace(/---------~~~~~~/g, '" + ');
   stringified = stringified.replace(/~~~~~~---------/g, ' + "');
   stringified = stringified.replace(/"~~~%%%/g, '() => import("');
