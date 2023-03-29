@@ -1,12 +1,1 @@
-<svg width="144" height="80" viewBox="0 0 144 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="144" height="80" fill="white"/>
-<rect x="32" y="51" width="80" height="8" rx="4" fill="#E0E1E9" fill-opacity="0.8"/>
-<rect x="48" y="67" width="48" height="8" rx="4" fill="#E0E1E9" fill-opacity="0.8"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M93 4H51C49.3431 4 48 5.34315 48 7V40C48 41.6569 49.3431 43 51 43H93C94.6569 43 96 41.6569 96 40V7C96 5.34315 94.6569 4 93 4ZM49.5 7C49.5 6.17157 50.1716 5.5 51 5.5H93C93.8284 5.5 94.5 6.17157 94.5 7V40C94.5 40.8284 93.8284 41.5 93 41.5H51C50.1716 41.5 49.5 40.8284 49.5 40V7Z" fill="#A9ABB6"/>
-<path d="M49.5 7.5C49.5 6.39543 50.3954 5.5 51.5 5.5H92.5C93.6046 5.5 94.5 6.39543 94.5 7.5V14.5H49.5V7.5Z" fill="#E0E1E9"/>
-<path d="M51 28C51 27.5858 51.3358 27.25 51.75 27.25H92.25C92.6642 27.25 93 27.5858 93 28V28C93 28.4142 92.6642 28.75 92.25 28.75H51.75C51.3358 28.75 51 28.4142 51 28V28Z" fill="#A9ABB6"/>
-<rect x="79.5" y="16" width="1.5" height="24" rx="0.75" fill="#A9ABB6"/>
-<rect x="63" y="16" width="1.5" height="24" rx="0.75" fill="#A9ABB6"/>
-<rect x="87" y="8.5" width="4.5" height="1.5" rx="0.75" fill="#A9ABB6"/>
-<rect x="64.5" y="8.5" width="19.5" height="1.5" rx="0.75" fill="#A9ABB6"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="80" fill="none"><path fill="#fff" d="M0 0h144v80H0z"/><rect width="80" height="8" x="32" y="51" fill="#E0E1E9" fill-opacity=".8" rx="4"/><rect width="48" height="8" x="48" y="67" fill="#E0E1E9" fill-opacity=".8" rx="4"/><path fill="#A9ABB6" fill-rule="evenodd" d="M93 4H51a3 3 0 0 0-3 3v33a3 3 0 0 0 3 3h42a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3ZM49.5 7A1.5 1.5 0 0 1 51 5.5h42A1.5 1.5 0 0 1 94.5 7v33a1.5 1.5 0 0 1-1.5 1.5H51a1.5 1.5 0 0 1-1.5-1.5V7Z" clip-rule="evenodd"/><path fill="#E0E1E9" d="M49.5 7.5a2 2 0 0 1 2-2h41a2 2 0 0 1 2 2v7h-45v-7Z"/><path fill="#A9ABB6" d="M51 28a.75.75 0 0 1 .75-.75h40.5a.75.75 0 0 1 0 1.5h-40.5A.75.75 0 0 1 51 28Z"/><rect width="1.5" height="24" x="79.5" y="16" fill="#A9ABB6" rx=".75"/><rect width="1.5" height="24" x="63" y="16" fill="#A9ABB6" rx=".75"/><rect width="4.5" height="1.5" x="87" y="8.5" fill="#A9ABB6" rx=".75"/><rect width="19.5" height="1.5" x="64.5" y="8.5" fill="#A9ABB6" rx=".75"/></svg>
