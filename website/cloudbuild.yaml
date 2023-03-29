@@ -32,7 +32,7 @@ steps:
       - |
         if [[ "$BRANCH_NAME" == "website/release" ]]
         then
-          npm install --global pnpm
+          npm install --global pnpm@7
           pnpm install && pnpm run upload-search-index
         fi
     dir: website
