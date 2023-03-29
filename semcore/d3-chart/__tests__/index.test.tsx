@@ -25,7 +25,7 @@ import {
   Area,
   StackedArea,
   ReferenceLine,
-  Radar
+  Radar,
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -397,7 +397,7 @@ describe('Bar chart', () => {
   test('should render Bar chart without data correctly', async () => {
     const data = [
       { time: 0, stack1: 0 },
-      { time: 1, stack1: null},
+      { time: 1, stack1: null },
       { time: 2, stack1: 10 },
       { time: 3, stack1: null },
       { time: 4, stack1: -0 },
@@ -432,6 +432,40 @@ describe('Bar chart', () => {
         <StackBar x="time">
           <StackBar.Bar y="stack1" duration={0} />
           <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render StackBar chart correctly with hMin and zero values', async () => {
+    const data = [
+      { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 0, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 0 },
+      { time: 3, stack1: 3, stack2: 2, stack3: 6 },
+      { time: 4, stack1: 0, stack2: 0, stack3: 4 },
+      { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+      { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+      { time: 7, stack1: 0, stack2: 0, stack3: 0 },
+      { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+      { time: 9, stack1: 5, stack2: 0, stack3: 3 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+          <StackBar.Bar y="stack3" color={colors['green-02']} duration={0} hMin={5} />
         </StackBar>
       </Plot>
     );
@@ -2559,10 +2593,17 @@ describe('d3 charts visual regression', () => {
 
   test('should render radar', async () => {
     const data = {
-      'categories': ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
-      'data_1': [1, 3, 5, 5, 9, 2],
-      'data_2': [5, 2, 1, 2, 7, 6],
-    }
+      categories: [
+        'Variable 1',
+        'Variable 2',
+        'Variable 3',
+        'Variable 4',
+        'Variable 5',
+        'Variable 6',
+      ],
+      data_1: [1, 3, 5, 5, 9, 2],
+      data_2: [5, 2, 1, 2, 7, 6],
+    };
 
     const scale = scaleLinear().domain([0, 10]);
 
@@ -2570,15 +2611,15 @@ describe('d3 charts visual regression', () => {
       return (
         <Plot data={data} width={300} height={300}>
           <Radar scale={scale}>
-            <Radar.Axis dataKey='categories'>
+            <Radar.Axis dataKey="categories">
               <Radar.Axis.Ticks />
               <Radar.Axis.Labels />
             </Radar.Axis>
-            <Radar.Polygon dataKey='data_1'>
+            <Radar.Polygon dataKey="data_1">
               <Radar.Polygon.Line />
               <Radar.Polygon.Dots />
             </Radar.Polygon>
-            <Radar.Polygon dataKey='data_2' color="red">
+            <Radar.Polygon dataKey="data_2" color="red">
               <Radar.Polygon.Line />
               <Radar.Polygon.Dots />
             </Radar.Polygon>
