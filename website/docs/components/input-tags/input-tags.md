@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**InputTags** is the input that wraps the entered information into tags. Often used together with the [Combobox](/components/auto-tips/).
+**InputTags** is the input that wraps the entered information into tags. Often used together with the [Combobox](/components/auto-suggest/).
 
 This input is usually used for entering a large amount of homogeneous information in a single field. _For example, keywords or employee emails._
 
@@ -45,7 +45,7 @@ In the input with tags, you can substitute either preset data from the combobox,
 | -------------------------------------------- | ---------------------------------------- | ------------------------------------------ |
 | ![combobox only data](static/input-tag1.png) | ![user only data](static/input-tag2.png) | ![all kind of data](static/input-tag3.png) |
 
-When you focus on such an input, it opens a [Combobox](/components/auto-tips/) if there are pre-set data (for example, a database of addresses of minions or previously entered keywords). When you click on a line in the combobox, the data from this line is inserted into the input and wrapped in a tag.
+When you focus on such an input, it opens a [Combobox](/components/auto-suggest/) if there are pre-set data (for example, a database of addresses of minions or previously entered keywords). When you click on a line in the combobox, the data from this line is inserted into the input and wrapped in a tag.
 
 If such an input does not have pre-set data and the user can enter any data, this data is wrapped in a tag after punctuation separators as described below.
 
