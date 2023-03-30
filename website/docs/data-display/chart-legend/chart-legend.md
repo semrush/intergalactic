@@ -46,7 +46,7 @@ A non-interactive legend is a colored circle with a label. This legend does not 
 
 To show the trend or average value in the legend, use the `--chart-palette-order-total-amount` token for color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
 
-![checkbox total legend](static/trend.png)
+![checkbox total legend](static/legend-trend.png)
 
 @## Interaction
 
