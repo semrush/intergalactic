@@ -1,3 +1,9 @@
+## [13.20.4] - 2023-03-30
+
+### @semcore/input-tags
+
+- **Added** Added checking if the input `ref` has `scrollIntoView` method.
+
 ## [13.20.3] - 2023-03-30
 
 ### @semcore/input-tags
