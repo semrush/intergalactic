@@ -168,9 +168,9 @@ Make sure that the touch targets of the items are large enough and are easily ac
 
 **Requirements**:
 
-- **Make sure that it's possible to reach the main controls with your thumb on both hands, even on larger phones**.
+- **Make sure that it's possible to reach the main controls with your mouse on the desktop device or with your thumb on the mobile device**.
 - **Set target areas to at least 44px**. An average adult's fingertip size is around 10mm, so you'll need to increase the size of the target area around your icons to make them easier to hit.
-- **Separate tappable elements with a 8px margin**. This will help the user hit the element they're aiming for.
+- **Separate actionable elements with an appropriate margin**. This will help the user activate the element they're aiming for.
 
 ![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "You need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
 
