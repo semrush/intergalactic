@@ -241,7 +241,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Добавлен `white-space: normal;` так как он может наследоваться в случаях отключения рендера в портал(`disabledPortal`)
+- Добавлен `white-space: normal;` так как он может наследоваться в случаях отключения рендера в портал(`disablePortal`)
 - Убрано скрытие Popper, когда его Trigger выходит из viewbox
 
 ## [1.2.3] - 2019-11-14
