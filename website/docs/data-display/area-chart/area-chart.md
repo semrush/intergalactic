@@ -107,7 +107,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![skeleton](static/skeleton.png)
+![skeleton](static/area-skeleton.png)
 
 @page area-chart-a11y
 @page area-chart-api

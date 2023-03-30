@@ -226,7 +226,7 @@ For more information about this state, refer to [Skeleton](/components/skeleton/
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![radar chart as skeleton](static/skeleton.png)
+![radar chart as skeleton](static/radar-skeleton.png)
 
 @## Usage in UX/UI
 

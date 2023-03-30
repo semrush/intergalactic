@@ -18,10 +18,10 @@ fileSource: d3-chart
 
 @## Appearance
 
-| Number of categories | Appearance example                                                                         | Styles                                                         |
-| -------------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| Number of categories | Appearance example                                                                         | Styles                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
 | One                  | ![bar chart with one category of values](/data-display/bar-chart/static/bar-chart.png)     | The upper part of the column shall have `border-radius: 2px`. |
-| Two                  | ![bar chart with two categories of values](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                         |
+| Two                  | ![bar chart with two categories of values](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                        |
 
 > If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
 >
@@ -73,4 +73,4 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![skeleton](/data-display/bar-chart/static/skeleton.png)
+![skeleton](/data-display/bar-chart/static/bar-vertical-skeleton.png)

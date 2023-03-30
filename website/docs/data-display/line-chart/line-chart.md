@@ -121,7 +121,7 @@ For more information about this state, refer to [Skeleton](/components/skeleton/
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![skeleton](static/skeleton.png)
+![skeleton](static/line-skeleton.png)
 
 @page line-chart-a11y
 @page line-chart-api

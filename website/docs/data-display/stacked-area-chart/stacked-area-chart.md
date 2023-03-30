@@ -102,7 +102,7 @@ For more information about this state, refer to [Skeleton](/components/skeleton/
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![skeleton](static/skeleton.png)
+![skeleton](static/stacked-area-skeleton.png)
 
 @page stacked-area-chart-a11y
 @page stacked-area-chart-api

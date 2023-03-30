@@ -93,7 +93,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 | Data values are null                   | If all the values on the chart are zero, display them at the origin of the grid. For cases where you compare multiple datasets, show the values for each dataset in the legend. **Zero is also data. 0 ≠ N / A.** | ![null](static/null-1.png) ![null](static/null-2.png)                 |
 | No data for some points (n/a)          | Don't show points without data on the chart. For cases where you compare multiple datasets, show the values for each dataset in the legend.                                                                       | ![no data](static/n-a-1.png) ![no data](static/n-a-2.png)             |
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![bubble is near to axis](static/cut.png)                             |
-| First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![bubble chart's skeleton](static/skeleton.png)                       |
+| First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![bubble chart's skeleton](static/bubble-chart-skeleton.png)          |
 
 @## UI/UX use
 
