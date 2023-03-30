@@ -20,7 +20,7 @@ export default function SideBar() {
   return (
     <Modal visible={visible} onClose={topLevelCloseHandler}>
       <Modal.Overlay style={{ padding: 0 }}>
-        <Modal.Window className={styles.modalWindow}>
+        <Modal.Window className={styles.modalWindow} slideOrigin="right">
           {loading && <Spin />}
           {loadingError && <Spin />}
 
