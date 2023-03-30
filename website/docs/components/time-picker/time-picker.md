@@ -12,7 +12,7 @@ tabName: Design
 
 @## Appearance
 
-- The component includes two [comboboxes](/components/auto-tips/#a70085) inside the input.
+- The component includes two [comboboxes](/components/auto-suggest/#a70085) inside the input.
 - If the user needs to choose the time in a 12-hour format, then add a button for switching AM/PM. It saves an extra click on the seelct opening.
 
 ### 24-hour format
