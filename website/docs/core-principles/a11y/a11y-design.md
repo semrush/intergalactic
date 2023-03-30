@@ -75,7 +75,7 @@ Use adaptive layout to allow the user to choose their preferred scale while pres
 
 This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
 
-Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html) to know more about scaling and resizing criteria.
+Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/resize-text) to know more about scaling and resizing criteria.
 
 @## Graphics and images
 
