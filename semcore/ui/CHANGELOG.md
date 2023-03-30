@@ -1,3 +1,9 @@
+## [13.20.3] - 2023-03-30
+
+### @semcore/input-tags
+
+- **Fixed** Fixed checking if the input `ref` is exists.
+
 ## [13.20.2] - 2023-03-29
 
 ### @semcore/d3-chart
