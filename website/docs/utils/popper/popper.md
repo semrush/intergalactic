@@ -66,7 +66,7 @@ Inside the function, the first argument provides the component props and the `ge
 
 @## Disabled portal
 
-The popper is rendered in the end of the `body` and absolutely positioned. In order to render the `Popper` next to the `Trigger`, you need to specify `disabledPortal`.
+The popper is rendered in the end of the `body` and absolutely positioned. In order to render the `Popper` next to the `Trigger`, you need to specify `disablePortal`.
 
 This is usually needed to optimize position recalculation when the `Trigger` is located in a block that scrolls separately from the page.
 
