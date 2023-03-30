@@ -58,7 +58,7 @@ Note that this type is design-only yet.
 
 |                                        | Appearance                                   |
 | -------------------------------------- | -------------------------------------------- |
-| skeleton (initial loading of the page) | ![normal_loading](static/skeleton.png)       |
+| skeleton (initial loading of the page) | ![normal_loading](static/pills-skeleton.png) |
 | Normal, active                         | ![normal_active](static/normal_active.png)   |
 | Hover                                  | ![normal_hover](static/hover.png)            |
 | Disabled                               | ![normal_disabled](static/disabled.png)      |

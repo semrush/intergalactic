@@ -109,7 +109,7 @@ Show [SpinContainer](/components/spin-container/) over the dropdown content in t
 
 Show in the widget/widgets to which the filter was applied an ["empty" state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-rules-nothing-found.png)
 
 @## Tooltips
 

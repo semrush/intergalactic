@@ -45,8 +45,8 @@ Place M size [Info](/style/icon/) icon next to the title.
 
 **The header may have a description text.** It usually contains information about maximum/minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
 
-| Appearance                             | Styles                                                                                             |
-| -------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Appearance                             | Styles                                                                                              |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color. |
 
 @## Chart controls
@@ -136,7 +136,7 @@ To display the trend line or average value on the chart, use gray color with sty
 - Dots on the line are optional.
 - The legend must have a checkbox for the trend line. On the charts, the universal color for the checkbox is `--chart-palette-order-total-amount`.
 
-![checkbox total legend](static/trend.png)
+![checkbox total legend](static/d3-trend.png)
 
 @## Data loading
 

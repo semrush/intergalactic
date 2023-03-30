@@ -81,7 +81,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 | **Very long main element.** Don't fold the long center value into ellipsis. Wrap it on the second line.                                                                                                                        | ![radial tree with a very long main value](static/long-value.png) |
 | **No data.** Show a special WidgetEmpty message for cases when there is no data.                                                                                                                                               | ![radial tree with no data](static/no-data-state.png)             |
 | **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![radial tree with not available](static/n-a-state.png)           |
-| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![radial tree with skeleton](static/skeleton.png)                 |
+| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![radial tree with skeleton](static/radial-tree-skeleton.png)     |
 
 @page radial-tree-chart-api
 @page radial-tree-chart-a11y

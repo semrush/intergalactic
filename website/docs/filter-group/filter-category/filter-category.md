@@ -72,7 +72,7 @@ When the filter's content or some of the filters are loading, show [Spin](/compo
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-category-nothing-found.png)
 
 ### Error
 
@@ -133,7 +133,7 @@ When the filter's content or some of the filters are loading, show [Spin](/compo
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-category-nothing-found.png)
 
 ### Error
 
