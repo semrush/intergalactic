@@ -1,6 +1,6 @@
 ---
 title: Typography
-fileSource: utils
+fileSource: typography
 tabName: Design
 ---
 
