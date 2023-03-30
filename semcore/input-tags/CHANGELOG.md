@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.24] - 2023-03-30
+
+### Fixed
+
+- Fixed checking if the input `ref` is exists.
+
 ## [3.3.23] - 2023-03-29
 
 ### Added
