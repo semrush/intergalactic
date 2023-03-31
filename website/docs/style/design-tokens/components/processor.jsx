@@ -29,7 +29,7 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
       <div className={styles.dropzoneInner}>
         <div>Drag files here</div>
         <div>or</div>
-        <Button theme="success" use="primary">
+        <Button theme="success" use="primary" size="l" mb={4}>
           Browse files
         </Button>
       </div>
@@ -95,7 +95,7 @@ const DesignTokensProcessor = () => {
   return (
     <div className={styles.container}>
       <Box mb={2}>
-        <label htmlFor="base-tokens-file">Base tokens file:</label>
+        <label htmlFor="base-tokens-file">Base tokens JSON file:</label>
         {!baseTokens && (
           <>
             <FileInput
@@ -120,7 +120,7 @@ const DesignTokensProcessor = () => {
         )}
       </Box>
       <Box mb={2}>
-        <label htmlFor="design-tokens-file">Design tokens file:</label>
+        <label htmlFor="design-tokens-file">Semantic tokens JSON file:</label>
         {!designTokens && (
           <>
             <FileInput

@@ -9,6 +9,7 @@
   align-items: center;
   position: relative;
   padding: var(--intergalactic-spacing-5x);
+  margin: var(--intergalactic-spacing-2x) 0px var(--intergalactic-spacing-8x);
   position: relative;
   min-width: 120px;
   min-height: 120px;
@@ -17,8 +18,8 @@
   border-radius: var(--intergalactic-rounded-medium);
   text-align: center;
   color: var(--intergalactic-text-secondary);
-  line-height: var(--intergalactic-lh-200);
-  font-size: var(--intergalactic-fs-200);
+  line-height: var(--intergalactic-lh-300);
+  font-size: var(--intergalactic-fs-300);
   font-weight: var(--intergalactic-regular);
   transition: calc(var(--intergalactic-duration-fast) * 1ms) background ease-in-out;
 }
