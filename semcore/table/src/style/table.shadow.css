@@ -59,8 +59,8 @@ SCell[use='secondary'] {
 
 SCellHead {
   font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
   font-weight: normal;
-  line-height: 18px;
   color: var(--intergalactic-text-primary, #191b23);
   cursor: default;
   box-sizing: border-box;
@@ -74,8 +74,9 @@ SCellHead {
 }
 
 SCellHeadContent {
-  display: inline-flex;
-  /* display: flex; */
+  //display: inline-flex;
+  position: relative;
+  display: flex;
   max-width: 100%;
   min-width: 0;
 }
@@ -107,7 +108,18 @@ SCellHead[sorting] {
   }
 
   &:hover SSortWrapper {
+    flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+    opacity: 1;
+  }
+
+  &:hover SSortWrapper:before {
     display: block;
+    opacity: 1;
+  }
+
+  &:hover SSortIcon {
+    display: block;
+    opacity: 1;
   }
 }
 
@@ -115,41 +127,48 @@ SCellHead[use='primary'][active] {
   background-color: var(--intergalactic-table-th-primary-cell-active, #e0e1e9);
 }
 
-SCellHead[active] SCellHeadIconAsc {
-  position: relative;
-}
-
-SCellHead[active] SCellHeadIconDesc {
-  position: relative;
-}
-
-SColumn[sortIconFloat] SSortWrapper {
-  width: 0;
-  flex-basis: 0;
-}
-
 SCellHead[active] SSortWrapper {
+  flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  opacity: 1;
+}
+
+SCellHead[active] SSortIcon {
   display: block;
-  width: 16px;
-  flex-basis: 20px;
-  margin-left: var(--intergalactic-spacing-1x, 4px);
+  position: relative;
+  opacity: 1;
 }
 
 SSortWrapper {
-  display: none;
   flex-shrink: 99999;
   position: relative;
-  flex-basis: 20px;
-  height: 0;
+  flex-basis: 0;
+  height: calc(1em * 1.25);
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 SSortWrapper:before {
+  display: none;
   content: '';
   position: absolute;
-  top: -2px;
+  top: 0;
   right: 0;
   width: 20px;
-  height: 16px;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+SSortIcon {
+  display: none;
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(0, -50%);
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 SCellHead[use='primary'] SSortWrapper:before {
@@ -166,14 +185,6 @@ SCellHead[use='secondary'] SSortWrapper:before {
     var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
     rgba(255, 255, 255, 0) 105%
   );
-}
-
-SCellHeadIconAsc,
-SCellHeadIconDesc {
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 
 SRow {

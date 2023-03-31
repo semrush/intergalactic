@@ -92,7 +92,6 @@ class Head extends Component<AsProps> {
         fixed={column.fixed}
         resizable={column.resizable}
         sortable={column.sortable}
-        sortIconFloat={column.props.justifyContent?.includes('end')}
         borderLeft={isGroup ? false : column.borderLeft}
         borderRight={isGroup ? false : column.borderRight}
         active={isGroup ? false : column.active}
