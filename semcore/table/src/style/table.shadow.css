@@ -25,12 +25,24 @@ SCell[align='center'] {
   text-align: center;
 }
 
+SCell[align='center'] SCellHeadContent {
+  justify-content: center;
+}
+
 SCell[align='left'] {
   text-align: left;
 }
 
+SCell[align='left'] SCellHeadContent {
+  justify-content: flex-start;
+}
+
 SCell[align='right'] {
   text-align: right;
+}
+
+SCell[align='right'] SCellHeadContent {
+  justify-content: flex-end;
 }
 
 SCell[valign='middle'] {
@@ -172,17 +184,17 @@ SSortIcon {
 
 SCellHead[use='primary'] SSortWrapper:before {
   background: linear-gradient(
-    270deg,
-    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
-    rgba(224, 225, 233, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+      rgba(224, 225, 233, 0) 105%
   );
 }
 
 SCellHead[use='secondary'] SSortWrapper:before {
   background: linear-gradient(
-    270deg,
-    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
-    rgba(255, 255, 255, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+      rgba(255, 255, 255, 0) 105%
   );
 }
 
