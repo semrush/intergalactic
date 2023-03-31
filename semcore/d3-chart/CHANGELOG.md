@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.7] - 2023-03-31
+
+### Fixed
+
+- Fixed display `Line.Null`.
+
 ## [2.13.6] - 2023-03-31
 
 ### Fixed
