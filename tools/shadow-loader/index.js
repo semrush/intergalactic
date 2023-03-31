@@ -77,7 +77,6 @@ async function loader(source) {
   const queue = [];
   const es6Mode = /^import /m.test(source);
   const styleImports = [];
-  let i = 0;
   const result = source
     .replace(
       // Regexp below should match on the CSS code from strings like that:
@@ -96,7 +95,6 @@ async function loader(source) {
       // We're using comment blocks to find the end of the code to extract.
       /\/\*__reshadow_css_start__\*\/([\s\S]*?)\/\*__reshadow_css_end__\*\//g,
       (match, codeBlock) => {
-        i++;
         let [, code] = codeBlock.match(/__inner_css_start__\*\/([\s\S]*?)\/\*__inner_css_end__/);
         // also remove ',' in the end of line
         code = code
@@ -111,12 +109,8 @@ async function loader(source) {
           ),
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
-        if (es6Mode) {
-          styleImports.push(requirePath);
-          return '__style__import__' + String(i);
-        }
-        // return es6Mode ? `import '${requirePath}';` : `require('${requirePath}')`;
-        return `require('${requirePath}')`;
+        styleImports.push(requirePath);
+        return `undefined`;
       },
     )
     .replace(/\/\*__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {
@@ -125,7 +119,7 @@ async function loader(source) {
         basedir: path.dirname(resourcePath),
       });
       this.dependency(depPath);
-      return es6Mode ? `import '${styleImports.shift()}';` : '';
+      return es6Mode ? `import '${styleImports.shift()}';` : `require('${styleImports.shift()}')`;
     });
   await Promise.all(queue);
   // sourcemap breaks the out code. That's why it's disabled :(
