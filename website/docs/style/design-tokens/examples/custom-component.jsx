@@ -43,7 +43,7 @@ const CustomComponent = () => {
               Release the Kraken!
             </Switch.Addon>
           </Switch>
-          <Button theme="muted" use="tertiary" ml={10}>Close</Button>
+          <Button size="l" theme="muted" use="tertiary" ml={10}>Close</Button>
         </Flex>
       </Flex>
     </ThemeProvider>
