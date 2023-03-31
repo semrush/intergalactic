@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.26] - 2023-03-31
+
+### Fxed
+
+- Fixed scrolling when paste and enter items.
+
 ## [3.3.25] - 2023-03-30
 
 ### Added
