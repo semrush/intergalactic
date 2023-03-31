@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.6] - 2023-03-31
+
+### Fixed
+
+- Fixed adding custom styles for `Radar` chart.
+
 ## [2.13.5] - 2023-03-29
 
 ### Fixed
