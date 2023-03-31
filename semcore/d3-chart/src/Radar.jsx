@@ -175,7 +175,7 @@ class RadarRoot extends Component {
 
   render() {
     const SRadar = this.Element;
-    const { Children, style, size, data, offset } = this.asProps;
+    const { Children, styles, size, data, offset } = this.asProps;
     const [width, height] = size;
 
     this.asProps.dataHintsHandler.establishDataType('indexed-groups');
@@ -194,7 +194,7 @@ class RadarRoot extends Component {
       this.categoriesKey = dataKey;
     }
 
-    return sstyled(style)(
+    return sstyled(styles)(
       <SRadar
         aria-hidden
         id={this.id}
