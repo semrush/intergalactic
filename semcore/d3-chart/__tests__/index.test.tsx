@@ -963,7 +963,7 @@ describe('d3 charts visual regression', () => {
 
   test('should render bar-horizontal with zero and null values correctly', async () => {
     const data = [
-      { category: 'Category 1', bar: 1 },
+      { category: 'Category 1', bar: -0.05 },
       { category: 'Category 2', bar: 0 },
       { category: 'Category 3', bar: 7 },
       { category: 'Category 4', bar: 0.05 },
