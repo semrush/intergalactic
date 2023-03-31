@@ -16,7 +16,7 @@ class HorizontalBarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
-    wMin: 4,
+    wMin: 2,
   };
 
   getBackgroundProps(props, index) {
@@ -49,11 +49,13 @@ class HorizontalBarRoot extends Component {
     } = this.asProps;
 
     const [xScale, yScale] = scale;
+    const absWidth = Math.abs(
+      xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
+    );
+    const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + offset[1];
     const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0] - (Object.is(d[x], -0) ? wMin : 0);
     const height = heightProps || getBandwidth(yScale);
-    const width =
-      Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0))) || wMin;
     const dSvg = getHorizontalRect({
       x: barX,
       y: barY,
@@ -138,7 +140,7 @@ function Background(props) {
 }
 
 function getHorizontalRect({ x, y, width, height, radius, position }) {
-  if (width <= radius) return '';
+  if (width < radius) radius = width;
   if (radius) {
     if (position === 'right')
       return roundedPath(x, y, width, height, radius, false, true, false, true);
