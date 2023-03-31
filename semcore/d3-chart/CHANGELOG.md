@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.8] - 2023-03-31
+
+### Fixed
+
+- Fixed calculating width of `HorizontalBar` component.
+
 ## [2.13.7] - 2023-03-31
 
 ### Fixed
