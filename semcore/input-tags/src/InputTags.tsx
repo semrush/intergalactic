@@ -81,7 +81,15 @@ class InputTags extends Component<IInputTagsProps> {
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
       if (typeof this._input.current?.scrollIntoView === 'function') {
-        setTimeout(() => this._input.current.scrollIntoView(false), 0);
+        setTimeout(() => {
+          if (typeof this._input.current?.scrollIntoView === 'function') {
+            this._input.current.scrollIntoView({
+              block: 'nearest',
+              inline: 'nearest',
+              behavior: 'smooth',
+            });
+          }
+        }, 0);
       }
     }
 
@@ -109,7 +117,15 @@ class InputTags extends Component<IInputTagsProps> {
       onAppend?.(tagsToBeAdded, event);
     }
     if (typeof this._input.current?.scrollIntoView === 'function') {
-      setTimeout(() => this._input.current.scrollIntoView(false), 0);
+      setTimeout(() => {
+        if (typeof this._input.current?.scrollIntoView === 'function') {
+          this._input.current.scrollIntoView({
+            block: 'nearest',
+            inline: 'nearest',
+            behavior: 'smooth',
+          });
+        }
+      }, 0);
     }
   };
 
