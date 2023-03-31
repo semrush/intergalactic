@@ -1,3 +1,15 @@
+## [13.20.5] - 2023-03-31
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating width of `HorizontalBar` component.
+- **Fixed** Fixed display `Line.Null`.
+- **Fixed** Fixed adding custom styles for `Radar` chart.
+
+### @semcore/input-tags
+
+- **Fxed** Fixed scrolling when paste and enter items.
+
 ## [13.20.4] - 2023-03-30
 
 ### @semcore/input-tags
