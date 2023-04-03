@@ -77,7 +77,12 @@ describe('DatePicker', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(<DatePicker visible disablePortal />);
+    const { container } = render(
+      <DatePicker visible disablePortal aria-label="date picker">
+        <DatePicker.Trigger aria-label="date picker">Open date picker</DatePicker.Trigger>
+        <DatePicker.Popper />
+      </DatePicker>,
+    );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -240,7 +245,14 @@ describe('DateRangePicker', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(<DateRangePicker visible disablePortal />);
+    const { container } = render(
+      <DateRangePicker visible disablePortal aria-label="data range picker">
+        <DateRangePicker.Trigger aria-label="date range picker">
+          Open date range picker
+        </DateRangePicker.Trigger>
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
