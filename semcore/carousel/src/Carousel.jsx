@@ -352,7 +352,6 @@ class CarouselRoot extends Component {
         tabIndex={0}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
-        role="list"
       >
         <Children />
       </SCarousel>,
