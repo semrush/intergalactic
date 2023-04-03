@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.31] - 2023-04-03
+
+### Fixed
+
+- Fixed screen reader annotation of visually untitled items.
+
 ## [2.4.30] - 2023-03-28
 
 ### Changed
