@@ -158,13 +158,14 @@ describe('Tooltip.Popper', () => {
       <Tooltip visible>
         <Tooltip.Trigger />
         <Tooltip.Popper>
-          <p data-testid="child">Test</p>
+          <p>test popper content</p>
         </Tooltip.Popper>
       </Tooltip>
     );
-    const { getByTestId } = render(component);
 
-    expect(getByTestId('child')).toBeTruthy();
+    const { getAllByText } = render(component);
+
+    expect(getAllByText('test popper content', {})).toHaveLength(2);
   });
 
   test('should support render function for children', () => {

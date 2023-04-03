@@ -217,7 +217,7 @@ describe('Select Trigger', () => {
   test.only('a11y', async () => {
     const { container } = render(
       <Select visible value={['2']} disablePortal>
-        <Select.Trigger />
+        <Select.Trigger aria-label="Select trigger" />
         <Select.Menu visible>
           <Select.Option value="1">Option 1</Select.Option>
           <Select.Option value="2">Option 2</Select.Option>
