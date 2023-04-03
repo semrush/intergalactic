@@ -5,11 +5,13 @@ import Dot from '@semcore/ui/dot';
 import { AnimatedNumber } from '@semcore/ui/counter';
 
 export default () => (
-  <Button aria-label="3 notifications">
+  <Button aria-label="Open notifications">
     <Button.Addon>
       <NotificationXS />
-      <Dot up aria-label="You have unread notifications">
+      <Dot up aria-labelledby="notifications-counter">
         <AnimatedNumber
+          id="notifications-counter"
+          aria-label="You have 18 unread notifications"
           initValue={10}
           value={18}
           duration={1000}
