@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.17.0] - 2023-04-03
+
+### Changed
+
+- Moved screen reader hint from `aria-label` attribute to `aria-live="polite"` alert block.
+- Improved keyboard navigation on exit from focus-triggered popovers.
+
 ## [4.16.12] - 2023-03-28
 
 ### Changed

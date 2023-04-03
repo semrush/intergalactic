@@ -2,3 +2,12 @@ SPopper {
   outline: none;
   z-index: var(--intergalactic-z-index-popper, 700);
 }
+
+SFocusHint {
+  display: none;
+}
+
+STrigger:focus-within SFocusHint,
+STrigger:focus SFocusHint {
+  display: inline;
+}

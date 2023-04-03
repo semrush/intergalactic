@@ -16,6 +16,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 import createPopper from './createPopper';
 
@@ -102,6 +103,7 @@ class Popper extends Component {
   // timer: ReturnType<typeof setTimeout>;
   // observer: ResizeObserver;
   triggerRef = React.createRef();
+  focusableTriggerReturnFocusToRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
 
@@ -333,6 +335,7 @@ class Popper extends Component {
 
   getTriggerProps() {
     const { visible, interaction } = this.asProps;
+    const { focusableTriggerReturnFocusToRef } = this;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -342,13 +345,15 @@ class Popper extends Component {
     return {
       ref: this.createTriggerRef,
       active: visible,
-      // interaction,
+      interaction,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
+      focusableTriggerReturnFocusToRef,
     };
   }
 
   getPopperProps() {
+    const { focusableTriggerReturnFocusToRef } = this;
     const {
       visible,
       disablePortal,
@@ -387,6 +392,7 @@ class Popper extends Component {
       duration,
       animationsDisabled,
       popper: this.popper,
+      focusableTriggerReturnFocusToRef,
     };
   }
 
@@ -422,13 +428,55 @@ class Popper extends Component {
   }
 }
 
+const getElementNestingIndexes = (element, chain = new Set([element, document.body])) => {
+  if (!element?.parentElement) return [];
+  const index = Array.from(element.parentElement.children).indexOf(element);
+  if (chain.has(element.parentElement)) return [index];
+  chain.add(element.parentElement);
+  return [...getElementNestingIndexes(element.parentElement, chain), index];
+};
+
 function Trigger(props) {
   const STrigger = Root;
-  const { Children } = props;
+  const SFocusHint = 'span';
+  const { Children, interaction, focusableTriggerReturnFocusToRef, focusHint } = props;
+
+  const [returnFocusEl, setReturnFocusEl] = React.useState(null);
+  const handleFocus = React.useCallback(
+    (event) => {
+      if (interaction !== 'focus') return;
+      if (!event.target || !event.relatedTarget) return;
+      const targetNesting = getElementNestingIndexes(event.target);
+      const sourceNesting = getElementNestingIndexes(event.relatedTarget);
+      const focusMovesBackwards = sourceNesting.every(
+        (nestingIndex, arrIndex) => nestingIndex >= targetNesting[arrIndex],
+      );
+      if (focusMovesBackwards) setReturnFocusEl('before');
+      else setReturnFocusEl('after');
+    },
+    [interaction],
+  );
+  const handleFocusReturnElBlur = React.useCallback(() => {
+    setTimeout(() => setReturnFocusEl(null), 0);
+  }, []);
+
   return (
-    <STrigger render={Box} inline role="button" aria-haspopup={true}>
-      <Children />
-    </STrigger>
+    <>
+      {returnFocusEl === 'before' && (
+        <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
+      )}
+      <STrigger render={Box} inline role="combobox" aria-haspopup={true} onFocus={handleFocus}>
+        <Children />
+        {focusHint && (
+          <SFocusHint aria-live="polite">
+            <ScreenReaderOnly>{focusHint}</ScreenReaderOnly>
+          </SFocusHint>
+        )}
+      </STrigger>
+      {returnFocusEl === 'after' && (
+        <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
+      )}
+    </>
   );
 }
 
@@ -448,6 +496,7 @@ function PopperPopper(props) {
     duration,
     animationsDisabled,
     popper,
+    focusableTriggerReturnFocusToRef,
   } = props;
   const ref = useRef(null);
 
@@ -457,7 +506,7 @@ function PopperPopper(props) {
   useFocusLock(
     ref,
     autoFocus,
-    interaction === 'click' ? triggerRef : null,
+    interaction === 'focus' ? focusableTriggerReturnFocusToRef : triggerRef,
     !visible || disableEnforceFocus,
   );
 
