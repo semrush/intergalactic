@@ -1,32 +1,28 @@
 import React from 'react';
 import FeedbackForm from '@semcore/ui/feedback-form';
 import Input from '@semcore/ui/input';
-import Checkbox from '@semcore/ui/checkbox';
 import InputNumber from '@semcore/ui/input-number';
-import Radio from '@semcore/ui/radio';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
+import { Flex, Box } from '@semcore/ui/flex-box';
 
 const validate = (values) => {
   const errors = {};
   if (!values.title) {
-    errors.title = 'Required field 😫';
+    errors.title = 'Title is required';
   }
 
   if (!values.campaign) {
-    errors.campaign = 'Required field 😫';
+    errors.campaign = 'Campaign is required';
   }
 
   if (!values.call) {
-    errors.call = 'Required field 😫';
-  }
-
-  if (!values.period) {
-    errors.period = 'Required field 😫';
+    errors.call = 'To pick to call or not is required';
   }
 
   if (!values.day || values.day <= 0) {
-    errors.day = 'Day <= 0';
+    errors.day = 'Invalid day value';
   }
 
   return errors;
@@ -69,14 +65,14 @@ const Demo = () => (
     </label>
 
     <label htmlFor="day">
-      <Text bold mb="8px" tag="p">
+      <Text bold mb={2} tag="p">
         Day
       </Text>
       <FeedbackForm.Item name="day">
         {({ input }) => {
           const { state, className, ...other } = input;
           return (
-            <InputNumber state={state} className={className} m="0 0 32px">
+            <InputNumber state={state} className={className}>
               <InputNumber.Value id="day" {...other} placeholder="Enter day" />
             </InputNumber>
           );
@@ -84,32 +80,20 @@ const Demo = () => (
       </FeedbackForm.Item>
     </label>
 
-    <FeedbackForm.Item name="period" type="checkbox">
+    <FeedbackForm.Item name="call">
       {({ input }) => (
-        <Checkbox
-          {...input}
-          invalid={input.state === 'invalid'}
-          labelProps={{ style: { margin: '0 0 16px' } }}
-        >
-          Period
-        </Checkbox>
-      )}
-    </FeedbackForm.Item>
-
-    <FeedbackForm.Item name="call" type="radio" value="Yes">
-      {({ input }) => (
-        <Radio state={input.state === 'invalid' ? 'invalid' : 'normal'} m="12px 0 8px">
-          <Radio.Value {...input} />
-          <Radio.Text>Call me 😏</Radio.Text>
-        </Radio>
-      )}
-    </FeedbackForm.Item>
-    <FeedbackForm.Item name="call" type="radio" value="No">
-      {({ input }) => (
-        <Radio state={input.state === 'invalid' ? 'invalid' : 'normal'} m="0 0 16px">
-          <Radio.Value {...input} />
-          <Radio.Text>Don't call me!</Radio.Text>
-        </Radio>
+        <RadioGroup {...input}>
+          <Flex direction="column" gap={1} mb={2}>
+            <Radio>
+              <Radio.Value value="yes" />
+              <Radio.Text>Call me 😏</Radio.Text>
+            </Radio>
+            <Radio>
+              <Radio.Value value="no" />
+              <Radio.Text>Don't call me!</Radio.Text>
+            </Radio>
+          </Flex>
+        </RadioGroup>
       )}
     </FeedbackForm.Item>
 

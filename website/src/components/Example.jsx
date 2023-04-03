@@ -22,7 +22,7 @@ class Example extends React.PureComponent {
     return (
       <div className={`example ${styles.exampleWrapper}`}>
         <ThemeProvider tokens={lightThemeTokens}>
-          <div className={styles.view} tabIndex={0}>
+          <div className={styles.view} tabIndex={0} role="group">
             {children}
           </div>
         </ThemeProvider>
