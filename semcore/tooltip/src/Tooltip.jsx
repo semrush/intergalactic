@@ -8,6 +8,7 @@ import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/tooltip.shadow.css';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
@@ -26,23 +27,29 @@ class TooltipRoot extends Component {
       flipVariationsByContent: true,
     },
   };
+  state = { popperChildren: null };
 
   getTriggerProps() {
-    const { uid, visible } = this.asProps;
+    const { uid, visible, interaction, title } = this.asProps;
+    const { popperChildren } = this.state;
 
     return {
       active: false,
       'aria-labelledby': visible ? `igc-${uid}-popper` : undefined,
+      interaction,
+      popperContent: popperChildren ?? title,
     };
   }
 
   getPopperProps() {
-    const { theme, uid, disablePortal, ignorePortalsStacking } = this.asProps;
+    const { theme, uid, disablePortal, ignorePortalsStacking, interaction } = this.asProps;
     return {
       id: `igc-${uid}-popper`,
       theme,
       disablePortal,
       ignorePortalsStacking,
+      setPopperChildren:
+        interaction === 'hover' ? (popperChildren) => this.setState({ popperChildren }) : null,
     };
   }
 
@@ -79,32 +86,44 @@ class TooltipRoot extends Component {
 }
 
 function TooltipTrigger(props) {
-  const { Children, styles } = props;
+  const { Children, styles, interaction, popperContent } = props;
   const STrigger = Root;
 
-  return sstyled(styles)(
-    <STrigger render={Popper.Trigger} active={false} role={undefined}>
-      <Children />
-    </STrigger>,
+  return (
+    <>
+      {sstyled(styles)(
+        <STrigger render={Popper.Trigger} active={false} role={undefined}>
+          <Children />
+        </STrigger>,
+      )}
+      {interaction === 'hover' && <ScreenReaderOnly>{popperContent}</ScreenReaderOnly>}
+    </>
   );
 }
 
 function TooltipPopper(props) {
-  const { Children, styles, theme } = props;
+  const { Children, styles, theme, setPopperChildren } = props;
   const STooltip = Root;
   const SArrow = Box;
 
-  return sstyled(styles)(
+  let children = null;
+  const result = sstyled(styles)(
     <STooltip
       render={Popper.Popper}
       role="tooltip"
       use:theme={resolveColor(theme)}
       aria-live={theme === 'warning' ? 'assertive' : 'polite'}
     >
-      <Children />
+      {(children = <Children />)}
       <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
     </STooltip>,
   );
+
+  React.useEffect(() => {
+    setPopperChildren?.(children);
+  }, [Children]);
+
+  return result;
 }
 
 const Tooltip = createComponent(
