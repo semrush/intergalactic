@@ -101,7 +101,9 @@ class Animation extends Component {
             delayInitialize={`${delay[0]}ms`}
             delayFinalize={`${delay[1]}ms`}
             timingFunction={timingFunction}
-            keyframesInitialize={wasInvisible || initialAnimation ? keyframes[0] : undefined}
+            keyframesInitialize={
+              wasInvisible || initialAnimation ? keyframes[0] : `totally-no-animations`
+            }
             keyframesFinalize={keyframes[1]}
           />,
         )}
