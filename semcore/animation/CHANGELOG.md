@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.1] - 2023-04-03
+
+### Fixed
+
+- Nested animation might take initial keyframe from animated parent component in some cases.
+
 ## [1.10.0] - 2023-03-27
 
 ### Added

@@ -56,7 +56,12 @@ const Demo = () => {
         <Select id="website-autosuggest" interaction="focus" onChange={setQuery} value={query}>
           <Select.Trigger tag={Input}>
             {() => (
-              <Input.Value value={query} placeholder="Type domain or URL" onChange={setQuery} />
+              <Input.Value
+                value={query}
+                role="combobox"
+                placeholder="Type domain or URL"
+                onChange={setQuery}
+              />
             )}
           </Select.Trigger>
           {suggestions.length > 0 && (

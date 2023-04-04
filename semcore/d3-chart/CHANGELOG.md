@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.13.10] - 2023-04-03
+
+## [2.13.9] - 2023-04-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.12 ~> 4.17.0]).
+
+## [2.13.8] - 2023-03-31
+
+### Fixed
+
+- Fixed calculating width of `HorizontalBar` component.
+
 ## [2.13.7] - 2023-03-31
 
 ### Fixed

@@ -77,9 +77,9 @@ describe('FeedbackForm', () => {
     const component = (
       <FeedbackForm loading>
         LOADING
-        <br/>
+        <br />
         LOADING
-        <br/>
+        <br />
         LOADING
       </FeedbackForm>
     );
@@ -89,11 +89,11 @@ describe('FeedbackForm', () => {
 
   test('Should correct work props for spinner theme', async () => {
     const component = (
-      <FeedbackForm loading background='#878dfd85' theme='invert'>
+      <FeedbackForm loading background="#878dfd85" theme="invert">
         LOADING
-        <br/>
+        <br />
         LOADING
-        <br/>
+        <br />
         LOADING
       </FeedbackForm>
     );
@@ -122,7 +122,7 @@ describe('FeedbackForm.Item', () => {
   afterEach(cleanup);
 
   const Item = React.forwardRef((props, ref) => (
-    <FeedbackForm.Item {...props}>
+    <FeedbackForm.Item interaction="click" {...props}>
       {(props) => <input ref={ref} {...propsForElement(props)} />}
     </FeedbackForm.Item>
   ));

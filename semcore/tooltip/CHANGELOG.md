@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.1] - 2023-04-03
+
+## [5.4.0] - 2023-04-03
+
+### Changed
+
+- Tooltip with `hover` `interaction` content is duplicated into screen-reader-only block.
+
 ## [5.3.24] - 2023-03-28
 
 ### Fixed

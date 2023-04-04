@@ -1,3 +1,42 @@
+## [13.21.0] - 2023-04-03
+
+### @semcore/animation
+
+- **Fixed** Nested animation might take initial keyframe from animated parent component in some cases.
+
+### @semcore/carousel
+
+- **Fixed** Fixed carousel html roles.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed `aria-checked` attribute values.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Fixed screen reader annotation of visually untitled items.
+
+### @semcore/popper
+
+- **Changed** Moved screen reader hint from `aria-label` attribute to `aria-live="polite"` alert block.
+- **Changed** Improved keyboard navigation on exit from focus-triggered popovers.
+
+### @semcore/tooltip
+
+- **Changed** Tooltip with `hover` `interaction` content is duplicated into screen-reader-only block.
+
+## [13.20.5] - 2023-03-31
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating width of `HorizontalBar` component.
+- **Fixed** Fixed display `Line.Null`.
+- **Fixed** Fixed adding custom styles for `Radar` chart.
+
+### @semcore/input-tags
+
+- **Fxed** Fixed scrolling when paste and enter items.
+
 ## [13.20.4] - 2023-03-30
 
 ### @semcore/input-tags

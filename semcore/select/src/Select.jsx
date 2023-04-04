@@ -86,7 +86,7 @@ class RootSelect extends Component {
       id: `igc-${uid}-trigger`,
       'aria-controls': `igc-${uid}-list`,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
-      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
       'aria-expanded': visible ? 'true' : 'false',
       empty: isEmptyValue(value),
@@ -235,7 +235,7 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} role="button" />
+          <Select.Trigger {...other} role="combobox" />
           <Select.Menu>
             {options.map((option) => {
               return (

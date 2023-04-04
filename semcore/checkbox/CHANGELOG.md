@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.4.10] - 2023-04-03
+
+### Fixed
+
+- Fixed `aria-checked` attribute values.
+
 ## [6.4.9] - 2023-03-28
 
 ### Changed
