@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2023-04-04
+
+### Added
+
+- Return focus to trigger when option is selected. 
+
 ## [3.5.13] - 2023-04-03
 
 ### Changed
