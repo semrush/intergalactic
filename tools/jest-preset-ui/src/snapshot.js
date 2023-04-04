@@ -93,7 +93,7 @@ async function snapshot(Component, options) {
   return body;
 }
 
-snapshot.ProxyProps = function(props) {
+snapshot.ProxyProps = function (props) {
   const { children, ...others } = props;
   return React.Children.map(children, (child, i) =>
     React.cloneElement(child, {

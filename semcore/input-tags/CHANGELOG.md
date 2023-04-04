@@ -16,7 +16,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.3.26] - 2023-03-31
 
-### Fxed
+### Fixed
 
 - Fixed scrolling when paste and enter items.
 

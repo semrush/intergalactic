@@ -18,6 +18,9 @@ class StackBarRoot extends Component {
     return { stack, r: 2 };
   };
 
+  offset = 0;
+  offsetArray = [0];
+
   getSeries() {
     const { Children, data, stack } = this.asProps;
 
@@ -41,7 +44,7 @@ class StackBarRoot extends Component {
     return stack(data);
   }
 
-  getBarProps({ y }) {
+  getBarProps({ y, hMin }) {
     const { x, r } = this.asProps;
 
     const seriesIndex = this.series.findIndex((s) => s.key === y);
@@ -51,6 +54,12 @@ class StackBarRoot extends Component {
     const rBar = series.map((s, i) =>
       this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
+
+    if (series[0][1] - series[0][0] !== 0 && series[0][1] - series[0][0] < 0.1) {
+      this.offset = -hMin;
+    }
+
+    this.offsetArray[seriesIndex + 1] = this.offset;
 
     return {
       data: series.map((s) => ({
@@ -63,6 +72,7 @@ class StackBarRoot extends Component {
       x,
       r: rBar,
       groupKey: x,
+      offset: [0, this.offsetArray[seriesIndex]],
     };
   }
 
