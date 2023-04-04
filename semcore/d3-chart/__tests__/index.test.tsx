@@ -476,13 +476,13 @@ describe('Bar chart', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('should render StackBar chart correctly with hMin', async () => {
+  test('should render StackBar chart correctly with custom hMin', async () => {
     const data = [
       { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
       { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
-      { time: 3, stack1: 3, stack2: 2, stack3: 6 },
-      { time: 4, stack1: 0, stack2: 0, stack3: 0.01 },
+      { time: 3, stack1: 3, stack2: 2, stack3: 0.02 },
+      { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
       { time: 5, stack1: 0.01, stack2: 0.02, stack3: 0.03 },
       { time: 6, stack1: 4, stack2: 1, stack3: 5 },
       { time: 7, stack1: 0, stack2: 0, stack3: 0 },
@@ -503,6 +503,40 @@ describe('Bar chart', () => {
           <StackBar.Bar y="stack1" color={colors['red-02']} hMin={3} duration={0} />
           <StackBar.Bar y="stack2" color={colors['blue-02']} hMin={3} duration={0} />
           <StackBar.Bar y="stack3" color={colors['green-02']} duration={0} hMin={3} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render StackBar chart correctly with default hMin', async () => {
+    const data = [
+      { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
+      { time: 3, stack1: 3, stack2: 2, stack3: 0.02 },
+      { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
+      { time: 5, stack1: 0.01, stack2: 0.02, stack3: 0.03 },
+      { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+      { time: 7, stack1: 0, stack2: 0, stack3: 0 },
+      { time: 8, stack1: 2, stack2: 0.03, stack3: 5 },
+      { time: 9, stack1: 5, stack2: 0, stack3: 3 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" color={colors['red-02']} duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+          <StackBar.Bar y="stack3" color={colors['green-02']} duration={0} />
         </StackBar>
       </Plot>
     );

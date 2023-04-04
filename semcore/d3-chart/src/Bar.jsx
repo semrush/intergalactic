@@ -8,6 +8,8 @@ import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
+export const MIN_HEIGHT = 2;
+
 const calcPartBarY = (y, minHeight, height) => {
   // need for the correct rendering of negative values (bar should be under Y-axis)
   if (y <= 0) {
@@ -26,7 +28,7 @@ class BarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
-    hMin: 2,
+    hMin: MIN_HEIGHT,
   };
 
   getBackgroundProps(props, index) {

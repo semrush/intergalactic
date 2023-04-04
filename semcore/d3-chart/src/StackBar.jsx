@@ -3,7 +3,7 @@ import { stack as d3Stack } from 'd3-shape';
 import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import createElement from './createElement';
-import Bar from './Bar';
+import Bar, { MIN_HEIGHT } from './Bar';
 import HorizontalBar from './HorizontalBar';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
@@ -19,7 +19,7 @@ class StackBarRoot extends Component {
   };
 
   offset = 0;
-  offsetArray = [0];
+  offsetBars = [0];
 
   getSeries() {
     const { Children, data, stack } = this.asProps;
@@ -55,11 +55,13 @@ class StackBarRoot extends Component {
       this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
 
-    if (series[0][1] - series[0][0] !== 0 && series[0][1] - series[0][0] < 0.1) {
-      this.offset = -hMin;
-    }
+    for (let i = 0; i < series.length; i++) {
+      if (series[i][1] - series[i][0] !== 0 && series[i][1] - series[i][0] < 0.1) {
+        this.offset = hMin ? -hMin : -MIN_HEIGHT;
+      }
 
-    this.offsetArray[seriesIndex + 1] = this.offset;
+      this.offsetBars[seriesIndex + 1] = this.offset;
+    }
 
     return {
       data: series.map((s) => ({
@@ -72,7 +74,7 @@ class StackBarRoot extends Component {
       x,
       r: rBar,
       groupKey: x,
-      offset: [0, this.offsetArray[seriesIndex]],
+      offset: [0, this.offsetBars[seriesIndex]],
     };
   }
 
