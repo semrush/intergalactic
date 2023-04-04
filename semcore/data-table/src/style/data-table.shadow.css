@@ -161,6 +161,7 @@ SSortWrapper {
   position: relative;
   flex-basis: 0;
   height: 100%;
+  min-height: 16px;
   opacity: 0;
   transition: all 0.3s ease;
 }
@@ -181,9 +182,8 @@ SSortIcon {
   display: none;
   fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
   position: absolute;
-  top: calc(1em * 1.25);
+  top: calc(1em * 1.25 - 16px);
   right: 0;
-  transform: translate(0, -50%);
   margin-left: var(--intergalactic-spacing-1x, 4px);
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -191,17 +191,17 @@ SSortIcon {
 
 SColumn[use='primary'] SSortWrapper:before {
   background: linear-gradient(
-    270deg,
-    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
-    rgba(224, 225, 233, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+      rgba(224, 225, 233, 0) 105%
   );
 }
 
 SColumn[use='secondary'] SSortWrapper:before {
   background: linear-gradient(
-    270deg,
-    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
-    rgba(255, 255, 255, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+      rgba(255, 255, 255, 0) 105%
   );
 }
 
