@@ -56,6 +56,8 @@ class RootSelect extends Component {
 
   firstSelectedOptionRef = React.createRef();
 
+  triggerRef = React.createRef();
+
   isScrolledToFirstOption = false;
 
   uncontrolledProps() {
@@ -102,6 +104,7 @@ class RootSelect extends Component {
       onClear: this.handlerClear,
       children: this.renderChildrenTrigger(value, options),
       getI18nText,
+      ref: this.triggerRef,
     };
   }
 
@@ -191,10 +194,10 @@ class RootSelect extends Component {
     }
     return Array.isArray(value)
       ? value.reduce((acc, value) => {
-          if (acc.length) acc.push(', ');
-          acc.push(value);
-          return acc;
-        }, [])
+        if (acc.length) acc.push(', ');
+        acc.push(value);
+        return acc;
+      }, [])
       : value;
   }
 
@@ -209,7 +212,10 @@ class RootSelect extends Component {
       }
     }
     this.handlers.value(newValue, e);
-    if (!multiselect) this.handlers.visible(false);
+    if (!multiselect) {
+      this.triggerRef.current?.focus();
+      this.handlers.visible(false);
+    }
   };
 
   handlerClear = (e) => {
@@ -228,14 +234,14 @@ class RootSelect extends Component {
 
     logger.warn(
       options && advanceMode,
-      "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
+      'Don\'t use at the same time \'options\' property and \'<Select.Trigger/>/<Select.Popper/>\'',
       other['data-ui-name'] || Select.displayName,
     );
 
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} role="combobox" />
+          <Select.Trigger {...other} role='combobox' />
           <Select.Menu>
             {options.map((option) => {
               return (
@@ -289,7 +295,7 @@ function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger, 
         Tag.Addon || ButtonTrigger.Addon,
         true,
       )}
-      {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
+      {name && <input type='hidden' defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>
   );
 }
@@ -310,14 +316,14 @@ function Checkbox(props) {
       {...componentProps}
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
-      role="checkbox"
+      role='checkbox'
       tabIndex={0}
       aria-checked={selected}
     />
   );
 }
 
-const InputSearchWrapper = function () {
+const InputSearchWrapper = function() {
   return <Root render={InputSearch} />;
 };
 
