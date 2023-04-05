@@ -87,7 +87,7 @@ export default () => {
             );
           })}
         </Flex>
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart comparing data by category">
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks(4)} />
             <YAxis.Grid ticks={yScale.ticks(4)} />

@@ -24,3 +24,7 @@ fileSource: d3-chart
 @## Custom line
 
 @example area-custom-line
+
+@## Skeleton
+
+@example skeleton

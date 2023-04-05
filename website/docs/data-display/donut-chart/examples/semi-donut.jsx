@@ -5,7 +5,7 @@ import { Flex } from '@semcore/ui/flex-box';
 
 export default () => {
   return (
-    <Plot width={300} height={150} data={data}>
+    <Plot width={300} height={150} data={data} label="chart of the number of prince charles engagements for the year by type">
       <Donut halfsize innerRadius={100}>
         <Donut.Pie dataKey="a" name="Pie 1" />
         <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />

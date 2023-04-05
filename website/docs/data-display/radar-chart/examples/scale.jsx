@@ -12,7 +12,7 @@ export default () => {
 
   return (
     <Flex>
-      <Plot data={data} width={width} height={height}>
+      <Plot data={data} width={width} height={height} label="chart comparing cat breeds">
         <Radar scale={scale_1}>
           <Radar.Axis dataKey='categories'>
             <Radar.Axis.Ticks />

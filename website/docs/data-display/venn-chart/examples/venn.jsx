@@ -4,7 +4,7 @@ import { Text } from '@semcore/ui/typography';
 
 export default () => {
   return (
-    <Plot height={300} width={400} data={data}>
+    <Plot height={300} width={400} data={data} label="basic example of using venn chart">
       <Venn>
         <Venn.Circle dataKey="G" name="Good" />
         <Venn.Circle dataKey="F" name="Fast" color={colors['blue-03']} />
