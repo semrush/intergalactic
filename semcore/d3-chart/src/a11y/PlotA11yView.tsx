@@ -149,7 +149,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
 
   return sstyled(styles)(
     <SPlotA11yView render={Box} tabIndex={0} aria-label={texts.label}>
-      <a role="link" tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
+      <a aria-hidden onClick={handleSkip}>
         {texts.close}
       </a>
       <a role="link" tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
