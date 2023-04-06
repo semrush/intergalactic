@@ -2243,6 +2243,7 @@
     "components": [
       "breadcrumbs",
       "d3-chart",
+      "data-table",
       "format-text",
       "fullscreen-modal",
       "notice-bubble",
