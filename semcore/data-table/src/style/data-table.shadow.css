@@ -32,6 +32,7 @@ SColumn {
   align-items: flex-start;
   flex-grow: 1;
   font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   position: relative;
@@ -88,7 +89,18 @@ SColumn[sortable] {
   }
 
   &:hover SSortWrapper {
+    flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+    opacity: 1;
+  }
+
+  &:hover SSortWrapper:before {
     display: block;
+    opacity: 1;
+  }
+
+  &:hover SSortIcon {
+    display: block;
+    opacity: 1;
   }
 }
 
@@ -97,20 +109,15 @@ SColumn[use='primary'][active] {
   width: 100%;
 }
 
-SColumn[active] SSortIcon {
-  position: relative;
-}
-
-SColumn[sortIconFloat] SSortWrapper {
-  width: 0;
-  flex-basis: 0;
-}
-
 SColumn[active] SSortWrapper {
+  flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  opacity: 1;
+}
+
+SColumn[active] SSortIcon {
   display: block;
-  width: 16px;
-  flex-basis: 20px;
-  margin-left: var(--intergalactic-spacing-1x, 4px);
+  position: relative;
+  opacity: 1;
 }
 
 SColumn[resizable] {
@@ -149,43 +156,52 @@ SCell[borderRight] {
   border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
-SSortIcon {
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
-  position: absolute;
-  top: -2px;
-  right: 0;
-}
-
 SSortWrapper {
-  display: none;
   flex-shrink: 99999;
   position: relative;
-  flex-basis: 20px;
-  height: 0;
+  flex-basis: 0;
+  height: 100%;
+  min-height: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 SSortWrapper:before {
+  display: none;
   content: '';
   position: absolute;
-  top: -2px;
+  top: 0;
   right: 0;
   width: 20px;
-  height: 16px;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+SSortIcon {
+  display: none;
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  position: absolute;
+  top: calc(1em * 1.25 - 16px);
+  right: 0;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 SColumn[use='primary'] SSortWrapper:before {
   background: linear-gradient(
-    270deg,
-    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
-    rgba(224, 225, 233, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+      rgba(224, 225, 233, 0) 105%
   );
 }
 
 SColumn[use='secondary'] SSortWrapper:before {
   background: linear-gradient(
-    270deg,
-    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
-    rgba(255, 255, 255, 0) 105%
+      270deg,
+      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+      rgba(255, 255, 255, 0) 105%
   );
 }
 

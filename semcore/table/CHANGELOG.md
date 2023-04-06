@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2023-03-31
+
+### Changed
+
+- Changed the presentation of the sort icon. Now it always runs into the text.
+
 ## [3.3.32] - 2023-03-28
 
 ### Changed
@@ -16,25 +22,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.3.21] - 2023-03-01
 
-## [3.3.20] - 2023-02-24
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
 
 ## [3.3.19] - 2023-02-22
 
-## [3.3.18] - 2023-02-21
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/scroll-area` [4.2.9 ~> 4.2.10]).
 
 ## [3.3.15] - 2023-02-13
-
-## [3.3.14] - 2023-02-09
-
-## [3.3.13] - 2023-02-06
 
 ### Fixed
 
@@ -98,8 +96,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Design tokens based theming.
 
 ## [3.1.6] - 2022-11-08
-
-## [3.1.5] - 2022-10-28
 
 ### Changed
 
