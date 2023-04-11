@@ -79,7 +79,6 @@ class RootButton extends Component {
               disabled={disabled}
               neighborLocation={neighborLocation}
               use:theme={useTheme}
-              role="button"
               ref={this.containerRef}
             >
               <SInner tag="span" loading={loading}>
