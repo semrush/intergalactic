@@ -81,7 +81,7 @@ class TabLineRoot extends Component {
     this.handlers.value(value, e);
   };
 
-  getItemProps(props) {
+  getItemProps(props, index) {
     const { value, size } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -89,7 +89,7 @@ class TabLineRoot extends Component {
       selected: isSelected,
       onClick: this.bindHandlerClick(props.value),
       tabIndex: isSelected ? 0 : -1,
-      'aria-posinset': value,
+      'aria-posinset': index + 1,
       'aria-selected': isSelected,
       ref: (node) => (this.itemRefs[props.value] = node),
     };
