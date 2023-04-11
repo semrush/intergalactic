@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.29] - 2023-04-11
+
+### Fixed
+
+- Non-interactive tags are not focusable by keyboard now.
+
 ## [4.4.28] - 2023-03-28
 
 ### Changed
@@ -9,8 +15,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/icon` [3.14.5 ~> 3.14.6], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
 
 ## [4.4.18] - 2023-03-01
-
-## [4.4.17] - 2023-02-24
 
 ### Changed
 
