@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.10] - 2023-04-11
+
+### Fixed
+
+- Fixed `aria-posinset` attribute value generation.
+
 ## [3.4.9] - 2023-03-28
 
 ### Changed
