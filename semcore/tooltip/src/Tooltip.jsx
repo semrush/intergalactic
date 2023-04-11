@@ -36,6 +36,7 @@ class TooltipRoot extends Component {
     return {
       active: false,
       'aria-labelledby': visible ? `igc-${uid}-popper` : undefined,
+      'aria-haspopup': interaction !== 'hover' ? 'true' : 'false',
       interaction,
       popperContent: popperChildren ?? title,
     };
