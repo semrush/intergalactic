@@ -41,14 +41,14 @@ SPageInput {
   margin-left: var(--intergalactic-spacing-1x, 4px);
 }
 
-SPageInputValue:focus ~ SPageInputAddon {
-  visibility: visible;
+SPageInput:focus-within SPageInputAddon {
+  opacity: 1;
   clip: initial;
   position: static;
 }
 
 SPageInputAddon {
-  visibility: hidden;
+  opacity: 0;
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute;
 }
