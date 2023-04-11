@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.15] - 2023-04-11
+
+### Changed
+
+- Added React 18 to the peer dependencies.
+
 ## [1.2.14] - 2023-04-03
 
 ### Changed
