@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.29] - 2023-04-11
+
+### Fixed
+
+- Fixed "confirm" icon keyboard navigation.
+
 ## [3.5.28] - 2023-03-28
 
 ### Added
