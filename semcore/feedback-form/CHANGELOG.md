@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.9] - 2023-04-11
+
+### Changed
+
+- Updated `final-form` version to meet `react-final-form` peer dependency.
+
 ## [5.4.8] - 2023-04-11
 
 ### Changed
