@@ -1,3 +1,21 @@
+## [13.22.0] - 2023-04-11
+
+### @semcore/data-table
+
+- **Changed** Changed the presentation of the sort icon. Now it always runs into the text.
+
+### @semcore/ellipsis
+
+- **Changed** Added React 18 to the peer dependencies.
+
+### @semcore/feedback-form
+
+- **Changed** Patched `react-final-form` to the latest version.
+
+### @semcore/select
+
+- **Added** Return focus to trigger when option is selected.
+
 ## [13.21.0] - 2023-04-03
 
 ### @semcore/animation
