@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.27] - 2023-04-11
+
+### Fixed
+
+- Non-interactive container are not focusable by keyboard now.
+
 ## [3.3.26] - 2023-03-31
 
 ### Fxed
