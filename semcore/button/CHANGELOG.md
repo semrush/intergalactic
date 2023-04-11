@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.19] - 2023-04-11
+
+### Fixed
+
+- Removed `role=button` from native button.
+
 ## [4.3.18] - 2023-03-28
 
 ### Changed
