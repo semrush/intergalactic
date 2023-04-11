@@ -486,8 +486,8 @@ describe('Bar chart', () => {
       { time: 5, stack1: 0.01, stack2: 0.02, stack3: 0.03 },
       { time: 6, stack1: 4, stack2: 1, stack3: 5 },
       { time: 7, stack1: 0, stack2: 0, stack3: 0 },
-      { time: 8, stack1: 2, stack2: 0.03, stack3: 5 },
-      { time: 9, stack1: 5, stack2: 0, stack3: 3 },
+      { time: 8, stack1: 0.03, stack2: 0.03, stack3: 0.03 },
+      { time: 9, stack1: 5, stack2: 0.01, stack3: 3 },
     ];
 
     const component = (
@@ -520,8 +520,8 @@ describe('Bar chart', () => {
       { time: 5, stack1: 0.01, stack2: 0.02, stack3: 0.03 },
       { time: 6, stack1: 4, stack2: 1, stack3: 5 },
       { time: 7, stack1: 0, stack2: 0, stack3: 0 },
-      { time: 8, stack1: 2, stack2: 0.03, stack3: 5 },
-      { time: 9, stack1: 5, stack2: 0, stack3: 3 },
+      { time: 8, stack1: 0.03, stack2: 0.03, stack3: 0.03 },
+      { time: 9, stack1: 5, stack2: 0.01, stack3: 3 },
     ];
 
     const component = (

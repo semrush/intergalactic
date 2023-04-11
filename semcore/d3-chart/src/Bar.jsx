@@ -77,6 +77,15 @@ class BarRoot extends Component {
       transparent,
     } = this.asProps;
 
+    const calcOffset = (isPartBarY) => {
+      if (typeof offset === 'function') {
+        return isPartBarY ? offset(i)[1] : offset(i)[0];
+      }
+      if (isPartBarY) {
+        return offset[1];
+      }
+      return offset[0];
+    };
     const [xScale, yScale] = scale;
     const absHeight = Math.abs(
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
@@ -84,9 +93,9 @@ class BarRoot extends Component {
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
-      offset[1] -
+      calcOffset(true) -
       calcPartBarY(d[y], hMin, height);
-    const barX = xScale(d[x]) + offset[0];
+    const barX = xScale(d[x]) + calcOffset(false);
     const handleClick = (event) => onClick?.(d, event);
     const width = widthProps || getBandwidth(xScale);
     const dSvg = getRect({
