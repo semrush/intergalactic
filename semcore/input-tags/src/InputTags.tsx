@@ -154,13 +154,7 @@ class InputTags extends Component<IInputTagsProps> {
     const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SInputTags
-        render={Input}
-        tag={ScrollArea}
-        onMouseDown={this.setFocusInput}
-        role="list"
-        tabIndex={0}
-      >
+      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput} role="list">
         <Children />
       </SInputTags>,
     );
