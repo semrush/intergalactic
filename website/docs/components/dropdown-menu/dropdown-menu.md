@@ -68,7 +68,7 @@ As the user enters a value into the input, only the items that match the input s
 
 |                     | Appearance                                                                           | Tokens                                |
 | ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------- |
-| Default             | ![](static/item-default.png)                           | `--dropdown-menu-item)`               |
+| Default             | ![](static/item-default.png)                           | `--dropdown-menu-item`               |
 | Hover               | ![](static/item-hover.png)                    | `--dropdown-menu-item-hover`          |
 | Selected            | ![](static/item-active.png)                | `--dropdown-menu-item-selected`       |
 | Selected with hover | ![](static/item-active-hover.png) | `--dropdown-menu-item-selected-hover` |
