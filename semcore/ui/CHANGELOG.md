@@ -1,3 +1,9 @@
+## [13.22.1] - 2023-04-11
+
+### @semcore/feedback-form
+
+- **Changed** Patched `final-form` to meet `react-final-form` peer dependency.
+
 ## [13.22.0] - 2023-04-11
 
 ### @semcore/data-table
