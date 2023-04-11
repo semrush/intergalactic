@@ -1,3 +1,33 @@
+## [13.22.2] - 2023-04-11
+
+### @semcore/button
+
+- **Fixed** Removed `role=button` from native button.
+
+### @semcore/input-tags
+
+- **Fixed** Non-interactive container are not focusable by keyboard now.
+
+### @semcore/pagination
+
+- **Fixed** Fixed "confirm" icon keyboard navigation.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed `aria-posinset` attribute value generation.
+
+### @semcore/tab-panel
+
+- **Fixed** Fixed `aria-posinset` attribute value generation.
+
+### @semcore/tag
+
+- **Fixed** Non-interactive tags are not focusable by keyboard now.
+
+### @semcore/tooltip
+
+- **Fixed** Turn `aria-haspopup` to `false` for Tooltip with `hover=interaction`.
+
 ## [13.22.1] - 2023-04-11
 
 ### @semcore/feedback-form
