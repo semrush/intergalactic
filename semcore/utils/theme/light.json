@@ -950,14 +950,6 @@
           "description": "Active (selected) state of the inverted version of the tertiary control."
         }
       },
-      "lift-me-up": {
-        "value": "{gray.100}",
-        "type": "color"
-      },
-      "lift-me-up-hover-active": {
-        "value": "{gray.200}",
-        "type": "color"
-      }
     },
     "icon": {
       "primary": {
@@ -1242,14 +1234,32 @@
           "description": "Background of the default cell in the Table."
         },
         "cell-hover": {
-          "value": "{gray.100}, 0.5",
+          "value": "{gray.100}",
           "type": "color",
-          "description": "Background of the default hovered cell in the Table."
+          "description": "Background of the default hovered cell in the Table.",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": "0.5",
+                "space": "hsl"
+              }
+            }
+          }
         },
         "cell-active": {
-          "value": "{gray.100}, 0.8",
+          "value": "{gray.100}",
           "type": "color",
-          "description": "Background of the default active cell in the Table."
+          "description": "Background of the default active cell in the Table.",
+          "$extensions": {
+            "studio.tokens": {
+              "modify": {
+                "type": "lighten",
+                "value": "0.2",
+                "space": "hsl"
+              }
+            }
+          }
         },
         "cell-unread": {
           "value": "{gray.50}",
