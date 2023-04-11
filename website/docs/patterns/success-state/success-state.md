@@ -16,7 +16,7 @@ When designing a success message, keep the following principles in mind:
 * The image must be in the SVG format and have a height and width of `80px`.
 * The title text must have a font size of `20px` (`--fs-400`, `--lh-400;`), the `--text-primary` color, and the bottom margin of `8px`.
 * The message text must have the font size of `14px` (`--fs-200`, `--lh-200`) and the `--text-primary` color.
-* (**Optional**) Buttons with calls to action must have a size of L.
+* CTA buttons are optional, and they should have L size.
 
 ![success state appearance](static/success-window.png)
 
@@ -36,20 +36,19 @@ Here are some general recommendations that can help you:
 * Ensure that the success message or feedback is clear, so that users can easily understand what they need to do next.
 * Users should be able to close the success modal window or notice at any time—for example, with a close button or by pressing the `Escape` key.
 
-For example, if a [Feedback form](/components/feedback/) has been sent successfully, show the success message in the same place next to the trigger.
+For example, if a [Feedback form](/components/feedback/) has been sent successfully, show the success message in the same place next to the form's trigger.
 
 ![example success response](static/success-response.png)
 
 A user can close a success state by clicking on:
 
-* **OK, got it** button
+* "OK, got it" button
 * Close icon
 * Outside the modal window
 
-You can also close the success state automatically after 3—5 seconds,
-but be sure to test that it doesn't make the user experience worse.
+You can also close the success state automatically after 3—5 seconds, but be sure to test that it doesn't make the user experience worse.
 
-## Additional methods
+## Other methods
 
 You can use [NoticeBubble](/components/notice-bubble/) to notify a user about successfully completing a small part of a scenario.
 
