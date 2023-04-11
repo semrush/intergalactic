@@ -14,7 +14,7 @@ title: UX patterns
 @page loading-states
 @page project-create
 @page project-select
-
+@page success-state
 <!-- @page sso-page -->
 
 @page summary
