@@ -7,7 +7,7 @@ import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
 const Demo = () => {
   const [value, updateValue] = useState(0);
   return (
-    <TabPanel onChange={updateValue} value={value}>
+    <TabPanel onChange={updateValue} value={value} aria-label="Page">
       <TabPanel.Item value={0}>Overview</TabPanel.Item>
       <TabPanel.Item value={1}>Issues</TabPanel.Item>
       <TabPanel.Item value={2}>

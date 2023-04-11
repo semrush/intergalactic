@@ -5,7 +5,7 @@ export default () => {
   const [value, onChange] = useState(1);
   return (
     <>
-      <TabLine value={value} onChange={onChange}>
+      <TabLine value={value} onChange={onChange} aria-label="Page">
         <TabLine.Item value={1} aria-controls="tab-panel-1">
           Overview
         </TabLine.Item>
