@@ -950,6 +950,15 @@
           "description": "Active (selected) state of the inverted version of the tertiary control."
         }
       },
+       "lift-me-up": {
+        "value": "{gray.100}",
+        "type": "color"
+      },
+      "lift-me-up-hover-active": {
+        "value": "{gray.200}",
+        "type": "color"
+      }
+    },
     },
     "icon": {
       "primary": {
