@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.31] - 2023-04-12
+
+### Fixed
+
+- Fixed ability to control from keyboard for `Close` and `Back`.
+
 ## [2.2.30] - 2023-03-28
 
 ### Changed

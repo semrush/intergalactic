@@ -8,6 +8,7 @@ import { Text } from '@semcore/typography';
 import fire from '@semcore/utils/lib/fire';
 
 import style from './style/fullscreen-modal.shadow.css';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 class FullscreenModalRoot extends Component {
   static displayName = 'FullscreenModal';
@@ -82,7 +83,7 @@ function Footer(props) {
 
 function Close(props) {
   const SClose = Root;
-  return sstyled(props.styles)(<SClose render={CloseIcon} />);
+  return sstyled(props.styles)(<SClose render={CloseIcon} interactive />);
 }
 
 function Title(props) {
@@ -101,7 +102,7 @@ function Back(props) {
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={Box}>
+    <SBack render={Box} tag="button">
       <ArrowLeft />
       <SBackText>
         <Children />
@@ -109,6 +110,7 @@ function Back(props) {
     </SBack>,
   );
 }
+Back.enhance = [keyboardFocusEnhance()];
 
 const FullscreenModal = createComponent(
   FullscreenModalRoot,

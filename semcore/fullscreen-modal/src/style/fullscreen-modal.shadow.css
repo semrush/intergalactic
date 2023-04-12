@@ -39,10 +39,18 @@ SBack {
   color: var(--intergalactic-icon-primary-neutral, #6c6e79);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
+  background: none;
+  padding: 0;
+  border: none;
+  outline: none;
 
   &:hover {
     color: var(--intergalactic-icon-primary-neutral-hover-active, #484a54);
   }
+}
+
+SBack[keyboardFocused] {
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SBackText {
@@ -53,6 +61,7 @@ SBackText {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 STitle,
 SDescription {
   white-space: nowrap;
@@ -93,7 +102,7 @@ SHeader {
   padding-left: var(--intergalactic-spacing-8x, 32px);
   padding-bottom: var(--intergalactic-spacing-2x, 8px);
   padding-right: calc(
-    var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px)
+      var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px)
   );
   padding-top: var(--intergalactic-spacing-10x, 40px);
   min-height: 76px;
