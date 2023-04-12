@@ -76,7 +76,7 @@ class BarRoot extends Component {
       onClick,
       transparent,
     } = this.asProps;
-    const offset = typeof offsetProps === 'function' ? offsetProps(i): offsetProps
+    const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
     const absHeight = Math.abs(
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),

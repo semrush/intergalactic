@@ -9,34 +9,6 @@ import HorizontalBar from './HorizontalBar';
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const XY0 = Symbol('XY0');
 
-function calculateHeightBars(inputArray) {
-  const outputArray = [];
-  for (let i = 0; i < inputArray[0].length; i++) {
-    const newItem = [];
-    for (let j = 0; j < inputArray.length; j++) {
-      newItem.push(inputArray[j][i][1] - inputArray[j][i][0]);
-    }
-    outputArray.push(newItem);
-  }
-  return outputArray;
-}
-
-function calculateHeightMinBars(inputArray, height, hMin) {
-  const outputArray = [];
-  for (let i = 0; i < inputArray.length; i++) {
-    const newItem = [0];
-    let offset = 0;
-    for (let j = 0; j < inputArray[0].length; j++) {
-      if (inputArray[i][j] !== 0 && inputArray[i][j] < height) {
-        offset += -hMin;
-      }
-      newItem[j + 1] = offset;
-    }
-    outputArray.push(newItem);
-  }
-  return outputArray;
-}
-
 class StackBarRoot extends Component {
   static displayName = 'StackBar';
 
@@ -46,8 +18,6 @@ class StackBarRoot extends Component {
     return { stack, r: 2 };
   };
 
-  hMinBars = [];
-  hBars = [];
   offsetBars = [];
 
   getSeries() {
@@ -85,9 +55,6 @@ class StackBarRoot extends Component {
       this.series.slice(seriesIndex + 1).some((bar) => bar[i][0] !== bar[i][1]) ? 0 : r,
     );
 
-    this.hBars = calculateHeightBars(this.series);
-    this.hMinBars = calculateHeightMinBars(this.hBars, 0.1, hMin);
-
     this.offsetBars[seriesIndex] = this.offsetBars[seriesIndex] ?? [];
     const data = series.map((s) => ({
       ...s.data,
@@ -96,12 +63,13 @@ class StackBarRoot extends Component {
     }));
 
     const calcOffset = (i) => {
-      const offset = this.offsetBars.reduce((offset, offsetBar) => offset - (offsetBar[i] ?? 0), 0)
+      const offset = this.offsetBars.reduce((offset, offsetBar) => offset - (offsetBar[i] ?? 0), 0);
       const d = data[i];
       const absHeight = Math.abs(
         yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[XY0] ?? 0)),
       );
-      this.offsetBars[seriesIndex][i] = Number(d[y] - (d[XY0] ?? 0)) === 0 ? 0 : absHeight >= hMin ? 0 : hMin;
+      this.offsetBars[seriesIndex][i] =
+        Number(d[y] - (d[XY0] ?? 0)) === 0 ? 0 : absHeight >= hMin ? 0 : hMin;
       return [0, offset];
     };
 
@@ -148,7 +116,7 @@ class StackBarRoot extends Component {
 
     this.offsetBars = [];
 
-    return <Element aria-hidden render='g' series={this.series} />;
+    return <Element aria-hidden render="g" series={this.series} />;
   }
 }
 
