@@ -16,7 +16,7 @@ Here we describe all the elements and controls that are important when working w
 >
 > **Each item is a separate process that requires attention.**.
 >
-> _[Article by M. Grekov about UX tables that are used (in russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)_
+> _[Article by M. Grekov about UX tables that are used (in Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)_
 
 @## Accordion
 
@@ -210,10 +210,10 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 ### The actions and rules of use
 
-- `Deselect all` deselects all selected rows (on any page).
-- `Select all` is not an obvious action, so we recommend avoiding this and using the following instead.
-- `Select all on page (N)` selects all rows on the current page of the table.
-- `Select all on table (N)` selects all rows in the table.
+- "Deselect all" deselects all selected rows (on any page).
+- "Select all" is not an obvious action, so we recommend avoiding this and using the following instead.
+- "Select all on page (N)" selects all rows on the current page of the table.
+- "Select all on table (N)" selects all rows in the table.
 
 Use no more than 3-5 actions, which are the most popular among actions on the table rows.
 
