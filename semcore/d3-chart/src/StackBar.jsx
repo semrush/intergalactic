@@ -48,6 +48,7 @@ class StackBarRoot extends Component {
 
   hMinBars = [];
   hBars = [];
+  offsetBars = [];
 
   getSeries() {
     const { Children, data, stack } = this.asProps;
@@ -73,13 +74,8 @@ class StackBarRoot extends Component {
   }
 
   getBarProps({ y, hMin = MIN_HEIGHT }) {
-    const { x, r } = this.asProps;
-    // const [yScale] = scale;
-
-    // const absHeight = Math.abs(
-    //   yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
-    // );
-    // const height = Math.max(absHeight, hMin);
+    const { x, r, scale } = this.asProps;
+    const [, yScale] = scale;
 
     const seriesIndex = this.series.findIndex((s) => s.key === y);
     // or [] if hide bar
@@ -92,16 +88,25 @@ class StackBarRoot extends Component {
     this.hBars = calculateHeightBars(this.series);
     this.hMinBars = calculateHeightMinBars(this.hBars, 0.1, hMin);
 
+    this.offsetBars[seriesIndex] = this.offsetBars[seriesIndex] ?? [];
+    const data = series.map((s) => ({
+      ...s.data,
+      [y]: s[1],
+      [XY0]: s[0],
+    }));
+
     const calcOffset = (i) => {
-      return [0, this.hMinBars[i][seriesIndex]];
+      const offset = this.offsetBars.reduce((offset, offsetBar) => offset - (offsetBar[i] ?? 0), 0)
+      const d = data[i];
+      const absHeight = Math.abs(
+        yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[XY0] ?? 0)),
+      );
+      this.offsetBars[seriesIndex][i] = Number(d[y] - (d[XY0] ?? 0)) === 0 ? 0 : absHeight >= hMin ? 0 : hMin;
+      return [0, offset];
     };
 
     return {
-      data: series.map((s) => ({
-        ...s.data,
-        [y]: s[1],
-        [XY0]: s[0],
-      })),
+      data,
       hMin,
       y0: XY0,
       x,
@@ -141,7 +146,9 @@ class StackBarRoot extends Component {
 
     this.asProps.dataHintsHandler.establishDataType('grouped-values');
 
-    return <Element aria-hidden render="g" series={this.series} />;
+    this.offsetBars = [];
+
+    return <Element aria-hidden render='g' series={this.series} />;
   }
 }
 

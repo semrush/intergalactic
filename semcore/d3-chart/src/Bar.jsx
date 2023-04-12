@@ -66,7 +66,7 @@ class BarRoot extends Component {
       y0,
       scale,
       hide,
-      offset,
+      offset: offsetProps,
       duration,
       uid,
       r,
@@ -76,28 +76,19 @@ class BarRoot extends Component {
       onClick,
       transparent,
     } = this.asProps;
-
-    const calcOffset = (isPartBarY) => {
-      if (typeof offset === 'function') {
-        return isPartBarY ? offset(i)[1] : offset(i)[0];
-      }
-      if (isPartBarY) {
-        return offset[1];
-      }
-      return offset[0];
-    };
+    const offset = typeof offsetProps === 'function' ? offsetProps(i): offsetProps
     const [xScale, yScale] = scale;
     const absHeight = Math.abs(
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
+    const width = widthProps || getBandwidth(xScale);
+    const barX = xScale(d[x]) + offset[0];
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
-      calcOffset(true) -
+      offset[1] -
       calcPartBarY(d[y], hMin, height);
-    const barX = xScale(d[x]) + calcOffset(false);
     const handleClick = (event) => onClick?.(d, event);
-    const width = widthProps || getBandwidth(xScale);
     const dSvg = getRect({
       x: barX,
       y: barY,
