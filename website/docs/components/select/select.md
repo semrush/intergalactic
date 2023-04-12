@@ -62,7 +62,7 @@ The select trigger can contain an icon, flag or other addon before the text.
 
 [Dot](/components/dot/) should be placed in the upper right corner of the trigger.
 
-|        | Button                             | Link as Button                              | Link with the color of text                  |
+|        | Button                             | Link as Button                              | Link (as Button) with the color of text                  |
 | ------ | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
 | Flag   | ![flag](static/flag-primary.png)   | ![flag-secondary](static/inline-flag.png)   | ![flag-tertiary](static/tertiary-flag.png)   |
 | Icon   | ![icon](static/icon-primary.png)   | ![icon-secondary](static/inline-icon.png)   | ![icon-tertiary](static/tertiary-icon.png)   |
@@ -106,8 +106,8 @@ In long lists (for example, in the list of countries), the values selected by th
 | If nothing is selected, write `Select` + the required value.                                                                         | ![multiselect trigger](static/multiselect-trigger-1.png) |
 | If everything is selected, write `All`.                                                                                              | ![multiselect trigger](static/multiselect-trigger-2.png) |
 | If user selected 1 or 2 values, show them in the trigger listing them with commas. If they do not match, add the text in `ellipsis`. | ![multiselect trigger](static/multiselect-trigger-3.png) |
-| **The select has a label**. If more than 2 values are selected, add them to the Label: `N selected` construction.                    | ![multiselect trigger](static/multiselect-trigger-5.png) |
-| **The select does not have a label**. If more than 2 values are selected, add them to the `N selected` construction.                 | ![multiselect trigger](static/multiselect-trigger-4.png) |
+| **The select has a label**. If more than 2 values are selected, add them to the Label: `N selected` construction.                    | ![multiselect trigger](static/multiselect-trigger-4.png) |
+| **The select does not have a label**. If more than 2 values are selected, add them to the `N selected` construction.                 | ![multiselect trigger](static/multiselect-trigger-5.png) |
 
 ### Search
 
