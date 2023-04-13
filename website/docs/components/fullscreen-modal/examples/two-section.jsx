@@ -16,13 +16,13 @@ const Demo = () => {
   return (
     <>
       <Button use="primary" onClick={changeModalVisibility}>
-        Открыть окно
+        Open fullscreen window
       </Button>
       <FullscreenModal visible={visible} onClose={changeModalVisibility}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header>
-          <FullscreenModal.Title>Heading 4, 25px</FullscreenModal.Title>
+          <FullscreenModal.Title>Heading 2, 25px</FullscreenModal.Title>
           <FullscreenModal.Description>Some additional information</FullscreenModal.Description>
         </FullscreenModal.Header>
         <FullscreenModal.Body>
