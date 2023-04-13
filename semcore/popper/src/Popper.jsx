@@ -17,6 +17,7 @@ import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import createPopper from './createPopper';
 
@@ -86,7 +87,10 @@ class Popper extends Component {
       popper: [],
     },
     hover: {
-      trigger: [['onMouseEnter'], ['onMouseLeave']],
+      trigger: [
+        ['onMouseEnter', 'onKeyboardFocus'],
+        ['onMouseLeave', 'onBlur'],
+      ],
       popper: [['onMouseEnter'], ['onMouseLeave']],
     },
     focus: {
@@ -245,7 +249,6 @@ class Popper extends Component {
   }
 
   handlersFromInteraction(interaction, component, visible) {
-    /* START displayEvents */
     const { displayEvents, ...other } = this.asProps;
     logger.warn(
       displayEvents !== undefined,
@@ -261,7 +264,6 @@ class Popper extends Component {
         interaction.popper = interaction.trigger;
       }
     }
-    /* END displayEvents */
 
     const eventInteraction =
       typeof interaction === 'string' ? this.eventsInteractionMap[interaction] : interaction;
@@ -297,9 +299,9 @@ class Popper extends Component {
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
   bindHandlerChangeVisibleWithTimer = (visible, component) => (e) => {
-    const currentTarget = e.currentTarget;
+    const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
-      if (visible && component === 'trigger' && this.popper.current) {
+      if (visible && component === 'trigger' && this.popper.current && currentTarget) {
         if (this.popper.current.state.elements.reference !== currentTarget) {
           this.popper.current.state.elements.reference = currentTarget;
           // for update
@@ -439,22 +441,25 @@ const getElementNestingIndexes = (element, chain = new Set([element, document.bo
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
-  const { Children, interaction, focusableTriggerReturnFocusToRef, focusHint } = props;
+  const { Children, interaction, focusableTriggerReturnFocusToRef, focusHint, onKeyboardFocus } =
+    props;
 
   const [returnFocusEl, setReturnFocusEl] = React.useState(null);
+  const focusSourceRef = useFocusSource();
   const handleFocus = React.useCallback(
     (event) => {
+      if (focusSourceRef.current !== 'keyboard') return;
+      onKeyboardFocus?.();
       if (interaction !== 'focus') return;
-      if (!event.target || !event.relatedTarget) return;
       const targetNesting = getElementNestingIndexes(event.target);
-      const sourceNesting = getElementNestingIndexes(event.relatedTarget);
+      const sourceNesting = getElementNestingIndexes(event.relatedTarget ?? document.body);
       const focusMovesBackwards = sourceNesting.every(
         (nestingIndex, arrIndex) => nestingIndex >= targetNesting[arrIndex],
       );
       if (focusMovesBackwards) setReturnFocusEl('before');
       else setReturnFocusEl('after');
     },
-    [interaction],
+    [interaction, onKeyboardFocus],
   );
   const handleFocusReturnElBlur = React.useCallback(() => {
     setTimeout(() => setReturnFocusEl(null), 0);
