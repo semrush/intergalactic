@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.32] - 2023-04-13
+
+### Changed
+
+- Default title tag switched from `h4` to `h2` without changing visual representation.
+
 ## [2.2.31] - 2023-04-12
 
 ### Fixed

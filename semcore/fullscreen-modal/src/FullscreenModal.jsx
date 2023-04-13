@@ -88,7 +88,7 @@ function Close(props) {
 
 function Title(props) {
   const STitle = Root;
-  return sstyled(props.styles)(<STitle render={Text} tag="h4" />);
+  return sstyled(props.styles)(<STitle render={Text} tag="h2" />);
 }
 
 function Description(props) {

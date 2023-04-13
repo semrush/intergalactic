@@ -12,12 +12,12 @@ const Demo = () => {
   return (
     <>
       <Button use="primary" onClick={changeModalVisibility}>
-        Открыть окно
+        Open fullscreen window
       </Button>
       <FullscreenModal visible={visible} onClose={changeModalVisibility}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
-        <FullscreenModal.Header title="Heading 4, 25px" description="Some additional information" />
+        <FullscreenModal.Header title="Heading 2, 25px" description="Some additional information" />
         <FullscreenModal.Footer />
       </FullscreenModal>
     </>
