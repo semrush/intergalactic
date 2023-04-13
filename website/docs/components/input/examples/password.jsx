@@ -1,26 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import ShowYesXS from '@semcore/ui/icon/ShowYes/m';
 import ShowNoXS from '@semcore/ui/icon/ShowNo/m';
-
-const MAP_TYPES = {
-  password: 'text',
-  text: 'password',
-};
+import Button from '@semcore/ui/button';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [type, setType] = useState('password');
+  const [type, setType] = React.useState('password');
 
   return (
-    <Input w={240}>
-      <Input.Value defaultValue="IlikeCATS" placeholder="Password" type={type} />
-      <Input.Addon
-        tag={type === 'password' ? ShowYesXS : ShowNoXS}
-        aria-label={type === 'password' ? 'View password' : 'Hide password'}
-        interactive
-        onClick={() => setType(MAP_TYPES[type])}
-      />
-    </Input>
+    <>
+      <Text tag="label" htmlFor="password-example">
+        Your password
+      </Text>
+      <Box mt={2}>
+        <Input w={240}>
+          <Input.Value
+            defaultValue="I_like_cats"
+            placeholder="Password"
+            type={type}
+            id="password-example"
+          />
+          <Input.Addon
+            aria-label={type === 'password' ? 'View password' : 'Hide password'}
+            tag={Button}
+            tabIndex={0}
+            onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
+          >
+            {type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
+          </Input.Addon>
+        </Input>
+      </Box>
+    </>
   );
 };
 
