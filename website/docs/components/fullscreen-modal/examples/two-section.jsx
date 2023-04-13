@@ -7,18 +7,14 @@ import ArrowLeftS from '@semcore/ui/icon/ArrowLeft/m';
 import ArrowRightS from '@semcore/ui/icon/ArrowRight/m';
 
 const Demo = () => {
-  const [visible, updateVisible] = useState(false);
-
-  const changeModalVisibility = () => {
-    updateVisible((visible) => !visible);
-  };
+  const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <Button use="primary" onClick={changeModalVisibility}>
+      <Button use="primary" onClick={() => setVisible(true)}>
         Open fullscreen window
       </Button>
-      <FullscreenModal visible={visible} onClose={changeModalVisibility}>
+      <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
         <FullscreenModal.Header>

@@ -88,9 +88,9 @@ export const useFocusLock = (
   const returnFocus = React.useCallback(() => {
     if (lastUserInteractionRef.current === 'mouse') return;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current)
-      moveFocusInside(returnFocusTo?.current, trapRef.current!);
+      setTimeout(() => moveFocusInside(returnFocusTo?.current, trapRef.current!), 0);
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
-      moveFocusInside(autoTriggerRef.current, trapRef.current!);
+      setTimeout(() => moveFocusInside(autoTriggerRef.current, trapRef.current!), 0);
     }
   }, [returnFocusTo]);
   React.useEffect(() => {

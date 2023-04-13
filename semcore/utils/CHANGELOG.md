@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Keyboard focus highlight wasn't working until keyboard focuses any focusable element second time.
+- Delayed focus return in the macrotask to prevent focus return trigger event passing to to the return focus target.
 
 ## [3.50.0] - 2023-03-27
 
