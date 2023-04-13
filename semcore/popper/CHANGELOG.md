@@ -2,9 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.17.1] - 2023-04-03
+## [4.17.2] - 2023-04-03
 
-## [4.17.0] - 2023-04-03
+### Fixed
+
+- `interaction=hover` poppers now might be triggered by keyboard focus (but not mouse focus).
+
+## [4.17.1] - 2023-04-03
 
 ### Changed
 
