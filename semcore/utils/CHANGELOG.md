@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.1] - 2023-04-13
+
+### Fixed
+
+- Keyboard focus highlight wasn't working until keyboard focuses any focusable element second time.
+
 ## [3.50.0] - 2023-03-27
 
 ### Added
