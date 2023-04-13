@@ -7,6 +7,17 @@ import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
+export const MIN_WIDTH = 2;
+
+const calcPartBarX = (x, minWidth, width) => {
+  // need for the correct rendering of negative values
+  if (x <= 0) {
+    return width <= minWidth ? minWidth : 0;
+  }
+  // need for the correct rendering of the minimum positive values
+  return Object.is(x, 0) ? minWidth : 0;
+};
+
 class HorizontalBarRoot extends Component {
   static displayName = 'HorizontalBar';
   static enhance = [uniqueIDEnhancement()];
@@ -16,7 +27,7 @@ class HorizontalBarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
-    wMin: 2,
+    wMin: MIN_WIDTH,
   };
 
   getBackgroundProps(props, index) {
@@ -36,7 +47,7 @@ class HorizontalBarRoot extends Component {
       y,
       scale,
       hide,
-      offset,
+      offset: offsetProps,
       uid,
       duration,
       r,
@@ -48,14 +59,15 @@ class HorizontalBarRoot extends Component {
       transparent,
     } = this.asProps;
 
+    const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
     const absWidth = Math.abs(
       xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
     );
+    const height = heightProps || getBandwidth(yScale);
     const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + offset[1];
-    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0] - (Object.is(d[x], -0) ? wMin : 0);
-    const height = heightProps || getBandwidth(yScale);
+    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0] - calcPartBarX(d[x], wMin, width);
     const dSvg = getHorizontalRect({
       x: barX,
       y: barY,

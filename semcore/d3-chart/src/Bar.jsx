@@ -84,10 +84,7 @@ class BarRoot extends Component {
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
     const width = widthProps || getBandwidth(xScale);
     const barX = xScale(d[x]) + offset[0];
-    const barY =
-      yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
-      offset[1] -
-      calcPartBarY(d[y], hMin, height);
+    const barY = yScale(Math.max(d[y0] ?? 0, d[y])) + offset[1] - calcPartBarY(d[y], hMin, height);
     const handleClick = (event) => onClick?.(d, event);
     const dSvg = getRect({
       x: barX,

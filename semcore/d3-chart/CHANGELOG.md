@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed calculating height of `StackBar` component.
+- Fixed calculating height of `StackBar` and `HorizontalBar` components.
 
 ## [2.13.12] - 2023-04-18
 
