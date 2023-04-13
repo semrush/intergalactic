@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.22] - 2023-04-13
+
+### Fixed
+
+- Fixed visual keyboard focus highlight of inline links.
+
 ## [4.3.21] - 2023-03-28
 
 ### Changed
