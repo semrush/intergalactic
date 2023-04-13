@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.27] - 2023-04-13
+
+### Fixed
+
+- Improvements for i18n. Hidden controls because they are accessible via the keyboard.
+
 ## [3.5.26] - 2023-04-11
 
 ### Changed
@@ -10,15 +16,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.5.12] - 2023-03-01
 
-## [3.5.11] - 2023-02-24
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
 
 ## [3.5.10] - 2023-02-22
-
-## [3.5.9] - 2023-02-21
 
 ### Changed
 
@@ -26,17 +28,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.5.6] - 2023-02-13
 
-## [3.5.5] - 2023-02-09
-
-## [3.5.4] - 2023-01-20
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [3.5.1] - 2023-01-11
-
-## [3.5.0] - 2023-01-10
 
 ### Fixed
 
@@ -47,8 +43,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Changed all translations of `CancelControl` text tooltip.
 
 ## [3.4.4] - 2023-01-10
-
-## [3.4.3] - 2023-01-09
 
 ### Changed
 

@@ -5,17 +5,20 @@ import { FadeInOut } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
+import reactToText from '@semcore/utils/lib/reactToText';
+import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 import style from './style/inline-edit.shadow.css';
 
-const isElementInside = (element: Element, possibleParent: Element) => {
-  while (element.parentElement !== possibleParent && element !== document.body) {
-    element = element.parentElement;
-  }
-  return element.parentElement === possibleParent;
-};
+// const isElementInside = (element: Element, possibleParent: Element) => {
+//   while (element.parentElement !== possibleParent && element !== document.body) {
+//     element = element.parentElement;
+//   }
+//   return element.parentElement === possibleParent;
+// };
 
 type AsProps = {
+  Children: React.FC,
   defaultEditable?: boolean;
   editable?: boolean;
   onEdit?: () => void;
@@ -35,15 +38,18 @@ class InlineEdit extends Component<AsProps> {
     locale: 'en',
   };
 
-  uncontrolledProps() {
-    return {
-      editable: null,
-    };
-  }
+  containerRef = React.createRef<HTMLElement>();
+  viewRef = React.createRef<HTMLElement>();
 
   constructor(props) {
     super(props);
     this.handleOnEdit = this.handleOnEdit.bind(this);
+  }
+
+  uncontrolledProps() {
+    return {
+      editable: null,
+    };
   }
 
   getViewProps() {
@@ -54,6 +60,7 @@ class InlineEdit extends Component<AsProps> {
       onEdit: this.handleOnEdit,
       inlineEditContainerRef: this.containerRef,
       getI18nText,
+      ref: this.viewRef
     };
   }
 
@@ -62,14 +69,19 @@ class InlineEdit extends Component<AsProps> {
 
     return {
       editable,
+      onKeyDown: this.handlerKeyDownEdit
     };
+  }
+
+  handlerKeyDownEdit = (event) => {
+    if (event.code === 'Enter' || event.code === 'Escape') {
+      this.viewRef.current?.focus()
+    }
   }
 
   handleOnEdit() {
     this.handlers.editable(true);
   }
-
-  containerRef = React.createRef<HTMLElement>();
 
   render() {
     const SInlineEdit = Root;
@@ -114,21 +126,21 @@ const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLEle
   const visible = !props.editable;
   const SView = Root;
 
-  const containerRef = React.useRef<HTMLElement>(null);
-  const prevVisibleRef = React.useRef(visible);
-  React.useEffect(() => {
-    const visibleChanged = prevVisibleRef.current !== visible;
-    if (visible && visibleChanged) {
-      const focusWithinContainer = isElementInside(
-        document.activeElement,
-        props.inlineEditContainerRef.current,
-      );
-      if (focusWithinContainer) {
-        // containerRef.current?.focus();
-      }
-    }
-    prevVisibleRef.current = visible;
-  }, [visible]);
+  // const containerRef = React.useRef<HTMLElement>(null);
+  // const prevVisibleRef = React.useRef(visible);
+  // React.useEffect(() => {
+  //   const visibleChanged = prevVisibleRef.current !== visible;
+  //   if (visible && visibleChanged) {
+  //     const focusWithinContainer = isElementInside(
+  //       document.activeElement,
+  //       props.inlineEditContainerRef.current,
+  //     );
+  //     if (focusWithinContainer) {
+  //       // containerRef.current?.focus();
+  //     }
+  //   }
+  //   prevVisibleRef.current = visible;
+  // }, [visible]);
 
   const handlekeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
@@ -140,6 +152,7 @@ const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLEle
     },
     [visible, props.onEdit],
   );
+  const textContent = reactToText(getOriginChildren(props.Children)).trim();
 
   return sstyled(props.styles)(
     <SView
@@ -147,9 +160,10 @@ const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLEle
       visible={visible}
       preserveNode
       tabIndex={0}
+      role="button"
       aria-hidden={!visible}
-      aria-label={props.getI18nText('tapToEdit')}
-      ref={containerRef}
+      aria-label={`${props.getI18nText('tapToEdit')}:${textContent}`}
+      // ref={containerRef}
       onClick={visible ? props.onEdit : undefined}
       onKeyDown={handlekeyDown}
     />,

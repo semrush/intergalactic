@@ -264,7 +264,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={props.icon ?? CheckM}
-            aria-label={`${title} ${props.value ?? ''}`}
+            aria-hidden="true"
             role="button"
             onClick={handleConfirm}
             className={sConfirmIconStyles.className}
@@ -316,7 +316,7 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={props.icon ?? CloseM}
-            aria-label={title}
+            aria-hidden="true"
             role="button"
             onClick={handleCancel}
             className={sCancelIconStyles.className}
