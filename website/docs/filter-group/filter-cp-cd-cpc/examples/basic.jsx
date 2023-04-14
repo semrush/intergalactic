@@ -85,7 +85,7 @@ export default () => {
   const applyFilters = () => {
     const { from, to } = value;
     updateVisible(false);
-    setFilters(from || to ? true : false);
+    setFilters(!!(from || to));
     changeDisplayValue(setTriggerText(value));
   };
 
@@ -105,8 +105,8 @@ export default () => {
       >
         {`Com.: ${displayValue}`}
       </Dropdown.Trigger>
-      <Dropdown.Popper w="224px" p="8px 8px 16px">
-        <Text size={200} bold>
+      <Dropdown.Popper w="224px" p="8px 8px 16px" role='dialog' aria-labelledby="title-CD" aria-modal='false'>
+        <Text size={200} bold id="title-CD">
           Custom range
         </Text>
         <InputRange value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
