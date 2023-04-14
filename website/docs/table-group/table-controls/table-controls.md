@@ -36,11 +36,11 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 - If a value in a table cell should open a row with accordion, make sure to put the `ChevronRight` icon next to it.
 - Place the icon to the left of the value, because it indicates that the table cell opens as accordion.
 
-![table with accordion](static/accordion-2.png)
+![](static/accordion-2.png)
 
 In the `active` state, the cell must be additionally highlighted with the `background-color: var(--table-td-cell-active)`. And the `ChevronRight` icon changes to `ChevronDown` icon of the same size and color.
 
-![table with accordion](static/accordion-3.png)
+![](static/accordion-3.png)
 
 @## Checkboxes
 
@@ -48,11 +48,11 @@ If you need to select several rows in the table at the same time and perform act
 
 To highlight all rows, the table header must have the main [Checkbox](/components/checkbox/). When you click on the checkbox in the header, all the rows on **the first page are highlighted as selected**.
 
-![selected hover](static/selected-hover.png)
+![](static/selected-hover.png)
 
 The [Checkbox](/components/checkbox/) must have the entire cell in the table as a click zone.
 
-![checkbox hover zone](static/checkbox-hover-zone.png)
+![](static/checkbox-hover-zone.png)
 
 ### Rows highlighting and pagination
 
@@ -64,17 +64,17 @@ _For example, on page 1, the user selected 3 lines, went to page 2, and selected
 
 You can select multiple rows at once with `Shift` key.
 
-![selected rows](static/selected-shift-1.png) ![selected rows](static/selected-shift-2.png)
+![](static/selected-shift-1.png) ![selected rows](static/selected-shift-2.png)
 
 @## Columns resizing
 
 When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `--border-table-accent`.
 
-![table with column resize](static/resize.png)
+![](static/resize.png)
 
 The area that you can grab and change the size of the column includes not only the 1px border of the cell, but also 5px to the left of the border.
 
-![table with column resize](static/resize-click-zone.png)
+![](static/resize-click-zone.png)
 
 > Changing the size of one column should not change the size of other columns.
 
@@ -84,23 +84,23 @@ The area that you can grab and change the size of the column includes not only t
 
 It is always nailed to the right side of the cell and has a `margin-left: 4px`, so that it is easier to get into it with the cursor and the content does not stick to it.
 
-![content row edit](static/edit-1.png)
+![](static/edit-1.png)
 
-![content row edit](static/edit-2.png)
+![](static/edit-2.png)
 
 2. Clicking on the `Edit` icon shows an [InlineInput](/components/inline-input/).
 
-![content row edit](static/edit-3.png)
+![](static/edit-3.png)
 
 If there are any other clickable icons in the row, then the edit icon should always be closer to the text.
 
-![content row edit](static/edit-4.png)
+![](static/edit-4.png)
 
 @## Highlighting content
 
 When searching a table, sometimes you need to highlight the match in the data. In this case, highlight what you've found with the `background-color: var(--bg-highlight-results)`.
 
-![table highlight](static/table-highlight.png)
+![](static/table-highlight.png)
 
 @## Internal and external links
 
@@ -118,24 +118,24 @@ There are three solutions for displaying long text in a table cell. The choice o
 - This solution is suitable for most of the tables, since data in them usually occupies a single row.
 - Show the full text in the tooltip by hovering over the text.
 
-![long text in the table](static/text-1.png)
+![](static/text-1.png)
 
-![long text in the table](static/text-2.png)
+![](static/text-2.png)
 
 ### The long text in the MIDDLE is wrapped with an ellipsis (...)
 
 - This option is suitable for URLs that differ in the last characters and therefore it is more logical to wrap THEM with an ellipsis in the middle.
 - Show the full text in the tooltip by hovering over the text.
 
-![long text in the table](static/text-3.png)
+![](static/text-3.png)
 
-![long text in the table](static/text-4.png)
+![](static/text-4.png)
 
 ### Long text is moved to the next line
 
 This option is suitable for cases when the cell can have more than one row of a data. For example, if there is a `row-span` with substrings in the row.
 
-![long text in the table](static/text-5.png)
+![](static/text-5.png)
 
 @## Pagination
 
@@ -161,18 +161,18 @@ By default, use `SortDesc`.
 
 | Case                                                                                  | Click zone                             |
 | ------------------------------------------------------------------------------------- | -------------------------------------- |
-| If there is a simple text/icon inside the cell.                                       | ![hover zone](static/hover-zone-1.png) |
-| If there is a control inside the cell (for example, a [Select](/components/select/)). | ![hover zone](static/hover-zone-2.png) |
+| If there is a simple text/icon inside the cell.                                       | ![](static/hover-zone-1.png) |
+| If there is a control inside the cell (for example, a [Select](/components/select/)). | ![](static/hover-zone-2.png) |
 
 ### Sorting icon styles
 
 For the default color for the sorting icon use the `--icon-secondary-neutral-hover-active` token (same for active and hover states).
 
-![sorting icon](static/sorting1.png)
+![](static/sorting1.png)
 
 If table has only one column with sorting, usually its sorting icon is unclickable and has an active state.
 
-![sorting icon](static/sorting2.png)
+![](static/sorting2.png)
 
 ### Rules for sorting
 
@@ -190,7 +190,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 |                                                                                                                                                                                                                                  | Ascending (SortAsc)                  | Descending (SortDesc)               |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- |
-| **Icon**                                                                                                                                                                                                                         | ![asc sort](static/asc.png)          | ![desc sort](static/desc.png)       |
+| **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)          | ![](static/desc.png)       |
 | **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller– 9, 8, 7 → 0 |
 | **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
 | **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
@@ -206,7 +206,7 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 | Appearance                                         | Styles                                                                              |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| ![action row scroll](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-secondary)` |
+| ![](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-secondary)` |
 
 ### The actions and rules of use
 

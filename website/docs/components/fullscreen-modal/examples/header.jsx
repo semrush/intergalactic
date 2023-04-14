@@ -13,7 +13,7 @@ const Demo = () => {
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
-        <FullscreenModal.Header title="Heading 2, 25px" description="Some additional information" />
+        <FullscreenModal.Header title="Modal Window Title" description="Additional information" />
         <FullscreenModal.Footer />
       </FullscreenModal>
     </>

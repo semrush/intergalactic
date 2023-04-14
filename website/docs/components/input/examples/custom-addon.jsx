@@ -10,7 +10,7 @@ const Demo = () => {
 
   return (
     <div>
-      <Text tag="label" htmlFor="count-example">
+      <Text tag="label" htmlFor="count-example" size="300">
         Input with symbols counter
       </Text>
       <Box mt={2}>

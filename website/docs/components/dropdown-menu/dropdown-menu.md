@@ -165,7 +165,7 @@ If an icon displays additional information about an item, we recommend placing i
 
 ### Info icon
 
-`Info` icon displays a tooltip when hovered over (see examples in the [Informer](/patterns/informer/)). We recommend making the hover zone for the icon larger than the icon's size. The margin between the icon and the text should always be 4px.
+`Info` icon displays a tooltip when hovered over (see examples in the [Informer](/patterns/informer/)). We recommend making the active zone for the icon larger than the icon's size. The margin between the icon and the text should always be 4px.
 
 ![](static/info-icon.png)
 
