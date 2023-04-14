@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.2] - 2023-04-14
+
+### Fixed
+
+- Fixed style prop hydration mismatch.
+
 ## [3.50.1] - 2023-04-13
 
 ### Fixed
