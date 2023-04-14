@@ -3,12 +3,17 @@ import TimePicker from '@semcore/time-picker';
 
 const Demo = () => {
   return (
-    <TimePicker is12Hour>
-      <TimePicker.Hours />
-      <TimePicker.Separator />
-      <TimePicker.Minutes />
-      <TimePicker.Format />
-    </TimePicker>
+    <>
+      <p id="timePickerLabel" style={{ fontSize: '16px' }}>
+        Select time:
+      </p>
+      <TimePicker is12Hour aria-labelledby="timePickerLabel">
+        <TimePicker.Hours />
+        <TimePicker.Separator />
+        <TimePicker.Minutes />
+        <TimePicker.Format />
+      </TimePicker>
+    </>
   );
 };
 
