@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.18] - 2023-03-28
+## [3.5.20] - 2023-04-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
+- Fixed outline styles so that they work even if the `Value` is wrapped in other elements.
+
+## [3.5.19] - 2023-04-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.2], `@semcore/flex-box` [4.7.17 ~> 4.7.19]).
 
 ## [3.5.8] - 2023-02-09
 
