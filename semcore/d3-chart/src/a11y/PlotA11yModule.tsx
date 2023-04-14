@@ -119,7 +119,7 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
   }
 
   return sstyled(styles)(
-    <SPlotA11yModule render={Box} tabIndex={0} onFocus={hadnleHiddenElementsFocus} role='note' aria-label="hint">
+    <SPlotA11yModule render={Box} tabIndex={0} onFocus={hadnleHiddenElementsFocus} role='note'>
       {t('disabled')}
     </SPlotA11yModule>,
   ) as React.ReactElement;
