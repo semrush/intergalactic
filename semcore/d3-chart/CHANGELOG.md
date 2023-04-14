@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.0] - 2023-04-14
+
+### Removed
+
+- Removed passing styles from charts to tooltip
+
 ## [2.13.11] - 2023-04-14
 
 ### Added

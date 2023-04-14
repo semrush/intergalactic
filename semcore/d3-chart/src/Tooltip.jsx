@@ -37,6 +37,7 @@ class TooltipRoot extends Component {
     this.unsubscribeTooltipVisible = eventEmitter.subscribe(
       'onTooltipVisible',
       (visible, data, node) => {
+        delete data.style;
         this.setState(
           {
             ...data,
