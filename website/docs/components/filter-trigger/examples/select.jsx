@@ -13,7 +13,7 @@ const options = Array(6)
 export default () => {
   return (
     <>
-      <Text tag="label" htmlFor="filter-trigger">
+      <Text tag="label" htmlFor="filter-trigger" size="300">
         Filter trigger with options
       </Text>
       <Box mt={2}>
