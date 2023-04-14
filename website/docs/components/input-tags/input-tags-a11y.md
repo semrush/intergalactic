@@ -14,7 +14,7 @@ a11y: AA
 | `Enter`                              | Wraps the entered value into `Tag`.                                               |
 | `Enter` on `Close` icon inside a Tag | Toggles `active` state for interactive tag or removes tag by `Close` icon button. |
 
-See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
 
 All additional information about tag's accessibility you can find in the [Tag](/components/tag/tag-a11y/).
 
