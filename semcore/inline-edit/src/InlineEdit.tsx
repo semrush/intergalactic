@@ -10,13 +10,6 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
 import style from './style/inline-edit.shadow.css';
 
-// const isElementInside = (element: Element, possibleParent: Element) => {
-//   while (element.parentElement !== possibleParent && element !== document.body) {
-//     element = element.parentElement;
-//   }
-//   return element.parentElement === possibleParent;
-// };
-
 type AsProps = {
   Children: React.FC,
   defaultEditable?: boolean;
@@ -38,7 +31,6 @@ class InlineEdit extends Component<AsProps> {
     locale: 'en',
   };
 
-  containerRef = React.createRef<HTMLElement>();
   viewRef = React.createRef<HTMLElement>();
 
   constructor(props) {
@@ -58,9 +50,8 @@ class InlineEdit extends Component<AsProps> {
     return {
       editable,
       onEdit: this.handleOnEdit,
-      inlineEditContainerRef: this.containerRef,
       getI18nText,
-      ref: this.viewRef
+      ref: this.viewRef,
     };
   }
 
@@ -69,15 +60,15 @@ class InlineEdit extends Component<AsProps> {
 
     return {
       editable,
-      onKeyDown: this.handlerKeyDownEdit
+      onKeyDown: this.handlerKeyDownEdit,
     };
   }
 
   handlerKeyDownEdit = (event) => {
     if (event.code === 'Enter' || event.code === 'Escape') {
-      this.viewRef.current?.focus()
+      this.viewRef.current?.focus();
     }
-  }
+  };
 
   handleOnEdit() {
     this.handlers.editable(true);
@@ -94,7 +85,7 @@ class InlineEdit extends Component<AsProps> {
     }
 
     return sstyled(styles)(
-      <SInlineEdit render={Box} ref={this.containerRef}>
+      <SInlineEdit render={Box}>
         <Children />
       </SInlineEdit>,
     );
@@ -120,29 +111,13 @@ const Edit: React.FC<AsProps> = (props) => {
   ) as React.ReactElement;
 };
 // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLElement> }> = (
+const View: React.FC<AsProps> = (
   props,
 ) => {
   const visible = !props.editable;
   const SView = Root;
 
-  // const containerRef = React.useRef<HTMLElement>(null);
-  // const prevVisibleRef = React.useRef(visible);
-  // React.useEffect(() => {
-  //   const visibleChanged = prevVisibleRef.current !== visible;
-  //   if (visible && visibleChanged) {
-  //     const focusWithinContainer = isElementInside(
-  //       document.activeElement,
-  //       props.inlineEditContainerRef.current,
-  //     );
-  //     if (focusWithinContainer) {
-  //       // containerRef.current?.focus();
-  //     }
-  //   }
-  //   prevVisibleRef.current = visible;
-  // }, [visible]);
-
-  const handlekeyDown = React.useCallback(
+  const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
       if (!visible) return;
       if (event.code === 'Enter' || event.code === 'Space') {
@@ -160,12 +135,11 @@ const View: React.FC<AsProps & { inlineEditContainerRef: React.RefObject<HTMLEle
       visible={visible}
       preserveNode
       tabIndex={0}
-      role="button"
+      role='button'
       aria-hidden={!visible}
       aria-label={`${props.getI18nText('tapToEdit')}:${textContent}`}
-      // ref={containerRef}
       onClick={visible ? props.onEdit : undefined}
-      onKeyDown={handlekeyDown}
+      onKeyDown={handleKeyDown}
     />,
   ) as React.ReactElement;
 };

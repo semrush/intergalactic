@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Improvements for i18n. Hidden controls because they are accessible via the keyboard.
+- Improvements for a11y. Hidden controls because they are accessible via the keyboard.
 
 ## [3.5.26] - 2023-04-11
 
