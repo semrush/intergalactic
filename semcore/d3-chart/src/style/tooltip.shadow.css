@@ -1,6 +1,7 @@
 @import './var.css';
 
 STooltip {
+  color: var(--intergalactic-text-primary, #191b23);
   font-size: var(--intergalactic-fs-100, 12px);
   line-height: var(--intergalactic-lh-100, 133%);
   position: relative;
