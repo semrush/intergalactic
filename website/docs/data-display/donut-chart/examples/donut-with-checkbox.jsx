@@ -23,8 +23,8 @@ export default () => {
 
   return (
     <Flex mt={3} alignItems="flex-start" flexWrap="wrap">
-      <Plot height={120} width={120} m="0 28px 24px 0" data={data} label="chart of the selected options in the survey">
-        <Donut innerRadius={30}>
+      <Plot height={120} width={120} m="0 28px 24px 0" data={data}>
+        <Donut innerRadius={40}>
           {Object.keys(data).map((name, index) => (
             <Donut.Pie
               key={name}

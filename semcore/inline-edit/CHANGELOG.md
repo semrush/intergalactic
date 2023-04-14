@@ -2,19 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.13] - 2023-04-14
+
+### Fixed
+
+- Improvements for a11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
+
 ## [2.4.12] - 2023-04-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/utils` [3.50.0 ~> 3.50.2]).
-
-## [2.4.11] - 2023-04-03
-
-## [2.4.10] - 2023-03-28
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/flex-box` [4.7.17 ~> 4.7.19], `@semcore/utils` [3.49.1 ~> 3.50.2]).
 
 ## [2.4.0] - 2023-02-20
 
@@ -29,8 +27,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/animation` [1.8.9 ~> 1.8.10], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [2.3.3] - 2023-01-10
-
-## [2.3.2] - 2023-01-09
 
 ### Changed
 

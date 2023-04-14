@@ -329,9 +329,9 @@ describe('Utils color', () => {
   afterEach(cleanup);
 
   test('should support resolveColor for empty value', () => {
-    expect(resolveColor(undefined)).toBe(null);
-    expect(resolveColor('')).toBe(null);
-    expect(resolveColor(null)).toBe(null);
+    expect(resolveColor(undefined)).toBe('');
+    expect(resolveColor('')).toBe('');
+    expect(resolveColor(null)).toBe('');
   });
 
   test('should support shade for empty value', () => {
