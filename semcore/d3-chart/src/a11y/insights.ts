@@ -197,7 +197,7 @@ export const extractDataInsights = (
         const table = [];
         for (const i in values) {
           table.push({
-            value: values[i].toFixed(2),
+            value: (values[i] ?? NaN).toFixed(2),
             long: (longMovingAverage[i] ?? NaN).toFixed(2),
             short: (shortMovingAverage[i] ?? NaN).toFixed(2),
           });

@@ -124,7 +124,7 @@ On hover, the icons change color to the next one in the palette:
 
 ![tooltip](static/tooltip1.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### Font size
 

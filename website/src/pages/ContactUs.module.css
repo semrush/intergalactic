@@ -3,10 +3,10 @@
   position: relative;
   grid-template-rows: 1fr 6fr;
   grid-template-columns: repeat(2, 1fr);
-  padding: calc(38 * var(--intergalactic-spacing-1x)) calc(25 * var(--intergalactic-spacing-1x))
-    calc(62.5 * var(--intergalactic-spacing-1x));
+  padding: calc(38 * var(--intergalactic-spacing-1x)) calc(25 * var(--intergalactic-spacing-1x));
   max-width: 1140px;
   margin: 0 auto;
+  color: var(--intergalactic-text-primary);
 }
 .content h1 {
   font-size: calc(var(--intergalactic-fs-800) + 2px);
@@ -72,24 +72,24 @@
   }
 }
 
-.github {
+.email {
   grid-row: 2;
   grid-column: 1;
   margin: 0 var(--intergalactic-spacing-4x) 0;
 }
 @media (max-width: 767px) {
-  .github {
+  .email {
     margin: 0;
   }
 }
 
-.email {
+.github {
   grid-row: 2;
   grid-column: 2;
   margin: 0 var(--intergalactic-spacing-4x) 0;
 }
 @media (max-width: 767px) {
-  .email {
+  .github {
     grid-row: 3;
     grid-column: 1;
     margin: 0;
@@ -115,6 +115,8 @@
 }
 
 .title {
+  display: flex;
+  align-items: center;
   margin: 0;
   font-size: calc(var(--intergalactic-fs-600) - 2px);
   font-weight: var(--intergalactic-semi-bold);
@@ -133,7 +135,7 @@
   position: absolute;
   width: 480px;
   right: 0;
-  bottom: var(--intergalactic-spacing-10x);
+  bottom: var(--intergalactic-spacing-20x);
 }
 @media (max-width: 1024px) {
   .postman {

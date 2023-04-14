@@ -105,7 +105,7 @@ Recommendations on positioning of tags in relation to other components:
 - In most cases, place tag to the right of the component.
 - In the card, place tag at the bottom. -->
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 Use tags for visual marking of objects, fast recognition and navigation.
 

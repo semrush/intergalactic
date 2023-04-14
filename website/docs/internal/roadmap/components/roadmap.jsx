@@ -258,7 +258,7 @@ function Roadmap() {
   }
   return (
     <>
-      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} styles={styles}>
+      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} styles={styles} className="tabs">
         {Object.keys(components).map((nameQ, i) => (
           <Tabs.Item key={nameQ} value={i}>
             {nameQ}

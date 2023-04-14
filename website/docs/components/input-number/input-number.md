@@ -117,7 +117,7 @@ Treat zero value like any other number:
 
 > **If the input is already set to 0**, then when the input gets the focus, user enters the value after 0. By `onBlur`, the entire value in the input is formatted, and 0, which was before the number, will be removed. For example, `001` is formatted to `1`.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 **InputNumber should not be used for the every numeric value.**
 

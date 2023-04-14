@@ -2,17 +2,61 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.13.2] - 2023-04-05
+## [2.13.11] - 2023-04-14
 
 ### Added
 
 - Added role to PlotA11yModule
 
-## [2.13.1] - 2023-03-24
+## [2.13.10] - 2023-04-03
+
+## [2.13.9] - 2023-04-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.6 ~> 1.9.7], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.12 ~> 4.17.0]).
+
+## [2.13.8] - 2023-03-31
+
+### Fixed
+
+- Fixed calculating width of `HorizontalBar` component.
+
+## [2.13.7] - 2023-03-31
+
+### Fixed
+
+- Fixed display `Line.Null`.
+
+## [2.13.6] - 2023-03-31
+
+### Fixed
+
+- Fixed adding custom styles for `Radar` chart.
+
+## [2.13.5] - 2023-03-29
+
+### Fixed
+
+- Fixed calculating height of `Bar` component.
+
+## [2.13.4] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [2.13.3] - 2023-03-27
+
+### Fixed
+
+- Added correct display when there is no data in a11y table.
+
+## [2.13.2] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.7 ~> 1.9.8], `@semcore/popper` [4.16.9 ~> 4.16.10], `@semcore/utils` [3.48.1 ~> 3.49.0]).
 
 ## [2.13.0] - 2023-03-23
 

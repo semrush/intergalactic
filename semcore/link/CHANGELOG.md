@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.3.18] - 2023-03-24
+## [4.3.22] - 2023-04-13
+
+### Fixed
+
+- Fixed visual keyboard focus highlight of inline links.
+
+## [4.3.21] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/flex-box` [4.7.14 ~> 4.7.15]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
 
 ## [4.3.11] - 2023-02-09
 

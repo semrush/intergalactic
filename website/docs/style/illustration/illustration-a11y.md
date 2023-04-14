@@ -56,7 +56,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 - [Images tutorial](https://www.w3.org/WAI/tutorials/images/) demonstrates how to provide appropriate text alternatives based on the purpose of the image.
 - [Role-img-alt](https://www.digitala11y.com/academy/role-img-alt/) has detailed information about the images accessible behavior.
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives core recommendations for the accessible components.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives recommendations for the accessible components.
 - [Non-text Content](https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#text-alternatives) gives recommendations for the accessible non-text content.
 - [Providing short text alternative for non-text content](https://www.w3.org/WAI/WCAG21/Techniques/general/G94) tips on writing good text alternatives.
 

@@ -42,8 +42,8 @@ If the metric consists of several others, so use these margins:
 
 ![default styles example](static/default-example.png)
 
-|                                     | Styles                                                                                                                                                                                                                                                               |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                                     | Styles                                                                                                                                                                                                                                                                |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Title**                           | Text 14px (`--fs-200`, `--lh-200`) with `--text-primary` color. `Info` icon with M size. Or you can use M size icon if you need to display some brand metrics (eg., for social media)..                                                                               |
 | **Date/period/location/database**   | Text 12px (`--fs-100`, `--lh-100`) with `--text-secondary` color.                                                                                                                                                                                                     |
 | **Metric**                          | Text 24px (`--fs-500`, `--lh-500`) with `--text-primary` color or link color or some other color you use to show certain metrics in your product. Or you can make the text smaller (20px) or bigger (32px) if needed. See the [Typography scale](/style/typography/). |
@@ -142,7 +142,7 @@ You can "hide" more detailed information (a whole widget with a full chart, for 
 
 | State                                                                                                                                                                               | Appearance example                         |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![skeleton](static/skeleton.png)           |
+| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![skeleton](static/summary-skeleton.png)   |
 | Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                          | ![spin](static/spin.png)                   |
 | Show `n/a` message if data is missing.                                                                                                                                              | ![not available](static/not-available.png) |
 | If you cannot show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![error](static/error2.png)                |

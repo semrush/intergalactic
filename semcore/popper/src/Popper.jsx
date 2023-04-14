@@ -13,8 +13,11 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { Scale } from '@semcore/animation';
+import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import createPopper from './createPopper';
 
@@ -29,6 +32,17 @@ function someArray(arr1, arr2) {
     return arr2.indexOf(i) !== -1;
   });
 }
+
+const useUpdatePopperEveryFrame = (popperRef) => {
+  const nextAnimationFrameRef = React.useRef(-1);
+  const handleAnimationFrame = React.useCallback((until) => {
+    if (until < Date.now()) return;
+    popperRef.current?.update();
+    nextAnimationFrameRef.current = requestAnimationFrame(() => handleAnimationFrame(until));
+  }, []);
+  React.useEffect(() => () => cancelAnimationFrame(nextAnimationFrameRef.current), []);
+  return handleAnimationFrame;
+};
 
 const MODIFIERS_OPTIONS = [
   'offset',
@@ -73,7 +87,10 @@ class Popper extends Component {
       popper: [],
     },
     hover: {
-      trigger: [['onMouseEnter'], ['onMouseLeave']],
+      trigger: [
+        ['onMouseEnter', 'onKeyboardFocus'],
+        ['onMouseLeave', 'onBlur'],
+      ],
       popper: [['onMouseEnter'], ['onMouseLeave']],
     },
     focus: {
@@ -90,6 +107,7 @@ class Popper extends Component {
   // timer: ReturnType<typeof setTimeout>;
   // observer: ResizeObserver;
   triggerRef = React.createRef();
+  focusableTriggerReturnFocusToRef = React.createRef();
   popperRef = React.createRef();
   popper = React.createRef();
 
@@ -231,7 +249,6 @@ class Popper extends Component {
   }
 
   handlersFromInteraction(interaction, component, visible) {
-    /* START displayEvents */
     const { displayEvents, ...other } = this.asProps;
     logger.warn(
       displayEvents !== undefined,
@@ -247,7 +264,6 @@ class Popper extends Component {
         interaction.popper = interaction.trigger;
       }
     }
-    /* END displayEvents */
 
     const eventInteraction =
       typeof interaction === 'string' ? this.eventsInteractionMap[interaction] : interaction;
@@ -283,9 +299,9 @@ class Popper extends Component {
   bindHandlerKeyDown = (onKeyDown) => callAllEventHandlers(onKeyDown, this.handlerKeyDown);
 
   bindHandlerChangeVisibleWithTimer = (visible, component) => (e) => {
-    const currentTarget = e.currentTarget;
+    const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
-      if (visible && component === 'trigger' && this.popper.current) {
+      if (visible && component === 'trigger' && this.popper.current && currentTarget) {
         if (this.popper.current.state.elements.reference !== currentTarget) {
           this.popper.current.state.elements.reference = currentTarget;
           // for update
@@ -321,6 +337,7 @@ class Popper extends Component {
 
   getTriggerProps() {
     const { visible, interaction } = this.asProps;
+    const { focusableTriggerReturnFocusToRef } = this;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -330,13 +347,15 @@ class Popper extends Component {
     return {
       ref: this.createTriggerRef,
       active: visible,
-      // interaction,
+      interaction,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
+      focusableTriggerReturnFocusToRef,
     };
   }
 
   getPopperProps() {
+    const { focusableTriggerReturnFocusToRef } = this;
     const {
       visible,
       disablePortal,
@@ -374,6 +393,8 @@ class Popper extends Component {
       placement,
       duration,
       animationsDisabled,
+      popper: this.popper,
+      focusableTriggerReturnFocusToRef,
     };
   }
 
@@ -409,13 +430,58 @@ class Popper extends Component {
   }
 }
 
+const getElementNestingIndexes = (element, chain = new Set([element, document.body])) => {
+  if (!element?.parentElement) return [];
+  const index = Array.from(element.parentElement.children).indexOf(element);
+  if (chain.has(element.parentElement)) return [index];
+  chain.add(element.parentElement);
+  return [...getElementNestingIndexes(element.parentElement, chain), index];
+};
+
 function Trigger(props) {
   const STrigger = Root;
-  const { Children } = props;
+  const SFocusHint = 'span';
+  const { Children, interaction, focusableTriggerReturnFocusToRef, focusHint, onKeyboardFocus } =
+    props;
+
+  const [returnFocusEl, setReturnFocusEl] = React.useState(null);
+  const focusSourceRef = useFocusSource();
+  const handleFocus = React.useCallback(
+    (event) => {
+      if (focusSourceRef.current !== 'keyboard') return;
+      onKeyboardFocus?.();
+      if (interaction !== 'focus') return;
+      const targetNesting = getElementNestingIndexes(event.target);
+      const sourceNesting = getElementNestingIndexes(event.relatedTarget ?? document.body);
+      const focusMovesBackwards = sourceNesting.every(
+        (nestingIndex, arrIndex) => nestingIndex >= targetNesting[arrIndex],
+      );
+      if (focusMovesBackwards) setReturnFocusEl('before');
+      else setReturnFocusEl('after');
+    },
+    [interaction, onKeyboardFocus],
+  );
+  const handleFocusReturnElBlur = React.useCallback(() => {
+    setTimeout(() => setReturnFocusEl(null), 0);
+  }, []);
+
   return (
-    <STrigger render={Box} inline role="button" aria-haspopup={true}>
-      <Children />
-    </STrigger>
+    <>
+      {returnFocusEl === 'before' && (
+        <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
+      )}
+      <STrigger render={Box} inline role="button" aria-haspopup={true} onFocus={handleFocus}>
+        <Children />
+      </STrigger>
+      {focusHint && false && (
+        <SFocusHint aria-live="polite">
+          <ScreenReaderOnly>{focusHint}</ScreenReaderOnly>
+        </SFocusHint>
+      )}
+      {returnFocusEl === 'after' && (
+        <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
+      )}
+    </>
   );
 }
 
@@ -426,6 +492,7 @@ function PopperPopper(props) {
     styles,
     visible,
     disablePortal,
+    ignorePortalsStacking,
     disableEnforceFocus,
     triggerRef,
     interaction,
@@ -433,6 +500,8 @@ function PopperPopper(props) {
     controlsLength,
     duration,
     animationsDisabled,
+    popper,
+    focusableTriggerReturnFocusToRef,
   } = props;
   const ref = useRef(null);
 
@@ -442,12 +511,37 @@ function PopperPopper(props) {
   useFocusLock(
     ref,
     autoFocus,
-    interaction === 'click' ? triggerRef : null,
+    interaction === 'focus' ? focusableTriggerReturnFocusToRef : triggerRef,
     !visible || disableEnforceFocus,
   );
 
+  useContextTheme(ref, visible);
+
+  const updatePopperEveryFrame = useUpdatePopperEveryFrame(popper);
+  const handleAnimationStart = React.useCallback(
+    (duration) => {
+      if (duration > 0) {
+        updatePopperEveryFrame(Date.now() + Math.min(duration, 2000));
+      }
+    },
+    [updatePopperEveryFrame],
+  );
+  const handleAnimationEnd = React.useCallback(() => {
+    popper.current?.update();
+  }, []);
+  const animationCtx = React.useContext(animationContext);
+  React.useEffect(() => {
+    if (!ignorePortalsStacking) return;
+    const unsubscribeAnimationStart = animationCtx.onAnimationStart(handleAnimationStart);
+    const unsubscribeAnimationEnd = animationCtx.onAnimationEnd(handleAnimationEnd);
+    return () => {
+      unsubscribeAnimationStart();
+      unsubscribeAnimationEnd();
+    };
+  }, [animationCtx, ignorePortalsStacking]);
+
   return sstyled(styles)(
-    <Portal disablePortal={disablePortal}>
+    <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
       <NeighborLocation controlsLength={controlsLength}>
         <SPopper
           render={Scale}

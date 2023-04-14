@@ -75,7 +75,7 @@ Use adaptive layout to allow the user to choose their preferred scale while pres
 
 This way you will both cover the needs of the visually impaired and ensure that your site can adapt for devices with any screen size. When the layout is ready, test the scaling by zooming in to 200% using `Control+` (or `Command+` on Mac).
 
-Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html) to know more about scaling and resizing criteria.
+Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/resize-text) to know more about scaling and resizing criteria.
 
 @## Graphics and images
 
@@ -168,9 +168,9 @@ Make sure that the touch targets of the items are large enough and are easily ac
 
 **Requirements**:
 
-- **Make sure that it's possible to reach the main controls with your thumb on both hands, even on larger phones**.
+- **Make sure that it's possible to reach the main controls with your mouse on the desktop device or with your thumb on the mobile device**.
 - **Set target areas to at least 44px**. An average adult's fingertip size is around 10mm, so you'll need to increase the size of the target area around your icons to make them easier to hit.
-- **Separate tappable elements with a 8px margin**. This will help the user hit the element they're aiming for.
+- **Separate actionable elements with an appropriate margin**. This will help the user activate the element they're aiming for.
 
 ![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "You need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
 

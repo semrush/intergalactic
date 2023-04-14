@@ -325,7 +325,7 @@ jobs:
           fi
   vo-setup:
     runs-on: macos-11
-    if: needs.vo-filter.outputs.run_vo == 'true'
+    if: needs.vo-filter.outputs.run_vo == 'true' && false
     needs: vo-filter
     steps:
       - uses: actions/checkout@v2

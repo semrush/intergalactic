@@ -2,11 +2,41 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.4.2] - 2023-03-24
+## [5.4.10] - 2023-04-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/button` [4.3.14 ~> 4.3.15], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.18 ~> 4.3.19], `@semcore/tooltip` [5.4.1 ~> 5.4.2]).
+
+## [5.4.9] - 2023-04-11
+
+### Changed
+
+- Updated `final-form` version to meet `react-final-form` peer dependency.
+
+## [5.4.8] - 2023-04-11
+
+### Changed
+
+- Patched `react-final-form` to the latest version.
+
+## [5.4.7] - 2023-04-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.3.24 ~> 5.4.0]).
+
+## [5.4.4] - 2023-03-27
+
+### Fixed
+
+- Added a11y error binding to field.
+
+## [5.4.3] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.15 ~> 4.3.16], `@semcore/utils` [3.48.1 ~> 3.49.0]).
 
 ## [5.4.0] - 2023-03-22
 

@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.6.27] - 2023-03-24
+## [3.6.32] - 2023-04-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/base-trigger` [3.5.10 ~> 3.5.11], `@semcore/button` [4.3.14 ~> 4.3.15]).
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.18 ~> 4.3.19]).
+
+## [3.6.31] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to the component.
+
+## [3.6.30] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/base-trigger` [3.5.13 ~> 3.5.14], `@semcore/button` [4.3.17 ~> 4.3.18]).
 
 ## [3.6.21] - 2023-03-10
 

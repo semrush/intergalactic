@@ -2,11 +2,41 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.3.19] - 2023-03-24
+## [3.3.27] - 2023-04-11
+
+### Fixed
+
+- Non-interactive container are not focusable by keyboard now.
+
+## [3.3.26] - 2023-03-31
+
+### Fxed
+
+- Fixed scrolling when paste and enter items.
+
+## [3.3.25] - 2023-03-30
+
+### Added
+
+- Added checking if the input `ref` has `scrollIntoView` method.
+
+## [3.3.24] - 2023-03-30
+
+### Fixed
+
+- Fixed checking if the input `ref` is exists.
+
+## [3.3.23] - 2023-03-29
+
+### Added
+
+- Added auto scroll when paste and enter items.
+
+## [3.3.22] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/input` [3.5.14 ~> 3.5.15]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/input` [3.5.17 ~> 3.5.18]).
 
 ## [3.3.16] - 2023-03-21
 

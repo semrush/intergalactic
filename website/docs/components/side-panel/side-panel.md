@@ -45,8 +45,8 @@ Use SidePanel when it is needed:
 
 @## Overlay
 
-|                 | Appearance example                     | Styles                                                                                                            | When to use                                                                             |
-| --------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+|                 | Appearance example                     | Styles                                                                                                           | When to use                                                                             |
+| --------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | Without overlay | ![light-theme](static/light-theme.png) | In this case the panel has the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
 | With overlay    | ![dark-theme](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`. There is no shadow.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
@@ -78,10 +78,10 @@ For panel's title use 16px text (`--fs-300`, `--lh-300`) with `font-weight: var(
 
 > Pin header when scrolling large content inside the SidePanel.
 
-| Appearance example                    | Styles                                                                                                                           |
-| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Appearance example                    | Styles                                                                                                                       |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | ![header paddings](static/header.png) | `height: 52px`, `padding-bottom: var(--spacing-1x)`, `align-items: center`, `border-bottom: 1px solid var(–-border-primary)` |
-| ![close icon](static/closeIcon.png)   | `Close` icon has L size and use `--icon-secondary-neutral` token for color. Click zone of the icon is `48px * 48px`.             |
+| ![close icon](static/closeIcon.png)   | `Close` icon has L size and use `--icon-secondary-neutral` token for color. Click zone of the icon is `48px * 48px`.         |
 
 ### Content
 
@@ -160,7 +160,7 @@ SidePanel should have header in all cases.
 
 At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/).
 
-![skeleton example](static/skeleton.png)
+![skeleton example](static/side-panel-skeleton.png)
 
 ### Reloading
 

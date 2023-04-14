@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.17] - 2023-03-24
+## [3.4.22] - 2023-04-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.12 ~> 4.17.0]).
+
+## [3.4.21] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to the component.
+
+## [3.4.20] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0]).
 
 ## [3.4.16] - 2023-03-23
 
@@ -235,7 +247,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Добавлен `white-space: normal;` так как он может наследоваться в случаях отключения рендера в портал(`disabledPortal`)
+- Добавлен `white-space: normal;` так как он может наследоваться в случаях отключения рендера в портал(`disablePortal`)
 - Убрано скрытие Popper, когда его Trigger выходит из viewbox
 
 ## [1.2.3] - 2019-11-14

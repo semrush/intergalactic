@@ -1,6 +1,7 @@
 import React from 'react';
 import Ellipsis from '@semcore/ui/ellipsis';
 import { Box } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration((preview) => {
@@ -28,11 +29,13 @@ export default PlaygroundGeneration((preview) => {
   return (
     <Box w={400}>
       <Ellipsis trim={trim} tooltip={tooltip} maxLine={maxLine}>
-        Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
-        intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
-        planetary, intergalactic Another dimension, another dimension Another dimension, another
-        dimension Another dimension, another dimension Another dimension, another dimension Another
-        dimension, another dimension Another dimension
+        <Text color="black">
+          Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
+          intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
+          planetary, intergalactic Another dimension, another dimension Another dimension, another
+          dimension Another dimension, another dimension Another dimension, another dimension
+          Another dimension, another dimension Another dimension
+        </Text>
       </Ellipsis>
     </Box>
   );

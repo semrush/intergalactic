@@ -42,7 +42,7 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 - showing the structure of the loading page and data;
 - uploading new data.
 
-![skeleton example](static/skeleton.png)
+![skeleton example](static/loading-skeleton.png)
 
 ### Spin
 

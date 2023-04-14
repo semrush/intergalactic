@@ -6,10 +6,10 @@ import ArrowRightXS from '@semcore/ui/icon/ArrowRight/m';
 export default function () {
   return (
     <>
-      <Link addonLeft={CheckXS} addonRight={ArrowRightXS}>
+      <Link addonLeft={CheckXS} addonRight={ArrowRightXS} href="#">
         Link
       </Link>
-      <Link ml={2}>
+      <Link ml={2} href="#">
         <Link.Addon>
           <CheckXS />
         </Link.Addon>

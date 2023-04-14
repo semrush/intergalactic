@@ -34,11 +34,11 @@ Component has default styles, but you can change them depending on your task.
 
 |                         | Default styles                                                        |
 | ----------------------- | --------------------------------------------------------------------- |
-| Navigation buttons      | Use L size for Chevron icons, `color: var(--icon-secondary-neutral)` |
-| Slides number indicator | `indicator size: 12px * 12px` `color: var(--bg-secondary-neutral)`  |
+| Navigation buttons      | Use L size for Chevron icons and `--icon-primary-neutral` token for color. |
+| Slides number indicator | Indicator has 12px * 12px size and `--bg-secondary-neutral` token for color.  |
 | Content slide           | `border-radius: var(--rounded-medium)`                               |
 
-Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) should be stretched to the height of the content.
+Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) is stretched to the height of the content.
 
 ![](static/click-zone-scheme.png)
 
@@ -62,8 +62,8 @@ Navigation buttons are always center aligned.
 
 | State    | Arrearance example                      | Styles                                               |
 | -------- | --------------------------------------- | ---------------------------------------------------- |
-| Default  | ![](static/default.png)   | `color: var(--icon-secondary-neutral)`              |
-| Hover    | ![](static/hover.png)  | `color: var(--icon-secondary-neutral-hover-active)` |
+| Default  | ![](static/default.png)   | `color: var(--icon-primary-neutral)`              |
+| Hover    | ![](static/hover.png)  | `color: var(--icon-primary-neutral-hover-active)` |
 | Disabled | ![](static/disabled.png) | `opacity: var(--disabled-opacity)`                  |
 
 ### Slides number indicators
@@ -84,7 +84,7 @@ Default animation properties:
 - Animation duration — `300`.
 - Animation easing function — `ease-in-out`.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 When using a carousel, keep in mind that some users may only see the first frame or nothing at all. Therefore, it's important to intentionally place essential content on each frame. Consider using a static carousel or a single image instead of a rotating one.
 
@@ -96,7 +96,7 @@ When using a carousel, keep in mind that some users may only see the first frame
 
 @## Auto-play
 
-> Remember, it's an UX unicorn that auto-play leads people through the carousel items 🦄
+> If carousel images cycle automatically, provide a pause button to let users stop the movement.
 
 **Do not auto-play slides if:**
 

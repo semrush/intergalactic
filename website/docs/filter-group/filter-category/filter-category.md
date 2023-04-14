@@ -72,7 +72,7 @@ When the filter's content or some of the filters are loading, show [Spin](/compo
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-category-nothing-found.png)
 
 ### Error
 
@@ -133,7 +133,7 @@ When the filter's content or some of the filters are loading, show [Spin](/compo
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-category-nothing-found.png)
 
 ### Error
 
@@ -141,7 +141,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ![error](static/error.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 > Technically, categories do not have nesting, it is purely visual to distinguish between categories.
 >

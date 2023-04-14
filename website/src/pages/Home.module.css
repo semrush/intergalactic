@@ -423,6 +423,7 @@
 .homePage {
   display: flex;
   padding-top: var(--intergalactic-spacing-20x);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 
 .sideBar {

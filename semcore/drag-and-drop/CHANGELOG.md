@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.4.26] - 2023-03-24
+## [2.4.32] - 2023-04-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/card` [4.3.4 ~> 4.3.5], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/card` [4.3.10 ~> 4.3.11]).
+
+## [2.4.31] - 2023-04-03
+
+### Fixed
+
+- Fixed screen reader annotation of visually untitled items.
+
+## [2.4.30] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.3.8 ~> 4.3.9]).
 
 ## [2.4.17] - 2023-03-01
 

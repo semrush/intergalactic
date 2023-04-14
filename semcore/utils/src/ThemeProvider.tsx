@@ -1,5 +1,6 @@
 import { sstyled } from '@semcore/core';
 import React from 'react';
+import { useForkRef } from './ref';
 
 type Tokens = { [tokenName: string]: string };
 export type ThemeProviderProps = {
@@ -9,7 +10,7 @@ export type ThemeProviderProps = {
 
 export const useContextTokens = () => React.useContext(themeContext);
 
-export const useContextTheme = (ref: React.RefObject<HTMLElement>) => {
+export const useContextTheme = (ref: React.RefObject<HTMLElement>, available?: boolean) => {
   const tokens = useContextTokens();
   const tokensKey = React.useMemo(() => {
     if (!tokens) return '';
@@ -17,14 +18,28 @@ export const useContextTheme = (ref: React.RefObject<HTMLElement>) => {
       .map(([key, value]) => `${key}-${value}`)
       .join('/');
   }, [tokens]);
-  // const effectHook = React.useInsertionEffect || React.useLayoutEffect;
-  const effectHook = React.useLayoutEffect;
-  effectHook(() => {
+  React.useLayoutEffect(() => {
+    if (available !== undefined && !available) return;
     if (!ref.current || !ref.current.style || !ref.current.style.setProperty) return;
     for (const token in tokens) {
       ref.current.style.setProperty(token, tokens[token]);
     }
-  }, [tokensKey]);
+  }, [tokensKey, available]);
+};
+export const contextThemeEnhance = (getAvailable?: (props: any) => boolean | undefined) => {
+  return (props) => {
+    const existingRef = props.ref;
+    const available = React.useMemo(() => getAvailable?.(props), Object.values(props));
+    const enhanceRef = React.useRef();
+    const refArr = React.useMemo(
+      () => (existingRef ? [existingRef, enhanceRef] : [enhanceRef]),
+      [existingRef, enhanceRef],
+    );
+    const ref = useForkRef(refArr);
+    useContextTheme(enhanceRef, available);
+
+    return { ...props, ref };
+  };
 };
 
 const themeContext = React.createContext<Tokens | null>(null);

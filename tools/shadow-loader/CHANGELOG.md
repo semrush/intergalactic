@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.1] - 2023-03-31
+
+### Fixed
+
+- Fixed bug with unavailable variable.
+
+## [1.1.0] - 2023-03-29
+
+### Added
+
+- Uses `import` instead `request` if using es6.
+
 ## [1.0.4] - 2020-12-22
 
 ### Fixed

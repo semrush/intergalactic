@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.3.5] - 2023-03-24
+## [3.3.9] - 2023-04-11
+
+### Fixed
+
+- Fixed `aria-posinset` attribute value generation.
+
+## [3.3.8] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/neighbor-location` [3.1.20 ~> 3.1.21], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/neighbor-location` [3.1.23 ~> 3.1.24], `@semcore/utils` [3.49.1 ~> 3.50.0]).
 
 ## [3.3.0] - 2023-02-23
 

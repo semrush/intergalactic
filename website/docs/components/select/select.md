@@ -62,7 +62,7 @@ The select trigger can contain an icon, flag or other addon before the text.
 
 [Dot](/components/dot/) should be placed in the upper right corner of the trigger.
 
-|        | Button                             | Link as Button                              | Link with the color of text                  |
+|        | Button                             | Link as Button                              | Link (as Button) with the color of text                  |
 | ------ | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
 | Flag   | ![flag](static/flag-primary.png)   | ![flag-secondary](static/inline-flag.png)   | ![flag-tertiary](static/tertiary-flag.png)   |
 | Icon   | ![icon](static/icon-primary.png)   | ![icon-secondary](static/inline-icon.png)   | ![icon-tertiary](static/tertiary-icon.png)   |
@@ -87,11 +87,11 @@ If the list includes more than 10 values, add a search input. Otherwise, it will
 
 ### Select all
 
-If you have more than three values, add the `Select all` option at the very beginning of the list. When everything is selected, change it to `Deselect all`.
+If you have more than three values, add the "Select all" option at the very beginning of the list. When everything is selected, change it to "Deselect all".
 
 ![multiselect scroll](static/multiselect-all.png)
 
-@## Work of multiselect
+@## Specific cases for multiselect
 
 In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
 
@@ -106,18 +106,18 @@ In long lists (for example, in the list of countries), the values selected by th
 | If nothing is selected, write `Select` + the required value.                                                                         | ![multiselect trigger](static/multiselect-trigger-1.png) |
 | If everything is selected, write `All`.                                                                                              | ![multiselect trigger](static/multiselect-trigger-2.png) |
 | If user selected 1 or 2 values, show them in the trigger listing them with commas. If they do not match, add the text in `ellipsis`. | ![multiselect trigger](static/multiselect-trigger-3.png) |
-| **The select has a label**. If more than 2 values are selected, add them to the Label: `N selected` construction.                    | ![multiselect trigger](static/multiselect-trigger-5.png) |
-| **The select does not have a label**. If more than 2 values are selected, add them to the `N selected` construction.                 | ![multiselect trigger](static/multiselect-trigger-4.png) |
+| **The select has a label**. If more than 2 values are selected, add them to the Label: `N selected` construction.                    | ![multiselect trigger](static/multiselect-trigger-4.png) |
+| **The select does not have a label**. If more than 2 values are selected, add them to the `N selected` construction.                 | ![multiselect trigger](static/multiselect-trigger-5.png) |
 
 ### Search
 
-If user searches for something and clicks `Select all` or `Deselect all`, all found results will be selected or deselected. Other values, those that have not been searched for, do not change their state.
+If user searches for something and clicks "Select all" or "Deselect all", all found results will be selected or deselected. Other values, those that have not been searched for, do not change their state.
 
-For example, if the user has selected the "Gunship" and then search for the "A" bands, then clicked `Select all`, three more visible bands will be selected. As a result, four values will be marked as selected (three bands that started with "A" and the previously checked "Gunship").
+For example, if the user has selected the "Gunship" and then search for the "A" bands, then clicked "Select all", three more visible bands will be selected. As a result, four values will be marked as selected (three bands that started with "A" and the previously checked "Gunship").
 
 ![multiselect with search results](static/multiselect-something-found.png)
 
-Do not show `Select all` or `Deselect all` at the time when the user has searched and got no results.
+Do not show "Select all" or "Deselect all" at the time when the user has searched and got no results.
 
 ![multiselect with no data](static/multiselect-nothing-found.png)
 
@@ -125,8 +125,9 @@ Do not show `Select all` or `Deselect all` at the time when the user has searche
 
 - Sometimes user selection can be limited by the number of required values.
 - In this case, once the user has selected the required number, all other values should receive the `disabled` status.
+- Inform the user that the choice is limited. This can be done, for example, by putting a hint next to the input's label. Also you can add a tooltip to the values in the `disabled` state that explains why they are in this state.
 
-> Do not forget to inform the user that the choice is limited. This can be done, for example, by putting a hint next to input. Also you can add a tooltip to the values in the `disabled` state that explains why they are in this state.
+> We recommend hiding the "Select all" and "Deselect all" buttons for the lists with limitations, because for such cases user cannot select or deselect all options due to limitations.
 
 ![multiselect limit](static/multiselect-limit.png)
 

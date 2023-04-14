@@ -10,10 +10,10 @@ title: Table states
 
 Message with a loading or error state must have `margin-top: 40px`, so that when the user changes the size of the viewport, the message does not "stick" to table header.
 
-|                                                       | First screen                                              | The state of the page scrolling                           |
-| ----------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| Example with [Progressbar](/components/progress-bar/) | ![table with sticky progressbar](static/sticky-1.png)     | ![table with sticky progressbar](static/sticky-2.png)     |
-| Example with [Spin](/components/spin/)                | ![table with sticky spinner](static/sticky-loading-1.png) | ![table with sticky spinner](static/sticky-loading-2.png) |
+|                                                       | First screen                                                | The state of the page scrolling                             |
+| ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| Example with [Progressbar](/components/progress-bar/) | ![table with sticky progressbar](static/table-sticky-1.png) | ![table with sticky progressbar](static/table-sticky-2.png) |
+| Example with [Spin](/components/spin/)                | ![table with sticky spinner](static/sticky-loading-1.png)   | ![table with sticky spinner](static/sticky-loading-2.png)   |
 
 > It is also not recommended to change the table height when switching between states.
 
@@ -31,7 +31,7 @@ We recommend using the skeleton to show only the first three rows, not the entir
 
 > Don't show [Pagination](/components/pagination/) when loading the table for the first time.
 
-![table with skeleton](static/skeleton.png)
+![table with skeleton](static/table-skeleton.png)
 
 In a secondary table, you can show the skeleton for all the rows (there are usually no more than 5-10 rows).
 
@@ -43,11 +43,11 @@ If gathering data takes a large period of time **(more than 1 minute, for exampl
 
 A message with a progressbar gets [`sticky` property](/components/sticky/) and is centered relative to the screen that the user scrolls.
 
-![table with sticky progressbar](static/sticky-1.png)
+![table with sticky progressbar](static/table-sticky-1.png)
 
 When scrolling the table, fix the progressbar to the table header. The message remains centered relative to the user's viewport.
 
-![table with sticky progressbar](static/sticky-2.png)
+![table with sticky progressbar](static/table-sticky-2.png)
 
 @## Loading
 

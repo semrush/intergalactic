@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.1] - 2023-04-03
+
+### Fixed
+
+- Nested animation might take initial keyframe from animated parent component in some cases.
+
+## [1.10.0] - 2023-03-27
+
+### Added
+
+- Animation context that allows children components react to parent animation execution.
+
+## [1.9.9] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.0 ~> 3.49.1]).
+
+## [1.9.8] - 2023-03-24
+
+### Added
+
+- Added `pointer-events` properties to scale group `keyframes` to avoid problems with overlapping elements and changing the cursor.
+
 ## [1.9.7] - 2023-03-24
 
 ### Changed

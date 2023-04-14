@@ -8,6 +8,7 @@ import { Box } from '@semcore/flex-box';
 import Portal from '@semcore/portal';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 
 import style from './style/dot.shadow.css';
 
@@ -46,7 +47,9 @@ class Dot extends Component {
       map: Number.parseInt,
       prop: 'duration',
     }),
+    contextThemeEnhance((props) => !props.hidden),
   ];
+  ref = React.createRef();
 
   render() {
     const SDot = Root;

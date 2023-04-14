@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.2.9] - 2023-03-24
+## [1.2.16] - 2023-04-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.4.1 ~> 5.4.2]).
+
+## [1.2.15] - 2023-04-11
+
+### Changed
+
+- Added React 18 to the peer dependencies.
+
+## [1.2.14] - 2023-04-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.3.24 ~> 5.4.0]).
 
 ## [1.2.1] - 2023-02-16
 

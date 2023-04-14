@@ -99,7 +99,7 @@ When dragging, the axis is not restricted, allowing the element to be moved anyw
 | dragging | ![](static/drag-card.png) ![](static/drag-table2.png) | Hovering over the area where an element can be dropped changes its color. When dragging an object in a list of similar objects, they are separated, and the drop zone changes the background color to `--bg-secondary-neutral-hover`.       |
 | no-drop  | ![](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                             |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 This component imitates physically dragging objects, so keep the following in mind when implementing it:
 

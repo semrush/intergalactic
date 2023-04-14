@@ -77,7 +77,7 @@ class DropdownMenuRoot extends Component {
       id: `igc-${uid}-trigger`,
       'aria-controls': `igc-${uid}-popper`,
       'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
-      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
       'aria-activedescendant': highlightedIndex,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
@@ -94,13 +94,15 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
 
     return {
       tabIndex: 0,
       onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
       'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
+      disablePortal,
+      ignorePortalsStacking,
     };
   }
 

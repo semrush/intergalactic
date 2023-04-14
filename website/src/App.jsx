@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './App.module.css';
 import { BrowserRouter, StaticRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
@@ -7,6 +7,7 @@ import iconRotate from 'static/favicon/favicon-rotate.png';
 import './main.css';
 import { HappyNewYear } from './components/HappyNewYear';
 import { initAmplitude } from './utils/amplitude';
+import { THEME_STORAGE_KEY, getThemePreference, addTheme } from './utils/theme';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -44,6 +45,17 @@ const Router = !globalThis.__ssr
     };
 
 export function App() {
+  const [currentTheme, setCurrentTheme] = useState(getThemePreference());
+
+  useEffect(() => {
+    addTheme();
+  }, [currentTheme]);
+
+  const setTheme = (theme) => {
+    setCurrentTheme(theme);
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  };
+
   return (
     <>
       <Helmet>
@@ -62,7 +74,7 @@ export function App() {
           <a className={styles.skipToContent} href="#main-content">
             Skip to content
           </a>
-          <Header />
+          <Header theme={currentTheme} setTheme={setTheme} />
           <Switch>
             <Route exact path="/">
               <Home />

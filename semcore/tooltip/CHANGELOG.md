@@ -2,11 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.3.20] - 2023-03-24
+## [5.4.2] - 2023-04-11
+
+### Fixed
+
+- Turn `aria-haspopup` to `false` for Tooltip with `hover=interaction`.
+
+## [5.4.1] - 2023-04-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/popper` [4.16.8 ~> 4.16.9]).
+- Tooltip with `hover=interaction` content is duplicated into screen-reader-only block.
+
+## [5.3.24] - 2023-03-28
+
+### Fixed
+
+- Fixed tooltip border color for default theme.
+
+## [5.3.23] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/popper` [4.16.11 ~> 4.16.12]).
 
 ## [5.3.15] - 2023-03-09
 

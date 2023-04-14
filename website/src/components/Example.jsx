@@ -5,6 +5,8 @@ import Copy from './Copy';
 import Sandbox from './Sandbox';
 import CopyS from '@semcore/icon/Copy/m';
 import { logEvent } from '../utils/amplitude';
+import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
 
 class Example extends React.PureComponent {
   render() {
@@ -19,9 +21,11 @@ class Example extends React.PureComponent {
     };
     return (
       <div className={`example ${styles.exampleWrapper}`}>
-        <div className={styles.view} tabIndex={0}>
-          {children}
-        </div>
+        <ThemeProvider tokens={lightThemeTokens}>
+          <div className={styles.view} tabIndex={0} role="group">
+            {children}
+          </div>
+        </ThemeProvider>
         <div className={styles.codeView}>
           <div className={styles.codeViewControls}>
             <div className={styles.codeViewControlsParent}>

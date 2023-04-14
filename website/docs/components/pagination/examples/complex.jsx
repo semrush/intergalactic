@@ -3,23 +3,15 @@ import Pagination from '@semcore/ui/pagination';
 import { Text } from '@semcore/ui/typography';
 import Select from '@semcore/ui/select';
 
-const TOTAL_PAGE_COUNT = 122360;
+const pageCount = 122360;
 
 const Demo = () => {
-  const [pageRangeDisplayed, updatePageRangeDisplayed] = useState(10);
   const [currentPage, updateCurrentPage] = useState(1);
-
-  const handleSelect = (value) => {
-    updatePageRangeDisplayed(value);
-    updateCurrentPage(1);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateCurrentPage(currentPage);
   };
-
-  const pageCount = Math.round(TOTAL_PAGE_COUNT / pageRangeDisplayed);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -34,11 +26,6 @@ const Demo = () => {
         <Pagination.NextPage />
         <Pagination.PageInput />
         <Pagination.TotalPages mr={4} />
-        <Select
-          value={pageRangeDisplayed}
-          onChange={handleSelect}
-          options={[80, 40, 20, 10].map((value) => ({ value, children: value }))}
-        />
       </Pagination>
     </form>
   );

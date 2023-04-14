@@ -76,6 +76,11 @@ export interface ISlideProps extends IAnimationProps {
   slideOrigin?: 'top' | 'bottom' | 'left' | 'right';
 }
 
+type DisposeSubscription = () => void;
+declare const animationContext: React.Context<{
+  onAnimationStart: (callback: () => void) => DisposeSubscription;
+  onAnimationEnd: (callback: () => void) => DisposeSubscription;
+}>;
 declare const Animation: <T>(props: CProps<IAnimationProps & T>) => ReturnEl;
 declare const Collapse: <T>(props: CProps<ICollapseProps & T>) => ReturnEl;
 declare const FadeInOut: <T>(props: CProps<IFadeInOutProps & T>) => ReturnEl;
@@ -83,4 +88,4 @@ declare const Transform: <T>(props: CProps<ITransformProps & T>) => ReturnEl;
 declare const Scale: <T>(props: CProps<IScaleProps & T>) => ReturnEl;
 declare const Slide: <T>(props: CProps<ISlideProps & T>) => ReturnEl;
 
-export { Animation, Collapse, FadeInOut, Transform, Scale, Slide };
+export { Animation, Collapse, FadeInOut, Transform, Scale, Slide, animationContext };

@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.24] - 2023-03-24
+## [3.5.29] - 2023-04-11
+
+### Fixed
+
+- Fixed "confirm" icon keyboard navigation.
+
+## [3.5.28] - 2023-03-28
+
+### Added
+
+- Added design tokens to `TotalPages` component.
+
+## [3.5.27] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/button` [4.3.14 ~> 4.3.15], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/icon` [3.14.2 ~> 3.14.3], `@semcore/input` [3.5.14 ~> 3.5.15], `@semcore/link` [4.3.17 ~> 4.3.18], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.17 ~> 4.3.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/icon` [3.14.5 ~> 3.14.6], `@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/link` [4.3.20 ~> 4.3.21], `@semcore/utils` [3.49.1 ~> 3.50.0]).
 
 ## [3.5.17] - 2023-03-01
 

@@ -79,7 +79,7 @@ Depending on the usage context, place a counter above or near the progress bar.
 
 Progress value is always animated with `ease-in`.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### When to use ProgressBar
 

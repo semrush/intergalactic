@@ -7,7 +7,7 @@ import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
 
-export interface IInputTagsValueProps extends IInputValueProps { }
+export interface IInputTagsValueProps extends IInputValueProps {}
 
 export type InputTagsSize = 'l' | 'm';
 
@@ -80,6 +80,17 @@ class InputTags extends Component<IInputTagsProps> {
       event.preventDefault();
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
+      if (typeof this._input.current?.scrollIntoView === 'function') {
+        setTimeout(() => {
+          if (typeof this._input.current?.scrollIntoView === 'function') {
+            this._input.current.scrollIntoView({
+              block: 'nearest',
+              inline: 'nearest',
+              behavior: 'smooth',
+            });
+          }
+        }, 0);
+      }
     }
 
     if (key === 'Backspace' && !value) {
@@ -104,6 +115,17 @@ class InputTags extends Component<IInputTagsProps> {
         onAdd?.(tag, event);
       }
       onAppend?.(tagsToBeAdded, event);
+    }
+    if (typeof this._input.current?.scrollIntoView === 'function') {
+      setTimeout(() => {
+        if (typeof this._input.current?.scrollIntoView === 'function') {
+          this._input.current.scrollIntoView({
+            block: 'nearest',
+            inline: 'nearest',
+            behavior: 'smooth',
+          });
+        }
+      }, 0);
     }
   };
 
@@ -132,13 +154,7 @@ class InputTags extends Component<IInputTagsProps> {
     const { Children, styles } = this.asProps;
 
     return sstyled(styles)(
-      <SInputTags
-        render={Input}
-        tag={ScrollArea}
-        onMouseDown={this.setFocusInput}
-        role="list"
-        tabIndex={0}
-      >
+      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput} role="list">
         <Children />
       </SInputTags>,
     );

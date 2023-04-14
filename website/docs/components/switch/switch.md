@@ -56,7 +56,7 @@ Switch has three possible states: off, on, and disabled. To change the state, us
 | on       | ![on switch](static/on-success.png) ![on switch](static/on-info.png)                    | `background: var(--control-primary-success)` или `background: var(--control-primary-info)`           |
 | Disabled | ![disabled switch](static/disabled.png) ![disabled switch](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/) token. |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 **Use positive language for text labels in the Switch** to make it clear what interface will do if user enables the toggle.
 

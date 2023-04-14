@@ -106,5 +106,9 @@
     "braces": "3.0.2",
     "@babel/runtime": "7.19.0",
     "@babel/core": "7.19.1"
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": "7"
   }
 }

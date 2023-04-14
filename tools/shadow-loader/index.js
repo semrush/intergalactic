@@ -13,7 +13,7 @@ let cacheDirectory;
 let options;
 
 const makeLoader = (loader) =>
-  function (...args) {
+  function(...args) {
     // Make the loader async
     const callback = this.async();
     loader.apply(this, args).then(
@@ -75,6 +75,8 @@ async function loader(source) {
 
   const { resourcePath } = this;
   const queue = [];
+  const es6Mode = /^import /m.test(source);
+  const styleImports = [];
   const result = source
     .replace(
       // Regexp below should match on the CSS code from strings like that:
@@ -103,11 +105,12 @@ async function loader(source) {
         queue.push(
           writeModule(
             filepath,
-            code.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n'),
+            code.replace(/\\"/g, '"').replace(/\\'/g, '\'').replace(/\\n/g, '\n'),
           ),
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
-        return `require('${requirePath}')`;
+        styleImports.push(requirePath);
+        return `undefined`;
       },
     )
     .replace(/\/\*__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {
@@ -116,7 +119,7 @@ async function loader(source) {
         basedir: path.dirname(resourcePath),
       });
       this.dependency(depPath);
-      return '';
+      return es6Mode ? `import '${styleImports.shift()}';` : `require('${styleImports.shift()}')`;
     });
   await Promise.all(queue);
   // sourcemap breaks the out code. That's why it's disabled :(

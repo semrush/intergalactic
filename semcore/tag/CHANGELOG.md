@@ -2,19 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.4.25] - 2023-03-24
+## [4.4.29] - 2023-04-11
+
+### Fixed
+
+- Non-interactive tags are not focusable by keyboard now.
+
+## [4.4.28] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/icon` [3.14.2 ~> 3.14.3], `@semcore/flex-box` [4.7.14 ~> 4.7.15]).
-
-## [4.4.18] - 2023-03-01
-
-## [4.4.17] - 2023-02-24
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/icon` [3.14.5 ~> 3.14.6], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
 
 ## [4.4.16] - 2023-02-22
 

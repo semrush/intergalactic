@@ -39,14 +39,14 @@ class Demo extends React.PureComponent {
               indeterminate={this.indeterminate(checked)}
               checked={checked.indexOf(false) < 0}
             />
-            <Checkbox.Text>All</Checkbox.Text>
+            <Checkbox.Text>Select all</Checkbox.Text>
           </Checkbox>
         </div>
         {checked.map((_, i) => (
           <div key={i}>
             <Checkbox mb={3}>
               <Checkbox.Value id={i} checked={checked[i]} onChange={this.item} />
-              <Checkbox.Text>{`Пункт ${i + 1}`}</Checkbox.Text>
+              <Checkbox.Text>{`Option ${i + 1}`}</Checkbox.Text>
             </Checkbox>
           </div>
         ))}

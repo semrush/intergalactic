@@ -140,7 +140,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![histogram skeleton](static/hor-skeleton.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - Start the columns from zero.
 - By comparing columns, we are actually comparing the length. If we do not start the scale from zero, there will be a visual illusion.

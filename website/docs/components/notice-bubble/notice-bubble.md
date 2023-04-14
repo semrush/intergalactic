@@ -119,7 +119,7 @@ A notification that is designed for various events, holidays, etc. You can anima
 - The alert closes on a timer after 5 seconds. The delay value can be changed depending on the amount of text in the alert.
 - Optionally, some notifications can be left until the user closes them.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### General
 

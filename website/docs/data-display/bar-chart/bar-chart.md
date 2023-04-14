@@ -74,7 +74,7 @@ If there is only one category of values in the bar chart, you don't need legend.
 
 A bar chart may have a trend line. Most often, trend line overloads charts. However, in some cases, it can be useful for reading the overall trend.
 
-![bar chart with trend](static/trend.png)
+![bar chart with trend](static/bar-trend.png)
 
 When you hover over any part of the column, the tooltip shall display all values of the bar item and the total value for the trend.
 
@@ -95,7 +95,7 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### Start the axes from zero
 

@@ -87,7 +87,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 > If the slider knob has focus, the user can move it with the keyboard arrows — '←', '→'.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### When to use the slider
 

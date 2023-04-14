@@ -3,11 +3,12 @@ import { createPortal } from 'react-dom';
 import createComponent, { IFunctionProps, register } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { getNodeByRef, NodeByRef } from '@semcore/utils/lib/ref';
-import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
 export interface IPortalProps {
   /** Disables children rendering in React portal */
   disablePortal?: boolean;
+  /** Disabled attaching portals to the parent portals and enabling attaching directly to document.body */
+  ignorePortalsStacking?: boolean;
 }
 
 const PortalContext = register.get(
@@ -17,23 +18,23 @@ const PortalContext = register.get(
 );
 
 function Portal(props: IFunctionProps<IPortalProps>) {
-  const { Children, disablePortal } = props;
+  const { Children, disablePortal, ignorePortalsStacking } = props;
   const container = useContext(PortalContext);
-  const [mountNode, setMountNode] = useState(getNodeByRef(container));
-  const childrenRef = React.useRef(null);
-  useContextTheme(childrenRef);
+  const [mountNode, setMountNode] = useState(
+    ignorePortalsStacking ? document.body : getNodeByRef(container),
+  );
 
   useEffect(() => {
     if (!disablePortal) {
-      setMountNode(getNodeByRef(container));
+      setMountNode(ignorePortalsStacking ? document.body : getNodeByRef(container));
     }
   }, [container, disablePortal]);
 
   if (disablePortal) {
-    return <Children ref={childrenRef} />;
+    return <Children />;
   }
 
-  return mountNode ? createPortal(<Children ref={childrenRef} />, mountNode) : null;
+  return mountNode ? createPortal(<Children />, mountNode) : null;
 }
 
 Portal.displayName = 'Portal';

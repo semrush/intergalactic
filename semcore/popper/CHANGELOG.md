@@ -2,6 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.17.2] - 2023-04-03
+
+### Fixed
+
+- `interaction=hover` poppers now might be triggered by keyboard focus (but not mouse focus).
+
+## [4.17.1] - 2023-04-03
+
+### Changed
+
+- Moved screen reader hint from `aria-label` attribute to `aria-live="polite"` alert block.
+- Improved keyboard navigation on exit from focus-triggered popovers.
+
+## [4.16.12] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/neighbor-location` [3.1.23 ~> 3.1.24], `@semcore/outside-click` [2.5.22 ~> 2.5.23], `@semcore/portal` [2.5.17 ~> 2.6.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [4.16.10] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes in poppers.
+
 ## [4.16.9] - 2023-03-24
 
 ### Changed

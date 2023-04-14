@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.2.27] - 2023-03-24
+## [2.2.32] - 2023-04-13
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/flex-box` [4.7.14 ~> 4.7.15]).
+- Default title tag switched from `h4` to `h2` without changing visual representation.
+
+## [2.2.31] - 2023-04-12
+
+### Fixed
+
+- Fixed ability to control from keyboard for `Close` and `Back`.
+
+## [2.2.30] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
 
 ## [2.2.19] - 2023-03-01
 

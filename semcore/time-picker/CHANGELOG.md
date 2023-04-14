@@ -2,11 +2,23 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.33] - 2023-03-24
+## [3.4.40] - 2023-04-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/button` [4.3.14 ~> 4.3.15], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/input` [3.5.14 ~> 3.5.15], `@semcore/select` [3.5.7 ~> 3.5.8], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.18 ~> 4.3.19]).
+
+## [3.4.37] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to `Separator` component.
+
+## [3.4.36] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.17 ~> 4.3.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/select` [3.5.10 ~> 3.5.11], `@semcore/utils` [3.49.1 ~> 3.50.0]).
 
 ## [3.4.22] - 2023-03-01
 

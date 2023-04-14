@@ -42,8 +42,8 @@ All checkbox sizes can be used with the corresponding text paragraphs.
 
 | Checkbox size (px) | Paragraph size (px)                        | Appearance example                |
 | ------------------ | -------------------------------------- | -------------------------------------- |
-| M (16px * 16px)   | 14px (use `--fs-200, --lh-200` tokens) | ![](static/paragraph-m.png) |
-| L (20px * 20px)   | 16px (use `--fs-300, --lh-300` tokens) | ![](static/paragraph-l.png) |
+| M (16px * 16px)   | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
+| L (20px * 20px)   | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
 @## Checkbox with Info icon
 
@@ -115,7 +115,7 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 
 ![](static/select-all.png) ![](static/deselect-all.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 

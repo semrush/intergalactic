@@ -51,80 +51,96 @@
   from {
     opacity: 0;
     transform: translateX(20px) scaleX(0.9);
+    pointer-events: none;
   }
   to {
     opacity: 1;
     transform: translateX(0px) scaleX(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-right-in {
   from {
     opacity: 0;
     transform: translateX(-20px) scaleX(0.9);
+    pointer-events: none;
   }
   to {
     opacity: 1;
     transform: translateX(0px) scaleX(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-top-in {
   from {
     opacity: 0;
     transform: translateY(20px) scaleY(0.9);
+    pointer-events: none;
   }
   to {
     opacity: 1;
     transform: translateY(0px) scaleY(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-bottom-in {
   from {
     opacity: 0;
     transform: translateY(-20px) scaleY(0.9);
+    pointer-events: none;
   }
   to {
     opacity: 1;
     transform: translateY(0px) scaleY(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-left-out {
   to {
     opacity: 0;
     transform: translateX(20px) scaleX(0.9);
+    pointer-events: none;
   }
   from {
     opacity: 1;
     transform: translateX(0px) scaleX(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-right-out {
   to {
     opacity: 0;
     transform: translateX(-20px) scaleX(0.9);
+    pointer-events: none;
   }
   from {
     opacity: 1;
     transform: translateX(0px) scaleX(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-top-out {
   to {
     opacity: 0;
     transform: translateY(20px) scaleY(0.9);
+    pointer-events: none;
   }
   from {
     opacity: 1;
     transform: translateY(0px) scaleY(1);
+    pointer-events: all;
   }
 }
 @keyframes scale-bottom-out {
   to {
     opacity: 0;
     transform: translateY(-20px) scaleY(0.9);
+    pointer-events: none;
   }
   from {
     opacity: 1;
     transform: translateY(0px) scaleY(1);
+    pointer-events: all;
   }
 }
 @keyframes slide-top-in {

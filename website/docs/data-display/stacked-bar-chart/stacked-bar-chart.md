@@ -55,7 +55,7 @@ Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-d
 
 See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart-vertical/#ac26f2).
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 See detailed information in the [Bar chart guide](/data-display/bar-chart/#a1d837).
 

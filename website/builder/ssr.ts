@@ -34,6 +34,7 @@ const ensureDir = async (path: string) => {
 
 const outputDir = resolvePath('dist');
 const publicDir = resolvePath('src/public');
+const themesDir = resolvePath('../semcore/utils/src/themes');
 const specialRoutes = ['', 'contacts/contact-info', 'not-found'];
 
 await fs.rm(outputDir, { force: true, recursive: true });
@@ -59,10 +60,14 @@ await esbuild.build({
 
 const jsMain = await fs.readFile(resolvePath(outputDir, 'main-hydrate.js'), 'utf-8');
 const cssMain = await fs.readFile(resolvePath(outputDir, 'main-hydrate.css'), 'utf-8');
+const cssLightTheme = await fs.readFile(resolvePath(themesDir, 'light.css'), 'utf-8');
+const cssDarkTheme = await fs.readFile(resolvePath(themesDir, 'dark.css'), 'utf-8');
 const jsFileHash = createHash('md5').update(jsMain).digest('hex').substring(0, 8);
 const cssFileHash = createHash('md5').update(cssMain).digest('hex').substring(0, 8);
 await fs.writeFile(resolvePath(outputDir, `main-${jsFileHash}.js`), jsMain);
 await fs.writeFile(resolvePath(outputDir, `main-${cssFileHash}.css`), cssMain);
+await fs.writeFile(resolvePath(outputDir, `light-${cssFileHash}.css`), cssLightTheme);
+await fs.writeFile(resolvePath(outputDir, `dark-${cssFileHash}.css`), cssDarkTheme);
 
 const outputAssetsBySrcPath = {};
 const outputs = buildResults.metafile.outputs;
@@ -172,6 +177,8 @@ const renderPage = async (route, navigationNode?) => {
     .replace('/*--%ssr-js-entry%--*/', codeEntry)
     .replace('/main-render.css', process.env.PUBLIC_PATH + `main-${cssFileHash}.css`)
     .replace('/main-render.js', process.env.PUBLIC_PATH + `main-${jsFileHash}.js`)
+    .replace('/light.css', process.env.PUBLIC_PATH + `light-${cssFileHash}.css`)
+    .replace('/dark.css', process.env.PUBLIC_PATH + `dark-${cssFileHash}.css`)
     .replace('/social.png', process.env.PUBLIC_PATH + 'social.png');
 
   return html;

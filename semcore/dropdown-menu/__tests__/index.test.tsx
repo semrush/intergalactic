@@ -175,7 +175,7 @@ describe('DropdownMenu', () => {
   test('a11y', async () => {
     const { container } = render(
       <DropdownMenu visible disablePortal>
-        <DropdownMenu.Trigger>trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger aria-label="dropdown menu trigger">trigger</DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>item 1</DropdownMenu.Item>
         </DropdownMenu.Menu>

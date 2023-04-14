@@ -101,6 +101,10 @@ export const formatValue = (
     return String((value as React.FC).displayName);
   }
 
+  if (value === undefined || value === null) {
+    return intl.formatMessage({ id: 'data-not-available' });
+  }
+
   return String(value);
 };
 

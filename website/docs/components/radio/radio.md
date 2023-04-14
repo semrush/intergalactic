@@ -36,8 +36,8 @@ All radiobutton sizes can be used with the corresponding text paragraphs.
 
 | Radio button size (px) | Paragraph size (px)                        | Appearance example                             |
 | ---------------------- | -------------------------------------- | --------------------------------------------------- |
-| M (16px * 16px)       | 14px (use `--fs-200, --lh-200` tokens) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
-| L (20px * 20px)       | 16px (use `--fs-300, --lh-300` tokens) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
+| M (16px * 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
+| L (20px * 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
 
 @## Radiobutton with Info icon
 
@@ -75,7 +75,7 @@ Text label may contain a [Link](/components/link).
 | Disabled  | ![disabled-radiobutton](static/radiobutton-disabled.png) |
 | Invalid   | ![invalid-radiobutton](static/radiobutton-invalid.png)   |
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 - **Use positive language for radiobutton labels** to clarify the action taken when the radiobutton is enabled.

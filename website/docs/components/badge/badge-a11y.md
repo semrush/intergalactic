@@ -3,9 +3,8 @@ title: A11y
 a11y: AA
 ---
 
-@## Resources
 
-[W3 area-hidden example](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) has detailed information about which elements to hide.
+Do not hide the badges from assistive technology users with the `aria-hidden` attribute.
 
 @## Other recommendations
 

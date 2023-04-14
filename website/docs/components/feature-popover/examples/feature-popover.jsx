@@ -9,7 +9,7 @@ const Demo = () => {
   const changeVisible = (visible) => () => updateVisible(visible);
 
   return (
-    <FeaturePopover visible={visible} onVisibleChange={updateVisible}>
+    <FeaturePopover visible={visible} onVisibleChange={updateVisible} disablePortal>
       <FeaturePopover.Trigger>
         <Button>
           Open Popover
@@ -29,7 +29,7 @@ const Demo = () => {
             }}
           />
           <div>
-            <Text size={300} bold tag="p" mb={1}>
+            <Text size={300} bold tag="h3" mb={1}>
               Work with your team!
             </Text>
             <Text mb={4} size={200} tag="p">

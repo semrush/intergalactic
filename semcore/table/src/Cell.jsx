@@ -5,6 +5,11 @@ import SortAsc from '@semcore/icon/SortAsc/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import Context from './context';
 
+const SORTING_ICON = {
+  desc: SortDesc,
+  asc: SortAsc,
+};
+
 function RootCell(props, ref) {
   const SCell = Text;
   const { valign = 'top', align: alignProps = 'left', textAlign, use, styles, ...other } = props;
@@ -53,9 +58,8 @@ function CellHeadInner(props, ref) {
   const SCellHead = Cell;
   const SCellHeadContent = 'div';
   const SSortWrapper = 'div';
-  const SCellHeadIconAsc = SortAsc;
-  const SCellHeadIconDesc = SortDesc;
-  const { styles, children, sorting, active, align } = props;
+  const { styles, children, sorting, active } = props;
+  const SSortIcon = SORTING_ICON[sorting];
 
   return sstyled(styles)(
     <SCellHead
@@ -63,15 +67,13 @@ function CellHeadInner(props, ref) {
       tag="th"
       noWrap
       tabIndex={sorting && 0}
-      sortIconFloat={align === 'right'}
       {...props}
     >
       <SCellHeadContent>
         {children}
         {sorting && (
           <SSortWrapper>
-            {sorting === 'asc' && <SCellHeadIconAsc active={active} />}
-            {sorting === 'desc' && <SCellHeadIconDesc active={active} />}
+            <SSortIcon active={active}/>
           </SSortWrapper>
         )}
       </SCellHeadContent>

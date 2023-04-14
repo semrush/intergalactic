@@ -2,11 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.4.26] - 2023-03-24
+## [4.4.31] - 2023-04-03
+
+## [4.4.30] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to the component.
+
+## [4.4.29] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.6 ~> 1.9.7], `@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/icon` [3.14.2 ~> 3.14.3]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/icon` [3.14.5 ~> 3.14.6]).
 
 ## [4.4.19] - 2023-03-01
 

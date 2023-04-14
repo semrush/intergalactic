@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.8] - 2023-03-24
+## [3.6.1] - 2023-04-04
+
+### Added
+
+- Return focus to trigger when option is selected.
+
+## [3.5.13] - 2023-04-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.10 ~> 3.5.11], `@semcore/checkbox` [6.4.5 ~> 6.4.6], `@semcore/divider` [3.2.14 ~> 3.2.15], `@semcore/dropdown-menu` [3.6.20 ~> 3.6.21], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/icon` [3.14.2 ~> 3.14.3], `@semcore/input` [3.5.14 ~> 3.5.15], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+- Version patch update due to children dependencies update (`@semcore/checkbox` [6.4.9 ~> 6.4.10], `@semcore/dropdown-menu` [3.6.25 ~> 3.6.26]).
 
 ## [3.5.6] - 2023-03-23
 

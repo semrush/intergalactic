@@ -2,23 +2,29 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.5.15] - 2023-03-24
+## [2.6.0] - 2023-03-27
 
-### Fixed
+### Added
 
-- Design tokens based theme may leak to the whole page while applied to portal based components such as dropdowns, tooltips and modals.
+- Supported ignoring parent portals nesting via `ignorePortalsStacking`.
+
+## [2.5.17] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.0 ~> 3.49.1]).
+
+## [2.5.16] - 2023-03-24
+
+### Removed
+
+- Non-working portalled local theme reapplying.
 
 ## [2.5.14] - 2023-03-24
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1]).
-
-## [2.5.7] - 2023-02-09
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [2.5.4] - 2023-01-10
 
