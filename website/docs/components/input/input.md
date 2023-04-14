@@ -26,8 +26,8 @@ Our input has two sizes.
 
 | Size (height in px) | Appearance example                       |
 | ------------------- | ---------------------------------------- |
-| M (28px)            | ![input-m no-margin](static/input-m.png) |
-| L (40px)            | ![input-l no-margin](static/input-l.png) |
+| M (28px)            | ![](static/input-m.png) |
+| L (40px)            | ![](static/input-l.png) |
 
 @## Content and addons
 
@@ -38,20 +38,20 @@ Our input has two sizes.
 
 | Size | Icon size                                            | Addon's indents                                  | Addon's minimum width                          |
 | ---- | ---------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------- |
-| M    | M size ![addon-m no-margin](static/addon-m-icon.png) | ![addon-m no-margin](static/addon-m-padding.png) | ![addon-m no-margin](static/addon-m-width.png) |
-| L    | M size ![addon-l no-margin](static/addon-l-icon.png) | ![addon-l no-margin](static/addon-l-padding.png) | ![addon-l no-margin](static/addon-l-width.png) |
+| M    | M size ![](static/addon-m-icon.png) | ![](static/addon-m-padding.png) | ![](static/addon-m-width.png) |
+| L    | M size ![](static/addon-l-icon.png) | ![](static/addon-l-padding.png) | ![](static/addon-l-width.png) |
 
 > If two addons are stacked together, their indents will divide in half to maintain the good clickable zone around them.
 
-![padding-collapse](static/padding_collapse.png)
+![](static/padding_collapse.png)
 
 @## Interaction
 
 | State   | Normal                                               | Focus                                                            | Disabled                                                               | Read-only                                              |
 | ------- | ---------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ |
-| Normal  | ![input-normal no-margin](static/input-normal.png)   | ![input-normal-focus no-margin](static/input-normal-focus.png)   | ![input-normal-disabled no-margin](static/input-normal-disabled.png)   | ![input-readonly no-margin](static/input-readonly.png) |
-| Valid   | ![input-valid no-margin](static/input-valid.png)     | ![input-valid-focus no-margin](static/input-valid-focus.png)     | ![input-valid-disabled no-margin](static/input-valid-disabled.png)     |                                                        |
-| Invalid | ![input-invalid no-margin](static/input-invalid.png) | ![input-invalid-focus no-margin](static/input-invalid-focus.png) | ![input-invalid-disabled no-margin](static/input-invalid-disabled.png) |                                                        |
+| Normal  | ![](static/input-normal.png)   | ![](static/input-normal-focus.png)   | ![](static/input-normal-disabled.png)   | ![](static/input-readonly.png) |
+| Valid   | ![](static/input-valid.png)     | ![](static/input-valid-focus.png)     | ![](static/input-valid-disabled.png)     |                                                        |
+| Invalid | ![](static/input-invalid.png) | ![](static/input-invalid-focus.png) | ![](static/input-invalid-disabled.png) |                                                        |
 
 > Use `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
 >
@@ -65,7 +65,7 @@ For code examples of the input types, see [Example tab](/components/input/input-
 
 The search input has a non-clickable icon before the text and the icon for clearing the value after the text.
 
-![search input](static/search.png)
+![](static/search.png)
 
 @## Input with a counter
 
@@ -75,8 +75,8 @@ You can place [Counter](/components/counter/) inside the input or next to its la
 
 | Size (height in px) | Counter next to the input's label           | Counter inside the input                       |
 | ------------------- | ------------------------------------------- | ---------------------------------------------- |
-| M (28px)            | ![input with counter](static/counter-M.png) | ![input with counter](static/counter-in-m.png) |
-| L (40px)            | ![input with counter](static/counter-L.png) | ![input with counter](static/counter-in-l.png) |
+| M (28px)            | ![](static/counter-M.png) | ![](static/counter-in-m.png) |
+| L (40px)            | ![](static/counter-L.png) | ![](static/counter-in-l.png) |
 
 @## Usage in UX/UI
 

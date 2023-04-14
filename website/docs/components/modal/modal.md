@@ -65,7 +65,7 @@ We have several modal window types:
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
 | `Close` icon size **M**, use `--icon-secondary-neutral` token for default color, and `--icon-secondary-neutral-hover-active` for color in hover state. | ![modal close button hover](static/close-hover.png)           |
 | Paddings from top and right to the `Close` icon is 12px.                                                                                               | ![modal close button](static/close-button.png)                |
-| The cross clickable area is 48px \* 48px.                                                                                                              | ![modal close button hover zone](static/close-hover-zone.png) |
+| The cross clickable area is 48px \* 48px.                                                                                                              | ![modal close button active zone](static/close-hover-zone.png) |
 
 ### Overlay
 
@@ -74,7 +74,7 @@ We have several modal window types:
 | `--overlay-primary`                                                                           | ![modal overlay](static/modal-overlay.png)  |
 | Overlay style when opening a modal window inside another modal window – `--overlay-secondary` | ![modal in  modal](static/second-modal.png) |
 
-> Use a modal window inside another modal window (Xzibit triggers 😁) only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
+> Use a modal window inside another modal window only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
 
 @## Window size
 
@@ -112,7 +112,7 @@ You can close the modal window by:
 
 For example, data entered or changed without AutoSave in:
 
-- in the project settings pag;
+- in the project settings page;
 - in the form (payment, subscription, profile editing, etc.).
 
 > **Important**. It is recommended to save the information entered by the user when closing and re-opening the modal window.

@@ -52,7 +52,7 @@ To highlight all rows, the table header must have the main [Checkbox](/component
 
 The [Checkbox](/components/checkbox/) must have the entire cell in the table as a click zone.
 
-![checkbox hover zone](static/checkbox-hover-zone.png)
+![checkbox active zone](static/checkbox-hover-zone.png)
 
 ### Rows highlighting and pagination
 
@@ -161,8 +161,8 @@ By default, use `SortDesc`.
 
 | Case                                                                                  | Click zone                             |
 | ------------------------------------------------------------------------------------- | -------------------------------------- |
-| If there is a simple text/icon inside the cell.                                       | ![hover zone](static/hover-zone-1.png) |
-| If there is a control inside the cell (for example, a [Select](/components/select/)). | ![hover zone](static/hover-zone-2.png) |
+| If there is a simple text/icon inside the cell.                                       | ![active zone](static/hover-zone-1.png) |
+| If there is a control inside the cell (for example, a [Select](/components/select/)). | ![active zone](static/hover-zone-2.png) |
 
 ### Sorting icon styles
 

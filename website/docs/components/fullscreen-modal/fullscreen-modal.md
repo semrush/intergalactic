@@ -23,7 +23,7 @@ Fullscreen modal window consists of:
 - content;
 - fixed footer with submit and other controls (optional).
 
-![fullscreem modal](static/fullscreen-modal.png)
+![](static/fullscreen-modal.png)
 
 @## Header
 
@@ -44,11 +44,11 @@ padding: 40px 72px 8px 32px;
 border-bottom: 1px solid var(--border-primary);
 ``` -->
 
-![fullscreem modal header margins](static/header.png)
+![](static/header.png)
 
-![fullscreem modal header margins](static/header-padding.png)
+![](static/header-padding.png)
 
-![fullscreem modal header margins](static/divider.png)
+![](static/divider.png)
 
 ### Long title
 
@@ -56,7 +56,7 @@ If the title of the window is very long and it does not fit into the space, coll
 
 `Close` icon has `margin-left: var(--spacing-3x)`.
 
-![fullscreem modal](static/long-heading.png)
+![](static/long-heading.png)
 
 @## Content
 
@@ -65,13 +65,13 @@ If the title of the window is very long and it does not fit into the space, coll
 
 | Single-zone modal window                           | Dual-zone modal window                             |
 | -------------------------------------------------- | -------------------------------------------------- |
-| ![fullscreem modal](static/fullscreen-modal-3.png) | ![fullscreem modal](static/fullscreen-modal-2.png) |
+| ![](static/fullscreen-modal-3.png) | ![](static/fullscreen-modal-2.png) |
 
 ### Paddings
 
 | Single-zone modal window                 | Dual-zone modal window                     |
 | ---------------------------------------- | ------------------------------------------ |
-| ![fullscreem modal](static/paddings.png) | ![fullscreem modal](static/paddings-2.png) |
+| ![](static/paddings.png) | ![](static/paddings-2.png) |
 
 ### Content alignment
 
@@ -80,7 +80,7 @@ If the title of the window is very long and it does not fit into the space, coll
 
 | Single-zone modal window                  | Dual-zone modal window                    |
 | ----------------------------------------- | ----------------------------------------- |
-| ![fullscreem modal](static/content-1.png) | ![fullscreem modal](static/content-2.png) |
+| ![](static/content-1.png) | ![](static/content-2.png) |
 
 @## Footer
 
@@ -92,7 +92,7 @@ padding: 40px 72px 8px 32px;
 border-top: 1px solid var(--border-primary);
 ``` -->
 
-![fullscreem modal](static/footer-fixed.png)
+![](static/footer-fixed.png)
 
 @## CTA buttons
 
@@ -100,7 +100,7 @@ You can use buttons either M or L size depending on the context of the problem y
 
 > Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
 
-![fullscreem modal](static/footer-fixed2.png)
+![](static/footer-fixed2.png)
 
 @## Interaction
 
@@ -117,7 +117,7 @@ You can close the fullscreen modal window:
 
 The header and footer of the modal window should be straightened to the full width of the browser window. If necessary, the content may have a fixed width (minimum or maximum).
 
-![fullscreen modal width](static/fullscreen-yes-no.png)
+![](static/fullscreen-yes-no.png)
 
 @## Corner cases
 
@@ -125,7 +125,7 @@ The header and footer of the modal window should be straightened to the full wid
 
 When loading and reloading the content of the window, use [Spin](/components/spin) with XL size.
 
-![fullscreen modal width](static/loading.png)
+![](static/loading.png)
 
 ### Error
 
@@ -135,7 +135,7 @@ For error messages use component from [Widget empty state](/components/widget-em
 
 ### Limit
 
-![fullscreen modal limit](static/limit.png)
+![](static/limit.png)
 
 @page fullscreen-modal-a11y
 @page fullscreen-modal-api
