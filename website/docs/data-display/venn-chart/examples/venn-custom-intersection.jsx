@@ -3,7 +3,7 @@ import { colors, Plot, Venn } from '@semcore/ui/d3-chart';
 
 export default () => {
   return (
-    <Plot height={300} width={400} data={data} label="example of using venn chart with custom intersection">
+    <Plot height={300} width={400} data={data}>
       <Venn>
         <Venn.Circle dataKey="G" />
         <Venn.Circle dataKey="F" color={colors['blue-03']} />

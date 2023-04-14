@@ -17,7 +17,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <Plot scale={[xScale, yScale]} width={width} height={height} data={data} label="example of scatter plot chart with values">
+    <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

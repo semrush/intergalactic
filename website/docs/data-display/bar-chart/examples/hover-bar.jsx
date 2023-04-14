@@ -18,7 +18,7 @@ export default () => {
     .domain(minMax(data, 'bar'));
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of the number of requests by category">
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

@@ -140,7 +140,7 @@ export function brightness(color) {
 }
 
 export default function resolveColor(color?: string): string {
-  if (!color) return null;
+  if (!color) return '';
   if (color in (COLORS as Record<string, string>)) {
     return COLORS[color];
   }

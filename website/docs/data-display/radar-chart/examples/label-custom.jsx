@@ -12,7 +12,7 @@ export default () => {
   const maxLabelWidth = 50
 
   return (<Flex>
-    <Plot data={data} width={width} height={height} label="basic example of radar chart with custom label">
+    <Plot data={data} width={width} height={height}>
       <Radar scale={scale} offset={maxLabelWidth}>
         <Radar.Axis dataKey='categories'>
           <Radar.Axis.Ticks />

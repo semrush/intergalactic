@@ -17,7 +17,7 @@ export default () => {
     .paddingInner(0.4)
     .paddingOuter(0.2);
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of change in the number of users by year with background">
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis hide={false}>
         <YAxis.Ticks />
       </YAxis>

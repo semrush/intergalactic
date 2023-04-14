@@ -16,7 +16,7 @@ export default () => {
 
   return (
     <Flex alignItems="center" direction="column">
-      <Plot height={300} width={400} data={data} label="interactive example of changing venn chart orientation">
+      <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
           <Venn.Circle dataKey="F" />
           <Venn.Circle dataKey="S" color={colors['blue-03']} />

@@ -40,7 +40,6 @@ export default () => {
       width={width}
       height={height}
       textSize={textSize}
-      label="example of radial chart with multiline text"
     >
       <RadialTree color="#AB6CFE">
         <RadialTree.Radian>

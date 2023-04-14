@@ -28,7 +28,7 @@ export default () => {
   const height = 500;
 
   return (
-    <Plot data={movies} scale={[scaleLinear(), scaleLinear()]} width={width} height={height} label="favorite film categorization chart">
+    <Plot data={movies} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
       <RadialTree>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
