@@ -25,6 +25,7 @@ SSidebar {
 }
 
 SSidebarHeader {
+  font-size: var(--intergalactic-fs-300, 16px);
   margin: 0 var(--intergalactic-spacing-5x, 20px) var(--intergalactic-spacing-4x, 16px);
   @media (max-width: 1060px) {
     display: none;

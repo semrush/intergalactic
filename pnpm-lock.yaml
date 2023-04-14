@@ -16,7 +16,7 @@ importers:
   .:
     specifiers:
       '@babel/runtime': 7.19.0
-      '@crowdin/cli': 3.7.9
+      '@crowdin/cli': 3.10.1
       '@guidepup/playwright': 0.6.1
       '@jridgewell/set-array': ^1.1.2
       '@mailchimp/mailchimp_marketing': 3.0.30
@@ -76,7 +76,7 @@ importers:
       yaml: 2.1.1
     devDependencies:
       '@babel/runtime': 7.19.0
-      '@crowdin/cli': 3.7.9
+      '@crowdin/cli': 3.10.1
       '@guidepup/playwright': 0.6.1_@playwright+test@1.25.1
       '@jridgewell/set-array': 1.1.2
       '@mailchimp/mailchimp_marketing': 3.0.30
@@ -3948,12 +3948,15 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@crowdin/cli/3.7.9:
-    resolution: {integrity: sha512-UmGWBuRI0atIMjqtDf7SbyyJNAeB5xW2E8q7R+rtkeqY6LqyNtb+sKS2deMLhTH93AtWfDmGFt4TzOTeILvCaA==}
+  /@crowdin/cli/3.10.1:
+    resolution: {integrity: sha512-CBzABy2voC+T1KpgQYI1DIBGANahG9Vuwiqp0GJERVAWhqp1Tveie3N2rCkzjZT8N8E5SHp/z+OpstrdZYOA+g==}
     hasBin: true
     dependencies:
-      njre: 0.2.0
+      command-exists-promise: 2.0.2
+      node-fetch: 2.6.7
       shelljs: 0.8.5
+      tar: 4.4.19
+      yauzl: 2.10.0
     transitivePeerDependencies:
       - encoding
     dev: true
@@ -4291,7 +4294,7 @@ packages:
       chalk: 4.1.2
       collect-v8-coverage: 1.0.1
       exit: 0.1.2
-      glob: 7.1.4
+      glob: 7.2.3
       graceful-fs: 4.2.11
       istanbul-lib-coverage: 3.2.0
       istanbul-lib-instrument: 5.2.1
@@ -9482,7 +9485,6 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
-    dev: false
 
   /global-dirs/2.1.0:
     resolution: {integrity: sha512-MG6kdOUh/xBnyo9cJFeIKkLEc1AyFq42QTU4XiX51i2NEdxLxLWXIjEjmqKeSuKR7pAZjTqUVoT2b2huxVLgYQ==}
@@ -11018,7 +11020,7 @@ packages:
       chalk: 4.1.2
       ci-info: 3.8.0
       deepmerge: 4.3.1
-      glob: 7.1.4
+      glob: 7.2.3
       graceful-fs: 4.2.11
       jest-circus: 29.5.0
       jest-environment-node: 29.5.0
@@ -11057,7 +11059,7 @@ packages:
       chalk: 4.1.2
       ci-info: 3.8.0
       deepmerge: 4.3.1
-      glob: 7.1.4
+      glob: 7.2.3
       graceful-fs: 4.2.11
       jest-circus: 29.5.0
       jest-environment-node: 29.5.0
@@ -11329,7 +11331,7 @@ packages:
       chalk: 4.1.2
       cjs-module-lexer: 1.2.2
       collect-v8-coverage: 1.0.1
-      glob: 7.1.4
+      glob: 7.2.3
       graceful-fs: 4.2.11
       jest-haste-map: 29.5.0
       jest-message-util: 29.5.0
@@ -12808,18 +12810,6 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: true
 
-  /njre/0.2.0:
-    resolution: {integrity: sha512-+Wq8R6VmjK+jI8a9NdzfU6Vh50r3tjsdvl5KJE1OyHeH8I/nx5Ptm12qpO3qNUbstXuZfBDgDL0qQZw9JyjhMw==}
-    engines: {node: '>=8'}
-    dependencies:
-      command-exists-promise: 2.0.2
-      node-fetch: 2.6.9
-      tar: 4.4.19
-      yauzl: 2.10.0
-    transitivePeerDependencies:
-      - encoding
-    dev: true
-
   /no-case/2.3.2:
     resolution: {integrity: sha512-rmTZ9kz+f3rCvK2TD1Ue/oZlns7OGoIWP4fc3llxxRXlOkHKoWPPWJOfFYpITabSow43QJbRIoHQXtt10VldyQ==}
     dependencies:
@@ -12849,6 +12839,18 @@ packages:
     engines: {node: '>=10.5.0'}
     dev: false
 
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: true
+
   /node-fetch/2.6.9:
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
     engines: {node: 4.x || >=6.0.0}
@@ -12859,6 +12861,7 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
+    dev: false
 
   /node-fetch/3.3.1:
     resolution: {integrity: sha512-cRVc/kyto/7E5shrWca1Wsea4y6tL9iYJE5FBCius3JQfb/4P4I295PfhgbJQBLTx6lATE4z+wK0rPM4VS2uow==}
@@ -15710,7 +15713,7 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
     dependencies:
-      glob: 7.1.4
+      glob: 7.2.3
     dev: true
 
   /rollup/0.25.8:
@@ -15964,7 +15967,7 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
     dependencies:
-      glob: 7.1.4
+      glob: 7.2.3
       interpret: 1.4.0
       rechoir: 0.6.2
     dev: true
@@ -16770,7 +16773,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       '@istanbuljs/schema': 0.1.3
-      glob: 7.1.4
+      glob: 7.2.3
       minimatch: 3.1.2
 
   /text-mask-core/5.1.2:
