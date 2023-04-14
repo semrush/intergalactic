@@ -25,7 +25,7 @@ export default () => {
 
   return (
     <ResponsiveContainer h={300} onResize={updateSize}>
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of change in the number of users by year">
         <YAxis ticks={yScale.ticks(4)}>
           <YAxis.Ticks />
           <YAxis.Grid />

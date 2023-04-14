@@ -89,7 +89,7 @@ export default () => {
             );
           })}
         </Flex>
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of average cost of goods comparison by category">
           <YAxis>
             <YAxis.Ticks />
             <YAxis.Grid />

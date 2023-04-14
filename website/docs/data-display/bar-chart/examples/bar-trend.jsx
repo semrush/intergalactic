@@ -19,7 +19,7 @@ export default () => {
     .domain(minMax(data, 'bar'));
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="Chart of dopamine levels in the brains of penguins at the sight of oranges dropped from a helicopter">
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

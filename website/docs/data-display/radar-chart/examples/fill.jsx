@@ -9,7 +9,7 @@ export default () => {
   const scale = scaleLinear().domain([0, 10]);
 
   return (
-    <Plot data={data} width={width} height={height}>
+    <Plot data={data} width={width} height={height} label="basic example of radar chart with transparent background">
       <Radar scale={scale}>
         <Radar.Axis dataKey='categories'>
           <Radar.Axis.Ticks />

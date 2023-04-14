@@ -38,7 +38,7 @@ export default () => {
         value={genre}
         onChange={setGenre}
       />
-      <Plot data={movies} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
+      <Plot data={movies} scale={[scaleLinear(), scaleLinear()]} width={width} height={height} label="basic example of accessible radar chart with select">
         <RadialTree activeKey={genre} onActiveKeyChange={setGenre}>
           <RadialTree.Radian>
             <RadialTree.Radian.Label />

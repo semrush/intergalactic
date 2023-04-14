@@ -27,7 +27,7 @@ export default () => {
     .domain([0, 15]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label='example of a chart describing missing data'>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

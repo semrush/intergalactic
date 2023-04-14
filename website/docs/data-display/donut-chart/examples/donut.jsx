@@ -5,7 +5,7 @@ import { Text } from '@semcore/ui/typography';
 
 export default () => {
   return (
-    <Plot width={300} height={300} data={data}>
+    <Plot width={300} height={300} data={data} label='example of using a donut with a label inside'>
       <Donut innerRadius={100}>
         <Donut.Pie dataKey="a" name="Pie 1" />
         <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />

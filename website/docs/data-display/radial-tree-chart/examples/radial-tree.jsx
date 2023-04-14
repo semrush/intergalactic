@@ -15,7 +15,7 @@ export default () => {
     }));
 
   return (
-    <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
+    <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height} label="sheep counting chart while trying to sleep">
       <RadialTree color="#AB6CFE">
         <RadialTree.Radian>
           <RadialTree.Radian.Label />

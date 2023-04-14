@@ -26,7 +26,7 @@ export default () => {
       <div>
         Angle: {angleOffset.toFixed(2)} rad ({angleDegOffset.toFixed(0)} deg)
       </div>
-      <Plot data={data} width={width} height={height}>
+      <Plot data={data} width={width} height={height} label="interactive example of radar chart with with the ability to rotate it">
         <Radar scale={scale} type="circle" angleOffset={angleOffset}>
           <Radar.Axis dataKey="categories">
             <Radar.Axis.Ticks />
