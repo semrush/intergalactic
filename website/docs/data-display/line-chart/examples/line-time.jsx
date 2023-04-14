@@ -22,7 +22,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of the number of requests by months">
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

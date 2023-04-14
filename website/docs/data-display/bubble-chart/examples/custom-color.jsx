@@ -17,7 +17,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <Plot scale={[xScale, yScale]} width={width} height={height}>
+    <Plot scale={[xScale, yScale]} width={width} height={height} label="leads positioning colored map">
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

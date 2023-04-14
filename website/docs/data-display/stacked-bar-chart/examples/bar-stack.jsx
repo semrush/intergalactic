@@ -20,7 +20,7 @@ export default () => {
     .domain([0, 20]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of average cost of goods comparison by category">
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

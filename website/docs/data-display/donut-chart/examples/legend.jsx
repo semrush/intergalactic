@@ -77,7 +77,7 @@ export default () => {
             );
           })}
         </Flex>
-        <Plot width={width} height={height} data={data}>
+        <Plot width={width} height={height} data={data} label="chart of the selected options in the survey">
           <Donut innerRadius={height / 2 - 50}>
             {displayedPiesList.map((pie) => (
               <Donut.Pie
