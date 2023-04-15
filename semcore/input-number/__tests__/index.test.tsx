@@ -161,7 +161,7 @@ describe('InputNumber', () => {
 
   test('Should support view controls', async () => {
     const component = (
-      <InputNumber>
+      <InputNumber focused>
         <InputNumber.Value id="input" />
         <InputNumber.Controls />
       </InputNumber>
