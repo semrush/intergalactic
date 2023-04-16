@@ -67,7 +67,10 @@ class HorizontalBarRoot extends Component {
     const height = heightProps || getBandwidth(yScale);
     const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + offset[1];
-    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0] - calcPartBarX(d[x], wMin, width);
+    const barX =
+      xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) +
+      offset[0] -
+      calcPartBarX(d[x], wMin, width);
     const dSvg = getHorizontalRect({
       x: barX,
       y: barY,

@@ -371,14 +371,19 @@ describe('Bar chart', () => {
   });
 
   test('should render the minimum height for bars with a height close to zero', async () => {
+    const yScale = scaleLinear()
+      .range([height - MARGIN, MARGIN])
+      .domain([-5, 5]);
+
     const data = [
       { time: 0, stack1: 0 },
       { time: 1, stack1: 0.05 },
       { time: 2, stack1: 0.5 },
       { time: 3, stack1: 1 },
-      { time: 4, stack1: 10 },
+      { time: 4, stack1: -4 },
       { time: 5, stack1: -0.05 },
       { time: 6, stack1: -0 },
+      { time: 7, stack1: -0.5 },
     ];
 
     const component = (
@@ -477,17 +482,21 @@ describe('Bar chart', () => {
   });
 
   test('should render StackBar chart correctly with custom hMin', async () => {
+    const yScale = scaleLinear()
+      .range([height - MARGIN, MARGIN])
+      .domain([-10, 10]);
+
     const data = [
       { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
       { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
-      { time: 3, stack1: 3, stack2: 2, stack3: 0.02 },
+      { time: 3, stack1: -3, stack2: -2, stack3: -0.02 },
       { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
       { time: 5, stack1: -0.01, stack2: -0.02, stack3: -0.03 },
-      { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+      { time: 6, stack1: 3, stack2: 1, stack3: 4 },
       { time: 7, stack1: 0, stack2: 0, stack3: 0 },
       { time: 8, stack1: 0.03, stack2: 0.03, stack3: 0.03 },
-      { time: 9, stack1: 5, stack2: 0.01, stack3: 3 },
+      { time: 9, stack1: -3, stack2: -0.01, stack3: -4 },
     ];
 
     const component = (
@@ -500,9 +509,9 @@ describe('Bar chart', () => {
           <XAxis.Ticks />
         </XAxis>
         <StackBar x="time">
-          <StackBar.Bar y="stack1" color={colors['red-02']} hMin={3} duration={0} />
-          <StackBar.Bar y="stack2" color={colors['blue-02']} hMin={3} duration={0} />
-          <StackBar.Bar y="stack3" color={colors['green-02']} duration={0} hMin={3} />
+          <StackBar.Bar y="stack1" color={colors['red-02']} hMin={5} duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} hMin={5} duration={0} />
+          <StackBar.Bar y="stack3" color={colors['green-02']} hMin={5} duration={0} />
         </StackBar>
       </Plot>
     );
@@ -511,17 +520,21 @@ describe('Bar chart', () => {
   });
 
   test('should render StackBar chart correctly with default hMin', async () => {
+    const yScale = scaleLinear()
+      .range([height - MARGIN, MARGIN])
+      .domain([-10, 10]);
+
     const data = [
       { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
       { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
-      { time: 3, stack1: 3, stack2: 2, stack3: 0.02 },
+      { time: 3, stack1: -3, stack2: -2, stack3: -0.02 },
       { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
       { time: 5, stack1: -0.01, stack2: -0.02, stack3: -0.03 },
-      { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+      { time: 6, stack1: 3, stack2: 1, stack3: 4 },
       { time: 7, stack1: 0, stack2: 0, stack3: 0 },
       { time: 8, stack1: 0.03, stack2: 0.03, stack3: 0.03 },
-      { time: 9, stack1: 5, stack2: 0.01, stack3: 3 },
+      { time: 9, stack1: -3, stack2: -0.01, stack3: -4 },
     ];
 
     const component = (
@@ -1027,13 +1040,14 @@ describe('d3 charts visual regression', () => {
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
 
-  test('should render bar-horizontal with zero and null values correctly', async () => {
+  test('should render bar-horizontal with null and negative values correctly', async () => {
     const data = [
       { category: 'Category 1', bar: -0.05 },
       { category: 'Category 2', bar: 0 },
-      { category: 'Category 3', bar: 7 },
+      { category: 'Category 3', bar: 5 },
       { category: 'Category 4', bar: 0.05 },
       { category: 'Category 5', bar: null },
+      { category: 'Category 6', bar: -5 },
     ];
 
     const MARGIN = 40;
@@ -1042,7 +1056,7 @@ describe('d3 charts visual regression', () => {
 
     const xScale = scaleLinear()
       .range([MARGIN * 2, width - MARGIN])
-      .domain([0, 10]);
+      .domain([-7, 7]);
 
     const yScale = scaleBand()
       .range([height - MARGIN, MARGIN])
@@ -2272,11 +2286,14 @@ describe('d3 charts visual regression', () => {
   });
 
   test('should render bar-horizontal-stack', async () => {
-    const data = [...Array(5).keys()].map((d, i) => ({
-      category: `Category ${i}`,
-      bar1: Math.abs(Math.sin(Math.exp(i))) * 10,
-      bar2: Math.abs(Math.sin(Math.exp(i))) * 10,
-    }));
+    const data = [
+      { category: 'Category 1', stack1: 0.01, stack2: 0.03, stack3: 0.01 },
+      { category: 'Category 2', stack1: -0.01, stack2: -1, stack3: -0.01 },
+      { category: 'Category 3', stack1: -1, stack2: -1, stack3: -1 },
+      { category: 'Category 4', stack1: -0.01, stack2: -0.01, stack3: -0.01 },
+      { category: 'Category 5', stack1: 3, stack2: 0, stack3: 5 },
+      { category: 'Category 6', stack1: 0.01, stack2: 1, stack3: 0.01 },
+    ];
 
     const Component: React.FC = () => {
       const MARGIN = 40;
@@ -2285,7 +2302,7 @@ describe('d3 charts visual regression', () => {
 
       const xScale = scaleLinear()
         .range([MARGIN * 2, width - MARGIN])
-        .domain([0, 20]);
+        .domain([-10, 10]);
 
       const yScale = scaleBand()
         .range([height - MARGIN, MARGIN])
@@ -2303,8 +2320,9 @@ describe('d3 charts visual regression', () => {
             <XAxis.Grid />
           </XAxis>
           <StackBar y="category">
-            <StackBar.HorizontalBar x="bar1" duration={0} />
-            <StackBar.HorizontalBar x="bar2" color={colors['blue-02']} duration={0} />
+            <StackBar.HorizontalBar x="stack1" color={colors['green-02']} wMin={5} duration={0} />
+            <StackBar.HorizontalBar x="stack2" color={colors['blue-02']} wMin={5} duration={0} />
+            <StackBar.HorizontalBar x="stack3" color={colors['red-02']} wMin={5} duration={0} />
           </StackBar>
         </Plot>
       );
