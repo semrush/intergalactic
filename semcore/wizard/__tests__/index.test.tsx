@@ -194,8 +194,8 @@ describe('Wizard', () => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper step={1} />
-          <Wizard.Stepper step={2} />
+          <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
+          <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
         </Wizard.Sidebar>
         <Wizard.Content>
           <Wizard.Step step={1}>First page</Wizard.Step>
