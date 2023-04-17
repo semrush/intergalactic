@@ -24,10 +24,19 @@ Other input types for entering certain data:
 
 Our input has two sizes.
 
-| Size (height in px) | Appearance example                       |
-| ------------------- | ---------------------------------------- |
+| Size (height in px) | Appearance example      |
+| ------------------- | ----------------------- |
 | M (28px)            | ![](static/input-m.png) |
 | L (40px)            | ![](static/input-l.png) |
+
+@## Label
+
+We recommend adding a visible text label to the input wherever possible. If the input is not required, be sure to mark it with the text label "optional".
+
+| Size (height in px) | Text size | Appearance example            | Margins                              |
+| ------------------- | --------- | ----------------------------- | ------------------------------------ |
+| M (28px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/input-label-m.png) ![](static/input-optional-m.png) | ![](static/input-label-margin-m.png) |
+| L (40px)            | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/input-label-l.png) ![](static/input-optional-l.png) | ![](static/input-label-margin-l.png) |
 
 @## Content and addons
 

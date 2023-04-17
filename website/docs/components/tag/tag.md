@@ -22,7 +22,7 @@ Component consists of:
 
 @## Sizes and paddings
 
-| Size (px) | Paddings                                                     |
+Size (height in px) | Paddings                                                     |
 | --------- | ------------------------------------------------------------ |
 | M (20px)  | ![size M](static/tag-M.png) ![size M](static/tag2-M.png)     |
 | L (28px)  | ![size L](static/tag-L.png) ![size L](static/tag2-L.png)     |
@@ -92,7 +92,7 @@ In case you have a huge number of tags and do not need to show them all at once,
 
 @## Margins between tags
 
-| Size (px) | Margins                               |
+Size (height in px) | Margins                               |
 | --------- | ------------------------------------- |
 | M (20px)  | ![size M](static/tag-margins-M.png)   |
 | L (28px)  | ![size L](static/tag-margins-L.png)   |

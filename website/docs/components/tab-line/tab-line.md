@@ -22,7 +22,7 @@ tabName: Design
 - TabLine.Item has `margin-right: var(--spacing-4x)` (except for `last-child`).
 - Margins of addons before and after the text is 8px.
 
-| Size (px) | Margins                    |
+Size (height in px) | Margins                    |
 | --------- | -------------------------- |
 | M (28px)  | ![tab-m](static/tab-m.png) |
 | L (40px)  | ![tab-l](static/tab-l.png) |

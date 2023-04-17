@@ -16,7 +16,7 @@ This input is usually used for entering a large amount of homogeneous informatio
 
 When tags overflow, the input increases in height by 1 text line.
 
-| Sizes                          | Appearance                   |                                | Indents                                |
+| Size                          | Appearance                   |                                | Indents                                |
 | ------------------------------ | ---------------------------- | ------------------------------ | -------------------------------------- |
 | L input is used with the L tag | ![l size](static/l-size.png) | ![l size](static/l-size-2.png) | ![l paddings](static/l-paddings-2.png) |
 | M input is used with the M tag | ![m size](static/m-size.png) | ![m size](static/m-size-2.png) | ![m paddings](static/m-paddings-2.png) |
