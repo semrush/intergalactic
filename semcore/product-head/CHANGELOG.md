@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2023-04-17
+
+### Changed
+
+- Changed `tag` of `Title` from `div` to `h1` for better accessibility.
+
 ## [3.3.18] - 2023-03-28
 
 ### Changed

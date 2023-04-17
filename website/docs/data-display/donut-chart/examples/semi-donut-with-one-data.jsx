@@ -4,7 +4,7 @@ import { Text } from '@semcore/ui/typography';
 
 export default () => {
   return (
-    <Plot width={300} height={150} data={data} label='chart of using Keyword volume for projects'>
+    <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
         <Donut.Pie dataKey="speed" />
         <Donut.Pie dataKey="other" color="#C4C7CF" />

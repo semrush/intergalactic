@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '@semcore/ui/input';
-import ActionReturnXS from '@semcore/ui/icon/Return/m';
+import CheckM from '@semcore/ui/icon/Check/m';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
@@ -9,7 +9,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="submit-example">
+      <Text tag="label" htmlFor="submit-example" size="300">
         Input with submit button
       </Text>
       <Box mt={2}>
@@ -21,7 +21,7 @@ const Demo = () => {
             id="submit-example"
           />
           {focus && (
-            <Input.Addon interactive tag={ActionReturnXS} aria-label="Submit field value" />
+            <Input.Addon interactive tag={CheckM} aria-label="Submit field value" />
           )}
         </Input>
       </Box>

@@ -31,7 +31,7 @@
   "private": true,
   "devDependencies": {
     "@babel/runtime": "7.17.9",
-    "@crowdin/cli": "3.7.9",
+    "@crowdin/cli": "3.10.1",
     "@guidepup/playwright": "0.6.1",
     "@jridgewell/set-array": "^1.1.2",
     "@mailchimp/mailchimp_marketing": "3.0.30",

@@ -4,14 +4,20 @@ import { Box } from '@semcore/flex-box';
 import Modal from '@semcore/modal';
 import CheckM from '@semcore/icon/Check/m';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 import style from './style/wizard.shadow.css';
 
 class WizardRoot extends Component {
   static displayName = 'Wizard';
   static style = style;
+  static enhance = [i18nEnhance(localizedMessages)];
   static defaultProps = {
     step: null,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   _steps = new Map();
@@ -34,6 +40,7 @@ class WizardRoot extends Component {
     return {
       active: props.step === this.asProps.step,
       number,
+      getI18nText: this.asProps.getI18nText,
     };
   }
 
@@ -54,7 +61,7 @@ class WizardRoot extends Component {
 function Sidebar(props) {
   const { Children, styles, title } = props;
   const SSidebar = Root;
-  const SSidebarHeader = 'div';
+  const SSidebarHeader = 'h2';
   return sstyled(styles)(
     <SSidebar render={Box} role="menu">
       {title && <SSidebarHeader>{title}</SSidebarHeader>}
@@ -68,7 +75,7 @@ function Step(props) {
   const { Children, styles, active } = props;
   if (active) {
     return sstyled(styles)(
-      <SStep render={Box}>
+      <SStep render={Box} tag={Box}>
         <Children />
       </SStep>,
     );
@@ -77,7 +84,8 @@ function Step(props) {
 }
 
 function Stepper(props) {
-  const { Children, styles, step, active, onActive, completed, disabled, number } = props;
+  const { Children, styles, step, active, onActive, completed, disabled, number, getI18nText } =
+    props;
   const SStepper = Root;
   const SStepNumber = 'span';
   const SStepDescription = 'span';
@@ -108,7 +116,8 @@ function Stepper(props) {
       onClick={handlerClick}
       onKeyPress={handlerKeyPress}
     >
-      <SStepNumber>{completed ? <SCompleted /> : number}</SStepNumber>
+      {completed && <ScreenReaderOnly>{getI18nText('completedStep')}</ScreenReaderOnly>}
+      <SStepNumber aria-hidden="true">{completed ? <SCompleted /> : number}</SStepNumber>
       <SStepDescription>
         <Children />
       </SStepDescription>

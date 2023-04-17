@@ -32,7 +32,7 @@ export default () => {
     .domain([0, 15]);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label='chart of average temperature variation comparison by months'>
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
         <YAxis.Ticks />
         <YAxis.Grid />

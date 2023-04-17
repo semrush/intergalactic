@@ -2,15 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.26] - 2023-04-11
+## [3.5.28] - 2023-04-14
+
+### Fixed
+
+- Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+
+## [3.5.27] - 2023-04-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/tooltip` [5.4.1 ~> 5.4.2]).
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7], `@semcore/utils` [3.50.0 ~> 3.50.2]).
 
 ## [3.5.12] - 2023-03-01
-
-## [3.5.11] - 2023-02-24
 
 ### Changed
 
@@ -18,25 +22,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.5.10] - 2023-02-22
 
-## [3.5.9] - 2023-02-21
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/utils` [3.47.0 ~> 3.47.1]).
 
 ## [3.5.6] - 2023-02-13
 
-## [3.5.5] - 2023-02-09
-
-## [3.5.4] - 2023-01-20
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [3.5.1] - 2023-01-11
-
-## [3.5.0] - 2023-01-10
 
 ### Fixed
 
@@ -47,8 +43,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Changed all translations of `CancelControl` text tooltip.
 
 ## [3.4.4] - 2023-01-10
-
-## [3.4.3] - 2023-01-09
 
 ### Changed
 

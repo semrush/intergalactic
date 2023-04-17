@@ -118,6 +118,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
                 onBlur={onBlur}
               />
               <SConfirmColor
+                aria-hidden="true"
                 aria-label={getI18nText('colorFieldConfirm')}
                 role="button"
                 interactive
@@ -128,6 +129,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
                 <CheckM color="green-300" />
               </SConfirmColor>
               <SClearConfirm
+                aria-hidden="true"
                 aria-label={getI18nText('colorFieldClear')}
                 role="button"
                 interactive

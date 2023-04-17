@@ -16,7 +16,7 @@ export default () => {
     .domain(minMax(data, 'y'));
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="basic example of using hover line">
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis>
         <YAxis.Ticks />
       </YAxis>

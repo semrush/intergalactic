@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.13.11] - 2023-04-14
-
-### Added
-
-- Added role to PlotA11yModule
-
 ## [2.13.10] - 2023-04-03
 
 ## [2.13.9] - 2023-04-03

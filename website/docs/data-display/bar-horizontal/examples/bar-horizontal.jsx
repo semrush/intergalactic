@@ -20,7 +20,7 @@ export default () => {
     .paddingOuter(0.2);
 
   return (
-    <Plot data={data} scale={[xScale, yScale]} width={width} height={height} label="chart of the number of requests by category">
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
       <YAxis hide={false}>
         <YAxis.Ticks />
       </YAxis>

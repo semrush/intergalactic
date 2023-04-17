@@ -68,7 +68,7 @@ describe('Input', () => {
   test('Should support focus states', async () => {
     expect(
       await snapshot(
-        <Input state="normal">
+        <Input state="normal" focused>
           <Input.Value id="input" />
         </Input>,
         {
@@ -80,7 +80,7 @@ describe('Input', () => {
     ).toMatchImageSnapshot();
     expect(
       await snapshot(
-        <Input state="valid">
+        <Input state="valid" focused>
           <Input.Value id="input" />
         </Input>,
         {
@@ -92,7 +92,7 @@ describe('Input', () => {
     ).toMatchImageSnapshot();
     expect(
       await snapshot(
-        <Input state="invalid">
+        <Input state="invalid" focused>
           <Input.Value id="input" />
         </Input>,
         {

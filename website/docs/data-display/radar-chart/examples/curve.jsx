@@ -11,7 +11,7 @@ export default () => {
   const scale = scaleLinear().domain([0, 10]);
 
   return (
-    <Plot data={data} width={width} height={height} label="basic example of round radar chart">
+    <Plot data={data} width={width} height={height}>
       <Radar scale={scale} type="circle">
         <Radar.Axis dataKey='categories'>
           <Radar.Axis.Ticks />

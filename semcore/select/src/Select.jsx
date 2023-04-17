@@ -110,6 +110,7 @@ class RootSelect extends Component {
 
   getListProps() {
     const { multiselect, uid } = this.asProps;
+
     return {
       'aria-multiselectable': multiselect ? 'true' : undefined,
       id: `igc-${uid}-list`,
@@ -120,9 +121,10 @@ class RootSelect extends Component {
   }
 
   getMenuProps() {
-    const { uid, getI18nText } = this.asProps;
+    const { uid, getI18nText, multiselect } = this.asProps;
 
     return {
+      'aria-multiselectable': multiselect ? 'true' : undefined,
       id: `igc-${uid}-list`,
       role: 'listbox',
       'aria-label': getI18nText('optionsList'),
@@ -194,10 +196,10 @@ class RootSelect extends Component {
     }
     return Array.isArray(value)
       ? value.reduce((acc, value) => {
-        if (acc.length) acc.push(', ');
-        acc.push(value);
-        return acc;
-      }, [])
+          if (acc.length) acc.push(', ');
+          acc.push(value);
+          return acc;
+        }, [])
       : value;
   }
 
@@ -216,7 +218,7 @@ class RootSelect extends Component {
       this.handlers.visible(false);
       setTimeout(() => {
         this.triggerRef.current?.focus();
-      }, 0)
+      }, 0);
     }
   };
 
@@ -236,14 +238,14 @@ class RootSelect extends Component {
 
     logger.warn(
       options && advanceMode,
-      'Don\'t use at the same time \'options\' property and \'<Select.Trigger/>/<Select.Popper/>\'',
+      "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
       other['data-ui-name'] || Select.displayName,
     );
 
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} role='combobox' />
+          <Select.Trigger {...other} role="combobox" />
           <Select.Menu>
             {options.map((option) => {
               return (
@@ -297,7 +299,7 @@ function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger, 
         Tag.Addon || ButtonTrigger.Addon,
         true,
       )}
-      {name && <input type='hidden' defaultValue={value} name={name} ref={$hiddenRef} />}
+      {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>
   );
 }
@@ -318,14 +320,14 @@ function Checkbox(props) {
       {...componentProps}
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
-      role='checkbox'
+      role="checkbox"
       tabIndex={0}
       aria-checked={selected}
     />
   );
 }
 
-const InputSearchWrapper = function() {
+const InputSearchWrapper = function () {
   return <Root render={InputSearch} />;
 };
 

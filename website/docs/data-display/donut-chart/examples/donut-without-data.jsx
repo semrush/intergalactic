@@ -3,7 +3,7 @@ import { Plot, Donut, colors } from '@semcore/ui/d3-chart';
 
 export default () => {
   return (
-    <Plot width={300} height={300} data={data} label="chart with empty data on last quarter's statistics">
+    <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
         <Donut.EmptyData />
         <Donut.Pie dataKey="a" />
