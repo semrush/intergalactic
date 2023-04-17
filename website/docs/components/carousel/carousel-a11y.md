@@ -11,7 +11,7 @@ a11y: AA
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                           | Moves focus through interactive elements in the carousel. Rotation control, previous slide, and next slide buttons precede the slide content in the `Tab` sequence. |
 | `Shift + Tab`                   | Moves focus to the previous focusable element.                                                                                                                      |
-| `Enter`, `Left`, `Right` arrows | Display next or previous slide in the carousel.                                                                                                                     |
+| `Enter`, `Left Arrow`, `Right Arrow` | Display next or previous slide in the carousel.                                                                                                                     |
 
 ### Roles and attributes
 

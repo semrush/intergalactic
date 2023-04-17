@@ -12,7 +12,7 @@ tabName: Design
 
 @## Sizes
 
-| Size (height in px) | Appearance example                 |
+Size (height in px for one row of text) | Appearance example                 |
 | ------------------- | ---------------------------------- |
 | M (28px)            | ![input with M size](static/m.png) |
 | L (40px)            | ![input with L size](static/l.png) |
@@ -31,7 +31,7 @@ Textarea may contain a counter showing the number of entered and/or available ch
 
 The counter can be placed either next to the text label or near the textarea itself.
 
-| Size (height in px) | Input with label                                       | Input without label                                          |
+| Size (height in px for one row of text) | Input with label                                       | Input without label                                          |
 | ------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
 | M (28px)            | ![input with M size and counter](static/counter-M.png) | ![input with M size and counter](static/counter-inner-M.png) |
 | L (40px)            | ![input with L size and counter](static/counter-L.png) | ![input with L size and counter](static/counter-inner-L.png) |

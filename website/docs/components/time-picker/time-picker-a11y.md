@@ -12,7 +12,7 @@ a11y: AA
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`               | Focus moves to the hour/minute select and opens the dropdown with hour/minute options.                                                    |
 | `Shift + Tab`       | Focus moves to the previous focusable element.                                                                                            |
-| `Up`, `Down` arrows | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
+| `Up Arrow`, `Down Arrow` | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
 | `Space`, `Enter`    | Selects the option and closes the dropdown.                                                                                               |
 | `Esc`               | Closes the dropdown and returns focus to the hour/minute select trigger.                                                                  |
 

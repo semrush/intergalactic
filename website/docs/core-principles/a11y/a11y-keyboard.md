@@ -23,7 +23,7 @@ Make sure that it's possible to interact with your interface using a keyboard on
 > - **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc.
 > - **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
 > - **Enter**, **Space** or **↓** **(for the select/menu trigger)** opens a dropdown. And if it has interactive elements inside, `focus` moves to the first one.
-> - **↓** inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the **↑** key, but backwards 🙃
+> - `Down Arrow` inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the `Top Arrow`, but backwards 🙃
 > - **Esc** discardes choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
 
 Keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
@@ -89,7 +89,7 @@ Common cases about focus behavior when working with dropdown are described below
 
 1. By pressing `Tab`, the trigger gets focus.
 2. When the trigger is focused, pressing `Enter`/`Space` opens a dropdown.
-3. If the trigger opens the select, you can also use the arrow down `↓` to move to dropdown.
+3. If the trigger opens the select, you can also use the `Down Arrow` to move to dropdown.
 4. Pressing `Esc` key closes the dropdown, and focus remains on the trigger.
 
 `Shift + Tab` moves focus to the previous control, and popper closes.
@@ -107,7 +107,7 @@ Common cases about focus behavior when working with dropdown are described below
 @## Focus, OnClick and dropdown with a single interactive element
 
 1. By pressing `Tab`, the trigger gets focus.
-2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, you can also switch to popper by using the `↓` arrow.
+2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, you can also switch to popper by using the `Down Arrow`.
 3. Pressing `Shift + Tab` closes the popper and returns focus to the trigger.
 4. Pressing `Esc` closes the dropdown, even if the focus was on the control inside the dropdown. After closing the dropdown, focus remains on the trigger.
 5. Pressing the `Submit` control inside the dropdown closes it and returns focus to the trigger.
@@ -118,8 +118,8 @@ Common cases about focus behavior when working with dropdown are described below
 @## Focus, OnClick and dropdown with multiple interactive elements
 
 1. By pressing `Tab`, the trigger gets focus.
-2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, then you can also shift to the dropdown using the `↓` arrow.
-3. `↓` in the menu shifts the focus to the next `menuItem`. From the last `menuItem`, the focus moves to the first `menuItem`. The same logic applies to the `↑` key, but backwards 🙃
+2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, then you can also shift to the dropdown using the `Down Arrow`.
+3. `Down Arrow` in the menu shifts the focus to the next `menuItem`. From the last `menuItem`, the focus moves to the first `menuItem`. The same logic applies to the `Top Arrow` key, but backwards 🙃
 4. You can use `Shift + Tab` to return to the previous control inside the dropdown.
 5. Pressing `Esc` closes the dropdown, even if the focus was on the control inside the dropdown. After closing the dropdown, focus remains on the trigger.
 6. `Shift + Tab` returns to the control that opened the dropdown.
