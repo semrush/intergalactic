@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.2] - 2023-04-17
+
+### Fixed
+
+- Fixed behavior when returning focus. Now focus return does not work if user used the mouse.
+
 ## [3.50.1] - 2023-04-13
 
 ### Fixed

@@ -71,8 +71,8 @@ export const useFocusLock = (
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
   const handleFocusIn = React.useCallback((event) => {
-    if (event.relatedTarget && !autoTriggerRef.current)
-      autoTriggerRef.current = event.relatedTarget;
+    if (event.relatedTarget && !autoTriggerRef.current) autoTriggerRef.current = event.relatedTarget;
+    if (lastUserInteractionRef.current === 'mouse') return;
     Promise.resolve().then(() => {
       if (!trapRef.current) return;
       if (focusInside([trapRef.current, ...focusLockUsers])) return;
