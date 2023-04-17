@@ -7,7 +7,7 @@ import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
 import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
-import { Flex } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import { forkRef } from '@semcore/utils/lib/ref';
 
 import style from './style/input-mask.shadow.css';
@@ -261,7 +261,7 @@ class Value extends Component<IInputMaskValueProps> {
   render() {
     const SInputMask = Flex;
     const SValue = Root;
-    const SMask = 'span' as any;
+    const SMask = Box;
     const SPlaceholder = 'span';
     const SMaskHidden = 'span';
     const SMaskVisible = 'span';
@@ -276,7 +276,6 @@ class Value extends Component<IInputMaskValueProps> {
       forwardRef,
       ...otherProps
     } = this.asProps;
-    const isValid = this.state.lastConformed && !this.state.lastConformed.all.includes('_');
 
     logger.warn(
       !title,
@@ -297,7 +296,7 @@ class Value extends Component<IInputMaskValueProps> {
               {...boxProps}
               __excludeProps={['onFocus', 'onChange', 'forwardRef', 'ref']}
             >
-              <SMask aria-hidden="true" neighborLocation={neighborLocation} ref={this.maskRef}>
+              <SMask tag="span" aria-hidden="true" neighborLocation={neighborLocation} ref={this.maskRef}>
                 {this.state.lastConformed && (
                   <SMaskHidden data-content={this.state.lastConformed.userInput} />
                 )}
@@ -312,7 +311,6 @@ class Value extends Component<IInputMaskValueProps> {
                 neighborLocation={neighborLocation}
                 ref={ref}
                 onFocus={this.onFocus}
-                aria-invalid={!isValid}
                 pattern={mask}
                 value={value}
                 wMin={this.state.maskWidth}
