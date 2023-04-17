@@ -13,8 +13,8 @@ export default () => (
       <Question />
     </Notice.Label>
     <Notice.Content style={{ display: 'flex', alignItems: 'center' }}>
+      <Text mr={2}>Meet our SEO Dashboard! Is it working well for you?</Text>
       <Notice.Actions mt={0}>
-        <Text mr={2}>Meet our SEO Dashboard! Is it working well for you?</Text>
         <Button mr={2}>
           <Button.Addon>
             <ThumbUpS />
