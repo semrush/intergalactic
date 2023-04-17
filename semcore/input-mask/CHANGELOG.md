@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.20] - 2023-04-17
+
+### Changed
+
+- Remove `aria-invalid` because you can't enter the wrong value.
+
 ## [4.4.19] - 2023-03-28
 
 ### Changed
@@ -16,15 +22,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.4.8] - 2023-02-09
 
-## [4.4.7] - 2023-01-20
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/input` [3.5.6 ~> 3.5.7], `@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7]).
 
 ## [4.4.5] - 2023-01-10
-
-## [4.4.4] - 2023-01-09
 
 ### Changed
 
