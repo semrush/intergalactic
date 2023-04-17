@@ -68,7 +68,7 @@ describe('ColorPicker', () => {
   });
 
   test('Should clear input when click on cancel icon inside input', async () => {
-    const { getByTestId, getAllByRole } = render(
+    const { getByTestId, getByLabelText  } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
           <ColorPicker.Trigger />
@@ -88,7 +88,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('635472');
 
     fireEvent.focus(input);
-    const cancel = getAllByRole('button')[1];
+    const cancel = getByLabelText('Clear custom color field');
     fireEvent.click(cancel);
     expect(input.value).toBe('');
   });
