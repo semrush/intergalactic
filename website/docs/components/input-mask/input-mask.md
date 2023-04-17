@@ -10,7 +10,7 @@ tabName: Design
 
 **InputMask** is the input with a mask. Mask gives user the cue about the number and format of the data that needs to be entered.
 
-> Note, that InputMask is not the input placeholder.
+> Note, that InputMask should not be used as an input placeholder.
 
 The mask helps user to avoid mistakes when entering the required number of characters and automatically formats the entered value.
 
