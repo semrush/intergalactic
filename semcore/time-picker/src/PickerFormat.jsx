@@ -13,7 +13,15 @@ class TimePickerFormat extends Component {
     const label = getI18nText('format', { meridiem });
 
     return sstyled(styles)(
-      <SPickerFormat render={Box} type="button" tag="button" role="switch" aria-label={label}>
+      <SPickerFormat
+        render={Box}
+        type="button"
+        tag="button"
+        role="switch"
+        aria-label={label}
+        aria-live="polite"
+        aria-atomic="true"
+      >
         {Children.origin ? <Children /> : <SPickerFormatText>{meridiem}</SPickerFormatText>}
       </SPickerFormat>,
     );
