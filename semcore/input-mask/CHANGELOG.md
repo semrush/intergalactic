@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Remove `aria-invalid` because you can't enter the wrong value.
+- Added hint for screen reader.
 
 ## [4.4.19] - 2023-03-28
 

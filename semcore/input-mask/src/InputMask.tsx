@@ -9,6 +9,8 @@ import NeighborLocation from '@semcore/neighbor-location';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { Box, Flex } from '@semcore/flex-box';
 import { forkRef } from '@semcore/utils/lib/ref';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/input-mask.shadow.css';
 
@@ -98,6 +100,10 @@ class Value extends Component<IInputMaskValueProps> {
     },
   };
 
+  static enhance = [
+    uniqueIDEnhancement(),
+  ];
+
   inputRef = React.createRef<HTMLInputElement>();
   maskRef = React.createRef<HTMLDivElement>();
   textMaskCoreInstance = undefined;
@@ -106,10 +112,10 @@ class Value extends Component<IInputMaskValueProps> {
   state: {
     lastConformed:
       | {
-          all: string;
-          userInput: string;
-          maskOnly: string;
-        }
+      all: string;
+      userInput: string;
+      maskOnly: string;
+    }
       | undefined;
     maskWidth: number | undefined;
   } = {
@@ -274,6 +280,7 @@ class Value extends Component<IInputMaskValueProps> {
       includeInputProps,
       Children,
       forwardRef,
+      uid,
       ...otherProps
     } = this.asProps;
 
@@ -290,35 +297,39 @@ class Value extends Component<IInputMaskValueProps> {
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(this.asProps.styles)(
-            <SInputMask
-              position="relative"
-              flex={1}
-              {...boxProps}
-              __excludeProps={['onFocus', 'onChange', 'forwardRef', 'ref']}
-            >
-              <SMask tag="span" aria-hidden="true" neighborLocation={neighborLocation} ref={this.maskRef}>
-                {this.state.lastConformed && (
-                  <SMaskHidden data-content={this.state.lastConformed.userInput} />
-                )}
-                {this.state.lastConformed ? (
-                  <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
-                ) : (
-                  <SPlaceholder data-content={placeholder} />
-                )}
-              </SMask>
-              <SValue
-                render={Input.Value}
-                neighborLocation={neighborLocation}
-                ref={ref}
-                onFocus={this.onFocus}
-                pattern={mask}
-                value={value}
-                wMin={this.state.maskWidth}
-                {...controlProps}
-                __excludeProps={['placeholder']}
-              />
-              <Children />
-            </SInputMask>,
+            <>
+              <SInputMask
+                position='relative'
+                flex={1}
+                {...boxProps}
+                __excludeProps={['onFocus', 'onChange', 'forwardRef', 'ref']}
+              >
+                <SMask tag='span' aria-hidden='true' neighborLocation={neighborLocation} ref={this.maskRef}>
+                  {this.state.lastConformed && (
+                    <SMaskHidden data-content={this.state.lastConformed.userInput} />
+                  )}
+                  {this.state.lastConformed ? (
+                    <SMaskVisible data-content={this.state.lastConformed.maskOnly} />
+                  ) : (
+                    <SPlaceholder data-content={placeholder} />
+                  )}
+                </SMask>
+                <SValue
+                  render={Input.Value}
+                  neighborLocation={neighborLocation}
+                  ref={ref}
+                  onFocus={this.onFocus}
+                  pattern={mask}
+                  value={value}
+                  wMin={this.state.maskWidth}
+                  aria-describedby={`hint-${uid}`}
+                  {...controlProps}
+                  __excludeProps={['placeholder']}
+                />
+                <Children />
+              </SInputMask>
+              <ScreenReaderOnly id={`hint-${uid}`}>{title}</ScreenReaderOnly>
+            </>,
           ) as React.ReactElement
         }
       </NeighborLocation.Detect>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ScreenReaderOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ScreenReaderOnly: React.FC<{ children: React.ReactNode }> = ({ children, ...other }) => {
   return (
     <span
       style={{
@@ -14,6 +14,7 @@ export const ScreenReaderOnly: React.FC<{ children: React.ReactNode }> = ({ chil
         whiteSpace: 'nowrap',
         borderWidth: 0,
       }}
+      {...other}
     >
       {children}
     </span>
