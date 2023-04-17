@@ -10,8 +10,8 @@ fileSource: tab-line
 | Key           | Function                                                                                                                                                                                                    |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`         | When focus moves into the tab list, places focus on the active `tab` element. When the tab list contains the focus, moves focus to the next element in the `Tab` sequence, which is the `tabpanel` element. |
-| `Right` arrow | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab.                                                                                                                     |
-| `Left` arrow  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab.                                                                                                                 |
+| `Right Arrow` | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab.                                                                                                                     |
+| `Left Arrow`  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab.                                                                                                                 |
 | `Space`       | Activates focused tab                                                                                                                                                                                       |
 | `Enter`       | Activates focused tab                                                                                                                                                                                       |
 

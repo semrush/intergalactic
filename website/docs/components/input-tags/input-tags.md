@@ -16,7 +16,7 @@ This input is usually used for entering a large amount of homogeneous informatio
 
 When tags overflow, the input increases in height by 1 text line.
 
-| Sizes                          | Appearance                   |                                | Indents                                |
+| Size                          | Appearance                   |                                | Margins                                |
 | ------------------------------ | ---------------------------- | ------------------------------ | -------------------------------------- |
 | L input is used with the L tag | ![l size](static/l-size.png) | ![l size](static/l-size-2.png) | ![l paddings](static/l-paddings-2.png) |
 | M input is used with the M tag | ![m size](static/m-size.png) | ![m size](static/m-size-2.png) | ![m paddings](static/m-paddings-2.png) |
@@ -70,6 +70,8 @@ After insertion, the text is broken by punctuation separators – comma, semicol
 If there is a tag in front of the cursor, when you press the delete key, the tag turns into plain text and you can edit and delete it.
 
 @## Long text in the tag
+
+> Note that this behavior is not recommended for fully accessible tag. The page content should be responsive and adaptable to small viewport widths, text magnification, and changes in text spacing.
 
 You can set the maximum width for a tag. This is optional, as it is not necessary in all cases of using the component.
 

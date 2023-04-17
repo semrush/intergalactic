@@ -12,7 +12,7 @@ a11y: AA
 | `Tab`                  | Moves focus to the next focusable element.                                                                                                                                                                                    |
 | `Shift + Tab`          | Moves focus to the previous focusable element.                                                                                                                                                                                |
 | `Space`, `Enter`       | Change pill's state to active.                                                                                                                                                                                                |
-| `Left`, `Right` arrows | Moves focus to and checks the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively. The state of the previously checked button is changed to unchecked. |
+| `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively. The state of the previously checked button is changed to unchecked. |
 
 See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_button_link_input_etc).
 

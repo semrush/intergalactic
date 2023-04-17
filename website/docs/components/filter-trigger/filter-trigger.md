@@ -27,7 +27,7 @@ In the active filter, the selected value/values are completely displayed or hidd
 
 **The counter of the active filter** is shown only for **Advanced filters** and filters that have a lot of other additional filters inside. The counter in the trigger respectively indicates the number of additional filters applied.
 
-| Sizes | Inactive filter                                      | Active filter                                      | Active filter with the counter                             |
+| Size | Inactive filter                                      | Active filter                                      | Active filter with the counter                             |
 | ----- | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
 | M, L  | ![](static/filter-default.png) | ![](static/filter-active.png) | ![](static/filter-active-counter.png) |
 
@@ -37,7 +37,7 @@ In the active filter, the selected value/values are completely displayed or hidd
 
 The indents duplicate the [indents between the buttons](/components/button/).
 
-| Sizes    | Margins between controls                      |
+Size (height in px)    | Margins between controls                      |
 | -------- | --------------------------------------------- |
 | L (40px) | ![](static/sizes-l.png) |
 | M (28px) | ![](static/sizes-m.png) |

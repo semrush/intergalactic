@@ -13,7 +13,7 @@ a11y: AA
 | `Tab`                                | Moves focus to the checked `radio` button in the `radiogroup`. If a `radio` button is not checked, focus moves to the first `radio` button in the group.                                                                                              |
 | `Shift + Tab`                        | Moves focus to the previous focusable element.                                                                                                                                                                                                        |
 | `Space`                              | If the `radio` button with focus is not checked, changes the state to `checked`. Otherwise, does nothing. _Note: The state where a radio is not checked only occurs on page load._                                                                    |
-| `Up`, `Down`, `Left`, `Right` arrows | Moves focus to and checks the next/previous radio button in the group. If focus is on the last/first radio button, moves focus to the first/last radio button respectively. The state of the previously checked radio button is changed to unchecked. |
+| `Up Arrow`, `Down Arrow`, `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous radio button in the group. If focus is on the last/first radio button, moves focus to the first/last radio button respectively. The state of the previously checked radio button is changed to unchecked. |
 
 ### Roles and attributes
 
