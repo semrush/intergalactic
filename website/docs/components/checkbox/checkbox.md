@@ -61,7 +61,7 @@ Text label may contain a [Link](/components/link).
 
 ![](static/link.png)
 
-> Note, that the checkbox text hover zone shouldn't include a link.
+> Note, that the checkbox text active zone shouldn't include a link.
 
 ![](static/link-hover-zone.png)
 

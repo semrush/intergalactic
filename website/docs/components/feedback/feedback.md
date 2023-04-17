@@ -17,7 +17,7 @@ tabName: Design
 - Textarea for feedback;
 - Buttons for submitting/cancelling.
 
-![defaul feedback](static/default.png)
+![](static/default.png)
 
 ### Optional elements
 
@@ -26,7 +26,7 @@ tabName: Design
 - checkbox "I need help, please contact me";
 - message about the alternative way to send feedback with the `mailto` link.
 
-![defaul feedback](static/options.png)
+![](static/options.png)
 
 @## Styles
 
@@ -34,7 +34,7 @@ tabName: Design
 - All inputs in this form has one size — M.
 - For bottom message use secondary colored text (`--text-secondary`) with 14px size (`--fs-200`, `--lh-200`).
 
-![feedback paddings](static/send-feedback-sizes.png)
+![](static/send-feedback-sizes.png)
 
 @## Placement
 
@@ -44,8 +44,8 @@ In some cases it may drop from the button "Send feedback", located in the report
 
 | Variant of the form location                                       | Example                                               |
 | ------------------------------------------------------------------ | ----------------------------------------------------- |
-| The basic variant of the form location                             | ![feedback paddings](static/send-feedback.png)        |
-| Variant of the form location in the notice for feedback collection | ![feedback paddings](static/send-feedback-notice.png) |
+| The basic variant of the form location                             | ![](static/send-feedback.png)        |
+| Variant of the form location in the notice for feedback collection | ![](static/send-feedback-notice.png) |
 
 @## Interaction
 
@@ -61,7 +61,7 @@ In some cases it may drop from the button "Send feedback", located in the report
 
 Label for this textarea: "Tell us your suggestion or report an issue".
 
-![feedback scroll](static/scroll.png)
+![](static/scroll.png)
 
 #### Email input (optional element)
 
@@ -98,7 +98,7 @@ You may add a message about the alternative way to send feedback with the `mailt
 
 Wrap all form into [SpinContainer](/components/spin-container/) with the [XL size Spin](/components/spin/).
 
-![feedback spinner](static/loading.png)
+![](static/loading.png)
 
 @## Invalid inputs
 
@@ -113,17 +113,17 @@ The text for a message in the tooltip: "Your feedback must contain at least 3 wo
 
 > Add dot at the end of the text in the tooltip.
 
-![feedback validation](static/validation-1.png)
+![](static/validation-1.png)
 
 #### Invalid email input
 
 - If the email input is empty, show the tooltip with the following message: "Please enter valid email".
 
-![feedback validation](static/validation-2.png)
+![](static/validation-2.png)
 
 - If the user enters the invalid email, the tooltip should be shown with the request to specify the right one in order we could reply to: "Please provide us with a valid email address so we could reply to you".
 
-![feedback validation](static/validation-3.png)
+![](static/validation-3.png)
 
 @## Error at backend
 
@@ -132,7 +132,7 @@ The text for a message in the tooltip: "Your feedback must contain at least 3 wo
 
 Message text for this case: "Your message has not been sent. Please try again or contact us at at {mail address}".
 
-![feedback error](static/error.png)
+![](static/error.png)
 
 @## Success submitting
 
@@ -140,7 +140,7 @@ In case of successful submitting the form show success message. This status is s
 
 Message text for this status: "Thank you for your feedback!".
 
-![feedback success](static/success.png)
+![](static/success.png)
 
 @page feedback-form-a11y
 @page feedback-form-api

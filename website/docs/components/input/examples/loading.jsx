@@ -20,7 +20,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="loading-example">
+      <Text tag="label" htmlFor="loading-example" size="300">
         Input with loading state
       </Text>
       <Box mt={2}>

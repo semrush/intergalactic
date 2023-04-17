@@ -63,7 +63,7 @@ describe('TimePicker', () => {
 
   test('should support focus', async () => {
     expect(
-      await snapshot(<TimePickerDefault />, {
+      await snapshot(<TimePickerDefault focused />, {
         actions: {
           focus: '#hours',
         },
@@ -71,7 +71,7 @@ describe('TimePicker', () => {
     ).toMatchImageSnapshot();
     expect(
       await snapshot(
-        <TimePickerDefault>
+        <TimePickerDefault focused>
           <TimePicker.Format />
         </TimePickerDefault>,
         {
@@ -82,7 +82,7 @@ describe('TimePicker', () => {
       ),
     ).toMatchImageSnapshot();
     expect(
-      await snapshot(<TimePickerDefault state="valid" />, {
+      await snapshot(<TimePickerDefault focused state="valid" />, {
         actions: {
           focus: '#hours',
         },
@@ -90,7 +90,7 @@ describe('TimePicker', () => {
     ).toMatchImageSnapshot();
     expect(
       await snapshot(
-        <TimePickerDefault state="valid">
+        <TimePickerDefault focused state="valid">
           <TimePicker.Format />
         </TimePickerDefault>,
         {
@@ -101,7 +101,7 @@ describe('TimePicker', () => {
       ),
     ).toMatchImageSnapshot();
     expect(
-      await snapshot(<TimePickerDefault state="invalid" />, {
+      await snapshot(<TimePickerDefault focused state="invalid" />, {
         actions: {
           focus: '#hours',
         },
@@ -109,7 +109,7 @@ describe('TimePicker', () => {
     ).toMatchImageSnapshot();
     expect(
       await snapshot(
-        <TimePickerDefault state="invalid">
+        <TimePickerDefault focused state="invalid">
           <TimePicker.Format />
         </TimePickerDefault>,
         {

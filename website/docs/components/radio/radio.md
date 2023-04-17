@@ -55,7 +55,7 @@ Text label may contain a [Link](/components/link).
 
 ![radiobutton with info icon](static/link.png)
 
-> Note, that the radiobutton text hover zone shouldn't include a link.
+> Note, that the radiobutton text active zone shouldn't include a link.
 
 ![radiobutton with info icon](static/link-hover-zone.png)
 
