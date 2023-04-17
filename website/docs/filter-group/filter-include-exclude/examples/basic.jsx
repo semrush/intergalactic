@@ -29,8 +29,8 @@ export default () => {
       >
         {`Exclude: ${displayValue} keywords`}
       </Dropdown.Trigger>
-      <Dropdown.Popper w={325} p="8px 8px 16px">
-        <Text tag="p" size={100} color="gray20">
+      <Dropdown.Popper w={325} p="8px 8px 16px" role='dialog' aria-label="List of excluded keywords" aria-modal='false'>
+        <Text tag="label" for='textarea' size={100} color="gray20">
           Enter keywords separated by commas or one per line. For exact matches, enter your keyword
           with square brackets around it.
         </Text>
@@ -46,7 +46,7 @@ export default () => {
             </Radio>
           </RadioGroup>
         </Flex>
-        <Textarea value={value} onChange={changeValue} h={132} />
+        <Textarea value={value} onChange={changeValue} h={132} id='textarea'/>
         <Flex mt={5}>
           <Button use="primary" theme="info" onClick={applyFilters}>
             Apply

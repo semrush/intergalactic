@@ -117,7 +117,7 @@ export default () => {
       >
         {`KD ${displayValue} %`}
       </Select.Trigger>
-      <Select.Popper w="224px">
+      <Select.Popper w="224px" role='dialog' aria-label="Filters for page sorting" aria-modal='false'>
         <Select.List>
           {[
             ['80-100', 'Very hard'],
