@@ -122,7 +122,7 @@ class Value extends Component {
           aria-valuemin={min}
           aria-valuemax={max}
         />
-        {/* the next hidden div is necessary for the screen reader to report the value 
+        {/* the next hidden div is necessary for the screen reader to report the value
         in the input, because after validation the value can change to the `min` or `max` 
         if entered less than `min` or more than `max` */}
         <SValueHidden aria-live="polite" aria-atomic={true}>
@@ -140,7 +140,7 @@ function Controls(props) {
   const SDown = 'button';
 
   return sstyled(styles)(
-    <SControls render={Input.Addon}>
+    <SControls render={Input.Addon} aria-hidden="true">
       <SUp
         onClick={inc}
         tabIndex={-1}

@@ -2,12 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.4.20] - 2023-04-17
+## [4.5.0] - 2023-04-17
 
 ### Changed
 
 - Remove `aria-invalid` because you can't enter the wrong value.
 - Added hint for screen reader.
+- Controls are now `display:none` rather than `visibility:hidden`, this gives more space for placeholder.
 
 ## [4.4.19] - 2023-03-28
 

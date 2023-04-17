@@ -2,6 +2,7 @@ import React from 'react';
 import InputNumber from '@semcore/ui/input-number';
 import NeighborLocation from '@semcore/ui/neighbor-location';
 import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 class Demo extends React.PureComponent {
   constructor(props) {
@@ -37,32 +38,39 @@ class Demo extends React.PureComponent {
   render() {
     const { from, to } = this.state;
     return (
-      <Flex w="20%">
-        <NeighborLocation>
-          <InputNumber>
-            <InputNumber.Value
-              min={this.minRange}
-              max={this.maxRange}
-              placeholder="From"
-              value={from}
-              onChange={this.handleChange('from')}
-              onBlur={this.handleBlur}
-            />
-            <InputNumber.Controls />
-          </InputNumber>
-          <InputNumber>
-            <InputNumber.Value
-              min={this.minRange}
-              max={this.maxRange}
-              placeholder="to"
-              value={to}
-              onChange={this.handleChange('to')}
-              onBlur={this.handleBlur}
-            />
-            <InputNumber.Controls />
-          </InputNumber>
-        </NeighborLocation>
-      </Flex>
+      <>
+        <Text tag="label" id="basic-example" size="300">
+          Range label
+        </Text>
+        <Flex w="20%">
+          <NeighborLocation>
+            <InputNumber>
+              <InputNumber.Value
+                min={this.minRange}
+                max={this.maxRange}
+                value={from}
+                placeholder="From"
+                aria-labelledby='basic-example'
+                onChange={this.handleChange('from')}
+                onBlur={this.handleBlur}
+              />
+              <InputNumber.Controls />
+            </InputNumber>
+            <InputNumber>
+              <InputNumber.Value
+                min={this.minRange}
+                max={this.maxRange}
+                value={to}
+                placeholder="to"
+                aria-labelledby='basic-example'
+                onChange={this.handleChange('to')}
+                onBlur={this.handleBlur}
+              />
+              <InputNumber.Controls />
+            </InputNumber>
+          </NeighborLocation>
+        </Flex>
+      </>
     );
   }
 }

@@ -1,24 +1,17 @@
-SInputNumber:hover {
-  & SValue:not([disabled]) ~ SControls {
-    visibility: visible;
-  }
-}
-
 SValue:focus ~ SControls {
-  visibility: visible;
+  display: flex;
 }
 
 SControls {
-  display: flex;
+  display: none;
   flex-flow: column;
   justify-content: center;
   height: 100%;
-  visibility: hidden;
   box-sizing: border-box;
 }
 
 SControls[showControls] {
-  visibility: visible;
+  display: flex;
 }
 
 SUp,
