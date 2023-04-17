@@ -19,7 +19,7 @@ class TitleRoot extends Component<IHeaderTitleProps> {
     const SName = 'div';
     const { Children, styles, toolName } = this.asProps;
     return sstyled(styles)(
-      <STitle render={Box}>
+      <STitle render={Box} tag="h1">
         {isNode(toolName) && <Title.Tool>{toolName}</Title.Tool>}
         <SName>
           <Children />

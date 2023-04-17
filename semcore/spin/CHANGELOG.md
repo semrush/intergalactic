@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.19] - 2023-04-17
+
+### Added
+
+- Added `aria-hidden` attribute for better accessibility.
+
 ## [4.2.18] - 2023-03-28
 
 ### Changed
