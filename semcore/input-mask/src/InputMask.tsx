@@ -51,6 +51,10 @@ export interface IInputMaskValueProps extends IInputValueProps {
    * Event that is called when the input value fully matches the mask
    */
   onSuccess?: (value: string) => void;
+  /**
+   * A field that explains the mask for blind users
+   * */
+  title?: string
 }
 
 interface IInputMaskCtx {
