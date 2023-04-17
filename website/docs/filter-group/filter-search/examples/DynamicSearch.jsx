@@ -18,7 +18,7 @@ const Demo = () => {
   }, ['']);
 
   return (
-    <Input w={200}>
+    <Input w={200} aria-live="polite">
       <Input.Addon>
         <Search />
       </Input.Addon>
