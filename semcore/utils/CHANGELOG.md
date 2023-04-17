@@ -10,7 +10,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Change
 
-- Added all unknown properties for `ScreenReaderOnly` component.
+- Added `id` propertie for `ScreenReaderOnly` component.
 
 ## [3.50.1] - 2023-04-13
 
