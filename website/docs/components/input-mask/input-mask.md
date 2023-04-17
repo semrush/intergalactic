@@ -31,8 +31,8 @@ Example of using a mask in the [input field to enter a phone number](/components
 
 |             | Appearance examples                                | Tokens                                         |
 | ----------- | -------------------------------------------------- | ---------------------------------------------- |
-| Placeholder | ![input with mask](static/placeholder-default.png) | Placeholder use `--text-placeholder` as color. |
-| Mask        | ![input with mask](static/mask-default.png)        | Mask use `--text-primary` as color.            |
+| Placeholder | ![](static/placeholder-default.png) | Placeholder use `--text-placeholder` as color. |
+| Mask        | ![](static/mask-default.png)        | Mask use `--text-primary` as color.            |
 
 @## Help instructions
 
@@ -51,7 +51,7 @@ Example of the mask behavior in the [input field for entering a phone number](/c
 
 | Placeholder                                        | Focus with mask                                    | Filled                                            |
 | -------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------- |
-| ![input with mask](static/placeholder-default.png) | ![input with mask in focus](static/mask-focus.png) | ![filled input with mask](static/mask-filled.png) |
+| ![](static/placeholder-default.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png) |
 
 @page input-mask-a11y
 @page input-mask-api

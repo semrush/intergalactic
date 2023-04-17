@@ -16,8 +16,8 @@ User can navigate inside the list with the keyboard arrows.
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
-| `Space`, `Enter`, `Down` arrow | When focus is on the trigger, opens the dropdown.                                                                                         |
-| `Up`, `Down` arrows            | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
+| `Space`, `Enter`, `Down Arrow` | When focus is on the trigger, opens the dropdown.                                                                                         |
+| `Up Arrow`, `Down Arrow`            | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
 | `Space`, `Enter`               | Selects the option and closes the dropdown.                                                                                               |
 | `Esc`            | Closes the dropdown.                           |
 
