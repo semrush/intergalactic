@@ -22,18 +22,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
 
-## [4.4.8] - 2023-02-09
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.5.6 ~> 3.5.7], `@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7]).
-
-## [4.4.5] - 2023-01-10
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/input` [3.5.3 ~> 3.5.4], `@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4]).
-
 ## [4.4.1] - 2022-12-13
 
 ### Changed
