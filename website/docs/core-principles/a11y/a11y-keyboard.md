@@ -81,56 +81,62 @@ Keyboard control should be performed sequentially across all interactive element
 - Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows — using `Tab`.
 - When you press `Enter`, an event occurs, as if you press the mouse button. If the entire row have `focus`, you follow the link, and if only the icon has `focus`, then the action is performed, etc.
 
-@## Keyboard support for dropdown
+@## Keyboard support for popper
 
-Common cases about focus behavior when working with dropdown are described below.
+Common cases about focus behavior when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
 
-@## Focus, OnClick and dropdown
+@## Focus, OnClick and popper
 
 1. By pressing `Tab`, the trigger gets focus.
-2. When the trigger is focused, pressing `Enter`/`Space` opens a dropdown.
-3. If the trigger opens the select, you can also use the `Down Arrow` to move to dropdown.
-4. Pressing `Esc` key closes the dropdown, and focus remains on the trigger.
+2. When the trigger is focused, pressing `Enter`/`Space` opens a popper.
+3. If the trigger opens the select, you can also use the `Down Arrow` to move to the select's options.
+4. Pressing `Esc` key closes the popper, and focus remains on the trigger.
 
 `Shift + Tab` moves focus to the previous control, and popper closes.
 
 ![keyboard control example](/core-principles/a11y/static/keyboard-nav1.png)
 
-@## Focus, OnMouseEnter and dropdown
+@## Focus, OnMouseEnter and popper
 
 1. By hovering over / pressing `Tab`, the focus falls on the trigger — popper opens immediately.
-2. The dropdown closes by pressing `Esc`, and **focus remains on the trigger**.
+2. The popper closes by pressing `Esc`, and **focus remains on the trigger**.
 3. `Shift + Tab` moves focus to the previous control, and popper closes.
 
 ![keyboard control example](/core-principles/a11y/static/keyboard-nav2.png)
 
-@## Focus, OnClick and dropdown with a single interactive element
+@## Focus, OnClick and popper with a single interactive element
 
 1. By pressing `Tab`, the trigger gets focus.
-2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, you can also switch to popper by using the `Down Arrow`.
-3. Pressing `Shift + Tab` closes the popper and returns focus to the trigger.
-4. Pressing `Esc` closes the dropdown, even if the focus was on the control inside the dropdown. After closing the dropdown, focus remains on the trigger.
-5. Pressing the `Submit` control inside the dropdown closes it and returns focus to the trigger.
-6. If you focus on the control inside the dropdown, the `Tab` click will move focus back to the trigger. And so it cycles in a circle until the dropdown is closed with `Esc`.
+2. When you focus on trigger, `Enter`/`Space` opens a popper. If the trigger opens a select/menu, you can also open the popper by using the `Down Arrow`.
+3. `Tab` key moves focus inside the popper to the interactive element.
+4. Pressing `Esc` closes the popper, even if the focus was on the control inside it. After closing the popper, focus remains on the trigger.
+5. Pressing the "Submit" control inside the popper closes it and returns focus to the trigger.
 
 ![keyboard control example](/core-principles/a11y/static/keyboard-nav3.png)
 
-@## Focus, OnClick and dropdown with multiple interactive elements
+@## Focus, OnClick and popper with multiple interactive elements
 
 1. By pressing `Tab`, the trigger gets focus.
-2. When you focus on trigger, `Enter`/`Space` opens a dropdown. If the trigger opens a select/menu, then you can also shift to the dropdown using the `Down Arrow`.
+2. When you focus on trigger, `Enter`/`Space` opens a popper. If the trigger opens a select/menu, then you can also open the popper using the `Down Arrow`.
 3. `Down Arrow` in the menu shifts the focus to the next `menuItem`. From the last `menuItem`, the focus moves to the first `menuItem`. The same logic applies to the `Top Arrow` key, but backwards 🙃
-4. You can use `Shift + Tab` to return to the previous control inside the dropdown.
-5. Pressing `Esc` closes the dropdown, even if the focus was on the control inside the dropdown. After closing the dropdown, focus remains on the trigger.
-6. `Shift + Tab` returns to the control that opened the dropdown.
-7. Pressing the `Submit` control in the dropdown closes it and leaves the focus on the trigger.
-8. If focus is on controls inside the dropdown, clicking on `Tab` will move the focus back to the trigger. And so forth and so on until the dropdown is closed using `Esc`.
+4. `Tab` key moves focus inside the popper between the interactive elements. It cycles in a circle until the popper is closed.
+5. Pressing `Esc` closes the popper, even if the focus was on the control inside it. After closing the popper, focus remains on the trigger.
+6. Pressing the "Submit" control in the popper closes it and leaves the focus on the trigger.
 
 ![keyboard control example](/core-principles/a11y/static/keyboard-nav4.png)
 
-@## Focus, onClick and dropdown in the dropdown
+@## Focus, onClick and popper in the popper
 
-A dropdown inside another dropdown has the same situation as in the above case.
+A popper inside another popper has the same situation as in the above case.
+
+@## Keyboard support for modal window
+
+Common cases about focus behavior when working with dropdown are described below.
+
+1. By pressing `Tab`, the trigger gets focus.
+2. When the trigger is focused, pressing `Enter`/`Space` opens a modal window.
+3. You can use `Tab` and `Shift + Tab` to move between all the interactive elements inside the window.
+4. Pressing `Esc` key (or `Close` icon, "Submit", or "Cancel" buttons) closes the modal window, and focus remains on the trigger.
 
 @## Resources
 

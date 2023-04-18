@@ -131,7 +131,7 @@ Here are some other checkbox recommendations:
 - The [switch](/components/switch/) is better for binary settings since it performs an action while checkboxes have a status. [Radiobuttons](/components/radio/) are also good for binary settings.
 - Use checkboxes for suspended actions and radiobuttons for immediate actions. [Switches](/components/switch/) and [radiobuttons](/components/radio/) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
 - For checkbox groups with more than six options, include "Select all" and "Deselect all" controls to save time.
-- When a checkbox is used in a table to select the entire row, make sure the clickable area covers the entire table cell where the checkbox is located.
+- When a checkbox is used in a table to select the entire row, make sure the target area covers the entire table cell where the checkbox is located.
 
 @page checkbox-a11y
 @page checkbox-api

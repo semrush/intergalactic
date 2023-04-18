@@ -69,7 +69,7 @@ You can use this component to hide almost any content. This can be a text conten
 >
 > On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
 
-**The icon and text label have the same hover and click zone**.
+**The icon and text label have the same target zone**.
 
 ![](static/hoverzone.png)
 

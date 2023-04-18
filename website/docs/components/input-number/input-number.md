@@ -30,7 +30,7 @@ The input size should not be longer than the largest number that can be entered 
 
 @## Interaction
 
-When InputNumber gets focus stepper buttons enables. The click zone for the steppers is larger than their size.
+When InputNumber gets focus stepper buttons enables. The target zone for the steppers is larger than their size.
 
 | Input size (height in px) | Appearance                          |
 | ------------------------- | ----------------------------------- |
