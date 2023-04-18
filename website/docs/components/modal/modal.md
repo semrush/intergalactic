@@ -65,7 +65,7 @@ We have several modal window types:
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
 | `Close` icon size **M**, use `--icon-secondary-neutral` token for default color, and `--icon-secondary-neutral-hover-active` for color in hover state. | ![modal close button hover](static/close-hover.png)           |
 | Paddings from top and right to the `Close` icon is 12px.                                                                                               | ![modal close button](static/close-button.png)                |
-| The cross clickable area is 48px \* 48px.                                                                                                              | ![modal close button active zone](static/close-hover-zone.png) |
+| The cross target area is 48px * 48px.                                                                                                              | ![modal close button active zone](static/close-hover-zone.png) |
 
 ### Overlay
 
