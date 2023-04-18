@@ -50,7 +50,7 @@ To highlight all rows, the table header must have the main [Checkbox](/component
 
 ![](static/selected-hover.png)
 
-The [Checkbox](/components/checkbox/) must have the entire cell in the table as a click zone.
+The [Checkbox](/components/checkbox/) must have the entire cell in the table as the target zone.
 
 ![](static/checkbox-hover-zone.png)
 

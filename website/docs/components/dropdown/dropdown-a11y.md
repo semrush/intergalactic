@@ -17,7 +17,7 @@ When dropdown is closed, the focus returns to the trigger.
 | `Space`, `Enter` | Activates the selected item or control.        |
 | `Esc`            | Closes the dropdown.                           |
 
-See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_dropdown).
+See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
 
 ### Roles & attributes
 

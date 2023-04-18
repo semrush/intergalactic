@@ -36,7 +36,7 @@ The informer consists of:
 
 @## Click zone
 
-| Icon size | The size of the click zone                             |
+| Icon size | The size of the target zone                             |
 | --------- | ------------------------------------------------------ |
 | L         | `24px * 24px`                                          |
 |           | ![active zone for l icon size](static/hover-zone-l.png) |

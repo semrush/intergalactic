@@ -37,7 +37,7 @@ You can add text to the input as an addon. The user will not be able to change i
 
 @## Input with multiple addons
 
-If you need to stack two addons, the indents of neighboring addons shall be divided in half to maintain the normal clickable area around them.
+If you need to stack two addons, the indents of neighboring addons shall be divided in half to maintain the normal target area around them.
 
 @example 2addon
 
