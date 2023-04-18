@@ -23,18 +23,18 @@ It is recommended to use pagination in tables, as well as in a long list of data
 - [Link](/components/link/)
 - [Text](/style/typography/).
 
-![default styles](static/default.png)
+![](static/default.png)
 
 @## Margins
 
 - Margins between the buttons are always 8px.
 - Margin between the different controls are 16px: between the buttons and the input for current page, between the input for current page and the select.
 
-![margins berween buttons](static/margins.png)
+![](static/margins.png)
 
 Margin from the table to the pagination is always 16px.
 
-![margin between table and paginationp](static/margin-top.png)
+![](static/margin-top.png)
 
 @## Number of the rows
 
@@ -50,10 +50,10 @@ We have some recommendations for the table size:
 
 | Appearance                                         | Action                                                                                                                                            |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![first page button](static/secondary-button.png)  | Opens the first page                                                                                                                              |
-| ![prev page button](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
-| ![next page button](static/primary-button.png)     | Opens the next page                                                                                                                               |
-| ![pagination staps](static/steps.png)              | When the input is in focus, the clickable `Return` icon with M size appears. By clicking it or pressing Enter the user moves to the entered page. |
+| ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
+| ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
+| ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
+| ![](static/steps.png)              | When the input is in focus, the clickable `Return` icon with M size appears. By clicking it or pressing Enter the user moves to the entered page. |
 
 The current page should be always displayed in the input:
 
@@ -69,13 +69,13 @@ The link at the end of the pagination shows the total number of pages. User move
 
 The "First page" button and the "Prev" button are `disabled` in this case.
 
-![first page](static/first-page.png)
+![](static/first-page.png)
 
 ### User is on the last page
 
 The "Next page" button gets the `disabled` state, and the link to the last page becomes plain text.
 
-![last page](static/last-page.png)
+![](static/last-page.png)
 
 ### User enters the value that is more than the number of the pages
 
@@ -87,9 +87,9 @@ Use this state only if there is some data and there might be more data.
 
 > If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that there is no data.
 
-![one page](static/one-page.png)
+![](static/one-page.png)
 
-![empty table](static/empty-yes-no.png)
+![](static/empty-yes-no.png)
 
 ### Page loading
 
@@ -103,13 +103,13 @@ After user changes the value in the select, the page should be refreshed and the
 
 Use only these values for the select: 10, 20, 50, 100.
 
-![page select](static/page-select.png)
+![](static/page-select.png)
 
 ### It is impossible to calculate the exact number of pages
 
 In this case add the `tilde (≈)` to the number of pages, and change the link with the number of all pages to the plain text.
 
-![unknown pages](static/undefined-number.png)
+![](static/undefined-number.png)
 
 @page pagination-a11y
 @page pagination-api

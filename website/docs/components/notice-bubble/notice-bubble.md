@@ -46,25 +46,25 @@ Let's see the differences between NoticeBubble, [Notice](/components/notice/) an
 
 It's a notification about the beginning or ending of a process hidden from the user in the interface (or about changes to content in other parts of the report that are not currently being viewed).
 
-![default notice](static/text1.png)
+![](static/text1.png)
 
 ### Cancel action
 
 It's a notification about a completed action with the possibility to cancel it. Good for use when moving/deleting items. Use the `secondary invert` button with M size.
 
-![default notice with button](static/default.png)
+![](static/default.png)
 
 The button name may change depending on the context.
 
-![notice with reload button](static/reload-btn.png)
+![](static/reload-btn.png)
 
 If the undo process takes time, then display an intermediate loading state when nothing can be done by the user. Use [Spin](/components/spin/) with size XS. Don't use this state to display any other processes in the interface. Instead, use the [progress bar](/components/progress-bar/).
 
-![notice with loading](static/default-loading.png)
+![](static/default-loading.png)
 
 If everything is done, show notification that confirms the undo action (use icon with M size). The notification height is equal to the previous state. For recommendations on animation and timing, see the animation description below.
 
-![loading success](static/default-success.png)
+![](static/default-success.png)
 
 ### Success/failure
 
@@ -72,23 +72,23 @@ Use this notification type for successful/unsuccessful user actions within inter
 
 The notice has an additional colored icon. It's helpful for quickly understanding, without reading the text, how the interface responded to user's actions.
 
-![ success notice](static/success-notice.png)
+![](static/success-notice.png)
 
-![ warning notice](static/warning-notice.png)
+![](static/warning-notice.png)
 
 ### No connection
 
 Notice without a button for those systems which monitor the network connection themselves.
 
-![connection lost notice](static/notice.png)
+![](static/notice.png)
 
 For those interfaces which can't monitor the network connection themselves and need to refresh the page, there is a notice with the "Reload the page" button.
 
-![connection reload notice](static/reload.png)
+![](static/reload.png)
 
 ### Event notification
 
-![event notice](static/event-alert.png)
+![](static/event-alert.png)
 
 A notification that is designed for various events, holidays, etc. You can animate elements inside such notification.
 
@@ -97,9 +97,9 @@ A notification that is designed for various events, holidays, etc. You can anima
 - It appears in the upper-right corner of the report under the main website menu with 12px margins on the top and right.
 - When scrolling, it remains hanging in the upper-right corner with the same margins.
 
-![notice margins](static/noticeBubble1.png)
+![](static/noticeBubble1.png)
 
-![notice margins](static/noticeBubble2.png)
+![](static/noticeBubble2.png)
 
 - The alert has fixed width — `300px`.
 - Container paddings — `12px 28px 12px 12px`.
@@ -109,9 +109,9 @@ A notification that is designed for various events, holidays, etc. You can anima
 - For the loading state use Spin with XS size.
 - For the success state use icon with M size.
 
-![notice paddings](static/paddings-1.png)
+![](static/paddings-1.png)
 
-![notice paddings](static/paddings-2.png)
+![](static/paddings-2.png)
 
 @## Animation
 

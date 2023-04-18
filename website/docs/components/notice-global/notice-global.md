@@ -29,11 +29,11 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 ### Paddings
 
-![gnotice-paddings](static/gnotice-paddings.png)
+![](static/gnotice-paddings.png)
 
 ### Margins
 
-![gnotice-margins](static/gnotice-margins.png)
+![](static/gnotice-margins.png)
 
 @## Notice themes
 
@@ -41,19 +41,19 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 Use it for neutral messages about the whole website. Notice has `background-color: var(--bg-primary-muted)`.
 
-![global-notice](static/gnotice-neutral.png)
+![](static/gnotice-neutral.png)
 
 ### Info
 
 Use it for collecting feedback for the whole website. Notice has `background-color: var(--bg-primary-info)`.
 
-![global-notice](static/gnotice-info.png)
+![](static/gnotice-info.png)
 
 ### Success
 
 Use it for success message concerning the whole website. Notice has `background-color: var(--bg-primary-success)`.
 
-![global-notice](static/gnotice-success.png)
+![](static/gnotice-success.png)
 
 ### Warning
 
@@ -65,14 +65,14 @@ Use it for important but not critical errors/warnings concerning the whole websi
 
 Use it for a serious error/problem message concerning the whole website. Notice has `background-color: var(--bg-primary-critical`.
 
-![global-notice](static/gnotice-danger.png)
+![](static/gnotice-danger.png)
 
 @## Placement in the interface
 
 - Place this notice always above the main Semrush header.
 - Stretch it to the full width of the screen.
 
-![gnotice-placement](static/placement.png)
+![](static/placement.png)
 
 @## Interaction
 
@@ -111,7 +111,7 @@ In special cases, you can add a thematic illustration to the message. _For examp
 
 Keep in mind, however, that the extra accent notice on the page adds visual noise. Therefore, do not abuse the opportunity to add an illustration to this kind of message.
 
-![gnotice-with-illustration](static/gnotice-illustration.png)
+![](static/gnotice-illustration.png)
 
 @## Edge cases
 
@@ -119,7 +119,7 @@ Keep in mind, however, that the extra accent notice on the page adds visual nois
 
 Don't show more than one global message at a time. Below you can see an example of how you SHOULD NOT do.
 
-![gnotice-with-illustration](static/two-notices.png)
+![](static/two-notices.png)
 
 In cases where a user on the site has two or more global messages to display, prioritize them.
 
