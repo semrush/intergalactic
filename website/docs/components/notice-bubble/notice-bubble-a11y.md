@@ -29,6 +29,8 @@ The list below describes roles and attributes that component already has.
 
 @## Considerations for developers
 
+Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
+
 1. The accessible label for the alert dialog is set to its heading.
 2. The dialog's prompt is referenced via `aria-describedby` to ensure that the user is immediately aware of the prompt.
 3. Automatically set focus to the first focusable element inside the dialog. Usually it is the least destructive action. It helps prevent users from accidentally confirming the destructive action, which cannot be undone.
