@@ -3,7 +3,7 @@ title: Example
 fileSource: modal
 ---
 
-@## Basic use of the modal window
+@## Basic modal window usage
 
 @example modal
 
