@@ -1,3 +1,73 @@
+## [13.23.0] - 2023-04-19
+
+### @semcore/color-picker
+
+- **Fixed** Added `aria-hidden="true"` for input control because they are auxiliary.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating height of `StackBar` and `HorizontalBar` components.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Default title tag switched from `h4` to `h2` without changing visual representation.
+- **Fixed** Fixed ability to control from keyboard for `Close` and `Back`.
+
+### @semcore/inline-edit
+
+- **Fixed** Improvements for a11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
+
+### @semcore/inline-input
+
+- **Fixed** Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+
+### @semcore/input
+
+- **Changed** Fixed outline styles so that they work even if the `Value` is wrapped in other elements.
+
+### @semcore/input-mask
+
+- **Changed** Remove `aria-invalid` because you can't enter the wrong value.
+- **Changed** Added hint for screen reader.
+- **Changed** Controls are now `display:none` rather than `visibility:hidden`, this gives more space for placeholder.
+
+### @semcore/link
+
+- **Fixed** Fixed visual keyboard focus highlight of inline links.
+
+### @semcore/popper
+
+- **Fixed** `interaction=hover` poppers now might be triggered by keyboard focus (but not mouse focus).
+
+### @semcore/product-head
+
+- **Changed** Changed `tag` of `Title` from `div` to `h1` for better accessibility.
+
+### @semcore/select
+
+- **Added** Added `aria-multiselectable` attribute to `Menu` component for better accessibility.
+- **Added** Return focus to trigger when option is selected.
+
+### @semcore/spin
+
+- **Added** Added `aria-hidden` attribute for better accessibility.
+
+### @semcore/time-picker
+
+- **Added** Added ARIA attributes for better accessibility.
+
+### @semcore/utils
+
+- **Fixed** Fixed behavior when returning focus. Now focus return does not work if user used the mouse.
+- **Change** Added `id` propertie for `ScreenReaderOnly` component.
+- **Fixed** Keyboard focus highlight wasn't working until keyboard focuses any focusable element second time.
+- **Fixed** Delayed focus return in the macrotask to prevent focus return trigger event passing to to the return focus target.
+
+### @semcore/wizard
+
+- **Changed** Title got semantic `h2` tag.
+- **Fixed** Added screen reader only hint about completed steps.
+
 ## [13.22.2] - 2023-04-11
 
 ### @semcore/button
