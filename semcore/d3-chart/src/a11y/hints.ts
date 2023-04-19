@@ -1,4 +1,5 @@
 import { SerializableDataType } from './insights';
+import reactToText from '@semcore/utils/lib/reactToText'
 
 type DeepPartial<T> = T extends object
   ? {
@@ -146,7 +147,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
         title = String(title);
       }
       if (typeof title !== 'string') {
-        return;
+        title = reactToText(title);
       }
       if (describedDataAxes === 'horizontal') {
         mutableContainer.axesTitle.horizontal = title;
