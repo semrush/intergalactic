@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.28] - 2023-04-19
+
+### Fixed
+
+- Remove role for Title and Hint
+
 ## [3.6.27] - 2023-04-17
 
 ### Changed

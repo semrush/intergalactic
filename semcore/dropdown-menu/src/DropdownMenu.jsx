@@ -259,14 +259,14 @@ function Addon(props) {
 function Hint(props) {
   const SDropdownMenuItem = Root;
   return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant="hint" role="menuitem" tabIndex={0} />,
+    <SDropdownMenuItem render={Flex} variant="hint" />,
   );
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
   return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant="title" role="menuitem" tabIndex={0} />,
+    <SDropdownMenuItem render={Flex} variant="title" />,
   );
 }
 
