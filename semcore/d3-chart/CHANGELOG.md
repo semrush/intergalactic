@@ -2,9 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.13.12] - 2023-04-18
+## [2.13.13] - 2023-04-18
 
-## [2.13.11] - 2023-04-17
+### Fixed
+
+- Fixed calculating height of `StackBar` and `HorizontalBar` components.
+
+## [2.13.12] - 2023-04-18
 
 ### Changed
 
