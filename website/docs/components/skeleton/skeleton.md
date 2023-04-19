@@ -144,7 +144,7 @@ The information on the page can be divided into 2 categories:
 
 ### Static information (does not need Skeleton)
 
-- Text, data and components that do not depend on user actions and tool settings.
+- Text, data and components that do not depend on user actions and product settings.
 - Product name.
 - Widget titles, tips.
 - Table headers.

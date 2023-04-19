@@ -69,7 +69,7 @@ Do not stretch the text to the full width of the notice, especially if the notic
 
 ### Info
 
-Use it for neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
+Use it for neutral message, information, collecting feedback. To announce a new feature or other product, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
 
 ![](static/info.png)
 

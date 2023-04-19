@@ -21,7 +21,7 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 **Use global notice to tell about:**
 
-- a special mode of viewing a page, tool, site (about admin or other rights on the page);
+- a special mode of viewing a page, product, site (about admin or other rights on the page);
 - an outdated browser version;
 - messages relates to the work of the whole site (downgrade, technical work, etc.).
 
