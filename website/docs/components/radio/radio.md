@@ -18,8 +18,8 @@ Our radio button has two sizes: M and L. The text label is always positioned to 
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
-| M (16px * 16px) | ![m](static/size-m.png) |
-| L (20px * 20px) | ![l](static/size-l.png) |
+| M (16px * 16px) | ![](static/size-m.png) |
+| L (20px * 20px) | ![](static/size-l.png) |
 
 ### Margins
 
@@ -27,8 +27,8 @@ The spacing between options may differ based on the context in which they are us
 
 | Size (px)        | Margins      |
 | ---------------- | ----------------------- |
-| M (16px * 16px) | ![m](static/vert-m.png) ![m](static/margins-m.png) |
-| L (20px * 20px) | ![l](static/vert-l.png) ![l](static/margins-l.png) |
+| M (16px * 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
+| L (20px * 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
 
 @## Radiobutton with a paragraph
 
@@ -36,28 +36,28 @@ All radiobutton sizes can be used with the corresponding text paragraphs.
 
 | Radio button size (px) | Paragraph size (px)                        | Appearance example                             |
 | ---------------------- | -------------------------------------- | --------------------------------------------------- |
-| M (16px * 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![radiobutton-paragraph-12](static/paragraph-m.png) |
-| L (20px * 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![radiobutton-paragraph-14](static/paragraph-l.png) |
+| M (16px * 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
+| L (20px * 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
 @## Radiobutton with Info icon
 
 Add an `Info` icon next to the radiobutton label to provide more information about radiobutton's purpose. User can hover over the icon to see a tooltip with additional details.
 
-![radiobutton with info icon](static/info-icon.png)
+![](static/info-icon.png)
 
 > Info icon should have `margin-left: 4px`.
 
-![radiobutton with info icon](static/info-icon-margin.png)
+![](static/info-icon-margin.png)
 
 @## Radiobutton with a link inside
 
 Text label may contain a [Link](/components/link).
 
-![radiobutton with info icon](static/link.png)
+![](static/link.png)
 
 > Note, that the radiobutton text active zone shouldn't include a link.
 
-![radiobutton with info icon](static/link-hover-zone.png)
+![](static/link-hover-zone.png)
 
 @## Interaction
 
@@ -68,12 +68,12 @@ Text label may contain a [Link](/components/link).
 
 ### States
 
-|           | Appearance                                               |
-| --------- | -------------------------------------------------------- |
-| unchecked | ![unchecked-radiobutton](static/radiobutton-default.png) |
-| checked   | ![checked-radiobutton](static/radiobutton-checked.png)   |
-| Disabled  | ![disabled-radiobutton](static/radiobutton-disabled.png) |
-| Invalid   | ![invalid-radiobutton](static/radiobutton-invalid.png)   |
+|           | Appearance                            |
+| --------- | ------------------------------------- |
+| Unchecked | ![](static/radiobutton-default.png)   |
+| Checked   | ![](static/radiobutton-checked.png)   |
+| Invalid   | ![](static/radiobutton-invalid.png)   |
+| Disabled  | ![](static/radiobutton-disabled.png)  |
 
 @## Usage in UX/UI
 

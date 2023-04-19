@@ -138,7 +138,7 @@ Illustration you can find in the [inner Figma library](https://www.figma.com/fil
 
 **Title**
 
-{name tool} is under maintenance
+{product name} is under maintenance
 
 **Message**
 

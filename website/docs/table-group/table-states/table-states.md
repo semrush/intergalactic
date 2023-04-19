@@ -41,7 +41,7 @@ In a secondary table, you can show the skeleton for all the rows (there are usua
 
 If gathering data takes a large period of time **(more than 1 minute, for example)**, show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
 
-A message with a progressbar gets [`sticky` property](/components/sticky/) and is centered relative to the screen that the user scrolls.
+A message with a progress bar gets [`sticky` property](/components/sticky/) and is centered relative to the screen that the user scrolls.
 
 ![table with sticky progressbar](static/table-sticky-1.png)
 
@@ -128,10 +128,10 @@ Show this state when there was an error in the product on the backend, so we can
 
 It is important to indicate the following things in the empty state message:
 
-- In the title – the essence of the current situation.
-- In the description – what user need to do to change the situation.
+- In the title — the essence of the current situation.
+- In the description — what user need to do to change the situation.
 - If possible, suggest an action (in the form of a button or link) which will help user to change the situation.
-  For more information about the rules for such states, see the guides – [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
+  For more information about the rules for such states, see the guides — [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
 
 @## Table header
 
