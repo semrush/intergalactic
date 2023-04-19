@@ -293,8 +293,8 @@ function EmptyData({ Element: SEmptyData, styles, d3Arc, color }) {
                                      d={d3Arc({ endAngle: Math.PI * 2, startAngle: 0 })} />);
 }
 
-function Label({ Element: SLabel, styles, Children, children, dataHintsHandler }) {
-  dataHintsHandler.setTitle('vertical', children);
+function Label({ Element: SLabel, styles, Children, children, label, dataHintsHandler }) {
+  dataHintsHandler.setTitle('vertical', label || children);
 
   return sstyled(styles)(<SLabel render='text' x='0' y='0' aria-hidden>
     <Children />
