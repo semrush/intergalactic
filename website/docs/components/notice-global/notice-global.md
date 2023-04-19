@@ -129,7 +129,7 @@ In cases where a user on the site has two or more global messages to display, pr
 @## Usage in UX/UI
 
 - You can notify about the following: website mode (e.g., admin), system status (error, failure, end of works).
-- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in one line.
+- Be concise — don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in one line.
 
 @page notice-global-a11y
 @page notice-global-api
