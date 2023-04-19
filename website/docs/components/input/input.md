@@ -40,7 +40,7 @@ We recommend adding a visible text label to the input wherever possible. If the 
 
 @## Content and addons
 
-**Addon** is a position inside the input field – to the left and right of the text – for placing icons, badges, counters, etc. Addon can be non-clickable and clickable.
+**Addon** is a position inside the input field — to the left and right of the text — for placing icons, badges, counters, etc. Addon can be non-clickable and clickable.
 
 - For addon before the text you can set a non-clickable icon only. Such an icon usually has the color of the text or it is colored in other color according to the problem you are solving. _For example, you can color `Check` icon before the text into `--icon-secondary-success` to accent the status of the input._
 - For addon after the text you can set a clickable icon, a counter, a badge, a spinner, an icon button or link. The clickable icon should have `--icon-secondary-neutral` color. While hovering it should change its color to `--icon-secondary-neutral-hover-active` and the cursor to the `pointer`.

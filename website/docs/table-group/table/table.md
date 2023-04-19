@@ -12,7 +12,7 @@ tabName: Design
 
 ### Types
 
-There are two types of tables in our design system – [primary](../table-primary/) and [secondary](../table-secondary/). Colors of both are based on the `gray` palette.
+There are two types of tables in our design system — [primary](../table-primary/) and [secondary](../table-secondary/). Colors of both are based on the `gray` palette.
 
 ### Common styles for the table content
 

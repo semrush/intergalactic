@@ -15,7 +15,7 @@ Important points to keep in mind when presenting data as a Stacked bar chart:
 1. Use this chart type if you have more than two categories to compare.
 2. Use this chart type to visualize the ratio of parts to the whole.
 3. Use sufficiently contrasting colors to show different parts more clearly.
-4. Don't make this chart too small in height and width – it will make it harder to read data.
+4. Don't make this chart too small in height and width — it will make it harder to read data.
 
 @## Appearance
 
