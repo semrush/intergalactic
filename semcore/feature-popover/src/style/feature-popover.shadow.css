@@ -10,6 +10,10 @@ SFeaturePopover {
   box-shadow: var(--intergalactic-box-shadow-popper, 0px 1px 12px 0px rgba(25, 27, 35, 0.15));
 }
 
+STrigger {
+  position: relative;
+}
+
 SClose {
   position: absolute;
   right: 0;
