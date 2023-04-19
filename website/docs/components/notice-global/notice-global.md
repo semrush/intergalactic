@@ -10,7 +10,7 @@ tabName: Design
 
 **NoticeGlobal** is a component for messages about events related to the work of the whole website.
 
-The notice shall meet four criteria. If it doesn't respond to at least one, it's not a notice. Let's see the differencies with [Notice](/components/notice/) and [NoticeBubble](/components/notice-bubble/).
+The notice shall meet four criteria. If it doesn't respond to at least one, it's not a notice. Let's see the differences with [Notice](/components/notice/) and [NoticeBubble](/components/notice-bubble/).
 
 | Criteria                                                                                             | Notice | NoticeBubble | NoticeGlobal |
 | ---------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |

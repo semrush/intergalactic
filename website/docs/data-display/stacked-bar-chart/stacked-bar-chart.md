@@ -17,7 +17,7 @@ Important points to keep in mind when presenting data as a Stacked bar chart:
 3. Use sufficiently contrasting colors to show different parts more clearly.
 4. Don't make this chart too small in height and width – it will make it harder to read data.
 
-@## Appearence
+@## Appearance
 
 Stacked bar chart has no margin between values inside the column. **Choose contrasting colors for different categories.**
 
