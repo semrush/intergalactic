@@ -217,7 +217,7 @@ class RootSelect extends Component {
     if (!multiselect) {
       this.handlers.visible(false);
       setTimeout(() => {
-        this.triggerRef.current?.focus();
+        // this.triggerRef.current?.focus();
       }, 0);
     }
   };
