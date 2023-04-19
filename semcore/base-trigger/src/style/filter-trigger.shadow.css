@@ -48,11 +48,11 @@ SButtonTrigger[state='normal'] {
 }
 
 SButtonTrigger[state='valid'] {
-  border-color: var(--intergalactic-border-success-active, #007C65);
+  border-color: var(--intergalactic-border-success-active, #007c65);
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-critical-active, #D1002F);
+  border-color: var(--intergalactic-border-critical-active, #d1002f);
 }
 
 SFilterTrigger[selected] {
