@@ -80,7 +80,7 @@ SValue[state='normal']::before {
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-color: var(--intergalactic-border-critical-active, #D1002F);
 }
 
 SControl {
@@ -90,7 +90,7 @@ SControl {
 
 SControl:checked ~ SValue::before {
   border-color: var(--intergalactic-control-primary-info, #008ff8);
-  background-color: var(--intergalactic-bg-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
 SControl:checked ~ SValue[size='m']::after {
