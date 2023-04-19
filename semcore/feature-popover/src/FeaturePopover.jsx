@@ -94,6 +94,15 @@ class FeaturePopover extends Component {
   }
 }
 
+function Trigger({ Children, styles }) {
+  const STrigger = Root
+  return sstyled(styles)(
+    <STrigger render={Popper.Trigger} tag={Box}>
+      <Children />
+    </STrigger>
+  );
+}
+
 class FeaturePopoverPopper extends Component {
   static defaultProps = {
     closeIcon: false,
@@ -138,7 +147,7 @@ const Spot = (props) => {
 export default createComponent(
   FeaturePopover,
   {
-    Trigger: Popper.Trigger,
+    Trigger: Trigger,
     Popper: FeaturePopoverPopper,
     Spot,
   },

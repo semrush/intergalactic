@@ -11,10 +11,8 @@ const Demo = () => {
   return (
     <FeaturePopover visible={visible} onVisibleChange={updateVisible} disablePortal>
       <FeaturePopover.Trigger>
-        <Button>
-          Open Popover
-          {visible && <FeaturePopover.Spot />}
-        </Button>
+        <Button>Open Popover</Button>
+        {visible && <FeaturePopover.Spot />}
       </FeaturePopover.Trigger>
       <FeaturePopover.Popper closeIcon wMax={350}>
         <Flex alignItems="start">
