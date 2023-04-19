@@ -20,17 +20,17 @@ As a rule, the progress bar does not block working with the product. The excepti
 
 ProgressBar consists from (surprise!) `ProgressBar` and `ProgressBar.Value`.
 
-![progress bar scheme](static/progressbar-scheme.png)
+![](static/progressbar-scheme.png)
 
 @## Sizes
 
 Our ProgressBar has three sizes.
 
-| Size | Appearance                               | Styles                                                   | Where to use                                                          |
+| Size (height in px) | Appearance                               | Styles                                                   | Where to use                                                          |
 | ---- | ---------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------- |
-| L    | ![L sise progressbar](static/size-l.png) | `height: 12px`, `border-radius: var(--rounded-medium)` | Use in modal windows, on the start screen when launching the product. |
-| M    | ![M size progressbar](static/size-m.png) | `height: 8px`, `border-radius: var(--rounded-medium)`  | Use inside the product.                                               |
-| S    | ![S size progressbar](static/size-s.png) | `height: 4px`, `border-radius: var(--rounded-medium)`  | Use in widgets inside reports/products.                               |
+| S    | ![](static/size-s.png) | `height: 4px`, `border-radius: var(--rounded-medium)`  | Use in widgets inside reports/products.                               |
+| M    | ![](static/size-m.png) | `height: 8px`, `border-radius: var(--rounded-medium)`  | Use inside the product.                                               |
+| L    | ![](static/size-l.png) | `height: 12px`, `border-radius: var(--rounded-medium)` | Use in modal windows, on the start screen when launching the product. |
 
 @## Themes and styles
 
@@ -40,8 +40,20 @@ Both themes use `--progress-bar-value` token for color with the gradient pattern
 
 | Theme  | Appearance                                            | Styles                                       |
 | ------ | ----------------------------------------------------- | -------------------------------------------- |
-| Invert | ![progressbar with invert theme](static/size-l.png)   | `background: var(--progress-bar-bg)`        |
-| Dark   | ![progressbar with dark theme](static/dark-theme.png) | `background: var(--progress-bar-bg-invert)` |
+| Invert | ![](static/size-l.png)   | `background: var(--progress-bar-bg)`        |
+| Dark   | ![](static/dark-theme.png) | `background: var(--progress-bar-bg-invert)` |
+
+@## ProgressBar with counter
+
+You can display a counter next to the progress bar to show how many of the files were loaded. If there is no data on the exact number of files, then display nothing.
+
+Depending on the usage context, place a counter above or near the progress bar.
+
+**The margins between the counter and the progress bar shall be a multiple of 4**.
+
+![](static/progressbar-counter.png)
+
+![](static/progressbar-counter-above.png)
 
 @## Interaction
 
@@ -49,31 +61,21 @@ Both themes use `--progress-bar-value` token for color with the gradient pattern
 
 ProgressBar has three states:
 
-- 0% – the progress bar is colored in gray and has animation.
+- 0% — the progress bar is colored in gray and has animation.
 
-![progressbar without progress](static/loading-gray.png)
+![](static/loading-gray.png)
 
-- 1-99% – the progress bar is partially filled and the pattern is animated.
+- 1-99% — the progress bar is partially filled and the pattern is animated.
 
-![progressbar with the "in progress" state](static/size-l.png)
+![](static/size-l.png)
 
-- 100% – the progress bar is static, green.
+- 100% — the progress bar is static, green.
 
-![progressbar with the loaded state](static/loaded.png)
+![](static/loaded.png)
 
-The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
+The progress bar shall not remain in the 100% state — once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
 
 > If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next.
-
-Display a counter next to the progress bar to show how many of the files were loaded. If there is no data on the exact number of files, then display nothing.
-
-Depending on the usage context, place a counter above or near the progress bar.
-
-**The margins between the counter and the progress bar shall be a multiple of 4**.
-
-![progressbar with the counter](static/progressbar-counter.png)
-
-![progressbar with the counter](static/progressbar-counter-above.png)
 
 ### Animation
 
@@ -93,7 +95,7 @@ Progress value is always animated with `ease-in`.
 
 When scrolling, the progress bar can be pinned. In this case, pin it above all components, including filters, table headers, etc.
 
-![progressbar sticky](static/progressbar-sticky.png)
+![](static/progressbar-sticky.png)
 
 ### Don't use ProgressBar
 
@@ -104,7 +106,7 @@ When scrolling, the progress bar can be pinned. In this case, pin it above all c
 
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
-- In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
+- In cases when loading is very fast, set the minimum time for displaying the progress bar — 3 seconds. This is necessary to avoid "blinking" of the interface.
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 

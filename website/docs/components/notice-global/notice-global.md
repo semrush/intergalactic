@@ -21,7 +21,7 @@ The notice shall meet four criteria. If it doesn't respond to at least one, it's
 
 **Use global notice to tell about:**
 
-- a special mode of viewing a page, tool, site (about admin or other rights on the page);
+- a special mode of viewing a page, product, site (about admin or other rights on the page);
 - an outdated browser version;
 - messages relates to the work of the whole site (downgrade, technical work, etc.).
 
@@ -129,7 +129,7 @@ In cases where a user on the site has two or more global messages to display, pr
 @## Usage in UX/UI
 
 - You can notify about the following: website mode (e.g., admin), system status (error, failure, end of works).
-- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in one line.
+- Be concise — don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in one line.
 
 @page notice-global-a11y
 @page notice-global-api

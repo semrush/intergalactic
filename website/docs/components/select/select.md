@@ -48,7 +48,7 @@ If trigger has a maximum width, then collapse long values into the ellipsis. Whe
 | ------------- | ------------------------------------------------ | ---------------------------------------------------------- | ----------------------------------------------------------- |
 | Default       | ![default](static/primary-default.png)           | ![secondary-default](static/inline-select-placeholder.png) | ![tertiary-default](static/tertiary-select-placeholder.png) |
 | Hover, active | ![hover-active](static/primary-hover-active.png) | ![secondary-hover](static/inline-select-hover.png)         | ![tertiary-hover](static/tertiary-select-hover.png)         |
-| placeholder   | ![placeholder](static/primary-placeholder.png)   | ![secondary-default](static/inline-select-placeholder.png) | ![tertiary-default](static/tertiary-select-placeholder.png) |
+| Placeholder   | ![placeholder](static/primary-placeholder.png)   | ![secondary-default](static/inline-select-placeholder.png) | ![tertiary-default](static/tertiary-select-placeholder.png) |
 | Loading       | ![loading](static/primary-loading.png)           | ![secondary-loading](static/inline-select-loading.png)     | ![tertiary-loading](static/tertiary-select-loading.png)     |
 | Valid         | ![valid](static/primary-valid.png)               | ![secondary-valid](static/inline-select-valid.png)         | ![tertiary-valid](static/inline-select-valid.png)           |
 | Invalid       | ![invalid](static/primary-invalid.png)           | ![secondary-invalid](static/inline-select-invalid.png)     | ![tertiary-invalid](static/inline-select-invalid.png)       |

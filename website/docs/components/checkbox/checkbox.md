@@ -74,15 +74,15 @@ Text label may contain a [Link](/components/link).
 
 ### States
 
-| State                 | Appearance example                                               |
-| --------------------- | ---------------------------------------------------------------- |
-| Normal                | ![](static/state-unchecked.png)                         |
-| checked               | ![](static/state-checked.png)                             |
-| indeterminate         | ![](static/state-indetermenate.png)                 |
-| indeterminate invalid | ![](static/state-indetermenate-invalid.png) |
-| checked invalid       | ![](static/state-checked-invalid.png)             |
-| Disabled              | ![](static/state-disabled.png)                           |
-| Invalid               | ![](static/state-invalid.png)                             |
+| State                 | Appearance example                            |
+| --------------------- | --------------------------------------------- |
+| Normal                | ![](static/state-unchecked.png)               |
+| Checked               | ![](static/state-checked.png)                 |
+| Indeterminate         | ![](static/state-indetermenate.png)           |
+| Invalid               | ![](static/state-invalid.png)                 |
+| Checked invalid       | ![](static/state-checked-invalid.png)         |
+| Indeterminate invalid | ![](static/state-indetermenate-invalid.png)   |
+| Disabled              | ![](static/state-disabled.png)                |
 
 @## Checkbox group
 

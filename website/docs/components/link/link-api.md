@@ -4,7 +4,7 @@ title: API
 
 @## Link
 
-A modified link component that can `disabled` and add Addons to itself. By default, the link is `inline-block` and `no-wrap` – that is, in most cases it is used as a stand-alone component.
+A modified link component that can `disabled` and add Addons to itself. By default, the link is `inline-block` and `no-wrap` — that is, in most cases it is used as a stand-alone component.
 
 ```jsx
 import Link from '@semcore/ui/link';

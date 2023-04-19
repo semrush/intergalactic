@@ -5,7 +5,7 @@ tabName: Design
 
 @## Description
 
-**Summary** is a pattern for displaying summary metrics and trends in the report or tool.
+**Summary** is a pattern for displaying summary metrics and trends in the report or product.
 
 **Use it to:**
 

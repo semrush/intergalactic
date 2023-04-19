@@ -65,9 +65,9 @@ And you can show 12-hour or 24-hour format of time for TimePicker, depending on 
 
 ![](static/datepicker-timepicker-12h-24h.png)
 
-@## Date picker and progressbar
+@## Date picker and progress bar
 
-You can add a small progressbar under the date to show the progress of the metrics you need to show.
+You can add a small progress bar under the date to show the progress of the metrics you need to show.
 
 ![](static/timepicker-metric-normal.png)
 

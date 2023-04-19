@@ -72,9 +72,9 @@ We have several modal window types:
 | Tokens                                                                                        | Example                                     |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------- |
 | `--overlay-primary`                                                                           | ![](static/modal-overlay.png)  |
-| Overlay style when opening a modal window inside another modal window – `--overlay-secondary` | ![](static/second-modal.png) |
+| Overlay style when opening a modal window inside another modal window — `--overlay-secondary` | ![](static/second-modal.png) |
 
-> Use a modal window inside another modal window only when necessary – if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
+> Use a modal window inside another modal window only when necessary — if nothing at all fits. Look through an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows. Meditate.
 
 @## Window size
 
