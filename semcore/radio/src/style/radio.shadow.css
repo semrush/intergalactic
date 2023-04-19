@@ -90,7 +90,7 @@ SControl {
 
 SControl:checked ~ SValue::before {
   border-color: var(--intergalactic-control-primary-info, #008ff8);
-  background-color: var(--intergalactic-bg-primary-info, #008ff8);
+  background-color: var(--intergalactic-control-primary-info, #008ff8);
 }
 
 SControl:checked ~ SValue[size='m']::after {
