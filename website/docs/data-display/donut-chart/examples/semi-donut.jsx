@@ -10,7 +10,7 @@ export default () => {
         <Donut.Pie dataKey="a" name="Pie 1" />
         <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />
         <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
-        <Donut.Label>
+        <Donut.Label label="71,240 engagements">
           <Text tag="tspan" x="0" dy="-1.2em" fill="#191b23" size={600}>
             71,240
           </Text>

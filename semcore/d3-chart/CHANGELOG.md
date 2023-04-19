@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.0] - 2023-04-19
+
+### Added 
+
+- Added automatic conversion of react components to text for accessibility titles.
+
 ## [2.13.13] - 2023-04-18
 
 ### Fixed
@@ -15,8 +21,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/utils` [3.50.0 ~> 3.50.3]).
 
 ## [2.13.10] - 2023-04-03
-
-## [2.13.9] - 2023-04-03
 
 ### Changed
 
