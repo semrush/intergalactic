@@ -8,6 +8,8 @@ import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
+export const MIN_HEIGHT = 2;
+
 const calcPartBarY = (y, minHeight, height) => {
   // need for the correct rendering of negative values (bar should be under Y-axis)
   if (y <= 0) {
@@ -26,7 +28,7 @@ class BarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
-    hMin: 2,
+    hMin: MIN_HEIGHT,
   };
 
   getBackgroundProps(props, index) {
@@ -64,7 +66,7 @@ class BarRoot extends Component {
       y0,
       scale,
       hide,
-      offset,
+      offset: offsetProps,
       duration,
       uid,
       r,
@@ -74,19 +76,19 @@ class BarRoot extends Component {
       onClick,
       transparent,
     } = this.asProps;
-
+    const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
     const absHeight = Math.abs(
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
+    const width = widthProps || getBandwidth(xScale);
+    const barX = xScale(d[x]) + offset[0];
     const barY =
-      yScale(Math.max(d[y0] ?? 0, height <= hMin ? 0 : d[y])) +
+      yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y])) +
       offset[1] -
       calcPartBarY(d[y], hMin, height);
-    const barX = xScale(d[x]) + offset[0];
     const handleClick = (event) => onClick?.(d, event);
-    const width = widthProps || getBandwidth(xScale);
     const dSvg = getRect({
       x: barX,
       y: barY,
