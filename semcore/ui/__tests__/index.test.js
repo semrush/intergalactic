@@ -12,7 +12,7 @@ const releaseDirs = fs
   .filter((entry) => fs.statSync(path.resolve(__dirname, '..', entry)).isDirectory());
 const generated = releaseDirs.length > 2;
 
-xdescribe('@semcore/ui', () => {
+describe('@semcore/ui', () => {
   if (!generated) {
     test.skip('release was not generated', () => {});
     return;
