@@ -19,9 +19,14 @@ The list below describes roles and attributes that component already has.
 | Role   | Attribute              | Element  | Usage                                                                                                                                                                          |
 | ------ | ---------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | switch |                        | `button` | When you can, use a `<button>` element and include `aria-pressed` or `role="switch"` for your toggles.                                                                         |
-|        | `aria-checked="true"`  | `div`    | Indicates the switch is on. CSS attribute selectors (e.g. [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute.   |
-|        | `aria-checked="false"` | `div`    | Indicates the switch is off. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. |
-|        | `aria-readonly`        | `div`    | Indicates that the element is not editable, but is otherwise operable.                                                                                                         |
+|        | `aria-checked="true"`  | `button`    | Indicates the switch is on. CSS attribute selectors (e.g. [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute.   |
+|        | `aria-checked="false"` | `button`    | Indicates the switch is off. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. |
+|        | `aria-readonly`        | `button`    | Indicates that the element is not editable, but is otherwise operable.                                                                                                         |
+
+@## Considerations for designers
+
+- Make sure to add a non-color visual cue, like on-screen text, to convey the state of the switch. This will ensure that the meaning is clear to all users, including those who may have difficulty distinguishing colors.
+- If changing the state of a switch causes an instant change, it may violate a guideline called [WCAG Success Criterion 3.2.2 On Input](https://www.w3.org/WAI/WCAG21/Understanding/on-input.html). To avoid this, either make sure the change doesn't automatically cause a [change of context](https://www.w3.org/WAI/WCAG21/Understanding/on-input.html#dfn-changes-of-context), or inform users about the behavior before they use the switch.
 
 @## Considerations for developers
 

@@ -11,11 +11,11 @@ tabName: Design
 
 @## Layout
 
-| Layout type | Example                                                          |
-| ----------- | ---------------------------------------------------------------- |
-| Horizontal  | ![horizontal positioning for input label](static/horizontal.png) |
-| Vertical    | ![vertical positioning for input label](static/vertical.png)     |
-| Inline      | ![inline input positioning](static/inline.png)                   |
+| Layout type | Example                      |
+| ----------- | ---------------------------- |
+| Horizontal  | ![](static/horizontal.png)   |
+| Vertical    | ![](static/vertical.png)     |
+| Inline      | ![](static/inline.png)       |
 
 @## Input labels
 
@@ -30,16 +30,16 @@ You also can mark the input as an optional.
 
 | Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                |
 | ---------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- |
-| M          | ![vertical label with margin to input](static/input-m.png)       | ![horizontal label with margin to input](static/input-left-m.png)       | 14px (Use `--fs-200`, `--lh-200` tokens) |
-|            | ![vertical label with margin to checkbox](static/checkbox-m.png) | ![horizontal label with margin to checkbox](static/checkbox-left-m.png) |                                          |
-|            | ![vertical label with margin to textarea](static/textarea-m.png) | ![horizontal label with margin to checkbox](static/textarea-left-m.png) |                                          |
-| L          | ![vertical label with margin to input](static/input-l.png)       | ![horizontal label with margin to input](static/input-left-l.png)       | 16px (Use `--fs-300`, `--lh-300` tokens) |
-|            | ![vertical label with margin to checkbox](static/checkbox-l.png) | ![horizontal label with margin to checkbox](static/checkbox-left-l.png) |                                          |
-|            | ![vertical label with margin to textarea](static/textarea-l.png) | ![horizontal label with margin to checkbox](static/textarea-left-l.png) |                                          |
+| M          | ![](static/input-m.png)       | ![](static/input-left-m.png)       | 14px (Use `--fs-200`, `--lh-200` tokens) |
+|            | ![](static/checkbox-m.png) | ![](static/checkbox-left-m.png) |                                          |
+|            | ![](static/textarea-m.png) | ![](static/textarea-left-m.png) |                                          |
+| L          | ![](static/input-l.png)       | ![](static/input-left-l.png)       | 16px (Use `--fs-300`, `--lh-300` tokens) |
+|            | ![](static/checkbox-l.png) | ![](static/checkbox-left-l.png) |                                          |
+|            | ![](static/textarea-l.png) | ![](static/textarea-left-l.png) |                                          |
 
 In cases, when the form is centered on the page, input labels can be right-aligned.
 
-![label alignment](static/align-center.png)
+![](static/align-center.png)
 
 @## Placeholders
 
@@ -58,10 +58,10 @@ To format values that the user enters use [InputMask](/components/input-mask/).
 
 **The main denominator in the design system is 4.** All margins between the components and widgets shall be a multiple of this denominator. See [Spacing system](/layout/box-system/#spacing_system) for more information.
 
-| Input size | Example                                           |
-| ---------- | ------------------------------------------------- |
-| M          | ![paddings between input in a form](static/m.png) |
-| L          | ![paddings between input in a form](static/l.png) |
+| Input size | Example           |
+| ---------- | ----------------- |
+| M          | ![](static/m.png) |
+| L          | ![](static/l.png) |
 
 @## Form validation
 
@@ -85,7 +85,7 @@ Briefly:
 - The form is small and simple.
 - “Price of the mistake” after completing the form is not big.
 
-![labels above inputs example](static/label-1.png)
+![](static/label-1.png)
 
 **Advantages of vertical form layout**
 
@@ -105,7 +105,7 @@ Briefly:
 - The form is large and/or complex, and you need to slow the user down in order he/she do not make mistakes.
 - “Price of the mistake” after the completion of a large form is significant.
 
-![labels near inputs example](static/label-3.png)
+![](static/label-3.png)
 
 **Advantages of horizontal form layout with left label alignment**
 
@@ -125,7 +125,7 @@ Briefly:
 - The form is large and/or complex, and you need to slow the user down in order he/she вщ not make mistakes.
 - Right alignment of labels visually better connects labels with inputs, in comparison with left alignment.
 
-![labels near inputs example](static/label-4.png)
+![](static/label-4.png)
 
 **Advantages of horizontal form layout with right label alignment**
 

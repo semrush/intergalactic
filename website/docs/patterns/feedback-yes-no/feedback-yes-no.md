@@ -21,15 +21,15 @@ tabName: Design
 
 This component is usually located on the top of the report or product.
 
-![feedback notice location on top](static/send-feedback-notice-on-top.png)
+![](static/send-feedback-notice-on-top.png)
 
 And next to the feature you want feedback on.
 
-![feedback notice location next to the feature](static/send-feedback-notice-next-to-feature.png)
+![](static/send-feedback-notice-next-to-feature.png)
 
 @## Styles
 
-![feedback appearance](static/feedback-yes-no.png)
+![](static/feedback-yes-no.png)
 
 - Height of the notice — 72px.
 - Before the text place the [image](https://static.semrush.com/ui-kit/illustration/1.4.0/Feedback.svg). The image size is 40px х 40px.
@@ -37,7 +37,7 @@ And next to the feature you want feedback on.
 
 @## Margins and paddings
 
-![feedback margins](static/feedback-yes-no-sizes.png)
+![](static/feedback-yes-no-sizes.png)
 
 @## Form behavior
 

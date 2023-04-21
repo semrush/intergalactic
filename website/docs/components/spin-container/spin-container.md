@@ -15,7 +15,7 @@ tabName: Design
 - Spin is always placed in the center of the SpinContainer.
 - For overlay under the SpinContainer use `--overlay-limitation-secondary` token.
 
-![spin-container-dropdown](static/spincontainer-dropdown.png)
+![](static/spincontainer-dropdown.png)
 
 @## Fixed Spin with Sticky (deprecated)
 

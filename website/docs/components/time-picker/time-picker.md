@@ -17,18 +17,18 @@ tabName: Design
 
 ### 24-hour format
 
-![24 hours format input](static/input-default-l.png)
+![](static/input-default-l.png)
 
 ### 12-hour format
 
-![12 hours format input](static/input-l.png)
+![](static/input-l.png)
 
 @## Sizes and paddings
 
 | Input size | Appearance                                                                          | Paddings                           |
 | ---------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
-| M          | ![24 hours input](static/input-default-m.png) ![12 hours input](static/input-m.png) | ![paddings](static/paddings-m.png) |
-| L          | ![24 hours input](static/input-default-l.png) ![12 hours input](static/input-l.png) | ![paddings](static/paddings-l.png) |
+| M          | ![](static/input-default-m.png) ![](static/input-m.png) | ![paddings](static/paddings-m.png) |
+| L          | ![](static/input-default-l.png) ![](static/input-l.png) | ![paddings](static/paddings-l.png) |
 
 @## Interaction
 
@@ -38,15 +38,15 @@ Upon focus on the combobox, the list with all the possible variants is opened. U
 
 > The dropdown with the list is shifted to the left by 9px in order to put the list items accurately under the combobox figures.
 
-![12 hours format focus](static/focus-1.png)
+![](static/focus-1.png)
 
 The button switches the `am/pm value` by click.
 
-![12 hours format focus](static/focus-2.png)
+![](static/focus-2.png)
 
 When user navigates to a button with Tab, the button gets `focus`.
 
-![12 hours format focus](static/focus-3.png)
+![](static/focus-3.png)
 
 - Using the comboboxes inside the time picker, the user may both select the time using the mouse and enter it manually.
 - After the first field is completed, the cursor moves to the second field.
@@ -74,7 +74,7 @@ Validation in this component is required in several cases:
 - The tooltip with the description of the error is shown in the first field, upon that the focus is not placed on the field.
 - Validation happens by `Submit` of the whole form.
 
-![validation](static/validation.png)
+![](static/validation.png)
 
 @page time-picker-a11y
 @page time-picker-api

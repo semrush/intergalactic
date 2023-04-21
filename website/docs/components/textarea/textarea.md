@@ -14,8 +14,8 @@ tabName: Design
 
 Size (height in px for one row of text) | Appearance example                 |
 | ------------------- | ---------------------------------- |
-| M (28px)            | ![input with M size](static/m.png) |
-| L (40px)            | ![input with L size](static/l.png) |
+| M (28px)            | ![](static/m.png) |
+| L (40px)            | ![](static/l.png) |
 
 ### Resize control
 
@@ -33,8 +33,8 @@ The counter can be placed either next to the text label or near the textarea its
 
 | Size (height in px for one row of text) | Input with label                                       | Input without label                                          |
 | ------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
-| M (28px)            | ![input with M size and counter](static/counter-M.png) | ![input with M size and counter](static/counter-inner-M.png) |
-| L (40px)            | ![input with L size and counter](static/counter-L.png) | ![input with L size and counter](static/counter-inner-L.png) |
+| M (28px)            | ![](static/counter-M.png) | ![](static/counter-inner-M.png) |
+| L (40px)            | ![](static/counter-L.png) | ![](static/counter-inner-L.png) |
 
 @## Interaction
 
@@ -42,9 +42,9 @@ Styles of the textarea in different states correspond to the styles of the [Inpu
 
 | State   | Normal                                 | Focus                                                     | Disabled                                 | Read-only                                |
 | ------- | -------------------------------------- | --------------------------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Normal  | ![default input](static/m.png)         | ![default focus](static/m-focus.png)                      | ![disabled input](static/m-disabled.png) | ![readonly input](static/m-readonly.png) |
-| Valid   | ![valid input](static/m-valid.png)     | ![input with valid focus](static/m-valid-focus.png)       |                                          |                                          |
-| Invalid | ![invalid input](static/m-invalid.png) | ![ininput with invalid focus](static/m-invalid-focus.png) |                                          |                                          |
+| Normal  | ![](static/m.png)         | ![](static/m-focus.png)                      | ![](static/m-disabled.png) | ![](static/m-readonly.png) |
+| Valid   | ![](static/m-valid.png)     | ![](static/m-valid-focus.png)       |                                          |                                          |
+| Invalid | ![](static/m-invalid.png) | ![](static/m-invalid-focus.png) |                                          |                                          |
 
 @## Usage in UX/UI
 

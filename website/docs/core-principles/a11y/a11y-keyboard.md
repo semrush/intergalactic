@@ -24,7 +24,7 @@ Make sure that it's possible to interact with your interface using a keyboard on
 > - **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
 > - **Enter**, **Space** or **↓** **(for the select/menu trigger)** opens a dropdown. And if it has interactive elements inside, `focus` moves to the first one.
 > - `Down Arrow` inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the `Top Arrow`, but backwards 🙃
-> - **Esc** discardes choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
+> - **Esc** discards choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
 
 Keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
 
@@ -94,7 +94,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 `Shift + Tab` moves focus to the previous control, and popper closes.
 
-![keyboard control example](/core-principles/a11y/static/keyboard-nav1.png)
+![](/core-principles/a11y/static/keyboard-nav1.png)
 
 @## Focus, OnMouseEnter and popper
 
@@ -102,7 +102,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 2. The popper closes by pressing `Esc`, and **focus remains on the trigger**.
 3. `Shift + Tab` moves focus to the previous control, and popper closes.
 
-![keyboard control example](/core-principles/a11y/static/keyboard-nav2.png)
+![](/core-principles/a11y/static/keyboard-nav2.png)
 
 @## Focus, OnClick and popper with a single interactive element
 
@@ -112,7 +112,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 4. Pressing `Esc` closes the popper, even if the focus was on the control inside it. After closing the popper, focus remains on the trigger.
 5. Pressing the "Submit" control inside the popper closes it and returns focus to the trigger.
 
-![keyboard control example](/core-principles/a11y/static/keyboard-nav3.png)
+![](/core-principles/a11y/static/keyboard-nav3.png)
 
 @## Focus, OnClick and popper with multiple interactive elements
 
@@ -123,7 +123,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 5. Pressing `Esc` closes the popper, even if the focus was on the control inside it. After closing the popper, focus remains on the trigger.
 6. Pressing the "Submit" control in the popper closes it and leaves the focus on the trigger.
 
-![keyboard control example](/core-principles/a11y/static/keyboard-nav4.png)
+![](/core-principles/a11y/static/keyboard-nav4.png)
 
 @## Focus, onClick and popper in the popper
 

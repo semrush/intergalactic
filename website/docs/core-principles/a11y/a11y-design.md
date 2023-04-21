@@ -153,7 +153,7 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 
 - **Don't make references to the shape, size, visual layout, or sound**. Prompts like _"See image above"_ or _"Find instructions in the right column"_ will mean nothing to a blind user, while a deaf user will not be able to follow the instructions like _"Continue after the beep"_ or _"Confirm the transfer via a phone call"_.
 
-![instructions](/core-principles/a11y/static/instructions.png)
+![](/core-principles/a11y/static/instructions.png)
 
 > **Useful resources**
 >
