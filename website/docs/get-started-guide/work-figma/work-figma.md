@@ -19,7 +19,7 @@ Feel free to use our Figma libraries:
 - Interface icons: **[Internal](https://www.figma.com/file/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons), [Public](https://www.figma.com/community/file/1104055318873511031)**
 - Charts: **[Internal](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/1104055641569356920)**
 
-![all libraries](static/figma-libraries.png)
+![](static/figma-libraries.png)
 
 @embedded_video https://www.loom.com/share/593126f16b494b719949649d1d7fa331
 

@@ -22,7 +22,7 @@ The list below describes roles and attributes that component already has.
 | Role       | Attribute               | Element | Usage                                                                                                                                     |
 | ---------- | ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `menu`     |                         | `div`   | It's a type of composite widget that offers a list of choices to the user.                                                                |
-| `menuiten` |                         | `div`   | Indicates the element is an option in a set of choices contained by a menu or menubar.                                                    |
+| `menuitem` |                         | `div`   | Indicates the element is an option in a set of choices contained by a menu or menubar.                                                    |
 |            | `aria-current="active"` | `div`   | `aria-current` state on an element indicates that this element represents the current item within a container or set of related elements. |
 
 @## Resources

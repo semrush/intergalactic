@@ -14,8 +14,9 @@ tabName: Design
 
 - Container with content (`ScrollArea.Container`).
 - Scroll indicator (`ScrollArea.Bar`).
+- Slider (`ScrollArea.Bar.Slider`).
 
-![scheme](static/scroll-scheme.png)
+![](static/scroll-scheme.png)
 
 ### Styles
 

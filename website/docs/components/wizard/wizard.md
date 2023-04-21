@@ -23,7 +23,7 @@ _For example, set up and run a report, submit a very large form._
 
 @## Component composition
 
-![wizard scheme](static/wizard-scheme.png)
+![](static/wizard-scheme.png)
 
 @## Appearance
 
@@ -41,11 +41,11 @@ line-height: var(--lh-300);
 font-weight: 700;
 ``` -->
 
-![wizard sidebar styles](static/steps-paddings-margins.png)
+![](static/steps-paddings-margins.png)
 
 ### Step styles
 
-![wizard step styles](static/step-size.png)
+![](static/step-size.png)
 
 ### Stepper styles
 
@@ -57,7 +57,7 @@ line-height: var(--lh-200);
 font-weight: 700;
 ``` -->
 
-![wizard stepper styles](static/stepper-paddings-margins.png)
+![](static/stepper-paddings-margins.png)
 
 For optional text, use the following styles:
 
@@ -69,30 +69,30 @@ line-height: var(--lh-100);
 font-weight: 400;
 ``` -->
 
-If a stepper has a substep, it has the following styles:
+If a stepper has a sub-step, it has the following styles:
 
-![wizard substepper styles](static/substep-paddings-margins.png)
+![](static/substep-paddings-margins.png)
 
 @## Wizard in Modal
 
 ### Sizes
 
-```
+```CSS
 max-width: 980px;
 max-height: 700px;
 ```
 
-![wizard sizes](static/wizard1.png)
+![](static/wizard1.png)
 
-![wizard sizes](static/wizard2.png)
+![](static/wizard2.png)
 
 #### Collapsing panel with steps on screen less than 1060px
 
 Collapse the panel to 44px, leaving only the step numbers. On hover per step, show the name of the step.
 
-![wizard collapsing steppers](static/collapsing-stepper1.png)
+![](static/collapsing-stepper1.png)
 
-![wizard collapsing steppers](static/collapsing-stepper2.png)
+![](static/collapsing-stepper2.png)
 
 ### Placement
 
@@ -100,9 +100,9 @@ The scroll behavior inside and outside the window, the general rules for content
 
 Center the Wizard relative to the user's viewport. And leave margins of 40px outside the window.
 
-![wizard placement](static/placement.png)
+![](static/placement.png)
 
-![wizard placement](static/paddings.png)
+![](static/paddings.png)
 
 ### Content area styles
 
@@ -115,7 +115,7 @@ line-height: var(--lh-200);
 font-weight: 400;
 ``` -->
 
-![wizard content styles](static/wizard-paddings.png)
+![](static/wizard-paddings.png)
 
 ### Header styles
 
@@ -127,7 +127,7 @@ line-height: var(--lh-500);
 font-weight: 700;
 ``` -->
 
-![wizard header styles](static/header.png)
+![](static/header.png)
 
 #### Icon for closing window
 
@@ -135,7 +135,7 @@ The icon has L size and use `--icon-secondary-neutral` token for color.
 
 On hover, the color of the icon changes to the next one in the palette — `--icon-secondary-neutral-hover-active`.
 
-![wizard close icon styles](static/close-paddings.png)
+![](static/close-paddings.png)
 
 ### Footer styles
 
@@ -148,7 +148,7 @@ line-height: var(--lh-500);
 
 For basic controls use L size.
 
-![wizard footer styles](static/footer.png)
+![](static/footer.png)
 
 @## Interaction
 
@@ -156,11 +156,11 @@ There you can see default styles for stepper button.
 
 | State    | Appearance example                                                                                | Styles                                                                                                                                                               |
 | -------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal   | ![wizard stepper state](static/normal.png)                                                        | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)`                                                                     |
-| Hover    | ![wizard stepper state](static/hover.png)                                                         | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                                                                                    |
-| Active   | ![wizard stepper state](static/active.png)                                                        | `background-color: var(--control-primary-advertising-active)`                                                                                                       |
-| Disabled | ![wizard stepper state](static/disabled.png) ![wizard stepper state](static/disabled-tooltip.png) | Use [`--disabled-opacity`](/style/design-tokens/) token. When hovering on a button in this state, hang up a tooltip with a description of why this step is disabled. |
-| checked  | ![wizard stepper state](static/checked.png)                                                       | The number changes to a Check icon in size M.                                                                                                                        |
+| Normal   | ![](static/normal.png)                                                        | `background-color: var(--control-primary-advertising)`, `border-radius: var(--rounded-medium)`                                                                     |
+| Hover    | ![](static/hover.png)                                                         | `background-color: var(--control-primary-advertising-hover)`, `cursor: pointer`                                                                                    |
+| Active   | ![](static/active.png)                                                        | `background-color: var(--control-primary-advertising-active)`                                                                                                       |
+| Disabled | ![](static/disabled.png) ![](static/disabled-tooltip.png) | Use [`--disabled-opacity`](/style/design-tokens/) token. When hovering on a button in this state, hang up a tooltip with a description of why this step is disabled. |
+| checked  | ![](static/checked.png)                                                       | The number changes to a Check icon in size M.                                                                                                                        |
 
 @## Keyboard control
 
@@ -184,19 +184,19 @@ After submitting the form, when validating the inputs, all invalid inputs are hi
 
 For more information about validation, see the [Validation guide](/patterns/validation-form/).
 
-![wizard form validation](static/validation.png)
+![](static/validation.png)
 
 ### Form loading error
 
 If some error occurred on the backend while submitting the form, show the error message above the form.
 
-![wizard form error](static/error-all.png)
+![](static/error-all.png)
 
 ### Sizes of controls in the form
 
 In the form, use the same sizes of inputs and controls.
 
-![wizard form controls](static/form-yes-no.png)
+![](static/form-yes-no.png)
 
 ### Saving the entered value
 

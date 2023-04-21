@@ -20,14 +20,14 @@ We have six sizes of Spin.
 
 > **The size of the text should be at least 14px.**
 
-| Size    | Text below                                  | Text on the right                            |
-| ------- | ------------------------------------------- | -------------------------------------------- |
-| **XS**  | ![center-xs](static/text-vertical-xs.png)   | ![right-s](static/text-horizontal-xs.png)    |
-| **S**   | ![center-s](static/text-vertical-s.png)     | ![right-s](static/text-horizontal-s.png)     |
-| **M**   | ![center-m](static/text-vertical-m.png)     | ![right-m](static/text-horizontal-m.png)     |
-| **L**   | ![center-l](static/text-vertical-l.png)     | ![right-l](static/text-horizontal-l.png)     |
-| **XL**  | ![center-xl](static/text-vertical-xl.png)   | ![right-xl](static/text-horizontal-xl.png)   |
-| **XXL** | ![center-xxl](static/text-vertical-xxl.png) | ![right-xxl](static/text-horizontal-xxl.png) |
+| Size    | Text below                        | Text on the right                   |
+| ------- | --------------------------------- | ----------------------------------- |
+| **XS**  | ![](static/text-vertical-xs.png)  | ![](static/text-horizontal-xs.png)  |
+| **S**   | ![](static/text-vertical-s.png)   | ![](static/text-horizontal-s.png)   |
+| **M**   | ![](static/text-vertical-m.png)   | ![](static/text-horizontal-m.png)   |
+| **L**   | ![](static/text-vertical-l.png)   | ![](static/text-horizontal-l.png)   |
+| **XL**  | ![](static/text-vertical-xl.png)  | ![](static/text-horizontal-xl.png)  |
+| **XXL** | ![](static/text-vertical-xxl.png) | ![](static/text-horizontal-xxl.png) |
 
 @## Styles
 
@@ -41,10 +41,10 @@ You can place text, which tells user that data is being loaded, next to the spin
 
 Spin has two themes: `dark` and `invert` — for using on light and dark/colored backgrounds, respectively. You also can make your Spin colored in a custom color if needed.
 
-| Theme  | Appearance example                   | Description                                            |
-| ------ | ------------------------------------ | ------------------------------------------------------ |
-| Dark   | ![dark-spiner](static/dark-m.png)    | Use Spin with this theme on a light background.        |
-| Invert | ![light-spiner](static/invert-m.png) | Use Spin with this theme on a dark/colored background. |
+| Theme  | Appearance example        | Description                                            |
+| ------ | ------------------------- | ------------------------------------------------------ |
+| Dark   | ![](static/dark-m.png)    | Use Spin with this theme on a light background.        |
+| Invert | ![](static/invert-m.png)  | Use Spin with this theme on a dark/colored background. |
 
 @## Animation
 
