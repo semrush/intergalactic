@@ -25,8 +25,8 @@ All skeleton “bones” have `border-radius` of 4px.
 
 | Theme  | Appearance example                     | Styles                                    |
 | ------ | -------------------------------------- | ----------------------------------------- |
-| Dark   | ![theme-light](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
-| Invert | ![theme-dark](static/theme-dark.png)   | `background: var(--skeleton-bg-invert)`. |
+| Dark   | ![](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
+| Invert | ![](static/theme-dark.png)   | `background: var(--skeleton-bg-invert)`. |
 
 @## Animation
 
@@ -48,7 +48,7 @@ Any paragraph should be replaced by one type of skeleton.
 - The width of "bones" is equal to the width of the paragraph, but no more than 600px.
 - The length of the last "bone" is 3/4 of the previous two "bones".
 
-![paragraph-skeleton](static/text.png)
+![](static/text.png)
 
 ### Headers
 
@@ -57,13 +57,12 @@ Each header is replaced by a "bone" with the height equal to the header's line-h
 - The header is always replaced by the one line of the Skeleton "bone", even if the header consists of two lines.
 - The width of "bones" is 150px. In rare cases, you can increase it, if it is necessary.
 
-| h#    | Appearance                       |
-| ----- | -------------------------------- |
-| h1    | ![h1-skeleton](static/h1.png)    |
-| h2-h3 | ![h2-skeleton](static/h2-h3.png) |
-| h4    | ![h3-skeleton](static/h4.png)    |
-| h5-h6 | ![h4-skeleton](static/h5-h6.png) |
-| h7    | ![h5-skeleton](static/h7.png)    |
+| h#    | Appearance            |
+| ----- | --------------------- |
+| h1    | ![](static/h1.png)    |
+| h2-h3 | ![](static/h2-h3.png) |
+| h4    | ![](static/h4.png)    |
+| h5-h6 | ![](static/h5-h6.png) |
 
 ### Images
 
@@ -76,8 +75,8 @@ Skeleton of images depends on their size:
 
 | Step                            | Example                                |
 | ------------------------------- | -------------------------------------- |
-| 1. Skeleton                     | ![pics-skeleton](static/pics.png)      |
-| 2. Replace by pictures and text | ![pics-skeleton](static/pics-pics.png) |
+| 1. Skeleton                     | ![](static/pics.png)      |
+| 2. Replace by pictures and text | ![](static/pics-pics.png) |
 
 **Images of big size** are shown as follows:
 
@@ -85,9 +84,9 @@ Skeleton of images depends on their size:
 
 | Step                                                                                                  | Пример                                        |
 | ----------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| 1. Skeleton                                                                                           | ![big-pics-skeleton](static/big-pic.png)      |
-| 2. Small pictures and skeleton are replaced by text and user picture, the large one is loaded blurred | ![big-pics-skeleton](static/big-pic-blur.png) |
-| 3. Big picture is loaded fully                                                                        | ![big-pics-skeleton](static/big-pic-pic.png)  |
+| 1. Skeleton                                                                                           | ![](static/big-pic.png)      |
+| 2. Small pictures and skeleton are replaced by text and user picture, the large one is loaded blurred | ![](static/big-pic-blur.png) |
+| 3. Big picture is loaded fully                                                                        | ![](static/big-pic-pic.png)  |
 
 ### Icons
 
@@ -179,9 +178,9 @@ In addition, the following components should never use Skeleton, as they should 
 - Row controls are recommended to be disabled while initial loading of the table.
 - Table header and sorting should be active while initial loading of the table.
 
-![skeleton-table](static/table.png)
+![](static/table.png)
 
-![skeleton-table](static/table-table.png)
+![](static/table-table.png)
 
 #### Secondary tables
 
@@ -189,9 +188,9 @@ In addition, the following components should never use Skeleton, as they should 
 - The header should be active while initial loading of the table.
 - In widgets, where the maximum number of lines is 5, show them all.
 
-![skeleton-table](static/table-2.png)
+![](static/table-2.png)
 
-![skeleton-table](static/table-table-2.png)
+![](static/table-table-2.png)
 
 ### Chart
 
@@ -224,7 +223,7 @@ At the initial loading of the page, the counters in the pills can be skeletonize
 
 #### Big Pills
 
-Skeletonize them same way as Summury.
+Skeletonize them same way as Summary.
 
 - Do not show trends, information and additional links.
 - The values are replaced with Skeleton “bones" with the size of value's line-height.
@@ -249,25 +248,25 @@ Static information should be shown immediately. **It should not be disabled**.
 
 ![skeleton-color](static/color-yes-no.png)
 
-**Do not skeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main infromation.
+**Do not skeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main information.
 
 ![skeleton-link](static/link-yes-no.png)
 
 **Buttons, checkboxes need to be disabled while initial loading of the table.**
 
-![skeleton-table](static/table-yes-no.png)
+![](static/table-yes-no.png)
 
 **Show Info icons and tooltips.** So during the initial loading, the user will be able to read the information about the loading data.
 
-![skeleton-tooltip](static/tooltip-yes-no.png)
+![](static/tooltip-yes-no.png)
 
 Show dropdowns and selects immediately while initial loading.
 
-![skeleton-dropdown](static/dropdown-yes-no.png)
+![](static/dropdown-yes-no.png)
 
 **Do not add to much Skeleton "bones".** Add no more than three. Otherwise you'll increase the page load time.
 
-![skeleton-count](static/count-yes-no.png)
+![](static/count-yes-no.png)
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 

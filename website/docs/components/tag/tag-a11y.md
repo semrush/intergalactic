@@ -18,6 +18,7 @@ a11y: AA
 
 - Make sure screenreader reads your tags list as a group.
 - Tags that are used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y/).
+- Make sure that any function accessible by hovering with a mouse is also available using only the keyboard.
 
 @## Considerations for designers
 

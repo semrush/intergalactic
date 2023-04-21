@@ -2,7 +2,7 @@
 title: Design principles
 ---
 
-![principles](static/principles.png)
+![](static/principles.png)
 
 **We follow these core principles when building our interfaces:**
 
