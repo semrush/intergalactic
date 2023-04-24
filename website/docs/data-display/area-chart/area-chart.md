@@ -30,13 +30,13 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 | Example                                             | Styles                                                                                                     |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| ![area chart without dots](static/without-dots.png) | **Line thickness is 3px**. Background color under the line is the color of the line with 0.2 transparency. |
+| ![Area chart without dots.](static/without-dots.png) | **Line thickness is 3px**. Background color under the line is the color of the line with 0.2 transparency. |
 
 We recommend you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
 | Example                                  | Styles                                                                                                                      |
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
+| ![Area chart with dots.](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
 
 @## Interaction
 
@@ -52,7 +52,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 For this case enable the display of dots on the chart by default.
 
-![one-dot](static/one-dot-area-chart.png)
+![](static/one-dot-area-chart.png)
 
 ### Styles
 
@@ -65,11 +65,11 @@ For this case enable the display of dots on the chart by default.
 
 **Example 1** is for the case when there is data for two non-near dates.
 
-![two-dots](static/two-dots1-area-chart.png)
+![](static/two-dots1-area-chart.png)
 
 **Example 2** is when there is data for one after another dates.
 
-![two-dots](static/two-dots2.png)
+![](static/two-dots2.png)
 
 @## Null values
 
@@ -77,7 +77,7 @@ If all values on the chart are zero, then show the trend line on the zero axis.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![null-data](static/null-area-chart.png)
+![](static/null-area-chart.png)
 
 @## No data
 
@@ -85,11 +85,11 @@ If all values on the chart are zero, then show the trend line on the zero axis.
 
 In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
 
-![partially-data](static/partially-trash.png)
+![](static/partially-trash.png)
 
 When user hovers over a dot without data, show the tooltip with the `n/a` value. We recommend you to add a message why there is no data, and when it will be available, if possible.
 
-![partially-data](static/partially.png)
+![](static/partially.png)
 
 @## Initial data loading
 
@@ -107,7 +107,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![skeleton](static/area-skeleton.png)
+![](static/area-skeleton.png)
 
 @page area-chart-a11y
 @page area-chart-api

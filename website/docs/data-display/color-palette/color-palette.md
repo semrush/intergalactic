@@ -99,5 +99,3 @@ This way helps to color your data in a monochromatic way. In this case use token
 30 and more colors are for the really complex cases where you need a large number of colors that will be set for the data by the system.
 
 To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.
-
-@page d3-chart-changelog

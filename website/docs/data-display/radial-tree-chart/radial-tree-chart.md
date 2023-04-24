@@ -23,15 +23,15 @@ Basic rules for visualizing data as a Radial Tree:
 
 | Appearance example                                    | Styles and sizes                                                     |
 | ----------------------------------------------------- | -------------------------------------------------------------------- |
-| ![default radial tree example](static/radialtree.png) | The recommended minimum chart size is 600px (don't make it smaller). |
+| ![](static/radialtree.png) | The recommended minimum chart size is 600px (don't make it smaller). |
 
 ### Value's styles
 
 #### Default state
 
-![value of radial tree](static/margins.png)
+![](static/margins.png)
 
-![value of radial tree](static/sizes1.png)
+![](static/sizes1.png)
 
 - Stroke width — 1px.
 - Default size of the circle bullet — `8px * 8px`.
@@ -40,7 +40,7 @@ Basic rules for visualizing data as a Radial Tree:
 
 #### Active state
 
-![value of radial tree](static/sizes2.png)
+![](static/sizes2.png)
 
 - Size of the circle bullet in the active state — `16px * 16px`.
 - You can place an icon of M size inside the circle bullet in the active state.
@@ -49,7 +49,7 @@ Basic rules for visualizing data as a Radial Tree:
 
 For cases where you need to group data using colors on a chart, add a legend next to the chart. This will make it easier for users to read the data.
 
-![legend for radial tree](static/legend.png)
+![](static/legend.png)
 
 @## Tooltip
 
@@ -59,9 +59,9 @@ This chart doesn't need tooltip.
 
 | State   | Appearance example                              | Styles                                                                                                                                                                                                                                                    |
 | ------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Default | ![value in a default state](static/default.png) | In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
-| Hover   | ![value in a hover state](static/hover.png)     | For the text's hover state use the next color hue. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. **Do not change the color of the additional line and the circle bullet.**                                                                        |
-| Active  | ![value in an active state](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
+| Default | ![](static/default.png) | In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
+| Hover   | ![](static/hover.png)     | For the text's hover state use the next color hue. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. **Do not change the color of the additional line and the circle bullet.**                                                                        |
+| Active  | ![](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
 
 @## Animation
 
@@ -75,13 +75,13 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 | Case                                                                                                                                                                                                                           | Appearance example                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| **One value**                                                                                                                                                                                                                  | ![radial tree with one value](static/one-value.png)               |
-| **Two values**                                                                                                                                                                                                                 | ![radial tree with two values](static/two-values.png)             |
-| **Few values.** If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.                                                                | ![radial tree with few values](static/few-values.png)             |
-| **Very long main element.** Don't fold the long center value into ellipsis. Wrap it on the second line.                                                                                                                        | ![radial tree with a very long main value](static/long-value.png) |
-| **No data.** Show a special WidgetEmpty message for cases when there is no data.                                                                                                                                               | ![radial tree with no data](static/no-data-state.png)             |
-| **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![radial tree with not available](static/n-a-state.png)           |
-| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![radial tree with skeleton](static/radial-tree-skeleton.png)     |
+| **One value**                                                                                                                                                                                                                  | ![](static/one-value.png)               |
+| **Two values**                                                                                                                                                                                                                 | ![](static/two-values.png)             |
+| **Few values.** If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.                                                                | ![](static/few-values.png)             |
+| **Very long main element.** Don't fold the long center value into ellipsis. Wrap it on the second line.                                                                                                                        | ![](static/long-value.png) |
+| **No data.** Show a special WidgetEmpty message for cases when there is no data.                                                                                                                                               | ![](static/no-data-state.png)             |
+| **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![](static/n-a-state.png)           |
+| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![](static/radial-tree-skeleton.png)     |
 
 @page radial-tree-chart-api
 @page radial-tree-chart-a11y

@@ -34,11 +34,11 @@ Use [special chart palette](/data-display/color-palette/) and follow the rules p
 
 > If the data refers to the same category, the values shall not have different colors.
 
-![bar chart colors yes-no examples](static/example-yes-no.png)
+![](static/example-yes-no.png)
 
 On the other hand, color can focus attention on a specific portion of data. For example, in some cases the size of the column may not be enough for visual hierarchy.
 
-![bar chart colors yes-no examples](static/example-4.png)
+![](static/example-4.png)
 
 ### Min-height and outliers (big values)
 
@@ -46,11 +46,11 @@ In some cases some of the values in the data can be very different from the majo
 
 > **The bar has a min-height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
 
-![bar chart with outlier](static/outlier.png)
+![](static/outlier.png)
 
 **Recommended solution for this case: make the scale not linear, but logarithmic.** In this case, the data will align with each other and remain comparable, and our outliers will still be the largest (although not so large).
 
-![bar chart with outlier](static/outlier-1.png)
+![](static/outlier-1.png)
 
 > You can read the **[article about other solutions](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).**
 
@@ -60,25 +60,25 @@ If there are very large values, you may choose a different chart type which is b
 
 If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title is not enough.
 
-| Vertical bar chart example             | Horizontal bar chart example                    |
-| -------------------------------------- | ----------------------------------------------- |
-| ![bar chart legend](static/legend.png) | ![bar chart legend](static/hor-bar-example.png) |
+| Vertical bar chart example      | Horizontal bar chart example    |
+| ------------------------------- | ------------------------------- |
+| ![](static/legend.png)          | ![](static/hor-bar-example.png) |
 
 > **Legend is required when there are two or more categories in the data set.**
 
-| Vertical bar chart example                                      | Horizontal bar chart example                                   |
-| --------------------------------------------------------------- | -------------------------------------------------------------- |
-| ![bar chart with two values and legend](static/bar-chart-2.png) | ![bar chart with two values and legend](static/hor-legend.png) |
+| Vertical bar chart example   | Horizontal bar chart example      |
+| ---------------------------- | --------------------------------- |
+| ![](static/bar-chart-2.png)  | ![](static/hor-legend.png)        |
 
 @## Trend
 
 A bar chart may have a trend line. Most often, trend line overloads charts. However, in some cases, it can be useful for reading the overall trend.
 
-![bar chart with trend](static/bar-trend.png)
+![](static/bar-trend.png)
 
 When you hover over any part of the column, the tooltip shall display all values of the bar item and the total value for the trend.
 
-![bar chart with hover over trend](static/trend-hover.png)
+![](static/trend-hover.png)
 
 @## Interaction
 
@@ -88,10 +88,10 @@ If the column is clickable, the cursor changes to `pointer`.
 
 If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
 
-|                                   | Appearance example                                                                           |
-| --------------------------------- | -------------------------------------------------------------------------------------------- |
-| Chart with one category           | ![bar chart with hover](/data-display/bar-chart/static/bar-chart-hover.png)                  |
-| Chart with two or more categories | ![bar chart with two values and hover](/data-display/bar-chart/static/bar-chart-2-hover.png) |
+|                                   | Appearance example                        |
+| --------------------------------- | ----------------------------------------- |
+| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)                  |
+| Chart with two or more categories | ![](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
@@ -101,21 +101,21 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 
 By comparing columns, we are actually comparing the length. If we do not start the axis from zero, there will be a visual illusion. Check out the charts below. In the wrong case, the axis does not start from zero, and it seems that the value on the right is almost half as large as the value on the left. However, this is not true.
 
-![bar chart deception examples](static/deception-yes-no.png)
+![](static/deception-yes-no.png)
 
 If the values are very large and close to each other, you may not see the difference in the columns. In this case, we recommend using a line chart.
 
-![line chart instead of bar chart](static/example-2-yes-no.png)
+![](static/example-2-yes-no.png)
 
 For such cases, you can add the possibility to switch the data display from bar chart to line chart in the settings.
 
-![bar chart with outlier](static/type.png)
+![](static/type.png)
 
 ### Sorting of columns
 
 Keep in mind a reasonable order of values on the axes. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
 
-![sorting bar chart](static/sort-yes-no.png)
+![](static/sort-yes-no.png)
 
 ### Chart as an entry point
 
@@ -127,9 +127,9 @@ In this case, clicking on the column opens the corresponding report. The column 
 
 When hovering over, the column/columns are highlighted with `--chart-grid-bar-chart-hover`.
 
-| Vertical bar chart example                     | Horizontal bar chart example                   |
-| ---------------------------------------------- | ---------------------------------------------- |
-| ![clickable bar chart](static/interactive.png) | ![clickable bar chart](static/hor-hover-3.png) |
+| Vertical bar chart example  | Horizontal bar chart example |
+| --------------------------- | ---------------------------- |
+| ![](static/interactive.png) | ![](static/hor-hover-3.png)  |
 
 #### The detailed information is contained in the table below
 
@@ -137,9 +137,9 @@ In this case, clicking on the date/column opens the detailed and switches the pe
 
 When you hover over a clickable date, it changes background `--chart-grid-period-bg`. In active state clickable date changes text color to `--text-invert` and background color to `--chart-x-axis-accent-period-active`.
 
-| Vertical bar chart example                       | Horizontal bar chart example                          |
-| ------------------------------------------------ | ----------------------------------------------------- |
-| ![clickable bar chart](static/interactive-2.png) | ![clickable bar chart](static/hor-widget-example.png) |
+| Vertical bar chart example     | Horizontal bar chart example       |
+| ------------------------------ | ---------------------------------- |
+| ![](static/interactive-2.png)  | ![](static/hor-widget-example.png) |
 
 @page bar-chart-vertical
 @page bar-chart-a11y

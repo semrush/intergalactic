@@ -5,8 +5,8 @@ title: Charts
 @page chart-showcase
 @page d3-chart
 @page color-palette
-@page chart-legend
 @page chart-controls
+@page chart-legend
 @page notes
 
 @page area-chart
