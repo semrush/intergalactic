@@ -1,3 +1,21 @@
+## [13.24.0] - 2023-04-24
+
+### @semcore/date-picker
+
+- **Fixed** Fixed issue with custom styles when using `shadow-loader` plugin.
+
+### @semcore/modal
+
+- **Added** Added `disablePreventScroll` prop.
+
+### @semcore/side-panel
+
+- **Added** Added `disablePreventScroll` prop.
+
+### @semcore/utils
+
+- **Fixed** Fixed `usePreventScroll` (used in `<Modal />` and `<ScrollBar />`) might totally block document body scroll with async components appearing and fading.
+
 ## [13.23.0] - 2023-04-19
 
 ### @semcore/color-picker
