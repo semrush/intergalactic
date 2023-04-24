@@ -28,11 +28,11 @@ For an interactive legend use a group of [checkboxes](/components/checkbox/) or 
 
 | Component                                     | Appearance example                                                                                     | Styles                                                                                                                                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Checkbox                                      | ![checkbox legend](static/checkbox.png) ![checkbox bottom legend](static/legend-bottom.png)            | Checkbox has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                   |
-| Checkbox with icon                            | ![checkbox legend](static/checkbox-icon.png)                                                           | Icon has M size and usually `--icon-non-interactive` color.                                                                                                                                  |
-| Checkbox with icon and additional information | ![checkbox legend](static/checkbox-icon-info.png) ![checkbox legend](static/checkbox-trash-bottom.png) | Icon has M size and usually `--icon-non-interactive` token for color. For an additional information and counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
-| Checkbox with counter                         | ![checkbox legend](static/checkbox-counter.png)                                                        | For a counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color.                                                                                                   |
-| Radio button                                  | ![radio legend](static/radio.png)                                                                      | Radio has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                      |
+| Checkbox                                      | ![](static/checkbox.png) ![](static/legend-bottom.png)            | Checkbox has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                   |
+| Checkbox with icon                            | ![](static/checkbox-icon.png)                                                           | Icon has M size and usually `--icon-non-interactive` color.                                                                                                                                  |
+| Checkbox with icon and additional information | ![](static/checkbox-icon-info.png) ![](static/checkbox-trash-bottom.png) | Icon has M size and usually `--icon-non-interactive` token for color. For an additional information and counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
+| Checkbox with counter                         | ![](static/checkbox-counter.png)                                                        | For a counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color.                                                                                                   |
+| Radio button                                  | ![](static/radio.png)                                                                      | Radio has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                      |
 
 @## Non-interactive legend
 
@@ -40,29 +40,29 @@ A non-interactive legend is a colored circle with a label. This legend does not 
 
 | Appearance example                                  | Styles                                                                                               |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| ![non-interactive legend](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--text-primary` token for color. |
+| ![](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--text-primary` token for color. |
 
 @## Trend or average value in the legend
 
 To show the trend or average value in the legend, use the `--chart-palette-order-total-amount` token for color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
 
-![checkbox total legend](static/legend-trend.png)
+![](static/legend-trend.png)
 
 @## Interaction
 
 By hovering on the checkbox, highlight the data on the chart by changing the transparency of the lines to 30% for the rest of the data categories.
 
-![legend hover](static/legend-hover.png)
+![](static/legend-hover.png)
 
 If some data is already disabled in the legend, then this data remains disabled while hovering on the legend.
 
-![legend hover](static/legend-hover2.png)
+![](static/legend-hover2.png)
 
 @## Disabled legend
 
 If you disable all legend checkboxes, the chart should display the X-axis.
 
-![turn off legend](static/legend-turn-off.png)
+![](static/legend-turn-off.png)
 
 @page chart-legend-api
 @page chart-legend-code

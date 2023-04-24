@@ -60,11 +60,11 @@ Radar charts are most beneficial when there are a few items to compare. That is 
 
 | Minimum variables (3)                                                 | Maximum recommended variables (10)                                     |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| ![radar chart with 3 minimum variables](static/variables-minimum.png) | ![radar chart with 10 maximum variables](static/variables-maximum.png) |
+| ![Radar chart with 3 minimum variables.](static/variables-minimum.png) | ![Radar chart with 10 maximum variables.](static/variables-maximum.png) |
 
 You can turn off grid ticks and labels if needed. It can be helpful for small-sized charts like the following one:
 
-![example of simplified mini radar chart without visible additional lines](static/mini-radar-1.png)
+![Example of simplified mini radar chart without visible additional lines.](static/mini-radar-1.png)
 
 ### Curved data set
 
@@ -74,19 +74,19 @@ You can curve polygons (data sets), if needed.
 >
 > You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
 
-![radar chart with curved polygons as data sets](static/curved-radar-1.png)
+![Radar chart with curved polygons as data sets.](static/curved-radar-1.png)
 
 ### Circular grid
 
 If there are three or four variables grid is displayed as a circle.
 
-![radar chart with three variables and circular grid](static/circle-type-1.png)
+![Radar chart with three variables and circular grid.](static/circle-type-1.png)
 
 But in case if you have more than four variables, you can also display the grid as a circle instead of a polygon. Use `type="circle"` in this case.
 
 | Grid as a polygon                                                                | Grid as a circle                                                                 |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| ![radar chart with circular grid instead of a polygon](static/circle-type-2.png) | ![radar chart with circular grid instead of a polygon](static/circle-type-3.png) |
+| ![Radar chart with circular grid instead of a polygon.](static/circle-type-2.png) | ![Radar chart with circular grid instead of a polygon.](static/circle-type-3.png) |
 
 ### Filled areas
 
@@ -94,8 +94,8 @@ You can display your data sets with filled areas or without filled areas. Radar 
 
 Areas use the same color as the line, but with 20% opacity. Areas are enabled by default. To disable the area, use the `fill="transparent"` property.
 
-![radar chart with data sets with filled areas on the grid](static/area.png)
-![radar chart with data sets without filled areas on the grid](static/area-false.png)
+![Radar chart with data sets with filled areas on the grid.](static/area.png)
+![Radar chart with data sets without filled areas on the grid.](static/area-false.png)
 
 ### Size
 
@@ -103,7 +103,7 @@ Size can be set through the `width` and `height` properties ([check API](data-di
 
 For a small radar chart, we recommend turning off scales, variables, labels, and data points to reduce visual noise. For example:
 
-![example of simplified mini radar chart without visible additional lines](static/mini-radar-2.png)
+![Example of simplified mini radar chart without visible additional lines.](static/mini-radar-2.png)
 
 ### Text labels
 
@@ -111,13 +111,13 @@ For labels, use the `--chart-grid-text-label` color token.
 
 If a variable's label is too long, wrap it to the next line:
 
-![radar chart with variables' labels containing long text that is wrapped to the next line](static/long-named-variables.png)
+![Radar chart with variables' labels containing long text that is wrapped to the next line.](static/long-named-variables.png)
 
 ### Non-text labels
 
 Variables can be labeled with other components such as [Tag](/components/tag), [Button](/components/button), or [Icon](/style/icon):
 
-![radar chart with Tag component as variables' labels instead of text labels](static/non-text-variables.png)
+![Radar chart with Tag component as variables' labels instead of text labels.](static/non-text-variables.png)
 
 ### Scales
 
@@ -125,14 +125,14 @@ You can add as many scales as you need to the axes. To keep your chart readable,
 
 Use `dashed` lines for scales:
 
-![radar chart with few scale lines on the polar grid](static/scales-1.png)
-![radar chart with many scale lines on the polar grid](static/scales-2.png)
+![Radar chart with few scale lines on the polar grid.](static/scales-1.png)
+![Radar chart with many scale lines on the polar grid.](static/scales-2.png)
 
 #### Variables with different scales
 
 Variables can have different scales. To reduce visual noise, we recommend that you don't show values on the axes. **The example below is not the recommendation, it's for illustration purpose only.**
 
-![radar chart with variables that have different scales](static/scales-3.png)
+![Radar chart with variables that have different scales.](static/scales-3.png)
 
 @## Data sets
 
@@ -145,7 +145,7 @@ The radar chart is best suited for comparing several dimensions when there isn't
 
 | Minimum data sets (1)                                          | Maximum recommended data sets (3)                                                     |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| ![radar chart with one data set](static/data-sets-minimum.png) | ![radar chart with three maximum recommended data sets](static/data-sets-maximum.png) |
+| ![Radar chart with one data set.](static/data-sets-minimum.png) | ![Radar chart with three maximum recommended data sets.](static/data-sets-maximum.png) |
 
 ### Data set with curve
 
@@ -153,8 +153,8 @@ To get smoothed lines, transfer `curve` with the required [rounding method](http
 
 Your charts could look like this:
 
-![radar chart with curved data sets](static/curved-radar-1.png)
-![radar chart with curved data sets](static/curved-radar-2.png)
+![Radar chart with curved data sets.](static/curved-radar-1.png)
+![Radar chart with curved data sets.](static/curved-radar-2.png)
 
 @## Legend
 
@@ -162,21 +162,21 @@ If there is more than one data set, your chart needs a legend. Place it above th
 
 | Legend placement | Appearance example                                                                          | Margins                                                                                                  |
 | ---------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Top              | ![radar chart with the legend above the chart for two data sets](static/area.png)           | ![margin between the radar chart and legend above it is 20px](static/legend-top-margins.png)             |
-| Right            | ![radar chart with the legend right the chart for three data sets](static/legend-right.png) | ![margin between the radar chart and legend to the right to it is 20px](static/legend-right-margins.png) |
+| Top              | ![Radar chart with the legend above the chart for two data sets.](static/area.png)           | ![Margin between the radar chart and legend above it is 20px.](static/legend-top-margins.png)             |
+| Right            | ![Radar chart with the legend right the chart for three data sets.](static/legend-right.png) | ![Margin between the radar chart and legend to the right to it is 20px.](static/legend-right-margins.png) |
 
 ### Legend hover
 
 To highlight one data set and dim the others on the chart, use the `transparent` property:
 
-![while hovering the legend checkbox for the specific data set, other data sets on the chart gets 30% opacity](static/legend-hover.png)
+![While hovering the legend checkbox for the specific data set, other data sets on the chart gets 30% opacity.](static/legend-hover.png)
 
 @## Interaction
 
 On hover, the chart shows the values of the variable for all data sets.
 
-![radar chart with tooltip](static/tooltip-example-1.png)
-![radar chart with tooltip](static/tooltip-example-2.png)
+![](static/tooltip-example-1.png)
+![](static/tooltip-example-2.png)
 
 Highlight the area on the axes with the `--chart-grid-bar-chart-hover` color token. The hover area for a variable includes the area of the variable itself and half the distance to the next variables.
 
@@ -198,7 +198,7 @@ animation-duration: 100ms;
 
 Tooltips show a variable's data for all data sets:
 
-![radar chart with tooltip](static/tooltip-example-2.png)
+![](static/tooltip-example-2.png)
 
 @## Edge cases
 
@@ -206,15 +206,15 @@ Tooltips show a variable's data for all data sets:
 
 If the values across all datasets are 0, then all points will be in the middle of the chart.
 
-![radar chart with null data](static/null-data-1.png)
-![radar chart with null data](static/null-data-2.png)
+![](static/null-data-1.png)
+![](static/null-data-2.png)
 
 ### Not available data
 
 If for some reason data isn't available, show `n/a` in the tooltip. Data point isn't showed for such a case.
 
-![radar chart with not available data](static/not-available-data-1.png)
-![radar chart with not available data](static/not-available-data-2.png)
+![](static/not-available-data-1.png)
+![](static/not-available-data-2.png)
 
 ### Initial data loading
 
@@ -226,7 +226,7 @@ For more information about this state, refer to [Skeleton](/components/skeleton/
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![radar chart as skeleton](static/radar-skeleton.png)
+![](static/radar-skeleton.png)
 
 @## Usage in UX/UI
 
@@ -236,7 +236,7 @@ Variables should be arranged in some meaningful order.
 
 ![](static/variables-yes-no.png)
 
-More than three data sets should be presented on their own radar charts or visualised through other chart type.
+More than three data sets should be presented on their own radar charts or visualized through other chart type.
 
 ![](static/data-sets-yes-no.png)
 

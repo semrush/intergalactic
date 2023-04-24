@@ -24,9 +24,9 @@ General controls and filters are always placed on the same level as the title. F
 
 For widget settings use icon button with `use="tertiary"` and `theme="muted"`. If you want to place another button next to the settings button, add [Divider](/components/divider/) with 16px margin between them. Don't forget to add a tooltip to all the buttons.
 
-![chart settings](static/settings.png)
+![](static/settings.png)
 
-![chart settings](static/settings-on.png)
+![](static/settings-on.png)
 
 @## Chart controls and filters
 
@@ -45,13 +45,13 @@ We use several types of legends in our charts. Find more details in the [Chart l
 
 > We recommend you to place legend in the top left — above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
 
-![chart legend](static/legend-top.png)
+![](static/legend-top.png)
 
-![chart legend](static/legend-bottom.png)
+![](static/legend-bottom.png)
 
 #### Country and device select
 
-![chart select control](static/select.png)
+![](static/select.png)
 
 #### Notes (Notes module)
 
@@ -69,25 +69,25 @@ Always place these controls on the right side of the widget:
 
 Data period can be represented either by the [TabLine](/components/tab-line/) or by additional text with the `--text-secondary` color.
 
-![chart period](static/period-1.png)
+![](static/period-1.png)
 
-![chart period](static/period-2.png)
+![](static/period-2.png)
 
 #### Custom period
 
 For custom period use [DateRangePicker](/components/date-picker/#a3d75b).
 
-![chart custom period](static/period-custom.png)
+![](static/period-custom.png)
 
-![chart custom period](static/custom.png)
+![](static/custom.png)
 
 #### Data frequency (daily/weekly/monthly)
 
-![chart period](static/period-1.png)
+![](static/period-1.png)
 
 #### Chart with a zoom
 
-![chart trend line](static/zoom.png)
+![](static/zoom.png)
 
 @## Collapsing rows with controls
 
@@ -95,7 +95,7 @@ You can collapse rows if necessary.
 
 Divide different controls or groups of controls with [Divider](/components/divider/) with the `--border-secondary` token for color and `margin: 0px 16px`.
 
-![chart widget](static/widget-yes-no.png)
+![](static/widget-yes-no.png)
 
 @page chart-control-code
 @page d3-chart-changelog
