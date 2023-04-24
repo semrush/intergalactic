@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.4] - 2023-04-24
+
+### Fixed
+
+- Fixed `usePreventScroll` (used in `<Modal />` and `<ScrollBar />`) might totally block document body scroll with async components appearing and fading.
+
 ## [3.50.3] - 2023-04-17
 
 ### Fixed
