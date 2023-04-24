@@ -21,6 +21,12 @@ export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
    * @default true
    * */
   closable?: boolean;
+  /**
+   * Setting `true` disables mechanism that hides document body scrollbar when Modal is visible
+   * @default false
+   */
+  disablePreventScroll?: boolean;
+
   locale?: string;
 }
 

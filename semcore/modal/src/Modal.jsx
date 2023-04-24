@@ -35,6 +35,7 @@ class ModalRoot extends Component {
     closable: true,
     i18n: localizedMessages,
     locale: 'en',
+    disablePreventScroll: false,
   };
   state = { hasTitle: false };
 
@@ -54,12 +55,13 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { duration, visible, animationsDisabled } = this.asProps;
+    const { duration, visible, animationsDisabled, disablePreventScroll } = this.asProps;
     return {
       duration,
       visible,
       onOutsideClick: this.handleOutsideClick,
       animationsDisabled,
+      disablePreventScroll,
     };
   }
 
@@ -148,7 +150,7 @@ function Overlay(props) {
   const SOverlay = Root;
   const { Children, styles, onOutsideClick, visible } = props;
   const overlayRef = useRef(null);
-  usePreventScroll(visible);
+  usePreventScroll(visible, props.disablePreventScroll);
   useContextTheme(overlayRef, visible);
 
   return sstyled(styles)(

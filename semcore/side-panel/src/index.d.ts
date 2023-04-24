@@ -36,6 +36,11 @@ export interface ISidePanelProps extends IPortalProps {
    * @default right
    */
   placement?: SidePanelPlacement;
+  /**
+   * Setting `true` disables mechanism that hides document body scrollbar when SidePanel is visible
+   * @default false
+   */
+  disablePreventScroll?: boolean;
 }
 
 export interface ISidePanelOverlayProps extends IFadeInOutProps, IBoxProps {}
