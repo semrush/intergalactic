@@ -2,6 +2,8 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.16] - 2023-04-24
+
 ## [3.5.15] - 2023-04-17
 
 ### Changed
