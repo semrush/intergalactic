@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.34] - 2023-04-24
+
+### Fixed
+
+- Fixed issue with custom styles when using `shadow-loader` plugin.
+
 ## [3.6.33] - 2023-04-17
 
 ### Changed

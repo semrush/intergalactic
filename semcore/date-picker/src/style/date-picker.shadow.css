@@ -46,6 +46,10 @@ SPeriod {
   margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
+SButton SInner {
+  justify-content: flex-start;
+}
+
 SInputMask {
   color: var(--intergalactic-text-primary, #191b23);
 }

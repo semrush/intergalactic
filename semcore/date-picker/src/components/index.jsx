@@ -85,12 +85,6 @@ Next.defaultProps = {
   children: <ChevronRight />,
 };
 
-const stylesBtn = sstyled.css`
-  SInner {
-    justify-content: flex-start;
-  }
-`;
-
 export class Period extends Component {
   getActiveControl = (period = [], value) => {
     function compareMonth(monthOne, monthTwo) {
@@ -117,7 +111,7 @@ export class Period extends Component {
           <Button
             use="tertiary"
             theme="muted"
-            styles={stylesBtn}
+            styles={styles}
             key={i}
             active={this.getActiveControl(period, value)}
             onClick={callAllEventHandlers(onClick, () => onChange(period))}
