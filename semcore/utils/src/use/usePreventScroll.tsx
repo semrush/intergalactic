@@ -1,5 +1,6 @@
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useEffect } from 'react';
 import canUseDOM from '../canUseDOM';
+import { useUID } from '../uniqueID';
 
 export function getScrollbarWidth() {
   if (!canUseDOM()) return;
@@ -28,19 +29,26 @@ function getIntValueFromCss(value) {
   return !Number.isNaN(Number(value)) ? Number(value) : Number.parseInt(value, 10);
 }
 
-export default function usePreventScroll(visible = true) {
+const scrollPreventers = new Set<string>();
+const lockedBodyStyles = {
+  paddingRight: null as string | null,
+  overflow: null as string | null,
+  boxSizing: null as string | null,
+};
+export default function usePreventScroll(visible = true, disabled = false) {
   const scrollbarWidth = useMemo(getScrollbarWidth, [getScrollbarWidth]);
-  const paddingRightRef = useRef<string>(null);
-  const overflowRef = useRef<string>(null);
-  const boxSizingRef = useRef<string>(null);
+  const id = useUID('scroll-preventer-');
 
   useEffect(() => {
+    if (disabled) return;
     if (!canUseDOM() || !visible) return;
+    scrollPreventers.add(id);
+    if (scrollPreventers.size > 1) return;
 
     const { overflow, paddingRight, boxSizing } = window.getComputedStyle(document.body);
-    paddingRightRef.current = paddingRight;
-    overflowRef.current = overflow;
-    boxSizingRef.current = boxSizing;
+    lockedBodyStyles.paddingRight = paddingRight;
+    lockedBodyStyles.overflow = overflow;
+    lockedBodyStyles.boxSizing = boxSizing;
 
     const intPaddingRight = getIntValueFromCss(paddingRight);
     let intPaddingRightFromStyle = getIntValueFromCss(document.body.style.paddingRight);
@@ -53,11 +61,17 @@ export default function usePreventScroll(visible = true) {
     document.body.style.paddingRight =
       scrollbarWidth + (intPaddingRight - intPaddingRightFromStyle) + 'px';
     document.body.style.boxSizing = 'border-box';
+  }, [visible, id, disabled]);
 
+  useEffect(() => {
+    if (disabled) return;
+    if (!canUseDOM() || !visible) return;
     return () => {
-      document.body.style.overflow = overflowRef.current;
-      document.body.style.paddingRight = paddingRightRef.current;
-      document.body.style.boxSizing = boxSizingRef.current;
+      scrollPreventers.delete(id);
+      if (scrollPreventers.size !== 0) return;
+      document.body.style.overflow = lockedBodyStyles.overflow;
+      document.body.style.paddingRight = lockedBodyStyles.paddingRight;
+      document.body.style.boxSizing = lockedBodyStyles.boxSizing;
     };
-  }, [visible]);
+  }, [visible, id, disabled]);
 }
