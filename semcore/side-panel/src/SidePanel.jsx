@@ -31,6 +31,7 @@ class RootSidePanel extends Component {
   static defaultProps = {
     placement: 'right',
     closable: true,
+    disablePreventScroll: false,
   };
 
   sidebarRef = React.createRef();
@@ -74,12 +75,13 @@ class RootSidePanel extends Component {
   }
 
   getOverlayProps() {
-    const { visible, duration, animationsDisabled } = this.asProps;
+    const { visible, duration, animationsDisabled, disablePreventScroll } = this.asProps;
     return {
       visible,
       duration,
       delay: this.calculateDelayAnimation('overlay'),
       animationsDisabled,
+      disablePreventScroll,
     };
   }
 
@@ -125,7 +127,7 @@ class RootSidePanel extends Component {
 function Overlay(props) {
   const SOverlay = Root;
   const overlayRef = useRef(null);
-  usePreventScroll(props.visible);
+  usePreventScroll(props.visible, props.disablePreventScroll);
   useContextTheme(overlayRef, props.visible);
   return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} />);
 }

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2023-04-24
+
+### Added
+
+- Added `disablePreventScroll` prop.
+
 ## [3.5.18] - 2023-04-17
 
 ### Changed
