@@ -41,17 +41,17 @@ If you need to display different categories of data within a dataset, use Stacke
 
 The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
-![default histogram](static/histogram.png)
+![](static/histogram.png)
 
-![default histogram](static/histogram-stack.png)
+![](static/histogram-stack.png)
 
 ### Horizontal histogram chart
 
 The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
-![default histogram](static/histogram-horizontal.png)
+![](static/histogram-horizontal.png)
 
-![default histogram](static/histogram-horizontal-stack.png)
+![](static/histogram-horizontal-stack.png)
 
 @## Color usage
 
@@ -92,7 +92,7 @@ When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover
 
 If the column is clickable, the cursor changes to `pointer`.
 
-![default histogram](static/histogram.png)
+![](static/histogram.png)
 
 @## Edge cases
 
@@ -103,9 +103,9 @@ Here you will find the states for some specific cases. All other "empty states" 
 - We display a single bar if we only have data for one range.
 - In the missing data area, display `n/a` in the tooltip as well as the message that there are no data for this period.
 
-![histogram with n/a](static/na.png)
+![](static/na.png)
 
-![histogram with n/a](static/no-more-histogram-chart.png)
+![](static/no-more-histogram-chart.png)
 
 ### Null values
 
@@ -113,18 +113,18 @@ If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![histogram with null](static/null-histogram-chart.png)
+![](static/null-histogram-chart.png)
 
-![histogram with null](static/null-horizontal.png)
+![](static/null-horizontal.png)
 
 ### A part of the chart contains no data
 
 - Do not display bars in the area without data.
 - When you hover over a range without data, show the tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
 
-![histogram with not all data](static/histogram-partially.png)
+![](static/histogram-partially.png)
 
-![histogram with not all data](static/hor-partially.png)
+![](static/hor-partially.png)
 
 ### Initial loading
 
@@ -136,9 +136,9 @@ For more information about this state, refer to [Skeleton](/components/skeleton/
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-![histogram skeleton](static/vert-skeleton.png)
+![](static/vert-skeleton.png)
 
-![histogram skeleton](static/hor-skeleton.png)
+![](static/hor-skeleton.png)
 
 @## Usage in UX/UI
 
@@ -147,7 +147,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 Check out the charts below. In the wrong case, the scale does not start from zero, and it seems that the `Y value` is almost half as large as the `X value`. However, this is not true.
 
-![histogram start](static/deception-yes-no.png)
+![](static/deception-yes-no.png)
 
 @page histogram-chart-a11y
 @page histogram-chart-api
