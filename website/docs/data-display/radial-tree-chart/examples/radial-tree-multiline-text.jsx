@@ -41,7 +41,7 @@ export default () => {
       height={height}
       textSize={textSize}
     >
-      <RadialTree color="#AB6CFE">
+      <RadialTree color="#008FF8">
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />

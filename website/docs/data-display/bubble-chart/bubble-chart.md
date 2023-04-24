@@ -40,9 +40,9 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 
 ### Text labels for bubbles
 
-If you need captions for bubbles (in addition to the legend), show captions to the right or left of the bubble.
+If you need captions for bubbles (in addition to the legend), show captions to the right or left of the bubble. Keep in mind that adding such captions to a data-dense chart can make the chart hard to read.
 
-**Keep in mind that adding such captions to a data-dense chart can make the chart hard to read.**
+> Remember to check contrast for the text labels. We do not recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
 
 ![bubble chart with labels](static/labels.png)
 
