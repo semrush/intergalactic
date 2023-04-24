@@ -4,11 +4,19 @@ SAnimation {
   animation-duration: var(--durationFinalize);
   animation-delay: var(--delayFinalize);
   animation-name: var(--keyframesFinalize);
+
+  transition-timing-function: var(--timingFunction);
+  transition-duration: var(--durationFinalize);
+  transition-delay: var(--delayFinalize);
 }
 SAnimation[visible] {
   animation-duration: var(--durationInitialize);
   animation-delay: var(--delayInitialize);
   animation-name: var(--keyframesInitialize);
+
+  transition-timing-function: var(--timingFunction);
+  transition-duration: var(--durationInitialize);
+  transition-delay: var(--delayInitialize);
 }
 
 @media (prefers-reduced-motion) {
