@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed collapse animations (e.g. used in `<Accordion />) in Safari.
+- Fixed collapse animations (e.g. used in `<Accordion />`) in Safari.
 
 ## [1.10.3] - 2023-04-24
 
