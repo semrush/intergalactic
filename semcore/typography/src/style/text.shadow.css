@@ -61,6 +61,18 @@ SText[italic] {
   font-style: italic;
 }
 
+SText[uppercase] {
+  text-transform: uppercase;
+}
+
+SText[lowercase] {
+  text-transform: lowercase;
+}
+
+SText[capitalize] {
+  text-transform: capitalize;
+}
+
 SText[decoration] {
   text-decoration: var(--decoration);
 }
