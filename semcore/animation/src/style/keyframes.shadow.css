@@ -20,7 +20,7 @@ SCollapse {
 }
 SCollapse[visible] {
   transition-property: height;
-  height: 0;
+  height: auto;
 }
 
 @keyframes fade-in-out-enter {
