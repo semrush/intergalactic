@@ -1,45 +1,61 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
+import { useForkRef } from '@semcore/utils/lib/ref';
 
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
-  const [height, setHeightVar] = useState('auto');
   const overflowRef = useRef('initial');
+  const innerRef = useRef(null);
+  const forkedRef = useForkRef(innerRef, ref);
 
-  const handlerAnimationStart = useCallback((e) => {
-    if (e.currentTarget !== e.target) return;
-    if (onAnimationStart) onAnimationStart(e);
-    if (overflowHidden) {
-      overflowRef.current = window.getComputedStyle(e.currentTarget).overflow;
-      e.currentTarget.style.overflow = 'hidden';
-    }
-    setHeightVar(e.currentTarget.scrollHeight + 'px');
+  useEffect(() => {
+    if (!innerRef.current) return;
+    innerRef.current.style.height = 'auto';
   }, []);
 
-  const handlerAnimationEnd = useCallback((e) => {
-    if (e.currentTarget !== e.target) return;
-    if (onAnimationEnd) onAnimationEnd(e);
-    if (overflowHidden) {
-      // The timeout is needed because the overflow is first set, and then the node is removed via setState inside the animation
+  const handleAnimationStart = useCallback(
+    (event) => {
+      if (event.currentTarget !== event.target) return;
+      if (onAnimationStart) onAnimationStart(event);
+      if (overflowHidden) {
+        overflowRef.current = window.getComputedStyle(event.currentTarget).overflow;
+        event.currentTarget.style.overflow = 'hidden';
+      }
+
+      const element = event.currentTarget;
+
+      if (props.visible) element.style.height = 0 + 'px';
+      else element.style.height = element.scrollHeight + 'px';
       setTimeout(() => {
-        // The checking is needed because the node is being deleted
-        if (e.currentTarget) {
-          e.currentTarget.style.overflow = overflowRef.current;
-        }
+        if (props.visible) element.style.height = element.scrollHeight + 'px';
+        else element.style.height = 0 + 'px';
       }, 0);
-    }
-    setHeightVar('auto');
+    },
+    [props.visible],
+  );
+
+  const handleAnimationEnd = useCallback((event) => {
+    if (event.currentTarget !== event.target) return;
+    if (onAnimationEnd) onAnimationEnd(event);
+    const element = event.currentTarget;
+
+    setTimeout(() => {
+      if (!element) return;
+      element.style.height = 'auto';
+      if (overflowHidden) {
+        element.style.overflow = overflowRef.current;
+      }
+    }, 0);
   }, []);
 
   return sstyled(style)(
     <SCollapse
-      ref={ref}
+      ref={forkedRef}
       {...props}
-      onAnimationStart={handlerAnimationStart}
-      onAnimationEnd={handlerAnimationEnd}
-      height={height}
+      onAnimationStart={handleAnimationStart}
+      onAnimationEnd={handleAnimationEnd}
       keyframes={[style['@collapse-enter'], style['@collapse-exit']]}
     />,
   );

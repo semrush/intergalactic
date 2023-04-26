@@ -1,20 +1,28 @@
 @keyframes collapse-enter {
   from {
     overflow: hidden;
-    height: 0;
   }
   to {
-    height: var(--height);
+    overflow: hidden;
   }
 }
 @keyframes collapse-exit {
   from {
-    height: var(--height);
+    overflow: hidden;
   }
   to {
-    height: 0;
+    overflow: hidden;
   }
 }
+SCollapse {
+  transition-property: height;
+  height: 0;
+}
+SCollapse[visible] {
+  transition-property: height;
+  height: 0;
+}
+
 @keyframes fade-in-out-enter {
   from {
     opacity: 0;
