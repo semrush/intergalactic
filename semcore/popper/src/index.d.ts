@@ -121,6 +121,11 @@ export interface IPopperProps
    */
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
+
+  /**
+   * Disabled focus trap, autofocus and focus return
+   */
+  disableEnforceFocus?: boolean;
 }
 
 export interface IPopperTriggerProps extends IBoxProps {}

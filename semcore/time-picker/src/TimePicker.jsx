@@ -179,8 +179,12 @@ class TimePickerRoot extends Component {
     };
   };
 
-  getHoursProps = this._getHoursAndMinutesProps;
-  getMinutesProps = this._getHoursAndMinutesProps;
+  getHoursProps = () => {
+    return { ...this._getHoursAndMinutesProps(), ref: this.hoursInputRef };
+  };
+  getMinutesProps = () => {
+    return { ...this._getHoursAndMinutesProps(), ref: this.minutesInputRef };
+  };
 
   getSeparatorProps() {
     return {

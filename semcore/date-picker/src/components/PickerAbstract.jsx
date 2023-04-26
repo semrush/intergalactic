@@ -45,6 +45,7 @@ class PickerAbstract extends Component {
   state = {
     // To remove after removing button trigger
     defaultInteraction: 'focus',
+    focusCatch: false,
   };
   uncontrolledProps() {
     return {
@@ -181,14 +182,23 @@ class PickerAbstract extends Component {
     };
   }
 
+  handleCalendarChange = (value) => {
+    const { onChange, interaction } = this.asProps;
+    const { defaultInteraction } = this.state;
+    onChange(value);
+
+    if ((interaction ?? defaultInteraction) === 'focus') {
+      this.setState({ focusCatch: true });
+    }
+  };
+
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, onChange, highlighted, onVisibleChange } =
-      this.asProps;
+    const { locale, displayedPeriod, disabled, value, highlighted, onVisibleChange } = this.asProps;
     return {
       locale,
       displayedPeriod,
       disabled,
-      onChange,
+      onChange: this.handleCalendarChange,
       highlighted,
       value: [value, value],
       renderOutdated: true,
@@ -200,15 +210,27 @@ class PickerAbstract extends Component {
     const { styles, Children, 'aria-label': providedAriaLabel } = this.asProps;
     const { defaultInteraction } = this.state;
 
-    return sstyled(styles)(
-      <Root
-        render={Dropdown}
-        use:aria-label={providedAriaLabel}
-        interaction={defaultInteraction}
-        __excludeProps={['onChange', 'value']}
-      >
-        <Children />
-      </Root>,
+    return (
+      <>
+        {sstyled(styles)(
+          <Root
+            render={Dropdown}
+            use:aria-label={providedAriaLabel}
+            interaction={defaultInteraction}
+            disableEnforceFocus
+            __excludeProps={['onChange', 'value']}
+          >
+            <Children />
+          </Root>,
+        )}
+        {this.state.focusCatch && (
+          <div
+            tabIndex={0}
+            ref={(node) => node?.focus()}
+            onBlur={() => this.setState({ focusCatch: false })}
+          />
+        )}
+      </>
     );
   }
 }

@@ -70,7 +70,7 @@ export const useFocusLock = (
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
-  const handleFocusIn = React.useCallback((event) => {
+  const handleFocusOut = React.useCallback((event) => {
     const focusCameFrom = event.relatedTarget;
     setTimeout(() => {
       if (!focusCameFrom) return;
@@ -118,7 +118,7 @@ export const useFocusLock = (
     if (!trapRef.current) return;
     if (getFocusableIn(trapRef.current).length === 0) return;
 
-    document.body.addEventListener('focusin', handleFocusIn);
+    document.body.addEventListener('focusout', handleFocusOut);
     document.body.addEventListener('mousedown', handleMouseEvent);
     document.body.addEventListener('touchstart', handleMouseEvent);
     document.body.addEventListener('keydown', handleKeyboardEvent);
@@ -130,7 +130,7 @@ export const useFocusLock = (
       );
 
     return () => {
-      document.body.removeEventListener('focusin', handleFocusIn);
+      document.body.removeEventListener('focusout', handleFocusOut);
       document.body.removeEventListener('mousedown', handleMouseEvent);
       document.body.removeEventListener('touchstart', handleMouseEvent);
       document.body.removeEventListener('keydown', handleKeyboardEvent);

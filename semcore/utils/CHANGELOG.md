@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.52.1] - 2023-06-10
+
+### Changed
+
+- Switched `useFocusLock` from listening to `focusin` body event to `focusout` to catch focus.
+
 ## [3.52.0] - 2023-05-25
 
 ### Added

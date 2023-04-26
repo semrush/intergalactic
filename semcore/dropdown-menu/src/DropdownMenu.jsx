@@ -78,7 +78,8 @@ class DropdownMenuRoot extends Component {
       'aria-controls': `igc-${uid}-popper`,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
-      'aria-activedescendant': highlightedIndex,
+      'aria-activedescendant':
+        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
@@ -105,7 +106,7 @@ class DropdownMenuRoot extends Component {
   }
 
   getItemProps(props, index) {
-    const { size, highlightedIndex } = this.asProps;
+    const { size, highlightedIndex, uid } = this.asProps;
     const highlighted = index === highlightedIndex;
     const extraProps = {};
     this.itemProps[index] = props;
@@ -114,6 +115,7 @@ class DropdownMenuRoot extends Component {
     }
 
     return {
+      id: `igc-${uid}-option-${index}`,
       size,
       highlighted,
       ...extraProps,
@@ -213,9 +215,59 @@ function List(props) {
   );
 }
 
-function Menu() {
+function Menu(props) {
+  const {
+    strategy,
+    modifiers,
+    placement,
+    interaction,
+    timeout,
+    visible,
+    defaultVisible,
+    onVisibleChange,
+    offset,
+    preventOverflow,
+    arrow,
+    flip,
+    computeStyles,
+    eventListeners,
+    onFirstUpdate,
+    positionFixed,
+    eventsDisabled,
+    displayEvents,
+    displayTimeout,
+    popperZIndex,
+    boundary,
+    disableEnforceFocus,
+    focusableTriggerReturnFocusToRef,
+  } = props;
+  const popperProps = {
+    strategy,
+    modifiers,
+    placement,
+    interaction,
+    timeout,
+    visible,
+    defaultVisible,
+    onVisibleChange,
+    offset,
+    preventOverflow,
+    arrow,
+    flip,
+    computeStyles,
+    eventListeners,
+    onFirstUpdate,
+    positionFixed,
+    eventsDisabled,
+    displayEvents,
+    displayTimeout,
+    popperZIndex,
+    boundary,
+    disableEnforceFocus,
+    focusableTriggerReturnFocusToRef,
+  };
   return (
-    <DropdownMenu.Popper>
+    <DropdownMenu.Popper {...popperProps}>
       <Root render={DropdownMenu.List} />
     </DropdownMenu.Popper>
   );

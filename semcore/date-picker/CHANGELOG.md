@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-06-10
+
+### Fixed
+
+- Fixed browser focus cursor position after picking date with mouse.
+
 ## [3.6.44] - 2023-05-25
 
 ### Changed
