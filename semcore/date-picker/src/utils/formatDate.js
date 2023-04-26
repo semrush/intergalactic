@@ -1,8 +1,17 @@
 import dayjs from 'dayjs';
 
-export const getLocaleDate = (date, locale) =>
-  new Intl.DateTimeFormat(locale, {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  }).format(dayjs(date).toDate());
+const formatterCache = {};
+
+export const getLocaleDate = (date, locale) => {
+    if (formatterCache[locale] === undefined) {
+        formatterCache[locale] = new Intl.DateTimeFormat(locale, {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+        });
+    }
+
+    const formatter = formatterCache[locale];
+
+    return formatter.format(dayjs(date).toDate());
+}
