@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.8.2] - 2023-04-24
+## [3.8.3] - 2023-04-25
+
+### Fixed
+
+- Fixed missing `key` warning.
 
 ## [3.8.1] - 2023-04-17
 

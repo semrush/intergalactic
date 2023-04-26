@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.35] - 2023-04-24
+
+### Changed
+
+- Improved date picker rendering performance.
+
 ## [3.6.34] - 2023-04-24
 
 ### Fixed
