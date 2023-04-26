@@ -2,15 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.3.30] - 2023-04-24
+## [4.4.0] - 2023-04-25
+
+### Added
+
+- Added `uppercase`, `lowercase`, `capitalize` text transformation props.
 
 ## [4.3.29] - 2023-04-17
 
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7]).
-
-## [4.3.18] - 2023-03-01
 
 ## [4.3.17] - 2023-02-24
 
