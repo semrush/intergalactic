@@ -15,43 +15,38 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     innerRef.current.style.height = 'auto';
   }, []);
 
-  const handlerAnimationStart = useCallback(
-    (e) => {
-      if (e.currentTarget !== e.target) return;
-      if (onAnimationStart) onAnimationStart(e);
+  const handleAnimationStart = useCallback(
+    (event) => {
+      if (event.currentTarget !== event.target) return;
+      if (onAnimationStart) onAnimationStart(event);
       if (overflowHidden) {
-        overflowRef.current = window.getComputedStyle(e.currentTarget).overflow;
-        e.currentTarget.style.overflow = 'hidden';
+        overflowRef.current = window.getComputedStyle(event.currentTarget).overflow;
+        event.currentTarget.style.overflow = 'hidden';
       }
 
-      const el = e.currentTarget;
+      const element = event.currentTarget;
 
-      if (props.visible) el.style.height = 0 + 'px';
-      else el.style.height = el.scrollHeight + 'px';
+      if (props.visible) element.style.height = 0 + 'px';
+      else element.style.height = element.scrollHeight + 'px';
       setTimeout(() => {
-        if (props.visible) el.style.height = el.scrollHeight + 'px';
-        else el.style.height = 0 + 'px';
+        if (props.visible) element.style.height = element.scrollHeight + 'px';
+        else element.style.height = 0 + 'px';
       }, 0);
     },
     [props.visible],
   );
 
-  const handlerAnimationEnd = useCallback((e) => {
-    if (e.currentTarget !== e.target) return;
-    if (onAnimationEnd) onAnimationEnd(e);
-    if (overflowHidden) {
-      // The timeout is needed because the overflow is first set, and then the node is removed via setState inside the animation
-      setTimeout(() => {
-        // The checking is needed because the node is being deleted
-        if (e.currentTarget) {
-          e.currentTarget.style.overflow = overflowRef.current;
-        }
-      }, 0);
-    }
+  const handleAnimationEnd = useCallback((event) => {
+    if (event.currentTarget !== event.target) return;
+    if (onAnimationEnd) onAnimationEnd(event);
+    const element = event.currentTarget;
 
-    const el = e.currentTarget;
     setTimeout(() => {
-      el.style.height = 'auto';
+      if (!element) return;
+      element.style.height = 'auto';
+      if (overflowHidden) {
+        element.style.overflow = overflowRef.current;
+      }
     }, 0);
   }, []);
 
@@ -59,8 +54,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     <SCollapse
       ref={forkedRef}
       {...props}
-      onAnimationStart={handlerAnimationStart}
-      onAnimationEnd={handlerAnimationEnd}
+      onAnimationStart={handleAnimationStart}
+      onAnimationEnd={handleAnimationEnd}
       keyframes={[style['@collapse-enter'], style['@collapse-exit']]}
     />,
   );
