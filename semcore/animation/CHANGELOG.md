@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.4] - 2023-04-25
+
+### Fixed
+
+- Fixed collapse animations (e.g. used in `<Accordion />`) in Safari.
+
 ## [1.10.3] - 2023-04-24
 
 ## [1.10.2] - 2023-04-17
