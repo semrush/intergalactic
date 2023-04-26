@@ -6,6 +6,7 @@ import { Error } from '@semcore/ui/widget-empty';
 import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
+import ReloadM from '@semcore/ui/icon/Reload/m';
 import Link from '@semcore/ui/link';
 import Divider from '@semcore/ui/divider';
 
@@ -28,7 +29,7 @@ export default () => {
           <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <Error>
             <Box mt={4}>
-              <Button>Reload page</Button>
+              <Button addonLeft={ReloadM}>Reload page</Button>
             </Box>
           </Error>
         </Card>
@@ -46,7 +47,7 @@ export default () => {
             }
           >
             <Box mt={4}>
-              <Button>
+              <Button addonLeft={ReloadM}>
                 <Button.Text>Reload page</Button.Text>
               </Button>
             </Box>
