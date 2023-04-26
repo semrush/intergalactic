@@ -57,6 +57,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
       onAnimationStart={handleAnimationStart}
       onAnimationEnd={handleAnimationEnd}
       keyframes={[style['@collapse-enter'], style['@collapse-exit']]}
+      transition-based
     />,
   );
 }
