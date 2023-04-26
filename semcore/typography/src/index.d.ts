@@ -19,6 +19,12 @@ export interface ITextProps extends IBoxProps {
   underline?: boolean;
   /** Strikethrough text */
   lineThrough?: boolean;
+  /** Uppercase text */
+  uppercase?: boolean;
+  /** Lowercase text */
+  lowercase?: boolean;
+  /** Capitalized text */
+  capitalize?: boolean;
   /** Text color **/
   color?: string;
   /** Custom `font-size` */
