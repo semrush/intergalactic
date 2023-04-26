@@ -1,3 +1,21 @@
+## [13.25.0] - 2023-04-26
+
+### @semcore/animation
+
+- **Fixed** Fixed collapse animations (e.g. used in `<Accordion />`) in Safari.
+
+### @semcore/data-table
+
+- **Fixed** Fixed missing `key` warning.
+
+### @semcore/date-picker
+
+- **Changed** Improved date picker rendering performance.
+
+### @semcore/typography
+
+- **Added** Added `uppercase`, `lowercase`, `capitalize` text transformation props.
+
 ## [13.24.0] - 2023-04-24
 
 ### @semcore/date-picker
