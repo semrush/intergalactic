@@ -6,6 +6,9 @@ import CloseIcon from '@semcore/icon/Close/l';
 import ArrowLeft from '@semcore/icon/ArrowLeft/m';
 import { Text } from '@semcore/typography';
 import fire from '@semcore/utils/lib/fire';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/fullscreen-modal.shadow.css';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -13,14 +16,22 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 class FullscreenModalRoot extends Component {
   static displayName = 'FullscreenModal';
   static style = style;
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
+  static defaultProps = {
+    i18n: localizedMessages,
+    locale: 'en',
+  };
+  state = { hasTitle: false };
 
   bindHandlerClose = (trigger) => (e) => {
     fire(this, 'onClose', trigger, e);
   };
 
   getCloseProps() {
+    const { getI18nText } = this.asProps;
     return {
       onClick: this.bindHandlerClose('onCloseClick'),
+      getI18nText,
     };
   }
 
@@ -29,10 +40,30 @@ class FullscreenModalRoot extends Component {
       onClick: this.bindHandlerClose('onBackClick'),
     };
   }
+  getTitleProps() {
+    const { uid } = this.asProps;
+    const setHasTitle = () => this.setState({ hasTitle: true });
+
+    return {
+      id: `igc-${uid}-title`,
+      setHasTitle,
+    };
+  }
 
   render() {
     const SFullscreenModal = Root;
-    const { styles, Children, onClose, visible, closable, duration, disablePortal } = this.asProps;
+    const {
+      styles,
+      Children,
+      onClose,
+      visible,
+      closable,
+      duration,
+      disablePortal,
+      getI18nText,
+      uid,
+    } = this.asProps;
+    const { hasTitle } = this.state;
     const SFullscreenOverlay = Modal.Overlay;
 
     return sstyled(styles)(
@@ -44,7 +75,11 @@ class FullscreenModalRoot extends Component {
         disablePortal={disablePortal}
       >
         <SFullscreenOverlay>
-          <SFullscreenModal render={Modal.Window}>
+          <SFullscreenModal
+            render={Modal.Window}
+            aria-label={hasTitle ? undefined : getI18nText('title')}
+            aria-labelledby={hasTitle ? `igc-${uid}-title` : undefined}
+          >
             {closable && <FullscreenModal.Close />}
             <Children />
           </SFullscreenModal>
@@ -83,11 +118,18 @@ function Footer(props) {
 
 function Close(props) {
   const SClose = Root;
-  return sstyled(props.styles)(<SClose render={CloseIcon} interactive />);
+  const { getI18nText } = props;
+  return sstyled(props.styles)(
+    <SClose render={CloseIcon} interactive aria-label={getI18nText('close')} />,
+  );
 }
 
 function Title(props) {
   const STitle = Root;
+  const { setHasTitle } = props;
+
+  React.useEffect(() => setHasTitle());
+
   return sstyled(props.styles)(<STitle render={Text} tag="h2" />);
 }
 

@@ -4,7 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [2.14.2] - 2023-04-26
 
-## [2.14.1] - 2023-04-24
+### Fixed
+
+- Fixed warnings in development mode.
 
 ## [2.14.0] - 2023-04-19
 

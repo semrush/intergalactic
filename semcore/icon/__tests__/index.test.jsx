@@ -38,7 +38,9 @@ describe('Icon', () => {
   });
 
   test('should not be aria-hidden if interactive is true', () => {
-    const { getByTestId } = render(<Icon data-testid="icon" mr={2} interactive={true} />);
+    const { getByTestId } = render(
+      <Icon data-testid="icon" mr={2} interactive={true} aria-label="Interactive icon!" />,
+    );
     expect(getByTestId('icon').attributes['aria-hidden']?.value).toEqual(undefined);
   });
 

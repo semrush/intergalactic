@@ -110,7 +110,7 @@ class BarRoot extends Component {
         key={`bar-${i}`}
         render="path"
         clipPath={`url(#${uid})`}
-        __excludeProps={['data', 'scale', 'value', 'onClick']}
+        __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
         childrenPosition="above"
         value={d}
         index={i}

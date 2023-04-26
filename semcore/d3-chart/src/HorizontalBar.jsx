@@ -92,7 +92,7 @@ class HorizontalBarRoot extends Component {
         key={`horizontal-bar-${i}`}
         render="path"
         clipPath={`url(#${uid})`}
-        __excludeProps={['data', 'scale', 'value']}
+        __excludeProps={['data', 'scale', 'value', 'offset']}
         childrenPosition="above"
         value={d}
         index={i}

@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.3.20] - 2023-04-24
+## [4.3.21] - 2023-04-26
+
+### Fixed
+
+- Fixed warnings in development mode.
 
 ## [4.3.19] - 2023-04-17
 

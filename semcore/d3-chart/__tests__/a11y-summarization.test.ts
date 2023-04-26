@@ -742,6 +742,7 @@ describe('Plot a11y summarization', () => {
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
       translations: translations.en,
+      availableLocales: { en: true },
     });
 
     expect(text.includes('0')).toBeTruthy();
@@ -768,6 +769,7 @@ describe('Plot a11y summarization', () => {
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
       translations: translations.en,
+      availableLocales: { en: true },
     });
 
     const limit = 550;
@@ -799,6 +801,7 @@ describe('Plot a11y summarization', () => {
     const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
       locale: 'en',
       translations: translations.en,
+      availableLocales: { en: true },
     });
 
     expect(text.includes('0')).toBeTruthy();
@@ -823,7 +826,7 @@ describe('Plot a11y summarization', () => {
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
 
-    const locale = { locale: 'ES', translations: {} };
+    const locale = { locale: 'ES', translations: {}, availableLocales: { ES: true } };
     for (const messageId in translations.en) {
       locale.translations[messageId] = 'EcmaScript';
     }
@@ -848,6 +851,7 @@ describe('Plot a11y summarization', () => {
           return target[property];
         },
       }),
+      availableLocales: { en: true },
     };
 
     serialize(
@@ -1211,6 +1215,7 @@ describe('Plot a11y summarization', () => {
       makeConfig(),
       {
         locale: 'en',
+        availableLocales: { en: true },
         translations: {
           ...translations.en,
           'time-series-local-trend': '%TREND%',

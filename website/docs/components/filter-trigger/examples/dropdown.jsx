@@ -28,7 +28,11 @@ export default () => {
             id="advance-trigger"
           >
             <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
-            {!!filters && <FilterTrigger.Counter>{filters}</FilterTrigger.Counter>}
+            {!!filters && (
+              <FilterTrigger.Counter aria-label="Applied filters count">
+                {filters}
+              </FilterTrigger.Counter>
+            )}
           </Dropdown.Trigger>
           <Dropdown.Popper p={5}>
             <Button
