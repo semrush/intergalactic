@@ -1568,8 +1568,8 @@ importers:
 
   semcore/ui:
     specifiers:
-      '@semcore/accordion': 4.3.18
-      '@semcore/animation': 1.10.3
+      '@semcore/accordion': 4.3.19
+      '@semcore/animation': 1.10.5
       '@semcore/badge': 3.3.20
       '@semcore/base-trigger': 3.5.16
       '@semcore/breadcrumbs': 4.4.28
@@ -1577,23 +1577,23 @@ importers:
       '@semcore/button': 4.3.21
       '@semcore/card': 4.3.13
       '@semcore/carousel': 2.2.32
-      '@semcore/checkbox': 6.4.12
+      '@semcore/checkbox': 6.4.13
       '@semcore/color-picker': 1.4.32
       '@semcore/continuous-delivery': '*'
       '@semcore/core': 1.14.8
       '@semcore/counter': 2.3.11
-      '@semcore/d3-chart': 2.14.1
-      '@semcore/data-table': 3.8.2
-      '@semcore/date-picker': 3.6.34
+      '@semcore/d3-chart': 2.14.2
+      '@semcore/data-table': 3.8.3
+      '@semcore/date-picker': 3.6.35
       '@semcore/divider': 3.2.20
-      '@semcore/dot': 4.2.23
+      '@semcore/dot': 4.2.24
       '@semcore/drag-and-drop': 2.4.34
       '@semcore/dropdown': 3.4.24
       '@semcore/dropdown-menu': 3.6.29
       '@semcore/ellipsis': 1.2.18
       '@semcore/email': 1.0.2
-      '@semcore/errors': 3.9.17
-      '@semcore/feature-popover': 3.3.1
+      '@semcore/errors': 3.9.18
+      '@semcore/feature-popover': 3.3.2
       '@semcore/feedback-form': 5.4.12
       '@semcore/flags': 3.4.12
       '@semcore/flex-box': 4.7.20
@@ -1603,33 +1603,33 @@ importers:
       '@semcore/i18n-unplugin': 0.0.5
       '@semcore/icon': 3.14.8
       '@semcore/illustration': 1.4.15
-      '@semcore/inline-edit': 2.4.14
+      '@semcore/inline-edit': 2.4.15
       '@semcore/inline-input': 3.5.29
       '@semcore/input': 3.5.21
       '@semcore/input-mask': 4.5.1
       '@semcore/input-number': 4.4.15
       '@semcore/input-tags': 3.3.29
-      '@semcore/link': 4.3.23
-      '@semcore/modal': 3.6.0
+      '@semcore/link': 4.3.24
+      '@semcore/modal': 3.6.1
       '@semcore/neighbor-location': 3.1.26
-      '@semcore/notice': 4.4.33
-      '@semcore/notice-bubble': 4.7.11
-      '@semcore/notice-global': 1.5.18
+      '@semcore/notice': 4.4.34
+      '@semcore/notice-bubble': 4.7.12
+      '@semcore/notice-global': 1.5.19
       '@semcore/outside-click': 2.5.25
-      '@semcore/pagination': 3.5.31
+      '@semcore/pagination': 3.5.32
       '@semcore/pills': 4.4.20
-      '@semcore/popper': 4.17.3
+      '@semcore/popper': 4.17.4
       '@semcore/portal': 2.6.2
       '@semcore/product-head': 3.4.1
       '@semcore/progress-bar': 3.3.21
-      '@semcore/radio': 5.4.12
+      '@semcore/radio': 5.4.13
       '@semcore/scroll-area': 4.2.20
-      '@semcore/select': 3.6.4
-      '@semcore/side-panel': 2.4.0
+      '@semcore/select': 3.6.5
+      '@semcore/side-panel': 2.4.1
       '@semcore/skeleton': 4.4.20
       '@semcore/slider': 3.4.12
       '@semcore/spin': 4.2.20
-      '@semcore/spin-container': 6.2.23
+      '@semcore/spin-container': 6.2.24
       '@semcore/sticky': 2.4.20
       '@semcore/switch': 4.4.12
       '@semcore/tab-line': 3.3.11
@@ -1637,11 +1637,11 @@ importers:
       '@semcore/tag': 4.4.31
       '@semcore/textarea': 4.3.20
       '@semcore/time-picker': 3.4.43
-      '@semcore/tooltip': 5.4.4
-      '@semcore/typography': 4.3.30
+      '@semcore/tooltip': 5.4.5
+      '@semcore/typography': 4.4.0
       '@semcore/utils': 3.50.4
       '@semcore/widget-empty': 3.10.8
-      '@semcore/wizard': 1.2.36
+      '@semcore/wizard': 1.2.37
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
@@ -9262,7 +9262,7 @@ packages:
     resolution: {integrity: sha512-oWb1Z6mkHIskLzEJ/XWX0srkpkTQ7vaopMQkyaEIoq0fmtFVxOthb8cCxeT+p3ynTdkk/RZwbgG4brR5BeWECw==}
     engines: {node: '>= 4.0'}
     os: [darwin]
-    deprecated: fsevents 1 will break on node v14+ and could be using insecure binaries. Upgrade to fsevents 2.
+    deprecated: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
