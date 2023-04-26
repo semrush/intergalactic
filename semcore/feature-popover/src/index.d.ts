@@ -12,6 +12,8 @@ export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
    * @default 200
    */
   duration?: number;
+
+  locale?: string;
 }
 
 export interface IFeaturePopoverContext extends IPopperContext {

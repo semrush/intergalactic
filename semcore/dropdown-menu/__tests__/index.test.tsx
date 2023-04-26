@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, axe, render, fireEvent } = testing;
+const { cleanup, axe, render, fireEvent, act } = testing;
 
 import DropdownMenu from '../src';
 
@@ -173,6 +173,7 @@ describe('DropdownMenu', () => {
   });
 
   test('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Trigger aria-label="dropdown menu trigger">trigger</DropdownMenu.Trigger>
@@ -181,6 +182,8 @@ describe('DropdownMenu', () => {
         </DropdownMenu.Menu>
       </DropdownMenu>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

@@ -4,7 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.3.2] - 2023-04-26
 
-## [3.3.1] - 2023-04-24
+### Fixed
+
+- Added `aria-label` for the close icon.
 
 ## [3.3.0] - 2023-04-19
 

@@ -73,7 +73,11 @@ export default () => {
         tag={FilterTrigger}
       >
         <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
-        {!!filters && <FilterTrigger.Counter>{filters}</FilterTrigger.Counter>}
+        {!!filters && (
+          <FilterTrigger.Counter aria-label="Applied filters count">
+            {filters}
+          </FilterTrigger.Counter>
+        )}
       </Dropdown.Trigger>
       <Dropdown.Popper>
         <FlexOverflow direction="column" p={4} alignItems="flex-start">

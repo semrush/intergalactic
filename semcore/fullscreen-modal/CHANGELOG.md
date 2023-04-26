@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.32] - 2023-04-26
+
+### Fixed
+
+- Added `aria-label` for the close icon.
+
 ## [2.2.31] - 2023-04-12
 
 ### Changed

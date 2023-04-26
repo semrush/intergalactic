@@ -90,11 +90,11 @@ class ModalRoot extends Component {
 
   getTitleProps() {
     const { uid } = this.asProps;
-    const setTitle = () => this.setState({ hasTitle: true });
+    const setHasTitle = () => this.setState({ hasTitle: true });
 
     return {
       id: `igc-${uid}-title`,
-      setTitle,
+      setHasTitle,
     };
   }
 
@@ -175,10 +175,10 @@ function Close(props) {
 Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
-  const { setTitle, styles } = props;
+  const { setHasTitle, styles } = props;
   const STitle = Root;
 
-  useEffect(() => setTitle());
+  useEffect(() => setHasTitle());
 
   return sstyled(styles)(<STitle render={Text} tag="h2" />);
 }

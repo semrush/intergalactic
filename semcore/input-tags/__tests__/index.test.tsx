@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, render, cleanup, fireEvent } = testing;
+const { axe, render, cleanup, fireEvent, act } = testing;
 import Tooltip from '@semcore/tooltip';
 
 import InputTags from '../src';
@@ -107,8 +107,7 @@ describe('InputTags', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test("renders prop hMin", async () => {
-
+  test('renders prop hMin', async () => {
     const component = (
       <InputTags hMin={100}>
         {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
@@ -132,11 +131,12 @@ describe('InputTags', () => {
       </InputTags>,
     );
 
-    fireEvent.keyDown(getByTestId('tag'), { code: 'Enter' });
+    act(() => fireEvent.keyDown(getByTestId('tag'), { code: 'Enter' }));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   test('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <InputTags size="l">
         {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
@@ -148,6 +148,8 @@ describe('InputTags', () => {
         <InputTags.Value aria-label="input with tags" />
       </InputTags>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

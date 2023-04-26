@@ -17,7 +17,7 @@ import resolveColor from '@semcore/utils/lib/color';
 
 import DataTable, { ROW_GROUP } from '../src';
 
-const { render, cleanup, axe } = testing;
+const { render, cleanup, axe, act } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
@@ -821,6 +821,7 @@ describe('DataTable', () => {
   });
 
   test('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
         <DataTable.Head>
@@ -832,6 +833,8 @@ describe('DataTable', () => {
         <DataTable.Body />
       </DataTable>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
