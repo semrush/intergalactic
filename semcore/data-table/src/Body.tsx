@@ -55,11 +55,11 @@ class Body extends Component<AsProps, State> {
   renderCells(cells: NestedCells, rowData: RowData, index: number) {
     const SCell = Flex;
     const { styles, columns, use } = this.asProps;
-    return cells.map((cell) => {
+    return cells.map((cell, cellIndex) => {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
         return sstyled(styles)(
-          <SGroupCell role="rowgroup" data-ui-name="group-cell">
+          <SGroupCell key={cellIndex} role="rowgroup" data-ui-name="group-cell">
             {this.renderRows(cell as NestedCells[])}
           </SGroupCell>,
         );
