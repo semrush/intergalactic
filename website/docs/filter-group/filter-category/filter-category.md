@@ -21,7 +21,7 @@ It's better not to make the controls smaller than recommended min-widths, otherw
 
 | Input size | Inactive filter (Select)               | Active filter (FilterTrigger)              |
 | ---------- | -------------------------------------- | ------------------------------------------ |
-| M          | ![inactive filter](static/default.png) | ![active filter](static/filterTrigger.png) |
+| M          | ![inactive filter](static/default.png) | ![active filter](static/filter-trigger.png) |
 
 @## Filter by one category
 
