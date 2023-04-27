@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.35] - 2023-04-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/grid` [4.3.20 ~> 4.3.21]).
+
 ## [2.4.34] - 2023-04-24
 
 ## [2.4.33] - 2023-04-17
