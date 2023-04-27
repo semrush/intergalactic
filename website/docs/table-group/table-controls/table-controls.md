@@ -29,7 +29,7 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 - When the row with accordion is opened, the `ChevronRight` icon should change to `ChevronDown` of the same size and color.
 - The row inside the accordion has `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-table-accent)`. It is necessary so that when several rows with accordion are opened, they do not visually merge with each other.
 
-![table with accordion](static/accordion.png)
+![](static/accordion.png)
 
 ### Opening an accordion from a table cell
 

@@ -173,6 +173,9 @@ const components = {
     { text: 'Components animation', size: { kit: '5/9' } },
     { text: 'BottomSheet (draft name)', size: { ui: '9/15', kit: '11/15' } },
   ],
+  'Q2 2023': [
+    { text: 'Enhancing accessibility of the components', size: { kit: '1/11' } },
+  ],
 };
 
 function Gant(props) {
@@ -224,7 +227,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(8);
+  const [value, setValue] = useState(9);
   let TabContent = null;
 
   switch (value) {
@@ -254,6 +257,9 @@ function Roadmap() {
       break;
     case 8:
       TabContent = <Gant sprint={dateSprint.slice(80, 87)} components={components['Q1 2023']} />;
+      break;
+    case 9:
+      TabContent = <Gant sprint={dateSprint.slice(86, 93)} components={components['Q2 2023']} />;
       break;
   }
   return (

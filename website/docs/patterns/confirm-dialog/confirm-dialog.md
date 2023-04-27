@@ -18,22 +18,22 @@ The dialog is built using the [Modal](/components/modal/) component.
 
 When the user is about to take an irreversible action, like permanently deleting an item, or when they're about to lose unsaved data, you need to ask them in advance if they understand what’s going to happen.
 
-![confirm dialog save appearance](static/confirm-dialog-save.png)
+![](static/confirm-dialog-save.png)
 
-![confirm dialog delete appearance](static/confirm-dialog-delete.png)
+![](static/confirm-dialog-delete.png)
 
 When the user is about to take an action that leads to serious consequences, for example changing network configuration, ensure the following:
 
 - The dialog must explain what exactly will change.
 - The user has to confirm the action by entering the requested value.
 
-![confirm dialog large appearance](static/confirm-dialog-large.png)
+![](static/confirm-dialog-large.png)
 
 Try to avoid situations when the content in a modal dialog requires a scrollbar.
 
 @## Paddings
 
-![confirm dialog paddings](static/confirm-dialog-paddings.png)
+![](static/confirm-dialog-paddings.png)
 
 @## Other recommendations
 
