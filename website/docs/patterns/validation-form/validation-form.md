@@ -64,4 +64,5 @@ The General pattern for the text: `Please enter something`.
 | If the field is filled in with an error                          | For example, the field with email: `Please enter a valid email`.                                         |
 | Standard error in the checkbox when accepting Terms & Conditions | `Please confirm that you agree to our Terms and Conditions and Privacy Policy`.                          |
 
+@page validation-form-a11y
 @page validation-form-code
