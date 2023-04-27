@@ -21,10 +21,7 @@ async function snapshot(Component, options) {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
-  jest.useFakeTimers();
   act(() => root.render(Component));
-  act(() => jest.runAllTimers());
-  jest.useRealTimers();
   // ReactDOM.render(Component, _tmp);
   const componentHtml = _tmp.innerHTML;
   const componentStyle = document.head.innerHTML;
@@ -83,32 +80,16 @@ async function snapshot(Component, options) {
   /* Uncomment line below to debug snapshot in your browser */
   // const fs = require('fs');
   // fs.writeFileSync('./tmp.html', html);
-  const retires = 3;
-  let body = null;
-  let lastError = null;
-  for (let retry = 0; retry < retires; retry++) {
-    try {
-      const response = await post({
-        url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/',
-        encoding: null,
-        form: {
-          ...options,
-          html,
-          token: process.env.SCREENSHOT_TOKEN,
-        },
-      });
-      body = response.body;
-      break;
-    } catch (error) {
-      lastError = error;
-    }
-  }
+  const { body } = await post({
+    url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/',
+    encoding: null,
+    form: {
+      ...options,
+      html,
+      token: process.env.SCREENSHOT_TOKEN,
+    },
+  });
   act(() => root.unmount());
-
-  if (body === null) {
-    throw lastError;
-  }
-
   return body;
 }
 
