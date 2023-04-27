@@ -53,9 +53,6 @@ class RootSelect extends Component {
     i18n: localizedMessages,
     locale: 'en',
   });
-  state = {
-    focusCatch: false,
-  };
 
   firstSelectedOptionRef = React.createRef();
 
@@ -232,7 +229,6 @@ class RootSelect extends Component {
           this.focusableTriggerReturnFocusToRef.current.focus();
           return;
         }
-        this.setState({ focusCatch: true });
       }, 0);
     }
   };
@@ -261,13 +257,6 @@ class RootSelect extends Component {
       return (
         <Root render={DropdownMenu}>
           <Select.Trigger {...other} role="combobox" />
-          {this.state.focusCatch && (
-            <div
-              tabIndex={0}
-              ref={(node) => node?.focus()}
-              onBlur={() => this.setState({ focusCatch: false })}
-            />
-          )}
           <Select.Menu>
             {options.map((option) => {
               return (
@@ -290,13 +279,6 @@ class RootSelect extends Component {
     return (
       <Root render={DropdownMenu}>
         <Children />
-        {this.state.focusCatch && (
-          <div
-            tabIndex={0}
-            ref={(node) => node?.focus()}
-            onBlur={() => this.setState({ focusCatch: false })}
-          />
-        )}
       </Root>
     );
   }

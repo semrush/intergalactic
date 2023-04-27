@@ -139,3 +139,5 @@ export const useFocusLock = (
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
 };
+
+export const isFocusInside = focusInside;

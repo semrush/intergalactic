@@ -45,7 +45,6 @@ class PickerAbstract extends Component {
   state = {
     // To remove after removing button trigger
     defaultInteraction: 'focus',
-    focusCatch: false,
   };
   uncontrolledProps() {
     return {
@@ -183,13 +182,8 @@ class PickerAbstract extends Component {
   }
 
   handleCalendarChange = (value) => {
-    const { onChange, interaction } = this.asProps;
-    const { defaultInteraction } = this.state;
+    const { onChange } = this.asProps;
     onChange(value);
-
-    if ((interaction ?? defaultInteraction) === 'focus') {
-      this.setState({ focusCatch: true });
-    }
   };
 
   getCalendarProps() {
@@ -222,13 +216,6 @@ class PickerAbstract extends Component {
           >
             <Children />
           </Root>,
-        )}
-        {this.state.focusCatch && (
-          <div
-            tabIndex={0}
-            ref={(node) => node?.focus()}
-            onBlur={() => this.setState({ focusCatch: false })}
-          />
         )}
       </>
     );

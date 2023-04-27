@@ -56,7 +56,6 @@ class RangePickerAbstract extends Component {
     dirtyValue: [],
     // To remove after removing button trigger
     defaultInteraction: 'focus',
-    focusCatch: false,
   };
 
   uncontrolledProps() {
@@ -146,12 +145,6 @@ class RangePickerAbstract extends Component {
     const [startDate, endDate = startDate] = value;
     this.handleChange([]);
     this.handlers.value([startDate, endDate]);
-    const { interaction } = this.asProps;
-    const { defaultInteraction } = this.state;
-
-    if ((interaction ?? defaultInteraction) === 'focus') {
-      this.setState({ focusCatch: true });
-    }
   };
 
   handleChange = (date) => {
@@ -357,13 +350,6 @@ class RangePickerAbstract extends Component {
           >
             <Children />
           </Root>,
-        )}
-        {this.state.focusCatch && (
-          <div
-            tabIndex={0}
-            ref={(node) => node?.focus()}
-            onBlur={() => this.setState({ focusCatch: false })}
-          />
         )}
       </>
     );

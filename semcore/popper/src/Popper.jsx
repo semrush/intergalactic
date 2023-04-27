@@ -8,7 +8,7 @@ import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
 import { setRef } from '@semcore/utils/lib/ref';
-import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock, isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import logger from '@semcore/utils/lib/logger';
@@ -354,6 +354,7 @@ class Popper extends Component {
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
       focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
       disableEnforceFocus,
+      popperRef: this.popperRef,
     };
   }
 
@@ -442,25 +443,14 @@ const getElementNestingIndexes = (element, chain = new Set([element, document.bo
   return [...getElementNestingIndexes(element.parentElement, chain), index];
 };
 
-function Trigger(props) {
-  const STrigger = Root;
-  const SFocusHint = 'span';
-  const {
-    Children,
-    interaction,
-    focusableTriggerReturnFocusToRef,
-    focusHint,
-    onKeyboardFocus,
-    disableEnforceFocus,
-  } = props;
-
+const useReturnFocusEl = (interaction, onKeyboardFocus, disable) => {
   const [returnFocusEl, setReturnFocusEl] = React.useState(null);
   const focusSourceRef = useFocusSource();
   const handleFocus = React.useCallback(
     (event) => {
       if (focusSourceRef.current !== 'keyboard') return;
       onKeyboardFocus?.();
-      if (disableEnforceFocus) return;
+      if (disable) return;
       if (interaction !== 'focus') return;
       if (!event.relatedTarget) {
         setReturnFocusEl('after');
@@ -481,11 +471,60 @@ function Trigger(props) {
 
       setReturnFocusEl('after'); // <input id="focus1" /> <input id="focus2" />
     },
-    [interaction, onKeyboardFocus, disableEnforceFocus],
+    [interaction, onKeyboardFocus, disable],
   );
   const handleFocusReturnElBlur = React.useCallback(() => {
     setTimeout(() => setReturnFocusEl(null), 0);
   }, []);
+
+  return { returnFocusEl, handleFocus, handleFocusReturnElBlur };
+};
+const useFocusCatch = (active, popperRef) => {
+  const activeRef = React.useRef(active);
+  activeRef.current = active;
+
+  const [focusCatch, setFocusCatch] = React.useState(false);
+  const handleFocusCatchBlur = React.useCallback(() => setFocusCatch(false), []);
+  const handleFocusCatchRef = React.useCallback((node) => node?.focus(), []);
+
+  React.useEffect(() => {
+    if (!active) return;
+    if (!popperRef.current) return;
+    return () => {
+      setTimeout(() => {
+        if (activeRef.current) return;
+        if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
+        setFocusCatch(true);
+      }, 1);
+    };
+  }, [active]);
+
+  return { focusCatch, handleFocusCatchBlur, handleFocusCatchRef };
+};
+
+function Trigger(props) {
+  const STrigger = Root;
+  const SFocusHint = 'span';
+  const {
+    Children,
+    interaction,
+    focusableTriggerReturnFocusToRef,
+    focusHint,
+    onKeyboardFocus,
+    disableEnforceFocus,
+    active,
+    popperRef,
+  } = props;
+
+  const { returnFocusEl, handleFocusReturnElBlur, handleFocus } = useReturnFocusEl(
+    interaction,
+    onKeyboardFocus,
+    disableEnforceFocus,
+  );
+  const { focusCatch, handleFocusCatchBlur, handleFocusCatchRef } = useFocusCatch(
+    active,
+    popperRef,
+  );
 
   return (
     <>
@@ -503,6 +542,7 @@ function Trigger(props) {
       {returnFocusEl === 'after' && (
         <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
       )}
+      {focusCatch && <div tabIndex="0" ref={handleFocusCatchRef} onBlur={handleFocusCatchBlur} />}
     </>
   );
 }

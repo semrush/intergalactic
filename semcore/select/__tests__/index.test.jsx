@@ -247,6 +247,7 @@ describe('Select Trigger', () => {
     );
     fireEvent.click(getByTestId('trigger'));
     act(() => jest.runAllTimers());
+    act(() => getByTestId('option-2').focus());
     fireEvent.click(getByTestId('option-2'));
     act(() => jest.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('menu')));
@@ -273,6 +274,7 @@ describe('Select Trigger', () => {
     );
     act(() => getByTestId('input-in-trigger').focus());
     act(() => jest.runAllTimers());
+    act(() => getByTestId('option-2').focus());
     fireEvent.click(getByTestId('option-2'));
     act(() => jest.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('menu')));
