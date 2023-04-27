@@ -42,7 +42,7 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 - showing the structure of the loading page and data;
 - uploading new data.
 
-![skeleton example](static/loading-skeleton.png)
+![](static/loading-skeleton.png)
 
 ### Spin
 
@@ -54,10 +54,10 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 
 > If the download is fast, you can do without this state.
 
-![spin example](static/spin.png)
+![](static/spin.png)
 
 ### ProgressBar
 
 Use it for cases when data collection takes a long time (more than 5 seconds). In different widgets this may take different time. _For example, in the table, if data collection takes more than 1 minute._
 
-![progress-bar example](static/progressbar.png)
+![](static/progressbar.png)

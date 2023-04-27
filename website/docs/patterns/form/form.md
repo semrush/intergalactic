@@ -24,8 +24,6 @@ Input should have a text label.
 - Font weight should be `regular`. In cases when you need an extra accent fo the input's label you can use `bold` font-weight.
 - **Do not put a colon after the text label.**
 
-In cases when you need to save space and if it is clear from the context what data should be entered into the input, you can use only placeholder for the input.
-
 You also can mark the input as an optional.
 
 | Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                |
@@ -117,6 +115,7 @@ Briefly:
 - It needs more horizontal space.
 - It takes more time to complete (see the [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
 - It is less suitable for multilingual interfaces.
+- Screen magnification users may find it challenging to match labels with inputs as they only see a small part of the screen at a time.
 
 ### Horizontal form layout, right label alignment
 
