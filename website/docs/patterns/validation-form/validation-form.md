@@ -33,21 +33,21 @@ You can validate the inputs immediately, as the user fills out the form, if ther
 
 Use this validation to make it easier for the user to fill out forms and filters. We recommend you to immediately show the user what needs to be corrected before submitting the form.
 
-![validation example](static/immediate-validation.png)
+![](static/immediate-validation.png)
 
 @## Appearance
 
 All form elements have the same `invalid` state: a `var(--border-danger-active)` border and a tooltip with the `warning` theme when focused.
 
-![Checkbox](./static/checkbox-validation.png)
+![](./static/checkbox-validation.png)
 
-![Radio](./static/radio-validation.png)
+![](./static/radio-validation.png)
 
-![Input](./static/input-validation.png)
+![](./static/input-validation.png)
 
-![Select](./static/select-validation.png)
+![](./static/select-validation.png)
 
-![Textarea](./static/textarea-validation.png)
+![](./static/textarea-validation.png)
 
 @## Notice with error message
 

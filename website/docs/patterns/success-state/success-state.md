@@ -18,7 +18,7 @@ When designing a success message, keep the following principles in mind:
 * The message text must have the font size of `14px` (`--fs-200`, `--lh-200`) and the `--text-primary` color.
 * CTA buttons are optional, and they should have L size.
 
-![success state appearance](static/success-window.png)
+![](static/success-window.png)
 
 ## When to use
 
@@ -38,7 +38,7 @@ Here are some general recommendations that can help you:
 
 For example, if a [Feedback form](/components/feedback/) has been sent successfully, show the success message in the same place next to the form's trigger.
 
-![example success response](static/success-response.png)
+![](static/success-response.png)
 
 A user can close a success state by clicking on:
 
@@ -52,8 +52,8 @@ You can also close the success state automatically after 3—5 seconds, but be s
 
 You can use [NoticeBubble](/components/notice-bubble/) to notify a user about successfully completing a small part of a scenario.
 
-![success notice bubble](static/notice-bubble.png)
+![](static/notice-bubble.png)
 
 You can also use [Notice](/components/notice/) in a similar way to provide a user with some feedback.
 
-![success notice](static/notice.png)
+![](static/notice.png)

@@ -10,7 +10,7 @@ tabName: Design
 
 The cell in the primary table, whether it is a header or a row, has 8px padding.
 
-![secondary scheme](static/secondary-paddings.png)
+![](static/secondary-paddings.png)
 
 @## Styles
 
@@ -18,8 +18,8 @@ The cell in the primary table, whether it is a header or a row, has 8px padding.
 
 | Description | Appearance                                  | Styles                                                                      |
 | ----------- | ------------------------------------------- | --------------------------------------------------------------------------- |
-| Heading     | ![secondary table](static/th-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-table-accent)` |
-| Default row | ![secondary table](static/td-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)` |
+| Heading     | ![](static/th-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-table-accent)` |
+| Default row | ![](static/td-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)` |
 
 @## Row states
 
