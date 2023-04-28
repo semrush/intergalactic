@@ -1,3 +1,23 @@
+## [13.25.1] - 2023-04-28
+
+### @semcore/carousel
+
+- **Fixed** Fixed warnings in development mode.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Added `aria-label` for the close icon.
+
+### @semcore/grid
+
+- **Fixed** Fixed warnings in development mode.
+
+### @semcore/input
+
+- **Fixed** Moved paddings from container to `<Input.Value />` and `<Input.Addon />` to fix addons in inputs of large size.
+- **Fixed** `<Input.Addon />` now automatically takes size of `<Input />`.
+- **Fixed** Fixed right border duplication when last addon is build on top of `<Button />`.
+
 ## [13.25.0] - 2023-04-26
 
 ### @semcore/animation
