@@ -93,21 +93,32 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
+SAddon[size='m']:not(SButton) {
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
+}
+SAddon[size='l']:not(SButton) {
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+}
+
+SInput SAddon:nth-last-child(2) {
+  margin-right: -1px;
+}
+
+SValue[size='m'] {
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
+}
+SValue[size='l'] {
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+}
+
 SInput[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
   height: var(--intergalactic-form-control-m, 28px);
 }
 
-SValue[size='m'],
-SValue[size='l'] {
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
-}
-
 SInput[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
   height: var(--intergalactic-form-control-l, 40px);
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SInput[focused] {

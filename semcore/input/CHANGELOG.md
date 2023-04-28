@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.5.21] - 2023-04-24
+## [3.5.22] - 2023-04-28
+
+### Fixed
+
+- Moved paddings from container to `<Input.Value />` and `<Input.Addon />` to fix addons in inputs of large size.
+- `<Input.Addon />` now automatically takes size of `<Input />`.
+- Fixed right border duplication when last addon is build on top of `<Button />`.
 
 ## [3.5.20] - 2023-04-14
 
