@@ -36,7 +36,7 @@ const Demo = () => {
         <Input w={240}>
           <Input.Value placeholder="Wow! Such input. So new." id="badge-example" />
           <Input.Addon>
-            <Badge bg="green">new</Badge>
+            <Badge bg="green-300">new</Badge>
           </Input.Addon>
         </Input>
       </Box>
