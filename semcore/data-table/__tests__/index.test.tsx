@@ -825,10 +825,7 @@ describe('DataTable', () => {
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
         <DataTable.Head>
-          <DataTable.Column>
-            keyword
-            <DataTable.Column name="keyword" children="KD,%" />
-          </DataTable.Column>
+          <DataTable.Column name="keyword" children="KD,%" />
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>,
