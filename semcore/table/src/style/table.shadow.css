@@ -15,6 +15,13 @@ thead SRow {
     border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   }
 }
+thead SRow[use='secondary'] {
+  border: none;
+
+  &:last-child {
+    border-bottom: 1px solid var(--intergalactic-border-table-accent, #e0e1e9);
+  }
+}
 
 SCell {
   background: inherit;

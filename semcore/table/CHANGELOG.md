@@ -2,9 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.3] - 2023-04-26
+## [3.4.4] - 2023-04-28
 
-## [3.4.2] - 2023-04-24
+### Fixed
+
+- Fixed bottom border color of secondary table header.
 
 ## [3.4.1] - 2023-04-17
 
