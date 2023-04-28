@@ -31,6 +31,7 @@ type AsProps = {
   sticky: boolean;
   disabledScroll?: boolean;
   ['data-ui-name']: string;
+  uid?: string;
 };
 
 class Head extends Component<AsProps> {
@@ -60,7 +61,7 @@ class Head extends Component<AsProps> {
   }
 
   renderColumn(column: Column, width: number) {
-    const { styles, use, hidden } = this.asProps;
+    const { styles, use, hidden, uid } = this.asProps;
     const SColumn = Flex;
     const SHead = Box;
     const SSortWrapper = 'div';
@@ -87,7 +88,9 @@ class Head extends Component<AsProps> {
     return sstyled(styles)(
       <SColumn
         role={isGroup ? undefined : 'columnheader'}
+        scope={isGroup ? 'colgroup' : 'col'}
         key={column.name}
+        id={`igc-table-${uid}-${column.name}`}
         use={use}
         fixed={column.fixed}
         resizable={column.resizable}
@@ -165,7 +168,7 @@ class Head extends Component<AsProps> {
           onResize={onResize}
         >
           <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
-            <SHead render={Box} role="row">
+            <SHead render={Box} role="row" aria-rowindex="1">
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>

@@ -44,10 +44,15 @@ SColumn {
 }
 
 SColumn[hidden] {
-  height: 0 !important;
-  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0px !important;
+  margin: -1px !important;
   overflow: hidden !important;
-  border: none !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
 }
 
 SColumn[use='primary'] {
@@ -191,17 +196,17 @@ SSortIcon {
 
 SColumn[use='primary'] SSortWrapper:before {
   background: linear-gradient(
-      270deg,
-      var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
-      rgba(224, 225, 233, 0) 105%
+    270deg,
+    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+    rgba(224, 225, 233, 0) 105%
   );
 }
 
 SColumn[use='secondary'] SSortWrapper:before {
   background: linear-gradient(
-      270deg,
-      var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
-      rgba(255, 255, 255, 0) 105%
+    270deg,
+    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+    rgba(255, 255, 255, 0) 105%
   );
 }
 

@@ -31,6 +31,13 @@ export default () => {
                   row: ${JSON.stringify(row, null, '  ')};
                   index: ${index};`);
               },
+              onKeyDown: (event) => {
+                if (event.key === ' ' || event.key === 'Enter')
+                  alert(`Click row 
+                    props: ${JSON.stringify(Object.keys(props), null, '  ')};
+                    row: ${JSON.stringify(row, null, '  ')};
+                    index: ${index};`);
+              },
             };
           }}
         </DataTable.Cell>

@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.8.4] - 2023-04-28
+
+### Fixed
+
+- Semantically connected cells with corresponding headers.
+- Added `scope` for table header.
+
 ## [3.8.3] - 2023-04-25
 
 ### Fixed
