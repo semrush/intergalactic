@@ -6,6 +6,7 @@ title: Components
 @page auto-suggest
 @page badge
 @page breadcrumbs
+@page bottom-sheet
 @page button
 @page card
 @page carousel
