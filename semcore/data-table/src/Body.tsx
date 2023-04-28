@@ -28,6 +28,7 @@ type AsProps = {
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
   disabledScroll?: boolean;
+  uid?: string;
 };
 
 type State = {
@@ -52,9 +53,9 @@ class Body extends Component<AsProps, State> {
     return rowHeightFromProps || this.state.rowHeight;
   };
 
-  renderCells(cells: NestedCells, rowData: RowData, index: number) {
+  renderCells(cells: NestedCells, rowData: RowData, dataIndex: number) {
     const SCell = Flex;
-    const { styles, columns, use } = this.asProps;
+    const { styles, columns, use, uid } = this.asProps;
     return cells.map((cell, cellIndex) => {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
@@ -71,6 +72,7 @@ class Body extends Component<AsProps, State> {
         const lastColumn = columns.find((c) => c.name === lastName);
         const column = columns.find((c) => c.name === cell.name);
         const [name, value] = getFixedStyle(cell, columns);
+        const parentColumnNames = column?.parentColumns.map((column) => column.name) ?? [];
         const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
           (name) => `var(${name})`,
         );
@@ -98,13 +100,18 @@ class Body extends Component<AsProps, State> {
         for (const cellPropLayer of cell.cellPropsLayers || []) {
           const { childrenPropsGetter = (p) => p, ...other } = cellPropLayer;
           const propsCell = assignProps(other, props);
-          props = assignProps(childrenPropsGetter(propsCell, rowData, index), propsCell);
+          props = assignProps(childrenPropsGetter(propsCell, rowData, dataIndex), propsCell);
         }
+
+        const headerIds = [cell.name, ...parentColumnNames]
+          .filter(Boolean)
+          .map((name) => `igc-table-${uid}-${name}`);
 
         return sstyled(styles)(
           <SCell
             key={cell.name}
             role="cell"
+            headers={headerIds.join(' ')}
             {...props}
             fixed={cell.fixed}
             theme={props.theme}
@@ -119,7 +126,7 @@ class Body extends Component<AsProps, State> {
 
   renderRow(
     cells: NestedCells,
-    { dataIndex, topOffset, nested }: { dataIndex: number; topOffset?: number; nested: boolean },
+    { dataIndex, topOffset }: { dataIndex: number; topOffset?: number },
   ) {
     const SRow = Box;
     const { styles, rowPropsLayers, uniqueKey, virtualScroll } = this.asProps;
@@ -127,7 +134,7 @@ class Body extends Component<AsProps, State> {
 
     const rowData = cells.flatRowData || getCellsByColumn(cells);
     const key = rowData[uniqueKey] ? String(rowData[uniqueKey]) : `row_${dataIndex}`;
-    const needToMeasureHeight = dataIndex === 0 && !nested && !rowHeightFromProps;
+    const needToMeasureHeight = dataIndex === 0 && !rowHeightFromProps;
 
     let props = {
       children: this.renderCells(cells, rowData, dataIndex),
@@ -137,7 +144,7 @@ class Body extends Component<AsProps, State> {
       top: topOffset,
       ref: needToMeasureHeight ? this.firstRowRef : undefined,
       key,
-      'aria-rowindex': dataIndex + 1,
+      'aria-rowindex': dataIndex + 2,
     };
 
     for (const rowPropsLayer of rowPropsLayers) {
@@ -150,7 +157,7 @@ class Body extends Component<AsProps, State> {
   }
 
   renderRows(rows: NestedCells[]) {
-    return rows.map((cells, dataIndex) => this.renderRow(cells, { dataIndex, nested: false }));
+    return rows.map((cells, dataIndex) => this.renderRow(cells, { dataIndex }));
   }
 
   renderVirtualizedRows(rows: NestedCells[]) {
@@ -182,7 +189,7 @@ class Body extends Component<AsProps, State> {
     }
 
     return processedVisibleRows.map(({ cells, dataIndex, topOffset }) =>
-      this.renderRow(cells, { dataIndex, topOffset, nested: false }),
+      this.renderRow(cells, { dataIndex, topOffset }),
     );
   }
 

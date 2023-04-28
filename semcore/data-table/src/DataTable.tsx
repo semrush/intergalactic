@@ -16,6 +16,7 @@ import type {
 } from './types';
 import Head from './Head';
 import Body from './Body';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/data-table.shadow.css';
 
@@ -38,13 +39,16 @@ type AsProps = {
   sort: SortDirection[];
   data: RowData[];
   uniqueKey: string;
+  uid?: string;
 };
 
 type HeadAsProps = {
   children: React.ReactChild;
+  uid: string;
 };
 type BodyAsProps = {
   children: React.ReactChild;
+  uid: string;
 };
 
 /* utils type */
@@ -174,6 +178,7 @@ class RootDefinitionTable extends Component<AsProps> {
   static displayName = 'DefinitionTable';
 
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = {
     use: 'primary',
@@ -291,7 +296,7 @@ class RootDefinitionTable extends Component<AsProps> {
           sort[0] === name
             ? sort[1]
             : column?.sortDirection ||
-            (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
+              (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
         props: {
           name,
           flex: flex === 'inherit' ? undefined : flex,
@@ -301,10 +306,12 @@ class RootDefinitionTable extends Component<AsProps> {
           children,
           ref: column?.props?.ref || React.createRef(),
         },
+        parentColumns: [],
       } as unknown as Column;
 
       if (columns) {
         columnChildren.columns = columns;
+        columns.forEach((column) => column.parentColumns.unshift(columnChildren));
       }
       columnsChildren.push(columnChildren);
     });
@@ -312,7 +319,7 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 
   getHeadProps(props: HeadAsProps) {
-    const { use } = this.asProps;
+    const { use, uid } = this.asProps;
     const columnsChildren = this.childrenToColumns(props.children);
 
     this.columns = flattenColumns(columnsChildren);
@@ -322,11 +329,12 @@ class RootDefinitionTable extends Component<AsProps> {
       use,
       onResize: this.handlerResize,
       $scrollRef: this.scrollHeadRef,
+      uid,
     };
   }
 
   getBodyProps(props: BodyAsProps) {
-    const { data, use, uniqueKey } = this.asProps;
+    const { data, use, uniqueKey, uid } = this.asProps;
     const cellPropsLayers: { [columnName: string]: PropsLayer[] } = {};
     const rowPropsLayers: PropsLayer[] = [];
 
@@ -361,6 +369,7 @@ class RootDefinitionTable extends Component<AsProps> {
       use,
       rowPropsLayers,
       $scrollRef: this.scrollBodyRef,
+      uid,
     };
   }
 
@@ -394,7 +403,7 @@ class RootDefinitionTable extends Component<AsProps> {
           rowsGroup
             .map((subRow) => Object.keys(subRow))
             .flat()
-            .map(key => key.split('/'))
+            .map((key) => key.split('/'))
             .flat()
             .map((key) => [key, true]),
         );
@@ -463,7 +472,7 @@ class RootDefinitionTable extends Component<AsProps> {
         render={Box}
         __excludeProps={['data']}
         ref={this.tableRef}
-        role='table'
+        role="table"
         aria-rowcount={(data ?? []).length}
       >
         <Children />

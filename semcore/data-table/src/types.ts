@@ -50,6 +50,7 @@ export type Column<
   }> &
     Props;
   columns: Column[];
+  parentColumns: Column[];
 };
 export type Cell = Pick<Column, 'name' | 'fixed' | 'data'> & {
   cssVar: string | string[];
