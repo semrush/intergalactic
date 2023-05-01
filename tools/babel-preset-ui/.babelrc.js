@@ -6,7 +6,7 @@ module.exports = function (babel, opts = {}) {
       '@babel/preset-react',
     ],
     plugins: [
-      '@semcore/babel-plugin-root',
+      ['@semcore/babel-plugin-root', opts.root],
       '@semcore/babel-plugin-styles',
       '@babel/plugin-proposal-export-default-from',
       '@babel/plugin-proposal-class-properties',

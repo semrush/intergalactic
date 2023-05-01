@@ -4,8 +4,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.3.20] - 2023-04-24
 
-## [3.3.19] - 2023-04-17
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
@@ -21,7 +19,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4]).
-  a
 
 ## [3.3.8] - 2023-02-09
 
