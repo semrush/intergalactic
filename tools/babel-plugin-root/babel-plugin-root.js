@@ -4,6 +4,7 @@ const { addNamed } = require('@babel/helper-module-imports');
 const DEFAULT_OPTS = {
   fieldAssign: 'asProps',
   source: '@semcore/core',
+  coverage: false
 };
 
 function RootPlugin({ types: t }, opts) {
@@ -98,7 +99,15 @@ function RootPlugin({ types: t }, opts) {
                 ];
 
                 if (t.isVariableDeclarator(refP.container)) {
-                  p.scope.getBinding(p.node.openingElement.name.name).path.node.init = name;
+                  const varP = p.scope.getBinding(p.node.openingElement.name.name).path;
+                  if (options.coverage) {
+                    varP.scope.push({
+                      id: p.scope.generateUidIdentifierBasedOnNode('_root'),
+                      init: varP.node.init,
+                    });
+                  }
+                  varP.replaceWith(t.variableDeclarator(varP.node.id, name));
+
                 }
                 if (t.isJSXOpeningElement(refP.container)) {
                   p.node.openingElement.name = name;
