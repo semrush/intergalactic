@@ -1,3 +1,13 @@
+## [13.25.2] - 2023-05-02
+
+### @semcore/animation
+
+- **Fixed** Fixed collapse animations blinking.
+
+### @semcore/carousel
+
+- **Fixed** Fixed image display when specifying an index other than 0.
+
 ## [13.25.1] - 2023-04-28
 
 ### @semcore/carousel
