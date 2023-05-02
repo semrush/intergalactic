@@ -2,9 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.4.24] - 2023-04-24
+## [3.4.25] - 2023-05-02
 
-## [3.4.23] - 2023-04-17
+### Changed
+
+- Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+## [3.4.24] - 2023-04-24
 
 ### Changed
 

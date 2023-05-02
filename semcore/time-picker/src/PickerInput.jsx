@@ -126,7 +126,6 @@ class ItemPicker extends Component {
           aria-expanded={visible ? 'true' : 'false'}
           aria-haspopup="listbox"
           aria-controls={`picker-${this.field}-popper`}
-          aria-flowto={visible ? `picker-${this.field}-popper` : undefined}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}

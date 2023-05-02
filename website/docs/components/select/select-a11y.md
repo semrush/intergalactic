@@ -13,7 +13,7 @@ a11y: AA
 | `Tab`                          | Moves focus to the next focusable element.                                                                                                |
 | `Shift + Tab`                  | Moves focus to the previous focusable element.                                                                                            |
 | `Space`, `Enter`, `Down Arrow` | When focus is on the trigger, opens the dropdown.                                                                                         |
-| `Up Arrow`, `Down Arrow`            | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
+| `Up Arrow`, `Down Arrow`       | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
 | `Space`, `Enter`               | Selects the option and closes the dropdown.                                                                                               |
 | `Esc`                          | Closes the dropdown and returns focus to the trigger.                                                                                     |
 
@@ -21,15 +21,14 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-| Role       | Attribute                      | Element | Usage                                                                                                                                                                                                              |
-| ---------- | ------------------------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `button`   |                                | `div`   | Identifies Select.Trigger as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`.                                                                     |
-| `listbox`  |                                | `div`   | Identifies the element as a `listbox`.                                                                                                                                                                             |
-| `option`   |                                | `div`   | Identifies the element as a `listbox` option. The text content of the element provides the accessible name of the option.                                                                                          |
-| `checkbox` |                                | `div`   | Identifies the div element as a checkbox. The child text content of this `div` provides the accessible name of the checkbox.                                                                                       |
-|            | `aria-selected="true"`         | `li`    | Specified on an option in the `listbox` when it is visually highlighted as selected. Occurs only when an option in the list is referenced by `aria-activedescendant`.                                              |
-|            | `aria-label="List of options"` | `div`   | Defines a string value that labels an interactive element. It is required props for select without text content.                                                                                                   |
-|            | `aria-flowto`                  | `div`   | Identifies the next element (or elements) in an alternate reading order of content. This allows assistive technology to override the general default of reading in document source order at the user's discretion. |
+| Role       | Attribute                      | Element | Usage                                                                                                                                                                 |
+| ---------- | ------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `button`   |                                | `div`   | Identifies Select.Trigger as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`.                        |
+| `listbox`  |                                | `div`   | Identifies the element as a `listbox`.                                                                                                                                |
+| `option`   |                                | `div`   | Identifies the element as a `listbox` option. The text content of the element provides the accessible name of the option.                                             |
+| `checkbox` |                                | `div`   | Identifies the div element as a checkbox. The child text content of this `div` provides the accessible name of the checkbox.                                          |
+|            | `aria-selected="true"`         | `li`    | Specified on an option in the `listbox` when it is visually highlighted as selected. Occurs only when an option in the list is referenced by `aria-activedescendant`. |
+|            | `aria-label="List of options"` | `div`   | Defines a string value that labels an interactive element. It is required props for select without text content.                                                      |
 
 ### Roles and attributes for combobox
 

@@ -76,7 +76,6 @@ class DropdownMenuRoot extends Component {
       size,
       id: `igc-${uid}-trigger`,
       'aria-controls': `igc-${uid}-popper`,
-      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
       'aria-activedescendant': highlightedIndex,
@@ -100,7 +99,6 @@ class DropdownMenuRoot extends Component {
       tabIndex: 0,
       onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
       disablePortal,
       ignorePortalsStacking,
     };
@@ -258,16 +256,12 @@ function Addon(props) {
 
 function Hint(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant="hint" />,
-  );
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="hint" />);
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant="title" />,
-  );
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="title" />);
 }
 
 function Trigger() {
