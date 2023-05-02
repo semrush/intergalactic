@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
@@ -12,8 +12,14 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
 
   useEffect(() => {
     if (!innerRef.current) return;
-    innerRef.current.style.height = 'auto';
+    if (props.visible) innerRef.current.style.height = 'auto';
+    if (!props.visible) innerRef.current.style.height = 0 + 'px';
   }, []);
+  useLayoutEffect(() => {
+    if (!innerRef.current) return;
+    if (props.visible) innerRef.current.style.height = 0 + 'px';
+    if (!props.visible) innerRef.current.style.height = innerRef.current.scrollHeight + 'px';
+  }, [props.visible]);
 
   const handleAnimationStart = useCallback(
     (event) => {
@@ -24,14 +30,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
         event.currentTarget.style.overflow = 'hidden';
       }
 
-      const element = event.currentTarget;
-
-      if (props.visible) element.style.height = 0 + 'px';
-      else element.style.height = element.scrollHeight + 'px';
-      setTimeout(() => {
-        if (props.visible) element.style.height = element.scrollHeight + 'px';
-        else element.style.height = 0 + 'px';
-      }, 0);
+      if (props.visible) event.currentTarget.style.height = event.currentTarget.scrollHeight + 'px';
+      if (!props.visible) event.currentTarget.style.height = 0 + 'px';
     },
     [props.visible],
   );
