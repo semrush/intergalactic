@@ -87,7 +87,6 @@ class RootSelect extends Component {
     return {
       id: `igc-${uid}-trigger`,
       'aria-controls': `igc-${uid}-list`,
-      'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
       'aria-expanded': visible ? 'true' : 'false',
@@ -116,7 +115,6 @@ class RootSelect extends Component {
       id: `igc-${uid}-list`,
       role: 'listbox',
       'aria-label': 'List of options',
-      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 
@@ -128,7 +126,6 @@ class RootSelect extends Component {
       id: `igc-${uid}-list`,
       role: 'listbox',
       'aria-label': getI18nText('optionsList'),
-      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 

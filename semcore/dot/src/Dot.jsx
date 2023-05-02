@@ -96,7 +96,6 @@ class Dot extends Component {
               aria-live={hasLabel && !hidden ? 'polite' : undefined}
               aria-label={ariaLabel}
               aria-labelledby={ariaLabelledBy}
-              aria-flowto={`igc-${uid}-dot`}
             >
               <Children />
             </SA11yAlert>
