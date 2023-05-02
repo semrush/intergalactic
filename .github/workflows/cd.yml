@@ -178,6 +178,8 @@ jobs:
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: pnpm coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2
   publish-components:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
