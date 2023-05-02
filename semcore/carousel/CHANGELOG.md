@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.34] - 2023-05-02
+
+### Fixed
+
+- Fixed image display when specifying an index other than 0.
+
 ## [2.2.33] - 2023-04-26
 
 ### Fixed
