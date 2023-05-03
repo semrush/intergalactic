@@ -55,7 +55,7 @@ const Demo = () => {
     <Flex flexWrap className="container">
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Keyword" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Keyword
           </Title>
         </Tooltip>
@@ -63,7 +63,15 @@ const Demo = () => {
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="blue-400"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             <AnimatedNumber value={42} formatValue={Math.round} delay={300} />
           </Text>
           <Text size={100} color="gray-500" tag="p">
@@ -73,7 +81,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Traffic
           </Title>
         </Tooltip>
@@ -81,7 +89,15 @@ const Demo = () => {
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="blue-400"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             <AnimatedNumber value={24765} formatValue={Math.round} delay={300} />
           </Text>
           <Text size={100} color="gray-500" tag="p">
@@ -91,7 +107,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Traffic cost" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Traffic cost
           </Title>
         </Tooltip>
@@ -99,7 +115,15 @@ const Demo = () => {
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="blue-400"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             <AnimatedNumber value={908} formatValue={Math.round} delay={300} />
           </Text>
           <Text size={100} color="green-500" tag="p">
@@ -109,7 +133,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Non-branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Non-branded traffic
           </Title>
         </Tooltip>
@@ -117,7 +141,14 @@ const Demo = () => {
           all time
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
           </Text>
           <Text size={100} color="green-500" mr={2} tag="p">
