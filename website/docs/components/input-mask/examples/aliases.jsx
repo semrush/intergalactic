@@ -21,7 +21,7 @@ export default () => {
           title="4-digit number"
         />
       </InputMask>
-      <Text size="100" color="#6C6E79" id="aliases-example-hint">
+      <Text size="100" color="gray-500" id="aliases-example-hint">
         Write any 4 digits and after
       </Text>
     </Flex>

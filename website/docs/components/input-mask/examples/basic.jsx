@@ -18,7 +18,7 @@ export default () => {
           aria-describedby="basic-example-hint"
         />
       </InputMask>
-      <Text size="100" color="#6C6E79" id="basic-example-hint">
+      <Text size="100" color="gray-500" id="basic-example-hint">
         Please enter the 16-digit number of your debit card.
       </Text>
     </Flex>
