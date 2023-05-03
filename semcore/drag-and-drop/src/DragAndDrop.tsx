@@ -4,6 +4,7 @@ import createComponent, { sstyled, Component, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from './style/drag-and-drop.shadow.css';
 
@@ -286,7 +287,7 @@ const Draggable = (props) => {
     [children, props],
   );
 
-  React.useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     attach({ index, children: resolvedChildren, node: ref.current, id, draggingAllowed: !noDrag });
     return () => detach(index);
   }, [index, resolvedChildren, attach, detach, id]);

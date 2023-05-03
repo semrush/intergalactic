@@ -2,9 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.2.18] - 2023-04-24
+## [1.2.19] - 2023-05-03
 
-## [1.2.17] - 2023-04-17
+### Changed
+
+- During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+## [1.2.18] - 2023-04-24
 
 ### Changed
 

@@ -1,3 +1,30 @@
+## [13.26.0] - 2023-05-03
+
+### @semcore/animation
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/counter
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/drag-and-drop
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/ellipsis
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/scroll-area
+
+- **Changed** Added required `role` and `aria` attributes for better screen readers support.
+- **Changed** Scroll area container are now focusable by keyboard.
+
+### @semcore/utils
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
 ## [13.25.2] - 2023-05-02
 
 ### @semcore/animation

@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
 import { useForkRef } from '@semcore/utils/lib/ref';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
@@ -15,7 +16,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     if (props.visible) innerRef.current.style.height = 'auto';
     if (!props.visible) innerRef.current.style.height = 0 + 'px';
   }, []);
-  useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     if (!innerRef.current) return;
     if (props.visible) innerRef.current.style.height = 0 + 'px';
     if (!props.visible) innerRef.current.style.height = innerRef.current.scrollHeight + 'px';
