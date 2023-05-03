@@ -4,63 +4,63 @@ fileSource: bottom-sheet
 tabName: Design
 ---
 
-@## Description
+## Description
 
-BottomSheet is a mobile component containing additional content. It is always attached to the bottom of the screen. Use this component instead of these desktop components: tooltip, dropdown, dropdown-menu and such.
+BottomSheet is a mobile component with additional content inside. It's always attached to the bottom of the screen. On desktop, use this component instead of a tooltip, dropdown, dropdown-menu, and similar components.
 
-> Use it wisely and make sure that it improves the user experience rather than adding unnecessary complexity.
+> Use it wisely—make sure that it improves the user experience and doesn't add unnecessary complexity.
 
 Use the bottom sheet in the following scenarios:
 
-- A set of quick actions related to the current screen. For example, to allow users to share or save a piece of content without leaving the current screen.
-- Any kind of settings, allowing users to easily access and modify preferences.
-- A list of filters or sorting options for a list or grid of items.
-- To show hints and additional information to the user (text, formatted text with lists, links, buttons and small images).
+- Show users a set of quick actions related to the current screen. For example, to allow sharing or saving a piece of content without leaving the current screen.
+- Provide easy access to settings for modifying preferences.
+- Display a list of filters or sorting options (a list or grid of items).
+- Show hints and additional information to the user (text, formatted text with lists, links, buttons, and small images).
 
-Do not use the bottom sheet:
+Don't use the bottom sheet:
 
-- For complex information (data widgets, graphs, tables, etc.)
+- For complex information (data widgets, graphs, tables, etc.).
 - To notify a user to take action.
-- Instead of sidepanel, notisbabble, confirming modal windows or regular modal windows.
+- Instead of a side panel, notice bubble, confirming modal windows, or regular modal windows.
 
-@## Component composition
+## Component composition
 
 ![](static/composition.png)
 
-@## Paddings and margins
+## Padding and margins
 
-The content area has default padding — 20px *32px.
+The content area has a default padding of 20px*32px:
 
 ![](static/paddings.png)
 
-The ResizeHandle has defaul padding — 12px.
+The ResizeHandle has a defaul padding of 12px:
 
 ![](static/handle_paddings.png)
 
-Recommendation for content margins for variant with text.
+Recommendation for content margins for the variant with text:
 
 ![](static/margin_example.png)
 
-@## Scaling and adaptation
+## Scaling and adaptation
 
-On mobile devices, bottom sheets extend across the width of a screen and are elevated above the primary content. Usually it works for all mobile devices and tablets from 824px (e.g. iPad pro) and smaller. Sheet should scale to fit larger screens in one of two ways:
+On mobile devices, bottom sheets extend across the width of a screen and are elevated above the primary content. Usually it works for all mobile devices and tablets from 824px—such as the iPad Pro—and smaller. The bottom sheet should scale to fit larger screens in one of two ways:
 
 - Setting a maximum width.
-- Switching to another component (e.g. side panel).
+- Switching to another component such as the side panel.
 
-@## Variations
+## Variations
 
-There are two variants of bottom sheets — fixed and resizable. The user can expand the bottom sheet to take up most of the viewing area by swiping or dragging it up.
+There are two variants of bottom sheets: fixed and resizable. The user can expand the bottom sheet to take up most of the viewing area by swiping or dragging it up.
 
 **Fixed**
 
-Fixed bottom sheet is not resizable by the user and auto sizes to fit the content.
+The user can't resize the fixed bottom sheet. It resizes automatically to fit the content.
 
 ![](static/fixed_sheet.png)
 
 **Resizable**
 
-Resizable bottom sheets allow the user to drag or swipe up to reveal more. The expanded bottom sheet leaves at least 48px uncovered at the top of the screen to allow for an area to tap to close.
+The user can drag or swipe up on the resizable bottom sheet to reveal more content. The expanded bottom sheet leaves at least 48px uncovered at the top of the screen. Tapping this area closes the bottom sheet.
 
 ![](static/resizable_sheet.png)
 
@@ -68,11 +68,11 @@ Resizable bottom sheets allow the user to drag or swipe up to reveal more. The e
 
 Bottom sheets can be closed by swiping down on the bottom sheet or by using the Close button inside the component. The component can also be closed by tapping outside the bottom sheet.
 
-@## Usage
+## Usage
 
-We recommend to use button instead of link. The main action should be always the primary button. Other actions could be secondary or tertiary buttons depending on their priority.
+We recommend using a button instead of a link. The main action should always be the primary button. Other actions could be secondary or tertiary buttons depending on their priority.
 
->If you use link for a main action, make sure you have expanded the touch target area.
+>If you use a link for the main action, be sure to expand the touch target area.
 
 ![](static/link_button.png)
 
@@ -80,7 +80,7 @@ Try to avoid placing buttons in more than two rows.
 
 ![](static/three_button.png)
 
-The height of the bottom sheet should be matched with the height of the content.
+The height of the bottom sheet should match the height of the content.
 
 ![](static/height_of_content.png)
 
