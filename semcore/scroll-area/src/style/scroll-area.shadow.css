@@ -119,6 +119,7 @@ SContainer {
   box-sizing: content-box;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  outline: none;
 
   /* FF */
   scrollbar-width: none;
@@ -129,4 +130,8 @@ SContainer {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+SContainer[keyboardFocused]:focus {
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }

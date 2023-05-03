@@ -39,7 +39,14 @@ class ScrollBarRoot extends Component {
     return getNodeByRef(this.asProps.container);
   }
 
-  refBar = (node) => (this.$bar = findDOMNode(node));
+  refBar = (node) => {
+    const domNode = findDOMNode(node);
+    this.$bar = domNode;
+    const orientation = this.getOrientation();
+    const { horizontalBarRef, verticalBarRef } = this.asProps;
+    if (orientation === 'horizontal') horizontalBarRef.current = domNode;
+    if (orientation === 'vertical') verticalBarRef.current = domNode;
+  };
   refSlider = (node) => (this.$slider = findDOMNode(node));
 
   calculateVisibleScroll() {
@@ -250,7 +257,7 @@ class ScrollBarRoot extends Component {
 
   render() {
     const SScrollBar = Root;
-    const { styles } = this.asProps;
+    const { styles, uid } = this.asProps;
     const { visibleScroll } = this.state;
 
     if (!visibleScroll) {
@@ -260,7 +267,10 @@ class ScrollBarRoot extends Component {
     return sstyled(styles)(
       <SScrollBar
         render={Box}
+        role="scrollbar"
         ref={this.refBar}
+        aria-controls={`igc-${uid}-scroll-container`}
+        aria-orientation={this.getOrientation()}
         onMouseDown={this.handleMouseDownBar}
         orientation={this.getOrientation()}
       />,
