@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
-import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import useEnhancedEffect from '../use/useEnhancedEffect';
 
 export interface IWithAnimatedSizeEnhanceProps {
   animationsDisabled?: boolean;
