@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 export interface IWithAnimatedSizeEnhanceProps {
   animationsDisabled?: boolean;
@@ -24,7 +25,7 @@ function animatedSizeEnhance({
 
     prevPropsRef.current = props;
 
-    React.useLayoutEffect(() => {
+    useEnhancedEffect(() => {
       if (props.animationsDisabled) return;
       if (
         __animatedEnhanceInstanceId !== undefined &&

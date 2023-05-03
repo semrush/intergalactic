@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 type ReactFCProps<C extends React.FC> = C extends React.FC<infer Props> ? Props : {};
 type ReactComponentProps<C extends React.ComponentClass> = C extends React.ComponentClass<
@@ -70,7 +71,7 @@ export const AnimatedNumber = <
     }
     animationRef.current.animationFrame = requestAnimationFrame(handleNextAnimationFrame);
   }, [easing, formatValue, duration, delay]);
-  React.useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     ref.current.innerText = formatValue(animationRef.current.fromValue);
     animationRef.current.toValue = value;
     animationRef.current.animationStart = Date.now();

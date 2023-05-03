@@ -1,6 +1,7 @@
 import { sstyled } from '@semcore/core';
 import React from 'react';
 import { useForkRef } from './ref';
+import useEnhancedEffect from './use/useEnhancedEffect';
 
 type Tokens = { [tokenName: string]: string };
 export type ThemeProviderProps = {
@@ -18,7 +19,7 @@ export const useContextTheme = (ref: React.RefObject<HTMLElement>, available?: b
       .map(([key, value]) => `${key}-${value}`)
       .join('/');
   }, [tokens]);
-  React.useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     if (available !== undefined && !available) return;
     if (!ref.current || !ref.current.style || !ref.current.style.setProperty) return;
     for (const token in tokens) {

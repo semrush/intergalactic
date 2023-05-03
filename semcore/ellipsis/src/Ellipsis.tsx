@@ -1,8 +1,9 @@
-import React, { RefObject, useRef, useMemo, useState, useLayoutEffect } from 'react';
+import React, { RefObject, useRef, useMemo, useState } from 'react';
 import createComponent, { Component, sstyled } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
 import { Box } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
@@ -175,7 +176,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   });
   const blockWidth = useResizeObserver(resizeElement, containerRect).width;
 
-  useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     const dateSpan = document.createElement('temporary-block');
     dateSpan.setAttribute('style', `fontSize: ${dimension.fontSize}px`);
     dateSpan.innerHTML = 'a';
