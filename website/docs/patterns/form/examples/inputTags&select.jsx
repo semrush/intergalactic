@@ -95,19 +95,17 @@ const Demo = () => {
               Emails
               <Counter ml={1} size="l">{`${tags.length}/5`}</Counter>
             </Text>
-            <Tooltip
-              interaction="none"
-              visible={Boolean(errors['emails'])}
-              placement="right"
-              theme="warning"
-              title={errors['emails']?.message}
-              w="100%"
-            >
+            <Tooltip interaction="none" placement="right" theme="warning" w="100%">
+              <Tooltip.Popper id="form-emails-error" visible={Boolean(errors['emails'])}>
+                {errors['emails']?.message}
+              </Tooltip.Popper>
               <InputTags
                 size="l"
                 state={errors['emails'] ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
+                aria-invalid={Boolean(errors['emails'])}
+                aria-errormessage={errors['emails'] ? 'form-emails-error' : undefined}
               >
                 {tags.map((tag, idx) => (
                   <InputTags.Tag key={tag + idx} use="primary" theme="asphalt">
