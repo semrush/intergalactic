@@ -32,13 +32,15 @@ class Demo extends React.Component {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
-                        <Tooltip
-                          title={meta.error}
-                          visible={showError}
-                          theme="warning"
-                          placement="top"
-                          id="form-frist-name-error"
-                        >
+                        <Tooltip>
+                          <Tooltip.Popper
+                            theme="warning"
+                            placement="top"
+                            id="form-first-name-error"
+                            visible={showError}
+                          >
+                            {meta.error}
+                          </Tooltip.Popper>
                           <Input
                             size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
@@ -46,8 +48,8 @@ class Demo extends React.Component {
                             <Input.Value
                               placeholder="First name"
                               {...input}
-                              aria-invalud={meta.touched && meta.invalid}
-                              aria-errormessage={showError ? 'form-frist-name-error' : undefined}
+                              aria-invalid={meta.touched && meta.invalid}
+                              aria-errormessage={showError ? 'form-first-name-error' : undefined}
                             />
                           </Input>
                         </Tooltip>
@@ -59,13 +61,15 @@ class Demo extends React.Component {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
-                        <Tooltip
-                          title={meta.error}
-                          visible={showError}
-                          theme="warning"
-                          placement="top"
-                          id="form-last-name-error"
-                        >
+                        <Tooltip>
+                          <Tooltip.Popper
+                            theme="warning"
+                            placement="top"
+                            id="form-last-name-error"
+                            visible={showError}
+                          >
+                            {meta.error}
+                          </Tooltip.Popper>
                           <Input
                             ml={3}
                             size="l"
@@ -74,7 +78,7 @@ class Demo extends React.Component {
                             <Input.Value
                               placeholder="Last name"
                               {...input}
-                              aria-invalud={meta.touched && meta.invalid}
+                              aria-invalid={meta.touched && meta.invalid}
                               aria-errormessage={showError ? 'form-last-name-error' : undefined}
                             />
                           </Input>
@@ -93,18 +97,20 @@ class Demo extends React.Component {
                     const showError = Boolean(meta.touched && meta.active && meta.error);
 
                     return (
-                      <Tooltip
-                        title={meta.error}
-                        visible={showError}
-                        id="form-email-error"
-                        theme="warning"
-                        placement="right"
-                      >
+                      <Tooltip>
+                        <Tooltip.Popper
+                          id="form-email-error"
+                          theme="warning"
+                          placement="right"
+                          visible={showError}
+                        >
+                          {meta.error}
+                        </Tooltip.Popper>
                         <Input size="l" state={meta.touched && meta.invalid ? 'invalid' : 'normal'}>
                           <Input.Value
                             placeholder="Email"
                             {...input}
-                            aria-invalud={meta.touched && meta.invalid}
+                            aria-invalid={meta.touched && meta.invalid}
                             aria-errormessage={showError ? 'form-email-error' : undefined}
                           />
                         </Input>
