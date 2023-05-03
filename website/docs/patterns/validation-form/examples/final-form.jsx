@@ -29,18 +29,26 @@ class Demo extends React.Component {
                 <Flex justifyContent="space-between">
                   <Field name="first" validate={required}>
                     {({ input, meta }) => {
+                      const showError = Boolean(meta.touched && meta.active && meta.error);
+
                       return (
                         <Tooltip
                           title={meta.error}
-                          visible={Boolean(meta.touched && meta.active && meta.error)}
+                          visible={showError}
                           theme="warning"
                           placement="top"
+                          id="form-frist-name-error"
                         >
                           <Input
                             size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
-                            <Input.Value placeholder="First name" {...input} />
+                            <Input.Value
+                              placeholder="First name"
+                              {...input}
+                              aria-invalud={meta.touched && meta.invalid}
+                              aria-errormessage={showError ? 'form-frist-name-error' : undefined}
+                            />
                           </Input>
                         </Tooltip>
                       );
@@ -48,19 +56,27 @@ class Demo extends React.Component {
                   </Field>
                   <Field name="last" validate={required}>
                     {({ input, meta }) => {
+                      const showError = Boolean(meta.touched && meta.active && meta.error);
+
                       return (
                         <Tooltip
                           title={meta.error}
-                          visible={Boolean(meta.touched && meta.active && meta.error)}
+                          visible={showError}
                           theme="warning"
                           placement="top"
+                          id="form-last-name-error"
                         >
                           <Input
                             ml={3}
                             size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
-                            <Input.Value placeholder="Last name" {...input} />
+                            <Input.Value
+                              placeholder="Last name"
+                              {...input}
+                              aria-invalud={meta.touched && meta.invalid}
+                              aria-errormessage={showError ? 'form-last-name-error' : undefined}
+                            />
                           </Input>
                         </Tooltip>
                       );
@@ -73,18 +89,28 @@ class Demo extends React.Component {
                   Your email
                 </Text>
                 <Field name="email" validate={email}>
-                  {({ input, meta }) => (
-                    <Tooltip
-                      title={meta.error}
-                      visible={Boolean(meta.touched && meta.active && meta.error)}
-                      theme="warning"
-                      placement="right"
-                    >
-                      <Input size="l" state={meta.touched && meta.invalid ? 'invalid' : 'normal'}>
-                        <Input.Value placeholder="Email" {...input} />
-                      </Input>
-                    </Tooltip>
-                  )}
+                  {({ input, meta }) => {
+                    const showError = Boolean(meta.touched && meta.active && meta.error);
+
+                    return (
+                      <Tooltip
+                        title={meta.error}
+                        visible={showError}
+                        id="form-email-error"
+                        theme="warning"
+                        placement="right"
+                      >
+                        <Input size="l" state={meta.touched && meta.invalid ? 'invalid' : 'normal'}>
+                          <Input.Value
+                            placeholder="Email"
+                            {...input}
+                            aria-invalud={meta.touched && meta.invalid}
+                            aria-errormessage={showError ? 'form-email-error' : undefined}
+                          />
+                        </Input>
+                      </Tooltip>
+                    );
+                  }}
                 </Field>
               </Flex>
               <Button ml="112px" size="l" use="primary" theme="success" type="submit">
