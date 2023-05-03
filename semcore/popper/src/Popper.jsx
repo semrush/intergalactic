@@ -237,6 +237,7 @@ class Popper extends Component {
 
   destroyPopper() {
     clearTimeout(this.timer);
+    clearTimeout(this.timerMultiTrigger);
 
     if (this.observer) {
       this.observer.disconnect();
@@ -301,13 +302,17 @@ class Popper extends Component {
   bindHandlerChangeVisibleWithTimer = (visible, component) => (e) => {
     const currentTarget = e?.currentTarget;
     this.handlerChangeVisibleWithTimer(visible, e, () => {
-      if (visible && component === 'trigger' && this.popper.current && currentTarget) {
-        if (this.popper.current.state.elements.reference !== currentTarget) {
-          this.popper.current.state.elements.reference = currentTarget;
-          // for update
-          this.popper.current.setOptions({});
+      clearTimeout(this.timerMultiTrigger);
+      // instance popper is not here yet because the popperRef did not have time to come
+      this.timerMultiTrigger = setTimeout(() => {
+        if (visible && component === 'trigger' && this.popper.current && currentTarget) {
+          if (this.popper.current.state.elements.reference !== currentTarget) {
+            this.popper.current.state.elements.reference = currentTarget;
+            // for update
+            this.popper.current.setOptions({});
+          }
         }
-      }
+      }, 0);
     });
   };
 
