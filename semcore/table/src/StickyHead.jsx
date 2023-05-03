@@ -114,7 +114,7 @@ function calculateWidthTh(nodeTable) {
     const listTdInsideTr = tr.getElementsByTagName('th');
     const amountTd = listTdInsideTr.length;
 
-    for (let indexTd = 0; indexTd < amountTd;) {
+    for (let indexTd = 0; indexTd < amountTd; ) {
       const th = listTdInsideTr[indexTd];
       if (listWidthTh[firstRowIndex][indexTd] === undefined) {
         listWidthTh[firstRowIndex][indexTd] = getOffsetWidth(th);
@@ -342,8 +342,8 @@ function StickyHeadInner(props, ref) {
 
   const getScrollPage = throttle(setPositionContainer);
 
-  let masterScrollActive = false;
-  let slaveScrollActive = false;
+  let mainScrollActive = false;
+  let controlledScrollActive = false;
 
   const handleScroll = throttle((e) => {
     if (!refScrollContainer || !container) return false;
@@ -351,19 +351,19 @@ function StickyHeadInner(props, ref) {
     const { target } = e;
     const { scrollLeft } = target;
 
-    masterScrollActive = [...target.classList].includes('_master-scroll');
-    slaveScrollActive = !masterScrollActive;
+    mainScrollActive = [...target.classList].includes('_master-scroll');
+    controlledScrollActive = !mainScrollActive;
 
-    if (!slaveScrollActive) {
-      slaveScrollActive = true;
+    if (!controlledScrollActive) {
+      controlledScrollActive = true;
       container.scrollLeft = scrollLeft;
-      slaveScrollActive = false;
+      controlledScrollActive = false;
     }
 
-    if (!masterScrollActive) {
-      masterScrollActive = true;
+    if (!mainScrollActive) {
+      mainScrollActive = true;
       refScrollContainer.scrollLeft = scrollLeft;
-      masterScrollActive = false;
+      mainScrollActive = false;
     }
   });
 
