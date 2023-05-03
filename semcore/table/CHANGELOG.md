@@ -347,7 +347,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Поправили работу скролов в режиме `master <-> slave`
+- Поправили работу скролов в режиме `main <-> controlled`
 
 ## [1.3.0] - 2019-12-12
 

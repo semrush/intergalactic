@@ -21,21 +21,21 @@ const Block = styled.div`
 `;
 
 class Demo extends React.PureComponent {
-  handleScrollMaster = (e) => {
-    this.slave.scrollTop = e.currentTarget.scrollTop;
+  handleMainScroll = (e) => {
+    this.controlled.scrollTop = e.currentTarget.scrollTop;
   };
 
   componentDidMount() {
-    this.slave.scrollTop = 0;
+    this.controlled.scrollTop = 0;
   }
 
   render() {
     return (
       <Flex>
         <Box style={{ position: 'relative' }}>
-          <h2>Master</h2>
+          <h2>Main</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container onScroll={this.handleScrollMaster}>
+            <ScrollArea.Container onScroll={this.handleMainScroll}>
               {[...new Array(100)].map((_, index) => (
                 <Block ind={index} key={index} />
               ))}
@@ -45,9 +45,9 @@ class Demo extends React.PureComponent {
         </Box>
 
         <Box>
-          <h2>Slave</h2>
+          <h2>Controlled</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container ref={(node) => (this.slave = node)}>
+            <ScrollArea.Container ref={(node) => (this.controlled = node)}>
               {[...new Array(100)].map((_, index) => (
                 <Block ind={index} key={index} />
               ))}
