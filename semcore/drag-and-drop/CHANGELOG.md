@@ -14,12 +14,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/grid` [4.3.20 ~> 4.3.21]).
 
-## [2.4.34] - 2023-04-24
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/card` [4.3.11 ~> 4.3.12], `@semcore/utils` [3.50.0 ~> 3.50.3]).
-
 ## [2.4.31] - 2023-04-03
 
 ### Fixed
