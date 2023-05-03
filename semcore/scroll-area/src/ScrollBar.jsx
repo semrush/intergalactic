@@ -44,8 +44,8 @@ class ScrollBarRoot extends Component {
     this.$bar = domNode;
     const orientation = this.getOrientation();
     const { horizontalBarRef, verticalBarRef } = this.asProps;
-    if (orientation === 'horizontal') horizontalBarRef.current = domNode;
-    if (orientation === 'vertical') verticalBarRef.current = domNode;
+    if (orientation === 'horizontal' && horizontalBarRef) horizontalBarRef.current = domNode;
+    if (orientation === 'vertical' && verticalBarRef) verticalBarRef.current = domNode;
   };
   refSlider = (node) => (this.$slider = findDOMNode(node));
 

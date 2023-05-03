@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.1] - 2023-05-03
+
+### Fixed
+
+- `<ScrollArea.Bar />` component might break app in some rare use cases.
+
 ## [4.3.0] - 2023-05-03
 
 ### Changed
