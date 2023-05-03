@@ -12,19 +12,9 @@ const Block = styled.div`
   width: 120px;
   height: 120px;
   border: 1px solid black;
-  background-color: ${() => getRandomColor()};
 `;
 
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
-const list = [...new Array(4)];
+const list = [...new Array(6)];
 const renderRow = ({ key, index, style }) => {
   return (
     <Block key={key} style={style}>
