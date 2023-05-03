@@ -2,9 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.2.20] - 2023-04-24
+## [4.3.0] - 2023-05-03
 
-## [4.2.19] - 2023-04-17
+### Changed
+
+- Added required `role` and `aria` attributes for better screen readers support.
+- Scroll area container are now focusable by keyboard.
+
+## [4.2.20] - 2023-04-24
 
 ### Changed
 

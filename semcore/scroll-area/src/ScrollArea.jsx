@@ -9,6 +9,8 @@ import { getNodeByRef } from '@semcore/utils/lib/ref';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import BarRoot from './ScrollBar';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/scroll-area.shadow.css';
 
@@ -28,6 +30,7 @@ class ScrollAreaRoot extends Component {
   static displayName = 'ScrollArea';
 
   static style = style;
+  static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = () => ({
     container: React.createRef(),
@@ -36,6 +39,8 @@ class ScrollAreaRoot extends Component {
 
   $wrapper = null;
   observer = null;
+  horizontalBarRef = React.createRef();
+  verticalBarRef = React.createRef();
 
   get $container() {
     return getNodeByRef(this.asProps.container);
@@ -46,8 +51,8 @@ class ScrollAreaRoot extends Component {
   }
 
   state = {
-    shadowVertical: false,
     shadowHorizontal: false,
+    shadowVertical: false,
   };
 
   constructor(props) {
@@ -96,9 +101,27 @@ class ScrollAreaRoot extends Component {
     this.setShadowContainer();
   });
 
+  updateBarsAria = trottle(() => {
+    // updating DOM directly to avoid react dom rerendering and reconciliation
+    if (!this.$container) return;
+    const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
+      this.$container;
+    const maxScrollRight = scrollWidth - clientWidth;
+    const maxScrollBottom = scrollHeight - clientHeight;
+    if (this.horizontalBarRef.current) {
+      this.horizontalBarRef.current.setAttribute('aria-valuenow', Math.floor(scrollLeft));
+      this.horizontalBarRef.current.setAttribute('aria-valuemax', maxScrollRight);
+    }
+    if (this.verticalBarRef.current) {
+      this.verticalBarRef.current.setAttribute('aria-valuenow', Math.floor(scrollTop));
+      this.verticalBarRef.current.setAttribute('aria-valuemax', maxScrollBottom);
+    }
+  });
+
   handleScrollContainer = trottle(() => {
     if (!this.$container) return;
     this.setShadowContainer();
+    this.updateBarsAria();
   });
 
   // FIX Chrome bug, when focus state on hide control
@@ -141,8 +164,9 @@ class ScrollAreaRoot extends Component {
   };
 
   getContainerProps() {
-    const { container, inner, onScroll } = this.asProps;
+    const { container, inner, onScroll, uid } = this.asProps;
     return {
+      id: `igc-${uid}-scroll-container`,
       ref: container,
       $refInner: inner,
       onScroll: callAllEventHandlers(onScroll, this.handleScrollContainer),
@@ -150,15 +174,19 @@ class ScrollAreaRoot extends Component {
   }
 
   getBarProps() {
-    const { container, orientation } = this.asProps;
+    const { container, orientation, uid } = this.asProps;
     return {
       container,
       orientation,
+      uid,
+      horizontalBarRef: this.horizontalBarRef,
+      verticalBarRef: this.verticalBarRef,
     };
   }
 
   componentDidMount() {
     this.calculate();
+    this.updateBarsAria();
     if (this.$inner) {
       this.observer.observe(this.$inner);
     }
@@ -215,13 +243,15 @@ function ContainerRoot(props) {
   const SContainer = Root;
   const { Children, styles, $refInner } = props;
   return sstyled(styles)(
-    <SContainer render={Box}>
+    <SContainer render={Box} tabIndex={0}>
       <div ref={$refInner}>
         <Children />
       </div>
     </SContainer>,
   );
 }
+
+ContainerRoot.enhance = [keyboardFocusEnhance()];
 
 export const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
