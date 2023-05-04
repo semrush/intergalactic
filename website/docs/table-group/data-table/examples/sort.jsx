@@ -7,8 +7,8 @@ export default () => {
     () =>
       [...data].sort((aRow, bRow) => {
         const [prop, sortDirection] = sortBy;
-        const a = Number.parseFloat(aRow[prop].replaceAll('$', '').replaceAll(',', ''));
-        const b = Number.parseFloat(bRow[prop].replaceAll('$', '').replaceAll(',', ''));
+        const a = Number.parseFloat(aRow[prop].replace(/[$,\s]/g, ''));
+        const b = Number.parseFloat(bRow[prop].replace(/[$,\s]/g, ''));
         if (a === b) return 0;
         if (sortDirection === 'asc') return a - b;
         else return b - a;
