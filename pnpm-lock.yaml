@@ -1570,13 +1570,13 @@ importers:
     specifiers:
       '@semcore/accordion': 4.3.21
       '@semcore/animation': 1.10.7
-      '@semcore/badge': 3.3.21
+      '@semcore/badge': 3.3.22
       '@semcore/base-trigger': 3.5.17
       '@semcore/breadcrumbs': 4.4.29
       '@semcore/breakpoints': 1.2.27
       '@semcore/button': 4.3.22
       '@semcore/card': 4.3.14
-      '@semcore/carousel': 2.2.35
+      '@semcore/carousel': 2.2.36
       '@semcore/checkbox': 6.4.14
       '@semcore/color-picker': 1.4.35
       '@semcore/continuous-delivery': '*'
@@ -1587,7 +1587,7 @@ importers:
       '@semcore/date-picker': 3.6.38
       '@semcore/divider': 3.2.21
       '@semcore/dot': 4.2.26
-      '@semcore/drag-and-drop': 2.4.36
+      '@semcore/drag-and-drop': 2.4.37
       '@semcore/dropdown': 3.4.27
       '@semcore/dropdown-menu': 3.6.33
       '@semcore/ellipsis': 1.2.19
@@ -1617,7 +1617,7 @@ importers:
       '@semcore/notice-global': 1.5.21
       '@semcore/outside-click': 2.5.26
       '@semcore/pagination': 3.5.34
-      '@semcore/pills': 4.4.21
+      '@semcore/pills': 4.4.22
       '@semcore/popper': 4.17.7
       '@semcore/portal': 2.6.3
       '@semcore/product-head': 3.4.2
@@ -1626,13 +1626,13 @@ importers:
       '@semcore/scroll-area': 4.3.1
       '@semcore/select': 3.6.10
       '@semcore/side-panel': 2.4.3
-      '@semcore/skeleton': 4.4.21
+      '@semcore/skeleton': 4.4.22
       '@semcore/slider': 3.4.13
       '@semcore/spin': 4.2.21
       '@semcore/spin-container': 6.2.26
       '@semcore/sticky': 2.4.21
       '@semcore/switch': 4.4.13
-      '@semcore/tab-line': 3.3.12
+      '@semcore/tab-line': 3.3.13
       '@semcore/tab-panel': 3.4.13
       '@semcore/tag': 4.4.32
       '@semcore/textarea': 4.3.21
