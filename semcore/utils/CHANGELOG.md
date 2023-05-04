@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.6] - 2023-05-04
+
+### Fixed
+
+- Made automatic focus return more friendly for modals and side panels.
+
 ## [3.50.5] - 2023-05-03
 
 ### Changed
