@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.17.7] - 2023-05-04
+
+### Fixed
+
+- Using `ignorePortalsStacking` on top-level poppers was causing application crash.
+
 ## [4.17.6] - 2023-05-03
 
 ### Fixed
