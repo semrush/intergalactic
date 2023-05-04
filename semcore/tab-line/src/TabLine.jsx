@@ -28,6 +28,7 @@ class TabLineRoot extends Component {
   };
   static enhance = [a11yEnhance(optionsA11yEnhance)];
   state = { animation: null };
+  prevValue = undefined;
   itemRefs = {};
   containerRef = React.createRef();
   animationStartTimeout = -1;
@@ -38,34 +39,42 @@ class TabLineRoot extends Component {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if (
-      prevProps.value !== null &&
-      this.props.value !== null &&
-      prevProps.value !== this.props.value
+      this.prevValue !== null &&
+      this.asProps.value !== null &&
+      this.prevValue !== this.asProps.value
     ) {
-      const fromNode = this.itemRefs[prevProps.value];
-      const toNode = this.itemRefs[this.props.value];
-      const containerNode = this.containerRef.current;
-
-      if (!fromNode || !toNode || !containerNode) return;
-      const containerRect = containerNode.getBoundingClientRect();
-      const fromRect = fromNode.getBoundingClientRect();
-      const toRect = toNode.getBoundingClientRect();
-      const animation = {
-        fromLeft: fromRect.x - containerRect.x,
-        fromWidth: fromRect.width,
-        toLeft: toRect.x - containerRect.x,
-        toWidth: toRect.width,
-        started: false,
-      };
-      this.setState({ animation });
-      clearTimeout(this.animationStartTimeout);
-      this.animationStartTimeout = setTimeout(this.handleAnimationStart, 0);
+      this.animate();
     }
+    this.prevValue = this.asProps.value;
+  }
+  componentDidMount() {
+    this.prevValue = this.asProps.value;
   }
   componentWillUnmount() {
     clearTimeout(this.animationStartTimeout);
+  }
+
+  animate() {
+    const fromNode = this.itemRefs[this.prevValue];
+    const toNode = this.itemRefs[this.asProps.value];
+    const containerNode = this.containerRef.current;
+
+    if (!fromNode || !toNode || !containerNode) return;
+    const containerRect = containerNode.getBoundingClientRect();
+    const fromRect = fromNode.getBoundingClientRect();
+    const toRect = toNode.getBoundingClientRect();
+    const animation = {
+      fromLeft: fromRect.x - containerRect.x,
+      fromWidth: fromRect.width,
+      toLeft: toRect.x - containerRect.x,
+      toWidth: toRect.width,
+      started: false,
+    };
+    this.setState({ animation });
+    clearTimeout(this.animationStartTimeout);
+    this.animationStartTimeout = setTimeout(this.handleAnimationStart, 0);
   }
 
   handleAnimationStart = () => {

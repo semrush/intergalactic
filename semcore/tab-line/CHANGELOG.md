@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.13] - 2023-05-04
+
+### Fixed
+
+- Fixed uncontrolled `<TabLine />` animation.
+
 ## [3.3.12] - 2023-05-03
 
 ### Changed
@@ -9,8 +15,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.20 ~> 4.7.21], `@semcore/neighbor-location` [3.1.26 ~> 3.1.27], `@semcore/utils` [3.50.4 ~> 3.50.5]).
 
 ## [3.3.11] - 2023-04-24
-
-## [3.3.10] - 2023-04-17
 
 ### Changed
 
