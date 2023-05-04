@@ -9,28 +9,28 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import style from './style/carousel.shadow.css';
 
 const position = {
-  getItemMin: function(items) {
+  getItemMin: function (items) {
     let indexItem = 0;
-    items.forEach(function(item, index) {
+    items.forEach(function (item, index) {
       if (item.position < items[indexItem].position) {
         indexItem = index;
       }
     });
     return indexItem;
   },
-  getItemMax: function(items) {
+  getItemMax: function (items) {
     let indexItem = 0;
-    items.forEach(function(item, index) {
+    items.forEach(function (item, index) {
       if (item.position > items[indexItem].position) {
         indexItem = index;
       }
     });
     return indexItem;
   },
-  getMin: function(items) {
+  getMin: function (items) {
     return items[position.getItemMin(items)].position;
   },
-  getMax: function(items) {
+  getMax: function (items) {
     return items[position.getItemMax(items)].position;
   },
 };
@@ -239,7 +239,7 @@ class CarouselRoot extends Component {
     if (items[activeItemIndex]) {
       items[
         activeItemIndex
-        ].node.style.transform = `translateX(${items[activeItemIndex].transform}%)`;
+      ].node.style.transform = `translateX(${items[activeItemIndex].transform}%)`;
     }
     this.transformContainer(this.transform);
     return { activeItemIndex };
@@ -363,7 +363,7 @@ const Container = (props) => {
   const SContainer = Root;
   const { styles, duration } = props;
 
-  return sstyled(styles)(<SContainer render={Box} role='list' use:duration={`${duration}ms`} />);
+  return sstyled(styles)(<SContainer render={Box} role="list" use:duration={`${duration}ms`} />);
 };
 
 const Item = (props) => {
@@ -380,29 +380,29 @@ const Item = (props) => {
   }, []);
 
   return sstyled(styles)(
-    <SItem render={Box} ref={refItem} role='listitem' id={`igc-${uid}-carousel-item-${index}`} />,
+    <SItem render={Box} ref={refItem} role="listitem" id={`igc-${uid}-carousel-item-${index}`} />,
   );
 };
 
 const Prev = (props) => {
   const { styles } = props;
   const SPrev = Root;
-  return sstyled(styles)(<SPrev render={Box} aria-hidden='true' />);
+  return sstyled(styles)(<SPrev render={Box} aria-hidden="true" />);
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive color='gray-300' aria-label='Visual navigation, previous' />,
+  children: <ChevronLeft interactive aria-label="Visual navigation, previous" />,
   top: 0,
 });
 
 const Next = (props) => {
   const { styles } = props;
   const SNext = Root;
-  return sstyled(styles)(<SNext render={Box} aria-hidden='true' />);
+  return sstyled(styles)(<SNext render={Box} aria-hidden="true" />);
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive color='gray-300' aria-label='Visual navigation, next' />,
+  children: <ChevronRight interactive aria-label="Visual navigation, next" />,
   top: 0,
 });
 
@@ -410,13 +410,13 @@ const Indicators = ({ items, styles, Children }) => {
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
-      <SIndicators render={Box} aria-hidden='true'>
+      <SIndicators render={Box} aria-hidden="true">
         <Children />
       </SIndicators>,
     );
   }
   return sstyled(styles)(
-    <SIndicators render={Box} aria-hidden='true'>
+    <SIndicators render={Box} aria-hidden="true">
       {items.map((item, index) => (
         <Carousel.Indicator key={index} {...item} />
       ))}

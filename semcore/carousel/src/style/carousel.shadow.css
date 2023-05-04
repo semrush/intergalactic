@@ -50,6 +50,7 @@ SNext {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 }
 
 SPrev {
