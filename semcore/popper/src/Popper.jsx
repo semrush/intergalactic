@@ -537,6 +537,7 @@ function PopperPopper(props) {
   const animationCtx = React.useContext(animationContext);
   React.useEffect(() => {
     if (!ignorePortalsStacking) return;
+    if (!animationCtx) return;
     const unsubscribeAnimationStart = animationCtx.onAnimationStart(handleAnimationStart);
     const unsubscribeAnimationEnd = animationCtx.onAnimationEnd(handleAnimationEnd);
     return () => {
