@@ -14,6 +14,7 @@ class RootPills extends Component {
     size: 'm',
     defaultValue: null,
   };
+  itemRefs = [];
 
   uncontrolledProps() {
     return {
@@ -25,10 +26,11 @@ class RootPills extends Component {
     this.handlers.value(value, e);
   };
 
-  getItemProps(props, i) {
+  getItemProps(props, index) {
     const { value, size, disabled } = this.asProps;
     return {
-      index: i,
+      ref: (node) => (this.itemRefs[index] = node),
+      index: index,
       size,
       disabled,
       selected: value === props.value,
@@ -36,12 +38,29 @@ class RootPills extends Component {
     };
   }
 
+  handleKeyDown = (event) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+    let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
+    if (focusedIndex === -1) return;
+
+    if (event.key === 'ArrowLeft') focusedIndex--;
+    if (event.key === 'ArrowRight') focusedIndex++;
+
+    this.itemRefs[focusedIndex]?.focus();
+  };
+
   render() {
     const SPills = Root;
     const { Children, styles, controlsLength, disabled } = this.asProps;
 
     return sstyled(styles)(
-      <SPills render={Box} role="radiogroup" aria-disabled={disabled}>
+      <SPills
+        render={Box}
+        role="radiogroup"
+        aria-disabled={disabled}
+        onKeyDown={this.handleKeyDown}
+      >
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
