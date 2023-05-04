@@ -46,9 +46,8 @@ If you can sort by column, then:
 
 1. Specify the `sortable` property on the column;
 2. Subscribe to `onSortChange`;
-3. Pass the `sort` property to the table itself.
-
-> In the example below, when you click on the sort icon, only the visual part changes, and the data itself is not sorted.
+3. Pass the `sort` property to the table.
+4. Sort data, provided to `data` property.
 
 @example sort
 
