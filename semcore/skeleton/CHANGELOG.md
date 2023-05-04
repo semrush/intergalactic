@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.22] - 2023-05-03
+
+### Changed
+
+- Hid skeleton for screen readers.
+
 ## [4.4.21] - 2023-05-03
 
 ### Changed
