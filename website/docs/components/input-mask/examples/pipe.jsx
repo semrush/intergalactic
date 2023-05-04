@@ -8,7 +8,7 @@ export default () => {
   const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
 
   return (
-    <Box wMax={225} p={8} m="0 auto" style={{ borderRadius: '12px', background: '#dee3e5' }}>
+    <Box wMax={225} p={8} m="0 auto" style={{ borderRadius: '12px', background: '#F4F5F9' }}>
       <Text
         tag="label"
         size={300}
@@ -29,7 +29,7 @@ export default () => {
         />
       </InputMask>
       <Flex alignItems="center" justifyContent="flex-end">
-        <Text tag="label" mr={1} size={100} htmlFor="expire_date">
+        <Text tag="label" mr={2} size={300} htmlFor="expire_date">
           Expire date
         </Text>
         <InputMask size="l" wMax={85}>
