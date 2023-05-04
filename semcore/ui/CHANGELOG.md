@@ -1,3 +1,17 @@
+## [13.27.0] - 2023-05-04
+
+### @semcore/popper
+
+- **Fixed** Using `ignorePortalsStacking` on top-level poppers was causing application crash.
+
+### @semcore/radio
+
+- **Added** Added the ability to set tag for `RadioGroup`.
+
+### @semcore/scroll-area
+
+- **Fixed** `<ScrollArea.Bar />` component might break app in some rare use cases.
+
 ## [13.26.0] - 2023-05-03
 
 ### @semcore/animation
