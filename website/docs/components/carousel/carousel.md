@@ -50,7 +50,7 @@ Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) is stret
 
 ### Example with dark background
 
-This example has the same styles as the example on the light background.
+This example has the same styles as the example on the light background, except color for buttons that change slides — it should change to `--icon-primary-invert`.
 
 ![](static/carousel-dark.png)
 
@@ -60,7 +60,7 @@ This example has the same styles as the example on the light background.
 
 Navigation buttons are always center aligned.
 
-| State    | Arrearance example                      | Styles                                               |
+| State    | Appearance example                      | Styles                                               |
 | -------- | --------------------------------------- | ---------------------------------------------------- |
 | Default  | ![](static/default.png)   | `color: var(--icon-primary-neutral)`              |
 | Hover    | ![](static/hover.png)  | `color: var(--icon-primary-neutral-hover-active)` |
@@ -70,12 +70,11 @@ Navigation buttons are always center aligned.
 
 ![](static/default-indicators.png)
 
-| State    | Styles                                                                                    |
-| -------- | ----------------------------------------------------------------------------------------- |
-| Default  | `color: var(--bg-secondary-neutral)`, `border: 1px solid var(--border-secondary)`       |
-| Hover    | `color: var(--bg-secondary-neutral-hover)`, `border: 1px solid var(--border-secondary)` |
-| Active   | `color: var(--bg-primary-muted)`                                                         |
-| Disabled | `opacity: var(--disabled-opacity)`                                                       |
+| State               | Styles                                                                                    |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| Default + Disabled  | `color: var(--icon-secondary-neutral)` + `opacity: var(--disabled-opacity)`    |
+| Hover               | `color: var(--icon-secondary-neutral)` + `calc(2 * var(--intergalactic-disabled-opacity, 0.3))`          |
+| Active              | `color: var(--icon-secondary-neutral)`                                                  |
 
 @## Animation
 
