@@ -1,6 +1,7 @@
-import React  from 'react';
-import TimePicker from '@semcore/time-picker';
-import { Text, Box } from '@semcore/typography';
+import React from 'react';
+import TimePicker from '@semcore/ui/time-picker';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   return (
