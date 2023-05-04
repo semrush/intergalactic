@@ -7,7 +7,7 @@ const Demo = () => {
   const [value, updateValue] = useState('+');
   return (
     <>
-      <Text tag='label' htmlFor='basic-example' size='300' mr={2}>
+      <Text tag='label' htmlFor='basic-example' size='200' mr={2}>
         Phone
       </Text>
       <Input w={180}>

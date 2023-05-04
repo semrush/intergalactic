@@ -11,7 +11,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="password-example" size="300">
+      <Text tag="label" htmlFor="password-example" size="200">
         Your password
       </Text>
       <Box mt={2}>

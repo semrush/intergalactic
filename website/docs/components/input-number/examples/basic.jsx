@@ -39,10 +39,10 @@ class Demo extends React.PureComponent {
     const { from, to } = this.state;
     return (
       <>
-        <Text tag="label" id="basic-example" size="300">
+        <Text tag="label" id="basic-example" size="200">
           Range label
         </Text>
-        <Flex w="20%">
+        <Flex w="20%" mt={2}>
           <NeighborLocation>
             <InputNumber>
               <InputNumber.Value

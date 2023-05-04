@@ -9,7 +9,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="submit-example" size="300">
+      <Text tag="label" htmlFor="submit-example" size="200">
         Input with submit button
       </Text>
       <Box mt={2}>

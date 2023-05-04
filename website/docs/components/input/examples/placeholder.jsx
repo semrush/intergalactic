@@ -6,7 +6,7 @@ import { Box } from '@semcore/ui/flex-box';
 const Demo = () => {
   return (
     <>
-      <Text tag="label" htmlFor="permanent-placeholder-l-example" size="400">
+      <Text tag="label" htmlFor="permanent-placeholder-l-example" size="300">
         Input with L size and permanent placeholder text
       </Text>
       <Box mt={2}>
@@ -23,7 +23,7 @@ const Demo = () => {
       </Box>
       <br />
       <br />
-      <Text tag="label" htmlFor="permanent-placeholder-m-example" size="300">
+      <Text tag="label" htmlFor="permanent-placeholder-m-example" size="200">
         Input with M size and permanent placeholder text
       </Text>
       <Box mt={2}>

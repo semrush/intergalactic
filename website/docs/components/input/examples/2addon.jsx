@@ -14,7 +14,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="2addon-example" size="300">
+      <Text tag="label" htmlFor="2addon-example" size="200">
         Your password
       </Text>
       <Box mt={2}>
@@ -36,7 +36,7 @@ const Demo = () => {
               onClick={() => setValue('')}
             />
           )}
-          <Input.Addon px={1}>
+          <Input.Addon px={2}>
             <Link>Forgot?</Link>
           </Input.Addon>
           <Input.Addon
