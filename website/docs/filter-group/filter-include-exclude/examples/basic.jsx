@@ -34,18 +34,16 @@ export default () => {
           Enter keywords separated by commas or one per line. For exact matches, enter your keyword
           with square brackets around it.
         </Text>
-        <Flex my={4}>
-          <RadioGroup defaultValue="1">
-            <Radio>
-              <Radio.Value value="1" />
-              <Radio.Text>All keywords</Radio.Text>
-            </Radio>
-            <Radio ml={6}>
-              <Radio.Value value="2" />
-              <Radio.Text>Any keywords</Radio.Text>
-            </Radio>
-          </RadioGroup>
-        </Flex>
+        <RadioGroup tag={Flex} my={4} defaultValue="1">
+          <Radio>
+            <Radio.Value value="1" />
+            <Radio.Text>All keywords</Radio.Text>
+          </Radio>
+          <Radio ml={6}>
+            <Radio.Value value="2" />
+            <Radio.Text>Any keywords</Radio.Text>
+          </Radio>
+        </RadioGroup>
         <Textarea value={value} onChange={changeValue} h={132} id='textarea'/>
         <Flex mt={5}>
           <Button use="primary" theme="info" onClick={applyFilters}>

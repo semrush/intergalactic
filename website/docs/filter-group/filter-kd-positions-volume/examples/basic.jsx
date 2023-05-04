@@ -8,7 +8,7 @@ import Divider from '@semcore/ui/divider';
 import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 
-const InputRange = ({ value: valueState, changeValue, ...other }) => {
+const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }) => {
   const minRange = 0;
   const maxRange = 100;
   let revertValues = false;
@@ -41,7 +41,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            placeholder="From"
+            aria-labelledby={ariaLabelledby}
+            placeholder='From'
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -52,7 +53,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            placeholder="To"
+            aria-labelledby={ariaLabelledby}
+            placeholder='To'
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -109,7 +111,7 @@ export default () => {
   return (
     <Select visible={visible} onVisibleChange={updateVisible} onChange={handleSelect}>
       <Select.Trigger
-        placeholder="KD %"
+        placeholder='KD %'
         active={visible}
         empty={!filters || displayValue === null}
         onClear={clearAll}
@@ -117,7 +119,7 @@ export default () => {
       >
         {`KD ${displayValue} %`}
       </Select.Trigger>
-      <Select.Popper w="224px" role='dialog' aria-label="Filters for page sorting" aria-modal='false'>
+      <Select.Popper w='224px' role='dialog' aria-label='Filters for page sorting' aria-modal='false'>
         <Select.List>
           {[
             ['80-100', 'Very hard'],
@@ -129,12 +131,12 @@ export default () => {
           ))}
         </Select.List>
         <Divider my={1} />
-        <Flex p="4px 8px 16px" direction="column">
-          <Text size={200} bold>
+        <Flex p='4px 8px 16px' direction='column'>
+          <Text id='custom-range' size={200} bold>
             Custom range
           </Text>
-          <InputRange value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
-          <Button use="primary" theme="info" w="100%" onClick={applyFilters}>
+          <InputRange ariaLabelledby='custom-range' value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
+          <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
             Apply
           </Button>
         </Flex>
