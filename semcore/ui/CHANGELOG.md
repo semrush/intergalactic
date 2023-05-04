@@ -1,3 +1,29 @@
+## [13.27.1] - 2023-05-04
+
+### @semcore/badge
+
+- **Changed** Made default `<Badge />` background more contrast.
+
+### @semcore/carousel
+
+- **Changed** Made `<Carousel />` arrows color more contrast.
+
+### @semcore/drag-and-drop
+
+- **Changed** Made draggable elements dragging pattern more contrast.
+
+### @semcore/pills
+
+- **Added** Allowed pills focus navigation with left and right keyboard arrows.
+
+### @semcore/skeleton
+
+- **Changed** Hid skeleton for screen readers.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed uncontrolled `<TabLine />` animation.
+
 ## [13.27.0] - 2023-05-04
 
 ### @semcore/popper
