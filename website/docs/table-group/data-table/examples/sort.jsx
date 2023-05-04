@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
 export default () => {
-  const [sort, setSort] = useState(['kd', 'desc']);
+  const [sortBy, setSortBy] = React.useState(['kd', 'desc']);
+  const sortedData = React.useMemo(
+    () =>
+      [...data].sort((aRow, bRow) => {
+        const [prop, sortDirection] = sortBy;
+        const a = Number.parseFloat(aRow[prop].replaceAll('$', '').replaceAll(',', ''));
+        const b = Number.parseFloat(bRow[prop].replaceAll('$', '').replaceAll(',', ''));
+        if (a === b) return 0;
+        if (sortDirection === 'asc') return a - b;
+        else return b - a;
+      }),
+    [sortBy],
+  );
+
   return (
-    /* [2][3] Set sort prop and subscribe the handler */
-    <DataTable data={data} sort={sort} onSortChange={setSort}>
+    <DataTable data={sortedData} sort={sortBy} onSortChange={setSortBy}>
       <DataTable.Head>
         <DataTable.Column name="keyword" children="Keyword" />
-        {/* [1] Set sortable prop */}
         <DataTable.Column name="kd" children="KD,%" sortable />
         <DataTable.Column name="cpc" children="CPC" sortable />
         <DataTable.Column name="vol" children="Vol." sortable />
