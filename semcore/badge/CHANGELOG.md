@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.22] - 2023-05-04
+
+### Changed
+
+- Made default `<Badge />` background more contrast.
+
 ## [3.3.21] - 2023-05-03
 
 ### Changed

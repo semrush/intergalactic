@@ -10,7 +10,7 @@ class RootBadge extends Component {
   static style = style;
   static defaultProps = {
     color: 'white',
-    bg: 'mist',
+    bg: 'gray-400',
   };
 
   render() {
