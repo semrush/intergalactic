@@ -71,7 +71,12 @@ export const useFocusLock = (
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
   const handleFocusIn = React.useCallback((event) => {
-    if (event.relatedTarget && !autoTriggerRef.current) autoTriggerRef.current = event.relatedTarget;
+    const focusCameFrom = event.relatedTarget;
+    setTimeout(() => {
+      if (!focusCameFrom) return;
+      if (autoTriggerRef.current) return;
+      autoTriggerRef.current = focusCameFrom;
+    }, 0);
     if (lastUserInteractionRef.current === 'mouse') return;
     Promise.resolve().then(() => {
       if (!trapRef.current) return;
@@ -86,11 +91,15 @@ export const useFocusLock = (
     [],
   );
   const returnFocus = React.useCallback(() => {
-    if (lastUserInteractionRef.current === 'mouse') return;
-    if (typeof returnFocusTo === 'object' && returnFocusTo?.current)
-      setTimeout(() => moveFocusInside(returnFocusTo?.current, trapRef.current!), 0);
+    const trapNode = trapRef.current!;
+    if (!focusInside(trapNode)) return;
+    if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
+      const returnFocusNode = returnFocusTo?.current;
+      setTimeout(() => moveFocusInside(returnFocusNode, trapNode), 0);
+    }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
-      setTimeout(() => moveFocusInside(autoTriggerRef.current, trapRef.current!), 0);
+      const autoTrigger = autoTriggerRef.current;
+      setTimeout(() => moveFocusInside(autoTrigger, trapNode), 0);
     }
   }, [returnFocusTo]);
   React.useEffect(() => {
