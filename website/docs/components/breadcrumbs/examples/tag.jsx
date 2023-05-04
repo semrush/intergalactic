@@ -1,12 +1,9 @@
 import React from 'react';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
-
-function Link(props) {
-  return <a {...props} />;
-}
+import Link from '@semcore/ui/link';
 
 export default () => (
-  <Breadcrumbs>
+  <Breadcrumbs tag="nav">
     <Breadcrumbs.Item tag="a" href="/">
       main page
     </Breadcrumbs.Item>

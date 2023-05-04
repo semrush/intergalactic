@@ -1246,6 +1246,8 @@
     "description": "Primary neutral icon.",
     "components": [
       "base-trigger",
+      "carousel",
+      "drag-and-drop",
       "format-text",
       "fullscreen-modal",
       "notice"
