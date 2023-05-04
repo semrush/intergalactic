@@ -1,3 +1,4 @@
+import React from 'react';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IBoxProps } from '@semcore/flex-box';
 import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
@@ -23,6 +24,10 @@ export interface IRadioProps extends IBoxProps {
 }
 
 export interface IRadioGroupProps {
+  /**
+   *  HTML tag name for the displayed item
+   */
+  tag?: React.ElementType | string;
   /** Radio group name */
   name?: string;
   /** Active default value */

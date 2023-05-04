@@ -7,7 +7,7 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 
-const InputRange = ({ value: valueState, changeValue, ...other }) => {
+const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }) => {
   const minRange = 1;
   const maxRange = 8;
   let revertValues = false;
@@ -40,7 +40,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            placeholder="From"
+            aria-labelledby={ariaLabelledby}
+            placeholder='From'
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -51,7 +52,8 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
-            placeholder="To"
+            aria-labelledby={ariaLabelledby}
+            placeholder='To'
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -98,19 +100,19 @@ export default () => {
   return (
     <Dropdown visible={visible} onVisibleChange={updateVisible}>
       <Dropdown.Trigger
-        placeholder="Competitive Density"
+        placeholder='Competitive Density'
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
       >
         {`Com.: ${displayValue}`}
       </Dropdown.Trigger>
-      <Dropdown.Popper w="224px" p="8px 8px 16px" role='dialog' aria-labelledby="title-CD" aria-modal='false'>
-        <Text size={200} bold id="title-CD">
+      <Dropdown.Popper w='224px' p='8px 8px 16px' role='dialog' aria-labelledby='title-CD' aria-modal='false'>
+        <Text id='title-CD' size={200} bold>
           Custom range
         </Text>
-        <InputRange value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
-        <Button use="primary" theme="info" w="100%" onClick={applyFilters}>
+        <InputRange ariaLabelledby='title-CD' value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
+        <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
           Apply
         </Button>
       </Dropdown.Popper>

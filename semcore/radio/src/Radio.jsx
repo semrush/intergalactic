@@ -35,7 +35,15 @@ class RadioGroupRoot extends Component {
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, tag: Tag } = this.asProps;
+
+    if (Tag)
+      return (
+        <Root render={Tag} role='radiogroup'>
+          <Children />
+        </Root>
+      );
+
     return <Children />;
   }
 }
@@ -83,7 +91,7 @@ class Radio extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
-      <SRadio render={Box} tag="label">
+      <SRadio render={Box} tag='label'>
         <Children />
       </SRadio>,
     );
@@ -113,7 +121,7 @@ class Value extends Component {
 
     return sstyled(styles)(
       <>
-        <SControl tag="input" type="radio" {...controlProps} />
+        <SControl tag='input' type='radio' {...controlProps} />
         <SValue ref={forwardRef} use:theme={resolveColor(theme)} {...boxProps} />
       </>,
     );
