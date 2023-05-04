@@ -1,110 +1,145 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Dropdown from '@semcore/ui/dropdown';
 import Select from '@semcore/ui/select';
 import Input from '@semcore/ui/input';
 import MathPlusXS from '@semcore/ui/icon/MathPlus/m';
 import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 import Divider from '@semcore/ui/divider';
 import Button from '@semcore/ui/button';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import CloseXS from '@semcore/ui/icon/Close/m';
 import TrashXS from '@semcore/ui/icon/Trash/m';
-import styled from 'styled-components';
+import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
-const generateOptions = (list) => list.map((v) => ({ value: v, children: v }));
+const makeOptions = (options) => options.map((value) => ({ value, children: value }));
 
-const Filter = ({ closable, onClose, ...props }) => (
-  <Flex {...props}>
-    <Select wMin={120} mr={4} options={generateOptions(['Include', 'Exclude'])} />
-    <Select wMin={120} mr={4} options={generateOptions(['Keyword', 'Not keyword'])} />
-    <Select wMin={120} mr={4} options={generateOptions(['Containing', 'Not containing'])} />
-    <Input>
-      <Input.Value />
-    </Input>
+const Filter = ({ closable, onClose, id, name, ...props }) => (
+  <Flex {...props} gap={4}>
+    <Flex flexWrap gap={4} tag="fieldset" m={0} p={0} style={{ border: 'none' }}>
+      <ScreenReaderOnly>
+        <Text tag="legend" size="200" mb={2}>
+          {name}
+        </Text>
+      </ScreenReaderOnly>
+      <Flex direction="column" wMin={120} gap={2}>
+        <ScreenReaderOnly>
+          <Text tag="label" htmlFor={`${id}-strategy`} size="200">
+            Strategy
+          </Text>
+        </ScreenReaderOnly>
+        <Select options={makeOptions(['Include', 'Exclude'])} id={`${id}-strategy`} />
+      </Flex>
+      <Flex direction="column" wMin={120} gap={2}>
+        <ScreenReaderOnly>
+          <Text tag="label" htmlFor={`${id}-entity`} size="200">
+            Entity
+          </Text>
+        </ScreenReaderOnly>
+        <Select options={makeOptions(['Keyword', 'Backlink'])} id={`${id}-enity`} />
+      </Flex>
+      <Flex direction="column" wMin={120} gap={2}>
+        <ScreenReaderOnly>
+          <Text tag="label" htmlFor={`${id}-filter`} size="200">
+            Filter
+          </Text>
+        </ScreenReaderOnly>
+        <Select options={makeOptions(['Containing', 'Not containing'])} id={`${id}-filter`} />
+      </Flex>
+      <Flex direction="column" wMin={120} gap={2}>
+        <ScreenReaderOnly>
+          <Text tag="label" htmlFor={`${id}-value`} size="200">
+            Value
+          </Text>
+        </ScreenReaderOnly>
+        <Input w={120}>
+          <Input.Value id={`${id}-label`} />
+        </Input>
+      </Flex>
+    </Flex>
     {closable ? (
-      <TrashXS
-        color="stone"
-        interactive
-        aria-label="Clear filters"
-        ml={2}
-        py={2}
-        onClick={onClose}
-      />
+      <TrashXS my={2} color="stone" interactive aria-label={`Remove ${name}`} onClick={onClose} />
     ) : null}
   </Flex>
 );
 
-const FlexOverflow = styled(Flex)`
-  max-height: 18em;
-  overflow: auto;
-`;
-
 export default () => {
-  const [filters, setFilters] = useState(0);
-  const [visible, updateVisible] = useState(false);
-  const buttonRef = useRef(null);
+  const [filtersCount, setFiltersCount] = React.useState(1);
+  const [visible, setVisible] = React.useState(false);
+  const buttonRef = React.useRef(null);
 
-  useEffect(() => {
-    if (buttonRef.current) {
-      buttonRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
-    }
-  }, [filters]);
+  React.useEffect(() => {
+    if (!buttonRef.current) return;
+    buttonRef.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+    });
+  }, [filtersCount]);
 
-  const clearAll = () => setFilters(0);
-  const addFilter = () => {
-    setFilters(filters + 1);
-  };
-  const applyFilters = () => {
-    updateVisible(false);
-  };
-  const handleCloseFilter = () => {
-    setFilters(filters - 1);
-  };
+  const clearAll = () => setFiltersCount(0);
+  const addFilter = () => setFiltersCount(filtersCount + 1);
+  const applyFilters = () => setVisible(false);
+  const handleCloseFilter = () => setFiltersCount(filtersCount - 1);
 
   return (
-    <Dropdown visible={visible} onVisibleChange={updateVisible}>
-      <Dropdown.Trigger
-        placeholder="Advanced filters"
-        empty={!filters}
-        onClear={clearAll}
-        tag={FilterTrigger}
-      >
-        <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
-        {!!filters && (
-          <FilterTrigger.Counter aria-label="Applied filters count">
-            {filters}
-          </FilterTrigger.Counter>
-        )}
-      </Dropdown.Trigger>
-      <Dropdown.Popper>
-        <FlexOverflow direction="column" p={4} alignItems="flex-start">
-          <Filter mb={4} closable={filters} onClose={handleCloseFilter} />
-          {[...new Array(filters)].map((_, ind) => (
-            <Filter key={ind} mb={4} closable onClose={handleCloseFilter} />
-          ))}
-          <Button use="tertiary" onClick={addFilter} ref={buttonRef}>
-            <Button.Addon>
-              <MathPlusXS />
-            </Button.Addon>
-            <Button.Text>Add condition</Button.Text>
-          </Button>
-        </FlexOverflow>
-        <Divider />
-        <Flex p={4} justifyContent="space-between">
-          <Button use="primary" theme="info" onClick={applyFilters}>
-            Apply
-          </Button>
-          <Button use="tertiary" theme="muted" onClick={clearAll}>
-            <Button.Addon>
-              <CloseXS />
-            </Button.Addon>
-            <Button.Text>Clear all</Button.Text>
-          </Button>
-        </Flex>
-      </Dropdown.Popper>
-    </Dropdown>
+    <Flex direction="column" gap={2}>
+      <Text tag="label" htmlFor="advanced-filter" size="200">
+        Super advanced filter
+      </Text>
+      <Dropdown visible={visible} onVisibleChange={setVisible}>
+        <Dropdown.Trigger
+          placeholder="No filter set"
+          id="advanced-filter"
+          empty={!filtersCount}
+          onClear={clearAll}
+          tag={FilterTrigger}
+          w={200}
+        >
+          <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
+          {!!filtersCount && (
+            <FilterTrigger.Counter aria-label="Applied filters count">
+              {filtersCount}
+            </FilterTrigger.Counter>
+          )}
+        </Dropdown.Trigger>
+        <Dropdown.Popper aria-label="Advanced filter popup">
+          <Flex direction="column" gap={4} py={4}>
+            {filtersCount > 0 && (
+              <Flex direction="column" gap={4} px={4} alignItems="flex-start">
+                {[...new Array(filtersCount)].map((_, index) => (
+                  <Filter
+                    key={index}
+                    name={`Condition #${index + 1}`}
+                    id={`advanced-filter-condition-${index + 1}`}
+                    closable
+                    onClose={handleCloseFilter}
+                  />
+                ))}
+              </Flex>
+            )}
+            <div>
+              <Button use="tertiary" onClick={addFilter} ref={buttonRef} mx={4}>
+                <Button.Addon>
+                  <MathPlusXS />
+                </Button.Addon>
+                <Button.Text>Add condition</Button.Text>
+              </Button>
+            </div>
+            <Divider />
+            <Flex px={4} justifyContent="space-between">
+              <Button use="primary" theme="info" onClick={applyFilters}>
+                Apply
+              </Button>
+              <Button use="tertiary" theme="muted" onClick={clearAll}>
+                <Button.Addon>
+                  <CloseXS />
+                </Button.Addon>
+                <Button.Text>Clear all</Button.Text>
+              </Button>
+            </Flex>
+          </Flex>
+        </Dropdown.Popper>
+      </Dropdown>
+    </Flex>
   );
 };
