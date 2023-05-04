@@ -42,6 +42,8 @@ class Skeleton extends Component {
         durationAnim={`${duration}ms`}
         aria-busy="true"
         aria-atomic="true"
+        aria-hidden="true"
+        alt=""
       >
         <defs>
           <mask id={uid}>
