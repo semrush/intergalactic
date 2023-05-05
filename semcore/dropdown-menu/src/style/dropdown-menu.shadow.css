@@ -22,7 +22,7 @@ SDropdownMenuItem {
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
-    background-color: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
+    background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
   }
 
   &:focus {
@@ -37,6 +37,7 @@ SDropdownMenuItem[highlighted] {
 
 SDropdownMenuItem[selected] {
   background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
+  box-shadow: 4px 0px 0px 0px var(--intergalactic-border-info, #8ecdff) inset;
 
   &:hover {
     background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
