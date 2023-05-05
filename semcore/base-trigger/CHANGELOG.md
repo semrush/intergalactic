@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Updated border-color for invalid and valid states. Made them more contrast according to accessibility recommendations.
+- Updated styles for FilterTrigger, added styles for `hover` distinguished from `active` state.
 
 ## [3.5.19] - 2023-05-11
 

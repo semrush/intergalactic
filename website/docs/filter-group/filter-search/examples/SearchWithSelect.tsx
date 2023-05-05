@@ -31,7 +31,7 @@ const Demo = () => {
 
   return (
     <Flex direction="column">
-      <Text tag="label" htmlFor="search-with-select-filter-by-keyword">
+      <Text tag="label" size="200" htmlFor="search-with-select-filter-by-keyword">
         Filter by keyword
       </Text>
       <Box mt={2}>
