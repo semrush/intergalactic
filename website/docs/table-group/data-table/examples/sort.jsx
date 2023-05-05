@@ -7,13 +7,18 @@ export default () => {
     () =>
       [...data].sort((aRow, bRow) => {
         const [prop, sortDirection] = sortBy;
-        const a = Number.parseFloat(aRow[prop].replace(/[$,\s]/g, ''));
-        const b = Number.parseFloat(bRow[prop].replace(/[$,\s]/g, ''));
+        const a = aRow[prop];
+        const b = bRow[prop];
         if (a === b) return 0;
         if (sortDirection === 'asc') return a - b;
         else return b - a;
       }),
     [sortBy],
+  );
+  const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
+  const currencyFormat = React.useMemo(
+    () => new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }),
+    [],
   );
 
   return (
@@ -24,7 +29,19 @@ export default () => {
         <DataTable.Column name="cpc" children="CPC" sortable />
         <DataTable.Column name="vol" children="Vol." sortable />
       </DataTable.Head>
-      <DataTable.Body />
+      <DataTable.Body>
+        <DataTable.Cell name="kd">
+          {(_, row) => ({ children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd) })}
+        </DataTable.Cell>
+        <DataTable.Cell name="cpc">
+          {(_, row) => ({
+            children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
+          })}
+        </DataTable.Cell>
+        <DataTable.Cell name="vol">
+          {(_, row) => ({ children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol) })}
+        </DataTable.Cell>
+      </DataTable.Body>
     </DataTable>
   );
 };
@@ -32,32 +49,32 @@ export default () => {
 const data = [
   {
     keyword: 'ebay buy',
-    kd: '77.8',
-    cpc: '$1.25',
-    vol: '32,500,000',
+    kd: 77.8,
+    cpc: 1.25,
+    vol: 32500000,
   },
   {
     keyword: 'www.ebay.com',
-    kd: '11.2',
-    cpc: '$3.4',
-    vol: '65,457,920',
+    kd: 11.2,
+    cpc: 3.4,
+    vol: 65457920,
   },
   {
     keyword: 'www.ebay.com',
-    kd: '10',
-    cpc: '$0.65',
-    vol: '47,354,640',
+    kd: 10,
+    cpc: 0.65,
+    vol: 47354640,
   },
   {
     keyword: 'ebay buy',
-    kd: '-',
-    cpc: '$0',
-    vol: 'n/a',
+    kd: -1,
+    cpc: 0,
+    vol: -1,
   },
   {
     keyword: 'ebay buy',
-    kd: '75.89',
-    cpc: '$0',
-    vol: '21,644,290',
+    kd: 75.89,
+    cpc: 0,
+    vol: 21644290,
   },
 ];
