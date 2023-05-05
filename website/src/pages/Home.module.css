@@ -432,6 +432,7 @@
   height: calc(100vh - var(--intergalactic-spacing-20x));
   background: var(--intergalactic-bg-secondary-neutral);
   max-width: 250px;
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {
