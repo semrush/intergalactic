@@ -35,7 +35,7 @@ tabName: Design
 
 ### Dropdown
 
-- The Include filter, unlike Exclude, contains radio buttons for selecting the search logic — "AND"/"Or". They help looking for keywords containing all entered words or any of the entered ones ("All keywords" and "Any keywords").
+- The Include filter, unlike Exclude, contains radio buttons for selecting the search logic – "AND"/"Or". They help looking for keywords containing all entered words or any of the entered ones ("All keywords" and "Any keywords").
 - Textarea has 7 lines by default.
 - When opening a dropdown texarea immediately gets the focus.
 - The filter has the "Broad / Exact match" syntax and hints about its work above the field and in the placeholder. If the user enters a keyword without parentheses, then show keywords containing this word. If the user enters a keyword in square brackets, then show only the exact value.
@@ -116,7 +116,7 @@ If the names of filters "Include keywords" and "Exclude keywords" do not fit com
 - For users with a new browser, show errors on the fly and highlight them, and add line numbering with keywords in the input.
 - In the old browser, these convenient things are absent, and the validation applies only after the clicking on "Apply" button.
 
-Determine that the user has an input in the old browser only at the moment of the first input — the interface will blink and the Info icon will appear. While hovering over this icon show a tooltip with a message about the old browser and why the interface has changed.
+Determine that the user has an input in the old browser only at the moment of the first input – the interface will blink and the Info icon will appear. While hovering over this icon show a tooltip with a message about the old browser and why the interface has changed.
 
 ![filter in old browsers](static/old-browser-1.png)
 

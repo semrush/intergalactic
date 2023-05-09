@@ -14,16 +14,16 @@ In our interfaces, data is usually placed in [Card](/components/card/), which co
 1. **Header:**
 
    1. Title (`margin-bottom: 8px`)
-   2. Additional information under the heading (`margin-bottom: 8px`) — _optional_
-   3. General widget controls (export or view settings, etc.) — _optional_
+   2. Additional information under the heading (`margin-bottom: 8px`) – _optional_
+   3. General widget controls (export or view settings, etc.) – _optional_
 
 2. **[Divider](/components/divider/)**
 
 3. **Body:**
 
-   1. Top controls (filters, buttons, etc.) — _optional_
-   2. Chart — axes, values and chart itself (`margin-top: 20px`)
-   3. Bottom controls (`margin-top: 20px`) — _optional_
+   1. Top controls (filters, buttons, etc.) – _optional_
+   2. Chart – axes, values and chart itself (`margin-top: 20px`)
+   3. Bottom controls (`margin-top: 20px`) – _optional_
 
 > Optional elements mean that their presence depends on the case you are solving in your interface.
 
@@ -67,7 +67,7 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 
 **Axes** help user navigate the data and relate values to each other.
 
-> Please don't make the additional lines bright and colored — the emphasis should be on the data, not on the grid.
+> Please don't make the additional lines bright and colored – the emphasis should be on the data, not on the grid.
 
 ![axes-scheme](static/axes-scheme.png)
 
@@ -75,7 +75,7 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 
 - The **Y axis** is hidden by default.
 - The color of additional axes is `--chart-grid-line`.
-- Color of the X axis and additional active lines on the grid (if needed) — `--chart-grid-x-axis`.
+- Color of the X axis and additional active lines on the grid (if needed) – `--chart-grid-x-axis`.
 - Left and right margin to the Y axis values is 16px.
 - `margin-top` of the X axis values is 12px.
 
@@ -106,7 +106,7 @@ The tooltip appears next to the cursor. It is always located inside the chart co
 - The tooltip shows data for all the lines for the selected date.
 - For tooltip title use the date or data category name. For easy comparison, the values shall be right-aligned.
 - The tooltip can contain the total value.
-- If several charts have the same timeline under each other, then they can be synchronized — when you hover over one of the charts, the hover is triggered on the other. This is quite useful for comparing data.
+- If several charts have the same timeline under each other, then they can be synchronized – when you hover over one of the charts, the hover is triggered on the other. This is quite useful for comparing data.
 
 > As a rule, we do not put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
 

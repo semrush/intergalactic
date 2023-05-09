@@ -39,7 +39,7 @@ You can place text, which tells user that data is being loaded, next to the spin
 
 @## Themes
 
-Spin has two themes: `dark` and `invert` — for using on light and dark/colored backgrounds, respectively. You also can make your Spin colored in a custom color if needed.
+Spin has two themes: `dark` and `invert` – for using on light and dark/colored backgrounds, respectively. You also can make your Spin colored in a custom color if needed.
 
 | Theme  | Appearance example        | Description                                            |
 | ------ | ------------------------- | ------------------------------------------------------ |

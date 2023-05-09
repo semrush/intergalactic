@@ -45,13 +45,13 @@ How to choose the right visualization for your task?
 
 We also have special libraries for inner usage (they are available only for Semrush designers):
 
-- UX/UI patterns with common modules and patterns we use across different Semrush products — **[UX Patterns](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-Patterns)**;
-- UI illustrations — **[UI Illustration](https://www.figma.com/file/0eyXfQt4cbmx5y8L5oddeo/%F0%9F%91%A9%E2%80%8D%F0%9F%8E%A4-UI-illustrations)**;
-- marketing illustrations — **[Illustration](https://www.figma.com/file/UbJFnas5a8uAVlubA8RtmU/Illustration)**;
-- basic components and templates for product landings — **[Product Landings](https://www.figma.com/file/K02X01Nb0LuGuHTzsaE5DK/Product-landings-library)**;
-- product email templates and components — **[Product Emails](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164)**;
-- library for experimental components and patterns — **[Experiments](https://www.figma.com/file/n694tB9BkzBkhxetdTiFE8/Experimental-components)**;
-- components for organizing your files and specs — **[Design File Template Library](https://www.figma.com/file/ZDRC056k8PbUFi3qoFAWj9/Design-File-Template-Library)**.
+- UX/UI patterns with common modules and patterns we use across different Semrush products – **[UX Patterns](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-Patterns)**;
+- UI illustrations – **[UI Illustration](https://www.figma.com/file/0eyXfQt4cbmx5y8L5oddeo/%F0%9F%91%A9%E2%80%8D%F0%9F%8E%A4-UI-illustrations)**;
+- marketing illustrations – **[Illustration](https://www.figma.com/file/UbJFnas5a8uAVlubA8RtmU/Illustration)**;
+- basic components and templates for product landings – **[Product Landings](https://www.figma.com/file/K02X01Nb0LuGuHTzsaE5DK/Product-landings-library)**;
+- product email templates and components – **[Product Emails](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164)**;
+- library for experimental components and patterns – **[Experiments](https://www.figma.com/file/n694tB9BkzBkhxetdTiFE8/Experimental-components)**;
+- components for organizing your files and specs – **[Design File Template Library](https://www.figma.com/file/ZDRC056k8PbUFi3qoFAWj9/Design-File-Template-Library)**.
 
 > **Libraries with UI illustrations, patterns, experiments and email templates are open for editing for all Product Design Team members**.
 >

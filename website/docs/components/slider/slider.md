@@ -31,15 +31,15 @@ In [practical point of view](https://www.nngroup.com/articles/sliders-knobs/), a
 
 Default component sizes:
 
-- `bar height — 4px`
-- `knob size — 20px * 20px`
+- `bar height – 4px`
+- `knob size – 20px * 20px`
 
 @## Default styles
 
 Default component styles:
 
-- bar color — `--progress-bar-bg`
-- progress and knob color — `--control-primary-info`
+- bar color – `--progress-bar-bg`
+- progress and knob color – `--control-primary-info`
 
 ![](static/default.png)
 
@@ -85,7 +85,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 - Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.
 - `Esc` removes focus from the input.
 
-> If the slider knob has focus, the user can move it with the keyboard arrows — '←', '→'.
+> If the slider knob has focus, the user can move it with the keyboard arrows – '←', '→'.
 
 @## Usage in UX/UI
 
@@ -93,7 +93,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 This input works best in cases where the user is not interested in entering a specific value, but choosing an approximate value.
 
-As the example above was given — changing color brightness or volume are the main cases for using slider component.
+As the example above was given – changing color brightness or volume are the main cases for using slider component.
 
 ### Use on mobile devices
 

@@ -29,10 +29,10 @@ Multiline text implementation is not trivial in svg. Text on the leafs of tree i
 
 @## Edge cases
 
-- If there is no data — show an empty gray chart.
+- If there is no data – show an empty gray chart.
 
 @example radial-tree-without-data
 
-- If data is not ready yet — show chart skeleton.
+- If data is not ready yet – show chart skeleton.
 
 @example radial-tree-loading

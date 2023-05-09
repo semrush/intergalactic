@@ -79,7 +79,7 @@ Use pills in:
 
 ### Number of pills
 
-Minimum in the component is 2, maximum — is unlimited. **But keep in mind that it will be difficult for the user to navigate the selection if there are too many items.** In this case, you can:
+Minimum in the component is 2, maximum – is unlimited. **But keep in mind that it will be difficult for the user to navigate the selection if there are too many items.** In this case, you can:
 
 - collapse pills in [DropdownMenu](/components/dropdown-menu/);
 - collapse the last pills into a pill with an ellipsis.

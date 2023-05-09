@@ -78,7 +78,7 @@ Keyboard control should be performed sequentially across all interactive element
 
 - Table cells should only receive keyboard focus if they are interactive. In these cases, using the `grid` role on the entire table would be more appropriate.
 - Controls inside the table cells get focus using `Tab` only.
-- Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows — using `Tab`.
+- Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows – using `Tab`.
 - When you press `Enter`, an event occurs, as if you press the mouse button. If the entire row have `focus`, you follow the link, and if only the icon has `focus`, then the action is performed, etc.
 
 @## Keyboard support for popper
@@ -98,7 +98,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 @## Focus, OnMouseEnter and popper
 
-1. By hovering over / pressing `Tab`, the focus falls on the trigger — popper opens immediately.
+1. By hovering over / pressing `Tab`, the focus falls on the trigger – popper opens immediately.
 2. The popper closes by pressing `Esc`, and **focus remains on the trigger**.
 3. `Shift + Tab` moves focus to the previous control, and popper closes.
 

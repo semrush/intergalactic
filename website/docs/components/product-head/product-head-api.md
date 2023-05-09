@@ -14,7 +14,7 @@ import ProductHead from '@semcore/ui/product-head';
 
 @## ProductHead.Row
 
-The header is divided into lines with components. They are divided from each other with equal paddings — `my={2}`.
+The header is divided into lines with components. They are divided from each other with equal paddings – `my={2}`.
 
 ```jsx
 import ProductHead from '@semcore/ui/product-head';

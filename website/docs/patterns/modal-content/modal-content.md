@@ -65,7 +65,7 @@ Make paddings inside the fixed area not too big (for example, 8px).
 
 While loading or reloading the content inside the modal window, show [Spin](/components/spin/) over the content.
 
-- Use Spin with the largest size — XXL.
+- Use Spin with the largest size – XXL.
 - The spinner is necessarily centered regarding the hidden content.
 - The message for this state is optional.
 

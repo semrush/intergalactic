@@ -69,12 +69,12 @@ To improve readability on different screens, change the size of the headings, de
 
 | 0px – 768px                        | 768px – ∞                           |
 | ---------------------------------- | ----------------------------------- |
-| H1 (36/40) — `--fs-700`, `--lh-700` | H1 (48/56) — `--fs-800`, `--lh-800` |
-| H2 (32/40) — `--fs-600`, `--lh-600` | H2 (36/40) — `--fs-700`, `--lh-700`  |
-| H3 (24/28) — `--fs-500`, `--lh-500` | H3 (32/40) — `--fs-600`, `--lh-600`  |
-| H4 (20/24) — `--fs-400`, `--lh-400` | H4 (24/28) — `--fs-500`, `--lh-500`  |
-| H5 (16/24) — `--fs-300`, `--lh-300` | H5 (20/24) — `--fs-400`, `--lh-400`  |
-| H6 (14/20) — `--fs-200`, `--lh-200` | H6 (16/24) — `--fs-300`, `--lh-300`  |
+| H1 (36/40) – `--fs-700`, `--lh-700` | H1 (48/56) – `--fs-800`, `--lh-800` |
+| H2 (32/40) – `--fs-600`, `--lh-600` | H2 (36/40) – `--fs-700`, `--lh-700`  |
+| H3 (24/28) – `--fs-500`, `--lh-500` | H3 (32/40) – `--fs-600`, `--lh-600`  |
+| H4 (20/24) – `--fs-400`, `--lh-400` | H4 (24/28) – `--fs-500`, `--lh-500`  |
+| H5 (16/24) – `--fs-300`, `--lh-300` | H5 (20/24) – `--fs-400`, `--lh-400`  |
+| H6 (14/20) – `--fs-200`, `--lh-200` | H6 (16/24) – `--fs-300`, `--lh-300`  |
 
 @## Paragraph
 
@@ -96,7 +96,7 @@ There are three text sizes we use in our products.
 
 @## Paragraph margins
 
-Paragraphs have a margin-bottom, and each of the three paragraph sizes has its own margin. A paragraph of 16px has a margin-bottom of 16px, a paragraph of 14px — 12px, a paragraph of 12px text — 8px.
+Paragraphs have a margin-bottom, and each of the three paragraph sizes has its own margin. A paragraph of 16px has a margin-bottom of 16px, a paragraph of 14px – 12px, a paragraph of 12px text – 8px.
 
 You can also use these margins when a paragraph is followed by a paragraph of smaller font size.
 

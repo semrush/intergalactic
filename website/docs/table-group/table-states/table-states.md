@@ -128,10 +128,10 @@ Show this state when there was an error in the product on the backend, so we can
 
 It is important to indicate the following things in the empty state message:
 
-- In the title — the essence of the current situation.
-- In the description — what user need to do to change the situation.
+- In the title – the essence of the current situation.
+- In the description – what user need to do to change the situation.
 - If possible, suggest an action (in the form of a button or link) which will help user to change the situation.
-  For more information about the rules for such states, see the guides — [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
+  For more information about the rules for such states, see the guides – [Errors, n/a, nothing found in widgets](/components/widget-empty/), [Global errors](/patterns/global-errors/), etc.
 
 @## Table header
 

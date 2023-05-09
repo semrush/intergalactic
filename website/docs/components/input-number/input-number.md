@@ -96,7 +96,7 @@ In cases when you need to show steppers as buttons with `Plus` and `Minus` icons
 
 ### Invalid values
 
-If user enters an invalid value (less than minimum, more than maximum), such value will be reset to `min/max`, respectively. The value is reset when the focus is lost (`onBlur`). If the input does not have a defined range of acceptable values, then there should be no validation — the entered value will be applied.
+If user enters an invalid value (less than minimum, more than maximum), such value will be reset to `min/max`, respectively. The value is reset when the focus is lost (`onBlur`). If the input does not have a defined range of acceptable values, then there should be no validation – the entered value will be applied.
 
 ### Fractional numbers
 

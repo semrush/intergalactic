@@ -73,7 +73,7 @@ _It's needed so that the user understands what data he needs to enter. For examp
 ### Trailing addon
 
 Trailing addons are clickable icons to save input and cancel and return to view mode.
-The save icon is always has `--icon-secondary-success` token as color, the cancel icon — `--icon-secondary-neutral`.
+The save icon is always has `--icon-secondary-success` token as color, the cancel icon – `--icon-secondary-neutral`.
 
 |                                                               | Appearance example                                       | Margins                              | Icon size |
 | ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------ | --------- |

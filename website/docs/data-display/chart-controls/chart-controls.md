@@ -43,7 +43,7 @@ These controls filter the data, axes, and some controls shown below.
 
 We use several types of legends in our charts. Find more details in the [Chart legend](/data-display/chart-legend/) guide.
 
-> We recommend you to place legend in the top left — above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
+> We recommend you to place legend in the top left – above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
 
 ![](static/legend-top.png)
 
