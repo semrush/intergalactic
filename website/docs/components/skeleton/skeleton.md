@@ -19,7 +19,7 @@ Several skeletons can be shown simultaneously or asynchronously while initial lo
 
 @## Themes
 
-Skeleton has [two themes](/components/skeleton/skeleton-api/): `dark` and `invert` — for using on light and dark/colored backgrounds, respectively.
+Skeleton has [two themes](/components/skeleton/skeleton-api/): `dark` and `invert` – for using on light and dark/colored backgrounds, respectively.
 
 All skeleton “bones” have `border-radius` of 4px.
 

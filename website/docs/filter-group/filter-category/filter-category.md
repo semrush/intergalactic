@@ -147,9 +147,9 @@ Show an error in the dropdown with the ability to update the filter if an error 
 >
 > **Example:**
 >
-> News > Team Sports > **Baseball** — website with basebal news
+> News > Team Sports > **Baseball** – website with basebal news
 >
-> Goods > Sports Goods > **Baseball** — website with baseball goods
+> Goods > Sports Goods > **Baseball** – website with baseball goods
 
 ### Category abbreviations rules
 

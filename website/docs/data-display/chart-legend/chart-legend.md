@@ -12,7 +12,7 @@ docs: true
 **Chart legend** helps a user read the data presented on the chart.
 
 1. Legend items can be controls ([checkboxes](/components/checkbox/) or [radio](/components/radio/) buttons) or non-interactive markers. The marker colors match the data on the chart. In addition to the marker and text label, the legend item can also contain an icon and/or counter.
-2. If there is only one data set on the chart, then do not display the legend — the purpose of the data should be clear from the chart context: chart title, description, etc.
+2. If there is only one data set on the chart, then do not display the legend – the purpose of the data should be clear from the chart context: chart title, description, etc.
 3. **The margin between the legend items is 16px.**
 4. If legend items are too long, move them to the second row. The spacing between the rows is 8px.
 

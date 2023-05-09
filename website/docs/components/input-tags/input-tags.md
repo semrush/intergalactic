@@ -63,7 +63,7 @@ The text entered by the user is wrapped in a tag inside InputTags:
 
 @## Text insertion
 
-After insertion, the text is broken by punctuation separators — comma, semicolon,“|”, `Tab` key.
+After insertion, the text is broken by punctuation separators – comma, semicolon,“|”, `Tab` key.
 
 @## Deleting and editing a tag
 

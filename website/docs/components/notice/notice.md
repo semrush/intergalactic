@@ -30,7 +30,7 @@ Notice shall meet four criteria. If it doesn't respond to at least one, it's not
 
 - title (optional);
 - text;
-- an element before the text — an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
+- an element before the text – an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
 - close icon (optional);
 - button or groups of buttons (optional).
 
@@ -149,7 +149,7 @@ These are the notices that have their own rules and their styles differ from pre
 
 ### Feedback notice
 
-It differs from the regular one — it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [FeedbackYesNo](/patterns/feedback-yes-no) guide.
+It differs from the regular one – it is attached to the header and stretched to the full width of the report's content section. It has no indents at the top, right, or left. You can see an example in the [FeedbackYesNo](/patterns/feedback-yes-no) guide.
 
 ### Advertising
 
@@ -172,7 +172,7 @@ The advertising notice differs from the regular one by advertising illustrations
 - You can notify about the following events: tools and reports announcement, collecting feedback, quick help for additional features, system status (error, failure, end of works, new feature).
 - In some cases, notices with the same text may have different colors because they may have a different meaning.
 - In regular cases, one notice is replaced by another in order of priority: red > yellow > green > blue > gray. If you need to place notices in a row, think it over with the UX team. There may be another way to deliver your important message.
-- Be concise — don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks / other components — four lines.
+- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks / other components – four lines.
 
 ### Incorrect use
 
@@ -180,7 +180,7 @@ A notice should not be confused with the other components:
 
 - **NoticeBubble/Alert**. This is the component used to respond to a user action; it's a local component. Notice is a global component and is most often not associated with user actions.
 - **Tooltip**. These are hints or descriptions of functionality, they are permanent and called by hover. A notice is a temporary component displayed, as a rule, immediately after the user action.
-- **Notes, hints**. This is additional information to the functionality. It is permanent. But the notice is temporary. Hints explain how to use something. Notice does not explain the functionality itself. Maximum — it can tell you how to solve the problem that it reports or perform the action that it calls for.
+- **Notes, hints**. This is additional information to the functionality. It is permanent. But the notice is temporary. Hints explain how to use something. Notice does not explain the functionality itself. Maximum – it can tell you how to solve the problem that it reports or perform the action that it calls for.
 
 ### Examples of incorrect usage
 

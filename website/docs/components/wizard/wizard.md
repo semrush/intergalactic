@@ -133,7 +133,7 @@ font-weight: 700;
 
 The icon has L size and use `--icon-secondary-neutral` token for color.
 
-On hover, the color of the icon changes to the next one in the palette — `--icon-secondary-neutral-hover-active`.
+On hover, the color of the icon changes to the next one in the palette – `--icon-secondary-neutral-hover-active`.
 
 ![](static/close-paddings.png)
 

@@ -14,7 +14,7 @@ tabName: Design
 
 > In its testing [Baymard Research](https://baymard.com/blog/input-masking-form-field) stated the following about the masks:
 >
-> Our large-scale Checkout usability testing reveals that 89% of users are likely to enter numerical inputs in several different ways — evenwhen formatting examples are provided that display the site’s desired input format. Furthermore, during testing, a proportion of test subjects hesitated before they entered their data, as they worried that they would type it in a format the site wouldn’t validate — even on sites that accepted all formatting.
+> Our large-scale Checkout usability testing reveals that 89% of users are likely to enter numerical inputs in several different ways – evenwhen formatting examples are provided that display the site’s desired input format. Furthermore, during testing, a proportion of test subjects hesitated before they entered their data, as they worried that they would type it in a format the site wouldn’t validate – even on sites that accepted all formatting.
 
 @## Appearance
 
@@ -29,7 +29,7 @@ The input for entering the phone number has several display options depending on
 | We know the country, but we don't know the phone number format     | ![](static/input-phone-2.png) |
 | We know the country and phone number format                        | ![](static/input-phone-3.png) |
 
-When we know the user's country, it is important to display flag of the country in the input — this helps us visually navigate through the entered data faster. _For example, in [Form](/patterns/form/) guide._
+When we know the user's country, it is important to display flag of the country in the input – this helps us visually navigate through the entered data faster. _For example, in [Form](/patterns/form/) guide._
 
 > Be sure to add the `Phone number` label to the input if it doesn't have any visual indication of the mask type, country code, or format.
 

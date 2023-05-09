@@ -88,7 +88,7 @@ If you are redefining children rendering of `<XAxis.Ticks>` or `<YAxis.Ticks>` b
 
 #### Tweak data summarizer configuration
 
-If the chart summary looks similar to what you expect to tell users but not good enough—especially with your data (for example, your data is too variable and the summarizer seems to be too sensitive)—you can tweak the summarizer's configuration.
+If the chart summary looks similar to what you expect to tell users but not good enough–especially with your data (for example, your data is too variable and the summarizer seems to be too sensitive) – you can tweak the summarizer's configuration.
 
 @typescript PlotSummarizerConfig
 

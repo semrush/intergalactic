@@ -50,7 +50,7 @@ Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) is stret
 
 ### Example with dark background
 
-This example has the same styles as the example on the light background, except color for buttons that change slides — it should change to `--icon-primary-invert`.
+This example has the same styles as the example on the light background, except color for buttons that change slides – it should change to `--icon-primary-invert`.
 
 ![](static/carousel-dark.png)
 
@@ -80,8 +80,8 @@ Navigation buttons are always center aligned.
 
 Default animation properties:
 
-- Animation duration — `300`.
-- Animation easing function — `ease-in-out`.
+- Animation duration – `300`.
+- Animation easing function – `ease-in-out`.
 
 @## Usage in UX/UI
 

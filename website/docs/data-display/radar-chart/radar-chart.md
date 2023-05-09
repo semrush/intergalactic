@@ -22,7 +22,7 @@ It is designed to show similarities, differences, and outliers, or any other ite
 - You need to make comparisons across multivariate data.
 - Data sets are small or moderately sized.
 
-Radar charts are at their best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to their circular structure and their relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide—we’ll talk more about that in a later section), but technical audiences might find them intriguing.
+Radar charts are at their best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to their circular structure and their relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide – we’ll talk more about that in a later section), but technical audiences might find them intriguing.
 
 > Instead of the radar chart, you can use the parallel coordinates chart. This chart "unwinds" the same data into a straight line, which can make the comparisons across data easier to see.
 
@@ -34,7 +34,7 @@ The most significant advantage of using a radar chart is that outliers are immed
 
 ### Disadvantages of radar charts
 
-Data visualization specialists often criticize radar charts—for example, in [this blog post](https://blog.scottlogic.com/2011/09/23/a-critique-of-radar-charts.html#chart2) and in [this article](https://www.perceptualedge.com/articles/dmreview/radar_graphs.pdf).
+Data visualization specialists often criticize radar charts – for example, in [this blog post](https://blog.scottlogic.com/2011/09/23/a-critique-of-radar-charts.html#chart2) and in [this article](https://www.perceptualedge.com/articles/dmreview/radar_graphs.pdf).
 
 Their main cons are:
 
@@ -242,7 +242,7 @@ More than three data sets should be presented on their own radar charts or visua
 
 Don’t use too many variables or the chart risks becoming confusing.
 
-Consider using other chart type — e.g. Bar chart.
+Consider using other chart type – e.g. Bar chart.
 
 ![](static/variable-number-yes-no.png)
 

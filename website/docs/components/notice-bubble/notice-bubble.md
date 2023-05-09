@@ -19,7 +19,7 @@ Let's see the differences between NoticeBubble, [Notice](/components/notice/) an
 
 **Component includes:**
 
-- text (we recommend placing the message in 2 lines, maximum — 4 lines);
+- text (we recommend placing the message in 2 lines, maximum – 4 lines);
 - icon that closes the alert (optional, use the Close icon with M size)
 - button or two buttons (optional).
 
@@ -38,7 +38,7 @@ Let's see the differences between NoticeBubble, [Notice](/components/notice/) an
 @## When to avoid
 
 - Displaying a process with spinner or progress bar. The exception is the no-network condition. If you need to display the process, use the [progress bar](/components/progress-bar/).
-- If there are any visible instant interface changes. _For example, adding a tag to an item — the tag appears, adding an item to favorites — changing the icon color, adding an item to a table/list._
+- If there are any visible instant interface changes. _For example, adding a tag to an item – the tag appears, adding an item to favorites – changing the icon color, adding an item to a table/list._
 
 @## Types
 
@@ -101,8 +101,8 @@ A notification that is designed for various events, holidays, etc. You can anima
 
 ![](static/noticeBubble2.png)
 
-- The alert has fixed width — `300px`.
-- Container paddings — `12px 28px 12px 12px`.
+- The alert has fixed width – `300px`.
+- Container paddings – `12px 28px 12px 12px`.
 - Margin between the button and the text is 8px.
 - If there is a spinner before the text, then the margin between the spinner and the text is 4px (use Spin with XS size).
 - In the loading and success states, the margin between the spinner/icon and the text is 4px.

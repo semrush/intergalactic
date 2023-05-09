@@ -79,7 +79,7 @@ If you do not need to present the ratio of values to 100%, but just to display t
 
 @## Labels of categories
 
-- Unlike vertical chart, the Y-axis labels must have same color as the color of the main text — `--text-primary`.They are one of the main elements for "reading" data on this chart type.
+- Unlike vertical chart, the Y-axis labels must have same color as the color of the main text – `--text-primary`.They are one of the main elements for "reading" data on this chart type.
 - If the category label is too long, collapse into an `ellipsis`. By hovering over it, show the tooltip with the full category name.
 - It is better to add the tooltip on the right or left side relative to the category label (so it will not labels of other categories).
 
@@ -102,7 +102,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### No more results
 
-Display message: "No more results" — below the values with a 32px margin.
+Display message: "No more results" – below the values with a 32px margin.
 
 ![](static/no-more-bar-horizontal.png)
 

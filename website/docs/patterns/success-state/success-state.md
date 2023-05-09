@@ -34,7 +34,7 @@ Here are some general recommendations that can help you:
 * Position the success state in the component that the user is currently engaged with, so that it's easy to notice and understand what it's referring to.
 * Show the success state at an appropriate time to ensure that the user understands what action has led to it.
 * Ensure that the success message or feedback is clear, so that users can easily understand what they need to do next.
-* Users should be able to close the success modal window or notice at any time—for example, with a close button or by pressing the `Escape` key.
+* Users should be able to close the success modal window or notice at any time – for example, with a close button or by pressing the `Escape` key.
 
 For example, if a [Feedback form](/components/feedback/) has been sent successfully, show the success message in the same place next to the form's trigger.
 

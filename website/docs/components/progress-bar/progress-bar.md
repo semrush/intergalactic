@@ -34,7 +34,7 @@ Our ProgressBar has three sizes.
 
 @## Themes and styles
 
-ProgressBar has two themes: `dark` and `invert` — for using on light and dark/colored backgrounds, respectively.
+ProgressBar has two themes: `dark` and `invert` – for using on light and dark/colored backgrounds, respectively.
 
 Both themes use `--progress-bar-value` token for color with the gradient pattern to display progress value.
 
@@ -61,19 +61,19 @@ Depending on the usage context, place a counter above or near the progress bar.
 
 ProgressBar has three states:
 
-- 0% — the progress bar is colored in gray and has animation.
+- 0% – the progress bar is colored in gray and has animation.
 
 ![](static/loading-gray.png)
 
-- 1-99% — the progress bar is partially filled and the pattern is animated.
+- 1-99% – the progress bar is partially filled and the pattern is animated.
 
 ![](static/size-l.png)
 
-- 100% — the progress bar is static, green.
+- 100% – the progress bar is static, green.
 
 ![](static/loaded.png)
 
-The progress bar shall not remain in the 100% state — once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
+The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
 
 > If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next.
 
@@ -106,7 +106,7 @@ When scrolling, the progress bar can be pinned. In this case, pin it above all c
 
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
-- In cases when loading is very fast, set the minimum time for displaying the progress bar — 3 seconds. This is necessary to avoid "blinking" of the interface.
+- In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 

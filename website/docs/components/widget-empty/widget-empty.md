@@ -190,7 +190,7 @@ If your widget has width less than 300px, you may leave just the title with styl
 
 Interface also can have the state when there is a small amount of data in the widget. This state is usually used in the widgets with table, text and other data.
 
-Add the text: "No more results" — and center it both vertically and horizontally.
+Add the text: "No more results" – and center it both vertically and horizontally.
 
 ![](static/no-more-results.png)
 

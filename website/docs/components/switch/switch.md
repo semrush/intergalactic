@@ -60,7 +60,7 @@ Switch has three possible states: off, on, and disabled. To change the state, us
 
 **Use positive language for text labels in the Switch** to make it clear what interface will do if user enables the toggle.
 
-Avoid negations such as: “Don't show trending subtopics”, — which would mean that the user would have to enable the switch so something will not be shown.
+Avoid negations such as: “Don't show trending subtopics”, – which would mean that the user would have to enable the switch so something will not be shown.
 
 ![](static/switchlabel_yes_no.png)
 

@@ -33,16 +33,16 @@ Basic rules for visualizing data as a Radial Tree:
 
 ![](static/sizes1.png)
 
-- Stroke width — 1px.
-- Default size of the circle bullet — `8px * 8px`.
-- Font size — 14px (`--fs-200`).
+- Stroke width – 1px.
+- Default size of the circle bullet – `8px * 8px`.
+- Font size – 14px (`--fs-200`).
 - In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.
 
 #### Active state
 
 ![](static/sizes2.png)
 
-- Size of the circle bullet in the active state — `16px * 16px`.
+- Size of the circle bullet in the active state – `16px * 16px`.
 - You can place an icon of M size inside the circle bullet in the active state.
 
 @## Legend

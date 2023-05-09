@@ -106,8 +106,8 @@ When searching a table, sometimes you need to highlight the match in the data. I
 
 **The link in the cell can lead to:**
 
-- the internal report — use the link/button, depending on the context;
-- another website — use the `LinkExternal` icon with S size and `--icon-secondary-neutral` token for color.
+- the internal report – use the link/button, depending on the context;
+- another website – use the `LinkExternal` icon with S size and `--icon-secondary-neutral` token for color.
 
 @## Long links and text
 
@@ -191,7 +191,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 |                                                                                                                                                                                                                                  | Ascending (SortAsc)                  | Descending (SortDesc)               |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- |
 | **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)          | ![](static/desc.png)       |
-| **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger — 0, 1, 2 → 9 | From larger to smaller — 9, 8, 7 → 0 |
+| **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
 | **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
 | **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
 | **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |

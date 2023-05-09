@@ -89,7 +89,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                                    |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Outliers                               | To prevent small values from being lost under the large ones (outliers), the bubble has a minimum size — 11px \* 11px.                                                                                            | ![](static/outliers-1.png) ![](static/outliers-2.png) |
+| Outliers                               | To prevent small values from being lost under the large ones (outliers), the bubble has a minimum size – 11px * 11px.                                                                                            | ![](static/outliers-1.png) ![](static/outliers-2.png) |
 | Data values are null                   | If all the values on the chart are zero, display them at the origin of the grid. For cases where you compare multiple datasets, show the values for each dataset in the legend. **Zero is also data. 0 ≠ N / A.** | ![](static/null-1.png) ![](static/null-2.png)                 |
 | No data for some points (n/a)          | Don't show points without data on the chart. For cases where you compare multiple datasets, show the values for each dataset in the legend.                                                                       | ![](static/n-a-1.png) ![](static/n-a-2.png)             |
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                             |
@@ -106,7 +106,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 ### Axes
 
 - Label both the X and Y axes.
-- Don't color the axis labels — this makes your chart harder to read.
+- Don't color the axis labels – this makes your chart harder to read.
 
 ![](static/color-yes-no.png)
 

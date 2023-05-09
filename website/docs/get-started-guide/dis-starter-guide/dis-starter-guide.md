@@ -6,7 +6,7 @@ title: For designers
 
 Here you will find a series of quick and handy guides for starting your product designs with Intergalactic Design System.
 
-### Intergalactic Design System — what's it?
+### Intergalactic Design System – what's it?
 
 @embedded_video https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e
 
@@ -82,7 +82,7 @@ Go to [Grid and page layout](/layout/grid-system) for a detailed description of 
 
 @## Charts
 
-> **TL;DR or main thoughts**: we design a lot of widgets with charts. And when we say a lot — we mean A LOT 😀 . So be ready to learn about the use of different types of charts.
+> **TL;DR or main thoughts**: we design a lot of widgets with charts. And when we say a lot – we mean A LOT 😀 . So be ready to learn about the use of different types of charts.
 
 We use many different types of charts in our interfaces, and each chart is used to visualize specific cases and data. But before you start visualizing anything, be sure to look up the guidelines for specific charts first.
 

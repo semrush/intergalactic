@@ -23,7 +23,7 @@ The mask helps user to avoid mistakes when entering the required number of chara
 
 @## Appearance
 
-The symbol that reserves space for character, — `_`.
+The symbol that reserves space for character, – `_`.
 
 > The mask has the color of the text, so it is important to add a placeholder to the input. It can reduplicate the mask. Placeholders help the user navigate the form and see which inputs are already filled in.
 

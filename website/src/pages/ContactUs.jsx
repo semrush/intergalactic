@@ -83,7 +83,7 @@ const Contacts = () => {
                 Make sure that issue tracker doesn't contain the similar issue and create one with
                 the steps to reproduce the error.
               </li>
-              <li>Have a solution — great! We'll be happy to review your pull-request.</li>
+              <li>Have a solution – great! We'll be happy to review your pull-request.</li>
               <li>
                 Don't forget to follow
                 <a

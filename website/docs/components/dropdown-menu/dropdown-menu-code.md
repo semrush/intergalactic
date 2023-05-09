@@ -20,7 +20,7 @@ There are several methods of displaying the dropdown menu in the component. We w
 
 We implement it with the help of the combination of two components:
 
-- `DropdownMenu.Popper` — layout of a dropdown window
+- `DropdownMenu.Popper` – layout of a dropdown window
 - `DropdownMenu.List` and [ScrollArea](/components/scroll-area/) with option list styles
 
 This method is good when you need a flexible content customization in a dropdown menu.
