@@ -37,7 +37,7 @@ SDropdownMenuItem[highlighted] {
 
 SDropdownMenuItem[selected] {
   background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
-  box-shadow: 3px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
+  box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
 
   &:hover {
     background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
