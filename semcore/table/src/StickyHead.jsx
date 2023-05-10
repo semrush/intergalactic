@@ -143,12 +143,12 @@ function Head(props, ref) {
   const refTable = useRef(null);
   const { self, styles: tableStyles } = useContext(ContextTable);
   const { tableDOM } = useContext(StickyHeadContext);
-  const [listWidthTh, updateListWidthTh] = useState(calculateWidthTh(tableDOM));
+  const [listWidthTh, setListWidthTh] = useState(calculateWidthTh(tableDOM));
 
   setRef(ref, refTable.current);
 
   const updateWithTh = () => {
-    updateListWidthTh(calculateWidthTh(tableDOM));
+    setListWidthTh(calculateWidthTh(tableDOM));
   };
 
   useEffect(() => {
@@ -275,16 +275,16 @@ function StickyHeadInner(props, ref) {
   const top = typeof offsetTop === 'number' ? offsetTop : parseInt(offsetTop, 10);
   const bottom = typeof offsetBottom === 'number' ? offsetBottom : parseInt(offsetBottom, 10);
 
-  const [positionFixed, updatePositionFixed] = useState('top');
-  const [refScrollContainer, updateRefScrollContainer] = useState(null);
-  const [container, updateContainerNode] = useState(propsContainer);
+  const [positionFixed, setPositionFixed] = useState('top');
+  const [refScrollContainer, setRefScrollContainer] = useState(null);
+  const [container, setContainerNode] = useState(propsContainer);
 
   const { self } = useContext(ContextTable);
   const heightHeader = refScrollContainer ? refScrollContainer.offsetHeight : 0;
   let lastScrollLeft = 0;
 
   const setPositionFixed = (positionFixed) => {
-    updatePositionFixed(positionFixed);
+    setPositionFixed(positionFixed);
     fireFn(onFixed, positionFixed);
   };
 
@@ -377,7 +377,7 @@ function StickyHeadInner(props, ref) {
         getScrollPage();
         document.addEventListener('scroll', getScrollPage);
       } else {
-        updateContainerNode(getScrollParent(getNodeByRef(self.ref)));
+        setContainerNode(getScrollParent(getNodeByRef(self.ref)));
       }
       return () => {
         getScrollPage.cancel();
@@ -451,7 +451,7 @@ function StickyHeadInner(props, ref) {
     <StickyHeadContext.Provider value={{ container, tableDOM }}>
       {createPortal(
         <ContainerStickyCore
-          setRefContainer={updateRefScrollContainer}
+          setRefContainer={setRefScrollContainer}
           positionFixed={positionFixed}
           top={top}
           bottom={bottom}

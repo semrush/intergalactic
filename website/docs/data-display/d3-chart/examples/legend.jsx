@@ -5,7 +5,7 @@ import { Box } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 
 export default () => {
-  const [dataLegend, updateDataLegend] = useState(
+  const [dataLegend, setDataLegend] = useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
       .map((name) => ({ name, checked: true, opacity: false })),
@@ -34,13 +34,13 @@ export default () => {
       return { ...item, opacity: checked };
     });
 
-    updateDataLegend(newDataLegend);
+    setDataLegend(newDataLegend);
   };
 
   const handleMouseEnter = (name) => () => {
     const activeItem = dataLegend.find((item) => item.name === name);
     if (!activeItem.checked) return;
-    updateDataLegend((data) =>
+    setDataLegend((data) =>
       data.map((item) => {
         if (item.name !== name) return { ...item, opacity: true };
         return item;
@@ -48,7 +48,7 @@ export default () => {
     );
   };
   const handleMouseLeave = () => {
-    updateDataLegend(dataLegend.map((item) => ({ ...item, opacity: false })));
+    setDataLegend(dataLegend.map((item) => ({ ...item, opacity: false })));
   };
 
   return (

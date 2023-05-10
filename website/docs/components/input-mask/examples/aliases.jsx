@@ -4,7 +4,8 @@ import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
 export default () => {
-  const [value, changeValue] = useState('99');
+  const [value, setValue] = useState('99');
+
   return (
     <Flex direction="column" gap={2} w={224}>
       <Text tag="label" htmlFor="aliases-example" size="200">
@@ -16,7 +17,7 @@ export default () => {
           aliases={{ x: /[0-9]/ }}
           mask="99xxxx"
           value={value}
-          onChange={changeValue}
+          onChange={setValue}
           aria-describedby="aliases-example-hint"
           title="4-digit number"
         />

@@ -331,7 +331,7 @@ const Table = ({ title }) => {
 };
 
 function Home() {
-  const [value, updateValue] = React.useState('components');
+  const [value, setValue] = React.useState('components');
 
   const tableControls = usePageData('table-group/table-controls');
   const tableStates = usePageData('table-group/table-states');
@@ -425,7 +425,7 @@ function Home() {
             <div className={styles.tabsWrapper}>
               <TabLine
                 underlined={false}
-                onChange={updateValue}
+                onChange={setValue}
                 className={styles.tabs}
                 value={value}
                 size="l"

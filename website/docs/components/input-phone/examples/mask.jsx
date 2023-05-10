@@ -264,14 +264,14 @@ const listActuallyCountryCodes = Object.keys(CountryCodes)
 
 const Demo = () => {
   const inputMaskRef = useRef(null);
-  const [filter, updateFilterValue] = useState('');
-  const [option, updateOption] = useState(listActuallyCountryCodes['Russia']);
-  const [value, updateValue] = useState(option.dial_code);
-  const [valueMask, updateValueMask] = useState(`${option.dial_code} (___)___-____`);
+  const [filter, setFilterValue] = useState('');
+  const [option, setOption] = useState(listActuallyCountryCodes['Zimbabwe']);
+  const [value, setValue] = useState(option.dial_code);
+  const [valueMask, setValueMask] = useState(`${option.dial_code} (___)___-____`);
   let country;
 
   useEffect(() => {
-    updateValueMask(`${option.dial_code} (___)___-____`);
+    setValueMask(`${option.dial_code} (___)___-____`);
   }, [option]);
 
   useEffect(() => {
@@ -287,8 +287,8 @@ const Demo = () => {
         value={option}
         onChange={(value) => {
           country = listActuallyCountryCodes[value];
-          updateOption(country);
-          updateValue(country.dial_code);
+          setOption(country);
+          setValue(country.dial_code);
           inputMaskRef?.current.focus();
         }}
       >
@@ -298,7 +298,7 @@ const Demo = () => {
 
         <Select.Popper>
           <>
-            <InputSearch cleared placeholder="Search" value={filter} onChange={updateFilterValue} />
+            <InputSearch cleared placeholder="Search" value={filter} onChange={setFilterValue} />
 
             <Select.List hMax="240px" w="232px">
               {Object.keys(listActuallyCountryCodes)
@@ -324,7 +324,7 @@ const Demo = () => {
         <InputMask.Value
           ref={inputMaskRef}
           value={value}
-          onChange={updateValue}
+          onChange={setValue}
           mask={valueMask.replace(/_/g, '9')}
         />
         {value !== valueMask && (
@@ -332,7 +332,7 @@ const Demo = () => {
             tag={CloseXS}
             aria-label="Clear value"
             interactive
-            onClick={() => updateValue(valueMask)}
+            onClick={() => setValue(valueMask)}
           />
         )}
       </InputMask>

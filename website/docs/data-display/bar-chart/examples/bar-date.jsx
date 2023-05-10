@@ -3,7 +3,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
 export default () => {
-  const [[width, height], updateSize] = useState([0, 0]);
+  const [[width, height], setSize] = useState([0, 0]);
   const MARGIN = 40;
 
   const xScale = scaleBand()
@@ -24,7 +24,7 @@ export default () => {
     }).format(date);
 
   return (
-    <ResponsiveContainer h={300} onResize={updateSize}>
+    <ResponsiveContainer h={300} onResize={setSize}>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks(4)}>
           <YAxis.Ticks />

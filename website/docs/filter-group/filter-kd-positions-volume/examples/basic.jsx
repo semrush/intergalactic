@@ -42,7 +42,7 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
             min={minRange}
             max={maxRange}
             aria-labelledby={ariaLabelledby}
-            placeholder='From'
+            placeholder="From"
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -54,7 +54,7 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
             min={minRange}
             max={maxRange}
             aria-labelledby={ariaLabelledby}
-            placeholder='To'
+            placeholder="To"
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -81,20 +81,17 @@ const setTriggerText = ({ from, to }) => {
 
 export default () => {
   const [filters, setFilters] = useState(false);
-  const [visible, updateVisible] = useState(false);
-  const [value, changeValue] = useState({
-    from: '',
-    to: '',
-  });
-  const [displayValue, changeDisplayValue] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState({ from: '', to: '' });
+  const [displayValue, setDisplayValue] = useState('');
   const clearAll = () => {
     setFilters(false);
   };
   const applyFilters = () => {
     const { from, to } = value;
-    updateVisible(false);
+    setVisible(false);
     setFilters(from || to ? true : false);
-    changeDisplayValue(setTriggerText(value));
+    setDisplayValue(setTriggerText(value));
   };
   const handleKeyDown = (e) => {
     e.stopPropagation();
@@ -103,15 +100,15 @@ export default () => {
     }
   };
   const handleSelect = (value) => {
-    updateVisible(false);
+    setVisible(false);
     setFilters(true);
-    changeDisplayValue(value);
+    setDisplayValue(value);
   };
 
   return (
-    <Select visible={visible} onVisibleChange={updateVisible} onChange={handleSelect}>
+    <Select visible={visible} onVisibleChange={setVisible} onChange={handleSelect}>
       <Select.Trigger
-        placeholder='KD %'
+        placeholder="KD %"
         active={visible}
         empty={!filters || displayValue === null}
         onClear={clearAll}
@@ -119,7 +116,12 @@ export default () => {
       >
         {`KD ${displayValue} %`}
       </Select.Trigger>
-      <Select.Popper w='224px' role='dialog' aria-label='Filters for page sorting' aria-modal='false'>
+      <Select.Popper
+        w="224px"
+        role="dialog"
+        aria-label="Filters for page sorting"
+        aria-modal="false"
+      >
         <Select.List>
           {[
             ['80-100', 'Very hard'],
@@ -131,12 +133,18 @@ export default () => {
           ))}
         </Select.List>
         <Divider my={1} />
-        <Flex p='4px 8px 16px' direction='column'>
-          <Text id='custom-range' size={200} bold>
+        <Flex p="4px 8px 16px" direction="column">
+          <Text id="custom-range" size={200} bold>
             Custom range
           </Text>
-          <InputRange ariaLabelledby='custom-range' value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
-          <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
+          <InputRange
+            ariaLabelledby="custom-range"
+            value={value}
+            changeValue={setValue}
+            my={2}
+            onKeyDown={handleKeyDown}
+          />
+          <Button use="primary" theme="info" w="100%" onClick={applyFilters}>
             Apply
           </Button>
         </Flex>

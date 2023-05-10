@@ -5,10 +5,10 @@ import Tooltip from '@semcore/ui/tooltip';
 import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
 
 const Demo = () => {
-  const [value, updateValue] = useState(0);
+  const [value, setValue] = useState(0);
 
   return (
-    <TabLine onChange={updateValue} value={value} aria-label="Page">
+    <TabLine onChange={setValue} value={value} aria-label="Page">
       <TabLine.Item value={0}>Overview</TabLine.Item>
       <TabLine.Item value={1}>Issues</TabLine.Item>
       <TabLine.Item value={2}>

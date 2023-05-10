@@ -57,15 +57,15 @@ function SearchIllustrations(props) {
 }
 
 export default function ({ illustrations, json }) {
-  const [inputValue, updateInputValue] = useState('');
-  const [filterIllustrations, updatefilterIllustrations] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [filterIllustrations, setFilterIllustrations] = useState([]);
 
   return (
     <>
       {
         <SearchIllustrations
-          filteredIllustrations={updatefilterIllustrations}
-          onChangeValue={updateInputValue}
+          filteredIllustrations={setFilterIllustrations}
+          onChangeValue={setInputValue}
         />
       }
 

@@ -77,10 +77,10 @@ let data = [
 data.forEach((d) => (data = shuffle(data.concat(data))));
 
 const Demo = () => {
-  const [top, updateTop] = useState(0);
+  const [top, setTop] = useState(0);
   useEffect(() => {
     const header = document.getElementsByTagName('header')[0];
-    header && updateTop(header.offsetHeight);
+    header && setTop(header.offsetHeight);
   }, []);
 
   return (
