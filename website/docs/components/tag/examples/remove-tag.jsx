@@ -3,12 +3,12 @@ import Tag from '@semcore/ui/tag';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
+  const [tags, setTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
 
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget.parentElement;
-    let allTags = [...tags];
-    updateTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
+    const allTags = [...tags];
+    setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
 
     return false;
   };

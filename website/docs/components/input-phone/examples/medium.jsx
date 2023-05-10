@@ -4,19 +4,19 @@ import Flag from '@semcore/ui/flags';
 import CloseXS from '@semcore/ui/icon/Close/m';
 
 const Demo = () => {
-  const [value, updateValue] = useState('+1');
+  const [value, setValue] = useState('+1');
   return (
     <Input w={180}>
       <Input.Addon>
         <Flag iso2="US" />
       </Input.Addon>
-      <Input.Value value={value} onChange={(v) => updateValue(v)} />
+      <Input.Value value={value} onChange={(v) => setValue(v)} />
       {value > 2 && (
         <Input.Addon
           tag={CloseXS}
           interactive
           aria-label="Clear field"
-          onClick={() => updateValue('+1')}
+          onClick={() => setValue('+1')}
         />
       )}
     </Input>

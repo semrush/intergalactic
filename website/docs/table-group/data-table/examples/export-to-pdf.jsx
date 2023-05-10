@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Button from '@semcore/ui/button';
 import FileExportXS from '@semcore/ui/icon/FileExport/m';
 import DataTable from '@semcore/ui/data-table';
 
-const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
+const extensions = ['PNG', 'JPEG', 'WEBP'];
 
 export default () => {
-  const [visible, updateVisible] = useState(false);
-  const [linkElements, updateLinkElements] = useState(
-    EXPORTS.map((name) => ({ key: name, children: name })),
+  const initialLinkElements = useMemo(
+    () => extensions.map((name) => ({ key: name, children: name })),
+    [],
   );
+  const [linkElements, setLinkElements] = useState(initialLinkElements);
 
   const svg = React.createRef();
   const download = React.createRef();
@@ -24,7 +25,7 @@ export default () => {
     svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
     svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
 
-    EXPORTS.forEach((name, ind) => {
+    extensions.forEach((name, ind) => {
       const format = name.toLowerCase();
       svgString2Image(svgString, 2 * width, 2 * height, format, save);
 
@@ -35,7 +36,7 @@ export default () => {
           href: image,
         };
 
-        updateLinkElements([...linkElements]);
+        setLinkElements([...linkElements]);
       }
     });
   };
@@ -54,7 +55,7 @@ export default () => {
           </DataTable>
         </foreignObject>
       </svg>
-      <DropdownMenu onVisibleChange={updateVisible}>
+      <DropdownMenu>
         <DropdownMenu.Trigger tag={Button} ml={4}>
           <Button.Addon>
             <FileExportXS />
@@ -63,7 +64,7 @@ export default () => {
         </DropdownMenu.Trigger>
         <DropdownMenu.Popper wMax="257px">
           <DropdownMenu.List ref={download}>
-            {EXPORTS.map((name, ind) => (
+            {extensions.map((name, ind) => (
               <DropdownMenu.Item tag="a" {...linkElements[ind]} />
             ))}
           </DropdownMenu.List>
@@ -113,7 +114,7 @@ function getSVGString(svgNode) {
 
   const serializer = new XMLSerializer();
 
-  let svgString = serializer.serializeToString(svgNode);
+  const svgString = serializer.serializeToString(svgNode);
   return svgString;
 
   function getCSSStyles(parentElement) {

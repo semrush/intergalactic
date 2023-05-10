@@ -6,11 +6,11 @@ import { Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 
 export default () => {
-  const [visible, updateVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <Button onClick={() => updateVisible(!visible)}>
+      <Button onClick={() => setVisible(!visible)}>
         {visible ? 'Close' : 'Open'} Global Notice
       </Button>
       <Portal>
@@ -30,7 +30,7 @@ export default () => {
           <NoticeGlobal.CloseIcon
             interactive={false}
             color="white"
-            onClick={() => updateVisible(false)}
+            onClick={() => setVisible(false)}
           />
         </NoticeGlobal>
       </Portal>

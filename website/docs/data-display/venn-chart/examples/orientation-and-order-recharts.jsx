@@ -14,14 +14,11 @@ const orientations = {
 };
 
 const Demo = () => {
-  const [orientation, changeOrientation] = useState(Math.PI / 2);
-  const [order, changeOrder] = useState('default');
-  const handleOrientationChange = () => {
-    changeOrientation(orientation === Math.PI / 2 ? Math.PI : Math.PI / 2);
-  };
-  const handleOrderChange = () => {
-    changeOrder(order === 'default' ? 'custom' : 'default');
-  };
+  const [orientation, setOrientation] = useState(Math.PI / 2);
+  const [order, setOrder] = useState('default');
+  const handleOrientationChange = () =>
+    setOrientation(orientation === Math.PI / 2 ? Math.PI : Math.PI / 2);
+  const handleOrderChange = () => setOrder(order === 'default' ? 'custom' : 'default');
   return (
     <div>
       <ResponsiveContainer height={200}>

@@ -41,7 +41,7 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
             min={minRange}
             max={maxRange}
             aria-labelledby={ariaLabelledby}
-            placeholder='From'
+            placeholder="From"
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -53,7 +53,7 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
             min={minRange}
             max={maxRange}
             aria-labelledby={ariaLabelledby}
-            placeholder='To'
+            placeholder="To"
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -77,18 +77,15 @@ const setTriggerText = ({ from, to }) => {
 
 export default () => {
   const [filters, setFilters] = useState(false);
-  const [visible, updateVisible] = useState(false);
-  const [value, changeValue] = useState({
-    from: '',
-    to: '',
-  });
-  const [displayValue, changeDisplayValue] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState({ from: '', to: '' });
+  const [displayValue, setDisplayValue] = useState('');
   const clearAll = () => setFilters(0);
   const applyFilters = () => {
     const { from, to } = value;
-    updateVisible(false);
+    setVisible(false);
     setFilters(!!(from || to));
-    changeDisplayValue(setTriggerText(value));
+    setDisplayValue(setTriggerText(value));
   };
 
   const handleKeyDown = (e) => {
@@ -98,21 +95,33 @@ export default () => {
   };
 
   return (
-    <Dropdown visible={visible} onVisibleChange={updateVisible}>
+    <Dropdown visible={visible} onVisibleChange={setVisible}>
       <Dropdown.Trigger
-        placeholder='Competitive Density'
+        placeholder="Competitive Density"
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
       >
         {`Com.: ${displayValue}`}
       </Dropdown.Trigger>
-      <Dropdown.Popper w='224px' p='8px 8px 16px' role='dialog' aria-labelledby='title-CD' aria-modal='false'>
-        <Text id='title-CD' size={200} bold>
+      <Dropdown.Popper
+        w="224px"
+        p="8px 8px 16px"
+        role="dialog"
+        aria-labelledby="title-CD"
+        aria-modal="false"
+      >
+        <Text id="title-CD" size={200} bold>
           Custom range
         </Text>
-        <InputRange ariaLabelledby='title-CD' value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
-        <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
+        <InputRange
+          ariaLabelledby="title-CD"
+          value={value}
+          changeValue={setValue}
+          my={2}
+          onKeyDown={handleKeyDown}
+        />
+        <Button use="primary" theme="info" w="100%" onClick={applyFilters}>
           Apply
         </Button>
       </Dropdown.Popper>

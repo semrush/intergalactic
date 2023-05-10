@@ -43,10 +43,10 @@ class MediaList {
 
 function createBreakpoints(media) {
   function Breakpoints({ children }) {
-    const [index, updateIndex] = useState(Breakpoints.mediaList.matches());
+    const [index, setIndex] = useState(Breakpoints.mediaList.matches());
 
     useEffect(
-      () => Breakpoints.mediaList.addListener(() => updateIndex(Breakpoints.mediaList.matches())),
+      () => Breakpoints.mediaList.addListener(() => setIndex(Breakpoints.mediaList.matches())),
       [],
     );
 

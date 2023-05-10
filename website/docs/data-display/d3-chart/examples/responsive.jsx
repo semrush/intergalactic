@@ -3,7 +3,7 @@ import { scaleLinear } from 'd3-scale';
 import { Line, minMax, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
 export default () => {
-  const [[width, height], updateSize] = useState([0, 0]);
+  const [[width, height], setSize] = useState([0, 0]);
   const MARGIN = 40;
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
@@ -13,7 +13,7 @@ export default () => {
     .domain([0, 10]);
 
   return (
-    <ResponsiveContainer h={300} onResize={updateSize}>
+    <ResponsiveContainer h={300} onResize={setSize}>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />

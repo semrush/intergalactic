@@ -8,21 +8,21 @@ const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 const defaultTags = ['bob@vk.com', 'wolf@instagram.dot', 'fekla@fk.com', 'tuz@twitter.net'];
 
 const Demo = () => {
-  const [tags, updateTags] = useState(defaultTags);
-  const [value, updateValue] = useState('');
+  const [tags, setTags] = useState(defaultTags);
+  const [value, setValue] = useState('');
 
   const changeState = (tags, value) => {
     if (tags !== undefined) {
-      updateTags(tags);
+      setTags(tags);
     }
     if (value !== undefined) {
-      updateValue(() => value);
+      setValue(() => value);
     }
   };
 
   const handleAppendTags = (newTags) => {
-    updateTags((tags) => [...tags, ...newTags]);
-    updateValue(() => '');
+    setTags((tags) => [...tags, ...newTags]);
+    setValue(() => '');
   };
 
   const handleRemoveTag = () => {

@@ -9,9 +9,9 @@ import { ButtonTrigger } from '@semcore/ui/base-trigger';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [selected, updateSelected] = React.useState(false);
-  const [selectedValue, updateSelectedValue] = React.useState([]);
-  const [selectedFirst, updateSelectedFirst] = React.useState(0);
+  const [selected, setSelected] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState([]);
+  const [selectedFirst, setSelectedFirst] = React.useState(0);
   const defaultValues = {
     export: 'all',
   };
@@ -37,25 +37,25 @@ const Demo = () => {
       }
     }
     reset(defaultValues);
-    updateSelected(false);
-    updateSelectedValue([]);
-    updateSelectedFirst(0);
+    setSelected(false);
+    setSelectedValue([]);
+    setSelectedFirst(0);
     alert(JSON.stringify(data));
   };
 
   const optionsFirst = [100, 500].map((value) => ({ value, children: value }));
   const onChangeSelect = (value) => {
     reset({ export: 'first' });
-    updateSelectedFirst(value);
+    setSelectedFirst(value);
   };
   const onChangCheckbox = (checked, e) => {
     const { value } = e.target;
     const tmpArray = checked ? [...selectedValue, value] : selectedValue.filter((v) => v !== value);
     tmpArray.length && reset({ export: 'selected' });
-    updateSelectedValue(tmpArray);
+    setSelectedValue(tmpArray);
   };
   const onSelectedRadio = () => {
-    updateSelected(!selected);
+    setSelected(!selected);
   };
 
   return (
