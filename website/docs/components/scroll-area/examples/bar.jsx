@@ -20,7 +20,7 @@ const Block = styled.div`
   background-color: ${() => getRandomColor()};
 `;
 
-function Demo() {
+const Demo = () => {
   const containerRef = useRef();
   return (
     <Flex>
@@ -52,6 +52,6 @@ function Demo() {
       </Box>
     </Flex>
   );
-}
+};
 
 export default Demo;

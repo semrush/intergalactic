@@ -10,7 +10,7 @@ function dateToClosestWeek(date) {
   return [startWeek, endWeek];
 }
 
-function Demo() {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState([]);
   const [highlighted, setHighlighted] = useState([]);
@@ -67,6 +67,6 @@ function Demo() {
       </DateRangePicker.Popper>
     </DateRangePicker>
   );
-}
+};
 
 export default Demo;

@@ -9,7 +9,7 @@ function randomInteger(min, max) {
   return rand;
 }
 
-function Demo() {
+const Demo = () => {
   return (
     <DatePicker>
       <DatePicker.InputTrigger />
@@ -36,6 +36,6 @@ function Demo() {
       </DatePicker.Popper>
     </DatePicker>
   );
-}
+};
 
 export default Demo;

@@ -5,7 +5,7 @@ import Modal from '@semcore/ui/modal';
 const DEFAULT_TEXT =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque commodi corporis culpa, eius error impedit itaque minus nemo nostrum numquam odio omnis sapiente soluta temporibus vel voluptatibus? Exercitationem?';
 
-function Demo() {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [text, setText] = useState(DEFAULT_TEXT);
   useEffect(() => {
@@ -30,6 +30,6 @@ function Demo() {
       </Modal>
     </React.Fragment>
   );
-}
+};
 
 export default Demo;

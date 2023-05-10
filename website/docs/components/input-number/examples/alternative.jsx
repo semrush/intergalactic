@@ -4,7 +4,7 @@ import InputNumber from '@semcore/ui/input-number';
 import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
 
-function Demo() {
+const Demo = () => {
   const [value, setValue] = useState('');
   const inputRef = useRef(null);
 
@@ -36,6 +36,6 @@ function Demo() {
       </NeighborLocation>
     </Flex>
   );
-}
+};
 
 export default Demo;

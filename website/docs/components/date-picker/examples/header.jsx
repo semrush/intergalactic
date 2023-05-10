@@ -1,7 +1,7 @@
 import React from 'react';
 import { DatePicker } from '@semcore/ui/date-picker';
 
-function Demo() {
+const Demo = () => {
   return (
     <DatePicker>
       <DatePicker.InputTrigger />
@@ -22,6 +22,6 @@ function Demo() {
       </DatePicker.Popper>
     </DatePicker>
   );
-}
+};
 
 export default Demo;

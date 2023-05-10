@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DatePicker, DateRangePicker } from '@semcore/ui/date-picker';
 import { Box, Flex } from '@semcore/ui/flex-box';
 
-function Demo() {
+const Demo = () => {
   const [value, setValue] = useState(new Date('06/29/2020'));
   const [valueRange, setValueRange] = useState([]);
 
@@ -22,6 +22,6 @@ function Demo() {
       </Box>
     </Flex>
   );
-}
+};
 
 export default Demo;
