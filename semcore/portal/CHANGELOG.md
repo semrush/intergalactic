@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.5] - 2023-05-10
+
+### Fixed
+
+- Fixed SSR when `ignorePortalsStacking` is turned on.
+
 ## [2.6.4] - 2023-05-04
 
 ### Changed
