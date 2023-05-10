@@ -283,11 +283,6 @@ function StickyHeadInner(props, ref) {
   const heightHeader = refScrollContainer ? refScrollContainer.offsetHeight : 0;
   let lastScrollLeft = 0;
 
-  const setPositionFixed = (positionFixed) => {
-    setPositionFixed(positionFixed);
-    fireFn(onFixed, positionFixed);
-  };
-
   const getPositionContainer = (container) => {
     if (!container || !container.getBoundingClientRect) {
       return { top: undefined, bottom: undefined, left: undefined };
@@ -314,6 +309,7 @@ function StickyHeadInner(props, ref) {
 
   const updatePositionContainer = (coordinate, position) => {
     setPositionFixed(position);
+    fireFn(onFixed, positionFixed);
     setLeftPositionContainerSticky(coordinate.left, position);
   };
 
