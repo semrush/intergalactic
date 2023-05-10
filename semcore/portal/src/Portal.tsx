@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useState, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import createComponent, { IFunctionProps, register } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
@@ -28,10 +28,13 @@ function Portal(props: IFunctionProps<IPortalProps>) {
   const [mountNode, setMountNode] = useState(initialMountNode);
 
   useEffect(() => {
-    if (!disablePortal) {
-      setMountNode(initialMountNode);
+    if (disablePortal) return;
+    if (ignorePortalsStacking) {
+      setMountNode(canUseDOM() ? document.body : null);
+      return;
     }
-  }, [disablePortal, initialMountNode]);
+    setMountNode(getNodeByRef(container));
+  }, [container, disablePortal]);
 
   if (disablePortal) {
     return <Children />;
