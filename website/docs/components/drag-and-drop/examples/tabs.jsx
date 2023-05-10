@@ -22,7 +22,7 @@ const titles = {
   social: 'LinkedIn',
 };
 
-function Demo() {
+const Demo = () => {
   const [tabs, setTabs] = React.useState(['overview', 'issues', 'social']);
   const [currentTab, setCurrentTab] = React.useState('overview');
   const handleDnD = React.useCallback(({ fromIndex, toIndex }) => {
@@ -44,6 +44,6 @@ function Demo() {
       ))}
     </DnD>
   );
-}
+};
 
 export default Demo;
