@@ -1,3 +1,22 @@
+## [13.27.2] - 2023-05-10
+
+### @semcore/divider
+
+- **Changed** Role `separator` and `aria-orientation` were added for better accessability.
+
+### @semcore/portal
+
+- **Fixed** Fixed SSR when `ignorePortalsStacking` is turned on.
+
+### @semcore/tooltip
+
+- **Fixed** Screen reader tooltip content updates correctly on change
+- **Changed** Changed content layout for screen reader. Now it's in `Tooltip.Popper`
+
+### @semcore/utils
+
+- **Fixed** Made automatic focus return more friendly for modals and side panels.
+
 ## [13.27.1] - 2023-05-04
 
 ### @semcore/badge
