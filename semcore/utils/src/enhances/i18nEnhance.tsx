@@ -25,7 +25,7 @@ const escapeHtml = (html: string) =>
 
 export function interpolate(template: string, variables: {} = {}) {
   return template.replace(interpolationRegex, (_, key) => {
-    if (variables[key]) {
+    if (variables[key] !== undefined) {
       return escapeHtml(variables[key]);
     }
     return _;

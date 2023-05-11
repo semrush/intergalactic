@@ -38,5 +38,6 @@
   "view-go-to-table": "跳到图示数据表",
   "view-data-summary": "数据摘要",
   "view-summary-placeholder": "生成图表数据摘要",
-  "view-table": "数据表"
+  "view-table": "数据表",
+  "data-not-available": "n/a"
 }

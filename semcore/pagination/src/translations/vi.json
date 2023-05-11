@@ -1,6 +1,8 @@
 {
   "prevPageLabel": "Trước",
+  "prevPageDescription": "Trang trước {pageNumber}",
   "nextPageLabel": "Tiếp",
+  "nextPageDescription": "Trang tiếp theo {pageNumber}",
   "pageInputLabel": "Trang:",
   "totalPagesLabel": "của",
   "pagination": "Phân trang",

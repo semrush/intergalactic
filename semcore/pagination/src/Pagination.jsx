@@ -13,8 +13,6 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 import style from './style/pagination.shadow.css';
 
-const KEY_ENTER = 13;
-
 function formatThousands(value) {
   const main = String(value);
   const length = main.length;
@@ -113,9 +111,7 @@ class PaginationRoot extends Component {
   };
 
   handlePageInputKeyDown = (event) => {
-    if (event.keyCode !== KEY_ENTER) {
-      return;
-    }
+    if (event.code !== 'Enter') return;
     const dirtyCurrentPage = this.getDirtyCurrentPage();
     this.handlePageChange(dirtyCurrentPage);
   };
@@ -213,6 +209,22 @@ class FirstPage extends Component {
   }
 }
 
+class PrevPage extends Component {
+  static defaultProps = (props) => ({
+    children: props.getI18nText('prevPageLabel'),
+  });
+
+  render() {
+    const SPrevPage = Root;
+    const { currentPage, getI18nText } = this.asProps;
+    return sstyled(this.asProps.styles)(
+      <SPrevPage
+        render={Button}
+        aria-label={getI18nText('prevPageDescription', { pageNumber: currentPage - 1 })}
+      />,
+    );
+  }
+}
 class NextPage extends Component {
   static defaultProps = (props) => ({
     children: props.getI18nText('nextPageLabel'),
@@ -226,24 +238,7 @@ class NextPage extends Component {
         render={Button}
         use="primary"
         theme="info"
-        aria-label={getI18nText('goToPage', { pageNumber: currentPage + 1 })}
-      />,
-    );
-  }
-}
-
-class PrevPage extends Component {
-  static defaultProps = (props) => ({
-    children: props.getI18nText('prevPageLabel'),
-  });
-
-  render() {
-    const SPrevPage = Root;
-    const { currentPage, getI18nText } = this.asProps;
-    return sstyled(this.asProps.styles)(
-      <SPrevPage
-        render={Button}
-        aria-label={getI18nText('goToPage', { pageNumber: currentPage - 1 })}
+        aria-label={getI18nText('nextPageDescription', { pageNumber: currentPage + 1 })}
       />,
     );
   }

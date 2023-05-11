@@ -4,8 +4,10 @@ import InlineInput from '@semcore/ui/inline-input';
 const Example = () => {
   return (
     <InlineInput onBlurBehavior="cancel" onCancel={console.log} onChange={console.log}>
-      <InlineInput.Addon id="label" la>user name:</InlineInput.Addon>
-      <InlineInput.Value aria-labelledby="label" defaultValue="Hello world" onConfirm={console.log} />
+      <InlineInput.Addon htmlFor="basic-example" tag="label">
+        user name:
+      </InlineInput.Addon>
+      <InlineInput.Value id="basic-example" defaultValue="Hello world" onConfirm={console.log} />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>

@@ -24,10 +24,11 @@ export const serializeComponentChangelog = (changelogs: Changelog[]): Token[] =>
       if (!prevChangelog || prevChangelog.changes.length === 0 || changelog.changes.length === 0)
         return true;
 
-      const prevChangelogIsAutomatic = prevChangelog.changes.every((change) => change.isAutomatic);
-      const changelogIsAutomatic = changelog.changes.every((change) => change.isAutomatic);
+      return true;
+      // const prevChangelogIsAutomatic = prevChangelog.changes.every((change) => change.isAutomatic);
+      // const changelogIsAutomatic = changelog.changes.every((change) => change.isAutomatic);
 
-      return !(prevChangelogIsAutomatic && changelogIsAutomatic);
+      // return !(prevChangelogIsAutomatic && changelogIsAutomatic);
     })
     .map((changelog): Token[] => {
       const versionHeading: Token = {

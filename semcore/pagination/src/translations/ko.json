@@ -1,6 +1,8 @@
 {
   "prevPageLabel": "이전",
+  "prevPageDescription": "이전 페이지 {pageNumber}",
   "nextPageLabel": "다음",
+  "nextPageDescription": "다음 페이지 {pageNumber}",
   "pageInputLabel": "페이지:",
   "totalPagesLabel": "/",
   "pagination": "페이지 지정",

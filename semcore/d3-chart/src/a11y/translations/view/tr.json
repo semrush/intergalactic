@@ -38,5 +38,6 @@
   "view-go-to-table": "Veri tablosu çizmeye geç",
   "view-data-summary": "Veri özeti",
   "view-summary-placeholder": "Grafik veri özeti oluşturuluyor",
-  "view-table": "Veri tablosu"
+  "view-table": "Veri tablosu",
+  "data-not-available": "n/a"
 }
