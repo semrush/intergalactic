@@ -402,6 +402,7 @@ class Popper extends Component {
       popper: this.popper,
       focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
       disableEnforceFocus,
+      tabIndex: interaction === 'hover' ? -1 : 1,
     };
   }
 
