@@ -256,7 +256,7 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} role="combobox" />
+          <Select.Trigger {...other} />
           <Select.Menu>
             {options.map((option) => {
               return (
