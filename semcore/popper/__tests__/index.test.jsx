@@ -196,17 +196,17 @@ describe('focus control', () => {
     );
 
     fireEvent.keyDown(document.body, { code: 'Tab' });
-    fireEvent.focusOut(document.body);
+    fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(getByTestId('input-in-popper')).toHaveFocus();
 
     fireEvent.keyDown(document.body, { code: 'Tab' });
-    fireEvent.focusOut(document.body);
+    fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(getByTestId('input-in-popper')).toHaveFocus();
 
     fireEvent.keyDown(document.body, { code: 'Tab' });
-    fireEvent.focusOut(document.body);
+    fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(getByTestId('input-in-popper')).toHaveFocus();
   });
