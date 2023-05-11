@@ -2,23 +2,21 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.4.8] - 2023-05-04
+## [5.4.10] - 2023-05-10
+
+### Fixed
+
+- Screen reader tooltip content updates correctly on change
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/popper` [4.17.6 ~> 4.17.7]).
+- Changed content layout for screen reader. Now it's in `Tooltip.Popper`
 
-## [5.4.6] - 2023-05-02
-
-## [5.4.5] - 2023-04-26
-
-## [5.4.4] - 2023-04-24
-
-## [5.4.3] - 2023-04-17
+## [5.4.9] - 2023-05-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/popper` [4.17.1 ~> 4.17.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/popper` [4.17.7 ~> 4.17.8]).
 
 ## [5.4.2] - 2023-04-11
 

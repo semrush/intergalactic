@@ -62,7 +62,7 @@ export default () => {
 };
 
 const ChartExample = () => {
-  const [[width, height], updateSize] = useState([0, 0]);
+  const [[width, height], setSize] = useState([0, 0]);
   const MARGIN = 40;
   const dataChart = Array(20)
     .fill({})
@@ -77,7 +77,7 @@ const ChartExample = () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
   return (
-    <ResponsiveContainer h={300} onResize={updateSize}>
+    <ResponsiveContainer h={300} onResize={setSize}>
       <Plot data={dataChart} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
           <YAxis.Ticks />

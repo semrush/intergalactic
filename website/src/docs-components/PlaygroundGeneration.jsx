@@ -117,14 +117,15 @@ Playground.createWidget(
 );
 
 const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
-  const [color, changeColor] = useState(backgroundColor || 'white');
+  const [color, setColor] = useState(backgroundColor || 'white');
+
   return (
     <RadioGroup
       aria-hidden="true"
       name="background-color"
       value={color}
       onChange={(color) => {
-        changeColor(color);
+        setColor(color);
         onChange(color);
       }}
     >

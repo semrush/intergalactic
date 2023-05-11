@@ -36,11 +36,11 @@ const data = Array(200)
   .reverse();
 
 const Demo = () => {
-  const [period, handlePeriod] = useState('3');
-  const [smooth, updateSmooth] = useState(true);
-  const [dot, updateDot] = useState(false);
-  const [lines, updateLines] = useState(['organic', 'paid']);
-  const [opacity, updateOpacity] = useState({});
+  const [period, setPeriod] = useState('3');
+  const [smooth, setSmooth] = useState(true);
+  const [dot, setDot] = useState(false);
+  const [lines, setLines] = useState(['organic', 'paid']);
+  const [opacity, setOpacity] = useState({});
 
   const handleMouseEnter = (entry) => {
     const { dataKey } = entry;
@@ -48,14 +48,14 @@ const Demo = () => {
       opacity[dataKey] = 0.3;
     });
     opacity[dataKey] = 1;
-    updateOpacity({ ...opacity });
+    setOpacity({ ...opacity });
   };
 
   const handleMouseLeave = () => {
     Object.keys(opacity).forEach((dataKey) => {
       opacity[dataKey] = 1;
     });
-    updateOpacity({ ...opacity });
+    setOpacity({ ...opacity });
   };
 
   const chooseLines = (entry) => {
@@ -66,7 +66,7 @@ const Demo = () => {
     } else {
       newLines = [...newLines, dataKey];
     }
-    updateLines(newLines);
+    setLines(newLines);
   };
   const getDataByPeriod = (data, period) => {
     const month = Number(period);
@@ -104,7 +104,7 @@ const Demo = () => {
                 </Box>
                 <Box ml="auto">
                   <Switch size="m" theme="success">
-                    <Switch.Value checked={smooth} onChange={() => updateSmooth(!smooth)} />
+                    <Switch.Value checked={smooth} onChange={() => setSmooth(!smooth)} />
                   </Switch>
                 </Box>
               </Flex>
@@ -114,7 +114,7 @@ const Demo = () => {
                 </Box>
                 <Box ml="auto">
                   <Switch size="m" theme="success">
-                    <Switch.Value checked={dot} onChange={() => updateDot(!dot)} />
+                    <Switch.Value checked={dot} onChange={() => setDot(!dot)} />
                   </Switch>
                 </Box>
               </Flex>
@@ -132,7 +132,7 @@ const Demo = () => {
               onMouseLeave={handleMouseLeave}
               onChange={chooseLines}
             />
-            <TabLine value={period} onChange={handlePeriod} size="m" underlined={false} w="auto">
+            <TabLine value={period} onChange={setPeriod} size="m" underlined={false} w="auto">
               <TabLine.Item value="1" mx={2}>
                 <Box pb={1}>1M</Box>
               </TabLine.Item>

@@ -15,17 +15,14 @@ const Demo = () => {
     day_week: 'Monday',
     emails: ['first@react.hook.form', 'first@react.hook.form'],
   };
-  const { register, handleSubmit, getValues, setValue, control, setError, errors, reset } = useForm(
-    {
-      defaultValues,
-    },
-  );
-  const [valueTag, updateValueTag] = React.useState('');
+  const { handleSubmit, getValues, setValue, control, setError, errors, reset } = useForm({
+    defaultValues,
+  });
+  const [valueTag, setValueTag] = React.useState('');
 
   const changeInputTagsValue = (value) => {
-    const emails = getValues('emails');
     reset(defaultValues);
-    updateValueTag(value);
+    setValueTag(value);
   };
 
   const onSubmit = (data) => {

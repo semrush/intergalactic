@@ -4,7 +4,7 @@ import Card from '@semcore/ui/card';
 import { Row, Col } from '@semcore/ui/grid';
 
 const titles = { backlink: 'Backlink', keyword: 'Keyword', seo: 'On Page SEO' };
-function Demo() {
+const Demo = () => {
   const [items, setItems] = React.useState(['backlink', 'keyword', 'seo']);
   const [saved, setSaved] = React.useState({});
   const handleDnD = React.useCallback(({ fromId, toId }) => {
@@ -53,6 +53,6 @@ function Demo() {
         ))}
     </DnD>
   );
-}
+};
 
 export default Demo;

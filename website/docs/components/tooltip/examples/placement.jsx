@@ -11,7 +11,7 @@ const styleBox = {
   padding: '60px',
 };
 
-function Demo() {
+const Demo = () => {
   const placements = [
     'top-start',
     'top',
@@ -43,6 +43,6 @@ function Demo() {
       })}
     </Box>
   );
-}
+};
 
 export default Demo;

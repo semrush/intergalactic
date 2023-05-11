@@ -24,7 +24,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 @## Appearance
 
-If you have two categories of values, you can place them next to each other — this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (e.g., a stacked bar chart).
+If you have two categories of values, you can place them next to each other – this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (e.g., a stacked bar chart).
 
 > It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data does not turn into mess.
 

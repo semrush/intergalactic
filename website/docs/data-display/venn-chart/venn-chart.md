@@ -11,7 +11,7 @@ tabName: Design
 **Venn chart** shows the relationship and intersections between two (or sometimes more) data sets. This chart type is also called a **set chart**.
 
 - Each circle in such a chart is a set of data.
-- The circles overlapping area is called the "intersection area", — it shows data with common qualities from all intersecting sets.
+- The circles overlapping area is called the "intersection area", – it shows data with common qualities from all intersecting sets.
 - This chart type focuses on how much different groups of sets have in common (or how different they are).
 
 > Keep in mind that when comparing more than 2 sets on one chart, the chart may become unreadable.
@@ -98,7 +98,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Value less than 1%
 
-Show circle with the minimum size — 12px \* 12px.
+Show circle with the minimum size – 12px * 12px.
 
 ![](static/venn-min.png)
 

@@ -58,14 +58,14 @@ const ResizeableTitle = (props) => {
 };
 
 const DemoResize = () => {
-  const [columns, updateColumns] = useState([...new Array(11)].map((_, ind) => ({ width: 90 })));
+  const [columns, setColumns] = useState([...new Array(11)].map((_, ind) => ({ width: 90 })));
 
   const handleResize =
     (index) =>
     (e, { size }) => {
       const nextColumns = [...columns];
       nextColumns[index] = { width: size.width };
-      updateColumns(nextColumns);
+      setColumns(nextColumns);
     };
 
   return (

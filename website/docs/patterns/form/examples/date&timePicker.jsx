@@ -8,7 +8,7 @@ import Checkbox from '@semcore/ui/checkbox';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [period, updatePeriod] = React.useState(false);
+  const [period, setPeriod] = React.useState(false);
   const defaultValues = {
     start_date: new Date(),
     start_time: '12:00',
@@ -64,7 +64,7 @@ const Demo = () => {
       </Flex>
 
       <Checkbox mb={4} size="l">
-        <Checkbox.Value onChange={updatePeriod} />
+        <Checkbox.Value onChange={setPeriod} />
         <Checkbox.Text>Period</Checkbox.Text>
       </Checkbox>
 

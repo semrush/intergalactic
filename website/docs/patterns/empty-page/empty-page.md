@@ -16,7 +16,7 @@ Commonly, the user faces this state, when certain actions are required to start 
 
 @## Default styles
 
-1. Illustration is always located to the left of the message and size — 300px * 230px.
+1. Illustration is always located to the left of the message and size – 300px * 230px.
 2. For title use text with 20px size (`--fs-400`, `--lh-400`).
 3. For the description use 14px size (`--fs-200`, `-lh-200` tokens). Use this font-size carefully, and always check it's readability and contrast against background.
 4. For CTA use button with `use:"primary"` and M size.

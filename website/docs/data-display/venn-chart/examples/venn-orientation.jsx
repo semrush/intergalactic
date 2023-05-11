@@ -11,8 +11,8 @@ const orders = [
 const orientations = [Math.PI / 2, Math.PI];
 
 export default () => {
-  const [orientation, changeOrientation] = useState(0);
-  const [order, changeOrder] = useState(0);
+  const [orientation, setOrientation] = useState(0);
+  const [order, setOrder] = useState(0);
 
   return (
     <Flex alignItems="center" direction="column">
@@ -24,10 +24,10 @@ export default () => {
         </Venn>
       </Plot>
       <Flex direction="row">
-        <Button onClick={() => changeOrientation(Number(!orientation))} mr={2}>
+        <Button onClick={() => setOrientation(Number(!orientation))} mr={2}>
           Change orientation
         </Button>
-        <Button onClick={() => changeOrder(Number(!order))}>Change order</Button>
+        <Button onClick={() => setOrder(Number(!order))}>Change order</Button>
       </Flex>
     </Flex>
   );

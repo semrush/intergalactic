@@ -37,7 +37,7 @@ You can add addons before and after the link text. Addons have 4px margin from t
 | State         | Appearance                                        | Description                                                                                                                                                                                                     | Cursor    |
 | ------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | Normal        | ![](static/default.png)                     | Link use `--text-link` token for color, without underline.                                                                                                                                                      | `pointer` |
-| Active/hover  | ![](static/hover-active.png)                 | Link changes its color to `--text-link-hover-active`. A solid underline appears. If the link is used together with the icon, then the icon will change its color with the text — they have the same active zone. | `pointer` |
+| Active/hover  | ![](static/hover-active.png)                 | Link changes its color to `--text-link-hover-active`. A solid underline appears. If the link is used together with the icon, then the icon will change its color with the text – they have the same active zone. | `pointer` |
 | Disabled      | ![](static/disabled.png)                  | The component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                                      | `default` |
 | Visited       | ![](static/default-visited.png)            | Link use `--text-link-visited` token for color. This state is an optional.                                                                                                                                      | `pointer` |
 | Visited (hover) | ![](static/hover-active-visited.png) | Link use `--text-link-visited` token for color with a solid underline. This state is optional.                                                                                                                  | `pointer` |
@@ -50,7 +50,7 @@ Hided this section because it's for the dark theme.
 | State         | Appearance                                               | Description                                                                                                                                                                                   | Cursor    |
 | ------------- | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
 | Normal        | ![normal](static/default-invert.png)                     | Link has `--blue-200` color, without underline.                                                                                                                                               | `pointer` |
-| Active/hover  | ![hover](static/hover-active-invert.png)                 | Link changes its color to `--blue-300`. A solid underline appears. If the link is used together with the icon, then the icon changes its color with the text — they have the same active zone. | `pointer` |
+| Active/hover  | ![hover](static/hover-active-invert.png)                 | Link changes its color to `--blue-300`. A solid underline appears. If the link is used together with the icon, then the icon changes its color with the text – they have the same active zone. | `pointer` |
 | Disabled      | ![hover](static/disabled-invert.png)                     | he component changes its transparency from 100% to 30%. Use this state as a last resort and be sure to add tooltip with a message to the `disabled` link.                                     | `pointer` |
 | visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
 | visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
@@ -83,13 +83,13 @@ Always add quotation marks inside the link.
 
 ![](static/name-example-4.png)
 
-If the sentence ends with email, URL, domain, which is a link, then do not put a period at the end of the sentence — users often copy the address and may accidentally capture the period as well.
+If the sentence ends with email, URL, domain, which is a link, then do not put a period at the end of the sentence – users often copy the address and may accidentally capture the period as well.
 
 ![](static/name-example-5.png)
 
 Do not add punctuation marks to the link text. The only exception is where the entire sentence is a link.
 
-In the lists, we recommend making the entire line a link — this way there is less noise and it is easier to click on it.
+In the lists, we recommend making the entire line a link – this way there is less noise and it is easier to click on it.
 
 ![](static/name-example-6.png)
 
@@ -101,8 +101,8 @@ If the link spans two lines, the cursor should not change in the interline area 
 
 If you want to place links in one line, the margin between them must be a multiple of 4px:
 
-- 12px — if there is very little space
-- 20px — if there is enough space
+- 12px – if there is very little space
+- 20px – if there is enough space
 
 ![](static/link-margin.png)
 

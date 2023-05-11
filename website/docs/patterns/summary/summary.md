@@ -105,7 +105,7 @@ Minitrends is a shortcut version of charts for displaying a trend, comparing a m
 
 | Case                                                                                                                            | Appearance example                  |
 | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| If the metrics do not fit into the maximum page width, arrange the data in a column — **move the minitrends under the metric.** | ![](static/minitrend2.png) |
+| If the metrics do not fit into the maximum page width, arrange the data in a column – **move the minitrends under the metric.** | ![](static/minitrend2.png) |
 | If your metrics use the same type of minitrends (for example, linear), make them the same width.                                | ![](static/minitrend1.png) |
 
 ### Tooltip

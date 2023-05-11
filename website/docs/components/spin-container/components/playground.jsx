@@ -1,22 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SpinContainer from '@semcore/ui/spin-container';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Input from '@semcore/ui/input';
 import { Box } from '@semcore/ui/flex-box';
 
-let backgroundPreview = { color: 'white' };
-
-const MAP_THEME_SPINNER = {
-  white: 'dark',
-  '#333': 'invert',
-};
-
-function updateBackgroundPreview(color) {
-  backgroundPreview.color = color;
-}
-
 const playground = (createGroupWidgets) => {
-  // const [backgroundPreview, updatebBackgroundPreview] = useState(background)
   const { bool, radio, text } = createGroupWidgets('SpinContainer');
 
   const loading = bool({
@@ -29,7 +17,7 @@ const playground = (createGroupWidgets) => {
     key: 'theme',
     defaultValue: 'dark',
     label: 'Theme',
-    options: Object.values(MAP_THEME_SPINNER),
+    options: ['dark', 'invert'],
   });
 
   const background = text({
@@ -64,4 +52,4 @@ const playground = (createGroupWidgets) => {
   );
 };
 
-export default PlaygroundGeneration(playground, { onChange: updateBackgroundPreview });
+export default PlaygroundGeneration(playground);

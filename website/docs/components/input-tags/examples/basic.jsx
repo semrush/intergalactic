@@ -3,18 +3,18 @@ import InputTags from '@semcore/ui/input-tags';
 import Tooltip from '@semcore/ui/tooltip';
 
 const Demo = () => {
-  const [tags, updateTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
-  const [value, updateValue] = useState('');
+  const [tags, setTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
+  const [value, setValue] = useState('');
 
   const handleAppendTags = (newTags) => {
-    updateTags((tags) => [...tags, ...newTags]);
-    updateValue('');
+    setTags((tags) => [...tags, ...newTags]);
+    setValue('');
   };
 
   const handleRemoveTag = () => {
     if (tags.length === 0) return;
-    updateTags(tags.slice(0, -1));
-    updateValue(tags.slice(-1)[0] + ` ${value}`);
+    setTags(tags.slice(0, -1));
+    setValue(tags.slice(-1)[0] + ` ${value}`);
   };
 
   const handleCloseTag = (e) => {
@@ -27,9 +27,9 @@ const Demo = () => {
     if (value) {
       allTags = [...allTags, value];
     }
-    updateTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
+    setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
     if (!e.defaultPrevented) {
-      updateValue(tags[dataset.id]);
+      setValue(tags[dataset.id]);
     }
     return false;
   };
@@ -58,7 +58,7 @@ const Demo = () => {
       ))}
       <InputTags.Value
         value={value}
-        onChange={updateValue}
+        onChange={setValue}
         onBlur={handleBlurInput}
         aria-label="Input with tags"
       />

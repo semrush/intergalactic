@@ -26,7 +26,7 @@ const renderRow = ({ key, index, style }) => {
 };
 
 const Demo = () => {
-  const [data, updateDate] = useState(list);
+  const [data, setData] = useState(list);
   const innerRef = useRef();
   const ref = (node) => {
     node = findDOMNode(node);
@@ -40,12 +40,12 @@ const Demo = () => {
       <Flex alignItems="center" mb={2}>
         <Button
           onClick={() => {
-            updateDate(data.concat(undefined));
+            setData(data.concat(undefined));
           }}
         >
           ADD
         </Button>
-        <Button ml="10px" onClick={() => updateDate(data.slice(0, -1))}>
+        <Button ml="10px" onClick={() => setData(data.slice(0, -1))}>
           REMOVE
         </Button>
         <Text bold ml="10px">

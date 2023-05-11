@@ -9,7 +9,7 @@ const initialOptions = Array(6)
     title: `Awesome option ${idx}`,
   }));
 
-function Demo() {
+const Demo = () => {
   const [options, setOptions] = React.useState(initialOptions);
 
   const handleDnD = React.useCallback(
@@ -37,6 +37,6 @@ function Demo() {
       </DnD>
     </Select>
   );
-}
+};
 
 export default Demo;

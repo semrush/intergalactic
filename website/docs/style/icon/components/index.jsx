@@ -67,12 +67,12 @@ function SearchIcons(props) {
 }
 
 export default function ({ icons, old, json }) {
-  const [inputValue, updateInputValue] = useState('');
-  const [filterIcons, updatefilterIcons] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [filterIcons, setFilterIcons] = useState([]);
 
   return (
     <>
-      {!old && <SearchIcons filteredIcons={updatefilterIcons} onChangeValue={updateInputValue} />}
+      {!old && <SearchIcons filteredIcons={setFilterIcons} onChangeValue={setInputValue} />}
 
       {inputValue.length ? (
         filterIcons.length ? (

@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.6.3] - 2023-05-03
+## [2.6.5] - 2023-05-10
+
+### Fixed
+
+- Fixed SSR when `ignorePortalsStacking` is turned on.
+
+## [2.6.4] - 2023-05-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.4 ~> 3.50.5]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [2.6.2] - 2023-04-24
 

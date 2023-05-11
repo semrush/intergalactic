@@ -4,11 +4,11 @@ import { Text } from '@semcore/ui/typography';
 import ProgressBar from '@semcore/ui/progress-bar';
 
 const Demo = () => {
-  const [value, updateValue] = useState(0);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
     const timerFetch = setInterval(() => {
-      updateValue((value) => {
+      setValue((value) => {
         if (value < 100) {
           return value + 20;
         }

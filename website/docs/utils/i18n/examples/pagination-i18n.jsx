@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import Pagination from '@semcore/ui/pagination';
 
-function Demo() {
+const Demo = () => {
   return (
     <Flex>
       <Box>
@@ -27,6 +27,6 @@ function Demo() {
       </Box>
     </Flex>
   );
-}
+};
 
 export default Demo;

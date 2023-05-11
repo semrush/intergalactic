@@ -114,7 +114,7 @@ You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
 
 For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-api) and can help you flexibly adjust the chart size.
 
-> `ResponsiveContainer` supports the `aspect` property — the aspect ratio between the width and height of a chart.
+> `ResponsiveContainer` supports the `aspect` property – the aspect ratio between the width and height of a chart.
 
 ```jsx
 <ResponsiveContainer aspect={1}> // width = height ...</ResponsiveContainer>

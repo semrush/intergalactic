@@ -30,7 +30,7 @@ Tooltip has themes: `default`, `invert` for using on a dark background and `warn
 
 @## Maximum width and offset
 
-The basic tooltip has a maximum width — `max-width: 250px`. But you can set a different width if necessary.
+The basic tooltip has a maximum width – `max-width: 250px`. But you can set a different width if necessary.
 
 ### Offset
 
@@ -40,7 +40,7 @@ The offset from the trigger to the tooltip is 4px.
 
 @## Paddings and margins
 
-The content area has default padding — 12px.
+The content area has default padding – 12px.
 
 ![](static/tooltip-content-paddings.png)
 
@@ -68,7 +68,7 @@ To make tooltip data more readable we recommend you the following margins betwee
 
 - Tooltip is built with the [Popper.js](https://popper.js.org/) library. So you can change the placement of the component according to [Popper API](/utils/popper/popper-api/).
 
-- Tooltip shouldn't change its position while scrolling a page (for example, if it appeared upwards, when scrolling it shouldn't appear at the edge of the browser and moved down). The default tooltip placement — `top`.
+- Tooltip shouldn't change its position while scrolling a page (for example, if it appeared upwards, when scrolling it shouldn't appear at the edge of the browser and moved down). The default tooltip placement – `top`.
 
 #### Placement properties
 

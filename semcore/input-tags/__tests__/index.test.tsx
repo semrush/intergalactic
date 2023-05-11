@@ -28,18 +28,18 @@ describe('InputTags', () => {
 
   test('renders basic example', async () => {
     const Component = () => {
-      const [tags, updateTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
-      const [value, updateValue] = React.useState('');
+      const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
+      const [value, setValue] = React.useState('');
 
       const handleAppendTags = (newTags) => {
-        updateTags((tags) => [...tags, ...newTags]);
-        updateValue('');
+        setTags((tags) => [...tags, ...newTags]);
+        setValue('');
       };
 
       const handleRemoveTag = () => {
         if (tags.length === 0) return;
-        updateTags(tags.slice(0, -1));
-        updateValue(tags.slice(-1)[0] + ` ${value}`);
+        setTags(tags.slice(0, -1));
+        setValue(tags.slice(-1)[0] + ` ${value}`);
       };
 
       const handleCloseTag = (e) => {
@@ -52,9 +52,9 @@ describe('InputTags', () => {
         if (value) {
           allTags = [...allTags, value];
         }
-        updateTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
+        setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
         if (!e.defaultPrevented) {
-          updateValue(tags[dataset.id]);
+          setValue(tags[dataset.id]);
         }
         return false;
       };
@@ -81,7 +81,7 @@ describe('InputTags', () => {
               <Tooltip.Popper>tag</Tooltip.Popper>
             </Tooltip>
           ))}
-          <InputTags.Value value={value} onChange={updateValue} onBlur={handleBlurInput} />
+          <InputTags.Value value={value} onChange={setValue} onBlur={handleBlurInput} />
         </InputTags>
       );
     };

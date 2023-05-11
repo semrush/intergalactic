@@ -36,7 +36,7 @@ A scatterplot chart must contain:
 - labels for the X and Y axes (don't color them, as this will complicate the "reading" of the chart);
 - a legend if the dataset has different categories, each with a different color.
 
-**Dot size — 11px \* 11px.**
+**Dot size – 11px * 11px.**
 
 | Case             | Appearance example                                     | Styles                                                                                                                                                                                    |
 | ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,8 +45,8 @@ A scatterplot chart must contain:
 
 @## Value inside a dot
 
-- Dot size — 24px * 24px.
-- Text size — 12px.
+- Dot size – 24px * 24px.
+- Text size – 12px.
 
 If the value inside the scatterplot dot is bigger than 100, show it as 99+.
 For text color use the same color as the dot but pick the next shade (e.g. `--blue-300` → `--blue-400`).
@@ -107,7 +107,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 ### Axes
 
 - Label both the X and Y axes.
-- Don't color the axis labels — this makes your chart harder to read.
+- Don't color the axis labels – this makes your chart harder to read.
 
 ![](static/color-yes-no.png)
 

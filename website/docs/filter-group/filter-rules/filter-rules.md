@@ -30,7 +30,7 @@ Dropdown has styles of [Dropdown-menu](/components/dropdown-menu/).
 
 ### Preset values
 
-> Use an en dash, not a hyphen, between values — `Opt/Alt` + `-`.
+> Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
 
 @## Custom range
 
@@ -132,7 +132,7 @@ In cases where thousandths are separated by commas rather than periods in a part
 
 **Max/min value**
 
-Minimum value — 0, maximum value — 999 999 999.
+Minimum value – 0, maximum value – 999 999 999.
 
 If the user entered an invalid value (less than minimum, greater than maximum), the input will reset them to min/max, respectively.
 

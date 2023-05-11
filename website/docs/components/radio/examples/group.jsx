@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 
-function Demo() {
+const Demo = () => {
   const [value, setValue] = useState('1');
   return (
     <div>
@@ -27,6 +27,6 @@ function Demo() {
       </RadioGroup>
     </div>
   );
-}
+};
 
 export default Demo;

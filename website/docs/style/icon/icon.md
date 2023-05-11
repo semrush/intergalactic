@@ -39,7 +39,7 @@ Some icons also have a filled variation. Filled icon can be used to represent an
 
 Stroke should be aligned to the inside of a shape. Don't align the stroke to the center or outside because it affects the appearance of both the icon and its corners.
 
-There is one corner radius for all icon sizes — 1px. The inner corners of a shape shouldn't be rounded.
+There is one corner radius for all icon sizes – 1px. The inner corners of a shape shouldn't be rounded.
 
 ![](static/stroke-alignment-corners.png)
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { DateRangePicker } from '@semcore/ui/date-picker';
 import { Flex, Box } from '@semcore/ui/flex-box';
 
-function Demo() {
+const Demo = () => {
   const pastYear = new Date();
   pastYear.setFullYear(pastYear.getFullYear() - 1);
   const past6days = new Date();
@@ -31,6 +31,6 @@ function Demo() {
       </Box>
     </Flex>
   );
-}
+};
 
 export default Demo;

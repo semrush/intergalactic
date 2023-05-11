@@ -31,7 +31,7 @@ Composition, styles, and margins of the message:
 
 ### Positioning on the page
 
-The message is centered horizontally and vertically. Give a container with an error message a relative height — `height: 70vh`.
+The message is centered horizontally and vertically. Give a container with an error message a relative height – `height: 70vh`.
 
 ![](static/ge_page-not-found.png)
 
@@ -328,7 +328,7 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 In case of an error defined by the HTTP state code.
 
 - DNS resolution error (1xx)
-- Access denied — Access request (403)
+- Access denied – Access request (403)
 - Page not found, Project not found (404)
 - Connection lost (408)
 - Something went wrong (500, 520)

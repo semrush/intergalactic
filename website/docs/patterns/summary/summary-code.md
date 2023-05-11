@@ -14,7 +14,7 @@ You can place main metrics vertically, if it's required by the report layout. Sh
 
 @## Summary with a minitrend
 
-If the metrics don't fit into the maximum page width, arrange the data in a column — move the minitrends under the metric.
+If the metrics don't fit into the maximum page width, arrange the data in a column – move the minitrends under the metric.
 
 @example summary-with-minitrend
 

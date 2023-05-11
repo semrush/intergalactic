@@ -5,13 +5,13 @@ import ScrollArea from '@semcore/ui/scroll-area';
 
 export default () => {
   const containerRef = useRef();
-  const [container, updateContainer] = useState(null);
-  const [top, updateTop] = useState(0);
+  const [container, setContainer] = useState(null);
+  const [top, setTop] = useState(0);
   useEffect(() => {
     containerRef.current &&
-      updateContainer(containerRef.current.closest('[data-ui-name="ScrollArea.Container"]'));
+      setContainer(containerRef.current.closest('[data-ui-name="ScrollArea.Container"]'));
     const header = document.getElementsByTagName('header')[0];
-    header && updateTop(header.offsetHeight);
+    header && setTop(header.offsetHeight);
   }, []);
   return (
     <>

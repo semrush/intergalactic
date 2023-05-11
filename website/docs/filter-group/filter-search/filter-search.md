@@ -65,7 +65,7 @@ Use [NeighborLocation](/utils/neighbor-location/) to "glue" multiple controls.
 
 @## Search tuning
 
-For the case when fine-tuning of the filter is needed, add select next to the input. You can also use a combo — input with both select and button.
+For the case when fine-tuning of the filter is needed, add select next to the input. You can also use a combo – input with both select and button.
 
 | State       | Appearance example                                        | Description                                                                                                                                                                                                                                      |
 | ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
