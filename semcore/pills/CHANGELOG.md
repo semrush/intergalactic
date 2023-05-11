@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.0] - 2023-05-12
+
+### Added
+
+- Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+
 ## [4.4.23] - 2023-05-04
 
 ### Changed
