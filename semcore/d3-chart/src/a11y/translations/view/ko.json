@@ -38,5 +38,6 @@
   "view-go-to-table": "플롯 데이터 테이블로 건너뛰기",
   "view-data-summary": "데이터 요약",
   "view-summary-placeholder": "차트 데이터 요약을 생성 중입니다",
-  "view-table": "데이터 테이블"
+  "view-table": "데이터 테이블",
+  "data-not-available": "n/a"
 }

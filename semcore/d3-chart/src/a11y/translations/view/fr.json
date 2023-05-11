@@ -38,5 +38,6 @@
   "view-go-to-table": "Passer au tableau de données du diagramme",
   "view-data-summary": "Récapitulatif des données",
   "view-summary-placeholder": "Création du résumé des données du diagramme",
-  "view-table": "Tableau de données"
+  "view-table": "Tableau de données",
+  "data-not-available": "n/a"
 }

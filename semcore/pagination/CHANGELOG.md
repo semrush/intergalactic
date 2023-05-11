@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.36] - 2023-05-11
+
+### Changed
+
+- Improved next and prev buttons aria labels.
+
 ## [3.5.35] - 2023-05-04
 
 ### Changed

@@ -2,6 +2,7 @@ import React from 'react';
 import InlineInput from '@semcore/ui/inline-input';
 import InlineEdit from '@semcore/ui/inline-edit';
 import EditM from '@semcore/ui/icon/Edit/m';
+import { Text } from '@semcore/ui/typography';
 
 const Example = () => {
   const [text, setText] = React.useState('Martin Eden');
@@ -9,6 +10,9 @@ const Example = () => {
 
   return (
     <div>
+      <Text tag="label" htmlFor="author-name" mr={2}>
+        Author:
+      </Text>
       <InlineEdit editable={editable} onEditableChange={setEditable} onBlurBehavior={'confirm'}>
         <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center' }} pr={2}>
           {text} <EditM />
@@ -21,7 +25,7 @@ const Example = () => {
               setEditable(false);
             }}
           >
-            <InlineInput.Value autoFocus value={text} onChange={setText} />
+            <InlineInput.Value autoFocus value={text} onChange={setText} id="author-name" />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>

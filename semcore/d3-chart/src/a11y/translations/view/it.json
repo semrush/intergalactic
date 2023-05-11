@@ -38,5 +38,6 @@
   "view-go-to-table": "Passa alla tabella dei dati del grafico",
   "view-data-summary": "Sommario dei dati",
   "view-summary-placeholder": "Generazione del sommario dei dati del grafico",
-  "view-table": "Tabella dei dati"
+  "view-table": "Tabella dei dati",
+  "data-not-available": "n/a"
 }

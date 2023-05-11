@@ -38,5 +38,6 @@
   "view-go-to-table": "Bỏ qua bảng dữ liệu biểu đồ",
   "view-data-summary": "Tóm tắt dữ liệu",
   "view-summary-placeholder": "Tạo tóm tắt dữ liệu biểu đồ",
-  "view-table": "Bảng dữ liệu"
+  "view-table": "Bảng dữ liệu",
+  "data-not-available": "n/a"
 }
