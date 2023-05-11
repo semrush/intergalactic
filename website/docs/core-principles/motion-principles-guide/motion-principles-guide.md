@@ -4,7 +4,7 @@ title: Motion
 
 @## Description
 
-Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behaviour of major components – but always remember that motion must have a **purpose**.
+Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behavior of major components – but always remember that motion must have a **purpose**.
 
 @## Principles
 

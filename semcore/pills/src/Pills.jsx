@@ -10,11 +10,15 @@ import style from './style/pills.shadow.css';
 class RootPills extends Component {
   static displayName = 'Pills';
   static style = style;
-  static defaultProps = {
+  static defaultProps = ({ behavior }) => ({
     size: 'm',
     defaultValue: null,
-  };
+    behavior: behavior ?? 'tabs',
+    tabIndex: behavior === 'tabs' ? -1 : 1,
+  });
   itemRefs = [];
+  itemValues = [];
+  static enhance = [keyboardFocusEnhance()];
 
   uncontrolledProps() {
     return {
@@ -27,37 +31,50 @@ class RootPills extends Component {
   };
 
   getItemProps(props, index) {
-    const { value, size, disabled } = this.asProps;
+    const { value, size, disabled, behavior } = this.asProps;
+    this.itemValues[index] = props.value;
     return {
       ref: (node) => (this.itemRefs[index] = node),
       index: index,
       size,
       disabled,
       selected: value === props.value,
+      behavior,
+      tabIndex: behavior === 'tabs' ? 1 : -1,
       onClick: this.bindHandlerClick(props.value),
     };
   }
 
   handleKeyDown = (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    if (this.asProps.behavior === 'tabs') {
+      let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
+      if (focusedIndex === -1) return;
 
-    let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
-    if (focusedIndex === -1) return;
+      if (event.key === 'ArrowLeft') focusedIndex--;
+      if (event.key === 'ArrowRight') focusedIndex++;
 
-    if (event.key === 'ArrowLeft') focusedIndex--;
-    if (event.key === 'ArrowRight') focusedIndex++;
+      this.itemRefs[focusedIndex]?.focus();
+    } else {
+      let selectedIndex = this.itemValues.findIndex((value) => value === this.asProps.value);
+      if (selectedIndex === -1) return;
 
-    this.itemRefs[focusedIndex]?.focus();
+      if (event.key === 'ArrowLeft') selectedIndex--;
+      if (event.key === 'ArrowRight') selectedIndex++;
+      if (selectedIndex < 0 || selectedIndex >= this.itemValues.length) return;
+
+      this.handlers.value(this.itemValues[selectedIndex], event);
+    }
   };
 
   render() {
     const SPills = Root;
-    const { Children, styles, controlsLength, disabled } = this.asProps;
+    const { Children, styles, controlsLength, disabled, behavior } = this.asProps;
 
     return sstyled(styles)(
       <SPills
         render={Box}
-        role="radiogroup"
+        role={behavior === 'tabs' ? 'tablist' : 'radiogroup'}
         aria-disabled={disabled}
         onKeyDown={this.handleKeyDown}
       >
@@ -71,17 +88,19 @@ class RootPills extends Component {
 
 function Pill(props) {
   const SPill = Root;
-  const { Children, styles, addonLeft, addonRight, selected, disabled, index } = props;
+  const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
   return sstyled(styles)(
     <SPill
       render={Box}
       tag="button"
       type="button"
-      role="radio"
+      role={behavior === 'tabs' ? 'tab' : 'radio'}
       neighborLocation={neighborLocation}
       aria-checked={selected}
       aria-disabled={disabled}
+      aria-posinset={index + 1}
+      aria-selected={selected}
     >
       {addonLeft ? <Pills.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, Pills.Item.Text, Pills.Item.Addon)}
