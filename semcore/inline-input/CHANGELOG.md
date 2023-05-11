@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.33] - 2023-05-10
+
+### Fixed
+
+- Removed mistaken types.
+
 ## [3.5.32] - 2023-05-10
 
 ### Changed
@@ -9,8 +15,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/tooltip` [5.4.9 ~> 5.4.10]).
 
 ## [3.5.29] - 2023-04-24
-
-## [3.5.28] - 2023-04-14
 
 ### Fixed
 

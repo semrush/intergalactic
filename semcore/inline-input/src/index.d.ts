@@ -59,18 +59,6 @@ export interface IInlineInputProps extends IBoxProps {
    */
   placeholder?: string;
   /**
-   * Fired on every input value change. Should be used with `value` property together
-   */
-  onChange?: (value: string, event: React.ChangeEvent) => void;
-  /**
-   * Fired when browser focus leaves component.
-   */
-  onBlur?: (event: React.FocusEvent) => void;
-  /**
-   * Fired when browser focus enters component.
-   */
-  onFocus?: (event: React.FocusEvent) => void;
-  /**
    * defines callback (`onCancel` or `onConfirm`) triggered when `blur` event out of container fired
    * Triggered after all previous macrotasks completed (internally called inside of `setTimeout`)
    */
