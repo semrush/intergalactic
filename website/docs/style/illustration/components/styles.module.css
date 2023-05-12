@@ -27,7 +27,7 @@
 }
 .previewIllustration:hover {
   cursor: pointer;
-  background-color: var(--intergalactic-bg-primary-neutral-active);
+  background-color: var(--intergalactic-bg-primary-neutral-hover);
 }
 .previewIllustration:focus {
   border-color: var(--intergalactic-border-info-active);
