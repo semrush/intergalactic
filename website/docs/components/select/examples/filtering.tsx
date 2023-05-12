@@ -1,32 +1,54 @@
 import React, { useState } from 'react';
 import Select, { InputSearch } from '@semcore/ui/select';
 
-const options = Array(20)
-  .fill('')
-  .map((i, idx) => ({
-    value: `Option ${idx}`,
+const data = Array(26)
+  .fill(0)
+  .map((_, index) => ({
+    label: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
+    value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
   }));
 
 export default () => {
   const [filter, setFilter] = useState('');
-  const filteredOptions = options.filter((option) => option.value.toString().includes(filter));
+  const options = React.useMemo(
+    () => data.filter((option) => option.value.toString().includes(filter)),
+    [filter],
+  );
 
   return (
     <Select placeholder="Select value">
       <Select.Trigger />
       <Select.Popper>
-        <InputSearch value={filter} onChange={setFilter} placeholder="Search" />
-        <Select.List hMax={'224px'}>
-          {filteredOptions.length ? (
-            filteredOptions.map(({ value }) => (
-              <Select.Option value={value} key={value}>
-                {value}
-              </Select.Option>
-            ))
-          ) : (
-            <Select.OptionHint key="Nothing">Nothing found</Select.OptionHint>
-          )}
-        </Select.List>
+        {({ highlightedIndex }) => (
+          <>
+            <InputSearch
+              value={filter}
+              onChange={setFilter}
+              placeholder="Search"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-controls="search-list"
+              aria-owns="search-list"
+              aria-expanded="true"
+              aria-activedescendant={`option-${highlightedIndex}`}
+            />
+            <Select.List hMax={'224px'} id="search-list">
+              {options.map(({ value, label }, index) => (
+                <Select.Option
+                  value={value}
+                  key={value}
+                  id={`option-${index}`}
+                  aria-selected={index === highlightedIndex}
+                >
+                  {label}
+                </Select.Option>
+              ))}
+              {!options.length && (
+                <Select.OptionHint key="Nothing">Nothing found</Select.OptionHint>
+              )}
+            </Select.List>
+          </>
+        )}
       </Select.Popper>
     </Select>
   );

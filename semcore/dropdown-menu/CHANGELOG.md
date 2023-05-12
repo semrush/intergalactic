@@ -8,6 +8,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Improved `<Popper />` integration.
 - Fixed `aria-activedescendant` value.
+- Fixed double focus inside of popper.
 
 ## [3.7.2] - 2023-05-25
 

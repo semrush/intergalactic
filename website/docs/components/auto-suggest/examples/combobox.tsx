@@ -22,7 +22,7 @@ const Demo = () => {
       <Box mt={2}>
         <Select id="release-time-picker" interaction="focus" onChange={setValue} value={value}>
           <Select.Trigger tag={Input}>
-            {() => <Input.Value role="combobox" value={value} onChange={setValue} />}
+            {() => <Input.Value value={value} onChange={setValue} />}
           </Select.Trigger>
           <Select.Menu>
             {options.map((option) => (

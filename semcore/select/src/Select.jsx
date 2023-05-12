@@ -88,6 +88,7 @@ class RootSelect extends Component {
     return {
       id: `igc-${uid}-trigger`,
       'aria-controls': `igc-${uid}-list`,
+      'aria-owns': `igc-${uid}-list`,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
       'aria-expanded': visible ? 'true' : 'false',

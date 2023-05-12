@@ -207,6 +207,7 @@ function List(props) {
   return sstyled(props.styles)(
     <SDropdownMenuList
       render={ScrollAreaComponent}
+      tabIndex={null}
       role="menu"
       aria-labelledby={`igc-${uid}-trigger`}
       shadow={true}
