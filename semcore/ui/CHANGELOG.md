@@ -1,3 +1,17 @@
+## [13.27.3] - 2023-05-12
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed empty tooltip content while fading out.
+
+### @semcore/pagination
+
+- **Changed** Improved next and prev buttons aria labels.
+
+### @semcore/utils
+
+- **Fixed** Fixed `i18n` interpolation of falsable values.
+
 ## [13.27.2] - 2023-05-10
 
 ### @semcore/divider
