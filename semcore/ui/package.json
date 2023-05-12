@@ -38,7 +38,7 @@
     "@semcore/email": "1.0.2",
     "@semcore/errors": "3.9.20",
     "@semcore/feature-popover": "3.3.6",
-    "@semcore/feedback-form": "5.4.15",
+    "@semcore/feedback-form": "5.4.17",
     "@semcore/flags": "3.4.14",
     "@semcore/flex-box": "4.7.22",
     "@semcore/format-text": "3.2.24",
