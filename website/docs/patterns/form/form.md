@@ -121,7 +121,7 @@ Briefly:
 
 **When to use?**
 
-- The form is large and/or complex, and you need to slow the user down in order he/she вщ not make mistakes.
+- The form is large and/or complex, and you need to slow the user down to help them avoid mistakes.
 - Right alignment of labels visually better connects labels with inputs, in comparison with left alignment.
 
 ![](static/label-4.png)
