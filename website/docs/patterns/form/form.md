@@ -46,7 +46,7 @@ Placeholders are required to prompt the user about what data should be entered.
 - It is not user-friendly to use only placeholders for inputs. When completed, such form becomes poorly readable.
 - Do not put a specific value as a placeholder. The user may think that the input has already been filled.
 
-You can skip the placeholder only if the input’s purpose is obvious.
+You can omit the placeholder only if the input’s purpose is obvious.
 
 To format values that the user enters use [InputMask](/components/input-mask/).
 
