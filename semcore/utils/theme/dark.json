@@ -1237,17 +1237,17 @@
       },
       "td": {
         "cell": {
-          "value": "rgba(30, 34, 49, 1)",
+          "value": "{gray.800}",
           "type": "color",
           "description": "Background of the default cell in the Table."
         },
         "cell-hover": {
-          "value": "rgba(80, 81, 87, 1)",
+          "value": "{gray.700}",
           "type": "color",
           "description": "Background of the default hovered cell in the Table."
         },
         "cell-active": {
-          "value": "rgba(66, 68, 78, 1)",
+          "value": "{gray.700}",
           "type": "color",
           "description": "Background of the default active cell in the Table."
         },
