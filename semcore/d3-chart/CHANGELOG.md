@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.8] - 2023-05-12
+
+### Fixed
+
+- Fixed radial tree icons displaying.
+
 ## [2.14.7] - 2023-05-11
 
 ### Changed
