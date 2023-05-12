@@ -343,11 +343,11 @@
     rgba(224, 225, 233, 1) 100%
   );
   /* Background of the default cell in the Table. */
-  --intergalactic-table-td-cell: rgba(30, 34, 49, 1);
+  --intergalactic-table-td-cell: #191b23;
   /* Background of the default hovered cell in the Table. */
-  --intergalactic-table-td-cell-hover: rgba(80, 81, 87, 1);
+  --intergalactic-table-td-cell-hover: #2b2e38;
   /* Background of the default active cell in the Table. */
-  --intergalactic-table-td-cell-active: rgba(66, 68, 78, 1);
+  --intergalactic-table-td-cell-active: #2b2e38;
   /* Background of the unread cell in the Table. */
   --intergalactic-table-td-cell-unread: #f4f5f9;
   /* Background of the cell used for Accordion or actions row, in the Table. */
