@@ -98,8 +98,8 @@ export default () => {
   React.useEffect(() => {
     if (!buttonRef.current) return;
     buttonRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest"
+      behavior: 'smooth',
+      block: 'nearest'
     });
   }, [filtersCount]);
 
