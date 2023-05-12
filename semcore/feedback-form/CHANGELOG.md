@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.17] - 2023-05-12
+
+### Fixed
+
+- Fixed empty tooltip content while fading out.
+
 ## [5.4.16] - 2023-05-11
 
 ### Changed

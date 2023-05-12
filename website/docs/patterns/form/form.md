@@ -74,14 +74,14 @@ Depending on your task, you can use vertical or horizontal form layout.
 Briefly:
 
 - vertical layout is good for short simple forms and forms for mobile screens;
-- horizontal layout is suitable for complex forms, where you need to slow the user down in order he/she do not make mistakes.
+- horizontal layout is suitable for complex forms, where you need to slow the user down to help them avoid mistakes.
 
 ### Vertical form layout
 
 **When to use?**
 
 - The form is small and simple.
-- “Price of the mistake” after completing the form is not big.
+- The cost of a mistake after completing the form is not big.
 
 ![](static/label-1.png)
 
@@ -121,7 +121,7 @@ Briefly:
 
 **When to use?**
 
-- The form is large and/or complex, and you need to slow the user down in order he/she вщ not make mistakes.
+- The form is large and/or complex, and you need to slow the user down to help them avoid mistakes.
 - Right alignment of labels visually better connects labels with inputs, in comparison with left alignment.
 
 ![](static/label-4.png)
