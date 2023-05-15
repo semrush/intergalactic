@@ -1,3 +1,13 @@
+## [13.27.4] - 2023-05-15
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed radial tree icons displaying.
+
+### @semcore/inline-input
+
+- **Fixed** Pressing `Escape` or `Enter` might trigger both `onConfirm` and `onCancel`.
+
 ## [13.27.3] - 2023-05-12
 
 ### @semcore/feedback-form
