@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.35] - 2023-05-15
+
+### Fixed
+
+- Pressing `Escape` or `Enter` might trigger both `onConfirm` and `onCancel`.
+
 ## [3.5.34] - 2023-05-11
 
 ### Changed
