@@ -20,9 +20,7 @@ export default () => {
         <DataTable.Column name="cpc" children="CPC" />
         <DataTable.Column name="vol" children="Vol." />
       </DataTable.Head>
-      <SpinContainer loading={loading}>
-        <DataTable.Body />
-      </SpinContainer>
+      <DataTable.Body tag={SpinContainer} loading={loading} />
     </DataTable>
   );
 };
