@@ -180,15 +180,14 @@ const illustartionsList = {
       name: 'Maintenance',
       group: 'Errors',
     },
-    /** illustrations are temporarily commented out due to incorrect display */
-    // {
-    //   name: 'NoPayment',
-    //   group: 'Errors',
-    // },
-    // {
-    //   name: 'PageError',
-    //   group: 'Errors',
-    // },
+    {
+      name: 'NoPayment',
+      group: 'Errors',
+    },
+    {
+      name: 'PageError',
+      group: 'Errors',
+    },
     {
       name: 'PageNotFound',
       group: 'Errors',
