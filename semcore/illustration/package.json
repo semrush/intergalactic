@@ -9,14 +9,17 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "transform": "pnpm icon-transform-svg",
-    "build": "pnpm run clean && pnpm semcore-builder --source=js && pnpm run transform --configFile=transform-svg.config.js",
-    "clean": "ls -d */ | egrep -v \"__tests__|node_modules|svg|src\" | xargs rm -rf && rm *.svg || true",
+    "build": "pnpm clear && pnpm semcore-builder --source=js && pnpm run transform",
+    "transform": "tsm --require=../../.ci/tsm-filter-warnings.js transform.ts",
+    "clear": "tsm --require=../../.ci/tsm-filter-warnings.js clear.ts",
     "upload-static": "gcs-upload svg/*.svg"
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "^4"
+    "@semcore/flex-box": "^4",
+    "esbuild": "0.14.29",
+    "happy-dom": "^9.18.3",
+    "svg-to-jsx": "^1.0.4"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -29,7 +32,6 @@
     "directory": "semcore/illustration"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/icon-transform-svg": "1.1.0"
+    "@types/react": "18.0.21"
   }
 }
