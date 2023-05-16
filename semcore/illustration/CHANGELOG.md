@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.20] - 2023-05-16
+
+### Changed
+
+- Updated cat in `PageError` illustration.
+
 ## [1.4.19] - 2023-05-16
 
 ### Fixed
