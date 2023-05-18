@@ -67,5 +67,18 @@ const useI18n = (
   );
 };
 
+export const i18nAppLocaleEnhance = () => {
+  return {
+    wrapperProps: (props) => {
+      const { locale, ...other } = props;
+      const contextLocale = React.useContext(Context);
+      return {
+        ...other,
+        locale: locale ?? contextLocale,
+      };
+    },
+  };
+};
+
 export default createHoc(WithI18n);
 export { useI18n, I18nProvider, I18nConsumer };

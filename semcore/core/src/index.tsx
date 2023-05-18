@@ -6,6 +6,8 @@ import { useForkRef } from '@semcore/utils/lib/ref';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 // @ts-ignore
 import _assignProps from '@semcore/utils/lib/assignProps';
+// @ts-ignore
+import { i18nAppLocaleEnhance } from '@semcore/utils/lib/enhances/WithI18n';
 
 import { Component, PropsWithRenderFnChildren } from './Component';
 import register from './register';
@@ -335,6 +337,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   }
   const Component = createComposeComponent(OriginComponent, context, [
     // @ts-ignore
+    i18nAppLocaleEnhance(),
     ...enhancements.map((f) => f(context, parents, createComponent, childComponents)),
     bindHandlerEnhancement(),
     childrenEnhancement(context, parents),

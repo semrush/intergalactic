@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.9] - 2023-05-18
+
+### Changed
+
+- Improved support of `zh` and `ja` locales in vertical titles.
+
 ## [2.14.8] - 2023-05-12
 
 ### Fixed

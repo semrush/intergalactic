@@ -56,7 +56,7 @@ class PlotRoot extends Component {
   };
 
   setContext() {
-    const { scale, data, width, height } = this.asProps;
+    const { scale, data, width, height, locale } = this.asProps;
 
     const yScaleDomain = scale?.[1]?.domain?.();
     if (yScaleDomain?.length && data?.length) {
@@ -70,6 +70,7 @@ class PlotRoot extends Component {
       $rootProps: {
         size: [width, height],
         data: data,
+        locale,
         scale: scale,
         eventEmitter: this.eventEmitter,
         rootRef: this.rootRef,

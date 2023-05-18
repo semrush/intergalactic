@@ -6,6 +6,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
+- Prop `locale` default value is provided for all Intergalactic components under this `I18nProvider`.
+
+## [1.14.11] - 2023-05-11
+
+### Changed
+
 - Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [1.14.10] - 2023-05-04

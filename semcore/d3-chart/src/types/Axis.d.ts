@@ -41,6 +41,12 @@ export interface IAxisGridProps extends IContext {
 export interface IAxisTitleProps extends IContext {
   /** The position of the axis relative chart */
   position?: 'top' | 'right' | 'bottom' | 'left';
+
+  /** For vertical titles disables characters rotation while puts
+   * characters into the vertical column for better reading in some languages.
+   * @default true for `zh` and `ja` locales and false for all others.
+   */
+  verticalWritingMode?: boolean;
 }
 
 export interface IAxisTicksContext {
