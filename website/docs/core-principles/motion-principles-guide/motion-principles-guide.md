@@ -50,4 +50,4 @@ To prevent these issues, we recommend you follow these best practices:
 
 - Don't use flashing of more than 3 times per second in your animation.
 - Limit component animation to no more than a couple of seconds at a time.
-- Let users [opt out of animation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) altogether, if that's what they prefer.
+- Let users [opt out of animation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) altogether, if that's what they prefer. Use `preferes-reduced-motion` CSS media feature for this.
