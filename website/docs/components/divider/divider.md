@@ -6,11 +6,11 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Divider** is a component that visually and semantically separates content or components.
 
-@## Types
+## Types
 
 Divider has two types: `primary` and `secondary`. Secondary type helps to separate and show the connection between two parts of the content.
 
@@ -21,7 +21,7 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 | `primary`  | ![](static/solid.png)   | `border: 1px solid var(--border-primary)`   |
 | `secondary`| ![](static/dashed.png)  | `border: 1px dashed var(--border-primary)`  |
 
-@## Orientation
+## Orientation
 
 @table-caption Divider orientation
 
@@ -30,7 +30,7 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 | Horizontal   | ![](static/default-theme.png)   |
 | Vertical     | ![](static/solid.png)           |
 
-@## Themes
+## Themes
 
 The divider can be used either on a light or dark/colored background.
 
@@ -41,7 +41,7 @@ The divider can be used either on a light or dark/colored background.
 | Default | ![](static/default-theme.png) | `border: 1px solid var(--border-primary)`        |
 | Invert  | ![](static/invert-theme.png)   | `border: 1px solid var(--border-primary-invert)`|
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 The divider separates content visually and semantically, whether it is different or similar in meaning.
 

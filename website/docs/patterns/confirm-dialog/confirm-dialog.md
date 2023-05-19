@@ -4,7 +4,7 @@ fileSource: modal
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Confirmation modal window** asks the user if they're sure that they want to proceed with the command that they've just issued to the system. It informs the user about potential problems or data loss and gives them a chance to reconsider the decision.
 
@@ -29,7 +29,7 @@ Try to avoid situations when the content in a modal dialog requires a scrollbar.
 
 ![](static/confirm-dialog-large.png)
 
-@## Other recommendations
+## Other recommendations
 
 For more recommendations, refer to the [article from Nielsen Norman Group](https://www.nngroup.com/articles/confirmation-dialog/).
 

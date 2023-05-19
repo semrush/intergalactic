@@ -3,7 +3,7 @@ title: API
 fileSource: fullscreen-modal
 ---
 
-@## FullscreenModal
+## FullscreenModal
 
 ```js
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
@@ -11,34 +11,34 @@ import FullscreenModal from '@semcore/ui/fullscreen-modal';
 
 @typescript FullscreenModalProps
 
-@## FullscreenModal.Header
+## FullscreenModal.Header
 
 @typescript FullscreenModalHeaderProps
 
-@## FullscreenModal.Close
+## FullscreenModal.Close
 
 The `CloseS` icon with pre-configured styles acts as a component.
 
-@## FullscreenModal.Footer
+## FullscreenModal.Footer
 
 The component is the `Box` with pre-configured styles.
 
-@## FullscreenModal.Back
+## FullscreenModal.Back
 
 The component is the `Box` with pre-configured styles and the `ArrowLeftS` icon.
 
-@## FullscreenModal.Body
+## FullscreenModal.Body
 
 The component is the `Box` with pre-configured styles.
 
-@## FullscreenModal.Section
+## FullscreenModal.Section
 
 The component is the `Box` with pre-configured styles.
 
-@## FullscreenModal.Title
+## FullscreenModal.Title
 
 The component is the `Text` with pre-configured styles.
 
-@## FullscreenModal.Description
+## FullscreenModal.Description
 
 The component is the `Text` with pre-configured styles.

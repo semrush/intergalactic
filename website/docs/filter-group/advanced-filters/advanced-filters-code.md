@@ -2,6 +2,6 @@
 title: Example
 ---
 
-@## Filters with filter-conditions
+## Filters with filter-conditions
 
 @example conditions

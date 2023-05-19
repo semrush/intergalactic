@@ -4,13 +4,16 @@ fileSource: neighbor-location
 tabName: Design
 ---
 
-> 🚨 `NeighborLocation` component is deprecated and will be removed in the next releases.
+::: warning
+:rotating_light: `NeighborLocation` component is deprecated and will be removed in the next releases.
+:::
+
 > Use property `neighborLocation` specification on components.
 >
 > We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in
 > React 18's parallel render.
 
-@## Description
+## Description
 
 **NeighborLocation** is a component for grouping components. It indicates where the component is in relation to its
 neighbors.
@@ -24,7 +27,7 @@ For example, you can group together:
 You may also need a `flex-box` to align the components. For more information, see
 the [Flex-box and indent system](/layout/box-system/).
 
-@## Grouped buttons
+## Grouped buttons
 
 Buttons can be grouped.
 
@@ -40,15 +43,15 @@ If you group secondary buttons, the left one will hide it's right border.
 
 @example neighbor-location
 
-@## Grouped input and button
+## Grouped input and button
 
 @example neighbor-location-input
 
-@## Grouped input and select
+## Grouped input and select
 
 @example neighbor-location-input-select
 
-@## Grouped input, select, and button
+## Grouped input, select, and button
 
 You can group input, select, and button.
 
@@ -56,7 +59,7 @@ You can group input, select, and button.
 
 @example neighbor-location-combo
 
-@## Adding a wrapper
+## Adding a wrapper
 
 By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pass the component tag you want.
 
@@ -65,7 +68,7 @@ By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pa
 
 @example neighbor-location-with-tag
 
-@## Using a custom component
+## Using a custom component
 
 You can apply <NeighborLocation/> to your components. You will need to use the component `<NeighborLocation.Detect/>`
 and

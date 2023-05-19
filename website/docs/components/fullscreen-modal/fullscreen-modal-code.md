@@ -7,6 +7,6 @@ fileSource: fullscreen-modal
 
 @example header
 
-@## Example of a dual-zone modal window
+## Example of a dual-zone modal window
 
 @example two-section

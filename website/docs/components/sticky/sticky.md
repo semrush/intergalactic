@@ -7,7 +7,7 @@ deprecated: true
 
 > 🚨 The library `@semcore/sticky` has been deprecated. Please use [`@semcore/flex-box`](/layout/box-system/) instead.
 
-@## Description
+## Description
 
 **Sticky** is a component that allows you to fix a block to its parent when scrolling.
 

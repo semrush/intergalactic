@@ -2,7 +2,7 @@
 title: Usage in development
 ---
 
-@## Global theme
+## Global theme
 
 Design tokens are ideal for global theming because they help ensure consistent visual choices and behavior across the design system. They also make it easier to update and maintain the product, as changes can be made in a centralized way.
 
@@ -30,7 +30,7 @@ To apply a global theme, define CSS variables on the `:root` via CSS or JS. For 
 
 Any design token from the [tokens list](/style/design-tokens/#semantic_tokens) may be applied.
 
-@## Local theme
+## Local theme
 
 We don’t recommend using tokens for local theming or specific instances, because it can lead to visual inconsistencies within the design system and may require more effort to maintain visual decisions. Besides, using tokens only for a certain component will cause changes to be applied to the internal content of the component as well, which may be unnecessary.
 

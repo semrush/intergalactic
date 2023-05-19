@@ -6,11 +6,11 @@ tabName: Design
 
 > In the last major update, component was divided into two parts: `Header` and `Body`. It was done to make it easier to use the component. Also, `Card` now has a white background.
 
-@## Description
+## Description
 
 **Card** is a component for visually grouping data and other components into widgets.
 
-@## Component composition
+## Component composition
 
 ![](static/card-composition.png)
 
@@ -21,16 +21,16 @@ Component consists of the following:
 - `Card.Title`
 - `Card.Description`
 
-@## Appearance
+## Appearance
 
 @table-caption Card sizes
 
 | Size  | Example                                      |
 | ----- | -------------------------------------------- |
 | Small | ![](static/card-small.png) |
-| Big   | ![](static/card-big.png)     |
+| Big   | ![](static/card-big.png)   |
 
-@## Card.Header
+## Card.Header
 
 ![](static/card-header.png)
 
@@ -48,7 +48,7 @@ The card may have a description. It usually contains an explanation of what the 
 
 ![](static/card-margins1.png)
 
-@## Card.Body
+## Card.Body
 
 ### Paddings
 
@@ -69,7 +69,7 @@ You can divide content into sections if needed.
 
 ![](static/card-layout.png)
 
-@## Interaction
+## Interaction
 
 By default, the card is non-clickable. But you can use `--box-shadow-card-hover` token for hover state and make title a clickable link if necessary.
 

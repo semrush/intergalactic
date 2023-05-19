@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Accordion
+## Accordion
 
 ```jsx
 import Accordion from '@semcore/ui/accordion';
@@ -12,7 +12,7 @@ import Accordion from '@semcore/ui/accordion';
 
 @typescript AccordionProps
 
-@## Accordion.Item
+## Accordion.Item
 
 ```jsx
 import { Accordion } from '@semcore/ui/accordion';
@@ -22,7 +22,7 @@ import { Accordion } from '@semcore/ui/accordion';
 
 @typescript AccordionItemProps
 
-@## Accordion.Item.Toggle
+## Accordion.Item.Toggle
 
 ```jsx
 import { Accordion } from '@semcore/ui/accordion';
@@ -32,7 +32,7 @@ import { Accordion } from '@semcore/ui/accordion';
 
 Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 
-@## Accordion.Item.Collapse
+## Accordion.Item.Collapse
 
 ```jsx
 import { Accordion } from '@semcore/ui/accordion';
@@ -44,7 +44,7 @@ import { Accordion } from '@semcore/ui/accordion';
 
 Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 
-@## Accordion.Item.Chevron
+## Accordion.Item.Chevron
 
 ```jsx
 import { Accordion } from '@semcore/ui/accordion';

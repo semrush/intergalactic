@@ -4,11 +4,11 @@ fileSource: dropdown-menu
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **DropdownMenu** is a component for displaying the list of options and their nested items.
 
-@## Sizes and indents
+## Sizes and indents
 
 DropdownMenu has two sizes.
 
@@ -38,11 +38,11 @@ It is recommended that the dropdown list with search should have a maximum heigh
 
 However, if you're using DropdownMenu for a list of links and controls, such as a menu, it is essential not to limit the dropdown's height. This is necessary to display all possible options to the user.
 
-@## Placement
+## Placement
 
 The list always drops down, regardless of space availability under the trigger. This behavior is necessary to enable accessible keyboard control of the list.
 
-@## States
+## States
 
 - If the list is taking a long time to load or filter results (for example, due to a slow connection), the dropdown should display "Loading...".
 - If a user enters a value that isn’t in the list, the dropdown should display "Nothing found".
@@ -52,7 +52,7 @@ The list always drops down, regardless of space availability under the trigger. 
 
 ![](static/loading-error.png)
 
-@## Data loading
+## Data loading
 
 If the list takes time to load, such as when the system cannot load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
 
@@ -60,13 +60,13 @@ For more information about trigger states, refer to [Select / Multiselect](/comp
 
 ![](static/select-loading-trigger.png)
 
-@## List with search input
+## List with search input
 
 If the list includes a search input, it should automatically receive focus when the user opens the dropdown.
 
 As the user enters a value into the input, only the items that match the input should remain in the list. Don’t highlight these items in this case.
 
-@## List item states
+## List item states
 
 ### States
 
@@ -78,9 +78,9 @@ As the user enters a value into the input, only the items that match the input s
 | Hover               | ![](static/item-hover.png)                    | `--dropdown-menu-item-hover`          |
 | Selected            | ![](static/item-active.png)                | `--dropdown-menu-item-selected`       |
 | Selected with hover | ![](static/item-active-hover.png) | `--dropdown-menu-item-selected-hover` |
-| Disabled            | ![](static/item-disabled.png)              | `--disabled-opacity`                  |
+| Disabled            | ![](static/item-disabled.png)     | `--disabled-opacity`                  |
 
-@## List item types
+## List item types
 
 ### Divider
 
@@ -119,8 +119,8 @@ This item with such a button adds a new item and has the following states:
 | Default trigger button | ![](static/button-1.png)  | Trigger has the same styles as a regular item.                                                                                                                                                                                                                |
 | Active input           | ![](static/button-2.png)    | Clicking on the button opens an input in the `focus` state. The list item has no `hover` state in this case.                                                                                                                                                                                 |
 | Entering value         | ![](static/button-3.png) | To add an item, click the submit icon. To close the input, click outside the input or press the `Esc` key. If user entered data but closed the input without submitting, his entered value should be saved. |
-| Loading                | ![](static/button-4.png)  | For loading state change submit icon to [Spin](/components/spin/) with XS size. Input receives the `disabled` state.                                                                                                                                              |
-| Error                  | ![](static/button-5.png)  | If an error occurred during adding, show the error message in a tooltip and highlight the input.                                                                                                                                                     |
+| Loading                | ![](static/button-4.png) | For loading state change submit icon to [Spin](/components/spin/) with XS size. Input receives the `disabled` state.                                                                                        |
+| Error                  | ![](static/button-5.png) | If an error occurred during adding, show the error message in a tooltip and highlight the input.                                                                                                            |
 
 #### Button inside the item
 
@@ -143,7 +143,7 @@ The reset button appears only if any item from the list is selected. After user 
 
 ![](static/reset-scheme.png)
 
-@## List item content
+## List item content
 
 You can put the following addons before and after the text inside the list item:
 
@@ -206,7 +206,7 @@ You can add additional text with `--text-secondary` color under the main text of
 | M                | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
 | L                | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
 
-@## Scroll in the dropdown
+## Scroll in the dropdown
 
 If DropdownMenu has more than seven items, show scroll. We also recommend adding search input to such lists.
 
@@ -224,10 +224,10 @@ You can fix an item with a title, input, notice or a button on the top or at the
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Title             | ![fixed-heading](static/fixed-heading.png)                                                    | Fixed title refers to the entire list and it should have a [Divider](/components/divider/).                                                                                           |
 | Input with search | ![fixed-input](static/fixed-input.png)                                                        | If the list has more than 10 items, add the search input. When user opens the list, the input gets the `focus` state. For a placeholder use the text: “Start typing {parameter}” or "Search". |
-| Notice            | ![fixed-notice](static/fixed-notice.png) ![fixed-notice-paddings](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: var(--bold)`.                                                                                           |
-| Button            | ![fixed-button](static/fixed-button.png)                                                      |                                                                                                                                                                                       |
+| Notice            | ![fixed-notice](static/fixed-notice.png) ![fixed-notice-paddings](static/notice-paddings.png) | The notice title should have the same size as the text has and `font-weight: var(--bold)`.                                                                                                    |
+| Button            | ![fixed-button](static/fixed-button.png)                                                      |                                                                                                                                                                                               |
 
-@## Nested lists and items
+## Nested lists and items
 
 The item of the list can have a list of items inside. In this case, it should have the `ChevronRight` icon after the text.
 

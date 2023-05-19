@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Ellipsis** is a component that truncates a single line of text or paragraph with an ellipsis (…).
 
@@ -22,7 +22,7 @@ tabName: Design
 - Hiding content when there is enough space for it.
 - Using the ellipsis component as a punctuation mark at the end of a sentence.
 
-@## Appearance
+## Appearance
 
 To include an ellipsis, use `…` (HTML symbol `&hellip;`).
 
@@ -31,7 +31,7 @@ To include an ellipsis, use `…` (HTML symbol `&hellip;`).
 - OS X: `Opt + ;`
 - Win: `alt + 0133`
 
-@## Types
+## Types
 
 Ellipsis has two types of text truncation:
 
@@ -42,13 +42,13 @@ Ellipsis has two types of text truncation:
 | `End`    | ![](static/ellipsis-end.png) ![ellipsis at the end with tooltip](static/ellipsis-end-tooltp.png)      | Truncates the end of the text string. It's the most common case. Use an ellipsis at the end of a text string or paragraph to indicate that there is more content, or to shorten a long text string.                                                                   |
 | `Middle` | ![](static/ellipsis-middle.png) ![ellipsis at the middle with tooltip](static/ellipsis-middle-tooltp.png) | Truncates the middle of the text string. Use when several text strings have different beginnings and/or endings but the exact same middle characters. Can also be used to shorten a phrase or text string when the end of a string can't be truncated by an ellipsis. |
 
-@## Tooltip
+## Tooltip
 
 Add a tooltip on hover to truncated items to show the entire text string, or phrase, unless you're truncating the end of a paragraph.
 
 ![](static/ellipsis-end-tooltp.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Long URL links
 

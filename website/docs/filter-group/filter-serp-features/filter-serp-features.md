@@ -5,7 +5,7 @@ tabName: Design
 
 > **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
 
-@## Description
+## Description
 
 **SERP Features filter** is a filter to sort the data on the page by the SERP Features parameter.
 
@@ -18,7 +18,7 @@ You can select multiple values or "None", which will show all keywords without S
 - quickly reset the entered data and search again;
 - be able to select all SERP Features.
 
-@## Appearance
+## Appearance
 
 ### Trigger
 
@@ -41,7 +41,7 @@ You can select multiple values or "None", which will show all keywords without S
 
 **Don't make a dropdown width less than 224px**, otherwise, long SERP Features names can become unreadable after localization. If the SERP Feature name is too long, collapse into the `ellipsis`, and show its full name in the tooltip while hovering.
 
-@## Interaction
+## Interaction
 
 - By default, nothing is selected in the filter.
 - If user has selected a SERP feature, checkbox gets `active` state.
@@ -61,7 +61,7 @@ Other rules for working and interacting with filters are described in the [Filte
 | **Filled filter** | ![active serp](static/active-serp.png) ![active serp](static/active-hover-serp.png)                                                                   | If user has applied the filter, show the number of selected SERP Features in the trigger. For more information on abbreviation rules, see [FilterTrigger](/components/filter-trigger/).                                                                                                                                                                                                                             |
 | **No results**    | ![nothing found](static/filter-serp-nothing-found.png)                                                                                                | If there are no keywords with the selected SERP Features, show the ["empty" state](/components/widget-empty/), as with any other filter. When there are no options, show the title: "No results found" – and the message: "Try selecting a different date or changing your filter settings.". _You can see this case in the situation when the user selected "None", and all data have SERP Features in the table._ |
 
-@## Abbreviations and tooltips
+## Abbreviations and tooltips
 
 For more information about tooltips, see the [Filter common rules guide](/filter-group/filter-rules/).
 
@@ -69,6 +69,6 @@ For more information about tooltips, see the [Filter common rules guide](/filter
 
 ![tooltips](static/tooltips.png)
 
-@## Validation
+## Validation
 
 Validations work is described in the [Filter common rules guide](/filter-group/filter-rules/).

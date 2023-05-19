@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](../bar-chart/bar-chart-vertical/) or [horizontal](/data-display/bar-horizontal/).
 
@@ -22,7 +22,7 @@ Important points to keep in mind when presenting data as a bar chart:
 - The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
-@## Appearance
+## Appearance
 
 If you have two categories of values, you can place them next to each other – this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (for example, a stacked bar chart).
 
@@ -56,21 +56,21 @@ In some cases some of the values in the data can be very different from the majo
 
 If there are very large values, you may choose a different chart type which is better suited to solve your problem. Perhaps your visualization needs to focus on these large values?
 
-@## Legend
+## Legend
 
 If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title isn’t enough.
 
-| Vertical bar chart example      | Horizontal bar chart example    |
-| ------------------------------- | ------------------------------- |
-| ![](static/legend.png)          | ![](static/hor-bar-example.png) |
+| Vertical bar chart example | Horizontal bar chart example    |
+| -------------------------- | ------------------------------- |
+| ![](static/legend.png)     | ![](static/hor-bar-example.png) |
 
 > **Legend is required when there are two or more categories in the data set.**
 
-| Vertical bar chart example   | Horizontal bar chart example      |
-| ---------------------------- | --------------------------------- |
-| ![](static/bar-chart-2.png)  | ![](static/hor-legend.png)        |
+| Vertical bar chart example  | Horizontal bar chart example |
+| --------------------------- | ---------------------------- |
+| ![](static/bar-chart-2.png) | ![](static/hor-legend.png)   |
 
-@## Trend
+## Trend
 
 A bar chart may have a trend line. Most often, trend line overloads charts. However, in some cases, it can be useful for reading the overall trend.
 
@@ -80,7 +80,7 @@ When you hover over any part of the column, the tooltip shall display all values
 
 ![](static/trend-hover.png)
 
-@## Interaction
+## Interaction
 
 When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
 
@@ -88,14 +88,14 @@ If the column is clickable, the cursor changes to `pointer`.
 
 If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
 
-|                                   | Appearance example                        |
-| --------------------------------- | ----------------------------------------- |
-| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)                  |
+|                                   | Appearance example                                        |
+| --------------------------------- | --------------------------------------------------------- |
+| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)   |
 | Chart with two or more categories | ![](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Start the axes from zero
 
@@ -137,9 +137,9 @@ In this case, clicking on the date/column opens the detailed and switches the pe
 
 When you hover over a clickable date, it changes background `--chart-grid-period-bg`. In active state clickable date changes text color to `--text-invert` and background color to `--chart-x-axis-accent-period-active`.
 
-| Vertical bar chart example     | Horizontal bar chart example       |
-| ------------------------------ | ---------------------------------- |
-| ![](static/interactive-2.png)  | ![](static/hor-widget-example.png) |
+| Vertical bar chart example    | Horizontal bar chart example       |
+| ----------------------------- | ---------------------------------- |
+| ![](static/interactive-2.png) | ![](static/hor-widget-example.png) |
 
 @page bar-chart-vertical
 @page bar-chart-a11y

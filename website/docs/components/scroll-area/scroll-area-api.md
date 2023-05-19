@@ -3,7 +3,7 @@ title: API
 fileSource: scroll-area
 ---
 
-@## ScrollArea
+## ScrollArea
 
 ```jsx
 import ScrollArea from '@semcore/ui/scroll-area';
@@ -12,7 +12,7 @@ import ScrollArea from '@semcore/ui/scroll-area';
 
 @typescript ScrollAreaProps
 
-@## ScrollArea.Container
+## ScrollArea.Container
 
 This is a wrap over the content to calculate its size. It takes all properties of `Box`.
 
@@ -21,7 +21,7 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Container />;
 ```
 
-@## ScrollArea.Bar
+## ScrollArea.Bar
 
 ```jsx
 import ScrollArea from '@semcore/ui/scroll-area';
@@ -30,7 +30,7 @@ import ScrollArea from '@semcore/ui/scroll-area';
 
 @typescript ScrollBarProps
 
-@## ScrollArea.Bar.Slider
+## ScrollArea.Bar.Slider
 
 Stylized div. It takes all properties of `Box`.
 

@@ -3,7 +3,7 @@ title: API
 fileSource: dot
 ---
 
-@## Dot
+## Dot
 
 ```jsx
 import Dot from '@semcore/ui/dot';

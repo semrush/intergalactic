@@ -3,7 +3,7 @@ title: API
 fileSource: skeleton
 ---
 
-@## Skeleton
+## Skeleton
 
 ```jsx
 import Skeleton from '@semcore/ui/skeleton';
@@ -12,7 +12,7 @@ import Skeleton from '@semcore/ui/skeleton';
 
 @typescript SkeletonProps
 
-@## Skeleton.Text
+## Skeleton.Text
 
 ```jsx
 import Skeleton from '@semcore/ui/skeleton';
@@ -21,7 +21,7 @@ import Skeleton from '@semcore/ui/skeleton';
 
 @typescript SkeletonTextProps
 
-@## LineChartSkeleton
+## LineChartSkeleton
 
 ```jsx
 import { LineChartSkeleton } from '@semcore/ui/skeleton';
@@ -73,7 +73,7 @@ import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
 import { ScatterPlotChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@## VennChartSkeleton
+## VennChartSkeleton
 
 ```jsx
 import { VennChartSkeleton } from '@semcore/ui/skeleton';

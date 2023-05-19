@@ -3,7 +3,7 @@ title: API
 fileSource: side-panel
 ---
 
-@## SidePanel
+## SidePanel
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
@@ -12,7 +12,7 @@ import SidePanel from '@semcore/ui/side-panel';
 
 @typescript SidePanelProps
 
-@## SidePanel.Overlay
+## SidePanel.Overlay
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
@@ -21,7 +21,7 @@ import SidePanel from '@semcore/ui/side-panel';
 
 This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) component.
 
-@## SidePanel.Panel
+## SidePanel.Panel
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';
@@ -32,7 +32,7 @@ This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) and [FocusLock
 
 @typescript SidePanelPanelProps
 
-@## SidePanel.Close
+## SidePanel.Close
 
 ```jsx
 import SidePanel from '@semcore/ui/side-panel';

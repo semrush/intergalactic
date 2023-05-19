@@ -4,7 +4,7 @@ fileSource: fullscreen-modal
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Fullscreen modal** is a modal window that opens on top of the webpage. It blocks all functions of the parent page and has its own separate URL.
 
@@ -15,7 +15,7 @@ tabName: Design
 - You need to show additional data for a report, but you don’t want to move it to a separate page.
 - The screen size is smaller than 768px.
 
-@## Appearance
+## Appearance
 
 The fullscreen modal window includes:
 
@@ -94,7 +94,7 @@ Footer has the same paddings as the header has.
 
 ![](static/footer-fixed.png)
 
-@## CTA buttons
+## CTA buttons
 
 You can use buttons either M or L size depending on the context of the problem you are solving in such a modal window.
 
@@ -102,7 +102,7 @@ You can use buttons either M or L size depending on the context of the problem y
 
 ![](static/footer-fixed2.png)
 
-@## Interaction
+## Interaction
 
 Fullscreen modal window can be closed:
 

@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Input** is a single-line text field. It's one of the basic components for all kinds of forms, search fields, etc.
 
@@ -22,7 +22,7 @@ Other input types for entering certain data:
 - [Checkbox](/components/checkbox)
 - [Radio](/components/radio)
 
-@## Sizes
+## Sizes
 
 The input has two sizes.
 
@@ -33,14 +33,14 @@ The input has two sizes.
 | M (28px)            | ![](static/input-m.png) |
 | L (40px)            | ![](static/input-l.png) |
 
-@## Label
+## Label
 
 We recommend adding a visible text label to the input wherever possible. If the input isn’t required, be sure to mark it with the "optional" text label.
 
 @table-caption Input text label sizes
 
-| Size (height in px) | Text size | Appearance example            | Margins                              |
-| ------------------- | --------- | ----------------------------- | ------------------------------------ |
+| Size (height in px) | Text size                                | Appearance example                                             | Margins                              |
+| ------------------- | ---------------------------------------- | -------------------------------------------------------------- | ------------------------------------ |
 | M (28px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/input-label-m.png) ![](static/input-optional-m.png) | ![](static/input-label-margin-m.png) |
 | L (40px)            | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/input-label-l.png) ![](static/input-optional-l.png) | ![](static/input-label-margin-l.png) |
 
@@ -62,7 +62,7 @@ We recommend adding a visible text label to the input wherever possible. If the 
 
 ![](static/padding_collapse.png)
 
-@## Interaction
+## Interaction
 
 > Use `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
 >
@@ -80,13 +80,13 @@ We recommend adding a visible text label to the input wherever possible. If the 
 
 For live examples of the input types, refer to [Example tab](/components/input/input-code).
 
-@## Search input
+## Search input
 
 The search input can have a non-clickable icon before the text and the icon for clearing the value after the text.
 
 ![](static/search.png)
 
-@## Input with a counter
+## Input with a counter
 
 You can place [Counter](/components/counter/) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
@@ -99,7 +99,7 @@ You can place [Counter](/components/counter/) inside the input or next to its la
 | M (28px)            | ![](static/counter-M.png)          | ![](static/counter-in-m.png) |
 | L (40px)            | ![](static/counter-L.png)          | ![](static/counter-in-l.png) |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 1. Use input fields only for single-line information. If you need to enter a lot of data, use a [Textarea](/components/textarea/) instead.
 2. Label the inputs clearly, so users can quickly understand what data needs to be entered.

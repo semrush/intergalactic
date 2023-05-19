@@ -3,7 +3,7 @@ title: API
 fileSource: spin-container
 ---
 
-@## SpinContainer
+## SpinContainer
 
 ```jsx
 import SpinContainer from '@semcore/ui/spin-container';
@@ -12,7 +12,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 
 @typescript SpinContainerProps
 
-@## SpinContainer.Content
+## SpinContainer.Content
 
 Content wrapper with proper `position` and `z-index`.
 
@@ -21,7 +21,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Content />;
 ```
 
-@## SpinContainer.Overlay
+## SpinContainer.Overlay
 
 By default, it is a UI component and a base that closes the content under `Spin`.
 

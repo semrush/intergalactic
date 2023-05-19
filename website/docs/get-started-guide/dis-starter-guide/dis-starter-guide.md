@@ -12,13 +12,13 @@ Welcome to a series of quick and convenient guides to help you get started with 
 
 @embedded_video https://www.loom.com/share/0e14e413ea314afda211d3845cc845f2 -->
 
-@## How to contribute?
+## How to contribute?
 
 If you're interested in contributing to the Intergalactic Design System, check out this video on how to get involved.
 
 @embedded_video https://www.loom.com/share/2d935c96e823486384cf22142418a72b
 
-@## Principles
+## Principles
 
 @embedded_video https://www.loom.com/share/7fe17765621346ddbbf0b32c7d57d6bb
 
@@ -32,7 +32,7 @@ The core principles guiding the development of the Semrush interfaces are the fo
 
 <!-- See [Principles](/core-principles/principles/) if you want to dive deeper and learn more about them. -->
 
-@## Design tokens
+## Design tokens
 
 The Intergalactic Design System relies on two sets of design tokens: basic and semantic. The base tokens define the primary color palette, while the semantic tokens build upon the base tokens. By modifying the base tokens, you can affect the semantic tokens, making it possible to create new themes.
 
@@ -40,7 +40,7 @@ Tools like [Huetone](https://huetone.ardov.me/) can help you creating new palett
 
 Refer to [Design tokens](/style/design-tokens) to learn more about the tokens and their usage.
 
-@## Typography
+## Typography
 
 The main font used in the Intergalactic Design System is Inter. Our type scale is based on a modular scale with a 12px font size and a 1.2 ratio.
 
@@ -51,7 +51,7 @@ We strongly recommend using 14px and 16px font sizes for text messages to optimi
 
 See [Typography](/style/typography/) if want to learn more about our recommendations on typography.
 
-@## Breakpoints
+## Breakpoints
 
 While most of our products are designed for desktop data visualization, we suggest using the following main breakpoints for adaptivity:
 
@@ -65,24 +65,24 @@ While most of our products are designed for desktop data visualization, we sugge
 
 Refer to [Breakpoints](/layout/breakpoints/) and [Grid and page layout](/layout/grid-system/) for more information.
 
-@## Grid system
+## Grid system
 
 Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed one based on their requirements. The standard width of our design frames for product pages is 1440px.
 
 Refer to [Grid and page layout](/layout/grid-system) for a detailed description with code examples.
 
-@## Charts
+## Charts
 
 Charts play a significant role in our interfaces, and we employ a variety of chart types to visualize different data. Before utilizing a specific chart, be sure to consult the guidelines for its proper use.
 
 Check out [Data visualization](/data-display/d3-chart) for a detailed guideline on how to build widgets with data.
 
-@## Tables
+## Tables
 
 Tables are crucial components of our product interfaces, with primary tables offering various functionalities and secondary tables used to visualize smaller data sets.
 
 Because of the large number of use cases and edge states we have separate guidelines for [Table principles](/table-group/table/), [Table controls](/table-group/table-controls/) and [Table states](/table-group/table-states/). We highly recommend you give all of them a look.
 
-@## Resources
+## Resources
 
 For all the resources you need to start creating an interface for the Semrush suite, refer to the [Figma libraries page](/get-started-guide/work-figma/).

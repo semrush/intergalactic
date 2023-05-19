@@ -6,7 +6,7 @@ tabName: Design
 
 **Primary** is the basic type of tables for displaying large data volumes and complex functionality.
 
-@## Paddings
+## Paddings
 
 The cell in the primary table, whether it is a header or a row, has 12px padding.
 
@@ -16,18 +16,18 @@ You also can make a cell compact simply by using `compact` prop. In this case pa
 
 ![](static/primary-compact-paddings.png)
 
-@## Styles
+## Styles
 
 > Content inside header cells and rows is aligned to the top.
 
-| Description                     | Appearance                                | Styles                                                                        |
-| ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
+| Description                     | Appearance                       | Styles                                                                                               |
+| ------------------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | Heading                         | ![](static/th-styles.png)        | `background-color: var(--table-th-primary-cell)`, `border-bottom: 1px solid var(--border-secondary)` |
 | Heading of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header shouldn't have a shadow.      |
 | Default row                     | ![](static/td-default.png)      | `border-bottom: 1px solid var(--border-secondary)`                                   |
 | The last line of the accordion  | ![](static/accordion.png)  | `border-bottom: 1px solid var(--table-td-cell-actions-accordion)`                                   |
 
-@## Multi-level header
+## Multi-level header
 
 In some cases, a header should comprise two or more rows. Following conditions are recommended to be met:
 
@@ -40,14 +40,14 @@ In other cases, if there is insufficient space, two lines of text in one cell ca
 
 ![](static/two-row-name-head.png)
 
-@## Table header states
+## Table header states
 
-| State  | Appearance                         | Styles                                                |
-| ------ | ---------------------------------- | ----------------------------------------------------- |
-| Hover  | ![](static/th-hover.png)   | `background-color: var(--table-th-primary-cell-hover)`, `cursor: pointer` |
+| State  | Appearance                | Styles                                                                     |
+| ------ | ------------------------- | -------------------------------------------------------------------------- |
+| Hover  | ![](static/th-hover.png)  | `background-color: var(--table-th-primary-cell-hover)`, `cursor: pointer`  |
 | Sorted | ![](static/th-styles.png) | `background-color: var(--table-th-primary-cell-active)`, `cursor: pointer` |
 
-@## Row states
+## Row states
 
 See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
 

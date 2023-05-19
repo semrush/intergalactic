@@ -24,7 +24,7 @@ We would be very grateful if you install/update the extension and help us collec
 
 That's all! You are awesome ❤️
 
-@## Color highlighting of the interface
+## Color highlighting of the interface
 
 💚 Green – these components are from the [@semcore library](https://github.com/semrush/intergalactic). You are awesome!
 

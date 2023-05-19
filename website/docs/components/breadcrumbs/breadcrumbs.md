@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Breadcrumbs** is a component for displaying the "user's path" on the website. It's usually used as an additional navigation element.
 
@@ -18,7 +18,7 @@ tabName: Design
 
 Don’t use breadcrumbs on the main pages.
 
-@## Appearance
+## Appearance
 
 Links inside this component have custom styles.
 
@@ -31,7 +31,7 @@ Links inside this component have custom styles.
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
 | Link                | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
-| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                              |
+| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                                   |
 
 ### Margins
 
@@ -39,13 +39,13 @@ Margins between the links inside the breadcrumbs is 8px.
 
 ![](static/margins.png)
 
-@## Long links truncation
+## Long links truncation
 
 If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
 
 ![](static/ellipsis.png)
 
-@## Interaction
+## Interaction
 
 ![](static/hover.png)
 
@@ -54,10 +54,10 @@ If there isn’t enough place for the breadcrumbs (screen is too small or the te
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
 | Normal | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
-| Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
-| Active | `color: var(--text-primary)`, `cursor: default`                                         |
+| Hover  | `color: var(--text-hint-hover-active)` + underline                                          |
+| Active | `color: var(--text-primary)`, `cursor: default`                                             |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 The recommended order of the navigation levels in the breadcrumbs:
 

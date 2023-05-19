@@ -3,7 +3,7 @@ title: Category
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Category filter** is a pattern for selecting or multiselecting of domain categories.
 
@@ -13,17 +13,17 @@ When working with the category filter, the user should:
 - quickly find the appropriate category;
 - understand, what category is selected, because they can have very long and similar names.
 
-@## Appearance
+## Appearance
 
 For trigger use [Select](/components/select/) with `min-width: 102px` and [FilterTrigger](/components/filter-trigger/) with `min-width: 160px`.
 
 It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or cannot understand what category is selected.
 
-| Input size | Inactive filter (Select)               | Active filter (FilterTrigger)              |
-| ---------- | -------------------------------------- | ------------------------------------------ |
+| Input size | Inactive filter (Select)               | Active filter (FilterTrigger)               |
+| ---------- | -------------------------------------- | ------------------------------------------- |
 | M          | ![inactive filter](static/default.png) | ![active filter](static/filter-trigger.png) |
 
-@## Filter by one category
+## Filter by one category
 
 Use [Select](/components/select/) as a trigger.
 
@@ -80,7 +80,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ![error](static/error.png)
 
-@## Filter by multiple categories
+## Filter by multiple categories
 
 - Use this type of filter if you are sure you need it (for example, users are asking for it).
 - Usually, such a filter is very complex, and most products only need selection of one category.
@@ -141,7 +141,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ![error](static/error.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 > Technically, categories don’t have nesting, it is purely visual to distinguish between categories.
 >

@@ -3,7 +3,7 @@ title: API
 fileSource: slider
 ---
 
-@## Slider
+## Slider
 
 ```jsx
 import Slider from '@semcore/ui/slider';
@@ -12,21 +12,21 @@ import Slider from '@semcore/ui/slider';
 
 @typescript SliderProps
 
-@## Slider.Bar
+## Slider.Bar
 
 ```jsx
 import Slider from '@semcore/ui/slider';
 <Slider.Bar />;
 ```
 
-@## Slider.Knob
+## Slider.Knob
 
 ```jsx
 import Slider from '@semcore/ui/slider';
 <Slider.Knob />;
 ```
 
-@## Slider.Options & Slider.Item
+## Slider.Options & Slider.Item
 
 ```jsx
 import Slider from '@semcore/ui/slider';

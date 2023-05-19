@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## NoticeBubbleManager
+## NoticeBubbleManager
 
 ```js
 import NoticeBubbleManager from '@semcore/ui/notice-bubble';
@@ -12,7 +12,7 @@ Manager is a storage of all notice instances, it is able to add, delete and upda
 
 @typescript NoticeBubbleManagerClass
 
-@## NoticeBubbleContainer
+## NoticeBubbleContainer
 
 ```js
 import { NoticeBubbleContainer } from '@semcore/ui/notice-bubble';

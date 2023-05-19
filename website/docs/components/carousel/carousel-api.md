@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Carousel
+## Carousel
 
 Main component.
 
@@ -13,7 +13,7 @@ import Carousel from '@semcore/ui/carousel';
 
 @typescript CarouselProps
 
-@## Carousel.Container
+## Carousel.Container
 
 `Carousel.Container` is a wrap over `Carousel.Item`. `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api/#a3cfce).
 
@@ -22,7 +22,7 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel.Container />;
 ```
 
-@## Carousel.Item
+## Carousel.Item
 
 `Carousel.Item` doesn't have own API, extends to [Box](/layout/box-system/box-api/#a3cfce).
 
@@ -31,7 +31,7 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel.Item />;
 ```
 
-@## Carousel.Indicators
+## Carousel.Indicators
 
 Component view for default dots. It doesn't have own API, extends to [Box](/layout/box-system/box-api/#a3cfce).
 
@@ -40,7 +40,7 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel.Indicators />;
 ```
 
-@## Carousel.Prev, Carousel.Next
+## Carousel.Prev, Carousel.Next
 
 Component view for default Chevron icons. It doesn't have own API, extends to [Box](/layout/box-system/box-api/#a3cfce).
 

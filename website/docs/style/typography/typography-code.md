@@ -8,7 +8,7 @@ Our typography primitives have no margins as they may differ in the end products
 
 @example text
 
-@## List with custom bullets
+## List with custom bullets
 
 Using the example below, you can easily create lists with custom bullets.
 

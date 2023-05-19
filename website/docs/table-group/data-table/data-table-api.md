@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## DataTable
+## DataTable
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
@@ -11,7 +11,7 @@ import DataTable from '@semcore/ui/data-table';
 
 @typescript DataTableProps
 
-@## DataTable.Head
+## DataTable.Head
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
@@ -20,7 +20,7 @@ import DataTable from '@semcore/ui/data-table';
 
 @typescript DataTableHeadProps
 
-@## DataTable.Column
+## DataTable.Column
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
@@ -29,7 +29,7 @@ import DataTable from '@semcore/ui/data-table';
 
 @typescript DataTableColumnProps
 
-@## DataTable.Body
+## DataTable.Body
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
@@ -38,7 +38,7 @@ import DataTable from '@semcore/ui/data-table';
 
 It's a wrapper over a [Box](/layout/box-system/box-api/#a3cfce) component.
 
-@## DataTable.Row
+## DataTable.Row
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';
@@ -47,7 +47,7 @@ import DataTable from '@semcore/ui/data-table';
 
 @typescript DataTableRowProps
 
-@## DataTable.Cell
+## DataTable.Cell
 
 ```jsx
 import DataTable from '@semcore/ui/data-table';

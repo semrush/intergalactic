@@ -3,21 +3,21 @@ title: Form
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Form** is a pattern for collecting and sending data to the system. It always consists of different types of inputs and controls.
 
 > Use one size of inputs and controls in the form.
 
-@## Layout
+## Layout
 
-| Layout type | Example                      |
-| ----------- | ---------------------------- |
-| Horizontal  | ![](static/horizontal.png)   |
-| Vertical    | ![](static/vertical.png)     |
-| Inline      | ![](static/inline.png)       |
+| Layout type | Example                    |
+| ----------- | -------------------------- |
+| Horizontal  | ![](static/horizontal.png) |
+| Vertical    | ![](static/vertical.png)   |
+| Inline      | ![](static/inline.png)     |
 
-@## Input labels
+## Input labels
 
 Input should have a text label.
 
@@ -26,12 +26,12 @@ Input should have a text label.
 
 You also can mark the input as an optional.
 
-| Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                |
-| ---------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- |
-| M          | ![](static/input-m.png)       | ![](static/input-left-m.png)       | 14px (Use `--fs-200`, `--lh-200` tokens) |
+| Input size | Vertical layout            | Horizontal layout               | Font size                                |
+| ---------- | -------------------------- | ------------------------------- | ---------------------------------------- |
+| M          | ![](static/input-m.png)    | ![](static/input-left-m.png)    | 14px (Use `--fs-200`, `--lh-200` tokens) |
 |            | ![](static/checkbox-m.png) | ![](static/checkbox-left-m.png) |                                          |
 |            | ![](static/textarea-m.png) | ![](static/textarea-left-m.png) |                                          |
-| L          | ![](static/input-l.png)       | ![](static/input-left-l.png)       | 16px (Use `--fs-300`, `--lh-300` tokens) |
+| L          | ![](static/input-l.png)    | ![](static/input-left-l.png)    | 16px (Use `--fs-300`, `--lh-300` tokens) |
 |            | ![](static/checkbox-l.png) | ![](static/checkbox-left-l.png) |                                          |
 |            | ![](static/textarea-l.png) | ![](static/textarea-left-l.png) |                                          |
 
@@ -39,7 +39,7 @@ In cases, when the form is centered on the page, input labels can be right-align
 
 ![](static/align-center.png)
 
-@## Placeholders
+## Placeholders
 
 Placeholders are required to prompt the user about what data should be entered.
 
@@ -50,7 +50,7 @@ You can omit the placeholder only if the input’s purpose is obvious.
 
 To format values that the user enters use [InputMask](/components/input-mask/).
 
-@## Inputs
+## Inputs
 
 > After opening the form the first input should get the `focus`.
 
@@ -61,11 +61,11 @@ To format values that the user enters use [InputMask](/components/input-mask/).
 | M          | ![](static/m.png) |
 | L          | ![](static/l.png) |
 
-@## Form validation
+## Form validation
 
 See detailed information about the form validation in [Validation](/patterns/validation-form/).
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Vertical form layout vs. horizontal form layout
 

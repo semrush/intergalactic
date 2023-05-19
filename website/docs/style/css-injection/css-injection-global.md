@@ -2,11 +2,12 @@
 title: Global CSS Injection
 ---
 
-> 🚨 If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/#themes).
-
+::: warning
+:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/#themes).
+:::
 All our components use default Semrush styles (default theme prefixed with `--intergalactic` in tokens). However, if your product uses a different color palette or you need to style the components differently, you may want to change the default Semrush styles. This page contains instructions on how to do that using the React Semcore plugin for Babel.
 
-@## Step one
+## Step one
 
 Install the component you want to restyle and our React Semcore plugin. They're needed to properly transpile the code. To install the plugin, use the following command:
 
@@ -16,7 +17,7 @@ npm i @semcore/babel-plugin-react-semcore
 
 > ⚠️ **Attention**. Don't process our files with Babel plugins in your code. This may lead to unpredictable results 🤕
 
-@## Step two
+## Step two
 
 Create a directory for components with injected CSS taking into account the following restrictions. They're needed because CSS injection are very much tied to naming and file structure.
 
@@ -36,7 +37,7 @@ In the following example, a directory contains three components:
         └-- link.shadow.css
 ```
 
-@## Step three
+## Step three
 
 Add a new rule to your `webpack-config`:
 
@@ -64,7 +65,7 @@ After that, all the styles created in your CSS injection style directory will be
 
 👯‍ **Congratulations, you've changed the styles of the components!**
 
-@## Versioning
+## Versioning
 
 > Versioning is optional, but recommended for your own comfort.
 
@@ -95,7 +96,7 @@ An example of the `versions.json` file :
 
 > Versions follow the [SemVer](https://semver.org/) format, you can also specify `*`.
 
-@## Note
+## Note
 
 To develop CSS injections locally, you need hot module replacement. It won't work out of the box because CSS injections are applied during the build process and watchers can't see the changes. To fix that:
 

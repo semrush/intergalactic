@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **InputNumber** is a numeric input field that accepts numeric values only.
 
@@ -42,7 +42,7 @@ The width of the input shouldn't exceed the maximum number that can be entered. 
 
 ![](static/size-yes-no.png)
 
-@## Interaction
+## Interaction
 
 Stepper buttons are enabled when the InputNumber field receives focus. The target area for the steppers is larger than their visual size.
 
@@ -74,7 +74,7 @@ If needed, you can utilize a number as a placeholder within this type of input.
 | Focus         | ![](static/l-focus.png)       | ![](static/m-focus.png)       | Icon use `--icon-secondary-neutral` token for color.               |
 | Stepper hover | ![](static/l-icon-hover.png)  | ![](static/m-icon-hover.png)  | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
 
-@## Validation
+## Validation
 
 Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [Validation](/patterns/validation-form/) guide.
 
@@ -85,7 +85,7 @@ To assist users in entering correct and valid data, you can:
 
 ![](static/validation-yes-no.png)
 
-@## InputRange
+## InputRange
 
 To input a range of numbers, you can use two InputNumbers grouped together.
 

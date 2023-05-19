@@ -4,11 +4,11 @@ fileSource: feedback-form
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **FeedbackYesNo** is a pattern for collecting of the feedback. It that consists of [Notice](/components/notice/) and [Feedback form](/components/feedback/). This pattern helps to introduce the feature to the user and contains a simple question about the work of the product. _For example, “Meet our new Dashboard! Is it working well for you?”._
 
-@## Component appearing
+## Component appearing
 
 ### Two variants are possible for the notice appearing
 
@@ -17,7 +17,7 @@ tabName: Design
 
 > The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
 
-@## Location
+## Location
 
 This component is usually located on the top of the report or product.
 
@@ -27,7 +27,7 @@ And next to the feature you want feedback on.
 
 ![](static/send-feedback-notice-next-to-feature.png)
 
-@## Styles
+## Styles
 
 ![](static/feedback-yes-no.png)
 
@@ -35,15 +35,15 @@ And next to the feature you want feedback on.
 - Before the text place the [image](https://static.semrush.com/ui-kit/illustration/1.4.0/Feedback.svg). The image size is 40px х 40px.
 - The button "Ask me later" is a button with `use="tertiary"`and `theme="info"`. Not a link.
 
-@## Margins and paddings
+## Margins and paddings
 
 ![](static/feedback-yes-no-sizes.png)
 
-@## Form behavior
+## Form behavior
 
 See the detailed description of behavior of the feedback dropdown in [Feedback](/components/feedback/).
 
-@## Buttons behavior
+## Buttons behavior
 
 ### "Yes" and "No" buttons
 
@@ -62,7 +62,7 @@ See the detailed description of behavior of the feedback dropdown in [Feedback](
 - the pressed button `Yes` or `No` switches to normal status;
 - the notice isn’t hidden.
 
-@## Closing and appearing of the notice
+## Closing and appearing of the notice
 
 ### "Ask me later" button
 
@@ -80,13 +80,13 @@ Show this element if the report or product has an alternative form for sending f
 - The first variant: it is always in the notice.
 - The second variant (**recommended**): when you click on `Ask me later`, the Close icon appears upon opening in the second session (may appear in the second or the third or the n-session).
 
-@## Remembering states
+## Remembering states
 
 1. If the user sent the feedback, **the notice isn’t shown to him/her anymore**.
 2. It's recommended to store this status in `user`. In order not to be obtrusive.
 3. It's allowed to store the statuses of closing and showing in `local storage`.
 
-@## Events arrangement
+## Events arrangement
 
 | Description                                                          | Action        | Label               | Value       |
 | -------------------------------------------------------------------- | ------------- | ------------------- | ----------- |

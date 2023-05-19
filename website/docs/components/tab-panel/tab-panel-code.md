@@ -11,7 +11,7 @@ Try changing the page size to observe how the tabs are compressed. Additionally,
 
 @example base
 
-@## Custom indents and occupying the entire space
+## Custom indents and occupying the entire space
 
 As you may have noticed, the TabPanel doesn't have default margins at the edges. To make the TabPanel span the entire width of its parent block (which may have its own margins), you need to set the desired `padding` and `margin` for it.
 
@@ -21,6 +21,6 @@ As you may have noticed, the TabPanel doesn't have default margins at the edges.
 </Box>
 ```
 
-@## Example of accessible TabPanel
+## Example of accessible TabPanel
 
 @example a11y

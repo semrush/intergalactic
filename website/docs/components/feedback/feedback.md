@@ -4,13 +4,13 @@ fileSource: feedback-form
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Feedback** component is the form for sending feedback or suggestions about the product. In most cases it opens from the "Send feedback" link or button.
 
 > When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
 
-@## Сomponent composition
+## Сomponent composition
 
 ### Obligatory elements
 
@@ -36,7 +36,7 @@ tabName: Design
 
 ![](static/send-feedback-sizes.png)
 
-@## Placement
+## Placement
 
 In most cases the feedback form opens from the "Send feedback" link at the upper right of the page or from the "Send feedback" buttons inside a [notice for feedback collection](/patterns/feedback-yes-no).
 
@@ -46,7 +46,7 @@ In most cases the feedback form opens from the "Send feedback" link at the upper
 
 In some cases it may open from the button "Send feedback", placed in the widgets.
 
-@## Interaction
+## Interaction
 
 > If the user closes the form and then opens it again, save the content previously entered into the inputs.
 

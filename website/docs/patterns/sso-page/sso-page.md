@@ -2,7 +2,7 @@
 title: SSO page (Login form)
 ---
 
-@## Description
+## Description
 
 **SSO (Single Sign-On)** is a login and registration form that the user gets to when:
 
@@ -10,14 +10,14 @@ title: SSO page (Login form)
 - the user was logged out or he left the account;
 - free-the user has reached the limit of using the product.
 
-@## Appearance
+## Appearance
 
 SSO from the design point of view consists of the following:
 
 - forms for user authorization/registration;
 - optional block with contact information.
 
-@## The main recommendations on styles
+## The main recommendations on styles
 
 > All variables are taken from a common file with variables in `semcore` 😏
 
@@ -28,7 +28,7 @@ SSO from the design point of view consists of the following:
 - The color of the main text (both the title and the text below it) is always #333333 (`--gray-800`).
 - The color of the tooltips at the bottom of the form - #757575 (`--gray-500`).
 
-@## Spacing
+## Spacing
 
 All margins should always be a [multiple of our common denominator – 4](/style/variables/).
 
@@ -40,7 +40,7 @@ All margins should always be a [multiple of our common denominator – 4](/style
 
 ![form margins](static/margins-2.png)
 
-@## Main login/registration form
+## Main login/registration form
 
 ### Login form
 
@@ -64,13 +64,13 @@ We show the form on a separate page with a white background, the Semrush logo, a
 - Explanatory text – `Explore all opportunities for SEO, paid search, SMM, and content with Semrush. Get market insights and uncover your competitors' strategies`.
 - Text and a link that switches to the login form.
 
-@## Limit registration/login form
+## Limit registration/login form
 
 As soon as the free user reaches the limit for using the product, a limit window appears on top of the Semrush interface with a registration/authorization form without the possibility of closing it.
 
 ![limit form](static/limit.png)
 
-@## States of the login/registration form
+## States of the login/registration form
 
 When you open a modal window, the first empty input must get the `focus` state.
 
@@ -102,7 +102,7 @@ For more information about form validation, see [Validation](/patterns/validatio
 
 ![form with validation](static/validation-3.png)
 
-@## Reset password
+## Reset password
 
 ### Password validation
 

@@ -3,7 +3,7 @@ title: API
 fileSource: input
 ---
 
-@## Input
+## Input
 
 Wrap over the input elements.
 
@@ -14,7 +14,7 @@ import Input from '@semcore/ui/input';
 
 @typescript InputProps
 
-@## Input.Value
+## Input.Value
 
 This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
@@ -25,7 +25,7 @@ import Input from '@semcore/ui/input';
 
 @typescript InputValueProps
 
-@## Input.Addon
+## Input.Addon
 
 The addon inside the input (most often it is an icon) places the correct indent units depending on the size. The addon can be `interactive`.
 

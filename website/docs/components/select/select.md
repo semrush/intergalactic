@@ -4,7 +4,7 @@ fileSource: select
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Select** component allows users to choose one or more values from a list. It can optionally include search input, titles, buttons, grouping, and nesting.
 
@@ -24,7 +24,7 @@ Component consists of the following:
 - `Select.OptionTitle`
 - `Select.OptionCheckbox`
 
-@## Trigger
+## Trigger
 
 For the select trigger, you can use the following BaseTrigger types:
 
@@ -53,7 +53,7 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 
 ![](static/tooltip.png)
 
-@## Trigger states
+## Trigger states
 
 @table-caption Trigger button states
 
@@ -68,7 +68,7 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 | Invalid       | ![](static/primary-invalid.png)           | ![](static/inline-select-invalid.png)     | ![](static/inline-select-invalid.png)       |
 | Disabled      | ![](static/primary-disabled.png)         | ![](static/inline-select-disabled.png)   | ![](static/tertiary-select-disabled.png)   |
 
-@## Trigger content
+## Trigger content
 
 The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/) should be placed in the upper right corner of the trigger.
 
@@ -85,7 +85,7 @@ The select trigger can contain an icon, flag, or other addon before the text. Th
 
 Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/).
 
-@## Multiselect
+## Multiselect
 
 **Multiselect** is a select type with the functionality to choose several items from a list. Items in such a list are represented by checkboxes.
 
@@ -103,7 +103,7 @@ If you have more than three values, add the "Select all" option at the very begi
 
 ![](static/multiselect-all.png)
 
-@## Specific cases for multiselect
+## Specific cases for multiselect
 
 In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
 

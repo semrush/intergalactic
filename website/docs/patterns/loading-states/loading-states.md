@@ -2,7 +2,7 @@
 title: Loading states
 ---
 
-@## Description
+## Description
 
 Components that we use to work with user expectations:
 
@@ -14,7 +14,7 @@ Components that we use to work with user expectations:
 
 > The container that contains the loading message should have margins, so in edge cases (for example, when the user changes the size of the viewport), the container doesn't "stick" to other elements on the page. The margins depend on the component where the loading message is used. They are usually multiple of 4 (for example, for spinner we recommend to use `margin: 40px`).
 
-@## Response from the system
+## Response from the system
 
 ### Lazy loading
 
@@ -32,7 +32,7 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 
 [Spin](/components/spin) is only used when the user interacts with a clickable interface element on the page.
 
-@## Usage rules
+## Usage rules
 
 ### Skeleton
 

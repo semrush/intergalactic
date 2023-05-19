@@ -4,7 +4,7 @@ fileSource: inline-input
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **InlineInput** is a single-line text field for input and edit. In edit mode, it always has buttons to save or cancel entered value.
 
@@ -16,7 +16,7 @@ tabName: Design
 
 > Don’t use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
 
-@## Appearance
+## Appearance
 
 ### Sizes
 
@@ -45,7 +45,7 @@ The color of the placeholder is the same as a regular input has - `--text-placeh
 
 ![](static/paddings.png)
 
-@## Addons
+## Addons
 
 Addons are slots inside the input to the left or right of the text for additional visual or interactive elements.
 
@@ -84,7 +84,7 @@ The save icon is always has `--icon-secondary-success` token as color, the cance
 | For components with text less than 24px (including this size) | ![](static/trailing-addon-margins.png)     | ![](static/small-text.png) | M         |
 | For components with text larger than 24px                     | ![](static/trailing-addon-big-margins.png) | ![](static/big-text.png)     | L         |
 
-@## Tooltip
+## Tooltip
 
 For save and cancel button icons on hover, it's important to show a tooltip that tells a user what they're doing.
 
@@ -92,13 +92,13 @@ For save and cancel button icons on hover, it's important to show a tooltip that
 
 ![](static/tooltip1.png)
 
-@## Save and Cancel buttons
+## Save and Cancel buttons
 
 In some cases, where space allows and there is a need to show regular buttons, you can hide control icons.
 
 ![](static/buttons.png)
 
-@## Interaction
+## Interaction
 
 InlineInput can take on the same states as a [normal input](/components/input/), except for the normal, read-only, and disabled states.
 
@@ -119,7 +119,7 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 | Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                               |
 | Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/) token). |
 
-@## Save и Cancel icon buttons
+## Save и Cancel icon buttons
 
 On hover, the icons change color to the next one in the palette:
 
@@ -130,7 +130,7 @@ On hover, the icons change color to the next one in the palette:
 
 ![](static/tooltip1.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Font size
 

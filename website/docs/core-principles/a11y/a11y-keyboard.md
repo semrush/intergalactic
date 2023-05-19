@@ -2,7 +2,7 @@
 title: Keyboard support
 ---
 
-@## Points to check
+## Points to check
 
 Make sure that it's possible to interact with your interface using a keyboard only.
 
@@ -16,7 +16,7 @@ Make sure that it's possible to interact with your interface using a keyboard on
 
 > Note that the components of the design system already can be operated with the keyboard, and all the sections below about working with the keyboard for specific components and interface elements describes how it already works in design system components. **But everything related to the focus order and using hotkeys, you should always verify in your own interface.**
 
-@## Basic rules
+## Basic rules
 
 > **Brief guide to keyboard control**
 >
@@ -34,7 +34,7 @@ Keyboard control should be performed sequentially across all interactive element
 - The focus inside groups of controls is consistent. After the last control in the group, the focus should move to the next control in the interface.
 - If the control has a tooltip in the `hover` state, it should appear on focus with `Tab`.
 
-@## Keyboard support for button, link, input, etc.
+## Keyboard support for button, link, input, etc.
 
 ### Link и hint link
 
@@ -81,7 +81,7 @@ Keyboard control should be performed sequentially across all interactive element
 - Both rows and single elements in a row get `focus`. Besides, the rows are presented as a list and you can move through them with arrows. And inside rows – using `Tab`.
 - When you press `Enter`, an event occurs, as if you press the mouse button. If the entire row have `focus`, you follow the link, and if only the icon has `focus`, then the action is performed, etc.
 
-@## Keyboard support for popper
+## Keyboard support for popper
 
 Common cases about focus behavior when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
 
@@ -98,7 +98,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 ![](/core-principles/a11y/static/keyboard-nav1.png)
 
-@## Focus, OnMouseEnter and popper
+## Focus, OnMouseEnter and popper
 
 1. By hovering over / pressing `Tab`, the trigger gets the focus, and popper opens.
 2. The popper closes by pressing `Esc`, and **focus remains on the trigger**.
@@ -106,7 +106,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 ![](/core-principles/a11y/static/keyboard-nav2.png)
 
-@## Focus, OnClick and popper with a single interactive element
+## Focus, OnClick and popper with a single interactive element
 
 1. By pressing `Tab`, the trigger gets focus.
 2. When you focus on trigger, `Enter`/`Space` opens a popper. If the trigger opens a select/menu, you can also open the popper by using the `Down Arrow`.
@@ -116,7 +116,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 ![](/core-principles/a11y/static/keyboard-nav3.png)
 
-@## Focus, OnClick and popper with multiple interactive elements
+## Focus, OnClick and popper with multiple interactive elements
 
 1. By pressing `Tab`, the trigger gets focus.
 2. When you focus on trigger, `Enter`/`Space` opens a popper. If the trigger opens a select/menu, then you can also open the popper using the `Down Arrow`.
@@ -127,11 +127,11 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 ![](/core-principles/a11y/static/keyboard-nav4.png)
 
-@## Focus, onClick and popper in the popper
+## Focus, onClick and popper in the popper
 
 A popper inside another popper has the same situation as in the above case.
 
-@## Keyboard support for modal window
+## Keyboard support for modal window
 
 Common cases about focus behavior when working with dropdown are described below.
 
@@ -140,7 +140,7 @@ Common cases about focus behavior when working with dropdown are described below
 3. You can use `Tab` and `Shift + Tab` to move between all the interactive elements inside the window.
 4. Pressing `Esc` key (or `Close` icon, "Submit", or "Cancel" buttons) closes the modal window, and focus remains on the trigger.
 
-@## Resources
+## Resources
 
 - [Meaningful Sequence](https://www.w3.org/TR/WCAG21/#meaningful-sequence)
 - [Keyboard Accessible](https://www.w3.org/TR/WCAG21/#keyboard-accessible)

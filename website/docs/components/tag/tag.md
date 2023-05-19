@@ -6,13 +6,13 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Tag** is a component used to thematically group information in the interface, commonly found in tables, filters, cards, and other components.
 
 Tags are typically set either by the system or by the user.
 
-@## Component composition
+## Component composition
 
 ![](static/tag-composition.png)
 
@@ -23,7 +23,7 @@ Component consists of the following:
 - `Tag.Close`
 - `Tag.Circle`: a circle image
 
-@## Sizes and paddings
+## Sizes and paddings
 
 @table-caption Tag sizes and paddings
 
@@ -33,7 +33,7 @@ Size (height in px) | Paddings                                       |
 | L (28px)          | ![](static/tag-L.png) ![](static/tag2-L.png)   |
 | XL (40px)         | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
 
-@## Themes
+## Themes
 
 The component offers several themes for tags.
 
@@ -46,7 +46,7 @@ The component offers several themes for tags.
 | `additional`                      | ![](static/additional.png)             | Ideal for special tags that are added to other tags. |
 | `additional` with `color:"white"` | ![](static/additional-invert.png)      | An inversion of the `additional` theme used for special tags that are added to other tags. |
 
-@## Interaction
+## Interaction
 
 @table-caption Tag states
 
@@ -57,15 +57,15 @@ The component offers several themes for tags.
 | `secondary`                      | ![](static/secondary-states.png)               |
 | `secondary` with `color:"white"` | ![](static/secondary-invert-states.png) |
 
-@## Adding tag
+## Adding tag
 
 Users can create tags using tags with the `additional` theme.
 
 | State  | Appearance example                  | Styles    |
 | ------ | ----------------------------------- | --------- |
 | Normal | ![](static/normal.png) | `color: var(--text-secondary)`, `background-color: var(--tag-secondary-normal)`, `border: 1px dotted var(--border-primary)` |
-| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                         |
-| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                         |
+| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                       |
+| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                       |
 
 This tag opens [InlineInput](/components/inline-input/), and you can add a [mask label](/components/input-mask/) to guide the user on what to type into the input.
 
@@ -77,11 +77,11 @@ Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and
 
 If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` displays a tooltip with the full tag label.
 
-@## Editing tag
+## Editing tag
 
 For editable tags, use the [InlineInput](/components/inline-input/) component, similar to adding a tag. Refer to the [live example](/components/tag/tag-code/#editing_tag).
 
-@## Long text
+## Long text
 
 You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be collapsed with an `ellipsis`, and hovering over the tag will show a tooltip with the full tag label.
 
@@ -95,7 +95,7 @@ In case you have a huge number of tags and don’t need to show them all at once
 
 ![more tags example](static/more-tags.png) -->
 
-@## Margins between tags
+## Margins between tags
 
 @table-caption Margins between tags
 
@@ -112,7 +112,7 @@ Recommendations on positioning of tags in relation to other components:
 - In most cases, place tag to the right of the component.
 - In the card, place tag at the bottom. -->
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Use tags for visual marking of objects, fast recognition and navigation.
 

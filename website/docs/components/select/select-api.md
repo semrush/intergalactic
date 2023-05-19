@@ -5,7 +5,7 @@ fileSource: select
 
 > `Select` is a wrap over `DropdownMenu` with the addition of new selection features.
 
-@## Select
+## Select
 
 ```jsx
 import Select from '@semcore/ui/select';
@@ -14,7 +14,7 @@ import Select from '@semcore/ui/select';
 
 @typescript SelectProps
 
-@## Select.Trigger
+## Select.Trigger
 
 It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/filter-trigger/filter-trigger-api/#a7d101).
 
@@ -23,14 +23,14 @@ import Select from '@semcore/ui/select';
 <Select.Trigger />;
 ```
 
-@## Select.Menu
+## Select.Menu
 
 ```jsx
 import Select from '@semcore/ui/select';
 <Select.Menu />;
 ```
 
-@## Select.InputSearch
+## Select.InputSearch
 
 It is a wrap over the `<Input.Value/>`.
 
@@ -39,7 +39,7 @@ import { InputSearch } from '@semcore/ui/select';
 <InputSearch />;
 ```
 
-@## Select.Option
+## Select.Option
 
 ```jsx
 import Select from '@semcore/ui/select';
@@ -48,21 +48,21 @@ import Select from '@semcore/ui/select';
 
 @typescript SelectOptionProps
 
-@## Select.OptionHint
+## Select.OptionHint
 
 ```jsx
 import Select from '@semcore/ui/select';
 <Select.OptionHint />;
 ```
 
-@## Select.OptionTitle
+## Select.OptionTitle
 
 ```jsx
 import Select from '@semcore/ui/select';
 <Select.OptionTitle />;
 ```
 
-@## Select.OptionCheckbox
+## Select.OptionCheckbox
 
 ```jsx
 import Select from '@semcore/ui/select';
@@ -71,7 +71,7 @@ import Select from '@semcore/ui/select';
 
 @typescript SelectOptionCheckboxProps
 
-@## Select.Option.Checkbox
+## Select.Option.Checkbox
 
 ```jsx
 import Select from '@semcore/ui/select';

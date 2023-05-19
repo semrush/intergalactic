@@ -6,6 +6,6 @@ Here you can find if our UI Kit team is good at predicting future 😏 We are wo
 
 @import roadmap
 
-@## Ready-to-use components 🎉
+## Ready-to-use components 🎉
 
 You can see all ready-to-use components in the [list on the main page](/), as well as in the [GitHub project](https://github.com/semrush/intergalactic).

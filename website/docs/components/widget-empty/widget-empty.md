@@ -10,7 +10,7 @@ tabName: Design
 
 Widgets have "empty" states, when there is no data to show. In such cases, the WidgetEmpty component informs the user why there is no data and provides guidance on how to address the situation.
 
-@## Composition and styles
+## Composition and styles
 
 ![](static/widgetempty-composition.png)
 
@@ -56,13 +56,13 @@ In some cases, the height of the widget with the "empty" state needs to be reduc
 
 ![](static/medium-extra-empty.png)
 
-@## Button names
+## Button names
 
 <!-- 1. If the WidgetEmpty's description starts with "Try" and only the problem area should be updated, then call the button "Try again". -->
 1. If the whole page should be refreshed, then call the button "Reload page."
 2. If the widget should be refreshed, then call the button "Reload."
 
-@## State types
+## State types
 
 The list of "empty" states in the widgets includes:
 
@@ -72,7 +72,7 @@ The list of "empty" states in the widgets includes:
 - Product isn't set up
 - Something went wrong (has a specific version: "Cannot filter data")
 
-@## No data
+## No data
 
 Use this state when there is no data or the system cannot display it for some reason. If the widget has a title, it should also be displayed in this state. In this case, display the following:
 
@@ -112,7 +112,7 @@ If the widget has a width less than 300px, you may display only the title with s
 
 ![](static/small-nothing.png)
 
-@## Something went wrong
+## Something went wrong
 
 Use this state when something went wrong at the backend. Either the product team is unaware of the issue, or they are aware and informing the user about it.
 
@@ -152,7 +152,7 @@ If your widget has a width less than 300px, you may display only the title with 
 
 ![](static/small-error-2.png)
 
-@## Custom messages
+## Custom messages
 
 ### User has done something wrong
 

@@ -18,7 +18,7 @@ Here we describe all the elements and controls that are important when working w
 >
 > _[Article by M. Grekov about UX tables that are used (in Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)_
 
-@## Accordion
+## Accordion
 
 A table row can be expanded as an [Accordion](/components/accordion/). As a rule such row has more detailed information on row data - chart, text, links, etc.
 
@@ -42,7 +42,7 @@ In the `active` state, the cell must be additionally highlighted with the `backg
 
 ![](static/accordion-3.png)
 
-@## Checkboxes
+## Checkboxes
 
 If you need to select several rows in the table at the same time and perform actions on them, add a [Checkbox](/components/checkbox/) in the leftmost cell of the each row.
 
@@ -66,7 +66,7 @@ You can select multiple rows at once with `Shift` key.
 
 ![](static/selected-shift-1.png) ![selected rows](static/selected-shift-2.png)
 
-@## Columns resizing
+## Columns resizing
 
 When you hover over a border in the header, the cursor changes to `col-resize`, and the border color changes to `--border-table-accent`.
 
@@ -78,7 +78,7 @@ The area that you can grab and change the size of the column includes not only t
 
 > Changing the size of one column shouldn't change the size of other columns.
 
-@## Editing and adding content
+## Editing and adding content
 
 1. When you hover over the line, you can see the `Edit` icon with S size and `--icon-secondary-neutral` token for color.
 
@@ -96,20 +96,20 @@ If there are any other clickable icons in the row, then the edit icon should alw
 
 ![](static/edit-4.png)
 
-@## Highlighting content
+## Highlighting content
 
 When searching a table, sometimes you need to highlight the match in the data. In this case, highlight what you've found with the `background-color: var(--bg-highlight-results)`.
 
 ![](static/table-highlight.png)
 
-@## Internal and external links
+## Internal and external links
 
 **The link in the cell can lead to:**
 
 - the internal report – use the link/button, depending on the context;
 - another website – use the `LinkExternal` icon with S size and `--icon-secondary-neutral` token for color.
 
-@## Long links and text
+## Long links and text
 
 There are three solutions for displaying long text in a table cell. The choice of one of them depends on the context and usage case.
 
@@ -137,7 +137,7 @@ This option is suitable for cases when the cell can have more than one row of a 
 
 ![](static/text-5.png)
 
-@## Pagination
+## Pagination
 
 If the table has more than one page, it must have [Pagination](/components/pagination/). Margin between the table and the pagination is 16px.
 
@@ -147,7 +147,7 @@ If the table contains a small amount of data, we show the pagination for one pag
 >
 > Applying filters to a table always takes the user to the first page of the table.
 
-@## Sorting
+## Sorting
 
 - **If you can sort by column, it must have the `SortDesc`/`SortAsc` icon:**
   - while hovering to inactive state;
@@ -159,8 +159,8 @@ By default, use `SortDesc`.
 
 ### Click zone for sorting
 
-| Case                                                                                  | Click zone                             |
-| ------------------------------------------------------------------------------------- | -------------------------------------- |
+| Case                                                                                  | Click zone                   |
+| ------------------------------------------------------------------------------------- | ---------------------------- |
 | If there is a simple text/icon inside the cell.                                       | ![](static/hover-zone-1.png) |
 | If there is a control inside the cell (for example, a [Select](/components/select/)). | ![](static/hover-zone-2.png) |
 
@@ -188,15 +188,15 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 ### Sort direction
 
-|                                                                                                                                                                                                                                  | Ascending (SortAsc)                  | Descending (SortDesc)               |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- |
-| **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)          | ![](static/desc.png)       |
+|                                                                                                                                                                                                                                  | Ascending (SortAsc)                  | Descending (SortDesc)                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
+| **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)                  | ![](static/desc.png)                 |
 | **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
-| **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
-| **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
-| **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |
+| **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                               |
+| **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO       |
+| **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one    |
 
-@## Status and actions row
+## Status and actions row
 
 > The row must have `transition: 400ms` specified for appearing and hiding.
 
@@ -204,8 +204,8 @@ We recommend using the status row when the table has multi-row selection and pag
 
 When scrolling a table, this row should be pinned to the table header. In this case, it doesn't have a shadow, as well as a pinned header.
 
-| Appearance                                         | Styles                                                                              |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Appearance                        | Styles                                                                                                            |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | ![](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-secondary)` |
 
 ### The actions and rules of use

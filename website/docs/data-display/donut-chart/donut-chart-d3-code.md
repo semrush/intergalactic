@@ -5,7 +5,7 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
-@## Donut
+## Donut
 
 - You can draw donut and pie charts with the `Donut` component.
 - `Pie` is a separate sector.
@@ -13,19 +13,19 @@ fileSource: d3-chart
 
 @example donut
 
-@## Donut controlled highlight
+## Donut controlled highlight
 
 Use `active` property to control segments highlight.
 
 @example donut-with-checkbox
 
-@## Semi-Donut
+## Semi-Donut
 
 To create a half-size chart, you need to specify the `halfsize` value and reduce the height of the chart by half.
 
 @example semi-donut
 
-@## Edge cases
+## Edge cases
 
 - If any data is missing – don't display it on the chart.
 - If only one value is known – display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
@@ -36,6 +36,6 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 @example donut-without-data
 
-@## Legend
+## Legend
 
 @example legend

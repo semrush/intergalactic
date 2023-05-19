@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Time picker** is a component that consists of comboboxes designed for entering or selecting a time value.
 
@@ -21,7 +21,7 @@ Component consists of the following:
 - `TimePicker.Format`
 - `TimePicker.Separator`
 
-@## Appearance
+## Appearance
 
 The component includes [comboboxes](/components/auto-suggest/#Combobox) inside the input field.
 
@@ -34,7 +34,7 @@ If the user needs to choose the time in a 12-hour format, an additional button f
 | 24-hour format | ![](static/input-default-l.png) |
 | 12-hour format | ![](static/input-l.png)         |
 
-@## Sizes and paddings
+## Sizes and paddings
 
 @table-caption TimePicker sizes and paddings
 
@@ -43,7 +43,7 @@ If the user needs to choose the time in a 12-hour format, an additional button f
 | M (28px)                  | ![](static/input-default-m.png) ![](static/input-m.png) | ![paddings](static/paddings-m.png) |
 | L (40px)                  | ![](static/input-default-l.png) ![](static/input-l.png) | ![paddings](static/paddings-l.png) |
 
-@## Interaction
+## Interaction
 
 The first combobox is used for selecting hours, while the second one is for selecting minutes.
 
@@ -74,7 +74,7 @@ The content of the comboboxes can be exact, up to a minute, or with preset steps
 
 > Comboboxes content may be both exact, up to a minute, and with the preset step.
 
-@## Validation
+## Validation
 
 ### When TimePicker needs validation
 

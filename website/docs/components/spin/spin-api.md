@@ -3,7 +3,7 @@ title: API
 fileSource: spin
 ---
 
-@## Spin
+## Spin
 
 Note that Spin is built with SVG inside.
 

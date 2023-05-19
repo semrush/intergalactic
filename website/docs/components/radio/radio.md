@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Radio button** is a control for selecting one of several values or options.
 
@@ -76,7 +76,7 @@ Text label may contain a [Link](/components/link).
 
 ![](static/link-hover-zone.png)
 
-@## Interaction
+## Interaction
 
 - Hovering over the "Radio button and text" area changes the cursor to a pointer.
 - Clicking anywhere on the "Radio button and text" area changes the state of the radio button.
@@ -94,7 +94,7 @@ Text label may contain a [Link](/components/link).
 | Invalid   | ![](static/radio button-invalid.png)   |
 | Disabled  | ![](static/radio button-disabled.png)  |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 - **Use positive language for radio button labels** to clarify the action taken when the radio button is enabled.

@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
@@ -21,7 +21,7 @@ Important points to keep in mind when presenting data as a bar chart:
 - The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
-@## Usage
+## Usage
 
 **Horizontal bars are best used when:**
 
@@ -40,28 +40,28 @@ Important points to keep in mind when presenting data as a bar chart:
 - Distribution of different categories in a certain sequence. _For example, by reducing of their value._
 - Compare different categories with each other if they have long names.
 
-@## Appearance
+## Appearance
 
 ### Horizontal bar chart
 
-|                | Appearance example                          | Styles                                 |
-| -------------- | ------------------------------------------- | -------------------------------------- |
-| One category   | ![](static/one-cat.png)  | `border-radius: 2px`                   |
+|                | Appearance example      | Styles                                 |
+| -------------- | ----------------------- | -------------------------------------- |
+| One category   | ![](static/one-cat.png) | `border-radius: 2px`                   |
 | Two categories | ![](static/two-cat.png) | The margin between two columns is 4px. |
 
 > If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
 >
 > It is also a good solution to allow users to switch the chart type in the widget settings.
 
-@## Margins
+## Margins
 
 | Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `margin: 8px 0px`                                                                                          | ![bar-chart margins](static/margins-1.png) |
-| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png) |
-| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png) |
+| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png)                  |
+| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png)                  |
 
-@## Grid and axes
+## Grid and axes
 
 ### No grid and axes
 
@@ -77,7 +77,7 @@ If you don’t need to present the ratio of values to 100%, but just to display 
 
 > Don't forget to provide space for category values in the right and left parts of the chart.
 
-@## Labels of categories
+## Labels of categories
 
 - Unlike vertical chart, the Y-axis labels must have same color as the color of the main text – `--text-primary`.They are one of the main elements for "reading" data on this chart type.
 - If the category label is too long, collapse into an `ellipsis`. By hovering over it, show the tooltip with the full category name.
@@ -85,18 +85,18 @@ If you don’t need to present the ratio of values to 100%, but just to display 
 
 ![](static/label.png)
 
-@## Interaction
+## Interaction
 
 When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the top and bottom sides.
 
 If the column is clickable, the cursor changes to `pointer`.
 
-|                                   | Appearance example                                         |
-| --------------------------------- | ---------------------------------------------------------- |
-| Chart with one category           | ![](static/hover-1.png)                |
+|                                   | Appearance example      |
+| --------------------------------- | ----------------------- |
+| Chart with one category           | ![](static/hover-1.png) |
 | Chart with two or more categories | ![](static/hover-2.png) |
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
@@ -128,7 +128,7 @@ When you hover over a dot without data, show tooltip with the `n/a` value. We al
 
 ![](static/na-2.png)
 
-@## Initial loading
+## Initial loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 

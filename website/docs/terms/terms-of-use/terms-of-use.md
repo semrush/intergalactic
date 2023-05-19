@@ -2,7 +2,7 @@
 title: Terms of Use
 ---
 
-@## Intro
+## Intro
 
 **We’re grateful for your interest and proud to have you as a part of our Semrush developers community!**
 
@@ -10,7 +10,7 @@ We are committed to our users’ rights to privacy. We promise to share transpar
 
 The following is a collection of information and resources to help answer any questions you have about your experience with Semrush Design system.
 
-@## Terms of Use
+## Terms of Use
 
 > Last updated: December 12, 2020
 
@@ -34,19 +34,19 @@ SEMRUSH DESIGN SYSTEM IS PROVIDED “AS IS” AND “WITH ALL FAULTS”. SEMRUSH
 
 As we use third parties services, we have no control over these services. You agree to assume full responsibility and liability for all loss or damage suffered by yourself, any third party service providers, the Company, or any third party as a result of any breach of the Terms of Use.
 
-@## Ownership of Intellectual Property
+## Ownership of Intellectual Property
 
 You agree that Semrush owns all legal right, title and interest in and to the Semrush products and services, including Semrush design system, including any Intellectual Property Rights inherent therein and related thereto. “Intellectual Property Rights” means any and all rights under patent law, copyright law, trade secret law, trademark law, and any and all other proprietary rights. Semrush reserves all rights not expressly granted to you.
 
-@## Limitation of Liability
+## Limitation of Liability
 
 IN NO EVENT SHALL SEMRUSH BE LIABLE FOR ANY LOSS OF USE, LOST DATA, FAILURE OF SECURITY MECHANISMS, INTERRUPTION OF BUSINESS, OR ANY INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES OF ANY KIND (INCLUDING LOST PROFITS OR LOST DATA), REGARDLESS OF THE FORM OF ACTION, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, EVEN IF INFORMED OF THE POSSIBILITY OF SUCH DAMAGES IN ADVANCE. SEMRUSH SHALL NOT BE LIABLE FOR ANY DAMAGES THAT YOU MAY SUFFER IN CONNECTION WITH THE PERFORMANCE OF SEMRUSH DESIGN SYSTEM. THE ABOVE WARRANTY DISCLAIMERS AND LIMITATIONS OF LIABILITY APPLY TO THE MAXIMUM EXTENT PERMITTED BY LAW, BUT YOU MAY HAVE OTHER STATUTORY RIGHTS, WHICH THIS AGREEMENT CANNOT CHANGE. The limitations in this Section will survive and apply even if any limited remedy specified in this Agreement is found to have failed of its essential purpose.
 
-@## Applications; Indemnification
+## Applications; Indemnification
 
 You are solely responsible for your Applications, your use of Semrush design system and your compliance with this Agreement. You agree to indemnify, defend and hold Semrush and its affiliates and their respective directors, officers, employees, successors, assigns, insurers, independent contractors and agents harmless from and against any and all claims, costs, damages, losses, liabilities and expenses (including reasonable attorneys’ fees and costs) arising out of any claim relating to (a) your Applications, (b) your use of Semrush design system or (c) your breach of this Agreement. Semrush may participate in defending the claim at its own expense. You may not settle any claim without Semrush`s prior written consent. If you distribute your Applications to others, you agree to require the end users to agree that Semrush has no liability, warranty, or support or other obligations related to your Applications.
 
-@## General
+## General
 
 ### Severability
 

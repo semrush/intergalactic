@@ -2,7 +2,7 @@
 title: Empty page
 ---
 
-@## Description
+## Description
 
 **Empty page** is the pattern for "blank" state of the product. May be helpful as an advertising state to enable other product/service.
 
@@ -14,9 +14,9 @@ Commonly, the user faces this state, when certain actions are required to start 
 - there is no data to display because the user hasn't created or configured anything in the product yet;
 - "Soon there will be an awesome report here" (you need to display something as an advertising for the future feature).
 
-@## Default styles
+## Default styles
 
-1. Illustration is always located to the left of the message and size – 300px * 230px.
+1. Illustration is always located to the left of the message and size – 300px \* 230px.
 2. For title use text with 20px size (`--fs-400`, `--lh-400`).
 3. For the description use 14px size (`--fs-200`, `-lh-200` tokens). Use this font-size carefully, and always check it's readability and contrast against background.
 4. For CTA use button with `use:"primary"` and M size.
@@ -31,17 +31,17 @@ Commonly, the user faces this state, when certain actions are required to start 
 
 ![](static/empty-page-2.png)
 
-@## "Empty" state and sidebar
+## "Empty" state and sidebar
 
 ![](static/empty-page-3.png)
 
-@## "Empty" state in the table
+## "Empty" state in the table
 
 See more information in the [Table states](/table-group/table-states/#empty_table/).
 
 ![](static/empty-page-4.png)
 
-@## Examples of images for empty states
+## Examples of images for empty states
 
 You can make your illustrations for each specific situation. Illustration should carry out an advertising function and reflect the essence of the product which is currently hidden from the user.
 

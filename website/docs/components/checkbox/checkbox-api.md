@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Checkbox
+## Checkbox
 
 Wrapper over the checkbox with the `label` tag.
 
@@ -13,7 +13,7 @@ import Checkbox from '@semcore/ui/checkbox';
 
 @typescript CheckboxProps
 
-@## Checkbox.Value
+## Checkbox.Value
 
 Represents `input[type=checkbox]` and `span` with an icon. Properties apply to the icon, except for those specified in `includeInputProps`.
 
@@ -24,7 +24,7 @@ import Checkbox from '@semcore/ui/checkbox';
 
 @typescript CheckboxValueProps
 
-@## Checkbox.Text
+## Checkbox.Text
 
 It is the customized `Text` from `@semcore/ui/typography`, depending on the size.
 

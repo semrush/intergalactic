@@ -6,13 +6,13 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Pagination** is a component that provides a set of controls to navigate through long lists of data.
 
 Using pagination is highly recommended for tables and long lists of data that users prefer to browse page by page.
 
-@## Component composition
+## Component composition
 
 ![](static/pagination-composition.png)
 
@@ -25,7 +25,7 @@ Component consists of the following:
 5. `Pagination.PrevPage`
 6. `Pagination.TotalPages`
 
-@## Margins
+## Margins
 
 - The margins between buttons in the component are always 8px.
 - The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
@@ -36,14 +36,14 @@ The margin from the table to the pagination is consistently 16px.
 
 ![](static/margin-top.png)
 
-@## Number of the rows
+## Number of the rows
 
 We provide some recommendations for the table size:
 
 - Use a minimum of two user screens (± 2000 px) for the table.
 - Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
 
-@## Interaction
+## Interaction
 
 - The table should scroll to the beginning when the user moves between pages.
 - After sorting and filtering, the pagination always returns the user to the first page.
@@ -63,7 +63,7 @@ The current page should always be displayed in the input:
 
 The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.
 
-@## States and cases
+## States and cases
 
 ### User is on the first page
 

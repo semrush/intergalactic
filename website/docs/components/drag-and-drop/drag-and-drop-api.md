@@ -3,7 +3,7 @@ title: API
 fileSource: drag-and-drop
 ---
 
-@## DnD
+## DnD
 
 Drag control component.
 
@@ -14,7 +14,7 @@ import DnD from '@semcore/ui/drag-and-drop;
 
 @typescript DragAndDropProps
 
-@## DnD.Draggable
+## DnD.Draggable
 
 The element, which will be dragged.
 
@@ -27,7 +27,7 @@ import DnD from '@semcore/ui/drag-and-drop;
 
 @typescript DraggableProps
 
-@## DnD.DropZone
+## DnD.DropZone
 
 The area, to which the dragged element will be placed.
 

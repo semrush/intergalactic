@@ -3,7 +3,7 @@ title: API
 fileSource: time-picker
 ---
 
-@## Time picker
+## Time picker
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';

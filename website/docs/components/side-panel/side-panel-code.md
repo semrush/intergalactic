@@ -3,11 +3,11 @@ title: Example
 fileSource: side-panel
 ---
 
-@## Basic example
+## Basic example
 
 @example basic
 
-@## Advanced example
+## Advanced example
 
 @example fullset
 
@@ -17,13 +17,13 @@ You can access the internal components by expanding `SidePanel` for `SidePanel.O
 
 @example advance
 
-@## Placement
+## Placement
 
 The component is supplied with three positioning options.
 
 @example placement
 
-@## Disabling overlay
+## Disabling overlay
 
 By default, the component is rendered with an overlay, but you can change this by not passing it.
 
@@ -35,6 +35,6 @@ By default, the component is rendered to the portal, at the bottom of the body. 
 
 @example portal
 
-@## Iframe
+## Iframe
 
 **We recommend not using this component inside an iframe.** Instead, use [modal window](/components/modal/) or [dropdown](/components/dropdown/).

@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Venn chart** shows the relationship and intersections between two (or sometimes more) data sets. This chart type is also called a **set chart**.
 
@@ -26,7 +26,7 @@ tabName: Design
 >
 > [Venn diagram on datavizproject](https://datavizproject.com/data-type/venn-diagram/)
 
-@## Appearance
+## Appearance
 
 In the default state for all circles:
 
@@ -40,12 +40,12 @@ In the default state for all circles:
 
 > It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you shouldn't "enlarge" the report with an unnecessarily large chart.
 
-|                                                     | Appearance example                         |
-| --------------------------------------------------- | ------------------------------------------ |
+|                                                     | Appearance example         |
+| --------------------------------------------------- | -------------------------- |
 | Chart inside small narrow widgets (less than 400px) | ![](static/venn-small.png) |
-| Chart inside large widgets (more than 400px)        | ![](static/venn-big.png)     |
+| Chart inside large widgets (more than 400px)        | ![](static/venn-big.png)   |
 
-@## Legend
+## Legend
 
 The legend for this type of chart:
 
@@ -78,27 +78,27 @@ If legend label is very long, wrap it to the next line.
 
 ![](static/venn-legend-long.png)
 
-@## Interaction
+## Interaction
 
-|         | Appearance example                         | Styles                                                                                                |
-| ------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| Default | ![](static/venn-big.png) | The fill transparency is 50%, stroke size is 2px.                                                     |
+|         | Appearance example         | Styles                                                                                                |
+| ------- | -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Default | ![](static/venn-big.png)   | The fill transparency is 50%, stroke size is 2px.                                                     |
 | Hover   | ![](static/venn-hover.png) | When hovering, the transparency of the fill for the sector that the user hovered over changes by 70%. |
 
-@## Tooltip
+## Tooltip
 
-|                                           | Appearance example                          | Tooltip content                                                                                                                                        |
-| ----------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|                                           | Appearance example          | Tooltip content                                                                                                                                        |
+| ----------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Hovering over a sector                    | ![](static/venn-hover.png)  | Show the name of the data set and its value.                                                                                                           |
 | Hovering over the intersection of sectors | ![](static/venn-hover2.png) | Show how much is the intersection of sectors as a percentage and the value. Below you can show the names of all intersecting sectors and their values. |
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
 ### Value less than 1%
 
-Show circle with the minimum size – 12px * 12px.
+Show circle with the minimum size – 12px \* 12px.
 
 ![](static/venn-min.png)
 

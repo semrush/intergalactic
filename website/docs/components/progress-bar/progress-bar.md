@@ -14,7 +14,7 @@ tabName: Design
 
 In general, the progress bar doesn't obstruct the functionality of the product. However, there is an exception during the first launch of the product when the data may be partially displayed or not displayed at all.
 
-@## Component composition
+## Component composition
 
 ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value`.
 
@@ -43,7 +43,7 @@ ProgressBar offers two themes: `dark` and `invert`, which are suitable for light
 | Invert | ![](static/size-l.png)   | `--progress-bar-bg`         |
 | Dark   | ![](static/dark-theme.png) | `--progress-bar-bg-invert`|
 
-@## ProgressBar with counter
+## ProgressBar with counter
 
 A counter can be added next to the ProgressBar to indicate the number of loaded data. If the exact number of the data is unknown, the counter shouldn't be displayed. **Place the counter above or near the ProgressBar, ensuring that the margins between the counter and the ProgressBar are multiples of 4.**
 
@@ -51,7 +51,7 @@ A counter can be added next to the ProgressBar to indicate the number of loaded 
 
 ![](static/progressbar-counter-above.png)
 
-@## Interaction
+## Interaction
 
 ### States
 
@@ -73,7 +73,7 @@ The progress bar shouldn't remain in the 100% state. Once the process is complet
 
 The progress value is always animated with `ease-in`.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### When to use ProgressBar
 

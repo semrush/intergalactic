@@ -24,11 +24,11 @@ Please note that each example uses its own instance of `NoticeBubbleManager`, wh
 
 @example success-centered
 
-@## Success notice
+## Success notice
 
 @example success
 
-@## Failure notice
+## Failure notice
 
 @example failure
 

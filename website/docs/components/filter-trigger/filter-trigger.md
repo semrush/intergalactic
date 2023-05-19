@@ -4,7 +4,7 @@ fileSource: base-trigger
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **FilterTrigger** is a component for using as an active state of a filter. Commonly it's placed above the data it filters.
 
@@ -13,7 +13,7 @@ This component helps users to:
 - quickly understand what filters are selected and what are not;
 - reset and change filters.
 
-@## Appearance
+## Appearance
 
 FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 
@@ -39,7 +39,7 @@ Use the same margins as other inputs and [buttons](/components/button/#margins_b
 | M (28px)             | ![](static/sizes-m.png)    |
 | L (40px)             | ![](static/sizes-l.png)    |
 
-@## States and interaction
+## States and interaction
 
 ### Default FilterTrigger
 
@@ -74,7 +74,7 @@ Use the same margins as other inputs and [buttons](/components/button/#margins_b
 |                                | Add a tooltip to the button with the `Close` icon saying **"Clear advanced filters"** and increase the display delay from the default value of 100 to 150.  | ![](static/aft-6.png) |
 |  | When user clicks on the trigger, a dropdown opens up, allowing user to change the selected values. The dropdown closes when user clicks on a "Submit" button or outside the dropdown. | ![](static/aft-7.png) |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### Filter text label
 

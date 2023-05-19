@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **InputMask** is a wrapper that enables you to define the format for an input value. It provides users with guidance on the expected number and format of the data they need to enter.
 
@@ -21,7 +21,7 @@ The mask helps users prevent errors by ensuring they enter the correct number of
 
 However, if you don't have precise information about the format of the data, it isn’t recommended to use InputMask.
 
-@## Appearance
+## Appearance
 
 The character `_` is used as a space holder for each character in the mask.
 
@@ -47,7 +47,7 @@ We suggest including clear text instructions for inputs that have specific data 
 | M (28px)            | 12px (use `--fs-100`, `--lh-100` tokens) | ![](static/inputmask-help-text-m.png) | ![](static/inputmask-help-text-margin-m.png) |
 | L (40px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/inputmask-help-text-l.png) | ![](static/inputmask-help-text-margin-l.png) |
 
-@## Interaction
+## Interaction
 
 You have the ability to validate the characters that the user enters. If the user inputs an invalid character, such as `/`, the InputMask will remove it automatically.
 

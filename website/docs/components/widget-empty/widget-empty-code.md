@@ -15,13 +15,13 @@ The template already includes the title. You only need to provide the data type 
 
 @example nothing-found
 
-@## Error example
+## Error example
 
 The template already includes the `title` and the `icon`. You only need to provide the `description` and additional elements if necessary.
 
 @example error
 
-@## Custom examples
+## Custom examples
 
 You can create custom messages, such as the "[Set up your tool](/components/widget-empty/#set_up_your_product)" message.
 

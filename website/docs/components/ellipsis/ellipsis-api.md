@@ -3,7 +3,7 @@ title: API
 fileSource: ellipsis
 ---
 
-@## Ellipsis
+## Ellipsis
 
 ```jsx
 import Ellipsis from '@semcore/ui/ellipsis';

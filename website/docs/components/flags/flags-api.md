@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Flags
+## Flags
 
 ```js
 import Flags from '@semcore/ui/flags';

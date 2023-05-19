@@ -3,7 +3,7 @@ title: Example
 fileSource: radio
 ---
 
-@## RadioGroup example
+## RadioGroup example
 
 RadioGroup acts as a controlling component and doesn't have an actual HTML element beneath it.
 

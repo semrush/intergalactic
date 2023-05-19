@@ -7,10 +7,10 @@ To create one of the search patterns (Combobox, AutoSuggest) you will need the f
 - [Select](/components/select/) (1 piece)
 - [Input](/components/input/) (1 piece)
 
-@## Combobox example
+## Combobox example
 
 @example combobox
 
-@## AutoSuggest example
+## AutoSuggest example
 
 @example autosuggest

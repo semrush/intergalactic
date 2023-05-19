@@ -5,7 +5,7 @@ tabName: Design
 docs: true
 ---
 
-@## Chart widget anatomy
+## Chart widget anatomy
 
 In our interfaces, data is usually placed in [Card](/components/card/), which consists of the following:
 
@@ -27,7 +27,7 @@ In our interfaces, data is usually placed in [Card](/components/card/), which co
 
 > Optional elements mean that their presence depends on the case you are solving in your interface.
 
-@## Card header
+## Card header
 
 ### Title
 
@@ -49,21 +49,21 @@ Place M size [Info](/style/icon/) icon next to the title.
 | -------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color. |
 
-@## Chart controls
+## Chart controls
 
 For detailed information about chart controls, see [Chart controls](/data-display/chart-controls/).
 
-@## Collapsing rows
+## Collapsing rows
 
 You can collapse card rows if necessary. See more information in the [Chart controls](/data-display/chart-controls/#adbaac) guide.
 
-@## Legend
+## Legend
 
 **Legend** is an additional visual information that explains the data on the chart.
 
 The legend can work as a filter or be unclickable representation of the data. For more information about the legend and its types, see [Chart legend](/data-display/chart-legend/).
 
-@## Grid and axes
+## Grid and axes
 
 **Axes** help user navigate the data and relate values to each other.
 
@@ -93,7 +93,7 @@ Minimum (small) chart height has 3 additional horizontal guides.
 
 ![max-height](static/max-height.png)
 
-@## Tooltip
+## Tooltip
 
 When hovering over any part of the chart, show a tooltip with data for the dot or dots.
 
@@ -129,7 +129,7 @@ The data tooltip shall always be displayed relative to the dot with an 8px margi
 | Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                                                               |
 | Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--chart-grid-y-accent-hover-line` token for color. |
 
-@## Trend and average value
+## Trend and average value
 
 To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--chart-palette-order-total-amount)`. Similarly, we can display total values.
 
@@ -138,7 +138,7 @@ To display the trend line or average value on the chart, use gray color with sty
 
 ![checkbox total legend](static/d3-trend.png)
 
-@## Data loading
+## Data loading
 
 During initial data loading, the widget displays the [Skeleton](/components/skeleton/) instead of the chart.
 
@@ -146,7 +146,7 @@ If the chart has a title, it should be displayed during the initial loading. The
 
 > Note that every chart has it's own skeleton. For more information see guides for every chart type.
 
-@## Edge cases
+## Edge cases
 
 The particular edge cases differ for different chart types, so see them in the documentation for specific chart you need.
 

@@ -12,7 +12,7 @@ The component is a wrap over [@semcore/ui/dropdown](/components/dropdown) with t
 
 @example basic
 
-@## Dropdown-menu
+## Dropdown-menu
 
 There are several methods of displaying the dropdown menu in the component. We will show each of them below.
 
@@ -37,7 +37,7 @@ It is appropriate when it is necessary to manage only the content within the opt
 
 @example menu
 
-@## Elements of the list
+## Elements of the list
 
 The component has several variants of list elements layout:
 
@@ -47,7 +47,7 @@ The component has several variants of list elements layout:
 
 @example options
 
-@## Render-function
+## Render-function
 
 As with the lower-level components, you can access the component logic by passing the render-function into the body.
 

@@ -3,7 +3,7 @@ title: API
 fileSource: radio
 ---
 
-@## RadioGroup
+## RadioGroup
 
 A component used to simplify working with multiple radio buttons.
 
@@ -14,7 +14,7 @@ import { RadioGroup } from '@semcore/ui/radio';
 
 @typescript RadioGroupProps
 
-@## Radio
+## Radio
 
 This is an independent radio component.
 
@@ -25,7 +25,7 @@ import Radio from '@semcore/ui/radio';
 
 @typescript RadioProps
 
-@## Radio.Value
+## Radio.Value
 
 ```jsx
 import Radio from '@semcore/ui/radio';
@@ -34,7 +34,7 @@ import Radio from '@semcore/ui/radio';
 
 @typescript RadioValueProps
 
-@## Radio.Text
+## Radio.Text
 
 ```jsx
 import Radio from '@semcore/ui/radio';

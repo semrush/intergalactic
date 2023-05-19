@@ -4,7 +4,7 @@ fileSource: date-picker
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 - If the dropdown with the calendar grid opens, then a current date gets the focus.
 - If a date is selected, the accessible name of the "Select date" button is updated to include the selected date.
@@ -22,12 +22,12 @@ a11y: AA
 | `Right Arrow`    | Moves focus to the next day.                                                                                                                                                       |
 | `Left Arrow`     | Moves focus to the previous day.                                                                                                                                                   |
 
-@## Resources
+## Resources
 
 - [W3 date picker example](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html) has detailed information about the accordion accessible behavior.
 - Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 

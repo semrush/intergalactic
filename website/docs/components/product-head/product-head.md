@@ -4,13 +4,13 @@ fileSource: product-head
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **ProductHead** is a comprehensive composed component that contains all common controls, CTAs, and filters for data filtering in the product's reports.
 
 It is always positioned below the main Semrush header and search bar.
 
-@## Component composition
+## Component composition
 
 ![](static/product-head-composition.png)
 
@@ -23,7 +23,7 @@ It is always positioned below the main Semrush header and search bar.
 5. `Info`: It's a row with global filters and/or additional information.
 6. `Info.Item`: An item with the information on the project or global filter.
 
-@## Margins and paddings
+## Margins and paddings
 
 ![product-head paddings](static/padding-left-right.png)
 
@@ -37,7 +37,7 @@ If there is a [Notice](/components/notice/) in the header, it has an 8px margin-
 
 ![product-head element sizes](static/elements-margins.png)
 
-@## Styles
+## Styles
 
 ### Breadcrumbs and additional links
 
@@ -60,7 +60,7 @@ If there is a [Notice](/components/notice/) in the header, it has an 8px margin-
 - For text, use a size of 14px (use `--fs-200`, `--lh-200` tokens) and `--text-primary` token for the color.
 - Icons have a size of M.
 
-@## ProductHead variants
+## ProductHead variants
 
 ### Maximum set of elements inside
 

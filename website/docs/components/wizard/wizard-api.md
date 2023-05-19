@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Wizard
+## Wizard
 
 ```jsx
 import Wizard from '@semcore/ui/wizard';
@@ -11,7 +11,7 @@ import Wizard from '@semcore/ui/wizard';
 
 @typescript WizardProps
 
-@## Wizard.Sidebar
+## Wizard.Sidebar
 
 ```jsx
 import Wizard from '@semcore/ui/wizard';
@@ -20,7 +20,7 @@ import Wizard from '@semcore/ui/wizard';
 
 @typescript WizardSidebarProps
 
-@## Wizard.Step
+## Wizard.Step
 
 ```jsx
 import Wizard from '@semcore/ui/wizard';
@@ -29,7 +29,7 @@ import Wizard from '@semcore/ui/wizard';
 
 @typescript WizardStepProps
 
-@## Wizard.Stepper
+## Wizard.Stepper
 
 ```jsx
 import Wizard from '@semcore/ui/wizard';

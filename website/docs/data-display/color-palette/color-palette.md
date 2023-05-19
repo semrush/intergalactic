@@ -5,7 +5,7 @@ tabName: Design
 docs: true
 ---
 
-@## Basic rules
+## Basic rules
 
 - Use color thoughtfully and don't make colors too bright without a reason. **Keep in mind the visual hierarchy.**
 - If there are several widgets on a page that mention the same entity, then use the same color for the entity in all widgets on the same page.
@@ -13,11 +13,11 @@ docs: true
 
 > **We recommend using red carefully**. It is usually used for destructive actions and invalid states.
 
-@## Chart tokens
+## Chart tokens
 
 You can find all tokens for charts in the [tokens list](/style/design-tokens/#semantic_tokens). They all have `chart` in their token name.
 
-@## Tokens for text and additional information
+## Tokens for text and additional information
 
 | Token                 | Usage                                                       |
 | --------------------- | ----------------------------------------------------------- |
@@ -26,7 +26,7 @@ You can find all tokens for charts in the [tokens list](/style/design-tokens/#se
 | `--chart-grid-line`   | The X-axis and the accent lines on the grid when, if needed |
 | `--chart-grid-x-axis` | Additional guide lines                                      |
 
-@## Colors usage
+## Colors usage
 
 There are two ways of coloring your data with our palette.
 
@@ -92,7 +92,7 @@ This way helps to color your data in a monochromatic way. In this case use token
 
 @import color-group {"group": "gray"}
 
-@## Need more colors?
+## Need more colors?
 
 > The recommended maximum number of colors on a chart is 30.
 

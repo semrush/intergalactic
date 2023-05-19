@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## InlineInput
+## InlineInput
 
 Wrap over the inline-input elements.
 
@@ -13,7 +13,7 @@ import InlineInput from '@semcore/ui/inline-input';
 
 @typescript InlineInputProps
 
-@## InlineInput.Value
+## InlineInput.Value
 
 This component represents the native `tag` `input` and accepts all its properties, such as `value` and `onChange`.
 
@@ -24,7 +24,7 @@ import InlineInput from '@semcore/ui/inline-input';
 
 @typescript InlineInputValueProps
 
-@## InlineInput.Addon
+## InlineInput.Addon
 
 The addon inside the container (most often it is an icon or short text) places the correct indent units depending on the size.
 
@@ -35,7 +35,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.Addon />;
 ```
 
-@## InlineInput.ConfirmControl
+## InlineInput.ConfirmControl
 
 The addon with hint tooltip and icon. By default is displayed with middle-size Check icon. Addon click triggers `InlineInput` `onConfirm` callback.
 
@@ -48,7 +48,7 @@ import InlineInput from '@semcore/ui/inline-input';
 
 @typescript InlineInputConfirmControlProps
 
-@## InlineInput.CancelControl
+## InlineInput.CancelControl
 
 The addon with hint tooltip and icon. By default is displayed with middle-size Close icon. Addon click triggers `InlineInput` `onCancel` callback.
 

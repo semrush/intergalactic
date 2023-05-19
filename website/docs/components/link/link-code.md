@@ -14,7 +14,7 @@ You can add addons to link either by specifying the desired tag in the `addonLef
 
 @example addon
 
-@## Color links
+## Color links
 
 Links can be colored for specific purposes. You can apply a specific color to links by passing the `color` property to them.
 

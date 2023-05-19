@@ -2,7 +2,7 @@
 title: Filter common rules
 ---
 
-@## Best practices
+## Best practices
 
 **When working with filters, it is important for the user to:**
 
@@ -16,7 +16,7 @@ title: Filter common rules
 >
 > For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the entered data when re-opening the filter dropdown. It's not necessary to keep the scroll position.
 
-@## Appearance
+## Appearance
 
 ### Trigger
 
@@ -32,7 +32,7 @@ Dropdown has styles of [Dropdown-menu](/components/dropdown-menu/).
 
 > Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
 
-@## Custom range
+## Custom range
 
 Use the [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
 
@@ -41,7 +41,7 @@ Use the [InputNumber](/components/input-number/), if the filter has the ability 
 | If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers-min.png) |
 | If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
 
-@## Interaction
+## Interaction
 
 - The value is applied when user clicks on the item from the preset values list. Then the filter applies and closes.
 - The filter can be closed by clicking outside the dropdown. If the user didn't select anything, no values are applied.
@@ -86,7 +86,7 @@ The user can copy/paste values into the input, increase/decrease them by the ste
 - The entered values are duplicated in the trigger.
 - Keep user-entered data in Custom Range before refreshing the page if the user has entered something but not applied.
 
-@## Trigger states
+## Trigger states
 
 | State          | Appearance example                           |
 | -------------- | -------------------------------------------- |
@@ -95,7 +95,7 @@ The user can copy/paste values into the input, increase/decrease them by the ste
 | Active         | ![active](static/active.png)                 |
 | Active + hover | ![active and hover](static/active-hover.png) |
 
-@## Loading
+## Loading
 
 Show [Spin](/components/spin/) in the dropdown and the "Loading ..." text in the case when the content of the filter takes a long time to load.
 
@@ -105,13 +105,13 @@ Show [SpinContainer](/components/spin-container/) over the dropdown content in t
 
 ![spin-container](static/spin-container-tags.png)
 
-@## Nothing found
+## Nothing found
 
 Show in the widget/widgets to which the filter was applied an ["empty" state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
 
 ![nothing found](static/filter-rules-nothing-found.png)
 
-@## Tooltips
+## Tooltips
 
 Don't add tooltips for the sake of tooltips.
 
@@ -122,7 +122,7 @@ Don't add tooltips for the sake of tooltips.
 
 ![tooltips](static/tooltips-cp.png)
 
-@## Validation
+## Validation
 
 **Comma/period**
 

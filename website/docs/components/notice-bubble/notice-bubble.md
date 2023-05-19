@@ -4,7 +4,7 @@ fileSource: notice-bubble
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **NoticeBubble (Alert)** is a notification component that informs users about completed actions, the beginning or ending of a process.
 
@@ -42,7 +42,7 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 - Avoid using it to display a loading process with a [Spin](/components/spin/) or [ProgressBar](/components/progress-bar/), except in the case of a no-network condition.
 - Avoid using it for visible instant interface changes, such as adding a tag to an item (where the tag appears instantly) or adding an item to favorites (resulting in an immediate change to the icon color).
 
-@## Types
+## Types
 
 @table-caption NoticeBubble types
 
@@ -89,13 +89,13 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 
 ![](static/paddings-2.png)
 
-@## Animation
+## Animation
 
 - The notification slides in from the right edge and closes with a `fade` effect.
 - The alert automatically closes after 5 seconds on a timer. The delay value can be adjusted depending on the amount of text in the alert.
 - Optionally, certain notifications can be left until the user manually closes them.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### General
 

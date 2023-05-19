@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Text
+## Text
 
 It's a main component for text in our interfaces. By default, this is a `span` tag.
 
@@ -13,7 +13,7 @@ import { Text } from '@semcore/ui/typography';
 
 @typescript TextProps
 
-@## List
+## List
 
 A list tagged with ʻul`. It's possible to set a custom marker for all items.
 
@@ -24,7 +24,7 @@ import { List } from '@semcore/ui/typography';
 
 @typescript ListProps
 
-@## List.Item
+## List.Item
 
 A list item tagged with `li`. It's possible to set a custom marker.
 
@@ -35,7 +35,7 @@ import { List } from '@semcore/ui/typography';
 
 @typescript ListItemProps
 
-@## Blockquote
+## Blockquote
 
 Quotes from great people 🙊
 
@@ -46,7 +46,7 @@ import { Blockquote } from '@semcore/ui/typography';
 
 @typescript BlockquoteProps
 
-@## Hint
+## Hint
 
 The hint is very similar to [Link](/components/link/) and has a similar structure from `Addon` + `Text`.
 
@@ -60,7 +60,7 @@ import { Hint } from '@semcore/ui/typography';
 
 @typescript HintProps
 
-@## FormatText
+## FormatText
 
 A wrapper component required to add styles to native tags.
 

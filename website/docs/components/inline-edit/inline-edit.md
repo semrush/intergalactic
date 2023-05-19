@@ -4,7 +4,7 @@ fileSource: inline-edit
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **InlineEdit** is a wrapper component that enables a smooth transition between viewing and editing data.
 
@@ -14,7 +14,7 @@ tabName: Design
 - The interface is spatially constrained, necessitating efficient use of space.
 - Transmitting data to the system isn't the primary focus of the interface (for example, providing supplementary information and notes within cards).
 
-@## Appearance
+## Appearance
 
 It's important to note that the example below serves merely as an illustration and isn't the default configuration. Any control component, whether it's a [Button](/components/button/), an [Icon](/style/icon/), or text with an icon, can be utilized as a trigger.
 
@@ -22,7 +22,7 @@ It's important to note that the example below serves merely as an illustration a
 
 The placeholder's color aligns with that of a typical input element, utilizing the variable `--text-placeholder`. The text and icon share an active zone.
 
-@## Interaction
+## Interaction
 
 - The user clicks the trigger, which opens an input field.
 - The input field gains immediate `focus`.
@@ -41,11 +41,11 @@ Below is an example demonstrating how this component functions with one of the p
 | Entered data            | ![](static/success.png)       | Text color changes to `--text-primary`.      |
 | Entered data with hover | ![](static/success-hover.png) | The cursor changes to a `pointer`. The interactive trailing add-on's color shifts to `--icon-secondary-neutral-hover-active`.|
 
-@## Animation
+## Animation
 
 The transition between the wrapped trigger and the input field can be accomplished with an `ease-in-out` effect lasting `50ms`.
 
-@## UX/UI use
+## UX/UI use
 
 In view mode, ensure that the text size matches the size of the edit input you've selected.
 

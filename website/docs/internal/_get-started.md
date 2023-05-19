@@ -2,7 +2,7 @@
 title: Get started
 ---
 
-@## Use in your project
+## Use in your project
 
 Use **npm** for installation to reduce the number of dependencies and the bundle size. For more details, see the [production-build guide](/internal/production/).
 
@@ -14,7 +14,7 @@ npm install @semcore/<component name>
 
 Styles are supplied inside javascript by default. They will be added to the head tag when the component is imported into the project. Don't use this method in production-build, separate js and css into different files. For more details, see the [production-build guide](/internal/production/).
 
-@## Adaptivity
+## Adaptivity
 
 Our interfaces are desktop first, so adaptability is still optional.
 

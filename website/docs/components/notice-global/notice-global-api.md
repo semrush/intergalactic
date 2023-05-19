@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Notice
+## Notice
 
 ```jsx
 import NoticeGlobal from '@semcore/ui/notice-global';
@@ -11,7 +11,7 @@ import NoticeGlobal from '@semcore/ui/notice-global';
 
 @typescript NoticeGlobalProps
 
-@## NoticeGlobal.Content
+## NoticeGlobal.Content
 
 The component is inherited from `Box` and is used to insert content in the notification.
 
@@ -20,7 +20,7 @@ import NoticeGlobal from '@semcore/ui/notice';
 <NoticeGlobal.Content />;
 ```
 
-@## NoticeGlobal.CloseIcon
+## NoticeGlobal.CloseIcon
 
 The component is inherited from `Box` and is used to insert the close cross.
 

@@ -3,9 +3,9 @@ title: API
 fileSource: d3-chart
 ---
 
-@## D3 API
+## D3 API
 
-@## HorizontalBar
+## HorizontalBar
 
 Horizontal chart Bar.
 
@@ -15,7 +15,7 @@ import { HorizontalBar } from '@semcore/ui/d3-chart';
 
 @typescript HorizontalBarProps
 
-@## GroupBar
+## GroupBar
 
 It have children components `Bar, HorizontalBar`.
 

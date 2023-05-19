@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **FeaturePopover** is a component that helps drawing users’ attention to an interface part or control. _For example, it may point to a new function or suggest the next step to the user._
 
@@ -17,7 +17,7 @@ FeaturePopover contains only simple reference/promotional information. The purpo
 - It is necessary to draw the user’s attention to an interface part.
 - You need to point at the next step for the user.
 
-@## Appearance
+## Appearance
 
 ### Component composition
 
@@ -101,7 +101,7 @@ Component appears according to the timings you set through the `timeout` propert
 
 FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by clicking on the highlighted interface element.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### General recommendations
 

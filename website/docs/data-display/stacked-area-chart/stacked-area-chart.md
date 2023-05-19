@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Area chart** visualizes a trend and the ratio of quantitative indicators over a period of time. It can be used instead of [Line chart](/data-display/line-chart/) when it is important to demonstrate the ratio of parts to the whole.
 
@@ -23,7 +23,7 @@ Use stacked area chart when, in addition to data amount, you need to display the
 > - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 > - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
 
-@## Appearance
+## Appearance
 
 By default, we show a chart with straight lines. This view facilitates reading the trend; this is what most people look at the chart for.
 
@@ -39,17 +39,17 @@ It is recommended to display the dots on lines either when there are few of them
 | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
 
-@## Interaction
+## Interaction
 
 When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it.
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
-@## One value
+## One value
 
 For this case enable the display of dots on the chart by default.
 
@@ -60,7 +60,7 @@ For this case enable the display of dots on the chart by default.
 - **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
 - The line has the `dashed` border style and `--chart-palette-order-other-data` color.
 
-@## Two values
+## Two values
 
 For this case enable the display of dots on the chart by default.
 
@@ -72,7 +72,7 @@ For this case enable the display of dots on the chart by default.
 
 ![two-dots](static/two-dots2.png)
 
-@## Null values
+## Null values
 
 If all values on the chart are zero, then show the trend line on the zero axis.
 
@@ -80,7 +80,7 @@ If all values on the chart are zero, then show the trend line on the zero axis.
 
 ![null-data](static/null-stacked-area-chart.png)
 
-@## No data
+## No data
 
 > **When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
 
@@ -92,7 +92,7 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 ![partially-data](static/partially-trash.png)
 
-@## Initial data loading
+## Initial data loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 

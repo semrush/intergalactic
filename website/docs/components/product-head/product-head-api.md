@@ -3,7 +3,7 @@ title: API
 fileSource: product-head
 ---
 
-@## ProductHead
+## ProductHead
 
 The wrapping with paddings. Not responsive (so far), but can be dragged.
 
@@ -12,7 +12,7 @@ import ProductHead from '@semcore/ui/product-head';
 <ProductHead />;
 ```
 
-@## ProductHead.Row
+## ProductHead.Row
 
 The header is divided into lines with components. They are divided from each other with equal paddings – `my={2}`.
 
@@ -21,7 +21,7 @@ import ProductHead from '@semcore/ui/product-head';
 <ProductHead.Row />;
 ```
 
-@## ProductHead.Links
+## ProductHead.Links
 
 The component for setting the paddings between the links.
 
@@ -30,7 +30,7 @@ import ProductHead from '@semcore/ui/product-head';
 <ProductHead.Links />;
 ```
 
-@## ProductHead.Buttons
+## ProductHead.Buttons
 
 The component for setting the paddings between the buttons.
 
@@ -39,7 +39,7 @@ import ProductHead from '@semcore/ui/product-head';
 <ProductHead.Buttons />;
 ```
 
-@## Title
+## Title
 
 The header’ heading component
 
@@ -50,7 +50,7 @@ import { Title } from '@semcore/ui/product-head';
 
 @typescript HeaderTitleProps
 
-@## Info
+## Info
 
 The component for output of the information on the project and the global filters of the report. The information is divided with a vertical line.
 
@@ -59,7 +59,7 @@ import { Info } from '@semcore/ui/product-head';
 <Info />;
 ```
 
-@## Info.Item
+## Info.Item
 
 One unit with the information on the project or global filter.
 

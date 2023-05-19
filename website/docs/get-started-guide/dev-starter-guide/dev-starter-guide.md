@@ -2,11 +2,11 @@
 title: For developers
 ---
 
-@## Introduction
+## Introduction
 
 Let's explore the design system used at [Semrush](https://semrush.com), which you can also integrate into your own projects. The design system has more than 70 [React](https://reactjs.org) components, each of them accompanied by design guides, Figma components, usage examples and API descriptions. Additionally, we offer an extensive [icons library](/style/icon/) and [charts library](/data-display/d3-chart/d3-chart-code/).
 
-@## Installation
+## Installation
 
 All components are bundled together in a single package, making the installation process straightforward. For example:
 
@@ -56,7 +56,7 @@ Our components are designed to be controlled externally, meaning they do not hav
 
 If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + {{ Property name }}` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
 
-@### Handlers
+### Handlers
 
 Consistency is crucial for a library as it ensures predictability. In our library, all event handlers follow the same format:
 
@@ -146,7 +146,7 @@ import { Flex } from '@semcore/ui/flex-box';
 <Flex justifyContent="center" alignItems="center" />;
 ```
 
-@## Browser support
+## Browser support
 
 To ensure the best performance and user experience, we do not support legacy browsers. Our design system is optimized for the following browser versions:
 

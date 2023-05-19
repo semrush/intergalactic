@@ -2,13 +2,13 @@
 title: Export
 ---
 
-@## Description
+## Description
 
 **Export pattern** describes elements and the process of data export to different formats.
 
 To export data, use a button that the user can click to set up export and/or download data in a specific format immediately.
 
-@## Trigger
+## Trigger
 
 ### Default
 
@@ -36,13 +36,13 @@ To export data, use a button that the user can click to set up export and/or dow
 >
 > If the process is time consuming, the button gets loading state. The recommended time for showing spinner is `300ms`.
 
-@## Dropdown
+## Dropdown
 
 - The dropdown appears by clicking the export trigger. The trigger gets active state.
 - The dropdown content may consist of the variety of components, depending on the product/report. And there should be at least two download buttons in the dropdown.
 - The width and height of the dropdown depend on the content.
 
-@## Compact dropdown
+## Compact dropdown
 
 If you can export at least in two formats, and no additional settings are needed, the button opens the list of data formats.
 
@@ -53,7 +53,7 @@ If you can export at least in two formats, and no additional settings are needed
 
 ![](static/loading.png)
 
-@## Export with settings
+## Export with settings
 
 ![](static/dropdown-2.png)
 
@@ -72,7 +72,7 @@ If you can export at least in two formats, and no additional settings are needed
 
 ![](static/dropdown-3.png)
 
-@## Additional information
+## Additional information
 
 ### Additional information on downloading all data and export in general
 
@@ -91,7 +91,7 @@ Use this text as a message for such cases: "To export all data, please contact u
 
 ![](static/dropdown-info-2.png)
 
-@## Edge cases
+## Edge cases
 
 ### Error
 
@@ -126,7 +126,7 @@ User can click all settings. It's allow the user explore the export opportunitie
 
 ![](static/export-loading.png)
 
-@## Work with the group of settings
+## Work with the group of settings
 
 - The "All" value is selected in the radio group by default, if nothing is chosen in the table.
 - If the value is chosen in the table, the corresponding "Selected' value is selected when opening.

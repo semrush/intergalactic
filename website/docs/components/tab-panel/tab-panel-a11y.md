@@ -3,7 +3,7 @@ title: A11y
 fileSource: tab-line
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -15,7 +15,7 @@ fileSource: tab-line
 | `Space`       | Activates focused tab                                                                                                                                                                                       |
 | `Enter`       | Activates focused tab                                                                                                                                                                                       |
 
-@## Considerations for developers
+## Considerations for developers
 
 - Be mindful of using tabs, as they are less discoverable by design.
 - Once a tab button is focused, other tabs can be selected with the arrow keys.
@@ -40,11 +40,11 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |          | `aria-labelledby="IDREF"` | `div`    | Refers to the `tab` element that controls the panel. Provides an accessible name for the tab panel.                                                                                                                                                                                                                                                                                                                                  |
 |          | `tabindex="0"`            | `div`    | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if there are panels that don’t contain a focusable element.                                                                                                                                                                                                                                  |
 
-@## Resources
+## Resources
 
 - [W3 tabs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html) has detailed information about the tabs accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs) describes the core recommendations for the components.
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

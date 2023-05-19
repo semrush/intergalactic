@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Badge** is a visual component used to indicate the status of a feature or product.
 
@@ -18,7 +18,7 @@ _For example, you added a new tab to the report. In this case, you can highlight
 - Badge isn’t clickable.
 - Don’t use badge for filtering the data.
 
-@## Appearance
+## Appearance
 
 Component has one size.
 
@@ -44,7 +44,7 @@ Every badge can be inverted like this:
 
 Use `--gray-white` color for the background and `--gray-800` for the text color.
 
-@## Feature status
+## Feature status
 
 The feature status can be shown inside most of the components and controls.
 
@@ -68,11 +68,11 @@ Don’t confuse [Tag](/components/tag) and Badge components. Tag is used for the
 
 ![](static/table-yes-no.png)
 
-@## Location
+## Location
 
 Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 @table-caption Badge usage examples
 
@@ -80,7 +80,7 @@ Badge is usually placed to the right of the element. As an exception, in the [No
 | ------------------- | ----------------------------------------- |
 | Product header      | ![](static/product-head.png) |
 | Landing page header | ![](static/landing-header.png) |
-| Widget              | ![](static/widget.png)              |
+| Widget              | ![](static/widget.png)         |
 
 @page badge-a11y
 @page badge-api

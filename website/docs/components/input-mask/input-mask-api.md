@@ -3,7 +3,7 @@ title: API
 fileSource: input-mask
 ---
 
-@## InputMask
+## InputMask
 
 ```js
 import InputMask from '@semcore/ui/input-mask';
@@ -11,7 +11,7 @@ import InputMask from '@semcore/ui/input-mask';
 
 The API is the same as [Input](/components/input/input-api).
 
-@## InputMask.Value
+## InputMask.Value
 
 ```js
 import InputMask from '@semcore/ui/input-mask';
@@ -20,7 +20,7 @@ import InputMask from '@semcore/ui/input-mask';
 
 @typescript InputMaskValueProps
 
-@## InputMask.Addon
+## InputMask.Addon
 
 ```js
 import InputMask from '@semcore/ui/input-mask';

@@ -3,7 +3,7 @@ title: API
 fileSource: flex-box
 ---
 
-@## Box
+## Box
 
 Component responsible for spacings and sizes 📐
 
@@ -14,7 +14,7 @@ import { Box } from '@semcore/ui/flex-box';
 
 @typescript BoxProps
 
-@## Flex
+## Flex
 
 The layout building component is a wrapper over CSS-flex. It inherits all properties from `Box`.
 

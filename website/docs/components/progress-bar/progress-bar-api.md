@@ -3,7 +3,7 @@ title: API
 fileSource: progress-bar
 ---
 
-@## ProgressBar
+## ProgressBar
 
 The component responsible for the background under the progress bar value.
 
@@ -14,7 +14,7 @@ import ProgressBar from '@semcore/ui/progress-bar';
 
 @typescript ProgressBarProps
 
-@## ProgressBar.Value
+## ProgressBar.Value
 
 The component responsible for the progress bar value.
 

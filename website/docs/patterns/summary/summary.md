@@ -3,7 +3,7 @@ title: Summary
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Summary** is a pattern for displaying summary metrics and trends in the report or product.
 
@@ -17,7 +17,7 @@ tabName: Design
 - It should be clear from the title and/or additional information nearby what the metric means. And it's useful when you can add information about how the metric is calculated.
 - Display no more than 5-6 metrics on a report or in a widget. Thus, you will both reduce the cognitive load for the user.
 
-@## Pattern composition
+## Pattern composition
 
 Pattern consists of the following:
 
@@ -28,7 +28,7 @@ Pattern consists of the following:
 
 ![](static/summary-metric.png)
 
-@## Margins and paddings
+## Margins and paddings
 
 The common version of the summary metric:
 
@@ -38,7 +38,7 @@ If the metric consists of several others, so use these margins:
 
 ![](static/margins-paddings2.png)
 
-@## Styles
+## Styles
 
 ![](static/default-example.png)
 
@@ -50,7 +50,7 @@ If the metric consists of several others, so use these margins:
 | **Metric's additional information** | Text 12px (`--fs-100`, `--lh-100`) with `--text-secondary` color.                                                                                                                                                                                                     |
 | **Other information**               | Text 12px (`--fs-100`, `--lh-100`) with `--text-secondary` color.                                                                                                                                                                                                     |
 
-@## Dividers
+## Dividers
 
 - Separate metrics with 24px margins and [Divider](/components/divider/).
 - The last metric (last-child element) has no divider.
@@ -63,33 +63,33 @@ Sometimes you need to group the metrics. In this case, don't separate metrics re
 
 ![](static/dividers.png)
 
-@## Horizontal & vertical layout
+## Horizontal & vertical layout
 
 - The main metrics of the report/widget can be placed both horizontally and vertically, if required by the report layout.
 - The vertical layout is more compact and saves space.
 
-| Condition                                            | Layout type                                   | Appearance example                          |
-| ---------------------------------------------------- | --------------------------------------------- | ------------------------------------------- |
+| Condition                                            | Layout type                                   | Appearance example         |
+| ---------------------------------------------------- | --------------------------------------------- | -------------------------- |
 | If there are more than 3 metrics in the interface -> | use horizontal layout                         | ![](static/horizontal.png) |
-| If there are 3 or less metrics in the frontend ->    | vertical layout                               | ![](static/vertical.png)     |
+| If there are 3 or less metrics in the frontend ->    | vertical layout                               | ![](static/vertical.png)   |
 | If there is one metric in the interface, than ->     | show the values of which this metric consists | ![](static/one-metric.png) |
 
 ![](static/metric-yes-no.png)
 
-@## Alignment
+## Alignment
 
 Metrics can be placed not only in separate widgets, but also inside the table cells and other components. Thus, the alignment of the metric and its additional information can be both left and right.
 
 ![](static/right-align.png)
 
-@## Title
+## Title
 
 - If there are a lot of metrics and they don’t fit into the page width, collapse their title into `ellipsis`.
 - Show the full title of the metric while hovering the title in the tooltip. You can also duplicate the title in the `Info` icon tooltip.
 
 ![](static/minitrend3.png)
 
-@## Difference value
+## Difference value
 
 - Don't show the metric's title in the tooltip, because we already have it in the summary.
 - While hovering diff value, show the tooltip with the previous and current value next to the metric. Don’t abbreviate the values in the tooltip.
@@ -97,7 +97,7 @@ Metrics can be placed not only in separate widgets, but also inside the table ce
 
 ![](static/diff.png) ![](static/diff2.png)
 
-@## Summary with minitrends
+## Summary with minitrends
 
 Minitrends is a shortcut version of charts for displaying a trend, comparing a metric on different days, etc.
 
@@ -132,23 +132,23 @@ You can "hide" more detailed information (a whole widget with a full chart, for 
 - The detailed chart unfolds like an [Accordion](/components/accordion/), shifting the page content.
 - When the [Accordion](/components/accordion/) is expanded, clicking on another minitrend replaces the content in it with the selected value.
 
-| State   | Appearance example                            |
-| ------- | --------------------------------------------- |
+| State   | Appearance example                   |
+| ------- | ------------------------------------ |
 | Default | ![](static/clickable-minitrend1.png) |
 | Hover   | ![](static/clickable-minitrend2.png) |
 | Active  | ![](static/clickable-minitrend3.png) |
 
-@## Edge cases
+## Edge cases
 
-| State                                                                                                                                                                               | Appearance example                         |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![](static/summary-skeleton.png)   |
-| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                          | ![](static/spin.png)                   |
-| Show `n/a` message if data is missing.                                                                                                                                              | ![](static/not-available.png) |
-| If you cannot show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![](static/error2.png)                |
-| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![](static/error.png)                 |
+| State                                                                                                                                                                               | Appearance example               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![](static/summary-skeleton.png) |
+| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                          | ![](static/spin.png)             |
+| Show `n/a` message if data is missing.                                                                                                                                              | ![](static/not-available.png)    |
+| If you cannot show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![](static/error2.png)           |
+| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![](static/error.png)            |
 
-@## Adaptivity
+## Adaptivity
 
 Summary widget can have maximum and minimum width at different resolutions.
 

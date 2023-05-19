@@ -4,7 +4,7 @@ fileSource: time-picker
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -33,11 +33,11 @@ The list below describes roles and attributes that component already has.
 
 For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#a9cbfb).
 
-@## Resources
+## Resources
 
 Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 

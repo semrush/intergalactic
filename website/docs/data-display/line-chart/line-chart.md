@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Line chart** helps to visualize the trend of numeric variables over a period of time.
 
@@ -24,23 +24,23 @@ If you have an array of values for a certain period, you can use this chart type
 > - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
 > - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
 
-@## Appearance
+## Appearance
 
 By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
 
 > Add a possibility to select either straight or smooth line type in the widget settings.
 
-| Example                                       | Styles                 |
-| --------------------------------------------- | ---------------------- |
+| Example                      | Styles                 |
+| ---------------------------- | ---------------------- |
 | ![](static/without-dots.png) | Line thickness is 3px. |
 
 We recommended you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example                            | Styles                                                                                                                      |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![](static/dots.png) | Point size is 8px * 8px, `border: 2px solid var(--chart-grid-border)`. When hovering, the dot increases to 12px * 12px. |
+| Example              | Styles                                                                                                                  |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| ![](static/dots.png) | Point size is 8px _ 8px, `border: 2px solid var(--chart-grid-border)`. When hovering, the dot increases to 12px _ 12px. |
 
-@## Interaction
+## Interaction
 
 When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
@@ -58,11 +58,11 @@ If there are a lot of categories on the chart, the tooltip shows dots and values
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
-@## One value
+## One value
 
 For this case enable the display of dots on the chart by default.
 
@@ -73,7 +73,7 @@ For this case enable the display of dots on the chart by default.
 - **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
 - The line has the `dashed` border style and `--chart-grid-y-accent-hover-line` color.
 
-@## Two values
+## Two values
 
 For this case enable the display of dots on the chart by default.
 
@@ -85,7 +85,7 @@ For this case enable the display of dots on the chart by default.
 
 ![](static/two-dots2.png)
 
-@## Null values
+## Null values
 
 If all values on the chart are zero, then show the trend line on the zero axis.
 
@@ -93,13 +93,13 @@ If all values on the chart are zero, then show the trend line on the zero axis.
 
 ![](static/null-line-chart.png)
 
-@## No data
+## No data
 
 When user hovers over a dot that some of the categories don't have data for, show tooltip with the `n/a` value for these categories.
 
 ![](static/not-available.png)
 
-@## No data area
+## No data area
 
 > **When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
 
@@ -111,7 +111,7 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 ![](static/partially.png)
 
-@## Initial data loading
+## Initial data loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 

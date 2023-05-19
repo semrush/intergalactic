@@ -6,7 +6,7 @@ tabName: Design
 
 > In the [2.0.0 version](/components/side-panel/side-panel-changelog/), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
 
-@## Description
+## Description
 
 **SidePanel** is a component used for displaying sliding panels with content. It can also be referred to as a panel or drawer.
 
@@ -23,7 +23,7 @@ tabName: Design
 - A Help Center or News panel in products.
 - "Panels" on mobile devices.
 
-@## Component composition
+## Component composition
 
 ![](static/sidepanel-composition.png)
 
@@ -47,7 +47,7 @@ The trigger for opening the SidePanel can be the following:
 - Charts that can be clicked to show additional information.
 - On small screens, other controls can serve as triggers to open SidePanel.
 
-@## Overlay
+## Overlay
 
 @table-caption SidePanel with and without overlay
 
@@ -123,7 +123,7 @@ border-top: 1px solid var(–-border-primary);
 
 ![](static/footer-paddings.png)
 
-@## Interaction
+## Interaction
 
 ### Placement in the interface
 

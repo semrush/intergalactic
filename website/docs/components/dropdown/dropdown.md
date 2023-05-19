@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Dropdown** is a component that displays content, such as a form or message, when triggered by a clickable item. This clickable item, also known as the trigger, can be a [Select](/components/select/), [Button](/components/button/), [Input](/components/input/), or any other component.
 
@@ -16,7 +16,7 @@ Dropdown component consists of `Dropdown.Trigger` and `Dropdown.Popper`.
 
 ![](static/dropdown-scheme.png)
 
-@## Appearance
+## Appearance
 
 ### Sizes
 
@@ -30,7 +30,7 @@ Margin between trigger and dropdown is always 4px.
 
 ![](static/trigger-dropdown-scheme.png)
 
-@## Interaction
+## Interaction
 
 **Dropdown opens:**
 
@@ -44,7 +44,7 @@ Margin between trigger and dropdown is always 4px.
 - by clicking `Esc`;
 - when input trigger loses `focus`.
 
-@## Position
+## Position
 
 By default, the Dropdown component drops down from the trigger. However, if there isn't enough space below, it will drop in the opposite direction using [Popper.js](https://popper.js.org/).
 
@@ -52,7 +52,7 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 
 > **Dropdown component should maintain its position and not move when a user scrolls the page.** For instance, if the dropdown opens upward, it should stay in that position even if the user scrolls the page.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - Don’t use dropdown inside dropdown.
 - When dropdown is opened, the trigger should get the `active` state.

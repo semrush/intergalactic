@@ -3,7 +3,7 @@ title: API
 fileSource: input-number
 ---
 
-@## InputNumber
+## InputNumber
 
 ```js
 import InputNumber from '@semcore/ui/input-number';
@@ -11,7 +11,7 @@ import InputNumber from '@semcore/ui/input-number';
 
 @typescript InputNumberProps
 
-@## InputNumber.Value
+## InputNumber.Value
 
 ```jsx
 import InputNumber from '@semcore/ui/input-number';
@@ -20,7 +20,7 @@ import InputNumber from '@semcore/ui/input-number';
 
 @typescript InputNumberValueProps
 
-@## InputNumber.Controls
+## InputNumber.Controls
 
 ```jsx
 import InputNumber from '@semcore/ui/input-number';
@@ -29,7 +29,7 @@ import InputNumber from '@semcore/ui/input-number';
 
 @typescript InputNumberControlsProps
 
-@## InputNumber.Addon
+## InputNumber.Addon
 
 ```jsx
 import InputNumber from '@semcore/ui/input-number';

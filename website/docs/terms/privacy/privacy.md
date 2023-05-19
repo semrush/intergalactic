@@ -2,7 +2,7 @@
 title: Privacy Policy
 ---
 
-@## Table of Contents
+## Table of Contents
 
 1. Introduction
 2. Key Definitions
@@ -19,7 +19,7 @@ title: Privacy Policy
 10. Country And State Specific Data Provacy Information
 11. Contact Information
 
-@## 1. Introduction
+## 1. Introduction
 
 This Privacy Policy explains how Semrush collects, uses, stores, discloses and otherwise processes your personal data (defined below), and your rights and choices regarding your personal data. It applies to the processing of personal data we collect about you when you use and interact with our websites that display or link to this Privacy Policy, register for an account, visit our branded social media pages, register for, attend or take part in our events, webinars, or contests, or otherwise interact with us in person and/or by email, text message, instant messaging, telephonically, and by other electronic means.
 
@@ -27,7 +27,7 @@ Please read this Privacy Policy carefully. If you do not agree with the terms of
 
 This Privacy Policy is effective as of the date first set forth above. We may update this Privacy Policy from time to time. If we make changes, we will post the updated Privacy Policy on this page or another page that links to this page and change the date at the top of this webpage. We encourage you to look for updates and changes to this Privacy Policy by checking this date when you access our website. We will notify you of any modifications to this Privacy Policy that might materially affect the way we use or disclose your personal data prior to the change becoming effective by means of a message on this website, unless another type of notice is required by the applicable law. Your continued use of the website and our Services after we have posted changes to this Privacy Policy or notified you, if applicable, is deemed to be your acceptance of those changes.
 
-@## 2. Key Definitions
+## 2. Key Definitions
 
 "Affiliates“ means entities in our group who are listed in this Privacy Policy (please read the Affiliates section).
 
@@ -47,7 +47,7 @@ This Privacy Policy is effective as of the date first set forth above. We may up
 
 “You” and “your” refers to the individual to whom personal data covered by this Privacy Policy relates.
 
-@## 3. Information We Collect
+## 3. Information We Collect
 
 We may collect data, including personal data, about you as you use our websites and Services or request our Services, and otherwise interact with us. Some of our website’s functionality can be used without providing any personal data, though for using some features of the Services, personal data is required. We process three broad categories of personal data:
 
@@ -175,7 +175,7 @@ The processing of such data is also subject to [Conversant Privacy Policy](https
 
 We and our partners may use other cookies and similar technologies to gather information about the use of our websites and the Services, and for other business purposes as disclosed in our [Cookie Policy](https://www.semrush.com/company/legal/cookie-policy/). For more information on our use of cookies and similar technologies, and your choices with respect to such use, please refer to our [Cookie Policy](https://www.semrush.com/company/legal/cookie-policy/).
 
-@## 4. How We Use Your Personal Data
+## 4. How We Use Your Personal Data
 
 We use the personal data we collect, described above, as follows:
 
@@ -194,7 +194,7 @@ As necessary for certain legitimate interests, including:
 
 Where required by law we will only send you marketing information if you consent to us doing so at the time you provide us your personal data. You may opt-out of receiving such emails by following the instructions in each promotional email we send you or by updating your user settings. In addition, if at any time you wish not to receive future communications or you wish to have your name deleted from our mailing lists, please contact us at privacy@semrush.com. We will continue to contact you via email regarding the provision of our Services and to respond to your requests.
 
-@## 5. How We Share Your Personal Data
+## 5. How We Share Your Personal Data
 
 Semrush will not sell, rent, lease or otherwise provide your personal data to others, except in order to provide you with the products and services you request and as further described below, or with your permission or as required by applicable law.
 
@@ -227,25 +227,25 @@ If we are involved in a merger, acquisition, financing due diligence, reorganiza
 
 We may share your personal data so that we can comply with a legal obligation to which we are subject, protect and defend the rights or property of Semrush, act in urgent circumstances to protect your personal safety or that of the public, or protect Semrush against legal liability. For example, where we are obliged to share your personal data with regulatory bodies which govern our work and services; government departments such as law enforcement, courts orders; financial institutions; external auditors; etc.
 
-@## 6. Data Retention
+## 6. Data Retention
 
 We retain your personal data for as long as reasonably necessary to provide the Services and fulfil the transactions you have requested, complying with our legal obligations or for other legitimate business purposes, such as maintaining business and financial records, resolving disputes, maintaining security, detecting and preventing fraud and abuse, and enforcing our agreements. After the applicable retention period has elapsed, your personal data will be anonymized and deleted.
 
-@## 7. How We Protect Your Personal Data
+## 7. How We Protect Your Personal Data
 
 We will use industry standard physical, technical, and administrative security measures to keep your personal data confidential and secure, and will not share it with third parties, except as otherwise provided in this Privacy Policy. The Internet, however, cannot be guaranteed to be 100% secure, and we cannot ensure or warrant the security of any personal data you provide to us. It is your responsibility to protect the security of your login information.
 
 If you know or suspect that your personal data have been lost, stolen, misappropriated, or otherwise compromised, or in case of any actual or suspected unauthorized use of your Semrush account, please immediately contact us by email at privacy@semrush.com.
 
-@## 8. Updating And Accessing Your Personal Data
+## 8. Updating And Accessing Your Personal Data
 
 You may access, review, modify and delete your account profile information by going to your account and editing your information. However, if you want to update, delete, limit the use or disclosure of, or access the personal data we hold about you in our systems, you will need to email your request to us at privacy@semrush.com. Please also read the “European Users” section for more information which may be applicable to you.
 
-@## 9. Children
+## 9. Children
 
 Our Services are not directed to children who are under the age of 16. We do not knowingly collect personal data from children under the age of 16. If you have reason to believe that a child under the age of 16 has provided personal data to us through the Services, please contact us at privacy@semrush.com and we will endeavor to delete that information from our databases.
 
-@## 10. Country And State Specific Data Provacy Information
+## 10. Country And State Specific Data Provacy Information
 
 ### California Consumer Privacy Act
 
@@ -286,7 +286,7 @@ You may contact us at privacy@semrush.com to exercise your rights. Semrush Inc. 
 
 Semrush Inc. is based in the United States and other members of our group are based in countries outside the EEA or the UK (please read the Affiliates section above for more information). If you are accessing our websites and the Services from the EEA, the UK or other regions with laws governing data collection and use, please note that in connection with our business and for administrative, management and legal purposes, we may transfer your personal data from the country where you reside to Semrush Inc. in the United States and to other members of our group in the jurisdictions in which our affiliates are established and to our service providers in the United States. These countries may have data protection laws less stringent than or otherwise different from the laws in effect in the country in which you are located. Where we transfer your personal data as described above, we will take steps to ensure that your personal data receives adequate security protection where it is processed and your rights continue to be protected pursuant to the applicable data protection law, including through the use of Standard Contractual Clauses approved by the European Commission. In some cases, transfers of your personal data to us is necessary to perform the agreement we have entered into, or are about to enter into, with you. If you would like to receive more information on the safeguards that we implement as described above, please contact us as indicated below.
 
-@## 11. Contact Information
+## 11. Contact Information
 
 If you have any questions or concerns regarding Semrush’s Privacy Policy or use of personal data, or if you want to exercise your rights regarding your personal data, please contact us by email at our designated request address at privacy@semrush.com or by regular mail to:
 

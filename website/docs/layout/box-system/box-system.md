@@ -6,7 +6,7 @@ tabName: Design
 
 **Flex-box** is a component for managing arrangement and alignment of other components and elements in the interface.
 
-@## Box
+## Box
 
 **Box** is a component for changing sizes of the elements or components and arranging indents between the them. By using it, you can set paddings and margins.
 
@@ -18,7 +18,7 @@ Example below shows how a component creates indents using dynamically generated 
 
 @example space-tag
 
-@## Flex
+## Flex
 
 **Flex** is a component for aligning the components. It is a wrapper over CSS-flex.
 
@@ -26,7 +26,7 @@ Example below shows how Flex component takes all properties of a Box component.
 
 @example flex
 
-@## Spacing system
+## Spacing system
 
 The spacing system helps maintain a vertical and horizontal rhythms in the interface. It makes the interface easier to use by reducing cognitive load. _For example, if there are different indents in the interface everywhere, the brain will try to understand this logic and thereby add a cognitive load to itself. It is wrong way._
 

@@ -3,14 +3,14 @@ title: Example
 fileSource: drag-and-drop
 ---
 
-@## Use in the DropdownMenu
+## Use in the DropdownMenu
 
 @example list
 
-@## Use in TabPanel
+## Use in TabPanel
 
 @example tabs
 
-@## Example with use of the drop zone
+## Example with use of the drop zone
 
 @example zone

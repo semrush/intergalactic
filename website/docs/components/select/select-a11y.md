@@ -4,7 +4,7 @@ fileSource: select
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support for select and multiselect lists
 
@@ -50,7 +50,7 @@ The list below describes roles and attributes that component already has.
 - For more information about the radio or checkbox list see [Radio button](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
 - For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
 
-@## Considerations for developers
+## Considerations for developers
 
 ### Roles and attributes
 
@@ -60,12 +60,12 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | ---- | ------------ | ------- | ---------------------------------------------------------------------------------------------------------------- |
 |      | `aria-label` | `div`   | Defines a string value that labels an interactive element. It is required props for select without text content. |
 
-@## Resources
+## Resources
 
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-select-lists) gives core recommendations for the accessible select lists.
 - Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 

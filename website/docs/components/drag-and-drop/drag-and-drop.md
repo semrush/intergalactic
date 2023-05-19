@@ -4,7 +4,7 @@ fileSource: drag-and-drop
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Drag and drop** is a component that allows user to move elements within the interface, changing their order and sometimes their properties.
 
@@ -21,7 +21,7 @@ The component imitates the physical dragging of objects, and two essential consi
 
 ![](static/dragdrop-scheme.png)
 
-@## Appearance
+## Appearance
 
 ### Icon for identification of the possibility to drag the object
 
@@ -35,7 +35,7 @@ When hovering over a draggable element, it's recommended to display the `MoveAlt
 
 ![](static/dragging.png)
 
-@## Area for dragging
+## Area for dragging
 
 The area for dragging is where you can click and hold the mouse or use the keyboard to move a large object, like a card or table row. We recommend using the dotted pattern that appears when user hovers over the area or use the `Tab` key to navigate to the element. This pattern can be placed both horizontally, as in the case of cards, and vertically, as in table rows.
 
@@ -43,7 +43,7 @@ The area for dragging is where you can click and hold the mouse or use the keybo
 
 ![](static/drag-table.png)
 
-@## Area for dropping
+## Area for dropping
 
 By default, the element's placement area is marked with a dashed border. If user hovers over this area, its styles should remain unchanged to avoid giving the impression that it is clickable.
 
@@ -53,7 +53,7 @@ Use `border: 1px dashed var(--border-primary)` for border styles.
 
 ![](static/default-and-hover.png)
 
-@## Area highlighting
+## Area highlighting
 
 When the object is dragged to the area where the element can be placed, area must be highlighted.
 
@@ -63,7 +63,7 @@ Use `--bg-primary-neutral-hover` token for background-color and `border: 1px das
 
 ![](static/drag-card.png)
 
-@## Where to use
+## Where to use
 
 @table-caption Where to use drag and drop component
 
@@ -75,7 +75,7 @@ Use `--bg-primary-neutral-hover` token for background-color and `border: 1px das
 | [TabPanel](/components/tab-panel/)        | ![](static/drag-tabpanel.png)                                                  |
 | [Select/Multiselect](/components/select/) | ![](static/drag-default.png) ![](static/dragging.png) |
 
-@## Interaction
+## Interaction
 
 ### Cursor
 
@@ -91,8 +91,8 @@ When dragging, the axis isn’t restricted, allowing the element to be moved any
 | -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Default  | ![](static/drag-default.png)                             | Don’t show the `MoveAlt` icon and pattern with dots in default state.                                                                                                                                                                                                                                        |
 | Hover    | ![](static/drag-hover.png) ![](static/drag-table.png) | If the element is hovered over, a `MoveAlt` icon or pattern with dots is displayed, indicating that the component can be moved. If the `MoveAlt` icon is hovered over, the cursor changes to `move`. |
-| dragging | ![](static/dragging.png)                            | The dragged object changes its box-shadow to the `--box-shadow-dnd` token.                                                                                                                                                                                                                                    |
-| no-drop  | ![](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                                                           |
+| dragging | ![](static/dragging.png)                              | The dragged object changes its box-shadow to the `--box-shadow-dnd` token.                                                                                                                           |
+| no-drop  | ![](static/no-drop.png)                               | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                       |
 
 ### States of droppable area
 
@@ -105,7 +105,7 @@ When dragging, the axis isn’t restricted, allowing the element to be moved any
 | dragging | ![](static/drag-card.png) ![](static/drag-table2.png) | Hovering over the area where an element can be dropped changes its color. When dragging an object in a list of similar objects, they are separated, and the drop zone changes the background color to `--bg-secondary-neutral-hover`.       |
 | no-drop  | ![](static/no-drop.png)                                                            | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                             |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 This component imitates physically dragging objects, so keep the following in mind when implementing it:
 

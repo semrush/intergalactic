@@ -3,7 +3,7 @@ title: API
 fileSource: widget-empty
 ---
 
-@## WidgetEmpty
+## WidgetEmpty
 
 This component is used for displaying message for "empty" states in the widgets.
 
@@ -14,7 +14,7 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 
 @typescript WidgetEmptyProps
 
-@## NoData
+## NoData
 
 Use this state to display "No data" message.
 
@@ -25,7 +25,7 @@ import { NoData } from '@semcore/ui/widget-empty';
 
 @typescript WidgetNoDataProps
 
-@## Error
+## Error
 
 Use this state to display error message.
 
@@ -36,6 +36,6 @@ import { Error } from '@semcore/ui/widget-empty';
 
 @typescript WidgetErrorProps
 
-@## Images
+## Images
 
 You can find all the possible images for the component in the [Illustration](/style/illustration/illustration-api/#getillustrationpath) component. To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.

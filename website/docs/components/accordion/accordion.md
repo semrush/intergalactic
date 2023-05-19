@@ -4,7 +4,7 @@ fileSource: accordion
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Accordion** is a component which allows you to hide/display areas with a large amount of data.
 
@@ -53,7 +53,7 @@ You are free to set link or button of any size you need as the accordion trigger
 | Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.    |
 | Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
 
-@## Collapsed content
+## Collapsed content
 
 You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
@@ -67,7 +67,7 @@ You can use this component to hide almost any content. This can be a text conten
 
 ![](static/item-paddings.png)
 
-@## Interaction
+## Interaction
 
 > **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
 >
@@ -89,11 +89,11 @@ You can use this component to hide almost any content. This can be a text conten
 | Disabled | ![](static/disabled-state.png) | Use [`--disabled-opacity`](/style/design-tokens/) token.                                                                                                                               |
 | Loading  | ![](static/loading-state.png)   | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/) with a respective size. By default, the spinner size is XS.                  |
 
-@## Animation
+## Animation
 
 For smooth content display and icon rotation, the component has `transition: all 0.35s`.
 
-@## Use in UI/UX
+## Use in UI/UX
 
 ### Accordion on mobile devices
 

@@ -6,13 +6,13 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **InputTags** is an input field that wraps entered information into tags. It is commonly used alongside the [Combobox](/components/auto-suggest/).
 
 This input field is useful for entering a large amount of similar information in a single field, such as keywords or employee emails.
 
-@## Appearance
+## Appearance
 
 When there are too many tags to fit within the input, the input field's height increases by one line of text.
 
@@ -23,7 +23,7 @@ When there are too many tags to fit within the input, the input field's height i
 | M input is used with the M tag | ![](static/m-size.png) | ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
 | L input is used with the L tag | ![](static/l-size.png) | ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
 
-@## Tag colors
+## Tag colors
 
 > To learn more about tags, refer to the [Tag](/components/tag).
 
@@ -39,7 +39,7 @@ In some cases, you can use color tags to represent different categories, if appl
 
 ![](static/color-tag.png)
 
-@## Interaction
+## Interaction
 
 In an input field with tags, you can enter data either by selecting preset options from the combobox or by entering your own data (which will be wrapped in tags if they have punctuation separators). You can also combine both options.
 
@@ -65,11 +65,11 @@ The text entered by the user is automatically converted into a tag inside InputT
 
 > Leading and trailing spaces are trimmed when creating tags.
 
-@## Text insertion
+## Text insertion
 
 After inserting data, the text is split into tags based on punctuation separators like commas, semicolons, vertical bars ("|"), or pressing the `Tab` key.
 
-@## Deleting and editing a tag
+## Deleting and editing a tag
 
 If the text cursor is positioned in front of a tag, pressing the `Delete` key will convert the tag back into plain text, allowing for editing and deletion.
 

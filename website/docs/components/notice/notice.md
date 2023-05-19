@@ -8,7 +8,7 @@ tabName: Design
 
 > In the update of [version 4.0.0](/components/notice/notice-changelog/#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/). This change was made to enhance their usability.
 
-@## Description
+## Description
 
 **Notice** is a component for displaying messages related to events concerning the user's work in the interface.
 
@@ -48,7 +48,7 @@ Component consists of the following:
 | Notice with minimum possible elements | ![](static/notice-minimal.png) |
 | Notice with maximum possible elements | ![](static/notice-monster.png) ![](static/notice-max-button.png) |
 
-@## Sizes, paddings and margins
+## Sizes, paddings and margins
 
 The notice can be used as a standalone component or embedded within other components. _For instance, it can be placed inside dropdowns and modal windows._
 
@@ -61,7 +61,7 @@ The internal paddings of the notice match those of the component it is nested wi
 ![](static/notice-component.png)
 ![](static/notice-component-2.png)
 
-@## Maximum text width
+## Maximum text width
 
 Avoid stretching the text to the full width of the notice, particularly when the notice spans the entire screen width. Fully stretched text is inconvenient to read.
 
@@ -80,7 +80,7 @@ Avoid stretching the text to the full width of the notice, particularly when the
 | **Warning**: Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. |![](static/warning.png) |
 | **Danger**: Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. | ![](static/danger.png) |
 
-@## Placement in the interface
+## Placement in the interface
 
 ### On the page
 
@@ -104,7 +104,7 @@ If the notice only relates to the component, position it at the top or bottom of
 
 ![](static/notice-component-yes-no.png)
 
-@## Interaction
+## Interaction
 
 ### Opening
 
@@ -129,7 +129,7 @@ Since the notice serves as a temporary notification, it should have a predefined
 
 When the close icon or closing link is clicked, the notice should smoothly fade out with a duration of `250ms`. The page content should transition to fill the space vacated by the notice within `250ms`.
 
-@## Custom notice
+## Custom notice
 
 Custom notices have their own rules and distinct styles compared to the default themes.
 
@@ -151,7 +151,7 @@ The advertising notice differs from the default notice through the inclusion of 
 
 ![](static/notice-no.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### General rules
 

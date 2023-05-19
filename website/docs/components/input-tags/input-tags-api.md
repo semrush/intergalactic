@@ -3,7 +3,7 @@ title: API
 fileSource: input-tags
 ---
 
-@## InputTags
+## InputTags
 
 ```jsx
 import InputTags from '@semcore/ui/input-tags';
@@ -11,7 +11,7 @@ import InputTags from '@semcore/ui/input-tags';
 
 @typescript InputTagsProps
 
-@## InputTags.Value
+## InputTags.Value
 
 ```jsx
 import InputTags from '@semcore/ui/input-tags';
@@ -20,7 +20,7 @@ import InputTags from '@semcore/ui/input-tags';
 
 @typescript InputTagsValueProps
 
-@## InputTags.Tag
+## InputTags.Tag
 
 Styled component [Tag](/components/tag/).
 
@@ -31,7 +31,7 @@ import InputTags from '@semcore/ui/input-tags';
 
 @typescript InputTagsTagProps
 
-@## InputTags.Tag.Addon
+## InputTags.Tag.Addon
 
 ```jsx
 import InputTags from '@semcore/ui/input-tags';
@@ -40,7 +40,7 @@ import InputTags from '@semcore/ui/input-tags';
 
 Inherited from the [Tag.Addon](/components/tag/tag-api/#a5b4f0) component.
 
-@## InputTags.Tag.Text
+## InputTags.Tag.Text
 
 ```jsx
 import InputTags from '@semcore/ui/input-tags';
@@ -49,7 +49,7 @@ import InputTags from '@semcore/ui/input-tags';
 
 Inherited from the [Tag.Text](/components/tag/tag-api/#a49c29) component.
 
-@## InputTags.Tag.Close
+## InputTags.Tag.Close
 
 ```jsx
 import InputTags from '@semcore/ui/input-tags';
@@ -58,7 +58,7 @@ import InputTags from '@semcore/ui/input-tags';
 
 Inherited from the [Tag.Close](/components/tag/tag-api/#a871eb) component.
 
-@## InputTags.Tag.Circle
+## InputTags.Tag.Circle
 
 ```jsx
 import InputTags from '@semcore/ui/input-tags';

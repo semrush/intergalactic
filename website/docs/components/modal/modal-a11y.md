@@ -3,7 +3,7 @@ title: A11y
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -27,11 +27,11 @@ You can close the modal window by clicking on the following controls:
 
 > When the modal window is closed, the focus should always return to the trigger.
 
-@## Resources
+## Resources
 
 [W3 modal dialog example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/dialog-modal/dialog.html) has detailed information about the modal window accessible behavior.
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 

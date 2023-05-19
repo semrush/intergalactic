@@ -5,13 +5,13 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
-@## Stacked area
+## Stacked area
 
 If you need to display a part-to-whole ratio – use the `<StackedArea/>` and `<StackedArea.Area/>` components.
 
 @example stacked-area
 
-@## Edge cases
+## Edge cases
 
 - If a part of the chart has no data – use a dashed line to draw that period.
 - If the data has only one value – display it as a dot.

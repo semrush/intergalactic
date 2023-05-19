@@ -7,14 +7,14 @@ docs: true
 
 > Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
 
-@## Control types
+## Control types
 
 Controls in the widget can be divided into the following types:
 
 - general controls and filters;
 - chart controls.
 
-@## General controls and filters
+## General controls and filters
 
 General controls and filters are always placed on the same level as the title. For example they include:
 
@@ -28,7 +28,7 @@ For widget settings use icon button with `use="tertiary"` and `theme="muted"`. I
 
 ![](static/settings-on.png)
 
-@## Chart controls and filters
+## Chart controls and filters
 
 These controls filter the data, axes, and some controls shown below.
 
@@ -89,7 +89,7 @@ For custom period use [DateRangePicker](/components/date-picker/#a3d75b).
 
 ![](static/zoom.png)
 
-@## Collapsing rows with controls
+## Collapsing rows with controls
 
 You can collapse rows if necessary.
 

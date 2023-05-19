@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Histogram chart** helps grouping numeric data for comparison by quantitative indicators. It shows the distribution of values.
 
@@ -33,7 +33,7 @@ Use histogram when you need to display the distribution of data sets by groups (
 > - In statistics, a histogram is a visual representation of the probability density function of a random variable based on a sample.
 > - Most often, in order to ease the perception, the width of the columns shall be the same size.
 
-@## Appearance
+## Appearance
 
 If you need to display different categories of data within a dataset, use Stacked histogram chart.
 
@@ -53,20 +53,20 @@ The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
 ![](static/histogram-horizontal-stack.png)
 
-@## Color usage
+## Color usage
 
 - Use [color palette](/data-display/color-palette/) and follow the the recommendations it has.
 - **You can color the histogram bars in different colors when this can be useful for easier reading of the chart.** But use it carefully. _For example, you need to highlight a certain gradation of ranges. In this case, you can choose the appropriate colors from the chart palette._
 
 ![colors in histogram](static/color-yes-no.png)
 
-@## Legend and axes
+## Legend and axes
 
 As a rule, a histogram doesn't need a legend. You only need to clearly name the chart and in some cases you can add names to the axes.
 
 ![axes](static/axes.png)
 
-@## Sorting of columns
+## Sorting of columns
 
 Don't forget to use a reasonable order of values to distribute your data sets. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
 
@@ -74,7 +74,7 @@ Don't forget to use a reasonable order of values to distribute your data sets. F
 
 ![sorting in histogram](static/sort-yes-no.png)
 
-@## Outliers
+## Outliers
 
 In some cases some of the values in our data are very different from the majority of values.
 
@@ -86,7 +86,7 @@ If you show this picture as it is, with a zero value on the `Y-axis`, then large
 
 Possible solutions for such cases are described in the guide about bar charts, [see the section describing outliers](/data-display/bar-chart/). **The recommended solution is to make the scale logarithmic instead of linear.**
 
-@## Interaction
+## Interaction
 
 When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
 
@@ -94,7 +94,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ![](static/histogram.png)
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
@@ -140,7 +140,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![](static/hor-skeleton.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - Start the columns from zero.
 - By comparing columns, we are actually comparing the length. If we don’t start the scale from zero, there will be a visual illusion.

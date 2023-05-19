@@ -5,7 +5,7 @@ tabName: Design
 
 > **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
 
-@## Description
+## Description
 
 **Filter Tags** is a filter to sort the data on the page by the tags.
 
@@ -20,7 +20,7 @@ tabName: Design
 - quickly reset the entered data and search again;
 - be able to select all tags.
 
-@## Appearance
+## Appearance
 
 ### Trigger
 
@@ -50,7 +50,7 @@ tabName: Design
 
 ![long tags](static/long-tags.png)
 
-@## Interaction
+## Interaction
 
 - By default, nothing is selected in the filter.
 - If user has selected a tag, checkbox gets `active` state.
@@ -71,7 +71,7 @@ Other rules for working and interacting with filters are described in the [Filte
 | **Filled filter** | ![active serp](static/active-tags.png)                                                                                                                | If the user has applied the filter, show the number of selected tags in the trigger. For more information on abbreviation rules, see [FilterTrigger](/components/filter-trigger/).                                                                                                                   |
 | **No results**    | ![nothing found](static/nothing-found-tags.png)                                                                                                       | If there are no keywords with the selected tags, show the ["empty" state](/components/widget-empty/), as with any other filter. When there are no options, show the title: "No results found" – and the message: "Try selecting a different date or changing your filter settings.".                 |
 
-@## Abbreviations and tooltips
+## Abbreviations and tooltips
 
 For more information about tooltips, see the [Filter common rules guide](/filter-group/filter-rules/).
 
@@ -79,6 +79,6 @@ Don't abbreviate the name of this filter, it is always `Tags`.
 
 ![tooltips](static/tooltip.png)
 
-@## Validation
+## Validation
 
 Validations is described in the [Filter common rules guide](/filter-group/filter-rules/).

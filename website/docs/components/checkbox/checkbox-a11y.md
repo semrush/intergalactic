@@ -3,7 +3,7 @@ title: A11y
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -24,13 +24,12 @@ The list below describes roles and attributes that component already has.
 <!-- |            | `aria-checked="true"`  | `div`   | Indicates the `checkbox` is checked. CSS attribute selectors (for example [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state.      |
 |            | `aria-checked="false"` | `div`   | Indicates the `checkbox` isn’t checked. CSS attribute selectors (for example [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state. | -->
 
-@## Considerations for developers
+## Considerations for developers
 
 - The `<fieldset>` surrounds the entire grouping of checkboxes or radio buttons. The `<legend>` provides a description for the grouping.
 - Some assistive technology reads the legend text for each `fieldset`, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons).
-
 
 ### Roles and attributes
 
@@ -40,12 +39,12 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | ------- | ------- | --------------------------------------------------------------------- |
 | `group` | `div`   | Identifies the `div` element as a group container for the checkboxes. |
 
-@## Resources
+## Resources
 
 - [W3 checkbox example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/checkbox/checkbox-1/checkbox-1.html) has detailed information about the accordion accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-checkboxes) gives core recommendations for the accessible checkboxes.
 - Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

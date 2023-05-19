@@ -3,7 +3,7 @@ title: Advanced filters
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Advanced filters** is a pattern for filters which need to be combined into a group for any reason (logical relationship or related filters).
 
@@ -26,7 +26,7 @@ Advanced filters can contain a combination of the following conditions:
 - triggered instantly when any filter group is selected;
 - triggered by button by button.
 
-@## Dropdown or accordion?
+## Dropdown or accordion?
 
 **Implement the advanced filters in a dropdown when:**
 
@@ -38,13 +38,13 @@ Advanced filters can contain a combination of the following conditions:
 - the user needs to interact with filters most of the time with the table;
 - you need to see the filters applied when you switch to another report.
 
-@## Counter
+## Counter
 
 The counter appears after applying the filter. It shows the number of filters applied within the advanced filters group.
 
 ![filter counter](static/advanced-filter.png)
 
-@## Loading
+## Loading
 
 When the filter's content or some of the filters are loading, show [Spin](/components/spin/) with the "Loading ..." text.
 
@@ -54,13 +54,13 @@ Wrap filter form into [SpinContainer](/components/spin-container/) when the user
 
 ![filter loading state](static/advanced-filters-loading.png)
 
-@## Nothing found
+## Nothing found
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
 ![filter nothing found state](static/nothing-found-advanced-filters.png)
 
-@## Interaction
+## Interaction
 
 For the filter trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/) components.
 
@@ -75,13 +75,13 @@ For the filter trigger use [Select](/components/select/) and [FilterTrigger](/co
 - When changing the base, date, switching between reports, the values in advanced filters should be saved.
 - Filter settings are forwarded to the URL.
 
-@## Clearing a filter group
+## Clearing a filter group
 
 - The delete button appears in the filter form after applying filters, and clears the entire group of filters.
 - The advanced filters-dependent page content is reloaded and overrides the applied values.
 - By clicking the "Clear all" button, everything applied in the group will be deleted.
 
-@## Tooltips
+## Tooltips
 
 |                                                                                                                                   | Appearance example                                       |
 | --------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
@@ -89,7 +89,7 @@ For the filter trigger use [Select](/components/select/) and [FilterTrigger](/co
 | While hovering over an open select, show a tooltip with the text: "Hide advanced filters".                                        | ![filter tooltip](static/advanced-filters-accordion.png) |
 | If the accordion needs a Close icon, then show a tooltip with the text: 'Hide".                                                   | ![filter tooltip](static/tooltip-2.png)                  |
 
-@## Advanced filters in the dropdown
+## Advanced filters in the dropdown
 
 Advanced filters implemented in the dropdown must have:
 
@@ -120,7 +120,7 @@ After applying the filter:
 
 ![filter in dropdown](static/advanced-filters-dropdown-filled.png)
 
-@## Advanced filters in the accordion
+## Advanced filters in the accordion
 
 Container in accordion has styles: `border: 1px solid var(--border-primary)`.
 
@@ -145,7 +145,7 @@ After applying the filter:
 
 ![filter in accordion](static/advanced-filters-accordion-filled.png)
 
-@## Margins and styles recommendations
+## Margins and styles recommendations
 
 If you need to increase or decrease the margins between filters inside the form, make them multiples of 4: 8px, 12px, 24px, 32px, etc.
 

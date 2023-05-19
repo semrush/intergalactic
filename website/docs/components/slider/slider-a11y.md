@@ -4,7 +4,7 @@ fileSource: slider
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -31,12 +31,12 @@ The list below describes roles and attributes that component already has.
 |          | `aria-labelledby="IDREF"` | `div`   | Refers to the element containing the name of the slider.                                                                                                       |
 |          | `aria-orientation`        | `div`   | Indicates whether the element's orientation is horizontal, vertical, or unknown/ambiguous.                                                                     |
 
-@## Resources
+## Resources
 
 - [W3 slider documentation](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) has information about the slider accessible behavior and its different versions.
 - Find live examples of accessible inputs with different types in [DigitalA11y project](https://www.digitala11y.com/demos/accessibility-of-html-input-types-examples/).
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 

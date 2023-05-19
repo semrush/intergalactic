@@ -2,25 +2,25 @@
 title: Example
 ---
 
-@## PaletteManager
+## PaletteManager
 
 PaletteManager lets you add your own colors by typing in the hexadecimal code and clicking the check icon or pressing Enter. To remove custom colors, simply click the `Close` icon on each item.
 
 @example defaultExtended
 
-@## Input validation
+## Input validation
 
 To prevent users from entering white as a color option, replace the default validation function in `PaletteManager.InputColor` with your own custom validation function using the `onChange` prop. Here is an example:
 
 @example inputValidation
 
-@## Custom trigger
+## Custom trigger
 
 You have complete control over the appearance of ColorPicker, including the trigger.
 
 @example customTrigger
 
-@## Several ways to use component
+## Several ways to use component
 
 There are multiple ways to add colors in ColorPicker;
 
@@ -29,7 +29,7 @@ There are multiple ways to add colors in ColorPicker;
 
 @example howToUse
 
-@## Items with tooltips
+## Items with tooltips
 
 You can use default items with other components. For example, with [Tooltip](/components/tooltip).
 

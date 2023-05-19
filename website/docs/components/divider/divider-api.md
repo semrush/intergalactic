@@ -3,7 +3,7 @@ title: API
 fileSource: divider
 ---
 
-@## Divider
+## Divider
 
 ```jsx
 import Divider from '@semcore/ui/divider';

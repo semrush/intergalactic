@@ -8,13 +8,13 @@ The component is our `React`-wrapper over the popular [popper.js](https://popper
 
 We use it in all pop-ups: [dropdown](/components/dropdown/), [tooltip](/components/tooltip/), [select](/components/select), etc.
 
-@## Show/hide
+## Show/hide
 
 The component can function in both `uncontrolled` and `controlled` modes.
 
 @example base
 
-@## Events trigger
+## Events trigger
 
 Using the `interaction` prop, you can specify trigger events which are to be subscribed to in order to show and hide the popper.
 
@@ -22,7 +22,7 @@ When these events are activated, the `onVisibleChange` handler is called with th
 
 @example events
 
-@## Click outside
+## Click outside
 
 You can subscribe to the `onOutsideClick` event. It will be called when a clicked is made on any element other than `Trigger` and `Popper`.
 
@@ -30,7 +30,7 @@ You can subscribe to the `onOutsideClick` event. It will be called when a clicke
 
 @example outside
 
-@## Placement
+## Placement
 
 Since we are using [popper.js](https://popper.js.org/), the placement prop comes from there.
 
@@ -38,7 +38,7 @@ Placement may be `'auto-start' | 'auto' | 'auto-end' | 'top-start' | 'top' | 'to
 
 @example placement
 
-@## Custom tag
+## Custom tag
 
 `tag` is the name of the HTML tag for the displayed element. The trigger and popper support changing this prop.
 
@@ -48,7 +48,7 @@ You can pass either another component or a string to the `tag`. For example, `ta
 
 @example trigger-tag
 
-@## Render-functions
+## Render-functions
 
 You can change the trigger by passing a function instead of the `Popper` body.
 
@@ -64,7 +64,7 @@ Inside the function, the first argument provides the component props and the `ge
 
 @example render-function-handlers
 
-@## Disabled portal
+## Disabled portal
 
 The popper is rendered in the end of the `body` and absolutely positioned. In order to render the `Popper` next to the `Trigger`, you need to specify `disablePortal`.
 
@@ -74,7 +74,7 @@ This is usually needed to optimize position recalculation when the `Trigger` is 
 
 @example portal
 
-@## Fixed position
+## Fixed position
 
 The Popper is positioned absolutely, but this behavior can be changed to fixed position `(display: fixed)`.
 

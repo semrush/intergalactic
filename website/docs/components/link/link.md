@@ -6,11 +6,11 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It is a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale) guide.
 
-@## Appearance
+## Appearance
 
 ![](static/default-link.png)
 
@@ -31,7 +31,7 @@ You can add addons before and after the link text. Addons always have a 4px marg
 | 12-16px (`--fs-100`-`--fs-300` tokens)  | ![](static/link-m.png) | M         |
 | 20px and bigger (from `--fs-400` token) | ![](static/link-l.png) | L         |
 
-@## Interaction
+## Interaction
 
 @table-caption Default link states
 
@@ -62,7 +62,7 @@ Default links can be used on a colored background within a [Notice](/components/
 
 ![](static/default-yes.png)
 
-@## Link text and target zone
+## Link text and target zone
 
 > _Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
 >
@@ -107,7 +107,7 @@ For links placed in one line, maintain a margin between them that is a multiple 
 
 ![](static/link-margin.png)
 
-@## Default link or Hint link?
+## Default link or Hint link?
 
 > Find detailed information on the hint link in the [Typography guide](/style/typography/#hints_hint_links).
 
@@ -130,14 +130,14 @@ For links placed in one line, maintain a margin between them that is a multiple 
 | Opening the full text on the same page | ❌                                   | ✅        |
 | Tooltip on click/hover                 | ❌                                   | ✅        |
 
-@## Links in tables
+## Links in tables
 
 - If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/).
 - In table rows, use 14px links. If the link is a URL leading to an external page, include the `LinkExternal` icon with M size and `--icon-secondary-neutral` color next to it. Ensure it has a `margin-left: var(--spacing-1x)`.
 
 ![](static/table-yes-no.png)
 
-@## External links
+## External links
 
 > External links always open in a new tab.
 
@@ -156,7 +156,7 @@ For links placed in one line, maintain a margin between them that is a multiple 
 - When hovering over the icon, it should change color to `--icon-secondary-neutral-hover-active`.
 - If necessary, you can use link styles to highlight the external resource icon.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Avoid using the link component for text that doesn't lead to another page or perform an action to prevent misleading users.
 

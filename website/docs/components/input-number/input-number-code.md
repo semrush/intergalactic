@@ -3,7 +3,7 @@ title: Example
 fileSource: input-number
 ---
 
-@## Range of values
+## Range of values
 
 Use [InputNumber](/components/input-number) and [NeighborLocation](/utils/neighbor-location) components. In this case, InputNumber is always used as a controlled component.
 

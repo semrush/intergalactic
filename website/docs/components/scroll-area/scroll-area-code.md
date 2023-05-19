@@ -9,19 +9,19 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 @example basic
 
-@## Synchronized scroll on two different screens
+## Synchronized scroll on two different screens
 
 @example main-and-controlled
 
-@## Synchronized reverse scroll on two different screens
+## Synchronized reverse scroll on two different screens
 
 @example reverse
 
-@## Scrollbar out of container
+## Scrollbar out of container
 
 @example bar
 
-@## Dynamic virtual list
+## Dynamic virtual list
 
 The dynamic virtual list is powered by [React-virtualized](https://github.com/bvaughn/react-virtualized).
 

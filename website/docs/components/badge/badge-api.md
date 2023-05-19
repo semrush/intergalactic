@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Badge
+## Badge
 
 ```jsx
 import Badge from '@semcore/ui/badge';

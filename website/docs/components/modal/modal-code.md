@@ -3,7 +3,7 @@ title: Example
 fileSource: modal
 ---
 
-@## Basic modal window usage
+## Basic modal window usage
 
 @example modal
 
@@ -13,25 +13,25 @@ Sometimes the amount of content overfills the window's visibility, but you don't
 
 @example scroll
 
-@## Changing the alignment
+## Changing the alignment
 
 By default, the modal window is centered. However, in some cases, when the content height inside the window changes dynamically and causes the modal window to "jump," it may be necessary to adjust the window alignment. This can be achieved by applying the desired margin on the respective side.
 
 @example position
 
-@## Modal window inside a modal window
+## Modal window inside a modal window
 
 While it is generally not recommended, there are instances where it may be necessary to open a modal window within another modal window. In such cases, it is important to nest the modal windows properly to ensure correct background visibility and keyboard control.
 
 @example modal-inside-modal
 
-@## Modal window with customization
+## Modal window with customization
 
 Example of a modal window with a custom header.
 
 @example wizard
 
-@## Access to internal HTML nodes
+## Access to internal HTML nodes
 
 To access the background or the close `Close` icon, you will need to expand the modal window and recreate the same component sequence.
 
@@ -42,7 +42,7 @@ In most cases, it is expected that you will not require this functionality. **Th
 
 @example modal-advanced
 
-@## Modal window inside the iframe
+## Modal window inside the iframe
 
 Whenever possible, opt for using pages instead of modal windows. Modal windows within an iframe will not overlay the entire viewport; instead, they will only cover a portion of the iframe area. Additionally, they will not appear at the center of the viewport but rather at the center of the iframe, resulting in an awkward visual experience.
 

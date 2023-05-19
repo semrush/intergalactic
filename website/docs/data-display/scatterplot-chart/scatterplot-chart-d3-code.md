@@ -5,26 +5,26 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
-@## Scatter plot
+## Scatter plot
 
 @example scatterplot
 
-@## Color customization
+## Color customization
 
 If required, you can assign your own color to Scatter plot.
 
 @example custom-color
 
-@## Scatter plot with values inside
+## Scatter plot with values inside
 
 @example scatterplot-values
 
-@## Color customization and values inside
+## Color customization and values inside
 
 If required, you can assign your own color to Scatter plot.
 
 @example custom-color-values
 
-@## Data loading
+## Data loading
 
 @example skeleton-d3

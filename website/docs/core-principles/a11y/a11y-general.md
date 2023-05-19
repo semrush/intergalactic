@@ -2,13 +2,13 @@
 title: Development requirements
 ---
 
-@## Language attribute
+## Language attribute
 
 The language attribute declaration in HTML allows screen readers to read the text on the page with the correct pronunciation.
 
 Specify the language using the `lang` attribute inside the element `html lang="en"`.
 
-@## Document structure
+## Document structure
 
 Use semantic headings and structure the page logically.
 
@@ -35,7 +35,7 @@ In case you are using a non-native element, be sure to assign a `role` attribute
 >
 > Note that there's no point adding `aria-label` attributes to non-semantic elements (for example, `span`).
 
-@## Controls and inputs
+## Controls and inputs
 
 Controls and inputs should support navigation using a keyboard, touch devices and voice assistants.
 
@@ -55,7 +55,7 @@ height: 1px;
 white-space: nowrap;
 ```
 
-@## Forms
+## Forms
 
 Make sure that your markup and keyboard focus order are consistent and logical.
 
@@ -69,7 +69,7 @@ Make sure that your markup and keyboard focus order are consistent and logical.
 - Make sure that the `placeholder` attribute isn’t used in place of the `label` tag. Refer to [WHATWG](https://html.spec.whatwg.org/multipage/input.html#attr-input-placeholder) to learn more. All form fields should have valid labels that don’t rely on placeholder text. In the case of a search field, a magnifying glass icon can serve the purpose of a visual label, as long as the search input still has a programmatic label that isn’t derived from placeholder text.
 - Groups of form elements (for example, checkboxes and radio buttons) must be combined by `fieldset` and described in `legend`. It's important for `input type="radio"` and `input type="checkbox"`. Fieldsets and legends can also be used to group sets of related inputs, and they should be used when there are multiple fields with the same label. _For example, fields for a shipping address can be distinguished from fields for a billing address by grouping them in fieldsets with distinct labels._
 
-@## Dynamic content (live regions)
+## Dynamic content (live regions)
 
 When content on a webpage updates without needing to refresh the page, it's called dynamic content. This could be a region or a widget. If the change is simple and not interactive, it should be labeled as a live region using the `aria-live` attribute.
 
@@ -101,7 +101,7 @@ To mark an area that has dynamic content, use the ARIA attribute `aria-live=""` 
 | **Marquee** | This type of area contains information that changes rapidly. This role is similar to `log`, but in this case, the order in which the information is updated doesn't matter. Good examples of where you can use `role="marquee"` are tickers and currency rates. It's recommended to use the `role="marquee"` role in combination with the `aria-live="off"` attribute.                                                                              |
 | **Timer**   | This role is needed for areas with counters that count down time in a normal and reverse order. The `role="timer"` element should have the `aria-live="off"` attribute for full compatibility with all devices and browsers.                                                                                                                                                                                                                         |
 
-@## Non-text content (images, media)
+## Non-text content (images, media)
 
 ### General requirements
 

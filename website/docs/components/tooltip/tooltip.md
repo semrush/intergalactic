@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Tooltip** is a component used to display various tips and hints, and serves as a wrapper over the [Popper](/utils/popper/) component.
 
@@ -26,7 +26,7 @@ Component consists of the following:
 - `Tooltip.Popper`
 - `Tooltip.Title`
 
-@## Themes
+## Themes
 
 Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
 
@@ -40,7 +40,7 @@ Tooltip has three themes: `default`, `invert` for use on a dark background, and 
 | `invert`  | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
 | `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
 
-@## Maximum width and offset
+## Maximum width and offset
 
 By default, the Tooltip has a maximum width of 250px, but you can set a different width if needed.
 
@@ -76,7 +76,7 @@ To improve readability, it is recommended to use specific margins between labels
 
 ![](static/tooltip-margins.png)
 
-@## Placement
+## Placement
 
 The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api/).
 
@@ -86,7 +86,7 @@ The tooltip's position shouldn't change when scrolling the page, ensuring it rem
 
 @example placement
 
-@## Interaction
+## Interaction
 
 For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/), [Link](/components/link/), [Button](/components/button/), etc.
 
@@ -108,7 +108,7 @@ Default values for tooltip appearance and hiding:
 
 If the tooltip has interactive elements inside, the hiding time should be increased to `100ms`.
 
-@## Content
+## Content
 
 Tooltip usually contains unformatted text.
 
@@ -126,7 +126,7 @@ In some cases (e.g., for advertising purposes), you can format the text and add 
 
 ![](static/tooltip-advanced-2.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Main recommendations:
 

@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Icon
+## Icon
 
 Any icon can be obtained using a template.
 

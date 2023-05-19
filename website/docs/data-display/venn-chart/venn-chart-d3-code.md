@@ -5,7 +5,7 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
-@## Venn
+## Venn
 
 A Venn chart allows you to see all kinds of intersections between two or more data sets.
 
@@ -14,13 +14,13 @@ A Venn chart allows you to see all kinds of intersections between two or more da
 
 @example venn
 
-@## Custom intersection styles
+## Custom intersection styles
 
 If you want to change the intersection styles, you can add additional styles to the selected intersection.
 
 @example venn-custom-intersection
 
-@## Setting orientation
+## Setting orientation
 
 You can also change the orientation and stacking order of the circles.
 

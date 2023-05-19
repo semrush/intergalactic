@@ -4,7 +4,7 @@ fileSource: scroll-area
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **ScrollArea** is a component that allows you to customize the native scroll functionality. It enables smooth navigation through content within a window or block, both vertically and horizontally.
 
@@ -22,12 +22,12 @@ The ScrollArea consists of the following elements:
 
 @table-caption ScrollArea styles
 
-| Element                 | Styles                                      |
-| ----------------------- | ------------------------------------------- |
+| Element                 | Styles                                     |
+| ----------------------- | ------------------------------------------ |
 | `ScrollArea.Bar`        | `background: transparent`                  |
 | `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background)` |
 
-@## Interaction
+## Interaction
 
 Scrolling inside the block can be controlled by:
 

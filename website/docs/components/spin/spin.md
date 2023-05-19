@@ -29,7 +29,7 @@ The Spin component comes in six different sizes. The text size should be at leas
 | **XL**  | ![](static/text-vertical-xl.png)  | ![](static/text-horizontal-xl.png)  |
 | **XXL** | ![](static/text-vertical-xxl.png) | ![](static/text-horizontal-xxl.png) |
 
-@## Styles
+## Styles
 
 > For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/).
 
@@ -37,7 +37,7 @@ You can place text next to the spinner to inform the user that data is being loa
 
 **Text can be placed on the right or below the spinner.** In small components, blocks, and widgets, place the text to the right of the spinner. For large components, blocks of components, or inside large blocks and widgets, we recommend placing the text below the spinner and using one of the four largest Spin sizes.
 
-@## Themes
+## Themes
 
 Spin has two themes: `dark` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
 
@@ -48,11 +48,11 @@ Spin has two themes: `dark` and `invert` – for use on light and dark/colored b
 | `dark`   | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
 | `invert` | ![](static/invert-m.png)  | Use this theme of Spin on a dark/colored background. |
 
-@## Animation
+## Animation
 
 For Spin appearance and disappearance, use an animation with a 300ms delay and `ease-out` easing.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
 

@@ -2,6 +2,6 @@
 title: Example
 ---
 
-@## FeedbackYesNo example
+## FeedbackYesNo example
 
 @example feedback-yes-no

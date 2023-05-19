@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **NoticeGlobal** is a component designed for conveying messages about events related to the entire website's operations.
 
@@ -78,14 +78,14 @@ Use this theme to convey serious error or problem messages concerning the entire
 
 ![](static/gnotice-danger.png)
 
-@## Placement in the interface
+## Placement in the interface
 
 - Always position this notice above the main website header.
 - Stretch the notice to cover the full width of the screen.
 
 ![](static/placement.png)
 
-@## Interaction
+## Interaction
 
 ### Appearance
 
@@ -114,7 +114,7 @@ NoticeGlobal can be hide by:
 
 By clicking on the closing icon or closing link, the notice shall smoothly close with a `fade-out` effect lasting `250ms`. The page content moves up to the notice's position within `250ms`.
 
-@## Custom notice
+## Custom notice
 
 These are special notices that have their own unique rules and styles, distinct from default themes.
 
@@ -126,7 +126,7 @@ However, it is crucial to consider that an excessive use of visual elements in n
 
 ![](static/gnotice-illustration.png)
 
-@## Edge cases
+## Edge cases
 
 ### Two notices per page
 
@@ -139,7 +139,7 @@ In situations where a user on the site has two or more global messages to displa
 - Give higher priority to messages that require a response from the user or contain controls to close or exit a special mode.
 - Messages without controls inside should have lower priority. Display them after a user has interacted with a higher priority message.
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - You can use global notices to notify about the following: website mode (for example, admin), system status (error, failure, end of works).
 - Keep the messages concise, so they don't obscure other widgets or report functionality. Try to convey the message's meaning to users in just one line.

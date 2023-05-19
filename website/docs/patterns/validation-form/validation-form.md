@@ -3,11 +3,11 @@ title: Validation
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Validation** is the system's verification of values entered by the user.
 
-@## How validation works
+## How validation works
 
 - Validation in forms and filters can be performed simultaneously by `unFocus` and `Submit`. _This option doesn't apply to forms with limits – use only `Submit` for them._
 - Don’t validate empty fields (in which user hasn’t entered a value) by `unFocus`.
@@ -27,7 +27,7 @@ tabName: Design
 
 If the user corrects inputs with errors out of order, all uncorrected inputs are highlighted if no changes were made to them.
 
-@## unFocus validation
+## unFocus validation
 
 You can validate the inputs immediately, as the user fills out the form, if there are no deductions of paid limits and additional difficulties on the backend.
 
@@ -35,7 +35,7 @@ Use this validation to make it easier for the user to fill out forms and filters
 
 ![](static/immediate-validation.png)
 
-@## Appearance
+## Appearance
 
 All form elements have the same `invalid` state: a `var(--border-danger-active)` border and a tooltip with the `warning` theme when focused.
 
@@ -49,11 +49,11 @@ All form elements have the same `invalid` state: a `var(--border-danger-active)`
 
 ![](./static/textarea-validation.png)
 
-@## Notice with error message
+## Notice with error message
 
 Find more about the placement of the notice with an error message in the [Notice guide](/components/notice/).
 
-@## Validation texts
+## Validation texts
 
 The General pattern for the text: `Please enter something`.
 

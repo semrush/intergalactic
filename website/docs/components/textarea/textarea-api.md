@@ -3,7 +3,7 @@ title: API
 fileSource: textarea
 ---
 
-@## Textarea
+## Textarea
 
 Component represents native `textarea` tag and takes all its properties such as `value` and `defaultValue`.
 

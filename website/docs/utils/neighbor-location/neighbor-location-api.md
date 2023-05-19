@@ -3,7 +3,7 @@ title: API
 fileSource: neighbor-location
 ---
 
-@## NeighborLocation
+## NeighborLocation
 
 Root wrapper-component doesn't create a node but provides a context for defining neighbors.
 
@@ -15,7 +15,7 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 
 @typescript NeighborLocationProps
 
-@## NeighborLocation.Detect
+## NeighborLocation.Detect
 
 Component for detect neighbors.
 

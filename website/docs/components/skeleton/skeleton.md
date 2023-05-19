@@ -4,7 +4,7 @@ fileSource: skeleton
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Skeleton** is a component used to display the structure of a widget or page when it's initially loading. 
 Its purpose is to provide users with a mental map of the data being loaded.
@@ -22,18 +22,18 @@ Multiple skeletons can be shown simultaneously or asynchronously during the init
 
 > It isn't recommended to use Skeleton for pages that are indexed by Google such as blog pages.
 
-@## Themes
+## Themes
 
 Skeleton has two themes—`dark` and `invert`–for using on light and dark/colored backgrounds, respectively. All skeleton “bones” have a `border-radius` of 4px.
 
 @table-caption Skeleton themes
 
-| Theme  | Appearance example                     | Styles                                    |
-| ------ | -------------------------------------- | ----------------------------------------- |
+| Theme  | Appearance example          | Styles                                   |
+| ------ | --------------------------- | ---------------------------------------- |
 | Dark   | ![](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
-| Invert | ![](static/theme-dark.png)   | `background: var(--skeleton-bg-invert)`. |
+| Invert | ![](static/theme-dark.png)  | `background: var(--skeleton-bg-invert)`. |
 
-@## Animation
+## Animation
 
 The Skeleton is animated with a content appearance animation lasting 300 ms with an `ease-out` effect (refer to [Code examples](/components/skeleton/skeleton-code)). 
 The Skeleton gradient animation has a default duration of 2000 ms. 
@@ -214,7 +214,7 @@ Skeletonize big pills similarly to the Summary.
 
 ![skeleton-big-pills](static/big-pills.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 **Use Skeleton only for displaying dynamic information.** 
 Information that can be shown instantly and remains unchanged should be displayed immediately.

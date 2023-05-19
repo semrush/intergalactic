@@ -3,11 +3,11 @@ title: About
 tabName: About @semcore/ui package
 ---
 
-@## What is it?
+## What is it?
 
 The release system is a system used to deliver library components in a single package.
 
-@## What is it for?
+## What is it for?
 
 Using the release system allows us to preserve the flexibility of our current delivery model while solving several important issues:
 
@@ -15,13 +15,13 @@ Using the release system allows us to preserve the flexibility of our current de
 - A large huge number of `@semcore` dependencies and their management
 - Incompatibility between different versions of packages
 
-@## Update frequency
+## Update frequency
 
 Our release cycle is **2 weeks**. That means that every two weeks we collect the changes for all packages, update the components to their new versions, write a changelog, and publish them to the library.
 
 > There may be some deviations from this schedule due to critical errors or holidays 🥳
 
-@## How to use
+## How to use
 
 Install a new package and its dependencies will include all library components:
 
@@ -45,7 +45,7 @@ import Button from '@semcore/ui/button';
 
 > Due to the folder-based access to components, we cannot automatically connect commonJS or ES6. For now, we only support ES6.
 
-@## How to use (with @semcore)
+## How to use (with @semcore)
 
 If you need a newer version of any component before we publish our package, you can install and use it separately.
 

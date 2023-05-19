@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 A **scatterplot chart** visualizes the relationship between two variables in one or more datasets.
 
@@ -20,15 +20,15 @@ Use a scatterplot chart when you need to show the correlation between two variab
 
 ### How to read a scatterplot chart
 
-| Case                                                                                                                                 | Appearance example                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------- |
+| Case                                                                                                                                 | Appearance example                   |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
 | If the points form a line that runs from bottom left to top right, there is likely a positive correlation between the two variables. | ![](static/positive-correlation.png) |
 | If the line runs from top left to bottom right, there is likely a negative correlation between the two variables.                    | ![](static/negative-correlation.png) |
-| If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)             |
+| If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)       |
 
 > Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
 
-@## Appearance
+## Appearance
 
 A scatterplot chart must contain:
 
@@ -36,34 +36,34 @@ A scatterplot chart must contain:
 - labels for the X and Y axes (don't color them, as this will complicate the "reading" of the chart);
 - a legend if the dataset has different categories, each with a different color.
 
-**Dot size – 11px * 11px.**
+**Dot size – 11px \* 11px.**
 
-| Case             | Appearance example                                     | Styles                                                                                                                                                                                    |
-| ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dataset      | ![](static/no-correlation.png)              | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
+| Case             | Appearance example                     | Styles                                                                                                                                                                                    |
+| ---------------- | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One dataset      | ![](static/no-correlation.png)         | The default color for the category is `--chart-palette-order-blue` (or `--blue-300`) with 50% transparency. However, if necessary, you can select any other color from the chart palette. |
 | Several datasets | ![](static/positive-correlation-2.png) | Use colors from the chart palette.                                                                                                                                                        |
 
-@## Value inside a dot
+## Value inside a dot
 
-- Dot size – 24px * 24px.
+- Dot size – 24px \* 24px.
 - Text size – 12px.
 
 If the value inside the scatterplot dot is bigger than 100, show it as 99+.
 For text color use the same color as the dot but pick the next shade (for example, `--blue-300` → `--blue-400`).
 
-| Case             | Appearance example                                   |
-| ---------------- | ---------------------------------------------------- |
-| One dataset      | ![](static/values-1.png)      |
+| Case             | Appearance example       |
+| ---------------- | ------------------------ |
+| One dataset      | ![](static/values-1.png) |
 | Several datasets | ![](static/values-2.png) |
 
-@## Legend
+## Legend
 
 If the chart shows multiple datasets, show a legend. Provide values for each dataset.
 We recommend using the vertical legend. It helps to "read" the categories and their meaning better.
 
 ![](static/two-categories.png)
 
-@## Interaction
+## Interaction
 
 ### Hover
 
@@ -74,7 +74,7 @@ We recommend using the vertical legend. It helps to "read" the categories and th
 
 ![](static/hover-1.png)
 
-@## Tooltip
+## Tooltip
 
 Show the following values in the tooltip for this chart type:
 
@@ -85,12 +85,12 @@ Show the following values in the tooltip for this chart type:
 
 If you have several datasets on the chart, it is important to show their color in the tooltip.
 
-| Case             | Appearance example                                  |
-| ---------------- | --------------------------------------------------- |
-| One dataset      | ![](static/hover-2.png)      |
+| Case             | Appearance example      |
+| ---------------- | ----------------------- |
+| One dataset      | ![](static/hover-2.png) |
 | Several datasets | ![](static/hover-1.png) |
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
@@ -102,7 +102,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 | A point is very close to the axis/axes | Cut the bubbles next to the X and Y axes under the axes.                                                                                                                                                          | ![](static/cut.png)                        |
 | First time loading                     | Show the skeleton state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it.                  | ![](static/scatterplot-chart-skeleton.png) |
 
-@## UI/UX use
+## UI/UX use
 
 ### Axes
 

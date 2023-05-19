@@ -7,7 +7,7 @@ docs: true
 
 > Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Chart legend** helps a user read the data presented on the chart.
 
@@ -18,37 +18,37 @@ docs: true
 
 > **The recommended placement of the legend is the top left position above the chart.** However, in some cases (for example, two charts under each other with one hover, or a lot of filters over the chart), place the legend to the left bottom under the chart.
 
-@## Legend types
+## Legend types
 
 The legend can be interactive or non-interactive.
 
-@## Interactive legend
+## Interactive legend
 
 For an interactive legend use a group of [checkboxes](/components/checkbox/) or [radio buttons](/components/radio/) with specified colors.
 
-| Component                                     | Appearance example                                                                                     | Styles                                                                                                                                                                                       |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Checkbox                                      | ![](static/checkbox.png) ![](static/legend-bottom.png)            | Checkbox has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                   |
-| Checkbox with icon                            | ![](static/checkbox-icon.png)                                                           | Icon has M size and usually `--icon-non-interactive` color.                                                                                                                                  |
+| Component                                     | Appearance example                                                       | Styles                                                                                                                                                                                       |
+| --------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Checkbox                                      | ![](static/checkbox.png) ![](static/legend-bottom.png)                   | Checkbox has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                   |
+| Checkbox with icon                            | ![](static/checkbox-icon.png)                                            | Icon has M size and usually `--icon-non-interactive` color.                                                                                                                                  |
 | Checkbox with icon and additional information | ![](static/checkbox-icon-info.png) ![](static/checkbox-trash-bottom.png) | Icon has M size and usually `--icon-non-interactive` token for color. For an additional information and counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
-| Checkbox with counter                         | ![](static/checkbox-counter.png)                                                        | For a counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color.                                                                                                   |
-| Radio button                                  | ![](static/radio.png)                                                                      | Radio has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                      |
+| Checkbox with counter                         | ![](static/checkbox-counter.png)                                         | For a counter use text with 14px size (`--fs-200`) and `--text-secondary` token for color.                                                                                                   |
+| Radio button                                  | ![](static/radio.png)                                                    | Radio has M size. Text has 14px size (`--fs-200`) and `--text-primary` token for color.                                                                                                      |
 
-@## Non-interactive legend
+## Non-interactive legend
 
 A non-interactive legend is a colored circle with a label. This legend doesn't disable/enable the lines on the chart.
 
-| Appearance example                                  | Styles                                                                                               |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Appearance example            | Styles                                                                                               |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
 | ![](static/static-legend.png) | Circle has `12px * 12px` size. Text has 14px size (`--fs-200`) and `--text-primary` token for color. |
 
-@## Trend or average value in the legend
+## Trend or average value in the legend
 
 To show the trend or average value in the legend, use the `--chart-palette-order-total-amount` token for color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
 
 ![](static/legend-trend.png)
 
-@## Interaction
+## Interaction
 
 By hovering on the checkbox, highlight the data on the chart by changing the transparency of the lines to 30% for the rest of the data categories.
 
@@ -58,7 +58,7 @@ If some data is already disabled in the legend, then this data remains disabled 
 
 ![](static/legend-hover2.png)
 
-@## Disabled legend
+## Disabled legend
 
 If you disable all legend checkboxes, the chart should display the X-axis.
 

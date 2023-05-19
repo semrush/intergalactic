@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Switch** is a component that enables users to easily switch between two options or states without needing to refresh the page or confirm their choice.
 
@@ -35,7 +35,7 @@ The switch includes a text label, which can be added to one or both of the state
 | L (20px)   | ![](static/switch-on-text-l-1.png) ![](static/switch-on-text-l-2.png)   | `font-size: var(--fs-200)`, margin between the control and the text is 8px |
 | XL (24px)  | ![](static/switch-on-text-xl-1.png) ![](static/switch-on-text-xl-2.png) | `font-size: var(--fs-300)`, margin between the control and the text is 8px |
 
-@## Themes
+## Themes
 
 The Switch component offers two themes: `info` and `success`.
 
@@ -57,7 +57,7 @@ For larger sizes of the component (`l` and `xl`), you have the option to include
 | l           | ![](static/switch-off-icon-l.png)  | ![](static/switch-on-icon-l.png)  |
 | xl          | ![](static/switch-off-icon-xl.png) | ![](static/switch-on-icon-xl.png) |
 
-@## Interaction
+## Interaction
 
 @table-caption Switch states
 
@@ -67,7 +67,7 @@ For larger sizes of the component (`l` and `xl`), you have the option to include
 | Checked | ![](static/on-success.png) ![](static/on-info.png)    | `background: var(--control-primary-success)` or `background: var(--control-primary-info)`.           |
 | Disabled | ![](static/disabled.png) ![](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/) token. |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 For clear actions when using the toggle, **use positive language for text labels in the Switch.** Avoid negations like "Don't show trending subtopics," as they can cause confusion about the switch's effect. Instead, use language that clearly indicates what the switch does, such as "Show trending subtopics."
 

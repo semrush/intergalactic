@@ -2,11 +2,11 @@
 title: Motion
 ---
 
-@## Description
+## Description
 
 Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behavior of major components – but always remember that motion must have a **purpose**.
 
-@## Principles
+## Principles
 
 **Motion is Functional**
 
@@ -24,7 +24,7 @@ Motion delights users with unexpected details that turn mundane moments into som
 
 Motion provides a visual response to an action, seamless transitions between states help focus and guide users to complete tasks.
 
-@## Durations
+## Durations
 
 @table-caption Durations
 
@@ -36,11 +36,11 @@ Motion provides a visual response to an action, seamless transitions between sta
 | fast             | `200ms` | Should be used for more complex effects (such as Dropdown or Accordion)                                                           |
 | extra-fast       | `100ms` | Should be used for simpler effects and relatively small-sized animations (such as fades or color changes)                         |
 
-@## Easing
+## Easing
 
 @import easing
 
-@## Accessibility
+## Accessibility
 
 When using animation, you want to avoid the following effects:
 

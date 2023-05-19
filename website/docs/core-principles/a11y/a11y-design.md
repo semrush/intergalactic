@@ -2,7 +2,7 @@
 title: Design requirements
 ---
 
-@## Color and contrast
+## Color and contrast
 
 ### Use of color
 
@@ -29,11 +29,11 @@ All graphics and components must have a contrast ratio of at least 3:1 compared 
 
 Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html) to know more about non-text color contrast.
 
-@## Typography
+## Typography
 
 Refer to the [Typography guide](/style/typography/typography-a11y/) for the detailed recommendations.
 
-@## Focus visible
+## Focus visible
 
 Ensuring that users can easily identify which element has the keyboard focus is essential for keyboard users to navigate a page. To achieve this:
 
@@ -43,7 +43,7 @@ Ensuring that users can easily identify which element has the keyboard focus is 
 
 Refer to [WCAG guidelines](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html) to know more about visible focus.
 
-@## Layout and structure
+## Layout and structure
 
 Make sure that user can easily understand the meaning and structure of the page and complete the required task. The design should help the user find key information quickly and easily.
 
@@ -63,7 +63,7 @@ Make sure that user can easily understand the meaning and structure of the page 
 
 Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html) to know more about meaningful sequence.
 
-@## Scaling and resizing
+## Scaling and resizing
 
 Make sure that when you zoom in to 200%, the page is still readable and functional, and the user doesn't need to scroll horizontally to see everything.
 
@@ -77,7 +77,7 @@ This way you will both cover the needs of the visually impaired and ensure that 
 
 Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/resize-text) to know more about scaling and resizing criteria.
 
-@## Graphics and images
+## Graphics and images
 
 Make sure that user understands all content, including charts, icons, and images.
 
@@ -101,7 +101,7 @@ Make sure that user understands all content, including charts, icons, and images
 
 To learn more, visit the [text alternatives](https://www.w3.org/TR/WCAG21/#text-alternatives) section of the WCAG website.
 
-@## Media content
+## Media content
 
 Make sure that your media content (videos, images, etc.) is accessible to hearing and visually impaired users.
 
@@ -112,7 +112,7 @@ Make sure that your media content (videos, images, etc.) is accessible to hearin
 
 > Animated website elements, flickering or flashing logos or ads can cause a seizure in people suffering from photosensitive epilepsy.
 
-@## Forms
+## Forms
 
 ![The illustration is in two parts; "Don't" on the left and "Good" on the right. In the "Don't" section, two input fields are shown - one labeled "Phone number" and the other labeled "Company name." There are no helpful hints or placeholders. The "Good" side shows a more user-friendly form. The first input is labeled "Phone number" and includes the USA flag and telephone code, so the user doesn't need to remember it. The second input is labeled "Company name" and includes the placeholder "Enter keywords you need." There's also a hint below the input box that says "For example, if your company is 'Apple,' then type in 'iPhone, Mac'."](/core-principles/a11y/static/forms.png)
 
@@ -137,7 +137,7 @@ Provide instructions and hints to help users avoid mistakes when filling out a f
 > - [Error Prevention ›](https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data)
 > - [Name, Role, Value ›](https://www.w3.org/TR/WCAG21/#name-role-value)
 
-@## Labels and instructions
+## Labels and instructions
 
 Make sure that the labels for the elements clearly indicate what will happen when the user clicks on them.
 
@@ -162,7 +162,7 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 > - [Link Purpose (In Context) ›](https://www.w3.org/TR/WCAG21/#link-purpose-in-context)
 > - [Sensory Characteristics ›](https://www.w3.org/TR/WCAG21/#sensory-characteristics)
 
-@## Touch targets
+## Touch targets
 
 Make sure that the touch targets of the items are large enough and are easily accessible.
 
@@ -182,7 +182,7 @@ Make sure that the touch targets of the items are large enough and are easily ac
 > - [Touch Target Size and Spacing ›](https://www.w3.org/TR/mobile-accessibility-mapping/#touch-target-size-and-spacing)
 > - [Placing buttons where they are easy to access ›](https://www.w3.org/TR/mobile-accessibility-mapping/#h-placing-buttons-where-they-are-easy-to-access)
 
-@## Text readability
+## Text readability
 
 > **Why it's important**
 >

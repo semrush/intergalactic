@@ -5,7 +5,7 @@ fileSource: sticky
 
 > This component doesn't work properly inside the iframe.
 
-@## Sticky
+## Sticky
 
 The component is a wrap over CSS `position: sticky`.
 

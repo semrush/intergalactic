@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Pagination
+## Pagination
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
@@ -11,7 +11,7 @@ import Pagination from '@semcore/ui/pagination';
 
 @typescript PaginationProps
 
-@## Pagination.FirstPage
+## Pagination.FirstPage
 
 Takes all the properties of the button.
 
@@ -20,7 +20,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.FirstPage />;
 ```
 
-@## Pagination.NextPage
+## Pagination.NextPage
 
 Takes all the properties of the button.
 
@@ -29,7 +29,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.NextPage />;
 ```
 
-@## Pagination.PageInput
+## Pagination.PageInput
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
@@ -38,7 +38,7 @@ import Pagination from '@semcore/ui/pagination';
 
 @typescript PageInputProps
 
-@## Pagination.PageInput.Value
+## Pagination.PageInput.Value
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';
@@ -47,7 +47,7 @@ import Pagination from '@semcore/ui/pagination';
 
 @typescript InputValueProps
 
-@## Pagination.PrevPage
+## Pagination.PrevPage
 
 Takes all the properties of the button.
 
@@ -56,7 +56,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PrevPage />;
 ```
 
-@## Pagination.TotalPages
+## Pagination.TotalPages
 
 ```jsx
 import Pagination from '@semcore/ui/pagination';

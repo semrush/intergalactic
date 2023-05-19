@@ -6,7 +6,7 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
-@## Description
+## Description
 
 **Stacked bar chart** is used when it's necessary to display more than two categories of values and show the ratio of them to the whole.
 
@@ -17,7 +17,7 @@ Important points to keep in mind when presenting data as a Stacked bar chart:
 3. Use sufficiently contrasting colors to show different parts more clearly.
 4. Don't make this chart too small in height and width – it will make it harder to read data.
 
-@## Appearance
+## Appearance
 
 Stacked bar chart has no margin between values inside the column. **Choose contrasting colors for different categories.**
 
@@ -29,7 +29,7 @@ Stacked bar chart has no margin between values inside the column. **Choose contr
 
 Use [color palette](/data-display/color-palette/) and follow the rules prescribed for it.
 
-@## Interaction
+## Interaction
 
 When you hover over a column, highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
 
@@ -39,7 +39,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5/).
 
-@## Trend
+## Trend
 
 In some cases, a stacked bar chart may have a trend line. Most often, trend line overloads charts. However, in some cases, it can be useful for reading the overall trend. It helps to focus on the total value of each dot.
 
@@ -47,15 +47,15 @@ When you hover over any part of the bar, display the tooltip with the values for
 
 ![stacked bar chart](static/stacked-bar-chart-trend.png)
 
-@## Edge cases
+## Edge cases
 
 Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart-vertical/#a54381) has.
 
-@## Initial loading
+## Initial loading
 
 See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart-vertical/#ac26f2).
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 See detailed information in the [Bar chart guide](/data-display/bar-chart/#a1d837).
 

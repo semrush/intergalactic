@@ -3,7 +3,7 @@ title: Example
 fileSource: textarea
 ---
 
-@## Textarea with auto height
+## Textarea with auto height
 
 The component can automatically adjust its height as the user types text.
 

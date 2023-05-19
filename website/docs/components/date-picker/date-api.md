@@ -3,7 +3,7 @@ title: API
 fileSource: date-picker
 ---
 
-@## DatePicker and MonthPicker
+## DatePicker and MonthPicker
 
 Widget for selecting the date/month.
 
@@ -15,7 +15,7 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 
 @typescript DatePickerProps
 
-@## DateRangePicker
+## DateRangePicker
 
 Widget for selecting the range of dates/months.
 
@@ -27,7 +27,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 
 @typescript DateRangePickerProps
 
-@## DatePicker.Trigger and DateRangePicker.Trigger
+## DatePicker.Trigger and DateRangePicker.Trigger
 
 Trigger input, exists by default. `DateRangePicker` has the same interface.
 
@@ -38,7 +38,7 @@ import { DatePicker } from '@semcore/ui/date-picker';
 
 @typescript BaseTriggerProps
 
-@## DateRangePicker.Period
+## DateRangePicker.Period
 
 Component for rendering the configurable periods.
 
@@ -49,7 +49,7 @@ import { DateRangePicker } from '@semcore/ui/date-picker';
 
 @typescript DateRangePickerPeriodProps
 
-@## Calendar
+## Calendar
 
 Calendar component 📅
 
@@ -61,7 +61,7 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 
 @typescript CalendarProps
 
-@## Calendar.Unit
+## Calendar.Unit
 
 The unit inside the calendar.
 

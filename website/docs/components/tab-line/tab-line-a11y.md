@@ -4,7 +4,7 @@ fileSource: tab-line
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -14,7 +14,7 @@ a11y: AA
 | `Right Arrow` | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab. Activates the newly focused tab.                                                                                    |
 | `Left Arrow`  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab. Activates the newly focused tab.                                                                                |
 
-@## Considerations for developers
+## Considerations for developers
 
 - Be mindful of using tabs, as they are less discoverable by design.
 - Once a tab button is focused, other tabs can be selected with the arrow keys.
@@ -27,8 +27,8 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
-| Role     | Attribute                 | Element  | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| -------- | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Role       | Attribute                 | Element  | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------- | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `tablist`  |                           | `div`    | Indicates that the element serves as a container for a set of tabs.                                                                                                                                                                                                                                                                                                                                                                  |
 | tab      |                           | `button` | Indicates the element serves as a tab control. When focused, is automatically activated, causing its associated `tabpanel` to be displayed. Provides a title for its associated `tabpanel`.                                                                                                                                                                                                                                          |
 |          | `aria-selected="true"`    | `button` | Indicates the tab control is activated and its associated panel is displayed. Set when a tab receives focus.                                                                                                                                                                                                                                                                                                                         |
@@ -39,11 +39,11 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |          | `aria-labelledby="IDREF"` | `div`    | Refers to the `tab` element that controls the panel. Provides an accessible name for the tab panel.                                                                                                                                                                                                                                                                                                                                  |
 |          | `tabindex="0"`            | `div`    | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if there are panels that don’t contain a focusable element.                                                                                                                                                                                                                                  |
 
-@## Resources
+## Resources
 
 - [W3 tabs example](https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-1/tabs.html) has detailed information about the tabs accessible behavior.
 - [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-tabs) describes the core recommendations for the components.
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

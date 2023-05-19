@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Card
+## Card
 
 It's just a `Box`.
 
@@ -11,7 +11,7 @@ import Card from '@semcore/ui/card';
 <Card />;
 ```
 
-@## Card.Header
+## Card.Header
 
 It's just a `Box`, with pre-installed paddings. Contains `Card.Title` and `Card.Description`.
 
@@ -20,7 +20,7 @@ import Card from '@semcore/ui/card';
 <Card.Header />;
 ```
 
-@## Card.Body
+## Card.Body
 
 It's just a `Box`, with pre-installed paddings.
 
@@ -29,7 +29,7 @@ import Card from '@semcore/ui/card';
 <Card.Body />;
 ```
 
-@## Card.Title
+## Card.Title
 
 The card title is able to display the tip.
 
@@ -40,7 +40,7 @@ import Card from '@semcore/ui/card';
 
 @typescript TitleProps
 
-@## Card.Description
+## Card.Description
 
 Has all properties as the [Text](/style/typography/typography-api/#a9dffb).
 

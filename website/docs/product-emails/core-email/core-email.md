@@ -4,16 +4,18 @@ tabName: Example
 deprecated: true
 ---
 
-> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+::: warning
+:rotating_light: Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+:::
 
-@## CSS variables
+## CSS variables
 
 @import email-vars
 
-@## Background classes
+## Background classes
 
 @import email-background
 
-@## Text classes
+## Text classes
 
 @import email-color

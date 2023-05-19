@@ -4,7 +4,7 @@ title: For production
 
 Here you will find the solutions to the problems you may encounter while using the @semcore library, as well as some tips for optimizing the library in production.
 
-@## ⚠️ СSS extract
+## ⚠️ СSS extract
 
 > ⚠️ This guide is for updated components using the new style format.
 
@@ -38,7 +38,7 @@ module.exports = {
 };
 ```
 
-@## Style isolation
+## Style isolation
 
 Classes in styles have a hash of the content and version to avoid collisions. However, this solution doesn't work when there are two components of the same version from two different teams on the same page. In such cases, styles may overlap and apply incorrectly due to issues with the order of the CSS cascade.
 
@@ -75,7 +75,7 @@ module.exports = {
 
 Also note that the configuration of the `rule` parameter in JS files uses `enforce: 'pre'`. Otherwise, obfuscation will change the function names and make it impossible to search and replace CSS classes. Add these rules to your `webpack-config.js` as a separate section, since they should process packages from the @semcore library only.
 
-@## Server-side rendering
+## Server-side rendering
 
 There are two ways to implement SSR.
 
@@ -128,7 +128,7 @@ This problem is solved by the following configuration for `webpack-node-external
 }
 ```
 
-@## Bundle size reduction 🔪
+## Bundle size reduction 🔪
 
 We often reuse some of our components inside others to avoid duplicating styles and logic. Each component is a separate package, and sometimes different versions of the same components may end up included in a bundle.
 

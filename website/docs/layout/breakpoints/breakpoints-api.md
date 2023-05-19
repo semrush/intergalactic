@@ -3,7 +3,7 @@ title: API
 fileSource: utils
 ---
 
-@## Breakpoints
+## Breakpoints
 
 It is a functional wrapper over your application giving access to the context.
 
@@ -13,7 +13,7 @@ import Breakpoints from '@semcore/ui/breakpoints';
 <Breakpoints />;
 ```
 
-@## Breakpoints.Context
+## Breakpoints.Context
 
 Is the React context.
 
@@ -23,7 +23,7 @@ import Breakpoints from '@semcore/ui/breakpoints';
 useContext(Breakpoints.Context);
 ```
 
-@## Breakpoints.mediaList
+## Breakpoints.mediaList
 
 It is an instance of the class for media queries.
 

@@ -3,6 +3,6 @@ title: Example
 fileSource: feature-popover
 ---
 
-@## Animation example
+## Animation example
 
 @example feature-popover

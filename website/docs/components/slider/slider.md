@@ -4,7 +4,7 @@ fileSource: slider
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Slider** is a component designed for choosing values within a specified range.
 
@@ -18,7 +18,7 @@ compared to controls with only a few fixed options.
 - You want to visualize the maximum range of a usual [InputNumber](/components/input-number/).
 - The user needs to specify an approximate value, such as adjusting color brightness.
 
-@## Component composition
+## Component composition
 
 ![](static/slider-composition.png)
 
@@ -33,7 +33,7 @@ The Slider component consists of the following:
 > which describes how the time taken to perform an action depends on the thickness and width of the horizontal control used for that action. 
 > Larger slider knobs and bars make using sliders easier and faster.
 
-@## Sizes
+## Sizes
 
 Default component sizes:
 
@@ -49,7 +49,7 @@ Default component styles:
 
 ![](static/default.png)
 
-@## Value labels
+## Value labels
 
 You can display values under the input.
 
@@ -60,7 +60,7 @@ You can display values under the input.
 > For mobile devices, display values or tooltips with values above the input. 
 > On touch devices, the values should appear above the finger while manipulating the slider knob.
 
-@## Interaction
+## Interaction
 
 ### States
 

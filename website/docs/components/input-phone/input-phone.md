@@ -3,7 +3,7 @@ title: InputPhone
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Input** is a component designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/). This input field ensures that users can enter their phone numbers correctly without any uncertainty about the format.
 
@@ -14,7 +14,7 @@ tabName: Design
 
 > In a [study conducted by Baymard Research](https://baymard.com/blog/input-masking-form-field), it was found that even with formatting examples provided, 89% of users entered numerical inputs in various formats. Some users hesitated before entering their data, fearing that the format they used wouldn't be validated, even on sites that accepted all formatting.
 
-@## Appearance
+## Appearance
 
 The appearance of the phone number input can vary based on:
 
@@ -46,7 +46,7 @@ It is recommended to provide visible text instructions for inputs with specific 
 | M (28px)            | 12px (use `--fs-100`, `--lh-100` tokens) | ![](static/inputphone-help-text-m.png) | ![](static/inputphone-help-text-margin-m.png) |
 | L (40px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/inputphone-help-text-l.png) | ![](static/inputphone-help-text-margin-l.png) |
 
-@## Interaction
+## Interaction
 
 > here are characters entered in the input, a "clear all" button will appear.
 
@@ -89,7 +89,7 @@ This option is most suitable when collecting phone numbers from users in one or 
 | One country           | ![](static/input-phone-3.png)   | ![](static/input-phone-3-focus.png)   | ![](static/input-phone-3-filled.png)   |
 | More than one country | ![](static/input-phone-3-2.png) | ![](static/input-phone-3-2-focus.png) | ![](static/input-phone-3-2-filled.png) |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the phone number input field as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
 

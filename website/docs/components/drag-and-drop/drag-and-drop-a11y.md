@@ -4,7 +4,7 @@ fileSource: drag-and-drop
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -29,7 +29,7 @@ The list below describes roles and attributes that component already has.
 |         | `aria-label` for grabbing item | `div`   | Defines the string value or identifies the element (or elements) that provides an accessible name. Grabbing item will be read as: `Grabbing ${itemText}, drop position is ${itemIndex + 1} of ${itemsCount}`.                       |
 |         | `aria-label` for dropped item  | `div`   | Defines the string value or identifies the element (or elements) that provides an accessible name. Dropped item will be read as: `${itemText} dropped, final position is ${index + 1} of ${itemsCount}`.                            |
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
 

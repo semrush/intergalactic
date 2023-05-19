@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Error
+## Error
 
 The component that can be used to collect any global errors display on the page.
 
@@ -13,7 +13,7 @@ import Error from '@semcore/ui/errors';
 
 @typescript ErrorsProps
 
-@## Error.Title
+## Error.Title
 
 Error name. Extends for `<Box/>`.
 
@@ -22,7 +22,7 @@ import Error from '@semcore/ui/errors';
 <Error.Title />;
 ```
 
-@## Error.Description
+## Error.Description
 
 Error description. Extends for `<Box/>`.
 
@@ -31,7 +31,7 @@ import Error from '@semcore/ui/errors';
 <Error.Description />;
 ```
 
-@## Error.Controls
+## Error.Controls
 
 Container for controls. Extends for `<Box/>`.
 
@@ -40,7 +40,7 @@ import Error from '@semcore/ui/errors';
 <Error.Controls />;
 ```
 
-@## AccessDenied
+## AccessDenied
 
 Placeholder for the 403 error. For some reason the page is restricted for the user.
 
@@ -51,7 +51,7 @@ import { AccessDenied } from '@semcore/ui/errors';
 
 @typescript AccessDeniedProps
 
-@## Maintenance
+## Maintenance
 
 The placeholder for the global state for the period of technical works.
 
@@ -62,7 +62,7 @@ import { Maintenance } from '@semcore/ui/errors';
 
 @typescript MaintenanceProps
 
-@## PageError
+## PageError
 
 The placeholder for 500 error, caused by some technical problems on the page. There are two options to display: when we are aware of the error and warn the user; when we don't know about the error and recommend the user to refresh the page or contact us.
 
@@ -73,7 +73,7 @@ import { PageError } from '@semcore/ui/errors';
 
 @typescript PageErrorProps
 
-@## PageNotFound
+## PageNotFound
 
 Placeholder for the 404 error, when the page isn’t found.
 
@@ -84,7 +84,7 @@ import { PageNotFound } from '@semcore/ui/errors';
 
 @typescript PageNotFoundProps
 
-@## ProjectNotFound
+## ProjectNotFound
 
 The placeholder for the 404 error, but for the project page.
 

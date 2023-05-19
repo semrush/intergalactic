@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **TabPanel** is a component designed for grouping heterogeneous content.
 
@@ -51,7 +51,7 @@ Addons inside TabPanel.Item have the same margins as addons inside the [Button](
 - A flag and an icon cannot be placed together in a tab.
 - If both a [Badge](/components/badge/) and a [Counter](/components/counter/) are present inside the tab, the Badge should be placed after the Counter.
 
-@## Interaction
+## Interaction
 
 > We recommend adding links to tabs so that users can open different tabs of the report in separate tabs using the right mouse button if necessary.
 
@@ -66,7 +66,7 @@ Addons inside TabPanel.Item have the same margins as addons inside the [Button](
 | Initial loading | ![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabPanel.Item`, use [Skeleton](/components/skeleton/) with the size of the text's line-height.                 |
 | Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabPanel.Item` is currently being loaded, use [Spin](/components/spin/) with the smallest size (same as in [Button](/components/button)).|
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 In cases where you have numerous tabs or there isn't enough space for the full tab text, truncate the text using an `ellipsis`.
 

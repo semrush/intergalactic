@@ -4,11 +4,11 @@ fileSource: typography
 tabName: Design
 ---
 
-@## Font
+## Font
 
 In our design system, we use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family.
 
-@## Basic text colors
+## Basic text colors
 
 To specify the main text color, use the `--text-primary` token.
 
@@ -18,24 +18,24 @@ Additionally, both paragraphs, headings, and text can be colored with our main s
 
 Please use text coloring thoughtfully and avoid excessive use, as it may reduce readability. Always ensure text contrast against its background.
 
-@## Font size and line height
+## Font size and line height
 
 @table-caption Font size and line height
 
 | px   | em      | Font size tokens | Line height tokens |
 | ---- | ------- | ---------------- | ------------------ |
 | 48px | 3em     | `--fs-800`       | `--lh-800`         |
-| 36px | 2.25em  | `--fs-700`      | `--lh-700`        |
-| 32px | 2em     | `--fs-600`      | `--lh-600`        |
-| 24px | 1.5em   | `--fs-500`      | `--lh-500`        |
-| 20px | 1.25em  | `--fs-400`      | `--lh-400`        |
-| 16px | 1em     | `--fs-300`      | `--lh-300`        |
-| 14px | 0.875em | `--fs-200`      | `--lh-200`        |
-| 12px | 0.75em  | `--fs-100`      | `--lh-100`        |
+| 36px | 2.25em  | `--fs-700`       | `--lh-700`         |
+| 32px | 2em     | `--fs-600`       | `--lh-600`         |
+| 24px | 1.5em   | `--fs-500`       | `--lh-500`         |
+| 20px | 1.25em  | `--fs-400`       | `--lh-400`         |
+| 16px | 1em     | `--fs-300`       | `--lh-300`         |
+| 14px | 0.875em | `--fs-200`       | `--lh-200`         |
+| 12px | 0.75em  | `--fs-100`       | `--lh-100`         |
 
 @example text-sizes
 
-@## Heading
+## Heading
 
 Our design system offers six different heading sizes.
 
@@ -46,26 +46,26 @@ The first four headings are typically used for hero blocks, large advertising sc
 |     | Appearance           | Styles                     | Tokens                 |
 | --- | -------------------- | -------------------------- | ---------------------- |
 | h1  | ![](static/h1.png) | `font-size: 48px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-800`, `--lh-800` |
-| h2  | ![](static/h2.png) | `font-size: 36px`, `line-height: 1.11`, `font-weight: semibold` | `--fs-700`, `--lh-700`  |
-| h3  | ![](static/h3.png) | `font-size: 32px`, `line-height: 1.25`, `font-weight: semibold` | `--fs-600`, `--lh-600`  |
-| h4  | ![](static/h4.png) | `font-size: 24px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-500`, `--lh-500`  |
+| h2  | ![](static/h2.png) | `font-size: 36px`, `line-height: 1.11`, `font-weight: semibold` | `--fs-700`, `--lh-700` |
+| h3  | ![](static/h3.png) | `font-size: 32px`, `line-height: 1.25`, `font-weight: semibold` | `--fs-600`, `--lh-600` |
+| h4  | ![](static/h4.png) | `font-size: 24px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-500`, `--lh-500` |
 
 The remaining headings are used for the content part of products and landing pages. For headings with a size of 16px and smaller, use the `bold` font-weight (`--bold` token).
 
 @table-caption Heading from h5 to h6 levels and styles
 
-|     | Appearance           | Styles                                                  | Tokens                |
-| --- | -------------------- | ------------------------------------------------------- | --------------------- |
+|     | Appearance         | Styles                                                         | Tokens                 |
+| --- | ------------------ | -------------------------------------------------------------- | ---------------------- |
 | h5  | ![](static/h5.png) | `font-size: 20px`, `line-height: 1.2`, `font-weight: semibold` | `--fs-400`, `--lh-400` |
-| h6  | ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold` | `--fs-300`, `--lh-300` |
+| h6  | ![](static/h6.png) | `font-size: 16px`, `line-height: 1.5`, `font-weight: bold`     | `--fs-300`, `--lh-300` |
 
-@## Heading with counter
+## Heading with counter
 
 In certain cases, headings can include additional information, such as a counter of results found. These are often used in table headings. In such cases, the additional information is presented using the secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
 
 ![](static/secondary-info.png)
 
-@## Heading for mobile devices
+## Heading for mobile devices
 
 To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/).
 
@@ -73,16 +73,16 @@ To improve readability on different screens, adjust the size of headings based o
 
 @table-caption Heading styles for mobile devices
 
-| 0px – 768px                        | 768px – ∞                           |
-| ---------------------------------- | ----------------------------------- |
+| 0px – 768px                         | 768px – ∞                           |
+| ----------------------------------- | ----------------------------------- |
 | H1 (36/40) – `--fs-700`, `--lh-700` | H1 (48/56) – `--fs-800`, `--lh-800` |
-| H2 (32/40) – `--fs-600`, `--lh-600` | H2 (36/40) – `--fs-700`, `--lh-700`  |
-| H3 (24/28) – `--fs-500`, `--lh-500` | H3 (32/40) – `--fs-600`, `--lh-600`  |
-| H4 (20/24) – `--fs-400`, `--lh-400` | H4 (24/28) – `--fs-500`, `--lh-500`  |
-| H5 (16/24) – `--fs-300`, `--lh-300` | H5 (20/24) – `--fs-400`, `--lh-400`  |
-| H6 (14/20) – `--fs-200`, `--lh-200` | H6 (16/24) – `--fs-300`, `--lh-300`  |
+| H2 (32/40) – `--fs-600`, `--lh-600` | H2 (36/40) – `--fs-700`, `--lh-700` |
+| H3 (24/28) – `--fs-500`, `--lh-500` | H3 (32/40) – `--fs-600`, `--lh-600` |
+| H4 (20/24) – `--fs-400`, `--lh-400` | H4 (24/28) – `--fs-500`, `--lh-500` |
+| H5 (16/24) – `--fs-300`, `--lh-300` | H5 (20/24) – `--fs-400`, `--lh-400` |
+| H6 (14/20) – `--fs-200`, `--lh-200` | H6 (16/24) – `--fs-300`, `--lh-300` |
 
-@## Paragraph
+## Paragraph
 
 There are three text sizes commonly used in our products:
 
@@ -100,7 +100,7 @@ There are three text sizes commonly used in our products:
 
 @example paragraph
 
-@## Paragraph margins
+## Paragraph margins
 
 Paragraphs have a `margin-bottom`, and each paragraph size has its own specific `margin`. For instance, a paragraph with a 16px font size has a `margin-bottom: 14px`, a paragraph with a 14px font size has a `margin-bottom: 12px`, and a paragraph with a 12px font size has a `margin-bottom: 8px`.
 
@@ -108,7 +108,7 @@ These margins can also be applied when a paragraph is followed by a paragraph wi
 
 ![](static/paragraph_margins.png)
 
-@## Metric
+## Metric
 
 For highlighting metrics in your interface, use the following styles:
 
@@ -124,13 +124,13 @@ For highlighting metrics in your interface, use the following styles:
 
 @example metric
 
-@## Text styles
+## Text styles
 
 You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link](/components/link/), a [hint](/style/typography/#hints_hint_links), or applying `strikethrough`.
 
 @example text-emphasis
 
-@## List
+## List
 
 @table-caption Font styles for lists
 
@@ -140,25 +140,25 @@ You have the flexibility to change the style of text by making it `bold`, `itali
 | 14px | `--fs-200`, `--lh-200` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png) |
 | 12px | `--fs-100`, `--lh-100` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png) |
 
-@## Nested list
+## Nested list
 
 Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes are 8px.
 
 @table-caption Font styles for nested lists
 
-| px   | Tokens                | Margins                                          |
-| ---- | --------------------- | ------------------------------------------------ |
+| px   | Tokens                 | Margins                         |
+| ---- | ---------------------- | ------------------------------- |
 | 16px | `--fs-300`, `--lh-300` | ![](static/second-level-16.png) |
 | 14px | `--fs-200`, `--lh-200` | ![](static/second-level-14.png) |
 | 12px | `--fs-100`, `--lh-100` | ![](static/second-level-12.png) |
 
-@## Quote
+## Quote
 
 We have specific styles for highlighting quotes in paragraphs.
 
 ![](static/blockquote-paddings.png)
 
-@## Hints (hint links)
+## Hints (hint links)
 
 Text can be wrapped in a hint link (pseudo-link), creating an inactive control that triggers events on the page without reloading. This pseudo-link is usually used for hints.
 

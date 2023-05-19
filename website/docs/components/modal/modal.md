@@ -6,7 +6,7 @@ tabName: Design
 
 > For general recommendations on modal window content styles, refer to [Content in modal window](/patterns/modal-content/).
 
-@## Description
+## Description
 
 **Modal window** is a modal dialog that appears on top of the page, and shows an important information or request a response from the user. 
 
@@ -32,7 +32,7 @@ It always disables user interaction with the main window but keeps it visible. T
 
 Don't show modals before the user has interacted with the interface. **Modal windows with information about limits are the exception in this case.**
 
-@## Component composition
+## Component composition
 
 ![](static/modal-composition.png)
 
@@ -90,7 +90,7 @@ The modal window must have `min-width` of 320px for the desktop version.
 ![](static/modal-min-width-1.png)
 ![](static/modal-min-width-2.png)
 
-@## Interaction
+## Interaction
 
 ### Opening a window
 
@@ -130,7 +130,7 @@ Spin styles for this scenario:
 
 ![](static/modal-spin.png)
 
-@## Positioning
+## Positioning
 
 The modal window is centered vertically and horizontally by default relative to the browser window.
 
@@ -146,7 +146,7 @@ If the size of the modal window changes when the user interacts with it, it is r
 ![](static/position-4-1.png)
 ![](static/position-4-2.png)
 
-@## Changing browser size
+## Changing browser size
 
 ### Vertically
 
@@ -186,7 +186,7 @@ If necessary, specific areas within the modal window can be fixed. For example, 
 
 ![](static/scroll-4.png)
 
-@## Window title
+## Window title
 
 When the modal window is intended to prompt a specific user action, provide a concise and clear title for the window, preferably consisting of no more than 3-4 words.
 

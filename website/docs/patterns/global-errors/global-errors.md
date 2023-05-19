@@ -4,11 +4,11 @@ fileSource: errors
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Error message** is a component for displaying error message on the page. Use it for global error messages. Global errors is a pattern for pages blocking the user from working with the website, and informing why the system can't display the content. This pattern is also related to server errors, limitations, etc.
 
-@## Appearance
+## Appearance
 
 Composition, styles, and margins of the message:
 
@@ -40,13 +40,13 @@ The message is centered horizontally and vertically. Give a container with an er
 For screens less than 768px:
 
 - change layout of the message to vertical;
-- change illustration's size to 200px * 200px;
+- change illustration's size to 200px \* 200px;
 - change margin between the illustration and a message from 40px to 8px;
 - stretch controls to the width of the content.
 
 ![](static/mobile.png)
 
-@## Page not found
+## Page not found
 
 ![](static/ge_not-found.png)
 
@@ -64,7 +64,7 @@ It looks like this page doesn't exist. Try going back or click the button below 
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
-@## Project not found
+## Project not found
 
 ![](static/ge_project-not-found.png)
 
@@ -90,7 +90,7 @@ If you have any other problems with access to the project, please contact our [S
 - Go to Projects (leads you to the projects page).
 - Contact us (sends the user to the [support page](https://www.semrush.com/kb/support/)).
 
-@## Something went wrong
+## Something went wrong
 
 ### When you don't know what the problem is
 
@@ -130,7 +130,7 @@ Please try again later.
 
 Try again (refreshes the page).
 
-@## Under maintenance
+## Under maintenance
 
 ![](static/ge_under-maintenance-2.png)
 
@@ -148,7 +148,7 @@ We are doing our best to fix it as soon as possible. Please come back later.
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
-@## Log in to access
+## Log in to access
 
 ![](static/ge_access-login.png)
 
@@ -167,7 +167,7 @@ It seems that you were lost in space. Please log in or sign up to view the page.
 - The "Log in" button leads to a page with a login form.
 - The "Sign up" button leads to the same page, but with the registration form.
 
-@## Access denied
+## Access denied
 
 ![](static/ge_access-denied.png)
 
@@ -186,7 +186,7 @@ Go back to the previous page or visit our homepage.
 
 Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 
-@## Connection was lost
+## Connection was lost
 
 ![](static/ge_connection-was-lost.png)
 
@@ -207,7 +207,7 @@ Reconnect and reload the page.
 - Reload page (refreshes the page).
 - or wait {XX}s
 
-@## Connection timed out
+## Connection timed out
 
 ![](static/ge_connection-timed-out.png)
 
@@ -226,7 +226,7 @@ The initial connection between Cloudflare’s network and the origin web server 
 - Error reference number: 522
 - Cloudflare Location POP: {undef}
 
-@## Blocked (Bad) request
+## Blocked (Bad) request
 
 ![](static/ge_blocked-request.png)
 
@@ -248,7 +248,7 @@ This is the 400 error page. Try one of the following:
 - Go to homepage (if not logged in, it leads you to the main Semrush; if logged in, it leads you to the Dashboard).
 - Contact support.
 
-@## Confirmation
+## Confirmation
 
 ![](static/ge_confirmation-submit.png)
 
@@ -271,7 +271,7 @@ Please complete the security check, and we’ll be out of your way.
 - Submit (confirms the action, then we take the user to the page where he was going).
 - Captcha (confirms the action, then we take the user to the page where he was going).
 
-@## Payment cannot be accepted
+## Payment cannot be accepted
 
 ![](static/ge_no-payment.png)
 
@@ -289,7 +289,7 @@ Unfortunately, we don’t accept payments from {Russian Federation}.
 
 Go to Dashboard (leads user to the Dashboard)..
 
-@## DNS Resolution Error
+## DNS Resolution Error
 
 ![](static/ge_dns-resolution.png)
 
@@ -321,7 +321,7 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 
   - User-Agent: {Example}
 
-@## Global errors usage
+## Global errors usage
 
 **When do we use it?**
 
@@ -355,8 +355,8 @@ There are two possible cases of the pattern's use:
 
 > The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
 
-| For the whole website                                | In the product                                             |
-| ---------------------------------------------------- | ---------------------------------------------------------- |
+| For the whole website          | In the product                       |
+| ------------------------------ | ------------------------------------ |
 | ![](static/ge_page-smthng.png) | ![](static/ge_under-maintenance.png) |
 
 ### Controls

@@ -17,7 +17,7 @@ In the simplest case, you can implement the select by passing an array of option
 
 @example basic
 
-@## Controlled and uncontrolled modes
+## Controlled and uncontrolled modes
 
 The component can operate in either controlled or uncontrolled mode.
 
@@ -50,7 +50,7 @@ The example below shows how to insert a [Notice](/components/notice/) in the Sel
 
 @example notice
 
-@## Options
+## Options
 
 The component offers several variants of options layout:
 
@@ -61,7 +61,7 @@ The component offers several variants of options layout:
 
 @example options
 
-@## Options filtration
+## Options filtration
 
 The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component.
 
@@ -71,7 +71,7 @@ The example below shows one of the ways to implement filtering.
 
 @example filtering
 
-@## Multiselect
+## Multiselect
 
 The component has the ability to select several options. This functionality can be enabled by using the `multiselect` property.
 
@@ -85,7 +85,7 @@ The example below shows one of the ways to sort the selected options.
 
 @example multiselect-sorted
 
-@## Render-function
+## Render-function
 
 As with many of our components, you can access the logic of the component by passing a render-function to it.
 

@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Table
+## Table
 
 ```jsx
 import Table from '@semcore/ui/table';
@@ -11,7 +11,7 @@ import Table from '@semcore/ui/table';
 
 @typescript TableProps
 
-@## Table.Row
+## Table.Row
 
 ```jsx
 import Table from '@semcore/ui/table';
@@ -20,7 +20,7 @@ import Table from '@semcore/ui/table';
 
 @typescript TableRowProps
 
-@## Table.Cell
+## Table.Cell
 
 ```jsx
 import Table from '@semcore/ui/table';
@@ -29,7 +29,7 @@ import Table from '@semcore/ui/table';
 
 @typescript TableCellRowProps
 
-@## Table.CellHead
+## Table.CellHead
 
 ```jsx
 import Table from '@semcore/ui/table';
@@ -38,7 +38,7 @@ import Table from '@semcore/ui/table';
 
 @typescript TableCellHeadProps
 
-@## Table.StickyHead
+## Table.StickyHead
 
 ```jsx
 import Table from '@semcore/ui/table';

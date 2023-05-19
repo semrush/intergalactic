@@ -4,7 +4,7 @@ fileSource: wizard
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Wizard** is a component that guides users through a series of predefined steps to complete a larger task. It simplifies complex tasks by breaking them down into manageable steps, reducing the perceived complexity.
 
@@ -19,7 +19,7 @@ tabName: Design
 - Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/), `Info` icons, [hint links](/style/typography/#hints_hint_links), or videos for education.
 - Advanced users may find predefined steps in a wizard restrictive. Consider using wizards for audiences that would benefit from step-by-step guidance.
 
-@## Component composition
+## Component composition
 
 ![](static/wizard-composition.png)
 
@@ -71,7 +71,7 @@ Component consists of the following:
 
 When the fullscreen modal closes, the focus should return to the page. Refer to [Accessibility](/core-principles/a11y/) guidelines.
 
-@## Wizard in Modal
+## Wizard in Modal
 
 For the Wizard displayed in a Modal, ensure the following styles:
 

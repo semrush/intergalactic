@@ -2,8 +2,9 @@
 title: Readme
 ---
 
-> 🚨 Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
-
+::: warning
+:rotating_light: Current `@semcore/email` package is deprecated and not recommend for use. New major version is planned and will be released one day.
+:::
 This article will guide you through creating an email template with components included in the Semcore library. In the end, you will get HTML code that you can copy and paste to your email client.
 
 ## Setting up the project
@@ -77,7 +78,7 @@ You can use both internal and external variables in your HTML code.
 - Internal variables:
 
   ```html
-  <p>{{text}}</p>
+  <p>{text}</p>
   <script locals>
     module.exports = {
       text: 'Hello',
@@ -89,7 +90,7 @@ You can use both internal and external variables in your HTML code.
 
   ```html
   <p>
-    <raw>{{text}}</raw>
+    <raw>{text}</raw>
   </p>
   ```
 

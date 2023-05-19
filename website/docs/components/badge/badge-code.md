@@ -2,6 +2,6 @@
 title: Example
 ---
 
-@## Badge main types
+## Badge main types
 
 @example base

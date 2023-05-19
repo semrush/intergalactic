@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## InlineEdit
+## InlineEdit
 
 Wrap over the inline edit elements.
 
@@ -13,7 +13,7 @@ import InlineEdit from '@semcore/ui/inline-edit';
 
 @typescript InlineEditProps
 
-@## InlineEdit.View
+## InlineEdit.View
 
 All children of `InlineEdit.View` is displayed when `editable` property of `InlineEdit` is set to `false`. When `editable` property is set to `true`, children elements still persist in DOM, but hidden via css opacity.
 
@@ -22,7 +22,7 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit.View />;
 ```
 
-@## InlineEdit.Edit
+## InlineEdit.Edit
 
 All children of `InlineEdit.Edit` is displayed when `editable` property of `InlineEdit` is set to `true`.
 

@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Pills** is a component designed for:
 
@@ -79,7 +79,7 @@ In some products, pills can act as a block with shared metrics. Their difference
 | Disabled `Pills.Item`                  | ![](static/disabled-pill.png)  |
 | Loading                                | ![](static/loading.png)        |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 Pills are used for:
 

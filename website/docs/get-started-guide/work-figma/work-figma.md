@@ -2,7 +2,7 @@
 title: Figma libraries
 ---
 
-@## What Figma libraries do we have?
+## What Figma libraries do we have?
 
 @embedded_video https://www.loom.com/share/32ac37f7d13046308cab7095d05bcdcb
 
@@ -10,7 +10,7 @@ title: Figma libraries
 
 @embedded_video https://www.loom.com/share/5733829ef80f415d828f3e0d045249d6
 
-@## Core libraries
+## Core libraries
 
 Feel free to use our Figma libraries:
 
@@ -25,7 +25,7 @@ Feel free to use our Figma libraries:
 
 @embedded_video https://www.loom.com/share/d2b51d7b370f4a7cabcca1b09b7910e6
 
-@## Start designing with our Figma libraries
+## Start designing with our Figma libraries
 
 How to start designing with the Intergalactic Design System Figma libraries? Where you should start from?
 
@@ -39,7 +39,7 @@ How to choose the right visualization for your task?
 
 @embedded_video https://www.loom.com/share/0793a430c4bb4784ad0bb6cec9199af5
 
-@## Additional libraries
+## Additional libraries
 
 In addition, we offer libraries for internal use, which are accessible solely to Semrush designers.
 

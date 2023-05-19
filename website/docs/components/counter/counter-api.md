@@ -2,7 +2,7 @@
 title: API
 ---
 
-@## Counter
+## Counter
 
 ```jsx
 import Counter from '@semcore/ui/counter';
@@ -11,7 +11,7 @@ import Counter from '@semcore/ui/counter';
 
 @typescript CounterProps
 
-@## AnimatedNumber
+## AnimatedNumber
 
 ```jsx
 import { AnimatedNumber } from '@semcore/ui/counter';

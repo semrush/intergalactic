@@ -16,7 +16,7 @@ As previously mentioned, the tooltip is essentially a styled version of [@semcor
 
 @example tooltip
 
-@## Title
+## Title
 
 To simplify code, the component includes a `title` property where you can pass the content for the popper. This helps reduce code volume .
 
@@ -24,7 +24,7 @@ The code below replicates the functionality of the previous example.
 
 @example tooltip-title
 
-@## Singleton
+## Singleton
 
 You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience.
 

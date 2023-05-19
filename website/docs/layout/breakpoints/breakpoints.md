@@ -4,7 +4,7 @@ fileSource: utils
 tabName: Design
 ---
 
-@## Adaptivity
+## Adaptivity
 
 Most of Semrush products are designed to work with data on the desktop, so adaptivity isn’t yet required for all products.
 
@@ -12,7 +12,7 @@ Most of Semrush products are designed to work with data on the desktop, so adapt
 
 If you are adding adaptivity to your interface, then use breakpoints described below, but remember to stretch the content in each range, except for really wide screens, where we recommend fixing the maximum content width to 1920px.
 
-@## Breakpoints system
+## Breakpoints system
 
 Here is a list of the main breakpoints we recommend using in the interfaces:
 
@@ -23,7 +23,7 @@ Here is a list of the main breakpoints we recommend using in the interfaces:
 | `--screen-medium`      | Our main breakpoint for desktop devices.             |
 | `--screen-large`       | Breakpoint for large desktop screens.                |
 
-@## Page layout
+## Page layout
 
 Use [Grid component](/layout/grid-system/) to build a page layout. The component has an adaptive API.
 

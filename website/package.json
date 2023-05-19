@@ -11,7 +11,10 @@
     "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm --require=../.ci/tsm-filter-warnings.js ./builder/ssr.ts --reset-cache",
     "build:ensure": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-pre-built.ts",
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js tools/searchIndexUpload.ts",
-    "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts"
+    "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "algoliasearch": "4.8.4",

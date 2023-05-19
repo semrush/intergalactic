@@ -6,13 +6,13 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Button** is a control component that performs an action on the page. Compared to [Link](/components/link/), it's an accent control or call-to-action for performing actions on the page.
 
 > In some cases, you can use the button as a [Link](/components/link/) that leads to another page.
 
-@## Component composition
+## Component composition
 
 ![](static/button-composition.png)
 
@@ -83,7 +83,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 | `secondary`   | ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
 | `tertiary`    | ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
 
-@## Button width
+## Button width
 
 The button width is determined by its content. But it can also be stretched to a certain width. For example:
 
@@ -113,14 +113,14 @@ If you need to use a single button we recommend you to set it's width to at leas
 | ------------------------ | ------------------------ |
 | ![](static/margin-1.png) | ![](static/margin-2.png) |
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 - Try to have one call-to-action button on the page in the modal window. _For example, one green button._
 - We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
 - If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
 
-@## Button variations
+## Button variations
 
 ### Text button
 
@@ -144,7 +144,7 @@ We recommend using the icon-only button if:
 
 > **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
 
-@## Button label
+## Button label
 
 Button label always starts with a capital letter.
 
@@ -158,7 +158,7 @@ The label of the button should clearly indicate what happens after user clicks i
 
 ![](static/define-action.png)
 
-@## Branded buttons
+## Branded buttons
 
 In case when you need to show that button connects or links to some other service, use a branded color for the background or the corresponding color icon of the service.
 
@@ -177,7 +177,7 @@ It may also be helpful checking the following branding guidelines:
 - Youtube – [Branding Guidelines](https://developers.google.com/youtube/terms/branding-guidelines) and [Brand resources](https://www.youtube.com/howyoutubeworks/resources/brand-resources/#overview)
 - Pinterest – [How to use the Pinterest brand in your marketing](https://business.pinterest.com/en-us/brand-guidelines/)
 
-@## Grouped buttons
+## Grouped buttons
 
 To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
 

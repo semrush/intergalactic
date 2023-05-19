@@ -3,7 +3,7 @@ title: A11y
 a11y: AA
 ---
 
-@## What component has
+## What component has
 
 ### Keyboard support
 
@@ -27,10 +27,10 @@ The list below describes roles and attributes that component already has.
 | `aria-label="First page"`         | `button` | Describes the meaning of the "<<" button.                                                                     |
 | `aria-label="Last page {number}"` | `button` | Describes the meaning of the "{number}" link.                                                                 |
 
-@## Resources
+## Resources
 
 [A11y style guide documentation](https://a11y-style-guide.com/style-guide/section-navigation.html) has detailed information about the accessible pagination best practices.
 
-@## Other recommendations
+## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).

@@ -5,7 +5,7 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
-@## Area
+## Area
 
 - You can draw a chart with areas using the `Area` component.
 - `Dots` are the dots on the line chart.
@@ -13,7 +13,7 @@ fileSource: d3-chart
 
 @example area
 
-@## Edge cases
+## Edge cases
 
 - If a part of the chart has no data – use a dashed line to draw that period.
 - If the data has only one value – display it as a dot.
@@ -21,6 +21,6 @@ fileSource: d3-chart
 
 @example area-without-data
 
-@## Custom line
+## Custom line
 
 @example area-custom-line

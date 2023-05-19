@@ -7,7 +7,7 @@ tabName: Design
 
 **These filters are combined in one guide, since they differ only in the sorting parameter, a set of preset values and the name.** The principle of work and states are the same.
 
-@## Description
+## Description
 
 **Keyword Difficulty filter** is a filter to sort the data on the page by the Keyword Difficulty parameter.
 
@@ -25,7 +25,7 @@ They have a set of preset values and a custom range inputs.
 - quickly reset the entered data and search again;
 - be able to change data.
 
-@## Appearance
+## Appearance
 
 ### Trigger
 
@@ -56,7 +56,7 @@ They have a set of preset values and a custom range inputs.
 | ------------------ | ---------------------------------- | ------------------------------------ | ------------------------------------ |
 | Appearance example | ![opened kd](static/opened-kd.png) | ![opened pos](static/opened-pos.png) | ![opened vol](static/opened-vol.png) |
 
-@## Custom range
+## Custom range
 
 Use [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
 
@@ -65,13 +65,13 @@ Use [InputNumber](/components/input-number/), if the filter has the ability to s
 | If nothing is entered, the bottom stepper is disabled.             | ![steppers](static/steppers.png)     |
 | If a maximum value is entered, the upper stepper becomes inactive. | ![steppers](static/steppers-max.png) |
 
-@## Interaction
+## Interaction
 
 When you open a dropdown, the focus immediately goes to the first custom range input.
 
 Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/).
 
-@## Tooltips
+## Tooltips
 
 For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/).
 
@@ -81,11 +81,11 @@ For more information about tooltips, see [Filter common rules](/filter-group/fil
 | Positions          | ![tooltips pos](static/tooltips-pos.png) |
 | Volume             | ![tooltips vol](static/tooltips.png)     |
 
-@## Validation
+## Validation
 
 Validation is described in the [Filter common rules](/filter-group/filter-rules/).
 
-@## Nothing found
+## Nothing found
 
 "Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
 

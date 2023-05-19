@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **TabLine** is a component for navigating inside a report and grouping homogeneous content in the interface.
 
@@ -37,7 +37,7 @@ Component consists of the following:
 | M (28px)            | ![](static/tab-m.png) |
 | L (40px)            | ![](static/tab-l.png) |
 
-@## Types
+## Types
 
 Depending on the context, you can use TabLine with or without a border-bottom. The border uses the `--border-primary` token for its color.
 
@@ -91,7 +91,7 @@ Addons inside TabLine.Item have the same margins as addons inside the [Button](/
 
 When switching between active tabs, the border-bottom moves with an `ease` transition and a duration of `500ms`.
 
-@## Placement in the interface
+## Placement in the interface
 
 TabLine is always placed under the [ProductHead](/components/product-head/) of the report, following the title, additional controls, and filters that affect the entire report.
 
@@ -100,7 +100,7 @@ TabLine is always placed under the [ProductHead](/components/product-head/) of t
 
 ![](static/tabs-margins.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 In cases where you have many tabs or there isn't enough space for the full tab text, collapse the text using an `ellipsis`.
 

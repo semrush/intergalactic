@@ -11,7 +11,7 @@ They don't manipulate your data, and will not try to calculate, sort or check it
 
 Charts are a complex component that cannot be applied in a single line. That's why its API may seem a bit inflated, since it supports all the concepts of our design system.
 
-@## Concept
+## Concept
 
 - We want to provide you with a convenient way to use the imperative d3 style with React's declarative approach.
 - All charts are based on [d3-scale](https://github.com/d3/d3-scale), which you transfer to our charts in a customized form.
@@ -45,7 +45,7 @@ Since many SVG elements don't support nesting, they are rendered sequentially. F
 
 CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/#themes) for more information on how to customize it.
 
-@## Base
+## Base
 
 Any SVG container must have absolute values for its size.
 
@@ -55,7 +55,7 @@ See [d3-scale docs on GitHub](https://github.com/d3/d3-scale) for more informati
 
 @example common
 
-@## Paddings & margins
+## Paddings & margins
 
 SVG size and chart plot size are usually different to prevent the clipping of additional items such as axes, axis values, and the legend.
 
@@ -63,7 +63,7 @@ That's why values in `scale.range ()` are set with a shift.
 
 @example margin
 
-@## Axes
+## Axes
 
 When you pass `scale` to the root component it also sets the coordinate axes. However, you still need to specify them for them to render.
 
@@ -78,7 +78,7 @@ You can get the number of ticks from the `scale.ticks` or `scale.domain` method.
 
 @example axis
 
-@## Axis values
+## Axis values
 
 You can change the values and properties on the axis by passing a function.
 
@@ -88,7 +88,7 @@ The default tag is `<text/>`, but you can change it by defining the `tag` proper
 
 @example axis-ticks
 
-@## Additional lines
+## Additional lines
 
 Additional lines are formed in the same way as ticks.
 
@@ -96,7 +96,7 @@ Additional lines are formed in the same way as ticks.
 
 @example axis-grid
 
-@## Axes titles
+## Axes titles
 
 Axis titles are formed in the same way as ticks and additional lines.
 
@@ -104,13 +104,13 @@ Axis titles are formed in the same way as ticks and additional lines.
 
 @example axis-titles
 
-@## Tooltip
+## Tooltip
 
 You can add a tooltip to the chart, for which you can set `Title` and `Footer`.
 
 @example tooltip
 
-@## Adaptive chart
+## Adaptive chart
 
 For SVG charts to display correctly on responsive layouts, you need to dynamically calculate their width and height. To help you with that, we created the `ResponsiveContainer` component that supports all the [Box properties](/layout/box-system/box-api) and can help you flexibly adjust the chart size.
 
@@ -122,17 +122,17 @@ For SVG charts to display correctly on responsive layouts, you need to dynamical
 
 @example responsive
 
-@## Chart legend
+## Chart legend
 
 See [Chart legend](/data-display/chart-legend/) for a guide on how to implement a clickable chart legend.
 
 @example legend
 
-@## Reference line
+## Reference line
 
 @example reference-line
 
-@## Synchronous charts
+## Synchronous charts
 
 You can pass a common `eventEmitter` to synchronize the charts.
 
@@ -140,11 +140,11 @@ You can pass a common `eventEmitter` to synchronize the charts.
 
 @example sync-charts
 
-@## Export to image (png, jpeg, webp)
+## Export to image (png, jpeg, webp)
 
 @example export-in-image
 
-@## Initial loading
+## Initial loading
 
 Use [Skeleton](/components/skeleton/) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
 

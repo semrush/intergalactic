@@ -3,7 +3,7 @@ title: Vertical bar chart
 fileSource: d3-chart
 ---
 
-@## Description
+## Description
 
 **Vertical bar chart helps you compare data when**:
 
@@ -16,11 +16,11 @@ fileSource: d3-chart
 
 ![](/data-display/bar-chart/static/example-3.png)
 
-@## Appearance
+## Appearance
 
-| Number of categories | Appearance example                                                                         | Styles                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| One                  | ![](/data-display/bar-chart/static/bar-chart.png)     | The upper part of the column shall have `border-radius: 2px`. |
+| Number of categories | Appearance example                                  | Styles                                                        |
+| -------------------- | --------------------------------------------------- | ------------------------------------------------------------- |
+| One                  | ![](/data-display/bar-chart/static/bar-chart.png)   | The upper part of the column shall have `border-radius: 2px`. |
 | Two                  | ![](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                        |
 
 > If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
@@ -29,11 +29,11 @@ fileSource: d3-chart
 
 ![](/data-display/bar-chart/static/stacked-bar-chart.png)
 
-@## Interaction
+## Interaction
 
 See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5/).
 
-@## Edge cases
+## Edge cases
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
@@ -61,7 +61,7 @@ When you hover over a dot without data, show tooltip with the `n/a` value. We al
 
 ![parially](/data-display/bar-chart/static/partially-trash.png)
 
-@## Initial loading
+## Initial loading
 
 When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 

@@ -4,7 +4,7 @@ fileSource: tab-panel
 a11y: AA
 ---
 
-@## TabPanel
+## TabPanel
 
 Wrap over the tab elements.
 
@@ -15,7 +15,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 
 @typescript TabPanelProps
 
-@## TabPanel.Item
+## TabPanel.Item
 
 The tab element may contain `Addon` and `Text`, its structure is similar to [Button](/components/button/). It takes some properties from TabLine (for example, `size`, `disabled`) and may override them.
 
@@ -28,7 +28,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 
 @typescript TabPanelItemProps
 
-@## TabPanel.Item.Addon
+## TabPanel.Item.Addon
 
 The addon inside the tab (most commonly an icon) sets the correct indents depending on the size.
 
@@ -39,7 +39,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Addon />;
 ```
 
-@## TabPanel.Item.Text
+## TabPanel.Item.Text
 
 This ordinary text sets the appropriate indents depending on the size. If a simple text without addons is used in the Tab, it will turn into `TabLine.Item.Text` automatically.
 
