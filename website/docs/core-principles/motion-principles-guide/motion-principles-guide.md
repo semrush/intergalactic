@@ -26,6 +26,8 @@ Motion provides a visual response to an action, seamless transitions between sta
 
 @## Durations
 
+@table-caption Durations
+
 | Token            | Value   | Usage                                                                                                                             |
 | ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | extra-slow       | `500ms` | Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) |
