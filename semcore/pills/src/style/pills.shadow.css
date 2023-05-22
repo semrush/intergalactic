@@ -49,7 +49,7 @@ SPill {
 }
 
 SPill[selected] {
-  background: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+  background: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
   border-color: var(--intergalactic-border-info-active, #006dca);
   z-index: 1;
 }
