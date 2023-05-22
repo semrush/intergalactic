@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.0] - 2023-05-22
+
+### Changed
+
+- Prevent page scrolling while incrementing or decrementing input value with mouse wheel.
+
 ## [4.4.19] - 2023-05-11
 
 ### Changed

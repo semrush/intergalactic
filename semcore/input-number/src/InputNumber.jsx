@@ -25,11 +25,16 @@ class InputNumber extends Component {
   inputHandlersRef = React.createRef();
 
   increment = (event) => {
+    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.min || '0';
     this.inputRef.current?.stepUp && this.inputRef.current?.stepUp();
     this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
   };
 
   decrement = (event) => {
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.max || '0';
     this.inputRef.current?.stepDown && this.inputRef.current?.stepDown();
     this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
   };
@@ -38,6 +43,8 @@ class InputNumber extends Component {
     return {
       ref: this.inputRef,
       inputHandlerRefs: this.inputHandlersRef,
+      increment: this.increment,
+      decrement: this.decrement,
     };
   }
 
@@ -62,6 +69,8 @@ class Value extends Component {
     defaultValue: '',
     step: 1,
   };
+
+  inputRef = React.createRef();
 
   uncontrolledProps() {
     return {
@@ -97,6 +106,25 @@ class Value extends Component {
     }
   };
 
+  // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
+  componentDidMount() {
+    this.inputRef.current?.addEventListener('wheel', this.handleWheel);
+  }
+  componentWillUnmount() {
+    this.inputRef.current?.removeEventListener('wheel', this.handleWheel);
+  }
+
+  handleWheel = (event) => {
+    if (event.target !== this.inputRef.current) return;
+    if (document.activeElement !== this.inputRef.current) return;
+    event.preventDefault();
+    if (event.wheelDelta > 0) {
+      this.asProps.increment(event);
+    } else if (event.wheelDelta < 0) {
+      this.asProps.decrement(event);
+    }
+  };
+
   render() {
     const SValue = Root;
     const SValueHidden = 'div';
@@ -112,6 +140,7 @@ class Value extends Component {
           autoComplete="off"
           onBlur={this.handleValidation}
           onInvalid={this.handleValidation}
+          ref={this.inputRef}
           aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}
