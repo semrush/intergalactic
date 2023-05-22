@@ -40,7 +40,7 @@ SButtonTrigger[size='l'] {
 }
 
 SText[placeholder] {
-  color: var(--intergalactic-text-placeholder, #a9abb6);
+  color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
 
 SButtonTrigger[state='normal'] {
@@ -79,7 +79,7 @@ SWrapper {
 }
 
 SWrapper[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 SCounter {
