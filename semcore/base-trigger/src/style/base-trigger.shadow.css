@@ -41,7 +41,7 @@ SBaseTrigger {
 
   &[keyboardFocused] {
     border: 1px solid var(--intergalactic-border-info-active, #006dca);
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
 
   &:hover {
@@ -161,7 +161,7 @@ SBaseTrigger[neighborLocation='left'] {
 }
 
 SText[placeholder] {
-  color: var(--intergalactic-text-placeholder, #a9abb6);
+  color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
 
 SBaseTrigger[state='normal'] {
@@ -177,6 +177,6 @@ SBaseTrigger[state='invalid'] {
 
   &[keyboardFocused] {
     border-color: var(--intergalactic-border-critical-active, #d1002f);
-    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
+    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
   }
 }
