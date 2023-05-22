@@ -1,22 +1,12 @@
 import React from 'react';
 
-const svg = (orientation, width, height) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="currentColor"
-    width={width}
-    height={height}
-    viewBox={`0 0 ${width} ${height}`}
-  >
-    {orientation === 'up' ? (
-      <path d={`M0,${height}l${height},-${height}l${height},${height}Z`} />
-    ) : (
-      <path d={`M0,0l${width},0l-${height},${height}Z`} />
-    )}
+export const IncrementIcon = () => (
+  <svg fill="currentColor" width="10" height="5" viewBox="0 0 10 5">
+    <path d={`M0,5l5,-5l5,5Z`} />
   </svg>
 );
-
-export default {
-  up: svg('up', 10, 5),
-  down: svg('down', 10, 5),
-};
+export const DecrementIcon = () => (
+  <svg fill="currentColor" width="10" height="5" viewBox="0 0 10 5">
+    <path d={`M0,0l10,0l-5,5Z`} />
+  </svg>
+);
