@@ -26,6 +26,8 @@ Motion provides a visual response to an action, seamless transitions between sta
 
 @## Durations
 
+@table-caption Durations
+
 | Token            | Value   | Usage                                                                                                                             |
 | ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | extra-slow       | `500ms` | Should be used for more complex effects and larger scale animations (such as page transitions or moving objects on and offscreen) |
@@ -50,4 +52,4 @@ To prevent these issues, we recommend you follow these best practices:
 
 - Don't use flashing of more than 3 times per second in your animation.
 - Limit component animation to no more than a couple of seconds at a time.
-- Let users [opt out of animation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) altogether, if that's what they prefer.
+- Let users [opt out of animation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) altogether, if that's what they prefer. Use `preferes-reduced-motion` CSS media feature for this.
