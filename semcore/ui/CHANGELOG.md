@@ -1,3 +1,38 @@
+## [13.29.0] - 2023-05-22
+
+### @semcore/base-trigger
+
+- **Changed** Updated border-color for invalid and valid states. Made them more contrast according to accessibility recommendations.
+- **Changed** Updated styles for FilterTrigger, added styles for `hover` distinguished from `active` state.
+
+### @semcore/button
+
+- **Changed** Fixed token for text in button with `use="secondary"` and `theme="info"`.
+
+### @semcore/checkbox
+
+- **Changed** Updated border-color for invalid state. Made it more contrast according to accessibility recommendations. HEAD
+
+### @semcore/dropdown-menu
+
+- **Changed** Added visual cue to the `selected` DropdownMenu.Item.
+
+### @semcore/input
+
+- **Changed** Updated border-color for invalid and valid states. Made them more contrast according to accessibility recommendations.
+
+### @semcore/pills
+
+- **Changed** Updated token for `selected` Pill.
+
+### @semcore/radio
+
+- **Changed** Fixed token for background-color of the checked Checkbox.
+
+### @semcore/utils
+
+- **Changed** Updated reference for `--text-placeholder` token from `--gray-300` to `--gray-400`, to add more contrast to all placeholder texts in all components.
+
 ## [13.28.0] - 2023-05-22
 
 ### @semcore/input-number
