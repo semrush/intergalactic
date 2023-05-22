@@ -4,3 +4,6 @@ components.json
 generate.js
 mailer.js
 tsconfig.json
+clear.ts
+generate-reexports.ts
+update-dependencies.ts

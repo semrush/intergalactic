@@ -2,6 +2,94 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.7] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/animation` [1.10.8 ~> 1.10.9]).
+
+## [3.3.6] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/animation` [1.10.7 ~> 1.10.8]).
+
+## [3.3.3] - 2023-05-02
+
+## [3.3.2] - 2023-04-26
+
+### Fixed
+
+- Added `aria-label` for the close icon.
+
+## [3.3.0] - 2023-04-19
+
+### Changed
+
+- Changed Spot location.
+
+## [3.2.35] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/animation` [1.10.1 ~> 1.10.2]).
+
+## [3.2.28] - 2023-03-22
+
+### Fixed
+
+- Add tabIndex for Icon close.
+
+## [3.2.27] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4], `@semcore/animation` [1.9.4 ~> 1.9.5]).
+
+## [3.2.22] - 2023-03-01
+
+### Fixed
+
+- Fixed `animationsDisabled` prop passing.
+
+## [3.2.20] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [3.2.18] - 2023-02-22
+
+## [3.2.17] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/animation` [1.9.0 ~> 1.9.1]).
+
+## [3.2.14] - 2023-02-13
+
+## [3.2.13] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+## [3.2.12] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/animation` [1.8.9 ~> 1.8.10]).
+
+## [3.2.7] - 2023-01-11
+
+## [3.2.6] - 2023-01-10
+
+## [3.2.5] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/animation` [1.8.5 ~> 1.8.6]).
+
 ## [3.2.1] - 2022-12-13
 
 ### Changed

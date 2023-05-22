@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
-import FocusLock from 'react-focus-lock';
-import { FadeInOut } from '@semcore/animation';
+import React, { useRef, useEffect } from 'react';
+import { FadeInOut, Slide } from '@semcore/animation';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
 import { Box } from '@semcore/flex-box';
@@ -13,17 +12,32 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import style from './style/modal.shadow.css';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { Text } from '@semcore/typography';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 
 class ModalRoot extends Component {
   static displayName = 'Modal';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    uniqueIDEnhancement(),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-modal',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
-    duration: 200,
     closable: true,
     i18n: localizedMessages,
     locale: 'en',
+    disablePreventScroll: false,
   };
+  state = { hasTitle: false };
 
   handleKeyDown = (e) => {
     if (e.key === 'Escape') {
@@ -41,21 +55,27 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { duration, visible } = this.asProps;
+    const { duration, visible, animationsDisabled, disablePreventScroll } = this.asProps;
     return {
       duration,
       visible,
       onOutsideClick: this.handleOutsideClick,
+      animationsDisabled,
+      disablePreventScroll,
     };
   }
 
   getWindowProps() {
-    const { visible, closable, getI18nText } = this.asProps;
+    const { visible, closable, getI18nText, uid, duration, animationsDisabled } = this.asProps;
+    const { hasTitle } = this.state;
     return {
       visible,
       closable,
       onKeyDown: this.handleKeyDown,
-      getI18nText,
+      'aria-label': hasTitle ? undefined : getI18nText('title'),
+      'aria-labelledby': hasTitle ? `igc-${uid}-title` : undefined,
+      duration,
+      animationsDisabled,
     };
   }
 
@@ -65,6 +85,16 @@ class ModalRoot extends Component {
     return {
       onClick: this.handleIconCloseClick,
       getI18nText,
+    };
+  }
+
+  getTitleProps() {
+    const { uid } = this.asProps;
+    const setHasTitle = () => this.setState({ hasTitle: true });
+
+    return {
+      id: `igc-${uid}-title`,
+      setHasTitle,
     };
   }
 
@@ -90,28 +120,23 @@ class ModalRoot extends Component {
   }
 }
 
-const FocusLockWrapper = React.forwardRef(function ({ tag, ...other }, ref) {
-  return <FocusLock ref={ref} as={tag} lockProps={other} {...other} />;
-});
-
 function Window(props) {
   const SWindow = Root;
-  const { Children, styles, visible, closable, getI18nText } = props;
+  const { Children, styles, visible, closable, duration } = props;
   const windowRef = useRef(null);
 
-  if (!visible) return null;
+  useFocusLock(windowRef, true, 'auto', !visible);
 
   return sstyled(styles)(
     <SWindow
-      render={FocusLockWrapper}
-      tag={Box}
-      ref={windowRef}
-      returnFocus={true}
-      tabIndex={-1}
-      autoFocus={true}
+      render={Slide}
+      initialAnimation={true}
+      slideOrigin="top"
+      visible={visible}
       role="dialog"
-      aria-label={getI18nText('title')}
       aria-modal={true}
+      duration={duration}
+      ref={windowRef}
     >
       <PortalProvider value={windowRef}>
         {closable && <Modal.Close />}
@@ -125,7 +150,8 @@ function Overlay(props) {
   const SOverlay = Root;
   const { Children, styles, onOutsideClick, visible } = props;
   const overlayRef = useRef(null);
-  usePreventScroll(visible);
+  usePreventScroll(visible, props.disablePreventScroll);
+  useContextTheme(overlayRef, visible);
 
   return sstyled(styles)(
     <SOverlay render={FadeInOut} ref={overlayRef}>
@@ -148,10 +174,20 @@ function Close(props) {
 
 Close.enhance = [keyboardFocusEnhance()];
 
+function Title(props) {
+  const { setHasTitle, styles } = props;
+  const STitle = Root;
+
+  useEffect(() => setHasTitle());
+
+  return sstyled(styles)(<STitle render={Text} tag="h2" />);
+}
+
 const Modal = createComponent(ModalRoot, {
   Window,
   Overlay,
   Close,
+  Title,
 });
 
 export default Modal;

@@ -4,7 +4,7 @@ import Card from '@semcore/ui/card';
 import { Row, Col } from '@semcore/ui/grid';
 
 const titles = { backlink: 'Backlink', keyword: 'Keyword', seo: 'On Page SEO' };
-function Demo() {
+const Demo = () => {
   const [items, setItems] = React.useState(['backlink', 'keyword', 'seo']);
   const [saved, setSaved] = React.useState({});
   const handleDnD = React.useCallback(({ fromId, toId }) => {
@@ -30,7 +30,9 @@ function Demo() {
             .filter((item) => saved[item])
             .map((item) => (
               <Card key={item} mr={4}>
-                <Card.Title>{titles[item]}</Card.Title>
+                <Card.Title tag="h4" inline my={0}>
+                  {titles[item]}
+                </Card.Title>
               </Card>
             ))}
         </DnD.DropZone>
@@ -42,13 +44,15 @@ function Demo() {
           <Col span={4} mb={4} key={item}>
             <DnD.Draggable placement="top" id={item}>
               <Card>
-                <Card.Title>{titles[item]}</Card.Title>
+                <Card.Title tag="h4" inline my={0}>
+                  {titles[item]}
+                </Card.Title>
               </Card>
             </DnD.Draggable>
           </Col>
         ))}
     </DnD>
   );
-}
+};
 
 export default Demo;

@@ -28,14 +28,14 @@ SButtonTrigger {
 SButtonTrigger[size='m'] {
   min-width: 26px;
   height: 28px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SButtonTrigger[size='l'] {
   min-width: 32px;
   height: 40px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
 
@@ -52,7 +52,7 @@ SButtonTrigger[state='valid'] {
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-danger, #ffaeb5);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 }
 
 SFilterTrigger[selected] {

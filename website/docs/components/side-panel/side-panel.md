@@ -26,29 +26,30 @@ Use SidePanel when it is needed:
 @## Triggers
 
 - News icon in the main header of the website.
-- Additional link in ProductHead.
-
-![trigger example](static/trigger.png)
-
+- Additional link in [ProductHead](/components/product-head/).
 - Controls inside the report that hide additional information.
 - Charts inside the report, which can be clicked to show additional information.
 - On small screens other controls can serve as a trigger to open SidePanel.
 
 @## Component composition
 
-- Container.
-- Content.
-- Close icon (optional).
-- Overlay (optional).
+1. SidePanel
+2. SidePanel.Header
+    - SidePanel.Back
+    - SidePanel.Title
+3. SidePanel.Close (optional)
+4. SidePanel.Body
+5. SidePanel.Footer (optional)
+6. SidePanel.Overlay (optional)
 
-![sidepanel scheme](static/sidepanel-scheme.png)
+![](static/sidepanel-scheme.png)
 
 @## Overlay
 
-|                 | Appearance example                     | Styles                                                                                                         | When to use                                                                             |
-| --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Without overlay | ![light-theme](static/light-theme.png) | In this case the panel has the shadow: `box-shadow: 0px 1px 12px var(--gray-800, 0.15);`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
-| With overlay    | ![dark-theme](static/dark-theme.png)   | In this case panel has an overlay with styles: `var(--gray-800, 0.7);`. There is no shadow.                    | If you need to focus the user on information inside SidePanel, enable overlay.          |
+|                 | Appearance example                     | Styles                                                                                                           | When to use                                                                             |
+| --------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Without overlay | ![](static/light-theme.png) | In this case the panel has the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
+| With overlay    | ![](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`. There is no shadow.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
 @## Default sizes and indents
 
@@ -62,38 +63,38 @@ SidePanel has a fixed width that does not change when the browser window is resi
 
 _It can be changed, for example, when using SidePanel on a small screen where you want to reduce paddings._
 
-![paddings](static/container-paddings.png)
+![](static/container-paddings.png)
 
 ### Content margins
 
 The padding between title and content:
 
-![content paddings ](static/content-paddings.png)
+![](static/content-paddings.png)
 
 @## Common styles and recommendations
 
 ### Header
 
-For panel's title use 16px text (`--fs-300; --lh-300`) with `font-weight: 700;`.
+For panel's title use 16px text (`--fs-300`, `--lh-300`) with `font-weight: var(--bold)`.
 
 > Pin header when scrolling large content inside the SidePanel.
 
-| Appearance example                    | Styles                                                                                              |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| ![header paddings](static/header.png) | `height: 52px; padding-bottom: 4px; align-items: center; border-bottom: 1px solid var(–-gray-200);` |
-| ![close icon](static/closeIcon.png)   | Close icon has L size and `--gray-300` color. Click zone of the icon is `48px * 48px`.              |
+| Appearance example                    | Styles                                                                                                                       |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| ![](static/header.png) | `height: 52px`, `padding-bottom: var(--spacing-1x)`, `align-items: center`, `border-bottom: 1px solid var(–-border-primary)` |
+| ![](static/closeIcon.png)   | `Close` icon has L size and use `--icon-secondary-neutral` token for color. Click zone of the icon is `48px * 48px`.         |
 
 ### Content
 
 General recommendations for SidePanel content styles:
 
-- Choose the text size for the panel in order to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typogarphic scale](/style/typography/).
+- Choose the text size for the panel in order to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/).
 
-![headings](static/hierarchy.png)
+![](static/hierarchy.png)
 
 - Always pin the header and the footer, when scrolling the content of the SidePanel.
 
-![scroll](static/scroll.png)
+![](static/scroll.png)
 
 ### Footer
 
@@ -106,14 +107,14 @@ Footer styles:
 
 ```css
 height: 44px;
-padding: 8px 0;
+padding: var(--spacing-2x) 0;
 align-items: center;
-border-top: 1px solid var(–-gray-200);
+border-top: 1px solid var(–-border-primary);
 ```
 
-![footer-height](static/footer.png)
+![](static/footer.png)
 
-![footer-paddings](static/footer-paddings.png)
+![](static/footer-paddings.png)
 
 @## Interaction
 
@@ -143,14 +144,14 @@ SidePanel can be opened either by user clicking on the corresponding trigger or 
 
 ### Animation of appearance and hiding
 
-SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out;`.
+SidePanel opens and closes with the animation: `transition: all 350ms ease-in-out`.
 
 ### What happens when the browser window size changes
 
 - SidePanel has a fixed width that does not change when the browser window is resized. Default width of the panel is 256px. You can change it if necessary.
 - On a 320px screen, SidePanel should not occupy more than 80% of the screen width so that the user can click outside of it and close it.
 
-![small screen example](static/320-width.png)
+![](static/320-width.png)
 
 @## Corner states
 
@@ -160,19 +161,19 @@ SidePanel should have header in all cases.
 
 At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/).
 
-![skeleton example](static/skeleton.png)
+![](static/side-panel-skeleton.png)
 
 ### Reloading
 
 When loading and reloading SidePanel content, show [Spin](/components/spin/) with XL size in the center.
 
-![spin example](static/spin.png)
+![](static/spin.png)
 
 ### Error
 
 If an error occurs during data loading, show the the corresponding message and the "Try again" button to reload the SidePanel content.
 
-![error example](static/error.png)
+![](static/error.png)
 
 @page side-panel-a11y
 @page side-panel-api

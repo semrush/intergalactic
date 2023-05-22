@@ -3,11 +3,11 @@ import Breakpoints from '@semcore/ui/breakpoints';
 import Button from '@semcore/ui/button';
 
 export default () => {
-  const [index, updateIndex] = useState(Breakpoints.mediaList.matches());
+  const [index, setIndex] = useState(Breakpoints.mediaList.matches());
 
   useEffect(() => {
     const unsubscribe = Breakpoints.mediaList.addListener((index) => {
-      updateIndex(index);
+      setIndex(index);
     });
     return () => {
       unsubscribe();

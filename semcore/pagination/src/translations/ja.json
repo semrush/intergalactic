@@ -1,6 +1,8 @@
 {
   "prevPageLabel": "前へ",
+  "prevPageDescription": "前のページ {pageNumber}",
   "nextPageLabel": "次へ",
+  "nextPageDescription": "次のページ {pageNumber}",
   "pageInputLabel": "ページ：",
   "totalPagesLabel": "/",
   "pagination": "ページ分割",

@@ -2,6 +2,40 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.5] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+
+## [4.5.4] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+
+## [4.5.1] - 2023-04-24
+
+## [4.5.0] - 2023-04-17
+
+### Changed
+
+- Remove `aria-invalid` because you can't enter the wrong value.
+- Added hint for screen reader.
+- Controls are now `display:none` rather than `visibility:hidden`, this gives more space for placeholder.
+
+## [4.4.19] - 2023-03-28
+
+### Changed
+
+- Changed color in default and focused states as in `Figma`.
+
+## [4.4.18] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
+
 ## [4.4.1] - 2022-12-13
 
 ### Changed

@@ -21,13 +21,15 @@ export interface IBarProps extends IContext {
    */
   r?: number | number[];
   /** Minimal height
-   * @default 4
+   * @default 2
    */
   hMin?: number;
   /**
    * Bar click handler
    */
   onClick?: (data: { [key: string]: string | number }, event: Event) => void;
+  /** Enables element transparency */
+  transparent?: boolean;
 }
 
 export interface IBarContext {

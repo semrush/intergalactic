@@ -7,7 +7,9 @@ export default function () {
   return (
     <Card w={220}>
       <Card.Header>
-        <Card.Title>Card heading</Card.Title>
+        <Card.Title tag="h4" inline my={0}>
+          Card heading
+        </Card.Title>
         <Card.Description tag="div">
           <Ellipsis maxLine={3}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi hic nemo tenetur

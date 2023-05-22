@@ -171,7 +171,7 @@ If you reach our website via our partner’s Reference Link as described in our 
 - marketing channel the sale is attributed to and a last click timestamp;
 - dynamic CJ event click token captured on landing page URL.
 
-The processing of such data is also subject to [Conversant Privacy Policy](https://www.conversant.com/privacy-policy/). You can revoke your permission to process the data for the purposes described above by sending an e-mail to privacy@semrush.com.
+The processing of such data is also subject to [Conversant Privacy Policy](https://www.conversant.com/privacy-policy/). You can revoke your permission to process the data for the purposes described above by sending an email to privacy@semrush.com.
 
 We and our partners may use other cookies and similar technologies to gather information about the use of our websites and the Services, and for other business purposes as disclosed in our [Cookie Policy](https://www.semrush.com/company/legal/cookie-policy/). For more information on our use of cookies and similar technologies, and your choices with respect to such use, please refer to our [Cookie Policy](https://www.semrush.com/company/legal/cookie-policy/).
 

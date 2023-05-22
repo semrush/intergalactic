@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**InputTags** is the input that wraps the entered information into tags. Often used together with the [Combobox](/components/auto-tips/).
+**InputTags** is the input that wraps the entered information into tags. Often used together with the [Combobox](/components/auto-suggest/).
 
 This input is usually used for entering a large amount of homogeneous information in a single field. _For example, keywords or employee emails._
 
@@ -16,7 +16,7 @@ This input is usually used for entering a large amount of homogeneous informatio
 
 When tags overflow, the input increases in height by 1 text line.
 
-| Sizes                          | Appearance                   |                                | Indents                                |
+| Size                          | Appearance                   |                                | Margins                                |
 | ------------------------------ | ---------------------------- | ------------------------------ | -------------------------------------- |
 | L input is used with the L tag | ![l size](static/l-size.png) | ![l size](static/l-size-2.png) | ![l paddings](static/l-paddings-2.png) |
 | M input is used with the M tag | ![m size](static/m-size.png) | ![m size](static/m-size-2.png) | ![m paddings](static/m-paddings-2.png) |
@@ -45,7 +45,7 @@ In the input with tags, you can substitute either preset data from the combobox,
 | -------------------------------------------- | ---------------------------------------- | ------------------------------------------ |
 | ![combobox only data](static/input-tag1.png) | ![user only data](static/input-tag2.png) | ![all kind of data](static/input-tag3.png) |
 
-When you focus on such an input, it opens a [Combobox](/components/auto-tips/) if there are pre-set data (for example, a database of addresses of minions or previously entered keywords). When you click on a line in the combobox, the data from this line is inserted into the input and wrapped in a tag.
+When you focus on such an input, it opens a [Combobox](/components/auto-suggest/) if there are pre-set data (for example, a database of addresses of minions or previously entered keywords). When you click on a line in the combobox, the data from this line is inserted into the input and wrapped in a tag.
 
 If such an input does not have pre-set data and the user can enter any data, this data is wrapped in a tag after punctuation separators as described below.
 
@@ -70,6 +70,8 @@ After insertion, the text is broken by punctuation separators – comma, semicol
 If there is a tag in front of the cursor, when you press the delete key, the tag turns into plain text and you can edit and delete it.
 
 @## Long text in the tag
+
+> Note that this behavior is not recommended for fully accessible tag. The page content should be responsive and adaptable to small viewport widths, text magnification, and changes in text spacing.
 
 You can set the maximum width for a tag. This is optional, as it is not necessary in all cases of using the component.
 

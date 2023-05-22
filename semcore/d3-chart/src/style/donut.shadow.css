@@ -2,11 +2,15 @@
 
 SPie {
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
-  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
+  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
 }
 
 SPie[color] {
   fill: var(--color);
+}
+
+SPie[transparent] {
+  opacity: 0.3;
 }
 
 SEmptyData {

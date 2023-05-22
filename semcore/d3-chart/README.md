@@ -6,7 +6,7 @@
 
 > This component is part of the Intergalactic design system
 
-### 📖 [Component documentation](https://developer.semrush.com/intergalactic/data-display/d3-chart/)
+### 📖 [Component documentation](https://developer.semrush.com/intergalactic/data-display/d3-chart/d3-chart-code/)
 
 ### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
 

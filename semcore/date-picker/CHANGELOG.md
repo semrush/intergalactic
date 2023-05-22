@@ -2,6 +2,110 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.40] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/base-trigger` [3.5.18 ~> 3.5.19], `@semcore/button` [4.3.23 ~> 4.3.24]).
+
+## [3.6.39] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/base-trigger` [3.5.17 ~> 3.5.18], `@semcore/button` [4.3.22 ~> 4.3.23], `@semcore/divider` [3.2.21 ~> 3.2.22]).
+
+## [3.6.36] - 2023-04-28
+
+## [3.6.35] - 2023-04-24
+
+### Changed
+
+- Improved date picker rendering performance.
+
+## [3.6.34] - 2023-04-24
+
+### Fixed
+
+- Fixed issue with custom styles when using `shadow-loader` plugin.
+
+## [3.6.33] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/base-trigger` [3.5.14 ~> 3.5.15], `@semcore/button` [4.3.19 ~> 4.3.20], `@semcore/input` [3.5.18 ~> 3.5.20], `@semcore/input-mask` [4.4.19 ~> 4.5.0]).
+
+## [3.6.31] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to the component.
+
+## [3.6.30] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/base-trigger` [3.5.13 ~> 3.5.14], `@semcore/button` [4.3.17 ~> 4.3.18]).
+
+## [3.6.21] - 2023-03-10
+
+### Fixed
+
+- Fixed design token for selected period
+
+## [3.6.20] - 2023-03-09
+
+### Fixed
+
+- Fixed broken interaction of deprecated button trigger.
+
+## [3.6.19] - 2023-03-06
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.11 ~> 3.4.12]).
+
+## [3.6.17] - 2023-03-01
+
+## [3.6.16] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.2 ~> 3.5.3], `@semcore/icon` [3.12.0 ~> 3.13.0]).
+
+## [3.6.15] - 2023-02-22
+
+## [3.6.14] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/base-trigger` [3.5.0 ~> 3.5.1], `@semcore/button` [4.3.9 ~> 4.3.10]).
+
+## [3.6.11] - 2023-02-13
+
+## [3.6.10] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [3.6.9] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/base-trigger` [3.4.8 ~> 3.4.9], `@semcore/button` [4.3.6 ~> 4.3.7], `@semcore/icon` [3.7.0 ~> 3.8.0]).
+
+## [3.6.7] - 2023-01-19
+
+### Fixed
+
+- Fixed `DatePicker.InputTrigger` edited text highlight color.
+
+## [3.6.6] - 2023-01-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/base-trigger` [3.4.3 ~> 3.4.4], `@semcore/button` [4.3.3 ~> 4.3.4]).
+
 ## [3.6.0] - 2022-12-14
 
 ### Added

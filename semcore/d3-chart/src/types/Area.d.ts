@@ -19,6 +19,8 @@ export interface IAreaProps extends IContext {
    * @default 500
    */
   duration?: number;
+  /** Enables element transparency */
+  transparent?: boolean;
 }
 
 export interface IAreaDotsProps extends IContext {
@@ -26,6 +28,8 @@ export interface IAreaDotsProps extends IContext {
   display?: boolean;
   /** Hide property */
   hide?: boolean;
+  /** Enables element transparency */
+  transparent?: boolean;
 }
 
 export interface IAreaDotsContext {

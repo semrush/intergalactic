@@ -15,13 +15,13 @@ When working with the category filter, the user should:
 
 @## Appearance
 
-For trigger use [Select](/components/select/) with `min-width: 102px;` and [FilterTrigger](/components/filter-trigger/) with `min-width: 160px;`.
+For trigger use [Select](/components/select/) with `min-width: 102px` and [FilterTrigger](/components/filter-trigger/) with `min-width: 160px`.
 
 It's better not to make the controls smaller than recommended min-widths, otherwise the user may not read the filter's name or cannot understand what category is selected.
 
 | Input size | Inactive filter (Select)               | Active filter (FilterTrigger)              |
 | ---------- | -------------------------------------- | ------------------------------------------ |
-| M          | ![inactive filter](static/default.png) | ![active filter](static/filterTrigger.png) |
+| M          | ![inactive filter](static/default.png) | ![active filter](static/filter-trigger.png) |
 
 @## Filter by one category
 
@@ -72,7 +72,7 @@ When the filter's content or some of the filters are loading, show [Spin](/compo
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-category-nothing-found.png)
 
 ### Error
 
@@ -133,7 +133,7 @@ When the filter's content or some of the filters are loading, show [Spin](/compo
 
 Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-category-nothing-found.png)
 
 ### Error
 
@@ -141,15 +141,15 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ![error](static/error.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 > Technically, categories do not have nesting, it is purely visual to distinguish between categories.
 >
 > **Example:**
 >
-> News > Team Sports > **Baseball** — website with basebal news
+> News > Team Sports > **Baseball** – website with basebal news
 >
-> Goods > Sports Goods > **Baseball** — website with baseball goods
+> Goods > Sports Goods > **Baseball** – website with baseball goods
 
 ### Category abbreviations rules
 

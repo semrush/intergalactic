@@ -5,50 +5,48 @@ fileSource: date-picker
 
 @## DatePicker
 
-Widgets for selecting dates and a range of dates. javascript `Date` is returned for `DatePicker` from `onChange`, and javascript `Date` array - for `DateRangePicker` accordingly.
+These are widgets for selecting dates and date ranges. The `DatePicker` component returns a JavaScript `Date` object via the `onChange` function, while the `DateRangePicker` returns a JavaScript `Date` array.
 
 @example datepicker
 
 @## MonthRangePicker
 
-Widgets for selecting a month and a range of months. API analogous to `DatePicker` and `DateRangePicker`.
+These are widgets for selecting a single month and a range of months, respectively. The API is similar to that of the `DatePicker` and `DateRangePicker` components.
 
 @example monthpicker
 
-@## InputTrigger/Popper
+@## InputTrigger and Popper
 
-To obtain access to internal components you need to explode the component. `InputTrigger` and `Popper` are wrapped `Dropdown.Trigger` and `Dropdown.Popper`. [All the properties/examples](/components/dropdown/) also work in `DatePicker`.
+To access the internal components, you must expand the component. The `InputTrigger` and `Popper` components are wrapped by `Dropdown.Trigger` and `Dropdown.Popper`, respectively. All the properties and examples available in `Dropdown` also work in `DatePicker`.
 
 @example trigger-popper
 
 @## Custom header
 
-Header layout may be changed by further exploding of the component 😏
+You can change the header layout by expanding the component further.
 
 @example header
 
 @## Custom day
 
-Calendar days may have some metrics. To change the units you should transfer the function to the `Calendar` component body.
+Calendar days can have metrics, and you can change the units by passing a function to the `Calendar` component.
 
 @example custom
 
 @## Disabled
 
-You may block some dates or a range of dates (and imagine you are a superhero 🕺🏻).
-
-The `disabled` property accepts an array of dates or an array with two dates for specifying the range, or the `crontab` format for periodical selection of dates.
+You can prevent selection of certain dates or a range of dates using the `disabled` property (and imagine yourself as a superhero 🕺🏻). The property takes an array of dates or an array with two dates to specify a range, or a `crontab` format for selecting dates periodically.
 
 @example disabled
 
-@## Periods
+@## Custom date ranges
 
-Periods may be customized or switched off at all, by transferring `periods={[]}`.
+Date ranges may be customized or switched off at all, by transferring `periods={[]}`.
 
 @example periods
 
 @## Week picker
 
-Sometimes you need to select only custom period and you can do it by taking all the control in manual mode.
+You can manually select a custom period, if needed (e.g., a week) by taking all the control in manual mode.
 
 @example hover-week

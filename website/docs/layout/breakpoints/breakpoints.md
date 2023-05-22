@@ -8,7 +8,7 @@ tabName: Design
 
 Most of Semrush products are designed to work with data on the desktop, so adaptivity is not yet required for all products.
 
-> Most of the core components can be used on the smaller screens. You need to increase their size to the biggest (`L`) for ease of use on touch devices. You can find the examples in the [Code tab](/layout/breakpoints/breakpoints-code/).
+> Most of the core components can be used on the smaller screens. You need to increase their size to the biggest (`L`) for ease of use on touch devices. You can find the examples in the [Example tab](/layout/breakpoints/breakpoints-code/).
 
 If you are adding adaptivity to your interface, then use breakpoints described below, but remember to stretch the content in each range, except for really wide screens, where we recommend fixing the maximum content width to 1920px.
 
@@ -16,11 +16,12 @@ If you are adding adaptivity to your interface, then use breakpoints described b
 
 Here is a list of the main breakpoints we recommend using in the interfaces:
 
-| Variable               | Usage                                                |
+| Token                  | Usage                                                |
 | ---------------------- | ---------------------------------------------------- |
-| `--xs-screen: 320px;`  | The smallest possible breakpoint for mobile devices. |
-| `--sm-screen: 768px;`  | The most common breakpoint for tablet devices.       |
-| `--md-screen: 1200px;` | Our main breakpoint for desktop devices.             |
+| `--screen-extra-small` | The smallest possible breakpoint for mobile devices. |
+| `--screen-small`       | The most common breakpoint for tablet devices.       |
+| `--screen-medium`      | Our main breakpoint for desktop devices.             |
+| `--screen-large`       | Breakpoint for large desktop screens.                |
 
 @## Page layout
 
@@ -42,8 +43,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              babelrc: false, // is u use .babelrc
-              configFile: false, // if u use babel.config.js, doesnt affect babelrc option https://babeljs.io/docs/en/options#configfile
+              babelrc: false, // if you use .babelrc
+              configFile: false, // if you use babel.config.js, doesn't affect babelrc option https://babeljs.io/docs/en/options#configfile
               plugins: ['@semcore/babel-plugin-react-semcore'],
             },
           },

@@ -3681,13 +3681,13 @@ const iconsList = {
       tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип'],
     },
     {
-      name: 'YoutubeRed',
+      name: 'YoutubeInvert',
       size: ['l', 'm', 's', 'xs'],
       group: 'Color',
       tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип'],
     },
     {
-      name: 'YoutubeAlt',
+      name: 'YoutubeColored',
       size: ['l', 'm', 's', 'xs'],
       group: 'Color',
       tags: ['youtube', 'video', 'видео', 'social', 'logo', 'логотип'],

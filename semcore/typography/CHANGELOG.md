@@ -2,6 +2,58 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.3] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11]).
+
+## [4.4.2] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/icon` [3.14.9 ~> 3.14.10]).
+
+## [4.4.0] - 2023-04-25
+
+### Added
+
+- Added `uppercase`, `lowercase`, `capitalize` text transformation props.
+
+## [4.3.29] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7]).
+
+## [4.3.16] - 2023-02-22
+
+## [4.3.15] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2]).
+
+## [4.3.12] - 2023-02-13
+
+## [4.3.11] - 2023-02-09
+
+## [4.3.10] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0]).
+
+## [4.3.7] - 2023-01-11
+
+## [4.3.6] - 2023-01-10
+
+## [4.3.5] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/icon` [3.5.0 ~> 3.5.1]).
+
 ## [4.3.1] - 2022-12-13
 
 ### Changed

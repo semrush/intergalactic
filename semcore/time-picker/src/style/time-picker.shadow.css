@@ -38,8 +38,8 @@ SPickerFormat {
   text-decoration: none;
   align-items: center;
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
-  border-radius: 0 var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px)
-    0;
+  border-radius: 0 var(--intergalactic-control-rounded, 6px)
+    var(--intergalactic-control-rounded, 6px) 0;
   outline: 0;
   box-shadow: none;
   cursor: pointer;
@@ -91,6 +91,10 @@ SPickerFormat[disabled] {
 
 SPickerFormat[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+}
+
+STimePickerSeparator {
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 STimePickerSeparator[disabled] {

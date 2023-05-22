@@ -38,5 +38,6 @@
   "view-go-to-table": "Zur Datentabelle springen",
   "view-data-summary": "Zusammenfassung der Daten",
   "view-summary-placeholder": "Zusammenfassung der Chart-Daten wird erstellt",
-  "view-table": "Datentabelle"
+  "view-table": "Datentabelle",
+  "data-not-available": "n/a"
 }

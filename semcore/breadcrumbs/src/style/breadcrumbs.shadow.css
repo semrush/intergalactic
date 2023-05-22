@@ -20,7 +20,6 @@ SBreadcrumbsItem {
   position: relative;
   font-size: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-lh-100, 133%);
-  font-family: var(--intergalactic-base, Inter), sans-serif;
   color: var(--intergalactic-text-secondary, #6c6e79);
   text-decoration: none;
   box-sizing: border-box;
@@ -32,7 +31,7 @@ SBreadcrumbsItem {
 
   &:hover {
     text-decoration: underline;
-    color: var(--intergalactic-text-hint-hover-active, #484a54);
+    color: var(--intergalactic-text-primary, #191b23);
   }
 }
 

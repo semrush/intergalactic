@@ -6,9 +6,9 @@ title: SSO page (Login form)
 
 **SSO (Single Sign-On)** is a login and registration form that the user gets to when:
 
-- the user visited the site/page of the tool for the first time and wants to create an account;
+- the user visited the site/page of the product for the first time and wants to create an account;
 - the user was logged out or he left the account;
-- free-the user has reached the limit of using the tool.
+- free-the user has reached the limit of using the product.
 
 @## Appearance
 
@@ -23,14 +23,14 @@ SSO from the design point of view consists of:
 
 - `L` size inputs (pills, input fields, checkboxes, buttons, links).
 - Modal window has H4 heading (25px, `--fs-500`). Page with a form has H2 heading (36px, `--fs-700`).
-- Additional text under the heading — 14px (`--fs-200`).
-- Size of the hint text — 12px (`--fs-100`).
+- Additional text under the heading – 14px (`--fs-200`).
+- Size of the hint text – 12px (`--fs-100`).
 - The color of the main text (both the title and the text below it) is always #333333 (`--gray-800`).
 - The color of the tooltips at the bottom of the form - #757575 (`--gray-500`).
 
 @## Spacing
 
-All margins should always be a [multiple of our common denominator — 4](/style/variables/).
+All margins should always be a [multiple of our common denominator – 4](/style/variables/).
 
 ### Login form margins
 
@@ -60,13 +60,13 @@ Now the form looks like this 😰
 
 We show the form on a separate page with a white background, the Semrush logo, and text about copyright. This form must have:
 
-- The header — is `Create your account`.
-- Explanatory text — `Explore all opportunities for SEO, paid search, SMM, and content with Semrush. Get market insights and uncover your competitors' strategies`.
+- The header – is `Create your account`.
+- Explanatory text – `Explore all opportunities for SEO, paid search, SMM, and content with Semrush. Get market insights and uncover your competitors' strategies`.
 - Text and a link that switches to the login form.
 
 @## Limit registration/login form
 
-As soon as the free user reaches the limit for using the tool, a limit window appears on top of the Semrush interface with a registration/authorization form without the possibility of closing it.
+As soon as the free user reaches the limit for using the product, a limit window appears on top of the Semrush interface with a registration/authorization form without the possibility of closing it.
 
 ![limit form](static/limit.png)
 
@@ -74,7 +74,7 @@ As soon as the free user reaches the limit for using the tool, a limit window ap
 
 When you open a modal window, the first empty input must get the `focus` state.
 
-You can read more about the behavior of forms in [Form](/components/form/).
+You can read more about the behavior of forms in [Form](/patterns/form/).
 
 ### Data processing
 

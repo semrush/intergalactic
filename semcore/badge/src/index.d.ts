@@ -3,7 +3,7 @@ import { IBoxProps } from '@semcore/flex-box';
 
 export interface IBadgeProps extends IBoxProps {
   /** Fill color
-   * @default mist
+   * @default gray-400
    * */
   bg?: 'mist' | 'cyan' | 'red' | 'orange' | 'green' | 'white' | string;
 

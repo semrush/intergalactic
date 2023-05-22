@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.7.2] - 2023-02-15
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/babel-plugin-styles` [1.8.1 ~> 1.9.0]).
+
+## [4.7.0] - 2023-01-26
+
+### Removed
+
+- Removed `css-purge` package due to build errors and lack of support from maintainers.
+
+## [4.6.2] - 2023-01-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/babel-plugin-styles` [1.6.0 ~> 1.7.0]).
+
 ## [4.6.0] - 2022-12-15
 
 ### Added

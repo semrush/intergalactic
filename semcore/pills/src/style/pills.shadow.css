@@ -29,7 +29,7 @@ SPill {
   cursor: pointer;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
 
   &::-moz-focus-inner {
     border: none;

@@ -128,8 +128,8 @@ describe('FilterTrigger', () => {
   test('Should renders correctly with counter', async () => {
     const component = (
       <FilterTrigger>
-        <FilterTrigger.Counter>99</FilterTrigger.Counter>
-        <FilterTrigger.Text>Problems</FilterTrigger.Text>
+        <FilterTrigger.Counter aria-labelledby="filter-problems">99</FilterTrigger.Counter>
+        <FilterTrigger.Text id="filter-problems">Problems</FilterTrigger.Text>
       </FilterTrigger>
     );
 
@@ -151,8 +151,8 @@ describe('FilterTrigger', () => {
   test('Should support active with counter', async () => {
     const component = (
       <FilterTrigger id="filter-trigger">
-        <FilterTrigger.Counter>99</FilterTrigger.Counter>
-        <FilterTrigger.Text>Problems</FilterTrigger.Text>
+        <FilterTrigger.Counter aria-labelledby="filter-problems2">99</FilterTrigger.Counter>
+        <FilterTrigger.Text id="filter-problems2">Problems</FilterTrigger.Text>
       </FilterTrigger>
     );
 

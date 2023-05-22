@@ -2,6 +2,94 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.12] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/popper` [4.17.9 ~> 4.17.10]).
+
+## [5.4.11] - 2023-05-11
+
+## [5.4.10] - 2023-05-10
+
+### Fixed
+
+- Screen reader tooltip content updates correctly on change
+
+### Changed
+
+- Changed content layout for screen reader. Now it's in `Tooltip.Popper`
+
+## [5.4.9] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/popper` [4.17.7 ~> 4.17.8]).
+
+## [5.4.2] - 2023-04-11
+
+### Fixed
+
+- Turn `aria-haspopup` to `false` for Tooltip with `hover=interaction`.
+
+## [5.4.1] - 2023-04-03
+
+### Changed
+
+- Tooltip with `hover=interaction` content is duplicated into screen-reader-only block.
+
+## [5.3.24] - 2023-03-28
+
+### Fixed
+
+- Fixed tooltip border color for default theme.
+
+## [5.3.23] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/popper` [4.16.11 ~> 4.16.12]).
+
+## [5.3.15] - 2023-03-09
+
+### Fixed
+
+- Fixed tooltip borders color.
+
+## [5.3.14] - 2023-03-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.3 ~> 4.16.4]).
+
+## [5.3.12] - 2023-02-22
+
+## [5.3.11] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/popper` [4.16.0 ~> 4.16.1]).
+
+## [5.3.9] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+## [5.3.8] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/popper` [4.15.1 ~> 4.15.2]).
+
+## [5.3.5] - 2023-01-10
+
+## [5.3.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/popper` [4.14.3 ~> 4.14.4]).
+
 ## [5.3.1] - 2022-12-13
 
 ### Changed

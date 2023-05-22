@@ -2,7 +2,7 @@ import React from 'react';
 import { FilterTrigger } from '@semcore/base-trigger';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
 
-const { cleanup, fireEvent, render, axe } = testing;
+const { cleanup, fireEvent, render, axe, act } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
@@ -215,22 +215,25 @@ describe('Select Trigger', () => {
   });
 
   test.only('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <Select visible value={['2']} disablePortal>
-        <Select.Trigger />
+        <Select.Trigger aria-label="Select trigger" />
         <Select.Menu visible>
           <Select.Option value="1">Option 1</Select.Option>
           <Select.Option value="2">Option 2</Select.Option>
         </Select.Menu>
       </Select>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 });
 
-describe('InputSearch', () => {
+describe('Option.Checkbox', () => {
   afterEach(cleanup);
 
   shouldSupportClassName(Select.Option.Checkbox, Select);

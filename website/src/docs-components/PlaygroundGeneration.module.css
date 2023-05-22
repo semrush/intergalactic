@@ -1,6 +1,6 @@
 .field {
   display: flex;
-  margin-bottom: 16px;
+  margin-bottom: var(--intergalactic-spacing-4x);
   align-items: center;
   width: 100%;
 }
@@ -8,16 +8,16 @@
   flex: 0 0 70px;
 }
 .control {
-  margin-left: 10px;
+  margin-left: calc(var(--intergalactic-spacing-2x) + 2px);
 }
 
 .wrapperPlayground {
   display: flex;
-  border: 1px solid #dee3e5;
+  border: 1px solid var(--intergalactic-border-secondary);
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
   height: auto;
-  margin-bottom: 32px;
+  margin-bottom: var(--intergalactic-spacing-8x);
 }
 .wrapperPlayground p {
   margin: 0;
@@ -35,14 +35,13 @@
   justify-content: center;
   min-height: 200px;
   width: 100%;
-  padding: 16px;
+  padding: var(--intergalactic-spacing-4x);
   box-sizing: border-box;
   background-size: 20px 20px;
   background-position: center center;
-  border-bottom: 1px solid #dee3e5;
   overflow-y: auto;
   position: relative;
-  font-size: 12px;
+  font-size: var(--intergalactic-fs-100);
 }
 
 .resultCode {
@@ -60,10 +59,10 @@
 .widgetsBar {
   position: relative;
   width: 30%;
-  padding: 32px;
-  font-size: 14px;
-  background-color: #f9f9f9;
-  border-left: 1px solid #dee3e5;
+  padding: var(--intergalactic-spacing-8x);
+  font-size: var(--intergalactic-fs-200);
+  background-color: var(--intergalactic-bg-secondary-neutral);
+  border-left: 1px solid var(--intergalactic-border-secondary);
   overflow-y: auto;
 }
 
@@ -73,8 +72,8 @@
 
 .iconCopy {
   position: absolute;
-  right: 16px;
-  top: 16px;
+  right: var(--intergalactic-spacing-4x);
+  top: var(--intergalactic-spacing-4x);
   cursor: pointer;
 }
 .iconCopy > span {

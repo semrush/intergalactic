@@ -2,6 +2,96 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.38] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [2.2.37] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [2.2.36] - 2023-05-04
+
+### Changed
+
+- Made `<Carousel />` arrows color more contrast.
+
+## [2.2.35] - 2023-05-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.4 ~> 3.50.5]).
+
+## [2.2.34] - 2023-05-02
+
+### Fixed
+
+- Fixed image display when specifying an index other than 0.
+
+## [2.2.33] - 2023-04-26
+
+### Fixed
+
+- Fixed warnings in development mode.
+
+## [2.2.31] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [2.2.30] - 2023-04-03
+
+### Fixed
+
+- Fixed carousel html roles.
+
+## [2.2.29] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [2.2.19] - 2023-03-01
+
+## [2.2.18] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
+
+## [2.2.17] - 2023-02-22
+
+## [2.2.16] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [2.2.13] - 2023-02-13
+
+## [2.2.12] - 2023-02-09
+
+### Changed
+
+- Split rounding design tokens (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded` and `--intergalactic-control-rounded`).
+
+## [2.2.11] - 2023-02-01
+
+### Fixed
+
+- Fixed freezing when slide index is greater than number of slides.
+
+## [2.2.10] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
 ## [2.2.1] - 2022-12-13
 
 ### Changed
@@ -15,8 +105,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Design tokens based theming.
 
 ## [2.1.7] - 2022-11-08
-
-## [2.1.6] - 2022-10-30
 
 ### Fixed
 

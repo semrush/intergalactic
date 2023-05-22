@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/chart/).
+> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
 @## Description
 
@@ -32,31 +32,31 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 | Example                                       | Styles                 |
 | --------------------------------------------- | ---------------------- |
-| ![line without dots](static/without-dots.png) | Line thickness is 3px. |
+| ![](static/without-dots.png) | Line thickness is 3px. |
 
 We recommended you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example                            | Styles                                                                                                    |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| ![line with dots](static/dots.png) | Point size is `8px * 8px`, `border: 2px solid $white`. When hovering, the dot increases to `12px * 12px`. |
+| Example                            | Styles                                                                                                                      |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![](static/dots.png) | Point size is 8px * 8px, `border: 2px solid var(--chart-grid-border)`. When hovering, the dot increases to 12px * 12px. |
 
 @## Interaction
 
-When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--gray-300`.
+When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
-![tooltip](static/popover-1.png)
+![](static/popover-1.png)
 
 When user hovers over the chart area without values, show tooltip with information. In this case, the value is `n/a`.
 
-![tooltip with n/a values](static/partially.png)
+![](static/partially.png)
 
 If there are a lot of categories on the chart, the tooltip shows dots and values for all dots under the cursor.
 
 > Do not change the order of categories inside the tooltip in relation to the order of lines on the chart.
 
-![tooltip with values for many dots](static/popover-2.png)
+![](static/popover-2.png)
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830).
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
 
 @## Edge cases
 
@@ -66,12 +66,12 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 For this case enable the display of dots on the chart by default.
 
-![one dot](static/one-dot-line-chart.png)
+![](static/one-dot-line-chart.png)
 
 ### Styles
 
 - **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
-- The line has the `dashed` border style and `--gray-200` color.
+- The line has the `dashed` border style and `--chart-grid-y-accent-hover-line` color.
 
 @## Two values
 
@@ -79,11 +79,11 @@ For this case enable the display of dots on the chart by default.
 
 **Example 1** is for the case when there is data for two non-near dates.
 
-![two dots](static/two-dots1-line-chart.png)
+![](static/two-dots1-line-chart.png)
 
 **Example 2** is when there is data for one after another dates.
 
-![two dots](static/two-dots2.png)
+![](static/two-dots2.png)
 
 @## Null values
 
@@ -91,13 +91,13 @@ If all values on the chart are zero, then show the trend line on the zero axis.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![null data](static/null-line-chart.png)
+![](static/null-line-chart.png)
 
 @## No data
 
 When user hovers over a dot that some of the categories don't have data for, show tooltip with the `n/a` value for these categories.
 
-![not available data](static/not-available.png)
+![](static/not-available.png)
 
 @## No data area
 
@@ -105,21 +105,23 @@ When user hovers over a dot that some of the categories don't have data for, sho
 
 In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
 
-![partially-data](static/partially-trash.png)
+![](static/partially-trash.png)
 
 When user hovers over a dot without data, show the tooltip with the `n/a` value. We recommend you to add a message why there is no data, and when it will be available, if possible.
 
-![partially-data](static/partially.png)
+![](static/partially.png)
 
 @## Initial data loading
 
-When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-More information about this state see in the guide for [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/).
 
-![skeleton](static/skeleton.png)
+Use the `--skeleton-bg` color token for the skeleton background color.
+
+![](static/line-skeleton.png)
 
 @page line-chart-a11y
 @page line-chart-api

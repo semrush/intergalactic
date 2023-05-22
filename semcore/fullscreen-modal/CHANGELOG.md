@@ -2,6 +2,52 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.2.36] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+
+## [2.2.35] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+
+## [2.2.33] - 2023-04-28
+
+### Fixed
+
+- Added `aria-label` for the close icon.
+
+## [2.2.31] - 2023-04-12
+
+### Changed
+
+- Default title tag switched from `h4` to `h2` without changing visual representation.
+
+### Fixed
+
+- Fixed ability to control from keyboard for `Close` and `Back`.
+
+## [2.2.30] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
+
+## [2.2.9] - 2023-01-19
+
+### Fixed
+
+- Removed font-family enforcement.
+
+## [2.2.8] - 2023-01-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/modal` [3.3.6 ~> 3.4.0]).
+
 ## [2.2.1] - 2022-12-13
 
 ### Changed
@@ -15,8 +61,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Design tokens based theming.
 
 ## [2.1.7] - 2022-11-08
-
-## [2.1.6] - 2022-11-03
 
 ### Changed
 

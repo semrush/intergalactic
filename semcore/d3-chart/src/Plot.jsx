@@ -36,7 +36,7 @@ class PlotRoot extends Component {
     const { scale } = this.asProps;
     this.eventEmitter.emit(`onMouseMoveRoot`, e);
 
-    if (scale) {
+    if (scale && scale.length >= 2) {
       const [xScale, yScale] = scale;
       const [pX, pY] = eventToPoint(e, this.rootRef.current);
       const [minX, maxX] = xScale.range();

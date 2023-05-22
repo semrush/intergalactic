@@ -2,6 +2,88 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.40] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.3.16 ~> 4.3.17], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [2.4.39] - 2023-05-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.3.15 ~> 4.3.16]).
+
+## [2.4.37] - 2023-05-04
+
+### Changed
+
+- Made draggable elements dragging pattern more contrast.
+
+## [2.4.36] - 2023-05-03
+
+### Changed
+
+- During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+## [2.4.35] - 2023-04-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/grid` [4.3.20 ~> 4.3.21]).
+
+## [2.4.31] - 2023-04-03
+
+### Fixed
+
+- Fixed screen reader annotation of visually untitled items.
+
+## [2.4.30] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.3.8 ~> 4.3.9]).
+
+## [2.4.17] - 2023-03-01
+
+## [2.4.16] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.2.17 ~> 4.2.18]).
+
+## [2.4.15] - 2023-02-22
+
+## [2.4.14] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.2.15 ~> 4.2.16], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [2.4.11] - 2023-02-13
+
+## [2.4.10] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-surface-rounded`).
+
+## [2.4.9] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.2.10 ~> 4.2.11], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [2.4.6] - 2023-01-11
+
+## [2.4.5] - 2023-01-10
+
+## [2.4.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.2.5 ~> 4.2.6], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [2.4.0] - 2022-12-14
 
 ### Added

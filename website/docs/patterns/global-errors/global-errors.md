@@ -12,13 +12,13 @@ tabName: Design
 
 Composition, styles, and margins of the message:
 
-- For an image in svg format use `width: 240px; height: 240px; margin-right: 40px;`.
-- For title use text with 36px size (`--fs-700; --lh-700;`), `--gray-800` color and `margin-bottom: 16px`.
-- For message text use text with 14px size (`--fs-200`,`--lh-200`), `--gray-800` color and `margin-bottom: 24px`.
+- For an image in svg format use `width: 240px`, `height: 240px`, `margin-right: 40px`.
+- For title use text with 36px size (`--fs-700`, `--lh-700`), `--text-primary` color and `margin-bottom: 16px`.
+- For message text use text with 14px size (`--fs-200`, `--lh-200`), `--text-primary` color and `margin-bottom: 24px`.
 - For CTA use buttons with L size (optional).
 - Captcha (optional).
 
-![global errors margins](static/ge_margins.png)
+![](static/ge_margins.png)
 
 > Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
 
@@ -27,28 +27,28 @@ Composition, styles, and margins of the message:
 - Margin between the illustration and the message is 40px.
 - Maximum width of the message is 640px. Top margin of the container with the message is 32px.
 
-![global errors margins](static/ge_margins-2.png)
+![](static/ge_margins-2.png)
 
 ### Positioning on the page
 
-The message is centered horizontally and vertically. Give a container with an error message a relative height — `height: height: 70vh;`.
+The message is centered horizontally and vertically. Give a container with an error message a relative height – `height: 70vh`.
 
-![global errors positioning](static/ge_page-not-found.png)
+![](static/ge_page-not-found.png)
 
-### Apperance on small screens
+### Appearance on small screens
 
 For screens less than 768px:
 
 - change layout of the message to vertical;
-- change illustration's size to 200px \* 200px;
+- change illustration's size to 200px * 200px;
 - change margin between the illustration and a message from 40px to 8px;
 - stretch controls to the width of the content.
 
-![global errors on mobile screen](static/mobile.png)
+![](static/mobile.png)
 
 @## Page not found
 
-![page not found error](static/ge_not-found.png)
+![](static/ge_not-found.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A102726).
 
@@ -66,7 +66,7 @@ Go to homepage (if not logged in, it leads you to the main Semrush; if logged in
 
 @## Project not found
 
-![connection timed out error](static/ge_project-not-found.png)
+![](static/ge_project-not-found.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A105405).
 
@@ -94,7 +94,7 @@ If you have any other problems with access to the project, please contact our [S
 
 ### When you don't know what the problem is
 
-![something went wrong error](static/ge_smthng.png)
+![](static/ge_smthng.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A102761).
 
@@ -112,7 +112,7 @@ Reload page (refreshes the page).
 
 ### When you know, what the problem is
 
-![something went wrong error](static/ge_smthng-we-know.png)
+![](static/ge_smthng-we-know.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A105950).
 
@@ -132,13 +132,13 @@ Try again (refreshes the page).
 
 @## Under maintenance
 
-![connection timed out error](static/ge_under-maintenance-2.png)
+![](static/ge_under-maintenance-2.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A107925).
 
 **Title**
 
-{name tool} is under maintenance
+{product name} is under maintenance
 
 **Message**
 
@@ -150,7 +150,7 @@ Go to homepage (if not logged in, it leads you to the main Semrush; if logged in
 
 @## Log in to access
 
-![access request error](static/ge_access-login.png)
+![](static/ge_access-login.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A115802).
 
@@ -169,7 +169,7 @@ It seems that you were lost in space. Please log in or sign up to view the page.
 
 @## Access denied
 
-![access denied error](static/ge_access-denied.png)
+![](static/ge_access-denied.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A118562).
 
@@ -188,7 +188,7 @@ Go to homepage (if not logged in, it leads you to the main Semrush; if logged in
 
 @## Connection was lost
 
-![connection lost error](static/ge_connection-was-lost.png)
+![](static/ge_connection-was-lost.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A110472).
 
@@ -209,7 +209,7 @@ Reconnect and reload the page.
 
 @## Connection timed out
 
-![connection timed out error](static/ge_connection-timed-out.png)
+![](static/ge_connection-timed-out.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A113086).
 
@@ -228,7 +228,7 @@ The initial connection between Cloudflare’s network and the origin web server 
 
 @## Blocked (Bad) request
 
-![connection timed out error](static/ge_blocked-request.png)
+![](static/ge_blocked-request.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2842%3A114910).
 
@@ -250,9 +250,9 @@ This is the 400 error page. Try one of the following:
 
 @## Confirmation
 
-![connection timed out error](static/ge_confirmation-submit.png)
+![](static/ge_confirmation-submit.png)
 
-![connection timed out error](static/ge_confirmation-captcha.png)
+![](static/ge_confirmation-captcha.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A123668).
 
@@ -273,7 +273,7 @@ Please complete the security check, and we’ll be out of your way.
 
 @## Payment cannot be accepted
 
-![connection timed out error](static/ge_no-payment.png)
+![](static/ge_no-payment.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2484%3A128860).
 
@@ -291,7 +291,7 @@ Go to Dashboard (leads user to the Dashboard)..
 
 @## DNS Resolution Error
 
-![dns resolution error](static/ge_dns-resolution.png)
+![](static/ge_dns-resolution.png)
 
 Illustration you can find in the [inner Figma library](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=2482%3A94736).
 
@@ -328,7 +328,7 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 In case of an error defined by the HTTP state code.
 
 - DNS resolution error (1xx)
-- Access denied — Access request (403)
+- Access denied – Access request (403)
 - Page not found, Project not found (404)
 - Connection lost (408)
 - Something went wrong (500, 520)
@@ -357,7 +357,7 @@ There are two possible cases of the pattern's use:
 
 | For the whole website                                | In the product                                             |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
-| ![global errors all page](static/ge_page-smthng.png) | ![global errors all page](static/ge_under-maintenance.png) |
+| ![](static/ge_page-smthng.png) | ![](static/ge_under-maintenance.png) |
 
 ### Controls
 

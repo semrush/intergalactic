@@ -46,6 +46,14 @@ SPeriod {
   margin-bottom: var(--intergalactic-spacing-2x, 8px);
 }
 
+SButton SInner {
+  justify-content: flex-start;
+}
+
+SInputMask {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
 SIndicator {
   color: var(--intergalactic-text-secondary, #6c6e79);
 }
@@ -83,7 +91,7 @@ SInputMask[noHumanizedDate] SMask {
   opacity: 1;
 }
 SDateRange SInputMask:focus-within SMask {
-  background-color: var(--intergalactic-text-placeholder, #a9abb6);
+  background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
 }
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {

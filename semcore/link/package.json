@@ -1,7 +1,7 @@
 {
   "name": "@semcore/link",
   "description": "Semrush Link Component",
-  "version": "4.3.3",
+  "version": "4.3.27",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -10,7 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm semcore-builder --source=js",
-    "test": "jest --no-cache"
+    "test": "jest"
   },
   "dependencies": {
     "@semcore/utils": "^3.40.0",

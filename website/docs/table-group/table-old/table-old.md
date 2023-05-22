@@ -2,13 +2,20 @@
 title: Table code and API
 fileSource: table
 tabName: Example
+deprecated: true
 ---
 
 > 🚨 Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/). It is based on `CSS-flex` technology and does not use native tables.
 
-@## Simple use example
+@## Simple usage example
 
 @example easy
+
+@## Advanced use example
+
+You can manually add borders to selected cells using props `borderRight` and `borderLeft`. And if you want the table to look smaller, use the prop `compact`. If a column width limit is set using `style` prop object with `maxWidth` inside, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
+
+@example advanced
 
 @## Table with an accordion
 

@@ -4,23 +4,43 @@ import Code from './Code';
 import Copy from './Copy';
 import Sandbox from './Sandbox';
 import CopyS from '@semcore/icon/Copy/m';
+import { logEvent } from '../utils/amplitude';
+import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
 
 class Example extends React.PureComponent {
   render() {
     const { raw, children } = this.props;
+    const [group, component, , exampleName] = raw.path
+      ? raw.path.split('/')
+      : [undefined, undefined, undefined, undefined];
+    const eventProperties = {
+      group,
+      component,
+      example: exampleName ? exampleName.slice(0, exampleName.length - 4) : undefined,
+    };
     return (
       <div className={`example ${styles.exampleWrapper}`}>
-        <div className={styles.view} tabIndex={0}>
-          {children}
-        </div>
+        <ThemeProvider tokens={lightThemeTokens}>
+          <div className={styles.view} tabIndex={0} role="group">
+            {children}
+          </div>
+        </ThemeProvider>
         <div className={styles.codeView}>
           <div className={styles.codeViewControls}>
             <div className={styles.codeViewControlsParent}>
               <div className={styles.stylesIcons}>
-                <Sandbox raw={raw} />
+                <Sandbox
+                  raw={raw}
+                  onClick={() => logEvent('tab_examples:open_sandbox:click', eventProperties)}
+                />
               </div>
               <div className={styles.stylesIcons}>
-                <Copy text={raw.code} textTooltip="Click to copy code">
+                <Copy
+                  toCopy={raw.code}
+                  title="Click to copy code"
+                  onClick={() => logEvent('tab_examples:copy_code:click', eventProperties)}
+                >
                   <CopyS />
                 </Copy>
               </div>

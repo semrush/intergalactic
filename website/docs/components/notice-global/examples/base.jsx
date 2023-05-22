@@ -1,29 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Portal from '@semcore/ui/portal';
 import NoticeGlobal from '@semcore/ui/notice-global';
 import { Text } from '@semcore/ui/typography';
-import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
 
 export default () => {
-  const [visible, updateVisible] = useState(false);
-
-  useEffect(() => {
-    const { body } = document;
-    body.style.transition = 'padding-top 0.35s';
-    if (visible) {
-      body.style.paddingTop = '32px';
-    } else {
-      body.style.paddingTop = '0';
-    }
-    return () => {
-      body.style.paddingTop = '0';
-    };
-  }, [visible]);
+  const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <Button onClick={() => updateVisible(!visible)}>
+      <Button onClick={() => setVisible(!visible)}>
         {visible ? 'Close' : 'Open'} Global Notice
       </Button>
       <Portal>
@@ -43,7 +30,7 @@ export default () => {
           <NoticeGlobal.CloseIcon
             interactive={false}
             color="white"
-            onClick={() => updateVisible(false)}
+            onClick={() => setVisible(false)}
           />
         </NoticeGlobal>
       </Portal>

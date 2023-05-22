@@ -5,6 +5,7 @@ import Tooltip from '@semcore/ui/tooltip';
 import Skeleton from '@semcore/ui/skeleton';
 import styled from 'styled-components';
 import '@semcore/ui/utils/style/var.css';
+import { AnimatedNumber } from '@semcore/ui/counter/src';
 
 const BoxBlock = styled(Box)`
   overflow: hidden;
@@ -38,7 +39,7 @@ const Demo = () => {
     <FlexBlock direction="column">
       <BoxBlock h={92} w={146}>
         <Tooltip title="Keyword" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Keyword
           </Title>
         </Tooltip>
@@ -48,8 +49,16 @@ const Demo = () => {
               last 30 days
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                42
+              <Text
+                size={500}
+                color="blue-400"
+                fontWeight="bold"
+                mr={2}
+                tag="a"
+                href="https://semrush.com"
+                target="_blank"
+              >
+                <AnimatedNumber value={42} formatValue={Math.round} delay={300} />
               </Text>
               <Text size={100} color="gray-500" tag="p">
                 no change
@@ -63,7 +72,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock h={92} w={146}>
         <Tooltip title="Traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Traffic
           </Title>
         </Tooltip>
@@ -73,8 +82,16 @@ const Demo = () => {
               last 30 days
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                66.6K
+              <Text
+                size={500}
+                color="blue-400"
+                fontWeight="bold"
+                mr={2}
+                tag="a"
+                href="https://semrush.com"
+                target="_blank"
+              >
+                <AnimatedNumber value={24765} formatValue={Math.round} />
               </Text>
               <Text size={100} color="gray-500" tag="p">
                 no change
@@ -88,7 +105,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock h={92} w={146}>
         <Tooltip title="Traffic cost" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Traffic cost
           </Title>
         </Tooltip>
@@ -98,8 +115,16 @@ const Demo = () => {
               last 30 days
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
-                27K
+              <Text
+                size={500}
+                color="blue-400"
+                fontWeight="bold"
+                mr={2}
+                tag="a"
+                href="https://semrush.com"
+                target="_blank"
+              >
+                <AnimatedNumber value={908} formatValue={Math.round} />
               </Text>
               <Text size={100} color="green-500" tag="p">
                 ↑+12
@@ -113,7 +138,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock h={92} w={146}>
         <Tooltip title="Branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Branded traffic
           </Title>
         </Tooltip>
@@ -123,8 +148,15 @@ const Demo = () => {
               all time
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} fontWeight="bold" mr={2} tag="a">
-                145
+              <Text
+                size={500}
+                fontWeight="bold"
+                mr={2}
+                tag="a"
+                href="https://semrush.com"
+                target="_blank"
+              >
+                <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
               </Text>
               <Text size={100} color="green-500" tag="p">
                 ↑+13
@@ -138,7 +170,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock h={92} w={146}>
         <Tooltip title="Non-branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Non-branded traffic
           </Title>
         </Tooltip>
@@ -148,7 +180,14 @@ const Demo = () => {
               all time
             </Text>
             <Flex alignItems="baseline">
-              <Text size={500} fontWeight="bold" mr={2} tag="a">
+              <Text
+                size={500}
+                fontWeight="bold"
+                mr={2}
+                tag="a"
+                href="https://semrush.com"
+                target="_blank"
+              >
                 145
               </Text>
               <Text size={100} color="green-500" mr={2} tag="p">

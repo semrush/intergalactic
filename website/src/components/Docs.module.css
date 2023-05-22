@@ -1,46 +1,43 @@
 .main h2 {
   font-family: 'Factor A';
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 120%;
-  margin: 32px 0 16px;
+  font-weight: var(--intergalactic-medium);
+  font-size: var(--intergalactic-fs-500);
+  line-height: var(--intergalactic-lh-400);
+  margin: var(--intergalactic-spacing-8x) 0 var(--intergalactic-spacing-4x);
 }
 
 .main h2:first-child {
-  margin: 0 0 16px;
+  margin: 0 0 var(--intergalactic-spacing-4x);
 }
 
 .main h3 {
-  font-size: 18px;
-  line-height: 110%;
-  margin: 32px 0 16px 0;
-  font-weight: 700;
+  font-size: calc(var(--intergalactic-fs-300) + 2px);
+  line-height: var(--intergalactic-lh-700);
+  margin: var(--intergalactic-spacing-8x) 0 var(--intergalactic-spacing-4x) 0;
+  font-weight: var(--intergalactic-bold);
 }
 
 .main h4 {
-  font-size: 16px;
-  line-height: 150%;
-  margin: 16px 0;
-  font-weight: 700;
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  margin: var(--intergalactic-spacing-4x) 0;
+  font-weight: var(--intergalactic-bold);
+}
+
+.main code {
+  text-shadow: none;
 }
 
 .tabLine {
-  margin-bottom: 32px;
+  margin-bottom: var(--intergalactic-spacing-8x);
   overflow-x: auto;
   overflow-y: hidden;
+  --intergalactic-border-info-active: var(--intergalactic-brand-primary);
 }
 
 .tabLine .tabLineItem {
   min-width: auto;
-  font-weight: 700;
-}
-
-.tabLine > div {
-  background-color: #ff622d;
-  bottom: 0;
-}
-
-.tabLineItem:hover::after {
+  font-weight: var(--intergalactic-bold);
   bottom: 0;
 }
 

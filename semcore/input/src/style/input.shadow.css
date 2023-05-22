@@ -10,7 +10,7 @@ SInput {
   box-sizing: border-box;
 
   & input:-webkit-autofill {
-    border-radius: var(--intergalactic-rounded-medium, 6px);
+    border-radius: var(--intergalactic-control-rounded, 6px);
     -webkit-box-shadow: 0 0 0 30px rgb(250, 255, 189) inset;
 
     & ~ SOutline {
@@ -64,7 +64,7 @@ SOutline {
   bottom: 0;
   left: 0;
   border: 1px solid;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   z-index: -1;
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
 }
@@ -93,21 +93,32 @@ SAddon[disabled] {
   pointer-events: none;
 }
 
+SAddon[size='m']:not(SButton) {
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
+}
+SAddon[size='l']:not(SButton) {
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+}
+
+SInput SAddon:nth-last-child(2) {
+  margin-right: -1px;
+}
+
+SValue[size='m'] {
+  padding: 0 var(--intergalactic-spacing-2x, 8px);
+}
+SValue[size='l'] {
+  padding: 0 var(--intergalactic-spacing-3x, 12px);
+}
+
 SInput[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
   height: var(--intergalactic-form-control-m, 28px);
 }
 
-SValue[size='m'],
-SValue[size='l'] {
-  padding: 0 var(--intergalactic-spacing-2x, 8px);
-}
-
 SInput[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
   height: var(--intergalactic-form-control-l, 40px);
-  padding-left: var(--intergalactic-spacing-1x, 4px);
-  padding-right: var(--intergalactic-spacing-1x, 4px);
 }
 
 SInput[focused] {
@@ -119,7 +130,7 @@ SInput[state='normal'] {
     border-color: var(--intergalactic-border-primary, #c4c7cf);
   }
 
-  & SValue:focus ~ SOutline {
+  &[focused] SOutline {
     border-color: var(--intergalactic-border-info-active, #006dca);
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
@@ -129,18 +140,18 @@ SInput[state='valid'] {
     border-color: var(--intergalactic-border-success, #59ddaa);
   }
 
-  & SValue:focus ~ SOutline {
+  &[focused] SOutline {
     border-color: var(--intergalactic-border-success-active, #007c65);
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.3));
   }
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-danger, #ffaeb5);
+    border-color: var(--intergalactic-border-critical, #ffaeb5);
   }
 
-  & SValue:focus ~ SOutline {
-    border-color: var(--intergalactic-border-danger-active, #d1002f);
+  &[focused] SOutline {
+    border-color: var(--intergalactic-border-critical-active, #d1002f);
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
   }
 }

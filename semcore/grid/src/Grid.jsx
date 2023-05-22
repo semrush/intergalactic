@@ -25,6 +25,8 @@ class Row extends Component {
   }
 }
 
+const excludeProps = ['span'];
+
 function Col(props) {
   const SCol = Root;
   let { styles, gutter, span, md, sm, xs, offset, mdOffset, smOffset, xsOffset } = props;
@@ -59,6 +61,7 @@ function Col(props) {
       use:mdOffset={mdOffset}
       use:smOffset={smOffset}
       use:xsOffset={xsOffset}
+      __excludeProps={excludeProps}
     />,
   );
 }

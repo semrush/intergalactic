@@ -2,6 +2,258 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.8] - 2023-05-12
+
+### Fixed
+
+- Fixed radial tree icons displaying.
+
+## [2.14.7] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [2.14.6] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [2.14.3] - 2023-05-02
+
+## [2.14.2] - 2023-04-26
+
+### Fixed
+
+- Fixed warnings in development mode.
+
+## [2.14.0] - 2023-04-19
+
+### Added
+
+- Added automatic conversion of react components to text for accessibility titles.
+
+## [2.13.13] - 2023-04-18
+
+### Fixed
+
+- Fixed calculating height of `StackBar` and `HorizontalBar` components.
+
+## [2.13.12] - 2023-04-18
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [2.13.8] - 2023-03-31
+
+### Fixed
+
+- Fixed calculating width of `HorizontalBar` component.
+
+## [2.13.7] - 2023-03-31
+
+### Fixed
+
+- Fixed display `Line.Null`.
+
+## [2.13.6] - 2023-03-31
+
+### Fixed
+
+- Fixed adding custom styles for `Radar` chart.
+
+## [2.13.5] - 2023-03-29
+
+### Fixed
+
+- Fixed calculating height of `Bar` component.
+
+## [2.13.4] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [2.13.3] - 2023-03-27
+
+### Fixed
+
+- Added correct display when there is no data in a11y table.
+
+## [2.13.2] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.7 ~> 1.9.8], `@semcore/popper` [4.16.9 ~> 4.16.10], `@semcore/utils` [3.48.1 ~> 3.49.0]).
+
+## [2.13.0] - 2023-03-23
+
+### Added
+
+- Added `additionalFields` in `a11yAltTextConfig` for extra text description to the data when using a screen reader
+
+## [2.12.2] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.4 ~> 1.9.5], `@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [2.12.1] - 2023-03-21
+
+### Fixed
+
+- Fixed `Radar` chart with negative rotation hover handling.
+
+## [2.12.0] - 2023-03-16
+
+### Added
+
+- Add `angleOffset` parameter to `Radar` chart.
+
+## [2.11.1] - 2023-03-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.3 ~> 1.9.4], `@semcore/utils` [3.47.2 ~> 3.47.3]).
+
+## [2.11.0] - 2023-03-13
+
+### Changed
+
+- Much improved a11y summary generation for `Radar` chart.
+
+## [2.10.0] - 2023-03-07
+
+### Added
+
+- Added footer in `Tooltip`.
+
+## [2.9.1] - 2023-03-06
+
+### Fixed
+
+- Added backward compatibility with react 16.9.
+
+## [2.9.0] - 2023-03-06
+
+### Added
+
+- Added a new chart type `Radar`.
+
+## [2.8.19] - 2023-03-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.3 ~> 4.16.4]).
+
+## [2.8.18] - 2023-02-28
+
+### Fixed
+
+- Fixed summary generation was broken after i18n enhancement release.
+
+## [2.8.17] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [2.8.16] - 2023-02-22
+
+## [2.8.15] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [2.8.14] - 2023-02-11
+
+### Fixed
+
+- Added check for the presence of DON at start of animation for `RadialTree`.
+
+## [2.8.13] - 2023-02-10
+
+### Fixed
+
+- Fixed display of `Bar` with height 0 - it is should not be rendered.
+
+## [2.8.12] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+## [2.8.11] - 2023-01-27
+
+### Fixed
+
+- Fixed animation for `Donut`.
+
+## [2.8.10] - 2023-01-26
+
+### Changed
+
+- Changed minimum height in types for `Bar`.
+
+## [2.8.9] - 2023-01-25
+
+### Fixed
+
+- Fixed and changed minimum height of `Bar`.
+
+## [2.8.8] - 2023-01-23
+
+### Fixed
+
+- Fixed definition of users locale.
+
+## [2.8.7] - 2023-01-19
+
+### Fixed
+
+- Fixed animation in React strict mode for `RadialTree` and `Donut`.
+
+## [2.8.6] - 2023-01-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.8 ~> 1.8.9], `@semcore/utils` [3.44.3 ~> 3.45.0]).
+
+## [2.8.3] - 2022-01-10
+
+### Fixed
+
+- Added prop `transparent` for all charts opacity
+
+## [2.8.2] - 2023-01-10
+
+## [2.8.1] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.5 ~> 1.8.6], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
+## [2.8.0] - 2022-01-05
+
+### Added
+
+- Added prop `transparent` for charts opacity
+
+## [2.7.2] - 2022-12-27
+
+### Fixed
+
+- Fixed `Donut` chart rendering when hovering over a chart while it is loading.
+
+## [2.7.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.4 ~> 1.8.5], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [2.7.0] - 2022-12-14
 
 ### Changed

@@ -1,7 +1,7 @@
 @import './var.css';
 
 SCircle {
-  fill: var(--intergalactic-chart-palette-order-green, #59ddaa);
+  fill: var(--intergalactic-chart-palette-order-2, #59ddaa);
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
   fill-opacity: 0.5;
@@ -18,6 +18,10 @@ SCircle[color] {
   fill: var(--color);
 }
 
+SCircle[transparent] {
+  opacity: 0.3;
+}
+
 SIntersection {
   stroke: var(--intergalactic-chart-grid-border, #ffffff);
   stroke-width: 2px;
@@ -26,4 +30,8 @@ SIntersection {
   &:hover {
     fill-opacity: 0.1;
   }
+}
+
+SIntersection[transparent] {
+  opacity: 0.3;
 }

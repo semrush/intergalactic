@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
 @## Description
 
@@ -41,21 +41,21 @@ If you need to display different categories of data within a dataset, use Stacke
 
 The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
-![default histogram](static/histogram.png)
+![](static/histogram.png)
 
-![default histogram](static/histogram-stack.png)
+![](static/histogram-stack.png)
 
 ### Horizontal histogram chart
 
 The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
-![default histogram](static/histogram-horizontal.png)
+![](static/histogram-horizontal.png)
 
-![default histogram](static/histogram-horizontal-stack.png)
+![](static/histogram-horizontal-stack.png)
 
 @## Color usage
 
-- Use [chart palette](/data-display/chart-palette/) and follow the the recommendations it has.
+- Use [color palette](/data-display/color-palette/) and follow the the recommendations it has.
 - **You can color the histogram bars in different colors when this can be useful for easier reading of the chart.** But use it carefully. _For example, you need to highlight a certain gradation of ranges. In this case, you can choose the appropriate colors from the chart palette._
 
 ![colors in histogram](static/color-yes-no.png)
@@ -88,11 +88,11 @@ Possible solutions for such cases are described in the guide about bar charts, [
 
 @## Interaction
 
-When you hover over a column, we highlight it with `--gray-200` color with .3 opacity. The hover takes up half of the margin column on the right and left sides.
+When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover`. The hover takes up half of the margin column on the right and left sides.
 
 If the column is clickable, the cursor changes to `pointer`.
 
-![default histogram](static/histogram.png)
+![](static/histogram.png)
 
 @## Edge cases
 
@@ -103,9 +103,9 @@ Here you will find the states for some specific cases. All other "empty states" 
 - We display a single bar if we only have data for one range.
 - In the missing data area, display `n/a` in the tooltip as well as the message that there are no data for this period.
 
-![histogram with n/a](static/na.png)
+![](static/na.png)
 
-![histogram with n/a](static/no-more-histogram-chart.png)
+![](static/no-more-histogram-chart.png)
 
 ### Null values
 
@@ -113,39 +113,41 @@ If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 > **Zero is also data. 0 ≠ `n/a`.**
 
-![histogram with null](static/null-histogram-chart.png)
+![](static/null-histogram-chart.png)
 
-![histogram with null](static/null-horizontal.png)
+![](static/null-horizontal.png)
 
 ### A part of the chart contains no data
 
 - Do not display bars in the area without data.
 - When you hover over a range without data, show the tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
 
-![histogram with not all data](static/histogram-partially.png)
+![](static/histogram-partially.png)
 
-![histogram with not all data](static/hor-partially.png)
+![](static/hor-partially.png)
 
 ### Initial loading
 
-When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-More information about this state see in the guide for [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/).
 
-![histogram skeleton](static/vert-skeleton.png)
+Use the `--skeleton-bg` color token for the skeleton background color.
 
-![histogram skeleton](static/hor-skeleton.png)
+![](static/vert-skeleton.png)
 
-@## Use in UX/UI
+![](static/hor-skeleton.png)
+
+@## Usage in UX/UI
 
 - Start the columns from zero.
 - By comparing columns, we are actually comparing the length. If we do not start the scale from zero, there will be a visual illusion.
 
 Check out the charts below. In the wrong case, the scale does not start from zero, and it seems that the `Y value` is almost half as large as the `X value`. However, this is not true.
 
-![histogram start](static/deception-yes-no.png)
+![](static/deception-yes-no.png)
 
 @page histogram-chart-a11y
 @page histogram-chart-api

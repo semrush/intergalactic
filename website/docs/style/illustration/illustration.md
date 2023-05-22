@@ -14,11 +14,11 @@ tabName: Design
 
 We use illustrations of three sizes.
 
-| Size (px)              | Illustration sxample                                                                                                     | Usage                                                                     |
+| Size (px)              | Illustration example                                                                                                     | Usage                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
-| Large (130px \* 130px) | ![example of a large illustration](static/large-size.png)                                                                | Use this size for advertising messages.                                   |
-| Medium (80px \* 80px)  | ![example of a medium illustration](static/medium-size.png) ![example of a medium illustration](static/medium-size2.png) | Use this size for error messages and empty states.                        |
-| Small (40px \* 40px)   | ![example of a small illustration](static/small-size.png)                                                                | Use this size for secondary messages that should not draw much attention. |
+| Large (130px * 130px) | ![](static/large-size.png)                                                                | Use this size for advertising messages.                                   |
+| Medium (80px * 80px)  | ![](static/medium-size.png) ![example of a medium illustration](static/medium-size2.png) | Use this size for error messages and empty states.                        |
+| Small (40px * 40px)   | ![](static/small-size.png)                                                                | Use this size for secondary messages that should not draw much attention. |
 
 @page illustration-a11y
 @page illustration-code

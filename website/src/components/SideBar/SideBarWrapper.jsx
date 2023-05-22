@@ -12,12 +12,10 @@ const SidebarWrapper = (props) => {
   const [, setHistory] = useState([]);
 
   const inspectTyping = React.useCallback(
-    (getImport) => async () => {
+    (typing) => async () => {
       if (loading) return;
       setLoading(true);
       try {
-        const importedModule = await getImport();
-        const typing = importedModule.default;
         setHistory((history) => [...history, typing]);
         setVisible(true);
         setTyping(typing);

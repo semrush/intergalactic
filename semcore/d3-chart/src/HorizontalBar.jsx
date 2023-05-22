@@ -7,6 +7,17 @@ import { getBandwidth, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
+export const MIN_WIDTH = 2;
+
+const calcPartBarX = (x, minWidth, width) => {
+  // need for the correct rendering of negative values
+  if (x <= 0) {
+    return width <= minWidth ? minWidth : 0;
+  }
+  // need for the correct rendering of the minimum positive values
+  return Object.is(x, 0) ? minWidth : 0;
+};
+
 class HorizontalBarRoot extends Component {
   static displayName = 'HorizontalBar';
   static enhance = [uniqueIDEnhancement()];
@@ -16,7 +27,7 @@ class HorizontalBarRoot extends Component {
     offset: [0, 0],
     duration: 500,
     r: 2,
-    wMin: 4,
+    wMin: MIN_WIDTH,
   };
 
   getBackgroundProps(props, index) {
@@ -36,7 +47,7 @@ class HorizontalBarRoot extends Component {
       y,
       scale,
       hide,
-      offset,
+      offset: offsetProps,
       uid,
       duration,
       r,
@@ -45,14 +56,21 @@ class HorizontalBarRoot extends Component {
       onMouseMove,
       onMouseLeave,
       groupKey,
+      transparent,
     } = this.asProps;
 
+    const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
-    const barY = yScale(d[y]) + offset[1];
-    const barX = xScale(Math.min(d[x0] ?? 0, d[x])) + offset[0] - (Object.is(d[x], -0) ? wMin : 0);
+    const absWidth = Math.abs(
+      xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
+    );
     const height = heightProps || getBandwidth(yScale);
-    const width =
-      Math.abs(xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0))) || wMin;
+    const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
+    const barY = yScale(d[y]) + offset[1];
+    const barX =
+      xScale(Math.min(d[x0] ?? 0, width <= wMin && d[x] < 0 ? 0 : d[x])) +
+      offset[0] -
+      calcPartBarX(d[x], wMin, width);
     const dSvg = getHorizontalRect({
       x: barX,
       y: barY,
@@ -74,12 +92,13 @@ class HorizontalBarRoot extends Component {
         key={`horizontal-bar-${i}`}
         render="path"
         clipPath={`url(#${uid})`}
-        __excludeProps={['data', 'scale', 'value']}
+        __excludeProps={['data', 'scale', 'value', 'offset']}
         childrenPosition="above"
         value={d}
         index={i}
         hide={hide}
         color={color}
+        transparent={transparent}
         x={barX}
         y={barY}
         width={width}
@@ -136,7 +155,7 @@ function Background(props) {
 }
 
 function getHorizontalRect({ x, y, width, height, radius, position }) {
-  if (width <= radius) return '';
+  if (width < radius) radius = width;
   if (radius) {
     if (position === 'right')
       return roundedPath(x, y, width, height, radius, false, true, false, true);

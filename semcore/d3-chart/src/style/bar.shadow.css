@@ -1,7 +1,7 @@
 @import './var.css';
 
 SBar {
-  fill: var(--intergalactic-chart-palette-order-blue, #2bb3ff);
+  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
   transition-property: height, width, y;
   transition-duration: var(--duration);
   transition-timing-function: ease-in-out;
@@ -13,6 +13,10 @@ SBar[color] {
 
 SBar[hide] {
   display: none;
+}
+
+SBar[transparent] {
+  opacity: 0.3;
 }
 
 SBackground {

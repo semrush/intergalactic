@@ -11,8 +11,8 @@ const Demo = () => {
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.Toggle p="8px 12px">
             <Flex alignItems="center">
-              <Accordion.Item.Chevron color="gray-300" mr={2} />
-              <Text size={200} color="gray-800">{`Section ${index + 1}`}</Text>
+              <Accordion.Item.Chevron color="gray-500" mr={2} />
+              <Text size={200} color="gray-800" tag="h3" my={0}>{`Section ${index + 1}`}</Text>
             </Flex>
           </Accordion.Item.Toggle>
           <Accordion.Item.Collapse>

@@ -176,11 +176,11 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
   };
 
   const getReport = async (standFilePath: string) => {
-    const exampleFileRealtivePath = resolveRelativePath(
+    const exampleFileRelativePath = resolveRelativePath(
       resolvePath(__dirname, '../..'),
       standFilePath,
     );
-    const standUrl = `https://github.com/semrush/intergalactic/blob/master/${exampleFileRealtivePath}`;
+    const standUrl = `https://github.com/semrush/intergalactic/blob/master/${exampleFileRelativePath}`;
     const actionsList = actionsLog.map((log, index) => `${index + 1}. ${log}`).join('\n');
 
     return `**Running screen reader against [this file](${standUrl}).**

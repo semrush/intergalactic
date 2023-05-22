@@ -24,9 +24,9 @@ const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 
 export default function () {
   const [step, setStep] = useState(1);
-  const [visible, changeVisible] = useState(false);
-  const handleOpen = () => changeVisible(true);
-  const handleClose = () => changeVisible(false);
+  const [visible, setVisible] = useState(false);
+  const handleOpen = () => setVisible(true);
+  const handleClose = () => setVisible(false);
 
   return (
     <>

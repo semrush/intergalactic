@@ -5,6 +5,11 @@ import SortAsc from '@semcore/icon/SortAsc/m';
 import SortDesc from '@semcore/icon/SortDesc/m';
 import Context from './context';
 
+const SORTING_ICON = {
+  desc: SortDesc,
+  asc: SortAsc,
+};
+
 function RootCell(props, ref) {
   const SCell = Text;
   const { valign = 'top', align: alignProps = 'left', textAlign, use, styles, ...other } = props;
@@ -21,7 +26,7 @@ const Cell = createBaseComponent(RootCell);
 
 function CellRowInner(props, ref) {
   const SCellRow = Cell;
-  const { theme, highlighted, interactive, styles } = props;
+  const { theme, highlighted, interactive, borderRight, borderLeft, styles } = props;
 
   return sstyled(styles)(
     <SCellRow
@@ -30,6 +35,8 @@ function CellRowInner(props, ref) {
       theme={theme}
       highlighted={highlighted}
       interactive={interactive}
+      borderRight={borderRight}
+      borderLeft={borderLeft}
       {...props}
     />,
   );
@@ -50,26 +57,25 @@ CellRow.displayName = 'CellRow';
 function CellHeadInner(props, ref) {
   const SCellHead = Cell;
   const SCellHeadContent = 'div';
-  const SCellHeadIconAsc = SortAsc;
-  const SCellHeadIconDesc = SortDesc;
-  const { children, ...other } = props;
-  const { active, sorting, use, styles } = other;
+  const SSortWrapper = 'div';
+  const { styles, children, sorting, active } = props;
+  const SSortIcon = SORTING_ICON[sorting];
 
   return sstyled(styles)(
     <SCellHead
       ref={ref}
       tag="th"
       noWrap
-      use={use}
-      active={active}
-      sorting={sorting}
       tabIndex={sorting && 0}
-      {...other}
+      {...props}
     >
       <SCellHeadContent>
         {children}
-        {sorting === 'asc' && <SCellHeadIconAsc active={active} />}
-        {sorting === 'desc' && <SCellHeadIconDesc active={active} />}
+        {sorting && (
+          <SSortWrapper>
+            <SSortIcon active={active}/>
+          </SSortWrapper>
+        )}
       </SCellHeadContent>
     </SCellHead>,
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
 
-const interpolationRegex = /{{(.*?)}}/g;
+const interpolationRegex = /{(.*?)}/g;
 
 const escapeHtml = (html: string) =>
-  html
+  String(html)
     .split('')
     .map((char) => {
       switch (char) {
@@ -25,7 +25,7 @@ const escapeHtml = (html: string) =>
 
 export function interpolate(template: string, variables: {} = {}) {
   return template.replace(interpolationRegex, (_, key) => {
-    if (variables[key]) {
+    if (variables[key] !== undefined) {
       return escapeHtml(variables[key]);
     }
     return _;
@@ -37,7 +37,9 @@ export interface IWithI18nEnhanceProps {
   getI18nText?: (key?: string, variables?: {}) => any;
   /* Object with translations */
   i18n?: {
-    [key: string]: string;
+    [locale: string]: {
+      [key: string]: string;
+    };
   };
   /* Locale for translations */
   locale?: LocaleKeys;

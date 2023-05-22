@@ -5,6 +5,6 @@ tabName: Design
 disabled: true
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
 @page d3-chart-changelog

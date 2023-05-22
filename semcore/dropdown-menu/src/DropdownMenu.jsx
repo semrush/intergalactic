@@ -8,8 +8,8 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
+import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
-import scrollStyles from './style/scroll-area.shadow.css';
 
 const KEYS = ['ArrowDown', 'ArrowUp', 'Enter', ' '];
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
@@ -40,10 +40,11 @@ class DropdownMenuRoot extends Component {
     };
   }
 
-  handlerKeyDown = (e) => {
+  bindHandlerKeyDown = (place) => (e) => {
     const amount = e.shiftKey ? 5 : 1;
 
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
+    if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
     if (!KEYS.includes(e.key)) return;
 
     e.preventDefault();
@@ -59,40 +60,47 @@ class DropdownMenuRoot extends Component {
         break;
       case ' ':
       case 'Enter':
-        if (this.highlightedItemRef.current) this.highlightedItemRef.current.click();
+        if (this.highlightedItemRef.current) {
+          this.highlightedItemRef.current.click();
+        } else {
+          if (place === 'trigger') this.handlers.visible(false);
+        }
         break;
     }
   };
 
   getTriggerProps() {
-    const { size, uid, disablePortal, visible, getI18nText } = this.asProps;
+    const { size, uid, disablePortal, visible, getI18nText, highlightedIndex } = this.asProps;
 
     return {
       size,
       id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
-      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
-      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
-      onKeyDown: this.handlerKeyDown,
+      'aria-controls': `igc-${uid}-popper`,
+      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'aria-expanded': visible ? 'true' : 'false',
+      'aria-activedescendant': highlightedIndex,
+      onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
 
   getListProps() {
-    const { size } = this.asProps;
+    const { size, uid } = this.asProps;
     return {
       size,
+      uid,
       index: this.asProps.highlightedIndex,
     };
   }
 
   getPopperProps() {
-    const { uid, disablePortal } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
 
     return {
       tabIndex: 0,
-      onKeyDown: this.handlerKeyDown,
+      onKeyDown: this.bindHandlerKeyDown('popper'),
       id: `igc-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
+      disablePortal,
+      ignorePortalsStacking,
     };
   }
 
@@ -165,9 +173,6 @@ class DropdownMenuRoot extends Component {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
-      setTimeout(() => {
-        this.highlightedItemRef.current?.focus();
-      }, 0);
     }
   }
 
@@ -195,12 +200,13 @@ class DropdownMenuRoot extends Component {
 
 function List(props) {
   const SDropdownMenuList = Root;
+  const { uid } = props;
 
   return sstyled(props.styles)(
     <SDropdownMenuList
       render={ScrollAreaComponent}
       role="menu"
-      aria-activedescendant={props.index}
+      aria-labelledby={`igc-${uid}-trigger`}
       shadow={true}
       styles={scrollStyles}
     />,
@@ -250,16 +256,12 @@ function Addon(props) {
 
 function Hint(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant="hint" role="menuitem" tabIndex={0} />,
-  );
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="hint" />);
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(
-    <SDropdownMenuItem render={Flex} variant="title" role="menuitem" tabIndex={0} />,
-  );
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="title" />);
 }
 
 function Trigger() {

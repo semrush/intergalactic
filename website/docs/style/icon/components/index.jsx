@@ -18,9 +18,9 @@ const NotFound = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: var(--intergalactic-spacing-10x);
   margin: auto;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
   border: solid 1px #d1d4db;
 `;
 
@@ -67,12 +67,12 @@ function SearchIcons(props) {
 }
 
 export default function ({ icons, old, json }) {
-  const [inputValue, updateInputValue] = useState('');
-  const [filterIcons, updatefilterIcons] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [filterIcons, setFilterIcons] = useState([]);
 
   return (
     <>
-      {!old && <SearchIcons filteredIcons={updatefilterIcons} onChangeValue={updateInputValue} />}
+      {!old && <SearchIcons filteredIcons={setFilterIcons} onChangeValue={setInputValue} />}
 
       {inputValue.length ? (
         filterIcons.length ? (

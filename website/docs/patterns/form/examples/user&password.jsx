@@ -9,10 +9,9 @@ import { Text } from '@semcore/ui/typography';
 const Demo = () => {
   const { register, handleSubmit, errors, reset } = useForm({
     mode: 'onBlur',
-    shouldFocusError: false,
   });
 
-  const onSubmit = (data, e) => {
+  const onSubmit = (data) => {
     reset({ email: '', password: '' });
     alert(JSON.stringify(data));
   };
@@ -23,7 +22,15 @@ const Demo = () => {
         <Text size={300} tag="label" mb={1} htmlFor="email">
           Email
         </Text>
-        <Tooltip interaction={errors['email'] ? 'focus' : 'none'} placement="right" theme="warning">
+        <Tooltip animationsDisabled>
+          <Tooltip.Popper
+            placement="right"
+            theme="warning"
+            visible={errors['email']}
+            id="form-email-error"
+          >
+            {errors['email']?.message}
+          </Tooltip.Popper>
           <Tooltip.Trigger
             tag={Input}
             w="100%"
@@ -37,26 +44,34 @@ const Demo = () => {
                 {...getTriggerProps({
                   id: 'email',
                   name: 'email',
+                  type: 'email',
                   ref: register({
+                    required: 'Email is required',
                     pattern: {
                       value: /.+@.+\..+/i,
-                      message: "Email don't valid",
+                      message: 'Email is not valid',
                     },
                   }),
                 })}
+                autoComplete="email"
+                aria-invalid={Boolean(errors['email'])}
+                aria-errormessage={errors['email'] ? 'form-email-error' : undefined}
               />
             )}
           </Tooltip.Trigger>
-          {errors['email'] && <Tooltip.Popper>{errors['email']?.message}</Tooltip.Popper>}
         </Tooltip>
         <Text size={300} tag="label" mb={1} htmlFor="password">
           Password
         </Text>
-        <Tooltip
-          interaction={errors['password'] ? 'focus' : 'none'}
-          placement="right"
-          theme="warning"
-        >
+        <Tooltip animationsDisabled>
+          <Tooltip.Popper
+            placement="right"
+            theme="warning"
+            visible={errors['password']}
+            id="form-password-error"
+          >
+            {errors['password']?.message}
+          </Tooltip.Popper>
           <Tooltip.Trigger
             tag={Input}
             w="100%"
@@ -71,12 +86,14 @@ const Demo = () => {
                   id: 'password',
                   name: 'password',
                   type: 'password',
-                  ref: register({ required: 'Require password' }),
+                  ref: register({ required: 'Password is required' }),
                 })}
+                autoComplete="password"
+                aria-invalid={Boolean(errors['password'])}
+                aria-errormessage={errors['password'] ? 'form-password-error' : undefined}
               />
             )}
           </Tooltip.Trigger>
-          {errors['password'] && <Tooltip.Popper>{errors['password']?.message}</Tooltip.Popper>}
         </Tooltip>
 
         <Button type="submit" use="primary" theme="success" size="l" w="100%">

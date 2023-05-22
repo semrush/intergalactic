@@ -4,6 +4,7 @@ import createComponent, { sstyled, Component, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from './style/drag-and-drop.shadow.css';
 
@@ -84,8 +85,10 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
   handleDragStart = (index: number) => () => {
     const itemText =
-      this.state.items[index]?.node?.getAttribute('aria-label') ??
-      this.state.items[index]?.node?.textContent;
+      this.state.items[index]?.node?.getAttribute('aria-label') ||
+      this.state.items[index]?.node?.textContent ||
+      `${index + 1}`;
+
     const { getI18nText } = this.asProps;
     const itemsCount = this.state.items.length;
     const a11yHint = getI18nText('grabbed', {
@@ -118,8 +121,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         event.clientY < rect.y + rect.height,
     );
     const itemText =
-      this.state.items[itemIndex]?.node?.getAttribute('aria-label') ??
-      this.state.items[itemIndex]?.node?.textContent;
+      this.state.items[itemIndex]?.node?.getAttribute('aria-label') ||
+      this.state.items[itemIndex]?.node?.textContent ||
+      `${itemIndex + 1}`;
     const itemsCount = this.state.items.length;
     const { getI18nText } = this.asProps;
     const a11yHint = getI18nText('grabbing', {
@@ -145,8 +149,9 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     if (!onDnD) return;
     const { items, dragging } = this.state;
     const itemText =
-      this.state.items[index]?.node?.getAttribute('aria-label') ??
-      this.state.items[index]?.node?.textContent;
+      this.state.items[index]?.node?.getAttribute('aria-label') ||
+      this.state.items[index]?.node?.textContent ||
+      `${index + 1}`;
     const itemsCount = this.state.items.length;
     const a11yHint = getI18nText('dropped', {
       itemText,
@@ -282,7 +287,7 @@ const Draggable = (props) => {
     [children, props],
   );
 
-  React.useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     attach({ index, children: resolvedChildren, node: ref.current, id, draggingAllowed: !noDrag });
     return () => detach(index);
   }, [index, resolvedChildren, attach, detach, id]);

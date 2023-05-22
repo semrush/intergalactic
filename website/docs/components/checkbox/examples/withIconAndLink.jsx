@@ -12,7 +12,7 @@ const Demo = () => (
   <>
     {[0, 1, 2].map((item) => (
       <div key={item}>
-        <Checkbox mb={2}>
+        <Checkbox mb={3}>
           <Checkbox.Value />
           <Checkbox.Text>{`Note ${item + 1}`}</Checkbox.Text>
         </Checkbox>
@@ -24,10 +24,13 @@ const Demo = () => (
 
     {[3, 4, 5].map((item) => (
       <div key={item}>
-        <Checkbox mb={2}>
+        <Checkbox mb={3}>
           <Checkbox.Value />
           <Checkbox.Text>
-            {`Note ${item + 1}`} <Link onClick={noop}>Link to somewhere</Link>
+            {`Note ${item + 1}`}{' '}
+            <Link href="#" onClick={noop}>
+              Link to somewhere
+            </Link>
           </Checkbox.Text>
         </Checkbox>
       </div>

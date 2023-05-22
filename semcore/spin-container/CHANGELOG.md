@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.2.28] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/spin` [4.2.22 ~> 4.2.23], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/animation` [1.10.8 ~> 1.10.9]).
+
+## [6.2.27] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/spin` [4.2.21 ~> 4.2.22], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/animation` [1.10.7 ~> 1.10.8]).
+
+## [6.2.25] - 2023-05-02
+
+## [6.2.24] - 2023-04-26
+
+## [6.2.23] - 2023-04-24
+
+## [6.2.22] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/spin` [4.2.18 ~> 4.2.19], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/animation` [1.10.1 ~> 1.10.2]).
+
+## [6.2.21] - 2023-04-03
+
+## [6.2.20] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/spin` [4.2.17 ~> 4.2.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/animation` [1.9.9 ~> 1.10.0]).
+
+## [6.2.9] - 2023-02-09
+
+## [6.2.8] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/spin` [4.2.6 ~> 4.2.7], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/animation` [1.8.9 ~> 1.8.10]).
+
+## [6.2.5] - 2023-01-10
+
+## [6.2.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/spin` [4.2.3 ~> 4.2.4], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/animation` [1.8.5 ~> 1.8.6]).
+
 ## [6.2.1] - 2022-12-13
 
 ### Changed

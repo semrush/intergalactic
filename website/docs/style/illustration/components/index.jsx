@@ -57,15 +57,15 @@ function SearchIllustrations(props) {
 }
 
 export default function ({ illustrations, json }) {
-  const [inputValue, updateInputValue] = useState('');
-  const [filterIllustrations, updatefilterIllustrations] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [filterIllustrations, setFilterIllustrations] = useState([]);
 
   return (
     <>
       {
         <SearchIllustrations
-          filteredIllustrations={updatefilterIllustrations}
-          onChangeValue={updateInputValue}
+          filteredIllustrations={setFilterIllustrations}
+          onChangeValue={setInputValue}
         />
       }
 
@@ -86,6 +86,7 @@ export default function ({ illustrations, json }) {
           <IllustrationGroup title="Chart types" />
           <IllustrationGroup title="Data types" />
           <IllustrationGroup title="Errors" />
+          <IllustrationGroup title="Other" />
         </IllustrationGroups>
       )}
     </>

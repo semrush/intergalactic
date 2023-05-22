@@ -143,7 +143,8 @@ const GENERATOR = {
           const template = EXPORT_TEMPLATES[extension].DEFAULT;
           await fs.outputFile(
             `./${name}/${icon}/${subFile}/index.${extension}`,
-            template(`${dependency}/${icon}/${subFile}`),
+            // normalize because "subFile" can be just "."
+            template(path.normalize(`${dependency}/${icon}/${subFile}`)),
           );
         }
       }

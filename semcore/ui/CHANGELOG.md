@@ -1,3 +1,1244 @@
+## [13.27.4] - 2023-05-15
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed radial tree icons displaying.
+
+### @semcore/inline-input
+
+- **Fixed** Pressing `Escape` or `Enter` might trigger both `onConfirm` and `onCancel`.
+
+## [13.27.3] - 2023-05-12
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed empty tooltip content while fading out.
+
+### @semcore/pagination
+
+- **Changed** Improved next and prev buttons aria labels.
+
+### @semcore/utils
+
+- **Fixed** Fixed `i18n` interpolation of falsable values.
+
+## [13.27.2] - 2023-05-10
+
+### @semcore/divider
+
+- **Changed** Role `separator` and `aria-orientation` were added for better accessability.
+
+### @semcore/portal
+
+- **Fixed** Fixed SSR when `ignorePortalsStacking` is turned on.
+
+### @semcore/tooltip
+
+- **Fixed** Screen reader tooltip content updates correctly on change
+- **Changed** Changed content layout for screen reader. Now it's in `Tooltip.Popper`
+
+### @semcore/utils
+
+- **Fixed** Made automatic focus return more friendly for modals and side panels.
+
+## [13.27.1] - 2023-05-04
+
+### @semcore/badge
+
+- **Changed** Made default `<Badge />` background more contrast.
+
+### @semcore/carousel
+
+- **Changed** Made `<Carousel />` arrows color more contrast.
+
+### @semcore/drag-and-drop
+
+- **Changed** Made draggable elements dragging pattern more contrast.
+
+### @semcore/pills
+
+- **Added** Allowed pills focus navigation with left and right keyboard arrows.
+
+### @semcore/skeleton
+
+- **Changed** Hid skeleton for screen readers.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed uncontrolled `<TabLine />` animation.
+
+## [13.27.0] - 2023-05-04
+
+### @semcore/popper
+
+- **Fixed** Using `ignorePortalsStacking` on top-level poppers was causing application crash.
+
+### @semcore/radio
+
+- **Added** Added the ability to set tag for `RadioGroup`.
+
+### @semcore/scroll-area
+
+- **Fixed** `<ScrollArea.Bar />` component might break app in some rare use cases.
+
+## [13.26.0] - 2023-05-03
+
+### @semcore/animation
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/counter
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/drag-and-drop
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/ellipsis
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+### @semcore/scroll-area
+
+- **Changed** Added required `role` and `aria` attributes for better screen readers support.
+- **Changed** Scroll area container are now focusable by keyboard.
+
+### @semcore/utils
+
+- **Changed** During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+## [13.25.2] - 2023-05-02
+
+### @semcore/animation
+
+- **Fixed** Fixed collapse animations blinking.
+
+### @semcore/carousel
+
+- **Fixed** Fixed image display when specifying an index other than 0.
+
+## [13.25.1] - 2023-04-28
+
+### @semcore/carousel
+
+- **Fixed** Fixed warnings in development mode.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Added `aria-label` for the close icon.
+
+### @semcore/grid
+
+- **Fixed** Fixed warnings in development mode.
+
+### @semcore/input
+
+- **Fixed** Moved paddings from container to `<Input.Value />` and `<Input.Addon />` to fix addons in inputs of large size.
+- **Fixed** `<Input.Addon />` now automatically takes size of `<Input />`.
+- **Fixed** Fixed right border duplication when last addon is build on top of `<Button />`.
+
+## [13.25.0] - 2023-04-26
+
+### @semcore/animation
+
+- **Fixed** Fixed collapse animations (e.g. used in `<Accordion />`) in Safari.
+
+### @semcore/data-table
+
+- **Fixed** Fixed missing `key` warning.
+
+### @semcore/date-picker
+
+- **Changed** Improved date picker rendering performance.
+
+### @semcore/typography
+
+- **Added** Added `uppercase`, `lowercase`, `capitalize` text transformation props.
+
+## [13.24.0] - 2023-04-24
+
+### @semcore/date-picker
+
+- **Fixed** Fixed issue with custom styles when using `shadow-loader` plugin.
+
+### @semcore/modal
+
+- **Added** Added `disablePreventScroll` prop.
+
+### @semcore/side-panel
+
+- **Added** Added `disablePreventScroll` prop.
+
+### @semcore/utils
+
+- **Fixed** Fixed `usePreventScroll` (used in `<Modal />` and `<ScrollBar />`) might totally block document body scroll with async components appearing and fading.
+
+## [13.23.0] - 2023-04-19
+
+### @semcore/color-picker
+
+- **Fixed** Added `aria-hidden="true"` for input control because they are auxiliary.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating height of `StackBar` and `HorizontalBar` components.
+
+### @semcore/fullscreen-modal
+
+- **Changed** Default title tag switched from `h4` to `h2` without changing visual representation.
+- **Fixed** Fixed ability to control from keyboard for `Close` and `Back`.
+
+### @semcore/inline-edit
+
+- **Fixed** Improvements for a11y. Added more correct label. Added role attribute. Return focus on cancel or confirm.
+
+### @semcore/inline-input
+
+- **Fixed** Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+
+### @semcore/input
+
+- **Changed** Fixed outline styles so that they work even if the `Value` is wrapped in other elements.
+
+### @semcore/input-mask
+
+- **Changed** Remove `aria-invalid` because you can't enter the wrong value.
+- **Changed** Added hint for screen reader.
+- **Changed** Controls are now `display:none` rather than `visibility:hidden`, this gives more space for placeholder.
+
+### @semcore/link
+
+- **Fixed** Fixed visual keyboard focus highlight of inline links.
+
+### @semcore/popper
+
+- **Fixed** `interaction=hover` poppers now might be triggered by keyboard focus (but not mouse focus).
+
+### @semcore/product-head
+
+- **Changed** Changed `tag` of `Title` from `div` to `h1` for better accessibility.
+
+### @semcore/select
+
+- **Added** Added `aria-multiselectable` attribute to `Menu` component for better accessibility.
+- **Added** Return focus to trigger when option is selected.
+
+### @semcore/spin
+
+- **Added** Added `aria-hidden` attribute for better accessibility.
+
+### @semcore/time-picker
+
+- **Added** Added ARIA attributes for better accessibility.
+
+### @semcore/utils
+
+- **Fixed** Fixed behavior when returning focus. Now focus return does not work if user used the mouse.
+- **Change** Added `id` propertie for `ScreenReaderOnly` component.
+- **Fixed** Keyboard focus highlight wasn't working until keyboard focuses any focusable element second time.
+- **Fixed** Delayed focus return in the macrotask to prevent focus return trigger event passing to to the return focus target.
+
+### @semcore/wizard
+
+- **Changed** Title got semantic `h2` tag.
+- **Fixed** Added screen reader only hint about completed steps.
+
+## [13.22.2] - 2023-04-11
+
+### @semcore/button
+
+- **Fixed** Removed `role=button` from native button.
+
+### @semcore/input-tags
+
+- **Fixed** Non-interactive container are not focusable by keyboard now.
+
+### @semcore/pagination
+
+- **Fixed** Fixed "confirm" icon keyboard navigation.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed `aria-posinset` attribute value generation.
+
+### @semcore/tab-panel
+
+- **Fixed** Fixed `aria-posinset` attribute value generation.
+
+### @semcore/tag
+
+- **Fixed** Non-interactive tags are not focusable by keyboard now.
+
+### @semcore/tooltip
+
+- **Fixed** Turn `aria-haspopup` to `false` for Tooltip with `hover=interaction`.
+
+## [13.22.1] - 2023-04-11
+
+### @semcore/feedback-form
+
+- **Changed** Patched `final-form` to meet `react-final-form` peer dependency.
+
+## [13.22.0] - 2023-04-11
+
+### @semcore/data-table
+
+- **Changed** Changed the presentation of the sort icon. Now it always runs into the text.
+
+### @semcore/ellipsis
+
+- **Changed** Added React 18 to the peer dependencies.
+
+### @semcore/feedback-form
+
+- **Changed** Patched `react-final-form` to the latest version.
+
+### @semcore/select
+
+- **Added** Return focus to trigger when option is selected.
+
+## [13.21.0] - 2023-04-03
+
+### @semcore/animation
+
+- **Fixed** Nested animation might take initial keyframe from animated parent component in some cases.
+
+### @semcore/carousel
+
+- **Fixed** Fixed carousel html roles.
+
+### @semcore/checkbox
+
+- **Fixed** Fixed `aria-checked` attribute values.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Fixed screen reader annotation of visually untitled items.
+
+### @semcore/popper
+
+- **Changed** Moved screen reader hint from `aria-label` attribute to `aria-live="polite"` alert block.
+- **Changed** Improved keyboard navigation on exit from focus-triggered popovers.
+
+### @semcore/tooltip
+
+- **Changed** Tooltip with `hover` `interaction` content is duplicated into screen-reader-only block.
+
+## [13.20.5] - 2023-03-31
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating width of `HorizontalBar` component.
+- **Fixed** Fixed display `Line.Null`.
+- **Fixed** Fixed adding custom styles for `Radar` chart.
+
+### @semcore/input-tags
+
+- **Fxed** Fixed scrolling when paste and enter items.
+
+## [13.20.4] - 2023-03-30
+
+### @semcore/input-tags
+
+- **Added** Added checking if the input `ref` has `scrollIntoView` method.
+
+## [13.20.3] - 2023-03-30
+
+### @semcore/input-tags
+
+- **Fixed** Fixed checking if the input `ref` is exists.
+
+## [13.20.2] - 2023-03-29
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed calculating height of `Bar` component.
+
+## [13.20.1] - 2023-03-29
+
+### @semcore/date-picker
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/dropdown
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/dropdown-menu
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/input-mask
+
+- **Changed** Changed color in default and focused states as in `Figma`.
+
+### @semcore/notice
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/pagination
+
+- **Added** Added design tokens to `TotalPages` component.
+
+### @semcore/radio
+
+- **Added** Added default color (`--intergalactic-text-primary`) to the component.
+
+### @semcore/switch
+
+- **Fixed** Fixed that switch with single label was turning label into secondary text color.
+
+### @semcore/time-picker
+
+- **Added** Added default color (`--intergalactic-text-primary`) to `Separator` component.
+
+### @semcore/tooltip
+
+- **Fixed** Fixed tooltip border color for default theme.
+
+## [13.20.0] - 2023-03-28
+
+### @semcore/animation
+
+- **Added** Animation context that allows children components react to parent animation execution.
+
+### @semcore/portal
+
+- **Added** Supported ignoring parent portals nesting via `ignorePortalsStacking`.
+
+### @semcore/utils
+
+- **Added** Small internal util for context consuming in class-based components.
+
+## [13.19.1] - 2023-03-28
+
+### @semcore/d3-chart
+
+- **Fixed** Added correct display when there is no data in a11y table.
+
+### @semcore/feedback-form
+
+- **Fixed** Added a11y error binding to field.
+
+### @semcore/utils
+
+- **Fixed** Utils package was breaking building via webpack and vite.
+
+## [13.19.0] - 2023-03-24
+
+### @semcore/animation
+
+- **Added** Added `pointer-events` properties to scale group `keyframes` to avoid problems with overlapping elements and changing the cursor.
+
+### @semcore/dot
+
+- **Fixed** Fixed local themes on dot.
+
+### @semcore/modal
+
+- **Fixed** Fixed local themes in modals.
+
+### @semcore/notice-bubble
+
+- **Fixed** Fixed local themes in notice bubbles.
+
+### @semcore/popper
+
+- **Fixed** Fixed local themes in poppers.
+
+### @semcore/portal
+
+- **Removed** Non-working portalled local theme reapplying.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed local themes in side panels.
+
+### @semcore/utils
+
+- **Added** Supported portalled local theme reapplying in class-based components.
+- **Removed** Removed `Status` group in semantic tokens.
+- **Changed** Moved the gray-white token in front of the gray-50, slightly tweaked the order.
+
+## [13.18.0] - 2023-03-23
+
+### @semcore/accordion
+
+- **Fixed** Toggles attributes `aria-expanded` and `aria-controls` were not applied when accordion section was closed.
+
+### @semcore/badge
+
+- **Fixed** Made Badge visible for screen readers again.
+
+### @semcore/card
+
+- **Fixed** Made `<Card.Title />` `hint` available for screen readers.
+
+### @semcore/d3-chart
+
+- **Added** Added `additionalFields` in `a11yAltTextConfig` for extra text description to the data when using a screen reader
+
+### @semcore/dropdown
+
+- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+
+### @semcore/dropdown-menu
+
+- **Added** Added `z-index: 0` to `DropdownMenu.List` so that it doesn't overlap the focus border of neighboring elements.
+- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** Navigating options with keyboard now doesn't trigger browser focus.
+- **Fixed** `aria-activedescendant` now is properly updated on keyboard navigation.
+
+### @semcore/feature-popover
+
+- **Fixed** Add tabIndex for Icon close.
+
+### @semcore/feedback-form
+
+- **Added** Added properties `backgrouund` and `theme` responsible for spinner theme.
+
+### @semcore/select
+
+- **Fixed** `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- **Fixed** `aria-activedescendant` was applied to selected option but not on focused one.
+- **Fixed** Option keys are now based on option value.
+- **Fixed** Removed unexpected tabIndex=-1.
+
+### @semcore/utils
+
+- **Added** Added internal util `ScreenReaderOnly` to declaratively put screen reader only text in the components.
+
+## [13.17.2] - 2023-03-22
+
+### @semcore/notice-bubble
+
+- **Fixed** Default export typings wasn't corresponding to the runtime one.
+- **Changed** Added `noticeBubbleDefaultManager` export that is equal to the default export.
+- **Changed** Deprecated default export. `noticeBubbleDefaultManager` is recommended as a drop-in replacement.
+
+### @semcore/utils
+
+- **Fixed** Focus locked tab navigation might cause scrolling to the end or to the start of the page.
+
+## [13.17.1] - 2023-03-21
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed `Radar` chart with negative rotation hover handling.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed alignment cursor when there are no tags.
+
+## [13.17.0] - 2023-03-21
+
+### @semcore/icon
+
+- **Added** Added `GitHubInvert` icon.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed tag display when crossing the border during scroll.
+- **Fixed** Fixed tag alignment when set minimum height.
+
+### @semcore/widget-empty
+
+- **Changed** Updated `Error` view texts in all languages.
+- **Changed** Updated `NoData` view texts in all languages.
+
+## [13.16.0] - 2023-03-16
+
+### @semcore/core
+
+- **Changed** Changed logic of merging component styles and context styles due to losing context styles before.
+
+## [13.15.0] - 2023-03-16
+
+### @semcore/d3-chart
+
+- **Added** Add `angleOffset` parameter to `Radar` chart.
+
+### @semcore/errors
+
+- **Changed** Changed Title's font-weight from `bold` to `semi-bold`.
+
+## [13.14.1] - 2023-03-16
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed padding for the success state of the feedback form.
+
+### @semcore/utils
+
+- **Fixed** Fixed focus lock might cause infinite focus war when multiple focus locks exist on same page.
+
+## [13.14.0] - 2023-03-15
+
+### @semcore/d3-chart
+
+- **Changed** Much improved a11y summary generation for `Radar` chart.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed color of selected period.
+
+### @semcore/modal
+
+- **Fixed** Fixed focus locking and returning.
+
+### @semcore/notice-bubble
+
+- **Added** Properties to add icons to notices.
+- **Added** `NoticeBubbleManager` method typings.
+- **Added** Documentation examples.
+- **Fixed** Disappear animation of stacked notices.
+- **Fixed** Warning notices were not removable.
+- **Fixed** Default links color.
+- **Changed** Deprecated adding notices by `NoticeBubble` and `NoticeBubbleWarning` without `NoticeBubbleManager`.
+- **Fixed** Fixed typings of exported `NoticeBubbleManager`.
+
+### @semcore/popper
+
+- **Fixed** Fixed focus locking and returning.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed focus locking and returning.
+
+### @semcore/utils
+
+- **Added** Added `lib/use/useFocusLock` util to control focus lock in popup components (like `Popper`-based, `Modal` and `Sidebar`).
+
+## [13.13.1] - 2023-03-10
+
+### @semcore/tooltip
+
+- **Fixed** Fixed tooltip borders color.
+
+## [13.13.0] - 2023-03-09
+
+### @semcore/d3-chart
+
+- **Added** Added footer in d3 Tooltip.
+- **Fixed** Added backward compatibility with react 16.9.
+
+### @semcore/slider
+
+- **Fixed** Fixed non-enumerable slider with provided minimal value.
+- **Fixed** Fixed component typings.
+
+## [13.12.0] - 2023-03-06
+
+### @semcore/d3-chart
+
+- **Added** Added a new chart type `Radar`.
+
+### @semcore/dropdown
+
+- **Fixed** Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
+### @semcore/select
+
+- **Fixed** Fixed automatic scrolling to selected option on popper open wasn't working.
+- **Added** Added prop `scrollToSelected` to control automatic scroll to selected option on popper open.
+
+## [13.11.2] - 2023-03-03
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed summary generation was broken after i18n enhancement release.
+
+### @semcore/feature-popover
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+### @semcore/flags
+
+- **Fixed** European Union flag with 2x size was fixed again and never again :D.
+- **Fixed** European Union flag with 2x size was fixed.
+
+### @semcore/icon
+
+- **Removed** Removed automatic setting of `aria-hidden` to `true`.
+
+### @semcore/modal
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+### @semcore/popper
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed `animationsDisabled` prop passing.
+
+## [13.11.1] - 2023-03-01
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed summary generation was broken after i18n enhancement release.
+
+## [13.11.0] - 2023-03-01
+
+### @semcore/flags
+
+- **Added** New European Union flag has been added to the set.
+
+### @semcore/icon
+
+- **Fixed** Fixed DOM attributes `aria-hidden` and `role` were not overridable.
+
+### @semcore/tab-line
+
+- **Fixed** Fixed underline width glitching by rebuilding internal animation mechanism.
+
+## [13.10.0] - 2023-02-28
+
+### @semcore/animation
+
+- **Fixed** Fixed `ISlideProps` interface structure.
+
+### @semcore/icon
+
+- **Fixed** Fixed path for `Confluence`, `GoogleCloud`, `Hubspot`, `JavaScript`, `LookerStudio` icons.
+
+## [13.9.1] - 2023-02-22
+
+### @semcore/popper
+
+- **Fixed** Fixed popper autofocus wasn't working if popper contains any focusable elements.
+
+## [13.9.0] - 2023-02-21
+
+### @semcore/accordion
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/animation
+
+- **Added** Added prop `animationsDisabled` to disable components' animation.
+- **Added** Added prop `timingFunction` to control animation easing.
+- **Added** Added `<Scale />` and `<Slide />` animation components.
+
+### @semcore/base-trigger
+
+- **Added** Added triggers width animation triggered by change of `value` prop.
+
+### @semcore/checkbox
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/counter
+
+- **Added** Added `<AnimatedNumber />` exported component.
+
+### @semcore/d3-chart
+
+- **Fixed** Added check for the presence of DON at start of animation for `RadialTree`.
+
+### @semcore/data-table
+
+- **Fixed** Fixed empty table body with virtual scroll enabled displays unexpected "0".
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Added error message for empty `bundleLocale` list in plugin options.
+
+### @semcore/inline-edit
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/modal
+
+- **Added** Added appear and disappear animation.
+
+### @semcore/notice-bubble
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/notice-global
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/popper
+
+- **Added** Added appear and disappear animation.
+
+### @semcore/radio
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/side-panel
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/slider
+
+- **Added** Added value change animation.
+
+### @semcore/switch
+
+- **Changed** Animation duration now might be controlled with design tokens.
+- **Added** Little animation of switch active state.
+- **Fixed** Fixed double click call.
+
+### @semcore/tab-panel
+
+- **Changed** Animation duration now might be controlled with design tokens.
+
+### @semcore/utils
+
+- **Fixed** In some cases `<ThemeProvider />` was breaking rendering process.
+- **Added** Added semcore enhance to animate component dimensions on change of specific props.
+
+## [13.8.1] - 2023-02-16
+
+### @semcore/ellipsis
+
+- **Fixed** Ellipsis wasn't working when tooltip was disabled.
+
+### @semcore/switch
+
+- **Fixed** Text on left and right sides of the Switch are using with "pointer" cursor when component is not disabled.
+
+## [13.8.0] - 2023-02-16
+
+### @semcore/ellipsis
+
+- **Added** Supported passing tooltip props.
+
+### @semcore/i18n-unplugin
+
+- **Fixed** Fixed wrong intergalactic components filtering path.
+- **Fixed** Fixed invalid syntax producing with multiple locales.
+
+### @semcore/icon
+
+- **Added** Added `JavaScript` icon.
+
+## [13.7.0] - 2023-02-13
+
+### @semcore/badge
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-badge-rounded`).
+
+### @semcore/base-trigger
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/breadcrumbs
+
+- **Fixed** Fixed hovered state color.
+
+### @semcore/button
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/card
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/carousel
+
+- **Changed** Split rounding design tokens (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded` and `--intergalactic-control-rounded`).
+
+### @semcore/checkbox
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-addon-rounded`).
+
+### @semcore/counter
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-counter-rounded`).
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed display of `Bar` with height 0 - it is should not be rendered.
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/date-picker
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/divider
+
+- **Fixed** Fixed inverted state colors.
+
+### @semcore/dot
+
+- **Fixed** Fixed `m` and `l` sizes rounding.
+
+### @semcore/drag-and-drop
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-surface-rounded`).
+
+### @semcore/dropdown
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/dropdown-menu
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/feature-popover
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/feedback-form
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/icon
+
+- **Changed** Renamed `YoutubeAlt` icon to `YoutubeColored`.
+- **Changed** Renamed `YoutubeRed` icon to `YoutubeInvert`.
+
+### @semcore/input
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/modal
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+
+### @semcore/notice
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+### @semcore/notice-bubble
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/pills
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/progress-bar
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-progress-bar-rounded`).
+
+### @semcore/scroll-area
+
+- **Fixed** Fixed scroll bars rounding (`3px` -> `4px`).
+
+### @semcore/select
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/slider
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-progress-bar-rounded`).
+
+### @semcore/switch
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-extra-large` -> `--intergalactic-switch-rounded`).
+
+### @semcore/tab-panel
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/tag
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-extra-large` -> `--intergalactic-tag-rounded`).
+
+### @semcore/textarea
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/time-picker
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+### @semcore/tooltip
+
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+### @semcore/utils
+
+- **Changed** Changed design tokens facebook color (`#3b5998` -> `#1877f2`).
+- **Changed** Changed design tokens linkedIn color (`#1a7ab2` -> `#0a66c2`).
+- **Changed** Changed design tokens twitter color (`#2bafeb` -> `#1d9bf0`).
+
+### @semcore/wizard
+
+- **Fixed** Fixed issue with scroll on small screen
+- **Changed** Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`, `--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+
+## [13.6.2] - 2023-02-07
+
+### @semcore/carousel
+
+- **Fixed** Fixed freezing when slide index is greater than number of slides.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed animation for `Donut`.
+- **Changed** Changed minimum height in types for `Bar`.
+
+### @semcore/data-table
+
+- **Fixed** Fixed view of cells when using cell grouping and columns at the same time.
+
+### @semcore/ellipsis
+
+- **Fixed** Stopped showing tooltip if text is not truncated.
+
+## [13.6.1] - 2023-01-26
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed and changed minimum height of `Bar`.
+- **Fixed** Fixed definition of users locale.
+
+### @semcore/data-table
+
+- **Fixed** Fix floating sort icon to right align.
+
+## [13.6.0] - 2023-01-20
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed animation in React strict mode for `RadialTree` and `Donut`.
+
+### @semcore/icon
+
+- **Added** Added `TwitterCarousel`, `TopStories`, `WebStories`, `FindResultsOn`, `InterestingFinds`, `Event`, `SeeResultsAbout`, `PopularProducts`, `RelatedProducts`, `AddressPack`, `RelatedSearches`, `ShortVideos`, `NotificationNo` icons.
+
+### @semcore/utils
+
+- **Changed** Put all css `:hover` selectors into `@media(hover: hover)` block.
+
+## [13.5.0] - 2023-01-19
+
+### @semcore/accordion
+
+- **Added** Added `duration` property to `Accordion.Item` types.
+
+### @semcore/base-trigger
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/breadcrumbs
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/button
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/card
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/color-picker
+
+- **Fixed** Removed font-family enforcement.
+- **Fixed** Fixed color picker display when using non-extended `<ColorPicker />`.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed `DatePicker.InputTrigger` edited text highlight color.
+
+### @semcore/fullscreen-modal
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/modal
+
+- **Added** Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+
+### @semcore/notice-bubble
+
+- **Fixed** Removed minimal height limitation.
+
+### @semcore/side-panel
+
+- **Fixed** Removed font-family enforcement.
+
+### @semcore/utils
+
+- **Changed** Renamed `--intergalactic-border-danger` token name to `--intergalactic-border-critical`.
+- **Changed** Renamed `--intergalactic-border-danger-active` token name to `--intergalactic-border-critical-active`.
+- **Changed** Renamed `--intergalactic-border-table-accent-border` token name to `--intergalactic-border-table-accent`.
+- **Changed** Added description for every design token.
+- **Changed** No other renaming expected in the future.
+
+## [13.4.0] - 2023-01-16
+
+### @semcore/popper
+
+- **Fixed** Fixed focus hijacking by non editable poppers.
+
+## [13.3.0] - 2023-01-16
+
+### @semcore/i18n-unplugin
+
+- **Added** Added `@semcore/ui/i18n-unplugin`.
+
+### @semcore/illustration
+
+- **Added** Added `Feedback` illustration.
+
+## [13.2.13] - 2023-01-11
+
+### @semcore/animation
+
+- **Fixed** Fixed flickering in `Collapse` animation.
+
+### @semcore/d3-chart
+
+- **Fixed** Added prop `transparent` for all charts opacity
+
+### @semcore/dropdown-menu
+
+- **Fixed** Fixed error loading styles in correct order for `mini-css-extract-plugin`.
+
+### @semcore/errors
+
+- **Fixed** Fixed French, Japanese and Turkish translations.
+
+### @semcore/flags
+
+- **Fixed** Fixed internal imports after babel transformation were causing "named import from json" errors in some bundlers.
+
+### @semcore/icon
+
+- **Changed** Renamed `Stoller` icon to `Stroller`.
+
+### @semcore/inline-input
+
+- **Fixed** Fixed displaying tooltip of `ConfirmControl`.
+- **Changed** Changed all translations of `CancelControl` text tooltip.
+
+### @semcore/input-number
+
+- **Added** Added Korean translation.
+
+### @semcore/select
+
+- **Fixed** Fixed typo in property `tabIndex`.
+
+## [13.2.12] - 2023-01-09
+
+### @semcore/d3-chart
+
+- **Added** Added prop `transparent` for charts opacity
+
+### @semcore/dropdown-menu
+
+- **Changed** `DropdownMenu.Popper` closes when the `Enter` button is pressed.
+
+### @semcore/utils
+
+- **Fixed** Fixed internal mechanism of interpolating variables into translated texts.
+
+## [13.2.11] - 2023-01-04
+
+### @semcore/ellipsis
+
+- **Fixed** Remove react warning with non-html props.
+
+### @semcore/format-text
+
+- **Fixed** Fixed css variable design tokens.
+
+### @semcore/notice-global
+
+- **Added** Added cursor change when hovering `NoticeGlobal.CloseIcon`.
+
+### @semcore/tag
+
+- **Fixed** Fixed css variable design tokens.
+
+## [13.2.10] - 2022-12-27
+
+### @semcore/card
+
+- **Fixed** Hint tooltip is centered vertically.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed `Donut` chart rendering when hovering over a chart while it is loading.
+
+### @semcore/data-table
+
+- **Fixed** Fix style for `resizable`.
+
+### @semcore/dropdown-menu
+
+- **Added** Added `box-sizing` for correct offset display.
+
+### @semcore/icon
+
+- **Added** Added `Jewelry`, `Photo`, `Military`, `Restaurant`, `Music`, `Recreation`, `Events'`, `Cosmetics`, `Fashion`, `Printing`, `Science`, `Comics`, `Gambling`, `Architecture`, `Veterinary`, `Furniture`, `Adult`, `Religion`, `PublicSafety`, `Security`, `Fish`, `Law`, `Oil`, `Packaging`, `Logistic`, `Marine`, `PublicUtility`, `Craft`, `Sport`, `Car`, `Games`, `Language`, `Smoking`, `Farm`, `Food`, `Wine` icons.
+
+### @semcore/widget-empty
+
+- **Fixed** Fixed image size.
+
+## [13.2.9] - 2022-12-22
+
+### @semcore/data-table
+
+- **Changed** Removed vertical borders from header cells.
+- **Changed** Added props `vBorders`, `borderLeft` and `borderRight` to have possibility to render vertical borders.
+- **Changed** Added prop `compact` to reduce table paddings.
+- **Changed** Added gradient to the sorting icon.
+
+## [13.2.8] - 2022-12-21
+
+### @semcore/base-trigger
+
+- **Fixed** Fixed the problem of not showing the placeholder when the body of the `BaseTrigger` is empty.
+
+### @semcore/format-text
+
+- **Fixed** Fixed underline for links from the design system.
+
+### @semcore/link
+
+- **Fixed** Fixed vertical align for use as a text link.
+
+### @semcore/select
+
+- **Fixed** Fixed display of placeholder with empty value.
+
+### @semcore/tag
+
+- **Fixed** Fixed css syntax error.
+
+## [13.2.7] - 2022-12-19
+
+### Global
+
+- **Added** Added internationalization of aria attributes.
+
+### @semcore/d3-chart
+
+- **Changed** Supported semi-async internationalization of text in a11y module.
+
+### @semcore/format-text
+
+- **Fixed** Fixed syntax css.
+
+### @semcore/illustration
+
+- **Changed** Added `react-dom` to peer dependencies.
+
+### @semcore/ui
+
+- **Fixed** Normalized path to re-export `@semcore/illustration`.
+
+### @semcore/utils
+
+- **Fixed** Fixed non-react node detection for `addonTextChildren`.
+- **Changed** Supported semi-async internationalization.
+
 ## [13.2.6] - 2022-12-14
 
 ### @semcore/illustration
@@ -408,13 +1649,6 @@
 
 - **BREAK** The component has been removed from the release system. Use `@semcore/d3-chart`.
 
-### @semcore/icon
-
-- **BREAK** Remove `AppBlock` icon, use `AppsBlock` instead.
-- **Added** Added icon Stoller.
-- **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
-- **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
-
 ### @semcore/neighbor-location
 
 - **BREAK** The approach to determining neighbors has been changed.
@@ -465,6 +1699,13 @@
 ### @semcore/errors
 
 - **Changed** Moved svg illustrations to `@semcore/illustration` component.
+
+### @semcore/icon
+
+- **Changed** Renamed `AppBlock` icon to `AppsBlock`.
+- **Added** Added icon Stoller.
+- **Added** Added `Charge`, `CardUpdate`, `ChargebackWin`, `ChargebackLoss` icons.
+- **Changed** When `interactive` prop is provided, `aria-label` or `aria-labelledby` props from now are required. If required props are not provided a warning is logged to developer console.
 
 ### @semcore/illustration
 

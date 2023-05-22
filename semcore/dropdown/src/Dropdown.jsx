@@ -61,6 +61,7 @@ class Dropdown extends Component {
 
   handlerTriggerKeyDown = (e) => {
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
+    if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
 
     if (['Enter', ' '].includes(e.key)) {
       e.preventDefault();
@@ -73,20 +74,21 @@ class Dropdown extends Component {
 
     return {
       id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-popper` : undefined,
-      'aria-flowto': visible && !disablePortal ? `igc-${uid}-popper` : undefined,
-      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'aria-controls': `igc-${uid}-popper`,
+      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'aria-expanded': visible ? 'true' : 'false',
       onKeyDown: this.handlerTriggerKeyDown,
     };
   }
 
   getPopperProps() {
-    const { uid, disablePortal } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
 
     return {
       id: `igc-${uid}-popper`,
-      'aria-flowto': !disablePortal ? `igc-${uid}-trigger` : undefined,
       tabIndex: 0,
+      disablePortal,
+      ignorePortalsStacking,
     };
   }
 

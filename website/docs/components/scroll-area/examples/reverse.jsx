@@ -21,7 +21,7 @@ const Block = styled.div`
 `;
 
 class Demo extends React.PureComponent {
-  handleScrollMaster = (e) => {
+  handleScrollMain = (e) => {
     this.mirror.scrollTop =
       this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;
   };
@@ -34,9 +34,9 @@ class Demo extends React.PureComponent {
     return (
       <Flex>
         <Box style={{ position: 'relative' }}>
-          <h2>Master</h2>
+          <h2>Main</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container onScroll={this.handleScrollMaster}>
+            <ScrollArea.Container onScroll={this.handleScrollMain}>
               {[...new Array(100)].map((_, index) => (
                 <Block ind={index} key={index} />
               ))}
@@ -46,12 +46,14 @@ class Demo extends React.PureComponent {
         </Box>
 
         <Box>
-          <h2>Reverse mirror</h2>
+          <h2>Reversed mirror</h2>
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container ref={(node) => (this.mirror = node)}>
-              {[...new Array(100)].map((_, index) => (
-                <Block ind={index} key={index} />
-              ))}
+              <Flex flexWrap reverse>
+                {[...new Array(100)].map((_, index) => (
+                  <Block ind={index} key={index} />
+                ))}
+              </Flex>
             </ScrollArea.Container>
             <ScrollArea.Bar />
           </ScrollArea>

@@ -1,5 +1,7 @@
 SContainer,
+SNoTooltipContainer,
 SContainerMiddle {
+  display: flex;
   overflow: hidden;
 }
 

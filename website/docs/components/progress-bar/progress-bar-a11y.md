@@ -27,7 +27,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | `aria-valuetext="string"`         | `div`   | Defines the human readable text alternative of `aria-valuenow` for a range widget. Assistive technologies often present the value of `aria-valuenow` as a percentage. If this would not be accurate use this property to make the progress bar value understandable. |
 | `aria-valuemin`                   | text    | Defines the minimum allowed value for a range widget. Set to a decimal value representing the minimum value, and less than `aria-valuemax`. If not present, the default value is 0.                                                                                  |
 | `aria-valuemax`                   | text    | Defines the maximum allowed value for a range widget. Set to a decimal value representing the maximum value, and greater than `aria-valuemin`. If not present, the default value is 100.                                                                             |
-| `aria-label` or `aria-labelledby` | `div`   | Defines the string value or identifies the element (or elements) that label the progressbar element providing an accessible name. An accessible name is required.                                                                                                    |
+| `aria-label` or `aria-labelledby` | `div`   | Defines the string value or identifies the element (or elements) that label the `progressbar` element providing an accessible name. An accessible name is required.                                                                                                    |
 
 @## Resources
 

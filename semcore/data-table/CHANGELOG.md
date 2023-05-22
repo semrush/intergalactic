@@ -2,7 +2,101 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.6.1] - 2022-12-13
+## [3.8.8] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.8.7] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.8.4] - 2023-04-28
+
+### Fixed
+
+- Semantically connected cells with corresponding headers.
+- Added `scope` for table header.
+
+## [3.8.3] - 2023-04-25
+
+### Fixed
+
+- Fixed missing `key` warning.
+
+## [3.8.1] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.8.0] - 2023-03-31
+
+### Changed
+
+- Changed the presentation of the sort icon. Now it always runs into the text.
+
+## [3.7.29] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.7.17] - 2023-02-22
+
+### Fixed
+
+- Fixed empty table body with virtual scroll enabled displays unexpected "0".
+
+## [3.7.15] - 2023-02-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.46.1 ~> 3.47.0]).
+
+## [3.7.13] - 2023-02-13
+
+### Fixed
+
+- Fixed view of cells when using cell grouping and columns at the same time.
+
+## [3.7.9] - 2023-01-20
+
+### Fixed
+
+- Fix floating sort icon to right align.
+
+## [3.7.8] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.7.1] - 2022-12-22
+
+### Fixed
+
+- Fix style for `resizable`.
+
+## [3.7.0] - 2022-12-21
+
+### Changed
+
+- Removed vertical borders from header cells.
+- Added props `vBorders`, `borderLeft` and `borderRight` to have possibility to render vertical borders.
+- Added prop `compact` to reduce table paddings.
+- Added gradient to the sorting icon.
+
+## [3.6.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
+## [3.6.2] - 2022-12-16
 
 ### Changed
 
@@ -15,8 +109,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Design tokens based theming.
 
 ## [3.5.1] - 2022-11-08
-
-## [3.5.0] - 2022-11-01
 
 ### Added
 

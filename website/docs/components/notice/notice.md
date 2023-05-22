@@ -12,7 +12,7 @@ tabName: Design
 
 **Notice** is a component for messages about events related to the user's work in the interface.
 
-Notice shall meet four criteria. If it doesn't respond to at least one, it's not a notice. Let's see the differencies with [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/).
+Notice shall meet four criteria. If it doesn't respond to at least one, it's not a notice. Let's see the differences from [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/).
 
 | Criteria                                                                                             | Notice | NoticeBubble | NoticeGlobal |
 | ---------------------------------------------------------------------------------------------------- | ------ | ------------ | ------------ |
@@ -36,26 +36,26 @@ Notice shall meet four criteria. If it doesn't respond to at least one, it's not
 
 ### Mini notice
 
-![notice-minimal](static/notice-minimal.png)
+![](static/notice-minimal.png)
 
 ### Maxi notice
 
-![notice-monster](static/notice-monster.png)
+![](static/notice-monster.png)
 
-![notice-max-button](static/notice-max-button.png)
+![](static/notice-max-button.png)
 
 @## Sizes, paddings and margins
 
 You can use the notice as a self-contained component, or include it inside other components. _For example, it can be used inside dropdowns and modal windows._
 
-![notice-monster-big-paddings](static/notice-monster-big-paddings.png)
+![](static/notice-monster-big-paddings.png)
 
-![notice-monster-big-paddings](static/notice-margins.png)
+![](static/notice-margins.png)
 
 Notice internal paddings repeat the internal paddings of the component the notice is nested in.
 
-![notice-component](static/notice-component.png)
-![notice-component-2](static/notice-component-2.png)
+![](static/notice-component.png)
+![](static/notice-component-2.png)
 
 @## Maximum text width
 
@@ -63,15 +63,15 @@ Do not stretch the text to the full width of the notice, especially if the notic
 
 > The maximum width of the text in the notice shall be no more than 650-800px.
 
-![notice-component-2](static/notice-text-yes-no.png)
+![](static/notice-text-yes-no.png)
 
 @## Notice themes
 
 ### Info
 
-Use it for neutral message, information, collecting feedback. To announce a new feature or other tool, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
+Use it for neutral message, information, collecting feedback. To announce a new feature or other product, use this notice with a large image (we usually call these [advertising notices](/components/notice/#a47391)).
 
-![info](static/info.png)
+![](static/info.png)
 
 ### Success
 
@@ -80,19 +80,19 @@ Use it for:
 - Any trigger for buying/taking a trial.
 - Success status (successful completion of the form, for example).
 
-![success](static/success.png)
+![](static/success.png)
 
 ### Warning
 
 Use it for important but not critical errors/warnings: service report, unavailable functionality, temporary failure.
 
-![warning](static/warning.png)
+![](static/warning.png)
 
 ### Danger
 
 Use it for a serious error/problem/action that does not allow the user to continue working or leads to data loss.
 
-![danger](static/danger.png)
+![](static/danger.png)
 
 @## Placement in the interface
 
@@ -102,7 +102,7 @@ If the notice applies to the entire product, place it in the report header (unde
 
 **Do not place multiple notices on the page at once**.
 
-![notice-placement-yes-no](static/notice-placement-yes-no.png)
+![](static/notice-placement-yes-no.png)
 
 If the message refers only to the content of a specific tab inside the product, then place notice under the [TabLine](/components/tab-line/).
 
@@ -110,13 +110,13 @@ If the message refers only to the content of a specific tab inside the product, 
 
 If the notice belongs to a widget, place it inside inside the widget. The exact place depends on the context. As a rule, in such cases, the notice inherits the width of the content section of the widget.
 
-![notice-block-yes-no](static/notice-block-yes-no.png)
+![](static/notice-block-yes-no.png)
 
 ### Inside the component
 
 If the notice refers only to the component, place it at the bottom or top of the component and inherit the width of the component.
 
-![notice-component-yes-no](static/notice-component-yes-no.png)
+![](static/notice-component-yes-no.png)
 
 @## Interaction
 
@@ -157,21 +157,22 @@ The advertising notice shall attract user's attention more than a regular notice
 
 The advertising notice differs from the regular one by advertising illustrations and the possibility to insert controls such as input and select to quickly engage the user.
 
-![notice-advertising-pic](static/notice-advertising-pic.png)
-![notice-advertising-pic-button](static/notice-advertising-pic-button.png)
+![](static/notice-advertising-pic.png)
+
+![](static/notice-advertising-pic-button.png)
 
 > Do not use an advertising notice for an "empty" state on a page or inside a component.
 
-![notice-no](static/notice-no.png)
+![](static/notice-no.png)
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### General
 
 - You can notify about the following events: tools and reports announcement, collecting feedback, quick help for additional features, system status (error, failure, end of works, new feature).
 - In some cases, notices with the same text may have different colors because they may have a different meaning.
 - In regular cases, one notice is replaced by another in order of priority: red > yellow > green > blue > gray. If you need to place notices in a row, think it over with the UX team. There may be another way to deliver your important message.
-- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks / other components — four lines.
+- Be concise – don't supersede other widgets and other report functionality. Try to convey the meaning of your message to users in two lines. For the notices inside blocks / other components – four lines.
 
 ### Incorrect use
 
@@ -185,15 +186,15 @@ A notice should not be confused with the other components:
 
 A permanent message that is an informational part of the form pretends to be a notice. Avoid this.
 
-![notice-use-yes-no](static/notice-use-yes-no.png)
+![](static/notice-use-yes-no.png)
 
 An error related to a temporary failure. There should be an orange warning notice.
 
-![export-yes-no](static/export-yes-no.png)
+![](static/export-yes-no.png)
 
 A notice that appears on top of the interface and notifies you of the end of the hidden process. Avoid this. Use [NoticeBubble](/components/notice-bubble) in such case.
 
-![notice-placement-yes-no](static/notice-use-2-yes-no.png)
+![](static/notice-use-2-yes-no.png)
 
 @page notice-a11y
 @page notice-api

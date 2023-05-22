@@ -3,7 +3,7 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import Tooltip from '@semcore/ui/tooltip';
 
 export default () => (
-  <Breadcrumbs>
+  <Breadcrumbs tag="nav">
     <Breadcrumbs.Item href="#">Dashboard</Breadcrumbs.Item>
     <Breadcrumbs.Item href="#">Projects</Breadcrumbs.Item>
     <Breadcrumbs.Item href="#">semrush.com</Breadcrumbs.Item>

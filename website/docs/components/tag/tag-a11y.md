@@ -17,13 +17,14 @@ a11y: AA
 @## Considerations for developers
 
 - Make sure screenreader reads your tags list as a group.
-- Tags that are used as a link for filtering content should also follow the accessibility guidlines for [Link](/components/link/link-a11y/).
+- Tags that are used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y/).
+- Make sure that any function accessible by hovering with a mouse is also available using only the keyboard.
 
 @## Considerations for designers
 
 - Tag text should be clear and concise.
-- Make sure to [check the contrast of the tag text against the background](/style/palette/palette-a11y/).
-- Tag that is used as a link for filtering content should also follow the accessibility guidlines for [Link](/components/link/link-a11y/).
+- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design/#color_and_contrast).
+- Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y/).
 
 @## Resources
 

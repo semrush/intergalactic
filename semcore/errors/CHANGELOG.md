@@ -2,6 +2,62 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.9.21] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.23 ~> 4.3.24], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.9.20] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.22 ~> 4.3.23], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.9.18] - 2023-04-26
+
+## [3.9.17] - 2023-04-24
+
+## [3.9.16] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.19 ~> 4.3.20], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.9.8] - 2023-03-16
+
+### Changed
+
+- Changed Title's font-weight from `bold` to `semi-bold`.
+
+## [3.9.7] - 2023-03-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.11 ~> 4.3.12], `@semcore/utils` [3.47.2 ~> 3.47.3]).
+
+## [3.9.3] - 2023-02-09
+
+## [3.9.2] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.6 ~> 4.3.7], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.8.0] - 2023-01-10
+
+### Fixed
+
+- Fixed French, Japanese and Turkish translations.
+
+## [3.7.5] - 2023-01-10
+
+## [3.7.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.3 ~> 4.3.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.7.0] - 2022-12-14
 
 ### Added

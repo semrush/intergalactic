@@ -4,14 +4,14 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data vizualization](/data-display/chart/).
+> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
 @## Description
 
 **Venn chart** shows the relationship and intersections between two (or sometimes more) data sets. This chart type is also called a **set chart**.
 
 - Each circle in such a chart is a set of data.
-- The circles overlapping area is called the "intersection area", — it shows data with common qualities from all intersecting sets.
+- The circles overlapping area is called the "intersection area", – it shows data with common qualities from all intersecting sets.
 - This chart type focuses on how much different groups of sets have in common (or how different they are).
 
 > Keep in mind that when comparing more than 2 sets on one chart, the chart may become unreadable.
@@ -42,8 +42,8 @@ In the default state for all circles:
 
 |                                                     | Appearance example                         |
 | --------------------------------------------------- | ------------------------------------------ |
-| Chart inside small narrow widgets (less than 400px) | ![small venn chart](static/venn-small.png) |
-| Chart inside large widgets (more than 400px)        | ![big venn chart](static/venn-big.png)     |
+| Chart inside small narrow widgets (less than 400px) | ![](static/venn-small.png) |
+| Chart inside large widgets (more than 400px)        | ![](static/venn-big.png)     |
 
 @## Legend
 
@@ -60,37 +60,37 @@ If the legend doesn't fit the widget width, you can put it under the chart.
 - **The legend label has 16px margin-right.**
 - The legend is aligned to the top of the chart.
 
-![venn chart margins](static/venn-margins2.png)
+![](static/venn-margins2.png)
 
 - If you need to place the legend under the chart, then add 24px margin to the legend.
 
-![venn chart margins](static/venn-margins3.png)
+![](static/venn-margins3.png)
 
 ### Legend content
 
-If you need to add the name of the data set in the legend and what it refers to, then use the secondary text `--gray-500` of the same size as the set name.
+If you need to add the name of the data set in the legend and what it refers to, then use the secondary text `--text-secondary` of the same size as the set name.
 
-![venn chart legend](static/venn-legend.png)
+![](static/venn-legend.png)
 
 ### Long label
 
 If legend label is very long, wrap it to the next line.
 
-![venn chart legend](static/venn-legend-long.png)
+![](static/venn-legend-long.png)
 
 @## Interaction
 
 |         | Appearance example                         | Styles                                                                                                |
 | ------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------- |
-| default | ![venn chart default](static/venn-big.png) | The fill transparency is 50%, stroke size is 2px.                                                     |
-| hover   | ![venn chart hover](static/venn-hover.png) | When hovering, the transparency of the fill for the sector that the user hovered over changes by 70%. |
+| Default | ![](static/venn-big.png) | The fill transparency is 50%, stroke size is 2px.                                                     |
+| Hover   | ![](static/venn-hover.png) | When hovering, the transparency of the fill for the sector that the user hovered over changes by 70%. |
 
 @## Tooltip
 
 |                                           | Appearance example                          | Tooltip content                                                                                                                                        |
 | ----------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Hovering over a sector                    | ![venn chart hover](static/venn-hover.png)  | Show the name of the data set and its value.                                                                                                           |
-| Hovering over the intersection of sectors | ![venn chart hover](static/venn-hover2.png) | Show how much is the intersection of sectors as a percentage and the value. Below you can show the names of all intersecting sectors and their values. |
+| Hovering over a sector                    | ![](static/venn-hover.png)  | Show the name of the data set and its value.                                                                                                           |
+| Hovering over the intersection of sectors | ![](static/venn-hover2.png) | Show how much is the intersection of sectors as a percentage and the value. Below you can show the names of all intersecting sectors and their values. |
 
 @## Edge cases
 
@@ -98,44 +98,46 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Value less than 1%
 
-Show circle with the minimum size — 12px \* 12px.
+Show circle with the minimum size – 12px * 12px.
 
-![venn chart minimum](static/venn-min.png)
+![](static/venn-min.png)
 
 ### Intersection 100%
 
 In this case, show the data sets left aligned.
 
-![venn chart 100%](static/venn-100-per-cent.png)
+![](static/venn-100-per-cent.png)
 
 ### Null values
 
 - If the data set value is zero, don't show it on the chart.
 - The legend shall contain the information that the value is 0.
 
-![venn chart null](static/venn-null.png)
+![](static/venn-null.png)
 
-- If the values for all data sets are 0, then show a circle with `--gray-100` color.
+- If the values for all data sets are 0, then show a circle with `--chart-palette-order-null` color.
 
-![venn chart null](static/venn-null-2.png)
+![](static/venn-null-2.png)
 
 ### Not available data
 
 - If the values of data set is not available, don't show the them on the chart.
 - The legend shall show the value as `n/a`.
-- If the values for all data sets are not known, then show a circle with `--gray-100` color.
+- If the values for all data sets are not known, then show a circle with `--chart-palette-order-null` color.
 
-![venn chart not available](static/venn-na.png)
+![](static/venn-na.png)
 
 ### Initial loading
 
-When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-More information about this state see in the guide for [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/).
 
-![venn chart skeleton](static/venn-skeleton.png)
+Use the `--skeleton-bg` color token for the skeleton background color.
+
+![](static/venn-skeleton.png)
 
 @page venn-chart-a11y
 @page venn-chart-api

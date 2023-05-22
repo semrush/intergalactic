@@ -1,6 +1,8 @@
 {
   "prevPageLabel": "Prev",
+  "prevPageDescription": "Previous page {pageNumber}",
   "nextPageLabel": "Next",
+  "nextPageDescription": "Next page {pageNumber}",
   "pageInputLabel": "Page:",
   "totalPagesLabel": "of",
   "pagination": "Pagination",

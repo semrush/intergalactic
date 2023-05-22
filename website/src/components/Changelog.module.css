@@ -1,7 +1,7 @@
 .list {
   padding: 0;
   list-style: none;
-  margin: 0 0 0 20px;
+  margin: 0 0 0 var(--intergalactic-spacing-5x);
 }
 
 .listItem {
@@ -10,14 +10,42 @@
 }
 
 .listItem + .listItem {
-  margin-top: 10px;
+  margin-top: calc(var(--intergalactic-spacing-3x) - 2px);
 }
 .listItem p {
   margin: 0;
 }
 
 .tagStyled {
-  margin-right: 16px;
-  width: 80px;
+  margin-right: var(--intergalactic-spacing-4x);
+  width: var(--intergalactic-spacing-20x);
   flex-shrink: 0;
+}
+
+.greenContainer {
+  background-color: var(--intergalactic-tag-primary-green-normal) !important;
+}
+.greenText {
+  color: var(--intergalactic-tag-primary-green-text);
+}
+
+.blueContainer {
+  background-color: var(--intergalactic-tag-primary-blue-normal) !important;
+}
+.blueText {
+  color: var(--intergalactic-tag-primary-blue-text);
+}
+
+.orangeContainer {
+  background-color: var(--intergalactic-tag-primary-orange-normal) !important;
+}
+.orangeText {
+  color: var(--intergalactic-tag-primary-orange-text);
+}
+
+.redContainer {
+  background-color: var(--intergalactic-tag-primary-red-normal) !important;
+}
+.redText {
+  color: var(--intergalactic-tag-primary-red-text);
 }

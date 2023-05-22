@@ -27,11 +27,15 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 @## Edge cases
 
-- If any data is missing — don't display it on the chart.
-- If only one value is known — display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
+- If any data is missing – don't display it on the chart.
+- If only one value is known – display it with a small sector. Be sure to also specify the percentage or value of the unknown data.
 
 @example semi-donut-with-one-data
 
-- If there is no data — show an empty gray chart.
+- If there is no data – show an empty gray chart.
 
 @example donut-without-data
+
+@## Legend
+
+@example legend

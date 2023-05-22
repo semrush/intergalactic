@@ -6,9 +6,6 @@ import { resolve as resolvePath } from 'path';
 import dayjs from 'dayjs';
 import semver from 'semver';
 import { fileURLToPath } from 'url';
-import isBetween from 'dayjs/plugin/isBetween.js';
-
-dayjs.extend(isBetween);
 
 const filename = fileURLToPath(import.meta.url);
 
@@ -57,9 +54,9 @@ export const patchReleaseChangelog = async (
 
   const componentChangedVersionIncrements = componentChanges
     .map((changelogs) =>
-      changelogs.map(({ version }, index) => {
-        return changelogs[index + 1]?.version
-          ? (semver.diff(changelogs[index + 1]?.version, version) as semver.ReleaseType)
+      changelogs.map(({ version, component }) => {
+        return previousDependencies[component]
+          ? (semver.diff(previousDependencies[component], version) as semver.ReleaseType)
           : 'patch';
       }),
     )

@@ -6,12 +6,11 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Button from '@semcore/ui/button';
 import FileExportXS from '@semcore/ui/icon/FileExport/m';
 
-const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
+const extensions = ['PNG', 'JPEG', 'WEBP'];
 
 export default () => {
-  const [visible, updateVisible] = useState(false);
-  const [linkElements, updateLinkElements] = useState(
-    EXPORTS.map((name) => ({ key: name, children: name })),
+  const [linkElements, setLinkElements] = useState(
+    extensions.map((name) => ({ key: name, children: name })),
   );
 
   const svg = React.createRef();
@@ -31,7 +30,7 @@ export default () => {
   useEffect(() => {
     const svgElement = svg.current;
     const svgString = getSVGString(svgElement);
-    EXPORTS.forEach((name, ind) => {
+    extensions.forEach((name, ind) => {
       const format = name.toLowerCase();
       svgString2Image(svgString, 2 * width, 2 * height, format, save);
       function save(image) {
@@ -41,7 +40,7 @@ export default () => {
           href: image,
         };
 
-        updateLinkElements([...linkElements]);
+        setLinkElements([...linkElements]);
       }
     });
   }, []);
@@ -59,7 +58,7 @@ export default () => {
           <Line.Dots display />
         </Line>
       </Plot>
-      <DropdownMenu onVisibleChange={updateVisible}>
+      <DropdownMenu>
         <DropdownMenu.Trigger tag={Button}>
           <Button.Addon>
             <FileExportXS />
@@ -68,7 +67,7 @@ export default () => {
         </DropdownMenu.Trigger>
         <DropdownMenu.Popper wMax="257px">
           <DropdownMenu.List ref={download}>
-            {EXPORTS.map((name, ind) => (
+            {extensions.map((name, ind) => (
               <DropdownMenu.Item tag="a" {...linkElements[ind]} />
             ))}
           </DropdownMenu.List>

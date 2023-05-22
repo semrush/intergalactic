@@ -54,7 +54,7 @@ class ScatterPlotRoot extends Component {
   }
 
   renderCircle(d, i) {
-    const { color, scale, x, y, r, offset, styles, uid, duration, value, valueColor } =
+    const { color, scale, x, y, r, offset, styles, uid, duration, value, valueColor, transparent } =
       this.asProps;
     const [xScale, yScale] = scale;
     const SScatterPlot = this.Element;
@@ -78,6 +78,7 @@ class ScatterPlotRoot extends Component {
           color={color}
           r={r}
           use:duration={`${duration}ms`}
+          transparent={transparent}
         />
         {d[value] && (
           <SValue
@@ -87,6 +88,7 @@ class ScatterPlotRoot extends Component {
             dy=".3em"
             clipPath={`url(#${uid})`}
             color={valueColor}
+            transparent={transparent}
           >
             {d[value]}
           </SValue>

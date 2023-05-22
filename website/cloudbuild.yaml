@@ -30,9 +30,10 @@ steps:
     args:
       - -c
       - |
-        if [[ "$BRANCH_NAME" == "master" ]]
+        if [[ "$BRANCH_NAME" == "website/release" ]]
         then
-          npm install && npm run upload-search-index
+          npm install --global pnpm@7
+          pnpm install && pnpm run upload-search-index
         fi
     dir: website
     env:

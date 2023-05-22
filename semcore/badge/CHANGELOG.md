@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.24] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.3.23] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.3.22] - 2023-05-04
+
+### Changed
+
+- Made default `<Badge />` background more contrast.
+
+## [3.3.21] - 2023-05-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.4 ~> 3.50.5]).
+
+## [3.3.14] - 2023-03-23
+
+### Fixed
+
+- Made Badge visible for screen readers again.
+
+## [3.3.13] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [3.3.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-badge-rounded`).
+
+## [3.3.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+
 ## [3.3.1] - 2022-12-13
 
 ### Changed

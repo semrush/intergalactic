@@ -7,7 +7,7 @@ import {
 import {
   resolve as resolvePath,
   dirname as resolveDirname,
-  relative as resolveRealtivePath,
+  relative as resolveRelativePath,
 } from 'path';
 import {
   fsExists,
@@ -62,11 +62,41 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
     );
   }
 
-  const internalDependencies = typing.dependencies.filter((dependency) => repoTypings[dependency]);
-
-  const dependencies = Object.fromEntries(
-    internalDependencies.map((dependency) => [dependency, `~~~%%%@typing/${dependency}%%%~~~`]),
-  );
+  const processedDependencies = {};
+  const resolveDependencies = (dependencies) =>
+    Object.fromEntries(
+      dependencies
+        .filter(
+          (dependency) =>
+            repoTypings[dependency] &&
+            !dependencies[dependency] &&
+            !processedDependencies[dependency],
+        )
+        .map((dependency) => {
+          processedDependencies[dependency] = true;
+          const typing = repoTypings[dependency];
+          const properties = typing.declaration.properties.map(
+            ({ name, isOptional, type, description, params }) => ({
+              name,
+              isOptional,
+              type,
+              params,
+              description: markdownTokenToHtml(parseMarkdown(description)),
+            }),
+          );
+          return [
+            dependency,
+            {
+              declaration: {
+                ...typing.declaration,
+                properties,
+              },
+              dependencies: resolveDependencies(typing.dependencies ?? []),
+            },
+          ];
+        }),
+    );
+  const dependencies = resolveDependencies(typing.dependencies ?? []);
 
   const properties = typing.declaration.properties.map(
     ({ name, isOptional, type, description, params }) => ({
@@ -89,8 +119,12 @@ export const getRepoTyping = async (typingName: string, debuggingPosition: strin
 };
 
 let uniqueId = 0;
-const mathVersionRegx = /\[(.*)\]/;
-const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
+const mathVersionRegex = /\[(.*)\]/;
+const normalizeMarkdown = (
+  ast: MarkdownRoot,
+  relativePath: string,
+  existingRoutes: { [routName: string]: boolean },
+) => {
   const imagesUrls: { [id: string]: string } = {};
   const traverseTokens = (token: MarkdownToken | MarkdownRoot) => {
     if (token.type === 'image') {
@@ -106,7 +140,22 @@ const normalizeMarkdown = (ast: MarkdownRoot, relativePath: string) => {
     }
     if (token.type === 'link') {
       if (token.url.startsWith('/')) {
-        token.url = (process.env.PUBLIC_PATH || '/') + token.url.substring(1);
+        let path = token.url.substring(1);
+        let route = path;
+        if (route.includes('#')) route = route.substring(0, route.indexOf('#'));
+        if (route.includes('?')) route = route.substring(0, route.indexOf('?'));
+        if (route.endsWith('/')) route = route.substring(0, route.length - 1);
+        if (existingRoutes && !existingRoutes[route]) {
+          throw Error(
+            `Link ${path} (${JSON.stringify(
+              token.children,
+            )}) from ${relativePath} references to non-existing page.`,
+          );
+        }
+        if (!path.endsWith('/') && !path.includes('?') && !path.includes('#')) {
+          path += '/';
+        }
+        token.url = (process.env.PUBLIC_PATH || '/') + path;
       }
     }
     if ('children' in token) {
@@ -129,8 +178,16 @@ type ComponentChangelogBlock = {
   title: string;
   version: string;
   changes: { type: string; text: string }[];
+  id: string;
+  level: number;
+  route: string;
 };
-const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: number) => {
+const makeChangelog = (
+  markdownAst: MarkdownRoot,
+  fullPath: string,
+  metaHeight: number,
+  route: string,
+) => {
   const blocks: ComponentChangelogBlock[] = [];
   let currentBlock: ComponentChangelogBlock | null = null;
   let currentType: string = 'Unknown';
@@ -138,12 +195,16 @@ const makeChangelog = (markdownAst: MarkdownRoot, fullPath: string, metaHeight: 
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
       const title = markdownTokenToHtml(token.children[0]);
-      const matchVersion = title.match(mathVersionRegx);
+      const matchVersion = title.match(mathVersionRegex);
       const version = (matchVersion && matchVersion[1]) ?? '';
+      const id = generateHeadingId(`v.${version}`);
       currentBlock = {
         title,
         version,
         changes: [],
+        id,
+        level: token.depth,
+        route,
       };
       blocks.push(currentBlock);
     } else if (currentBlock) {
@@ -181,12 +242,16 @@ type GlobalChangelogBlock = {
       text: string;
     }[];
   }[];
+  id: string;
+  level: number;
+  route: string;
 };
 
 const makeChangelogByComponent = (
   markdownAst: MarkdownRoot,
   fullPath: string,
   metaHeight: number,
+  route: string,
 ) => {
   const blocks: GlobalChangelogBlock[] = [];
   let currentBlock: GlobalChangelogBlock | null = null;
@@ -195,12 +260,16 @@ const makeChangelogByComponent = (
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
       const title = markdownTokenToHtml(token.children[0]);
-      const matchVersion = title.match(mathVersionRegx);
+      const matchVersion = title.match(mathVersionRegex);
       const version = (matchVersion && matchVersion[1]) ?? '';
+      const id = generateHeadingId(`v.${version}`);
       currentBlock = {
         title,
         version,
         components: [],
+        id,
+        level: token.depth,
+        route,
       };
       blocks.push(currentBlock);
     } else if (currentBlock) {
@@ -243,15 +312,17 @@ if (process.argv.includes('--reset-cache')) {
   await cacheManager.reset();
 }
 
+type HeadingToken = {
+  type: 'heading';
+  level: 1 | 2 | 3 | 4 | 5 | 6;
+  route: string;
+  id: string;
+  html: string;
+};
+
 type Token =
   | MarkdownToken
-  | {
-      type: 'heading';
-      level: number;
-      route: string;
-      id: string;
-      html: string;
-    }
+  | HeadingToken
   | {
       type: 'example';
       raw: string;
@@ -286,6 +357,7 @@ type Token =
       type: 'typescriptDeclaration';
       declaration: unknown;
       dependencies: { [dependantName: string]: unknown };
+      route: string;
     }
   | {
       type: 'text';
@@ -296,6 +368,7 @@ export const buildArticle = async (
   docsDir: string,
   fullPath: string,
   relativePath: string,
+  existingRoutes?: { [routName: string]: boolean },
 ): Promise<{
   tokens: Token[];
   title: string;
@@ -313,12 +386,14 @@ export const buildArticle = async (
   const metaHeight = text.split('\n').length - textWithoutMeta.split('\n').length;
 
   const markdownAst = parseMarkdown(textWithoutMeta);
-  const { imagesUrls } = normalizeMarkdown(markdownAst, docsDir);
+  const { imagesUrls } = normalizeMarkdown(markdownAst, docsDir, existingRoutes);
 
   const dependencies: string[] = [];
   const legacyHeaderHashes: { [legacyHash: string]: string } = {};
 
   const tokensMetadata = new Map<Token, { caption: string }>();
+
+  const headings = [];
 
   const tokens = (
     await Promise.all(
@@ -332,13 +407,19 @@ export const buildArticle = async (
           const id = generateHeadingId(html);
           legacyHeaderHashes[generateLegacyHeadingId(html)] = html;
 
-          return {
+          const tokenHead: HeadingToken = {
             type: 'heading',
             level: token.depth,
             route: resolveDirname(relativePath),
             id,
             html,
           };
+
+          if (tokenHead.level === 2) {
+            headings.push(tokenHead);
+          }
+
+          return tokenHead;
         }
 
         if (token.type === 'paragraph') {
@@ -347,17 +428,23 @@ export const buildArticle = async (
             const text = child.value;
             if (text.startsWith('@page ')) return null;
             if (text.startsWith('@#')) {
-              const level = text.substring(1, text.indexOf(' ')).length;
+              const level: any = text.substring(1, text.indexOf(' ')).length;
               const html = text.substring(text.indexOf(' ') + 1);
               const id = generateHeadingId(html);
               legacyHeaderHashes[generateLegacyHeadingId(html)] = html;
-              return {
+              const tokenHead: HeadingToken = {
                 type: 'heading',
                 level,
                 route: resolveDirname(relativePath),
                 id,
                 html,
               };
+
+              if (tokenHead.level === 2) {
+                headings.push(tokenHead);
+              }
+
+              return tokenHead;
             }
             if (text.startsWith('@example ')) {
               const fileName = text.substring('@example '.length);
@@ -386,7 +473,13 @@ export const buildArticle = async (
               const propsString = text.substring(`@import ${fileName} `.length);
               const props = propsString ? JSON.parse(propsString) : {};
               const documentDir = resolveDirname(fullPath);
-              const filePath = resolvePath(documentDir, 'components', fileName + '.jsx');
+              let filePath = resolvePath(documentDir, 'components', fileName);
+              for (const extension of ['.jsx', '.tsx']) {
+                if (await fsExists(filePath + extension)) {
+                  filePath += extension;
+                  break;
+                }
+              }
               dependencies.push(filePath);
 
               if (!(await fsExists(filePath))) {
@@ -411,7 +504,8 @@ export const buildArticle = async (
               const subArticle = await buildArticle(
                 docsDir,
                 filePath,
-                resolveRealtivePath(docsDir, filePath),
+                resolveRelativePath(docsDir, filePath),
+                existingRoutes,
               );
 
               dependencies.push(filePath, ...subArticle.dependencies);
@@ -463,6 +557,9 @@ export const buildArticle = async (
               };
             }
             if (text.startsWith('@changelog ')) {
+              const headingsChangelog = [];
+              headings.push(headingsChangelog);
+
               const componentName = text.substring('@changelog '.length);
               const searchPattern = `*/${componentName}/CHANGELOG.md`;
               const files = (await glob(searchPattern, { cwd: repoRoot })).filter(
@@ -487,14 +584,38 @@ export const buildArticle = async (
               dependencies.push(filePath);
 
               if (componentName === 'ui') {
+                const route = resolveDirname(relativePath);
+                const blocks = makeChangelogByComponent(markdownAst, fullPath, metaHeight, route);
+                blocks.forEach((block) => {
+                  const tokenHead = {
+                    type: 'heading',
+                    level: block.level,
+                    id: block.id,
+                    html: block.title,
+                  };
+                  headingsChangelog.push(tokenHead);
+                });
+
                 return {
                   type: 'changelogByComponent',
-                  blocks: makeChangelogByComponent(markdownAst, fullPath, metaHeight),
+                  blocks,
                 };
               } else {
+                const route = resolveDirname(relativePath);
+                const blocks = makeChangelog(markdownAst, fullPath, metaHeight, route);
+                blocks.forEach((block) => {
+                  const tokenHead = {
+                    type: 'heading',
+                    level: block.level,
+                    id: block.id,
+                    html: block.title,
+                  };
+                  headingsChangelog.push(tokenHead);
+                });
+
                 return {
                   type: 'changelog',
-                  blocks: makeChangelog(markdownAst, fullPath, metaHeight),
+                  blocks,
                 };
               }
             }
@@ -507,6 +628,7 @@ export const buildArticle = async (
                 type: 'typescriptDeclaration',
                 declaration: typing.declaration,
                 dependencies: typing.dependencies,
+                route: resolveDirname(relativePath),
               };
             }
             if (text.startsWith('@table-caption ')) {
@@ -536,10 +658,6 @@ export const buildArticle = async (
     .filter((token) => token !== null)
     .flat();
 
-  const headings = tokens
-    .filter(({ type }) => type === 'heading')
-    .filter((token) => 'level' in token && token.level === 2);
-
   const sourcePath = relativePath.startsWith('./')
     ? relativePath.substring('./'.length)
     : relativePath;
@@ -554,7 +672,7 @@ export const buildArticle = async (
     imagesUrls,
     legacyHeaderHashes,
     dependencies,
-    headings,
+    headings: headings.flat(),
   };
 };
 
@@ -570,6 +688,7 @@ export const serializeArticle = (pageData) => {
     beta,
     legacyHeaderHashes,
   });
+
   stringified = stringified.replace(/---------~~~~~~/g, '" + ');
   stringified = stringified.replace(/~~~~~~---------/g, ' + "');
   stringified = stringified.replace(/"~~~%%%/g, '() => import("');

@@ -1,6 +1,8 @@
 {
   "prevPageLabel": "Önceki",
+  "prevPageDescription": "Önceki sayfa {pageNumber}",
   "nextPageLabel": "Sonraki",
+  "nextPageDescription": "Sonraki sayfa {pageNumber}",
   "pageInputLabel": "Sayfa:",
   "totalPagesLabel": "-den",
   "pagination": "Sayfa numaralandırma",

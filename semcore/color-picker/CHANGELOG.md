@@ -2,6 +2,52 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.37] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.23 ~> 4.3.24], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [1.4.36] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.22 ~> 4.3.23], `@semcore/divider` [3.2.21 ~> 3.2.22], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [1.4.33] - 2023-04-28
+
+## [1.4.32] - 2023-04-24
+
+## [1.4.31] - 2023-04-17
+
+### Fixed
+
+- Added `aria-hidden="true"` for input control because they are auxiliary.
+
+## [1.4.30] - 2023-04-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.18 ~> 4.3.19]).
+
+## [1.4.7] - 2023-01-19
+
+### Fixed
+
+- Removed font-family enforcement.
+
+## [1.4.6] - 2023-01-18
+
+### Fixed
+
+- Fixed color picker display when using non-extended `<ColorPicker />`.
+
+## [1.4.4] - 2023-01-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.3 ~> 4.3.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [1.4.0] - 2022-12-14
 
 ### Added
@@ -21,8 +67,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Design tokens based theming.
 
 ## [1.2.7] - 2022-11-08
-
-## [1.2.6] - 2022-11-02
 
 ### Fixed
 

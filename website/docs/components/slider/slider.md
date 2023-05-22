@@ -18,12 +18,12 @@ In [practical point of view](https://www.nngroup.com/articles/sliders-knobs/), a
 
 @## Component composition
 
-- Slider.Knob.
-- Slider.Bar.
-- Value.
-- Value labels (optional).
+- `Slider.Knob`
+- `Slider.Bar`
+- Value
+- `Slider.Options` with `Slider.Item` inside (optional)
 
-![slider scheme](static/scheme.png)
+![](static/scheme.png)
 
 > When designing such kind of an input, keep in mind the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law). It describes the dependence of the time for performing an action on the thickness and width of the horizontal control with which this action can be performed. So the larger the slider knob and the larger the bar itself, the easier and faster it is to manipulate it.
 
@@ -31,25 +31,25 @@ In [practical point of view](https://www.nngroup.com/articles/sliders-knobs/), a
 
 Default component sizes:
 
-- `bar height — 4px`
-- `knob size — 20px * 20px`
+- `bar height – 4px`
+- `knob size – 20px * 20px`
 
 @## Default styles
 
 Default component styles:
 
-- bar color — `--gray-100`
-- progress and knob color — `--blue-400`
+- bar color – `--progress-bar-bg`
+- progress and knob color – `--control-primary-info`
 
-![default slider styles](static/default.png)
+![](static/default.png)
 
 @## Value labels
 
 You can show values under the input.
 
-![slider value labels](static/value-labels.png)
+![](static/value-labels.png)
 
-![slider value labels](static/value-labels2.png)
+![](static/value-labels2.png)
 
 > For mobile devices, show values or tooltips with values **OVER the input**. When using this component on touch devices, the values will fall under the finger when manipulating the slider knob.
 
@@ -57,11 +57,11 @@ You can show values under the input.
 
 ### States
 
-| State        | Description                                                                                                                       | Appearance                                                              |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| default      | Knob size is `20px * 20px`.                                                                                                       | ![default slider styles](static/default.png)                            |
-| hover        | The color of the bar changes to `--gray-200`. The slider knob changes color to `--blue-500`. Change the cursor to `pointer`.      | ![slider hover](static/bar-hover.png) ![slider hover](static/hover.png) |
-| active/focus | The slider knob is scaled to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state. | ![slider active](static/active.png)                                     |
+| State        | Description                                                                                                                                                 | Appearance                                                              |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Default      | Knob size is `20px * 20px`.                                                                                                                                 | ![](static/default.png)                            |
+| Hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. Change the cursor to `pointer`. | ![](static/bar-hover.png) ![](static/hover.png) |
+| Active/focus | The slider knob scales to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state.                              | ![](static/active.png)                                     |
 
 ### Linked input
 
@@ -73,11 +73,11 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 | State        | Description                                                                                                 | Appearance                                           |
 | ------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| active/focus | By clicking on the input, the slider knob is pulled to the corresponding value and gets the `active` state. | ![slider with linked input](static/linked-input.png) |
+| Active/focus | By clicking on the input, the slider knob is pulled to the corresponding value and gets the `active` state. | ![](static/linked-input.png) |
 
 - If the input has a maximum value, and the user entered a value greater than the maximum, show a warning tooltip with an appropriate message.
 
-![slider with invalid input](static/maximum.png)
+![](static/maximum.png)
 
 @## Keyboard support
 
@@ -85,15 +85,15 @@ This design helps to reduce errors associated with homing (moving the hand from 
 - Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.
 - `Esc` removes focus from the input.
 
-> If the slider knob has focus, the user can move it with the keyboard arrows — '←', '→'.
+> If the slider knob has focus, the user can move it with the keyboard arrows – '←', '→'.
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 ### When to use the slider
 
 This input works best in cases where the user is not interested in entering a specific value, but choosing an approximate value.
 
-As the example above was given — changing color brightness or volume are the main cases for using slider component.
+As the example above was given – changing color brightness or volume are the main cases for using slider component.
 
 ### Use on mobile devices
 
@@ -105,7 +105,7 @@ Consider how the user will interact with the control. Do not place value labels 
 
 To keep the labels of such input visible when interacting with it, place them either on the left/right, or above.
 
-![slider on the mobile](static/mobile.png)
+![](static/mobile.png)
 
 @page slider-a11y
 @page slider-api

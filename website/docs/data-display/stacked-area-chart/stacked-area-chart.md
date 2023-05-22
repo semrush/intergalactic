@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
 @## Description
 
@@ -35,15 +35,15 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 It is recommended to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example                                  | Styles                                                                                                          |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--white)`. When hovering, the point increases to `12px * 12px`. |
+| Example                                  | Styles                                                                                                                      |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![area chart with dots](static/dots.png) | Dot size is `8px * 8px`, `border: 2px solid var(--chart-grid-border)`. When hovering, the point increases to `12px * 12px`. |
 
 @## Interaction
 
 When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it.
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/chart/#ac9830) or [Line chart](/data-display/line-chart/).
+> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
 
 @## Edge cases
 
@@ -58,7 +58,7 @@ For this case enable the display of dots on the chart by default.
 ### Styles
 
 - **Point size is 8px \* 8px**. When hovering, the point increases to **12px \* 12px**.
-- The line has the `dashed` border style and `--gray-200` color.
+- The line has the `dashed` border style and `--chart-palette-order-other-data` color.
 
 @## Two values
 
@@ -94,13 +94,15 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 @## Initial data loading
 
-When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-More information about this state see in the guide for [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/).
 
-![skeleton](static/skeleton.png)
+Use the `--skeleton-bg` color token for the skeleton background color.
+
+![skeleton](static/stacked-area-skeleton.png)
 
 @page stacked-area-chart-a11y
 @page stacked-area-chart-api

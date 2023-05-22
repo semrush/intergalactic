@@ -32,6 +32,18 @@ describe('Icon', () => {
     expect(getByTestId('icon').attributes['style'].value).toMatch('margin-right: 8px;');
   });
 
+  test('should aria-hidden be true if interactive is false', () => {
+    const { getByTestId } = render(<Icon data-testid="icon" mr={2} interactive={false} />);
+    expect(getByTestId('icon').attributes['aria-hidden'].value).toEqual('true');
+  });
+
+  test('should not be aria-hidden if interactive is true', () => {
+    const { getByTestId } = render(
+      <Icon data-testid="icon" mr={2} interactive={true} aria-label="Interactive icon!" />,
+    );
+    expect(getByTestId('icon').attributes['aria-hidden']?.value).toEqual(undefined);
+  });
+
   test('should support children', () => {
     const { getByTestId } = render(
       <Icon>

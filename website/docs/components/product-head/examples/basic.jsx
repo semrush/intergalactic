@@ -10,7 +10,6 @@ import MathPlusM from '@semcore/ui/icon/MathPlus/m';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 import InfoM from '@semcore/ui/icon/Info/m';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
-import { Box } from '@semcore/ui/flex-box';
 import TabLine from '@semcore/ui/tab-line';
 import Select from '@semcore/ui/select';
 
@@ -22,9 +21,11 @@ export default () => {
       <Header mx={6}>
         <Header.Row>
           <Breadcrumbs>
-            <Breadcrumbs.Item>Dashboard</Breadcrumbs.Item>
-            <Breadcrumbs.Item>Projects</Breadcrumbs.Item>
-            <Breadcrumbs.Item active>Project Name</Breadcrumbs.Item>
+            <Breadcrumbs.Item href="#">Dashboard</Breadcrumbs.Item>
+            <Breadcrumbs.Item href="#">Projects</Breadcrumbs.Item>
+            <Breadcrumbs.Item href="#" active>
+              Project Name
+            </Breadcrumbs.Item>
           </Breadcrumbs>
 
           <Header.Links>
@@ -114,7 +115,7 @@ export default () => {
         </Header.Row>
       </Header>
 
-      <TabLine defaultValue="overview" px={6}>
+      <TabLine defaultValue="overview" px={6} size="l">
         <TabLine.Item value="overview">Overview</TabLine.Item>
         <TabLine.Item value="issues">Issues</TabLine.Item>
         <TabLine.Item value="linked_in">LinkedIn</TabLine.Item>

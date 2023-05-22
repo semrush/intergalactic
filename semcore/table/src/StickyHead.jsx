@@ -46,6 +46,18 @@ function getScrollParent(element) {
   return getScrollParent(getParentNode(element));
 }
 
+function getOffsetWidth(node) {
+  if (node == null) {
+    return undefined;
+  }
+
+  if (node.getBoundingClientRect == null) {
+    return node.offsetWidth;
+  }
+
+  return node.getBoundingClientRect().width;
+}
+
 function calculateWidthTh(nodeTable) {
   const thead = nodeTable && nodeTable.getElementsByTagName('thead')[0];
   if (!nodeTable || !thead) return [];
@@ -67,7 +79,7 @@ function calculateWidthTh(nodeTable) {
 
       if (th.colSpan === 1 && th.rowSpan === 1) {
         if (indexTr === 0) {
-          listWidthTh[indexTr].push(th.offsetWidth);
+          listWidthTh[indexTr].push(getOffsetWidth(th));
           currentCellCursor += 1;
         } else {
           while (
@@ -77,7 +89,7 @@ function calculateWidthTh(nodeTable) {
           ) {
             emptyCellIndex += 1;
           }
-          listWidthTh[indexTr][emptyCellIndex] = th.offsetWidth;
+          listWidthTh[indexTr][emptyCellIndex] = getOffsetWidth(th);
           currentCellCursor = emptyCellIndex;
         }
         continue;
@@ -85,14 +97,29 @@ function calculateWidthTh(nodeTable) {
       if (th.rowSpan > 1) {
         [...new Array(th.rowSpan)].map((_, indexRowSpan) => {
           listWidthTh[indexRowSpan] = listWidthTh[indexRowSpan] || [];
-          listWidthTh[indexRowSpan][currentCellCursor] = th.offsetWidth;
+          listWidthTh[indexRowSpan][currentCellCursor] = getOffsetWidth(th);
         });
         currentCellCursor += 1;
       }
       if (th.colSpan > 1) {
-        listWidthTh[indexTr].push(...[...new Array(th.colSpan)].map(() => undefined));
+        listWidthTh[indexTr].push(...new Array(th.colSpan).fill(undefined));
         currentCellCursor += th.colSpan;
       }
+    }
+  }
+
+  if (listTrInsideHead.length > 0) {
+    const firstRowIndex = 0;
+    const tr = listTrInsideHead[firstRowIndex];
+    const listTdInsideTr = tr.getElementsByTagName('th');
+    const amountTd = listTdInsideTr.length;
+
+    for (let indexTd = 0; indexTd < amountTd; ) {
+      const th = listTdInsideTr[indexTd];
+      if (listWidthTh[firstRowIndex][indexTd] === undefined) {
+        listWidthTh[firstRowIndex][indexTd] = getOffsetWidth(th);
+      }
+      indexTd += th.colSpan;
     }
   }
 
@@ -116,12 +143,12 @@ function Head(props, ref) {
   const refTable = useRef(null);
   const { self, styles: tableStyles } = useContext(ContextTable);
   const { tableDOM } = useContext(StickyHeadContext);
-  const [listWidthTh, updateListWidthTh] = useState(calculateWidthTh(tableDOM));
+  const [listWidthTh, setListWidthTh] = useState(calculateWidthTh(tableDOM));
 
   setRef(ref, refTable.current);
 
   const updateWithTh = () => {
-    updateListWidthTh(calculateWidthTh(tableDOM));
+    setListWidthTh(calculateWidthTh(tableDOM));
   };
 
   useEffect(() => {
@@ -248,18 +275,13 @@ function StickyHeadInner(props, ref) {
   const top = typeof offsetTop === 'number' ? offsetTop : parseInt(offsetTop, 10);
   const bottom = typeof offsetBottom === 'number' ? offsetBottom : parseInt(offsetBottom, 10);
 
-  const [positionFixed, updatePositionFixed] = useState('top');
-  const [refScrollContainer, updateRefScrollContainer] = useState(null);
-  const [container, updateContainerNode] = useState(propsContainer);
+  const [positionFixed, setPositionFixed] = useState('top');
+  const [refScrollContainer, setRefScrollContainer] = useState(null);
+  const [container, setContainerNode] = useState(propsContainer);
 
   const { self } = useContext(ContextTable);
   const heightHeader = refScrollContainer ? refScrollContainer.offsetHeight : 0;
   let lastScrollLeft = 0;
-
-  const setPositionFixed = (positionFixed) => {
-    updatePositionFixed(positionFixed);
-    fireFn(onFixed, positionFixed);
-  };
 
   const getPositionContainer = (container) => {
     if (!container || !container.getBoundingClientRect) {
@@ -287,6 +309,7 @@ function StickyHeadInner(props, ref) {
 
   const updatePositionContainer = (coordinate, position) => {
     setPositionFixed(position);
+    fireFn(onFixed, positionFixed);
     setLeftPositionContainerSticky(coordinate.left, position);
   };
 
@@ -315,8 +338,8 @@ function StickyHeadInner(props, ref) {
 
   const getScrollPage = throttle(setPositionContainer);
 
-  let masterScrollActive = false;
-  let slaveScrollActive = false;
+  let mainScrollActive = false;
+  let controlledScrollActive = false;
 
   const handleScroll = throttle((e) => {
     if (!refScrollContainer || !container) return false;
@@ -324,19 +347,19 @@ function StickyHeadInner(props, ref) {
     const { target } = e;
     const { scrollLeft } = target;
 
-    masterScrollActive = [...target.classList].includes('_master-scroll');
-    slaveScrollActive = !masterScrollActive;
+    mainScrollActive = [...target.classList].includes('_master-scroll');
+    controlledScrollActive = !mainScrollActive;
 
-    if (!slaveScrollActive) {
-      slaveScrollActive = true;
+    if (!controlledScrollActive) {
+      controlledScrollActive = true;
       container.scrollLeft = scrollLeft;
-      slaveScrollActive = false;
+      controlledScrollActive = false;
     }
 
-    if (!masterScrollActive) {
-      masterScrollActive = true;
+    if (!mainScrollActive) {
+      mainScrollActive = true;
       refScrollContainer.scrollLeft = scrollLeft;
-      masterScrollActive = false;
+      mainScrollActive = false;
     }
   });
 
@@ -350,7 +373,7 @@ function StickyHeadInner(props, ref) {
         getScrollPage();
         document.addEventListener('scroll', getScrollPage);
       } else {
-        updateContainerNode(getScrollParent(getNodeByRef(self.ref)));
+        setContainerNode(getScrollParent(getNodeByRef(self.ref)));
       }
       return () => {
         getScrollPage.cancel();
@@ -424,7 +447,7 @@ function StickyHeadInner(props, ref) {
     <StickyHeadContext.Provider value={{ container, tableDOM }}>
       {createPortal(
         <ContainerStickyCore
-          setRefContainer={updateRefScrollContainer}
+          setRefContainer={setRefScrollContainer}
           positionFixed={positionFixed}
           top={top}
           bottom={bottom}

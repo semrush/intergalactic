@@ -5,13 +5,17 @@ import type { localizedMessages as localizedMessagesTypeBase } from './translati
 export type Intl = IntlShape<typeof localizedMessagesTypeBase['en']>;
 const messagesCache = createIntlCache();
 const intlCache: { [locale: string]: ReturnType<typeof createIntl> } = {};
-export const getIntl = (locale: string, translations = {}) => {
-  locale = normalizeLocale(locale, translations) ?? 'en';
+export const getIntl = (
+  locale: string,
+  translations: { [messageId: string]: string } = {},
+  availableLocales: { [localeId: string]: any },
+) => {
+  locale = normalizeLocale(locale, availableLocales) ?? 'en';
   intlCache[locale] = createIntl(
     {
       locale: locale,
       defaultLocale: 'en',
-      messages: translations[locale],
+      messages: translations,
     },
     messagesCache,
   );

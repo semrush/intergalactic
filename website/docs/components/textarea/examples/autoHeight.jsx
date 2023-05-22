@@ -1,8 +1,23 @@
 import React from 'react';
 import Textarea from '@semcore/ui/textarea';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => (
-  <Textarea w={500} minRows={4} maxRows={10} placeholder="Try type something really big" />
+  <div>
+    <Text tag="label" size="200" htmlFor="autoscalable-textarea">
+      Textarea with automatic height
+    </Text>
+    <Box mt={2}>
+      <Textarea
+        w={500}
+        minRows={4}
+        maxRows={10}
+        id="autoscalable-textarea"
+        placeholder="Try type something really big"
+      />
+    </Box>
+  </div>
 );
 
 export default Demo;

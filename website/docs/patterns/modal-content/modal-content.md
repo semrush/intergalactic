@@ -8,35 +8,24 @@ Here we have compiled recommendations for content styles in modal windows.
 
 @## Margins
 
-**Margin between the title and the content:**
+Margin between the title and the content:
 
-- 16px to a text;
-- 24px to controls/inputs.
-
-![modal heading margins](static/margins-heading.png)
-
-![modal heading margins](static/big-margins-heading.png)
-
-**For confirm modals use small margin of 8px.**
-
-![modal heading margins](static/margins-heading-confirm.png)
-
-**Margin between the content and CTA buttons — 24px.**
-
-![modal button margins](static/big-margins.png)
-
-**For confirm modals margin between the content and CTA buttons — 16px.**
-
-![modal button margins](static/margins.png)
+| Margin                                             | Appearance example                         |
+| -------------------------------------------------- | ------------------------------------------ |
+| 16px to a text (`--spacing-4x` token)              | ![](static/margins-heading.png)            |
+| 24px to controls and inputs (`--spacing-6x` token) | ![](static/big-margins-heading.png)        |
+| For confirm modals use small margin of 8px (`--spacing-2x` token) | ![](static/margins-heading-confirm.png)    |
+| Margin between the content and CTA buttons is 24px (`--spacing-6x` token) | ![](static/big-margins.png)                |
+| For confirm modals margin between the content and CTA buttons is 16px (`--spacing-4x` token) | ![](static/margins.png) |
 
 @## Title and text
 
-- For title in confirm windows use text with 20px size (`--fs-400; --lh-400;`). For title in all other window types use text with 24px size (`--fs-500; --lh-500;`).
-- For paragraph text use 14px size (`--fs-300; --lh-300;`).
+- For title in confirm windows use text with 20px size (`--fs-400`, `--lh-400`). For title in all other window types use text with 24px size (`--fs-500`, `--lh-500`).
+- For blocks of text use 16px size (`--fs-300`, `-lh-300` tokens). Avoid using font-size less than 16px for blocks of text that user needs to read. Use 14px font-size carefully, and always check it's readability and contrast against background.
 
-![modal title and buttons](static/s-confirm.png)
+![](static/s-confirm.png)
 
-![modal title and buttons](static/m-settings.png)
+![](static/m-settings.png)
 
 @## Buttons
 
@@ -44,39 +33,43 @@ Modal window must have a CTA or main button. The "Cancel" button and "Close" ico
 
 We also recommend you to use controls with L size in modal windows.
 
+@## Notice
+
+The notice should be located next to the place that triggers the alert.
+
+For example, if the user tried to submit a project title and failed, the notice should be placed next to the buttons.
+
+![](static/m-notice.png)
+
 @## Dual-zone modal window
 
 For the dual-zone modal window use:
 
-```
-background-color: var(--gray-50);
+```css
+background-color: var(--bg-secondary-neutral);
 ```
 
-![two-zone modal](static/m-modal.png)
+![](static/m-modal.png)
 
 @## Fixed header and footer
 
-While scrolling the modal's content area fixed areas get following shadow style:
-
-```
-background: linear-gradient(180deg, rgba(25, 27, 35, 0.1) 20.55%, rgba(255, 255, 255, 0.0001) 100%);
-```
+While scrolling the modal's content area fixed areas gets shadows from the top and bottom sides.
 
 Make paddings inside the fixed area not too big (for example, 8px).
 
-![fixed zone in modal](static/fixed.png)
+![](static/fixed.png)
 
-![fixed zone in modal](static/fixed-margins.png)
+![](static/fixed-margins.png)
 
 @## Loading
 
 While loading or reloading the content inside the modal window, show [Spin](/components/spin/) over the content.
 
-- Use Spin with the largest size — XXL.
+- Use Spin with the largest size – XXL.
 - The spinner is necessarily centered regarding the hidden content.
 - The message for this state is optional.
 
-![spinner in modal](static/spinner.png)
+![](static/spinner.png)
 
 @## Content alignment
 
@@ -92,11 +85,11 @@ In most cases, we make the content, titles, and controls of modal windows left a
 - content has different types of content: form, lists, tables, etc.;
 - content has fixed controls.
 
-![modal with left aligned content](static/m-settings.png)
+![](static/m-settings.png)
 
 **Align the content to the center when:**
 
 - modal window displays a success notification that contains an illustration;
 - modal window displays a notification with a single main button or buttons that scroll through the content.
 
-![modal with center aligned content](static/m-news.png)
+![](static/m-news.png)

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, axe, render, fireEvent } = testing;
+const { cleanup, axe, render, fireEvent, act } = testing;
 
 import DropdownMenu from '../src';
 
@@ -19,6 +19,20 @@ describe('DropdownMenu', () => {
 
     fireEvent.keyDown(input, { key: ' ', which: 32, keyCode: 32 });
     //TODO, because input.value all time print empty string
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  test('Should correct press Enter in textarea', () => {
+    const spy = jest.fn();
+    const { getByTestId } = render(
+      <DropdownMenu onVisibleChange={spy} interaction="focus">
+        <DropdownMenu.Trigger tag="textarea" data-testid="textarea" />
+      </DropdownMenu>,
+    );
+
+    const textarea = getByTestId('textarea');
+
+    fireEvent.keyDown(textarea, { key: 'Enter', which: 13, keyCode: 13 });
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -159,14 +173,17 @@ describe('DropdownMenu', () => {
   });
 
   test('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>
-        <DropdownMenu.Trigger>trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger aria-label="dropdown menu trigger">trigger</DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>item 1</DropdownMenu.Item>
         </DropdownMenu.Menu>
       </DropdownMenu>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

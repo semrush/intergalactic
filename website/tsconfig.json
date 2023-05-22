@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
@@ -11,11 +12,12 @@
     "baseUrl": "./",
     "incremental": true,
     "esModuleInterop": true,
+    "resolveJsonModule": true,
     "typeRoots": ["./node_modules/@types"],
     "paths": {
       "static/*": ["src/static/*"],
       "utils/*": ["src/utils/*"]
     }
   },
-  "exclude": ["node_modules", "dist", "builder", "deploy.ts", "searchIndexUpload.ts"]
+  "exclude": ["node_modules", "dist", "builder", "deploy.ts", "tools/searchIndexUpload.ts"]
 }

@@ -3,7 +3,7 @@ title: A11y
 a11y: AA
 ---
 
-Divider is a straight-forward component that does not require special compliance for accessibility.
+Divider is a decorative component that does not require special compliance for accessibility.
 
 @## Other recommendations
 

@@ -1,0 +1,73 @@
+SAxis {
+  stroke: var(--intergalactic-chart-grid-line, #e0e1e9);
+  stroke-width: 1;
+  fill: transparent;
+}
+
+SAxisLine,
+SAxisTick {
+  stroke: var(--intergalactic-chart-grid-line, #e0e1e9);
+  stroke-width: 1;
+  stroke-dasharray: 2;
+  fill: transparent;
+}
+
+SAxisLine[active] {
+  stroke: var(--intergalactic-chart-grid-y-accent-hover-line, #a9abb6);
+}
+
+SAxisLabel {
+  text-anchor: middle;
+  dominant-baseline: central;
+  font-size: 12px;
+}
+
+SAxisLabel[xDirection] {
+  text-anchor: var(--xDirection);
+}
+
+SAxisLabel[yDirection] {
+  dominant-baseline: var(--yDirection);
+}
+
+SPolygon {
+  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  opacity: 0.2;
+}
+
+SPolygon[color] {
+  fill: var(--color);
+}
+
+SPolygonDot {
+  stroke-width: 2px;
+  stroke: var(--intergalactic-chart-grid-border, #ffffff);
+  r: 6px;
+  fill: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+}
+
+SPolygonDot[transparent] {
+  opacity: 0.3;
+}
+
+SPolygonDot[color] {
+  fill: var(--color);
+}
+
+SPolygonLine {
+  stroke: var(--intergalactic-chart-palette-order-1, #2bb3ff);
+  stroke-width: 3;
+  fill: transparent;
+}
+
+SPolygonLine[transparent] {
+  opacity: 0.3;
+}
+
+SPolygonLine[color] {
+  stroke: var(--color);
+}
+
+SPieRect {
+  fill: var(--intergalactic-chart-grid-bar-chart-hover, rgba(196, 199, 207, 0.3));
+}

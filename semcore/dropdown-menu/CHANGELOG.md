@@ -2,6 +2,130 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.35] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.28 ~> 3.4.29], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.6.34] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.27 ~> 3.4.28], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.6.30] - 2023-05-02
+
+### Changed
+
+- Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+## [3.6.29] - 2023-04-24
+
+### Fixed
+
+- Remove role for Title and Hint
+
+## [3.6.27] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.22 ~> 3.4.23], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.6.25] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to the component.
+
+## [3.6.24] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.19 ~> 3.4.20], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.6.20] - 2023-03-23
+
+### Added
+
+- Added `z-index: 0` to `DropdownMenu.List` so that it doesn't overlap the focus border of neighboring elements.
+
+## [3.6.19] - 2023-03-23
+
+### Fixed
+
+- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- Navigating options with keyboard now doesn't trigger browser focus.
+- `aria-activedescendant` now is properly updated on keyboard navigation.
+
+## [3.6.18] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.14 ~> 3.4.15], `@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [3.6.15] - 2023-03-06
+
+### Fixed
+
+- Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
+## [3.6.14] - 2023-03-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.10 ~> 3.4.11]).
+
+## [3.6.13] - 2023-02-22
+
+## [3.6.12] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.8 ~> 3.4.9], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.6.10] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [3.6.9] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.5 ~> 3.4.6], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.6.6] - 2023-01-10
+
+### Fixed
+
+- Fixed error loading styles in correct order for `mini-css-extract-plugin`.
+
+## [3.6.5] - 2023-01-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.1 ~> 3.4.2], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
+## [3.6.3] - 2022-12-27
+
+### Changed
+
+- `DropdownMenu.Popper` closes when the `Enter` button is pressed.
+
+## [3.6.2] - 2022-12-27
+
+### Added
+
+- Added `box-sizing` for correct offset display.
+
+## [3.6.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.0 ~> 3.4.1], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [3.6.0] - 2022-12-14
 
 ### Added

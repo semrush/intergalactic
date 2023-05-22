@@ -23,76 +23,76 @@ Fullscreen modal window consists of:
 - content;
 - fixed footer with submit and other controls (optional).
 
-![fullscreem modal](static/fullscreen-modal.png)
+![](static/fullscreen-modal.png)
 
 @## Header
 
 For the header of the fullscreen window use the following styles:
 
-- for title use text with 24px size (`--fs-500; --lh-500;`) and bold font-weight;
-- for additional information next to the title use text with 12px size (`--fs-100; --lh-100;`) and `--gray-500` color.
+- for title use text with 24px size (`--fs-500`, `--lh-500`) and bold font-weight;
+- for additional information next to the title use text with 12px size (`--fs-100`, `--lh-100`) and `--text-secondary` token for text color.
 - for return button use button with M size.
-- for window closing icon use Close icon with M size.
+- for window closing icon use `Close` icon with M size.
 
 > Fix the header, while user scrolls the content of the window.
 
 ### Sizes, margins and paddings
 
-```css
+<!-- ```css
 height: 78px;
 padding: 40px 72px 8px 32px;
-border-bottom: 1px solid var(--gray-200);
-```
+border-bottom: 1px solid var(--border-primary);
+``` -->
 
-![fullscreem modal header margins](static/header.png)
+![](static/header.png)
 
-![fullscreem modal header margins](static/header-padding.png)
+![](static/header-padding.png)
 
-![fullscreem modal header margins](static/divider.png)
+![](static/divider.png)
 
 ### Long title
 
 If the title of the window is very long and it does not fit into the space, collapse it to `ellipsis`.
 
-The Close icon has `margin-left: 12px;`.
+`Close` icon has `margin-left: var(--spacing-3x)`.
 
-![fullscreem modal](static/long-heading.png)
+![](static/long-heading.png)
 
 @## Content
 
 - For content title use text less than 20px (`--fs-500`) to maintain hierarchy in the content.
-- You can divide content area into several areas. To visually separate them, use `--gray-50` as a background color for one of them.
+- You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
 
 | Single-zone modal window                           | Dual-zone modal window                             |
 | -------------------------------------------------- | -------------------------------------------------- |
-| ![fullscreem modal](static/fullscreen-modal-3.png) | ![fullscreem modal](static/fullscreen-modal-2.png) |
+| ![](static/fullscreen-modal-3.png) | ![](static/fullscreen-modal-2.png) |
 
 ### Paddings
 
-`padding: 24px 32px;`
-
 | Single-zone modal window                 | Dual-zone modal window                     |
 | ---------------------------------------- | ------------------------------------------ |
-| ![fullscreem modal](static/paddings.png) | ![fullscreem modal](static/paddings-2.png) |
+| ![](static/paddings.png) | ![](static/paddings-2.png) |
 
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them is placed with `align: left`.
-- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider a [default modal window](components/modal) in this case**.
+- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. **We recommend you to consider a [default modal window](/components/modal) in this case**.
 
 | Single-zone modal window                  | Dual-zone modal window                    |
 | ----------------------------------------- | ----------------------------------------- |
-| ![fullscreem modal](static/content-1.png) | ![fullscreem modal](static/content-2.png) |
+| ![](static/content-1.png) | ![](static/content-2.png) |
 
 @## Footer
 
-```css
+Footer has the same padding as the header has.
+
+<!-- ```css
 height: 52px;
 padding: 40px 72px 8px 32px;
-border-top: 1px solid var(--gray-200);
-```
+border-top: 1px solid var(--border-primary);
+``` -->
 
-![fullscreem modal](static/footer-fixed.png)
+![](static/footer-fixed.png)
 
 @## CTA buttons
 
@@ -100,7 +100,7 @@ You can use buttons either M or L size depending on the context of the problem y
 
 > Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
 
-![fullscreem modal](static/footer-fixed2.png)
+![](static/footer-fixed2.png)
 
 @## Interaction
 
@@ -117,7 +117,7 @@ You can close the fullscreen modal window:
 
 The header and footer of the modal window should be straightened to the full width of the browser window. If necessary, the content may have a fixed width (minimum or maximum).
 
-![fullscreen modal width](static/fullscreen-yes-no.png)
+![](static/fullscreen-yes-no.png)
 
 @## Corner cases
 
@@ -125,7 +125,7 @@ The header and footer of the modal window should be straightened to the full wid
 
 When loading and reloading the content of the window, use [Spin](/components/spin) with XL size.
 
-![fullscreen modal width](static/loading.png)
+![](static/loading.png)
 
 ### Error
 
@@ -135,7 +135,7 @@ For error messages use component from [Widget empty state](/components/widget-em
 
 ### Limit
 
-![fullscreen modal limit](static/limit.png)
+![](static/limit.png)
 
 @page fullscreen-modal-a11y
 @page fullscreen-modal-api

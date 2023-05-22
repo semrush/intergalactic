@@ -2,6 +2,140 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.7] - 2023-05-19
+
+### Added
+
+- Set default color of modals for better support of dark themes.
+
+## [3.6.6] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.6.5] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/icon` [3.14.9 ~> 3.14.10], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.6.2] - 2023-05-02
+
+## [3.6.1] - 2023-04-26
+
+## [3.6.0] - 2023-04-24
+
+### Added
+
+- Added `disablePreventScroll` prop.
+
+## [3.5.18] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.5.17] - 2023-04-03
+
+## [3.5.16] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/icon` [3.14.5 ~> 3.14.6], `@semcore/portal` [2.5.17 ~> 2.6.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.5.14] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes in modals.
+
+## [3.5.13] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.6 ~> 1.9.7], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/icon` [3.14.2 ~> 3.14.3], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+
+## [3.5.8] - 2023-03-09
+
+### Fixed
+
+- Fixed focus locking and returning.
+
+## [3.5.7] - 2023-03-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.13.1 ~> 3.13.2]).
+
+## [3.5.6] - 2023-03-01
+
+### Fixed
+
+- Fixed `animationsDisabled` prop passing.
+
+## [3.5.4] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [3.5.2] - 2023-02-22
+
+## [3.5.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.5.0] - 2023-02-20
+
+### Added
+
+- Added appear and disappear animation.
+
+## [3.4.6] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+
+## [3.4.5] - 2023-02-13
+
+## [3.4.4] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+
+## [3.4.3] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.9 ~> 1.8.10], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.4.0] - 2023-01-18
+
+### Added
+
+- Added `Modal.Title` component and `aria-labelledby` property for better a11y.
+
+## [3.3.6] - 2023-01-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.7 ~> 1.8.8]).
+
+## [3.3.5] - 2023-01-11
+
+## [3.3.4] - 2023-01-10
+
+## [3.3.3] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.5 ~> 1.8.6], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/icon` [3.5.0 ~> 3.5.1], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.3.0] - 2022-12-14
 
 ### Added

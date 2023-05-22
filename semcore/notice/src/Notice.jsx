@@ -8,6 +8,7 @@ import logger from '@semcore/utils/lib/logger';
 import NoticeGlobal from '@semcore/notice-global';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/notice.shadow.css';
 
@@ -18,10 +19,17 @@ function isCustomTheme(theme) {
 class RootNotice extends Component {
   static displayName = 'Notice';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-popper',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
     theme: 'info',
-    duration: 250,
     i18n: localizedMessages,
     locale: 'en',
   };

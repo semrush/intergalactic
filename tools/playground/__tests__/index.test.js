@@ -47,6 +47,8 @@ describe('Playground sources resolving', () => {
         '@navigation',
         '@static',
         '@components/Color',
+        '@components/BaseTokens',
+        '@components/DesignTokens',
         '@components/Copy',
         '@components/algolia-config',
         '@icons/lib',

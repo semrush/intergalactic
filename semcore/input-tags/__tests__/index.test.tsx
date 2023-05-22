@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, render, cleanup, fireEvent } = testing;
+const { axe, render, cleanup, fireEvent, act } = testing;
 import Tooltip from '@semcore/tooltip';
 
 import InputTags from '../src';
@@ -28,18 +28,18 @@ describe('InputTags', () => {
 
   test('renders basic example', async () => {
     const Component = () => {
-      const [tags, updateTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
-      const [value, updateValue] = React.useState('');
+      const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
+      const [value, setValue] = React.useState('');
 
       const handleAppendTags = (newTags) => {
-        updateTags((tags) => [...tags, ...newTags]);
-        updateValue('');
+        setTags((tags) => [...tags, ...newTags]);
+        setValue('');
       };
 
       const handleRemoveTag = () => {
         if (tags.length === 0) return;
-        updateTags(tags.slice(0, -1));
-        updateValue(tags.slice(-1)[0] + ` ${value}`);
+        setTags(tags.slice(0, -1));
+        setValue(tags.slice(-1)[0] + ` ${value}`);
       };
 
       const handleCloseTag = (e) => {
@@ -52,9 +52,9 @@ describe('InputTags', () => {
         if (value) {
           allTags = [...allTags, value];
         }
-        updateTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
+        setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
         if (!e.defaultPrevented) {
-          updateValue(tags[dataset.id]);
+          setValue(tags[dataset.id]);
         }
         return false;
       };
@@ -81,7 +81,7 @@ describe('InputTags', () => {
               <Tooltip.Popper>tag</Tooltip.Popper>
             </Tooltip>
           ))}
-          <InputTags.Value value={value} onChange={updateValue} onBlur={handleBlurInput} />
+          <InputTags.Value value={value} onChange={setValue} onBlur={handleBlurInput} />
         </InputTags>
       );
     };
@@ -107,6 +107,18 @@ describe('InputTags', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('renders prop hMin', async () => {
+    const component = (
+      <InputTags hMin={100}>
+        {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
+          <InputTags.Tag key={idx}>{tag}</InputTags.Tag>
+        ))}
+        <InputTags.Value />
+      </InputTags>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should call onClick', async () => {
     const onClick = jest.fn();
     const { getByTestId } = render(
@@ -119,11 +131,12 @@ describe('InputTags', () => {
       </InputTags>,
     );
 
-    fireEvent.keyDown(getByTestId('tag'), { code: 'Enter' });
+    act(() => fireEvent.keyDown(getByTestId('tag'), { code: 'Enter' }));
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   test('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <InputTags size="l">
         {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
@@ -135,6 +148,8 @@ describe('InputTags', () => {
         <InputTags.Value aria-label="input with tags" />
       </InputTags>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

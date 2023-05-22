@@ -2,6 +2,129 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.14.11] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.14.10] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.14.8] - 2023-04-24
+
+## [3.14.7] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.14.0] - 2023-03-17
+
+### Added
+
+- Added `GitHubInvert` icon.
+
+## [3.13.4] - 2023-03-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.11 ~> 4.7.12], `@semcore/utils` [3.47.2 ~> 3.47.3]).
+
+## [3.13.2] - 2023-03-02
+
+### Removed
+
+- Removed automatic setting of `aria-hidden` to `true`.
+
+## [3.13.1] - 2023-02-28
+
+### Fixed
+
+- Fixed DOM attributes `aria-hidden` and `role` were not overridable.
+
+## [3.13.0] - 2023-02-24
+
+### Fixed
+
+- Fixed path for `Confluence`, `GoogleCloud`, `Hubspot`, `JavaScript`, `LookerStudio` icons.
+
+## [3.12.0] - 2023-02-22
+
+### Added
+
+- Added `Confluence` icon.
+
+## [3.11.0] - 2023-02-22
+
+### Fixed
+
+- Renamed `FeauturedImage` icon to `FeaturedImage`.
+
+## [3.10.2] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.10.0] - 2023-02-13
+
+### Added
+
+- Added `JavaScript` icon.
+
+## [3.9.0] - 2023-02-09
+
+### Changed
+
+- Renamed `YoutubeAlt` icon to `YoutubeColored`.
+- Renamed `YoutubeRed` icon to `YoutubeInvert`.
+
+## [3.8.0] - 2023-01-20
+
+### Added
+
+- Added `TwitterCarousel`, `TopStories`, `WebStories`, `FindResultsOn`, `InterestingFinds`, `Event`, `SeeResultsAbout`, `PopularProducts`, `RelatedProducts`, `AddressPack`, `RelatedSearches`, `ShortVideos` icons.
+
+## [3.7.0] - 2023-01-19
+
+### Added
+
+- Added `NotificationNo` icon.
+
+## [3.6.1] - 2023-01-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.5 ~> 4.7.6], `@semcore/utils` [3.44.3 ~> 3.45.0]).
+
+## [3.6.0] - 2023-01-10
+
+### Fixed
+
+- Renamed `Stoller` icon to `Stroller`.
+
+## [3.5.1] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
+## [3.5.0] - 2022-12-27
+
+### Added
+
+- Added `Jewelry`, `Photo`, `Military`, `Restaurant`, `Music`, `Recreation`, `Events'`, `Cosmetics`, `Fashion`, `Printing`, `Science`, `Comics`, `Gambling`, `Architecture`, `Veterinary`, `Furniture`, `Adult`, `Religion`, `PublicSafety`, `Security`, `Fish`, `Law`, `Oil`, `Packaging`, `Logistic`, `Marine`, `PublicUtility`, `Craft`, `Sport`, `Car`, `Games`, `Language`, `Smoking`, `Farm`, `Food`, `Wine` icons.
+
+## [3.4.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.2 ~> 4.7.3], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [3.4.1] - 2022-12-13
 
 ### Changed
@@ -52,9 +175,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.0.0] - 2022-10-10
 
-### BREAK
+### Fixed
 
-- Remove `AppBlock` icon, use `AppsBlock` instead.
+- Renamed `AppBlock` icon to `AppsBlock`.
 
 ### Changed
 

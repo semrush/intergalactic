@@ -8,6 +8,8 @@ import {
   serializeReleaseChangelog,
   toMarkdown,
 } from '@semcore/changelog-handler';
+import { sendMessage, makeMessageFromChangelogs } from '@semcore/slack-integration';
+
 dotenv.config();
 const git = Git();
 
@@ -19,10 +21,12 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
   if (versionPatches.length === 1) {
     commitMessage += ` version of `;
   } else {
-    commitMessage += `versions of `;
+    commitMessage += ` versions of `;
   }
   commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
-  const pnpmOptions = process.argv.includes('--dry-run') ? '--dry-run' : '';
+  const pnpmOptions = process.argv.includes('--dry-run')
+    ? '--dry-run --no-git-checks'
+    : '--no-git-checks';
   const gitTags = versionPatches.map((patch) => `${patch.package.name}@${patch.to}`);
   const toPublish = versionPatches.filter((patch) => patch.needPublish);
 
@@ -44,21 +48,23 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
-    execSync(`pnpm ${pnpmFilter} run upload-static`, {
-      encoding: 'utf-8',
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
-    execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
-      encoding: 'utf-8',
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
+    if (!process.argv.includes('--dry-run')) {
+      execSync(`pnpm ${pnpmFilter} run upload-static`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+      execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+    }
   }
   if (semcoreUiPatch) {
     execSync(`pnpm --filter @semcore/ui run build`, {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
-    const status = await git.status();
+    let status = await git.status();
     if (status.files.length) {
       await git.add('.');
       if (!process.argv.includes('--dry-run')) {
@@ -66,13 +72,28 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
         await git.tag(['-f', `@semcore/ui@${semcoreUiPatch.to}`]);
       }
     }
-    execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
-      encoding: 'utf-8',
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
+    if (!process.argv.includes('--dry-run')) {
+      execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
+        encoding: 'utf-8',
+        stdio: ['inherit', 'inherit', 'inherit'],
+      });
+    }
+    status = await git.status();
+    if (status.files.length) {
+      await git.add('pnpm-lock.yaml');
+      if (!process.argv.includes('--dry-run')) {
+        await git.commit(['[chore] updated lock file'], []);
+      }
+    }
   }
   if (!process.argv.includes('--dry-run')) {
-    await git.pull('origin', 'master', { '--rebase': 'true' });
+    try {
+      await git.pull('origin', 'master', { '--rebase': 'true' });
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log(await git.status());
+      throw err;
+    }
     await git.push('origin', 'master', { '--follow-tags': null });
 
     if (semcoreUiPatch) {
@@ -84,9 +105,8 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       await fs.rm('./.gh-auth-token.txt');
       const semcoreUiChangelog = await getReleaseChangelog();
       const version = semcoreUiChangelog.package.version;
-      const releaseNotes = toMarkdown(
-        serializeReleaseChangelog(semcoreUiChangelog.changelogs.slice(0, 1)),
-      )
+      const lastVersionChangelogs = semcoreUiChangelog.changelogs.slice(0, 1);
+      const releaseNotes = toMarkdown(serializeReleaseChangelog(lastVersionChangelogs))
         .split('\n')
         .slice(2)
         .join('\n');
@@ -99,6 +119,15 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
         },
       );
       await fs.rm('./.github-release-notes.txt');
+
+      const title = `New release v${version} is here!`;
+      const body = makeMessageFromChangelogs(lastVersionChangelogs, false);
+
+      await sendMessage({
+        title,
+        body,
+        dryRun: false,
+      });
     }
   }
 };

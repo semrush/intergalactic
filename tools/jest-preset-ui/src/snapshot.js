@@ -1,6 +1,5 @@
 const request = require('request');
 const util = require('util');
-// const fs = require('fs');
 const path = require('path');
 const React = require('react');
 const { createRoot } = require('react-dom/client');
@@ -16,17 +15,18 @@ if (process.cwd().includes('semcore')) {
 
 require('dotenv').config(config);
 
-if (!process.env.SCREENSHOT_URL) {
-  throw new Error('Create .env file and insert SCREENSHOT_URL variable');
-}
-
 const DEFAULT_OPTIONS = { selector: '#root' };
 
 async function snapshot(Component, options) {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
+  jest.useFakeTimers();
   act(() => root.render(Component));
+  if (!options) {
+    act(() => jest.runAllTimers());
+  }
+  jest.useRealTimers();
   // ReactDOM.render(Component, _tmp);
   const componentHtml = _tmp.innerHTML;
   const componentStyle = document.head.innerHTML;
@@ -83,16 +83,34 @@ async function snapshot(Component, options) {
     </html>`;
 
   /* Uncomment line below to debug snapshot in your browser */
+  // const fs = require('fs');
   // fs.writeFileSync('./tmp.html', html);
-  const { body } = await post({
-    url: process.env.SCREENSHOT_URL + `?r=1`,
-    encoding: null,
-    form: {
-      ...options,
-      html,
-    },
-  });
+  const retires = 3;
+  let body = null;
+  let lastError = null;
+  for (let retry = 0; retry < retires; retry++) {
+    try {
+      const response = await post({
+        url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/',
+        encoding: null,
+        form: {
+          ...options,
+          html,
+          token: process.env.SCREENSHOT_TOKEN,
+        },
+      });
+      body = response.body;
+      break;
+    } catch (error) {
+      lastError = error;
+    }
+  }
   act(() => root.unmount());
+
+  if (body === null) {
+    throw lastError;
+  }
+
   return body;
 }
 

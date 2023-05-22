@@ -12,44 +12,44 @@ class Demo extends React.Component {
         <div>
           <Text size={700}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoL ml="4px" color="gray-300" cursor="help" />
+            <InfoL ml="4px" color="gray-300" cursor="help" tabIndex={0} />
           </Tooltip>
         </div>
         <div>
           <Text size={600}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoL ml="4px" color="gray-300" cursor="help" />
+            <InfoL ml="4px" color="gray-300" cursor="help" tabIndex={0} />
           </Tooltip>
         </div>
         <div>
           <Text size={500}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="gray-300" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" tabIndex={0} />
           </Tooltip>
         </div>
         <div>
           <div>
             <Text size={400}>Label</Text>
             <Tooltip title="Awesome hint text">
-              <InfoM ml="4px" color="gray-300" cursor="help" />
+              <InfoM ml="4px" color="gray-300" cursor="help" tabIndex={0} />
             </Tooltip>
           </div>
           <div></div>
           <Text size={300}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="gray-300" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" tabIndex={0} />
           </Tooltip>
         </div>
         <div>
           <Text size={200}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="gray-300" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" tabIndex={0} />
           </Tooltip>
         </div>
         <div>
           <Text size={100}>Label</Text>
           <Tooltip title="Awesome hint text">
-            <InfoM ml="4px" color="gray-300" cursor="help" />
+            <InfoM ml="4px" color="gray-300" cursor="help" tabIndex={0} />
           </Tooltip>
         </div>
       </>

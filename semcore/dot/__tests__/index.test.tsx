@@ -9,8 +9,8 @@ import Button from '@semcore/button';
 describe('Dot', () => {
   afterEach(cleanup);
 
-  shouldSupportClassName(Dot);
-  shouldSupportRef(Dot);
+  shouldSupportClassName(Dot, undefined, { 'aria-label': 'test dot' });
+  shouldSupportRef(Dot, undefined, { 'aria-label': 'test dot' });
 
   test('Renders correctly', async () => {
     const component = (

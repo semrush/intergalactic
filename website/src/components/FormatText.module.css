@@ -1,18 +1,18 @@
 .formatText {
-  font-size: 16px;
-  line-height: 1.5em;
-  color: #171a22;
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  color: var(--intergalactic-text-primary);
   font-weight: normal;
   word-wrap: break-word;
   overflow: auto;
   text-rendering: optimizeLegibility;
 }
 .formatText a {
-  color: #0070cc;
+  color: var(--intergalactic-text-link);
   text-decoration: none;
 }
 .formatText a:hover {
-  color: #0070cc;
+  color: var(--intergalactic-text-link);
   text-decoration: underline;
 }
 
@@ -21,7 +21,8 @@
   padding: 0;
   margin: 0 0 1.5rem;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: var(--intergalactic-rounded-medium);
+  background-color: #ffffff;
 }
 .formatText img [alt$='#center'] {
   display: block;
@@ -34,7 +35,7 @@
 .formatText h1 {
   padding: 0;
   margin: 0 0 1rem;
-  font-weight: 500;
+  font-weight: var(--intergalactic-medium);
   font-size: 2rem;
   line-height: 2.25rem;
 }
@@ -42,7 +43,7 @@
 .formatText h2 {
   padding: 0;
   margin: 2rem 0 1rem;
-  font-weight: 500;
+  font-weight: var(--intergalactic-medium);
   font-size: 1.5625rem;
   line-height: 2.25rem;
 }
@@ -50,7 +51,7 @@
 .formatText h3 {
   padding: 0;
   margin: 0 0 1rem;
-  font-weight: 700;
+  font-weight: var(--intergalactic-bold);
   font-size: 1.17rem;
   line-height: 2.4rem;
 }
@@ -58,7 +59,7 @@
 .formatText h4 {
   padding: 0;
   margin: 0 0 0.5rem;
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
   font-size: 1rem;
   line-height: 2rem;
 }
@@ -66,7 +67,7 @@
 .formatText h5 {
   padding: 0;
   margin: 0 0 0.5rem;
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
   font-size: 0.83rem;
   line-height: 1.5rem;
 }
@@ -74,7 +75,7 @@
 .formatText h6 {
   padding: 0;
   margin: 0 0 0.5rem;
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
   font-size: 0.67rem;
   line-height: 1.5rem;
 }
@@ -127,9 +128,9 @@
 
 .formatText pre:not([class]) {
   font-size: 0.85rem;
-  line-height: 1.42;
+  line-height: var(--intergalactic-lh-200);
   background: hsla(0, 0%, 0%, 0.04);
-  border-radius: 3px;
+  border-radius: calc(var(--intergalactic-rounded-small) - 1px);
   overflow: auto;
   padding: 1.5rem;
 }
@@ -142,7 +143,7 @@
 }
 
 .formatText table tbody tr:hover {
-  background-color: #f0f0f4;
+  background-color: var(--intergalactic-table-td-cell-hover);
 }
 
 .formatText fieldset {
@@ -153,16 +154,16 @@
 .formatText blockquote {
   padding: 1.5rem;
   margin: 1rem 0 1rem;
-  font-size: 16px;
-  line-height: 1.5em;
-  background-color: rgba(184, 128, 255, 0.15);
-  border-left: 12px solid #b880ff;
-  border-radius: 6px;
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  background-color: var(--intergalactic-bg-secondary-advertising);
+  border-left: 12px solid var(--violet-300);
+  border-radius: var(--intergalactic-rounded-medium);
 }
 
 .formatText blockquote.--info {
-  background: #e9f7ff;
-  border-color: #8ecdff;
+  background: var(--intergalactic-bg-secondary-info);
+  border-color: var(--intergalactic-border-info);
 }
 
 .formatText blockquote *:last-child {
@@ -202,29 +203,29 @@
 }
 
 .formatText b {
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
 }
 
 .formatText strong {
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
 }
 
 .formatText dt {
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
 }
 
 .formatText th {
-  font-weight: bold;
+  font-weight: var(--intergalactic-bold);
 }
 
 .formatText ol li {
   padding-left: 0;
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x);
 }
 
 .formatText ul li {
   padding-left: 0;
-  margin-bottom: 8px;
+  margin-bottom: var(--intergalactic-spacing-2x);
 }
 
 .formatText li > ol {
@@ -273,22 +274,33 @@
 .formatText th {
   vertical-align: top;
   text-align: left;
-  border-bottom: 1px solid #d1d4db;
+  border-bottom: 1px solid var(--intergalactic-border-primary);
   padding: 0.75rem 0.5rem calc(0.75rem - 1px);
 }
 
 .formatText code {
-  background-color: hsla(266, 99%, 71%, 0.17);
-  border-radius: 4px;
+  background-color: var(--intergalactic-tag-primary-violet-normal);
+  border-radius: var(--intergalactic-rounded-small);
   font-family: Consolas, 'Roboto Mono', 'Liberation Mono', Menlo, Courier, monospace;
-  padding: 2px;
+  padding: calc(0.5 * var(--intergalactic-spacing-1x));
 }
 
 .formatText pre code {
   background: none;
-  line-height: 1.42;
+  line-height: var(--intergalactic-lh-200);
 }
 
 .formatText small {
-  color: #575c66;
+  color: var(--intergalactic-text-secondary);
+}
+
+table caption {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }

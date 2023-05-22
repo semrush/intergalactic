@@ -2,7 +2,7 @@ STextarea {
   height: auto;
   color: var(--intergalactic-text-primary, #191b23);
   border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   outline: none;
   width: 100%;
   box-sizing: border-box;
@@ -50,7 +50,7 @@ STextarea[state='valid'] {
 }
 
 STextarea[state='invalid'] {
-  border-color: var(--intergalactic-border-danger-active, #d1002f);
+  border-color: var(--intergalactic-border-critical-active, #d1002f);
   &:focus {
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
   }

@@ -18,7 +18,7 @@ SBaseTrigger {
   outline: 0;
   text-align: center;
   vertical-align: middle;
-  font-family: var(--intergalactic-base, Inter), sans-serif;
+  font-family: inherit;
   cursor: pointer;
 
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
@@ -99,7 +99,7 @@ SBaseAddon {
 SBaseTrigger[size='m'] {
   min-width: 26px;
   height: 28px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   padding: 0 var(--intergalactic-spacing-2x, 8px);
   font-size: var(--intergalactic-fs-200, 14px);
 
@@ -122,7 +122,7 @@ SBaseTrigger[size='m'] {
 SBaseTrigger[size='l'] {
   min-width: 32px;
   height: 40px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   padding: 0 var(--intergalactic-spacing-3x, 12px);
   font-size: var(--intergalactic-fs-300, 16px);
 
@@ -173,10 +173,10 @@ SBaseTrigger[state='valid'] {
 }
 
 SBaseTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-danger, #ffaeb5);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 
   &[keyboardFocused] {
-    border-color: var(--intergalactic-border-danger-active, #d1002f);
+    border-color: var(--intergalactic-border-critical-active, #d1002f);
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
   }
 }

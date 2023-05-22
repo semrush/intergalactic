@@ -13,6 +13,7 @@ SRadio[disabled] {
 
 SText {
   margin-left: var(--intergalactic-spacing-2x, 8px);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SText[size='m'] {
@@ -44,6 +45,7 @@ SValue {
     background: var(--intergalactic-bg-primary-neutral, #ffffff);
     border: 1px solid;
     border-radius: 50%;
+    transition: calc(var(--intergalactic-duration-control, 200) * 1ms) all ease-in-out;
   }
 
   &::after {
@@ -78,7 +80,7 @@ SValue[state='normal']::before {
 }
 
 SValue[state='invalid']::before {
-  border-color: var(--intergalactic-border-danger-active, #d1002f);
+  border-color: var(--intergalactic-border-critical-active, #d1002f);
 }
 
 SControl {

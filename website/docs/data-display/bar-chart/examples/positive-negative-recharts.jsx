@@ -39,8 +39,8 @@ const data = [...Array(15)]
   .reverse();
 
 const Demo = () => {
-  const [bars, updateBars] = useState(['new', 'lost']);
-  const [opacity, updateOpacity] = useState({});
+  const [bars, setBars] = useState(['new', 'lost']);
+  const [opacity, setOpacity] = useState({});
 
   const handleMouseEnter = (entry) => {
     const { dataKey } = entry;
@@ -48,14 +48,14 @@ const Demo = () => {
       opacity[dataKey] = 0.3;
     });
     opacity[dataKey] = 1;
-    updateOpacity({ ...opacity });
+    setOpacity({ ...opacity });
   };
 
   const handleMouseLeave = () => {
     Object.keys(opacity).forEach((dataKey) => {
       opacity[dataKey] = 1;
     });
-    updateOpacity({ ...opacity });
+    setOpacity({ ...opacity });
   };
 
   const chooseBars = (entry) => {
@@ -66,11 +66,13 @@ const Demo = () => {
     } else {
       newBars = [...newBars, dataKey];
     }
-    updateBars(newBars);
+    setBars(newBars);
   };
   return (
     <Card my="24px" pt="20px" px="24px" pb="24px" wMax="800px">
-      <Card.Title hint="This is just an example of bar chart">Keywords</Card.Title>
+      <Card.Title tag="h4" inline hint="This is just an example of bar chart" my={0}>
+        Keywords
+      </Card.Title>
       <ResponsiveContainer height={180}>
         <BarChart stackOffset="sign" data={data}>
           <Legend verticalAlign="top">

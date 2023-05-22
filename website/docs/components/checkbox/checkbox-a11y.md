@@ -21,18 +21,24 @@ The list below describes roles and attributes that component already has.
 | ---------- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `checkbox` |                        | `div`   | Identifies the div element as a checkbox. The child text content of this `div` provides the accessible name of the checkbox.                                                                                                                                                                                                                                                          |
 |            | `tabindex="0"`         | `div`   | Includes the checkbox in the page `Tab` sequence.                                                                                                                                                                                                                                                                                                                                     |
-|            | `aria-checked="true"`  | `div`   | Indicates the `checkbox` is checked. CSS attribute selectors (e.g. [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state.      |
-|            | `aria-checked="false"` | `div`   | Indicates the `checkbox` is not checked. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state. |
+<!-- |            | `aria-checked="true"`  | `div`   | Indicates the `checkbox` is checked. CSS attribute selectors (e.g. [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state.      |
+|            | `aria-checked="false"` | `div`   | Indicates the `checkbox` is not checked. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. To support operating system and browser high contrast settings, the CSS `::before` pseudo element and `content` property are used to generate the visual indicators of the checkbox state. | -->
 
 @## Considerations for developers
+
+- The `<fieldset>` surrounds the entire grouping of checkboxes or radio buttons. The `<legend>` provides a description for the grouping.
+- Some assistive technology reads the legend text for each `fieldset`, so it should be brief and descriptive. This helps someone using assistive technology to understand the question they are answering with the group of radio buttons.
+
+Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons).
+
 
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
-| Role    | Attribute | Element | Usage                                                                 |
-| ------- | --------- | ------- | --------------------------------------------------------------------- |
-| `group` |           | `div`   | Identifies the `div` element as a group container for the checkboxes. |
+| Role    | Element | Usage                                                                 |
+| ------- | ------- | --------------------------------------------------------------------- |
+| `group` | `div`   | Identifies the `div` element as a group container for the checkboxes. |
 
 @## Resources
 

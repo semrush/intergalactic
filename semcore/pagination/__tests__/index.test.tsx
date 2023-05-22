@@ -150,16 +150,16 @@ describe('Pagination.TotalPages', () => {
 
   test('should call onCurrentPageChange(totalPages) on click', () => {
     const spy = jest.fn();
-    const TOTAL_PAGES = 100;
+    const totalPages = 100;
     const { getByTestId } = render(
-      <Pagination currentPage={10} totalPages={TOTAL_PAGES} onCurrentPageChange={spy}>
+      <Pagination currentPage={10} totalPages={totalPages} onCurrentPageChange={spy}>
         <Pagination.TotalPages data-testid="totalPages" />
       </Pagination>,
     );
     expect(spy).toBeCalledTimes(0);
     fireEvent.click(getByTestId('totalPages'));
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(TOTAL_PAGES);
+    expect(spy).toBeCalledWith(totalPages);
   });
 });
 
@@ -192,7 +192,7 @@ describe('Pagination.PageInput', () => {
           </Pagination.PageInput>
         </Pagination>
         <Pagination currentPage={1} totalPages={1234}>
-          <Pagination.PageInput>
+          <Pagination.PageInput focused>
             <Pagination.PageInput.Value id="page-number" />
             <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
           </Pagination.PageInput>
@@ -212,7 +212,7 @@ describe('Pagination.PageInput', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1234} totalPages={1234}>
-          <Pagination.PageInput>
+          <Pagination.PageInput focused>
             <Pagination.PageInput.Value id="page-number" />
             <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
           </Pagination.PageInput>
@@ -316,23 +316,23 @@ describe('Pagination.PageInput.Value', () => {
 
     fireEvent.change(input, { target: { value: CURRENT_PAGE.CHANGED } });
     expect(spy).toBeCalledTimes(0);
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE.CHANGED);
   });
 
   test('Enter click should call onCurrentPageChange with valid value', () => {
     const spy = jest.fn();
-    const TOTAL_PAGES = 100;
-    const CURRENT_PAGE = {
-      INITIAL: 1,
-      NULL: 0,
-      INVALID: 1010,
+    const totalPages = 100;
+    const currentPage = {
+      initial: 1,
+      null: 0,
+      invalid: 1010,
     };
     const { getByTestId } = render(
       <Pagination
-        currentPage={CURRENT_PAGE.INITIAL}
-        totalPages={TOTAL_PAGES}
+        currentPage={currentPage.initial}
+        totalPages={totalPages}
         onCurrentPageChange={spy}
       >
         <Pagination.PageInput>
@@ -343,15 +343,15 @@ describe('Pagination.PageInput.Value', () => {
 
     const input = getByTestId('value');
 
-    fireEvent.change(input, { target: { value: CURRENT_PAGE.NULL } });
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    fireEvent.change(input, { target: { value: currentPage.null } });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     // because value not changing
     expect(spy).not.toBeCalled();
-    expect(input.value).toBe(CURRENT_PAGE.INITIAL.toString());
+    expect(input.value).toBe(currentPage.initial.toString());
 
-    fireEvent.change(input, { target: { value: CURRENT_PAGE.INVALID } });
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    fireEvent.change(input, { target: { value: currentPage.invalid } });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     expect(spy).toBeCalledTimes(1);
-    expect(spy).toBeCalledWith(TOTAL_PAGES);
+    expect(spy).toBeCalledWith(totalPages);
   });
 });

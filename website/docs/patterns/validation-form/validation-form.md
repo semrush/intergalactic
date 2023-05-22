@@ -9,7 +9,7 @@ tabName: Design
 
 @## How validation works
 
-- Validation in forms and filters can be performed simultaneously by `unFocus` and `Submit`. _This option does not apply to forms with limits — use only `Submit` for them._
+- Validation in forms and filters can be performed simultaneously by `unFocus` and `Submit`. _This option does not apply to forms with limits – use only `Submit` for them._
 - Do not validate empty fields (in which user has not entered a value) by `unFocus`.
 
 > Since form validation can be performed by clicking on a button, it is not recommended to set the main buttons to `disabled` state. This creates a false impression that the form or filter doesn't work at all.
@@ -33,21 +33,21 @@ You can validate the inputs immediately, as the user fills out the form, if ther
 
 Use this validation to make it easier for the user to fill out forms and filters. We recommend you to immediately show the user what needs to be corrected before submitting the form.
 
-![validation example](static/immediate-validation.png)
+![](static/immediate-validation.png)
 
 @## Appearance
 
-All form elements have the same `invalid` state: a `var(--orange-400)` border and a tooltip with the `warning` theme when focused.
+All form elements have the same `invalid` state: a `var(--border-danger-active)` border and a tooltip with the `warning` theme when focused.
 
-![Checkbox](./static/checkbox-validation.png)
+![](./static/checkbox-validation.png)
 
-![Radio](./static/radio-validation.png)
+![](./static/radio-validation.png)
 
-![Input](./static/input-validation.png)
+![](./static/input-validation.png)
 
-![Select](./static/select-validation.png)
+![](./static/select-validation.png)
 
-![Textarea](./static/textarea-validation.png)
+![](./static/textarea-validation.png)
 
 @## Notice with error message
 
@@ -64,4 +64,5 @@ The General pattern for the text: `Please enter something`.
 | If the field is filled in with an error                          | For example, the field with email: `Please enter a valid email`.                                         |
 | Standard error in the checkbox when accepting Terms & Conditions | `Please confirm that you agree to our Terms and Conditions and Privacy Policy`.                          |
 
+@page validation-form-a11y
 @page validation-form-code

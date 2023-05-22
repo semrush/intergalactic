@@ -2,6 +2,92 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.19] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.5.18] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.5.16] - 2023-04-24
+
+## [3.5.15] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.5.4] - 2023-03-01
+
+## [3.5.3] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
+
+## [3.5.2] - 2023-02-22
+
+## [3.5.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.5.0] - 2023-02-20
+
+### Added
+
+- Added triggers width animation triggered by change of `value` prop.
+
+## [3.4.12] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+
+## [3.4.11] - 2023-02-13
+
+## [3.4.10] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [3.4.9] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.4.7] - 2023-01-19
+
+### Fixed
+
+- Removed font-family enforcement.
+
+## [3.4.6] - 2023-01-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
+## [3.4.2] - 2022-12-21
+
+### Fixed
+
+- Fixed the problem of not showing the placeholder when the body of the `BaseTrigger` is empty.
+
+## [3.4.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [3.4.0] - 2022-12-14
 
 ### Added

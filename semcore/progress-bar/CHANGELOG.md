@@ -2,6 +2,46 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.24] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.3.23] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.3.21] - 2023-04-24
+
+## [3.3.20] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.3.9] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-progress-bar-rounded`).
+
+## [3.3.8] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.3.6] - 2023-01-10
+
+## [3.3.5] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.3.2] - 2022-12-14
 
 ### Fixed

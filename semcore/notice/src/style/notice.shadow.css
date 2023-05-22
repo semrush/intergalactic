@@ -6,7 +6,8 @@ SNotice {
   box-sizing: border-box;
   border-style: solid;
   border-width: 1px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-surface-rounded, 6px);
+  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SNotice[theme='info'] {
@@ -24,7 +25,7 @@ SNotice[theme='info'] {
 
 SNotice[theme='danger'] {
   background-color: var(--intergalactic-bg-secondary-critical, #fff0f7);
-  border-color: var(--intergalactic-border-danger, #ffaeb5);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 
   & SCloseIcon {
     color: var(--intergalactic-icon-primary-critical, #ff4953);

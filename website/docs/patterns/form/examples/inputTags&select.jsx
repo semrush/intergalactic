@@ -15,17 +15,14 @@ const Demo = () => {
     day_week: 'Monday',
     emails: ['first@react.hook.form', 'first@react.hook.form'],
   };
-  const { register, handleSubmit, getValues, setValue, control, setError, errors, reset } = useForm(
-    {
-      defaultValues,
-    },
-  );
-  const [valueTag, updateValueTag] = React.useState('');
+  const { handleSubmit, getValues, setValue, control, setError, errors, reset } = useForm({
+    defaultValues,
+  });
+  const [valueTag, setValueTag] = React.useState('');
 
   const changeInputTagsValue = (value) => {
-    const emails = getValues('emails');
     reset(defaultValues);
-    updateValueTag(value);
+    setValueTag(value);
   };
 
   const onSubmit = (data) => {
@@ -97,17 +94,22 @@ const Demo = () => {
             </Text>
             <Tooltip
               interaction="none"
-              visible={Boolean(errors['emails'])}
               placement="right"
               theme="warning"
-              title={errors['emails']?.message}
               w="100%"
+              animationsDisabled
             >
+              <Tooltip.Popper id="form-emails-error" visible={Boolean(errors['emails'])}>
+                {errors['emails']?.message}
+              </Tooltip.Popper>
               <InputTags
+                tag={Tooltip.Trigger}
                 size="l"
                 state={errors['emails'] ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
+                aria-invalid={Boolean(errors['emails'])}
+                aria-errormessage={errors['emails'] ? 'form-emails-error' : undefined}
               >
                 {tags.map((tag, idx) => (
                   <InputTags.Tag key={tag + idx} use="primary" theme="asphalt">

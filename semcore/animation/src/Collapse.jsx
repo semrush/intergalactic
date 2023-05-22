@@ -1,60 +1,64 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
-
-const style = sstyled.css`
-  @keyframes enter {
-    from {
-      overflow: hidden;
-      height: 0;
-    }
-    to {
-      height: var(--height);
-    }
-  }
-
-  @keyframes exit {
-    from {
-      height: var(--height);
-    }
-    to {
-      height: 0;
-    }
-  }
-`;
+import style from './style/keyframes.shadow.css';
+import { useForkRef } from '@semcore/utils/lib/ref';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
-  const [height, setHeightVar] = useState('auto');
   const overflowRef = useRef('initial');
+  const innerRef = useRef(null);
+  const forkedRef = useForkRef(innerRef, ref);
 
-  const handlerAnimationStart = useCallback((e) => {
-    if (e.currentTarget !== e.target) return;
-    if (onAnimationStart) onAnimationStart(e);
-    if (overflowHidden) {
-      overflowRef.current = window.getComputedStyle(e.currentTarget).overflow;
-      e.currentTarget.style.overflow = 'hidden';
-    }
-    setHeightVar(e.currentTarget.scrollHeight + 'px');
+  useEffect(() => {
+    if (!innerRef.current) return;
+    if (props.visible) innerRef.current.style.height = 'auto';
+    if (!props.visible) innerRef.current.style.height = 0 + 'px';
   }, []);
+  useEnhancedEffect(() => {
+    if (!innerRef.current) return;
+    if (props.visible) innerRef.current.style.height = 0 + 'px';
+    if (!props.visible) innerRef.current.style.height = innerRef.current.scrollHeight + 'px';
+  }, [props.visible]);
 
-  const handlerAnimationEnd = useCallback((e) => {
-    if (e.currentTarget !== e.target) return;
-    if (onAnimationEnd) onAnimationEnd(e);
-    if (overflowHidden) {
-      e.currentTarget.style.overflow = overflowRef.current;
-    }
-    setHeightVar('auto');
+  const handleAnimationStart = useCallback(
+    (event) => {
+      if (event.currentTarget !== event.target) return;
+      if (onAnimationStart) onAnimationStart(event);
+      if (overflowHidden) {
+        overflowRef.current = window.getComputedStyle(event.currentTarget).overflow;
+        event.currentTarget.style.overflow = 'hidden';
+      }
+
+      if (props.visible) event.currentTarget.style.height = event.currentTarget.scrollHeight + 'px';
+      if (!props.visible) event.currentTarget.style.height = 0 + 'px';
+    },
+    [props.visible],
+  );
+
+  const handleAnimationEnd = useCallback((event) => {
+    if (event.currentTarget !== event.target) return;
+    if (onAnimationEnd) onAnimationEnd(event);
+    const element = event.currentTarget;
+
+    setTimeout(() => {
+      if (!element) return;
+      element.style.height = 'auto';
+      if (overflowHidden) {
+        element.style.overflow = overflowRef.current;
+      }
+    }, 0);
   }, []);
 
   return sstyled(style)(
     <SCollapse
-      ref={ref}
+      ref={forkedRef}
       {...props}
-      onAnimationStart={handlerAnimationStart}
-      onAnimationEnd={handlerAnimationEnd}
-      height={height}
-      keyframes={[style['@enter'], style['@exit']]}
+      onAnimationStart={handleAnimationStart}
+      onAnimationEnd={handleAnimationEnd}
+      keyframes={[style['@collapse-enter'], style['@collapse-exit']]}
+      transition-based
     />,
   );
 }

@@ -3,39 +3,48 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
-function Demo() {
+const Demo = () => {
   const [value, setValue] = useState('');
   const inputRef = useRef(null);
 
-  function handlerControls(direction) {
-    return () => {
-      direction > 0 ? inputRef.current.stepUp() : inputRef.current.stepDown();
-      setValue(inputRef.current.value);
-    };
-  }
+  const decrement = React.useCallback(() => {
+    inputRef.current.stepDown();
+    setValue(inputRef.current.value);
+  }, []);
+  const increment = React.useCallback(() => {
+    inputRef.current.stepUp();
+    setValue(inputRef.current.value);
+  }, []);
 
   return (
-    <Flex w={100}>
-      <NeighborLocation>
-        <Button onClick={handlerControls(-1)} aria-label="Decrease">
-          -
-        </Button>
-        <InputNumber>
-          <InputNumber.Value
-            placeholder="0"
-            ref={inputRef}
-            step={10}
-            value={value}
-            onChange={setValue}
-          />
-        </InputNumber>
-        <Button onClick={handlerControls(1)} aria-label="Increase">
-          +
-        </Button>
-      </NeighborLocation>
-    </Flex>
+    <>
+      <Text tag="label" htmlFor="alternative-example" size="200">
+        Members count
+      </Text>
+      <Flex w={100} mt={2}>
+        <NeighborLocation>
+          <Button onClick={decrement} aria-label="Decrease members count by 10">
+            -
+          </Button>
+          <InputNumber>
+            <InputNumber.Value
+              placeholder="0"
+              ref={inputRef}
+              step={10}
+              value={value}
+              onChange={setValue}
+              id="alternative-example"
+            />
+          </InputNumber>
+          <Button onClick={increment} aria-label="Increase members count by 10">
+            +
+          </Button>
+        </NeighborLocation>
+      </Flex>
+    </>
   );
-}
+};
 
 export default Demo;

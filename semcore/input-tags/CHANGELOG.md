@@ -2,6 +2,83 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.34] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/input` [3.5.24 ~> 3.5.25]).
+
+## [3.3.33] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/input` [3.5.23 ~> 3.5.24]).
+
+## [3.3.30] - 2023-04-28
+
+## [3.3.29] - 2023-04-24
+
+## [3.3.28] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/input` [3.5.18 ~> 3.5.20]).
+
+## [3.3.27] - 2023-04-11
+
+### Fixed
+
+- Non-interactive container are not focusable by keyboard now.
+
+## [3.3.26] - 2023-03-31
+
+### Fixed
+
+- Fixed scrolling when paste and enter items.
+
+## [3.3.25] - 2023-03-30
+
+### Added
+
+- Added checking if the input `ref` has `scrollIntoView` method.
+
+## [3.3.24] - 2023-03-30
+
+### Fixed
+
+- Fixed checking if the input `ref` is exists.
+
+## [3.3.23] - 2023-03-29
+
+### Added
+
+- Added auto scroll when paste and enter items.
+
+## [3.3.22] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/input` [3.5.17 ~> 3.5.18]).
+
+## [3.3.16] - 2023-03-21
+
+### Fixed
+
+- Fixed alignment cursor when without tags.
+
+## [3.3.15] - 2023-03-20
+
+### Fixed
+
+- Fixed tag display when crossing the border during scroll.
+- Fixed tag alignment when set minimum height.
+
+## [3.3.14] - 2023-03-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.2 ~> 3.47.3], `@semcore/input` [3.5.11 ~> 3.5.12]).
+
 ## [3.3.1] - 2022-12-13
 
 ### Changed

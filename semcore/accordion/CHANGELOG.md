@@ -2,6 +2,110 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.23] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.3.22] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [4.3.20] - 2023-05-02
+
+## [4.3.19] - 2023-04-26
+
+## [4.3.18] - 2023-04-24
+
+## [4.3.17] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [4.3.16] - 2023-04-03
+
+## [4.3.15] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [4.3.11] - 2023-03-22
+
+### Fixed
+
+- Toggles attributes `aria-expanded` and `aria-controls` were not applied when accordion section was closed.
+
+## [4.3.10] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [4.3.5] - 2023-03-01
+
+## [4.3.4] - 2023-02-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+
+## [4.3.2] - 2023-02-22
+
+## [4.3.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [4.3.0] - 2023-02-20
+
+### Changed
+
+- Animation duration now might be controlled with design tokens.
+
+## [4.2.15] - 2023-02-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+
+## [4.2.14] - 2023-02-13
+
+## [4.2.13] - 2023-02-09
+
+## [4.2.12] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [4.2.9] - 2023-01-18
+
+### Added
+
+- Added `duration` property to `Accordion.Item` types.
+
+## [4.2.8] - 2023-01-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.7 ~> 1.8.8]).
+
+## [4.2.7] - 2023-01-11
+
+## [4.2.6] - 2023-01-10
+
+## [4.2.5] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [4.2.1] - 2022-12-13
 
 ### Changed

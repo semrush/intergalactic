@@ -2,6 +2,13 @@ SDataTable {
   position: relative;
 }
 
+SDataTable[compact] {
+  & SColumn,
+  & SCell {
+    padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-2x, 8px);
+  }
+}
+
 SHeadWrapper {
   position: relative;
 }
@@ -22,41 +29,42 @@ SHead {
 
 SColumn {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-grow: 1;
   font-size: var(--intergalactic-fs-100, 12px);
+  line-height: var(--intergalactic-lh-100, 133%);
   color: var(--intergalactic-text-primary, #191b23);
   box-sizing: border-box;
   position: relative;
 
-  &:focus {
+  &:focus-visible {
     outline: none;
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    box-shadow: inset var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   }
 }
 
 SColumn[hidden] {
-  height: 0 !important;
-  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0px !important;
+  margin: -1px !important;
   overflow: hidden !important;
-  border: none !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
 }
 
 SColumn[use='primary'] {
   padding: var(--intergalactic-spacing-3x, 12px);
-  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   background-color: var(--intergalactic-table-th-primary-cell, #f4f5f9);
 }
 
 SColumn[use='secondary'] {
   padding: var(--intergalactic-spacing-2x, 8px);
-  border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
+  border-bottom: 1px solid var(--intergalactic-border-table-accent, #a9abb6);
   background-color: var(--intergalactic-table-th-secondary-cell, #ffffff);
-}
-
-SColumn[use]:last-child {
-  border-right: none;
 }
 
 SColumn[group][use] {
@@ -68,19 +76,14 @@ SColumn[group][use] {
   padding: 0;
 }
 
-SColumn[groupHead][use] {
+SColumn[groupHead] {
   justify-content: center;
-  border-right: none;
   /* for resizable */
   z-index: 1;
 }
 
-SColumn[groupHead][use='primary'] {
-  border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-}
-
-SColumn[groupHead][use='secondary'] {
-  border-bottom: 1px solid var(--intergalactic-border-table-accent-border, #a9abb6);
+SColumn[groupHead] {
+  border-bottom: none;
 }
 
 SColumn[sortable] {
@@ -89,15 +92,44 @@ SColumn[sortable] {
   &[use='primary']:hover {
     background-color: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
   }
+
+  &:hover SSortWrapper {
+    flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+    opacity: 1;
+  }
+
+  &:hover SSortWrapper:before {
+    display: block;
+    opacity: 1;
+  }
+
+  &:hover SSortIcon {
+    display: block;
+    opacity: 1;
+  }
 }
 
-SColumn[active][use='primary'] {
+SColumn[use='primary'][active] {
   background-color: var(--intergalactic-table-th-primary-cell-active, #e0e1e9);
+  width: 100%;
+}
+
+SColumn[active] SSortWrapper {
+  flex-basis: calc(var(--intergalactic-spacing-1x, 4px) + 16px);
+  opacity: 1;
+}
+
+SColumn[active] SSortIcon {
+  display: block;
+  position: relative;
+  opacity: 1;
 }
 
 SColumn[resizable] {
+  border-right: 1px solid transparent;
+
   &:hover:after {
-    background: var(--intergalactic-table-th-primary-cell-hover, #e0e1e9);
+    border-right-color: var(--intergalactic-border-table-accent, #a9abb6);
   }
 
   &:after {
@@ -105,10 +137,11 @@ SColumn[resizable] {
     position: absolute;
     bottom: 0;
     right: -1px;
-    height: 100vh;
-    width: 1px;
+    height: 100%;
+    width: 5px;
     background: transparent;
     cursor: col-resize;
+    border-right: 1px solid transparent;
   }
 }
 
@@ -118,13 +151,63 @@ SColumn[fixed] {
   z-index: 2;
 }
 
-SSortIcon {
-  fill: var(--intergalactic-icon-secondary-neutral, #a9abb6);
-  margin-left: calc(var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
+SColumn[borderLeft],
+SCell[borderLeft] {
+  border-left: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
-SSortIcon[active] {
+SColumn[borderRight],
+SCell[borderRight] {
+  border-right: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
+}
+
+SSortWrapper {
+  flex-shrink: 99999;
+  position: relative;
+  flex-basis: 0;
+  height: 100%;
+  min-height: 16px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+SSortWrapper:before {
+  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+SSortIcon {
+  display: none;
   fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  position: absolute;
+  top: calc(1em * 1.25 - 16px);
+  right: 0;
+  margin-left: var(--intergalactic-spacing-1x, 4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+SColumn[use='primary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-primary-cell-hover, #e0e1e9) 67.5%,
+    rgba(224, 225, 233, 0) 105%
+  );
+}
+
+SColumn[use='secondary'] SSortWrapper:before {
+  background: linear-gradient(
+    270deg,
+    var(--intergalactic-table-th-secondary-cell, #ffffff) 67.5%,
+    rgba(255, 255, 255, 0) 105%
+  );
 }
 
 SBodyWrapper {
@@ -148,7 +231,9 @@ SRow {
 SRow[active] > SCell:not([theme]),
 SRow:hover > SCell:not([theme]),
 SRow SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-hover, rgba(224, 225, 233, 0.5));
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
 }
 
 /* MUTED THEME */
@@ -160,7 +245,9 @@ SRow:hover > SCell[theme='muted'],
 SRow[theme='muted'][active] > SCell:not([theme]),
 SRow[theme='muted']:hover > SCell:not([theme]),
 SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
-  background-color: var(--intergalactic-table-td-cell-hover, rgba(224, 225, 233, 0.5));
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-hover, #f0f0f4);
 }
 
 /* INFO THEME */

@@ -4,7 +4,7 @@ fileSource: d3-chart
 tabName: Design
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/chart/).
+> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
 @## Description
 
@@ -35,7 +35,7 @@ The length of each segment is a proportional fraction, and the entire circle is 
 
 For all types, show the values clockwise, starting with the largest one. The angle of the padding between the values: `(paddingAngle='1')`.
 
-![donut paddingAngle](static/donut-padding-angle.png)
+![](static/donut-padding-angle.png)
 
 ### Start and end angles
 
@@ -57,17 +57,17 @@ endAngle={0}
 
 |                                                              | Appearance example                                 | Description, styles                                                                                  |
 | ------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/). | ![donut in small widget](static/donut-small.png)   | The donut size is 24px \* 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
-| Chart inside small widgets (less than 400px).                | ![donut in medium widget](static/donut-medium.png) | The donut size is 80px \* 80px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`   |
-| Chart inside large widgets (more than 400px).                | ![donut in big widget](static/donut-big.png)       | The donut size is 180px \* 180px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
+| Charts inside [Summary type components](/patterns/summary/). | ![](static/donut-small.png)   | The donut size is 24px * 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
+| Chart inside small widgets (less than 400px).                | ![](static/donut-medium.png) | The donut size is 80px * 80px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`   |
+| Chart inside large widgets (more than 400px).                | ![](static/donut-big.png)       | The donut size is 180px * 180px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
 
 ### Semi donut chart ("half doughnut") 🔪🍩
 
 |                                                              | Appearance example                                           | Description, styles                                                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/). | ![semi-donut in small widget](static/semi-donut-small.png)   | The donut size is 24px \* 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
-| Chart inside small narrow widgets (less than 400px).         | ![semi-donut in medium widget](static/semi-donut-medium.png) | The donut size is 80px \* 40px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`  |
-| Chart inside large widgets (more than 400px).                | ![semi-donut in big widget](static/semi-donut-big.png)       | The donut size is 180px \* 90px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
+| Charts inside [Summary type components](/patterns/summary/). | ![](static/semi-donut-small.png)   | The donut size is 24px * 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
+| Chart inside small narrow widgets (less than 400px).         | ![](static/semi-donut-medium.png) | The donut size is 80px * 40px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`  |
+| Chart inside large widgets (more than 400px).                | ![](static/semi-donut-big.png)       | The donut size is 180px * 90px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
 
 @## Legend
 
@@ -77,17 +77,17 @@ Show legend with the values.
 - **The legend label has 16px margin-right. The margin between the values is 12px.**
 - The legend is aligned to the top of the chart.
 
-![donut legend margins](static/donut-legend-margins-1.png)
+![](static/donut-legend-margins-1.png)
 
 - If you need to place the legend under the chart, then add 24px margin to the legend.
 
-![donut legend margins](static/donut-legend-margins-2.png)
+![](static/donut-legend-margins-2.png)
 
 ### Long label
 
 If legend label is very long, wrap it to the next line.
 
-![donut long legend](static/donut-legend-long.png)
+![](static/donut-legend-long.png)
 
 @## Main metric
 
@@ -99,8 +99,8 @@ If you have a small donut and the widget should be compact, the metric can be pl
 
 ### Metric styles
 
-- The metric default size is 24px (`--fs-500`). The text color is `--gray-800`.
-- The default size of the metric legend is 12px (`--fs-100`). The text color is `--gray-500`.
+- The metric default size is 24px (`--fs-500`). The text color is `--text-primary`.
+- The default size of the metric legend is 12px (`--fs-100`). The text color is `--text-secondary`.
 - There is no margin between them.
 - They are centered vertically and horizontally relative to the chart.
 
@@ -110,7 +110,7 @@ If you have a small donut and the widget should be compact, the metric can be pl
 
 | Donut                                                                                                 | Semi donut                                                                                                                | Donut in a small widget                                |
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| ![donut metric example](static/donut-metric-1.png) ![donut metric example](static/donut-metric-2.png) | ![semi-donut metric example](static/semi-donut-metric-1.png) ![semi-donut metric example](static/semi-donut-metric-2.png) | ![donut metric example](static/donut-metric-small.png) |
+| ![](static/donut-metric-1.png) ![](static/donut-metric-2.png) | ![](static/semi-donut-metric-1.png) ![](static/semi-donut-metric-2.png) | ![](static/donut-metric-small.png) |
 
 @## Interaction
 
@@ -118,9 +118,9 @@ If you have a small donut and the widget should be compact, the metric can be pl
 
 |             | Appearance examples                                                                                               | Styles                                                                                                                                   |
 | ----------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| **default** | ![donut in default state](static/donut-big.png)                                                                   |                                                                                                                                          |
-| **hover**   | ![donut with hover state](static/donut-hover-big.png) ![donut with hover state](static/donut-hover-small.png)     | When hovering over a sector, `outerRadius` increases by 8px. For a clickable sector the cursor changes to `pointer`.                     |
-| **active**  | ![donut with active state](static/donut-active-big.png) ![donut with active state](static/donut-active-small.png) | The `outerRadius` of the active sector is increased by 8px. In the legend, the elements related to the inactive sectors get 30% opacity. |
+| **default** | ![](static/donut-big.png)                                                                   |                                                                                                                                          |
+| **hover**   | ![](static/donut-hover-big.png) ![](static/donut-hover-small.png)     | When hovering over a sector, `outerRadius` increases by 8px. For a clickable sector the cursor changes to `pointer`.                     |
+| **active**  | ![](static/donut-active-big.png) ![](static/donut-active-small.png) | The `outerRadius` of the active sector is increased by 8px. In the legend, the elements related to the inactive sectors get 30% opacity. |
 
 @## Tooltip
 
@@ -128,9 +128,9 @@ Hovering over the chart triggers a tooltip with the name and value of the data.
 
 > Disable tooltip for the smallest charts which serve as an illustration to a particular metric.
 
-![donut tooltip](static/donut-hover-big.png)
+![](static/donut-hover-big.png)
 
-![small donut tooltip](static/donut-tooltip-small.png)
+![](static/donut-tooltip-small.png)
 
 @## Edge cases
 
@@ -138,49 +138,51 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Null values
 
-If the data for any category is zero, then do not disable the legend. Show 0 as the values in the legend, use `--gray-500` color. The zero value sector is not displayed on the chart.
+If the data for any category is zero, then do not disable the legend. Show 0 as the values in the legend, use `--text-secondary` color. The zero value sector is not displayed on the chart.
 
-![donut with null value](static/donut-null.png)
+![](static/donut-null.png)
 
 ### Value less than or equal 1%
 
 In this case, display 1% of the sector.
 
-![donut with less than 1 per cent value](static/donut-less-1-per-cent.png)
+![](static/donut-less-1-per-cent.png)
 
 ### Not available data
 
-If for some reason the data is not known or not available, show `n/a` in the legend and tooltip, use `--gray-500` color.
+If for some reason the data is not known or not available, show `n/a` in the legend and tooltip, use `--text-secondary` color.
 
-![donut with n/a value](static/donut-na.png)
+![](static/donut-na.png)
 
 ### Not enough space for the legend
 
 In this case, move legend under the chart. The margin from the chart to the legend is 24px.
 
-![donut in small widget](static/donut-small-widget.png)
+![](static/donut-small-widget.png)
 
 @## Initial loading
 
-When loading the chart for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, show it during the loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-More information about this state see in the guide for [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/).
 
-![donut with skeleton](static/donut-skeleton.png)
+Use the `--skeleton-bg` color token for the skeleton background color.
 
-@## Use in UX/UI
+![](static/donut-skeleton.png)
+
+@## Usage in UX/UI
 
 > **It is not recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
 
 Don't use donut chart to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart).
 
-![different sets of values on different donuts](static/donut-yes-no.png)
+![](static/donut-yes-no.png)
 
 The starting angle for displaying values is always `90 degrees`.
 
-![start angle for donut chart](static/start-yes-no.png)
+![](static/start-yes-no.png)
 
 @page donut-chart-a11y
 @page donut-chart-api

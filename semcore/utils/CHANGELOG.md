@@ -2,6 +2,153 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.50.7] - 2023-05-11
+
+### Fixed
+
+- Fixed `i18n` interpolation of falsable values.
+
+## [3.50.6] - 2023-05-04
+
+### Fixed
+
+- Made automatic focus return more friendly for modals and side panels.
+
+## [3.50.5] - 2023-05-03
+
+### Changed
+
+- During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+## [3.50.4] - 2023-04-24
+
+### Fixed
+
+- Fixed `usePreventScroll` (used in `<Modal />` and `<ScrollBar />`) might totally block document body scroll with async components appearing and fading.
+
+## [3.50.3] - 2023-04-17
+
+### Fixed
+
+- Fixed behavior when returning focus. Now focus return does not work if user used the mouse.
+
+### Change
+
+- Added `id` propertie for `ScreenReaderOnly` component.
+
+## [3.50.1] - 2023-04-13
+
+### Fixed
+
+- Keyboard focus highlight wasn't working until keyboard focuses any focusable element second time.
+- Delayed focus return in the macrotask to prevent focus return trigger event passing to to the return focus target.
+
+## [3.50.0] - 2023-03-27
+
+### Added
+
+- Small internal util for context consuming in class-based components.
+
+## [3.49.1] - 2023-03-28
+
+### Fixed
+
+- Utils package was breaking building via webpack and vite.
+
+## [3.49.0] - 2023-03-24
+
+### Added
+
+- Supported portalled local theme reapplying in class-based components.
+
+## [3.48.1] - 2023-03-23
+
+### Removed
+
+- Removed `Status` group in semantic tokens.
+
+### Changed
+
+- Moved the gray-white token in front of the gray-50, slightly tweaked the order.
+
+## [3.48.0] - 2023-03-23
+
+### Added
+
+- Added internal util `ScreenReaderOnly` to declaratively put screen reader only text in the components.
+
+## [3.47.4] - 2023-03-22
+
+### Fixed
+
+- Focus locked tab navigation might cause scrolling to the end or to the start of the page.
+
+## [3.47.3] - 2023-03-16
+
+### Fixed
+
+- Fixed focus lock might cause infinite focus war when multiple focus locks exist on same page.
+
+## [3.47.2] - 2023-03-09
+
+### Added
+
+- Added `lib/use/useFocusLock` util to control focus lock in popup components (like `Popper`-based, `Modal` and `Sidebar`).
+
+## [3.47.1] - 2023-02-21
+
+### Fixed
+
+- In some cases `<ThemeProvider />` was breaking rendering process.
+
+## [3.47.0] - 2023-02-20
+
+### Added
+
+- Added semcore enhance to animate component dimensions on change of specific props.
+
+## [3.46.1] - 2023-01-20
+
+### Changed
+
+- Changed design tokens facebook color (`#3b5998` -> `#1877f2`).
+- Changed design tokens linkedIn color (`#1a7ab2` -> `#0a66c2`).
+- Changed design tokens twitter color (`#2bafeb` -> `#1d9bf0`).
+
+## [3.46.0] - 2023-01-20
+
+### Changed
+
+- Put all css `:hover` selectors into `@media(hover: hover)` block.
+
+## [3.45.0] - 2023-01-09
+
+### Changed
+
+- Renamed `--intergalactic-border-danger` token name to `--intergalactic-border-critical`.
+- Renamed `--intergalactic-border-danger-active` token name to `--intergalactic-border-critical-active`.
+- Renamed `--intergalactic-border-table-accent-border` token name to `--intergalactic-border-table-accent`.
+- Added description for every design token.
+- No other renaming expected in the future.
+
+## [3.44.3] - 2023-01-09
+
+### Fixed
+
+- Removed unexpected log statement.
+
+## [3.44.2] - 2023-01-09
+
+### Fixed
+
+- Fixed internal mechanism of interpolating variables into translated texts.
+
+## [3.44.1] - 2022-12-16
+
+### Fixed
+
+- Fixed non-react node detection for `addonTextChildren`.
+
 ## [3.44.0] - 2022-12-14
 
 ### Changed

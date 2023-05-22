@@ -2,6 +2,72 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.29] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.2.28] - 2023-05-11
+
+## [4.2.27] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [4.2.25] - 2023-05-02
+
+### Changed
+
+- Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+## [4.2.24] - 2023-04-26
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [4.2.21] - 2023-04-03
+
+## [4.2.20] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/portal` [2.5.17 ~> 2.6.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [4.2.18] - 2023-03-24
+
+### Fixed
+
+- Fixed local themes on dot.
+
+## [4.2.17] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.6 ~> 1.9.7], `@semcore/utils` [3.48.0 ~> 3.48.1]).
+
+## [4.2.9] - 2023-01-20
+
+### Fixed
+
+- Fixed `m` and `l` sizes rounding.
+
+## [4.2.8] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.9 ~> 1.8.10], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [4.2.5] - 2023-01-10
+
+## [4.2.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.5 ~> 1.8.6], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [4.2.1] - 2022-12-13
 
 ### Changed

@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter, useLocation } from 'react-router-dom';
-import { InstantSearch, Highlight } from 'react-instantsearch/dom';
+import { InstantSearch, Highlight, Configure } from 'react-instantsearch/dom';
 import { connectAutoComplete, connectStateResults } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
+import { logEvent } from '../utils/amplitude';
 
 import IF from '@semcore/utils/lib/if';
 import { Box } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import SearchM from '@semcore/icon/Search/m';
 import ArrowRight from '@semcore/icon/ArrowRight/m';
+import CloseM from '@semcore/icon/Close/m';
 import cx from 'classnames';
 
 const ru = require('convert-layout/ru');
@@ -16,9 +18,14 @@ const ru = require('convert-layout/ru');
 import observatory from '../static/search/observatory.svg';
 import CONFIG from '../algolia';
 import Divider from '@semcore/divider';
+import { getCookie, AMPLITUDE_COOKIE_NAME } from '../utils/cookie';
 import styles from './SearchHome.module.css';
 
 const algoliaClient = algoliasearch(CONFIG.ALGOLIA_APP, CONFIG.ALGOLIA_OPEN_KEY);
+/* To utilize synonyms in Algolia, a userToken parameter is required. However, since the website 
+does not have any registered usernames or users, the randomly generated string known as the deviceId, 
+which is stored in cookies, is used as the userToken instead, sourced from Amplitude. */
+const userToken = typeof window !== 'undefined' ? getCookie(AMPLITUDE_COOKIE_NAME) : '';
 const searchClient = {
   search(requests) {
     if (requests.every(({ params }) => !params.query)) {
@@ -43,6 +50,11 @@ const showList = (hits, pages, content) => {
           key={item.objectID}
           value={item.slug}
           disabled={item.disabled}
+          onClick={() =>
+            logEvent('search:click', {
+              dropdown: `${item.title.toLowerCase()} ${item.category.toLowerCase()}`,
+            })
+          }
         >
           <div className={styles.optionText}>
             <Highlight
@@ -73,6 +85,11 @@ const showList = (hits, pages, content) => {
           key={item.objectID}
           value={item.slug}
           disabled={item.disabled}
+          onClick={() => {
+            logEvent('search:click', {
+              dropdown: `${item.title.toLowerCase()} ${item.category.toLowerCase()}`,
+            });
+          }}
         >
           <div className={styles.optionText}>
             <Highlight
@@ -117,14 +134,28 @@ const Search = ({
   onItemSelect,
   placeholder,
   className,
+  onFocus,
 }) => {
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
   const location = useLocation();
+  const [value, setValue] = useState(ru.toEn(currentRefinement) || '');
 
   useEffect(() => {
     refine('');
   }, [location]);
+
+  const ref = React.useRef(null);
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key !== 'k') return;
+      if (!event.ctrlKey && !event.metaKey) return;
+      ref.current?.focus();
+    };
+    document.body.addEventListener('keydown', handleKeyDown);
+
+    return () => document.body.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <Select
@@ -148,8 +179,9 @@ const Search = ({
               <input
                 role="search"
                 aria-label="Search for a component"
-                value={ru.toEn(currentRefinement)}
+                value={value}
                 onChange={(e) => {
+                  setValue(ru.toEn(e.currentTarget.value));
                   refine(ru.toEn(e.currentTarget.value));
                   action.visible(true);
                   action.highlightedIndex(0);
@@ -160,9 +192,21 @@ const Search = ({
                   !!currentRefinement && visible && styles.inputOpen,
                   className,
                 )}
+                onFocus={onFocus}
+                ref={ref}
               />
               <div className={styles.iconSearchWrapper}>
-                <SearchM className={styles.searchIcon} />
+                {value.length > 0 ? (
+                  <CloseM
+                    className={styles.closeIcon}
+                    onClick={() => {
+                      setValue('');
+                      refine('');
+                    }}
+                  />
+                ) : (
+                  <SearchM className={styles.searchIcon} />
+                )}
               </div>
             </>
           );
@@ -184,6 +228,7 @@ const SuggestSearch = withRouter(connectAutoComplete(connectStateResults(Search)
 function SearchHome(props) {
   return (
     <InstantSearch searchClient={searchClient} indexName={CONFIG.ALGOLIA_INDEX}>
+      {userToken && <Configure userToken={userToken} />}
       <SuggestSearch {...props} visible={true} />
     </InstantSearch>
   );

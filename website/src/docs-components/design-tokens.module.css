@@ -1,0 +1,36 @@
+.searchInput {
+  margin-bottom: var(--intergalactic-spacing-4x);
+  max-width: 400px;
+}
+
+.tokenNameWrapper {
+  max-width: 100%;
+}
+.tokenName {
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.tokenValueWrapper {
+  max-width: 100%;
+}
+.tokenValue {
+  cursor: pointer;
+  display: flex;
+  max-width: 100%;
+}
+
+.colorPreview {
+  width: 18px;
+  height: 18px;
+  border-radius: var(--intergalactic-rounded-small);
+  display: inline-block;
+  margin-right: var(--intergalactic-spacing-2x);
+  border: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+.usages {
+  color: var(--intergalactic-text-hint);
+  border-bottom: 1px dashed var(--intergalactic-text-hint);
+}

@@ -4,19 +4,20 @@ import ArrowUpM from '@semcore/icon/ArrowUp/m';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import { useLocation } from 'react-router-dom';
 import cx from 'classnames';
+import { logEvent } from '../utils/amplitude';
 import styles from './SideBarHeading.module.css';
 
-function SideBarHeading({ headings }) {
+function SideBarHeading({ headings, route }) {
   const { pathname } = useLocation();
   const [activeId, setActiveId] = React.useState();
+  const [group, page] = route.split('/');
 
   React.useEffect(() => {
     setActiveId(headings.length ? headings[0].id : undefined);
     const links = headings.map((heading) => document.querySelector(`#${heading.id}`)).reverse();
     const handleScroll = trottle(() => {
-      const scrollCenter =
-        document.scrollingElement.scrollTop + document.documentElement.clientHeight / 2;
-      const linkReversedIndex = links.findIndex((link) => scrollCenter > link.offsetTop);
+      const offsetTop = document.scrollingElement.scrollTop + 100;
+      const linkReversedIndex = links.findIndex((link) => offsetTop > link.offsetTop);
       if (linkReversedIndex !== -1)
         setActiveId(headings[headings.length - 1 - linkReversedIndex]?.id);
     });
@@ -36,6 +37,13 @@ function SideBarHeading({ headings }) {
             offset={-140}
             duration={200}
             delay={0}
+            onClick={() =>
+              logEvent('right_menu:click', {
+                group,
+                page,
+                link: heading.html,
+              })
+            }
           >
             {heading.html}
           </Link>

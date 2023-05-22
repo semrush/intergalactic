@@ -30,7 +30,7 @@ SFormatText {
       text-decoration: none;
     }
 
-    &:hover {
+    &:not([data-ui-name='Link']):hover {
       color: var(--intergalactic-text-link-hover-active, #044792);
       border-color: var(--intergalactic-text-link-hover-active, #044792);
     }
@@ -277,7 +277,7 @@ SFormatText[size='l'] {
   }
 
   & p {
-    margin: 0 0 var(--intergalactic-spacing-6x) 0
+    margin: 0 0 var(--intergalactic-spacing-6x, 24px) 0;
 
     &:last-child {
       margin-bottom: 0;

@@ -7,7 +7,7 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 import InputNumber from '@semcore/ui/input-number';
 import { Text } from '@semcore/ui/typography';
 
-const InputRange = ({ value: valueState, changeValue, ...other }) => {
+const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }) => {
   const minRange = 1;
   const maxRange = 8;
   let revertValues = false;
@@ -40,6 +40,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
+            aria-labelledby={ariaLabelledby}
             placeholder="From"
             value={from}
             onChange={handleChange('from')}
@@ -51,6 +52,7 @@ const InputRange = ({ value: valueState, changeValue, ...other }) => {
           <InputNumber.Value
             min={minRange}
             max={maxRange}
+            aria-labelledby={ariaLabelledby}
             placeholder="To"
             value={to}
             onChange={handleChange('to')}
@@ -75,18 +77,15 @@ const setTriggerText = ({ from, to }) => {
 
 export default () => {
   const [filters, setFilters] = useState(false);
-  const [visible, updateVisible] = useState(false);
-  const [value, changeValue] = useState({
-    from: '',
-    to: '',
-  });
-  const [displayValue, changeDisplayValue] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [value, setValue] = useState({ from: '', to: '' });
+  const [displayValue, setDisplayValue] = useState('');
   const clearAll = () => setFilters(0);
   const applyFilters = () => {
     const { from, to } = value;
-    updateVisible(false);
-    setFilters(from || to ? true : false);
-    changeDisplayValue(setTriggerText(value));
+    setVisible(false);
+    setFilters(!!(from || to));
+    setDisplayValue(setTriggerText(value));
   };
 
   const handleKeyDown = (e) => {
@@ -96,7 +95,7 @@ export default () => {
   };
 
   return (
-    <Dropdown visible={visible} onVisibleChange={updateVisible}>
+    <Dropdown visible={visible} onVisibleChange={setVisible}>
       <Dropdown.Trigger
         placeholder="Competitive Density"
         empty={!filters}
@@ -105,11 +104,23 @@ export default () => {
       >
         {`Com.: ${displayValue}`}
       </Dropdown.Trigger>
-      <Dropdown.Popper w="224px" p="8px 8px 16px">
-        <Text size={200} bold>
+      <Dropdown.Popper
+        w="224px"
+        p="8px 8px 16px"
+        role="dialog"
+        aria-labelledby="title-CD"
+        aria-modal="false"
+      >
+        <Text id="title-CD" size={200} bold>
           Custom range
         </Text>
-        <InputRange value={value} changeValue={changeValue} my={2} onKeyDown={handleKeyDown} />
+        <InputRange
+          ariaLabelledby="title-CD"
+          value={value}
+          changeValue={setValue}
+          my={2}
+          onKeyDown={handleKeyDown}
+        />
         <Button use="primary" theme="info" w="100%" onClick={applyFilters}>
           Apply
         </Button>

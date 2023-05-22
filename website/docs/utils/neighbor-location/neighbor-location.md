@@ -6,7 +6,7 @@ tabName: Design
 
 > 🚨 `NeighborLocation` component is deprecated and will be removed in the next releases.
 > Use property `neighborLocation` specification on components.
-
+>
 > We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in
 > React 18's parallel render.
 
@@ -30,11 +30,11 @@ Buttons can be grouped.
 
 If you group primary buttons, the right one will have a 1px white border.
 
-![buttons group](static/primary-buttons-group.png)
+![](static/primary-buttons-group.png)
 
 If you group secondary buttons, the left one will hide it's right border.
 
-![buttons group](static/secondary-buttons-group.png)
+![](static/secondary-buttons-group.png)
 
 > Do not group tertiary buttons this way.
 
@@ -52,7 +52,7 @@ If you group secondary buttons, the left one will hide it's right border.
 
 You can group input, select, and button.
 
-![combo case](static/combo.png)
+![](static/combo.png)
 
 @example neighbor-location-combo
 

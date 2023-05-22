@@ -6,9 +6,10 @@ module.exports = {
   transform: {
     '^.+\\.(jsx?|tsx?)$': resolvePath(`${__dirname}/src/babel.config.js`),
   },
-  transformIgnorePatterns: ['node_modules/.pnpm/(?!@semcore+|@popperjs+|d3-|internmap)'],
+  transformIgnorePatterns: ['node_modules/.pnpm/(?!d3-|internmap)'],
+  // transformIgnorePatterns: ['node_modules/.pnpm/(?!@semcore+|@popperjs+|d3-|internmap)'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
-  coveragePathIgnorePatterns: ['/style/', 'src/index.tsx'],
+  // coveragePathIgnorePatterns: ['/style/', 'src/index.tsx'],
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx'],
   // collectCoverageFrom: ['**/semcore/*/src/**.*'],
   moduleNameMapper: {

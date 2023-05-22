@@ -3,11 +3,10 @@ title: Charts
 ---
 
 @page chart-showcase
-@page chart
 @page d3-chart
 @page color-palette
-@page chart-legend
 @page chart-controls
+@page chart-legend
 @page notes
 
 @page area-chart
@@ -24,6 +23,7 @@ title: Charts
 @page histogram-chart
 
 @page line-chart
+@page radar-chart
 @page radial-tree-chart
 @page scatterplot-chart
 @page venn-chart
@@ -35,5 +35,4 @@ title: Charts
 @page kagi-chart
 @page lollipop-chart
 @page polar-chart
-@page radar-chart
 @page quadrant-chart

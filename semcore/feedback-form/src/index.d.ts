@@ -13,6 +13,14 @@ export interface IFeedbackForm extends FormProps {
    * The property is in charge of the spinner showing
    * */
   loading?: boolean;
+  /**
+   * Color of container spinner; you can use your own color
+   */
+  background?: string;
+  /** Spinner theme. There are several default themes or you can use your own color
+   * @default dark
+   **/
+  theme?: 'dark' | 'invert' | string;
 }
 
 declare const FeedbackForm: (<T>(props: CProps<IFeedbackForm> & T) => ReturnEl) & {

@@ -11,6 +11,7 @@ SMask {
   letter-spacing: 0.1em;
   text-overflow: inherit;
   white-space: nowrap;
+  color: var(--intergalactic-text-primary, #191b23);
 }
 SMask[neighborLocation='left'],
 SMask[neighborLocation='both'] {
@@ -24,7 +25,7 @@ SMaskHidden:before {
   content: attr(data-content);
 }
 SPlaceholder {
-  opacity: 0.5;
+  color: var(--intergalactic-text-placeholder, #a9abb6);
 }
 SMaskHidden:before,
 SMaskVisible::before,

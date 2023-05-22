@@ -1,4 +1,5 @@
 import { SerializableDataType } from './insights';
+import reactToText from '@semcore/utils/lib/reactToText'
 
 type DeepPartial<T> = T extends object
   ? {
@@ -63,6 +64,7 @@ export type DataSummarizationConfig = {
   groupsLimit: number;
   disable: boolean;
   override: string | undefined;
+  additionalFields: string[];
 };
 export type PartialDataSummarizationConfig = DeepPartial<DataSummarizationConfig>;
 
@@ -145,7 +147,7 @@ export const makeDataHintsHandlers = (mutableContainer: DataStructureHints) => {
         title = String(title);
       }
       if (typeof title !== 'string') {
-        return;
+        title = reactToText(title);
       }
       if (describedDataAxes === 'horizontal') {
         mutableContainer.axesTitle.horizontal = title;
@@ -188,4 +190,5 @@ export const makeDataSummarizationConfig = (
     notableDiff: undefined,
     ...(config?.movingAverage ?? {}),
   },
+  additionalFields: [...config?.additionalFields ?? []]
 });

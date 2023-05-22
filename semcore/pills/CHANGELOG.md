@@ -2,6 +2,58 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.24] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/neighbor-location` [3.1.28 ~> 3.1.29], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.4.23] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/neighbor-location` [3.1.27 ~> 3.1.28], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [4.4.22] - 2023-05-04
+
+### Added
+
+- Allowed pills focus navigation with left and right keyboard arrows.
+
+## [4.4.21] - 2023-05-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.20 ~> 4.7.21], `@semcore/neighbor-location` [3.1.26 ~> 3.1.27], `@semcore/utils` [3.50.4 ~> 3.50.5]).
+
+## [4.4.20] - 2023-04-24
+
+## [4.4.19] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/neighbor-location` [3.1.24 ~> 3.1.25], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [4.4.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [4.4.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/neighbor-location` [3.1.12 ~> 3.1.13], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [4.4.5] - 2023-01-10
+
+## [4.4.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/neighbor-location` [3.1.9 ~> 3.1.10], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [4.4.1] - 2022-12-13
 
 ### Changed

@@ -5,7 +5,7 @@ fileSource: input
 
 @## Input for entering a password
 
-The icon on the right shows/hides the password. The `ShowYes` clickable icon enables the password display, `ShowNo` hides the password and shows bullets.
+The icon on the right shows/hides the password. Button with the `ShowYes` icon enables the password display. `ShowNo` hides the password and shows bullets, respectively.
 
 @example password
 
@@ -21,7 +21,7 @@ Inside the input with the typed text, there can be a clickable `Close` icon to c
 
 @example clear
 
-@## Input with a send icon
+@## Input with a submit icon
 
 A clickable send/confirm icon can be placed inside the input with the typed text. It is only visible in the `focused` state.
 
@@ -29,20 +29,20 @@ A clickable send/confirm icon can be placed inside the input with the typed text
 
 @example submit
 
-@## Input with a text addon ("permanent" placeholder)
+@## Input with a text addon
 
-You can add text to the input as an addon. The user will not be able to change it. It can be used when you need a "permanent" placeholder in the input.
+You can add text to the input as an addon. The user will not be able to change it. It can be used when you need a "permanent" placeholder text in the input.
 
 @example placeholder
 
 @## Input with multiple addons
 
-If you need to stack two addons, the indents of neighboring addons shall be divided in half to maintain the normal clickable area around them.
+If you need to stack two addons, the indents of neighboring addons shall be divided in half to maintain the normal target area around them.
 
 @example 2addon
 
-@## Input with a badge, counter, or other component inside
+@## Input with other component inside
 
-`Badge` and `Tag` can also be put in the input 🤪 All sizes use the same size of badges. They are non-clickable.
+[Badge](/components/badge/) and [Tag](/components/tag/) can also be put in the input. All input sizes use the same size of badges.
 
 @example custom-addon

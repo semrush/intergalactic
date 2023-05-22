@@ -8,80 +8,75 @@ tabName: Design
 
 @## Description
 
-**Badge** is a component for visual indicating the product or showing feature status.
+**Badge** is a visual component used to indicate the status of a feature or product.
 
-_For example, you added a new tab to the report. In this case, you need to highlight a new feature in your product with a `new` badge._
+_For example, you added a new tab to the report. In this case, you can highlight a new feature in your product with a `new` badge._
 
-- Badge can not be deleted or added by a user. Badge is added to the elements by the system according to the rules described below in the table.
+**Main features of the component:**
+
+- Badge cannot be deleted or added by a user. Badge is added to the elements by the system according to the rules described below in the table.
 - Badge is not clickable.
 - Do not use badge for filtering the data.
 
 @## Appearance
 
-This component has one size.
+Component has one size.
 
-### Colors
+### Badge types
 
-Use the following badges in the products depending on the status of the product or feature:
+Use the following badges in the products depending on the status of the feature or product:
 
-| Badge                      | Color          | When used                                                                                                                                                                                                                                                                          |
-| -------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![admin](static/admin.png) | `--blue-300`   | Use it with products or features that are only available for users with admin rights, i.e. for Semrush employees. We need our colleagues to understand that this functionality is not visible to users.                                                                         |
-| ![alpha](static/alpha.png) | `--red-300`    | It is used with products or features that are available only to admins and a limited number of users who have been granted access as beta users. This functionality may be used without any guarantees, it is unstable, and may be changed significantly over time or be disabled. |
-| ![beta](static/beta.png)   | `--orange-300` | Use only for unstable functionality of a product or feature. A product/feature was released to test the product hypothesis, and it can have major changes in the future.                                                                                            |
-| ![new](static/new.png)     | `--green-300`  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                              |
-| ![soon](static/soon.png)   | `--gray-300`   | It can be set on “placeholders” for collecting feedback, simulating the appearance of a new functionality.                                                                                                                                                                         |
+| Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
+| -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![](static/admin.png) | `--blue-300`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge is not visible to the other users.                                                                                                                                         |
+| ![](static/alpha.png) | `--red-300`    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it is unstable, and may be changed significantly over time or be disabled. |
+| ![](static/beta.png)   | `--orange-300` | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                  |
+| ![](static/new.png)     | `--green-300`  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                      |
+| ![](static/soon.png)   | `--gray-300`   | It can be set on “placeholders” for collecting feedback.                                                                                                                                                                                                                                  |
 
 ### Usage on dark/colored background
 
 Every badge can be inverted like this:
 
-![inverted](static/inverted.png)
+![](static/inverted.png)
 
-Use `--white` color for the background and `--gray-800` for the text color.
+Use `--gray-white` color for the background and `--gray-800` for the text color.
 
 @## Feature status
 
-The feature status can be shown inside most of the controls.
+The feature status can be shown inside most of the components and controls.
 
 ### Button
 
-![primary button](static/button_primary.png)
-![secondary button](static/button_secondary.png)
+![](static/button_primary.png)
+
+![](static/button_secondary.png)
 
 ### Pill
 
-![pills group](static/pills.png)
+![](static/pills.png)
 
-### Mention of the feature status in the notification
+### Feature status in the notification
 
-![notice](static/notice.png)
+![](static/notice.png)
 
-> Keep in mind that you need to label data in tables using the [Tag](/components/tag/) component, and not using badge which indicates the status of product or feature.
+### Badge vs. Tag
 
-![yes-no image](static/table-yes-no.png)
+Do not confuse [Tag](/components/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
+
+![](static/table-yes-no.png)
 
 @## Location
 
-Badge is usually located to the right of the element. As an exception, in the [Notice](/components/notice/) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
+Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 
 @## Usage in UX/UI
 
-### Left menu
-
-![left menu](static/left_menu.png)
-
-### Report header
-
-![report header](static/product-head.png)
-
-### Landing page header
-
-![page header](static/landing-header.png)
-
-### Widget
-
-![widget](static/widget.png)
+| Component/block     | Appearance example                        |
+| ------------------- | ----------------------------------------- |
+| Product header      | ![](static/product-head.png) |
+| Landing page header | ![](static/landing-header.png) |
+| Widget              | ![](static/widget.png)              |
 
 @page badge-a11y
 @page badge-api

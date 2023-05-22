@@ -1,5 +1,5 @@
 {
   "keyboardHint": "Appuyez sur la touche Entrée pour appliquer la valeur, appuyez sur Echap pour annuler les modifications",
-  "confirm": "Confirmer",
-  "discard": "Abandonner la modification"
+  "confirm": "Enregistrer",
+  "discard": "Annuler"
 }

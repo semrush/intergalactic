@@ -6,7 +6,7 @@ SButton {
   padding: 0;
   margin: 0;
   white-space: nowrap;
-  font-family: var(--intergalactic-base, Inter), sans-serif;
+  font-family: inherit;
   line-height: normal;
   text-decoration: none;
   text-align: center;
@@ -49,14 +49,14 @@ SButton[keyboardFocused] {
 SButton[size='m'] {
   height: 28px;
   min-width: 28px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SButton[size='l'] {
   height: 40px;
   min-width: 40px;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
 

@@ -12,6 +12,9 @@ import { createPlayground, Playground } from '../components/playground';
 import Code from '../components/Code';
 import Copy from '../components/Copy';
 import styles from './PlaygroundGeneration.module.css';
+import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
+import darkThemeTokens from '@semcore/utils/lib/themes/dark.json';
 
 Playground.createWidget('empty', () => {
   return null;
@@ -97,12 +100,7 @@ Playground.createWidget(
       <label className={styles.field} htmlFor="">
         <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
         <div className={styles.control}>
-          <Pills
-            style={{ background: '#fff' }}
-            value={value}
-            onChange={(value) => onChange(value)}
-            {...others}
-          >
+          <Pills value={value} onChange={(value) => onChange(value)} {...others}>
             {options.map((o, i) => {
               const option = typeof o === 'string' ? { value: o, name: o } : o;
               return (
@@ -119,14 +117,15 @@ Playground.createWidget(
 );
 
 const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
-  const [color, changeColor] = useState(backgroundColor || 'white');
+  const [color, setColor] = useState(backgroundColor || 'white');
+
   return (
     <RadioGroup
       aria-hidden="true"
       name="background-color"
       value={color}
       onChange={(color) => {
-        changeColor(color);
+        setColor(color);
         onChange(color);
       }}
     >
@@ -146,12 +145,12 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
           />
         </Radio>
         <Radio>
-          <Radio.Value style={{ display: 'none' }} value="#333" checked={color === '#333'} />
+          <Radio.Value style={{ display: 'none' }} value="#1E2231" checked={color === '#1E2231'} />
           <div
             className={styles.chooseBackgroundColor}
             style={{
-              backgroundColor: '#333',
-              borderColor: color === '#333' ? '#2595e4' : '#e3e3e3',
+              backgroundColor: '#1E2231',
+              borderColor: color === '#1E2231' ? '#2595e4' : '#e3e3e3',
             }}
           />
         </Radio>
@@ -183,20 +182,25 @@ class PlaygroundView extends React.Component {
 
     return (
       <div className={styles.wrapperPlayground} aria-hidden="true">
-        <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%' }}>
-          <div className={styles.resultView} style={{ backgroundColor }}>
-            <LayoutPreview>{result}</LayoutPreview>
-            <PaintPlaygroundView
-              backgroundColor={backgroundColor}
-              onChange={this.onChangeBackground}
-            />
-          </div>
+        <div
+          className={styles.workArea}
+          style={{ width: !hasWidget ? '100%' : '70%', backgroundColor }}
+        >
+          <ThemeProvider tokens={backgroundColor === 'white' ? lightThemeTokens : darkThemeTokens}>
+            <div className={styles.resultView} style={{ backgroundColor }}>
+              <LayoutPreview>{result}</LayoutPreview>
+              <PaintPlaygroundView
+                backgroundColor={backgroundColor}
+                onChange={this.onChangeBackground}
+              />
+            </div>
+          </ThemeProvider>
           <div className={styles.resultCode}>
             <Code lang="jsx" block>
               {source}
             </Code>
             <div className={styles.iconCopy}>
-              <Copy text={source} textTooltip="Click to copy code">
+              <Copy toCopy={source} title="Click to copy code">
                 <CopyS />
               </Copy>
             </div>

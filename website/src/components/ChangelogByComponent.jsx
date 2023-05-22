@@ -1,23 +1,27 @@
 import React from 'react';
-import styles from './ChangelogByComponent.module.css';
-import Tag from '@semcore/tag';
 import { Link } from 'react-router-dom';
+import Tag from '@semcore/tag';
 import { Text } from '@semcore/typography';
+import cx from 'classnames';
 import { getLabel } from './Changelog';
-import formatTextStyles from './FormatText.module.css';
 import HeadingLink from './HeadingLink.jsx';
 
+import formatTextStyles from './FormatText.module.css';
+import styles from './ChangelogByComponent.module.css';
+
 const ChangelogByComponent = ({ blocks }) => {
-  return blocks.map(({ title, version, components }) => (
+  return blocks.map(({ title, components, id, route }) => (
     <span key={title} className={formatTextStyles.formatText}>
       <HeadingLink
         level={2}
-        id={version}
+        id={id}
         style={{
           fontSize: '18px',
           lineHeight: '110%',
           margin: '32px 0 16px 0',
         }}
+        route={route}
+        title={title}
       >
         <Text bold>{title}</Text>
       </HeadingLink>
@@ -55,15 +59,15 @@ const ChangelogByComponent = ({ blocks }) => {
       switch (section.props.children) {
         case 'Added':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="green-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.greenContainer)} size="l">
+              <Tag.Text className={styles.greenText}>{section}</Tag.Text>
             </Tag>
           );
           break;
         case 'Fixed':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="blue-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.blueContainer)} size="l">
+              <Tag.Text className={styles.blueText}>{section}</Tag.Text>
             </Tag>
           );
           break;
@@ -71,16 +75,16 @@ const ChangelogByComponent = ({ blocks }) => {
         case 'Removed':
         case 'Deprecated':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="orange-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.orangeContainer)} size="l">
+              <Tag.Text className={styles.orangeText}>{section}</Tag.Text>
             </Tag>
           );
           break;
         case 'BREAK':
         case 'Security':
           label = (
-            <Tag className={styles.tagStyled} size="l" color="red-500">
-              {section}
+            <Tag className={cx(styles.tagStyled, styles.redContainer)} size="l">
+              <Tag.Text className={styles.redText}>{section}</Tag.Text>
             </Tag>
           );
       }

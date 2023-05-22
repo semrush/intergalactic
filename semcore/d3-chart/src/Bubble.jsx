@@ -78,6 +78,7 @@ class BubbleRoot extends Component {
       markedCross,
       size,
       data,
+      transparent,
     } = this.asProps;
     const [xScale, yScale] = scale;
 
@@ -113,6 +114,7 @@ class BubbleRoot extends Component {
             dy=".3em"
             clipPath={`url(#${uid})`}
             color={d[color] ?? color}
+            transparent={transparent}
           >
             &#43;
           </SCenter>
@@ -128,6 +130,7 @@ class BubbleRoot extends Component {
           color={d[color]}
           r={z(d[value])}
           use:duration={`${duration}ms`}
+          transparent={transparent}
         />
         {d[label] && (
           <SLabel
@@ -138,6 +141,7 @@ class BubbleRoot extends Component {
             clipPath={`url(#${uid})`}
             position={labelPosition}
             color={d[color]}
+            transparent={transparent}
           >
             {d[label]}
           </SLabel>

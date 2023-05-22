@@ -4,59 +4,73 @@ fileSource: card
 tabName: Design
 ---
 
-> In the last major update, component was divided into two parts: `Header` and `Body`. This was done to make it easier to use the restyling component. Also, `Card` now has a white background.
+> In the last major update, component was divided into two parts: `Header` and `Body`. It was done to make it easier to use the component. Also, `Card` now has a white background.
 
 @## Description
 
-**Card** is a component used for visually grouping data and other components into widgets.
+**Card** is a component for visually grouping data and other components into widgets.
+
+@## Component composition
+
+Component consists of:
+
+- Header (can have Title and Description inside);
+- [Divider](/components/divider/) (use only for big cards);
+- Body.
+
+![](static/card-scheme2.png)
+
+![](static/card-scheme.png)
 
 @## Appearance
 
-The component consists of:
+| Size  | Example                                      |
+| ----- | -------------------------------------------- |
+| Small | ![](static/card-small.png) |
+| Big   | ![](static/card-big.png)     |
 
-- Header (can have Title and Description inside)
-- [Divider](/components/divider/) (use only for big cards)
-- Body
+@## Card.Header
 
-| Size  | Example                                       |
-| ----- | --------------------------------------------- |
-| Small | ![small card scheme](static/card-scheme2.png) |
-| Big   | ![card scheme](static/card-scheme.png)        |
+![](static/card-header.png)
 
-@## Card header
+### Title
 
-![card header paddings](static/card-paddings1.png)
+For the card title use 16px text (`--fs-300`, `--lh-300`) with `font-weight: var(--bold)`.
 
-![card header margins](static/card-margins1.png)
-
-### Title and description
-
-For the card title use 16px text (`--fs-300; --lh-300;`) with `font-weight: 700`.
+### Description
 
 The card may have a description. It usually contains an explanation of what the data is based on, interesting insight/advice on the visualized data, etc.
 
-@## Card body
+### Margins and paddings
 
-### Paddings and margins
+![](static/card-paddings1.png)
+
+![](static/card-margins1.png)
+
+@## Card.Body
+
+### Paddings
 
 | Case  | Paddings                                         |
 | ----- | ------------------------------------------------ |
-| Chart | ![card body paddings](static/card-paddings2.png) |
-| Table | ![card body paddings](static/card-paddings3.png) |
+| Chart | ![](static/card-paddings2.png) |
+| Table | ![](static/card-paddings3.png) |
 
-![card body margins](static/card-margins2.png)
+### Margins
+
+![](static/card-margins2.png)
 
 ### Layout
 
 You can divide content into sections if needed.
 
-![card layout](static/card-layout.png)
+![](static/card-layout.png)
 
 @## Interaction
 
-By default, the card is non-clickable. But you can add `--box-shadow-hover` variable for hover state and make title a clickable link if necessary.
+By default, the card is non-clickable. But you can use `--box-shadow-card-hover` token for hover state and make title a clickable link if necessary.
 
-![card with clickable heading](static/card-clickable.png)
+![](static/card-clickable.png)
 
 @page card-a11y
 @page card-api

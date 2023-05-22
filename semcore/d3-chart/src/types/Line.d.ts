@@ -20,6 +20,8 @@ export interface ILineProps extends IContext {
    * @default 500
    */
   duration?: number;
+  /** Enables element transparency */
+  transparent?: boolean;
 }
 
 export interface ILineDotsProps extends IContext, IFadeInOutProps {

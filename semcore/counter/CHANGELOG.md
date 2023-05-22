@@ -2,6 +2,56 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.14] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [2.3.13] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [2.3.12] - 2023-05-03
+
+### Changed
+
+- During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+## [2.3.11] - 2023-04-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [2.3.0] - 2023-02-20
+
+### Added
+
+- Added `<AnimatedNumber />` exported component.
+
+## [2.2.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-large` -> `--intergalactic-counter-rounded`).
+
+## [2.2.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [2.2.5] - 2023-01-10
+
+## [2.2.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [2.2.1] - 2022-12-13
 
 ### Changed

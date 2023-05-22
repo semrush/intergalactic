@@ -105,7 +105,8 @@ class CarouselRoot extends Component {
           };
         },
         () => {
-          if (index !== 0) {
+          const { items } = this.state;
+          if (items.length > index && index >= 0) {
             this.slideToValue(this.indexIndicator, index);
           }
         },
@@ -351,7 +352,6 @@ class CarouselRoot extends Component {
         tabIndex={0}
         onTouchStart={this.handlerTouchStart}
         onTouchEnd={this.handlerTouchEnd}
-        role="list"
       >
         <Children />
       </SCarousel>,
@@ -363,7 +363,7 @@ const Container = (props) => {
   const SContainer = Root;
   const { styles, duration } = props;
 
-  return sstyled(styles)(<SContainer render={Box} use:duration={`${duration}ms`} />);
+  return sstyled(styles)(<SContainer render={Box} role="list" use:duration={`${duration}ms`} />);
 };
 
 const Item = (props) => {
@@ -391,7 +391,7 @@ const Prev = (props) => {
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive color="gray-300" />,
+  children: <ChevronLeft interactive aria-label="Visual navigation, previous" />,
   top: 0,
 });
 
@@ -402,7 +402,7 @@ const Next = (props) => {
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive color="gray-300" />,
+  children: <ChevronRight interactive aria-label="Visual navigation, next" />,
   top: 0,
 });
 

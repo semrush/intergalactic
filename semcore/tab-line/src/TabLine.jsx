@@ -5,7 +5,6 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import a11yEnhance from '@semcore/utils/lib/enhances/a11yEnhance';
 import NeighborLocation from '@semcore/neighbor-location';
-import ResizeObserver from 'resize-observer-polyfill';
 
 import style from './style/tab-line.shadow.css';
 
@@ -28,17 +27,11 @@ class TabLineRoot extends Component {
     underlined: true,
   };
   static enhance = [a11yEnhance(optionsA11yEnhance)];
-
-  $observer;
-  $observerTab;
-  $indicator = React.createRef();
-  $tabsParent = React.createRef();
-
-  constructor(props) {
-    super(props);
-    this.$observer = new ResizeObserver(this.calculateStylesIndicator);
-    this.$observerTab = new ResizeObserver(this.calculateStylesIndicator);
-  }
+  state = { animation: null };
+  prevValue = undefined;
+  itemRefs = {};
+  containerRef = React.createRef();
+  animationStartTimeout = -1;
 
   uncontrolledProps() {
     return {
@@ -46,44 +39,58 @@ class TabLineRoot extends Component {
     };
   }
 
+  componentDidUpdate() {
+    if (
+      this.prevValue !== null &&
+      this.asProps.value !== null &&
+      this.prevValue !== this.asProps.value
+    ) {
+      this.animate();
+    }
+    this.prevValue = this.asProps.value;
+  }
+  componentDidMount() {
+    this.prevValue = this.asProps.value;
+  }
+  componentWillUnmount() {
+    clearTimeout(this.animationStartTimeout);
+  }
+
+  animate() {
+    const fromNode = this.itemRefs[this.prevValue];
+    const toNode = this.itemRefs[this.asProps.value];
+    const containerNode = this.containerRef.current;
+
+    if (!fromNode || !toNode || !containerNode) return;
+    const containerRect = containerNode.getBoundingClientRect();
+    const fromRect = fromNode.getBoundingClientRect();
+    const toRect = toNode.getBoundingClientRect();
+    const animation = {
+      fromLeft: fromRect.x - containerRect.x,
+      fromWidth: fromRect.width,
+      toLeft: toRect.x - containerRect.x,
+      toWidth: toRect.width,
+      started: false,
+    };
+    this.setState({ animation });
+    clearTimeout(this.animationStartTimeout);
+    this.animationStartTimeout = setTimeout(this.handleAnimationStart, 0);
+  }
+
+  handleAnimationStart = () => {
+    if (this.state.animation?.started === false) {
+      this.setState({ animation: { ...this.state.animation, started: true } });
+    }
+  };
+  handleAnimationEnd = () => {
+    this.setState({ animation: null });
+  };
+
   bindHandlerClick = (value) => (e) => {
     this.handlers.value(value, e);
   };
 
-  calculateStylesIndicator = () => {
-    const indicator = this.$indicator.current;
-    const tabsParent = this.$tabsParent.current;
-    if (!indicator || !tabsParent) return false;
-    const tab = Array.from(tabsParent.querySelectorAll('[data-ui-name="TabLine.Item"]')).find(
-      (node) => node.getAttribute('value') === String(this.asProps.value),
-    );
-    if (!tab) return false;
-    this.$observerTab.observe(tab);
-    const { offsetLeft, offsetWidth } = tab;
-    const positionLeftParent =
-      tabsParent.clientLeft + parseInt(tabsParent.style.paddingLeft, 10) || 0;
-    indicator.style.transform = `translateX(${offsetLeft - positionLeftParent}px)`;
-    indicator.style.width = `${offsetWidth}px`;
-  };
-
-  componentDidMount() {
-    if (this.$tabsParent.current) {
-      this.$observer.observe(this.$tabsParent.current);
-    }
-    this.calculateStylesIndicator();
-  }
-
-  componentDidUpdate() {
-    this.$observerTab.disconnect();
-    this.calculateStylesIndicator();
-  }
-
-  componentWillUnmount() {
-    this.$observer.disconnect();
-    this.$observerTab.disconnect();
-  }
-
-  getItemProps(props) {
+  getItemProps(props, index) {
     const { value, size } = this.asProps;
     const isSelected = value === props.value;
     return {
@@ -91,22 +98,46 @@ class TabLineRoot extends Component {
       selected: isSelected,
       onClick: this.bindHandlerClick(props.value),
       tabIndex: isSelected ? 0 : -1,
-      'aria-posinset': value,
+      'aria-posinset': index + 1,
       'aria-selected': isSelected,
+      ref: (node) => (this.itemRefs[props.value] = node),
     };
+  }
+
+  getCaretProps() {
+    const { animation } = this.state;
+    if (!animation) return {};
+    if (animation.started) {
+      return {
+        style: {
+          left: animation.toLeft,
+          width: animation.toWidth,
+        },
+        onTransitionEnd: this.handleAnimationEnd,
+      };
+    } else {
+      return {
+        style: {
+          left: animation.fromLeft,
+          width: animation.fromWidth,
+        },
+        onTransitionEnd: this.handleAnimationEnd,
+      };
+    }
   }
 
   render() {
     const STabLine = Root;
-    const SIndicator = 'div';
+    const SCaret = 'div';
     const { styles, Children, controlsLength } = this.asProps;
+    const { animation } = this.state;
 
     return sstyled(styles)(
-      <STabLine render={Box} ref={this.$tabsParent} role="tablist">
+      <STabLine render={Box} role="tablist" ref={this.containerRef}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
-        <SIndicator ref={this.$indicator} />
+        {animation && <SCaret {...this.getCaretProps()} />}
       </STabLine>,
     );
   }

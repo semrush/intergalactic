@@ -8,7 +8,7 @@ Let's look at the design system we use at [Semrush](https://semrush.com), and wh
 
 The design system consists of over 70 [React](https://reactjs.org) components. Each of them has design guides and [Figma components](https://www.figma.com/@semrush) with examples of use and API descriptions.
 
-We also have big [icons library](/style/icon/) and [charts library](/data-display/d3-chart/).
+We also have big [icons library](/style/icon/) and [charts library](/data-display/d3-chart/d3-chart-code/).
 
 @## Installation
 
@@ -54,7 +54,7 @@ This approach provides more flexibility:
 
 You can change the default styles for your project. We have design tokens that you can change in each component individually or globally throughout the project.
 
-We also have [a mechanism](/style/themes/) for changing our styles, this allows us to completely change the design of components and extend components with new properties.
+We also have [a mechanism](/style/design-tokens/#themes/) for changing our styles, this allows us to completely change the design of components and extend components with new properties.
 
 ### Controlled & uncontrolled
 

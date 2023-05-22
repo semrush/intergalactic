@@ -2,6 +2,106 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.17] - 2023-05-12
+
+### Fixed
+
+- Fixed empty tooltip content while fading out.
+
+## [5.4.16] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.23 ~> 4.3.24], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [5.4.15] - 2023-05-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.4.9 ~> 5.4.10]).
+
+## [5.4.12] - 2023-04-24
+
+## [5.4.11] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.19 ~> 4.3.20], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [5.4.9] - 2023-04-11
+
+### Changed
+
+- Updated `final-form` version to meet `react-final-form` peer dependency.
+
+## [5.4.8] - 2023-04-11
+
+### Changed
+
+- Patched `react-final-form` to the latest version.
+
+## [5.4.7] - 2023-04-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.3.24 ~> 5.4.0]).
+
+## [5.4.4] - 2023-03-27
+
+### Fixed
+
+- Added a11y error binding to field.
+
+## [5.4.3] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.15 ~> 4.3.16], `@semcore/utils` [3.48.1 ~> 3.49.0]).
+
+## [5.4.0] - 2023-03-22
+
+### Added
+
+- Added properties `backgrouund` and `theme` responsible for spinner theme.
+
+## [5.3.15] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.12 ~> 4.3.13], `@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [5.3.13] - 2023-03-16
+
+### Fixed
+
+- Fixed padding for the success state of the feedback form.
+
+## [5.3.12] - 2023-03-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.10 ~> 4.3.11], `@semcore/utils` [3.47.1 ~> 3.47.2]).
+
+## [5.3.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+## [5.3.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.6 ~> 4.3.7], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [5.3.5] - 2023-01-10
+
+## [5.3.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.3 ~> 4.3.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [5.3.1] - 2022-12-13
 
 ### Changed

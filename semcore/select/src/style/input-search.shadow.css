@@ -11,6 +11,6 @@ SOutline {
   top: -1px;
   left: -1px;
   width: 100%;
-  border-radius: var(--intergalactic-rounded-medium, 6px) var(--intergalactic-rounded-medium, 6px) 0
-    0;
+  border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px)
+    0 0;
 }

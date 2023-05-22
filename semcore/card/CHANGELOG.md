@@ -2,6 +2,104 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.17] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.3.16] - 2023-05-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.4.9 ~> 5.4.10]).
+
+## [4.3.13] - 2023-04-24
+
+## [4.3.12] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [4.3.4] - 2023-03-23
+
+### Fixed
+
+- Made `<Card.Title />` `hint` available for screen readers.
+
+## [4.3.3] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [4.3.0] - 2023-03-15
+
+### Removed
+
+- Removed `Card.Title` wrapper
+
+## [4.2.22] - 2023-03-13
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.1 ~> 3.47.2]).
+
+## [4.2.19] - 2023-03-01
+
+## [4.2.18] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
+
+## [4.2.17] - 2023-02-22
+
+## [4.2.16] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [4.2.13] - 2023-02-13
+
+## [4.2.12] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-surface-rounded`).
+
+## [4.2.11] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/icon` [3.7.0 ~> 3.8.0]).
+
+## [4.2.9] - 2023-01-19
+
+### Fixed
+
+- Removed font-family enforcement.
+
+## [4.2.8] - 2023-01-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
+## [4.2.4] - 2022-12-23
+
+### Fixed
+
+- Hint tooltip is centered vertically.
+
+## [4.2.3] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [4.2.1] - 2022-12-13
 
 ### Changed

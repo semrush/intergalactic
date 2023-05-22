@@ -1,5 +1,5 @@
 {
   "keyboardHint": "값을 적용하려면 Enter 키를, 변경사항을 취소하려면 Esc 키를 누르세요",
-  "confirm": "확인",
-  "discard": "변경사항 취소"
+  "confirm": "저장",
+  "discard": "취소"
 }

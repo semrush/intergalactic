@@ -36,7 +36,7 @@ class AreaRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, color, data, d3Line } = this.asProps;
+    const { x, y, color, data, d3Line, transparent } = this.asProps;
 
     return {
       x,
@@ -44,6 +44,7 @@ class AreaRoot extends Component {
       data,
       d3: d3Line,
       color,
+      transparent,
     };
   }
 
@@ -71,8 +72,21 @@ class AreaRoot extends Component {
   render() {
     const SArea = this.Element;
     const SAreaLine = 'path';
-    const { styles, hide, d3, d3Line, data, color, uid, size, duration, x, y, Children } =
-      this.asProps;
+    const {
+      styles,
+      hide,
+      d3,
+      d3Line,
+      data,
+      color,
+      uid,
+      size,
+      duration,
+      x,
+      y,
+      Children,
+      transparent,
+    } = this.asProps;
     const advanceMode = !!findComponent(Children, [Area.Line.displayName]);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
@@ -87,6 +101,7 @@ class AreaRoot extends Component {
             d={d3Line(data)}
             color={color}
             use:duration={`${duration}ms`}
+            transparent={transparent}
           />
         )}
         <SArea
@@ -97,6 +112,7 @@ class AreaRoot extends Component {
           hide={hide}
           color={color}
           use:duration={`${duration}ms`}
+          transparent={transparent}
         />
         {duration && (
           <ClipPath
@@ -118,7 +134,7 @@ class AreaRoot extends Component {
 }
 
 function Line(props) {
-  const { Element: SAreaLine, styles, d3, data, color, duration, uid } = props;
+  const { Element: SAreaLine, styles, d3, data, color, duration, uid, transparent } = props;
   return sstyled(styles)(
     <SAreaLine
       render="path"
@@ -126,6 +142,7 @@ function Line(props) {
       d={d3(data)}
       color={color}
       use:duration={`${duration}ms`}
+      transparent={transparent}
     />,
   );
 }

@@ -1,7 +1,7 @@
 .navigationView {
-  padding: 32px;
+  padding: var(--intergalactic-spacing-10x) var(--intergalactic-spacing-6x);
   box-sizing: border-box;
-  width: 260px;
+  width: 250px;
   height: 100%;
   overflow: auto;
 }
@@ -12,37 +12,51 @@
 }
 
 .categoryTitle {
-  color: #171a22 !important;
+  color: var(--intergalactic-text-primary) !important;
   cursor: pointer;
-  padding: 8px 0 2px;
-  font-weight: 500;
-  font-size: 16px !important;
-  line-height: 1.5;
+  padding: var(--intergalactic-spacing-2x) 0 calc(0.5 * var(--intergalactic-spacing-1x));
+  font-weight: var(--intergalactic-medium);
+  font-size: var(--intergalactic-fs-300) !important;
+  line-height: var(--intergalactic-lh-300);
 }
 .categoryTitle:hover,
 .categoryTitle:hover > * {
-  color: #ff622d;
+  color: var(--intergalactic-brand-primary);
+}
+.categoryContainer {
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
+.categoryIcon {
+  color: var(--intergalactic-icon-secondary-neutral-hover-active);
+  margin-top: calc(var(--intergalactic-spacing-1x) + 1px);
+}
 .categoryItem {
-  padding: 2px 0 2px 24px;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #171a22;
+  padding: calc(0.5 * var(--intergalactic-spacing-1x)) 0 calc(0.5 * var(--intergalactic-spacing-1x))
+    var(--intergalactic-spacing-6x);
+  font-size: var(--intergalactic-fs-300);
+  line-height: var(--intergalactic-lh-300);
+  color: var(--intergalactic-text-primary);
   cursor: pointer;
   text-decoration: none;
-  display: block;
+  display: inline-block;
+  white-space: break-spaces;
   transition: color 0.5s;
 }
-.categoryItem:hover {
-  color: #ff622d;
+.categoryContainer:hover a:not(.categoryItemDisabled),
+.categoryContainer:hover .categoryIcon {
+  color: var(--intergalactic-brand-primary);
 }
-.categoryItemActive {
-  color: #ff622d;
+.categoryItemActive .categoryItem,
+.categoryItemActive .categoryIcon {
+  color: var(--intergalactic-brand-primary);
 }
 
 .categoryItemDisabled {
   cursor: default;
   pointer-events: none;
-  color: #ccc;
+  opacity: calc(var(--intergalactic-disabled-opacity) - 0.1);
 }

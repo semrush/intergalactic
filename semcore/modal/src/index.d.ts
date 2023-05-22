@@ -1,8 +1,9 @@
 import React, { ComponentProps } from 'react';
-import { IFadeInOutProps } from '@semcore/animation';
+import { IFadeInOutProps, ISlideProps } from '@semcore/animation';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { IPortalProps } from '@semcore/portal';
 import { Box, IBoxProps } from '@semcore/flex-box';
+import { ITextProps } from '@semcore/typography';
 
 export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
   /** Duration of animation, ms
@@ -20,8 +21,16 @@ export interface IModalProps extends IPortalProps, IBoxProps, IFadeInOutProps {
    * @default true
    * */
   closable?: boolean;
+  /**
+   * Setting `true` disables mechanism that hides document body scrollbar when Modal is visible
+   * @default false
+   */
+  disablePreventScroll?: boolean;
+
   locale?: string;
 }
+
+export interface IWindowProps extends IBoxProps, ISlideProps {}
 
 export interface IModalContext {
   getOverlayProps: PropGetterFn;
@@ -30,9 +39,10 @@ export interface IModalContext {
 }
 
 declare const Modal: (<T>(props: CProps<IModalProps & T, IModalContext>) => ReturnEl) & {
-  Window: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Window: <T>(props: CProps<IWindowProps> & T) => ReturnEl;
   Overlay: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
   Close: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+  Title: <T>(props: ITextProps & T) => ReturnEl;
 };
 
 export default Modal;

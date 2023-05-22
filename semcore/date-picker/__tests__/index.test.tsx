@@ -57,7 +57,7 @@ describe('DatePicker', () => {
     act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date'));
     act(() => jest.runAllTimers());
-    expect(getByText('April 2020')).toBeTruthy();
+    expect(getByText('March 2020')).toBeTruthy();
     jest.useRealTimers();
   });
 
@@ -77,7 +77,12 @@ describe('DatePicker', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(<DatePicker visible disablePortal />);
+    const { container } = render(
+      <DatePicker visible disablePortal aria-label="date picker">
+        <DatePicker.Trigger aria-label="date picker">Open date picker</DatePicker.Trigger>
+        <DatePicker.Popper />
+      </DatePicker>,
+    );
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
@@ -222,7 +227,7 @@ describe('DateRangePicker', () => {
     act(() => jest.runAllTimers());
     fireEvent.click(getByText('Select date period'));
     act(() => jest.runAllTimers());
-    expect(getByText('April 2020')).toBeTruthy();
+    expect(getByText('March 2020')).toBeTruthy();
     jest.useRealTimers();
   });
 
@@ -240,7 +245,14 @@ describe('DateRangePicker', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(<DateRangePicker visible disablePortal />);
+    const { container } = render(
+      <DateRangePicker visible disablePortal aria-label="data range picker">
+        <DateRangePicker.Trigger aria-label="date range picker">
+          Open date range picker
+        </DateRangePicker.Trigger>
+        <DateRangePicker.Popper />
+      </DateRangePicker>,
+    );
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

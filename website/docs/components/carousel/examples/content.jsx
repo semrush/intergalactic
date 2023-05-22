@@ -5,12 +5,12 @@ import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
 
 const Demo = () => {
-  const [visible, updateVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   return (
     <>
-      <Button onClick={() => updateVisible(!visible)}>Open Carousel</Button>
-      <Modal visible={visible} onClose={() => updateVisible(false)} w={664}>
+      <Button onClick={() => setVisible(!visible)}>Open Carousel</Button>
+      <Modal visible={visible} onClose={() => setVisible(false)} w={664}>
         <Carousel autoFocus tabIndex={1}>
           <Carousel.Container>
             {[1, 2].map((_, ind) => (

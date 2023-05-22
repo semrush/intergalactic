@@ -12,8 +12,8 @@ SNotice {
   padding: var(--intergalactic-spacing-3x, 12px) var(--intergalactic-spacing-4x, 16px);
   border-width: 1px 0 0;
   border-top-style: solid;
-  border-radius: 0 0 var(--intergalactic-rounded-medium, 6px)
-    var(--intergalactic-rounded-medium, 6px);
+  border-radius: 0 0 var(--intergalactic-surface-rounded, 6px)
+    var(--intergalactic-surface-rounded, 6px);
 }
 
 SSuccess {
@@ -21,11 +21,7 @@ SSuccess {
   align-items: center;
   flex-direction: column;
   width: 320px;
-  padding: calc(
-      var(--intergalactic-spacing-10x, 40px) + var(--intergalactic-spacing-2x, 8px) +
-        var(--intergalactic-spacing-05x, 2px)
-    )
-    var(--intergalactic-spacing-8x, 32px) var(--intergalactic-spacing-8x, 32px);
+  padding: var(--intergalactic-spacing-10x, 40px);
   box-sizing: border-box;
 }
 

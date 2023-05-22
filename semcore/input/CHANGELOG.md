@@ -2,6 +2,58 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.25] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+
+## [3.5.24] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+
+## [3.5.22] - 2023-04-28
+
+### Fixed
+
+- Moved paddings from container to `<Input.Value />` and `<Input.Addon />` to fix addons in inputs of large size.
+- `<Input.Addon />` now automatically takes size of `<Input />`.
+- Fixed right border duplication when last addon is build on top of `<Button />`.
+
+## [3.5.20] - 2023-04-14
+
+### Changed
+
+- Fixed outline styles so that they work even if the `Value` is wrapped in other elements.
+
+## [3.5.19] - 2023-04-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.2], `@semcore/flex-box` [4.7.17 ~> 4.7.19]).
+
+## [3.5.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [3.5.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7]).
+
+## [3.5.5] - 2023-01-10
+
+## [3.5.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4]).
+
 ## [3.5.1] - 2022-12-13
 
 ### Changed

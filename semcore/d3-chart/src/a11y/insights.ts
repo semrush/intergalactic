@@ -54,7 +54,12 @@ export type ClusterNode = {
 };
 export type Insight = TrendNode | GeneralTrendNode | ComparisonNode | ClusterNode;
 
-export type SerializableDataType = 'time-series' | 'points-cloud' | 'values-set' | 'grouped-values';
+export type SerializableDataType =
+  | 'time-series'
+  | 'points-cloud'
+  | 'values-set'
+  | 'grouped-values'
+  | 'indexed-groups';
 
 export type AnalyzedData = {
   insights: Insight[];
@@ -192,7 +197,7 @@ export const extractDataInsights = (
         const table = [];
         for (const i in values) {
           table.push({
-            value: values[i].toFixed(2),
+            value: (values[i] ?? NaN).toFixed(2),
             long: (longMovingAverage[i] ?? NaN).toFixed(2),
             short: (shortMovingAverage[i] ?? NaN).toFixed(2),
           });
@@ -595,6 +600,48 @@ export const extractDataInsights = (
       values,
       priority: 1,
     });
+  }
+  if (dataType === 'indexed-groups') {
+    const groups = [...hints.groups].map((groupKey) => {
+      const values = [...hints.fields.values]
+        .filter((fieldPath) => String(fieldPath).startsWith(`${groupKey}.`))
+        .map((fieldPath) => ({
+          label: getPropByPath(
+            hints.titles.valuesAxes,
+            String(fieldPath).substring(String(groupKey).length + 1),
+          ),
+          value: getPropByPath(data, String(fieldPath)),
+        }));
+
+      values.sort((a, b) => {
+        if (typeof a.value !== 'number' || typeof b.value !== 'number') return 0;
+        return b.value - a.value;
+      });
+      const averageValue =
+        values.reduce((sum, { value }) => sum + (value as number), 0) / values.length;
+      return {
+        label: getPropByPath(hints.titles.valuesAxes, String(groupKey)) ?? groupKey,
+        values,
+        averageValue: !Number.isNaN(averageValue) ? averageValue : undefined,
+      };
+    });
+
+    groups.sort((a, b) => {
+      if (typeof a.averageValue !== 'number' || typeof b.averageValue !== 'number') return 0;
+      return b.averageValue - a.averageValue;
+    });
+    entitiesCount = groups.length;
+    insights.push(
+      ...groups.map(
+        (group) =>
+          ({
+            type: 'comparison',
+            label: group.label,
+            values: group.values,
+            priority: 1,
+          } as ComparisonNode),
+      ),
+    );
   }
 
   const hasHighPriorityInsights = insights.some((insight) => insight.priority > 0);

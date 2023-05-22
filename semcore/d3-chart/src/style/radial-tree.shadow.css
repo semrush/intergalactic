@@ -2,25 +2,42 @@
 
 SRadian {
   cursor: pointer;
-  fill: var(--intergalactic-chart-palette-order-blue-second-order, #008ff8);
+  fill: var(--intergalactic-chart-palette-order-9, #008ff8);
 }
 
 SLine {
-  stroke: var(--intergalactic-chart-palette-order-blue-second-order, #008ff8);
+  stroke: var(--intergalactic-chart-palette-order-9, #008ff8);
 }
 
 SLine[color] {
   stroke: var(--color);
 }
 
+SLine[transparent] {
+  opacity: 0.3;
+}
+
 SCap {
   transition: r 0.1s;
+}
+
+SCap[transparent] {
+  opacity: 0.3;
+}
+
+SIcon[transparent] {
+  opacity: 0.3;
 }
 
 SLabel {
   fill: var(--color);
   cursor: var(--text-cursor);
 }
+
+SLabel[transparent] {
+  opacity: 0.3;
+}
+
 SRadian:hover SLabel {
   fill: var(--color-hovered);
 }

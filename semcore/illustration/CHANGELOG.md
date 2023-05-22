@@ -2,11 +2,59 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [1.3.7] - 2022-12-13
+## [1.4.18] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.0 ~> 4.7.1]).
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+
+## [1.4.17] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+
+## [1.4.15] - 2023-04-24
+
+## [1.4.14] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19]).
+
+## [1.4.3] - 2023-02-09
+
+## [1.4.2] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7]).
+
+## [1.4.0] - 2023-10-11
+
+### Added
+
+- Added `Feedback` illustration.
+
+## [1.3.11] - 2023-01-10
+
+## [1.3.10] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4]).
+
+## [1.3.9] - 2022-12-16
+
+### Changed
+
+- Added `react-dom` to peer dependencies.
+
+## [1.3.8] - 2022-12-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.1 ~> 4.7.2]).
 
 ## [1.3.6] - 2022-12-12
 

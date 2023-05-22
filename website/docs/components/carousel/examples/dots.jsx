@@ -17,7 +17,7 @@ const imageWidth = width - 75;
 
 const Demo = () => (
   <Carousel w={width} defaultIndex={0}>
-    <Flex alignItems="center">
+    <Flex>
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden' }}>
         <Carousel.Container>

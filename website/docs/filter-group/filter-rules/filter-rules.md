@@ -30,7 +30,7 @@ Dropdown has styles of [Dropdown-menu](/components/dropdown-menu/).
 
 ### Preset values
 
-> Use an en dash, not a hyphen, between values — `Opt/Alt` + `-`.
+> Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
 
 @## Custom range
 
@@ -55,7 +55,7 @@ Use the [InputNumber](/components/input-number/), if the filter has the ability 
 - The value is applied when user clicks on the item. Then the filter applies and closes.
 - If a value is selected, be sure to highlight this value when reopening the filter.
 
-**Custome range**
+**Custom range**
 
 Inputs has placeholders "From" and "To", respectively.
 
@@ -65,14 +65,14 @@ Inputs has placeholders "From" and "To", respectively.
 
 User-selected values are duplicated in the trigger.
 
-**Custome range**
+**Custom range**
 
 - Don't duplicate selected preset values in the custom range.
 - Clicking on the filter clear cross clears the filter from the selected values. It's not depend on whether the filter is open or closed.
 
 ### Choosing a custom range
 
-**Custome range**
+**Custom range**
 
 The user can copy/paste values into the input, increase/decrease them by the step set for InputNumber - 1.
 
@@ -91,9 +91,9 @@ The user can copy/paste values into the input, increase/decrease them by the ste
 | State          | Appearance example                           |
 | -------------- | -------------------------------------------- |
 | placeholder    | ![placeholder](static/placeholder.png)       |
-| hover          | ![hover](static/hover.png)                   |
-| active         | ![active](static/active.png)                 |
-| active + hover | ![active and hover](static/active-hover.png) |
+| Hover          | ![hover](static/hover.png)                   |
+| Active         | ![active](static/active.png)                 |
+| Active + hover | ![active and hover](static/active-hover.png) |
 
 @## Loading
 
@@ -109,7 +109,7 @@ Show [SpinContainer](/components/spin-container/) over the dropdown content in t
 
 Show in the widget/widgets to which the filter was applied an ["empty" state](/components/widget-empty/) with the ability to update the filter, if an error occurs during the request.
 
-![nothing found](static/nothing-found.png)
+![nothing found](static/filter-rules-nothing-found.png)
 
 @## Tooltips
 
@@ -132,14 +132,14 @@ In cases where thousandths are separated by commas rather than periods in a part
 
 **Max/min value**
 
-Minimum value — 0, maximum value — 999 999 999.
+Minimum value – 0, maximum value – 999 999 999.
 
 If the user entered an invalid value (less than minimum, greater than maximum), the input will reset them to min/max, respectively.
 
 **InputNumber step**
 
 - You can set the step by which the entered numerical value will be reduced/increased when using the stepper buttons.
-- The user can change the step using the keyboard arrows or `Shift` + keyboard arrows (`Up`, `Down`).
+- The user can change the step using the keyboard arrows or `Shift` + keyboard arrows (`Up Arrow`, `Down Arrow`).
 
 **Keyboard support**
 

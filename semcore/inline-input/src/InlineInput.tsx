@@ -159,9 +159,11 @@ class InlineInputBase extends Component<RootAsProps> {
     this.asProps.onCancel?.(prevText, event);
   };
 
+  keyDownLastHandle = -1;
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (onBlurBehavior) {
+      if (Date.now() - this.keyDownLastHandle < 10) return;
       setTimeout(() => {
         if (this.rootRef.current && isFocusOutsideOf(this.rootRef.current)) {
           if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value ?? '', event);
@@ -173,8 +175,14 @@ class InlineInputBase extends Component<RootAsProps> {
 
   handleKeyDown = (event: React.KeyboardEvent) => {
     const { onConfirm, onCancel } = this.asProps;
-    if (event.code === 'Enter') onConfirm?.(this.inputRef.current?.value ?? '', event);
-    if (event.code === 'Escape') onCancel?.(this.initValue, event);
+    if (event.code === 'Enter') {
+      this.keyDownLastHandle = Date.now();
+      onConfirm?.(this.inputRef.current?.value ?? '', event);
+    }
+    if (event.code === 'Escape') {
+      this.keyDownLastHandle = Date.now();
+      onCancel?.(this.initValue, event);
+    }
   };
 
   render() {
@@ -227,7 +235,7 @@ const Addon: React.FC<AddonAsProps> = (props) => {
 const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
   const SAddon = Root;
   const { Children, children: hasChildren } = props;
-  const title = props.title ?? props.getI18nText('discard');
+  const title = props.title ?? props.getI18nText('confirm');
 
   const handleConfirm = React.useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
@@ -264,15 +272,13 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={props.icon ?? CheckM}
-            aria-label={`${title} ${props.value ?? ''}`}
+            aria-hidden="true"
             role="button"
             onClick={handleConfirm}
             className={sConfirmIconStyles.className}
             style={sConfirmIconStyles.style}
           />
-          <Tooltip.Popper p={3} disableEnforceFocus>
-            {props.title}
-          </Tooltip.Popper>
+          <Tooltip.Popper p={3}>{title}</Tooltip.Popper>
         </Tooltip>
       )}
     </SAddon>,
@@ -318,15 +324,13 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={props.icon ?? CloseM}
-            aria-label={title}
+            aria-hidden="true"
             role="button"
             onClick={handleCancel}
             className={sCancelIconStyles.className}
             style={sCancelIconStyles.style}
           />
-          <Tooltip.Popper p={3} disableEnforceFocus>
-            {title}
-          </Tooltip.Popper>
+          <Tooltip.Popper p={3}>{title}</Tooltip.Popper>
         </Tooltip>
       )}
     </SAddon>,

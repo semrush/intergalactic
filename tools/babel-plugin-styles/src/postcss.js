@@ -1,8 +1,9 @@
 const postcss = require('postcss');
 const presetEnv = require('postcss-preset-env');
 const atImport = require('postcss-import-sync2');
-const cssnano = require('cssnano');
+const csso = require('postcss-csso');
 const postcssColorMod = require('postcss-color-mod-function');
+const postcssHoverMediaFeature = require('postcss-hover-media-feature');
 
 const inlineCssVariables = require('./inline-css-variables');
 const shadowStyles = require('./postcss-shadow-styles');
@@ -40,15 +41,8 @@ module.exports = function (options) {
     inlineCssVariables(),
     syncPlugin(postcssColorMod()),
     shadowStyles(options.shadow),
-    syncPlugin(
-      cssnano(
-        Object.assign(
-          // set mergeLonghand: false because the problem of the ratio Api components and styles (see: NoticeBubble)
-          { preset: ['default', { mergeLonghand: false, mergeRules: false }] },
-          options.cssnano,
-        ),
-      ),
-    ),
+    postcssHoverMediaFeature(),
+    csso,
   ];
   return postcss(processorPlugins);
 };

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/feedback-form",
   "description": "Semrush Feedback Form Component",
-  "version": "5.3.1",
+  "version": "5.4.17",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,9 +19,9 @@
     "@semcore/spin-container": "^6.0.0",
     "@semcore/tooltip": "^5",
     "@semcore/utils": "^3.15",
-    "final-form": "4.19.1",
+    "final-form": "4.20.4",
     "final-form-focus": "1.1.2",
-    "react-final-form": "6.5.2"
+    "react-final-form": "6.5.9"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -37,8 +37,8 @@
     "directory": "semcore/feedback-form"
   },
   "devDependencies": {
-    "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/jest-preset-ui": "1.0.0",
+    "@types/react": "18.0.21"
   },
   "overrides": {
     "final-form": {

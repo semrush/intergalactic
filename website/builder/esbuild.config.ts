@@ -42,7 +42,7 @@ export const websiteEsbuildConfig: esbuild.BuildOptions = {
   ],
   define: {
     'process.env.PUBLIC_PATH': JSON.stringify(process.env.PUBLIC_PATH || '/'),
-    'process.env.NODE_EVN': process.env.NODE_EVN,
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
   },
   loader: {
     ['.woff2']: 'file',

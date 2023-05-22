@@ -3,7 +3,7 @@ import Portal from '@semcore/portal';
 import manager from './NoticeBubbleManager';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Animation } from '@semcore/animation';
-import { Box } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import fire from '@semcore/utils/lib/fire';
 import isNode from '@semcore/utils/lib/isNode';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
@@ -11,20 +11,26 @@ import CloseIcon from '@semcore/icon/Close/m';
 import { Timer } from './utils';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
+import { contextThemeEnhance } from '@semcore/utils/lib/ThemeProvider';
 
 import style from './style/notice-bubble.shadow.css';
 
 const Notices = (props) => {
   const { styles, data = [], tag: SView = ViewInfo } = props;
+  const ref = React.useRef();
+  const durationStr = useCssVariable('--intergalactic-duration-popper', '200', ref);
+  const duration = React.useMemo(() => parseInt(durationStr, 10), [durationStr]);
 
   return data.map((notice) => {
     return sstyled(styles)(
       <Animation
         key={notice.uid}
         initialAnimation={notice.initialAnimation}
-        visible={notice.visible === undefined ? true : notice.visible}
-        duration={250}
+        visible={notice.visible ?? true}
+        duration={duration}
         keyframes={[styles['@enter'], styles['@exit']]}
+        ref={ref}
       >
         <SView {...notice} styles={notice.styles || styles} getI18nText={props.getI18nText} />
       </Animation>,
@@ -32,19 +38,10 @@ const Notices = (props) => {
   });
 };
 
-/**
- * ```js
- * import { NoticeBubble } from "@semcore/notice-bubble"
- * ```
- *
- * Container is a portal (React.Portal) in the body, inserted once into any part of the application
- * and subscribes to manager updates(NoticeBubbleManager)
- * */
-
 class NoticeBubbleContainerRoot extends Component {
   static displayName = 'NoticeBubbleContainer';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), contextThemeEnhance()];
   static defaultProps = {
     manager,
     i18n: localizedMessages,
@@ -79,12 +76,12 @@ class NoticeBubbleContainerRoot extends Component {
 
   render() {
     const SNoticeBubble = Root;
-    const { Children, styles, disablePortal, getI18nText } = this.asProps;
+    const { Children, styles, disablePortal, getI18nText, ref } = this.asProps;
     const { notices, warnings } = this.state;
 
     return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
-        <SNoticeBubble render={Box} role="alert" aria-live="assertive">
+        <SNoticeBubble render={Box} role="alert" aria-live="assertive" ref={ref}>
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
           <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
@@ -93,14 +90,7 @@ class NoticeBubbleContainerRoot extends Component {
     );
   }
 }
-/**
- * ```js
- * import { NoticeBubble } from "@semcore/notice-bubble"
- * <NoticeBubble.Info/>
- * ```
- *
- * View component, the appearance of the notice
- * */
+
 class ViewInfo extends Component {
   timer = null;
 
@@ -141,23 +131,25 @@ class ViewInfo extends Component {
   };
 
   render() {
-    const SInfo = Box;
+    const SBubble = Flex;
+    const SDismiss = 'div';
+    const SContent = Flex;
     const SMessage = 'div';
     const SAction = 'div';
-    const SDismiss = 'div';
     const {
-      action: actionNode,
       forwardRef,
       styles,
       onMouseEnter,
       onMouseLeave,
-      children,
       getI18nText,
+      icon,
+      children,
+      action: actionNode,
       ...other
     } = this.props;
 
     return sstyled(styles)(
-      <SInfo
+      <SBubble
         role="alert"
         {...other}
         ref={forwardRef}
@@ -171,9 +163,21 @@ class ViewInfo extends Component {
         >
           <CloseIcon />
         </SDismiss>
-        <SMessage>{children}</SMessage>
-        {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
-      </SInfo>,
+        {isNode(icon) ? (
+          <>
+            {icon}
+            <SContent>
+              <SMessage>{children}</SMessage>
+              {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
+            </SContent>
+          </>
+        ) : (
+          <SContent>
+            <SMessage>{children}</SMessage>
+            {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
+          </SContent>
+        )}
+      </SBubble>,
     );
   }
 }
@@ -183,20 +187,6 @@ class ViewWarning extends ViewInfo {
     type: 'warning',
     duration: 0,
   };
-
-  render() {
-    const SWarning = Box;
-    const SMessage = 'div';
-    const SAction = 'div';
-    const { action: actionNode, children, styles, forwardRef, ...other } = this.props;
-
-    return sstyled(styles)(
-      <SWarning ref={forwardRef} role="alert" {...other}>
-        <SMessage>{children}</SMessage>
-        {isNode(actionNode) ? <SAction>{actionNode}</SAction> : null}
-      </SWarning>,
-    );
-  }
 }
 
 class NoticeBubbleView extends Component {

@@ -1,0 +1,244 @@
+@keyframes collapse-enter {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+@keyframes collapse-exit {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: hidden;
+  }
+}
+SCollapse {
+  transition-property: height;
+}
+
+@keyframes fade-in-out-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-in-out-exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes opacity-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes opacity-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes scale-left-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scaleX(0.9);
+    pointer-events: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px) scaleX(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-right-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) scaleX(0.9);
+    pointer-events: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px) scaleX(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scaleY(0.9);
+    pointer-events: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scaleY(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-bottom-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scaleY(0.9);
+    pointer-events: none;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scaleY(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-left-out {
+  to {
+    opacity: 0;
+    transform: translateX(20px) scaleX(0.9);
+    pointer-events: none;
+  }
+  from {
+    opacity: 1;
+    transform: translateX(0px) scaleX(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-right-out {
+  to {
+    opacity: 0;
+    transform: translateX(-20px) scaleX(0.9);
+    pointer-events: none;
+  }
+  from {
+    opacity: 1;
+    transform: translateX(0px) scaleX(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-top-out {
+  to {
+    opacity: 0;
+    transform: translateY(20px) scaleY(0.9);
+    pointer-events: none;
+  }
+  from {
+    opacity: 1;
+    transform: translateY(0px) scaleY(1);
+    pointer-events: all;
+  }
+}
+@keyframes scale-bottom-out {
+  to {
+    opacity: 0;
+    transform: translateY(-20px) scaleY(0.9);
+    pointer-events: none;
+  }
+  from {
+    opacity: 1;
+    transform: translateY(0px) scaleY(1);
+    pointer-events: all;
+  }
+}
+@keyframes slide-top-in {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-top-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+@keyframes slide-bottom-in {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-bottom-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+}
+@keyframes slide-left-in {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-left-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+@keyframes slide-right-in {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-right-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+@keyframes transform-enter {
+  from {
+    transform: var(--transformStart);
+  }
+  to {
+    transform: var(--transformEnd);
+  }
+}
+@keyframes transform-exit {
+  from {
+    transform: var(--transformEnd);
+  }
+  to {
+    transform: var(--transformStart);
+  }
+}

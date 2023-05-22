@@ -2,6 +2,94 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.50] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.23 ~> 4.3.24], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/select` [3.6.11 ~> 3.6.12], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.4.49] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.22 ~> 4.3.23], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/select` [3.6.10 ~> 3.6.11], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.4.45] - 2023-05-02
+
+### Changed
+
+- Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+## [3.4.44] - 2023-04-28
+
+### Added
+
+- Added ARIA attributes for better accessibility.
+
+## [3.4.40] - 2023-04-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.18 ~> 4.3.19]).
+
+## [3.4.37] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to `Separator` component.
+
+## [3.4.36] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.17 ~> 4.3.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/select` [3.5.10 ~> 3.5.11], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.4.22] - 2023-03-01
+
+## [3.4.21] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.4.20 ~> 3.4.21]).
+
+## [3.4.20] - 2023-02-22
+
+## [3.4.19] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.9 ~> 4.3.10], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/input` [3.5.9 ~> 3.5.10], `@semcore/select` [3.4.18 ~> 3.4.19], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.4.16] - 2023-02-13
+
+## [3.4.15] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [3.4.14] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.6 ~> 4.3.7], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/input` [3.5.6 ~> 3.5.7], `@semcore/select` [3.4.13 ~> 3.4.14], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.4.10] - 2023-01-11
+
+## [3.4.9] - 2023-01-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.4.8 ~> 3.4.9]).
+
+## [3.4.8] - 2023-01-10
+
+## [3.4.7] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.3 ~> 4.3.4], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/input` [3.5.3 ~> 3.5.4], `@semcore/select` [3.4.6 ~> 3.4.7], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.4.0] - 2022-12-14
 
 ### Added

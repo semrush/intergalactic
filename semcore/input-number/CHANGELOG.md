@@ -2,6 +2,50 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.19] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.4.18] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [4.4.16] - 2023-04-28
+
+## [4.4.15] - 2023-04-24
+
+## [4.4.14] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.18 ~> 3.5.20], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [4.4.3] - 2023-02-09
+
+## [4.4.2] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.6 ~> 3.5.7], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [4.4.0] - 2023-01-10
+
+### Added
+
+- Added Korean translation.
+
+## [4.3.3] - 2023-01-10
+
+## [4.3.2] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.3 ~> 3.5.4], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [4.3.0] - 2022-12-14
 
 ### Added

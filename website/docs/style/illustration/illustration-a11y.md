@@ -50,13 +50,13 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | **Image of text**                           | Readable text is sometimes presented within an image. If the image is not a logo, avoid text in images. However, if images of text are used, the text alternative should contain the same words as in the image.                                              |
 | **Complex image such as graph and diagram** | To convey data or detailed information, provide a complete text equivalent of the data or information provided in the image as the text alternative.                                                                                                          |
 | **Group of images**                         | If multiple images convey a single piece of information, the text alternative for one image should convey the information for the entire group.                                                                                                               |
-| **Image map**                               | The text alternative for an image that contains multiple clickable areas should provide an overall context for the set of links. Also, each individually clickable area should have alternative text that describes the purpose or destination of the link.   |
+| **Image map**                               | The text alternative for an image that contains multiple target areas should provide an overall context for the set of links. Also, each individually target area should have alternative text that describes the purpose or destination of the link.   |
 
 @## Resources
 
 - [Images tutorial](https://www.w3.org/WAI/tutorials/images/) demonstrates how to provide appropriate text alternatives based on the purpose of the image.
 - [Role-img-alt](https://www.digitala11y.com/academy/role-img-alt/) has detailed information about the images accessible behavior.
-- [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives core recommendations for the accessible components.
+- [A11y style guide](https://a11y-style-guide.com/style-guide/section-general.html) gives recommendations for the accessible components.
 - [Non-text Content](https://www.w3.org/WAI/WCAG21/quickref/?showtechniques=131#text-alternatives) gives recommendations for the accessible non-text content.
 - [Providing short text alternative for non-text content](https://www.w3.org/WAI/WCAG21/Techniques/general/G94) tips on writing good text alternatives.
 

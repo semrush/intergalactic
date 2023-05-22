@@ -4,7 +4,7 @@ SBadge {
   height: var(--intergalactic-fs-200, 14px);
   line-height: var(--intergalactic-fs-200, 14px);
   padding: 0 var(--intergalactic-spacing-1x, 4px);
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-badge-rounded, 6px);
   white-space: nowrap;
   font-size: var(--intergalactic-fs-50, 10px);
   font-weight: var(--intergalactic-medium, 500);

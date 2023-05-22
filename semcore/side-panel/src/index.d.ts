@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { IPortalProps } from '@semcore/portal';
-import { IFadeInOutProps, ITransformProps } from '@semcore/animation';
+import { IFadeInOutProps, ISlideProps } from '@semcore/animation';
 import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
 import { Box, IBoxProps, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
@@ -36,11 +36,16 @@ export interface ISidePanelProps extends IPortalProps {
    * @default right
    */
   placement?: SidePanelPlacement;
+  /**
+   * Setting `true` disables mechanism that hides document body scrollbar when SidePanel is visible
+   * @default false
+   */
+  disablePreventScroll?: boolean;
 }
 
 export interface ISidePanelOverlayProps extends IFadeInOutProps, IBoxProps {}
 
-export interface ISidePanelPanelProps extends ITransformProps, IBoxProps {
+export interface ISidePanelPanelProps extends ISlideProps, IBoxProps {
   onOutsideClick?: (e?: React.SyntheticEvent) => void;
 }
 

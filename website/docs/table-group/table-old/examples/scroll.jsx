@@ -97,7 +97,12 @@ const Demo = () => (
                 <Checkbox.Value />
               </Checkbox>
             </StyledThSticky>
-            <StyledThSticky width="150" left={50} style={{ boxShadow: '0 0 1px #dee3e5' }}>
+            <StyledThSticky
+              width="150"
+              left={50}
+              valign="middle"
+              style={{ boxShadow: '0 0 1px #dee3e5' }}
+            >
               <Tooltip title="Lorem ipsum">
                 <span>
                   Keyword <Text color="gray60">(1 – 100)</Text>
@@ -108,7 +113,7 @@ const Demo = () => (
             {Object.keys(data[0])
               .slice(1)
               .map((name) => (
-                <Table.CellHead width="200">
+                <Table.CellHead width="200" valign="middle">
                   <Tooltip title="Lorem ipsum">
                     <span>
                       {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}

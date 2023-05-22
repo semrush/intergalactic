@@ -9,6 +9,7 @@ import Tooltip from '@semcore/tooltip';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
 import pick from '@semcore/utils/lib/pick';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/feedback-form.shadow.css';
 
@@ -47,13 +48,18 @@ class FeedbackForm extends Component {
 
   render() {
     const SFeedbackForm = Box;
-    const { Children, styles, loading, forwardRef, ...other } = this.asProps;
+    const { Children, styles, forwardRef, loading, background, theme, ...other } = this.asProps;
 
     return (
       <Form decorators={[this.focusDecorator]} {...other}>
         {(api) =>
           sstyled(styles)(
-            <SpinContainer size="xl" loading={loading === undefined ? api.submitting : loading}>
+            <SpinContainer
+              background={background}
+              theme={theme}
+              size="xl"
+              loading={loading === undefined ? api.submitting : loading}
+            >
               <SFeedbackForm
                 tag="form"
                 noValidate
@@ -93,9 +99,11 @@ const TooltipProps = [
   'onFirstUpdate',
 ];
 
-function Item({ Children, tag, ...props }) {
+function Item({ Children, tag, uid, ...props }) {
   const tooltipProps = pick(props, TooltipProps);
   const ItemRoot = Root;
+
+  const lastErrorRef = React.useRef(undefined);
 
   return (
     <Field {...props}>
@@ -105,13 +113,13 @@ function Item({ Children, tag, ...props }) {
           ...input,
           state: invalid ? 'invalid' : 'normal',
           'aria-invalid': invalid ? true : false,
-          'aria-errormessage': meta.error,
+          'aria-errormessage': uid,
         };
+        if (meta?.error) lastErrorRef.current = meta.error;
+
         return (
           <Tooltip
-            title={meta.error}
             visible={invalid && meta.active}
-            inline={false}
             theme="warning"
             placement="left"
             flip={{
@@ -119,19 +127,23 @@ function Item({ Children, tag, ...props }) {
             }}
             {...tooltipProps}
           >
-            {tag && <ItemRoot render={tag} {...inputProps} />}
-            {typeof Children.origin === 'function' &&
-              Children.origin({
-                input: inputProps,
-                meta,
-                ...other,
-              })}
+            <Tooltip.Trigger inline={false}>
+              {tag && <ItemRoot render={tag} {...inputProps} />}
+              {typeof Children.origin === 'function' &&
+                Children.origin({
+                  input: inputProps,
+                  meta,
+                  ...other,
+                })}
+            </Tooltip.Trigger>
+            <Tooltip.Popper id={uid}>{meta.error ?? lastErrorRef.current}</Tooltip.Popper>
           </Tooltip>
         );
       }}
     </Field>
   );
 }
+Item.enhance = [uniqueIDEnhancement()];
 
 function Success(props) {
   const { Children, styles } = props;

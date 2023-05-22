@@ -29,6 +29,15 @@ function getEmptyValue(multiselect) {
   return multiselect ? [] : null;
 }
 
+const scrollToNode = (node) => {
+  if (!node) return;
+  if (!node.scrollIntoView) return;
+  node.scrollIntoView({
+    block: 'nearest',
+    inline: 'nearest',
+  });
+};
+
 class RootSelect extends Component {
   static displayName = 'Select';
 
@@ -40,11 +49,14 @@ class RootSelect extends Component {
     size: 'm',
     defaultValue: getEmptyValue(props.multiselect),
     defaultVisible: false,
+    scrollToSelected: true,
     i18n: localizedMessages,
     locale: 'en',
   });
 
   firstSelectedOptionRef = React.createRef();
+
+  triggerRef = React.createRef();
 
   isScrolledToFirstOption = false;
 
@@ -74,10 +86,10 @@ class RootSelect extends Component {
 
     return {
       id: `igc-${uid}-trigger`,
-      'aria-controls': visible ? `igc-${uid}-list` : undefined,
-      'aria-flowto': visible && !disablePortal ? `igc-${uid}-list` : undefined,
-      'aria-label': visible && !disablePortal ? getI18nText('triggerHint') : undefined,
+      'aria-controls': `igc-${uid}-list`,
+      focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-haspopup': 'listbox',
+      'aria-expanded': visible ? 'true' : 'false',
       empty: isEmptyValue(value),
       size,
       value,
@@ -91,28 +103,29 @@ class RootSelect extends Component {
       onClear: this.handlerClear,
       children: this.renderChildrenTrigger(value, options),
       getI18nText,
+      ref: this.triggerRef,
     };
   }
 
   getListProps() {
     const { multiselect, uid } = this.asProps;
+
     return {
       'aria-multiselectable': multiselect ? 'true' : undefined,
       id: `igc-${uid}-list`,
       role: 'listbox',
       'aria-label': 'List of options',
-      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 
   getMenuProps() {
-    const { uid, getI18nText } = this.asProps;
+    const { uid, getI18nText, multiselect } = this.asProps;
 
     return {
+      'aria-multiselectable': multiselect ? 'true' : undefined,
       id: `igc-${uid}-list`,
       role: 'listbox',
       'aria-label': getI18nText('optionsList'),
-      'aria-flowto': `igc-${uid}-trigger`,
     };
   }
 
@@ -122,9 +135,8 @@ class RootSelect extends Component {
     const other = {};
     this._optionSelected = selected;
 
-    if (selected && !this.isScrolledToFirstOption) {
-      other.ref = this.firstSelectedOptionRef;
-      this.isScrolledToFirstOption = true;
+    if (selected) {
+      other.ref = this.handleOptionNode;
     }
 
     return {
@@ -136,6 +148,21 @@ class RootSelect extends Component {
       ...other,
     };
   }
+
+  lastHandleOptionNodeCall = -1;
+  handleOptionNode = (node) => {
+    if (!this.asProps.scrollToSelected) return;
+    if (Date.now() - this.lastHandleOptionNodeCall < 30) return;
+    this.lastHandleOptionNodeCall = Date.now();
+    setTimeout(() => {
+      // in most cases 10ms timeout works perfectly and scrolls before user can see it
+      if (this.asProps.visible) scrollToNode(node);
+    }, 10);
+    setTimeout(() => {
+      // in rare cases 10ms timeout it not enough so 30ms timeout saves the day
+      if (this.asProps.visible) scrollToNode(node);
+    }, 30);
+  };
 
   getOptionCheckboxProps(props) {
     const { size } = this.asProps;
@@ -184,7 +211,12 @@ class RootSelect extends Component {
       }
     }
     this.handlers.value(newValue, e);
-    if (!multiselect) this.handlers.visible(false);
+    if (!multiselect) {
+      this.handlers.visible(false);
+      setTimeout(() => {
+        // this.triggerRef.current?.focus();
+      }, 0);
+    }
   };
 
   handlerClear = (e) => {
@@ -193,35 +225,6 @@ class RootSelect extends Component {
     this.handlers.value(emptyValue, e);
     this.handlers.visible(false);
   };
-
-  scrollToSelectedOption() {
-    setTimeout(() => {
-      this.firstSelectedOptionRef.current?.scrollIntoView({
-        block: 'nearest',
-        inline: 'nearest',
-      });
-    }, 0);
-  }
-
-  componentDidMount() {
-    const { visible } = this.asProps;
-    if (visible) {
-      this.scrollToSelectedOption();
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { visible } = this.asProps;
-    if (visible) {
-      this.isScrolledToFirstOption = false;
-
-      if (prevProps.visible === undefined) {
-        if (prevState.visible !== visible) this.scrollToSelectedOption();
-      } else {
-        if (prevProps.visible !== visible) this.scrollToSelectedOption();
-      }
-    }
-  }
 
   render() {
     const { Children, options, multiselect, value, ...other } = this.asProps;
@@ -239,11 +242,16 @@ class RootSelect extends Component {
     if (options) {
       return (
         <Root render={DropdownMenu}>
-          <Select.Trigger {...other} tanIndex={-1} role="button" />
+          <Select.Trigger {...other} role="combobox" />
           <Select.Menu>
-            {options.map((option, i) => {
+            {options.map((option) => {
               return (
-                <Select.Option key={i} id={option.value} aria-selected={value === i} {...option}>
+                <Select.Option
+                  key={option.value}
+                  id={option.value}
+                  aria-selected={value === option.value}
+                  {...option}
+                >
                   {multiselect && <Select.Option.Checkbox />}
                   {option.children}
                 </Select.Option>
@@ -271,15 +279,7 @@ const isInputTriggerTag = (tag) => {
   return false;
 };
 
-function Trigger({
-  Children,
-  name,
-  uid,
-  value,
-  $hiddenRef,
-  tag: Tag = ButtonTrigger,
-  getI18nText,
-}) {
+function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger, getI18nText }) {
   const hasInputTrigger = isInputTriggerTag(Tag);
 
   return (
@@ -289,14 +289,12 @@ function Trigger({
       placeholder={getI18nText('selectPlaceholder')}
       aria-autocomplete={(hasInputTrigger && 'list') || undefined}
       role={(hasInputTrigger && 'combobox') || undefined}
-      aria-activedescendant={
-        (hasInputTrigger && value && `igc-${uid}-option-${value}`) || undefined
-      }
     >
       {addonTextChildren(
         Children,
         Tag.Text || ButtonTrigger.Text,
         Tag.Addon || ButtonTrigger.Addon,
+        true,
       )}
       {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
     </Root>

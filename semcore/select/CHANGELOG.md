@@ -2,6 +2,115 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.12] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.18 ~> 3.5.19], `@semcore/checkbox` [6.4.15 ~> 6.4.16], `@semcore/divider` [3.2.22 ~> 3.2.23], `@semcore/dropdown-menu` [3.6.34 ~> 3.6.35], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11], `@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.6.11] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.17 ~> 3.5.18], `@semcore/checkbox` [6.4.14 ~> 6.4.15], `@semcore/divider` [3.2.21 ~> 3.2.22], `@semcore/dropdown-menu` [3.6.33 ~> 3.6.34], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/icon` [3.14.9 ~> 3.14.10], `@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.6.6] - 2023-05-02
+
+### Changed
+
+- Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+## [3.6.5] - 2023-04-26
+
+### Fixed
+
+- Revert return focus to trigger when option is selected.
+
+## [3.6.2] - 2023-04-17
+
+### Added
+
+- Added `aria-multiselectable` attribute to `Menu` component for better accessibility.
+
+## [3.6.1] - 2023-04-04
+
+### Added
+
+- Return focus to trigger when option is selected.
+
+## [3.5.13] - 2023-04-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/checkbox` [6.4.9 ~> 6.4.10], `@semcore/dropdown-menu` [3.6.25 ~> 3.6.26]).
+
+## [3.5.6] - 2023-03-23
+
+### Fixed
+
+- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+- `aria-activedescendant` was applied to selected option but not on focused one.
+- Option keys are now based on option value.
+- Removed unexpected tabIndex=-1.
+
+## [3.5.5] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.8 ~> 3.5.9], `@semcore/checkbox` [6.4.3 ~> 6.4.4], `@semcore/divider` [3.2.12 ~> 3.2.13], `@semcore/dropdown-menu` [3.6.17 ~> 3.6.18], `@semcore/flex-box` [4.7.12 ~> 4.7.13], `@semcore/icon` [3.14.0 ~> 3.14.1], `@semcore/input` [3.5.12 ~> 3.5.13], `@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [3.5.0] - 2023-03-03
+
+### Fixed
+
+- Fixed automatic scrolling to selected option on popper open wasn't working.
+
+### Added
+
+- Added prop `scrollToSelected` to control automatic scroll to selected option on popper open.
+
+## [3.4.24] - 2023-03-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.5.4 ~> 3.5.5], `@semcore/icon` [3.13.1 ~> 3.13.2]).
+
+## [3.4.16] - 2023-02-13
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+
+## [3.4.14] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.4.8 ~> 3.4.9], `@semcore/checkbox` [6.3.6 ~> 6.3.7], `@semcore/divider` [3.2.6 ~> 3.2.7], `@semcore/dropdown-menu` [3.6.8 ~> 3.6.9], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/input` [3.5.6 ~> 3.5.7], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.4.10] - 2023-01-10
+
+### Fixed
+
+- Fixed typo in property `tabIndex`.
+
+## [3.4.9] - 2023-01-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [3.6.5 ~> 3.6.6]).
+
+## [3.4.2] - 2022-12-21
+
+### Fixed
+
+- Fixed display of placeholder with empty value.
+
+## [3.4.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.4.0 ~> 3.4.1], `@semcore/checkbox` [6.3.2 ~> 6.3.3], `@semcore/divider` [3.2.2 ~> 3.2.3], `@semcore/dropdown-menu` [3.6.0 ~> 3.6.1], `@semcore/flex-box` [4.7.2 ~> 4.7.3], `@semcore/icon` [3.4.2 ~> 3.4.3], `@semcore/input` [3.5.2 ~> 3.5.3], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [3.4.0] - 2022-12-14
 
 ### Added

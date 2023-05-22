@@ -25,10 +25,10 @@ const steps = [{ title: 'Personal' }, { title: 'Keywords' }, { title: 'Import so
 
 export default function () {
   const [step, setStep] = useState(1);
-  const [visible, changeVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [value, setValue] = useState('');
-  const handleOpen = () => changeVisible(true);
-  const handleClose = () => changeVisible(false);
+  const handleOpen = () => setVisible(true);
+  const handleClose = () => setVisible(false);
 
   return (
     <>

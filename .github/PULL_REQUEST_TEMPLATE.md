@@ -1,9 +1,5 @@
 <!--- Provide a general summary of your changes in the Title above -->
 
-## Description
-
-<!--- Describe your changes in detail -->
-
 ## Motivation and Context
 
 <!--- Why is this change required? What problem does it solve? -->
@@ -12,8 +8,10 @@
 ## How has this been tested?
 
 <!--- Please describe in detail how you tested your changes. -->
-<!--- Include details of your testing environment, tests ran to see how -->
-<!--- your change affects other areas of the code, etc. -->
+<!--- For example: -->
+<!--- I have added unit tests -->
+<!--- I have added Voice Over tests -->
+<!--- Code cannot be tested automatically so I have tested it only manually -->
 
 ## Screenshots (if appropriate):
 
@@ -21,9 +19,10 @@
 
 <!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply: -->
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+- [ ] Bug fix (non-breaking change which fixes an issue).
+- [ ] New feature (non-breaking change which adds functionality).
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected).
+- [ ] Nice improve.
 
 ## Checklist:
 
@@ -31,7 +30,7 @@
 <!--- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
 
 - [ ] My code follows the code style of this project.
-- [ ] My change requires a change to the documentation.
-- [ ] I have updated the documentation accordingly.
-
-# If appropriate sections above are not fulfilled properly do not even review my pull request and never approve it! Only after fulfilling sections above I will also remove this note.
+- [ ] I have updated the documentation accordingly or it's not required.
+- [ ] Unit tests are not broken.
+- [ ] I have added changelog note to corresponding `CHANGELOG.md` file with planned publish date.
+- [ ] I have added new unit tests on added of fixed functionality.

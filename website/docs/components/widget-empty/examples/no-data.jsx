@@ -153,17 +153,10 @@ export default () => {
         </Card>
         <Card my={5} pt={4}>
           <Text size={300} bold>
-            Congrats
+            Suggestions
           </Text>
           <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="congrats" description="Wow! You are doing great! Nothing to fix here." />
-        </Card>
-        <Card my={5} pt={4}>
-          <Text size={300} bold>
-            Good
-          </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="good" description="Wow! You are doing great!" />
+          <NoData type="suggestions" />
         </Card>
         <Card my={5} pt={4}>
           <Text size={300} bold>
@@ -171,34 +164,6 @@ export default () => {
           </Text>
           <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <NoData type="duplicates" />
-        </Card>
-        <Card my={5} pt={4}>
-          <Text size={300} bold>
-            Nexttime
-          </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="nexttime" />
-        </Card>
-        <Card my={5} pt={4}>
-          <Text size={300} bold>
-            Nothing found
-          </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="nothing-found" description="Try changing your filters." />
-        </Card>
-        <Card my={5} pt={4}>
-          <Text size={300} bold>
-            Processing
-          </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="processing" />
-        </Card>
-        <Card my={5} pt={4}>
-          <Text size={300} bold>
-            Suggestions
-          </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="suggestions" />
         </Card>
         <Card my={5} pt={4}>
           <Text size={300} bold>

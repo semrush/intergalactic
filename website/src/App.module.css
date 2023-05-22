@@ -4,30 +4,15 @@
   min-height: 100vh;
   width: 100%;
   box-sizing: border-box;
-}
-
-.noticeTheme {
-  position: fixed;
-  top: 0;
-  padding: 8px;
-  width: 100%;
-  background-color: #5925ab;
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-  line-height: 24px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  z-index: 999;
+  background-color: var(--intergalactic-bg-primary-neutral);
 }
 
 .skipToContent {
-  background: #ffffff;
-  top: 12px;
-  left: 12px;
-  padding: 16px;
-  color: var(--blue-600);
+  background: var(--intergalactic-bg-tertiary-neutral);
+  top: var(--intergalactic-spacing-3x);
+  left: var(--intergalactic-spacing-3x);
+  padding: var(--intergalactic-spacing-4x);
+  color: var(--intergalactic-text-link-hover-active);
   position: absolute;
   transition: transform 0.3s;
   opacity: 0;

@@ -2,6 +2,84 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.36] - 2023-05-11
+
+### Changed
+
+- Improved next and prev buttons aria labels.
+
+## [3.5.35] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.22 ~> 4.3.23], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/icon` [3.14.9 ~> 3.14.10], `@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/link` [4.3.25 ~> 4.3.26], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.5.33] - 2023-04-28
+
+## [3.5.32] - 2023-04-26
+
+## [3.5.31] - 2023-04-24
+
+## [3.5.30] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.19 ~> 4.3.20], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7], `@semcore/input` [3.5.18 ~> 3.5.20], `@semcore/link` [4.3.21 ~> 4.3.22], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.5.29] - 2023-04-11
+
+### Fixed
+
+- Fixed "confirm" icon keyboard navigation.
+
+## [3.5.28] - 2023-03-28
+
+### Added
+
+- Added design tokens to `TotalPages` component.
+
+## [3.5.27] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.17 ~> 4.3.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/icon` [3.14.5 ~> 3.14.6], `@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/link` [4.3.20 ~> 4.3.21], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.5.17] - 2023-03-01
+
+## [3.5.16] - 2023-02-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/icon` [3.12.0 ~> 3.13.0]).
+
+## [3.5.15] - 2023-02-22
+
+## [3.5.14] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.9 ~> 4.3.10], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/input` [3.5.9 ~> 3.5.10], `@semcore/link` [4.3.12 ~> 4.3.13], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.5.11] - 2023-02-13
+
+## [3.5.10] - 2023-02-09
+
+## [3.5.9] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.6 ~> 4.3.7], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/input` [3.5.6 ~> 3.5.7], `@semcore/link` [4.3.9 ~> 4.3.10], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.5.6] - 2023-01-11
+
+## [3.5.5] - 2023-01-10
+
+## [3.5.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.3.3 ~> 4.3.4], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/icon` [3.5.0 ~> 3.5.1], `@semcore/input` [3.5.3 ~> 3.5.4], `@semcore/link` [4.3.6 ~> 4.3.7], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.5.0] - 2022-12-14
 
 ### Added

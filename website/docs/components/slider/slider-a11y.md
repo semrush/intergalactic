@@ -10,8 +10,8 @@ a11y: AA
 
 | Key                   | Function                                                |
 | --------------------- | ------------------------------------------------------- |
-| `Right`, `Up` arrows  | Increases slider value one step.                        |
-| `Left`, `Down` arrows | Decreases slider value one step.                        |
+| `Right Arrow`, `Up Arrow`   | Increases slider value one step.                        |
+| `Left Arrow`, `Down Arrow` | Decreases slider value one step.                        |
 | `Home`                | Set the slider to the first allowed value in its range. |
 | `End`                 | Set the slider to the last allowed value in its range.  |
 

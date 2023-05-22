@@ -2,6 +2,80 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.15] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/neighbor-location` [3.1.28 ~> 3.1.29], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.4.14] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/neighbor-location` [3.1.27 ~> 3.1.28], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [4.4.12] - 2023-04-24
+
+## [4.4.11] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/neighbor-location` [3.1.24 ~> 3.1.25], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [4.4.10] - 2023-03-29
+
+### Fixed
+
+- Fixed that switch with single label was turning label into secondary text color.
+
+## [4.4.9] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/neighbor-location` [3.1.23 ~> 3.1.24], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [4.4.0] - 2023-02-20
+
+### Changed
+
+- Animation duration now might be controlled with design tokens.
+
+### Added
+
+- Little animation of switch active state.
+
+## [4.3.10] - 2023-02-17
+
+### Fixed
+
+- Fixed double click call.
+
+## [4.3.9] - 2023-02-09
+
+### Fixed
+
+- Text on left and right sides of the Switch are using with "pointer" cursor when component is not disabled.
+
+## [4.3.8] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-extra-large` -> `--intergalactic-switch-rounded`).
+
+## [4.3.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/neighbor-location` [3.1.12 ~> 3.1.13], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [4.3.5] - 2023-01-10
+
+## [4.3.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/neighbor-location` [3.1.9 ~> 3.1.10], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [4.3.1] - 2022-12-13
 
 ### Changed

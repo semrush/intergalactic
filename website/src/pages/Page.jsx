@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styles from './Page.module.css';
 import Helmet from 'react-helmet';
 import { scroller } from 'react-scroll';
@@ -27,7 +27,7 @@ const getHeadingOptions = (headings) => {
     value: option.id,
     label: option.html,
     children: (
-      <Text mx={5} color={'#171a22'}>
+      <Text mx={5} color="var(--intergalactic-text-primary)">
         {option.html}
       </Text>
     ),
@@ -105,12 +105,14 @@ const PageView = ({ route, page }) => {
               version={rootRoute.metadata?.packageJson?.version}
               sourcePath={page.sourcePath}
               changelogUrl={changelogRoute?.route}
+              deprecated={!!rootRoute.metadata?.deprecated}
+              route={rootRoute.route}
             />
-            <Docs tokens={page.tokens} tabs={tabs} route={page.route} />
+            <Docs tokens={page.tokens} tabs={tabs} route={page.route} pageTitle={rootRoute.title} />
           </div>
         </Col>
         <Col md={0} span={2}>
-          <SideBarHeading headings={page.headings} />
+          <SideBarHeading headings={page.headings} route={rootRoute.route} />
         </Col>
       </Row>
     </>

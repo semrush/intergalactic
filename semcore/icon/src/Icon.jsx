@@ -19,7 +19,6 @@ function Icon(props, ref) {
       width: 16,
       height: 16,
       viewBox: '0 0 16 16',
-      'aria-hidden': true,
       focusable: props.interactive,
       ...props,
     },
@@ -65,12 +64,12 @@ function Icon(props, ref) {
 
   return (
     <SIcon
+      role={interactive ? 'button' : undefined}
+      aria-hidden={interactive ? undefined : 'true'}
       {...propsForElement(propsWithKeyboardEnhance)}
       style={Object.assign({}, style, propsWithKeyboardEnhance.style, props.style)}
       className={cn(className, propsWithKeyboardEnhance.className, props.className) || undefined}
       onKeyDown={onKeyDown}
-      role={interactive ? 'button' : undefined}
-      aria-hidden={interactive ? undefined : 'true'}
       ref={forkedRef}
     />
   );

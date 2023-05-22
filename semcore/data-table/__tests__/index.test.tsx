@@ -9,7 +9,6 @@ import SpinContainer from '@semcore/spin-container';
 import Accordion from '@semcore/accordion';
 import { Box, Flex } from '@semcore/flex-box';
 import Spin from '@semcore/spin';
-import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import { Text } from '@semcore/typography';
 import DropdownMenu from '@semcore/dropdown-menu';
@@ -18,7 +17,7 @@ import resolveColor from '@semcore/utils/lib/color';
 
 import DataTable, { ROW_GROUP } from '../src';
 
-const { render, cleanup, axe } = testing;
+const { render, cleanup, axe, act } = testing;
 
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 
@@ -182,7 +181,7 @@ describe('DataTable', () => {
         <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={jest.fn()}>
           <DataTable.Head>
             <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" sortable />
+            <DataTable.Column name="kd" children="KD,%" sortable id="row" />
             <DataTable.Column name="cpc" children="CPC" sortable />
             <DataTable.Column name="vol" children="Vol." sortable />
           </DataTable.Head>
@@ -190,7 +189,14 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+
+    expect(
+      await snapshot(component, {
+        actions: {
+          hover: '#row',
+        },
+      }),
+    ).toMatchImageSnapshot();
   });
 
   /** Currently has no difference from DataTable without Sticky */
@@ -352,21 +358,15 @@ describe('DataTable', () => {
             <DataTable.Cell name="keyword">
               {(props, row) => {
                 return {
-                  children: <Link>{row[props.name]}</Link>,
+                  children: <>[{row[props.name]}]</>,
                 };
               }}
             </DataTable.Cell>
             <DataTable.Cell name="keyword">
-              {(props, row, index) => {
+              {() => {
                 return {
                   style: {
-                    cursor: 'pointer',
-                  },
-                  onClick: () => {
-                    alert(`Click row
-                  props: ${JSON.stringify(Object.keys(props), null, '  ')};
-                  row: ${JSON.stringify(row, null, '  ')};
-                  index: ${index};`);
+                    fontWeight: 'bold',
                   },
                 };
               }}
@@ -707,6 +707,58 @@ describe('DataTable', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
+  test('Row and Column merging', async () => {
+    const data = [
+      {
+        keyword: 'ebay buy',
+        [ROW_GROUP]: [
+          {
+            ['kd/cpc']: '77.8',
+            vol: '32,500,000',
+          },
+          {
+            ['kd/cpc']: '-',
+            vol: 'n/a',
+          },
+          {
+            kd: '75.89',
+            cpc: '$0',
+            vol: '21,644,290',
+          },
+        ],
+      },
+      {
+        keyword: 'www.ebay.com',
+        [ROW_GROUP]: [
+          {
+            ['kd/cpc']: '11.2',
+            vol: '65,457,920',
+          },
+          {
+            kd: '10',
+            cpc: '$0.65',
+            vol: '47,354,640',
+          },
+        ],
+      },
+    ];
+
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head>
+            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="kd" children="KD,%" />
+            <DataTable.Column name="cpc" children="CPC" />
+            <DataTable.Column name="vol" children="Vol." />
+          </DataTable.Head>
+          <DataTable.Body />
+        </DataTable>
+      </div>
+    );
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('Secondary table', async () => {
     const component = (
       <div style={{ width: 800 }}>
@@ -769,17 +821,17 @@ describe('DataTable', () => {
   });
 
   test('a11y', async () => {
+    jest.useFakeTimers();
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
         <DataTable.Head>
-          <DataTable.Column>
-            keyword
-            <DataTable.Column name="keyword" children="KD,%" />
-          </DataTable.Column>
+          <DataTable.Column name="keyword" children="KD,%" />
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>,
     );
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

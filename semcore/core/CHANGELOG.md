@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.14.11] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [1.14.10] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [1.14.8] - 2023-04-24
+
+## [1.14.7] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [1.14.0] - 2023-03-16
+
+### Changed
+
+- Changed logic of merging component styles and context styles due to losing context styles before.
+
+## [1.13.19] - 2023-03-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.2 ~> 3.47.3]).
+
+## [1.13.15] - 2023-02-09
+
+## [1.13.14] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [1.13.12] - 2023-01-10
+
+## [1.13.11] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [1.13.8] - 2022-12-13
 
 ### Changed

@@ -14,15 +14,16 @@ tabName: Design
 
 - Container with content (`ScrollArea.Container`).
 - Scroll indicator (`ScrollArea.Bar`).
+- Slider (`ScrollArea.Bar.Slider`).
 
-![scheme](static/scroll-scheme.png)
+![](static/scroll-scheme.png)
 
 ### Styles
 
-| Element                 | Styles                           |
-| ----------------------- | -------------------------------- |
-| `ScrollArea.Bar`        | `background: transparent;`       |
-| `ScrollArea.Bar.Slider` | `background: rgba(0, 0, 0, .3);` |
+| Element                 | Styles                                      |
+| ----------------------- | ------------------------------------------- |
+| `ScrollArea.Bar`        | `background: transparent`                  |
+| `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background)` |
 
 @## Interaction
 

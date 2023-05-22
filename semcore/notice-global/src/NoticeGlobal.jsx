@@ -7,6 +7,7 @@ import { FadeInOut } from '@semcore/animation';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 
 import style from './style/notice-global.shadow.css';
 
@@ -17,10 +18,17 @@ function isCustomTheme(theme) {
 class NoticeGlobalRoot extends Component {
   static displayName = 'NoticeGlobal';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [
+    i18nEnhance(localizedMessages),
+    cssVariableEnhance({
+      variable: '--intergalactic-duration-popper',
+      fallback: '200',
+      map: Number.parseInt,
+      prop: 'duration',
+    }),
+  ];
   static defaultProps = {
     theme: 'neutral',
-    duration: 250,
     i18n: localizedMessages,
     locale: 'en',
   };

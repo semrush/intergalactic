@@ -1,5 +1,5 @@
 import React from 'react';
-import { CProps, ReturnEl } from '@semcore/core';
+import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
 import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
 
 interface ISliderContext {
@@ -10,11 +10,11 @@ interface ISliderHandlers {
   value: (index: string | number) => void;
 }
 
-export type SliderOption<OptionValue extends stirng | number> = {
+export type SliderOption<OptionValue extends string | number> = {
   value: OptionValue;
   label: React.ReactNode;
 };
-export interface ISliderProps<Value extends string | number> extends IBoxProps {
+export interface ISliderProps<Value extends string | number = string | number> extends IBoxProps {
   /** Numeric value
    */
   value?: Value;
@@ -43,7 +43,7 @@ export interface ISliderProps<Value extends string | number> extends IBoxProps {
    */
   disabled?: boolean;
 
-  options?: SliderOption[];
+  options?: SliderOption<Value>[];
 }
 
 interface ISliderOptionsProps extends IFlexProps {}

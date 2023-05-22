@@ -2,10 +2,15 @@ const { createTransformer } = require('babel-jest');
 
 module.exports = createTransformer({
   presets: [
-    '@babel/preset-env',
     [
       '@semcore/babel-preset-ui',
       {
+        env: {
+          modules: 'commonjs'
+        },
+        root: {
+          coverage: true
+        },
         cssStyle: {
           extract: null,
         },

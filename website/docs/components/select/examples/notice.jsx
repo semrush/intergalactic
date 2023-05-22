@@ -26,7 +26,7 @@ export default () => (
           ))}
         </Select.List>
         <Notice style={noticeStyle}>
-          <Notice.Content>Woooop, it's simple magic! 🧙</Notice.Content>
+          <Notice.Content aria-live="polite">Woooop, it's simple magic! 🧙</Notice.Content>
         </Notice>
       </Select.Popper>
     </Select>

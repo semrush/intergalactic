@@ -2,6 +2,112 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.9] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [1.10.8] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [1.10.7] - 2023-05-03
+
+### Changed
+
+- During SSR all `useLayoutEffect` are called as `useEffect` to resolve React SSR warnings.
+
+## [1.10.6] - 2023-05-02
+
+### Fixed
+
+- Fixed collapse animations blinking.
+
+## [1.10.5] - 2023-04-25
+
+### Fixed
+
+- Fixed collapse animations (e.g. used in `<Accordion />`) in Safari.
+
+## [1.10.3] - 2023-04-24
+
+## [1.10.2] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [1.10.1] - 2023-04-03
+
+### Fixed
+
+- Nested animation might take initial keyframe from animated parent component in some cases.
+
+## [1.10.0] - 2023-03-27
+
+### Added
+
+- Animation context that allows children components react to parent animation execution.
+
+## [1.9.9] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.0 ~> 3.49.1]).
+
+## [1.9.8] - 2023-03-24
+
+### Added
+
+- Added `pointer-events` properties to scale group `keyframes` to avoid problems with overlapping elements and changing the cursor.
+
+## [1.9.7] - 2023-03-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1]).
+
+## [1.9.2] - 2023-02-28
+
+### Fixed
+
+- Fixed `ISlideProps` interface structure.
+
+## [1.9.1] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [1.9.0] - 2023-02-20
+
+### Added
+
+- Added prop `animationsDisabled` to disable components' animation.
+- Added prop `timingFunction` to control animation easing.
+- Added `<Scale />` and `<Slide />` animation components.
+
+## [1.8.11] - 2023-02-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [1.8.8] - 2023-01-11
+
+### Fixed
+
+- Fixed flickering in `Collapse` animation.
+
+## [1.8.6] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [1.8.3] - 2022-12-13
 
 ### Changed

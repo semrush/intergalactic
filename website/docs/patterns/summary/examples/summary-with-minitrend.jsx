@@ -55,7 +55,7 @@ const Demo = () => {
     <Flex flexWrap className="container">
       <BoxBlock w={160} mb={4} mr={4}>
         <Tooltip title="Potential Organic Traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Potential Organic Traffic
           </Title>
         </Tooltip>
@@ -63,7 +63,15 @@ const Demo = () => {
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="gray-800" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="gray-800"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             42
           </Text>
           <Text size={100} color="green-500" tag="p">
@@ -73,7 +81,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
         <Tooltip title="CPC" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             CPC
           </Title>
         </Tooltip>
@@ -81,7 +89,15 @@ const Demo = () => {
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="blue-400"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             27K
           </Text>
           <Text size={100} color="red-500" tag="p">
@@ -91,7 +107,7 @@ const Demo = () => {
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
         <Tooltip title="Competition" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Competition
           </Title>
         </Tooltip>
@@ -99,14 +115,22 @@ const Demo = () => {
           last 30 days
         </Text>
         <Flex alignItems="baseline">
-          <Text size={500} color="gray-300" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="gray-300"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             n/a
           </Text>
         </Flex>
       </BoxBlock>
       <BoxBlock w={160} mb={4} flex="1 1 100px">
         <Tooltip title="Non-branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap>
+          <Title size={200} tag="p" noWrap tabIndex={0}>
             Non-branded traffic
           </Title>
         </Tooltip>
@@ -114,14 +138,22 @@ const Demo = () => {
           all time
         </Text>
         <Flex alignItems="baseline" flexWrap>
-          <Text size={500} color="blue-400" fontWeight="bold" mr={2} tag="a">
+          <Text
+            size={500}
+            color="blue-400"
+            fontWeight="bold"
+            mr={2}
+            tag="a"
+            href="https://semrush.com"
+            target="_blank"
+          >
             15%
           </Text>
           <Text size={100} color="green-500" mr={2} tag="p">
             ↑+13
           </Text>
           <Tooltip title="Jun 10 14.9%">
-            <Title>
+            <Title tabIndex={0}>
               <img src={chart} alt="chart" />
             </Title>
           </Tooltip>

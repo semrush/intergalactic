@@ -6,7 +6,7 @@ tabName: Example
 
 The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and does not use native tables.
 
-@## A simple use example
+@## Simple usage example
 
 To build a table, we must provide columns with titles `<DataTable.Column name={name}/>` and data `data={data}`.
 
@@ -46,9 +46,8 @@ If you can sort by column, then:
 
 1. Specify the `sortable` property on the column;
 2. Subscribe to `onSortChange`;
-3. Pass the so`rt property to the table itself.
-
-> In the example below, when you click on the sort icon, only the visual part changes, and the data itself is not sorted.
+3. Pass the `sort` property to the table.
+4. Sort data, provided to `data` property.
 
 @example sort
 
@@ -115,6 +114,12 @@ When adding custom components to `<DataTable.Body/>` they will be inserted at th
 > To block fixed columns , you need to specify `z-index=1` to block scrolling, you need to specify `z-index=2`.
 
 @example add-body
+
+@## Custom footer cells
+
+To reuse size of columns, use css variables `var(--<%column-name%>_width)`.
+
+@example summary
 
 @## Accordion in the table
 
@@ -187,6 +192,24 @@ You can use secondary table for compact displaying small amount of data inside w
 @## Export in image
 
 @example export-to-pdf
+
+@## Compact
+
+To make the table with smaller indents you need to add `compact` property.
+
+@example compact
+
+@## Borders
+
+To add a border to a column, you need to pass `vBorders` properties to that column.
+
+@example borders
+
+@## Сolumn expand
+
+The active column will expand if there is not enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
+
+@example expanding-column
 
 @page data-table-api
 @page data-table-changelog

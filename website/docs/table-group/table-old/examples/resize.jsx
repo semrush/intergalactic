@@ -52,20 +52,20 @@ const ResizeableTitle = (props) => {
       onResize={onResize}
       draggableOpts={{ enableUserSelectHack: false }}
     >
-      <CustomCellHead {...restProps} width={width} />
+      <CustomCellHead {...restProps} width={width} borderRight />
     </Resizable>
   );
 };
 
 const DemoResize = () => {
-  const [columns, updateColumns] = useState([...new Array(11)].map((_, ind) => ({ width: 90 })));
+  const [columns, setColumns] = useState([...new Array(11)].map((_, ind) => ({ width: 90 })));
 
   const handleResize =
     (index) =>
     (e, { size }) => {
       const nextColumns = [...columns];
       nextColumns[index] = { width: size.width };
-      updateColumns(nextColumns);
+      setColumns(nextColumns);
     };
 
   return (

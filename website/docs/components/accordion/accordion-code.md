@@ -4,17 +4,17 @@ title: Example
 
 @## Basic usage
 
-> Don't specify `padding` and `margin` for `Collapse`, this will break the animation.
+> Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will break the animation.
 
 @example base
 
-@## Customizing the trigger
+@## Custom trigger
 
 You can add your own styles to the trigger or change its `tag`.
 
 @example trigger
 
-@## Styles for the selected element
+@## Selected element styles
 
 To find out whether an element is selected or not, pass the function into the body of the element.
 

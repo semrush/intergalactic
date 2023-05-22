@@ -9,6 +9,10 @@ import countries from './countries.json';
 
 import styles from './style/flags.shadow.css';
 
+export const iso2Name = countries.iso2Name;
+export const iso3iso2 = countries.iso3iso2;
+export const nameWithoutIso = countries.nameWithoutIso;
+
 // @ts-ignore
 const version = preval`
   module.exports = require('../package.json').version
@@ -103,5 +107,4 @@ function Flags(props, ref) {
 
 Flags.displayName = 'Flags';
 
-export const { iso2Name, iso3iso2, nameWithoutIso } = countries;
 export default createBaseComponent(Flags);

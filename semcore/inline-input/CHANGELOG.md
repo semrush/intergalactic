@@ -2,6 +2,58 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.35] - 2023-05-15
+
+### Fixed
+
+- Pressing `Escape` or `Enter` might trigger both `onConfirm` and `onCancel`.
+
+## [3.5.34] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.5.33] - 2023-05-10
+
+### Fixed
+
+- Removed mistaken types.
+
+## [3.5.32] - 2023-05-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/tooltip` [5.4.9 ~> 5.4.10]).
+
+## [3.5.29] - 2023-04-24
+
+### Fixed
+
+- Improvements for a11y. Hidden controls because they are accessible via the keyboard.
+
+## [3.5.27] - 2023-04-14
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7], `@semcore/utils` [3.50.0 ~> 3.50.2]).
+
+## [3.5.1] - 2023-01-11
+
+### Fixed
+
+- Fixed displaying tooltip of `ConfirmControl`.
+
+### Changed
+
+- Changed all translations of `CancelControl` text tooltip.
+
+## [3.4.4] - 2023-01-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/icon` [3.5.0 ~> 3.5.1], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.4.0] - 2022-12-14
 
 ### Added

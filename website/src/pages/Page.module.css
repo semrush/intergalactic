@@ -1,25 +1,29 @@
 .documentationWrapper {
-  padding: 56px 32px 96px;
+  padding: var(--intergalactic-spacing-10x) var(--intergalactic-spacing-10x)
+    var(--intergalactic-spacing-30x);
   position: relative;
-  color: #191b23;
+  color: var(--intergalactic-text-primary);
 }
 @media (max-width: 767px) {
   .documentationWrapper {
-    padding: 96px 32px 96px;
+    padding: var(--intergalactic-spacing-20x) var(--intergalactic-spacing-8x)
+      var(--intergalactic-spacing-30x);
   }
 }
 @media (max-width: 415px) {
   .documentationWrapper {
-    padding: 80px 20px 80px;
+    padding: var(--intergalactic-spacing-20x) var(--intergalactic-spacing-5x)
+      var(--intergalactic-spacing-20x);
   }
 }
 
 .sideBar {
   position: sticky;
-  top: 80px;
-  height: calc(100vh - 80px);
-  background: #f5f5f5;
-  max-width: 260px;
+  top: var(--intergalactic-spacing-20x);
+  height: calc(100vh - var(--intergalactic-spacing-20x));
+  background: var(--intergalactic-bg-secondary-neutral);
+  max-width: 250px;
+  overflow: hidden;
 }
 @media (max-width: 767px) {
   .sideBar {
@@ -34,37 +38,32 @@
   .mobileSelect.mobileSelect {
     display: block;
     position: fixed;
-    z-index: 998;
+    z-index: var(--intergalactic-z-index-overlay);
     width: 100%;
-    margin-bottom: 32px;
+    margin-bottom: var(--intergalactic-spacing-8x);
     border-radius: 0 !important;
-    top: 80px;
-    background-color: #fff !important;
-    border: 1px solid #d1d4db;
+    top: var(--intergalactic-spacing-20x);
+    background-color: var(--intergalactic-bg-secondary-neutral) !important;
+    border: 1px solid var(--intergalactic-border-primary);
     border-style: solid none solid none;
   }
   .mobileSelect div div {
-    margin: 0 32px !important;
+    margin: 0 var(--intergalactic-spacing-8x) !important;
   }
 
   .mobileSelect:hover,
   .mobileSelect:active {
-    border: 1px solid #171a22;
+    border: 1px solid var(--intergalactic-border-info-active);
     border-style: solid none solid none;
   }
 }
 @media (max-width: 415px) {
   .mobileSelect div div {
-    margin: 0 20px !important;
+    margin: 0 var(--intergalactic-spacing-5x) !important;
   }
 }
 
 .homePage {
-  padding-top: 80px;
-}
-
-.navigationButton {
-  display: flex;
-  align-items: center;
-  color: #575c66;
+  padding-top: var(--intergalactic-spacing-20x);
+  background-color: var(--intergalactic-bg-primary-neutral);
 }

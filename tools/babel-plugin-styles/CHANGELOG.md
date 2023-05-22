@@ -2,6 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.9.0] - 2023-02-15
+
+### Changed
+
+- Removed `postcss-combine-duplicated-selectors` as far as it was breaking css injection processing.
+- Removed `cssnano` due to [poor support of css rules merging](https://github.com/cssnano/cssnano/issues/805).
+- Added `csso` as a main css optimization package.
+
+## [1.8.1] - 2023-01-27
+
+### Fixed
+
+- Fixed variable transformation error when using the special name `--intergalactic-*`.
+
+## [1.8.0] - 2023-01-26
+
+### Added
+
+- Added `postcss-combine-duplicated-selectors` package to optimize CSS files.
+
+## [1.7.0] - 2023-01-20
+
+### Changed
+
+- Put all css `:hover` selectors into `@media(hover: hover)` block.
+
 ## [1.6.0] - 2022-09-31
 
 ### Added

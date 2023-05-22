@@ -67,8 +67,8 @@ For the filter trigger use [Select](/components/select/) and [FilterTrigger](/co
 | State       | Appearance                                         |
 | ----------- | -------------------------------------------------- |
 | placeholder | ![filter default state](static/default.png)        |
-| hover       | ![filter hover state](static/hover.png)            |
-| active      | ![filter active state](static/advanced-filter.png) |
+| Hover       | ![filter hover state](static/hover.png)            |
+| Active      | ![filter active state](static/advanced-filter.png) |
 
 - Dynamic filter application (no "Apply" button) can be useful when loading data while applying the filter strongly affects the output. It is important to show the content to the user immediately when applying the filter, not to wait for confirmation from the "Apply" button.
 - Filters are valid only within one report. But at the same time, they should be saved when returning to this report (within the same product) and when reloading the page.
@@ -122,7 +122,7 @@ After applying the filter:
 
 @## Advanced filters in the accordion
 
-Container in accordion has styles: `border: 1px solid --gray-200;`.
+Container in accordion has styles: `border: 1px solid var(--border-primary)`.
 
 ### Opened filter
 
@@ -151,7 +151,7 @@ If you need to increase or decrease the margins between filters inside the form,
 
 ![filter paddings](static/margins.png)
 
-Always visually separate filter triggers from the filters themselves. For example, use `border: 1px solid var(--gray-200);`.
+Always visually separate filter triggers from the filters themselves. For example, use `border: 1px solid var(--border-primary)`.
 
 ![filter border](static/advanced-filters-dropdown2.png)
 

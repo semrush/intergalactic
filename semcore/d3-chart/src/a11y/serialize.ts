@@ -101,6 +101,10 @@ export const formatValue = (
     return String((value as React.FC).displayName);
   }
 
+  if (value === undefined || value === null) {
+    return intl.formatMessage({ id: 'data-not-available' });
+  }
+
   return String(value);
 };
 
@@ -118,7 +122,7 @@ const formatValuesList = (
 
     const value = formatValue(intl, rawValue, { datesWithTime, maxListSymbols });
 
-    if (value === label) return value;
+    if (String(value) === String(label)) return value;
 
     return intl.formatMessage({ id: 'value-labeled' }, { label, value });
   });
@@ -143,13 +147,18 @@ export const serialize = (
   {
     locale,
     translations,
-  }: { locale: string; translations?: { [locale: string]: { [messageId: string]: string } } },
+    availableLocales,
+  }: {
+    locale: string;
+    translations?: { [messageId: string]: string };
+    availableLocales?: { [localeId: string]: any };
+  },
 ): string | null => {
   if (insights.length === 0) return null;
 
-  const intl = getIntl(locale, translations);
+  const intl = getIntl(locale, translations, availableLocales);
 
-  const dataRnageSummary = intl.formatList(
+  const dataRangeSummary = intl.formatList(
     dataRange.map((range) => {
       const from = formatValue(intl, range.from, {
         siblingsTimeMark: range.to,
@@ -236,8 +245,8 @@ export const serialize = (
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
 
-    if (dataRnageSummary.length > 0) {
-      return `${summary}\n${dataRnageSummary}`;
+    if (dataRangeSummary.length > 0) {
+      return `${summary}\n${dataRangeSummary}`;
     }
 
     return summary;
@@ -288,8 +297,8 @@ export const serialize = (
       { entities, entitiesList: intl.formatList(entitiesList), label: dataTitle },
     );
 
-    if (dataRnageSummary.length > 0) {
-      return `${summary}\n${dataRnageSummary}`;
+    if (dataRangeSummary.length > 0) {
+      return `${summary}\n${dataRangeSummary}`;
     }
 
     return summary;
@@ -303,13 +312,11 @@ export const serialize = (
       maxListSymbols,
     });
 
-    const sumamry = intl.formatMessage(
+    return intl.formatMessage(
       { id: dataTitle ? 'chart-summary' : 'chart-summary-no-label' },
       { entities, entitiesList: entitiesList, label: dataTitle },
     );
-
-    return sumamry;
-  } else if (dataType === 'grouped-values') {
+  } else if (dataType === 'grouped-values' || dataType === 'indexed-groups') {
     const groupInsights = insights as ComparisonNode[];
     const valueCounts = groupInsights.map((group) => group.values.length);
     const minValuesCount = Math.min(...valueCounts);

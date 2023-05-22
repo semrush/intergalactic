@@ -5,6 +5,8 @@ import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 import Close from '@semcore/icon/Close/m';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/feature-popover.shadow.css';
 
@@ -44,7 +46,10 @@ class FeaturePopover extends Component {
       trigger: [['onClick']],
       popper: [],
     },
+    i18n: localizedMessages,
+    locale: 'en',
   };
+  static enhance = [i18nEnhance(localizedMessages)];
 
   defaultModifiers = [
     {
@@ -68,10 +73,11 @@ class FeaturePopover extends Component {
   };
 
   getPopperProps() {
-    const { visible } = this.asProps;
+    const { visible, getI18nText } = this.asProps;
     return {
       visible,
       $onCloseClick: this.handleCloseClick,
+      getI18nText,
     };
   }
 
@@ -94,6 +100,15 @@ class FeaturePopover extends Component {
   }
 }
 
+function Trigger({ Children, styles }) {
+  const STrigger = Root;
+  return sstyled(styles)(
+    <STrigger render={Popper.Trigger} tag={Box}>
+      <Children />
+    </STrigger>,
+  );
+}
+
 class FeaturePopoverPopper extends Component {
   static defaultProps = {
     closeIcon: false,
@@ -103,7 +118,16 @@ class FeaturePopoverPopper extends Component {
   render() {
     const SFeaturePopover = Root;
     const SClose = Close;
-    const { Children, styles, visible, closeIcon, duration, $onCloseClick } = this.asProps;
+    const {
+      Children,
+      styles,
+      visible,
+      closeIcon,
+      duration,
+      $onCloseClick,
+      animationsDisabled,
+      getI18nText,
+    } = this.asProps;
 
     return sstyled(styles)(
       <Popper.Popper disableEnforceFocus>
@@ -112,9 +136,12 @@ class FeaturePopoverPopper extends Component {
           duration={duration}
           keyframes={[stylePopper['@enter'], stylePopper['@exit']]}
           initialAnimation
+          animationsDisabled={animationsDisabled}
         >
           <SFeaturePopover render={Box}>
-            {closeIcon ? <SClose onClick={$onCloseClick} /> : null}
+            {closeIcon && (
+              <SClose interactive onClick={$onCloseClick} aria-label={getI18nText('close')} />
+            )}
             <Children />
           </SFeaturePopover>
         </Animation>
@@ -136,7 +163,7 @@ const Spot = (props) => {
 export default createComponent(
   FeaturePopover,
   {
-    Trigger: Popper.Trigger,
+    Trigger: Trigger,
     Popper: FeaturePopoverPopper,
     Spot,
   },

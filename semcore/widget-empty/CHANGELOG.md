@@ -2,6 +2,67 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.11] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/illustration` [1.4.17 ~> 1.4.18], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.10.10] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/illustration` [1.4.16 ~> 1.4.17], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.10.8] - 2023-04-24
+
+## [3.10.7] - 2023-04-17
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/illustration` [1.4.13 ~> 1.4.14], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.10.0] - 2023-03-21
+
+### Changed
+
+- Updated `Error` view texts in all languages.
+- Updated `NoData` view texts in all languages.
+
+## [3.9.7] - 2023-03-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.11 ~> 4.7.12], `@semcore/illustration` [1.4.6 ~> 1.4.7], `@semcore/utils` [3.47.2 ~> 3.47.3]).
+
+## [3.9.3] - 2023-02-09
+
+## [3.9.2] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/illustration` [1.4.1 ~> 1.4.2], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.8.4] - 2023-01-10
+
+## [3.8.3] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/illustration` [1.3.9 ~> 1.3.10], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
+## [3.8.2] - 2022-12-22
+
+### Fixed
+
+- Fixed image size
+
+## [3.8.1] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.2 ~> 4.7.3], `@semcore/illustration` [1.3.8 ~> 1.3.9], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+
 ## [3.8.0] - 2022-12-14
 
 ### Added

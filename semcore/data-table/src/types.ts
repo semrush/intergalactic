@@ -26,11 +26,15 @@ export type Column<
   varWidth: string;
   setVar: boolean;
   data?: unknown;
+  vBorders?: boolean;
+  borderLeft?: boolean;
+  borderRight?: boolean;
   props: {
     name: string;
     ref: React.RefObject<HTMLElement>;
   } & Partial<{
     flex: Property.Flex;
+    justifyContent: Property.JustifyContent;
     onClick: (event: React.MouseEvent) => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
     forwardRef: React.Ref<HTMLElement>;
@@ -40,9 +44,13 @@ export type Column<
     resizable: boolean;
     sortable: boolean | SortDirection;
     sortDirection: SortDirection;
+    vBorders: boolean;
+    borderLeft: boolean;
+    borderRight: boolean;
   }> &
     Props;
   columns: Column[];
+  parentColumns: Column[];
 };
 export type Cell = Pick<Column, 'name' | 'fixed' | 'data'> & {
   cssVar: string | string[];

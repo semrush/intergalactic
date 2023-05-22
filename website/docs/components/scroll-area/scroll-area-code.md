@@ -11,7 +11,7 @@ For basic use it is enough just to wrap your content into `ScrollArea`. It will 
 
 @## Synchronized scroll on two different screens
 
-@example master-slave
+@example main-and-controlled
 
 @## Synchronized reverse scroll on two different screens
 

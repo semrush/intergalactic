@@ -15,8 +15,8 @@ fileSource: d3-chart
 
 @## Edge cases
 
-- If a part of the chart has no data — use a dashed line to draw that period.
-- If the data has only one value — display it as a dot.
+- If a part of the chart has no data – use a dashed line to draw that period.
+- If the data has only one value – display it as a dot.
 - Two consecutively known values will automatically be displayed as the `Area` component.
 
 @example area-without-data

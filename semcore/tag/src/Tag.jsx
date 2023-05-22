@@ -117,7 +117,6 @@ class RootTag extends Component {
 
     return sstyled(styles)(
       <STag
-        tabIndex={0}
         render={Box}
         use:interactive={!disabled && interactive}
         colorBg={colors.colorBg}

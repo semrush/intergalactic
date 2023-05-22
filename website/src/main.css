@@ -3,8 +3,8 @@
 @import './fonts.css';
 
 html {
-  font-family: Inter, -apple-system, sans-serif, Arial;
-  color: #171a22;
+  font-family: var(--intergalactic-base), -apple-system, sans-serif, Arial;
+  color: var(--intergalactic-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -12,6 +12,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background: var(--intergalactic-bg-primary-neutral);
 }
 
 code {

@@ -28,6 +28,7 @@ type AsProps = {
   uniqueKey: string;
   virtualScroll?: boolean | { tollerance?: number; rowHeight?: number };
   disabledScroll?: boolean;
+  uid?: string;
 };
 
 type State = {
@@ -52,20 +53,26 @@ class Body extends Component<AsProps, State> {
     return rowHeightFromProps || this.state.rowHeight;
   };
 
-  renderCells(cells: NestedCells, rowData: RowData, index: number) {
+  renderCells(cells: NestedCells, rowData: RowData, dataIndex: number) {
     const SCell = Flex;
-    const { styles, columns, use } = this.asProps;
-    return cells.map((cell) => {
+    const { styles, columns, use, uid } = this.asProps;
+    return cells.map((cell, cellIndex) => {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
         return sstyled(styles)(
-          <SGroupCell role="rowgroup" data-ui-name="group-cell">
+          <SGroupCell key={cellIndex} role="rowgroup" data-ui-name="group-cell">
             {this.renderRows(cell as NestedCells[])}
           </SGroupCell>,
         );
       } else {
+        const nameParts = cell.name.split('/');
+        const firstName = nameParts[0];
+        const lastName = nameParts[nameParts.length - 1];
+        const firstColumn = columns.find((c) => c.name === firstName);
+        const lastColumn = columns.find((c) => c.name === lastName);
         const column = columns.find((c) => c.name === cell.name);
         const [name, value] = getFixedStyle(cell, columns);
+        const parentColumnNames = column?.parentColumns.map((column) => column.name) ?? [];
         const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
           (name) => `var(${name})`,
         );
@@ -80,6 +87,8 @@ class Body extends Component<AsProps, State> {
           children: <>{cell.data}</>,
           justifyContent: column?.props?.justifyContent,
           alignItems: column?.props?.alignItems,
+          borderLeft: firstColumn?.borderLeft,
+          borderRight: lastColumn?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
           },
@@ -91,17 +100,24 @@ class Body extends Component<AsProps, State> {
         for (const cellPropLayer of cell.cellPropsLayers || []) {
           const { childrenPropsGetter = (p) => p, ...other } = cellPropLayer;
           const propsCell = assignProps(other, props);
-          props = assignProps(childrenPropsGetter(propsCell, rowData, index), propsCell);
+          props = assignProps(childrenPropsGetter(propsCell, rowData, dataIndex), propsCell);
         }
+
+        const headerIds = [cell.name, ...parentColumnNames]
+          .filter(Boolean)
+          .map((name) => `igc-table-${uid}-${name}`);
 
         return sstyled(styles)(
           <SCell
             key={cell.name}
             role="cell"
+            headers={headerIds.join(' ')}
             {...props}
             fixed={cell.fixed}
             theme={props.theme}
             use={use}
+            borderLeft={props.borderLeft}
+            borderRight={props.borderRight}
           />,
         ) as React.ReactElement;
       }
@@ -110,7 +126,7 @@ class Body extends Component<AsProps, State> {
 
   renderRow(
     cells: NestedCells,
-    { dataIndex, topOffset, nested }: { dataIndex: number; topOffset?: number; nested: boolean },
+    { dataIndex, topOffset }: { dataIndex: number; topOffset?: number },
   ) {
     const SRow = Box;
     const { styles, rowPropsLayers, uniqueKey, virtualScroll } = this.asProps;
@@ -118,7 +134,7 @@ class Body extends Component<AsProps, State> {
 
     const rowData = cells.flatRowData || getCellsByColumn(cells);
     const key = rowData[uniqueKey] ? String(rowData[uniqueKey]) : `row_${dataIndex}`;
-    const needToMeasureHeight = dataIndex === 0 && !nested && !rowHeightFromProps;
+    const needToMeasureHeight = dataIndex === 0 && !rowHeightFromProps;
 
     let props = {
       children: this.renderCells(cells, rowData, dataIndex),
@@ -128,7 +144,7 @@ class Body extends Component<AsProps, State> {
       top: topOffset,
       ref: needToMeasureHeight ? this.firstRowRef : undefined,
       key,
-      'aria-rowindex': dataIndex + 1,
+      'aria-rowindex': dataIndex + 2,
     };
 
     for (const rowPropsLayer of rowPropsLayers) {
@@ -141,7 +157,7 @@ class Body extends Component<AsProps, State> {
   }
 
   renderRows(rows: NestedCells[]) {
-    return rows.map((cells, dataIndex) => this.renderRow(cells, { dataIndex, nested: false }));
+    return rows.map((cells, dataIndex) => this.renderRow(cells, { dataIndex }));
   }
 
   renderVirtualizedRows(rows: NestedCells[]) {
@@ -173,7 +189,7 @@ class Body extends Component<AsProps, State> {
     }
 
     return processedVisibleRows.map(({ cells, dataIndex, topOffset }) =>
-      this.renderRow(cells, { dataIndex, topOffset, nested: false }),
+      this.renderRow(cells, { dataIndex, topOffset }),
     );
   }
 
@@ -261,7 +277,7 @@ class Body extends Component<AsProps, State> {
         >
           <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
             <SBody render={Box} role="rowgroup">
-              {holdHeight && <SHeightHold hMin={holdHeight} aria-hidden={true} />}
+              {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
               {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
             </SBody>

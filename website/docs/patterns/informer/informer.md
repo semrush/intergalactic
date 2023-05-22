@@ -21,40 +21,40 @@ The informer consists of:
 | Font size                            | Icon size | Use                                                                  |
 | ------------------------------------ | --------- | -------------------------------------------------------------------- |
 | 36px (`--fs-700`), 32px (`--fs-600`) | L         | Use only with the largest titles and controls.                       |
-|                                      |           | ![info icon with bug hwdings](static/big-headings.png)               |
+|                                      |           | ![](static/big-headings.png)               |
 | Smaller than 24px (`--fs-500`)       | M         | Use with text sizes smaller than 24px.                               |
-|                                      |           | ![info icon with headings](static/other-headings.png)                |
-|                                      |           | ![info icon with all text sizes](static/text.png)                    |
-|                                      |           | ![info icon with dropdown mwnu items](static/dropdown-item-icon.png) |
+|                                      |           | ![](static/other-headings.png)                |
+|                                      |           | ![](static/text.png)                    |
+|                                      |           | ![](static/dropdown-item-icon.png) |
 
 @## Interaction
 
 | State  | Appearance example                             | Styles                                                                          |
 | ------ | ---------------------------------------------- | ------------------------------------------------------------------------------- |
-| normal | ![info icon](static/info.png)                  | `background-color: --var(--gray-300);`                                          |
-| hover  | ![info icon with hover](static/info-hover.png) | The icon color doesn't change on hover. Only cursor changes to `cursor: help;`. |
+| Normal | ![](static/info.png)                  | `background-color: var(--icon-secondary-neutral)`                              |
+| Hover  | ![](static/info-hover.png) | The icon color doesn't change on hover. Only cursor changes to `cursor: help`. |
 
 @## Click zone
 
-| Icon size | The size of the click zone                             |
-| --------- | ------------------------------------------------------ |
-| L         | `24px * 24px`                                          |
-|           | ![hover zone for l icon size](static/hover-zone-l.png) |
-| M         | `16px * 16px`                                          |
-|           | ![hover zone for m icon size](static/hover-zone-m.png) |
+| Icon size | The size of the target zone  |
+| --------- | ---------------------------- |
+| L         | 24px * 24px                  |
+|           | ![](static/hover-zone-l.png) |
+| M         | 16px * 16px                  |
+|           | ![](static/hover-zone-m.png) |
 
 @## Tooltip
 
-See detailed infromation in the [Tooltip guide](/components/tooltip/).
+See detailed information in the [Tooltip guide](/components/tooltip/).
 
-@## Use in UX/UI
+@## Usage in UX/UI
 
 If the Info icon hides additional information about the control in a group of controls (for example, in filters), then pay attention to margins.
 
-![info icon yes-no situation](static/informer-yes-no.png)
+![](static/informer-yes-no.png)
 
 In the case when controls have text labels, place Info icon next to the labels.
 
-![info icon with group of buttons](static/info-with-butt-group.png)
+![](static/info-with-butt-group.png)
 
 @page informer-code

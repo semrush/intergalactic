@@ -26,17 +26,19 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |        | `alt`          | `img`         | Defines the accessible name of the link.              |
 |        | `aria-label`   | `span`        | Defines the accessible name of the link.              |
 
+### External link
+
+For the external link add `LinkExternal` icon, it helps indicating that a hyperlink goes to a different domain. In case, when this icon is used alone as a link, it must be correctly identified by assistive technology and have a valid alternative text.
+
 ### Combine adjacent links into a single link
 
-It’s common for pages to present multiple links to the same location next to one another. For example, a news listing may present an image, heading, and “more” text each as links to the same story. This can create a bad experience for assistive technology users.
-
-Instead, wrap all elements within the same anchor tag. Doing so provides a larger clickable area, a single tab stop for keyboard-only users, and a single entry for screen reader users. A screen reader will read all content within the a tag. So, images contained in this kind of anchor should have a null alt attribute.
+When presenting multiple links to the same location next to each other, it can create a poor experience for assistive technology users. Instead, wrap all elements in the same anchor tag to create a larger target area and a single entry for screen reader and keyboard-only users. When using this method, images within the anchor tag should have a null alt attribute.
 
 ### Emulating link
 
-The `<a>` tag has important accessibility features built in by default. It is keyboard focusable, and screen reader will announce the link as a link. By default, the hover mouse cursor style is set to a pointer, instead of the default arrow.
+Developers should use the `a` tag when creating links because it has built-in accessibility features. These features include keyboard focusability, screen reader compatibility, and a default pointer cursor.
 
-Developers can emulate links with other elements, such as `<div>` or `<span>` elements and JavaScript click listeners. But, these kinds of emulated links need care. Developers wishing to emulate links must include the following:
+While it's possible to create link-like behavior with other elements like `div` or `span` and JavaScript click listeners, it requires extra care, and we do recommend use the `a` tag. If developers choose to use emulated links, they must include the following:
 
 - Add `tabindex=”0”` so that the link becomes keyboard focusable
 - Add `role=”link”` so that assistive technology recognizes the element as a link

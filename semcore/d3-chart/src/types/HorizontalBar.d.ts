@@ -19,6 +19,8 @@ export interface IHorizontalBarProps extends IContext {
    * @default 2
    */
   r?: number | number[];
+  /** Enables element transparency */
+  transparent?: boolean;
 }
 
 declare const HorizontalBar: (<T>(

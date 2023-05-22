@@ -2,6 +2,62 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.27] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+
+## [4.3.26] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+
+## [4.3.24] - 2023-04-26
+
+## [4.3.23] - 2023-04-24
+
+## [4.3.22] - 2023-04-13
+
+### Fixed
+
+- Fixed visual keyboard focus highlight of inline links.
+
+## [4.3.21] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
+
+## [4.3.11] - 2023-02-09
+
+## [4.3.10] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7]).
+
+## [4.3.8] - 2023-01-10
+
+## [4.3.7] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4]).
+
+## [4.3.6] - 2022-12-21
+
+### Fixed
+
+- Fixed vertical align for use as a text link.
+
+## [4.3.5] - 2022-12-19
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.0 ~> 3.44.1], `@semcore/flex-box` [4.7.2 ~> 4.7.3]).
+
 ## [4.3.3] - 2022-12-14
 
 ### Fixed

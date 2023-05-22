@@ -2,6 +2,70 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.15] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/neighbor-location` [3.1.28 ~> 3.1.29], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.3.14] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/neighbor-location` [3.1.27 ~> 3.1.28], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.3.13] - 2023-05-04
+
+### Fixed
+
+- Fixed uncontrolled `<TabLine />` animation.
+
+## [3.3.12] - 2023-05-03
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.20 ~> 4.7.21], `@semcore/neighbor-location` [3.1.26 ~> 3.1.27], `@semcore/utils` [3.50.4 ~> 3.50.5]).
+
+## [3.3.9] - 2023-04-11
+
+### Fixed
+
+- Fixed `aria-posinset` attribute value generation.
+
+## [3.3.8] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/neighbor-location` [3.1.23 ~> 3.1.24], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.3.0] - 2023-02-23
+
+### Changed
+
+- Fixed underline width glitching by rebuilding internal animation mechanism.
+
+## [3.2.10] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/neighbor-location` [3.1.15 ~> 3.1.16], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.2.8] - 2023-02-09
+
+## [3.2.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/neighbor-location` [3.1.12 ~> 3.1.13], `@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.2.5] - 2023-01-10
+
+## [3.2.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/neighbor-location` [3.1.9 ~> 3.1.10], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.2.1] - 2022-12-13
 
 ### Changed

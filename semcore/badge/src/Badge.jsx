@@ -10,7 +10,7 @@ class RootBadge extends Component {
   static style = style;
   static defaultProps = {
     color: 'white',
-    bg: 'mist',
+    bg: 'gray-400',
   };
 
   render() {
@@ -18,13 +18,7 @@ class RootBadge extends Component {
     const { styles, color, bg } = this.asProps;
 
     return sstyled(styles)(
-      <SBadge
-        render={Box}
-        tag="span"
-        aria-hidden={true}
-        use:color={resolveColor(color)}
-        use:bg={resolveColor(bg)}
-      />,
+      <SBadge render={Box} tag="span" use:color={resolveColor(color)} use:bg={resolveColor(bg)} />,
     );
   }
 }

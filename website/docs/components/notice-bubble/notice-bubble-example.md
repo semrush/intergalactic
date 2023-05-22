@@ -2,145 +2,48 @@
 title: Example
 ---
 
-@## Type of use
+Note that each example uses it's own instance of `NoticeBubbleManager` what causes overlaying of notices from different example.
 
-There are two options how you can use the notices depending on which is more convenient for you and you code style.
+@## Simple notice
 
-@## Option 1
+@example simple
 
-It's about calling the notice by calling the function. For example, `NoticeBubbleManager.add({ children: "Text"})` outputs the notice with the body "Text". This type for notice calling can be used when you have, for example, a websocket triggered and you need to display messages.
+@## Notice with action button
 
-@## Option 2
+@example action-button
 
-This inserts a component into the render via JSX. For example, `<NoticeBubble visible={visible}>Text</NoticeBubble>` will also output a notice with the body "Text". This and the example above are identical. This option can be useful when the state for notice display is available. For example, during the first render, or when the connection is failed, or when the notice display somehow depends on the parent component it was inserted in, since the unmount of the parent component will cause the unmount of the notice.
+@## Dynamic notice
 
-> Under the wrapper, the second JSX option uses the first option via the functions and by subscribing to the component's lifespan and calling the required methods.
+@example dynamic
 
-❗️ Both options require `<NoticeBubbleContainer />` inserted in some part of your app (but we recommend to insert it at the top of the app). This is a container for all notices, it has `position: fixed`, and all notices get into it.
+@## Notice with action button with icon
 
-@## Example when using functions
+@example action-button-with-icon
 
-```jsx
-import React from 'react';
-import NoticeBubbleManager, { NoticeBubbleContainer } from '@semcore/ui/notice-bubble';
+@## Notice with centered spinner
 
-class DemoManager extends React.Component {
-  componentDidMount() {
-    // Displaying the notice (passing props as an object to the function) and getting its instance
-    // The instance has its own unique UID and the update and remove methods
-    const notice = NoticeBubbleManager.add({
-      children: 'Text',
-      duration: 3000,
-    });
-    setTimeout(() => {
-      // Updating the props of the notice via the instance
-      notice.update({ children: 'Text is updated' });
-      // OR update the props of the notice via the manager, transfering UID, these two codes are identical
-      // NoticeBubbleManager.update(notice.uid, { children: 'Text is updated' });
-    }, 1000);
-  }
+@example spin-centered
 
-  render() {
-    return <NoticeBubbleContainer />;
-  }
-}
-```
+@## Notice with centered check mark
 
-### Example when using JSX
+@example success-centered
 
-```jsx
-import React from 'react';
-import { NoticeBubbleContainer, NoticeBubble } from '@semcore/ui/notice-bubble';
+@## Success notice
 
-class DemoManager extends React.Component {
-  state = {
-    visible: true,
-  };
+@example success
 
-  render() {
-    const { visible } = this.state;
-    return (
-      <>
-        <NoticeBubbleContainer />
+@## Failure notice
 
-        <NoticeBubble duration={3000}>Текст</NoticeBubble>
-      </>
-    );
-  }
-}
-```
+@example failure
 
-@## Controlled mod
+@## Illustrated notice
 
-You can control the visibility of the notification yourself. Both through the manager and through the JSX
+@example illustration
 
-```jsx
-import React from 'react';
-import { NoticeBubbleContainer, NoticeBubble } from '@semcore/ui/notice-bubble';
+@## Warning notice with spinner
 
-class DemoManager extends React.Component {
-  state = {
-    visible: true,
-  };
+@example warning-spin
 
-  render() {
-    const { visible } = this.state;
-    return (
-      <>
-        <NoticeBubbleContainer />
+@## Warning notice with action
 
-        <NoticeBubble
-          duration={3000}
-          /* It is advisable to change the notice's visible to close it instead
-          of removing it from JSX since in this case there will be no animation */
-          visible={visible}
-          /* Enables animation on first rendering */
-          initialAnimation
-          /* onClose will be triggered either by
-          a timer or by a user clicking on the cross */
-          onClose={() => this.setState({ visible: false })}
-        >
-          Текст
-        </NoticeBubble>
-      </>
-    );
-  }
-}
-```
-
-```jsx
-import React from 'react';
-import NoticeBubbleManager, { NoticeBubbleContainer } from '@semcore/ui/notice-bubble';
-
-class DemoManager extends React.Component {
-  componentDidMount() {
-    // Displaying the notice (passing props as an object to the function) and getting its instance
-    // The instance has its own unique UID and the update and remove methods
-    const notice = NoticeBubbleManager.add({
-      children: 'Text',
-      duration: 3000,
-      visible: true,
-      onClose: () => {
-        // Remove the notice via the instance
-        notice.remove();
-        // OR remove the notice via the manager, these two codes are identical
-        // NoticeBubbleManager.remove(notice.uid);
-      },
-    });
-    setTimeout(() => {
-      // Updating the props of the notice via the instance
-      notice.update({ children: 'Text is updated' });
-      // OR update the props of the notice via the manager, transfering UID, these two codes are identical
-      // NoticeBubbleManager.update(notice.uid, { children: 'Text is updated' });
-    }, 1000);
-  }
-
-  render() {
-    return <NoticeBubbleContainer />;
-  }
-}
-```
-
-@## NoticeBubble in iframe
-
-Since the component inside the iframe will have a different location from the one we recommend in the guide, you can use [Notice](/components/notice/) instead.
+@example warning-action

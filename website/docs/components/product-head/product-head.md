@@ -45,16 +45,16 @@ If there is a [Notice](/components/notice/) in the header, it has 8px margin-bot
 ### Heading and main controls
 
 - Heading, buttons and labels are center aligned regard to each other.
-- For title use text with 20px size (`--fs-400; --lh-400`).
-- For the text color use `var(--gray-800)`, for project's name – `var(--gray-500)`.
-- The size of the nearby icons — M. Color icon into `var(--gray-300)`.
+- For title use text with 20px size (`--fs-400`, `--lh-400`).
+- For the text color use `color: var(--text-primary)`, for project's name – `color: var(--text-secondary)`.
+- The size of the nearby icons – M. For icon color use `--icon-secondary-neutral` token.
 - The icons are aligned by the title's basic line.
 - [Button](/components/button/) has M size.
 
 ### Filters and/or additional information
 
 - All elements are center aligned.
-- For text use 14px size (`--fs-200; --lh-200`) and `var(--gray-800)` color.
+- For text use 14px size (`--fs-200`, `--lh-200`) and `color: var(--text-primary)` color.
 - Icons have M size.
 
 @## ProductHead variants

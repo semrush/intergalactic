@@ -2,11 +2,56 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.2.1] - 2022-12-13
+## [4.3.3] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.0 ~> 4.7.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+
+## [4.3.2] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+
+## [4.3.1] - 2023-05-03
+
+### Fixed
+
+- `<ScrollArea.Bar />` component might break app in some rare use cases.
+
+## [4.3.0] - 2023-05-03
+
+### Changed
+
+- Added required `role` and `aria` attributes for better screen readers support.
+- Scroll area container are now focusable by keyboard.
+
+## [4.2.20] - 2023-04-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/flex-box` [4.7.18 ~> 4.7.19]).
+
+## [4.2.8] - 2023-02-09
+
+### Fixed
+
+- Fixed scroll bars rounding (`3px` -> `4px`).
+
+## [4.2.7] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7]).
+
+## [4.2.5] - 2023-01-10
+
+## [4.2.4] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4]).
 
 ## [4.2.0] - 2022-12-12
 

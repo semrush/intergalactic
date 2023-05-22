@@ -2,6 +2,94 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.29] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [3.4.28] - 2023-05-04
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [3.4.25] - 2023-05-02
+
+### Changed
+
+- Removed `aria-flowto` because it has bad screen readers support and often confuse users in supporting screen readers.
+
+## [3.4.24] - 2023-04-24
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+
+## [3.4.21] - 2023-03-28
+
+### Added
+
+- Added default color (`--intergalactic-text-primary`) to the component.
+
+## [3.4.20] - 2023-03-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0]).
+
+## [3.4.16] - 2023-03-23
+
+### Fixed
+
+- `aria-controls` and `aria-expanded` html attributes wasn't applied on closed dropdown.
+
+## [3.4.15] - 2023-03-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.3 ~> 3.47.4]).
+
+## [3.4.12] - 2023-03-06
+
+### Fixed
+
+- Fixed the ability to move text to the next line with the Enter key in `Textarea`.
+
+## [3.4.11] - 2023-03-01
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/popper` [4.16.3 ~> 4.16.4]).
+
+## [3.4.10] - 2023-02-22
+
+## [3.4.9] - 2023-02-21
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1]).
+
+## [3.4.7] - 2023-02-09
+
+### Changed
+
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-popper-rounded`).
+
+## [3.4.6] - 2023-01-20
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+
+## [3.4.3] - 2023-01-10
+
+## [3.4.2] - 2023-01-09
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+
 ## [3.4.0] - 2022-12-14
 
 ### Added
@@ -177,7 +265,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Добавлен `white-space: normal;` так как он может наследоваться в случаях отключения рендера в портал(`disabledPortal`)
+- Добавлен `white-space: normal;` так как он может наследоваться в случаях отключения рендера в портал(`disablePortal`)
 - Убрано скрытие Popper, когда его Trigger выходит из viewbox
 
 ## [1.2.3] - 2019-11-14

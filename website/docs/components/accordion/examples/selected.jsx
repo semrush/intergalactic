@@ -29,8 +29,8 @@ const Demo = () => (
                 className="accordion-selected-toggle"
                 style={{ background: selected ? '#e0e1e9' : '' }}
               >
-                <Accordion.Item.Chevron color="gray-300" mr={2} />
-                <Text size={200} color="gray-800">{`Section ${index + 1}`}</Text>
+                <Accordion.Item.Chevron color="gray-500" mr={2} />
+                <Text size={200} color="gray-800" tag="h3" my={0}>{`Section ${index + 1}`}</Text>
               </Accordion.Item.Toggle>
               <Accordion.Item.Collapse>
                 <Box p="12px 32px">{`Hello Section ${index + 1}`}</Box>

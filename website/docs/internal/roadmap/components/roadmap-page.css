@@ -1,0 +1,85 @@
+.gantt {
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: var(--intergalactic-spacing-10x);
+}
+
+.gantt__row {
+  display: grid;
+  background-color: var(--intergalactic-bg-primary-neutral);
+}
+
+.gantt__row--lines {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.gantt__row--lines span {
+  display: block;
+  text-align: center;
+  color: var(--intergalactic-text-secondary);
+}
+
+.gantt__row--lines span + span {
+  border-left: 1px solid var(--intergalactic-border-secondary);
+}
+
+.gantt__row--lines span.marker {
+  background-color: var(--intergalactic-table-td-cell-active);
+  border-left-color: transparent;
+}
+
+.gantt__row--lines span.marker + span {
+  border-left-color: transparent;
+}
+
+.gantt__row--lines span.marker:after {
+  content: 'Current sprint 🕺';
+  white-space: nowrap;
+}
+
+.gantt__row--months span {
+  text-align: center;
+  font-size: var(--intergalactic-fs-200);
+  align-self: center;
+  padding: var(--intergalactic-spacing-5x) 0;
+  color: var(--intergalactic-text-secondary);
+  z-index: 1;
+}
+
+.gantt__row-bars {
+  list-style: none;
+  display: grid;
+  padding: calc(var(--intergalactic-spacing-2x) + 1px) 0;
+  margin: 0;
+  grid-gap: var(--intergalactic-spacing-2x) 0;
+}
+
+.gantt__row-bars li {
+  text-align: center;
+  font-size: var(--intergalactic-fs-200);
+  min-height: 15px;
+  padding: calc(var(--intergalactic-spacing-1x) + 1px) var(--intergalactic-spacing-3x);
+  overflow: hidden;
+  position: relative;
+  border-radius: calc(var(--intergalactic-rounded-extra-large) - 4px);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gantt__row-bars__ui {
+  background-color: var(--intergalactic-chart-palette-order-14);
+  color: var(--intergalactic-text-advertising);
+}
+
+.gantt__row-bars__kit {
+  background-color: var(--intergalactic-chart-palette-order-6);
+  color: var(--intergalactic-text-primary-invert);
+}
+
+.tabs {
+  --intergalactic-border-primary-invert: var(--intergalactic-bg-primary-neutral);
+}

@@ -47,7 +47,11 @@ export const buildNavigation = async (docsDir: string) => {
   const hasContentMap = fileContentsList.map((contents) => {
     const lines = removeMarkdownMeta(contents).split('\n');
 
-    return lines.filter((line) => line.length > 0 && !line.startsWith('@page ')).length > 0;
+    return (
+      lines.filter(
+        (line) => line.length > 0 && !line.startsWith('@page ') && !line.startsWith('<!-- '),
+      ).length > 0
+    );
   });
   const navigationMap = Object.fromEntries(
     filesList.map((path, index) => [
@@ -60,6 +64,7 @@ export const buildNavigation = async (docsDir: string) => {
       },
     ]),
   );
+  const existingRoutes: { [route: string]: boolean } = { '': true };
   const navigationRoutes: { [route: string]: number[] } = {};
   const navigationParents: { [route: string]: number[] } = {};
   const navigationPrevSibling: { [route: string]: number[] } = {};
@@ -85,6 +90,7 @@ export const buildNavigation = async (docsDir: string) => {
       };
 
       const chain = [...parentChain, i];
+      existingRoutes[dir] = true;
       navigationRoutes[dir] = chain;
       navigationParents[dir] = parentChain;
 
@@ -101,6 +107,7 @@ export const buildNavigation = async (docsDir: string) => {
   return {
     navigationMap,
     navigationTree,
+    existingRoutes,
     chains: {
       navigationRoutes,
       navigationParents,

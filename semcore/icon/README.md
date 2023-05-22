@@ -19,7 +19,9 @@ npm install @semcore/ui
 ## Usage
 
 ```jsx
-import Accordion from '@semcore/ui/icon';
+import BaseIcon from '@semcore/ui/icon';
+
+import CloseM from '@semcore/ui/icon/Close/m';
 ```
 
 <details>

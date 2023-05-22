@@ -287,9 +287,18 @@ describe('Carousel.Next', () => {
   });
 
   test('a11y', async () => {
+    const images = [
+      `https://picsum.photos/id/1023/600/400`,
+      `https://picsum.photos/id/1024/600/400`,
+      `https://picsum.photos/id/1025/600/400`,
+    ];
     const { getByTestId, container } = render(
       <Carousel>
-        <Container />
+        <Container>
+          {images.map((url) => (
+            <Carousel.Item tag="img" key={url} src={url} w={100} />
+          ))}
+        </Container>
         <Indicators />
         <Carousel.Prev data-testid="prev" />
         <Carousel.Next data-testid="next" />
@@ -359,7 +368,7 @@ describe('Carousel visual regression', () => {
     const imageWidth = width - 75;
 
     const component = (
-      <Carousel w={width}>
+      <Carousel w={width} defaultIndex={1}>
         <Flex alignItems="center">
           <Carousel.Prev />
           <Box style={{ overflow: 'hidden' }}>

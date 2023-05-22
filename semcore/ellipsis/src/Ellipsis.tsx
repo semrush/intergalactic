@@ -1,12 +1,14 @@
-import React, { RefObject, useRef, useMemo, useState, useLayoutEffect } from 'react';
+import React, { RefObject, useRef, useMemo, useState } from 'react';
 import createComponent, { Component, sstyled } from '@semcore/core';
 import Tooltip from '@semcore/tooltip';
-import { Flex } from '@semcore/flex-box';
+import { Box } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
+import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import pick from '@semcore/utils/lib/pick';
 
 type AsProps = {
   maxLine?: number;
@@ -16,6 +18,7 @@ type AsProps = {
   containerRect?: { width: number };
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
+  includeTooltipProps?: string[];
 };
 
 type AsPropsMiddle = {
@@ -25,7 +28,65 @@ type AsPropsMiddle = {
   containerRect?: { width: number };
   // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   containerRef?: RefObject<HTMLElement | null>;
+  tooltipProps: { [propName: string]: unknown };
 };
+
+const defaultTooltipProps = [
+  'title',
+  'theme',
+  'strategy',
+  'modifiers',
+  'placement',
+  'interaction',
+  'timeout',
+  'visible',
+  'defaultVisible',
+  'onVisibleChange',
+  'offset',
+  'preventOverflow',
+  'arrow',
+  'flip',
+  'computeStyles',
+  'eventListeners',
+  'onFirstUpdate',
+];
+
+const createMeasurerElement = (element: HTMLElement) => {
+  const styleElement = window.getComputedStyle(element, null);
+  const temporaryElement = document.createElement('temporary-block');
+  temporaryElement.style.display = 'inline-block';
+  temporaryElement.style.padding = '0';
+  temporaryElement.style.position = 'absolute';
+  temporaryElement.style.right = '150%';
+  temporaryElement.style.bottom = '150%';
+  temporaryElement.style.visibility = 'hidden';
+  temporaryElement.style.fontFamily = styleElement.getPropertyValue('font-family');
+  temporaryElement.style.fontSize = styleElement.getPropertyValue('font-size');
+  temporaryElement.style.fontWeight = styleElement.getPropertyValue('font-weight');
+
+  temporaryElement.innerHTML = element.innerHTML;
+  return temporaryElement;
+};
+
+function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boolean {
+  if (!element) return false;
+
+  const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
+  const measuringElement = createMeasurerElement(element);
+  let currentSize, initialSize;
+  document.body.appendChild(measuringElement);
+  if (multiline) {
+    currentSize = currentHeight;
+    measuringElement.style.width = `${currentWidth}px`;
+    initialSize = measuringElement.getBoundingClientRect().height;
+  } else {
+    currentSize = currentWidth;
+    measuringElement.style.whiteSpace = 'nowrap';
+    initialSize = measuringElement.getBoundingClientRect().width;
+  }
+  document.body.removeChild(measuringElement);
+  return currentSize < initialSize;
+}
 
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
@@ -33,13 +94,41 @@ class RootEllipsis extends Component<AsProps> {
   static defaultProps: AsProps = {
     trim: 'end',
     tooltip: true,
+    includeTooltipProps: defaultTooltipProps,
+  };
+
+  state = {
+    visible: false,
+  };
+
+  textRef = React.createRef<HTMLElement>();
+
+  showTooltip() {
+    const { maxLine = 1 } = this.asProps;
+    return isTextOverflowing(this.textRef.current, maxLine > 1);
+  }
+
+  handlerVisibleChange = (visible: boolean) => {
+    this.setState({ visible: visible && this.showTooltip() });
   };
 
   render() {
     const SEllipsis = this.Root;
-    const SContainer = Flex;
-    const { styles, Children, maxLine, tooltip, trim, containerRect, containerRef } = this.asProps;
+    const SContainer = Tooltip;
+    const SNoTooltipContainer = Box;
+    const {
+      styles,
+      Children,
+      maxLine,
+      tooltip,
+      trim,
+      containerRect,
+      containerRef,
+      includeTooltipProps,
+    } = this.asProps;
+    const { visible } = this.state;
     const text = reactToText(getOriginChildren(Children));
+    const tooltipProps = pick(this.asProps, includeTooltipProps);
 
     if (trim === 'middle') {
       return sstyled(styles)(
@@ -49,54 +138,64 @@ class RootEllipsis extends Component<AsProps> {
           tooltip={tooltip}
           containerRect={containerRect}
           containerRef={containerRef}
+          tooltipProps={tooltipProps}
         />,
       );
     }
     if (tooltip) {
       return sstyled(styles)(
-        <SContainer interaction="hover" title={text} tag={Tooltip}>
-          <SEllipsis use:maxLine={maxLine} render="div" tag="div">
+        <SContainer
+          interaction="hover"
+          title={text}
+          visible={visible}
+          onVisibleChange={this.handlerVisibleChange}
+          {...tooltipProps}
+        >
+          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
             <Children />
           </SEllipsis>
         </SContainer>,
       );
     }
     return sstyled(styles)(
-      <SEllipsis use:maxLine={maxLine} render="div" tag="div">
-        <Children />
-      </SEllipsis>,
+      <SNoTooltipContainer>
+        <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+          <Children />
+        </SEllipsis>
+      </SNoTooltipContainer>,
     );
   }
 }
 
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
-  const { styles, text, tooltip, containerRect, containerRef } = props;
-  const resizeElement = useRef<RefObject<HTMLElement | null>>(null);
+  const { styles, text, tooltip, containerRect, containerRef, tooltipProps } = props;
+  const resizeElement = useRef<HTMLElement | null>(null);
   const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
     symbolWidth: 0,
   });
   const blockWidth = useResizeObserver(resizeElement, containerRect).width;
 
-  useLayoutEffect(() => {
+  useEnhancedEffect(() => {
     const dateSpan = document.createElement('temporary-block');
     dateSpan.setAttribute('style', `fontSize: ${dimension.fontSize}px`);
     dateSpan.innerHTML = 'a';
     document.body.appendChild(dateSpan);
     const rect = dateSpan.getBoundingClientRect();
-    dateSpan.remove();
 
     setDimension({
       fontSize: window
+        // @ts-ignore
         .getComputedStyle(containerRef?.current ?? resizeElement.current, null)
         .getPropertyValue('font-size'),
       symbolWidth: rect.width,
     });
+    document.body.removeChild(dateSpan);
   }, []);
 
   const STail = 'span';
   const SBeginning = 'span';
-  const SContainerMiddle = Flex;
+  const SContainerMiddle = Box;
   const displayedSymbols = useMemo(
     () => Math.round(blockWidth / dimension.symbolWidth),
     [blockWidth, dimension.symbolWidth],
@@ -105,10 +204,11 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   if (tooltip) {
     return sstyled(styles)(
       <SContainerMiddle
-        interaction="hover"
+        interaction={text.length > displayedSymbols ? 'hover' : 'none'}
         title={text}
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
+        {...tooltipProps}
       >
         <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
         <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+
 const { render, fireEvent, cleanup } = testing;
 const { shouldSupportClassName, shouldSupportRef } = testsShared;
 import {
@@ -15,7 +16,6 @@ import {
   ScatterPlot,
   HoverLine,
   HoverRect,
-  Tooltip,
   RadialTree,
   Line,
   Donut,
@@ -25,6 +25,7 @@ import {
   Area,
   StackedArea,
   ReferenceLine,
+  Radar,
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -133,11 +134,14 @@ describe('XAxis', () => {
 
   test('should support hover for custom XAxis.Ticks', () => {
     jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+
     // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() {}
+
       subscribe() {}
     }
+
     const eventEmitter = new EventEmitter();
     eventEmitter.emit = jest.fn();
     const { getAllByTestId } = render(
@@ -186,7 +190,7 @@ describe('utils', () => {
   });
 });
 
-describe('Area chart', () => {
+describe('Area', () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -299,158 +303,7 @@ describe('Area chart', () => {
 
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
-});
 
-describe('Venn', () => {
-  shouldSupportRef(Venn, PlotTest);
-});
-
-describe('Bar chart', () => {
-  const MARGIN = 40;
-  const width = 500;
-  const height = 300;
-  const data = [
-    { time: 0, stack1: 1, stack2: 4, stack3: 3 },
-    { time: 1, stack1: 2, stack2: 3, stack3: 4 },
-    { time: 2, stack1: 1, stack2: 4, stack3: 5 },
-    { time: 3, stack1: 3, stack2: 2, stack3: 6 },
-    { time: 4, stack1: 2, stack2: 4, stack3: 4 },
-    { time: 5, stack1: 3, stack2: 4, stack3: 3 },
-    { time: 6, stack1: 4, stack2: 1, stack3: 5 },
-    { time: 7, stack1: 2, stack2: 5, stack3: 3 },
-    { time: 8, stack1: 2, stack2: 6, stack3: 5 },
-    { time: 9, stack1: 5, stack2: 5, stack3: 3 },
-  ];
-
-  const xScale = scaleBand()
-    .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.time))
-    .paddingInner(0.4)
-    .paddingOuter(0.2);
-
-  const yScale = scaleLinear()
-    .range([height - MARGIN, MARGIN])
-    .domain([0, 15]);
-
-  test('should render Bar chart correctly', async () => {
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Bar x="time" y="stack1" duration={0} />
-      </Plot>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should render StackBar chart correctly', async () => {
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <StackBar x="time">
-          <StackBar.Bar y="stack1" duration={0} />
-          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
-        </StackBar>
-      </Plot>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should Bar support minimal height for empty value', async () => {
-    const component = (
-      <Plot
-        data={data.map((item) => {
-          item.stack1 = 0;
-          item.stack2 = 0;
-          item.stack3 = -0;
-          return item;
-        })}
-        scale={[xScale, yScale]}
-        width={width}
-        height={height}
-      >
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <GroupBar x="time">
-          <GroupBar.Bar y="stack1" duration={0} />
-          <GroupBar.Bar y="stack2" hMin={10} duration={0} color="orange" />
-          <GroupBar.Bar y="stack3" duration={0} color="green" />
-        </GroupBar>
-        <XAxis position={0} />
-      </Plot>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should not cut content on right with left margin', async () => {
-    const width = 500;
-    const height = 300;
-
-    const data = Array(10)
-      .fill({})
-      .map((d, i) => ({
-        x: (i / 10) * 10,
-        y: ((10 - i) / 10) * 10,
-        value: i,
-      }));
-
-    const MARGIN = {
-      top: 40,
-      left: 40,
-      bottom: 0,
-      right: 0,
-    };
-
-    const xScale = scaleLinear()
-      .range([MARGIN.left, width - MARGIN.right])
-      .domain([0, 10]);
-
-    const yScale = scaleLinear()
-      .range([height - MARGIN.bottom, MARGIN.top])
-      .domain([0, 10]);
-
-    const component = (
-      <>
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Grid />
-          </YAxis>
-          <Bubble x="x" y="y" value="value" />
-        </Plot>
-        <br />
-        <br />
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Grid />
-          </YAxis>
-          <ScatterPlot x="x" y="y" value="value" r={30} />
-        </Plot>
-      </>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-});
-describe('d3 charts visual regression', () => {
   test('should render area-without-data', async () => {
     const data = [
       { x: 0, y: 1 },
@@ -483,22 +336,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverLine} x="x" wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].x}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Line</Tooltip.Dot>
-                      <Text bold>{data[xIndex].y ?? 'n/a'}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <Area x="x" y="y">
+          <Area x="x" y="y" duration={0}>
             <Area.Null />
             <Area.Dots />
           </Area>
@@ -605,6 +443,477 @@ describe('d3 charts visual regression', () => {
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
 
+  test('should render stacked-area-without-data', async () => {
+    const data = [
+      { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 3, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 5 },
+      { time: 3, stack1: null, stack2: null, stack3: null },
+      { time: 4, stack1: null, stack2: null, stack3: null },
+      { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+      { time: 6, stack1: null, stack2: null, stack3: null },
+      { time: 7, stack1: 2, stack2: 5, stack3: 3 },
+      { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+      { time: 9, stack1: 5, stack2: 5, stack3: 3 },
+    ];
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'time'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 15]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Grid />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks ticks={data.map((d) => +d.time)} />
+          </XAxis>
+          <StackedArea x="time">
+            <StackedArea.Area y="stack1">
+              <StackedArea.Area.Null />
+              <StackedArea.Area.Dots />
+            </StackedArea.Area>
+            <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA">
+              <StackedArea.Area.Null />
+              <StackedArea.Area.Dots />
+            </StackedArea.Area>
+            <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D">
+              <StackedArea.Area.Null />
+              <StackedArea.Area.Dots />
+            </StackedArea.Area>
+          </StackedArea>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+});
+
+describe('Venn', () => {
+  shouldSupportRef(Venn, PlotTest);
+
+  test('should render venn-custom-intersection', async () => {
+    const data = {
+      G: 200,
+      F: 200,
+      C: 200,
+      'G/F': 100,
+      'G/C': 100,
+      'F/C': 100,
+      'G/F/C': 100,
+    };
+
+    const Component: React.FC = () => {
+      return (
+        <Plot height={300} width={400} data={data}>
+          <Venn>
+            <Venn.Circle dataKey="G" />
+            <Venn.Circle dataKey="F" color={colors['blue-03']} />
+            <Venn.Circle dataKey="C" color={colors['orange-04']} />
+            <Venn.Intersection dataKey="G/F" />
+            <Venn.Intersection dataKey="G/C" />
+            <Venn.Intersection dataKey="F/C" />
+            <Venn.Intersection
+              dataKey="G/F/C"
+              style={{
+                stroke: colors['violet-04'],
+                fill: colors['violet-04'],
+                fillOpacity: '0.3',
+              }}
+            />
+          </Venn>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render venn-orientation', async () => {
+    const orders = [
+      (val1, val2) => val2.radius - val1.radius,
+      (val1, val2) => val1.radius - val2.radius,
+    ];
+
+    const orientations = [Math.PI / 2, Math.PI];
+
+    const data = {
+      F: 5,
+      S: 7,
+      'F/S': 3,
+    };
+
+    const Component: React.FC = () => {
+      const [orientation, setOrientation] = React.useState(0);
+      const [order, setOrder] = React.useState(0);
+
+      return (
+        <Flex alignItems="center" direction="column">
+          <Plot height={300} width={400} data={data}>
+            <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
+              <Venn.Circle dataKey="F" />
+              <Venn.Circle dataKey="S" color={colors['blue-03']} />
+              <Venn.Intersection dataKey="F/S" />
+            </Venn>
+          </Plot>
+          <Flex direction="row">
+            <Button onClick={() => setOrientation(Number(!orientation))} mr={2}>
+              Change orientation
+            </Button>
+            <Button onClick={() => setOrder(Number(!order))}>Change order</Button>
+          </Flex>
+        </Flex>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render venn', async () => {
+    const data = {
+      G: 200,
+      F: 200,
+      C: 500,
+      U: 20,
+      'G/F': 100,
+      'G/C': 100,
+      'F/C': 100,
+      'G/F/C': 100,
+    };
+
+    const Component: React.FC = () => {
+      return (
+        <Plot height={300} width={400} data={data}>
+          <Venn>
+            <Venn.Circle dataKey="G" name="Good" />
+            <Venn.Circle dataKey="F" name="Fast" color={colors['blue-03']} />
+            <Venn.Circle dataKey="C" name="Cheap" color={colors['orange-04']} />
+            <Venn.Circle dataKey="U" name="Unknown" color={colors['pink-03']} />
+            <Venn.Intersection dataKey="G/F" name="Good & Fast" />
+            <Venn.Intersection dataKey="G/C" name="Good & Cheap" />
+            <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
+            <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
+          </Venn>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot({
+      // because 0.00012044219843687642% different from snapshot 😬
+      failureThreshold: 0.0001,
+    });
+  });
+});
+
+describe('Bar', () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+  const data = [
+    { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+    { time: 1, stack1: 2, stack2: 3, stack3: 4 },
+    { time: 2, stack1: 1, stack2: 4, stack3: 5 },
+    { time: 3, stack1: 3, stack2: 2, stack3: 6 },
+    { time: 4, stack1: 2, stack2: 4, stack3: 4 },
+    { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+    { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+    { time: 7, stack1: 2, stack2: 5, stack3: 3 },
+    { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+    { time: 9, stack1: 5, stack2: 5, stack3: 3 },
+  ];
+
+  const xScale = scaleBand()
+    .range([MARGIN, width - MARGIN])
+    .domain(data.map((d) => d.time))
+    .paddingInner(0.4)
+    .paddingOuter(0.2);
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 15]);
+
+  test('should render Bar chart correctly', async () => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render Bar with radius = height if radius > height', async () => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0} r={15} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render the minimum height for bars with a height close to zero', async () => {
+    const yScale = scaleLinear()
+      .range([height - MARGIN, MARGIN])
+      .domain([-5, 5]);
+
+    const data = [
+      { time: 0, stack1: 0 },
+      { time: 1, stack1: 0.05 },
+      { time: 2, stack1: 0.5 },
+      { time: 3, stack1: 1 },
+      { time: 4, stack1: -4 },
+      { time: 5, stack1: -0.05 },
+      { time: 6, stack1: -0 },
+      { time: 7, stack1: -0.5 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render Bar chart without data correctly', async () => {
+    const data = [
+      { time: 0, stack1: 0 },
+      { time: 1, stack1: null },
+      { time: 2, stack1: 10 },
+      { time: 3, stack1: null },
+      { time: 4, stack1: -0 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x="time" y="stack1" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render StackBar chart correctly', async () => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render StackBar chart correctly with zero values', async () => {
+    const data = [
+      { time: 0, stack1: 1, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 0, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 0 },
+      { time: 3, stack1: 3, stack2: 2, stack3: 6 },
+      { time: 4, stack1: 0, stack2: 0, stack3: 4 },
+      { time: 5, stack1: 3, stack2: 4, stack3: 3 },
+      { time: 6, stack1: 4, stack2: 1, stack3: 5 },
+      { time: 7, stack1: 0, stack2: 0, stack3: 0 },
+      { time: 8, stack1: 2, stack2: 6, stack3: 5 },
+      { time: 9, stack1: 5, stack2: 0, stack3: 3 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+          <StackBar.Bar y="stack3" color={colors['green-02']} duration={0} hMin={5} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render StackBar chart correctly with custom hMin', async () => {
+    const yScale = scaleLinear()
+      .range([height - MARGIN, MARGIN])
+      .domain([-10, 10]);
+
+    const data = [
+      { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
+      { time: 3, stack1: -3, stack2: -2, stack3: -0.02 },
+      { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
+      { time: 5, stack1: -0.01, stack2: -0.02, stack3: -0.03 },
+      { time: 6, stack1: 3, stack2: 1, stack3: 4 },
+      { time: 7, stack1: 0, stack2: 0, stack3: 0 },
+      { time: 8, stack1: 0.03, stack2: 0.03, stack3: 0.03 },
+      { time: 9, stack1: -3, stack2: -0.01, stack3: -4 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" color={colors['red-02']} hMin={5} duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} hMin={5} duration={0} />
+          <StackBar.Bar y="stack3" color={colors['green-02']} hMin={5} duration={0} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should render StackBar chart correctly with default hMin', async () => {
+    const yScale = scaleLinear()
+      .range([height - MARGIN, MARGIN])
+      .domain([-10, 10]);
+
+    const data = [
+      { time: 0, stack1: 0.01, stack2: 4, stack3: 3 },
+      { time: 1, stack1: 2, stack2: 0.01, stack3: 4 },
+      { time: 2, stack1: 1, stack2: 4, stack3: 0.01 },
+      { time: 3, stack1: -3, stack2: -2, stack3: -0.02 },
+      { time: 4, stack1: 0, stack2: 0.03, stack3: 0.01 },
+      { time: 5, stack1: -0.01, stack2: -0.02, stack3: -0.03 },
+      { time: 6, stack1: 3, stack2: 1, stack3: 4 },
+      { time: 7, stack1: 0, stack2: 0, stack3: 0 },
+      { time: 8, stack1: 0.03, stack2: 0.03, stack3: 0.03 },
+      { time: 9, stack1: -3, stack2: -0.01, stack3: -4 },
+    ];
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <StackBar x="time">
+          <StackBar.Bar y="stack1" color={colors['red-02']} duration={0} />
+          <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+          <StackBar.Bar y="stack3" color={colors['green-02']} duration={0} />
+        </StackBar>
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
+  test('should not cut content on right with left margin', async () => {
+    const width = 500;
+    const height = 300;
+
+    const data = Array(10)
+      .fill({})
+      .map((d, i) => ({
+        x: (i / 10) * 10,
+        y: ((10 - i) / 10) * 10,
+        value: i,
+      }));
+
+    const MARGIN = {
+      top: 40,
+      left: 40,
+      bottom: 0,
+      right: 0,
+    };
+
+    const xScale = scaleLinear()
+      .range([MARGIN.left, width - MARGIN.right])
+      .domain([0, 10]);
+
+    const yScale = scaleLinear()
+      .range([height - MARGIN.bottom, MARGIN.top])
+      .domain([0, 10]);
+
+    const component = (
+      <>
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Grid />
+          </YAxis>
+          <Bubble x="x" y="y" value="value" />
+        </Plot>
+        <br />
+        <br />
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Grid />
+          </YAxis>
+          <ScatterPlot x="x" y="y" value="value" r={30} />
+        </Plot>
+      </>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
+  });
+
   test('should render bar-group', async () => {
     const data = Array(5)
       .fill({})
@@ -638,28 +947,9 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} x="category" wMin={100}>
-            {({ xIndex }) => ({
-              children: (
-                <>
-                  <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                  <Flex justifyContent="space-between">
-                    <Tooltip.Dot mr={4}>Bar 1</Tooltip.Dot>
-                    <Text bold>{data[xIndex].bar1}</Text>
-                  </Flex>
-                  <Flex mt={2} justifyContent="space-between">
-                    <Tooltip.Dot mr={4} color={colors['green-02']}>
-                      Bar 2
-                    </Tooltip.Dot>
-                    <Text bold>{data[xIndex].bar2}</Text>
-                  </Flex>
-                </>
-              ),
-            })}
-          </Tooltip>
           <GroupBar x="category">
-            <GroupBar.Bar y="bar1" />
-            <GroupBar.Bar y="bar2" color={colors['green-02']} />
+            <GroupBar.Bar y="bar1" duration={0} />
+            <GroupBar.Bar y="bar2" color={colors['green-02']} duration={0} />
           </GroupBar>
         </Plot>
       );
@@ -701,31 +991,8 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} x="category" wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4} color={colors['green-02']}>
-                        Positive
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].bar1}</Text>
-                    </Flex>
-                    <Flex justifyContent="space-between" mt={2}>
-                      <Tooltip.Dot mr={4} color={colors['orange-04']}>
-                        Negative
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].bar2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <Bar x="category" y="bar1" color={colors['green-02']} />
-          <Bar x="category" y="bar2" color={colors['orange-04']} />
+          <Bar x="category" y="bar1" color={colors['green-02']} duration={0} />
+          <Bar x="category" y="bar2" color={colors['orange-04']} duration={0} />
           <XAxis position={0} />
         </Plot>
       );
@@ -768,12 +1035,13 @@ describe('d3 charts visual regression', () => {
           </XAxis>
           <HoverLine x="category" />
           <HoverRect x="category" />
-          <Bar x="category" y="bar" />
+          <Bar x="category" y="bar" duration={0} />
           <Line
             x="category"
             y="bar"
             color={resolveColor('wall')}
             style={{ strokeWidth: 3, strokeDasharray: 5 }}
+            duration={0}
           >
             <Line.Dots display />
           </Line>
@@ -816,7 +1084,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Bar x="category" y="bar" />
+          <Bar x="category" y="bar" duration={0} />
         </Plot>
       );
     };
@@ -850,22 +1118,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Tooltip tag={HoverRect} y="category" wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Bar</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <HorizontalBar x="bar" y="category">
+          <HorizontalBar x="bar" y="category" duration={0}>
             <HorizontalBar.Background />
           </HorizontalBar>
         </Plot>
@@ -906,30 +1159,9 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
             <XAxis.Grid />
           </XAxis>
-          <Tooltip tag={HoverRect} y="category" wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Bar 1</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar1}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Tooltip.Dot mr={4} color={colors['green-02']}>
-                        Bar 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
           <GroupBar y="category">
-            <GroupBar.HorizontalBar x="bar1" />
-            <GroupBar.HorizontalBar x="bar2" color={colors['green-02']} />
+            <GroupBar.HorizontalBar x="bar1" duration={0} />
+            <GroupBar.HorizontalBar x="bar2" color={colors['green-02']} duration={0} />
           </GroupBar>
         </Plot>
       );
@@ -968,27 +1200,52 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
             <XAxis.Grid />
           </XAxis>
-          <Tooltip tag={HoverRect} y="category" wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Bar</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <HorizontalBar x="bar" y="category" />
+          <HorizontalBar x="bar" y="category" duration={0} />
         </Plot>
       );
     };
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render bar-horizontal with null and negative values correctly', async () => {
+    const data = [
+      { category: 'Category 1', bar: -0.05 },
+      { category: 'Category 2', bar: 0 },
+      { category: 'Category 3', bar: 5 },
+      { category: 'Category 4', bar: 0.05 },
+      { category: 'Category 5', bar: null },
+      { category: 'Category 6', bar: -5 },
+    ];
+
+    const MARGIN = 40;
+    const width = 500;
+    const height = 300;
+
+    const xScale = scaleLinear()
+      .range([MARGIN * 2, width - MARGIN])
+      .domain([-7, 7]);
+
+    const yScale = scaleBand()
+      .range([height - MARGIN, MARGIN])
+      .domain(data.map((d) => d.category))
+      .paddingInner(0.4)
+      .paddingOuter(0.2);
+
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis hide={false}>
+          <YAxis.Ticks />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+          <XAxis.Grid />
+        </XAxis>
+        <HorizontalBar x="bar" y="category" duration={0} />
+      </Plot>
+    );
+
+    expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
   test('should render bar-label', async () => {
@@ -1017,7 +1274,7 @@ describe('d3 charts visual regression', () => {
           <YAxis>
             <YAxis.Ticks />
           </YAxis>
-          <HorizontalBar x="bar" y="category">
+          <HorizontalBar x="bar" y="category" duration={0}>
             {({ value, x, y, width, height }) => {
               return {
                 children: (
@@ -1041,6 +1298,96 @@ describe('d3 charts visual regression', () => {
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
 
+  test('should render bar-stack', async () => {
+    const data = [...Array(5).keys()].map((d, i) => ({
+      category: `Category ${i}`,
+      stack1: Math.abs(Math.sin(Math.exp(i))) * 10,
+      stack2: Math.abs(Math.sin(Math.exp(i))) * 10,
+    }));
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleBand()
+        .range([MARGIN, width - MARGIN])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 20]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Grid />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <StackBar x="category">
+            <StackBar.Bar y="stack1" duration={0} />
+            <StackBar.Bar y="stack2" color={colors['blue-02']} duration={0} />
+          </StackBar>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render bar-horizontal-stack', async () => {
+    const data = [
+      { category: 'Category 1', stack1: 0.01, stack2: 0.03, stack3: 0.01 },
+      { category: 'Category 2', stack1: -0.01, stack2: -1, stack3: -0.01 },
+      { category: 'Category 3', stack1: -1, stack2: -1, stack3: -1 },
+      { category: 'Category 4', stack1: -0.01, stack2: -0.01, stack3: -0.01 },
+      { category: 'Category 5', stack1: 3, stack2: 0, stack3: 5 },
+      { category: 'Category 6', stack1: 0.01, stack2: 1, stack3: 0.01 },
+    ];
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN * 2, width - MARGIN])
+        .domain([-10, 10]);
+
+      const yScale = scaleBand()
+        .range([height - MARGIN, MARGIN])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis hide={false}>
+            <YAxis.Ticks />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+            <XAxis.Grid />
+          </XAxis>
+          <StackBar y="category">
+            <StackBar.HorizontalBar x="stack1" color={colors['green-02']} wMin={5} duration={0} />
+            <StackBar.HorizontalBar x="stack2" color={colors['blue-02']} wMin={5} duration={0} />
+            <StackBar.HorizontalBar x="stack3" color={colors['red-02']} wMin={5} duration={0} />
+          </StackBar>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+});
+
+describe('Bubble', () => {
   test('should render bubble', async () => {
     const data = Array(10)
       .fill({})
@@ -1072,21 +1419,7 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Bubble x="x" y="y" value="value" />
-          <Tooltip>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag="div">X axis {data[xIndex].x}</Text>
-                    <Text tag="div">Y axis {data[xIndex].y}</Text>
-                    <Text tag="div">Value {data[xIndex].value}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <Bubble x="x" y="y" value="value" duration={0} />
         </Plot>
       );
     };
@@ -1125,549 +1458,16 @@ describe('d3 charts visual regression', () => {
           <XAxis>
             <XAxis.Ticks />
           </XAxis>
-          <Bubble data={data} x="x" y="y" value="value" label="label" color="color" />
-          <Tooltip>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag="div">X axis {data[xIndex].x}</Text>
-                    <Text tag="div">Y axis {data[xIndex].y}</Text>
-                    <Text tag="div">Value {data[xIndex].value}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
+          <Bubble data={data} x="x" y="y" value="value" label="label" color="color" duration={0} />
         </Plot>
       );
     };
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
+});
 
-  test('should render axis-grid', async () => {
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks ticks={yScale.ticks()} />
-            <YAxis.Grid ticks={yScale.ticks()} />
-          </YAxis>
-          <XAxis ticks={xScale.ticks()}>
-            <XAxis.Ticks />
-            <XAxis.Grid />
-          </XAxis>
-          <Line x="x" y="y" />
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render axis-ticks', async () => {
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: (Math.abs(Math.sin(Math.exp(i))) > 0.5 ? 1 : -1) * Math.abs(Math.sin(Math.exp(i))),
-      }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 60;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([-1, 1]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks()} />
-          </XAxis>
-          <YAxis>
-            <YAxis.Ticks ticks={yScale.ticks(5)}>
-              {({ value }) => ({
-                children: yScale.tickFormat(5, '+%')(value),
-              })}
-            </YAxis.Ticks>
-          </YAxis>
-          <Line x="x" y="y" />
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render axis-titles', async () => {
-    const data = Array(5)
-      .fill({})
-      .map((d, i) => ({
-        category: `Category ${i}`,
-        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
-      }));
-
-    const Component: React.FC = () => {
-      const width = 500;
-      const height = 300;
-      const xScale = scaleBand()
-        .range([90, width - 60])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
-      const yScale = scaleLinear()
-        .range([height - 40, 40])
-        .domain([0, 1000000]);
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Ticks position="right">
-              {({ value }) => ({
-                children: Math.floor(value / 100000),
-              })}
-            </YAxis.Ticks>
-            <YAxis.Grid />
-            <YAxis.Title position="left">YAxis title</YAxis.Title>
-            <YAxis.Title>YAxis title</YAxis.Title>
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-            <XAxis.Ticks position="top" />
-            <XAxis.Title>XAxis title</XAxis.Title>
-            <XAxis.Title position="bottom">XAxis title</XAxis.Title>
-          </XAxis>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render reference line', async () => {
-    const data = Array(5)
-      .fill({})
-      .map((d, i) => ({
-        category: `Category ${i}`,
-        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
-      }));
-
-    const Component: React.FC = () => {
-      const width = 500;
-      const height = 300;
-      const xScale = scaleBand()
-        .range([90, width - 60])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
-      const yScale = scaleLinear()
-        .range([height - 40, 40])
-        .domain([0, 1000000]);
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <ReferenceLine title="Left data" value={data[0].category} />
-          <ReferenceLine title="Right data" position="right" value={data[1].category} />
-          <ReferenceLine title="Top data" position="top" value={900000} />
-          <ReferenceLine title="Bottom data" position="bottom" value={300000} />
-          <ReferenceLine
-            value={data[3].category}
-            strokeDasharray="3 3"
-            strokeWidth="0.5"
-            title="Mobile data"
-            width="100"
-          >
-            <ReferenceLine.Background width="100" />
-          </ReferenceLine>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render axis', async () => {
-    const data = Array(21)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks ticks={[0, 5, 10]} />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
-          </XAxis>
-          <Line x="x" y="y" />
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render export-in-image', async () => {
-    const EXPORTS = ['PNG', 'JPEG', 'WEBP'];
-
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
-
-    function getSVGString(svgNode) {
-      svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
-      const cssStyleText = getCSSStyles(svgNode);
-      appendCSS(cssStyleText, svgNode);
-
-      const serializer = new XMLSerializer();
-      let svgString = serializer.serializeToString(svgNode);
-      svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
-      svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
-
-      return svgString;
-
-      function getCSSStyles(parentElement) {
-        const selectorTextArr = [];
-
-        for (let c = 0; c < parentElement.classList.length; c++) {
-          if (!contains('.' + parentElement.classList[c], selectorTextArr))
-            selectorTextArr.push('.' + parentElement.classList[c]);
-        }
-
-        // Add Children element Ids and Classes to the list
-        const nodes = parentElement.getElementsByTagName('*');
-        for (let i = 0; i < nodes.length; i++) {
-          const id = nodes[i].id;
-          if (!contains('#' + id, selectorTextArr)) selectorTextArr.push('#' + id);
-
-          const classes = nodes[i].classList;
-          for (let c = 0; c < classes.length; c++)
-            if (!contains('.' + classes[c], selectorTextArr))
-              selectorTextArr.push('.' + classes[c]);
-        }
-
-        // Extract CSS Rules
-        let extractedCSSText = '';
-        for (let i = 0; i < document.styleSheets.length; i++) {
-          const s = document.styleSheets[i];
-
-          try {
-            if (!s.cssRules) continue;
-          } catch (e) {
-            if (e.name !== 'SecurityError') throw e; // for Firefox
-            continue;
-          }
-
-          const cssRules = s.cssRules;
-          for (let r = 0; r < cssRules.length; r++) {
-            if (
-              cssRules[r].selectorText &&
-              selectorTextArr.some((s) => cssRules[r].selectorText.includes(s))
-            )
-              extractedCSSText += cssRules[r].cssText;
-          }
-        }
-
-        return extractedCSSText;
-
-        function contains(str, arr) {
-          return arr.indexOf(str) !== -1;
-        }
-      }
-
-      function appendCSS(cssText, element) {
-        const styleElement = document.createElement('style');
-        styleElement.setAttribute('type', 'text/css');
-        styleElement.innerHTML = cssText;
-        const refNode = element.hasChildNodes() ? element.children[0] : null;
-        element.insertBefore(styleElement, refNode);
-      }
-    }
-
-    function svgString2Image(svgString, width, height, format, callback) {
-      format = format ? format : 'png';
-      const imgsrc = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
-
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-
-      canvas.width = width;
-      canvas.height = height;
-
-      const image = new Image();
-      image.onload = function () {
-        context.clearRect(0, 0, width, height);
-        context.drawImage(image, 0, 0, width, height);
-
-        const img = canvas.toDataURL(`image/${format}`);
-        callback(img);
-      };
-
-      image.src = imgsrc;
-    }
-
-    const Component: React.FC = () => {
-      const [, updateVisible] = React.useState(false);
-      const [linkElements, updateLinkElements] = React.useState(
-        EXPORTS.map((name) => ({ key: name, children: name })),
-      );
-
-      const svg = React.createRef();
-      const download = React.createRef();
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
-
-      React.useEffect(() => {
-        const svgElement = svg.current;
-        const svgString = getSVGString(svgElement);
-        EXPORTS.forEach((name, ind) => {
-          const format = name.toLowerCase();
-          svgString2Image(svgString, 2 * width, 2 * height, format, save);
-          function save(image) {
-            linkElements[ind] = {
-              ...linkElements[ind],
-              download: `image.${format}`,
-              href: image,
-            };
-
-            updateLinkElements([...linkElements]);
-          }
-        });
-      }, []);
-      return (
-        <Flex>
-          <Plot ref={svg} data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis ticks={yScale.ticks()}>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis ticks={xScale.ticks()}>
-              <XAxis.Ticks />
-            </XAxis>
-            <Line x="x" y="y">
-              <Line.Dots display />
-            </Line>
-          </Plot>
-          <DropdownMenu onVisibleChange={updateVisible}>
-            <DropdownMenu.Trigger tag={Button}>
-              <Button.Addon tag={FileExportXS} />
-              <Button.Text>Export</Button.Text>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Popper wMax="257px">
-              <DropdownMenu.List ref={download}>
-                {EXPORTS.map((name, ind) => (
-                  <DropdownMenu.Item tag="a" {...linkElements[ind]} />
-                ))}
-              </DropdownMenu.List>
-            </DropdownMenu.Popper>
-          </DropdownMenu>
-        </Flex>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render legend', async () => {
-    const data = [...Array(10).keys()].map((d, i) => ({
-      x: i,
-      y: Math.abs(Math.sin(Math.exp(i))) * i,
-      y2: Math.abs(Math.sin(Math.exp(i))) * (i + 2),
-    }));
-
-    const Component: React.FC = () => {
-      const [dataLegend, updateDataLegend] = React.useState(
-        Object.keys(data[0])
-          .filter((name) => name !== 'x')
-          .map((name) => ({ name, checked: true, opacity: false })),
-      );
-
-      const MAP_THEME = {
-        y: 'orange',
-        y2: 'green',
-      };
-      const width = 500;
-      const height = 300;
-      const MARGIN = 40;
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
-
-      const handleChange = (name) => (checked) => {
-        const newDataLegend = dataLegend.map((item) => {
-          if (item.name === name) {
-            return { ...item, checked };
-          }
-          return { ...item, opacity: checked };
-        });
-
-        updateDataLegend(newDataLegend);
-      };
-
-      const handleMouseEnter = (name) => () => {
-        const activeItem = dataLegend.find((item) => item.name === name);
-        if (!activeItem.checked) return;
-        updateDataLegend((data) =>
-          data.map((item) => {
-            if (item.name !== name) return { ...item, opacity: true };
-            return item;
-          }),
-        );
-      };
-      const handleMouseLeave = () => {
-        updateDataLegend(dataLegend.map((item) => ({ ...item, opacity: false })));
-      };
-
-      return (
-        <>
-          <Box>
-            {dataLegend.map((item) => {
-              return (
-                <Checkbox
-                  key={item.name}
-                  onMouseEnter={handleMouseEnter(item.name)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Checkbox.Value
-                    theme={MAP_THEME[item.name]}
-                    checked={item.checked}
-                    onChange={handleChange(item.name)}
-                  />
-                  <Checkbox.Text pr={3}>{item.name}</Checkbox.Text>
-                </Checkbox>
-              );
-            })}
-          </Box>
-          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis>
-              <XAxis.Ticks />
-            </XAxis>
-            {dataLegend.map(
-              (item) =>
-                item.checked && (
-                  <Line
-                    key={item.name}
-                    x="x"
-                    y={item.name}
-                    color={MAP_THEME[item.name]}
-                    opacity={item.opacity ? 0.3 : 1}
-                  />
-                ),
-            )}
-          </Plot>
-        </>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render margin', async () => {
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 100;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain(minMax(data, 'y'));
-
-      return (
-        <Plot
-          data={data}
-          scale={[xScale, yScale]}
-          width={width}
-          height={height}
-          style={{ border: '1px solid' }}
-        >
-          <Line x="x" y="y" />
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
+describe('Donut', () => {
   test('should render donut-without-data', async () => {
     const data = {
       a: 0,
@@ -1707,20 +1507,6 @@ describe('d3 charts visual regression', () => {
             <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
             <Donut.Label>Example</Donut.Label>
           </Donut>
-          <Tooltip>
-            {({ dataKey, name }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{name}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Text bold>{data[dataKey]}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
@@ -1798,67 +1584,15 @@ describe('d3 charts visual regression', () => {
               </Text>
             </Donut.Label>
           </Donut>
-          <Tooltip>
-            {({ dataKey, name }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{name}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Text bold>{data[dataKey]}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
+});
 
-  test('should render line', async () => {
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <Line x="x" y="y">
-            <Line.Dots display />
-          </Line>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
+describe('Radial', () => {
   test('should render radial-tree-custom-center', async () => {
     const Component: React.FC = () => {
       const width = 500;
@@ -2027,7 +1761,9 @@ describe('d3 charts visual regression', () => {
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
+});
 
+describe('Scatter', () => {
   test('should render custom-color-values', async () => {
     const data = Array(20)
       .fill({})
@@ -2062,20 +1798,6 @@ describe('d3 charts visual regression', () => {
           </XAxis>
           <ScatterPlot x="x" y="y1" value="value" color="#2BB3FF" valueColor="#008ff8" />
           <ScatterPlot x="x" y="y2" value="value" color="#59DDAA" valueColor="#00C192" />
-          <Tooltip>
-            {({ xIndex, x, y, value }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag="div">X axis {data[xIndex][x]}</Text>
-                    <Text tag="div">Y axis {data[xIndex][y]}</Text>
-                    <Text tag="div">Value {data[xIndex][value]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
@@ -2116,19 +1838,6 @@ describe('d3 charts visual regression', () => {
           </XAxis>
           <ScatterPlot x="x" y="y1" color="#2BB3FF" />
           <ScatterPlot x="x" y="y2" color="#59DDAA" />
-          <Tooltip>
-            {({ xIndex, x, y, color }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Dot color={color}>Data</Tooltip.Dot>
-                    <Text tag="div">X axis {data[xIndex][x]}</Text>
-                    <Text tag="div">Y axis {data[xIndex][y]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
@@ -2168,347 +1877,48 @@ describe('d3 charts visual regression', () => {
             <XAxis.Ticks />
           </XAxis>
           <ScatterPlot x="x" y="y" value="value" />
-          <Tooltip>
-            {({ xIndex, x, y, value }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>Data</Tooltip.Title>
-                    <Text tag="div">X axis {data[xIndex][x]}</Text>
-                    <Text tag="div">Y axis {data[xIndex][y]}</Text>
-                    <Text tag="div">Value {data[xIndex][value]}</Text>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
         </Plot>
       );
     };
 
     expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
+});
 
-  test('should render stacked-area-without-data', async () => {
-    const data = [
-      { time: 0, stack1: 1, stack2: 4, stack3: 3 },
-      { time: 1, stack1: 2, stack2: 3, stack3: 4 },
-      { time: 2, stack1: 1, stack2: 4, stack3: 5 },
-      { time: 3, stack1: null, stack2: null, stack3: null },
-      { time: 4, stack1: null, stack2: null, stack3: null },
-      { time: 5, stack1: 3, stack2: 4, stack3: 3 },
-      { time: 6, stack1: null, stack2: null, stack3: null },
-      { time: 7, stack1: 2, stack2: 5, stack3: 3 },
-      { time: 8, stack1: 2, stack2: 6, stack3: 5 },
-      { time: 9, stack1: 5, stack2: 5, stack3: 3 },
-    ];
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'time'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 15]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks ticks={data.map((d) => +d.time)} />
-          </XAxis>
-          <Tooltip tag={HoverLine} x="time" wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].time}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack1 ?? 'n/a'}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Tooltip.Dot mr={4} color={colors['green-02']}>
-                        Stack 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack2 ?? 'n/a'}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Tooltip.Dot mr={4} color={colors['orange-04']}>
-                        Stack 3
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack3 ?? 'n/a'}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <StackedArea x="time">
-            <StackedArea.Area y="stack1">
-              <StackedArea.Area.Null />
-              <StackedArea.Area.Dots />
-            </StackedArea.Area>
-            <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA">
-              <StackedArea.Area.Null />
-              <StackedArea.Area.Dots />
-            </StackedArea.Area>
-            <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D">
-              <StackedArea.Area.Null />
-              <StackedArea.Area.Dots />
-            </StackedArea.Area>
-          </StackedArea>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render bar-stack', async () => {
-    const data = [...Array(5).keys()].map((d, i) => ({
-      category: `Category ${i}`,
-      stack1: Math.abs(Math.sin(Math.exp(i))) * 10,
-      stack2: Math.abs(Math.sin(Math.exp(i))) * 10,
-    }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleBand()
-        .range([MARGIN, width - MARGIN])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 20]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <Tooltip tag={HoverRect} x="category" wMin={100}>
-            {({ xIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack1}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Tooltip.Dot mr={4} color={colors['blue-02']}>
-                        Stack 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[xIndex].stack2}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Box mr={4}>Total</Box>
-                      <Text bold>{data[xIndex].stack1 + data[xIndex].stack2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <StackBar x="category">
-            <StackBar.Bar y="stack1" />
-            <StackBar.Bar y="stack2" color={colors['blue-02']} />
-          </StackBar>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render bar-horizontal-stack', async () => {
-    const data = [...Array(5).keys()].map((d, i) => ({
-      category: `Category ${i}`,
-      bar1: Math.abs(Math.sin(Math.exp(i))) * 10,
-      bar2: Math.abs(Math.sin(Math.exp(i))) * 10,
-    }));
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN * 2, width - MARGIN])
-        .domain([0, 20]);
-
-      const yScale = scaleBand()
-        .range([height - MARGIN, MARGIN])
-        .domain(data.map((d) => d.category))
-        .paddingInner(0.4)
-        .paddingOuter(0.2);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis hide={false}>
-            <YAxis.Ticks />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-            <XAxis.Grid />
-          </XAxis>
-          <Tooltip tag={HoverRect} y="category" wMin={100}>
-            {({ yIndex }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                    <Flex justifyContent="space-between">
-                      <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar1}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Tooltip.Dot mr={4} color={colors['blue-02']}>
-                        Stack 2
-                      </Tooltip.Dot>
-                      <Text bold>{data[yIndex].bar2}</Text>
-                    </Flex>
-                    <Flex mt={2} justifyContent="space-between">
-                      <Box mr={4}>Total</Box>
-                      <Text bold>{data[yIndex].bar1 + data[yIndex].bar2}</Text>
-                    </Flex>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
-          <StackBar y="category">
-            <StackBar.HorizontalBar x="bar1" />
-            <StackBar.HorizontalBar x="bar2" color={colors['blue-02']} />
-          </StackBar>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render venn-custom-intersection', async () => {
+describe('Radar', () => {
+  test('should render radar', async () => {
     const data = {
-      G: 200,
-      F: 200,
-      C: 200,
-      'G/F': 100,
-      'G/C': 100,
-      'F/C': 100,
-      'G/F/C': 100,
+      categories: [
+        'Variable 1',
+        'Variable 2',
+        'Variable 3',
+        'Variable 4',
+        'Variable 5',
+        'Variable 6',
+      ],
+      data_1: [1, 3, 5, 5, 9, 2],
+      data_2: [5, 2, 1, 2, 7, 6],
     };
+
+    const scale = scaleLinear().domain([0, 10]);
 
     const Component: React.FC = () => {
       return (
-        <Plot height={300} width={400} data={data}>
-          <Venn>
-            <Venn.Circle dataKey="G" />
-            <Venn.Circle dataKey="F" color={colors['blue-03']} />
-            <Venn.Circle dataKey="C" color={colors['orange-04']} />
-            <Venn.Intersection dataKey="G/F" />
-            <Venn.Intersection dataKey="G/C" />
-            <Venn.Intersection dataKey="F/C" />
-            <Venn.Intersection
-              dataKey="G/F/C"
-              style={{
-                stroke: colors['violet-04'],
-                fill: colors['violet-04'],
-                fillOpacity: '0.3',
-              }}
-            />
-          </Venn>
-        </Plot>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render venn-orientation', async () => {
-    const orders = [
-      (val1, val2) => val2.radius - val1.radius,
-      (val1, val2) => val1.radius - val2.radius,
-    ];
-
-    const orientations = [Math.PI / 2, Math.PI];
-
-    const data = {
-      F: 5,
-      S: 7,
-      'F/S': 3,
-    };
-
-    const Component: React.FC = () => {
-      const [orientation, changeOrientation] = React.useState(0);
-      const [order, changeOrder] = React.useState(0);
-
-      return (
-        <Flex alignItems="center" direction="column">
-          <Plot height={300} width={400} data={data}>
-            <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
-              <Venn.Circle dataKey="F" />
-              <Venn.Circle dataKey="S" color={colors['blue-03']} />
-              <Venn.Intersection dataKey="F/S" />
-            </Venn>
-          </Plot>
-          <Flex direction="row">
-            <Button onClick={() => changeOrientation(Number(!orientation))} mr={2}>
-              Change orientation
-            </Button>
-            <Button onClick={() => changeOrder(Number(!order))}>Change order</Button>
-          </Flex>
-        </Flex>
-      );
-    };
-
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
-  });
-
-  test('should render venn', async () => {
-    const data = {
-      G: 200,
-      F: 200,
-      C: 500,
-      U: 1,
-      'G/F': 100,
-      'G/C': 100,
-      'F/C': 100,
-      'G/F/C': 100,
-    };
-
-    const Component: React.FC = () => {
-      return (
-        <Plot height={300} width={400} data={data}>
-          <Venn>
-            <Venn.Circle dataKey="G" name="Good" />
-            <Venn.Circle dataKey="F" name="Fast" color={colors['blue-03']} />
-            <Venn.Circle dataKey="C" name="Cheap" color={colors['orange-04']} />
-            <Venn.Circle dataKey="U" name="Unknown" color={colors['pink-03']} />
-            <Venn.Intersection dataKey="G/F" name="Good & Fast" />
-            <Venn.Intersection dataKey="G/C" name="Good & Cheap" />
-            <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
-            <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
-          </Venn>
+        <Plot data={data} width={300} height={300}>
+          <Radar scale={scale}>
+            <Radar.Axis dataKey="categories">
+              <Radar.Axis.Ticks />
+              <Radar.Axis.Labels />
+            </Radar.Axis>
+            <Radar.Polygon dataKey="data_1">
+              <Radar.Polygon.Line />
+              <Radar.Polygon.Dots />
+            </Radar.Polygon>
+            <Radar.Polygon dataKey="data_2" color="red">
+              <Radar.Polygon.Line />
+              <Radar.Polygon.Dots />
+            </Radar.Polygon>
+          </Radar>
         </Plot>
       );
     };
@@ -2517,5 +1927,575 @@ describe('d3 charts visual regression', () => {
       // because 0.00012044219843687642% different from snapshot 😬
       failureThreshold: 0.0001,
     });
+  });
+});
+
+describe('Line', () => {
+  test('should render line', async () => {
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => {
+        const y = Math.abs(Math.sin(Math.exp(i))) * 10;
+        return {
+          x: i,
+          y: i == 2 || i == 3 ? null : y,
+        };
+      });
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 10]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Grid />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <Line x="x" y="y" duration={0}>
+            <Line.Dots display />
+          </Line>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+});
+
+describe('d3 charts visual regression', () => {
+  test('should render axis-grid', async () => {
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: Math.abs(Math.sin(Math.exp(i))) * 10,
+      }));
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 10]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks ticks={yScale.ticks()} />
+            <YAxis.Grid ticks={yScale.ticks()} />
+          </YAxis>
+          <XAxis ticks={xScale.ticks()}>
+            <XAxis.Ticks />
+            <XAxis.Grid />
+          </XAxis>
+          <Line x="x" y="y" duration={0} />
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render axis-ticks', async () => {
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: (Math.abs(Math.sin(Math.exp(i))) > 0.5 ? 1 : -1) * Math.abs(Math.sin(Math.exp(i))),
+      }));
+
+    const Component: React.FC = () => {
+      const MARGIN = 60;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([-1, 1]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <XAxis>
+            <XAxis.Ticks ticks={xScale.ticks()} />
+          </XAxis>
+          <YAxis>
+            <YAxis.Ticks ticks={yScale.ticks(5)}>
+              {({ value }) => ({
+                children: yScale.tickFormat(5, '+%')(value),
+              })}
+            </YAxis.Ticks>
+          </YAxis>
+          <Line x="x" y="y" duration={0} />
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render axis-titles', async () => {
+    const data = Array(5)
+      .fill({})
+      .map((d, i) => ({
+        category: `Category ${i}`,
+        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
+      }));
+
+    const Component: React.FC = () => {
+      const width = 500;
+      const height = 300;
+      const xScale = scaleBand()
+        .range([90, width - 60])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
+      const yScale = scaleLinear()
+        .range([height - 40, 40])
+        .domain([0, 1000000]);
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Ticks position="right">
+              {({ value }) => ({
+                children: Math.floor(value / 100000),
+              })}
+            </YAxis.Ticks>
+            <YAxis.Grid />
+            <YAxis.Title position="left">YAxis title</YAxis.Title>
+            <YAxis.Title>YAxis title</YAxis.Title>
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+            <XAxis.Ticks position="top" />
+            <XAxis.Title>XAxis title</XAxis.Title>
+            <XAxis.Title position="bottom">XAxis title</XAxis.Title>
+          </XAxis>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render reference line', async () => {
+    const data = Array(5)
+      .fill({})
+      .map((d, i) => ({
+        category: `Category ${i}`,
+        bar: Math.abs(Math.sin(Math.exp(i))) * 1000000,
+      }));
+
+    const Component: React.FC = () => {
+      const width = 500;
+      const height = 300;
+      const xScale = scaleBand()
+        .range([90, width - 60])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
+      const yScale = scaleLinear()
+        .range([height - 40, 40])
+        .domain([0, 1000000]);
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <ReferenceLine title="Left data" value={data[0].category} />
+          <ReferenceLine title="Right data" position="right" value={data[1].category} />
+          <ReferenceLine title="Top data" position="top" value={900000} />
+          <ReferenceLine title="Bottom data" position="bottom" value={300000} />
+          <ReferenceLine
+            value={data[3].category}
+            strokeDasharray="3 3"
+            strokeWidth="0.5"
+            title="Mobile data"
+            width="100"
+          >
+            <ReferenceLine.Background width="100" />
+          </ReferenceLine>
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render axis', async () => {
+    const data = Array(21)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: Math.abs(Math.sin(Math.exp(i))) * 10,
+      }));
+
+    const Component: React.FC = () => {
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 10]);
+
+      return (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks ticks={[0, 5, 10]} />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
+          </XAxis>
+          <Line x="x" y="y" duration={0} />
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render export-in-image', async () => {
+    const extensions = ['PNG', 'JPEG', 'WEBP'];
+
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: Math.abs(Math.sin(Math.exp(i))) * 10,
+      }));
+
+    function getSVGString(svgNode) {
+      svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
+      const cssStyleText = getCSSStyles(svgNode);
+      appendCSS(cssStyleText, svgNode);
+
+      const serializer = new XMLSerializer();
+      let svgString = serializer.serializeToString(svgNode);
+      svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
+      svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
+
+      return svgString;
+
+      function getCSSStyles(parentElement) {
+        const selectorTextArr = [];
+
+        for (let c = 0; c < parentElement.classList.length; c++) {
+          if (!contains('.' + parentElement.classList[c], selectorTextArr))
+            selectorTextArr.push('.' + parentElement.classList[c]);
+        }
+
+        // Add Children element Ids and Classes to the list
+        const nodes = parentElement.getElementsByTagName('*');
+        for (let i = 0; i < nodes.length; i++) {
+          const id = nodes[i].id;
+          if (!contains('#' + id, selectorTextArr)) selectorTextArr.push('#' + id);
+
+          const classes = nodes[i].classList;
+          for (let c = 0; c < classes.length; c++)
+            if (!contains('.' + classes[c], selectorTextArr))
+              selectorTextArr.push('.' + classes[c]);
+        }
+
+        // Extract CSS Rules
+        let extractedCSSText = '';
+        for (let i = 0; i < document.styleSheets.length; i++) {
+          const s = document.styleSheets[i];
+
+          try {
+            if (!s.cssRules) continue;
+          } catch (e) {
+            if (e.name !== 'SecurityError') throw e; // for Firefox
+            continue;
+          }
+
+          const cssRules = s.cssRules;
+          for (let r = 0; r < cssRules.length; r++) {
+            if (
+              cssRules[r].selectorText &&
+              selectorTextArr.some((s) => cssRules[r].selectorText.includes(s))
+            )
+              extractedCSSText += cssRules[r].cssText;
+          }
+        }
+
+        return extractedCSSText;
+
+        function contains(str, arr) {
+          return arr.indexOf(str) !== -1;
+        }
+      }
+
+      function appendCSS(cssText, element) {
+        const styleElement = document.createElement('style');
+        styleElement.setAttribute('type', 'text/css');
+        styleElement.innerHTML = cssText;
+        const refNode = element.hasChildNodes() ? element.children[0] : null;
+        element.insertBefore(styleElement, refNode);
+      }
+    }
+
+    function svgString2Image(svgString, width, height, format, callback) {
+      format = format ? format : 'png';
+      const imgsrc = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
+
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const image = new Image();
+      image.onload = function () {
+        context.clearRect(0, 0, width, height);
+        context.drawImage(image, 0, 0, width, height);
+
+        const img = canvas.toDataURL(`image/${format}`);
+        callback(img);
+      };
+
+      image.src = imgsrc;
+    }
+
+    const Component: React.FC = () => {
+      const [, setVisible] = React.useState(false);
+      const [linkElements, setLinkElements] = React.useState(
+        extensions.map((name) => ({ key: name, children: name })),
+      );
+
+      const svg = React.createRef();
+      const download = React.createRef();
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([0, 10]);
+
+      React.useEffect(() => {
+        const svgElement = svg.current;
+        const svgString = getSVGString(svgElement);
+        extensions.forEach((name, ind) => {
+          const format = name.toLowerCase();
+          svgString2Image(svgString, 2 * width, 2 * height, format, save);
+
+          function save(image) {
+            linkElements[ind] = {
+              ...linkElements[ind],
+              download: `image.${format}`,
+              href: image,
+            };
+
+            setLinkElements([...linkElements]);
+          }
+        });
+      }, []);
+      return (
+        <Flex>
+          <Plot ref={svg} data={data} scale={[xScale, yScale]} width={width} height={height}>
+            <YAxis ticks={yScale.ticks()}>
+              <YAxis.Ticks />
+              <YAxis.Grid />
+            </YAxis>
+            <XAxis ticks={xScale.ticks()}>
+              <XAxis.Ticks />
+            </XAxis>
+            <Line x="x" y="y" duration={0}>
+              <Line.Dots display />
+            </Line>
+          </Plot>
+          <DropdownMenu onVisibleChange={setVisible}>
+            <DropdownMenu.Trigger tag={Button}>
+              <Button.Addon tag={FileExportXS} />
+              <Button.Text>Export</Button.Text>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Popper wMax="257px">
+              <DropdownMenu.List ref={download}>
+                {extensions.map((name, ind) => (
+                  <DropdownMenu.Item tag="a" {...linkElements[ind]} />
+                ))}
+              </DropdownMenu.List>
+            </DropdownMenu.Popper>
+          </DropdownMenu>
+        </Flex>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render legend', async () => {
+    const data = [...Array(10).keys()].map((d, i) => ({
+      x: i,
+      y: Math.abs(Math.sin(Math.exp(i))) * i,
+      y2: Math.abs(Math.sin(Math.exp(i))) * (i + 2),
+    }));
+
+    const Component: React.FC = () => {
+      const [dataLegend, setDataLegend] = React.useState(
+        Object.keys(data[0])
+          .filter((name) => name !== 'x')
+          .map((name) => ({ name, checked: true, opacity: false })),
+      );
+
+      const MAP_THEME = {
+        y: 'orange',
+        y2: 'green',
+      };
+      const width = 500;
+      const height = 300;
+      const MARGIN = 40;
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
+
+      const handleChange = (name) => (checked) => {
+        const newDataLegend = dataLegend.map((item) => {
+          if (item.name === name) {
+            return { ...item, checked };
+          }
+          return { ...item, opacity: checked };
+        });
+
+        setDataLegend(newDataLegend);
+      };
+
+      const handleMouseEnter = (name) => () => {
+        const activeItem = dataLegend.find((item) => item.name === name);
+        if (!activeItem.checked) return;
+        setDataLegend((data) =>
+          data.map((item) => {
+            if (item.name !== name) return { ...item, opacity: true };
+            return item;
+          }),
+        );
+      };
+      const handleMouseLeave = () => {
+        setDataLegend(dataLegend.map((item) => ({ ...item, opacity: false })));
+      };
+
+      return (
+        <>
+          <Box>
+            {dataLegend.map((item) => {
+              return (
+                <Checkbox
+                  key={item.name}
+                  onMouseEnter={handleMouseEnter(item.name)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Checkbox.Value
+                    theme={MAP_THEME[item.name]}
+                    checked={item.checked}
+                    onChange={handleChange(item.name)}
+                  />
+                  <Checkbox.Text pr={3}>{item.name}</Checkbox.Text>
+                </Checkbox>
+              );
+            })}
+          </Box>
+          <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+            <YAxis>
+              <YAxis.Ticks />
+              <YAxis.Grid />
+            </YAxis>
+            <XAxis>
+              <XAxis.Ticks />
+            </XAxis>
+            {dataLegend.map(
+              (item) =>
+                item.checked && (
+                  <Line
+                    key={item.name}
+                    x="x"
+                    y={item.name}
+                    color={MAP_THEME[item.name]}
+                    opacity={item.opacity ? 0.3 : 1}
+                    duration={0}
+                  />
+                ),
+            )}
+          </Plot>
+        </>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+  });
+
+  test('should render margin', async () => {
+    const data = Array(20)
+      .fill({})
+      .map((d, i) => ({
+        x: i,
+        y: Math.abs(Math.sin(Math.exp(i))) * 10,
+      }));
+
+    const Component: React.FC = () => {
+      const MARGIN = 100;
+      const width = 500;
+      const height = 300;
+
+      const xScale = scaleLinear()
+        .range([MARGIN, width - MARGIN])
+        .domain(minMax(data, 'x'));
+
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain(minMax(data, 'y'));
+
+      return (
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+          style={{ border: '1px solid' }}
+        >
+          <Line x="x" y="y" duration={0} />
+        </Plot>
+      );
+    };
+
+    expect(await snapshot(<Component />)).toMatchImageSnapshot();
   });
 });

@@ -3,13 +3,12 @@ SCard {
   background: var(--intergalactic-bg-primary-neutral, #ffffff);
   padding: 0;
   border: none;
-  border-radius: var(--intergalactic-rounded-medium, 6px);
+  border-radius: var(--intergalactic-surface-rounded, 6px);
   box-shadow: var(
     --intergalactic-box-shadow-card,
     0px 0px 1px 0px rgba(25, 27, 35, 0.16),
     0px 1px 2px 0px rgba(25, 27, 35, 0.12)
   );
-  font-family: var(--intergalactic-base, Inter), sans-serif;
 }
 
 STitle {
@@ -26,7 +25,6 @@ SIcon {
   margin-right: var(--intergalactic-spacing-1x, 4px);
 }
 STooltip {
-  display: inline-flex;
   vertical-align: middle;
 }
 

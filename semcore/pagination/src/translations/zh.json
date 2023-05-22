@@ -1,6 +1,8 @@
 {
   "prevPageLabel": "上一页",
+  "prevPageDescription": "上一页 {pageNumber}",
   "nextPageLabel": "下一页",
+  "nextPageDescription": "下一页 {pageNumber}",
   "pageInputLabel": "页码：",
   "totalPagesLabel": "/",
   "pagination": "分页",

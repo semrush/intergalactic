@@ -38,5 +38,6 @@
   "view-go-to-table": "プロットデータ表へスキップ",
   "view-data-summary": "データサマリー",
   "view-summary-placeholder": "チャートデータサマリーを生成中",
-  "view-table": "データ表"
+  "view-table": "データ表",
+  "data-not-available": "n/a"
 }
