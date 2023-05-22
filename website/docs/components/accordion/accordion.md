@@ -42,10 +42,12 @@ You can set the width of the accordion that is appropriate for the context.
 
 > You can use text, link or button of any size you need as the accordion trigger.
 
-|                              | Appearance example                          | Default styles                                                                                                                                                                                                                                 |
+@table-caption Trigger appearance
+
+| Trigger type                             | Appearance example                          | Default styles                                                                                                                                                                                                                                 |
 | ---------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Accordion without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.                                                                                                                                                  |
-| Accordion with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
+| Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.                                                                                                                                                  |
+| Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
 
 @## Collapsed content
 
@@ -72,6 +74,8 @@ You can use this component to hide almost any content. This can be a text conten
 **The icon and text label have the same target zone**.
 
 ![](static/hoverzone.png)
+
+@table-caption Accordion states
 
 | State    | Appearance examples                              | Description and styles                                                                                                                                                                 |
 | -------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

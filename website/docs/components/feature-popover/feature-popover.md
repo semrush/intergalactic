@@ -8,153 +8,134 @@ tabName: Design
 
 @## Description
 
-**FeaturePopover** is a component that draws users’ attention to the interface element. _For example, it may point to a new function or suggest the next step to the user._
+**FeaturePopover** is a component that helps drawing users’ attention to an interface part or control. _For example, it may point to a new function or suggest the next step to the user._
 
-> FeaturePopover contains only simple reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
+FeaturePopover contains only simple reference/promotional information. The purpose of this component is to point to a specific feature and offer to use it.
 
-### It is used when
+**Use it when:**
 
-- It is necessary to draw the user’s attention to the interface element.
-- It is necessary to point at the next step for the user.
+- It is necessary to draw the user’s attention to an interface part.
+- You need to point at the next step for the user.
 
 @## Appearance
 
-### The component consists of
-
-All component elements are mandatory.
+### Component composition
 
 ![](static/spotlight-scheme.png)
 
-### Title
+### Spot
 
-The title should be brief, contain a call to action, and summarize the thought of the paragraph. _Example: Save filters._
-
-### Description
-
-The text should not be wrapped around anything, it should always be separated. A paragraph may contain [links](/components/link/) and formatted text.
-
-### Illustration
-
-Illustration depends on the FeaturePopover type (see below). Stylistics of illustrations for advertising notices and blank states is used.
-
-The illustration should help the user to understand the basic idea of the function being advertised. An illustration can be animated if it makes it easier to understand it.
-
-### Closing icon
-
-Closing icon is placed strictly in the upper right corner of the notification. It must close FeaturePopover forever.
-
-> If you need to use FeaturePopover without a crisscross, please discuss it with the UX and UI team.
-
-### Buttons
-
-Two buttons are always placed under the text of the message.
-
-- By clicking the `Got it` button FeaturePopover is closed forever.
-- By clicking the `Remind me later` button FeaturePopover is closed until the next user session.
-
-> If you want to use FeaturePopover without one of the buttons or without them at all, please discuss it with the UX/UI team.
-
-### Container
-
-The style of the container is unified in order to keep it recognizable.
-
-### Highlighting dot
-
-The animated dot is placed next to the control that you want to draw attention to. Try to avoid situations where the control has both [Dot](/components/dot/) and FeaturePopover. Otherwise, you will have visual mess, namely two dots on the component😎
-
-@## Types
-
-There are two types of the FeaturePopover: basic and extended. **They differ in maximum width and illustration.**
-
-| Type                                                                                                                                    | Appearance                                       |
-| --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| **Basic**. The illustration is the same for all FeaturePopovers of this type. The area to be illustrated is 40 * 40px.                 | ![](static/spotlight-default.png) |
-| **Extended**. The additional Illustration captures the essence of the message metaphorically. The area to be illustrated is 80 * 80px. | ![](static/spotlight-big.png)     |
-
-@## Themes
-
-The FeaturePopover theme is used on both light and dark backgrounds.
-
-| Element   | Tokens                                                                              |
-| --------- | ----------------------------------------------------------------------------------- |
-| Container | `--box-shadow-popper` for box-shadow, `--bg-primary-highlight` for background-color |
-| Spot      | `--bg-primary-highlight` for background-color                                       |
-
-@## Sizes and indents
-
-Basic and extended types have maximum width:
-
-- For basic type it is 350px;
-- For extended type it is 550px.
-
-### Indents
-
-#### Content
-
-![](static/spotlight-paddings.png)
-
-![](static/spotlight-content-paddings.png)
-
-Paddings of the container are 16px (padding-right is 32px).
-
-Recommendations for indents and content sizes:
-
-- The title is 16px (margin-bottom is 4px).
-- Text paragraph is 14px.
-- The invert `primary` & `tertiary` muted button has the size m (margin-top of the group of controls is 16px).
-- The area for the picture is `40px * 40px` or `80px * 80px` (margin-right to the content is 16px).
-
-#### Highlighting dot location
-
-The dot is always located in the lower corner of the control.
-
-![](static/spotlight-dot.png)
+The animated spot is always located in the lower corner of the element you want to draw attention to.
 
 ![](static/spotlight-sizes.png)
 
+![](static/spotlight-dot.png)
+
+Try to avoid situations where the control has both [Dot](/components/dot/) and FeaturePopover.Spot.
+
+![](static/spot-yes-no.png)
+
+### Title
+
+The title should be brief, contain a call to action, and summarize the main thought of the paragraph.
+
+![](static/title-yes-no.png)
+
+### Description
+
+The feature description should be short and informative. Try using no more than one or two sentences. A paragraph may contain [links](/components/link/) and formatted text.
+
+### Close icon
+
+`Close` icon is always placed in the upper right corner of the component. It closes FeaturePopover. We recommend you to show it always, and not to hide this control from the user.
+
+### Buttons
+
+Two buttons are always placed under the message.
+
+- By clicking the "Got it" button FeaturePopover closes forever.
+- By clicking the "Remind me later" button FeaturePopover closes until the next user session.
+
+### Illustration
+
+You can use the default illustration, or your own. The illustration should help the user to understand the basic idea of the feature being advertised. It can also be animated if it makes it easier to understand the feature.
+
+@table-caption FeaturePopover illustration sizes
+
+| Illustration size       | Illustration example              |
+| ----------------------- | --------------------------------- |
+| Small, 40px * 40px      | ![](static/spotlight-default.png) |
+| Medium, 80px * 80px     | ![](static/spotlight-big.png)     |
+
+### Styles
+
+@table-caption FeaturePopover default styles
+
+| Element      | Tokens                                                                              |
+| ------------ | ----------------------------------------------------------------------------------- |
+| Container    | `--box-shadow-popper` for box-shadow, `--bg-primary-highlight` for background-color |
+| Spot         | `--bg-primary-highlight` for background-color                                       |
+| `Close` icon | `--icon-non-interactive` for background-color                                       |
+
+### Maximum width
+
+You can use `wMax` property to set the maximum width of the FeaturePopover's popper. But we recommend to set the following widths:
+
+- 350px for FeaturePopover with small illustration.
+- 550px for FeaturePopover with medium illustration.
+
+### Content indents
+
+![Paddings of the container are 16px (padding-right is 32px).](static/spotlight-paddings.png)
+
+![](static/spotlight-content-margins.png)
+
+- For title use 16px font-size (`--fs-300`, `--lh-300` tokens). Margin-bottom is 4px (use `--spacing-1x` token).
+- For paragraph use 14px font-size (`--fs-200`, `--lh-200` tokens).
+- The invert `primary` & `tertiary` muted button has M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
+- Illustration's margin-right is 16px (`--spacing-4x` token).
+
 @## Appearance and hiding
 
-The element appears according to the timings you prescribe. It is hidden only by clicking on the buttons or the closing icon, or by clicking on the highlighted interface element.
+Component appears according to the timings you set through the `timeout` property.
+
+FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by clicking on the highlighted interface element.
 
 @## Usage in UX/UI
 
-> Important! Before using FeaturePopover ask yourself whether your new feature is so good that you want to focus on it. 😏
-
 ### General recommendations
 
-- Use FeaturePopover only to display promotional or training information. **The purpose of FeaturePopover is to emphasize a function and/or explain why the user needs it, as well as to give reasons to use it.**
-- Remember the user path and the context, in which they will see FeaturePopover. Show FeaturePopover ad hoc and do not overload the message with unnecessary information.
-- Always allow the user to close FeaturePopover. Do not force the user to use a feature if they do not need it now.
-- Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to `Info` icons, fake links and so on. Yes, your new feature is very cool, but keep your temper in check. 😏
-- Make sure that FeaturePopover does not cover important information that the user needs in the context of use.
+- Use FeaturePopover only to display promotional or onboarding information. The purpose of component is to emphasize a feature and/or explain why it can be useful to the user.
+- Mind the user path and the context, in which users will see FeaturePopover. Show it ad hoc and do not overload the message with unnecessary information.
+- Always allow the user to close FeaturePopover. Do not force the user to use a feature.
+- Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to `Info` icons, hint links and so on.
+- Make sure that FeaturePopover does not cover important parts in the interface that the user needs in the context of use.
 
 ### Terms of use
 
 - Do not show more than one FeaturePopover on a page at the same time.
-- **FeaturePopover for a new function should be shown for not more than a month.**
-- FeaturePopover should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the illuminated element. If the user interacts with filters, there is no need to show FeaturePopover on the element in the table. Do not distract the user!
+- FeaturePopover for a new function should be shown for no more than a month.
+- FeaturePopover should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show FeaturePopover on the element in the table. Do not distract the user.
 - **Do not show FeaturePopover if the user has already interacted with the advertised item.**
-- FeaturePopover should be shown only once (exception for cases where user clicked **Show later**). If the user has closed FeaturePopover or clicked **Got it**, do not show this message to him again
+- FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", do not show this message to him again.
 
-@## Recommendations for texts
+@## Recommendations for copy
 
-### The title
+### Title
 
-- Describe the main value of a function for the user in the title. **Save filters to get data** instead of **Saved filters**. Work together instead of Collaboration.
-- Write briefly (2-3 words). If necessary, you can increase the length to five words. Always use a verb.
+- Describe the main value of a feature for the user in the title. _For example, "Save filters to get data" instead of "Saved filters", or "Work together" instead of "Collaboration"._
+- Write briefly. Always use a verb in the title.
 - Avoid repeating the control label or the text of the element, to which FeaturePopover points.
-- Also, avoid repeating the text of the paragraph. This is the title, it should not be pointless 😏
+- Also, avoid repeating the text of the paragraph.
 
 ### Message
 
 - Describe a feature or a tip with one or two sentences.
-- Tell not only about the function itself, but also about how to use it and why the user needs it.
+- Tell not only about the feature itself, but also about how to use it and how it can help the user.
 
-@## FeaturePopover as part of onboarding.
+@## FeaturePopover as part of onboarding
 
-> **Important!** Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, IT IS NOT NECESSARY to show it again.
->
-> _It is important to provide a Help/Product Tour (another name?) link on the report, by clicking on which you can view it again._
+Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, do not show it again to them.
 
 @page feature-popover-a11y
 @page feature-popover-api
