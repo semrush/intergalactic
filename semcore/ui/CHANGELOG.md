@@ -1,3 +1,17 @@
+## [13.28.0] - 2023-05-22
+
+### @semcore/input-number
+
+- **Changed** Prevent page scrolling while incrementing or decrementing input value with mouse wheel.
+
+### @semcore/modal
+
+- **Added** Set default color of modals for better support of dark themes.
+
+### @semcore/popper
+
+- **Added** Set default color of popper for better support of dark themes.
+
 ## [13.27.4] - 2023-05-15
 
 ### @semcore/d3-chart
