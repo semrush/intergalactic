@@ -25,8 +25,8 @@ export default () => {
           <DataTable.Column name="vol" children="Vol." />
         </DataTable.Head>
         <DataTable.Body>
-          <DataTable.Row tag={RowAccordion}>
-            {(props, row, index) => {
+          <DataTable.Row<typeof data> tag={RowAccordion}>
+            {(_props, _row, index) => {
               return {
                 value: index,
                 active: value.includes(index),
@@ -48,8 +48,8 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell name="keyword">
-            {(props, row, index) => {
+          <DataTable.Cell<typeof data> name="keyword">
+            {(props) => {
               return {
                 children: (
                   <Flex alignItems="center">

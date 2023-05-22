@@ -15,10 +15,10 @@ const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props
 });
 
 export default () => {
-  const [value, setValue] = useState([]);
+  const [exapnded, setExapnded] = useState([]);
   return (
     /* [1] Wrapping the table in the Accordion control component; */
-    <Accordion value={value} onChange={setValue}>
+    <Accordion value={exapnded} onChange={setExapnded}>
       <DataTable data={data}>
         <DataTable.Head>
           <DataTable.Column name="keyword" children="Keyword" />
@@ -28,13 +28,13 @@ export default () => {
         </DataTable.Head>
         <DataTable.Body>
           {/* [2] Replacing the tag in DataTable.Row with our extended tag with Accordion.Item */}
-          <DataTable.Row tag={RowAccordion}>
-            {(props, row, index) => {
+          <DataTable.Row<typeof data> tag={RowAccordion}>
+            {(_props, _row, index) => {
               return {
                 /* [3] Setting the value for Accordion.Item; */
                 value: index,
                 /* [4] Calculating the active line to highlight it */
-                active: value.includes(index),
+                active: exapnded.includes(index),
                 collapse: {
                   /* [5] Render the children to accordion content; */
                   children: <ChartExample />,
@@ -42,8 +42,8 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell name="keyword">
-            {(props, row, index) => {
+          <DataTable.Cell<typeof data> name="keyword">
+            {(props) => {
               return {
                 children: (
                   <Flex alignItems="center">

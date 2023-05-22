@@ -1,19 +1,21 @@
 import React from 'react';
-import DataTable from '@semcore/ui/data-table';
+import DataTable, { DataTableSort } from '@semcore/ui/data-table';
+
+type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
 export default () => {
-  const [sortBy, setSortBy] = React.useState(['kd', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
       [...data].sort((aRow, bRow) => {
-        const [prop, sortDirection] = sortBy;
-        const a = aRow[prop];
-        const b = bRow[prop];
+        const [prop, sortDirection] = sort;
+        const a = aRow[prop as SortableColumn];
+        const b = bRow[prop as SortableColumn];
         if (a === b) return 0;
         if (sortDirection === 'asc') return a - b;
         else return b - a;
       }),
-    [sortBy],
+    [sort],
   );
   const numberFormat = React.useMemo(() => new Intl.NumberFormat('en-US'), []);
   const currencyFormat = React.useMemo(
@@ -22,7 +24,7 @@ export default () => {
   );
 
   return (
-    <DataTable data={sortedData} sort={sortBy} onSortChange={setSortBy}>
+    <DataTable data={sortedData} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
         <DataTable.Column name="keyword" children="Keyword" />
         <DataTable.Column name="kd" children="KD,%" sortable />
@@ -30,15 +32,15 @@ export default () => {
         <DataTable.Column name="vol" children="Vol." sortable />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell name="kd">
+        <DataTable.Cell<typeof data> name="kd">
           {(_, row) => ({ children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd) })}
         </DataTable.Cell>
-        <DataTable.Cell name="cpc">
+        <DataTable.Cell<typeof data> name="cpc">
           {(_, row) => ({
             children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
           })}
         </DataTable.Cell>
-        <DataTable.Cell name="vol">
+        <DataTable.Cell<typeof data> name="vol">
           {(_, row) => ({ children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol) })}
         </DataTable.Cell>
       </DataTable.Body>
