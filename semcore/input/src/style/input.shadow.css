@@ -137,7 +137,7 @@ SInput[state='normal'] {
 }
 SInput[state='valid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-success, #59ddaa);
+    border-color: var(--intergalactic-border-success-active, #007c65);
   }
 
   &[focused] SOutline {
@@ -147,7 +147,7 @@ SInput[state='valid'] {
 }
 SInput[state='invalid'] {
   & SOutline {
-    border-color: var(--intergalactic-border-critical, #ffaeb5);
+    border-color: var(--intergalactic-border-critical-active, #d1002f);
   }
 
   &[focused] SOutline {
