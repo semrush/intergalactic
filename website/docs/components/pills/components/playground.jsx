@@ -21,7 +21,7 @@ export default PlaygroundGeneration(
       key: 'size',
       defaultValue: 'm',
       label: 'Size',
-      options: ['s', 'm', 'l'],
+      options: ['m', 'l'],
     });
 
     const selected = empty({

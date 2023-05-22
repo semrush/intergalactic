@@ -57,11 +57,15 @@ SButtonTrigger[state='invalid'] {
 
 SFilterTrigger[selected] {
   border-color: var(--intergalactic-border-info-active, #006dca);
-  background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+  background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
   color: var(--intergalactic-text-primary, #191b23);
 
-  &[active],
   &:hover {
+    background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
+  }
+
+  &:active,
+  &[active] {
     background-color: var(--intergalactic-control-secondary-info-active, rgba(0, 143, 248, 0.3));
   }
 }
