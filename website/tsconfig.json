@@ -16,7 +16,8 @@
     "typeRoots": ["./node_modules/@types"],
     "paths": {
       "static/*": ["src/static/*"],
-      "utils/*": ["src/utils/*"]
+      "utils/*": ["src/utils/*"],
+      "@semcore/ui/*": ["../semcore/*"]
     }
   },
   "exclude": ["node_modules", "dist", "builder", "deploy.ts", "tools/searchIndexUpload.ts"]
