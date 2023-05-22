@@ -570,7 +570,7 @@
         "description": "Secondary text."
       },
       "placeholder": {
-        "value": "{gray.300}",
+        "value": "{gray.400}",
         "type": "color",
         "description": "Placeholder text only."
       },
