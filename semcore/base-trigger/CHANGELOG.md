@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2023-05-22
+
+### Changed
+
+- Updated border-color for invalid and valid states. Made them more contrast according to accessibility recommendations.
+
 ## [3.5.19] - 2023-05-11
 
 ### Changed
