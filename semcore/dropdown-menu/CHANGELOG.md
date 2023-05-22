@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.35] - 2023-05-09
+
+### Changed
+
+- Added visual cue to the `selected` DropdownMenu.Item.
+
 ## [3.6.36] - 2023-05-22
 
 ### Changed
