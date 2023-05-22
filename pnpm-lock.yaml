@@ -715,7 +715,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.4.18
+      '@semcore/illustration': 1.4.19
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -1568,80 +1568,80 @@ importers:
 
   semcore/ui:
     specifiers:
-      '@semcore/accordion': 4.3.23
-      '@semcore/animation': 1.10.9
-      '@semcore/badge': 3.3.24
-      '@semcore/base-trigger': 3.5.19
-      '@semcore/breadcrumbs': 4.4.31
-      '@semcore/breakpoints': 1.2.29
-      '@semcore/button': 4.3.24
-      '@semcore/card': 4.3.17
-      '@semcore/carousel': 2.2.38
-      '@semcore/checkbox': 6.4.16
-      '@semcore/color-picker': 1.4.37
+      '@semcore/accordion': 4.3.24
+      '@semcore/animation': 1.10.10
+      '@semcore/badge': 3.3.25
+      '@semcore/base-trigger': 3.6.0
+      '@semcore/breadcrumbs': 4.4.32
+      '@semcore/breakpoints': 1.2.30
+      '@semcore/button': 4.4.0
+      '@semcore/card': 4.3.18
+      '@semcore/carousel': 2.2.39
+      '@semcore/checkbox': 6.5.0
+      '@semcore/color-picker': 1.4.38
       '@semcore/continuous-delivery': '*'
-      '@semcore/core': 1.14.11
-      '@semcore/counter': 2.3.14
-      '@semcore/d3-chart': 2.14.9
-      '@semcore/data-table': 3.8.8
-      '@semcore/date-picker': 3.6.40
-      '@semcore/divider': 3.2.23
-      '@semcore/dot': 4.2.29
-      '@semcore/drag-and-drop': 2.4.40
-      '@semcore/dropdown': 3.4.30
-      '@semcore/dropdown-menu': 3.6.36
-      '@semcore/ellipsis': 1.2.22
+      '@semcore/core': 1.14.12
+      '@semcore/counter': 2.3.15
+      '@semcore/d3-chart': 2.14.10
+      '@semcore/data-table': 3.8.9
+      '@semcore/date-picker': 3.6.41
+      '@semcore/divider': 3.2.24
+      '@semcore/dot': 4.2.30
+      '@semcore/drag-and-drop': 2.4.41
+      '@semcore/dropdown': 3.4.31
+      '@semcore/dropdown-menu': 3.7.0
+      '@semcore/ellipsis': 1.2.23
       '@semcore/email': 1.0.2
-      '@semcore/errors': 3.9.21
-      '@semcore/feature-popover': 3.3.8
-      '@semcore/feedback-form': 5.4.17
-      '@semcore/flags': 3.4.15
-      '@semcore/flex-box': 4.7.23
-      '@semcore/format-text': 3.2.25
-      '@semcore/fullscreen-modal': 2.2.37
-      '@semcore/grid': 4.3.24
+      '@semcore/errors': 3.9.22
+      '@semcore/feature-popover': 3.3.9
+      '@semcore/feedback-form': 5.4.18
+      '@semcore/flags': 3.4.16
+      '@semcore/flex-box': 4.7.24
+      '@semcore/format-text': 3.2.26
+      '@semcore/fullscreen-modal': 2.2.38
+      '@semcore/grid': 4.3.25
       '@semcore/i18n-unplugin': 0.0.5
-      '@semcore/icon': 3.14.11
-      '@semcore/illustration': 1.4.18
-      '@semcore/inline-edit': 2.4.19
-      '@semcore/inline-input': 3.5.35
-      '@semcore/input': 3.5.25
-      '@semcore/input-mask': 4.5.5
-      '@semcore/input-number': 4.5.0
-      '@semcore/input-tags': 3.3.34
-      '@semcore/link': 4.3.27
-      '@semcore/modal': 3.6.7
-      '@semcore/neighbor-location': 3.1.29
-      '@semcore/notice': 4.4.38
-      '@semcore/notice-bubble': 4.7.17
-      '@semcore/notice-global': 1.5.23
-      '@semcore/outside-click': 2.5.28
-      '@semcore/pagination': 3.5.36
-      '@semcore/pills': 4.4.24
-      '@semcore/popper': 4.17.11
-      '@semcore/portal': 2.6.6
-      '@semcore/product-head': 3.4.4
-      '@semcore/progress-bar': 3.3.24
-      '@semcore/radio': 5.5.2
-      '@semcore/scroll-area': 4.3.3
-      '@semcore/select': 3.6.13
-      '@semcore/side-panel': 2.4.6
-      '@semcore/skeleton': 4.4.24
-      '@semcore/slider': 3.4.15
-      '@semcore/spin': 4.2.23
-      '@semcore/spin-container': 6.2.28
-      '@semcore/sticky': 2.4.23
-      '@semcore/switch': 4.4.15
-      '@semcore/tab-line': 3.3.15
-      '@semcore/tab-panel': 3.4.15
-      '@semcore/tag': 4.4.34
-      '@semcore/textarea': 4.3.23
-      '@semcore/time-picker': 3.4.51
-      '@semcore/tooltip': 5.4.13
-      '@semcore/typography': 4.4.3
-      '@semcore/utils': 3.50.7
-      '@semcore/widget-empty': 3.10.11
-      '@semcore/wizard': 1.2.43
+      '@semcore/icon': 3.14.12
+      '@semcore/illustration': 1.4.19
+      '@semcore/inline-edit': 2.4.20
+      '@semcore/inline-input': 3.5.36
+      '@semcore/input': 3.6.25
+      '@semcore/input-mask': 4.5.6
+      '@semcore/input-number': 4.5.1
+      '@semcore/input-tags': 3.3.35
+      '@semcore/link': 4.3.28
+      '@semcore/modal': 3.6.8
+      '@semcore/neighbor-location': 3.1.30
+      '@semcore/notice': 4.4.39
+      '@semcore/notice-bubble': 4.7.18
+      '@semcore/notice-global': 1.5.24
+      '@semcore/outside-click': 2.5.29
+      '@semcore/pagination': 3.5.37
+      '@semcore/pills': 4.5.0
+      '@semcore/popper': 4.17.12
+      '@semcore/portal': 2.6.7
+      '@semcore/product-head': 3.4.5
+      '@semcore/progress-bar': 3.3.25
+      '@semcore/radio': 5.6.0
+      '@semcore/scroll-area': 4.3.4
+      '@semcore/select': 3.6.14
+      '@semcore/side-panel': 2.4.7
+      '@semcore/skeleton': 4.4.25
+      '@semcore/slider': 3.4.16
+      '@semcore/spin': 4.2.24
+      '@semcore/spin-container': 6.2.29
+      '@semcore/sticky': 2.4.24
+      '@semcore/switch': 4.4.16
+      '@semcore/tab-line': 3.3.16
+      '@semcore/tab-panel': 3.4.16
+      '@semcore/tag': 4.4.35
+      '@semcore/textarea': 4.3.24
+      '@semcore/time-picker': 3.4.52
+      '@semcore/tooltip': 5.4.14
+      '@semcore/typography': 4.4.4
+      '@semcore/utils': 3.51.0
+      '@semcore/widget-empty': 3.10.12
+      '@semcore/wizard': 1.2.44
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
@@ -1765,7 +1765,7 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.4.18
+      '@semcore/illustration': 1.4.19
       '@semcore/jest-preset-ui': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 18.0.21
