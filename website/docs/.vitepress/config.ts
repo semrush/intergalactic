@@ -1,9 +1,28 @@
 import { defineConfig } from 'vitepress';
+import container from 'markdown-it-container';
+import { renderSandbox } from 'vitepress-plugin-sandpack';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Intergalactic',
   description: 'Design system',
+  markdown: {
+    config(md) {
+      md
+        // the second parameter is html tag name
+        .use(container, 'sandbox', {
+          render(tokens, idx) {
+            return renderSandbox(tokens, idx, 'sandbox');
+          },
+        })
+        .use(container, 'my-sandbox', {
+          render(tokens, idx) {
+            return renderSandbox(tokens, idx, 'my-sandbox');
+          },
+        });
+    },
+  },
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [

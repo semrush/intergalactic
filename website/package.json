@@ -30,6 +30,7 @@
     "final-form-focus": "1.1.2",
     "fuse.js": "^6.6.2",
     "lz-string": "1.4.4",
+    "markdown-it-container": "^3.0.0",
     "nanoid": "3.3.4",
     "node-fetch": "^3.3.1",
     "normalize.css": "8.0.1",
@@ -53,6 +54,7 @@
     "sharp": "^0.31.3",
     "sitemap": "^7.1.1",
     "styled-components": "5.0.1",
+    "vue": "^3.3.4",
     "whatwg-fetch": "3.6.2"
   },
   "devDependencies": {
@@ -83,7 +85,9 @@
     "postcss": "8.4.13",
     "tsm": "2.2.2",
     "typescript": "5.1.6",
-    "unified": "10.1.2"
+    "unified": "10.1.2",
+    "vitepress": "1.0.0-beta.1",
+    "vitepress-plugin-sandpack": "^0.3.0"
   },
   "resolutions": {
     "ansi-regex": "5.0.1"
