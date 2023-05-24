@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Input from '@semcore/input';
-import BUTTONS from './buttons';
+import { IncrementIcon, DecrementIcon } from './buttons';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
@@ -10,9 +10,6 @@ import style from './style/input-number.shadow.css';
 function parseValueWithMinMax(value, min = Number.MIN_SAFE_INTEGER, max = Number.MAX_SAFE_INTEGER) {
   return Math.max(min, Math.min(max, value));
 }
-
-const IconUp = () => BUTTONS.up;
-const IconDown = () => BUTTONS.down;
 
 class InputNumber extends Component {
   static displayName = 'InputNumber';
@@ -27,22 +24,27 @@ class InputNumber extends Component {
   inputRef = React.createRef();
   inputHandlersRef = React.createRef();
 
-  handlerInc = (e) => {
-    // TODO: IE11 dont work
+  increment = (event) => {
+    // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.min || '0';
     this.inputRef.current?.stepUp && this.inputRef.current?.stepUp();
-    this.inputHandlersRef.current?.value(this.inputRef.current.value, e);
+    this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
   };
 
-  handlerDec = (e) => {
-    // TODO: IE11 dont work
+  decrement = (event) => {
+    if (this.inputRef.current?.value === '')
+      this.inputRef.current.value = this.inputRef.current.max || '0';
     this.inputRef.current?.stepDown && this.inputRef.current?.stepDown();
-    this.inputHandlersRef.current?.value(this.inputRef.current.value, e);
+    this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
   };
 
   getValueProps() {
     return {
       ref: this.inputRef,
-      $inputHandlers: this.inputHandlersRef,
+      inputHandlerRefs: this.inputHandlersRef,
+      increment: this.increment,
+      decrement: this.decrement,
     };
   }
 
@@ -50,8 +52,8 @@ class InputNumber extends Component {
     const { size, getI18nText } = this.asProps;
     return {
       size,
-      inc: this.handlerInc,
-      dec: this.handlerDec,
+      increment: this.increment,
+      decrement: this.decrement,
       getI18nText,
     };
   }
@@ -68,47 +70,67 @@ class Value extends Component {
     step: 1,
   };
 
+  inputRef = React.createRef();
+
   uncontrolledProps() {
     return {
       value: null,
     };
   }
 
-  roundRemainder(value, step) {
+  round(value, step) {
     const countDecimals = Math.floor(step) === step ? 0 : step.toString().split('.')[1].length || 0;
     return countDecimals === 0
       ? Number.parseFloat(value)
       : Number.parseFloat(value).toPrecision(countDecimals);
   }
 
-  handleValidation = (e) => {
+  handleValidation = (event) => {
     const { value, min, max, step } = this.asProps;
     const roundCoefficient = step < 1 ? step.toString().split('.')[1].length : 1;
-    if (Number.isNaN(e.currentTarget.valueAsNumber)) {
-      e.currentTarget.value = '';
-      this.handlers.value('', e);
+    if (Number.isNaN(event.currentTarget.valueAsNumber)) {
+      event.currentTarget.value = '';
+      this.handlers.value('', event);
     } else {
       let numberValue = parseValueWithMinMax(Number.parseFloat(value), min, max);
-      const r = this.roundRemainder(numberValue % step, step);
-      if (r !== 0) {
-        if (r >= step / 2) {
-          numberValue += step - r;
-        } else if (Math.abs(r) < step) {
-          numberValue -= r;
+      const rounded = this.round(numberValue % step, step);
+      if (rounded !== 0) {
+        if (rounded >= step / 2) {
+          numberValue += step - rounded;
+        } else if (Math.abs(rounded) < step) {
+          numberValue -= rounded;
         }
       }
       const numberValueRounded = Number(numberValue.toFixed(roundCoefficient));
-      this.handlers.value(String(numberValueRounded), e);
+      this.handlers.value(String(numberValueRounded), event);
+    }
+  };
+
+  // https://stackoverflow.com/questions/57358640/cancel-wheel-event-with-e-preventdefault-in-react-event-bubbling
+  componentDidMount() {
+    this.inputRef.current?.addEventListener('wheel', this.handleWheel);
+  }
+  componentWillUnmount() {
+    this.inputRef.current?.removeEventListener('wheel', this.handleWheel);
+  }
+
+  handleWheel = (event) => {
+    if (event.target !== this.inputRef.current) return;
+    if (document.activeElement !== this.inputRef.current) return;
+    event.preventDefault();
+    if (event.wheelDelta > 0) {
+      this.asProps.increment(event);
+    } else if (event.wheelDelta < 0) {
+      this.asProps.decrement(event);
     }
   };
 
   render() {
     const SValue = Root;
     const SValueHidden = 'div';
-    const { styles, $inputHandlers, value, min, max } = this.asProps;
+    const { styles, inputHandlerRefs, value, min, max } = this.asProps;
 
-    // 🐒 не делайте так
-    $inputHandlers.current = this.handlers;
+    inputHandlerRefs.current = this.handlers;
 
     return sstyled(styles)(
       <>
@@ -118,6 +140,7 @@ class Value extends Component {
           autoComplete="off"
           onBlur={this.handleValidation}
           onInvalid={this.handleValidation}
+          ref={this.inputRef}
           aria-valuenow={value}
           aria-valuemin={min}
           aria-valuemax={max}
@@ -134,7 +157,7 @@ class Value extends Component {
 }
 
 function Controls(props) {
-  const { Children, inc, dec, size, styles, getI18nText } = props;
+  const { Children, increment, decrement, size, styles, getI18nText } = props;
   const SControls = Root;
   const SUp = 'button';
   const SDown = 'button';
@@ -142,22 +165,22 @@ function Controls(props) {
   return sstyled(styles)(
     <SControls render={Input.Addon} aria-hidden="true">
       <SUp
-        onClick={inc}
+        onClick={increment}
         tabIndex={-1}
         type="button"
         size={size}
         aria-label={getI18nText('increment')}
       >
-        <IconUp />
+        <IncrementIcon />
       </SUp>
       <SDown
-        onClick={dec}
+        onClick={decrement}
         tabIndex={-1}
         type="button"
         size={size}
         aria-label={getI18nText('decrement')}
       >
-        <IconDown />
+        <DecrementIcon />
       </SDown>
       <Children />
     </SControls>,

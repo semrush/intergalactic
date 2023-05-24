@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.42] - 2023-05-24
+
+### Fixed
+
+- Use en-dash symbol as range separator.
+
+## [3.6.41] - 2023-05-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/base-trigger` [3.5.19 ~> 3.6.0], `@semcore/button` [4.3.24 ~> 4.4.0], `@semcore/input` [3.5.25 ~> 3.6.25]).
+
+## [3.6.40] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/base-trigger` [3.5.18 ~> 3.5.19], `@semcore/button` [4.3.23 ~> 4.3.24]).
+
 ## [3.6.39] - 2023-05-04
 
 ### Changed

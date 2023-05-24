@@ -46,7 +46,7 @@ Placeholders are required to prompt the user about what data should be entered.
 - It is not user-friendly to use only placeholders for inputs. When completed, such form becomes poorly readable.
 - Do not put a specific value as a placeholder. The user may think that the input has already been filled.
 
-You may not add a placeholder only if the input’s purpose is obvious.
+You can omit the placeholder only if the input’s purpose is obvious.
 
 To format values that the user enters use [InputMask](/components/input-mask/).
 
@@ -74,14 +74,14 @@ Depending on your task, you can use vertical or horizontal form layout.
 Briefly:
 
 - vertical layout is good for short simple forms and forms for mobile screens;
-- horizontal layout is suitable for complex forms, where you need to slow the user down in order he/she do not make mistakes.
+- horizontal layout is suitable for complex forms, where you need to slow the user down to help them avoid mistakes.
 
 ### Vertical form layout
 
 **When to use?**
 
 - The form is small and simple.
-- “Price of the mistake” after completing the form is not big.
+- The cost of a mistake after completing the form is not big.
 
 ![](static/label-1.png)
 
@@ -121,7 +121,7 @@ Briefly:
 
 **When to use?**
 
-- The form is large and/or complex, and you need to slow the user down in order he/she вщ not make mistakes.
+- The form is large and/or complex, and you need to slow the user down to help them avoid mistakes.
 - Right alignment of labels visually better connects labels with inputs, in comparison with left alignment.
 
 ![](static/label-4.png)

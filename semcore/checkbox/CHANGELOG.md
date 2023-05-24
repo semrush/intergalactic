@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.5.0] - 2023-05-22
+
+### Changed
+
+- Updated border-color for invalid state. Made it more contrast according to accessibility recommendations. HEAD
+
+## [6.4.16] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
 ## [6.4.15] - 2023-05-04
 
 ### Changed
@@ -9,10 +21,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [6.4.13] - 2023-04-26
-
-## [6.4.12] - 2023-04-24
-
-## [6.4.11] - 2023-04-17
 
 ### Changed
 

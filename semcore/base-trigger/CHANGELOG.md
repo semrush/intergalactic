@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2023-05-22
+
+### Changed
+
+- Updated border-color for invalid and valid states. Made them more contrast according to accessibility recommendations.
+- Updated styles for FilterTrigger, added styles for `hover` distinguished from `active` state.
+
+## [3.5.19] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+
 ## [3.5.18] - 2023-05-04
 
 ### Changed

@@ -2,9 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.17.9] - 2023-05-11
+## [4.17.12] - 2023-05-22
 
-## [4.17.8] - 2023-05-04
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.9 ~> 1.10.10], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/neighbor-location` [3.1.29 ~> 3.1.30], `@semcore/outside-click` [2.5.28 ~> 2.5.29], `@semcore/utils` [3.50.7 ~> 3.51.0]).
+
+## [4.17.11] - 2023-05-19
+
+### Added
+
+- Set default color of popper for better support of dark themes.
+
+## [4.17.10] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/neighbor-location` [3.1.28 ~> 3.1.29], `@semcore/outside-click` [2.5.27 ~> 2.5.28], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
+## [4.17.9] - 2023-05-11
 
 ### Changed
 
