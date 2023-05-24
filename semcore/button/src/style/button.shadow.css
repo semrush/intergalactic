@@ -43,7 +43,7 @@ SButton[disabled] {
 }
 
 SButton[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   z-index: 1;
 }
 SButton[size='m'] {
@@ -155,7 +155,7 @@ SButton[theme='secondary-muted'] {
 
 SButton[theme='secondary-info'] {
   background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
-  color: var(--intergalactic-control-primary-info, #008ff8);
+  color: var(--intergalactic-text-link, #006dca);
   border-color: var(--intergalactic-control-primary-info, #008ff8);
 
   &:hover {

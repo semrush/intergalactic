@@ -18,7 +18,7 @@ STextarea {
   }
 
   &::placeholder {
-    color: var(--intergalactic-text-placeholder, #a9abb6);
+    color: var(--intergalactic-text-placeholder, #8a8e9b);
   }
 }
 
@@ -37,7 +37,7 @@ STextarea[size='l'] {
 
 STextarea[state='normal'] {
   &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
     border-color: var(--intergalactic-border-info-active, #006dca);
   }
 }
@@ -45,13 +45,13 @@ STextarea[state='normal'] {
 STextarea[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
   &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.3));
+    box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
   }
 }
 
 STextarea[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
   &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
+    box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
   }
 }

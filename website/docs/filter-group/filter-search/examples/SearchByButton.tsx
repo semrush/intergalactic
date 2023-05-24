@@ -23,7 +23,7 @@ const Demo = () => {
 
   return (
     <Flex direction="column">
-      <Text tag="label" htmlFor="search-by-button-filter-by-keyword">
+      <Text tag="label" size="200" htmlFor="search-by-button-filter-by-keyword">
         Filter by keyword
       </Text>
       <Box mt={2}>

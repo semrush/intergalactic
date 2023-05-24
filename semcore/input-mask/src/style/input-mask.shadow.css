@@ -25,7 +25,7 @@ SMaskHidden:before {
   content: attr(data-content);
 }
 SPlaceholder {
-  color: var(--intergalactic-text-placeholder, #a9abb6);
+  color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
 SMaskHidden:before,
 SMaskVisible::before,
