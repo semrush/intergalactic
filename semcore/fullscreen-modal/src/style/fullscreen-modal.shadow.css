@@ -102,7 +102,7 @@ SHeader {
   padding-left: var(--intergalactic-spacing-8x, 32px);
   padding-bottom: var(--intergalactic-spacing-2x, 8px);
   padding-right: calc(
-      var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px)
+    var(--intergalactic-spacing-20x, 80px) - var(--intergalactic-spacing-2x, 8px)
   );
   padding-top: var(--intergalactic-spacing-10x, 40px);
   min-height: 76px;

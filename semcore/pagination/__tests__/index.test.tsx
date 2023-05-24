@@ -316,7 +316,7 @@ describe('Pagination.PageInput.Value', () => {
 
     fireEvent.change(input, { target: { value: CURRENT_PAGE.CHANGED } });
     expect(spy).toBeCalledTimes(0);
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(input, { code: 'Enter' });
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(CURRENT_PAGE.CHANGED);
   });
@@ -344,13 +344,13 @@ describe('Pagination.PageInput.Value', () => {
     const input = getByTestId('value');
 
     fireEvent.change(input, { target: { value: currentPage.null } });
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(input, { code: 'Enter' });
     // because value not changing
     expect(spy).not.toBeCalled();
     expect(input.value).toBe(currentPage.initial.toString());
 
     fireEvent.change(input, { target: { value: currentPage.invalid } });
-    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(input, { code: 'Enter' });
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(totalPages);
   });
