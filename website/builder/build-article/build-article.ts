@@ -449,7 +449,7 @@ export const buildArticle = async (
             if (text.startsWith('@example ')) {
               const fileName = text.substring('@example '.length);
               const documentDir = resolveDirname(fullPath);
-              const filePath = resolvePath(documentDir, 'examples', fileName + '.jsx');
+              const filePath = resolvePath(documentDir, 'examples', fileName + '.tsx');
               if (!(await fsExists(filePath))) {
                 throw new Error(`Unable to find "${fileName}" as ${filePath} from ${position}`);
               }
@@ -462,7 +462,7 @@ export const buildArticle = async (
                 relativePath: [
                   relativePath.replace(/\/[\w-]+\..+/, ''),
                   'examples',
-                  fileName + '.jsx',
+                  fileName + '.tsx',
                 ].join('/'),
                 filePath,
                 load: `~~~%%%${filePath}%%%~~~`,

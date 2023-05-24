@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.0] - 2023-05-22
+
+### Changed
+
+- Fixed token for text in button with `use="secondary"` and `theme="info"`.
+
 ## [4.3.24] - 2023-05-11
 
 ### Changed

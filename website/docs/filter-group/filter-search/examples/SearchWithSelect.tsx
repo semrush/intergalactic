@@ -4,11 +4,19 @@ import CloseXS from '@semcore/ui/icon/Close/m';
 import Search from '@semcore/ui/icon/Search/m';
 import Button from '@semcore/ui/button';
 import NeighborLocation from '@semcore/ui/neighbor-location';
+import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
 import { Flex, Box } from '@semcore/ui/flex-box';
 
+const selectOptions = ['Option 1', 'Option 2'];
+
 const Demo = () => {
   const [value, setValue] = useState('');
+
+  const options = selectOptions.map((option) => ({
+    value: option,
+    children: option,
+  }));
 
   const handleChange = useCallback(
     (v) => {
@@ -23,16 +31,18 @@ const Demo = () => {
 
   return (
     <Flex direction="column">
-      <Text tag="label" htmlFor="search-by-button-filter-by-keyword">
+      <Text tag="label" size="200" htmlFor="search-with-select-filter-by-keyword">
         Filter by keyword
       </Text>
       <Box mt={2}>
         <NeighborLocation>
+          <Select placeholder="Everywhere" options={options} />
           <Input w={200}>
             <Input.Value
+              ml={2}
               value={value}
               onChange={handleChange}
-              id="search-by-button-filter-by-keyword"
+              id="search-with-select-filter-by-keyword"
               placeholder="Enter keyword here"
             />
             {value && (

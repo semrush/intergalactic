@@ -50,7 +50,7 @@ export default ({ raw: { code: ExampleRawComponent, path }, onClick }) => {
           },
         },
       },
-      'src/index.js': {
+      'src/index.tsx': {
         content: `import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
@@ -59,7 +59,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(<App />);
 `,
       },
-      'src/App.js': {
+      'src/App.tsx': {
         content: `//https://github.com/semrush/intergalactic/tree/master/website/docs/${path}
 ${ExampleRawComponent}`,
       },

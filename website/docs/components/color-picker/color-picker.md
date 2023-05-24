@@ -71,10 +71,10 @@ An item can have two different types:
 
 ### Item for custom colors
 
-| | Normal | Hover | Active | Usage |
-| ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
-| Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-bg-active.png)| Use for changing the background color of other components.|
-| Text color | ![](static/colorpicker-item-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-text-active.png)| Use for changing the text and background colors of other components.|
+| | Normal | Hover | Active                                              | Usage |
+| ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
+| Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
+| Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
 
 ### Item for adding colors
 
