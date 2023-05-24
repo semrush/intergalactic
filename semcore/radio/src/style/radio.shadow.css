@@ -90,7 +90,7 @@ SControl {
 
 SControl:checked ~ SValue::before {
   border-color: var(--intergalactic-control-primary-info, #008ff8);
-  background-color: var(--intergalactic-control-primary-info, #008ff8);
+  background-color: var(--intergalactic-bg-primary-info, #008ff8);
 }
 
 SControl:checked ~ SValue[size='m']::after {
@@ -104,12 +104,12 @@ SControl:checked ~ SValue[size='l']::after {
 }
 
 SValue[state='normal'][keyboardFocused]::before {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
   border-color: var(--intergalactic-border-info-active, #006dca);
 }
 
 SValue[state='invalid'][keyboardFocused]::before {
-  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.3));
 }
 
 SControl:checked ~ SValue[theme]::before {

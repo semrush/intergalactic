@@ -58,7 +58,7 @@ export default () => {
           <Line.Dots display />
         </Line>
       </Plot>
-      <DropdownMenu>
+      <DropdownMenu onVisibleChange={updateVisible}>
         <DropdownMenu.Trigger tag={Button}>
           <Button.Addon>
             <FileExportXS />

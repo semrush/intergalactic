@@ -36,7 +36,7 @@ export default () => {
         aria-label="List of excluded keywords"
         aria-modal="false"
       >
-        <Text tag="label" for="textarea" size={200} color="gray20">
+        <Text tag="label" for="textarea" size={100} color="gray20">
           Enter keywords separated by commas or one per line. For exact matches, enter your keyword
           with square brackets around it.
         </Text>

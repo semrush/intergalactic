@@ -21,7 +21,7 @@ const Demo = () => {
   const [visible, setVisible] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
   const [state, setState] = React.useState('normal');
-  const isValid = value === 'test';
+  const isValid = value === 'тест';
   const handleOpen = React.useCallback(() => setVisible(true), []);
   const handleClose = React.useCallback(() => setVisible(false), []);
   const handleDelete = React.useCallback(() => {
@@ -64,7 +64,6 @@ const Demo = () => {
             visible={focused && !isValid}
             theme="warning"
             placement="right"
-            ignorePortalsStacking
           >
             <Input size="l" state={state} w={'100%'}>
               <Input.Value

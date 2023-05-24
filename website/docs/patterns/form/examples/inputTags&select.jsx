@@ -92,18 +92,11 @@ const Demo = () => {
               Emails
               <Counter ml={1} size="l">{`${tags.length}/5`}</Counter>
             </Text>
-            <Tooltip
-              interaction="none"
-              placement="right"
-              theme="warning"
-              w="100%"
-              animationsDisabled
-            >
+            <Tooltip interaction="none" placement="right" theme="warning" w="100%">
               <Tooltip.Popper id="form-emails-error" visible={Boolean(errors['emails'])}>
                 {errors['emails']?.message}
               </Tooltip.Popper>
               <InputTags
-                tag={Tooltip.Trigger}
                 size="l"
                 state={errors['emails'] ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}

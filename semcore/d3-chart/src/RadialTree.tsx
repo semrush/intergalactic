@@ -175,20 +175,16 @@ class RadialTreeBase extends Component<RootAsProps> {
 
     const circlesAnimation = transition()
       .selection()
-      .selectAll(`[data-radial-animation=${uid}-cap-circle]`)
-      .interrupt();
+      .selectAll(`[data-radial-animation=${uid}-cap-circle]`).interrupt()
     const iconsAnimation = transition()
       .selection()
-      .selectAll(`[data-radial-animation=${uid}-cap-icon]`)
-      .interrupt();
+      .selectAll(`[data-radial-animation=${uid}-cap-icon]`).interrupt()
     const linesAnimation = transition()
       .selection()
-      .selectAll(`[data-radial-animation=${uid}-line]`)
-      .interrupt();
+      .selectAll(`[data-radial-animation=${uid}-line]`).interrupt()
     const labelsAnimation = transition()
       .selection()
-      .selectAll(`[data-radial-animation=${uid}-label]`)
-      .interrupt();
+      .selectAll(`[data-radial-animation=${uid}-label]`).interrupt()
     const circlesNodes = circlesAnimation.nodes() as SVGCircleElement[];
     const iconsNodes = iconsAnimation.nodes() as SVGRectElement[];
     const linesNodes = linesAnimation.nodes() as SVGLineElement[];
@@ -335,7 +331,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     this.asProps.dataHintsHandler.establishDataType('values-set');
 
     return sstyled(this.asProps.styles)(
-      <SRadialTree render="g">
+      <SRadialTree render='g'>
         <Children />
       </SRadialTree>,
     );
@@ -449,7 +445,6 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       ['data-radial-animation']: `${uid}-cap-icon`,
       ['data-radian-index']: index,
       icon,
-      tag: icon,
       isActive,
     } as IRadialTreeRadianIconProps;
   }
@@ -519,9 +514,9 @@ class RadialTreeRadian extends Component<RadianAsProps> {
 
     const labelCenter = [
       xCenter +
-        Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      Math.cos(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
       yCenter +
-        Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
+      Math.sin(angle) * (centralMargin + length + baseCapSize + textWidth / 2 + labelMargin),
     ];
     const [xLabelCenter, yLabelCenter] = labelCenter;
 
@@ -593,7 +588,7 @@ const InteractiveArea: React.FC<RadialTreeRadianInteractiveAreaAsProps> = ({
   styles,
 }) => {
   return sstyled(styles)(
-    <SInteractiveArea stroke="transparent" render="line" />,
+    <SInteractiveArea stroke='transparent' render='line' />,
   ) as React.ReactElement;
 };
 
@@ -619,7 +614,7 @@ const Line: React.FC<RadialTreeRadianLineAsProps> = ({
   transparent,
 }) => {
   return sstyled(styles)(
-    <SLine render="line" stroke={stroke} transparent={transparent} />,
+    <SLine render='line' stroke={stroke} transparent={transparent} />,
   ) as React.ReactElement;
 };
 
@@ -647,7 +642,7 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   transparent,
 }) => {
   return sstyled(styles)(
-    <SCap render="circle" cx={x} cy={y} r={radius} fill={color} transparent={transparent} />,
+    <SCap render='circle' cx={x} cy={y} r={radius} fill={color} transparent={transparent} />,
   ) as React.ReactElement;
 };
 
@@ -742,9 +737,9 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   return (
     <SLabel
       aria-hidden
-      render="text"
-      textAnchor="middle"
-      dominantBaseline="central"
+      render='text'
+      textAnchor='middle'
+      dominantBaseline='central'
       className={sLabelStyles.className}
       style={sLabelStyles.style}
       x={x.toFixed(2)}
@@ -805,9 +800,9 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   return sstyled(styles)(
     <STitle
       aria-hidden
-      render="text"
-      textAnchor="middle"
-      dominantBaseline="central"
+      render='text'
+      textAnchor='middle'
+      dominantBaseline='central'
       fontSize={textSize}
       fill={color}
       x={x}

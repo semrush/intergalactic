@@ -4,7 +4,7 @@ title: Motion
 
 @## Description
 
-Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behaviour of major components – but always remember that motion must have a **purpose**.
+Motion can improve user experience when employed correctly. It can guide users, attracting their attention to events and actions, and reflecting their progress. You can use it to spice up your interface – from microinteractions with small elements, to the behavior of major components – but always remember that motion must have a **purpose**.
 
 @## Principles
 
@@ -25,8 +25,6 @@ Motion delights users with unexpected details that turn mundane moments into som
 Motion provides a visual response to an action, seamless transitions between states help focus and guide users to complete tasks.
 
 @## Durations
-
-@table-caption Durations
 
 | Token            | Value   | Usage                                                                                                                             |
 | ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,4 +50,4 @@ To prevent these issues, we recommend you follow these best practices:
 
 - Don't use flashing of more than 3 times per second in your animation.
 - Limit component animation to no more than a couple of seconds at a time.
-- Let users [opt out of animation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) altogether, if that's what they prefer. Use `preferes-reduced-motion` CSS media feature for this.
+- Let users [opt out of animation](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) altogether, if that's what they prefer.

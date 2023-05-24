@@ -1,7 +1,6 @@
 SPopper {
   outline: none;
   z-index: var(--intergalactic-z-index-popper, 700);
-  color: var(--intergalactic-text-primary, #191b23);
 }
 
 SFocusHint {

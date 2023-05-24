@@ -2,24 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.7.0] - 2023-05-22
-
-### Changed
-
-- Added visual cue to the `selected` DropdownMenu.Item.
-
-## [3.6.36] - 2023-05-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.29 ~> 3.4.30]).
-
-## [3.6.35] - 2023-05-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.28 ~> 3.4.29], `@semcore/utils` [3.50.6 ~> 3.50.7]).
-
 ## [3.6.34] - 2023-05-04
 
 ### Changed

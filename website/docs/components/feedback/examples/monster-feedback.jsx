@@ -1,4 +1,3 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/components/feedback/examples/monster-feedback.jsx
 import React from 'react';
 import FeedbackForm from '@semcore/ui/feedback-form';
 import Input from '@semcore/ui/input';
@@ -43,7 +42,7 @@ const Demo = () => (
     </FeedbackForm.Item>
 
     <label htmlFor="campaign">
-      <Text bold mb="8px" tag="p" size={200}>
+      <Text bold mb="8px" tag="p">
         Campaign
       </Text>
       <FeedbackForm.Item name="campaign">
@@ -66,7 +65,7 @@ const Demo = () => (
     </label>
 
     <label htmlFor="day">
-      <Text bold mb={2} tag="p" size={200}>
+      <Text bold mb={2} tag="p">
         Day
       </Text>
       <FeedbackForm.Item name="day">
@@ -84,7 +83,7 @@ const Demo = () => (
     <FeedbackForm.Item name="call">
       {({ input }) => (
         <RadioGroup {...input}>
-          <Flex direction="column" gap={1} my={4}>
+          <Flex direction="column" gap={1} mb={2}>
             <Radio>
               <Radio.Value value="yes" />
               <Radio.Text>Call me 😏</Radio.Text>

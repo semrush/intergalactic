@@ -30,9 +30,3 @@ Use a single tooltip for many different reference elements. This allows you to "
 to improve UX.
 
 @example tooltip-singleton
-
-@## Singleton
-
-When tooltip is rendered on the age of `relative`ly positioned block, popup mechanism may try to push it inside of the block as much as possible. If it is not a desired behavior, set `ignorePortalsStacking` prop.
-
-@example ignore-portals-stacking

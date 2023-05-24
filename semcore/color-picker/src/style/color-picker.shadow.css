@@ -35,7 +35,7 @@ SItemContainer:hover > SCloseIcon {
 }
 
 SItemContainer[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SItemContainer[selected] {
@@ -97,7 +97,7 @@ SDefaultTrigger {
 }
 
 SDefaultTrigger[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 STriggerCircle {

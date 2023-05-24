@@ -54,12 +54,7 @@ class FeedbackForm extends Component {
       <Form decorators={[this.focusDecorator]} {...other}>
         {(api) =>
           sstyled(styles)(
-            <SpinContainer
-              background={background}
-              theme={theme}
-              size="xl"
-              loading={loading === undefined ? api.submitting : loading}
-            >
+            <SpinContainer background={background} theme={theme} size="xl" loading={loading === undefined ? api.submitting : loading}>
               <SFeedbackForm
                 tag="form"
                 noValidate
@@ -103,8 +98,6 @@ function Item({ Children, tag, uid, ...props }) {
   const tooltipProps = pick(props, TooltipProps);
   const ItemRoot = Root;
 
-  const lastErrorRef = React.useRef(undefined);
-
   return (
     <Field {...props}>
       {({ input, meta, ...other }) => {
@@ -115,8 +108,6 @@ function Item({ Children, tag, uid, ...props }) {
           'aria-invalid': invalid ? true : false,
           'aria-errormessage': uid,
         };
-        if (meta?.error) lastErrorRef.current = meta.error;
-
         return (
           <Tooltip
             visible={invalid && meta.active}
@@ -136,14 +127,16 @@ function Item({ Children, tag, uid, ...props }) {
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper id={uid}>{meta.error ?? lastErrorRef.current}</Tooltip.Popper>
+            <Tooltip.Popper id={uid}>
+              {meta.error}
+            </Tooltip.Popper>
           </Tooltip>
         );
       }}
     </Field>
   );
 }
-Item.enhance = [uniqueIDEnhancement()];
+Item.enhance = [uniqueIDEnhancement()]
 
 function Success(props) {
   const { Children, styles } = props;

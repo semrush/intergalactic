@@ -257,7 +257,7 @@ const RangeSep = (props) => {
       pl={0}
       flex="0"
     >
-      –
+      -
     </SRangeSep>,
   );
 };

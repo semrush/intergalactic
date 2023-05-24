@@ -21,7 +21,7 @@ const Demo = () => {
 
   return (
     <Flex direction="column">
-      <Text tag="label" size="200" htmlFor="dynamic-search-filter-by-keyword">
+      <Text tag="label" htmlFor="dynamic-search-filter-by-keyword">
         Filter by keyword
       </Text>
       <Input w={200} mt={2} aria-live="polite">

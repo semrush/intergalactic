@@ -40,7 +40,7 @@ SButtonTrigger[size='l'] {
 }
 
 SText[placeholder] {
-  color: var(--intergalactic-text-placeholder, #8a8e9b);
+  color: var(--intergalactic-text-placeholder, #a9abb6);
 }
 
 SButtonTrigger[state='normal'] {
@@ -48,24 +48,20 @@ SButtonTrigger[state='normal'] {
 }
 
 SButtonTrigger[state='valid'] {
-  border-color: var(--intergalactic-border-success-active, #007c65);
+  border-color: var(--intergalactic-border-success, #59ddaa);
 }
 
 SButtonTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-critical-active, #d1002f);
+  border-color: var(--intergalactic-border-critical, #ffaeb5);
 }
 
 SFilterTrigger[selected] {
   border-color: var(--intergalactic-border-info-active, #006dca);
-  background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
+  background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
   color: var(--intergalactic-text-primary, #191b23);
 
+  &[active],
   &:hover {
-    background-color: var(--intergalactic-control-secondary-info-hover, rgba(0, 143, 248, 0.2));
-  }
-
-  &:active,
-  &[active] {
     background-color: var(--intergalactic-control-secondary-info-active, rgba(0, 143, 248, 0.3));
   }
 }
@@ -79,7 +75,7 @@ SWrapper {
 }
 
 SWrapper[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
 }
 
 SCounter {
