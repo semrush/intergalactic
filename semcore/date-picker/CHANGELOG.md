@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.42] - 2023-05-24
+
+### Fixed
+
+- Use en-dash symbol as range separator.
+
 ## [3.6.41] - 2023-05-22
 
 ### Changed
