@@ -10,6 +10,8 @@ We want interfaces to help users solve their problems. Building your interface w
 
 The table lists the main styles of our controls, arranged according to the scale of visual loudness.
 
+@table-caption Controls on the visual loudness scale
+
 | Appearance                                 | Type (`use`) and `theme`            | Loudness                                                                                                                                                                                                    | Frequency of use         | When to use                                                                                                                                      |
 | ------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ![](static/button-1.png)      | `use="primary"`, `theme="danger"`   | **Screech, loud roar.** The dovahkin button, every time it appears on the page, it yells at you: `"Fus Ro Dah!"` – and it takes you to the forefathers for a while, all life flashes before your eyes, etc. | Rare                     | The action is dangerous for the user: destructive, irreversible. We need to stir him up so that he does not accidentally hurt himself.           |

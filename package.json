@@ -94,7 +94,7 @@
     "preset": "@semcore/jest-preset-ui"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "eslint -c .eslintrc --fix"
+    "*.{ts,tsx,js,jsx}": "eslint --fix"
   },
   "resolutions": {
     "csstype": "3.0.8",

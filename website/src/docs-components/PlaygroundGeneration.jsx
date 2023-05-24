@@ -100,7 +100,7 @@ Playground.createWidget(
       <label className={styles.field} htmlFor="">
         <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
         <div className={styles.control}>
-          <Pills value={value} onChange={(value) => onChange(value)} behavior="radio" {...others}>
+          <Pills value={value} onChange={(value) => onChange(value)} {...others}>
             {options.map((o, i) => {
               const option = typeof o === 'string' ? { value: o, name: o } : o;
               return (

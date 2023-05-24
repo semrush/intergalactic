@@ -22,7 +22,7 @@ SDropdownMenuItem {
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
-    background-color: var(--intergalactic-bg-primary-neutral-hover, #f4f5f9);
+    background-color: var(--intergalactic-dropdown-menu-item-hover, #f4f5f9);
   }
 
   &:focus {
@@ -32,11 +32,12 @@ SDropdownMenuItem {
 
 SDropdownMenuItem[highlighted] {
   z-index: 1;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3)) inset;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5)) inset;
 }
 
 SDropdownMenuItem[selected] {
   background-color: var(--intergalactic-dropdown-menu-item-selected, rgba(196, 229, 254, 0.7));
+  box-shadow: 2px 0px 0px 0px var(--intergalactic-control-primary-info, #008ff8) inset;
 
   &:hover {
     background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
@@ -106,6 +107,6 @@ SDropdownMenuItemAddon {
 
 SPopper {
   &:focus {
-    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   }
 }

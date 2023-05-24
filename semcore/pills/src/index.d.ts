@@ -17,15 +17,6 @@ export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighbo
   value?: T;
   /** Default value for the selected pill */
   defaultValue?: T;
-  /** Sets semantic role for corresponding behavior,
-   * when set to `radio` pressing left and right arrows
-   * selects corresponding sibling pill.
-   *
-   * It's recommended to use `radio` behavior in forms
-   * while `tabs` behavior for navigation and layout.
-   * @default tabs
-   */
-  behavior?: 'tabs' | 'radio';
 }
 
 export interface IPillProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {

@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.36] - 2023-05-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/icon` [3.14.11 ~> 3.14.12], `@semcore/utils` [3.50.7 ~> 3.51.0]).
+
+## [3.5.35] - 2023-05-15
+
+### Fixed
+
+- Pressing `Escape` or `Enter` might trigger both `onConfirm` and `onCancel`.
+
+## [3.5.34] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
 ## [3.5.33] - 2023-05-10
 
 ### Fixed

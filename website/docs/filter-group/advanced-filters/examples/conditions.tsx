@@ -1,22 +1,31 @@
-import React from 'react';
-import Dropdown from '@semcore/ui/dropdown';
-import Select from '@semcore/ui/select';
-import Input from '@semcore/ui/input';
-import MathPlusXS from '@semcore/ui/icon/MathPlus/m';
-import { Flex } from '@semcore/ui/flex-box';
-import { Text } from '@semcore/ui/typography';
-import Divider from '@semcore/ui/divider';
-import Button from '@semcore/ui/button';
-import { FilterTrigger } from '@semcore/ui/base-trigger';
-import CloseXS from '@semcore/ui/icon/Close/m';
-import TrashXS from '@semcore/ui/icon/Trash/m';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
+//https://github.com/semrush/intergalactic/tree/master/website/docs/filter-group/advanced-filters/examples/conditions.jsx
+import React from "react";
+import Dropdown from "@semcore/ui/dropdown";
+import Select from "@semcore/ui/select";
+import Input from "@semcore/ui/input";
+import MathPlusM from "@semcore/ui/icon/MathPlus/m";
+import { Flex } from "@semcore/ui/flex-box";
+import { Text } from "@semcore/ui/typography";
+import Divider from "@semcore/ui/divider";
+import Button from "@semcore/ui/button";
+import { FilterTrigger } from "@semcore/ui/base-trigger";
+import CloseM from "@semcore/ui/icon/Close/m";
+import TrashM from "@semcore/ui/icon/Trash/m";
+import { ScreenReaderOnly } from "@semcore/utils/lib/ScreenReaderOnly";
 
-const makeOptions = (options) => options.map((value) => ({ value, children: value }));
+const makeOptions = (options) =>
+  options.map((value) => ({ value, children: value }));
 
 const Filter = ({ closable, onClose, id, name, ...props }) => (
   <Flex {...props} gap={4}>
-    <Flex flexWrap gap={4} tag="fieldset" m={0} p={0} style={{ border: 'none' }}>
+    <Flex
+      flexWrap
+      gap={4}
+      tag="fieldset"
+      m={0}
+      p={0}
+      style={{ border: "none" }}
+    >
       <ScreenReaderOnly>
         <Text tag="legend" size="200" mb={2}>
           {name}
@@ -28,7 +37,11 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
             Strategy
           </Text>
         </ScreenReaderOnly>
-        <Select options={makeOptions(['Include', 'Exclude'])} id={`${id}-strategy`} />
+        <Select
+          options={makeOptions(["Include", "Exclude"])}
+          id={`${id}-strategy`}
+          defaultValue={"Include"}
+        />
       </Flex>
       <Flex direction="column" wMin={120} gap={2}>
         <ScreenReaderOnly>
@@ -36,7 +49,11 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
             Entity
           </Text>
         </ScreenReaderOnly>
-        <Select options={makeOptions(['Keyword', 'Backlink'])} id={`${id}-enity`} />
+        <Select
+          options={makeOptions(["Keyword", "Backlink"])}
+          id={`${id}-enity`}
+          defaultValue={"Keyword"}
+        />
       </Flex>
       <Flex direction="column" wMin={120} gap={2}>
         <ScreenReaderOnly>
@@ -44,21 +61,31 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
             Filter
           </Text>
         </ScreenReaderOnly>
-        <Select options={makeOptions(['Containing', 'Not containing'])} id={`${id}-filter`} />
+        <Select
+          options={makeOptions(["Containing", "Not containing"])}
+          id={`${id}-filter`}
+          defaultValue={"Containing"}
+        />
       </Flex>
       <Flex direction="column" wMin={120} gap={2}>
         <ScreenReaderOnly>
           <Text tag="label" htmlFor={`${id}-value`} size="200">
-            Value
+            Enter value
           </Text>
         </ScreenReaderOnly>
         <Input w={120}>
-          <Input.Value id={`${id}-label`} />
+          <Input.Value id={`${id}-label`} placeholder="Enter value" />
         </Input>
       </Flex>
     </Flex>
     {closable ? (
-      <TrashXS my={2} color="stone" interactive aria-label={`Remove ${name}`} onClick={onClose} />
+      <TrashM
+        my={2}
+        color="stone"
+        interactive
+        aria-label={`Remove ${name}`}
+        onClick={onClose}
+      />
     ) : null}
   </Flex>
 );
@@ -72,7 +99,7 @@ export default () => {
     if (!buttonRef.current) return;
     buttonRef.current.scrollIntoView({
       behavior: 'smooth',
-      block: 'nearest',
+      block: 'nearest'
     });
   }, [filtersCount]);
 
@@ -84,7 +111,7 @@ export default () => {
   return (
     <Flex direction="column" gap={2}>
       <Text tag="label" htmlFor="advanced-filter" size="200">
-        Super advanced filter
+        Advanced filter label
       </Text>
       <Dropdown visible={visible} onVisibleChange={setVisible}>
         <Dropdown.Trigger
@@ -120,7 +147,7 @@ export default () => {
             <div>
               <Button use="tertiary" onClick={addFilter} ref={buttonRef} mx={4}>
                 <Button.Addon>
-                  <MathPlusXS />
+                  <MathPlusM />
                 </Button.Addon>
                 <Button.Text>Add condition</Button.Text>
               </Button>
@@ -132,7 +159,7 @@ export default () => {
               </Button>
               <Button use="tertiary" theme="muted" onClick={clearAll}>
                 <Button.Addon>
-                  <CloseXS />
+                  <CloseM />
                 </Button.Addon>
                 <Button.Text>Clear all</Button.Text>
               </Button>

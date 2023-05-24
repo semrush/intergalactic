@@ -4,7 +4,7 @@ import Input from '@semcore/ui/input';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';
 import Dropdown from '@semcore/ui/dropdown';
-import ChatXS from '@semcore/ui/icon/Chat/m';
+import ChatM from '@semcore/ui/icon/Chat/m';
 import Textarea from '@semcore/ui/textarea';
 import { Text } from '@semcore/ui/typography';
 
@@ -129,9 +129,9 @@ class FeedbackLink extends React.PureComponent {
     const { status, value } = this.state;
     return (
       <Dropdown>
-        <Dropdown.Trigger tag={Link}>
+        <Dropdown.Trigger tag={Link} size={200}>
           <Link.Addon>
-            <ChatXS />
+            <ChatM />
           </Link.Addon>
           <Link.Text>Send feedback</Link.Text>
         </Dropdown.Trigger>

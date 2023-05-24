@@ -91,6 +91,8 @@ To mark an area that has dynamic content, use the ARIA attribute `aria-live=""` 
 
 ### ARIA roles
 
+@table-caption ARIA roles
+
 | ARIA role   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Alert**   | A type of interactive area that contains information that is important at a particular point in time. It can be an error message or a warning that appears on the screen after some user action or without the user's involvement (a server error, for example). For maximum compatibility, use `role="alert"` in conjunction with the `aria-live="assertive"` attribute. This will prompt the screen reader to announce the change immediately.     |

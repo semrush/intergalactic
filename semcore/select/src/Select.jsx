@@ -279,11 +279,20 @@ const isInputTriggerTag = (tag) => {
   return false;
 };
 
-function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger, getI18nText }) {
+function Trigger({
+  Children,
+  name,
+  value,
+  styles,
+  $hiddenRef,
+  tag: Tag = ButtonTrigger,
+  getI18nText,
+}) {
   const hasInputTrigger = isInputTriggerTag(Tag);
+  const SSelectTrigger = Root;
 
-  return (
-    <Root
+  return sstyled(styles)(
+    <SSelectTrigger
       render={DropdownMenu.Trigger}
       tag={Tag}
       placeholder={getI18nText('selectPlaceholder')}
@@ -297,7 +306,7 @@ function Trigger({ Children, name, value, $hiddenRef, tag: Tag = ButtonTrigger, 
         true,
       )}
       {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
-    </Root>
+    </SSelectTrigger>,
   );
 }
 

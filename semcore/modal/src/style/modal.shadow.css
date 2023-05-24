@@ -6,6 +6,7 @@ SWindow {
   margin: auto;
   padding: var(--intergalactic-spacing-10x, 40px);
   box-shadow: var(--intergalactic-box-shadow-modal, 0px 3px 8px 0px rgba(25, 27, 35, 0.2));
+  color: var(--intergalactic-text-primary, #191b23);
 
   &:focus {
     outline: none;
@@ -52,7 +53,7 @@ SClose {
 }
 
 SClose[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 STitle {

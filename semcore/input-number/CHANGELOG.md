@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.1] - 2023-05-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.25 ~> 3.6.25], `@semcore/utils` [3.50.7 ~> 3.51.0]).
+
+## [4.5.0] - 2023-05-22
+
+### Changed
+
+- Prevent page scrolling while incrementing or decrementing input value with mouse wheel.
+
+## [4.4.19] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+
 ## [4.4.18] - 2023-05-04
 
 ### Changed
