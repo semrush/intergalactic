@@ -46,6 +46,11 @@ STitle[position='left'] {
   text-anchor: middle;
   alignment-baseline: middle;
 }
+STitle[position='right'][verticalWritingMode],
+STitle[position='left'][verticalWritingMode] {
+  writing-mode: vertical-rl;
+  transform: none;
+}
 
 STick[position='top'] {
   transform: translateY(-12px);

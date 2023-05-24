@@ -97,6 +97,7 @@ async function snapshot(Component, options) {
           ...options,
           html,
           token: process.env.SCREENSHOT_TOKEN,
+          // noCache: true
         },
       });
       body = response.body;

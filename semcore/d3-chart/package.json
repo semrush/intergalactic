@@ -48,6 +48,7 @@
     "@semcore/checkbox": "*",
     "@semcore/dropdown-menu": "*",
     "@semcore/icon": "*",
+    "@semcore/utils": "*",
     "@semcore/jest-preset-ui": "1.0.0",
     "@semcore/typography": "*",
     "@types/d3-array": "^3.0.2",

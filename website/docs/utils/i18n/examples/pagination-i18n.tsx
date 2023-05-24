@@ -11,6 +11,7 @@ const Demo = () => {
           i18n={{
             epo: {
               prevPageLabel: 'Antaŭa',
+              prevPageDescription: "Antaŭa paĝo {pageNumber}",
               nextPageLabel: 'Sekva',
               pageInputLabel: 'Paĝo:',
               totalPagesLabel: 'de',
@@ -18,7 +19,7 @@ const Demo = () => {
               firstPage: 'Unua paĝo',
               currentPage: 'Aktuala paĝo',
               confirm: 'Konfirmi paĝnumeron',
-              lastPage: 'Lasta paĝo #{lastPageNumber}',
+              lastPage: 'Lasta paĝo {lastPageNumber}',
               goToPage: 'Paĝo {pageNumber}',
             },
           }}

@@ -25,6 +25,7 @@ import dataNameEnhancement from './enhancement/dataName';
 import enhanceEnhancement from './enhancement/enhance';
 import styleEnhancement from './enhancement/style';
 import bindHandlerEnhancement from './enhancement/bindHandler';
+import i18nAppLocaleEnhance from './enhancement/i18n';
 
 const CORE_COMPONENT = Symbol('CORE_COMPONENT');
 const CORE_INSTANCE = Symbol('CORE_INSTANCE');
@@ -336,6 +337,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   const Component = createComposeComponent(OriginComponent, context, [
     // @ts-ignore
     ...enhancements.map((f) => f(context, parents, createComponent, childComponents)),
+    i18nAppLocaleEnhance(),
     bindHandlerEnhancement(),
     childrenEnhancement(context, parents),
     // root must be under the children

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.51.1] - 2023-05-24
+
+### Fixed
+
+- Fixed error if token for localization is not defined.
+
 ## [3.51.0] - 2023-05-22
 
 ### Changed
