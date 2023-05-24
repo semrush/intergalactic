@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+
+## [3.9.0] - 2023-05-25
+
+### Changed
+
+- Improved `DataTable` typings, now props `sort`, `onSortChange`, `uniqueKey` types are automatically infered from `data` prop and children rendering row data might be better typed like `<DataTable.Cell<{}, typeof data> name="keyword">`.
+
 ## [3.8.9] - 2023-05-22
 
 ### Changed
