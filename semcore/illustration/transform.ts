@@ -34,7 +34,7 @@ await Promise.all(
       width,
       height,
       viewBox: { baseVal: viewBox },
-    } = document.querySelector('svg');
+    } = document.querySelector('svg') as any;
     const html = '<svg>' + document.body.querySelector('svg').innerHTML + '</svg>';
 
     let jsx: string = await new Promise((resolve, reject) =>
