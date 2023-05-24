@@ -198,9 +198,10 @@ class AxisRoot extends Component {
   }
 
   getTitleProps() {
-    const { position } = this.asProps;
+    const { position, locale } = this.asProps;
     return {
       position: MAP_POSITION_REVERT[position],
+      verticalWritingMode: ['zh', 'ja'].includes(locale),
     };
   }
 
@@ -301,7 +302,7 @@ function Grid(props) {
 }
 
 function Title(props) {
-  const { Element: STitle, styles, scale, position, size, children } = props;
+  const { Element: STitle, styles, scale, position, size, children, verticalWritingMode } = props;
 
   const { x, y } = MAP_POSITION_TITlE[position](scale, size);
 
@@ -324,6 +325,7 @@ function Title(props) {
       position={position}
       className={sTitleStyles.className}
       style={sTitleStyles.style}
+      verticalWritingMode={verticalWritingMode}
       x={x}
       y={y}
     />,
