@@ -20,11 +20,11 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/data-table.shadow.css';
 
-const REVERSED_SORT_DIRECTION: { [direction in SortDirection]: SortDirection } = {
+const reversedSortDirection: { [direction in SortDirection]: SortDirection } = {
   desc: 'asc',
   asc: 'desc',
 };
-const DEFAULT_SORT_DIRECTION: SortDirection = 'desc';
+const defaultSortDirection: SortDirection = 'desc';
 
 const ROW_GROUP = Symbol('ROW_GROUP');
 
@@ -56,13 +56,16 @@ type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
   children?: ((props: Props & Ctx, handlers: UCProps) => React.ReactNode) | React.ReactNode;
 };
 type ReturnEl = React.ReactElement | null;
-type ChildRenderFn<Props> = Props & {
-  children?: (props: Props, column: DataTableData, index: number) => { [key: string]: unknown };
+type ChildRenderFn<Props, DataTableData extends { [key: string]: unknown }[]> = Props & {
+  children?: (props: Props, column: DataTableData[0], index: number) => Partial<Props>;
 };
 /* utils type */
 
 export type DataTableData = { [key: string]: unknown };
-export type DataTableSort = [string, 'desc' | 'asc'];
+export type DataTableSort<Columns extends string | number | symbol = string> = [
+  sortBy: Columns,
+  sortDirection: 'desc' | 'asc',
+];
 export type DataTableTheme = 'muted' | 'info' | 'success' | 'warning' | 'danger';
 export type DataTableUse = 'primary' | 'secondary';
 export type DataTableRow = DataTableCell[];
@@ -74,21 +77,23 @@ export type DataTableCell = {
   [key: string]: unknown;
 };
 
-export interface IDataTableProps extends IBoxProps {
+export interface IDataTableProps<
+  DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[],
+> extends IBoxProps {
   /** Theme for table
    * @default primary
    * */
   use?: DataTableUse;
   /** Data for table */
-  data?: DataTableData[];
+  data?: DataTableData;
   /** Active sort object */
-  sort?: DataTableSort;
+  sort?: DataTableSort<keyof DataTableData[0]>;
   /** Handler call when will request change sort */
-  onSortChange?: (sort: DataTableSort, e?: React.SyntheticEvent) => void;
+  onSortChange?: (sort: DataTableSort<keyof DataTableData[0]>, e?: React.SyntheticEvent) => void;
   /** Field name in one data entity that is unique accross all set of data
    * @default id
    */
-  uniqueKey?: string;
+  uniqueKey?: keyof DataTableData[0];
 }
 
 export interface IDataTableHeadProps extends IBoxProps {
@@ -209,7 +214,7 @@ class RootDefinitionTable extends Component<AsProps> {
       'onSortChange',
       [
         column.name,
-        column.active ? REVERSED_SORT_DIRECTION[column.sortDirection] : column.sortDirection,
+        column.active ? reversedSortDirection[column.sortDirection] : column.sortDirection,
       ],
       event,
     );
@@ -296,7 +301,7 @@ class RootDefinitionTable extends Component<AsProps> {
           sort[0] === name
             ? sort[1]
             : column?.sortDirection ||
-              (typeof sortable == 'string' ? sortable : DEFAULT_SORT_DIRECTION),
+              (typeof sortable == 'string' ? sortable : defaultSortDirection),
         props: {
           name,
           flex: flex === 'inherit' ? undefined : flex,
@@ -500,12 +505,18 @@ const DefinitionTable = createComponent(
     Row: ComponentDefinition,
   },
   {},
-) as (<T>(props: CProps<IDataTableProps & T, IDataTableCtx>) => ReturnEl) & {
-  Head: <T>(props: IDataTableHeadProps & T) => ReturnEl;
-  Body: <T>(props: IDataTableBodyProps & T) => ReturnEl;
-  Column: <T>(props: IDataTableColumnProps & T) => ReturnEl;
-  Cell: <T>(props: ChildRenderFn<IDataTableCellProps & T>) => ReturnEl;
-  Row: <T>(props: ChildRenderFn<IDataTableRowProps & T>) => ReturnEl;
+) as (<Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
+  props: CProps<IDataTableProps<DataTableData> & Props, IDataTableCtx>,
+) => ReturnEl) & {
+  Head: <Props>(props: IDataTableHeadProps & Props) => ReturnEl;
+  Body: <Props>(props: IDataTableBodyProps & Props) => ReturnEl;
+  Column: <Props>(props: IDataTableColumnProps & Props) => ReturnEl;
+  Cell: <Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
+    props: ChildRenderFn<IDataTableCellProps & Props, DataTableData>,
+  ) => ReturnEl;
+  Row: <Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
+    props: ChildRenderFn<IDataTableRowProps & Props, DataTableData>,
+  ) => ReturnEl;
 };
 
 export { ROW_GROUP };
