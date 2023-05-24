@@ -570,7 +570,7 @@
         "description": "Secondary text."
       },
       "placeholder": {
-        "value": "{gray.400}",
+        "value": "{gray.300}",
         "type": "color",
         "description": "Placeholder text only."
       },
@@ -1420,17 +1420,17 @@
       }
     },
     "keyboard-focus": {
-      "value": "0px 0px 0px 3px rgba({blue.400}, 0.5)",
+      "value": "0px 0px 0px 3px rgba({blue.400}, 0.3)",
       "type": "boxShadow",
       "description": "Default keyboard focus styles."
     },
     "keyboard-focus-invalid": {
-      "value": "0px 0px 0px 3px rgba({red.400}, 0.5)",
+      "value": "0px 0px 0px 3px rgba({red.400}, 0.3)",
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with invalid state."
     },
     "keyboard-focus-valid": {
-      "value": "0px 0px 0px 3px rgba({green.400}, 0.5)",
+      "value": "0px 0px 0px 3px rgba({green.400}, 0.3)",
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with valid state."
     },

@@ -25,7 +25,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
   const closeIcon = bool({
     key: 'icon',
     defaultValue: true,
-    label: 'Show Close icon',
+    label: 'Show icon close',
   });
 
   const visible = bool({
@@ -57,7 +57,9 @@ export default PlaygroundGeneration((createGroupWidgets) => {
         </Button>
       </FeaturePopover.Trigger>
       <FeaturePopover.Popper closeIcon={closeIcon} wMax={350}>
-        With this new feature, users can now enjoy improved user experience, or expanded capabilities.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, atque eveniet
+        excepturi fugit illum perspiciatis praesentium sequi totam vel. Consequatur delectus dolorem
+        eos itaque numquam officia reprehenderit temporibus ut!
       </FeaturePopover.Popper>
     </FeaturePopover>
   );

@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.51.0] - 2023-05-22
-
-### Changed
-
-- Updated reference for `--text-placeholder` token from `--gray-300` to `--gray-400`, to add more contrast to all placeholder texts in all components.
-
 ## [3.50.7] - 2023-05-11
 
 ### Fixed

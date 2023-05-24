@@ -2,30 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.14.10] - 2023-05-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.9 ~> 1.10.10], `@semcore/utils` [3.50.7 ~> 3.51.0]).
-
-## [2.14.9] - 2023-05-22
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/popper` [4.17.10 ~> 4.17.11]).
-
-## [2.14.8] - 2023-05-12
-
-### Fixed
-
-- Fixed radial tree icons displaying.
-
-## [2.14.7] - 2023-05-11
-
-### Changed
-
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/utils` [3.50.6 ~> 3.50.7]).
-
 ## [2.14.6] - 2023-05-04
 
 ### Changed

@@ -35,6 +35,7 @@
     "description": "Hover state of the primary background of the interface which contains the main data and information.",
     "components": [
       "base-trigger",
+      "dropdown-menu",
       "pills"
     ]
   },
@@ -57,7 +58,8 @@
     "description": "Accent background of the message with regular information.",
     "components": [
       "base-trigger",
-      "notice-global"
+      "notice-global",
+      "radio"
     ]
   },
   {
@@ -390,7 +392,6 @@
       "notice",
       "pagination",
       "pills",
-      "popper",
       "product-head",
       "radio",
       "side-panel",
@@ -432,8 +433,8 @@
   {
     "name": "--intergalactic-text-placeholder",
     "type": "color",
-    "rawValue": "{gray.400}",
-    "computedValue": "#8a8e9b",
+    "rawValue": "{gray.300}",
+    "computedValue": "#a9abb6",
     "description": "Placeholder text only.",
     "components": [
       "base-trigger",
@@ -726,7 +727,6 @@
     "description": "Active border in focused input filed.",
     "components": [
       "base-trigger",
-      "checkbox",
       "color-picker",
       "inline-input",
       "input",
@@ -743,6 +743,8 @@
     "computedValue": "#59ddaa",
     "description": "Subtle secondary border in the successful message and input field.",
     "components": [
+      "base-trigger",
+      "input",
       "notice"
     ]
   },
@@ -753,7 +755,6 @@
     "computedValue": "#007c65",
     "description": "Active border in the focused input field with valid state.",
     "components": [
-      "base-trigger",
       "inline-input",
       "input",
       "textarea"
@@ -766,6 +767,8 @@
     "computedValue": "#ffaeb5",
     "description": "Subtle secondary border in the critical message and invalid input field.",
     "components": [
+      "base-trigger",
+      "input",
       "notice"
     ]
   },
@@ -777,7 +780,6 @@
     "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state.",
     "components": [
       "base-trigger",
-      "checkbox",
       "inline-input",
       "input",
       "radio",
@@ -865,7 +867,6 @@
     "components": [
       "button",
       "checkbox",
-      "dropdown-menu",
       "radio",
       "select",
       "slider",
@@ -880,6 +881,7 @@
     "description": "Hover state of the regular primary control.",
     "components": [
       "button",
+      "checkbox",
       "slider"
     ]
   },
@@ -942,7 +944,8 @@
     "computedValue": "#d1002f",
     "description": "Hover state of the primary control with danger theme.",
     "components": [
-      "button"
+      "button",
+      "checkbox"
     ]
   },
   {
@@ -1075,9 +1078,7 @@
     "computedValue": "rgba(0, 143, 248, 0.1)",
     "description": "Background of the accent secondary control.",
     "components": [
-      "base-trigger",
-      "button",
-      "pills"
+      "button"
     ]
   },
   {
@@ -1088,7 +1089,8 @@
     "description": "Hover state of the accent secondary control.",
     "components": [
       "base-trigger",
-      "button"
+      "button",
+      "pills"
     ]
   },
   {
@@ -1564,9 +1566,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover state of the default background color for the list item in the dropdown-menu.",
-    "components": [
-      "dropdown-menu"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-dropdown-menu-item-selected",
@@ -2055,8 +2055,8 @@
   {
     "name": "--intergalactic-keyboard-focus",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({blue.400}, 0.5)",
-    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.5)",
+    "rawValue": "0px 0px 0px 3px rgba({blue.400}, 0.3)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 143, 248, 0.3)",
     "description": "Default keyboard focus styles.",
     "components": [
       "accordion",
@@ -2093,8 +2093,8 @@
   {
     "name": "--intergalactic-keyboard-focus-invalid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.5)",
-    "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.5)",
+    "rawValue": "0px 0px 0px 3px rgba({red.400}, 0.3)",
+    "computedValue": "0px 0px 0px 3px rgba(255, 73, 83, 0.3)",
     "description": "Keyboard focus styles for elements with invalid state.",
     "components": [
       "base-trigger",
@@ -2108,8 +2108,8 @@
   {
     "name": "--intergalactic-keyboard-focus-valid",
     "type": "boxShadow",
-    "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.5)",
-    "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.5)",
+    "rawValue": "0px 0px 0px 3px rgba({green.400}, 0.3)",
+    "computedValue": "0px 0px 0px 3px rgba(0, 159, 129, 0.3)",
     "description": "Keyboard focus styles for elements with valid state.",
     "components": [
       "inline-input",

@@ -46,7 +46,7 @@ class TooltipRoot extends Component {
       theme,
       disablePortal,
       ignorePortalsStacking,
-      interaction,
+      interaction
     };
   }
 
@@ -105,11 +105,11 @@ function TooltipPopper(props) {
     <>
       <STooltip
         render={Popper.Popper}
-        role="tooltip"
+        role='tooltip'
         use:theme={resolveColor(theme)}
         aria-live={theme === 'warning' ? 'assertive' : 'polite'}
       >
-        {(children = <Children />)}
+        {children = <Children />}
         <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
       </STooltip>
       {interaction === 'hover' && <ScreenReaderOnly>{children}</ScreenReaderOnly>}

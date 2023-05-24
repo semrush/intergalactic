@@ -32,7 +32,7 @@ class Demo extends React.Component {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
-                        <Tooltip animationsDisabled>
+                        <Tooltip>
                           <Tooltip.Popper
                             theme="warning"
                             placement="top"
@@ -42,7 +42,6 @@ class Demo extends React.Component {
                             {meta.error}
                           </Tooltip.Popper>
                           <Input
-                            tag={Tooltip.Trigger}
                             size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
@@ -62,7 +61,7 @@ class Demo extends React.Component {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
-                        <Tooltip animationsDisabled>
+                        <Tooltip>
                           <Tooltip.Popper
                             theme="warning"
                             placement="top"
@@ -72,7 +71,6 @@ class Demo extends React.Component {
                             {meta.error}
                           </Tooltip.Popper>
                           <Input
-                            tag={Tooltip.Trigger}
                             ml={3}
                             size="l"
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
@@ -99,7 +97,7 @@ class Demo extends React.Component {
                     const showError = Boolean(meta.touched && meta.active && meta.error);
 
                     return (
-                      <Tooltip animationsDisabled>
+                      <Tooltip>
                         <Tooltip.Popper
                           id="form-email-error"
                           theme="warning"
@@ -108,11 +106,7 @@ class Demo extends React.Component {
                         >
                           {meta.error}
                         </Tooltip.Popper>
-                        <Input
-                          tag={Tooltip.Trigger}
-                          size="l"
-                          state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
-                        >
+                        <Input size="l" state={meta.touched && meta.invalid ? 'invalid' : 'normal'}>
                           <Input.Value
                             placeholder="Email"
                             {...input}

@@ -159,11 +159,9 @@ class InlineInputBase extends Component<RootAsProps> {
     this.asProps.onCancel?.(prevText, event);
   };
 
-  keyDownLastHandle = -1;
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (onBlurBehavior) {
-      if (Date.now() - this.keyDownLastHandle < 10) return;
       setTimeout(() => {
         if (this.rootRef.current && isFocusOutsideOf(this.rootRef.current)) {
           if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value ?? '', event);
@@ -175,14 +173,8 @@ class InlineInputBase extends Component<RootAsProps> {
 
   handleKeyDown = (event: React.KeyboardEvent) => {
     const { onConfirm, onCancel } = this.asProps;
-    if (event.code === 'Enter') {
-      this.keyDownLastHandle = Date.now();
-      onConfirm?.(this.inputRef.current?.value ?? '', event);
-    }
-    if (event.code === 'Escape') {
-      this.keyDownLastHandle = Date.now();
-      onCancel?.(this.initValue, event);
-    }
+    if (event.code === 'Enter') onConfirm?.(this.inputRef.current?.value ?? '', event);
+    if (event.code === 'Escape') onCancel?.(this.initValue, event);
   };
 
   render() {

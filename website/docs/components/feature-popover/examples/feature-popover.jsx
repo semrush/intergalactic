@@ -28,10 +28,10 @@ const Demo = () => {
           />
           <div>
             <Text size={300} bold tag="h3" mb={1}>
-              Look! We got a new feature!
+              Work with your team!
             </Text>
             <Text mb={4} size={200} tag="p">
-              With this new feature, users can now enjoy improved user experience, or expanded capabilities.
+              Well, if you like burgers give 'em a try sometime.
             </Text>
             <Button theme="invert" use="primary" onClick={handleVisibleChange(false)}>
               Got it

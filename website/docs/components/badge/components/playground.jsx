@@ -14,9 +14,9 @@ const Preview = (preview) => {
 
   const bg = select({
     key: 'bg',
-    defaultValue: 'gray-400',
+    defaultValue: 'gray-300',
     label: 'Background',
-    options: ['gray-400', 'blue-400', 'red-400', 'orange-400', 'green-400', 'white'],
+    options: ['gray-300', 'blue-300', 'red-300', 'orange-300', 'green-300', 'white'],
   });
 
   const child = text({

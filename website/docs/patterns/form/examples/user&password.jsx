@@ -22,7 +22,7 @@ const Demo = () => {
         <Text size={300} tag="label" mb={1} htmlFor="email">
           Email
         </Text>
-        <Tooltip animationsDisabled>
+        <Tooltip>
           <Tooltip.Popper
             placement="right"
             theme="warning"
@@ -63,7 +63,7 @@ const Demo = () => {
         <Text size={300} tag="label" mb={1} htmlFor="password">
           Password
         </Text>
-        <Tooltip animationsDisabled>
+        <Tooltip>
           <Tooltip.Popper
             placement="right"
             theme="warning"
