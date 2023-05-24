@@ -505,16 +505,16 @@ const DefinitionTable = createComponent(
     Row: ComponentDefinition,
   },
   {},
-) as (<DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[], Props = {}>(
+) as (<Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
   props: CProps<IDataTableProps<DataTableData> & Props, IDataTableCtx>,
 ) => ReturnEl) & {
   Head: <Props>(props: IDataTableHeadProps & Props) => ReturnEl;
   Body: <Props>(props: IDataTableBodyProps & Props) => ReturnEl;
   Column: <Props>(props: IDataTableColumnProps & Props) => ReturnEl;
-  Cell: <DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[], Props = {}>(
+  Cell: <Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
     props: ChildRenderFn<IDataTableCellProps & Props, DataTableData>,
   ) => ReturnEl;
-  Row: <DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[], Props = {}>(
+  Row: <Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
     props: ChildRenderFn<IDataTableRowProps & Props, DataTableData>,
   ) => ReturnEl;
 };

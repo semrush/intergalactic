@@ -11,14 +11,14 @@ export default () => {
         <DataTable.Column name="vol" children="Vol." />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Row<typeof data>>
+        <DataTable.Row<{}, typeof data>>
           {(props, row) => {
             return {
               theme: row['kd'] === '-' ? 'warning' : props.theme,
             };
           }}
         </DataTable.Row>
-        <DataTable.Row<typeof data>>
+        <DataTable.Row<{}, typeof data>>
           {(props, row, index) => {
             return {
               style: {
