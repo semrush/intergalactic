@@ -1,9 +1,35 @@
+import chroma from 'chroma-js';
+
+type ExtensionsInput = {
+  'studio.tokens': {
+    modify: {
+      type: string;
+      value: number;
+      space: string;
+    };
+  };
+};
+
 type TokensInput = {
-  [nestedKey: string]: TokensInput | { value: string; type: string; description: string };
+  [nestedKey: string]:
+    | TokensInput
+    | {
+        value: string;
+        type: string;
+        description: string;
+        $extensions?: ExtensionsInput;
+      };
 };
 
 export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: string) => {
   const values: { [tokenName: string]: string } = {};
+  const modifications: {
+    [tokenName: string]: {
+      type: string;
+      value: number;
+      space: string;
+    }[];
+  } = {};
   const types: { [tokenName: string]: string } = {};
   const descriptions: { [tokenName: string]: string } = {};
   const mixins: string[] = [];
@@ -24,6 +50,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           | `${ColorPattern}; ${ColorPattern}`;
 
         description?: string;
+        $extensions?: ExtensionsInput;
       }
     | DesignTokenTree;
   type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
@@ -40,6 +67,16 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       }
       values[path] = node.value;
       if (typeof node.description === 'string') descriptions[path] = node.description;
+      if (node.$extensions) {
+        for (const extension in node.$extensions) {
+          if (extension === 'studio.tokens') {
+            modifications[path] ??= [];
+            modifications[path].push(node.$extensions['studio.tokens'].modify);
+          } else {
+            throw new Error(`Unsupported extension "${extension}" for design token "${path}"`);
+          }
+        }
+      }
       return;
     }
     for (const key in node) {
@@ -166,6 +203,18 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       types[token] === 'other'
     ) {
       values[token] = resolveToken(values[token]);
+    }
+    for (const modification of modifications[token] ?? []) {
+      const color = chroma(values[token]);
+      if (modification.type === 'lighten') {
+        if (['hsl'].includes(modification.space)) {
+          values[token] = color.brighten(modification.value).css();
+        } else {
+          throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
+        }
+      } else {
+        throw new Error(`Unsupported color modification ${modification.type} of token ${token}`);
+      }
     }
   }
 

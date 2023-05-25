@@ -1750,16 +1750,16 @@
   {
     "name": "--intergalactic-table-td-cell-hover",
     "type": "color",
-    "rawValue": "{gray.100}, 0.5",
-    "computedValue": "rgba(224, 225, 233, 0.5)",
+    "rawValue": "{gray.100}",
+    "computedValue": "rgb(250,251,255)",
     "description": "Background of the default hovered cell in the Table.",
     "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-active",
     "type": "color",
-    "rawValue": "{gray.100}, 0.8",
-    "computedValue": "rgba(224, 225, 233, 0.8)",
+    "rawValue": "{gray.100}",
+    "computedValue": "rgb(234,235,243)",
     "description": "Background of the default active cell in the Table.",
     "components": []
   },

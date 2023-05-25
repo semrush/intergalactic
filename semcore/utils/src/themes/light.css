@@ -345,9 +345,9 @@
   /* Background of the default cell in the Table. */
   --intergalactic-table-td-cell: #ffffff;
   /* Background of the default hovered cell in the Table. */
-  --intergalactic-table-td-cell-hover: rgba(224, 225, 233, 0.5);
+  --intergalactic-table-td-cell-hover: rgb(250, 251, 255);
   /* Background of the default active cell in the Table. */
-  --intergalactic-table-td-cell-active: rgba(224, 225, 233, 0.8);
+  --intergalactic-table-td-cell-active: rgb(234, 235, 243);
   /* Background of the unread cell in the Table. */
   --intergalactic-table-td-cell-unread: #f4f5f9;
   /* Background of the cell used for Accordion or actions row, in the Table. */
