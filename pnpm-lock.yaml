@@ -1739,9 +1739,11 @@ importers:
       '@semcore/babel-plugin-react-semcore': ^4.2.1
       '@semcore/core': ^1
       '@semcore/jest-preset-ui': 1.0.0
+      '@types/chroma-js': ^2.4.0
       '@types/node': ^17.0.45
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
+      chroma-js: ^2.4.2
       classnames: 2.2.6
       fast-glob: 3.2.11
       focus-lock: 0.11.3
@@ -1759,9 +1761,11 @@ importers:
       '@semcore/babel-plugin-react-semcore': link:../../tools/babel-plugin-react-semcore
       '@semcore/core': link:../core
       '@semcore/jest-preset-ui': link:../../tools/jest-preset-ui
+      '@types/chroma-js': 2.4.0
       '@types/node': 17.0.45
       '@types/react': 18.0.21
       '@types/react-dom': 18.0.6
+      chroma-js: 2.4.2
       fast-glob: 3.2.11
       postcss: 8.4.21
       postcss-value-parser: 4.1.0
@@ -5635,6 +5639,10 @@ packages:
       '@types/node': 17.0.45
     dev: true
 
+  /@types/chroma-js/2.4.0:
+    resolution: {integrity: sha512-JklMxityrwjBTjGY2anH8JaTx3yjRU3/sEHSblLH1ba5lqcSh1LnImXJZO5peJfXyqKYWjHTGy4s5Wz++hARrw==}
+    dev: true
+
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
@@ -7361,6 +7369,10 @@ packages:
 
   /chownr/1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
+
+  /chroma-js/2.4.2:
+    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
+    dev: true
 
   /ci-info/2.0.0:
     resolution: {integrity: sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==}
