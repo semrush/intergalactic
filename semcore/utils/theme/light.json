@@ -686,7 +686,8 @@
       },
       "advertising": {
         "value": "{violet.700}",
-        "type": "color"
+        "type": "color",
+        "description": "Advertising text."
       }
     },
     "border": {
@@ -845,15 +846,18 @@
         },
         "brand": {
           "value": "{orange.400}",
-          "type": "color"
+          "type": "color",
+          "description": "Background of the primary brand colored control."
         },
         "brand-hover": {
           "value": "{orange.500}",
-          "type": "color"
+          "type": "color",
+          "description": "Hover state of the primary brand colored control."
         },
         "brand-active": {
           "value": "{orange.600}",
-          "type": "color"
+          "type": "color",
+          "description": "Active state of the primary brand colored control."
         }
       },
       "secondary": {
@@ -1118,7 +1122,8 @@
       },
       "cell-current-invert": {
         "value": "{gray.white}, 0.3",
-        "type": "color"
+        "type": "color",
+        "description": "Color for marking the active cell with the current date, month or year in the date-picker."
       }
     },
     "dropdown-menu": {
@@ -1232,7 +1237,8 @@
         },
         "gradient": {
           "value": "linear-gradient(to right, rgba($gray.100, 0) 0%, rgba($gray.100, 1) 100%)",
-          "type": "color"
+          "type": "color",
+          "description": "Background gradient for sorting icon that absolute positioned in the table head."
         }
       },
       "td": {
@@ -1452,9 +1458,15 @@
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with valid state."
     },
+    "keyboard-focus-invert": {
+      "value": "0px 0px 0px 3px rgba({gray.white}, 0.7)",
+      "type": "boxShadow",
+      "description": "Default keyboard focus styles for using with dark background."
+    },
     "base": {
       "value": "Inter",
-      "type": "fontFamilies"
+      "type": "fontFamilies",
+      "description": "Base font family."
     },
     "lh-800": {
       "value": "117%",
@@ -1498,19 +1510,23 @@
     },
     "semi-bold": {
       "value": "600",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "description": "Semi-bold font weight."
     },
     "bold": {
       "value": "700",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "description": "Bold font weight."
     },
     "regular": {
       "value": "400",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "description": "Regular font weight."
     },
     "medium": {
       "value": "500",
-      "type": "fontWeights"
+      "type": "fontWeights",
+      "description": "Medium font weight."
     },
     "fs-50": {
       "value": "10px",
@@ -1559,7 +1575,8 @@
     },
     "compact": {
       "value": "0.3",
-      "type": "letterSpacing"
+      "type": "letterSpacing",
+      "description": "Compact letter spacing."
     },
     "heading-h1": {
       "value": {
