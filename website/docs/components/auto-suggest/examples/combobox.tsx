@@ -16,7 +16,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="release-time-picker">
+      <Text tag="label" size="200" htmlFor="release-time-picker">
         Select release time
       </Text>
       <Box mt={2}>

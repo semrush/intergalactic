@@ -6,8 +6,8 @@ import { Box } from '@semcore/ui/flex-box';
 const Demo = () => {
   return (
     <>
-      <Text tag="div" id="timePickerLabel" size="300">
-        Your password
+      <Text tag="div" id="timePickerLabel" size="200">
+        Your time
       </Text>
       <Box mt={2}>
         <TimePicker is12Hour aria-labelledby="timePickerLabel">
