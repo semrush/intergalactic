@@ -15,12 +15,13 @@ import { Plot } from '@semcore/ui/d3-chart';
 
 @## Axis
 
-It have children components `Ticks, Grid`.
+It have children components `Title, Ticks, Grid`.
 
 ```js
 import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 
 <XAxis>
+  <XAxis.Title />
   <XAxis.Ticks />
   <XAxis.Grid />
 </XAxis>;
@@ -29,6 +30,12 @@ import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 @typescript IXAxisProps
 
 @typescript IYAxisProps
+
+@typescript IAxisTitleProps
+
+@typescript IAxisTicksProps
+
+@typescript IAxisGridProps
 
 @## ResponsiveContainer
 
