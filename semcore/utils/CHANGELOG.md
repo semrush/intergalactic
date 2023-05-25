@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.52.0] - 2023-05-25
+
+### Added
+
+- Added new `--keyboard-focus-invert` token for using with dark background.
+
 ## [3.51.2] - 2023-04-11
 
 ### Changed
@@ -52,7 +58,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Change
 
-- Added `id` propertie for `ScreenReaderOnly` component.
+- Added `id` property for `ScreenReaderOnly` component.
 
 ## [3.50.1] - 2023-04-13
 
