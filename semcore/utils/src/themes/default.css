@@ -122,6 +122,7 @@
   --intergalactic-text-large-critical: #ff4953;
   /* Hover and active states of the text with font-size ≥20px associated with critical states and data. */
   --intergalactic-text-large-critical-hover-active: #d1002f;
+  /* Advertising text. */
   --intergalactic-text-advertising: #421983;
   /* Neutral primary border. */
   --intergalactic-border-primary: #c4c7cf;
@@ -183,8 +184,11 @@
   --intergalactic-control-primary-invert-hover: #f4f5f9;
   /* Active (selected) state of the inverted primary control. */
   --intergalactic-control-primary-invert-active: #e0e1e9;
+  /* Background of the primary brand colored control. */
   --intergalactic-control-primary-brand: #ff642d;
+  /* Hover state of the primary brand colored control. */
   --intergalactic-control-primary-brand-hover: #c33909;
+  /* Active state of the primary brand colored control. */
   --intergalactic-control-primary-brand-active: #8b1500;
   /* Background of the regular secondary control. */
   --intergalactic-control-secondary-neutral: rgba(138, 142, 155, 0.1);
@@ -282,6 +286,7 @@
   --intergalactic-date-picker-cell-active: #2bb3ff;
   /* Hover for the active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active-hover: #008ff8;
+  /* Color for marking the active cell with the current date, month or year in the date-picker. */
   --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
   /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: #ffffff;
@@ -337,6 +342,7 @@
   --intergalactic-table-th-primary-cell-active: #e0e1e9;
   /* Background of the header cell in the secondary Table. */
   --intergalactic-table-th-secondary-cell: #ffffff;
+  /* Background gradient for sorting icon that absolute positioned in the table head. */
   --intergalactic-table-th-gradient: linear-gradient(
     to right,
     rgba(224, 225, 233, 0) 0%,
@@ -419,6 +425,7 @@
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
   /* Default keyboard focus styles for using with dark background. */
   --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
+  /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
   --intergalactic-lh-800: 117%;
@@ -436,9 +443,13 @@
   --intergalactic-lh-200: 142%;
   /* Use with font-size-100. */
   --intergalactic-lh-100: 133%;
+  /* Semi-bold font weight. */
   --intergalactic-semi-bold: 600;
+  /* Bold font weight. */
   --intergalactic-bold: 700;
+  /* Regular font weight. */
   --intergalactic-regular: 400;
+  /* Medium font weight. */
   --intergalactic-medium: 500;
   /* Use only for text in Badge component. */
   --intergalactic-fs-50: 10px;
@@ -458,6 +469,7 @@
   --intergalactic-fs-700: 36px;
   /* Use for H1. */
   --intergalactic-fs-800: 48px;
+  /* Compact letter spacing. */
   --intergalactic-compact: 0.3;
   /* Base denominator of the design system. */
   --intergalactic-scale-indent: 4px;

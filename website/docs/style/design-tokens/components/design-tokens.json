@@ -659,6 +659,7 @@
     "type": "color",
     "rawValue": "{violet.700}",
     "computedValue": "#421983",
+    "description": "Advertising text.",
     "components": []
   },
   {
@@ -1021,6 +1022,7 @@
     "type": "color",
     "rawValue": "{orange.400}",
     "computedValue": "#ff642d",
+    "description": "Background of the primary brand colored control.",
     "components": []
   },
   {
@@ -1028,6 +1030,7 @@
     "type": "color",
     "rawValue": "{orange.500}",
     "computedValue": "#c33909",
+    "description": "Hover state of the primary brand colored control.",
     "components": []
   },
   {
@@ -1035,6 +1038,7 @@
     "type": "color",
     "rawValue": "{orange.600}",
     "computedValue": "#8b1500",
+    "description": "Active state of the primary brand colored control.",
     "components": []
   },
   {
@@ -1548,6 +1552,7 @@
     "type": "color",
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
+    "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },
   {
@@ -1737,6 +1742,7 @@
     "type": "color",
     "rawValue": "linear-gradient(to right, rgba($gray.100, 0) 0%, rgba($gray.100, 1) 100%)",
     "computedValue": "linear-gradient(to right, rgba(224, 225, 233, 0) 0%, rgba(224, 225, 233, 1) 100%)",
+    "description": "Background gradient for sorting icon that absolute positioned in the table head.",
     "components": []
   },
   {
@@ -2130,6 +2136,7 @@
     "type": "fontFamilies",
     "rawValue": "Inter",
     "computedValue": "Inter",
+    "description": "Base font family.",
     "components": []
   },
   {
@@ -2270,6 +2277,7 @@
     "type": "fontWeights",
     "rawValue": "600",
     "computedValue": "600",
+    "description": "Semi-bold font weight.",
     "components": [
       "errors",
       "modal",
@@ -2281,6 +2289,7 @@
     "type": "fontWeights",
     "rawValue": "700",
     "computedValue": "700",
+    "description": "Bold font weight.",
     "components": [
       "card",
       "color-picker",
@@ -2299,6 +2308,7 @@
     "type": "fontWeights",
     "rawValue": "400",
     "computedValue": "400",
+    "description": "Regular font weight.",
     "components": [
       "base-trigger",
       "date-picker"
@@ -2309,6 +2319,7 @@
     "type": "fontWeights",
     "rawValue": "500",
     "computedValue": "500",
+    "description": "Medium font weight.",
     "components": [
       "badge",
       "button",
@@ -2483,6 +2494,7 @@
     "type": "letterSpacing",
     "rawValue": "0.3",
     "computedValue": "0.3",
+    "description": "Compact letter spacing.",
     "components": []
   },
   {
