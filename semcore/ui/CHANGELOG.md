@@ -1,3 +1,42 @@
+## [13.30.0] - 2023-05-25
+
+### @semcore/core
+
+- **Changed** Prop `locale` default value is provided for all Intergalactic components under this `I18nProvider`.
+
+### @semcore/d3-chart
+
+- **Changed** Improved support of `zh` and `ja` locales in vertical titles.
+
+### @semcore/data-table
+
+- **Changed** Improved `DataTable` typings, now props `sort`, `onSortChange`, `uniqueKey` types are automatically infered from `data` prop and children rendering row data might be better typed like `<DataTable.Cell<{}, typeof data> name="keyword">`.
+
+### @semcore/date-picker
+
+- **Fixed** Use en-dash symbol as range separator.
+
+### @semcore/feedback-form
+
+- **Fixed** Fixed error tooltip sizing.
+
+### @semcore/illustration
+
+- **Changed** Updated cat in `PageError` illustration.
+- **Fixed** Part of illustrations were incorrectly displayed in Firefox.
+
+### @semcore/inline-input
+
+- **Fixed** In some rare `onConfirm` and `onCancel` race condition were occurring.
+
+### @semcore/pills
+
+- **Added** Added `behavior` prop for better accessability in forms. Props takes value `tabs` and `radio`, `tabs` is a default value and correspond to the old component behavior.
+
+### @semcore/utils
+
+- **Fixed** Fixed error if token for localization is not defined.
+
 ## [13.29.0] - 2023-05-22
 
 ### @semcore/base-trigger
