@@ -1452,6 +1452,11 @@
       "type": "boxShadow",
       "description": "Keyboard focus styles for elements with valid state."
     },
+    "keyboard-focus-invert": {
+      "value": "0px 0px 0px 3px rgba({gray.white}, 0.7)",
+      "type": "boxShadow",
+      "description": "Default keyboard focus styles for using with dark background."
+    },
     "base": {
       "value": "Inter",
       "type": "fontFamilies"
