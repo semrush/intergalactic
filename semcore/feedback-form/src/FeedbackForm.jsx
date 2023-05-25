@@ -136,7 +136,9 @@ function Item({ Children, tag, uid, ...props }) {
                   ...other,
                 })}
             </Tooltip.Trigger>
-            <Tooltip.Popper id={uid}>{meta.error ?? lastErrorRef.current}</Tooltip.Popper>
+            <Tooltip.Popper id={uid} ignorePortalsStacking>
+              {meta.error ?? lastErrorRef.current}
+            </Tooltip.Popper>
           </Tooltip>
         );
       }}

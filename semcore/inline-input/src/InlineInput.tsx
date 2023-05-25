@@ -146,24 +146,26 @@ class InlineInputBase extends Component<RootAsProps> {
     this.inputRef.current?.focus();
   };
 
+  lastResultHandle = -1;
   handleConfirm = (
     text: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
   ) => {
+    this.lastResultHandle = Date.now()
     this.asProps.onConfirm?.(text, event);
   };
   handleCancel = (
     prevText: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
   ) => {
+    this.lastResultHandle = Date.now()
     this.asProps.onCancel?.(prevText, event);
   };
 
-  keyDownLastHandle = -1;
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
-    if (onBlurBehavior) {
-      if (Date.now() - this.keyDownLastHandle < 10) return;
+    if (onBlurBehavior && Date.now() - this.lastResultHandle > 10) {
+      this.lastResultHandle = Date.now()
       setTimeout(() => {
         if (this.rootRef.current && isFocusOutsideOf(this.rootRef.current)) {
           if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value ?? '', event);
@@ -176,11 +178,11 @@ class InlineInputBase extends Component<RootAsProps> {
   handleKeyDown = (event: React.KeyboardEvent) => {
     const { onConfirm, onCancel } = this.asProps;
     if (event.code === 'Enter') {
-      this.keyDownLastHandle = Date.now();
+      this.lastResultHandle = Date.now();
       onConfirm?.(this.inputRef.current?.value ?? '', event);
     }
     if (event.code === 'Escape') {
-      this.keyDownLastHandle = Date.now();
+      this.lastResultHandle = Date.now();
       onCancel?.(this.initValue, event);
     }
   };
