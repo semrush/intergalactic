@@ -2118,6 +2118,14 @@
     ]
   },
   {
+    "name": "--intergalactic-keyboard-focus-invert",
+    "type": "boxShadow",
+    "rawValue": "0px 0px 0px 3px rgba({gray.white}, 0.7)",
+    "computedValue": "0px 0px 0px 3px rgba(255, 255, 255, 0.7)",
+    "description": "Default keyboard focus styles for using with dark background.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-base",
     "type": "fontFamilies",
     "rawValue": "Inter",

@@ -417,6 +417,8 @@
   --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.5);
   /* Keyboard focus styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
+  /* Default keyboard focus styles for using with dark background. */
+  --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
   --intergalactic-base: Inter;
   /* Use with font-size-800. */
   --intergalactic-lh-800: 117%;
