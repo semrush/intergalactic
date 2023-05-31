@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.53.0] - 2023-05-25
+
+### Added
+
+- All focusable components get `autoFocus` prop via `keyboardFocusEnhance`.
+
 ## [3.52.0] - 2023-05-25
 
 ### Added
