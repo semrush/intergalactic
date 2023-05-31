@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.3] - 2023-05-31
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown` [3.4.33 ~> 3.4.34], `@semcore/utils` [3.52.0 ~> 3.53.0]).
+
 ## [3.7.2] - 2023-05-25
 
 ### Changed
