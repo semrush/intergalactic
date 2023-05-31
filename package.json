@@ -11,7 +11,7 @@
     "website": "pnpm --dir website start",
     "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint-changelogs",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
-    "publish:ui": "pnpm --filter @semcore/ui run build && pnpm install",
+    "publish:ui": "pnpm --filter @semcore/ui run update-changelog && pnpm install",
     "build:icons": "pnpm --filter @semcore/icon run build",
     "build:illustration": "pnpm --filter @semcore/illustration run build",
     "clean": "rm -rf semcore/*/lib && pnpm clean:icon && pnpm clean:illustration",
