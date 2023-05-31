@@ -4,6 +4,11 @@ import assignProps from '../assignProps';
 export interface IKeyboardFocusProps {
   /* Property responsible for displaying "keyboard" focus */
   keyboardFocused?: boolean;
+  /**
+   * Makes component to catch browser focus on component mount
+   * @default false
+   */
+  autoFocus?: boolean;
 }
 
 const focusSourceListeners = [];
@@ -49,21 +54,31 @@ export const useFocusSource = () => {
 
 const keyboardFocusEnhance = () => {
   return (props) => {
-    const { tabIndex = 0, disabled } = props;
+    const { tabIndex = 0, disabled, autoFocus } = props;
     const [keyboardFocused, setKeyboardFocused] = React.useState(false);
     const focusSourceRef = useFocusSource();
+    const ref = React.useRef(null);
 
-    const handlerFocus = React.useCallback(() => {
-      if (focusSourceRef.current !== 'keyboard') return;
+    const handlerFocus = React.useCallback((event: React.FocusEvent) => {
+      if (event.isTrusted === true) {
+        if (focusSourceRef.current !== 'keyboard') return;
+      }
       setKeyboardFocused(true);
     }, []);
     const handlerBlur = React.useCallback(() => setKeyboardFocused(false), []);
+    React.useEffect(() => {
+      if (autoFocus) {
+        ref.current?.focus();
+        setKeyboardFocused(true);
+      }
+    }, [autoFocus]);
 
     return assignProps(props, {
       tabIndex: disabled ? -1 : tabIndex,
       keyboardFocused,
       onFocus: handlerFocus,
       onBlur: handlerBlur,
+      ref,
     });
   };
 };
