@@ -1279,6 +1279,7 @@ export declare const iso3iso2: {
  * Northern Cyprus,
  * Northern Ireland,
  * Scotland,
+ * Somaliland,
  * South Ossetia,
  * United Nations,
  * Wales.
@@ -1297,6 +1298,7 @@ export declare const nameWithoutIso: {
   northern_cyprus: string;
   northern_ireland: string;
   scotland: string;
+  somaliland: string;
   south_ossetia: string;
   united_nations: string;
   wales: string;
@@ -1313,6 +1315,7 @@ export declare const nameWithoutIso: {
   NORTHERN_CYPRUS: string;
   NORTHERN_IRELAND: string;
   SCOTLAND: string;
+  SOMALILAND: string;
   SOUTH_OSSETIA: string;
   UNITED_NATIONS: string;
   WALES: string;
