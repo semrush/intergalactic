@@ -1,3 +1,9 @@
+## [13.31.1] - 2023-06-01
+
+### @semcore/inline-input
+
+- **Fixed** In some cases `onBlurBehavior` effect was called simultaneously with explicitly called confirm or cancel effect.
+
 ## [13.31.0] - 2023-05-31
 
 ### @semcore/animation
