@@ -82,9 +82,11 @@ class InlineInputBase extends Component<RootAsProps> {
   inputRef = React.createRef<HTMLInputElement>();
   initValue: string = '';
   lastMouseDownPosition: { x: number; y: number } | null = null;
+  lastHandledKeyboardEvent: number = -1;
 
   handleDocumentMouseDown = (event: { pageX: number; pageY: number }) => {
     this.lastMouseDownPosition = { x: event.pageX, y: event.pageY };
+    this.lastHandledKeyboardEvent = -1;
   };
   handleDocumentKeyDown = () => {
     this.lastMouseDownPosition = null;
@@ -165,6 +167,7 @@ class InlineInputBase extends Component<RootAsProps> {
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (!onBlurBehavior) return;
+    if (Date.now() - this.lastHandledKeyboardEvent < 250) return;
 
     if (this.lastMouseDownPosition && this.rootRef.current) {
       const { x, y } = this.lastMouseDownPosition;
@@ -182,9 +185,11 @@ class InlineInputBase extends Component<RootAsProps> {
     const { onConfirm, onCancel } = this.asProps;
     if (event.code === 'Enter') {
       onConfirm?.(this.inputRef.current?.value ?? '', event);
+      this.lastHandledKeyboardEvent = Date.now();
     }
     if (event.code === 'Escape') {
       onCancel?.(this.initValue, event);
+      this.lastHandledKeyboardEvent = Date.now();
     }
   };
 
