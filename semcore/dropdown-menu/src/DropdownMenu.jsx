@@ -138,15 +138,17 @@ class DropdownMenuRoot extends Component {
 
   scrollToNode = (node) => {
     this.highlightedItemRef.current = node;
-    if (node && node.scrollIntoView) {
-      if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
-        this.prevHighlightedIndex = this.asProps.highlightedIndex;
-        node.scrollIntoView({
-          block: 'nearest',
-          inline: 'nearest',
-        });
+    setTimeout(() => {
+      if (node && node.scrollIntoView) {
+        if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
+          this.prevHighlightedIndex = this.asProps.highlightedIndex;
+          node.scrollIntoView({
+            block: 'nearest',
+            inline: 'nearest',
+          });
+        }
       }
-    }
+    }, 0);
   };
 
   moveHighlightedIndex(amount, e) {
