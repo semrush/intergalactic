@@ -85,6 +85,8 @@ Keyboard control should be performed sequentially across all interactive element
 
 Common cases about focus behavior when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
 
+> The trigger always has a `tabIndex=0` (even when disabled) or is an input/textarea. The popper always has a `tabIndex=0`.
+
 @## Focus, OnClick and popper
 
 1. By pressing `Tab`, the trigger gets focus.
@@ -98,7 +100,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 @## Focus, OnMouseEnter and popper
 
-1. By hovering over / pressing `Tab`, the focus falls on the trigger – popper opens immediately.
+1. By hovering over / pressing `Tab`, the trigger gets the focus, and popper opens.
 2. The popper closes by pressing `Esc`, and **focus remains on the trigger**.
 3. `Shift + Tab` moves focus to the previous control, and popper closes.
 
@@ -109,7 +111,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 1. By pressing `Tab`, the trigger gets focus.
 2. When you focus on trigger, `Enter`/`Space` opens a popper. If the trigger opens a select/menu, you can also open the popper by using the `Down Arrow`.
 3. `Tab` key moves focus inside the popper to the interactive element.
-4. Pressing `Esc` closes the popper, even if the focus was on the control inside it. After closing the popper, focus remains on the trigger.
+4. Pressing `Esc` closes the popper, even if the focus was on the control inside it. After closing the popper, focus returns to the trigger.
 5. Pressing the "Submit" control inside the popper closes it and returns focus to the trigger.
 
 ![](/core-principles/a11y/static/keyboard-nav3.png)
