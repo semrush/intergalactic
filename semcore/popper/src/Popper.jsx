@@ -93,7 +93,7 @@ class Popper extends Component {
         ['onMouseEnter', 'onKeyboardFocus'],
         ['onMouseLeave', 'onBlur'],
       ],
-      popper: [['onMouseEnter'], ['onMouseLeave']],
+      popper: [['onMouseEnter', 'onFocusCapture'], ['onMouseLeave']],
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
@@ -402,7 +402,6 @@ class Popper extends Component {
       popper: this.popper,
       focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
       disableEnforceFocus,
-      tabIndex: interaction === 'hover' ? -1 : 1,
     };
   }
 
