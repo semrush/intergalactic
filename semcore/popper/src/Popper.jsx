@@ -502,7 +502,7 @@ const useFocusCatch = (active, popperRef) => {
   return { focusCatch, handleFocusCatchBlur, handleFocusCatchRef };
 };
 
-const displayContents = { display: 'contents' };
+const focusCatcherStyles = { position: 'absolute' };
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
@@ -534,7 +534,7 @@ function Trigger(props) {
           tabIndex="0"
           ref={focusableTriggerReturnFocusToRef}
           onBlur={handleFocusReturnElBlur}
-          style={displayContents}
+          style={focusCatcherStyles}
         />
       )}
       <STrigger render={Box} inline role="button" aria-haspopup={true} onFocus={handleFocus}>
@@ -550,7 +550,7 @@ function Trigger(props) {
           tabIndex="0"
           ref={focusableTriggerReturnFocusToRef}
           onBlur={handleFocusReturnElBlur}
-          style={displayContents}
+          style={focusCatcherStyles}
         />
       )}
       {focusCatch && (
@@ -558,7 +558,7 @@ function Trigger(props) {
           tabIndex="0"
           ref={handleFocusCatchRef}
           onBlur={handleFocusCatchBlur}
-          style={displayContents}
+          style={focusCatcherStyles}
         />
       )}
     </>

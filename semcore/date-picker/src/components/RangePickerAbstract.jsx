@@ -343,7 +343,6 @@ class RangePickerAbstract extends Component {
         {sstyled(styles)(
           <Root
             render={Dropdown}
-            disableEnforceFocus
             use:aria-label={providedAriaLabel}
             interaction={defaultInteraction}
             __excludeProps={['onChange', 'value']}

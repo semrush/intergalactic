@@ -181,18 +181,14 @@ class PickerAbstract extends Component {
     };
   }
 
-  handleCalendarChange = (value) => {
-    const { onChange } = this.asProps;
-    onChange(value);
-  };
-
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, highlighted, onVisibleChange } = this.asProps;
+    const { locale, displayedPeriod, disabled, value, highlighted, onVisibleChange, onChange } =
+      this.asProps;
     return {
       locale,
       displayedPeriod,
       disabled,
-      onChange: this.handleCalendarChange,
+      onChange,
       highlighted,
       value: [value, value],
       renderOutdated: true,
@@ -211,7 +207,6 @@ class PickerAbstract extends Component {
             render={Dropdown}
             use:aria-label={providedAriaLabel}
             interaction={defaultInteraction}
-            disableEnforceFocus
             __excludeProps={['onChange', 'value']}
           >
             <Children />

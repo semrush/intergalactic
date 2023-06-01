@@ -111,7 +111,6 @@ class ItemPicker extends Component {
         onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
         visible={visible}
         value={timeValue}
-        disableEnforceFocus={true}
       >
         <SPickerInput
           render={Select.Trigger}

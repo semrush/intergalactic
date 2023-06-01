@@ -45,6 +45,7 @@ class Input extends Component {
       state,
       role,
       placeholder,
+      // these props might be passed from the <Select /> component
       'aria-haspopup': ariaHaspopup,
       'aria-controls': ariaControls,
       'aria-expanded': ariaExpanded,
