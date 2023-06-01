@@ -10,12 +10,6 @@ import Spin from '@semcore/spin';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-let lastMouseDownPosition: { x: number; y: number } | null = null;
-let mouseDownListenQueue: ((event: { pageX: number; pageY: number }) => void)[] = [];
-let mouseDownListener: ((event: { pageX: number; pageY: number }) => void) | null = null;
-let keyDownListenQueue: (() => void)[] = [];
-let keyDownListener: (() => void) | null = null;
-
 type OnConfirm = (
   value: string,
   event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
@@ -87,45 +81,25 @@ class InlineInputBase extends Component<RootAsProps> {
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
   initValue: string = '';
+  lastMouseDownPosition: { x: number; y: number } | null = null;
 
   handleDocumentMouseDown = (event: { pageX: number; pageY: number }) => {
-    lastMouseDownPosition = { x: event.pageX, y: event.pageY };
+    this.lastMouseDownPosition = { x: event.pageX, y: event.pageY };
   };
   handleDocumentKeyDown = () => {
-    lastMouseDownPosition = null;
+    this.lastMouseDownPosition = null;
   };
 
   componentDidMount() {
-    this.initValue = this.inputRef.current?.value || '';
-    if (mouseDownListenQueue.length === 0) {
-      document.body.addEventListener('mousedown', this.handleDocumentMouseDown);
-      mouseDownListener = this.handleDocumentMouseDown;
-    }
-    mouseDownListenQueue.push(this.handleDocumentMouseDown);
-    if (keyDownListenQueue.length === 0) {
-      document.body.addEventListener('keydown', this.handleDocumentKeyDown);
-      keyDownListener = this.handleDocumentKeyDown;
-    }
-    keyDownListenQueue.push(this.handleDocumentKeyDown);
+    if (!this.asProps.onBlurBehavior) return;
+    document.body.addEventListener('mousedown', this.handleDocumentMouseDown);
+    document.body.addEventListener('keydown', this.handleDocumentKeyDown);
   }
 
   componentWillUnmount() {
-    mouseDownListenQueue = mouseDownListenQueue.filter(
-      (handler) => handler !== this.handleDocumentMouseDown,
-    );
-    if (mouseDownListener === this.handleDocumentMouseDown) {
-      document.body.removeEventListener('mousedown', this.handleDocumentMouseDown);
-      mouseDownListener = mouseDownListenQueue.pop()!;
-      document.body.addEventListener('mousedown', mouseDownListener);
-    }
-    keyDownListenQueue = keyDownListenQueue.filter(
-      (handler) => handler !== this.handleDocumentKeyDown,
-    );
-    if (keyDownListener === this.handleDocumentKeyDown) {
-      document.body.removeEventListener('keydown', this.handleDocumentKeyDown);
-      keyDownListener = keyDownListenQueue.pop()!;
-      document.body.addEventListener('keydown', keyDownListener);
-    }
+    if (!this.asProps.onBlurBehavior) return;
+    document.body.removeEventListener('mousedown', this.handleDocumentMouseDown);
+    document.body.removeEventListener('keydown', this.handleDocumentKeyDown);
   }
 
   getAddonProps() {
@@ -192,8 +166,8 @@ class InlineInputBase extends Component<RootAsProps> {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
     if (!onBlurBehavior) return;
 
-    if (lastMouseDownPosition && this.rootRef.current) {
-      const { x, y } = lastMouseDownPosition;
+    if (this.lastMouseDownPosition && this.rootRef.current) {
+      const { x, y } = this.lastMouseDownPosition;
       const rect = this.rootRef.current.getBoundingClientRect();
       if (rect.left < x && rect.right > x && rect.top < y && rect.bottom > y) {
         return;
