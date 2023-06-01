@@ -10,19 +10,6 @@ import Spin from '@semcore/spin';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
-const isFocusOutsideOf = (element: HTMLElement) => {
-  let traversed: Element | null | undefined = document.activeElement;
-  for (let i = 0; i < 1000000; i++) {
-    if (traversed === element) return false;
-    if (traversed === document.body) return true;
-    traversed = traversed?.parentElement;
-  }
-
-  throw new Error(
-    'Failed to traverse parents chain in utilite `isFocusOutsideOf` in reasonable count of iterations. Possibly Shadow DOM or come other uncommon DOM-way is used, that is not supported by utilite yet. If you are not doing weird things or that is reasonable, contact developers team for yours case support.',
-  );
-};
-
 type OnConfirm = (
   value: string,
   event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
@@ -94,9 +81,27 @@ class InlineInputBase extends Component<RootAsProps> {
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
   initValue: string = '';
+  lastMouseDownPosition: { x: number; y: number } | null = null;
+  lastHandledKeyboardEvent: number = -1;
+
+  handleDocumentMouseDown = (event: { pageX: number; pageY: number }) => {
+    this.lastMouseDownPosition = { x: event.pageX, y: event.pageY };
+    this.lastHandledKeyboardEvent = -1;
+  };
+  handleDocumentKeyDown = () => {
+    this.lastMouseDownPosition = null;
+  };
 
   componentDidMount() {
-    this.initValue = this.inputRef.current?.value || '';
+    if (!this.asProps.onBlurBehavior) return;
+    document.body.addEventListener('mousedown', this.handleDocumentMouseDown);
+    document.body.addEventListener('keydown', this.handleDocumentKeyDown);
+  }
+
+  componentWillUnmount() {
+    if (!this.asProps.onBlurBehavior) return;
+    document.body.removeEventListener('mousedown', this.handleDocumentMouseDown);
+    document.body.removeEventListener('keydown', this.handleDocumentKeyDown);
   }
 
   getAddonProps() {
@@ -146,44 +151,45 @@ class InlineInputBase extends Component<RootAsProps> {
     this.inputRef.current?.focus();
   };
 
-  lastResultHandle = -1;
   handleConfirm = (
     text: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
   ) => {
-    this.lastResultHandle = Date.now()
     this.asProps.onConfirm?.(text, event);
   };
   handleCancel = (
     prevText: string,
     event: React.MouseEvent | React.FocusEvent | React.KeyboardEvent,
   ) => {
-    this.lastResultHandle = Date.now()
     this.asProps.onCancel?.(prevText, event);
   };
 
   handleBlur = (event: React.FocusEvent) => {
     const { onConfirm, onCancel, onBlurBehavior } = this.asProps;
-    if (onBlurBehavior && Date.now() - this.lastResultHandle > 10) {
-      this.lastResultHandle = Date.now()
-      setTimeout(() => {
-        if (this.rootRef.current && isFocusOutsideOf(this.rootRef.current)) {
-          if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value ?? '', event);
-          if (onBlurBehavior === 'cancel') onCancel?.(this.initValue, event);
-        }
-      }, 0);
+    if (!onBlurBehavior) return;
+    if (Date.now() - this.lastHandledKeyboardEvent < 250) return;
+
+    if (this.lastMouseDownPosition && this.rootRef.current) {
+      const { x, y } = this.lastMouseDownPosition;
+      const rect = this.rootRef.current.getBoundingClientRect();
+      if (rect.left < x && rect.right > x && rect.top < y && rect.bottom > y) {
+        return;
+      }
     }
+
+    if (onBlurBehavior === 'confirm') onConfirm?.(this.inputRef.current?.value ?? '', event);
+    if (onBlurBehavior === 'cancel') onCancel?.(this.initValue, event);
   };
 
   handleKeyDown = (event: React.KeyboardEvent) => {
     const { onConfirm, onCancel } = this.asProps;
     if (event.code === 'Enter') {
-      this.lastResultHandle = Date.now();
       onConfirm?.(this.inputRef.current?.value ?? '', event);
+      this.lastHandledKeyboardEvent = Date.now();
     }
     if (event.code === 'Escape') {
-      this.lastResultHandle = Date.now();
       onCancel?.(this.initValue, event);
+      this.lastHandledKeyboardEvent = Date.now();
     }
   };
 
