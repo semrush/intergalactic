@@ -11,7 +11,7 @@ test('Users can interact with FilterTrigger via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/filter-trigger/examples/select.jsx',
+    '../../../website/docs/components/filter-trigger/examples/select.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -24,6 +24,7 @@ test('Users can interact with FilterTrigger via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
+  await voiceOver.next();
   expect(await voiceOver.itemText()).toContain('Select option');
   await voiceOver.act();
   await voiceOver.next();
@@ -40,6 +41,7 @@ test('Users can interact with FilterTrigger via VoiceOver', async ({
   await voiceOver.act();
   await voiceOver.stopInteracting();
   await voiceOver.interact();
+  await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Select option Filter list box pop up group');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));

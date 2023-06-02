@@ -9,7 +9,7 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/
 test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/switch/examples/base.jsx',
+    '../../../website/docs/components/switch/examples/base.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -20,6 +20,7 @@ test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: p
   await page.setContent(htmlContent);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
+  await voiceOver.next();
 
   expect(await voiceOver.lastSpokenPhrase()).toBe('Enabled on switch');
   await voiceOver.act();

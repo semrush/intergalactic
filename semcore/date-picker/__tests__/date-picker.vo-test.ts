@@ -11,7 +11,7 @@ test('Users can interact with DatePicker and DateRangePicker via VoiceOver', asy
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/date-picker/examples/datepicker.jsx',
+    '../../../website/docs/components/date-picker/examples/datepicker.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -24,7 +24,7 @@ test('Users can interact with DatePicker and DateRangePicker via VoiceOver', asy
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toContain('Date field');
+  expect(await voiceOver.itemText()).toContain('Date field');
   await voiceOver.interact();
   for (let i = 0; i < 8; i++) {
     await voiceOver.press('Backspace', { application: 'Playwright' });

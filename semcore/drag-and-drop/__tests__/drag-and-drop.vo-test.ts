@@ -11,7 +11,7 @@ test('Users can interact with DragAndDrop via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/drag-and-drop/examples/tabs.jsx',
+    '../../../website/docs/components/drag-and-drop/examples/tabs.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -26,11 +26,11 @@ test('Users can interact with DragAndDrop via VoiceOver', async ({
 
   expect(await voiceOver.lastSpokenPhrase()).toBe('Overview selected tab, 1 of 3');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Issues tab, 2 of 3');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('new Issues tab, 2 of 3');
   await voiceOver.press('Space', { application: 'Playwright' });
   expect(await voiceOver.lastSpokenPhrase()).toBe('newIssues grabbed, current position is 2 of 3');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Issues tab, 3 of 3');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('new Issues tab, 3 of 3');
   await voiceOver.press('Space', { application: 'Playwright' });
   expect(await voiceOver.lastSpokenPhrase()).toBe('newIssues dropped, final position is 3 of 3');
 

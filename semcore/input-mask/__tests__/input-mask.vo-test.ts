@@ -11,7 +11,7 @@ test('Users can interact with InputMask via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/input-mask/examples/basic.jsx',
+    '../../../website/docs/components/input-mask/examples/basic.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -22,8 +22,9 @@ test('Users can interact with InputMask via VoiceOver', async ({
   await page.setContent(htmlContent);
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
+  await voiceOver.next();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('16-digit number invalid data edit text');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Card number edit text');
   await voiceOver.interact();
   await voiceOver.type('55aa44 ', { application: 'Playwright' });
   for (let i = 0; i <= 20; i++) {

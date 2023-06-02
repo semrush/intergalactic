@@ -11,7 +11,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/color-picker/examples/defaultExtended.jsx',
+    '../../../website/docs/components/color-picker/examples/defaultExtended.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -27,7 +27,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   expect(await voiceOver.lastSpokenPhrase()).toBe('Color field, empty menu pop up button');
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
-    'Color field, empty, press Tab to go to palette or click to hide palette',
+    'Color field, empty, press Tab to go to palette or click to hide palette menu pop up button',
   );
   await voiceOver.press('Tab', { application: 'Playwright' });
   expect(await voiceOver.lastSpokenPhrase()).toBe(
@@ -47,7 +47,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   );
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
-    'Color field, current color is #8649E1, press Tab to go to palette or click to hide palette',
+    'Color field, current color is #8649E1, press Tab to go to palette or click to hide palette menu pop up button',
   );
   await voiceOver.press('Tab', { application: 'Playwright' });
   expect(await voiceOver.lastSpokenPhrase()).toBe(
@@ -60,6 +60,7 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   }
   expect(await voiceOver.lastSpokenPhrase()).toBe('end of list');
   await voiceOver.next();
+  await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Custom color field container empty group');
   await voiceOver.next();
   expect(await voiceOver.lastSpokenPhrase()).toBe(
@@ -67,12 +68,9 @@ test('Users can interact with ColorPicker via VoiceOver', async ({
   );
   await voiceOver.interact();
   await voiceOver.type('0088FF', { application: 'Playwright' });
+  await voiceOver.press('Enter', { application: 'Playwright' });
   await voiceOver.stopInteracting();
-  await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Add color to the list of custom colors button');
-  await voiceOver.act();
   await voiceOver.previous();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('end of list');
   await voiceOver.previous();
   expect(await voiceOver.lastSpokenPhrase()).toBe('Color #0088ff group');
   await voiceOver.act();

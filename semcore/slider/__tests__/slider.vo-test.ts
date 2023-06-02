@@ -8,7 +8,7 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/
 test('Users can interact with Slider via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/slider/examples/slider.jsx',
+    '../../../website/docs/components/slider/examples/slider.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
