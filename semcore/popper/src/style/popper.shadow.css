@@ -4,6 +4,14 @@ SPopper {
   color: var(--intergalactic-text-primary, #191b23);
 }
 
+SPopper[keyboardFocused]:focus:after {
+  position: absolute;
+  display: block;
+  content: '';
+  inset: 0;
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+}
+
 SFocusHint {
   display: none;
 }

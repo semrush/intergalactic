@@ -17,7 +17,9 @@ import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance, {
+  useFocusSource,
+} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import createPopper from './createPopper';
 
@@ -91,7 +93,7 @@ class Popper extends Component {
         ['onMouseEnter', 'onKeyboardFocus'],
         ['onMouseLeave', 'onBlur'],
       ],
-      popper: [['onMouseEnter'], ['onMouseLeave']],
+      popper: [['onMouseEnter', 'onFocusCapture'], ['onMouseLeave']],
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
@@ -665,6 +667,8 @@ function PopperPopper(props) {
     </Portal>,
   );
 }
+
+PopperPopper.enhance = [keyboardFocusEnhance()];
 
 export default createComponent(Popper, {
   Trigger,
