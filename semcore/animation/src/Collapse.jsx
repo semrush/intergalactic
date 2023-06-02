@@ -15,6 +15,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     if (!innerRef.current) return;
     if (props.visible) innerRef.current.style.height = 0 + 'px';
     if (!props.visible) innerRef.current.style.height = innerRef.current.scrollHeight + 'px';
+    if (props.visible) innerRef.current.style.animationFillMode = 'none';
+    if (!props.visible) innerRef.current.style.animationFillMode = 'both';
   }, [props.visible]);
 
   useEnhancedEffect(() => {
