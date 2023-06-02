@@ -1,3 +1,9 @@
+## [13.31.2] - 2023-06-02
+
+### @semcore/animation
+
+- **Fixed** `Collapse` with `overflowHidden={false}` was always `overflow: hidden` after closing and opening due to animation fill mode.
+
 ## [13.31.1] - 2023-06-01
 
 ### @semcore/inline-input
