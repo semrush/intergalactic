@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.41] - 2023-06-01
+
+### Fixed
+
+- In some cases `onBlurBehavior` effect was called simultaneously with explicitly called confirm or cancel effect.
+
+## [3.5.40] - 2023-05-31
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/icon` [3.14.14 ~> 3.14.15], `@semcore/utils` [3.52.0 ~> 3.53.0]).
+
 ## [3.5.39] - 2023-05-25
 
 ### Changed

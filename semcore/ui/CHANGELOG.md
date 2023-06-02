@@ -1,3 +1,21 @@
+## [13.31.1] - 2023-06-01
+
+### @semcore/inline-input
+
+- **Fixed** In some cases `onBlurBehavior` effect was called simultaneously with explicitly called confirm or cancel effect.
+
+## [13.31.0] - 2023-05-31
+
+### @semcore/animation
+
+- **Fixed** Fixed blinking on first render.
+
+### @semcore/utils
+
+- **Added** All focusable components get `autoFocus` prop via `keyboardFocusEnhance`.
+- **Added** Added new `--keyboard-focus-invert` token for using with dark background.
+- **Changed** Add lighten modifier to table cell tokens, to remove the opacity.
+
 ## [13.30.0] - 2023-05-25
 
 ### @semcore/core

@@ -35,7 +35,7 @@
       },
       "alias": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "map": [["@semcore/ui", "/Users/phytonmk/projects/intergalactic/semcore"]]
+        "map": [["@semcore/ui", "./intergalactic/semcore"]]
       }
     },
     "react": {
@@ -75,9 +75,10 @@
   },
   "overrides": [
     {
-      "files": ["tools/playground/examples/**/*", "website/docs/**/*"],
+      "files": ["tools/playground/examples/*", "website/docs/**/*"],
       "rules": {
-        "import/no-extraneous-dependencies": "off"
+        "import/no-extraneous-dependencies": "off",
+        "import/no-unresolved": "off"
       }
     }
   ]
