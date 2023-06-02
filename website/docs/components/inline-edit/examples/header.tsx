@@ -1,3 +1,4 @@
+//https://github.com/semrush/intergalactic/tree/master/website/docs/components/inline-edit/examples/header.tsx
 import React from 'react';
 import InlineInput from '@semcore/ui/inline-input';
 import InlineEdit from '@semcore/ui/inline-edit';
@@ -5,7 +6,7 @@ import EditM from '@semcore/ui/icon/Edit/m';
 import { Text } from '@semcore/ui/typography';
 
 const Example = () => {
-  const [title, setTitle] = React.useState('Lorem ipsum');
+  const [title, setTitle] = React.useState('The Adventures of the Intergalactic Whale');
   const [editingTitle, setEditingTitle] = React.useState(false);
   const [savingTitle, setSavingTitle] = React.useState(false);
   const stopEditing = () => setEditingTitle(false);
@@ -35,11 +36,9 @@ const Example = () => {
           </InlineEdit.Edit>
         </InlineEdit>
       </Text>
-      dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-      sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <Text size={300} mt={3}>
+        Once upon a time in a distant galaxy far, far away, there existed a legendary creature known as the Intergalactic Whale. This magnificent space-faring mammal was no ordinary whale. It had the power to swim through the cosmic ocean, jumping from one star system to another with grace and finesse.
+      </Text>
     </>
   );
 };
