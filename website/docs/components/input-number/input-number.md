@@ -92,7 +92,7 @@ In cases when you need to show steppers as buttons with `Plus` and `Minus` icons
 
 ![](static/alternative.png)
 
-@## Corner cases
+@## Edge cases
 
 ### Invalid values
 
