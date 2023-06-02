@@ -9,7 +9,7 @@ SPopper[keyboardFocused]:focus:after {
   display: block;
   content: '';
   inset: 0;
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.3));
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
 SFocusHint {

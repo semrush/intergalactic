@@ -116,7 +116,7 @@ export const useFocusLock = (
     if (disabled) return;
     if (!canUseDOM()) return;
     if (!trapRef.current) return;
-    const focusableChildren = [...trapRef.current.children].map(getFocusableIn).flat();
+    const focusableChildren = Array.from(trapRef.current.children).map(getFocusableIn).flat();
     if (focusableChildren.length === 0) return;
 
     document.body.addEventListener('focusin', handleFocusIn);
