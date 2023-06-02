@@ -1,4 +1,4 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/utils/neighbor-location/examples/neighbor-location-input.jsx
+//https://github.com/semrush/intergalactic/tree/master/website/docs/utils/neighbor-location/examples/neighbor-location-input.tsx
 import React from 'react';
 import Input from '@semcore/ui/input';
 import Button from '@semcore/ui/button';

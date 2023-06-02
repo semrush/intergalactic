@@ -6,6 +6,7 @@ import { Text } from '@semcore/ui/typography';
 
 const Example = () => {
   const [text, setText] = React.useState('Martin Eden');
+  const [confirmedText, setConfirmedText] = React.useState(text);
   const [editable, setEditable] = React.useState(false);
 
   return (
@@ -19,9 +20,12 @@ const Example = () => {
         </InlineEdit.View>
         <InlineEdit.Edit>
           <InlineInput
-            onConfirm={() => setEditable(false)}
-            onCancel={(prevText) => {
-              setText(prevText);
+            onConfirm={() => {
+              setEditable(false);
+              setConfirmedText(text);
+            }}
+            onCancel={() => {
+              setText(confirmedText);
               setEditable(false);
             }}
           >

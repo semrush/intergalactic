@@ -1,23 +1,23 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.5.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v13.31.1, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
-**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/accordion/examples/base.jsx).**
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/accordion/examples/base.tsx).**
 
 ```
 1. Screen reader goes into the active element.
 2. Screen reader says "Section 1 expanded button".
 3. Screen reader triggers element default action.
-4. Screen reader says "Section 1 button".
+4. Screen reader says "Section 1 collapsed button".
 5. Screen reader goes to the next element.
-6. Screen reader says "Section 2 button".
+6. Screen reader says "Section 2 collapsed button".
 7. Screen reader goes to the next element.
-8. Screen reader says "Section 3 dimmed button".
+8. Screen reader says "Section 3 dimmed collapsed button".
 9. Screen reader goes to the previous element.
-10. Screen reader says "Section 2 button".
+10. Screen reader says "Section 2 collapsed button".
 11. Screen reader goes to the previous element.
-12. Screen reader says "Section 1 button".
+12. Screen reader says "Section 1 collapsed button".
 13. Screen reader triggers element default action.
 14. Screen reader says "Section 1 expanded button".
 15. Screen reader goes to the next element.
@@ -29,11 +29,11 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 21. Screen reader goes to the previous element.
 22. Screen reader says "Section 1 expanded button".
 23. Screen reader triggers element default action.
-24. Screen reader says "Section 1 button".
+24. Screen reader says "Section 1 collapsed button".
 25. Screen reader goes to the next element.
-26. Screen reader says "Section 2 button".
+26. Screen reader says "Section 2 collapsed button".
 27. Screen reader goes to the next element.
-28. Screen reader says "Section 3 dimmed button".
+28. Screen reader says "Section 3 dimmed collapsed button".
 29. Screen reader triggers element default action.
 30. Screen reader says "dimmed".
 ```
