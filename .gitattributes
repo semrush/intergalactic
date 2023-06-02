@@ -1,0 +1,4 @@
+semcore/*/CHANGELOG.md merge=changelog-merge-driver
+tools/*/CHANGELOG.md merge=changelog-merge-driver
+semcore/*/CHANGELOG.md rebase=changelog-merge-driver
+tools/*/CHANGELOG.md rebase=changelog-merge-driver

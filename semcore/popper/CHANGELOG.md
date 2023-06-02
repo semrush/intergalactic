@@ -4,6 +4,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [4.18.0] - 2023-06-10
 
+### Fixed
+
 - Fixed corner case of focus return with `interaction=focus`.
 - Added `disableEnforceFocus` api prop.
 
