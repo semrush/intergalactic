@@ -24,9 +24,9 @@ The component consists of:
 
 > Note that the example below is just an example. It's not a default variant. Any control component can be used as a trigger - a [button](/components/button/), an [icon](/style/icon/), text with an icon.
 
-| Appearance example                            | Styles example                                                                                                            |
-| --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ![](static/inline-edit.png) | The color of the placeholder is the same as a regular input has - `--text-placeholder`. Text and icon has one active zone. |
+![](static/inline-edit.png)
+
+The color of the placeholder is the same as a regular input has - `--text-placeholder`. Text and icon has one active zone.
 
 @## Interaction
 
@@ -36,6 +36,8 @@ The component consists of:
 - When focus is lost (for example, the user is distracted by another screen), `onBlur` persists the entered value.
 
 Below you can see an example of how such a component works with one of the possible triggers.
+
+@table-caption InlineEdit states
 
 | State                   | Appearance example                              | Styles                                                                                                                                                                                                                          |
 | ----------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

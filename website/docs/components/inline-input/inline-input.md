@@ -55,9 +55,11 @@ Addons are slots inside the input to the left or right of the text for additiona
 - Icon use `--icon-secondary-neutral` token for color, no hover, normal cursor.
 - **Notice the leading addon is underlined too**.
 
+@table-caption Leading addon styles
+
 |                                                               | Appearance example                               | Margins                                                | Icon size and color                             |
 | ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------- |
-| For components with text less than 24px (including that size) | ![](static/leading-addon-focus.png) | ![](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral)` |
+| For components with text less than 24px (including this size) | ![](static/leading-addon-focus.png) | ![](static/leading-addon-margins.png)     | M size, `color: var(--icon-secondary-neutral)` |
 | For components with text larger than 24px                     | ![](static/leading-addon-big.png)   | ![](static/leading-addon-big-margins.png) | L size, `color: var(--icon-secondary-neutral)` |
 
 ### Label
@@ -66,18 +68,20 @@ Through the addon, you can add a label.
 
 _It's needed so that the user understands what data he needs to enter. For example, tag name, project name, etc._
 
-| Appearance example                                         | Styles                                                                                  |
-| ---------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| ![](static/permanent-placeholder.png) | The color of the placeholder is the same as a regular input has - `--text-placeholder`. |
+![](static/permanent-placeholder.png)
+
+The color of the placeholder is the same as a regular input has - `--text-placeholder`.
 
 ### Trailing addon
 
 Trailing addons are clickable icons to save input and cancel and return to view mode.
 The save icon is always has `--icon-secondary-success` token as color, the cancel icon – `--icon-secondary-neutral`.
 
+@table-caption Trailing addon styles
+
 |                                                               | Appearance example                                       | Margins                              | Icon size |
 | ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------ | --------- |
-| For components with text less than 24px (including that size) | ![](static/trailing-addon-margins.png)     | ![](static/small-text.png) | M         |
+| For components with text less than 24px (including this size) | ![](static/trailing-addon-margins.png)     | ![](static/small-text.png) | M         |
 | For components with text larger than 24px                     | ![](static/trailing-addon-big-margins.png) | ![](static/big-text.png)     | L         |
 
 @## Tooltip
@@ -102,6 +106,8 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 - InlineInput immediately receives focus.
 - The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
 - When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
+
+@table-caption InlineInput states
 
 | State         | Appearance example                       | Styles                                                                                                                                             |
 | ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |

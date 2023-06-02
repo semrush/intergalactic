@@ -3,7 +3,7 @@ title: Example
 fileSource: fullscreen-modal
 ---
 
-@## Example of simplified Fullscreen.Header's use
+@## Basic Fullscreen.Header's use
 
 @example header
 
