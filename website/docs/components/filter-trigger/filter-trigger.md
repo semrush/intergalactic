@@ -17,6 +17,8 @@ This component helps users to:
 
 FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 
+@table-caption FilterTrigger sizes
+
 | Size (height in px) | Default state         | Active filter                                      | Active filter with counter                             |
 | ----- | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
 | M (28px)  | ![](static/filter-default-m.png) | ![](static/filter-active-m.png) | ![](static/filter-active-counter-m.png) |
@@ -30,6 +32,8 @@ Show [counter](/components/counter) only for **Advanced filters** and filters th
 
 Use the same margins as other inputs and [buttons](/components/button/#margins_between_buttons) have.
 
+@table-caption Margins between FilterTriggers
+
 | Size (height in px)  | Margins between controls   |
 | -------------------- | -------------------------- |
 | M (28px)             | ![](static/sizes-m.png)    |
@@ -40,6 +44,8 @@ Use the same margins as other inputs and [buttons](/components/button/#margins_b
 ### Default FilterTrigger
 
 <!-- > There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts. -->
+
+@table-caption Default FilterTrigger states
 
 | State                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                            | Appearance example                  |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
@@ -55,6 +61,8 @@ Use the same margins as other inputs and [buttons](/components/button/#margins_b
 |  | When user clicks on the trigger, a dropdown opens up, allowing user to change the selected value. The dropdown closes when user clicks on an option or outside the dropdown. | ![](static/ft-13.png) |
 
 ### FilterTrigger with counter
+
+@table-caption States of FilterTrigger for advanced filters
 
 | State                          | Description                                                                                                                                                         | Appearance example                  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
