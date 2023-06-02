@@ -1572,8 +1572,8 @@ importers:
 
   semcore/ui:
     specifiers:
-      '@semcore/accordion': 4.3.28
-      '@semcore/animation': 1.10.14
+      '@semcore/accordion': 4.3.29
+      '@semcore/animation': 1.10.15
       '@semcore/badge': 3.3.28
       '@semcore/base-trigger': 3.6.3
       '@semcore/breadcrumbs': 4.4.35
@@ -1586,18 +1586,18 @@ importers:
       '@semcore/continuous-delivery': '*'
       '@semcore/core': 1.15.2
       '@semcore/counter': 2.3.18
-      '@semcore/d3-chart': 2.15.3
+      '@semcore/d3-chart': 2.15.4
       '@semcore/data-table': 3.9.2
       '@semcore/date-picker': 3.6.45
       '@semcore/divider': 3.2.27
-      '@semcore/dot': 4.2.34
+      '@semcore/dot': 4.2.35
       '@semcore/drag-and-drop': 2.4.44
       '@semcore/dropdown': 3.4.34
       '@semcore/dropdown-menu': 3.7.3
       '@semcore/ellipsis': 1.2.26
       '@semcore/email': 1.0.2
       '@semcore/errors': 3.9.26
-      '@semcore/feature-popover': 3.3.13
+      '@semcore/feature-popover': 3.3.14
       '@semcore/feedback-form': 5.4.22
       '@semcore/flags': 3.4.19
       '@semcore/flex-box': 4.7.27
@@ -1607,33 +1607,33 @@ importers:
       '@semcore/i18n-unplugin': 0.0.5
       '@semcore/icon': 3.14.15
       '@semcore/illustration': 1.4.23
-      '@semcore/inline-edit': 2.4.24
+      '@semcore/inline-edit': 2.4.25
       '@semcore/inline-input': 3.5.41
       '@semcore/input': 3.6.28
       '@semcore/input-mask': 4.5.9
       '@semcore/input-number': 4.5.4
       '@semcore/input-tags': 3.3.38
       '@semcore/link': 4.3.31
-      '@semcore/modal': 3.6.12
+      '@semcore/modal': 3.6.13
       '@semcore/neighbor-location': 3.1.33
-      '@semcore/notice': 4.4.43
-      '@semcore/notice-bubble': 4.7.22
-      '@semcore/notice-global': 1.5.28
+      '@semcore/notice': 4.4.44
+      '@semcore/notice-bubble': 4.7.23
+      '@semcore/notice-global': 1.5.29
       '@semcore/outside-click': 2.5.32
       '@semcore/pagination': 3.5.40
       '@semcore/pills': 4.6.3
-      '@semcore/popper': 4.17.16
+      '@semcore/popper': 4.17.17
       '@semcore/portal': 2.6.10
       '@semcore/product-head': 3.4.8
       '@semcore/progress-bar': 3.3.28
       '@semcore/radio': 5.6.3
       '@semcore/scroll-area': 4.3.7
       '@semcore/select': 3.6.17
-      '@semcore/side-panel': 2.4.11
+      '@semcore/side-panel': 2.4.12
       '@semcore/skeleton': 4.4.28
       '@semcore/slider': 3.4.19
       '@semcore/spin': 4.2.27
-      '@semcore/spin-container': 6.2.33
+      '@semcore/spin-container': 6.2.34
       '@semcore/sticky': 2.4.27
       '@semcore/switch': 4.4.19
       '@semcore/tab-line': 3.3.19
@@ -1641,11 +1641,11 @@ importers:
       '@semcore/tag': 4.4.38
       '@semcore/textarea': 4.3.27
       '@semcore/time-picker': 3.4.55
-      '@semcore/tooltip': 5.4.18
+      '@semcore/tooltip': 5.4.19
       '@semcore/typography': 4.4.7
       '@semcore/utils': 3.53.0
       '@semcore/widget-empty': 3.10.16
-      '@semcore/wizard': 1.2.48
+      '@semcore/wizard': 1.2.49
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
