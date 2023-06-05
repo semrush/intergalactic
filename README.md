@@ -15,7 +15,7 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 - Written in TypeScript with predictable static types
 - Whole package of design resources and development tools
 - Powerful collection of charts
-- Theme customization in every detail (coming soon)
+- Theme customization in every detail (find details in the [Design tokens guide](https://developer.semrush.com/intergalactic/style/design-tokens/))
 
 ## Browser Support
 
