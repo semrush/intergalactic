@@ -329,17 +329,17 @@ describe('Utils color', () => {
   afterEach(cleanup);
 
   test('should support resolveColor for empty value', () => {
-    expect(resolveColor(undefined)).toBe('');
-    expect(resolveColor('')).toBe('');
-    expect(resolveColor(null)).toBe('');
+    expect(resolveColor(undefined)).toBe(undefined);
+    expect(resolveColor('')).toBe(undefined);
+    expect(resolveColor(null)).toBe(undefined);
   });
 
   test('should support shade for empty value', () => {
-    expect(shade('', -0.08)).toBe('');
+    expect(shade('', -0.08)).toBe(undefined);
   });
 
   test(`shouldn't support opacity for string color`, () => {
-    expect(opacity('green', 0.2)).toBe('');
+    expect(opacity('green', 0.2)).toBe(undefined);
   });
 
   test('should support opacity for hex color', () => {
