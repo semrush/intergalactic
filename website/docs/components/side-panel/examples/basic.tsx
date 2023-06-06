@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from '@semcore/ui/button';
 import { List } from '@semcore/ui/typography';
 import SidePanel from '@semcore/side-panel';
-import Divider from '@semcore/ui/divider';
 
 export default () => {
   const [visible, setVisible] = useState(false);
@@ -10,7 +9,7 @@ export default () => {
   return (
     <React.Fragment>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
-      <SidePanel visible={visible} onClose={() => setVisible(false)}>
+      <SidePanel visible={visible} onClose={() => setVisible(false)} mt={20}>
         <List size={300} marker={null}>
           {['Features', 'Pricing', 'Resources', 'Company', 'Extra tools'].map((name, i, arr) => (
             <React.Fragment key={i}>

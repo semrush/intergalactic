@@ -24,13 +24,14 @@ class RadioGroupRoot extends Component {
   }
 
   setContext() {
-    const { theme, size, name, value, onChange } = this.asProps;
+    const { theme, size, name, value, onChange, disabled } = this.asProps;
     return {
       onChange,
       value,
       theme,
       size,
       name,
+      disabled,
     };
   }
 
@@ -39,7 +40,7 @@ class RadioGroupRoot extends Component {
 
     if (Tag)
       return (
-        <Root render={Tag} role='radiogroup'>
+        <Root render={Tag} role="radiogroup">
           <Children />
         </Root>
       );
@@ -61,7 +62,13 @@ class Radio extends Component {
 
   getValueProps(props) {
     // The default values are here, since you cannot rewrite out of context
-    const { state = 'normal', size = 'm', theme, name } = assignProps(this.props, this.context);
+    const {
+      state = 'normal',
+      size = 'm',
+      theme,
+      name,
+      disabled,
+    } = assignProps(this.props, this.context);
     const { value } = this.context;
     const other = {};
     // if used with the context
@@ -75,6 +82,7 @@ class Radio extends Component {
       size,
       theme,
       name,
+      disabled,
     };
   }
 
@@ -91,7 +99,7 @@ class Radio extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
-      <SRadio render={Box} tag='label'>
+      <SRadio render={Box} tag="label">
         <Children />
       </SRadio>,
     );
@@ -121,7 +129,7 @@ class Value extends Component {
 
     return sstyled(styles)(
       <>
-        <SControl tag='input' type='radio' {...controlProps} />
+        <SControl tag="input" type="radio" {...controlProps} />
         <SValue ref={forwardRef} use:theme={resolveColor(theme)} {...boxProps} />
       </>,
     );
