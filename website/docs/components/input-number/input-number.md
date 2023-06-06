@@ -8,32 +8,48 @@ tabName: Design
 
 @## Description
 
-**InputNumber** is an [input](/components/input/) in which you can enter only numeric values.
+**InputNumber** is a numeric input field that accepts numeric values only.
 
-**Use this type of input in the cases when:**
+**Use this type of input in the following cases:**
 
-- its better for the user to decrease/increase the entered value using the stepper buttons;
-- the value does not contain letters, slashes, or other non-numeric values.
+- When it's beneficial for the user to increment/decrement the value using stepper buttons.
+- When the value should not contain non-numeric characters such as letters, slashes, or other symbols.
 
-**InputNumber has several features:**
+**InputNumber should not be used for every numeric value.**
 
-- By default, you can enter the following numeric characters: numbers, period, comma, minus (all other non-numeric values such as slash, dash/hyphen, letters, etc. cannot be entered).
-- You can enable/disable stepper buttons.
-- You can set the minimum and maximum values that the user can enter.
-- You can also set the step for the value, that the user can enter with the stepper buttons, `Up Arrow` and `Down Arrow`, or `Shift` + `Up Arrow` or `Down Arrow`.
+Numeric values can represent quantities of something, such as:
 
-@## Input size
+- Number of keywords or links.
+- Price.
+- Age.
 
-The input size should not be longer than the largest number that can be entered in it. Too long input field, for example, for the number of days in a week can confuse the user and add unnecessary meanings.
+Dates and various codes (e.g., pin codes) are also examples of numeric values.
+
+**InputNumber offers the following features:**
+
+- By default, it only allows numeric characters, including numbers, periods, commas, and minus sign. Other non-numeric characters cannot be entered.
+- You can enable or disable the stepper buttons.
+- You can set minimum and maximum values that the user can enter.
+- You can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
+
+> **HTML specifications do not recommend using InputNumber for numeric values that contain non-numeric characters (e.g., slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
+>
+> For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
+
+@## Input width
+
+The width of the input should not exceed the maximum number that can be entered. Using an excessively long input, such as for the number of days in a week, can confuse the user and add unnecessary complexity to the interface.
 
 ![](static/size-yes-no.png)
 
 @## Interaction
 
-When InputNumber gets focus stepper buttons enables. The target zone for the steppers is larger than their size.
+Stepper buttons are enabled when the InputNumber field receives focus. The target area for the steppers is larger than their visual size.
 
-| Input size (height in px) | Appearance                          |
-| ------------------------- | ----------------------------------- |
+@table-caption InputNumber's stepper button sizes
+
+| Input size (height in px) | Appearance example      |
+| ------------------------- | ----------------------- |
 | M (28px)                  | ![](static/m-sizes.png) |
 | L (40px)                  | ![](static/l-sizes.png) |
 
@@ -47,48 +63,54 @@ When InputNumber gets focus stepper buttons enables. The target zone for the ste
 >
 > _from [Form Design Patterns](https://www.smashingmagazine.com/printed-books/form-design-patterns/)_
 
-If necessary, you can use a number as a placeholder inside this type of input.
+If needed, you can utilize a number as a placeholder within this type of input.
+
+@table-caption InputNumbers states
 
 | State      | L (40px)                                     | M (28px)                                     | Styles                                                             |
 | ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------ |
 | Default    | ![](static/l-placeholder.png)   | ![](static/m-placeholder.png)   |                                                                    |
 | Hover      | ![](static/l-hover.png)           | ![](static/m-hover.png)           |                                                                    |
 | Focus      | ![](static/l-focus.png)           | ![](static/m-focus.png)           | Icon use `--icon-secondary-neutral` token for color.               |
-| Icon hover | ![](static/l-icon-hover.png) | ![](static/m-icon-hover.png) | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
+| Stepper hover | ![](static/l-icon-hover.png) | ![](static/m-icon-hover.png) | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
 
 @## Validation
 
-InputNumber, like any input, can be required. General recommendations for validating forms and inputs you can find in [Validation](/patterns/validation-form/).
+Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [Validation](/patterns/validation-form/) guide.
 
-To help the user with entering the correct data and passing validation, you can:
+To assist users in entering correct and valid data, you can:
 
-- set the minimum and maximum values for InputNumber;
-- set the step for the entered numeric value to decrease/increase when using the stepper buttons.
+- Set minimum and maximum values for InputNumber.
+- Define a step for the numeric value, allowing it to increment or decrement using the stepper buttons.
 
 ![](static/validation-yes-no.png)
 
 @## InputRange
 
-To enter a range of numbers, you need two InputNumbers grouped together.
+To input a range of numbers, you can use two InputNumbers grouped together.
 
-> You can use **"From"** and **"To"** as placeholders in such inputs.
+> Placeholders such as "From" and "To" can be used in these inputs.
 
-| Size (height in px) | Default                                                  | Focus                                              |
-| ------------------- | -------------------------------------------------------- | -------------------------------------------------- |
+@table-caption InputRange states
+
+| Size (height in px) | Default      | Focus               |
+| ------------------- | ------------ | ------------------- |
 | M (28px)            | ![](static/m-range-default.png) | ![](static/m-range.png) |
 | L (40px)            | ![](static/l-range-default.png) | ![](static/l-range.png) |
 
 ### Validation for a range of numbers
 
-If user enters a value in the right input that is less than the value in the left input, these inputs will switch their values when the focus is lost (`onBlur`).
+If the user enters a value in the right input that is less than the value in the left input, the values will switch when the focus is lost (`onBlur`).
+
+@table-caption Validation case for InputRange
 
 | The right value is less than the left value | After submitting, inputs will switch their values |
 | ------------------------------------------- | ------------------------------------------------- |
 | ![](static/range-1.png)          | ![](static/range-2.png)                |
 
-@## Alternative view
+@## Appearance customization
 
-In cases when you need to show steppers as buttons with `Plus` and `Minus` icons, you can use the alternative view of this component. See the example [in the Example tab](/components/input-number/input-number-code/#a22257).
+In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code//#appearance_customization).
 
 ![](static/alternative.png)
 
@@ -96,42 +118,30 @@ In cases when you need to show steppers as buttons with `Plus` and `Minus` icons
 
 ### Invalid values
 
-If user enters an invalid value (less than minimum, more than maximum), such value will be reset to `min/max`, respectively. The value is reset when the focus is lost (`onBlur`). If the input does not have a defined range of acceptable values, then there should be no validation – the entered value will be applied.
+If the user enters an invalid value (below the minimum or above the maximum), the value will be reset to the minimum or maximum value, respectively, when input loses the focus (`onBlur`).
+
+If the input does not have a defined range of acceptable values, no validation will be applied, and the entered value will be retained.
 
 ### Fractional numbers
 
 You can use a dot to enter a fractional value in the input.
 
-> **The dot and comma are interchangeable characters depending on the locale**. For example, if user entered a value with a dot, and fractional values are used with a comma in the respective locale, then the originally entered dot should be changed to the comma. And vice versa.
+> The dot and comma are interchangeable characters depending on the locale.
+
+For instance, if the user enters a value with a dot and the locale uses commas for fractional values, the originally entered dot should be changed to a comma, and vice versa.
 
 ### Negative value
 
-If only positive values are allowed in the input, then user cannot be able to enter a minus.
+If the input only allows positive values, the user will not be able to enter a negative value.
 
 ### Zero value
 
-Treat zero value like any other number:
+Treat the zero value like any other number:
 
-- if 0 is a valid value, then input will keep this entered value;
-- if 0 is less than the minimum value, input will reset the value to the minimum value.
+- If 0 is a valid value, the input will retain this entered value.
+- If 0 is less than the minimum value, the input will reset the value to the minimum.
 
-> **If the input is already set to 0**, then when the input gets the focus, user enters the value after 0. By `onBlur`, the entire value in the input is formatted, and 0, which was before the number, will be removed. For example, `001` is formatted to `1`.
-
-@## Usage in UX/UI
-
-**InputNumber should not be used for the every numeric value.**
-
-A numeric value can represent the quantity of something:
-
-- number of keywords or links, etc., for example;
-- price;
-- age.
-
-Dates and various codes (for example, pin codes, etc.) are also numeric values.
-
-**HTML specifications do not recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, dash/hyphen, etc.)**. Since this input removes all characters that are not numeric values by default.
-
-For numbers with non-numeric characters (slash, letter, etc.), it is recommend to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
+> If the input is already set to 0, when the input receives focus, the user can enter a value after the 0. Upon onBlur, the entire value in the input is formatted, and the leading 0 will be removed. For example, `001` is formatted to `1`.
 
 @page input-number-a11y
 @page input-number-api
