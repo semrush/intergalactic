@@ -5,7 +5,7 @@ import Select, { InputSearch } from '@semcore/ui/select';
 import NeighborLocation from '@semcore/ui/neighbor-location';
 import Flag, { iso2Name } from '@semcore/ui/flags';
 import { Text } from '@semcore/ui/typography';
-import CloseXS from '@semcore/ui/icon/Close/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 
 const CountryCodes = {
   AF: { name: 'Afghanistan', dial_code: '+93', code: 'AF' },
@@ -329,7 +329,7 @@ const Demo = () => {
         />
         {value !== valueMask && (
           <Input.Addon
-            tag={CloseXS}
+            tag={CloseM}
             aria-label="Clear value"
             interactive
             onClick={() => setValue(valueMask)}
