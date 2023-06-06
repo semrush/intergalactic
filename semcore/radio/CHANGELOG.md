@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.6.5] - 2023-06-06
+
+### Fixed
+
+- Setting `tag` prop on `RadioGroup` was breaking component `onChange` handling.
+
 ## [5.6.4] - 2023-06-06
 
 ### Fixed

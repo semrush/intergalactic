@@ -36,15 +36,14 @@ class RadioGroupRoot extends Component {
   }
 
   render() {
-    const { Children, tag: Tag } = this.asProps;
+    const { Children, tag } = this.asProps;
 
-    if (Tag)
+    if (tag)
       return (
-        <Root render={Tag} role="radiogroup">
+        <Root render={Box} tag={tag} role="radiogroup" __excludeProps={['onChange']}>
           <Children />
         </Root>
       );
-
     return <Children />;
   }
 }
@@ -75,6 +74,9 @@ class Radio extends Component {
     if (value !== undefined) {
       other['checked'] = value === props.value;
       other['onChange'] = this.bindHandlerChange(props.value);
+      if (this.asProps.tag !== 'label') {
+        other['onClick'] = this.bindHandlerChange(props.value);
+      }
     }
     return {
       ...other,
