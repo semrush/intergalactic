@@ -1,3 +1,25 @@
+## [13.32.0] - 2023-06-06
+
+### @semcore/base-trigger
+
+- **Changed** Blue border of trigger in the active state.
+
+### @semcore/radio
+
+- **Fixed** Setting `tag` prop on `RadioGroup` was breaking component `onChange` handling.
+
+### @semcore/side-panel
+
+- **Fixed** Fixed `SidePanel` default text color.
+
+### @semcore/tab-panel
+
+- **Changed** Removed white bottom border under selected tab panels.
+
+### @semcore/time-picker
+
+- **Added** Focused text part highlight.
+
 ## [13.31.3] - 2023-06-06
 
 ### @semcore/radio
