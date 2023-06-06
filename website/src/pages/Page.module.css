@@ -24,6 +24,7 @@
   background: var(--intergalactic-bg-secondary-neutral);
   max-width: 250px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 @media (max-width: 767px) {
   .sideBar {
