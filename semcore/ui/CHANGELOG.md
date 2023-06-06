@@ -1,3 +1,9 @@
+## [13.31.3] - 2023-06-06
+
+### @semcore/radio
+
+- **Fixed** Fixed `disabled` prop inheritance from `RadioGroup` to `Radio.Value`.
+
 ## [13.31.2] - 2023-06-02
 
 ### @semcore/animation
