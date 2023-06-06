@@ -149,6 +149,12 @@
   text-decoration: underline;
 }
 
+@media (min-width: 1141px) and (max-width: 1190px) {
+  .started svg {
+    display: none;
+  }
+}
+
 @media (max-width: 1140px) {
   .started {
     grid-row: 3;
@@ -433,6 +439,7 @@
   background: var(--intergalactic-bg-secondary-neutral);
   max-width: 250px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 @media (max-width: 767px) {
