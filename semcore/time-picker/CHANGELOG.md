@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2023-06-06
+
+### Added
+
+- Focused text part highlight.
+
 ## [3.4.55] - 2023-05-31
 
 ### Changed

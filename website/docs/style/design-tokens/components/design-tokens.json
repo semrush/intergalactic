@@ -352,7 +352,8 @@
     "computedValue": "rgba(0, 143, 248, 0.2)",
     "description": "Focusing values in the input.",
     "components": [
-      "date-picker"
+      "date-picker",
+      "time-picker"
     ]
   },
   {
@@ -813,8 +814,7 @@
     "components": [
       "button",
       "divider",
-      "spin",
-      "tab-panel"
+      "spin"
     ]
   },
   {

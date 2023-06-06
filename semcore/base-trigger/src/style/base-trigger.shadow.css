@@ -168,6 +168,11 @@ SBaseTrigger[state='normal'] {
   border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
+SBaseTrigger[active],
+SBaseTrigger:active {
+  border-color: var(--intergalactic-border-info-active, #006dca);
+}
+
 SBaseTrigger[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
 }
