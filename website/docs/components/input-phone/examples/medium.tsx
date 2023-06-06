@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Input from '@semcore/ui/input';
 import Flag from '@semcore/ui/flags';
-import CloseXS from '@semcore/ui/icon/Close/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 
 const Demo = () => {
   const [value, setValue] = useState('+1');
@@ -13,7 +13,7 @@ const Demo = () => {
       <Input.Value value={value} onChange={(v) => setValue(v)} />
       {value > 2 && (
         <Input.Addon
-          tag={CloseXS}
+          tag={CloseM}
           interactive
           aria-label="Clear field"
           onClick={() => setValue('+1')}
