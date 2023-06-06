@@ -29,14 +29,18 @@ It is important to include a placeholder in the input field with the same format
 
 Find an example of using a mask in an input field for entering a phone number in the [Example tab](/components/input-phone/input-phone-code).
 
-|             | Appearance examples      | Tokens                                         |
-| ----------- | ------------------------ | ---------------------------------------------- |
-| Placeholder | ![](static/placeholder-default.png) | Placeholder use `--text-placeholder` as color. |
-| Mask        | ![](static/mask-default.png)        | Mask use `--text-primary` as color.            |
+@table-caption InputMask's placeholder and mask appearance
+
+|             | Appearance examples      | Tokens                                                      |
+| ----------- | ------------------------ | ----------------------------------------------------------- |
+| Placeholder | ![](static/placeholder-default-2.png) | Placeholder use `--text-placeholder` as color. |
+| Mask        | ![](static/mask-default-2.png)        | Mask use `--text-primary` as color.            |
 
 @## Hint instructions
 
 We suggest including clear text instructions for inputs that have specific data format requirements.
+
+@table-caption InputMask's hint text sizes
 
 | Size (height in px) | Hint text size | Appearance example                  | Margins                                   |
 | ------------------- | ------------------- | ----------------------------------- | ----------------------------------------- |
@@ -49,9 +53,11 @@ You have the ability to validate the characters that the user enters. If the use
 
 Find an example of the mask behavior in the in an input field for entering a phone number in the [Example tab](/components/input-phone/input-phone-code).
 
+@table-caption InputMask states
+
 | Placeholder        | Focus with mask        | Filled input                                    |
 | ------------------ | ---------------------- | ----------------------------------------------- |
-| ![](static/placeholder-default.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png)|
+| ![](static/placeholder-default-1.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png)|
 
 @page input-mask-a11y
 @page input-mask-api
