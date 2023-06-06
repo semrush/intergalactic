@@ -10,7 +10,7 @@ export default () => {
     <React.Fragment>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
       <SidePanel visible={visible} onClose={() => setVisible(false)} disablePortal>
-        <SidePanel.Panel>
+        <SidePanel.Panel mt={20}>
           <Text size={300} tag="p">
             Waba-laba-dub-dub!
           </Text>

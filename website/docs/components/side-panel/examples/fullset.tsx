@@ -8,7 +8,7 @@ export default () => {
   return (
     <>
       <Button onClick={() => setVisible(true)}>Show SidePanel</Button>
-      <SidePanel visible={visible} onClose={() => setVisible(false)}>
+      <SidePanel visible={visible} onClose={() => setVisible(false)} mt={20}>
         <SidePanel.Close />
         <SidePanel.Header>
           <SidePanel.Back>Go to Tool Name</SidePanel.Back>
