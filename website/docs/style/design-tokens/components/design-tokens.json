@@ -813,8 +813,7 @@
     "components": [
       "button",
       "divider",
-      "spin",
-      "tab-panel"
+      "spin"
     ]
   },
   {
