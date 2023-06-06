@@ -1,7 +1,7 @@
 import React from 'react';
 import FormatText from '@semcore/ui/format-text';
 import Link from '@semcore/ui/link';
-import EditXS from '@semcore/ui/icon/Edit/m';
+import EditM from '@semcore/ui/icon/Edit/m';
 
 class Demo extends React.PureComponent {
   render() {
@@ -13,7 +13,7 @@ class Demo extends React.PureComponent {
           reprehenderit, voluptas voluptatem voluptates{' '}
           <Link href="#" inline noWrap={false}>
             <Link.Addon>
-              <EditXS />
+              <EditM />
             </Link.Addon>
             <Link.Text>consectetur corporis cupiditate</Link.Text>
           </Link>
