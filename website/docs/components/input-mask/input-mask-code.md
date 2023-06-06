@@ -5,13 +5,13 @@ fileSource: input-mask
 
 @## InputMask
 
-This component is an input wrapper that allows you to set the format for the input value.
+This component is a wrapper that allows you to set the format for the input value.
 
 @## Mask
 
-This is the example for a simple input with a `mask`. The mask is set via the mask property, which determines the input format and value validation.
+This is an example of a basic input with a `mask` feature. The mask is defined using the mask property, which specifies the input format and validates the entered value.
 
-> Be sure to set the placeholder input with the mask. As a rule, it duplicates the mask itself.
+> Remember to set the placeholder for the input field to match the mask. Typically, the placeholder should be the same as the mask itself.
 
 @example basic
 
