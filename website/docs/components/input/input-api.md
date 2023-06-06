@@ -29,7 +29,7 @@ import Input from '@semcore/ui/input';
 
 The addon inside the input (most often it is an icon) places the correct indent units depending on the size. The addon can be `interactive`.
 
-When you click on Addon, the focus shifts to the input. You can cancel this by returning the `return false` in the `onClick` handler.
+When you click on Addon, the focus shifts to the input. You can cancel this by returning the `return false` in the `onMouseDown` handler.
 
 ```jsx
 import Input from '@semcore/ui/input';
