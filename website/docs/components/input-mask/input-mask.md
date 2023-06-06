@@ -8,50 +8,56 @@ tabName: Design
 
 @## Description
 
-**InputMask** is the input with a mask. Mask gives user the cue about the number and format of the data that needs to be entered.
+**InputMask** is a wrapper that enables you to define the format for an input value. It provides users with guidance on the expected number and format of the data they need to enter.
 
-> Note, that InputMask should not be used as an input placeholder.
+> Note that InputMask should not be used as a placeholder for the input field.
 
-The mask helps user to avoid mistakes when entering the required number of characters and automatically formats the entered value.
+The mask helps users prevent errors by ensuring they enter the correct number of characters and automatically formats the input value.
 
-**Use InputMask when:**
+**Consider using InputMask in the following situations:**
 
-- the format for the data is known;
-- user needs to enter a certain (usually large) number of characters.
+- When the format for the data is known.
+- When the user needs to enter a specific (usually lengthy) number of characters.
 
-**Do not use InputMask if you don't know the exact format for the data.**
+However, if you don't have precise information about the format of the data, it is not recommended to use InputMask.
 
 @## Appearance
 
-The symbol that reserves space for character, – `_`.
+The character `_` is used as a space holder for each character in the mask.
 
-> The mask has the color of the text, so it is important to add a placeholder to the input. It can reduplicate the mask. Placeholders help the user navigate the form and see which inputs are already filled in.
+It is important to include a placeholder in the input field with the same format as the mask. The placeholder helps users navigate the form and understand which inputs are not filled in yet.
 
-Example of using a mask in the [input field to enter a phone number](/components/input-phone/input-phone-code).
+Find an example of using a mask in an input field for entering a phone number in the [Example tab](/components/input-phone/input-phone-code).
 
-|             | Appearance examples                                | Tokens                                         |
-| ----------- | -------------------------------------------------- | ---------------------------------------------- |
-| Placeholder | ![](static/placeholder-default.png) | Placeholder use `--text-placeholder` as color. |
-| Mask        | ![](static/mask-default.png)        | Mask use `--text-primary` as color.            |
+@table-caption InputMask's placeholder and mask appearance
 
-@## Help instructions
+|             | Appearance examples      | Tokens                                                      |
+| ----------- | ------------------------ | ----------------------------------------------------------- |
+| Placeholder | ![](static/placeholder-default-2.png) | Placeholder use `--text-placeholder` as color. |
+| Mask        | ![](static/mask-default-2.png)        | Mask use `--text-primary` as color.            |
 
-We recommend you to provide visible text instructions for inputs with constraints, such as a specific format for data.
+@## Hint instructions
 
-| Size (height in px) | Text size for the hint | Appearance example                  | Margins                                   |
+We suggest including clear text instructions for inputs that have specific data format requirements.
+
+@table-caption InputMask's hint text sizes
+
+| Size (height in px) | Hint text size | Appearance example                  | Margins                                   |
 | ------------------- | ------------------- | ----------------------------------- | ----------------------------------------- |
 | M (28px)            | 12px (use `--fs-100`, `--lh-100` tokens) | ![](static/inputmask-help-text-m.png) | ![](static/inputmask-help-text-margin-m.png) |
 | L (40px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/inputmask-help-text-l.png) | ![](static/inputmask-help-text-margin-l.png) |
 
 @## Interaction
 
-You can validate the characters user enters. If the user enters an invalid character (for example, `/`), the InputMask will cut it.
+You have the ability to validate the characters that the user enters. If the user inputs an invalid character, such as `/`, the InputMask will remove it automatically.
 
-Example of the mask behavior in the [input field for entering a phone number](/components/input-phone/input-phone-code).
+Find an example of the mask behavior in the in an input field for entering a phone number in the [Example tab](/components/input-phone/input-phone-code).
 
-| Placeholder                                        | Focus with mask                                    | Filled                                            |
-| -------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------- |
-| ![](static/placeholder-default.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png) |
+@table-caption InputMask states
+
+| Placeholder        | Focus with mask        | Filled input                                    |
+| ------------------ | ---------------------- | ----------------------------------------------- |
+| ![](static/placeholder-default-1.png) | ![](static/mask-focus.png) | ![](static/mask-filled.png)|
 
 @page input-mask-a11y
 @page input-mask-api

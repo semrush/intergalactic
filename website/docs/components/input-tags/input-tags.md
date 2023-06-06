@@ -8,76 +8,78 @@ tabName: Design
 
 @## Description
 
-**InputTags** is the input that wraps the entered information into tags. Often used together with the [Combobox](/components/auto-suggest/).
+**InputTags** is an input field that wraps entered information into tags. It is commonly used alongside the [Combobox](/components/auto-suggest/).
 
-This input is usually used for entering a large amount of homogeneous information in a single field. _For example, keywords or employee emails._
+This input field is useful for entering a large amount of similar information in a single field, such as keywords or employee emails.
 
 @## Appearance
 
-When tags overflow, the input increases in height by 1 text line.
+When there are too many tags to fit within the input, the input field's height increases by one line of text.
 
-| Size                          | Appearance                   |                                | Margins                                |
-| ------------------------------ | ---------------------------- | ------------------------------ | -------------------------------------- |
-| L input is used with the L tag | ![l size](static/l-size.png) | ![l size](static/l-size-2.png) | ![l paddings](static/l-paddings-2.png) |
-| M input is used with the M tag | ![m size](static/m-size.png) | ![m size](static/m-size-2.png) | ![m paddings](static/m-paddings-2.png) |
+@table-caption InputTags sizes
+
+| Size     | Appearance      |                 | Margins        |
+| -------- | --------------- | --------------- | -------------- |
+| M input is used with the M tag | ![](static/m-size.png) | ![](static/m-size-2.png) | ![](static/m-paddings-2.png) |
+| L input is used with the L tag | ![](static/l-size.png) | ![](static/l-size-2.png) | ![](static/l-paddings-2.png) |
 
 @## Tag colors
 
-> You can read more about tags in [Tag](/components/tag).
+> To learn more about tags, refer to the [Tag](/components/tag).
 
-In most cases, we recommend using a tag with the `primary` type and the `muted` theme to enter homogeneous information in such inputs. We don't recommend using the [Secondary tag](/components/tag/) inside the input since it creates more visual noise due to the presence of `border`.
+In most cases, we recommend using tags with the `primary` type and the `muted` theme for entering homogeneous information in these inputs. It is not recommended to use the [Secondary tag](/components/tag/) inside the input as it adds unnecessary visual noise with its border.
 
-![default tag color](static/default-tag.png)
+![](static/default-tag.png)
 
-When validating this input, we may highlight inappropriate data in red. **Please do not forget about the clear text in the tooltip with the error.**
+When validating the input, inappropriate data can be highlighted in red. **Remember to provide clear error messages in tooltips.**
 
-![validation tag color](static/validation.png)
+![](static/validation.png)
 
-In some cases, you can use color tags if, for example, they are linked to different categories.
+In some cases, you can use color tags to represent different categories, if applicable.
 
-![color tags](static/color-tag.png)
+![](static/color-tag.png)
 
 @## Interaction
 
-In the input with tags, you can substitute either preset data from the combobox, or enter your own data (they are wrapped in tags if they have punctuation separators), or combine the first two input options.
+In an input field with tags, you can enter data either by selecting preset options from the combobox or by entering your own data (which will be wrapped in tags if they have punctuation separators). You can also combine both options.
 
-| Data only from the combobox                  | User data                                | Data from the combobox and user data       |
-| -------------------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| ![combobox only data](static/input-tag1.png) | ![user only data](static/input-tag2.png) | ![all kind of data](static/input-tag3.png) |
+@table-caption Interaction with InputTags
 
-When you focus on such an input, it opens a [Combobox](/components/auto-suggest/) if there are pre-set data (for example, a database of addresses of minions or previously entered keywords). When you click on a line in the combobox, the data from this line is inserted into the input and wrapped in a tag.
+| Data from the combobox    | User-entered data   | Data from the combobox and user-entered data    |
+| ------------------------- | ------------------- | ------------------------ |
+| ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png) |
 
-If such an input does not have pre-set data and the user can enter any data, this data is wrapped in a tag after punctuation separators as described below.
+When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [Combobox](/components/auto-suggest/) will open. Clicking on a line in the combobox will insert the corresponding data into the input field and wrap it in a tag.
 
-@## Working with the keyboard
+If the input field doesn't have preset options and allows users to enter any data, the entered data will be wrapped in a tag using punctuation separators, as described below.
 
-The text entered by the user is wrapped in a tag inside InputTags:
+@## Wrapping text in tag
 
-- when you lose focus (for example, by taboo);
-- when you press `Enter`;
-- when entering a punctuation separator (“,”; “;”; “|”)
-- with a double space;
-- if there is a tab (when inserting data).
+The text entered by the user is automatically converted into a tag inside InputTags in the following cases:
 
-> When wrapping, spaces before and after are cut.
+- When the input field loses focus (e.g., by tabbing out).
+- When the user presses the `Enter` key.
+- When entering a punctuation separator ("," , ";" , "|").
+- When there is a double space.
+- When the user presses the Tab key to insert data.
+
+> Leading and trailing spaces are trimmed when creating tags.
 
 @## Text insertion
 
-After insertion, the text is broken by punctuation separators – comma, semicolon,“|”, `Tab` key.
+After inserting data, the text is split into tags based on punctuation separators like commas, semicolons, vertical bars ("|"), or pressing the `Tab` key.
 
 @## Deleting and editing a tag
 
-If there is a tag in front of the cursor, when you press the delete key, the tag turns into plain text and you can edit and delete it.
+If the text cursor is positioned in front of a tag, pressing the `Delete` key will convert the tag back into plain text, allowing for editing and deletion.
 
-@## Long text in the tag
+@## Handling long text within a tag
 
-> Note that this behavior is not recommended for fully accessible tag. The page content should be responsive and adaptable to small viewport widths, text magnification, and changes in text spacing.
+> Note that this behavior is not recommended for full accessibility. Web page content should be responsive and adaptable to small viewport widths, text enlargement, and changes in text spacing.
 
-You can set the maximum width for a tag. This is optional, as it is not necessary in all cases of using the component.
+You can set a maximum width for tags, although it is not necessary in all cases. If the tag text exceeds the specified width, truncate it with an ellipsis. Hovering over the tag will display a tooltip with the full text of the tag.
 
-In this case, if the tag text is larger than the specified width, it will collapse into an ellipsis. When hovering over it, a tooltip with the full text of the tag shall appear.
-
-![tag ellipsis](static/ellipsis.png)
+![](static/ellipsis.png)
 
 @page input-tags-a11y
 @page input-tags-api

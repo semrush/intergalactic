@@ -2,37 +2,35 @@
 title: Example
 ---
 
-@## Links inside the content
+@## Link inside the content
 
-By default, the link is `inline-block` and `no-wrap`. This means that if it is inserted into the text, no expected result will be obtained. In order for the link to be properly wrapped and underlined, set `noWrap=false` and `inline=true`.
-
-You can combine these properties to get the desired effect.
+By default, links are displayed as `inline-block` and do not wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
 
 @example inline
 
-@## Addon for the link
+@## Link addon
 
-Addons can be set either by passing the desired tag to the `addonLeft`/`addonRight` property or by rendering the `Link.Addon`/`Link.Text` in the component body. The examples below are the same.
+You can add addons to link either by specifying the desired tag in the `addonLeft`/`addonRight` property or by rendering the `Link.Addon`/`Link.Text` in the component body. Both methods achieve the same result.
 
 @example addon
 
 @## Color links
 
-Sometimes links need to be colored. For example, when they are used as a trigger for a select (when it is no longer valid and painted in the warning color `$orange`). Since links are inherited from typography, you can pass `color` to them.
+Links can be colored for specific purposes. You can apply a specific color to links by passing the `color` property to them.
 
 @example color
 
-@## Ellipsis links with addon
+@## Links with ellipsis
 
-This have two problem:
+There are two moments you need to consider when using link with addons and ellipsis:
 
-- ellipsis link inside flex block (You should use hack with `min-width: 0px`)
-- text `overflow:hidden` moves to vertical `Addon` (wrap content in Flex with vertical align)
+- To properly display a link with ellipsis inside a flex block, you need to use a hack with `min-width: 0px`.
+- When the text has an `overflow:hidden` property, it may overlap with a vertical addon. To avoid this, wrap the content in a flex container with vertical alignment.
 
 @example ellipsis
 
-@## Link accessibility
+@## Accessibility
 
-If there is no text in the link, it is necessary to add aria-label with a link description
+If a link has no visible text, it is important to add an aria-label attribute with a description of the link for accessibility purposes.
 
 @example a11y
