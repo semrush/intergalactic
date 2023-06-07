@@ -4,6 +4,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.53.1] - 2023-06-07
 
+### Fixed
+
 - Fixed color SSR hydration.
 
 ## [3.53.0] - 2023-05-25
