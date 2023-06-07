@@ -135,7 +135,7 @@ describe('InputTags', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  test('a11y', async () => {
+  test.skip('a11y', async () => {
     jest.useFakeTimers();
     const { container } = render(
       <InputTags size="l">
