@@ -170,13 +170,13 @@ describe('focus control', () => {
   test('auto focus', () => {
     const { getByTestId } = render(
       <Popper visible>
-        <Popper.Popper autoFocus>
-          <input data-testid="input-in-popper" />
+        <Popper.Popper autoFocus data-testid="popper">
+          <input />
         </Popper.Popper>
       </Popper>,
     );
 
-    expect(getByTestId('input-in-popper')).toHaveFocus();
+    expect(getByTestId('popper')).toHaveFocus();
   });
   test('trap', async () => {
     const { getByTestId } = render(
@@ -185,8 +185,8 @@ describe('focus control', () => {
         <input />
         <input />
         <Popper visible>
-          <Popper.Popper>
-            <input data-testid="input-in-popper" />
+          <Popper.Popper data-testid="popper">
+            <input />
           </Popper.Popper>
         </Popper>
         <input />
@@ -198,17 +198,17 @@ describe('focus control', () => {
     fireEvent.keyDown(document.body, { code: 'Tab' });
     fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(getByTestId('input-in-popper')).toHaveFocus();
+    expect(getByTestId('popper')).toHaveFocus();
 
     fireEvent.keyDown(document.body, { code: 'Tab' });
     fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(getByTestId('input-in-popper')).toHaveFocus();
+    expect(getByTestId('popper')).toHaveFocus();
 
     fireEvent.keyDown(document.body, { code: 'Tab' });
     fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(getByTestId('input-in-popper')).toHaveFocus();
+    expect(getByTestId('popper')).toHaveFocus();
   });
 
   test('focus return', () => {
@@ -235,7 +235,7 @@ describe('focus control', () => {
       </div>,
     );
 
-    expect(getByTestId('button-in-popper')).toHaveFocus();
+    expect(getByTestId('popper')).toHaveFocus();
 
     act(() => jest.runAllTimers());
     act(() => hidePopper());
@@ -271,9 +271,9 @@ describe('focus control', () => {
     fireEvent.focusIn(getByTestId('input-before-popper'));
     act(() => jest.runAllTimers());
 
-    expect(getByTestId('button-in-popper')).toHaveFocus();
+    expect(getByTestId('popper')).toHaveFocus();
 
-    fireEvent.keyDown(getByTestId('button-in-popper'), { key: 'Escape' });
+    fireEvent.keyDown(getByTestId('popper'), { key: 'Escape' });
     act(() => jest.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('popper')));
     act(() => jest.runAllTimers());
