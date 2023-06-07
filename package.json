@@ -10,6 +10,7 @@
     "vo-test": "playwright test",
     "website": "pnpm --dir website start",
     "lint": "pnpm lint:ts && pnpm lint:es && pnpm lint-changelogs",
+    "lint-changelogs": "pnpm --filter @semcore/changelogs-handler run lint-changelogs",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
     "publish:ui": "pnpm --filter @semcore/ui run update-changelog && pnpm install",
     "build:icons": "pnpm --filter @semcore/icon run build",
