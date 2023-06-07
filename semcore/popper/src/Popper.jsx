@@ -247,7 +247,6 @@ class Popper extends Component {
   componentDidUpdate(prevProps) {
     const popperProps = [
       'strategy',
-      'modifiers',
       'placement',
       'offset',
       'preventOverflow',
