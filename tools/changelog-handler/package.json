@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "main": "index.ts",
   "bin": {
-    "update-release-changelog": "bin/update-release-changelog.ts",
-    "lint-changelogs": "bin/lint-changelogs.ts"
+    "update-release-changelog": "bin/update-release-changelog.ts"
   },
   "private": false,
   "license": "MIT",
@@ -21,7 +20,8 @@
     "tsm": "2.2.2"
   },
   "scripts": {
-    "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts"
+    "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts",
+    "lint-changelogs": "tsc --require=../../.ci/tsm-filter-warnings.js bin/lint-changelogs.ts"
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.13",
