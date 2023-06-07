@@ -4,7 +4,7 @@
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 [![downloads](https://img.shields.io/npm/dt/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
 
-Intergalactic is a constantly developing design system of [React](https://reactjs.org/) component, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
+Intergalactic is a constantly developing design system of [React](https://reactjs.org/) components, guidelines and UX patterns for buiding interfaces. You can explore components in our [documentation website](https://i.semrush.com).
 
 ---
 
@@ -15,7 +15,7 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 - Written in TypeScript with predictable static types
 - Whole package of design resources and development tools
 - Powerful collection of charts
-- Theme customization in every detail (coming soon)
+- Theme customization in every detail (find details in the [Design tokens guide](https://developer.semrush.com/intergalactic/style/design-tokens/))
 
 ## Browser Support
 

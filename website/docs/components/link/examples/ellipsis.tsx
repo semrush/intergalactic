@@ -3,7 +3,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Divider from '@semcore/ui/divider';
 import Link from '@semcore/ui/link';
-import EditXS from '@semcore/ui/icon/Edit/m';
+import EditM from '@semcore/ui/icon/Edit/m';
 
 class Demo extends React.PureComponent {
   render() {
@@ -21,7 +21,7 @@ class Demo extends React.PureComponent {
               </Text>
             </Link.Text>
             <Link.Addon>
-              <EditXS />
+              <EditM />
             </Link.Addon>
           </Flex>
         </Link>

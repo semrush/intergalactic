@@ -5,13 +5,12 @@ fileSource: input-number
 
 @## Range of values
 
-To make this cocktail, use the `InputNumber` and `NeighborLocation` components. `InputNumber` in this case is always a controlled component 😎
+Use [InputNumber](/components/input-number) and [NeighborLocation](/utils/neighbor-location) components. In this case, InputNumber is always used as a controlled component.
 
 @example basic
 
-@## Alternative view
+@## Appearance customization
 
-You can experiment with the appearance of the component.
-For the correct calculation of the step, you should use the internal API native input.
+You have the ability to customize the component's appearance. To ensure the step calculation is accurate, utilize the internal API's native input.
 
 @example alternative

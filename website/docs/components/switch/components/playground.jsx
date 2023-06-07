@@ -9,14 +9,14 @@ export default PlaygroundGeneration(
 
     const size = radio({
       key: 'size',
-      defaultValue: 'm',
+      defaultValue: 'l',
       label: 'Size',
       options: ['m', 'l', 'xl'],
     });
 
     const theme = select({
       key: 'theme',
-      defaultValue: 'info',
+      defaultValue: 'success',
       label: 'Theme',
       options: ['info', 'success'].map((v) => ({ value: v, name: v })),
     });
@@ -38,13 +38,13 @@ export default PlaygroundGeneration(
     const before = text({
       key: 'before',
       label: 'Before',
-      defaultValue: 'off',
+      defaultValue: 'Off',
     });
 
     const after = text({
       key: 'after',
       label: 'After',
-      defaultValue: 'on',
+      defaultValue: 'On',
     });
 
     return (

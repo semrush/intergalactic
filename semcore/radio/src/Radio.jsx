@@ -24,26 +24,26 @@ class RadioGroupRoot extends Component {
   }
 
   setContext() {
-    const { theme, size, name, value, onChange } = this.asProps;
+    const { theme, size, name, value, onChange, disabled } = this.asProps;
     return {
       onChange,
       value,
       theme,
       size,
       name,
+      disabled,
     };
   }
 
   render() {
-    const { Children, tag: Tag } = this.asProps;
+    const { Children, tag } = this.asProps;
 
-    if (Tag)
+    if (tag)
       return (
-        <Root render={Tag} role='radiogroup'>
+        <Root render={Box} tag={tag} role="radiogroup" __excludeProps={['onChange']}>
           <Children />
         </Root>
       );
-
     return <Children />;
   }
 }
@@ -61,13 +61,22 @@ class Radio extends Component {
 
   getValueProps(props) {
     // The default values are here, since you cannot rewrite out of context
-    const { state = 'normal', size = 'm', theme, name } = assignProps(this.props, this.context);
+    const {
+      state = 'normal',
+      size = 'm',
+      theme,
+      name,
+      disabled,
+    } = assignProps(this.props, this.context);
     const { value } = this.context;
     const other = {};
     // if used with the context
     if (value !== undefined) {
       other['checked'] = value === props.value;
       other['onChange'] = this.bindHandlerChange(props.value);
+      if (this.asProps.tag !== 'label') {
+        other['onClick'] = this.bindHandlerChange(props.value);
+      }
     }
     return {
       ...other,
@@ -75,6 +84,7 @@ class Radio extends Component {
       size,
       theme,
       name,
+      disabled,
     };
   }
 
@@ -91,7 +101,7 @@ class Radio extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
-      <SRadio render={Box} tag='label'>
+      <SRadio render={Box} tag="label">
         <Children />
       </SRadio>,
     );
@@ -121,7 +131,7 @@ class Value extends Component {
 
     return sstyled(styles)(
       <>
-        <SControl tag='input' type='radio' {...controlProps} />
+        <SControl tag="input" type="radio" {...controlProps} />
         <SValue ref={forwardRef} use:theme={resolveColor(theme)} {...boxProps} />
       </>,
     );

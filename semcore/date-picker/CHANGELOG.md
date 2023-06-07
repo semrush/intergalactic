@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Fixed browser focus cursor position after picking date with mouse.
 
+## [3.6.46] - 2023-06-06
+
+### Changed
+
+* Version patch update due to children dependencies update (`@semcore/base-trigger` [3.6.3 ~> 3.7.0]).
+
 ## [3.6.45] - 2023-05-31
 
 ### Changed
@@ -506,6 +512,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
+<<<<<<< 
+
+## [1.2.1] - 2019-11-25
+
+### Fixed
+
+* Исправлен тип методов `onChange` всех Picker'ов
+* Исправлена ошибка при передаче значения `null` в `value` всех Picker'ов
+
+=======
+
 ## [1.2.1] - 2019-11-25
 
 ### Fixed
@@ -516,6 +533,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 * Исправлена ошибка при передаче значения `null` в `value` всех Picker'ов
 
 
+
+>>>>>>> 
 
 ## [1.2.0] - 2019-10-23
 

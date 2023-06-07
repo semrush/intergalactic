@@ -19,10 +19,14 @@ Other input types for entering certain data:
 - [DatePicker](/components/date-picker)
 - [TimePicker](/components/time-picker)
 - [ColorPicker](/components/color-picker)
+- [Checkbox](/components/checkbox)
+- [Radio](/components/radio)
 
 @## Sizes
 
-Our input has two sizes.
+The input has two sizes.
+
+@table-caption Input sizes
 
 | Size (height in px) | Appearance example      |
 | ------------------- | ----------------------- |
@@ -31,67 +35,75 @@ Our input has two sizes.
 
 @## Label
 
-We recommend adding a visible text label to the input wherever possible. If the input is not required, be sure to mark it with the text label "optional".
+We recommend adding a visible text label to the input wherever possible. If the input is not required, be sure to mark it with the "optional" text label.
+
+@table-caption Input text label sizes
 
 | Size (height in px) | Text size | Appearance example            | Margins                              |
 | ------------------- | --------- | ----------------------------- | ------------------------------------ |
 | M (28px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/input-label-m.png) ![](static/input-optional-m.png) | ![](static/input-label-margin-m.png) |
 | L (40px)            | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/input-label-l.png) ![](static/input-optional-l.png) | ![](static/input-label-margin-l.png) |
 
-@## Content and addons
+@## Addons
 
-**Addon** is a position inside the input field – to the left and right of the text – for placing icons, badges, counters, etc. Addon can be non-clickable and clickable.
+**Addon** is a slot inside the input field – to the left and right of the text – for placing icons, badges, counters, etc. Addon can be non-clickable and clickable.
 
-- For addon before the text you can set a non-clickable icon only. Such an icon usually has the color of the text or it is colored in other color according to the problem you are solving. _For example, you can color `Check` icon before the text into `--icon-secondary-success` to accent the status of the input._
-- For addon after the text you can set a clickable icon, a counter, a badge, a spinner, an icon button or link. The clickable icon should have `--icon-secondary-neutral` color. While hovering it should change its color to `--icon-secondary-neutral-hover-active` and the cursor to the `pointer`.
+- When adding an icon before the text (leading addon), use a non-clickable icon. This icon is usually colored to match the text or a different color based on the purpose it serves.
+- When adding an addon after the text (trailing addon), you have various options such as a clickable icon, a counter, a badge, a spinner, an icon button, or a link. The clickable icon should have the `--icon-secondary-neutral` color. When hovering over it, the color should change to `--icon-secondary-neutral-hover-active`, and the cursor should change to a pointer.
 
-| Size | Icon size                                            | Addon's indents                                  | Addon's minimum width                          |
-| ---- | ---------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------- |
+@table-caption Input addon indents and sizes
+
+| Input size | Icon size   | Addon's indents      | Addon's minimum width       |
+| ---------- | ----------- | -------------------- | --------------------------- |
 | M    | M size ![](static/addon-m-icon.png) | ![](static/addon-m-padding.png) | ![](static/addon-m-width.png) |
 | L    | M size ![](static/addon-l-icon.png) | ![](static/addon-l-padding.png) | ![](static/addon-l-width.png) |
 
-> If two addons are stacked together, their indents will divide in half to maintain the good clickable zone around them.
+> When two addons are stacked together, their indents will be divided in half. This ensures that there is a sufficient clickable zone (touch target) around each addon.
 
 ![](static/padding_collapse.png)
 
 @## Interaction
 
-| State   | Normal                                               | Focus                                                            | Disabled                                                               | Read-only                                              |
-| ------- | ---------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ |
-| Normal  | ![](static/input-normal.png)   | ![](static/input-normal-focus.png)   | ![](static/input-normal-disabled.png)   | ![](static/input-readonly.png) |
-| Valid   | ![](static/input-valid.png)     | ![](static/input-valid-focus.png)     | ![](static/input-valid-disabled.png)     |                                                        |
-| Invalid | ![](static/input-invalid.png) | ![](static/input-invalid-focus.png) | ![](static/input-invalid-disabled.png) |                                                        |
-
 > Use `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
 >
 > Use `disabled` state if you need to show affect of one component to another.
 
+@table-caption Input states
+
+| State   | Normal        | Focus                 | Disabled       | Read-only     |
+| ------- | ------------- | --------------------- | -------------- | ------------- |
+| Normal  | ![](static/input-normal.png)   | ![](static/input-normal-focus.png)   | ![](static/input-normal-disabled.png)   | ![](static/input-readonly.png) |
+| Valid   | ![](static/input-valid.png)     | ![](static/input-valid-focus.png)     | ![](static/input-valid-disabled.png)     |                                                        |
+| Invalid | ![](static/input-invalid.png) | ![](static/input-invalid-focus.png) | ![](static/input-invalid-disabled.png) |                                                    |
+
 @## Input types
 
-For code examples of the input types, see [Example tab](/components/input/input-code).
+For live examples of the input types, refer to [Example tab](/components/input/input-code).
 
 @## Search input
 
-The search input has a non-clickable icon before the text and the icon for clearing the value after the text.
+The search input can have a non-clickable icon before the text and the icon for clearing the value after the text.
 
 ![](static/search.png)
 
 @## Input with a counter
 
-You can place [Counter](/components/counter/) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is non-clickable.
+You can place [Counter](/components/counter/) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
 > Please do not use the [Tag](/components/tag/) component for the counter. It has a different purpose and functionality.
 
-| Size (height in px) | Counter next to the input's label           | Counter inside the input                       |
-| ------------------- | ------------------------------------------- | ---------------------------------------------- |
-| M (28px)            | ![](static/counter-M.png) | ![](static/counter-in-m.png) |
-| L (40px)            | ![](static/counter-L.png) | ![](static/counter-in-l.png) |
+@table-caption Input with counter
+
+| Size (height in px) | Counter next to the input's label  | Counter inside the input     |
+| ------------------- | ---------------------------------- | ---------------------------- |
+| M (28px)            | ![](static/counter-M.png)          | ![](static/counter-in-m.png) |
+| L (40px)            | ![](static/counter-L.png)          | ![](static/counter-in-l.png) |
 
 @## Usage in UX/UI
 
-1. Use input only for single-line fields. If you need to enter a large amount of data use [Textarea](/components/textarea/).
-2. Label the inputs so user can understand at a glance what data needs to be entered.
-3. Choose the input's width relevant to the content that should be entered in the input field. _For example, if you have an input for a phone number, the input width should not be more than the expected width of the phone number._
+1. Use input fields only for single-line information. If you need to enter a lot of data, use a [Textarea](/components/textarea/) instead.
+2. Label the inputs clearly, so users can quickly understand what data needs to be entered.
+3. Select an appropriate width for the input field based on the content to be entered. For example, if it's for a phone number, the input width shouldn't be wider than what is expected for a phone number.
 
 @page input-a11y
 @page input-api

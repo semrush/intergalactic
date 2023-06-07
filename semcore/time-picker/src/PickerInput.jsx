@@ -145,6 +145,10 @@ class ItemPicker extends Component {
 
 class Hours extends ItemPicker {
   field = 'hours';
+  static defaultProps = ({ size }) => ({
+    ...ItemPicker.defaultProps,
+    ml: size === 'l' ? 3 : undefined,
+  });
 
   minMax() {
     const { is12Hour } = this.asProps;
@@ -190,6 +194,10 @@ class Hours extends ItemPicker {
 
 class Minutes extends ItemPicker {
   field = 'minutes';
+  static defaultProps = ({ size }) => ({
+    ...ItemPicker.defaultProps,
+    mr: size === 'l' ? 3 : undefined,
+  });
 
   minMax() {
     return [0, 59];

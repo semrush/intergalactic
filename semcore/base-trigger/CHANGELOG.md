@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.8.0] - 2023-06-07
+
+### Changed
+
+- FilterTrigger background changed from gray to white.
+
+## [3.7.0] - 2023-06-06
+
+### Changed
+
+- Blue border of trigger in the active state.
+
 ## [3.6.3] - 2023-05-31
 
 ### Changed

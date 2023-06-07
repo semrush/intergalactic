@@ -4,4 +4,8 @@ title: Example
 
 @## Basic example
 
-@example base
+@example one-addon
+
+@## Two addons
+
+@example two-addons

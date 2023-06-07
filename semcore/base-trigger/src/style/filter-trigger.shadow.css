@@ -85,3 +85,8 @@ SWrapper[keyboardFocused] {
 SCounter {
   background-color: var(--intergalactic-bg-primary-info, #008ff8);
 }
+
+SFilterTrigger:active,
+SFilterTrigger[active] {
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+}

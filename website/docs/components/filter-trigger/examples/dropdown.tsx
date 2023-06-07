@@ -12,7 +12,7 @@ export default () => {
   return (
     <>
       <Text tag="label" htmlFor="advance-trigger" size="300">
-        Filter trigger with counter
+        Filter trigger for several filters inside
       </Text>
       <Box mt={2}>
         <Dropdown visible={visible} onVisibleChange={(v) => setVisible(v)}>

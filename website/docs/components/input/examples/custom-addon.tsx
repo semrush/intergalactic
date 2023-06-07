@@ -29,7 +29,7 @@ const Demo = () => {
       </Box>
       <br />
       <br />
-      <Text tag="label" htmlFor="badge-example">
+      <Text tag="label" htmlFor="badge-example" size="200">
         Input with badge
       </Text>
       <Box mt={2}>

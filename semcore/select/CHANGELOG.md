@@ -12,6 +12,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Added `aria-owns` attribute for trigger that refers to the corresponding popper.
 
+## [3.6.18] - 2023-06-06
+
+### Changed
+
+* Version patch update due to children dependencies update (`@semcore/base-trigger` [3.6.3 ~> 3.7.0]).
+
 ## [3.6.17] - 2023-05-31
 
 ### Changed
@@ -587,6 +593,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Исправлена ошибка в типизации `Select`
 
+<<<<<<< 
+
+## [1.6.3] - 2019-08-12
+
+### Changed
+
+* Обновлены `utils`
+* Улучшена функция оборачивания в `Text`
+
+=======
+
 ## [1.6.3] - 2019-08-12
 
 ### Changed
@@ -598,6 +615,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 
 
+>>>>>>> 
+
+<<<<<<< 
+
+## [1.6.2] - 2019-08-02
+
+### Changed
+
+* Обновлены зависимости
+* Добавлен `Item.Addon` от `DropdownMenu.Item.Addon`
+
+=======
+
 ## [1.6.2] - 2019-08-02
 
 ### Changed
@@ -608,6 +638,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 * Добавлен `Item.Addon` от `DropdownMenu.Item.Addon`
 
 
+
+>>>>>>> 
 
 ## [1.6.1] - 2019-08-02
 

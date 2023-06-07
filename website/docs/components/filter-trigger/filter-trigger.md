@@ -6,81 +6,79 @@ tabName: Design
 
 @## Description
 
-**FilterTrigger** is a component we use as a trigger in filters above tables or any other data.
+**FilterTrigger** is a component for using as an active state of a filter. Commonly it's placed above the data it filters.
 
-> The component is used exclusively as a filter. It is not used anywhere else in the interface.
->
-> [Selecting a date](/components/date-picker/) usually refers to global report settings, so you should not use FilterTrigger for it.
+This component helps users to:
 
-It is important for filters:
-
-- **To quickly understand what is selected and what is not**. - The user puts the filters himself, so what is the point of additional highlighting? - Not always, sometimes the user comes by a direct link and the filters are already selected.
-- **To quickly reset and change filters.**
+- quickly understand what filters are selected and what are not;
+- reset and change filters.
 
 @## Appearance
 
-The filter button has two sizes. In the inactive state, the filter is similar to a select; in the active state, it is a highlighted split-button.
+FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 
-> Please note that all sizes use `Close` and `ChevronDown` M size.
+@table-caption FilterTrigger sizes
 
-In the active filter, the selected value/values are completely displayed or hidden in the ellipsis.
-
-**The counter of the active filter** is shown only for **Advanced filters** and filters that have a lot of other additional filters inside. The counter in the trigger respectively indicates the number of additional filters applied.
-
-| Size | Inactive filter                                      | Active filter                                      | Active filter with the counter                             |
+| Size (height in px) | Default state         | Active filter                                      | Active filter with counter                             |
 | ----- | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
-| M, L  | ![](static/filter-default.png) | ![](static/filter-active.png) | ![](static/filter-active-counter.png) |
+| M (28px)  | ![](static/filter-default-m.png) | ![](static/filter-active-m.png) | ![](static/filter-active-counter-m.png) |
+| L (40px)  | ![](static/filter-default-l.png) | ![](static/filter-active-l.png) | ![](static/filter-active-counter-l.png) |
+
+Show [counter](/components/counter) only for **Advanced filters** and filters that have several additional filters inside. The counter in the FilterTrigger respectively indicates the number of additional filters applied.
 
 ![](static/counter-or-not.png)
 
-@## Margins between filter triggers
+@## Margins between FilterTriggers
 
-The indents duplicate the [indents between the buttons](/components/button/).
+Use the same margins as other inputs and [buttons](/components/button/#margins_between_buttons) have.
 
-Size (height in px)    | Margins between controls                      |
-| -------- | --------------------------------------------- |
-| L (40px) | ![](static/sizes-l.png) |
-| M (28px) | ![](static/sizes-m.png) |
+@table-caption Margins between FilterTriggers
+
+| Size (height in px)  | Margins between controls   |
+| -------------------- | -------------------------- |
+| M (28px)             | ![](static/sizes-m.png)    |
+| L (40px)             | ![](static/sizes-l.png)    |
 
 @## States and interaction
 
-### Filter trigger with value
+### Default FilterTrigger
 
-> There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts.
+<!-- > There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts. -->
+
+@table-caption Default FilterTrigger states
 
 | State                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                            | Appearance example                  |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| Placeholder                              | Default state of the filter. It always has a placeholder that reflects the essence of the filter.                                                                                                                                                                                                                                                                                                                                      | ![](static/ft-1.png)  |
-| Placeholder (hover)                        | A tooltip describing the filter’s operation may be displayed when hovering over an inactive filter.                                                                                                                                                                                                                                                                                                                                    | ![](static/ft-2.png)  |
-|                                          | Trigger has a tooltip with an explanation.                                                                                                                                                                                                                                                                                                                                                                                             | ![](static/ft-3.png)  |
-| Loading                                  | If the system needs some time to load all the filter options, we show a dropdown with **“Loading”** text.                                                                                                                                                                                                                                                                                                                              | ![](static/ft-4.png)  |
-| Something went wrong (very extreme case) | If for some reason it was not possible to show all the filter options, we show “**Something went wrong”** in dropdown. We can use **Reload** link, which sends the request again. Default case doesn't have link.                                                                                                                                                                                                                      | ![](static/ft-5.png)  |
-| Placeholder (open trigger)               | The open trigger must always be in the `active` state. Dropdown is closed by clicking on a select or any other area of the site.                                                                                                                                                                                                                                                                                                       | ![](static/ft-6.png)  |
-| Default (filled trigger)                 | The trigger size is adjusted to the selected value/values. **If only one value can be selected, it is recommended to show a tooltip explaining what exactly is selected when hovering over the active filter.** If it is possible to select several values in the filter, it is not necessary to show all selected values in the tooltip when hovering over the active filter. It is possible to show description of filter operation. | ![](static/ft-7.png)  |
-|                                          | Trigger has a tooltip with an explanation.                                                                                                                                                                                                                                                                                                                                                                                             | ![](static/ft-9.png)  |
-|                                          | If the filter is a [multi-select](/components/select/) and you can select more than two values, then reduce them in the trigger to the `N selected` construction.                                                                                                                                                                                                                                                                      | ![](static/ft-10.png) |
-| Hover (with the selected item)           | Clicking the button with the `Close` icon clears the value in the trigger and returns the trigger to the state with the placeholder.                                                                                                                                                                                                                                                                                                   | ![](static/ft-11.png) |
-|                                          | Please put a tooltip with **“Reset filter”** to the button with a crisscross and increase the display delay from default value of 100 to 150.                                                                                                                                                                                                                                                                                          | ![](static/ft-12.png) |
-| Hover (with the selected item)           | Clicking on the trigger opens a dropdown with an option to change the selected value. The dropdown is closed by clicking on a select or any other area of the site.                                                                                                                                                                                                                                                                    | ![](static/ft-13.png) |
+| Placeholder                              | Default state of the filter. It should always have a placeholder that represents what the filter is about.                                                                                                                                                                                                                                                                                                                                      | ![](static/ft-1.png)  |
+| Placeholder (hover)                        | When user hovers over an inactive filter, you can show a tooltip with small description of how the filter works.                                                                                                                                                                                                                                                                                                                                    | ![](static/ft-2.png) ![](static/ft-3.png)  |
+| Loading                                  | If the system needs some time to load all the filter options, show a dropdown with **“Loading”** text.                                                                                                                                                                                                                                                                                                                              | ![](static/ft-4.png)  |
+| Something went wrong | If for some reason it was not possible to show all the filter options, show “**Something went wrong”** text in the dropdown. You can add **Reload** link, which sends the request again.  | ![](static/ft-5.png)  |
+| Placeholder (active trigger)               | The opened trigger should always get the `active` state. Dropdown may be closed by clicking on an option or outside the dropdown.                                                                                                                                                                                                                                                                                                       | ![](static/ft-6.png)  |
+| Active filter               | The trigger size changes according to the selected value or values. **If only one value can be chosen, it's suggested to display a tooltip that explains the specific selection when hovering over the active filter.** If multiple values can be selected, there's no need to show all of them in the tooltip. Instead, the tooltip can provide a description of how the filter works. | ![](static/ft-7.png) ![](static/ft-9.png)  |
+|                                          | If the filter allows [selecting more than two values](/components/select/), simplify the display by showing **"N selected"** in the trigger, indicating the number of selected values. | ![](static/ft-10.png) |
+| Active filter (hover)           | When user clicks the button with the `Close` icon, it removes the value in the trigger and restores it to the default state with the placeholder. | ![](static/ft-11.png) |
+|                                          | Add a tooltip to the button with the `Close` icon saying **"Reset filter"** and increase the display delay from the default value of 100 to 150.  | ![](static/ft-12.png) |
+|  | When user clicks on the trigger, a dropdown opens up, allowing user to change the selected value. The dropdown closes when user clicks on an option or outside the dropdown. | ![](static/ft-13.png) |
 
-### Trigger of the filter with the counter
+### FilterTrigger with counter
+
+@table-caption States of FilterTrigger for advanced filters
 
 | State                          | Description                                                                                                                                                         | Appearance example                  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| Placeholder                    | Default state of the filter. It always has a placeholder that reflects the essence of the filter.                                                                   | ![](static/aft-1.png) |
-| Placeholder (hover) |              | ![](static/aft-2.png)                                                                                                                                 |
-| Placeholder (open trigger)     | The open trigger must always be in the `active` state. Dropdown is closed by clicking on a select or any other area of the site.                                    | ![](static/aft-3.png) |
-| Default (completed trigger)    | The trigger size is adjusted to the selected number of additional filters.                                                                                          | ![](static/aft-4.png) |
-| Hover (with the selected item) | Clicking the button with the `Close` icon clears the value in the trigger and returns the trigger to the state with the placeholder.                                | ![](static/aft-5.png) |
-|                                | Please put a tooltip with **“Reset filter”** to the button with a crisscross and increase the display delay from default value of 100 to 150.                       | ![](static/aft-6.png) |
-| Hover (with the selected item) | Clicking on the trigger opens a dropdown with an option to change the selected value. The dropdown is closed by clicking on a select or any other area of the site. | ![](static/aft-7.png) |
+| Placeholder                    | Default state of the filter. It should always have a placeholder that represents what the filter is about. | ![](static/aft-1.png) |
+| Placeholder (hover) |   | ![](static/aft-2.png)     |
+| Placeholder (active trigger)     | The opened trigger should always get the `active` state. Dropdown may be closed by clicking on a "Submit" button or outside the dropdown. | ![](static/aft-3.png) |
+| Active filter    | The trigger size changes according to the selected value or values.  | ![](static/aft-4.png) |
+| Active filter (hover) | When user clicks the button with the `Close` icon, it removes the value in the trigger and restores it to the default state with the placeholder.  | ![](static/aft-5.png) |
+|                                | Add a tooltip to the button with the `Close` icon saying **"Clear advanced filters"** and increase the display delay from the default value of 100 to 150.  | ![](static/aft-6.png) |
+|  | When user clicks on the trigger, a dropdown opens up, allowing user to change the selected values. The dropdown closes when user clicks on a "Submit" button or outside the dropdown. | ![](static/aft-7.png) |
 
 @## Usage in UX/UI
 
-### Filter label
+### Filter text label
 
-- **In most cases, the label is not placed next to the filter.** It is placed inside. However, if the label is long (more than two words), it is better to sign the filter with the label on the outside. This way the accent on the selected values in the filter will not be lost.
-- It is recommended to write a label in singular.
+Usually, the label is positioned inside the filter instead of next to it. However, if the label is long (more than two words), it is recommended to place it outside the filter. This ensures that the emphasis on the selected values in the filter is maintained.
 
 ![](static/long-label-yes-no.png)
 
@@ -88,22 +86,22 @@ Size (height in px)    | Margins between controls                      |
 
 ### Value in the trigger
 
-In the filter trigger it is important to show the applied value in human-readable form, e.g. `Lost in Top 100`, or `{Filter Name}:{value}`.
+In the filter trigger, it is essential to show the applied value in a way that is easy to understand for users. For example, it can be shown as **"Lost in Top 100"** or as **"{Filter Name}: {value}"**.
 
-If the value is complicated, it is possible to display only `{Filter Name}` to make it clear which type of filter is applied.
+If the value is complex, it is acceptable to display only the **{Filter Name}** to make it clear which type of filter is being applied.
 
 ![](static/filter-yes-no.png)
 
 ### Dropdown width
 
-- The dropdown filter cannot be smaller than the total width of the trigger.
-- The dropdown may be larger than the total width of the trigger.
+- The dropdown cannot be narrower than the width of the trigger.
+- The dropdown can be wider than the width of the trigger.
 
 ![](static/filter-dropdown-yes-no.png)
 
-### Writing numbers, periods and so on
+### Writing numbers, periods, etc
 
-You can see more details about writing numbers and periods in English in the [text guide provided by UX writers](https://docs.google.com/document/d/1HZHNKEW-5k0PqvgDaIWBgu8NWyRr3rM4xCm-725PoUU/edit#heading=h.iue5c2168b0n) (it is available for Semrush employees only).
+You can find more details on writing numbers and periods in English in the [text guide provided by UX writers](https://docs.google.com/document/d/1HZHNKEW-5k0PqvgDaIWBgu8NWyRr3rM4xCm-725PoUU/edit#heading=h.iue5c2168b0n) (it is available for Semrush employees only).
 
 @page filter-trigger-a11y
 @page filter-trigger-api

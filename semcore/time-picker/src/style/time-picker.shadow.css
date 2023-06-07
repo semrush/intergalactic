@@ -17,18 +17,26 @@ SPickerInput {
   box-sizing: content-box;
   text-align: center;
   z-index: 1;
+  height: 1.5em;
 
   &[placeholder] {
     text-overflow: initial;
+  }
+  &:focus {
+    background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
   }
 }
 
 SPickerInput[size='m'] {
   width: 19px;
+  margin: 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0;
 }
 
 SPickerInput[size='l'] {
   width: 21px;
+  margin: 0 var(--intergalactic-spacing-2x, 8px);
+  padding: 0;
 }
 
 SPickerFormat {

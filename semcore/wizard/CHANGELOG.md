@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.2.49] - 2023-06-02
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/modal` [3.6.12 ~> 3.6.13]).
+
 ## [1.2.48] - 2023-05-31
 
 ### Changed

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.4.13] - 2023-06-06
+
+### Fixed
+
+- Fixed `SidePanel` default text color.
+
+## [2.4.12] - 2023-06-02
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.14 ~> 1.10.15]).
+
 ## [2.4.11] - 2023-05-31
 
 ### Changed
