@@ -2,7 +2,7 @@ name: cd
 on:
   pull_request:
   push:
-    branches: [master, vo-test-reborn]
+    branches: [master]
   workflow_dispatch:
 concurrency:
   group: ${{ github.ref }}
