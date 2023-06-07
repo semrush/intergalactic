@@ -9,7 +9,7 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/
 test('Users can interact with Switch via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/switch/examples/base.tsx',
+    '../../../website/docs/components/switch/examples/two-addons.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
