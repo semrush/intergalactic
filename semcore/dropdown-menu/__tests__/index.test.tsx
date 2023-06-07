@@ -184,7 +184,9 @@ describe('DropdownMenu', () => {
         </DropdownMenu.Menu>
       </DropdownMenu>,
     );
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     vi.useRealTimers();
 
     const results = await axe(container);

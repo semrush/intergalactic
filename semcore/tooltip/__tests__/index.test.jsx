@@ -208,10 +208,14 @@ describe('TooltipBase', () => {
     );
 
     fireEvent.mouseEnter(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spy).toHaveBeenCalledTimes(1);
     fireEvent.mouseLeave(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spy).toHaveBeenCalledTimes(2);
     vi.useRealTimers();
   });

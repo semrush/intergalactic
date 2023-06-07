@@ -150,7 +150,9 @@ describe('InputTags', () => {
         <InputTags.Value aria-label="input with tags" value="" />
       </InputTags>,
     );
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     vi.useRealTimers();
 
     const results = await axe(container);

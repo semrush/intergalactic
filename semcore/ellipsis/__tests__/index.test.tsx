@@ -120,7 +120,9 @@ describe('Ellipsis', () => {
 
     const text = getByTestId('text');
     fireEvent.mouseEnter(text);
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).not.toBe(null);
 
@@ -143,7 +145,9 @@ describe('Ellipsis', () => {
 
     const text = getByTestId('text');
     fireEvent.mouseEnter(text);
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).toBe(null);
 

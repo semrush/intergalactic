@@ -54,12 +54,16 @@ describe('NoticeBubble Timer', () => {
     const spy = vi.fn();
     const { getByTestId } = render(<NoticeBubble data-testid="notice" onClose={spy} />);
     fireEvent.mouseEnter(getByTestId('notice'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).not.toBeCalled();
 
     fireEvent.mouseLeave(getByTestId('notice'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).toBeCalled();
     vi.useRealTimers();
@@ -84,7 +88,9 @@ describe('NoticeBubble', () => {
     const spy = vi.fn();
     render(<NoticeBubble duration={300} onClose={spy} />);
 
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).toBeCalled();
     vi.useRealTimers();
@@ -96,7 +102,9 @@ describe('NoticeBubble', () => {
     const spy = vi.fn();
     render(<NoticeBubble duration={0} onClose={spy} manager={manager} />);
 
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).not.toBeCalled();
     vi.useRealTimers();

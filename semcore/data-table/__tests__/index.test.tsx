@@ -833,7 +833,9 @@ describe('DataTable', () => {
         <DataTable.Body />
       </DataTable>,
     );
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     vi.useRealTimers();
 
     const results = await axe(container);

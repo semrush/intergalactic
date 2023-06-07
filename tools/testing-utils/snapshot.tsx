@@ -24,7 +24,9 @@ export const snapshot = async (Component, options?: {}) => {
   vi.useFakeTimers();
   act(() => root.render(Component));
   if (!options) {
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
   }
   vi.useRealTimers();
   // ReactDOM.render(Component, _tmp);

@@ -56,9 +56,13 @@ describe('DatePicker', () => {
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.click(getByText('Select date'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(getByText('March 2020')).toBeTruthy();
     vi.useRealTimers();
   });
@@ -72,7 +76,9 @@ describe('DatePicker', () => {
     fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('15'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     // change visible
     expect(getByText('Aug 15, 2021')).toBeTruthy();
     vi.useRealTimers();
@@ -226,9 +232,13 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date period'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.click(getByText('Select date period'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(getByText('March 2020')).toBeTruthy();
     vi.useRealTimers();
   });

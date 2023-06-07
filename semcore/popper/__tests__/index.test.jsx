@@ -33,12 +33,16 @@ describe('Popper', () => {
 
     fireEvent.mouseEnter(getByTestId('reference'));
     // because wait call onVisibleChange
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spy).toBeCalledWith(true, expect.anything());
 
     fireEvent.mouseLeave(getByTestId('reference'));
     // because wait call onVisibleChange
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spy).toBeCalledWith(false, expect.anything());
 
     vi.useRealTimers();
@@ -230,11 +234,17 @@ describe('focus control', () => {
 
     expect(getByTestId('popper')).toHaveFocus();
 
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => hidePopper());
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.animationEnd(getByTestId('popper'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(getByTestId('focusable-in-trigger')).toHaveFocus();
     vi.useRealTimers();
@@ -262,14 +272,20 @@ describe('focus control', () => {
     fireEvent.keyDown(getByTestId('input-before-popper'), { code: 'Tab' });
     act(() => getByTestId('focusable-in-trigger').focus());
     fireEvent.focusIn(getByTestId('input-before-popper'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(getByTestId('popper')).toHaveFocus();
 
     fireEvent.keyDown(getByTestId('popper'), { key: 'Escape' });
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => fireEvent.animationEnd(getByTestId('popper')));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(document.activeElement.nodeName).toBe('DIV');
     vi.useRealTimers();
   });

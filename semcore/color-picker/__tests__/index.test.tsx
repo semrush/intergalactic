@@ -70,7 +70,7 @@ describe('ColorPicker', () => {
   });
 
   test('Should clear input when click on cancel icon inside input', async () => {
-    const { getByTestId, getByLabelText  } = render(
+    const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
           <ColorPicker.Trigger />
@@ -175,7 +175,9 @@ describe('ColorPicker', () => {
 
     const input = getByTestId('inputColor');
     fireEvent.change(input, { target: { value: '#635472' } });
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(input.value).toBe('#635472');
 

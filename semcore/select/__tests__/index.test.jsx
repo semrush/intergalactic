@@ -230,7 +230,9 @@ describe('Select Trigger', () => {
         </Select.Menu>
       </Select>,
     );
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     vi.useRealTimers();
 
     const results = await axe(container);
@@ -251,12 +253,18 @@ describe('Select Trigger', () => {
       </Select>,
     );
     fireEvent.click(getByTestId('trigger'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => getByTestId('option-2').focus());
     fireEvent.click(getByTestId('option-2'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(getByTestId('trigger')).toHaveFocus();
 
     vi.useRealTimers();
@@ -278,12 +286,18 @@ describe('Select Trigger', () => {
       </Select>,
     );
     act(() => getByTestId('input-in-trigger').focus());
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => getByTestId('option-2').focus());
     fireEvent.click(getByTestId('option-2'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(document.activeElement.tagName).toBe('DIV');
 
     vi.useRealTimers();
@@ -304,15 +318,23 @@ describe('Select Trigger', () => {
         </Select.Menu>
       </Select>,
     );
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.keyDown(document.body, { code: 'Tab' });
     act(() => getByTestId('input-in-trigger').focus());
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
     fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(document.activeElement.tagName).toBe('DIV');
 
     vi.useRealTimers();

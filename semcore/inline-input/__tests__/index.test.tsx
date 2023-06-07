@@ -156,10 +156,14 @@ describe('InlineInput', () => {
 
     /** bubbling doesn't work in jest? */
     fireEvent.blur(getByTestId('behavior-cancel'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spyCancel).toHaveBeenCalledTimes(1);
     fireEvent.blur(getByTestId('behavior-confirm'));
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spyConfirm).toHaveBeenCalledTimes(1);
     vi.useRealTimers();
   });
