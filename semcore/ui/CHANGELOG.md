@@ -1,3 +1,46 @@
+## [13.33.0] - 2023-06-07
+
+### @semcore/animation
+
+- **Fixed** Fixed unmount error of `<Scale />` and `<Popper />` integration.
+
+### @semcore/base-trigger
+
+- **Changed** FilterTrigger background changed from gray to white.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed browser focus cursor position after picking date with mouse.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Improved `<Popper />` integration.
+- **Fixed** Fixed `aria-activedescendant` value.
+- **Fixed** Fixed double focus inside of popper.
+
+### @semcore/input
+
+- **Changed** Descend combobox related aria attributes from input wrapper to the input itself.
+
+### @semcore/popper
+
+- **Fixed** Fixed corner case of focus return with `interaction=focus`.
+- **Fixed** Added `disableEnforceFocus` api prop.
+- **Changed** Updating `strategy`, `placement`, `offset`, `preventOverflow`, `arrow`, `flip`, `computeStyles`, `eventListeners` or `onFirstUpdate` props now triggers popper positioning update.
+
+### @semcore/scroll-area
+
+- **Added** Allowed to set scroll container tab index by setting it on scroll area root element.
+
+### @semcore/select
+
+- **Fixed** Fixed browser focus cursor position after selecting value in non multiple choice `<Select />`.
+- **Added** Added `aria-owns` attribute for trigger that refers to the corresponding popper.
+
+### @semcore/utils
+
+- **Fixed** Fixed color SSR hydration.
+
 ## [13.32.0] - 2023-06-06
 
 ### @semcore/base-trigger

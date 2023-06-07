@@ -707,14 +707,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - Все утилиты переписаны на typescript
-- Удалены
-- validAttr.js
-- withAnalytics.js
-- index.js
-- createConnector.js
-- getSizeText.js
-- setStateIfNeeded.js
-  - Переменные с размером текста в `style/var.css` приведены в соответствие с типографикой
+- Удалены validAttr.js, withAnalytics.js, index.js, createConnector.js, getSizeText.js, setStateIfNeeded.js
+- Переменные с размером текста в `style/var.css` приведены в соответствие с типографикой
 
 ### Fixed
 
