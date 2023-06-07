@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.29] - 2023-06-10
+
+### Changed
+
+- Descend combobox related aria attributes from input wrapper to the input itself.
+
 ## [3.6.28] - 2023-05-31
 
 ### Changed

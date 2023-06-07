@@ -5,7 +5,6 @@ import { connectAutoComplete, connectStateResults } from 'react-instantsearch/co
 import algoliasearch from 'algoliasearch/lite';
 import { logEvent } from '../utils/amplitude';
 
-import IF from '@semcore/utils/lib/if';
 import { Box } from '@semcore/flex-box';
 import Select from '@semcore/select';
 import SearchM from '@semcore/icon/Search/m';
@@ -167,6 +166,7 @@ const Search = ({
         history.push(value);
         onItemSelect?.();
       }}
+      visible={!!currentRefinement && searchResults}
     >
       <Select.Trigger
         tag={Box}
@@ -212,13 +212,11 @@ const Search = ({
           );
         }}
       </Select.Trigger>
-      <IF condition={!!currentRefinement && searchResults}>
-        <Select.Popper className={styles.popper}>
-          <Select.List m={0} style={{ overflow: 'hidden' }}>
-            {showList(hits, pages, content)}
-          </Select.List>
-        </Select.Popper>
-      </IF>
+      <Select.Popper className={styles.popper}>
+        <Select.List m={0} style={{ overflow: 'hidden' }}>
+          {showList(hits, pages, content)}
+        </Select.List>
+      </Select.Popper>
     </Select>
   );
 };

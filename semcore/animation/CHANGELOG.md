@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.10.16] - 2023-06-10
+
+### Fixed
+
+- Fixed unmount error of `<Scale />` and `<Popper />` integration.
+
 ## [1.10.15] - 2023-06-02
 
 ### Fixed

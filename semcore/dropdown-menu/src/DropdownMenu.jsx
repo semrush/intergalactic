@@ -78,7 +78,8 @@ class DropdownMenuRoot extends Component {
       'aria-controls': `igc-${uid}-popper`,
       focusHint: visible && !disablePortal ? getI18nText('triggerHint') : undefined,
       'aria-expanded': visible ? 'true' : 'false',
-      'aria-activedescendant': highlightedIndex,
+      'aria-activedescendant':
+        visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
     };
   }
@@ -105,7 +106,7 @@ class DropdownMenuRoot extends Component {
   }
 
   getItemProps(props, index) {
-    const { size, highlightedIndex } = this.asProps;
+    const { size, highlightedIndex, uid } = this.asProps;
     const highlighted = index === highlightedIndex;
     const extraProps = {};
     this.itemProps[index] = props;
@@ -114,6 +115,7 @@ class DropdownMenuRoot extends Component {
     }
 
     return {
+      id: `igc-${uid}-option-${index}`,
       size,
       highlighted,
       ...extraProps,
@@ -136,15 +138,17 @@ class DropdownMenuRoot extends Component {
 
   scrollToNode = (node) => {
     this.highlightedItemRef.current = node;
-    if (node && node.scrollIntoView) {
-      if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
-        this.prevHighlightedIndex = this.asProps.highlightedIndex;
-        node.scrollIntoView({
-          block: 'nearest',
-          inline: 'nearest',
-        });
+    setTimeout(() => {
+      if (node && node.scrollIntoView) {
+        if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
+          this.prevHighlightedIndex = this.asProps.highlightedIndex;
+          node.scrollIntoView({
+            block: 'nearest',
+            inline: 'nearest',
+          });
+        }
       }
-    }
+    }, 0);
   };
 
   moveHighlightedIndex(amount, e) {
@@ -205,6 +209,7 @@ function List(props) {
   return sstyled(props.styles)(
     <SDropdownMenuList
       render={ScrollAreaComponent}
+      tabIndex={null}
       role="menu"
       aria-labelledby={`igc-${uid}-trigger`}
       shadow={true}
@@ -213,9 +218,29 @@ function List(props) {
   );
 }
 
-function Menu() {
+function Menu(props) {
+  const {
+    visible,
+    disablePortal,
+    ignorePortalsStacking,
+    disableEnforceFocus,
+    interaction,
+    autoFocus,
+    animationsDisabled,
+    focusableTriggerReturnFocusToRef,
+  } = props;
+  const popperProps = {
+    visible,
+    disablePortal,
+    ignorePortalsStacking,
+    disableEnforceFocus,
+    interaction,
+    autoFocus,
+    animationsDisabled,
+    focusableTriggerReturnFocusToRef,
+  };
   return (
-    <DropdownMenu.Popper>
+    <DropdownMenu.Popper {...popperProps}>
       <Root render={DropdownMenu.List} />
     </DropdownMenu.Popper>
   );

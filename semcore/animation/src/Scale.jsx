@@ -22,6 +22,7 @@ function Scale(props, ref) {
     if (placement && placement !== 'auto') return;
     if (!popperCheckRef.current) return;
     const timeout = setTimeout(() => {
+      if (!popperCheckRef.current) return;
       const placement = popperCheckRef.current.dataset.popperPlacement;
       if (placement) setPlacement(placement);
     }, 0);

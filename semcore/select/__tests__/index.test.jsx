@@ -214,7 +214,7 @@ describe('Select Trigger', () => {
     ).toMatchImageSnapshot();
   });
 
-  test.only('a11y', async () => {
+  test('a11y', async () => {
     jest.useFakeTimers();
     const { container } = render(
       <Select visible value={['2']} disablePortal>
@@ -230,6 +230,87 @@ describe('Select Trigger', () => {
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
+  });
+
+  test('focus position preserve with mouse navigation', async () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(
+      <Select value={['2']} disablePortal>
+        <Select.Trigger aria-label="Select trigger" data-testid="trigger" />
+        <Select.Menu data-testid="menu">
+          <Select.Option value="1">Option 1</Select.Option>
+          <Select.Option value="2" data-testid="option-2">
+            Option 2
+          </Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+    fireEvent.click(getByTestId('trigger'));
+    act(() => jest.runAllTimers());
+    act(() => getByTestId('option-2').focus());
+    fireEvent.click(getByTestId('option-2'));
+    act(() => jest.runAllTimers());
+    act(() => fireEvent.animationEnd(getByTestId('menu')));
+    act(() => jest.runAllTimers());
+    expect(getByTestId('trigger')).toHaveFocus();
+
+    jest.useRealTimers();
+  });
+
+  test('focus position preserve with mouse navigation and interaction=focus', async () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(
+      <Select value={['2']} disablePortal interaction="focus">
+        <Select.Trigger aria-label="Select trigger" data-testid="trigger">
+          <input data-testid="input-in-trigger" />
+        </Select.Trigger>
+        <Select.Menu data-testid="menu">
+          <Select.Option value="1">Option 1</Select.Option>
+          <Select.Option value="2" data-testid="option-2">
+            Option 2
+          </Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+    act(() => getByTestId('input-in-trigger').focus());
+    act(() => jest.runAllTimers());
+    act(() => getByTestId('option-2').focus());
+    fireEvent.click(getByTestId('option-2'));
+    act(() => jest.runAllTimers());
+    act(() => fireEvent.animationEnd(getByTestId('menu')));
+    act(() => jest.runAllTimers());
+    expect(document.activeElement.tagName).toBe('DIV');
+
+    jest.useRealTimers();
+  });
+
+  test('focus position preserve with keyboard navigation and interaction=focus', async () => {
+    jest.useFakeTimers();
+    const { getByTestId } = render(
+      <Select value={['2']} disablePortal interaction="focus">
+        <Select.Trigger aria-label="Select trigger" data-testid="trigger">
+          <input data-testid="input-in-trigger" />
+        </Select.Trigger>
+        <Select.Menu data-testid="menu">
+          <Select.Option value="1">Option 1</Select.Option>
+          <Select.Option value="2" data-testid="option-2">
+            Option 2
+          </Select.Option>
+        </Select.Menu>
+      </Select>,
+    );
+    act(() => jest.runAllTimers());
+    fireEvent.keyDown(document.body, { code: 'Tab' });
+    act(() => getByTestId('input-in-trigger').focus());
+    act(() => jest.runAllTimers());
+    fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
+    fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
+    act(() => jest.runAllTimers());
+    act(() => fireEvent.animationEnd(getByTestId('menu')));
+    act(() => jest.runAllTimers());
+    expect(document.activeElement.tagName).toBe('DIV');
+
+    jest.useRealTimers();
   });
 });
 

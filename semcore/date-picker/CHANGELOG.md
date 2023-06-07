@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-06-10
+
+### Fixed
+
+- Fixed browser focus cursor position after picking date with mouse.
+
 ## [3.6.46] - 2023-06-06
 
 ### Changed
@@ -511,7 +517,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Исправлен тип методов `onChange` всех Picker'ов
-
 - Исправлена ошибка при передаче значения `null` в `value` всех Picker'ов
 
 ## [1.2.0] - 2019-10-23

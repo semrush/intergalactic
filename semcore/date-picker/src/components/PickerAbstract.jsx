@@ -182,7 +182,7 @@ class PickerAbstract extends Component {
   }
 
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, onChange, highlighted, onVisibleChange } =
+    const { locale, displayedPeriod, disabled, value, highlighted, onVisibleChange, onChange } =
       this.asProps;
     return {
       locale,
@@ -200,15 +200,19 @@ class PickerAbstract extends Component {
     const { styles, Children, 'aria-label': providedAriaLabel } = this.asProps;
     const { defaultInteraction } = this.state;
 
-    return sstyled(styles)(
-      <Root
-        render={Dropdown}
-        use:aria-label={providedAriaLabel}
-        interaction={defaultInteraction}
-        __excludeProps={['onChange', 'value']}
-      >
-        <Children />
-      </Root>,
+    return (
+      <>
+        {sstyled(styles)(
+          <Root
+            render={Dropdown}
+            use:aria-label={providedAriaLabel}
+            interaction={defaultInteraction}
+            __excludeProps={['onChange', 'value']}
+          >
+            <Children />
+          </Root>,
+        )}
+      </>
     );
   }
 }

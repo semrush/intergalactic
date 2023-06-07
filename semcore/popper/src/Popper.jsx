@@ -8,7 +8,7 @@ import OutsideClick from '@semcore/outside-click';
 import Portal, { PortalProvider } from '@semcore/portal';
 import NeighborLocation from '@semcore/neighbor-location';
 import { setRef } from '@semcore/utils/lib/ref';
-import { useFocusLock } from '@semcore/utils/lib/use/useFocusLock';
+import { useFocusLock, isFocusInside } from '@semcore/utils/lib/use/useFocusLock';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import pick from '@semcore/utils/lib/pick';
 import logger from '@semcore/utils/lib/logger';
@@ -17,7 +17,9 @@ import { Scale, animationContext } from '@semcore/animation';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import { useContextTheme } from '@semcore/utils/lib/ThemeProvider';
 import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
-import { useFocusSource } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import keyboardFocusEnhance, {
+  useFocusSource,
+} from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import createPopper from './createPopper';
 
@@ -91,7 +93,7 @@ class Popper extends Component {
         ['onMouseEnter', 'onKeyboardFocus'],
         ['onMouseLeave', 'onBlur'],
       ],
-      popper: [['onMouseEnter'], ['onMouseLeave']],
+      popper: [['onMouseEnter', 'onFocusCapture'], ['onMouseLeave']],
     },
     focus: {
       trigger: [['onFocus'], ['onBlur']],
@@ -321,8 +323,6 @@ class Popper extends Component {
     if (visible && e.key === 'Escape') {
       e.stopPropagation();
 
-      this.triggerRef.current?.focus();
-
       this.bindHandlerChangeVisibleWithTimer(false)(e);
     }
   };
@@ -370,8 +370,7 @@ class Popper extends Component {
   };
 
   getTriggerProps() {
-    const { visible, interaction } = this.asProps;
-    const { focusableTriggerReturnFocusToRef } = this;
+    const { visible, interaction, disableEnforceFocus } = this.asProps;
     // @ts-ignore
     const { onKeyDown, ...interactionProps } = this.handlersFromInteraction(
       interaction,
@@ -384,12 +383,13 @@ class Popper extends Component {
       interaction,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
-      focusableTriggerReturnFocusToRef,
+      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
+      disableEnforceFocus,
+      popperRef: this.popperRef,
     };
   }
 
   getPopperProps() {
-    const { focusableTriggerReturnFocusToRef } = this;
     const {
       visible,
       disablePortal,
@@ -398,6 +398,7 @@ class Popper extends Component {
       placement,
       duration,
       animationsDisabled,
+      disableEnforceFocus,
       ...other
     } = this.asProps;
     // @ts-ignore
@@ -428,7 +429,8 @@ class Popper extends Component {
       duration,
       animationsDisabled,
       popper: this.popper,
-      focusableTriggerReturnFocusToRef,
+      focusableTriggerReturnFocusToRef: this.focusableTriggerReturnFocusToRef,
+      disableEnforceFocus,
     };
   }
 
@@ -472,37 +474,99 @@ const getElementNestingIndexes = (element, chain = new Set([element, document.bo
   return [...getElementNestingIndexes(element.parentElement, chain), index];
 };
 
-function Trigger(props) {
-  const STrigger = Root;
-  const SFocusHint = 'span';
-  const { Children, interaction, focusableTriggerReturnFocusToRef, focusHint, onKeyboardFocus } =
-    props;
-
+const useReturnFocusEl = (interaction, onKeyboardFocus, disable) => {
   const [returnFocusEl, setReturnFocusEl] = React.useState(null);
   const focusSourceRef = useFocusSource();
   const handleFocus = React.useCallback(
     (event) => {
       if (focusSourceRef.current !== 'keyboard') return;
       onKeyboardFocus?.();
+      if (disable) return;
       if (interaction !== 'focus') return;
-      const targetNesting = getElementNestingIndexes(event.target);
-      const sourceNesting = getElementNestingIndexes(event.relatedTarget ?? document.body);
-      const focusMovesBackwards = sourceNesting.every(
-        (nestingIndex, arrIndex) => nestingIndex >= targetNesting[arrIndex],
-      );
-      if (focusMovesBackwards) setReturnFocusEl('before');
-      else setReturnFocusEl('after');
+      if (!event.relatedTarget) {
+        setReturnFocusEl('after');
+      }
+      const focusToNesting = getElementNestingIndexes(event.target);
+      const focusFromNesting = getElementNestingIndexes(event.relatedTarget);
+      const nestingLength = Math.max(focusToNesting.length, focusFromNesting.length);
+      for (let i = 0; i < nestingLength; i++) {
+        if (focusFromNesting[i] === undefined) {
+          setReturnFocusEl('after'); // <div tabIndex="0" id="focus1" /> <input id="focus2" /> </div>
+          return;
+        }
+        if (focusFromNesting[i] > focusToNesting[i]) {
+          setReturnFocusEl('before'); // <input id="focus2" /> <input id="focus1" />
+          return;
+        }
+      }
+
+      setReturnFocusEl('after'); // <input id="focus1" /> <input id="focus2" />
     },
-    [interaction, onKeyboardFocus],
+    [interaction, onKeyboardFocus, disable],
   );
   const handleFocusReturnElBlur = React.useCallback(() => {
     setTimeout(() => setReturnFocusEl(null), 0);
   }, []);
 
+  return { returnFocusEl, handleFocus, handleFocusReturnElBlur };
+};
+const useFocusCatch = (active, popperRef) => {
+  const activeRef = React.useRef(active);
+  activeRef.current = active;
+
+  const [focusCatch, setFocusCatch] = React.useState(false);
+  const handleFocusCatchBlur = React.useCallback(() => setFocusCatch(false), []);
+  const handleFocusCatchRef = React.useCallback((node) => node?.focus(), []);
+
+  React.useEffect(() => {
+    if (!active) return;
+    if (!popperRef.current) return;
+    return () => {
+      setTimeout(() => {
+        if (activeRef.current) return;
+        if (!isFocusInside(popperRef.current) && document.activeElement !== document.body) return;
+        setFocusCatch(true);
+      }, 1);
+    };
+  }, [active]);
+
+  return { focusCatch, handleFocusCatchBlur, handleFocusCatchRef };
+};
+
+const focusCatcherStyles = { position: 'absolute' };
+function Trigger(props) {
+  const STrigger = Root;
+  const SFocusHint = 'span';
+  const {
+    Children,
+    interaction,
+    focusableTriggerReturnFocusToRef,
+    focusHint,
+    onKeyboardFocus,
+    disableEnforceFocus,
+    active,
+    popperRef,
+  } = props;
+
+  const { returnFocusEl, handleFocusReturnElBlur, handleFocus } = useReturnFocusEl(
+    interaction,
+    onKeyboardFocus,
+    disableEnforceFocus,
+  );
+  const { focusCatch, handleFocusCatchBlur, handleFocusCatchRef } = useFocusCatch(
+    active,
+    popperRef,
+  );
+
   return (
     <>
       {returnFocusEl === 'before' && (
-        <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
+        <div
+          tabIndex="0"
+          ref={focusableTriggerReturnFocusToRef}
+          onBlur={handleFocusReturnElBlur}
+          style={focusCatcherStyles}
+        />
       )}
       <STrigger render={Box} inline role="button" aria-haspopup={true} onFocus={handleFocus}>
         <Children />
@@ -513,7 +577,20 @@ function Trigger(props) {
         </SFocusHint>
       )}
       {returnFocusEl === 'after' && (
-        <div tabIndex="0" ref={focusableTriggerReturnFocusToRef} onBlur={handleFocusReturnElBlur} />
+        <div
+          tabIndex="0"
+          ref={focusableTriggerReturnFocusToRef}
+          onBlur={handleFocusReturnElBlur}
+          style={focusCatcherStyles}
+        />
+      )}
+      {focusCatch && (
+        <div
+          tabIndex="0"
+          ref={handleFocusCatchRef}
+          onBlur={handleFocusCatchBlur}
+          style={focusCatcherStyles}
+        />
       )}
     </>
   );
@@ -540,7 +617,7 @@ function PopperPopper(props) {
   const ref = useRef(null);
 
   // https://github.com/facebook/react/issues/11387
-  const handlerStopPropagation = useCallback((e) => e.stopPropagation(), []);
+  const stopPropagation = useCallback((event) => event.stopPropagation(), []);
 
   useFocusLock(
     ref,
@@ -584,32 +661,32 @@ function PopperPopper(props) {
           visible={visible}
           duration={[duration, duration / 2]}
           ref={ref}
-          onClick={handlerStopPropagation}
-          onContextMenu={handlerStopPropagation}
-          onDoubleClick={handlerStopPropagation}
-          onDrag={handlerStopPropagation}
-          onDragEnd={handlerStopPropagation}
-          onDragEnter={handlerStopPropagation}
-          onDragExit={handlerStopPropagation}
-          onDragLeave={handlerStopPropagation}
-          onDragOver={handlerStopPropagation}
-          onDragStart={handlerStopPropagation}
-          onDrop={handlerStopPropagation}
-          onMouseDown={handlerStopPropagation}
-          onMouseMove={handlerStopPropagation}
-          onMouseOver={handlerStopPropagation}
-          onMouseOut={handlerStopPropagation}
-          onMouseUp={handlerStopPropagation}
-          onKeyDown={handlerStopPropagation}
-          onKeyPress={handlerStopPropagation}
-          onKeyUp={handlerStopPropagation}
-          onFocus={handlerStopPropagation}
-          onBlur={handlerStopPropagation}
-          onChange={handlerStopPropagation}
-          onInput={handlerStopPropagation}
-          onInvalid={handlerStopPropagation}
-          onReset={handlerStopPropagation}
-          onSubmit={handlerStopPropagation}
+          onClick={stopPropagation}
+          onContextMenu={stopPropagation}
+          onDoubleClick={stopPropagation}
+          onDrag={stopPropagation}
+          onDragEnd={stopPropagation}
+          onDragEnter={stopPropagation}
+          onDragExit={stopPropagation}
+          onDragLeave={stopPropagation}
+          onDragOver={stopPropagation}
+          onDragStart={stopPropagation}
+          onDrop={stopPropagation}
+          onMouseDown={stopPropagation}
+          onMouseMove={stopPropagation}
+          onMouseOver={stopPropagation}
+          onMouseOut={stopPropagation}
+          onMouseUp={stopPropagation}
+          onKeyDown={stopPropagation}
+          onKeyPress={stopPropagation}
+          onKeyUp={stopPropagation}
+          onFocus={stopPropagation}
+          onBlur={stopPropagation}
+          onChange={stopPropagation}
+          onInput={stopPropagation}
+          onInvalid={stopPropagation}
+          onReset={stopPropagation}
+          onSubmit={stopPropagation}
         >
           <PortalProvider value={ref}>
             <Children />
@@ -619,6 +696,8 @@ function PopperPopper(props) {
     </Portal>,
   );
 }
+
+PopperPopper.enhance = [keyboardFocusEnhance()];
 
 export default createComponent(Popper, {
   Trigger,

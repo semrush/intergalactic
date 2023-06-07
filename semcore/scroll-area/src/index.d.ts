@@ -16,6 +16,8 @@ export interface IScrollAreaProps extends IBoxProps {
   onResize?: ResizeObserverCallback;
   /** Called every time user scrolls area  */
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
+  /** Tab index that is being bypassed to the scroll container. */
+  tabIndex?: number | null;
 }
 
 export interface IScrollAreaContext extends IScrollAreaProps {

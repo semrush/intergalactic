@@ -65,9 +65,9 @@ class ItemPicker extends Component {
     }
   }
 
-  handleChange = (value, e) => {
+  handleChange = (value, event) => {
     /* hide props for bubbling events */
-    e.stopPropagation();
+    event.stopPropagation();
     const numberValue = intOrDefault(Number(value), NaN);
 
     if (!Number.isNaN(numberValue)) {
@@ -75,13 +75,13 @@ class ItemPicker extends Component {
     }
   };
 
-  handleBlur = (e) => this.submitChanges(e);
+  handleBlur = (event) => this.submitChanges(event);
 
   /* rewrite method */
   handleKeyDown = () => {};
 
-  handleSelect = (value, e) => {
-    this.dispatchOnChange(value, e);
+  handleSelect = (value, event) => {
+    this.dispatchOnChange(value, event);
   };
 
   handleVisibleChange = (visible) => this.setState({ visible });
@@ -159,33 +159,35 @@ class Hours extends ItemPicker {
     }
   }
 
-  nextInput() {
+  focusNext() {
     if (this.asProps.minutesInputRef.current) {
       this.setState({ visible: false });
       this.asProps.minutesInputRef.current.focus();
     }
   }
 
-  handleKeyDown = (e) => {
-    const { currentTarget } = e;
-    if (e.keyCode === 13) this.submitChanges(e);
-    if (e.keyCode === 39) {
+  handleKeyDown = (event) => {
+    const { currentTarget } = event;
+    if (event.code === 'Enter') {
+      this.submitChanges(event);
+    }
+    if (event.code === 'ArrowRight') {
       if (
         currentTarget.selectionStart >= currentTarget.value.length &&
         currentTarget.selectionStart === currentTarget.selectionEnd
       ) {
-        e.preventDefault();
-        this.nextInput();
+        event.preventDefault();
+        this.focusNext();
       }
     }
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     const { dirtyValue } = this.state;
     if (prevState.dirtyValue === undefined || dirtyValue === undefined) return;
 
     if (prevState.dirtyValue.length === 1 && dirtyValue.length === 2) {
-      this.nextInput();
+      this.focusNext();
     }
   }
 }
@@ -201,29 +203,38 @@ class Minutes extends ItemPicker {
     return [0, 59];
   }
 
-  prevFocus() {
+  focusPrev() {
     if (this.asProps.hoursInputRef.current) {
       this.setState({ visible: false });
       this.asProps.hoursInputRef.current.focus();
     }
   }
 
-  handleKeyDown = (e) => {
-    const { currentTarget } = e;
-    if (e.keyCode === 13) this.submitChanges(e);
-    if (e.keyCode === 37) {
+  handleKeyDown = (event) => {
+    const { currentTarget } = event;
+    if (event.code === 'ArrowLeft') {
       if (
         currentTarget.selectionStart <= 0 &&
         currentTarget.selectionStart === currentTarget.selectionEnd
       ) {
-        e.preventDefault();
-        this.prevFocus();
+        event.preventDefault();
+        this.focusPrev();
       }
     }
-    if (e.keyCode === 8) {
+    if (event.code === 'Backspace') {
       if (currentTarget.value.length === 0) {
-        e.preventDefault();
-        this.prevFocus();
+        event.preventDefault();
+        this.focusPrev();
+      }
+    }
+    if (event.code === 'Enter') this.submitChanges(event);
+    if (event.code === 'ArrowRight') {
+      if (
+        currentTarget.selectionStart >= currentTarget.value.length &&
+        currentTarget.selectionStart === currentTarget.selectionEnd
+      ) {
+        event.preventDefault();
+        this.focusNext();
       }
     }
   };

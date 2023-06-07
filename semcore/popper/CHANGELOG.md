@@ -2,11 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+<<<<<<<
+
+## [4.18.0] - 2023-06-10
+
+### Fixed
+
+- Fixed corner case of focus return with `interaction=focus`.
+- Added `disableEnforceFocus` api prop.
+
+=======
+
 ## [4.18.0] - 2023-06-06
 
 ### Changed
 
 - Updating `strategy`, `placement`, `offset`, `preventOverflow`, `arrow`, `flip`, `computeStyles`, `eventListeners` or `onFirstUpdate` props now triggers popper positioning update.
+
+> > > > > > >
 
 ## [4.17.17] - 2023-06-02
 
@@ -57,6 +70,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/neighbor-location` [3.1.28 ~> 3.1.29], `@semcore/outside-click` [2.5.27 ~> 2.5.28], `@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [4.17.9] - 2023-05-11
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/neighbor-location` [3.1.27 ~> 3.1.28], `@semcore/outside-click` [2.5.26 ~> 2.5.27], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+
+## [4.17.8] - 2023-05-04
 
 ### Changed
 
@@ -394,7 +413,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Update @semcore/core version to ^1.8
-
 - Update dependency package `@popperjs/core` version from `2.4.0` to `2.5.3`
 
 ## [4.5.0] - 2020-09-11

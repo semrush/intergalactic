@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.8] - 2023-06-10
+
+### Added
+
+- Allowed to set scroll container tab index by setting it on scroll area root element.
+
 ## [4.3.7] - 2023-05-31
 
 ### Changed
