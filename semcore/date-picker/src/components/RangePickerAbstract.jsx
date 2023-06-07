@@ -115,7 +115,7 @@ class RangePickerAbstract extends Component {
     };
 
     if (e.keyCode === 32 && highlighted.length) {
-      this.handlerChange(highlighted[1] || highlighted[0]);
+      this.handleChange(highlighted[1] || highlighted[0]);
       e.preventDefault();
     }
     if (day) {
@@ -141,13 +141,13 @@ class RangePickerAbstract extends Component {
     }
   };
 
-  handlerApply = (value) => {
+  handleApply = (value) => {
     const [startDate, endDate = startDate] = value;
-    this.handlerChange([]);
+    this.handleChange([]);
     this.handlers.value([startDate, endDate]);
   };
 
-  handlerChange = (date) => {
+  handleChange = (date) => {
     let { dirtyValue } = this.state;
     let highlighted = [];
     if (Array.isArray(date)) {
@@ -273,7 +273,7 @@ class RangePickerAbstract extends Component {
     };
   }
 
-  getCalendarProps(props, index) {
+  getCalendarProps(_props, index) {
     const {
       locale,
       displayedPeriod,
@@ -296,7 +296,7 @@ class RangePickerAbstract extends Component {
       onHighlightedChange,
       onVisibleChange,
       value: dirtyValue.length ? dirtyValue : value,
-      onChange: this.handlerChange,
+      onChange: this.handleChange,
     };
   }
 
@@ -311,7 +311,7 @@ class RangePickerAbstract extends Component {
     return {
       periods,
       value: dirtyValue.length ? dirtyValue : value,
-      onChange: this.handlerApply,
+      onChange: this.handleApply,
       onHighlightedChange,
       onDisplayedPeriodChange,
     };
@@ -322,7 +322,7 @@ class RangePickerAbstract extends Component {
     const { dirtyValue } = this.state;
     return {
       getI18nText,
-      onClick: () => this.handlerApply(dirtyValue.length ? dirtyValue : value),
+      onClick: () => this.handleApply(dirtyValue.length ? dirtyValue : value),
     };
   }
 
@@ -330,7 +330,7 @@ class RangePickerAbstract extends Component {
     const { getI18nText } = this.asProps;
     return {
       getI18nText,
-      onClick: () => this.handlerApply([]),
+      onClick: () => this.handleApply([]),
     };
   }
 
@@ -338,15 +338,19 @@ class RangePickerAbstract extends Component {
     const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
     const { defaultInteraction } = this.state;
 
-    return sstyled(styles)(
-      <Root
-        render={Dropdown}
-        use:aria-label={providedAriaLabel}
-        interaction={defaultInteraction}
-        __excludeProps={['onChange', 'value']}
-      >
-        <Children />
-      </Root>,
+    return (
+      <>
+        {sstyled(styles)(
+          <Root
+            render={Dropdown}
+            use:aria-label={providedAriaLabel}
+            interaction={defaultInteraction}
+            __excludeProps={['onChange', 'value']}
+          >
+            <Children />
+          </Root>,
+        )}
+      </>
     );
   }
 }

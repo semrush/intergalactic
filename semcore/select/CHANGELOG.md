@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-06-10
+
+### Fixed
+
+- Fixed browser focus cursor position after selecting value in non multiple choice `<Select />`.
+
+### Added
+
+- Added `aria-owns` attribute for trigger that refers to the corresponding popper.
+
 ## [3.6.18] - 2023-06-06
 
 ### Changed
@@ -588,7 +598,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Обновлены `utils`
-
 - Улучшена функция оборачивания в `Text`
 
 ## [1.6.2] - 2019-08-02
@@ -596,7 +605,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Обновлены зависимости
-
 - Добавлен `Item.Addon` от `DropdownMenu.Item.Addon`
 
 ## [1.6.1] - 2019-08-02

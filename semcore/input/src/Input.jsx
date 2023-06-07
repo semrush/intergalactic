@@ -39,7 +39,21 @@ class Input extends Component {
   }
 
   getValueProps() {
-    const { size, disabled, state } = this.asProps;
+    const {
+      size,
+      disabled,
+      state,
+      role,
+      placeholder,
+      // these props might be passed from the <Select /> component
+      'aria-haspopup': ariaHaspopup,
+      'aria-controls': ariaControls,
+      'aria-expanded': ariaExpanded,
+      'aria-autocomplete': ariaAutocomplete,
+      'aria-owns': ariaOwns,
+      'aria-activedescendant': ariaActivedescendant,
+    } = this.asProps;
+
     return {
       ref: this.inputRef,
       size,
@@ -47,6 +61,14 @@ class Input extends Component {
       state,
       onFocus: this.bindHandlerValueFocused(true),
       onBlur: this.bindHandlerValueFocused(false),
+      role,
+      placeholder,
+      'aria-haspopup': ariaHaspopup,
+      'aria-controls': ariaControls,
+      'aria-expanded': ariaExpanded,
+      'aria-autocomplete': ariaAutocomplete,
+      'aria-owns': ariaOwns,
+      'aria-activedescendant': ariaActivedescendant,
     };
   }
 
@@ -59,7 +81,21 @@ class Input extends Component {
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
         {(neighborLocation) =>
           sstyled(styles)(
-            <SInput render={Box} focused={focused} neighborLocation={neighborLocation}>
+            <SInput
+              render={Box}
+              focused={focused}
+              neighborLocation={neighborLocation}
+              __excludeProps={[
+                'role',
+                'aria-haspopup',
+                'aria-controls',
+                'aria-expanded',
+                'placeholder',
+                'aria-autocomplete',
+                'aria-owns',
+                'aria-activedescendant',
+              ]}
+            >
               <NeighborLocation controlsLength={controlsLength}>
                 <Children />
               </NeighborLocation>

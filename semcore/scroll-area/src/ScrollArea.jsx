@@ -207,7 +207,7 @@ class ScrollAreaRoot extends Component {
     const SScrollArea = Root;
     const SShadowVertical = BoxWithoutPosition;
     const SShadowHorizontal = BoxWithoutPosition;
-    const { Children, styles, orientation } = this.asProps;
+    const { Children, styles, orientation, tabIndex } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
     const advanceMode = isAdvanceMode(Children, [
@@ -223,7 +223,7 @@ class ScrollAreaRoot extends Component {
           <Children />
         ) : (
           <>
-            <ScrollArea.Container>
+            <ScrollArea.Container tabIndex={tabIndex}>
               <Children />
             </ScrollArea.Container>
             {(orientation === undefined || orientation === 'horizontal') && (

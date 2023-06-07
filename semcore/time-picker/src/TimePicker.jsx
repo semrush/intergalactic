@@ -8,6 +8,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 
 import style from './style/time-picker.shadow.css';
+import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 const MAP_MERIDIEM = {
   AM: 'PM',
@@ -63,7 +64,7 @@ export function formatHoursTo24(hours /* hours by 12 */, meridiem) {
 class TimePickerRoot extends Component {
   static displayName = 'TimePicker';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), keyboardFocusEnhance()];
   static defaultProps = ({ is12Hour }) => ({
     defaultValue: '',
     size: 'm',
@@ -179,8 +180,12 @@ class TimePickerRoot extends Component {
     };
   };
 
-  getHoursProps = this._getHoursAndMinutesProps;
-  getMinutesProps = this._getHoursAndMinutesProps;
+  getHoursProps = () => {
+    return { ...this._getHoursAndMinutesProps(), ref: this.hoursInputRef };
+  };
+  getMinutesProps = () => {
+    return { ...this._getHoursAndMinutesProps(), ref: this.minutesInputRef };
+  };
 
   getSeparatorProps() {
     return {
@@ -212,12 +217,7 @@ class TimePickerRoot extends Component {
       : getI18nText('titleEmpty');
 
     return sstyled(styles)(
-      <STimePicker
-        render={Input}
-        aria-label={label}
-        aria-valuenow={value || undefined}
-        tabIndex={0}
-      >
+      <STimePicker render={Input} aria-label={label} aria-valuenow={value || undefined}>
         <Children />
       </STimePicker>,
     );

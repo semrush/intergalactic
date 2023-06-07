@@ -116,7 +116,8 @@ export const useFocusLock = (
     if (disabled) return;
     if (!canUseDOM()) return;
     if (!trapRef.current) return;
-    if (getFocusableIn(trapRef.current).length === 0) return;
+    const focusableChildren = Array.from(trapRef.current.children).map(getFocusableIn).flat();
+    if (focusableChildren.length === 0) return;
 
     document.body.addEventListener('focusin', handleFocusIn);
     document.body.addEventListener('mousedown', handleMouseEvent);
@@ -139,3 +140,5 @@ export const useFocusLock = (
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
 };
+
+export const isFocusInside = focusInside;

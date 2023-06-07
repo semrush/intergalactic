@@ -1,7 +1,7 @@
 import { ListItem, Token } from 'marked-ast-markdown';
 import { Changelog, ChangelogChange, ChangelogChangeLabel } from '../types';
 
-export const serializeComponentChangelog = (changelogs: Changelog[]): Token[] => {
+export const serializeComponentChangelog = (changelogs: (Changelog | string)[]): Token[] => {
   const heading: Token[] = [
     { type: 'heading', text: ['Changelog'], level: 1, raw: 'Changelog' },
     {
@@ -19,18 +19,15 @@ export const serializeComponentChangelog = (changelogs: Changelog[]): Token[] =>
     },
   ];
   const body: Token[] = changelogs
-    .filter((changelog, index) => {
-      const prevChangelog = changelogs[index - 1];
-      if (!prevChangelog || prevChangelog.changes.length === 0 || changelog.changes.length === 0)
-        return true;
-
-      return true;
-      // const prevChangelogIsAutomatic = prevChangelog.changes.every((change) => change.isAutomatic);
-      // const changelogIsAutomatic = changelog.changes.every((change) => change.isAutomatic);
-
-      // return !(prevChangelogIsAutomatic && changelogIsAutomatic);
-    })
     .map((changelog): Token[] => {
+      if (typeof changelog === 'string') {
+        return [
+          {
+            type: 'paragraph',
+            text: [changelog],
+          },
+        ];
+      }
       const versionHeading: Token = {
         type: 'heading',
         level: 2,

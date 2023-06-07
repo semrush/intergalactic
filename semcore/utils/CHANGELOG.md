@@ -14,6 +14,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - All focusable components get `autoFocus` prop via `keyboardFocusEnhance`.
 
+## [3.52.1] - 2023-06-10
+
+### Changed
+
+- Switched `useFocusLock` from listening to `focusin` body event to `focusout` to catch focus.
+
 ## [3.52.0] - 2023-05-25
 
 ### Added
@@ -670,7 +676,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Создается и используется один и тот же контекст для WithCSS и useCss
-
 - Заменен метод `setRef` в `assignProps`
 
 ## [3.2.0] - 2019-10-10
@@ -697,6 +702,28 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Усправлены ES импорты внутри `babel/runtime`
 
+<<<<<<<
+
+## [3.0.0] - 2019-09-05
+
+### BREAK
+
+- Все утилиты переписаны на typescript
+- Удалены
+- validAttr.js
+- withAnalytics.js
+- index.js
+- createConnector.js
+- getSizeText.js
+- setStateIfNeeded.js
+  - Переменные с размером текста в `style/var.css` приведены в соответствие с типографикой
+
+### Fixed
+
+- Исправлено отображение фокуса
+
+=======
+
 ## [3.0.0] - 2019-09-05
 
 ### BREAK
@@ -716,6 +743,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Исправлено отображение фокуса
+
+> > > > > > >
 
 ## [2.6.0] - 2019-08-23
 

@@ -8,3 +8,4 @@ export { serializeComponentChangelog } from './src/serializers/serializeComponen
 export { serializeReleaseChangelog } from './src/serializers/serializeReleaseChangelog';
 export { toMarkdown } from 'marked-ast-markdown';
 export type { Changelog, ChangelogChange, ChangelogChangeLabel } from './src/types';
+export { mergeChangelogs } from './src/mergeChangelogs';
