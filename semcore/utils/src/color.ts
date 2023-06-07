@@ -41,7 +41,7 @@ function shadeRGBColor(color, percent) {
 }
 
 export function shade(color?: string, percent: number = 1) {
-  if (!color) return '';
+  if (!color) return;
   // TODO error for color name, example 'aqua'
   if (color.length > 7) return shadeRGBColor(color, percent);
   return shadeHexColor(color, percent);
@@ -85,7 +85,7 @@ function blendRGBColors(colorOne, colorTwo, percent) {
 }
 
 export function blend(colorOne?: string, colorTwo?: string, percent: number = 1) {
-  if (!colorOne || !colorTwo) return '';
+  if (!colorOne || !colorTwo) return;
 
   if (colorOne.length > 7) {
     if (colorTwo.length > 7) {
@@ -116,19 +116,19 @@ function hex2rgb(hex) {
 }
 
 export function opacity(color?: string, percent: number = 1) {
-  if (!color) return '';
+  if (!color) return;
   if (color.includes('#') && color.match(/^#?[a-fA-F\d]{6}$/)) {
     color = `rgba(${hex2rgb(color).join(', ')}, ${percent})`;
   } else if (color.includes('rgb')) {
     color = `rgba(${colorRGB(color).join(', ')}, ${percent})`;
   } else {
-    color = '';
+    return;
   }
   return color;
 }
 
 export function brightness(color) {
-  if (!color) return '';
+  if (!color) return;
   if (color.length <= 7) {
     color = hex2rgb(color);
   } else {
@@ -140,7 +140,7 @@ export function brightness(color) {
 }
 
 export default function resolveColor(color?: string): string {
-  if (!color) return '';
+  if (!color) return;
   if (color in (COLORS as Record<string, string>)) {
     return COLORS[color];
   }
@@ -149,7 +149,7 @@ export default function resolveColor(color?: string): string {
 
 const lightMemo: { [input: string]: string } = {};
 export const light = (color?: string, factor: number = 1) => {
-  if (!color) return '';
+  if (!color) return;
   const inputKey = `${color}_${factor}`;
   if (lightMemo[inputKey]) return lightMemo[inputKey];
 
