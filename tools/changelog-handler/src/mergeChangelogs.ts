@@ -12,6 +12,7 @@ export const mergeChangelogs = async (
   gitOursRef: string,
   gitBaseRef: string,
 ) => {
+  let conflictsCount = 0;
   const [aText, bText] = await Promise.all([
     fs.readFile(aPath, 'utf-8'),
     fs.readFile(bPath, 'utf-8'),
@@ -42,6 +43,7 @@ export const mergeChangelogs = async (
         output.push('=======');
         output.push(aChangelog);
         output.push(`<<<<<<< ${gitOursRef}`);
+        conflictsCount++;
       }
       aIndex--;
       bIndex--;
@@ -66,5 +68,5 @@ export const mergeChangelogs = async (
 
   output.reverse();
 
-  return toMarkdown(serializeComponentChangelog(output));
+  return { conflictsCount, result: toMarkdown(serializeComponentChangelog(output)) };
 };
