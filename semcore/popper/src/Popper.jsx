@@ -140,9 +140,7 @@ class Popper extends Component {
     }
   };
 
-  createPopper() {
-    if (!this.triggerRef.current || !this.popperRef.current) return;
-
+  getPopperOptions = () => {
     let {
       placement,
       modifiers,
@@ -226,7 +224,8 @@ class Popper extends Component {
     });
 
     const modifiersMerge = [...modifiersFallback, ...modifiersOptions].concat(modifiers);
-    this.popper.current = createPopper(this.triggerRef.current, this.popperRef.current, {
+
+    return {
       placement,
       strategy,
       onFirstUpdate: callAllEventHandlers(onFirstUpdate, () => {
@@ -234,7 +233,37 @@ class Popper extends Component {
         this.observer.observe(this.popperRef.current);
       }),
       modifiers: modifiersMerge,
-    });
+    };
+  };
+
+  createPopper() {
+    if (!this.triggerRef.current || !this.popperRef.current) return;
+
+    this.popper.current = createPopper(
+      this.triggerRef.current,
+      this.popperRef.current,
+      this.getPopperOptions(),
+    );
+  }
+
+  componentDidUpdate(prevProps) {
+    const popperProps = [
+      'strategy',
+      'placement',
+      'offset',
+      'preventOverflow',
+      'arrow',
+      'flip',
+      'computeStyles',
+      'eventListeners',
+      'onFirstUpdate',
+    ];
+    if (
+      this.popper.current &&
+      popperProps.some((propName) => prevProps[propName] !== this.asProps[propName])
+    ) {
+      this.popper.current.setOptions(this.getPopperOptions());
+    }
   }
 
   destroyPopper() {
