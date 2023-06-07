@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
@@ -25,7 +25,7 @@ describe('DropdownMenu', () => {
   });
 
   test('Should correct press Enter in textarea', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction="focus">
         <DropdownMenu.Trigger tag="textarea" data-testid="textarea" />
@@ -175,7 +175,7 @@ describe('DropdownMenu', () => {
   });
 
   test('a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Trigger aria-label="dropdown menu trigger">trigger</DropdownMenu.Trigger>
@@ -184,8 +184,8 @@ describe('DropdownMenu', () => {
         </DropdownMenu.Menu>
       </DropdownMenu>,
     );
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => vi.runAllTimers());
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

@@ -156,7 +156,7 @@ describe('Popper.Popper', () => {
 });
 
 describe('focus control', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('auto focus', () => {
     const { getByTestId } = render(
@@ -177,7 +177,7 @@ describe('focus control', () => {
         <input />
         <Popper visible>
           <Popper.Popper data-testid="popper">
-            <input />
+            <div tabIndex={0} />
           </Popper.Popper>
         </Popper>
         <input />
@@ -204,7 +204,7 @@ describe('focus control', () => {
 
   test('focus return', () => {
     let hidePopper = undefined;
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const Component = () => {
       const [visible, setVisible] = React.useState(true);
       hidePopper = () => setVisible(false);
@@ -212,10 +212,12 @@ describe('focus control', () => {
       return (
         <Popper visible={visible} onVisibleChange={() => {}}>
           <Popper.Trigger data-testid="trigger">
-            <input data-testid="input-in-trigger" />
+            <input data-testid="focusable-in-trigger" />
           </Popper.Trigger>
           <Popper.Popper autoFocus data-testid="popper">
-            <button data-testid="button-in-popper">button</button>
+            <div tabIndex={0} data-testid="focusable-in-popper">
+              button
+            </div>
           </Popper.Popper>
         </Popper>
       );
@@ -228,14 +230,14 @@ describe('focus control', () => {
 
     expect(getByTestId('popper')).toHaveFocus();
 
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => hidePopper());
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     fireEvent.animationEnd(getByTestId('popper'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
-    expect(getByTestId('input-in-trigger')).toHaveFocus();
-    jest.useRealTimers();
+    expect(getByTestId('focusable-in-trigger')).toHaveFocus();
+    vi.useRealTimers();
   });
 
   test('focus follow', () => {
@@ -244,10 +246,10 @@ describe('focus control', () => {
         <input data-testid="input-before-popper" />
         <Popper interaction="focus">
           <Popper.Trigger data-testid="trigger">
-            <input data-testid="input-in-trigger" />
+            <div tabIndex={0} data-testid="focusable-in-trigger" />
           </Popper.Trigger>
           <Popper.Popper autoFocus data-testid="popper">
-            <button data-testid="button-in-popper">button</button>
+            <div tabIndex={0}>button</div>
           </Popper.Popper>
         </Popper>
         <input data-testid="input-after-popper" />
@@ -256,19 +258,19 @@ describe('focus control', () => {
 
     act(() => getByTestId('input-before-popper').focus());
     expect(getByTestId('input-before-popper')).toHaveFocus();
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     fireEvent.keyDown(getByTestId('input-before-popper'), { code: 'Tab' });
-    act(() => getByTestId('input-in-trigger').focus());
+    act(() => getByTestId('focusable-in-trigger').focus());
     fireEvent.focusIn(getByTestId('input-before-popper'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(getByTestId('popper')).toHaveFocus();
 
     fireEvent.keyDown(getByTestId('popper'), { key: 'Escape' });
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('popper')));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(document.activeElement.nodeName).toBe('DIV');
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });

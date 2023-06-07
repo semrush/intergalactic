@@ -4,7 +4,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -220,7 +220,7 @@ describe('Select Trigger', () => {
   });
 
   test('a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { container } = render(
       <Select visible value={['2']} disablePortal>
         <Select.Trigger aria-label="Select trigger" />
@@ -230,15 +230,15 @@ describe('Select Trigger', () => {
         </Select.Menu>
       </Select>,
     );
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => vi.runAllTimers());
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
 
   test('focus position preserve with mouse navigation', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal>
         <Select.Trigger aria-label="Select trigger" data-testid="trigger" />
@@ -251,19 +251,19 @@ describe('Select Trigger', () => {
       </Select>,
     );
     fireEvent.click(getByTestId('trigger'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => getByTestId('option-2').focus());
     fireEvent.click(getByTestId('option-2'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(getByTestId('trigger')).toHaveFocus();
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('focus position preserve with mouse navigation and interaction=focus', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal interaction="focus">
         <Select.Trigger aria-label="Select trigger" data-testid="trigger">
@@ -278,19 +278,19 @@ describe('Select Trigger', () => {
       </Select>,
     );
     act(() => getByTestId('input-in-trigger').focus());
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => getByTestId('option-2').focus());
     fireEvent.click(getByTestId('option-2'));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(document.activeElement.tagName).toBe('DIV');
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('focus position preserve with keyboard navigation and interaction=focus', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal interaction="focus">
         <Select.Trigger aria-label="Select trigger" data-testid="trigger">
@@ -304,18 +304,18 @@ describe('Select Trigger', () => {
         </Select.Menu>
       </Select>,
     );
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     fireEvent.keyDown(document.body, { code: 'Tab' });
     act(() => getByTestId('input-in-trigger').focus());
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'ArrowDown' });
     fireEvent.keyDown(getByTestId('input-in-trigger'), { key: 'Enter' });
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
     expect(document.activeElement.tagName).toBe('DIV');
 
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });
 

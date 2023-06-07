@@ -8,8 +8,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js",
-    "test": "jest"
+    "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
     "@semcore/base-trigger": "^3.0.0",

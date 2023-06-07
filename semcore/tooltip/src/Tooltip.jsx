@@ -106,11 +106,11 @@ function TooltipPopper(props) {
       <STooltip
         render={Popper.Popper}
         role="tooltip"
-        use-theme={resolveColor(theme)}
+        use:theme={resolveColor(theme)}
         aria-live={theme === 'warning' ? 'assertive' : 'polite'}
       >
         {(children = <Children />)}
-        <SArrow data-popper-arrow use-theme={resolveColor(theme)} />
+        <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
       </STooltip>
       {interaction === 'hover' && <ScreenReaderOnly>{children}</ScreenReaderOnly>}
     </>,

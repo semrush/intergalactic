@@ -68,7 +68,7 @@ class Overlay extends Component {
 
     return sstyled(styles)(
       <FadeInOut visible={loading} duration={duration}>
-        <SOverlay render={Box} use-theme={useTheme} use:background={resolveColor(background)} />
+        <SOverlay render={Box} use:theme={useTheme} use:background={resolveColor(background)} />
       </FadeInOut>,
     );
   }

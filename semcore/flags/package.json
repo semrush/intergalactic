@@ -10,8 +10,7 @@
   "license": "MIT",
   "scripts": {
     "build": "pnpm semcore-builder --source=js && tsm --require=../../.ci/tsm-filter-warnings.js ./generate.ts",
-    "upload-static": "gcs-upload lib/sprites/*",
-    "test": "jest"
+    "upload-static": "gcs-upload lib/sprites/*"
   },
   "dependencies": {
     "@semcore/flex-box": "^4",

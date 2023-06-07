@@ -7,7 +7,7 @@ import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
 
-export interface IInputTagsValueProps extends IInputValueProps { }
+export interface IInputTagsValueProps extends IInputValueProps {}
 
 export type InputTagsSize = 'l' | 'm';
 

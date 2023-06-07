@@ -1,4 +1,4 @@
-import { render, cleanup, axe, act } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
@@ -824,7 +824,7 @@ describe('DataTable', () => {
   });
 
   test('a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
         <DataTable.Head>
@@ -833,8 +833,8 @@ describe('DataTable', () => {
         <DataTable.Body />
       </DataTable>,
     );
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => vi.runAllTimers());
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

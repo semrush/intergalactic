@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from './testing-library';
+import { vi } from './vitest';
 
 const post = util.promisify(request.post);
 const config: { path?: string } = {};
@@ -20,12 +21,12 @@ export const snapshot = async (Component, options?: {}) => {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
-  jest.useFakeTimers();
+  vi.useFakeTimers();
   act(() => root.render(Component));
   if (!options) {
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
   }
-  jest.useRealTimers();
+  vi.useRealTimers();
   // ReactDOM.render(Component, _tmp);
   const componentHtml = _tmp.innerHTML;
   const componentStyle = document.head.innerHTML;
@@ -96,7 +97,7 @@ export const snapshot = async (Component, options?: {}) => {
           ...options,
           html,
           token: process.env.SCREENSHOT_TOKEN,
-          // noCache: true
+          noCache: true,
         },
       });
       body = response.body;

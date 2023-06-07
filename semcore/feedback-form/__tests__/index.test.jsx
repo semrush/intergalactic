@@ -19,16 +19,6 @@ describe('FeedbackForm', () => {
   test('Should call onSubmit', () => {
     const onSubmit = vi.fn();
 
-    // https://github.com/capricorn86/happy-dom/issues/527#issuecomment-1174442116
-    const originalDispatchEvent = HTMLElement.prototype.dispatchEvent;
-    HTMLElement.prototype.dispatchEvent = function (event) {
-      const result = originalDispatchEvent.call(this, event);
-      if (event.type === 'click' && this.tagName === 'BUTTON') {
-        this.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-      }
-      return result;
-    };
-
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
         <FeedbackForm.Item name="input">{({ input }) => <input {...input} />}</FeedbackForm.Item>
@@ -38,8 +28,6 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
-
-    HTMLElement.prototype.dispatchEvent = originalDispatchEvent;
   });
 
   test('Should not call onSubmit for validation error', () => {

@@ -78,7 +78,7 @@ class RootButton extends Component {
               tag="button"
               disabled={disabled}
               neighborLocation={neighborLocation}
-              use-theme={useTheme}
+              use:theme={useTheme}
               role="button"
               ref={this.containerRef}
             >

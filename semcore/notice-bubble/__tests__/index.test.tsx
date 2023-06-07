@@ -1,9 +1,8 @@
 import React from 'react';
-import { snapshot /*shared as testsShared*/ } from '@semcore/jest-preset-ui';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import * as sharedTests from '@semcore/testing-utils/shared-tests';
+// import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
-import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-library';
+import { render, /*fireEvent,*/ cleanup, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
 import {
@@ -13,8 +12,7 @@ import {
   NoticeBubbleWarning as NoticeBubbleWarningImport,
 } from '../src';
 
-// const { shouldSupportClassName, shouldSupportRef } = testsShared;
-const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+// const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 const NoticeBubble = React.forwardRef((props, ref) => (
   <>

@@ -9,8 +9,7 @@
     "build": "pnpm run clear && pnpm run update-dependencies && pnpm run generate-reexport && pnpm run test",
     "generate-reexport": "pnpm run clear && tsm --require=../../.ci/tsm-filter-warnings.js generate-reexport.ts",
     "update-dependencies": "tsm --require=../../.ci/tsm-filter-warnings.js update-dependencies.ts",
-    "update-changelog": "pnpm update-release-changelog",
-    "test": "jest"
+    "update-changelog": "pnpm update-release-changelog"
   },
   "dependencies": {
     "@semcore/accordion": "4.3.33",

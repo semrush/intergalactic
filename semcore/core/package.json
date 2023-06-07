@@ -9,8 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder",
-    "test": "jest"
+    "build": "pnpm semcore-builder"
   },
   "dependencies": {
     "@reshadow/core": "0.0.1-alpha.74",

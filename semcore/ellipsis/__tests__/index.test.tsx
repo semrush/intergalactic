@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import Ellipsis from '../src';
 import { Box } from '@semcore/flex-box';
-import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
@@ -104,7 +104,7 @@ describe('Ellipsis', () => {
   });
 
   test('Show tooltip', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 
     const unFake = fakeTemporaryBlock({ width: 400 });
 
@@ -120,16 +120,16 @@ describe('Ellipsis', () => {
 
     const text = getByTestId('text');
     fireEvent.mouseEnter(text);
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).not.toBe(null);
 
-    jest.useRealTimers();
+    vi.useRealTimers();
     unFake();
   });
 
   test('Dont show tooltip', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
 
     const unFake = fakeTemporaryBlock({ width: 100 });
 
@@ -143,11 +143,11 @@ describe('Ellipsis', () => {
 
     const text = getByTestId('text');
     fireEvent.mouseEnter(text);
-    act(() => jest.runAllTimers());
+    act(() => vi.runAllTimers());
 
     expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).toBe(null);
 
-    jest.useRealTimers();
+    vi.useRealTimers();
     unFake();
   });
 

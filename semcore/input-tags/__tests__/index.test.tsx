@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Tooltip from '@semcore/tooltip';
 import { axe } from '@semcore/testing-utils/axe';
 
 import InputTags from '../src';
-
-const { axe, render, cleanup, fireEvent, act } = testing;
 
 describe('InputTags', () => {
   beforeEach(cleanup);
@@ -117,7 +115,7 @@ describe('InputTags', () => {
         {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
           <InputTags.Tag key={idx}>{tag}</InputTags.Tag>
         ))}
-        <InputTags.Value />
+        <InputTags.Value value="" />
       </InputTags>
     );
     expect(await snapshot(component)).toMatchImageSnapshot();
@@ -140,7 +138,7 @@ describe('InputTags', () => {
   });
 
   test.skip('a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { container } = render(
       <InputTags size="l">
         {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (

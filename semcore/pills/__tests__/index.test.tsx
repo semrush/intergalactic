@@ -1,10 +1,10 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi, act } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 
-import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Pills from '../src';
@@ -85,8 +85,8 @@ describe('PillGroup', () => {
   });
 
   test('Should support behavior=tabs', async () => {
-    const spyLeft = jest.fn();
-    const spyRight = jest.fn();
+    const spyLeft = vi.fn();
+    const spyRight = vi.fn();
 
     const { getByTestId } = render(
       <Pills behavior="tabs">
@@ -113,7 +113,7 @@ describe('PillGroup', () => {
   });
 
   test('Should support behavior=radio', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Pills behavior="radio" onChange={spy} value={2}>

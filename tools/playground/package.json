@@ -104,7 +104,6 @@
     "@semcore/core": "*",
     "@semcore/errors": "*",
     "@semcore/icon": "*",
-    "@semcore/jest-preset-ui": "1.0.0",
     "@types/d3-array": "^3.0.2",
     "@types/d3-scale": "^4.0.2",
     "@types/d3-selection": "2",
