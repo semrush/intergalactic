@@ -357,153 +357,157 @@ describe('Button', () => {
     expect(await snapshot(component)).toMatchImageSnapshot();
   });
 
-  test('Should support hover', async () => {
-    expect(
-      await snapshot(<Button id="button">Button</Button>, {
-        actions: {
-          hover: '#button',
-        },
-      }),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <div style={{ background: '#eee' }}>
-          <Button id="button" use="tertiary" theme="invert">
+  test(
+    'Should support hover',
+    async () => {
+      expect(
+        await snapshot(<Button id="button">Button</Button>, {
+          actions: {
+            hover: '#button',
+          },
+        }),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <div style={{ background: '#eee' }}>
+            <Button id="button" use="tertiary" theme="invert">
+              Button
+            </Button>
+          </div>,
+          {
+            actions: {
+              hover: '#button',
+            },
+          },
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <div style={{ background: '#eee' }}>
+            <Button id="button" use="secondary" theme="invert">
+              Button
+            </Button>
+          </div>,
+          {
+            actions: {
+              hover: '#button',
+            },
+          },
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <div style={{ background: '#eee' }}>
+            <Button id="button" use="primary" theme="invert">
+              Button
+            </Button>
+          </div>,
+          {
+            actions: {
+              hover: '#button',
+            },
+          },
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="primary" theme="danger">
             Button
-          </Button>
-        </div>,
-        {
-          actions: {
-            hover: '#button',
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <div style={{ background: '#eee' }}>
-          <Button id="button" use="secondary" theme="invert">
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="primary" theme="warning">
             Button
-          </Button>
-        </div>,
-        {
-          actions: {
-            hover: '#button',
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <div style={{ background: '#eee' }}>
-          <Button id="button" use="primary" theme="invert">
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="primary" theme="success">
             Button
-          </Button>
-        </div>,
-        {
-          actions: {
-            hover: '#button',
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="primary" theme="danger">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="primary" theme="info">
+            Button
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="primary" theme="warning">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="secondary" theme="muted">
+            Button
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="primary" theme="success">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="secondary" theme="info">
+            Button
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="primary" theme="info">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="tertiary" theme="info">
+            Button
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="secondary" theme="muted">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
+        ),
+      ).toMatchImageSnapshot();
+      expect(
+        await snapshot(
+          <Button id="button" use="tertiary" theme="muted">
+            Button
+          </Button>,
+          {
+            actions: {
+              hover: '#button',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="secondary" theme="info">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="tertiary" theme="info">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot();
-    expect(
-      await snapshot(
-        <Button id="button" use="tertiary" theme="muted">
-          Button
-        </Button>,
-        {
-          actions: {
-            hover: '#button',
-          },
-        },
-      ),
-    ).toMatchImageSnapshot();
-  });
+        ),
+      ).toMatchImageSnapshot();
+    },
+    { timeout: 20_000 },
+  );
 
   test(
     'Should support active',
