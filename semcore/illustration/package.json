@@ -16,10 +16,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "^4",
-    "esbuild": "0.14.29",
-    "happy-dom": "^9.18.3",
-    "svg-to-jsx": "^1.0.4"
+    "@semcore/flex-box": "^4"
   },
   "peerDependencies": {
     "@semcore/core": "^1.11",
@@ -32,6 +29,9 @@
     "directory": "semcore/illustration"
   },
   "devDependencies": {
+    "esbuild": "0.14.29",
+    "happy-dom": "^9.18.3",
+    "svg-to-jsx": "^1.0.4",
     "@types/react": "18.0.21"
   }
 }

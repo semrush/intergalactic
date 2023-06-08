@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.4.25] - 2023-06-08
+
+### Fixed
+
+- Excluded unwanted development dependencies from package dependencies.
+
 ## [1.4.24] - 2023-06-07
 
 ### Changed
