@@ -3413,13 +3413,13 @@ const iconsList = {
       name: 'Security',
       size: ['l', 'm'],
       group: 'Misc',
-      tags: ['security', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит'],
+      tags: ['security', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит', 'безопасно'],
     },
     {
       name: 'SecurityNo',
       size: ['l', 'm'],
       group: 'Misc',
-      tags: ['security', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит'],
+      tags: ['security', 'no', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит', 'небезопасно'],
     },
     {
       name: 'SeeResultsAbout',
