@@ -99,7 +99,7 @@ export const snapshot = async (Component, options?: {}) => {
           ...options,
           html,
           token: process.env.SCREENSHOT_TOKEN,
-          noCache: true,
+          // noCache: true,
         },
       });
       body = response.body;

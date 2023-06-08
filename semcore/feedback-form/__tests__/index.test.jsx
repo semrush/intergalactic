@@ -10,6 +10,22 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import FeedbackForm from '../src';
 
+const mockSubmitDispatch = () => {
+  // https://github.com/capricorn86/happy-dom/issues/527#issuecomment-1174442116
+  const originalDispatchEvent = HTMLElement.prototype.dispatchEvent;
+  HTMLElement.prototype.dispatchEvent = function (event) {
+    const result = originalDispatchEvent.call(this, event);
+    if (event.type === 'click' && this.tagName === 'BUTTON' && this.type === 'submit') {
+      this.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    }
+    return result;
+  };
+
+  return () => {
+    HTMLElement.prototype.dispatchEvent = originalDispatchEvent;
+  };
+};
+
 describe('FeedbackForm', () => {
   beforeEach(cleanup);
 
@@ -17,6 +33,8 @@ describe('FeedbackForm', () => {
   shouldSupportRef(FeedbackForm);
 
   test('Should call onSubmit', () => {
+    const restoreOriginalSubmitDispatch = mockSubmitDispatch();
+
     const onSubmit = vi.fn();
 
     const { getByTestId } = render(
@@ -28,9 +46,11 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(1);
+    restoreOriginalSubmitDispatch();
   });
 
   test('Should not call onSubmit for validation error', () => {
+    const restoreOriginalSubmitDispatch = mockSubmitDispatch();
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
 
@@ -45,6 +65,7 @@ describe('FeedbackForm', () => {
 
     fireEvent.click(getByTestId('submit'));
     expect(onSubmit).toHaveBeenCalledTimes(0);
+    restoreOriginalSubmitDispatch();
   });
 
   test('Should correct render form', async () => {

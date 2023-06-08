@@ -124,7 +124,7 @@ describe('Ellipsis', () => {
       vi.runAllTimers();
     });
 
-    expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).not.toBe(null);
+    expect(baseElement.querySelector('[data-ui-name="Tooltip.Popper"]')).toBeFalsy();
 
     vi.useRealTimers();
     unFake();

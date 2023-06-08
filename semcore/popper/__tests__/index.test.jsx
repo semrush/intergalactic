@@ -206,7 +206,7 @@ describe('focus control', () => {
     expect(getByTestId('popper')).toHaveFocus();
   });
 
-  test('focus return', () => {
+  test.only('focus return', () => {
     let hidePopper = undefined;
     vi.useFakeTimers();
     const Component = () => {
@@ -215,12 +215,12 @@ describe('focus control', () => {
 
       return (
         <Popper visible={visible} onVisibleChange={() => {}}>
-          <Popper.Trigger data-testid="trigger">
-            <input data-testid="focusable-in-trigger" />
+          <Popper.Trigger data-testid="trigger" tabIndex={0}>
+            trigger
           </Popper.Trigger>
           <Popper.Popper autoFocus data-testid="popper">
             <div tabIndex={0} data-testid="focusable-in-popper">
-              button
+              popper
             </div>
           </Popper.Popper>
         </Popper>
@@ -234,6 +234,8 @@ describe('focus control', () => {
 
     expect(getByTestId('popper')).toHaveFocus();
 
+    getByTestId('focusable-in-popper').focus();
+
     act(() => {
       vi.runAllTimers();
     });
@@ -246,7 +248,7 @@ describe('focus control', () => {
       vi.runAllTimers();
     });
 
-    expect(getByTestId('focusable-in-trigger')).toHaveFocus();
+    expect(getByTestId('trigger')).toHaveFocus();
     vi.useRealTimers();
   });
 

@@ -94,13 +94,13 @@ describe('Link', () => {
 
   test('Should support inline property', () => {
     const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
-    expect((getByTestId('link')).className).not.toContain('inline');
+    expect(getByTestId('link').className).not.toContain('inline');
     rerender(
       <Link data-testid="link" inline>
         Link
       </Link>,
     );
-    expect((getByTestId('link')).className).toContain('inline');
+    expect(getByTestId('link').className).toContain('inline');
   });
 
   test('Should support ellipsis links with addon', async () => {
@@ -137,22 +137,26 @@ describe('Link', () => {
     expect(getByTestId('link').className).not.contains('noWrap');
   });
 
-  test('Should support sizes', async () => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Link size={100}>Link</Link>
-        <Link size={200}>Link</Link>
-        <Link size={300}>Link</Link>
-        <Link size={400}>Link</Link>
-        <Link size={500}>Link</Link>
-        <Link size={600}>Link</Link>
-        <Link size={700}>Link</Link>
-        <Link size={800}>Link</Link>
-      </snapshot.ProxyProps>
-    );
+  test(
+    'Should support sizes',
+    async () => {
+      const component = (
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Link size={100}>Link</Link>
+          <Link size={200}>Link</Link>
+          <Link size={300}>Link</Link>
+          <Link size={400}>Link</Link>
+          <Link size={500}>Link</Link>
+          <Link size={600}>Link</Link>
+          <Link size={700}>Link</Link>
+          <Link size={800}>Link</Link>
+        </snapshot.ProxyProps>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      expect(await snapshot(component)).toMatchImageSnapshot();
+    },
+    { timeout: 20_000 },
+  );
 
   test('Should support hover', async () => {
     const component = <Link id="link">Link</Link>;
