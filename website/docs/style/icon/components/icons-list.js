@@ -3416,6 +3416,12 @@ const iconsList = {
       tags: ['security', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит'],
     },
     {
+      name: 'SecurityNo',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: ['security', 'service', 'shield', 'guard', 'безопасность', 'охрана', 'щит'],
+    },
+    {
       name: 'SeeResultsAbout',
       size: ['l', 'm'],
       group: 'Misc',
