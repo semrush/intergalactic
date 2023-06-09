@@ -1,4 +1,4 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/components/feedback/examples/monster-feedback.jsx
+//https://github.com/semrush/intergalactic/tree/master/website/docs/components/feedback/examples/monster-feedback.tsx
 import React from 'react';
 import FeedbackForm from '@semcore/ui/feedback-form';
 import Input from '@semcore/ui/input';

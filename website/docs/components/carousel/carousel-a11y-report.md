@@ -1,9 +1,9 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.5.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v13.31.1, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
-**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/carousel/examples/dots.jsx).**
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/carousel/examples/dots.tsx).**
 
 ```
 1. Screen reader goes into the active element.

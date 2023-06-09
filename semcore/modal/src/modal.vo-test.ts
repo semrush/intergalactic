@@ -8,7 +8,7 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/
 test('Users can interact with Modal via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/modal/examples/modal.jsx',
+    '../../../website/docs/components/modal/examples/modal.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -30,6 +30,8 @@ test('Users can interact with Modal via VoiceOver', async ({ page, voiceOver: pu
   await voiceOver.next();
   await voiceOver.next();
   expect(await voiceOver.itemText()).toBe('Save changes button');
+  await voiceOver.act();
+
   await voiceOver.act();
   expect(await voiceOver.itemText()).toBe('Open modal button');
 

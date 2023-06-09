@@ -1,15 +1,15 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.5.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v13.31.1, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
-**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/color-picker/examples/defaultExtended.jsx).**
+**Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/color-picker/examples/defaultExtended.tsx).**
 
 ```
 1. Screen reader goes into the active element.
 2. Screen reader says "Color field, empty menu pop up button".
 3. Screen reader triggers element default action.
-4. Screen reader says "Color field, empty, press Tab to go to palette or click to hide palette".
+4. Screen reader says "Color field, empty, press Tab to go to palette or click to hide palette menu pop up button".
 5. Screen reader presses the "Tab" button.
 6. Screen reader says "Colors palette, press Tab+Shift to go back to color field group".
 7. Screen reader goes to the next element.
@@ -23,7 +23,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 15. Screen reader triggers element default action.
 16. Screen reader says "Color field, current color is #8649E1 menu pop up button".
 17. Screen reader triggers element default action.
-18. Screen reader says "Color field, current color is #8649E1, press Tab to go to palette or click to hide palette".
+18. Screen reader says "Color field, current color is #8649E1, press Tab to go to palette or click to hide palette menu pop up button".
 19. Screen reader presses the "Tab" button.
 20. Screen reader says "Colors palette, press Tab+Shift to go back to color field group".
 21. Screen reader goes to the next element.
@@ -55,21 +55,21 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 47. Screen reader goes to the next element.
 48. Screen reader says "end of list".
 49. Screen reader goes to the next element.
-50. Screen reader says "Custom color field container empty group".
+50. Screen reader says "horizontal splitter".
 51. Screen reader goes to the next element.
-52. Screen reader says "Custom color field, HEX format FFFFFF edit text".
-53. Screen reader goes into the active element.
-54. Screen reader says "In edit text".
-55. Screen reader types "0088FF".
-56. Screen reader says "F".
-57. Screen reader goes out of active element.
-58. Screen reader says "Out of edit text".
-59. Screen reader goes to the next element.
-60. Screen reader says "Add color to the list of custom colors button".
-61. Screen reader triggers element default action.
-62. Screen reader says "0088FF".
+52. Screen reader says "Custom color field container empty group".
+53. Screen reader goes to the next element.
+54. Screen reader says "Custom color field, HEX format FFFFFF edit text".
+55. Screen reader goes into the active element.
+56. Screen reader says "In edit text".
+57. Screen reader types "0088FF".
+58. Screen reader says "You are currently in a text field.".
+59. Screen reader presses the "Enter" button.
+60. Screen reader says "0088FF".
+61. Screen reader goes out of active element.
+62. Screen reader says "Out of edit text".
 63. Screen reader goes to the previous element.
-64. Screen reader says "end of list".
+64. Screen reader says "You are currently in a list.".
 65. Screen reader goes to the previous element.
 66. Screen reader says "Color #0088ff group".
 67. Screen reader triggers element default action.

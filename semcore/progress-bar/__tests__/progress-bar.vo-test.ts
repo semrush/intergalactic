@@ -6,7 +6,7 @@ import { resolve as resolvePath } from 'path';
 test('Users can interact with ProgressBar via VoiceOver', async ({ page, voiceOver }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/progress-bar/examples/progress-bar.jsx',
+    '../../../website/docs/components/progress-bar/examples/progress-bar.tsx',
   );
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 

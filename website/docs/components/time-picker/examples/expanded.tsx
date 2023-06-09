@@ -9,8 +9,8 @@ const Demo = () => {
       <Text tag="div" id="timePickerLabel" size="200">
         Your time
       </Text>
-      <Box mt={2}>
-        <TimePicker is12Hour aria-labelledby="timePickerLabel">
+      <Box mt={2} aria-labelledby="timePickerLabel">
+        <TimePicker is12Hour>
           <TimePicker.Hours />
           <TimePicker.Separator />
           <TimePicker.Minutes />
