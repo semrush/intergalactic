@@ -59,6 +59,8 @@ export interface IFilterTriggerProps extends IBaseTriggerProps {
   /** Click on the filter cleaning cross */
   onClear?: (event: React.SyntheticEvent) => void;
   locale?: string;
+  /** List of props that will be added to the select inside of filter */
+  includeInputProps?: string[];
 }
 
 declare const BaseTrigger: (<T>(props: CProps<IBaseTriggerProps & T>) => ReturnEl) & {

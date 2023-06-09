@@ -12,6 +12,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 
 import style from './style/filter-trigger.shadow.css';
 
@@ -32,6 +33,7 @@ class RootFilterTrigger extends Component {
     }),
   ];
   static defaultProps = {
+    includeInputProps: inputProps,
     i18n: localizedMessages,
     locale: 'en',
   };
@@ -41,12 +43,24 @@ class RootFilterTrigger extends Component {
   render() {
     const SWrapper = Root;
     const SFilterTrigger = BaseTrigger;
-    const { Children, styles, empty, onClear, size, placeholder, active, disabled, getI18nText } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      empty,
+      onClear,
+      size,
+      placeholder,
+      active,
+      disabled,
+      getI18nText,
+      includeInputProps,
+    } = this.asProps;
 
     if (this.asProps.role === 'button') {
       this.asProps.role = 'group';
     }
+
+    const [controlProps] = getInputProps(this.asProps, includeInputProps);
 
     return sstyled(styles)(
       <SWrapper render={Box} aria-label={getI18nText('filter')}>
@@ -59,6 +73,7 @@ class RootFilterTrigger extends Component {
             selected={!empty}
             active={active}
             disabled={disabled}
+            {...controlProps}
           >
             {addonTextChildren(
               Children,
