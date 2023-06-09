@@ -70,8 +70,14 @@ const GENERATOR = {
     const utilsMain = require.resolve(dependency);
     const utilsDistPath = path.join(utilsMain, '..');
     const utilsPath = path.join(utilsDistPath, '..');
-    const utils = glob.sync('**/*.+(js|ts)', { cwd: utilsDistPath });
+    const utils = glob.sync('**/*.+(js|ts|css)', { cwd: utilsDistPath });
+
     for (const util of utils) {
+      if (util.endsWith('.css')) {
+        await fs.outputFile(`./${name}/lib/${util}`, `@import '${dependency}/lib/${util}';`);
+        continue;
+      }
+
       const utilNameWithoutExtention = util.replace(/\.(d\.)?(t|j)s$/, '');
 
       // index.js of utils throws & useless, so we copy it
