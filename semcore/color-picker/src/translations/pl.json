@@ -1,0 +1,13 @@
+{
+  "currentColor": "Pole koloru, bieżący kolor to {color}",
+  "emptyColor": "Pole koloru, puste",
+  "goToPaletteHint": "{currentColor}, naciśnij Tab, aby przejść do palety, lub kliknij, aby ukryć paletę",
+  "palette": "Paleta kolorów, naciśnij Tab+Shift, aby wrócić do pola koloru",
+  "presetColors": "Gotowe kolory",
+  "customColors": "Kontener pola koloru niestandardowego",
+  "itemColor": "Kolor {color}",
+  "clearColor": "Wyczyść kolor",
+  "colorField": "Pole koloru niestandardowego, format szesnastkowy",
+  "colorFieldConfirm": "Dodaj kolor do listy kolorów niestandardowych",
+  "colorFieldClear": "Wyczyść pole koloru niestandardowego"
+}

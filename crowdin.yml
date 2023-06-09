@@ -63,6 +63,14 @@
     "translation": "/%original_path%/%two_letters_code%.json",
   },
   {
+    "source": "/semcore/feature-popover/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
+    "source": "/semcore/fullscreen-modal/src/translations/en.json",
+    "translation": "/%original_path%/%two_letters_code%.json",
+  },
+  {
     "source": "/semcore/inline-edit/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },

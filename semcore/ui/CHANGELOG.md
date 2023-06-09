@@ -1,3 +1,109 @@
+## [14.0.0] - 2023-06-09
+
+### Global
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/illustration
+
+- **Fixed** Excluded unwanted development dependencies from package dependencies.
+
+### @semcore/base-trigger
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/breadcrumbs
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/color-picker
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/d3-chart
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/date-picker
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/drag-and-drop
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/dropdown
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/dropdown-menu
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/errors
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/feature-popover
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/fullscreen-modal
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/inline-edit
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/inline-input
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/input-number
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/modal
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/notice
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/notice-bubble
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/notice-global
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/pagination
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/select
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/tag
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/time-picker
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/widget-empty
+
+- **Added** Polish (`pl`) locale support.
+
+### @semcore/wizard
+
+- **Added** Polish (`pl`) locale support.
+
 ## [13.33.0] - 2023-06-07
 
 ### @semcore/animation

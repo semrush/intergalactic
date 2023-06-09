@@ -1,0 +1,6 @@
+{
+  "grabbed": "Chwycono element {itemText}, bieżąca pozycja to {itemPosition} z {itemsCount}",
+  "grabbing": "Chwytanie elementu {itemText}, pozycja upuszczenia to {itemPosition} z {itemsCount}",
+  "dropped": "Upuszczono element {itemText}, ostateczna pozycja to {itemPosition} z {itemsCount}",
+  "discarded": "Przeciąganie zostało odrzucone"
+}

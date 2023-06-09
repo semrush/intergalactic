@@ -1,0 +1,16 @@
+{
+  "apply": "Zastosuj",
+  "reset": "Resetuj",
+  "today": "Dzisiaj",
+  "last2Days": "Ostatnie 2 dni",
+  "lastWeek": "Zeszły tydzień",
+  "last2Weeks": "Ostatnie 2 tygodnie",
+  "lastMonth": "Ostatni miesiąc",
+  "last2Months": "Ostatnie 2 miesiące",
+  "last3Months": "Ostatnie 3 miesiące",
+  "last6Months": "Ostatnie 6 miesięcy",
+  "last12Months": "Ostatnie 12 miesięcy",
+  "prev": "Poprzedni okres",
+  "next": "Następny okres",
+  "input": "Pole daty"
+}
