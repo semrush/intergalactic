@@ -1,0 +1,7 @@
+{
+  "title": "Wprowadzanie czasu, wprowadzono czas to {time} {meridiem}",
+  "titleEmpty": "Wprowadzanie czasu, nie wprowadzono czasu",
+  "hours": "Pole wprowadzania godzin",
+  "minutes": "Pole wprowadzania minut",
+  "format": "Format czasu {meridiem}"
+}

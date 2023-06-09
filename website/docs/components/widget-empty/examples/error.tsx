@@ -10,10 +10,12 @@ import ReloadM from '@semcore/ui/icon/Reload/m';
 import Link from '@semcore/ui/link';
 import Divider from '@semcore/ui/divider';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
-  value: o,
-  children: o,
-}));
+const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl'].map(
+  (o) => ({
+    value: o,
+    children: o,
+  }),
+);
 
 export default () => {
   const [lang, setLang] = useState('en');
