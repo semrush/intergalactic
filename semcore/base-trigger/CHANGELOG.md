@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.1] - 2023-06-09
+
+### Added
+
+- FilterTrigger `aria-labelledby` reference from the "Clear" button to make screen reader users easier understand what the button is related to.
+
 ## [3.10.0] - 2023-06-07
 
 ### Fixed
