@@ -32,7 +32,7 @@ export interface ICheckboxValueProps extends IKeyboardFocusProps, IFlexProps {
   defaultChecked?: boolean;
   /** The value responsible for the indeterminate attribute */
   indeterminate?: boolean;
-  /** List of components that can be added to a hidden input */
+  /** List of props that will be added to the hidden input */
   includeInputProps?: string[];
   /**
    * The value responsible for the state of the component

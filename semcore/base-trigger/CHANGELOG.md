@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.0] - 2023-06-07
+
+### Fixed
+
+- Passing props to FilterTrigger inner select.
+
 ## [3.9.0] - 2023-06-09
 
 ### Added
