@@ -25,13 +25,14 @@ export function assignHandlers(props, source) {
 
 function assignHandlersInner(props, source) {
   return Object.keys(source).reduce((proxySource, propName) => {
-    if (
-      propName !== 'ref' &&
-      typeof source[propName] === 'function' &&
-      typeof props[propName] === 'function' &&
-      propName.startsWith('on')
-    ) {
-      proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
+    if (propName !== 'ref' && propName.startsWith('on')) {
+      if (typeof source[propName] === 'function' && typeof props[propName] === 'function') {
+        proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
+      } else if (typeof source[propName] === 'function') {
+        proxySource[propName] = source[propName];
+      } else if (typeof props[propName] === 'function') {
+        proxySource[propName] = props[propName];
+      }
     }
     return proxySource;
   }, {});
