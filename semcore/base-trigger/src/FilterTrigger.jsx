@@ -13,6 +13,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/filter-trigger.shadow.css';
 
@@ -31,6 +32,7 @@ class RootFilterTrigger extends Component {
       animateProps: ['width'],
       onChangeOf: ['value'],
     }),
+    uniqueIDEnhancement(),
   ];
   static defaultProps = {
     includeInputProps: inputProps,
@@ -54,6 +56,8 @@ class RootFilterTrigger extends Component {
       disabled,
       getI18nText,
       includeInputProps,
+      uid,
+      id,
     } = this.asProps;
 
     if (this.asProps.role === 'button') {
@@ -63,7 +67,7 @@ class RootFilterTrigger extends Component {
     const [controlProps] = getInputProps(this.asProps, includeInputProps);
 
     return sstyled(styles)(
-      <SWrapper render={Box} aria-label={getI18nText('filter')}>
+      <SWrapper render={Box} aria-label={getI18nText('filter')} __excludeProps={['id']}>
         <NeighborLocation>
           <SFilterTrigger
             w="100%"
@@ -86,15 +90,16 @@ class RootFilterTrigger extends Component {
           {!empty && (
             <SFilterTrigger
               tag="button"
-              aria-label={getI18nText('clear')}
               size={size}
               empty={empty}
               selected
               onClick={callAllEventHandlers(onClear, this.handleStopPropagation)}
               onKeyDown={this.handleStopPropagation}
               disabled={disabled}
+              id={`igc-${uid}-filter-trigger-clear`}
+              aria-labelledby={`igc-${uid}-filter-trigger-clear ${id}`}
             >
-              <FilterTrigger.Addon tag={Close} />
+              <FilterTrigger.Addon tag={Close} aria-label={getI18nText('clear')} />
             </SFilterTrigger>
           )}
         </NeighborLocation>
