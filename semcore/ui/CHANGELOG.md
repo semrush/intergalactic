@@ -4,6 +4,10 @@
 
 - **Fixed** Passing props to FilterTrigger inner select.
 
+### @semcore/icon
+
+- **Added** Added new `SecurityNo` icon.
+
 ### @semcore/utils
 
 - **Fixed** Fixed defaults event handlers calling when same, non-function handler provided.
