@@ -1,12 +1,18 @@
+## [14.1.0] - 2023-06-09
+
+### @semcore/base-trigger
+
+- **Fixed** Passing props to FilterTrigger inner select.
+
+### @semcore/utils
+
+- **Fixed** Fixed defaults event handlers calling when same, non-function handler provided.
+
 ## [14.0.0] - 2023-06-09
 
 ### Global
 
 - **Added** Polish (`pl`) locale support.
-
-### @semcore/illustration
-
-- **Fixed** Excluded unwanted development dependencies from package dependencies.
 
 ### @semcore/base-trigger
 
@@ -51,6 +57,10 @@
 ### @semcore/fullscreen-modal
 
 - **Added** Polish (`pl`) locale support.
+
+### @semcore/illustration
+
+- **Fixed** Excluded unwanted development dependencies from package dependencies.
 
 ### @semcore/inline-edit
 
