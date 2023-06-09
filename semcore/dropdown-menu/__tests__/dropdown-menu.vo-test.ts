@@ -11,7 +11,7 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/dropdown-menu/examples/basic.jsx',
+    '../../../website/docs/components/dropdown-menu/examples/basic.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -34,7 +34,7 @@ test('Users can interact with DropdownMenu via VoiceOver', async ({
   expect(await voiceOver.itemText()).toBe('Item 2 menu item');
   await voiceOver.press('Escape');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Click me group');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Click me menu pop up button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

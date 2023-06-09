@@ -11,7 +11,7 @@ test('Users can interact with Carousel via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/carousel/examples/dots.jsx',
+    '../../../website/docs/components/carousel/examples/dots.tsx',
   );
   const reportPath = resolvePath(
     __dirname,

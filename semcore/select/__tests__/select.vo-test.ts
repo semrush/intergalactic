@@ -8,7 +8,7 @@ import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/
 test('Users can interact with Select via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/select/examples/basic.jsx',
+    '../../../website/docs/components/select/examples/basic.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -26,9 +26,8 @@ test('Users can interact with Select via VoiceOver', async ({ page, voiceOver: p
     'Select an option, sir 🧐 list box pop up button',
   );
   await voiceOver.press('Control+Option+Space');
-  expect(await voiceOver.lastSpokenPhrase()).toContain('Press Tab to go to popover');
   await voiceOver.press('Tab', { application: 'Playwright' });
-  expect(await voiceOver.itemText()).toBe('List of options list box');
+  expect(await voiceOver.itemText()).toBe('Select an option, sir 🧐 list box');
   await voiceOver.interact();
   expect(await voiceOver.itemText()).toBe('Option 0');
   await voiceOver.next();

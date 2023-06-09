@@ -11,7 +11,7 @@ test('Users can interact with Accodrion via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/components/accordion/examples/base.jsx',
+    '../../../website/docs/components/accordion/examples/base.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -28,12 +28,12 @@ test('Users can interact with Accodrion via VoiceOver', async ({
   await voiceOver.act();
   expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 2 button');
+  expect(await voiceOver.itemText()).toBe('Section 2 collapsed button');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 3 dimmed button');
+  expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
   await voiceOver.previous();
   await voiceOver.previous();
-  expect(await voiceOver.itemText()).toBe('Section 1 button');
+  expect(await voiceOver.itemText()).toBe('Section 1 collapsed button');
   await voiceOver.act();
   await voiceOver.next();
   await voiceOver.interact();
@@ -42,11 +42,11 @@ test('Users can interact with Accodrion via VoiceOver', async ({
   await voiceOver.previous();
   await voiceOver.act();
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 2 button');
+  expect(await voiceOver.itemText()).toBe('Section 2 collapsed button');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Section 3 dimmed button');
+  expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
   await voiceOver.act();
-  expect(await voiceOver.itemText()).toBe('Section 3 dimmed button');
+  expect(await voiceOver.itemText()).toBe('Section 3 dimmed collapsed button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

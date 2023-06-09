@@ -11,7 +11,7 @@ test('Users can interact with DataTable via VoiceOver', async ({
 }) => {
   const standPath = resolvePath(
     __dirname,
-    '../../../website/docs/table-group/data-table/examples/base.jsx',
+    '../../../website/docs/table-group/data-table/examples/base.tsx',
   );
   const reportPath = resolvePath(
     __dirname,
@@ -31,7 +31,7 @@ test('Users can interact with DataTable via VoiceOver', async ({
   await voiceOver.press('Control+Option+ArrowRight');
   expect(await voiceOver.lastSpokenPhrase()).toContain('column 3 of');
   await voiceOver.press('Control+Option+ArrowDown');
-  expect(await voiceOver.lastSpokenPhrase()).toContain('row 3 of');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('row 4 of');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 
