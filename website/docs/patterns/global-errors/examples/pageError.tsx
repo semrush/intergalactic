@@ -9,10 +9,12 @@ import {
   ProjectNotFound,
 } from '@semcore/ui/errors';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi'].map((o) => ({
-  value: o,
-  children: o,
-}));
+const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl'].map(
+  (o) => ({
+    value: o,
+    children: o,
+  }),
+);
 
 export default () => {
   const [lang, setLang] = useState('en');

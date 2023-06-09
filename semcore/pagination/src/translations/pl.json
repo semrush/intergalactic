@@ -1,0 +1,14 @@
+{
+  "prevPageLabel": "Wstecz",
+  "prevPageDescription": "Poprzednia strona {pageNumber}",
+  "nextPageLabel": "Dalej",
+  "nextPageDescription": "Następna strona {pageNumber}",
+  "pageInputLabel": "Strona:",
+  "totalPagesLabel": "z",
+  "pagination": "Stronicowanie",
+  "firstPage": "Pierwsza strona",
+  "currentPage": "Bieżąca strona",
+  "confirm": "Potwierdź numer strony",
+  "lastPage": "Ostatnia strona #{lastPageNumber}",
+  "goToPage": "Strona {pageNumber}"
+}

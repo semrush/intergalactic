@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.11.0] - 2023-06-09
+
+### Added
+
+- Polish (`pl`) locale support.
+
 ## [3.10.18] - 2023-06-08
 
 ### Changed
