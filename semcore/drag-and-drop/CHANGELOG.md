@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.2] - 2023-06-12
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/card` [4.3.23 ~> 4.3.24], `@semcore/utils` [3.53.2 ~> 3.53.3]).
+
 ## [2.5.1] - 2023-06-09
 
 ### Changed
