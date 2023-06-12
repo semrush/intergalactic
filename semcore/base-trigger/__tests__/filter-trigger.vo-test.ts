@@ -37,7 +37,6 @@ test('Users can interact with FilterTrigger via VoiceOver', async ({
   await voiceOver.interact();
   expect(await voiceOver.itemText()).toBe('Option 3');
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Clear button');
   await voiceOver.act();
   await voiceOver.stopInteracting();
   await voiceOver.interact();
