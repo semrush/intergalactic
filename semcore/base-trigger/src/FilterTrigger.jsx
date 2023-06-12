@@ -77,6 +77,7 @@ class RootFilterTrigger extends Component {
             selected={!empty}
             active={active}
             disabled={disabled}
+            animationsDisabled
             {...controlProps}
           >
             {addonTextChildren(
