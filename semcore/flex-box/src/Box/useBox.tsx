@@ -194,7 +194,7 @@ function calculateIndentStyles(props, scaleIndent) {
       getAutoOrScaleIndent(props['pb'], scaleIndent) ||
       getAutoOrScaleIndent(props['py'], scaleIndent),
     paddingLeft:
-      getAutoOrScaleIndent(props['pl'], scaleIndent) ||
+      getAutoOrScaleIndent(props[('pl', 'sv')], scaleIndent) ||
       getAutoOrScaleIndent(props['px'], scaleIndent),
     paddingRight:
       getAutoOrScaleIndent(props['pr'], scaleIndent) ||

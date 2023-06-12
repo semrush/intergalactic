@@ -1,0 +1,16 @@
+{
+  "apply": "Tillämpa",
+  "reset": "Återställ",
+  "today": "Idag",
+  "last2Days": "Senaste 2 dagarna",
+  "lastWeek": "Förra veckan",
+  "last2Weeks": "Senaste 2 veckorna",
+  "lastMonth": "Senaste månaden",
+  "last2Months": "Senaste 2 månaderna",
+  "last3Months": "Senaste 3 månaderna",
+  "last6Months": "Senaste 6 månaderna",
+  "last12Months": "Senaste 12 månaderna",
+  "prev": "Föregående period",
+  "next": "Nästa period",
+  "input": "Datumfält"
+}

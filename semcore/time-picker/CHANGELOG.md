@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version patch update due to children dependencies update (`@semcore/button` [4.4.5 ~> 4.4.6], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/input` [3.6.30 ~> 3.6.31], `@semcore/select` [3.8.2 ~> 3.8.3], `@semcore/utils` [3.53.2 ~> 3.53.3]).
 
+## [3.7.0] - 2023-06-12
+
+### Added
+
+- Swedish (`sv`) locale support.
+
 ## [3.6.2] - 2023-06-12
 
 ### Changed

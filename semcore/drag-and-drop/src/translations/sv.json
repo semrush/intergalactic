@@ -1,0 +1,6 @@
+{
+  "grabbed": "{itemText} valdes, nuvarande position är {itemPosition} av {itemsCount}",
+  "grabbing": "Väljer {itemText}, släppt position är {itemPosition} av {itemsCount}",
+  "dropped": "{itemText} släppdes, slutlig position är {itemPosition} av {itemsCount}",
+  "discarded": "Dragningen avvisades"
+}
