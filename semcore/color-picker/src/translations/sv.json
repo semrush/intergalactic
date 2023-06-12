@@ -1,0 +1,13 @@
+{
+  "currentColor": "Färgfält, nuvarande färg är {color}",
+  "emptyColor": "Färgfält, tomt",
+  "goToPaletteHint": "{currentColor}, tryck på Tab för att gå till paletten eller klicka för att dölja paletten",
+  "palette": "Färgpalett, tryck på Tab+Shift för att gå tillbaka till färgfältet",
+  "presetColors": "Förinställda färger",
+  "customColors": "Behållare för anpassade färgfält",
+  "itemColor": "Färg {color}",
+  "clearColor": "Rensa färg",
+  "colorField": "Anpassat färgfält, HEX-format",
+  "colorFieldConfirm": "Lägg till färg i listan över anpassade färger",
+  "colorFieldClear": "Rensa fält för anpassad färg"
+}

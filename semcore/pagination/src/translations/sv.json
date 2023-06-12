@@ -1,0 +1,14 @@
+{
+  "prevPageLabel": "Föreg.",
+  "prevPageDescription": "Föregående sida {pageNumber}",
+  "nextPageLabel": "Nästa",
+  "nextPageDescription": "Nästa sida {pageNumber}",
+  "pageInputLabel": "Sida:",
+  "totalPagesLabel": "av",
+  "pagination": "Sidnumrering",
+  "firstPage": "Första sidan",
+  "currentPage": "Nuvarande sida",
+  "confirm": "Bekräfta sidnummer",
+  "lastPage": "Sista sidan #{lastPageNumber}",
+  "goToPage": "Sida {pageNumber}"
+}

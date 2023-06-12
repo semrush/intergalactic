@@ -1,3 +1,101 @@
+## [14.2.0] - 2023-06-12
+
+### Global
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/base-trigger
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/breadcrumbs
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/color-picker
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/d3-chart
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/drag-and-drop
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/dropdown
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/dropdown-menu
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/errors
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/feature-popover
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/fullscreen-modal
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/inline-edit
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/inline-input
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/input-number
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/modal
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/notice
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/notice-bubble
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/notice-global
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/pagination
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/select
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/tag
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/time-picker
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/widget-empty
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/wizard
+
+- **Added** Swedish (`sv`) locale support.
+
 ## [14.1.1] - 2023-06-12
 
 ### @semcore/base-trigger

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.8.0] - 2023-06-12
+
+### Added
+
+- Swedish (`sv`) locale support.
+
 ## [3.7.2] - 2023-06-12
 
 ### Changed

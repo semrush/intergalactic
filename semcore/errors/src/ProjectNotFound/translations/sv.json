@@ -1,0 +1,6 @@
+{
+  "title": "Projektet hittades inte",
+  "text": "<p>Vi kan inte hitta det projekt du försöker komma åt.</p><p>Kontrollera något av följande problem:</p><ul><li>Projektet kan ha raderats eller så finns det ett fel i den angivna webbadressen.</li><li>Du kanske inte har behörighet att visa projektet. Be projektägaren om åtkomst.</li></ul><p>Du hittar alla dina projekt på projektsidan.</p><p>Om du har några andra problem med åtkomst till projektet, kontakta vårt <a href=\"{url}\">supportteam.</a></p>",
+  "btnProjects": "Gå till projekt",
+  "btnContacts": "Kontakta oss"
+}

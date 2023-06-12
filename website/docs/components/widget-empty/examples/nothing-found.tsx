@@ -8,7 +8,7 @@ import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl'].map(
+const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl', 'sv'].map(
   (o) => ({
     value: o,
     children: o,

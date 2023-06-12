@@ -10,6 +10,7 @@ import tr from './tr.json';
 import vi from './vi.json';
 import zh from './zh.json';
 import pl from './pl.json';
+import sv from './sv.json';
 
 export const localizedMessages = {
   de,
@@ -24,4 +25,5 @@ export const localizedMessages = {
   vi,
   zh,
   pl,
+  sv,
 };
