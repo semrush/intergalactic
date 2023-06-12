@@ -35,16 +35,17 @@ function animatedSizeEnhance({
       if (!nodeRef.current) {
         return;
       }
+      const node = nodeRef.current;
       if (lastSizesRef.current.every((value) => value === undefined)) {
         for (let i = 0; i < animateProps.length; i++) {
-          lastSizesRef.current[i] = nodeRef.current.getBoundingClientRect()[animateProps[i]];
+          lastSizesRef.current[i] = node.getBoundingClientRect()[animateProps[i]];
         }
         return;
       }
 
       const sizes: number[] = [];
       for (let i = 0; i < animateProps.length; i++) {
-        sizes[i] = nodeRef.current.getBoundingClientRect()[animateProps[i]];
+        sizes[i] = node.getBoundingClientRect()[animateProps[i]];
         if (Math.abs(lastSizesRef.current[i] - sizes[i]) < 3) {
           lastSizesRef.current[i] = sizes[i];
           sizes[i] = undefined;
@@ -52,29 +53,29 @@ function animatedSizeEnhance({
       }
       if (sizes.every((value) => value === undefined)) return;
 
-      nodeRef.current.style.transition = 'none';
+      node.style.transition = 'none';
       for (let i = 0; i < animateProps.length; i++) {
-        nodeRef.current.style[animateProps[i]] = lastSizesRef.current[i] + 'px';
+        node.style[animateProps[i]] = lastSizesRef.current[i] + 'px';
       }
       let timeout = -1;
       const handleTransitionEnd = () => {
         clearTimeout(timeout);
-        if (!nodeRef.current) return;
-        nodeRef.current.style.transition = null;
+        if (!node) return;
+        node.style.transition = null;
         for (let i = 0; i < animateProps.length; i++) {
-          nodeRef.current.style[animateProps[i]] = null;
+          node.style[animateProps[i]] = null;
         }
-        nodeRef.current.removeEventListener('transitionend', handleTransitionEnd);
-        nodeRef.current.removeEventListener('transitioncancel', handleTransitionEnd);
+        node.removeEventListener('transitionend', handleTransitionEnd);
+        node.removeEventListener('transitioncancel', handleTransitionEnd);
       };
       const animationFrame = requestAnimationFrame(() => {
-        if (!nodeRef.current) return;
-        nodeRef.current.addEventListener('transitionend', handleTransitionEnd);
-        nodeRef.current.addEventListener('transitioncancel', handleTransitionEnd);
-        nodeRef.current.style.transition = `${duration}ms all ease-in-out`;
+        if (!node) return;
+        node.addEventListener('transitionend', handleTransitionEnd);
+        node.addEventListener('transitioncancel', handleTransitionEnd);
+        node.style.transition = `${duration}ms all ease-in-out`;
         for (let i = 0; i < animateProps.length; i++) {
           lastSizesRef.current[i] = sizes[i];
-          nodeRef.current.style[animateProps[i]] = sizes[i] + 'px';
+          node.style[animateProps[i]] = sizes[i] + 'px';
         }
       });
       timeout = setTimeout(handleTransitionEnd, 500) as any;

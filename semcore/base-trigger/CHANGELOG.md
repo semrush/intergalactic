@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.2] - 2023-06-12
+
+### Fixed
+
+- Disabled FilterTrigger inner parts animations for proper container animation.
+
 ## [3.10.1] - 2023-06-09
 
 ### Added

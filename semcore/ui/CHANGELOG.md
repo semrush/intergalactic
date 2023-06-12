@@ -1,3 +1,14 @@
+## [14.1.1] - 2023-06-12
+
+### @semcore/base-trigger
+
+- **Fixed** Disabled FilterTrigger inner parts animations for proper container animation.
+- **Added** FilterTrigger `aria-labelledby` reference from the "Clear" button to make screen reader users easier understand what the button is related to.
+
+### @semcore/utils
+
+- **Fixed** Animations in complex components (e.g. `FilterTrigger`) might not be finished.
+
 ## [14.1.0] - 2023-06-09
 
 ### @semcore/base-trigger

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.53.3] - 2023-06-12
+
+### Fixed
+
+- Animations in complex components (e.g. `FilterTrigger`) might not be finished.
+
 ## [3.53.2] - 2023-06-07
 
 ### Fixed
