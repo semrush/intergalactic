@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v13.31.1, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Monterey 12._
+_Intergalactic v14.1.1, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/color-picker/examples/defaultExtended.tsx).**
 
@@ -63,13 +63,13 @@ Guidepup v0.13.1, MacOS Monterey 12._
 55. Screen reader goes into the active element.
 56. Screen reader says "In edit text".
 57. Screen reader types "0088FF".
-58. Screen reader says "You are currently in a text field.".
+58. Screen reader says "F".
 59. Screen reader presses the "Enter" button.
 60. Screen reader says "0088FF".
 61. Screen reader goes out of active element.
 62. Screen reader says "Out of edit text".
 63. Screen reader goes to the previous element.
-64. Screen reader says "You are currently in a list.".
+64. Screen reader says "end of list".
 65. Screen reader goes to the previous element.
 66. Screen reader says "Color #0088ff group".
 67. Screen reader triggers element default action.
