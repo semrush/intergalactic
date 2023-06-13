@@ -64,8 +64,3 @@ SOptionCheckbox[selected] {
     background-color: var(--intergalactic-dropdown-menu-item-selected-hover, #c4e5fe);
   }
 }
-
-SSelectTrigger:active,
-SSelectTrigger[active] {
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-}

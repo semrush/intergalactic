@@ -1,60 +1,3 @@
-SButtonTrigger {
-  border: 1px solid var(--intergalactic-border-primary, #c4c7cf);
-  background: var(--intergalactic-bg-primary-neutral, #ffffff);
-  color: var(--intergalactic-text-primary, #191b23);
-
-  &::-moz-focus-inner {
-    border: none;
-    padding: 0;
-  }
-
-  &:active,
-  &:hover,
-  &:focus {
-    outline: 0;
-    text-decoration: none;
-  }
-
-  &:active,
-  &:hover,
-  &[active] {
-    background-color: var(
-      --intergalactic-control-secondary-neutral-hover,
-      rgba(138, 142, 155, 0.2)
-    );
-  }
-}
-
-SButtonTrigger[size='m'] {
-  min-width: 26px;
-  height: 28px;
-  border-radius: var(--intergalactic-control-rounded, 6px);
-  font-size: var(--intergalactic-fs-200, 14px);
-}
-
-SButtonTrigger[size='l'] {
-  min-width: 32px;
-  height: 40px;
-  border-radius: var(--intergalactic-control-rounded, 6px);
-  font-size: var(--intergalactic-fs-300, 16px);
-}
-
-SText[placeholder] {
-  color: var(--intergalactic-text-placeholder, #8a8e9b);
-}
-
-SButtonTrigger[state='normal'] {
-  border-color: var(--intergalactic-border-primary, #c4c7cf);
-}
-
-SButtonTrigger[state='valid'] {
-  border-color: var(--intergalactic-border-success-active, #007c65);
-}
-
-SButtonTrigger[state='invalid'] {
-  border-color: var(--intergalactic-border-critical-active, #d1002f);
-}
-
 SFilterTrigger[selected] {
   border-color: var(--intergalactic-border-info-active, #006dca);
   background-color: var(--intergalactic-control-secondary-info, rgba(0, 143, 248, 0.1));
@@ -84,9 +27,4 @@ SWrapper[keyboardFocused] {
 
 SCounter {
   background-color: var(--intergalactic-bg-primary-info, #008ff8);
-}
-
-SFilterTrigger:active,
-SFilterTrigger[active] {
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
 }

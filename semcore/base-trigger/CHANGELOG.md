@@ -2,11 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.11.1] - 2023-06-12
+## [3.11.2] - 2023-06-13
 
 ### Fixed
 
-- LinkTrigger active state background.
+- Transferring style for trigger active state from FilterTrigger/LinkTrigger to BaseTrigger.
+
+### Changed
+
+- Remove unused style in FilterTrigger.
 
 ## [3.11.0] - 2023-06-12
 
