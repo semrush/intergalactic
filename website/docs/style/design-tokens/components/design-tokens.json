@@ -1058,7 +1058,6 @@
     "computedValue": "rgba(138, 142, 155, 0.2)",
     "description": "Hover state of the regular secondary control.",
     "components": [
-      "base-trigger",
       "button"
     ]
   },
