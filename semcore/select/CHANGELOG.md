@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.9.3] - 2023-06-13
+
+### Fixed
+
+- Transferring style for trigger active state to `@semcore/base-trigger`.
+
 ## [3.9.2] - 2023-06-13
 
 ### Changed

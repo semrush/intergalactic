@@ -89,11 +89,6 @@ SLinkTrigger[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
 }
 
-SLinkTrigger:active:active,
-SLinkTrigger[active][active] {
-  background-color: transparent;
-}
-
 @media (prefers-reduced-motion) {
   SLinkTrigger {
     transition: none;
