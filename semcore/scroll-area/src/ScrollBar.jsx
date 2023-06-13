@@ -8,6 +8,22 @@ import style from './style/scroll-bar.shadow.css';
 
 export const DEFAULT_SLIDER_SIZE = 50;
 
+// updating DOM directly to avoid react dom rerendering and reconciliation
+function setAreaValue($container, $horizontalBar, $verticalBar) {
+  if (!$container || !($horizontalBar || $verticalBar)) return;
+  const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } = $container;
+  const maxScrollRight = scrollWidth - clientWidth;
+  const maxScrollBottom = scrollHeight - clientHeight;
+  if ($horizontalBar) {
+    $horizontalBar.setAttribute('aria-valuenow', Math.floor(scrollLeft));
+    $horizontalBar.setAttribute('aria-valuemax', maxScrollRight);
+  }
+  if ($verticalBar) {
+    $verticalBar.setAttribute('aria-valuenow', Math.floor(scrollTop));
+    $verticalBar.setAttribute('aria-valuemax', maxScrollBottom);
+  }
+}
+
 class ScrollBarRoot extends Component {
   static displayName = 'Bar';
 
@@ -46,7 +62,10 @@ class ScrollBarRoot extends Component {
     const { horizontalBarRef, verticalBarRef } = this.asProps;
     if (orientation === 'horizontal' && horizontalBarRef) horizontalBarRef.current = domNode;
     if (orientation === 'vertical' && verticalBarRef) verticalBarRef.current = domNode;
+
+    setAreaValue(this.$container, horizontalBarRef.current, verticalBarRef.current);
   };
+
   refSlider = (node) => (this.$slider = findDOMNode(node));
 
   calculateVisibleScroll() {
@@ -267,8 +286,9 @@ class ScrollBarRoot extends Component {
     return sstyled(styles)(
       <SScrollBar
         render={Box}
-        role="scrollbar"
+        role='scrollbar'
         ref={this.refBar}
+        aria-valuemin={0}
         aria-controls={`igc-${uid}-scroll-container`}
         aria-orientation={this.getOrientation()}
         onMouseDown={this.handleMouseDownBar}
@@ -289,4 +309,5 @@ const ScrollBar = createComponent(ScrollBarRoot, {
   Slider,
 });
 
+export { setAreaValue };
 export default ScrollBar;
