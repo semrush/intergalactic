@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.11] - 2023-06-13
+
+### Fixed
+
+- Fixed setting aria attribute on initial render.
+
 ## [4.3.10] - 2023-06-12
 
 ### Changed

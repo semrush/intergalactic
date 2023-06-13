@@ -8,7 +8,7 @@ import trottle from '@semcore/utils/lib/rafTrottle';
 import { getNodeByRef } from '@semcore/utils/lib/ref';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import BarRoot from './ScrollBar';
+import BarRoot, { setAreaValue } from './ScrollBar';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
@@ -18,8 +18,6 @@ let eventCalculate = undefined;
 if (typeof window !== 'undefined') {
   eventCalculate = new Event('calculate');
 }
-
-export { eventCalculate };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BoxWithoutPosition = React.forwardRef(({ position, ...props }, ref) => (
@@ -102,20 +100,7 @@ class ScrollAreaRoot extends Component {
   });
 
   updateBarsAria = trottle(() => {
-    // updating DOM directly to avoid react dom rerendering and reconciliation
-    if (!this.$container) return;
-    const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
-      this.$container;
-    const maxScrollRight = scrollWidth - clientWidth;
-    const maxScrollBottom = scrollHeight - clientHeight;
-    if (this.horizontalBarRef.current) {
-      this.horizontalBarRef.current.setAttribute('aria-valuenow', Math.floor(scrollLeft));
-      this.horizontalBarRef.current.setAttribute('aria-valuemax', maxScrollRight);
-    }
-    if (this.verticalBarRef.current) {
-      this.verticalBarRef.current.setAttribute('aria-valuenow', Math.floor(scrollTop));
-      this.verticalBarRef.current.setAttribute('aria-valuemax', maxScrollBottom);
-    }
+    setAreaValue(this.$container, this.horizontalBarRef.current, this.verticalBarRef.current)
   });
 
   handleScrollContainer = trottle(() => {
@@ -227,10 +212,10 @@ class ScrollAreaRoot extends Component {
               <Children />
             </ScrollArea.Container>
             {(orientation === undefined || orientation === 'horizontal') && (
-              <ScrollArea.Bar orientation="horizontal" />
+              <ScrollArea.Bar orientation='horizontal' />
             )}
             {(orientation === undefined || orientation === 'vertical') && (
-              <ScrollArea.Bar orientation="vertical" />
+              <ScrollArea.Bar orientation='vertical' />
             )}
           </>
         )}
@@ -253,9 +238,11 @@ function ContainerRoot(props) {
 
 ContainerRoot.enhance = [keyboardFocusEnhance()];
 
-export const ScrollArea = createComponent(ScrollAreaRoot, {
+const ScrollArea = createComponent(ScrollAreaRoot, {
   Container: ContainerRoot,
   Bar: BarRoot,
 });
 
+// TODO: remove named ScrollArea export
+export { eventCalculate, ScrollArea };
 export default ScrollArea;
