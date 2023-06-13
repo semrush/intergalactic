@@ -18,6 +18,20 @@ describe('ScrollArea', () => {
     expect(document.querySelectorAll('[data-ui-name="ScrollArea.Container"]').length).toBe(1);
   });
 
+  xtest('should support area attributes to bar', () => {
+    const { queryByTestId } = render(
+      <ScrollArea h={200} w={200} shadow>
+        {[...new Array(10)].map((_, i) => (
+          <div key={i} style={{ width: '100px', height: '100px' }} />
+        ))}
+        <ScrollArea.Bar orientation='vertical' data-testid="bar"/>
+      </ScrollArea>
+    );
+    expect(queryByTestId('bar').attributes['aria-valuemin']).toBeTruthy();
+    expect(queryByTestId('bar').attributes['aria-valuenow']).toBeTruthy();
+    expect(queryByTestId('bar').attributes['aria-valuemax']).toBeTruthy();
+  })
+
   xtest('should support shadow display on container', async () => {
     const component = (
       <ScrollArea h={200} w={200} shadow>
