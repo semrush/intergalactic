@@ -4,8 +4,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.9.0] - 2023-06-12
 
-### Added
-
 ## [3.8.3] - 2023-06-12
 
 ### Changed
