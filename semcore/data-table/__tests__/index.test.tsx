@@ -843,7 +843,7 @@ describe('DataTable', () => {
   });
 
   test('rowgroup a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const data = [
       {
         keyword: 'www.ebay.com',
@@ -870,8 +870,8 @@ describe('DataTable', () => {
       </div>,
     );
 
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => vi.runAllTimers());
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

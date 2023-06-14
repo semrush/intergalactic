@@ -234,6 +234,10 @@ describe('focus control', () => {
 
     expect(getByTestId('popper')).toHaveFocus();
 
+    act(() => {
+      vi.runAllTimers();
+    });
+
     getByTestId('focusable-in-popper').focus();
 
     act(() => {

@@ -714,7 +714,7 @@ importers:
       '@semcore/button': ^4
       '@semcore/flex-box': ^4
       '@semcore/format-text': ^3.0.0
-      '@semcore/illustration': 1.4.24
+      '@semcore/illustration': 1.4.27
       '@semcore/testing-utils': 1.0.0
       '@semcore/typography': ^4
       '@semcore/utils': ^3.27
@@ -1602,48 +1602,48 @@ importers:
       '@semcore/fullscreen-modal': 2.4.1
       '@semcore/grid': 4.3.32
       '@semcore/i18n-unplugin': 0.0.5
-      '@semcore/icon': 3.14.16
-      '@semcore/illustration': 1.4.24
-      '@semcore/inline-edit': 2.4.26
-      '@semcore/inline-input': 3.5.42
-      '@semcore/input': 3.6.29
-      '@semcore/input-mask': 4.5.10
-      '@semcore/input-number': 4.5.5
-      '@semcore/input-tags': 3.3.39
-      '@semcore/link': 4.3.32
-      '@semcore/modal': 3.6.14
-      '@semcore/neighbor-location': 3.1.34
-      '@semcore/notice': 4.4.45
-      '@semcore/notice-bubble': 4.7.24
-      '@semcore/notice-global': 1.5.30
-      '@semcore/outside-click': 2.5.33
-      '@semcore/pagination': 3.5.41
-      '@semcore/pills': 4.6.4
-      '@semcore/popper': 4.19.0
-      '@semcore/portal': 2.6.11
-      '@semcore/product-head': 3.4.9
-      '@semcore/progress-bar': 3.3.29
-      '@semcore/radio': 5.6.6
-      '@semcore/scroll-area': 4.3.8
-      '@semcore/select': 3.7.0
-      '@semcore/side-panel': 2.4.14
-      '@semcore/skeleton': 4.4.29
-      '@semcore/slider': 3.4.20
-      '@semcore/spin': 4.2.28
-      '@semcore/spin-container': 6.2.35
-      '@semcore/sticky': 2.4.28
-      '@semcore/switch': 4.4.20
-      '@semcore/tab-line': 3.3.20
-      '@semcore/tab-panel': 3.5.1
-      '@semcore/tag': 4.4.39
+      '@semcore/icon': 3.15.1
+      '@semcore/illustration': 1.4.27
+      '@semcore/inline-edit': 3.6.0
+      '@semcore/inline-input': 3.7.0
+      '@semcore/input': 3.6.31
+      '@semcore/input-mask': 4.5.12
+      '@semcore/input-number': 4.7.0
+      '@semcore/input-tags': 3.3.43
+      '@semcore/link': 4.3.34
+      '@semcore/modal': 3.8.0
+      '@semcore/neighbor-location': 3.1.36
+      '@semcore/notice': 4.6.0
+      '@semcore/notice-bubble': 4.9.0
+      '@semcore/notice-global': 1.7.0
+      '@semcore/outside-click': 2.5.35
+      '@semcore/pagination': 3.7.0
+      '@semcore/pills': 4.6.6
+      '@semcore/popper': 4.19.2
+      '@semcore/portal': 2.6.13
+      '@semcore/product-head': 3.4.11
+      '@semcore/progress-bar': 3.3.31
+      '@semcore/radio': 5.6.8
+      '@semcore/scroll-area': 4.3.10
+      '@semcore/select': 3.9.0
+      '@semcore/side-panel': 2.4.16
+      '@semcore/skeleton': 4.4.31
+      '@semcore/slider': 3.4.22
+      '@semcore/spin': 4.2.30
+      '@semcore/spin-container': 6.2.37
+      '@semcore/sticky': 2.4.30
+      '@semcore/switch': 4.4.22
+      '@semcore/tab-line': 3.3.22
+      '@semcore/tab-panel': 3.5.3
+      '@semcore/tag': 4.6.0
       '@semcore/testing-utils': 1.0.0
-      '@semcore/textarea': 4.3.28
-      '@semcore/time-picker': 3.5.1
-      '@semcore/tooltip': 5.4.20
-      '@semcore/typography': 4.4.8
-      '@semcore/utils': 3.53.1
-      '@semcore/widget-empty': 3.10.17
-      '@semcore/wizard': 1.2.50
+      '@semcore/textarea': 4.3.30
+      '@semcore/time-picker': 3.6.4
+      '@semcore/tooltip': 5.4.22
+      '@semcore/typography': 4.4.10
+      '@semcore/utils': 3.53.3
+      '@semcore/widget-empty': 3.12.0
+      '@semcore/wizard': 1.4.0
       '@types/react': 18.0.21
       fast-glob: 3.2.11
       fs-extra: 9.0.1
@@ -1770,7 +1770,7 @@ importers:
   semcore/widget-empty:
     specifiers:
       '@semcore/flex-box': ^4
-      '@semcore/illustration': 1.4.24
+      '@semcore/illustration': 1.4.27
       '@semcore/testing-utils': 1.0.0
       '@semcore/utils': ^3.27
       '@types/react': 18.0.21
@@ -8263,7 +8263,7 @@ packages:
   /entities/4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
-    dev: false
+    dev: true
 
   /errno/0.1.8:
     resolution: {integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==}
