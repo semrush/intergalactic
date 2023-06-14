@@ -67,10 +67,14 @@ const keyboardFocusEnhance = () => {
     }, []);
     const handlerBlur = React.useCallback(() => setKeyboardFocused(false), []);
     React.useEffect(() => {
-      if (autoFocus) {
+      if (typeof autoFocus !== 'number' && !autoFocus) return;
+      const timer = setTimeout(() => {
         ref.current?.focus();
         setKeyboardFocused(true);
-      }
+      }, 0);
+      return () => {
+        clearTimeout(timer);
+      };
     }, [autoFocus]);
 
     return assignProps(props, {

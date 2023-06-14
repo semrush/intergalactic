@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.53.4] - 2023-06-14
+
+### Fixed
+
+- AutoFocus in the animated popovers might be causing instant scroll to the page top.
+
 ## [3.53.3] - 2023-06-12
 
 ### Fixed
