@@ -206,7 +206,7 @@ describe('focus control', () => {
     expect(getByTestId('popper')).toHaveFocus();
   });
 
-  test.only('focus return', () => {
+  test('focus return', () => {
     let hidePopper = undefined;
     vi.useFakeTimers();
     const Component = () => {

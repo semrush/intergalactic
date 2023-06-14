@@ -58,7 +58,10 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
   if (this.snapshotState._updateSnapshot === 'all') {
     await writeFile(snapshotPath, snapshot);
 
-    return { pass: true };
+    return {
+      pass: true,
+      message: () => 'ok',
+    };
   }
 
   try {
@@ -69,6 +72,7 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
 
       return {
         pass: true,
+        message: () => 'ok',
       };
     } else {
       return {
@@ -104,6 +108,7 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
   if (mismatch === 0) {
     return {
       pass: true,
+      message: () => 'ok',
     };
   }
 

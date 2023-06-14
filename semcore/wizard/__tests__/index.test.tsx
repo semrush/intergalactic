@@ -125,7 +125,7 @@ describe('Wizard', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.only('Should support keyboard navigation', async ({ task }) => {
+  test('Should support keyboard navigation', async ({ task }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
