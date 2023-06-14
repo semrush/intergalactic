@@ -15,7 +15,7 @@ describe('InputMask', () => {
   shouldSupportClassName(InputMask);
   shouldSupportRef(InputMask);
 
-  test.concurrent('Should correct render', async ({ task }) => {
+  test.concurrent('Should renders correctly', async ({ task }) => {
     const Component = ({ value = '' }) => (
       <InputMask size="l" mb={4}>
         <InputMask.Value
@@ -30,11 +30,11 @@ describe('InputMask', () => {
     );
 
     const { getByTestId } = render(<Component />);
-    const input = getByTestId('input');
+    const input = getByTestId('input') as HTMLInputElement;
     fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '999' } });
+    fireEvent.change(input, { target: { value: '333' } });
 
-    expect(input.value).toBe('99 9');
+    expect(input.value).toBe('33 3');
     await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
   });
 

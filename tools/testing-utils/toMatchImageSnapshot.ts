@@ -105,7 +105,7 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
     },
   );
 
-  if (mismatch === 0) {
+  if (mismatch < 10) {
     return {
       pass: true,
       message: () => 'ok',

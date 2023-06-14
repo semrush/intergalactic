@@ -425,7 +425,7 @@ describe('DataTable', () => {
               style={{
                 position: 'absolute',
                 width: '100%',
-                height: 'calc(45px * 2)',
+                height: '90px',
                 left: 0,
                 bottom: 0,
                 background: 'rgba(255, 0, 0, 0.2)',

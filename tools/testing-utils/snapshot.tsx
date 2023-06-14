@@ -17,13 +17,24 @@ require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };
 
-export const snapshot = async (Component, options?: {}) => {
+export const snapshot = async (
+  Component,
+  { afterMount, ...options } = {} as { afterMount?: (root: HTMLDivElement) => void },
+) => {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
   vi.useFakeTimers();
   act(() => root.render(Component));
   if (!options) {
+    act(() => {
+      vi.runAllTimers();
+    });
+  }
+  if (afterMount) {
+    act(() => {
+      afterMount(_tmp);
+    });
     act(() => {
       vi.runAllTimers();
     });
