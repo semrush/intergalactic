@@ -1,12 +1,16 @@
 import React from 'react';
-import { testing, shared, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+
 import Checkbox from '../src';
 
-const { cleanup, render, axe } = testing;
-const { shouldSupportClassName, shouldSupportRef } = shared;
-
 describe('Checkbox', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Checkbox);
   shouldSupportRef(Checkbox);
@@ -15,7 +19,7 @@ describe('Checkbox', () => {
   shouldSupportClassName(Checkbox.Text, Checkbox);
   shouldSupportRef(Checkbox.Text, Checkbox);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox>
@@ -29,10 +33,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should not be check icon in unchecked and disabled state', async () => {
+  test.concurrent('Should not be check icon in unchecked and disabled state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px" style={{ backgroundColor: '#b880ff' }}>
         <Checkbox>
@@ -42,10 +46,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support sizes', async () => {
+  test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox size="l">
@@ -59,10 +63,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support normal state', async () => {
+  test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox>
@@ -88,10 +92,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support invalid state', async () => {
+  test.concurrent('Should support invalid state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox state="invalid">
@@ -121,10 +125,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support intermediate state', async () => {
+  test.concurrent('Should support intermediate state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox>
@@ -178,10 +182,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support themes', async () => {
+  test.concurrent('Should support themes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox theme="pink">
@@ -211,7 +215,7 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

@@ -1,14 +1,14 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render } = testing;
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 
 import OutsideClick from '../src';
 
 describe('OutsideClick', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('should support call onOutsideClick if event outside', () => {
-    const onOutsideClick = jest.fn();
+  test.concurrent('should support call onOutsideClick if event outside', () => {
+    const onOutsideClick = vi.fn();
     render(<OutsideClick onOutsideClick={onOutsideClick} />);
 
     fireEvent.mouseUp(document.body);
@@ -16,21 +16,21 @@ describe('OutsideClick', () => {
     expect(onOutsideClick).toBeCalled();
   });
 
-  test('should not call onOutsideClick if event inside', () => {
-    const onOutsideClick = jest.fn();
+  test.concurrent('should not call onOutsideClick if event inside', () => {
+    const onOutsideClick = vi.fn();
     const { getByTestId } = render(
       <OutsideClick onOutsideClick={onOutsideClick}>
         <div data-testid="child">test</div>
       </OutsideClick>,
     );
 
-    fireEvent.mouseUp(getByTestId('child'));
+    fireEvent.mouseUp(getByTestId('child').childNodes[0]);
 
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test('should support excludeRefs', () => {
-    const onOutsideClick = jest.fn();
+  test.concurrent('should support excludeRefs', () => {
+    const onOutsideClick = vi.fn();
     const outsideRef = React.createRef<any>();
     const { getByTestId } = render(
       <>
@@ -41,20 +41,20 @@ describe('OutsideClick', () => {
       </>,
     );
 
-    fireEvent.mouseUp(getByTestId('outside'));
+    fireEvent.mouseUp(getByTestId('outside').childNodes[0]);
 
     expect(onOutsideClick).not.toBeCalled();
   });
 
-  test('should support excludeRefs node', () => {
-    const onOutsideClick = jest.fn();
+  test.concurrent('should support excludeRefs node', () => {
+    const onOutsideClick = vi.fn();
     render(
       <>
         <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[document.body]} />
       </>,
     );
 
-    fireEvent.mouseUp(document.body);
+    fireEvent.mouseUp(document.body.childNodes[0]);
 
     expect(onOutsideClick).not.toBeCalled();
   });

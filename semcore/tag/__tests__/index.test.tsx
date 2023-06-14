@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import Tag from '../src';
 
-const { axe, render, fireEvent, cleanup } = testing;
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Tag', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   const colors = [
     'gray-500',
@@ -21,12 +23,12 @@ describe('Tag', () => {
   ];
   const themes = ['primary', 'secondary'];
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Tag>Tag</Tag>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with Addon and Text', async () => {
+  test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
     const component = (
       <Tag>
         <Tag.Addon id="hover">Addon</Tag.Addon>
@@ -34,17 +36,17 @@ describe('Tag', () => {
         <Tag.Addon id="hover-3">Addon</Tag.Addon>
       </Tag>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: ['#hover', '#hover-1', '#hoveer-3'],
           focus: ['#hover', '#hover-1', '#hoveer-3'],
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with Addon as props', async () => {
+  test.concurrent('Renders correctly with Addon as props', async ({ task }) => {
     const Addon = React.forwardRef<HTMLSpanElement>((props, ref) => {
       return (
         <span ref={ref} {...propsForElement(props)}>
@@ -57,10 +59,10 @@ describe('Tag', () => {
         Test
       </Tag>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support disabled', async () => {
+  test.concurrent('Should support disabled', async ({ task }) => {
     const component = (
       <Tag disabled>
         <Tag.Text>disabled</Tag.Text>
@@ -68,10 +70,10 @@ describe('Tag', () => {
       </Tag>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support active', async () => {
+  test.concurrent('Should support active', async ({ task }) => {
     const component = themes
       .map((theme) =>
         colors.map((color) => (
@@ -83,10 +85,10 @@ describe('Tag', () => {
       )
       .flat();
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support size props', async () => {
+  test.concurrent('Should support size props', async ({ task }) => {
     const component = ['xl', 'l', 'm'].map((size) => (
       <Tag size={size} key={size}>
         <Tag.Circle>
@@ -97,10 +99,10 @@ describe('Tag', () => {
       </Tag>
     ));
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support theme props', async () => {
+  test.concurrent('should support theme props', async ({ task }) => {
     const component = themes
       .map((theme) =>
         colors.map((color) => (
@@ -111,10 +113,10 @@ describe('Tag', () => {
         )),
       )
       .flat();
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  xtest('should support custom theme', async () => {
+  test.skip('should support custom theme', async ({ task }) => {
     const component = (
       <>
         <Tag theme="blanchedalmond">
@@ -131,25 +133,25 @@ describe('Tag', () => {
         </Tag>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  xtest('should support color text', async () => {
+  test.skip('should support color text', async ({ task }) => {
     const component = (
       <Tag theme="dark-violet" color="white">
         dark-violet
       </Tag>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should display ellipsis if text is too long', async () => {
+  test.concurrent('should display ellipsis if text is too long', async ({ task }) => {
     const component = <Tag w={80}>Lorem ipsum dolor sit amet</Tag>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should call onClick', async () => {
-    const onClick = jest.fn();
+  test.concurrent('should call onClick', async () => {
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag>
         <Tag.Text>Tag</Tag.Text>
@@ -162,8 +164,8 @@ describe('Tag', () => {
   });
 
   test('should not call onClick with onKeydown', async () => {
-    const onKeyDown = jest.fn();
-    const onClick = jest.fn();
+    const onKeyDown = vi.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag>
         <Tag.Text>Tag</Tag.Text>

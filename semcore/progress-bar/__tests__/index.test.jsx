@@ -1,17 +1,19 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { cleanup, render } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import ProgressBar from '../src';
 
 describe('ProgressBar', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(ProgressBar);
   shouldSupportRef(ProgressBar);
 
-  test('Should support children', () => {
+  test.concurrent('Should support children', () => {
     const component = (
       <ProgressBar data-testid="parent">
         <p>Test</p>
@@ -23,7 +25,7 @@ describe('ProgressBar', () => {
     expect(getByTestId('parent').children.length).toEqual(3);
   });
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: '200px' }}>
         <ProgressBar />
@@ -33,19 +35,19 @@ describe('ProgressBar', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support dark view', async () => {
+  test.concurrent('Should support dark view', async ({ task }) => {
     const component = (
       <div style={{ width: '200px', padding: '10px', background: 'black' }}>
         <ProgressBar value={50} theme="dark" />
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support size props', async () => {
+  test.concurrent('Should support size props', async ({ task }) => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar value={50} size="l" />
@@ -56,10 +58,10 @@ describe('ProgressBar', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom theme', async () => {
+  test.concurrent('Should support custom theme', async ({ task }) => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar
@@ -71,14 +73,14 @@ describe('ProgressBar', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 describe('ProgressBar.Value', () => {
   shouldSupportClassName(ProgressBar.Value, ProgressBar);
   shouldSupportRef(ProgressBar.Value, ProgressBar);
 
-  test('Should support custom theme', async () => {
+  test.concurrent('Should support custom theme', async ({ task }) => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar value={50}>
@@ -91,6 +93,6 @@ describe('ProgressBar.Value', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

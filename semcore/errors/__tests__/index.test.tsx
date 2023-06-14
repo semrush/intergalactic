@@ -1,7 +1,9 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 
-const { axe, render, cleanup } = testing;
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Error, {
   AccessDenied,
@@ -14,9 +16,9 @@ import Error, {
 import Button from '@semcore/button';
 
 describe('Error', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <Error>
         <Error.Title>Horrible error</Error.Title>
@@ -31,10 +33,10 @@ describe('Error', () => {
         </Error.Controls>
       </Error>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly with icon', async () => {
+  test.concurrent('Render correctly with icon', async ({ task }) => {
     const iconUrl = getIconPath('PageNotFound');
     const component = (
       <Error icon={iconUrl}>
@@ -46,10 +48,10 @@ describe('Error', () => {
         </Error.Description>
       </Error>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with icon as react component', async () => {
+  test.concurrent('Renders correctly with icon as react component', async ({ task }) => {
     const Icon = () => (
       <svg height="100" width="100">
         <circle cx="50" cy="50" r="40" stroke="black" strokeWidth="3" fill="red" />
@@ -65,10 +67,10 @@ describe('Error', () => {
         </Error.Description>
       </Error>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly on small screen', async () => {
+  test.concurrent('Render correctly on small screen', async ({ task }) => {
     const iconUrl = getIconPath('PageNotFound');
     const component = (
       <Error icon={iconUrl}>
@@ -78,41 +80,41 @@ describe('Error', () => {
         </Error.Description>
       </Error>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         selector: 'body',
         width: 320,
         height: 100,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly AccessDenied', async () => {
+  test.concurrent('Render correctly AccessDenied', async ({ task }) => {
     const component = <AccessDenied />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly Maintenance', async () => {
+  test.concurrent('Render correctly Maintenance', async ({ task }) => {
     const component = <Maintenance toolName="Intergalactic" />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly PageError', async () => {
+  test.concurrent('Render correctly PageError', async ({ task }) => {
     const component = <PageError />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly PageNotFound', async () => {
+  test.concurrent('Render correctly PageNotFound', async ({ task }) => {
     const component = <PageNotFound />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly ProjectNotFound', async () => {
+  test.concurrent('Render correctly ProjectNotFound', async ({ task }) => {
     const component = <ProjectNotFound />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly on small screen', async () => {
+  test.concurrent('Render correctly on small screen', async () => {
     const { container } = render(
       <Error icon="https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg">
         <Error.Title>Horrible error</Error.Title>

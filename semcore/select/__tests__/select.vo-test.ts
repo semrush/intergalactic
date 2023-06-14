@@ -1,9 +1,9 @@
 import { expect } from '@playwright/test';
 import { voTest as test } from '@guidepup/playwright';
-import { e2eStandToHtml } from '@semcore/jest-preset-ui/e2e-stand';
+import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
-import { getReportHeader, makeVoiceOverReporter } from '@semcore/jest-preset-ui/vo-reporter';
+import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Select via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
   const standPath = resolvePath(

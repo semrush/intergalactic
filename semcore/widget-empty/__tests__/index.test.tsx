@@ -1,74 +1,75 @@
 // TODO: add a11y
 
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import WidgetEmpty, { NoData, Error, getIconPath } from '../src';
 
-const { cleanup } = testing;
+import { cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('WidgetEmpty', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <WidgetEmpty>
         <WidgetEmpty.Title>Title</WidgetEmpty.Title>
         <WidgetEmpty.Description>Description</WidgetEmpty.Description>
       </WidgetEmpty>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support icon', async () => {
+  test.concurrent('Should support icon', async ({ task }) => {
     const component = <WidgetEmpty icon={getIconPath('line-chart')}>WidgetEmpty</WidgetEmpty>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom node icon', async () => {
+  test.concurrent('Should support custom node icon', async ({ task }) => {
     const component = <WidgetEmpty icon={<b>ICON</b>}>WidgetEmpty</WidgetEmpty>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
 describe('NoData', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <NoData />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support content', async () => {
+  test.concurrent('Should support content', async ({ task }) => {
     const component = <NoData>NoData</NoData>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom description', async () => {
+  test.concurrent('Should support custom description', async ({ task }) => {
     const component = <NoData description={'description'} />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom type', async () => {
+  test.concurrent('Should support custom type', async ({ task }) => {
     const component = <NoData type="line-chart" />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Error', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Error />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support content', async () => {
+  test.concurrent('Should support content', async ({ task }) => {
     const component = <Error>NoData</Error>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom description', async () => {
+  test.concurrent('Should support custom description', async ({ task }) => {
     const component = <Error description={'description'} />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

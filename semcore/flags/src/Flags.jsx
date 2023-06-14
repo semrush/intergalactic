@@ -79,7 +79,8 @@ function Flags(props, ref) {
     },
     ref,
   );
-  const { iso2, iso3, name, staticPath = `//static.semrush.com/ui-kit/flags/${version}` } = props;
+  const flagsBase = global.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/ui-kit/flags/';
+  const { iso2, iso3, name, staticPath = `${flagsBase}${version}` } = props;
 
   if (!_addedStyle) {
     _addedStyle = addLinkStyleSprite(staticPath);

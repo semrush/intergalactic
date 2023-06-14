@@ -1,14 +1,17 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup } from '@semcore/testing-utils/testing-library';
+
 import { Text } from '@semcore/typography';
 import SettingsM from '@semcore/icon/Settings/m';
-const { cleanup } = testing;
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Card from '../src';
 
 describe('Card', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Card);
   shouldSupportRef(Card);
@@ -19,13 +22,13 @@ describe('Card', () => {
   shouldSupportClassName(Card.Description, Card);
   shouldSupportRef(Card.Description, Card);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Card>Content</Card>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly Tittle/Description', async () => {
+  test.concurrent('Renders correctly Tittle/Description', async ({ task }) => {
     const component = (
       <Card>
         <Card.Title hint="test">Title</Card.Title>
@@ -34,10 +37,10 @@ describe('Card', () => {
       </Card>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly Tittle/Description without hint', async () => {
+  test.concurrent('Renders correctly Tittle/Description without hint', async ({ task }) => {
     const component = (
       <Card>
         <Card.Title>Title</Card.Title>
@@ -46,20 +49,20 @@ describe('Card', () => {
       </Card>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly Tittle with hint', async () => {
+  test.concurrent('Renders correctly Tittle with hint', async ({ task }) => {
     const component = (
       <Card>
         <Card.Title hint>Title</Card.Title>
       </Card>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly Header and Body', async () => {
+  test.concurrent('Renders correctly Header and Body', async ({ task }) => {
     const component = (
       <Card>
         <Card.Header>
@@ -70,10 +73,10 @@ describe('Card', () => {
       </Card>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('basic example visual regression', async () => {
+  test.concurrent('basic example visual regression', async ({ task }) => {
     const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 
     const component = (
@@ -94,6 +97,6 @@ describe('Card', () => {
       </Card>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

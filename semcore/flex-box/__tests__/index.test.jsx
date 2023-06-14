@@ -1,7 +1,9 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { cleanup, render } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Box, Flex } from '../src';
 
 const styleBox = {
@@ -10,12 +12,12 @@ const styleBox = {
 };
 
 describe('Flex', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Flex);
   shouldSupportRef(Flex);
 
-  test('Should gaps', async () => {
+  test.concurrent('Should gaps', async ({ task }) => {
     const component = (
       <div>
         <Flex columnGap={2} scaleIndent={10}>
@@ -60,17 +62,30 @@ describe('Flex', () => {
         </Flex>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support css property', async () => {
+  test.concurrent('Should support css property', async () => {
     const MAP_CSS = {
-      inline: { css: 'display', values: ['inline-flex'] },
-      reverse: { css: 'flex-direction', values: ['row-reverse', 'column-reverse'] },
-      flexWrap: { css: 'flex-wrap', values: ['wrap'] },
-      direction: { css: 'flex-direction', values: ['column', 'row'], tests: ['column', 'row'] },
-      alignItems: { css: 'align-items', values: ['center'], tests: ['center'] },
-      justifyContent: { css: 'justify-content', values: ['center'], tests: ['center'] },
+      reverse: {
+        css: 'flex-direction',
+        name: 'flexDirection',
+        values: ['row-reverse', 'column-reverse'],
+      },
+      flexWrap: { css: 'flex-wrap', name: 'flexWrap', values: ['wrap'] },
+      direction: {
+        css: 'flex-direction',
+        name: 'flexDirection',
+        values: ['column', 'row'],
+        tests: ['column', 'row'],
+      },
+      alignItems: { css: 'align-items', name: 'alignItems', values: ['center'], tests: ['center'] },
+      justifyContent: {
+        css: 'justify-content',
+        name: 'justifyContent',
+        values: ['center'],
+        tests: ['center'],
+      },
     };
     const components = Object.keys(MAP_CSS).map((prop, id) => {
       const { tests } = MAP_CSS[prop];
@@ -108,19 +123,19 @@ describe('Flex', () => {
       const { testid } = node.dataset;
       const [prop] = testid.split('-');
       const data = MAP_CSS[prop];
-      const cssValue = getComputedStyle(node)[data.css];
+      const cssValue = node.style[data.name];
       expect(cssValue).toBe(MAP_CSS[prop].values.find((v) => v === cssValue));
     });
   });
 });
 
 describe('Box', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Box);
   shouldSupportRef(Box);
 
-  test('Should support size', async () => {
+  test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <div>
         <Box style={styleBox} w={100} h="100px">
@@ -132,10 +147,10 @@ describe('Box', () => {
         </Box>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support size min limits', async () => {
+  test.concurrent('Should support size min limits', async ({ task }) => {
     const style = {
       width: 0,
       height: 0,
@@ -148,10 +163,10 @@ describe('Box', () => {
         </Box>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support size max limits', async () => {
+  test.concurrent('Should support size max limits', async ({ task }) => {
     const style = {
       width: '100%',
       height: '100%',
@@ -168,10 +183,10 @@ describe('Box', () => {
         </Box>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support indent', async () => {
+  test.concurrent('Should support indent', async ({ task }) => {
     const component = (
       <div>
         <Box inline style={styleBox}>
@@ -182,7 +197,7 @@ describe('Box', () => {
         </Box>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test("Should support Box 'tag' prop", () => {
@@ -218,7 +233,7 @@ describe('Box', () => {
 
   test('Should support scaleIndent for calculate offset', () => {
     const { getByTestId } = render(<Box scaleIndent={10} mt={2} data-testid="box" />);
-    expect(getByTestId('box').style['margin-top']).toBe('20px');
+    expect(getByTestId('box').style.marginTop).toBe('20px');
   });
 
   test('Should support css property', async () => {
@@ -281,9 +296,9 @@ describe('Box', () => {
 });
 
 describe('FlexBox', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Correctly render Flex, Box', async () => {
+  test.concurrent('Correctly render Flex, Box', async ({ task }) => {
     const component = (
       <Flex w={500} justifyContent="space-between">
         <Box style={styleBox} w={100}>
@@ -297,6 +312,6 @@ describe('FlexBox', () => {
         </Box>
       </Flex>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

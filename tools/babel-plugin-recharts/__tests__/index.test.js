@@ -1,5 +1,9 @@
 const pluginTester = require('babel-plugin-tester');
 const removeInject = require('../');
+import { describe, it } from 'vitest';
+
+global.describe = describe;
+global.it = it;
 
 pluginTester({
   plugin: removeInject,

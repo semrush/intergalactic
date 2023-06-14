@@ -9,8 +9,7 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --source=js",
-    "test": "jest"
+    "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
     "@semcore/flex-box": "^4.5.0",
@@ -22,7 +21,7 @@
   "devDependencies": {
     "@types/react": "18.0.21",
     "@semcore/button": "*",
-    "@semcore/jest-preset-ui": "1.0.0",
+    "@semcore/testing-utils": "1.0.0",
     "@semcore/spin": "*",
     "@semcore/tooltip": "*"
   },
@@ -30,9 +29,6 @@
     "@semcore/core": "^1.11",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
   },
   "repository": {
     "type": "git",

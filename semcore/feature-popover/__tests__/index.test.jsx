@@ -1,11 +1,12 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { render, cleanup } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
 
 import FeaturePopover from '../src';
 
 describe('FeaturePopover.Trigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -52,7 +53,7 @@ describe('FeaturePopover.Trigger', () => {
 });
 
 describe('FeaturePopover.Popper', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -97,7 +98,7 @@ describe('FeaturePopover.Popper', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('visual regression', async () => {
+  test.concurrent('visual regression', async ({ task }) => {
     const component = (
       <div
         style={{
@@ -124,6 +125,6 @@ describe('FeaturePopover.Popper', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

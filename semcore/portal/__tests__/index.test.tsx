@@ -1,12 +1,12 @@
 import React from 'react';
-import { testing } from '@semcore/jest-preset-ui';
-const { cleanup, render } = testing;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
 import Portal, { PortalProvider } from '../src';
 
 describe('Portal', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('should render children to outside container', () => {
+  test.concurrent('should render children to outside container', () => {
     const { getByTestId } = render(
       <div data-testid="parent">
         <Portal>
@@ -20,7 +20,7 @@ describe('Portal', () => {
     expect(document.body.lastChild.dataset.testid).toEqual('child');
   });
 
-  test('should render support disablePortal', () => {
+  test.concurrent('should render support disablePortal', () => {
     const { getByTestId } = render(
       <div data-testid="parent">
         <Portal disablePortal>
@@ -34,7 +34,7 @@ describe('Portal', () => {
     expect(document.body.lastChild.dataset.testid).toEqual(undefined);
   });
 
-  test('should render change containerNode', () => {
+  test.concurrent('should render change containerNode', () => {
     const containerRef = React.createRef<any>();
     const { getByTestId } = render(
       <>

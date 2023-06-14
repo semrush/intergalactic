@@ -1,18 +1,21 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+
 import Badge from '../src';
 
-const { cleanup, axe, render } = testing;
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Badge', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Badge>admin</Badge>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support color', async () => {
+  test.concurrent('Should support color', async ({ task }) => {
     const component = (
       <>
         <Badge color="white">admin</Badge>
@@ -20,10 +23,10 @@ describe('Badge', () => {
         <Badge color="green">new</Badge>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support bg', async () => {
+  test.concurrent('Should support bg', async ({ task }) => {
     const component = (
       <>
         <Badge bg="cyan">admin</Badge>
@@ -32,7 +35,7 @@ describe('Badge', () => {
         <Badge bg="green">new</Badge>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

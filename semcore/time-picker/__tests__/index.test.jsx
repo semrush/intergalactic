@@ -1,7 +1,10 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 
-const { render, cleanup, axe } = testing;
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import TimePicker from '../src';
 
 const TimePickerDefault = ({ children, ...other }) => (
@@ -14,9 +17,9 @@ const TimePickerDefault = ({ children, ...other }) => (
 );
 
 describe('TimePicker', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('should support sizes', async () => {
+  test.concurrent('should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <TimePickerDefault value="11" size="l">
@@ -28,10 +31,10 @@ describe('TimePicker', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support disabled', async () => {
+  test.concurrent('should support disabled', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <TimePickerDefault disabled />
@@ -41,10 +44,10 @@ describe('TimePicker', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support state', async () => {
+  test.concurrent('should support state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <TimePickerDefault state="invalid" />
@@ -58,18 +61,18 @@ describe('TimePicker', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support focus', async () => {
-    expect(
+  test.concurrent('should support focus', async ({ task }) => {
+    await expect(
       await snapshot(<TimePickerDefault focused />, {
         actions: {
           focus: '#hours',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <TimePickerDefault focused>
           <TimePicker.Format />
@@ -80,15 +83,15 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<TimePickerDefault focused state="valid" />, {
         actions: {
           focus: '#hours',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <TimePickerDefault focused state="valid">
           <TimePicker.Format />
@@ -99,15 +102,15 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<TimePickerDefault focused state="invalid" />, {
         actions: {
           focus: '#hours',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <TimePickerDefault focused state="invalid">
           <TimePicker.Format />
@@ -118,11 +121,11 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should support hover format', async () => {
-    expect(
+  test.concurrent('should support hover format', async ({ task }) => {
+    await expect(
       await snapshot(
         <TimePickerDefault>
           <TimePicker.Format id="format" />
@@ -133,11 +136,11 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should support active format', async () => {
-    expect(
+  test.concurrent('should support active format', async ({ task }) => {
+    await expect(
       await snapshot(
         <TimePickerDefault>
           <TimePicker.Format id="format" />
@@ -148,7 +151,7 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

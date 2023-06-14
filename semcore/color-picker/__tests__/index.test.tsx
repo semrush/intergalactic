@@ -1,28 +1,30 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import ColorPicker, { PaletteManager } from '../src';
 
-const { cleanup, fireEvent, render, axe, act } = testing;
-
 describe('ColorPicker', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should render trigger correctly', async () => {
+  test.concurrent('Should render trigger correctly', async ({ task }) => {
     const component = <ColorPicker value="#232456" />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render non-extended popper correctly', async () => {
+  test.concurrent('Should render non-extended popper correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
         <ColorPicker value="#FF8786" disablePortal visible />
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render extended popper correctly', async () => {
+  test.concurrent('Should render extended popper correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
         <ColorPicker value="#FF8786" disablePortal visible>
@@ -41,12 +43,12 @@ describe('ColorPicker', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should call onChange function when click on item color', async () => {
+  test.concurrent('Should call onChange function when click on item color', async () => {
     const value = '#2BB3FF';
-    const spy = jest.fn();
+    const spy = vi.fn();
 
     const { getAllByTestId } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -67,8 +69,8 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith('#8649E1', expect.anything());
   });
 
-  test('Should clear input when click on cancel icon inside input', async () => {
-    const { getByTestId, getByLabelText  } = render(
+  test.concurrent('Should clear input when click on cancel icon inside input', async () => {
+    const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
           <ColorPicker.Trigger />
@@ -93,8 +95,8 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('');
   });
 
-  test('Should add colort when click on confirm icon inside input', async () => {
-    const spy = jest.fn();
+  test.concurrent('Should add colort when click on confirm icon inside input', async () => {
+    const spy = vi.fn();
 
     const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -124,8 +126,8 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test('Should add color when click on "Enter" click', async () => {
-    const spy = jest.fn();
+  test.concurrent('Should add color when click on "Enter" click', async () => {
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -152,9 +154,9 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test('Should add color with "#" sign in the code color', async () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+  test.concurrent('Should add color with "#" sign in the code color', async () => {
+    vi.useFakeTimers();
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <div style={{ width: 250, height: 100 }}>
@@ -173,7 +175,9 @@ describe('ColorPicker', () => {
 
     const input = getByTestId('inputColor');
     fireEvent.change(input, { target: { value: '#635472' } });
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(input.value).toBe('#635472');
 
@@ -182,7 +186,7 @@ describe('ColorPicker', () => {
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

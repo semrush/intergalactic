@@ -1,11 +1,14 @@
 import React from 'react';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import InlineInput from '../src/InlineInput';
 import SerpM from '@semcore/icon/Serp/m';
 
-const { cleanup, fireEvent, render, axe, act } = testing;
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Input from '../src';
 
 const makePlayground = () => (
@@ -86,18 +89,18 @@ const makePlayground = () => (
 );
 
 describe('InlineInput', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Input);
   shouldSupportRef(Input.Value, Input);
 
-  test('Should render in different ways', async () => {
+  test.concurrent('Should render in different ways', async ({ task }) => {
     const component = makePlayground();
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('custom texts', async () => {
+  test.concurrent('custom texts', async ({ task }) => {
     const component = (
       <>
         <br />
@@ -129,13 +132,13 @@ describe('InlineInput', () => {
      * it's expected when disablePortal option is enabled
      */
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('on blur behavior', () => {
-    jest.useFakeTimers();
-    const spyCancel = jest.fn();
-    const spyConfirm = jest.fn();
+  test.concurrent('on blur behavior', () => {
+    vi.useFakeTimers();
+    const spyCancel = vi.fn();
+    const spyConfirm = vi.fn();
 
     const { getByTestId } = render(
       <>
@@ -153,12 +156,16 @@ describe('InlineInput', () => {
 
     /** bubbling doesn't work in jest? */
     fireEvent.blur(getByTestId('behavior-cancel'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spyCancel).toHaveBeenCalledTimes(1);
     fireEvent.blur(getByTestId('behavior-confirm'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spyConfirm).toHaveBeenCalledTimes(1);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

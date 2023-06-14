@@ -1,12 +1,14 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, render, cleanup } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Breadcrumbs from '../src';
 
 describe('Breadcrumbs', () => {
-  afterEach(cleanup);
-  test('Renders correctly', async () => {
+  beforeEach(cleanup);
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <Breadcrumbs>
         <Breadcrumbs.Item>first</Breadcrumbs.Item>
@@ -16,20 +18,20 @@ describe('Breadcrumbs', () => {
       </Breadcrumbs>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Item active renders correctly', async () => {
+  test.concurrent('Item active renders correctly', async ({ task }) => {
     const component = (
       <Breadcrumbs>
         <Breadcrumbs.Item active>first</Breadcrumbs.Item>
       </Breadcrumbs>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover item', async () => {
+  test.concurrent('Should support hover item', async ({ task }) => {
     const component = (
       <Breadcrumbs>
         <Breadcrumbs.Item id="breadcrumbs">Dashboard</Breadcrumbs.Item>
@@ -38,16 +40,16 @@ describe('Breadcrumbs', () => {
       </Breadcrumbs>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#breadcrumbs',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Correctly truncate big text', async () => {
+  test.concurrent('Correctly truncate big text', async ({ task }) => {
     const component = (
       <Breadcrumbs>
         <Breadcrumbs.Item style={{ maxWidth: '125px' }}>
@@ -58,7 +60,7 @@ describe('Breadcrumbs', () => {
       </Breadcrumbs>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

@@ -98,7 +98,7 @@ class PickerAbstract extends Component {
       return isDisabledDay ? null : current_day;
     };
 
-    if (e.keyCode === 32 || (e.keyCode === 13 && highlighted.length)) {
+    if (e.key === 'Space' || (e.key === 'Enter' && highlighted.length)) {
       this.handlers.value(highlighted[0]);
       e.preventDefault();
     }

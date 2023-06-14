@@ -33,7 +33,7 @@
       "workspaces": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
-      "alias": {
+      "eslint-import-resolver-custom-alias": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
         "map": [["@semcore/ui", "./intergalactic/semcore"]]
       }

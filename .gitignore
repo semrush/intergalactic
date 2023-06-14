@@ -25,7 +25,7 @@ coverage/
 # Not use npm
 package-lock.json
 
-# Jest snapshots
+# Test snapshots
 __diff_output__
 
 # My test directory

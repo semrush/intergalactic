@@ -1,17 +1,19 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Globe from '@semcore/icon/Globe/m';
 import Badge from '@semcore/badge';
 
-const { render, fireEvent, cleanup, axe, act } = testing;
+import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Pills from '../src';
 
 describe('PillGroup', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should support onChange callback', () => {
-    const spy = jest.fn();
+  test.concurrent('Should support onChange callback', () => {
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1 as Number} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -27,8 +29,8 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should support onClick on Pill', () => {
-    const spy = jest.fn();
+  test.concurrent('Should support onClick on Pill', () => {
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -44,9 +46,9 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not call PillGroup onChange after falsy onClick on Pill', () => {
-    const spy = jest.fn();
-    const spyClick = jest.fn(() => false);
+  test.concurrent('Should not call PillGroup onChange after falsy onClick on Pill', () => {
+    const spy = vi.fn();
+    const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -63,8 +65,8 @@ describe('PillGroup', () => {
     expect(spyClick).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not support clicks on disabled tab', () => {
-    const spy = jest.fn();
+  test.concurrent('Should not support clicks on disabled tab', () => {
+    const spy = vi.fn();
 
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
@@ -82,15 +84,21 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  test('Should support behavior=tabs', async () => {
-    const spyLeft = jest.fn();
-    const spyRight = jest.fn();
+  test.concurrent('Should support behavior=tabs', async () => {
+    const spyLeft = vi.fn();
+    const spyRight = vi.fn();
 
     const { getByTestId } = render(
-      <Pills behavior='tabs'>
-        <Pills.Item value={1} onFocus={spyLeft}>1</Pills.Item>
-        <Pills.Item data-testid={'pill'} value={2}>2</Pills.Item>
-        <Pills.Item value={3} onFocus={spyRight}>3</Pills.Item>
+      <Pills behavior="tabs">
+        <Pills.Item value={1} onFocus={spyLeft}>
+          1
+        </Pills.Item>
+        <Pills.Item data-testid={'pill'} value={2}>
+          2
+        </Pills.Item>
+        <Pills.Item value={3} onFocus={spyRight}>
+          3
+        </Pills.Item>
       </Pills>,
     );
     const pill = getByTestId('pill');
@@ -104,13 +112,15 @@ describe('PillGroup', () => {
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
-  test('Should support behavior=radio', async () => {
-    const spy = jest.fn();
+  test.concurrent('Should support behavior=radio', async () => {
+    const spy = vi.fn();
 
     const { getByTestId } = render(
-      <Pills behavior='radio' onChange={spy} value={2}>
+      <Pills behavior="radio" onChange={spy} value={2}>
         <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item data-testid={'pill'} value={2}>2</Pills.Item>
+        <Pills.Item data-testid={'pill'} value={2}>
+          2
+        </Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
       </Pills>,
     );
@@ -123,7 +133,7 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
-  test('Should render correctly states', async () => {
+  test.concurrent('Should render correctly states', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills value={1}>
@@ -147,12 +157,12 @@ describe('PillGroup', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support additional elements as props', async () => {
+  test.concurrent('should support additional elements as props', async ({ task }) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const Addon = React.forwardRef(function({ forwardRef, Children, Root, ...p }, ref) {
+    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop
@@ -172,14 +182,14 @@ describe('PillGroup', () => {
       </Pills>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover', async () => {
-    expect(
+  test.concurrent('Should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <Pills>
-          <Pills.Item id='item'>Item 1</Pills.Item>
+          <Pills.Item id="item">Item 1</Pills.Item>
           <Pills.Item>Item 2</Pills.Item>
         </Pills>,
         {
@@ -188,11 +198,11 @@ describe('PillGroup', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <Pills>
-          <Pills.Item id='item' selected>
+          <Pills.Item id="item" selected>
             Item 1
           </Pills.Item>
           <Pills.Item>Item 2</Pills.Item>
@@ -203,10 +213,10 @@ describe('PillGroup', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support size with Addon', async () => {
+  test.concurrent('Should support size with Addon', async ({ task }) => {
     const PillsSize = ({ size }) => (
       <Pills size={size}>
         <Pills.Item>
@@ -215,7 +225,7 @@ describe('PillGroup', () => {
           </Pills.Item.Addon>
           <Pills.Item.Text>Item 1</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Badge bg='orange'>beta</Badge>
+            <Badge bg="orange">beta</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item>
@@ -227,7 +237,7 @@ describe('PillGroup', () => {
         <Pills.Item>
           <Pills.Item.Text>Item 3</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Badge bg='orange'>beta</Badge>
+            <Badge bg="orange">beta</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item>Item 4</Pills.Item>
@@ -237,11 +247,11 @@ describe('PillGroup', () => {
       </Pills>
     );
 
-    expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot();
-    expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot();
+    await expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render for different number Items', async () => {
+  test.concurrent('Should correct render for different number Items', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills>
@@ -259,10 +269,10 @@ describe('PillGroup', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render for alone Item, Item.Addon', async () => {
+  test.concurrent('Should correct render for alone Item, Item.Addon', async ({ task }) => {
     const PillsSize = ({ size }) => (
       <>
         <Pills size={size}>
@@ -277,8 +287,8 @@ describe('PillGroup', () => {
       </>
     );
 
-    expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot();
-    expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot();
+    await expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -287,7 +297,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid='tab-4'>
+        <Pills.Item value={4} data-testid="tab-4">
           4
         </Pills.Item>
       </Pills>,
@@ -301,11 +311,11 @@ describe('PillGroup', () => {
 
   test('a11y behavior radio', async () => {
     const { getByTestId, container } = render(
-      <Pills value={1} behavior='radio'>
+      <Pills value={1} behavior="radio">
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid='tab-4'>
+        <Pills.Item value={4} data-testid="tab-4">
           4
         </Pills.Item>
       </Pills>,

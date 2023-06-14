@@ -1,21 +1,25 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { render, cleanup, axe } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import Notice, { NoticeSmart } from '../src';
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Notice', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Notice);
   shouldSupportRef(Notice);
 
-  test('Should support custom attributes', () => {
+  test.concurrent('Should support custom attributes', () => {
     const { getByTestId } = render(<Notice data-testid="notice" name="notice" />);
     expect(getByTestId('notice').attributes['name'].value).toBe('notice');
   });
 
-  test('Should support children', () => {
+  test.concurrent('Should support children', () => {
     const component = (
       <Notice>
         <p data-testid="child">Test</p>
@@ -25,7 +29,7 @@ describe('Notice', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('Should support custom close icon', () => {
+  test.concurrent('Should support custom close icon', () => {
     const component = (
       <Notice>
         <Notice.CloseIcon data-testid="close">Close Icon</Notice.CloseIcon>
@@ -35,7 +39,7 @@ describe('Notice', () => {
     expect(getByTestId('close')).toBeTruthy();
   });
 
-  test('Should support theme', async () => {
+  test.concurrent('Should support theme', async ({ task }) => {
     const component = (
       <>
         <Notice>Text Notice</Notice>
@@ -48,10 +52,10 @@ describe('Notice', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom theme', async () => {
+  test.concurrent('Should support custom theme', async ({ task }) => {
     const component = (
       <>
         <Notice theme="#feebc5">
@@ -67,10 +71,10 @@ describe('Notice', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correctly render', async () => {
+  test.concurrent('Should correctly render', async ({ task }) => {
     const component = (
       <Notice>
         <Notice.Label>
@@ -85,14 +89,14 @@ describe('Notice', () => {
         <Notice.CloseIcon />
       </Notice>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Notice.Label', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should support theme', async () => {
+  test.concurrent('Should support theme', async ({ task }) => {
     const component = (
       <>
         <Notice>
@@ -113,17 +117,17 @@ describe('Notice.Label', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
 describe('NoticeSmart', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(NoticeSmart);
   shouldSupportRef(NoticeSmart);
 
-  test('Should support theme props', async () => {
+  test.concurrent('Should support theme props', async ({ task }) => {
     const component = (
       <>
         <NoticeSmart>Text NoticeSmart</NoticeSmart>
@@ -136,10 +140,10 @@ describe('NoticeSmart', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correctly render', async () => {
+  test.concurrent('Should correctly render', async ({ task }) => {
     const component = (
       <NoticeSmart
         label={<div style={{ width: '16px', height: '16px', background: 'orange' }} />}
@@ -149,7 +153,7 @@ describe('NoticeSmart', () => {
         Look at this cool notice!
       </NoticeSmart>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

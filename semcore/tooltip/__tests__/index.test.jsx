@@ -1,13 +1,15 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render, axe, act } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Tooltip from '../src';
 
 describe('Tooltip', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
@@ -19,10 +21,10 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with warning theme', async () => {
+  test.concurrent('Renders correctly with warning theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal theme="warning">
@@ -34,10 +36,10 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with invert theme', async () => {
+  test.concurrent('Renders correctly with invert theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal theme="invert">
@@ -49,10 +51,10 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  xtest('Renders correctly with custom theme', async () => {
+  test.skip('Renders correctly with custom theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
@@ -66,12 +68,12 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Tooltip.Trigger', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -118,7 +120,7 @@ describe('Tooltip.Trigger', () => {
 });
 
 describe('Tooltip.Popper', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support custom className', () => {
     const { getByTestId } = render(
@@ -181,12 +183,14 @@ describe('Tooltip.Popper', () => {
     );
     render(component);
 
-    expect(document.querySelectorAll('[data-ui-name="Tooltip.Popper"]').length).toBe(1);
+    expect(
+      document.querySelectorAll('[data-ui-name^="Tooltip"][data-ui-name$="Popper"]').length,
+    ).toBe(1);
   });
 });
 
 describe('TooltipBase', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test('should support ref', () => {
     const ref = React.createRef();
@@ -195,8 +199,8 @@ describe('TooltipBase', () => {
   });
 
   test('open/hide', () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Tooltip title="Test test test" disablePortal onVisibleChange={spy}>
         <button data-testid="trigger">trigger</button>
@@ -204,12 +208,16 @@ describe('TooltipBase', () => {
     );
 
     fireEvent.mouseEnter(getByTestId('trigger'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spy).toHaveBeenCalledTimes(1);
     fireEvent.mouseLeave(getByTestId('trigger'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(spy).toHaveBeenCalledTimes(2);
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {

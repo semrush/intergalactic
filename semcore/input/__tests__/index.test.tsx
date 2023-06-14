@@ -1,18 +1,20 @@
 import React from 'react';
 import Search from '@semcore/icon/Search/m';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Input from '../src';
 
-const { cleanup, fireEvent, render } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('Input', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Input);
   shouldSupportRef(Input);
 
-  test('Should support sizes', async () => {
+  test.concurrent('Should support sizes', async ({ task }) => {
     const InputSize = (props) => (
       <>
         <Input {...props}>
@@ -45,10 +47,10 @@ describe('Input', () => {
         <InputSize size="l" />
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support states', async () => {
+  test.concurrent('Should support states', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
         <Input state="normal">
@@ -62,11 +64,11 @@ describe('Input', () => {
         </Input>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support focus states', async () => {
-    expect(
+  test.concurrent('Should support focus states', async ({ task }) => {
+    await expect(
       await snapshot(
         <Input state="normal" focused>
           <Input.Value id="input" />
@@ -77,8 +79,8 @@ describe('Input', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <Input state="valid" focused>
           <Input.Value id="input" />
@@ -89,8 +91,8 @@ describe('Input', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <Input state="invalid" focused>
           <Input.Value id="input" />
@@ -101,10 +103,10 @@ describe('Input', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support root disabled', async () => {
+  test.concurrent('Should support root disabled', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
         <Input disabled>
@@ -121,10 +123,10 @@ describe('Input', () => {
         </Input>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support correctly render', async () => {
+  test.concurrent('Should support correctly render', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
         <Input>
@@ -138,10 +140,10 @@ describe('Input', () => {
         </Input>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support change value when rerender', () => {
+  test.concurrent('Should support change value when rerender', () => {
     const { getByTestId, rerender } = render(
       <Input>
         <Input.Value data-testid="value" value="" />
@@ -159,9 +161,9 @@ describe('Input', () => {
     expect(getByTestId('value').value).toBe('test');
   });
 
-  test('Should support controlled mod', () => {
+  test.concurrent('Should support controlled mod', () => {
     let value = '';
-    const spy = jest.fn((v) => {
+    const spy = vi.fn((v) => {
       value = v;
     });
 
@@ -189,13 +191,13 @@ describe('Input', () => {
 });
 
 describe('Input.Addon', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Input.Value);
   shouldSupportRef(Input.Value, Input);
 
-  test('Should focus input if additional element click', () => {
-    const spy = jest.fn();
+  test.concurrent('Should focus input if additional element click', () => {
+    const spy = vi.fn();
     const { queryByText } = render(
       <Input>
         <Input.Addon>addon</Input.Addon>
@@ -208,7 +210,7 @@ describe('Input.Addon', () => {
   });
 
   test(`Should't focus input if onMouseDown additional return false`, () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { queryByText } = render(
       <Input>
         <Input.Addon onMouseDown={() => false}>addon</Input.Addon>
@@ -219,7 +221,7 @@ describe('Input.Addon', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  test('Should support hover interactive', async () => {
+  test.concurrent('Should support hover interactive', async ({ task }) => {
     const component = (
       <Input>
         <Input.Addon interactive id="addon">
@@ -229,12 +231,12 @@ describe('Input.Addon', () => {
         <Input.Addon interactive>Addon</Input.Addon>
       </Input>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#addon',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });

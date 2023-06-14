@@ -1,12 +1,14 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { render, fireEvent, cleanup } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import FullscreenModal from '../src';
 
 describe('FullscreenModal', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FullscreenModal, React.Fragment, { visible: true });
   shouldSupportRef(FullscreenModal, React.Fragment, { visible: true });
@@ -20,7 +22,7 @@ describe('FullscreenModal', () => {
   });
 
   test('should support onClose for CloseIcons', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Close data-testid="close" />
@@ -31,7 +33,7 @@ describe('FullscreenModal', () => {
   });
 
   test('should support onClose for BackClick', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
         <FullscreenModal.Back data-testid="back" />
@@ -42,14 +44,14 @@ describe('FullscreenModal', () => {
   });
 
   test('should support onClose for Escape', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid="modal" />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 
-  test('should support render', async () => {
-    const Component = (
+  test.concurrent('should support render', async ({ task }) => {
+    const component = (
       <div style={{ width: '785px', height: '600px' }}>
         <FullscreenModal disablePortal visible>
           <FullscreenModal.Close />
@@ -72,7 +74,7 @@ describe('FullscreenModal', () => {
         </FullscreenModal>
       </div>
     );
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('should change overflow style for body in modal', async () => {
@@ -86,7 +88,7 @@ describe('FullscreenModal', () => {
 });
 
 describe('FullscreenModal.Header', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FullscreenModal.Header, ({ children }) => (
     <FullscreenModal visible>{children}</FullscreenModal>
@@ -113,7 +115,7 @@ describe('FullscreenModal.Header', () => {
     expect(queryByText(/Text/)).toBeTruthy();
   });
 
-  test('Title and Back should correctly if a very long text', async () => {
+  test.concurrent('Title and Back should correctly if a very long text', async ({ task }) => {
     const component = (
       <FullscreenModal disablePortal visible>
         <FullscreenModal.Header>
@@ -123,30 +125,30 @@ describe('FullscreenModal.Header', () => {
       </FullscreenModal>
     );
 
-    expect(
+    await expect(
       await snapshot(component, { selector: 'body', width: 320, height: 100 }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Close icon should support hover', async () => {
-    expect(
+  test.concurrent('Close icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <FullscreenModal disablePortal visible>
           <FullscreenModal.Close id="close" />
         </FullscreenModal>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Back icon should support hover', async () => {
-    expect(
+  test.concurrent('Back icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <FullscreenModal disablePortal visible>
           <FullscreenModal.Back id="back">Go to Tool Name</FullscreenModal.Back>
         </FullscreenModal>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });

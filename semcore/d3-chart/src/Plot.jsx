@@ -87,31 +87,29 @@ class PlotRoot extends Component {
     if (!width || !height) return null;
 
     return sstyled(styles)(
-      <>
-        <SPlot
-          render={Box}
-          tag="svg"
-          __excludeProps={['data', 'scale']}
-          ref={this.rootRef}
-          onMouseMove={this.handlerMouseMove}
-          onMouseLeave={this.handlerMouseLeave}
-          aria-label={label}
-          tabIndex={0}
-        >
-          <Children />
-          <foreignObject width="100%" height="100%" data-aria-only>
-            <PlotA11yModule
-              id={this.plotId}
-              data={data}
-              plotLabel={label}
-              locale={locale}
-              plotRef={this.rootRef}
-              hints={this.dataStructureHints}
-              config={a11yAltTextConfig}
-            />
-          </foreignObject>
-        </SPlot>
-      </>,
+      <SPlot
+        render={Box}
+        tag="svg"
+        __excludeProps={['data', 'scale']}
+        ref={this.rootRef}
+        onMouseMove={this.handlerMouseMove}
+        onMouseLeave={this.handlerMouseLeave}
+        aria-label={label}
+        tabIndex={0}
+      >
+        <Children />
+        <foreignObject width="100%" height="100%" data-aria-only>
+          <PlotA11yModule
+            id={this.plotId}
+            data={data}
+            plotLabel={label}
+            locale={locale}
+            plotRef={this.rootRef}
+            hints={this.dataStructureHints}
+            config={a11yAltTextConfig}
+          />
+        </foreignObject>
+      </SPlot>,
     );
   }
 }

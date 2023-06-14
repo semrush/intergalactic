@@ -1,14 +1,16 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, axe, render, fireEvent } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, render, fireEvent } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import Dropdown from '../src';
 
 describe('Dropdown', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should correct enter space in input', () => {
-    const spy = jest.fn();
+  test.concurrent('Should correct enter space in input', () => {
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Dropdown onVisibleChange={spy} interaction="focus">
         <Dropdown.Trigger tag="input" data-testid="input" />
@@ -22,7 +24,7 @@ describe('Dropdown', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('correct style', async () => {
+  test.concurrent('correct style', async ({ task }) => {
     const component = (
       <div style={{ width: 150, height: 60 }}>
         <Dropdown disablePortal visible>
@@ -36,7 +38,7 @@ describe('Dropdown', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import SpinContainer from '../src';
 
-const { cleanup } = testing;
+import { cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('SpinContainer', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Render correctly', async () => {
-    const Component = (
+  test.concurrent('Render correctly', async ({ task }) => {
+    const component = (
       <>
         <SpinContainer>
           <div style={{ width: 200, height: 200 }}>Hello world</div>
@@ -18,11 +19,11 @@ describe('SpinContainer', () => {
         </SpinContainer>
       </>
     );
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly with Overlay', async () => {
-    const Component = (
+  test.concurrent('Render correctly with Overlay', async ({ task }) => {
+    const component = (
       <SpinContainer loading>
         <SpinContainer.Content>
           <div style={{ width: 200, height: 200 }}>Hello world</div>
@@ -30,11 +31,11 @@ describe('SpinContainer', () => {
         <SpinContainer.Overlay>Custom Spin</SpinContainer.Overlay>
       </SpinContainer>
     );
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom background', async () => {
-    const Component = (
+  test.concurrent('Should support custom background', async ({ task }) => {
+    const component = (
       <>
         <SpinContainer background={'blanchedalmond'} loading>
           <div style={{ width: 200, height: 200 }}>Hello world</div>
@@ -47,6 +48,6 @@ describe('SpinContainer', () => {
         </SpinContainer>
       </>
     );
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, render, cleanup, fireEvent, act } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Tooltip from '@semcore/tooltip';
+import { axe } from '@semcore/testing-utils/axe';
 
 import InputTags from '../src';
 
 describe('InputTags', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('renders different sizes', async () => {
+  test.concurrent('renders different sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 150 }}>
         <InputTags size="m">
@@ -23,10 +25,10 @@ describe('InputTags', () => {
         </InputTags>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('renders basic example', async () => {
+  test.concurrent('renders basic example', async ({ task }) => {
     const Component = () => {
       const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
       const [value, setValue] = React.useState('');
@@ -85,9 +87,9 @@ describe('InputTags', () => {
         </InputTags>
       );
     };
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
-  test("renders url's example", async () => {
+  test("renders url's example", async ({ task }) => {
     const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 
     const component = (
@@ -101,33 +103,33 @@ describe('InputTags', () => {
             <InputTags.Tag.Close data-id={idx} />
           </InputTags.Tag>
         ))}
-        <InputTags.Value />
+        <InputTags.Value value="" />
       </InputTags>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('renders prop hMin', async () => {
+  test.concurrent('renders prop hMin', async ({ task }) => {
     const component = (
       <InputTags hMin={100}>
         {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
           <InputTags.Tag key={idx}>{tag}</InputTags.Tag>
         ))}
-        <InputTags.Value />
+        <InputTags.Value value="" />
       </InputTags>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should call onClick', async () => {
-    const onClick = jest.fn();
+  test.concurrent('should call onClick', async () => {
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <InputTags>
         <InputTags.Tag theme="primary" editable data-testid="tag" onClick={onClick}>
           <InputTags.Tag.Text>tag</InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
-        <InputTags.Value aria-label="input with tags" />
+        <InputTags.Value aria-label="input with tags" value="" />
       </InputTags>,
     );
 
@@ -136,7 +138,7 @@ describe('InputTags', () => {
   });
 
   test.skip('a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { container } = render(
       <InputTags size="l">
         {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
@@ -145,11 +147,13 @@ describe('InputTags', () => {
             <InputTags.Tag.Close />
           </InputTags.Tag>
         ))}
-        <InputTags.Value aria-label="input with tags" />
+        <InputTags.Value aria-label="input with tags" value="" />
       </InputTags>,
     );
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => {
+      vi.runAllTimers();
+    });
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
