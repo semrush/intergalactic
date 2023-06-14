@@ -10,12 +10,12 @@ import { axe } from '@semcore/testing-utils/axe';
 describe('Badge', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Badge>admin</Badge>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support color', async () => {
+  test.concurrent('Should support color', async ({ task }) => {
     const component = (
       <>
         <Badge color="white">admin</Badge>
@@ -23,10 +23,10 @@ describe('Badge', () => {
         <Badge color="green">new</Badge>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support bg', async () => {
+  test.concurrent('Should support bg', async ({ task }) => {
     const component = (
       <>
         <Badge bg="cyan">admin</Badge>
@@ -35,10 +35,10 @@ describe('Badge', () => {
         <Badge bg="green">new</Badge>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(<Badge bg="green">new</Badge>);
 
     const results = await axe(container);

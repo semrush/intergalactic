@@ -8,7 +8,7 @@ import SidePanel from '../src';
 describe('SidePanel', () => {
   beforeEach(cleanup);
 
-  test('Should support placements', async () => {
+  test.concurrent('Should support placements', async ({ task }) => {
     const placements = ['left', 'right', 'bottom'];
     for (const placement of placements) {
       const Component = (
@@ -17,20 +17,20 @@ describe('SidePanel', () => {
         </SidePanel>
       );
 
-      expect(await snapshot(Component, { selector: 'body' })).toMatchImageSnapshot();
+      await expect(await snapshot(Component, { selector: 'body' })).toMatchImageSnapshot(task);
     }
   });
 
-  test('Should support closable property', async () => {
+  test.concurrent('Should support closable property', async ({ task }) => {
     const Component = (
       <SidePanel closable disablePortal visible>
         Hello, world!
       </SidePanel>
     );
 
-    expect(
+    await expect(
       await snapshot(Component, { selector: 'body', width: 300, height: 100 }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
   test('Should support visible property', () => {
@@ -99,7 +99,7 @@ describe('SidePanel', () => {
     expect(document.body).toHaveStyle('overflow: hidden');
   });
 
-  test('should support render function for children', () => {
+  test.concurrent('should support render function for children', () => {
     const component = <SidePanel visible>{() => <SidePanel.Overlay />}</SidePanel>;
     render(component);
 
@@ -117,18 +117,18 @@ describe('SidePanel', () => {
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
-  test('Close icon should support hover', async () => {
-    expect(
+  test.concurrent('Close icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <SidePanel disablePortal visible>
           <SidePanel.Close id="close" />
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should correctly render', async () => {
+  test.concurrent('Should correctly render', async ({ task }) => {
     const Component = (
       <SidePanel disablePortal visible>
         <SidePanel.Close />
@@ -143,12 +143,12 @@ describe('SidePanel', () => {
         </SidePanel.Footer>
       </SidePanel>
     );
-    expect(
+    await expect(
       await snapshot(Component, { selector: 'body', width: 300, height: 300 }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Title and Back should correctly if a very long text', async () => {
+  test.concurrent('Title and Back should correctly if a very long text', async ({ task }) => {
     const component = (
       <SidePanel disablePortal visible>
         <SidePanel.Header>
@@ -158,24 +158,24 @@ describe('SidePanel', () => {
       </SidePanel>
     );
 
-    expect(
+    await expect(
       await snapshot(component, { selector: 'body', width: 320, height: 100 }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Close icon should support hover', async () => {
-    expect(
+  test.concurrent('Close icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <SidePanel disablePortal visible>
           <SidePanel.Close id="close" />
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Back icon should support hover', async () => {
-    expect(
+  test.concurrent('Back icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <SidePanel disablePortal visible>
           <SidePanel.Header>
@@ -184,6 +184,6 @@ describe('SidePanel', () => {
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });

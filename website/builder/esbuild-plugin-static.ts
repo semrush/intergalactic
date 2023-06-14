@@ -15,7 +15,7 @@ export const esbuildPluginStatic = (): Plugin => ({
       path,
       namespace: 'static-map',
     }));
-    build.onLoad({ filter: /^@static$/, namespace: 'static-map' }, async () => {
+    build.onLoad({ filter: /^@static$/, namespace: 'static-map' }, async ({ task }) => {
       const relativePaths = await glob('**/*', { cwd: staticDir });
       const imports = relativePaths.map(
         (path, index) => `import static_${index} from "static/${path}"`,

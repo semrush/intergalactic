@@ -7,7 +7,6 @@ import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vites
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('InputMask', () => {
@@ -16,7 +15,7 @@ describe('InputMask', () => {
   shouldSupportClassName(InputMask);
   shouldSupportRef(InputMask);
 
-  test('Should correct render', async () => {
+  test.concurrent('Should correct render', async ({ task }) => {
     const Component = ({ value = '' }) => (
       <InputMask size="l" mb={4}>
         <InputMask.Value
@@ -36,10 +35,10 @@ describe('InputMask', () => {
     fireEvent.change(input, { target: { value: '999' } });
 
     expect(input.value).toBe('99 9');
-    expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <>
         <label htmlFor="input_mask">Expire date</label>

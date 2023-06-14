@@ -9,7 +9,7 @@ import DropdownMenu from '../src';
 describe('DropdownMenu', () => {
   beforeEach(cleanup);
 
-  test('Should correct enter space in input', () => {
+  test.concurrent('Should correct enter space in input', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction="focus">
@@ -24,7 +24,7 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Should correct press Enter in textarea', () => {
+  test.concurrent('Should correct press Enter in textarea', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction="focus">
@@ -38,8 +38,8 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Renders correctly', async () => {
-    const Component = (
+  test.concurrent('Renders correctly', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -49,11 +49,11 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Supports sizes', async () => {
-    const Component = (
+  test.concurrent('Supports sizes', async ({ task }) => {
+    const component = (
       <React.Fragment>
         <DropdownMenu size="m">
           <DropdownMenu.List>
@@ -77,26 +77,29 @@ describe('DropdownMenu', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('supports disabled, selected, notInteractive & highlighted props ', async () => {
-    const Component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
-          <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
-          <DropdownMenu.Item>notInteractive</DropdownMenu.Item>
-          <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-          <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
-        </DropdownMenu.List>
-      </DropdownMenu>
-    );
+  test.concurrent(
+    'supports disabled, selected, notInteractive & highlighted props ',
+    async ({ task }) => {
+      const component = (
+        <DropdownMenu>
+          <DropdownMenu.List>
+            <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
+            <DropdownMenu.Item>notInteractive</DropdownMenu.Item>
+            <DropdownMenu.Item selected>selected</DropdownMenu.Item>
+            <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
+          </DropdownMenu.List>
+        </DropdownMenu>
+      );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('supports addons', async () => {
-    const Component = (
+  test.concurrent('supports addons', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>
@@ -108,11 +111,11 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover', async () => {
-    const Component = (
+  test.concurrent('Should support hover', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -122,17 +125,17 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(
-      await snapshot(Component, {
+    await expect(
+      await snapshot(component, {
         actions: {
           hover: '#dd',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support selected hover ', async () => {
-    const Component = (
+  test.concurrent('Should support selected hover ', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -144,17 +147,17 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(
-      await snapshot(Component, {
+    await expect(
+      await snapshot(component, {
         actions: {
           hover: '#dd',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should have shadow style', async () => {
-    const Component = (
+  test.concurrent('should have shadow style', async ({ task }) => {
+    const component = (
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Menu hMax={'180px'}>
           <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
@@ -171,10 +174,10 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     vi.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>

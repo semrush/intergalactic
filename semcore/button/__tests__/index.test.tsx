@@ -13,13 +13,13 @@ import Button from '../src';
 describe('Button', () => {
   // beforeEach(cleanup);
 
-  test('renders correctly', async () => {
+  test.concurrent('renders correctly', async ({ task }) => {
     const component = <Button>Button</Button>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with Addon and Text', async () => {
+  test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
     const component = (
       <Button>
         <Button.Addon>Addon</Button.Addon>
@@ -27,10 +27,10 @@ describe('Button', () => {
       </Button>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with Addon as props', async () => {
+  test.concurrent('Renders correctly with Addon as props', async ({ task }) => {
     const Addon = React.forwardRef(function (p, ref) {
       return (
         <span ref={ref} {...propsForElement(p)}>
@@ -44,16 +44,16 @@ describe('Button', () => {
       </Button>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with one Addon as props', async () => {
+  test.concurrent('Renders correctly with one Addon as props', async ({ task }) => {
     const component = <Button addonLeft={CheckM} aria-label="Check" />;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support loading', () => {
+  test.concurrent('should support loading', () => {
     const { queryByTestId } = render(
       <Button data-testid="button" loading>
         Text
@@ -63,18 +63,18 @@ describe('Button', () => {
     expect(queryByTestId('button').querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
   });
 
-  test('should support save width at loading', async () => {
+  test.concurrent('should support save width at loading', async ({ task }) => {
     const Component = <Button loading>Text long Text long</Button>;
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(Component)).toMatchImageSnapshot(task);
   });
 
-  test('should support "active" prop', async () => {
+  test.concurrent('should support "active" prop', async ({ task }) => {
     const Component = <Button active>Test</Button>;
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(Component)).toMatchImageSnapshot(task);
   });
 
-  test('should support size props', async () => {
+  test.concurrent('should support size props', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Button size="l">Button</Button>
@@ -82,10 +82,10 @@ describe('Button', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support theme props', async () => {
+  test.concurrent('should support theme props', async ({ task }) => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
@@ -123,10 +123,10 @@ describe('Button', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should have correct themed loading state', async () => {
+  test.concurrent('Should have correct themed loading state', async ({ task }) => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
@@ -170,10 +170,10 @@ describe('Button', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should have correct themed disabled state', async () => {
+  test.concurrent('Should have correct themed disabled state', async ({ task }) => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
@@ -217,10 +217,10 @@ describe('Button', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should have correct themed disabled state if active', async () => {
+  test.concurrent('Should have correct themed disabled state if active', async ({ task }) => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
@@ -264,57 +264,60 @@ describe('Button', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should have correct themed disabled state if active as link', async () => {
-    const component = (
-      <div style={{ background: '#eee' }}>
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="primary" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="primary" theme="invert" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="primary" theme="success" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="primary" theme="warning" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="primary" theme="danger" disabled active tag="a">
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-        <br />
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="secondary" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="secondary" theme="invert" disabled active tag="a">
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-        <br />
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="tertiary" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="tertiary" theme="invert" disabled active tag="a">
-            Button
-          </Button>
-          <Button use="tertiary" theme="muted" disabled active tag="a">
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-      </div>
-    );
+  test.concurrent(
+    'Should have correct themed disabled state if active as link',
+    async ({ task }) => {
+      const component = (
+        <div style={{ background: '#eee' }}>
+          <snapshot.ProxyProps style={{ margin: 5 }}>
+            <Button use="primary" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="primary" theme="invert" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="primary" theme="success" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="primary" theme="warning" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="primary" theme="danger" disabled active tag="a">
+              Button
+            </Button>
+          </snapshot.ProxyProps>
+          <br />
+          <snapshot.ProxyProps style={{ margin: 5 }}>
+            <Button use="secondary" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="secondary" theme="invert" disabled active tag="a">
+              Button
+            </Button>
+          </snapshot.ProxyProps>
+          <br />
+          <snapshot.ProxyProps style={{ margin: 5 }}>
+            <Button use="tertiary" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="tertiary" theme="invert" disabled active tag="a">
+              Button
+            </Button>
+            <Button use="tertiary" theme="muted" disabled active tag="a">
+              Button
+            </Button>
+          </snapshot.ProxyProps>
+        </div>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('should support neighbor location with [left, both, right]', async () => {
+  test.concurrent('should support neighbor location with [left, both, right]', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Flex inline alignItems="center">
@@ -354,20 +357,20 @@ describe('Button', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(
+  test.concurrent(
     'Should support hover',
-    async () => {
-      expect(
+    async ({ task }) => {
+      await expect(
         await snapshot(<Button id="button">Button</Button>, {
           actions: {
             hover: '#button',
           },
         }),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
             <Button id="button" use="tertiary" theme="invert">
@@ -380,8 +383,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
             <Button id="button" use="secondary" theme="invert">
@@ -394,8 +397,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
             <Button id="button" use="primary" theme="invert">
@@ -408,8 +411,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="danger">
             Button
@@ -420,8 +423,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="warning">
             Button
@@ -432,8 +435,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="success">
             Button
@@ -444,8 +447,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="info">
             Button
@@ -456,8 +459,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="secondary" theme="muted">
             Button
@@ -468,8 +471,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="secondary" theme="info">
             Button
@@ -480,8 +483,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="tertiary" theme="info">
             Button
@@ -492,8 +495,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="tertiary" theme="muted">
             Button
@@ -504,22 +507,22 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
+      ).toMatchImageSnapshot(task);
     },
     { timeout: 20_000 },
   );
 
-  test(
+  test.concurrent(
     'Should support active',
-    async () => {
-      expect(
+    async ({ task }) => {
+      await expect(
         await snapshot(<Button id="button">Button</Button>, {
           actions: {
             active: '#button',
           },
         }),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
             <Button id="button" use="tertiary" theme="invert">
@@ -532,8 +535,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
             <Button id="button" use="secondary" theme="invert">
@@ -546,8 +549,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
             <Button id="button" use="primary" theme="invert">
@@ -560,8 +563,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="danger">
             Button
@@ -572,8 +575,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="warning">
             Button
@@ -584,8 +587,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="success">
             Button
@@ -596,8 +599,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="primary" theme="info">
             Button
@@ -608,8 +611,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="secondary" theme="muted">
             Button
@@ -620,8 +623,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="secondary" theme="info">
             Button
@@ -632,8 +635,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="tertiary" theme="info">
             Button
@@ -644,8 +647,8 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
-      expect(
+      ).toMatchImageSnapshot(task);
+      await expect(
         await snapshot(
           <Button id="button" use="tertiary" theme="muted">
             Button
@@ -656,7 +659,7 @@ describe('Button', () => {
             },
           },
         ),
-      ).toMatchImageSnapshot();
+      ).toMatchImageSnapshot(task);
     },
     { timeout: 20_000 },
   );

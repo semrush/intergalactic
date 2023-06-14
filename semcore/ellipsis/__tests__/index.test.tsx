@@ -41,7 +41,7 @@ function fakeBoundingClientRect(rect) {
 describe('Ellipsis', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <Box w={200}>
         <Ellipsis>
@@ -51,10 +51,10 @@ describe('Ellipsis', () => {
         </Ellipsis>
       </Box>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with multiline', async () => {
+  test.concurrent('Renders correctly with multiline', async ({ task }) => {
     const component = (
       <Box w={200}>
         <Ellipsis maxLine={3}>
@@ -64,10 +64,10 @@ describe('Ellipsis', () => {
         </Ellipsis>
       </Box>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with trim in the middle', async () => {
+  test.concurrent('Renders correctly with trim in the middle', async ({ task }) => {
     const originalResizeObserver = global.ResizeObserver;
     const unFake = fakeTemporaryBlock({ width: 10 });
 
@@ -97,13 +97,13 @@ describe('Ellipsis', () => {
       </Box>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
 
     unFake();
     global.ResizeObserver = originalResizeObserver;
   });
 
-  test('Show tooltip', async () => {
+  test.concurrent('Show tooltip', async ({ task }) => {
     vi.useFakeTimers();
 
     const unFake = fakeTemporaryBlock({ width: 400 });
@@ -130,7 +130,7 @@ describe('Ellipsis', () => {
     unFake();
   });
 
-  test('Dont show tooltip', async () => {
+  test.concurrent('Dont show tooltip', async ({ task }) => {
     vi.useFakeTimers();
 
     const unFake = fakeTemporaryBlock({ width: 100 });
@@ -155,7 +155,7 @@ describe('Ellipsis', () => {
     unFake();
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <Ellipsis>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </Ellipsis>,
     );

@@ -110,7 +110,7 @@ describe('NoticeBubble', () => {
     vi.useRealTimers();
   });
 
-  test('should support hover for icon close', async () => {
+  test.concurrent('should support hover for icon close', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -124,12 +124,12 @@ describe('NoticeBubble', () => {
         </NoticeBubbleImport>
       </>
     );
-    expect(
+    await expect(
       await snapshot(component, { actions: { hover: '#notice [title="Close"]' } }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should support show more one notice', () => {
+  test.concurrent('should support show more one notice', () => {
     const manager = new NoticeBubbleManager();
     render(
       <React.Fragment>
@@ -157,7 +157,7 @@ describe('NoticeBubble', () => {
     expect(container.querySelector('[data-testid="notice"]')).toBeTruthy();
   });
 
-  test('should render correctly', async () => {
+  test.concurrent('should render correctly', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -170,10 +170,10 @@ describe('NoticeBubble', () => {
         <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support action node', async () => {
+  test.concurrent('should support action node', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -193,10 +193,10 @@ describe('NoticeBubble', () => {
         </NoticeBubbleImport>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly for screen size 760px', async () => {
+  test.concurrent('Should render correctly for screen size 760px', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -204,12 +204,12 @@ describe('NoticeBubble', () => {
         <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
       </>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         selector: 'body',
         width: 320,
         height: 100,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });

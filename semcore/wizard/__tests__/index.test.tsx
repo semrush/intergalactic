@@ -6,11 +6,10 @@ import Wizard from '../src';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-
 describe('Wizard', () => {
   beforeEach(cleanup);
 
-  test('Should correctly render', async () => {
+  test.concurrent('Should correctly render', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title="Header">
@@ -23,16 +22,16 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 1300,
         height: 600,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support checked completed', async () => {
+  test.concurrent('Should support checked completed', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title="Header">
@@ -47,16 +46,16 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 300,
         height: 300,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom number', async () => {
+  test.concurrent('Should support custom number', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title="Header">
@@ -73,16 +72,16 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 300,
         height: 300,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should correctly render with disabled step', async () => {
+  test.concurrent('Should correctly render with disabled step', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -97,17 +96,17 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 300,
         height: 300,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Stepper should support hover', async () => {
-    expect(
+  test.concurrent('Stepper should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <Wizard disablePortal visible step={2}>
           <Wizard.Sidebar title="Header">
@@ -123,10 +122,10 @@ describe('Wizard', () => {
         </Wizard>,
         { selector: 'body', width: 300, height: 300, actions: { hover: '#step' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test.only('Should support keyboard navigation', async () => {
+  test.only('Should support keyboard navigation', async ({ task }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -143,11 +142,11 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.keyDown(getByTestId('second-step'), { key: "Enter", keyCode: 13 });
+    fireEvent.keyDown(getByTestId('second-step'), { key: 'Enter', keyCode: 13 });
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test('Should support step change on click', async () => {
+  test.concurrent('Should support step change on click', async ({ task }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -168,7 +167,7 @@ describe('Wizard', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test('Should correctly rerender', async () => {
+  test.concurrent('Should correctly rerender', async ({ task }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -193,7 +192,7 @@ describe('Wizard', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">

@@ -12,7 +12,7 @@ import Pills from '../src';
 describe('PillGroup', () => {
   beforeEach(cleanup);
 
-  test('Should support onChange callback', () => {
+  test.concurrent('Should support onChange callback', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1 as Number} onChange={spy}>
@@ -29,7 +29,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should support onClick on Pill', () => {
+  test.concurrent('Should support onClick on Pill', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
@@ -46,7 +46,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not call PillGroup onChange after falsy onClick on Pill', () => {
+  test.concurrent('Should not call PillGroup onChange after falsy onClick on Pill', () => {
     const spy = vi.fn();
     const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
@@ -65,7 +65,7 @@ describe('PillGroup', () => {
     expect(spyClick).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not support clicks on disabled tab', () => {
+  test.concurrent('Should not support clicks on disabled tab', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -84,7 +84,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  test('Should support behavior=tabs', async () => {
+  test.concurrent('Should support behavior=tabs', async ({ task }) => {
     const spyLeft = vi.fn();
     const spyRight = vi.fn();
 
@@ -112,7 +112,7 @@ describe('PillGroup', () => {
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
-  test('Should support behavior=radio', async () => {
+  test.concurrent('Should support behavior=radio', async ({ task }) => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -133,7 +133,7 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
-  test('Should render correctly states', async () => {
+  test.concurrent('Should render correctly states', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills value={1}>
@@ -157,10 +157,10 @@ describe('PillGroup', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support additional elements as props', async () => {
+  test.concurrent('should support additional elements as props', async ({ task }) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
@@ -182,11 +182,11 @@ describe('PillGroup', () => {
       </Pills>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover', async () => {
-    expect(
+  test.concurrent('Should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <Pills>
           <Pills.Item id="item">Item 1</Pills.Item>
@@ -198,8 +198,8 @@ describe('PillGroup', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <Pills>
           <Pills.Item id="item" selected>
@@ -213,10 +213,10 @@ describe('PillGroup', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support size with Addon', async () => {
+  test.concurrent('Should support size with Addon', async ({ task }) => {
     const PillsSize = ({ size }) => (
       <Pills size={size}>
         <Pills.Item>
@@ -247,11 +247,11 @@ describe('PillGroup', () => {
       </Pills>
     );
 
-    expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot();
-    expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot();
+    await expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render for different number Items', async () => {
+  test.concurrent('Should correct render for different number Items', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pills>
@@ -269,10 +269,10 @@ describe('PillGroup', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render for alone Item, Item.Addon', async () => {
+  test.concurrent('Should correct render for alone Item, Item.Addon', async ({ task }) => {
     const PillsSize = ({ size }) => (
       <>
         <Pills size={size}>
@@ -287,11 +287,11 @@ describe('PillGroup', () => {
       </>
     );
 
-    expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot();
-    expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot();
+    await expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { getByTestId, container } = render(
       <Pills value={1}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -309,7 +309,7 @@ describe('PillGroup', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test('a11y behavior radio', async () => {
+  test('a11y behavior radio', async ({ task }) => {
     const { getByTestId, container } = render(
       <Pills value={1} behavior="radio">
         <Pills.Item value={1}>1</Pills.Item>

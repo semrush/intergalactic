@@ -9,7 +9,7 @@ import Popper from '../src';
 
 describe('Popper', () => {
   beforeEach(cleanup);
-  test('should render popper to outside container', () => {
+  test.concurrent('should render popper to outside container', () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger data-testid="reference" />
@@ -21,7 +21,7 @@ describe('Popper', () => {
     expect(getByTestId('popper')).toBeTruthy();
   });
 
-  test('should support a custom handler a reference', () => {
+  test.concurrent('should support a custom handler a reference', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -48,7 +48,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test('should support timeout for change visible', () => {
+  test.concurrent('should support timeout for change visible', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
@@ -70,7 +70,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test('should proxy style', async () => {
+  test.concurrent('should proxy style', async ({ task }) => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger data-testid="reference" />
@@ -81,7 +81,7 @@ describe('Popper', () => {
     expect(getByTestId('popper').style.position).toEqual('absolute');
   });
 
-  test('should nested popper', async () => {
+  test.concurrent('should nested popper', async ({ task }) => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger children="trigger 1" />
@@ -105,7 +105,7 @@ describe('Popper.Trigger', () => {
   shouldSupportClassName(Popper.Trigger, (props) => <Popper visible {...props} />);
   shouldSupportRef(Popper.Trigger, (props) => <Popper visible {...props} />);
 
-  test('should support custom attributes', () => {
+  test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Popper>
         <Popper.Trigger data-testid="trigger" name="trigger" />
@@ -115,7 +115,7 @@ describe('Popper.Trigger', () => {
     expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
   });
 
-  test('should support children', async () => {
+  test.concurrent('should support children', async ({ task }) => {
     const component = (
       <Popper>
         <Popper.Trigger>
@@ -135,7 +135,7 @@ describe('Popper.Popper', () => {
   shouldSupportClassName(Popper.Popper, (props) => <Popper visible {...props} />);
   shouldSupportRef(Popper.Popper, (props) => <Popper visible {...props} />);
 
-  test('should support custom attributes', () => {
+  test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Popper data-testid="trigger" name="trigger" />
@@ -145,7 +145,7 @@ describe('Popper.Popper', () => {
     expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
   });
 
-  test('should support children', async () => {
+  test.concurrent('should support children', async ({ task }) => {
     const component = (
       <Popper visible>
         <Popper.Popper>
@@ -162,7 +162,7 @@ describe('Popper.Popper', () => {
 describe('focus control', () => {
   beforeEach(cleanup);
 
-  test('auto focus', () => {
+  test.concurrent('auto focus', () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Popper autoFocus data-testid="popper">
@@ -173,7 +173,7 @@ describe('focus control', () => {
 
     expect(getByTestId('popper')).toHaveFocus();
   });
-  test('trap', async () => {
+  test.concurrent('trap', async ({ task }) => {
     const { getByTestId } = render(
       <div>
         <input />
@@ -252,7 +252,7 @@ describe('focus control', () => {
     vi.useRealTimers();
   });
 
-  test('focus follow', () => {
+  test.concurrent('focus follow', () => {
     const { getByTestId } = render(
       <>
         <input data-testid="input-before-popper" />

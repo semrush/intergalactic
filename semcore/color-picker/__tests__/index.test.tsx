@@ -9,22 +9,22 @@ import ColorPicker, { PaletteManager } from '../src';
 describe('ColorPicker', () => {
   beforeEach(cleanup);
 
-  test('Should render trigger correctly', async () => {
+  test.concurrent('Should render trigger correctly', async ({ task }) => {
     const component = <ColorPicker value="#232456" />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render non-extended popper correctly', async () => {
+  test.concurrent('Should render non-extended popper correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
         <ColorPicker value="#FF8786" disablePortal visible />
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render extended popper correctly', async () => {
+  test.concurrent('Should render extended popper correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
         <ColorPicker value="#FF8786" disablePortal visible>
@@ -43,10 +43,10 @@ describe('ColorPicker', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should call onChange function when click on item color', async () => {
+  test.concurrent('Should call onChange function when click on item color', async ({ task }) => {
     const value = '#2BB3FF';
     const spy = vi.fn();
 
@@ -69,7 +69,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith('#8649E1', expect.anything());
   });
 
-  test('Should clear input when click on cancel icon inside input', async () => {
+  test.concurrent('Should clear input when click on cancel icon inside input', async ({ task }) => {
     const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
@@ -95,7 +95,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('');
   });
 
-  test('Should add colort when click on confirm icon inside input', async () => {
+  test.concurrent('Should add colort when click on confirm icon inside input', async ({ task }) => {
     const spy = vi.fn();
 
     const { getByTestId, getByLabelText } = render(
@@ -126,7 +126,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test('Should add color when click on "Enter" click', async () => {
+  test.concurrent('Should add color when click on "Enter" click', async ({ task }) => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -154,7 +154,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test('Should add color with "#" sign in the code color', async () => {
+  test.concurrent('Should add color with "#" sign in the code color', async ({ task }) => {
     vi.useFakeTimers();
     const spy = vi.fn();
 
@@ -189,7 +189,7 @@ describe('ColorPicker', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>

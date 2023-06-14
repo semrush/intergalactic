@@ -4,7 +4,7 @@ import { cleanup } from '@semcore/testing-utils/testing-library';
 describe('Breakpoints', () => {
   beforeEach(cleanup);
 
-  test('TODO', () => {
+  test.concurrent('TODO', () => {
     expect(true).toEqual(true);
   });
 });

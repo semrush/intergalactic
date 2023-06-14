@@ -10,7 +10,7 @@ import InputTags from '../src';
 describe('InputTags', () => {
   beforeEach(cleanup);
 
-  test('renders different sizes', async () => {
+  test.concurrent('renders different sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 150 }}>
         <InputTags size="m">
@@ -25,10 +25,10 @@ describe('InputTags', () => {
         </InputTags>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('renders basic example', async () => {
+  test.concurrent('renders basic example', async ({ task }) => {
     const Component = () => {
       const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
       const [value, setValue] = React.useState('');
@@ -87,9 +87,9 @@ describe('InputTags', () => {
         </InputTags>
       );
     };
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
-  test("renders url's example", async () => {
+  test("renders url's example", async ({ task }) => {
     const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 
     const component = (
@@ -106,10 +106,10 @@ describe('InputTags', () => {
         <InputTags.Value value="" />
       </InputTags>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('renders prop hMin', async () => {
+  test.concurrent('renders prop hMin', async ({ task }) => {
     const component = (
       <InputTags hMin={100}>
         {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
@@ -118,10 +118,10 @@ describe('InputTags', () => {
         <InputTags.Value value="" />
       </InputTags>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should call onClick', async () => {
+  test.concurrent('should call onClick', async ({ task }) => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <InputTags>
@@ -137,7 +137,7 @@ describe('InputTags', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  test.skip('a11y', async () => {
+  test.skip('a11y', async ({ task }) => {
     vi.useFakeTimers();
     const { container } = render(
       <InputTags size="l">

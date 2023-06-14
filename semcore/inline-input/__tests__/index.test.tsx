@@ -94,13 +94,13 @@ describe('InlineInput', () => {
   shouldSupportClassName(Input);
   shouldSupportRef(Input.Value, Input);
 
-  test('Should render in different ways', async () => {
+  test.concurrent('Should render in different ways', async ({ task }) => {
     const component = makePlayground();
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('custom texts', async () => {
+  test.concurrent('custom texts', async ({ task }) => {
     const component = (
       <>
         <br />
@@ -132,10 +132,10 @@ describe('InlineInput', () => {
      * it's expected when disablePortal option is enabled
      */
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('on blur behavior', () => {
+  test.concurrent('on blur behavior', () => {
     vi.useFakeTimers();
     const spyCancel = vi.fn();
     const spyConfirm = vi.fn();
@@ -168,7 +168,7 @@ describe('InlineInput', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(makePlayground());
 
     const results = await axe(container);

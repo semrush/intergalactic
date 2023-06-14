@@ -6,11 +6,10 @@ import Textarea from '../src';
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-
 describe('Textarea', () => {
   beforeEach(cleanup);
 
-  test('Should support size', async () => {
+  test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <>
         <Textarea size="m" />
@@ -18,26 +17,26 @@ describe('Textarea', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
 
-    expect(
+    await expect(
       await snapshot(<Textarea size="m" id="textarea" />, {
         actions: {
           focus: '#textarea',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
 
-    expect(
+    await expect(
       await snapshot(<Textarea size="l" id="textarea" />, {
         actions: {
           focus: '#textarea',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support state', async () => {
+  test.concurrent('Should support state', async ({ task }) => {
     const component = (
       <>
         <Textarea state="normal" />
@@ -46,34 +45,34 @@ describe('Textarea', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support focus', async () => {
+  test.concurrent('Should support focus', async ({ task }) => {
     expect(
       await snapshot(<Textarea state="normal" id="textarea" />, {
         actions: {
           focus: '#textarea',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Textarea state="valid" id="textarea" />, {
         actions: {
           focus: '#textarea',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Textarea state="invalid" id="textarea" />, {
         actions: {
           focus: '#textarea',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support focus, disabled, read-only, resize', async () => {
+  test.concurrent('Should support focus, disabled, read-only, resize', async ({ task }) => {
     const component = (
       <>
         <Textarea disabled />
@@ -82,10 +81,10 @@ describe('Textarea', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support onChange callback', () => {
+  test.concurrent('Should support onChange callback', () => {
     const spyChange = vi.fn();
     const { getByTestId } = render(<Textarea data-testid={'textarea'} onChange={spyChange} />);
 
@@ -94,7 +93,7 @@ describe('Textarea', () => {
   });
 
   // TODO: because jsdom not supported scrollHeight and getComputedStyle
-  test.skip('Should support auto height', async () => {
+  test.skip('Should support auto height', async ({ task }) => {
     const component = (
       <>
         <Textarea w={200} minRows={1} maxRows={4} value={'lorem'} />
@@ -115,7 +114,7 @@ describe('Textarea', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

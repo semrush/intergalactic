@@ -19,7 +19,7 @@ describe('Checkbox', () => {
   shouldSupportClassName(Checkbox.Text, Checkbox);
   shouldSupportRef(Checkbox.Text, Checkbox);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox>
@@ -33,10 +33,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should not be check icon in unchecked and disabled state', async () => {
+  test.concurrent('Should not be check icon in unchecked and disabled state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px" style={{ backgroundColor: '#b880ff' }}>
         <Checkbox>
@@ -46,10 +46,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support sizes', async () => {
+  test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox size="l">
@@ -63,10 +63,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support normal state', async () => {
+  test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox>
@@ -92,10 +92,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support invalid state', async () => {
+  test.concurrent('Should support invalid state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox state="invalid">
@@ -125,10 +125,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support intermediate state', async () => {
+  test.concurrent('Should support intermediate state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox>
@@ -182,10 +182,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support themes', async () => {
+  test.concurrent('Should support themes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="5px">
         <Checkbox theme="pink">
@@ -215,10 +215,10 @@ describe('Checkbox', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <Checkbox>
         <Checkbox.Value />

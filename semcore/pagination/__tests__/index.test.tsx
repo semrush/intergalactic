@@ -10,22 +10,22 @@ import Pagination from '../src';
 describe('Pagination', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Pagination currentPage={1} totalPages={100} />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support not render button if totalPage 1', async () => {
+  test.concurrent('Should support not render button if totalPage 1', async ({ task }) => {
     const component = <Pagination currentPage={1} totalPages={1} />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly if current page is last page', async () => {
+  test.concurrent('Should render correctly if current page is last page', async ({ task }) => {
     const component = <Pagination currentPage={10} totalPages={10} />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(<Pagination currentPage={1} totalPages={100} />);
 
     const results = await axe(container);
@@ -168,7 +168,7 @@ describe('Pagination.TotalPages', () => {
 describe('Pagination.PageInput', () => {
   beforeEach(cleanup);
 
-  test('Should correctly render', async () => {
+  test.concurrent('Should correctly render', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1} totalPages={10}>
@@ -181,10 +181,10 @@ describe('Pagination.PageInput', () => {
         </Pagination>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support view icon', async () => {
+  test.concurrent('Should support view icon', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1} totalPages={1234}>
@@ -201,16 +201,16 @@ describe('Pagination.PageInput', () => {
         </Pagination>
       </snapshot.ProxyProps>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           focus: '#page-number',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should not cut up to 3 digits', async () => {
+  test.concurrent('Should not cut up to 3 digits', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1234} totalPages={1234}>
@@ -221,13 +221,13 @@ describe('Pagination.PageInput', () => {
         </Pagination>
       </snapshot.ProxyProps>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           focus: '#page-number',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });
 

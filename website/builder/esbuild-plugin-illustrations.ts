@@ -14,7 +14,7 @@ export const esbuildPluginIllustrations = (): Plugin => ({
       path,
       namespace: 'illustrations',
     }));
-    build.onLoad({ filter: /^@illustrations/, namespace: 'illustrations' }, async () => {
+    build.onLoad({ filter: /^@illustrations/, namespace: 'illustrations' }, async ({ task }) => {
       const fullPath = resolvePath(illustrationsDir);
       const allIllustrations = await glob('**/index.mjs', {
         cwd: fullPath,

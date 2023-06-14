@@ -14,21 +14,92 @@ describe('Table', () => {
   shouldSupportClassName(Table);
   shouldSupportRef(Table);
 
-  test('should support correct render border inside table use primary', async () => {
-    const component = (
-      <>
-        <Table>
+  test.concurrent(
+    'should support correct render border inside table use primary',
+    async ({ task }) => {
+      const component = (
+        <>
+          <Table>
+            <Table.Head>
+              <Table.Row>
+                <Table.CellHead colSpan={2} />
+                <Table.CellHead rowSpan={2}>head 3</Table.CellHead>
+              </Table.Row>
+              <Table.Row>
+                <Table.CellHead>head 1</Table.CellHead>
+                <Table.CellHead>head 2</Table.CellHead>
+              </Table.Row>
+            </Table.Head>
+
+            <Table.Body>
+              <Table.Row>
+                <Table.Cell>cell 1</Table.Cell>
+                <Table.Cell>cell 2</Table.Cell>
+                <Table.Cell>cell 3</Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+
+          <br />
+          <Table>
+            <Table.Head>
+              <Table.Row>
+                <Table.CellHead rowSpan={2}>head 1</Table.CellHead>
+                <Table.CellHead rowSpan={2}>head 2</Table.CellHead>
+                <Table.CellHead colSpan={2} />
+              </Table.Row>
+              <Table.Row>
+                <Table.CellHead>head 3</Table.CellHead>
+                <Table.CellHead>head 4</Table.CellHead>
+              </Table.Row>
+            </Table.Head>
+          </Table>
+
+          <br />
+          <Table>
+            <Table.Head>
+              <Table.Row>
+                <Table.CellHead colSpan={2} />
+                <Table.CellHead colSpan={2} />
+              </Table.Row>
+              <Table.Row>
+                <Table.CellHead>head 1</Table.CellHead>
+                <Table.CellHead>head 2</Table.CellHead>
+                <Table.CellHead>head 3</Table.CellHead>
+                <Table.CellHead>head 4</Table.CellHead>
+              </Table.Row>
+            </Table.Head>
+          </Table>
+
+          <br />
+          <Table>
+            <Table.Head>
+              <Table.Row>
+                <Table.CellHead>head 1</Table.CellHead>
+                <Table.CellHead>head 2</Table.CellHead>
+                <Table.CellHead>head 3</Table.CellHead>
+              </Table.Row>
+            </Table.Head>
+          </Table>
+        </>
+      );
+
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
+
+  test.concurrent(
+    'should support correct render border inside table use secondary',
+    async ({ task }) => {
+      const component = (
+        <Table use="secondary">
           <Table.Head>
-            <Table.Row>
-              <Table.CellHead colSpan={2} />
-              <Table.CellHead rowSpan={2}>head 3</Table.CellHead>
-            </Table.Row>
             <Table.Row>
               <Table.CellHead>head 1</Table.CellHead>
               <Table.CellHead>head 2</Table.CellHead>
+              <Table.CellHead>head 3</Table.CellHead>
             </Table.Row>
           </Table.Head>
-
           <Table.Body>
             <Table.Row>
               <Table.Cell>cell 1</Table.Cell>
@@ -37,78 +108,13 @@ describe('Table', () => {
             </Table.Row>
           </Table.Body>
         </Table>
+      );
 
-        <br />
-        <Table>
-          <Table.Head>
-            <Table.Row>
-              <Table.CellHead rowSpan={2}>head 1</Table.CellHead>
-              <Table.CellHead rowSpan={2}>head 2</Table.CellHead>
-              <Table.CellHead colSpan={2} />
-            </Table.Row>
-            <Table.Row>
-              <Table.CellHead>head 3</Table.CellHead>
-              <Table.CellHead>head 4</Table.CellHead>
-            </Table.Row>
-          </Table.Head>
-        </Table>
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-        <br />
-        <Table>
-          <Table.Head>
-            <Table.Row>
-              <Table.CellHead colSpan={2} />
-              <Table.CellHead colSpan={2} />
-            </Table.Row>
-            <Table.Row>
-              <Table.CellHead>head 1</Table.CellHead>
-              <Table.CellHead>head 2</Table.CellHead>
-              <Table.CellHead>head 3</Table.CellHead>
-              <Table.CellHead>head 4</Table.CellHead>
-            </Table.Row>
-          </Table.Head>
-        </Table>
-
-        <br />
-        <Table>
-          <Table.Head>
-            <Table.Row>
-              <Table.CellHead>head 1</Table.CellHead>
-              <Table.CellHead>head 2</Table.CellHead>
-              <Table.CellHead>head 3</Table.CellHead>
-            </Table.Row>
-          </Table.Head>
-        </Table>
-      </>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should support correct render border inside table use secondary', async () => {
-    const component = (
-      <Table use="secondary">
-        <Table.Head>
-          <Table.Row>
-            <Table.CellHead>head 1</Table.CellHead>
-            <Table.CellHead>head 2</Table.CellHead>
-            <Table.CellHead>head 3</Table.CellHead>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>cell 1</Table.Cell>
-            <Table.Cell>cell 2</Table.Cell>
-            <Table.Cell>cell 3</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
-    );
-
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
-
-  test('should support correct color theme', async () => {
+  test.concurrent('should support correct color theme', async ({ task }) => {
     const Component = ({ theme = 'default' }) => (
       <Table>
         <Table.Body>
@@ -122,24 +128,24 @@ describe('Table', () => {
       </Table>
     );
 
-    expect(
+    await expect(
       await snapshot(<Component theme="info" />, { actions: { hover: '#element' } }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component theme="success" />, { actions: { hover: '#element' } }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component theme="warning" />, { actions: { hover: '#element' } }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component theme="danger" />, { actions: { hover: '#element' } }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component />, { actions: { hover: '#element' } }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <Table>
         <Table.Head>
@@ -183,7 +189,7 @@ describe('Table.Row', () => {
       <Table.Body {...props} />
     </Table>
   ));
-  test('should support ref', () => {
+  test.concurrent('should support ref', () => {
     const ref = React.createRef();
     render(
       <Table>
@@ -206,7 +212,7 @@ describe('Table.CellHead', () => {
       </Table.Head>
     </Table>
   ));
-  test('should support ref', () => {
+  test.concurrent('should support ref', () => {
     const ref = React.createRef();
     render(
       <Table>
@@ -220,7 +226,7 @@ describe('Table.CellHead', () => {
     expect(ref.current.nodeName).toBe('TH');
   });
 
-  test('should support active state', async () => {
+  test.concurrent('should support active state', async ({ task }) => {
     const component = (
       <Table>
         <Table.Head>
@@ -232,10 +238,10 @@ describe('Table.CellHead', () => {
       </Table>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support text alignment', async () => {
+  test.concurrent('should support text alignment', async ({ task }) => {
     const component = (
       <Table>
         <Table.Head>
@@ -252,10 +258,10 @@ describe('Table.CellHead', () => {
       </Table>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support sorting icons on hover', async () => {
+  test.concurrent('should support sorting icons on hover', async ({ task }) => {
     const component = (
       <Table>
         <Table.Head>
@@ -269,16 +275,16 @@ describe('Table.CellHead', () => {
       </Table>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#cell',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should sorting icons always be on the top of cell', async () => {
+  test.concurrent('should sorting icons always be on the top of cell', async ({ task }) => {
     const component = (
       <Table>
         <Table.Head>
@@ -292,13 +298,13 @@ describe('Table.CellHead', () => {
       </Table>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#cell',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });
 
@@ -312,7 +318,7 @@ describe('Table.Cell', () => {
       </Table.Body>
     </Table>
   ));
-  test('should support ref', () => {
+  test.concurrent('should support ref', () => {
     const ref = React.createRef();
     render(
       <Table>
@@ -332,7 +338,7 @@ describe('Table.StickyHead', () => {
 
   shouldSupportClassName(Table.StickyHead, Table);
   shouldSupportRef(Table.StickyHead, Table);
-  test('should support custom attributes', () => {
+  test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Table>
         <Table.StickyHead data-testid="sticky" name="sticky" />
@@ -342,7 +348,7 @@ describe('Table.StickyHead', () => {
     expect(getByTestId('sticky').attributes['name'].value).toBe('sticky');
   });
 
-  test('should support children', () => {
+  test.concurrent('should support children', () => {
     const component = (
       <Table>
         <Table.StickyHead>

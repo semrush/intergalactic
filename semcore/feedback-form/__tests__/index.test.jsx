@@ -32,7 +32,7 @@ describe('FeedbackForm', () => {
   shouldSupportClassName(FeedbackForm);
   shouldSupportRef(FeedbackForm);
 
-  test('Should call onSubmit', () => {
+  test.concurrent('Should call onSubmit', () => {
     const restoreOriginalSubmitDispatch = mockSubmitDispatch();
 
     const onSubmit = vi.fn();
@@ -49,7 +49,7 @@ describe('FeedbackForm', () => {
     restoreOriginalSubmitDispatch();
   });
 
-  test('Should not call onSubmit for validation error', () => {
+  test.concurrent('Should not call onSubmit for validation error', () => {
     const restoreOriginalSubmitDispatch = mockSubmitDispatch();
     const required = (value) => (value ? undefined : 'Required');
     const onSubmit = vi.fn();
@@ -68,7 +68,7 @@ describe('FeedbackForm', () => {
     restoreOriginalSubmitDispatch();
   });
 
-  test('Should correct render form', async () => {
+  test.concurrent('Should correct render form', async ({ task }) => {
     const component = (
       <FeedbackForm>
         <FeedbackForm.Item name="input">{({ input }) => <input {...input} />}</FeedbackForm.Item>
@@ -77,10 +77,10 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render notice', async () => {
+  test.concurrent('Should correct render notice', async ({ task }) => {
     const component = (
       <FeedbackForm>
         <FeedbackForm.Notice>You can also send us an email.</FeedbackForm.Notice>
@@ -88,16 +88,16 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render feedback success', async () => {
+  test.concurrent('Should correct render feedback success', async ({ task }) => {
     const component = <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render spinner', async () => {
+  test.concurrent('Should correct render spinner', async ({ task }) => {
     const component = (
       <FeedbackForm loading>
         LOADING
@@ -108,10 +108,10 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct work props for spinner theme', async () => {
+  test.concurrent('Should correct work props for spinner theme', async ({ task }) => {
     const component = (
       <FeedbackForm loading background="#878dfd85" theme="invert">
         LOADING
@@ -122,10 +122,10 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <FeedbackForm>
         <label htmlFor="suggestions">Tell us your suggestion or report an issue</label>

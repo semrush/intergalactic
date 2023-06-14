@@ -12,7 +12,7 @@ describe('FormatText', () => {
   shouldSupportClassName(FormatText);
   shouldSupportRef(FormatText);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <FormatText>
         <strong>strong</strong>
@@ -80,10 +80,10 @@ describe('FormatText', () => {
       </FormatText>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Lists support sizes', async () => {
+  test.concurrent('Lists support sizes', async ({ task }) => {
     const Inner = () => (
       <>
         <ul>
@@ -131,10 +131,10 @@ describe('FormatText', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Paragraphs supports sizes', async () => {
+  test.concurrent('Paragraphs supports sizes', async ({ task }) => {
     const Inner = () => (
       <>
         <p>
@@ -164,33 +164,33 @@ describe('FormatText', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Abbr should correct render', async () => {
+  test.concurrent('Abbr should correct render', async ({ task }) => {
     const component = (
       <FormatText>
         <abbr id="element">abbr element</abbr>
       </FormatText>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: { hover: '#element' },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(component, {
         actions: { active: '#element' },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(component, {
         actions: { focus: '#element' },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Link should correct render', async () => {
+  test.concurrent('Link should correct render', async ({ task }) => {
     const component = (
       <FormatText>
         <a href="#" id="element">
@@ -198,20 +198,20 @@ describe('FormatText', () => {
         </a>
       </FormatText>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: { hover: '#element' },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(component, {
         actions: { active: '#element' },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(component, {
         actions: { focus: '#element' },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });

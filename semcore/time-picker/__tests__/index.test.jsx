@@ -19,7 +19,7 @@ const TimePickerDefault = ({ children, ...other }) => (
 describe('TimePicker', () => {
   beforeEach(cleanup);
 
-  test('should support sizes', async () => {
+  test.concurrent('should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <TimePickerDefault value="11" size="l">
@@ -31,10 +31,10 @@ describe('TimePicker', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support disabled', async () => {
+  test.concurrent('should support disabled', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <TimePickerDefault disabled />
@@ -44,10 +44,10 @@ describe('TimePicker', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support state', async () => {
+  test.concurrent('should support state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <TimePickerDefault state="invalid" />
@@ -61,18 +61,18 @@ describe('TimePicker', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support focus', async () => {
-    expect(
+  test.concurrent('should support focus', async ({ task }) => {
+    await expect(
       await snapshot(<TimePickerDefault focused />, {
         actions: {
           focus: '#hours',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <TimePickerDefault focused>
           <TimePicker.Format />
@@ -83,15 +83,15 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<TimePickerDefault focused state="valid" />, {
         actions: {
           focus: '#hours',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <TimePickerDefault focused state="valid">
           <TimePicker.Format />
@@ -102,15 +102,15 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<TimePickerDefault focused state="invalid" />, {
         actions: {
           focus: '#hours',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <TimePickerDefault focused state="invalid">
           <TimePicker.Format />
@@ -121,11 +121,11 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should support hover format', async () => {
-    expect(
+  test.concurrent('should support hover format', async ({ task }) => {
+    await expect(
       await snapshot(
         <TimePickerDefault>
           <TimePicker.Format id="format" />
@@ -136,11 +136,11 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should support active format', async () => {
-    expect(
+  test.concurrent('should support active format', async ({ task }) => {
+    await expect(
       await snapshot(
         <TimePickerDefault>
           <TimePicker.Format id="format" />
@@ -151,10 +151,10 @@ describe('TimePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(<TimePickerDefault />);
 
     const results = await axe(container);

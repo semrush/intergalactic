@@ -21,7 +21,7 @@ describe('Grid', () => {
   shouldSupportClassName(Col, Row);
   shouldSupportRef(Col, Row);
 
-  test('Should support gutter', async () => {
+  test.concurrent('Should support gutter', async ({ task }) => {
     const component = (
       <Row w={300} gutter={5}>
         <Col>
@@ -39,10 +39,10 @@ describe('Grid', () => {
       </Row>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support auto span', async () => {
+  test.concurrent('Should support auto span', async ({ task }) => {
     const component = (
       <Row w={300}>
         <Col span>
@@ -60,10 +60,10 @@ describe('Grid', () => {
       </Row>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support span number', async () => {
+  test.concurrent('Should support span number', async ({ task }) => {
     const ColSpan = ({ span }) => (
       <Col span={span}>
         <div style={styleBox}>{span}</div>
@@ -101,10 +101,10 @@ describe('Grid', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support span and offset', async () => {
+  test.concurrent('Should support span and offset', async ({ task }) => {
     const RowCol = ({ span = '0', offset = '0' }) => (
       <Row w={200}>
         <Col span={span} offset={offset}>
@@ -132,10 +132,10 @@ describe('Grid', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support md and mdOffset', async () => {
+  test.concurrent('Should support md and mdOffset', async ({ task }) => {
     const RowCol = ({ md = '0', mdOffset = '0' }) => (
       <Row w={200}>
         <Col md={md} offset={mdOffset}>
@@ -161,6 +161,6 @@ describe('Grid', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

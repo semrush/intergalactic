@@ -10,7 +10,7 @@ import { cleanup } from '@semcore/testing-utils/testing-library';
 describe('DragAndDrop', () => {
   beforeEach(cleanup);
 
-  test('Should render correctly', async () => {
+  test.concurrent('Should render correctly', async ({ task }) => {
     const icons = {
       social: (
         <TabPanel.Item.Addon>
@@ -33,7 +33,7 @@ describe('DragAndDrop', () => {
     const currentTab = 'overview';
 
     const component = (
-      <DnD tag={TabPanel} value={currentTab} onDnD={() => { }}>
+      <DnD tag={TabPanel} value={currentTab} onDnD={() => {}}>
         {tabs.map((tab) => (
           <DnD.Draggable placement="bottom" tag={TabPanel.Item} value={tab} key={tab} pb={0}>
             {icons[tab] ?? null}
@@ -43,6 +43,6 @@ describe('DragAndDrop', () => {
       </DnD>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

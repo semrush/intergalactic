@@ -9,7 +9,7 @@ import Flags from '../src';
 describe('Flags', () => {
   beforeEach(cleanup);
 
-  test('Should support className with name country without space', () => {
+  test.concurrent('Should support className with name country without space', () => {
     const { getByTestId } = render(<Flags data-testid="flags" iso2="EH" />);
 
     expect(getByTestId('flags').classList[1]).toMatch(/^flag-western-sahara-/);
@@ -44,7 +44,7 @@ describe('Flags', () => {
     expect(link.tagName).toBe('LINK');
   });
 
-  test.skip('Should support no name country', async () => {
+  test.skip('Should support no name country', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Flags />
@@ -53,10 +53,10 @@ describe('Flags', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.skip('a11y', async () => {
+  test.skip('a11y', async ({ task }) => {
     const { container } = render(<Flags />);
 
     const results = await axe(container);

@@ -4,13 +4,12 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-
 import InputNumber from '../src';
 
 describe('InputNumber', () => {
   beforeEach(cleanup);
 
-  test('Should accept int numbers', () => {
+  test.concurrent('Should accept int numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -22,7 +21,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123', expect.anything());
   });
 
-  test('Should accept float numbers', () => {
+  test.concurrent('Should accept float numbers', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -34,7 +33,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('123.4', expect.anything());
   });
 
-  test('Should correct round float numbers with step less than 1', () => {
+  test.concurrent('Should correct round float numbers with step less than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -46,7 +45,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('0.3', expect.anything());
   });
 
-  test('Should correct round float numbers with step more than 1', () => {
+  test.concurrent('Should correct round float numbers with step more than 1', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -58,7 +57,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('40', expect.anything());
   });
 
-  test('Should not accept letters', () => {
+  test.concurrent('Should not accept letters', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -70,7 +69,7 @@ describe('InputNumber', () => {
     expect(spy).not.toBeCalled();
   });
 
-  test('Should not accept value which is bigger than max prop', () => {
+  test.concurrent('Should not accept value which is bigger than max prop', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -82,7 +81,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('10', expect.anything());
   });
 
-  test('Should not accept value which is smaller than min prop', () => {
+  test.concurrent('Should not accept value which is smaller than min prop', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -94,7 +93,7 @@ describe('InputNumber', () => {
     expect(spy).toBeCalledWith('200', expect.anything());
   });
 
-  test('Should support inputs up/down buttons click', () => {
+  test.concurrent('Should support inputs up/down buttons click', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
@@ -113,7 +112,7 @@ describe('InputNumber', () => {
     expect(spy).lastCalledWith('-1', expect.anything());
   });
 
-  test('Should support sizes', async () => {
+  test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <React.Fragment>
         <InputNumber size="m">
@@ -127,10 +126,10 @@ describe('InputNumber', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support disabled prop', async () => {
+  test.concurrent('Should support disabled prop', async ({ task }) => {
     const component = (
       <React.Fragment>
         <InputNumber>
@@ -143,10 +142,10 @@ describe('InputNumber', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support showControls prop', async () => {
+  test.concurrent('Should support showControls prop', async ({ task }) => {
     const component = (
       <React.Fragment>
         <InputNumber>
@@ -159,10 +158,10 @@ describe('InputNumber', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support view controls', async () => {
+  test.concurrent('Should support view controls', async ({ task }) => {
     const component = (
       <InputNumber focused>
         <InputNumber.Value id="input" />
@@ -170,16 +169,16 @@ describe('InputNumber', () => {
       </InputNumber>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           focus: '#input',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support controls hover', async () => {
+  test.concurrent('Should support controls hover', async ({ task }) => {
     const component = (
       <InputNumber>
         <InputNumber.Value />
@@ -187,16 +186,16 @@ describe('InputNumber', () => {
       </InputNumber>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#controls > button',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <InputNumber>
         <InputNumber.Value aria-label="input-number" value="23" />

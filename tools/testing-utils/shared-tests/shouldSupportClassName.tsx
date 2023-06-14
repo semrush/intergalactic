@@ -3,7 +3,7 @@ import { render } from '../testing-library';
 import { test, expect } from '../vitest';
 
 export const shouldSupportClassName = (Component, Wrapper = React.Fragment, props = {}) => {
-  test('should support className extending', () => {
+  test.concurrent('should support className extending', () => {
     const className = 'more-then one-class';
 
     const { getByTestId } = render(

@@ -9,7 +9,7 @@ import Dropdown from '../src';
 describe('Dropdown', () => {
   beforeEach(cleanup);
 
-  test('Should correct enter space in input', () => {
+  test.concurrent('Should correct enter space in input', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Dropdown onVisibleChange={spy} interaction="focus">
@@ -24,7 +24,7 @@ describe('Dropdown', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('correct style', async () => {
+  test.concurrent('correct style', async ({ task }) => {
     const component = (
       <div style={{ width: 150, height: 60 }}>
         <Dropdown disablePortal visible>
@@ -38,10 +38,10 @@ describe('Dropdown', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <Dropdown visible disablePortal>
         <Dropdown.Trigger tag="button" aria-label="default dropdown">

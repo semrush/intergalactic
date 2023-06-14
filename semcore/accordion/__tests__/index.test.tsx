@@ -9,7 +9,7 @@ import Accordion from '../src';
 describe('Accordion', () => {
   beforeEach(cleanup);
 
-  test('Should render correctly', async () => {
+  test.concurrent('Should render correctly', async ({ task }) => {
     const component = (
       <Accordion defaultValue={[0, 2]}>
         {Array(4)
@@ -26,10 +26,10 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support uncontrolled mode with single expandable item', () => {
+  test.concurrent('Should support uncontrolled mode with single expandable item', () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy} defaultValue={null}>
@@ -52,7 +52,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Should support controlled mode with single expandable item', () => {
+  test.concurrent('Should support controlled mode with single expandable item', () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -96,7 +96,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Should support uncontrolled mode with multiple expandable items', () => {
+  test.concurrent('Should support uncontrolled mode with multiple expandable items', () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy}>
@@ -122,7 +122,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith([]);
   });
 
-  test('Should support controlled mode with multiple expandable items', () => {
+  test.concurrent('Should support controlled mode with multiple expandable items', () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -178,7 +178,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith([]);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { getByText, container } = render(
       <Accordion>
         <Accordion.Item value={1}>

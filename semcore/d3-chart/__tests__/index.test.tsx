@@ -60,7 +60,7 @@ describe('Plot', () => {
   shouldSupportClassName(PlotTest);
   shouldSupportRef(PlotTest);
 
-  test('Should support render null', () => {
+  test.concurrent('Should support render null', () => {
     const { queryByText } = render(<Plot>Test</Plot>);
     expect(queryByText(/Test/)).toBeNull();
   });
@@ -72,41 +72,47 @@ describe('YAxis', () => {
   shouldSupportClassName(YAxis, PlotTest);
   shouldSupportRef(YAxis, PlotTest);
 
-  test('Should support call children function for Grid how many ticks are passed', () => {
-    expect.assertions(2);
+  test.concurrent(
+    'Should support call children function for Grid how many ticks are passed',
+    ({ expect }) => {
+      expect.assertions(2);
 
-    render(
-      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
-        <YAxis ticks={[0, 1]}>
-          <YAxis.Grid>
-            {(props) => {
-              expect(props).toBeTruthy();
-              return props;
-            }}
-          </YAxis.Grid>
-        </YAxis>
-      </Plot>,
-    );
-  });
+      render(
+        <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
+          <YAxis ticks={[0, 1]}>
+            <YAxis.Grid>
+              {(props) => {
+                expect(props).toBeTruthy();
+                return props;
+              }}
+            </YAxis.Grid>
+          </YAxis>
+        </Plot>,
+      );
+    },
+  );
 
-  test('Should support call children function for Ticks how many ticks are passed', () => {
-    expect.assertions(2);
+  test.concurrent(
+    'Should support call children function for Ticks how many ticks are passed',
+    ({ expect }) => {
+      expect.assertions(2);
 
-    render(
-      <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
-        <YAxis ticks={[0, 1]}>
-          <YAxis.Ticks>
-            {(props) => {
-              expect(props).toBeTruthy();
-              return props;
-            }}
-          </YAxis.Ticks>
-        </YAxis>
-      </Plot>,
-    );
-  });
+      render(
+        <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
+          <YAxis ticks={[0, 1]}>
+            <YAxis.Ticks>
+              {(props) => {
+                expect(props).toBeTruthy();
+                return props;
+              }}
+            </YAxis.Ticks>
+          </YAxis>
+        </Plot>,
+      );
+    },
+  );
 
-  test('should support set data-ui-name for Line.Ticks', () => {
+  test.concurrent('should support set data-ui-name for Line.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -118,7 +124,7 @@ describe('YAxis', () => {
     expect(queryByTestId('test').attributes['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
-  test('should support change tag YAxis.Ticks', () => {
+  test.concurrent('should support change tag YAxis.Ticks', () => {
     const { queryByTestId } = render(
       <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
         <YAxis ticks={[0]}>
@@ -136,7 +142,7 @@ describe('XAxis', () => {
   shouldSupportClassName(XAxis, PlotTest);
   shouldSupportRef(XAxis, PlotTest);
 
-  test('should support hover for custom XAxis.Ticks', () => {
+  test.concurrent('should support hover for custom XAxis.Ticks', () => {
     vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
     // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
@@ -178,7 +184,7 @@ describe('XAxis', () => {
 });
 
 describe('utils', () => {
-  test('should support getIndexFromData for Line, Bar chart', () => {
+  test.concurrent('should support getIndexFromData for Line, Bar chart', () => {
     const data = [
       { x: 1, y: 'test' },
       { x: 2, y: 'describe' },
@@ -217,7 +223,7 @@ describe('Area', () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 15]);
 
-  test('should render curve Area chart correctly', async () => {
+  test.concurrent('should render curve Area chart correctly', async ({ task }) => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis ticks={yScale.ticks()}>
@@ -233,10 +239,10 @@ describe('Area', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render Stacked Area chart without data correctly', async () => {
+  test.concurrent('should render Stacked Area chart without data correctly', async ({ task }) => {
     const data = [
       { time: 0, stack1: 1, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 3, stack3: 4 },
@@ -276,37 +282,40 @@ describe('Area', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render curve Stacked Area chart with dots correctly', async () => {
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <StackedArea x="time">
-          <StackedArea.Area y="stack1" curve={curveCardinal} duration={0}>
-            <StackedArea.Area.Dots display />
-          </StackedArea.Area>
-          <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal} duration={0}>
-            <StackedArea.Area.Dots display />
-          </StackedArea.Area>
-          <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal} duration={0}>
-            <StackedArea.Area.Dots display />
-          </StackedArea.Area>
-        </StackedArea>
-      </Plot>
-    );
+  test.concurrent(
+    'should render curve Stacked Area chart with dots correctly',
+    async ({ task }) => {
+      const component = (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Grid />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <StackedArea x="time">
+            <StackedArea.Area y="stack1" curve={curveCardinal} duration={0}>
+              <StackedArea.Area.Dots display />
+            </StackedArea.Area>
+            <StackedArea.Area y="stack2" color="#3AB011" curve={curveCardinal} duration={0}>
+              <StackedArea.Area.Dots display />
+            </StackedArea.Area>
+            <StackedArea.Area y="stack3" color="#FFA318" curve={curveCardinal} duration={0}>
+              <StackedArea.Area.Dots display />
+            </StackedArea.Area>
+          </StackedArea>
+        </Plot>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('should render area-without-data', async () => {
+  test.concurrent('should render area-without-data', async ({ task }) => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 4 },
@@ -346,10 +355,10 @@ describe('Area', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render area', async () => {
+  test.concurrent('should render area', async ({ task }) => {
     function formatDate(value, options) {
       return new Intl.DateTimeFormat('en', options).format(value);
     }
@@ -400,10 +409,10 @@ describe('Area', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should support custom line in area chart', async () => {
+  test.concurrent('should support custom line in area chart', async ({ task }) => {
     const data = Array(10)
       .fill({})
       .map((d, i) => {
@@ -442,10 +451,10 @@ describe('Area', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render stacked-area-without-data', async () => {
+  test.concurrent('should render stacked-area-without-data', async ({ task }) => {
     const data = [
       { time: 0, stack1: 1, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 3, stack3: 4 },
@@ -499,14 +508,14 @@ describe('Area', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Venn', () => {
   shouldSupportRef(Venn, PlotTest);
 
-  test('should render venn-custom-intersection', async () => {
+  test.concurrent('should render venn-custom-intersection', async ({ task }) => {
     const data = {
       G: 200,
       F: 200,
@@ -540,10 +549,10 @@ describe('Venn', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render venn-orientation', async () => {
+  test.concurrent('should render venn-orientation', async ({ task }) => {
     const orders = [
       (val1, val2) => val2.radius - val1.radius,
       (val1, val2) => val1.radius - val2.radius,
@@ -580,10 +589,10 @@ describe('Venn', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render venn', async () => {
+  test.concurrent('should render venn', async ({ task }) => {
     const data = {
       G: 200,
       F: 200,
@@ -612,10 +621,7 @@ describe('Venn', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot({
-      // because 0.00012044219843687642% different from snapshot 😬
-      failureThreshold: 0.0001,
-    });
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
@@ -646,7 +652,7 @@ describe('Bar', () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 15]);
 
-  test('should render Bar chart correctly', async () => {
+  test.concurrent('should render Bar chart correctly', async ({ task }) => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
@@ -660,10 +666,10 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render Bar with radius = height if radius > height', async () => {
+  test.concurrent('should render Bar with radius = height if radius > height', async ({ task }) => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
@@ -677,42 +683,45 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render the minimum height for bars with a height close to zero', async () => {
-    const yScale = scaleLinear()
-      .range([height - MARGIN, MARGIN])
-      .domain([-5, 5]);
+  test.concurrent(
+    'should render the minimum height for bars with a height close to zero',
+    async ({ task }) => {
+      const yScale = scaleLinear()
+        .range([height - MARGIN, MARGIN])
+        .domain([-5, 5]);
 
-    const data = [
-      { time: 0, stack1: 0 },
-      { time: 1, stack1: 0.05 },
-      { time: 2, stack1: 0.5 },
-      { time: 3, stack1: 1 },
-      { time: 4, stack1: -4 },
-      { time: 5, stack1: -0.05 },
-      { time: 6, stack1: -0 },
-      { time: 7, stack1: -0.5 },
-    ];
+      const data = [
+        { time: 0, stack1: 0 },
+        { time: 1, stack1: 0.05 },
+        { time: 2, stack1: 0.5 },
+        { time: 3, stack1: 1 },
+        { time: 4, stack1: -4 },
+        { time: 5, stack1: -0.05 },
+        { time: 6, stack1: -0 },
+        { time: 7, stack1: -0.5 },
+      ];
 
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis>
-          <YAxis.Ticks />
-          <YAxis.Grid />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-        </XAxis>
-        <Bar x="time" y="stack1" duration={0} />
-      </Plot>
-    );
+      const component = (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis>
+            <YAxis.Ticks />
+            <YAxis.Grid />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+          </XAxis>
+          <Bar x="time" y="stack1" duration={0} />
+        </Plot>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('should render Bar chart without data correctly', async () => {
+  test.concurrent('should render Bar chart without data correctly', async ({ task }) => {
     const data = [
       { time: 0, stack1: 0 },
       { time: 1, stack1: null },
@@ -734,10 +743,10 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render StackBar chart correctly', async () => {
+  test.concurrent('should render StackBar chart correctly', async ({ task }) => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
@@ -754,10 +763,10 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render StackBar chart correctly with zero values', async () => {
+  test.concurrent('should render StackBar chart correctly with zero values', async ({ task }) => {
     const data = [
       { time: 0, stack1: 1, stack2: 4, stack3: 3 },
       { time: 1, stack1: 2, stack2: 0, stack3: 4 },
@@ -788,10 +797,10 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render StackBar chart correctly with custom hMin', async () => {
+  test.concurrent('should render StackBar chart correctly with custom hMin', async ({ task }) => {
     const yScale = scaleLinear()
       .range([height - MARGIN, MARGIN])
       .domain([-10, 10]);
@@ -826,10 +835,10 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render StackBar chart correctly with default hMin', async () => {
+  test.concurrent('should render StackBar chart correctly with default hMin', async ({ task }) => {
     const yScale = scaleLinear()
       .range([height - MARGIN, MARGIN])
       .domain([-10, 10]);
@@ -864,10 +873,10 @@ describe('Bar', () => {
       </Plot>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should not cut content on right with left margin', async () => {
+  test.concurrent('should not cut content on right with left margin', async ({ task }) => {
     const width = 500;
     const height = 300;
 
@@ -913,10 +922,10 @@ describe('Bar', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-group', async () => {
+  test.concurrent('should render bar-group', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -957,10 +966,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-negative', async () => {
+  test.concurrent('should render bar-negative', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -1000,10 +1009,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-trend', async () => {
+  test.concurrent('should render bar-trend', async ({ task }) => {
     const data = Array(10)
       .fill({})
       .map((d, i) => ({
@@ -1051,10 +1060,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar', async () => {
+  test.concurrent('should render bar', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -1091,10 +1100,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-background', async () => {
+  test.concurrent('should render bar-background', async ({ task }) => {
     const data = [...Array(5).keys()].map((d, i) => ({
       category: `Category ${i}`,
       bar: Math.abs(Math.sin(Math.exp(i))) * 10,
@@ -1127,10 +1136,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-horizontal-group', async () => {
+  test.concurrent('should render bar-horizontal-group', async ({ task }) => {
     const data = [...Array(5).keys()].map((d, i) => ({
       category: `Category ${i}`,
       bar1: Math.abs(Math.sin(Math.exp(i))) * 10,
@@ -1169,10 +1178,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-horizontal', async () => {
+  test.concurrent('should render bar-horizontal', async ({ task }) => {
     const data = [...Array(5).keys()].map((d, i) => ({
       category: `Category ${i}`,
       bar: Math.abs(Math.sin(Math.exp(i))) * 10,
@@ -1207,50 +1216,53 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-horizontal with null and negative values correctly', async () => {
-    const data = [
-      { category: 'Category 1', bar: -0.05 },
-      { category: 'Category 2', bar: 0 },
-      { category: 'Category 3', bar: 5 },
-      { category: 'Category 4', bar: 0.05 },
-      { category: 'Category 5', bar: null },
-      { category: 'Category 6', bar: -5 },
-    ];
+  test.concurrent(
+    'should render bar-horizontal with null and negative values correctly',
+    async ({ task }) => {
+      const data = [
+        { category: 'Category 1', bar: -0.05 },
+        { category: 'Category 2', bar: 0 },
+        { category: 'Category 3', bar: 5 },
+        { category: 'Category 4', bar: 0.05 },
+        { category: 'Category 5', bar: null },
+        { category: 'Category 6', bar: -5 },
+      ];
 
-    const MARGIN = 40;
-    const width = 500;
-    const height = 300;
+      const MARGIN = 40;
+      const width = 500;
+      const height = 300;
 
-    const xScale = scaleLinear()
-      .range([MARGIN * 2, width - MARGIN])
-      .domain([-7, 7]);
+      const xScale = scaleLinear()
+        .range([MARGIN * 2, width - MARGIN])
+        .domain([-7, 7]);
 
-    const yScale = scaleBand()
-      .range([height - MARGIN, MARGIN])
-      .domain(data.map((d) => d.category))
-      .paddingInner(0.4)
-      .paddingOuter(0.2);
+      const yScale = scaleBand()
+        .range([height - MARGIN, MARGIN])
+        .domain(data.map((d) => d.category))
+        .paddingInner(0.4)
+        .paddingOuter(0.2);
 
-    const component = (
-      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-        <YAxis hide={false}>
-          <YAxis.Ticks />
-        </YAxis>
-        <XAxis>
-          <XAxis.Ticks />
-          <XAxis.Grid />
-        </XAxis>
-        <HorizontalBar x="bar" y="category" duration={0} />
-      </Plot>
-    );
+      const component = (
+        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+          <YAxis hide={false}>
+            <YAxis.Ticks />
+          </YAxis>
+          <XAxis>
+            <XAxis.Ticks />
+            <XAxis.Grid />
+          </XAxis>
+          <HorizontalBar x="bar" y="category" duration={0} />
+        </Plot>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('should render bar-label', async () => {
+  test.concurrent('should render bar-label', async ({ task }) => {
     const data = [...Array(5).keys()].map((d, i) => ({
       category: `Category ${i}`,
       bar: i + 10 * Math.abs(Math.sin(Math.exp(i))),
@@ -1297,10 +1309,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-stack', async () => {
+  test.concurrent('should render bar-stack', async ({ task }) => {
     const data = [...Array(5).keys()].map((d, i) => ({
       category: `Category ${i}`,
       stack1: Math.abs(Math.sin(Math.exp(i))) * 10,
@@ -1339,10 +1351,10 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render bar-horizontal-stack', async () => {
+  test.concurrent('should render bar-horizontal-stack', async ({ task }) => {
     const data = [
       { category: 'Category 1', stack1: 0.01, stack2: 0.03, stack3: 0.01 },
       { category: 'Category 2', stack1: -0.01, stack2: -1, stack3: -0.01 },
@@ -1385,12 +1397,12 @@ describe('Bar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Bubble', () => {
-  test('should render bubble', async () => {
+  test.concurrent('should render bubble', async ({ task }) => {
     const data = Array(10)
       .fill({})
       .map((d, i) => ({
@@ -1426,10 +1438,10 @@ describe('Bubble', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render custom-color', async () => {
+  test.concurrent('should render custom-color', async ({ task }) => {
     const data = [
       { x: 2, y: 3, value: 5040, label: 'label 1', color: '#2BB3FF' },
       { x: 1, y: 9, value: 40, label: 'label 2', color: '#59DDAA' },
@@ -1465,12 +1477,12 @@ describe('Bubble', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Donut', () => {
-  test('should render donut-without-data', async () => {
+  test.concurrent('should render donut-without-data', async ({ task }) => {
     const data = {
       a: 0,
       b: 0,
@@ -1490,10 +1502,10 @@ describe('Donut', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render donut', async () => {
+  test.concurrent('should render donut', async ({ task }) => {
     const data = {
       a: 3,
       b: 1,
@@ -1513,10 +1525,10 @@ describe('Donut', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should support active sector in donut chart', async () => {
+  test.concurrent('should support active sector in donut chart', async ({ task }) => {
     const data = {
       a: 3,
       b: 1,
@@ -1535,10 +1547,10 @@ describe('Donut', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render semi-donut-with-one-data', async () => {
+  test.concurrent('should render semi-donut-with-one-data', async ({ task }) => {
     const data = {
       speed: 3,
       other: 200,
@@ -1560,10 +1572,10 @@ describe('Donut', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render semi-donut', async () => {
+  test.concurrent('should render semi-donut', async ({ task }) => {
     const data = {
       a: 3,
       b: 1,
@@ -1590,12 +1602,12 @@ describe('Donut', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Radial', () => {
-  test('should render radial-tree-custom-center', async () => {
+  test.concurrent('should render radial-tree-custom-center', async ({ task }) => {
     const Component: React.FC = () => {
       const width = 500;
       const height = 500;
@@ -1623,10 +1635,10 @@ describe('Radial', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render radial-tree-multicolor', async () => {
+  test.concurrent('should render radial-tree-multicolor', async ({ task }) => {
     const movies = [
       { label: 'Action', color: '#008ff8' },
       { label: 'Comedy', color: '#008ff8' },
@@ -1666,10 +1678,10 @@ describe('Radial', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render radial-tree-multiline-text', async () => {
+  test.concurrent('should render radial-tree-multiline-text', async ({ task }) => {
     const Component: React.FC = () => {
       const width = 500;
       const height = 500;
@@ -1731,10 +1743,10 @@ describe('Radial', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render radial-tree', async () => {
+  test.concurrent('should render radial-tree', async ({ task }) => {
     const Component: React.FC = () => {
       const width = 500;
       const height = 500;
@@ -1761,12 +1773,12 @@ describe('Radial', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Scatter', () => {
-  test('should render custom-color-values', async () => {
+  test.concurrent('should render custom-color-values', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -1804,10 +1816,10 @@ describe('Scatter', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render custom-color', async () => {
+  test.concurrent('should render custom-color', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -1844,10 +1856,10 @@ describe('Scatter', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render scatterplot-values', async () => {
+  test.concurrent('should render scatterplot-values', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -1883,12 +1895,12 @@ describe('Scatter', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Radar', () => {
-  test('should render radar', async () => {
+  test.concurrent('should render radar', async ({ task }) => {
     const data = {
       categories: [
         'Variable 1',
@@ -1925,15 +1937,12 @@ describe('Radar', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot({
-      // because 0.00012044219843687642% different from snapshot 😬
-      failureThreshold: 0.0001,
-    });
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Line', () => {
-  test('should render line', async () => {
+  test.concurrent('should render line', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => {
@@ -1973,12 +1982,12 @@ describe('Line', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });
 
 describe('d3 charts visual regression', () => {
-  test('should render axis-grid', async () => {
+  test.concurrent('should render axis-grid', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -2014,10 +2023,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render axis-ticks', async () => {
+  test.concurrent('should render axis-ticks', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -2055,10 +2064,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render axis-titles', async () => {
+  test.concurrent('should render axis-titles', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -2100,10 +2109,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render axis-titles with vertical mode', async () => {
+  test.concurrent('should render axis-titles with vertical mode', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -2147,10 +2156,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render reference line', async () => {
+  test.concurrent('should render reference line', async ({ task }) => {
     const data = Array(5)
       .fill({})
       .map((d, i) => ({
@@ -2194,10 +2203,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render axis', async () => {
+  test.concurrent('should render axis', async ({ task }) => {
     const data = Array(21)
       .fill({})
       .map((d, i) => ({
@@ -2231,10 +2240,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test.skip('should render export-in-image', async () => {
+  test.skip('should render export-in-image', async ({ task }) => {
     const extensions = ['PNG', 'JPEG', 'WEBP'];
 
     const data = Array(20)
@@ -2405,10 +2414,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render legend', async () => {
+  test.concurrent('should render legend', async ({ task }) => {
     const data = [...Array(10).keys()].map((d, i) => ({
       x: i,
       y: Math.abs(Math.sin(Math.exp(i))) * i,
@@ -2508,10 +2517,10 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('should render margin', async () => {
+  test.concurrent('should render margin', async ({ task }) => {
     const data = Array(20)
       .fill({})
       .map((d, i) => ({
@@ -2545,6 +2554,6 @@ describe('d3 charts visual regression', () => {
       );
     };
 
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 });

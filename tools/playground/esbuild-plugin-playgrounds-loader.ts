@@ -8,7 +8,7 @@ export const esbuildPluginPlaygroundsLoader = (playgroundsDir: string): Plugin =
       path,
       namespace: 'playgrounds',
     }));
-    build.onLoad({ filter: /@playgrounds/ }, async () => {
+    build.onLoad({ filter: /@playgrounds/ }, async ({ task }) => {
       let playgroundNames = await readdir(playgroundsDir);
       playgroundNames = playgroundNames.filter((name) => !/^[.]/.test(name));
       const playgroundExportFileContent =

@@ -43,19 +43,19 @@ describe('ProductHead', () => {
     </ProductHead>
   );
 
-  test('Render correctly', async () => {
-    expect(await snapshot(component)).toMatchImageSnapshot();
+  test.concurrent('Render correctly', async ({ task }) => {
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly for tablet', async () => {
-    expect(await snapshot(component, { width: 766 })).toMatchImageSnapshot();
+  test.concurrent('Render correctly for tablet', async ({ task }) => {
+    await expect(await snapshot(component, { width: 766 })).toMatchImageSnapshot(task);
   });
 });
 
 describe('Title', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly if not enough space', async () => {
+  test.concurrent('Renders correctly if not enough space', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: '200px' }}>
         <Title>Tool Name for: Domain.com</Title>
@@ -63,24 +63,24 @@ describe('Title', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly Title.Tool', async () => {
+  test.concurrent('Renders correctly Title.Tool', async ({ task }) => {
     const component = (
       <Title>
         <Title.Tool>Tool Name for:</Title.Tool>
       </Title>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
 describe('Info', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly when item alone', async () => {
+  test.concurrent('Renders correctly when item alone', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Info>
@@ -94,10 +94,10 @@ describe('Info', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly when items two', async () => {
+  test.concurrent('Renders correctly when items two', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Info>
@@ -109,6 +109,6 @@ describe('Info', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

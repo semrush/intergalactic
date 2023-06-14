@@ -16,7 +16,7 @@ import { getRef, setRef, getNodeByRef } from '../src/ref';
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
 
-  test('Utils assignProps other prop', () => {
+  test.concurrent('Utils assignProps other prop', () => {
     const result1 = assignProps(
       {
         test: 1,
@@ -53,7 +53,7 @@ describe('Utils CSS in JS', () => {
     expect(result4.test).toEqual(undefined);
   });
 
-  test('Utils assignProps style', () => {
+  test.concurrent('Utils assignProps style', () => {
     const result1 = assignProps(
       {
         style: {
@@ -102,7 +102,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.style.margin).toEqual(1);
   });
 
-  test('Utils assignProps className', () => {
+  test.concurrent('Utils assignProps className', () => {
     const result1 = assignProps(
       {
         className: 'test1',
@@ -147,7 +147,7 @@ describe('Utils CSS in JS', () => {
     expect(result5.className).toEqual('test1');
   });
 
-  test('Utils assignProps ref', () => {
+  test.concurrent('Utils assignProps ref', () => {
     const spy1 = vi.fn();
     const result1 = assignProps(
       {
@@ -185,7 +185,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.ref).toEqual(spy3);
   });
 
-  test('Utils assignProps handler', () => {
+  test.concurrent('Utils assignProps handler', () => {
     const spy1 = vi.fn();
     const result1 = assignProps(
       {
@@ -223,7 +223,7 @@ describe('Utils CSS in JS', () => {
     expect(result3.onClick).toEqual(spy3);
   });
 
-  test('Utils assignHandlers', () => {
+  test.concurrent('Utils assignHandlers', () => {
     const spy1 = vi.fn();
     const result1 = assignHandlers(
       {
@@ -259,17 +259,17 @@ describe('Utils CSS in JS', () => {
     expect(result3.onClick).not.toEqual(spy3);
   });
 
-  test('CSS in JS', async () => {
+  test.concurrent('CSS in JS', async ({ task }) => {
     const CSSJS = ({ css }) => {
       const className = useCss(css);
       return <div className={className} />;
     };
     const component = <CSSJS css={{ background: 'red', width: '20px', height: '20px' }} />;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.skip('get stylesheet', async () => {
+  test.skip('get stylesheet', async ({ task }) => {
     // because nano singleton
     vi.resetModules();
     // TODO: resolve "Invalid hook call" issue
@@ -293,7 +293,7 @@ describe('Utils CSS in JS', () => {
 describe('Utils isNode', () => {
   beforeEach(cleanup);
 
-  test('should return false for invalid React elements', () => {
+  test.concurrent('should return false for invalid React elements', () => {
     const nodes = [Infinity, undefined, false, null];
     const factory = (node) => {
       expect(isNode(node)).toBeFalsy();
@@ -301,11 +301,11 @@ describe('Utils isNode', () => {
     nodes.forEach((i) => factory(i));
   });
 
-  test('should return false by default', () => {
+  test.concurrent('should return false by default', () => {
     expect(isNode()).toBeFalsy();
   });
 
-  test('should return true for valid React elements', () => {
+  test.concurrent('should return true for valid React elements', () => {
     const nodes = [
       'test',
       1,
@@ -320,7 +320,7 @@ describe('Utils isNode', () => {
 });
 
 describe('Utils compose', () => {
-  test('should compose functions', () => {
+  test.concurrent('should compose functions', () => {
     const functions = [(i) => `3, ${i}`, (i) => `2, ${i}`, (i) => `1, ${i}`];
     expect(compose(...functions)('go!')).toBe('3, 2, 1, go!');
   });
@@ -329,13 +329,13 @@ describe('Utils compose', () => {
 describe('Utils color', () => {
   beforeEach(cleanup);
 
-  test('should support resolveColor for empty value', () => {
+  test.concurrent('should support resolveColor for empty value', () => {
     expect(resolveColor(undefined)).toBe(undefined);
     expect(resolveColor('')).toBe(undefined);
     expect(resolveColor(null)).toBe(undefined);
   });
 
-  test('should support shade for empty value', () => {
+  test.concurrent('should support shade for empty value', () => {
     expect(shade('', -0.08)).toBe(undefined);
   });
 
@@ -343,39 +343,39 @@ describe('Utils color', () => {
     expect(opacity('green', 0.2)).toBe(undefined);
   });
 
-  test('should support opacity for hex color', () => {
+  test.concurrent('should support opacity for hex color', () => {
     expect(opacity('#008000', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
   });
 
-  test('should support opacity for rgb color', () => {
+  test.concurrent('should support opacity for rgb color', () => {
     expect(opacity('rgb(0,128,0)', 0.2)).toBe('rgba(0, 128, 0, 0.2)');
   });
 
-  test('should support opacity regardless of case', () => {
+  test.concurrent('should support opacity regardless of case', () => {
     expect(opacity('#9EF2C9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
     expect(opacity('#9ef2c9', 0.5)).toBe('rgba(158, 242, 201, 0.5)');
   });
 });
 
 describe('Utils interpolate', () => {
-  test('Should interpolate variable with equal name', () => {
+  test.concurrent('Should interpolate variable with equal name', () => {
     const Template = '{name}, dont turn this rape into a murder';
     expect(interpolate(Template, { name: 'Sarah' })).toBe(
       'Sarah, dont turn this rape into a murder',
     );
   });
 
-  test('Should interpolate more then one variable', () => {
+  test.concurrent('Should interpolate more then one variable', () => {
     const Template = '{a}{b}{c}';
     expect(interpolate(Template, { a: 'A', b: 'B', c: 'C' })).toBe('ABC');
   });
 
-  test('Should not fail if variable for template is not specified', () => {
+  test.concurrent('Should not fail if variable for template is not specified', () => {
     const Template = '{name}, dont turn this rape into a murder';
     expect(interpolate(Template, {})).toBe(Template);
   });
 
-  test('Should mirror HTML tags', () => {
+  test.concurrent('Should mirror HTML tags', () => {
     const Template = '{name}';
     expect(interpolate(Template, { name: `<script>console.log('oh my!')</script>` })).toBe(
       `&lt;script&gt;console.log('oh my!')&lt;/script&gt;`,
@@ -386,32 +386,32 @@ describe('Utils interpolate', () => {
 describe('Utils reactToText', () => {
   beforeEach(cleanup);
 
-  test('support string', () => {
+  test.concurrent('support string', () => {
     expect(reactToText('string')).toBe('string');
   });
 
-  test('support number', () => {
+  test.concurrent('support number', () => {
     expect(reactToText(0)).toBe('0');
     expect(reactToText(1)).toBe('1');
   });
 
-  test('support boolean', () => {
+  test.concurrent('support boolean', () => {
     expect(reactToText(false)).toBe('false');
     expect(reactToText(true)).toBe('true');
   });
 
-  test('support undefined types', () => {
+  test.concurrent('support undefined types', () => {
     expect(reactToText(undefined)).toBe('');
     expect(reactToText(null)).toBe('');
     expect(reactToText(NaN)).toBe('');
   });
 
-  test('support array and obj', () => {
+  test.concurrent('support array and obj', () => {
     expect(reactToText(['arr', '-', 'arr'])).toBe('arr-arr');
     expect(reactToText({})).toBe('');
   });
 
-  test('support react component', () => {
+  test.concurrent('support react component', () => {
     expect(reactToText(<div>component</div>)).toBe('component');
     expect(
       reactToText(
@@ -426,12 +426,12 @@ describe('Utils reactToText', () => {
 describe('Utils ref', () => {
   beforeEach(cleanup);
 
-  test('[getRef] support element', () => {
+  test.concurrent('[getRef] support element', () => {
     const div = document.createElement('div');
     expect(getRef(div)).toBe(div);
   });
 
-  test('[getRef] support ref function', () => {
+  test.concurrent('[getRef] support ref function', () => {
     const div = document.createElement('div');
     const ref = React.createRef<HTMLDivElement>();
     // @ts-ignore
@@ -439,32 +439,32 @@ describe('Utils ref', () => {
     expect(getRef(ref)).toBe(div);
   });
 
-  test('[getRef] support unknown', () => {
+  test.concurrent('[getRef] support unknown', () => {
     expect(getRef(undefined)).toBe(null);
   });
 
-  test('[setRef] support ref', () => {
+  test.concurrent('[setRef] support ref', () => {
     const ref = React.createRef<HTMLDivElement>();
     const div = document.createElement('div');
     setRef(ref, div);
     expect(ref.current).toBe(div);
   });
 
-  test('[setRef] support function', () => {
+  test.concurrent('[setRef] support function', () => {
     const fn = vi.fn();
     const div = document.createElement('div');
     setRef(fn, div);
     expect(fn).toHaveBeenCalledWith(div);
   });
 
-  test('[getNodeByRef] support function', () => {
+  test.concurrent('[getNodeByRef] support function', () => {
     const div = document.createElement('div');
     const fn = vi.fn(() => div);
     // setRef(fn, div)
     expect(getNodeByRef(fn)).toBe(div);
   });
 
-  test('[getNodeByRef] support ref', () => {
+  test.concurrent('[getNodeByRef] support ref', () => {
     const div = document.createElement('div');
     const ref = React.createRef<HTMLDivElement>();
     // @ts-ignore

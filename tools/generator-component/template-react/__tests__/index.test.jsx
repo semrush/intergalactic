@@ -8,7 +8,7 @@ import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-libra
 describe('{{ properCase name }}', () => {
   beforeEach(cleanup);
 
-  test('TODO', () => {
+  test.concurrent('TODO', () => {
     expect(true).toEqual(true);
   });
 });

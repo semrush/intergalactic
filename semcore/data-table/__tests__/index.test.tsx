@@ -63,7 +63,7 @@ describe('DataTable', () => {
   shouldSupportClassName(DataTable);
   shouldSupportRef(DataTable);
 
-  test('renders correctly', async () => {
+  test.concurrent('renders correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -77,10 +77,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Customizing the header', async () => {
+  test.concurrent('Customizing the header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -118,10 +118,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('The size of the columns', async () => {
+  test.concurrent('The size of the columns', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -135,10 +135,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('The alignment of the columns', async () => {
+  test.concurrent('The alignment of the columns', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -175,10 +175,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Sorting', async () => {
+  test.concurrent('Sorting', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={vi.fn()}>
@@ -193,17 +193,17 @@ describe('DataTable', () => {
       </div>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#row',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
   /** Currently has no difference from DataTable without Sticky */
-  test.skip('Fixed header', async () => {
+  test.skip('Fixed header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -219,11 +219,11 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
-  test.skip('Fixed columns', async () => {
+  test.skip('Fixed columns', async ({ task }) => {
     const component = (
       <div style={{ width: 500 }}>
         <DataTable data={data}>
@@ -237,10 +237,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Multi-level header', async () => {
+  test.concurrent('Multi-level header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -257,10 +257,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Adding additional elements to the header', async () => {
+  test.concurrent('Adding additional elements to the header', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -277,11 +277,11 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   /** Currently screenshot service unable to execute js and portals needs to run js for dom manipulations */
-  test.skip('Header separation', async () => {
+  test.skip('Header separation', async ({ task }) => {
     const Component = () => {
       const portalRef = React.useRef(null);
       return (
@@ -304,10 +304,10 @@ describe('DataTable', () => {
         </div>
       );
     };
-    expect(await snapshot(<Component />)).toMatchImageSnapshot();
+    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test('Access to Row', async () => {
+  test.concurrent('Access to Row', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -344,10 +344,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Access to Cell', async () => {
+  test.concurrent('Access to Cell', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -378,10 +378,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Access to a set of cells', async () => {
+  test.concurrent('Access to a set of cells', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -407,10 +407,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Adding additional elements to the table body', async () => {
+  test.concurrent('Adding additional elements to the table body', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -436,10 +436,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Accordion in the table', async () => {
+  test.concurrent('Accordion in the table', async ({ task }) => {
     const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
       return (
         <Accordion.Item value={value} ref={ref}>
@@ -497,10 +497,10 @@ describe('DataTable', () => {
         </Accordion>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Table in table', async () => {
+  test.concurrent('Table in table', async ({ task }) => {
     const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
       return (
         <Accordion.Item value={value} ref={ref}>
@@ -559,10 +559,10 @@ describe('DataTable', () => {
         </Accordion>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Download status', async () => {
+  test.concurrent('Download status', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
@@ -576,10 +576,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Skeleton in the table', async () => {
+  test.concurrent('Skeleton in the table', async ({ task }) => {
     function getSkeleton() {
       return ['keyword', 'kd', 'cpc', 'vol'].map((c) => ({
         name: c,
@@ -604,10 +604,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Merging columns', async () => {
+  test.concurrent('Merging columns', async ({ task }) => {
     const data = [
       {
         keyword: 'ebay buy',
@@ -652,10 +652,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Row merging', async () => {
+  test.concurrent('Row merging', async ({ task }) => {
     const data = [
       {
         keyword: 'ebay buy',
@@ -707,10 +707,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Row and Column merging', async () => {
+  test.concurrent('Row and Column merging', async ({ task }) => {
     const data = [
       {
         keyword: 'ebay buy',
@@ -759,10 +759,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Secondary table', async () => {
+  test.concurrent('Secondary table', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data} use="secondary" sort={['kd', 'desc']}>
@@ -776,10 +776,10 @@ describe('DataTable', () => {
         </DataTable>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Hover of grouped rows', async () => {
+  test.concurrent('Hover of grouped rows', async ({ task }) => {
     const data = [
       {
         keyword: 'www.ebay.com',
@@ -806,24 +806,24 @@ describe('DataTable', () => {
       </div>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '[data-ui-name="DefinitionTable.Body"] [data-ui-name="Flex"]',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(component, {
         actions: {
           hover:
             '[data-ui-name="DefinitionTable.Body"] [data-ui-name="group-cell"] [data-ui-name="Flex"]',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     vi.useFakeTimers();
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
@@ -879,7 +879,7 @@ describe('DataTable', () => {
 });
 
 describe('DataTable.Column', () => {
-  test('Should support set flex after rerender', () => {
+  test.concurrent('Should support set flex after rerender', () => {
     const { getByTestId, rerender } = render(
       <DataTable data={[]}>
         <DataTable.Head>
@@ -899,7 +899,7 @@ describe('DataTable.Column', () => {
     expect(getByTestId('column').style.flex).toBe('1 1 0px');
   });
 
-  test('Should support ref', () => {
+  test.concurrent('Should support ref', () => {
     const spy = vi.fn();
     render(
       <DataTable data={[]}>

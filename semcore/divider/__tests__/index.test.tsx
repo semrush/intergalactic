@@ -13,12 +13,12 @@ describe('Divider', () => {
   shouldSupportRef(Divider);
   shouldSupportClassName(Divider);
 
-  test('renders correctly', async () => {
+  test.concurrent('renders correctly', async ({ task }) => {
     const component = <Divider w={100} m={1} />;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support use, theme', async () => {
+  test.concurrent('should support use, theme', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ width: 100, margin: '5px' }}>
         <Divider use="primary" />
@@ -30,20 +30,20 @@ describe('Divider', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support orientation prop', async () => {
+  test.concurrent('should support orientation prop', async ({ task }) => {
     const component = (
       <>
         <Divider orientation="horizontal" w={100} m={1} />
         <Divider orientation="vertical" h={100} m={1} />
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support orientation and use, theme props', async () => {
+  test.concurrent('should support orientation and use, theme props', async ({ task }) => {
     const component = (
       <>
         <Divider orientation="horizontal" use="secondary" w={100} m={1} />
@@ -54,10 +54,10 @@ describe('Divider', () => {
         <Divider orientation="vertical" use="secondary" theme="invert" h={100} m={1} />
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support correct render in center Flex block', async () => {
+  test.concurrent('should support correct render in center Flex block', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps>
         {/* fix for screenshot height 20, in browser all work*/}
@@ -76,6 +76,6 @@ describe('Divider', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

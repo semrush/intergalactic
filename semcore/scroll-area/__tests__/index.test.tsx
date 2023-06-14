@@ -13,7 +13,7 @@ describe('ScrollArea', () => {
   shouldSupportClassName(ScrollArea);
   shouldSupportRef(ScrollArea);
 
-  test('should support render function for children', () => {
+  test.concurrent('should support render function for children', () => {
     const component = <ScrollArea>{() => <ScrollArea.Container />}</ScrollArea>;
     render(component);
 
@@ -36,7 +36,7 @@ describe('ScrollArea', () => {
     expect(queryByTestId('bar').attributes['aria-valuemax']).toBeTruthy();
   });
 
-  test.skip('should support shadow display on container', async () => {
+  test.skip('should support shadow display on container', async ({ task }) => {
     const component = (
       <ScrollArea h={200} w={200} shadow>
         {[...new Array(3)].map((_, ind) => (
@@ -49,7 +49,7 @@ describe('ScrollArea', () => {
       </ScrollArea>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 

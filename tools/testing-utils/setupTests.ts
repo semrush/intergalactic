@@ -1,7 +1,7 @@
 import { expect } from './vitest';
 import * as axeMatchers from 'vitest-axe/matchers';
 import { toHaveStyle, toHaveFocus } from '@testing-library/jest-dom/matchers';
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import { toMatchImageSnapshot } from './toMatchImageSnapshot';
 expect.extend({ toMatchImageSnapshot, toHaveStyle, toHaveFocus });
 expect.extend(axeMatchers);
 class NamedNodeMap {}

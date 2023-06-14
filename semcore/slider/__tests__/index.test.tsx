@@ -6,17 +6,16 @@ import Slider from '../src';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-
 describe('Slider', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Slider value={50} m="10px" />;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with Bar/Knob', async () => {
+  test.concurrent('Renders correctly with Bar/Knob', async ({ task }) => {
     const component = (
       <Slider value={50}>
         <Slider.Bar />
@@ -24,10 +23,10 @@ describe('Slider', () => {
       </Slider>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support normal state', async () => {
+  test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m="25px">
         <Slider value={50} keyboardFocused />
@@ -38,30 +37,30 @@ describe('Slider', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover', async () => {
+  test.concurrent('Should support hover', async ({ task }) => {
     expect(
       await snapshot(<Slider value={50} id="slider" m="10px" />, {
         actions: {
           hover: '#slider',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support active', async () => {
+  test.concurrent('Should support active', async ({ task }) => {
     expect(
       await snapshot(<Slider value={50} id="slider" m="10px" />, {
         actions: {
           active: '#slider',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover Knob', async () => {
+  test.concurrent('Should support hover Knob', async ({ task }) => {
     expect(
       await snapshot(
         <Slider value={50} m="10px">
@@ -74,10 +73,10 @@ describe('Slider', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support onChange callback with keyboard', async () => {
+  test.concurrent('Should support onChange callback with keyboard', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Slider value={10} data-testid="slider" onChange={spy} />);
     // up
@@ -92,7 +91,7 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(9, expect.any(Object));
   });
 
-  test('Should support min/max value change with keyboard', async () => {
+  test.concurrent('Should support min/max value change with keyboard', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(<Slider min={0} max={1} data-testid="slider" onChange={spy} />);
     // up

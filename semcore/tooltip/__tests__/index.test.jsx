@@ -9,7 +9,7 @@ import Tooltip from '../src';
 describe('Tooltip', () => {
   beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
@@ -21,10 +21,10 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with warning theme', async () => {
+  test.concurrent('Renders correctly with warning theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal theme="warning">
@@ -36,10 +36,10 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with invert theme', async () => {
+  test.concurrent('Renders correctly with invert theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal theme="invert">
@@ -51,10 +51,10 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.skip('Renders correctly with custom theme', async () => {
+  test.skip('Renders correctly with custom theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
@@ -68,7 +68,7 @@ describe('Tooltip', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });
 
@@ -105,7 +105,7 @@ describe('Tooltip.Trigger', () => {
     expect(ref.current.nodeName).toBe('BUTTON');
   });
 
-  test('should support children', async () => {
+  test('should support children', async ({ task }) => {
     const component = (
       <Tooltip>
         <Tooltip.Trigger>
@@ -155,7 +155,7 @@ describe('Tooltip.Popper', () => {
     expect(ref.current.nodeName).toBe('DIV');
   });
 
-  test('should support children', async () => {
+  test('should support children', async ({ task }) => {
     const component = (
       <Tooltip visible>
         <Tooltip.Trigger />
@@ -220,7 +220,7 @@ describe('TooltipBase', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <Tooltip visible disablePortal>
         <Tooltip.Trigger tag="button">trigger</Tooltip.Trigger>

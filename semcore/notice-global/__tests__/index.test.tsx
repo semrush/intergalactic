@@ -13,7 +13,7 @@ describe('NoticeGlobal', () => {
   shouldSupportClassName(NoticeGlobal);
   shouldSupportRef(NoticeGlobal);
 
-  test('Should support custom close icon', () => {
+  test.concurrent('Should support custom close icon', () => {
     const component = (
       <NoticeGlobal>
         <NoticeGlobal.CloseIcon data-testid="close">Close Icon</NoticeGlobal.CloseIcon>
@@ -23,7 +23,7 @@ describe('NoticeGlobal', () => {
     expect(getByTestId('close')).toBeTruthy();
   });
 
-  test('Should support handler for close', () => {
+  test.concurrent('Should support handler for close', () => {
     const spy = vi.fn();
     const component = <NoticeGlobal closable onClose={spy} />;
     const { getByLabelText } = render(component);
@@ -31,7 +31,7 @@ describe('NoticeGlobal', () => {
     expect(spy).toBeCalled();
   });
 
-  test('Should support custom content', () => {
+  test.concurrent('Should support custom content', () => {
     const component = (
       <NoticeGlobal>
         <NoticeGlobal.Content data-testid="content">Test</NoticeGlobal.Content>
@@ -41,17 +41,17 @@ describe('NoticeGlobal', () => {
     expect(getByTestId('content')).toBeTruthy();
   });
 
-  test('Should support correctly render', async () => {
-    expect(
+  test.concurrent('Should support correctly render', async ({ task }) => {
+    await expect(
       await snapshot(
         <NoticeGlobal closable>
           <NoticeGlobal.Content>Global notice text</NoticeGlobal.Content>
         </NoticeGlobal>,
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support theme for use primary', async () => {
+  test.concurrent('Should support theme for use primary', async ({ task }) => {
     const component = (
       <>
         <NoticeGlobal>Text NoticeGlobal</NoticeGlobal>
@@ -66,6 +66,6 @@ describe('NoticeGlobal', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

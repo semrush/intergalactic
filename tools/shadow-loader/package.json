@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "echo 'no test('"
+    "test": "echo 'no test.concurrent('"
   },
   "dependencies": {
     "find-cache-dir": "3.3.1",

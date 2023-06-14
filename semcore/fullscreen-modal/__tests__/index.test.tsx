@@ -50,8 +50,8 @@ describe('FullscreenModal', () => {
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
 
-  test('should support render', async () => {
-    const Component = (
+  test.concurrent('should support render', async ({ task }) => {
+    const component = (
       <div style={{ width: '785px', height: '600px' }}>
         <FullscreenModal disablePortal visible>
           <FullscreenModal.Close />
@@ -74,10 +74,10 @@ describe('FullscreenModal', () => {
         </FullscreenModal>
       </div>
     );
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should change overflow style for body in modal', async () => {
+  test('should change overflow style for body in modal', async ({ task }) => {
     // const { unmount } =
     await render(<FullscreenModal />);
     expect(document.body.style.overflow).toBe('hidden');
@@ -115,7 +115,7 @@ describe('FullscreenModal.Header', () => {
     expect(queryByText(/Text/)).toBeTruthy();
   });
 
-  test('Title and Back should correctly if a very long text', async () => {
+  test.concurrent('Title and Back should correctly if a very long text', async ({ task }) => {
     const component = (
       <FullscreenModal disablePortal visible>
         <FullscreenModal.Header>
@@ -125,30 +125,30 @@ describe('FullscreenModal.Header', () => {
       </FullscreenModal>
     );
 
-    expect(
+    await expect(
       await snapshot(component, { selector: 'body', width: 320, height: 100 }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Close icon should support hover', async () => {
-    expect(
+  test.concurrent('Close icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <FullscreenModal disablePortal visible>
           <FullscreenModal.Close id="close" />
         </FullscreenModal>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Back icon should support hover', async () => {
-    expect(
+  test.concurrent('Back icon should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <FullscreenModal disablePortal visible>
           <FullscreenModal.Back id="back">Go to Tool Name</FullscreenModal.Back>
         </FullscreenModal>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });

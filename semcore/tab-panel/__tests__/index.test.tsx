@@ -8,11 +8,10 @@ import TabPanel from '../src';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-
 describe('TabPanel', () => {
   beforeEach(cleanup);
 
-  test('Render correctly', async () => {
+  test.concurrent('Render correctly', async ({ task }) => {
     const component = (
       <TabPanel value={2}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
@@ -22,10 +21,10 @@ describe('TabPanel', () => {
       </TabPanel>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Render correctly with min width', async () => {
+  test.concurrent('Render correctly with min width', async ({ task }) => {
     const component = (
       <>
         <TabPanel value={2} w={200}>
@@ -39,10 +38,10 @@ describe('TabPanel', () => {
       </>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly with one Addon', async () => {
+  test.concurrent('Should render correctly with one Addon', async ({ task }) => {
     const component = (
       <TabPanel value={1}>
         <TabPanel.Item value={1} addonLeft={CheckM} selected />
@@ -54,10 +53,10 @@ describe('TabPanel', () => {
       </TabPanel>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover item', async () => {
+  test.concurrent('Should support hover item', async ({ task }) => {
     const component = (
       <TabPanel value={2}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
@@ -69,16 +68,16 @@ describe('TabPanel', () => {
       </TabPanel>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#tab-panel',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support keyboardFocused/disabled/selected', async () => {
+  test.concurrent('Should support keyboardFocused/disabled/selected', async ({ task }) => {
     const component = (
       <TabPanel>
         <TabPanel.Item>Item 1</TabPanel.Item>
@@ -88,10 +87,10 @@ describe('TabPanel', () => {
       </TabPanel>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support Addon', async () => {
+  test.concurrent('Should support Addon', async ({ task }) => {
     const Addon = React.forwardRef<HTMLSpanElement>(function (props, ref) {
       return (
         <span ref={ref} {...propsForElement(props)}>
@@ -112,10 +111,10 @@ describe('TabPanel', () => {
       </TabPanel>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support onChange callback', () => {
+  test.concurrent('Should support onChange callback', () => {
     const spyChange = vi.fn();
     const spyClick = vi.fn();
     const { getByTestId } = render(
@@ -134,7 +133,7 @@ describe('TabPanel', () => {
     expect(spyChange).lastCalledWith(4, expect.any(Object));
   });
 
-  test('Should not support clicks on disabled tab', () => {
+  test.concurrent('Should not support clicks on disabled tab', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -154,7 +153,7 @@ describe('TabPanel', () => {
   });
 
   // js-dom not supported element.click
-  test.skip('Should support navigation with keyboard', async () => {
+  test.skip('Should support navigation with keyboard', async ({ task }) => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -170,7 +169,7 @@ describe('TabPanel', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     const { container } = render(
       <TabPanel value={1}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>

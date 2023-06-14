@@ -18,7 +18,7 @@ const CustomComponent: any = function ({ neighborLocation, ...other }) {
 describe('neighbor-location', () => {
   beforeEach(cleanup);
 
-  test('should must work', () => {
+  test.concurrent('should must work', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <NeighborLocationItem data-testid="1" />
@@ -31,7 +31,7 @@ describe('neighbor-location', () => {
     expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
   });
 
-  test('should must work with component', () => {
+  test.concurrent('should must work with component', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <NeighborLocation.Detect>
@@ -51,7 +51,7 @@ describe('neighbor-location', () => {
     expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
   });
 
-  test('should must props "controlsLength"', () => {
+  test.concurrent('should must props "controlsLength"', () => {
     const { getByTestId } = render(
       <NeighborLocation controlsLength={3}>
         <div />
@@ -66,12 +66,12 @@ describe('neighbor-location', () => {
     expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
   });
 
-  test('should must work without NeighborLocation', () => {
+  test.concurrent('should must work without NeighborLocation', () => {
     const { getByTestId } = render(<NeighborLocationItem data-testid="test" />);
     expect(getByTestId('test').attributes['data-neighborlocation']).toBe(undefined);
   });
 
-  test('should correct work with other empty childrens', () => {
+  test.concurrent('should correct work with other empty childrens', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         {[]}

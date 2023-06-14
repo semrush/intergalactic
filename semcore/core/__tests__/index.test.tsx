@@ -208,7 +208,7 @@ describe('Core', () => {
       static displayName = 'TestRoot';
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      bindHandlerClick = (value, a, b, c) => (e) => { };
+      bindHandlerClick = (value, a, b, c) => (e) => {};
 
       getItemProps({ value }) {
         return {

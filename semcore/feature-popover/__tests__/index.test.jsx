@@ -38,7 +38,7 @@ describe('FeaturePopover.Trigger', () => {
     expect(ref.current.nodeName).toBe('BUTTON');
   });
 
-  test('should support children', async () => {
+  test('should support children', async ({ task }) => {
     const component = (
       <FeaturePopover>
         <FeaturePopover.Trigger>
@@ -85,7 +85,7 @@ describe('FeaturePopover.Popper', () => {
     expect(ref.current.nodeName).toBe('DIV');
   });
 
-  test('should support children', async () => {
+  test('should support children', async ({ task }) => {
     const component = (
       <FeaturePopover visible>
         <FeaturePopover.Popper>
@@ -98,7 +98,7 @@ describe('FeaturePopover.Popper', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('visual regression', async () => {
+  test.concurrent('visual regression', async ({ task }) => {
     const component = (
       <div
         style={{
@@ -125,6 +125,6 @@ describe('FeaturePopover.Popper', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

@@ -17,84 +17,93 @@ HTMLElement.prototype.scrollIntoView = () => {};
 describe('Select Trigger', () => {
   beforeEach(cleanup);
 
-  test('Trigger renders correctly', async () => {
+  test.concurrent('Trigger renders correctly', async ({ task }) => {
     const component = (
       <Select>
         <Select.Trigger />
       </Select>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Trigger disabled', async () => {
+  test.concurrent('Trigger disabled', async ({ task }) => {
     const component = (
       <Select>
         <Select.Trigger disabled />
       </Select>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Trigger with placeholder renders correctly', async () => {
+  test.concurrent('Trigger with placeholder renders correctly', async ({ task }) => {
     const component = (
       <Select placeholder="Placeholder">
         <Select.Trigger />
       </Select>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Trigger with selected option renders correctly', async () => {
+  test.concurrent('Trigger with selected option renders correctly', async ({ task }) => {
     const component = (
       <Select value={1}>
         <Select.Trigger />
       </Select>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Trigger with selected option ellipsis text renders correctly', async () => {
-    const component = (
-      <Select value={'English burashka gpq 1'}>
-        <Select.Trigger w={100} />
-      </Select>
-    );
+  test.concurrent(
+    'Trigger with selected option ellipsis text renders correctly',
+    async ({ task }) => {
+      const component = (
+        <Select value={'English burashka gpq 1'}>
+          <Select.Trigger w={100} />
+        </Select>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('MultiSelect trigger with selected options renders correctly', async () => {
-    const component = (
-      <Select multiselect value={[1, 2, 3]}>
-        <Select.Trigger />
-      </Select>
-    );
+  test.concurrent(
+    'MultiSelect trigger with selected options renders correctly',
+    async ({ task }) => {
+      const component = (
+        <Select multiselect value={[1, 2, 3]}>
+          <Select.Trigger />
+        </Select>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('MultiSelect trigger with selected options renders correctly in unconrol mode', async () => {
-    const spy = vi.fn();
+  test.concurrent(
+    'MultiSelect trigger with selected options renders correctly in unconrol mode',
+    async ({ task }) => {
+      const spy = vi.fn();
 
-    const { getByTestId } = render(
-      <Select multiselect onChange={spy} visible value={['1']}>
-        <Select.Trigger />
-        <Select.Popper>
-          <Select.Option value="1" />
-          <Select.Option data-testid="option" value="2" />
-        </Select.Popper>
-      </Select>,
-    );
+      const { getByTestId } = render(
+        <Select multiselect onChange={spy} visible value={['1']}>
+          <Select.Trigger />
+          <Select.Popper>
+            <Select.Option value="1" />
+            <Select.Option data-testid="option" value="2" />
+          </Select.Popper>
+        </Select>,
+      );
 
-    fireEvent.click(getByTestId('option'));
-    expect(spy).toHaveBeenCalledWith(['1', '2'], expect.anything());
-  });
+      fireEvent.click(getByTestId('option'));
+      expect(spy).toHaveBeenCalledWith(['1', '2'], expect.anything());
+    },
+  );
 
-  test('Call onVisibleChange for click in Option when value selected', () => {
+  test.concurrent('Call onVisibleChange for click in Option when value selected', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Select visible onVisibleChange={spy}>
@@ -111,25 +120,25 @@ describe('Select Trigger', () => {
     expect(spy).toHaveBeenCalledTimes(2);
   });
 
-  test('Trigger renders correctly with FilterTrigger', async () => {
+  test.concurrent('Trigger renders correctly with FilterTrigger', async ({ task }) => {
     const component = (
       <Select defaultValue="Test">
         <Select.Trigger tag={FilterTrigger} />
       </Select>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support tag as string', async () => {
+  test.concurrent('Should support tag as string', async ({ task }) => {
     const component = (
       <Select defaultValue="Test">
         <Select.Trigger tag="button" />
       </Select>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support call render function for custom tag', () => {
+  test.concurrent('Should support call render function for custom tag', () => {
     const spy = vi.fn();
     const Tag = React.forwardRef(({ children }, ref) => <button ref={ref}>{children}</button>);
 
@@ -146,7 +155,7 @@ describe('Select Trigger', () => {
     expect(spy).toBeCalledTimes(1);
   });
 
-  test('Should support Option.Checkbox', async () => {
+  test.concurrent('Should support Option.Checkbox', async ({ task }) => {
     const Component = ({ theme, size, ...props }) => (
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} size={size} visible disablePortal value="1">
@@ -164,7 +173,7 @@ describe('Select Trigger', () => {
         </Select>
       </div>
     );
-    expect(
+    await expect(
       await snapshot(
         <>
           <Component size="l" />
@@ -172,10 +181,10 @@ describe('Select Trigger', () => {
           <Component theme="violet-800" />
         </>,
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Option.Checkbox should support hover', async () => {
+  test.concurrent('Option.Checkbox should support hover', async ({ task }) => {
     const Component = ({ theme, ...props }) => (
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} visible disablePortal>
@@ -189,37 +198,37 @@ describe('Select Trigger', () => {
         </Select>
       </div>
     );
-    expect(
+    await expect(
       await snapshot(<Component />, {
         actions: {
           hover: '#option',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component value="1" />, {
         actions: {
           hover: '#option',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component theme="violet-800" />, {
         actions: {
           hover: '#option',
         },
       }),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(<Component theme="violet-800" value="1" />, {
         actions: {
           hover: '#option',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async () => {
+  test('a11y', async ({ task }) => {
     vi.useFakeTimers();
     const { container } = render(
       <Select visible value={['2']} disablePortal>
@@ -239,7 +248,7 @@ describe('Select Trigger', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test('focus position preserve with mouse navigation', async () => {
+  test.concurrent('focus position preserve with mouse navigation', async ({ task }) => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal>
@@ -270,38 +279,41 @@ describe('Select Trigger', () => {
     vi.useRealTimers();
   });
 
-  test('focus position preserve with mouse navigation and interaction=focus', async () => {
-    vi.useFakeTimers();
-    const { getByTestId } = render(
-      <Select value={['2']} disablePortal interaction="focus">
-        <Select.Trigger aria-label="Select trigger" data-testid="trigger">
-          <input data-testid="input-in-trigger" />
-        </Select.Trigger>
-        <Select.Menu data-testid="menu">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2" data-testid="option-2">
-            Option 2
-          </Select.Option>
-        </Select.Menu>
-      </Select>,
-    );
-    act(() => getByTestId('input-in-trigger').focus());
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => getByTestId('option-2').focus());
-    fireEvent.click(getByTestId('option-2'));
-    act(() => {
-      vi.runAllTimers();
-    });
-    act(() => fireEvent.animationEnd(getByTestId('menu')));
-    act(() => {
-      vi.runAllTimers();
-    });
-    expect(document.activeElement.tagName).toBe('DIV');
+  test.concurrent(
+    'focus position preserve with mouse navigation and interaction=focus',
+    async ({ task }) => {
+      vi.useFakeTimers();
+      const { getByTestId } = render(
+        <Select value={['2']} disablePortal interaction="focus">
+          <Select.Trigger aria-label="Select trigger" data-testid="trigger">
+            <input data-testid="input-in-trigger" />
+          </Select.Trigger>
+          <Select.Menu data-testid="menu">
+            <Select.Option value="1">Option 1</Select.Option>
+            <Select.Option value="2" data-testid="option-2">
+              Option 2
+            </Select.Option>
+          </Select.Menu>
+        </Select>,
+      );
+      act(() => getByTestId('input-in-trigger').focus());
+      act(() => {
+        vi.runAllTimers();
+      });
+      act(() => getByTestId('option-2').focus());
+      fireEvent.click(getByTestId('option-2'));
+      act(() => {
+        vi.runAllTimers();
+      });
+      act(() => fireEvent.animationEnd(getByTestId('menu')));
+      act(() => {
+        vi.runAllTimers();
+      });
+      expect(document.activeElement.tagName).toBe('DIV');
 
-    vi.useRealTimers();
-  });
+      vi.useRealTimers();
+    },
+  );
 
   test('focus position preserve with keyboard navigation and interaction=focus', async () => {
     vi.useFakeTimers();
@@ -354,7 +366,7 @@ describe('InputSearch', () => {
   shouldSupportClassName(InputSearch, Select);
   shouldSupportRef(InputSearch, Select);
 
-  test('should renders correctly', async () => {
+  test.concurrent('should renders correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 200 }}>
         <Select>
@@ -369,10 +381,10 @@ describe('InputSearch', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should clear when click Close icon', async () => {
+  test.concurrent('should clear when click Close icon', async ({ task }) => {
     const spy = vi.fn();
     const { getByRole } = render(
       <Select>
