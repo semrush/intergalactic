@@ -103,7 +103,7 @@ describe('Ellipsis', () => {
     global.ResizeObserver = originalResizeObserver;
   });
 
-  test.concurrent('Show tooltip', async ({ task }) => {
+  test.concurrent('Show tooltip', async () => {
     vi.useFakeTimers();
 
     const unFake = fakeTemporaryBlock({ width: 400 });
@@ -130,7 +130,7 @@ describe('Ellipsis', () => {
     unFake();
   });
 
-  test.concurrent('Dont show tooltip', async ({ task }) => {
+  test.concurrent('Dont show tooltip', async () => {
     vi.useFakeTimers();
 
     const unFake = fakeTemporaryBlock({ width: 100 });
@@ -155,7 +155,7 @@ describe('Ellipsis', () => {
     unFake();
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Ellipsis>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </Ellipsis>,
     );

@@ -190,7 +190,7 @@ describe('TabLine', () => {
   });
 
   // js-dom not supported element.click
-  test.skip('Should support navigation with keyboard', async ({ task }) => {
+  test.skip('Should support navigation with keyboard', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -206,7 +206,7 @@ describe('TabLine', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <TabLine value={1}>
         <TabLine.Item value={1}>Item 1</TabLine.Item>

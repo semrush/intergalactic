@@ -269,7 +269,7 @@ describe('Utils CSS in JS', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.skip('get stylesheet', async ({ task }) => {
+  test.skip('get stylesheet', async () => {
     // because nano singleton
     vi.resetModules();
     // TODO: resolve "Invalid hook call" issue

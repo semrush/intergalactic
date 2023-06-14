@@ -66,7 +66,7 @@ describe('InlineEdit', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <InlineEdit>
         <InlineEdit.View>view</InlineEdit.View>

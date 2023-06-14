@@ -177,7 +177,7 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>

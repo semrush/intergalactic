@@ -63,7 +63,7 @@ describe('Breadcrumbs', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Breadcrumbs>
         <Breadcrumbs.Item>first</Breadcrumbs.Item>

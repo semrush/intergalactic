@@ -79,7 +79,7 @@ describe('Dot', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support hidden', async ({ task }) => {
+  test.concurrent('Should support hidden', async () => {
     const { queryByTestId } = render(
       <Button>
         Button

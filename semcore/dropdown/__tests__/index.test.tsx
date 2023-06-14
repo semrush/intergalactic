@@ -41,7 +41,7 @@ describe('Dropdown', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Dropdown visible disablePortal>
         <Dropdown.Trigger tag="button" aria-label="default dropdown">

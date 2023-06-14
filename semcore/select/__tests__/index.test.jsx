@@ -85,7 +85,7 @@ describe('Select Trigger', () => {
 
   test.concurrent(
     'MultiSelect trigger with selected options renders correctly in unconrol mode',
-    async ({ task }) => {
+    async () => {
       const spy = vi.fn();
 
       const { getByTestId } = render(
@@ -228,7 +228,7 @@ describe('Select Trigger', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
       <Select visible value={['2']} disablePortal>
@@ -248,7 +248,7 @@ describe('Select Trigger', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test.concurrent('focus position preserve with mouse navigation', async ({ task }) => {
+  test.concurrent('focus position preserve with mouse navigation', async () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal>
@@ -281,7 +281,7 @@ describe('Select Trigger', () => {
 
   test.concurrent(
     'focus position preserve with mouse navigation and interaction=focus',
-    async ({ task }) => {
+    async () => {
       vi.useFakeTimers();
       const { getByTestId } = render(
         <Select value={['2']} disablePortal interaction="focus">
@@ -384,7 +384,7 @@ describe('InputSearch', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should clear when click Close icon', async ({ task }) => {
+  test.concurrent('should clear when click Close icon', async () => {
     const spy = vi.fn();
     const { getByRole } = render(
       <Select>

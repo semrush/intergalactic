@@ -88,7 +88,7 @@ describe('Icon', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support call onClick', async ({ task }) => {
+  test('should support call onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid="icon" interactive aria-label="Test icon" />);
 
@@ -96,7 +96,7 @@ describe('Icon', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test('should not call onClick with onKeydown', async ({ task }) => {
+  test('should not call onClick with onKeydown', async () => {
     const onKeyDown = vi.fn();
     const onClick = vi.fn();
     const { getByTestId } = render(
@@ -114,7 +114,7 @@ describe('Icon', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
         <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>

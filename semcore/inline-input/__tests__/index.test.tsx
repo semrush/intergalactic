@@ -168,7 +168,7 @@ describe('InlineInput', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(makePlayground());
 
     const results = await axe(container);

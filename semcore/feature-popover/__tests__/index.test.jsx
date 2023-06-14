@@ -38,7 +38,7 @@ describe('FeaturePopover.Trigger', () => {
     expect(ref.current.nodeName).toBe('BUTTON');
   });
 
-  test('should support children', async ({ task }) => {
+  test('should support children', async () => {
     const component = (
       <FeaturePopover>
         <FeaturePopover.Trigger>
@@ -85,7 +85,7 @@ describe('FeaturePopover.Popper', () => {
     expect(ref.current.nodeName).toBe('DIV');
   });
 
-  test('should support children', async ({ task }) => {
+  test('should support children', async () => {
     const component = (
       <FeaturePopover visible>
         <FeaturePopover.Popper>

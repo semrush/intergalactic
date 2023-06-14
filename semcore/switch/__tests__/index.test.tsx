@@ -135,7 +135,7 @@ describe('Switch', () => {
   });
 
   // enable after https://github.com/capricorn86/happy-dom/pull/677 merged, https://github.com/capricorn86/happy-dom/issues/531 resolved and happy-dom updated
-  test.skip('Should support onChange callback', async ({ task }) => {
+  test.skip('Should support onChange callback', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Switch data-testid="label">
@@ -147,7 +147,7 @@ describe('Switch', () => {
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 
-  test.concurrent('Should support onChange callback with keyboard', async ({ task }) => {
+  test.concurrent('Should support onChange callback with keyboard', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Switch>
@@ -163,7 +163,7 @@ describe('Switch', () => {
     expect(spy).lastCalledWith(true, expect.any(Object));
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Switch>
         <Switch.Addon>test</Switch.Addon>

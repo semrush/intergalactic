@@ -25,7 +25,7 @@ describe('Pagination', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(<Pagination currentPage={1} totalPages={100} />);
 
     const results = await axe(container);

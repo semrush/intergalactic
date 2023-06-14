@@ -38,7 +38,7 @@ describe('InputMask', () => {
     await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <>
         <label htmlFor="input_mask">Expire date</label>

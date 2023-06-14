@@ -156,7 +156,7 @@ describe('NoticeSmart', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <NoticeSmart label="label" actions="actions" closable>
         Text NoticeSmart

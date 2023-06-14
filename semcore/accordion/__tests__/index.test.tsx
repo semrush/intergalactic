@@ -178,7 +178,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith([]);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { getByText, container } = render(
       <Accordion>
         <Accordion.Item value={1}>

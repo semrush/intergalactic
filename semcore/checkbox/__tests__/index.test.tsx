@@ -218,7 +218,7 @@ describe('Checkbox', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Checkbox>
         <Checkbox.Value />

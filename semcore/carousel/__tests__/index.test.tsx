@@ -290,7 +290,7 @@ describe('Carousel.Next', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const images = [
       `https://picsum.photos/id/1023/600/400`,
       `https://picsum.photos/id/1024/600/400`,

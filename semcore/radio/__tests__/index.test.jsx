@@ -134,7 +134,7 @@ describe('Radio', () => {
   });
 
   // enable after https://github.com/capricorn86/happy-dom/pull/677 merged, https://github.com/capricorn86/happy-dom/issues/531 resolved and happy-dom updated
-  test.skip('Should support change of state "checked" on click in label', async ({ task }) => {
+  test.skip('Should support change of state "checked" on click in label', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Radio data-testid="label">
@@ -251,7 +251,7 @@ describe('RadioGroup', () => {
     },
   );
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <RadioGroup name="radio" value="1">
         <Radio>

@@ -114,7 +114,7 @@ describe('Error', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Render correctly on small screen', async ({ task }) => {
+  test.concurrent('Render correctly on small screen', async () => {
     const { container } = render(
       <Error icon="https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg">
         <Error.Title>Horrible error</Error.Title>

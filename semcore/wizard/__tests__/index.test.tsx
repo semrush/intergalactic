@@ -125,7 +125,7 @@ describe('Wizard', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test('Should support keyboard navigation', async ({ task }) => {
+  test('Should support keyboard navigation', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -146,7 +146,7 @@ describe('Wizard', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test.concurrent('Should support step change on click', async ({ task }) => {
+  test('Should support step change on click', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -167,7 +167,7 @@ describe('Wizard', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test.concurrent('Should correctly rerender', async ({ task }) => {
+  test('Should correctly rerender', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
@@ -192,12 +192,16 @@ describe('Wizard', () => {
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
-          <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
+          <Wizard.Stepper step={1} aria-label="step 1">
+            Step 1
+          </Wizard.Stepper>
+          <Wizard.Stepper step={2} aria-label="step 2">
+            Step 2
+          </Wizard.Stepper>
         </Wizard.Sidebar>
         <Wizard.Content>
           <Wizard.Step step={1}>First page</Wizard.Step>

@@ -65,7 +65,7 @@ describe('Flex', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support css property', async ({ task }) => {
+  test.concurrent('Should support css property', async () => {
     const MAP_CSS = {
       reverse: {
         css: 'flex-direction',
@@ -236,7 +236,7 @@ describe('Box', () => {
     expect(getByTestId('box').style.marginTop).toBe('20px');
   });
 
-  test('Should support css property', async ({ task }) => {
+  test('Should support css property', async () => {
     const MAP_CSS = {
       inline: { css: 'display', values: ['inline-block'] },
       boxSizing: { css: 'box-sizing', values: ['border-box'] },

@@ -84,7 +84,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
-  test.concurrent('Should support behavior=tabs', async ({ task }) => {
+  test.concurrent('Should support behavior=tabs', async () => {
     const spyLeft = vi.fn();
     const spyRight = vi.fn();
 
@@ -112,7 +112,7 @@ describe('PillGroup', () => {
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should support behavior=radio', async ({ task }) => {
+  test.concurrent('Should support behavior=radio', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -291,7 +291,7 @@ describe('PillGroup', () => {
     await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { getByTestId, container } = render(
       <Pills value={1}>
         <Pills.Item value={1}>1</Pills.Item>
@@ -309,7 +309,7 @@ describe('PillGroup', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test('a11y behavior radio', async ({ task }) => {
+  test('a11y behavior radio', async () => {
     const { getByTestId, container } = render(
       <Pills value={1} behavior="radio">
         <Pills.Item value={1}>1</Pills.Item>

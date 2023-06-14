@@ -195,7 +195,7 @@ describe('InputNumber', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <InputNumber>
         <InputNumber.Value aria-label="input-number" value="23" />

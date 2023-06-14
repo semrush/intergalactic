@@ -150,7 +150,7 @@ describe('Tag', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should call onClick', async ({ task }) => {
+  test.concurrent('should call onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <Tag>
@@ -163,7 +163,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  test('should not call onClick with onKeydown', async ({ task }) => {
+  test('should not call onClick with onKeydown', async () => {
     const onKeyDown = vi.fn();
     const onClick = vi.fn();
     const { getByTestId } = render(
@@ -177,7 +177,7 @@ describe('Tag', () => {
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <>
         <Tag theme="green-500">

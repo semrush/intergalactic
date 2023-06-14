@@ -131,7 +131,7 @@ describe('Text', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <>
         <Text tag="h1">H1</Text>
@@ -204,7 +204,7 @@ describe('List', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <>
         <List mb={2}>
@@ -238,7 +238,7 @@ describe('Blockquote', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Blockquote author="Author Author">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod
@@ -327,7 +327,7 @@ describe('Hint', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(<Hint>Lorem ipsum dolor</Hint>);
 
     const results = await axe(container);

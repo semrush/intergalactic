@@ -91,17 +91,26 @@ describe('Slider', () => {
     expect(spy).lastCalledWith(9, expect.any(Object));
   });
 
-  test.concurrent('Should support min/max value change with keyboard', async () => {
+  test.concurrent('Should support min value change with keyboard', () => {
     const spy = vi.fn();
-    const { getByTestId } = render(<Slider min={0} max={1} data-testid="slider" onChange={spy} />);
-    // up
-    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
-    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
-    expect(spy).lastCalledWith(1, expect.any(Object));
+    const { getByTestId } = render(
+      <Slider min={0} max={1} defaultValue={1} data-testid="slider" onChange={spy} />,
+    );
     // down
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowLeft' });
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowLeft' });
     expect(spy).lastCalledWith(0, expect.any(Object));
+  });
+
+  test.concurrent('Should support max value change with keyboard', () => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <Slider min={0} max={1} defaultValue={0} data-testid="slider" onChange={spy} />,
+    );
+    // up
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
+    fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
+    expect(spy).lastCalledWith(1, expect.any(Object));
   });
 
   test('a11y', async () => {

@@ -56,7 +56,7 @@ describe('Flags', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.skip('a11y', async ({ task }) => {
+  test.skip('a11y', async () => {
     const { container } = render(<Flags />);
 
     const results = await axe(container);

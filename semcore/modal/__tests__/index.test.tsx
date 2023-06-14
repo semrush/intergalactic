@@ -182,7 +182,7 @@ describe('Modal', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Modal visible disablePortal>
         <p data-testid="child">Test</p>

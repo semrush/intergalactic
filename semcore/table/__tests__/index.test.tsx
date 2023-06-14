@@ -145,7 +145,7 @@ describe('Table', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Table>
         <Table.Head>

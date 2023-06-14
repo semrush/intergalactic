@@ -70,7 +70,7 @@ describe('Popper', () => {
     vi.useRealTimers();
   });
 
-  test.concurrent('should proxy style', async ({ task }) => {
+  test.concurrent('should proxy style', async () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger data-testid="reference" />
@@ -81,7 +81,7 @@ describe('Popper', () => {
     expect(getByTestId('popper').style.position).toEqual('absolute');
   });
 
-  test.concurrent('should nested popper', async ({ task }) => {
+  test.concurrent('should nested popper', async () => {
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Trigger children="trigger 1" />
@@ -115,7 +115,7 @@ describe('Popper.Trigger', () => {
     expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
   });
 
-  test.concurrent('should support children', async ({ task }) => {
+  test.concurrent('should support children', async () => {
     const component = (
       <Popper>
         <Popper.Trigger>
@@ -145,7 +145,7 @@ describe('Popper.Popper', () => {
     expect(getByTestId('trigger').attributes['name'].value).toBe('trigger');
   });
 
-  test.concurrent('should support children', async ({ task }) => {
+  test.concurrent('should support children', async () => {
     const component = (
       <Popper visible>
         <Popper.Popper>
@@ -162,7 +162,8 @@ describe('Popper.Popper', () => {
 describe('focus control', () => {
   beforeEach(cleanup);
 
-  test.concurrent('auto focus', () => {
+  test('auto focus', () => {
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Popper visible>
         <Popper.Popper autoFocus data-testid="popper">
@@ -171,9 +172,14 @@ describe('focus control', () => {
       </Popper>,
     );
 
+    act(() => {
+      vi.runAllTimers();
+    });
+
     expect(getByTestId('popper')).toHaveFocus();
+    vi.useRealTimers();
   });
-  test.concurrent('trap', async ({ task }) => {
+  test('trap', async () => {
     const { getByTestId } = render(
       <div>
         <input />
@@ -256,7 +262,7 @@ describe('focus control', () => {
     vi.useRealTimers();
   });
 
-  test.concurrent('focus follow', () => {
+  test('focus follow', () => {
     const { getByTestId } = render(
       <>
         <input data-testid="input-before-popper" />

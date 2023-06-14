@@ -195,7 +195,7 @@ describe('Link', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(<Link disabled>Link</Link>);
 
     const results = await axe(container);

@@ -6,7 +6,7 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
-const RealDate = Date;
+const RealDate = global.Date;
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
 function mockDate(isoDate) {
@@ -84,7 +84,7 @@ describe('DatePicker', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <DatePicker visible disablePortal aria-label="date picker">
         <DatePicker.Trigger aria-label="date picker">Open date picker</DatePicker.Trigger>
@@ -102,7 +102,7 @@ describe('DateRangePicker', () => {
     cleanup();
   });
 
-  test('Should support onChange with format time 00:00:00:000', async ({ task }) => {
+  test('Should support onChange with format time 00:00:00:000', async () => {
     const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
@@ -114,7 +114,7 @@ describe('DateRangePicker', () => {
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
   });
 
-  test.concurrent('Should render correctly with selected date', async ({ task }) => {
+  test('Should render correctly with selected date', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
         <DatePicker.InputTrigger size="l" />
@@ -124,7 +124,7 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should render range of selected date', async ({ task }) => {
+  test('Should render range of selected date', async ({ task }) => {
     const component = (
       <DateRangePicker
         value={[new Date('December 31, 2020 00:00:00'), new Date('January 2, 2021 00:00:00')]}
@@ -133,7 +133,7 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should render correctly if one day is selected', async ({ task }) => {
+  test('Should render correctly if one day is selected', async ({ task }) => {
     const component = (
       <DateRangePicker
         value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2020 00:00:00')]}
@@ -142,19 +142,18 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent(
-    'Should render correctly if the same month of a different year is selected',
-    async ({ task }) => {
-      const component = (
-        <MonthRangePicker
-          value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2021 00:00:00')]}
-        />
-      );
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    },
-  );
+  test('Should render correctly if the same month of a different year is selected', async ({
+    task,
+  }) => {
+    const component = (
+      <MonthRangePicker
+        value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2021 00:00:00')]}
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
 
-  test.concurrent('Should render correctly', async ({ task }) => {
+  test('Should render correctly', async ({ task }) => {
     const component = (
       <DatePicker>
         <DatePicker.Header w={100}>
@@ -167,7 +166,7 @@ describe('DateRangePicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support hover item', async ({ task }) => {
+  test('Should support hover item', async ({ task }) => {
     await expect(
       await snapshot(
         <DatePicker value={new Date('January 1, 2021 00:00:00')}>
@@ -199,7 +198,7 @@ describe('DateRangePicker', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support active item', async ({ task }) => {
+  test('Should support active item', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
         <DatePicker.InputTrigger id="datapicker" />
@@ -259,7 +258,7 @@ describe('DateRangePicker', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <DateRangePicker visible disablePortal aria-label="data range picker">
         <DateRangePicker.Trigger aria-label="date range picker">
@@ -275,7 +274,7 @@ describe('DateRangePicker', () => {
 });
 
 describe('DatePicker.Header', () => {
-  test.concurrent('Should render correctly', async ({ task }) => {
+  test('Should render correctly', async ({ task }) => {
     const component = (
       <DatePicker>
         <DatePicker.Header w={100}>

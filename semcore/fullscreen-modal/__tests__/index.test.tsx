@@ -77,7 +77,7 @@ describe('FullscreenModal', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should change overflow style for body in modal', async ({ task }) => {
+  test('should change overflow style for body in modal', async () => {
     // const { unmount } =
     await render(<FullscreenModal />);
     expect(document.body.style.overflow).toBe('hidden');

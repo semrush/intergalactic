@@ -121,7 +121,7 @@ describe('InputTags', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should call onClick', async ({ task }) => {
+  test.concurrent('should call onClick', async () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <InputTags>
@@ -137,7 +137,7 @@ describe('InputTags', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  test.skip('a11y', async ({ task }) => {
+  test.skip('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
       <InputTags size="l">

@@ -105,7 +105,7 @@ describe('Tooltip.Trigger', () => {
     expect(ref.current.nodeName).toBe('BUTTON');
   });
 
-  test('should support children', async ({ task }) => {
+  test('should support children', async () => {
     const component = (
       <Tooltip>
         <Tooltip.Trigger>
@@ -155,7 +155,7 @@ describe('Tooltip.Popper', () => {
     expect(ref.current.nodeName).toBe('DIV');
   });
 
-  test('should support children', async ({ task }) => {
+  test('should support children', async () => {
     const component = (
       <Tooltip visible>
         <Tooltip.Trigger />
@@ -220,7 +220,7 @@ describe('TooltipBase', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <Tooltip visible disablePortal>
         <Tooltip.Trigger tag="button">trigger</Tooltip.Trigger>

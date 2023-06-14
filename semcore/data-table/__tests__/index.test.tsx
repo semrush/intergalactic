@@ -823,7 +823,7 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>

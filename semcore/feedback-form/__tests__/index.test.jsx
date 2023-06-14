@@ -125,7 +125,7 @@ describe('FeedbackForm', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <FeedbackForm>
         <label htmlFor="suggestions">Tell us your suggestion or report an issue</label>

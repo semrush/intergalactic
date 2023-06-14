@@ -38,7 +38,7 @@ describe('Badge', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(<Badge bg="green">new</Badge>);
 
     const results = await axe(container);

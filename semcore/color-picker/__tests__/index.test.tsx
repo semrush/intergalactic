@@ -46,7 +46,7 @@ describe('ColorPicker', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should call onChange function when click on item color', async ({ task }) => {
+  test.concurrent('Should call onChange function when click on item color', async () => {
     const value = '#2BB3FF';
     const spy = vi.fn();
 
@@ -69,7 +69,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith('#8649E1', expect.anything());
   });
 
-  test.concurrent('Should clear input when click on cancel icon inside input', async ({ task }) => {
+  test.concurrent('Should clear input when click on cancel icon inside input', async () => {
     const { getByTestId, getByLabelText } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
@@ -95,7 +95,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('');
   });
 
-  test.concurrent('Should add colort when click on confirm icon inside input', async ({ task }) => {
+  test.concurrent('Should add colort when click on confirm icon inside input', async () => {
     const spy = vi.fn();
 
     const { getByTestId, getByLabelText } = render(
@@ -126,7 +126,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test.concurrent('Should add color when click on "Enter" click', async ({ task }) => {
+  test.concurrent('Should add color when click on "Enter" click', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -154,7 +154,7 @@ describe('ColorPicker', () => {
     expect(spy).toBeCalledWith(['#635472'], expect.anything());
   });
 
-  test.concurrent('Should add color with "#" sign in the code color', async ({ task }) => {
+  test.concurrent('Should add color with "#" sign in the code color', async () => {
     vi.useFakeTimers();
     const spy = vi.fn();
 
@@ -189,7 +189,7 @@ describe('ColorPicker', () => {
     vi.useRealTimers();
   });
 
-  test('a11y', async ({ task }) => {
+  test('a11y', async () => {
     const { container } = render(
       <div style={{ width: 250, height: 100 }}>
         <ColorPicker disablePortal visible>
