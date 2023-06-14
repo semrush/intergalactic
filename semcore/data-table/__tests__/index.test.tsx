@@ -836,6 +836,41 @@ describe('DataTable', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+
+  test('rowgroup a11y', async () => {
+    jest.useFakeTimers();
+    const data = [
+      {
+        keyword: 'www.ebay.com',
+        [ROW_GROUP]: [
+          {
+            kd: '11.2',
+          },
+          {
+            kd: '10',
+          },
+        ],
+      },
+    ];
+
+    const { container } = render(
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head>
+            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name="kd" children="KD,%" />
+          </DataTable.Head>
+          <DataTable.Body />
+        </DataTable>
+      </div>,
+    );
+
+    act(() => jest.runAllTimers());
+    jest.useRealTimers();
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+  });
 });
 
 describe('DataTable.Column', () => {

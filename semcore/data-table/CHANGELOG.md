@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.9.7] - 2023-06-14
+
+### Fixed
+
+- Grouped rows aria roles.
+
 ## [3.9.6] - 2023-06-13
 
 ### Changed

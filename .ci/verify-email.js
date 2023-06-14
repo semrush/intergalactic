@@ -63,7 +63,7 @@ const signaturesRawText = execSync('gpg --list-secret-keys --keyid-format=long',
 });
 const signaturesRawTexts = signaturesRawText.split('sec   ');
 const rsaSignatures = signaturesRawTexts
-  .filter((rawText) => rawText.startsWith('rsa'))
+  .filter((rawText) => rawText.startsWith('rsa') || rawText.startsWith('ed25519'))
   .map((rawText) => {
     const lines = rawText.split('\n');
     const uid = lines[0]?.substring(lines[0]?.indexOf('/') + 1, lines[0]?.indexOf(' '));
