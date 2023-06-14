@@ -1,7 +1,9 @@
 import React from 'react';
-import { testing, snapshot /*shared as testsShared*/ } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+// import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
-const { render, fireEvent, cleanup, act } = testing;
+import { render, /*fireEvent,*/ cleanup, act } from '@semcore/testing-utils/testing-library';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
 import {
   NoticeBubbleContainer,
@@ -10,7 +12,8 @@ import {
   NoticeBubbleWarning as NoticeBubbleWarningImport,
 } from '../src';
 
-// const { shouldSupportClassName, shouldSupportRef } = testsShared;
+// const { shouldSupportClassName, shouldSupportRef } = sharedTests;
+
 const NoticeBubble = React.forwardRef((props, ref) => (
   <>
     <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
@@ -25,7 +28,7 @@ const NoticeBubble = React.forwardRef((props, ref) => (
 // ));
 
 describe('NoticeBubbleContainer', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   // shouldSupportClassName(NoticeBubble);
   // shouldSupportRef(NoticeBubble);
@@ -45,63 +48,69 @@ describe('NoticeBubbleContainer', () => {
 });
 
 describe('NoticeBubble Timer', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
   test.skip('should support pause timer at mouse enter', () => {
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     const { getByTestId } = render(<NoticeBubble data-testid="notice" onClose={spy} />);
     fireEvent.mouseEnter(getByTestId('notice'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).not.toBeCalled();
 
     fireEvent.mouseLeave(getByTestId('notice'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).toBeCalled();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 });
 
 describe('NoticeBubble', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   // shouldSupportClassName(NoticeBubble);
   // shouldSupportRef(NoticeBubble);
 
   test.skip('should support handler for close', () => {
-    const manager = new NoticeBubbleManager();
-    const spy = jest.fn();
-    const { getByTitle } = render(<NoticeBubble onClose={spy} manager={manager} />);
+    const spy = vi.fn();
+    const { getByTitle } = render(<NoticeBubble onClose={spy} />);
     fireEvent.click(getByTitle('Close'));
     expect(spy).toBeCalled();
   });
 
   test.skip('should support closing after some time', () => {
-    const manager = new NoticeBubbleManager();
-    jest.useFakeTimers();
-    const spy = jest.fn();
-    render(<NoticeBubble duration={300} onClose={spy} manager={manager} />);
+    vi.useFakeTimers();
+    const spy = vi.fn();
+    render(<NoticeBubble duration={300} onClose={spy} />);
 
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).toBeCalled();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('should support the possibility of not closing', () => {
     const manager = new NoticeBubbleManager();
-    jest.useFakeTimers();
-    const spy = jest.fn();
+    vi.useFakeTimers();
+    const spy = vi.fn();
     render(<NoticeBubble duration={0} onClose={spy} manager={manager} />);
 
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
 
     expect(spy).not.toBeCalled();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
-  test('should support hover for icon close', async () => {
+  test.concurrent('should support hover for icon close', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -115,12 +124,12 @@ describe('NoticeBubble', () => {
         </NoticeBubbleImport>
       </>
     );
-    expect(
+    await expect(
       await snapshot(component, { actions: { hover: '#notice [title="Close"]' } }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should support show more one notice', () => {
+  test.concurrent('should support show more one notice', () => {
     const manager = new NoticeBubbleManager();
     render(
       <React.Fragment>
@@ -148,7 +157,7 @@ describe('NoticeBubble', () => {
     expect(container.querySelector('[data-testid="notice"]')).toBeTruthy();
   });
 
-  test('should render correctly', async () => {
+  test.concurrent('should render correctly', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -161,10 +170,10 @@ describe('NoticeBubble', () => {
         <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support action node', async () => {
+  test.concurrent('should support action node', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -184,10 +193,10 @@ describe('NoticeBubble', () => {
         </NoticeBubbleImport>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly for screen size 760px', async () => {
+  test.concurrent('Should render correctly for screen size 760px', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
       <>
@@ -195,19 +204,12 @@ describe('NoticeBubble', () => {
         <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
       </>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         selector: 'body',
         width: 320,
         height: 100,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 });
-
-// describe('NoticeBubbleWarning', () => {
-//   afterEach(cleanup);
-
-//   shouldSupportClassName(NoticeBubbleWarning);
-//   shouldSupportRef(NoticeBubbleWarning);
-// });

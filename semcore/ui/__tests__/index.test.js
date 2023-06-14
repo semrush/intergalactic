@@ -2,6 +2,7 @@ import { packages } from '../components.json';
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
 
 function sortObjKeys(obj) {
   return Object.keys(obj).sort();

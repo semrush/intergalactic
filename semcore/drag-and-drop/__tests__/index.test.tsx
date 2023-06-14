@@ -1,15 +1,16 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import DnD from '../src';
 import Badge from '@semcore/badge';
 import LinkedInS from '@semcore/icon/LinkedIn/m';
 import TabPanel from '@semcore/tab-panel';
-const { cleanup } = testing;
+import { cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('DragAndDrop', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should render correctly', async () => {
+  test.concurrent('Should render correctly', async ({ task }) => {
     const icons = {
       social: (
         <TabPanel.Item.Addon>
@@ -42,6 +43,6 @@ describe('DragAndDrop', () => {
       </DnD>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

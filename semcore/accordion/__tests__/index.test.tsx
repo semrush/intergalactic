@@ -1,12 +1,15 @@
 import React from 'react';
-import { snapshot, testing } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
 import Accordion from '../src';
-const { axe, render, fireEvent, cleanup } = testing;
 
 describe('Accordion', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should render correctly', async () => {
+  test.concurrent('Should render correctly', async ({ task }) => {
     const component = (
       <Accordion defaultValue={[0, 2]}>
         {Array(4)
@@ -23,11 +26,11 @@ describe('Accordion', () => {
       </Accordion>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support uncontrolled mode with single expandable item', () => {
-    const spy = jest.fn();
+  test.concurrent('Should support uncontrolled mode with single expandable item', () => {
+    const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy} defaultValue={null}>
         <Accordion.Item value={1}>
@@ -49,8 +52,8 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Should support controlled mode with single expandable item', () => {
-    const spy = jest.fn();
+  test.concurrent('Should support controlled mode with single expandable item', () => {
+    const spy = vi.fn();
 
     const { getByText, rerender } = render(
       <Accordion onChange={spy} value={null}>
@@ -93,8 +96,8 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith(null);
   });
 
-  test('Should support uncontrolled mode with multiple expandable items', () => {
-    const spy = jest.fn();
+  test.concurrent('Should support uncontrolled mode with multiple expandable items', () => {
+    const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy}>
         <Accordion.Item value={1}>
@@ -119,8 +122,8 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith([]);
   });
 
-  test('Should support controlled mode with multiple expandable items', () => {
-    const spy = jest.fn();
+  test.concurrent('Should support controlled mode with multiple expandable items', () => {
+    const spy = vi.fn();
 
     const { getByText, rerender } = render(
       <Accordion onChange={spy} value={[]}>

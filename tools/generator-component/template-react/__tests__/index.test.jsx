@@ -1,13 +1,14 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import {  expect, test, describe, beforeEach} from 'vitest';
 import {{ properCase name }} from '../src';
 
-const { render, fireEvent, cleanup } = testing;
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('{{ properCase name }}', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('TODO', () => {
+  test.concurrent('TODO', () => {
     expect(true).toEqual(true);
   });
 });

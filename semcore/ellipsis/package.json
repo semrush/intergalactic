@@ -9,8 +9,7 @@
   "author": "UI-KIT team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder",
-    "test": "jest"
+    "build": "pnpm semcore-builder"
   },
   "dependencies": {
     "@semcore/utils": "^3.37",
@@ -25,14 +24,11 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
-    "@semcore/jest-preset-ui": "1.0.0"
+    "@semcore/testing-utils": "1.0.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
     "directory": "semcore/ellipsis"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
   }
 }

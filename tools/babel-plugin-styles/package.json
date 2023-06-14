@@ -23,8 +23,5 @@
     "postcss-value-parser": "4.1.0",
     "string-hash": "1.1.3",
     "synchronous-promise": "2.0.15"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
   }
 }

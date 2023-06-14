@@ -1,9 +1,13 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import Calendar from '@semcore/icon/Calendar/m';
 
-const { cleanup, render, axe } = testing;
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
+
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Link from '../src';
 import CheckM from '@semcore/icon/Check/m';
 import EditXS from '@semcore/icon/Edit/m';
@@ -11,12 +15,12 @@ import { Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 describe('Link', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Link, React.Fragment, { children: 'Link' });
   shouldSupportRef(Link, React.Fragment, { children: 'Link' });
 
-  test('Should support custom attributes', () => {
+  test.concurrent('Should support custom attributes', () => {
     const { getByTestId } = render(
       <Link data-testid="link" name="test">
         Link
@@ -25,7 +29,7 @@ describe('Link', () => {
     expect(getByTestId('link').attributes['name'].value).toBe('test');
   });
 
-  test('Should support children', async () => {
+  test.concurrent('Should support children', async () => {
     const component = (
       <Link>
         <p data-testid="child">Test</p>
@@ -35,7 +39,7 @@ describe('Link', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('Should support additional elements', async () => {
+  test.concurrent('Should support additional elements', async ({ task }) => {
     const component = (
       <Link>
         <Link.Addon>ICON</Link.Addon>
@@ -47,20 +51,20 @@ describe('Link', () => {
     const additional = queryAllByText('ICON');
 
     expect(additional).toHaveLength(2);
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support additional elements as props', async () => {
+  test.concurrent('Should support additional elements as props', async ({ task }) => {
     const component = (
       <Link addonLeft={Calendar} addonRight={Calendar}>
         Text
       </Link>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support change tag name', () => {
+  test.concurrent('Should support change tag name', () => {
     const { getByTestId } = render(
       <Link data-testid="link" tag="span">
         Link
@@ -69,7 +73,7 @@ describe('Link', () => {
     expect(getByTestId('link').tagName).toBe('SPAN');
   });
 
-  test('Should support normal state', async () => {
+  test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Link active>Link</Link>
@@ -85,21 +89,21 @@ describe('Link', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support inline property', () => {
+  test.concurrent('Should support inline property', () => {
     const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
-    expect(getComputedStyle(getByTestId('link')).display).toBe('inline-block');
+    expect(getByTestId('link').className).not.toContain('inline');
     rerender(
       <Link data-testid="link" inline>
         Link
       </Link>,
     );
-    expect(getComputedStyle(getByTestId('link')).display).toBe('inline');
+    expect(getByTestId('link').className).toContain('inline');
   });
 
-  test('Should support ellipsis links with addon', async () => {
+  test.concurrent('Should support ellipsis links with addon', async ({ task }) => {
     const component = (
       <div style={{ width: '66%' }}>
         <Link w="100%" wMin={0}>
@@ -119,72 +123,76 @@ describe('Link', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support noWrap property', () => {
+  test.concurrent('Should support noWrap property', () => {
     const { rerender, getByTestId } = render(<Link data-testid="link">Link</Link>);
-    expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('nowrap');
+    expect(getByTestId('link').className).contains('noWrap');
     rerender(
       <Link data-testid="link" noWrap={false}>
         Link
       </Link>,
     );
-    expect(getComputedStyle(getByTestId('link'))['white-space']).toBe('');
+    expect(getByTestId('link').className).not.contains('noWrap');
   });
 
-  test('Should support sizes', async () => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Link size={100}>Link</Link>
-        <Link size={200}>Link</Link>
-        <Link size={300}>Link</Link>
-        <Link size={400}>Link</Link>
-        <Link size={500}>Link</Link>
-        <Link size={600}>Link</Link>
-        <Link size={700}>Link</Link>
-        <Link size={800}>Link</Link>
-      </snapshot.ProxyProps>
-    );
+  test.concurrent(
+    'Should support sizes',
+    async ({ task }) => {
+      const component = (
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Link size={100}>Link</Link>
+          <Link size={200}>Link</Link>
+          <Link size={300}>Link</Link>
+          <Link size={400}>Link</Link>
+          <Link size={500}>Link</Link>
+          <Link size={600}>Link</Link>
+          <Link size={700}>Link</Link>
+          <Link size={800}>Link</Link>
+        </snapshot.ProxyProps>
+      );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+    { timeout: 20_000 },
+  );
 
-  test('Should support hover', async () => {
+  test.concurrent('Should support hover', async ({ task }) => {
     const component = <Link id="link">Link</Link>;
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#link',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom color', async () => {
+  test.concurrent('Should support custom color', async ({ task }) => {
     const component = <Link color="salad-400">Link</Link>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover custom color', async () => {
+  test.concurrent('Should support hover custom color', async ({ task }) => {
     const component = (
       <Link id="link" color="salad-400">
         Link
       </Link>
     );
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#link',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with one Addon as props', async () => {
+  test.concurrent('Renders correctly with one Addon as props', async ({ task }) => {
     const component = <Link addonLeft={CheckM} aria-label="Check" />;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {

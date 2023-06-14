@@ -1,3 +1,5 @@
+import { expect, test, describe } from '@semcore/testing-utils/vitest';
+
 import {
   DataStructureHints,
   makeDataHintsContainer as makeHints,
@@ -29,7 +31,7 @@ const pixelArtToPointsList = (space: string) =>
     .filter((point) => point !== null);
 
 describe('Plot a11y summarization', () => {
-  test('insights-extraction/general-trends/static', () => {
+  test.concurrent('insights-extraction/general-trends/static', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 1 },
@@ -60,7 +62,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/general-trends/weak-growth', () => {
+  test.concurrent('insights-extraction/general-trends/weak-growth', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 1.1 },
@@ -91,7 +93,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/general-trends/growth', () => {
+  test.concurrent('insights-extraction/general-trends/growth', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 2 },
@@ -122,7 +124,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/general-trends/strong-growth', () => {
+  test.concurrent('insights-extraction/general-trends/strong-growth', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 3 },
@@ -153,7 +155,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/general-trends/weak-reduction', () => {
+  test.concurrent('insights-extraction/general-trends/weak-reduction', () => {
     const data = [
       { x: 0, y: 2 },
       { x: 1, y: 1.9 },
@@ -184,7 +186,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/trends/peak', () => {
+  test.concurrent('insights-extraction/trends/peak', () => {
     const data = [
       { x: 0, y: 0 },
       { x: 1, y: 1 },
@@ -227,7 +229,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/trends/random-data', () => {
+  test.concurrent('insights-extraction/trends/random-data', () => {
     const data = Array(100)
       .fill(0)
       .map((_, x) => ({ x, y: x % 2 === 0 ? 10 : -10 }));
@@ -248,7 +250,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/clusters/base', () => {
+  test.concurrent('insights-extraction/clusters/base', () => {
     const data = pixelArtToPointsList(`
     AAA
     AA      FFF
@@ -316,7 +318,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/values-set/base', () => {
+  test.concurrent('insights-extraction/values-set/base', () => {
     const data = {
       B: 200,
       A: 100,
@@ -345,7 +347,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/values-set/deep-path', () => {
+  test.concurrent('insights-extraction/values-set/deep-path', () => {
     const data = {
       some_deep_field: {
         with_real_data: {
@@ -397,7 +399,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/grid-size', () => {
+  test.concurrent('insights-extraction/grid-size', () => {
     const data = pixelArtToPointsList(`
   AAA
   AA      FFF
@@ -424,7 +426,7 @@ describe('Plot a11y summarization', () => {
     expect(insights.length).toBe(2);
   });
 
-  test('insights-extraction/titles/points-cloud', () => {
+  test.concurrent('insights-extraction/titles/points-cloud', () => {
     const data = pixelArtToPointsList(`
   AAA
   AA      FFF
@@ -449,7 +451,7 @@ describe('Plot a11y summarization', () => {
     ).toEqual(Array(insights.length).fill(['horizontalAxes', 'verticalAxes']));
   });
 
-  test('insights-extraction/grouped-values', () => {
+  test.concurrent('insights-extraction/grouped-values', () => {
     const data = [
       {
         category: 'My super group A',
@@ -509,7 +511,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/titles/values-set', () => {
+  test.concurrent('insights-extraction/titles/values-set', () => {
     const data = {
       A: 100,
       B: 200,
@@ -534,7 +536,7 @@ describe('Plot a11y summarization', () => {
     ).toEqual(['a-haha', 'b-anana', 'C-onan Doyle']);
   });
 
-  test('insights-extraction/auto-data-type/time-series', () => {
+  test.concurrent('insights-extraction/auto-data-type/time-series', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 1 },
@@ -548,7 +550,7 @@ describe('Plot a11y summarization', () => {
     expect(dataType).toBe('time-series');
   });
 
-  test('insights-extraction/auto-data-type/values-set/array', () => {
+  test.concurrent('insights-extraction/auto-data-type/values-set/array', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 1 },
@@ -561,7 +563,7 @@ describe('Plot a11y summarization', () => {
     expect(dataType).toBe('values-set');
   });
 
-  test('insights-extraction/auto-data-type/values-set/dict', () => {
+  test.concurrent('insights-extraction/auto-data-type/values-set/dict', () => {
     const data = {};
     for (let i = 0; i < 27; i++) {
       const char = String.fromCharCode('A'.charCodeAt(0) + i);
@@ -571,7 +573,7 @@ describe('Plot a11y summarization', () => {
     expect(dataType).toBe('values-set');
   });
 
-  test('insights-extraction/auto-data-type/points-cloud/default-names', () => {
+  test.concurrent('insights-extraction/auto-data-type/points-cloud/default-names', () => {
     const data = [
       {
         x: 0,
@@ -583,7 +585,7 @@ describe('Plot a11y summarization', () => {
     expect(dataType).toBe('points-cloud');
   });
 
-  test('insights-extraction/auto-data-type/points-cloud/hints-names', () => {
+  test.concurrent('insights-extraction/auto-data-type/points-cloud/hints-names', () => {
     const data = [{}];
     const hints: DataStructureHints = {
       ...makeHints(),
@@ -598,7 +600,7 @@ describe('Plot a11y summarization', () => {
     expect(dataType).toBe('points-cloud');
   });
 
-  test('insights-extraction/auto-data-type/grouped-values', () => {
+  test.concurrent('insights-extraction/auto-data-type/grouped-values', () => {
     const data = [
       {
         someGroupMarker: 'group 1',
@@ -620,7 +622,7 @@ describe('Plot a11y summarization', () => {
     expect(dataType).toBe('grouped-values');
   });
 
-  test('insights-extraction/data-range/time-series', () => {
+  test.concurrent('insights-extraction/data-range/time-series', () => {
     const data = [
       { x: 0, y: 1 },
       { x: 1, y: 1 },
@@ -644,7 +646,7 @@ describe('Plot a11y summarization', () => {
     ]);
   });
 
-  test('insights-extraction/data-range/cloud-points', () => {
+  test.concurrent('insights-extraction/data-range/cloud-points', () => {
     const data = pixelArtToPointsList(`
     AAAAAAAAAAAAAAAAA
   `);
@@ -653,7 +655,7 @@ describe('Plot a11y summarization', () => {
     expect(dataRange).toEqual([]);
   });
 
-  test('insights-extraction/data-title/from-horizaontal-title', () => {
+  test.concurrent('insights-extraction/data-title/from-horizaontal-title', () => {
     const data = [{}];
     const hints: DataStructureHints = {
       ...makeHints(),
@@ -663,7 +665,7 @@ describe('Plot a11y summarization', () => {
     const { dataTitle } = extractDataInsights(data, hints, makeConfig());
     expect(dataTitle).toBe('Hello world');
   });
-  test('insights-extraction/data-title/from-vertical-title', () => {
+  test.concurrent('insights-extraction/data-title/from-vertical-title', () => {
     const data = [{}];
     const hints: DataStructureHints = {
       ...makeHints(),
@@ -673,7 +675,7 @@ describe('Plot a11y summarization', () => {
     const { dataTitle } = extractDataInsights(data, hints, makeConfig());
     expect(dataTitle).toBe('Hello world');
   });
-  test('insights-extraction/data-title/vertical-priority', () => {
+  test.concurrent('insights-extraction/data-title/vertical-priority', () => {
     const data = [{}];
     const hints: DataStructureHints = {
       ...makeHints(),
@@ -687,7 +689,7 @@ describe('Plot a11y summarization', () => {
     expect(dataTitle).toBe('verticalAxes');
   });
 
-  test('insights-extraction/data-title/vertical-priority', () => {
+  test.concurrent('insights-extraction/data-title/vertical-priority', () => {
     const data = [{}];
     const hints: DataStructureHints = {
       ...makeHints(),
@@ -701,7 +703,7 @@ describe('Plot a11y summarization', () => {
     expect(dataTitle).toBe('verticalAxes');
   });
 
-  test('insights-extraction/trends/from-static-to-growth', () => {
+  test.concurrent('insights-extraction/trends/from-static-to-growth', () => {
     const { insights } = extractDataInsights(
       [
         { x: 0, y: 0 },
@@ -725,7 +727,7 @@ describe('Plot a11y summarization', () => {
     ).toBeTruthy();
   });
 
-  test('serizalizetion/basic', () => {
+  test.concurrent('serizalizetion/basic', () => {
     const insights: Insight[] = [
       {
         type: 'general-trend',
@@ -752,7 +754,7 @@ describe('Plot a11y summarization', () => {
     expect(text.includes('x')).toBeTruthy();
   });
 
-  test('serizalizetion/insights-cut', () => {
+  test.concurrent('serizalizetion/insights-cut', () => {
     const insights: Insight[] = Array(10000)
       .fill(0)
       .map(() => ({
@@ -784,7 +786,7 @@ describe('Plot a11y summarization', () => {
     expect(length).toBeLessThan(limit);
   });
 
-  test('serizalizetion/basic', () => {
+  test.concurrent('serizalizetion/basic', () => {
     const insights: Insight[] = [
       {
         type: 'general-trend',
@@ -811,7 +813,7 @@ describe('Plot a11y summarization', () => {
     expect(text.includes('x')).toBeTruthy();
   });
 
-  test('serizalizetion/locale-switch', () => {
+  test.concurrent('serizalizetion/locale-switch', () => {
     const insights: Insight[] = [
       {
         type: 'general-trend',
@@ -836,7 +838,7 @@ describe('Plot a11y summarization', () => {
     expect(text.includes('EcmaScript')).toBeTruthy();
   });
 
-  test('serizalizetion/all-texts-are-used', () => {
+  test.concurrent('serizalizetion/all-texts-are-used', () => {
     const translationsList = Object.keys(translations.en).filter(
       (messageId) => !messageId.startsWith('view-'),
     );
@@ -1203,7 +1205,7 @@ describe('Plot a11y summarization', () => {
     expect(unusedMessages).toHaveLength(0);
   });
 
-  test('serialization/trends/no-ellipsis-on-too-much-trends', () => {
+  test.concurrent('serialization/trends/no-ellipsis-on-too-much-trends', () => {
     const text = serialize(
       extractDataInsights(
         Array(10000)

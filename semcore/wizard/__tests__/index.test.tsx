@@ -1,13 +1,15 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Wizard from '../src';
 
-const { cleanup, fireEvent, render, axe } = testing;
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Wizard', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should correctly render', async () => {
+  test.concurrent('Should correctly render', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title="Header">
@@ -20,16 +22,16 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 1300,
         height: 600,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support checked completed', async () => {
+  test.concurrent('Should support checked completed', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title="Header">
@@ -44,16 +46,16 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 300,
         height: 300,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom number', async () => {
+  test.concurrent('Should support custom number', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
         <Wizard.Sidebar title="Header">
@@ -70,16 +72,16 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 300,
         height: 300,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should correctly render with disabled step', async () => {
+  test.concurrent('Should correctly render with disabled step', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -94,17 +96,17 @@ describe('Wizard', () => {
         </Wizard.Content>
       </Wizard>
     );
-    expect(
+    await expect(
       await snapshot(Component, {
         selector: 'body',
         width: 300,
         height: 300,
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Stepper should support hover', async () => {
-    expect(
+  test.concurrent('Stepper should support hover', async ({ task }) => {
+    await expect(
       await snapshot(
         <Wizard disablePortal visible step={2}>
           <Wizard.Sidebar title="Header">
@@ -120,11 +122,11 @@ describe('Wizard', () => {
         </Wizard>,
         { selector: 'body', width: 300, height: 300, actions: { hover: '#step' } },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
   test('Should support keyboard navigation', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -140,12 +142,12 @@ describe('Wizard', () => {
       </Wizard>,
     );
 
-    fireEvent.keyPress(getByTestId('second-step'), { keyCode: 13 });
+    fireEvent.keyDown(getByTestId('second-step'), { key: 'Enter', keyCode: 13 });
     expect(spy).lastCalledWith(2, expect.any(Object));
   });
 
   test('Should support step change on click', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -166,7 +168,7 @@ describe('Wizard', () => {
   });
 
   test('Should correctly rerender', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
@@ -194,8 +196,12 @@ describe('Wizard', () => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
         <Wizard.Sidebar title="Header">
-          <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
-          <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
+          <Wizard.Stepper step={1} aria-label="step 1">
+            Step 1
+          </Wizard.Stepper>
+          <Wizard.Stepper step={2} aria-label="step 2">
+            Step 2
+          </Wizard.Stepper>
         </Wizard.Sidebar>
         <Wizard.Content>
           <Wizard.Step step={1}>First page</Wizard.Step>

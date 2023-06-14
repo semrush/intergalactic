@@ -25,12 +25,8 @@
     "mri": "1.2.0"
   },
   "devDependencies": {
-    "jest": "29.0.1",
     "babel-plugin-tester": "7.0.1",
-    "@semcore/jest-preset-ui": "*",
+    "@semcore/testing-utils": "*",
     "prettier": "2.6.2"
-  },
-  "jest": {
-    "preset": "@semcore/jest-preset-ui"
   }
 }

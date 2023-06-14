@@ -1,10 +1,12 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { axe, cleanup, render, fireEvent, act } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 
-const RealDate = Date;
+const RealDate = global.Date;
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
 function mockDate(isoDate) {
@@ -22,13 +24,13 @@ function mockDate(isoDate) {
   };
 }
 describe('DatePicker', () => {
-  afterEach(() => {
+  beforeEach(() => {
     global.Date = RealDate;
     cleanup();
   });
 
   test('Should support onChange with format time 00:00:00:000', () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
     const { getByText } = render(<DatePicker onChange={spy} visible />);
@@ -47,22 +49,26 @@ describe('DatePicker', () => {
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
-    jest.useFakeTimers({ legacyFakeTimers: true });
+    vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
       <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
     );
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.click(getByText('Select date'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(getByText('March 2020')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('Should support set custom displayPeriod after changed value date', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const component = (
       <DatePicker defaultVisible defaultDisplayedPeriod="2021-09-10T12:00:00.808Z" />
     );
@@ -70,10 +76,12 @@ describe('DatePicker', () => {
     fireEvent.click(getByLabelText('Previous period'));
     // change visible
     fireEvent.click(getByText('15'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     // change visible
     expect(getByText('Aug 15, 2021')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {
@@ -89,13 +97,13 @@ describe('DatePicker', () => {
 });
 
 describe('DateRangePicker', () => {
-  afterEach(() => {
+  beforeEach(() => {
     global.Date = RealDate;
     cleanup();
   });
 
   test('Should support onChange with format time 00:00:00:000', async () => {
-    const spy = jest.fn();
+    const spy = vi.fn();
     mockDate('2020-02-10T12:00:00.808Z');
 
     const { getByText } = render(<DateRangePicker onChange={spy} visible />);
@@ -106,44 +114,46 @@ describe('DateRangePicker', () => {
     expect(spy).toBeCalledWith([DateRangePicker.subtract(today, 1, 'day'), today]);
   });
 
-  test('Should render correctly with selected date', async () => {
+  test('Should render correctly with selected date', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
         <DatePicker.InputTrigger size="l" />
         <DatePicker.Popper />
       </DatePicker>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render range of selected date', async () => {
+  test('Should render range of selected date', async ({ task }) => {
     const component = (
       <DateRangePicker
         value={[new Date('December 31, 2020 00:00:00'), new Date('January 2, 2021 00:00:00')]}
       />
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly if one day is selected', async () => {
+  test('Should render correctly if one day is selected', async ({ task }) => {
     const component = (
       <DateRangePicker
         value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2020 00:00:00')]}
       />
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly if the same month of a different year is selected', async () => {
+  test('Should render correctly if the same month of a different year is selected', async ({
+    task,
+  }) => {
     const component = (
       <MonthRangePicker
         value={[new Date('December 31, 2020 00:00:00'), new Date('December 31, 2021 00:00:00')]}
       />
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should render correctly', async () => {
+  test('Should render correctly', async ({ task }) => {
     const component = (
       <DatePicker>
         <DatePicker.Header w={100}>
@@ -153,11 +163,11 @@ describe('DateRangePicker', () => {
         </DatePicker.Header>
       </DatePicker>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover item', async () => {
-    expect(
+  test('Should support hover item', async ({ task }) => {
+    await expect(
       await snapshot(
         <DatePicker value={new Date('January 1, 2021 00:00:00')}>
           <DatePicker.InputTrigger id="datapicker" />
@@ -169,8 +179,8 @@ describe('DateRangePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
-    expect(
+    ).toMatchImageSnapshot(task);
+    await expect(
       await snapshot(
         <DatePicker>
           <DatePicker.Header w={100}>
@@ -185,10 +195,10 @@ describe('DateRangePicker', () => {
           },
         },
       ),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support active item', async () => {
+  test('Should support active item', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
         <DatePicker.InputTrigger id="datapicker" />
@@ -196,13 +206,13 @@ describe('DateRangePicker', () => {
       </DatePicker>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           active: '#datapicker',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
   test('Should support set custom displayPeriod', () => {
@@ -216,7 +226,7 @@ describe('DateRangePicker', () => {
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
-    jest.useFakeTimers({ legacyFakeTimers: true });
+    vi.useFakeTimers();
     const component = (
       <DateRangePicker visible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']} />
     );
@@ -224,15 +234,19 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByLabelText('Next period'));
     // change visible
     fireEvent.click(getByText('Select date period'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     fireEvent.click(getByText('Select date period'));
-    act(() => jest.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     expect(getByText('March 2020')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('Should support set custom displayPeriod after changed value date', () => {
-    jest.useFakeTimers({ legacyFakeTimers: true });
+    vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
       <DateRangePicker visible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />,
     );
@@ -241,7 +255,7 @@ describe('DateRangePicker', () => {
     fireEvent.click(getByText('31'));
     fireEvent.click(getByText('Apply'));
     expect(getByText('August 2021')).toBeTruthy();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   test('a11y', async () => {
@@ -260,7 +274,7 @@ describe('DateRangePicker', () => {
 });
 
 describe('DatePicker.Header', () => {
-  test('Should render correctly', async () => {
+  test('Should render correctly', async ({ task }) => {
     const component = (
       <DatePicker>
         <DatePicker.Header w={100}>
@@ -270,6 +284,6 @@ describe('DatePicker.Header', () => {
         </DatePicker.Header>
       </DatePicker>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

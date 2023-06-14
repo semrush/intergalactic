@@ -83,7 +83,7 @@ class Demo extends React.Component {
   _timer = null;
 
   handleHeadKeyDown = (key) => (e) => {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter') {
       this.handleHeadClick(key)(e);
     }
   };

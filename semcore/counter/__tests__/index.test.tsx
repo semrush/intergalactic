@@ -1,18 +1,19 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup } from '@semcore/testing-utils/testing-library';
 
 import Counter from '../src';
 
 describe('Counter', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('renders correctly', async () => {
+  test.concurrent('renders correctly', async ({ task }) => {
     const component = <Counter>42</Counter>;
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support size props', async () => {
+  test.concurrent('should support size props', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Counter size="xl">42</Counter>
@@ -20,10 +21,10 @@ describe('Counter', () => {
         <Counter size="m">42</Counter>
       </snapshot.ProxyProps>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support theme props', async () => {
+  test.concurrent('should support theme props', async ({ task }) => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
@@ -35,6 +36,6 @@ describe('Counter', () => {
         </snapshot.ProxyProps>
       </div>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

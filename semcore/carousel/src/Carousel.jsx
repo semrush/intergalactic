@@ -293,8 +293,8 @@ class CarouselRoot extends Component {
   }
 
   bindHandlerKeydownControl = (direction) => (e) => {
-    const { keyCode } = e;
-    if (keyCode === 13) {
+    const { key } = e;
+    if (key === 'Enter') {
       e.preventDefault();
       this.bindHandlerClick(direction)();
     }

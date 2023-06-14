@@ -98,7 +98,7 @@ function Stepper(props) {
     [step, onActive],
   );
 
-  const handlerKeyPress = useCallback(
+  const handlerKeyDown = useCallback(
     (e) => {
       if (onActive && e.key === 'Enter') {
         onActive(step, e);
@@ -114,7 +114,7 @@ function Stepper(props) {
       aria-disabled={disabled}
       aria-current={active}
       onClick={handlerClick}
-      onKeyPress={handlerKeyPress}
+      onKeyDown={handlerKeyDown}
     >
       {completed && <ScreenReaderOnly>{getI18nText('completedStep')}</ScreenReaderOnly>}
       <SStepNumber aria-hidden="true">{completed ? <SCompleted /> : number}</SStepNumber>

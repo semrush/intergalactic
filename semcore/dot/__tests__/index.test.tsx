@@ -1,38 +1,40 @@
 import React from 'react';
-import { testing, snapshot, shared as testsShared } from '@semcore/jest-preset-ui';
-const { cleanup, render } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import Dot from '../src';
 import Button from '@semcore/button';
 
 describe('Dot', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(Dot, undefined, { 'aria-label': 'test dot' });
   shouldSupportRef(Dot, undefined, { 'aria-label': 'test dot' });
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <button>
         Button
         <Dot aria-label="Our brand new button!" />
       </button>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with up', async () => {
+  test.concurrent('Renders correctly with up', async ({ task }) => {
     const component = (
       <button>
         Button
         <Dot up aria-label="Our brand new button!" />
       </button>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support value', async () => {
+  test.concurrent('Should support value', async ({ task }) => {
     const component = (
       <>
         <Button>
@@ -47,10 +49,10 @@ describe('Dot', () => {
         </Button>
       </>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support size', async () => {
+  test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: '3px', position: 'relative' }}>
         <button>
@@ -74,10 +76,10 @@ describe('Dot', () => {
       </snapshot.ProxyProps>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hidden', async () => {
+  test.concurrent('Should support hidden', async () => {
     const { queryByTestId } = render(
       <Button>
         Button

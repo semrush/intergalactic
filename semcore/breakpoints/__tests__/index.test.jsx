@@ -1,10 +1,10 @@
-import { testing } from '@semcore/jest-preset-ui';
-const { cleanup } = testing;
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('Breakpoints', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('TODO', () => {
+  test.concurrent('TODO', () => {
     expect(true).toEqual(true);
   });
 });

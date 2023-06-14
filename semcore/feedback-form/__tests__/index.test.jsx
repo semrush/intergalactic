@@ -1,20 +1,23 @@
 import React from 'react';
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-const { render, fireEvent, cleanup, axe } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import FeedbackForm from '../src';
 
 describe('FeedbackForm', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(FeedbackForm);
   shouldSupportRef(FeedbackForm);
 
-  test('Should call onSubmit', () => {
-    const onSubmit = jest.fn();
+  test.concurrent('Should call onSubmit', () => {
+    const onSubmit = vi.fn();
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
@@ -27,9 +30,9 @@ describe('FeedbackForm', () => {
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 
-  test('Should not call onSubmit for validation error', () => {
+  test.concurrent('Should not call onSubmit for validation error', () => {
     const required = (value) => (value ? undefined : 'Required');
-    const onSubmit = jest.fn();
+    const onSubmit = vi.fn();
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
@@ -44,7 +47,7 @@ describe('FeedbackForm', () => {
     expect(onSubmit).toHaveBeenCalledTimes(0);
   });
 
-  test('Should correct render form', async () => {
+  test.concurrent('Should correct render form', async ({ task }) => {
     const component = (
       <FeedbackForm>
         <FeedbackForm.Item name="input">{({ input }) => <input {...input} />}</FeedbackForm.Item>
@@ -53,10 +56,10 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render notice', async () => {
+  test.concurrent('Should correct render notice', async ({ task }) => {
     const component = (
       <FeedbackForm>
         <FeedbackForm.Notice>You can also send us an email.</FeedbackForm.Notice>
@@ -64,16 +67,16 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render feedback success', async () => {
+  test.concurrent('Should correct render feedback success', async ({ task }) => {
     const component = <FeedbackForm.Success>Thank you for your feedback!</FeedbackForm.Success>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct render spinner', async () => {
+  test.concurrent('Should correct render spinner', async ({ task }) => {
     const component = (
       <FeedbackForm loading>
         LOADING
@@ -84,10 +87,10 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should correct work props for spinner theme', async () => {
+  test.concurrent('Should correct work props for spinner theme', async ({ task }) => {
     const component = (
       <FeedbackForm loading background="#878dfd85" theme="invert">
         LOADING
@@ -98,7 +101,7 @@ describe('FeedbackForm', () => {
       </FeedbackForm>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -119,7 +122,7 @@ describe('FeedbackForm', () => {
 });
 
 describe('FeedbackForm.Item', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   const Item = React.forwardRef((props, ref) => (
     <FeedbackForm.Item interaction="click" {...props}>

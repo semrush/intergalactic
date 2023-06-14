@@ -1,11 +1,13 @@
 import React from 'react';
-import { snapshot, testing } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 import Icon from '../src';
 
-const { render, cleanup, fireEvent, axe } = testing;
+import { render, cleanup, fireEvent } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Icon', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   test.each(['200', '100%'], 'should support custom width %i', (width) => {
     const { getByTestId } = render(<Icon data-testid="icon" width={width} />);
@@ -53,27 +55,27 @@ describe('Icon', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test('should render with svg element', async () => {
+  test('should render with svg element', async ({ task }) => {
     const component = (
       <Icon width={22} height={22} viewBox="0 0 22 22">
         <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
       </Icon>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('should support custom color', async () => {
+  test.concurrent('should support custom color', async ({ task }) => {
     const component = (
       <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
         <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
       </Icon>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test("shouldn't change size in flex block", async () => {
+  test("shouldn't change size in flex block", async ({ task }) => {
     const component = (
       <div style={{ display: 'flex', width: '100px' }}>
         <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
@@ -83,11 +85,11 @@ describe('Icon', () => {
       </div>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('should support call onClick', async () => {
-    const onClick = jest.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid="icon" interactive aria-label="Test icon" />);
 
     fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
@@ -95,8 +97,8 @@ describe('Icon', () => {
   });
 
   test('should not call onClick with onKeydown', async () => {
-    const onKeyDown = jest.fn();
-    const onClick = jest.fn();
+    const onKeyDown = vi.fn();
+    const onClick = vi.fn();
     const { getByTestId } = render(
       <Icon
         data-testid="icon"

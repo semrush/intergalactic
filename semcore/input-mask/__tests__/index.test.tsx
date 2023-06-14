@@ -1,18 +1,21 @@
 import React from 'react';
 import InputMask from '../src';
 
-import { testing, shared as testsShared, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, fireEvent, render, axe } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import * as sharedTests from '@semcore/testing-utils/shared-tests';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
-const { shouldSupportClassName, shouldSupportRef } = testsShared;
+const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 describe('InputMask', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(InputMask);
   shouldSupportRef(InputMask);
 
-  test('Should correct render', async () => {
+  test.concurrent('Should renders correctly', async ({ task }) => {
     const Component = ({ value = '' }) => (
       <InputMask size="l" mb={4}>
         <InputMask.Value
@@ -27,12 +30,12 @@ describe('InputMask', () => {
     );
 
     const { getByTestId } = render(<Component />);
-    const input = getByTestId('input');
+    const input = getByTestId('input') as HTMLInputElement;
     fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '999' } });
+    fireEvent.change(input, { target: { value: '333' } });
 
-    expect(input.value).toBe('99 9');
-    expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot();
+    expect(input.value).toBe('33 3');
+    await expect(await snapshot(<Component value={input.value} />)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -57,7 +60,7 @@ describe('InputMask', () => {
 });
 
 describe('InputMask.Value', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
   shouldSupportClassName(InputMask.Value, InputMask, {
     title: 'test mask',

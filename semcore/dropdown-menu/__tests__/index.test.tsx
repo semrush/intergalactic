@@ -1,14 +1,16 @@
 import React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
-const { cleanup, axe, render, fireEvent, act } = testing;
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
 
 describe('DropdownMenu', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should correct enter space in input', () => {
-    const spy = jest.fn();
+  test.concurrent('Should correct enter space in input', () => {
+    const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction="focus">
         <DropdownMenu.Trigger tag="input" data-testid="input" />
@@ -22,8 +24,8 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Should correct press Enter in textarea', () => {
-    const spy = jest.fn();
+  test.concurrent('Should correct press Enter in textarea', () => {
+    const spy = vi.fn();
     const { getByTestId } = render(
       <DropdownMenu onVisibleChange={spy} interaction="focus">
         <DropdownMenu.Trigger tag="textarea" data-testid="textarea" />
@@ -36,8 +38,8 @@ describe('DropdownMenu', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  test('Renders correctly', async () => {
-    const Component = (
+  test.concurrent('Renders correctly', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -47,11 +49,11 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Supports sizes', async () => {
-    const Component = (
+  test.concurrent('Supports sizes', async ({ task }) => {
+    const component = (
       <React.Fragment>
         <DropdownMenu size="m">
           <DropdownMenu.List>
@@ -75,26 +77,29 @@ describe('DropdownMenu', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('supports disabled, selected, notInteractive & highlighted props ', async () => {
-    const Component = (
-      <DropdownMenu>
-        <DropdownMenu.List>
-          <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
-          <DropdownMenu.Item>notInteractive</DropdownMenu.Item>
-          <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-          <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
-        </DropdownMenu.List>
-      </DropdownMenu>
-    );
+  test.concurrent(
+    'supports disabled, selected, notInteractive & highlighted props ',
+    async ({ task }) => {
+      const component = (
+        <DropdownMenu>
+          <DropdownMenu.List>
+            <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
+            <DropdownMenu.Item>notInteractive</DropdownMenu.Item>
+            <DropdownMenu.Item selected>selected</DropdownMenu.Item>
+            <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
+          </DropdownMenu.List>
+        </DropdownMenu>
+      );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
-  });
+      await expect(await snapshot(component)).toMatchImageSnapshot(task);
+    },
+  );
 
-  test('supports addons', async () => {
-    const Component = (
+  test.concurrent('supports addons', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>
@@ -106,11 +111,11 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover', async () => {
-    const Component = (
+  test.concurrent('Should support hover', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -120,17 +125,17 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(
-      await snapshot(Component, {
+    await expect(
+      await snapshot(component, {
         actions: {
           hover: '#dd',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support selected hover ', async () => {
-    const Component = (
+  test.concurrent('Should support selected hover ', async ({ task }) => {
+    const component = (
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
@@ -142,17 +147,17 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(
-      await snapshot(Component, {
+    await expect(
+      await snapshot(component, {
         actions: {
           hover: '#dd',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('should have shadow style', async () => {
-    const Component = (
+  test.concurrent('should have shadow style', async ({ task }) => {
+    const component = (
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Menu hMax={'180px'}>
           <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
@@ -169,11 +174,11 @@ describe('DropdownMenu', () => {
       </DropdownMenu>
     );
 
-    expect(await snapshot(Component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>
         <DropdownMenu.Trigger aria-label="dropdown menu trigger">trigger</DropdownMenu.Trigger>
@@ -182,8 +187,10 @@ describe('DropdownMenu', () => {
         </DropdownMenu.Menu>
       </DropdownMenu>,
     );
-    act(() => jest.runAllTimers());
-    jest.useRealTimers();
+    act(() => {
+      vi.runAllTimers();
+    });
+    vi.useRealTimers();
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

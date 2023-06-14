@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { testing, snapshot } from '@semcore/jest-preset-ui';
+import { snapshot } from '@semcore/testing-utils/snapshot';
+import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import Check from '@semcore/icon/Check/m';
 import Question from '@semcore/icon/Question/m';
 import { Blockquote, List, Text, Hint } from '../src';
 
-const { cleanup, render, axe } = testing;
+import { cleanup, render } from '@semcore/testing-utils/testing-library';
+import { axe } from '@semcore/testing-utils/axe';
 
 describe('Text', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should support size', async () => {
+  test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <React.Fragment>
         <Text size={800}>800</Text>
@@ -30,10 +32,10 @@ describe('Text', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support decoration props', async () => {
+  test.concurrent('Should support decoration props', async ({ task }) => {
     const component = (
       <React.Fragment>
         <Text bold>bold</Text>
@@ -48,10 +50,10 @@ describe('Text', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support custom decoration props', async () => {
+  test.concurrent('Should support custom decoration props', async ({ task }) => {
     const component = (
       <React.Fragment>
         <Text fontSize="10px">fontSize=10px</Text>
@@ -69,10 +71,10 @@ describe('Text', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support align', async () => {
+  test.concurrent('Should support align', async ({ task }) => {
     const component = (
       <React.Fragment>
         <div style={{ width: 200 }}>
@@ -91,10 +93,10 @@ describe('Text', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support color', async () => {
+  test.concurrent('Should support color', async ({ task }) => {
     const component = (
       <React.Fragment>
         <Text color="blanchedalmond">blanchedalmond</Text>
@@ -105,10 +107,10 @@ describe('Text', () => {
       </React.Fragment>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support ellipsis`, async () => {
+  test(`Should support ellipsis`, async ({ task }) => {
     const component = (
       <Text inline noWrap w={100}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus eligendi et fugit
@@ -117,16 +119,16 @@ describe('Text', () => {
       </Text>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support high priority for fontSize compare size`, async () => {
+  test(`Should support high priority for fontSize compare size`, async ({ task }) => {
     const component = (
       <Text size={300} fontSize="48px">
         size=300 fontSize=48px
       </Text>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -153,9 +155,9 @@ describe('Text', () => {
 });
 
 describe('List', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Should support nested', async () => {
+  test.concurrent('Should support nested', async ({ task }) => {
     const component = (
       <List size={100}>
         <List.Item>List item</List.Item>
@@ -177,10 +179,10 @@ describe('List', () => {
         </List.Item>
       </List>
     );
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support custom marker`, async () => {
+  test(`Should support custom marker`, async ({ task }) => {
     const component = (
       <List marker={<Check color="green" />}>
         <List.Item>List item</List.Item>
@@ -188,10 +190,10 @@ describe('List', () => {
       </List>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support custom marker for item`, async () => {
+  test(`Should support custom marker for item`, async ({ task }) => {
     const component = (
       <List>
         <List.Item marker="-">List item</List.Item>
@@ -199,7 +201,7 @@ describe('List', () => {
       </List>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -222,18 +224,18 @@ describe('List', () => {
 });
 
 describe('Blockquote', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Blockquote>Blockquote</Blockquote>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support author', async () => {
+  test.concurrent('Should support author', async ({ task }) => {
     const component = <Blockquote author="— Mr. Robot">Blockquote</Blockquote>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -251,15 +253,15 @@ describe('Blockquote', () => {
 });
 
 describe('Hint', () => {
-  afterEach(cleanup);
+  beforeEach(cleanup);
 
-  test('Renders correctly', async () => {
+  test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Hint>Hint</Hint>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with Addon and Text', async () => {
+  test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
     const component = (
       <Hint>
         <Hint.Addon>
@@ -272,57 +274,57 @@ describe('Hint', () => {
       </Hint>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Renders correctly with alternative api Addon and Text', async () => {
+  test.concurrent('Renders correctly with alternative api Addon and Text', async ({ task }) => {
     const component = (
       <Hint addonLeft={Question} addonRight={Question}>
         Test
       </Hint>
     );
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support active', async () => {
+  test.concurrent('Should support active', async ({ task }) => {
     const component = (
       <>
         <Hint active>Hint</Hint> <Hint id="hint">Hint</Hint>
       </>
     );
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           active: '#hint',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support hover', async () => {
+  test.concurrent('Should support hover', async ({ task }) => {
     const component = <Hint id="hint">Hint</Hint>;
 
-    expect(
+    await expect(
       await snapshot(component, {
         actions: {
           hover: '#hint',
         },
       }),
-    ).toMatchImageSnapshot();
+    ).toMatchImageSnapshot(task);
   });
 
-  test('Should support disabled', async () => {
+  test.concurrent('Should support disabled', async ({ task }) => {
     const component = <Hint disabled>Hint</Hint>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test('Should support keyboardFocused', async () => {
+  test.concurrent('Should support keyboardFocused', async ({ task }) => {
     const component = <Hint keyboardFocused>Hint</Hint>;
 
-    expect(await snapshot(component)).toMatchImageSnapshot();
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
