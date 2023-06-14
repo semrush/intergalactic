@@ -1,3 +1,26 @@
+## [14.3.0] - 2023-06-14
+
+### @semcore/base-trigger
+
+- **Fixed** Transferring style for trigger active state from FilterTrigger/LinkTrigger to BaseTrigger.
+- **Changed** Removed unused style in FilterTrigger.
+
+### @semcore/data-table
+
+- **Fixed** Grouped rows aria roles.
+
+### @semcore/scroll-area
+
+- **Fixed** Fixed setting aria attribute on initial render.
+
+### @semcore/select
+
+- **Fixed** Transferring style for trigger active state to `@semcore/base-trigger`.
+
+### @semcore/utils
+
+- **Fixed** AutoFocus in the animated popovers might be causing instant scroll to the page top.
+
 ## [14.2.0] - 2023-06-12
 
 ### Global
