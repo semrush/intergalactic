@@ -60,8 +60,8 @@ class Body extends Component<AsProps, State> {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
         return sstyled(styles)(
-          <SGroupCell key={cellIndex} role="rowgroup" data-ui-name="group-cell">
-            {this.renderRows(cell as NestedCells[])}
+          <SGroupCell key={cellIndex} data-ui-name="group-cell">
+            {this.renderRows(cell as NestedCells[], true)}
           </SGroupCell>,
         );
       } else {
@@ -126,7 +126,7 @@ class Body extends Component<AsProps, State> {
 
   renderRow(
     cells: NestedCells,
-    { dataIndex, topOffset }: { dataIndex: number; topOffset?: number },
+    { dataIndex, topOffset, nested }: { dataIndex: number; topOffset?: number; nested: boolean },
   ) {
     const SRow = Box;
     const { styles, rowPropsLayers, uniqueKey, virtualScroll } = this.asProps;
@@ -144,7 +144,7 @@ class Body extends Component<AsProps, State> {
       top: topOffset,
       ref: needToMeasureHeight ? this.firstRowRef : undefined,
       key,
-      'aria-rowindex': dataIndex + 2,
+      'aria-rowindex': !nested ? dataIndex + 2 : undefined,
     };
 
     for (const rowPropsLayer of rowPropsLayers) {
@@ -153,11 +153,13 @@ class Body extends Component<AsProps, State> {
       props = assignProps(childrenPropsGetter(propsRow, rowData, dataIndex), propsRow);
     }
 
-    return sstyled(styles)(<SRow role="row" {...props} />);
+    return sstyled(styles)(
+      <SRow data-nested={nested.toString()} role={!nested ? 'row' : undefined} {...props} />,
+    );
   }
 
-  renderRows(rows: NestedCells[]) {
-    return rows.map((cells, dataIndex) => this.renderRow(cells, { dataIndex }));
+  renderRows(rows: NestedCells[], nested = false) {
+    return rows.map((cells, dataIndex) => this.renderRow(cells, { dataIndex, nested }));
   }
 
   renderVirtualizedRows(rows: NestedCells[]) {
@@ -189,7 +191,7 @@ class Body extends Component<AsProps, State> {
     }
 
     return processedVisibleRows.map(({ cells, dataIndex, topOffset }) =>
-      this.renderRow(cells, { dataIndex, topOffset }),
+      this.renderRow(cells, { dataIndex, topOffset, nested: false }),
     );
   }
 
