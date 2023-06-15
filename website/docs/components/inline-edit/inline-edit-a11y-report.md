@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v14.1.1, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v14.3.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/inline-edit/examples/simple-text.tsx).**
@@ -30,8 +30,8 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 22. Screen reader presses the "Backspace" button.
 23. Screen reader says "r".
 24. Screen reader presses the "Backspace" button.
-25. Screen reader presses the "Backspace" button.
-26. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+25. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+26. Screen reader presses the "Backspace" button.
 27. Screen reader presses the "Backspace" button.
 28. Screen reader types "Algernon".
 29. Screen reader says "Algernon".
