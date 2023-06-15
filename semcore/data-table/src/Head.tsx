@@ -159,7 +159,7 @@ class Head extends Component<AsProps> {
     );
 
     return sstyled(styles)(
-      <SHeadWrapper sticky={sticky} role="rowgroup">
+      <SHeadWrapper sticky={sticky}>
         <ScrollArea
           styles={scrollStyles}
           use:left={`${offsetLeftSum}px`}
@@ -167,7 +167,7 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role="rowgroup">
             <SHead render={Box} role="row" aria-rowindex="1">
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>

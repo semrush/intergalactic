@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.13] - 2023-06-15
+
+### Fixed
+
+- In some cases ScrollAria might break the page rendering.
+
 ## [4.3.12] - 2023-06-14
 
 ### Changed
