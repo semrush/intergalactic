@@ -9,9 +9,10 @@ import style from './style/scroll-bar.shadow.css';
 export const DEFAULT_SLIDER_SIZE = 50;
 
 // updating DOM directly to avoid react dom rerendering and reconciliation
-function setAreaValue($container, $horizontalBar, $verticalBar) {
+const setAriaValues = ($container, $horizontalBar, $verticalBar) => {
   if (!$container || !($horizontalBar || $verticalBar)) return;
-  const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } = $container;
+  const { scrollWidth, clientWidth, scrollHeight, clientHeight, scrollLeft, scrollTop } =
+    $container;
   const maxScrollRight = scrollWidth - clientWidth;
   const maxScrollBottom = scrollHeight - clientHeight;
   if ($horizontalBar) {
@@ -22,7 +23,7 @@ function setAreaValue($container, $horizontalBar, $verticalBar) {
     $verticalBar.setAttribute('aria-valuenow', Math.floor(scrollTop));
     $verticalBar.setAttribute('aria-valuemax', maxScrollBottom);
   }
-}
+};
 
 class ScrollBarRoot extends Component {
   static displayName = 'Bar';
@@ -63,7 +64,7 @@ class ScrollBarRoot extends Component {
     if (orientation === 'horizontal' && horizontalBarRef) horizontalBarRef.current = domNode;
     if (orientation === 'vertical' && verticalBarRef) verticalBarRef.current = domNode;
 
-    setAreaValue(this.$container, horizontalBarRef.current, verticalBarRef.current);
+    setAriaValues(this.$container, horizontalBarRef?.current, verticalBarRef?.current);
   };
 
   refSlider = (node) => (this.$slider = findDOMNode(node));
@@ -286,7 +287,7 @@ class ScrollBarRoot extends Component {
     return sstyled(styles)(
       <SScrollBar
         render={Box}
-        role='scrollbar'
+        role="scrollbar"
         ref={this.refBar}
         aria-valuemin={0}
         aria-controls={`igc-${uid}-scroll-container`}
@@ -309,5 +310,5 @@ const ScrollBar = createComponent(ScrollBarRoot, {
   Slider,
 });
 
-export { setAreaValue };
+export { setAriaValues as setAreaValue };
 export default ScrollBar;

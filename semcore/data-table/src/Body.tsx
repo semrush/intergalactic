@@ -277,8 +277,8 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll}>
-            <SBody render={Box} role="rowgroup">
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role="rowgroup">
+            <SBody render={Box}>
               {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
               {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}

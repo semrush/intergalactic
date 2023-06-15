@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.0] - 2023-06-15
+
+### Changed
+
+- Moved `role="rowgroup"` on focusable scroll areas to match automatic a11y checks.
+
 ## [3.9.7] - 2023-06-14
 
 ### Fixed
