@@ -314,6 +314,9 @@ jobs:
           version: 7
           run_install: false
       - uses: actions/setup-node@v2
+      - name: Pnpm version
+        run: |
+          pnpm -v
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
