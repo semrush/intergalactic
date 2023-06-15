@@ -191,7 +191,7 @@ jobs:
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-2
       - name: Install restored dependencies
         run: |
-          pnpm install --frozen-lockfile
+          pnpm install
       - name: Github GPG Auth
         uses: crazy-max/ghaction-import-gpg@v4.4.0
         with:
