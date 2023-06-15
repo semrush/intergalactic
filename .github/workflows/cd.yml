@@ -48,9 +48,9 @@ jobs:
             semcore/illustration/**/*.mjs
             semcore/illustration/**/*.d.ts
           key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-2
-      - name: Install libpng
+      - name: Install pngquant
         run: |
-          sudo apt-get install -y libpng-dev
+          sudo apt-get install -y pngquant
       - name: Install dependencies
         run: |
           pnpm install --frozen-lockfile --ignore-scripts
