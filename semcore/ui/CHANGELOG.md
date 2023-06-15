@@ -1,3 +1,13 @@
+## [14.4.0] - 2023-06-15
+
+### @semcore/data-table
+
+- **Changed** Moved `role="rowgroup"` on focusable scroll areas to match automatic a11y checks.
+
+### @semcore/scroll-area
+
+- **Fixed** In some cases ScrollAria might break the page rendering.
+
 ## [14.3.0] - 2023-06-14
 
 ### @semcore/base-trigger
