@@ -67,12 +67,12 @@ If needed, you can utilize a number as a placeholder within this type of input.
 
 @table-caption InputNumbers states
 
-| State      | L (40px)                                     | M (28px)                                     | Styles                                                             |
-| ---------- | -------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------ |
-| Default    | ![](static/l-placeholder.png)   | ![](static/m-placeholder.png)   |                                                                    |
-| Hover      | ![](static/l-hover.png)           | ![](static/m-hover.png)           |                                                                    |
-| Focus      | ![](static/l-focus.png)           | ![](static/m-focus.png)           | Icon use `--icon-secondary-neutral` token for color.               |
-| Stepper hover | ![](static/l-icon-hover.png) | ![](static/m-icon-hover.png) | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
+| State         | L (40px)                      | M (28px)                      | Styles                                                             |
+| ------------- | ----------------------------- | ----------------------------- | ------------------------------------------------------------------ |
+| Default       | ![](static/l-placeholder.png) | ![](static/m-placeholder.png) |                                                                    |
+| Hover         | ![](static/l-hover.png)       | ![](static/m-hover.png)       |                                                                    |
+| Focus         | ![](static/l-focus.png)       | ![](static/m-focus.png)       | Icon use `--icon-secondary-neutral` token for color.               |
+| Stepper hover | ![](static/l-icon-hover.png)  | ![](static/m-icon-hover.png)  | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
 
 @## Validation
 
@@ -93,8 +93,8 @@ To input a range of numbers, you can use two InputNumbers grouped together.
 
 @table-caption InputRange states
 
-| Size (height in px) | Default      | Focus               |
-| ------------------- | ------------ | ------------------- |
+| Size (height in px) | Default                         | Focus                   |
+| ------------------- | ------------------------------- | ----------------------- |
 | M (28px)            | ![](static/m-range-default.png) | ![](static/m-range.png) |
 | L (40px)            | ![](static/l-range-default.png) | ![](static/l-range.png) |
 
@@ -106,11 +106,11 @@ If the user enters a value in the right input that is less than the value in the
 
 | The right value is less than the left value | After submitting, inputs will switch their values |
 | ------------------------------------------- | ------------------------------------------------- |
-| ![](static/range-1.png)          | ![](static/range-2.png)                |
+| ![](static/range-1.png)                     | ![](static/range-2.png)                           |
 
 @## Appearance customization
 
-In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code//#appearance_customization).
+In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code/#appearance_customization).
 
 ![](static/alternative.png)
 
