@@ -161,9 +161,12 @@ jobs:
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
         with:
-          version: 7.0.0
+          version: 7
+          run_install: false
       - uses: actions/setup-node@v2
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -218,9 +221,12 @@ jobs:
       SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
         with:
-          version: 7.0.0
+          version: 7
+          run_install: false
       - uses: actions/setup-node@v2
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -301,9 +307,12 @@ jobs:
     needs: vo-filter
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.0.1
+        name: Install pnpm
+        id: pnpm-install
         with:
-          version: 7.0.0
+          version: 7
+          run_install: false
       - uses: actions/setup-node@v2
       - name: Get pnpm store directory
         id: pnpm-cache
