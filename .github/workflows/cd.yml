@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -26,16 +26,14 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Cache build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         id: cache-build
         with:
           path: |
@@ -60,12 +58,12 @@ jobs:
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -74,16 +72,14 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Restore cached build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         id: cache-build
         with:
           path: |
@@ -101,17 +97,24 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Lint
         run: pnpm lint
+      - name: Lint
+        run: pnpm lint
+      - name: Setting success output
+        id: final
+        run: echo "success=true" >> $GITHUB_OUTPUT
+    outputs:
+      success: ${{ steps.final.outputs.success }}
   test:
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -120,16 +123,14 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Restore cached build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         with:
           path: |
             semcore/*/lib
@@ -149,38 +150,41 @@ jobs:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: pnpm coverage
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3.1.4
+      - name: Setting success output
+        id: final
+        run: echo "success=true" >> $GITHUB_OUTPUT
+    outputs:
+      success: ${{ steps.final.outputs.success }}
   publish-components:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && jobs.lint.outputs.status == 'success' && jobs.test.outputs.status == 'success' && jobs.browser-test.outputs.status == 'success' && (jobs.vo-test.outputs.status == 'success' || !needs.vo-filter.outputs.run_vo)
-    needs: [lint, test, browser-test, vo-test]
+    needs: [lint, test, browser-test, vo-test, vo-filter]
+    if: always() && github.ref == 'refs/heads/master' && needs.lint.outputs.success == 'true' && needs.test.outputs.success == 'true' && needs.browser-test.outputs.success == 'true' && (needs.vo-test.outputs.success == 'true' || needs.vo-filter.outputs.run_vo == 'false')
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
       SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: actions/checkout@v3.5.3
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
           version: 7
           run_install: false
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3.6.0
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Restore pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Restore cached build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         with:
           path: |
             semcore/*/lib
@@ -196,7 +200,7 @@ jobs:
         run: |
           pnpm install
       - name: Github GPG Auth
-        uses: crazy-max/ghaction-import-gpg@v4.4.0
+        uses: crazy-max/ghaction-import-gpg@v5.3.0
         with:
           gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
           git_user_signingkey: true
@@ -220,20 +224,20 @@ jobs:
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
       SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: actions/checkout@v3.5.3
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
           version: 7
           run_install: false
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3.6.0
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
       - name: Github GPG Auth
-        uses: crazy-max/ghaction-import-gpg@v4.4.0
+        uses: crazy-max/ghaction-import-gpg@v5.3.0
         with:
           gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
           git_user_signingkey: true
@@ -248,16 +252,15 @@ jobs:
   vo-filter:
     runs-on: ubuntu-latest
     needs: build
-    outputs:
-      run_vo: ${{ steps.set_output.outputs.run_vo }}
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.3
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.6.0
         with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2.0.1
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
         with:
@@ -266,16 +269,14 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Setup pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Restore cached build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         with:
           path: |
             semcore/*/lib
@@ -294,36 +295,36 @@ jobs:
         run: |
           pnpm tsm ./.ci/vo-tests-hash.ts
       - name: Diff git and set output
-        id: set_output
+        id: final
         run: |
           if [[ $(git --no-pager diff .ci/.vo-test-hash.txt) ]]; then
-            echo "::set-output name=run_vo::true"
+            echo "run_vo=true" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=run_vo::false"
+            echo "run_vo=false" >> $GITHUB_OUTPUT
           fi
+    outputs:
+      run_vo: ${{ steps.final.outputs.run_vo }}
   vo-test:
-    runs-on: macos-11
+    runs-on: macos-12
     needs: vo-filter
     if: needs.vo-filter.outputs.run_vo == 'true'
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: actions/checkout@v3.5.3
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Restore pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Restore cached build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         with:
           path: |
             semcore/*/lib
@@ -341,18 +342,18 @@ jobs:
       - name: Install Browser
         run: npx playwright install webkit
       - name: Enable VoiceOver Automation
-        uses: guidepup/setup-action@0.4.0
+        uses: guidepup/setup-action@0.11.2
       - name: Update VO tests hashes
         run: |
           pnpm tsm ./.ci/vo-tests-hash.ts
       - name: Voice Over testing
-        uses: nick-fields/retry@v2
+        uses: nick-fields/retry@v2.8.3
         with:
           timeout_minutes: 40
           max_attempts: 3
           command: pnpm run vo-test
       - name: Github GPG Auth
-        uses: crazy-max/ghaction-import-gpg@v4.4.0
+        uses: crazy-max/ghaction-import-gpg@v5.3.0
         with:
           gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
           git_user_signingkey: true
@@ -361,28 +362,31 @@ jobs:
           git_committer_email: semrush-ci-whale@users.noreply.github.com
       - name: Push changed a11y reports
         run: git add . && git commit -m "[chore] a11y automatic check fixation" && git push || echo "nothing to commit"
+      - name: Setting success output
+        id: final
+        run: echo "success=true" >> $GITHUB_OUTPUT
+    outputs:
+      success: ${{ steps.final.outputs.success }}
   browser-test:
-    runs-on: macos-11
+    runs-on: macos-12
     needs: build
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: actions/checkout@v3.5.3
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-      - uses: actions/cache@v3
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
         name: Restore pnpm cache
         with:
           path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
       - name: Restore cached build
-        uses: actions/cache@v2
+        uses: actions/cache@v3.3.1
         with:
           path: |
             semcore/*/lib
@@ -402,3 +406,8 @@ jobs:
       - name: Browser testing
         run: |
           pnpm run browser-test
+      - name: Setting success output
+        id: final
+        run: echo "success=true" >> $GITHUB_OUTPUT
+    outputs:
+      success: ${{ steps.final.outputs.success }}
