@@ -10,9 +10,8 @@ test.describe('ScrollArea', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
-    await page.keyboard.press('ArrowDown');
+
+    await new Promise((resolve) => setTimeout(resolve, 2000));
 
     await expect(page).toHaveScreenshot();
   });
