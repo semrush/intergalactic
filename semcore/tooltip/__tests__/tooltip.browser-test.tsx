@@ -3,10 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Tooltip', () => {
   test('Opens on mouse hover', async ({ page }) => {
-    const standPath = resolvePath(
-      __dirname,
-      '../../../website/docs/components/tooltip/examples/tooltip.tsx',
-    );
+    const standPath = 'website/docs/components/tooltip/examples/tooltip.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -25,10 +22,7 @@ test.describe('Tooltip', () => {
   });
 
   test('Opens on keyboard focus', async ({ page }) => {
-    const standPath = resolvePath(
-      __dirname,
-      '../../../website/docs/components/tooltip/examples/tooltip.tsx',
-    );
+    const standPath = 'website/docs/components/tooltip/examples/tooltip.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
