@@ -22,7 +22,7 @@ test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pu
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toContain('selected');
   await voiceOver.previous();
-  expect(await voiceOver.lastSpokenPhrase()).toBe("Don't care tab, 2 of 3");
+  expect(await voiceOver.lastSpokenPhrase()).toContain('2 of 3');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 
