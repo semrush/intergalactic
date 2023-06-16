@@ -152,7 +152,7 @@ jobs:
         uses: codecov/codecov-action@v2
   publish-components:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' && steps.lint.conclusion == 'success' && steps.test.conclusion == 'success' && steps.browser-test.conclusion == 'success' && (steps.vo-test.conclusion == 'success' || !needs.vo-filter.outputs.run_vo)
+    if: github.ref == 'refs/heads/master' && jobs.lint.outputs.status == 'success' && jobs.test.outputs.status == 'success' && jobs.browser-test.outputs.status == 'success' && (jobs.vo-test.outputs.status == 'success' || !needs.vo-filter.outputs.run_vo)
     needs: [lint, test, browser-test, vo-test]
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
