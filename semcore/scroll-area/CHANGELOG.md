@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.0] - 2023-06-15
+
+### Changed
+
+- Added `tabIndex` by default even if ScrollArea is used without explicit `ScrollArea.Container`.
+
 ## [4.3.13] - 2023-06-15
 
 ### Fixed

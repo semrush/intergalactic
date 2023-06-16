@@ -33,6 +33,7 @@ class ScrollAreaRoot extends Component {
   static defaultProps = () => ({
     container: React.createRef(),
     inner: React.createRef(),
+    tabIndex: 0,
   });
 
   $wrapper = null;
@@ -100,7 +101,7 @@ class ScrollAreaRoot extends Component {
   });
 
   updateBarsAria = trottle(() => {
-    setAreaValue(this.$container, this.horizontalBarRef.current, this.verticalBarRef.current)
+    setAreaValue(this.$container, this.horizontalBarRef.current, this.verticalBarRef.current);
   });
 
   handleScrollContainer = trottle(() => {
@@ -201,7 +202,12 @@ class ScrollAreaRoot extends Component {
     ]);
 
     return sstyled(styles)(
-      <SScrollArea render={Box} ref={this.refWrapper} onScroll={this.handleScroll}>
+      <SScrollArea
+        render={Box}
+        ref={this.refWrapper}
+        onScroll={this.handleScroll}
+        __excludeProps={['tabIndex']}
+      >
         {shadowVertical && <SShadowVertical position={shadowVertical} />}
         {shadowHorizontal && <SShadowHorizontal position={shadowHorizontal} />}
         {advanceMode ? (
@@ -212,10 +218,10 @@ class ScrollAreaRoot extends Component {
               <Children />
             </ScrollArea.Container>
             {(orientation === undefined || orientation === 'horizontal') && (
-              <ScrollArea.Bar orientation='horizontal' />
+              <ScrollArea.Bar orientation="horizontal" />
             )}
             {(orientation === undefined || orientation === 'vertical') && (
-              <ScrollArea.Bar orientation='vertical' />
+              <ScrollArea.Bar orientation="vertical" />
             )}
           </>
         )}

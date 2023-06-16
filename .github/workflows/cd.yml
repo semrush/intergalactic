@@ -398,8 +398,6 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Install Browser
         run: npx playwright install
-      - name: Voice Over testing
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 10
-          command: pnpm run browser-test
+      - name: Browser testing
+        run: |
+          pnpm run browser-test
