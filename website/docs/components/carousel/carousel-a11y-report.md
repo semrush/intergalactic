@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v14.3.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v14.4.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Big Sur 11._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/carousel/examples/dots.tsx).**
