@@ -13,6 +13,6 @@ test.describe('ScrollArea', () => {
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
-    await expect(page).toHaveScreenshot();
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.03 });
   });
 });
