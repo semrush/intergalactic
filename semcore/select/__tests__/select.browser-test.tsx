@@ -3,10 +3,7 @@ import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('Select', () => {
   test('Traps focus', async ({ page }) => {
-    const standPath = resolvePath(
-      __dirname,
-      '../../../website/docs/components/select/examples/filtering.tsx',
-    );
+    const standPath = 'website/docs/components/select/examples/filtering.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
@@ -19,10 +16,7 @@ test.describe('Select', () => {
     await expect(page).toHaveScreenshot();
   });
   test('Returns focus', async ({ page }) => {
-    const standPath = resolvePath(
-      __dirname,
-      '../../../website/docs/components/select/examples/filtering.tsx',
-    );
+    const standPath = 'website/docs/components/select/examples/filtering.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
     await page.setContent(htmlContent);
