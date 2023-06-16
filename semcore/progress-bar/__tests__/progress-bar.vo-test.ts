@@ -1,13 +1,9 @@
 import { expect } from '@semcore/testing-utils/playwright';
 import { voTest as test } from '@guidepup/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { resolve as resolvePath } from 'path';
 
 test('Users can interact with ProgressBar via VoiceOver', async ({ page, voiceOver }) => {
-  const standPath = resolvePath(
-    __dirname,
-    '../../../website/docs/components/progress-bar/examples/progress-bar.tsx',
-  );
+  const standPath = 'website/docs/components/progress-bar/examples/progress-bar.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);
