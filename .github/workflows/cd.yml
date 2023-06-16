@@ -152,8 +152,8 @@ jobs:
         uses: codecov/codecov-action@v2
   publish-components:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: [lint, test]
+    if: github.ref == 'refs/heads/master' && steps.lint.conclusion == 'success' && steps.test.conclusion == 'success' && steps.browser-test.conclusion == 'success' && (steps.vo-test.conclusion == 'success' || !needs.vo-filter.outputs.run_vo)
+    needs: [lint, test, browser-test, vo-test]
     env:
       GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
@@ -304,6 +304,7 @@ jobs:
   vo-test:
     runs-on: macos-11
     needs: vo-filter
+    if: needs.vo-filter.outputs.run_vo == 'true'
     steps:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2.1.0
