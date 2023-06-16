@@ -1,16 +1,12 @@
 import { expect } from '@semcore/testing-utils/playwright';
 import { voTest as test } from '@guidepup/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { resolve as resolvePath } from 'path';
 
 test('Users can interact with DataTable virtual scroll via VoiceOver', async ({
   page,
   voiceOver,
 }) => {
-  const standPath = resolvePath(
-    __dirname,
-    '../../../website/docs/table-group/data-table/examples/virtual-scroll.tsx',
-  );
+  const standPath = 'website/docs/table-group/data-table/examples/virtual-scroll.tsx';
   const htmlContent = await e2eStandToHtml(standPath, 'en');
 
   await page.setContent(htmlContent);

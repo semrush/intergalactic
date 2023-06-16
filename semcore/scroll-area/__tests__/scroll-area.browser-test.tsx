@@ -1,6 +1,5 @@
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { resolve as resolvePath } from 'path';
 
 test.describe('ScrollArea', () => {
   test('Scrolls with keyboard', async ({ page }) => {
