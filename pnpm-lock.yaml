@@ -3215,9 +3215,6 @@ importers:
       esbuild:
         specifier: 0.14.29
         version: 0.14.29
-      esbuild-wasm:
-        specifier: 0.14.29
-        version: 0.14.29
       vitest-axe:
         specifier: 0.1.0
         version: 0.1.0
@@ -9636,12 +9633,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /esbuild-wasm@0.14.29:
-    resolution: {integrity: sha512-Iad4YKwBpjj/gQVryxpMJ+4b/uCbe7ClNkpCY1kX8L9KZtCnd9f5rpJs8Gcau7Fxy+/ksKTcNOYiO0b2aiPpow==}
-    engines: {node: '>=12'}
-    hasBin: true
-    dev: true
 
   /esbuild-windows-32@0.14.29:
     resolution: {integrity: sha512-uoyb0YAJ6uWH4PYuYjfGNjvgLlb5t6b3zIaGmpWPOjgpr1Nb3SJtQiK4YCPGhONgfg2v6DcJgSbOteuKXhwqAw==}
