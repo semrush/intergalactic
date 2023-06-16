@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+import { expect } from '@semcore/testing-utils/playwright';
 import { voTest as test } from '@guidepup/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 import { resolve as resolvePath } from 'path';
