@@ -62,6 +62,18 @@ type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
 };
 
+const pointInsideOfRect = ({
+  x,
+  y,
+  rect,
+}: {
+  x: number;
+  y: number;
+  rect: { x: number; y: number; width: number; height: number };
+}) => {
+  return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
+};
+
 class InlineInputBase extends Component<RootAsProps> {
   static displayName = 'InlineInput';
 
@@ -84,8 +96,8 @@ class InlineInputBase extends Component<RootAsProps> {
   lastMouseDownPosition: { x: number; y: number } | null = null;
   lastHandledKeyboardEvent: number = -1;
 
-  handleDocumentMouseDown = (event: { pageX: number; pageY: number }) => {
-    this.lastMouseDownPosition = { x: event.pageX, y: event.pageY };
+  handleDocumentMouseDown = (event: { clientX: number; clientY: number }) => {
+    this.lastMouseDownPosition = { x: event.clientX, y: event.clientY };
     this.lastHandledKeyboardEvent = -1;
   };
   handleDocumentKeyDown = () => {
@@ -172,7 +184,8 @@ class InlineInputBase extends Component<RootAsProps> {
     if (this.lastMouseDownPosition && this.rootRef.current) {
       const { x, y } = this.lastMouseDownPosition;
       const rect = this.rootRef.current.getBoundingClientRect();
-      if (rect.left < x && rect.right > x && rect.top < y && rect.bottom > y) {
+
+      if (pointInsideOfRect({ x, y, rect })) {
         return;
       }
     }

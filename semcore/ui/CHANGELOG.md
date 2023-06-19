@@ -1,3 +1,13 @@
+## [14.5.0] - 2023-06-19
+
+### @semcore/inline-input
+
+- **Fixed** `onBlurBehavior` specified callback was unexpectedly being called when page had non-zero scroll.
+
+### @semcore/scroll-area
+
+- **Changed** Added `tabIndex` by default even if ScrollArea is used without explicit `ScrollArea.Container`.
+
 ## [14.4.0] - 2023-06-15
 
 ### @semcore/data-table
@@ -46,6 +56,10 @@
 - **Added** Swedish (`sv`) locale support.
 
 ### @semcore/color-picker
+
+- **Added** Swedish (`sv`) locale support.
+
+### @semcore/time-picker
 
 - **Added** Swedish (`sv`) locale support.
 
