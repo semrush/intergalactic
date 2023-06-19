@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.2] - 2023-06-19
+
+### Fixed
+
+- `onBlurBehavior` specified callback was unexpectedly being called when page had non-zero scroll.
+
 ## [3.7.1] - 2023-06-14
 
 ### Changed
