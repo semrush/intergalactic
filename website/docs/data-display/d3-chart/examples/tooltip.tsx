@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Line, XAxis, YAxis, HoverLine, Tooltip, minMax } from '@semcore/ui/d3-chart';
+import { Plot, Line, XAxis, YAxis, HoverLine, minMax } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import { scaleLinear, scaleTime } from 'd3-scale';
@@ -37,31 +37,31 @@ export default () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Tooltip tag={HoverLine} x="time" wMin={100}>
+      <Line x="time" y="line">
+        <Line.Dots display />
+      </Line>
+      <HoverLine.Tooltip x="time" wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>
+                <HoverLine.Tooltip.Title>
                   {formatDate(data[xIndex].time, {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                   })}
-                </Tooltip.Title>
+                </HoverLine.Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4}>Line</Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].line}</Text>
                 </Flex>
-                <Tooltip.Footer>New data start tracking!</Tooltip.Footer>
+                <HoverLine.Tooltip.Footer>New data start tracking!</HoverLine.Tooltip.Footer>
               </>
             ),
           };
         }}
-      </Tooltip>
-      <Line x="time" y="line">
-        <Line.Dots display />
-      </Line>
+      </HoverLine.Tooltip>
     </Plot>
   );
 };

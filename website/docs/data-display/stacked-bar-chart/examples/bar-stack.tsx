@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, HoverRect, Tooltip, colors } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -28,20 +28,24 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Tooltip tag={HoverRect} x="category" wMin={100}>
+      <StackBar x="category">
+        <StackBar.Bar y="stack1" />
+        <StackBar.Bar y="stack2" color={colors['blue-02']} />
+      </StackBar>
+      <HoverRect.Tooltip x="category" wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
+                <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Stack 1</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['blue-02']}>
+                  <HoverRect.Tooltip.Dot mr={4} color={colors['blue-02']}>
                     Stack 2
-                  </Tooltip.Dot>
+                  </HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
@@ -52,11 +56,7 @@ export default () => {
             ),
           };
         }}
-      </Tooltip>
-      <StackBar x="category">
-        <StackBar.Bar y="stack1" />
-        <StackBar.Bar y="stack2" color={colors['blue-02']} />
-      </StackBar>
+      </HoverRect.Tooltip>
     </Plot>
   );
 };

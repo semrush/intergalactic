@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, ScatterPlot, XAxis, YAxis, minMax, Tooltip } from '@semcore/ui/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/ui/typography';
 
@@ -27,19 +27,19 @@ export default () => {
       </XAxis>
       <ScatterPlot x="x" y="y1" color="#2BB3FF" />
       <ScatterPlot x="x" y="y2" color="#59DDAA" />
-      <Tooltip>
-        {({ xIndex, x, y, color }) => {
+      <ScatterPlot.Tooltip>
+        {({ index, x, y, color }) => {
           return {
             children: (
               <>
-                <Tooltip.Dot color={color}>Data</Tooltip.Dot>
-                <Text tag="div">X axis {data[xIndex][x]}</Text>
-                <Text tag="div">Y axis {data[xIndex][y]}</Text>
+                <ScatterPlot.Tooltip.Dot color={color}>Data</ScatterPlot.Tooltip.Dot>
+                <Text tag="div">X axis {data[index][x]}</Text>
+                <Text tag="div">Y axis {data[index][y]}</Text>
               </>
             ),
           };
         }}
-      </Tooltip>
+      </ScatterPlot.Tooltip>
     </Plot>
   );
 };

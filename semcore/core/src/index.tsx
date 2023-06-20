@@ -361,6 +361,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     hoistPropsEnhancement(childComponents, context),
   ]);
   Component[CONTEXT_COMPONENT] = context;
+  Component._______childrenComponents = childComponents;
   Component[CREATE_COMPONENT] = function (
     _OriginComponent = OriginComponent,
     _childComponents = childComponents,

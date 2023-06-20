@@ -6,6 +6,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT } from './utils';
 import ClipPath from './ClipPath';
+import Tooltip from './Tooltip';
 
 import style from './style/scatterplot.shadow.css';
 
@@ -64,8 +65,8 @@ class ScatterPlotRoot extends Component {
       <g
         aria-hidden
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i })}
+        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i, index: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i, index: i })}
       >
         <SScatterPlot
           aria-hidden
@@ -124,6 +125,6 @@ class ScatterPlotRoot extends Component {
   }
 }
 
-const ScatterPlot = createElement(ScatterPlotRoot);
+const ScatterPlot = createElement(ScatterPlotRoot, { Tooltip });
 
 export default ScatterPlot;

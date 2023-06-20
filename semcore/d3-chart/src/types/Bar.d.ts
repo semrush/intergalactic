@@ -3,9 +3,9 @@ import { MapProps } from './Plot';
 import IContext from './context';
 
 export interface IBarProps extends IContext {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/

@@ -5,9 +5,9 @@ import { IBarContext, IBarProps } from './Bar';
 import { IHorizontalBarProps } from './HorizontalBar';
 
 export interface IStackBarProps extends IContext {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Stack generators
    * @default d3.stack() */

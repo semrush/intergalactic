@@ -8,19 +8,28 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT } from './utils';
+import Tooltip from './Tooltip';
 
 import style from './style/donut.shadow.css';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 
-function transitionAnglePie({ selector, duration, halfsize, d3Arc, d3ArcOut, arcs, activeIndexPie }) {
+function transitionAnglePie({
+  selector,
+  duration,
+  halfsize,
+  d3Arc,
+  d3ArcOut,
+  arcs,
+  activeIndexPie,
+}) {
   return transition()
     .selection()
     .selectAll(selector)
     .interrupt()
     .transition()
     .duration(duration)
-    .attrTween('d', function(_, ind) {
+    .attrTween('d', function (_, ind) {
       if (!arcs[ind]) return () => '';
       const d = Object.assign({}, arcs[ind]);
       const self = this;
@@ -33,7 +42,7 @@ function transitionAnglePie({ selector, duration, halfsize, d3Arc, d3ArcOut, arc
       }
       const iStartAngle = interpolate(prevStartAngle, d.startAngle);
       const iEndAngle = interpolate(prevEndAngle, d.endAngle);
-      return function(t) {
+      return function (t) {
         d.startAngle = iStartAngle(t);
         d.endAngle = iEndAngle(t);
         self.arc = d;
@@ -49,10 +58,10 @@ function transitionRadiusPie({ data, selector, duration, innerRadius, outerRadiu
     .interrupt()
     .transition()
     .duration(duration)
-    .attrTween('d', function() {
+    .attrTween('d', function () {
       const [min, max] = outerRadiusMinMax;
       const iOuterRadius = interpolate(min, max);
-      return function(t) {
+      return function (t) {
         const d3ArcOut = arc().innerRadius(innerRadius).outerRadius(iOuterRadius(t));
         return d3ArcOut(data);
       };
@@ -73,11 +82,11 @@ class DonutRoot extends Component {
   static enhance = [uniqueIDEnhancement()];
 
   static defaultProps = ({
-                           innerRadius = 0,
-                           outerRadius,
-                           halfsize = false,
-                           $rootProps: { size },
-                         }) => {
+    innerRadius = 0,
+    outerRadius,
+    halfsize = false,
+    $rootProps: { size },
+  }) => {
     const d3Arc = arc()
       .outerRadius(getOuterRadius({ size, halfsize, outerRadius }))
       .innerRadius(innerRadius);
@@ -95,7 +104,10 @@ class DonutRoot extends Component {
       d3Pie = d3Pie.startAngle(-Math.PI / 2).endAngle(Math.PI / 2);
     }
     return {
-      d3Pie, d3Arc, d3ArcOut, duration: 500,
+      d3Pie,
+      d3Arc,
+      d3ArcOut,
+      duration: 500,
     };
   };
 
@@ -127,10 +139,11 @@ class DonutRoot extends Component {
         .filter(([key]) => keys.includes(key))
         .sort(([a], [b]) => (keys.indexOf(a) > keys.indexOf(b) ? 1 : -1));
     }
-    const minValue = pieData.reduce((acc, cur) => {
-      if (cur[1]) acc += cur[1];
-      return acc;
-    }, 0) / 100;
+    const minValue =
+      pieData.reduce((acc, cur) => {
+        if (cur[1]) acc += cur[1];
+        return acc;
+      }, 0) / 100;
     pieData = pieData.map((d) => {
       if (d[1] && d[1] < minValue) d[1] = minValue;
       return d;
@@ -138,12 +151,14 @@ class DonutRoot extends Component {
     return d3Pie(pieData);
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
-    const { eventEmitter } = this.asProps;
-    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
-  };
+  bindHandlerTooltip =
+    (visible, props) =>
+    ({ clientX: x, clientY: y }) => {
+      const { eventEmitter } = this.asProps;
+      this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
+      this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+      eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    };
 
   animationActivePie = ({ data, active, selector }) => {
     const { duration, innerRadius, outerRadius: _outerRadius, size, halfsize } = this.asProps;
@@ -156,7 +171,9 @@ class DonutRoot extends Component {
           selector: `#${this.id} ${selector}`,
           duration: duration === 0 ? 0 : 300,
           innerRadius,
-          outerRadiusMinMax: active ? [outerRadius, outerRadius + increaseFactor] : [outerRadius + increaseFactor, outerRadius],
+          outerRadiusMinMax: active
+            ? [outerRadius, outerRadius + increaseFactor]
+            : [outerRadius + increaseFactor, outerRadius],
         });
       }
     }
@@ -200,14 +217,18 @@ class DonutRoot extends Component {
       onMouseOver: (e) => {
         if (!active) {
           this.animationActivePie({
-            active: true, data, selector: `[d="${e.target.getAttribute('d')}"]`,
+            active: true,
+            data,
+            selector: `[d="${e.target.getAttribute('d')}"]`,
           });
         }
       },
       onMouseOut: (e) => {
         if (!active) {
           this.animationActivePie({
-            active: false, data, selector: `[d="${e.target.getAttribute('d')}"]`,
+            active: false,
+            data,
+            selector: `[d="${e.target.getAttribute('d')}"]`,
           });
         }
       },
@@ -239,13 +260,15 @@ class DonutRoot extends Component {
     const Element = this.Element;
     const k = halfsize ? 1 : 2;
     this.arcs = this.getArcs();
-    return (<Element
-      aria-hidden
-      id={this.id}
-      render='g'
-      childrenPosition='inside'
-      transform={`translate(${width / 2},${height / k})`}
-    />);
+    return (
+      <Element
+        aria-hidden
+        id={this.id}
+        render="g"
+        childrenPosition="inside"
+        transform={`translate(${width / 2},${height / k})`}
+      />
+    );
   }
 }
 
@@ -280,27 +303,32 @@ function Pie({
   dataHintsHandler.establishDataType('values-set');
   dataHintsHandler.describeValueEntity(dataKey, name);
 
-  return sstyled(styles)(<SPie
-    render='path'
-    color={color}
-    d={active ? d3ArcOut(data) : d3Arc(data)}
-    transparent={transparent}
-  />);
+  return sstyled(styles)(
+    <SPie
+      render="path"
+      color={color}
+      d={active ? d3ArcOut(data) : d3Arc(data)}
+      transparent={transparent}
+    />,
+  );
 }
 
 function EmptyData({ Element: SEmptyData, styles, d3Arc, color }) {
-  return sstyled(styles)(<SEmptyData render='path' color={color}
-                                     d={d3Arc({ endAngle: Math.PI * 2, startAngle: 0 })} />);
+  return sstyled(styles)(
+    <SEmptyData render="path" color={color} d={d3Arc({ endAngle: Math.PI * 2, startAngle: 0 })} />,
+  );
 }
 
 function Label({ Element: SLabel, styles, Children, children, label, dataHintsHandler }) {
   dataHintsHandler.setTitle('vertical', label || children);
 
-  return sstyled(styles)(<SLabel render='text' x='0' y='0' aria-hidden>
-    <Children />
-  </SLabel>);
+  return sstyled(styles)(
+    <SLabel render="text" x="0" y="0" aria-hidden>
+      <Children />
+    </SLabel>,
+  );
 }
 
-const Donut = createElement(DonutRoot, { Pie, Label, EmptyData });
+const Donut = createElement(DonutRoot, { Pie, Label, EmptyData, Tooltip });
 
 export default Donut;

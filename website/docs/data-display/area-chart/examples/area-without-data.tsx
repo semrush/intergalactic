@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, XAxis, YAxis, minMax, HoverLine, Tooltip, Area } from '@semcore/ui/d3-chart';
+import { Plot, XAxis, YAxis, minMax, HoverLine, Area } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -26,25 +26,25 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Tooltip tag={HoverLine} x="x" wMin={100}>
+      <Area x="x" y="y">
+        <Area.Null />
+        <Area.Dots />
+      </Area>
+      <HoverLine.Tooltip x="x" wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>{data[xIndex].x}</Tooltip.Title>
+                <HoverLine.Tooltip.Title>{data[xIndex].x}</HoverLine.Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4}>Line</Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Line</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].y ?? 'n/a'}</Text>
                 </Flex>
               </>
             ),
           };
         }}
-      </Tooltip>
-      <Area x="x" y="y">
-        <Area.Null />
-        <Area.Dots />
-      </Area>
+      </HoverLine.Tooltip>
     </Plot>
   );
 };

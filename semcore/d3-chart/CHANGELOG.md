@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.18.1] - 2023-06-20
+
+### Changed
+
+- Deprecated `import { Tooltip } from '@semcore/ui/d3-chart` in favor of better typed Tooltips.
+- On type level made `name` property of `Donut.Pie` obligatory.
+- On type level made `name` property of `Venn.Circle` obligatory.
+
+### Added
+
+- Typed `HoverLine.Tooltip`, `HoverRect.Tooltip`, `Radar.Tooltip`, `Bubble.Tooltip`, `Donut.Tooltip`, `ScatterPlot.Tooltip` and `Venn.Tooltip`.
+
 ## [2.17.1] - 2023-06-14
 
 ### Changed

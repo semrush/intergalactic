@@ -7,6 +7,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
 import { CONSTANT, measureText } from './utils';
+import Tooltip from './Tooltip';
 
 import style from './style/bubble.shadow.css';
 
@@ -103,8 +104,8 @@ class BubbleRoot extends Component {
     return sstyled(styles)(
       <g
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i })}
+        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i, index: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i, index: i })}
       >
         {markedCross && (
           <SCenter
@@ -178,6 +179,6 @@ class BubbleRoot extends Component {
   }
 }
 
-const Bubble = createElement(BubbleRoot);
+const Bubble = createElement(BubbleRoot, { Tooltip });
 
 export default Bubble;

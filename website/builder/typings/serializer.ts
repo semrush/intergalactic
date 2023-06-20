@@ -202,6 +202,9 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
         }
 
         break;
+      case ts.SyntaxKind.FirstNode:
+        const { left, right } = node as ts.QualifiedName;
+        return [traverse(left), '.', traverse(right)];
     }
 
     // eslint-disable-next-line no-console

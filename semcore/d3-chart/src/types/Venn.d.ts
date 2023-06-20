@@ -2,6 +2,7 @@ import { ReturnEl } from '@semcore/core';
 import { MapProps } from './Plot';
 import IContext from './context';
 import { IFadeInOutProps } from '@semcore/animation';
+import { TooltipType } from './Tooltip';
 
 export interface IVennProps extends IContext, IFadeInOutProps {
   /**
@@ -21,6 +22,10 @@ export interface ICircleProps extends IContext {
    * Name of the field in the data
    * */
   dataKey: string;
+  /**
+   * Human readable name of the circle
+   * */
+  name: string;
   /** Color circle
    @default #3AB011
    **/
@@ -36,7 +41,7 @@ export interface ICircleProps extends IContext {
 export interface IIntersectionProps extends IContext, IFadeInOutProps {
   /**
    * Name of the field in the data
-   * */
+   */
   dataKey: string;
   /** Enables element transparency */
   transparent?: boolean;
@@ -45,6 +50,7 @@ export interface IIntersectionProps extends IContext, IFadeInOutProps {
 declare const Venn: (<T>(props: MapProps<IVennProps & T>) => ReturnEl) & {
   Circle: <T>(props: MapProps<ICircleProps & T>) => ReturnEl;
   Intersection: <T>(props: MapProps<IIntersectionProps & T>) => ReturnEl;
+  Tooltip: TooltipType<ICircleProps>;
 };
 
 export default Venn;

@@ -2,6 +2,7 @@ import IContext from './context';
 import { MapProps } from './Plot';
 import { ReturnEl } from '@semcore/core';
 import { CurveFactory } from 'd3-shape';
+import { TooltipType } from './Tooltip';
 
 export interface IRadarProps extends IContext {
   /**
@@ -101,6 +102,12 @@ declare const Radar: (<T>(props: MapProps<IRadarProps & T>) => ReturnEl) & {
     Dots: <T>(props: MapProps<IRadialPolygonDotsProps & T>) => ReturnEl;
   };
   Hover: <T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl;
+  Tooltip: TooltipType<
+    IRadarHoverProps & {
+      /** Index in `data` array of the current items */
+      index: number;
+    }
+  >;
 };
 
 export default Radar;

@@ -5,9 +5,9 @@ import { CurveFactory } from 'd3-shape';
 import { IFadeInOutProps } from '@semcore/animation';
 
 export interface ILineProps extends IContext {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/

@@ -1,13 +1,14 @@
 import { ReturnEl } from '@semcore/core';
 import { MapProps } from './Plot';
 import IContext from './context';
+import { TooltipType } from './Tooltip';
 
 export interface IScatterPlotProps extends IContext {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y: string;
-  /** Field from data for circle value */
+  /** Field name from `data` array item for the circle value */
   value?: string;
   /** Circle color */
   color?: string;
@@ -25,6 +26,19 @@ export interface IScatterPlotProps extends IContext {
   transparent?: boolean;
 }
 
-declare const ScatterPlot: <T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl;
+declare const ScatterPlot: (<T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl) & {
+  Tooltip: TooltipType<
+    IScatterPlotProps & {
+      /**
+       * @deprecated Use `index` instead.
+       */
+      xIndex: number;
+      /**
+       * Index of item in the `data` array used to render related circle.
+       */
+      index: number;
+    }
+  >;
+};
 
 export default ScatterPlot;

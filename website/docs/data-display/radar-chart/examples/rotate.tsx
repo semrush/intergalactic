@@ -2,7 +2,6 @@ import React from 'react';
 import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
-import { Tooltip } from '@semcore/d3-chart';
 import Slider from '@semcore/slider';
 
 const scale = scaleLinear().domain([0, 10]);
@@ -32,19 +31,6 @@ export default () => {
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
-          <Tooltip tag={Radar.Hover} wMin={100}>
-            {({ index }) => {
-              return {
-                children: (
-                  <>
-                    <Tooltip.Title>{data.categories[index]}</Tooltip.Title>
-                    <Tooltip.Dot color={colors['orange-04']}>{data['data_1'][index]}</Tooltip.Dot>
-                    <Tooltip.Dot color={colors['violet-04']}>{data['data_2'][index]}</Tooltip.Dot>
-                  </>
-                ),
-              };
-            }}
-          </Tooltip>
           <Radar.Polygon dataKey="data_1" color={colors['orange-04']} curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
@@ -53,6 +39,23 @@ export default () => {
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>
+          <Radar.Tooltip wMin={100}>
+            {({ index }) => {
+              return {
+                children: (
+                  <>
+                    <Radar.Tooltip.Title>{data.categories[index]}</Radar.Tooltip.Title>
+                    <Radar.Tooltip.Dot color={colors['orange-04']}>
+                      {data['data_1'][index]}
+                    </Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot color={colors['violet-04']}>
+                      {data['data_2'][index]}
+                    </Radar.Tooltip.Dot>
+                  </>
+                ),
+              };
+            }}
+          </Radar.Tooltip>
         </Radar>
       </Plot>
     </div>

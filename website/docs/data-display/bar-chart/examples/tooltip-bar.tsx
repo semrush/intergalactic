@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Bar, YAxis, XAxis, HoverRect, Tooltip } from '@semcore/ui/d3-chart';
+import { Plot, Bar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -28,22 +28,22 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Tooltip tag={HoverRect} x="category" wMin={100}>
+      <Bar x="category" y="bar" />
+      <HoverRect.Tooltip x="category" wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
+                <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4}>Bar</Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Bar</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar}</Text>
                 </Flex>
               </>
             ),
           };
         }}
-      </Tooltip>
-      <Bar x="category" y="bar" />
+      </HoverRect.Tooltip>
     </Plot>
   );
 };

@@ -1,15 +1,16 @@
 import { ReturnEl } from '@semcore/core';
 import { MapProps } from './Plot';
 import IContext from './context';
+import { TooltipType } from './Tooltip';
 
 export interface IBubbleProps extends IContext {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y: string;
-  /** Field from data for circle radius */
+  /** Field name from `data` array item for the circle radius */
   value: string;
-  /** Field from data for circle label */
+  /** Field name from `data` array item for the circle label */
   label?: string;
   /** Circle color */
   color?: string;
@@ -30,6 +31,19 @@ export interface IBubbleContext {
   index: number;
 }
 
-declare const Bubble: <T>(props: MapProps<IBubbleProps & T, IBubbleContext>) => ReturnEl;
+declare const Bubble: (<T>(props: MapProps<IBubbleProps & T, IBubbleContext>) => ReturnEl) & {
+  Tooltip: TooltipType<
+    IBubbleProps & {
+      /**
+       * @deprecated Use `index` instead.
+       */
+      xIndex: number;
+      /**
+       * Index of item in the `data` array used to render related bubble.
+       */
+      index: number;
+    }
+  >;
+};
 
 export default Bubble;

@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  Plot,
-  XAxis,
-  YAxis,
-  minMax,
-  colors,
-  StackedArea,
-  HoverLine,
-  Tooltip,
-} from '@semcore/ui/d3-chart';
+import { Plot, XAxis, YAxis, minMax, colors, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Flex, Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -47,32 +38,43 @@ export default () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Tooltip tag={HoverLine} x="time" wMin={100}>
+      <StackedArea x="time">
+        <StackedArea.Area y="stack1" curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA" curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+        <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D" curve={curveCardinal}>
+          <StackedArea.Area.Dots />
+        </StackedArea.Area>
+      </StackedArea>
+      <HoverLine.Tooltip x="time" wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>
+                <HoverLine.Tooltip.Title>
                   {formatDate(data[xIndex].time, {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
                   })}
-                </Tooltip.Title>
+                </HoverLine.Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Stack 1</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['green-02']}>
+                  <HoverLine.Tooltip.Dot mr={4} color={colors['green-02']}>
                     Stack 2
-                  </Tooltip.Dot>
+                  </HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['orange-04']}>
+                  <HoverLine.Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Stack 3
-                  </Tooltip.Dot>
+                  </HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent="space-between">
@@ -85,18 +87,7 @@ export default () => {
             ),
           };
         }}
-      </Tooltip>
-      <StackedArea x="time">
-        <StackedArea.Area y="stack1" curve={curveCardinal}>
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-        <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA" curve={curveCardinal}>
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-        <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D" curve={curveCardinal}>
-          <StackedArea.Area.Dots />
-        </StackedArea.Area>
-      </StackedArea>
+      </HoverLine.Tooltip>
     </Plot>
   );
 };

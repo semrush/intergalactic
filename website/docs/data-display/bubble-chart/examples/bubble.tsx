@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Bubble, XAxis, YAxis, Tooltip } from '@semcore/ui/d3-chart';
+import { Plot, Bubble, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/ui/typography';
 
@@ -26,20 +26,20 @@ export default () => {
         <XAxis.Ticks />
       </XAxis>
       <Bubble x="x" y="y" value="value" />
-      <Tooltip>
-        {({ xIndex }) => {
+      <Bubble.Tooltip>
+        {({ index }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>Data</Tooltip.Title>
-                <Text tag="div">X axis {data[xIndex].x}</Text>
-                <Text tag="div">Y axis {data[xIndex].y}</Text>
-                <Text tag="div">Value {data[xIndex].value}</Text>
+                <Bubble.Tooltip.Title>Data</Bubble.Tooltip.Title>
+                <Text tag="div">X axis {data[index].x}</Text>
+                <Text tag="div">Y axis {data[index].y}</Text>
+                <Text tag="div">Value {data[index].value}</Text>
               </>
             ),
           };
         }}
-      </Tooltip>
+      </Bubble.Tooltip>
     </Plot>
   );
 };

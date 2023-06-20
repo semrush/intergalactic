@@ -1,5 +1,5 @@
 import React from 'react';
-import { Donut, Plot, Tooltip, colors } from '@semcore/ui/d3-chart';
+import { Donut, Plot, colors } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
@@ -12,12 +12,12 @@ export default () => {
         <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
         <Donut.Label>Example</Donut.Label>
       </Donut>
-      <Tooltip>
+      <Donut.Tooltip>
         {({ dataKey, name }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>{name}</Tooltip.Title>
+                <Donut.Tooltip.Title>{name}</Donut.Tooltip.Title>
                 <Flex justifyContent="space-between">
                   <Text bold>{data[dataKey]}</Text>
                 </Flex>
@@ -25,7 +25,7 @@ export default () => {
             ),
           };
         }}
-      </Tooltip>
+      </Donut.Tooltip>
     </Plot>
   );
 };

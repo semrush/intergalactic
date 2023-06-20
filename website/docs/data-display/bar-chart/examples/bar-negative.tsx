@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Bar, YAxis, XAxis, HoverRect, Tooltip, colors } from '@semcore/ui/d3-chart';
+import { Plot, Bar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -28,32 +28,32 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Tooltip tag={HoverRect} x="category" wMin={100}>
+      <Bar x="category" y="bar1" color={colors['green-02']} />
+      <Bar x="category" y="bar2" color={colors['orange-04']} />
+      <XAxis position={0} />
+      <HoverRect.Tooltip x="category" wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
+                <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent="space-between">
-                  <Tooltip.Dot mr={4} color={colors['green-02']}>
+                  <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
                     Positive
-                  </Tooltip.Dot>
+                  </HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar1}</Text>
                 </Flex>
                 <Flex justifyContent="space-between" mt={2}>
-                  <Tooltip.Dot mr={4} color={colors['orange-04']}>
+                  <HoverRect.Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Negative
-                  </Tooltip.Dot>
+                  </HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar2}</Text>
                 </Flex>
               </>
             ),
           };
         }}
-      </Tooltip>
-      <Bar x="category" y="bar1" color={colors['green-02']} />
-      <Bar x="category" y="bar2" color={colors['orange-04']} />
-      <XAxis position={0} />
+      </HoverRect.Tooltip>
     </Plot>
   );
 };

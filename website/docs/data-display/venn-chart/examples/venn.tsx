@@ -1,6 +1,17 @@
 import React from 'react';
-import { Plot, Venn, Tooltip, colors } from '@semcore/ui/d3-chart';
+import { Plot, Venn, colors } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
+
+const data = {
+  G: 200,
+  F: 200,
+  C: 500,
+  U: 1,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};
 
 export default () => {
   return (
@@ -15,29 +26,18 @@ export default () => {
         <Venn.Intersection dataKey="F/C" name="Fast & Cheap" />
         <Venn.Intersection dataKey="G/F/C" name="Good & Fast & Cheap" />
       </Venn>
-      <Tooltip>
+      <Venn.Tooltip>
         {({ name, dataKey }) => {
           return {
             children: (
               <>
-                <Tooltip.Title>{name}</Tooltip.Title>
+                <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
                 <Text bold>{data[dataKey]}</Text>
               </>
             ),
           };
         }}
-      </Tooltip>
+      </Venn.Tooltip>
     </Plot>
   );
-};
-
-const data = {
-  G: 200,
-  F: 200,
-  C: 500,
-  U: 1,
-  'G/F': 100,
-  'G/C': 100,
-  'F/C': 100,
-  'G/F/C': 100,
 };
