@@ -1,8 +1,15 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 
-import createComponent, { Component, sstyled, Root, CProps, PropGetterFn } from '@semcore/core';
-import Input, { IInputProps, IInputValueProps } from '@semcore/input';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  PropGetterFn,
+  UnknownProperties,
+  Intergalactic,
+} from '@semcore/core';
+import Input, { InputProps, IInputProps, InputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -16,11 +23,15 @@ import style from './style/input-mask.shadow.css';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
-export interface InputMaskAliases {
+/** @deprecated */
+export interface InputMaskAliases extends nputMaskAliases, UnknownProperties {}
+export type nputMaskAliases = {
   [s: string]: RegExp;
-}
+};
 
-export interface IInputMaskValueProps extends IInputValueProps {
+/** @deprecated */
+export interface IInputMaskValueProps extends InputMaskValueProps, UnknownProperties {}
+export type InputMaskValueProps = InputValueProps & {
   /**
    * Mask for entering text
    */
@@ -55,12 +66,12 @@ export interface IInputMaskValueProps extends IInputValueProps {
    * A field that explains the mask for blind users
    * */
   title?: string;
-}
+};
 
-interface IInputMaskCtx {
+type InputMaskCtx = {
   getInputProps: PropGetterFn;
   getValueProps: PropGetterFn;
-}
+};
 
 export function getAfterPositionValue(
   value: string,
@@ -309,7 +320,7 @@ class Value extends Component<IInputMaskValueProps> {
                 <SMask
                   tag='span'
                   aria-hidden='true'
-                  neighborLocation={neighborLocation}
+                  data-neighborLocation={neighborLocation}
                   ref={this.maskRef}
                 >
                   {this.state.lastConformed && (
@@ -347,7 +358,7 @@ class Value extends Component<IInputMaskValueProps> {
 export default createComponent(InputMask, {
   Value,
   Addon: Input.Addon,
-}) as (<T>(props: CProps<IInputProps & T, IInputMaskCtx>) => React.ReactElement) & {
-  Value: <T>(props: IInputMaskValueProps & T) => React.ReactElement;
-  Addon: ComponentProps<typeof Input.Addon>;
+}) as any as Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
+  Value: Intergalactic.Component<'div', InputMaskValueProps>;
+  Addon: typeof Input.Addon;
 };

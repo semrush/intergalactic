@@ -50,7 +50,7 @@ class Demo extends React.PureComponent {
     MAP_NAVIGATION[step] && this.setState({ stepNavigation: step });
   };
 
-  handleItemClick = (value) => (e) => {
+  handleItemClick = (value) => () => {
     this.setState({ stepNavigation: value });
   };
 

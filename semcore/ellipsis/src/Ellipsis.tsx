@@ -1,7 +1,7 @@
 import React, { RefObject, useRef, useMemo, useState } from 'react';
-import createComponent, { Component, sstyled } from '@semcore/core';
-import Tooltip from '@semcore/tooltip';
-import { Box } from '@semcore/flex-box';
+import createComponent, { Component, Intergalactic, sstyled } from '@semcore/core';
+import Tooltip, { TooltipProps } from '@semcore/tooltip';
+import { Box, BoxProps } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
@@ -28,8 +28,40 @@ type AsPropsMiddle = {
   containerRect?: { width: number };
 
   containerRef?: RefObject<HTMLElement | null>;
-  tooltipProps: { [propName: string]: unknown };
+  tooltipProps: TooltipProps;
 };
+
+export type EllipsisProps = BoxProps &
+  Partial<TooltipProps> & {
+    /**
+     * Rows count in multiline Ellipsis
+     * @default 1
+     */
+    maxLine?: number;
+    /**
+     * Trimming type
+     * @default end
+     */
+    trim?: 'end' | 'middle';
+    /**
+     * Show tooltip
+     * @default true
+     */
+    tooltip?: boolean;
+    /**
+     * Ref to the item that will be observed by ResizeObserver
+     */
+    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+    containerRef?: RefObject<HTMLElement | null>;
+    /**
+     * Explicit sizes of container text should be trimmed in
+     **/
+    containerRect?: { width: number };
+    /** List of props that will be passed to tooltip
+     * @default ['title', 'theme', 'strategy', 'modifiers', 'placement', 'interaction', 'timeout', 'visible', 'defaultVisible', 'onVisibleChange', 'offset', 'preventOverflow', 'arrow', 'flip', 'computeStyles', 'eventListeners', 'onFirstUpdate']
+     */
+    includeTooltipProps?: string[];
+  };
 
 const defaultTooltipProps = [
   'title',
@@ -129,8 +161,7 @@ class RootEllipsis extends Component<AsProps> {
     } = this.asProps;
     const { visible } = this.state;
     const text = reactToText(getOriginChildren(Children));
-    const tooltipProps = pick(this.asProps, includeTooltipProps);
-
+    const tooltipProps = pick(this.asProps, includeTooltipProps) as TooltipProps;
     if (trim === 'middle') {
       return sstyled(styles)(
         <EllipsisMiddle
@@ -147,7 +178,7 @@ class RootEllipsis extends Component<AsProps> {
       return sstyled(styles)(
         <SContainer
           interaction='hover'
-          title={text}
+          title={text as any}
           visible={visible}
           onVisibleChange={this.handlerVisibleChange}
           {...tooltipProps}
@@ -206,7 +237,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     return sstyled(styles)(
       <SContainerMiddle
         interaction={text.length > displayedSymbols ? 'hover' : 'none'}
-        title={text}
+        title={text as any}
         ref={containerRef ?? resizeElement}
         tag={Tooltip}
         {...tooltipProps}
@@ -225,6 +256,9 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   }
 };
 
-const Ellipsis = createComponent(RootEllipsis);
+const Ellipsis = createComponent(RootEllipsis) as any as Intergalactic.Component<
+  'div',
+  EllipsisProps
+>;
 
 export default Ellipsis;

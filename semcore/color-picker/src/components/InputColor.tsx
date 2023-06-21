@@ -103,7 +103,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
 
     return sstyled(styles)(
       <SPaletteManager>
-        <SItemColor value={valueColor} />
+        <SItemColor data-value={valueColor} />
         <SInputContainer>
           <span aria-hidden='true'>#</span>
           <SInput>

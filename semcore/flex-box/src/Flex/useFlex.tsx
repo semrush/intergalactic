@@ -3,12 +3,12 @@ import React, { useMemo } from 'react';
 import cn from 'classnames';
 import { Property, Properties } from 'csstype';
 import { sstyled } from '@semcore/core';
-import useBox, { IBoxProps, removeUndefinedKeys } from '../Box/useBox';
+import useBox, { BoxProps, removeUndefinedKeys } from '../Box/useBox';
 
 import style from '../style/use-flex.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
 
-export interface IFlexProps extends IBoxProps {
+export type FlexProps = BoxProps & {
   /**
    * It manages the `inline-flex` property
    */
@@ -55,7 +55,9 @@ export interface IFlexProps extends IBoxProps {
    * @default 4
    */
   scaleIndent?: number;
-}
+};
+
+export interface IFlexProps extends FlexProps {}
 
 function calculateFlexStyles(props) {
   const DirectionReverse = {
@@ -76,7 +78,7 @@ function calculateFlexStyles(props) {
   });
 }
 
-export default function useFlex<T extends IFlexProps>(
+export default function useFlex<T extends FlexProps>(
   props: T,
   ref,
 ): [React.ElementType | string, any] {

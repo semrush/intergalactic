@@ -13,8 +13,8 @@ SMask {
   white-space: nowrap;
   color: var(--intergalactic-text-primary, #191b23);
 }
-SMask[neighborLocation='left'],
-SMask[neighborLocation='both'] {
+SMask[data-neighborLocation='left'],
+SMask[data-neighborLocation='both'] {
   left: 0;
 }
 

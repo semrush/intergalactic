@@ -42,7 +42,7 @@ const TooltipContent = `This chart allows you to monitor traffic that comes to t
 let date = Date.now();
 
 const data = Array(6)
-  .fill()
+  .fill(0)
   .map(() => {
     const newDate = date;
     date -= 1000 * 60 * 60 * 24 * 31;

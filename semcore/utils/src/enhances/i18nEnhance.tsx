@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
+import { UnknownProperties } from '@semcore/core';
 
 const interpolationRegex = /{(.*?)}/g;
 
@@ -32,7 +33,9 @@ export function interpolate(template: string, variables: {} = {}) {
   });
 }
 
-export interface IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IWithI18nEnhanceProps extends WithI18nEnhanceProps, UnknownProperties {}
+export type WithI18nEnhanceProps = {
   /* Function for getting the required field from the translation dictionary */
   getI18nText?: (key?: string, variables?: {}) => any;
   /* Object with translations */
@@ -43,7 +46,7 @@ export interface IWithI18nEnhanceProps {
   };
   /* Locale for translations */
   locale?: LocaleKeys;
-}
+};
 
 type Messages = { [messageId: string]: string };
 type MessagesContainer = { [locale: string]: Messages | (() => Promise<Messages>) };

@@ -1,10 +1,11 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 import { CurveFactory } from 'd3-shape';
-import { IFadeInOutProps } from '@semcore/animation';
+import { FadeInOutProps } from '@semcore/animation';
 
-export interface ILineProps extends IContext {
+/** @deprecated */
+export interface ILineProps extends LineProps, UnknownProperties {}
+export type LineProps = Context & {
   /** Field from data for XAxis */
   x?: string;
   /** Field from data for YAxis */
@@ -22,32 +23,39 @@ export interface ILineProps extends IContext {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface ILineDotsProps extends IContext, IFadeInOutProps {
-  /** Show all Dot */
-  display?: boolean;
-  /** Hide property */
-  hide?: boolean;
-  /** Index active of element */
-  activeIndex?: number;
-}
+/** @deprecated */
+export interface ILineDotsProps extends LineDotsProps, UnknownProperties {}
+export type LineDotsProps = Context &
+  FadeInOutProps & {
+    /** Show all Dot */
+    display?: boolean;
+    /** Hide property */
+    hide?: boolean;
+    /** Index active of element */
+    activeIndex?: number;
+  };
 
-export interface ILineDotsContext {
+/** @deprecated */
+export interface ILineDotsContext extends LineDotsContext, UnknownProperties {}
+export type LineDotsContext = {
   /** Value element of data */
   value?: any;
   /** Index element of data */
   index?: number;
-}
+};
 
-export interface ILineNullProps extends IContext {
+/** @deprecated */
+export interface ILineNullProps extends LineNullProps, UnknownProperties {}
+export type LineNullProps = Context & {
   /** Hide property */
   hide?: boolean;
-}
+};
 
-declare const Line: (<T>(props: MapProps<ILineProps & T>) => ReturnEl) & {
-  Dots: <T>(props: MapProps<ILineDotsProps & T, ILineDotsContext>) => ReturnEl;
-  Null: <T>(props: MapProps<ILineNullProps & T>) => ReturnEl;
+declare const Line: Intergalactic.Component<'line', LineProps, Context> & {
+  Dots: Intergalactic.Component<'circle', LineDotsProps, LineDotsContext>;
+  Null: Intergalactic.Component<'path', LineNullProps, LineNullContext>;
 };
 
 export default Line;

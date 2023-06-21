@@ -1,8 +1,9 @@
 import React from 'react';
-import { MapProps } from './Plot';
-import { ReturnEl } from '@semcore/core';
+import { Intergalactic } from '@semcore/core';
 
-export interface IClipPath {
+/** @deprecated */
+export interface IClipPath extends ClipPath, UnknownProperties {}
+export type ClipPath = {
   /**
    *  HTML tag name for the displayed item
    * @default rect
@@ -20,8 +21,8 @@ export interface IClipPath {
    *  Function which run after mounted clipPath
    */
   setAttributeTag?: (rect: React.ReactNode) => void;
-}
+};
 
-declare const ClipPath: <T>(props: MapProps<IClipPath & T>) => ReturnEl;
+declare const ClipPath: Intergalactic.Component<'clipPath', ClipPath>;
 
 export default ClipPath;

@@ -51,7 +51,7 @@ export function Item(props: ItemAsProps) {
           />
         </SLine>
       )}
-      {displayLabel && <SLabel value={value || '#6C6E79'}>A</SLabel>}
+      {displayLabel && <SLabel data-value={value || '#6C6E79'}>A</SLabel>}
       <Children />
       {editable && (
         <SCloseIcon onClick={onRemove}>

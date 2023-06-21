@@ -1,8 +1,9 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 
-export interface IDonutProps extends IContext {
+/** @deprecated */
+export interface IDonutProps extends DonutProps, UnknownProperties {}
+export type DonutProps = Context & {
   /** Inner radius
    * @default 0
    * */
@@ -17,9 +18,11 @@ export interface IDonutProps extends IContext {
    * @default 500
    */
   duration?: number;
-}
+};
 
-export interface IPieProps extends IContext {
+/** @deprecated */
+export interface IPieProps extends PieProps, UnknownProperties {}
+export type PieProps = Context & {
   /**
    * Name of the field in the data
    * */
@@ -34,16 +37,20 @@ export interface IPieProps extends IContext {
   active?: boolean;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IEmptyDataProps extends IContext {}
+/** @deprecated */
+export interface IEmptyDataProps extends EmptyDataProps, UnknownProperties {}
+export type EmptyDataProps = Context & {};
 
-export interface ILabelProps extends IContext {}
+/** @deprecated */
+export interface ILabelProps extends LabelProps, UnknownProperties {}
+export type LabelProps = Context & {};
 
-declare const Donut: (<T>(props: MapProps<IDonutProps & T>) => ReturnEl) & {
-  Pie: <T>(props: MapProps<IPieProps & T>) => ReturnEl;
-  EmptyData: <T>(props: MapProps<IEmptyDataProps & T>) => ReturnEl;
-  Label: <T>(props: MapProps<ILabelProps & T>) => ReturnEl;
+declare const Donut: Intergalactic.Component<'g', DonutProps> & {
+  Pie: Intergalactic.Component<'path', PieProps>;
+  EmptyData: Intergalactic.Component<'path', IEmptyDataProps>;
+  Label: Intergalactic.Component<'text', LabelProps>;
 };
 
 export default Donut;

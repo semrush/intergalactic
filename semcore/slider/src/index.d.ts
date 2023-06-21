@@ -1,6 +1,6 @@
 import React from 'react';
-import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
-import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
 
 interface ISliderContext {
   getOptionsProps: PropGetterFn;
@@ -14,7 +14,12 @@ export type SliderOption<OptionValue extends string | number> = {
   value: OptionValue;
   label: React.ReactNode;
 };
-export interface ISliderProps<Value extends string | number = string | number> extends IBoxProps {
+
+/** @deprecated */
+export interface ISliderProps<Value extends string | number = string | number>
+  extends SliderProps<Value>,
+    UnknownProperties {}
+export type SliderProps<Value extends string | number = string | number> = BoxProps & {
   /** Numeric value
    */
   value?: Value;
@@ -44,16 +49,16 @@ export interface ISliderProps<Value extends string | number = string | number> e
   disabled?: boolean;
 
   options?: SliderOption<Value>[];
-}
+};
 
-interface ISliderOptionsProps extends IFlexProps {}
-interface ISliderItemProps extends IBoxProps {}
+type SliderOptionsProps = FlexProps;
+type SliderItemProps = BoxProps;
 
-declare const Slider: (<T>(props: CProps<ISliderProps & T>) => ReturnEl) & {
+declare const Slider: Intergalactic.Component<'div', SliderProps> & {
   Knob: typeof Box;
   Bar: typeof Box;
-  Options: <T>(props: CProps<ISliderOptionsProps & T, ISliderContext, ISliderHandlers>) => ReturnEl;
-  Item: <T>(props: CProps<ISliderItemProps & T, ISliderContext, ISliderHandlers>) => ReturnEl;
+  Options: Intergalactic.Component<'div', SliderOptionsProps, SliderContext, SliderHandlers>;
+  Item: Intergalactic.Component<'div', SliderItemProps, SliderContext, SliderHandlers>;
 };
 
 export default Slider;

@@ -1,7 +1,10 @@
 import React from 'react';
 import assignProps from '../assignProps';
+import { UnknownProperties } from '@semcore/core';
 
-export interface IKeyboardFocusProps {
+/** @deprecated */
+export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}
+export type KeyboardFocusProps = {
   /* Property responsible for displaying "keyboard" focus */
   keyboardFocused?: boolean;
   /**
@@ -9,7 +12,7 @@ export interface IKeyboardFocusProps {
    * @default false
    */
   autoFocus?: boolean;
-}
+};
 
 const focusSourceListeners = [];
 export const useFocusSource = () => {

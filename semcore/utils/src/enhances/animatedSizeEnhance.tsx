@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-export interface IWithAnimatedSizeEnhanceProps {
+/** @deprecated */
+export interface IWithAnimatedSizeEnhanceProps
+  extends WithAnimatedSizeEnhanceProps,
+    UnknownProperties {}
+export type WithAnimatedSizeEnhanceProps = {
   animationsDisabled?: boolean;
-}
+};
 
 let uniqueId = 0;
 

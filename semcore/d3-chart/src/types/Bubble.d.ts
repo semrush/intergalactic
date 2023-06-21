@@ -1,8 +1,9 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 
-export interface IBubbleProps extends IContext {
+/** @deprecated */
+export interface IBubbleProps extends BubbleProps, UnknownProperties {}
+export type BubbleProps = Context & {
   /** Field from data for XAxis */
   x: string;
   /** Field from data for YAxis */
@@ -23,13 +24,15 @@ export interface IBubbleProps extends IContext {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IBubbleContext {
+/** @deprecated */
+export interface IBubbleContext extends BubbleContext, UnknownProperties {}
+export type BubbleContext = {
   /** Index element of data */
   index: number;
-}
+};
 
-declare const Bubble: <T>(props: MapProps<IBubbleProps & T, IBubbleContext>) => ReturnEl;
+declare const Bubble: Intergalactic.Component<string, BubbleProps, BubbleContext>;
 
 export default Bubble;

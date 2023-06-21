@@ -1,32 +1,39 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 
-export interface IReferenceLineProps extends IContext {
+/** @deprecated **/
+export interface IReferenceLineProps extends ReferenceLineProps, UnknownProperties {}
+export type ReferenceLineProps = Context & {
   /** The position of the title relative reference line
    * @default 'left' */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value: any;
-}
+};
 
-export interface IReferenceLineTitleProps extends IContext {
+/** @deprecated **/
+export interface IReferenceLineTitleProps extends ReferenceLineTitleProps, UnknownProperties {}
+export type ReferenceLineTitleProps = Context & {
   /** The position of the axis relative reference line */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value: any;
-}
+};
 
-export interface IReferenceLineBackgroundProps extends IContext {
+/** @deprecated **/
+export interface IReferenceLineBackgroundProps
+  extends ReferenceLineBackgroundProps,
+    UnknownProperties {}
+export type ReferenceLineBackgroundProps = Context & {
   /** The position of the axis relative reference line */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Value element of data */
   value: any;
-}
+};
 
-declare const ReferenceLine: (<T>(props: MapProps<IReferenceLineProps & T>) => ReturnEl) & {
-  Title: <T>(props: MapProps<IReferenceLineTitleProps & T>) => ReturnEl;
-  Background: <T>(props: MapProps<IReferenceLineBackgroundProps & T>) => ReturnEl;
+declare const ReferenceLine: Intergalactic.Component<'line', ReferenceLineProps, Context> & {
+  Title: Intergalactic.Component<'text', ReferenceLineTitleProps, Context>;
+  Background: Intergalactic.Component<'rect', ReferenceLineBackgroundProps, Context>;
 };
 
 export default ReferenceLine;

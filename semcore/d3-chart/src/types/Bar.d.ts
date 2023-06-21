@@ -1,8 +1,9 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 
-export interface IBarProps extends IContext {
+/** @deprecated */
+export interface IBarProps extends BarProps, UnknownProperties {}
+export type BarProps = Context & {
   /** Field from data for XAxis */
   x?: string;
   /** Field from data for YAxis */
@@ -30,16 +31,20 @@ export interface IBarProps extends IContext {
   onClick?: (data: { [key: string]: string | number }, event: Event) => void;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IBarContext {
+/** @deprecated */
+export interface IBarContext extends BarContext, UnknownProperties {}
+export type BarContext = {
   /** Value element of data */
   value: any;
   /** Index element of data */
   index: number;
-}
+};
 
-export interface IBackgroundProps extends IContext {
+/** @deprecated */
+export interface IBackgroundProps extends BackgroundProps, UnknownProperties {}
+export type BackgroundProps = Context & {
   /** Coordinate x */
   x?: number | string;
   /** Coordinate y */
@@ -50,10 +55,10 @@ export interface IBackgroundProps extends IContext {
   width?: number | string;
   /** Height rect */
   height?: number | string;
-}
+};
 
-declare const Bar: (<T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl) & {
-  Background: <T>(props: MapProps<IBackgroundProps & T>) => ReturnEl;
+declare const Bar: Intergalactic.Component<'rect', BarProps, BarContext> & {
+  Background: Intergalactic.Component<'rect', BackgroundProps>;
 };
 
 export default Bar;

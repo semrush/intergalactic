@@ -1,6 +1,6 @@
 import React from 'react';
 import { transition } from 'd3-transition';
-import { Component, sstyled, ReturnEl } from '@semcore/core';
+import { Component, sstyled, ReturnEl, UnknownProperties } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { shade } from '@semcore/utils/lib/color';
 import assignProps from '@semcore/utils/lib/assignProps';
@@ -50,7 +50,9 @@ type RadianData = {
   iconSize?: number;
 };
 
-export interface IRadialTreeProps {
+/** @deprecated */
+export interface IRadialTreeProps extends RadialTreeProps, UnknownProperties {}
+export type RadialTreeProps = {
   /**
    * List of radians. `{ label: string; key: string; capSize?: number; icon?: React.FC; color?: string; iconColor?: string; iconSize?: number; }`
    */
@@ -114,7 +116,7 @@ export interface IRadialTreeProps {
   defaultActiveKey?: string | null;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
 type RootAsProps = IRadialTreeProps & {
   uid: string;
@@ -342,11 +344,13 @@ class RadialTreeBase extends Component<RootAsProps> {
   }
 }
 
-export interface IRadialTreeRadianProps extends IRadialTreeProps {
+/** @deprecated */
+export interface IRadialTreeRadianProps extends RadialTreeRadianProps, UnknownProperties {}
+export type RadialTreeRadianProps = RadialTreeProps & {
   radiansCount?: number;
   textWidth?: number;
   onRadianClick?: (key: string) => (event: React.MouseEvent) => void;
-}
+};
 
 type RadianAsProps = RootAsProps & {
   radiansCount: number;
@@ -548,7 +552,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
 
     if (typeof children === 'function') {
       const _child = this.asProps.children;
-      const mergedProps = assignProps(children(this.asProps), this.asProps);
+      const mergedProps = assignProps(children(this.asProps), this.asProps as any);
       children = mergedProps.children;
       mergedProps.children = _child;
     }
@@ -576,13 +580,16 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 }
 
-export interface IRadialTreeRadianInteractiveAreaProps {
+/** @deprecated */
+export interface IRadialTreeRadianInteractiveAreaProps
+  extends RadialTreeRadianInteractiveAreaProps {}
+export type RadialTreeRadianInteractiveAreaProps = {
   x1?: number;
   y1?: number;
   x2?: number;
   y2?: number;
   strokeWidth?: number;
-}
+};
 
 type RadialTreeRadianInteractiveAreaAsProps = IRadialTreeRadianInteractiveAreaProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
@@ -597,7 +604,9 @@ const InteractiveArea: React.FC<RadialTreeRadianInteractiveAreaAsProps> = ({
   ) as React.ReactElement;
 };
 
-export interface IRadialTreeRadianLineProps {
+/** @deprecated */
+export interface IRadialTreeRadianLineProps extends RadialTreeRadianLineProps, UnknownProperties {}
+export type RadialTreeRadianLineProps = {
   x1?: number;
   y1?: number;
   x2?: number;
@@ -606,7 +615,7 @@ export interface IRadialTreeRadianLineProps {
   transparent?: boolean;
   ['data-radial-animation']?: `${string}-line`;
   ['data-radian-index']?: number;
-}
+};
 
 type RadialTreeRadianLineAsProps = IRadialTreeRadianLineProps & {
   Element: React.FC<{ render: string; transparent: boolean } & React.SVGProps<any>>;
@@ -623,7 +632,9 @@ const Line: React.FC<RadialTreeRadianLineAsProps> = ({
   ) as React.ReactElement;
 };
 
-export interface IRadialTreeRadianCapProps {
+/** @deprecated */
+export interface IRadialTreeRadianCapProps extends RadialTreeRadianCapProps, UnknownProperties {}
+export type RadialTreeRadianCapProps = {
   x?: number;
   y?: number;
   radius?: number;
@@ -631,7 +642,7 @@ export interface IRadialTreeRadianCapProps {
   transparent?: boolean;
   ['data-radial-animation']?: `${string}-cap-circle`;
   ['data-radian-index']?: number;
-}
+};
 
 type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
   Element: React.FC<{ render: string; transparent: boolean } & React.SVGProps<any>>;
@@ -651,7 +662,9 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   ) as React.ReactElement;
 };
 
-export interface IRadialTreeRadianIconProps {
+/** @deprecated */
+export interface IRadialTreeRadianIconProps extends RadialTreeRadianIconProps, UnknownProperties {}
+export type RadialTreeRadianIconProps = {
   x?: number;
   y?: number;
   iconSize?: number;
@@ -661,7 +674,7 @@ export interface IRadialTreeRadianIconProps {
   tag?: React.FC;
   isActive?: boolean;
   transparent?: boolean;
-}
+};
 
 type RadialTreeRadianIconAsProps = IRadialTreeRadianIconProps & {
   Element: React.FC<{ render: string | React.FC; transparent: boolean } & React.SVGProps<any>>;
@@ -688,7 +701,11 @@ const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
   ) as React.ReactElement;
 };
 
-export interface IRadialTreeRadianLabelProps {
+/** @deprecated */
+export interface IRadialTreeRadianLabelProps
+  extends RadialTreeRadianLabelProps,
+    UnknownProperties {}
+export type RadialTreeRadianLabelProps = {
   x?: number;
   y?: number;
   color?: string;
@@ -699,7 +716,7 @@ export interface IRadialTreeRadianLabelProps {
   isHorizontal?: boolean;
   angle?: number;
   transparent?: boolean;
-}
+};
 
 type RadialTreeRadianLabelAsProps = IRadialTreeRadianLabelProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;
@@ -773,13 +790,15 @@ const Radian = createElement(RadialTreeRadian, {
   Label,
 });
 
-export interface IRadialTreeTitleProps {
+/** @deprecated */
+export interface IRadialTreeTitleProps extends RadialTreeTitleProps, UnknownProperties {}
+export type RadialTreeTitleProps = {
   x?: number;
   y?: number;
   textSize?: number;
   ['data-radial-animation']?: `${string}-label`;
   color?: string;
-}
+};
 
 type RadialTreeTitleAsProps = IRadialTreeTitleProps & {
   Element: React.FC<{ render: string } & React.SVGProps<any>>;

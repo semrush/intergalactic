@@ -1,10 +1,12 @@
-import React, { ComponentProps } from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
+import React from 'react';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 
 import { Property } from 'csstype';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box, BoxProps } from '@semcore/flex-box';
 
-export interface ITextProps extends IBoxProps {
+/** @deprecated */
+export interface ITextProps extends TextProps, UnknownProperties {}
+export type TextProps = BoxProps & {
   /** Font size and line-heights */
   size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800;
   /** The text will not be wrapped on a new line and will be cut off with ellipsis */
@@ -35,24 +37,32 @@ export interface ITextProps extends IBoxProps {
   fontWeight?: Property.FontWeight;
   /** Text alignment */
   textAlign?: Property.TextAlign;
-}
+};
 
-export interface IListProps extends ITextProps {
+/** @deprecated */
+export interface IListProps extends ListProps, UnknownProperties {}
+export type ListProps = TextProps & {
   /** Marker of the entire list
    * @default • */
   marker?: React.ReactNode;
-}
+};
 
-export interface IListItemProps extends ITextProps {
+/** @deprecated */
+export interface IListItemProps extends ListItemProps, UnknownProperties {}
+export type ListItemProps = TextProps & {
   /** Individual marker of a list item */
   marker?: React.ReactNode;
-}
+};
 
-export interface IListContext {
+/** @deprecated */
+export interface IListContext extends ListContext, UnknownProperties {}
+export type ListContext = {
   getItemProps: PropGetterFn;
-}
+};
 
-export interface IHintProps extends ITextProps {
+/** @deprecated */
+export interface IHintProps extends HintProps, UnknownProperties {}
+export type HintProps = TextProps & {
   /** The value responsible for the activity of the element
    * @default false
    */
@@ -63,24 +73,26 @@ export interface IHintProps extends ITextProps {
   addonLeft?: React.ElementType;
   /** Right addon hint  */
   addonRight?: React.ElementType;
-}
+};
 
-export interface IBlockquoteProps extends IBoxProps {
+/** @deprecated */
+export interface IBlockquoteProps extends BlockquoteProps, UnknownProperties {}
+export type BlockquoteProps = BoxProps & {
   /** Source of the quote */
   author?: React.ReactNode;
-}
-
-declare const Hint: ((props: CProps<IHintProps>) => ReturnEl) & {
-  Addon: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Text: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
 };
 
-declare const List: ((props: CProps<IListProps, IListContext>) => ReturnEl) & {
-  Item: <T>(props: IListItemProps & T) => ReturnEl;
+declare const Hint: Intergalactic.Component<'abbr', HintProps> & {
+  Addon: typeof Box;
+  Text: typeof Box;
 };
 
-declare const Text: <T>(props: ITextProps & T) => ReturnEl;
+declare const List: Intergalactic.Component<'ul', ListProps> & {
+  Item: Intergalactic.Component<'li', ListItemProps>;
+};
 
-declare const Blockquote: <T>(props: IBlockquoteProps & T) => ReturnEl;
+declare const Text: Intergalactic.Component<'span', TextProps>;
+
+declare const Blockquote: Intergalactic.Component<'blockquote', BlockquoteProps>;
 
 export { Text, List, Hint, Blockquote };

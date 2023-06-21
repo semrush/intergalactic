@@ -43,7 +43,7 @@ const Demo = () => {
         <DateRangePicker.Header />
         <DateRangePicker.Calendar
           renderOutdated
-          onHighlighted={(date) => {
+          onHighlightedChange={(date) => {
             if (date.length === 1) setHighlighted([]);
           }}
         >

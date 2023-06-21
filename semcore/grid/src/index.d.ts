@@ -1,9 +1,11 @@
-import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps, IFlexProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps, FlexProps } from '@semcore/flex-box';
 
 /* utils type */
 
-export interface IColProps extends IBoxProps {
+/** @deprecated */
+export interface IColProps extends ColProps, UnknownProperties {}
+export type ColProps = BoxProps & {
   /** Column size */
   span?: number | boolean | Array<number | boolean>;
   /** Column size on device with 1184px screen width and less */
@@ -22,22 +24,24 @@ export interface IColProps extends IBoxProps {
   xsOffset?: number;
   /** Column gutter, determined from Row */
   gutter?: number;
-}
+};
 
-export interface IRowProps extends IFlexProps {
+/** @deprecated */
+export interface IRowProps extends RowProps, UnknownProperties {}
+export type RowProps = FlexProps & {
   /**
    * Gutter between columns
    * @default 0
    */
   gutter?: number;
-}
+};
 
-interface IGridCtx {
+type GridContext = {
   getColProps: PropGetterFn;
-}
+};
 
-declare const Row: (<T>(props: CProps<IRowProps & T, IGridCtx>) => ReturnEl) & {
-  Col: <T>(props: CProps<IColProps & T, IRowProps>) => ReturnEl;
+declare const Row: Intergalactic.Component<'div', RowProps, GridContext> & {
+  Col: Intergalactic.Component<'div', ColProps, RowProps>;
 };
 declare const Col: typeof Row.Col;
 

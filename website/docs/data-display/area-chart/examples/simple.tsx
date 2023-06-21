@@ -9,7 +9,7 @@ import InfoXS from '@semcore/ui/icon/Info/m';
 let date = Date.now();
 
 const data = Array(7)
-  .fill()
+  .fill(0)
   .map(() => {
     const newDate = date;
     date -= 1000 * 60 * 60 * 24;

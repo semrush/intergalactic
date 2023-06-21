@@ -2,8 +2,12 @@ import React, { PureComponent } from 'react';
 import createHoc from '../createHoc';
 import { internalSetState } from '../uncontroll';
 import fire from '../fire';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-export interface IEnhancedWithKeyboardFocusInjectedProps {
+/** @deprecated */
+export interface IEnhancedWithKeyboardFocusInjectedProps
+  extends EnhancedWithKeyboardFocusInjectedProps {}
+export type EnhancedWithKeyboardFocusInjectedProps = {
   tabIndex: number;
   keyboardFocused: boolean;
 
@@ -14,19 +18,27 @@ export interface IEnhancedWithKeyboardFocusInjectedProps {
   onKeyDown(e: KeyboardEvent): void;
 
   onMouseDown(e: MouseEvent): void;
-}
+};
 
-export interface IEnhancedWithKeyboardFocusProps {
+/** @deprecated */
+export interface IEnhancedWithKeyboardFocusProps
+  extends EnhancedWithKeyboardFocusProps,
+    UnknownProperties {}
+export type EnhancedWithKeyboardFocusProps = {
   keyboardFocused?: boolean;
   tabIndex?: number;
   disabled?: boolean;
 
   children(props: IEnhancedWithKeyboardFocusInjectedProps): React.ReactNode;
-}
+};
 
-export interface IEnhancedWithKeyboardFocusState {
+/** @deprecated */
+export interface IEnhancedWithKeyboardFocusState
+  extends EnhancedWithKeyboardFocusState,
+    UnknownProperties {}
+export type EnhancedWithKeyboardFocusState = {
   keyboardFocused: boolean;
-}
+};
 
 let usingKeyBoard = true;
 

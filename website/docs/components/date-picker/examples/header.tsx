@@ -10,10 +10,12 @@ const Demo = () => {
           <DatePicker.Prev />
           <DatePicker.Title>
             {({ displayedPeriod }) =>
-              new Intl.DateTimeFormat('en-US', {
-                month: 'short',
-                year: 'numeric',
-              }).format(displayedPeriod)
+              typeof displayedPeriod === 'string'
+                ? displayedPeriod
+                : new Intl.DateTimeFormat('en-US', {
+                    month: 'short',
+                    year: 'numeric',
+                  }).format(displayedPeriod)
             }
           </DatePicker.Title>
           <DatePicker.Next />

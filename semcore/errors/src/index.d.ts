@@ -1,25 +1,31 @@
 import React from 'react';
-import { Box, IFlexProps } from '@semcore/flex-box';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
+import { Box, FlexProps } from '@semcore/flex-box';
+import { Intergalactic, PropGetterFn } from '@semcore/core';
 import { TIllustrationNamesErrors } from '@semcore/illustration';
-import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
 export type iconNamesErrors = TIllustrationNamesErrors;
 
-export interface IErrorsProps extends IFlexProps {
+/** @deprecated */
+export interface IErrorsProps extends ErrorsProps, UnknownProperties {}
+export type ErrorsProps = FlexProps & {
   /**
    * Error icon
    */
   icon?: string | React.ReactNode;
-}
+};
 
-export interface IErrorsContext {
+/** @deprecated */
+export interface IErrorsContext extends ErrorsContext, UnknownProperties {}
+export type ErrorsContext = {
   getTextProps: PropGetterFn;
   getDescriptionProps: PropGetterFn;
   getControlsProps: PropGetterFn;
-}
+};
 
-export interface IProjectNotFoundProps extends IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IProjectNotFoundProps extends ProjectNotFoundProps, UnknownProperties {}
+export type ProjectNotFoundProps = WithI18nEnhanceProps & {
   /**
    * Link to the projects
    * @default /projects
@@ -27,25 +33,31 @@ export interface IProjectNotFoundProps extends IWithI18nEnhanceProps {
   projectsLink?: string;
   contactsLink?: string;
   supportTeamLink?: string;
-}
+};
 
-export interface IPageNotFoundProps extends IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IPageNotFoundProps extends PageNotFoundProps, UnknownProperties {}
+export type PageNotFoundProps = WithI18nEnhanceProps & {
   /**
    * href of the home link
    * @default /
    */
   homeLink?: string;
-}
+};
 
-export interface IPageErrorProps extends IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IPageErrorProps extends PageErrorProps, UnknownProperties {}
+export type PageErrorProps = WithI18nEnhanceProps & {
   /**
    * Page reloading button click handler
    * @default () => { if (canUseDOM()) { location.reload(); } }
    */
   onClick?: (e: React.MouseEvent) => void;
-}
+};
 
-export interface IMaintenanceProps extends IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IMaintenanceProps extends MaintenanceProps, UnknownProperties {}
+export type MaintenanceProps = WithI18nEnhanceProps & {
   /**
    * Tool name
    */
@@ -55,26 +67,28 @@ export interface IMaintenanceProps extends IWithI18nEnhanceProps {
    * @default /
    */
   homeLink?: string;
-}
+};
 
-export interface IAccessDeniedProps extends IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IAccessDeniedProps extends AccessDeniedProps, UnknownProperties {}
+export type AccessDeniedProps = WithI18nEnhanceProps & {
   /**
    * href of the home link
    * @default /
    */
   homeLink?: string;
-}
+};
 
-declare const Error: (<T>(props: CProps<IErrorsProps & T, IErrorsContext>) => ReturnEl) & {
+declare const Error: Intergalactic.Component<'div', ErrorsProps, ErrorsContext> & {
   Title: typeof Box;
   Description: typeof Box;
   Controls: typeof Box;
 };
-declare const ProjectNotFound: <T>(props: IProjectNotFoundProps & IErrorsProps & T) => ReturnEl;
-declare const PageNotFound: <T>(props: IPageNotFoundProps & IErrorsProps & T) => ReturnEl;
-declare const PageError: <T>(props: IPageErrorProps & IErrorsProps & T) => ReturnEl;
-declare const Maintenance: <T>(props: IMaintenanceProps & IErrorsProps & T) => ReturnEl;
-declare const AccessDenied: <T>(props: IAccessDeniedProps & IErrorsProps & T) => ReturnEl;
+declare const ProjectNotFound: Intergalactic.Component<'div', ProjectNotFoundProps & ErrorsProps>;
+declare const PageNotFound: Intergalactic.Component<'div', PageNotFoundProps & ErrorsProps>;
+declare const PageError: Intergalactic.Component<'div', PageErrorProps & ErrorsProps>;
+declare const Maintenance: Intergalactic.Component<'div', MaintenanceProps & ErrorsProps>;
+declare const AccessDenied: Intergalactic.Component<'div', AccessDeniedProps & ErrorsProps>;
 declare const getIconPath: (name: iconNamesErrors) => string;
 
 export default Error;

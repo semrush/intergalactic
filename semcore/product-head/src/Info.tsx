@@ -1,13 +1,21 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  UnknownProperties,
+  Intergalactic,
+} from '@semcore/core';
+import { Box, BoxProps, IBoxProps } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
 import style from './style/info.shadow.css';
 
-export interface IInfoItemProps extends IBoxProps {
+/** @deprecated */
+export interface IInfoItemProps extends InfoItemProps, UnknownProperties {}
+export type InfoItemProps = BoxProps & {
   label?: React.ReactNode;
-}
+};
 
 class InfoRoot extends Component<IBoxProps> {
   static displayName = 'Info';
@@ -43,7 +51,7 @@ const Info = createComponent(InfoRoot, {
     },
   ],
 }) as typeof Box & {
-  Item: (<T>(props: IInfoItemProps & T) => React.ReactElement) & {
+  Item: Intergalactic.Component<'div', InfoItemProps> & {
     Label: typeof Box;
   };
 };

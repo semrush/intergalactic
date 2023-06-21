@@ -1,14 +1,21 @@
-import { IPortalProps } from '@semcore/portal';
-import { CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { PortalProps } from '@semcore/portal';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
-export interface INoticeBubbleContainerProps extends IBoxProps, IPortalProps {
-  /** Manager copy */
-  manager?: INoticeBubbleManager;
-  locale?: string;
-}
+/** @deprecated */
+export interface INoticeBubbleContainerProps
+  extends NoticeBubbleContainerProps,
+    UnknownProperties {}
+export type NoticeBubbleContainerProps = BoxProps &
+  PortalProps & {
+    /** Manager copy */
+    manager?: NoticeBubbleManager;
+    locale?: string;
+  };
 
-export interface INoticeBubbleProps extends IBoxProps {
+/** @deprecated */
+export interface INoticeBubbleProps extends NoticeBubbleProps, UnknownProperties {}
+export type NoticeBubbleProps = BoxProps & {
   /**
    * Notice visibility.
    */
@@ -25,8 +32,10 @@ export interface INoticeBubbleProps extends IBoxProps {
    * Notice content.
    * */
   children: React.ReactNode;
-}
-export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
+};
+/** @deprecated */
+export interface INoticeBubbleInfoProps extends NoticeBubbleInfoProps, UnknownProperties {}
+export type NoticeBubbleInfoProps = NoticeBubbleProps & {
   readonly type?: 'info';
   /**
    * Notice display duration.
@@ -37,9 +46,11 @@ export interface INoticeBubbleInfoProps extends INoticeBubbleProps {
    * @default false
    */
   initialAnimation?: boolean;
-}
+};
 
-export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
+/** @deprecated */
+export interface INoticeBubbleWarningProps extends NoticeBubbleWarningProps, UnknownProperties {}
+export type NoticeBubbleWarningProps = NoticeBubbleProps & {
   readonly type?: 'warning';
   /**
    * Notice display duration.
@@ -50,9 +61,11 @@ export interface INoticeBubbleWarningProps extends INoticeBubbleProps {
    * @default false
    */
   initialAnimation?: boolean;
-}
+};
 
-export interface INoticeBubbleManager {
+/** @deprecated */
+export interface INoticeBubbleManager extends NoticeBubbleManager, UnknownProperties {}
+export type NoticeBubbleManager = {
   /**
    * Creates and shows a notice.
    * */
@@ -74,19 +87,17 @@ export interface INoticeBubbleManager {
    * Removes notice by uid.
    * */
   remove: (uid: string) => boolean;
-}
+};
 
 /**
  * @deprecated use `NoticeBubbleManager` instead.
  * */
-declare const NoticeBubble: <T>(props: INoticeBubbleInfoProps & T) => ReturnEl;
+declare const NoticeBubble: Intergalactic.Component<'div', NoticeBubbleInfoProps>;
 /**
  * @deprecated use `NoticeBubbleManager` instead.
  * */
-declare const NoticeBubbleWarning: <T>(props: INoticeBubbleWarningProps & T) => ReturnEl;
-declare const NoticeBubbleContainer: (<T>(
-  props: CProps<INoticeBubbleContainerProps & T>,
-) => ReturnEl) & {
+declare const NoticeBubbleWarning: Intergalactic.Component<'div', NoticeBubbleWarningProps>;
+declare const NoticeBubbleContainer: Intergalactic.Component<'div', NoticeBubbleContainerProps> & {
   /**
    * @deprecated use `NoticeBubbleManager` instead.
    * */

@@ -1,11 +1,13 @@
 import React, { cloneElement, useEffect } from 'react';
-import createComponent, { IFunctionProps } from '@semcore/core';
+import createComponent, { IFunctionProps, Intergalactic, UnknownProperties } from '@semcore/core';
 import { getNodeByRef, NodeByRef, useForkRef } from '@semcore/utils/lib/ref';
 import ownerDocument from '@semcore/utils/lib/ownerDocument';
 import useEventCallback from '@semcore/utils/lib/use/useEventCallback';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 
-export interface IOutsideClickProps {
+/** @deprecated */
+export interface IOutsideClickProps extends OutsideClickProps, UnknownProperties {}
+export type OutsideClickProps = {
   /**
    * Function called on click outside the component from excludeRefs
    * @default () => {}
@@ -22,7 +24,7 @@ export interface IOutsideClickProps {
    * @default document
    *  */
   root?: NodeByRef;
-}
+};
 
 function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const { Children, forwardRef, root, excludeRefs, onOutsideClick } = props;
@@ -69,6 +71,4 @@ OutsideClick.defaultProps = {
   onOutsideClick: () => {},
 };
 
-export default createComponent(OutsideClick) as <T>(
-  props: IOutsideClickProps & T,
-) => React.ReactElement;
+export default createComponent(OutsideClick) as Intergalactic.Component<any, OutsideClickProps>;

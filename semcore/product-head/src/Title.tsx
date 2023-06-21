@@ -1,14 +1,21 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  UnknownProperties,
+  Intergalactic,
+} from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
 import isNode from '@semcore/utils/lib/isNode';
 
 import style from './style/title.shadow.css';
-import { IInfoItemProps } from './Info';
 
-export interface IHeaderTitleProps extends IBoxProps {
+/** @deprecated */
+export interface IHeaderTitleProps extends HeaderTitleProps, UnknownProperties {}
+export type HeaderTitleProps = BoxProps & {
   toolName?: React.ReactNode;
-}
+};
 
 class TitleRoot extends Component<IHeaderTitleProps> {
   static displayName = 'Title';
@@ -36,7 +43,7 @@ function Tool(props) {
 
 const Title = createComponent(TitleRoot, {
   Tool,
-}) as (<T>(props: IInfoItemProps & T) => React.ReactElement) & {
+}) as any as Intergalactic.Component<'h1', HeaderTitleProps> & {
   Tool: typeof Box;
 };
 

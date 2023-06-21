@@ -35,7 +35,7 @@ export default () => (
         <React.Fragment>
           <Select.Trigger />
           <Select.Menu>
-            <Select.Option onClick={handleClick}>
+            <Select.Option value='%all%' onClick={handleClick}>
               <Text color='denim-blue'>{currentValue.length ? 'Deselect all' : 'Select all'}</Text>
             </Select.Option>
             {options.map((option) => (

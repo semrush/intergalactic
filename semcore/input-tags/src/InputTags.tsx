@@ -1,46 +1,62 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root, PropGetterFn, CProps } from '@semcore/core';
-import Input, { IInputProps, IInputValueProps } from '@semcore/input';
-import ScrollArea, { IScrollAreaProps } from '@semcore/scroll-area';
-import Tag, { ITagProps } from '@semcore/tag';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  PropGetterFn,
+  UnknownProperties,
+  Intergalactic,
+} from '@semcore/core';
+import Input, { InputProps, InputValueProps } from '@semcore/input';
+import ScrollArea, { ScrollAreaProps } from '@semcore/scroll-area';
+import Tag, { TagProps } from '@semcore/tag';
 import fire from '@semcore/utils/lib/fire';
 
 import style from './style/input-tag.shadow.css';
 
-export interface IInputTagsValueProps extends IInputValueProps {}
+/** @deprecated */
+export interface IInputTagsValueProps extends InputTagsValueProps, UnknownProperties {}
+export type InputTagsValueProps = InputValueProps & {};
 
 export type InputTagsSize = 'l' | 'm';
 
-export interface IInputTagsProps extends Omit<IInputProps, 'size'>, IScrollAreaProps {
-  /**
-   * Component size
-   * @default m
-   */
-  size?: InputTagsSize;
-  /**
-   * Event is called when tag needs to be added
-   * @deprecated use `onAppend` instead
-   */
-  onAdd?: (value: string, event: React.KeyboardEvent | React.ClipboardEvent) => void;
-  /** Event is called when tags need to be added */
-  onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
-  /** Event is called when tags need to be removed  */
-  onRemove?: (event: React.KeyboardEvent | React.MouseEvent) => void;
-  /** List delimiter of tags
-   * @default [',', ';', '|']
-   * */
-  delimiters?: string[];
-}
+/** @deprecated */
+export interface IInputTagsProps extends InputTagsProps, UnknownProperties {}
+export type InputTagsProps = Omit<InputProps, 'size'> &
+  ScrollAreaProps & {
+    /**
+     * Component size
+     * @default m
+     */
+    size?: InputTagsSize;
+    /**
+     * Event is called when tag needs to be added
+     * @deprecated use `onAppend` instead
+     */
+    onAdd?: (value: string, event: React.KeyboardEvent | React.ClipboardEvent) => void;
+    /** Event is called when tags need to be added */
+    onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
+    /** Event is called when tags need to be removed  */
+    onRemove?: (event: React.KeyboardEvent | React.MouseEvent) => void;
+    /** List delimiter of tags
+     * @default [',', ';', '|']
+     * */
+    delimiters?: string[];
+  };
 
-export interface IInputTagsTagProps extends ITagProps {
+/** @deprecated */
+export interface IInputTagsTagProps extends InputTagsTagProps, UnknownProperties {}
+export type InputTagsTagProps = TagProps & {
   /** Property enabling the ability to remove a tag on click */
   editable?: boolean;
-}
+};
 
-export interface IInputTagsContext extends IInputTagsProps {
+/** @deprecated */
+export interface IInputTagsContext extends InputTagsContext, UnknownProperties {}
+export type InputTagsContext = InputTagsProps & {
   getValueProps: PropGetterFn;
   getTagProps: PropGetterFn;
-}
+};
 
 const MAP_SIZES_TAG = {
   l: 'l',
@@ -242,9 +258,9 @@ export default createComponent(InputTags, {
       Circle: Tag.Circle,
     },
   ],
-}) as (<T>(props: CProps<IInputTagsProps & T, IInputTagsContext>) => React.ReactElement) & {
+}) as any as Intergalactic.Component<'div', InputTagsProps, InputTagsContext> & {
   Value: typeof Input.Value;
-  Tag: (<T>(props: IInputTagsTagProps & T) => React.ReactElement) & {
+  Tag: Intergalactic.Component<'div', InputTagsTagProps> & {
     Text: typeof Tag.Text;
     Close: typeof Tag.Close;
     Addon: typeof Tag.Addon;

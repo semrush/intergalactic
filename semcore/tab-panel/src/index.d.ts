@@ -1,11 +1,15 @@
 import React from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type TabPanelValue = string | number | boolean;
 
-export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue> extends IBoxProps {
+/** @deprecated */
+export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue>
+  extends TabPanelProps<T>,
+    UnknownProperties {}
+export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = BoxProps & {
   /** Is invoked when changing the selection */
   onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
   /** Value of the selected tab */
@@ -14,33 +18,43 @@ export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue> extends
    * @default null
    * */
   defaultValue?: T;
-}
+};
 
-export interface ITabPanelItemProps extends IBoxProps, IKeyboardFocusProps {
-  /** Makes a tab selected. This property is determined automatically depending on the value. */
-  selected?: boolean;
-  /** Disabled state */
-  disabled?: boolean;
-  /** Tab value */
-  value?: TabPanelValue;
-  /** Left addon tag  */
-  addonLeft?: React.ElementType;
-  /** Right addon tag  */
-  addonRight?: React.ElementType;
-}
+/** @deprecated */
+export interface ITabPanelItemProps extends TabPanelItemProps, UnknownProperties {}
+export type TabPanelItemProps = BoxProps &
+  KeyboardFocusProps & {
+    /** Makes a tab selected. This property is determined automatically depending on the value. */
+    selected?: boolean;
+    /** Disabled state */
+    disabled?: boolean;
+    /** Tab value */
+    value?: TabPanelValue;
+    /** Left addon tag  */
+    addonLeft?: React.ElementType;
+    /** Right addon tag  */
+    addonRight?: React.ElementType;
+  };
 
-export interface ITabPanelContext {
+/** @deprecated */
+export interface ITabPanelContext extends TabPanelContext, UnknownProperties {}
+export type TabPanelContext = {
   getItemProps: PropGetterFn;
-}
+};
 
-export interface ITabPanelHandlers {
+/** @deprecated */
+export interface ITabPanelHandlers extends TabPanelHandlers, UnknownProperties {}
+export type TabPanelHandlers = {
   value: (value: TabPanelValue) => void;
-}
+};
 
-declare const TabPanel: (<T, V extends TabPanelValue = TabPanelValue>(
-  props: CProps<ITabPanelProps<V> & T, ITabPanelContext, ITabPanelHandlers>,
-) => ReturnEl) & {
-  Item: (<T>(props: CProps<ITabPanelItemProps & T, {}, ITabPanelHandlers>) => ReturnEl) & {
+declare const TabPanel: Intergalactic.Component<
+  'div',
+  TabPanelProps,
+  TabPanelContext,
+  TabPanelHandlers
+> & {
+  Item: Intergalactic.Component<'div', TabPanelItemProps, TabPanelHandlers> & {
     Text: typeof Box;
     Addon: typeof Box;
   };

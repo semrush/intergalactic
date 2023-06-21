@@ -391,6 +391,10 @@ function createBaseComponent<ComponentProps>(OriginComponent): ComponentType<Com
   return Component;
 }
 
+export type UnknownProperties = {
+  [key: string]: unknown;
+};
+
 export * from './Component';
 export * from './styled';
 export * from './register';

@@ -17,7 +17,8 @@
     "paths": {
       "static/*": ["src/static/*"],
       "utils/*": ["src/utils/*"],
-      "@semcore/ui/*": ["../semcore/*"]
+      "@semcore/ui/*": ["../semcore/*"],
+      "@semcore/ui/utils/*": ["../semcore/utils/src/*"]
     }
   },
   "exclude": ["node_modules", "dist", "builder", "deploy.ts", "tools/searchIndexUpload.ts"]

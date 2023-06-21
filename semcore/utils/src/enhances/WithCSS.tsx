@@ -3,6 +3,7 @@ import { NanoOptions } from 'nano-css';
 import { CssLikeObject } from 'nano-css/types/common';
 import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
 const getStylesheet = () => CSSinJS().raw;
 
@@ -28,12 +29,14 @@ function initNanoCss(options: NanoOptions = {}) {
   return CSSinJS(options);
 }
 
-export interface IEnhancedWithCSSProps {
+/** @deprecated */
+export interface IEnhancedWithCSSProps extends EnhancedWithCSSProps, UnknownProperties {}
+export type EnhancedWithCSSProps = {
   className?: string;
   css?: {};
 
   children(props: { className: string }): React.ReactNode;
-}
+};
 
 class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
   static contextType = WithCssContext;

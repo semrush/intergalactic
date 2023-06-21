@@ -1,7 +1,9 @@
-import { IBoxProps } from '@semcore/flex-box';
-import { ReturnEl } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-export interface IDividerProps extends IBoxProps {
+/** @deprecated */
+export interface IDividerProps extends DividerProps, UnknownProperties {}
+export type DividerProps = BoxProps & {
   /**
    * Type of the divider
    * @default primary
@@ -16,8 +18,8 @@ export interface IDividerProps extends IBoxProps {
    * @default horizontal
    */
   orientation?: 'horizontal' | 'vertical';
-}
+};
 
-declare const Divider: <T>(props: IDividerProps & T) => ReturnEl;
+declare const Divider: Intergalactic.Component<'div', DividerProps>;
 
 export default Divider;

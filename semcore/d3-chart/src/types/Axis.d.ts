@@ -1,8 +1,9 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Context } from './context';
+import { Intergalactic } from '@semcore/core';
 
-export interface IXAxisProps extends IContext {
+/** @deprecated */
+export interface IXAxisProps extends XAxisProps, UnknownProperties {}
+export type XAxisProps = Context & {
   /** The position of the axis relative chart
    * @default 'button' */
   position?: 'top' | 'right' | 'bottom' | 'left' | number;
@@ -11,9 +12,11 @@ export interface IXAxisProps extends IContext {
   hide?: boolean;
   /** Values for axis ticks */
   ticks?: any[];
-}
+};
 
-export interface IYAxisProps extends IContext {
+/** @deprecated */
+export interface IYAxisProps extends YAxisProps, UnknownProperties {}
+export type YAxisProps = Context & {
   /** The position of the axis relative chart
    * @default 'left' */
   position?: 'top' | 'right' | 'bottom' | 'left' | number;
@@ -22,23 +25,29 @@ export interface IYAxisProps extends IContext {
   hide?: boolean;
   /** Values for axis ticks */
   ticks?: any[];
-}
+};
 
-export interface IAxisTicksProps extends IContext {
+/** @deprecated */
+export interface IAxisTicksProps extends AxisTicksProps, UnknownProperties {}
+export type AxisTicksProps = Context & {
   /** The position of the axis relative chart */
   position?: 'top' | 'right' | 'bottom' | 'left';
   /** Element hide property */
   hide?: boolean;
   /** Values for axis ticks */
   ticks?: any[];
-}
+};
 
-export interface IAxisGridProps extends IContext {
+/** @deprecated */
+export interface IAxisGridProps extends AxisGridProps, UnknownProperties {}
+export type AxisGridProps = Context & {
   /** Values for axis ticks */
   ticks?: any[];
-}
+};
 
-export interface IAxisTitleProps extends IContext {
+/** @deprecated */
+export interface IAxisTitleProps extends AxisTitleProps, UnknownProperties {}
+export type AxisTitleProps = Context & {
   /** The position of the axis relative chart */
   position?: 'top' | 'right' | 'bottom' | 'left';
 
@@ -47,25 +56,27 @@ export interface IAxisTitleProps extends IContext {
    * @default true for `zh` and `ja` locales and false for all others.
    */
   verticalWritingMode?: boolean;
-}
+};
 
-export interface IAxisTicksContext {
+/** @deprecated */
+export interface IAxisTicksContext extends AxisTicksContext, UnknownProperties {}
+export type AxisTicksContext = {
   /** Value element of data */
   value: any;
   /** Index element of data */
   index: number;
-}
-
-declare const XAxis: (<T>(props: MapProps<IXAxisProps & T>) => ReturnEl) & {
-  Ticks: <T>(props: MapProps<IAxisTicksProps & T, IAxisTicksContext>) => ReturnEl;
-  Grid: <T>(props: MapProps<IAxisGridProps & T>) => ReturnEl;
-  Title: <T>(props: MapProps<IAxisTitleProps & T>) => ReturnEl;
 };
 
-declare const YAxis: (<T>(props: MapProps<IYAxisProps & T>) => ReturnEl) & {
-  Ticks: <T>(props: MapProps<IAxisTicksProps & T, IAxisTicksContext>) => ReturnEl;
-  Grid: <T>(props: MapProps<IAxisGridProps & T>) => ReturnEl;
-  Title: <T>(props: MapProps<IAxisTitleProps & T>) => ReturnEl;
+declare const XAxis: Intergalactic.Component<'path', XAxisProps> & {
+  Ticks: Intergalactic.Component<'path', AxisTicksProps, AxisTicksContext>;
+  Grid: Intergalactic.Component<'path', AxisGridProps>;
+  Title: Intergalactic.Component<'text', AxisTitleProps>;
+};
+
+declare const YAxis: Intergalactic.Component<'path', YAxisProps> & {
+  Ticks: Intergalactic.Component<'path', AxisTicksProps, AxisTicksContext>;
+  Grid: Intergalactic.Component<'path', AxisGridProps>;
+  Title: Intergalactic.Component<'text', AxisTitleProps>;
 };
 
 export { XAxis, YAxis };

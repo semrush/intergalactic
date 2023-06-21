@@ -62,7 +62,7 @@ class Head extends Component<AsProps> {
 
   renderColumn(column: Column, width: number) {
     const { styles, use, hidden, uid } = this.asProps;
-    const SColumn = Flex;
+    const SColumn = Flex as any;
     const SHead = Box;
     const SSortWrapper = 'div';
     const SSortIcon = SORTING_ICON[column.sortDirection];
@@ -144,7 +144,8 @@ class Head extends Component<AsProps> {
 
   render() {
     const SHead = Root;
-    const SHeadWrapper = Box;
+    const SHeadWrapper = Box as any;
+    const SScrollArea = ScrollArea as any;
     const { Children, styles, columnsChildren, onResize, $scrollRef, sticky, disabledScroll } =
       this.asProps;
 
@@ -160,19 +161,19 @@ class Head extends Component<AsProps> {
 
     return sstyled(styles)(
       <SHeadWrapper sticky={sticky}>
-        <ScrollArea
+        <SScrollArea
           styles={scrollStyles}
           use:left={`${offsetLeftSum}px`}
           use:right={`${offsetRightSum}px`}
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
+          <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
             <SHead render={Box} role='row' aria-rowindex='1'>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
-          </ScrollArea.Container>
-        </ScrollArea>
+          </SScrollArea.Container>
+        </SScrollArea>
         {Children.origin}
       </SHeadWrapper>,
     );

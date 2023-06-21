@@ -1,5 +1,5 @@
-import { IBoxProps } from '@semcore/flex-box';
-import { ReturnEl } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
 export declare const iso2Name: {
   AF: string;
@@ -1322,7 +1322,9 @@ type iso2 = keyof typeof iso2Name;
 type iso3 = keyof typeof iso3Name;
 type name = keyof typeof nameWithoutIso;
 
-export interface IFlagsProps extends IBoxProps {
+/** @deprecated */
+export interface IFlagsProps extends FlagsProps, UnknownProperties {}
+export type FlagsProps = BoxProps & {
   /** URL before css file with a sprite
    * @default `//static.semrush.com/ui-kit/flags/${version package}`
    */
@@ -1333,8 +1335,8 @@ export interface IFlagsProps extends IBoxProps {
   iso3?: iso3;
   /** Country code in two-letter or three-letter format or country/union of countries without ISO code */
   name?: name | iso2 | iso3;
-}
+};
 
-declare const Flags: <T>(props: IFlagsProps & T) => ReturnEl;
+declare const Flags: Intergalactic.Component<'div', FlagsProps>;
 
 export default Flags;

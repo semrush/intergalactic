@@ -1,8 +1,9 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 
-export interface IScatterPlotProps extends IContext {
+/** @deprecated */
+export interface IScatterPlotProps extends ScatterPlotProps, UnknownProperties {}
+export type ScatterPlotProps = Context & {
   /** Field from data for XAxis */
   x: string;
   /** Field from data for YAxis */
@@ -23,8 +24,8 @@ export interface IScatterPlotProps extends IContext {
   r?: number;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-declare const ScatterPlot: <T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl;
+declare const ScatterPlot: Intergalactic.Component<'g', ScatterPlotProps, Context>;
 
 export default ScatterPlot;

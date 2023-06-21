@@ -1,37 +1,44 @@
-import { ComponentProps } from 'react';
-import { CProps, ReturnEl } from '@semcore/core';
-import { Box, IFlexProps } from '@semcore/flex-box';
+import { Intergalactic } from '@semcore/core';
+import { Box, FlexProps } from '@semcore/flex-box';
 import { TIllustrationNamesWidgetEmpty } from '@semcore/illustration';
-import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
 export type iconNamesWidgetEmpty = TIllustrationNamesWidgetEmpty;
 
-export interface IWidgetEmptyProps extends IFlexProps {
+/** @deprecated */
+export interface IWidgetEmptyProps extends WidgetEmptyProps, UnknownProperties {}
+export type WidgetEmptyProps = FlexProps & {
   /**
    * URL before the icon or the whole component
    */
   icon?: React.ReactNode;
-}
-
-export interface IWidgetErrorProps extends IWidgetEmptyProps, IWithI18nEnhanceProps {
-  /** Error description. If it is absent, use the local default one */
-  description?: React.ReactNode;
-}
-
-export interface IWidgetNoDataProps extends IWidgetEmptyProps, IWithI18nEnhanceProps {
-  /** Error description. If it is absent, use the local default one */
-  description?: React.ReactNode;
-  /* Data types */
-  type?: iconNamesWidgetEmpty;
-}
-
-declare const WidgetEmpty: (<T>(props: CProps<IWidgetEmptyProps> & T) => ReturnEl) & {
-  Title: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Description: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
 };
 
-export declare const NoData: <T>(props: CProps<IWidgetNoDataProps> & T) => ReturnEl;
-export declare const Error: <T>(props: CProps<IWidgetErrorProps> & T) => ReturnEl;
+/** @deprecated */
+export interface IWidgetErrorProps extends WidgetErrorProps, UnknownProperties {}
+export type WidgetErrorProps = WidgetEmptyProps &
+  WithI18nEnhanceProps & {
+    /** Error description. If it is absent, use the local default one */
+    description?: React.ReactNode;
+  };
+
+/** @deprecated */
+export interface IWidgetNoDataProps extends WidgetNoDataProps, UnknownProperties {}
+export type WidgetNoDataProps = WidgetEmptyProps &
+  WithI18nEnhanceProps & {
+    /** Error description. If it is absent, use the local default one */
+    description?: React.ReactNode;
+    /* Data types */
+    type?: iconNamesWidgetEmpty;
+  };
+
+declare const WidgetEmpty: Intergalactic.Component<'div', WidgetEmptyProps> & {
+  Title: typeof Box;
+  Description: typeof Box;
+};
+
+export declare const NoData: Intergalactic.Component<'div', WidgetNoDataProps>;
+export declare const Error: Intergalactic.Component<'div', WidgetErrorProps>;
 export declare const getIconPath: (name: string) => string;
 
 export default WidgetEmpty;

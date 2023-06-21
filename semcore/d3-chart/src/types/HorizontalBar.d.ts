@@ -1,9 +1,10 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
-import { IBarContext, IBackgroundProps } from './Bar';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
+import { BarContext, BackgroundProps } from './Bar';
 
-export interface IHorizontalBarProps extends IContext {
+/** @deprecated */
+export interface IHorizontalBarProps extends HorizontalBarProps, UnknownProperties {}
+export type HorizontalBarProps = Context & {
   /** Field from data for XAxis */
   x?: string;
   /** Field from data for YAxis */
@@ -21,12 +22,10 @@ export interface IHorizontalBarProps extends IContext {
   r?: number | number[];
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-declare const HorizontalBar: (<T>(
-  props: MapProps<IHorizontalBarProps & T, IBarContext>,
-) => ReturnEl) & {
-  Background: <T>(props: MapProps<IBackgroundProps & T>) => ReturnEl;
+declare const HorizontalBar: Intergalactic.Component<'path', HorizontalBarProps, BarContext> & {
+  Background: Intergalactic.Component<'rect', BackgroundProps, Context>;
 };
 
 export default HorizontalBar;

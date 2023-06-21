@@ -1,25 +1,31 @@
-import React, { ComponentProps } from 'react';
-import { CProps, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { IModalProps } from '@semcore/modal';
+import React from 'react';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { ModalProps } from '@semcore/modal';
 
 export type WizardStep = string | number | boolean;
 
-export interface IWizardProps extends IModalProps {
+/** @deprecated */
+export interface IWizardProps extends WizardProps, UnknownProperties {}
+export type WizardProps = ModalProps & {
   /**
    * Active step value
    */
   step: WizardStep;
-}
+};
 
-export interface IWizardSidebarProps extends IBoxProps {
+/** @deprecated */
+export interface IWizardSidebarProps extends WizardSidebarProps, UnknownProperties {}
+export type WizardSidebarProps = BoxProps & {
   /**
    * Sidebar title
    */
   title?: React.ReactNode;
-}
+};
 
-export interface IWizardStepProps extends IBoxProps {
+/** @deprecated */
+export interface IWizardStepProps extends WizardStepProps, UnknownProperties {}
+export type WizardStepProps = BoxProps & {
   /**
    * Step value
    */
@@ -28,9 +34,11 @@ export interface IWizardStepProps extends IBoxProps {
    * Disabled step
    */
   disabled?: boolean;
-}
+};
 
-export interface IWizardStepperProps extends IBoxProps {
+/** @deprecated */
+export interface IWizardStepperProps extends WizardStepperProps, UnknownProperties {}
+export type WizardStepperProps = BoxProps & {
   /**
    * Step value
    */
@@ -48,13 +56,13 @@ export interface IWizardStepperProps extends IBoxProps {
    *  Is the step completed
    */
   completed?: boolean;
-}
+};
 
-declare const Wizard: (<T>(props: CProps<IWizardProps & T>) => ReturnEl) & {
-  Sidebar: <T>(props: IWizardSidebarProps & T) => ReturnEl;
-  Step: <T>(props: IWizardStepProps & T) => ReturnEl;
-  Stepper: <T>(props: IWizardStepperProps & T) => ReturnEl;
-  Content: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
+declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
+  Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
+  Step: Intergalactic.Component<'div', WizardStepProps>;
+  Stepper: Intergalactic.Component<'div', WizardStepperProps>;
+  Content: typeof Box;
 };
 
 export default Wizard;

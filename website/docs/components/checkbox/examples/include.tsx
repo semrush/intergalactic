@@ -6,7 +6,7 @@ const Demo = () => {
   const includeInputProps = [...inputProps, 'data-test-id'];
   return (
     <Checkbox>
-      <Checkbox.Value includeInputProps={includeInputProps} data-test-id='value' />
+      <Checkbox.Value includeInputProps={includeInputProps} data-test-id="value" />
       <Checkbox.Text>Value</Checkbox.Text>
     </Checkbox>
   );

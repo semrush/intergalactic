@@ -24,7 +24,7 @@ const Demo = () => {
           title='Tooltip with ignoring portals stacking. Lorem ipsum dolor sit amet.'
           theme='warning'
           visible={true}
-          placement='left'
+          placement='left-start'
           ignorePortalsStacking
         >
           <Input size='l' w={470}>
@@ -40,7 +40,7 @@ const Demo = () => {
           title='Tooltip without ignoring portals stacking. Lorem ipsum dolor sit amet.'
           theme='warning'
           visible={true}
-          placement='right'
+          placement='right-start'
         >
           <Input size='l' w={470}>
             <Input.Value id='input-2' />

@@ -16,7 +16,7 @@ const Demo = () => (
           <Checkbox.Value />
           <Checkbox.Text>{`Note ${item + 1}`}</Checkbox.Text>
         </Checkbox>
-        <Tooltip title='There is information about point.' placement='right' ml={1}>
+        <Tooltip title='There is information about point.' placement='right-start' ml={1}>
           <InfoXS color='stone' interactive aria-label='Additional info' />
         </Tooltip>
       </div>

@@ -1,7 +1,14 @@
-import { CProps, ReturnEl } from '@semcore/core';
-import Popper, { IPopperContext, IPopperProps, IPopperHandlers } from '@semcore/popper';
+import { Intergalactic } from '@semcore/core';
+import Popper, {
+  PopperContext,
+  PopperProps,
+  PopperHandlers,
+  PopperTriggerProps,
+} from '@semcore/popper';
 
-export interface IDropdownProps extends IPopperProps {
+/** @deprecated */
+export interface IDropdownProps extends DropdownProps, UnknownProperties {}
+export type DropdownProps = PopperProps & {
   /**
    * Modifier responsible for the size of the pop-up window:
    * `fixed` - a pop-up window of the same size as trigger;
@@ -11,15 +18,24 @@ export interface IDropdownProps extends IPopperProps {
    * */
   stretch?: 'min' | 'fixed' | false;
   locale?: string;
-}
+};
 
-export interface IDropdownContext extends IPopperContext {}
+/** @deprecated */
+export interface IDropdownContext extends DropdownContext, UnknownProperties {}
+export type DropdownContext = PopperContext & {};
 
-export interface IDropdownHandlers extends IPopperHandlers {}
+/** @deprecated */
+export interface IDropdownHandlers extends DropdownHandlers, UnknownProperties {}
+export type DropdownHandlers = PopperHandlers & {};
 
-declare const Dropdown: (<T>(
-  props: CProps<IDropdownProps & T, IDropdownContext, IDropdownHandlers>,
-) => ReturnEl) & {
+export type DropdownTriggerProps = PopperTriggerProps;
+
+declare const Dropdown: Intergalactic.Component<
+  'div',
+  DropdownProps,
+  DropdownContext,
+  DropdownHandlers
+> & {
   Trigger: typeof Popper.Trigger;
   Popper: typeof Popper.Popper;
 };

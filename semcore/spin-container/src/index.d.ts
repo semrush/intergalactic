@@ -1,41 +1,52 @@
-import { PropGetterFn, ReturnEl, CProps } from '@semcore/core';
-import { ISpinProps } from '@semcore/spin';
-import { IBoxProps } from '@semcore/flex-box';
-import { IFadeInOutProps } from '@semcore/animation';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { SpinProps } from '@semcore/spin';
+import { BoxProps } from '@semcore/flex-box';
+import { FadeInOutProps } from '@semcore/animation';
 
-export interface ISpinContainerProps extends IBoxProps, ISpinProps {
-  /**
-   * Color of container spinner; you can use your own color
-   */
-  background?: string;
-  /** Duration of animation displaying in ms
-   * @default 200
-   */
-  duration?: number;
-  /**
-   * Property responsible for displaying the spinner
-   * */
-  loading?: boolean;
-}
+/** @deprecated */
+export interface ISpinContainerProps extends SpinContainerProps, UnknownProperties {}
+export type SpinContainerProps = BoxProps &
+  SpinProps & {
+    /**
+     * Color of container spinner; you can use your own color
+     */
+    background?: string;
+    /** Duration of animation displaying in ms
+     * @default 200
+     */
+    duration?: number;
+    /**
+     * Property responsible for displaying the spinner
+     * */
+    loading?: boolean;
+  };
 
-export interface ISpinOverlayProps extends IBoxProps, IFadeInOutProps {}
+/** @deprecated */
+export interface ISpinOverlayProps extends SpinOverlayProps, UnknownProperties {}
+export type SpinOverlayProps = BoxProps & FadeInOutProps & {};
 
-export interface ISpinContainerContext {
+/** @deprecated */
+export interface ISpinContainerContext extends SpinContainerContext, UnknownProperties {}
+export type SpinContainerContext = {
   getOverlayProps: PropGetterFn;
-}
+};
 
-export interface ISpinContainerOverlayProps extends IBoxProps {
+/** @deprecated */
+export interface ISpinContainerOverlayProps extends SpinContainerOverlayProps, UnknownProperties {}
+export type SpinContainerOverlayProps = BoxProps & {
   /**
    * Css background; you can use your own color
    */
   background?: string;
-}
+};
 
-declare const SpinContainer: (<T>(
-  props: CProps<ISpinContainerProps & T, ISpinContainerContext>,
-) => ReturnEl) & {
-  Content: <T>(props: CProps<ISpinOverlayProps> & T) => ReturnEl;
-  Overlay: <T>(props: ISpinContainerOverlayProps & T) => ReturnEl;
+declare const SpinContainer: Intergalactic.Component<
+  'div',
+  SpinContainerProps,
+  SpinContainerContext
+> & {
+  Content: Intergalactic.Component<'div', SpinOverlayProps>;
+  Overlay: Intergalactic.Component<'div', SpinContainerOverlayProps>;
 };
 
 export default SpinContainer;

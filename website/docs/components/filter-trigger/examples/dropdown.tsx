@@ -11,7 +11,7 @@ export default () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='advance-trigger' size='300'>
+      <Text tag='label' htmlFor='advance-trigger' size={300}>
         Filter trigger for several filters inside
       </Text>
       <Box mt={2}>

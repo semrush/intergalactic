@@ -1,6 +1,7 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
@@ -15,15 +16,19 @@ function getText(dictionaries: Dictionary, locale: LocaleKeys) {
   };
 }
 
-export interface IWithI18nInjectedProps {
+/** @deprecated */
+export interface IWithI18nInjectedProps extends WithI18nInjectedProps, UnknownProperties {}
+export type WithI18nInjectedProps = {
   getText: WithI18n['getText'];
-}
+};
 
-export interface IWithI18nProps extends IWithI18nInjectedProps {
+/** @deprecated */
+export interface IWithI18nProps extends WithI18nProps, UnknownProperties {}
+export type WithI18nProps = WithI18nInjectedProps & {
   locale?: LocaleKeys;
 
   children?(props: IWithI18nInjectedProps): React.ReactNode;
-}
+};
 
 /**
  * @deprecated use `useI18n` instead

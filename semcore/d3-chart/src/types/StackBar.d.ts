@@ -1,10 +1,11 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
-import { IBarContext, IBarProps } from './Bar';
-import { IHorizontalBarProps } from './HorizontalBar';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
+import { BarContext, BarProps } from './Bar';
+import { HorizontalBarProps } from './HorizontalBar';
 
-export interface IStackBarProps extends IContext {
+/** @deprecated */
+export interface IStackBarProps extends StackBarProps, UnknownProperties {}
+export type StackBarProps = Context & {
   /** Field from data for XAxis */
   x?: string;
   /** Field from data for YAxis */
@@ -12,16 +13,18 @@ export interface IStackBarProps extends IContext {
   /** Stack generators
    * @default d3.stack() */
   stack?: any;
-}
+};
 
-export interface IStackBarContext {
+/** @deprecated */
+export interface IStackBarContext extends StackBarContext, UnknownProperties {}
+export type StackBarContext = {
   /** Series is an array of points, where each point corresponds to the element in the input data. */
   series: any[];
-}
+};
 
-declare const StackBar: (<T>(props: MapProps<IStackBarProps & T, IStackBarContext>) => ReturnEl) & {
-  Bar: <T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl;
-  HorizontalBar: <T>(props: MapProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
+declare const StackBar: Intergalactic.Component<'g', StackBarProps, StackBarContext> & {
+  Bar: Intergalactic.Component<'path', BarProps, BarContext>;
+  HorizontalBar: Intergalactic.Component<'path', HorizontalBarProps, BarContext>;
 };
 
 export default StackBar;

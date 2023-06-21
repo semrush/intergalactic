@@ -1,55 +1,68 @@
-import { ComponentProps } from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
-import Input, { IInputProps } from '@semcore/input';
-import { ITextProps } from '@semcore/typography';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import Input, { InputProps } from '@semcore/input';
+import { TextProps } from '@semcore/typography';
 import Button from '@semcore/button';
-import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 
-export interface IPaginationProps extends IBoxProps, IWithI18nEnhanceProps {
-  /**
-   * Total number of pages
-   * @default 1
-   */
-  totalPages?: number;
-  /**
-   * Active page number
-   * @default 1
-   */
-  currentPage?: number;
-  /**
-   * Callback for changing the active page
-   * @param pageNumber
-   */
-  onCurrentPageChange?: (pageNumber: number) => void;
-  locale?: string;
-}
+/** @deprecated */
+export interface IPaginationProps extends PaginationProps, UnknownProperties {}
+export type PaginationProps = BoxProps &
+  WithI18nEnhanceProps & {
+    /**
+     * Total number of pages
+     * @default 1
+     */
+    totalPages?: number;
+    /**
+     * Active page number
+     * @default 1
+     */
+    currentPage?: number;
+    /**
+     * Callback for changing the active page
+     * @param pageNumber
+     */
+    onCurrentPageChange?: (pageNumber: number) => void;
+    locale?: string;
+  };
 
-export interface ITotalPagesProps extends ITextProps, IWithI18nEnhanceProps {}
+/** @deprecated */
+export interface ITotalPagesProps extends TotalPagesProps, UnknownProperties {}
+export type TotalPagesProps = TextProps & WithI18nEnhanceProps & {};
 
-export interface IPageInputProps extends IInputProps, IWithI18nEnhanceProps {}
+/** @deprecated */
+export interface IPageInputProps extends PageInputProps, UnknownProperties {}
+export type PageInputProps = InputProps & WithI18nEnhanceProps & {};
 
-export interface IPaginationContext {
+/** @deprecated */
+export interface IPaginationContext extends PaginationContext, UnknownProperties {}
+export type PaginationContext = {
   getFirstPageProps: PropGetterFn;
   getPrevPageProps: PropGetterFn;
   getNextPageProps: PropGetterFn;
   getPageInputProps: PropGetterFn;
   getTotalPagesProps: PropGetterFn;
-}
+};
 
-export interface IPaginationHandlers {
+/** @deprecated */
+export interface IPaginationHandlers extends PaginationHandlers, UnknownProperties {}
+export type PaginationHandlers = {
   totalPages: (value: number) => void;
   currentPage: (value: number) => void;
-}
+};
 
-declare const Pagination: (<T>(
-  props: CProps<IPaginationProps & T, IPaginationContext, IPaginationHandlers>,
-) => ReturnEl) & {
-  PrevPage: (props: ComponentProps<typeof Button>) => ReturnEl;
-  NextPage: (props: ComponentProps<typeof Button>) => ReturnEl;
-  FirstPage: (props: ComponentProps<typeof Button>) => ReturnEl;
-  TotalPages: (props: CProps<ITotalPagesProps, {}, IPaginationHandlers>) => ReturnEl;
-  PageInput: (<T>(props: CProps<IPageInputProps & T, {}, IPaginationHandlers>) => ReturnEl) & {
+declare const Pagination: Intergalactic.Component<
+  'div',
+  PaginationProps,
+  PaginationContext,
+  PaginationHandlers
+> & {
+  PrevPage: typeof Button;
+  NextPage: typeof Button;
+  FirstPage: typeof Button;
+  TotalPages: Intergalactic.Component<TotalPagesProps, {}, PaginationHandlers>;
+  PageInput: Intergalactic.Component<PageInputProps, {}, PaginationHandlers> & {
     Value: typeof Input.Value;
     Addon: typeof Input.Addon;
   };

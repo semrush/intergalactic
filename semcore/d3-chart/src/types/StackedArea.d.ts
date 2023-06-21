@@ -1,9 +1,10 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic } from '@semcore/core';
+import { Context } from './context';
 import Area from './Area';
 
-export interface IStackedAreaProps extends IContext {
+/** @deprecated */
+export interface IStackedAreaProps extends StackedAreaProps, UnknownProperties {}
+export type StackedAreaProps = Context & {
   /** Field from data for XAxis */
   x?: string;
   /** Field from data for YAxis */
@@ -11,16 +12,16 @@ export interface IStackedAreaProps extends IContext {
   /** Stack generators
    * @default d3.stack() */
   stack?: any;
-}
+};
 
-export interface IStackedAreaContext {
+/** @deprecated */
+export interface IStackedAreaContext extends StackedAreaContext, UnknownProperties {}
+export type StackedAreaContext = {
   /** Series is an array of points, where each point corresponds to the element in the input data. */
   series: any[];
-}
+};
 
-declare const StackedArea: (<T>(
-  props: MapProps<IStackedAreaProps & T, IStackedAreaContext>,
-) => ReturnEl) & {
+declare const StackedArea: Intergalactic.Component<'g', StackedAreaProps, StackedAreaContext> & {
   Area: typeof Area;
 };
 

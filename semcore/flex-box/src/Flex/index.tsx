@@ -1,6 +1,6 @@
 import React from 'react';
-import { createBaseComponent } from '@semcore/core';
-import useFlex, { IFlexProps } from './useFlex';
+import { Intergalactic, createBaseComponent } from '@semcore/core';
+import useFlex, { FlexProps } from './useFlex';
 
 function Flex(props, ref) {
   const [Tag, flexProps] = useFlex(props, ref);
@@ -9,4 +9,4 @@ function Flex(props, ref) {
 
 Flex.displayName = 'Flex';
 
-export default createBaseComponent(Flex) as <T>(props: IFlexProps & T) => React.ReactElement;
+export default createBaseComponent(Flex) as any as Intergalactic.Component<'div', FlexProps>;

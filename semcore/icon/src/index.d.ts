@@ -1,17 +1,20 @@
-import { IBoxProps } from '@semcore/flex-box';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { ReturnEl } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { UnknownProperties } from '@semcore/core';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-export interface IIconProps extends IBoxProps, IKeyboardFocusProps {
-  width?: string | number;
-  height?: string | number;
-  viewBox?: string;
-  /** Make an icon interactive */
-  interactive?: boolean;
-  /** Icon color */
-  color?: string;
-}
+/** @deprecated */
+export interface IIconProps extends IconProps, UnknownProperties {}
+export type IconProps = BoxProps &
+  KeyboardFocusProps & {
+    width?: string | number;
+    height?: string | number;
+    viewBox?: string;
+    /** Make an icon interactive */
+    interactive?: boolean;
+    /** Icon color */
+    color?: string;
+  };
 
-declare const Icon: <T>(props: IIconProps & T) => ReturnEl;
+declare const Icon: Intergalactic.Component<'div', IconProps>;
 
 export default Icon;

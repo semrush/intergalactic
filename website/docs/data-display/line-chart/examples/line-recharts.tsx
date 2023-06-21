@@ -24,7 +24,7 @@ import SettingsS from '@semcore/ui/icon/Settings/m';
 
 let date = Date.now();
 const data = Array(200)
-  .fill()
+  .fill(0)
   .map(function (i, x) {
     date -= 1000 * 60 * 60 * 24;
     return {

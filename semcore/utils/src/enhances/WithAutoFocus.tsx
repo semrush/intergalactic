@@ -1,14 +1,19 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import createHoc from '../createHoc';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-export interface IEnhancedWithAutoFocusProps {
+/** @deprecated */
+export interface IEnhancedWithAutoFocusProps
+  extends EnhancedWithAutoFocusProps,
+    UnknownProperties {}
+export type EnhancedWithAutoFocusProps = {
   /**
    * @default undefined
    */
   autoFocus?: string | number | boolean;
   children?: (props: IEnhancedWithAutoFocusProps) => React.ReactNode;
-}
+};
 
 class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
   static displayName = 'EnhancedWithAutoFocus';

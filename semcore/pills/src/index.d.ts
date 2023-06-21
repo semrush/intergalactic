@@ -1,12 +1,16 @@
 import React from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { INeighborItemProps, INeighborLocationProps } from '@semcore/neighbor-location';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { INeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type PillsValue = string | number | boolean | null;
 
-export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighborLocationProps {
+/** @deprecated */
+export interface IPillsProps<T extends PillsValue = PillsValue>
+  extends PillsProps<T>,
+    UnknownProperties {}
+export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps & {
   /** Pills size */
   size?: 'l' | 'm';
   /** Disabled state */
@@ -26,33 +30,39 @@ export interface IPillsProps<T extends PillsValue = PillsValue> extends INeighbo
    * @default tabs
    */
   behavior?: 'tabs' | 'radio';
-}
+};
 
-export interface IPillProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {
-  /** Pill value */
-  value?: PillsValue;
-  /** Disabled state */
-  disabled?: boolean;
-  /** Selected state */
-  selected?: boolean;
-  /** Left addon text */
-  addonLeft?: React.ElementType;
-  /** Right addon tag */
-  addonRight?: React.ElementType;
-}
+/** @deprecated */
+export interface IPillProps extends PillProps, UnknownProperties {}
+export type PillProps = BoxProps &
+  INeighborItemProps &
+  KeyboardFocusProps & {
+    /** Pill value */
+    value?: PillsValue;
+    /** Disabled state */
+    disabled?: boolean;
+    /** Selected state */
+    selected?: boolean;
+    /** Left addon text */
+    addonLeft?: React.ElementType;
+    /** Right addon tag */
+    addonRight?: React.ElementType;
+  };
 
-export interface IPillsContext {
+/** @deprecated */
+export interface IPillsContext extends PillsContext, UnknownProperties {}
+export type PillsContext = {
   getItemProps: PropGetterFn;
-}
+};
 
-export interface IPillsHandlers {
+/** @deprecated */
+export interface IPillsHandlers extends PillsHandlers, UnknownProperties {}
+export type PillsHandlers = {
   value: (value: PillsValue) => void;
-}
+};
 
-declare const Pills: (<T, V extends PillsValue = PillsValue>(
-  props: CProps<IPillsProps<V> & T, IPillsContext, IPillsHandlers>,
-) => ReturnEl) & {
-  Item: (<T>(props: CProps<IPillProps & T, {}, IPillsHandlers>) => ReturnEl) & {
+declare const Pills: Intergalactic.Component<'div', PillsProps, PillsContext, PillsHandlers> & {
+  Item: Intergalactic.Component<'button', PillProps, PillsHandlers> & {
     Text: typeof Box;
     Addon: typeof Box;
   };

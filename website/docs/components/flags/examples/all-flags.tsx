@@ -9,7 +9,7 @@ const Demo = () => (
   <Flex flexWrap>
     {Object.keys(allNames).map((name) => (
       <Flex direction='column' alignItems='center' p={5} key={name}>
-        <Flags name={name} mb={2} />
+        <Flags name={name as keyof typeof allNames} mb={2} />
         <Text style={{ textAlign: 'center' }} noWrap w={160}>
           {allNames[name]}
         </Text>

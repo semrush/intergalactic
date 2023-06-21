@@ -1,25 +1,28 @@
-import { IBoxProps } from '@semcore/flex-box';
-import { ReturnEl } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { UnknownProperties } from '@semcore/core';
 import { MapProps } from './Plot';
-import IContext from './context';
+import { Context } from './context';
 
-export interface IPlotProps extends IContext, IBoxProps {
-  /** Width of the svg element
-   * @default 0*/
-  width?: number;
-  /** Height of the svg element
-   * @default 0*/
-  height?: number;
-  /** Human readable chart name (e.g "Last market trends") */
-  label?: string;
-  /**
-   * Locale for displaying the days of a week and months, to be transferred to `Intl`
-   * @default en
-   * */
-  locale?: NavigatorLanguage['language'];
-  /** Optional prop to tune up alt text generating for charts */
-  a11yAltTextConfig?: PlotSummarizerConfig;
-}
+/** @deprecated */
+export interface IPlotProps extends PlotProps, UnknownProperties {}
+export type PlotProps = Context &
+  BoxProps & {
+    /** Width of the svg element
+     * @default 0*/
+    width?: number;
+    /** Height of the svg element
+     * @default 0*/
+    height?: number;
+    /** Human readable chart name (e.g "Last market trends") */
+    label?: string;
+    /**
+     * Locale for displaying the days of a week and months, to be transferred to `Intl`
+     * @default en
+     * */
+    locale?: NavigatorLanguage['language'];
+    /** Optional prop to tune up alt text generating for charts */
+    a11yAltTextConfig?: PlotSummarizerConfig;
+  };
 
 export type PlotSummarizerConfig = {
   /** Totally disable automatic data summarization */
@@ -90,12 +93,12 @@ export type PlotSummarizerConfig = {
   additionalFields?: string[];
 };
 
+/** @deprecated */
 export type MapProps<Props, Ctx = {}, UCProps = {}> = Props & {
   children?:
     | ((props: Props & Ctx, handlers: UCProps) => Props | React.PropsWithChildren)
     | React.ReactNode;
 };
 
-declare const Plot: <T>(props: MapProps<IPlotProps & T>) => ReturnEl;
-
+declare const Plot: Intergalactic.Component<'svg', PlotProps, Context>;
 export default Plot;
