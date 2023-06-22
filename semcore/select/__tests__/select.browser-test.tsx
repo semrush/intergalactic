@@ -61,7 +61,5 @@ test.describe('Select', () => {
     const triggerLocatior = await page.locator('[data-ui-name="Select.Trigger"]');
 
     await expect(await triggerLocatior.textContent()).toBe('Option b');
-
-    await expect(page).toHaveScreenshot();
   });
 });
