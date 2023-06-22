@@ -22,16 +22,18 @@ class Input extends Component {
 
   inputRef = React.createRef();
 
-  handleMouseDownAddon = (e) => {
-    e.preventDefault();
+  handleMouseDownAddon = (event) => {
+    event.preventDefault();
     this.inputRef.current?.focus();
   };
-  handleKeyDown = () => {
-    setTimeout(() => {
-      if (document.activeElement === document.body) {
-        this.inputRef.current?.focus();
-      }
-    }, 0);
+  handleKeyDown = (event) => {
+    if (event.code === 'Enter') {
+      setTimeout(() => {
+        if (document.activeElement === document.body) {
+          this.inputRef.current?.focus();
+        }
+      }, 10);
+    }
   };
 
   bindHandlerValueFocused = (focused) => () => this.setState({ focused });
