@@ -1,3 +1,13 @@
+## [14.6.0] - 2023-06-22
+
+### @semcore/popper
+
+- **Fixed** Keyboard focused poppers were not intractable with mouse.
+
+### @semcore/time-picker
+
+- **Added** Swedish (`sv`) locale support.
+
 ## [14.5.0] - 2023-06-19
 
 ### @semcore/inline-input
@@ -56,10 +66,6 @@
 - **Added** Swedish (`sv`) locale support.
 
 ### @semcore/color-picker
-
-- **Added** Swedish (`sv`) locale support.
-
-### @semcore/time-picker
 
 - **Added** Swedish (`sv`) locale support.
 
@@ -133,6 +139,7 @@
 
 ### @semcore/time-picker
 
+- **Added** Swedish (`sv`) locale support.
 - **Added** Swedish (`sv`) locale support.
 
 ### @semcore/widget-empty
