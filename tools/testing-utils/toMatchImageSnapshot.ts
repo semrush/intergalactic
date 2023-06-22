@@ -25,7 +25,11 @@ const resizeImage = (image: PNG, w: number, h: number) => {
   return result;
 };
 
-export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
+export async function toMatchImageSnapshot(
+  snapshot: Buffer,
+  task: any,
+  options?: { maxPixelDiff?: number },
+) {
   if (!task) {
     return {
       pass: false,
@@ -105,7 +109,7 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
     },
   );
 
-  if (mismatch < 10) {
+  if (mismatch <= (options?.maxPixelDiff ?? 10)) {
     return {
       pass: true,
       message: () => 'ok',
