@@ -167,6 +167,8 @@ jobs:
       SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
     steps:
       - uses: actions/checkout@v3.5.3
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
@@ -225,6 +227,8 @@ jobs:
       SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
     steps:
       - uses: actions/checkout@v3.5.3
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v2.2.4
         name: Install pnpm
         id: pnpm-install
@@ -310,6 +314,8 @@ jobs:
     if: needs.vo-filter.outputs.run_vo == 'true'
     steps:
       - uses: actions/checkout@v3.5.3
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 7
