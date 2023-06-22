@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-06-22
+
+### Changed
+
+- Input now catches focus after keyboard events happened inside of the input container if no other element on page has focus.
+
 ## [3.6.32] - 2023-06-14
 
 ### Changed

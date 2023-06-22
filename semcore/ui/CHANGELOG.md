@@ -1,5 +1,9 @@
 ## [14.6.0] - 2023-06-22
 
+### @semcore/input
+
+- **Changed** Input now catches focus after keyboard events happened inside of the input container if no other element on page has focus.
+
 ### @semcore/popper
 
 - **Fixed** Keyboard focused poppers were not intractable with mouse.
