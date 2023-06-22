@@ -26,6 +26,13 @@ class Input extends Component {
     e.preventDefault();
     this.inputRef.current?.focus();
   };
+  handleKeyDown = () => {
+    setTimeout(() => {
+      if (document.activeElement === document.body) {
+        this.inputRef.current?.focus();
+      }
+    }, 0);
+  };
 
   bindHandlerValueFocused = (focused) => () => this.setState({ focused });
 
@@ -84,6 +91,7 @@ class Input extends Component {
             <SInput
               render={Box}
               focused={focused}
+              onKeyDown={this.handleKeyDown}
               neighborLocation={neighborLocation}
               __excludeProps={[
                 'role',
