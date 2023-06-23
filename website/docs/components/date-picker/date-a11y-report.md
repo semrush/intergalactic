@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v14.4.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v14.6.0, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.tsx).**
 
@@ -41,13 +41,13 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 33. Screen reader goes into the active element.
 34. Screen reader says "from date MM/DD/YYYY edit text".
 35. Screen reader types "05".
-36. Screen reader says "05".
+36. Screen reader says "5".
 37. Screen reader types "29".
 38. Screen reader says "29".
 39. Screen reader types "2000".
 40. Screen reader says "05/29/2000 Insertion at end of text. from date MM/DD/YYYY edit text".
 41. Screen reader types "05".
-42. Screen reader says "05".
+42. Screen reader says "to date MM/DD/YYYY edit text".
 43. Screen reader types "29".
 44. Screen reader says "29".
 45. Screen reader types "2000".

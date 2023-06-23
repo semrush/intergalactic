@@ -1,13 +1,13 @@
 ## Automated screen reader testing
 
-_Intergalactic v14.4.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v14.6.0, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/auto-suggest/examples/autosuggest.tsx).**
 
 ```
 1. Screen reader goes into the active element.
-2. Screen reader says "In web content Your website Your website".
+2. Screen reader says "You are currently on a text element, inside of web content.  To exit this web area, press Control-Option-Shift-Up Arrow.".
 3. Screen reader goes to the next element.
 4. Screen reader says "Type domain or URL list box pop up Menu pop-up combo box".
 5. Screen reader goes into the active element.
@@ -29,5 +29,5 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 21. Screen reader says "web content".
 22. Screen reader goes into the active element.
 23. Screen reader goes to the next element.
-24. Screen reader says "semrush.com".
+24. Screen reader says "semrush.com list box pop up Menu pop-up combo box".
 ```

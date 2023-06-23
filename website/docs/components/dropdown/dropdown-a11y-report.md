@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v14.4.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v14.6.0, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/dropdown/examples/dropdown.tsx).**
 
@@ -14,5 +14,5 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 6. Screen reader goes to the next element.
 7. Screen reader says "Content  clickable".
 8. Screen reader presses the "Escape" button.
-9. Screen reader says "Trigger group".
+9. Screen reader says "You are currently on a button, inside of web content. To display a list of options, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow.".
 ```
