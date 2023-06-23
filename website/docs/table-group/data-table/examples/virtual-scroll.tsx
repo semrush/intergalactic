@@ -24,13 +24,13 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="id" children="ID" />
-        <DataTable.Column name="keyword" children="Keyword" />
+        <DataTable.Column name='id' children='ID' />
+        <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column>
           Organic Sessions
-          <DataTable.Column name="kd" children="KD,%" />
-          <DataTable.Column name="cpc" children="CPC" />
-          <DataTable.Column name="vol" children="Vol." />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Column>
       </DataTable.Head>
       <DataTable.Body h={400} virtualScroll />

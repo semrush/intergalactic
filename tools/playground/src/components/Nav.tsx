@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocationHash } from './useLocationHash';
-// eslint-disable-next-line import/no-unresolved
+
 import { playgrounds } from '@playgrounds';
 import './nav.css';
 import LogoImage from '../../../../website/src/static/illustration/whale.svg';
@@ -17,17 +17,20 @@ export const Nav: React.FC = () => {
   );
 
   return (
-    <nav className="intergalactic-playground_nav">
+    <nav className='intergalactic-playground_nav'>
+      {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
       <div
-        className="intergalactic-playground_logo"
+        className='intergalactic-playground_logo'
         style={{ backgroundImage: `url(${LogoImage})` }}
         onClick={goHome}
       />
-      <h1 className="intergalactic-playground_title" onClick={goHome}>
+      {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+      <h1 className='intergalactic-playground_title' onClick={goHome}>
         Intergalactic playground
       </h1>
       <ul>
         {playgroundsList.map((playgroundName) => (
+          // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
           <li
             onClick={handlePlaygroundNameClick(playgroundName)}
             key={playgroundName}

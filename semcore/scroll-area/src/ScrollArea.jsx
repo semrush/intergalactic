@@ -19,7 +19,6 @@ if (typeof window !== 'undefined') {
   eventCalculate = new Event('calculate');
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BoxWithoutPosition = React.forwardRef(({ position, ...props }, ref) => (
   <Box ref={ref} {...props} />
 ));
@@ -60,7 +59,9 @@ class ScrollAreaRoot extends Component {
     this.observer = new ResizeObserver(callAllEventHandlers(props.onResize, this.calculate));
   }
 
-  refWrapper = (node) => (this.$wrapper = findDOMNode(node));
+  refWrapper = (node) => {
+    this.$wrapper = findDOMNode(node);
+  };
 
   // for max height/width
   calculateSizeContainer() {
@@ -112,7 +113,7 @@ class ScrollAreaRoot extends Component {
 
   // FIX Chrome bug, when focus state on hide control
   handleScroll = (e) => {
-    if (e.target && e.target.isEqualNode(this.$wrapper)) {
+    if (e.target?.isEqualNode(this.$wrapper)) {
       e.target.scrollTop = 0;
       e.target.scrollLeft = 0;
     }
@@ -218,10 +219,10 @@ class ScrollAreaRoot extends Component {
               <Children />
             </ScrollArea.Container>
             {(orientation === undefined || orientation === 'horizontal') && (
-              <ScrollArea.Bar orientation="horizontal" />
+              <ScrollArea.Bar orientation='horizontal' />
             )}
             {(orientation === undefined || orientation === 'vertical') && (
-              <ScrollArea.Bar orientation="vertical" />
+              <ScrollArea.Bar orientation='vertical' />
             )}
           </>
         )}

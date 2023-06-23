@@ -24,7 +24,7 @@ class ClipPath extends Component {
     if (!document || !id || !document.querySelector(`#${id}`)) return;
     const svg = document.querySelector(`#${id}`).closest('svg');
     Array.from(svg.querySelectorAll(`[clip-path="url(#${id})"]`)).forEach((node) => {
-      node && node.getTotalLength && node.getTotalLength();
+      node?.getTotalLength?.();
     });
     this.setAttributeTag();
   }
@@ -34,7 +34,6 @@ class ClipPath extends Component {
   }
 
   render() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, transition, tag: Tag, style, className, ...other } = this.asProps;
     return (
       <clipPath aria-hidden ref={this.refClipPath} id={id}>

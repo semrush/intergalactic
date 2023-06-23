@@ -12,6 +12,6 @@ const options = Array(6)
 
 export default () => (
   <Flex>
-    <Select options={options} placeholder="Select an option, sir 🧐" m="auto" />
+    <Select options={options} placeholder='Select an option, sir 🧐' m='auto' />
   </Flex>
 );

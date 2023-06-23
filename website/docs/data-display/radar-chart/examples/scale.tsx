@@ -41,6 +41,6 @@ export default () => {
 };
 
 const data = {
-  'categories': ['Cat 1', 'Cat 2', 'Cat 3', 'Cat 4', 'Cat 5', 'Cat 6'],
-  'data_1': [10, 2, 10, 2, 10, 2],
-}
+  categories: ['Cat 1', 'Cat 2', 'Cat 3', 'Cat 4', 'Cat 5', 'Cat 6'],
+  data_1: [10, 2, 10, 2, 10, 2],
+};

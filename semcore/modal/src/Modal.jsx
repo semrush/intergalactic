@@ -131,9 +131,9 @@ function Window(props) {
     <SWindow
       render={Slide}
       initialAnimation={true}
-      slideOrigin="top"
+      slideOrigin='top'
       visible={visible}
-      role="dialog"
+      role='dialog'
       aria-modal={true}
       duration={duration}
       ref={windowRef}
@@ -166,7 +166,7 @@ function Close(props) {
   const SClose = Root;
   const { Children, children: hasChildren, getI18nText } = props;
   return sstyled(props.styles)(
-    <SClose render={Box} tag="button" tabIndex={0} aria-label={getI18nText('close')}>
+    <SClose render={Box} tag='button' tabIndex={0} aria-label={getI18nText('close')}>
       {hasChildren ? <Children /> : <CloseIcon title={getI18nText('close')} />}
     </SClose>,
   );
@@ -180,7 +180,7 @@ function Title(props) {
 
   useEffect(() => setHasTitle());
 
-  return sstyled(styles)(<STitle render={Text} tag="h2" />);
+  return sstyled(styles)(<STitle render={Text} tag='h2' />);
 }
 
 const Modal = createComponent(ModalRoot, {

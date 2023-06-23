@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { interpolate, useAsyncI18nMessages } from './i18nEnhance';

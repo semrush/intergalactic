@@ -57,7 +57,7 @@ class TabPanelRoot extends Component {
     const STabPanel = Root;
     const { styles } = this.asProps;
 
-    return sstyled(styles)(<STabPanel render={Box} role="tablist" />);
+    return sstyled(styles)(<STabPanel render={Box} role='tablist' />);
   }
 }
 
@@ -66,7 +66,7 @@ function TabPanelItem(props) {
   const { Children, styles, addonLeft, addonRight } = props;
 
   return sstyled(styles)(
-    <STabPanelItem render={Box} type="button" tag="button" role="tab">
+    <STabPanelItem render={Box} type='button' tag='button' role='tab'>
       {addonLeft ? <TabPanel.Item.Addon tag={addonLeft} /> : null}
       {addonTextChildren(Children, TabPanel.Item.Text, TabPanel.Item.Addon)}
       {addonRight ? <TabPanel.Item.Addon tag={addonRight} /> : null}
@@ -79,13 +79,13 @@ TabPanelItem.enhance = [keyboardFocusEnhance()];
 function Text(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag="span" />);
+  return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
   const SAddon = Root;
   const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} tag="span" />);
+  return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
 const TabPanel = createComponent(TabPanelRoot, {

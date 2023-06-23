@@ -50,7 +50,7 @@ describe('NoData', () => {
   });
 
   test.concurrent('Should support custom type', async ({ task }) => {
-    const component = <NoData type="line-chart" />;
+    const component = <NoData type='line-chart' />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

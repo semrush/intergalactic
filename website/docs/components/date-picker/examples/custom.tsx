@@ -19,13 +19,13 @@ const Demo = () => {
           {({ days }) =>
             days.map((data, i) => (
               <DatePicker.Calendar.Unit {...data} key={i}>
-                <Flex direction="column" p={1} w={'100%'} alignItems="center">
+                <Flex direction='column' p={1} w={'100%'} alignItems='center'>
                   {data.children}
                   <ProgressBar
-                    size="s"
+                    size='s'
                     duration={0}
                     value={randomInteger(0, 100)}
-                    theme="dark"
+                    theme='dark'
                     mt={1}
                   />
                 </Flex>

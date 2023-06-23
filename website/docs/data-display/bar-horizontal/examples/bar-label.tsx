@@ -23,15 +23,15 @@ export default () => {
       <YAxis>
         <YAxis.Ticks />
       </YAxis>
-      <HorizontalBar x="bar" y="category">
+      <HorizontalBar x='bar' y='category'>
         {({ value, x, y, width, height }) => {
           return {
             children: (
               <text
                 x={x + width + 16}
                 y={y + height / 2}
-                textAnchor="start"
-                alignmentBaseline="middle"
+                textAnchor='start'
+                alignmentBaseline='middle'
                 fill={resolveColor('gray60')}
               >
                 $ {value.bar}

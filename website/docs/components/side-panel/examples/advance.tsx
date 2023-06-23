@@ -13,7 +13,7 @@ export default () => {
         <SidePanel.Overlay>
           <SidePanel.Panel mt={20}>
             <SidePanel.Close />
-            <Text size={300} tag="p">
+            <Text size={300} tag='p'>
               Waba-laba-dub-dub!
               <Button mt={3}>I'm just a button</Button>
             </Text>

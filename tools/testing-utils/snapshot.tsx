@@ -132,7 +132,7 @@ snapshot.ProxyProps = function (props) {
   const { children, ...others } = props;
   return React.Children.map(children, (child, i) =>
     React.cloneElement(child, {
-      key: i,
+      key: `${i}`,
       ...others,
     }),
   );

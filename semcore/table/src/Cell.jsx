@@ -16,7 +16,7 @@ function RootCell(props, ref) {
   const align = textAlign ? textAlign : alignProps;
 
   return sstyled(styles)(
-    <SCell ref={ref} tag="td" use={use} valign={valign} align={align} {...other} />,
+    <SCell ref={ref} tag='td' use={use} valign={valign} align={align} {...other} />,
   );
 }
 
@@ -31,7 +31,7 @@ function CellRowInner(props, ref) {
   return sstyled(styles)(
     <SCellRow
       ref={ref}
-      valign="top"
+      valign='top'
       theme={theme}
       highlighted={highlighted}
       interactive={interactive}
@@ -62,18 +62,12 @@ function CellHeadInner(props, ref) {
   const SSortIcon = SORTING_ICON[sorting];
 
   return sstyled(styles)(
-    <SCellHead
-      ref={ref}
-      tag="th"
-      noWrap
-      tabIndex={sorting && 0}
-      {...props}
-    >
+    <SCellHead ref={ref} tag='th' noWrap tabIndex={sorting && 0} {...props}>
       <SCellHeadContent>
         {children}
         {sorting && (
           <SSortWrapper>
-            <SSortIcon active={active}/>
+            <SSortIcon active={active} />
           </SSortWrapper>
         )}
       </SCellHeadContent>

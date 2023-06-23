@@ -25,16 +25,16 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot x="x" y="y1" color="#2BB3FF" />
-      <ScatterPlot x="x" y="y2" color="#59DDAA" />
+      <ScatterPlot x='x' y='y1' color='#2BB3FF' />
+      <ScatterPlot x='x' y='y2' color='#59DDAA' />
       <Tooltip>
         {({ xIndex, x, y, color }) => {
           return {
             children: (
               <>
                 <Tooltip.Dot color={color}>Data</Tooltip.Dot>
-                <Text tag="div">X axis {data[xIndex][x]}</Text>
-                <Text tag="div">Y axis {data[xIndex][y]}</Text>
+                <Text tag='div'>X axis {data[xIndex][x]}</Text>
+                <Text tag='div'>Y axis {data[xIndex][y]}</Text>
               </>
             ),
           };

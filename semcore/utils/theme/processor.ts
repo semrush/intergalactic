@@ -121,8 +121,7 @@ for (const theme of themes) {
                             valueNode.type === 'word' &&
                             (valueNode.value.startsWith('#') || valueNode.value.startsWith('rgb'))
                           ) {
-                            const location =
-                              node.source.start.line + ':' + node.source.start.offset;
+                            const location = `${node.source.start.line}:${node.source.start.offset}`;
                             colorLiterals.push({
                               path: `${projectCssPaths[fileIndex]}:${location}`,
                               name: valueNode.value,
@@ -136,8 +135,7 @@ for (const theme of themes) {
                               node.prop.includes('radius') ||
                               node.prop.includes('font-size'))
                           ) {
-                            const location =
-                              node.source.start.line + ':' + node.source.start.offset;
+                            const location = `${node.source.start.line}:${node.source.start.offset}`;
                             colorLiterals.push({
                               path: `${projectCssPaths[fileIndex]}:${location}`,
                               name: valueNode.value,
@@ -209,23 +207,28 @@ for (const theme of themes) {
       }
     }
 
-    /* eslint-disable no-console */
     if (warning) {
       if (unusedVariables.length > 0) {
-        console.log(`Unused design tokens:`);
+        // rome-ignore lint/nursery/noConsoleLog: <explanation>
+        console.log('Unused design tokens:');
+        // rome-ignore lint/nursery/noConsoleLog: <explanation>
         console.log(unusedVariables.join('\n'));
       }
       if (Object.values(legacyCssVariables).reduce((sum, item) => sum + item) > 0) {
-        console.log(`Still used legacy variables:`);
+        // rome-ignore lint/nursery/noConsoleLog: <explanation>
+        console.log('Still used legacy variables:');
         for (const variable in legacyCssVariables) {
           if (legacyCssVariables[variable] !== 0) {
+            // rome-ignore lint/nursery/noConsoleLog: <explanation>
             console.log(`${variable} (${legacyCssVariables[variable]})`);
           }
         }
       }
       if (colorLiterals.length > 0) {
-        console.log(`Unexpected color literals:`);
+        // rome-ignore lint/nursery/noConsoleLog: <explanation>
+        console.log('Unexpected color literals:');
         for (const literal of colorLiterals) {
+          // rome-ignore lint/nursery/noConsoleLog: <explanation>
           console.log(`${literal.name} in ${literal.path}`);
         }
       }
@@ -286,14 +289,14 @@ for (const theme of themes) {
   }
 }
 
-execSync(`pnpm pretty-quick --pattern "**/*.css"`, {
+execSync(`pnpm format "**/*.css" --write`, {
   encoding: 'utf-8',
   cwd: resolvePath(dirname, '../../../'),
   stdio: ['inherit', 'inherit', 'inherit'],
 });
 
 execSync(
-  `pnpm eslint --fix --no-ignore -c .eslintrc --ext .json "./semcore/utils/src/themes/default.json" "./website/docs/style/design-tokens/components/design-tokens.json" "./website/docs/style/design-tokens/components/base-tokens.json"`,
+  `pnpm rome format --write "./semcore/utils/src/themes/default.json" "./website/docs/style/design-tokens/components/design-tokens.json" "./website/docs/style/design-tokens/components/base-tokens.json"`,
   {
     encoding: 'utf-8',
     cwd: resolvePath(dirname, '../../../'),

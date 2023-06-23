@@ -32,7 +32,7 @@ export const normalizeSemver = (version: string) => {
   let cut = trimmed.substring(prefix.length);
 
   if (cut.split('.').length < 3 && cut.includes('-')) {
-    throw new Error(`Unable to handle version with both missing minor/patch and prerelease`);
+    throw new Error('Unable to handle version with both missing minor/patch and prerelease');
   }
 
   while (cut.split('.').length < 3) {

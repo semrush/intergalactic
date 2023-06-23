@@ -19,8 +19,8 @@ const Demo = () => (
         </Text>
       </SpinContainer.Content>
       <SpinContainer.Overlay style={{ alignItems: 'flex-start' }}>
-        <Box position="sticky" top="100px">
-          <Spin size="xxl" />
+        <Box position='sticky' top='100px'>
+          <Spin size='xxl' />
         </Box>
       </SpinContainer.Overlay>
     </SpinContainer>

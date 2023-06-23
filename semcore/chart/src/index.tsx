@@ -28,15 +28,15 @@ export {
   Dot,
   ErrorBar,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   Funnel,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   FunnelChart,
   Label,
   LabelList,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   Layer,
   PolarAngleAxis,
   PolarGrid,
@@ -48,7 +48,7 @@ export {
   ReferenceDot,
   ResponsiveContainer,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   Sankey,
   Scatter,
   Sector,
@@ -56,7 +56,7 @@ export {
   Symbols,
   Text,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   Trapezoid,
   ZAxis,
 } from 'recharts';

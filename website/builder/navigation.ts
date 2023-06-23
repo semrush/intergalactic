@@ -73,9 +73,9 @@ export const buildNavigation = async (docsDir: string) => {
     const navigation = [];
     for (let i = 0; i < dirs.length; i++) {
       const dir = dirs[i];
-      const fileName = dir.split('/').pop() + '.md';
-      const dirIndexFile = dir + '/' + fileName;
-      const siblingFile = dir + '.md';
+      const fileName = `${dir.split('/').pop()}.md`;
+      const dirIndexFile = `${dir}/${fileName}`;
+      const siblingFile = `${dir}.md`;
       const filePath = navigationMap[dirIndexFile] ? dirIndexFile : siblingFile;
       const { meta, subPages, hasContent } = navigationMap[filePath];
       const navigationNode = {

@@ -9,14 +9,14 @@ const rootPath = path.resolve(__dirname);
 function cli(scriptPath, cwd, args = []) {
   return new Promise((resolve) => {
     exec(
-      `node ${path.resolve(scriptPath)} ${args.join(' ')} && prettier ${rootPath}`,
+      `node ${path.resolve(scriptPath)} ${args.join(' ')} && pnpm format ${rootPath}`,
       { cwd },
       (error, stdout, stderr) => {
-        if (error && error.code) {
+        if (error?.code) {
           throw Error(error);
         }
         resolve({
-          code: error && error.code ? error.code : 0,
+          code: error?.code ? error.code : 0,
           error,
           stdout,
           stderr,
@@ -40,7 +40,6 @@ async function checkDistFiles(publicPath, familyIcons, opt, iconPath) {
     expect(isJSPathExists).toBeTruthy();
     expect(isDTSPathExists).toBeTruthy();
   } catch (error) {
-    // eslint-disable-next-line no-console
     console.error(error);
     throw Error(
       `Failed to compile ${familyIcons} images from ${publicPath
@@ -63,7 +62,7 @@ describe('Transform svg', () => {
 
       let iconPath = glob.sync(`${publicSvgPath}/external/**/*.svg`)[0];
       iconPath = iconPath.replace('.svg', '').split('/').slice(-3);
-      iconPath = iconPath[0] + '/' + iconPath[1] + iconPath[2];
+      iconPath = `${iconPath[0]}/${iconPath[1]}${iconPath[2]}`;
       await checkDistFiles(publicSvgPath, 'external', { rootPath: `${rootPath}/lib` }, iconPath);
 
       await checkDistFiles(publicSvgPath, 'pay', { slice: -2, rootPath: `${rootPath}/lib` });
@@ -74,7 +73,7 @@ describe('Transform svg', () => {
 
       let iconPathExternal = glob.sync(`${publicSvgNewPath}/external/**/*.svg`)[0];
       iconPathExternal = iconPathExternal.replace('.svg', '').split('/').slice(-3);
-      iconPathExternal = iconPathExternal[0] + '/' + iconPathExternal[1] + iconPathExternal[2];
+      iconPathExternal = `${iconPathExternal[0]}/${iconPathExternal[1]}${iconPathExternal[2]}`;
       await checkDistFiles(publicSvgNewPath, 'external', {}, iconPathExternal);
 
       await checkDistFiles(publicSvgNewPath, 'pay', { slice: -3 });
@@ -88,30 +87,26 @@ pluginTester({
   plugin: () => ({}),
   pluginName: 'Compare files svg old',
   filename: __filename,
-  tests: familyNameIcons
-    .map((name) => {
-      const files = glob.sync(`${rootPath}/lib/${name}/**/*.js`);
-      return files.map((filePath) => ({
-        title: `File ${filePath.split('/').slice(-3).join('/')} don't have change`,
-        fixture: filePath,
-        outputFixture: filePath.replace('__tests__/lib', '__tests__/__fixtures__'),
-      }));
-    })
-    .flat(),
+  tests: familyNameIcons.flatMap((name) => {
+    const files = glob.sync(`${rootPath}/lib/${name}/**/*.js`);
+    return files.map((filePath) => ({
+      title: `File ${filePath.split('/').slice(-3).join('/')} don't have change`,
+      fixture: filePath,
+      outputFixture: filePath.replace('__tests__/lib', '__tests__/__fixtures__'),
+    }));
+  }),
 });
 
 pluginTester({
   plugin: () => ({}),
   pluginName: 'Compare files svg new',
   filename: __filename,
-  tests: familyNameIcons
-    .map((name) => {
-      const files = glob.sync(`${rootPath}/${name}/**/*.js`);
-      return files.map((filePath) => ({
-        title: `File ${filePath.split('/').slice(-3).join('/')} don't have change`,
-        fixture: filePath,
-        outputFixture: filePath.replace('__tests__', '__tests__/__fixtures__'),
-      }));
-    })
-    .flat(),
+  tests: familyNameIcons.flatMap((name) => {
+    const files = glob.sync(`${rootPath}/${name}/**/*.js`);
+    return files.map((filePath) => ({
+      title: `File ${filePath.split('/').slice(-3).join('/')} don't have change`,
+      fixture: filePath,
+      outputFixture: filePath.replace('__tests__', '__tests__/__fixtures__'),
+    }));
+  }),
 });

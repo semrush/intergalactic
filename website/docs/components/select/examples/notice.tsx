@@ -16,9 +16,9 @@ const noticeStyle = {
 export default () => (
   <Flex>
     <Select placeholder={'Select something'}>
-      <Select.Trigger m="auto" />
+      <Select.Trigger m='auto' />
       <Select.Popper>
-        <Select.List hMax="240px">
+        <Select.List hMax='240px'>
           {options.map((option, index) => (
             <Select.Option value={option} key={index}>
               {option}
@@ -26,7 +26,7 @@ export default () => (
           ))}
         </Select.List>
         <Notice style={noticeStyle}>
-          <Notice.Content aria-live="polite">Woooop, it's simple magic! 🧙</Notice.Content>
+          <Notice.Content aria-live='polite'>Woooop, it's simple magic! 🧙</Notice.Content>
         </Notice>
       </Select.Popper>
     </Select>

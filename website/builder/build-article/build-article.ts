@@ -133,7 +133,7 @@ const normalizeMarkdown = (
       if (url.startsWith('/')) {
         url = relativePath + url;
       } else if (!url.startsWith('./')) {
-        url = './' + url;
+        url = `./${url}`;
       }
       imagesUrls[id] = url;
       token.url = `---------~~~~~~${id}~~~~~~---------`;
@@ -190,13 +190,13 @@ const makeChangelog = (
 ) => {
   const blocks: ComponentChangelogBlock[] = [];
   let currentBlock: ComponentChangelogBlock | null = null;
-  let currentType: string = 'Unknown';
+  let currentType = 'Unknown';
 
   for (const token of markdownAst.children) {
     if (token.type === 'heading' && token.depth === 2) {
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegex);
-      const version = (matchVersion && matchVersion[1]) ?? '';
+      const version = matchVersion?.[1] ?? '';
       const id = generateHeadingId(`v.${version}`);
       currentBlock = {
         title,
@@ -261,7 +261,7 @@ const makeChangelogByComponent = (
     if (token.type === 'heading' && token.depth === 2) {
       const title = markdownTokenToHtml(token.children[0]);
       const matchVersion = title.match(mathVersionRegex);
-      const version = (matchVersion && matchVersion[1]) ?? '';
+      const version = matchVersion?.[1] ?? '';
       const id = generateHeadingId(`v.${version}`);
       currentBlock = {
         title,
@@ -449,7 +449,7 @@ export const buildArticle = async (
             if (text.startsWith('@example ')) {
               const fileName = text.substring('@example '.length);
               const documentDir = resolveDirname(fullPath);
-              const filePath = resolvePath(documentDir, 'examples', fileName + '.tsx');
+              const filePath = resolvePath(documentDir, 'examples', `${fileName}.tsx`);
               if (!(await fsExists(filePath))) {
                 throw new Error(`Unable to find "${fileName}" as ${filePath} from ${position}`);
               }
@@ -462,7 +462,7 @@ export const buildArticle = async (
                 relativePath: [
                   relativePath.replace(/\/[\w-]+\..+/, ''),
                   'examples',
-                  fileName + '.tsx',
+                  `${fileName}.tsx`,
                 ].join('/'),
                 filePath,
                 load: `~~~%%%${filePath}%%%~~~`,
@@ -496,7 +496,7 @@ export const buildArticle = async (
             if (text.startsWith('@include ')) {
               const fileName = text.substring('@include '.length);
               const documentDir = resolveDirname(fullPath);
-              const filePath = resolvePath(documentDir, fileName + '.md');
+              const filePath = resolvePath(documentDir, `${fileName}.md`);
               if (!(await fsExists(filePath))) {
                 throw new Error(`Unable to find "${fileName}" as ${filePath} from ${position}`);
               }
@@ -518,15 +518,15 @@ export const buildArticle = async (
                 let { url } = link;
 
                 if (url.startsWith('https://www.loom.com/share/')) {
-                  url =
-                    `https://www.loom.com/embed/` +
-                    url.substring('https://www.loom.com/share/'.length);
+                  url = `https://www.loom.com/embed/${url.substring(
+                    'https://www.loom.com/share/'.length,
+                  )}`;
                 }
                 if (url.startsWith('https://www.youtube.com/watch?v=')) {
                   const urlParams = new URLSearchParams(
                     url.substring('https://www.youtube.com/watch?'.length),
                   );
-                  url = `https://www.youtube.com/embed/` + urlParams.get('v');
+                  url = `https://www.youtube.com/embed/${urlParams.get('v')}`;
                 }
 
                 return {
@@ -634,10 +634,10 @@ export const buildArticle = async (
             if (text.startsWith('@table-caption ')) {
               const nextToken = markdownAst.children[index + 1];
               if (nextToken.type !== 'table') {
-                // eslint-disable-next-line no-console
+                // rome-ignore lint/nursery/noConsoleLog: <explanation>
                 console.log(nextToken);
                 throw new Error(
-                  `@table-caption at-rule is only allowed right before tables, what was found see above`,
+                  '@table-caption at-rule is only allowed right before tables, what was found see above',
                 );
               }
               const caption = text.substring('@table-caption '.length);

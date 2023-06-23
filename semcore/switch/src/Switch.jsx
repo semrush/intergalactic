@@ -70,7 +70,7 @@ class Switch extends Component {
     const checked = this.inputRef.current?.checked;
 
     return sstyled(styles)(
-      <SSwitch render={Box} tag="label" checked={checked} onMouseDown={this.handleMouseDown}>
+      <SSwitch render={Box} tag='label' checked={checked} onMouseDown={this.handleMouseDown}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -166,10 +166,10 @@ class Value extends Component {
               {...toggleProps}
             >
               <SInput
-                tag="input"
-                type="checkbox"
+                tag='input'
+                type='checkbox'
                 ref={forwardRef}
-                role="switch"
+                role='switch'
                 aria-labelledby={labelledBy}
                 aria-checked={inputProps.checked}
                 aria-readonly={inputProps.disabled}
@@ -198,9 +198,9 @@ function Addon(props) {
         sstyled(styles)(
           <SAddon
             render={Box}
-            tag="span"
+            tag='span'
             neighborLocation={neighborLocation}
-            aria-hidden="true"
+            aria-hidden='true'
             id={`igc-${uid}-switch-addon-${neighborLocation}`}
           />,
         )

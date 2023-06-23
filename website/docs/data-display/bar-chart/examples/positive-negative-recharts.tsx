@@ -23,7 +23,7 @@ const intFormatter = (number) => {
   if (afterDot && afterDot.length > 2) {
     num = num.toFixed(2);
   }
-  return num + 'M';
+  return `${num}M`;
 };
 
 const data = [...Array(15)]
@@ -69,13 +69,13 @@ const Demo = () => {
     setBars(newBars);
   };
   return (
-    <Card my="24px" pt="20px" px="24px" pb="24px" wMax="800px">
-      <Card.Title tag="h4" inline hint="This is just an example of bar chart" my={0}>
+    <Card my='24px' pt='20px' px='24px' pb='24px' wMax='800px'>
+      <Card.Title tag='h4' inline hint='This is just an example of bar chart' my={0}>
         Keywords
       </Card.Title>
       <ResponsiveContainer height={180}>
-        <BarChart stackOffset="sign" data={data}>
-          <Legend verticalAlign="top">
+        <BarChart stackOffset='sign' data={data}>
+          <Legend verticalAlign='top'>
             <Legend.Controls
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -86,24 +86,24 @@ const Demo = () => {
           <TooltipChart labelFormatter={timeFormat(['month', 'day', 'year'])} />
           <YAxis tickFormatter={(t) => intFormatter(t)} />
           <XAxis
-            dataKey="date"
+            dataKey='date'
             domain={['auto', 'auto']}
             tickFormatter={timeFormat(['day', 'month'])}
           />
           <Bar
-            name="Lost"
-            dataKey="lost"
+            name='Lost'
+            dataKey='lost'
             barSize={20}
-            stackId="stack"
+            stackId='stack'
             fill={getColor('lost')}
             opacity={opacity['lost']}
             hide={!bars.includes('lost')}
           />
           <Bar
-            name="New"
-            dataKey="new"
+            name='New'
+            dataKey='new'
             barSize={20}
-            stackId="stack"
+            stackId='stack'
             fill={getColor('new')}
             opacity={opacity['new']}
             hide={!bars.includes('new')}

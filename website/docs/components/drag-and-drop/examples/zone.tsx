@@ -25,12 +25,12 @@ const Demo = () => {
   return (
     <DnD tag={Row} gutter={4} onDnD={handleDnD}>
       <Col span={12} mb={4}>
-        <DnD.DropZone h={73} style={{ display: 'flex' }} id="drop-zone">
+        <DnD.DropZone h={73} style={{ display: 'flex' }} id='drop-zone'>
           {items
             .filter((item) => saved[item])
             .map((item) => (
               <Card key={item} mr={4}>
-                <Card.Title tag="h4" inline my={0}>
+                <Card.Title tag='h4' inline my={0}>
                   {titles[item]}
                 </Card.Title>
               </Card>
@@ -42,9 +42,9 @@ const Demo = () => {
         .filter((item) => !saved[item])
         .map((item) => (
           <Col span={4} mb={4} key={item}>
-            <DnD.Draggable placement="top" id={item}>
+            <DnD.Draggable placement='top' id={item}>
               <Card>
-                <Card.Title tag="h4" inline my={0}>
+                <Card.Title tag='h4' inline my={0}>
                   {titles[item]}
                 </Card.Title>
               </Card>

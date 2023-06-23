@@ -25,7 +25,7 @@ export default () => {
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
-      <Line x="x" y="y" />
+      <Line x='x' y='y' />
     </Plot>
   );
 };

@@ -8,7 +8,7 @@ function addonTextChildren(
   Children: any,
   Text: React.ComponentType<any>,
   Addon: React.ComponentType | React.ComponentType[],
-  isTextWrapIfEmptyChildren: boolean = false,
+  isTextWrapIfEmptyChildren = false,
 ) {
   const children = getOriginChildren(Children);
   if (typeof children === 'function') {

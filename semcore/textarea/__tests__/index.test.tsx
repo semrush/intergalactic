@@ -12,15 +12,15 @@ describe('Textarea', () => {
   test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <>
-        <Textarea size="m" />
-        <Textarea size="l" />
+        <Textarea size='m' />
+        <Textarea size='l' />
       </>
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
 
     await expect(
-      await snapshot(<Textarea size="m" id="textarea" />, {
+      await snapshot(<Textarea size='m' id='textarea' />, {
         actions: {
           focus: '#textarea',
         },
@@ -28,7 +28,7 @@ describe('Textarea', () => {
     ).toMatchImageSnapshot(task);
 
     await expect(
-      await snapshot(<Textarea size="l" id="textarea" />, {
+      await snapshot(<Textarea size='l' id='textarea' />, {
         actions: {
           focus: '#textarea',
         },
@@ -39,9 +39,9 @@ describe('Textarea', () => {
   test.concurrent('Should support state', async ({ task }) => {
     const component = (
       <>
-        <Textarea state="normal" />
-        <Textarea state="valid" />
-        <Textarea state="invalid" />
+        <Textarea state='normal' />
+        <Textarea state='valid' />
+        <Textarea state='invalid' />
       </>
     );
 
@@ -50,21 +50,21 @@ describe('Textarea', () => {
 
   test.concurrent('Should support focus', async ({ task }) => {
     expect(
-      await snapshot(<Textarea state="normal" id="textarea" />, {
+      await snapshot(<Textarea state='normal' id='textarea' />, {
         actions: {
           focus: '#textarea',
         },
       }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Textarea state="valid" id="textarea" />, {
+      await snapshot(<Textarea state='valid' id='textarea' />, {
         actions: {
           focus: '#textarea',
         },
       }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Textarea state="invalid" id="textarea" />, {
+      await snapshot(<Textarea state='invalid' id='textarea' />, {
         actions: {
           focus: '#textarea',
         },
@@ -77,7 +77,7 @@ describe('Textarea', () => {
       <>
         <Textarea disabled />
         <Textarea readOnly />
-        <Textarea resize="both" />
+        <Textarea resize='both' />
       </>
     );
 
@@ -118,7 +118,7 @@ describe('Textarea', () => {
   });
 
   test('a11y', async () => {
-    const { container } = render(<Textarea aria-label="textarea" />);
+    const { container } = render(<Textarea aria-label='textarea' />);
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();

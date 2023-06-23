@@ -140,12 +140,9 @@ export const makeVersionPatches = (packages: Package[]) => {
         const descriptionBefore = `Version ${
           updateType || updateTypeFallback
         } update due to children dependencies update (`;
-        const description =
-          descriptionBefore +
-          updatedDependencies
-            .map(({ name, from, to }) => `\`${name}\` [${from} ~> ${to}]`)
-            .join(', ') +
-          ').';
+        const description = `${descriptionBefore}${updatedDependencies
+          .map(({ name, from, to }) => `\`${name}\` [${from} ~> ${to}]`)
+          .join(', ')}).`;
 
         const versionPatch: VersionPatch = {
           package: packageFile,

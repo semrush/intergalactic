@@ -57,10 +57,10 @@ const showList = (hits, pages, content) => {
         >
           <div className={styles.optionText}>
             <Highlight
-              attribute="title"
+              attribute='title'
               hit={item}
               className={styles.highlightMark}
-              tagName="mark"
+              tagName='mark'
             />
           </div>
           <div className={styles.optionPlace}>{item.category}</div>
@@ -92,10 +92,10 @@ const showList = (hits, pages, content) => {
         >
           <div className={styles.optionText}>
             <Highlight
-              attribute="title"
+              attribute='title'
               hit={item}
               className={styles.highlightMark}
-              tagName="mark"
+              tagName='mark'
             />
           </div>
           <div className={styles.optionPlace}>
@@ -113,8 +113,8 @@ const showList = (hits, pages, content) => {
         <img
           className={styles.notFoundImg}
           src={observatory}
-          alt="observatory"
-          aria-hidden="true"
+          alt='observatory'
+          aria-hidden='true'
         />
         <div className={styles.notFoundText}>We found something… it's nothing</div>
       </div>,
@@ -158,9 +158,9 @@ const Search = ({
 
   return (
     <Select
-      interaction="focus"
+      interaction='focus'
       offset={0}
-      stretch="fixed"
+      stretch='fixed'
       value={location.pathname}
       onChange={(value) => {
         history.push(value);
@@ -177,8 +177,8 @@ const Search = ({
           return (
             <>
               <input
-                role="search"
-                aria-label="Search for a component"
+                role='search'
+                aria-label='Search for a component'
                 value={value}
                 onChange={(e) => {
                   setValue(ru.toEn(e.currentTarget.value));

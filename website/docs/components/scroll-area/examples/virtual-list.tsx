@@ -18,7 +18,7 @@ const list = [...new Array(6)];
 const renderRow = ({ key, index, style }) => {
   return (
     <Block key={key} style={style}>
-      <Text bold size={200} m="auto">
+      <Text bold size={200} m='auto'>
         {index + 1}
       </Text>
     </Block>
@@ -36,8 +36,8 @@ const Demo = () => {
   };
 
   return (
-    <Flex direction="column" inline>
-      <Flex alignItems="center" mb={2}>
+    <Flex direction='column' inline>
+      <Flex alignItems='center' mb={2}>
         <Button
           onClick={() => {
             setData(data.concat(undefined));
@@ -45,10 +45,10 @@ const Demo = () => {
         >
           ADD
         </Button>
-        <Button ml="10px" onClick={() => setData(data.slice(0, -1))}>
+        <Button ml='10px' onClick={() => setData(data.slice(0, -1))}>
           REMOVE
         </Button>
-        <Text bold ml="10px">
+        <Text bold ml='10px'>
           Count: {data.length}
         </Text>
       </Flex>
@@ -64,7 +64,7 @@ const Demo = () => {
               rowHeight={120}
               rowRenderer={renderRow}
             />
-            <ScrollArea.Bar orientation="vertical" />
+            <ScrollArea.Bar orientation='vertical' />
           </ScrollArea>
         ) : null}
       </Box>

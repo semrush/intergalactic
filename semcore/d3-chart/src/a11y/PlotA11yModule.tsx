@@ -17,7 +17,7 @@ export type A11yViewProps = {
   plotLabel: string;
   locale: NavigatorLanguage['language'];
   config: PartialDataSummarizationConfig;
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+
   plotRef: React.RefObject<Element>;
 };
 
@@ -91,7 +91,6 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
         setError(null);
       })
       .catch((error) => {
-        // eslint-disable-next-line no-console
         console.error(error);
         setError(error);
       });
@@ -105,14 +104,14 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
 
   if (error) {
     return sstyled(styles)(
-      <SPlotA11yModule render={Box} tabIndex={0} aria-live="assertive">
+      <SPlotA11yModule render={Box} tabIndex={0} aria-live='assertive'>
         {t('failed')}
       </SPlotA11yModule>,
     ) as React.ReactElement;
   }
   if (loading) {
     return sstyled(styles)(
-      <SPlotA11yModule render={Box} tabIndex={0} aria-live="polite">
+      <SPlotA11yModule render={Box} tabIndex={0} aria-live='polite'>
         {t('loading')}
       </SPlotA11yModule>,
     ) as React.ReactElement;

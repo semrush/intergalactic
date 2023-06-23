@@ -119,7 +119,7 @@ export interface IPopperProps
    * @deprecated v4.0.0
    * @use IPopperProps.preventOverflow
    */
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+
   boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
 
   /**

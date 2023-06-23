@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default class EventEmitter {
   private events = {};
 

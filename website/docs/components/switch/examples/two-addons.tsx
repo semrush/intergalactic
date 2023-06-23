@@ -7,13 +7,13 @@ import { Box } from '@semcore/ui/flex-box';
 const Demo = () => {
   return (
     <div>
-      <Text tag="label" size="200" htmlFor="email-subscription">
+      <Text tag='label' size='200' htmlFor='email-subscription'>
         Receive updates
       </Text>
       <Box mt={2}>
-        <Switch size="l">
+        <Switch size='l'>
           <Switch.Addon>Disabled</Switch.Addon>
-          <Switch.Value defaultChecked={true} id="email-subscription">
+          <Switch.Value defaultChecked={true} id='email-subscription'>
             <CheckM />
           </Switch.Value>
           <Switch.Addon>Enabled</Switch.Addon>

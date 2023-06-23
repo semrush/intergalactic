@@ -7,13 +7,13 @@ const Demo = () => {
 
   return (
     <>
-      <Button use="primary" onClick={() => setVisible(true)}>
+      <Button use='primary' onClick={() => setVisible(true)}>
         Open fullscreen window
       </Button>
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
         <FullscreenModal.Close />
         <FullscreenModal.Back>Go to Tool Name</FullscreenModal.Back>
-        <FullscreenModal.Header title="Modal Window Title" description="Additional information" />
+        <FullscreenModal.Header title='Modal Window Title' description='Additional information' />
         <FullscreenModal.Footer />
       </FullscreenModal>
     </>

@@ -25,7 +25,7 @@ describe('FullscreenModal', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
-        <FullscreenModal.Close data-testid="close" />
+        <FullscreenModal.Close data-testid='close' />
       </FullscreenModal>,
     );
     fireEvent.click(getByTestId('close'));
@@ -36,7 +36,7 @@ describe('FullscreenModal', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <FullscreenModal onClose={spy} visible>
-        <FullscreenModal.Back data-testid="back" />
+        <FullscreenModal.Back data-testid='back' />
       </FullscreenModal>,
     );
     fireEvent.click(getByTestId('back'));
@@ -45,7 +45,7 @@ describe('FullscreenModal', () => {
 
   test('should support onClose for Escape', () => {
     const spy = vi.fn();
-    const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid="modal" />);
+    const { getByTestId } = render(<FullscreenModal visible onClose={spy} data-testid='modal' />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
@@ -100,7 +100,7 @@ describe('FullscreenModal.Header', () => {
   test('should support title', () => {
     const { queryByText } = render(
       <FullscreenModal visible>
-        <FullscreenModal.Header title="Text" />
+        <FullscreenModal.Header title='Text' />
       </FullscreenModal>,
     );
     expect(queryByText(/Text/)).toBeTruthy();
@@ -109,7 +109,7 @@ describe('FullscreenModal.Header', () => {
   test('should support description', () => {
     const { queryByText } = render(
       <FullscreenModal visible>
-        <FullscreenModal.Header description="Text" />
+        <FullscreenModal.Header description='Text' />
       </FullscreenModal>,
     );
     expect(queryByText(/Text/)).toBeTruthy();
@@ -134,7 +134,7 @@ describe('FullscreenModal.Header', () => {
     await expect(
       await snapshot(
         <FullscreenModal disablePortal visible>
-          <FullscreenModal.Close id="close" />
+          <FullscreenModal.Close id='close' />
         </FullscreenModal>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
@@ -145,7 +145,7 @@ describe('FullscreenModal.Header', () => {
     await expect(
       await snapshot(
         <FullscreenModal disablePortal visible>
-          <FullscreenModal.Back id="back">Go to Tool Name</FullscreenModal.Back>
+          <FullscreenModal.Back id='back'>Go to Tool Name</FullscreenModal.Back>
         </FullscreenModal>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
       ),

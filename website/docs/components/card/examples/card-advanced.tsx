@@ -18,19 +18,19 @@ const options = Array(6)
 export default () => (
   <Card>
     <Card.Header>
-      <Flex alignItems="center" justifyContent="space-between">
-        <Flex alignItems="center" tag="h4">
+      <Flex alignItems='center' justifyContent='space-between'>
+        <Flex alignItems='center' tag='h4'>
           <Card.Title hint={tooltipContent}>Market Traffic vs Selected Domains Trends</Card.Title>
         </Flex>
-        <Flex alignItems="center">
-          <Text size={200} color="#6C6E79" mr={2}>
+        <Flex alignItems='center'>
+          <Text size={200} color='#6C6E79' mr={2}>
             Info about data (optiona)
           </Text>
-          <Close color="stone" ml="auto" interactive aria-label="Close card" />
+          <Close color='stone' ml='auto' interactive aria-label='Close card' />
         </Flex>
       </Flex>
-      <Card.Description tag="div">
-        <Select tag={LinkTrigger} options={options} placeholder="Select" mr={4} />
+      <Card.Description tag='div'>
+        <Select tag={LinkTrigger} options={options} placeholder='Select' mr={4} />
         This is card additional information or insights.
       </Card.Description>
     </Card.Header>

@@ -141,8 +141,8 @@ class Value extends Component {
             <SValue
               render={Box}
               neighborLocation={neighborLocation}
-              tag="input"
-              type="text"
+              tag='input'
+              type='text'
               aria-invalid={state === 'invalid'}
             />,
           )

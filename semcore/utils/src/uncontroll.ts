@@ -1,10 +1,9 @@
-/* eslint-disable */
 import { Component, PureComponent } from 'react';
 
 export function isControlled<
   P extends {},
   S extends {},
-  C extends Component<P, S> | PureComponent<P, S>
+  C extends Component<P, S> | PureComponent<P, S>,
 >(self: C, prop: keyof P) {
   return self.props[prop] !== undefined;
 }

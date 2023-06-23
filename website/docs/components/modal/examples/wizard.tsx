@@ -23,17 +23,17 @@ const Tab = styled(Flex)`
   &:last-child {
     border-bottom: 0;
   }
-  ${({ selected }) => (selected ? `background: #fff; color: #333;` : `color: #fff`)};
+  ${({ selected }) => (selected ? 'background: #fff; color: #333;' : 'color: #fff')};
 `;
 
 const NavigationItem = ({ onClick, value, stepNavigation }) => (
   <Tab
     onClick={onClick}
     selected={value === stepNavigation}
-    p="12px 10px 12px 0"
-    alignItems="center"
+    p='12px 10px 12px 0'
+    alignItems='center'
   >
-    <Flex w="40px" h="16px" inline justifyContent="center" alignItems="center">
+    <Flex w='40px' h='16px' inline justifyContent='center' alignItems='center'>
       {stepNavigation === value ? <CheckS /> : value}
     </Flex>
     <Text size={200}>{MAP_NAVIGATION[value]}</Text>
@@ -59,7 +59,7 @@ class Demo extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <Button use="primary" onClick={this.openModal}>
+        <Button use='primary' onClick={this.openModal}>
           Open Wizard
         </Button>
         <Modal
@@ -69,10 +69,10 @@ class Demo extends React.PureComponent {
           p={0}
           wMax={800}
           wMin={400}
-          w="100%"
+          w='100%'
         >
           <Flex
-            direction="column"
+            direction='column'
             style={{
               position: 'absolute',
               top: '40px',
@@ -114,8 +114,8 @@ class Demo extends React.PureComponent {
           </Flex>
 
           <Flex
-            alignItems="center"
-            justifyContent="space-between"
+            alignItems='center'
+            justifyContent='space-between'
             h={40}
             style={{
               background: '#2074b2',
@@ -126,27 +126,27 @@ class Demo extends React.PureComponent {
             <span />
             <Text size={200}>POSITION TRACKING SETTINGS</Text>
             <CloseS
-              title="Close"
+              title='Close'
               onClick={() => this.closeModal()}
               mr={2}
               style={{ cursor: 'pointer' }}
             />
           </Flex>
-          <Flex direction="column" p="16px 32px 32px">
+          <Flex direction='column' p='16px 32px 32px'>
             <Text size={500}>{MAP_NAVIGATION[stepNavigation]}</Text>
             <Flex
-              h="200px"
-              w="100%"
+              h='200px'
+              w='100%'
               style={{ background: '#ccc' }}
-              justifyContent="center"
-              alignItems="center"
+              justifyContent='center'
+              alignItems='center'
             >
               <Text size={500}>Content</Text>
             </Flex>
-            <Flex justifyContent="space-between" mt={4}>
+            <Flex justifyContent='space-between' mt={4}>
               <Text
                 size={200}
-                color="light-blue"
+                color='light-blue'
                 style={{ cursor: 'pointer' }}
                 onClick={() => this.updateStepNavigation(stepNavigation - 1)}
               >
@@ -158,7 +158,7 @@ class Demo extends React.PureComponent {
 
               <Text
                 size={200}
-                color="light-blue"
+                color='light-blue'
                 style={{ cursor: 'pointer' }}
                 onClick={() => this.updateStepNavigation(stepNavigation + 1)}
               >

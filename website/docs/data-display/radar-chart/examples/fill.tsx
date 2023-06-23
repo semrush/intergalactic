@@ -15,11 +15,11 @@ export default () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']} fill="transparent">
+        <Radar.Polygon dataKey='data_1' color={colors['orange-04']} fill='transparent'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']} fill="transparent">
+        <Radar.Polygon dataKey='data_2' color={colors['violet-04']} fill='transparent'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
@@ -29,7 +29,7 @@ export default () => {
 };
 
 const data = {
-  'categories': ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
-  'data_1': [1, 3, 5, 5, 9, 2],
-  'data_2': [5, 2, 1, 2, 7, 6],
-}
+  categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
+  data_1: [1, 3, 5, 5, 9, 2],
+  data_2: [5, 2, 1, 2, 7, 6],
+};

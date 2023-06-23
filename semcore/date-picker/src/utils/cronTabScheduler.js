@@ -35,7 +35,7 @@ export function isValidSchedule(pattern) {
 
   function validate(pattern, validateFn, msg) {
     if (validateFn(pattern)) return true;
-    // eslint-disable-next-line no-console
+
     console.warn(`DatePicker disabledSchedule: ${msg} format is invalid`);
     return false;
   }
@@ -75,7 +75,7 @@ export function isInPeriod(pattern, date) {
   }
 
   function weekDayInPeriod(date, period) {
-    if (period == 7) period = 0;
+    if (period === 7) period = 0;
     return isInPeriod(date, period, 'getDay');
   }
 

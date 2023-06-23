@@ -32,11 +32,11 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   };
 
   return (
-    <nav className={cx(styles.navigationView, className)} aria-label="Main links">
+    <nav className={cx(styles.navigationView, className)} aria-label='Main links'>
       {navigation.map((currentCategory, i) => {
         const isOpen = collapseCategories.includes(currentCategory.route);
         return (
-          <React.Fragment key={i}>
+          <React.Fragment key={currentCategory.route}>
             <div
               className={cx(styles.categoryContainer, styles.categoryTitle)}
               key={`category-${i}`}
@@ -48,10 +48,10 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                 }
               }}
             >
-              <Text fontSize="16px" lineHeight="150%">
+              <Text fontSize='16px' lineHeight='150%'>
                 <ChevronRightXS
                   mr={2}
-                  color="#898D9A"
+                  color='#898D9A'
                   style={{
                     transform: `rotate(${isOpen ? 90 : 0}deg)`,
                     transition: 'transform 0.25s ease-in-out',
@@ -60,7 +60,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                 {currentCategory.title}
               </Text>
               {!!currentCategory.metadata.deprecated && (
-                <Tooltip title="Deprecated group">
+                <Tooltip title='Deprecated group'>
                   <WarningM className={styles.categoryIcon} />
                 </Tooltip>
               )}
@@ -84,10 +84,11 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                       to={`/${item.route}/`}
                       key={`page-${i}`}
                       aria-disabled={!!item.metadata.disabled}
+                      // rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                     {!!item.metadata.deprecated && (
-                      <Tooltip title="Deprecated component">
+                      <Tooltip title='Deprecated component'>
                         <WarningM className={styles.categoryIcon} />
                       </Tooltip>
                     )}

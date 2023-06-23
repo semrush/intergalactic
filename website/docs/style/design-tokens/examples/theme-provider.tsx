@@ -17,12 +17,12 @@ const Demo = () => {
   return (
     <>
       <ThemeProvider tokens={violetPrimaryButtonTheme}>
-        <Button use="primary">Violet primary button theme</Button>
+        <Button use='primary'>Violet primary button theme</Button>
       </ThemeProvider>
       <br />
       <br />
       <ThemeProvider tokens={grayPrimaryButtonTheme}>
-        <Button use="primary">Gray primary button theme</Button>
+        <Button use='primary'>Gray primary button theme</Button>
       </ThemeProvider>
     </>
   );

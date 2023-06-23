@@ -6,8 +6,8 @@ import CloseM from '@semcore/ui/icon/Close/m';
 export default function () {
   return (
     <>
-      <Button addonLeft={CloseM} aria-label="Close" />
-      <Button ml={2} aria-label="Confirm">
+      <Button addonLeft={CloseM} aria-label='Close' />
+      <Button ml={2} aria-label='Confirm'>
         <CheckM />
       </Button>
     </>

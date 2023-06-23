@@ -14,17 +14,17 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="2addon-example" size="200">
+      <Text tag='label' htmlFor='2addon-example' size='200'>
         Your password
       </Text>
       <Box mt={2}>
         <Input w={360}>
           <Input.Value
-            defaultValue="I_like_cats"
+            defaultValue='I_like_cats'
             type={type}
             value={value}
             onChange={(v) => setValue(v)}
-            id="2addon-example"
+            id='2addon-example'
           />
           {value && (
             <Input.Addon
@@ -32,7 +32,7 @@ const Demo = () => {
               pl={2}
               pr={1}
               interactive
-              aria-label="Clear password field"
+              aria-label='Clear password field'
               onClick={() => setValue('')}
             />
           )}

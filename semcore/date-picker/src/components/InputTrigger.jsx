@@ -19,7 +19,6 @@ class InputTriggerRoot extends Component {
   static style = style;
 
   getSingleDateInputProps() {
-    /* eslint-disable @typescript-eslint/no-unused-vars */
     const {
       children,
       id,
@@ -41,7 +40,6 @@ class InputTriggerRoot extends Component {
       style,
       ...otherProps
     } = this.asProps;
-    /* eslint-enable @typescript-eslint/no-unused-vars */
     return otherProps;
   }
 
@@ -74,7 +72,6 @@ class SingleDateInputRoot extends Component {
   };
 
   getMaskedInputProps() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { value, onChange, onDisplayedPeriodChange, locale, w, ...otherProps } = this.asProps;
 
     return {
@@ -228,20 +225,20 @@ class DateRangeRoot extends Component {
 const FromMaskedInput = (props) => {
   const SFromMaskedInput = Root;
 
-  return sstyled(props.styles)(<SFromMaskedInput labelPrefix="from date" render={MaskedInput} />);
+  return sstyled(props.styles)(<SFromMaskedInput labelPrefix='from date' render={MaskedInput} />);
 };
 
 const ToMaskedInput = (props) => {
   const SToMaskedInput = Root;
 
-  return sstyled(props.styles)(<SToMaskedInput labelPrefix="to date" render={MaskedInput} />);
+  return sstyled(props.styles)(<SToMaskedInput labelPrefix='to date' render={MaskedInput} />);
 };
 
 const Indicator = (props) => {
   const SIndicator = Root;
 
   return sstyled(props.styles)(
-    <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden="true" tabIndex={-1} />,
+    <SIndicator render={InputMask.Addon} tag={Calendar} aria-hidden='true' tabIndex={-1} />,
   );
 };
 
@@ -252,10 +249,10 @@ const RangeSep = (props) => {
     <SRangeSep
       render={InputMask.Addon}
       tag={Flex}
-      alignItems="center"
-      justifyContent="center"
+      alignItems='center'
+      justifyContent='center'
       pl={0}
-      flex="0"
+      flex='0'
     >
       –
     </SRangeSep>,
@@ -273,9 +270,9 @@ const MaskedInput = ({
   forwardRef,
   placeholders = defaultPlaceholders,
   labelPrefix = 'Date',
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   __excludeProps,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   Root: _root,
   ...otherProps
 }) => {
@@ -284,7 +281,6 @@ const MaskedInput = ({
     placeholders.month.length !== 1 ||
     placeholders.day.length !== 1
   ) {
-    // eslint-disable-next-line no-console
     console.error({ placeholders });
     throw new Error(
       `InputTrigger placeholder prop should contain fields year, month and day each one with string value of single character length. [see above what was received] (${placeholders})`,
@@ -441,7 +437,7 @@ const MaskedInput = ({
         date.setMonth(allowedParts.month ? parseInt(month, 10) - 1 : 0);
         date.setDate(allowedParts.day ? parseInt(day, 10) : 1);
 
-        if (disabledDates && disabledDates.some(includesDate(dayjs(date), 'date'))) {
+        if (disabledDates?.some(includesDate(dayjs(date), 'date'))) {
           return false;
         }
 

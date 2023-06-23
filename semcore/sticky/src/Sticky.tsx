@@ -26,7 +26,6 @@ class StickyRoot extends Component<IStickyProps> {
   }
 }
 
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
 const Sticky = createComponent(StickyRoot) as <T>(props: IStickyProps & T) => React.ReactElement;
 /**
  * @deprecated Please, use package `@semcore/ui/flex-box` instead. Package `@semcore/sticky` will be removed in the next major release

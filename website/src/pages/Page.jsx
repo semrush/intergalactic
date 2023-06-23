@@ -27,7 +27,7 @@ const getHeadingOptions = (headings) => {
     value: option.id,
     label: option.html,
     children: (
-      <Text mx={5} color="var(--intergalactic-text-primary)">
+      <Text mx={5} color='var(--intergalactic-text-primary)'>
         {option.html}
       </Text>
     ),
@@ -84,9 +84,9 @@ const PageView = ({ route, page }) => {
               duration: 200,
             });
           }}
-          placeholder="Select section"
-          size="l"
-          id="select"
+          placeholder='Select section'
+          size='l'
+          id='select'
         />
       )}
       <Row className={styles.homePage}>
@@ -95,7 +95,7 @@ const PageView = ({ route, page }) => {
             <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
           </div>
         </Col>
-        <Col sm={12} md={8} span={7} id="main-content">
+        <Col sm={12} md={8} span={7} id='main-content'>
           <div className={styles.documentationWrapper}>
             <DocsHeader
               title={rootRoute.title}
@@ -138,7 +138,7 @@ const DynamicPage = ({ route }) => {
   if (error) {
     if (error.message.includes('dynamically imported module')) {
       window.location.reload();
-      return <ErrorView title={`Reloading the page...`} />;
+      return <ErrorView title={'Reloading the page...'} />;
     } else {
       return <ErrorView title={`Oh no! ${error.message}`} />;
     }
@@ -152,7 +152,7 @@ const Page = () => {
 
   if (globalThis.__ssr) {
     if (!globalThis.__ssr_page_data) {
-      throw new Error(`On server side globalThis.__ssr_page_data should be defined`);
+      throw new Error('On server side globalThis.__ssr_page_data should be defined');
     }
     const page = globalThis.__ssr_page_data;
 

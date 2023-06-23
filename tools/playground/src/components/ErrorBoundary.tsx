@@ -36,11 +36,11 @@ export class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.error) {
       return (
-        <div className="intergalactic-playground_error-boundary">
+        <div className='intergalactic-playground_error-boundary'>
           <h2>Oh-no! Something went wrong</h2>
-          <div className="title">{this.state.error && this.state.error.toString()}</div>
+          <div className='title'>{this.state.error?.toString()}</div>
           <div>Component Stack Error Details:</div>
-          <pre className="stack-trace">{this.state.errorInfo?.componentStack}</pre>
+          <pre className='stack-trace'>{this.state.errorInfo?.componentStack}</pre>
         </div>
       );
     }

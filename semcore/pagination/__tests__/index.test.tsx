@@ -39,7 +39,7 @@ describe('Pagination.FirstPage', () => {
   test('should be disabled if currentPage = 1', () => {
     const { getByTestId } = render(
       <Pagination currentPage={1} totalPages={100}>
-        <Pagination.FirstPage data-testid="firstPage" />
+        <Pagination.FirstPage data-testid='firstPage' />
       </Pagination>,
     );
     expect(getByTestId('firstPage')).toHaveProperty('disabled', true);
@@ -48,7 +48,7 @@ describe('Pagination.FirstPage', () => {
   test('should not be disabled if currentPage > 1', () => {
     const { getByTestId } = render(
       <Pagination currentPage={10} totalPages={100}>
-        <Pagination.FirstPage data-testid="firstPage" />
+        <Pagination.FirstPage data-testid='firstPage' />
       </Pagination>,
     );
     expect(getByTestId('firstPage')).toHaveProperty('disabled', false);
@@ -59,7 +59,7 @@ describe('Pagination.FirstPage', () => {
 
     const { getByTestId } = render(
       <Pagination onCurrentPageChange={spy} currentPage={10} totalPages={100}>
-        <Pagination.FirstPage data-testid="firstPage" />
+        <Pagination.FirstPage data-testid='firstPage' />
       </Pagination>,
     );
 
@@ -76,7 +76,7 @@ describe('Pagination.PrevPage', () => {
   test('should be disabled if currentPage = 1', () => {
     const { getByTestId } = render(
       <Pagination currentPage={1} totalPages={100}>
-        <Pagination.PrevPage data-testid="prevPage" />
+        <Pagination.PrevPage data-testid='prevPage' />
       </Pagination>,
     );
     expect(getByTestId('prevPage').attributes.disabled).toBeDefined();
@@ -85,7 +85,7 @@ describe('Pagination.PrevPage', () => {
   test('should not be disabled if currentPage > 1', () => {
     const { getByTestId } = render(
       <Pagination currentPage={10} totalPages={100}>
-        <Pagination.PrevPage data-testid="prevPage" />
+        <Pagination.PrevPage data-testid='prevPage' />
       </Pagination>,
     );
     expect(getByTestId('prevPage').attributes.disabled).toBeUndefined();
@@ -97,7 +97,7 @@ describe('Pagination.PrevPage', () => {
 
     const { getByTestId } = render(
       <Pagination onCurrentPageChange={spy} currentPage={CURRENT_PAGE} totalPages={100}>
-        <Pagination.PrevPage data-testid="firstPage" />
+        <Pagination.PrevPage data-testid='firstPage' />
       </Pagination>,
     );
 
@@ -115,7 +115,7 @@ describe('Pagination.NextPage', () => {
     const PAGES = 100;
     const { getByTestId } = render(
       <Pagination currentPage={PAGES} totalPages={PAGES}>
-        <Pagination.NextPage data-testid="nextPage" />
+        <Pagination.NextPage data-testid='nextPage' />
       </Pagination>,
     );
     expect(getByTestId('nextPage').attributes.disabled).toBeDefined();
@@ -124,7 +124,7 @@ describe('Pagination.NextPage', () => {
   test('should not be disabled if currentPage < totalPages', () => {
     const { getByTestId } = render(
       <Pagination currentPage={10} totalPages={100}>
-        <Pagination.NextPage data-testid="nextPage" />
+        <Pagination.NextPage data-testid='nextPage' />
       </Pagination>,
     );
     expect(getByTestId('nextPage').attributes.disabled).toBeUndefined();
@@ -136,7 +136,7 @@ describe('Pagination.NextPage', () => {
 
     const { getByTestId } = render(
       <Pagination onCurrentPageChange={spy} currentPage={CURRENT_PAGE} totalPages={100}>
-        <Pagination.NextPage data-testid="firstPage" />
+        <Pagination.NextPage data-testid='firstPage' />
       </Pagination>,
     );
 
@@ -155,7 +155,7 @@ describe('Pagination.TotalPages', () => {
     const totalPages = 100;
     const { getByTestId } = render(
       <Pagination currentPage={10} totalPages={totalPages} onCurrentPageChange={spy}>
-        <Pagination.TotalPages data-testid="totalPages" />
+        <Pagination.TotalPages data-testid='totalPages' />
       </Pagination>,
     );
     expect(spy).toBeCalledTimes(0);
@@ -190,13 +190,13 @@ describe('Pagination.PageInput', () => {
         <Pagination currentPage={1} totalPages={1234}>
           <Pagination.PageInput>
             <Pagination.PageInput.Value />
-            <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
+            <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
           </Pagination.PageInput>
         </Pagination>
         <Pagination currentPage={1} totalPages={1234}>
           <Pagination.PageInput focused>
-            <Pagination.PageInput.Value id="page-number" />
-            <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
+            <Pagination.PageInput.Value id='page-number' />
+            <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
           </Pagination.PageInput>
         </Pagination>
       </snapshot.ProxyProps>
@@ -215,8 +215,8 @@ describe('Pagination.PageInput', () => {
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1234} totalPages={1234}>
           <Pagination.PageInput focused>
-            <Pagination.PageInput.Value id="page-number" />
-            <Pagination.PageInput.Addon tag={Return} interactive aria-label="Confirm page number" />
+            <Pagination.PageInput.Value id='page-number' />
+            <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
           </Pagination.PageInput>
         </Pagination>
       </snapshot.ProxyProps>
@@ -243,7 +243,7 @@ describe('Pagination.PageInput.Value', () => {
     const { getByTestId, rerender } = render(
       <Pagination currentPage={1} totalPages={100}>
         <Pagination.PageInput>
-          <Pagination.PageInput.Value data-testid="value" />
+          <Pagination.PageInput.Value data-testid='value' />
         </Pagination.PageInput>
       </Pagination>,
     );
@@ -254,7 +254,7 @@ describe('Pagination.PageInput.Value', () => {
     rerender(
       <Pagination currentPage={CURRENT_PAGE.CHANGED} totalPages={100}>
         <Pagination.PageInput>
-          <Pagination.PageInput.Value data-testid="value" />
+          <Pagination.PageInput.Value data-testid='value' />
         </Pagination.PageInput>
       </Pagination>,
     );
@@ -268,7 +268,7 @@ describe('Pagination.PageInput.Value', () => {
     const { getByTestId } = render(
       <Pagination currentPage={CURRENT_PAGE} totalPages={100} onCurrentPageChange={spy}>
         <Pagination.PageInput>
-          <Pagination.PageInput.Value data-testid="value" />
+          <Pagination.PageInput.Value data-testid='value' />
         </Pagination.PageInput>
       </Pagination>,
     );
@@ -281,7 +281,7 @@ describe('Pagination.PageInput.Value', () => {
     const { getByTestId } = render(
       <Pagination currentPage={10} totalPages={100} onCurrentPageChange={spy}>
         <Pagination.PageInput>
-          <Pagination.PageInput.Value data-testid="value" />
+          <Pagination.PageInput.Value data-testid='value' />
         </Pagination.PageInput>
       </Pagination>,
     );
@@ -307,7 +307,7 @@ describe('Pagination.PageInput.Value', () => {
     const { getByTestId } = render(
       <Pagination currentPage={CURRENT_PAGE.INITIAL} totalPages={100} onCurrentPageChange={spy}>
         <Pagination.PageInput>
-          <Pagination.PageInput.Value data-testid="value" />
+          <Pagination.PageInput.Value data-testid='value' />
         </Pagination.PageInput>
       </Pagination>,
     );
@@ -336,7 +336,7 @@ describe('Pagination.PageInput.Value', () => {
         onCurrentPageChange={spy}
       >
         <Pagination.PageInput>
-          <Pagination.PageInput.Value data-testid="value" />
+          <Pagination.PageInput.Value data-testid='value' />
         </Pagination.PageInput>
       </Pagination>,
     );

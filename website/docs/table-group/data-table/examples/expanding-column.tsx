@@ -7,11 +7,11 @@ export default () => {
   return (
     <DataTable data={data} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" wMax={'300px'} />
-        <DataTable.Column name="kd" children="Difficulty Difficulty" sortable wMax={'85px'} />
-        <DataTable.Column name="cpc" children="CPC" sortable />
-        <DataTable.Column name="vol" children="Vol." sortable wMax={'300px'} />
-        <DataTable.Column name="md" children="Marketing SEO" sortable wMax={'90px'} />
+        <DataTable.Column name='keyword' children='Keyword' wMax={'300px'} />
+        <DataTable.Column name='kd' children='Difficulty Difficulty' sortable wMax={'85px'} />
+        <DataTable.Column name='cpc' children='CPC' sortable />
+        <DataTable.Column name='vol' children='Vol.' sortable wMax={'300px'} />
+        <DataTable.Column name='md' children='Marketing SEO' sortable wMax={'90px'} />
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>

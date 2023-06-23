@@ -31,13 +31,13 @@ const TooltipContent = `Changes in the expected amount of traffic driven to an a
     branded keywords in the last 12 months.`;
 
 export default () => (
-  <Card my="24px" pt="20px" px="24px" pb="24px" wMax="600px">
-    <Flex alignItems="center" mb={6}>
+  <Card my='24px' pt='20px' px='24px' pb='24px' wMax='600px'>
+    <Flex alignItems='center' mb={6}>
       <Text size={400} medium mr={1}>
         Branded traffic trend
       </Text>
       <Tooltip title={TooltipContent}>
-        <InfoXS color="gray-300" cursor="help" />
+        <InfoXS color='gray-300' cursor='help' />
       </Tooltip>
     </Flex>
     <ResponsiveContainer height={100}>
@@ -52,7 +52,7 @@ export default () => (
           }
         />
         <XAxis
-          dataKey="date"
+          dataKey='date'
           domain={['auto', 'auto']}
           tickFormatter={(t) =>
             new Intl.DateTimeFormat('en-US', {
@@ -61,8 +61,8 @@ export default () => (
             }).format(t)
           }
         />
-        <YAxis dataKey="traffic" />
-        <Bar name="ebay.com" dataKey="traffic" maxBarSize={40} />
+        <YAxis dataKey='traffic' />
+        <Bar name='ebay.com' dataKey='traffic' maxBarSize={40} />
       </BarChart>
     </ResponsiveContainer>
   </Card>

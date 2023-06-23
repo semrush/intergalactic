@@ -52,15 +52,13 @@ export const patchReleaseChangelog = async (
       .filter(({ changes }) => changes.length > 0),
   );
 
-  const componentChangedVersionIncrements = componentChanges
-    .map((changelogs) =>
-      changelogs.map(({ version, component }) => {
-        return previousDependencies[component]
-          ? (semver.diff(previousDependencies[component], version) as semver.ReleaseType)
-          : 'patch';
-      }),
-    )
-    .flat();
+  const componentChangedVersionIncrements = componentChanges.flatMap((changelogs) =>
+    changelogs.map(({ version, component }) => {
+      return previousDependencies[component]
+        ? (semver.diff(previousDependencies[component], version) as semver.ReleaseType)
+        : 'patch';
+    }),
+  );
 
   const releaseIncrement = componentChangedVersionIncrements.reduce(
     (max, current) =>

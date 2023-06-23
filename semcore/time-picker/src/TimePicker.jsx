@@ -240,7 +240,7 @@ class Separator extends Component {
     const { styles } = this.asProps;
 
     return sstyled(styles)(
-      <STimePickerSeparator render={Box} onClick={this.handlerClick} aria-hidden="true" />,
+      <STimePickerSeparator render={Box} onClick={this.handlerClick} aria-hidden='true' />,
     );
   }
 }

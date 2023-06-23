@@ -89,7 +89,7 @@ describe('Ellipsis', () => {
 
     const component = (
       <Box w={200}>
-        <Ellipsis trim="middle">
+        <Ellipsis trim='middle'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
           doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
           voluptas. Aliquam eos expedita illo quasi unde!
@@ -110,7 +110,7 @@ describe('Ellipsis', () => {
 
     const { getByTestId, baseElement } = render(
       <Box w={200}>
-        <Ellipsis data-testid="text" ref={fakeBoundingClientRect({ width: 200 })}>
+        <Ellipsis data-testid='text' ref={fakeBoundingClientRect({ width: 200 })}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores atque autem commodi,
           doloribus ex harum inventore modi praesentium quam ratione reprehenderit rerum tempore
           voluptas. Aliquam eos expedita illo quasi unde!
@@ -139,7 +139,7 @@ describe('Ellipsis', () => {
 
     const { getByTestId, baseElement } = render(
       <Box w={200}>
-        <Ellipsis data-testid="text" ref={fakeBoundingClientRect({ width: 100 })}>
+        <Ellipsis data-testid='text' ref={fakeBoundingClientRect({ width: 100 })}>
           Lorem ipsum dolor sit amet
         </Ellipsis>
       </Box>,

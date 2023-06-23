@@ -26,21 +26,21 @@ export default () => {
   return (
     <DataTable data={sortedData} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" sortable />
-        <DataTable.Column name="cpc" children="CPC" sortable />
-        <DataTable.Column name="vol" children="Vol." sortable />
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' sortable />
+        <DataTable.Column name='cpc' children='CPC' sortable />
+        <DataTable.Column name='vol' children='Vol.' sortable />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<{}, typeof data> name="kd">
+        <DataTable.Cell<{}, typeof data> name='kd'>
           {(_, row) => ({ children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd) })}
         </DataTable.Cell>
-        <DataTable.Cell<{}, typeof data> name="cpc">
+        <DataTable.Cell<{}, typeof data> name='cpc'>
           {(_, row) => ({
             children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
           })}
         </DataTable.Cell>
-        <DataTable.Cell<{}, typeof data> name="vol">
+        <DataTable.Cell<{}, typeof data> name='vol'>
           {(_, row) => ({ children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol) })}
         </DataTable.Cell>
       </DataTable.Body>

@@ -83,12 +83,14 @@ function UpdateBlock() {
       url: 'mailer/post',
       data: { email: value },
     })
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       .then((response) => console.log(response))
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       .catch((error) => console.log(error));
   };
 
   return (
-    <div className={styles.updateWrapper} id="updBlock">
+    <div className={styles.updateWrapper} id='updBlock'>
       <div className={styles.info}>
         <h2 className={styles.header}>All updates in your inbox</h2>
         <Box mb={8}>Just new releases and component versions. And nothing more!</Box>
@@ -105,20 +107,20 @@ function UpdateBlock() {
                 className={styles.tooltipUpdate}
                 title={'Please enter a valid email.'}
                 visible={!!error && touched}
-                interaction="click"
-                theme="warning"
+                interaction='click'
+                theme='warning'
                 styles={tooltipStyles}
-                placement="top-start"
+                placement='top-start'
               >
                 <Input
                   className={styles.inputSubscribe}
-                  size="xl"
-                  state={!!error ? 'invalid' : 'normal'}
+                  size='xl'
+                  state={error ? 'invalid' : 'normal'}
                 >
                   <Input.Value
-                    name="email"
+                    name='email'
                     value={value}
-                    placeholder="Your email "
+                    placeholder='Your email '
                     onChange={handleInput}
                     onFocus={handleFocus}
                     onBlur={handleBlur}
@@ -129,13 +131,13 @@ function UpdateBlock() {
                 <Input.Value
                   value={hiddenValue}
                   onChange={setHiddenValue}
-                  placeholder="Placeholder"
+                  placeholder='Placeholder'
                 />
               </Input>
               <Button
                 className={ButtonSubscribe}
-                size="l"
-                type="submit"
+                size='l'
+                type='submit'
                 onClick={subscribe}
                 disabled={!!error || !value || !!hiddenValue}
               >
@@ -144,13 +146,13 @@ function UpdateBlock() {
             </form>
             <div className={styles.terms}>
               By clicking the button you agree to the
-              <NavLink to="/terms/terms-of-use/">Terms of use</NavLink> and
-              <NavLink to="/terms/privacy/">Privacy policy</NavLink>.
+              <NavLink to='/terms/terms-of-use/'>Terms of use</NavLink> and
+              <NavLink to='/terms/privacy/'>Privacy policy</NavLink>.
             </div>
           </>
         )}
       </div>
-      <img className={styles.updatesImg} src={updatesImg} aria-hidden="true" />
+      <img className={styles.updatesImg} src={updatesImg} aria-hidden='true' alt='' />
     </div>
   );
 }

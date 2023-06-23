@@ -50,7 +50,11 @@ class Demo extends React.PureComponent {
         <Box>
           <h2>Controlled</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container ref={(node) => (this.controlled = node)}>
+            <ScrollArea.Container
+              ref={(node) => {
+                this.controlled = node;
+              }}
+            >
               {[...new Array(100)].map((_, index) => (
                 <Block ind={index} key={index} />
               ))}

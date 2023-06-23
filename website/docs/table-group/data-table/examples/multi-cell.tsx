@@ -6,13 +6,13 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" />
-        <DataTable.Column name="cpc" children="CPC" />
-        <DataTable.Column name="vol" children="Vol." />
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<{}, typeof data> name="keyword/kd/cpc/vol">
+        <DataTable.Cell<{}, typeof data> name='keyword/kd/cpc/vol'>
           {(props, row) => {
             return {
               children: ['-', '$0', 'n/a'].includes(row[props.name]) ? <Spin /> : props.children,

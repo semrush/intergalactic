@@ -23,7 +23,7 @@ function isValidHex(hex: string) {
   if (hex[0] !== '#' && hex.length === 7) return false;
 
   const reg = /^#([0-9a-f]{3,4}){1,2}$/i;
-  return hex[0] === '#' ? reg.test(hex) : reg.test('#' + hex);
+  return hex[0] === '#' ? reg.test(hex) : reg.test(`#${hex}`);
 }
 
 function debounce(func: (...args: any[]) => void, timeout: number) {
@@ -105,12 +105,12 @@ class InputColorRoot extends Component<InputColorAsProps> {
       <SPaletteManager>
         <SItemColor value={valueColor} />
         <SInputContainer>
-          <span aria-hidden="true">#</span>
+          <span aria-hidden='true'>#</span>
           <SInput>
             <Input ml={1} w={135} state={state} onKeyDown={this.handlekeyDown}>
               <SInputValue
                 render={Input.Value}
-                placeholder="FFFFFF"
+                placeholder='FFFFFF'
                 aria-label={getI18nText('colorField')}
                 onChange={this.handlerChange}
                 maxLength={7}
@@ -118,26 +118,26 @@ class InputColorRoot extends Component<InputColorAsProps> {
                 onBlur={onBlur}
               />
               <SConfirmColor
-                aria-hidden="true"
+                aria-hidden='true'
                 aria-label={getI18nText('colorFieldConfirm')}
-                role="button"
+                role='button'
                 interactive
                 onClick={this.handlerAdd}
-                pr="4px"
+                pr='4px'
                 hidden={!focus}
               >
-                <CheckM color="green-300" />
+                <CheckM color='green-300' />
               </SConfirmColor>
               <SClearConfirm
-                aria-hidden="true"
+                aria-hidden='true'
                 aria-label={getI18nText('colorFieldClear')}
-                role="button"
+                role='button'
                 interactive
                 onClick={this.handlerCancel}
-                pl="4px"
+                pl='4px'
                 hidden={!focus}
               >
-                <CloseM color="gray-300" />
+                <CloseM color='gray-300' />
               </SClearConfirm>
             </Input>
           </SInput>

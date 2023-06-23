@@ -42,7 +42,7 @@ const ResizeableTitle = (props) => {
   const { onResize, width, ...restProps } = props;
 
   if (!width) {
-    return <Table.CellHead width="80" {...restProps} />;
+    return <Table.CellHead width='80' {...restProps} />;
   }
 
   return (
@@ -60,13 +60,11 @@ const ResizeableTitle = (props) => {
 const DemoResize = () => {
   const [columns, setColumns] = useState([...new Array(11)].map((_, ind) => ({ width: 90 })));
 
-  const handleResize =
-    (index) =>
-    (e, { size }) => {
-      const nextColumns = [...columns];
-      nextColumns[index] = { width: size.width };
-      setColumns(nextColumns);
-    };
+  const handleResize = (index) => (e, { size }) => {
+    const nextColumns = [...columns];
+    nextColumns[index] = { width: size.width };
+    setColumns(nextColumns);
+  };
 
   return (
     <ScrollArea>
@@ -74,10 +72,7 @@ const DemoResize = () => {
         <Table.Head>
           <Table.Row>
             {[...new Array(12)].map((_, ind) => (
-              <ResizeableTitle
-                width={columns[ind] && columns[ind].width}
-                onResize={handleResize(ind)}
-              >
+              <ResizeableTitle width={columns[ind]?.width} onResize={handleResize(ind)}>
                 {`CellHead ${ind}`}
               </ResizeableTitle>
             ))}

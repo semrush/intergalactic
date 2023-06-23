@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { PureComponent } from 'react';
 import { NanoOptions } from 'nano-css';
 import { CssLikeObject } from 'nano-css/types/common';

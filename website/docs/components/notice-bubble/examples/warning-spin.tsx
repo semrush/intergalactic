@@ -8,7 +8,7 @@ const manager = new NoticeBubbleManager();
 const Demo = () => {
   const handleClick = () => {
     manager.add({
-      icon: <Spin size="xs" theme="invert" />,
+      icon: <Spin size='xs' theme='invert' />,
       children: 'Server connection lost. Reconnecting...',
       type: 'warning',
       initialAnimation: true,

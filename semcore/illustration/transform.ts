@@ -35,7 +35,7 @@ await Promise.all(
       height,
       viewBox: { baseVal: viewBox },
     } = document.querySelector('svg') as any;
-    const html = '<svg>' + document.body.querySelector('svg').innerHTML + '</svg>';
+    const html = `<svg>${document.body.querySelector('svg').innerHTML}</svg>`;
 
     let jsx: string = await new Promise((resolve, reject) =>
       svgToJsx(html, {}, (error, result) => (error ? reject(error) : resolve(result))),

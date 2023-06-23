@@ -54,85 +54,85 @@ window.addEventListener('resize', (e) => {
 
 const Demo = () => {
   return (
-    <Flex flexWrap className="container">
+    <Flex flexWrap className='container'>
       <BoxBlock w={160} mb={4}>
-        <Tooltip title="Keyword" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='Keyword' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Keyword
           </Title>
         </Tooltip>
-        <Flex alignItems="baseline">
+        <Flex alignItems='baseline'>
           <Text
             size={500}
-            color="gray-800"
-            fontWeight="bold"
+            color='gray-800'
+            fontWeight='bold'
             mr={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
           </Text>
-          <Text size={100} color="green-500" tag="p">
+          <Text size={100} color='green-500' tag='p'>
             ↑+12
           </Text>
         </Flex>
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
-        <Tooltip title="Traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='Traffic' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Traffic
           </Title>
         </Tooltip>
-        <Flex mt={2} alignItems="center">
-          <WarningM color="gray-300" />
+        <Flex mt={2} alignItems='center'>
+          <WarningM color='gray-300' />
           <Title
             size={100}
-            color="blue-500"
+            color='blue-500'
             ml={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             Reload
           </Title>
         </Flex>
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
-        <Tooltip title="Traffic cost" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='Traffic cost' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Traffic cost
           </Title>
         </Tooltip>
-        <Flex mt={2} alignItems="center">
-          <WarningM color="gray-300" />
+        <Flex mt={2} alignItems='center'>
+          <WarningM color='gray-300' />
           <Title
             size={100}
-            color="blue-500"
+            color='blue-500'
             ml={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             Reload
           </Title>
         </Flex>
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
-        <Tooltip title="Branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='Branded traffic' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Branded traffic
           </Title>
         </Tooltip>
-        <Flex mt={2} alignItems="center">
-          <WarningM color="gray-300" />
+        <Flex mt={2} alignItems='center'>
+          <WarningM color='gray-300' />
           <Title
             size={100}
-            color="blue-500"
+            color='blue-500'
             ml={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             Reload
           </Title>

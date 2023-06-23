@@ -15,7 +15,7 @@ describe('ProgressBar', () => {
 
   test.concurrent('Should support children', () => {
     const component = (
-      <ProgressBar data-testid="parent">
+      <ProgressBar data-testid='parent'>
         <p>Test</p>
         <p>Test</p>
         <p>Test</p>
@@ -41,7 +41,7 @@ describe('ProgressBar', () => {
   test.concurrent('Should support dark view', async ({ task }) => {
     const component = (
       <div style={{ width: '200px', padding: '10px', background: 'black' }}>
-        <ProgressBar value={50} theme="dark" />
+        <ProgressBar value={50} theme='dark' />
       </div>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -50,11 +50,11 @@ describe('ProgressBar', () => {
   test.concurrent('Should support size props', async ({ task }) => {
     const component = (
       <div style={{ width: '200px' }}>
-        <ProgressBar value={50} size="l" />
+        <ProgressBar value={50} size='l' />
         <br />
-        <ProgressBar value={50} size="m" />
+        <ProgressBar value={50} size='m' />
         <br />
-        <ProgressBar value={50} size="s" />
+        <ProgressBar value={50} size='s' />
       </div>
     );
 
@@ -66,10 +66,10 @@ describe('ProgressBar', () => {
       <div style={{ width: '200px' }}>
         <ProgressBar
           value={undefined}
-          theme="linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)"
+          theme='linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)'
         />
         <br />
-        <ProgressBar value={undefined} theme="yellow" />
+        <ProgressBar value={undefined} theme='yellow' />
       </div>
     );
 
@@ -84,11 +84,11 @@ describe('ProgressBar.Value', () => {
     const component = (
       <div style={{ width: '200px' }}>
         <ProgressBar value={50}>
-          <ProgressBar.Value theme="linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)" />
+          <ProgressBar.Value theme='linear-gradient(-45deg,yellow 25%,green 0,green 50%,yellow 0,yellow 76%,green 0)' />
         </ProgressBar>
         <br />
         <ProgressBar value={50}>
-          <ProgressBar.Value theme="yellow" />
+          <ProgressBar.Value theme='yellow' />
         </ProgressBar>
       </div>
     );

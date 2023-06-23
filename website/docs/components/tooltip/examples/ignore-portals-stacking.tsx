@@ -11,39 +11,39 @@ const Demo = () => {
 
   return (
     <React.Fragment>
-      <Button use="primary" onClick={() => setVisible(true)}>
+      <Button use='primary' onClick={() => setVisible(true)}>
         Open modal
       </Button>
       <Modal visible={visible} onClose={() => setVisible(false)} w={536}>
         <Box>
-          <Text size={300} mb={2} tag="label" htmlFor="input-1">
+          <Text size={300} mb={2} tag='label' htmlFor='input-1'>
             First input with tooltip
           </Text>
         </Box>
         <Tooltip
-          title="Tooltip with ignoring portals stacking. Lorem ipsum dolor sit amet."
-          theme="warning"
+          title='Tooltip with ignoring portals stacking. Lorem ipsum dolor sit amet.'
+          theme='warning'
           visible={true}
-          placement="left"
+          placement='left'
           ignorePortalsStacking
         >
-          <Input size="l" w={470}>
-            <Input.Value id="input-2" />
+          <Input size='l' w={470}>
+            <Input.Value id='input-2' />
           </Input>
         </Tooltip>
         <Box mt={5}>
-          <Text size={300} mb={2} tag="label" htmlFor="input-2">
+          <Text size={300} mb={2} tag='label' htmlFor='input-2'>
             Second input with tooltip
           </Text>
         </Box>
         <Tooltip
-          title="Tooltip without ignoring portals stacking. Lorem ipsum dolor sit amet."
-          theme="warning"
+          title='Tooltip without ignoring portals stacking. Lorem ipsum dolor sit amet.'
+          theme='warning'
           visible={true}
-          placement="right"
+          placement='right'
         >
-          <Input size="l" w={470}>
-            <Input.Value id="input-2" />
+          <Input size='l' w={470}>
+            <Input.Value id='input-2' />
           </Input>
         </Tooltip>
       </Modal>

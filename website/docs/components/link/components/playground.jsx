@@ -80,7 +80,7 @@ const Preview = (preview) => {
   };
 
   return (
-    <Link color={color} size={size} disabled={disabled} active={active} href="#">
+    <Link color={color} size={size} disabled={disabled} active={active} href='#'>
       {beforeIcon && <Link.Addon>{renderIcon('before')}</Link.Addon>}
       {beforeIcon || afterIcon ? <Link.Text>{child}</Link.Text> : child}
       {afterIcon && <Link.Addon>{renderIcon('after')}</Link.Addon>}

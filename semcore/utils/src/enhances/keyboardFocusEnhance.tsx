@@ -22,7 +22,9 @@ export const useFocusSource = () => {
     [],
   );
   const focusSourceRef = React.useRef<'none' | 'mouse' | 'keyboard'>('none');
-  const setFocusSource = React.useCallback((source) => (focusSourceRef.current = source), []);
+  const setFocusSource = React.useCallback((source) => {
+    focusSourceRef.current = source;
+  }, []);
   const subscribeListeners = React.useCallback(() => {
     document.addEventListener('mousedown', handleMouseDown, { capture: true });
     document.addEventListener('keydown', handleKeyDown, { capture: true });

@@ -24,13 +24,13 @@ const data = [
 ];
 
 const Demo = () => (
-  <Card my="24px" pt="20px" wMax="600px">
-    <Flex alignItems="center" mb={6}>
+  <Card my='24px' pt='20px' wMax='600px'>
+    <Flex alignItems='center' mb={6}>
       <Text size={400} medium mr={1}>
         Domain Audience Age
       </Text>
-      <Tooltip title="Average age of a researched domain’s audience">
-        <InfoXS color="gray-300" cursor="help" />
+      <Tooltip title='Average age of a researched domain’s audience'>
+        <InfoXS color='gray-300' cursor='help' />
       </Tooltip>
     </Flex>
     <ResponsiveContainer height={200}>
@@ -45,9 +45,9 @@ const Demo = () => (
             }).format(Number(new Date('2019/10/19')))
           }
         />
-        <XAxis dataKey="age" domain={['auto', 'auto']} />
-        <YAxis dataKey="percent" tickFormatter={(t) => `${t}%`} />
-        <Bar dataKey="percent" />
+        <XAxis dataKey='age' domain={['auto', 'auto']} />
+        <YAxis dataKey='percent' tickFormatter={(t) => `${t}%`} />
+        <Bar dataKey='percent' />
       </HistogramChart>
     </ResponsiveContainer>
   </Card>

@@ -1,0 +1,74 @@
+{
+  "$schema": "./node_modules/rome/configuration_schema.json",
+  "formatter": {
+    "enabled": true,
+    "ignore": [
+      "lib",
+      "dist",
+      "**/code_mod/**",
+      "**/node_modules/**",
+      "semcore/icon/**/**/*.js",
+      "semcore/icon/**/**/*.d.ts",
+      "semcore/illustration/**/*.js",
+      "semcore/illustration/**/*.d.ts",
+      "**/__fixtures__/**",
+      ".tmp",
+      "generator-component",
+      "**/*.mjs",
+      "code-mod",
+      "mailer",
+      "./tools/icon-transform-svg/__tests__"
+    ],
+    "lineWidth": 100,
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingComma": "all"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "ignore": [
+      "lib",
+      "dist",
+      "**/code_mod/**",
+      "**/node_modules/**",
+      "semcore/icon/**/**/*.js",
+      "semcore/icon/**/**/*.d.ts",
+      "semcore/illustration/**/*.js",
+      "semcore/illustration/**/*.d.ts",
+      "**/__fixtures__/**",
+      ".tmp",
+      "generator-component",
+      "**/*.mjs",
+      "code-mod",
+      "mailer",
+      "./tools/icon-transform-svg/__tests__"
+    ],
+    "rules": {
+      "suspicious": {
+        "noEmptyInterface": "off",
+        "noExplicitAny": "off",
+        "noPrototypeBuiltins": "off",
+        "noRedeclare": "off",
+        "noShadowRestrictedNames": "off",
+        "noArrayIndexKey": "off"
+      },
+      "style": {
+        "noParameterAssign": "off",
+        "noNonNullAssertion": "off"
+      },
+      "correctness": {
+        "noChildrenProp": "off",
+        "noUnreachableSuper": "off",
+        "noConstructorReturn": "off"
+      },
+      "a11y": { "useAnchorContent": "off", "noSvgWithoutTitle": "off" },
+      "nursery": {
+        "noConsoleLog": "error"
+      }
+    }
+  }
+}

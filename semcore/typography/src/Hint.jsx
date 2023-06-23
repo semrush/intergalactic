@@ -17,7 +17,7 @@ class RootHint extends Component {
     const SHint = Root;
     const { styles, Children, addonLeft, addonRight } = this.asProps;
     return sstyled(styles)(
-      <SHint render={Text} tag="abbr">
+      <SHint render={Text} tag='abbr'>
         {addonLeft ? <Hint.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Hint.Text, Hint.Addon)}
         {addonRight ? <Hint.Addon tag={addonRight} /> : null}
@@ -29,13 +29,13 @@ class RootHint extends Component {
 function Addon(props) {
   const SAddon = Root;
   const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} tag="span" />);
+  return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
 function HintText(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag="span" />);
+  return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 const Hint = createComponent(RootHint, {

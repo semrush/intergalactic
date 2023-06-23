@@ -28,7 +28,7 @@ function YoutubeAlt({
   }));
 }
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "YoutubeAlt" icon is deprecated. Use the "YoutubeColored"', 'Icon');
 
 YoutubeAlt.displayName = 'YoutubeAlt';

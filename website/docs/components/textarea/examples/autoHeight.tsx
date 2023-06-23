@@ -5,7 +5,7 @@ import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => (
   <div>
-    <Text tag="label" size="200" htmlFor="autoscalable-textarea">
+    <Text tag='label' size='200' htmlFor='autoscalable-textarea'>
       Textarea with automatic height
     </Text>
     <Box mt={2}>
@@ -13,8 +13,8 @@ const Demo = () => (
         w={500}
         minRows={4}
         maxRows={10}
-        id="autoscalable-textarea"
-        placeholder="Try type something really big"
+        id='autoscalable-textarea'
+        placeholder='Try type something really big'
       />
     </Box>
   </div>

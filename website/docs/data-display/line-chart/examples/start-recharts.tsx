@@ -48,11 +48,11 @@ const converValueThousand = (str) => {
 DefaultTooltipContent.prototype.render = function () {
   const { labelFormatter, label } = this.props;
   return (
-    <div className="recharts-default-tooltip">
-      <p className="recharts-tooltip-label">{label && labelFormatter(label)}</p>
+    <div className='recharts-default-tooltip'>
+      <p className='recharts-tooltip-label'>{label && labelFormatter(label)}</p>
       {this.renderContent()}
       {label === data[3].date && (
-        <Box m="16px -12px -12px" px={3} py={1} style={{ background: '#f4f5f9' }}>
+        <Box m='16px -12px -12px' px={3} py={1} style={{ background: '#f4f5f9' }}>
           {label && labelFormatter(label)} start tracking
         </Box>
       )}
@@ -65,9 +65,9 @@ const Demo = () => (
     <LineChart data={data}>
       <CartesianGrid />
       <XAxis
-        dataKey="date"
-        type="number"
-        scale="time"
+        dataKey='date'
+        type='number'
+        scale='time'
         domain={['auto', 'auto']}
         tickFormatter={(t) =>
           new Intl.DateTimeFormat('en-US', {
@@ -83,7 +83,7 @@ const Demo = () => (
           if (afterDot && afterDot.length > 2) {
             num = num.toFixed(2);
           }
-          return num + 'k';
+          return `${num}k`;
         }}
       />
       <Tooltip
@@ -99,16 +99,16 @@ const Demo = () => (
       />
       <Line
         connectNulls
-        type="monotone"
-        dataKey="onliner.by"
+        type='monotone'
+        dataKey='onliner.by'
         name={'onliner.by (Google.com) Total Keywords (Organic):'}
         stroke={getColor('onliner.by')}
         fill={getColor('onliner.by')}
       />
       <Line
         connectNulls
-        type="monotone"
-        dataKey="semrush.com"
+        type='monotone'
+        dataKey='semrush.com'
         stroke={getColor('semrush.com')}
         fill={getColor('semrush.com')}
       />
@@ -119,7 +119,7 @@ const Demo = () => (
         fill={getColor('semrush.com')}
         r={8}
         strokeWidth={2}
-        stroke="#fff"
+        stroke='#fff'
       />
       <ReferenceDot
         x={data[3].date}
@@ -127,7 +127,7 @@ const Demo = () => (
         fill={getColor('onliner.by')}
         r={8}
         strokeWidth={2}
-        stroke="#fff"
+        stroke='#fff'
       />
     </LineChart>
   </ResponsiveContainer>

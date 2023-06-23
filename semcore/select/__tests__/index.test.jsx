@@ -39,7 +39,7 @@ describe('Select Trigger', () => {
 
   test.concurrent('Trigger with placeholder renders correctly', async ({ task }) => {
     const component = (
-      <Select placeholder="Placeholder">
+      <Select placeholder='Placeholder'>
         <Select.Trigger />
       </Select>
     );
@@ -92,8 +92,8 @@ describe('Select Trigger', () => {
         <Select multiselect onChange={spy} visible value={['1']}>
           <Select.Trigger />
           <Select.Popper>
-            <Select.Option value="1" />
-            <Select.Option data-testid="option" value="2" />
+            <Select.Option value='1' />
+            <Select.Option data-testid='option' value='2' />
           </Select.Popper>
         </Select>,
       );
@@ -109,7 +109,7 @@ describe('Select Trigger', () => {
       <Select visible onVisibleChange={spy}>
         <Select.Trigger />
         <Select.Popper>
-          <Select.Option data-testid="option" value="test" />
+          <Select.Option data-testid='option' value='test' />
         </Select.Popper>
       </Select>,
     );
@@ -122,7 +122,7 @@ describe('Select Trigger', () => {
 
   test.concurrent('Trigger renders correctly with FilterTrigger', async ({ task }) => {
     const component = (
-      <Select defaultValue="Test">
+      <Select defaultValue='Test'>
         <Select.Trigger tag={FilterTrigger} />
       </Select>
     );
@@ -131,8 +131,8 @@ describe('Select Trigger', () => {
 
   test.concurrent('Should support tag as string', async ({ task }) => {
     const component = (
-      <Select defaultValue="Test">
-        <Select.Trigger tag="button" />
+      <Select defaultValue='Test'>
+        <Select.Trigger tag='button' />
       </Select>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -140,7 +140,11 @@ describe('Select Trigger', () => {
 
   test.concurrent('Should support call render function for custom tag', () => {
     const spy = vi.fn();
-    const Tag = React.forwardRef(({ children }, ref) => <button ref={ref}>{children}</button>);
+    const Tag = React.forwardRef(({ children }, ref) => (
+      <button type='button' ref={ref}>
+        {children}
+      </button>
+    ));
 
     render(
       <Select>
@@ -158,14 +162,14 @@ describe('Select Trigger', () => {
   test.concurrent('Should support Option.Checkbox', async ({ task }) => {
     const Component = ({ theme, size, ...props }) => (
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
-        <Select {...props} size={size} visible disablePortal value="1">
+        <Select {...props} size={size} visible disablePortal value='1'>
           <Select.Trigger />
           <Select.Popper>
-            <Select.Option value="1">
+            <Select.Option value='1'>
               <Select.Option.Checkbox theme={theme} />
               size {size ?? 'default'} selected
             </Select.Option>
-            <Select.Option value="2">
+            <Select.Option value='2'>
               <Select.Option.Checkbox theme={theme} />
               size {size ?? 'default'}
             </Select.Option>
@@ -176,9 +180,9 @@ describe('Select Trigger', () => {
     await expect(
       await snapshot(
         <>
-          <Component size="l" />
-          <Component size="m" />
-          <Component theme="violet-800" />
+          <Component size='l' />
+          <Component size='m' />
+          <Component theme='violet-800' />
         </>,
       ),
     ).toMatchImageSnapshot(task);
@@ -190,7 +194,7 @@ describe('Select Trigger', () => {
         <Select {...props} visible disablePortal>
           <Select.Trigger />
           <Select.Popper>
-            <Select.Option value="1" id="option">
+            <Select.Option value='1' id='option'>
               <Select.Option.Checkbox theme={theme} />
               size m selected
             </Select.Option>
@@ -206,21 +210,21 @@ describe('Select Trigger', () => {
       }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Component value="1" />, {
+      await snapshot(<Component value='1' />, {
         actions: {
           hover: '#option',
         },
       }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Component theme="violet-800" />, {
+      await snapshot(<Component theme='violet-800' />, {
         actions: {
           hover: '#option',
         },
       }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Component theme="violet-800" value="1" />, {
+      await snapshot(<Component theme='violet-800' value='1' />, {
         actions: {
           hover: '#option',
         },
@@ -232,10 +236,10 @@ describe('Select Trigger', () => {
     vi.useFakeTimers();
     const { container } = render(
       <Select visible value={['2']} disablePortal>
-        <Select.Trigger aria-label="Select trigger" />
+        <Select.Trigger aria-label='Select trigger' />
         <Select.Menu visible>
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2">Option 2</Select.Option>
+          <Select.Option value='1'>Option 1</Select.Option>
+          <Select.Option value='2'>Option 2</Select.Option>
         </Select.Menu>
       </Select>,
     );
@@ -252,10 +256,10 @@ describe('Select Trigger', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Select value={['2']} disablePortal>
-        <Select.Trigger aria-label="Select trigger" data-testid="trigger" />
-        <Select.Menu data-testid="menu">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2" data-testid="option-2">
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger' />
+        <Select.Menu data-testid='menu'>
+          <Select.Option value='1'>Option 1</Select.Option>
+          <Select.Option value='2' data-testid='option-2'>
             Option 2
           </Select.Option>
         </Select.Menu>
@@ -284,13 +288,13 @@ describe('Select Trigger', () => {
     async () => {
       vi.useFakeTimers();
       const { getByTestId } = render(
-        <Select value={['2']} disablePortal interaction="focus">
-          <Select.Trigger aria-label="Select trigger" data-testid="trigger">
-            <input data-testid="input-in-trigger" />
+        <Select value={['2']} disablePortal interaction='focus'>
+          <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
+            <input data-testid='input-in-trigger' />
           </Select.Trigger>
-          <Select.Menu data-testid="menu">
-            <Select.Option value="1">Option 1</Select.Option>
-            <Select.Option value="2" data-testid="option-2">
+          <Select.Menu data-testid='menu'>
+            <Select.Option value='1'>Option 1</Select.Option>
+            <Select.Option value='2' data-testid='option-2'>
               Option 2
             </Select.Option>
           </Select.Menu>
@@ -318,13 +322,13 @@ describe('Select Trigger', () => {
   test('focus position preserve with keyboard navigation and interaction=focus', async () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
-      <Select value={['2']} disablePortal interaction="focus">
-        <Select.Trigger aria-label="Select trigger" data-testid="trigger">
-          <input data-testid="input-in-trigger" />
+      <Select value={['2']} disablePortal interaction='focus'>
+        <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
+          <input data-testid='input-in-trigger' />
         </Select.Trigger>
-        <Select.Menu data-testid="menu">
-          <Select.Option value="1">Option 1</Select.Option>
-          <Select.Option value="2" data-testid="option-2">
+        <Select.Menu data-testid='menu'>
+          <Select.Option value='1'>Option 1</Select.Option>
+          <Select.Option value='2' data-testid='option-2'>
             Option 2
           </Select.Option>
         </Select.Menu>
@@ -373,9 +377,9 @@ describe('InputSearch', () => {
           <InputSearch />
         </Select>
         <Select>
-          <InputSearch defaultValue="test" />
+          <InputSearch defaultValue='test' />
         </Select>
-        <Select size="l">
+        <Select size='l'>
           <InputSearch />
         </Select>
       </div>
@@ -388,7 +392,7 @@ describe('InputSearch', () => {
     const spy = vi.fn();
     const { getByRole } = render(
       <Select>
-        <InputSearch value="test" onChange={spy} />
+        <InputSearch value='test' onChange={spy} />
       </Select>,
     );
 

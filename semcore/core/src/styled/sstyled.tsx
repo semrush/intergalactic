@@ -1,4 +1,3 @@
-/* eslint-disable */
 import cn from 'classnames';
 import { ReactNode } from 'react';
 import { getStyles as reshadowGetStyles } from '@reshadow/core';
@@ -88,6 +87,7 @@ function getClassAndVars(styles, name, props) {
           acc[0][value] = Boolean(propValue ?? false);
         } else {
           // @ts-ignore
+          // rome-ignore lint/suspicious/noDoubleEquals: <explanation>
           acc[0][value] = propValue == modValue;
         }
       }
@@ -110,9 +110,7 @@ function reshadowToShadow(obj) {
   }, {});
 }
 
-function sstyled(
-  styles = {},
-): ((ReactNode) => ReactNode) & {
+function sstyled(styles = {}): ((ReactNode) => ReactNode) & {
   cn(name: string, props: any): any;
 } {
   // @ts-ignore
@@ -147,4 +145,3 @@ sstyled.getStyles = getStyles;
 sstyled.SHADOW_STYLES = Symbol('SHADOW_STYLES');
 
 export { sstyled };
-/* eslint-enable */

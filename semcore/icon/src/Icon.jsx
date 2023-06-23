@@ -45,7 +45,7 @@ function Icon(props, ref) {
     }
 
     if (interactive && event.code === 'Enter') {
-      props.onClick && props.onClick(event);
+      props.onClick?.(event);
     }
   }
 

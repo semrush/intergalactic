@@ -34,7 +34,7 @@ InputTrigger.DateRangeToInput = InputTriggerBase.DateRangeToInput;
 
 export function Popper(props) {
   const SPopper = Root;
-  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role="region" />);
+  return sstyled(props.styles)(<SPopper render={Dropdown.Popper} role='region' />);
 }
 
 export function Header(props) {
@@ -55,9 +55,9 @@ export function Prev({ getI18nText }) {
   return (
     <Root
       render={Button}
-      use="tertiary"
-      theme="muted"
-      size="l"
+      use='tertiary'
+      theme='muted'
+      size='l'
       tabIndex={-1}
       aria-label={getI18nText('prev')}
     />
@@ -72,9 +72,9 @@ export function Next({ getI18nText }) {
   return (
     <Root
       render={Button}
-      use="tertiary"
-      theme="muted"
-      size="l"
+      use='tertiary'
+      theme='muted'
+      size='l'
       tabIndex={-1}
       aria-label={getI18nText('next')}
     />
@@ -86,7 +86,7 @@ Next.defaultProps = {
 };
 
 export class Period extends Component {
-  getActiveControl = (period = [], value) => {
+  getActiveControl = (period = [], value = undefined) => {
     function compareMonth(monthOne, monthTwo) {
       return dayjs(monthOne).isSame(dayjs(monthTwo), 'date');
     }
@@ -109,8 +109,8 @@ export class Period extends Component {
       <SPeriod render={Box}>
         {periods.map(({ value: period, onClick, onMouseEnter, onMouseLeave, ...other }, i) => (
           <Button
-            use="tertiary"
-            theme="muted"
+            use='tertiary'
+            theme='muted'
             styles={styles}
             key={i}
             active={this.getActiveControl(period, value)}

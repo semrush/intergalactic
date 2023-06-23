@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { PlaywrightTestConfig, devices } from '@playwright/test';
 
 const config: PlaywrightTestConfig = {

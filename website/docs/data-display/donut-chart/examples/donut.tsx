@@ -7,9 +7,9 @@ export default () => {
   return (
     <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
-        <Donut.Pie dataKey="a" name="Pie 1" />
-        <Donut.Pie dataKey="b" color={colors['green-02']} name="Pie 2" />
-        <Donut.Pie dataKey="c" color={colors['violet-04']} name="Pie 3" />
+        <Donut.Pie dataKey='a' name='Pie 1' />
+        <Donut.Pie dataKey='b' color={colors['green-02']} name='Pie 2' />
+        <Donut.Pie dataKey='c' color={colors['violet-04']} name='Pie 3' />
         <Donut.Label>Example</Donut.Label>
       </Donut>
       <Tooltip>
@@ -18,7 +18,7 @@ export default () => {
             children: (
               <>
                 <Tooltip.Title>{name}</Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Text bold>{data[dataKey]}</Text>
                 </Flex>
               </>

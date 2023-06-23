@@ -47,7 +47,7 @@ const cyrillicFallback = {
 };
 
 export const generateLegacyHeadingId = (headingText: string) =>
-  'a' + createHash('md5').update(headingText).digest('hex').slice(0, 5);
+  `a${createHash('md5').update(headingText).digest('hex').slice(0, 5)}`;
 export const generateHeadingId = (headingText: string) =>
   headingText
     .toLowerCase()

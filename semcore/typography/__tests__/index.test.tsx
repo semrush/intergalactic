@@ -56,13 +56,13 @@ describe('Text', () => {
   test.concurrent('Should support custom decoration props', async ({ task }) => {
     const component = (
       <React.Fragment>
-        <Text fontSize="10px">fontSize=10px</Text>
-        <Text fontSize="20px"> fontSize=20px</Text>
+        <Text fontSize='10px'>fontSize=10px</Text>
+        <Text fontSize='20px'> fontSize=20px</Text>
         <br />
-        <Text style={{ verticalAlign: 'top' }} lineHeight="10px">
+        <Text style={{ verticalAlign: 'top' }} lineHeight='10px'>
           lineHeight=10px
         </Text>
-        <Text style={{ verticalAlign: 'top' }} lineHeight="40px">
+        <Text style={{ verticalAlign: 'top' }} lineHeight='40px'>
           lineHeight=40px
         </Text>
         <br />
@@ -78,15 +78,15 @@ describe('Text', () => {
     const component = (
       <React.Fragment>
         <div style={{ width: 200 }}>
-          <Text textAlign="left">left left left left left left</Text>
+          <Text textAlign='left'>left left left left left left</Text>
         </div>
         <div style={{ width: 200 }}>
-          <Text w={200} inline textAlign="center">
+          <Text w={200} inline textAlign='center'>
             center center center center center center{' '}
           </Text>
         </div>
         <div style={{ width: 200 }}>
-          <Text w={200} inline textAlign="right">
+          <Text w={200} inline textAlign='right'>
             right right right right right right{' '}
           </Text>
         </div>
@@ -99,18 +99,18 @@ describe('Text', () => {
   test.concurrent('Should support color', async ({ task }) => {
     const component = (
       <React.Fragment>
-        <Text color="blanchedalmond">blanchedalmond</Text>
+        <Text color='blanchedalmond'>blanchedalmond</Text>
         <br />
-        <Text color="#3eeb4c">#3eeb4c</Text>
+        <Text color='#3eeb4c'>#3eeb4c</Text>
         <br />
-        <Text color="dark-violet">dark-violet</Text>
+        <Text color='dark-violet'>dark-violet</Text>
       </React.Fragment>
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support ellipsis`, async ({ task }) => {
+  test('Should support ellipsis', async ({ task }) => {
     const component = (
       <Text inline noWrap w={100}>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem delectus eligendi et fugit
@@ -122,9 +122,9 @@ describe('Text', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support high priority for fontSize compare size`, async ({ task }) => {
+  test('Should support high priority for fontSize compare size', async ({ task }) => {
     const component = (
-      <Text size={300} fontSize="48px">
+      <Text size={300} fontSize='48px'>
         size=300 fontSize=48px
       </Text>
     );
@@ -134,17 +134,17 @@ describe('Text', () => {
   test('a11y', async () => {
     const { container } = render(
       <>
-        <Text tag="h1">H1</Text>
-        <Text tag="h2">H2</Text>
-        <Text tag="h3">H3</Text>
-        <Text tag="h4">H4</Text>
-        <Text tag="h5">H5</Text>
-        <Text tag="h6">H6</Text>
-        <Text tag="small">
-          But I do love the taste of a <Text tag="strong">good burger</Text>. Mm-mm-mm.
+        <Text tag='h1'>H1</Text>
+        <Text tag='h2'>H2</Text>
+        <Text tag='h3'>H3</Text>
+        <Text tag='h4'>H4</Text>
+        <Text tag='h5'>H5</Text>
+        <Text tag='h6'>H6</Text>
+        <Text tag='small'>
+          But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.
         </Text>
-        <Text tag="p">
-          But I do love the taste of a <Text tag="s">good burger</Text>. Mm-mm-mm.
+        <Text tag='p'>
+          But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
         </Text>
       </>,
     );
@@ -182,9 +182,9 @@ describe('List', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support custom marker`, async ({ task }) => {
+  test('Should support custom marker', async ({ task }) => {
     const component = (
-      <List marker={<Check color="green" />}>
+      <List marker={<Check color='green' />}>
         <List.Item>List item</List.Item>
         <List.Item>List item</List.Item>
       </List>
@@ -193,11 +193,11 @@ describe('List', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test(`Should support custom marker for item`, async ({ task }) => {
+  test('Should support custom marker for item', async ({ task }) => {
     const component = (
       <List>
-        <List.Item marker="-">List item</List.Item>
-        <List.Item marker="+">List item</List.Item>
+        <List.Item marker='-'>List item</List.Item>
+        <List.Item marker='+'>List item</List.Item>
       </List>
     );
 
@@ -211,7 +211,7 @@ describe('List', () => {
           <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
           <List.Item>Carpe diem. Seize the day, boys. Make your lives extraordinary.</List.Item>
         </List>
-        <List tag="ol">
+        <List tag='ol'>
           <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
           <List.Item>Carpe diem. Seize the day, boys. Make your lives extraordinary.</List.Item>
         </List>
@@ -233,14 +233,14 @@ describe('Blockquote', () => {
   });
 
   test.concurrent('Should support author', async ({ task }) => {
-    const component = <Blockquote author="— Mr. Robot">Blockquote</Blockquote>;
+    const component = <Blockquote author='— Mr. Robot'>Blockquote</Blockquote>;
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
     const { container } = render(
-      <Blockquote author="Author Author">
+      <Blockquote author='Author Author'>
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem nonummy nibh euismod
         tincidunt ut lacreet dolore magna aliguam erat volutpat. Ut wisis enim ad minim veniam, quis
         nostrud exerci tution ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
@@ -290,7 +290,7 @@ describe('Hint', () => {
   test.concurrent('Should support active', async ({ task }) => {
     const component = (
       <>
-        <Hint active>Hint</Hint> <Hint id="hint">Hint</Hint>
+        <Hint active>Hint</Hint> <Hint id='hint'>Hint</Hint>
       </>
     );
 
@@ -304,7 +304,7 @@ describe('Hint', () => {
   });
 
   test.concurrent('Should support hover', async ({ task }) => {
-    const component = <Hint id="hint">Hint</Hint>;
+    const component = <Hint id='hint'>Hint</Hint>;
 
     await expect(
       await snapshot(component, {

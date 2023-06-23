@@ -8,7 +8,7 @@ const manager = new NoticeBubbleManager();
 const Demo = () => {
   const handleClick = () => {
     manager.add({
-      icon: <CheckM color="green-400" />,
+      icon: <CheckM color='green-400' />,
       children: 'Keyword was successfully moved to Keyword Analyzer!',
       initialAnimation: true,
       duration: 3000,

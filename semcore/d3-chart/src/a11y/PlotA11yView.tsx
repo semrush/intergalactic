@@ -149,13 +149,16 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
 
   return sstyled(styles)(
     <SPlotA11yView render={Box} tabIndex={0} aria-label={texts.label}>
+      {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
       <a aria-hidden onClick={handleSkip}>
         {texts.close}
       </a>
-      <a role="link" tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
+      {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
+      <a role='link' tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
         {texts.skipPlot}
       </a>
-      <a role="link" tabIndex={0} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
+      {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
+      <a role='link' tabIndex={0} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
         {texts.goToTable}
       </a>
       <strong>
@@ -177,7 +180,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={Object.values(row).join('-') + '-' + index}>
+            <tr key={`${Object.values(row).join('-')}-${index}`}>
               {keys.map((key, index) => (
                 <td key={`${key}-${index}`}>{formatValue(intl, row[key])}</td>
               ))}

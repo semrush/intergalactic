@@ -10,9 +10,9 @@ const Demo = () => {
   const handleClick = () => {
     manager.add({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
-      icon: <WarningM color="orange-400" />,
+      icon: <WarningM color='orange-400' />,
       action: (
-        <Button theme="invert">
+        <Button theme='invert'>
           <Button.Addon>
             <ReloadM />
           </Button.Addon>

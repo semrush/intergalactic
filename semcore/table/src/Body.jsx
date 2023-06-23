@@ -6,7 +6,7 @@ import Context from './context';
 
 function BodyInner({ styles, ...other }, ref) {
   const SBody = Box;
-  return sstyled(styles)(<SBody ref={ref} tag="tbody" {...other} />);
+  return sstyled(styles)(<SBody ref={ref} tag='tbody' {...other} />);
 }
 
 BodyInner.displayName = 'Body';

@@ -28,7 +28,7 @@ import {
 import fire from '@semcore/utils/lib/fire';
 import assignProps from '@semcore/utils/lib/assignProps';
 import { sstyled } from '@semcore/core';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import cn from 'classnames';
 import styles from './style/venn-tooltip-label.shadow.css';
 import chartStyles from '../../style/chart.shadow.css';
@@ -200,7 +200,7 @@ export default class VennChart extends React.PureComponent<IVennChartProps, IVen
   renderIntersection = (intersectionProps) => {
     const { sets } = intersectionProps;
     const { activeNode } = this.state;
-    const isNodeActive = activeNode && activeNode.sets && stringArrayIsEqual(sets, activeNode.sets);
+    const isNodeActive = activeNode?.sets && stringArrayIsEqual(sets, activeNode.sets);
     const nodeHandlers = {
       onMouseEnter: this.handleMouseEnter(intersectionProps),
       onMouseLeave: this.handleMouseLeave,

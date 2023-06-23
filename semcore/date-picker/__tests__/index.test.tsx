@@ -41,17 +41,17 @@ describe('DatePicker', () => {
 
   test('Should support set custom displayPeriod', () => {
     const marchInstance = render(
-      <DatePicker visible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
+      <DatePicker visible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z' />,
     );
     expect(marchInstance.getByText('March 2020')).toBeTruthy();
-    const aprilInstance = render(<DatePicker visible displayedPeriod="2020-04-10T12:00:00.808Z" />);
+    const aprilInstance = render(<DatePicker visible displayedPeriod='2020-04-10T12:00:00.808Z' />);
     expect(aprilInstance.getByText('April 2020')).toBeTruthy();
   });
 
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
-      <DatePicker defaultVisible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
+      <DatePicker defaultVisible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z' />,
     );
     fireEvent.click(getByLabelText('Next period'));
     // change visible
@@ -70,7 +70,7 @@ describe('DatePicker', () => {
   test('Should support set custom displayPeriod after changed value date', () => {
     vi.useFakeTimers();
     const component = (
-      <DatePicker defaultVisible defaultDisplayedPeriod="2021-09-10T12:00:00.808Z" />
+      <DatePicker defaultVisible defaultDisplayedPeriod='2021-09-10T12:00:00.808Z' />
     );
     const { getByText, getByLabelText } = render(component);
     fireEvent.click(getByLabelText('Previous period'));
@@ -86,8 +86,8 @@ describe('DatePicker', () => {
 
   test('a11y', async () => {
     const { container } = render(
-      <DatePicker visible disablePortal aria-label="date picker">
-        <DatePicker.Trigger aria-label="date picker">Open date picker</DatePicker.Trigger>
+      <DatePicker visible disablePortal aria-label='date picker'>
+        <DatePicker.Trigger aria-label='date picker'>Open date picker</DatePicker.Trigger>
         <DatePicker.Popper />
       </DatePicker>,
     );
@@ -117,7 +117,7 @@ describe('DateRangePicker', () => {
   test('Should render correctly with selected date', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.InputTrigger size="l" />
+        <DatePicker.InputTrigger size='l' />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -170,7 +170,7 @@ describe('DateRangePicker', () => {
     await expect(
       await snapshot(
         <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-          <DatePicker.InputTrigger id="datapicker" />
+          <DatePicker.InputTrigger id='datapicker' />
           <DatePicker.Popper />
         </DatePicker>,
         {
@@ -184,7 +184,7 @@ describe('DateRangePicker', () => {
       await snapshot(
         <DatePicker>
           <DatePicker.Header w={100}>
-            <DatePicker.Prev id="datapicker" />
+            <DatePicker.Prev id='datapicker' />
             <DatePicker.Title>Header</DatePicker.Title>
             <DatePicker.Next />
           </DatePicker.Header>
@@ -201,7 +201,7 @@ describe('DateRangePicker', () => {
   test('Should support active item', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.InputTrigger id="datapicker" />
+        <DatePicker.InputTrigger id='datapicker' />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -218,10 +218,10 @@ describe('DateRangePicker', () => {
   test('Should support set custom displayPeriod', () => {
     mockDate('2020-02-10T12:00:00.808Z');
     const { getByText, rerender } = render(
-      <DateRangePicker visible defaultDisplayedPeriod="2020-03-10T12:00:00.808Z" />,
+      <DateRangePicker visible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z' />,
     );
     expect(getByText('March 2020')).toBeTruthy();
-    rerender(<DateRangePicker visible displayedPeriod="2020-04-10T12:00:00.808Z" />);
+    rerender(<DateRangePicker visible displayedPeriod='2020-04-10T12:00:00.808Z' />);
     expect(getByText('April 2020')).toBeTruthy();
   });
 
@@ -260,8 +260,8 @@ describe('DateRangePicker', () => {
 
   test('a11y', async () => {
     const { container } = render(
-      <DateRangePicker visible disablePortal aria-label="data range picker">
-        <DateRangePicker.Trigger aria-label="date range picker">
+      <DateRangePicker visible disablePortal aria-label='data range picker'>
+        <DateRangePicker.Trigger aria-label='date range picker'>
           Open date range picker
         </DateRangePicker.Trigger>
         <DateRangePicker.Popper />

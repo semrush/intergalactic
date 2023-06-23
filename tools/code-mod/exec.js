@@ -19,6 +19,6 @@ module.exports = (options) => {
   j.on('error', (e) => console.error(e));
 
   j.on('exit', () => {
-    console.log(`Code mod finished`);
+    console.log('Code mod finished');
   });
 };

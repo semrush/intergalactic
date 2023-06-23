@@ -36,7 +36,6 @@ const startServer = (host: string, port: number) => {
     })
     .listen(publicPort)
     .on('listening', () => {
-      // eslint-disable-next-line no-console
       console.info(picocolros.green(`\nStarted on http://localhost:${publicPort}\n`));
     });
 };
@@ -57,7 +56,6 @@ esbuild
     startServer(host, port);
   })
   .catch((err) => {
-    // eslint-disable-next-line no-console
     console.error(err);
     // process.exit(1);
   });

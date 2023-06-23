@@ -298,20 +298,20 @@ const Demo = () => {
 
         <Select.Popper>
           <>
-            <InputSearch cleared placeholder="Search" value={filter} onChange={setFilterValue} />
+            <InputSearch cleared placeholder='Search' value={filter} onChange={setFilterValue} />
 
-            <Select.List hMax="240px" w="232px">
+            <Select.List hMax='240px' w='232px'>
               {Object.keys(listActuallyCountryCodes)
                 .filter((countryName) => countryName.toLowerCase().includes(filter))
                 .map((countryName) => (
                   <Select.Option key={countryName} value={countryName}>
-                    <Text size={200} mr={2} flex="0 0 auto">
+                    <Text size={200} mr={2} flex='0 0 auto'>
                       <Flag iso2={listActuallyCountryCodes[countryName].code} />
                     </Text>
                     <Text size={200} mr={2}>
                       {countryName}
                     </Text>
-                    <Text size={200} color="gray60">
+                    <Text size={200} color='gray60'>
                       {listActuallyCountryCodes[countryName].dial_code}
                     </Text>
                   </Select.Option>
@@ -330,7 +330,7 @@ const Demo = () => {
         {value !== valueMask && (
           <Input.Addon
             tag={CloseM}
-            aria-label="Clear value"
+            aria-label='Clear value'
             interactive
             onClick={() => setValue(valueMask)}
           />

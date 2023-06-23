@@ -190,7 +190,7 @@ class PaginationRoot extends Component {
     const SPagination = Root;
     const { Children, getI18nText } = this.asProps;
     return sstyled(this.asProps.styles)(
-      <SPagination render={Box} tag="nav" aria-label={getI18nText('pagination')}>
+      <SPagination render={Box} tag='nav' aria-label={getI18nText('pagination')}>
         <Children />
       </SPagination>,
     );
@@ -236,8 +236,8 @@ class NextPage extends Component {
     return sstyled(this.asProps.styles)(
       <SNextPage
         render={Button}
-        use="primary"
-        theme="info"
+        use='primary'
+        theme='info'
         aria-label={getI18nText('nextPageDescription', { pageNumber: currentPage + 1 })}
       />,
     );
@@ -264,8 +264,8 @@ class TotalPages extends Component {
         ) : (
           <STotalPages
             render={Link}
-            tag="button"
-            type="button"
+            tag='button'
+            type='button'
             aria-label={getI18nText('lastPage', { lastPageNumber: totalPages })}
           />
         )}
@@ -282,7 +282,7 @@ const PageInputValue = (props) => {
     <SPageInputValue
       render={Input.Value}
       aria-label={getI18nText('currentPage')}
-      aria-current="page"
+      aria-current='page'
     />,
   );
 };
@@ -302,7 +302,7 @@ class PageInput extends Component {
 
     return sstyled(styles)(
       <>
-        <SLabel tag="label" htmlFor={`pagination-input-${uid}`}>
+        <SLabel tag='label' htmlFor={`pagination-input-${uid}`}>
           {getI18nText('pageInputLabel')}
         </SLabel>
         <SPageInput render={Input} controlsLength={Children.origin ? undefined : 2}>

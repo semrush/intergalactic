@@ -10,12 +10,12 @@ import Radio, { RadioGroup } from '@semcore/ui/radio';
 
 const Step1 = React.forwardRef(function (props, ref) {
   return (
-    <Flex ref={ref} direction="column">
+    <Flex ref={ref} direction='column'>
       <Input mb={4}>
-        <Input.Value placeholder="Your name" />
+        <Input.Value placeholder='Your name' />
       </Input>
       <Input>
-        <Input.Value placeholder="Your email" />
+        <Input.Value placeholder='Your email' />
       </Input>
     </Flex>
   );
@@ -32,14 +32,14 @@ export default function () {
 
   return (
     <>
-      <Button use="primary" onClick={handleOpen}>
+      <Button use='primary' onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1} onActive={setStep}>
             Personal
-            <Text color="#FFFFFF95" tag="div">
+            <Text color='#FFFFFF95' tag='div'>
               optional
             </Text>
           </Wizard.Stepper>
@@ -48,12 +48,12 @@ export default function () {
           </Wizard.Stepper>
           <Wizard.Stepper step={3} onActive={setStep} number={2.1}>
             Import source
-            <Text color="#FFFFFF95" tag="div">
+            <Text color='#FFFFFF95' tag='div'>
               {value === '' ? 'Not selected' : value}
             </Text>
           </Wizard.Stepper>
         </Wizard.Sidebar>
-        <Wizard.Content tag={Flex} direction="column" justifyContent="space-between">
+        <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step tag={Step1} step={1} />
           <Wizard.Step step={2}>
             {(props, handlers) => {
@@ -61,24 +61,24 @@ export default function () {
             }}
           </Wizard.Step>
           <Wizard.Step step={3}>
-            <RadioGroup name="radio" value={value} onChange={(v) => setValue(v)}>
+            <RadioGroup name='radio' value={value} onChange={(v) => setValue(v)}>
               <Radio mr={2}>
-                <Radio.Value value="Manually" />
+                <Radio.Value value='Manually' />
                 <Radio.Text>Manually</Radio.Text>
               </Radio>
               <Radio mr={2}>
-                <Radio.Value value="From TXT" />
+                <Radio.Value value='From TXT' />
                 <Radio.Text>From TXT</Radio.Text>
               </Radio>
               <Radio mr={2}>
-                <Radio.Value value="From SCV" />
+                <Radio.Value value='From SCV' />
                 <Radio.Text>From SCV</Radio.Text>
               </Radio>
             </RadioGroup>
           </Wizard.Step>
-          <Flex justifyContent="space-between" w="100%">
+          <Flex justifyContent='space-between' w='100%'>
             {step > 1 && (
-              <Button use="tertiary" mt={5} onClick={() => setStep(step - 1)}>
+              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
                 <Button.Addon>
                   <ArrowLeft />
                 </Button.Addon>
@@ -87,7 +87,7 @@ export default function () {
             )}
             {step !== steps.length && (
               <Button
-                use="tertiary"
+                use='tertiary'
                 mt={5}
                 onClick={() => {
                   setStep(step + 1);

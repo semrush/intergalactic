@@ -19,7 +19,7 @@ export default () => (
       H3, <small>32px</small>
     </h3>
     <p>
-      But I do love the taste of a <a>good burger</a> . Mm-mm-mm.
+      But I do love the taste of a <a href='/'>good burger</a> . Mm-mm-mm.
     </p>
     <h4>
       H4, <small>24px</small>

@@ -27,8 +27,8 @@ export default () => {
         Angle: {angleOffset.toFixed(2)} rad ({angleDegOffset.toFixed(0)} deg)
       </div>
       <Plot data={data} width={width} height={height}>
-        <Radar scale={scale} type="circle" angleOffset={angleOffset}>
-          <Radar.Axis dataKey="categories">
+        <Radar scale={scale} type='circle' angleOffset={angleOffset}>
+          <Radar.Axis dataKey='categories'>
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
@@ -45,11 +45,11 @@ export default () => {
               };
             }}
           </Tooltip>
-          <Radar.Polygon dataKey="data_1" color={colors['orange-04']} curve={curveCardinalClosed}>
+          <Radar.Polygon dataKey='data_1' color={colors['orange-04']} curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>
-          <Radar.Polygon dataKey="data_2" color={colors['violet-04']} curve={curveCardinalClosed}>
+          <Radar.Polygon dataKey='data_2' color={colors['violet-04']} curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>

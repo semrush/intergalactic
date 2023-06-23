@@ -1,4 +1,3 @@
-/* eslint-disable */
 import getValue from './getValue';
 
 export default function fire<T extends {}>(context: T, eventName: string, ...args: any) {

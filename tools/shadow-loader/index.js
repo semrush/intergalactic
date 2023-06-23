@@ -13,7 +13,7 @@ let cacheDirectory;
 let options;
 
 const makeLoader = (loader) =>
-  function(...args) {
+  function (...args) {
     // Make the loader async
     const callback = this.async();
     loader.apply(this, args).then(
@@ -56,6 +56,7 @@ async function loader(source) {
     compiler.hooks.afterEnvironment.intercept({
       name: 'VirtualModulesPlugin',
       context: true,
+      // rome-ignore lint/style/noCommaOperator: <explanation>
       register: (tap) => (tap.fn(), tap),
     });
     virtualModules.apply(compiler);
@@ -97,20 +98,17 @@ async function loader(source) {
       (match, codeBlock) => {
         let [, code] = codeBlock.match(/__inner_css_start__\*\/([\s\S]*?)\/\*__inner_css_end__/);
         // also remove ',' in the end of line
-        code = code
-          .trim()
-          .replace(/,$/, '')
-          .replace(/^[`'"]([\s\S]*?)[`'"]$/, '$1');
+        code = code.trim().replace(/,$/, '').replace(/^[`'"]([\s\S]*?)[`'"]$/, '$1');
         const filepath = options.getFilepath(resourcePath, code);
         queue.push(
           writeModule(
             filepath,
-            code.replace(/\\"/g, '"').replace(/\\'/g, '\'').replace(/\\n/g, '\n'),
+            code.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\n/g, '\n'),
           ),
         );
         const [requirePath] = filepath.split('node_modules/').slice(-1);
         styleImports.push(requirePath);
-        return `undefined`;
+        return 'undefined';
       },
     )
     .replace(/\/\*__reshadow-styles__:"(.*?)"\*\//g, (match, dep) => {

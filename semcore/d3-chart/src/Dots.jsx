@@ -75,8 +75,8 @@ function Dots(props) {
       sstyled(styles)(
         <SDot
           aria-hidden
-          key={i}
-          render="circle"
+          key={`${i}`}
+          render='circle'
           visible={visible}
           __excludeProps={EXCLUDE_PROPS}
           value={d}

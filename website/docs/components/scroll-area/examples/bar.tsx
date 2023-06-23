@@ -36,7 +36,7 @@ const Demo = () => {
               ))}
             </Box>
           </ScrollArea.Container>
-          <ScrollArea.Bar orientation="vertical" />
+          <ScrollArea.Bar orientation='vertical' />
         </ScrollArea>
         <br />
         <br />
@@ -45,7 +45,7 @@ const Demo = () => {
         <br />
         <ScrollArea.Bar
           container={containerRef}
-          orientation="horizontal"
+          orientation='horizontal'
           w={200}
           h={40}
           style={{ background: 'rgba(0,0,0,0.1)' }}

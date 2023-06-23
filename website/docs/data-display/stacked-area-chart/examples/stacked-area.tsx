@@ -47,7 +47,7 @@ export default () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Tooltip tag={HoverLine} x="time" wMin={100}>
+      <Tooltip tag={HoverLine} x='time' wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
@@ -59,23 +59,23 @@ export default () => {
                     day: 'numeric',
                   })}
                 </Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Stack 2
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Stack 3
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Box mr={4}>Total</Box>
                   <Text bold>
                     {data[xIndex].stack1 + data[xIndex].stack2 + data[xIndex].stack3}
@@ -86,14 +86,14 @@ export default () => {
           };
         }}
       </Tooltip>
-      <StackedArea x="time">
-        <StackedArea.Area y="stack1" curve={curveCardinal}>
+      <StackedArea x='time'>
+        <StackedArea.Area y='stack1' curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA" curve={curveCardinal}>
+        <StackedArea.Area y='stack2' fill='#59DDAA50' color='#59DDAA' curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D" curve={curveCardinal}>
+        <StackedArea.Area y='stack3' fill='#FF622D50' color='#FF622D' curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
       </StackedArea>

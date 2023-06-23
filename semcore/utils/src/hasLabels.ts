@@ -4,7 +4,7 @@ const traverseChildren = (children: Element[], traversed: Set<Element>) => {
     traversed.add(child);
     if (child.hasAttribute('aria-label')) return true;
     if (child.hasAttribute('aria-labelledby')) return true;
-    if (child && child.children) {
+    if (child?.children) {
       const children: Element[] = []; // to exclude need of `[Symbol.iterator]()` in libs. May be replaced with simpler `[...child.children]` some day.
       for (let i = 0; i < child.children.length; i++) children.push(child.children.item(i));
       const result = traverseChildren(children, traversed);

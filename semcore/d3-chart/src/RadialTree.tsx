@@ -335,7 +335,7 @@ class RadialTreeBase extends Component<RootAsProps> {
     this.asProps.dataHintsHandler.establishDataType('values-set');
 
     return sstyled(this.asProps.styles)(
-      <SRadialTree render="g">
+      <SRadialTree render='g'>
         <Children />
       </SRadialTree>,
     );
@@ -374,7 +374,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   getInteractiveAreaProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data![index];
+    const data = $rootProps.data?.[index];
     const { xStart, yStart, xLabelCenter, yLabelCenter, capSize } = this.computeRadianPosition(
       data,
       index,
@@ -390,7 +390,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   getLineProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data![index];
+    const data = $rootProps.data?.[index];
     const { xStart, yStart, xEnd, yEnd } = this.computeRadianPosition(data, index);
     const { uid, transparent } = this.asProps;
     const color = data.color ?? this.asProps.color;
@@ -412,7 +412,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   getCapProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data![index];
+    const data = $rootProps.data?.[index];
     const { xEnd, yEnd, capSize } = this.computeRadianPosition(data, index);
     const { uid, transparent } = this.asProps;
     const color = data.color ?? this.asProps.color;
@@ -431,7 +431,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   getIconProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data![index];
+    const data = $rootProps.data?.[index];
     const { xEnd, yEnd, isActive } = this.computeRadianPosition(data, index);
     const { uid } = this.asProps;
     const iconColor = data.iconColor ?? this.asProps.iconColor;
@@ -455,7 +455,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   }
 
   getLabelProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
-    const data = $rootProps.data![index];
+    const data = $rootProps.data?.[index];
     const { xLabelCenter, yLabelCenter, labelAngle, isHorizontal } = this.computeRadianPosition(
       data,
       index,
@@ -593,7 +593,7 @@ const InteractiveArea: React.FC<RadialTreeRadianInteractiveAreaAsProps> = ({
   styles,
 }) => {
   return sstyled(styles)(
-    <SInteractiveArea stroke="transparent" render="line" />,
+    <SInteractiveArea stroke='transparent' render='line' />,
   ) as React.ReactElement;
 };
 
@@ -619,7 +619,7 @@ const Line: React.FC<RadialTreeRadianLineAsProps> = ({
   transparent,
 }) => {
   return sstyled(styles)(
-    <SLine render="line" stroke={stroke} transparent={transparent} />,
+    <SLine render='line' stroke={stroke} transparent={transparent} />,
   ) as React.ReactElement;
 };
 
@@ -647,7 +647,7 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   transparent,
 }) => {
   return sstyled(styles)(
-    <SCap render="circle" cx={x} cy={y} r={radius} fill={color} transparent={transparent} />,
+    <SCap render='circle' cx={x} cy={y} r={radius} fill={color} transparent={transparent} />,
   ) as React.ReactElement;
 };
 
@@ -742,9 +742,9 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   return (
     <SLabel
       aria-hidden
-      render="text"
-      textAnchor="middle"
-      dominantBaseline="central"
+      render='text'
+      textAnchor='middle'
+      dominantBaseline='central'
       className={sLabelStyles.className}
       style={sLabelStyles.style}
       x={x.toFixed(2)}
@@ -805,9 +805,9 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   return sstyled(styles)(
     <STitle
       aria-hidden
-      render="text"
-      textAnchor="middle"
-      dominantBaseline="central"
+      render='text'
+      textAnchor='middle'
+      dominantBaseline='central'
       fontSize={textSize}
       fill={color}
       x={x}

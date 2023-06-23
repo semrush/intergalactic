@@ -8,7 +8,7 @@ export const shouldSupportClassName = (Component, Wrapper = React.Fragment, prop
 
     const { getByTestId } = render(
       <Wrapper>
-        <Component data-testid="component" {...props} className={className} />
+        <Component data-testid='component' {...props} className={className} />
       </Wrapper>,
     );
 

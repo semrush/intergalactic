@@ -23,7 +23,7 @@ describe('FormatText', () => {
         <br />
         <abbr>abbr element</abbr>
         <br />
-        <a href="#">
+        <a href='/'>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae cum cumque dolor dolore
           doloribus ducimus est, et exercitationem in laboriosam maiores molestiae mollitia
           perferendis quisquam repellat saepe soluta, vero vitae.
@@ -119,13 +119,13 @@ describe('FormatText', () => {
     );
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <FormatText size="m">
+        <FormatText size='m'>
           <Inner />
         </FormatText>
-        <FormatText size="l">
+        <FormatText size='l'>
           <Inner />
         </FormatText>
-        <FormatText size="xl">
+        <FormatText size='xl'>
           <Inner />
         </FormatText>
       </snapshot.ProxyProps>
@@ -152,13 +152,13 @@ describe('FormatText', () => {
 
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <FormatText size="m">
+        <FormatText size='m'>
           <Inner />
         </FormatText>
-        <FormatText size="l">
+        <FormatText size='l'>
           <Inner />
         </FormatText>
-        <FormatText size="xl">
+        <FormatText size='xl'>
           <Inner />
         </FormatText>
       </snapshot.ProxyProps>
@@ -170,7 +170,7 @@ describe('FormatText', () => {
   test.concurrent('Abbr should correct render', async ({ task }) => {
     const component = (
       <FormatText>
-        <abbr id="element">abbr element</abbr>
+        <abbr id='element'>abbr element</abbr>
       </FormatText>
     );
     await expect(
@@ -193,7 +193,7 @@ describe('FormatText', () => {
   test.concurrent('Link should correct render', async ({ task }) => {
     const component = (
       <FormatText>
-        <a href="#" id="element">
+        <a href='/' id='element'>
           link
         </a>
       </FormatText>

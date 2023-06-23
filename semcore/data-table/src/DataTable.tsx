@@ -301,7 +301,7 @@ class RootDefinitionTable extends Component<AsProps> {
           sort[0] === name
             ? sort[1]
             : column?.sortDirection ||
-              (typeof sortable == 'string' ? sortable : defaultSortDirection),
+              (typeof sortable === 'string' ? sortable : defaultSortDirection),
         props: {
           name,
           flex: flex === 'inherit' ? undefined : flex,
@@ -406,10 +406,8 @@ class RootDefinitionTable extends Component<AsProps> {
         const rowsGroup = row[ROW_GROUP] || [];
         const rowsGroupedNames = Object.fromEntries(
           rowsGroup
-            .map((subRow) => Object.keys(subRow))
-            .flat()
-            .map((key) => key.split('/'))
-            .flat()
+            .flatMap((subRow) => Object.keys(subRow))
+            .flatMap((key) => key.split('/'))
             .map((key) => [key, true]),
         );
 
@@ -477,7 +475,7 @@ class RootDefinitionTable extends Component<AsProps> {
         render={Box}
         __excludeProps={['data']}
         ref={this.tableRef}
-        role="table"
+        role='table'
         aria-rowcount={(data ?? []).length}
       >
         <Children />

@@ -34,7 +34,7 @@ describe('Breadcrumbs', () => {
   test.concurrent('Should support hover item', async ({ task }) => {
     const component = (
       <Breadcrumbs>
-        <Breadcrumbs.Item id="breadcrumbs">Dashboard</Breadcrumbs.Item>
+        <Breadcrumbs.Item id='breadcrumbs'>Dashboard</Breadcrumbs.Item>
         <Breadcrumbs.Item>Projects</Breadcrumbs.Item>
         <Breadcrumbs.Item>semrush.com</Breadcrumbs.Item>
       </Breadcrumbs>

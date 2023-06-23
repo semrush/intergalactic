@@ -40,7 +40,7 @@ class NeighborLocationRoot extends Component {
   controlsLengthRef = React.createRef();
   cacheChild = new Map();
 
-  calculateNeighborLocation(controlsLength = 0, component) {
+  calculateNeighborLocation(controlsLength = 0, component = undefined) {
     // for not re-render component
     if (!this.cacheChild.has(component)) {
       const neighborLocation = calculateNeighborLocation(controlsLength, this.cacheChild.size);

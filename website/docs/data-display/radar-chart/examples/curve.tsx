@@ -12,7 +12,7 @@ export default () => {
 
   return (
     <Plot data={data} width={width} height={height}>
-      <Radar scale={scale} type="circle">
+      <Radar scale={scale} type='circle'>
         <Radar.Axis dataKey='categories'>
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
@@ -44,7 +44,7 @@ export default () => {
 };
 
 const data = {
-  'categories': ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
-  'data_1': [1, 3, 5, 5, 9, 2],
-  'data_2': [5, 2, 1, 2, 7, 6],
+  categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
+  data_1: [1, 3, 5, 5, 9, 2],
+  data_2: [5, 2, 1, 2, 7, 6],
 };

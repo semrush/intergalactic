@@ -54,7 +54,7 @@ export interface IInputMaskValueProps extends IInputValueProps {
   /**
    * A field that explains the mask for blind users
    * */
-  title?: string
+  title?: string;
 }
 
 interface IInputMaskCtx {
@@ -104,9 +104,7 @@ class Value extends Component<IInputMaskValueProps> {
     },
   };
 
-  static enhance = [
-    uniqueIDEnhancement(),
-  ];
+  static enhance = [uniqueIDEnhancement()];
 
   inputRef = React.createRef<HTMLInputElement>();
   maskRef = React.createRef<HTMLDivElement>();
@@ -116,10 +114,10 @@ class Value extends Component<IInputMaskValueProps> {
   state: {
     lastConformed:
       | {
-      all: string;
-      userInput: string;
-      maskOnly: string;
-    }
+          all: string;
+          userInput: string;
+          maskOnly: string;
+        }
       | undefined;
     maskWidth: number | undefined;
   } = {
@@ -147,7 +145,7 @@ class Value extends Component<IInputMaskValueProps> {
     }
     if (maskConfigChanged || prevProps.value !== this.props.value) {
       this.setState((prevState) => {
-        const maskWidth = this.maskRef.current && this.maskRef.current.offsetWidth;
+        const maskWidth = this.maskRef.current?.offsetWidth;
         if (maskWidth !== (prevState as any).maskWidth) {
           return { maskWidth };
         }
@@ -308,7 +306,12 @@ class Value extends Component<IInputMaskValueProps> {
                 {...boxProps}
                 __excludeProps={['onFocus', 'onChange', 'forwardRef', 'ref']}
               >
-                <SMask tag='span' aria-hidden='true' neighborLocation={neighborLocation} ref={this.maskRef}>
+                <SMask
+                  tag='span'
+                  aria-hidden='true'
+                  neighborLocation={neighborLocation}
+                  ref={this.maskRef}
+                >
                   {this.state.lastConformed && (
                     <SMaskHidden data-content={this.state.lastConformed.userInput} />
                   )}

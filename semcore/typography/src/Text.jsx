@@ -23,8 +23,8 @@ function Text(props, ref) {
   return sstyled(styles)(
     <SText
       render={Box}
-      tag="span"
-      data-ui-name="Text"
+      tag='span'
+      data-ui-name='Text'
       ref={ref}
       use:decoration={textDecoration}
       use:color={resolveColor(color)}

@@ -61,7 +61,7 @@ export default () => {
   return (
     <Card w={'550px'}>
       <Card.Header pt={4}> Chart legend</Card.Header>
-      <Card.Body tag={Flex} direction="column">
+      <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
           {linesList.map((line) => {
             return (
@@ -98,7 +98,7 @@ export default () => {
           {displayedLinesList.map((line) => {
             return (
               <Line
-                x="x"
+                x='x'
                 y={line}
                 key={line}
                 color={lineColors[line]}

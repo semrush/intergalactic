@@ -48,10 +48,10 @@ export default () => {
       onChange={(v) => setSelected(v)}
       onVisibleChange={handleVisibleChange}
       multiselect
-      placeholder="Select values"
+      placeholder='Select values'
     >
       <Select.Trigger />
-      <Select.Menu hMax="240px">{renderOptions()}</Select.Menu>
+      <Select.Menu hMax='240px'>{renderOptions()}</Select.Menu>
     </Select>
   );
 };

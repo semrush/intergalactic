@@ -23,7 +23,7 @@ await Promise.all(
   voTestFiles.map(async (filePath) => {
     const content = await fs.readFile(filePath, 'utf-8');
     const lines = content.split('\n');
-    for (let line of lines) {
+    for (const line of lines) {
       const trimmed = line.trim();
       if (trimmed.startsWith("'../../../website/docs") && trimmed.endsWith("',")) {
         const relativePath = trimmed.substring("'../../../".length, trimmed.length - 2);
@@ -49,9 +49,9 @@ const metas = await Promise.all(
   ),
 );
 const usedFiles = [...inputFiles];
-for (let meta of metas) {
+for (const meta of metas) {
   if (!meta.metafile) continue;
-  for (let inputFile in meta.metafile.inputs) {
+  for (const inputFile in meta.metafile.inputs) {
     if (!inputFile.includes('node_modules')) {
       usedFiles.push(inputFile);
     }

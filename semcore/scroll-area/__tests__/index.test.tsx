@@ -28,7 +28,7 @@ describe('ScrollArea', () => {
         {[...new Array(10)].map((_, i) => (
           <div key={i} style={{ width: '100px', height: '100px' }} />
         ))}
-        <ScrollArea.Bar orientation="vertical" data-testid="bar" />
+        <ScrollArea.Bar orientation='vertical' data-testid='bar' />
       </ScrollArea>,
     );
     expect(queryByTestId('bar').attributes['aria-valuemin']).toBeTruthy();

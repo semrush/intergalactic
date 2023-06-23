@@ -16,7 +16,7 @@ const Demo = () => {
   return (
     <Box>
       {tags.map((tag, idx) => (
-        <Tag theme="primary" editable data-id={idx} key={idx}>
+        <Tag theme='primary' editable data-id={idx} key={idx}>
           <Tag.Text>{tag}</Tag.Text>
           <Tag.Close onClick={handleEditTag} />
         </Tag>

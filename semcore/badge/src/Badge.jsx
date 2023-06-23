@@ -18,7 +18,7 @@ class RootBadge extends Component {
     const { styles, color, bg } = this.asProps;
 
     return sstyled(styles)(
-      <SBadge render={Box} tag="span" use:color={resolveColor(color)} use:bg={resolveColor(bg)} />,
+      <SBadge render={Box} tag='span' use:color={resolveColor(color)} use:bg={resolveColor(bg)} />,
     );
   }
 }

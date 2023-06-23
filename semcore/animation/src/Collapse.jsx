@@ -13,8 +13,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
 
   useEnhancedEffect(() => {
     if (!innerRef.current) return;
-    if (props.visible) innerRef.current.style.height = 0 + 'px';
-    if (!props.visible) innerRef.current.style.height = innerRef.current.scrollHeight + 'px';
+    if (props.visible) innerRef.current.style.height = `${0}px`;
+    if (!props.visible) innerRef.current.style.height = `${innerRef.current.scrollHeight}px`;
     if (props.visible) innerRef.current.style.animationFillMode = 'none';
     if (!props.visible) innerRef.current.style.animationFillMode = 'both';
   }, [props.visible]);
@@ -22,7 +22,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
   useEnhancedEffect(() => {
     if (!innerRef.current) return;
     if (props.visible) innerRef.current.style.height = 'auto';
-    if (!props.visible) innerRef.current.style.height = 0 + 'px';
+    if (!props.visible) innerRef.current.style.height = `${0}px`;
   }, []);
 
   const handleAnimationStart = useCallback(
@@ -34,8 +34,8 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
         event.currentTarget.style.overflow = 'hidden';
       }
 
-      if (props.visible) event.currentTarget.style.height = event.currentTarget.scrollHeight + 'px';
-      if (!props.visible) event.currentTarget.style.height = 0 + 'px';
+      if (props.visible) event.currentTarget.style.height = `${event.currentTarget.scrollHeight}px`;
+      if (!props.visible) event.currentTarget.style.height = `${0}px`;
     },
     [props.visible],
   );

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { devices, PlaywrightTestConfig } from '@playwright/test';
 import { voConfig } from '@guidepup/playwright';
 

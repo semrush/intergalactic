@@ -1,5 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import cn from 'classnames';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { useBox } from '@semcore/flex-box';

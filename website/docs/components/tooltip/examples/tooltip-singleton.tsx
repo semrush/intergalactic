@@ -8,9 +8,9 @@ const options = Array(50)
 
 export default () => (
   <Select>
-    <Select.Trigger placeholder="Scroll menu" />
+    <Select.Trigger placeholder='Scroll menu' />
     <Select.Menu>
-      <Tooltip timeout={[0, 50]} placement="right">
+      <Tooltip timeout={[0, 50]} placement='right'>
         {options.map((option, index) => (
           <Select.Option value={option} key={index} tag={Tooltip.Trigger}>
             {option}

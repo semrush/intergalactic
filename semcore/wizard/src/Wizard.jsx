@@ -63,7 +63,7 @@ function Sidebar(props) {
   const SSidebar = Root;
   const SSidebarHeader = 'h2';
   return sstyled(styles)(
-    <SSidebar render={Box} role="menu">
+    <SSidebar render={Box} role='menu'>
       {title && <SSidebarHeader>{title}</SSidebarHeader>}
       <Children />
     </SSidebar>,
@@ -110,14 +110,14 @@ function Stepper(props) {
   return sstyled(styles)(
     <SStepper
       render={Box}
-      role="menuitem"
+      role='menuitem'
       aria-disabled={disabled}
       aria-current={active}
       onClick={handlerClick}
       onKeyDown={handlerKeyDown}
     >
       {completed && <ScreenReaderOnly>{getI18nText('completedStep')}</ScreenReaderOnly>}
-      <SStepNumber aria-hidden="true">{completed ? <SCompleted /> : number}</SStepNumber>
+      <SStepNumber aria-hidden='true'>{completed ? <SCompleted /> : number}</SStepNumber>
       <SStepDescription>
         <Children />
       </SStepDescription>

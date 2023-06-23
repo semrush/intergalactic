@@ -5,14 +5,14 @@ export default () => {
   const [value, onChange] = useState(1);
   return (
     <>
-      <TabLine value={value} onChange={onChange} aria-label="Page">
-        <TabLine.Item value={1} aria-controls="tab-panel-1">
+      <TabLine value={value} onChange={onChange} aria-label='Page'>
+        <TabLine.Item value={1} aria-controls='tab-panel-1'>
           Overview
         </TabLine.Item>
-        <TabLine.Item value={2} aria-controls="tab-panel-2">
+        <TabLine.Item value={2} aria-controls='tab-panel-2'>
           Issues
         </TabLine.Item>
-        <TabLine.Item value={3} aria-controls="tab-panel-3">
+        <TabLine.Item value={3} aria-controls='tab-panel-3'>
           Progress
         </TabLine.Item>
         <TabLine.Item value={4} disabled>
@@ -21,7 +21,7 @@ export default () => {
       </TabLine>
       {
         [
-          <div id="tab-panel-1" role="tabpanel" aria-labelledby="tab-label-1" tabIndex={-1}>
+          <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
             <h3>Overview</h3>
             <p>
               The important achievement of Apollo was demonstrating that humanity is not forever
@@ -30,10 +30,10 @@ export default () => {
             </p>
           </div>,
           <div
-            id="tab-panel-2"
-            aria-hidden="true"
-            role="tabpanel"
-            aria-labelledby="tab-label-2"
+            id='tab-panel-2'
+            aria-hidden='true'
+            role='tabpanel'
+            aria-labelledby='tab-label-2'
             tabIndex={-1}
           >
             <h3>Issues</h3>
@@ -43,10 +43,10 @@ export default () => {
             </p>
           </div>,
           <div
-            id="tab-panel-3"
-            aria-hidden="true"
-            role="tabpanel"
-            aria-labelledby="tab-label-3"
+            id='tab-panel-3'
+            aria-hidden='true'
+            role='tabpanel'
+            aria-labelledby='tab-label-3'
             tabIndex={-1}
           >
             <h3>Progress</h3>

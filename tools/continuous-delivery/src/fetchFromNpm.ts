@@ -33,11 +33,11 @@ export const fetchFromNpm = async (filter?: string[]) => {
         }[];
       };
     }
-  >(`https://registry.npmjs.org/-/v1/search?text=@semcore/&size=250`);
+  >('https://registry.npmjs.org/-/v1/search?text=@semcore/&size=250');
 
   if (npmSearchResult.total !== npmSearchResult.objects.length) {
     throw new Error(
-      `Gosh, seems like our npm search unable to find all packages at once, need to update search`,
+      'Gosh, seems like our npm search unable to find all packages at once, need to update search',
     );
   }
 

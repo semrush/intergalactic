@@ -50,7 +50,9 @@ let data = [
   },
 ];
 
-data.forEach((d) => (data = shuffle(data.concat(data))));
+data.forEach(() => {
+  data = shuffle(data.concat(data));
+});
 
 const Loader = styled.tr`
   position: absolute;
@@ -79,21 +81,21 @@ const Demo = () => (
             <Table.Cell>
               <Link>{row.keyword}</Link>
             </Table.Cell>
-            <Table.Cell align="right">{row.kd}</Table.Cell>
-            <Table.Cell align="right">{row.cpc}</Table.Cell>
-            <Table.Cell align="right">{row.vol}</Table.Cell>
+            <Table.Cell align='right'>{row.kd}</Table.Cell>
+            <Table.Cell align='right'>{row.cpc}</Table.Cell>
+            <Table.Cell align='right'>{row.vol}</Table.Cell>
           </Table.Row>
         ))}
         <Loader>
           <td>
-            <Box position="sticky" top={150} style={{ textAlign: 'center' }}>
-              <Text size={500} medium tag="h4" mb="16px">
+            <Box position='sticky' top={150} style={{ textAlign: 'center' }}>
+              <Text size={500} medium tag='h4' mb='16px'>
                 Want to view more results?
               </Text>
-              <Text size={300} tag="p" mb="24px">
+              <Text size={300} tag='p' mb='24px'>
                 To view more data, upgrade to a Guru or Business subscription plan.
               </Text>
-              <Button use="primary" theme="success" size="l">
+              <Button use='primary' theme='success' size='l'>
                 See plans and pricing
               </Button>
             </Box>
