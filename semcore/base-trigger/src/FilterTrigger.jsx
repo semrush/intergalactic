@@ -50,7 +50,7 @@ class RootFilterTrigger extends Component {
         setFocus(this.triggerRef.current);
       }
     }, 0);
-  }
+  };
 
   render() {
     const SWrapper = Root;
