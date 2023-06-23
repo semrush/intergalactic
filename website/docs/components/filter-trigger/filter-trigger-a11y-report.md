@@ -1,7 +1,7 @@
 ## Automated screen reader testing
 
-_Intergalactic v14.4.0, React v18.2.0, Playwright v1.25.1,
-Guidepup v0.13.1, MacOS Big Sur 11._
+_Intergalactic v14.6.0, React v18.2.0, Playwright v1.25.1,
+Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/filter-trigger/examples/select.tsx).**
 
@@ -12,7 +12,7 @@ Guidepup v0.13.1, MacOS Big Sur 11._
 4. Screen reader says "Filter list box pop up group".
 5. Screen reader triggers element default action.
 6. Screen reader goes to the next element.
-7. Screen reader says "You are currently on a text element.".
+7. Screen reader says "Select option  clickable".
 8. Screen reader goes to the next element.
 9. Screen reader says "end of Filter list box pop up group".
 10. Screen reader goes to the next element.
