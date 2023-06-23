@@ -1,3 +1,17 @@
+## [14.7.0] - 2023-06-23
+
+### @semcore/base-trigger
+
+- **Added** `FilterTrigger` focus returning after the clear effect.
+
+### @semcore/select
+
+- **Changed** Improved focus handling with `FilterTrigger`.
+
+### @semcore/utils
+
+- **Added** Exposed internal util for setting focus on top focusable child.
+
 ## [14.6.0] - 2023-06-22
 
 ### @semcore/input

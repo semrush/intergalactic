@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.12.0] - 2023-06-23
+
+### Added
+
+- `FilterTrigger` focus returning after the clear effect.
+
 ## [3.11.2] - 2023-06-13
 
 ### Fixed
