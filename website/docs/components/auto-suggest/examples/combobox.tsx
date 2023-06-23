@@ -16,11 +16,11 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" size="200" htmlFor="release-time-picker">
+      <Text tag='label' size='200' htmlFor='release-time-picker'>
         Select release time
       </Text>
       <Box mt={2}>
-        <Select id="release-time-picker" interaction="focus" onChange={setValue} value={value}>
+        <Select id='release-time-picker' interaction='focus' onChange={setValue} value={value}>
           <Select.Trigger tag={Input}>
             {() => <Input.Value value={value} onChange={setValue} />}
           </Select.Trigger>

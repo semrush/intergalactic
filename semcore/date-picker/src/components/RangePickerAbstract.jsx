@@ -130,7 +130,11 @@ class RangePickerAbstract extends Component {
               .toDate(),
           ];
         } else {
-          next_highlighted = [dayjs(highlighted[0]).add(day, this.keyStep).toDate()];
+          next_highlighted = [
+            dayjs(highlighted[0])
+              .add(day, this.keyStep)
+              .toDate(),
+          ];
         }
         this.handlers.highlighted(next_highlighted);
         this.handlers.displayedPeriod(setNextDisplayedPeriod(next_highlighted));
@@ -220,12 +224,12 @@ class RangePickerAbstract extends Component {
               </Picker.Header>
               <Picker.Calendar />
             </Box>
-            {Boolean(periods.length) ? (
+            {periods.length ? (
               <>
-                <Divider m="-16px 16px" orientation="vertical" h="auto" />
-                <Flex direction="column">
+                <Divider m='-16px 16px' orientation='vertical' h='auto' />
+                <Flex direction='column'>
                   <Picker.Period />
-                  <Flex mt="auto">{buttons}</Flex>
+                  <Flex mt='auto'>{buttons}</Flex>
                 </Flex>
               </>
             ) : (
@@ -357,12 +361,12 @@ class RangePickerAbstract extends Component {
 
 function Apply(props) {
   const { getI18nText } = props;
-  return <Root render={Button} use="primary" children={getI18nText('apply')} />;
+  return <Root render={Button} use='primary' children={getI18nText('apply')} />;
 }
 
 function Reset(props) {
   const { getI18nText } = props;
-  return <Root render={Button} use="tertiary" theme="muted" children={getI18nText('reset')} />;
+  return <Root render={Button} use='tertiary' theme='muted' children={getI18nText('reset')} />;
 }
 
 export { Apply, Reset };

@@ -12,14 +12,14 @@ export default () => {
   };
 
   return (
-    <Flex justifyContent="space-between">
+    <Flex justifyContent='space-between'>
       <Popper visible={visible} onVisibleChange={toggleVisible}>
         <Popper.Trigger style={style}>Controlled</Popper.Trigger>
         <Popper.Popper style={style}>Attached content</Popper.Popper>
       </Popper>
 
       <Popper>
-        <Popper.Trigger style={style} ml="auto">
+        <Popper.Trigger style={style} ml='auto'>
           Uncontrolled
         </Popper.Trigger>
         <Popper.Popper style={style}>Attached content</Popper.Popper>

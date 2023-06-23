@@ -59,7 +59,7 @@ const isRootRule = (node) =>
   Object(node.nodes).length;
 
 const isBlockIgnored = (ruleOrDeclaration) => {
-  var rule = ruleOrDeclaration.selector ? ruleOrDeclaration : ruleOrDeclaration.parent;
+  const rule = ruleOrDeclaration.selector ? ruleOrDeclaration : ruleOrDeclaration.parent;
 
   return /(!\s*)?postcss-custom-properties:\s*off\b/i.test(rule.toString());
 };

@@ -51,7 +51,7 @@ export default () => {
   return (
     <Card w={'550px'}>
       <Card.Header pt={4}> Chart legend</Card.Header>
-      <Card.Body tag={Flex} direction="column">
+      <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width}>
           {piesList.map((pie) => {
             return (

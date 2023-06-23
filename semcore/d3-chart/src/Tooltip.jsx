@@ -72,7 +72,7 @@ class TooltipRoot extends Component {
         visible={this.state.$visible}
         onFirstUpdate={this.handlerCancel}
         onOutsideClick={this.handlerCancel}
-        interaction="none"
+        interaction='none'
         offset={8}
         flip={{ allowedAutoPlacements: ['left', 'right'] }}
       >
@@ -104,7 +104,7 @@ function PopperPopper(props) {
   return sstyled(styles)(
     <STooltip
       render={Popper.Popper}
-      childrenPosition="inside"
+      childrenPosition='inside'
       onMouseMove={handlerCancel}
       x={x}
       y={y}
@@ -133,9 +133,7 @@ function Dot(props) {
 function Footer(props) {
   const { styles } = props;
   const SFooter = Root;
-  return sstyled(styles)(
-    <SFooter render={Box} __excludeProps={['data', 'scale']}/>,
-  );
+  return sstyled(styles)(<SFooter render={Box} __excludeProps={['data', 'scale']} />);
 }
 
 const Tooltip = createElement(TooltipRoot, {

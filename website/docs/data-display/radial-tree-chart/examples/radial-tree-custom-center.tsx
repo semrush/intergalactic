@@ -16,15 +16,15 @@ export default () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree centralMargin={85} color="#008FF8">
+      <RadialTree centralMargin={85} color='#008FF8'>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <circle r={60} cx={width / 2} cy={height / 2} fill="#AB6CFE" />
-        <RadialTree.Title fill="#FFFFFF">Sleeping</RadialTree.Title>
+        <circle r={60} cx={width / 2} cy={height / 2} fill='#AB6CFE' />
+        <RadialTree.Title fill='#FFFFFF'>Sleeping</RadialTree.Title>
       </RadialTree>
     </Plot>
   );

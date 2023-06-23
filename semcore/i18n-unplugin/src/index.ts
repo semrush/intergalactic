@@ -51,12 +51,12 @@ export const semcoreI18nUnplugin: UnpluginInstance<Options> = createUnplugin((op
       const imports = syncLocales
         .map((locale) => `import ${locale} from "./${locale}.json";`)
         .join('\n');
-      const prefix = `export const localizedMessages = {`;
+      const prefix = 'export const localizedMessages = {';
       const loaders = asyncLocales.map(
         (locale) => `["${locale}"]: () => import('./${locale}.json')`,
       );
 
-      const postfix = `};`;
+      const postfix = '};';
 
       const code = `${imports}\n\n${prefix}\n${[...syncLocales, ...loaders].join(',\n')}${postfix}`;
 

@@ -562,23 +562,23 @@ function Trigger(props) {
     <>
       {returnFocusEl === 'before' && (
         <div
-          tabIndex="0"
+          tabIndex='0'
           ref={focusableTriggerReturnFocusToRef}
           onBlur={handleFocusReturnElBlur}
           style={focusCatcherStyles}
         />
       )}
-      <STrigger render={Box} inline role="button" aria-haspopup={true} onFocus={handleFocus}>
+      <STrigger render={Box} inline role='button' aria-haspopup={true} onFocus={handleFocus}>
         <Children />
       </STrigger>
       {focusHint && false && (
-        <SFocusHint aria-live="polite">
+        <SFocusHint aria-live='polite'>
           <ScreenReaderOnly>{focusHint}</ScreenReaderOnly>
         </SFocusHint>
       )}
       {returnFocusEl === 'after' && (
         <div
-          tabIndex="0"
+          tabIndex='0'
           ref={focusableTriggerReturnFocusToRef}
           onBlur={handleFocusReturnElBlur}
           style={focusCatcherStyles}
@@ -586,7 +586,7 @@ function Trigger(props) {
       )}
       {focusCatch && (
         <div
-          tabIndex="0"
+          tabIndex='0'
           ref={handleFocusCatchRef}
           onBlur={handleFocusCatchBlur}
           style={focusCatcherStyles}

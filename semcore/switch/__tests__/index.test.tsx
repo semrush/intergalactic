@@ -65,10 +65,10 @@ describe('Switch', () => {
   test.concurrent('Should support a custom icon on the toggle', async ({ task }) => {
     const component = (
       <>
-        <Switch size="l">
+        <Switch size='l'>
           <Switch.Value>$</Switch.Value>
         </Switch>
-        <Switch size="l">
+        <Switch size='l'>
           <Switch.Value checked>$</Switch.Value>
         </Switch>
       </>
@@ -80,17 +80,17 @@ describe('Switch', () => {
   test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <>
-        <Switch size="xl">
+        <Switch size='xl'>
           <Switch.Addon>Addon</Switch.Addon>
           <Switch.Value />
           <Switch.Addon>Addon</Switch.Addon>
         </Switch>
-        <Switch size="l">
+        <Switch size='l'>
           <Switch.Addon>Addon</Switch.Addon>
           <Switch.Value />
           <Switch.Addon>Addon</Switch.Addon>
         </Switch>
-        <Switch size="m">
+        <Switch size='m'>
           <Switch.Addon>Addon</Switch.Addon>
           <Switch.Value />
           <Switch.Addon>Addon</Switch.Addon>
@@ -104,10 +104,10 @@ describe('Switch', () => {
   test.concurrent('Should support theme', async ({ task }) => {
     const component = (
       <>
-        <Switch size="l" theme="success">
+        <Switch size='l' theme='success'>
           <Switch.Value checked>$</Switch.Value>
         </Switch>
-        <Switch size="l" theme="info">
+        <Switch size='l' theme='info'>
           <Switch.Value checked>$</Switch.Value>
         </Switch>
       </>
@@ -119,13 +119,13 @@ describe('Switch', () => {
   test.concurrent('Should support custom theme', async ({ task }) => {
     const component = (
       <>
-        <Switch size="l" theme="blanchedalmond">
+        <Switch size='l' theme='blanchedalmond'>
           <Switch.Value checked>$</Switch.Value>
         </Switch>
-        <Switch size="l" theme="#3eeb4c">
+        <Switch size='l' theme='#3eeb4c'>
           <Switch.Value checked>$</Switch.Value>
         </Switch>
-        <Switch size="l" theme="dark-violet">
+        <Switch size='l' theme='dark-violet'>
           <Switch.Value checked>$</Switch.Value>
         </Switch>
       </>
@@ -138,8 +138,8 @@ describe('Switch', () => {
   test.skip('Should support onChange callback', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Switch data-testid="label">
-        <Switch.Value onChange={spy} data-testid="value" />
+      <Switch data-testid='label'>
+        <Switch.Value onChange={spy} data-testid='value' />
       </Switch>,
     );
 
@@ -153,7 +153,7 @@ describe('Switch', () => {
       <Switch>
         <Switch.Value
           includeInputProps={['data-testid', ...inputProps]}
-          data-testid="value"
+          data-testid='value'
           onChange={spy}
         />
       </Switch>,

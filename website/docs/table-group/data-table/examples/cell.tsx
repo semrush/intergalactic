@@ -6,20 +6,20 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" />
-        <DataTable.Column name="cpc" children="CPC" />
-        <DataTable.Column name="vol" children="Vol." />
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<{}, typeof data> name="keyword">
+        <DataTable.Cell<{}, typeof data> name='keyword'>
           {(props, row) => {
             return {
               children: <Link>{row[props.name]}</Link>,
             };
           }}
         </DataTable.Cell>
-        <DataTable.Cell<{}, typeof data> name="keyword">
+        <DataTable.Cell<{}, typeof data> name='keyword'>
           {(props, row, index) => {
             return {
               style: {

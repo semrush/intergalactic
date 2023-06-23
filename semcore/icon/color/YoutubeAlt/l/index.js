@@ -49,7 +49,7 @@ YoutubeAlt.displayName = 'YoutubeAlt';
 
 var _default = (0, _core.createBaseComponent)(YoutubeAlt);
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "YoutubeAlt" icon is deprecated. Use the "YoutubeColored"', 'Icon');
 
 exports["default"] = _default;

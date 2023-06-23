@@ -12,7 +12,7 @@ function Blockquote(props, ref) {
   const { children, author } = props;
 
   return sstyled(styles)(
-    <SBlockquote render={Box} tag="blockquote" ref={ref}>
+    <SBlockquote render={Box} tag='blockquote' ref={ref}>
       <SDoubleQuotation>“</SDoubleQuotation>
       <span>
         {children}

@@ -34,7 +34,7 @@ class RootButtonTrigger extends Component {
       <Root render={BaseTrigger}>
         {addonTextChildren(Children, ButtonTrigger.Text, ButtonTrigger.Addon, empty)}
         <SButtonAddon>
-          {loading ? <SButtonTriggerSpin size="xs" theme={false} /> : <ChevronDown />}
+          {loading ? <SButtonTriggerSpin size='xs' theme={false} /> : <ChevronDown />}
         </SButtonAddon>
       </Root>,
     );

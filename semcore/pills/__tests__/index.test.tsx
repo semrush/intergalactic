@@ -89,7 +89,7 @@ describe('PillGroup', () => {
     const spyRight = vi.fn();
 
     const { getByTestId } = render(
-      <Pills behavior="tabs">
+      <Pills behavior='tabs'>
         <Pills.Item value={1} onFocus={spyLeft}>
           1
         </Pills.Item>
@@ -116,7 +116,7 @@ describe('PillGroup', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <Pills behavior="radio" onChange={spy} value={2}>
+      <Pills behavior='radio' onChange={spy} value={2}>
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item data-testid={'pill'} value={2}>
           2
@@ -161,7 +161,6 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('should support additional elements as props', async ({ task }) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
       return (
         <span ref={ref} {...p}>
@@ -189,7 +188,7 @@ describe('PillGroup', () => {
     await expect(
       await snapshot(
         <Pills>
-          <Pills.Item id="item">Item 1</Pills.Item>
+          <Pills.Item id='item'>Item 1</Pills.Item>
           <Pills.Item>Item 2</Pills.Item>
         </Pills>,
         {
@@ -202,7 +201,7 @@ describe('PillGroup', () => {
     await expect(
       await snapshot(
         <Pills>
-          <Pills.Item id="item" selected>
+          <Pills.Item id='item' selected>
             Item 1
           </Pills.Item>
           <Pills.Item>Item 2</Pills.Item>
@@ -225,7 +224,7 @@ describe('PillGroup', () => {
           </Pills.Item.Addon>
           <Pills.Item.Text>Item 1</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Badge bg="orange">beta</Badge>
+            <Badge bg='orange'>beta</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item>
@@ -237,7 +236,7 @@ describe('PillGroup', () => {
         <Pills.Item>
           <Pills.Item.Text>Item 3</Pills.Item.Text>
           <Pills.Item.Addon>
-            <Badge bg="orange">beta</Badge>
+            <Badge bg='orange'>beta</Badge>
           </Pills.Item.Addon>
         </Pills.Item>
         <Pills.Item>Item 4</Pills.Item>
@@ -247,8 +246,8 @@ describe('PillGroup', () => {
       </Pills>
     );
 
-    await expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot(task);
-    await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should correct render for different number Items', async ({ task }) => {
@@ -287,8 +286,8 @@ describe('PillGroup', () => {
       </>
     );
 
-    await expect(await snapshot(<PillsSize size="m" />)).toMatchImageSnapshot(task);
-    await expect(await snapshot(<PillsSize size="l" />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size='m' />)).toMatchImageSnapshot(task);
+    await expect(await snapshot(<PillsSize size='l' />)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
@@ -297,7 +296,7 @@ describe('PillGroup', () => {
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid="tab-4">
+        <Pills.Item value={4} data-testid='tab-4'>
           4
         </Pills.Item>
       </Pills>,
@@ -311,11 +310,11 @@ describe('PillGroup', () => {
 
   test('a11y behavior radio', async () => {
     const { getByTestId, container } = render(
-      <Pills value={1} behavior="radio">
+      <Pills value={1} behavior='radio'>
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>2</Pills.Item>
         <Pills.Item value={3}>3</Pills.Item>
-        <Pills.Item value={4} data-testid="tab-4">
+        <Pills.Item value={4} data-testid='tab-4'>
           4
         </Pills.Item>
       </Pills>,

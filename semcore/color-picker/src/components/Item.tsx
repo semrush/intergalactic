@@ -31,23 +31,23 @@ export function Item(props: ItemAsProps) {
       value={value}
       displayLabel={displayLabel}
       lightBackground={opacity(value, 0.15)}
-      role="listitem"
-      aria-atomic="true"
+      role='listitem'
+      aria-atomic='true'
       aria-label={value ? getI18nText('itemColor', { color: value }) : getI18nText('clearColor')}
     >
       {!value && (
         <SLine
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+          width='17'
+          height='17'
+          viewBox='0 0 17 17'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
         >
           <rect
-            width="1"
-            height="22"
-            transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 16.4854 0.928925)"
-            fill="#e0e1e9"
+            width='1'
+            height='22'
+            transform='matrix(-0.707107 -0.707107 -0.707107 0.707107 16.4854 0.928925)'
+            fill='#e0e1e9'
           />
         </SLine>
       )}
@@ -55,7 +55,7 @@ export function Item(props: ItemAsProps) {
       <Children />
       {editable && (
         <SCloseIcon onClick={onRemove}>
-          <CloseM color="gray-500" w={10} h={10} />
+          <CloseM color='gray-500' w={10} h={10} />
         </SCloseIcon>
       )}
     </SItemContainer>,

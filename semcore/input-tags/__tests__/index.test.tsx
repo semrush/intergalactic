@@ -13,12 +13,12 @@ describe('InputTags', () => {
   test.concurrent('renders different sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 150 }}>
-        <InputTags size="m">
+        <InputTags size='m'>
           {[1, 2, 3, 4].map((item) => (
             <InputTags.Tag key={item}>{`tag ${item}`}</InputTags.Tag>
           ))}
         </InputTags>
-        <InputTags size="l">
+        <InputTags size='l'>
           {[1, 2, 3, 4].map((item) => (
             <InputTags.Tag key={item}>{`tag ${item}`}</InputTags.Tag>
           ))}
@@ -41,7 +41,7 @@ describe('InputTags', () => {
       const handleRemoveTag = () => {
         if (tags.length === 0) return;
         setTags(tags.slice(0, -1));
-        setValue(tags.slice(-1)[0] + ` ${value}`);
+        setValue(`${tags.slice(-1)[0]} ${value}`);
       };
 
       const handleCloseTag = (e) => {
@@ -67,12 +67,12 @@ describe('InputTags', () => {
       };
 
       return (
-        <InputTags size="l" onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+        <InputTags size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
           {tags.map((tag, idx) => (
             <Tooltip key={idx}>
               <Tooltip.Trigger
                 tag={InputTags.Tag}
-                theme="primary"
+                theme='primary'
                 editable
                 data-id={idx}
                 onClick={handleEditTag}
@@ -93,7 +93,7 @@ describe('InputTags', () => {
     const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 
     const component = (
-      <InputTags size="l">
+      <InputTags size='l'>
         {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
           <InputTags.Tag
             key={idx}
@@ -103,7 +103,7 @@ describe('InputTags', () => {
             <InputTags.Tag.Close data-id={idx} />
           </InputTags.Tag>
         ))}
-        <InputTags.Value value="" />
+        <InputTags.Value value='' />
       </InputTags>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -115,7 +115,7 @@ describe('InputTags', () => {
         {['bob_vk.com', 'wolf@instagram.dot'].map((tag, idx) => (
           <InputTags.Tag key={idx}>{tag}</InputTags.Tag>
         ))}
-        <InputTags.Value value="" />
+        <InputTags.Value value='' />
       </InputTags>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -125,11 +125,11 @@ describe('InputTags', () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <InputTags>
-        <InputTags.Tag theme="primary" editable data-testid="tag" onClick={onClick}>
+        <InputTags.Tag theme='primary' editable data-testid='tag' onClick={onClick}>
           <InputTags.Tag.Text>tag</InputTags.Tag.Text>
           <InputTags.Tag.Close />
         </InputTags.Tag>
-        <InputTags.Value aria-label="input with tags" value="" />
+        <InputTags.Value aria-label='input with tags' value='' />
       </InputTags>,
     );
 
@@ -140,14 +140,14 @@ describe('InputTags', () => {
   test.skip('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
-      <InputTags size="l">
+      <InputTags size='l'>
         {['vk', 'fk', 'twitter', 'instagram'].map((tag, idx) => (
-          <InputTags.Tag theme="primary" editable data-id={idx} key={idx}>
+          <InputTags.Tag theme='primary' editable data-id={idx} key={idx}>
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close />
           </InputTags.Tag>
         ))}
-        <InputTags.Value aria-label="input with tags" value="" />
+        <InputTags.Value aria-label='input with tags' value='' />
       </InputTags>,
     );
     act(() => {

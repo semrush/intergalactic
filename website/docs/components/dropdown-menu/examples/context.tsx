@@ -42,8 +42,12 @@ export default function () {
                 <ListItem {...getItemProps()}>Option 4</ListItem>
                 <ListItem {...getItemProps()}>Option 5</ListItem>
               </ul>
-              <button onClick={() => visible(false)}>Close me</button>
-              <button onClick={() => highlightedIndex(2)}>Highlight item 3</button>
+              <button type='button' onClick={() => visible(false)}>
+                Close me
+              </button>
+              <button type='button' onClick={() => highlightedIndex(2)}>
+                Highlight item 3
+              </button>
             </Popper>
           </React.Fragment>
         );

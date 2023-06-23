@@ -13,7 +13,7 @@ const DEFAULT_OPTS = {
 function StylesPlugin({ types: t }, opts) {
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
-      return name.namespace.name + ':' + name.name.name;
+      return `${name.namespace.name}:${name.name.name}`;
     } else {
       return name.name;
     }
@@ -72,11 +72,11 @@ function StylesPlugin({ types: t }, opts) {
     const { tokens, hash } = messages.find((m) => m.plugin === 'postcss-shadow-styles');
 
     const wrapBundlerComments = (node) => {
-      t.addComment(node, 'leading', `__reshadow_css_start__`);
-      t.addComment(node, 'trailing', `__reshadow_css_end__`);
+      t.addComment(node, 'leading', '__reshadow_css_start__');
+      t.addComment(node, 'trailing', '__reshadow_css_end__');
 
-      t.addComment(node.arguments[0], 'leading', `__inner_css_start__`);
-      t.addComment(node.arguments[0], 'trailing', `__inner_css_end__`);
+      t.addComment(node.arguments[0], 'leading', '__inner_css_start__');
+      t.addComment(node.arguments[0], 'trailing', '__inner_css_end__');
       return node;
     };
 

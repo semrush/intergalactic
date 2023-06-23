@@ -40,7 +40,7 @@ export const broadcastUpdates = async ({
   dryRun: boolean;
 }) => {
   const packages = await collectComponentChangelogs();
-  const changelogs = packages.map(({ changelogs }) => changelogs).flat();
+  const changelogs = packages.flatMap(({ changelogs }) => changelogs);
   const filteredChangelogs = filterAutomaticChanges(filterByDate(changelogs, startDate, endDate));
   const title = makeMessageTitle(startDate, endDate);
   const body = makeMessageFromChangelogs(filteredChangelogs, true);

@@ -29,7 +29,7 @@ export default PlaygroundGeneration((preview) => {
   return (
     <Box w={400}>
       <Ellipsis trim={trim} tooltip={tooltip} maxLine={maxLine}>
-        <Text color="black">
+        <Text color='black'>
           Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary, planetary,
           intergalactic Intergalactic, planetary, planetary, intergalactic Intergalactic, planetary,
           planetary, intergalactic Another dimension, another dimension Another dimension, another

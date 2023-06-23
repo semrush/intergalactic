@@ -10,7 +10,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     key: 'size',
     defaultValue: 'm',
     label: 'Size',
-    options: [`m`, 'l', 'xl'],
+    options: ['m', 'l', 'xl'],
   });
 
   const COLORS = [
@@ -96,7 +96,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
 
       {imageIcon && (
         <Tag.Circle>
-          <img src="https://picsum.photos/id/1025/28/28" />
+          <img src='https://picsum.photos/id/1025/28/28' alt='tag circle' />
         </Tag.Circle>
       )}
       <Tag.Text>Tag text</Tag.Text>

@@ -100,7 +100,9 @@ class TabLineRoot extends Component {
       tabIndex: isSelected ? 0 : -1,
       'aria-posinset': index + 1,
       'aria-selected': isSelected,
-      ref: (node) => (this.itemRefs[props.value] = node),
+      ref: (node) => {
+        this.itemRefs[props.value] = node;
+      },
     };
   }
 
@@ -133,7 +135,7 @@ class TabLineRoot extends Component {
     const { animation } = this.state;
 
     return sstyled(styles)(
-      <STabLine render={Box} role="tablist" ref={this.containerRef}>
+      <STabLine render={Box} role='tablist' ref={this.containerRef}>
         <NeighborLocation controlsLength={controlsLength}>
           <Children />
         </NeighborLocation>
@@ -153,10 +155,10 @@ function TabLineItem(props) {
         sstyled(styles)(
           <STabLineItem
             render={Box}
-            tag="button"
+            tag='button'
             neighborLocation={neighborLocation}
-            type="button"
-            role="tab"
+            type='button'
+            role='tab'
           >
             {addonLeft ? <TabLine.Item.Addon tag={addonLeft} /> : null}
             {addonTextChildren(Children, TabLine.Item.Text, TabLine.Item.Addon)}
@@ -173,13 +175,13 @@ TabLineItem.enhance = [keyboardFocusEnhance()];
 function Text(props) {
   const { styles } = props;
   const SText = Root;
-  return sstyled(styles)(<SText render={Box} tag="span" />);
+  return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
   const { styles } = props;
   const SAddon = Root;
-  return sstyled(styles)(<SAddon render={Box} tag="span" />);
+  return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
 const TabLine = createComponent(TabLineRoot, {

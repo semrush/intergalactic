@@ -68,7 +68,7 @@ class RootNotice extends Component {
         visible={!hidden}
         use:theme={useTheme}
         backgroundColor={color}
-        role="status"
+        role='status'
         aria-live={isAssertive ? 'assertive' : 'polite'}
       >
         <Children />

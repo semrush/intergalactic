@@ -28,17 +28,17 @@ export default () => {
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
-      <Tooltip tag={HoverRect} y="category" wMin={100}>
+      <Tooltip tag={HoverRect} y='category' wMin={100}>
         {({ yIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Tooltip.Dot mr={4}>Bar 1</Tooltip.Dot>
                   <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Bar 2
                   </Tooltip.Dot>
@@ -49,9 +49,9 @@ export default () => {
           };
         }}
       </Tooltip>
-      <GroupBar y="category">
-        <GroupBar.HorizontalBar x="bar1" />
-        <GroupBar.HorizontalBar x="bar2" color={colors['green-02']} />
+      <GroupBar y='category'>
+        <GroupBar.HorizontalBar x='bar1' />
+        <GroupBar.HorizontalBar x='bar2' color={colors['green-02']} />
       </GroupBar>
     </Plot>
   );

@@ -47,6 +47,6 @@ export const updateChangelogs = async (versionPatches: VersionPatch[]) => {
     ),
   );
   await Promise.all(
-    changelogFilePaths.map((changelogPath) => execa('prettier', ['--write', changelogPath])),
+    changelogFilePaths.map((changelogPath) => execa('pnpm format', ['--write', changelogPath])),
   );
 };

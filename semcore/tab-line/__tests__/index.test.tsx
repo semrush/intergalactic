@@ -35,7 +35,7 @@ describe('TabLine', () => {
           <TabLine.Item value={4}>Item 4</TabLine.Item>
         </TabLine>
         <br />
-        <TabLine value={2} w={200} size="l">
+        <TabLine value={2} w={200} size='l'>
           <TabLine.Item value={1}>Item 1</TabLine.Item>
           <TabLine.Item value={2}>Item 2</TabLine.Item>
           <TabLine.Item value={3} disabled>
@@ -54,7 +54,7 @@ describe('TabLine', () => {
       <TabLine value={2}>
         <TabLine.Item value={1}>Item 1</TabLine.Item>
         <TabLine.Item value={2}>Item 2</TabLine.Item>
-        <TabLine.Item value={3} id="tab-line">
+        <TabLine.Item value={3} id='tab-line'>
           Item 3
         </TabLine.Item>
         <TabLine.Item value={4}>Item 4</TabLine.Item>
@@ -147,13 +147,13 @@ describe('TabLine', () => {
   test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <>
-        <TabLine value={1} size="m">
+        <TabLine value={1} size='m'>
           <TabLine.Item value={1}>Item 1</TabLine.Item>
           <TabLine.Item value={2}>Item 2</TabLine.Item>
           <TabLine.Item value={3}>Item 3</TabLine.Item>
         </TabLine>
         <br />
-        <TabLine value={2} size="l">
+        <TabLine value={2} size='l'>
           <TabLine.Item value={1}>Item 1</TabLine.Item>
           <TabLine.Item value={2}>Item 2</TabLine.Item>
           <TabLine.Item value={3}>Item 3</TabLine.Item>

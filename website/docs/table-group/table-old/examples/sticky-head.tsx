@@ -74,7 +74,9 @@ let data = [
   },
 ];
 
-data.forEach((d) => (data = shuffle(data.concat(data))));
+data.forEach((d) => {
+  data = shuffle(data.concat(data));
+});
 
 const Demo = () => {
   const [top, setTop] = useState(0);
@@ -90,15 +92,15 @@ const Demo = () => {
           <Table.StickyHead top={top} />
           <Table.Head>
             <Table.Row>
-              <Table.CellHead align="center" valign="middle" width="50">
-                <Checkbox size="l">
+              <Table.CellHead align='center' valign='middle' width='50'>
+                <Checkbox size='l'>
                   <Checkbox.Value />
                 </Checkbox>
               </Table.CellHead>
-              <Table.CellHead width="200">
-                <Tooltip title="Lorem ipsum">
+              <Table.CellHead width='200'>
+                <Tooltip title='Lorem ipsum'>
                   <span>
-                    Keyword <Text color="gray60">(1 – 100)</Text>
+                    Keyword <Text color='gray60'>(1 – 100)</Text>
                   </span>
                 </Tooltip>
               </Table.CellHead>
@@ -106,8 +108,8 @@ const Demo = () => {
               {Object.keys(data[0])
                 .slice(1)
                 .map((name) => (
-                  <Table.CellHead width="200" align="right">
-                    <Tooltip title="Lorem ipsum">
+                  <Table.CellHead width='200' align='right'>
+                    <Tooltip title='Lorem ipsum'>
                       <span>
                         {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
                       </span>
@@ -121,10 +123,10 @@ const Demo = () => {
               <Table.Row key={i} theme={row.kd === '-' ? 'danger' : 'default'}>
                 <Table.Cell
                   theme={row.kd === '-' ? false : 'default'}
-                  align="center"
-                  valign="middle"
+                  align='center'
+                  valign='middle'
                 >
-                  <Checkbox size="l">
+                  <Checkbox size='l'>
                     <Checkbox.Value />
                   </Checkbox>
                 </Table.Cell>
@@ -135,7 +137,7 @@ const Demo = () => {
                 {Object.keys(data[0])
                   .slice(1)
                   .map((name) => (
-                    <Table.Cell align="right" theme={row.kd === '-' ? false : 'default'}>
+                    <Table.Cell align='right' theme={row.kd === '-' ? false : 'default'}>
                       {row[name]}
                     </Table.Cell>
                   ))}

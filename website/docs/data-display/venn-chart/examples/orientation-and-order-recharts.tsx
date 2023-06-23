@@ -23,8 +23,8 @@ const Demo = () => {
     <div>
       <ResponsiveContainer height={200}>
         <VennChart data={data} orientation={orientation} orientationOrder={orientations[order]}>
-          <VennArea name="First set" fill={getColor('First set')} />
-          <VennArea name="Second set" fill={getColor('Second set')} />
+          <VennArea name='First set' fill={getColor('First set')} />
+          <VennArea name='Second set' fill={getColor('Second set')} />
           <Tooltip />
         </VennChart>
       </ResponsiveContainer>

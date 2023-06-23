@@ -23,7 +23,7 @@ export default class Demo extends React.Component {
         <Button onClick={this.handleOpen}>Open modal</Button>
         <Modal visible={visible} closable={false} onClose={this.handleClose}>
           <Modal.Overlay style={overlayStyles}>
-            <Modal.Window wMax="400px" px={5} py={2.5}>
+            <Modal.Window wMax='400px' px={5} py={2.5}>
               <Modal.Close style={closeStyles}>🦄</Modal.Close>
               <h1>Lorem Title</h1>
               <p>
@@ -31,7 +31,7 @@ export default class Demo extends React.Component {
                 consectetur distinctio dolorem ducimus earum facere fuga laudantium magni odit
                 officia porro provident quas quia sed sint voluptatum. Nesciunt!
               </p>
-              <Button use="primary" theme="danger" onClick={this.handleClose}>
+              <Button use='primary' theme='danger' onClick={this.handleClose}>
                 Close me!
               </Button>
             </Modal.Window>

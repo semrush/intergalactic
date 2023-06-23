@@ -13,12 +13,12 @@ const options = Array(6)
 export default () => {
   return (
     <>
-      <Text tag="label" htmlFor="filter-trigger" size="300">
+      <Text tag='label' htmlFor='filter-trigger' size='300'>
         Filter trigger with options
       </Text>
       <Box mt={2}>
         <Select>
-          <Select.Trigger tag={FilterTrigger} id="filter-trigger" />
+          <Select.Trigger tag={FilterTrigger} id='filter-trigger' />
           <Select.Menu>
             {options.map((option, idx) => {
               const { title } = option;

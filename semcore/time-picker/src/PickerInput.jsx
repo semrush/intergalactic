@@ -105,7 +105,7 @@ class ItemPicker extends Component {
     return sstyled(styles)(
       <Select
         {...other}
-        interaction="focus"
+        interaction='focus'
         size={size ? MAP_SIZE_SELECT[size] : false}
         onChange={callAllEventHandlers(onSelect, this.handleSelect)}
         onVisibleChange={callAllEventHandlers(onVisibleChange, this.handleVisibleChange)}
@@ -121,19 +121,19 @@ class ItemPicker extends Component {
           neighborLocation={false}
           value={value}
           aria-label={this.getAriaLabel()}
-          role="combobox"
-          aria-autocomplete="list"
+          role='combobox'
+          aria-autocomplete='list'
           aria-expanded={visible ? 'true' : 'false'}
-          aria-haspopup="listbox"
+          aria-haspopup='listbox'
           aria-controls={`picker-${this.field}-popper`}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}
         />
         <Select.Menu
-          aria-hidden="true"
+          aria-hidden='true'
           hMax={180}
-          role="listbox"
+          role='listbox'
           id={`picker-${this.field}-popper`}
         >
           {getOptions(min, max, step)}

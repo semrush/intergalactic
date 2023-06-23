@@ -1,9 +1,0 @@
-lib
-**/code_mod/**
-**/node_modules/**
-website
-semcore/icon/**/**/*.js
-semcore/icon/**/**/*.d.ts
-semcore/illustration/**/*.js
-semcore/illustration/**/*.d.ts
-**/__fixtures__/**

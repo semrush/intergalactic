@@ -61,7 +61,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
 
   return (
     <Tooltip
-      title="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ea hic ipsam iste mollitia, numquam quia quos sapiente soluta vitae! Corporis culpa cupiditate deserunt dolores fugit libero molestias praesentium repellat?"
+      title='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ea hic ipsam iste mollitia, numquam quia quos sapiente soluta vitae! Corporis culpa cupiditate deserunt dolores fugit libero molestias praesentium repellat?'
       placement={placement}
       interaction={interactive}
       theme={theme}

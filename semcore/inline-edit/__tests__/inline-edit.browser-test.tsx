@@ -19,7 +19,7 @@ test.describe('InlineEdit', () => {
     await expect(spinLocator).toHaveCount(0);
 
     const textContent = await (await page.locator('[data-ui-name="InlineEdit"]')).textContent();
-    await expect(textContent!.trim()).toBe(randomText!.trim());
+    await expect(textContent?.trim()).toBe(randomText?.trim());
   });
   test('Cancelling', async ({ page }) => {
     const standPath = 'website/docs/components/inline-edit/examples/header.tsx';
@@ -38,7 +38,7 @@ test.describe('InlineEdit', () => {
     await expect(spinLocator).toHaveCount(0);
 
     const textContent = await (await page.locator('[data-ui-name="InlineEdit"]')).textContent();
-    await expect(textContent!.replace(/ SaveCancel$/, '')).toBe(initialText!.trim());
+    await expect(textContent?.replace(/ SaveCancel$/, '')).toBe(initialText?.trim());
   });
   test('Cancelling after page scrolling', async ({ page }) => {
     const standPath = 'website/docs/components/inline-edit/examples/header.tsx';
@@ -63,6 +63,6 @@ test.describe('InlineEdit', () => {
     await expect(spinLocator).toHaveCount(0);
 
     const textContent = await (await page.locator('[data-ui-name="InlineEdit"]')).textContent();
-    await expect(textContent!.replace(/\s+SaveCancel$/, '')).toBe(initialText!.trim());
+    await expect(textContent?.replace(/\s+SaveCancel$/, '')).toBe(initialText?.trim());
   });
 });

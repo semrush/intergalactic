@@ -15,14 +15,14 @@ describe('Notice', () => {
   shouldSupportRef(Notice);
 
   test.concurrent('Should support custom attributes', () => {
-    const { getByTestId } = render(<Notice data-testid="notice" name="notice" />);
+    const { getByTestId } = render(<Notice data-testid='notice' name='notice' />);
     expect(getByTestId('notice').attributes['name'].value).toBe('notice');
   });
 
   test.concurrent('Should support children', () => {
     const component = (
       <Notice>
-        <p data-testid="child">Test</p>
+        <p data-testid='child'>Test</p>
       </Notice>
     );
     const { getByTestId } = render(component);
@@ -32,7 +32,7 @@ describe('Notice', () => {
   test.concurrent('Should support custom close icon', () => {
     const component = (
       <Notice>
-        <Notice.CloseIcon data-testid="close">Close Icon</Notice.CloseIcon>
+        <Notice.CloseIcon data-testid='close'>Close Icon</Notice.CloseIcon>
       </Notice>
     );
     const { getByTestId } = render(component);
@@ -44,11 +44,11 @@ describe('Notice', () => {
       <>
         <Notice>Text Notice</Notice>
         <br />
-        <Notice theme="success">Text Notice</Notice>
+        <Notice theme='success'>Text Notice</Notice>
         <br />
-        <Notice theme="danger">Text Notice</Notice>
+        <Notice theme='danger'>Text Notice</Notice>
         <br />
-        <Notice theme="warning">Text Notice</Notice>
+        <Notice theme='warning'>Text Notice</Notice>
       </>
     );
 
@@ -58,12 +58,12 @@ describe('Notice', () => {
   test.concurrent('Should support custom theme', async ({ task }) => {
     const component = (
       <>
-        <Notice theme="#feebc5">
+        <Notice theme='#feebc5'>
           <Notice.Label>Lab</Notice.Label>
           <Notice.Content>
             Text Notice
             <Notice.Actions>
-              <button>Wow, so cool!</button>
+              <button type='button'>Wow, so cool!</button>
             </Notice.Actions>
           </Notice.Content>
           <Notice.CloseIcon />
@@ -83,7 +83,7 @@ describe('Notice', () => {
         <Notice.Content>
           Look at this cool notice!
           <Notice.Actions>
-            <button>Wow, so cool!</button>
+            <button type='button'>Wow, so cool!</button>
           </Notice.Actions>
         </Notice.Content>
         <Notice.CloseIcon />
@@ -103,15 +103,15 @@ describe('Notice.Label', () => {
           <Notice.Label>Lab</Notice.Label>
         </Notice>
         <br />
-        <Notice theme="success">
+        <Notice theme='success'>
           <Notice.Label>Lab</Notice.Label>
         </Notice>
         <br />
-        <Notice theme="danger">
+        <Notice theme='danger'>
           <Notice.Label>Lab</Notice.Label>
         </Notice>
         <br />
-        <Notice theme="warning">
+        <Notice theme='warning'>
           <Notice.Label>Lab</Notice.Label>
         </Notice>
       </>
@@ -132,11 +132,11 @@ describe('NoticeSmart', () => {
       <>
         <NoticeSmart>Text NoticeSmart</NoticeSmart>
         <br />
-        <NoticeSmart theme="success">Text NoticeSmart</NoticeSmart>
+        <NoticeSmart theme='success'>Text NoticeSmart</NoticeSmart>
         <br />
-        <NoticeSmart theme="danger">Text NoticeSmart</NoticeSmart>
+        <NoticeSmart theme='danger'>Text NoticeSmart</NoticeSmart>
         <br />
-        <NoticeSmart theme="warning">Text NoticeSmart</NoticeSmart>
+        <NoticeSmart theme='warning'>Text NoticeSmart</NoticeSmart>
       </>
     );
 
@@ -147,7 +147,7 @@ describe('NoticeSmart', () => {
     const component = (
       <NoticeSmart
         label={<div style={{ width: '16px', height: '16px', background: 'orange' }} />}
-        actions={<button>Wow, so cool!</button>}
+        actions={<button type='button'>Wow, so cool!</button>}
         closable
       >
         Look at this cool notice!
@@ -158,7 +158,7 @@ describe('NoticeSmart', () => {
 
   test('a11y', async () => {
     const { container } = render(
-      <NoticeSmart label="label" actions="actions" closable>
+      <NoticeSmart label='label' actions='actions' closable>
         Text NoticeSmart
       </NoticeSmart>,
     );

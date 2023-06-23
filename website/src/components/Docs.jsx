@@ -84,7 +84,7 @@ export const Docs = ({ tokens, tabs }) => {
   return (
     <SidebarWrapper>
       {Boolean(tabs.length) && (
-        <TabLine value={match.url} size="l" underlined={false} className={styles.tabLine}>
+        <TabLine value={match.url} size='l' underlined={false} className={styles.tabLine}>
           {tabs.map((tab) => {
             const { route } = tab;
             const [group, page] = route.split('/');
@@ -95,7 +95,7 @@ export const Docs = ({ tokens, tabs }) => {
                 to={`/${route}/`}
                 value={`/${route}/`}
                 onMouseEnter={() => prefetch(route)}
-                type="tab"
+                type='tab'
                 className={styles.tabLineItem}
                 onClick={() =>
                   logEvent('tab:click', {
@@ -108,7 +108,7 @@ export const Docs = ({ tokens, tabs }) => {
                 <TabLine.Item.Text>{tab.metadata.tabName || tab.title}</TabLine.Item.Text>
                 {tab.metadata.a11y && (
                   <TabLine.Item.Addon>
-                    <Badge bg="blue-300">WCAG-{tab.metadata.a11y}</Badge>
+                    <Badge bg='blue-300'>WCAG-{tab.metadata.a11y}</Badge>
                   </TabLine.Item.Addon>
                 )}
               </TabLine.Item>
@@ -116,6 +116,7 @@ export const Docs = ({ tokens, tabs }) => {
           })}
         </TabLine>
       )}
+      {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
       <main className={styles.main} ref={contentRef} onClick={handleClick}>
         <RenderMarkdown tokens={tokens} onRender={scrollCallback} />
       </main>

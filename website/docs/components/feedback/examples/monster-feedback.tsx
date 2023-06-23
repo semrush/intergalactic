@@ -31,25 +31,25 @@ const validate = (values) => {
 
 const Demo = () => (
   <FeedbackForm validate={validate}>
-    <FeedbackForm.Item name="title" validate={validate.email}>
+    <FeedbackForm.Item name='title' validate={validate.email}>
       {({ input }) => {
         const { state, className, ...other } = input;
         return (
-          <Input state={state} className={className} m="0 0 16px">
-            <Input.Value {...other} placeholder="Activity title" />
+          <Input state={state} className={className} m='0 0 16px'>
+            <Input.Value {...other} placeholder='Activity title' />
           </Input>
         );
       }}
     </FeedbackForm.Item>
 
-    <label htmlFor="campaign">
-      <Text bold mb="8px" tag="p" size={200}>
+    <label htmlFor='campaign'>
+      <Text bold mb='8px' tag='p' size={200}>
         Campaign
       </Text>
-      <FeedbackForm.Item name="campaign">
+      <FeedbackForm.Item name='campaign'>
         {({ input }) => (
-          <Select onChange={input.onChange} state={input.state} placeholder="Select campaign">
-            <Select.Trigger id="campaign" {...input} m="0 0 16px" />
+          <Select onChange={input.onChange} state={input.state} placeholder='Select campaign'>
+            <Select.Trigger id='campaign' {...input} m='0 0 16px' />
             <Select.Menu>
               {Array(4)
                 .fill()
@@ -65,32 +65,32 @@ const Demo = () => (
       </FeedbackForm.Item>
     </label>
 
-    <label htmlFor="day">
-      <Text bold mb={2} tag="p" size={200}>
+    <label htmlFor='day'>
+      <Text bold mb={2} tag='p' size={200}>
         Day
       </Text>
-      <FeedbackForm.Item name="day">
+      <FeedbackForm.Item name='day'>
         {({ input }) => {
           const { state, className, ...other } = input;
           return (
             <InputNumber state={state} className={className}>
-              <InputNumber.Value id="day" {...other} placeholder="Enter day" />
+              <InputNumber.Value id='day' {...other} placeholder='Enter day' />
             </InputNumber>
           );
         }}
       </FeedbackForm.Item>
     </label>
 
-    <FeedbackForm.Item name="call">
+    <FeedbackForm.Item name='call'>
       {({ input }) => (
         <RadioGroup {...input}>
-          <Flex direction="column" gap={1} my={4}>
+          <Flex direction='column' gap={1} my={4}>
             <Radio>
-              <Radio.Value value="yes" />
+              <Radio.Value value='yes' />
               <Radio.Text>Call me 😏</Radio.Text>
             </Radio>
             <Radio>
-              <Radio.Value value="no" />
+              <Radio.Value value='no' />
               <Radio.Text>Don't call me!</Radio.Text>
             </Radio>
           </Flex>

@@ -139,7 +139,7 @@ class DropdownMenuRoot extends Component {
   scrollToNode = (node) => {
     this.highlightedItemRef.current = node;
     setTimeout(() => {
-      if (node && node.scrollIntoView) {
+      if (node?.scrollIntoView) {
         if (this.asProps.highlightedIndex !== this.prevHighlightedIndex) {
           this.prevHighlightedIndex = this.asProps.highlightedIndex;
           node.scrollIntoView({
@@ -173,7 +173,7 @@ class DropdownMenuRoot extends Component {
       newIndex = newIndex - itemsLastIndex - 1;
     }
 
-    if (this.itemProps[newIndex] && this.itemProps[newIndex].disabled) {
+    if (this.itemProps[newIndex]?.disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1, e);
     } else {
       this.handlers.highlightedIndex(newIndex, e);
@@ -210,7 +210,7 @@ function List(props) {
     <SDropdownMenuList
       render={ScrollAreaComponent}
       tabIndex={null}
-      role="menu"
+      role='menu'
       aria-labelledby={`igc-${uid}-trigger`}
       shadow={true}
       styles={scrollStyles}
@@ -251,7 +251,7 @@ function Item(props) {
   const styles = sstyled(props.styles);
   return (
     <SDropdownMenuItem
-      role="menuitem"
+      role='menuitem'
       tabIndex={-1}
       id={props.label}
       className={
@@ -281,16 +281,16 @@ function Addon(props) {
 
 function Hint(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="hint" />);
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant='hint' />);
 }
 
 function Title(props) {
   const SDropdownMenuItem = Root;
-  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant="title" />);
+  return sstyled(props.styles)(<SDropdownMenuItem render={Flex} variant='title' />);
 }
 
 function Trigger() {
-  return <Root render={Dropdown.Trigger} aria-haspopup="true" />;
+  return <Root render={Dropdown.Trigger} aria-haspopup='true' />;
 }
 
 const DropdownMenu = createComponent(

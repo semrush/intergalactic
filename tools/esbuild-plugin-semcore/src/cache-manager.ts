@@ -53,8 +53,10 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         if (filename.endsWith('_last_use')) return false;
 
         for (const postfix of ['_contents', '_hash_sum', '_imp_deps']) {
-          const relatedLastUseFile =
-            filename.substring(0, filename.length - '_contents'.length) + '_last_use';
+          const relatedLastUseFile = `${filename.substring(
+            0,
+            filename.length - '_contents'.length,
+          )}_last_use`;
           if (filename.endsWith(postfix) && cachedFilesMap[relatedLastUseFile]) {
             return false;
           }
@@ -85,7 +87,6 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       }
 
       if (verbose) {
-        // eslint-disable-next-line no-console
         console.info(
           `Removing ${longUnusedFiles.length} long unused files and ${unknownFiles.length} unknown files from cache dir (${cacheDir})`,
         );
@@ -101,7 +102,6 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
     },
     reset: async () => {
       if (verbose) {
-        // eslint-disable-next-line no-console
         console.info(`Resetting cache dir (${cacheDir})`);
       }
       await removeFile(cacheDir, { recursive: true, force: true });
@@ -110,15 +110,14 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
     hasInCache: async (filePath: string) => {
       const timeLabel = `Reading from cache of ${filePath}`;
       if (verbose) {
-        // eslint-disable-next-line no-console
         console.time(timeLabel);
       }
       const relativePath = resolveRelativePath(cwd, filePath);
       const cacheFileName = relativePath.split('/').join('_');
-      const cachedContentsFilePath = resolvePath(cacheDir, cacheFileName + '_contents');
-      const cachedHashSumFilePath = resolvePath(cacheDir, cacheFileName + '_hash_sum');
-      const cachedLastUseFilePath = resolvePath(cacheDir, cacheFileName + '_last_use');
-      const impDepsUseFilePath = resolvePath(cacheDir, cacheFileName + '_imp_deps');
+      const cachedContentsFilePath = resolvePath(cacheDir, `${cacheFileName}_contents`);
+      const cachedHashSumFilePath = resolvePath(cacheDir, `${cacheFileName}_hash_sum`);
+      const cachedLastUseFilePath = resolvePath(cacheDir, `${cacheFileName}_last_use`);
+      const impDepsUseFilePath = resolvePath(cacheDir, `${cacheFileName}_imp_deps`);
 
       if (!(await fsExists(cachedLastUseFilePath))) {
         return null;
@@ -147,16 +146,15 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
 
       if (hashSum !== cachedHashSum) {
         if (verbose) {
-          // eslint-disable-next-line no-console
+          // rome-ignore lint/nursery/noConsoleLog: <explanation>
           console.log(`Cache invalidated for ${filePath}`);
         }
         return null;
       }
 
       if (verbose) {
-        // eslint-disable-next-line no-console
         console.timeEnd(timeLabel);
-        // eslint-disable-next-line no-console
+
         console.info(`Using ${filePath} from cache`);
       }
 
@@ -166,15 +164,14 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
     addToCache: async (filePath: string, content: string, implicitDependencies: string[] = []) => {
       const relativePath = resolveRelativePath(cwd, filePath);
       const cacheFileName = relativePath.split('/').join('_');
-      const cachedContentsFilePath = resolvePath(cacheDir, cacheFileName + '_contents');
-      const cachedHashSumFilePath = resolvePath(cacheDir, cacheFileName + '_hash_sum');
-      const cachedLastUseFilePath = resolvePath(cacheDir, cacheFileName + '_last_use');
-      const impDepsFilePath = resolvePath(cacheDir, cacheFileName + '_imp_deps');
+      const cachedContentsFilePath = resolvePath(cacheDir, `${cacheFileName}_contents`);
+      const cachedHashSumFilePath = resolvePath(cacheDir, `${cacheFileName}_hash_sum`);
+      const cachedLastUseFilePath = resolvePath(cacheDir, `${cacheFileName}_last_use`);
+      const impDepsFilePath = resolvePath(cacheDir, `${cacheFileName}_imp_deps`);
 
       const hashSum = await hashFiles([filePath, ...implicitDependencies]);
 
       if (verbose) {
-        // eslint-disable-next-line no-console
         console.info(`Added ${filePath} to cache`);
       }
 

@@ -5,9 +5,8 @@ import React from 'react';
 
 const focusBordersConsumers = new Set();
 const focusBordersRefs = { before: null, after: null } as {
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   before: null | HTMLElement;
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+
   after: null | HTMLElement;
 };
 const useFocusBorders = (disabled) => {
@@ -56,7 +55,6 @@ const useFocusBorders = (disabled) => {
   }, [id, disabled]);
 };
 
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
 const focusLockUsers = new Set<HTMLElement>();
 
 export const useFocusLock = (
@@ -85,11 +83,12 @@ export const useFocusLock = (
       moveFocusInside(trapRef.current, event.target);
     });
   }, []);
-  const handleMouseEvent = React.useCallback(() => (lastUserInteractionRef.current = 'mouse'), []);
-  const handleKeyboardEvent = React.useCallback(
-    () => (lastUserInteractionRef.current = 'keyboard'),
-    [],
-  );
+  const handleMouseEvent = React.useCallback(() => {
+    lastUserInteractionRef.current = 'mouse';
+  }, []);
+  const handleKeyboardEvent = React.useCallback(() => {
+    lastUserInteractionRef.current = 'keyboard';
+  }, []);
   const returnFocus = React.useCallback(() => {
     const trapNode = trapRef.current!;
     if (!focusInside(trapNode)) return;
@@ -116,7 +115,7 @@ export const useFocusLock = (
     if (disabled) return;
     if (!canUseDOM()) return;
     if (!trapRef.current) return;
-    const focusableChildren = Array.from(trapRef.current.children).map(getFocusableIn).flat();
+    const focusableChildren = Array.from(trapRef.current.children).flatMap(getFocusableIn);
     if (focusableChildren.length === 0) return;
 
     document.body.addEventListener('focusin', handleFocusIn);

@@ -29,7 +29,7 @@ describe('Error', () => {
         </Error.Description>
         <Error.Controls>
           <Button>Home</Button>
-          <Button size="l">Submit</Button>
+          <Button size='l'>Submit</Button>
         </Error.Controls>
       </Error>
     );
@@ -53,8 +53,8 @@ describe('Error', () => {
 
   test.concurrent('Renders correctly with icon as react component', async ({ task }) => {
     const Icon = () => (
-      <svg height="100" width="100">
-        <circle cx="50" cy="50" r="40" stroke="black" strokeWidth="3" fill="red" />
+      <svg height='100' width='100'>
+        <circle cx='50' cy='50' r='40' stroke='black' strokeWidth='3' fill='red' />
       </svg>
     );
     const component = (
@@ -95,7 +95,7 @@ describe('Error', () => {
   });
 
   test.concurrent('Render correctly Maintenance', async ({ task }) => {
-    const component = <Maintenance toolName="Intergalactic" />;
+    const component = <Maintenance toolName='Intergalactic' />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
@@ -116,7 +116,7 @@ describe('Error', () => {
 
   test.concurrent('Render correctly on small screen', async () => {
     const { container } = render(
-      <Error icon="https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg">
+      <Error icon='https://static.semrush.com/ui-kit/illustration/1.1.0/PageNotFound.svg'>
         <Error.Title>Horrible error</Error.Title>
         <Error.Description>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.

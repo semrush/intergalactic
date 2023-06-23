@@ -34,7 +34,7 @@ class PlotRoot extends Component {
 
   handlerMouseMove = (e) => {
     const { scale } = this.asProps;
-    this.eventEmitter.emit(`onMouseMoveRoot`, e);
+    this.eventEmitter.emit('onMouseMoveRoot', e);
 
     if (scale && scale.length >= 2) {
       const [xScale, yScale] = scale;
@@ -51,7 +51,7 @@ class PlotRoot extends Component {
   };
 
   handlerMouseLeave = (e) => {
-    this.eventEmitter.emit(`onMouseLeaveRoot`, e);
+    this.eventEmitter.emit('onMouseLeaveRoot', e);
     this.eventEmitter.emit('onMouseLeaveChart', e);
   };
 
@@ -89,7 +89,7 @@ class PlotRoot extends Component {
     return sstyled(styles)(
       <SPlot
         render={Box}
-        tag="svg"
+        tag='svg'
         __excludeProps={['data', 'scale']}
         ref={this.rootRef}
         onMouseMove={this.handlerMouseMove}
@@ -98,7 +98,7 @@ class PlotRoot extends Component {
         tabIndex={0}
       >
         <Children />
-        <foreignObject width="100%" height="100%" data-aria-only>
+        <foreignObject width='100%' height='100%' data-aria-only>
           <PlotA11yModule
             id={this.plotId}
             data={data}

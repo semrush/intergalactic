@@ -21,7 +21,7 @@ const Easing = ({ cssFunc, jsFunc, name, description }) => {
       .map(jsFunc)
       .map((y) => chartSize - y * chartSize + 1);
     const points = x.map((x, i) => ({ x, y: y[i] }));
-    return 'M' + points.map(({ x, y }) => `${x} ${y}`).join(' L');
+    return `M${points.map(({ x, y }) => `${x} ${y}`).join(' L')}`;
   }, [jsFunc]);
 
   return (
@@ -51,18 +51,18 @@ const Easing = ({ cssFunc, jsFunc, name, description }) => {
 // Take easings from https://easings.net/
 const EasingsDemo = () => {
   return (
-    <div aria-hidden="true" className={styles.demo}>
+    <div aria-hidden='true' className={styles.demo}>
       <Easing
-        cssFunc="cubic-bezier(0.5, 0, 0.75, 0)"
+        cssFunc='cubic-bezier(0.5, 0, 0.75, 0)'
         jsFunc={(x) => x * x * x * x}
-        name="ease-in"
-        description="moves from slow to fast."
+        name='ease-in'
+        description='moves from slow to fast.'
       />
       <Easing
-        cssFunc="cubic-bezier(0.45, 0, 0.55, 1)"
+        cssFunc='cubic-bezier(0.45, 0, 0.55, 1)'
         jsFunc={(x) => (x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2)}
-        name="ease-in-out"
-        description="moves slowly on both ends."
+        name='ease-in-out'
+        description='moves slowly on both ends.'
       />
     </div>
   );

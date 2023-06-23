@@ -273,7 +273,7 @@ describe('Utils CSS in JS', () => {
     // because nano singleton
     vi.resetModules();
     // TODO: resolve "Invalid hook call" issue
-    const { default: useCss, getStylesheet, Provider } = require(__dirname + '/../src/use/useCss');
+    const { default: useCss, getStylesheet, Provider } = require(`${__dirname}/../src/use/useCss`);
     const CSSJS = ({ css }) => {
       const className = useCss(css);
       return <div className={className} />;

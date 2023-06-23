@@ -6,7 +6,6 @@ import { extractSemcoreImplicitDependencies } from './semcore-implicit-dependnci
 export { esbuildPluginSemcoreSourcesResolve } from './esbuild-plugin-semcore-sources-resolve';
 
 const babelTransform = async (contents: string, path: string) => {
-  // eslint-disable-next-line import/extensions
   const { default: babelConfig } = await import('@semcore/babel-preset-ui/.babelrc.js');
   const babel = await import('@babel/core');
 
@@ -20,7 +19,7 @@ const babelTransform = async (contents: string, path: string) => {
       },
       (error, result) => {
         if (error) reject(error);
-        else resolve(result!.code!);
+        else resolve(result?.code!);
       },
     ),
   );
@@ -46,8 +45,9 @@ export const esbuildPluginSemcore = (filter: RegExp, excludeFilter?: RegExp): Pl
       {
         const extension = path.split('.').pop()! as Loader;
         if (prioritizedExtensionFallback[extension]) {
-          const fallbackPath =
-            path.split('.').slice(0, -1).join('.') + '.' + prioritizedExtensionFallback[extension];
+          const fallbackPath = `${path.split('.').slice(0, -1).join('.')}.${
+            prioritizedExtensionFallback[extension]
+          }`;
           try {
             await access(fallbackPath);
             path = fallbackPath;
@@ -68,7 +68,7 @@ export const esbuildPluginSemcore = (filter: RegExp, excludeFilter?: RegExp): Pl
         };
       }
 
-      if ((excludeFilter && excludeFilter.test(path)) || !supportedExtensions.includes(extension)) {
+      if (excludeFilter?.test(path) || !supportedExtensions.includes(extension)) {
         return {
           contents: sourceContents,
           loader,

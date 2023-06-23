@@ -28,29 +28,29 @@ const tooltipContent = `An estimation based on the average click-through rate of
 
 export default () => (
   <Flex
-    wMax="500px"
-    my="24px"
-    pt="20px"
-    px="24px"
-    pb="24px"
-    justifyContent="space-between"
-    alignItems="flex-end"
+    wMax='500px'
+    my='24px'
+    pt='20px'
+    px='24px'
+    pb='24px'
+    justifyContent='space-between'
+    alignItems='flex-end'
     style={{ border: '1px solid #ccc' }}
   >
     <Box>
-      <Flex alignItems="center">
+      <Flex alignItems='center'>
         <Text size={300} mr={1}>
           Visibility
         </Text>
         <Tooltip title={tooltipContent}>
-          <InfoXS color="#a6b0b3" cursor="help" />
+          <InfoXS color='#a6b0b3' cursor='help' />
         </Tooltip>
       </Flex>
       <Box>
         <Link>
           <Text size={500}>{data[data.length - 1].visibility}%</Text>
         </Link>
-        <Text size={300} ml={2} color="#757575">
+        <Text size={300} ml={2} color='#757575'>
           <small>0.00</small>
         </Text>
       </Box>
@@ -66,7 +66,7 @@ export default () => (
             }).format(Number(data[t].date))
           }
         />
-        <Area type="linear" name="Visibility" activeDot={false} dataKey="visibility" />
+        <Area type='linear' name='Visibility' activeDot={false} dataKey='visibility' />
       </AreaChart>
     </ResponsiveContainer>
   </Flex>

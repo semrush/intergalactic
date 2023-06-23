@@ -32,25 +32,25 @@ const Demo = () => {
   };
 
   return (
-    <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column" alignItems="flex-start">
+    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
       <Flex mb={4}>
-        <Flex direction="column">
-          <Text size={300} tag="label" mb={1}>
+        <Flex direction='column'>
+          <Text size={300} tag='label' mb={1}>
             Start date
           </Text>
           <Controller
-            render={(props) => <DatePicker size="l" {...props} />}
+            render={(props) => <DatePicker size='l' {...props} />}
             control={control}
-            name="start_date"
+            name='start_date'
           />
         </Flex>
-        <Flex direction="column" ml={2}>
-          <Text size={300} tag="label" mb={1}>
+        <Flex direction='column' ml={2}>
+          <Text size={300} tag='label' mb={1}>
             Time
           </Text>
           <Controller
             render={(props) => (
-              <TimePicker size="l" is12Hour {...props}>
+              <TimePicker size='l' is12Hour {...props}>
                 <TimePicker.Hours />
                 <TimePicker.Separator />
                 <TimePicker.Minutes />
@@ -58,35 +58,35 @@ const Demo = () => {
               </TimePicker>
             )}
             control={control}
-            name="start_time"
+            name='start_time'
           />
         </Flex>
       </Flex>
 
-      <Checkbox mb={4} size="l">
+      <Checkbox mb={4} size='l'>
         <Checkbox.Value onChange={setPeriod} />
         <Checkbox.Text>Period</Checkbox.Text>
       </Checkbox>
 
       {period && (
         <Flex mb={4}>
-          <Flex direction="column">
-            <Text size={300} tag="label" mb={1}>
+          <Flex direction='column'>
+            <Text size={300} tag='label' mb={1}>
               Due date
             </Text>
             <Controller
-              render={(props) => <DatePicker size="l" {...props} />}
+              render={(props) => <DatePicker size='l' {...props} />}
               control={control}
-              name="due_date"
+              name='due_date'
             />
           </Flex>
-          <Flex direction="column" ml={2}>
-            <Text size={300} tag="label" mb={1}>
+          <Flex direction='column' ml={2}>
+            <Text size={300} tag='label' mb={1}>
               Time
             </Text>
             <Controller
               render={(props) => (
-                <TimePicker size="l" is12Hour {...props}>
+                <TimePicker size='l' is12Hour {...props}>
                   <TimePicker.Hours />
                   <TimePicker.Separator />
                   <TimePicker.Minutes />
@@ -94,17 +94,17 @@ const Demo = () => {
                 </TimePicker>
               )}
               control={control}
-              name="due_time"
+              name='due_time'
             />
           </Flex>
         </Flex>
       )}
 
       <Flex>
-        <Button type="submit" use="primary" theme="success" size="l">
+        <Button type='submit' use='primary' theme='success' size='l'>
           Create
         </Button>
-        <Button ml={2} size="l" onClick={onReset}>
+        <Button ml={2} size='l' onClick={onReset}>
           Cancel
         </Button>
       </Flex>

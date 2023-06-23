@@ -64,7 +64,7 @@ const getCustomPage = (table) => (
     <AllComponents
       navigation={navigationTree.filter((nav) => !nav.metadata.hide && nav.title === table.tag)}
     />
-    <img className={table.imgClassName} src={table.img} alt={table.tag} aria-hidden="true" />
+    <img className={table.imgClassName} src={table.img} alt={table.tag} aria-hidden='true' />
   </section>
 );
 
@@ -101,8 +101,8 @@ const getTabByTitle = (titles, className) => {
       ) : (
         titles.map((title, i) => {
           return (
-            <Box mr={7.5} key={i}>
-              <Text tag="h3" size={300}>
+            <Box mr={7.5} key={`${i}`}>
+              <Text tag='h3' size={300}>
                 {title}
               </Text>
               {getComponents(title)}
@@ -137,8 +137,8 @@ const getComponents = (title) => {
     }
     const pic = getTooltip(child.elem.title);
     return (
-      <Tooltip placement="left" w={'fit-content'} key={child.elem.title}>
-        <Tooltip.Trigger tag={Flex} alignItems="center" className={styles.component}>
+      <Tooltip placement='left' w={'fit-content'} key={child.elem.title}>
+        <Tooltip.Trigger tag={Flex} alignItems='center' className={styles.component}>
           <Link
             className={styles.linkStyled}
             to={`/${child.elem.route}/`}
@@ -153,7 +153,7 @@ const getComponents = (title) => {
             {child.elem.title}
           </Link>
           {child.elem.metadata.beta && (
-            <Tag size="l" theme="primary" color="orange-500" children="beta" ml={1} />
+            <Tag size='l' theme='primary' color='orange-500' children='beta' ml={1} />
           )}
           {child.elem.metadata.deprecated && <WarningM className={styles.componentDeprecated} />}
         </Tooltip.Trigger>
@@ -163,7 +163,7 @@ const getComponents = (title) => {
   };
 
   const listItems = items
-    .map((item) =>
+    .flatMap((item) =>
       item.children.map((child) => {
         return {
           elem: child,
@@ -171,7 +171,6 @@ const getComponents = (title) => {
         };
       }),
     )
-    .flat()
     .map((child) => getList(child));
 
   return <div className={styles.category}>{listItems}</div>;
@@ -220,7 +219,7 @@ const getChart = (title) => {
     .map((el) => getDocs(el));
 
   const listItems = items
-    .map((item) =>
+    .flatMap((item) =>
       item.children.map((child) => {
         return {
           elem: child,
@@ -228,19 +227,18 @@ const getChart = (title) => {
         };
       }),
     )
-    .flat()
     .map((child) => getList(child));
 
   return (
     <>
       <Box mr={12}>
-        <Text tag="h3" size={300}>
+        <Text tag='h3' size={300}>
           Common docs
         </Text>
         <div className={cx(styles.docs, styles.cards)}>{listDocs}</div>
       </Box>
-      <Box w="100%">
-        <Text tag="h3" size={300}>
+      <Box w='100%'>
+        <Text tag='h3' size={300}>
           Types
         </Text>
         <div className={styles.cards}>{listItems}</div>
@@ -254,7 +252,7 @@ const tableDataContext = React.createContext({});
 const Table = ({ title }) => {
   const items = navigationTree.filter((nav) => !nav.metadata.hide && title.includes(nav.title));
   const getDocs = items[0].children.map((item) => (
-    <Flex alignItems="center">
+    <Flex alignItems='center'>
       <Link
         to={item.route}
         key={item.route}
@@ -277,20 +275,20 @@ const Table = ({ title }) => {
   return (
     <>
       <Box mr={12}>
-        <Text tag="h3" size={300}>
+        <Text tag='h3' size={300}>
           Common docs
         </Text>
         <div className={cx(styles.docs, styles.cards)}>{getDocs}</div>
       </Box>
-      <Box w="100%">
-        <Text tag="h3" size={300}>
+      <Box w='100%'>
+        <Text tag='h3' size={300}>
           Controls and use cases
         </Text>
         <div className={styles.cards}>
           {tableControls.page.headings.map((heading) => (
             <ComponentCard
               key={heading.id}
-              type="table"
+              type='table'
               image={getImageName(heading.html)}
               text={heading.html}
               href={`${heading.route}#${heading.id}`}
@@ -304,14 +302,14 @@ const Table = ({ title }) => {
             />
           ))}
         </div>
-        <Text tag="h3" size={300} inline mt={8}>
+        <Text tag='h3' size={300} inline mt={8}>
           States
         </Text>
         <div className={styles.cards}>
           {tableStates.page.headings.map((heading) => (
             <ComponentCard
               key={heading.id}
-              type="table"
+              type='table'
               image={getImageName(heading.html)}
               text={heading.html}
               href={`${heading.route}#${heading.id}`}
@@ -355,31 +353,31 @@ function Home() {
       <Helmet>
         <title>Intergalactic – Design System</title>
         <meta
-          name="description"
-          content="Intergalactic is a constantly developing design system of UI components, guidelines and UX patterns. With all these tools you can build your own product."
-        ></meta>
+          name='description'
+          content='Intergalactic is a constantly developing design system of UI components, guidelines and UX patterns. With all these tools you can build your own product.'
+        />
         <meta
-          name="keywords"
-          content="Semrush design system, design system, design-system, дизайн-система, дизайн-система Semrush, дизайн система"
-        ></meta>
+          name='keywords'
+          content='Semrush design system, design system, design-system, дизайн-система, дизайн-система Semrush, дизайн система'
+        />
       </Helmet>
       <div className={styles.homePage}>
         <div className={styles.sideBar}>
           <SideBarNavigation navigation={navigationTree.filter((nav) => !nav.metadata.hide)} />
         </div>
         <main className={styles.overlay}>
-          <div className={styles.promoWrapper} id="main-content">
+          <div className={styles.promoWrapper} id='main-content'>
             <h1 className={styles.title}>Intergalactic Design System</h1>
             <section className={styles.desc}>
               Intergalactic is a constantly developing system of UI components, guidelines and UX
               patterns. With all these tools you can build your own product.
             </section>
-            <img className={styles.whaleImg} src={whale} alt="Whale" aria-hidden="true" />
-            <section className={styles.started} role="region" aria-label="Get started links">
+            <img className={styles.whaleImg} src={whale} alt='Whale' aria-hidden='true' />
+            <section className={styles.started} role='region' aria-label='Get started links'>
               <h2>Get started</h2>
               <Link
-                to="/get-started-guide/dev-starter-guide/"
-                rel="noopener noreferrer"
+                to='/get-started-guide/dev-starter-guide/'
+                rel='noopener noreferrer'
                 onClick={() =>
                   logEvent('initial_principles:click', {
                     group: 'int_main',
@@ -391,8 +389,8 @@ function Home() {
                 For developers <ArrowXS />
               </Link>
               <Link
-                to="/get-started-guide/dis-starter-guide/"
-                rel="noopener noreferrer"
+                to='/get-started-guide/dis-starter-guide/'
+                rel='noopener noreferrer'
                 onClick={() =>
                   logEvent('initial_principles:click', {
                     group: 'int_main',
@@ -404,8 +402,8 @@ function Home() {
                 For designers <ArrowXS />
               </Link>
               <Link
-                to="/get-started-guide/work-figma/"
-                rel="noopener noreferrer"
+                to='/get-started-guide/work-figma/'
+                rel='noopener noreferrer'
                 onClick={() =>
                   logEvent('initial_principles:click', {
                     group: 'int_main',
@@ -428,7 +426,7 @@ function Home() {
                 onChange={setValue}
                 className={styles.tabs}
                 value={value}
-                size="l"
+                size='l'
               >
                 <TabLine.Item className={styles.tab} value={'components'}>
                   <Text size={500}>Components</Text>
@@ -451,7 +449,7 @@ function Home() {
               </TabLine>
             </div>
             <tableDataContext.Provider value={tableContext}>
-              <div className={styles.border} aria-label="Components links">
+              <div className={styles.border} aria-label='Components links'>
                 {renderSwitch(value)}
               </div>
             </tableDataContext.Provider>

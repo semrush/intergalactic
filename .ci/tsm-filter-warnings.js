@@ -11,7 +11,7 @@ process.removeAllListeners('warning');
 
 // Add our own version that skips known warnings
 process.on('warning', (warning) => {
-  let { name, message } = warning;
+  const { name, message } = warning;
   if (name === 'ExperimentalWarning') {
     if (message.includes('Custom ESM Loaders is an experimental feature')) return;
     if (message.includes('--experimental-loader')) return;

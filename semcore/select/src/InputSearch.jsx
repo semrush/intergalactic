@@ -54,7 +54,7 @@ class InputSearch extends Component {
         </Input.Addon>
         <Value render={Input.Value} autoFocus />
         <SClose
-          role="button"
+          role='button'
           /* hide through css because the width of the input changes */
           hide={hideClose}
           aria-hidden={hideClose}

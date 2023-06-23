@@ -5,12 +5,12 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
+        <DataTable.Column name='keyword' children='Keyword' />
         <DataTable.Column vBorders wMax={'40%'}>
           Organic Sessions
-          <DataTable.Column name="kd" children="KD,%" />
-          <DataTable.Column name="cpc" children="CPC" />
-          <DataTable.Column name="vol" children="Vol." />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Column>
       </DataTable.Head>
       <DataTable.Body />

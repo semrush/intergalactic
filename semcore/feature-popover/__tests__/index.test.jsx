@@ -11,7 +11,7 @@ describe('FeaturePopover.Trigger', () => {
   test('should support custom className', () => {
     const { getByTestId } = render(
       <FeaturePopover>
-        <FeaturePopover.Trigger data-testid="trigger" className="more-than one-class" />
+        <FeaturePopover.Trigger data-testid='trigger' className='more-than one-class' />
       </FeaturePopover>,
     );
 
@@ -21,7 +21,7 @@ describe('FeaturePopover.Trigger', () => {
   test('should support custom attributes', () => {
     const { getByTestId } = render(
       <FeaturePopover>
-        <FeaturePopover.Trigger data-testid="trigger" name="trigger" />
+        <FeaturePopover.Trigger data-testid='trigger' name='trigger' />
       </FeaturePopover>,
     );
 
@@ -32,7 +32,7 @@ describe('FeaturePopover.Trigger', () => {
     const ref = React.createRef();
     render(
       <FeaturePopover>
-        <FeaturePopover.Trigger tag="button" ref={ref} />
+        <FeaturePopover.Trigger tag='button' ref={ref} />
       </FeaturePopover>,
     );
     expect(ref.current.nodeName).toBe('BUTTON');
@@ -42,7 +42,7 @@ describe('FeaturePopover.Trigger', () => {
     const component = (
       <FeaturePopover>
         <FeaturePopover.Trigger>
-          <p data-testid="child">Test</p>
+          <p data-testid='child'>Test</p>
         </FeaturePopover.Trigger>
       </FeaturePopover>
     );
@@ -58,7 +58,7 @@ describe('FeaturePopover.Popper', () => {
   test('should support custom className', () => {
     const { getByTestId } = render(
       <FeaturePopover visible>
-        <FeaturePopover.Popper data-testid="trigger" className="more-than one-class" />
+        <FeaturePopover.Popper data-testid='trigger' className='more-than one-class' />
       </FeaturePopover>,
     );
 
@@ -68,7 +68,7 @@ describe('FeaturePopover.Popper', () => {
   test('should support custom attributes', () => {
     const { getByTestId } = render(
       <FeaturePopover visible>
-        <FeaturePopover.Popper data-testid="trigger" name="trigger" />
+        <FeaturePopover.Popper data-testid='trigger' name='trigger' />
       </FeaturePopover>,
     );
 
@@ -79,7 +79,7 @@ describe('FeaturePopover.Popper', () => {
     const ref = React.createRef();
     render(
       <FeaturePopover visible>
-        <FeaturePopover.Popper tag="div" ref={ref} />
+        <FeaturePopover.Popper tag='div' ref={ref} />
       </FeaturePopover>,
     );
     expect(ref.current.nodeName).toBe('DIV');
@@ -89,7 +89,7 @@ describe('FeaturePopover.Popper', () => {
     const component = (
       <FeaturePopover visible>
         <FeaturePopover.Popper>
-          <p data-testid="child">Test</p>
+          <p data-testid='child'>Test</p>
         </FeaturePopover.Popper>
       </FeaturePopover>
     );

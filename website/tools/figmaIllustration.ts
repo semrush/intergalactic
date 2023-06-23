@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import fetch from 'node-fetch';
 import * as fs from 'fs';
 import sharp from 'sharp';
@@ -11,7 +10,9 @@ const FIGMA_PROJECT_ID = '74268036';
 dotenv.config();
 
 if (!process.env.FIGMA_API_KEY) {
-  throw new Error('Create .env file and insert FIGMA_API_KEY variable that can be generated on https://www.figma.com/developers/api#authentication');
+  throw new Error(
+    'Create .env file and insert FIGMA_API_KEY variable that can be generated on https://www.figma.com/developers/api#authentication',
+  );
 }
 
 const figmaKey = process.env.FIGMA_API_KEY;
@@ -24,6 +25,7 @@ const downloadIllustrations = async () => {
       .toLowerCase()
       .split(' ')
       .join('-')}/static`;
+    // rome-ignore lint/nursery/noConsoleLog: <explanation>
     console.log('page', children.name);
 
     if (fs.existsSync(folderName)) {
@@ -41,12 +43,11 @@ const downloadIllustrations = async () => {
             .then((res) => res.arrayBuffer())
             .then((arrayBuffer) => {
               const buffer = Buffer.from(arrayBuffer);
-              sharp(buffer)
-                .png({ quality: 90 })
-                .toFile(folderName + `/${illustration.name}.png`);
+              sharp(buffer).png({ quality: 90 }).toFile(`${folderName}/${illustration.name}.png`);
             });
 
           const fileName = `${illustration.name}.png`;
+          // rome-ignore lint/nursery/noConsoleLog: <explanation>
           console.log('illustration', fileName);
         } catch (error) {
           console.error(error.message);
@@ -65,6 +66,7 @@ const downloadIllustrations = async () => {
         const data: { name?: string; document?: { children: { name: string }[] } } =
           await response.json();
         const category = data.name.toLowerCase().split(' ').join('-');
+        // rome-ignore lint/nursery/noConsoleLog: <explanation>
         console.log('category', category);
         const downloadPromises = data.document.children
           .filter(

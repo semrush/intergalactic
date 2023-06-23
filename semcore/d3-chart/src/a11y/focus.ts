@@ -12,7 +12,6 @@ const isFocusable = (element: Element) => {
   if ('BODY' === tagName || 'IFRAME' === tagName) return true;
 };
 
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
 type FocusableElement = Element & { focus: () => void };
 
 export const heavyFindNextFocusableElement = (

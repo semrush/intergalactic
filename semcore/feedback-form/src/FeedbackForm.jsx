@@ -26,22 +26,18 @@ class FeedbackForm extends Component {
   };
 
   static validate = {
-    description:
-      (error) =>
-      (value = '') => {
-        const words = value.split(/\s+/);
-        const symbols = words.join(' ');
-        if (symbols.length < 10 || words.length < 3) {
-          return error;
-        }
-      },
-    email:
-      (error) =>
-      (value = '') => {
-        if (!/.+@.+\..+/i.test(String(value).toLowerCase())) {
-          return error;
-        }
-      },
+    description: (error) => (value = '') => {
+      const words = value.split(/\s+/);
+      const symbols = words.join(' ');
+      if (symbols.length < 10 || words.length < 3) {
+        return error;
+      }
+    },
+    email: (error) => (value = '') => {
+      if (!/.+@.+\..+/i.test(String(value).toLowerCase())) {
+        return error;
+      }
+    },
   };
 
   focusDecorator = createFocusDecorator();
@@ -57,17 +53,17 @@ class FeedbackForm extends Component {
             <SpinContainer
               background={background}
               theme={theme}
-              size="xl"
+              size='xl'
               loading={loading === undefined ? api.submitting : loading}
             >
               <SFeedbackForm
-                tag="form"
+                tag='form'
                 noValidate
-                method="POST"
+                method='POST'
                 ref={forwardRef}
                 {...other}
                 onSubmit={api.handleSubmit}
-                title="This is feedback"
+                title='This is feedback'
               >
                 {typeof Children.origin === 'function' ? Children.origin(api) : <Children />}
               </SFeedbackForm>
@@ -120,8 +116,8 @@ function Item({ Children, tag, uid, ...props }) {
         return (
           <Tooltip
             visible={invalid && meta.active}
-            theme="warning"
-            placement="left"
+            theme='warning'
+            placement='left'
             flip={{
               fallbackPlacements: ['right', 'bottom'],
             }}
@@ -167,13 +163,13 @@ Success.style = style;
 function Submit(props) {
   const { styles } = props;
   const SSubmit = Root;
-  return sstyled(styles)(<SSubmit render={Button} type="submit" use="primary" theme="success" />);
+  return sstyled(styles)(<SSubmit render={Button} type='submit' use='primary' theme='success' />);
 }
 
 function Cancel(props) {
   const { styles } = props;
   const SCancel = Root;
-  return sstyled(styles)(<SCancel render={Button} type="reset" use="secondary" theme="muted" />);
+  return sstyled(styles)(<SCancel render={Button} type='reset' use='secondary' theme='muted' />);
 }
 
 function Notice(props) {

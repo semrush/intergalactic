@@ -11,7 +11,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use="primary" onClick={() => setVisible(true)}>
+      <Button use='primary' onClick={() => setVisible(true)}>
         Open fullscreen window
       </Button>
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
@@ -23,23 +23,27 @@ const Demo = () => {
         </FullscreenModal.Header>
         <FullscreenModal.Body>
           <FullscreenModal.Section>
-            <Text size={400} semibold>Content Title</Text>
+            <Text size={400} semibold>
+              Content Title
+            </Text>
           </FullscreenModal.Section>
           <FullscreenModal.Section style={{ background: '#eee', overflow: 'auto' }}>
             <div style={{ height: '1000px' }}>
-              <Text size={400} semibold>Content Title</Text>
+              <Text size={400} semibold>
+                Content Title
+              </Text>
             </div>
           </FullscreenModal.Section>
         </FullscreenModal.Body>
-        <FullscreenModal.Footer justifyContent="center" alignItems="center">
-          <Button size="m" color="gray60" theme="muted" use="tertiary">
+        <FullscreenModal.Footer justifyContent='center' alignItems='center'>
+          <Button size='m' color='gray60' theme='muted' use='tertiary'>
             <Button.Addon>
               <ArrowLeftM />
             </Button.Addon>
             <Button.Text ml={2}>Previous content</Button.Text>
           </Button>
-          <Divider orientation="vertical" h={26} mx={6} />
-          <Button size="m" color="gray60" theme="muted" use="tertiary">
+          <Divider orientation='vertical' h={26} mx={6} />
+          <Button size='m' color='gray60' theme='muted' use='tertiary'>
             <Button.Text mr={2}>Next content</Button.Text>
             <Button.Addon>
               <ArrowRightM />

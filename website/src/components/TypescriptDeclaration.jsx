@@ -33,6 +33,7 @@ const TypeView = ({ typeParts, dependencies, route = '' }) => {
         if (typeof part === 'object') {
           return (
             <a
+              // rome-ignore lint/a11y/useValidAnchor: <explanation>
               onClick={() => {
                 (group || page) &&
                   logEvent('props:click', { group, page, tab: 'api', label: part.displayText });
@@ -73,7 +74,7 @@ export const TypescriptDeclarationView = ({
       <div className={styles.title}>
         {namePrefix}
         {entity}
-        <Divider orientation="vertical" hMin="20px" mx="20px" />
+        <Divider orientation='vertical' hMin='20px' mx='20px' />
         <code>
           {name}
           {entity === 'interface' && inheritanceList.length > 0 && ' extends '}
@@ -82,7 +83,7 @@ export const TypescriptDeclarationView = ({
       </div>
       {type && <TypeView typeParts={type} dependencies={dependencies} />}
       {properties.length > 0 && (
-        <table cellSpacing="0" className={styles.table}>
+        <table cellSpacing='0' className={styles.table}>
           <thead className={styles.tableHead}>
             <tr>
               <th className={styles.propertyCell}>Property</th>
@@ -101,7 +102,7 @@ export const TypescriptDeclarationView = ({
               );
 
               return (
-                <tr key={i}>
+                <tr key={`${i}`}>
                   <td className={styles.propertyCell}>
                     <PropertyName parentName={name} name={property.name} route={route}>
                       {property.name}
@@ -140,6 +141,7 @@ export const TypescriptDeclarationView = ({
                     </div>
                   </td>
                   <td className={styles.descriptionCell}>
+                    {/* rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
                     <span dangerouslySetInnerHTML={{ __html: property.description }} />
                   </td>
                 </tr>

@@ -35,8 +35,8 @@ describe('NoticeBubbleContainer', () => {
 
   test('should support render outside dom', () => {
     const { queryByTestId } = render(
-      <div data-testid="container">
-        <NoticeBubbleContainer data-testid="notice" />
+      <div data-testid='container'>
+        <NoticeBubbleContainer data-testid='notice' />
       </div>,
     );
     // Not render to container,
@@ -52,7 +52,7 @@ describe('NoticeBubble Timer', () => {
   test.skip('should support pause timer at mouse enter', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
-    const { getByTestId } = render(<NoticeBubble data-testid="notice" onClose={spy} />);
+    const { getByTestId } = render(<NoticeBubble data-testid='notice' onClose={spy} />);
     fireEvent.mouseEnter(getByTestId('notice'));
     act(() => {
       vi.runAllTimers();
@@ -119,7 +119,7 @@ describe('NoticeBubble', () => {
           disablePortal
           manager={manager}
         />
-        <NoticeBubbleImport id="notice" manager={manager}>
+        <NoticeBubbleImport id='notice' manager={manager}>
           Message
         </NoticeBubbleImport>
       </>
@@ -133,9 +133,9 @@ describe('NoticeBubble', () => {
     const manager = new NoticeBubbleManager();
     render(
       <React.Fragment>
-        <NoticeBubbleContainer data-testid="container" manager={manager} />
-        <NoticeBubbleImport data-testid="notice-1" visible manager={manager} />
-        <NoticeBubbleImport data-testid="notice-2" visible manager={manager} />
+        <NoticeBubbleContainer data-testid='container' manager={manager} />
+        <NoticeBubbleImport data-testid='notice-1' visible manager={manager} />
+        <NoticeBubbleImport data-testid='notice-2' visible manager={manager} />
       </React.Fragment>,
     );
 
@@ -148,8 +148,8 @@ describe('NoticeBubble', () => {
     const manager = new NoticeBubbleManager();
     render(
       <React.Fragment>
-        <NoticeBubbleContainer data-testid="container" manager={manager} />
-        <NoticeBubbleImport data-testid="notice" visible manager={manager} />
+        <NoticeBubbleContainer data-testid='container' manager={manager} />
+        <NoticeBubbleImport data-testid='notice' visible manager={manager} />
       </React.Fragment>,
     );
 
@@ -183,12 +183,23 @@ describe('NoticeBubble', () => {
           manager={manager}
         />
         <NoticeBubbleWarningImport
-          action={<button data-testid="action">Action</button>}
+          action={
+            <button type='button' data-testid='action'>
+              Action
+            </button>
+          }
           manager={manager}
         >
           Message
         </NoticeBubbleWarningImport>
-        <NoticeBubbleImport action={<button data-testid="action">Action</button>} manager={manager}>
+        <NoticeBubbleImport
+          action={
+            <button type='button' data-testid='action'>
+              Action
+            </button>
+          }
+          manager={manager}
+        >
           Message
         </NoticeBubbleImport>
       </>

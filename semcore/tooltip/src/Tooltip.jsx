@@ -51,7 +51,6 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { Children, title, offset, ...other } = this.asProps;
 
     const advanceMode = isAdvanceMode(Children, [
@@ -105,10 +104,11 @@ function TooltipPopper(props) {
     <>
       <STooltip
         render={Popper.Popper}
-        role="tooltip"
+        role='tooltip'
         use:theme={resolveColor(theme)}
         aria-live={theme === 'warning' ? 'assertive' : 'polite'}
       >
+        {/* rome-ignore lint/suspicious/noAssignInExpressions: */}
         {(children = <Children />)}
         <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
       </STooltip>

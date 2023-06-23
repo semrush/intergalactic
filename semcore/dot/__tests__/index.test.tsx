@@ -16,9 +16,9 @@ describe('Dot', () => {
 
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
-      <button>
+      <button type='button'>
         Button
-        <Dot aria-label="Our brand new button!" />
+        <Dot aria-label='Our brand new button!' />
       </button>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -26,9 +26,9 @@ describe('Dot', () => {
 
   test.concurrent('Renders correctly with up', async ({ task }) => {
     const component = (
-      <button>
+      <button type='button'>
         Button
-        <Dot up aria-label="Our brand new button!" />
+        <Dot up aria-label='Our brand new button!' />
       </button>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -39,13 +39,13 @@ describe('Dot', () => {
       <>
         <Button>
           Button
-          <Dot up aria-label="Our brand new button!">
+          <Dot up aria-label='Our brand new button!'>
             12
           </Dot>
         </Button>
         <Button>
           Button
-          <Dot aria-label="Our brand new button!">12</Dot>
+          <Dot aria-label='Our brand new button!'>12</Dot>
         </Button>
       </>
     );
@@ -55,23 +55,23 @@ describe('Dot', () => {
   test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: '3px', position: 'relative' }}>
-        <button>
-          Button <Dot size="xl" aria-label="Our brand new button!" />
+        <button type='button'>
+          Button <Dot size='xl' aria-label='Our brand new button!' />
         </button>
-        <button>
-          Button <Dot size="l" aria-label="Our brand new button!" />
+        <button type='button'>
+          Button <Dot size='l' aria-label='Our brand new button!' />
         </button>
-        <button>
-          Button <Dot size="m" aria-label="Our brand new button!" />
+        <button type='button'>
+          Button <Dot size='m' aria-label='Our brand new button!' />
         </button>
-        <button>
-          Button <Dot up size="xl" aria-label="Our brand new button!" />
+        <button type='button'>
+          Button <Dot up size='xl' aria-label='Our brand new button!' />
         </button>
-        <button>
-          Button <Dot up size="l" aria-label="Our brand new button!" />
+        <button type='button'>
+          Button <Dot up size='l' aria-label='Our brand new button!' />
         </button>
-        <button>
-          Button <Dot up size="m" aria-label="Our brand new button!" />
+        <button type='button'>
+          Button <Dot up size='m' aria-label='Our brand new button!' />
         </button>
       </snapshot.ProxyProps>
     );
@@ -83,7 +83,7 @@ describe('Dot', () => {
     const { queryByTestId } = render(
       <Button>
         Button
-        <Dot hidden size="m" data-testid="dot" aria-label="Our brand new button!" />
+        <Dot hidden size='m' data-testid='dot' aria-label='Our brand new button!' />
       </Button>,
     );
     expect(queryByTestId('dot')).toBeFalsy();

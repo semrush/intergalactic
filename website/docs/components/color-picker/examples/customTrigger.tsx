@@ -9,7 +9,7 @@ const Demo = () => {
   return (
     <ColorPicker value={value} onChange={setValue}>
       <Input ml={1} w={200}>
-        <Input.Addon role="button" interactive>
+        <Input.Addon role='button' interactive>
           <ColorPicker.Trigger tag={Box}>
             <div
               style={{
@@ -19,10 +19,10 @@ const Demo = () => {
                 border: '1px solid #C4C7CF',
                 backgroundColor: value,
               }}
-            ></div>
+            />
           </ColorPicker.Trigger>
         </Input.Addon>
-        <Input.Value placeholder="Placeholder" />
+        <Input.Value placeholder='Placeholder' />
       </Input>
       <ColorPicker.Popper>
         <ColorPicker.Colors />

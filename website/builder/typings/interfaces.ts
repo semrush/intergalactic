@@ -4,14 +4,12 @@ import { extractDependenciesList, serializeProperty, serializeTsNode } from './s
 export const serializeInterfaceDeclaration = (interfaceDeclaration: ts.InterfaceDeclaration) => {
   const name = interfaceDeclaration.name.escapedText as string;
   const genericsMap = {};
-  const inheritance = (interfaceDeclaration.heritageClauses ?? [])
-    .map((clause) =>
-      clause.types.map((type) => ({
-        referenceTo: type.expression.escapedText,
-        displayText: type.expression.escapedText,
-      })),
-    )
-    .flat();
+  const inheritance = (interfaceDeclaration.heritageClauses ?? []).flatMap((clause) =>
+    clause.types.map((type) => ({
+      referenceTo: type.expression.escapedText,
+      displayText: type.expression.escapedText,
+    })),
+  );
   const dependencies = extractDependenciesList(inheritance);
   const properties: ts.PropertySignature[] = [];
   interfaceDeclaration.forEachChild((child) => {

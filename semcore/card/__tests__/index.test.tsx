@@ -31,7 +31,7 @@ describe('Card', () => {
   test.concurrent('Renders correctly Tittle/Description', async ({ task }) => {
     const component = (
       <Card>
-        <Card.Title hint="test">Title</Card.Title>
+        <Card.Title hint='test'>Title</Card.Title>
         <Card.Description>Description</Card.Description>
         Content
       </Card>
@@ -85,9 +85,9 @@ describe('Card', () => {
           <Card.Title hint={tooltipContent}>Card heading</Card.Title>
           <SettingsM
             style={{ float: 'right' }}
-            color="stone"
+            color='stone'
             interactive
-            aria-label="Open settings"
+            aria-label='Open settings'
           />
           <Card.Description>This is card additional information or insights.</Card.Description>
         </Card.Header>

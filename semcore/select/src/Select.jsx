@@ -322,7 +322,7 @@ function Trigger({
         Tag.Addon || ButtonTrigger.Addon,
         true,
       )}
-      {name && <input type="hidden" defaultValue={value} name={name} ref={$hiddenRef} />}
+      {name && <input type='hidden' defaultValue={value} name={name} ref={$hiddenRef} />}
     </SSelectTrigger>,
   );
 }
@@ -343,7 +343,7 @@ function Checkbox(props) {
       {...componentProps}
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
-      role="checkbox"
+      role='checkbox'
       tabIndex={0}
       aria-checked={selected}
     />

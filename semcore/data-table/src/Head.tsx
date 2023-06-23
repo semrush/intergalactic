@@ -117,7 +117,7 @@ class Head extends Component<AsProps> {
         {isGroup ? (
           <>
             <SColumn
-              role="columnheader"
+              role='columnheader'
               groupHead
               use={use}
               active={column.active}
@@ -167,8 +167,8 @@ class Head extends Component<AsProps> {
           shadow
           onResize={onResize}
         >
-          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role="rowgroup">
-            <SHead render={Box} role="row" aria-rowindex="1">
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
+            <SHead render={Box} role='row' aria-rowindex='1'>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </ScrollArea.Container>

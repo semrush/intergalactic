@@ -29,7 +29,7 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
       <div className={styles.dropzoneInner}>
         <div>Drag files here</div>
         <div>or</div>
-        <Button theme="success" use="primary" size="l" mb={4}>
+        <Button theme='success' use='primary' size='l' mb={4}>
           Browse files
         </Button>
       </div>
@@ -38,7 +38,7 @@ const FileInput = ({ id, onFile, multiple, accept }) => {
         className={styles.fileInput}
         id={id}
         multiple={multiple}
-        type="file"
+        type='file'
         accept={accept}
         onChange={(event) => onFile([...(event.target.files ?? [])])}
       />
@@ -60,7 +60,6 @@ const DesignTokensProcessor = () => {
     try {
       setBaseTokens(JSON.parse(await readFile(files[0])));
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error(err);
       setBaseTokens(null);
     }
@@ -69,7 +68,6 @@ const DesignTokensProcessor = () => {
     try {
       setDesignTokens(JSON.parse(await readFile(files[0])));
     } catch (err) {
-      // eslint-disable-next-line no-console
       console.error(err);
       setDesignTokens(null);
     }
@@ -95,23 +93,24 @@ const DesignTokensProcessor = () => {
   return (
     <div className={styles.container}>
       <Box mb={2}>
-        <label htmlFor="base-tokens-file">Base tokens JSON file:</label>
+        <label htmlFor='base-tokens-file'>Base tokens JSON file:</label>
         {!baseTokens && (
           <>
             <FileInput
-              id="base-tokens-file"
+              id='base-tokens-file'
               multiple={false}
-              accept="application/json"
+              accept='application/json'
               onFile={handleBaseTokensFile}
             />
           </>
         )}
         {baseTokens && (
           <div className={styles.uploadedFileBlock}>
-            <CheckM color="green-400" /> File selected{' '}
+            <CheckM color='green-400' /> File selected{' '}
             <button
+              type='button'
               className={styles.changeFileButton}
-              id="base-tokens-file"
+              id='base-tokens-file'
               onClick={handleChangeBaseTokensFile}
             >
               replace file
@@ -120,23 +119,24 @@ const DesignTokensProcessor = () => {
         )}
       </Box>
       <Box mb={2}>
-        <label htmlFor="design-tokens-file">Semantic tokens JSON file:</label>
+        <label htmlFor='design-tokens-file'>Semantic tokens JSON file:</label>
         {!designTokens && (
           <>
             <FileInput
-              id="design-tokens-file"
+              id='design-tokens-file'
               multiple={false}
-              accept="application/json"
+              accept='application/json'
               onFile={handleDesignTokensFile}
             />
           </>
         )}
         {designTokens && (
           <div className={styles.uploadedFileBlock}>
-            <CheckM color="green-400" /> File selected{' '}
+            <CheckM color='green-400' /> File selected{' '}
             <button
+              type='button'
               className={styles.changeFileButton}
-              id="base-tokens-file"
+              id='base-tokens-file'
               onClick={handleChangeDesignTokensFile}
             >
               replace file
@@ -157,11 +157,11 @@ const DesignTokensProcessor = () => {
             <h4>
               Processed
               <span className={styles.extension}>.css</span>
-              <Copy copiedToast="Copied!" toCopy={css} trigger="click">
+              <Copy copiedToast='Copied!' toCopy={css} trigger='click'>
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <Code lang="css" className={styles.codeBlock}>
+            <Code lang='css' className={styles.codeBlock}>
               {css}
             </Code>
           </div>
@@ -169,11 +169,11 @@ const DesignTokensProcessor = () => {
             <h4>
               Processed
               <span className={styles.extension}>.json</span>
-              <Copy copiedToast="Copied!" toCopy={json} trigger="click">
+              <Copy copiedToast='Copied!' toCopy={json} trigger='click'>
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <Code lang="css" className={styles.codeBlock}>
+            <Code lang='css' className={styles.codeBlock}>
               {json}
             </Code>
           </div>

@@ -10,7 +10,7 @@ const Demo = () => {
     manager.add({
       children: 'Data for 5 new profiles is ready. Please reload the page to view it.',
       action: (
-        <Button theme="invert">
+        <Button theme='invert'>
           <Button.Addon>
             <ReloadM />
           </Button.Addon>

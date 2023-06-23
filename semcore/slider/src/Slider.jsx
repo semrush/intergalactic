@@ -36,7 +36,9 @@ class SliderRoot extends Component {
     ),
   });
 
-  handleRef = (node) => (this.sliderRef.current = node);
+  handleRef = (node) => {
+    this.sliderRef.current = node;
+  };
 
   uncontrolledProps() {
     return {
@@ -190,15 +192,15 @@ class SliderRoot extends Component {
           onTouchEnd={this.handleMouseEnd}
           onDragStart={this.handleDragStart}
           onKeyDown={this.handleKeyDown}
-          role="slider"
-          aria-orientation="horizontal"
+          role='slider'
+          aria-orientation='horizontal'
           aria-valuemin={min ?? defaultMin}
           aria-valuemax={max ?? defaultMax}
           aria-valuetext={label}
           aria-valuenow={numericValue}
         >
           <Children />
-          <SInput tag="input" type="hidden" value={value ?? ''} name={name} aria-hidden />
+          <SInput tag='input' type='hidden' value={value ?? ''} name={name} aria-hidden />
         </SSlider>
       </>,
     );
@@ -225,7 +227,7 @@ function Options({ styles, options, Children }) {
   const SSliderOptions = Root;
 
   return sstyled(styles)(
-    <SSliderOptions render={Flex} justifyContent="space-between">
+    <SSliderOptions render={Flex} justifyContent='space-between'>
       {(options ?? []).map((option) => (
         <Children key={option.value} x={option.value}>
           {option.label}

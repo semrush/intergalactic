@@ -6,11 +6,11 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" />
-        <DataTable.Column name="cpc" children="CPC" />
-        <DataTable.Column name="vol" children="Vol." />
-        <ProgressBar value={40} size="s" style={{ borderRadius: 0 }}>
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' />
+        <ProgressBar value={40} size='s' style={{ borderRadius: 0 }}>
           <ProgressBar.Value style={{ borderRadius: 0 }} />
         </ProgressBar>
       </DataTable.Head>

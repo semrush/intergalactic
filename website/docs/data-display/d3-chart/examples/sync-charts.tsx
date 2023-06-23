@@ -39,14 +39,14 @@ export default () => {
           <YAxis.Ticks />
           <YAxis.Grid />
         </YAxis>
-        <Tooltip tag={HoverLine} x="date_chart" wMin={100}>
+        <Tooltip tag={HoverLine} x='date_chart' wMin={100}>
           {({ xIndex }) => {
             return {
               children: data[xIndex]?.download,
             };
           }}
         </Tooltip>
-        <Line x="date_chart" y="download">
+        <Line x='date_chart' y='download'>
           <Line.Dots display />
         </Line>
       </Plot>
@@ -66,14 +66,14 @@ export default () => {
             {({ value, index }) => ({ children: index % 2 ? '' : getDate(value) })}
           </XAxis.Ticks>
         </XAxis>
-        <Tooltip tag={HoverRect} x="date_chart" wMin={100}>
+        <Tooltip tag={HoverRect} x='date_chart' wMin={100}>
           {({ xIndex }) => {
             return {
               children: data[xIndex]?.download,
             };
           }}
         </Tooltip>
-        <Bar x="date_chart" y="download" />
+        <Bar x='date_chart' y='download' />
       </Plot>
     </>
   );

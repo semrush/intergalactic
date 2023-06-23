@@ -57,7 +57,7 @@ describe('Carousel', () => {
 
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
-        <Container data-testid="container" />
+        <Container data-testid='container' />
       </Carousel>,
     );
 
@@ -73,7 +73,7 @@ describe('Carousel', () => {
 
     const { rerender, getByTestId } = render(
       <Carousel index={0} onIndexChange={spy}>
-        <Container data-testid="container" />
+        <Container data-testid='container' />
       </Carousel>,
     );
 
@@ -83,7 +83,7 @@ describe('Carousel', () => {
 
     rerender(
       <Carousel index={1} onIndexChange={spy}>
-        <Container data-testid="container" />
+        <Container data-testid='container' />
       </Carousel>,
     );
     fireEvent.keyDown(container, { key: 'ArrowRight' });
@@ -147,7 +147,7 @@ describe('Carousel.Indicators', () => {
       <Carousel onIndexChange={spy}>
         <Container />
         <Indicators />
-        <Carousel.Prev data-testid="prev" />
+        <Carousel.Prev data-testid='prev' />
       </Carousel>,
     );
     const prev = getByTestId('prev');
@@ -164,7 +164,7 @@ describe('Carousel.Indicators', () => {
       <Carousel index={1} onIndexChange={spy}>
         <Container />
         <Indicators />
-        <Carousel.Next data-testid="next" />
+        <Carousel.Next data-testid='next' />
       </Carousel>,
     );
     const next = getByTestId('next');
@@ -176,7 +176,7 @@ describe('Carousel.Indicators', () => {
       <Carousel index={0} onIndexChange={spy}>
         <Container />
         <Indicators />
-        <Carousel.Next data-testid="next" />
+        <Carousel.Next data-testid='next' />
       </Carousel>,
     );
     fireEvent.click(prev);
@@ -196,7 +196,7 @@ describe('Carousel.Prev', () => {
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
-        <Carousel.Prev data-testid="prev" />
+        <Carousel.Prev data-testid='prev' />
       </Carousel>,
     );
     const prev = getByTestId('prev');
@@ -211,7 +211,7 @@ describe('Carousel.Prev', () => {
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
         <Container />
-        <Carousel.Prev data-testid="prev" />
+        <Carousel.Prev data-testid='prev' />
       </Carousel>,
     );
     const prev = getByTestId('prev');
@@ -226,7 +226,7 @@ describe('Carousel.Prev', () => {
     const { getByTestId } = render(
       <Carousel index={0} onIndexChange={spy}>
         <Container />
-        <Carousel.Prev data-testid="prev" />
+        <Carousel.Prev data-testid='prev' />
       </Carousel>,
     );
 
@@ -249,7 +249,7 @@ describe('Carousel.Next', () => {
     const { getByTestId } = render(
       <Carousel onIndexChange={spy}>
         <Container />
-        <Carousel.Next data-testid="next" />
+        <Carousel.Next data-testid='next' />
       </Carousel>,
     );
     const next = getByTestId('next');
@@ -264,7 +264,7 @@ describe('Carousel.Next', () => {
     const { getByTestId } = render(
       <Carousel bounded onIndexChange={spy}>
         <Container />
-        <Carousel.Prev data-testid="next" />
+        <Carousel.Prev data-testid='next' />
       </Carousel>,
     );
     const next = getByTestId('next');
@@ -279,7 +279,7 @@ describe('Carousel.Next', () => {
     const { getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>
         <Container />
-        <Carousel.Next data-testid="next" />
+        <Carousel.Next data-testid='next' />
       </Carousel>,
     );
 
@@ -292,20 +292,20 @@ describe('Carousel.Next', () => {
 
   test('a11y', async () => {
     const images = [
-      `https://picsum.photos/id/1023/600/400`,
-      `https://picsum.photos/id/1024/600/400`,
-      `https://picsum.photos/id/1025/600/400`,
+      'https://picsum.photos/id/1023/600/400',
+      'https://picsum.photos/id/1024/600/400',
+      'https://picsum.photos/id/1025/600/400',
     ];
     const { getByTestId, container } = render(
       <Carousel>
         <Container>
           {images.map((url) => (
-            <Carousel.Item tag="img" key={url} src={url} w={100} />
+            <Carousel.Item tag='img' key={url} src={url} w={100} />
           ))}
         </Container>
         <Indicators />
-        <Carousel.Prev data-testid="prev" />
-        <Carousel.Next data-testid="next" />
+        <Carousel.Prev data-testid='prev' />
+        <Carousel.Next data-testid='next' />
       </Carousel>,
     );
 
@@ -323,21 +323,21 @@ describe('Carousel.Next', () => {
 describe('Carousel visual regression', () => {
   test.concurrent('image indicators', async ({ task }) => {
     const images = [
-      `https://picsum.photos/id/1023/600/400`,
-      `https://picsum.photos/id/1024/600/400`,
-      `https://picsum.photos/id/1025/600/400`,
+      'https://picsum.photos/id/1023/600/400',
+      'https://picsum.photos/id/1024/600/400',
+      'https://picsum.photos/id/1025/600/400',
     ];
     const width = 600;
     const imageWidth = width - 75;
 
     const component = (
       <Carousel w={width} defaultIndex={1}>
-        <Flex alignItems="center">
+        <Flex alignItems='center'>
           <Carousel.Prev />
           <Box style={{ overflow: 'hidden' }}>
             <Carousel.Container>
               {images.map((url) => (
-                <Carousel.Item tag="img" key={url} src={url} w={imageWidth} />
+                <Carousel.Item tag='img' key={url} src={url} w={imageWidth} />
               ))}
             </Carousel.Container>
           </Box>
@@ -348,7 +348,7 @@ describe('Carousel visual regression', () => {
             items.map((indicatorProps, index) => (
               <Carousel.Indicator
                 {...indicatorProps}
-                tag="img"
+                tag='img'
                 key={images[index]}
                 src={images[index]}
                 w={100}
@@ -364,21 +364,21 @@ describe('Carousel visual regression', () => {
   });
   test.concurrent('dot indicators', async ({ task }) => {
     const images = [
-      `https://picsum.photos/id/1023/600/400`,
-      `https://picsum.photos/id/1024/600/400`,
-      `https://picsum.photos/id/1025/600/400`,
+      'https://picsum.photos/id/1023/600/400',
+      'https://picsum.photos/id/1024/600/400',
+      'https://picsum.photos/id/1025/600/400',
     ];
     const width = 600;
     const imageWidth = width - 75;
 
     const component = (
       <Carousel w={width} defaultIndex={1}>
-        <Flex alignItems="center">
+        <Flex alignItems='center'>
           <Carousel.Prev />
           <Box style={{ overflow: 'hidden' }}>
             <Carousel.Container>
               {images.map((url) => (
-                <Carousel.Item tag="img" key={url} src={url} w={imageWidth} />
+                <Carousel.Item tag='img' key={url} src={url} w={imageWidth} />
               ))}
             </Carousel.Container>
           </Box>

@@ -31,7 +31,7 @@ export default () => {
   const [genre, setGenre] = React.useState(movies[0].key);
 
   return (
-    <Flex direction="column">
+    <Flex direction='column'>
       <p>Movie of what genre to pick today?</p>
       <Select
         options={movies.map(({ label, key }) => ({ value: key, children: label }))}

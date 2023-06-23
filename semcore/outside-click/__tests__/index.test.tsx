@@ -20,7 +20,7 @@ describe('OutsideClick', () => {
     const onOutsideClick = vi.fn();
     const { getByTestId } = render(
       <OutsideClick onOutsideClick={onOutsideClick}>
-        <div data-testid="child">test</div>
+        <div data-testid='child'>test</div>
       </OutsideClick>,
     );
 
@@ -34,7 +34,7 @@ describe('OutsideClick', () => {
     const outsideRef = React.createRef<any>();
     const { getByTestId } = render(
       <>
-        <div data-testid="outside" ref={outsideRef}>
+        <div data-testid='outside' ref={outsideRef}>
           outside
         </div>
         <OutsideClick onOutsideClick={onOutsideClick} excludeRefs={[outsideRef]} />

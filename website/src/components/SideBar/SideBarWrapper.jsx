@@ -20,7 +20,6 @@ const SidebarWrapper = (props) => {
         setVisible(true);
         setTyping(typing);
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error(error);
         setLoadingError(error);
       } finally {

@@ -16,14 +16,15 @@ const data = [
 ];
 
 function formatThousands(n) {
-  let s = '' + Math.floor(n),
-    d = n % 1,
-    i = s.length,
-    r = '';
+  const s = `${Math.floor(n)}`;
+  const d = n % 1;
+  let i = s.length;
+  let r = '';
+  // rome-ignore lint/suspicious/noAssignInExpressions: <explanation>
   while ((i -= 3) > 0) {
-    r = ',' + s.substr(i, 3) + r;
+    r = `,${s.substr(i, 3)}${r}`;
   }
-  return s.substr(0, i + 3) + r + (d ? '.' + Math.round(d * Math.pow(10, 2)) : '');
+  return s.substr(0, i + 3) + r + (d ? `.${Math.round(d * Math.pow(10, 2))}` : '');
 }
 
 class Demo extends PureComponent {
@@ -65,23 +66,23 @@ class Demo extends PureComponent {
 
     return (
       <Card my={6} pt={5} pb={6} px={6}>
-        <Flex alignItems="center" justifyContent="space-between">
-          <Text tag="h3" size={400} medium m={0}>
+        <Flex alignItems='center' justifyContent='space-between'>
+          <Text tag='h3' size={400} medium m={0}>
             Chart heading
-            <Tooltip title="Awesome hint text">
-              <InfoXS ml="4px" color="gray-300" cursor="help" />
+            <Tooltip title='Awesome hint text'>
+              <InfoXS ml='4px' color='gray-300' cursor='help' />
             </Tooltip>
           </Text>
-          <SettingsS color="gray-300" interactive aria-label="Open settings" />
+          <SettingsS color='gray-300' interactive aria-label='Open settings' />
         </Flex>
-        <Flex mt={3} alignItems="flex-start" flexWrap>
+        <Flex mt={3} alignItems='flex-start' flexWrap>
           <PieChart height={196} width={196} style={{ margin: '0 20px 24px 0' }}>
             <Pie
               activeIndex={activeIndex}
               activeShape={{ outerRadius: 98, style: { cursor: 'pointer' } }}
               data={dataPie}
-              dataKey="value"
-              nameKey="domain"
+              dataKey='value'
+              nameKey='domain'
               startAngle={90}
               endAngle={-270}
               innerRadius={60}
@@ -96,17 +97,17 @@ class Demo extends PureComponent {
                 />
               ))}
               <Label
-                position="center"
+                position='center'
                 content={({ viewBox: { cx, cy } }) => (
                   <>
-                    <text x={cx} y={cy} textAnchor="middle" verticalAnchor="middle">
-                      <Text tag="tspan" size={500} bold>
+                    <text x={cx} y={cy} textAnchor='middle' verticalAnchor='middle'>
+                      <Text tag='tspan' size={500} bold>
                         {formatThousands(this.commonValue)}
                       </Text>
                       <Text
-                        tag="tspan"
-                        cssProperty="fill"
-                        color="gray-500"
+                        tag='tspan'
+                        cssProperty='fill'
+                        color='gray-500'
                         x={cx}
                         y={cy + 15}
                         size={100}
@@ -114,9 +115,9 @@ class Demo extends PureComponent {
                         value name
                       </Text>
                       <Text
-                        tag="tspan"
-                        cssProperty="fill"
-                        color="gray-500"
+                        tag='tspan'
+                        cssProperty='fill'
+                        color='gray-500'
                         x={cx}
                         y={cy + 30}
                         size={100}
@@ -129,15 +130,15 @@ class Demo extends PureComponent {
               />
             </Pie>
             <TooltipChart
-              label="Value"
+              label='Value'
               formatter={(value, name, props) => {
                 const { percent } = props;
                 return (
                   <>
-                    <Box tag="span" style={{ color: '#6C6E79', fontWeight: 'normal' }}>
+                    <Box tag='span' style={{ color: '#6C6E79', fontWeight: 'normal' }}>
                       {percent.toFixed(0)}%
                     </Box>
-                    <Box tag="span" ml={3}>
+                    <Box tag='span' ml={3}>
                       {value}
                     </Box>
                   </>
@@ -146,7 +147,7 @@ class Demo extends PureComponent {
             />
           </PieChart>
           <Text
-            tag="table"
+            tag='table'
             size={100}
             style={{
               marginTop: '4px',
@@ -179,10 +180,10 @@ class Demo extends PureComponent {
                       </Checkbox.Text>
                     </Checkbox>
                   </td>
-                  <Text color="gray-500" pr={4} tag="td">
+                  <Text color='gray-500' pr={4} tag='td'>
                     {((value / this.commonValue) * 100).toFixed(0)}%
                   </Text>
-                  <Text tag="td">{formatThousands(value)}</Text>
+                  <Text tag='td'>{formatThousands(value)}</Text>
                 </tr>
               );
             })}

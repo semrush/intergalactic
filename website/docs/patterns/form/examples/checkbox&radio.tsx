@@ -25,7 +25,7 @@ const Demo = () => {
         setError('export', { message: 'Require enter value' });
         return;
       } else {
-        data.export = 'first ' + selectedFirst;
+        data.export = `first ${selectedFirst}`;
       }
     }
     if (data.export === 'selected') {
@@ -33,7 +33,7 @@ const Demo = () => {
         setError('export', { message: 'Require chouse value' });
         return;
       } else {
-        data.export = 'selected [' + selectedValue.join(',') + ']';
+        data.export = `selected [${selectedValue.join(',')}]`;
       }
     }
     reset(defaultValues);
@@ -59,25 +59,25 @@ const Demo = () => {
   };
 
   return (
-    <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column" alignItems="flex-start">
-      <Flex direction="column" mb={4}>
-        <Text size={300} tag="label" mb={4}>
+    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
+      <Flex direction='column' mb={4}>
+        <Text size={300} tag='label' mb={4}>
           Export data
         </Text>
         <Controller
           render={({ value, ...props }) => (
-            <RadioGroup {...props} value={value} size="l">
+            <RadioGroup {...props} value={value} size='l'>
               <Radio mb={3}>
-                <Radio.Value value="all" />
+                <Radio.Value value='all' />
                 <Radio.Text>All</Radio.Text>
               </Radio>
               <Radio mb={3}>
-                <Radio.Value value="selected" onChange={onSelectedRadio} />
+                <Radio.Value value='selected' onChange={onSelectedRadio} />
                 <Radio.Text>Selected</Radio.Text>
                 {selected &&
                   [100, 500].map((v) => (
                     <Checkbox
-                      size="l"
+                      size='l'
                       ml={2}
                       key={v}
                       state={value.includes('selected') && errors['export'] ? 'invalid' : 'normal'}
@@ -88,10 +88,10 @@ const Demo = () => {
                   ))}
               </Radio>
               <Radio style={{ alignItems: 'center' }}>
-                <Radio.Value value="first" />
+                <Radio.Value value='first' />
                 <Radio.Text>First</Radio.Text>
                 <Select
-                  size="l"
+                  size='l'
                   ml={2}
                   state={value.includes('first') && errors['export'] ? 'invalid' : 'normal'}
                   tag={ButtonTrigger}
@@ -102,11 +102,11 @@ const Demo = () => {
             </RadioGroup>
           )}
           control={control}
-          name="export"
+          name='export'
         />
       </Flex>
 
-      <Button type="submit" use="primary" theme="info" size="l">
+      <Button type='submit' use='primary' theme='info' size='l'>
         Excel
       </Button>
     </Flex>

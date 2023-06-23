@@ -11,13 +11,13 @@ export default () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="advance-trigger" size="300">
+      <Text tag='label' htmlFor='advance-trigger' size='300'>
         Filter trigger for several filters inside
       </Text>
       <Box mt={2}>
         <Dropdown visible={visible} onVisibleChange={(v) => setVisible(v)}>
           <Dropdown.Trigger
-            placeholder="Advanced filters"
+            placeholder='Advanced filters'
             active={visible}
             empty={!filters}
             onClear={() => {
@@ -25,11 +25,11 @@ export default () => {
               setVisible(false);
             }}
             tag={FilterTrigger}
-            id="advance-trigger"
+            id='advance-trigger'
           >
             <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
             {!!filters && (
-              <FilterTrigger.Counter aria-label="Applied filters count">
+              <FilterTrigger.Counter aria-label='Applied filters count'>
                 {filters}
               </FilterTrigger.Counter>
             )}

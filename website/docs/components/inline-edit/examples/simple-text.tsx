@@ -11,7 +11,7 @@ const Example = () => {
 
   return (
     <div>
-      <Text tag="label" htmlFor="author-name" mr={2}>
+      <Text tag='label' htmlFor='author-name' mr={2}>
         Author:
       </Text>
       <InlineEdit editable={editable} onEditableChange={setEditable} onBlurBehavior={'confirm'}>
@@ -29,7 +29,7 @@ const Example = () => {
               setEditable(false);
             }}
           >
-            <InlineInput.Value autoFocus value={text} onChange={setText} id="author-name" />
+            <InlineInput.Value autoFocus value={text} onChange={setText} id='author-name' />
             <InlineInput.ConfirmControl />
             <InlineInput.CancelControl />
           </InlineInput>

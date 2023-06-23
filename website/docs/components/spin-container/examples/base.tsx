@@ -25,7 +25,7 @@ class Demo extends React.PureComponent {
     const { loading } = this.state;
 
     return (
-      <SpinContainer loading={loading} size="l" h={81}>
+      <SpinContainer loading={loading} size='l' h={81}>
         {!loading && (
           <Text size={100}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae

@@ -44,15 +44,15 @@ class Feedback extends React.PureComponent {
     return (
       <FeedbackForm onSubmit={onSubmit} loading={status === 'loading'}>
         <Box p={4}>
-          <Flex tag="label" direction="column" htmlFor="suggestions">
+          <Flex tag='label' direction='column' htmlFor='suggestions'>
             <Text mb={2} size={200}>
               Tell us your suggestion or report an issue
             </Text>
             <FeedbackForm.Item
-              name="feedback"
+              name='feedback'
               validate={validate.description}
               initialValue={value.description}
-              placement="left-start"
+              placement='left-start'
               flip={{
                 fallbackPlacements: ['right-start', 'bottom'],
               }}
@@ -63,27 +63,27 @@ class Feedback extends React.PureComponent {
                   autoFocus
                   h={80}
                   onChange={this.handleChange(input.onChange)}
-                  id="suggestions"
+                  id='suggestions'
                 />
               )}
             </FeedbackForm.Item>
           </Flex>
-          <Flex tag="label" mt={4} direction="column" htmlFor="email">
+          <Flex tag='label' mt={4} direction='column' htmlFor='email'>
             <Text mb={2} size={200}>
               Reply-to email
             </Text>
-            <FeedbackForm.Item name="email" validate={validate.email} initialValue={value.email}>
+            <FeedbackForm.Item name='email' validate={validate.email} initialValue={value.email}>
               {({ input }) => (
                 <Input state={input.state}>
-                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id="email" />
+                  <Input.Value {...input} onChange={this.handleChange(input.onChange)} id='email' />
                 </Input>
               )}
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight="18px" size={100} color="#6c6e79">
+            <Text lineHeight='18px' size={100} color='#6c6e79'>
               We will only use this email to respond to you on your feedback.{' '}
-              <Link href="https://www.semrush.com/company/legal/privacy-policy/">
+              <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
               </Link>
             </Text>
@@ -96,7 +96,7 @@ class Feedback extends React.PureComponent {
         <FeedbackForm.Notice hidden={status === 'failed'}>
           You can also send us an email to <Link>backlink.audit@semrush.com</Link>
         </FeedbackForm.Notice>
-        <FeedbackForm.Notice hidden={status !== 'failed'} theme="danger">
+        <FeedbackForm.Notice hidden={status !== 'failed'} theme='danger'>
           Your message has not been sent.
         </FeedbackForm.Notice>
       </FeedbackForm>

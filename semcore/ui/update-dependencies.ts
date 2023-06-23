@@ -18,7 +18,7 @@ const installComponents = async (packages: string[]) => {
     packageFile.dependencies[packageName] = npmPackages[packageName].version;
   }
   await fs.writeJSON(path.resolve(dirname, './package.json'), packageFile, { spaces: 2 });
-  execSync(`pnpm install --frozen-lockfile false`, {
+  execSync('pnpm install --frozen-lockfile false', {
     stdio: 'inherit',
     cwd: dirname,
   });
@@ -30,8 +30,10 @@ const installComponents = async (packages: string[]) => {
     })
     .map(
       (packageFilePath) =>
-        './node_modules/@semcore/' +
-        packageFilePath.substring(0, packageFilePath.length - '/package.json'.length),
+        `./node_modules/@semcore/${packageFilePath.substring(
+          0,
+          packageFilePath.length - '/package.json'.length,
+        )}`,
     )
     .map((relativePath) => {
       const { version } = fs.readJsonSync(path.resolve(dirname, relativePath, 'package.json'));

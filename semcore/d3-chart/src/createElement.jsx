@@ -11,13 +11,12 @@ const EXCLUDE_PROPS = ['data', 'scale'];
 
 function createElementRender() {
   const Element = React.forwardRef(function (
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { render, childrenPosition = 'below', x: xS, y: yS, ...source },
     ref,
   ) {
     const {
       forwardRef = null,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       children: _children,
       Children,
       x = xS,
@@ -57,7 +56,7 @@ function createElementRender() {
       throw new Error('Element expected render prop to be passed');
     }
     return [
-      <React.Fragment key="child-above">
+      <React.Fragment key='child-above'>
         {childrenPosition === 'above' ? children : null}
       </React.Fragment>,
       <Tag
@@ -69,9 +68,9 @@ function createElementRender() {
           },
           Tag,
         )}
-        key="element"
+        key='element'
       />,
-      <React.Fragment key="child-below">
+      <React.Fragment key='child-below'>
         {childrenPosition === 'below' ? children : null}
       </React.Fragment>,
     ];

@@ -119,8 +119,7 @@ module.exports = function ({ types: t }, opts) {
 
   function log(msg, level = 'info') {
     if (options.verbose) {
-      // eslint-disable-next-line no-console
-      console[level]('[@semcore/babel-plugin-react-semcore] ' + msg);
+      console[level](`[@semcore/babel-plugin-react-semcore] ${msg}`);
     }
   }
 
@@ -178,10 +177,10 @@ module.exports = function ({ types: t }, opts) {
     const [cssCall, cssModulesMap] = expressions;
     if (cssCall.type !== 'CallExpression' || cssModulesMap.type !== 'ObjectExpression') return;
 
-    copyComment(
-      node.expressions[0].arguments[0],
-      () => (node.expressions[0].arguments[0] = t.StringLiteral(styles)),
-    );
+    copyComment(node.expressions[0].arguments[0], () => {
+      node.expressions[0].arguments[0] = t.StringLiteral(styles);
+      return node.expressions[0].arguments[0];
+    });
     node.expressions[0].arguments[1] = t.stringLiteral(hash + parse.PLACEHOLDER_REPLACER);
     node.expressions[1] = toObjectExpression(tokens);
   }

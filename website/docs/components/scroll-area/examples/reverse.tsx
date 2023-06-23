@@ -51,7 +51,11 @@ class Demo extends React.PureComponent {
         <Box>
           <h2>Reversed mirror</h2>
           <ScrollArea w={300} h={300}>
-            <ScrollArea.Container ref={(node) => (this.mirror = node)}>
+            <ScrollArea.Container
+              ref={(node) => {
+                this.mirror = node;
+              }}
+            >
               <Flex flexWrap reverse>
                 {[...new Array(100)].map((_, index) => (
                   <Block ind={index} key={index} />

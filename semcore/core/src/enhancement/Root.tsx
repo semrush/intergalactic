@@ -8,11 +8,10 @@ function createRootRender() {
   // @ts-ignore
   const Root = React.forwardRef(function ({ render: Tag, ...source }, ref) {
     const {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       Root: _Root,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       styles,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
       children,
       Children,
       forwardRef = null,

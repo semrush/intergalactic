@@ -74,20 +74,20 @@ class RootButton extends Component {
           sstyled(styles)(
             <SButton
               render={Box}
-              type="button"
-              tag="button"
+              type='button'
+              tag='button'
               disabled={disabled}
               neighborLocation={neighborLocation}
               use:theme={useTheme}
               ref={this.containerRef}
             >
-              <SInner tag="span" loading={loading}>
+              <SInner tag='span' loading={loading}>
                 {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
                 {addonTextChildren(Children, Button.Text, Button.Addon)}
                 {addonRight ? <Button.Addon tag={addonRight} /> : null}
               </SInner>
               {loading && (
-                <SSpin tag="span">
+                <SSpin tag='span'>
                   <SpinButton centered size={size} theme={useTheme} />
                 </SSpin>
               )}
@@ -101,12 +101,12 @@ class RootButton extends Component {
 
 function Text(props) {
   const SText = Root;
-  return sstyled(props.styles)(<SText render={Box} tag="span" />);
+  return sstyled(props.styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
   const SAddon = Root;
-  return sstyled(props.styles)(<SAddon render={Box} tag="span" />);
+  return sstyled(props.styles)(<SAddon render={Box} tag='span' />);
 }
 
 const Button = createComponent(RootButton, {

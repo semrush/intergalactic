@@ -22,7 +22,7 @@ export default () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Line x="x" y="y">
+        <Line x='x' y='y'>
           <Line.Dots display />
         </Line>
       </Plot>

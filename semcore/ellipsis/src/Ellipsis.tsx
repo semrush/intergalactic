@@ -16,7 +16,7 @@ type AsProps = {
   tooltip?: boolean;
   styles?: React.CSSProperties;
   containerRect?: { width: number };
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+
   containerRef?: RefObject<HTMLElement | null>;
   includeTooltipProps?: string[];
 };
@@ -26,7 +26,7 @@ type AsPropsMiddle = {
   tooltip?: boolean;
   styles?: React.CSSProperties;
   containerRect?: { width: number };
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+
   containerRef?: RefObject<HTMLElement | null>;
   tooltipProps: { [propName: string]: unknown };
 };
@@ -73,7 +73,8 @@ function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boo
 
   const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
   const measuringElement = createMeasurerElement(element);
-  let currentSize, initialSize;
+  let currentSize;
+  let initialSize;
   document.body.appendChild(measuringElement);
   if (multiline) {
     currentSize = currentHeight;
@@ -145,7 +146,7 @@ class RootEllipsis extends Component<AsProps> {
     if (tooltip) {
       return sstyled(styles)(
         <SContainer
-          interaction="hover"
+          interaction='hover'
           title={text}
           visible={visible}
           onVisibleChange={this.handlerVisibleChange}

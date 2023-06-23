@@ -8,14 +8,14 @@ const Demo = () => {
   return (
     <Input w={180}>
       <Input.Addon>
-        <Flag iso2="US" />
+        <Flag iso2='US' />
       </Input.Addon>
       <Input.Value value={value} onChange={(v) => setValue(v)} />
       {value > 2 && (
         <Input.Addon
           tag={CloseM}
           interactive
-          aria-label="Clear field"
+          aria-label='Clear field'
           onClick={() => setValue('+1')}
         />
       )}

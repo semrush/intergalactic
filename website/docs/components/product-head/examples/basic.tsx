@@ -21,9 +21,9 @@ export default () => {
       <Header mx={6}>
         <Header.Row>
           <Breadcrumbs>
-            <Breadcrumbs.Item href="#">Dashboard</Breadcrumbs.Item>
-            <Breadcrumbs.Item href="#">Projects</Breadcrumbs.Item>
-            <Breadcrumbs.Item href="#" active>
+            <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
+            <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
+            <Breadcrumbs.Item href='#' active>
               Project Name
             </Breadcrumbs.Item>
           </Breadcrumbs>
@@ -45,14 +45,14 @@ export default () => {
         </Header.Row>
 
         <Header.Row>
-          <Title toolName="Tool Name for:">
-            <Text color="gray-500" noWrap>
+          <Title toolName='Tool Name for:'>
+            <Text color='gray-500' noWrap>
               Domain.com
             </Text>
           </Title>
 
           <Header.Buttons>
-            <Button use="primary">
+            <Button use='primary'>
               <Button.Addon>
                 <MathPlusM />
               </Button.Addon>
@@ -69,43 +69,43 @@ export default () => {
 
         <Header.Row>
           <Info>
-            <Info.Item label="Location:">
-              <Select value={['us']} placeholder="Select an option, sir 🧐" m="auto">
+            <Info.Item label='Location:'>
+              <Select value={['us']} placeholder='Select an option, sir 🧐' m='auto'>
                 <Select.Trigger tag={Link}>
                   United States
                   <Link.Addon tag={ChevronDownM} />
                 </Select.Trigger>
                 <Select.Popper>
-                  <Select.Option value="us">United States</Select.Option>
-                  <Select.Option value="ch">China</Select.Option>
-                  <Select.Option value="jp">Japan</Select.Option>
-                  <Select.Option value="gr">Germany</Select.Option>
-                  <Select.Option value="uk">United Kingdom</Select.Option>
-                  <Select.Option value="in">India</Select.Option>
-                  <Select.Option value="fr">France</Select.Option>
-                  <Select.Option value="it">Italy</Select.Option>
+                  <Select.Option value='us'>United States</Select.Option>
+                  <Select.Option value='ch'>China</Select.Option>
+                  <Select.Option value='jp'>Japan</Select.Option>
+                  <Select.Option value='gr'>Germany</Select.Option>
+                  <Select.Option value='uk'>United Kingdom</Select.Option>
+                  <Select.Option value='in'>India</Select.Option>
+                  <Select.Option value='fr'>France</Select.Option>
+                  <Select.Option value='it'>Italy</Select.Option>
                 </Select.Popper>
               </Select>
             </Info.Item>
-            <Info.Item label="Device:">
-              <Select value={['desktop']} placeholder="Select an option, sir 🧐" m="auto">
+            <Info.Item label='Device:'>
+              <Select value={['desktop']} placeholder='Select an option, sir 🧐' m='auto'>
                 <Select.Trigger tag={Link}>
                   Desktop
                   <Link.Addon tag={ChevronDownM} />
                 </Select.Trigger>
                 <Select.Popper>
-                  <Select.Option value="desktop">Desktop</Select.Option>
-                  <Select.Option value="mobile">Mobile</Select.Option>
+                  <Select.Option value='desktop'>Desktop</Select.Option>
+                  <Select.Option value='mobile'>Mobile</Select.Option>
                 </Select.Popper>
               </Select>
             </Info.Item>
-            <Info.Item label="Data:">
+            <Info.Item label='Data:'>
               Fresh
               <Tooltip
-                title="Some more details why data is fresh 🌚"
+                title='Some more details why data is fresh 🌚'
                 style={{ display: 'inline-flex' }}
               >
-                <InfoM ml={1} color="gray-300" cursor="help" />
+                <InfoM ml={1} color='gray-300' cursor='help' />
               </Tooltip>
             </Info.Item>
             <Info.Item>
@@ -115,10 +115,10 @@ export default () => {
         </Header.Row>
       </Header>
 
-      <TabLine defaultValue="overview" px={6} size="l">
-        <TabLine.Item value="overview">Overview</TabLine.Item>
-        <TabLine.Item value="issues">Issues</TabLine.Item>
-        <TabLine.Item value="linked_in">LinkedIn</TabLine.Item>
+      <TabLine defaultValue='overview' px={6} size='l'>
+        <TabLine.Item value='overview'>Overview</TabLine.Item>
+        <TabLine.Item value='issues'>Issues</TabLine.Item>
+        <TabLine.Item value='linked_in'>LinkedIn</TabLine.Item>
       </TabLine>
     </>
   );

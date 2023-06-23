@@ -29,12 +29,12 @@ function formatDate(time) {
 
 export default () => (
   <ResponsiveContainer height={300}>
-    <BarChart data={data} layout="vertical">
+    <BarChart data={data} layout='vertical'>
       <CartesianGrid />
       <Tooltip labelFormatter={formatDate} />
-      <XAxis type="number" />
-      <YAxis dataKey="date" tickFormatter={formatDate} type="category" />
-      <Bar dataKey="new" />
+      <XAxis type='number' />
+      <YAxis dataKey='date' tickFormatter={formatDate} type='category' />
+      <Bar dataKey='new' />
     </BarChart>
   </ResponsiveContainer>
 );

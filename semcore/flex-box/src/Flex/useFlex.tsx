@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import cn from 'classnames';
 import { Property, Properties } from 'csstype';
 import { sstyled } from '@semcore/core';

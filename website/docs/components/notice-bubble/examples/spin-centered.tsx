@@ -10,8 +10,8 @@ const Demo = () => {
   const handleClick = () => {
     manager.add({
       children: (
-        <Flex justifyContent="center" gap={1}>
-          <Spin size="xs" />
+        <Flex justifyContent='center' gap={1}>
+          <Spin size='xs' />
           Loading...
         </Flex>
       ),

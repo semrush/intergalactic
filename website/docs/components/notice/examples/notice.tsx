@@ -27,7 +27,7 @@ export default () => (
           </Button.Addon>
           <Button.Text>No</Button.Text>
         </Button>
-        <Button use="tertiary">Ask me later</Button>
+        <Button use='tertiary'>Ask me later</Button>
       </Notice.Actions>
     </Notice.Content>
     <Notice.CloseIcon>

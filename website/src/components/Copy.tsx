@@ -29,7 +29,7 @@ const Copy: React.FC<
       {...props}
       className={cx(props.className, styles.tooltipStyle)}
       title={view ?? props.title ?? 'Click to copy'}
-      aria-label="Click to copy"
+      aria-label='Click to copy'
       selfProps={{
         popupTransitionName: 'popup-fade',
       }}

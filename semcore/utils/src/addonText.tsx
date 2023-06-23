@@ -4,7 +4,7 @@ export default function addonText(
   children: React.ReactNode,
   Text: React.ComponentType<any>,
   Addon: React.ComponentType,
-  isTextWrapIfEmptyChildren: boolean = false,
+  isTextWrapIfEmptyChildren = false,
 ) {
   if (!isTextWrapIfEmptyChildren && !children) {
     return false;

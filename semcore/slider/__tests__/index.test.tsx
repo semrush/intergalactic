@@ -10,7 +10,7 @@ describe('Slider', () => {
   beforeEach(cleanup);
 
   test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <Slider value={50} m="10px" />;
+    const component = <Slider value={50} m='10px' />;
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
@@ -28,11 +28,11 @@ describe('Slider', () => {
 
   test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="25px">
+      <snapshot.ProxyProps m='25px'>
         <Slider value={50} keyboardFocused />
         <Slider value={50} disabled />
         <div style={{ background: 'black', padding: '1px' }}>
-          <Slider value={50} disabled m="25px" />
+          <Slider value={50} disabled m='25px' />
         </div>
       </snapshot.ProxyProps>
     );
@@ -42,7 +42,7 @@ describe('Slider', () => {
 
   test.concurrent('Should support hover', async ({ task }) => {
     expect(
-      await snapshot(<Slider value={50} id="slider" m="10px" />, {
+      await snapshot(<Slider value={50} id='slider' m='10px' />, {
         actions: {
           hover: '#slider',
         },
@@ -52,7 +52,7 @@ describe('Slider', () => {
 
   test.concurrent('Should support active', async ({ task }) => {
     expect(
-      await snapshot(<Slider value={50} id="slider" m="10px" />, {
+      await snapshot(<Slider value={50} id='slider' m='10px' />, {
         actions: {
           active: '#slider',
         },
@@ -63,9 +63,9 @@ describe('Slider', () => {
   test.concurrent('Should support hover Knob', async ({ task }) => {
     expect(
       await snapshot(
-        <Slider value={50} m="10px">
+        <Slider value={50} m='10px'>
           <Slider.Bar />
-          <Slider.Knob id="knob" />
+          <Slider.Knob id='knob' />
         </Slider>,
         {
           actions: {
@@ -78,7 +78,7 @@ describe('Slider', () => {
 
   test.concurrent('Should support onChange callback with keyboard', async () => {
     const spy = vi.fn();
-    const { getByTestId } = render(<Slider value={10} data-testid="slider" onChange={spy} />);
+    const { getByTestId } = render(<Slider value={10} data-testid='slider' onChange={spy} />);
     // up
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
     expect(spy).lastCalledWith(11, expect.any(Object));
@@ -94,7 +94,7 @@ describe('Slider', () => {
   test.concurrent('Should support min value change with keyboard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Slider min={0} max={1} defaultValue={1} data-testid="slider" onChange={spy} />,
+      <Slider min={0} max={1} defaultValue={1} data-testid='slider' onChange={spy} />,
     );
     // down
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowLeft' });
@@ -105,7 +105,7 @@ describe('Slider', () => {
   test.concurrent('Should support max value change with keyboard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Slider min={0} max={1} defaultValue={0} data-testid="slider" onChange={spy} />,
+      <Slider min={0} max={1} defaultValue={0} data-testid='slider' onChange={spy} />,
     );
     // up
     fireEvent.keyDown(getByTestId('slider'), { key: 'ArrowUp' });
@@ -116,8 +116,8 @@ describe('Slider', () => {
   test('a11y', async () => {
     const { container } = render(
       <>
-        <Slider aria-label="slider" />
-        <Slider aria-label="slider disabled" disabled />
+        <Slider aria-label='slider' />
+        <Slider aria-label='slider disabled' disabled />
       </>,
     );
 

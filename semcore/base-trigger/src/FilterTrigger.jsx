@@ -70,7 +70,7 @@ class RootFilterTrigger extends Component {
       <SWrapper render={Box} aria-label={getI18nText('filter')} __excludeProps={['id']}>
         <NeighborLocation>
           <SFilterTrigger
-            w="100%"
+            w='100%'
             size={size}
             placeholder={placeholder}
             empty={empty}
@@ -90,7 +90,7 @@ class RootFilterTrigger extends Component {
           </SFilterTrigger>
           {!empty && (
             <SFilterTrigger
-              tag="button"
+              tag='button'
               size={size}
               empty={empty}
               selected

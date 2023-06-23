@@ -81,7 +81,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
       readOnly={readOnly}
       minRows={min}
       maxRows={max}
-      placeholder="Placeholder"
+      placeholder='Placeholder'
     />
   );
 });

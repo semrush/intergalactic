@@ -27,14 +27,12 @@ class BubbleRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip =
-    (visible, props) =>
-    ({ clientX: x, clientY: y }) => {
-      const { eventEmitter } = this.asProps;
-      this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-      this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-      eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
-    };
+  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+    const { eventEmitter } = this.asProps;
+    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
+    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+  };
 
   animationCircle() {
     const { duration, uid, data, value } = this.asProps;
@@ -111,7 +109,7 @@ class BubbleRoot extends Component {
             aria-hidden
             x={xScale(d[x]) + offset[0]}
             y={yScale(d[y]) + offset[1]}
-            dy=".3em"
+            dy='.3em'
             clipPath={`url(#${uid})`}
             color={d[color] ?? color}
             transparent={transparent}
@@ -123,7 +121,7 @@ class BubbleRoot extends Component {
           aria-hidden
           id={`${uid}${uid}`}
           index={i}
-          render="circle"
+          render='circle'
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
@@ -137,7 +135,7 @@ class BubbleRoot extends Component {
             aria-hidden
             x={labelDistance}
             y={yScale(d[y]) + offset[1]}
-            dy=".3em"
+            dy='.3em'
             clipPath={`url(#${uid})`}
             position={labelPosition}
             color={d[color]}

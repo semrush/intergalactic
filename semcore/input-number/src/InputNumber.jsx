@@ -28,14 +28,14 @@ class InputNumber extends Component {
     // https://stackoverflow.com/questions/68010124/safari-number-input-stepup-stepdown-not-functioning-with-empty-value
     if (this.inputRef.current?.value === '')
       this.inputRef.current.value = this.inputRef.current.min || '0';
-    this.inputRef.current?.stepUp && this.inputRef.current?.stepUp();
+    this.inputRef.current?.stepUp?.();
     this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
   };
 
   decrement = (event) => {
     if (this.inputRef.current?.value === '')
       this.inputRef.current.value = this.inputRef.current.max || '0';
-    this.inputRef.current?.stepDown && this.inputRef.current?.stepDown();
+    this.inputRef.current?.stepDown?.();
     this.inputHandlersRef.current?.value(this.inputRef.current.value, event);
   };
 
@@ -136,8 +136,8 @@ class Value extends Component {
       <>
         <SValue
           render={Input.Value}
-          type="number"
-          autoComplete="off"
+          type='number'
+          autoComplete='off'
           onBlur={this.handleValidation}
           onInvalid={this.handleValidation}
           ref={this.inputRef}
@@ -148,7 +148,7 @@ class Value extends Component {
         {/* the next hidden div is necessary for the screen reader to report the value
         in the input, because after validation the value can change to the `min` or `max` 
         if entered less than `min` or more than `max` */}
-        <SValueHidden aria-live="polite" aria-atomic={true}>
+        <SValueHidden aria-live='polite' aria-atomic={true}>
           {value}
         </SValueHidden>
       </>,
@@ -163,11 +163,11 @@ function Controls(props) {
   const SDown = 'button';
 
   return sstyled(styles)(
-    <SControls render={Input.Addon} aria-hidden="true">
+    <SControls render={Input.Addon} aria-hidden='true'>
       <SUp
         onClick={increment}
         tabIndex={-1}
-        type="button"
+        type='button'
         size={size}
         aria-label={getI18nText('increment')}
       >
@@ -176,7 +176,7 @@ function Controls(props) {
       <SDown
         onClick={decrement}
         tabIndex={-1}
-        type="button"
+        type='button'
         size={size}
         aria-label={getI18nText('decrement')}
       >

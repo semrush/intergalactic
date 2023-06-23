@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
@@ -55,7 +54,7 @@ function animatedSizeEnhance({
 
       node.style.transition = 'none';
       for (let i = 0; i < animateProps.length; i++) {
-        node.style[animateProps[i]] = lastSizesRef.current[i] + 'px';
+        node.style[animateProps[i]] = `${lastSizesRef.current[i]}px`;
       }
       let timeout = -1;
       const handleTransitionEnd = () => {
@@ -75,7 +74,7 @@ function animatedSizeEnhance({
         node.style.transition = `${duration}ms all ease-in-out`;
         for (let i = 0; i < animateProps.length; i++) {
           lastSizesRef.current[i] = sizes[i];
-          node.style[animateProps[i]] = sizes[i] + 'px';
+          node.style[animateProps[i]] = `${sizes[i]}px`;
         }
       });
       timeout = setTimeout(handleTransitionEnd, 500) as any;

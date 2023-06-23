@@ -19,7 +19,9 @@ const data = Array(20)
     };
   })
   .reverse();
-[0, 1, 2, 4, 6].forEach((i) => (data[i].visibility = null));
+[0, 1, 2, 4, 6].forEach((i) => {
+  data[i].visibility = null;
+});
 
 const tooltipContent = `An estimation based on the average click-through rate of each position in
     Google’s results multiplied by the volume of the keyword, and divided by 30
@@ -30,29 +32,29 @@ const tooltipContent = `An estimation based on the average click-through rate of
 export default () => (
   <div>
     <Flex
-      wMax="500px"
-      my="24px"
-      pt="20px"
-      px="24px"
-      pb="24px"
-      justifyContent="space-between"
-      alignItems="flex-end"
+      wMax='500px'
+      my='24px'
+      pt='20px'
+      px='24px'
+      pb='24px'
+      justifyContent='space-between'
+      alignItems='flex-end'
       style={{ border: '1px solid #c4c7cf', borderRadius: '6px' }}
     >
       <Box>
-        <Flex alignItems="center">
+        <Flex alignItems='center'>
           <Text size={300} mr={1}>
             Visibility
           </Text>
           <Tooltip title={tooltipContent}>
-            <InfoXS color="gray-300" cursor="help" />
+            <InfoXS color='gray-300' cursor='help' />
           </Tooltip>
         </Flex>
         <Box>
           <Link>
             <Text size={500}>{data[data.length - 1].visibility}%</Text>
           </Link>
-          <Text size={300} ml={2} color="gray-500">
+          <Text size={300} ml={2} color='gray-500'>
             <small>0.00</small>
           </Text>
         </Box>
@@ -69,7 +71,7 @@ export default () => (
             }
             filterNull={false}
           />
-          <Line type="monotone" name="Visibility" dataKey="visibility" connectNulls />
+          <Line type='monotone' name='Visibility' dataKey='visibility' connectNulls />
         </LineChart>
       </ResponsiveContainer>
     </Flex>

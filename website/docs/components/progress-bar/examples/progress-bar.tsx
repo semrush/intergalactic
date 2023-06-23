@@ -22,7 +22,7 @@ const Demo = () => {
 
   return (
     <div>
-      <ProgressBar value={value} aria-label="Infinite emails processing" />
+      <ProgressBar value={value} aria-label='Infinite emails processing' />
       <Box mt={1}>
         <Text>{value ? `${20 * value}/2000` : 'progress...'}</Text>
       </Box>

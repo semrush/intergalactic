@@ -42,7 +42,9 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     }
   });
 
-  const handleMouseDown = useEventCallback((e) => (targetRef.current = e.target));
+  const handleMouseDown = useEventCallback((e) => {
+    targetRef.current = e.target;
+  });
 
   useEffect(() => {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current);

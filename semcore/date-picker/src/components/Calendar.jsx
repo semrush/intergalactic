@@ -89,7 +89,9 @@ class CalendarAbstract extends Component {
 
     let highlighted0 = _highlighted[0] ? dayjs(_highlighted[0]) : null;
     let highlighted1 = _highlighted[1] ? dayjs(_highlighted[1]) : highlighted0;
-    let startHighlighted, endHighlighted, highlighted;
+    let startHighlighted;
+    let endHighlighted;
+    let highlighted;
     if (highlighted0 && highlighted1) {
       if (highlighted0 > highlighted1) [highlighted1, highlighted0] = [highlighted0, highlighted1];
       highlighted = date.isBetween(highlighted0, highlighted1, unit, '[]');
@@ -145,7 +147,7 @@ class CalendarAbstract extends Component {
 function CalendarUnit({ styles, date }) {
   const SCalendarUnit = Root;
   return sstyled(styles)(
-    <SCalendarUnit render={Box} tag="button" aria-hidden={!date} aria-label={date} tabIndex={-1} />,
+    <SCalendarUnit render={Box} tag='button' aria-hidden={!date} aria-label={date} tabIndex={-1} />,
   );
 }
 
@@ -219,7 +221,7 @@ class CalendarDaysRoot extends CalendarAbstract {
     const { Children, styles, locale } = this.asProps;
 
     return sstyled(styles)(
-      <SCalendar render={Box} aria-hidden="true">
+      <SCalendar render={Box} aria-hidden='true'>
         <CalendarWeekDays locale={locale} />
         <SGridDays onMouseLeave={this.handleMouseLeave}>
           <Children />

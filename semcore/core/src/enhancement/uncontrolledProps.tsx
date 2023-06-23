@@ -14,7 +14,7 @@ function assign(target, source) {
 }
 
 function defaultProp(prop) {
-  return 'default' + capitalizeFirstLetter(prop);
+  return `default${capitalizeFirstLetter(prop)}`;
 }
 
 function handlerProp(prop) {
@@ -60,7 +60,6 @@ function uncontrolledUniversal(props, config, uncontrolledProp) {
     } = result;
 
     if (propDefaultValue === undefined) {
-      // eslint-disable-next-line no-console
       console.warn(defaultPropName, 'must be installed in "defaultProps"');
     }
 
@@ -89,7 +88,7 @@ function uncontrolledUniversal(props, config, uncontrolledProp) {
       [propName]: value,
       [handlerName]: (eventOrValue, ...args) => {
         const result = [setter(eventOrValue, ...args), ...args];
-        if (eventOrValue && eventOrValue.target) {
+        if (eventOrValue?.target) {
           result.push(eventOrValue);
         }
         return handler(...result);

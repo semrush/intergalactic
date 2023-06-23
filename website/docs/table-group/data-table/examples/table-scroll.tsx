@@ -5,10 +5,10 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head wMin={1000}>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" />
-        <DataTable.Column name="cpc" children="CPC" />
-        <DataTable.Column name="vol" children="Vol." />
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body hMax={200} />
     </DataTable>

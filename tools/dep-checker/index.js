@@ -2,7 +2,7 @@ const { get } = require('axios');
 const { satisfies, diff, coerce, parse } = require('semver');
 
 const packagesRequire = require('require-all')({
-  dirname: __dirname + '/../../semcore',
+  dirname: `${__dirname}/../../semcore`,
   filter: /package\.json$/,
 });
 
@@ -42,7 +42,7 @@ packages
               return [name, selfVersion, `^${parseVersion.major}.${parseVersion.minor}`];
             }
           } else {
-            return [name, selfVersion, `HAS NO PUBLISHED VERSIONS TO SATISFY`];
+            return [name, selfVersion, 'HAS NO PUBLISHED VERSIONS TO SATISFY'];
           }
           return [];
         }),

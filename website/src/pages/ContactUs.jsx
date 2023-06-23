@@ -21,7 +21,7 @@ const Contacts = () => {
       <Helmet>
         <title>Contact Us | Contacts</title>
       </Helmet>
-      <div className={styles.content} id="main-content">
+      <div className={styles.content} id='main-content'>
         <div className={styles.header}>
           <h1>Contact Us</h1>
           Have any questions? We’d love to hear from you.
@@ -33,9 +33,10 @@ const Contacts = () => {
           </h2>
           Feel free to drop us a line at
           <a
-            href="mailto:ui-kit-team@semrush.com"
-            target="_blank"
-            aria-label="Drop a line at ui-kit-team@semrush.com"
+            href='mailto:ui-kit-team@semrush.com'
+            target='_blank'
+            aria-label='Drop a line at ui-kit-team@semrush.com'
+            rel='noreferrer'
           >
             ui-kit-team@semrush.com
           </a>{' '}
@@ -43,7 +44,7 @@ const Contacts = () => {
           <div className={styles.text}>
             <h3 className={styles.subtitle}>Send a request to develop a new component</h3>
             Before sending email, check our
-            <Link to="/internal/roadmap/" rel="noopener noreferrer" aria-label="Open Roadmap">
+            <Link to='/internal/roadmap/' rel='noopener noreferrer' aria-label='Open Roadmap'>
               Roadmap
             </Link>
             , perhaps needed component is already there. If not, share with some details:
@@ -67,10 +68,10 @@ const Contacts = () => {
           </h2>
           Any developer can contribute via pull-request and
           <a
-            href="https://github.com/semrush/intergalactic"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Create an issue on GitHub"
+            href='https://github.com/semrush/intergalactic'
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='Create an issue on GitHub'
           >
             issue on the GitHub
           </a>
@@ -87,10 +88,10 @@ const Contacts = () => {
               <li>
                 Don't forget to follow
                 <a
-                  href="https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Open contributing guide"
+                  href='https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label='Open contributing guide'
                 >
                   contributing guide
                 </a>
@@ -99,7 +100,7 @@ const Contacts = () => {
             </ul>
           </div>
         </div>
-        <img className={styles.postman} src={postman} aria-hidden="true" />
+        <img className={styles.postman} src={postman} aria-hidden='true' alt='' />
       </div>
     </>
   );

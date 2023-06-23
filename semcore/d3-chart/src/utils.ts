@@ -143,7 +143,6 @@ export const getIndexFromData = <
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
   } else {
-    // eslint-disable-next-line no-console
     console.warn('[d3-chart/utils/getIndexFromData] encountered incompatible scale type');
     return null;
   }
@@ -160,34 +159,34 @@ export const roundedPath = (
   bl = false,
   br = false,
 ) => {
-  let result = 'M' + (x + r) + ',' + y;
-  result += 'h' + (w - 2 * r);
+  let result = `M${x + r},${y}`;
+  result += `h${w - 2 * r}`;
   if (tr) {
-    result += 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + r;
+    result += `a${r},${r} 0 0 1 ${r},${r}`;
   } else {
-    result += 'h' + r;
-    result += 'v' + r;
+    result += `h${r}`;
+    result += `v${r}`;
   }
-  result += 'v' + (h - 2 * r);
+  result += `v${h - 2 * r}`;
   if (br) {
-    result += 'a' + r + ',' + r + ' 0 0 1 ' + -r + ',' + r;
+    result += `a${r},${r} 0 0 1 ${-r},${r}`;
   } else {
-    result += 'v' + r;
-    result += 'h' + -r;
+    result += `v${r}`;
+    result += `h${-r}`;
   }
-  result += 'h' + (2 * r - w);
+  result += `h${2 * r - w}`;
   if (bl) {
-    result += 'a' + r + ',' + r + ' 0 0 1 ' + -r + ',' + -r;
+    result += `a${r},${r} 0 0 1 ${-r},${-r}`;
   } else {
-    result += 'h' + -r;
-    result += 'v' + -r;
+    result += `h${-r}`;
+    result += `v${-r}`;
   }
-  result += 'v' + (2 * r - h);
+  result += `v${2 * r - h}`;
   if (tl) {
-    result += 'a' + r + ',' + r + ' 0 0 1 ' + r + ',' + -r;
+    result += `a${r},${r} 0 0 1 ${r},${-r}`;
   } else {
-    result += 'v' + -r;
-    result += 'h' + r;
+    result += `v${-r}`;
+    result += `h${r}`;
   }
   result += 'z';
   return result;

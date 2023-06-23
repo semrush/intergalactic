@@ -16,7 +16,7 @@ export default () => {
   );
 
   return (
-    <Select placeholder="Select value">
+    <Select placeholder='Select value'>
       <Select.Trigger />
       <Select.Popper>
         {({ highlightedIndex }) => (
@@ -24,15 +24,15 @@ export default () => {
             <InputSearch
               value={filter}
               onChange={setFilter}
-              placeholder="Search"
-              role="combobox"
-              aria-autocomplete="list"
-              aria-controls="search-list"
-              aria-owns="search-list"
-              aria-expanded="true"
+              placeholder='Search'
+              role='combobox'
+              aria-autocomplete='list'
+              aria-controls='search-list'
+              aria-owns='search-list'
+              aria-expanded='true'
               aria-activedescendant={`option-${highlightedIndex}`}
             />
-            <Select.List hMax={'224px'} id="search-list">
+            <Select.List hMax={'224px'} id='search-list'>
               {options.map(({ value, label }, index) => (
                 <Select.Option
                   value={value}
@@ -44,7 +44,7 @@ export default () => {
                 </Select.Option>
               ))}
               {!options.length && (
-                <Select.OptionHint key="Nothing">Nothing found</Select.OptionHint>
+                <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
               )}
             </Select.List>
           </>

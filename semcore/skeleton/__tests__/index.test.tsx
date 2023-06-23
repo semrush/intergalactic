@@ -49,12 +49,12 @@ describe('Skeleton', () => {
       <>
         <Skeleton height={48}>
           <Skeleton.Text amount={2} />
-          <Skeleton.Text y="40" width="60%" />
+          <Skeleton.Text y='40' width='60%' />
         </Skeleton>
         <div style={{ background: 'blue' }}>
-          <Skeleton height={48} theme="dark">
+          <Skeleton height={48} theme='dark'>
             <Skeleton.Text amount={2} />
-            <Skeleton.Text y="40" width="60%" />
+            <Skeleton.Text y='40' width='60%' />
           </Skeleton>
         </div>
       </>
@@ -68,7 +68,7 @@ describe('LineChartSkeleton', () => {
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <>
-        <LineChartSkeleton type="monotone" height={100} />
+        <LineChartSkeleton type='monotone' height={100} />
         <LineChartSkeleton height={100} />
       </>
     );
@@ -80,7 +80,7 @@ describe('AreaChartSkeleton', () => {
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <>
-        <AreaChartSkeleton type="monotone" height={100} />
+        <AreaChartSkeleton type='monotone' height={100} />
         <AreaChartSkeleton height={100} />
       </>
     );
@@ -92,7 +92,7 @@ describe('BarChartSkeleton', () => {
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <>
-        <BarChartSkeleton layout="vertical" height={100} />
+        <BarChartSkeleton layout='vertical' height={100} />
         <BarChartSkeleton height={100} />
       </>
     );
@@ -111,7 +111,7 @@ describe('HistogramChartSkeleton', () => {
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
       <>
-        <HistogramChartSkeleton layout="vertical" height={100} />
+        <HistogramChartSkeleton layout='vertical' height={100} />
         <HistogramChartSkeleton height={100} />
       </>
     );

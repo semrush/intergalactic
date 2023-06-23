@@ -35,7 +35,7 @@ const SuggestSearch = connectAutoComplete(
     });
 
     return (
-      <Input size="l" mb={4}>
+      <Input size='l' mb={4}>
         <Input.Addon>
           <SearchS />
         </Input.Addon>
@@ -43,14 +43,14 @@ const SuggestSearch = connectAutoComplete(
           {...others}
           onChange={handleChangeValue}
           value={currentRefinement}
-          placeholder="What icon are you looking for?"
+          placeholder='What icon are you looking for?'
         />
         {!!currentRefinement && (
           <Input.Addon
             tag={CloseXS}
             interactive
             onClick={() => handleChangeValue('')}
-            aria-label="Clear field"
+            aria-label='Clear field'
           />
         )}
       </Input>
@@ -79,7 +79,7 @@ export default function ({ icons, old, json }) {
           <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
         ) : (
           <NotFound>
-            <img src={staticFiles['search/observatory.svg']} alt="observatory" />
+            <img src={staticFiles['search/observatory.svg']} alt='observatory' />
             <Text size={300} mt={2}>
               We found something… it's nothing
             </Text>
@@ -87,19 +87,19 @@ export default function ({ icons, old, json }) {
         )
       ) : (
         <IconGroups icons={icons} old={old} json={json}>
-          <IconGroup title="Navigation" />
-          <IconGroup title="Action" />
-          <IconGroup title="Status" />
-          <IconGroup title="Social" />
-          <IconGroup title="File" />
-          <IconGroup title="Hardware" />
-          <IconGroup title="Format" />
-          <IconGroup title="Map" />
-          <IconGroup title="Misc" />
-          {!old && <IconGroup title="Brand" />}
-          <IconGroup title="Color" />
-          <IconGroup title="Pay" />
-          <IconGroup title="External" />
+          <IconGroup title='Navigation' />
+          <IconGroup title='Action' />
+          <IconGroup title='Status' />
+          <IconGroup title='Social' />
+          <IconGroup title='File' />
+          <IconGroup title='Hardware' />
+          <IconGroup title='Format' />
+          <IconGroup title='Map' />
+          <IconGroup title='Misc' />
+          {!old && <IconGroup title='Brand' />}
+          <IconGroup title='Color' />
+          <IconGroup title='Pay' />
+          <IconGroup title='External' />
         </IconGroups>
       )}
     </>

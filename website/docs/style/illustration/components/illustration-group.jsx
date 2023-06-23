@@ -36,10 +36,10 @@ class PanelChangeIllustration extends PureComponent {
           }}
           excludeRefs={modalLayout() ? [modalLayout()] : []}
         />
-        <Row alignItems="center">
+        <Row alignItems='center'>
           <span className={styles.nameIllustration}>{name}</span>
-          <Copy copiedToast="Copied" toCopy={importText} trigger="click">
-            <Button size="m" theme="muted" use="tertiary" mr={4}>
+          <Copy copiedToast='Copied' toCopy={importText} trigger='click'>
+            <Button size='m' theme='muted' use='tertiary' mr={4}>
               <Button.Addon>
                 <CopyM />
               </Button.Addon>
@@ -47,13 +47,13 @@ class PanelChangeIllustration extends PureComponent {
             </Button>
           </Copy>
           <Button
-            size="m"
-            theme="muted"
-            use="tertiary"
-            tag="a"
-            rel="noopener noreferrer"
+            size='m'
+            theme='muted'
+            use='tertiary'
+            tag='a'
+            rel='noopener noreferrer'
             download={url}
-            target="_blank"
+            target='_blank'
             href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
           >
             <Button.Addon>
@@ -79,6 +79,7 @@ export const ListIllustrations = ({ data, illustrations, json }) => (
       }
 
       return (
+        // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
         <div
           className={styles.previewIllustration}
           tabIndex={0}

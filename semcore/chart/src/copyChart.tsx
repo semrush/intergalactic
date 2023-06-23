@@ -21,13 +21,13 @@ export default function copyChart<T extends React.ComponentClass>(SChart: T): T 
         <SChart {...other} ref={forwardedRef} className={className}>
           <defs>
             <pattern
-              id="diagonalGradient"
-              patternUnits="userSpaceOnUse"
-              width="10"
-              height="10"
-              patternTransform="rotate(-45)"
+              id='diagonalGradient'
+              patternUnits='userSpaceOnUse'
+              width='10'
+              height='10'
+              patternTransform='rotate(-45)'
             >
-              <line x1="5" y="0" x2="5" y2="10" stroke="#000" strokeWidth="1" />
+              <line x1='5' y='0' x2='5' y2='10' stroke='#000' strokeWidth='1' />
             </pattern>
           </defs>
           {children}

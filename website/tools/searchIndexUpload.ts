@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
 
-// eslint-disable-next-line import/extensions
 import CONFIG from '../src/algolia.js';
-// eslint-disable-next-line import/extensions
+
 import dataIcons from '../docs/style/icon/components/icons-list.js';
 import dataIllustrations from '../docs/style/illustration/components/illustrations-list.js';
 
@@ -26,7 +25,6 @@ if (!process.env.ALGOLIA_SECRET_KEY) {
     key.substring(5, key.length - 5).replace(/./g, 'X') +
     key.substring(key.length - 5);
 
-  // eslint-disable-next-line no-console
   console.info(
     `Publishing algolias search with application id "${CONFIG.ALGOLIA_APP}" and secret key "${escapedKey}"`,
   );
@@ -91,13 +89,12 @@ const objectIcons = dataIcons.icons.map((o, i) => ({ objectID: i, ...o }));
 const objectIllustrations = dataIllustrations.illustrations.map((o, i) => ({ objectID: i, ...o }));
 
 if (!objects.length || !objectIcons.length || !objectIllustrations.length) {
-  // eslint-disable-next-line no-console
   console.info({
     objects,
     objectIcons,
     objectIllustrations,
   });
-  throw new Error(`Empty index was going to be sent to algolia, see above`);
+  throw new Error('Empty index was going to be sent to algolia, see above');
 }
 
 await index.clearObjects();

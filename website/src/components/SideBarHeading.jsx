@@ -27,7 +27,7 @@ function SideBarHeading({ headings, route }) {
 
   return (
     <>
-      <nav className={styles.sideBarWrapper} aria-label="Guide headings">
+      <nav className={styles.sideBarWrapper} aria-label='Guide headings'>
         {headings.map((heading, i) => (
           <Link
             className={cx(styles.navLink, heading.id === activeId && styles.navLinkActive)}
@@ -50,11 +50,14 @@ function SideBarHeading({ headings, route }) {
         ))}
       </nav>
       <span
-        aria-hidden="true"
+        aria-hidden='true'
         className={styles.buttonUp}
         onClick={() => animateScroll.scrollToTop({ smooth: true })}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') animateScroll.scrollToTop({ smooth: true });
+        }}
       >
-        <ArrowUpM interactive aria-label="Scroll page to the top" />
+        <ArrowUpM interactive aria-label='Scroll page to the top' />
       </span>
     </>
   );

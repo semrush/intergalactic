@@ -5,12 +5,12 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Link color="red-500" href="#" size="300">
+        <Link color='red-500' href='#' size='300'>
           Warning link
         </Link>
         <br />
         <br />
-        <Link color="green-500" href="#" size="300">
+        <Link color='green-500' href='#' size='300'>
           Success link
         </Link>
       </div>

@@ -16,20 +16,20 @@ export default () => {
       <Portal>
         <NoticeGlobal
           hidden={!visible}
-          theme="light-blue"
-          position="fixed"
-          top="0px"
-          w="100%"
+          theme='light-blue'
+          position='fixed'
+          top='0px'
+          w='100%'
           style={{ zIndex: '9999' }}
         >
-          <NoticeGlobal.Content tag={Flex} justifyContent="center">
-            <Text size={300} tag="span" color="white">
+          <NoticeGlobal.Content tag={Flex} justifyContent='center'>
+            <Text size={300} tag='span' color='white'>
               Look at this cool notice!
             </Text>
           </NoticeGlobal.Content>
           <NoticeGlobal.CloseIcon
             interactive={false}
-            color="white"
+            color='white'
             onClick={() => setVisible(false)}
           />
         </NoticeGlobal>

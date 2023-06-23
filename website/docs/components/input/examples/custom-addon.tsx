@@ -10,33 +10,33 @@ const Demo = () => {
 
   return (
     <div>
-      <Text tag="label" htmlFor="count-example" size="200">
+      <Text tag='label' htmlFor='count-example' size='200'>
         Input with symbols counter
       </Text>
       <Box mt={2}>
         <Input w={240}>
           <Input.Value
-            placeholder="Count some words right here"
+            placeholder='Count some words right here'
             value={value}
             onChange={(v) => setValue(v)}
             maxLength={10}
-            id="count-example"
+            id='count-example'
           />
           <Input.Addon>
-            <Tag size="s">{value.length}/10</Tag>
+            <Tag size='s'>{value.length}/10</Tag>
           </Input.Addon>
         </Input>
       </Box>
       <br />
       <br />
-      <Text tag="label" htmlFor="badge-example" size="200">
+      <Text tag='label' htmlFor='badge-example' size='200'>
         Input with badge
       </Text>
       <Box mt={2}>
         <Input w={240}>
-          <Input.Value placeholder="Wow! Such input. So new." id="badge-example" />
+          <Input.Value placeholder='Wow! Such input. So new.' id='badge-example' />
           <Input.Addon>
-            <Badge bg="green-300">new</Badge>
+            <Badge bg='green-300'>new</Badge>
           </Input.Addon>
         </Input>
       </Box>

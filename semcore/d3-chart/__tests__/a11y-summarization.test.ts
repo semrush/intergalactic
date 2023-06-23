@@ -18,7 +18,7 @@ import { localizedMessages as translations } from '../src/a11y/translations/view
 const pixelArtToPointsList = (space: string) =>
   space
     .split('\n')
-    .map((line, lineIndex) =>
+    .flatMap((line, lineIndex) =>
       line.split('').map((char, index) => {
         if (char === ' ') return null;
         const x = index;
@@ -27,7 +27,6 @@ const pixelArtToPointsList = (space: string) =>
         return { x, y, label };
       }),
     )
-    .flat()
     .filter((point) => point !== null);
 
 describe('Plot a11y summarization', () => {
@@ -778,7 +777,7 @@ describe('Plot a11y summarization', () => {
     const length = text.length;
 
     if (length >= limit) {
-      // eslint-disable-next-line no-console
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(
         `Expected summarization result for a huge count of insights be limited, for example, by ${limit} characters (got ${length})`,
       );
@@ -1197,7 +1196,7 @@ describe('Plot a11y summarization', () => {
     const unusedMessagesJoin = unusedMessages.join(', ');
 
     if (unusedMessagesCount !== 0) {
-      // eslint-disable-next-line no-console
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(
         `Expected all non-view translations messages be used (unused messages [${unusedMessagesCount}]: ${unusedMessagesJoin})`,
       );

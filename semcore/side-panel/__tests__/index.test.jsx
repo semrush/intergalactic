@@ -121,7 +121,7 @@ describe('SidePanel', () => {
     await expect(
       await snapshot(
         <SidePanel disablePortal visible>
-          <SidePanel.Close id="close" />
+          <SidePanel.Close id='close' />
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
@@ -137,9 +137,11 @@ describe('SidePanel', () => {
           <SidePanel.Title>Heading 6, 16px</SidePanel.Title>
         </SidePanel.Header>
         <SidePanel.Body> ???? </SidePanel.Body>
-        <SidePanel.Footer justifyContent="center" pt={2}>
-          <button>Primary</button>
-          <button style={{ marginLeft: '8px' }}>Cancel</button>
+        <SidePanel.Footer justifyContent='center' pt={2}>
+          <button type='button'>Primary</button>
+          <button type='button' style={{ marginLeft: '8px' }}>
+            Cancel
+          </button>
         </SidePanel.Footer>
       </SidePanel>
     );
@@ -167,7 +169,7 @@ describe('SidePanel', () => {
     await expect(
       await snapshot(
         <SidePanel disablePortal visible>
-          <SidePanel.Close id="close" />
+          <SidePanel.Close id='close' />
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#close' } },
       ),
@@ -179,7 +181,7 @@ describe('SidePanel', () => {
       await snapshot(
         <SidePanel disablePortal visible>
           <SidePanel.Header>
-            <SidePanel.Back id="back">Go to Tool Name</SidePanel.Back>
+            <SidePanel.Back id='back'>Go to Tool Name</SidePanel.Back>
           </SidePanel.Header>
         </SidePanel>,
         { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },

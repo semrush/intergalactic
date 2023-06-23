@@ -46,7 +46,7 @@ const MAP_BABEL_ENV = {
   es6: 'es6',
 } as const;
 
-// eslint-disable-next-line no-console
+// rome-ignore lint/nursery/noConsoleLog: <explanation>
 console.log(`running builder from dir ${workingDir}\n`);
 
 await runCommand('CLEANUP');

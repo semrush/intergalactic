@@ -49,32 +49,32 @@ const DesignTokens = ({ tokens }) => {
 
   return (
     <div>
-      <Input className={styles.searchInput} size="l">
+      <Input className={styles.searchInput} size='l'>
         <Input.Addon tag={SearchIcon} />
-        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
+        <Input.Value placeholder='Find token' value={filter} onChange={setFilter} />
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
-          <DataTable.Column name="name" children="Token name" ref={nameHeaderRef} wMin={300} />
-          <DataTable.Column name="value" children="Value" ref={valueHeaderRef} />
-          <DataTable.Column name="description" children="Description" ref={descriptionHeaderRef} />
-          <DataTable.Column name="components" children="Used in" />
+          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} wMin={300} />
+          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} />
+          <DataTable.Column name='description' children='Description' ref={descriptionHeaderRef} />
+          <DataTable.Column name='components' children='Used in' />
         </DataTable.Head>
         <DataTable.Body virtualScroll={{ rowHeight: 45, tollerance: 10 }} h={800}>
-          <DataTable.Cell name="name">
+          <DataTable.Cell name='name'>
             {(props, row) => {
               return {
                 children: (
                   <Copy
-                    copiedToast="Copied"
+                    copiedToast='Copied'
                     toCopy={row[props.name]}
                     title={`Click to copy "${row[props.name]}"`}
-                    trigger="click"
+                    trigger='click'
                     className={styles.tokenNameWrapper}
                   >
                     <div className={styles.tokenName}>
                       <Ellipsis
-                        trim="middle"
+                        trim='middle'
                         tooltip={false}
                         containerRect={nameHeaderRect}
                         containerRef={nameHeaderRef}
@@ -87,21 +87,21 @@ const DesignTokens = ({ tokens }) => {
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name="value">
+          <DataTable.Cell name='value'>
             {(props, row) => {
               return {
                 children: (
                   <Copy
-                    copiedToast="Copied"
+                    copiedToast='Copied'
                     toCopy={row.rawValue}
                     title={`Click to copy "${row.rawValue}"`}
-                    trigger="click"
+                    trigger='click'
                     className={styles.tokenValueWrapper}
                   >
                     <div className={styles.tokenValue}>
                       <ColorPreview color={row.computedValue} />
                       <Ellipsis
-                        trim="end"
+                        trim='end'
                         tooltip={false}
                         containerRect={valueHeaderRect}
                         containerRef={valueHeaderRef}
@@ -114,12 +114,12 @@ const DesignTokens = ({ tokens }) => {
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name="description">
+          <DataTable.Cell name='description'>
             {(props, row) => {
               return {
                 children: (
                   <Ellipsis
-                    trim="end"
+                    trim='end'
                     containerRect={descriptionHeaderRect}
                     containerRef={descriptionHeaderRef}
                   >
@@ -129,7 +129,7 @@ const DesignTokens = ({ tokens }) => {
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name="components">
+          <DataTable.Cell name='components'>
             {(props, row) => {
               if (!row[props.name].length) {
                 return { children: null };
@@ -140,7 +140,7 @@ const DesignTokens = ({ tokens }) => {
                   children: (
                     <div>
                       <Link
-                        target="_blank"
+                        target='_blank'
                         href={`/intergalactic/components/${row[props.name][0]}/`}
                       >
                         {row[props.name][0]}
@@ -161,7 +161,7 @@ const DesignTokens = ({ tokens }) => {
                         {row[props.name].map((componentName, index) => (
                           <React.Fragment key={componentName}>
                             <Link
-                              target="_blank"
+                              target='_blank'
                               href={`/intergalactic/components/${componentName}/`}
                             >
                               {componentName}

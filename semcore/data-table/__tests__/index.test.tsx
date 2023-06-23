@@ -68,10 +68,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -85,16 +85,16 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword">
+            <DataTable.Column name='keyword'>
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <Text noWrap>
-                  Keyword <Text color="gray60">(1 – 100)</Text>
+                  Keyword <Text color='gray60'>(1 – 100)</Text>
                 </Text>
               </Tooltip>
             </DataTable.Column>
-            <DataTable.Column name="kd">
+            <DataTable.Column name='kd'>
               <DropdownMenu>
-                <DropdownMenu.Trigger tag={LinkTrigger} color="gray20">
+                <DropdownMenu.Trigger tag={LinkTrigger} color='gray20'>
                   KD,%
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Menu>
@@ -103,12 +103,12 @@ describe('DataTable', () => {
                 </DropdownMenu.Menu>
               </DropdownMenu>
             </DataTable.Column>
-            <DataTable.Column name="cpc">
+            <DataTable.Column name='cpc'>
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 CPC
               </Tooltip>
             </DataTable.Column>
-            <DataTable.Column name="vol">
+            <DataTable.Column name='vol'>
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 Vol.
               </Tooltip>
@@ -126,10 +126,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" wMin={100} flex="1 0 auto" />
-            <DataTable.Column name="kd" children="KD,%" flex="0" wMin={100} />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' wMin={100} flex='1 0 auto' />
+            <DataTable.Column name='kd' children='KD,%' flex='0' wMin={100} />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -143,22 +143,22 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword">
+            <DataTable.Column name='keyword'>
               Keyword
               <br />
               Keyword
             </DataTable.Column>
-            <DataTable.Column name="kd" children="KD,%" justifyContent="flex-end" />
-            <DataTable.Column name="cpc" children="CPC" justifyContent="flex-end" />
+            <DataTable.Column name='kd' children='KD,%' justifyContent='flex-end' />
+            <DataTable.Column name='cpc' children='CPC' justifyContent='flex-end' />
             <DataTable.Column
-              name="vol"
-              children="Vol."
-              justifyContent="flex-end"
-              alignItems="flex-end"
+              name='vol'
+              children='Vol.'
+              justifyContent='flex-end'
+              alignItems='flex-end'
             />
           </DataTable.Head>
           <DataTable.Body>
-            <DataTable.Cell name="keyword">
+            <DataTable.Cell name='keyword'>
               {(props, row) => {
                 return {
                   children: (
@@ -183,10 +183,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={vi.fn()}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" sortable id="row" />
-            <DataTable.Column name="cpc" children="CPC" sortable />
-            <DataTable.Column name="vol" children="Vol." sortable />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' sortable id='row' />
+            <DataTable.Column name='cpc' children='CPC' sortable />
+            <DataTable.Column name='vol' children='Vol.' sortable />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -209,10 +209,10 @@ describe('DataTable', () => {
         <DataTable data={data}>
           <Sticky zIndex={2} top={top}>
             <DataTable.Head wMin={1000}>
-              <DataTable.Column name="keyword" children="Keyword" />
-              <DataTable.Column name="kd" children="KD,%" />
-              <DataTable.Column name="cpc" children="CPC" />
-              <DataTable.Column name="vol" children="Vol." />
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
             </DataTable.Head>
           </Sticky>
           <DataTable.Body />
@@ -228,10 +228,10 @@ describe('DataTable', () => {
       <div style={{ width: 500 }}>
         <DataTable data={data}>
           <DataTable.Head wMin={800}>
-            <DataTable.Column name="keyword" children="Keyword" fixed="left" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." fixed="right" />
+            <DataTable.Column name='keyword' children='Keyword' fixed='left' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' fixed='right' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -245,12 +245,12 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
+            <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column>
               Organic Sessions
-              <DataTable.Column name="kd" children="KD,%" />
-              <DataTable.Column name="cpc" children="CPC" />
-              <DataTable.Column name="vol" children="Vol." />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
             </DataTable.Column>
           </DataTable.Head>
           <DataTable.Body />
@@ -265,11 +265,11 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
-            <ProgressBar value={40} size="s" style={{ borderRadius: 0 }}>
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
+            <ProgressBar value={40} size='s' style={{ borderRadius: 0 }}>
               <ProgressBar.Value style={{ borderRadius: 0 }} />
             </ProgressBar>
           </DataTable.Head>
@@ -292,10 +292,10 @@ describe('DataTable', () => {
             <PortalProvider value={portalRef}>
               <Portal>
                 <DataTable.Head>
-                  <DataTable.Column name="keyword" children="Keyword" />
-                  <DataTable.Column name="kd" children="KD,%" />
-                  <DataTable.Column name="cpc" children="CPC" />
-                  <DataTable.Column name="vol" children="Vol." />
+                  <DataTable.Column name='keyword' children='Keyword' />
+                  <DataTable.Column name='kd' children='KD,%' />
+                  <DataTable.Column name='cpc' children='CPC' />
+                  <DataTable.Column name='vol' children='Vol.' />
                 </DataTable.Head>
               </Portal>
             </PortalProvider>
@@ -312,10 +312,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body>
             <DataTable.Row>
@@ -352,20 +352,20 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body>
-            <DataTable.Cell name="keyword">
+            <DataTable.Cell name='keyword'>
               {(props, row) => {
                 return {
                   children: <>[{row[props.name]}]</>,
                 };
               }}
             </DataTable.Cell>
-            <DataTable.Cell name="keyword">
+            <DataTable.Cell name='keyword'>
               {() => {
                 return {
                   style: {
@@ -386,13 +386,13 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body>
-            <DataTable.Cell name="keyword/kd/cpc/vol">
+            <DataTable.Cell name='keyword/kd/cpc/vol'>
               {(props, row) => {
                 return {
                   children: ['-', '$0', 'n/a'].includes((row as any)[props.name]) ? (
@@ -415,10 +415,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body>
             <div
@@ -454,10 +454,10 @@ describe('DataTable', () => {
         <Accordion value={[1, 2]} onChange={vi.fn}>
           <DataTable data={data}>
             <DataTable.Head>
-              <DataTable.Column name="keyword" children="Keyword" />
-              <DataTable.Column name="kd" children="KD,%" />
-              <DataTable.Column name="cpc" children="CPC" />
-              <DataTable.Column name="vol" children="Vol." />
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
             </DataTable.Head>
             <DataTable.Body>
               <DataTable.Row tag={RowAccordion}>
@@ -480,12 +480,12 @@ describe('DataTable', () => {
                   };
                 }}
               </DataTable.Row>
-              <DataTable.Cell name="keyword">
+              <DataTable.Cell name='keyword'>
                 {(props) => {
                   return {
                     children: (
-                      <Flex alignItems="center">
-                        <Accordion.Item.Chevron color="stone" mr={2} />
+                      <Flex alignItems='center'>
+                        <Accordion.Item.Chevron color='stone' mr={2} />
                         {props.children}
                       </Flex>
                     ),
@@ -515,10 +515,10 @@ describe('DataTable', () => {
         <Accordion value={[1, 2]} onChange={vi.fn}>
           <DataTable data={data}>
             <DataTable.Head wMin={800}>
-              <DataTable.Column name="keyword" children="Keyword" fixed="left" />
-              <DataTable.Column name="kd" children="KD,%" />
-              <DataTable.Column name="cpc" children="CPC" />
-              <DataTable.Column name="vol" children="Vol." />
+              <DataTable.Column name='keyword' children='Keyword' fixed='left' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
             </DataTable.Head>
             <DataTable.Body>
               <DataTable.Row tag={RowAccordion}>
@@ -530,10 +530,10 @@ describe('DataTable', () => {
                       children: (
                         <DataTable data={data} zIndex={2}>
                           <DataTable.Head hidden>
-                            <DataTable.Column name="keyword" fixed="left" />
-                            <DataTable.Column name="kd" />
-                            <DataTable.Column name="cpc" />
-                            <DataTable.Column name="vol" />
+                            <DataTable.Column name='keyword' fixed='left' />
+                            <DataTable.Column name='kd' />
+                            <DataTable.Column name='cpc' />
+                            <DataTable.Column name='vol' />
                           </DataTable.Head>
                           <DataTable.Body />
                         </DataTable>
@@ -542,12 +542,12 @@ describe('DataTable', () => {
                   };
                 }}
               </DataTable.Row>
-              <DataTable.Cell name="keyword">
+              <DataTable.Cell name='keyword'>
                 {(props) => {
                   return {
                     children: (
-                      <Flex alignItems="center">
-                        <Accordion.Item.Chevron color="stone" mr={2} />
+                      <Flex alignItems='center'>
+                        <Accordion.Item.Chevron color='stone' mr={2} />
                         {props.children}
                       </Flex>
                     ),
@@ -567,10 +567,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body tag={SpinContainer} loading={true} />
         </DataTable>
@@ -585,7 +585,7 @@ describe('DataTable', () => {
         name: c,
         data: (
           <Skeleton height={17}>
-            <Skeleton.Text y="5" width="60%" />
+            <Skeleton.Text y='5' width='60%' />
           </Skeleton>
         ),
       }));
@@ -595,10 +595,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body rows={[getSkeleton(), getSkeleton(), getSkeleton()]} />
         </DataTable>
@@ -643,10 +643,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -698,10 +698,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -750,10 +750,10 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -765,12 +765,12 @@ describe('DataTable', () => {
   test.concurrent('Secondary table', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} use="secondary" sort={['kd', 'desc']}>
+        <DataTable data={data} use='secondary' sort={['kd', 'desc']}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" sortable />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' sortable />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -798,8 +798,8 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -828,7 +828,7 @@ describe('DataTable', () => {
     const { container } = render(
       <DataTable data={[{ keyword: 123 }]}>
         <DataTable.Head>
-          <DataTable.Column name="keyword" children="KD,%" />
+          <DataTable.Column name='keyword' children='KD,%' />
         </DataTable.Head>
         <DataTable.Body />
       </DataTable>,
@@ -862,8 +862,8 @@ describe('DataTable', () => {
       <div style={{ width: 800 }}>
         <DataTable data={data}>
           <DataTable.Head>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
           </DataTable.Head>
           <DataTable.Body />
         </DataTable>
@@ -883,8 +883,8 @@ describe('DataTable.Column', () => {
     const { getByTestId, rerender } = render(
       <DataTable data={[]}>
         <DataTable.Head>
-          <DataTable.Column name="keyword" data-testid="column" flex={0} />
-          <DataTable.Column name="kd" />
+          <DataTable.Column name='keyword' data-testid='column' flex={0} />
+          <DataTable.Column name='kd' />
         </DataTable.Head>
       </DataTable>,
     );
@@ -892,7 +892,7 @@ describe('DataTable.Column', () => {
     rerender(
       <DataTable data={[]}>
         <DataTable.Head>
-          <DataTable.Column name="keyword" data-testid="column" flex={0} />
+          <DataTable.Column name='keyword' data-testid='column' flex={0} />
         </DataTable.Head>
       </DataTable>,
     );
@@ -904,8 +904,8 @@ describe('DataTable.Column', () => {
     render(
       <DataTable data={[]}>
         <DataTable.Head>
-          <DataTable.Column name="keyword" ref={spy} />
-          <DataTable.Column name="kd" />
+          <DataTable.Column name='keyword' ref={spy} />
+          <DataTable.Column name='kd' />
         </DataTable.Head>
       </DataTable>,
     );

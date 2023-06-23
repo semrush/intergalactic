@@ -14,7 +14,7 @@ describe('Tooltip', () => {
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
           <Tooltip.Trigger>
-            <button>Test</button>
+            <button type='button'>Test</button>
           </Tooltip.Trigger>
           <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
         </Tooltip>
@@ -27,9 +27,9 @@ describe('Tooltip', () => {
   test.concurrent('Renders correctly with warning theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal theme="warning">
+        <Tooltip visible disablePortal theme='warning'>
           <Tooltip.Trigger>
-            <button>Test</button>
+            <button type='button'>Test</button>
           </Tooltip.Trigger>
           <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
         </Tooltip>
@@ -42,9 +42,9 @@ describe('Tooltip', () => {
   test.concurrent('Renders correctly with invert theme', async ({ task }) => {
     const component = (
       <div style={{ width: '100px', height: '100px' }}>
-        <Tooltip visible disablePortal theme="invert">
+        <Tooltip visible disablePortal theme='invert'>
           <Tooltip.Trigger>
-            <button>Test</button>
+            <button type='button'>Test</button>
           </Tooltip.Trigger>
           <Tooltip.Popper style={{ opacity: 1 }}>text text text</Tooltip.Popper>
         </Tooltip>
@@ -59,9 +59,9 @@ describe('Tooltip', () => {
       <div style={{ width: '100px', height: '100px' }}>
         <Tooltip visible disablePortal>
           <Tooltip.Trigger>
-            <button>Test</button>
+            <button type='button'>Test</button>
           </Tooltip.Trigger>
-          <Tooltip.Popper style={{ opacity: 1 }} theme="green">
+          <Tooltip.Popper style={{ opacity: 1 }} theme='green'>
             text text text
           </Tooltip.Popper>
         </Tooltip>
@@ -78,7 +78,7 @@ describe('Tooltip.Trigger', () => {
   test('should support custom className', () => {
     const { getByTestId } = render(
       <Tooltip>
-        <Tooltip.Trigger data-testid="trigger" className="more-than one-class" />
+        <Tooltip.Trigger data-testid='trigger' className='more-than one-class' />
       </Tooltip>,
     );
 
@@ -88,7 +88,7 @@ describe('Tooltip.Trigger', () => {
   test('should support custom attributes', () => {
     const { getByTestId } = render(
       <Tooltip>
-        <Tooltip.Trigger data-testid="trigger" name="trigger" />
+        <Tooltip.Trigger data-testid='trigger' name='trigger' />
       </Tooltip>,
     );
 
@@ -99,7 +99,7 @@ describe('Tooltip.Trigger', () => {
     const ref = React.createRef();
     render(
       <Tooltip>
-        <Tooltip.Trigger tag="button" ref={ref} />
+        <Tooltip.Trigger tag='button' ref={ref} />
       </Tooltip>,
     );
     expect(ref.current.nodeName).toBe('BUTTON');
@@ -109,7 +109,7 @@ describe('Tooltip.Trigger', () => {
     const component = (
       <Tooltip>
         <Tooltip.Trigger>
-          <p data-testid="child">Test</p>
+          <p data-testid='child'>Test</p>
         </Tooltip.Trigger>
       </Tooltip>
     );
@@ -126,7 +126,7 @@ describe('Tooltip.Popper', () => {
     const { getByTestId } = render(
       <Tooltip visible>
         <Tooltip.Trigger />
-        <Tooltip.Popper data-testid="popper" className="more-than one-class" />
+        <Tooltip.Popper data-testid='popper' className='more-than one-class' />
       </Tooltip>,
     );
 
@@ -137,7 +137,7 @@ describe('Tooltip.Popper', () => {
     const { getByTestId } = render(
       <Tooltip visible>
         <Tooltip.Trigger />
-        <Tooltip.Popper data-testid="popper" name="popper" />
+        <Tooltip.Popper data-testid='popper' name='popper' />
       </Tooltip>,
     );
 
@@ -194,7 +194,7 @@ describe('TooltipBase', () => {
 
   test('should support ref', () => {
     const ref = React.createRef();
-    render(<Tooltip ref={ref} tag="button" title="test" />);
+    render(<Tooltip ref={ref} tag='button' title='test' />);
     expect(ref.current.nodeName).toBe('BUTTON');
   });
 
@@ -202,8 +202,10 @@ describe('TooltipBase', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Tooltip title="Test test test" disablePortal onVisibleChange={spy}>
-        <button data-testid="trigger">trigger</button>
+      <Tooltip title='Test test test' disablePortal onVisibleChange={spy}>
+        <button type='button' data-testid='trigger'>
+          trigger
+        </button>
       </Tooltip>,
     );
 
@@ -223,7 +225,7 @@ describe('TooltipBase', () => {
   test('a11y', async () => {
     const { container } = render(
       <Tooltip visible disablePortal>
-        <Tooltip.Trigger tag="button">trigger</Tooltip.Trigger>
+        <Tooltip.Trigger tag='button'>trigger</Tooltip.Trigger>
         <Tooltip.Popper>text tooltip</Tooltip.Popper>
       </Tooltip>,
     );

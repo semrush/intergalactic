@@ -25,7 +25,7 @@ const SuggestSearch = connectAutoComplete(
     });
 
     return (
-      <Input size="l" mb={4} className={styles.search}>
+      <Input size='l' mb={4} className={styles.search}>
         <Input.Addon>
           <SearchS />
         </Input.Addon>
@@ -33,7 +33,7 @@ const SuggestSearch = connectAutoComplete(
           {...others}
           onChange={handleChangeValue}
           value={currentRefinement}
-          placeholder="What illustration are you looking for?"
+          placeholder='What illustration are you looking for?'
         />
         {!!currentRefinement && (
           <Input.Addon>
@@ -74,7 +74,7 @@ export default function ({ illustrations, json }) {
           <ListIllustrations data={filterIllustrations} illustrations={illustrations} json={json} />
         ) : (
           <div className={styles.notFound}>
-            <img src={staticFiles['search/observatory.svg']} alt="observatory" />
+            <img src={staticFiles['search/observatory.svg']} alt='observatory' />
             <Text size={300} mt={2}>
               We found something… it's nothing
             </Text>
@@ -82,11 +82,11 @@ export default function ({ illustrations, json }) {
         )
       ) : (
         <IllustrationGroups illustrations={illustrations} json={json}>
-          <IllustrationGroup title="States" />
-          <IllustrationGroup title="Chart types" />
-          <IllustrationGroup title="Data types" />
-          <IllustrationGroup title="Errors" />
-          <IllustrationGroup title="Other" />
+          <IllustrationGroup title='States' />
+          <IllustrationGroup title='Chart types' />
+          <IllustrationGroup title='Data types' />
+          <IllustrationGroup title='Errors' />
+          <IllustrationGroup title='Other' />
         </IllustrationGroups>
       )}
     </>
