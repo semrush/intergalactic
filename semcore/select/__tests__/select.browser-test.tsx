@@ -47,6 +47,8 @@ test.describe('Select', () => {
 
     const inputLocaltor = await page.locator('input');
 
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     const optionBLocator = await page.locator('text=Option b');
     const optionBRect = (await optionBLocator.boundingBox())!;
     await page.mouse.click(

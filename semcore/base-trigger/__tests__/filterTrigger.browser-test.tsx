@@ -2,7 +2,9 @@ import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
 test.describe('FilterTrigger', () => {
-  test('Focus control', async ({ page }) => {
+  test('Focus control', async ({ page, browserName }) => {
+    if (browserName === 'webkit') return; // https://stackoverflow.com/questions/67901731/cannot-focus-button-using-tab-key-navigation-on-safari#answer-67901876
+
     const standPath = 'website/docs/components/filter-trigger/examples/select.tsx';
     const htmlContent = await e2eStandToHtml(standPath, 'en');
 
