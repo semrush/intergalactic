@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.1] - 2023-06-26
+
+### Fixed
+
+- Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
+
 ## [3.10.0] - 2023-06-23
 
 ### Changed
