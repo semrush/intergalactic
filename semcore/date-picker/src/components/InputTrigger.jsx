@@ -565,7 +565,7 @@ const MaskedInput = ({
       {...otherProps}
       ref={handleInputRef}
       pipe={pipeMask}
-      value={value}
+      value={value ?? ''}
       onChange={handleChange}
       noHumanizedDate={!humanizedDate}
     >
