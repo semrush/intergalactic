@@ -54,6 +54,15 @@ th {
   text-align: left;
 }
 
+td {
+  font-weight: normal;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+  border-collapse: collapse !important;
+}
+
 .spacer td,
 .spacer th {
   padding: 0;
@@ -66,14 +75,6 @@ table {
   border-collapse: collapse;
 }
 
-td {
-  font-weight: normal;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  hyphens: auto;
-  border-collapse: collapse !important;
-}
 
 img {
   border: 0 none;

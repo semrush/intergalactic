@@ -5,9 +5,7 @@ SHint {
   outline: none;
   cursor: pointer;
   color: var(--intergalactic-text-secondary, #6c6e79);
-}
 
-SHint {
   &[active],
   &:active,
   &:hover {

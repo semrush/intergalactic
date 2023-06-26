@@ -42,7 +42,6 @@ SCalendarUnit {
   vertical-align: middle;
   border: 1px solid transparent;
   color: var(--intergalactic-text-primary, #191b23);
-  outline: 0;
   box-shadow: none;
   overflow: visible;
   user-select: none;

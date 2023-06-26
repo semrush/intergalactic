@@ -305,9 +305,6 @@ SStickyHead {
 
 SStickyHeadTable {
   table-layout: fixed;
-}
-
-SStickyHeadTable {
   border-bottom: none;
 }
 

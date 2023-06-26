@@ -2,6 +2,11 @@ SProgressBar {
   position: relative;
   width: 100%;
   overflow: hidden;
+  background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
+}
+
+SProgressBar[theme='dark'] {
+  background-color: var(--intergalactic-progress-bar-bg-invert, rgba(255, 255, 255, 0.2));
 }
 
 SValue {
@@ -20,7 +25,13 @@ SValue {
   animation-iteration-count: infinite;
   transition-property: width;
   transition-timing-function: linear;
-  transition-duration: 1000ms;
+  width: var(--width);
+  animation-duration: var(--duration);
+}
+
+SValue[theme] {
+  background-color: var(--colorBg);
+  background-image: var(--colorBg);
 }
 
 SProgressBar[size='s'],
@@ -44,13 +55,7 @@ SValue[size='l'] {
   background-size: 16px 16px;
 }
 
-SProgressBar {
-  background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
-}
 
-SProgressBar[theme='dark'] {
-  background-color: var(--intergalactic-progress-bar-bg-invert, rgba(255, 255, 255, 0.2));
-}
 
 SProgressBar[theme='invert'] {
   background-color: var(--intergalactic-progress-bar-bg, #e0e1e9);
@@ -74,24 +79,14 @@ SProgressBar[animation] {
   animation-name: loading;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  animation-duration: var(--duration);
 }
 
 SProgressBar[theme='custom'] {
   background-color: var(--colorBg);
   background-image: var(--colorBg);
 }
-SProgressBar[animation] {
-  animation-duration: var(--duration);
-}
 
-SValue {
-  width: var(--width);
-  animation-duration: var(--duration);
-}
-SValue[theme] {
-  background-color: var(--colorBg);
-  background-image: var(--colorBg);
-}
 
 @media (prefers-reduced-motion) {
   SValue {

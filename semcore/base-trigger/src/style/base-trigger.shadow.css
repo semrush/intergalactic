@@ -11,7 +11,6 @@ SBaseTrigger {
   padding: 0;
   margin: 0;
   box-shadow: none;
-  outline: none;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   overflow: visible;
@@ -42,6 +41,7 @@ SBaseTrigger {
   &[keyboardFocused] {
     border: 1px solid var(--intergalactic-border-info-active, #006dca);
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    z-index: 1;
   }
 
   &:hover {
@@ -50,7 +50,8 @@ SBaseTrigger {
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-bg-primary-neutral-active, #e0e1e9);
+    border-color: var(--intergalactic-border-info-active, #006dca);
+    background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
   }
 }
 
@@ -58,10 +59,6 @@ SBaseTrigger[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none; /* Disable link interactions */
-}
-
-SBaseTrigger[keyboardFocused] {
-  z-index: 1;
 }
 
 SInner {
@@ -168,11 +165,6 @@ SBaseTrigger[state='normal'] {
   border-color: var(--intergalactic-border-primary, #c4c7cf);
 }
 
-SBaseTrigger[active],
-SBaseTrigger:active {
-  border-color: var(--intergalactic-border-info-active, #006dca);
-  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
-}
 
 SBaseTrigger[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);

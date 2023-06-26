@@ -11,8 +11,7 @@
   .emailsWrapper {
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 1fr;
-    margin-left: 0;
-    margin: 0 0 var(--intergalactic-spacing-14x);
+    margin: 0 0 var(--intergalactic-spacing-14x) 0;
   }
 }
 @media (max-width: 415px) {
