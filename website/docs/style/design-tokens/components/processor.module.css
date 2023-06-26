@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  position: relative;
   padding: var(--intergalactic-spacing-5x);
   margin: var(--intergalactic-spacing-2x) 0px var(--intergalactic-spacing-8x);
   position: relative;

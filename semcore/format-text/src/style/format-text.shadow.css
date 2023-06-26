@@ -212,7 +212,7 @@ SFormatText[size='s'] {
   & ol ol ol li {
     padding-left: calc(
       var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) +
-        var(--intergalactic-spacing-05x, 2px)
+      var(--intergalactic-spacing-05x, 2px)
     );
   }
 
@@ -255,7 +255,7 @@ SFormatText[size='m'] {
   & ol ol ol li {
     padding-left: calc(
       var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) +
-        var(--intergalactic-spacing-05x, 2px)
+      var(--intergalactic-spacing-05x, 2px)
     );
   }
 
@@ -299,7 +299,7 @@ SFormatText[size='l'] {
   & ol ol ol li {
     padding-left: calc(
       var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) +
-        var(--intergalactic-spacing-05x, 2px)
+      var(--intergalactic-spacing-05x, 2px)
     );
   }
 

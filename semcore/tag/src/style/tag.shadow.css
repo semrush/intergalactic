@@ -6,7 +6,6 @@ STag {
   box-sizing: border-box;
   border-width: 1px;
   border-style: solid;
-  border-color: transparent;
   border-radius: var(--intergalactic-tag-rounded, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
