@@ -289,7 +289,7 @@ for (const theme of themes) {
   }
 }
 
-execSync('pnpm format --write', {
+execSync('pnpm lint:css --fix', {
   encoding: 'utf-8',
   cwd: resolvePath(dirname, '../../../'),
   stdio: ['inherit', 'inherit', 'inherit'],

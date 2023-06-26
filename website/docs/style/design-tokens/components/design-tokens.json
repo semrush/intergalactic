@@ -41,7 +41,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the primary background of the interface which contains the main data and information.",
-    "components": ["base-trigger", "flags"]
+    "components": ["flags"]
   },
   {
     "name": "--intergalactic-bg-primary-info",
