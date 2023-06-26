@@ -141,3 +141,4 @@ export const useFocusLock = (
 };
 
 export const isFocusInside = focusInside;
+export const setFocus = moveFocusInside as (topNode: HTMLElement, lastNode?: Element) => void;

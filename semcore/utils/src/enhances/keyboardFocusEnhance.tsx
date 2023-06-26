@@ -61,7 +61,7 @@ const keyboardFocusEnhance = () => {
     const focusSourceRef = useFocusSource();
     const ref = React.useRef(null);
 
-    const handlerFocus = React.useCallback((event: React.FocusEvent) => {
+    const handleFocus = React.useCallback((event: React.FocusEvent) => {
       if (event.isTrusted === true) {
         if (focusSourceRef.current !== 'keyboard') return;
       }
@@ -82,7 +82,7 @@ const keyboardFocusEnhance = () => {
     return assignProps(props, {
       tabIndex: disabled ? -1 : tabIndex,
       keyboardFocused,
-      onFocus: handlerFocus,
+      onFocus: handleFocus,
       onBlur: handlerBlur,
       ref,
     });
