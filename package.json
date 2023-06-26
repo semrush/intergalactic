@@ -69,7 +69,6 @@
     "happy-dom": "9.20.3",
     "husky": "8.0.0",
     "inquirer": "6.3.1",
-    "lint-staged": "10.2.9",
     "picocolors": "1.0.0",
     "playwright": "1.25.1",
     "react": "18.2.0",
@@ -84,9 +83,6 @@
     "vite-plugin-babel": "^1.1.3",
     "vitest": "^0.32.0",
     "yaml": "2.1.1"
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": "pnpm lint --apply"
   },
   "resolutions": {
     "csstype": "3.0.8",
