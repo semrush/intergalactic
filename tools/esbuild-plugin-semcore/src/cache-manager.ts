@@ -41,7 +41,7 @@ const hashFiles = async (paths: string[]) => {
 };
 
 export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 60 * 24 * 30) => {
-  const cacheDir = resolvePath(cwd, `../.cache/${id.replace(/\W+/, '_')}`);
+  const cacheDir = resolvePath(cwd, `./.cache/${id.replace(/\W+/, '_')}`);
 
   return {
     hashString,
@@ -73,8 +73,12 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         .map((textDate, index) => ({
           filename: lastUseFiles[index],
           lastUse: parseInt(textDate, 10),
+          textDate,
         }))
-        .filter(({ lastUse }) => Number.isNaN(lastUse) || Date.now() - lastUse > cacheTtl)
+        .filter(({ lastUse, textDate }) => {
+          if (!textDate) return true;
+          return Number.isNaN(lastUse) || Date.now() - lastUse > cacheTtl;
+        })
         .map(({ filename }) => filename);
 
       const longUnusedFiles: string[] = [];
@@ -158,8 +162,11 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
         console.info(`Using ${filePath} from cache`);
       }
 
-      await writeFile(cachedLastUseFilePath, Date.now().toString());
-      return await readFile(cachedContentsFilePath, 'utf-8');
+      const [, contents] = await Promise.all([
+        writeFile(cachedLastUseFilePath, String(Date.now())),
+        readFile(cachedContentsFilePath, 'utf-8'),
+      ]);
+      return contents;
     },
     addToCache: async (filePath: string, content: string, implicitDependencies: string[] = []) => {
       const relativePath = resolveRelativePath(cwd, filePath);
@@ -178,7 +185,7 @@ export const makeCacheManager = (id: string, cwd = '.', cacheTtl = 1000 * 60 * 6
       await Promise.all([
         await writeFile(cachedContentsFilePath, content),
         await writeFile(cachedHashSumFilePath, hashSum),
-        await writeFile(cachedLastUseFilePath, Date.now().toString()),
+        await writeFile(cachedLastUseFilePath, String(Date.now())),
         await writeFile(impDepsFilePath, implicitDependencies.join(',')),
       ]);
     },
