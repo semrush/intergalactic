@@ -14,6 +14,7 @@ import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/filter-trigger.shadow.css';
 
@@ -39,8 +40,17 @@ class RootFilterTrigger extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+  triggerRef = React.createRef();
 
   handleStopPropagation = (e) => e.stopPropagation();
+
+  handleClear = () => {
+    setTimeout(() => {
+      if (document.activeElement === document.body) {
+        setFocus(this.triggerRef.current);
+      }
+    }, 0);
+  };
 
   render() {
     const SWrapper = Root;
@@ -77,6 +87,7 @@ class RootFilterTrigger extends Component {
             selected={!empty}
             active={active}
             disabled={disabled}
+            ref={this.triggerRef}
             animationsDisabled
             {...controlProps}
           >
@@ -94,7 +105,7 @@ class RootFilterTrigger extends Component {
               size={size}
               empty={empty}
               selected
-              onClick={callAllEventHandlers(onClear, this.handleStopPropagation)}
+              onClick={callAllEventHandlers(onClear, this.handleClear, this.handleStopPropagation)}
               onKeyDown={this.handleStopPropagation}
               disabled={disabled}
               id={`igc-${uid}-filter-trigger-clear`}

@@ -14,6 +14,7 @@ import { selectContext } from './context';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import { setFocus } from '@semcore/utils/lib/use/useFocusLock';
 
 import style from './style/select.shadow.css';
 
@@ -223,7 +224,7 @@ class RootSelect extends Component {
       this.handlers.visible(false);
       setTimeout(() => {
         if (interaction !== 'focus') {
-          this.triggerRef.current?.focus();
+          setFocus(this.triggerRef.current);
           return;
         }
         if (this.focusableTriggerReturnFocusToRef.current) {

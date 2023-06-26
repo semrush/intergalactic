@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.54.0] - 2023-06-23
+
+### Added
+
+- Exposed internal util for setting focus on top focusable child.
+
 ## [3.53.4] - 2023-06-14
 
 ### Fixed
