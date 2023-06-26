@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-pnpm process-theme --no-warning && pnpm lint && pnpm lint-changelogs
+pnpm process-theme --no-warning && pnpm lint:es --apply && pnpm lint-staged && pnpm lint-changelogs
