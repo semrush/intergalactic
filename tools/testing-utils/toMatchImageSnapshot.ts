@@ -56,15 +56,6 @@ export async function toMatchImageSnapshot(
 
   await mkdir(snapshotsDir, { recursive: true });
 
-  if (this.snapshotState._updateSnapshot === 'all') {
-    await writeFile(snapshotPath, snapshot);
-
-    return {
-      pass: true,
-      message: () => 'ok',
-    };
-  }
-
   try {
     await stat(snapshotPath);
   } catch (err) {
@@ -107,6 +98,15 @@ export async function toMatchImageSnapshot(
   );
 
   if (mismatch <= (options?.maxPixelDiff ?? 10)) {
+    return {
+      pass: true,
+      message: () => 'ok',
+    };
+  }
+
+  if (this.snapshotState._updateSnapshot === 'all') {
+    await writeFile(snapshotPath, snapshot);
+
     return {
       pass: true,
       message: () => 'ok',
