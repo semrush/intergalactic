@@ -65,3 +65,7 @@ export const isValidSemver = (version: string) => {
 
   return semver.valid(semver.coerce(cleaned.trim()));
 };
+
+export const formatMarkdown = (markdown: string) => {
+  return markdown.replace(/\n\*\s/g, '\n- ').replace(/\*\*\s\s+/g, '** ') + '\n';
+};
