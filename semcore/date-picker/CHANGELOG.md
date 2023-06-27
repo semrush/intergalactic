@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.9.3] - 2023-06-22
+## [3.9.4] - 2023-06-26
+
+### Fixed
+
+- React warning about passing `null` to the input element.
 
 ## [3.9.2] - 2023-06-14
 
