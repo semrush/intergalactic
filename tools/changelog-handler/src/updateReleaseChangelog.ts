@@ -19,10 +19,10 @@ export const updateReleaseChangelog = async () => {
   const changelogPatch = await patchReleaseChangelog(currentVersion, currentDependencies);
   const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
-  const changelogText = toMarkdown(changelogMarkdownAst);
+  const changelogText =
+    toMarkdown(changelogMarkdownAst).replace(/\n\*\s/g, '\n- ').replace(/\*\*\s\s+/g, '** ') + '\n';
   const changelogFilePath = resolvePath(releasePackageDir, 'CHANGELOG.md');
   await fs.writeFile(changelogFilePath, changelogText);
-  await execa('pnpm format', ['--write', changelogFilePath]);
   releasePackageFile = await fs.readJson(releasePackageFilePath);
   releasePackageFile.version = newVersion;
   await fs.writeJson(releasePackageFilePath, releasePackageFile, { spaces: 2 });

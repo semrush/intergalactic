@@ -4,8 +4,13 @@
 
 - **Added** `FilterTrigger` focus returning after the clear effect.
 
+### @semcore/date-picker
+
+- **Fixed** React warning about passing `null` to the input element.
+
 ### @semcore/select
 
+- **Fixed** Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
 - **Changed** Improved focus handling with `FilterTrigger`.
 
 ### @semcore/utils
