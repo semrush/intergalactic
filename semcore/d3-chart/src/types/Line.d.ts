@@ -6,9 +6,9 @@ import { FadeInOutProps } from '@semcore/animation';
 /** @deprecated */
 export interface ILineProps extends LineProps, UnknownProperties {}
 export type LineProps = Context & {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/

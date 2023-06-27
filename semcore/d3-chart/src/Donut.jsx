@@ -8,6 +8,7 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import { CONSTANT } from './utils';
+import Tooltip from './Tooltip';
 
 import style from './style/donut.shadow.css';
 
@@ -326,6 +327,6 @@ function Label({ Element: SLabel, styles, Children, children, label, dataHintsHa
   );
 }
 
-const Donut = createElement(DonutRoot, { Pie, Label, EmptyData });
+const Donut = createElement(DonutRoot, { Pie, Label, EmptyData, Tooltip });
 
 export default Donut;

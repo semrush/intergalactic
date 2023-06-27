@@ -1,14 +1,18 @@
 import { Intergalactic } from '@semcore/core';
 import { Context } from './context';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
+import IContext from './context';
+import { TooltipType } from './Tooltip';
 
 /** @deprecated */
 export interface IScatterPlotProps extends ScatterPlotProps, UnknownProperties {}
 export type ScatterPlotProps = Context & {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y: string;
-  /** Field from data for circle value */
+  /** Field name from `data` array item for the circle value */
   value?: string;
   /** Circle color */
   color?: string;
@@ -26,6 +30,20 @@ export type ScatterPlotProps = Context & {
   transparent?: boolean;
 };
 
-declare const ScatterPlot: Intergalactic.Component<'g', ScatterPlotProps, Context>;
+// declare const ScatterPlot: Intergalactic.Component<'g', ScatterPlotProps, Context>;
+declare const ScatterPlot: (<T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl) & {
+  Tooltip: TooltipType<
+    IScatterPlotProps & {
+      /**
+       * @deprecated Use `index` instead.
+       */
+      xIndex: number;
+      /**
+       * Index of item in the `data` array used to render related circle.
+       */
+      index: number;
+    }
+  >;
+};
 
 export default ScatterPlot;

@@ -1,5 +1,5 @@
 import React, { cloneElement } from 'react';
-import { Component, sstyled } from '@semcore/core';
+import { Component, sstyled, Root } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import trottle from '@semcore/utils/lib/rafTrottle';
@@ -8,6 +8,7 @@ import { polygonContains } from 'd3-polygon';
 import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
 import { CONSTANT, eventToPoint, measureText } from './utils';
+import Tooltip from './Tooltip';
 
 import style from './style/radar.shadow.css';
 
@@ -605,10 +606,16 @@ const Polygon = createElement(PolygonRoot, {
   Dots: PolygonDots,
 });
 
+const RadarTooltip = (props) => {
+  const SRadarTooltip = Root;
+  return sstyled(props.styles)(<SRadarTooltip render={Tooltip} tag={Radar.Hover} />);
+};
+
 const Radar = createElement(RadarRoot, {
   Axis,
   Polygon,
   Hover,
+  Tooltip: [RadarTooltip, Tooltip._______childrenComponents],
 });
 
 export default Radar;

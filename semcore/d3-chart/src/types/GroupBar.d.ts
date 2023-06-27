@@ -6,9 +6,9 @@ import { Context } from './context';
 /** @deprecated */
 export interface IGroupBarProps extends GroupBarProps, UnknownProperties {}
 export type GroupBarProps = Context & {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Scale for group bars */
   scaleGroup?: any;

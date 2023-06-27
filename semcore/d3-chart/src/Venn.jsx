@@ -5,6 +5,7 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { FadeInOut } from '@semcore/animation';
 import createElement from './createElement';
 import { CONSTANT } from './utils';
+import Tooltip from './Tooltip';
 
 import style from './style/venn.shadow.css';
 
@@ -145,6 +146,6 @@ function Intersection(props) {
   );
 }
 
-const Venn = createElement(VennRoot, { Circle, Intersection });
+const Venn = createElement(VennRoot, { Circle, Intersection, Tooltip });
 
 export default Venn;

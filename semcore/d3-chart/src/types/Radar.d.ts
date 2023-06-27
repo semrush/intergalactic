@@ -1,6 +1,7 @@
 import { Context } from './context';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { CurveFactory } from 'd3-shape';
+import { TooltipType } from './Tooltip';
 
 /** @deprecated */
 export interface IRadarProps extends RadarProps, UnknownProperties {}
@@ -115,7 +116,14 @@ declare const Radar: Intergalactic.Component<'g', RadarProps, Context> & {
     Line: Intergalactic.Component<'line', RadialPolygonLineProps, Context>;
     Dots: Intergalactic.Component<'circle', RadialPolygonDotsProps, Context>;
   };
-  Hover: Intergalactic.Component<'path', RadarHoverProps, Context>;
+  // Hover: Intergalactic.Component<'path', RadarHoverProps, Context>;
+  Hover: <T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl;
+  Tooltip: TooltipType<
+    IRadarHoverProps & {
+      /** Index in `data` array of the current items */
+      index: number;
+    }
+  >;
 };
 
 export default Radar;

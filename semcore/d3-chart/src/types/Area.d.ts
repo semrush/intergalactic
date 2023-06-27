@@ -5,9 +5,9 @@ import { CurveFactory } from 'd3-shape';
 /** @deprecated */
 export interface IAreaProps extends AreaProps, UnknownProperties {}
 export type AreaProps = Context & {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis*/
+  /** Field name from `data` array item for the YAxis*/
   y?: string;
   /** Line color
    * @default '#50aef4'*/

@@ -1,11 +1,12 @@
 import React from 'react';
-import { Component, sstyled } from '@semcore/core';
+import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
 
 import style from './style/hover.shadow.css';
+import Tooltip from './Tooltip';
 
 class Hover extends Component {
   static style = style;
@@ -165,7 +166,20 @@ class HoverRectRoot extends Hover {
   }
 }
 
-const HoverLine = createElement(HoverLineRoot);
-const HoverRect = createElement(HoverRectRoot);
+const HoverLineTooltip = (props) => {
+  const SHoverLineTooltip = Root;
+  return sstyled(props.styles)(<SHoverLineTooltip render={Tooltip} tag={HoverLine} />);
+};
+const HoverRectTooltip = (props) => {
+  const SHoverRectTooltip = Root;
+  return sstyled(props.styles)(<SHoverRectTooltip render={Tooltip} tag={HoverRect} />);
+};
+
+const HoverLine = createElement(HoverLineRoot, {
+  Tooltip: [HoverLineTooltip, Tooltip._______childrenComponents],
+});
+const HoverRect = createElement(HoverRectRoot, {
+  Tooltip: [HoverRectTooltip, Tooltip._______childrenComponents],
+});
 
 export { HoverLine, HoverRect };

@@ -5,9 +5,9 @@ import { BarContext, BackgroundProps } from './Bar';
 /** @deprecated */
 export interface IHorizontalBarProps extends HorizontalBarProps, UnknownProperties {}
 export type HorizontalBarProps = Context & {
-  /** Field from data for XAxis */
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/

@@ -1,6 +1,11 @@
 import { Intergalactic } from '@semcore/core';
 import { Context } from './context';
 import { FadeInOutProps } from '@semcore/animation';
+import { ReturnEl } from '@semcore/core';
+import { MapProps } from './Plot';
+import IContext from './context';
+import { IFadeInOutProps } from '@semcore/animation';
+import { TooltipType } from './Tooltip';
 
 /** @deprecated */
 export interface IVennProps extends VennProps, UnknownProperties {}
@@ -25,6 +30,10 @@ export type CircleProps = Context & {
    * Name of the field in the data
    * */
   dataKey: string;
+  /**
+   * Human readable name of the circle
+   * */
+  name: string;
   /** Color circle
    @default #3AB011
    **/
@@ -49,9 +58,14 @@ export type IntersectionProps = Context &
     transparent?: boolean;
   };
 
-declare const Venn: Intergalactic.Component<'g', VennProps, Context> & {
-  Circle: Intergalactic.Component<'circle', CircleProps, Context>;
-  Intersection: Intergalactic.Component<'path', IntersectionProps, Context>;
+// declare const Venn: Intergalactic.Component<'g', VennProps, Context> & {
+//   Circle: Intergalactic.Component<'circle', CircleProps, Context>;
+//   Intersection: Intergalactic.Component<'path', IntersectionProps, Context>;
+
+declare const Venn: (<T>(props: MapProps<IVennProps & T>) => ReturnEl) & {
+  Circle: <T>(props: MapProps<ICircleProps & T>) => ReturnEl;
+  Intersection: <T>(props: MapProps<IIntersectionProps & T>) => ReturnEl;
+  Tooltip: TooltipType<ICircleProps>;
 };
 
 export default Venn;
