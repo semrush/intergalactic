@@ -3,9 +3,7 @@ dist
 **/code_mod/**
 **/node_modules/**
 .tmp
-generator-component
 **/*.mjs
-code-mod
 mailer
 ./tools/icon-transform-svg/__tests__
 email
