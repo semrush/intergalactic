@@ -116,8 +116,7 @@ declare const Radar: Intergalactic.Component<'g', RadarProps, Context> & {
     Line: Intergalactic.Component<'line', RadialPolygonLineProps, Context>;
     Dots: Intergalactic.Component<'circle', RadialPolygonDotsProps, Context>;
   };
-  // Hover: Intergalactic.Component<'path', RadarHoverProps, Context>;
-  Hover: <T>(props: MapProps<IRadarHoverProps & T>) => ReturnEl;
+  Hover: Intergalactic.Component<'path', RadarHoverProps, Context>;
   Tooltip: TooltipType<
     IRadarHoverProps & {
       /** Index in `data` array of the current items */

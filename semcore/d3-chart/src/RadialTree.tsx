@@ -1,6 +1,6 @@
 import React from 'react';
 import { transition } from 'd3-transition';
-import { Component, sstyled, ReturnEl, UnknownProperties } from '@semcore/core';
+import { Component, sstyled, ReturnEl, UnknownProperties, Intergalactic } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import { shade } from '@semcore/utils/lib/color';
 import assignProps from '@semcore/utils/lib/assignProps';
@@ -837,15 +837,16 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   ) as React.ReactElement;
 };
 
-const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as (<T>(
-  props: MapProps<IRadialTreeProps & T>,
-) => ReturnEl) & {
-  Title: <T>(props: MapProps<IRadialTreeTitleProps & T>) => ReturnEl;
-  Radian: (<T>(props: MapProps<IRadialTreeRadianProps & T>) => ReturnEl) & {
-    Line: <T>(props: MapProps<IRadialTreeRadianLineProps & T>) => ReturnEl;
-    Cap: <T>(props: MapProps<IRadialTreeRadianCapProps & T>) => ReturnEl;
-    Icon: <T>(props: MapProps<IRadialTreeRadianIconProps & T>) => ReturnEl;
-    Label: <T>(props: MapProps<IRadialTreeRadianLabelProps & T>) => ReturnEl;
+const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as Intergalactic.Component<
+  'g',
+  RadialTreeProps
+> & {
+  Title: Intergalactic.Component<'text', RadialTreeTitleProps>;
+  Radian: Intergalactic.Component<'g', RadialTreeRadianProps> & {
+    Line: Intergalactic.Component<'line', RadialTreeRadianLineProps>;
+    Cap: Intergalactic.Component<'circle', RadialTreeRadianCapProps>;
+    Icon: Intergalactic.Component<'g', RadialTreeRadianIconProps>;
+    Label: Intergalactic.Component<'text', RadialTreeRadianLabelProps>;
   };
 };
 

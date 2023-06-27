@@ -1,6 +1,6 @@
 import Popper, { PopperProps, PopperTriggerProps } from '@semcore/popper';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
+import { Box, BoxProps } from '@semcore/flex-box';
 import { Context } from './context';
 
 /** @deprecated */
@@ -15,14 +15,15 @@ export type TooltipChartProps = PopperProps &
   };
 
 /** @deprecated */
-export interface ITooltipChartContext extends TooltipChartContext, UnknownProperties {}
-export type TooltipChartContext = {
-  getTriggerProps: PropGetterFn;
-  getPopperProps: PropGetterFn;
+export interface ITooltipChartContext extends TooltipChartContext, UnknownProperties {
   /** Index active value for Axis x */
   xIndex: number | null;
   /** Index active value for Axis y */
   yIndex: number | null;
+}
+export type TooltipChartContext = {
+  getTriggerProps: PropGetterFn;
+  getPopperProps: PropGetterFn;
 };
 
 // declare const Tooltip: Intergalactic.Component<'div', TooltipChartProps, TooltipChartContext> & {
@@ -32,20 +33,25 @@ export type TooltipChartContext = {
 //   Dot: Intergalactic.Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
 //   Footer: typeof Box;
 export type TooltipTypeBase = {
-  Trigger: <T>(props: MapProps<ComponentProps<typeof Popper.Trigger> & T>) => ReturnEl;
-  Popper: <T>(props: MapProps<ComponentProps<typeof Popper.Popper> & T>) => ReturnEl;
-  Title: <T>(props: MapProps<IBoxProps & T>) => ReturnEl;
-  Dot: <T>(props: MapProps<IBoxProps & { color?: string } & T>) => ReturnEl;
-  Footer: <T>(props: MapProps<IBoxProps & T>) => ReturnEl;
+  Trigger: typeof Popper.Trigger;
+  Popper: typeof Popper.Popper;
+  Title: typeof Box;
+  Dot: Intergalactic.Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
+  Footer: typeof Box;
   Tooltip: TooltipType<IScatterPlotProps & { xIndex: number }>;
 };
 
-export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<T = ChildrenRenderProps>(
-  props: {
-    children: (props: ITooltipChartProps & T) => { children: ReturnEl };
-  } & IBoxProps &
+export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
+  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+>(
+  props: Intergalactic.InternalTypings.CustomRenderingResultComponentProps<
+    Tag,
     TooltipProps,
-) => ReturnEl) &
+    ChildrenRenderProps & TooltipChartContext,
+    { children: Intergalactic.InternalTypings.ReturnResult }
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<Intergalactic.InternalTypings.ComponentTag> &
   TooltipTypeBase;
 
 /**

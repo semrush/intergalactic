@@ -1,6 +1,5 @@
 import { BoxProps } from '@semcore/flex-box';
 import { UnknownProperties } from '@semcore/core';
-import { MapProps } from './Plot';
 import { Context } from './context';
 
 /** @deprecated */

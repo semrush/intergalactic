@@ -1,7 +1,6 @@
 import { Intergalactic } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
 import IContext from './context';
 import { TooltipType } from './Tooltip';
 
@@ -30,10 +29,9 @@ export type ScatterPlotProps = Context & {
   transparent?: boolean;
 };
 
-// declare const ScatterPlot: Intergalactic.Component<'g', ScatterPlotProps, Context>;
-declare const ScatterPlot: (<T>(props: MapProps<IScatterPlotProps & T>) => ReturnEl) & {
+declare const ScatterPlot: Intergalactic.Component<'g', ScatterPlotProps, Context> & {
   Tooltip: TooltipType<
-    IScatterPlotProps & {
+    ScatterPlotProps & {
       /**
        * @deprecated Use `index` instead.
        */

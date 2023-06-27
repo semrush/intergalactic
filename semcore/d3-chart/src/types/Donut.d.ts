@@ -1,7 +1,6 @@
 import { Intergalactic } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
 import IContext from './context';
 import { TooltipType } from './Tooltip';
 
@@ -55,15 +54,11 @@ export type EmptyDataProps = Context & {};
 export interface ILabelProps extends LabelProps, UnknownProperties {}
 export type LabelProps = Context & {};
 
-// declare const Donut: Intergalactic.Component<'g', DonutProps> & {
-//   Pie: Intergalactic.Component<'path', PieProps>;
-//   EmptyData: Intergalactic.Component<'path', IEmptyDataProps>;
-//   Label: Intergalactic.Component<'text', LabelProps>;
-declare const Donut: (<T>(props: MapProps<IDonutProps & T>) => ReturnEl) & {
-  Pie: <T>(props: MapProps<IPieProps & T>) => ReturnEl;
-  EmptyData: <T>(props: MapProps<IEmptyDataProps & T>) => ReturnEl;
-  Label: <T>(props: MapProps<ILabelProps & T>) => ReturnEl;
-  Tooltip: TooltipType<IPieProps>;
+declare const Donut: Intergalactic.Component<'g', DonutProps> & {
+  Pie: Intergalactic.Component<'path', PieProps>;
+  EmptyData: Intergalactic.Component<'path', IEmptyDataProps>;
+  Label: Intergalactic.Component<'text', LabelProps>;
+  Tooltip: TooltipType<PieProps>;
 };
 
 export default Donut;

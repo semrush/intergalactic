@@ -524,7 +524,7 @@ type IntergalacticDataTableRowComponent = (<
     Tag,
     DataTableRowProps,
     DataTableCtx & { data: Data },
-    Partial<DataTableRowProps> & { children?: Intergalactic.InternalTypings.RerturnResult },
+    Partial<DataTableRowProps> & { children?: Intergalactic.InternalTypings.ReturnResult },
     [row: Data[0], index: number]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
@@ -538,7 +538,7 @@ type IntergalacticDataTableCellComponent = (<
     Tag,
     DataTableCellProps,
     DataTableCtx & { data: Data },
-    Partial<DataTableCellProps> & { children?: Intergalactic.InternalTypings.RerturnResult },
+    Partial<DataTableCellProps> & { children?: Intergalactic.InternalTypings.ReturnResult },
     [row: Data[0], index: number]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

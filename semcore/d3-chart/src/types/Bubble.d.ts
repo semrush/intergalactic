@@ -1,7 +1,6 @@
 import { Intergalactic } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
 import IContext from './context';
 import { TooltipType } from './Tooltip';
 
@@ -37,10 +36,9 @@ export type BubbleContext = {
   index: number;
 };
 
-// declare const Bubble: Intergalactic.Component<string, BubbleProps, BubbleContext>;
-declare const Bubble: (<T>(props: MapProps<IBubbleProps & T, IBubbleContext>) => ReturnEl) & {
+declare const Bubble: Intergalactic.Component<string, BubbleProps, BubbleContext> & {
   Tooltip: TooltipType<
-    IBubbleProps & {
+    BubbleProps & {
       /**
        * @deprecated Use `index` instead.
        */

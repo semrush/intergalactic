@@ -136,11 +136,11 @@ export namespace Intergalactic {
   type ComponentChildren<
     Props,
     Context,
-    RenderingResult = InternalTypings.RerturnResult,
+    RenderingResult = InternalTypings.ReturnResult,
     AdditionalContext extends any[] = never[],
   > =
     | ((props: Context & Omit<Props, 'chldren'>, ...args: AdditionalContext) => RenderingResult)
-    | InternalTypings.RerturnResult;
+    | InternalTypings.ReturnResult;
   type ComponentBasicProps = {
     ref?: React.ForwardedRef<HTMLElement | null>;
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
@@ -166,7 +166,7 @@ export namespace Intergalactic {
   >;
   /** @private */
   export namespace InternalTypings {
-    export type RerturnResult =
+    export type ReturnResult =
       | React.ReactElement
       | React.ReactNode
       | React.ReactNode[]
@@ -187,7 +187,7 @@ export namespace Intergalactic {
       children?: ComponentChildren<
         Props & { children: React.ReactNode },
         Context,
-        RerturnResult,
+        ReturnResult,
         AdditionalContext
       >;
     } & ComponentBasicProps &
@@ -196,7 +196,7 @@ export namespace Intergalactic {
       Tag extends ComponentTag,
       Props,
       Context = never,
-      RenderingResult = RerturnResult,
+      RenderingResult = ReturnResult,
       AdditionalContext extends any[] = never[],
     > = {
       tag?: Tag;

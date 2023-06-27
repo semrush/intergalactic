@@ -34,11 +34,11 @@ type HoverTooltip = (<X, Y>(
 ) => ReturnEl) &
   TooltipTypeBase;
 
-declare const HoverLine: (<T>(props: MapProps<IHoverProps & T>) => ReturnEl) & {
+declare const HoverLine: Intergalactic.Component<'g', HoverProps> & {
   Tooltip: HoverTooltip;
 };
 
-declare const HoverRect: (<T>(props: MapProps<IHoverProps & T>) => ReturnEl) & {
+declare const HoverRect: Intergalactic.Component<'g', HoverProps> & {
   Tooltip: HoverTooltip;
 };
 export { HoverLine, HoverRect };
