@@ -294,12 +294,3 @@ execSync('pnpm lint:css --fix', {
   cwd: resolvePath(dirname, '../../../'),
   stdio: ['inherit', 'inherit', 'inherit'],
 });
-
-execSync(
-  `pnpm rome format --write "./semcore/utils/src/themes/default.json" "./website/docs/style/design-tokens/components/design-tokens.json" "./website/docs/style/design-tokens/components/base-tokens.json"`,
-  {
-    encoding: 'utf-8',
-    cwd: resolvePath(dirname, '../../../'),
-    stdio: ['inherit', 'inherit', 'inherit'],
-  },
-);

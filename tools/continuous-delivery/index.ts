@@ -5,6 +5,7 @@ import { updateVersions } from './src/updateVersions';
 import { updateChangelogs } from './src/updateChangelogs';
 import { runPublisher } from './src/runPublisher';
 import { syncCheck } from './src/syncCheck';
+import { formatMarkdown } from './src/utils';
 
 export const runContinuousDelivery = async () => {
   const inNpmData = await fetchFromNpm();
@@ -24,4 +25,4 @@ export const runContinuousDelivery = async () => {
   }
 };
 
-export { fetchFromNpm };
+export { fetchFromNpm, formatMarkdown };

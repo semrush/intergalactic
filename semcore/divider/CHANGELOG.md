@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.2.32] - 2023-06-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+
 ## [3.2.31] - 2023-06-14
 
 ### Changed
@@ -181,7 +187,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 - Added `Divider` auto size height for vertical orientation, this fixed show `<Divider orientation="vertical"` in flex
-  block.
+block.
 
 ## [2.0.0] - 2020-06-01
 

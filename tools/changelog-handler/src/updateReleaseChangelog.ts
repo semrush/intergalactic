@@ -4,8 +4,7 @@ import fs from 'fs-extra';
 import { patchReleaseChangelog } from './patchers/patchReleaseChangelog';
 import { toMarkdown } from 'marked-ast-markdown';
 import { serializeReleaseChangelog } from './serializers/serializeReleaseChangelog';
-import execa from 'execa';
-import { fetchFromNpm } from '@semcore/continuous-delivery';
+import { fetchFromNpm, formatMarkdown } from '@semcore/continuous-delivery';
 
 const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
@@ -19,8 +18,7 @@ export const updateReleaseChangelog = async () => {
   const changelogPatch = await patchReleaseChangelog(currentVersion, currentDependencies);
   const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
   const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
-  const changelogText =
-    toMarkdown(changelogMarkdownAst).replace(/\n\*\s/g, '\n- ').replace(/\*\*\s\s+/g, '** ') + '\n';
+  const changelogText = formatMarkdown(toMarkdown(changelogMarkdownAst));
   const changelogFilePath = resolvePath(releasePackageDir, 'CHANGELOG.md');
   await fs.writeFile(changelogFilePath, changelogText);
   releasePackageFile = await fs.readJson(releasePackageFilePath);
