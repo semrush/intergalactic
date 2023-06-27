@@ -1,7 +1,7 @@
 {
   "name": "@semcore/errors",
   "description": "Semrush Errors Component",
-  "version": "3.11.1",
+  "version": "3.11.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -15,7 +15,7 @@
     "@semcore/button": "^4",
     "@semcore/flex-box": "^4",
     "@semcore/format-text": "^3.0.0",
-    "@semcore/illustration": "1.4.28",
+    "@semcore/illustration": "1.4.29",
     "@semcore/typography": "^4",
     "@semcore/utils": "^3.27"
   },
