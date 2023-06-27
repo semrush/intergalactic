@@ -57,7 +57,8 @@ export type PropsWithRenderFnChildren<Props = {}, Ctx = {}, UCProps = {}> = Omit
 export type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
   children?: ((props: Props & Ctx, handlers: UCProps) => React.ReactNode) | React.ReactNode;
 };
-export type ReturnEl = React.ReactElement | React.ReactNode | React.ReactNode[] | string | null;
+/** @deprecated */
+export type ReturnEl = React.ReactElement | null;
 
 export interface IRootNodeProps {
   render: React.ElementType | string;
@@ -124,39 +125,33 @@ export type Component<
 };
 
 export namespace Intergalactic {
-  export type ReactFCProps<C extends React.FC> = C extends React.FC<infer Props>
-    ? Omit<Props, 'tag'>
-    : {};
-  export type ReactComponentProps<C extends React.ComponentClass> = C extends React.ComponentClass<
+  type ReactFCProps<C extends React.FC> = C extends React.FC<infer Props> ? Omit<Props, 'tag'> : {};
+  type ReactComponentProps<C extends React.ComponentClass> = C extends React.ComponentClass<
     infer Props
   >
     ? Omit<Props, 'tag'>
     : never;
-  export type ReactFCLike = (props: any) => any;
-  export type ReactFCLikeProps<C extends ReactFCLike> = C extends (props: infer Props) => any
-    ? Props
-    : {};
-  export type ComponentTag =
-    | keyof JSX.IntrinsicElements
-    | React.ComponentClass
-    | React.FC
-    | ReactFCLike;
-  export type ComponentChildren<Props, Context, Handlers> =
-    | ((props?: Context & Omit<Props, 'chldren'>, handlers?: Handlers) => ReturnEl)
-    // | ((props?: Context & Omit<Props, 'chldren'>) => ReturnEl)
-    // | (() => ReturnEl)
-    | ReturnEl;
-  export type ComponentBasicProps = {
+  type ReactFCLike = (props: any) => any;
+  type ReactFCLikeProps<C extends ReactFCLike> = C extends (props: infer Props) => any ? Props : {};
+  type ComponentChildren<
+    Props,
+    Context,
+    RenderingResult = InternalTypings.RerturnResult,
+    AdditionalContext extends any[] = never[],
+  > =
+    | ((props: Context & Omit<Props, 'chldren'>, ...args: AdditionalContext) => RenderingResult)
+    | InternalTypings.RerturnResult;
+  type ComponentBasicProps = {
     ref?: React.ForwardedRef<HTMLElement | null>;
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
   };
-  export type MergeProps<HighPriorityProps, LowPriorityProps> = Omit<
+  type MergeProps<HighPriorityProps, LowPriorityProps> = Omit<
     LowPriorityProps,
     keyof HighPriorityProps
   > &
     HighPriorityProps;
-  export type ComponentPropsNesting<Tag extends ComponentTag> = Omit<
+  type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
     (Tag extends React.FC
       ? ReactFCProps<Tag>
       : Tag extends React.ComponentClass
@@ -169,27 +164,62 @@ export namespace Intergalactic {
       (Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}),
     'children' | 'tag' | 'ref'
   >;
+  /** @private */
+  export namespace InternalTypings {
+    export type RerturnResult =
+      | React.ReactElement
+      | React.ReactNode
+      | React.ReactNode[]
+      | string
+      | null;
+    export type ComponentTag =
+      | keyof JSX.IntrinsicElements
+      | React.ComponentClass
+      | React.FC
+      | ReactFCLike;
+    export type ComponentProps<
+      Tag extends ComponentTag,
+      Props,
+      Context = never,
+      AdditionalContext extends any[] = never[],
+    > = {
+      tag?: Tag;
+      children?: ComponentChildren<
+        Props & { children: React.ReactNode },
+        Context,
+        RerturnResult,
+        AdditionalContext
+      >;
+    } & ComponentBasicProps &
+      MergeProps<Omit<Props, 'tag' | 'ref'>, ComponentPropsNesting<Tag>>;
+    export type CustomRenderingResultComponentProps<
+      Tag extends ComponentTag,
+      Props,
+      Context = never,
+      RenderingResult = RerturnResult,
+      AdditionalContext extends any[] = never[],
+    > = {
+      tag?: Tag;
+      children?: ComponentChildren<
+        Props & { children: React.ReactNode },
+        Context,
+        RenderingResult,
+        AdditionalContext
+      >;
+    } & ComponentBasicProps &
+      MergeProps<Omit<Props, 'tag' | 'ref'>, ComponentPropsNesting<Tag>>;
+    export type ComponentRenderingResults = React.ReactElement;
+    export type ComponentAdditive<BaseTag extends ComponentTag> = {
+      __nestedProps: ComponentPropsNesting<BaseTag>;
+    };
+  }
   export type Component<
-    BaseTag extends ComponentTag = never,
+    BaseTag extends InternalTypings.ComponentTag = never,
     BaseProps = {},
     Context = {},
-    Handlers = never,
-  > = (<Tag extends ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
-    props: {
-      tag?: Tag;
-      children?: ComponentChildren<Props, Context, Handlers>;
-    } & ComponentBasicProps &
-      MergeProps<Omit<Props, 'tag' | 'ref'>, ComponentPropsNesting<Tag>>,
-  ) => React.ReactElement) & { __nestedProps?: ComponentPropsNesting<BaseTag> };
-
-  /** After updating types in the namespace checkout all types with marker "Intergalactic.Component generic override" and update correspondingly. */
-
-  // const x: any = null;
-  // const C1: Component<'div', { x1: number }> = x;
-  // type TC1 = ComponentPropsNesting<typeof C1>;
-  // type TC2 = ReactFCLikeProps<typeof C1>;
-  // // const X1: TC1 = x;
-  // // const X2: TC2 = x;
-  // const C2: Component<'a', { x2: boolean }> = x;
-  // const C3 = <C1 tag={C2} x1={3} x2 hr/>;
+    AdditionalContext extends any[] = never[],
+  > = (<Tag extends InternalTypings.ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
+    props: InternalTypings.ComponentProps<Tag, Props, Context, AdditionalContext>,
+  ) => InternalTypings.ComponentRenderingResults) &
+    InternalTypings.ComponentAdditive<BaseTag>;
 }

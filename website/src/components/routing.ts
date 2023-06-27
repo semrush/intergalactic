@@ -32,5 +32,5 @@ export const usePageData = (route) => {
 
   const { data, loading, error } = usePromise(routes[route].loadPage);
 
-  return { loading, error, page: data?.default };
+  return { loading, error, page: (data as any)?.default };
 };

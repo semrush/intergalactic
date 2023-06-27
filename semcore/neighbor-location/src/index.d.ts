@@ -31,7 +31,7 @@ export type NeighborLocationDetectProps = INeighborItemProps & {
 };
 
 declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationProps> & {
-  Detect: Intergalactic.Component<'div', NeighborLocationDetectProps>;
+  Detect: Intergalactic.Component<'div', {}, 'right' | 'both' | 'left' | undefined>;
 };
 
 declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;

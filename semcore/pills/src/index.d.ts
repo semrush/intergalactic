@@ -16,7 +16,9 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
   /** Disabled state */
   disabled?: boolean;
   /** Called when the selection is changed */
-  onChange?: (value: T, e?: React.SyntheticEvent<HTMLSpanElement>) => void;
+  onChange?:
+    | ((value: T, e?: React.SyntheticEvent<HTMLSpanElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /** Value for the selected pill */
   value?: T;
   /** Default value for the selected pill */
@@ -61,8 +63,21 @@ export type PillsHandlers = {
   value: (value: PillsValue) => void;
 };
 
-declare const Pills: Intergalactic.Component<'div', PillsProps, PillsContext, PillsHandlers> & {
-  Item: Intergalactic.Component<'button', PillProps, PillsHandlers> & {
+type IntergalacticPillsComponent = (<
+  Value extends PillsValue,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    PillsProps<Value>,
+    PillsContext,
+    PillsHandlers
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const Pills: IntergalacticPillsComponent & {
+  Item: Intergalactic.Component<'button', PillProps, [handlers: PillsHandlers]> & {
     Text: typeof Box;
     Addon: typeof Box;
   };

@@ -97,11 +97,11 @@ export default class Demo extends React.Component {
             Organic Keyword Trend
           </Text>
           <Flex mt='12px'>
-            {this.renderCheck('top3', 'Top 3')}
-            {this.renderCheck('top10', '4-10')}
-            {this.renderCheck('top20', '11-20')}
-            {this.renderCheck('top50', '21-50')}
-            {this.renderCheck('top100', '51-100')}
+            {this.renderCheck('top3')}
+            {this.renderCheck('top10')}
+            {this.renderCheck('top20')}
+            {this.renderCheck('top50')}
+            {this.renderCheck('top100')}
           </Flex>
         </Box>
         <ResponsiveContainer height={180}>

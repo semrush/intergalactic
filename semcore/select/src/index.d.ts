@@ -51,7 +51,9 @@ export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps
      * Callback on value change
      * @type (value: SelectValue, e: React.SyntheticEvent) => boolean | void
      */
-    onChange?: (value: T, e: React.SyntheticEvent) => boolean | void;
+    onChange?:
+      | ((value: T, e: React.SyntheticEvent) => boolean | void)
+      | React.Dispatch<React.SetStateAction<T>>;
     /**
      * Trigger placeholder at not selected value
      */
@@ -109,7 +111,20 @@ export type SelectHandlers = DropdownMenuHandlers & {
   value: (index: SelectValue) => void;
 };
 
-declare const Select: Intergalactic.Component<'div', SelectProps, SelectContext, SelectHandlers> & {
+type IntergalacticSelectComponent = (<
+  Value extends SelectValue,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    SelectProps<Value>,
+    SelectContext,
+    SelectHandlers
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
     'div',
     DropdownMenuTriggerProps & ButtonTriggerProps,
@@ -121,7 +136,12 @@ declare const Select: Intergalactic.Component<'div', SelectProps, SelectContext,
   Popper: typeof DropdownMenu.Popper;
   List: typeof DropdownMenu.List;
   Menu: typeof DropdownMenu.Menu;
-  Option: Intergalactic.Component<'option', SelectOptionProps, SelectContext, SelectHandlers> & {
+  Option: Intergalactic.Component<
+    'option',
+    SelectOptionProps,
+    SelectContext,
+    [handlers: SelectHandlers]
+  > & {
     Addon: typeof DropdownMenu.Item.Addon;
     Checkbox: Intergalactic.Component<'div', BoxProps & { theme?: string; selected?: boolean }>;
   };

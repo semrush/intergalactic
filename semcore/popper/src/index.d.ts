@@ -169,9 +169,24 @@ export type PopperHandlers = {
   visible: (visible: boolean) => void;
 };
 
-declare const Popper: Intergalactic.Component<'div', PopperProps, PopperContext, PopperHandlers> & {
-  Trigger: Intergalactic.Component<'div', PopperTriggerProps, PopperContext, PopperHandlers>;
-  Popper: Intergalactic.Component<'div', PopperPopperProps, PopperContext, PopperHandlers>;
+declare const Popper: Intergalactic.Component<
+  'div',
+  PopperProps,
+  PopperContext,
+  [handlers: PopperHandlers]
+> & {
+  Trigger: Intergalactic.Component<
+    'div',
+    PopperTriggerProps,
+    PopperContext,
+    [handlers: PopperHandlers]
+  >;
+  Popper: Intergalactic.Component<
+    'div',
+    PopperPopperProps,
+    PopperContext,
+    [handlers: PopperHandlers]
+  >;
 };
 
 export default Popper;

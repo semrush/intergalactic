@@ -1,5 +1,5 @@
 import { Box, FlexProps } from '@semcore/flex-box';
-import { PropGetterFn, Intergalactic } from '@semcore/core';
+import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import { CollapseProps } from '@semcore/animation';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
@@ -18,7 +18,9 @@ export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProp
   /** Called when the selection is changed
    * @type (value: AccordionValue, event?: React.SyntheticEvent) => void
    * */
-  onChange?: (value: T, event?: React.SyntheticEvent) => void;
+  onChange?:
+    | ((value: T, event?: React.SyntheticEvent) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
@@ -60,37 +62,25 @@ export type AccordionItemContext = {
   selected?: boolean;
 };
 
-/** Intergalactic.Component generic override */
-type IntergalacticAccordionComponent<
-  BaseTag extends Intergalactic.ComponentTag = never,
-  BaseProps = {},
-  Context = {},
-  Handlers = never,
-> = (<
+type IntergalacticAccordionComponent = (<
   Value extends AccordionValue,
-  Tag extends Intergalactic.ComponentTag = BaseTag,
-  Props extends BaseProps = BaseProps,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
 >(
-  props: {
-    tag?: Tag;
-    value?: Value;
-    onChange?: (value: Value, event?: React.SyntheticEvent) => void;
-    children?: Intergalactic.ComponentChildren<Props & { value: Value }, Context, Handlers>;
-  } & Intergalactic.ComponentBasicProps &
-    Intergalactic.MergeProps<Omit<Props, 'tag' | 'ref'>, Intergalactic.ComponentPropsNesting<Tag>>,
-) => React.ReactElement) & { __nestedProps: Intergalactic.ComponentPropsNesting<BaseTag> };
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    AccordionProps<Value>,
+    AccordionContext & { value: Value },
+    [handlers: AccordionHandlers]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
-declare const Accordion: IntergalacticAccordionComponent<
-  'div',
-  AccordionProps,
-  AccordionContext,
-  AccordionHandlers
-> & {
+declare const Accordion: IntergalacticAccordionComponent & {
   Item: Intergalactic.Component<
     'div',
     AccordionItemProps,
     AccordionItemContext,
-    AccordionHandlers
+    [handlers: AccordionHandlers]
   > & {
     Toggle: typeof Box;
     Chevron: typeof Box;

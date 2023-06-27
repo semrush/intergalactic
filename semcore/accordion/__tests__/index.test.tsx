@@ -1,12 +1,45 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
-import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
+import { expect, test, describe, beforeEach, vi, assertType } from '@semcore/testing-utils/vitest';
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Accordion from '../src';
+import { Intergalactic } from '@semcore/core';
 
 describe('Accordion', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Accordion href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => {}} />);
+    });
+    test('value&onChange relation with useState', () => {
+      const value: number[] = any;
+      const setValue: React.Dispatch<React.SetStateAction<number[]>> = any;
+
+      assertType<JSX.Element>(<Accordion value={value} onChange={setValue} />);
+    });
+    test('value&children relation', () => {
+      assertType<JSX.Element>(<Accordion value={1}>{(props, handlers) => any}</Accordion>);
+      assertType<JSX.Element>(
+        <Accordion value={1}>{({ value }: { value: number }) => any}</Accordion>,
+      );
+      assertType<JSX.Element>(
+        // @ts-expect-error
+        <Accordion value={1}>{({ value }: { value: string }) => any}</Accordion>,
+      );
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Should render correctly', async ({ task }) => {

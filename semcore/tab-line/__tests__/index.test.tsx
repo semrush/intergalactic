@@ -6,8 +6,26 @@ import TabLine from '../src';
 
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { Intergalactic } from '@semcore/core';
+import { assertType } from 'vitest';
 
 describe('TabLine', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<TabLine tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<TabLine href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<TabLine value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<TabLine value={1} onChange={(value: string) => {}} />);
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Render correctly', async ({ task }) => {

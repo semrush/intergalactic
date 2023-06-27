@@ -151,7 +151,7 @@ declare const PaletteManager: Intergalactic.Component<
   'div',
   PaletteManagerProps,
   PaletteManagerContext,
-  PaletteManagerHandlers
+  [handlers: PaletteManagerHandlers]
 > & {
   Item: Intergalactic.Component<'div', ItemProps>;
   Colors: Intergalactic.Component<'div', ColorsCustomProps>;
@@ -162,7 +162,7 @@ declare const ColorPicker: Intergalactic.Component<
   'div',
   ColorPickerProps,
   ColorPickerContext,
-  ColorPickerHandlers
+  [handlers: ColorPickerHandlers]
 > & {
   Trigger: typeof Dropdown.Trigger;
   Popper: typeof Dropdown.Popper;

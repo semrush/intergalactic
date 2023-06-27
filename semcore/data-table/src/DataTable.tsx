@@ -503,23 +503,46 @@ function ComponentDefinition() {
   return null;
 }
 
-/** Intergalactic.Component generic override */
-type IntergalacticDataTableComponent<
-  BaseTag extends Intergalactic.ComponentTag = never,
-  BaseProps = {},
-  Context = {},
-  Handlers = never,
-> = (<
-  Data extends DataTableData,
-  Tag extends Intergalactic.ComponentTag = BaseTag,
-  Props extends BaseProps = BaseProps,
+type IntergalacticDataTableComponent = (<
+  Data extends DataTableData[],
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
 >(
-  props: {
-    tag?: Tag;
-    children?: Intergalactic.ComponentChildren<Props & { data: Data[] }, Context, Handlers>;
-  } & Intergalactic.ComponentBasicProps &
-    Intergalactic.MergeProps<Omit<Props, 'tag' | 'ref'>, Intergalactic.ComponentPropsNesting<Tag>>,
-) => React.ReactElement) & { __nestedProps: Intergalactic.ComponentPropsNesting<BaseTag> };
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    DataTableProps<Data>,
+    DataTableCtx,
+    never
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+type IntergalacticDataTableRowComponent = (<
+  Data extends DataTableData[],
+  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+>(
+  props: Intergalactic.InternalTypings.CustomRenderingResultComponentProps<
+    Tag,
+    DataTableRowProps,
+    DataTableCtx & { data: Data },
+    Partial<DataTableRowProps> & { children?: Intergalactic.InternalTypings.RerturnResult },
+    [row: Data[0], index: number]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+type IntergalacticDataTableCellComponent = (<
+  Data extends DataTableData[],
+  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+>(
+  props: Intergalactic.InternalTypings.CustomRenderingResultComponentProps<
+    Tag,
+    DataTableCellProps,
+    DataTableCtx & { data: Data },
+    Partial<DataTableCellProps> & { children?: Intergalactic.InternalTypings.RerturnResult },
+    [row: Data[0], index: number]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
 const DefinitionTable = createComponent(
   RootDefinitionTable,
@@ -531,12 +554,12 @@ const DefinitionTable = createComponent(
     Row: ComponentDefinition,
   },
   {},
-) as IntergalacticDataTableComponent<'div', DataTableProps, DataTableCtx> & {
+) as IntergalacticDataTableComponent & {
   Head: Intergalactic.Component<'div', DataTableHeadProps>;
   Body: Intergalactic.Component<'div', DataTableBodyProps>;
   Column: Intergalactic.Component<'div', DataTableColumnProps>;
-  Cell: Intergalactic.Component<'div', DataTableCellProps>;
-  Row: Intergalactic.Component<'div', DataTableRowProps>;
+  Row: IntergalacticDataTableRowComponent;
+  Cell: IntergalacticDataTableCellComponent;
 };
 
 export { ROW_GROUP };

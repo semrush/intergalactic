@@ -8,8 +8,26 @@ import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-
 import { axe } from '@semcore/testing-utils/axe';
 
 import Pills from '../src';
+import { Intergalactic } from '@semcore/core';
+import { assertType } from 'vitest';
 
 describe('PillGroup', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<Pills tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Pills href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<Pills value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Pills value={1} onChange={(value: string) => {}} />);
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Should support onChange callback', () => {

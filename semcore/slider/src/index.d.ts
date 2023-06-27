@@ -57,8 +57,13 @@ type SliderItemProps = BoxProps;
 declare const Slider: Intergalactic.Component<'div', SliderProps> & {
   Knob: typeof Box;
   Bar: typeof Box;
-  Options: Intergalactic.Component<'div', SliderOptionsProps, SliderContext, SliderHandlers>;
-  Item: Intergalactic.Component<'div', SliderItemProps, SliderContext, SliderHandlers>;
+  Options: Intergalactic.Component<
+    'div',
+    SliderOptionsProps,
+    SliderContext,
+    [handlers: SliderHandlers]
+  >;
+  Item: Intergalactic.Component<'div', SliderItemProps, SliderContext, [handlers: SliderHandlers]>;
 };
 
 export default Slider;

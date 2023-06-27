@@ -6,6 +6,7 @@
     "process-theme": "tsm --require=./.ci/tsm-filter-warnings.js semcore/utils/theme/processor.ts",
     "typecheck": "pnpm --filter @semcore/* --filter !@semcore/babel-plugin-root --filter !@semcore/babel-plugin-styles --filter !@semcore/babel-plugin-react-semcore --filter !@semcore/babel-preset-ui --filter !@semcore/testing-utils --filter !@semcore/babel-plugin-recharts --filter !@semcore/email --filter !@semcore/dep-checker --filter !@semcore/icon-transform-svg --filter !@semcore/shadow-loader exec tsc --noEmit",
     "test": "vitest",
+    "test:types": "vitest typecheck",
     "vo-test:setup": "npx @guidepup/setup",
     "vo-test": "playwright test --config playwright.vo.config.ts",
     "browser-test": "playwright test --config playwright.browser.config.ts",

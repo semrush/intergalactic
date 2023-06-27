@@ -27,8 +27,6 @@
   "include": ["semcore", "tools"],
   "exclude": [
     "node_modules",
-    "website",
-    "**/__tests__/**",
     "tools/playground/examples/*",
     "tools/playground/examples/**/*"
   ]

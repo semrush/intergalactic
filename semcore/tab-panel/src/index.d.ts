@@ -11,7 +11,9 @@ export interface ITabPanelProps<T extends TabPanelValue = TabPanelValue>
     UnknownProperties {}
 export type TabPanelProps<T extends TabPanelValue = TabPanelValue> = BoxProps & {
   /** Is invoked when changing the selection */
-  onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
+  onChange?:
+    | ((value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /** Value of the selected tab */
   value?: T;
   /** Default value of the selected tab
@@ -48,13 +50,21 @@ export type TabPanelHandlers = {
   value: (value: TabPanelValue) => void;
 };
 
-declare const TabPanel: Intergalactic.Component<
-  'div',
-  TabPanelProps,
-  TabPanelContext,
-  TabPanelHandlers
-> & {
-  Item: Intergalactic.Component<'div', TabPanelItemProps, TabPanelHandlers> & {
+type IntergalacticTabPanelComponent = (<
+  Value extends TabPanelValue,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    TabPanelProps<Value>,
+    TabPanelContext,
+    [handlers: TabPanelHandlers]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const TabPanel: IntergalacticTabPanelComponent & {
+  Item: Intergalactic.Component<'div', TabPanelItemProps, {}, [handlers: TabPanelHandlers]> & {
     Text: typeof Box;
     Addon: typeof Box;
   };

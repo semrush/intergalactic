@@ -15,6 +15,22 @@ import InputSearch from '../src/InputSearch';
 HTMLElement.prototype.scrollIntoView = () => {};
 
 describe('Select Trigger', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Accordion href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => {}} />);
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Trigger renders correctly', async ({ task }) => {

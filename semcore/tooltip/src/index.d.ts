@@ -1,6 +1,11 @@
 import React from 'react';
 import { Intergalactic } from '@semcore/core';
-import Popper, { PopperContext, PopperProps, PopperTriggerProps } from '@semcore/popper';
+import Popper, {
+  PopperContext,
+  PopperPopperProps,
+  PopperProps,
+  PopperTriggerProps,
+} from '@semcore/popper';
 
 /** @deprecated */
 export interface ITooltipProps extends TooltipProps, UnknownProperties {}
@@ -23,7 +28,7 @@ export type TooltipContext = PopperContext & {};
 
 declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipContext> & {
   Trigger: typeof Popper.Trigger;
-  Popper: typeof Popper.Popper;
+  Popper: Intergalactic.Component<'div', TooltipProps, TooltipContext>;
 };
 
 export default Tooltip;

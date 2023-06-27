@@ -395,7 +395,7 @@ declare const MonthPicker: Intergalactic.Component<
   'div',
   DatePickerProps,
   MonthPickerContext & CalendarMonthsContext,
-  DatePickerHandlers
+  [handlers: DatePickerHandlers]
 > & {
   /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
@@ -430,7 +430,7 @@ declare const MonthRangePicker: Intergalactic.Component<
   'div',
   DateRangePickerProps,
   MonthRangePickerContext & CalendarMonthsContext,
-  DatePickerHandlers
+  [handlers: DatePickerHandlers]
 > & {
   /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {

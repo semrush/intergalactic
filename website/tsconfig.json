@@ -17,6 +17,7 @@
     "paths": {
       "static/*": ["src/static/*"],
       "utils/*": ["src/utils/*"],
+      "@semcore/*": ["../semcore/*"],
       "@semcore/ui/*": ["../semcore/*"],
       "@semcore/ui/utils/*": ["../semcore/utils/src/*"]
     }

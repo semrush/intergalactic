@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Spin from '@semcore/ui/spin';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Text } from '@semcore/ui/typography';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import Tooltip from '@semcore/ui/tooltip';
 import Checkbox from '@semcore/ui/checkbox';
 import Link from '@semcore/ui/link';

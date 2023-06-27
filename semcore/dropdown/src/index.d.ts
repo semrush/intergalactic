@@ -34,7 +34,7 @@ declare const Dropdown: Intergalactic.Component<
   'div',
   DropdownProps,
   DropdownContext,
-  DropdownHandlers
+  [handlers: DropdownHandlers]
 > & {
   Trigger: typeof Popper.Trigger;
   Popper: typeof Popper.Popper;

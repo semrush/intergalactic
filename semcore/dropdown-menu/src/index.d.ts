@@ -118,7 +118,7 @@ declare const DropdownMenu: Intergalactic.Component<
   'div',
   DropdownMenuProps,
   IDropdownMenuContext,
-  DropdownMenuHandlers
+  [handlers: DropdownMenuHandlers]
 > & {
   Trigger: typeof Dropdown.Trigger;
   Popper: typeof Dropdown.Popper;
@@ -126,19 +126,19 @@ declare const DropdownMenu: Intergalactic.Component<
     'div',
     DropdownMenuListProps,
     DropdownMenuContext,
-    DropdownMenuHandlers
+    [handlers: DropdownMenuHandlers]
   >;
   Menu: Intergalactic.Component<
     'div',
     DropdownMenuMenuProps,
     DropdownMenuContext,
-    DropdownMenuHandlers
+    [handlers: DropdownMenuHandlers]
   >;
   Item: Intergalactic.Component<
     'div',
     DropdownMenuItemProps,
     DropdownMenuContext,
-    DropdownMenuHandlers
+    [handlers: DropdownMenuHandlers]
   > & {
     Addon: typeof Box;
   };

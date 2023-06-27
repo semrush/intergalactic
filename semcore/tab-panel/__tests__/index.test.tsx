@@ -7,8 +7,26 @@ import TabPanel from '../src';
 
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { assertType } from 'vitest';
+import { Intergalactic } from '@semcore/core';
 
 describe('TabPanel', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<TabPanel tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<TabPanel href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<TabPanel value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<TabPanel value={1} onChange={(value: string) => {}} />);
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Render correctly', async ({ task }) => {

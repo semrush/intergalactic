@@ -6,7 +6,7 @@ const Demo = () => {
   const includeInputProps = [...inputProps, 'data-test-id'];
   return (
     <Radio>
-      <Radio.Value includeInputProps={includeInputProps} data-test-id="value" />
+      <Radio.Value includeInputProps={includeInputProps} data-test-id='value' />
       <Radio.Text>Value</Radio.Text>
     </Radio>
   );

@@ -21,7 +21,9 @@ export type TabLineProps<T extends TabLineValue = TabLineValue> = BoxProps &
      * */
     underlined?: boolean;
     /** Is invoked when changing the selection */
-    onChange?: (value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void;
+    onChange?:
+      | ((value: T, e?: React.SyntheticEvent<HTMLButtonElement>) => void)
+      | React.Dispatch<React.SetStateAction<T>>;
     /** Value of the selected tab */
     value?: T;
     /** Default value of the selected tab
@@ -59,13 +61,21 @@ export type TabLineHandlers = {
   value: (value: TabLineValue) => void;
 };
 
-declare const TabLine: Intergalactic.Component<
-  'div',
-  TabLineProps,
-  TabLineContext,
-  TabLineHandlers
-> & {
-  Item: Intergalactic.Component<'div', TabLineItemProps, TabLineHandlers> & {
+type IntergalacticTabLineComponent = (<
+  Value extends TabLineValue,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    TabLineProps<Value>,
+    TabLineContext,
+    TabLineHandlers
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const TabLine: IntergalacticTabLineComponent & {
+  Item: Intergalactic.Component<'div', TabLineItemProps, {}, [handlers: TabLineHandlers]> & {
     Text: typeof Box;
     Addon: typeof Box;
   };

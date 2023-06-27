@@ -21,6 +21,8 @@ import { LinkTrigger } from '@semcore/base-trigger';
 import resolveColor from '@semcore/utils/lib/color';
 
 import DataTable, { ROW_GROUP } from '../src';
+import { assertType } from 'vitest';
+import { Intergalactic } from '@semcore/core';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -58,6 +60,31 @@ const data = [
 ];
 
 describe('DataTable', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<DataTable tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<DataTable href='https://google.com' />);
+    });
+    test('typed data', () => {
+      assertType<JSX.Element>(
+        <DataTable<{ a: number; b: number; c: number }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
+      );
+      assertType<JSX.Element>(
+        // @ts-expect-error
+        <DataTable<{ a: string; b: string; c: string }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
+      );
+    });
+    test('data&uniqueKey relation', () => {
+      assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='a' />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='f' />);
+    });
+  });
+
   beforeEach(cleanup);
 
   shouldSupportClassName(DataTable);

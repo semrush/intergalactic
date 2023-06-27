@@ -52,7 +52,7 @@ declare const TimePicker: Intergalactic.Component<
   'div',
   TimePickerProps,
   TimePickerContext,
-  TimePickerHandlers
+  [handlers: TimePickerHandlers]
 > & {
   Hours: Intergalactic.Component<'div', TimePickerItemProps>;
   Minutes: Intergalactic.Component<'div', TimePickerItemProps>;

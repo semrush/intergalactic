@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import Skeleton from '@semcore/ui/skeleton';
 import Checkbox from '@semcore/ui/checkbox';
 import Tooltip from '@semcore/ui/tooltip';
