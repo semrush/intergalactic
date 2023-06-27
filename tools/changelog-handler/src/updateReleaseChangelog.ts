@@ -4,9 +4,7 @@ import fs from 'fs-extra';
 import { patchReleaseChangelog } from './patchers/patchReleaseChangelog';
 import { toMarkdown } from 'marked-ast-markdown';
 import { serializeReleaseChangelog } from './serializers/serializeReleaseChangelog';
-import execa from 'execa';
-import { fetchFromNpm } from '@semcore/continuous-delivery';
-import { formatMarkdown } from '@semcore/continuous-delivery/src/utils';
+import { fetchFromNpm, formatMarkdown } from '@semcore/continuous-delivery';
 
 const filename = fileURLToPath(import.meta.url);
 const releasePackageDir = resolvePath(filename, '../../../../semcore/ui/');
