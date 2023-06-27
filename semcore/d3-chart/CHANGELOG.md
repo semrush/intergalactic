@@ -2,9 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.17.2] - 2023-06-22
+## [2.17.3] - 2023-06-27
 
-## [2.17.1] - 2023-06-14
+### Fixed
+
+- Fixed animation on hover when moving mouse quickly on border of `Donut` chart.
+
+## [2.17.2] - 2023-06-22
 
 ### Changed
 
