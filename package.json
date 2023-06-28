@@ -21,7 +21,7 @@
     "playground": "pnpm --filter @semcore/playground run start",
     "clean:illustration": "pnpm --filter @semcore/illustration run clean",
     "coverage": "vitest run --coverage",
-    "format": "rome format ./semcore ./tools ./website ./.ci",
+    "format": "rome format ./semcore ./tools ./website ./.ci --write",
     "lint:es": "rome check ./semcore ./tools ./website ./.ci",
     "lint:ts": "tsc --project tsconfig.json --noEmit",
     "lint:css": "stylelint **/*.css",
