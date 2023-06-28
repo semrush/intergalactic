@@ -1765,7 +1765,9 @@
     "rawValue": "{gray.100}",
     "computedValue": "rgb(234,235,243)",
     "description": "Background of the default active cell in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-unread",
@@ -1811,7 +1813,9 @@
     "rawValue": "{blue.100}",
     "computedValue": "#c4e5fe",
     "description": "Background of the active selected cell in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-new",
@@ -1839,7 +1843,9 @@
     "rawValue": "{green.100}",
     "computedValue": "#9ef2c9",
     "description": "Background of the active cell with new information in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-critical",
@@ -1867,7 +1873,9 @@
     "rawValue": "{red.100}",
     "computedValue": "#ffd7df",
     "description": "Background of the active cell with critical information in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-table-td-cell-warning",
@@ -1895,7 +1903,9 @@
     "rawValue": "{orange.100}",
     "computedValue": "#ffdca2",
     "description": "Background of the active cell with warning information in the Table.",
-    "components": []
+    "components": [
+      "data-table"
+    ]
   },
   {
     "name": "--intergalactic-brand-primary",

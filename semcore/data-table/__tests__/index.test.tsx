@@ -20,7 +20,7 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
 import resolveColor from '@semcore/utils/lib/color';
 
-import DataTable, { ROW_GROUP } from '../src';
+import DataTable, { ROW_GROUP, DataTableTheme } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -181,7 +181,7 @@ describe('DataTable', () => {
   test.concurrent('Sorting', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={vi.fn()}>
+        <DataTable data={data} sort={['kd', 'desc']} onSortChange={vi.fn()}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' sortable id='row' />
@@ -207,7 +207,7 @@ describe('DataTable', () => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>
-          <Sticky zIndex={2} top={top}>
+          <Sticky zIndex={2} top={20}>
             <DataTable.Head wMin={1000}>
               <DataTable.Column name='keyword' children='Keyword' />
               <DataTable.Column name='kd' children='KD,%' />
@@ -440,7 +440,7 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Accordion in the table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
+    const RowAccordion = React.forwardRef(function({ value, collapse = {}, ...props }: any, ref) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -501,7 +501,7 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Table in table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
+    const RowAccordion = React.forwardRef(function({ value, collapse = {}, ...props }: any, ref) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -823,6 +823,38 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Active state for row', async ({ task }) => {
+    const data = [...Array(12).keys()].map(() => ({
+      keyword: 'www.ebay.com',
+      kd: '11.2',
+    }));
+
+    const theme_index = [undefined, undefined, 'muted', 'muted', 'info', 'info', 'success', 'success', 'warning', 'warning', 'danger', 'danger'];
+
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+          </DataTable.Head>
+          <DataTable.Body>
+            <DataTable.Row>
+              {(props, row, index) => {
+                return {
+                  active: Boolean(index % 2),
+                  theme: theme_index[index] as DataTableTheme,
+                };
+              }}
+            </DataTable.Row>
+          </DataTable.Body>
+        </DataTable>
+      </div>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('a11y', async () => {
     vi.useFakeTimers();
     const { container } = render(
@@ -870,7 +902,9 @@ describe('DataTable', () => {
       </div>,
     );
 
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     vi.useRealTimers();
 
     const results = await axe(container);

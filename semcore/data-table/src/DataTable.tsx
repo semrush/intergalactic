@@ -151,7 +151,7 @@ export interface IDataTableBodyProps extends IBoxProps {
 export interface IDataTableRowProps extends IBoxProps {
   /** Theme for row */
   theme?: DataTableTheme;
-  /** Displays row as active/hover */
+  /** Displays row as active */
   active?: boolean;
 }
 
