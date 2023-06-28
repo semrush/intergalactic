@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added new `GoogleSheets` and `GoogleSlides` icons.
 
+### Fixed
+
+- Removed duplication custom css class.
+
 ## [3.15.3] - 2023-06-27
 
 ### Changed
