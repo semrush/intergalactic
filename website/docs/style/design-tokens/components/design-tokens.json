@@ -1765,9 +1765,7 @@
     "rawValue": "{gray.100}",
     "computedValue": "rgb(234,235,243)",
     "description": "Background of the default active cell in the Table.",
-    "components": [
-      "data-table"
-    ]
+    "components": []
   },
   {
     "name": "--intergalactic-table-td-cell-unread",

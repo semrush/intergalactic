@@ -440,7 +440,7 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Accordion in the table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function({ value, collapse = {}, ...props }: any, ref) {
+    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }: any, ref) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -501,7 +501,7 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Table in table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function({ value, collapse = {}, ...props }: any, ref) {
+    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }: any, ref) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -829,7 +829,20 @@ describe('DataTable', () => {
       kd: '11.2',
     }));
 
-    const theme_index = [undefined, undefined, 'muted', 'muted', 'info', 'info', 'success', 'success', 'warning', 'warning', 'danger', 'danger'];
+    const theme_index = [
+      undefined,
+      undefined,
+      'muted',
+      'muted',
+      'info',
+      'info',
+      'success',
+      'success',
+      'warning',
+      'warning',
+      'danger',
+      'danger',
+    ];
 
     const component = (
       <div style={{ width: 800 }}>
