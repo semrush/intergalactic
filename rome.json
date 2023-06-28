@@ -15,7 +15,8 @@
       ".tmp",
       "**/*.mjs",
       "mailer",
-      "./tools/icon-transform-svg/__tests__"
+      "./tools/icon-transform-svg/__tests__",
+      "**/lcov-report/**"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -41,7 +42,8 @@
       ".tmp",
       "**/*.mjs",
       "mailer",
-      "./tools/icon-transform-svg/__tests__"
+      "./tools/icon-transform-svg/__tests__",
+      "**/lcov-report/**"
     ],
     "rules": {
       "suspicious": {
