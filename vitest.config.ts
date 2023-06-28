@@ -70,7 +70,7 @@ export default defineConfig({
     setupFiles: resolvePath(__dirname, 'tools/testing-utils/setupTests'),
   },
   define: {
-    'window.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
+    'globalWith.__intergalacticFlagsBaseUrl': '"https://static.semrush.com/ui-kit/flags/"',
   },
 });
 
