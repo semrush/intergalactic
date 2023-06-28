@@ -13,11 +13,10 @@
       "semcore/illustration/**/*.d.ts",
       "**/__fixtures__/**",
       ".tmp",
-      "generator-component",
       "**/*.mjs",
-      "code-mod",
       "mailer",
-      "./tools/icon-transform-svg/__tests__"
+      "./tools/icon-transform-svg/__tests__",
+      "**/lcov-report/**"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -41,11 +40,10 @@
       "semcore/illustration/**/*.d.ts",
       "**/__fixtures__/**",
       ".tmp",
-      "generator-component",
       "**/*.mjs",
-      "code-mod",
       "mailer",
-      "./tools/icon-transform-svg/__tests__"
+      "./tools/icon-transform-svg/__tests__",
+      "**/lcov-report/**"
     ],
     "rules": {
       "suspicious": {
