@@ -75,55 +75,6 @@ export type PopperProps = OutsideClickProps &
     onFirstUpdate?: Options['onFirstUpdate'];
 
     /**
-     * By default, Popper is styled as position: absolute. Allows to switch to fixed
-     * @deprecated v4.0.0
-     * @use IPopperProps.strategy
-     */
-    positionFixed?: boolean;
-
-    /**
-     * Turns off subscription to global `resize/scroll` events
-     * @deprecated v4.0.0
-     * @use IPopperProps.eventListeners
-     */
-    eventsDisabled?: boolean;
-
-    /**
-     * Trigger events to show and hide the popper
-     * @deprecated v4.0.0
-     * @use IPopperProps.interaction
-     */
-    displayEvents?: {
-      show: string[];
-      hide: string[];
-    };
-
-    /**
-     * Trigger timer to show and hide the popper
-     * @deprecated v4.0.0
-     * @use IPopperProps.timeout
-     */
-    displayTimeout?: {
-      show: number;
-      hide: number;
-    };
-
-    /**
-     * z-index Popper.Popper
-     * @deprecated v4.0.0
-     */
-    popperZIndex?: string | number;
-
-    /**
-     * Defines the border element used by Popper for its flip and preventOverflow modifiers. Three abbreviated keywords are supported; Popper will find the correct DOM element.
-     * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
-     * @deprecated v4.0.0
-     * @use IPopperProps.preventOverflow
-     */
-    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-    boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
-
-    /**
      * Disabled focus trap, autofocus and focus return
      */
     disableEnforceFocus?: boolean;
@@ -137,15 +88,6 @@ export type PopperTriggerProps = BoxProps & {};
 export interface IPopperPopperProps extends PopperPopperProps, UnknownProperties {}
 export type PopperPopperProps = BoxProps &
   NeighborLocationProps & {
-    /**
-     * Defines the border element used by Popper for its flip and preventOverflow modifiers. Three abbreviated keywords are supported; Popper will find the correct DOM element.
-     * `'scrollParent' | 'viewport' | 'window' | HTMLElement`
-     * @deprecated v4.0.0
-     * @use IPopperProps.preventOverflow
-     */
-
-    boundary?: 'scrollParent' | 'viewport' | 'window' | HTMLElement;
-
     /**
      * Disabled focus trap, autofocus and focus return
      */
