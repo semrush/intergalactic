@@ -374,7 +374,7 @@ describe('Table.StickyHead', () => {
       </Table>,
     );
 
-    expect(container.querySelector('table')!.getAttribute('class')).toContain('Table-parent');
-    expect(container.querySelector('thead')!.getAttribute('class')).toContain('Header-hidden');
+    expect(container.querySelector('table').className).toContain('Table-parent');
+    expect(container.querySelector('thead').className).toContain('Header-hidden');
   });
 });

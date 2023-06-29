@@ -159,7 +159,7 @@ export interface IDataTableRowProps extends DataTableRowProps, UnknownProperties
 export type DataTableRowProps = BoxProps & {
   /** Theme for row */
   theme?: DataTableTheme;
-  /** Displays row as active/hover */
+  /** Displays row as active */
   active?: boolean;
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { arc, pie } from 'd3-shape';
 import { interpolate } from 'd3-interpolate';
 import { transition } from 'd3-transition';
@@ -51,7 +51,14 @@ function transitionAnglePie({
     });
 }
 
-function transitionRadiusPie({ data, selector, duration, innerRadius, outerRadiusMinMax }) {
+function transitionRadiusPie({
+  data,
+  selector,
+  element,
+  duration,
+  innerRadius,
+  outerRadiusStartEnd,
+}) {
   return transition()
     .selection()
     .select(selector)
@@ -59,10 +66,12 @@ function transitionRadiusPie({ data, selector, duration, innerRadius, outerRadiu
     .transition()
     .duration(duration)
     .attrTween('d', function () {
-      const [min, max] = outerRadiusMinMax;
-      const iOuterRadius = interpolate(min, max);
+      const [start, end] = outerRadiusStartEnd;
+      const iOuterRadius = interpolate(start, end);
       return function (t) {
-        const d3ArcOut = arc().innerRadius(innerRadius).outerRadius(iOuterRadius(t));
+        const outerRadiusPX = iOuterRadius(t);
+        element.dataset['currentRadius'] = outerRadiusPX;
+        const d3ArcOut = arc().innerRadius(innerRadius).outerRadius(outerRadiusPX);
         return d3ArcOut(data);
       };
     });
@@ -70,10 +79,10 @@ function transitionRadiusPie({ data, selector, duration, innerRadius, outerRadiu
 
 const increaseFactor = 8;
 
-function getOuterRadius({ size, halfsize, outerRadius }) {
+function getOuterRadius({ size, halfsize }) {
   const [width, height] = size;
   const minORmax = halfsize ? Math.max : Math.min;
-  return outerRadius || minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
+  return minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
 }
 
 class DonutRoot extends Component {
@@ -88,11 +97,11 @@ class DonutRoot extends Component {
     $rootProps: { size },
   }) => {
     const d3Arc = arc()
-      .outerRadius(getOuterRadius({ size, halfsize, outerRadius }))
+      .outerRadius(outerRadius || getOuterRadius({ size, halfsize, outerRadius }))
       .innerRadius(innerRadius);
 
     const d3ArcOut = arc()
-      .outerRadius(getOuterRadius({ size, halfsize, outerRadius }) + increaseFactor)
+      .outerRadius((outerRadius || getOuterRadius({ size, halfsize })) + increaseFactor)
       .innerRadius(innerRadius);
 
     let d3Pie = pie()
@@ -158,22 +167,20 @@ class DonutRoot extends Component {
     eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
   };
 
-  animationActivePie = ({ data, active, selector }) => {
-    const { duration, innerRadius, outerRadius: _outerRadius, size, halfsize } = this.asProps;
-    const outerRadius = getOuterRadius({ size, halfsize, outerRadius: _outerRadius });
-
-    if (this.canAnimatedHover) {
-      if (duration > 0) {
-        transitionRadiusPie({
-          data,
-          selector: `#${this.id} ${selector}`,
-          duration: duration === 0 ? 0 : 300,
-          innerRadius,
-          outerRadiusMinMax: active
-            ? [outerRadius, outerRadius + increaseFactor]
-            : [outerRadius + increaseFactor, outerRadius],
-        });
-      }
+  animationActivePie = ({ data, active, selector, element }) => {
+    const { duration, innerRadius, d3Arc } = this.asProps;
+    const outerRadius = d3Arc.outerRadius()();
+    if (this.canAnimatedHover && duration > 0) {
+      transitionRadiusPie({
+        data,
+        selector: `#${this.id} ${selector}`,
+        element,
+        duration: duration === 0 ? 0 : 300,
+        innerRadius,
+        outerRadiusStartEnd: active
+          ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
+          : [+element.dataset['currentRadius'] || outerRadius, outerRadius],
+      });
     }
   };
 
@@ -218,6 +225,7 @@ class DonutRoot extends Component {
             active: true,
             data,
             selector: `[d="${e.target.getAttribute('d')}"]`,
+            element: e.target,
           });
         }
       },
@@ -227,6 +235,7 @@ class DonutRoot extends Component {
             active: false,
             data,
             selector: `[d="${e.target.getAttribute('d')}"]`,
+            element: e.target,
           });
         }
       },
@@ -286,15 +295,23 @@ function Pie({
   ...other
 }) {
   const [isMount, setIsMount] = useState(false);
+  const pieRef = useRef(null);
 
   useEffect(() => {
+    pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
+
     // do not run animation on first render
     if (!isMount) {
       setIsMount(true);
       return;
     }
     if (active !== undefined && active !== null) {
-      $animationActivePie({ active, data, selector: `[name="${other.name}"]` });
+      $animationActivePie({
+        active,
+        data,
+        selector: `[name="${other.name}"]`,
+        element: pieRef.current,
+      });
     }
   }, [active]);
 
@@ -304,6 +321,7 @@ function Pie({
   return sstyled(styles)(
     <SPie
       render='path'
+      ref={pieRef}
       color={color}
       d={active ? d3ArcOut(data) : d3Arc(data)}
       transparent={transparent}

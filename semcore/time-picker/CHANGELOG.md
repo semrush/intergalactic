@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.2] - 2023-06-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.10.1 ~> 3.10.2]).
+
 ## [3.7.1] - 2023-06-27
 
 ### Changed
@@ -451,11 +457,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Обновлены версии пакетов
-
-
 - Убран `root-ref` пакет
-
-
 
 ## [1.1.3] - 2019-09-30
 

@@ -14,7 +14,10 @@
       "**/__fixtures__/**",
       ".tmp",
       "**/*.mjs",
-      "./tools/icon-transform-svg/__tests__"
+      "mailer",
+      "./tools/icon-transform-svg/__tests__",
+      "**/lcov-report/**",
+      "website/ts.json"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -39,7 +42,10 @@
       "**/__fixtures__/**",
       ".tmp",
       "**/*.mjs",
-      "./tools/icon-transform-svg/__tests__"
+      "mailer",
+      "./tools/icon-transform-svg/__tests__",
+      "**/lcov-report/**",
+      "website/ts.json"
     ],
     "rules": {
       "suspicious": {

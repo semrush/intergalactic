@@ -20,9 +20,9 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
 import resolveColor from '@semcore/utils/lib/color';
 
-import DataTable, { ROW_GROUP } from '../src';
 import { assertType } from 'vitest';
 import { Intergalactic } from '@semcore/core';
+import DataTable, { ROW_GROUP, DataTableTheme } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
@@ -854,6 +854,51 @@ describe('DataTable', () => {
         },
       }),
     ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Active state for row', async ({ task }) => {
+    const data = [...Array(12).keys()].map(() => ({
+      keyword: 'www.ebay.com',
+      kd: '11.2',
+    }));
+
+    const theme_index = [
+      undefined,
+      undefined,
+      'muted',
+      'muted',
+      'info',
+      'info',
+      'success',
+      'success',
+      'warning',
+      'warning',
+      'danger',
+      'danger',
+    ];
+
+    const component = (
+      <div style={{ width: 800 }}>
+        <DataTable data={data}>
+          <DataTable.Head>
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+          </DataTable.Head>
+          <DataTable.Body>
+            <DataTable.Row>
+              {(props, row, index) => {
+                return {
+                  active: Boolean(index % 2),
+                  theme: theme_index[index] as DataTableTheme,
+                };
+              }}
+            </DataTable.Row>
+          </DataTable.Body>
+        </DataTable>
+      </div>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
