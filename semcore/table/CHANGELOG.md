@@ -4,12 +4,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.5.0] - 2023-06-28
 
-### Added
-
-- Added background for active state for `Row`.
-
-## [3.4.21] - 2023-06-28
-
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/icon` [3.15.3 ~> 3.16.0]).
