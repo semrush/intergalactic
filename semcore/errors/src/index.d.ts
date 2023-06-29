@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, FlexProps } from '@semcore/flex-box';
-import { Intergalactic, PropGetterFn } from '@semcore/core';
+import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import { TIllustrationNamesErrors } from '@semcore/illustration';
 import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 

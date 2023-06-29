@@ -225,7 +225,7 @@ describe('Utils CSS in JS', () => {
 
   test.concurrent('Utils assignHandlers', () => {
     const spy1 = vi.fn();
-    const result1 = assignHandlers(
+    const result1: any = assignHandlers(
       {
         onClick: spy1,
       },
@@ -243,7 +243,7 @@ describe('Utils CSS in JS', () => {
     );
 
     const spy3 = vi.fn();
-    const result3 = assignHandlers(
+    const result3: any = assignHandlers(
       {},
       {
         onClick: spy3,
@@ -408,7 +408,7 @@ describe('Utils reactToText', () => {
 
   test.concurrent('support array and obj', () => {
     expect(reactToText(['arr', '-', 'arr'])).toBe('arr-arr');
-    expect(reactToText({})).toBe('');
+    expect(reactToText({} as any)).toBe('');
   });
 
   test.concurrent('support react component', () => {

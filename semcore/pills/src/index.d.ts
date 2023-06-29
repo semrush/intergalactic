@@ -71,7 +71,7 @@ type IntergalacticPillsComponent = (<
     Tag,
     PillsProps<Value>,
     PillsContext,
-    PillsHandlers
+    [handlers: PillsHandlers]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;

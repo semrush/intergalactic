@@ -11,7 +11,6 @@ import { measureText } from './utils';
 import { DataHintsHandler } from './a11y/hints';
 
 import style from './style/radial-tree.shadow.css';
-import type { MapProps } from './types';
 
 const baseAngle = -Math.PI / 2; // The top vertical line
 
@@ -56,7 +55,7 @@ export type RadialTreeProps = {
   /**
    * List of radians. `{ label: string; key: string; capSize?: number; icon?: React.FC; color?: string; iconColor?: string; iconSize?: number; }`
    */
-  data: RadianData[];
+  data?: RadianData[];
   /**
    * Angel (in rads) that rotates chart. 0 means that first radian is exactly on top vertical line.
    * @default 0
@@ -110,6 +109,7 @@ export type RadialTreeProps = {
    * Used to define the active radian in controlled way. Active radian is highligted with inreased cap size.
    */
   activeKey?: string | null;
+  onActiveKeyChange?: (activeKey: string | null) => void;
   /**
    * Default value for `activeKey` property.
    */
@@ -837,16 +837,27 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   ) as React.ReactElement;
 };
 
-const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as Intergalactic.Component<
+type IntergalacticD3Component<
+  BaseTag extends Intergalactic.InternalTypings.ComponentTag,
+  Props,
+  Context = {},
+> = (<
+  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+>(
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
+
+const RadialTree = createElement(RadialTreeBase, { Title, Radian }) as IntergalacticD3Component<
   'g',
   RadialTreeProps
 > & {
-  Title: Intergalactic.Component<'text', RadialTreeTitleProps>;
-  Radian: Intergalactic.Component<'g', RadialTreeRadianProps> & {
-    Line: Intergalactic.Component<'line', RadialTreeRadianLineProps>;
-    Cap: Intergalactic.Component<'circle', RadialTreeRadianCapProps>;
-    Icon: Intergalactic.Component<'g', RadialTreeRadianIconProps>;
-    Label: Intergalactic.Component<'text', RadialTreeRadianLabelProps>;
+  Title: IntergalacticD3Component<'text', RadialTreeTitleProps>;
+  Radian: IntergalacticD3Component<'g', RadialTreeRadianProps> & {
+    Line: IntergalacticD3Component<'line', RadialTreeRadianLineProps>;
+    Cap: IntergalacticD3Component<'circle', RadialTreeRadianCapProps>;
+    Icon: IntergalacticD3Component<'g', RadialTreeRadianIconProps>;
+    Label: IntergalacticD3Component<'text', RadialTreeRadianLabelProps>;
   };
 };
 

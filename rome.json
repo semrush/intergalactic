@@ -14,7 +14,6 @@
       "**/__fixtures__/**",
       ".tmp",
       "**/*.mjs",
-      "mailer",
       "./tools/icon-transform-svg/__tests__"
     ],
     "lineWidth": 100,
@@ -40,7 +39,6 @@
       "**/__fixtures__/**",
       ".tmp",
       "**/*.mjs",
-      "mailer",
       "./tools/icon-transform-svg/__tests__"
     ],
     "rules": {
@@ -64,6 +62,9 @@
       "a11y": { "useAnchorContent": "off", "noSvgWithoutTitle": "off" },
       "nursery": {
         "noConsoleLog": "error"
+      },
+      "complexity": {
+        "useFlatMap": "off"
       }
     }
   }

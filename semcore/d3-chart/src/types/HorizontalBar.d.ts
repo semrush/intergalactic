@@ -1,6 +1,7 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { BarContext, BackgroundProps } from './Bar';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IHorizontalBarProps extends HorizontalBarProps, UnknownProperties {}
@@ -24,8 +25,8 @@ export type HorizontalBarProps = Context & {
   transparent?: boolean;
 };
 
-declare const HorizontalBar: Intergalactic.Component<'path', HorizontalBarProps, BarContext> & {
-  Background: Intergalactic.Component<'rect', BackgroundProps, Context>;
+declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {
+  Background: IntergalacticD3Component<'rect', BackgroundProps, Context>;
 };
 
 export default HorizontalBar;

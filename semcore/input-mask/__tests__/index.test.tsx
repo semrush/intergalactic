@@ -48,7 +48,6 @@ describe('InputMask', () => {
             title='4-digit number'
             placeholder='__ __'
             id='input_mask'
-            title='4-digit number'
           />
         </InputMask>
       </>,

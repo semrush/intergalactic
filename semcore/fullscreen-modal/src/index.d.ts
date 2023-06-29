@@ -1,6 +1,6 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { ModalProps } from '@semcore/modal';
-import { Box, BoxProps } from '@semcore/flex-box';
+import { Flex, Box, BoxProps } from '@semcore/flex-box';
 import { IconProps } from '@semcore/icon';
 import { Text } from '@semcore/typography';
 
@@ -36,7 +36,7 @@ declare const FullscreenModal: Intergalactic.Component<
   FullscreenModalContext
 > & {
   Header: Intergalactic.Component<'div', FullscreenModalHeaderProps>;
-  Footer: typeof Box;
+  Footer: typeof Flex;
   Close: Intergalactic.Component<'div', IconProps>;
   Back: typeof Box;
   Body: typeof Box;

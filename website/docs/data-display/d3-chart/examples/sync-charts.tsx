@@ -1,7 +1,7 @@
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Bar, HoverLine, HoverRect, Line, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
-import EventEmitter from '@semcore/ui/utils/lib/eventEmitter';
+import EventEmitter from '@semcore/ui/utils/eventEmitter';
 
 const eventEmitter = new EventEmitter();
 

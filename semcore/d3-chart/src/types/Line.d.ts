@@ -1,7 +1,8 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { CurveFactory } from 'd3-shape';
 import { FadeInOutProps } from '@semcore/animation';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface ILineProps extends LineProps, UnknownProperties {}
@@ -41,6 +42,7 @@ export type LineDotsProps = Context &
 export interface ILineDotsContext extends LineDotsContext, UnknownProperties {}
 export type LineDotsContext = {
   /** Value element of data */
+  /** @deprecated */
   value?: any;
   /** Index element of data */
   index?: number;
@@ -53,9 +55,9 @@ export type LineNullProps = Context & {
   hide?: boolean;
 };
 
-declare const Line: Intergalactic.Component<'line', LineProps, Context> & {
-  Dots: Intergalactic.Component<'circle', LineDotsProps, LineDotsContext>;
-  Null: Intergalactic.Component<'path', LineNullProps, LineNullContext>;
+declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {
+  Dots: IntergalacticD3Component<'circle', LineDotsProps, LineDotsContext>;
+  Null: IntergalacticD3Component<'path', LineNullProps>;
 };
 
 export default Line;

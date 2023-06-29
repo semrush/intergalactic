@@ -1,11 +1,6 @@
 import React from 'react';
-import { Intergalactic } from '@semcore/core';
-import Popper, {
-  PopperContext,
-  PopperPopperProps,
-  PopperProps,
-  PopperTriggerProps,
-} from '@semcore/popper';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
+import Popper, { PopperContext, PopperProps, PopperTriggerProps } from '@semcore/popper';
 
 /** @deprecated */
 export interface ITooltipProps extends TooltipProps, UnknownProperties {}

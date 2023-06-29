@@ -1,5 +1,5 @@
 import React from 'react';
-import { Intergalactic, PropGetterFn } from '@semcore/core';
+import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
 
 export type InputNumberValue = string;

@@ -19,7 +19,7 @@ npm install @semcore/ui
 ## Usage
 
 ```jsx
-import UtilName from '@semcore/ui/utils/lib/{{ util name }}';
+import UtilName from '@semcore/ui/utils/{{ util name }}';
 ```
 
 <details>

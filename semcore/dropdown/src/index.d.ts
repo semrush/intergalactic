@@ -1,4 +1,4 @@
-import { Intergalactic } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import Popper, {
   PopperContext,
   PopperProps,

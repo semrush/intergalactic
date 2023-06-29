@@ -1,5 +1,6 @@
 import React from 'react';
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IClipPath extends ClipPath, UnknownProperties {}
@@ -23,6 +24,6 @@ export type ClipPath = {
   setAttributeTag?: (rect: React.ReactNode) => void;
 };
 
-declare const ClipPath: Intergalactic.Component<'clipPath', ClipPath>;
+declare const ClipPath: IntergalacticD3Component<'clipPath', ClipPath>;
 
 export default ClipPath;

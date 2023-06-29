@@ -79,7 +79,7 @@ describe('Pagination.PrevPage', () => {
         <Pagination.PrevPage data-testid='prevPage' />
       </Pagination>,
     );
-    expect(getByTestId('prevPage').attributes.disabled).toBeDefined();
+    expect(getByTestId('prevPage').attributes['disabled']).toBeDefined();
   });
 
   test('should not be disabled if currentPage > 1', () => {
@@ -88,7 +88,7 @@ describe('Pagination.PrevPage', () => {
         <Pagination.PrevPage data-testid='prevPage' />
       </Pagination>,
     );
-    expect(getByTestId('prevPage').attributes.disabled).toBeUndefined();
+    expect(getByTestId('prevPage').attributes['disabled']).toBeUndefined();
   });
 
   test('should call onCurrentPageChange(currentPage - 1) by one on click', () => {
@@ -118,7 +118,7 @@ describe('Pagination.NextPage', () => {
         <Pagination.NextPage data-testid='nextPage' />
       </Pagination>,
     );
-    expect(getByTestId('nextPage').attributes.disabled).toBeDefined();
+    expect(getByTestId('nextPage').attributes['disabled']).toBeDefined();
   });
 
   test('should not be disabled if currentPage < totalPages', () => {
@@ -127,7 +127,7 @@ describe('Pagination.NextPage', () => {
         <Pagination.NextPage data-testid='nextPage' />
       </Pagination>,
     );
-    expect(getByTestId('nextPage').attributes.disabled).toBeUndefined();
+    expect(getByTestId('nextPage').attributes['disabled']).toBeUndefined();
   });
 
   test('should call onCurrentPageChange(currentPage + 1) by one on click', () => {
@@ -248,8 +248,10 @@ describe('Pagination.PageInput.Value', () => {
       </Pagination>,
     );
 
-    fireEvent.change(getByTestId('value'), { target: { value: String(CURRENT_PAGE.INITIAL) } });
-    expect(getByTestId('value').value).toBe(CURRENT_PAGE.INITIAL.toString());
+    fireEvent.change(getByTestId('value') as HTMLInputElement, {
+      target: { value: String(CURRENT_PAGE.INITIAL) },
+    });
+    expect((getByTestId('value') as HTMLInputElement).value).toBe(CURRENT_PAGE.INITIAL.toString());
 
     rerender(
       <Pagination currentPage={CURRENT_PAGE.CHANGED} totalPages={100}>
@@ -259,7 +261,7 @@ describe('Pagination.PageInput.Value', () => {
       </Pagination>,
     );
 
-    expect(getByTestId('value').value).toBe(CURRENT_PAGE.CHANGED.toString());
+    expect((getByTestId('value') as HTMLInputElement).value).toBe(CURRENT_PAGE.CHANGED.toString());
   });
 
   test('should not call onCurrentPageChange on input value change', () => {
@@ -295,7 +297,7 @@ describe('Pagination.PageInput.Value', () => {
     expect(spy).toBeCalledTimes(0);
     fireEvent.blur(input);
     expect(spy).toBeCalledTimes(0);
-    expect(input._valueTracker.getValue()).toBe('10');
+    expect((input as any)._valueTracker.getValue()).toBe('10');
   });
 
   test('should call onCurrentPageChange on Enter click', () => {
@@ -341,7 +343,7 @@ describe('Pagination.PageInput.Value', () => {
       </Pagination>,
     );
 
-    const input = getByTestId('value');
+    const input = getByTestId('value') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: String(currentPage.null) } });
     fireEvent.keyDown(input, { key: 'Enter', keyCode: 13, code: 'Enter' });

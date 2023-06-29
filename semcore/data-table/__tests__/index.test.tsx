@@ -208,7 +208,7 @@ describe('DataTable', () => {
   test.concurrent('Sorting', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
-        <DataTable data={data} sort={['kd, cpc', 'desc']} onSortChange={vi.fn()}>
+        <DataTable data={data} sort={['kd', 'desc']} onSortChange={vi.fn()}>
           <DataTable.Head>
             <DataTable.Column name='keyword' children='Keyword' />
             <DataTable.Column name='kd' children='KD,%' sortable id='row' />
@@ -229,25 +229,25 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  /** Currently has no difference from DataTable without Sticky */
-  test.skip('Fixed header', async ({ task }) => {
-    const component = (
-      <div style={{ width: 800 }}>
-        <DataTable data={data}>
-          <Sticky zIndex={2} top={top}>
-            <DataTable.Head wMin={1000}>
-              <DataTable.Column name='keyword' children='Keyword' />
-              <DataTable.Column name='kd' children='KD,%' />
-              <DataTable.Column name='cpc' children='CPC' />
-              <DataTable.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-          </Sticky>
-          <DataTable.Body />
-        </DataTable>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  // /** Currently has no difference from DataTable without Sticky */
+  // test.skip('Fixed header', async ({ task }) => {
+  //   const component = (
+  //     <div style={{ width: 800 }}>
+  //       <DataTable data={data}>
+  //         <Sticky zIndex={2} top={top}>
+  //           <DataTable.Head wMin={1000}>
+  //             <DataTable.Column name='keyword' children='Keyword' />
+  //             <DataTable.Column name='kd' children='KD,%' />
+  //             <DataTable.Column name='cpc' children='CPC' />
+  //             <DataTable.Column name='vol' children='Vol.' />
+  //           </DataTable.Head>
+  //         </Sticky>
+  //         <DataTable.Body />
+  //       </DataTable>
+  //     </div>
+  //   );
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   test.skip('Fixed columns', async ({ task }) => {
@@ -396,7 +396,7 @@ describe('DataTable', () => {
               {() => {
                 return {
                   style: {
-                    fontWeight: 'bold',
+                    fontWeight: 700,
                   },
                 };
               }}
@@ -467,7 +467,10 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Accordion in the table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
+    const RowAccordion = React.forwardRef(function (
+      { value, collapse = {}, ...props }: any,
+      ref: React.Ref<HTMLElement>,
+    ) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -528,7 +531,10 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Table in table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
+    const RowAccordion = React.forwardRef(function (
+      { value, collapse = {}, ...props }: any,
+      ref: React.Ref<HTMLElement>,
+    ) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -897,7 +903,9 @@ describe('DataTable', () => {
       </div>,
     );
 
-    act(() => vi.runAllTimers());
+    act(() => {
+      vi.runAllTimers();
+    });
     vi.useRealTimers();
 
     const results = await axe(container);

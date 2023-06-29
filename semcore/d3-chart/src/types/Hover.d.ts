@@ -1,10 +1,9 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
 import { TooltipTypeBase } from './Tooltip';
 import { IBoxProps } from '@semcore/flex-box';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IHoverProps extends HoverProps, UnknownProperties {}
@@ -15,9 +14,6 @@ export type HoverProps = Context & {
   y?: string;
 };
 
-// declare const HoverLine: Intergalactic.Component<'line', HoverProps>;
-
-// declare const HoverRect: Intergalactic.Component<'rect', HoverProps>;
 type HoverTooltip = (<X, Y>(
   props: {
     /** Field name from `data` array item for the XAxis */
@@ -34,11 +30,11 @@ type HoverTooltip = (<X, Y>(
 ) => ReturnEl) &
   TooltipTypeBase;
 
-declare const HoverLine: Intergalactic.Component<'g', HoverProps> & {
+declare const HoverLine: IntergalacticD3Component<'g', HoverProps> & {
   Tooltip: HoverTooltip;
 };
 
-declare const HoverRect: Intergalactic.Component<'g', HoverProps> & {
+declare const HoverRect: IntergalacticD3Component<'g', HoverProps> & {
   Tooltip: HoverTooltip;
 };
 export { HoverLine, HoverRect };

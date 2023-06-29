@@ -1,7 +1,8 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { BarContext, BarProps } from './Bar';
 import { HorizontalBarProps } from './HorizontalBar';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IStackBarProps extends StackBarProps, UnknownProperties {}
@@ -12,6 +13,7 @@ export type StackBarProps = Context & {
   y?: string;
   /** Stack generators
    * @default d3.stack() */
+  /** @deprecated */
   stack?: any;
 };
 
@@ -19,12 +21,13 @@ export type StackBarProps = Context & {
 export interface IStackBarContext extends StackBarContext, UnknownProperties {}
 export type StackBarContext = {
   /** Series is an array of points, where each point corresponds to the element in the input data. */
+  /** @deprecated */
   series: any[];
 };
 
-declare const StackBar: Intergalactic.Component<'g', StackBarProps, StackBarContext> & {
-  Bar: Intergalactic.Component<'path', BarProps, BarContext>;
-  HorizontalBar: Intergalactic.Component<'path', HorizontalBarProps, BarContext>;
+declare const StackBar: IntergalacticD3Component<'g', StackBarProps, StackBarContext> & {
+  Bar: IntergalacticD3Component<'path', BarProps, BarContext>;
+  HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext>;
 };
 
 export default StackBar;

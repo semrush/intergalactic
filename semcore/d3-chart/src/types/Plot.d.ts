@@ -1,5 +1,5 @@
 import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties } from '@semcore/core';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { Context } from './context';
 
 /** @deprecated */
@@ -21,6 +21,9 @@ export type PlotProps = Context &
     locale?: NavigatorLanguage['language'];
     /** Optional prop to tune up alt text generating for charts */
     a11yAltTextConfig?: PlotSummarizerConfig;
+
+    /** @deprecated */
+    eventEmitter?: unknown;
   };
 
 export type PlotSummarizerConfig = {
@@ -99,5 +102,14 @@ export type MapProps<Props, Ctx = {}, UCProps = {}> = Props & {
     | React.ReactNode;
 };
 
-declare const Plot: Intergalactic.Component<'svg', PlotProps, Context>;
+export type IntergalacticD3Component<
+  BaseTag extends Intergalactic.InternalTypings.ComponentTag,
+  Props,
+  Context = {},
+> = (<Tag extends Intergalactic.InternalTypings.ComponentTag = BaseTag>(
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
+
+declare const Plot: IntergalacticD3Component<'svg', PlotProps, Context>;
 export default Plot;

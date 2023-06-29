@@ -2,6 +2,7 @@ import Popper, { PopperProps, PopperTriggerProps } from '@semcore/popper';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { Context } from './context';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface ITooltipChartProps extends TooltipChartProps, UnknownProperties {}
@@ -26,29 +27,21 @@ export type TooltipChartContext = {
   getPopperProps: PropGetterFn;
 };
 
-// declare const Tooltip: Intergalactic.Component<'div', TooltipChartProps, TooltipChartContext> & {
-//   Trigger: Popper.Trigger;
-//   Popper: typeof Popper.Popper;
-//   Title: typeof Box;
-//   Dot: Intergalactic.Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
-//   Footer: typeof Box;
 export type TooltipTypeBase = {
   Trigger: typeof Popper.Trigger;
   Popper: typeof Popper.Popper;
   Title: typeof Box;
-  Dot: Intergalactic.Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
+  Dot: IntergalacticD3Component<'div', BoxProps & { color?: string }, TooltipChartContext>;
   Footer: typeof Box;
-  Tooltip: TooltipType<IScatterPlotProps & { xIndex: number }>;
 };
 
 export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
-  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = typeof Box,
 >(
-  props: Intergalactic.InternalTypings.CustomRenderingResultComponentProps<
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
     TooltipProps,
-    ChildrenRenderProps & TooltipChartContext,
-    { children: Intergalactic.InternalTypings.ReturnResult }
+    ChildrenRenderProps & TooltipChartContext
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<Intergalactic.InternalTypings.ComponentTag> &

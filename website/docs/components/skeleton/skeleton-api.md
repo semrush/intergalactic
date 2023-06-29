@@ -27,7 +27,7 @@ import Skeleton from '@semcore/ui/skeleton';
 import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-See an example of use in the [Area chart](/data-display/area-chart/area-chart-recharts-code/#ac26f2) component.
+See an example of use in the [Area chart](/data-display/area-chart/area-chart-d3-code/) component.
 
 @## BarChartSkeleton
 
@@ -35,7 +35,7 @@ See an example of use in the [Area chart](/data-display/area-chart/area-chart-re
 import { BarChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-recharts-code/#ac26f2) component.
+See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-d3-code/) component.
 
 @## PieChartSkeleton
 
@@ -43,7 +43,7 @@ See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-recha
 import { PieChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-See an example of use in the [Donut chart](/data-display/donut-chart/donut-chart-recharts-code/#ac26f2) component.
+See an example of use in the [Donut chart](/data-display/donut-chart/donut-chart-d3-code/) component.
 
 @## HistogramChartSkeleton
 
@@ -51,7 +51,7 @@ See an example of use in the [Donut chart](/data-display/donut-chart/donut-chart
 import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-See an example of use in the [Histogram chart](/data-display/histogram-chart/histogram-chart-code/#ac26f2) component.
+See an example of use in the [Histogram chart](/data-display/histogram-chart/) component.
 
 @## LineChartSkeleton
 
@@ -59,7 +59,7 @@ See an example of use in the [Histogram chart](/data-display/histogram-chart/his
 import { LineChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-See an example of use in the [Line chart](/data-display/line-chart/line-chart-recharts-code/#ac26f2) component.
+See an example of use in the [Line chart](/data-display/line-chart/line-chart-d3-code/) component.
 
 @## VennChartSkeleton
 
@@ -67,4 +67,4 @@ See an example of use in the [Line chart](/data-display/line-chart/line-chart-re
 import { VennChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-See an example of use in the [Venn chart](/data-display/venn-chart/venn-chart-recharts-code/#ac26f2) component.
+See an example of use in the [Venn chart](/data-display/venn-chart/venn-chart-d3-code/) component.

@@ -19,7 +19,17 @@ const DEFAULT_OPTIONS = { selector: '#root' };
 
 export const snapshot = async (
   Component,
-  { afterMount, ...options } = {} as { afterMount?: (root: HTMLDivElement) => void },
+  { afterMount, ...options } = {} as {
+    afterMount?: (root: HTMLDivElement) => void;
+    selector?: string;
+    width?: number;
+    height?: number;
+    actions?: {
+      hover?: string | string[];
+      active?: string | string[];
+      focus?: string | string[];
+    };
+  },
 ) => {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');

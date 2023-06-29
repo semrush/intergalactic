@@ -77,8 +77,10 @@ export default defineConfig({
 declare global {
   namespace jest {
     interface Matchers<R> {
-      toMatchImageSnapshot(task: any): R;
+      toMatchImageSnapshot(task: any, options: any): R;
       toHaveNoViolations(): R;
+      toHaveFocus(): R;
+      toHaveStyle(style: string): R;
     }
   }
 }

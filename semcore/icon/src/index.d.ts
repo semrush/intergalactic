@@ -1,5 +1,5 @@
 import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
@@ -15,6 +15,6 @@ export type IconProps = BoxProps &
     color?: string;
   };
 
-declare const Icon: Intergalactic.Component<'div', IconProps>;
+declare const Icon: Intergalactic.Component<'svg', IconProps>;
 
 export default Icon;

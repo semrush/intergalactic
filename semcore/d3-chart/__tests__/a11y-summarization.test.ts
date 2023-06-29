@@ -740,11 +740,15 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
-      locale: 'en',
-      translations: translations.en,
-      availableLocales: { en: true },
-    });
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      {
+        locale: 'en',
+        translations: translations.en,
+        availableLocales: { en: true },
+      },
+    );
 
     expect(text.includes('0')).toBeTruthy();
     expect(text.includes('10')).toBeTruthy();
@@ -767,11 +771,15 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 120, label: 'x' }];
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
-      locale: 'en',
-      translations: translations.en,
-      availableLocales: { en: true },
-    });
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      {
+        locale: 'en',
+        translations: translations.en,
+        availableLocales: { en: true },
+      },
+    );
 
     const limit = 550;
     const length = text.length;
@@ -799,11 +807,15 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
-      locale: 'en',
-      translations: translations.en,
-      availableLocales: { en: true },
-    });
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      {
+        locale: 'en',
+        translations: translations.en,
+        availableLocales: { en: true },
+      },
+    );
 
     expect(text.includes('0')).toBeTruthy();
     expect(text.includes('10')).toBeTruthy();
@@ -832,7 +844,11 @@ describe('Plot a11y summarization', () => {
       locale.translations[messageId] = 'EcmaScript';
     }
 
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), locale);
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      locale,
+    );
 
     expect(text.includes('EcmaScript')).toBeTruthy();
   });

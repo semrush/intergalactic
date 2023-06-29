@@ -73,6 +73,7 @@ export type CalendarUnitProps = BoxProps & {
   highlighted?: boolean;
   startHighlighted?: boolean;
   endHighlighted?: boolean;
+  date?: Date;
   children?: React.ReactNode;
 };
 
@@ -86,7 +87,7 @@ declare const Calendar: Intergalactic.Component<
   'div',
   CalendarProps,
   CalendarContext & CalendarDaysContext,
-  AbstractDatePickerHandlers
+  [handlers: AbstractDatePickerHandlers]
 > & {
   Unit: Intergalactic.Component<'div', CalendarUnitProps>;
 };
@@ -262,7 +263,7 @@ export type DatePickerHandlers = {
 
 /** @deprecated */
 export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
-export type InputTriggerProps = {
+export type InputTriggerProps = InputProps & {
   value?: Date;
   /**
    * Date input placeholder characters
@@ -358,7 +359,7 @@ declare const DateRangePicker: Intergalactic.Component<
   'div',
   DateRangePickerProps,
   DateRangePickerContext & CalendarDaysContext,
-  DatePickerHandlers
+  [handlers: DatePickerHandlers]
 > & {
   /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
   Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
@@ -405,7 +406,7 @@ declare const MonthPicker: Intergalactic.Component<
   InputTrigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: Intergalactic.Component<'div', MonthPickerProps, MonthPickerContext>;
+  Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;

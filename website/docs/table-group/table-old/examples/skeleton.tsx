@@ -21,7 +21,7 @@ const data = [
 ];
 const fetchData = () => (
   <Table.Cell>
-    <Skeleton visible height={17}>
+    <Skeleton height={17}>
       <Skeleton.Text y='5' width='60%' />
     </Skeleton>
   </Table.Cell>

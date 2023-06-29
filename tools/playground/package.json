@@ -20,7 +20,6 @@
     "@semcore/button": "workspace:*",
     "@semcore/card": "workspace:*",
     "@semcore/carousel": "workspace:*",
-    "@semcore/chart": "workspace:*",
     "@semcore/checkbox": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/counter": "workspace:*",

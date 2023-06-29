@@ -71,4 +71,7 @@ OutsideClick.defaultProps = {
   onOutsideClick: () => {},
 };
 
-export default createComponent(OutsideClick) as Intergalactic.Component<any, OutsideClickProps>;
+export default createComponent(OutsideClick) as Intergalactic.Component<
+  Intergalactic.InternalTypings.ComponentTag,
+  OutsideClickProps
+>;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Intergalactic, ReturnEl } from '@semcore/core';
+import { Intergalactic, ReturnEl, UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
 export interface INeighborLocationProps extends NeighborLocationProps, UnknownProperties {}
@@ -31,7 +31,7 @@ export type NeighborLocationDetectProps = INeighborItemProps & {
 };
 
 declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationProps> & {
-  Detect: Intergalactic.Component<'div', {}, 'right' | 'both' | 'left' | undefined>;
+  Detect: Intergalactic.Component<'div', INeighborItemProps, 'right' | 'both' | 'left' | undefined>;
 };
 
 declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;

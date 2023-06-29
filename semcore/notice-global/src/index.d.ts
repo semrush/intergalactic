@@ -1,4 +1,4 @@
-import { Intergalactic } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
 import { IconProps } from '@semcore/icon';
 import { FadeInOutProps } from '@semcore/animation';

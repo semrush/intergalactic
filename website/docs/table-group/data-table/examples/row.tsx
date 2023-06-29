@@ -32,7 +32,7 @@ export default () => {
               },
               onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter')
-                  alert(`Click row 
+                  alert(`Click row
                     props: ${JSON.stringify(Object.keys(props), null, '  ')};
                     row: ${JSON.stringify(row, null, '  ')};
                     index: ${index};`);

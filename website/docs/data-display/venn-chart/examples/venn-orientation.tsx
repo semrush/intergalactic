@@ -20,7 +20,7 @@ export default () => {
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
           <Venn.Circle dataKey='F' name='F' />
           <Venn.Circle dataKey='S' name='S' color={colors['blue-03']} />
-          <Venn.Intersection dataKey='F/S' />
+          <Venn.Intersection dataKey='F/S' name='F/S' />
         </Venn>
       </Plot>
       <Flex direction='row'>

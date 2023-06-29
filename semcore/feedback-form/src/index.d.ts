@@ -25,7 +25,7 @@ export type FeedbackFormProps = FormProps & {
 };
 
 declare const FeedbackForm: Intergalactic.Component<'form', FeedbackFormProps> & {
-  Item: Intergalactic<'div', FieldProps<any, any>>;
+  Item: Intergalactic.Component<'div', FieldProps<any, any>>;
   Success: typeof Box;
   Submit: typeof Button;
   Cancel: typeof Button;

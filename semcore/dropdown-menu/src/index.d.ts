@@ -121,7 +121,7 @@ declare const DropdownMenu: Intergalactic.Component<
   [handlers: DropdownMenuHandlers]
 > & {
   Trigger: typeof Dropdown.Trigger;
-  Popper: typeof Dropdown.Popper;
+  Popper: Intergalactic.Component<'div', DropdownMenuProps>;
   List: Intergalactic.Component<
     'div',
     DropdownMenuListProps,

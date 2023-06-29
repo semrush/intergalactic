@@ -1,6 +1,7 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import Area from './Area';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IStackedAreaProps extends StackedAreaProps, UnknownProperties {}
@@ -11,6 +12,7 @@ export type StackedAreaProps = Context & {
   y?: string;
   /** Stack generators
    * @default d3.stack() */
+  /** @deprecated */
   stack?: any;
 };
 
@@ -18,10 +20,11 @@ export type StackedAreaProps = Context & {
 export interface IStackedAreaContext extends StackedAreaContext, UnknownProperties {}
 export type StackedAreaContext = {
   /** Series is an array of points, where each point corresponds to the element in the input data. */
+  /** @deprecated */
   series: any[];
 };
 
-declare const StackedArea: Intergalactic.Component<'g', StackedAreaProps, StackedAreaContext> & {
+declare const StackedArea: IntergalacticD3Component<'g', StackedAreaProps, StackedAreaContext> & {
   Area: typeof Area;
 };
 

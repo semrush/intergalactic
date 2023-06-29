@@ -1,6 +1,7 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { CurveFactory } from 'd3-shape';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IAreaProps extends AreaProps, UnknownProperties {}
@@ -39,6 +40,7 @@ export type AreaDotsProps = Context & {
 export interface IAreaDotsContext extends AreaDotsContext, UnknownProperties {}
 export type AreaDotsContext = {
   /** Value element of data */
+  /** @deprecated */
   value?: any;
   /** Index element of data */
   index?: number;
@@ -51,10 +53,10 @@ export type AreaNullProps = Context & {
   hide?: boolean;
 };
 
-declare const Area: Intergalactic.Component<'path', AreaProps, Context> & {
-  Dots: Intergalactic.Component<'circle', AreaDotsProps, AreaDotsContext>;
-  Null: Intergalactic.Component<'path', AreaNullProps, Context>;
-  Line: Intergalactic.Component<'path', Context, Context>;
+declare const Area: IntergalacticD3Component<'path', AreaProps, Context> & {
+  Dots: IntergalacticD3Component<'circle', AreaDotsProps, AreaDotsContext>;
+  Null: IntergalacticD3Component<'path', AreaNullProps, Context>;
+  Line: IntergalacticD3Component<'path', Context, Context>;
 };
 
 export default Area;

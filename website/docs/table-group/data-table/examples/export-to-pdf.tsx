@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Button from '@semcore/ui/button';
@@ -39,6 +39,7 @@ export default () => {
     },
     [],
   );
+
   return (
     <Flex>
       <svg ref={svgRef} xmlns='http://www.w3.org/2000/svg' width={width} height={height}>
@@ -157,7 +158,7 @@ const appendCSS = (cssText: string, element: Element) => {
   element.insertBefore(styleElement, refNode);
 };
 
-const svgElementToSvgText = (svgNode: SVGElement) => {
+const svgElementToSvgText = (svgNode: Element) => {
   svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
   const cssStyleText = getCSSStyles(svgNode);
   appendCSS(cssStyleText, svgNode);

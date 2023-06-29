@@ -1,7 +1,7 @@
 import { SyntheticEvent } from 'react';
 import { Property } from 'csstype';
 import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
 
 /** @deprecated */

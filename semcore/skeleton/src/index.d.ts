@@ -1,5 +1,5 @@
 import { BoxProps } from '@semcore/flex-box';
-import { UnknownProperties } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
 
 /** @deprecated */
@@ -65,6 +65,7 @@ declare const PieChartSkeleton: typeof Skeleton;
 declare const VennChartSkeleton: typeof Skeleton;
 declare const BubbleChartSkeleton: typeof Skeleton;
 declare const ScatterPlotChartSkeleton: typeof Skeleton;
+declare const RadialTreeChartSkeleton: typeof Skeleton;
 
 export default Skeleton;
 export {
@@ -76,4 +77,5 @@ export {
   VennChartSkeleton,
   BubbleChartSkeleton,
   ScatterPlotChartSkeleton,
+  RadialTreeChartSkeleton,
 };

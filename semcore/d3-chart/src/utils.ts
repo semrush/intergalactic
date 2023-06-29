@@ -56,17 +56,17 @@ export const scaleOfBandwidth = <Scale extends ScaleBand<{}>>(scale: Scale, valu
 
 export const minMax = <
   Key extends string = string,
-  Data extends Iterable<{ [key in Key]: Numeric | null | undefined }> = Iterable<{
-    [key in Key]: Numeric | null | undefined;
-  }>,
+  Data extends { [key: string]: Numeric | null | undefined }[] = {
+    [key: string]: Numeric | null | undefined;
+  }[],
 >(
   data: Data,
   key: Key,
-) => {
+): [min: Data[0][Key], max: Data[0][Key]] => {
   if (typeof key === 'string') {
-    return extent(data, (d) => d[key]);
+    return extent(data, (d) => d[key]) as any;
   }
-  return extent(data, key);
+  return extent(data, key) as any;
 };
 
 export const getNullData = <
@@ -122,14 +122,15 @@ type IndexFromDataScale =
   | ScaleBand<{}>
   | ScalePoint<{}>;
 export const getIndexFromData = <
+  Key extends string,
   Data extends {
-    [key: string]: number;
-  } = {},
+    [key in Key]: number;
+  } = { [key in Key]: number },
   Scale extends IndexFromDataScale = IndexFromDataScale,
 >(
   data: Data[],
   scale: Scale,
-  key: string,
+  key: Key,
   value: number,
 ) => {
   // detect line chart

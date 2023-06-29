@@ -22,7 +22,7 @@ const Indicators = () => (
   <Carousel.Indicators>
     {({ items }) => (
       <>
-        {items.map((item, ind) => (
+        {items.map((item: any, ind) => (
           <Box {...item} key={ind} data-testid={`indicator-${ind}`} />
         ))}
       </>

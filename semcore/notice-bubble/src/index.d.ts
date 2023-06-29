@@ -31,7 +31,8 @@ export type NoticeBubbleProps = BoxProps & {
   /**
    * Notice content.
    * */
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  manager?: NoticeBubbleManager;
 };
 /** @deprecated */
 export interface INoticeBubbleInfoProps extends NoticeBubbleInfoProps, UnknownProperties {}
@@ -64,8 +65,8 @@ export type NoticeBubbleWarningProps = NoticeBubbleProps & {
 };
 
 /** @deprecated */
-export interface INoticeBubbleManager extends NoticeBubbleManager, UnknownProperties {}
-export type NoticeBubbleManager = {
+export interface INoticeBubbleManager extends NoticeBubbleManagerClass, UnknownProperties {}
+type NoticeBubbleManagerClass = {
   /**
    * Creates and shows a notice.
    * */
@@ -108,7 +109,7 @@ declare const NoticeBubbleContainer: Intergalactic.Component<'div', NoticeBubble
    * */
   Warning: typeof NoticeBubbleWarning;
 };
-declare class NoticeBubbleManager implements INoticeBubbleManager {
+declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
   /**
    * Creates and shows a notice.
    * */
@@ -132,7 +133,7 @@ declare class NoticeBubbleManager implements INoticeBubbleManager {
   remove(uid: string): boolean;
 }
 
-const noticeBubbleDefaultManager = new NoticeBubbleManager();
+declare const noticeBubbleDefaultManager: NoticeBubbleManager;
 
 export {
   NoticeBubbleContainer,
@@ -144,4 +145,4 @@ export {
 /**
  * @deprecated Use `import { noticeBubbleDefaultManager } from ...` instead
  */
-export default new NoticeBubbleManager();
+export default noticeBubbleDefaultManager;

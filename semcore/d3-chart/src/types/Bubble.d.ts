@@ -1,8 +1,7 @@
-import { Intergalactic } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { Context } from './context';
-import { ReturnEl } from '@semcore/core';
-import IContext from './context';
 import { TooltipType } from './Tooltip';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IBubbleProps extends BubbleProps, UnknownProperties {}
@@ -36,7 +35,11 @@ export type BubbleContext = {
   index: number;
 };
 
-declare const Bubble: Intergalactic.Component<string, BubbleProps, BubbleContext> & {
+declare const Bubble: IntergalacticD3Component<
+  Intergalactic.InternalTypings.ComponentTag,
+  BubbleProps,
+  BubbleContext
+> & {
   Tooltip: TooltipType<
     BubbleProps & {
       /**

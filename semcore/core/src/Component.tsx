@@ -139,7 +139,7 @@ export namespace Intergalactic {
     RenderingResult = InternalTypings.ReturnResult,
     AdditionalContext extends any[] = never[],
   > =
-    | ((props: Context & Omit<Props, 'chldren'>, ...args: AdditionalContext) => RenderingResult)
+    | ((props: MergeProps<Context, Props>, ...args: AdditionalContext) => RenderingResult)
     | InternalTypings.ReturnResult;
   type ComponentBasicProps = {
     ref?: React.ForwardedRef<HTMLElement | null>;
@@ -151,21 +151,21 @@ export namespace Intergalactic {
     keyof HighPriorityProps
   > &
     HighPriorityProps;
-  type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
-    (Tag extends React.FC
-      ? ReactFCProps<Tag>
-      : Tag extends React.ComponentClass
-      ? ReactComponentProps<Tag>
-      : Tag extends ReactFCLike
-      ? ReactFCLikeProps<Tag>
-      : Tag extends keyof JSX.IntrinsicElements
-      ? JSX.IntrinsicElements[Tag]
-      : {}) &
-      (Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}),
-    'children' | 'tag' | 'ref'
-  >;
   /** @private */
   export namespace InternalTypings {
+    export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
+      (Tag extends React.FC
+        ? ReactFCProps<Tag>
+        : Tag extends React.ComponentClass
+        ? ReactComponentProps<Tag>
+        : Tag extends ReactFCLike
+        ? ReactFCLikeProps<Tag>
+        : Tag extends keyof JSX.IntrinsicElements
+        ? JSX.IntrinsicElements[Tag]
+        : {}) &
+        (Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}),
+      'children' | 'tag' | 'ref'
+    >;
     export type ReturnResult =
       | React.ReactElement
       | React.ReactNode
@@ -191,23 +191,26 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps &
-      MergeProps<Omit<Props, 'tag' | 'ref'>, ComponentPropsNesting<Tag>>;
-    export type CustomRenderingResultComponentProps<
+      MergeProps<Omit<Props, 'tag'>, ComponentPropsNesting<Tag>>;
+    export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
       Props,
-      Context = never,
-      RenderingResult = ReturnResult,
+      Context = {},
       AdditionalContext extends any[] = never[],
     > = {
       tag?: Tag;
       children?: ComponentChildren<
         Props & { children: React.ReactNode },
         Context,
-        RenderingResult,
+        Partial<
+          Omit<MergeProps<Props, ComponentPropsNesting<Tag>>, 'children' | 'tag' | 'ref'> & {
+            children?: React.ReactNode;
+          }
+        >,
         AdditionalContext
       >;
     } & ComponentBasicProps &
-      MergeProps<Omit<Props, 'tag' | 'ref'>, ComponentPropsNesting<Tag>>;
+      MergeProps<Omit<Props, 'tag'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;

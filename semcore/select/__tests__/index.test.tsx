@@ -15,22 +15,6 @@ import InputSearch from '../src/InputSearch';
 HTMLElement.prototype.scrollIntoView = () => {};
 
 describe('Select Trigger', () => {
-  describe('types', () => {
-    const any: any = null;
-    test('props nesting', () => {
-      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
-
-      assertType<JSX.Element>(<Accordion tag={Link} href='https://google.com' xProp1={1} />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<Accordion href='https://google.com' />);
-    });
-    test('value&onChange relation', () => {
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: number) => {}} />);
-      // @ts-expect-error
-      assertType<JSX.Element>(<Accordion value={1} onChange={(value: string) => {}} />);
-    });
-  });
-
   beforeEach(cleanup);
 
   test.concurrent('Trigger renders correctly', async ({ task }) => {
@@ -156,7 +140,7 @@ describe('Select Trigger', () => {
 
   test.concurrent('Should support call render function for custom tag', () => {
     const spy = vi.fn();
-    const Tag = React.forwardRef(({ children }, ref) => (
+    const Tag = React.forwardRef(({ children }: any, ref: React.Ref<HTMLButtonElement>) => (
       <button type='button' ref={ref}>
         {children}
       </button>
@@ -176,7 +160,7 @@ describe('Select Trigger', () => {
   });
 
   test.concurrent('Should support Option.Checkbox', async ({ task }) => {
-    const Component = ({ theme, size, ...props }) => (
+    const Component = ({ theme, size, ...props }: any) => (
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} size={size} visible disablePortal value='1'>
           <Select.Trigger />
@@ -205,7 +189,7 @@ describe('Select Trigger', () => {
   });
 
   test.concurrent('Option.Checkbox should support hover', async ({ task }) => {
-    const Component = ({ theme, ...props }) => (
+    const Component = ({ theme, ...props }: any) => (
       <div style={{ position: 'relative', width: '150px', height: '100px' }}>
         <Select {...props} visible disablePortal>
           <Select.Trigger />
@@ -253,7 +237,7 @@ describe('Select Trigger', () => {
     const { container } = render(
       <Select visible value={['2']} disablePortal>
         <Select.Trigger aria-label='Select trigger' />
-        <Select.Menu visible>
+        <Select.Menu>
           <Select.Option value='1'>Option 1</Select.Option>
           <Select.Option value='2'>Option 2</Select.Option>
         </Select.Menu>
@@ -290,7 +274,9 @@ describe('Select Trigger', () => {
     act(() => {
       vi.runAllTimers();
     });
-    act(() => fireEvent.animationEnd(getByTestId('menu')));
+    act(() => {
+      fireEvent.animationEnd(getByTestId('menu'));
+    });
     act(() => {
       vi.runAllTimers();
     });
@@ -325,7 +311,9 @@ describe('Select Trigger', () => {
       act(() => {
         vi.runAllTimers();
       });
-      act(() => fireEvent.animationEnd(getByTestId('menu')));
+      act(() => {
+        fireEvent.animationEnd(getByTestId('menu'));
+      });
       act(() => {
         vi.runAllTimers();
       });
@@ -363,11 +351,13 @@ describe('Select Trigger', () => {
     act(() => {
       vi.runAllTimers();
     });
-    act(() => fireEvent.animationEnd(getByTestId('menu')));
+    act(() => {
+      fireEvent.animationEnd(getByTestId('menu'));
+    });
     act(() => {
       vi.runAllTimers();
     });
-    expect(document.activeElement.tagName).toBe('DIV');
+    expect(document.activeElement?.tagName).toBe('DIV');
 
     vi.useRealTimers();
   });

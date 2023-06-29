@@ -1,3 +1,5 @@
+declare const preval: any;
+
 const version = preval`module.exports = require('../package.json').version`;
 
 /**

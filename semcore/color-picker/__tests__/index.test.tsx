@@ -85,7 +85,7 @@ describe('ColorPicker', () => {
       </div>,
     );
 
-    const input = getByTestId('inputColor');
+    const input = getByTestId('inputColor') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '635472' } });
     expect(input.value).toBe('635472');
 
@@ -113,7 +113,7 @@ describe('ColorPicker', () => {
       </div>,
     );
 
-    const input = getByTestId('inputColor');
+    const input = getByTestId('inputColor') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '635472' } });
     expect(input.value).toBe('635472');
 
@@ -144,7 +144,7 @@ describe('ColorPicker', () => {
       </div>,
     );
 
-    const input = getByTestId('inputColor');
+    const input = getByTestId('inputColor') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '635472' } });
     fireEvent.focus(input);
     fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
@@ -173,7 +173,7 @@ describe('ColorPicker', () => {
       </div>,
     );
 
-    const input = getByTestId('inputColor');
+    const input = getByTestId('inputColor') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '#635472' } });
     act(() => {
       vi.runAllTimers();

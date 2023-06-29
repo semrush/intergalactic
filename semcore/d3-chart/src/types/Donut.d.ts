@@ -1,8 +1,7 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
-import { ReturnEl } from '@semcore/core';
-import IContext from './context';
 import { TooltipType } from './Tooltip';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IDonutProps extends DonutProps, UnknownProperties {}
@@ -52,12 +51,14 @@ export type EmptyDataProps = Context & {};
 
 /** @deprecated */
 export interface ILabelProps extends LabelProps, UnknownProperties {}
-export type LabelProps = Context & {};
+export type LabelProps = Context & {
+  label?: string;
+};
 
-declare const Donut: Intergalactic.Component<'g', DonutProps> & {
-  Pie: Intergalactic.Component<'path', PieProps>;
-  EmptyData: Intergalactic.Component<'path', IEmptyDataProps>;
-  Label: Intergalactic.Component<'text', LabelProps>;
+declare const Donut: IntergalacticD3Component<'g', DonutProps> & {
+  Pie: IntergalacticD3Component<'path', PieProps>;
+  EmptyData: IntergalacticD3Component<'path', IEmptyDataProps>;
+  Label: IntergalacticD3Component<'text', LabelProps>;
   Tooltip: TooltipType<PieProps>;
 };
 

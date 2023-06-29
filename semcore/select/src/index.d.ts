@@ -119,7 +119,7 @@ type IntergalacticSelectComponent = (<
     Tag,
     SelectProps<Value>,
     SelectContext,
-    SelectHandlers
+    [handlers: SelectHandlers]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
@@ -128,7 +128,8 @@ declare const Select: IntergalacticSelectComponent & {
   Trigger: Intergalactic.Component<
     'div',
     DropdownMenuTriggerProps & ButtonTriggerProps,
-    SelectHandlers
+    {},
+    [handlers: SelectHandlers]
   > & {
     Addon: typeof ButtonTrigger.Addon;
     Text: typeof ButtonTrigger.Text;

@@ -1,4 +1,4 @@
-import { PropGetterFn } from '@semcore/core';
+import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import Popper, { PopperContext, PopperPopperProps, PopperProps } from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 

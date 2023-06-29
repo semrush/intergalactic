@@ -94,6 +94,8 @@ export type DataTableProps<DataTableData extends { [key: string]: any }[] = Unkn
      * @default id
      */
     uniqueKey?: keyof DataTableData[0];
+    /** Make cells less */
+    compact?: boolean;
   };
 
 /** @deprecated */
@@ -131,8 +133,6 @@ export type DataTableColumnProps = FlexProps & {
   borderRight?: boolean;
   /** Add vertical border to the left side */
   borderLeft?: boolean;
-  /** Make cells less */
-  compact?: boolean;
 };
 
 /** @deprecated */
@@ -518,13 +518,12 @@ type IntergalacticDataTableComponent = (<
 
 type IntergalacticDataTableRowComponent = (<
   Data extends DataTableData[],
-  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
 >(
-  props: Intergalactic.InternalTypings.CustomRenderingResultComponentProps<
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
     DataTableRowProps,
     DataTableCtx & { data: Data },
-    Partial<DataTableRowProps> & { children?: Intergalactic.InternalTypings.ReturnResult },
     [row: Data[0], index: number]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
@@ -532,13 +531,12 @@ type IntergalacticDataTableRowComponent = (<
 
 type IntergalacticDataTableCellComponent = (<
   Data extends DataTableData[],
-  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
 >(
-  props: Intergalactic.InternalTypings.CustomRenderingResultComponentProps<
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
     DataTableCellProps,
     DataTableCtx & { data: Data },
-    Partial<DataTableCellProps> & { children?: Intergalactic.InternalTypings.ReturnResult },
     [row: Data[0], index: number]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

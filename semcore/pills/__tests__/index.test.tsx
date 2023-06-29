@@ -179,7 +179,7 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('should support additional elements as props', async ({ task }) => {
-    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
+    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }: any, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop

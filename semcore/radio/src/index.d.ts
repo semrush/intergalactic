@@ -27,7 +27,7 @@ export type RadioProps = BoxProps & {
 
 /** @deprecated */
 export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {}
-export type RadioGroupProps = {
+export type RadioGroupProps<T extends RadioValue = RadioValue> = {
   /**
    *  HTML tag name for the displayed item
    */
@@ -35,11 +35,13 @@ export type RadioGroupProps = {
   /** Radio group name */
   name?: string;
   /** Active default value */
-  defaultValue?: RadioValue;
+  defaultValue?: T;
   /** Active value */
-  value?: RadioValue;
+  value?: T;
   /** Called when the selected element is changed */
-  onChange?: (value: RadioValue, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+  onChange?:
+    | ((value: T, e?: React.SyntheticEvent<HTMLInputElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /** Radio button size */
   size?: RadioSize;
   /** The theme of the radio button that you can send your color to */
@@ -80,7 +82,15 @@ export type RadioCtx = {
   getTextProps: PropGetterFn;
 };
 
-declare const RadioGroup: Intergalactic.Component<unknown, RadioGroupProps>;
+type IntergalacticRadioGroupComponent = (<
+  Value extends RadioValue,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, RadioGroupProps<Value>>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const RadioGroup: IntergalacticRadioGroupComponent;
 
 export { RadioGroup };
 

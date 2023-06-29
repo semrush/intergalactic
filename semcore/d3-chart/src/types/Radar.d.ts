@@ -1,7 +1,9 @@
 import { Context } from './context';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { CurveFactory } from 'd3-shape';
 import { TooltipType } from './Tooltip';
+import { IntergalacticD3Component } from './Plot';
+import { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
 export interface IRadarProps extends RadarProps, UnknownProperties {}
@@ -9,6 +11,7 @@ export type RadarProps = Context & {
   /**
    * Scale for radar element
    * */
+  /** @deprecated */
   scale: any;
   /**
    * Graph type to be displayed
@@ -63,6 +66,13 @@ export type RadarAxisLabelsProps = {
   labelOffset?: number;
 };
 
+type RadarAxisLabelsContext = Context & {
+  xDirection: 'middle' | 'start' | 'end';
+  yDirection: 'alphabetic' | 'mathematical' | 'middle';
+  x: number;
+  y: number;
+};
+
 /** @deprecated */
 export interface IRadialPolygonProps extends RadialPolygonProps, UnknownProperties {}
 export type RadialPolygonProps = Context & {
@@ -105,24 +115,31 @@ export type RadialPolygonDotsProps = {
 
 /** @deprecated */
 export interface IRadarHoverProps extends RadarHoverProps, UnknownProperties {}
-export type RadarHoverProps = Context & {};
+export type RadarHoverProps = BoxProps & Context & {};
 
-declare const Radar: Intergalactic.Component<'g', RadarProps, Context> & {
-  Axis: Intergalactic.Component<'path', RadarAxisProps, Context> & {
-    Ticks: Intergalactic.Component<'path', RadarAxisTicksProps, Context>;
-    Labels: Intergalactic.Component<'text', RadarAxisLabelsProps, Context>;
+declare const Radar: IntergalacticD3Component<'g', RadarProps, Context> & {
+  Axis: IntergalacticD3Component<'path', RadarAxisProps, Context> & {
+    Ticks: IntergalacticD3Component<'path', RadarAxisTicksProps, Context>;
+    Labels: IntergalacticD3Component<'text', RadarAxisLabelsProps, RadarAxisLabelsContext>;
   };
-  Polygon: Intergalactic.Component<'path', RadialPolygonProps, Context> & {
-    Line: Intergalactic.Component<'line', RadialPolygonLineProps, Context>;
-    Dots: Intergalactic.Component<'circle', RadialPolygonDotsProps, Context>;
+  Polygon: IntergalacticD3Component<'path', RadialPolygonProps, Context> & {
+    Line: IntergalacticD3Component<'line', RadialPolygonLineProps, Context>;
+    Dots: IntergalacticD3Component<'circle', RadialPolygonDotsProps, Context>;
   };
-  Hover: Intergalactic.Component<'path', RadarHoverProps, Context>;
+  Hover: IntergalacticD3Component<'path', RadarHoverProps, Context>;
   Tooltip: TooltipType<
-    IRadarHoverProps & {
+    RadarHoverProps & {
       /** Index in `data` array of the current items */
       index: number;
     }
   >;
 };
+
+export declare function getLabelOffsetPosition(
+  xDirection: 'middle' | 'start' | 'end',
+  yDirection: 'alphabetic' | 'mathematical' | 'middle',
+  width: number,
+  height: number,
+): [xOffset: number, yOffset: number];
 
 export default Radar;

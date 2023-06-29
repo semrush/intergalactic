@@ -25,7 +25,7 @@ export const esbuildPluginDocs = (): Plugin => ({
     });
 
     build.onResolve({ filter: /^@navigation$/ }, async ({ path }) => ({ path, namespace: 'nav' }));
-    build.onLoad({ filter: /^@navigation$/, namespace: 'nav' }, async ({ task }) => {
+    build.onLoad({ filter: /^@navigation$/, namespace: 'nav' }, async () => {
       const contents = await serializeNavigation(docsDir);
 
       return { contents, loader: 'js', resolveDir: docsDir };

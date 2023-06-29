@@ -1,4 +1,5 @@
 import React from 'react';
+import { UnknownProperties } from '@semcore/core';
 
 type listenerType = (index: number) => void;
 type mediaType = string[];

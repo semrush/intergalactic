@@ -61,8 +61,13 @@ declare const Pagination: Intergalactic.Component<
   PrevPage: typeof Button;
   NextPage: typeof Button;
   FirstPage: typeof Button;
-  TotalPages: Intergalactic.Component<TotalPagesProps, {}, [handlers: PaginationHandlers]>;
-  PageInput: Intergalactic.Component<PageInputProps, {}, [handlers: PaginationHandlers]> & {
+  TotalPages: Intergalactic.Component<
+    Intergalactic.InternalTypings.ComponentTag,
+    TotalPagesProps,
+    {},
+    [handlers: PaginationHandlers]
+  >;
+  PageInput: Intergalactic.Component<'div', PageInputProps, {}, [handlers: PaginationHandlers]> & {
     Value: typeof Input.Value;
     Addon: typeof Input.Addon;
   };

@@ -8,11 +8,12 @@ export default () => {
         <Venn.Circle dataKey='G' name='G' />
         <Venn.Circle dataKey='F' name='F' color={colors['blue-03']} />
         <Venn.Circle dataKey='C' name='C' color={colors['orange-04']} />
-        <Venn.Intersection dataKey='G/F' />
-        <Venn.Intersection dataKey='G/C' />
-        <Venn.Intersection dataKey='F/C' />
+        <Venn.Intersection dataKey='G/F' name='G/F' />
+        <Venn.Intersection dataKey='G/C' name='G/C' />
+        <Venn.Intersection dataKey='F/C' name='F/C' />
         <Venn.Intersection
           dataKey='G/F/C'
+          name='G/F/C'
           style={{
             stroke: colors['violet-04'],
             fill: colors['violet-04'],

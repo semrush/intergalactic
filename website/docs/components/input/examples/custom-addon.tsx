@@ -23,7 +23,7 @@ const Demo = () => {
             id='count-example'
           />
           <Input.Addon>
-            <Tag size='s'>{value.length}/10</Tag>
+            <Tag size='m'>{value.length}/10</Tag>
           </Input.Addon>
         </Input>
       </Box>

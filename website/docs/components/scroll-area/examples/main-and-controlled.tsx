@@ -24,6 +24,7 @@ const Block = styled.div`
 `;
 
 class Demo extends React.PureComponent {
+  controlled: any;
   handleMainScroll = (e) => {
     this.controlled.scrollTop = e.currentTarget.scrollTop;
   };

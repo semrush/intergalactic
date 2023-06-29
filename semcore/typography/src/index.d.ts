@@ -3,6 +3,7 @@ import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 
 import { Property } from 'csstype';
 import { Box, BoxProps } from '@semcore/flex-box';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 /** @deprecated */
 export interface ITextProps extends TextProps, UnknownProperties {}
@@ -62,18 +63,19 @@ export type ListContext = {
 
 /** @deprecated */
 export interface IHintProps extends HintProps, UnknownProperties {}
-export type HintProps = TextProps & {
-  /** The value responsible for the activity of the element
-   * @default false
-   */
-  disabled?: boolean;
-  /** Enable `active` state */
-  active?: boolean;
-  /** Left addon hint  */
-  addonLeft?: React.ElementType;
-  /** Right addon hint  */
-  addonRight?: React.ElementType;
-};
+export type HintProps = TextProps &
+  KeyboardFocusProps & {
+    /** The value responsible for the activity of the element
+     * @default false
+     */
+    disabled?: boolean;
+    /** Enable `active` state */
+    active?: boolean;
+    /** Left addon hint  */
+    addonLeft?: React.ElementType;
+    /** Right addon hint  */
+    addonRight?: React.ElementType;
+  };
 
 /** @deprecated */
 export interface IBlockquoteProps extends BlockquoteProps, UnknownProperties {}

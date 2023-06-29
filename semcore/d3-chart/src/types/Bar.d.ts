@@ -1,5 +1,6 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IBarProps extends BarProps, UnknownProperties {}
@@ -36,10 +37,14 @@ export type BarProps = Context & {
 /** @deprecated */
 export interface IBarContext extends BarContext, UnknownProperties {}
 export type BarContext = {
-  /** Value element of data */
-  value: any;
-  /** Index element of data */
+  /** @deprecated */
+  value: unknown;
+  /** Index in `data` array */
   index: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 };
 
 /** @deprecated */
@@ -50,6 +55,7 @@ export type BackgroundProps = Context & {
   /** Coordinate y */
   y?: number | string;
   /** Value element of data */
+  /** @deprecated */
   value?: any;
   /** Width rect */
   width?: number | string;
@@ -57,8 +63,13 @@ export type BackgroundProps = Context & {
   height?: number | string;
 };
 
-declare const Bar: Intergalactic.Component<'rect', BarProps, BarContext> & {
-  Background: Intergalactic.Component<'rect', BackgroundProps>;
+type BackgroundContext = Context & {
+  /** Index in `data` array */
+  index: number;
+};
+
+declare const Bar: IntergalacticD3Component<'rect', BarProps, BarContext> & {
+  Background: IntergalacticD3Component<'rect', BackgroundProps, BackgroundContext>;
 };
 
 export default Bar;

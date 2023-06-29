@@ -1,10 +1,8 @@
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { FadeInOutProps } from '@semcore/animation';
-import { ReturnEl } from '@semcore/core';
-import IContext from './context';
-import { IFadeInOutProps } from '@semcore/animation';
 import { TooltipType } from './Tooltip';
+import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
 export interface IVennProps extends VennProps, UnknownProperties {}
@@ -53,13 +51,17 @@ export type IntersectionProps = Context &
      * Name of the field in the data
      * */
     dataKey: string;
+    /**
+     * Human readable name of the intersection
+     * */
+    name: string;
     /** Enables element transparency */
     transparent?: boolean;
   };
 
-declare const Venn: Intergalactic.Component<'g', VennProps, Context> & {
-  Circle: Intergalactic.Component<'circle', CircleProps, Context>;
-  Intersection: Intergalactic.Component<'path', IntersectionProps, Context>;
+declare const Venn: IntergalacticD3Component<'g', VennProps, Context> & {
+  Circle: IntergalacticD3Component<'circle', CircleProps, Context>;
+  Intersection: IntergalacticD3Component<'path', IntersectionProps, Context>;
   Tooltip: TooltipType<CircleProps>;
 };
 

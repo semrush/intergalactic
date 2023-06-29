@@ -69,7 +69,7 @@ type IntergalacticTabLineComponent = (<
     Tag,
     TabLineProps<Value>,
     TabLineContext,
-    TabLineHandlers
+    [handlers: TabLineHandlers]
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;

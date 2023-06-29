@@ -1,5 +1,6 @@
+import { IntergalacticD3Component } from './Plot';
 import { Context } from './context';
-import { Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
 export interface IXAxisProps extends XAxisProps, UnknownProperties {}
@@ -11,6 +12,7 @@ export type XAxisProps = Context & {
    * @default false */
   hide?: boolean;
   /** Values for axis ticks */
+  /** @deprecated */
   ticks?: any[];
 };
 
@@ -24,6 +26,7 @@ export type YAxisProps = Context & {
    * @default true */
   hide?: boolean;
   /** Values for axis ticks */
+  /** @deprecated */
   ticks?: any[];
 };
 
@@ -35,6 +38,7 @@ export type AxisTicksProps = Context & {
   /** Element hide property */
   hide?: boolean;
   /** Values for axis ticks */
+  /** @deprecated */
   ticks?: any[];
 };
 
@@ -42,6 +46,7 @@ export type AxisTicksProps = Context & {
 export interface IAxisGridProps extends AxisGridProps, UnknownProperties {}
 export type AxisGridProps = Context & {
   /** Values for axis ticks */
+  /** @deprecated */
   ticks?: any[];
 };
 
@@ -62,21 +67,22 @@ export type AxisTitleProps = Context & {
 export interface IAxisTicksContext extends AxisTicksContext, UnknownProperties {}
 export type AxisTicksContext = {
   /** Value element of data */
+  /** @deprecated */
   value: any;
   /** Index element of data */
   index: number;
 };
 
-declare const XAxis: Intergalactic.Component<'path', XAxisProps> & {
-  Ticks: Intergalactic.Component<'path', AxisTicksProps, AxisTicksContext>;
-  Grid: Intergalactic.Component<'path', AxisGridProps>;
-  Title: Intergalactic.Component<'text', AxisTitleProps>;
+declare const XAxis: IntergalacticD3Component<'path', XAxisProps> & {
+  Ticks: IntergalacticD3Component<'path', AxisTicksProps, AxisTicksContext>;
+  Grid: IntergalacticD3Component<'path', AxisGridProps>;
+  Title: IntergalacticD3Component<'text', AxisTitleProps>;
 };
 
-declare const YAxis: Intergalactic.Component<'path', YAxisProps> & {
-  Ticks: Intergalactic.Component<'path', AxisTicksProps, AxisTicksContext>;
-  Grid: Intergalactic.Component<'path', AxisGridProps>;
-  Title: Intergalactic.Component<'text', AxisTitleProps>;
+declare const YAxis: IntergalacticD3Component<'path', YAxisProps> & {
+  Ticks: IntergalacticD3Component<'path', AxisTicksProps, AxisTicksContext>;
+  Grid: IntergalacticD3Component<'path', AxisGridProps>;
+  Title: IntergalacticD3Component<'text', AxisTitleProps>;
 };
 
 export { XAxis, YAxis };

@@ -150,7 +150,7 @@ describe('Input', () => {
       </Input>,
     );
 
-    expect(getByTestId('value').value).toBe('');
+    expect((getByTestId('value') as HTMLInputElement).value).toBe('');
 
     rerender(
       <Input>
@@ -158,7 +158,7 @@ describe('Input', () => {
       </Input>,
     );
 
-    expect(getByTestId('value').value).toBe('test');
+    expect((getByTestId('value') as HTMLInputElement).value).toBe('test');
   });
 
   test.concurrent('Should support controlled mod', () => {

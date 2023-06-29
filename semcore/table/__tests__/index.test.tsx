@@ -6,7 +6,7 @@ import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Table from '../src';
+import Table, { RowTheme } from '../src';
 
 describe('Table', () => {
   beforeEach(cleanup);
@@ -115,7 +115,7 @@ describe('Table', () => {
   );
 
   test.concurrent('should support correct color theme', async ({ task }) => {
-    const Component = ({ theme = 'default' }) => (
+    const Component = ({ theme = 'default' }: { theme?: RowTheme }) => (
       <Table>
         <Table.Body>
           <Table.Row theme={theme}>
@@ -190,7 +190,7 @@ describe('Table.Row', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef();
+    const ref = React.createRef<HTMLElement>();
     render(
       <Table>
         <Table.Body>
@@ -198,7 +198,7 @@ describe('Table.Row', () => {
         </Table.Body>
       </Table>,
     );
-    expect(ref.current.nodeName).toBe('TR');
+    expect(ref.current?.nodeName).toBe('TR');
   });
 });
 
@@ -213,7 +213,7 @@ describe('Table.CellHead', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef();
+    const ref = React.createRef<HTMLElement>();
     render(
       <Table>
         <Table.Head>
@@ -223,7 +223,7 @@ describe('Table.CellHead', () => {
         </Table.Head>
       </Table>,
     );
-    expect(ref.current.nodeName).toBe('TH');
+    expect(ref.current?.nodeName).toBe('TH');
   });
 
   test.concurrent('should support active state', async ({ task }) => {
@@ -319,7 +319,7 @@ describe('Table.Cell', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef();
+    const ref = React.createRef<HTMLElement>();
     render(
       <Table>
         <Table.Body>
@@ -329,7 +329,7 @@ describe('Table.Cell', () => {
         </Table.Body>
       </Table>,
     );
-    expect(ref.current.nodeName).toBe('TD');
+    expect(ref.current?.nodeName).toBe('TD');
   });
 });
 
@@ -341,11 +341,11 @@ describe('Table.StickyHead', () => {
   test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Table>
-        <Table.StickyHead data-testid='sticky' name='sticky' />
+        <Table.StickyHead data-testid='sticky' data-name='sticky' />
       </Table>,
     );
 
-    expect(getByTestId('sticky').attributes['name'].value).toBe('sticky');
+    expect(getByTestId('sticky').attributes['data-name'].value).toBe('sticky');
   });
 
   test.concurrent('should support children', () => {
@@ -374,7 +374,7 @@ describe('Table.StickyHead', () => {
       </Table>,
     );
 
-    expect(container.querySelector('table').attributes.class.value).toContain('Table-parent');
-    expect(container.querySelector('thead').attributes.class.value).toContain('Header-hidden');
+    expect(container.querySelector('table')!.getAttribute('class')).toContain('Table-parent');
+    expect(container.querySelector('thead')!.getAttribute('class')).toContain('Header-hidden');
   });
 });

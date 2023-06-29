@@ -87,30 +87,22 @@ class Demo extends React.PureComponent {
               onClick={this.handleItemClick(1)}
               value={1}
               stepNavigation={stepNavigation}
-            >
-              Domain settings
-            </NavigationItem>
+            />
             <NavigationItem
               onClick={this.handleItemClick(2)}
               value={2}
               stepNavigation={stepNavigation}
-            >
-              Device and Location
-            </NavigationItem>
+            />
             <NavigationItem
               onClick={this.handleItemClick(3)}
               value={3}
               stepNavigation={stepNavigation}
-            >
-              Competitors
-            </NavigationItem>
+            />
             <NavigationItem
               onClick={this.handleItemClick(4)}
               value={4}
               stepNavigation={stepNavigation}
-            >
-              Keywords
-            </NavigationItem>
+            />
           </Flex>
 
           <Flex

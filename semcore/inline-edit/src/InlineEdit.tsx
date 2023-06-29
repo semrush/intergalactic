@@ -1,7 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import { FadeInOut } from '@semcore/animation';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  Intergalactic,
+  PropGetterFn,
+} from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { FadeInOut, FadeInOutProps } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
@@ -142,7 +148,25 @@ const View: React.FC<AsProps> = (props) => {
   ) as React.ReactElement;
 };
 
+export type InlineEditProps = BoxProps & {
+  editable?: boolean;
+  onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
+  defaultEditable?: boolean;
+  onEdit?: () => void;
+  locale?: string;
+};
+export type InlineEditViewProps = BoxProps & FadeInOutProps & {};
+export type InlineEditEditProps = BoxProps & FadeInOutProps & {};
+
+type InputCtx = {
+  getViewProps: PropGetterFn;
+  getEditProps: PropGetterFn;
+};
+
 export default createComponent(InlineEdit, {
   Edit,
   View,
-});
+}) as Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
+  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
+  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
+};

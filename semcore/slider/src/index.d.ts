@@ -1,60 +1,74 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { Box, BoxProps } from '@semcore/flex-box';
+import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-interface ISliderContext {
+type SliderValue = string | number;
+
+type SliderContext = {
   getOptionsProps: PropGetterFn;
   getItemProps: PropGetterFn;
-}
-interface ISliderHandlers {
-  value: (index: string | number) => void;
-}
+};
+type SliderHandlers = {
+  value: (index: SliderValue) => void;
+};
 
-export type SliderOption<OptionValue extends string | number> = {
+export type SliderOption<OptionValue extends SliderValue> = {
   value: OptionValue;
   label: React.ReactNode;
 };
 
 /** @deprecated */
-export interface ISliderProps<Value extends string | number = string | number>
+export interface ISliderProps<Value extends SliderValue = SliderValue>
   extends SliderProps<Value>,
     UnknownProperties {}
-export type SliderProps<Value extends string | number = string | number> = BoxProps & {
-  /** Numeric value
-   */
-  value?: Value;
-  /** Numeric default value
-   * @default 0
-   */
-  defaultValue?: Value;
-  /** Minimum value
-   * @default 0
-   */
-  min?: number;
-  /** Maximum value
-   * @default 100
-   */
-  max?: number;
-  /** Value change step
-   * @default 1
-   */
-  step?: number;
-  /**
-   * Handler for changing the value
-   */
-  onChange?: (value: Value, event: React.SyntheticEvent) => void;
-  /**
-   * Disable element
-   */
-  disabled?: boolean;
+export type SliderProps<Value extends SliderValue = SliderValue> = BoxProps &
+  KeyboardFocusProps & {
+    /** Numeric value
+     */
+    value?: Value;
+    /** Numeric default value
+     * @default 0
+     */
+    defaultValue?: Value;
+    /** Minimum value
+     * @default 0
+     */
+    min?: number;
+    /** Maximum value
+     * @default 100
+     */
+    max?: number;
+    /** Value change step
+     * @default 1
+     */
+    step?: number;
+    /**
+     * Handler for changing the value
+     */
+    onChange?:
+      | ((value: Value, event: React.SyntheticEvent) => void)
+      | React.Dispatch<React.SetStateAction<Value>>;
+    /**
+     * Disable element
+     */
+    disabled?: boolean;
 
-  options?: SliderOption<Value>[];
-};
+    options?: SliderOption<Value>[];
+  };
 
 type SliderOptionsProps = FlexProps;
 type SliderItemProps = BoxProps;
 
-declare const Slider: Intergalactic.Component<'div', SliderProps> & {
+type IntergalacticSliderComponent = (<
+  Value extends SliderValue,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, SliderProps<Value>>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const Slider: IntergalacticSliderComponent & {
   Knob: typeof Box;
   Bar: typeof Box;
   Options: Intergalactic.Component<

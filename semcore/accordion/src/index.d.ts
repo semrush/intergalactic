@@ -1,6 +1,7 @@
-import { Box, FlexProps } from '@semcore/flex-box';
+import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
 import { CollapseProps } from '@semcore/animation';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
 
@@ -62,6 +63,8 @@ export type AccordionItemContext = {
   selected?: boolean;
 };
 
+export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
+
 type IntergalacticAccordionComponent = (<
   Value extends AccordionValue,
   Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
@@ -82,7 +85,7 @@ declare const Accordion: IntergalacticAccordionComponent & {
     AccordionItemContext,
     [handlers: AccordionHandlers]
   > & {
-    Toggle: typeof Box;
+    Toggle: Intergalactic.Component<'div', AccordionItemToggleProps>;
     Chevron: typeof Box;
     Collapse: Intergalactic.Component<'div', CollapseProps>;
   };

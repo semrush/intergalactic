@@ -23,15 +23,11 @@ const Demo = () => {
         </FullscreenModal.Header>
         <FullscreenModal.Body>
           <FullscreenModal.Section>
-            <Text size={400} semibold>
-              Content Title
-            </Text>
+            <Text size={400}>Content Title</Text>
           </FullscreenModal.Section>
           <FullscreenModal.Section style={{ background: '#eee', overflow: 'auto' }}>
             <div style={{ height: '1000px' }}>
-              <Text size={400} semibold>
-                Content Title
-              </Text>
+              <Text size={400}>Content Title</Text>
             </div>
           </FullscreenModal.Section>
         </FullscreenModal.Body>

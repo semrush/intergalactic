@@ -31,7 +31,7 @@ describe('Button', () => {
   });
 
   test.concurrent('Renders correctly with Addon as props', async ({ task }) => {
-    const Addon = React.forwardRef(function (p, ref) {
+    const Addon = React.forwardRef((p, ref: React.Ref<HTMLSpanElement>) => {
       return (
         <span ref={ref} {...propsForElement(p)}>
           Addon prop

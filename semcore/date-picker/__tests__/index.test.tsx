@@ -10,10 +10,11 @@ const RealDate = global.Date;
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
 function mockDate(isoDate) {
-  global.Date = class extends RealDate {
+  (global as any).Date = class extends RealDate {
     constructor(...theArgs) {
+      super();
       if (theArgs.length) {
-        return new RealDate(...theArgs);
+        return new (RealDate as any)(...theArgs);
       }
       return new RealDate(isoDate);
     }
@@ -228,7 +229,7 @@ describe('DateRangePicker', () => {
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     vi.useFakeTimers();
     const component = (
-      <DateRangePicker visible defaultDisplayedPeriod={['2020-03-10T12:00:00.808Z']} />
+      <DateRangePicker visible defaultDisplayedPeriod={'2020-03-10T12:00:00.808Z'} />
     );
     const { getByText, getByLabelText } = render(component);
     fireEvent.click(getByLabelText('Next period'));
@@ -248,7 +249,7 @@ describe('DateRangePicker', () => {
   test('Should support set custom displayPeriod after changed value date', () => {
     vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
-      <DateRangePicker visible defaultDisplayedPeriod={['2021-09-10T12:00:00.808Z']} />,
+      <DateRangePicker visible defaultDisplayedPeriod={'2021-09-10T12:00:00.808Z'} />,
     );
     fireEvent.click(getByLabelText('Previous period'));
     // change visible

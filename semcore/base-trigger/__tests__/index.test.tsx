@@ -190,8 +190,8 @@ describe('LinkTrigger', () => {
   test.concurrent('Renders correctly with empty', async ({ task }) => {
     const component = (
       <>
-        <LinkTrigger>
-          <LinkTrigger.Text empty>LinkTrigger</LinkTrigger.Text>
+        <LinkTrigger empty>
+          <LinkTrigger.Text>LinkTrigger</LinkTrigger.Text>
           <LinkTrigger.Text>LinkTrigger</LinkTrigger.Text>
         </LinkTrigger>
       </>

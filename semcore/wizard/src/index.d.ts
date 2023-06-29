@@ -38,15 +38,17 @@ export type WizardStepProps = BoxProps & {
 
 /** @deprecated */
 export interface IWizardStepperProps extends WizardStepperProps, UnknownProperties {}
-export type WizardStepperProps = BoxProps & {
+export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
   /**
    * Step value
    */
-  step: WizardStep;
+  step: T;
   /**
    * Is invoked when active the step
    */
-  onActive?: (step: WizardStep, e: React.SyntheticEvent<HTMLElement>) => void;
+  onActive?:
+    | ((step: T, e: React.SyntheticEvent<HTMLElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /**
    * Stepper number
    * @default incremental value
@@ -56,12 +58,22 @@ export type WizardStepperProps = BoxProps & {
    *  Is the step completed
    */
   completed?: boolean;
+
+  disabled?: boolean;
 };
+
+type IntergalacticWizardStepperComponent = (<
+  Value extends WizardStep,
+  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, WizardStepperProps<Value>>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
 declare const Wizard: Intergalactic.Component<'div', WizardProps> & {
   Sidebar: Intergalactic.Component<'div', WizardSidebarProps>;
   Step: Intergalactic.Component<'div', WizardStepProps>;
-  Stepper: Intergalactic.Component<'div', WizardStepperProps>;
+  Stepper: IntergalacticWizardStepperComponent;
   Content: typeof Box;
 };
 
