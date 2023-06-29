@@ -225,7 +225,12 @@ SRow {
 }
 
 /* DEFAULT THEME */
-SRow[active] > SCell:not([theme]),
+SRow[active] > SCell:not([theme]) {
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
 SRow:hover > SCell:not([theme]),
 SRow SCell:hover + SGroupCell SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */
@@ -238,8 +243,13 @@ SRow[theme='muted'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-unread, #f4f5f9);
 }
 
+SRow[theme='muted'][active] > SCell:not([theme]) {
+  /* The color is hardcoded because need hex(in figma rgba) */
+  /* disable-tokens-validator */
+  background-color: var(--intergalactic-table-td-cell-active, #e6e7ed);
+}
+
 SRow:hover > SCell[theme='muted'],
-SRow[theme='muted'][active] > SCell:not([theme]),
 SRow[theme='muted']:hover > SCell:not([theme]),
 SRow[theme='muted'] SCell:hover + SGroupCell SCell:not([theme]) {
   /* The color is hardcoded because need hex(in figma rgba) */
@@ -252,8 +262,11 @@ SRow[theme='info'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-selected, #e9f7ff);
 }
 
+SRow[theme='info'][active] > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-selected-active, #c4e5fe);
+}
+
 SRow:hover > SCell[theme='info'],
-SRow[theme='info'][active] > SCell:not([theme]),
 SRow[theme='info']:hover > SCell:not([theme]),
 SRow[theme='info'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-selected-hover, #c4e5fe);
@@ -264,8 +277,11 @@ SRow[theme='success'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-new, #dbfee8);
 }
 
+SRow[theme='success'][active] > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-new-active, #9ef2c9);
+}
+
 SRow:hover > SCell[theme='success'],
-SRow[theme='success'][active] > SCell:not([theme]),
 SRow[theme='success']:hover > SCell:not([theme]),
 SRow[theme='success'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-new-hover, #9ef2c9);
@@ -276,8 +292,11 @@ SRow[theme='warning'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-warning, #fff3d9);
 }
 
+SRow[theme='warning'][active] > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-warning-active, #ffdca2);
+}
+
 SRow:hover > SCell[theme='warning'],
-SRow[theme='warning'][active] > SCell:not([theme]),
 SRow[theme='warning']:hover > SCell:not([theme]),
 SRow[theme='warning'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-warning-hover, #ffdca2);
@@ -288,8 +307,11 @@ SRow[theme='danger'] SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical, #fff0f7);
 }
 
+SRow[theme='danger'][active] > SCell:not([theme]) {
+  background-color: var(--intergalactic-table-td-cell-critical-active, #ffd7df);
+}
+
 SRow:hover > SCell[theme='danger'],
-SRow[theme='danger'][active] > SCell:not([theme]),
 SRow[theme='danger']:hover > SCell:not([theme]),
 SRow[theme='danger'] SCell:hover + SGroupCell SCell:not([theme]) {
   background-color: var(--intergalactic-table-td-cell-critical-hover, #ffd7df);
