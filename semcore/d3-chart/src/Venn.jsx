@@ -24,14 +24,12 @@ class VennRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip =
-    (visible, props) =>
-    ({ clientX: x, clientY: y }) => {
-      const { eventEmitter } = this.asProps;
-      this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
-      this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-      eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
-    };
+  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+    const { eventEmitter } = this.asProps;
+    this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
+    this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
+    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+  };
 
   getVennData() {
     const { data, orientation, orientationOrder, size } = this.asProps;
@@ -74,7 +72,7 @@ class VennRoot extends Component {
   }
 
   renderElement = React.forwardRef((props, ref) => {
-    return <FadeInOut aria-hidden ref={ref} tag="g" visible {...props} />;
+    return <FadeInOut aria-hidden ref={ref} tag='g' visible {...props} />;
   });
 
   render() {
@@ -85,7 +83,7 @@ class VennRoot extends Component {
       <Element
         aria-hidden
         render={this.renderElement}
-        childrenPosition="inside"
+        childrenPosition='inside'
         vennData={this.vennData}
       />
     );
@@ -108,7 +106,7 @@ function Circle({
   return sstyled(styles)(
     <SCircle
       aria-hidden
-      render="circle"
+      render='circle'
       color={color}
       cx={data.x}
       cy={data.y}
@@ -133,7 +131,7 @@ function Intersection(props) {
 
   const renderIntersection = React.useCallback(
     React.forwardRef((props, ref) => {
-      return <FadeInOut aria-hidden ref={ref} tag="path" visible {...props} />;
+      return <FadeInOut aria-hidden ref={ref} tag='path' visible {...props} />;
     }),
     [props],
   );

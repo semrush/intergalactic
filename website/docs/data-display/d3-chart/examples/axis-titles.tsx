@@ -25,7 +25,7 @@ export default () => {
         <XAxis.Ticks />
         <XAxis.Title>XAxis title</XAxis.Title>
       </XAxis>
-      <Bar x="category" y="bar" />
+      <Bar x='category' y='bar' />
     </Plot>
   );
 };

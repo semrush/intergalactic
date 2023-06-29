@@ -20,22 +20,22 @@ const Demo = () => {
   }, ['']);
 
   return (
-    <Flex direction="column">
-      <Text tag="label" size="200" htmlFor="dynamic-search-filter-by-keyword">
+    <Flex direction='column'>
+      <Text tag='label' size='200' htmlFor='dynamic-search-filter-by-keyword'>
         Filter by keyword
       </Text>
-      <Input w={200} mt={2} aria-live="polite">
+      <Input w={200} mt={2} aria-live='polite'>
         <Input.Addon>
           <Search />
         </Input.Addon>
         <Input.Value
           value={value}
           onChange={handleChange}
-          id="dynamic-search-filter-by-keyword"
-          placeholder="Enter keyword here"
+          id='dynamic-search-filter-by-keyword'
+          placeholder='Enter keyword here'
         />
         {value && (
-          <Input.Addon tag={CloseXS} interactive onClick={handleClick} aria-label="Clear filters" />
+          <Input.Addon tag={CloseXS} interactive onClick={handleClick} aria-label='Clear filters' />
         )}
       </Input>
     </Flex>

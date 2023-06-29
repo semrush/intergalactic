@@ -22,7 +22,7 @@ const Demo = () => {
   }, [text]);
   return (
     <React.Fragment>
-      <Button use="primary" onClick={() => setVisible(true)}>
+      <Button use='primary' onClick={() => setVisible(true)}>
         Open modal
       </Button>
       <Modal mt={0} w={500} visible={visible} onClose={() => setVisible(false)}>

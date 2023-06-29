@@ -1,5 +1,5 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import PropTypes from 'prop-types';
 import { Pie, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import generateCategoricalChartRecharts from 'recharts/lib/chart/generateCategoricalChart';
@@ -23,7 +23,10 @@ const generateCategoricalChart = function (params) {
     let payload = [];
     if (isTooltipActive) {
       const { dataKey } = activePayload[0];
-      const commonValue = displayedData.reduce((acc, item) => (acc += item[dataKey]), 0);
+      const commonValue = displayedData.reduce((acc, item) => {
+        acc += item[dataKey];
+        return acc;
+      }, 0);
       payload = activePayload.map((item) => ({
         ...Object.keys(item).reduce((acc, name) => {
           if (name === 'payload') {

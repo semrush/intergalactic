@@ -60,7 +60,7 @@ export const esbuildPluginDocs = (): Plugin => ({
 
     build.onResolve({ filter: /@components\// }, ({ path }) => {
       const purePath = path.substring('@components/'.length);
-      const resolvedPath = resolvePath(docComponentsDir, purePath) + '.jsx';
+      const resolvedPath = `${resolvePath(docComponentsDir, purePath)}.jsx`;
 
       return { path: resolvedPath, namespace: 'file' };
     });

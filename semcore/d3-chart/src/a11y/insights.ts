@@ -179,7 +179,7 @@ export const extractDataInsights = (
 
       for (const valueKey of valuesKeys) {
         const values = (data as Record<string, number>[]).map((row) => row[valueKey]);
-        const sum = values.reduce((sum, value) => (sum += value), 0);
+        const sum = values.reduce((sum, value) => sum + value, 0);
         const average = sum / values.length;
         const variance =
           (1 / values.length) *
@@ -573,7 +573,7 @@ export const extractDataInsights = (
               label: group.label,
               values: group.values,
               priority: 1,
-            } as ComparisonNode),
+            }) as ComparisonNode,
         ),
       );
     }
@@ -639,7 +639,7 @@ export const extractDataInsights = (
             label: group.label,
             values: group.values,
             priority: 1,
-          } as ComparisonNode),
+          }) as ComparisonNode,
       ),
     );
   }

@@ -35,16 +35,16 @@ const Demo = () => {
 
   return (
     <React.Fragment>
-      <Button use="primary" onClick={handleOpen}>
+      <Button use='primary' onClick={handleOpen}>
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose} w={536}>
-        <Text tag="h2" size={500} mb={4}>
+        <Text tag='h2' size={500} mb={4}>
           Delete project?
         </Text>
-        <Text size={300} mb={4} tag="p">
-          This will <Text tag="strong">delete</Text> the following campaigns set up for{' '}
-          <Text tag="strong">test.com</Text> with all their data:
+        <Text size={300} mb={4} tag='p'>
+          This will <Text tag='strong'>delete</Text> the following campaigns set up for{' '}
+          <Text tag='strong'>test.com</Text> with all their data:
         </Text>
         <List size={300} mb={4}>
           <List.Item>Position Tracking</List.Item>
@@ -52,24 +52,24 @@ const Demo = () => {
           <List.Item>Backlink Audit</List.Item>
           <List.Item>Content Analyzer</List.Item>
         </List>
-        <WarningBlock tag="label" direction="column" htmlFor="project">
-          <Text size={300} mb={2} tag="p">
+        <WarningBlock tag='label' direction='column' htmlFor='project'>
+          <Text size={300} mb={2} tag='p'>
             Confirm deletion by typing the project name{' '}
-            <Text tag="strong" color="red-500">
+            <Text tag='strong' color='red-500'>
               Test
             </Text>
           </Text>
           <Tooltip
-            title="Please enter a correct project name."
+            title='Please enter a correct project name.'
             visible={focused && !isValid}
-            theme="warning"
-            placement="right"
+            theme='warning'
+            placement='right'
             ignorePortalsStacking
           >
-            <Input size="l" state={state} w={'100%'}>
+            <Input size='l' state={state} w={'100%'}>
               <Input.Value
-                id="project"
-                placeholder="Enter project name"
+                id='project'
+                placeholder='Enter project name'
                 value={value}
                 onChange={handlerInput}
                 onBlur={() => {
@@ -84,10 +84,10 @@ const Demo = () => {
             </Input>
           </Tooltip>
         </WarningBlock>
-        <Button use="primary" theme="danger" size="l" onClick={handleDelete}>
+        <Button use='primary' theme='danger' size='l' onClick={handleDelete}>
           Delete
         </Button>
-        <Button size="l" ml={2} onClick={handleClose}>
+        <Button size='l' ml={2} onClick={handleClose}>
           Cancel
         </Button>
       </Modal>

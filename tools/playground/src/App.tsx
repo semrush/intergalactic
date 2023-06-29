@@ -1,6 +1,5 @@
 import React, { StrictMode } from 'react';
 
-// eslint-disable-next-line import/no-unresolved
 import { playgrounds } from '@playgrounds';
 import { useLocationHash } from './components/useLocationHash';
 import { Nav } from './components/Nav';
@@ -32,8 +31,7 @@ export const PlaygroundWrapper: React.FC = () => {
   if (!playgrounds[playground]) {
     return (
       <div>
-        Playground <strong>{playground}</strong> not found. Pick one in the list above or{' '}
-        <a href="#">create new</a>
+        Playground <strong>{playground}</strong> not found. Pick one in the list above or create new
       </div>
     );
   }
@@ -41,7 +39,7 @@ export const PlaygroundWrapper: React.FC = () => {
   const Playground = playgrounds[playground];
 
   if (typeof Playground !== 'function') {
-    // eslint-disable-next-line no-console
+    // rome-ignore lint/nursery/noConsoleLog: <explanation>
     console.log({ Playground });
     return (
       <div>
@@ -63,7 +61,7 @@ export const App: React.FC = () => {
     <StrictMode>
       <div>
         <Nav />
-        <main className="intergalactic-playground_playground-view">
+        <main className='intergalactic-playground_playground-view'>
           <PlaygroundWrapper />
         </main>
       </div>

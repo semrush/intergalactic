@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.3] - 2023-06-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+
+## [3.6.2] - 2023-06-22
+
 ## [3.6.1] - 2023-06-14
 
 ### Changed
@@ -279,7 +287,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Исправли проблему неправильного позиционирование `Dropdown.Popper` относительно триггера с заданным значением
-  `stretch` для `Dropdown`.
+`stretch` для `Dropdown`.
 
 ## [2.0.3] - 2020-07-06
 
@@ -346,7 +354,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Обнавлены зависимости `popper`/`flex-box`/`utils`
 
+
 - Исправлен дефолтный триггер
+
+
 
 ## [1.2.1] - 2019-09-30
 

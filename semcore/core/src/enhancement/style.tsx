@@ -29,7 +29,7 @@ function Enhancement(childComponents, Context) {
         [STYLES_CONTEXT]: this[STYLES_SELF],
       };
     },
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     asProps: function ({ _styles, styles, ...props }) {
       return {
         ...props,

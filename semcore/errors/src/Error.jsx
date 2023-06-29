@@ -18,12 +18,12 @@ class RootError extends Component {
     const SWrapper = 'div';
     const SImage = 'img';
     return sstyled(styles)(
-      <SError render={Flex} role="alert">
+      <SError render={Flex} role='alert'>
         <SInner>
           {icon && (
             <SImageWrapper>
               {typeof icon === 'string' ? (
-                <SImage src={icon} alt="error image" aria-hidden="true" />
+                <SImage src={icon} alt='error image' aria-hidden='true' />
               ) : (
                 icon
               )}
@@ -40,12 +40,12 @@ class RootError extends Component {
 
 function Title(props) {
   const STitle = Root;
-  return sstyled(props.styles)(<STitle render={Box} tag="h2" />);
+  return sstyled(props.styles)(<STitle render={Box} tag='h2' />);
 }
 
 function Description(props) {
   const SDescription = Root;
-  return sstyled(props.styles)(<SDescription render={Box} tag="p" />);
+  return sstyled(props.styles)(<SDescription render={Box} tag='p' />);
 }
 
 function Controls(props) {

@@ -12,8 +12,8 @@ describe('Popper', () => {
   test.concurrent('should render popper to outside container', () => {
     const { getByTestId } = render(
       <Popper visible>
-        <Popper.Trigger data-testid="reference" />
-        <Popper.Popper data-testid="popper" />
+        <Popper.Trigger data-testid='reference' />
+        <Popper.Popper data-testid='popper' />
       </Popper>,
     );
 
@@ -25,9 +25,9 @@ describe('Popper', () => {
     vi.useFakeTimers();
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Popper onVisibleChange={spy} interaction="hover">
-        <Popper.Trigger data-testid="reference" />
-        <Popper.Popper data-testid="popper" />
+      <Popper onVisibleChange={spy} interaction='hover'>
+        <Popper.Trigger data-testid='reference' />
+        <Popper.Popper data-testid='popper' />
       </Popper>,
     );
 
@@ -53,8 +53,8 @@ describe('Popper', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Popper onVisibleChange={spy} timeout={100}>
-        <Popper.Trigger data-testid="reference" />
-        <Popper.Popper data-testid="popper" />
+        <Popper.Trigger data-testid='reference' />
+        <Popper.Popper data-testid='popper' />
       </Popper>,
     );
 
@@ -73,8 +73,8 @@ describe('Popper', () => {
   test.concurrent('should proxy style', async () => {
     const { getByTestId } = render(
       <Popper visible>
-        <Popper.Trigger data-testid="reference" />
-        <Popper.Popper data-testid="popper" />
+        <Popper.Trigger data-testid='reference' />
+        <Popper.Popper data-testid='popper' />
       </Popper>,
     );
 
@@ -84,12 +84,12 @@ describe('Popper', () => {
   test.concurrent('should nested popper', async () => {
     const { getByTestId } = render(
       <Popper visible>
-        <Popper.Trigger children="trigger 1" />
+        <Popper.Trigger children='trigger 1' />
         <Popper.Popper>
           content 1
           <Popper visible>
-            <Popper.Trigger children="trigger 2" />
-            <Popper.Popper data-testid="popper">content 2</Popper.Popper>
+            <Popper.Trigger children='trigger 2' />
+            <Popper.Popper data-testid='popper'>content 2</Popper.Popper>
           </Popper>
         </Popper.Popper>
       </Popper>,
@@ -108,7 +108,7 @@ describe('Popper.Trigger', () => {
   test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Popper>
-        <Popper.Trigger data-testid="trigger" name="trigger" />
+        <Popper.Trigger data-testid='trigger' name='trigger' />
       </Popper>,
     );
 
@@ -119,7 +119,7 @@ describe('Popper.Trigger', () => {
     const component = (
       <Popper>
         <Popper.Trigger>
-          <p data-testid="child">Test</p>
+          <p data-testid='child'>Test</p>
         </Popper.Trigger>
       </Popper>
     );
@@ -138,7 +138,7 @@ describe('Popper.Popper', () => {
   test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Popper visible>
-        <Popper.Popper data-testid="trigger" name="trigger" />
+        <Popper.Popper data-testid='trigger' name='trigger' />
       </Popper>,
     );
 
@@ -149,7 +149,7 @@ describe('Popper.Popper', () => {
     const component = (
       <Popper visible>
         <Popper.Popper>
-          <p data-testid="child">Test</p>
+          <p data-testid='child'>Test</p>
         </Popper.Popper>
       </Popper>
     );
@@ -166,7 +166,7 @@ describe('focus control', () => {
     vi.useFakeTimers();
     const { getByTestId } = render(
       <Popper visible>
-        <Popper.Popper autoFocus data-testid="popper">
+        <Popper.Popper autoFocus data-testid='popper'>
           <input />
         </Popper.Popper>
       </Popper>,
@@ -186,7 +186,7 @@ describe('focus control', () => {
         <input />
         <input />
         <Popper visible>
-          <Popper.Popper data-testid="popper">
+          <Popper.Popper data-testid='popper'>
             <div tabIndex={0} />
           </Popper.Popper>
         </Popper>
@@ -221,11 +221,11 @@ describe('focus control', () => {
 
       return (
         <Popper visible={visible} onVisibleChange={() => {}}>
-          <Popper.Trigger data-testid="trigger" tabIndex={0}>
+          <Popper.Trigger data-testid='trigger' tabIndex={0}>
             trigger
           </Popper.Trigger>
-          <Popper.Popper autoFocus data-testid="popper">
-            <div tabIndex={0} data-testid="focusable-in-popper">
+          <Popper.Popper autoFocus data-testid='popper'>
+            <div tabIndex={0} data-testid='focusable-in-popper'>
               popper
             </div>
           </Popper.Popper>
@@ -233,7 +233,7 @@ describe('focus control', () => {
       );
     };
     const { getByTestId } = render(
-      <div data-testid="container">
+      <div data-testid='container'>
         <Component />
       </div>,
     );
@@ -265,16 +265,16 @@ describe('focus control', () => {
   test('focus follow', () => {
     const { getByTestId } = render(
       <>
-        <input data-testid="input-before-popper" />
-        <Popper interaction="focus">
-          <Popper.Trigger data-testid="trigger">
-            <div tabIndex={0} data-testid="focusable-in-trigger" />
+        <input data-testid='input-before-popper' />
+        <Popper interaction='focus'>
+          <Popper.Trigger data-testid='trigger'>
+            <div tabIndex={0} data-testid='focusable-in-trigger' />
           </Popper.Trigger>
-          <Popper.Popper autoFocus data-testid="popper">
+          <Popper.Popper autoFocus data-testid='popper'>
             <div tabIndex={0}>button</div>
           </Popper.Popper>
         </Popper>
-        <input data-testid="input-after-popper" />
+        <input data-testid='input-after-popper' />
       </>,
     );
 

@@ -57,7 +57,8 @@ export default PlaygroundGeneration((createGroupWidgets) => {
         </Button>
       </FeaturePopover.Trigger>
       <FeaturePopover.Popper closeIcon={closeIcon} wMax={350}>
-        With this new feature, users can now enjoy improved user experience, or expanded capabilities.
+        With this new feature, users can now enjoy improved user experience, or expanded
+        capabilities.
       </FeaturePopover.Popper>
     </FeaturePopover>
   );

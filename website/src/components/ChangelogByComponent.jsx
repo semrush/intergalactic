@@ -28,7 +28,7 @@ const ChangelogByComponent = ({ blocks }) => {
       {components.map(({ title, component, changes }) => (
         <div key={component}>
           <Text
-            tag="h3"
+            tag='h3'
             style={{
               fontSize: '16px',
               lineHeight: '150%',
@@ -42,6 +42,7 @@ const ChangelogByComponent = ({ blocks }) => {
           <ul className={styles.list}>
             {changes.map(({ type, text }) => (
               <li className={styles.listItem} key={`${type}-${text}`}>
+                {/* rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
                 {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
               </li>
             ))}
@@ -50,75 +51,6 @@ const ChangelogByComponent = ({ blocks }) => {
       ))}
     </span>
   ));
-  let section;
-  return {
-    list: (props) => <ul className={styles.list} {...props} />,
-    listItem: function ({ children }) {
-      let label = null;
-      if (!section) return null;
-      switch (section.props.children) {
-        case 'Added':
-          label = (
-            <Tag className={cx(styles.tagStyled, styles.greenContainer)} size="l">
-              <Tag.Text className={styles.greenText}>{section}</Tag.Text>
-            </Tag>
-          );
-          break;
-        case 'Fixed':
-          label = (
-            <Tag className={cx(styles.tagStyled, styles.blueContainer)} size="l">
-              <Tag.Text className={styles.blueText}>{section}</Tag.Text>
-            </Tag>
-          );
-          break;
-        case 'Changed':
-        case 'Removed':
-        case 'Deprecated':
-          label = (
-            <Tag className={cx(styles.tagStyled, styles.orangeContainer)} size="l">
-              <Tag.Text className={styles.orangeText}>{section}</Tag.Text>
-            </Tag>
-          );
-          break;
-        case 'BREAK':
-        case 'Security':
-          label = (
-            <Tag className={cx(styles.tagStyled, styles.redContainer)} size="l">
-              <Tag.Text className={styles.redText}>{section}</Tag.Text>
-            </Tag>
-          );
-      }
-      return (
-        <li className={styles.listItem}>
-          {label}
-          <div>{children}</div>
-        </li>
-      );
-    },
-    heading: function ({ level, children }) {
-      if (level === 2) {
-        const version = children[0]?.props?.children;
-        return (
-          <Text tag="h3">
-            <Text>{version}</Text>
-            <small>{children[1]}</small>
-          </Text>
-        );
-      }
-      if (level === 3) {
-        section = children[0];
-      }
-      return null;
-    },
-    link: ({ href, ...props }) => {
-      if (href.startsWith('/')) {
-        return <Link to={href} {...props} />;
-      } else {
-        return <a href={href} {...props} />;
-      }
-    },
-    paragraph: () => null,
-  };
 };
 
 export default ChangelogByComponent;

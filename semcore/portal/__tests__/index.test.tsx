@@ -8,9 +8,9 @@ describe('Portal', () => {
 
   test.concurrent('should render children to outside container', () => {
     const { getByTestId } = render(
-      <div data-testid="parent">
+      <div data-testid='parent'>
         <Portal>
-          <div data-testid="child" />
+          <div data-testid='child' />
         </Portal>
       </div>,
     );
@@ -22,9 +22,9 @@ describe('Portal', () => {
 
   test.concurrent('should render support disablePortal', () => {
     const { getByTestId } = render(
-      <div data-testid="parent">
+      <div data-testid='parent'>
         <Portal disablePortal>
-          <div data-testid="child" />
+          <div data-testid='child' />
         </Portal>
       </div>,
     );
@@ -38,13 +38,13 @@ describe('Portal', () => {
     const containerRef = React.createRef<any>();
     const { getByTestId } = render(
       <>
-        <div data-testid="container" ref={containerRef} />
+        <div data-testid='container' ref={containerRef} />
         <PortalProvider value={containerRef}>
           <Portal>
-            <div data-testid="child" />
+            <div data-testid='child' />
           </Portal>
           <Portal>
-            <div data-testid="child" />
+            <div data-testid='child' />
           </Portal>
         </PortalProvider>
       </>,

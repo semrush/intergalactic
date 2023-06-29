@@ -14,76 +14,76 @@ import Input from '../src';
 const makePlayground = () => (
   <>
     <br />
-    <label htmlFor="simple">Simple</label>
+    <label htmlFor='simple'>Simple</label>
     <br />
-    <InlineInput onBlurBehavior="cancel">
-      <InlineInput.Value id="simple" />
+    <InlineInput onBlurBehavior='cancel'>
+      <InlineInput.Value id='simple' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="loading">Loading state</label>
+    <label htmlFor='loading'>Loading state</label>
     <br />
     <InlineInput loading>
-      <InlineInput.Value id="loading" />
+      <InlineInput.Value id='loading' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="disabled">Disabled</label>
+    <label htmlFor='disabled'>Disabled</label>
     <br />
     <InlineInput disabled>
-      <InlineInput.Value id="disabled" />
+      <InlineInput.Value id='disabled' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="custom-text">Custom text</label>
+    <label htmlFor='custom-text'>Custom text</label>
     <br />
-    <InlineInput state="invalid">
-      <InlineInput.Value id="custom-text" />
-      <InlineInput.ConfirmControl title="Good" />
-      <InlineInput.CancelControl title="Awfull" />
+    <InlineInput state='invalid'>
+      <InlineInput.Value id='custom-text' />
+      <InlineInput.ConfirmControl title='Good' />
+      <InlineInput.CancelControl title='Awfull' />
     </InlineInput>
     <br />
-    <label htmlFor="valid">Valid </label>
+    <label htmlFor='valid'>Valid </label>
     <br />
-    <InlineInput state="valid">
-      <InlineInput.Value id="valid" />
+    <InlineInput state='valid'>
+      <InlineInput.Value id='valid' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="with-icons">With icons</label>
+    <label htmlFor='with-icons'>With icons</label>
     <br />
     <InlineInput>
       <InlineInput.Addon tag={SerpM} />
-      <InlineInput.Value id="with-icons" />
+      <InlineInput.Value id='with-icons' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="decomposed">Decomposed</label>
+    <label htmlFor='decomposed'>Decomposed</label>
     <br />
     <InlineInput>
-      <InlineInput.Value id="decomposed" />
+      <InlineInput.Value id='decomposed' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="primitive">Primitve</label>
+    <label htmlFor='primitive'>Primitve</label>
     <br />
     <InlineInput>
-      <InlineInput.Value id="primitive" />
+      <InlineInput.Value id='primitive' />
       <InlineInput.ConfirmControl />
       <InlineInput.CancelControl />
     </InlineInput>
     <br />
-    <label htmlFor="const-placeholder">Constant placeholder</label>
+    <label htmlFor='const-placeholder'>Constant placeholder</label>
     <br />
     <InlineInput>
       <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
-      <InlineInput.Value id="const-placeholder" />
+      <InlineInput.Value id='const-placeholder' />
     </InlineInput>
   </>
 );
@@ -111,11 +111,11 @@ describe('InlineInput', () => {
         <InlineInput>
           <InlineInput.Value />
           <InlineInput.ConfirmControl
-            title="Sh**ck is love"
+            title='Sh**ck is love'
             $tooltipsProps={{ visible: true, disablePortal: true }}
           />
           <InlineInput.CancelControl
-            title="DRAIN THE SWAMP!"
+            title='DRAIN THE SWAMP!'
             $tooltipsProps={{ visible: true, disablePortal: true }}
           />
         </InlineInput>
@@ -142,10 +142,10 @@ describe('InlineInput', () => {
 
     const { getByTestId } = render(
       <>
-        <InlineInput data-testid="behavior-cancel" onBlurBehavior="cancel" onCancel={spyCancel}>
+        <InlineInput data-testid='behavior-cancel' onBlurBehavior='cancel' onCancel={spyCancel}>
           <InlineInput.Value />
         </InlineInput>
-        <InlineInput data-testid="behavior-confirm" onBlurBehavior="confirm" onConfirm={spyConfirm}>
+        <InlineInput data-testid='behavior-confirm' onBlurBehavior='confirm' onConfirm={spyConfirm}>
           <InlineInput.Value />
         </InlineInput>
       </>,

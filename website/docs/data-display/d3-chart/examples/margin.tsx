@@ -23,7 +23,7 @@ export default () => {
       height={height}
       style={{ border: '1px solid' }}
     >
-      <Line x="x" y="y" />
+      <Line x='x' y='y' />
     </Plot>
   );
 };

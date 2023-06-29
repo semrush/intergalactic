@@ -6,11 +6,11 @@ import { Flex } from '@semcore/ui/flex-box';
 const Demo = () => {
   return (
     <Flex>
-      <Input neighborLocation="right" w={200}>
-        <Input.Value placeholder="Placeholder" />
+      <Input neighborLocation='right' w={200}>
+        <Input.Value placeholder='Placeholder' />
       </Input>
       <Select
-        neighborLocation="left"
+        neighborLocation='left'
         options={[
           { value: 'Option 1', children: 'Option 1' },
           { value: 'Option 2', children: 'Option 2' },

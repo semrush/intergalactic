@@ -48,14 +48,14 @@ describe('Button', () => {
   });
 
   test.concurrent('Renders correctly with one Addon as props', async ({ task }) => {
-    const component = <Button addonLeft={CheckM} aria-label="Check" />;
+    const component = <Button addonLeft={CheckM} aria-label='Check' />;
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('should support loading', () => {
     const { queryByTestId } = render(
-      <Button data-testid="button" loading>
+      <Button data-testid='button' loading>
         Text
       </Button>,
     );
@@ -77,8 +77,8 @@ describe('Button', () => {
   test.concurrent('should support size props', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Button size="l">Button</Button>
-        <Button size="m">Button</Button>
+        <Button size='l'>Button</Button>
+        <Button size='m'>Button</Button>
       </snapshot.ProxyProps>
     );
 
@@ -89,34 +89,34 @@ describe('Button', () => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="primary">Button</Button>
-          <Button use="primary" theme="invert">
+          <Button use='primary'>Button</Button>
+          <Button use='primary' theme='invert'>
             Button
           </Button>
-          <Button use="primary" theme="success">
+          <Button use='primary' theme='success'>
             Button
           </Button>
-          <Button use="primary" theme="warning">
+          <Button use='primary' theme='warning'>
             Button
           </Button>
-          <Button use="primary" theme="danger">
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-        <br />
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="secondary">Button</Button>
-          <Button use="secondary" theme="invert">
+          <Button use='primary' theme='danger'>
             Button
           </Button>
         </snapshot.ProxyProps>
         <br />
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="tertiary">Button</Button>
-          <Button use="tertiary" theme="invert">
+          <Button use='secondary'>Button</Button>
+          <Button use='secondary' theme='invert'>
             Button
           </Button>
-          <Button use="tertiary" theme="muted">
+        </snapshot.ProxyProps>
+        <br />
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Button use='tertiary'>Button</Button>
+          <Button use='tertiary' theme='invert'>
+            Button
+          </Button>
+          <Button use='tertiary' theme='muted'>
             Button
           </Button>
         </snapshot.ProxyProps>
@@ -130,40 +130,40 @@ describe('Button', () => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="primary" loading>
+          <Button use='primary' loading>
             Button
           </Button>
-          <Button use="primary" theme="invert" loading>
+          <Button use='primary' theme='invert' loading>
             Button
           </Button>
-          <Button use="primary" theme="success" loading>
+          <Button use='primary' theme='success' loading>
             Button
           </Button>
-          <Button use="primary" theme="warning" loading>
+          <Button use='primary' theme='warning' loading>
             Button
           </Button>
-          <Button use="primary" theme="danger" loading>
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-        <br />
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="secondary" loading>
-            Button
-          </Button>
-          <Button use="secondary" theme="invert" loading>
+          <Button use='primary' theme='danger' loading>
             Button
           </Button>
         </snapshot.ProxyProps>
         <br />
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="tertiary" loading>
+          <Button use='secondary' loading>
             Button
           </Button>
-          <Button use="tertiary" theme="invert" loading>
+          <Button use='secondary' theme='invert' loading>
             Button
           </Button>
-          <Button use="tertiary" theme="muted" loading>
+        </snapshot.ProxyProps>
+        <br />
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Button use='tertiary' loading>
+            Button
+          </Button>
+          <Button use='tertiary' theme='invert' loading>
+            Button
+          </Button>
+          <Button use='tertiary' theme='muted' loading>
             Button
           </Button>
         </snapshot.ProxyProps>
@@ -177,40 +177,40 @@ describe('Button', () => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="primary" disabled>
+          <Button use='primary' disabled>
             Button
           </Button>
-          <Button use="primary" theme="invert" disabled>
+          <Button use='primary' theme='invert' disabled>
             Button
           </Button>
-          <Button use="primary" theme="success" disabled>
+          <Button use='primary' theme='success' disabled>
             Button
           </Button>
-          <Button use="primary" theme="warning" disabled>
+          <Button use='primary' theme='warning' disabled>
             Button
           </Button>
-          <Button use="primary" theme="danger" disabled>
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-        <br />
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="secondary" disabled>
-            Button
-          </Button>
-          <Button use="secondary" theme="invert" disabled>
+          <Button use='primary' theme='danger' disabled>
             Button
           </Button>
         </snapshot.ProxyProps>
         <br />
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="tertiary" disabled>
+          <Button use='secondary' disabled>
             Button
           </Button>
-          <Button use="tertiary" theme="invert" disabled>
+          <Button use='secondary' theme='invert' disabled>
             Button
           </Button>
-          <Button use="tertiary" theme="muted" disabled>
+        </snapshot.ProxyProps>
+        <br />
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Button use='tertiary' disabled>
+            Button
+          </Button>
+          <Button use='tertiary' theme='invert' disabled>
+            Button
+          </Button>
+          <Button use='tertiary' theme='muted' disabled>
             Button
           </Button>
         </snapshot.ProxyProps>
@@ -224,40 +224,40 @@ describe('Button', () => {
     const component = (
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="primary" disabled active>
+          <Button use='primary' disabled active>
             Button
           </Button>
-          <Button use="primary" theme="invert" disabled active>
+          <Button use='primary' theme='invert' disabled active>
             Button
           </Button>
-          <Button use="primary" theme="success" disabled active>
+          <Button use='primary' theme='success' disabled active>
             Button
           </Button>
-          <Button use="primary" theme="warning" disabled active>
+          <Button use='primary' theme='warning' disabled active>
             Button
           </Button>
-          <Button use="primary" theme="danger" disabled active>
-            Button
-          </Button>
-        </snapshot.ProxyProps>
-        <br />
-        <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="secondary" disabled active>
-            Button
-          </Button>
-          <Button use="secondary" theme="invert" disabled active>
+          <Button use='primary' theme='danger' disabled active>
             Button
           </Button>
         </snapshot.ProxyProps>
         <br />
         <snapshot.ProxyProps style={{ margin: 5 }}>
-          <Button use="tertiary" disabled active>
+          <Button use='secondary' disabled active>
             Button
           </Button>
-          <Button use="tertiary" theme="invert" disabled active>
+          <Button use='secondary' theme='invert' disabled active>
             Button
           </Button>
-          <Button use="tertiary" theme="muted" disabled active>
+        </snapshot.ProxyProps>
+        <br />
+        <snapshot.ProxyProps style={{ margin: 5 }}>
+          <Button use='tertiary' disabled active>
+            Button
+          </Button>
+          <Button use='tertiary' theme='invert' disabled active>
+            Button
+          </Button>
+          <Button use='tertiary' theme='muted' disabled active>
             Button
           </Button>
         </snapshot.ProxyProps>
@@ -273,40 +273,40 @@ describe('Button', () => {
       const component = (
         <div style={{ background: '#eee' }}>
           <snapshot.ProxyProps style={{ margin: 5 }}>
-            <Button use="primary" disabled active tag="a">
+            <Button use='primary' disabled active tag='a'>
               Button
             </Button>
-            <Button use="primary" theme="invert" disabled active tag="a">
+            <Button use='primary' theme='invert' disabled active tag='a'>
               Button
             </Button>
-            <Button use="primary" theme="success" disabled active tag="a">
+            <Button use='primary' theme='success' disabled active tag='a'>
               Button
             </Button>
-            <Button use="primary" theme="warning" disabled active tag="a">
+            <Button use='primary' theme='warning' disabled active tag='a'>
               Button
             </Button>
-            <Button use="primary" theme="danger" disabled active tag="a">
-              Button
-            </Button>
-          </snapshot.ProxyProps>
-          <br />
-          <snapshot.ProxyProps style={{ margin: 5 }}>
-            <Button use="secondary" disabled active tag="a">
-              Button
-            </Button>
-            <Button use="secondary" theme="invert" disabled active tag="a">
+            <Button use='primary' theme='danger' disabled active tag='a'>
               Button
             </Button>
           </snapshot.ProxyProps>
           <br />
           <snapshot.ProxyProps style={{ margin: 5 }}>
-            <Button use="tertiary" disabled active tag="a">
+            <Button use='secondary' disabled active tag='a'>
               Button
             </Button>
-            <Button use="tertiary" theme="invert" disabled active tag="a">
+            <Button use='secondary' theme='invert' disabled active tag='a'>
               Button
             </Button>
-            <Button use="tertiary" theme="muted" disabled active tag="a">
+          </snapshot.ProxyProps>
+          <br />
+          <snapshot.ProxyProps style={{ margin: 5 }}>
+            <Button use='tertiary' disabled active tag='a'>
+              Button
+            </Button>
+            <Button use='tertiary' theme='invert' disabled active tag='a'>
+              Button
+            </Button>
+            <Button use='tertiary' theme='muted' disabled active tag='a'>
               Button
             </Button>
           </snapshot.ProxyProps>
@@ -320,38 +320,38 @@ describe('Button', () => {
   test.concurrent('should support neighbor location with [left, both, right]', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Flex inline alignItems="center">
+        <Flex inline alignItems='center'>
           <NeighborLocation>
             <Button>Left</Button>
             <Button>Both</Button>
             <Button>Right</Button>
           </NeighborLocation>
         </Flex>
-        <Flex inline alignItems="center">
+        <Flex inline alignItems='center'>
           <NeighborLocation>
-            <Button use="primary">Left</Button>
-            <Button use="primary">Both</Button>
-            <Button use="primary">Right</Button>
+            <Button use='primary'>Left</Button>
+            <Button use='primary'>Both</Button>
+            <Button use='primary'>Right</Button>
           </NeighborLocation>
         </Flex>
-        <Flex inline alignItems="center">
+        <Flex inline alignItems='center'>
           <NeighborLocation>
-            <Button use="primary" theme="invert">
+            <Button use='primary' theme='invert'>
               Left
             </Button>
-            <Button use="primary" theme="invert">
+            <Button use='primary' theme='invert'>
               Both
             </Button>
-            <Button use="primary" theme="invert">
+            <Button use='primary' theme='invert'>
               Right
             </Button>
           </NeighborLocation>
         </Flex>
-        <Flex inline alignItems="center">
+        <Flex inline alignItems='center'>
           <NeighborLocation>
-            <Button use="tertiary">Left</Button>
-            <Button use="tertiary">Both</Button>
-            <Button use="tertiary">Right</Button>
+            <Button use='tertiary'>Left</Button>
+            <Button use='tertiary'>Both</Button>
+            <Button use='tertiary'>Right</Button>
           </NeighborLocation>
         </Flex>
       </snapshot.ProxyProps>
@@ -364,7 +364,7 @@ describe('Button', () => {
     'Should support hover',
     async ({ task }) => {
       await expect(
-        await snapshot(<Button id="button">Button</Button>, {
+        await snapshot(<Button id='button'>Button</Button>, {
           actions: {
             hover: '#button',
           },
@@ -373,7 +373,7 @@ describe('Button', () => {
       await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
-            <Button id="button" use="tertiary" theme="invert">
+            <Button id='button' use='tertiary' theme='invert'>
               Button
             </Button>
           </div>,
@@ -387,7 +387,7 @@ describe('Button', () => {
       await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
-            <Button id="button" use="secondary" theme="invert">
+            <Button id='button' use='secondary' theme='invert'>
               Button
             </Button>
           </div>,
@@ -401,7 +401,7 @@ describe('Button', () => {
       await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
-            <Button id="button" use="primary" theme="invert">
+            <Button id='button' use='primary' theme='invert'>
               Button
             </Button>
           </div>,
@@ -414,7 +414,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="danger">
+          <Button id='button' use='primary' theme='danger'>
             Button
           </Button>,
           {
@@ -426,7 +426,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="warning">
+          <Button id='button' use='primary' theme='warning'>
             Button
           </Button>,
           {
@@ -438,7 +438,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="success">
+          <Button id='button' use='primary' theme='success'>
             Button
           </Button>,
           {
@@ -450,7 +450,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="info">
+          <Button id='button' use='primary' theme='info'>
             Button
           </Button>,
           {
@@ -462,7 +462,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="secondary" theme="muted">
+          <Button id='button' use='secondary' theme='muted'>
             Button
           </Button>,
           {
@@ -474,7 +474,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="secondary" theme="info">
+          <Button id='button' use='secondary' theme='info'>
             Button
           </Button>,
           {
@@ -486,7 +486,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="tertiary" theme="info">
+          <Button id='button' use='tertiary' theme='info'>
             Button
           </Button>,
           {
@@ -498,7 +498,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="tertiary" theme="muted">
+          <Button id='button' use='tertiary' theme='muted'>
             Button
           </Button>,
           {
@@ -516,7 +516,7 @@ describe('Button', () => {
     'Should support active',
     async ({ task }) => {
       await expect(
-        await snapshot(<Button id="button">Button</Button>, {
+        await snapshot(<Button id='button'>Button</Button>, {
           actions: {
             active: '#button',
           },
@@ -525,7 +525,7 @@ describe('Button', () => {
       await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
-            <Button id="button" use="tertiary" theme="invert">
+            <Button id='button' use='tertiary' theme='invert'>
               Button
             </Button>
           </div>,
@@ -539,7 +539,7 @@ describe('Button', () => {
       await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
-            <Button id="button" use="secondary" theme="invert">
+            <Button id='button' use='secondary' theme='invert'>
               Button
             </Button>
           </div>,
@@ -553,7 +553,7 @@ describe('Button', () => {
       await expect(
         await snapshot(
           <div style={{ background: '#eee' }}>
-            <Button id="button" use="primary" theme="invert">
+            <Button id='button' use='primary' theme='invert'>
               Button
             </Button>
           </div>,
@@ -566,7 +566,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="danger">
+          <Button id='button' use='primary' theme='danger'>
             Button
           </Button>,
           {
@@ -578,7 +578,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="warning">
+          <Button id='button' use='primary' theme='warning'>
             Button
           </Button>,
           {
@@ -590,7 +590,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="success">
+          <Button id='button' use='primary' theme='success'>
             Button
           </Button>,
           {
@@ -602,7 +602,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="primary" theme="info">
+          <Button id='button' use='primary' theme='info'>
             Button
           </Button>,
           {
@@ -614,7 +614,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="secondary" theme="muted">
+          <Button id='button' use='secondary' theme='muted'>
             Button
           </Button>,
           {
@@ -626,7 +626,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="secondary" theme="info">
+          <Button id='button' use='secondary' theme='info'>
             Button
           </Button>,
           {
@@ -638,7 +638,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="tertiary" theme="info">
+          <Button id='button' use='tertiary' theme='info'>
             Button
           </Button>,
           {
@@ -650,7 +650,7 @@ describe('Button', () => {
       ).toMatchImageSnapshot(task);
       await expect(
         await snapshot(
-          <Button id="button" use="tertiary" theme="muted">
+          <Button id='button' use='tertiary' theme='muted'>
             Button
           </Button>,
           {

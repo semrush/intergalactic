@@ -16,9 +16,9 @@ describe('Counter', () => {
   test.concurrent('should support size props', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Counter size="xl">42</Counter>
-        <Counter size="l">42</Counter>
-        <Counter size="m">42</Counter>
+        <Counter size='xl'>42</Counter>
+        <Counter size='l'>42</Counter>
+        <Counter size='m'>42</Counter>
       </snapshot.ProxyProps>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -29,10 +29,10 @@ describe('Counter', () => {
       <div style={{ background: '#eee' }}>
         <snapshot.ProxyProps style={{ margin: 5 }}>
           <Counter>42</Counter>
-          <Counter theme="warning">42</Counter>
-          <Counter theme="danger">42</Counter>
-          <Counter theme="light-blue">42</Counter>
-          <Counter theme="white">42</Counter>
+          <Counter theme='warning'>42</Counter>
+          <Counter theme='danger'>42</Counter>
+          <Counter theme='light-blue'>42</Counter>
+          <Counter theme='white'>42</Counter>
         </snapshot.ProxyProps>
       </div>
     );

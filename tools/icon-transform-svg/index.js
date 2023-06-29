@@ -130,7 +130,7 @@ module.exports = function () {
     }),
   )
     .then(() => {
-      // eslint-disable-next-line no-console
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

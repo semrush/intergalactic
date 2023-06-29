@@ -112,8 +112,8 @@ class Demo extends React.Component {
       <StyledTable compact>
         <Table.Head>
           <Table.Row>
-            <Table.CellHead rowSpan={2} align="center">
-              <Checkbox size="l">
+            <Table.CellHead rowSpan={2} align='center'>
+              <Checkbox size='l'>
                 <Checkbox.Value />
               </Checkbox>
             </Table.CellHead>
@@ -127,13 +127,13 @@ class Demo extends React.Component {
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
                 <span>
-                  Keyword <Text color="gray60">(1 – 100)</Text>
+                  Keyword <Text color='gray60'>(1 – 100)</Text>
                 </span>
               </Tooltip>
             </Table.CellHead>
             <Table.CellHead
               colSpan={3}
-              align="center"
+              align='center'
               active={active === 'cpc' || active === 'vol'}
             >
               <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
@@ -175,21 +175,21 @@ class Demo extends React.Component {
         <StyledBody loading={loading}>
           {data.map((row, i) => (
             <Table.Row key={i} interactive theme={row.kd === '-' ? 'danger' : undefined}>
-              <Table.Cell align="center" valign="middle">
-                <Checkbox size="l">
+              <Table.Cell align='center' valign='middle'>
+                <Checkbox size='l'>
                   <Checkbox.Value />
                 </Checkbox>
               </Table.Cell>
               <Table.Cell borderRight>
                 <Link>{row.keyword}</Link>
               </Table.Cell>
-              <Table.Cell align="right">{row.kd}</Table.Cell>
-              <Table.Cell align="right">{row.cpc}</Table.Cell>
-              <Table.Cell align="right">{row.vol}</Table.Cell>
+              <Table.Cell align='right'>{row.kd}</Table.Cell>
+              <Table.Cell align='right'>{row.cpc}</Table.Cell>
+              <Table.Cell align='right'>{row.vol}</Table.Cell>
             </Table.Row>
           ))}
         </StyledBody>
-        {loading && <StyledSpin size="xxl" theme="dark" />}
+        {loading && <StyledSpin size='xxl' theme='dark' />}
       </StyledTable>
     );
   }

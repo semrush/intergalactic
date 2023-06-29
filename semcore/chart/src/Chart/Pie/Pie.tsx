@@ -1,9 +1,9 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import Animate from 'react-smooth';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import isFunction from 'lodash/isFunction';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import isPlainObject from 'lodash/isPlainObject';
 import { Pie, Sector, PieProps, Animatable } from 'recharts';
 import Layer from 'recharts/lib/container/Layer';
@@ -87,7 +87,7 @@ Pie.prototype.renderSectorsStatically = function (sectors) {
 
     return (
       <Layer
-        className="recharts-pie-sector"
+        className='recharts-pie-sector'
         {...filterEventsOfChild(this.props, entry, i)}
         key={`sector-${i}`}
       >

@@ -10,7 +10,7 @@ export default () => {
 
   return (
     <Flex>
-      <Select onChange={setValue} placeholder="Select country">
+      <Select onChange={setValue} placeholder='Select country'>
         <Select.Trigger w={180}>
           <Select.Trigger.Addon>
             <Flags iso2={value} />

@@ -19,12 +19,12 @@ const hasExportDefault = async (dependency: string) => {
     return Object.hasOwnProperty.call(resolved, 'default');
   } catch (e) {
     // fallback resolver
-    const dependencyPkgJson = require.resolve(dependency + '/package.json');
+    const dependencyPkgJson = require.resolve(`${dependency}/package.json`);
     const { module } = fs.readJsonSync(dependencyPkgJson);
 
     if (!module) return true;
 
-    const dependencyES6EntryPath = require.resolve(dependency + `/${module}`);
+    const dependencyES6EntryPath = require.resolve(`${dependency}/${module}`);
     const ES6EntryContent = fs.readFileSync(dependencyES6EntryPath, 'utf8');
     return ES6EntryContent.match(EXPORT_DEFAULT_REG) !== null;
   }

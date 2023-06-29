@@ -36,7 +36,7 @@ export default () => {
           })}
         </XAxis.Ticks>
       </XAxis>
-      <Area x="time" y="line" curve={curveCardinal}>
+      <Area x='time' y='line' curve={curveCardinal}>
         <Area.Dots display />
       </Area>
     </Plot>

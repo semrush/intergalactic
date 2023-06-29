@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.9.5] - 2023-06-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.12.0 ~> 3.12.1], `@semcore/icon` [3.15.3 ~> 3.16.0]).
+
+## [3.9.4] - 2023-06-26
+
+### Fixed
+
+- React warning about passing `null` to the input element.
+
 ## [3.9.2] - 2023-06-14
 
 ### Changed
@@ -510,7 +522,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Исправли поведение проставления дней недели в календаре, теперь она зависит от локали, которую вы выбираете. Для
-  локалолей `en, ja` началом недели будет воскресенье, для всех остальных - понедельник.
+локалолей `en, ja` началом недели будет воскресенье, для всех остальных - понедельник.
 
 ## [1.4.1] - 2020-02-18
 

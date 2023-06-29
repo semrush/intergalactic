@@ -8,7 +8,7 @@ function getSkeleton() {
     name: c,
     data: (
       <Skeleton height={17}>
-        <Skeleton.Text y="5" width="60%" />
+        <Skeleton.Text y='5' width='60%' />
       </Skeleton>
     ),
   }));
@@ -27,10 +27,10 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" />
-        <DataTable.Column name="cpc" children="CPC" />
-        <DataTable.Column name="vol" children="Vol." />
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body
         {...(loading ? { rows: [getSkeleton(), getSkeleton(), getSkeleton()] } : {})}

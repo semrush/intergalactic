@@ -64,7 +64,7 @@ export const resolveRepoTypings = async () => {
     for (const typing of [...file.types, ...file.interfaces]) {
       if (typings[typing.name]) {
         const duplicateFilepath = typings[typing.name].filepath;
-        // eslint-disable-next-line no-console
+
         console.warn(
           `[typescript parser] ${typing.name} declaration found both in ${duplicateFilepath} and ${file.filepath} Using the declaration from the second path.`,
         );

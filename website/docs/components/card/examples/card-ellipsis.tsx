@@ -9,7 +9,7 @@ const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 export default () => (
   <Card w={'50%'}>
     <Card.Header>
-      <Flex alignItems="center" tag="h4">
+      <Flex alignItems='center' tag='h4'>
         <Card.Title tag={Ellipsis} hint={tooltipContent}>
           Very long card title which should show ellipsis when there is not enough space
         </Card.Title>

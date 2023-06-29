@@ -61,7 +61,7 @@ describe('TabPanel', () => {
       <TabPanel value={2}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
-        <TabPanel.Item value={3} id="tab-panel">
+        <TabPanel.Item value={3} id='tab-panel'>
           Item 3
         </TabPanel.Item>
         <TabPanel.Item value={4}>Item 4</TabPanel.Item>

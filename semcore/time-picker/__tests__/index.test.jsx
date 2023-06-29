@@ -9,9 +9,9 @@ import TimePicker from '../src';
 
 const TimePickerDefault = ({ children, ...other }) => (
   <TimePicker {...other}>
-    <TimePicker.Hours id="hours" />
+    <TimePicker.Hours id='hours' />
     <TimePicker.Separator />
-    <TimePicker.Minutes id="minutes" />
+    <TimePicker.Minutes id='minutes' />
     {children}
   </TimePicker>
 );
@@ -22,10 +22,10 @@ describe('TimePicker', () => {
   test.concurrent('should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <TimePickerDefault value="11" size="l">
+        <TimePickerDefault value='11' size='l'>
           <TimePicker.Format />
         </TimePickerDefault>
-        <TimePickerDefault value="11" size="m">
+        <TimePickerDefault value='11' size='m'>
           <TimePicker.Format />
         </TimePickerDefault>
       </snapshot.ProxyProps>
@@ -50,12 +50,12 @@ describe('TimePicker', () => {
   test.concurrent('should support state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <TimePickerDefault state="invalid" />
-        <TimePickerDefault state="invalid">
+        <TimePickerDefault state='invalid' />
+        <TimePickerDefault state='invalid'>
           <TimePicker.Format />
         </TimePickerDefault>
-        <TimePickerDefault state="valid" />
-        <TimePickerDefault state="valid">
+        <TimePickerDefault state='valid' />
+        <TimePickerDefault state='valid'>
           <TimePicker.Format />
         </TimePickerDefault>
       </snapshot.ProxyProps>
@@ -85,7 +85,7 @@ describe('TimePicker', () => {
       ),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<TimePickerDefault focused state="valid" />, {
+      await snapshot(<TimePickerDefault focused state='valid' />, {
         actions: {
           focus: '#hours',
         },
@@ -93,7 +93,7 @@ describe('TimePicker', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(
-        <TimePickerDefault focused state="valid">
+        <TimePickerDefault focused state='valid'>
           <TimePicker.Format />
         </TimePickerDefault>,
         {
@@ -104,7 +104,7 @@ describe('TimePicker', () => {
       ),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<TimePickerDefault focused state="invalid" />, {
+      await snapshot(<TimePickerDefault focused state='invalid' />, {
         actions: {
           focus: '#hours',
         },
@@ -112,7 +112,7 @@ describe('TimePicker', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(
-        <TimePickerDefault focused state="invalid">
+        <TimePickerDefault focused state='invalid'>
           <TimePicker.Format />
         </TimePickerDefault>,
         {
@@ -128,7 +128,7 @@ describe('TimePicker', () => {
     await expect(
       await snapshot(
         <TimePickerDefault>
-          <TimePicker.Format id="format" />
+          <TimePicker.Format id='format' />
         </TimePickerDefault>,
         {
           actions: {
@@ -143,7 +143,7 @@ describe('TimePicker', () => {
     await expect(
       await snapshot(
         <TimePickerDefault>
-          <TimePicker.Format id="format" />
+          <TimePicker.Format id='format' />
         </TimePickerDefault>,
         {
           actions: {

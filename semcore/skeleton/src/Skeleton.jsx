@@ -37,20 +37,20 @@ class Skeleton extends Component {
     return sstyled(styles)(
       <SSkeleton
         render={Box}
-        tag="svg"
-        preserveAspectRatio="none"
+        tag='svg'
+        preserveAspectRatio='none'
         durationAnim={`${duration}ms`}
-        aria-busy="true"
-        aria-atomic="true"
-        aria-hidden="true"
-        alt=""
+        aria-busy='true'
+        aria-atomic='true'
+        aria-hidden='true'
+        alt=''
       >
         <defs>
           <mask id={uid}>
             <Children />
           </mask>
         </defs>
-        <rect x="0" y="0" width="100%" height="100%" mask={`url(#${uid})`} />
+        <rect x='0' y='0' width='100%' height='100%' mask={`url(#${uid})`} />
       </SSkeleton>,
     );
   }
@@ -62,7 +62,7 @@ function Text(props) {
   const amountLine = Number(amount);
 
   const renderRect = (props) => {
-    return sstyled(styles)(<SText tag="rect" rx="4" ry="4" height="8" {...props} />);
+    return sstyled(styles)(<SText tag='rect' rx='4' ry='4' height='8' {...props} />);
   };
 
   return (

@@ -26,10 +26,10 @@ export default () => {
           <Text size={300} bold>
             Nothing found
           </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
-          <NoData type="nothing-found" description="Try changing your filters.">
+          <Divider orientation='horizontal' m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
+          <NoData type='nothing-found' description='Try changing your filters.'>
             <Box mt={4}>
-              <Button use="secondary">Clear filters</Button>
+              <Button use='secondary'>Clear filters</Button>
             </Box>
           </NoData>
         </Card>

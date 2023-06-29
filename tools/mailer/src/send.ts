@@ -13,7 +13,7 @@ export const sendMail = async (options: {
   from: string;
   replyTo: string;
 }) => {
-  // eslint-disable-next-line no-console
+  
   console.log(options);
 
   // validateMailerEnv();
@@ -52,7 +52,7 @@ export const sendMail = async (options: {
 
   //   const response = await mailchimp.campaigns.send(campaignId);
 
-  //   // eslint-disable-next-line no-console
+  //   
   //   console.log(response, 'Sent successfully');
   // }
 };

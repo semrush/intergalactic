@@ -10,7 +10,7 @@ const Demo = () => {
     manager.add({
       children: 'Server connection lost. Check your internet connection and reload the page.',
       action: (
-        <Button theme="invert">
+        <Button theme='invert'>
           <Button.Addon>
             <ReloadM />
           </Button.Addon>

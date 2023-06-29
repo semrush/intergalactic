@@ -11,7 +11,7 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import style from './style/inline-edit.shadow.css';
 
 type AsProps = {
-  Children: React.FC,
+  Children: React.FC;
   defaultEditable?: boolean;
   editable?: boolean;
   onEdit?: () => void;
@@ -110,10 +110,8 @@ const Edit: React.FC<AsProps> = (props) => {
     />,
   ) as React.ReactElement;
 };
-// eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-const View: React.FC<AsProps> = (
-  props,
-) => {
+
+const View: React.FC<AsProps> = (props) => {
   const visible = !props.editable;
   const SView = Root;
 

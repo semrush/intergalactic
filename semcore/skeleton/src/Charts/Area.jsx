@@ -21,15 +21,15 @@ const AreaChartSkeleton = (props) => {
 
   const [drawLine, drawFill] = getDraw(type);
   return (
-    <Skeleton viewBox="0 0 908 166" preserveAspectRatio="xMidYMid meet" {...props}>
+    <Skeleton viewBox='0 0 908 166' preserveAspectRatio='xMidYMid meet' {...props}>
       {({ gradientUrl }) => (
-        <g fill="none" fillRule="nonzero">
-          <path fill={gradientUrl} fillOpacity=".4" d={drawLine} />
+        <g fill='none' fillRule='nonzero'>
+          <path fill={gradientUrl} fillOpacity='.4' d={drawLine} />
           <path
             stroke={gradientUrl}
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="4"
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth='4'
             d={drawFill}
           />
         </g>

@@ -7,11 +7,11 @@ const Demo = () => {
     <Flex>
       <Box>
         <Pagination
-          locale="epo"
+          locale='epo'
           i18n={{
             epo: {
               prevPageLabel: 'Antaŭa',
-              prevPageDescription: "Antaŭa paĝo {pageNumber}",
+              prevPageDescription: 'Antaŭa paĝo {pageNumber}',
               nextPageLabel: 'Sekva',
               pageInputLabel: 'Paĝo:',
               totalPagesLabel: 'de',

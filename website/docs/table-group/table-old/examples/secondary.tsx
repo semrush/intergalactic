@@ -35,9 +35,9 @@ const data = [
 ];
 
 const Demo = () => (
-  <Table use="secondary">
+  <Table use='secondary'>
     <Table.Head>
-      <Table.Row theme="false">
+      <Table.Row theme='false'>
         {Object.keys(data[0])
           .slice(0, -1)
           .map((name) => (
@@ -46,7 +46,7 @@ const Demo = () => (
         {Object.keys(data[0])
           .slice(-1)
           .map((name) => (
-            <Table.CellHead key={name} sorting="asc" active>
+            <Table.CellHead key={name} sorting='asc' active>
               {name}
             </Table.CellHead>
           ))}

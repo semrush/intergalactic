@@ -81,10 +81,11 @@ class CarouselRoot extends Component {
   handlerKeyDown = (e) => {
     switch (e.key) {
       case 'ArrowLeft':
-      case 'ArrowRight':
+      case 'ArrowRight': {
         e.preventDefault();
         const { activeItemIndex } = this.controlTransformItem(MAP_TRANSFORM[e.key]);
         this.handlers.index(activeItemIndex);
+      }
     }
   };
 
@@ -363,7 +364,7 @@ const Container = (props) => {
   const SContainer = Root;
   const { styles, duration } = props;
 
-  return sstyled(styles)(<SContainer render={Box} role="list" use:duration={`${duration}ms`} />);
+  return sstyled(styles)(<SContainer render={Box} role='list' use:duration={`${duration}ms`} />);
 };
 
 const Item = (props) => {
@@ -380,29 +381,29 @@ const Item = (props) => {
   }, []);
 
   return sstyled(styles)(
-    <SItem render={Box} ref={refItem} role="listitem" id={`igc-${uid}-carousel-item-${index}`} />,
+    <SItem render={Box} ref={refItem} role='listitem' id={`igc-${uid}-carousel-item-${index}`} />,
   );
 };
 
 const Prev = (props) => {
   const { styles } = props;
   const SPrev = Root;
-  return sstyled(styles)(<SPrev render={Box} aria-hidden="true" />);
+  return sstyled(styles)(<SPrev render={Box} aria-hidden='true' />);
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive aria-label="Visual navigation, previous" />,
+  children: <ChevronLeft interactive aria-label='Visual navigation, previous' />,
   top: 0,
 });
 
 const Next = (props) => {
   const { styles } = props;
   const SNext = Root;
-  return sstyled(styles)(<SNext render={Box} aria-hidden="true" />);
+  return sstyled(styles)(<SNext render={Box} aria-hidden='true' />);
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive aria-label="Visual navigation, next" />,
+  children: <ChevronRight interactive aria-label='Visual navigation, next' />,
   top: 0,
 });
 
@@ -410,13 +411,13 @@ const Indicators = ({ items, styles, Children }) => {
   const SIndicators = Root;
   if (Children.origin) {
     return sstyled(styles)(
-      <SIndicators render={Box} aria-hidden="true">
+      <SIndicators render={Box} aria-hidden='true'>
         <Children />
       </SIndicators>,
     );
   }
   return sstyled(styles)(
-    <SIndicators render={Box} aria-hidden="true">
+    <SIndicators render={Box} aria-hidden='true'>
       {items.map((item, index) => (
         <Carousel.Indicator key={index} {...item} />
       ))}

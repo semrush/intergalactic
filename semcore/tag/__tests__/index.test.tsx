@@ -31,9 +31,9 @@ describe('Tag', () => {
   test.concurrent('Renders correctly with Addon and Text', async ({ task }) => {
     const component = (
       <Tag>
-        <Tag.Addon id="hover">Addon</Tag.Addon>
-        <Tag.Text id="hover-1">Test</Tag.Text>
-        <Tag.Addon id="hover-3">Addon</Tag.Addon>
+        <Tag.Addon id='hover'>Addon</Tag.Addon>
+        <Tag.Text id='hover-1'>Test</Tag.Text>
+        <Tag.Addon id='hover-3'>Addon</Tag.Addon>
       </Tag>
     );
     await expect(
@@ -74,16 +74,14 @@ describe('Tag', () => {
   });
 
   test.concurrent('Should support active', async ({ task }) => {
-    const component = themes
-      .map((theme) =>
-        colors.map((color) => (
-          <Tag key={`${theme}-${color}`} theme={theme} color={color} active>
-            <Tag.Text>Tag name</Tag.Text>
-            <Tag.Close />
-          </Tag>
-        )),
-      )
-      .flat();
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color} active>
+          <Tag.Text>Tag name</Tag.Text>
+          <Tag.Close />
+        </Tag>
+      )),
+    );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
@@ -103,31 +101,29 @@ describe('Tag', () => {
   });
 
   test.concurrent('should support theme props', async ({ task }) => {
-    const component = themes
-      .map((theme) =>
-        colors.map((color) => (
-          <Tag key={`${theme}-${color}`} theme={theme} color={color}>
-            <Tag.Text>Tag name</Tag.Text>
-            <Tag.Close />
-          </Tag>
-        )),
-      )
-      .flat();
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color}>
+          <Tag.Text>Tag name</Tag.Text>
+          <Tag.Close />
+        </Tag>
+      )),
+    );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.skip('should support custom theme', async ({ task }) => {
     const component = (
       <>
-        <Tag theme="blanchedalmond">
+        <Tag theme='blanchedalmond'>
           <Tag.Text>blanchedalmond</Tag.Text>
           <Tag.Close />
         </Tag>
-        <Tag theme="#3eeb4c">
+        <Tag theme='#3eeb4c'>
           <Tag.Text>#3eeb4c</Tag.Text>
           <Tag.Close />
         </Tag>
-        <Tag theme="dark-violet">
+        <Tag theme='dark-violet'>
           <Tag.Text>dark-violet</Tag.Text>
           <Tag.Close />
         </Tag>
@@ -138,7 +134,7 @@ describe('Tag', () => {
 
   test.skip('should support color text', async ({ task }) => {
     const component = (
-      <Tag theme="dark-violet" color="white">
+      <Tag theme='dark-violet' color='white'>
         dark-violet
       </Tag>
     );
@@ -155,7 +151,7 @@ describe('Tag', () => {
     const { getByTestId } = render(
       <Tag>
         <Tag.Text>Tag</Tag.Text>
-        <Tag.Close data-testid="close" onClick={onClick} />
+        <Tag.Close data-testid='close' onClick={onClick} />
       </Tag>,
     );
 
@@ -169,7 +165,7 @@ describe('Tag', () => {
     const { getByTestId } = render(
       <Tag>
         <Tag.Text>Tag</Tag.Text>
-        <Tag.Close data-testid="close" onClick={onClick} onKeyDown={onKeyDown} />
+        <Tag.Close data-testid='close' onClick={onClick} onKeyDown={onKeyDown} />
       </Tag>,
     );
 
@@ -180,7 +176,7 @@ describe('Tag', () => {
   test('a11y', async () => {
     const { container } = render(
       <>
-        <Tag theme="green-500">
+        <Tag theme='green-500'>
           <Tag.Text>green-500</Tag.Text>
           <Tag.Close />
         </Tag>

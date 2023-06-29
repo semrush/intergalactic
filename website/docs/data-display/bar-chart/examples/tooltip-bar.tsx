@@ -28,13 +28,13 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Tooltip tag={HoverRect} x="category" wMin={100}>
+      <Tooltip tag={HoverRect} x='category' wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>{data[xIndex].category}</Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Tooltip.Dot mr={4}>Bar</Tooltip.Dot>
                   <Text bold>{data[xIndex].bar}</Text>
                 </Flex>
@@ -43,7 +43,7 @@ export default () => {
           };
         }}
       </Tooltip>
-      <Bar x="category" y="bar" />
+      <Bar x='category' y='bar' />
     </Plot>
   );
 };

@@ -14,7 +14,7 @@ const Demo = () => {
   const handleRemoveTag = () => {
     if (tags.length === 0) return;
     setTags(tags.slice(0, -1));
-    setValue(tags.slice(-1)[0] + ` ${value}`);
+    setValue(`${tags.slice(-1)[0]} ${value}`);
   };
 
   const handleCloseTag = (e) => {
@@ -40,12 +40,12 @@ const Demo = () => {
   };
 
   return (
-    <InputTags size="l" onAppend={handleAppendTags} onRemove={handleRemoveTag}>
+    <InputTags size='l' onAppend={handleAppendTags} onRemove={handleRemoveTag}>
       {tags.map((tag, idx) => (
         <Tooltip key={idx}>
           <Tooltip.Trigger
             tag={InputTags.Tag}
-            theme="primary"
+            theme='primary'
             editable
             data-id={idx}
             onClick={handleEditTag}
@@ -60,7 +60,7 @@ const Demo = () => {
         value={value}
         onChange={setValue}
         onBlur={handleBlurInput}
-        aria-label="Input with tags"
+        aria-label='Input with tags'
       />
     </InputTags>
   );

@@ -23,10 +23,9 @@ export const usePageData = (route) => {
   if (!routes[route]) {
     const developerError = new Error(`Unable to match route "${route}" to any navigation node`);
     const displayError = new Error('404');
-    /* eslint-disable no-console */
+
     console.error({ route, routes: Object.keys(routes) });
     console.error(developerError);
-    /* eslint-enable no-console */
 
     return { data: null, loading: false, error: displayError };
   }

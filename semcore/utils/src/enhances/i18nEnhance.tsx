@@ -107,7 +107,7 @@ export const useAsyncI18nMessages = (
             [locale]: messages,
           }));
         })
-        // eslint-disable-next-line no-console
+
         .catch(console.error);
     }
   }, [container, locale]);

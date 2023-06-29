@@ -23,7 +23,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <HoverLine x="x" y="y" />
+      <HoverLine x='x' y='y' />
     </Plot>
   );
 };

@@ -10,8 +10,8 @@ const Demo = () => {
   const handleClick = () => {
     manager.add({
       children: (
-        <Flex justifyContent="center" alignItems="center" gap={1}>
-          <CheckM color="green-400" />
+        <Flex justifyContent='center' alignItems='center' gap={1}>
+          <CheckM color='green-400' />
           Undone
         </Flex>
       ),

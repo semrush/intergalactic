@@ -52,109 +52,109 @@ window.addEventListener('resize', (e) => {
 
 const Demo = () => {
   return (
-    <Flex flexWrap className="container">
+    <Flex flexWrap className='container'>
       <BoxBlock w={160} mb={4} mr={4}>
-        <Tooltip title="Potential Organic Traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='Potential Organic Traffic' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Potential Organic Traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="gray-500" tag="p">
+        <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
-        <Flex alignItems="baseline">
+        <Flex alignItems='baseline'>
           <Text
             size={500}
-            color="gray-800"
-            fontWeight="bold"
+            color='gray-800'
+            fontWeight='bold'
             mr={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             42
           </Text>
-          <Text size={100} color="green-500" tag="p">
+          <Text size={100} color='green-500' tag='p'>
             ↑+12
           </Text>
         </Flex>
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
-        <Tooltip title="CPC" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='CPC' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             CPC
           </Title>
         </Tooltip>
-        <Text size={100} color="gray-500" tag="p">
+        <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
-        <Flex alignItems="baseline">
+        <Flex alignItems='baseline'>
           <Text
             size={500}
-            color="blue-400"
-            fontWeight="bold"
+            color='blue-400'
+            fontWeight='bold'
             mr={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             27K
           </Text>
-          <Text size={100} color="red-500" tag="p">
+          <Text size={100} color='red-500' tag='p'>
             ↓-12
           </Text>
         </Flex>
       </BoxBlock>
       <BoxBlock w={160} mb={4}>
-        <Tooltip title="Competition" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+        <Tooltip title='Competition' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Competition
           </Title>
         </Tooltip>
-        <Text size={100} color="gray-500" tag="p">
+        <Text size={100} color='gray-500' tag='p'>
           last 30 days
         </Text>
-        <Flex alignItems="baseline">
+        <Flex alignItems='baseline'>
           <Text
             size={500}
-            color="gray-300"
-            fontWeight="bold"
+            color='gray-300'
+            fontWeight='bold'
             mr={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             n/a
           </Text>
         </Flex>
       </BoxBlock>
-      <BoxBlock w={160} mb={4} flex="1 1 100px">
-        <Tooltip title="Non-branded traffic" wMax="100%">
-          <Title size={200} tag="p" noWrap tabIndex={0}>
+      <BoxBlock w={160} mb={4} flex='1 1 100px'>
+        <Tooltip title='Non-branded traffic' wMax='100%'>
+          <Title size={200} tag='p' noWrap tabIndex={0}>
             Non-branded traffic
           </Title>
         </Tooltip>
-        <Text size={100} color="gray-500" tag="p">
+        <Text size={100} color='gray-500' tag='p'>
           all time
         </Text>
-        <Flex alignItems="baseline" flexWrap>
+        <Flex alignItems='baseline' flexWrap>
           <Text
             size={500}
-            color="blue-400"
-            fontWeight="bold"
+            color='blue-400'
+            fontWeight='bold'
             mr={2}
-            tag="a"
-            href="https://semrush.com"
-            target="_blank"
+            tag='a'
+            href='https://semrush.com'
+            target='_blank'
           >
             15%
           </Text>
-          <Text size={100} color="green-500" mr={2} tag="p">
+          <Text size={100} color='green-500' mr={2} tag='p'>
             ↑+13
           </Text>
-          <Tooltip title="Jun 10 14.9%">
+          <Tooltip title='Jun 10 14.9%'>
             <Title tabIndex={0}>
-              <img src={chart} alt="chart" />
+              <img src={chart} alt='chart' />
             </Title>
           </Tooltip>
         </Flex>

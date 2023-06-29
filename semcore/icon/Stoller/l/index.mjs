@@ -42,7 +42,7 @@ function Stoller({ width = '24', height = '24', viewBox = '0 0 24 24', ...props 
   );
 }
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
 
 Stoller.displayName = 'Stoller';

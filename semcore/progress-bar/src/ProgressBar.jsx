@@ -40,7 +40,7 @@ class ProgressBarRoot extends Component {
         use:animation={!value}
         use:duration={`${duration}ms`}
         colorBg={resolveColor(theme)}
-        role="progressbar"
+        role='progressbar'
         aria-valuenow={value}
       >
         <Children />

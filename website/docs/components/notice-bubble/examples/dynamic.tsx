@@ -12,16 +12,16 @@ const Demo = () => {
   const tryAgain = async () => {
     if (!notice) return;
     notice.update({
-      icon: <Spin size="xs" />,
+      icon: <Spin size='xs' />,
       children: 'Loading...',
       action: null,
     });
     await new Promise((resolve) => setTimeout(resolve, 1500));
     notice.update({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
-      icon: <WarningM color="orange-400" />,
+      icon: <WarningM color='orange-400' />,
       action: (
-        <Button theme="invert" onClick={tryAgain}>
+        <Button theme='invert' onClick={tryAgain}>
           <Button.Addon>
             <ReloadM />
           </Button.Addon>
@@ -37,9 +37,9 @@ const Demo = () => {
     }
     notice = manager.add({
       children: 'Unfortunately, your recent changes were not saved. Try again later.',
-      icon: <WarningM color="orange-400" />,
+      icon: <WarningM color='orange-400' />,
       action: (
-        <Button theme="invert" onClick={tryAgain}>
+        <Button theme='invert' onClick={tryAgain}>
           <Button.Addon>
             <ReloadM />
           </Button.Addon>

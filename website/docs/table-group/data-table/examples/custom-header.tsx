@@ -9,17 +9,17 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword">
+        <DataTable.Column name='keyword'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             <Text noWrap>
-              Keyword <Text color="gray60">(1 – 100)</Text>
+              Keyword <Text color='gray60'>(1 – 100)</Text>
             </Text>
           </Tooltip>
         </DataTable.Column>
-        <DataTable.Column name="kd">
+        <DataTable.Column name='kd'>
           <DropdownMenu>
             <DropdownMenu.Trigger>
-              <LinkTrigger color="gray20" style={{ fontSize: '12px' }}>
+              <LinkTrigger color='gray20' style={{ fontSize: '12px' }}>
                 KD,%
               </LinkTrigger>
             </DropdownMenu.Trigger>
@@ -29,12 +29,12 @@ export default () => {
             </DropdownMenu.Menu>
           </DropdownMenu>
         </DataTable.Column>
-        <DataTable.Column name="cpc">
+        <DataTable.Column name='cpc'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             CPC
           </Tooltip>
         </DataTable.Column>
-        <DataTable.Column name="vol">
+        <DataTable.Column name='vol'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             Vol.
           </Tooltip>

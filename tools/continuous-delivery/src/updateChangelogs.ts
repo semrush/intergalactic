@@ -8,7 +8,7 @@ import {
   toMarkdown,
 } from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
-import { execa } from 'execa';
+import { formatMarkdown } from './utils';
 
 export const updateChangelogs = async (versionPatches: VersionPatch[]) => {
   const packageFiles: { name: string; version: string }[] = await Promise.all(
@@ -43,10 +43,10 @@ export const updateChangelogs = async (versionPatches: VersionPatch[]) => {
   });
   await Promise.all(
     patchedChangelogs.map((changelogs, index) =>
-      fs.writeFile(changelogFilePaths[index], toMarkdown(serializeComponentChangelog(changelogs))),
+      fs.writeFile(
+        changelogFilePaths[index],
+        formatMarkdown(toMarkdown(serializeComponentChangelog(changelogs))),
+      ),
     ),
-  );
-  await Promise.all(
-    changelogFilePaths.map((changelogPath) => execa('prettier', ['--write', changelogPath])),
   );
 };

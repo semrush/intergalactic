@@ -20,13 +20,10 @@ type Changelog = {
 };
 
 export const makeMessageFromChangelogs = (changelogs: Changelog[], withVersions: boolean) =>
-  changelogs
-    .map(({ changes }) => bodyTemplate(changes, withVersions))
-    .flat()
-    .join('\n');
+  changelogs.flatMap(({ changes }) => bodyTemplate(changes, withVersions)).join('\n');
 
 const titleTemplate = (name: string, version: string) =>
-  `\n-------- \n:black_heart: *${name}* ${version ? 'v' + version : ''} \n\n`;
+  `\n-------- \n:black_heart: *${name}* ${version ? `v${version}` : ''} \n\n`;
 
 const bodyTemplate = (changes: Changelog['changes'], withVersions: boolean) => {
   const components: Partial<{ [componentName: string]: Changelog['changes'] }> = {};

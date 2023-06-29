@@ -81,7 +81,7 @@ class NoticeBubbleContainerRoot extends Component {
 
     return sstyled(styles)(
       <Portal disablePortal={disablePortal}>
-        <SNoticeBubble render={Box} role="alert" aria-live="assertive" ref={ref}>
+        <SNoticeBubble render={Box} role='alert' aria-live='assertive' ref={ref}>
           <Children />
           <Notices styles={styles} data={warnings} tag={ViewWarning} getI18nText={getI18nText} />
           <Notices styles={styles} data={notices} tag={ViewInfo} getI18nText={getI18nText} />
@@ -150,7 +150,7 @@ class ViewInfo extends Component {
 
     return sstyled(styles)(
       <SBubble
-        role="alert"
+        role='alert'
         {...other}
         ref={forwardRef}
         onMouseEnter={callAllEventHandlers(onMouseEnter, this.handlerMouseEnter)}

@@ -81,39 +81,39 @@ const Demo = () => {
 
   return (
     <Card>
-      <Flex mb={2} alignItems="center">
-        <Card.Title tag="h4" inline hint="This is just an example of line chart" my={0}>
+      <Flex mb={2} alignItems='center'>
+        <Card.Title tag='h4' inline hint='This is just an example of line chart' my={0}>
           Chart heading
         </Card.Title>
-        <Dropdown placement="bottom-end">
+        <Dropdown placement='bottom-end'>
           <Dropdown.Trigger
             tag={SettingsS}
-            ml="auto"
-            color="gray-300"
+            ml='auto'
+            color='gray-300'
             interactive
-            aria-label="Open settings"
+            aria-label='Open settings'
           />
           <Dropdown.Popper>
             <Box p={3}>
               <Text size={100} bold mb={3}>
                 Chart appearance
               </Text>
-              <Flex py={1} alignItems="center">
-                <Box size={100} mr="3">
+              <Flex py={1} alignItems='center'>
+                <Box size={100} mr='3'>
                   Smooth line
                 </Box>
-                <Box ml="auto">
-                  <Switch size="m" theme="success">
+                <Box ml='auto'>
+                  <Switch size='m' theme='success'>
                     <Switch.Value checked={smooth} onChange={() => setSmooth(!smooth)} />
                   </Switch>
                 </Box>
               </Flex>
-              <Flex py={1} alignItems="center">
-                <Box size={100} mr="3">
+              <Flex py={1} alignItems='center'>
+                <Box size={100} mr='3'>
                   Dots
                 </Box>
-                <Box ml="auto">
-                  <Switch size="m" theme="success">
+                <Box ml='auto'>
+                  <Switch size='m' theme='success'>
                     <Switch.Value checked={dot} onChange={() => setDot(!dot)} />
                   </Switch>
                 </Box>
@@ -126,34 +126,34 @@ const Demo = () => {
       <ResponsiveContainer aspect={2}>
         <LineChart data={dataByPeriod}>
           <CartesianGrid />
-          <Legend verticalAlign="top" style={{ alignItems: 'baseline' }}>
+          <Legend verticalAlign='top' style={{ alignItems: 'baseline' }}>
             <Legend.Controls
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onChange={chooseLines}
             />
-            <TabLine value={period} onChange={setPeriod} size="m" underlined={false} w="auto">
-              <TabLine.Item value="1" mx={2}>
+            <TabLine value={period} onChange={setPeriod} size='m' underlined={false} w='auto'>
+              <TabLine.Item value='1' mx={2}>
                 <Box pb={1}>1M</Box>
               </TabLine.Item>
-              <TabLine.Item value="3" mx={2}>
+              <TabLine.Item value='3' mx={2}>
                 <Box pb={1}>3M</Box>
               </TabLine.Item>
-              <TabLine.Item value="6" mx={2}>
+              <TabLine.Item value='6' mx={2}>
                 <Box pb={1}>6M</Box>
               </TabLine.Item>
-              <TabLine.Item value="12" mx={2}>
+              <TabLine.Item value='12' mx={2}>
                 <Box pb={1}>1Y</Box>
               </TabLine.Item>
-              <TabLine.Item value="all" mx={2}>
+              <TabLine.Item value='all' mx={2}>
                 <Box pb={1}>All time</Box>
               </TabLine.Item>
             </TabLine>
           </Legend>
           <XAxis
-            dataKey="time"
-            scale="time"
-            type="number"
+            dataKey='time'
+            scale='time'
+            type='number'
             domain={['auto', 'auto']}
             tickFormatter={timeFormat(['day', 'month'])}
           />
@@ -162,8 +162,8 @@ const Demo = () => {
           <Line
             type={smooth ? 'monotone' : 'linear'}
             dot={dot}
-            name="Organic traffic"
-            dataKey="organic"
+            name='Organic traffic'
+            dataKey='organic'
             stroke={getColor('organic')}
             fill={getColor('organic')}
             strokeOpacity={opacity['organic']}
@@ -173,15 +173,15 @@ const Demo = () => {
           <Line
             type={smooth ? 'monotone' : 'linear'}
             dot={dot}
-            name="Paid traffic"
-            dataKey="paid"
+            name='Paid traffic'
+            dataKey='paid'
             stroke={getColor('paid')}
             fill={getColor('paid')}
             strokeOpacity={opacity['paid']}
             hide={!lines.includes('paid')}
           />
           <ReferenceLine x={dataByPeriod[dataByPeriod.length - 7].time}>
-            <Label position="left" angle={-90} offset={10}>
+            <Label position='left' angle={-90} offset={10}>
               Last 7 days
             </Label>
           </ReferenceLine>

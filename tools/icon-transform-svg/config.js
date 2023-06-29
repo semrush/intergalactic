@@ -93,7 +93,7 @@ export default _default;
           .map(([key, value]) => (value === true ? key : `${key}="${value}"`))
           .join(' ');
         if (attributes) {
-          attributes = ' ' + attributes;
+          attributes = ` ${attributes}`;
         }
         return `<${tagName}${attributes}>${stringifyJsx(children)}</${tagName}>`;
       };

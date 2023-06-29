@@ -36,11 +36,11 @@ class RootLink extends Component {
 
     return sstyled(styles)(
       <SLink
-        role="link"
+        role='link'
         tabIndex={disabled ? -1 : 0}
         aria-disabled={!!disabled}
         render={Text}
-        tag="a"
+        tag='a'
         colorHoverText={colorHoverText}
         noWrapText={noWrap}
         use:noWrap={false}
@@ -57,13 +57,13 @@ class RootLink extends Component {
 function LinkText(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag="span" />);
+  return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Addon(props) {
   const SAddon = Root;
   const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} tag="span" />);
+  return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
 const Link = createComponent(RootLink, {

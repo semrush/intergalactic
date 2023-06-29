@@ -17,7 +17,7 @@ class Divider extends Component {
     const { orientation } = this.asProps;
 
     return sstyled(this.asProps.styles)(
-      <SDivider render={Box} role="separator" aria-orientation={orientation} />,
+      <SDivider render={Box} role='separator' aria-orientation={orientation} />,
     );
   }
 }

@@ -10,7 +10,8 @@ class Register {
   }
 
   set<D>(name, value: D): D {
-    return (this.data[name] = value);
+    this.data[name] = value;
+    return this.data[name];
   }
 }
 

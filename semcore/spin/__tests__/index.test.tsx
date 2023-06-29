@@ -25,8 +25,8 @@ describe('Spin', () => {
   test.concurrent('Should support theme', async ({ task }) => {
     const component = (
       <div style={{ background: '#979797' }}>
-        <Spin theme="dark" />
-        <Spin theme="invert" />
+        <Spin theme='dark' />
+        <Spin theme='invert' />
       </div>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -35,9 +35,9 @@ describe('Spin', () => {
   test.concurrent('Should support custom theme', async ({ task }) => {
     const component = (
       <>
-        <Spin theme="blanchedalmond" />
-        <Spin theme="#3eeb4c" />
-        <Spin theme="dark-violet" />
+        <Spin theme='blanchedalmond' />
+        <Spin theme='#3eeb4c' />
+        <Spin theme='dark-violet' />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -46,12 +46,12 @@ describe('Spin', () => {
   test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <>
-        <Spin size="xs" />
-        <Spin size="s" />
-        <Spin size="m" />
-        <Spin size="l" />
-        <Spin size="xl" />
-        <Spin size="xxl" />
+        <Spin size='xs' />
+        <Spin size='s' />
+        <Spin size='m' />
+        <Spin size='l' />
+        <Spin size='xl' />
+        <Spin size='xxl' />
       </>
     );
 

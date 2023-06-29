@@ -83,40 +83,40 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       return result;
     },
     start: async (options) => {
-      actionsLog.push(`Screen reader is turning on.`);
+      actionsLog.push('Screen reader is turning on.');
       const result = await baseVoiceOver.start(options);
       return result;
     },
     stop: async (options) => {
-      actionsLog.push(`Screen reader is turning off.`);
+      actionsLog.push('Screen reader is turning off.');
       return baseVoiceOver.stop(options);
     },
     previous: async (options) => {
-      actionsLog.push(`Screen reader goes to the previous element.`);
+      actionsLog.push('Screen reader goes to the previous element.');
       const result = await baseVoiceOver.previous(options);
       await reportStateChange();
       return result;
     },
     next: async (options) => {
-      actionsLog.push(`Screen reader goes to the next element.`);
+      actionsLog.push('Screen reader goes to the next element.');
       const result = await baseVoiceOver.next(options);
       await reportStateChange();
       return result;
     },
     act: async (options) => {
-      actionsLog.push(`Screen reader triggers element default action.`);
+      actionsLog.push('Screen reader triggers element default action.');
       const result = await baseVoiceOver.act(options);
       await reportStateChange();
       return result;
     },
     interact: async (options) => {
-      actionsLog.push(`Screen reader goes into the active element.`);
+      actionsLog.push('Screen reader goes into the active element.');
       const result = await baseVoiceOver.interact(options);
       await reportStateChange();
       return result;
     },
     stopInteracting: async (options) => {
-      actionsLog.push(`Screen reader goes out of active element.`);
+      actionsLog.push('Screen reader goes out of active element.');
       const result = await baseVoiceOver.stopInteracting(options);
       await reportStateChange();
       return result;
@@ -137,7 +137,7 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       if (typeof command === 'object' && 'description' in command) {
         if (!command.description) {
           throw new Error(
-            `Performing keyboard commands without description is restricted via VoiceOver reporter`,
+            'Performing keyboard commands without description is restricted via VoiceOver reporter',
           );
         }
         actionsLog.push(`Screen reader performs "${command.description}".`);

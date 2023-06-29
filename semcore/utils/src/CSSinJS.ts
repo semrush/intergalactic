@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { create, NanoOptions, NanoRenderer } from 'nano-css';
 import { addon as addonRule } from 'nano-css/addon/rule';
 import { addon as addonCache } from 'nano-css/addon/cache';

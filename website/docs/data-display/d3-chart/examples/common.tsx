@@ -12,7 +12,7 @@ export default () => {
 
   return (
     <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-      <Line x="x" y="y" />
+      <Line x='x' y='y' />
     </Plot>
   );
 };

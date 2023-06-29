@@ -8,16 +8,16 @@ const Demo = () => {
 
   return (
     <div>
-      <Flex justifyContent="space-between">
+      <Flex justifyContent='space-between'>
         <Box m={5} p={5} style={styleBox} />
         <Box m={5} p={5} style={styleBox} />
         <Box m={5} p={5} style={styleBox} />
       </Flex>
       <hr />
-      <Flex alignItems="center">
+      <Flex alignItems='center'>
         <Box h={100} m={5} p={5} style={styleBox} />
         <Box h={60} m={5} p={5} style={styleBox} />
-        <Box ml="auto" m={5} p={5} style={styleBox} />
+        <Box ml='auto' m={5} p={5} style={styleBox} />
       </Flex>
     </div>
   );

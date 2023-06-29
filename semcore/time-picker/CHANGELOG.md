@@ -2,6 +2,32 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.2] - 2023-06-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.10.1 ~> 3.10.2]).
+
+## [3.7.1] - 2023-06-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/button` [4.4.7 ~> 4.4.8], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/input` [3.7.0 ~> 3.7.1], `@semcore/select` [3.9.6 ~> 3.10.1], `@semcore/utils` [3.53.4 ~> 3.54.0]).
+
+## [3.7.0] - 2023-06-22
+
+### Added
+
+- Swedish (`sv`) locale support.
+
+## [3.6.9] - 2023-06-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [3.9.4 ~> 3.9.5]).
+
+## [3.6.8] - 2023-06-15
+
 ## [3.6.7] - 2023-06-14
 
 ### Changed
@@ -31,12 +57,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version patch update due to children dependencies update (`@semcore/button` [4.4.5 ~> 4.4.6], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/input` [3.6.30 ~> 3.6.31], `@semcore/select` [3.8.2 ~> 3.8.3], `@semcore/utils` [3.53.2 ~> 3.53.3]).
-
-## [3.7.0] - 2023-06-12
-
-### Added
-
-- Swedish (`sv`) locale support.
 
 ## [3.6.2] - 2023-06-12
 
@@ -437,7 +457,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Обновлены версии пакетов
-
 - Убран `root-ref` пакет
 
 ## [1.1.3] - 2019-09-30

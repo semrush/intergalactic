@@ -21,7 +21,7 @@ describe('Checkbox', () => {
 
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px">
+      <snapshot.ProxyProps m='5px'>
         <Checkbox>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -38,7 +38,7 @@ describe('Checkbox', () => {
 
   test.concurrent('Should not be check icon in unchecked and disabled state', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px" style={{ backgroundColor: '#b880ff' }}>
+      <snapshot.ProxyProps m='5px' style={{ backgroundColor: '#b880ff' }}>
         <Checkbox>
           <Checkbox.Value checked={false} disabled={true} />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -51,12 +51,12 @@ describe('Checkbox', () => {
 
   test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px">
-        <Checkbox size="l">
+      <snapshot.ProxyProps m='5px'>
+        <Checkbox size='l'>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox size="m">
+        <Checkbox size='m'>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -68,7 +68,7 @@ describe('Checkbox', () => {
 
   test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px">
+      <snapshot.ProxyProps m='5px'>
         <Checkbox>
           <Checkbox.Value disabled />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -97,28 +97,28 @@ describe('Checkbox', () => {
 
   test.concurrent('Should support invalid state', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px">
-        <Checkbox state="invalid">
+      <snapshot.ProxyProps m='5px'>
+        <Checkbox state='invalid'>
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value disabled />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value checked />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value checked disabled />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value checked keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -130,7 +130,7 @@ describe('Checkbox', () => {
 
   test.concurrent('Should support intermediate state', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px">
+      <snapshot.ProxyProps m='5px'>
         <Checkbox>
           <Checkbox.Value indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
@@ -155,27 +155,27 @@ describe('Checkbox', () => {
           <Checkbox.Value checked keyboardFocused indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value disabled indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value keyboardFocused indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value checked indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value checked disabled indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state="invalid">
+        <Checkbox state='invalid'>
           <Checkbox.Value checked keyboardFocused indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
@@ -187,28 +187,28 @@ describe('Checkbox', () => {
 
   test.concurrent('Should support themes', async ({ task }) => {
     const component = (
-      <snapshot.ProxyProps m="5px">
-        <Checkbox theme="pink">
+      <snapshot.ProxyProps m='5px'>
+        <Checkbox theme='pink'>
           <Checkbox.Value />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme="pink">
+        <Checkbox theme='pink'>
           <Checkbox.Value disabled />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme="pink">
+        <Checkbox theme='pink'>
           <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme="pink">
+        <Checkbox theme='pink'>
           <Checkbox.Value checked />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme="pink">
+        <Checkbox theme='pink'>
           <Checkbox.Value checked disabled />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme="pink">
+        <Checkbox theme='pink'>
           <Checkbox.Value checked keyboardFocused />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>

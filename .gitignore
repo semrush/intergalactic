@@ -66,3 +66,8 @@ semcore/illustration/**/*.d.ts
 !semcore/icon/color/YoutubeRed/**
 !semcore/icon/FeauturedImage/**
 !semcore/icon/FeauturedVideo/**
+.pnpm-store
+
+# Playwright
+test-results
+playwright-report

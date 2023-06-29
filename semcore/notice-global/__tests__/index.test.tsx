@@ -16,7 +16,7 @@ describe('NoticeGlobal', () => {
   test.concurrent('Should support custom close icon', () => {
     const component = (
       <NoticeGlobal>
-        <NoticeGlobal.CloseIcon data-testid="close">Close Icon</NoticeGlobal.CloseIcon>
+        <NoticeGlobal.CloseIcon data-testid='close'>Close Icon</NoticeGlobal.CloseIcon>
       </NoticeGlobal>
     );
     const { getByTestId } = render(component);
@@ -34,7 +34,7 @@ describe('NoticeGlobal', () => {
   test.concurrent('Should support custom content', () => {
     const component = (
       <NoticeGlobal>
-        <NoticeGlobal.Content data-testid="content">Test</NoticeGlobal.Content>
+        <NoticeGlobal.Content data-testid='content'>Test</NoticeGlobal.Content>
       </NoticeGlobal>
     );
     const { getByTestId } = render(component);
@@ -56,13 +56,13 @@ describe('NoticeGlobal', () => {
       <>
         <NoticeGlobal>Text NoticeGlobal</NoticeGlobal>
         <br />
-        <NoticeGlobal theme="info">Text NoticeGlobal</NoticeGlobal>
+        <NoticeGlobal theme='info'>Text NoticeGlobal</NoticeGlobal>
         <br />
-        <NoticeGlobal theme="success">Text NoticeGlobal</NoticeGlobal>
+        <NoticeGlobal theme='success'>Text NoticeGlobal</NoticeGlobal>
         <br />
-        <NoticeGlobal theme="danger">Text NoticeGlobal</NoticeGlobal>
+        <NoticeGlobal theme='danger'>Text NoticeGlobal</NoticeGlobal>
         <br />
-        <NoticeGlobal theme="warning">Text NoticeGlobal</NoticeGlobal>
+        <NoticeGlobal theme='warning'>Text NoticeGlobal</NoticeGlobal>
       </>
     );
 

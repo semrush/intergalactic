@@ -12,16 +12,16 @@ export default () => {
 
   return (
     <React.Fragment>
-      <Text size={200} tag="div" mb={2}>
+      <Text size={200} tag='div' mb={2}>
         Placement:
       </Text>
       <Select
         value={placement}
         options={arrToOptions(placements)}
         onChange={setPlacement}
-        size="l"
+        size='l'
       />
-      <Button onClick={() => setVisible(true)} use="primary" theme="success" size="l" ml={5}>
+      <Button onClick={() => setVisible(true)} use='primary' theme='success' size='l' ml={5}>
         Show SidePanel
       </Button>
       <SidePanel
@@ -30,7 +30,7 @@ export default () => {
         placement={placement}
         mt={placement === 'bottom' ? 0 : 20}
       >
-        <Text size={300} tag="p">
+        <Text size={300} tag='p'>
           Waba-laba-dub-dub! 😏
         </Text>
         <Button mt={3}>I'm just a button</Button>

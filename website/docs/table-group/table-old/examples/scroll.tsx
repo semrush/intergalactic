@@ -91,21 +91,21 @@ const Demo = () => (
     <ScrollArea.Container>
       <TableLayoutFixed>
         <Table.Head>
-          <Table.Row theme="false">
-            <StyledThSticky align="center" valign="middle" width="50" left={0}>
-              <Checkbox size="l">
+          <Table.Row theme='false'>
+            <StyledThSticky align='center' valign='middle' width='50' left={0}>
+              <Checkbox size='l'>
                 <Checkbox.Value />
               </Checkbox>
             </StyledThSticky>
             <StyledThSticky
-              width="150"
+              width='150'
               left={50}
-              valign="middle"
+              valign='middle'
               style={{ boxShadow: '0 0 1px #dee3e5' }}
             >
-              <Tooltip title="Lorem ipsum">
+              <Tooltip title='Lorem ipsum'>
                 <span>
-                  Keyword <Text color="gray60">(1 – 100)</Text>
+                  Keyword <Text color='gray60'>(1 – 100)</Text>
                 </span>
               </Tooltip>
             </StyledThSticky>
@@ -113,8 +113,8 @@ const Demo = () => (
             {Object.keys(data[0])
               .slice(1)
               .map((name) => (
-                <Table.CellHead width="200" valign="middle">
-                  <Tooltip title="Lorem ipsum">
+                <Table.CellHead width='200' valign='middle'>
+                  <Tooltip title='Lorem ipsum'>
                     <span>
                       {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
                     </span>
@@ -128,11 +128,11 @@ const Demo = () => (
             <Table.Row key={i} theme={row.kd === '-' ? 'danger' : 'default'}>
               <StyledCellSticky
                 theme={row.kd === '-' ? false : 'default'}
-                align="center"
-                valign="middle"
+                align='center'
+                valign='middle'
                 left={0}
               >
-                <Checkbox size="l">
+                <Checkbox size='l'>
                   <Checkbox.Value />
                 </Checkbox>
               </StyledCellSticky>
@@ -143,7 +143,7 @@ const Demo = () => (
               {Object.keys(data[0])
                 .slice(1)
                 .map((name) => (
-                  <Table.Cell align="right" theme={row.kd === '-' ? false : 'default'}>
+                  <Table.Cell align='right' theme={row.kd === '-' ? false : 'default'}>
                     {row[name]}
                   </Table.Cell>
                 ))}
@@ -152,7 +152,7 @@ const Demo = () => (
         </Table.Body>
       </TableLayoutFixed>
     </ScrollArea.Container>
-    <ScrollArea.Bar w="calc(100% - 200px)" ml="200px" />
+    <ScrollArea.Bar w='calc(100% - 200px)' ml='200px' />
   </StyledScrollArea>
 );
 

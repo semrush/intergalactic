@@ -26,7 +26,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Area x="x" y="y" curve={curveCardinal}>
+      <Area x='x' y='y' curve={curveCardinal}>
         <Area.Line style={customLineStyles} />
       </Area>
     </Plot>

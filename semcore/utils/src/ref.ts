@@ -4,7 +4,7 @@ import { findDOMNode } from 'react-dom';
 export function setRef<T>(ref: Ref<T>, value: T) {
   if (typeof ref === 'function') {
     ref(value);
-  } else if (ref && ref.hasOwnProperty('current')) {
+  } else if (ref?.hasOwnProperty('current')) {
     // @ts-ignore
     ref['current'] = value;
   }
@@ -59,12 +59,7 @@ export function forkRef<T>(...refs): Ref<T> {
   };
 }
 
-export type NodeByRef =
-  /* eslint-disable ssr-friendly/no-dom-globals-in-module-scope */
-  | RefObject<Element>
-  | Element
-  /* eslint-enable ssr-friendly/no-dom-globals-in-module-scope */
-  | (() => RefObject<Element> | Element);
+export type NodeByRef = RefObject<Element> | Element | (() => RefObject<Element> | Element);
 
 export function getNodeByRef(ref: NodeByRef): Element {
   if (typeof ref === 'function') {

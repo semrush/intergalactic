@@ -3,29 +3,29 @@ import { Hint, Text } from '@semcore/ui/typography';
 
 export default () => (
   <div>
-    <Text size={300} tag="p" mb={2} mt={0}>
-      But I do love the taste of a <Text tag="strong">good burger</Text>. Mm-mm-mm.
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0}>
-      But I do love the taste of a <Text tag="em">good burger</Text>. Mm-mm-mm.
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text tag='em'>good burger</Text>. Mm-mm-mm.
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0}>
-      But I do love the taste of a <Text color="green">good burger</Text>. Mm-mm-mm.
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text color='green'>good burger</Text>. Mm-mm-mm.
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0}>
+    <Text size={300} tag='p' mb={2} mt={0}>
       But I do love the taste of a <Hint>good burger</Hint>. Mm-mm-mm.
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0}>
-      But I do love the taste of a <Text tag="s">good burger</Text>. Mm-mm-mm.
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0} uppercase>
-        uppercase text
+    <Text size={300} tag='p' mb={2} mt={0} uppercase>
+      uppercase text
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0} capitalize>
-        capitalize text
+    <Text size={300} tag='p' mb={2} mt={0} capitalize>
+      capitalize text
     </Text>
-    <Text size={300} tag="p" mb={2} mt={0} lowercase>
-        LOWERCASE TEXT
+    <Text size={300} tag='p' mb={2} mt={0} lowercase>
+      LOWERCASE TEXT
     </Text>
   </div>
 );

@@ -35,23 +35,23 @@ export default () => {
       <XAxis>
         <XAxis.Ticks ticks={data.map((d) => +d.time)} />
       </XAxis>
-      <Tooltip tag={HoverLine} x="time" wMin={100}>
+      <Tooltip tag={HoverLine} x='time' wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>{data[xIndex].time}</Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
                   <Text bold>{data[xIndex].stack1 ?? 'n/a'}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Tooltip.Dot mr={4} color={colors['green-02']}>
                     Stack 2
                   </Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2 ?? 'n/a'}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Tooltip.Dot mr={4} color={colors['orange-04']}>
                     Stack 3
                   </Tooltip.Dot>
@@ -62,16 +62,16 @@ export default () => {
           };
         }}
       </Tooltip>
-      <StackedArea x="time">
-        <StackedArea.Area y="stack1">
+      <StackedArea x='time'>
+        <StackedArea.Area y='stack1'>
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack2" fill="#59DDAA50" color="#59DDAA">
+        <StackedArea.Area y='stack2' fill='#59DDAA50' color='#59DDAA'>
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y="stack3" fill="#FF622D50" color="#FF622D">
+        <StackedArea.Area y='stack3' fill='#FF622D50' color='#FF622D'>
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>

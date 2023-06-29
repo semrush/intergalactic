@@ -1,0 +1,11 @@
+lib
+dist
+**/code_mod/**
+**/node_modules/**
+.tmp
+**/*.mjs
+mailer
+./tools/icon-transform-svg/__tests__
+email
+semcore/chart/src/style/chart.shadow.css
+**/lcov-report/**

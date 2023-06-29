@@ -27,7 +27,7 @@ export default () => {
           })}
         </YAxis.Ticks>
       </YAxis>
-      <Line x="x" y="y" />
+      <Line x='x' y='y' />
     </Plot>
   );
 };

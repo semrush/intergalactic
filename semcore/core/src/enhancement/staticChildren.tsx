@@ -88,7 +88,7 @@ function Enhancement(childComponents, createComponent, options) {
         // @ts-ignore
         const prevDisplayName = value.displayName;
         // @ts-ignore
-        value.displayName = WrapperComponent.displayName + '.' + name;
+        value.displayName = `${WrapperComponent.displayName}.${name}`;
         value[STATIC_COMPONENT] = true;
         value[ROOT_COMPONENT] = Component[ROOT_COMPONENT] || Component;
         acc[name] = createComponent(value, childComponents, options);

@@ -1,0 +1,21 @@
+{
+  "extends": "stylelint-config-recommended",
+  "rules": {
+    "selector-type-no-unknown": null,
+    "no-descending-specificity": null,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["vertical-anchor"]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "font-family-no-missing-generic-family-keyword": null,
+    "indentation": 2
+  }
+}

@@ -10,38 +10,38 @@ describe('Icon', () => {
   beforeEach(cleanup);
 
   test.each(['200', '100%'], 'should support custom width %i', (width) => {
-    const { getByTestId } = render(<Icon data-testid="icon" width={width} />);
+    const { getByTestId } = render(<Icon data-testid='icon' width={width} />);
     expect(getByTestId('icon').attributes['width'].value).toBe(width);
   });
 
   test.each(['200', '100%'], 'should support custom height %i', (height) => {
-    const { getByTestId } = render(<Icon data-testid="icon" height={height} />);
+    const { getByTestId } = render(<Icon data-testid='icon' height={height} />);
     expect(getByTestId('icon').attributes['height'].value).toBe(height);
   });
 
   test('should support custom viewBox', () => {
-    const { getByTestId } = render(<Icon data-testid="icon" viewBox="1 2 3 4" />);
+    const { getByTestId } = render(<Icon data-testid='icon' viewBox='1 2 3 4' />);
     expect(getByTestId('icon').attributes['viewBox'].value).toBe('1 2 3 4');
   });
 
   test('should support custom className', () => {
-    const { getByTestId } = render(<Icon data-testid="icon" className="more-than one-class" />);
+    const { getByTestId } = render(<Icon data-testid='icon' className='more-than one-class' />);
     expect(getByTestId('icon').attributes['class'].value).toMatch('more-than one-class');
   });
 
   test('should support property for Box', () => {
-    const { getByTestId } = render(<Icon data-testid="icon" mr={2} />);
+    const { getByTestId } = render(<Icon data-testid='icon' mr={2} />);
     expect(getByTestId('icon').attributes['style'].value).toMatch('margin-right: 8px;');
   });
 
   test('should aria-hidden be true if interactive is false', () => {
-    const { getByTestId } = render(<Icon data-testid="icon" mr={2} interactive={false} />);
+    const { getByTestId } = render(<Icon data-testid='icon' mr={2} interactive={false} />);
     expect(getByTestId('icon').attributes['aria-hidden'].value).toEqual('true');
   });
 
   test('should not be aria-hidden if interactive is true', () => {
     const { getByTestId } = render(
-      <Icon data-testid="icon" mr={2} interactive={true} aria-label="Interactive icon!" />,
+      <Icon data-testid='icon' mr={2} interactive={true} aria-label='Interactive icon!' />,
     );
     expect(getByTestId('icon').attributes['aria-hidden']?.value).toEqual(undefined);
   });
@@ -49,7 +49,7 @@ describe('Icon', () => {
   test('should support children', () => {
     const { getByTestId } = render(
       <Icon>
-        <p data-testid="child">Test</p>
+        <p data-testid='child'>Test</p>
       </Icon>,
     );
     expect(getByTestId('child')).toBeTruthy();
@@ -57,8 +57,8 @@ describe('Icon', () => {
 
   test('should render with svg element', async ({ task }) => {
     const component = (
-      <Icon width={22} height={22} viewBox="0 0 22 22">
-        <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
+      <Icon width={22} height={22} viewBox='0 0 22 22'>
+        <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
       </Icon>
     );
 
@@ -67,8 +67,8 @@ describe('Icon', () => {
 
   test.concurrent('should support custom color', async ({ task }) => {
     const component = (
-      <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
-        <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
+      <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
+        <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
       </Icon>
     );
 
@@ -78,8 +78,8 @@ describe('Icon', () => {
   test("shouldn't change size in flex block", async ({ task }) => {
     const component = (
       <div style={{ display: 'flex', width: '100px' }}>
-        <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
-          <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
+        <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
+          <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
         </Icon>
         <p>lorem lorem lorem lorem </p>
       </div>
@@ -90,7 +90,7 @@ describe('Icon', () => {
 
   test('should support call onClick', async () => {
     const onClick = vi.fn();
-    const { getByTestId } = render(<Icon data-testid="icon" interactive aria-label="Test icon" />);
+    const { getByTestId } = render(<Icon data-testid='icon' interactive aria-label='Test icon' />);
 
     fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(0);
@@ -101,11 +101,11 @@ describe('Icon', () => {
     const onClick = vi.fn();
     const { getByTestId } = render(
       <Icon
-        data-testid="icon"
+        data-testid='icon'
         onClick={onClick}
         onKeyDown={onKeyDown}
         interactive
-        aria-label="test icon"
+        aria-label='test icon'
       />,
     );
 
@@ -116,8 +116,8 @@ describe('Icon', () => {
 
   test('a11y', async () => {
     const { container } = render(
-      <Icon width={22} height={22} viewBox="0 0 22 22" color="green">
-        <polygon points="18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473"></polygon>
+      <Icon width={22} height={22} viewBox='0 0 22 22' color='green'>
+        <polygon points='18.532 3 7.501 14.054 3.468 10.012 1 12.485 7.501 19 21 5.473' />
       </Icon>,
     );
 

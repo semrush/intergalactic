@@ -7,7 +7,7 @@ import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
 const Demo = () => {
   const [value, setValue] = useState(0);
   return (
-    <TabPanel onChange={setValue} value={value} aria-label="Page">
+    <TabPanel onChange={setValue} value={value} aria-label='Page'>
       <TabPanel.Item value={0}>Overview</TabPanel.Item>
       <TabPanel.Item value={1}>Issues</TabPanel.Item>
       <TabPanel.Item value={2}>
@@ -16,10 +16,10 @@ const Demo = () => {
         </TabPanel.Item.Addon>
         <TabPanel.Item.Text>LinkedIn</TabPanel.Item.Text>
         <TabPanel.Item.Addon>
-          <Badge bg="green">new</Badge>
+          <Badge bg='green'>new</Badge>
         </TabPanel.Item.Addon>
       </TabPanel.Item>
-      <Tooltip title="Progress is not available during collecting process" placement="top">
+      <Tooltip title='Progress is not available during collecting process' placement='top'>
         <TabPanel.Item disabled value={3}>
           Progress
         </TabPanel.Item>

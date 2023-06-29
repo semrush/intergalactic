@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import esbuild from 'esbuild';
 import fs from 'fs/promises';
 import { websiteEsbuildConfig } from './esbuild.config';
@@ -89,7 +88,6 @@ const distDir = resolvePath('dist');
 const { navigationTree, existingRoutes } = await buildNavigation(docsDir);
 globalThis.__ssr = true;
 
-// eslint-disable-next-line import/extensions
 await import('../dist/app-ssr.js');
 
 const nodesList = [];
@@ -120,7 +118,7 @@ const preprocessArticleData = (navigationNode, pageData) => {
       const outputRelativePath =
         (process.env.PUBLIC_PATH || '/') + resolveRelativePath(outputDir, outputFilePath);
       token.load = token.load.replace(token.filePath, outputRelativePath);
-      delete token.filePath;
+      token.filePath = undefined;
     }
     return token;
   });
@@ -175,11 +173,11 @@ const renderPage = async (route, navigationNode?) => {
     .replace('<!--%ssr-html-entry%-->', contents.html)
     .replace('<!--%ssr-head-html-entry%-->', contents.semcoreCss)
     .replace('/*--%ssr-js-entry%--*/', codeEntry)
-    .replace('/main-render.css', process.env.PUBLIC_PATH + `main-${cssFileHash}.css`)
-    .replace('/main-render.js', process.env.PUBLIC_PATH + `main-${jsFileHash}.js`)
-    .replace('/light.css', process.env.PUBLIC_PATH + `light-${cssFileHash}.css`)
-    .replace('/dark.css', process.env.PUBLIC_PATH + `dark-${cssFileHash}.css`)
-    .replace('/social.png', process.env.PUBLIC_PATH + 'social.png');
+    .replace('/main-render.css', `${process.env.PUBLIC_PATH}main-${cssFileHash}.css`)
+    .replace('/main-render.js', `${process.env.PUBLIC_PATH}main-${jsFileHash}.js`)
+    .replace('/light.css', `${process.env.PUBLIC_PATH}light-${cssFileHash}.css`)
+    .replace('/dark.css', `${process.env.PUBLIC_PATH}dark-${cssFileHash}.css`)
+    .replace('/social.png', `${process.env.PUBLIC_PATH}social.png`);
 
   return html;
 };
@@ -206,13 +204,13 @@ await Promise.all(
   }),
 );
 
-console.info(`Generating sitemap.xml`);
+console.info('Generating sitemap.xml');
 const sitemapStream = new SitemapStream({ hostname: 'https://developer.semrush.com' });
 const pipedSitemapStream = Readable.from(
   Object.keys(existingRoutes).map((route) => ({
-    url: `/intergalactic/${route}` + (route ? '/' : ''),
+    url: `/intergalactic/${route}${route ? '/' : ''}`,
   })),
 ).pipe(sitemapStream);
 const sitemapXml = await streamToPromise(pipedSitemapStream).then((data) => data.toString());
 await fs.writeFile(resolvePath(distDir, 'sitemap.xml'), sitemapXml);
-console.info(`SSR: Done`);
+console.info('SSR: Done');

@@ -187,12 +187,10 @@
     display: flex;
     position: absolute;
     right: var(--intergalactic-spacing-3x);
+    margin-right: var(--intergalactic-spacing-5x);
   }
   .iconSearchWrapper {
     display: none !important;
-  }
-  .searchIcon {
-    margin-right: var(--intergalactic-spacing-5x);
   }
   .activeSearch {
     display: none;

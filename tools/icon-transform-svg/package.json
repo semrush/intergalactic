@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "babel-plugin-tester": "7.0.1",
-    "@semcore/testing-utils": "*",
-    "prettier": "2.6.2"
+    "@semcore/testing-utils": "*"
   }
 }

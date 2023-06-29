@@ -40,7 +40,7 @@ const intFormatter = (number) => {
   if (afterDot && afterDot.length > 2) {
     num = num.toFixed(2);
   }
-  return num + 'M';
+  return `${num}M`;
 };
 
 const data = [...Array(15)]
@@ -79,7 +79,7 @@ export default class Demo extends React.Component {
     const { bars } = this.state;
     return (
       <Box mr={2}>
-        <Checkbox theme={BAR_COLOR_MAP[name]} size="m">
+        <Checkbox theme={BAR_COLOR_MAP[name]} size='m'>
           <Checkbox.Value checked={bars.includes(name)} onChange={this.handleCheckedBar(name)} />
           <Checkbox.Text>{BAR_TO_LABEL_MAP[name]}</Checkbox.Text>
         </Checkbox>
@@ -91,12 +91,12 @@ export default class Demo extends React.Component {
     const { bars } = this.state;
 
     return (
-      <Card my="24px" pt="20px" px="24px" pb="24px" wMax="800px">
+      <Card my='24px' pt='20px' px='24px' pb='24px' wMax='800px'>
         <Box mb={6}>
-          <Text tag="h3" size={400} medium m="0 0 8px 0">
+          <Text tag='h3' size={400} medium m='0 0 8px 0'>
             Organic Keyword Trend
           </Text>
-          <Flex mt="12px">
+          <Flex mt='12px'>
             {this.renderCheck('top3', 'Top 3')}
             {this.renderCheck('top10', '4-10')}
             {this.renderCheck('top20', '11-20')}
@@ -118,7 +118,7 @@ export default class Demo extends React.Component {
             />
             <YAxis tickFormatter={intFormatter} />
             <XAxis
-              dataKey="date"
+              dataKey='date'
               domain={['auto', 'auto']}
               tickFormatter={(t) =>
                 new Intl.DateTimeFormat('en-US', {
@@ -135,7 +135,7 @@ export default class Demo extends React.Component {
                   key={bar}
                   dataKey={bar}
                   fill={BAR_COLOR_MAP[bar]}
-                  stackId="ID"
+                  stackId='ID'
                   barSize={20}
                   {...spread}
                 />

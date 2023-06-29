@@ -14,7 +14,7 @@ const Demo = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Text tag="p" size={300}>{`Page number: ${currentPage}`}</Text>
+      <Text tag='p' size={300}>{`Page number: ${currentPage}`}</Text>
       <Pagination
         currentPage={currentPage}
         onCurrentPageChange={setCurrentPage}

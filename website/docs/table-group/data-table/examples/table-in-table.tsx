@@ -18,10 +18,10 @@ export default () => {
     <Accordion value={value} onChange={setValue}>
       <DataTable data={data}>
         <DataTable.Head>
-          <DataTable.Column name="keyword" children="Keyword" />
-          <DataTable.Column name="kd" children="KD,%" />
-          <DataTable.Column name="cpc" children="CPC" />
-          <DataTable.Column name="vol" children="Vol." />
+          <DataTable.Column name='keyword' children='Keyword' />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body>
           <DataTable.Row<{}, typeof data> tag={RowAccordion}>
@@ -35,10 +35,10 @@ export default () => {
                       {/* [1] Hide the table header */}
                       <DataTable.Head hidden>
                         {/* [2] Set "inherit" to use the size from the top table for each column. */}
-                        <DataTable.Column name="keyword" flex="inherit" />
-                        <DataTable.Column name="kd" flex="inherit" />
-                        <DataTable.Column name="cpc" flex="inherit" />
-                        <DataTable.Column name="vol" flex="inherit" />
+                        <DataTable.Column name='keyword' flex='inherit' />
+                        <DataTable.Column name='kd' flex='inherit' />
+                        <DataTable.Column name='cpc' flex='inherit' />
+                        <DataTable.Column name='vol' flex='inherit' />
                       </DataTable.Head>
                       <DataTable.Body />
                     </DataTable>
@@ -47,12 +47,12 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<{}, typeof data> name="keyword">
+          <DataTable.Cell<{}, typeof data> name='keyword'>
             {(props) => {
               return {
                 children: (
-                  <Flex alignItems="center">
-                    <Accordion.Item.Chevron color="stone" mr={2} />
+                  <Flex alignItems='center'>
+                    <Accordion.Item.Chevron color='stone' mr={2} />
                     {props.children}
                   </Flex>
                 ),

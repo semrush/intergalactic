@@ -48,7 +48,7 @@ const Demo = () => {
     const tags = getValues('emails');
     if (tags.length === 0) return;
     setValue('emails', tags.slice(0, -1));
-    changeInputTagsValue(tags.slice(-1)[0] + ` ${valueTag}`);
+    changeInputTagsValue(`${tags.slice(-1)[0]} ${valueTag}`);
   };
 
   const handleCloseTag = (e) => {
@@ -67,8 +67,8 @@ const Demo = () => {
   }));
 
   return (
-    <Flex tag="form" onSubmit={handleSubmit(onSubmit)} direction="column" alignItems="flex-start">
-      <Text size={300} tag="label" mb={1}>
+    <Flex tag='form' onSubmit={handleSubmit(onSubmit)} direction='column' alignItems='flex-start'>
+      <Text size={300} tag='label' mb={1}>
         Email frequency
       </Text>
 
@@ -76,35 +76,35 @@ const Demo = () => {
         <Controller
           render={(props) => <Select tag={ButtonTrigger} options={periods} {...props} />}
           control={control}
-          name="period"
+          name='period'
         />
         <Controller
           render={(props) => <Select ml={4} tag={ButtonTrigger} options={daysWeek} {...props} />}
           control={control}
-          name="day_week"
+          name='day_week'
         />
       </Flex>
 
       <Controller
         render={({ value: tags = [] }) => (
           <>
-            <Text size={300} tag="label" mb={1}>
+            <Text size={300} tag='label' mb={1}>
               Emails
-              <Counter ml={1} size="l">{`${tags.length}/5`}</Counter>
+              <Counter ml={1} size='l'>{`${tags.length}/5`}</Counter>
             </Text>
             <Tooltip
-              interaction="none"
-              placement="right"
-              theme="warning"
-              w="100%"
+              interaction='none'
+              placement='right'
+              theme='warning'
+              w='100%'
               animationsDisabled
             >
-              <Tooltip.Popper id="form-emails-error" visible={Boolean(errors['emails'])}>
+              <Tooltip.Popper id='form-emails-error' visible={Boolean(errors['emails'])}>
                 {errors['emails']?.message}
               </Tooltip.Popper>
               <InputTags
                 tag={Tooltip.Trigger}
-                size="l"
+                size='l'
                 state={errors['emails'] ? 'invalid' : 'normal'}
                 onAppend={handleAppendTags}
                 onRemove={handleRemoveTag}
@@ -112,7 +112,7 @@ const Demo = () => {
                 aria-errormessage={errors['emails'] ? 'form-emails-error' : undefined}
               >
                 {tags.map((tag, idx) => (
-                  <InputTags.Tag key={tag + idx} use="primary" theme="asphalt">
+                  <InputTags.Tag key={tag + idx} use='primary' theme='asphalt'>
                     <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
                   </InputTags.Tag>
@@ -123,10 +123,10 @@ const Demo = () => {
           </>
         )}
         control={control}
-        name="emails"
+        name='emails'
       />
 
-      <Button mt={4} type="submit" use="primary" theme="success" size="l">
+      <Button mt={4} type='submit' use='primary' theme='success' size='l'>
         Save
       </Button>
     </Flex>

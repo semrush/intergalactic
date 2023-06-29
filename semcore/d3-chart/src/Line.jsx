@@ -60,7 +60,7 @@ class LineRoot extends Component {
         <SLine
           aria-hidden
           clipPath={`url(#${uid})`}
-          render="path"
+          render='path'
           hide={hide}
           color={color}
           transparent={transparent}
@@ -74,8 +74,8 @@ class LineRoot extends Component {
               rect.setAttribute('width', size[0]);
             }}
             id={uid}
-            x="0"
-            y="0"
+            x='0'
+            y='0'
             width={0}
             height={size[1]}
             transition={`width ${duration}ms ease-in-out`}
@@ -88,7 +88,7 @@ class LineRoot extends Component {
 
 function Null(props) {
   const { Element: SNull, styles, d3, data, hide } = props;
-  return sstyled(styles)(<SNull render="path" d={d3(data)} hide={hide} />);
+  return sstyled(styles)(<SNull render='path' d={d3(data)} hide={hide} />);
 }
 
 export default createElement(LineRoot, {

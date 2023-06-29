@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default function createUUID() {
   const pattern = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
   return pattern.replace(/[xy]/g, (c) => {

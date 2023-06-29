@@ -16,24 +16,24 @@ export default () => {
   return (
     <>
       <DataTable data={data}>
-        <Box position="sticky" top={top} zIndex={2}>
+        <Box position='sticky' top={top} zIndex={2}>
           <DataTable.Head wMin={1000}>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
         </Box>
         <DataTable.Body />
       </DataTable>
       <h3>with Scroll.Bar in Header</h3>
       <DataTable data={data}>
-        <Box position="sticky" top={top} zIndex={2}>
+        <Box position='sticky' top={top} zIndex={2}>
           <DataTable.Head wMin={1000} ref={containerRef}>
-            <DataTable.Column name="keyword" children="Keyword" />
-            <DataTable.Column name="kd" children="KD,%" />
-            <DataTable.Column name="cpc" children="CPC" />
-            <DataTable.Column name="vol" children="Vol." />
+            <DataTable.Column name='keyword' children='Keyword' />
+            <DataTable.Column name='kd' children='KD,%' />
+            <DataTable.Column name='cpc' children='CPC' />
+            <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           {container && <ScrollArea.Bar container={container} />}
         </Box>

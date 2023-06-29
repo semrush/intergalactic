@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
+let randomIndex = 1;
+const stableRandom = () =>
+  Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
   for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+    color += letters[Math.floor(stableRandom() * 16)];
   }
   return color;
 }
@@ -33,7 +36,7 @@ const Demo = () => {
               ))}
             </Box>
           </ScrollArea.Container>
-          <ScrollArea.Bar orientation="vertical" />
+          <ScrollArea.Bar orientation='vertical' />
         </ScrollArea>
         <br />
         <br />
@@ -42,7 +45,7 @@ const Demo = () => {
         <br />
         <ScrollArea.Bar
           container={containerRef}
-          orientation="horizontal"
+          orientation='horizontal'
           w={200}
           h={40}
           style={{ background: 'rgba(0,0,0,0.1)' }}

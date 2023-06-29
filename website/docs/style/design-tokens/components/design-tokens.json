@@ -45,7 +45,6 @@
     "computedValue": "#e0e1e9",
     "description": "Active (selected) state of the primary background of the interface which contains the main data and information.",
     "components": [
-      "base-trigger",
       "flags"
     ]
   },

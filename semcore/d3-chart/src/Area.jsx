@@ -107,7 +107,7 @@ class AreaRoot extends Component {
         <SArea
           aria-hidden
           clipPath={`url(#${uid})`}
-          render="path"
+          render='path'
           d={d3(data)}
           hide={hide}
           color={color}
@@ -121,8 +121,8 @@ class AreaRoot extends Component {
               rect.setAttribute('width', size[0]);
             }}
             id={uid}
-            x="0"
-            y="0"
+            x='0'
+            y='0'
             width={0}
             height={size[1]}
             transition={`width ${duration}ms ease-in-out`}
@@ -137,7 +137,7 @@ function Line(props) {
   const { Element: SAreaLine, styles, d3, data, color, duration, uid, transparent } = props;
   return sstyled(styles)(
     <SAreaLine
-      render="path"
+      render='path'
       clipPath={`url(#${uid})`}
       d={d3(data)}
       color={color}
@@ -149,7 +149,7 @@ function Line(props) {
 
 function Null(props) {
   const { Element: SNull, styles, d3, data, hide, color } = props;
-  return sstyled(styles)(<SNull render="path" d={d3(data)} hide={hide} color={color} />);
+  return sstyled(styles)(<SNull render='path' d={d3(data)} hide={hide} color={color} />);
 }
 
 const Area = createElement(AreaRoot, {

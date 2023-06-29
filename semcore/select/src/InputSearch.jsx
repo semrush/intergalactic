@@ -9,7 +9,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 import style from './style/input-search.shadow.css';
 
-const MAP_SIZE_TO_ICON = {
+const sizeToIcon = {
   m: [SearchM, CloseM],
   l: [SearchM, CloseM],
 };
@@ -42,10 +42,10 @@ class InputSearch extends Component {
     const SInputSearch = Input;
     const SClose = Input.Addon;
     const { size, value, styles, getI18nText } = this.asProps;
-    const finalSize = size || this.context.size;
+    const finalSize = size || this.context.size || 'm';
     const hideClose = !value;
-    const IconClose = MAP_SIZE_TO_ICON[finalSize][1];
-    const IconSearch = MAP_SIZE_TO_ICON[finalSize][0];
+    const IconClose = sizeToIcon[finalSize][1];
+    const IconSearch = sizeToIcon[finalSize][0];
 
     return sstyled(styles)(
       <SInputSearch size={finalSize} styles={styles}>
@@ -54,7 +54,7 @@ class InputSearch extends Component {
         </Input.Addon>
         <Value render={Input.Value} autoFocus />
         <SClose
-          role="button"
+          role='button'
           /* hide through css because the width of the input changes */
           hide={hideClose}
           aria-hidden={hideClose}

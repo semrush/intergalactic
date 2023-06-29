@@ -119,7 +119,7 @@ class ReferenceLineRoot extends Component {
     return sstyled(styles)(
       <>
         <SReferenceLine
-          render="line"
+          render='line'
           __excludeProps={['data', 'scale', 'format', 'value', 'color']}
           stroke={color}
           {...positionProps(scale, value)}
@@ -141,8 +141,8 @@ function Title(props) {
 
   return sstyled(styles)(
     <STitle
-      render="text"
-      childrenPosition="inside"
+      render='text'
+      childrenPosition='inside'
       className={sTitleStyles.className}
       style={sTitleStyles.style}
       position={position}
@@ -157,7 +157,7 @@ function Background(props) {
   const positionProps = rectDirection2props[side2direction[position]];
 
   return sstyled(styles)(
-    <SBackground render="rect" childrenPosition="inside" {...positionProps(scale, value)} />,
+    <SBackground render='rect' childrenPosition='inside' {...positionProps(scale, value)} />,
   );
 }
 

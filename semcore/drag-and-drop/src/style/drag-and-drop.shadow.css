@@ -46,10 +46,6 @@ SDraggable[placement='right'] {
   }
 }
 
-SDraggable[placement='top'] {
-  padding-top: var(--intergalactic-spacing-4x, 16px);
-}
-
 SDraggable[placement='bottom'] {
   padding-bottom: var(--intergalactic-spacing-4x, 16px);
 

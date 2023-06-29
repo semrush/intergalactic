@@ -3,20 +3,20 @@ import {
   Line,
   Curve,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   Layer,
   LabelList,
   Rectangle,
 } from 'recharts';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import isNil from 'lodash/isNil';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import classNames from 'classnames';
 import { getPresentationAttributes, filterEventAttributes } from 'recharts/lib/util/ReactUtils';
 import { colors } from '../../utils/colors';
 import { computeDefinedSegments, normalizeCurvePoints, filterDotPoints } from '../../utils';
 import { isNumber, interpolateNumber } from 'recharts/lib/util/DataUtils';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import Animate from 'react-smooth';
 
 // @ts-ignore
@@ -54,7 +54,7 @@ Line.prototype.renderCurveStatically = function (points, needClip, clipPathId, p
           points={normalizeCurvePoints(points)}
           stroke={colors['gray-blue']}
           strokeWidth={3}
-          strokeDasharray="6"
+          strokeDasharray='6'
         />
       )}
       <Curve
@@ -277,7 +277,7 @@ Line.prototype.renderDots = function (needClip, clipPathId) {
   };
 
   return (
-    <Layer className="recharts-line-dots" key="dots" {...dotsProps}>
+    <Layer className='recharts-line-dots' key='dots' {...dotsProps}>
       {dots}
     </Layer>
   );
@@ -295,7 +295,7 @@ Line.prototype.render = function () {
   const { isAnimationFinished } = this.state;
   const hasSinglePoint = points.length === 1;
   const layerClass = classNames('recharts-line', className);
-  const needClip = (xAxis && xAxis.allowDataOverflow) || (yAxis && yAxis.allowDataOverflow);
+  const needClip = xAxis?.allowDataOverflow || yAxis?.allowDataOverflow;
   const clipPathId = isNil(id) ? this.id : id;
 
   return (

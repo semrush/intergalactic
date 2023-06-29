@@ -10,13 +10,13 @@ describe('Flags', () => {
   beforeEach(cleanup);
 
   test.concurrent('Should support className with name country without space', () => {
-    const { getByTestId } = render(<Flags data-testid="flags" iso2="EH" />);
+    const { getByTestId } = render(<Flags data-testid='flags' iso2='EH' />);
 
     expect(getByTestId('flags').classList[1]).toMatch(/^flag-western-sahara-/);
   });
 
   test.skip('Should support className with name country and ,', () => {
-    const { getByTestId } = render(<Flags data-testid="flags" iso2="BQ" />);
+    const { getByTestId } = render(<Flags data-testid='flags' iso2='BQ' />);
 
     expect(getByTestId('flags').classList[1]).toMatch(/flag-bonaire--sint-eustatius-and-saba-/);
   });
@@ -24,9 +24,9 @@ describe('Flags', () => {
   test.skip('Should correctly render', () => {
     const { getByTestId } = render(
       <>
-        <Flags data-testid="flags" iso2="af" />
-        <Flags data-testid="flags2" iso3="afg" />
-        <Flags data-testid="flags3" name="afg" />
+        <Flags data-testid='flags' iso2='af' />
+        <Flags data-testid='flags2' iso3='afg' />
+        <Flags data-testid='flags3' name='afg' />
       </>,
     );
 
@@ -36,7 +36,7 @@ describe('Flags', () => {
   });
 
   test.skip('Should set styles', () => {
-    render(<Flags data-testid="flags" iso2="af" />);
+    render(<Flags data-testid='flags' iso2='af' />);
 
     const link = document.querySelectorAll('[class*=_css-style-flags]')[0];
 
@@ -48,8 +48,8 @@ describe('Flags', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Flags />
-        <Flags iso2="AA" />
-        <Flags iso3="AAA" />
+        <Flags iso2='AA' />
+        <Flags iso3='AAA' />
       </snapshot.ProxyProps>
     );
 

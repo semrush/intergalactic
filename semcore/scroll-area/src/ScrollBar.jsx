@@ -67,7 +67,9 @@ class ScrollBarRoot extends Component {
     setAriaValues(this.$container, horizontalBarRef?.current, verticalBarRef?.current);
   };
 
-  refSlider = (node) => (this.$slider = findDOMNode(node));
+  refSlider = (node) => {
+    this.$slider = findDOMNode(node);
+  };
 
   calculateVisibleScroll() {
     const orientation = this.getOrientation();
@@ -287,7 +289,7 @@ class ScrollBarRoot extends Component {
     return sstyled(styles)(
       <SScrollBar
         render={Box}
-        role="scrollbar"
+        role='scrollbar'
         ref={this.refBar}
         aria-valuemin={0}
         aria-controls={`igc-${uid}-scroll-container`}

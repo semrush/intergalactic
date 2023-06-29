@@ -70,7 +70,7 @@ export class DatePickerRoot extends PickerAbstract {
         <>
           <DatePicker.Header />
           <DatePicker.Calendar />
-          <Divider ml={-4} mt={4} w="calc(100% + 32px)" />
+          <Divider ml={-4} mt={4} w='calc(100% + 32px)' />
           <DatePicker.Today />
         </>
       ),
@@ -105,7 +105,7 @@ class Today extends Component {
     const { styles, getI18nText } = this.asProps;
     return sstyled(styles)(
       <SToday render={Box}>
-        <Button use="tertiary" children={getI18nText('today')} />
+        <Button use='tertiary' children={getI18nText('today')} />
       </SToday>,
     );
   }

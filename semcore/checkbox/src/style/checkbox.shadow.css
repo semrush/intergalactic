@@ -57,6 +57,14 @@ SCheckbox {
     background-repeat: no-repeat;
     background-position: center center;
   }
+
+  &[state='normal']:before {
+    border-color: var(--intergalactic-border-primary, #c4c7cf);
+  }
+
+  &[state='normal'][keyboardFocused]:before {
+    border-color: var(--intergalactic-border-info-active, #006dca);
+  }
 }
 
 SCheckbox[size='l'] {
@@ -77,6 +85,7 @@ SCheckbox[size='m'] {
   }
 }
 
+
 SText[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
   line-height: var(--intergalactic-lh-300, 150%);
@@ -87,15 +96,6 @@ SText[size='m'] {
   line-height: var(--intergalactic-lh-200, 142%);
 }
 
-SCheckbox {
-  &[state='normal']:before {
-    border-color: var(--intergalactic-border-primary, #c4c7cf);
-  }
-
-  &[state='normal'][keyboardFocused]:before {
-    border-color: var(--intergalactic-border-info-active, #006dca);
-  }
-}
 
 SControl[checked] ~ SCheckbox[state='normal']:before,
 SControl[checked] ~ SCheckbox[state='invalid']:before {

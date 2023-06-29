@@ -130,7 +130,7 @@ function Title(props) {
 
   React.useEffect(() => setHasTitle());
 
-  return sstyled(props.styles)(<STitle render={Text} tag="h2" />);
+  return sstyled(props.styles)(<STitle render={Text} tag='h2' />);
 }
 
 function Description(props) {
@@ -144,7 +144,7 @@ function Back(props) {
   const { Children, styles } = props;
 
   return sstyled(styles)(
-    <SBack render={Box} tag="button">
+    <SBack render={Box} tag='button'>
       <ArrowLeft />
       <SBackText>
         <Children />

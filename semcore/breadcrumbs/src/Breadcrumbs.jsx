@@ -31,7 +31,7 @@ class Breadcrumbs extends Component {
     const SBreadcrumbs = Root;
     const { styles, getI18nText } = this.asProps;
     return sstyled(styles)(
-      <SBreadcrumbs render={Box} aria-label={getI18nText('breadcrumbs')} role="group" />,
+      <SBreadcrumbs render={Box} aria-label={getI18nText('breadcrumbs')} role='group' />,
     );
   }
 }
@@ -56,7 +56,7 @@ class Item extends Component {
     return sstyled(styles)(
       <>
         <SBreadcrumbsItem render={Box} aria-current={active ? getI18nText('page') : undefined} />
-        <SSeparator aria-hidden="true">{separator}</SSeparator>
+        <SSeparator aria-hidden='true'>{separator}</SSeparator>
       </>,
     );
   }

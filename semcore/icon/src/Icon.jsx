@@ -27,7 +27,7 @@ function Icon(props, ref) {
 
   const { interactive, color: colorProps } = props;
   const color = resolveColor(colorProps);
-  const { keyboardFocused, ...propsWithKeyboardEnhance } = keyboardFocusEnhance()({
+  const { keyboardFocused, ...propsEnhance } = keyboardFocusEnhance()({
     disabled: !interactive,
     ...other,
   });
@@ -40,12 +40,12 @@ function Icon(props, ref) {
   });
 
   function onKeyDown(event) {
-    if (props.onKeyDown) {
-      return props.onKeyDown(event);
+    if (propsEnhance.onKeyDown) {
+      return propsEnhance.onKeyDown(event);
     }
 
     if (interactive && event.code === 'Enter') {
-      props.onClick && props.onClick(event);
+      propsEnhance.onClick?.(event);
     }
   }
 
@@ -66,9 +66,9 @@ function Icon(props, ref) {
     <SIcon
       role={interactive ? 'button' : undefined}
       aria-hidden={interactive ? undefined : 'true'}
-      {...propsForElement(propsWithKeyboardEnhance)}
-      style={Object.assign({}, style, propsWithKeyboardEnhance.style, props.style)}
-      className={cn(className, propsWithKeyboardEnhance.className, props.className) || undefined}
+      {...propsForElement(propsEnhance)}
+      style={Object.assign({}, style, propsEnhance.style)}
+      className={cn(className, propsEnhance.className) || undefined}
       onKeyDown={onKeyDown}
       ref={forkedRef}
     />

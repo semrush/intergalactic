@@ -21,10 +21,10 @@ export default () => {
     <Accordion value={exapnded} onChange={setExapnded}>
       <DataTable data={data}>
         <DataTable.Head>
-          <DataTable.Column name="keyword" children="Keyword" />
-          <DataTable.Column name="kd" children="KD,%" />
-          <DataTable.Column name="cpc" children="CPC" />
-          <DataTable.Column name="vol" children="Vol." />
+          <DataTable.Column name='keyword' children='Keyword' />
+          <DataTable.Column name='kd' children='KD,%' />
+          <DataTable.Column name='cpc' children='CPC' />
+          <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body>
           {/* [2] Replacing the tag in DataTable.Row with our extended tag with Accordion.Item */}
@@ -42,13 +42,13 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<{}, typeof data> name="keyword">
+          <DataTable.Cell<{}, typeof data> name='keyword'>
             {(props) => {
               return {
                 children: (
-                  <Flex alignItems="center">
+                  <Flex alignItems='center'>
                     {/* [6] Set the arrow (Chevron icon), if necessary. */}
-                    <Accordion.Item.Chevron color="stone" mr={2} />
+                    <Accordion.Item.Chevron color='stone' mr={2} />
                     {props.children}
                   </Flex>
                 ),
@@ -86,7 +86,7 @@ const ChartExample = () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        <Line x="x" y="y">
+        <Line x='x' y='y'>
           <Line.Dots display />
         </Line>
       </Plot>

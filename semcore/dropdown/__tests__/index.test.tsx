@@ -12,8 +12,8 @@ describe('Dropdown', () => {
   test.concurrent('Should correct enter space in input', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Dropdown onVisibleChange={spy} interaction="focus">
-        <Dropdown.Trigger tag="input" data-testid="input" />
+      <Dropdown onVisibleChange={spy} interaction='focus'>
+        <Dropdown.Trigger tag='input' data-testid='input' />
       </Dropdown>,
     );
 
@@ -29,7 +29,7 @@ describe('Dropdown', () => {
       <div style={{ width: 150, height: 60 }}>
         <Dropdown disablePortal visible>
           <Dropdown.Trigger>
-            <button>default dropdown</button>
+            <button type='button'>default dropdown</button>
           </Dropdown.Trigger>
           <Dropdown.Popper style={{ opacity: 1 }}>
             <div>text</div>
@@ -44,7 +44,7 @@ describe('Dropdown', () => {
   test('a11y', async () => {
     const { container } = render(
       <Dropdown visible disablePortal>
-        <Dropdown.Trigger tag="button" aria-label="default dropdown">
+        <Dropdown.Trigger tag='button' aria-label='default dropdown'>
           default dropdown
         </Dropdown.Trigger>
         <Dropdown.Popper>

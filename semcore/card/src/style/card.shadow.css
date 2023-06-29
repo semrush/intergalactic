@@ -6,8 +6,7 @@ SCard {
   border-radius: var(--intergalactic-surface-rounded, 6px);
   box-shadow: var(
     --intergalactic-box-shadow-card,
-    0px 0px 1px 0px rgba(25, 27, 35, 0.16),
-    0px 1px 2px 0px rgba(25, 27, 35, 0.12)
+    0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12)
   );
 }
 

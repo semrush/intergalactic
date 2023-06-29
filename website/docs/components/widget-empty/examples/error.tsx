@@ -28,7 +28,7 @@ export default () => {
           <Text size={300} bold>
             Known error
           </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
+          <Divider orientation='horizontal' m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <Error>
             <Box mt={4}>
               <Button addonLeft={ReloadM}>Reload page</Button>
@@ -39,12 +39,12 @@ export default () => {
           <Text size={300} bold>
             Don't known error
           </Text>
-          <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
+          <Divider orientation='horizontal' m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
           <Error
             description={
               <>
                 Please try again later. If the problem persists, contact us at{' '}
-                <Link href="mailto:mail@semrush.com">mail@semrush.com</Link>
+                <Link href='mailto:mail@semrush.com'>mail@semrush.com</Link>
               </>
             }
           >

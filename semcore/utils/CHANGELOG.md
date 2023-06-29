@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.54.0] - 2023-06-23
+
+### Added
+
+- Exposed internal util for setting focus on top focusable child.
+
 ## [3.53.4] - 2023-06-14
 
 ### Fixed
@@ -469,7 +475,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Добавлена оптимизация для `assignProps`, теперь не создаются новые функции и ref
-  ссылки если они не нужны. Это позволит избежать лишних перерендеров, когда свойства не меняются.
+ссылки если они не нужны. Это позволит избежать лишних перерендеров, когда свойства не меняются.
 
 ## [3.17.2] - 2020-06-19
 
@@ -817,7 +823,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Перенеcли HOC `WithNeighborLocation` (помогавший узнать положение компонента относительного его соседей), в отдельный
-  компонент `@semcore/neighbor-location`
+компонент `@semcore/neighbor-location`
 
 ## [1.3.0] - 2018-11-22
 

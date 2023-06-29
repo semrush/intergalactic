@@ -26,7 +26,6 @@ export interface IAnimatedNumberBaseProps {
 export const AnimatedNumber = <
   Tag extends keyof JSX.IntrinsicElements | React.ComponentClass | React.FC,
 >(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   props: IAnimatedNumberBaseProps & {
     tag?: Tag;
   } & (Tag extends React.FC

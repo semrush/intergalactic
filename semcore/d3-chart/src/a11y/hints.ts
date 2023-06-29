@@ -1,5 +1,5 @@
 import { SerializableDataType } from './insights';
-import reactToText from '@semcore/utils/lib/reactToText'
+import reactToText from '@semcore/utils/lib/reactToText';
 
 type DeepPartial<T> = T extends object
   ? {
@@ -190,5 +190,5 @@ export const makeDataSummarizationConfig = (
     notableDiff: undefined,
     ...(config?.movingAverage ?? {}),
   },
-  additionalFields: [...config?.additionalFields ?? []]
+  additionalFields: [...(config?.additionalFields ?? [])],
 });

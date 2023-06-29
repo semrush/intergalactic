@@ -40,7 +40,7 @@ class RadioGroupRoot extends Component {
 
     if (tag)
       return (
-        <Root render={Box} tag={tag} role="radiogroup" __excludeProps={['onChange']}>
+        <Root render={Box} tag={tag} role='radiogroup' __excludeProps={['onChange']}>
           <Children />
         </Root>
       );
@@ -101,7 +101,7 @@ class Radio extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
-      <SRadio render={Box} tag="label">
+      <SRadio render={Box} tag='label'>
         <Children />
       </SRadio>,
     );
@@ -131,7 +131,7 @@ class Value extends Component {
 
     return sstyled(styles)(
       <>
-        <SControl tag="input" type="radio" {...controlProps} />
+        <SControl tag='input' type='radio' {...controlProps} />
         <SValue ref={forwardRef} use:theme={resolveColor(theme)} {...boxProps} />
       </>,
     );

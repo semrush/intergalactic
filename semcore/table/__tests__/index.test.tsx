@@ -92,7 +92,7 @@ describe('Table', () => {
     'should support correct render border inside table use secondary',
     async ({ task }) => {
       const component = (
-        <Table use="secondary">
+        <Table use='secondary'>
           <Table.Head>
             <Table.Row>
               <Table.CellHead>head 1</Table.CellHead>
@@ -121,7 +121,7 @@ describe('Table', () => {
           <Table.Row theme={theme}>
             <Table.Cell>cell 1</Table.Cell>
           </Table.Row>
-          <Table.Row theme={theme} id="element">
+          <Table.Row theme={theme} id='element'>
             <Table.Cell>cell 2</Table.Cell>
           </Table.Row>
         </Table.Body>
@@ -129,16 +129,16 @@ describe('Table', () => {
     );
 
     await expect(
-      await snapshot(<Component theme="info" />, { actions: { hover: '#element' } }),
+      await snapshot(<Component theme='info' />, { actions: { hover: '#element' } }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Component theme="success" />, { actions: { hover: '#element' } }),
+      await snapshot(<Component theme='success' />, { actions: { hover: '#element' } }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Component theme="warning" />, { actions: { hover: '#element' } }),
+      await snapshot(<Component theme='warning' />, { actions: { hover: '#element' } }),
     ).toMatchImageSnapshot(task);
     await expect(
-      await snapshot(<Component theme="danger" />, { actions: { hover: '#element' } }),
+      await snapshot(<Component theme='danger' />, { actions: { hover: '#element' } }),
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(<Component />, { actions: { hover: '#element' } }),
@@ -218,7 +218,7 @@ describe('Table.CellHead', () => {
       <Table>
         <Table.Head>
           <Table.Row>
-            <Table.CellHead tag="th" ref={ref} />
+            <Table.CellHead tag='th' ref={ref} />
           </Table.Row>
         </Table.Head>
       </Table>,
@@ -247,10 +247,10 @@ describe('Table.CellHead', () => {
         <Table.Head>
           <Table.Row>
             <Table.CellHead w={100}>head 1</Table.CellHead>
-            <Table.CellHead w={100} align="center">
+            <Table.CellHead w={100} align='center'>
               head 2
             </Table.CellHead>
-            <Table.CellHead w={100} textAlign="right">
+            <Table.CellHead w={100} textAlign='right'>
               head 3
             </Table.CellHead>
           </Table.Row>
@@ -266,10 +266,10 @@ describe('Table.CellHead', () => {
       <Table>
         <Table.Head>
           <Table.Row>
-            <Table.CellHead sorting="desc" id="cell">
+            <Table.CellHead sorting='desc' id='cell'>
               head 1
             </Table.CellHead>
-            <Table.CellHead sorting="asc">head 2</Table.CellHead>
+            <Table.CellHead sorting='asc'>head 2</Table.CellHead>
           </Table.Row>
         </Table.Head>
       </Table>
@@ -289,10 +289,10 @@ describe('Table.CellHead', () => {
       <Table>
         <Table.Head>
           <Table.Row>
-            <Table.CellHead sorting="desc" id="cell" noWrap={false} style={{ maxWidth: '100px' }}>
+            <Table.CellHead sorting='desc' id='cell' noWrap={false} style={{ maxWidth: '100px' }}>
               head 1 in two rows
             </Table.CellHead>
-            <Table.CellHead sorting="asc">head 2</Table.CellHead>
+            <Table.CellHead sorting='asc'>head 2</Table.CellHead>
           </Table.Row>
         </Table.Head>
       </Table>
@@ -324,7 +324,7 @@ describe('Table.Cell', () => {
       <Table>
         <Table.Body>
           <Table.Row>
-            <Table.Cell tag="td" ref={ref} />
+            <Table.Cell tag='td' ref={ref} />
           </Table.Row>
         </Table.Body>
       </Table>,
@@ -341,7 +341,7 @@ describe('Table.StickyHead', () => {
   test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Table>
-        <Table.StickyHead data-testid="sticky" name="sticky" />
+        <Table.StickyHead data-testid='sticky' name='sticky' />
       </Table>,
     );
 
@@ -352,7 +352,7 @@ describe('Table.StickyHead', () => {
     const component = (
       <Table>
         <Table.StickyHead>
-          <p data-testid="child">Test</p>
+          <p data-testid='child'>Test</p>
         </Table.StickyHead>
         <Table.Head />
       </Table>
@@ -368,7 +368,7 @@ describe('Table.StickyHead', () => {
         <Table.StickyHead />
         <Table.Head>
           <Table.Row>
-            <Table.CellHead width="200" />
+            <Table.CellHead width='200' />
           </Table.Row>
         </Table.Head>
       </Table>,

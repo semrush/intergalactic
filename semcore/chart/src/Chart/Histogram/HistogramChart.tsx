@@ -42,7 +42,7 @@ const generateCategoricalChart = function (params) {
       const axisObj = axisComponents.reduce((result, entry) => {
         const axisMap = currentState[`${entry.axisType}Map`];
         const id = item.props[`${entry.axisType}Id`];
-        const axis = axisMap && axisMap[id];
+        const axis = axisMap?.[id];
 
         return {
           ...result,
@@ -53,9 +53,7 @@ const generateCategoricalChart = function (params) {
       const cateAxis = axisObj[cateAxisName];
       const cateTicks = axisObj[`${cateAxisName}Ticks`];
       const stackedData =
-        stackGroups &&
-        stackGroups[numericAxisId] &&
-        stackGroups[numericAxisId].hasStack &&
+        stackGroups?.[numericAxisId]?.hasStack &&
         getStackedDataOfItem(item, stackGroups[numericAxisId].stackGroups);
       const bandSize = getBandSizeOfAxis(cateAxis, cateTicks);
       const maxBarSize = childMaxBarSize == null ? globalMaxBarSize : childMaxBarSize;
@@ -68,7 +66,7 @@ const generateCategoricalChart = function (params) {
           sizeList: sizeList[cateAxisId],
           maxBarSize,
         });
-      const componsedFn = item && item.type && item.type.getComposedData;
+      const componsedFn = item?.type?.getComposedData;
       barPosition = barPosition.map((bar) => {
         const { position } = bar;
         const { offset: offsetBar, size } = position;

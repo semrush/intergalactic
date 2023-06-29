@@ -9,7 +9,8 @@ export default () => {
 
   const scale = scaleLinear().domain([0, 10]);
 
-  return (<Flex>
+  return (
+    <Flex>
       <Plot data={data} width={width} height={height}>
         <Radar scale={scale}>
           <Radar.Axis dataKey='categories'>
@@ -22,10 +23,11 @@ export default () => {
           </Radar.Polygon>
         </Radar>
       </Plot>
-    </Flex>);
+    </Flex>
+  );
 };
 
 const data = {
-  'categories': ['Cat 1', 'Cat tender\nDog sweet', 'Cat 3', 'Cat 4', 'Cat 5', 'Cat 6'],
-  'data_1': [10, 2, 10, 2, 10, 2],
+  categories: ['Cat 1', 'Cat tender\nDog sweet', 'Cat 3', 'Cat 4', 'Cat 5', 'Cat 6'],
+  data_1: [10, 2, 10, 2, 10, 2],
 };

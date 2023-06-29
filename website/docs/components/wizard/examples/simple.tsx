@@ -15,11 +15,11 @@ export default function () {
 
   return (
     <>
-      <Button use="primary" onClick={handleOpen}>
+      <Button use='primary' onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1} onActive={setStep} completed>
             Step 1
           </Wizard.Stepper>
@@ -30,13 +30,13 @@ export default function () {
             Step 3
           </Wizard.Stepper>
         </Wizard.Sidebar>
-        <Wizard.Content tag={Flex} direction="column" justifyContent="space-between">
+        <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step step={1}>Step 1</Wizard.Step>
           <Wizard.Step step={2}>Step 2</Wizard.Step>
           <Wizard.Step step={3}>Step 3</Wizard.Step>
-          <Flex justifyContent="space-between" w="100%">
+          <Flex justifyContent='space-between' w='100%'>
             {step > 1 && (
-              <Button use="tertiary" mt={5} onClick={() => setStep(step - 1)}>
+              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
                 <Button.Addon>
                   <ArrowLeft />
                 </Button.Addon>
@@ -45,7 +45,7 @@ export default function () {
             )}
             {step !== steps.length && (
               <Button
-                use="tertiary"
+                use='tertiary'
                 mt={5}
                 onClick={() => {
                   setStep(step + 1);

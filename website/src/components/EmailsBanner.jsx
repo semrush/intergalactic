@@ -9,11 +9,11 @@ function BannerBlock() {
   return (
     <div
       className={styles.emailsWrapper}
-      id="bannerBlock"
-      role="region"
-      aria-label="Product emails library"
+      id='bannerBlock'
+      role='region'
+      aria-label='Product emails library'
     >
-      <img className={styles.emailImg} src={emailImg} aria-hidden="true" />
+      <img className={styles.emailImg} src={emailImg} aria-hidden='true' alt='' />
       <div className={styles.info}>
         <Box>
           <h2 className={styles.header}>Product emails library</h2>
@@ -22,10 +22,10 @@ function BannerBlock() {
           All you need for making your product newsletter cool, consistent and adaptive.
         </Box>
         <Box mt={2} mb={8}>
-          <RouterLink size={300} color="#171A22" to="/product-emails/grid-email/">
+          <RouterLink size={300} color='#171A22' to='/product-emails/grid-email/'>
             <RouterLink.Text>Dive into examples</RouterLink.Text>
             <RouterLink.Addon>
-              <ArrowRightXS color="#171A22" />
+              <ArrowRightXS color='#171A22' />
             </RouterLink.Addon>
           </RouterLink>
         </Box>

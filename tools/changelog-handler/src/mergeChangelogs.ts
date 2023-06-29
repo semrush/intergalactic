@@ -54,12 +54,14 @@ export const mergeChangelogs = async (
       output.push(bChangelog);
       bIndex--;
     } else {
-      /* eslint-disable no-console */
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log('changelog a:');
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(aChangelog);
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log('changelog b:');
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(bChangelog);
-      /* eslint-enable no-console */
       throw new Error(
         `Unable to handle merging of changelogs above from ${gitOursRef} merged into ${gitBaseRef}`,
       );

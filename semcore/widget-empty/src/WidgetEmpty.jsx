@@ -20,8 +20,8 @@ class WidgetEmpty extends Component {
     return sstyled(styles)(
       <SWidgetEmpty render={Flex}>
         {isNode(icon) && (
-          <SImage aria-hidden="true">
-            {typeof icon === 'string' ? <img src={icon} alt="widget empty icon" /> : icon}
+          <SImage aria-hidden='true'>
+            {typeof icon === 'string' ? <img src={icon} alt='widget empty icon' /> : icon}
           </SImage>
         )}
         <Children />

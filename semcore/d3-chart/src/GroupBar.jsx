@@ -66,7 +66,7 @@ class GroupBarRoot extends Component {
     this.asProps.dataHintsHandler.establishDataType('grouped-values');
 
     return (
-      <Element aria-hidden render="g" childrenPosition="inside" scaleGroup={this.scaleGroup} />
+      <Element aria-hidden render='g' childrenPosition='inside' scaleGroup={this.scaleGroup} />
     );
   }
 }

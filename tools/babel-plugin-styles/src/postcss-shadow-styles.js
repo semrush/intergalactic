@@ -6,7 +6,12 @@ const finderPackageJson = require('find-package-json');
 
 const PLACEHOLDER_REPLACER = '_gg_';
 
-function walkRule(nodes = [], parentNode, generateClassName, tokens) {
+function walkRule(
+  nodes = [],
+  parentNode = undefined,
+  generateClassName = undefined,
+  tokens = undefined,
+) {
   let element;
   nodes.forEach((node, i) => {
     if (node.type === 'nested-pseudo-class' && node.name === 'global') {
@@ -18,18 +23,18 @@ function walkRule(nodes = [], parentNode, generateClassName, tokens) {
     } else if (node.type === 'element' && /^[A-Z]/.test(node.name)) {
       node.type = 'class';
       element = node.name;
-      tokens['__' + node.name] = node.name = generateClassName([node.name]);
+      tokens[`__${node.name}`] = node.name = generateClassName([node.name]);
     } else if (node.type === 'class') {
-      if (tokens['__' + node.name]) element = node.name;
+      if (tokens[`__${node.name}`]) element = node.name;
     } else if (node.type === 'attribute' && !node.content.startsWith('data-')) {
       node.type = 'class';
       let [mod, value] = node.content.split('=');
       mod = mod.split('|').pop();
       if (value) {
         value = value.replace(/['"]/g, '');
-        tokens['_' + mod + '_' + value] = node.name = generateClassName([element, mod, value]);
+        tokens[`_${mod}_${value}`] = node.name = generateClassName([element, mod, value]);
       } else {
-        tokens['_' + mod] = node.name = generateClassName([element, mod]);
+        tokens[`_${mod}`] = node.name = generateClassName([element, mod]);
       }
     } else {
       element = undefined;

@@ -15,7 +15,7 @@ function getSizeText(sizeSpin) {
   }
   return 100;
 }
-function getMarginText(orientation = 'bottom', sizeSpin) {
+function getMarginText(orientation = 'bottom', sizeSpin = undefined) {
   if (orientation === 'right') {
     if (sizeSpin.includes('xl')) {
       return '0 0 0 16px';
@@ -74,17 +74,17 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     return (
       <Flex
         m={centered ? 'auto' : 0}
-        alignItems="center"
-        justifyContent="center"
+        alignItems='center'
+        justifyContent='center'
         direction={textRight ? 'row' : 'column'}
       >
         <Spin size={size} theme={theme} />
         {
           <Text
-            tag="div"
+            tag='div'
             m={textRight ? getMarginText('right', size) : getMarginText('bottom', size)}
           >
-            <Text size={getSizeText(size)} color="gray60">
+            <Text size={getSizeText(size)} color='gray60'>
               {text}
             </Text>
           </Text>

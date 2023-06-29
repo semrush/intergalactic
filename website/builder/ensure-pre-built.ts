@@ -7,18 +7,18 @@ async function preBuildIcon() {
   const referenceIconName = 'Info';
   try {
     await fs.access(
-      resolvePath(fileURLToPath(import.meta.url), `../../../semcore/icon/`, referenceIconName),
+      resolvePath(fileURLToPath(import.meta.url), '../../../semcore/icon/', referenceIconName),
     );
     return;
   } catch {}
-  // eslint-disable-next-line no-console
-  console.info(`\n@semcore/icon are not built yet. Building it for the first time only...\n`);
+
+  console.info('\n@semcore/icon are not built yet. Building it for the first time only...\n');
   await execa('npm', ['run', 'build:icons'], {
-    cwd: resolvePath(fileURLToPath(import.meta.url), `../../..`),
+    cwd: resolvePath(fileURLToPath(import.meta.url), '../../..'),
     stdio: 'inherit',
   });
-  // eslint-disable-next-line no-console
-  console.info(`\n@semcore/icon building done\n`);
+
+  console.info('\n@semcore/icon building done\n');
 }
 
 async function preBuildIllustration() {
@@ -27,22 +27,22 @@ async function preBuildIllustration() {
     await fs.access(
       resolvePath(
         fileURLToPath(import.meta.url),
-        `../../../semcore/illustration/`,
+        '../../../semcore/illustration/',
         referenceIllustrationName,
       ),
     );
     return;
   } catch {}
-  // eslint-disable-next-line no-console
+
   console.info(
-    `\n@semcore/illustration are not built yet. Building it for the first time only...\n`,
+    '\n@semcore/illustration are not built yet. Building it for the first time only...\n',
   );
   await execa('npm', ['run', 'build:illustration'], {
-    cwd: resolvePath(fileURLToPath(import.meta.url), `../../..`),
+    cwd: resolvePath(fileURLToPath(import.meta.url), '../../..'),
     stdio: 'inherit',
   });
-  // eslint-disable-next-line no-console
-  console.info(`\n@semcore/illustration building done\n`);
+
+  console.info('\n@semcore/illustration building done\n');
 }
 
 await preBuildIcon();

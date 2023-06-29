@@ -16,7 +16,7 @@ describe('Modal', () => {
   shouldSupportRef(Modal.Window, (props) => <Modal {...props} visible />);
 
   test.concurrent('should support custom attributes', () => {
-    const { getByTestId } = render(<Modal visible data-testid="modal" name="modal" />);
+    const { getByTestId } = render(<Modal visible data-testid='modal' name='modal' />);
 
     expect(getByTestId('modal').attributes['name'].value).toBe('modal');
   });
@@ -32,7 +32,7 @@ describe('Modal', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Modal onClose={spy} visible>
-        <Modal.Overlay data-testid="outside" />
+        <Modal.Overlay data-testid='outside' />
       </Modal>,
     );
     fireEvent.mouseUp(getByTestId('outside'));
@@ -41,7 +41,7 @@ describe('Modal', () => {
 
   test.concurrent('should support onClose for Escape', () => {
     const spy = vi.fn();
-    const { getByTestId } = render(<Modal onClose={spy} data-testid="modal" visible />);
+    const { getByTestId } = render(<Modal onClose={spy} data-testid='modal' visible />);
     fireEvent.keyDown(getByTestId('modal'), { key: 'Escape' });
     expect(spy).toBeCalledWith('onEscape', expect.anything());
   });
@@ -49,7 +49,7 @@ describe('Modal', () => {
   test.concurrent('should support children', () => {
     const component = (
       <Modal visible>
-        <p data-testid="child">Test</p>
+        <p data-testid='child'>Test</p>
       </Modal>
     );
     const { getByTestId } = render(component);
@@ -109,7 +109,7 @@ describe('Modal', () => {
     const component = (
       <Modal closable={false} disablePortal visible>
         Test
-        <Modal.Close id="icon" />
+        <Modal.Close id='icon' />
       </Modal>
     );
 
@@ -185,7 +185,7 @@ describe('Modal', () => {
   test('a11y', async () => {
     const { container } = render(
       <Modal visible disablePortal>
-        <p data-testid="child">Test</p>
+        <p data-testid='child'>Test</p>
       </Modal>,
     );
 

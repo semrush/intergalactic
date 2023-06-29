@@ -7,14 +7,14 @@ export default () => {
   return (
     <DataTable data={data} sort={sort} onSortChange={setSort}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" sortable />
+        <DataTable.Column name='keyword' children='Keyword' sortable />
         <DataTable.Column vBorders>
           Organic Sessions
-          <DataTable.Column name="kd" children="KD" sortable />
-          <DataTable.Column name="cpc" children="CPC" sortable />
-          <DataTable.Column name="vol" children="Vol." />
+          <DataTable.Column name='kd' children='KD' sortable />
+          <DataTable.Column name='cpc' children='CPC' sortable />
+          <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Column>
-        <DataTable.Column name="other" children="Other" />
+        <DataTable.Column name='other' children='Other' />
       </DataTable.Head>
       <DataTable.Body />
     </DataTable>

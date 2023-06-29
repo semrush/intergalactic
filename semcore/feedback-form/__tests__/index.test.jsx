@@ -21,8 +21,8 @@ describe('FeedbackForm', () => {
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
-        <FeedbackForm.Item name="input">{({ input }) => <input {...input} />}</FeedbackForm.Item>
-        <FeedbackForm.Submit data-testid="submit">Send feedback</FeedbackForm.Submit>
+        <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
+        <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
     );
 
@@ -36,10 +36,10 @@ describe('FeedbackForm', () => {
 
     const { getByTestId } = render(
       <FeedbackForm onSubmit={onSubmit}>
-        <FeedbackForm.Item name="input" validate={required}>
+        <FeedbackForm.Item name='input' validate={required}>
           {({ input }) => <input {...input} />}
         </FeedbackForm.Item>
-        <FeedbackForm.Submit data-testid="submit">Send feedback</FeedbackForm.Submit>
+        <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
     );
 
@@ -50,7 +50,7 @@ describe('FeedbackForm', () => {
   test.concurrent('Should correct render form', async ({ task }) => {
     const component = (
       <FeedbackForm>
-        <FeedbackForm.Item name="input">{({ input }) => <input {...input} />}</FeedbackForm.Item>
+        <FeedbackForm.Item name='input'>{({ input }) => <input {...input} />}</FeedbackForm.Item>
         <FeedbackForm.Submit>Send feedback</FeedbackForm.Submit>
         <FeedbackForm.Cancel>Cancel</FeedbackForm.Cancel>
       </FeedbackForm>
@@ -63,7 +63,7 @@ describe('FeedbackForm', () => {
     const component = (
       <FeedbackForm>
         <FeedbackForm.Notice>You can also send us an email.</FeedbackForm.Notice>
-        <FeedbackForm.Notice theme="danger">Your message hasn’t been sent.</FeedbackForm.Notice>
+        <FeedbackForm.Notice theme='danger'>Your message hasn’t been sent.</FeedbackForm.Notice>
       </FeedbackForm>
     );
 
@@ -92,7 +92,7 @@ describe('FeedbackForm', () => {
 
   test.concurrent('Should correct work props for spinner theme', async ({ task }) => {
     const component = (
-      <FeedbackForm loading background="#878dfd85" theme="invert">
+      <FeedbackForm loading background='#878dfd85' theme='invert'>
         LOADING
         <br />
         LOADING
@@ -107,11 +107,11 @@ describe('FeedbackForm', () => {
   test('a11y', async () => {
     const { container } = render(
       <FeedbackForm>
-        <label htmlFor="suggestions">Tell us your suggestion or report an issue</label>
-        <FeedbackForm.Item name="input">
-          {({ input }) => <input id="suggestions" {...input} />}
+        <label htmlFor='suggestions'>Tell us your suggestion or report an issue</label>
+        <FeedbackForm.Item name='input'>
+          {({ input }) => <input id='suggestions' {...input} />}
         </FeedbackForm.Item>
-        <FeedbackForm.Submit data-testid="submit">Send feedback</FeedbackForm.Submit>
+        <FeedbackForm.Submit data-testid='submit'>Send feedback</FeedbackForm.Submit>
       </FeedbackForm>,
     );
 
@@ -125,7 +125,7 @@ describe('FeedbackForm.Item', () => {
   beforeEach(cleanup);
 
   const Item = React.forwardRef((props, ref) => (
-    <FeedbackForm.Item interaction="click" {...props}>
+    <FeedbackForm.Item interaction='click' {...props}>
       {(props) => <input ref={ref} {...propsForElement(props)} />}
     </FeedbackForm.Item>
   ));

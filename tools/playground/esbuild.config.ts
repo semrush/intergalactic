@@ -6,8 +6,6 @@ import picocolros from 'picocolors';
 import { fileURLToPath } from 'url';
 import { resolve as resolvePath } from 'path';
 
-/* eslint-disable no-console */
-
 const port = 2077;
 
 esbuild
@@ -33,7 +31,8 @@ esbuild
     },
   )
   .then(() => {
-    console.log('\nStarted on ' + picocolros.yellow(`http://localhost:${port}` + '\n'));
+    // rome-ignore lint/nursery/noConsoleLog: <explanation>
+    console.log('\nStarted on ' + picocolros.yellow(`http://localhost:${port}\n`));
   })
   .catch((err) => {
     console.error(err);

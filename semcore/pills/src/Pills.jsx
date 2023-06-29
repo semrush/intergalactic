@@ -34,7 +34,9 @@ class RootPills extends Component {
     const { value, size, disabled, behavior } = this.asProps;
     this.itemValues[index] = props.value;
     return {
-      ref: (node) => (this.itemRefs[index] = node),
+      ref: (node) => {
+        this.itemRefs[index] = node;
+      },
       index: index,
       size,
       disabled,
@@ -48,7 +50,6 @@ class RootPills extends Component {
   handleKeyDown = (event) => {
     if (event.code !== 'ArrowLeft' && event.code !== 'ArrowRight') return;
     if (this.asProps.behavior === 'radio') {
-
       let selectedIndex = this.itemValues.findIndex((value) => value === this.asProps.value);
       if (selectedIndex === -1) return;
 

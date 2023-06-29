@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import getDisplayName from '../getDisplayName';
 import hoistNonReactStatics from 'hoist-non-react-statics';

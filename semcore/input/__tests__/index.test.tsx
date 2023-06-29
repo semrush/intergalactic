@@ -43,8 +43,8 @@ describe('Input', () => {
     );
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 150 }}>
-        <InputSize size="m" />
-        <InputSize size="l" />
+        <InputSize size='m' />
+        <InputSize size='l' />
       </snapshot.ProxyProps>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -53,13 +53,13 @@ describe('Input', () => {
   test.concurrent('Should support states', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
-        <Input state="normal">
+        <Input state='normal'>
           <Input.Value />
         </Input>
-        <Input state="valid">
+        <Input state='valid'>
           <Input.Value />
         </Input>
-        <Input state="invalid">
+        <Input state='invalid'>
           <Input.Value />
         </Input>
       </snapshot.ProxyProps>
@@ -70,8 +70,8 @@ describe('Input', () => {
   test.concurrent('Should support focus states', async ({ task }) => {
     await expect(
       await snapshot(
-        <Input state="normal" focused>
-          <Input.Value id="input" />
+        <Input state='normal' focused>
+          <Input.Value id='input' />
         </Input>,
         {
           actions: {
@@ -82,8 +82,8 @@ describe('Input', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(
-        <Input state="valid" focused>
-          <Input.Value id="input" />
+        <Input state='valid' focused>
+          <Input.Value id='input' />
         </Input>,
         {
           actions: {
@@ -94,8 +94,8 @@ describe('Input', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(
-        <Input state="invalid" focused>
-          <Input.Value id="input" />
+        <Input state='invalid' focused>
+          <Input.Value id='input' />
         </Input>,
         {
           actions: {
@@ -130,7 +130,7 @@ describe('Input', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5, width: 200 }}>
         <Input>
-          <Input.Value placeholder="Placeholder" />
+          <Input.Value placeholder='Placeholder' />
         </Input>
         <Input>
           <Input.Value readOnly />
@@ -146,7 +146,7 @@ describe('Input', () => {
   test.concurrent('Should support change value when rerender', () => {
     const { getByTestId, rerender } = render(
       <Input>
-        <Input.Value data-testid="value" value="" />
+        <Input.Value data-testid='value' value='' />
       </Input>,
     );
 
@@ -154,7 +154,7 @@ describe('Input', () => {
 
     rerender(
       <Input>
-        <Input.Value data-testid="value" value="test" />
+        <Input.Value data-testid='value' value='test' />
       </Input>,
     );
 
@@ -169,7 +169,7 @@ describe('Input', () => {
 
     const { getByTestId, rerender } = render(
       <Input>
-        <Input.Value data-testid="input" value={value} onChange={spy} />
+        <Input.Value data-testid='input' value={value} onChange={spy} />
       </Input>,
     );
 
@@ -182,7 +182,7 @@ describe('Input', () => {
 
     rerender(
       <Input>
-        <Input.Value data-testid="input" value={value} onChange={spy} />
+        <Input.Value data-testid='input' value={value} onChange={spy} />
       </Input>,
     );
 
@@ -224,7 +224,7 @@ describe('Input.Addon', () => {
   test.concurrent('Should support hover interactive', async ({ task }) => {
     const component = (
       <Input>
-        <Input.Addon interactive id="addon">
+        <Input.Addon interactive id='addon'>
           Addon
         </Input.Addon>
         <Input.Value />

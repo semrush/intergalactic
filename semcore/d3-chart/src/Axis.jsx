@@ -194,7 +194,7 @@ class AxisRoot extends Component {
   get ticks() {
     const { ticks, indexScale, scale } = this.asProps;
     const scl = scale[indexScale];
-    return ticks || (scl.ticks && scl.ticks()) || (scl.domain && scl.domain()) || [];
+    return ticks || scl.ticks?.() || scl.domain?.() || [];
   }
 
   getTitleProps() {
@@ -229,7 +229,7 @@ class AxisRoot extends Component {
     const pos =
       MAP_POSITION_AXIS[position] ?? MAP_POSITION_AXIS[MAP_INDEX_SCALE_SYMBOL[indexScale]];
 
-    return sstyled(styles)(<SAxis render="line" hide={hide} {...pos(scale, position)} />);
+    return sstyled(styles)(<SAxis render='line' hide={hide} {...pos(scale, position)} />);
   }
 }
 
@@ -247,7 +247,7 @@ function Ticks(props) {
   } = props;
 
   const pos = MAP_POSITION_TICK[position] ?? MAP_POSITION_TICK[MAP_INDEX_SCALE_SYMBOL[indexScale]];
-  const positionClass = MAP_POSITION_TICK[position] ? position : 'custom_' + indexScale;
+  const positionClass = MAP_POSITION_TICK[position] ? position : `custom_${indexScale}`;
 
   if (typeof children === 'function') {
     const labelGetter = (value) => {
@@ -268,8 +268,8 @@ function Ticks(props) {
       <STick
         aria-hidden
         key={i}
-        render="text"
-        childrenPosition="inside"
+        render='text'
+        childrenPosition='inside'
         __excludeProps={['data', 'scale', 'format', 'value']}
         value={value}
         index={i}
@@ -296,7 +296,7 @@ function Grid(props) {
 
   return ticks.map((value, i) => {
     return sstyled(styles)(
-      <SGrid key={i} render="line" {...MAP_POSITION_GRID[indexScale](scale, value)} />,
+      <SGrid key={i} render='line' {...MAP_POSITION_GRID[indexScale](scale, value)} />,
     );
   });
 }
@@ -320,8 +320,8 @@ function Title(props) {
   return sstyled(styles)(
     <STitle
       aria-hidden
-      render="text"
-      childrenPosition="inside"
+      render='text'
+      childrenPosition='inside'
       position={position}
       className={sTitleStyles.className}
       style={sTitleStyles.style}

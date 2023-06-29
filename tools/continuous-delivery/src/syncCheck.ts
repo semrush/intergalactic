@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Package } from './collectPackages';
 
 export const syncCheck = async (packages: Package[]) => {
@@ -8,12 +7,14 @@ export const syncCheck = async (packages: Package[]) => {
   );
 
   if (unsynchronizedPackages.length > 0) {
+    // rome-ignore lint/nursery/noConsoleLog: <explanation>
     console.log('\n\n');
 
     for (const { name, currentVersion, lastPublishedVersion } of unsynchronizedPackages) {
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(`[${name}]: ${currentVersion} (in repo) ${lastPublishedVersion} (in npm)`);
     }
-
+    // rome-ignore lint/nursery/noConsoleLog: <explanation>
     console.log('\n\n');
   }
 

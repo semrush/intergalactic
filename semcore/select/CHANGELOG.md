@@ -2,7 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.9.3] - 2023-06-13
+## [3.10.2] - 2023-06-28
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/base-trigger` [3.12.0 ~> 3.12.1], `@semcore/icon` [3.15.3 ~> 3.16.0]).
+
+## [3.10.1] - 2023-06-26
+
+### Fixed
+
+- Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
+
+## [3.10.0] - 2023-06-23
+
+### Changed
+
+- Improved focus handling with `FilterTrigger`.
+
+## [3.9.5] - 2023-06-16
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/dropdown-menu` [3.9.3 ~> 3.9.4]).
+
+## [3.9.4] - 2023-06-15
 
 ### Fixed
 

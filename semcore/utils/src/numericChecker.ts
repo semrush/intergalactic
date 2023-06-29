@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default function numericChecker(float = false) {
   const FLOAT = {
     COMPLETE: /^-?(\d+)\.*(\d+)$/,

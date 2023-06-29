@@ -19,7 +19,7 @@ const Demo = () => {
           <Table.Cell colSpan={data.length} pt={10}>
             <NoData
               type={'table'}
-              description="Try selecting a different date or changing your filter settings."
+              description='Try selecting a different date or changing your filter settings.'
             />
           </Table.Cell>
         </Table.Row>

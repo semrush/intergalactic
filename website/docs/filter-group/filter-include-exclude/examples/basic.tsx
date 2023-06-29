@@ -22,7 +22,7 @@ export default () => {
   return (
     <Dropdown visible={visible} onVisibleChange={setVisible}>
       <Dropdown.Trigger
-        placeholder="Exclude keywords"
+        placeholder='Exclude keywords'
         empty={!filters}
         onClear={clearAll}
         tag={FilterTrigger}
@@ -31,28 +31,28 @@ export default () => {
       </Dropdown.Trigger>
       <Dropdown.Popper
         w={325}
-        p="8px 8px 16px"
-        role="dialog"
-        aria-label="List of excluded keywords"
-        aria-modal="false"
+        p='8px 8px 16px'
+        role='dialog'
+        aria-label='List of excluded keywords'
+        aria-modal='false'
       >
-        <Text tag="label" for="textarea" size={200} color="gray20">
+        <Text tag='label' for='textarea' size={200} color='gray20'>
           Enter keywords separated by commas or one per line. For exact matches, enter your keyword
           with square brackets around it.
         </Text>
-        <RadioGroup tag={Flex} my={4} defaultValue="1">
+        <RadioGroup tag={Flex} my={4} defaultValue='1'>
           <Radio>
-            <Radio.Value value="1" />
+            <Radio.Value value='1' />
             <Radio.Text>All keywords</Radio.Text>
           </Radio>
           <Radio ml={6}>
-            <Radio.Value value="2" />
+            <Radio.Value value='2' />
             <Radio.Text>Any keywords</Radio.Text>
           </Radio>
         </RadioGroup>
-        <Textarea value={value} onChange={setValue} h={132} id="textarea" />
+        <Textarea value={value} onChange={setValue} h={132} id='textarea' />
         <Flex mt={5}>
-          <Button use="primary" theme="info" onClick={applyFilters}>
+          <Button use='primary' theme='info' onClick={applyFilters}>
             Apply
           </Button>
           <Button ml={2} onClick={clearAll}>

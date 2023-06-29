@@ -9,20 +9,18 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="submit-example" size="200">
+      <Text tag='label' htmlFor='submit-example' size='200'>
         Input with submit button
       </Text>
       <Box mt={2}>
         <Input w={240}>
           <Input.Value
-            placeholder="Focus right here"
+            placeholder='Focus right here'
             onBlur={() => setFocus(false)}
             onFocus={() => setFocus(true)}
-            id="submit-example"
+            id='submit-example'
           />
-          {focus && (
-            <Input.Addon interactive tag={CheckM} aria-label="Submit field value" />
-          )}
+          {focus && <Input.Addon interactive tag={CheckM} aria-label='Submit field value' />}
         </Input>
       </Box>
     </>

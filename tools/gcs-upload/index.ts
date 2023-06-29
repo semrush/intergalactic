@@ -7,11 +7,11 @@ import pLimit from 'p-limit';
 const filename = fileURLToPath(import.meta.url);
 
 const log = (message: string) => {
-  // eslint-disable-next-line no-console
+  // rome-ignore lint/nursery/noConsoleLog: <explanation>
   console.log(`[gcs-upload tool]: ${message}`);
 };
 
-const BUCKET_NAME = `ui-kit-flags`;
+const BUCKET_NAME = 'ui-kit-flags';
 
 export const setupStorage = async () => {
   const configFilePath = path.join(path.dirname(filename), 'config.json');
@@ -88,7 +88,7 @@ export const upload = async (
         const fileName = uploadSrcBaseDir
           ? path.relative(uploadSrcBaseDir, filePath)
           : filePath.split('/').pop();
-        const destination = [`ui-kit`, packageName, packageVersion, destinationSubDir, fileName]
+        const destination = ['ui-kit', packageName, packageVersion, destinationSubDir, fileName]
           .filter((part) => part !== undefined)
           .join('/');
 
@@ -104,7 +104,7 @@ export const upload = async (
                 cacheControl: 'public, max-age=31536000',
               },
             })
-            // eslint-disable-next-line no-console
+            // rome-ignore lint/nursery/noConsoleLog: <explanation>
             .then(() => console.log(`${fileName} uploaded to ${destination}`))
         );
       }),
@@ -131,7 +131,8 @@ export const remove = async (filePaths: string[]) => {
         .bucket(BUCKET_NAME)
         .file(filePath)
         .delete()
-        // eslint-disable-next-line no-console
+
+        // rome-ignore lint/nursery/noConsoleLog: <explanation>
         .then((file) => console.log(`gs://${BUCKET_NAME}/${file} removed`));
     }),
   );
@@ -140,7 +141,7 @@ export const remove = async (filePaths: string[]) => {
 export const ls = async () => {
   const storage = await setupStorage();
 
-  log(`Listing files`);
+  log('Listing files');
 
   const [files] = await storage.bucket(BUCKET_NAME).getFiles();
 
@@ -181,7 +182,8 @@ export const uploadFilesInFolders = async (folderPaths: string[]) => {
                   cacheControl: 'public, max-age=31536000',
                 },
               })
-              // eslint-disable-next-line no-console
+
+              // rome-ignore lint/nursery/noConsoleLog: <explanation>
               .then(() => console.log(`${folderName}/{${fileName} uploaded to ${destination}`))
           );
         }),

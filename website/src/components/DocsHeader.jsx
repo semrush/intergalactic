@@ -58,11 +58,11 @@ export default function (props) {
   return (
     <Box mb={8}>
       <h1 className={styles.title}>{title}</h1>
-      <Text tag={Flex} alignItems={'center'} color="#898D9A" mb={3} size={300}>
+      <Text tag={Flex} alignItems={'center'} color='#898D9A' mb={3} size={300}>
         {category}
         {version && changelogUrl && (
           <>
-            <Divider orientation="vertical" h={16} m={'4px 4px 0 8px'} />
+            <Divider orientation='vertical' h={16} m={'4px 4px 0 8px'} />
             <VersionLink
               to={`/${changelogUrl}/#${version}`}
               version={version}
@@ -76,23 +76,23 @@ export default function (props) {
             />
           </>
         )}
-        {beta && <Tag size="m" theme="primary" color="orange-500" children="beta" />}
+        {beta && <Tag size='m' theme='primary' color='orange-500' children='beta' />}
         {deprecated && (
           <Tooltip>
-            <Tooltip.Trigger tag={Flex} alignItems="center">
-              <Divider orientation="vertical" ml={1} mr={1} />
+            <Tooltip.Trigger tag={Flex} alignItems='center'>
+              <Divider orientation='vertical' ml={1} mr={1} />
               <WarningM className={styles.deprecatedIcon} />
             </Tooltip.Trigger>
             <Tooltip.Popper>Deprecated component</Tooltip.Popper>
           </Tooltip>
         )}
       </Text>
-      <Flex className={styles.overlay} mb={4} tag="nav" aria-label="External links">
+      <Flex className={styles.overlay} mb={4} tag='nav' aria-label='External links'>
         <Box mr={5}>
           <Link
             size={300}
-            target="_blank"
-            href="https://www.figma.com/@semrush"
+            target='_blank'
+            href='https://www.figma.com/@semrush'
             onClick={() =>
               logEvent('figma_btn:click', {
                 group,
@@ -110,8 +110,8 @@ export default function (props) {
             <Box mr={5}>
               <Link
                 size={300}
-                target="_blank"
-                href={`https://www.npmjs.com/package/@semcore/ui`}
+                target='_blank'
+                href={'https://www.npmjs.com/package/@semcore/ui'}
                 onClick={() =>
                   logEvent('npm_btn:click', {
                     group,
@@ -120,7 +120,7 @@ export default function (props) {
                 }
               >
                 <Link.Addon>
-                  <BracketsCodeM color="var(--intergalactic-icon-non-interactive)" />
+                  <BracketsCodeM color='var(--intergalactic-icon-non-interactive)' />
                 </Link.Addon>
                 <Link.Text className={styles.linkText}>NPM</Link.Text>
               </Link>
@@ -128,7 +128,7 @@ export default function (props) {
             <Box mr={5}>
               <Link
                 size={300}
-                target="_blank"
+                target='_blank'
                 href={`https://github.com/semrush/intergalactic/tree/master/semcore/${fileSource}`}
                 onClick={() =>
                   logEvent('github_btn:click', {
@@ -149,14 +149,14 @@ export default function (props) {
           </>
         )}
         <Box mr={5}>
-          <Divider h="20px" orientation="vertical" />
+          <Divider h='20px' orientation='vertical' />
         </Box>
         <Box mr={4}>
           <Tooltip styles={tooltipStyles}>
             <Tooltip.Trigger>
               <Link
                 size={300}
-                target="_blank"
+                target='_blank'
                 href={`https://github.com/semrush/intergalactic/edit/master/website/docs/${sourcePath}`}
                 onClick={() =>
                   logEvent('edit_page_btn:click', {
@@ -166,7 +166,7 @@ export default function (props) {
                 }
               >
                 <Link.Addon>
-                  <EditM color="var(--intergalactic-icon-non-interactive)" />
+                  <EditM color='var(--intergalactic-icon-non-interactive)' />
                 </Link.Addon>
                 <Link.Text className={styles.linkText}>Edit page</Link.Text>
               </Link>
@@ -180,7 +180,7 @@ export default function (props) {
           </Tooltip>
         </Box>
       </Flex>
-      <Divider orientation="horizontal" />
+      <Divider orientation='horizontal' />
     </Box>
   );
 }

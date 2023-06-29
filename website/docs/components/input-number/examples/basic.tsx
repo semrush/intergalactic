@@ -18,16 +18,16 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="p" size="200">
-        <Text tag="label" htmlFor="basic-example-from">
+      <Text tag='p' size='200'>
+        <Text tag='label' htmlFor='basic-example-from'>
           From
         </Text>
         /
-        <Text tag="label" htmlFor="basic-example-to">
+        <Text tag='label' htmlFor='basic-example-to'>
           To
         </Text>
       </Text>
-      <Flex w="20%" mt={2}>
+      <Flex w='20%' mt={2}>
         <NeighborLocation>
           <InputNumber>
             <InputNumber.Value
@@ -37,7 +37,7 @@ const Demo = () => {
               onChange={setFrom}
               onBlur={handleBlur}
               placeholder={min}
-              id="basic-example-from"
+              id='basic-example-from'
             />
             <InputNumber.Controls />
           </InputNumber>
@@ -49,7 +49,7 @@ const Demo = () => {
               onChange={setTo}
               onBlur={handleBlur}
               placeholder={max}
-              id="basic-example-to"
+              id='basic-example-to'
             />
             <InputNumber.Controls />
           </InputNumber>

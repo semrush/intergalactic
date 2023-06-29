@@ -10,14 +10,14 @@ describe('ColorPicker', () => {
   beforeEach(cleanup);
 
   test.concurrent('Should render trigger correctly', async ({ task }) => {
-    const component = <ColorPicker value="#232456" />;
+    const component = <ColorPicker value='#232456' />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should render non-extended popper correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
-        <ColorPicker value="#FF8786" disablePortal visible />
+        <ColorPicker value='#FF8786' disablePortal visible />
       </div>
     );
 
@@ -27,14 +27,14 @@ describe('ColorPicker', () => {
   test.concurrent('Should render extended popper correctly', async ({ task }) => {
     const component = (
       <div style={{ width: 250, height: 250 }}>
-        <ColorPicker value="#FF8786" disablePortal visible>
+        <ColorPicker value='#FF8786' disablePortal visible>
           <ColorPicker.Trigger />
           <ColorPicker.Popper>
             <ColorPicker.Colors />
             <PaletteManager>
               <PaletteManager.Colors>
-                <PaletteManager.Item value="#8649E6" />
-                <PaletteManager.Item value="#2BB1FF" />
+                <PaletteManager.Item value='#8649E6' />
+                <PaletteManager.Item value='#2BB1FF' />
               </PaletteManager.Colors>
               <PaletteManager.InputColor />
             </PaletteManager>
@@ -56,8 +56,8 @@ describe('ColorPicker', () => {
           <ColorPicker.Trigger />
           <ColorPicker.Popper>
             <ColorPicker.Colors>
-              <ColorPicker.Item value="#8649E1" data-testid="item1" />
-              <ColorPicker.Item value="#2BB3FF" />
+              <ColorPicker.Item value='#8649E1' data-testid='item1' />
+              <ColorPicker.Item value='#2BB3FF' />
             </ColorPicker.Colors>
           </ColorPicker.Popper>
         </ColorPicker>
@@ -78,7 +78,7 @@ describe('ColorPicker', () => {
             <ColorPicker.Colors />
             <PaletteManager>
               <PaletteManager.Colors />
-              <PaletteManager.InputColor data-testid="inputColor" />
+              <PaletteManager.InputColor data-testid='inputColor' />
             </PaletteManager>
           </ColorPicker.Popper>
         </ColorPicker>
@@ -106,7 +106,7 @@ describe('ColorPicker', () => {
             <ColorPicker.Colors />
             <PaletteManager onColorsChange={spy}>
               <PaletteManager.Colors />
-              <PaletteManager.InputColor data-testid="inputColor" />
+              <PaletteManager.InputColor data-testid='inputColor' />
             </PaletteManager>
           </ColorPicker.Popper>
         </ColorPicker>
@@ -137,7 +137,7 @@ describe('ColorPicker', () => {
             <ColorPicker.Colors />
             <PaletteManager onColorsChange={spy}>
               <PaletteManager.Colors />
-              <PaletteManager.InputColor data-testid="inputColor" />
+              <PaletteManager.InputColor data-testid='inputColor' />
             </PaletteManager>
           </ColorPicker.Popper>
         </ColorPicker>
@@ -166,7 +166,7 @@ describe('ColorPicker', () => {
             <ColorPicker.Colors />
             <PaletteManager onColorsChange={spy}>
               <PaletteManager.Colors />
-              <PaletteManager.InputColor data-testid="inputColor" />
+              <PaletteManager.InputColor data-testid='inputColor' />
             </PaletteManager>
           </ColorPicker.Popper>
         </ColorPicker>

@@ -25,17 +25,17 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ReferenceLine title="Left data" value={dataBar[0].category} />
-      <ReferenceLine title="Right data" position="right" value={dataBar[1].category} />
-      <ReferenceLine title="Top data" position="top" value={9} />
-      <ReferenceLine title="Bottom data" position="bottom" value={3} />
+      <ReferenceLine title='Left data' value={dataBar[0].category} />
+      <ReferenceLine title='Right data' position='right' value={dataBar[1].category} />
+      <ReferenceLine title='Top data' position='top' value={9} />
+      <ReferenceLine title='Bottom data' position='bottom' value={3} />
       <ReferenceLine
         value={dataBar[3].category}
-        strokeDasharray="3 3"
-        strokeWidth="0.5"
-        width="100"
+        strokeDasharray='3 3'
+        strokeWidth='0.5'
+        width='100'
       >
-        <ReferenceLine.Background width="100" />
+        <ReferenceLine.Background width='100' />
       </ReferenceLine>
     </Plot>
   );

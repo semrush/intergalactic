@@ -20,7 +20,7 @@ export default function SideBar() {
   return (
     <Modal visible={visible} onClose={topLevelCloseHandler}>
       <Modal.Overlay style={{ padding: 0 }}>
-        <Modal.Window className={styles.modalWindow} slideOrigin="right">
+        <Modal.Window className={styles.modalWindow} slideOrigin='right'>
           {loading && <Spin />}
           {loadingError && <Spin />}
 
@@ -28,7 +28,7 @@ export default function SideBar() {
             <>
               <TypescriptDeclarationView
                 namePrefix={
-                  <Button size="l" use="tertiary" theme="muted" mr={4} onClick={handleHistoryBack}>
+                  <Button size='l' use='tertiary' theme='muted' mr={4} onClick={handleHistoryBack}>
                     <Button.Addon>
                       <ChevronLeft />
                     </Button.Addon>

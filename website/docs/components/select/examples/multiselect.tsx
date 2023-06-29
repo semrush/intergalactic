@@ -12,6 +12,6 @@ const options = Array(20)
 
 export default () => (
   <Flex>
-    <Select options={options} multiselect m="auto" />
+    <Select options={options} multiselect m='auto' />
   </Flex>
 );

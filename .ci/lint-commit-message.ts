@@ -1,7 +1,5 @@
 #!/usr/bin/env tsm
 
-/* eslint-disable no-console */
-
 import fs from 'fs/promises';
 import pc from 'picocolors';
 
@@ -18,15 +16,11 @@ const specialScopes = ['global', 'chore', 'ci', 'website', 'docs', 'tests'];
 const allowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponents];
 
 const outputError = (message: string) => {
+  // rome-ignore lint/nursery/noConsoleLog: <explanation>
   console.log(
-    '\n' +
-      pc.red('Invalid commit message!') +
-      ' ' +
-      message +
-      '\n' +
-      'Got commit message: ' +
-      pc.gray(commitMessage) +
-      '\n',
+    `\n${pc.red('Invalid commit message!')} ${message}\nGot commit message: ${pc.gray(
+      commitMessage,
+    )}\n`,
   );
   process.exit(1);
 };
@@ -41,15 +35,14 @@ if (!commitTitle) {
 
 if (!commitTitle.startsWith('[') || !commitTitle.includes(']')) {
   outputError(
-    'Should be in format "[scope] change description"' +
-      pc.gray(', e.g. "[button] added blockchain support"]'),
+    `Should be in format "[scope] change description"${pc.gray(
+      ', e.g. "[button] added blockchain support"]',
+    )}`,
   );
 }
 
 if (!commitTitle.includes('] ')) {
-  outputError(
-    'Missing in "] " in message of format "[scope' + pc.red('] ') + 'change description" ',
-  );
+  outputError(`Missing in "] " in message of format "[scope${pc.red('] ')}change description" `);
 }
 
 const scope = commitTitle.substring(1, commitTitle.indexOf('] '));
@@ -70,11 +63,10 @@ const unknownScope = allProvidedScopes.find((scope) => !allowedScopes.includes(s
 
 if (unknownScope) {
   outputError(
-    `Got unknown scope "${unknownScope}" in message of format "[scope] change description". Only following scopes are allowed: ` +
-      specialScopes.map((scope) => pc.cyan(scope)).join(', ') +
-      ', ' +
-      semcoreComponents.map((scope) => pc.blue(scope)).join(', ') +
-      ', ' +
-      toolsComponents.map((scope) => pc.magenta(scope)).join(', '),
+    `Got unknown scope "${unknownScope}" in message of format "[scope] change description". Only following scopes are allowed: ${specialScopes
+      .map((scope) => pc.cyan(scope))
+      .join(', ')}, ${semcoreComponents
+      .map((scope) => pc.blue(scope))
+      .join(', ')}, ${toolsComponents.map((scope) => pc.magenta(scope)).join(', ')}`,
   );
 }

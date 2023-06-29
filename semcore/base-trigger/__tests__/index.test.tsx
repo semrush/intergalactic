@@ -24,8 +24,8 @@ describe('BaseTrigger', () => {
   test.concurrent('should support "state" prop', async ({ task }) => {
     const component = (
       <>
-        <BaseTrigger state="valid">Button</BaseTrigger>
-        <BaseTrigger state="invalid">Button</BaseTrigger>
+        <BaseTrigger state='valid'>Button</BaseTrigger>
+        <BaseTrigger state='invalid'>Button</BaseTrigger>
       </>
     );
 
@@ -35,8 +35,8 @@ describe('BaseTrigger', () => {
   test.concurrent('should support "size" prop', async ({ task }) => {
     const component = (
       <>
-        <BaseTrigger size="m">Button</BaseTrigger>
-        <BaseTrigger size="l">Button</BaseTrigger>
+        <BaseTrigger size='m'>Button</BaseTrigger>
+        <BaseTrigger size='l'>Button</BaseTrigger>
       </>
     );
 
@@ -64,7 +64,7 @@ describe('BaseTrigger', () => {
 
   test.concurrent('should support "placeholder" prop', async ({ task }) => {
     const component = (
-      <BaseTrigger empty placeholder="placeholder">
+      <BaseTrigger empty placeholder='placeholder'>
         Button
       </BaseTrigger>
     );
@@ -73,7 +73,7 @@ describe('BaseTrigger', () => {
   });
 
   test.concurrent('Should support hover', async ({ task }) => {
-    const component = <BaseTrigger id="base-trigger">Button</BaseTrigger>;
+    const component = <BaseTrigger id='base-trigger'>Button</BaseTrigger>;
 
     await expect(
       await snapshot(component, {
@@ -85,7 +85,7 @@ describe('BaseTrigger', () => {
   });
 
   test.concurrent('Should support active', async ({ task }) => {
-    const component = <BaseTrigger id="base-trigger">Button</BaseTrigger>;
+    const component = <BaseTrigger id='base-trigger'>Button</BaseTrigger>;
 
     await expect(
       await snapshot(component, {
@@ -130,8 +130,8 @@ describe('FilterTrigger', () => {
   test.concurrent('Should renders correctly with counter', async ({ task }) => {
     const component = (
       <FilterTrigger>
-        <FilterTrigger.Counter aria-labelledby="filter-problems">99</FilterTrigger.Counter>
-        <FilterTrigger.Text id="filter-problems">Problems</FilterTrigger.Text>
+        <FilterTrigger.Counter aria-labelledby='filter-problems'>99</FilterTrigger.Counter>
+        <FilterTrigger.Text id='filter-problems'>Problems</FilterTrigger.Text>
       </FilterTrigger>
     );
 
@@ -139,7 +139,7 @@ describe('FilterTrigger', () => {
   });
 
   test.concurrent('Should support active', async ({ task }) => {
-    const component = <FilterTrigger id="filter-trigger">Filter</FilterTrigger>;
+    const component = <FilterTrigger id='filter-trigger'>Filter</FilterTrigger>;
 
     await expect(
       await snapshot(component, {
@@ -152,9 +152,9 @@ describe('FilterTrigger', () => {
 
   test.concurrent('Should support active with counter', async ({ task }) => {
     const component = (
-      <FilterTrigger id="filter-trigger">
-        <FilterTrigger.Counter aria-labelledby="filter-problems2">99</FilterTrigger.Counter>
-        <FilterTrigger.Text id="filter-problems2">Problems</FilterTrigger.Text>
+      <FilterTrigger id='filter-trigger'>
+        <FilterTrigger.Counter aria-labelledby='filter-problems2'>99</FilterTrigger.Counter>
+        <FilterTrigger.Text id='filter-problems2'>Problems</FilterTrigger.Text>
       </FilterTrigger>
     );
 
@@ -180,7 +180,7 @@ describe('LinkTrigger', () => {
         <LinkTrigger>LinkTrigger</LinkTrigger>
         <LinkTrigger active>LinkTrigger</LinkTrigger>
         <LinkTrigger loading>LinkTrigger</LinkTrigger>
-        <LinkTrigger color="gray20">LinkTrigger</LinkTrigger>
+        <LinkTrigger color='gray20'>LinkTrigger</LinkTrigger>
       </snapshot.ProxyProps>
     );
 
@@ -201,7 +201,7 @@ describe('LinkTrigger', () => {
   });
 
   test.concurrent('Should support active', async ({ task }) => {
-    const component = <LinkTrigger id="link-trigger">Filter</LinkTrigger>;
+    const component = <LinkTrigger id='link-trigger'>Filter</LinkTrigger>;
 
     await expect(
       await snapshot(component, {

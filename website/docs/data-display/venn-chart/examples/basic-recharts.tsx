@@ -43,10 +43,10 @@ const data = [
 const Demo = () => (
   <ResponsiveContainer height={200}>
     <VennChart data={data}>
-      <VennArea name="Good" fill={getColor('Good')} />
-      <VennArea name="Fast" fill={getColor('Fast')} />
-      <VennArea name="Cheap" fill={getColor('Cheap')} />
-      <VennArea name="Unknown" fill={getColor('Unknown')} />
+      <VennArea name='Good' fill={getColor('Good')} />
+      <VennArea name='Fast' fill={getColor('Fast')} />
+      <VennArea name='Cheap' fill={getColor('Cheap')} />
+      <VennArea name='Unknown' fill={getColor('Unknown')} />
       <Tooltip />
     </VennChart>
   </ResponsiveContainer>

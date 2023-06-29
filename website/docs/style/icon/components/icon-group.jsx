@@ -49,16 +49,16 @@ class PanelChangeIcon extends PureComponent {
 
       const url = `semcore/icon/${old ? 'svg' : 'svg-new'}/${includeGroupName}/${nameSvg}.svg`;
       return (
-        <Tooltip title="Download!" key={index}>
+        <Tooltip title='Download!' key={index}>
           <div className={styles.previewChangeIcon}>
             <a
               className={styles.areaLink}
-              rel="noopener noreferrer"
+              rel='noopener noreferrer'
               download={url}
-              target="_blank"
+              target='_blank'
               href={`https://github.com/semrush/intergalactic/raw/master/${url}?inline=false`}
-              data-container="body"
-              data-original-title="Download"
+              data-container='body'
+              data-original-title='Download'
             />
             <Icon width={20} height={20} />
             <span className={styles.iconSizes}>
@@ -73,11 +73,11 @@ class PanelChangeIcon extends PureComponent {
     const haveSizeIcon = filterIcons.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
-    const includeLib = old ? `/lib` : '';
+    const includeLib = old ? '/lib' : '';
     const importText = `import ${includeName} from '@semcore/ui/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
 
     return (
-      <Copy copiedToast="Copied!" toCopy={importText} key={index} trigger="click">
+      <Copy copiedToast='Copied!' toCopy={importText} key={index} trigger='click'>
         <div className={styles.previewChangeIcon}>
           <Icon width={20} height={20} />
           <span className={styles.iconSizes}>
@@ -117,8 +117,8 @@ class PanelChangeIcon extends PureComponent {
               style={{ marginTop: 13 }}
               onChange={(value) => this.setState({ action: value })}
             >
-              <Pills.Item value="copy">Copy import</Pills.Item>
-              <Pills.Item value="download">Download SVG</Pills.Item>
+              <Pills.Item value='copy'>Copy import</Pills.Item>
+              <Pills.Item value='download'>Download SVG</Pills.Item>
             </Pills>
           </Col>
           <Col>
@@ -144,6 +144,7 @@ export const ListIcons = ({ data, icons, json, old = false }) => (
       }
 
       return (
+        // rome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
         <div
           className={styles.previewIcon}
           tabIndex={0}

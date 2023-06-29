@@ -15,8 +15,8 @@ export default () => {
           <SidePanel.Title>Heading 6, 16px</SidePanel.Title>
         </SidePanel.Header>
         <SidePanel.Body>Content</SidePanel.Body>
-        <SidePanel.Footer justifyContent="center" pt={2}>
-          <Button use="primary">Primary</Button>
+        <SidePanel.Footer justifyContent='center' pt={2}>
+          <Button use='primary'>Primary</Button>
           <Button ml={2}>Cancel</Button>
         </SidePanel.Footer>
       </SidePanel>

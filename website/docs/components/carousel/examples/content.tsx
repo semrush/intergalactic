@@ -11,11 +11,11 @@ const Demo = () => {
     <>
       <Button onClick={() => setVisible(!visible)}>Open Carousel</Button>
       <Modal visible={visible} onClose={() => setVisible(false)} w={664}>
-        <Carousel autoFocus tabIndex={1}>
+        <Carousel autoFocus tabIndex={0}>
           <Carousel.Container>
             {[1, 2].map((_, ind) => (
               <Carousel.Item key={ind}>
-                <Text size={500} mb={4} bold tag="h4">
+                <Text size={500} mb={4} bold tag='h4'>
                   Heading
                 </Text>
                 <Text>
@@ -38,8 +38,8 @@ const Demo = () => {
               </Carousel.Item>
             ))}
           </Carousel.Container>
-          <Carousel.Prev position="absolute" h="100%" w={48} left="-48px" />
-          <Carousel.Next position="absolute" h="100%" w={48} right="-48px" />
+          <Carousel.Prev position='absolute' h='100%' w={48} left='-48px' />
+          <Carousel.Next position='absolute' h='100%' w={48} right='-48px' />
         </Carousel>
       </Modal>
     </>

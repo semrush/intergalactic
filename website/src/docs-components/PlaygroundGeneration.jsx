@@ -26,7 +26,7 @@ Playground.createWidget(
     return (
       <label className={styles.field}>
         <div className={styles.control}>
-          <Button w="100%" onClick={() => onChange(!value)} theme="hollow" type="muted" {...others}>
+          <Button w='100%' onClick={() => onChange(!value)} theme='hollow' type='muted' {...others}>
             {(value ? positiveLabel : negativeLabel) || label}
           </Button>
         </div>
@@ -80,7 +80,7 @@ Playground.createWidget(
               {options.map((o, i) => {
                 const option = typeof o === 'string' ? { value: o, name: o } : o;
                 return (
-                  <Select.Option key={i} value={option.value}>
+                  <Select.Option key={option.name} value={option.value}>
                     {option.name}
                   </Select.Option>
                 );
@@ -97,14 +97,14 @@ Playground.createWidget(
   'radio',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <label className={styles.field} htmlFor="">
+      <label className={styles.field} htmlFor=''>
         <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
         <div className={styles.control}>
-          <Pills value={value} onChange={(value) => onChange(value)} behavior="radio" {...others}>
+          <Pills value={value} onChange={(value) => onChange(value)} behavior='radio' {...others}>
             {options.map((o, i) => {
               const option = typeof o === 'string' ? { value: o, name: o } : o;
               return (
-                <Pills.Item key={i} value={option.value}>
+                <Pills.Item key={option.name} value={option.value}>
                   {option.name}
                 </Pills.Item>
               );
@@ -121,8 +121,8 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
 
   return (
     <RadioGroup
-      aria-hidden="true"
-      name="background-color"
+      aria-hidden='true'
+      name='background-color'
       value={color}
       onChange={(color) => {
         setColor(color);
@@ -130,12 +130,12 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
       }}
     >
       <Flex
-        alignItems="center"
+        alignItems='center'
         style={{ position: 'absolute', right: '16px', bottom: '16px' }}
         {...other}
       >
         <Radio mr={2}>
-          <Radio.Value style={{ display: 'none' }} value="white" checked={color === 'white'} />
+          <Radio.Value style={{ display: 'none' }} value='white' checked={color === 'white'} />
           <div
             className={styles.chooseBackgroundColor}
             style={{
@@ -145,7 +145,7 @@ const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
           />
         </Radio>
         <Radio>
-          <Radio.Value style={{ display: 'none' }} value="#1E2231" checked={color === '#1E2231'} />
+          <Radio.Value style={{ display: 'none' }} value='#1E2231' checked={color === '#1E2231'} />
           <div
             className={styles.chooseBackgroundColor}
             style={{
@@ -181,7 +181,7 @@ class PlaygroundView extends React.Component {
     const hasWidget = !!widgetControls.length;
 
     return (
-      <div className={styles.wrapperPlayground} aria-hidden="true">
+      <div className={styles.wrapperPlayground} aria-hidden='true'>
         <div
           className={styles.workArea}
           style={{ width: !hasWidget ? '100%' : '70%', backgroundColor }}
@@ -196,18 +196,23 @@ class PlaygroundView extends React.Component {
             </div>
           </ThemeProvider>
           <div className={styles.resultCode}>
-            <Code lang="jsx" block>
+            <Code lang='jsx' block>
               {source}
             </Code>
             <div className={styles.iconCopy}>
-              <Copy toCopy={source} title="Click to copy code">
+              <Copy toCopy={source} title='Click to copy code'>
                 <CopyS />
               </Copy>
             </div>
           </div>
         </div>
         {hasWidget ? (
-          <div className={styles.widgetsBar} ref={(node) => (this.container = node)}>
+          <div
+            className={styles.widgetsBar}
+            ref={(node) => {
+              this.container = node;
+            }}
+          >
             {widgetControls.map((control, i) => {
               return (
                 <div className={styles.widgetGroup} key={i}>

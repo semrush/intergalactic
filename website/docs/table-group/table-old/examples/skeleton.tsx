@@ -5,7 +5,7 @@ import Checkbox from '@semcore/ui/checkbox';
 import Tooltip from '@semcore/ui/tooltip';
 import { Text } from '@semcore/ui/typography';
 
-let data = [
+const data = [
   {
     keyword: 'ebay buy',
     kd: '77.8',
@@ -22,7 +22,7 @@ let data = [
 const fetchData = () => (
   <Table.Cell>
     <Skeleton visible height={17}>
-      <Skeleton.Text y="5" width="60%" />
+      <Skeleton.Text y='5' width='60%' />
     </Skeleton>
   </Table.Cell>
 );
@@ -31,15 +31,15 @@ const Demo = () => (
   <Table>
     <Table.Head>
       <Table.Row>
-        <Table.CellHead align="center" valign="middle">
-          <Checkbox size="l">
+        <Table.CellHead align='center' valign='middle'>
+          <Checkbox size='l'>
             <Checkbox.Value />
           </Checkbox>
         </Table.CellHead>
         <Table.CellHead>
-          <Tooltip title="Lorem ipsum">
+          <Tooltip title='Lorem ipsum'>
             <span>
-              Keyword <Text color="gray60">(1 – 100)</Text>
+              Keyword <Text color='gray60'>(1 – 100)</Text>
             </span>
           </Tooltip>
         </Table.CellHead>
@@ -47,7 +47,7 @@ const Demo = () => (
           .slice(1)
           .map((name) => (
             <Table.CellHead>
-              <Tooltip title="Lorem ipsum">
+              <Tooltip title='Lorem ipsum'>
                 <span>
                   {name.toUpperCase()} {['kd', 'traffic'].includes(name) && '%'}
                 </span>

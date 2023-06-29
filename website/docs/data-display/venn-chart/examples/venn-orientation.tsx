@@ -15,15 +15,15 @@ export default () => {
   const [order, setOrder] = useState(0);
 
   return (
-    <Flex alignItems="center" direction="column">
+    <Flex alignItems='center' direction='column'>
       <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
-          <Venn.Circle dataKey="F" />
-          <Venn.Circle dataKey="S" color={colors['blue-03']} />
-          <Venn.Intersection dataKey="F/S" />
+          <Venn.Circle dataKey='F' />
+          <Venn.Circle dataKey='S' color={colors['blue-03']} />
+          <Venn.Intersection dataKey='F/S' />
         </Venn>
       </Plot>
-      <Flex direction="row">
+      <Flex direction='row'>
         <Button onClick={() => setOrientation(Number(!orientation))} mr={2}>
           Change orientation
         </Button>

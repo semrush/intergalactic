@@ -27,7 +27,7 @@ function YoutubeRed({
   }));
 }
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "YoutubeRed" icon is deprecated. Use the "YoutubeInvert"', 'Icon');
 
 YoutubeRed.displayName = 'YoutubeRed';

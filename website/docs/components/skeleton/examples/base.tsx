@@ -41,7 +41,7 @@ class Demo extends React.PureComponent {
         )}
         <Skeleton hidden={!loading} height={this.height}>
           <Skeleton.Text amount={2} />
-          <Skeleton.Text y="40" width="60%" />
+          <Skeleton.Text y='40' width='60%' />
         </Skeleton>
       </div>
     );

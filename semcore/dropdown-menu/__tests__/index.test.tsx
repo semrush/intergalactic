@@ -12,8 +12,8 @@ describe('DropdownMenu', () => {
   test.concurrent('Should correct enter space in input', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <DropdownMenu onVisibleChange={spy} interaction="focus">
-        <DropdownMenu.Trigger tag="input" data-testid="input" />
+      <DropdownMenu onVisibleChange={spy} interaction='focus'>
+        <DropdownMenu.Trigger tag='input' data-testid='input' />
       </DropdownMenu>,
     );
 
@@ -27,8 +27,8 @@ describe('DropdownMenu', () => {
   test.concurrent('Should correct press Enter in textarea', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <DropdownMenu onVisibleChange={spy} interaction="focus">
-        <DropdownMenu.Trigger tag="textarea" data-testid="textarea" />
+      <DropdownMenu onVisibleChange={spy} interaction='focus'>
+        <DropdownMenu.Trigger tag='textarea' data-testid='textarea' />
       </DropdownMenu>,
     );
 
@@ -55,7 +55,7 @@ describe('DropdownMenu', () => {
   test.concurrent('Supports sizes', async ({ task }) => {
     const component = (
       <React.Fragment>
-        <DropdownMenu size="m">
+        <DropdownMenu size='m'>
           <DropdownMenu.List>
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
@@ -65,7 +65,7 @@ describe('DropdownMenu', () => {
           </DropdownMenu.List>
         </DropdownMenu>
         <hr />
-        <DropdownMenu size="l">
+        <DropdownMenu size='l'>
           <DropdownMenu.List>
             <DropdownMenu.Item>Item 1</DropdownMenu.Item>
             <DropdownMenu.Item>Item 2</DropdownMenu.Item>
@@ -119,7 +119,7 @@ describe('DropdownMenu', () => {
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item id="dd">Item 2</DropdownMenu.Item>
+          <DropdownMenu.Item id='dd'>Item 2</DropdownMenu.Item>
           <DropdownMenu.Item>Item 2</DropdownMenu.Item>
         </DropdownMenu.List>
       </DropdownMenu>
@@ -139,7 +139,7 @@ describe('DropdownMenu', () => {
       <DropdownMenu>
         <DropdownMenu.List>
           <DropdownMenu.Item>Item 1</DropdownMenu.Item>
-          <DropdownMenu.Item id="dd" selected>
+          <DropdownMenu.Item id='dd' selected>
             Item 2
           </DropdownMenu.Item>
           <DropdownMenu.Item>Item 2</DropdownMenu.Item>
@@ -181,7 +181,7 @@ describe('DropdownMenu', () => {
     vi.useFakeTimers();
     const { container } = render(
       <DropdownMenu visible disablePortal>
-        <DropdownMenu.Trigger aria-label="dropdown menu trigger">trigger</DropdownMenu.Trigger>
+        <DropdownMenu.Trigger aria-label='dropdown menu trigger'>trigger</DropdownMenu.Trigger>
         <DropdownMenu.Menu>
           <DropdownMenu.Item>item 1</DropdownMenu.Item>
         </DropdownMenu.Menu>

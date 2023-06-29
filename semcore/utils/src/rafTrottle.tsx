@@ -1,4 +1,3 @@
-/* eslint-disable */
 function rafTrottle(callback) {
   let ticking = null;
 

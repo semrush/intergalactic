@@ -26,7 +26,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <HoverRect x="category" />
+      <HoverRect x='category' />
     </Plot>
   );
 };

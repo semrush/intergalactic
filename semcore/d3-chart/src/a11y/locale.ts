@@ -19,7 +19,6 @@ export const normalizeLocale = (
   if (!translations[locale]) {
     const availableLocales = Object.keys(translations).join(', ');
     if (process.env.NODE_ENV !== 'production') {
-      // eslint-disable-next-line no-console
       console.error(
         `[Intergalactic @semcore/d3-charts a11y module]: No locale "${providedLocale}" available. Available locales: ${availableLocales}`,
       );

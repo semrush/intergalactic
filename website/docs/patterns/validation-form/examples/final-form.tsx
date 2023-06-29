@@ -8,7 +8,7 @@ import { Field, Form } from 'react-final-form';
 import createFocusDecorator from 'final-form-focus';
 
 const required = (value) => (value ? undefined : 'Required');
-const email = (value) => (value && value.includes('@') ? undefined : 'Enter email');
+const email = (value) => (value?.includes('@') ? undefined : 'Enter email');
 
 class Demo extends React.Component {
   constructor(props) {
@@ -23,31 +23,31 @@ class Demo extends React.Component {
           {({ handleSubmit, invalid }) => (
             <form onSubmit={handleSubmit}>
               <Flex mb={6}>
-                <Text w={100} textAlign="right" size={300} mr={3} mt={2} flex="1 0 auto">
+                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='1 0 auto'>
                   Name
                 </Text>
-                <Flex justifyContent="space-between">
-                  <Field name="first" validate={required}>
+                <Flex justifyContent='space-between'>
+                  <Field name='first' validate={required}>
                     {({ input, meta }) => {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
                         <Tooltip animationsDisabled>
                           <Tooltip.Popper
-                            theme="warning"
-                            placement="top"
-                            id="form-first-name-error"
+                            theme='warning'
+                            placement='top'
+                            id='form-first-name-error'
                             visible={showError}
                           >
                             {meta.error}
                           </Tooltip.Popper>
                           <Input
                             tag={Tooltip.Trigger}
-                            size="l"
+                            size='l'
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
                             <Input.Value
-                              placeholder="First name"
+                              placeholder='First name'
                               {...input}
                               aria-invalid={meta.touched && meta.invalid}
                               aria-errormessage={showError ? 'form-first-name-error' : undefined}
@@ -57,16 +57,16 @@ class Demo extends React.Component {
                       );
                     }}
                   </Field>
-                  <Field name="last" validate={required}>
+                  <Field name='last' validate={required}>
                     {({ input, meta }) => {
                       const showError = Boolean(meta.touched && meta.active && meta.error);
 
                       return (
                         <Tooltip animationsDisabled>
                           <Tooltip.Popper
-                            theme="warning"
-                            placement="top"
-                            id="form-last-name-error"
+                            theme='warning'
+                            placement='top'
+                            id='form-last-name-error'
                             visible={showError}
                           >
                             {meta.error}
@@ -74,11 +74,11 @@ class Demo extends React.Component {
                           <Input
                             tag={Tooltip.Trigger}
                             ml={3}
-                            size="l"
+                            size='l'
                             state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                           >
                             <Input.Value
-                              placeholder="Last name"
+                              placeholder='Last name'
                               {...input}
                               aria-invalid={meta.touched && meta.invalid}
                               aria-errormessage={showError ? 'form-last-name-error' : undefined}
@@ -91,30 +91,30 @@ class Demo extends React.Component {
                 </Flex>
               </Flex>
               <Flex mb={6}>
-                <Text w={100} textAlign="right" size={300} mr={3} mt={2} flex="0 0 auto">
+                <Text w={100} textAlign='right' size={300} mr={3} mt={2} flex='0 0 auto'>
                   Your email
                 </Text>
-                <Field name="email" validate={email}>
+                <Field name='email' validate={email}>
                   {({ input, meta }) => {
                     const showError = Boolean(meta.touched && meta.active && meta.error);
 
                     return (
                       <Tooltip animationsDisabled>
                         <Tooltip.Popper
-                          id="form-email-error"
-                          theme="warning"
-                          placement="right"
+                          id='form-email-error'
+                          theme='warning'
+                          placement='right'
                           visible={showError}
                         >
                           {meta.error}
                         </Tooltip.Popper>
                         <Input
                           tag={Tooltip.Trigger}
-                          size="l"
+                          size='l'
                           state={meta.touched && meta.invalid ? 'invalid' : 'normal'}
                         >
                           <Input.Value
-                            placeholder="Email"
+                            placeholder='Email'
                             {...input}
                             aria-invalid={meta.touched && meta.invalid}
                             aria-errormessage={showError ? 'form-email-error' : undefined}
@@ -125,7 +125,7 @@ class Demo extends React.Component {
                   }}
                 </Field>
               </Flex>
-              <Button ml="112px" size="l" use="primary" theme="success" type="submit">
+              <Button ml='112px' size='l' use='primary' theme='success' type='submit'>
                 <Button.Text>Submit</Button.Text>
               </Button>
             </form>

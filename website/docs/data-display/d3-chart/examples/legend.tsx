@@ -84,7 +84,7 @@ export default () => {
             item.checked && (
               <Line
                 key={item.name}
-                x="x"
+                x='x'
                 y={item.name}
                 color={MAP_THEME[item.name]}
                 opacity={item.opacity ? 0.3 : 1}

@@ -10,6 +10,7 @@ const Highlight = ({ highlight, children }) => {
     const re = new RegExp(highlight.toLowerCase(), 'g');
     html = html.replace(re, `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`);
   }
+  // rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
@@ -49,17 +50,17 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" size="200" htmlFor="website-autosuggest">
+      <Text tag='label' size='200' htmlFor='website-autosuggest'>
         Your website
       </Text>
       <Box mt={2}>
-        <Select id="website-autosuggest" interaction="focus" onChange={setQuery} value={query}>
+        <Select id='website-autosuggest' interaction='focus' onChange={setQuery} value={query}>
           <Select.Trigger tag={Input}>
             {() => (
               <Input.Value
                 value={query}
-                role="combobox"
-                placeholder="Type domain or URL"
+                role='combobox'
+                placeholder='Type domain or URL'
                 onChange={setQuery}
               />
             )}

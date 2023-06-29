@@ -15,12 +15,12 @@ class TimePickerFormat extends Component {
     return sstyled(styles)(
       <SPickerFormat
         render={Box}
-        type="button"
-        tag="button"
-        role="switch"
+        type='button'
+        tag='button'
+        role='switch'
         aria-label={label}
-        aria-live="polite"
-        aria-atomic="true"
+        aria-live='polite'
+        aria-atomic='true'
       >
         {Children.origin ? <Children /> : <SPickerFormatText>{meridiem}</SPickerFormatText>}
       </SPickerFormat>,

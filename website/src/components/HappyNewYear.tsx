@@ -28,7 +28,7 @@ export const HappyNewYear: React.FC = () => {
       {Array(lightsCount)
         .fill(0)
         .map((_, index) => (
-          <li key={index} />
+          <li key={`${index}`} />
         ))}
     </ul>
   );

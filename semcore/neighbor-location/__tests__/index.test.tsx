@@ -21,9 +21,9 @@ describe('neighbor-location', () => {
   test.concurrent('should must work', () => {
     const { getByTestId } = render(
       <NeighborLocation>
-        <NeighborLocationItem data-testid="1" />
-        <NeighborLocationItem data-testid="2" />
-        <NeighborLocationItem data-testid="3" />
+        <NeighborLocationItem data-testid='1' />
+        <NeighborLocationItem data-testid='2' />
+        <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
     expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
@@ -35,13 +35,13 @@ describe('neighbor-location', () => {
     const { getByTestId } = render(
       <NeighborLocation>
         <NeighborLocation.Detect>
-          <CustomComponent data-testid="1" />
+          <CustomComponent data-testid='1' />
         </NeighborLocation.Detect>
         <NeighborLocation.Detect>
-          <CustomComponent data-testid="2" />
+          <CustomComponent data-testid='2' />
         </NeighborLocation.Detect>
         <NeighborLocation.Detect>
-          <CustomComponent data-testid="3" />
+          <CustomComponent data-testid='3' />
         </NeighborLocation.Detect>
       </NeighborLocation>,
     );
@@ -55,10 +55,10 @@ describe('neighbor-location', () => {
     const { getByTestId } = render(
       <NeighborLocation controlsLength={3}>
         <div />
-        <NeighborLocationItem data-testid="1" />
-        <NeighborLocationItem data-testid="2" />
+        <NeighborLocationItem data-testid='1' />
+        <NeighborLocationItem data-testid='2' />
         <div />
-        <NeighborLocationItem data-testid="3" />
+        <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
     expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
@@ -67,7 +67,7 @@ describe('neighbor-location', () => {
   });
 
   test.concurrent('should must work without NeighborLocation', () => {
-    const { getByTestId } = render(<NeighborLocationItem data-testid="test" />);
+    const { getByTestId } = render(<NeighborLocationItem data-testid='test' />);
     expect(getByTestId('test').attributes['data-neighborlocation']).toBe(undefined);
   });
 
@@ -78,7 +78,7 @@ describe('neighbor-location', () => {
         {true}
         {false}
         {''}
-        <NeighborLocationItem data-testid="1" />
+        <NeighborLocationItem data-testid='1' />
         <NeighborLocationItem />
       </NeighborLocation>,
     );

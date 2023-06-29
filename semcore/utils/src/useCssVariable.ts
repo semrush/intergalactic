@@ -6,7 +6,7 @@ import { useContextTokens } from './ThemeProvider';
 export const useCssVariable = (name: string, fallbackValue: string, ref?: React.RefObject<any>) => {
   const contextTheme = useContextTokens();
   const getValue = React.useCallback(() => {
-    if (contextTheme && contextTheme[name]) return contextTheme[name];
+    if (contextTheme?.[name]) return contextTheme[name];
     if (!canUseDOM()) return fallbackValue;
 
     const element = ref?.current ?? document.documentElement;

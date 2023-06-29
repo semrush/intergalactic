@@ -42,7 +42,7 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
             min={minRange}
             max={maxRange}
             aria-labelledby={ariaLabelledby}
-            placeholder="From"
+            placeholder='From'
             value={from}
             onChange={handleChange('from')}
             onBlur={handleBlur}
@@ -54,7 +54,7 @@ const InputRange = ({ value: valueState, changeValue, ariaLabelledby, ...other }
             min={minRange}
             max={maxRange}
             aria-labelledby={ariaLabelledby}
-            placeholder="To"
+            placeholder='To'
             value={to}
             onChange={handleChange('to')}
             onBlur={handleBlur}
@@ -108,7 +108,7 @@ export default () => {
   return (
     <Select visible={visible} onVisibleChange={setVisible} onChange={handleSelect}>
       <Select.Trigger
-        placeholder="KD %"
+        placeholder='KD %'
         active={visible}
         empty={!filters || displayValue === null}
         onClear={clearAll}
@@ -117,10 +117,10 @@ export default () => {
         {`KD ${displayValue} %`}
       </Select.Trigger>
       <Select.Popper
-        w="224px"
-        role="dialog"
-        aria-label="Filters for page sorting"
-        aria-modal="false"
+        w='224px'
+        role='dialog'
+        aria-label='Filters for page sorting'
+        aria-modal='false'
       >
         <Select.List>
           {[
@@ -133,18 +133,18 @@ export default () => {
           ))}
         </Select.List>
         <Divider my={1} />
-        <Flex p="4px 8px 16px" direction="column">
-          <Text id="custom-range" size={200} bold>
+        <Flex p='4px 8px 16px' direction='column'>
+          <Text id='custom-range' size={200} bold>
             Custom range
           </Text>
           <InputRange
-            ariaLabelledby="custom-range"
+            ariaLabelledby='custom-range'
             value={value}
             changeValue={setValue}
             my={2}
             onKeyDown={handleKeyDown}
           />
-          <Button use="primary" theme="info" w="100%" onClick={applyFilters}>
+          <Button use='primary' theme='info' w='100%' onClick={applyFilters}>
             Apply
           </Button>
         </Flex>

@@ -7,7 +7,7 @@ const messagesCache = createIntlCache();
 const intlCache: { [locale: string]: ReturnType<typeof createIntl> } = {};
 export const getIntl = (
   locale: string,
-  translations: { [messageId: string]: string } = {},
+  translations: { [messageId: string]: string },
   availableLocales: { [localeId: string]: any },
 ) => {
   locale = normalizeLocale(locale, availableLocales) ?? 'en';
@@ -15,7 +15,7 @@ export const getIntl = (
     {
       locale: locale,
       defaultLocale: 'en',
-      messages: translations,
+      messages: translations || {},
     },
     messagesCache,
   );

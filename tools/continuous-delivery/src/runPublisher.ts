@@ -19,9 +19,9 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
 
   let commitMessage = '[chore] bumped';
   if (versionPatches.length === 1) {
-    commitMessage += ` version of `;
+    commitMessage += ' version of ';
   } else {
-    commitMessage += ` versions of `;
+    commitMessage += ' versions of ';
   }
   commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
   const pnpmOptions = process.argv.includes('--dry-run')
@@ -60,7 +60,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     }
   }
   if (semcoreUiPatch) {
-    execSync(`pnpm --filter @semcore/ui run build`, {
+    execSync('pnpm --filter @semcore/ui run build', {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
@@ -90,7 +90,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     try {
       await git.pull('origin', 'master', { '--rebase': 'true' });
     } catch (err) {
-      // eslint-disable-next-line no-console
+      // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(await git.status());
       throw err;
     }
@@ -98,7 +98,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
 
     if (semcoreUiPatch) {
       await fs.writeFile('./.gh-auth-token.txt', String(process.env.GITHUB_SECRET));
-      execSync(`gh auth login --with-token < ./.gh-auth-token.txt`, {
+      execSync('gh auth login --with-token < ./.gh-auth-token.txt', {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
       });

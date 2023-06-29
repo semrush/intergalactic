@@ -25,7 +25,7 @@ function Enhancement(childComponents, Context) {
   return {
     condition: function (Component) {
       return [Component, ...flatChildComponent(childComponents)].some((Component) =>
-        Boolean(Component.hoistProps && Component.hoistProps.length),
+        Boolean(Component.hoistProps?.length),
       );
     },
     init: function (props, WrapperComponent, isFunction) {
@@ -59,7 +59,7 @@ function Enhancement(childComponents, Context) {
       return assignProps(this[HOIST_SELF][0], props);
     },
     wrapperProps: function (props, WrapperComponent) {
-      if (WrapperComponent.hoistProps && WrapperComponent.hoistProps.length) {
+      if (WrapperComponent.hoistProps?.length) {
         const context = useContext(Context);
         const renameProps = WrapperComponent.hoistProps.reduce((acc, propName) => {
           const [name, rename] = propName.split(':');

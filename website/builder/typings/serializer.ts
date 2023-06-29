@@ -61,16 +61,17 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
       case ts.SyntaxKind.TypeParameter:
         return (node as ts.TypeParameterDeclaration).name.escapedText;
       case ts.SyntaxKind.InferType:
-        return [`infer `, traverse((node as ts.InferTypeNode).typeParameter)];
+        return ['infer ', traverse((node as ts.InferTypeNode).typeParameter)];
       case ts.SyntaxKind.TypeQuery:
-        return [`typeof `, traverse((node as ts.TypeQueryNode).exprName)];
+        return ['typeof ', traverse((node as ts.TypeQueryNode).exprName)];
       case ts.SyntaxKind.ArrayType:
         return [traverse((node as ts.ArrayTypeNode).elementType), '[]'];
       case ts.SyntaxKind.RestType:
         return ['...', traverse((node as ts.RestTypeNode).type)];
-      case ts.SyntaxKind.TypeLiteral:
+      case ts.SyntaxKind.TypeLiteral: {
         const members = (node as ts.TypeLiteralNode).members.map((member) => traverse(member));
         return ['{', members, '}'];
+      }
       case ts.SyntaxKind.TupleType:
         return ['[', (node as ts.TupleTypeNode).elements.map((element) => traverse(element)), ']'];
       case ts.SyntaxKind.PropertySignature: {
@@ -100,7 +101,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
 
         return result;
       }
-      case ts.SyntaxKind.ConditionalType:
+      case ts.SyntaxKind.ConditionalType: {
         const { checkType, extendsType, trueType, falseType } = node as ts.ConditionalTypeNode;
 
         return [
@@ -112,6 +113,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
           ' : ',
           traverse(falseType),
         ];
+      }
       case ts.SyntaxKind.MappedType: {
         const { typeParameter, type } = node as ts.MappedTypeNode;
         return [
@@ -125,8 +127,9 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
       case ts.SyntaxKind.IndexSignature: {
         const { type, parameters } = node as ts.IndexSignatureDeclaration;
         if (parameters.length !== 1) {
+          // rome-ignore lint/nursery/noConsoleLog: <explanation>
           console.log(node);
-          throw new Error(`Unable to handle IndexSignature with node.paraments.length !== 1`);
+          throw new Error('Unable to handle IndexSignature with node.paraments.length !== 1');
         }
         return ['[', traverse(parameters[0]), ']:', traverse(type)];
       }
@@ -142,9 +145,10 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
           return [parameterName];
         }
       }
-      case ts.SyntaxKind.IndexedAccessType:
+      case ts.SyntaxKind.IndexedAccessType: {
         const { objectType, indexType } = node as ts.IndexedAccessTypeNode;
         return [traverse(objectType), '[', traverse(indexType), ']'];
+      }
       case ts.SyntaxKind.UnionType: {
         const { types } = node as ts.UnionTypeNode;
         const result = [];
@@ -175,13 +179,15 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
         }
         throw new Error(`Got unknown type operator ${ts.SyntaxKind[operator]} (${operator})`);
       }
-      case ts.SyntaxKind.TemplateLiteralType:
+      case ts.SyntaxKind.TemplateLiteralType: {
         const { head, templateSpans } = node as ts.TemplateLiteralTypeNode;
         return ['`', head.text, templateSpans.map((span) => traverse(span)), '`'];
-      case ts.SyntaxKind.TemplateLiteralTypeSpan:
+      }
+      case ts.SyntaxKind.TemplateLiteralTypeSpan: {
         const { type, literal } = node as ts.TemplateLiteralTypeSpan;
         return ['${', traverse(type), '}', literal.text];
-      case ts.SyntaxKind.TypeReference:
+      }
+      case ts.SyntaxKind.TypeReference: {
         const { typeName, typeArguments } = node as Omit<ts.TypeReferenceNode, 'typeName'> & {
           typeName: ts.BinaryExpression & { escapedText: string };
         };
@@ -202,9 +208,9 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
         }
 
         break;
+      }
     }
 
-    // eslint-disable-next-line no-console
     console.error(node);
     throw new Error(`Unable to handle ${ts.SyntaxKind[node.kind]}`);
   };
@@ -233,8 +239,7 @@ export const serializeProperty = (propertyDeclaration: ts.PropertySignature, gen
   const description = jsDoc.map((jsDocBlock) => jsDocBlock.comment).join('\n');
   const params = Object.fromEntries(
     jsDoc
-      .map((jsDocBlock) => jsDocBlock.tags ?? [])
-      .flat()
+      .flatMap((jsDocBlock) => jsDocBlock.tags ?? [])
       .map((tag) => {
         const paramName = tag.tagName.escapedText;
         const paramValue = tag.typeExpression && serializeTsNode(tag.typeExpression, genericsMap);
@@ -243,7 +248,7 @@ export const serializeProperty = (propertyDeclaration: ts.PropertySignature, gen
           const useInstead = tag.comment.split('.')[0];
           let useInsteadPostfix = tag.comment.split('.').slice(1).join('.');
           if (useInsteadPostfix.length > 0) {
-            useInsteadPostfix = '.' + useInsteadPostfix;
+            useInsteadPostfix = `.${useInsteadPostfix}`;
           }
           dependencies.push(useInstead);
           return [

@@ -21,7 +21,7 @@ class Demo extends React.PureComponent {
     const { visible } = this.state;
     return (
       <React.Fragment>
-        <Button use="primary" onClick={this.openModal}>
+        <Button use='primary' onClick={this.openModal}>
           Open modal
         </Button>
         <Modal visible={visible} onClose={this.closeModal} w={500}>
@@ -30,8 +30,8 @@ class Demo extends React.PureComponent {
               .fill()
               .map(() => loremSting)}
 
-            <Flex justifyContent="center" mt={8}>
-              <Button use="primary" theme="success" size="l" onClick={this.closeModal}>
+            <Flex justifyContent='center' mt={8}>
+              <Button use='primary' theme='success' size='l' onClick={this.closeModal}>
                 Got it!
               </Button>
             </Flex>

@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default function isRetina() {
   if (!window) return false;
   if (window.matchMedia)

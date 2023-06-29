@@ -132,7 +132,7 @@ class StackBarRoot extends Component {
 
     this.offsetBars = [];
 
-    return <Element aria-hidden render="g" series={this.series} />;
+    return <Element aria-hidden render='g' series={this.series} />;
   }
 }
 

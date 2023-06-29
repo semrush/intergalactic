@@ -17,15 +17,15 @@ const makeOptions = (options) => options.map((value) => ({ value, children: valu
 
 const Filter = ({ closable, onClose, id, name, ...props }) => (
   <Flex {...props} gap={4}>
-    <Flex flexWrap gap={4} tag="fieldset" m={0} p={0} style={{ border: 'none' }}>
+    <Flex flexWrap gap={4} tag='fieldset' m={0} p={0} style={{ border: 'none' }}>
       <ScreenReaderOnly>
-        <Text tag="legend" size="200" mb={2}>
+        <Text tag='legend' size='200' mb={2}>
           {name}
         </Text>
       </ScreenReaderOnly>
-      <Flex direction="column" wMin={120} gap={2}>
+      <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag="label" htmlFor={`${id}-strategy`} size="200">
+          <Text tag='label' htmlFor={`${id}-strategy`} size='200'>
             Strategy
           </Text>
         </ScreenReaderOnly>
@@ -35,9 +35,9 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
           defaultValue={'Include'}
         />
       </Flex>
-      <Flex direction="column" wMin={120} gap={2}>
+      <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag="label" htmlFor={`${id}-entity`} size="200">
+          <Text tag='label' htmlFor={`${id}-entity`} size='200'>
             Entity
           </Text>
         </ScreenReaderOnly>
@@ -47,9 +47,9 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
           defaultValue={'Keyword'}
         />
       </Flex>
-      <Flex direction="column" wMin={120} gap={2}>
+      <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag="label" htmlFor={`${id}-filter`} size="200">
+          <Text tag='label' htmlFor={`${id}-filter`} size='200'>
             Filter
           </Text>
         </ScreenReaderOnly>
@@ -59,19 +59,19 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
           defaultValue={'Containing'}
         />
       </Flex>
-      <Flex direction="column" wMin={120} gap={2}>
+      <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag="label" htmlFor={`${id}-value`} size="200">
+          <Text tag='label' htmlFor={`${id}-value`} size='200'>
             Enter value
           </Text>
         </ScreenReaderOnly>
         <Input w={120}>
-          <Input.Value id={`${id}-label`} placeholder="Enter value" />
+          <Input.Value id={`${id}-label`} placeholder='Enter value' />
         </Input>
       </Flex>
     </Flex>
     {closable ? (
-      <TrashM my={2} color="stone" interactive aria-label={`Remove ${name}`} onClick={onClose} />
+      <TrashM my={2} color='stone' interactive aria-label={`Remove ${name}`} onClick={onClose} />
     ) : null}
   </Flex>
 );
@@ -95,14 +95,14 @@ export default () => {
   const handleCloseFilter = () => setFiltersCount(filtersCount - 1);
 
   return (
-    <Flex direction="column" gap={2}>
-      <Text tag="label" htmlFor="advanced-filter" size="200">
+    <Flex direction='column' gap={2}>
+      <Text tag='label' htmlFor='advanced-filter' size='200'>
         Advanced filter label
       </Text>
       <Dropdown visible={visible} onVisibleChange={setVisible}>
         <Dropdown.Trigger
-          placeholder="No filter set"
-          id="advanced-filter"
+          placeholder='No filter set'
+          id='advanced-filter'
           empty={!filtersCount}
           onClear={clearAll}
           tag={FilterTrigger}
@@ -110,18 +110,18 @@ export default () => {
         >
           <FilterTrigger.Text>Advanced filters</FilterTrigger.Text>
           {!!filtersCount && (
-            <FilterTrigger.Counter aria-label="Applied filters count">
+            <FilterTrigger.Counter aria-label='Applied filters count'>
               {filtersCount}
             </FilterTrigger.Counter>
           )}
         </Dropdown.Trigger>
-        <Dropdown.Popper aria-label="Advanced filter popup">
-          <Flex direction="column" gap={4} py={4}>
+        <Dropdown.Popper aria-label='Advanced filter popup'>
+          <Flex direction='column' gap={4} py={4}>
             {filtersCount > 0 && (
-              <Flex direction="column" gap={4} px={4} alignItems="flex-start">
+              <Flex direction='column' gap={4} px={4} alignItems='flex-start'>
                 {[...new Array(filtersCount)].map((_, index) => (
                   <Filter
-                    key={index}
+                    key={`${index}`}
                     name={`Condition #${index + 1}`}
                     id={`advanced-filter-condition-${index + 1}`}
                     closable
@@ -131,7 +131,7 @@ export default () => {
               </Flex>
             )}
             <div>
-              <Button use="tertiary" onClick={addFilter} ref={buttonRef} mx={4}>
+              <Button use='tertiary' onClick={addFilter} ref={buttonRef} mx={4}>
                 <Button.Addon>
                   <MathPlusM />
                 </Button.Addon>
@@ -139,11 +139,11 @@ export default () => {
               </Button>
             </div>
             <Divider />
-            <Flex px={4} justifyContent="space-between">
-              <Button use="primary" theme="info" onClick={applyFilters}>
+            <Flex px={4} justifyContent='space-between'>
+              <Button use='primary' theme='info' onClick={applyFilters}>
                 Apply
               </Button>
-              <Button use="tertiary" theme="muted" onClick={clearAll}>
+              <Button use='tertiary' theme='muted' onClick={clearAll}>
                 <Button.Addon>
                   <CloseM />
                 </Button.Addon>

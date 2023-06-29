@@ -9,12 +9,12 @@ import Input from '@semcore/ui/input';
 
 const Step1 = React.forwardRef(function (props, ref) {
   return (
-    <Flex ref={ref} direction="column">
+    <Flex ref={ref} direction='column'>
       <Input mb={4}>
-        <Input.Value placeholder="Your name" />
+        <Input.Value placeholder='Your name' />
       </Input>
       <Input>
-        <Input.Value placeholder="Your email" />
+        <Input.Value placeholder='Your email' />
       </Input>
     </Flex>
   );
@@ -30,11 +30,11 @@ export default function () {
 
   return (
     <>
-      <Button use="primary" onClick={handleOpen}>
+      <Button use='primary' onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1} onActive={setStep}>
             Step 1
           </Wizard.Stepper>
@@ -45,7 +45,7 @@ export default function () {
             Step 3
           </Wizard.Stepper>
         </Wizard.Sidebar>
-        <Wizard.Content tag={Flex} direction="column" justifyContent="space-between">
+        <Wizard.Content tag={Flex} direction='column' justifyContent='space-between'>
           <Wizard.Step tag={Step1} step={1} />
           <Wizard.Step step={2}>
             {(props, handlers) => {
@@ -56,13 +56,13 @@ export default function () {
             <Text size={400} fontWeight={500}>
               Final page
             </Text>
-            <Text tag="p" mt={2}>
+            <Text tag='p' mt={2}>
               Congratulations on passing all the steps
             </Text>
           </Wizard.Step>
-          <Flex justifyContent="space-between" w="100%">
+          <Flex justifyContent='space-between' w='100%'>
             {step > 1 && (
-              <Button use="tertiary" mt={5} onClick={() => setStep(step - 1)}>
+              <Button use='tertiary' mt={5} onClick={() => setStep(step - 1)}>
                 <Button.Addon>
                   <ArrowLeft />
                 </Button.Addon>
@@ -71,7 +71,7 @@ export default function () {
             )}
             {step !== steps.length && (
               <Button
-                use="tertiary"
+                use='tertiary'
                 mt={5}
                 onClick={() => {
                   setStep(step + 1);

@@ -8,7 +8,7 @@ const RowInner = (props, ref) => {
   const { interactive, theme = 'default', styles, ...other } = props;
 
   return sstyled(styles)(
-    <SRow ref={ref} tag="tr" theme={theme} interactive={interactive} {...other} />,
+    <SRow ref={ref} tag='tr' theme={theme} interactive={interactive} {...other} />,
   );
 };
 

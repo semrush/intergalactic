@@ -4,14 +4,14 @@ import InlineInput from '@semcore/ui/inline-input';
 const Example = () => {
   return (
     <div>
-      <InlineInput state="valid">
+      <InlineInput state='valid'>
         <InlineInput.Value />
         <InlineInput.ConfirmControl />
         <InlineInput.CancelControl />
       </InlineInput>
       <br />
       <br />
-      <InlineInput state="invalid">
+      <InlineInput state='invalid'>
         <InlineInput.Value />
         <InlineInput.ConfirmControl />
         <InlineInput.CancelControl />

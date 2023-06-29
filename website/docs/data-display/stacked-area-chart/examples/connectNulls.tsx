@@ -24,7 +24,7 @@ const intFormatter = (number) => {
   if (afterDot && afterDot.length > 2) {
     num = num.toFixed(2);
   }
-  return num + 'M';
+  return `${num}M`;
 };
 
 const tooltipFormatter = (value, name, props) => {
@@ -75,28 +75,28 @@ const activeDot = (props) => {
 
 export default () => (
   <Box my={6} pt={5} pb={6} px={6} style={{ border: '1px solid #c4c7cf', borderRadius: '6px' }}>
-    <Flex alignItems="center" mb={2}>
+    <Flex alignItems='center' mb={2}>
       <Text size={400} mr={1} medium>
         Traffic sources
       </Text>
       <Tooltip title={TooltipContent}>
-        <InfoXS color="gray-300" cursor="help" />
+        <InfoXS color='gray-300' cursor='help' />
       </Tooltip>
     </Flex>
-    <Flex justifyContent="space-between" mt={3} mb={6}>
-      <Flex alignItems="center">
-        <Desktop color="gray-300" />
+    <Flex justifyContent='space-between' mt={3} mb={6}>
+      <Flex alignItems='center'>
+        <Desktop color='gray-300' />
         <Text size={100} ml={1}>
           Desktop
         </Text>
       </Flex>
-      <Text size={100} color="gray-500">
+      <Text size={100} color='gray-500'>
         Last 6 month
       </Text>
     </Flex>
     <Flex>
-      <Flex alignItems="center" wMax="20px">
-        <Text size={200} color="gray-500" style={{ transform: 'rotate(-90deg)' }}>
+      <Flex alignItems='center' wMax='20px'>
+        <Text size={200} color='gray-500' style={{ transform: 'rotate(-90deg)' }}>
           Visits
         </Text>
       </Flex>
@@ -105,9 +105,9 @@ export default () => (
           <CartesianGrid />
           <YAxis tickFormatter={(c) => c.toString().replace(/000000$/, 'M')} />
           <XAxis
-            dataKey="date"
-            scale="time"
-            type="number"
+            dataKey='date'
+            scale='time'
+            type='number'
             domain={['auto', 'auto']}
             tickFormatter={(t) =>
               new Intl.DateTimeFormat('en-US', {
@@ -130,48 +130,48 @@ export default () => (
           <Area
             connectNulls
             activeDot={activeDot}
-            type="linear"
-            name="Paid"
+            type='linear'
+            name='Paid'
             fill={colors['orange-01']}
             stroke={colors['orange-01']}
-            dataKey="paid"
-            stackId="1"
+            dataKey='paid'
+            stackId='1'
           />
           <Area
             connectNulls
             activeDot={activeDot}
-            type="linear"
-            name="Social"
+            type='linear'
+            name='Social'
             fill={colors['pink-01']}
             stroke={colors['pink-01']}
-            dataKey="social"
-            stackId="1"
+            dataKey='social'
+            stackId='1'
           />
           <Area
             connectNulls
             activeDot={activeDot}
-            type="linear"
-            name="Search"
+            type='linear'
+            name='Search'
             fill={colors['yellow-01']}
             stroke={colors['yellow-01']}
-            dataKey="search"
-            stackId="1"
+            dataKey='search'
+            stackId='1'
           />
           <Area
             connectNulls
             activeDot={activeDot}
-            type="linear"
-            name="Referral"
+            type='linear'
+            name='Referral'
             fill={colors['green-01']}
             stroke={colors['green-01']}
-            dataKey="referral"
-            stackId="1"
+            dataKey='referral'
+            stackId='1'
           />
           <Area
-            type="linear"
-            name="Direct"
-            dataKey="direct"
-            stackId="1"
+            type='linear'
+            name='Direct'
+            dataKey='direct'
+            stackId='1'
             connectNulls
             activeDot={activeDot}
           />

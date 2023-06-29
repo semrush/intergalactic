@@ -19,7 +19,6 @@ if (typeof window !== 'undefined') {
   eventCalculate = new Event('calculate');
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const BoxWithoutPosition = React.forwardRef(({ position, ...props }, ref) => (
   <Box ref={ref} {...props} />
 ));
@@ -33,6 +32,7 @@ class ScrollAreaRoot extends Component {
   static defaultProps = () => ({
     container: React.createRef(),
     inner: React.createRef(),
+    tabIndex: 0,
   });
 
   $wrapper = null;
@@ -59,7 +59,9 @@ class ScrollAreaRoot extends Component {
     this.observer = new ResizeObserver(callAllEventHandlers(props.onResize, this.calculate));
   }
 
-  refWrapper = (node) => (this.$wrapper = findDOMNode(node));
+  refWrapper = (node) => {
+    this.$wrapper = findDOMNode(node);
+  };
 
   // for max height/width
   calculateSizeContainer() {
@@ -100,7 +102,7 @@ class ScrollAreaRoot extends Component {
   });
 
   updateBarsAria = trottle(() => {
-    setAreaValue(this.$container, this.horizontalBarRef.current, this.verticalBarRef.current)
+    setAreaValue(this.$container, this.horizontalBarRef.current, this.verticalBarRef.current);
   });
 
   handleScrollContainer = trottle(() => {
@@ -111,7 +113,7 @@ class ScrollAreaRoot extends Component {
 
   // FIX Chrome bug, when focus state on hide control
   handleScroll = (e) => {
-    if (e.target && e.target.isEqualNode(this.$wrapper)) {
+    if (e.target?.isEqualNode(this.$wrapper)) {
       e.target.scrollTop = 0;
       e.target.scrollLeft = 0;
     }
@@ -201,7 +203,12 @@ class ScrollAreaRoot extends Component {
     ]);
 
     return sstyled(styles)(
-      <SScrollArea render={Box} ref={this.refWrapper} onScroll={this.handleScroll}>
+      <SScrollArea
+        render={Box}
+        ref={this.refWrapper}
+        onScroll={this.handleScroll}
+        __excludeProps={['tabIndex']}
+      >
         {shadowVertical && <SShadowVertical position={shadowVertical} />}
         {shadowHorizontal && <SShadowHorizontal position={shadowHorizontal} />}
         {advanceMode ? (

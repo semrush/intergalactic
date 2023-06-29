@@ -29,7 +29,7 @@ class Demo extends React.PureComponent {
     return (
       <Dropdown>
         <Dropdown.Trigger tag={Button}>Help me</Dropdown.Trigger>
-        <Dropdown.Popper tag={SpinContainer} p={4} size="l" loading={loading} w={290}>
+        <Dropdown.Popper tag={SpinContainer} p={4} size='l' loading={loading} w={290}>
           <Text size={100}>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae
             distinctio doloremque, et id quae reiciendis repellat saepe sapiente sequi veritatis.

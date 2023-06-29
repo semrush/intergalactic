@@ -14,7 +14,7 @@ const options = Array(6)
 export default () => (
   <Flex>
     {/* ButtonTrigger is the default trigger */}
-    <Select tag={ButtonTrigger} options={options} placeholder="Select an option, sir 🧐" m="auto" />
-    <Select tag={LinkTrigger} options={options} placeholder="Select an option, sir 🧐" m="auto" />
+    <Select tag={ButtonTrigger} options={options} placeholder='Select an option, sir 🧐' m='auto' />
+    <Select tag={LinkTrigger} options={options} placeholder='Select an option, sir 🧐' m='auto' />
   </Flex>
 );

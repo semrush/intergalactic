@@ -10,6 +10,15 @@
   background-color: var(--intergalactic-bg-primary-neutral);
 }
 
+.gantt__row--months span {
+  text-align: center;
+  font-size: var(--intergalactic-fs-200);
+  align-self: center;
+  padding: var(--intergalactic-spacing-5x) 0;
+  color: var(--intergalactic-text-secondary);
+  z-index: 1;
+}
+
 .gantt__row--lines {
   position: absolute;
   height: 100%;
@@ -41,14 +50,6 @@
   white-space: nowrap;
 }
 
-.gantt__row--months span {
-  text-align: center;
-  font-size: var(--intergalactic-fs-200);
-  align-self: center;
-  padding: var(--intergalactic-spacing-5x) 0;
-  color: var(--intergalactic-text-secondary);
-  z-index: 1;
-}
 
 .gantt__row-bars {
   list-style: none;

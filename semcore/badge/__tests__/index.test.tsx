@@ -18,9 +18,9 @@ describe('Badge', () => {
   test.concurrent('Should support color', async ({ task }) => {
     const component = (
       <>
-        <Badge color="white">admin</Badge>
-        <Badge color="gray20">alpha</Badge>
-        <Badge color="green">new</Badge>
+        <Badge color='white'>admin</Badge>
+        <Badge color='gray20'>alpha</Badge>
+        <Badge color='green'>new</Badge>
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
@@ -29,17 +29,17 @@ describe('Badge', () => {
   test.concurrent('Should support bg', async ({ task }) => {
     const component = (
       <>
-        <Badge bg="cyan">admin</Badge>
-        <Badge bg="red">alpha</Badge>
-        <Badge bg="orange">beta</Badge>
-        <Badge bg="green">new</Badge>
+        <Badge bg='cyan'>admin</Badge>
+        <Badge bg='red'>alpha</Badge>
+        <Badge bg='orange'>beta</Badge>
+        <Badge bg='green'>new</Badge>
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test('a11y', async () => {
-    const { container } = render(<Badge bg="green">new</Badge>);
+    const { container } = render(<Badge bg='green'>new</Badge>);
 
     const results = await axe(container);
 

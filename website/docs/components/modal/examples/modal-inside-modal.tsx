@@ -15,22 +15,22 @@ const Demo = () => {
 
   return (
     <>
-      <Button use="primary" onClick={handleOpen}>
+      <Button use='primary' onClick={handleOpen}>
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>
-        <Text size={200} mb={3} tag="p">
+        <Text size={200} mb={3} tag='p'>
           Open one more window
         </Text>
-        <Button use="primary" onClick={handleSecondOpen}>
+        <Button use='primary' onClick={handleSecondOpen}>
           Open modal
         </Button>
       </Modal>
       <Modal visible={secondVisible} onClose={handleSecondClose}>
-        <Text size={200} mb={3} tag="p">
+        <Text size={200} mb={3} tag='p'>
           Your changes will be lost if you don't save them.
         </Text>
-        <Button use="primary" theme="success" onClick={handleSecondClose}>
+        <Button use='primary' theme='success' onClick={handleSecondClose}>
           Save changes
         </Button>
         <Button ml={2} onClick={handleSecondClose}>

@@ -33,9 +33,9 @@ const Router = !globalThis.__ssr
   ? BrowserRouter
   : ({ children, basename }) => {
       if (globalThis.__ssr_route === undefined) {
-        throw new Error(`On server side globalThis.__ssr_route should be defined`);
+        throw new Error('On server side globalThis.__ssr_route should be defined');
       }
-      const location = !globalThis.__ssr_route ? `/` : `/${globalThis.__ssr_route}/`;
+      const location = !globalThis.__ssr_route ? '/' : `/${globalThis.__ssr_route}/`;
 
       return (
         <StaticRouter basename={basename} location={location}>
@@ -59,41 +59,37 @@ export function App() {
   return (
     <>
       <Helmet>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <meta charSet='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
 
-        <link rel="icon" href={isWorking() ? icon : iconRotate} />
+        <link rel='icon' href={isWorking() ? icon : iconRotate} />
 
         <title>Loading...</title>
-        <meta name="description" content="Intergalactic – Design System" />
+        <meta name='description' content='Intergalactic – Design System' />
       </Helmet>
       <Router basename={process.env.PUBLIC_PATH.slice(0, -1)}>
         <ScrollToTop />
         <Tracking />
         <div className={styles.body}>
-          <a className={styles.skipToContent} href="#main-content">
+          <a className={styles.skipToContent} href='#main-content'>
             Skip to content
           </a>
           <Header theme={currentTheme} setTheme={setTheme} />
           <Switch>
-            <Route exact path="/">
+            <Route exact path='/'>
               <Home />
             </Route>
-            <Route exact strict path="/contacts/contact-info/">
+            <Route exact strict path='/contacts/contact-info/'>
               <ContactUs />
             </Route>
-            <Route exact strict path="/not-found/">
+            <Route exact strict path='/not-found/'>
               <NotFound />
             </Route>
-            <Route exact strict path="/:category/:page/:tab?/">
+            <Route exact strict path='/:category/:page/:tab?/'>
               <Page />
             </Route>
             <Route
-              render={({
-                history: {
-                  location: { pathname, search, hash },
-                },
-              }) => {
+              render={({ history: { location: { pathname, search, hash } } }) => {
                 return pathname.slice(-1) !== '/' ? (
                   <Redirect to={`${pathname}/${search}${hash}`} />
                 ) : (

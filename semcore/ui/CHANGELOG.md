@@ -1,3 +1,46 @@
+## [14.7.0] - 2023-06-23
+
+### @semcore/base-trigger
+
+- **Added** `FilterTrigger` focus returning after the clear effect.
+
+### @semcore/date-picker
+
+- **Fixed** React warning about passing `null` to the input element.
+
+### @semcore/select
+
+- **Fixed** Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
+- **Changed** Improved focus handling with `FilterTrigger`.
+
+### @semcore/utils
+
+- **Added** Exposed internal util for setting focus on top focusable child.
+
+## [14.6.0] - 2023-06-22
+
+### @semcore/input
+
+- **Changed** Input now catches focus after keyboard events happened inside of the input container if no other element on page has focus.
+
+### @semcore/popper
+
+- **Fixed** Keyboard focused poppers were not intractable with mouse.
+
+### @semcore/time-picker
+
+- **Added** Swedish (`sv`) locale support.
+
+## [14.5.0] - 2023-06-19
+
+### @semcore/inline-input
+
+- **Fixed** `onBlurBehavior` specified callback was unexpectedly being called when page had non-zero scroll.
+
+### @semcore/scroll-area
+
+- **Changed** Added `tabIndex` by default even if ScrollArea is used without explicit `ScrollArea.Container`.
+
 ## [14.4.0] - 2023-06-15
 
 ### @semcore/data-table
@@ -119,6 +162,7 @@
 
 ### @semcore/time-picker
 
+- **Added** Swedish (`sv`) locale support.
 - **Added** Swedish (`sv`) locale support.
 
 ### @semcore/widget-empty

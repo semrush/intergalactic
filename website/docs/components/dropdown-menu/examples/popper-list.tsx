@@ -25,7 +25,7 @@ export default function () {
           <Button.Text>Export</Button.Text>
         </Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Popper wMax="257px">
+      <DropdownMenu.Popper wMax='257px'>
         <SpinContainer loading={loading}>
           <DropdownMenu.List>
             <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
@@ -33,7 +33,7 @@ export default function () {
             <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
           </DropdownMenu.List>
           <Notice
-            theme="warning"
+            theme='warning'
             style={{
               padding: '12px 8px',
               borderWidth: 0,
@@ -42,12 +42,12 @@ export default function () {
             }}
           >
             <Notice.Content>
-              <Text tag="strong" mb={1} style={{ display: 'block' }}>
+              <Text tag='strong' mb={1} style={{ display: 'block' }}>
                 Export failed
               </Text>
-              <Text lineHeight="18px">
+              <Text lineHeight='18px'>
                 If the problem persists, please contact us at{' '}
-                <Link inline href="mailto:feedback@semrush.com">
+                <Link inline href='mailto:feedback@semrush.com'>
                   feedback@semrush.com
                 </Link>
               </Text>

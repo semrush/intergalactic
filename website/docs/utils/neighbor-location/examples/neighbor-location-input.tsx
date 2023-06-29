@@ -8,24 +8,24 @@ const Demo = () => {
   return (
     <>
       <Flex mb={4}>
-        <Input neighborLocation="right" w={200}>
-          <Input.Value placeholder="Placeholder" />
+        <Input neighborLocation='right' w={200}>
+          <Input.Value placeholder='Placeholder' />
         </Input>
-        <Button neighborLocation="left">Button</Button>
+        <Button neighborLocation='left'>Button</Button>
       </Flex>
       <Flex mb={4}>
-        <Input neighborLocation="right" w={200}>
-          <Input.Value placeholder="Placeholder" />
+        <Input neighborLocation='right' w={200}>
+          <Input.Value placeholder='Placeholder' />
         </Input>
-        <Button neighborLocation="left" use="primary">
+        <Button neighborLocation='left' use='primary'>
           Button
         </Button>
       </Flex>
       <Flex>
-        <Input neighborLocation="right" w={200}>
-          <Input.Value placeholder="Placeholder" />
+        <Input neighborLocation='right' w={200}>
+          <Input.Value placeholder='Placeholder' />
         </Input>
-        <Button neighborLocation="left" use="primary" theme="success">
+        <Button neighborLocation='left' use='primary' theme='success'>
           Button
         </Button>
       </Flex>

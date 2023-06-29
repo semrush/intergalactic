@@ -42,14 +42,14 @@ export default () => {
   };
   return (
     <Flex>
-      <svg ref={svg} xmlns="http://www.w3.org/2000/svg" width={width} height={height}>
-        <foreignObject width="100%" height="100%">
+      <svg ref={svg} xmlns='http://www.w3.org/2000/svg' width={width} height={height}>
+        <foreignObject width='100%' height='100%'>
           <DataTable data={data}>
             <DataTable.Head>
-              <DataTable.Column name="keyword" children="Keyword" />
-              <DataTable.Column name="kd" children="KD,%" />
-              <DataTable.Column name="cpc" children="CPC" />
-              <DataTable.Column name="vol" children="Vol." />
+              <DataTable.Column name='keyword' children='Keyword' />
+              <DataTable.Column name='kd' children='KD,%' />
+              <DataTable.Column name='cpc' children='CPC' />
+              <DataTable.Column name='vol' children='Vol.' />
             </DataTable.Head>
             <DataTable.Body onResize={renderImage} />
           </DataTable>
@@ -62,10 +62,10 @@ export default () => {
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Popper wMax="257px">
+        <DropdownMenu.Popper wMax='257px'>
           <DropdownMenu.List ref={download}>
             {extensions.map((name, ind) => (
-              <DropdownMenu.Item tag="a" {...linkElements[ind]} />
+              <DropdownMenu.Item tag='a' {...linkElements[ind]} />
             ))}
           </DropdownMenu.List>
         </DropdownMenu.Popper>
@@ -121,19 +121,19 @@ function getSVGString(svgNode) {
     const selectorTextArr = [];
 
     for (let c = 0; c < parentElement.classList.length; c++) {
-      if (!contains('.' + parentElement.classList[c], selectorTextArr))
-        selectorTextArr.push('.' + parentElement.classList[c]);
+      if (!contains(`.${parentElement.classList[c]}`, selectorTextArr))
+        selectorTextArr.push(`.${parentElement.classList[c]}`);
     }
 
     // Add Children element Ids and Classes to the list
     const nodes = parentElement.getElementsByTagName('*');
     for (let i = 0; i < nodes.length; i++) {
       const id = nodes[i].id;
-      if (!contains('#' + id, selectorTextArr)) selectorTextArr.push('#' + id);
+      if (!contains(`#${id}`, selectorTextArr)) selectorTextArr.push(`#${id}`);
 
       const classes = nodes[i].classList;
       for (let c = 0; c < classes.length; c++)
-        if (!contains('.' + classes[c], selectorTextArr)) selectorTextArr.push('.' + classes[c]);
+        if (!contains(`.${classes[c]}`, selectorTextArr)) selectorTextArr.push(`.${classes[c]}`);
     }
 
     // Extract CSS Rules
@@ -177,7 +177,7 @@ function getSVGString(svgNode) {
 function svgString2Image(svgString, width, height, format, callback) {
   format = format ? format : 'png';
 
-  const imgsrc = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgString)));
+  const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgString)))}`;
 
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');

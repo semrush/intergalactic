@@ -28,31 +28,31 @@ const BaseTokens = ({ tokens }) => {
 
   return (
     <div>
-      <Input className={styles.searchInput} size="l">
+      <Input className={styles.searchInput} size='l'>
         <Input.Addon tag={SearchIcon} />
-        <Input.Value placeholder="Find token" value={filter} onChange={setFilter} />
+        <Input.Value placeholder='Find token' value={filter} onChange={setFilter} />
       </Input>
       <DataTable data={filteredTokens}>
         <DataTable.Head>
-          <DataTable.Column name="name" children="Token name" ref={nameHeaderRef} />
-          <DataTable.Column name="value" children="Value" ref={valueHeaderRef} />
-          <DataTable.Column name="description" children="Description" ref={descriptionHeaderRef} />
+          <DataTable.Column name='name' children='Token name' ref={nameHeaderRef} />
+          <DataTable.Column name='value' children='Value' ref={valueHeaderRef} />
+          <DataTable.Column name='description' children='Description' ref={descriptionHeaderRef} />
         </DataTable.Head>
         <DataTable.Body virtualScroll={{ rowHeight: 45, tollerance: 10 }} h={800}>
-          <DataTable.Cell name="name">
+          <DataTable.Cell name='name'>
             {(props, row) => {
               return {
                 children: (
                   <Copy
-                    copiedToast="Copied"
+                    copiedToast='Copied'
                     toCopy={row[props.name]}
                     title={`Click to copy "${row[props.name]}"`}
-                    trigger="click"
+                    trigger='click'
                     className={styles.tokenNameWrapper}
                   >
                     <div className={styles.tokenName}>
                       <Ellipsis
-                        trim="middle"
+                        trim='middle'
                         tooltip={false}
                         containerRect={nameHeaderRect}
                         containerRef={nameHeaderRef}
@@ -65,21 +65,21 @@ const BaseTokens = ({ tokens }) => {
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name="value">
+          <DataTable.Cell name='value'>
             {(props, row) => {
               return {
                 children: (
                   <Copy
-                    copiedToast="Copied"
+                    copiedToast='Copied'
                     toCopy={row[props.name]}
                     title={`Click to copy "${row[props.name]}"`}
-                    trigger="click"
+                    trigger='click'
                     className={styles.tokenValueWrapper}
                   >
                     <div className={styles.tokenValue}>
                       <ColorPreview color={row[props.name]} />
                       <Ellipsis
-                        trim="end"
+                        trim='end'
                         tooltip={false}
                         containerRect={valueHeaderRect}
                         containerRef={valueHeaderRef}
@@ -92,12 +92,12 @@ const BaseTokens = ({ tokens }) => {
               };
             }}
           </DataTable.Cell>
-          <DataTable.Cell name="description">
+          <DataTable.Cell name='description'>
             {(props, row) => {
               return {
                 children: (
                   <Ellipsis
-                    trim="end"
+                    trim='end'
                     containerRect={descriptionHeaderRect}
                     containerRef={descriptionHeaderRef}
                   >

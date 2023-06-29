@@ -1,4 +1,3 @@
-/* eslint-disable ssr-friendly/no-dom-globals-in-module-scope */
 import React from 'react';
 import createComponent, { sstyled, Component, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
@@ -70,10 +69,6 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     locale: 'en',
   };
   static style = style;
-
-  constructor(props) {
-    super(props);
-  }
 
   state: State = {
     items: [],
@@ -267,7 +262,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     return sstyled(this.asProps.styles)(
       <DragAndDropContext.Provider value={context}>
         {a11yHint && (
-          <SA11yHint role="alert" aria-live="assertive">
+          <SA11yHint role='alert' aria-live='assertive'>
             {a11yHint}
           </SA11yHint>
         )}

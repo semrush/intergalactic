@@ -48,7 +48,7 @@ YoutubeRed.displayName = 'YoutubeRed';
 
 var _default = (0, _core.createBaseComponent)(YoutubeRed);
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "YoutubeRed" icon is deprecated. Use the "YoutubeInvert"', 'Icon');
 
 exports["default"] = _default;

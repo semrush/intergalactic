@@ -14,15 +14,15 @@ const LineChartSkeleton = (props) => {
   };
 
   return (
-    <Skeleton viewBox="0 0 904 90" preserveAspectRatio="xMidYMid meet" {...props}>
+    <Skeleton viewBox='0 0 904 90' preserveAspectRatio='xMidYMid meet' {...props}>
       {({ gradientUrl }) => (
         <path
-          fill="none"
+          fill='none'
           stroke={gradientUrl}
-          fillRule="evenodd"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="4"
+          fillRule='evenodd'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          strokeWidth='4'
           d={getDraw(type)}
         />
       )}

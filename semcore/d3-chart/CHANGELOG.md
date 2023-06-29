@@ -2,7 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.17.1] - 2023-06-14
+## [2.17.4] - 2023-06-27
+
+### Fixed
+
+- Fixed animation on hover when moving mouse quickly on border of `Donut` chart.
+
+## [2.17.3] - 2023-06-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.19 ~> 1.10.20], `@semcore/utils` [3.53.4 ~> 3.54.0]).
+
+## [2.17.2] - 2023-06-22
 
 ### Changed
 

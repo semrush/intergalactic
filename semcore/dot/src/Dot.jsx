@@ -80,7 +80,7 @@ class Dot extends Component {
     return sstyled(styles)(
       <SDot
         render={Animation}
-        tag="span"
+        tag='span'
         use:size={size}
         visible={!hidden}
         duration={duration}

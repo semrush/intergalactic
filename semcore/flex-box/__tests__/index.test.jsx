@@ -33,7 +33,7 @@ describe('Flex', () => {
         <br />
         <br />
 
-        <Flex rowGap={5} w={100} direction="column">
+        <Flex rowGap={5} w={100} direction='column'>
           <Box inline style={styleBox} w={100} h={100}>
             row gap upper
           </Box>
@@ -98,21 +98,21 @@ describe('Flex', () => {
       }
       if (prop === 'reverse') {
         return [
-          <Flex key={`${id}-row`} data-testid={`${prop}-row`} {...{ [prop]: true }} direction="row">
+          <Flex key={`${id}-row`} data-testid={`${prop}-row`} {...{ [prop]: true }} direction='row'>
             Flex
           </Flex>,
           <Flex
             key={`${id}-column`}
             data-testid={`${prop}-column`}
             {...{ [prop]: true }}
-            direction="column"
+            direction='column'
           >
             Flex
           </Flex>,
         ];
       }
       return (
-        <Flex key={id} data-testid={prop} {...{ [prop]: true }}>
+        <Flex key={`${id}`} data-testid={prop} {...{ [prop]: true }}>
           Flex
         </Flex>
       );
@@ -138,11 +138,11 @@ describe('Box', () => {
   test.concurrent('Should support size', async ({ task }) => {
     const component = (
       <div>
-        <Box style={styleBox} w={100} h="100px">
+        <Box style={styleBox} w={100} h='100px'>
           Box
         </Box>
         <br />
-        <Box style={styleBox} w={2 / 5} h="auto">
+        <Box style={styleBox} w={2 / 5} h='auto'>
           Box
         </Box>
       </div>
@@ -158,7 +158,7 @@ describe('Box', () => {
     };
     const component = (
       <div>
-        <Box style={style} wMin="30px" hMin="30px">
+        <Box style={style} wMin='30px' hMin='30px'>
           Box
         </Box>
       </div>
@@ -178,7 +178,7 @@ describe('Box', () => {
     };
     const component = (
       <div style={wrapStyle}>
-        <Box style={style} wMax="30px" hMax="30px">
+        <Box style={style} wMax='30px' hMax='30px'>
           Box
         </Box>
       </div>
@@ -202,7 +202,7 @@ describe('Box', () => {
 
   test("Should support Box 'tag' prop", () => {
     const { getByTestId } = render(
-      <Box tag="span" data-testid="box">
+      <Box tag='span' data-testid='box'>
         tag
       </Box>,
     );
@@ -214,7 +214,7 @@ describe('Box', () => {
       return <span {...props} />;
     };
     const { getByTestId } = render(
-      <Box tag={Span} data-testid="box">
+      <Box tag={Span} data-testid='box'>
         tag
       </Box>,
     );
@@ -222,17 +222,17 @@ describe('Box', () => {
   });
 
   test('Should support clear non html props', () => {
-    const { getByTestId } = render(<Box custom={true} data-testid="box" />);
+    const { getByTestId } = render(<Box custom={true} data-testid='box' />);
     expect(getByTestId('box').getAttribute('custom')).toBeFalsy();
   });
 
   test('Should support html props', () => {
-    const { getByTestId } = render(<Box aria-label="Box" data-testid="box" />);
+    const { getByTestId } = render(<Box aria-label='Box' data-testid='box' />);
     expect(getByTestId('box').getAttribute('aria-label')).toBe('Box');
   });
 
   test('Should support scaleIndent for calculate offset', () => {
-    const { getByTestId } = render(<Box scaleIndent={10} mt={2} data-testid="box" />);
+    const { getByTestId } = render(<Box scaleIndent={10} mt={2} data-testid='box' />);
     expect(getByTestId('box').style.marginTop).toBe('20px');
   });
 
@@ -278,7 +278,7 @@ describe('Box', () => {
         ));
       }
       return (
-        <Box key={id} data-testid={prop} {...{ [prop]: true }}>
+        <Box key={`${id}`} data-testid={prop} {...{ [prop]: true }}>
           Box
         </Box>
       );
@@ -300,7 +300,7 @@ describe('FlexBox', () => {
 
   test.concurrent('Correctly render Flex, Box', async ({ task }) => {
     const component = (
-      <Flex w={500} justifyContent="space-between">
+      <Flex w={500} justifyContent='space-between'>
         <Box style={styleBox} w={100}>
           Box
         </Box>

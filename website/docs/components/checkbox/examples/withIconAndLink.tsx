@@ -16,8 +16,8 @@ const Demo = () => (
           <Checkbox.Value />
           <Checkbox.Text>{`Note ${item + 1}`}</Checkbox.Text>
         </Checkbox>
-        <Tooltip title="There is information about point." placement="right" ml={1}>
-          <InfoXS color="stone" interactive aria-label="Additional info" />
+        <Tooltip title='There is information about point.' placement='right' ml={1}>
+          <InfoXS color='stone' interactive aria-label='Additional info' />
         </Tooltip>
       </div>
     ))}
@@ -28,7 +28,7 @@ const Demo = () => (
           <Checkbox.Value />
           <Checkbox.Text>
             {`Note ${item + 1}`}{' '}
-            <Link href="#" onClick={noop}>
+            <Link href='#' onClick={noop}>
               Link to somewhere
             </Link>
           </Checkbox.Text>

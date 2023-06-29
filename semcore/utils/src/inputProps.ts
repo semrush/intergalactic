@@ -24,6 +24,7 @@ export const inputProps = [
 export default function splitProps<T extends {}>(props: T, propsList: string[] = inputProps) {
   return Object.entries(props).reduce<Array<{}>>(
     (acc, [key, value]) => {
+      // rome-ignore lint/suspicious/noAssignInExpressions:
       propsList.includes(key) ? (acc[0][key] = value) : (acc[1][key] = value);
       return acc;
     },

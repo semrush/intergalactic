@@ -48,7 +48,7 @@ function Stoller({ width = '16', height = '16', viewBox = '0 0 16 16', ...props 
 
 Stoller.displayName = 'Stoller';
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
 
 export default createBaseComponent(Stoller);

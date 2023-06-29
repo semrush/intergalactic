@@ -23,7 +23,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks ticks={xScale.ticks(width / 50)} />
       </XAxis>
-      <Line x="x" y="y" />
+      <Line x='x' y='y' />
     </Plot>
   );
 };

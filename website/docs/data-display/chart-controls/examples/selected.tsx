@@ -55,7 +55,7 @@ function Tick(props) {
   });
 
   return (
-    <UI cursor="pointer" tag="g" onClick={() => setSelected(!selected)} selected={selected}>
+    <UI cursor='pointer' tag='g' onClick={() => setSelected(!selected)} selected={selected}>
       <rect ref={rect} ry={3} height={22} />
       <text ref={text} x={x} y={y + 6} textAnchor={textAnchor} stroke={stroke}>
         {new Intl.DateTimeFormat('en-US', {
@@ -68,8 +68,8 @@ function Tick(props) {
 }
 
 export default () => (
-  <Card my="24px" pt="20px" px="24px" pb="24px" wMax="600px">
-    <Flex alignItems="center" mb={6}>
+  <Card my='24px' pt='20px' px='24px' pb='24px' wMax='600px'>
+    <Flex alignItems='center' mb={6}>
       <Text size={400} medium mr={1}>
         Branded traffic trend
       </Text>
@@ -85,9 +85,9 @@ export default () => (
             }).format(Number(t))
           }
         />
-        <XAxis dataKey="date" domain={['auto', 'auto']} tick={<Tick />} />
-        <YAxis dataKey="traffic" />
-        <Bar name="ebay.com" dataKey="traffic" />
+        <XAxis dataKey='date' domain={['auto', 'auto']} tick={<Tick />} />
+        <YAxis dataKey='traffic' />
+        <Bar name='ebay.com' dataKey='traffic' />
       </BarChart>
     </ResponsiveContainer>
   </Card>

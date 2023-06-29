@@ -53,7 +53,7 @@ function Title(props) {
 function Description(props) {
   const { styles } = props;
   const SDescription = Root;
-  return sstyled(styles)(<SDescription render={Text} tag="p" />);
+  return sstyled(styles)(<SDescription render={Text} tag='p' />);
 }
 
 function Header(props) {

@@ -27,12 +27,12 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <HoverLine x="category" />
-      <HoverRect x="category" />
-      <Bar x="category" y="bar" />
+      <HoverLine x='category' />
+      <HoverRect x='category' />
+      <Bar x='category' y='bar' />
       <Line
-        x="category"
-        y="bar"
+        x='category'
+        y='bar'
         color={resolveColor('wall')}
         style={{ strokeWidth: 3, strokeDasharray: 5 }}
       >

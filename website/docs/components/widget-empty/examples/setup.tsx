@@ -13,7 +13,7 @@ export default () => {
         <Text size={300} bold>
           [Name Tool]
         </Text>
-        <Divider orientation="horizontal" m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
+        <Divider orientation='horizontal' m={'8px 0 12px -20px'} w={'calc(100% + 40px)'} />
         <WidgetEmpty icon={getIconPath('combined-chart')}>
           <WidgetEmpty.Title>Set up your [Name Tool]</WidgetEmpty.Title>
           <WidgetEmpty.Description>
@@ -21,7 +21,7 @@ export default () => {
             paid search results.
           </WidgetEmpty.Description>
           <Box mt={4}>
-            <Button theme="success" use="primary">
+            <Button theme='success' use='primary'>
               Set up [Name Tool]
             </Button>
           </Box>

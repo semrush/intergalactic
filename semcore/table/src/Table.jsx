@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import cn from 'classnames';
 
 import { CellHead, CellRow } from './Cell';
@@ -31,8 +31,8 @@ const Table = React.forwardRef((props, ref) => {
     <Provider value={{ use, styles, self: { ref: refTable, props }, compact }}>
       <STable
         ref={useForkRef(refTable, ref)}
-        tag="table"
-        data-ui-name="Table"
+        tag='table'
+        data-ui-name='Table'
         style={Object.assign({}, style, styleProps)}
         className={cn(className, classNameProps) || undefined}
         {...other}

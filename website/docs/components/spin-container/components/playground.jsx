@@ -31,7 +31,7 @@ const playground = (createGroupWidgets) => {
       loading={loading}
       theme={theme}
       background={background ? background : undefined}
-      p="3px"
+      p='3px'
     >
       <Box w={150}>
         <h4>User form:</h4>

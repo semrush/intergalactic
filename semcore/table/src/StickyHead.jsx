@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, createContext, useRef } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import { createPortal } from 'react-dom';
 import ResizeObserver from 'resize-observer-polyfill';
 
@@ -59,7 +59,7 @@ function getOffsetWidth(node) {
 }
 
 function calculateWidthTh(nodeTable) {
-  const thead = nodeTable && nodeTable.getElementsByTagName('thead')[0];
+  const thead = nodeTable?.getElementsByTagName('thead')[0];
   if (!nodeTable || !thead) return [];
   const listTrInsideHead = thead.getElementsByTagName('tr');
   // listWidthTh = [tr: {Array [width th, ...]}, ...]
@@ -162,8 +162,8 @@ function Head(props, ref) {
     }
 
     return () => {
-      mutationObserver && mutationObserver.disconnect();
-      resizeObserver && resizeObserver.disconnect();
+      mutationObserver?.disconnect();
+      resizeObserver?.disconnect();
     };
   }, []);
 
@@ -201,7 +201,6 @@ Head.displayName = 'StickyHead.Head';
 
 const HeadCore = createBaseComponent(Head);
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const SStickyHead = React.forwardRef(({ position, ...props }, ref) => (
   <ScrollAreaSmart ref={ref} {...props} />
 ));
@@ -247,7 +246,7 @@ function ContainerSticky(props, ref) {
       inner={() => tableDOM}
       {...other}
     >
-      <ScrollAreaSmart.Container className="_master-scroll" ref={setRefContainer}>
+      <ScrollAreaSmart.Container className='_master-scroll' ref={setRefContainer}>
         {typeof children === 'function' ? (
           children({ Head: HeadCore })
         ) : (
@@ -256,7 +255,7 @@ function ContainerSticky(props, ref) {
           </>
         )}
       </ScrollAreaSmart.Container>
-      <ScrollAreaSmart.Bar orientation="horizontal" style={styleBar} />
+      <ScrollAreaSmart.Bar orientation='horizontal' style={styleBar} />
     </SStickyHead>,
   );
 }
@@ -390,7 +389,7 @@ function StickyHeadInner(props, ref) {
       }
       return () => {
         handleScroll.cancel();
-        refScrollContainer && refScrollContainer.removeEventListener('scroll', handleScroll);
+        refScrollContainer?.removeEventListener('scroll', handleScroll);
       };
     },
     [refScrollContainer],
@@ -417,7 +416,7 @@ function StickyHeadInner(props, ref) {
       }
 
       return () => {
-        container && container.removeEventListener('scroll', handleScroll);
+        container?.removeEventListener('scroll', handleScroll);
       };
     },
     [container, refScrollContainer],
@@ -433,7 +432,7 @@ function StickyHeadInner(props, ref) {
       }
 
       return () => {
-        resizeObserver && resizeObserver.disconnect();
+        resizeObserver?.disconnect();
       };
     },
     [container],

@@ -25,16 +25,16 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bubble data={data} x="x" y="y" value="value" label="label" color="color" />
+      <Bubble data={data} x='x' y='y' value='value' label='label' color='color' />
       <Tooltip>
         {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>Data</Tooltip.Title>
-                <Text tag="div">X axis {data[xIndex].x}</Text>
-                <Text tag="div">Y axis {data[xIndex].y}</Text>
-                <Text tag="div">Value {data[xIndex].value}</Text>
+                <Text tag='div'>X axis {data[xIndex].x}</Text>
+                <Text tag='div'>Y axis {data[xIndex].y}</Text>
+                <Text tag='div'>Value {data[xIndex].value}</Text>
               </>
             ),
           };

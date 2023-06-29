@@ -28,23 +28,23 @@ export default () => {
         <XAxis.Ticks />
         <XAxis.Grid />
       </XAxis>
-      <Tooltip tag={HoverRect} y="category" wMin={100}>
+      <Tooltip tag={HoverRect} y='category' wMin={100}>
         {({ yIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>{data[yIndex].category}</Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Tooltip.Dot mr={4}>Stack 1</Tooltip.Dot>
                   <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Tooltip.Dot mr={4} color={colors['blue-02']}>
                     Stack 2
                   </Tooltip.Dot>
                   <Text bold>{data[yIndex].bar2}</Text>
                 </Flex>
-                <Flex mt={2} justifyContent="space-between">
+                <Flex mt={2} justifyContent='space-between'>
                   <Box mr={4}>Total</Box>
                   <Text bold>{data[yIndex].bar1 + data[yIndex].bar2}</Text>
                 </Flex>
@@ -53,9 +53,9 @@ export default () => {
           };
         }}
       </Tooltip>
-      <StackBar y="category">
-        <StackBar.HorizontalBar x="bar1" />
-        <StackBar.HorizontalBar x="bar2" color={colors['blue-02']} />
+      <StackBar y='category'>
+        <StackBar.HorizontalBar x='bar1' />
+        <StackBar.HorizontalBar x='bar2' color={colors['blue-02']} />
       </StackBar>
     </Plot>
   );

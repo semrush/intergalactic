@@ -1,13 +1,12 @@
-/* eslint-disable */
 // THIS USE BABEL-PLUGIN-CSS-STYLE
 
 let sh = null;
 const selectorClass = '_css-style';
 
 function hashCode(str) {
-  let hash = 0,
-    i,
-    chr;
+  let hash = 0;
+  let i;
+  let chr;
   for (i = 0; i < str.length; i++) {
     chr = str.charCodeAt(i);
     hash = (hash << 5) - hash + chr;
@@ -19,7 +18,7 @@ function hashCode(str) {
 function injectStyle(css) {
   if (typeof window === 'object') {
     if (!sh) {
-      const prevSh = document.querySelector('.' + selectorClass);
+      const prevSh = document.querySelector(`.${selectorClass}`);
       if (prevSh) {
         sh = prevSh;
       } else {

@@ -4,7 +4,7 @@ const { addNamed } = require('@babel/helper-module-imports');
 const DEFAULT_OPTS = {
   fieldAssign: 'asProps',
   source: '@semcore/core',
-  coverage: false
+  coverage: false,
 };
 
 function RootPlugin({ types: t }, opts) {
@@ -12,7 +12,7 @@ function RootPlugin({ types: t }, opts) {
 
   function getAttrKey(name) {
     if (t.isJSXNamespacedName(name)) {
-      return name.namespace.name + ':' + name.name.name;
+      return `${name.namespace.name}:${name.name.name}`;
     } else {
       return name.name;
     }
@@ -53,7 +53,7 @@ function RootPlugin({ types: t }, opts) {
               propsVal = t.Identifier('arguments[0]');
             } else {
               throw new Error(
-                `Root does not support such placement, use it inside functional components or class methods`,
+                'Root does not support such placement, use it inside functional components or class methods',
               );
             }
             refP.scope.push({
@@ -107,7 +107,6 @@ function RootPlugin({ types: t }, opts) {
                     });
                   }
                   varP.replaceWith(t.variableDeclarator(varP.node.id, name));
-
                 }
                 if (t.isJSXOpeningElement(refP.container)) {
                   p.node.openingElement.name = name;

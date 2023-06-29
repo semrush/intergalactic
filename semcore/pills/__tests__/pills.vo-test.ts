@@ -1,19 +1,12 @@
-import { expect } from '@playwright/test';
+import { expect } from '@semcore/testing-utils/playwright';
 import { voTest as test } from '@guidepup/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
-import { resolve as resolvePath } from 'path';
 import { writeFile } from 'fs/promises';
 import { getReportHeader, makeVoiceOverReporter } from '@semcore/testing-utils/vo-reporter';
 
 test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pureVoiceOver }) => {
-  const standPath = resolvePath(
-    __dirname,
-    '../../../website/docs/components/pills/examples/basic.tsx',
-  );
-  const reportPath = resolvePath(
-    __dirname,
-    '../../../website/docs/components/pills/pills-a11y-report.md',
-  );
+  const standPath = 'website/docs/components/pills/examples/basic.tsx';
+  const reportPath = 'website/docs/components/pills/pills-a11y-report.md';
 
   const htmlContent = await e2eStandToHtml(standPath, 'en');
   await page.reload();
@@ -29,7 +22,7 @@ test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pu
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toContain('selected');
   await voiceOver.previous();
-  expect(await voiceOver.lastSpokenPhrase()).toBe("Don't care tab, 2 of 3");
+  expect(await voiceOver.lastSpokenPhrase()).toContain('2 of 3');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

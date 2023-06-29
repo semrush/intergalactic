@@ -1,4 +1,3 @@
-/* eslint-disable */
 export default function pick(obj, keys) {
   const res = {};
   const len = keys.length;

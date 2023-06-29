@@ -73,16 +73,16 @@ const Preview = (preview) => {
         </Notice.Label>
       )}
       <Notice.Content>
-        <Text bold mb={2} size={300} lineHeight="24px" tag="div">
+        <Text bold mb={2} size={300} lineHeight='24px' tag='div'>
           Look at this cool notice!
         </Text>
         {msg}
         {actions && (
           <Notice.Actions>
-            <Button use="primary" theme="success">
+            <Button use='primary' theme='success'>
               Wow, so cool!
             </Button>
-            <Button use="tertiary" ml={2}>
+            <Button use='tertiary' ml={2}>
               Don't think so
             </Button>
           </Notice.Actions>

@@ -6,7 +6,7 @@ export const validateSlackIntegrationEnv = () => {
 
   if (endpoints.length === 0) {
     throw new Error(
-      `Slack integration expects env.SLACK_API_ENDPOINTS to be provided but got empty or non-existing value`,
+      'Slack integration expects env.SLACK_API_ENDPOINTS to be provided but got empty or non-existing value',
     );
   }
 

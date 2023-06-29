@@ -22,7 +22,9 @@ export const useFocusSource = () => {
     [],
   );
   const focusSourceRef = React.useRef<'none' | 'mouse' | 'keyboard'>('none');
-  const setFocusSource = React.useCallback((source) => (focusSourceRef.current = source), []);
+  const setFocusSource = React.useCallback((source) => {
+    focusSourceRef.current = source;
+  }, []);
   const subscribeListeners = React.useCallback(() => {
     document.addEventListener('mousedown', handleMouseDown, { capture: true });
     document.addEventListener('keydown', handleKeyDown, { capture: true });
@@ -59,7 +61,7 @@ const keyboardFocusEnhance = () => {
     const focusSourceRef = useFocusSource();
     const ref = React.useRef(null);
 
-    const handlerFocus = React.useCallback((event: React.FocusEvent) => {
+    const handleFocus = React.useCallback((event: React.FocusEvent) => {
       if (event.isTrusted === true) {
         if (focusSourceRef.current !== 'keyboard') return;
       }
@@ -80,7 +82,7 @@ const keyboardFocusEnhance = () => {
     return assignProps(props, {
       tabIndex: disabled ? -1 : tabIndex,
       keyboardFocused,
-      onFocus: handlerFocus,
+      onFocus: handleFocus,
       onBlur: handlerBlur,
       ref,
     });

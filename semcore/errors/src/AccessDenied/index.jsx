@@ -20,10 +20,10 @@ class RootAccessDenied extends Component {
     return (
       <Root render={Error}>
         <Error.Title>{getI18nText('title')}</Error.Title>
-        <Error.Description wMax="640px">{getI18nText('text')}</Error.Description>
+        <Error.Description wMax='640px'>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
-          <Button tag="a" type="none" size="l" use="primary" theme="info" href={homeLink}>
+          <Button tag='a' type='none' size='l' use='primary' theme='info' href={homeLink}>
             {getI18nText('btnHome')}
           </Button>
         </Error.Controls>

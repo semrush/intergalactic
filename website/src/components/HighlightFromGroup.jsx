@@ -92,7 +92,7 @@ class HighlightFromGroup extends PureComponent {
       newIndex = newIndex - itemsLastIndex - 1;
     }
 
-    if (this.items[newIndex] && this.items[newIndex].disabled) {
+    if (this.items[newIndex]?.disabled) {
       this.moveHighlightedIndex(amount < 0 ? amount - 1 : amount + 1);
       return;
     }

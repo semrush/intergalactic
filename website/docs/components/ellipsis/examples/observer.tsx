@@ -10,17 +10,17 @@ export default () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
-        <DataTable.Column name="keyword" children="Keyword" />
-        <DataTable.Column name="kd" children="KD,%" />
-        <DataTable.Column name="cpc" children="CPC" />
-        <DataTable.Column name="vol" children="Vol." ref={containerRef} />
+        <DataTable.Column name='keyword' children='Keyword' />
+        <DataTable.Column name='kd' children='KD,%' />
+        <DataTable.Column name='cpc' children='CPC' />
+        <DataTable.Column name='vol' children='Vol.' ref={containerRef} />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell name="vol">
+        <DataTable.Cell name='vol'>
           {(props, row) => {
             return {
               children: (
-                <Ellipsis trim="middle" containerRect={containerRect} containerRef={containerRef}>
+                <Ellipsis trim='middle' containerRect={containerRect} containerRef={containerRef}>
                   {row[props.name]}
                 </Ellipsis>
               ),

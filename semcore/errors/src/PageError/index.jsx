@@ -33,9 +33,9 @@ class RootPageError extends Component {
         <Error.Controls>
           <Button
             onClick={callAllEventHandlers(onClick, this.handleReload)}
-            size="l"
-            use="primary"
-            theme="info"
+            size='l'
+            use='primary'
+            theme='info'
           >
             {getI18nText('btnRetry')}
           </Button>

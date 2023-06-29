@@ -80,9 +80,6 @@ SColumn[groupHead] {
   justify-content: center;
   /* for resizable */
   z-index: 1;
-}
-
-SColumn[groupHead] {
   border-bottom: none;
 }
 
@@ -358,17 +355,16 @@ SScrollAreaBar[orientation='horizontal'] {
   left: 0;
   margin-top: calc(-1 * var(--intergalactic-spacing-3x, 12px));
   z-index: 2;
+  margin-left: calc(var(--left) + var(--intergalactic-spacing-1x, 4px));
+  margin-right: calc(var(--right) + var(--intergalactic-spacing-1x, 4px));
+  width: calc(100% - var(--offsetSum) - 8px);
 }
+
 
 SScrollAreaBar[orientation='vertical'] {
   width: 12px;
 }
 
-SScrollAreaBar[orientation='horizontal'] {
-  margin-left: calc(var(--left) + var(--intergalactic-spacing-1x, 4px));
-  margin-right: calc(var(--right) + var(--intergalactic-spacing-1x, 4px));
-  width: calc(100% - var(--offsetSum) - 8px);
-}
 
 SHeightHold {
   position: absolute;

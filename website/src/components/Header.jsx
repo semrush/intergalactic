@@ -33,9 +33,9 @@ function Header({ theme, setTheme }) {
   const renderThemeToggle = useCallback(() => {
     if (theme) {
       return theme === 'light' ? (
-        <TimeNightL color="var(--intergalactic-icon-non-interactive)" />
+        <TimeNightL color='var(--intergalactic-icon-non-interactive)' />
       ) : (
-        <TimeDayL color="var(--intergalactic-icon-non-interactive)" />
+        <TimeDayL color='var(--intergalactic-icon-non-interactive)' />
       );
     }
   }, [theme]);
@@ -57,11 +57,12 @@ function Header({ theme, setTheme }) {
           )}
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
-          <a className={styles.devportalLink} href="/" onClick={() => logEvent('logo_dev:click')}>
+          {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
+          <a className={styles.devportalLink} href='/' onClick={() => logEvent('logo_dev:click')}>
             <SemrushL className={styles.semrushLogo} />
             <Tooltip>
               <Tooltip.Trigger className={styles.devportalLink__mobile}>
-                <span className={styles.devportalTitle} aria-label="Go to Semrush Developer Portal">
+                <span className={styles.devportalTitle} aria-label='Go to Semrush Developer Portal'>
                   Developer
                 </span>
               </Tooltip.Trigger>
@@ -69,12 +70,12 @@ function Header({ theme, setTheme }) {
             </Tooltip>
           </a>
           <div className={styles.linkDivider}>
-            <Divider mx={2} h={20} orientation="vertical" />
+            <Divider mx={2} h={20} orientation='vertical' />
           </div>
           <Link
             className={styles.intergalacticLink}
-            aria-label="Go to Intergalactic Design System main page"
-            to="/"
+            aria-label='Go to Intergalactic Design System main page'
+            to='/'
             onClick={() => logEvent('logo_intergalactic:click')}
           >
             Intergalactic
@@ -82,7 +83,7 @@ function Header({ theme, setTheme }) {
         </div>
         <SearchHome
           wrapperClassName={cx(styles.searchWrapper, !searchVisible && styles.mobileSearchHidden)}
-          placeholder="What brings you here, Sole Survivor?"
+          placeholder='What brings you here, Sole Survivor?'
           onItemSelect={() => setSearchVisible(false)}
           onFocus={() => logEvent('search:click')}
         />
@@ -94,11 +95,11 @@ function Header({ theme, setTheme }) {
           <SearchL onClick={() => setSearchVisible(true)} />
         )}
       </div>
-      <nav className={styles.nav} aria-label="Relevant links">
+      <nav className={styles.nav} aria-label='Relevant links'>
         <Tooltip>
           <Tooltip.Trigger>
             <span className={styles.item}>
-              <NavLink to="/internal/extension/">Extension</NavLink>
+              <NavLink to='/internal/extension/'>Extension</NavLink>
             </span>
           </Tooltip.Trigger>
           <Tooltip.Popper className={styles.headerTooltip}>
@@ -108,26 +109,26 @@ function Header({ theme, setTheme }) {
           </Tooltip.Popper>
         </Tooltip>
         <span className={styles.item}>
-          <NavLink to="/internal/roadmap/">Roadmap</NavLink>
+          <NavLink to='/internal/roadmap/'>Roadmap</NavLink>
         </span>
         <span className={styles.item}>
-          <NavLink to="/internal/release/">Releases</NavLink>
+          <NavLink to='/internal/release/'>Releases</NavLink>
         </span>
         <span className={styles.item}>
           <LinkKit
-            href="https://github.com/semrush/intergalactic"
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            color="var(--intergalactic-text-primary)"
+            href='https://github.com/semrush/intergalactic'
+            target='_blank'
+            rel='noopener noreferrer nofollow'
+            color='var(--intergalactic-text-primary)'
           >
             GitHub
           </LinkKit>
         </span>
       </nav>
       <Button
-        use="tertiary"
-        theme="muted"
-        size="l"
+        use='tertiary'
+        theme='muted'
+        size='l'
         w={40}
         className={styles.themeToggle}
         onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
@@ -139,34 +140,39 @@ function Header({ theme, setTheme }) {
         <OutsideClick onOutsideClick={() => setMenuVisible(false)}>
           <nav className={styles.mobileMenu}>
             <div className={styles.mobileMenuLinks}>
-              <Link to="/internal/extension/" onClick={() => setMenuVisible(false)}>
+              <Link to='/internal/extension/' onClick={() => setMenuVisible(false)}>
                 Extension
               </Link>
-              <Link to="/internal/roadmap/" onClick={() => setMenuVisible(false)}>
+              <Link to='/internal/roadmap/' onClick={() => setMenuVisible(false)}>
                 Roadmap
               </Link>
-              <Link to="/internal/release/" onClick={() => setMenuVisible(false)}>
+              <Link to='/internal/release/' onClick={() => setMenuVisible(false)}>
                 Releases
               </Link>
+              {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
               <a
-                href="https://github.com/semrush/intergalactic"
-                target="_blank"
+                href='https://github.com/semrush/intergalactic'
+                target='_blank'
                 onClick={() => setMenuVisible(false)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') setMenuVisible(false);
+                }}
+                rel='noreferrer'
               >
                 GitHub
               </a>
               <Button
-                use="secondary"
-                size="l"
+                use='secondary'
+                size='l'
                 w={149}
                 mt={2}
                 onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
               >
                 <Button.Addon ml={0}>
                   {theme === 'light' ? (
-                    <TimeNightL ml={3} color="var(--intergalactic-icon-non-interactive)" />
+                    <TimeNightL ml={3} color='var(--intergalactic-icon-non-interactive)' />
                   ) : (
-                    <TimeDayL ml={3} color="var(--intergalactic-icon-non-interactive)" />
+                    <TimeDayL ml={3} color='var(--intergalactic-icon-non-interactive)' />
                   )}
                 </Button.Addon>
                 <Button.Text className={styles.mobileThemeToggleLabel}>{`${
@@ -175,11 +181,11 @@ function Header({ theme, setTheme }) {
               </Button>
             </div>
             <div className={styles.mobileMenuDivider}>
-              <Divider orientation="horizontal" />
+              <Divider orientation='horizontal' />
             </div>
             <SideBarNavigation
               className={styles.mobileMenuNavigation}
-              tag={`Button`}
+              tag={'Button'}
               onClose={() => setMenuVisible(false)}
               onNavigate={() => setMenuVisible(false)}
               navigation={navigationTree.filter((nav) => !nav.metadata.hide)}

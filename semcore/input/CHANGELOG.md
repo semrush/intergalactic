@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.1] - 2023-06-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/flex-box` [4.7.31 ~> 4.7.32]).
+
+## [3.7.0] - 2023-06-22
+
+### Changed
+
+- Input now catches focus after keyboard events happened inside of the input container if no other element on page has focus.
+
 ## [3.6.32] - 2023-06-14
 
 ### Changed

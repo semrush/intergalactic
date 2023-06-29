@@ -27,13 +27,13 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Tooltip tag={HoverLine} x="x" wMin={100}>
+      <Tooltip tag={HoverLine} x='x' wMin={100}>
         {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>{data[xIndex].x}</Tooltip.Title>
-                <Flex justifyContent="space-between">
+                <Flex justifyContent='space-between'>
                   <Tooltip.Dot mr={4}>Line</Tooltip.Dot>
                   <Text bold>{data[xIndex].y}</Text>
                 </Flex>
@@ -42,7 +42,7 @@ export default () => {
           };
         }}
       </Tooltip>
-      <Line x="x" y="y" curve={curveCardinal}>
+      <Line x='x' y='y' curve={curveCardinal}>
         <Line.Dots />
       </Line>
     </Plot>

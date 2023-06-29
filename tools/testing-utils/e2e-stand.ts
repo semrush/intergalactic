@@ -30,13 +30,6 @@ export const e2eStandToHtml = async (standFilePath: string, locale: string) => {
                 </I18nProvider>,
                 document.querySelector('#root')
               );
-              
-              setTimeout(() => {
-                const standReadyMarker = document.createElement('div');
-                standReadyMarker.setAttribute('id', 'AppStandReadyMarker');
-                standReadyMarker.setAttribute('hidden', true);
-                document.body.appendChild(standReadyMarker);
-              }, 500);
             `;
 
             return { contents, loader: 'tsx', resolveDir: resolveDirname(standFilePath) };

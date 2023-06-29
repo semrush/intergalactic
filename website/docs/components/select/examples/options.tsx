@@ -4,7 +4,7 @@ import Select from '@semcore/ui/select';
 
 export default () => (
   <Flex>
-    <Select m="auto">
+    <Select m='auto'>
       <Select.Trigger placeholder="I'll show u some options, buddy 😉" />
       <Select.Menu>
         <Select.Option value={1}>I'm option</Select.Option>

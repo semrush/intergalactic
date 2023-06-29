@@ -24,7 +24,7 @@ class RootPageNotFound extends Component {
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
-          <Button tag="a" type="none" size="l" use="primary" theme="info" href={homeLink}>
+          <Button tag='a' type='none' size='l' use='primary' theme='info' href={homeLink}>
             {getI18nText('btnHome')}
           </Button>
         </Error.Controls>

@@ -95,8 +95,9 @@ export const releaseChangelogParser = (
 
         if (typeof prefix === 'string' || prefix.type !== 'strong') {
           throw new Error(
-            `Invalid prefix for changelog change. Expected strong text, ` +
-              `got ${JSON.stringify(prefix)} in changelog ${changelogFilePath}`,
+            `Invalid prefix for changelog change. Expected strong text, got ${JSON.stringify(
+              prefix,
+            )} in changelog ${changelogFilePath}`,
           );
         }
 

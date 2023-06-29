@@ -13,7 +13,7 @@ export interface IPortalProps {
 
 const PortalContext = register.get(
   'portal-context',
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+
   React.createContext<NodeByRef>(canUseDOM() ? document.body : null),
 );
 

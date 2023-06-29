@@ -108,10 +108,10 @@ class BarRoot extends Component {
       <SBar
         aria-hidden
         key={`bar-${i}`}
-        render="path"
+        render='path'
         clipPath={`url(#${uid})`}
         __excludeProps={['data', 'scale', 'value', 'onClick', 'offset']}
-        childrenPosition="above"
+        childrenPosition='above'
         value={d}
         index={i}
         hide={hide}
@@ -137,7 +137,7 @@ class BarRoot extends Component {
             aria-hidden
             key={`${uid}-animation`}
             id={uid}
-            x="0"
+            x='0'
             y={size[1]}
             width={size[0]}
             height={`${size[1]}px`}
@@ -157,8 +157,8 @@ function Background(props) {
   return sstyled(styles)(
     <SBackground
       aria-hidden
-      render="rect"
-      childrenPosition="above"
+      render='rect'
+      childrenPosition='above'
       width={xScale.bandwidth()}
       height={yRange[0] - yRange[1]}
       x={xScale(value)}

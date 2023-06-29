@@ -62,12 +62,7 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
   // because react set getter for ref
   const sourceDescriptorRef = Object.getOwnPropertyDescriptor(source, 'ref');
   const propsDescriptorRef = Object.getOwnPropertyDescriptor(props, 'ref');
-  if (
-    sourceDescriptorRef &&
-    sourceDescriptorRef.configurable &&
-    propsDescriptorRef &&
-    propsDescriptorRef.configurable
-  ) {
+  if (sourceDescriptorRef?.configurable && propsDescriptorRef?.configurable) {
     newProps.ref = forkRef(source.ref, props.ref);
   }
 

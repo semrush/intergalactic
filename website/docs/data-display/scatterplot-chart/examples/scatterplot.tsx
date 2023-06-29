@@ -25,15 +25,15 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <ScatterPlot x="x" y="y" />
+      <ScatterPlot x='x' y='y' />
       <Tooltip>
         {({ xIndex }) => {
           return {
             children: (
               <>
                 <Tooltip.Title>Data</Tooltip.Title>
-                <Text tag="div">X axis {data[xIndex].x}</Text>
-                <Text tag="div">Y axis {data[xIndex].y}</Text>
+                <Text tag='div'>X axis {data[xIndex].x}</Text>
+                <Text tag='div'>Y axis {data[xIndex].y}</Text>
               </>
             ),
           };

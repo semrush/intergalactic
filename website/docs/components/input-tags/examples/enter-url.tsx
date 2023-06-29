@@ -46,17 +46,17 @@ const Demo = () => {
   };
 
   return (
-    <Select interaction="focus" onChange={handleSelect}>
+    <Select interaction='focus' onChange={handleSelect}>
       <Select.Trigger
         tag={InputTags}
-        size="l"
+        size='l'
         onAppend={handleAppendTags}
         onRemove={handleRemoveTag}
       >
         {tags.map((tag, idx) => (
           <InputTags.Tag
             key={idx}
-            theme="primary"
+            theme='primary'
             color={isValidEmail(tag) ? 'green-500' : 'red-500'}
           >
             <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
@@ -64,7 +64,7 @@ const Demo = () => {
           </InputTags.Tag>
         ))}
         <InputTags.Value
-          placeholder="bob@company.com, johndoe@domain.com"
+          placeholder='bob@company.com, johndoe@domain.com'
           value={value}
           onChange={handleChange}
         />

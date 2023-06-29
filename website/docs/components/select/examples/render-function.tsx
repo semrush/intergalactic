@@ -9,7 +9,7 @@ const options = Array(5)
   }));
 
 export default () => (
-  <Select placeholder="Select value" multiselect>
+  <Select placeholder='Select value' multiselect>
     {(props, handlers) => {
       const {
         getTriggerProps, // function encapsulating Select.Trigger logic
@@ -36,7 +36,7 @@ export default () => (
           <Select.Trigger />
           <Select.Menu>
             <Select.Option onClick={handleClick}>
-              <Text color="denim-blue">{currentValue.length ? 'Deselect all' : 'Select all'}</Text>
+              <Text color='denim-blue'>{currentValue.length ? 'Deselect all' : 'Select all'}</Text>
             </Select.Option>
             {options.map((option) => (
               <Select.Option value={option.value} key={option.value}>

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Curve, Rectangle, Tooltip } from 'recharts';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import cn from 'classnames';
 
 function isNumOrStr(value) {
@@ -40,20 +40,20 @@ class DefaultTooltipContent extends PureComponent<IDefaultTooltip> {
   renderTooltipItem = ({ entry, name, value, separator }) => (
     <>
       {name !== undefined && (
-        <span className="recharts-tooltip-item-name-wrapper">
+        <span className='recharts-tooltip-item-name-wrapper'>
           <span
-            className="recharts-tooltip-item-color"
+            className='recharts-tooltip-item-color'
             style={{
               backgroundColor: entry.fill || entry.stroke /* bar charts has no stroke */,
             }}
           />
-          <span className="recharts-tooltip-item-name">{name}</span>
-          <span className="recharts-tooltip-item-separator">{separator}</span>
+          <span className='recharts-tooltip-item-name'>{name}</span>
+          <span className='recharts-tooltip-item-separator'>{separator}</span>
         </span>
       )}
-      <span className="recharts-tooltip-item-value-wrapper">
-        <span className="recharts-tooltip-item-value">{value}</span>
-        <span className="recharts-tooltip-item-unit">{entry.unit || ''}</span>
+      <span className='recharts-tooltip-item-value-wrapper'>
+        <span className='recharts-tooltip-item-value'>{value}</span>
+        <span className='recharts-tooltip-item-unit'>{entry.unit || ''}</span>
       </span>
     </>
   );
@@ -61,7 +61,7 @@ class DefaultTooltipContent extends PureComponent<IDefaultTooltip> {
   renderContent() {
     const { payload, separator, formatter, itemStyle, itemSorter } = this.props;
 
-    if (payload && payload.length) {
+    if (payload?.length) {
       const listStyle = { padding: 0, margin: 0 };
 
       const items = payload.sort(itemSorter).map((entry, i) => {
@@ -77,14 +77,14 @@ class DefaultTooltipContent extends PureComponent<IDefaultTooltip> {
           }
         }
         return (
-          <li className="recharts-tooltip-item" key={`tooltip-item-${i}`} style={itemStyle}>
+          <li className='recharts-tooltip-item' key={`tooltip-item-${i}`} style={itemStyle}>
             {this.renderTooltipItem({ entry, name, value, separator })}
           </li>
         );
       });
 
       return (
-        <ul className="recharts-tooltip-item-list" style={listStyle}>
+        <ul className='recharts-tooltip-item-list' style={listStyle}>
           {items}
         </ul>
       );
@@ -129,8 +129,8 @@ class CustomCursor extends PureComponent {
     const { points, payload } = this.props;
 
     // see renderCursor in chart/generateCategoricalChart.js
-    if (points) return <Curve {...this.props} stroke="#a6b0b3" />;
-    if (payload) return <Rectangle {...this.props} fill="rgba(152, 170, 175, 0.3)" />;
+    if (points) return <Curve {...this.props} stroke='#a6b0b3' />;
+    if (payload) return <Rectangle {...this.props} fill='rgba(152, 170, 175, 0.3)' />;
     return null;
   }
 }

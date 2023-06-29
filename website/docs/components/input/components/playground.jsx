@@ -75,7 +75,7 @@ const Preview = (preview) => {
   return (
     <Input size={size} state={state}>
       {before && <Input.Addon>{renderIcon(before && 'before', size)}</Input.Addon>}
-      <Input.Value disabled={disabled} readOnly={readOnly} placeholder="Placeholder" />
+      <Input.Value disabled={disabled} readOnly={readOnly} placeholder='Placeholder' />
       {after && <Input.Addon interactive>{renderIcon(after && 'after', size)}</Input.Addon>}
     </Input>
   );

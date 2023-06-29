@@ -198,8 +198,8 @@ class RadarRoot extends Component {
       <SRadar
         aria-hidden
         id={this.id}
-        render="g"
-        childrenPosition="inside"
+        render='g'
+        childrenPosition='inside'
         transform={`translate(${width / 2},${height / 2})`}
       />,
     );
@@ -251,14 +251,14 @@ class PolygonRoot extends Component {
 
   render() {
     const { Element: SPolygon, styles, d3, data, color, fill } = this.asProps;
-    return sstyled(styles)(<SPolygon render="path" d={d3(data)} color={fill || color} />);
+    return sstyled(styles)(<SPolygon render='path' d={d3(data)} color={fill || color} />);
   }
 }
 
 function PolygonLine(props) {
   const { Element: SPolygonLine, styles, d3, color, data, transparent } = props;
   return sstyled(styles)(
-    <SPolygonLine render="path" d={d3(data)} color={color} transparent={transparent} />,
+    <SPolygonLine render='path' d={d3(data)} color={color} transparent={transparent} />,
   );
 }
 
@@ -281,7 +281,7 @@ function PolygonDots(props) {
     return sstyled(styles)(
       <SPolygonDot
         key={i}
-        render="circle"
+        render='circle'
         cx={cx}
         cy={cy}
         color={color}
@@ -371,9 +371,9 @@ class AxisRoot extends Component {
     return sstyled(styles)(
       <>
         {type === 'circle' ? (
-          <SAxis render="circle" cx={0} cy={0} r={radius} />
+          <SAxis render='circle' cx={0} cy={0} r={radius} />
         ) : (
-          <SAxis render="path" d={this.createLineRadial(radius, total)(categories)} />
+          <SAxis render='path' d={this.createLineRadial(radius, total)(categories)} />
         )}
         {categories.map((category, i) => {
           const [x, y] = getRadianPosition(i, radius, total, angleOffset);
@@ -395,9 +395,9 @@ function AxisTicks(props) {
     d3.radius(() => radius * tick);
     return sstyled(styles)(
       type === 'circle' ? (
-        <SAxisTick key={i} render="circle" cx={0} cy={0} r={radius * tick} />
+        <SAxisTick key={i} render='circle' cx={0} cy={0} r={radius * tick} />
       ) : (
-        <SAxisTick render="path" key={i} d={d3(categories)} />
+        <SAxisTick render='path' key={i} d={d3(categories)} />
       ),
     );
   });
@@ -417,8 +417,8 @@ function AxisLabels(props) {
       return sstyled(styles)(
         <SAxisLabel
           key={i}
-          render="text"
-          childrenPosition="inside"
+          render='text'
+          childrenPosition='inside'
           x={x}
           y={y}
           xDirection={xDirection}
@@ -437,7 +437,7 @@ function AxisLabels(props) {
       );
     }
     if (React.isValidElement(category)) {
-      const { width = 0, height = 0 } = category?.props;
+      const { width = 0, height = 0 } = category?.props ?? {};
       const [xOffset, yOffset] = getLabelOffsetPosition(xDirection, yDirection, width, height);
       return cloneElement(category, {
         key: i,
@@ -575,7 +575,7 @@ class Hover extends Component {
           .endAngle(endAngle);
         return sstyled(styles)(
           <SPieRect
-            render="path"
+            render='path'
             // @ts-ignore
             d={circle()}
           />,
@@ -583,7 +583,7 @@ class Hover extends Component {
       } else {
         return sstyled(styles)(
           <SPieRect
-            render="path"
+            render='path'
             // @ts-ignore
             d={line()(this.getPolygon(index))}
           />,

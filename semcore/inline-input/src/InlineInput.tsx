@@ -62,6 +62,18 @@ type CancelControlAsProps = ControlAsProps & {
   onCancel?: OnCancel;
 };
 
+const pointInsideOfRect = ({
+  x,
+  y,
+  rect,
+}: {
+  x: number;
+  y: number;
+  rect: { x: number; y: number; width: number; height: number };
+}) => {
+  return x >= rect.x && x <= rect.x + rect.width && y >= rect.y && y <= rect.y + rect.height;
+};
+
 class InlineInputBase extends Component<RootAsProps> {
   static displayName = 'InlineInput';
 
@@ -80,12 +92,12 @@ class InlineInputBase extends Component<RootAsProps> {
 
   rootRef = React.createRef<HTMLElement>();
   inputRef = React.createRef<HTMLInputElement>();
-  initValue: string = '';
+  initValue = '';
   lastMouseDownPosition: { x: number; y: number } | null = null;
-  lastHandledKeyboardEvent: number = -1;
+  lastHandledKeyboardEvent = -1;
 
-  handleDocumentMouseDown = (event: { pageX: number; pageY: number }) => {
-    this.lastMouseDownPosition = { x: event.pageX, y: event.pageY };
+  handleDocumentMouseDown = (event: { clientX: number; clientY: number }) => {
+    this.lastMouseDownPosition = { x: event.clientX, y: event.clientY };
     this.lastHandledKeyboardEvent = -1;
   };
   handleDocumentKeyDown = () => {
@@ -172,7 +184,8 @@ class InlineInputBase extends Component<RootAsProps> {
     if (this.lastMouseDownPosition && this.rootRef.current) {
       const { x, y } = this.lastMouseDownPosition;
       const rect = this.rootRef.current.getBoundingClientRect();
-      if (rect.left < x && rect.right > x && rect.top < y && rect.bottom > y) {
+
+      if (pointInsideOfRect({ x, y, rect })) {
         return;
       }
     }
@@ -231,7 +244,7 @@ class Value extends Component<RootAsProps> {
   render() {
     const SValue = Root;
 
-    return sstyled(this.asProps.styles)(<SValue render={Box} tag="input" type="text" />);
+    return sstyled(this.asProps.styles)(<SValue render={Box} tag='input' type='text' />);
   }
 }
 
@@ -265,7 +278,7 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
 
   if (props.loading) {
     return sstyled(props.styles)(
-      <SAddon render={Box}>{hasChildren ? <Children /> : <Spin size="xs" />}</SAddon>,
+      <SAddon render={Box}>{hasChildren ? <Children /> : <Spin size='xs' />}</SAddon>,
     ) as React.ReactElement;
   }
 
@@ -280,8 +293,8 @@ const ConfirmControl: React.FC<ConfirmControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={props.icon ?? CheckM}
-            aria-hidden="true"
-            role="button"
+            aria-hidden='true'
+            role='button'
             onClick={handleConfirm}
             className={sConfirmIconStyles.className}
             style={sConfirmIconStyles.style}
@@ -332,8 +345,8 @@ const CancelControl: React.FC<CancelControlAsProps> = (props) => {
         <Tooltip {...props.$tooltipsProps}>
           <Tooltip.Trigger
             tag={props.icon ?? CloseM}
-            aria-hidden="true"
-            role="button"
+            aria-hidden='true'
+            role='button'
             onClick={handleCancel}
             className={sCancelIconStyles.className}
             style={sCancelIconStyles.style}

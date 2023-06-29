@@ -90,10 +90,10 @@ class HorizontalBarRoot extends Component {
       <SBar
         aria-hidden
         key={`horizontal-bar-${i}`}
-        render="path"
+        render='path'
         clipPath={`url(#${uid})`}
         __excludeProps={['data', 'scale', 'value', 'offset']}
-        childrenPosition="above"
+        childrenPosition='above'
         value={d}
         index={i}
         hide={hide}
@@ -124,8 +124,8 @@ class HorizontalBarRoot extends Component {
               rect.setAttribute('width', size[0]);
             }}
             id={uid}
-            x="0"
-            y="0"
+            x='0'
+            y='0'
             width={0}
             height={size[1]}
             transition={`width ${duration}ms ease-in-out`}
@@ -144,8 +144,8 @@ function Background(props) {
   return sstyled(styles)(
     <SBackground
       aria-hidden
-      render="rect"
-      childrenPosition="above"
+      render='rect'
+      childrenPosition='above'
       width={xRange[1] - xRange[0]}
       height={yScale.bandwidth()}
       x={xRange[0]}

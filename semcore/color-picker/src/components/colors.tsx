@@ -20,7 +20,7 @@ export function Colors(props: ColorsAsProps) {
   const SColors = Root;
 
   return sstyled(styles)(
-    <SColors render={Box} role="list" aria-label={getI18nText('presetColors')}>
+    <SColors render={Box} role='list' aria-label={getI18nText('presetColors')}>
       {Children.origin ? (
         <Children />
       ) : (
@@ -36,14 +36,14 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
   const SPlusButton = 'div';
 
   return sstyled(styles)(
-    <SColors render={Box} role="list" aria-label={getI18nText('customColors')}>
+    <SColors render={Box} role='list' aria-label={getI18nText('customColors')}>
       {Children.origin ? (
         <Children />
       ) : (
         colors.map((color) => <PaletteManager.Item value={color} key={color} />)
       )}
-      <SPlusButton onClick={onPlusButtonClick} aria-hidden="true">
-        <MathPlusM color="gray-500" />
+      <SPlusButton onClick={onPlusButtonClick} aria-hidden='true'>
+        <MathPlusM color='gray-500' />
       </SPlusButton>
     </SColors>,
   ) as React.ReactElement;

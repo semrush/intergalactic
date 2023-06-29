@@ -18,7 +18,7 @@ const colorReg = /[0-9]/g;
 const colorValues = Object.keys(colors)
   .filter((name) => name.match(colorReg))
   .sort((a, b) => {
-    return parseInt(a.match(colorReg)!.join(''), 10) - parseInt(b.match(colorReg)!.join(''), 10);
+    return parseInt(a.match(colorReg)?.join(''), 10) - parseInt(b.match(colorReg)?.join(''), 10);
   });
 
 const fallbackColors: Colors = {

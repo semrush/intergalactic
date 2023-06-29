@@ -11,16 +11,16 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="password-example" size="200">
+      <Text tag='label' htmlFor='password-example' size='200'>
         Your password
       </Text>
       <Box mt={2}>
         <Input w={240}>
           <Input.Value
-            defaultValue="I_like_cats"
-            placeholder="Password"
+            defaultValue='I_like_cats'
+            placeholder='Password'
             type={type}
-            id="password-example"
+            id='password-example'
           />
           <Input.Addon
             aria-label={type === 'password' ? 'View password' : 'Hide password'}

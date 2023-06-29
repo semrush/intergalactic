@@ -55,7 +55,7 @@ Stoller.displayName = 'Stoller';
 
 var _default = (0, _core.createBaseComponent)(Stoller);
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "Stoller" icon is deprecated. Use the "Stroller"', 'Icon');
 
 exports['default'] = _default;

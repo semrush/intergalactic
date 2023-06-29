@@ -13,7 +13,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value="" onChange={spy} />
+        <InputNumber.Value data-testid='input' value='' onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -25,7 +25,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value="" onChange={spy} />
+        <InputNumber.Value data-testid='input' value='' onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -37,7 +37,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value="0.26" onChange={spy} step={0.1} />
+        <InputNumber.Value data-testid='input' value='0.26' onChange={spy} step={0.1} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -49,7 +49,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value="42.2" onChange={spy} step={5} />
+        <InputNumber.Value data-testid='input' value='42.2' onChange={spy} step={5} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -61,7 +61,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value="" onChange={spy} />
+        <InputNumber.Value data-testid='input' value='' onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -73,7 +73,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value={'100000'} max={10} onChange={spy} />
+        <InputNumber.Value data-testid='input' value={'100000'} max={10} onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -85,7 +85,7 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" value={'199'} min={200} onChange={spy} />
+        <InputNumber.Value data-testid='input' value={'199'} min={200} onChange={spy} />
       </InputNumber>,
     );
     const input = getByTestId('input');
@@ -97,8 +97,8 @@ describe('InputNumber', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <InputNumber>
-        <InputNumber.Value data-testid="input" defaultValue={'0'} onChange={spy} />
-        <InputNumber.Controls data-testid="controls" />
+        <InputNumber.Value data-testid='input' defaultValue={'0'} onChange={spy} />
+        <InputNumber.Controls data-testid='controls' />
       </InputNumber>,
     );
     const controls = getByTestId('controls');
@@ -115,11 +115,11 @@ describe('InputNumber', () => {
   test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <React.Fragment>
-        <InputNumber size="m">
+        <InputNumber size='m'>
           <InputNumber.Value />
           <InputNumber.Controls showControls />
         </InputNumber>
-        <InputNumber size="l">
+        <InputNumber size='l'>
           <InputNumber.Value />
           <InputNumber.Controls showControls />
         </InputNumber>
@@ -164,7 +164,7 @@ describe('InputNumber', () => {
   test.concurrent('Should support view controls', async ({ task }) => {
     const component = (
       <InputNumber focused>
-        <InputNumber.Value id="input" />
+        <InputNumber.Value id='input' />
         <InputNumber.Controls />
       </InputNumber>
     );
@@ -198,7 +198,7 @@ describe('InputNumber', () => {
   test('a11y', async () => {
     const { container } = render(
       <InputNumber>
-        <InputNumber.Value aria-label="input-number" value="23" />
+        <InputNumber.Value aria-label='input-number' value='23' />
         <InputNumber.Controls showControls />
       </InputNumber>,
     );

@@ -19,7 +19,7 @@ describe('DragAndDrop', () => {
       ),
       issues: (
         <TabPanel.Item.Addon>
-          <Badge bg="red">new</Badge>
+          <Badge bg='red'>new</Badge>
         </TabPanel.Item.Addon>
       ),
     };
@@ -35,7 +35,7 @@ describe('DragAndDrop', () => {
     const component = (
       <DnD tag={TabPanel} value={currentTab} onDnD={() => {}}>
         {tabs.map((tab) => (
-          <DnD.Draggable placement="bottom" tag={TabPanel.Item} value={tab} key={tab} pb={0}>
+          <DnD.Draggable placement='bottom' tag={TabPanel.Item} value={tab} key={tab} pb={0}>
             {icons[tab] ?? null}
             <TabPanel.Item.Text>{titles[tab]}</TabPanel.Item.Text>
           </DnD.Draggable>

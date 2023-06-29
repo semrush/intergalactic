@@ -20,20 +20,20 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="loading-example" size="200">
+      <Text tag='label' htmlFor='loading-example' size='200'>
         Input with loading state
       </Text>
       <Box mt={2}>
         <Input w={240}>
           <Input.Value
-            id="loading-example"
-            placeholder="Type something to see world spinning..."
+            id='loading-example'
+            placeholder='Type something to see world spinning...'
             value={value}
             onChange={handlerInput}
           />
           {loading && (
             <Input.Addon>
-              <Spin size="xs" />
+              <Spin size='xs' />
             </Input.Addon>
           )}
         </Input>

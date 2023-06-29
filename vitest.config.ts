@@ -55,6 +55,8 @@ export default defineConfig({
     ],
     exclude: [
       'semcore/*/__tests__/**/*.vo-test.ts',
+      'semcore/*/__tests__/**/*.browser-test.ts',
+      'semcore/*/__tests__/**/*.browser-test.tsx',
       '**/__fixtures__',
       'tools/icon-transform-svg',
       '**/*.d.ts',

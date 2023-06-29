@@ -31,12 +31,13 @@ await Promise.all(
         `Translation path "${translation}" is not currently supported in csv-2-json util`,
       );
     }
-    const pattern = '*' + translation.substring('/%original_path%/%two_letters_code%'.length);
+    const pattern = `*${translation.substring('/%original_path%/%two_letters_code%'.length)}`;
     const csvFiles = await glob(pattern, { cwd: dirPath });
     const csvFileContents = await Promise.all(
       csvFiles.map(
         (fileName) =>
           new Promise<{ identifier: string; source_phrase: string; translation: string }[]>(
+            // rome-ignore lint/suspicious/noAsyncPromiseExecutor: <explanation>
             async (resolve, reject) => {
               const fileContent = await readFile(resolvePath(dirPath, fileName), 'utf-8');
               parseCsv(
@@ -52,9 +53,9 @@ await Promise.all(
       const inputName = csvFiles[i];
       const inputPath = resolvePath(dirPath, inputName);
       const withoutExtension = inputName.split('.').slice(0, -1).join('.');
-      const outputPath = resolvePath(dirPath, withoutExtension + '.json');
+      const outputPath = resolvePath(dirPath, `${withoutExtension}.json`);
       const outputContent: { [translationIdentifier: string]: string } = {};
-      for (let { identifier, translation, source_phrase } of csvFileContents[i]) {
+      for (const { identifier, translation, source_phrase } of csvFileContents[i]) {
         outputContent[identifier] = translation || source_phrase;
       }
       await writeFile(outputPath, JSON.stringify(outputContent, null, 2) + '\n');

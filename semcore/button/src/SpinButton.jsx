@@ -23,7 +23,7 @@ export const SPIN_THEME_MAP = {
 export default function SpinButton({ theme, size, ...others }) {
   return (
     <Spin
-      size={typeof size == 'string' ? SPIN_SIZE_MAP[size] : size}
+      size={typeof size === 'string' ? SPIN_SIZE_MAP[size] : size}
       theme={typeof theme === 'string' ? SPIN_THEME_MAP[theme] || 'dark' : theme}
       {...others}
     />

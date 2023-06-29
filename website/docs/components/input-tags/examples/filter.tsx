@@ -34,16 +34,16 @@ export default function () {
 
   return (
     <DropdownMenu
-      interaction="focus"
-      size="l"
+      interaction='focus'
+      size='l'
       visible={visible}
       onVisibleChange={(visible) => setVisible(visible)}
     >
       <DropdownMenu.Trigger>
         {({ getTriggerProps }) => (
-          <InputTags w={200} size="l" onRemove={onRemoveLastTag} {...getTriggerProps({})}>
+          <InputTags w={200} size='l' onRemove={onRemoveLastTag} {...getTriggerProps({})}>
             {tags.map((tag, i) => (
-              <InputTags.Tag key={i} theme="primary">
+              <InputTags.Tag key={i} theme='primary'>
                 <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                 <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
               </InputTags.Tag>
@@ -51,14 +51,14 @@ export default function () {
             <InputTags.Value
               value={valueInput}
               onChange={onChangeValue}
-              aria-label="input with tags"
+              aria-label='input with tags'
             />
           </InputTags>
         )}
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         {tagsFilter.map((tag, i) => (
-          <DropdownMenu.Item key={i} use="primary" onClick={() => onSelectTag(tag)}>
+          <DropdownMenu.Item key={i} use='primary' onClick={() => onSelectTag(tag)}>
             {tag}
           </DropdownMenu.Item>
         ))}

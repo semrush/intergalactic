@@ -2,14 +2,14 @@ import {
   Area as AreaRecharts,
   Curve,
   // @ts-ignore
-  // eslint-disable-next-line import/named
+
   Layer,
   LabelList,
   Rectangle,
 } from 'recharts';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import isNil from 'lodash/isNil';
-// eslint-disable-next-line import/no-extraneous-dependencies
+
 import classNames from 'classnames';
 import { getPresentationAttributes, filterEventAttributes } from 'recharts/lib/util/ReactUtils';
 import { colors } from '../../utils/colors';
@@ -55,8 +55,8 @@ AreaRecharts.prototype.renderAreaStatically = function (points, baseLine, needCl
         connectNulls={true}
         points={points}
         baseLine={baseLine}
-        stroke="none"
-        className="recharts-area-area"
+        stroke='none'
+        className='recharts-area-area'
         clipPath={`url(#${patchedClipPathId})`}
       />
       {stroke !== 'none' && (
@@ -64,24 +64,24 @@ AreaRecharts.prototype.renderAreaStatically = function (points, baseLine, needCl
           {connectNulls && (
             <Curve
               {...getPresentationAttributes(this.props)}
-              className="recharts-area-curve"
+              className='recharts-area-curve'
               layout={layout}
               type={type}
               connectNulls
-              fill="none"
+              fill='none'
               stroke={colors['gray-blue']}
               strokeWidth={3}
-              strokeDasharray="6"
+              strokeDasharray='6'
               points={normalizedPoints}
             />
           )}
           <Curve
             {...getPresentationAttributes(this.props)}
-            className="recharts-area-curve"
+            className='recharts-area-curve'
             layout={layout}
             type={type}
             connectNulls
-            fill="none"
+            fill='none'
             points={normalizedPoints}
             clipPath={`url(#${patchedClipPathId})`}
           />
@@ -90,11 +90,11 @@ AreaRecharts.prototype.renderAreaStatically = function (points, baseLine, needCl
       {stroke !== 'none' && isRange && (
         <Curve
           {...getPresentationAttributes(this.props)}
-          className="recharts-area-curve"
+          className='recharts-area-curve'
           layout={layout}
           type={type}
           connectNulls={connectNulls}
-          fill="none"
+          fill='none'
           points={baseLine}
         />
       )}
@@ -144,7 +144,7 @@ AreaRecharts.prototype.renderDots = function (needClip, clipPathId) {
     clipPath: needClip ? `url(#clipPath-${clipPathId})` : null,
   };
   return (
-    <Layer className="recharts-area-dots" {...dotsProps}>
+    <Layer className='recharts-area-dots' {...dotsProps}>
       {dots}
     </Layer>
   );
@@ -162,7 +162,7 @@ AreaRecharts.prototype.render = function () {
   const { isAnimationFinished } = this.state;
   const hasSinglePoint = points.length === 1;
   const layerClass = classNames('recharts-area', className);
-  const needClip = (xAxis && xAxis.allowDataOverflow) || (yAxis && yAxis.allowDataOverflow);
+  const needClip = xAxis?.allowDataOverflow || yAxis?.allowDataOverflow;
   const clipPathId = isNil(id) ? this.id : id;
 
   return (

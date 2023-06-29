@@ -60,7 +60,7 @@ class Body extends Component<AsProps, State> {
       if (Array.isArray(cell)) {
         const SGroupCell = 'div';
         return sstyled(styles)(
-          <SGroupCell key={cellIndex} data-ui-name="group-cell">
+          <SGroupCell key={`${cellIndex}`} data-ui-name='group-cell'>
             {this.renderRows(cell as NestedCells[], true)}
           </SGroupCell>,
         );
@@ -110,7 +110,7 @@ class Body extends Component<AsProps, State> {
         return sstyled(styles)(
           <SCell
             key={cell.name}
-            role="cell"
+            role='cell'
             headers={headerIds.join(' ')}
             {...props}
             fixed={cell.fixed}
@@ -277,7 +277,7 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role="rowgroup">
+          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
             <SBody render={Box}>
               {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
@@ -285,12 +285,12 @@ class Body extends Component<AsProps, State> {
             </SBody>
           </ScrollArea.Container>
           <SScrollAreaBar
-            orientation="horizontal"
+            orientation='horizontal'
             left={`${offsetLeftSum}px`}
             right={`${offsetRightSum}px`}
             offsetSum={`${offsetSum}px`}
           />
-          <SScrollAreaBar orientation="vertical" />
+          <SScrollAreaBar orientation='vertical' />
         </ScrollArea>
         {Children.origin}
       </SBodyWrapper>,

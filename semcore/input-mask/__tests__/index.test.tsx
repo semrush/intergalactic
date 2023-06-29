@@ -17,12 +17,12 @@ describe('InputMask', () => {
 
   test.concurrent('Should renders correctly', async ({ task }) => {
     const Component = ({ value = '' }) => (
-      <InputMask size="l" mb={4}>
+      <InputMask size='l' mb={4}>
         <InputMask.Value
-          mask="99 99"
-          title="4-digit number"
-          placeholder="__ __"
-          data-testid="input"
+          mask='99 99'
+          title='4-digit number'
+          placeholder='__ __'
+          data-testid='input'
           includeInputProps={['data-testid']}
           defaultValue={value}
         />
@@ -41,14 +41,14 @@ describe('InputMask', () => {
   test('a11y', async () => {
     const { container } = render(
       <>
-        <label htmlFor="input_mask">Expire date</label>
-        <InputMask size="l" mb={4}>
+        <label htmlFor='input_mask'>Expire date</label>
+        <InputMask size='l' mb={4}>
           <InputMask.Value
-            mask="99 99"
-            title="4-digit number"
-            placeholder="__ __"
-            id="input_mask"
-            title="4-digit number"
+            mask='99 99'
+            title='4-digit number'
+            placeholder='__ __'
+            id='input_mask'
+            title='4-digit number'
           />
         </InputMask>
       </>,

@@ -20,6 +20,7 @@ const tokenHandlers = {
   heading: ({ html, level, id, route }) => {
     return (
       <HeadingLink level={level} id={id} route={route} title={html}>
+        {/* rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation> */}
         <span dangerouslySetInnerHTML={{ __html: html }} />
       </HeadingLink>
     );
@@ -48,9 +49,8 @@ const tokenHandlers = {
     const Component = runtimeModule.default;
 
     if (!Component) {
-      // eslint-disable-next-line no-console
       console.error(
-        `Loaded invalid runtime module. Expected it to have .default property but it is undefined. Whole module object: `,
+        'Loaded invalid runtime module. Expected it to have .default property but it is undefined. Whole module object: ',
         runtimeModule,
       );
       return <>Failed to load playground. Details are in developer console</>;
@@ -68,7 +68,7 @@ const tokenHandlers = {
     function resizeIframe() {
       const iframes = document.getElementsByTagName('iframe');
       for (let i = 0; i < iframes.length; i++) {
-        iframes[i].height = iframes[i].contentWindow.document.body.scrollHeight + 'px';
+        iframes[i].height = `${iframes[i].contentWindow.document.body.scrollHeight}px`;
       }
     }
 
@@ -80,6 +80,7 @@ const tokenHandlers = {
             style={{ width: '100%', border: 'none' }}
             srcDoc={compiled}
             onLoad={resizeIframe}
+            title='email html'
           />
         </Example>
         <Accordion>
@@ -105,12 +106,13 @@ const tokenHandlers = {
       <div className={styles.embeddedVideoContainer}>
         <iframe
           src={url}
-          frameborder="0"
+          frameborder='0'
           webkitAllowFullScreen
           mozAllowFullScreen
           allowFullScreen
           className={styles.embeddedVideoIframe}
-        ></iframe>
+          title='video'
+        />
       </div>
     );
   },

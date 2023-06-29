@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies, import/named */
+
 
 export * from '@testing-library/react';
 // @ts-ignore

@@ -28,7 +28,7 @@ function FeauturedVideo({
   }));
 }
 
-// eslint-disable-next-line no-console
+
 console.warn(true, 'The "FeauturedVideo" icon is deprecated. Use the "FeaturedVideo"', 'Icon');
 
 FeauturedVideo.displayName = 'FeauturedVideo';

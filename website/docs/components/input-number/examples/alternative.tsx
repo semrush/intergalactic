@@ -20,25 +20,25 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag="label" htmlFor="alternative-example" size="200">
+      <Text tag='label' htmlFor='alternative-example' size='200'>
         Members count
       </Text>
       <Flex w={100} mt={2}>
         <NeighborLocation>
-          <Button onClick={decrement} aria-label="Decrease members count by 10">
+          <Button onClick={decrement} aria-label='Decrease members count by 10'>
             -
           </Button>
           <InputNumber>
             <InputNumber.Value
-              placeholder="0"
+              placeholder='0'
               ref={inputRef}
               step={10}
               value={value}
               onChange={setValue}
-              id="alternative-example"
+              id='alternative-example'
             />
           </InputNumber>
-          <Button onClick={increment} aria-label="Increase members count by 10">
+          <Button onClick={increment} aria-label='Increase members count by 10'>
             +
           </Button>
         </NeighborLocation>

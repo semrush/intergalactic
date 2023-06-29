@@ -1,6 +1,9 @@
 import React from 'react';
 
-export const ScreenReaderOnly: React.FC<{ children: React.ReactNode, id?: string }> = ({ children, id }) => {
+export const ScreenReaderOnly: React.FC<{ children: React.ReactNode; id?: string }> = ({
+  children,
+  id,
+}) => {
   return (
     <span
       style={{

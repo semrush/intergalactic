@@ -25,12 +25,16 @@ const resizeImage = (image: PNG, w: number, h: number) => {
   return result;
 };
 
-export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
+export async function toMatchImageSnapshot(
+  snapshot: Buffer,
+  task: any,
+  options?: { maxPixelDiff?: number },
+) {
   if (!task) {
     return {
       pass: false,
       message: () =>
-        `You must provide task from test context as an argument of toMatchImageSnapshot.`,
+        'You must provide task from test context as an argument of toMatchImageSnapshot.',
     };
   }
 
@@ -40,29 +44,17 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
   let testName = task.name;
   let suite = task.suite;
   while (suite.name) {
-    testName = suite.name + ' ' + testName;
+    testName = `${suite.name} ${testName}`;
     suite = suite.suite;
   }
-  testName = testName
-    .replace(/[\W\s_]/g, '-')
-    .replace(/-+/g, '-')
-    .toLowerCase();
+  testName = testName.replace(/[\W\s_]/g, '-').replace(/-+/g, '-').toLowerCase();
   if (snapshotIndex !== 1) {
-    testName += '-' + snapshotIndex;
+    testName += `-${snapshotIndex}`;
   }
   const snapshotsDir = resolvePath(testPath, '__image_snapshots__');
-  const snapshotPath = resolvePath(snapshotsDir, testName + '.png');
+  const snapshotPath = resolvePath(snapshotsDir, `${testName}.png`);
 
   await mkdir(snapshotsDir, { recursive: true });
-
-  if (this.snapshotState._updateSnapshot === 'all') {
-    await writeFile(snapshotPath, snapshot);
-
-    return {
-      pass: true,
-      message: () => 'ok',
-    };
-  }
 
   try {
     await stat(snapshotPath);
@@ -105,7 +97,16 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
     },
   );
 
-  if (mismatch < 10) {
+  if (mismatch <= (options?.maxPixelDiff ?? 10)) {
+    return {
+      pass: true,
+      message: () => 'ok',
+    };
+  }
+
+  if (this.snapshotState._updateSnapshot === 'all') {
+    await writeFile(snapshotPath, snapshot);
+
     return {
       pass: true,
       message: () => 'ok',
@@ -113,9 +114,9 @@ export async function toMatchImageSnapshot(snapshot: Buffer, task: any) {
   }
 
   const diffDir = resolvePath(snapshotsDir, '__diff_output__');
-  const newPath = resolvePath(diffDir, testName + '-new.png');
-  const diffPath = resolvePath(diffDir, testName + '-diff.png');
-  const oldPath = resolvePath(diffDir, testName + '-old.png');
+  const newPath = resolvePath(diffDir, `${testName}-new.png`);
+  const diffPath = resolvePath(diffDir, `${testName}-diff.png`);
+  const oldPath = resolvePath(diffDir, `${testName}-old.png`);
 
   await mkdir(diffDir, { recursive: true });
 

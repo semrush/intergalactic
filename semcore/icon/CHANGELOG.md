@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.16.0] - 2023-06-27
+
+### Added
+
+- Added new `GoogleSheets` and `GoogleSlides` icons.
+
+### Fixed
+
+- Removed duplication custom css class.
+
+## [3.15.3] - 2023-06-27
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/utils` [3.53.4 ~> 3.54.0]).
+
 ## [3.15.2] - 2023-06-14
 
 ### Changed

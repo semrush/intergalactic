@@ -22,7 +22,7 @@ class Example extends React.PureComponent {
     return (
       <div className={`example ${styles.exampleWrapper}`}>
         <ThemeProvider tokens={lightThemeTokens}>
-          <div className={styles.view} tabIndex={0} role="group">
+          <div className={styles.view} tabIndex={0} role='group'>
             {children}
           </div>
         </ThemeProvider>
@@ -38,7 +38,7 @@ class Example extends React.PureComponent {
               <div className={styles.stylesIcons}>
                 <Copy
                   toCopy={raw.code}
-                  title="Click to copy code"
+                  title='Click to copy code'
                   onClick={() => logEvent('tab_examples:copy_code:click', eventProperties)}
                 >
                   <CopyS />
@@ -46,7 +46,7 @@ class Example extends React.PureComponent {
               </div>
             </div>
           </div>
-          <Code lang="jsx" block>
+          <Code lang='jsx' block>
             {raw.code}
           </Code>
         </div>

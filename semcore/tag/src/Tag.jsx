@@ -135,7 +135,7 @@ class RootTag extends Component {
 function Text(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={Box} tag="span" />);
+  return sstyled(styles)(<SText render={Box} tag='span' />);
 }
 
 function Close(props) {
@@ -148,7 +148,7 @@ function Close(props) {
     }
 
     if (event.code === 'Enter') {
-      props.onClick && props.onClick(event);
+      props.onClick?.(event);
     }
   }
 
@@ -166,13 +166,13 @@ function Close(props) {
 function Addon(props) {
   const SAddon = Root;
   const { styles } = props;
-  return sstyled(styles)(<SAddon render={Box} tag="span" />);
+  return sstyled(styles)(<SAddon render={Box} tag='span' />);
 }
 
 function Circle(props) {
   const SCircle = Root;
   const { styles } = props;
-  return sstyled(styles)(<SCircle render={Box} tag="span" />);
+  return sstyled(styles)(<SCircle render={Box} tag='span' />);
 }
 
 const Tag = createComponent(RootTag, {

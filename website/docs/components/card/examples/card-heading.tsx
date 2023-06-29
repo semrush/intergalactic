@@ -8,15 +8,15 @@ const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 export default () => (
   <Card>
     <Card.Header>
-      <Card.Title hint={tooltipContent} tag="h4" inline my={0}>
+      <Card.Title hint={tooltipContent} tag='h4' inline my={0}>
         Card heading
       </Card.Title>
       <SettingsM
         style={{ float: 'right' }}
         mt={1}
-        color="stone"
+        color='stone'
         interactive
-        aria-label="Open settings"
+        aria-label='Open settings'
       />
       <Card.Description>This is card additional information or insights.</Card.Description>
     </Card.Header>

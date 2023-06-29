@@ -12,7 +12,7 @@ describe('Wizard', () => {
   test.concurrent('Should correctly render', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
           <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
         </Wizard.Sidebar>
@@ -34,7 +34,7 @@ describe('Wizard', () => {
   test.concurrent('Should support checked completed', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1} completed>
             Step 1
           </Wizard.Stepper>
@@ -58,7 +58,7 @@ describe('Wizard', () => {
   test.concurrent('Should support custom number', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={2}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1} number={1.1}>
             Step 1
           </Wizard.Stepper>
@@ -84,7 +84,7 @@ describe('Wizard', () => {
   test.concurrent('Should correctly render with disabled step', async ({ task }) => {
     const Component = (
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
           <Wizard.Stepper step={2} disabled>
             Step 2
@@ -109,8 +109,8 @@ describe('Wizard', () => {
     await expect(
       await snapshot(
         <Wizard disablePortal visible step={2}>
-          <Wizard.Sidebar title="Header">
-            <Wizard.Stepper step={1} id="step">
+          <Wizard.Sidebar title='Header'>
+            <Wizard.Stepper step={1} id='step'>
               Step 1
             </Wizard.Stepper>
             <Wizard.Stepper step={2}>Step 2</Wizard.Stepper>
@@ -129,7 +129,7 @@ describe('Wizard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
           <Wizard.Stepper step={2} data-testid={'second-step'} onActive={spy}>
             Step 2
@@ -150,7 +150,7 @@ describe('Wizard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1}>Step 1</Wizard.Stepper>
           <Wizard.Stepper step={2} data-testid={'second-step'} onActive={spy}>
             Step 2
@@ -171,7 +171,7 @@ describe('Wizard', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
+        <Wizard.Sidebar title='Header'>
           <Wizard.Stepper step={1} data-testid={'first-step'} onActive={spy}>
             Step 1
           </Wizard.Stepper>
@@ -195,11 +195,11 @@ describe('Wizard', () => {
   test('a11y', async () => {
     const { container } = render(
       <Wizard disablePortal visible step={1}>
-        <Wizard.Sidebar title="Header">
-          <Wizard.Stepper step={1} aria-label="step 1">
+        <Wizard.Sidebar title='Header'>
+          <Wizard.Stepper step={1} aria-label='step 1'>
             Step 1
           </Wizard.Stepper>
-          <Wizard.Stepper step={2} aria-label="step 2">
+          <Wizard.Stepper step={2} aria-label='step 2'>
             Step 2
           </Wizard.Stepper>
         </Wizard.Sidebar>

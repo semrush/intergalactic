@@ -40,7 +40,7 @@ class Checkbox extends Component {
     const SLabel = Root;
     const { Children, styles } = this.asProps;
     return sstyled(styles)(
-      <SLabel render={Box} tag="label">
+      <SLabel render={Box} tag='label'>
         <Children />
       </SLabel>,
     );
@@ -81,15 +81,15 @@ class Value extends Component {
     return sstyled(styles)(
       <>
         <SControl
-          tag="input"
-          type="checkbox"
+          tag='input'
+          type='checkbox'
           aria-checked={other.indeterminate ? 'mixed' : undefined}
           ref={forkRef(forwardRef, this.inputRef)}
           {...controlProps}
           onClick={callAllEventHandlers(controlProps.onClick, this.handleClick)}
         />
         <SCheckbox
-          tag="span"
+          tag='span'
           use:theme={resolveColor(theme)}
           size={size}
           state={state}
@@ -105,7 +105,7 @@ class Value extends Component {
 function Text(props) {
   const SText = Root;
   const { styles } = props;
-  return sstyled(styles)(<SText render={TypographyText} tag="span" />);
+  return sstyled(styles)(<SText render={TypographyText} tag='span' />);
 }
 
 export { inputProps };

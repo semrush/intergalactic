@@ -22,8 +22,8 @@ const Demo = () => {
   }, ['']);
 
   return (
-    <Flex direction="column">
-      <Text tag="label" size="200" htmlFor="search-by-button-filter-by-keyword">
+    <Flex direction='column'>
+      <Text tag='label' size='200' htmlFor='search-by-button-filter-by-keyword'>
         Filter by keyword
       </Text>
       <Box mt={2}>
@@ -32,19 +32,19 @@ const Demo = () => {
             <Input.Value
               value={value}
               onChange={handleChange}
-              id="search-by-button-filter-by-keyword"
-              placeholder="Enter keyword here"
+              id='search-by-button-filter-by-keyword'
+              placeholder='Enter keyword here'
             />
             {value && (
               <Input.Addon
                 tag={CloseXS}
                 interactive
                 onClick={handleClick}
-                aria-label="Clear filter"
+                aria-label='Clear filter'
               />
             )}
           </Input>
-          <Button aria-label="Search">
+          <Button aria-label='Search'>
             <Button.Addon>
               <Search />
             </Button.Addon>

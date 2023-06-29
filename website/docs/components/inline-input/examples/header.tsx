@@ -21,7 +21,7 @@ const Example = () => {
 
   return (
     <>
-      <Text tag="h1">
+      <Text tag='h1'>
         <InlineEdit editable={editingTitle} onEditableChange={setEditingTitle}>
           <InlineEdit.View pr={5}>
             {title} <EditM />

@@ -173,9 +173,7 @@ const components = {
     { text: 'Components animation', size: { kit: '5/9' } },
     { text: 'BottomSheet (draft name)', size: { ui: '9/15', kit: '11/15' } },
   ],
-  'Q2 2023': [
-    { text: 'Enhancing accessibility of the components', size: { kit: '1/11' } },
-  ],
+  'Q2 2023': [{ text: 'Enhancing accessibility of the components', size: { kit: '1/11' } }],
 };
 
 function Gant(props) {
@@ -183,8 +181,8 @@ function Gant(props) {
   const lengthSprint = sprint.length - 1;
 
   return (
-    <div className="gantt">
-      <Row_Column className="gantt__row gantt__row--months" size={lengthSprint}>
+    <div className='gantt'>
+      <Row_Column className='gantt__row gantt__row--months' size={lengthSprint}>
         {sprint.map((date, index) => {
           if (index === lengthSprint) return null;
           return (
@@ -194,19 +192,20 @@ function Gant(props) {
           );
         })}
       </Row_Column>
-      <Row_Column className="gantt__row gantt__row--lines" size={lengthSprint}>
+      <Row_Column className='gantt__row gantt__row--lines' size={lengthSprint}>
         {sprint.map((date, index) => {
           const currentDate = dayjs();
           if (index === lengthSprint) return null;
           if (date < currentDate && sprint[index + 1].subtract(1, 'day') > currentDate) {
-            return <span className="marker" key={date} />;
+            return <span className='marker' key={date} />;
           }
           return <span key={date} />;
         })}
       </Row_Column>
 
+      {/* rome-ignore lint/style/useDefaultParameterLast: */}
       {components.map((component = {}, index) => (
-        <Row_Bar className="gantt__row-bars" size={lengthSprint * 2} key={index}>
+        <Row_Bar className='gantt__row-bars' size={lengthSprint * 2} key={index}>
           {Object.keys(component.size).map((team, index) => (
             <li
               key={index}
@@ -264,7 +263,7 @@ function Roadmap() {
   }
   return (
     <>
-      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} styles={styles} className="tabs">
+      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} styles={styles} className='tabs'>
         {Object.keys(components).map((nameQ, i) => (
           <Tabs.Item key={nameQ} value={i}>
             {nameQ}
