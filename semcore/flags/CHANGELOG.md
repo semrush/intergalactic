@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.25] - 2023-06-28
+
+### Fixed
+
+- Fixed SSR, `window` access changed to `globalThis`.
+
 ## [3.4.24] - 2023-06-27
 
 ### Changed
@@ -69,8 +75,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [3.4.12] - 2023-04-24
-
-## [3.4.11] - 2023-04-17
 
 ### Changed
 
