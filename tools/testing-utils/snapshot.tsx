@@ -17,10 +17,16 @@ require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };
 
-export const snapshot = async (
-  Component,
-  { afterMount, ...options } = {} as { afterMount?: (root: HTMLDivElement) => void },
-) => {
+interface ISnapshot {
+  afterMount?: (root: HTMLDivElement) => void;
+  actions?: {
+    hover?: string;
+    active?: string;
+    focus?: string;
+  };
+}
+
+export const snapshot = async (Component, { afterMount, ...options } = {} as ISnapshot) => {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);

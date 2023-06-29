@@ -6,7 +6,7 @@ import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
-import Table from '../src';
+import Table, { RowTheme } from '../src';
 
 describe('Table', () => {
   beforeEach(cleanup);
@@ -115,7 +115,7 @@ describe('Table', () => {
   );
 
   test.concurrent('should support correct color theme', async ({ task }) => {
-    const Component = ({ theme = 'default' }) => (
+    const Component = ({ theme = 'default' as RowTheme }) => (
       <Table>
         <Table.Body>
           <Table.Row theme={theme}>
@@ -190,7 +190,7 @@ describe('Table.Row', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef();
+    const ref = React.createRef<any>();
     render(
       <Table>
         <Table.Body>
@@ -213,7 +213,7 @@ describe('Table.CellHead', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef();
+    const ref = React.createRef<any>();
     render(
       <Table>
         <Table.Head>
@@ -319,7 +319,7 @@ describe('Table.Cell', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef();
+    const ref = React.createRef<any>();
     render(
       <Table>
         <Table.Body>
@@ -374,7 +374,7 @@ describe('Table.StickyHead', () => {
       </Table>,
     );
 
-    expect(container.querySelector('table').attributes.class.value).toContain('Table-parent');
-    expect(container.querySelector('thead').attributes.class.value).toContain('Header-hidden');
+    expect(container.querySelector('table').className).toContain('Table-parent');
+    expect(container.querySelector('thead').className).toContain('Header-hidden');
   });
 });
