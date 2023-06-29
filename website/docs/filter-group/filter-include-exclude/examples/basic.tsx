@@ -40,7 +40,7 @@ export default () => {
           Enter keywords separated by commas or one per line. For exact matches, enter your keyword
           with square brackets around it.
         </Text>
-        <RadioGroup tag={Flex} my={4} defaultValue='1'>
+        <RadioGroup my={4} defaultValue='1'>
           <Radio>
             <Radio.Value value='1' />
             <Radio.Text>All keywords</Radio.Text>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps, Flex } from '@semcore/flex-box';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Text } from '@semcore/typography';
 
@@ -84,7 +84,7 @@ export type RadioCtx = {
 
 type IntergalacticRadioGroupComponent = (<
   Value extends RadioValue,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.InternalTypings.ComponentTag = typeof Flex,
 >(
   props: Intergalactic.InternalTypings.ComponentProps<Tag, RadioGroupProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

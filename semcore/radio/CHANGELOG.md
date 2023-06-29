@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.0.0] - 2023-07-15
+
+### BREAK
+
+- `RadioGroup` now wraps it's content into `Flex` container (previously it was wrapping content into `React.Fragment` by default).
+
 ## [5.6.10] - 2023-06-27
 
 ### Changed

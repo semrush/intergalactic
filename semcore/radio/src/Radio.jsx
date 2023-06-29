@@ -1,6 +1,6 @@
 import React from 'react';
 import createComponent, { Component, CONTEXT_COMPONENT, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
+import { Flex, Box } from '@semcore/flex-box';
 import assignProps from '@semcore/utils/lib/assignProps';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import resolveColor from '@semcore/utils/lib/color';
@@ -36,15 +36,13 @@ class RadioGroupRoot extends Component {
   }
 
   render() {
-    const { Children, tag } = this.asProps;
+    const { Children } = this.asProps;
 
-    if (tag)
-      return (
-        <Root render={Box} tag={tag} role='radiogroup' __excludeProps={['onChange']}>
-          <Children />
-        </Root>
-      );
-    return <Children />;
+    return (
+      <Root render={Flex} flexDirection='coumn' role='radiogroup' __excludeProps={['onChange']}>
+        <Children />
+      </Root>
+    );
   }
 }
 
