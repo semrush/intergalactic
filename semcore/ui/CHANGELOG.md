@@ -1,3 +1,13 @@
+## [14.9.0] - 2023-06-29
+
+### @semcore/data-table
+
+- **Added** Added background for active state for `Row`.
+
+### @semcore/utils
+
+- **Fixed** `usePreventScroll` was causing 150px right padding.
+
 ## [14.8.0] - 2023-06-29
 
 ### @semcore/d3-chart
