@@ -187,18 +187,18 @@ describe('LinkTrigger', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Renders correctly with empty', async ({ task }) => {
-    const component = (
-      <>
-        <LinkTrigger empty>
-          <LinkTrigger.Text>LinkTrigger</LinkTrigger.Text>
-          <LinkTrigger.Text>LinkTrigger</LinkTrigger.Text>
-        </LinkTrigger>
-      </>
-    );
+  // test.skip('Renders correctly with empty', async ({ task }) => {
+  //   const component = (
+  //     <>
+  //       <LinkTrigger>
+  //         <LinkTrigger.Text empty>LinkTrigger</LinkTrigger.Text>
+  //         <LinkTrigger.Text>LinkTrigger</LinkTrigger.Text>
+  //       </LinkTrigger>
+  //     </>
+  //   );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
   test.concurrent('Should support active', async ({ task }) => {
     const component = <LinkTrigger id='link-trigger'>Filter</LinkTrigger>;

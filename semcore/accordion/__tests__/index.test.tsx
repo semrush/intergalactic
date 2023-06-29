@@ -85,7 +85,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith(null);
   });
 
-  test.concurrent('Should support controlled mode with single expandable item', () => {
+  test('Should support controlled mode with single expandable item', () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(
@@ -129,7 +129,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith(null);
   });
 
-  test.concurrent('Should support uncontrolled mode with multiple expandable items', () => {
+  test('Should support uncontrolled mode with multiple expandable items', () => {
     const spy = vi.fn();
     const { getByText } = render(
       <Accordion onChange={spy}>
@@ -155,7 +155,7 @@ describe('Accordion', () => {
     expect(spy).toBeCalledWith([]);
   });
 
-  test.concurrent('Should support controlled mode with multiple expandable items', () => {
+  test('Should support controlled mode with multiple expandable items', () => {
     const spy = vi.fn();
 
     const { getByText, rerender } = render(

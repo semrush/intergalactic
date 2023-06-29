@@ -148,15 +148,15 @@ const View: React.FC<AsProps> = (props) => {
   ) as React.ReactElement;
 };
 
-export type InlineEditProps = BoxProps & {
+type InlineEditProps = BoxProps & {
   editable?: boolean;
   onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
   defaultEditable?: boolean;
   onEdit?: () => void;
   locale?: string;
 };
-export type InlineEditViewProps = BoxProps & FadeInOutProps & {};
-export type InlineEditEditProps = BoxProps & FadeInOutProps & {};
+type InlineEditViewProps = BoxProps & FadeInOutProps & {};
+type InlineEditEditProps = BoxProps & FadeInOutProps & {};
 
 type InputCtx = {
   getViewProps: PropGetterFn;

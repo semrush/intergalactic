@@ -47,7 +47,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should support onClick on Pill', () => {
+  test('Should support onClick on Pill', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
@@ -64,16 +64,16 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should not call PillGroup onChange after falsy onClick on Pill', () => {
+  test('Should not call PillGroup onChange after falsy onClick on Pill', () => {
     const spy = vi.fn();
     const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>1</Pills.Item>
-        <Pills.Item value={3}>1</Pills.Item>
+        <Pills.Item value={2}>2</Pills.Item>
+        <Pills.Item value={3}>3</Pills.Item>
         <Pills.Item value={4} data-testid={'tab-4'} onClick={spyClick}>
-          1
+          4
         </Pills.Item>
       </Pills>,
     );
@@ -83,16 +83,16 @@ describe('PillGroup', () => {
     expect(spyClick).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should not support clicks on disabled tab', () => {
+  test('Should not support clicks on disabled tab', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>1</Pills.Item>
-        <Pills.Item value={3}>1</Pills.Item>
+        <Pills.Item value={2}>3</Pills.Item>
+        <Pills.Item value={3}>4</Pills.Item>
         <Pills.Item value={3} data-testid={'tab-4'} disabled>
-          1
+          4
         </Pills.Item>
       </Pills>,
     );
@@ -130,7 +130,7 @@ describe('PillGroup', () => {
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should support behavior=radio', async () => {
+  test('Should support behavior=radio', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
