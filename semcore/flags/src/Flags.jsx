@@ -79,7 +79,7 @@ function Flags(props, ref) {
     },
     ref,
   );
-  const flagsBase = window.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/ui-kit/flags/';
+  const flagsBase = globalThis?.__intergalacticFlagsBaseUrl ?? '//static.semrush.com/ui-kit/flags/';
   const { iso2, iso3, name, staticPath = `${flagsBase}${version}` } = props;
 
   if (!_addedStyle) {
