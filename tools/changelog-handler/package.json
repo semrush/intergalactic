@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "tsm --require=../../.ci/tsm-filter-warnings.js index.ts",
-    "lint-changelogs": "tsc --require=../../.ci/tsm-filter-warnings.js bin/lint-changelogs.ts"
+    "lint-changelogs": "tsm --require=../../.ci/tsm-filter-warnings.js bin/lint-changelogs.ts"
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.13",
