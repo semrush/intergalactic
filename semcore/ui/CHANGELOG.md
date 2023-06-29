@@ -1,3 +1,18 @@
+## [14.8.0] - 2023-06-29
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed animation on hover when moving mouse quickly on border of `Donut` chart.
+
+### @semcore/flags
+
+- **Fixed** Fixed SSR, `window` access changed to `globalThis`.
+
+### @semcore/icon
+
+- **Added** Added new `GoogleSheets` and `GoogleSlides` icons.
+- **Fixed** Removed duplication custom css class.
+
 ## [14.7.0] - 2023-06-23
 
 ### @semcore/base-trigger
