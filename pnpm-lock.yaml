@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
+
 overrides:
   csstype: 3.0.8
   minimist: 1.2.6
@@ -2102,7 +2106,7 @@ importers:
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 3.10.3
-        version: link:../data-table
+        version: 3.10.3(@semcore/core@semcore+core)
       '@semcore/date-picker':
         specifier: 3.9.5
         version: link:../date-picker
@@ -2138,7 +2142,7 @@ importers:
         version: link:../feedback-form
       '@semcore/flags':
         specifier: 3.4.25
-        version: 3.4.25(@semcore/core@semcore+core)
+        version: link:../flags
       '@semcore/flex-box':
         specifier: 4.7.32
         version: link:../flex-box
@@ -5658,8 +5662,8 @@ packages:
     dev: true
     optional: true
 
-  /@semcore/flags@3.4.25(@semcore/core@semcore+core):
-    resolution: {integrity: sha512-t7d5efd5mnKPla24jADnwwxFAJhrtBcCa+BILPNmsNlFh9vjBeYj4ibnJRyZaeBZ7NCdpfZfD3C4aSs1QSzOSQ==}
+  /@semcore/data-table@3.10.3(@semcore/core@semcore+core):
+    resolution: {integrity: sha512-8i71IcUi7ElAwNp8UnwGrxC26jeof88Oon5aAU4Pb9VgseiNGNGXTu6k9P7dyPfgAC+2IP4s4iW/BrDUIr90zw==}
     peerDependencies:
       '@semcore/core': ^1.11
       react: 16.8 - 18
@@ -5667,8 +5671,10 @@ packages:
     dependencies:
       '@semcore/core': link:semcore/core
       '@semcore/flex-box': 4.7.32(@semcore/core@semcore+core)
+      '@semcore/icon': 3.16.0(@semcore/core@semcore+core)
+      '@semcore/scroll-area': 4.4.1(@semcore/core@semcore+core)
       '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
-      classnames: 2.2.6
+      resize-observer-polyfill: 1.5.1
     dev: false
 
   /@semcore/flex-box@4.7.32(@semcore/core@semcore+core):
@@ -5682,6 +5688,32 @@ packages:
       '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
       classnames: 2.2.6
       csstype: 3.0.8
+    dev: false
+
+  /@semcore/icon@3.16.0(@semcore/core@semcore+core):
+    resolution: {integrity: sha512-lXs8BV1MURekvyJ8huuAmBfuxnQw4mmtaS39T/tGzznSfYS5OpY4vDgMapIYZ7jBxl+GN96r+iH9WGW3AuDxuw==}
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.32(@semcore/core@semcore+core)
+      '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
+      classnames: 2.2.6
+    dev: false
+
+  /@semcore/scroll-area@4.4.1(@semcore/core@semcore+core):
+    resolution: {integrity: sha512-aRp2bW0VIhR8Re7ZGSXERONIdVZCkr0xx93MNwzrTPBwJ2yNJqF1AOf/2d/HR6gheZ1S2v99Vod/G2XJYKbGtQ==}
+    peerDependencies:
+      '@semcore/core': ^1.11
+      react: 16.8 - 18
+      react-dom: 16.8 - 18
+    dependencies:
+      '@semcore/core': link:semcore/core
+      '@semcore/flex-box': 4.7.32(@semcore/core@semcore+core)
+      '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
+      resize-observer-polyfill: 1.5.1
     dev: false
 
   /@semcore/theme-redesign@1.5.12:
@@ -18560,7 +18592,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-settings:
-  autoInstallPeers: false
-  excludeLinksFromLockfile: false
