@@ -29,7 +29,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 
 @## DatePicker.Trigger and DateRangePicker.Trigger
 
-Trigger button, exists by default. `DateRangePicker` has the same interface.
+Trigger input, exists by default. `DateRangePicker` has the same interface.
 
 ```jsx
 import { DatePicker } from '@semcore/ui/date-picker';

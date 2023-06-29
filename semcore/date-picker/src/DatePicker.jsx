@@ -5,7 +5,15 @@ import { Box } from '@semcore/flex-box';
 import Button from '@semcore/button';
 import Divider from '@semcore/divider';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
-import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './components';
+import {
+  Header,
+  Next,
+  Popper,
+  Prev,
+  Title,
+  Trigger as ButtonTrigger,
+  InputTrigger,
+} from './components';
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 import { getLocaleDate } from './utils/formatDate';
@@ -37,21 +45,21 @@ export class DatePickerRoot extends PickerAbstract {
     this.handlers.value(new Date(new Date().setHours(0, 0, 0, 0)));
   };
 
-  getTriggerProps() {
+  getButtonTriggerProps() {
     const { value, locale } = this.asProps;
     return {
-      ...super.getTriggerProps(),
+      ...super.getButtonTriggerProps(),
       placeholder: 'Select date',
       children: value ? getLocaleDate(value, locale) : null,
     };
   }
 
-  getInputTriggerProps() {
+  getTriggerProps() {
     const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
       this.asProps;
 
     return {
-      ...super.getTriggerProps(),
+      ...super.getButtonTriggerProps(),
       value,
       onChange,
       onDisplayedPeriodChange,
@@ -114,8 +122,8 @@ class Today extends Component {
 const DatePicker = createComponent(
   DatePickerRoot,
   {
-    Trigger,
-    InputTrigger,
+    Trigger: InputTrigger,
+    ButtonTrigger,
     Popper,
     Header,
     Title,

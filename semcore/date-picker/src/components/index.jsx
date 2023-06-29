@@ -10,7 +10,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ButtonTrigger from './ButtonTrigger';
 import InputTriggerBase from './InputTrigger';
 
-/** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
+/** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
 export function Trigger() {
   return <Root render={Dropdown.Trigger} tag={ButtonTrigger} />;
 }

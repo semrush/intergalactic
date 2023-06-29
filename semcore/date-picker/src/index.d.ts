@@ -325,12 +325,12 @@ declare const DatePicker: Intergalactic.Component<
   DatePickerProps,
   DatePickerContext & CalendarDaysContext
 > & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
@@ -361,12 +361,12 @@ declare const DateRangePicker: Intergalactic.Component<
   DateRangePickerContext & CalendarDaysContext,
   [handlers: DatePickerHandlers]
 > & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
@@ -398,12 +398,12 @@ declare const MonthPicker: Intergalactic.Component<
   MonthPickerContext & CalendarMonthsContext,
   [handlers: DatePickerHandlers]
 > & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
@@ -433,12 +433,12 @@ declare const MonthRangePicker: Intergalactic.Component<
   MonthRangePickerContext & CalendarMonthsContext,
   [handlers: DatePickerHandlers]
 > & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;

@@ -4,7 +4,7 @@ import { DatePicker } from '@semcore/ui/date-picker';
 const Demo = () => {
   return (
     <DatePicker>
-      <DatePicker.InputTrigger />
+      <DatePicker.Trigger />
       <DatePicker.Popper>
         <DatePicker.Header>
           <DatePicker.Prev />
