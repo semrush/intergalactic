@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.0] - 2023-07-15
+
+### Break
+
+- Strict, backward incompatible typings.
+
 ## [3.6.3] - 2023-06-27
 
 ### Changed
@@ -353,11 +359,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Обнавлены зависимости `popper`/`flex-box`/`utils`
-
-
 - Исправлен дефолтный триггер
-
-
 
 ## [1.2.1] - 2019-09-30
 

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/illustration",
   "description": "Semrush Illustration Component",
-  "version": "1.4.29",
+  "version": "2.0.0-beta.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "^4"
+    "@semcore/flex-box": "5.0.0-beta.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "2.0.0-beta.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

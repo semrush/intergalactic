@@ -1,7 +1,7 @@
 {
   "name": "@semcore/data-table",
   "description": "Semrush DataTable Component",
-  "version": "3.10.3",
+  "version": "4.0.0-beta.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,10 +12,10 @@
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "@semcore/flex-box": "^4",
-    "@semcore/icon": "2.16 - 3",
-    "@semcore/scroll-area": "^4.0.0",
-    "@semcore/utils": "^3.22",
+    "@semcore/flex-box": "5.0.0-beta.0",
+    "@semcore/icon": "4.0.0-beta.0",
+    "@semcore/scroll-area": "5.0.0-beta.0",
+    "@semcore/utils": "4.0.0-beta.0",
     "resize-observer-polyfill": "^1.5"
   },
   "devDependencies": {
@@ -39,7 +39,7 @@
     "csstype": "3.0.8"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "2.0.0-beta.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

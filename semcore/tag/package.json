@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tag",
   "description": "Semrush Tag Component",
-  "version": "4.6.3",
+  "version": "5.0.0-beta.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,12 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "^3.37",
-    "@semcore/icon": "2.16 - 3",
-    "@semcore/flex-box": "^4"
+    "@semcore/utils": "4.0.0-beta.0",
+    "@semcore/icon": "4.0.0-beta.0",
+    "@semcore/flex-box": "5.0.0-beta.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "2.0.0-beta.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

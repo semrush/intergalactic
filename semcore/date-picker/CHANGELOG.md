@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### BREAK
 
 - `DatePicker.Trigger` now represents input trigger (previously available as `DatePicker.InputTrigger`). Old and deprecated trigger still available as `.ButtonTrigger`.
+- Strict, backward incompatible typings.
 
 ## [3.9.5] - 2023-06-28
 

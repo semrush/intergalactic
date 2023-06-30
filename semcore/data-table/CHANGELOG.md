@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.0] - 2023-07-15
+
+### Break
+
+- Strict, backward incompatible typings.
+
+### Changed
+
+- Version major update due to children dependencies update (`@semcore/icon` [4.0.0 ~> 4.0.0]).
+
 ## [3.10.3] - 2023-06-28
 
 ### Changed

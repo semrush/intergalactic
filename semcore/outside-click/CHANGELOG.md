@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2023-07-15
+
+### Break
+
+- Strict, backward incompatible typings.
+
 ## [2.5.37] - 2023-06-27
 
 ### Changed
