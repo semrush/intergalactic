@@ -55,6 +55,7 @@
     "@semcore/slack-integration": "workspace:*",
     "@semcore/theme-redesign": "1.5.12",
     "@testing-library/react": "13.4.0",
+    "@types/node": "^17.0.45",
     "@vitejs/plugin-react": "2.0.0",
     "@vitest/browser": "^0.32.0",
     "@vitest/coverage-v8": "^0.32.0",

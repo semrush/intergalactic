@@ -1,17 +1,15 @@
 import React from 'react';
-import Flags, { iso2Name, nameWithoutIso } from '@semcore/ui/flags';
+import Flags, { iso2Name } from '@semcore/ui/flags';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
-const allNames = { ...iso2Name, ...nameWithoutIso };
-
 const Demo = () => (
   <Flex flexWrap>
-    {Object.keys(allNames).map((name) => (
+    {Object.keys(iso2Name).map((name) => (
       <Flex direction='column' alignItems='center' p={5} key={name}>
-        <Flags name={name as keyof typeof allNames} mb={2} />
+        <Flags name={name as keyof typeof iso2Name} mb={2} />
         <Text style={{ textAlign: 'center' }} noWrap w={160}>
-          {allNames[name]}
+          {iso2Name[name]}
         </Text>
       </Flex>
     ))}
