@@ -3,5 +3,5 @@
     "strict": true
   },
   "extends": "../../tsconfig.json",
-  "include": ["src", "lib", "__tests__"]
+  "include": ["src", "lib"]
 }
