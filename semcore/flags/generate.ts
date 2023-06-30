@@ -93,10 +93,7 @@ for (const scaling of [1, 2]) {
   await fs.writeFile(resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.png`), reducedBuffer);
   await fs.writeFile(resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.css`), cssOutput);
 
-  const expectedCountries = Object.values({
-    ...expectedOutputRequirements.iso2Name,
-    ...expectedOutputRequirements.nameWithoutIso,
-  });
+  const expectedCountries = Object.values(expectedOutputRequirements.iso2Name);
   for (const country of expectedCountries) {
     const normalizedName = normalizeName(country);
     if (!cssOutput.includes(normalizedName)) {

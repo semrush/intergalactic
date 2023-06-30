@@ -1323,7 +1323,6 @@ export declare const nameWithoutIso: {
 
 type iso2 = keyof typeof iso2Name;
 type iso3 = keyof typeof iso3Name;
-type name = keyof typeof nameWithoutIso;
 
 /** @deprecated */
 export interface IFlagsProps extends FlagsProps, UnknownProperties {}
@@ -1337,7 +1336,7 @@ export type FlagsProps = BoxProps & {
   /** Country code in three-letter format */
   iso3?: iso3;
   /** Country code in two-letter or three-letter format or country/union of countries without ISO code */
-  name?: name | iso2 | iso3;
+  name?: iso2 | iso3;
 };
 
 declare const Flags: Intergalactic.Component<'div', FlagsProps>;
