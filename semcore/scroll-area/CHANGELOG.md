@@ -2,6 +2,8 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.2] - 2023-06-30
+
 ## [4.4.1] - 2023-06-27
 
 ### Changed
@@ -204,11 +206,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Rewrite code from ts to js.
 - Changed interception event of mouse for cursor in `ScrollBar`.
-
-
 - Call calculate position scroll when change size container
-
-
 
 ## [3.5.3] - 2021-9-24
 
@@ -385,11 +383,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Обновлены версии пакетов
-
-
 - Убран `root-ref` пакет
-
-
 
 ## [2.2.2] - 2019-10-03
 
