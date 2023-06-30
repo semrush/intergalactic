@@ -953,7 +953,7 @@ importers:
         specifier: ^3.0.0
         version: link:../format-text
       '@semcore/illustration':
-        specifier: 1.4.29
+        specifier: 1.4.30
         version: link:../illustration
       '@semcore/typography':
         specifier: ^4
@@ -2063,223 +2063,223 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: 4.3.35
+        specifier: 4.3.36
         version: link:../accordion
       '@semcore/animation':
-        specifier: 1.10.20
+        specifier: 1.10.21
         version: link:../animation
       '@semcore/badge':
-        specifier: 3.3.33
+        specifier: 3.3.34
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: 3.12.1
+        specifier: 3.12.2
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: 4.6.3
+        specifier: 4.6.4
         version: link:../breadcrumbs
       '@semcore/breakpoints':
-        specifier: 1.2.38
+        specifier: 1.2.39
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 4.4.8
+        specifier: 4.4.9
         version: link:../button
       '@semcore/card':
-        specifier: 4.3.27
+        specifier: 4.3.28
         version: link:../card
       '@semcore/carousel':
-        specifier: 2.2.48
+        specifier: 2.2.49
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 6.5.8
+        specifier: 6.5.9
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: 1.6.4
+        specifier: 1.6.5
         version: link:../color-picker
       '@semcore/core':
-        specifier: 1.15.7
+        specifier: 1.15.8
         version: link:../core
       '@semcore/counter':
-        specifier: 2.3.23
+        specifier: 2.3.24
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 2.17.4
+        specifier: 2.17.5
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 3.10.3
-        version: 3.10.3(@semcore/core@semcore+core)
+        specifier: 3.11.1
+        version: link:../data-table
       '@semcore/date-picker':
-        specifier: 3.9.5
+        specifier: 3.9.6
         version: link:../date-picker
       '@semcore/divider':
-        specifier: 3.2.32
+        specifier: 3.2.33
         version: link:../divider
       '@semcore/dot':
-        specifier: 4.2.40
+        specifier: 4.2.41
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: 2.6.3
+        specifier: 2.6.4
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: 3.6.3
+        specifier: 3.6.4
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 3.9.6
+        specifier: 3.9.7
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: 1.2.31
+        specifier: 1.2.32
         version: link:../ellipsis
       '@semcore/email':
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 3.11.2
+        specifier: 3.11.3
         version: link:../errors
       '@semcore/feature-popover':
-        specifier: 3.5.4
+        specifier: 3.5.5
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 5.4.29
+        specifier: 5.4.30
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: 3.4.25
+        specifier: 3.4.26
         version: link:../flags
       '@semcore/flex-box':
-        specifier: 4.7.32
+        specifier: 4.7.33
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: 3.2.34
+        specifier: 3.2.35
         version: link:../format-text
       '@semcore/fullscreen-modal':
-        specifier: 2.4.3
+        specifier: 2.4.4
         version: link:../fullscreen-modal
       '@semcore/grid':
-        specifier: 4.3.33
+        specifier: 4.3.34
         version: link:../grid
       '@semcore/i18n-unplugin':
         specifier: 0.0.5
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: 3.16.0
+        specifier: 3.16.1
         version: link:../icon
       '@semcore/illustration':
-        specifier: 1.4.29
+        specifier: 1.4.30
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: 3.6.2
+        specifier: 3.6.3
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: 3.7.4
+        specifier: 3.7.5
         version: link:../inline-input
       '@semcore/input':
-        specifier: 3.7.1
+        specifier: 3.7.2
         version: link:../input
       '@semcore/input-mask':
-        specifier: 4.5.15
+        specifier: 4.5.16
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: 4.7.3
+        specifier: 4.7.4
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 3.3.49
+        specifier: 3.3.50
         version: link:../input-tags
       '@semcore/link':
-        specifier: 4.3.36
+        specifier: 4.3.37
         version: link:../link
       '@semcore/modal':
-        specifier: 3.8.3
+        specifier: 3.8.4
         version: link:../modal
       '@semcore/neighbor-location':
-        specifier: 3.1.38
+        specifier: 3.1.39
         version: link:../neighbor-location
       '@semcore/notice':
-        specifier: 4.6.3
+        specifier: 4.6.4
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 4.9.3
+        specifier: 4.9.4
         version: link:../notice-bubble
       '@semcore/notice-global':
-        specifier: 1.7.3
+        specifier: 1.7.4
         version: link:../notice-global
       '@semcore/outside-click':
-        specifier: 2.5.37
+        specifier: 2.5.38
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 3.7.4
+        specifier: 3.7.5
         version: link:../pagination
       '@semcore/pills':
-        specifier: 4.6.8
+        specifier: 4.6.9
         version: link:../pills
       '@semcore/popper':
-        specifier: 4.19.5
+        specifier: 4.19.6
         version: link:../popper
       '@semcore/portal':
-        specifier: 2.6.15
+        specifier: 2.6.16
         version: link:../portal
       '@semcore/product-head':
-        specifier: 3.4.13
+        specifier: 3.4.14
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: 3.3.33
+        specifier: 3.3.34
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 5.6.10
+        specifier: 5.6.11
         version: link:../radio
       '@semcore/scroll-area':
-        specifier: 4.4.1
+        specifier: 4.4.2
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 3.10.2
+        specifier: 3.10.3
         version: link:../select
       '@semcore/side-panel':
-        specifier: 2.4.19
+        specifier: 2.4.20
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: 4.4.33
+        specifier: 4.4.34
         version: link:../skeleton
       '@semcore/slider':
-        specifier: 3.4.24
+        specifier: 3.4.25
         version: link:../slider
       '@semcore/spin':
-        specifier: 4.2.32
+        specifier: 4.2.33
         version: link:../spin
       '@semcore/spin-container':
-        specifier: 6.2.39
+        specifier: 6.2.40
         version: link:../spin-container
       '@semcore/sticky':
-        specifier: 2.4.32
+        specifier: 2.4.33
         version: link:../sticky
       '@semcore/switch':
-        specifier: 4.4.24
+        specifier: 4.4.25
         version: link:../switch
       '@semcore/tab-line':
-        specifier: 3.3.24
+        specifier: 3.3.25
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: 3.5.5
+        specifier: 3.5.6
         version: link:../tab-panel
       '@semcore/tag':
-        specifier: 4.6.3
+        specifier: 4.6.4
         version: link:../tag
       '@semcore/textarea':
-        specifier: 4.3.32
+        specifier: 4.3.33
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 3.7.2
+        specifier: 3.7.3
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: 5.4.25
+        specifier: 5.4.26
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 4.4.13
+        specifier: 4.4.14
         version: link:../typography
       '@semcore/utils':
-        specifier: 3.54.0
+        specifier: 3.54.1
         version: link:../utils
       '@semcore/widget-empty':
-        specifier: 3.12.2
+        specifier: 3.12.3
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 1.4.3
+        specifier: 1.4.4
         version: link:../wizard
     devDependencies:
       '@semcore/continuous-delivery':
@@ -2359,7 +2359,7 @@ importers:
         specifier: ^4
         version: link:../flex-box
       '@semcore/illustration':
-        specifier: 1.4.29
+        specifier: 1.4.30
         version: link:../illustration
       '@semcore/utils':
         specifier: ^3.27
@@ -5662,78 +5662,9 @@ packages:
     dev: true
     optional: true
 
-  /@semcore/data-table@3.10.3(@semcore/core@semcore+core):
-    resolution: {integrity: sha512-8i71IcUi7ElAwNp8UnwGrxC26jeof88Oon5aAU4Pb9VgseiNGNGXTu6k9P7dyPfgAC+2IP4s4iW/BrDUIr90zw==}
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 4.7.32(@semcore/core@semcore+core)
-      '@semcore/icon': 3.16.0(@semcore/core@semcore+core)
-      '@semcore/scroll-area': 4.4.1(@semcore/core@semcore+core)
-      '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
-      resize-observer-polyfill: 1.5.1
-    dev: false
-
-  /@semcore/flex-box@4.7.32(@semcore/core@semcore+core):
-    resolution: {integrity: sha512-wPDBfFW5pGtg09nUGRmds42cwng+yihNuAaoPsl9qGqyFSBzdycZnXgdrV5Hn+uShmj/21hjaAjHbyMBsnkfIA==}
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
-      classnames: 2.2.6
-      csstype: 3.0.8
-    dev: false
-
-  /@semcore/icon@3.16.0(@semcore/core@semcore+core):
-    resolution: {integrity: sha512-lXs8BV1MURekvyJ8huuAmBfuxnQw4mmtaS39T/tGzznSfYS5OpY4vDgMapIYZ7jBxl+GN96r+iH9WGW3AuDxuw==}
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 4.7.32(@semcore/core@semcore+core)
-      '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
-      classnames: 2.2.6
-    dev: false
-
-  /@semcore/scroll-area@4.4.1(@semcore/core@semcore+core):
-    resolution: {integrity: sha512-aRp2bW0VIhR8Re7ZGSXERONIdVZCkr0xx93MNwzrTPBwJ2yNJqF1AOf/2d/HR6gheZ1S2v99Vod/G2XJYKbGtQ==}
-    peerDependencies:
-      '@semcore/core': ^1.11
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 4.7.32(@semcore/core@semcore+core)
-      '@semcore/utils': 3.54.0(@semcore/core@semcore+core)
-      resize-observer-polyfill: 1.5.1
-    dev: false
-
   /@semcore/theme-redesign@1.5.12:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
     dev: true
-
-  /@semcore/utils@3.54.0(@semcore/core@semcore+core):
-    resolution: {integrity: sha512-sQj3All80lCC0USXMY3ar29cwC2Mgf1w93ykwLnSLA8KYKg4SP4F19b0lE81mldlrgQlAn8za2bct3U0Ju25vQ==}
-    peerDependencies:
-      '@semcore/core': ^1
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@semcore/core': link:semcore/core
-      classnames: 2.2.6
-      focus-lock: 0.11.3
-      hoist-non-react-statics: 3.3.2
-      nano-css: 5.3.4
-    dev: false
 
   /@sinclair/typebox@0.25.24:
     resolution: {integrity: sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==}
