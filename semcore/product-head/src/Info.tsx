@@ -27,7 +27,7 @@ class InfoRoot extends Component<IBoxProps> {
   }
 }
 
-function Item(props) {
+function Item(props: any) {
   const SItem = Root;
   const { Children, styles, label } = props;
   return sstyled(styles)(
@@ -38,7 +38,7 @@ function Item(props) {
   );
 }
 
-function Label(props) {
+function Label(props: any) {
   const SLabel = Root;
   return sstyled(props.styles)(<SLabel render={Box} />);
 }

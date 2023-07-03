@@ -22,5 +22,5 @@
       "@semcore/ui/utils/*": ["../semcore/utils/src/*"]
     }
   },
-  "include": ["src", "docs", "tools", "types", "builder"]
+  "include": ["src", "docs", "types"]
 }

@@ -10,7 +10,7 @@ const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 import { Box, Flex } from '@semcore/flex-box';
 import Carousel from '../src';
 
-const Container = (props) => (
+const Container = (props: any) => (
   <Carousel.Container {...props}>
     {[...new Array(2)].map((_, ind) => (
       <Carousel.Item key={ind} />

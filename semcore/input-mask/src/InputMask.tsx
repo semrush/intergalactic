@@ -73,12 +73,9 @@ type InputMaskCtx = {
   getValueProps: PropGetterFn;
 };
 
-export function getAfterPositionValue(
-  value: string,
-  mask: IInputMaskValueProps['mask'] = '',
-): number {
+export function getAfterPositionValue(value: string, mask: any = ''): number {
   const { length } = value;
-  const isValid = (valueChar, maskChar) =>
+  const isValid = (valueChar: string, maskChar: string) =>
     maskChar !== undefined ? maskChar !== valueChar : /\w|\+|\(/.test(valueChar);
   let afterPotionValue = 0;
   for (let i = length - 1; i >= 0; i--) {
@@ -119,9 +116,9 @@ class Value extends Component<IInputMaskValueProps> {
 
   inputRef = React.createRef<HTMLInputElement>();
   maskRef = React.createRef<HTMLDivElement>();
-  textMaskCoreInstance = undefined;
-  usedMask = undefined;
-  prevConfirmedValue = undefined;
+  textMaskCoreInstance: any = undefined;
+  usedMask: any = undefined;
+  prevConfirmedValue: any = undefined;
   state: {
     lastConformed:
       | {
@@ -143,7 +140,7 @@ class Value extends Component<IInputMaskValueProps> {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: any) {
     const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
     const maskConfigChanged = maskConfigProps.some(
       (prop) => this.asProps[prop] !== prevProps[prop],
@@ -168,7 +165,7 @@ class Value extends Component<IInputMaskValueProps> {
   uncontrolledProps() {
     return {
       value: [
-        (value) => {
+        (value: any) => {
           const {
             textMaskCoreInstance,
             asProps: { placeholder },
@@ -184,7 +181,7 @@ class Value extends Component<IInputMaskValueProps> {
           );
           return afterPositionValue === 0 && placeholder ? '' : previousConformedValue;
         },
-        (value) => {
+        (value: any) => {
           const { textMaskCoreInstance } = this;
           if (!textMaskCoreInstance) return;
           const { previousPlaceholder } = textMaskCoreInstance.state;
@@ -205,11 +202,11 @@ class Value extends Component<IInputMaskValueProps> {
     this.textMaskCoreInstance = createTextMaskInputElement({
       ...this.asProps,
       inputElement: this.inputRef.current,
-      mask: this.maskStrToRegexArray(mask),
+      mask: this.maskStrToRegexArray(mask as any),
       guide: !hideMask,
       showMask: !hideMask,
       placeholderChar: '_',
-      pipe: (conformedValue, pipeConfigs) => {
+      pipe: (conformedValue: any, pipeConfigs: any) => {
         let indexesOfPipedChars = null;
         if (userPipe) {
           const piped = userPipe(conformedValue, pipeConfigs);
@@ -223,7 +220,10 @@ class Value extends Component<IInputMaskValueProps> {
 
         let lastNonMaskCharPosition = 0;
         for (let i = 0; i < conformedValue?.length; i++) {
-          if (!this.asProps.maskOnlySymbols[conformedValue[i]] && /\w/.test(conformedValue[i]))
+          if (
+            !(this.asProps.maskOnlySymbols as any)[conformedValue[i]] &&
+            /\w/.test(conformedValue[i])
+          )
             lastNonMaskCharPosition = i + 1;
         }
 
@@ -250,10 +250,10 @@ class Value extends Component<IInputMaskValueProps> {
       },
     });
 
-    this.textMaskCoreInstance.update(value);
+    (this.textMaskCoreInstance as any).update(value);
     const {
       state: { previousConformedValue },
-    } = this.textMaskCoreInstance;
+    } = this.textMaskCoreInstance as any;
     this.handlers.value(previousConformedValue);
   };
 
@@ -266,15 +266,15 @@ class Value extends Component<IInputMaskValueProps> {
     }, 0);
   };
 
-  maskStrToRegexArray = (mask) => {
+  maskStrToRegexArray = (mask: string) => {
     if (typeof mask !== 'string') return mask;
     const { aliases } = this.asProps;
-    return mask.split('').map((symbol) => aliases[symbol] || symbol);
+    return mask.split('').map((symbol) => aliases?.[symbol] || symbol);
   };
 
-  handleMouseDownPlaceholder = (e) => {
-    e.preventDefault();
-    this.inputRef.current.focus();
+  handleMouseDownPlaceholder = (event: any) => {
+    event.preventDefault();
+    this.inputRef.current?.focus();
   };
 
   render() {

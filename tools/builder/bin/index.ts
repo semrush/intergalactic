@@ -22,7 +22,7 @@ const babelPresetPackagePath = resolvePath(
 const workingDir = process.cwd();
 process.chdir(babelPresetPackagePath);
 
-const makeCommand = {
+const makeCommand: Record<string, (...args: any[]) => string> = {
   CLEANUP: () => `rm -rf ${workingDir}/lib`,
   TYPES: (output: string) =>
     `tsc --emitDeclarationOnly --baseUrl ${workingDir}/src --project ${workingDir}/tsconfig.json --outDir ${workingDir}/lib/${output}`,
@@ -30,7 +30,7 @@ const makeCommand = {
     `mkdir -p ${workingDir}/lib/${output} && find ${workingDir}/src -type f -name "*.d.ts" -exec cp {} ${workingDir}/lib/${output} ";"`,
   BABEL: (output: string, babelArgs: string) =>
     `pnpm babel ${workingDir}/src --out-dir ${workingDir}/lib/${output} ${babelArgs}`,
-} as const;
+};
 
 type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any ? A : never;
 
@@ -41,10 +41,10 @@ const runCommand = async <Command extends keyof typeof makeCommand>(
   return await execa.commandSync(makeCommand[commandName].apply(null, args), { shell: true });
 };
 
-const MAP_BABEL_ENV = {
+const MAP_BABEL_ENV: Record<string, string> = {
   cjs: 'commonjs',
   es6: 'es6',
-} as const;
+};
 
 // rome-ignore lint/nursery/noConsoleLog: <explanation>
 console.log(`running builder from dir ${workingDir}\n`);

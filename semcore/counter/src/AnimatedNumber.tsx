@@ -18,7 +18,7 @@ const easeInOutSine = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
 const defaultFormatValue = (value: number) => value.toFixed(2);
 
 export const AnimatedNumber = ((props) => {
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLElement>(null);
   const defaultDurationStr = useCssVariable('--intergalactic-duration-counter', '200', ref);
   const defaultDuration = React.useMemo(
     () => parseInt(defaultDurationStr, 10),
@@ -59,7 +59,7 @@ export const AnimatedNumber = ((props) => {
     animationRef.current.animationFrame = requestAnimationFrame(handleNextAnimationFrame);
   }, [easing, formatValue, duration, delay]);
   useEnhancedEffect(() => {
-    ref.current.innerText = formatValue(animationRef.current.fromValue);
+    ref.current!.innerText = formatValue(animationRef.current.fromValue);
     animationRef.current.toValue = value;
     animationRef.current.animationStart = Date.now();
     handleNextAnimationFrame();

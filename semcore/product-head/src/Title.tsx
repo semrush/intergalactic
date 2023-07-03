@@ -36,7 +36,7 @@ class TitleRoot extends Component<IHeaderTitleProps> {
   }
 }
 
-function Tool(props) {
+function Tool(props: any) {
   const STool = Root;
   return sstyled(props.styles)(<STool render={Box} />);
 }

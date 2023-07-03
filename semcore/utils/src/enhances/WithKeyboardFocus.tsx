@@ -52,7 +52,7 @@ export class EnhancedWithKeyboardFocus extends PureComponent<
     tabIndex: 0,
   };
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: any, state: any) {
     if (props.keyboardFocused !== undefined) {
       return {
         keyboardFocused: props.keyboardFocused,
@@ -91,7 +91,7 @@ export class EnhancedWithKeyboardFocus extends PureComponent<
     const { children, tabIndex, disabled } = this.props;
     const { keyboardFocused } = this.state;
     return children({
-      tabIndex: disabled ? -1 : tabIndex,
+      tabIndex: disabled ? -1 : tabIndex!,
       keyboardFocused,
       onFocus: this.handlerFocus,
       onBlur: this.handlerBlur,

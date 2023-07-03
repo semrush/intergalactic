@@ -133,17 +133,17 @@ export type ColorPickerHandlers = DropdownHandlers & {};
 export interface IPaletteManagerHandlers extends PaletteManagerHandlers, UnknownProperties {}
 export type PaletteManagerHandlers = DropdownHandlers & {};
 
-interface IColorPickerContext {
+type ColorPickerContext = {
   getTriggerProps: PropGetterFn;
   getColorsProps: PropGetterFn;
   getItemProps: PropGetterFn;
-}
+};
 
-interface IPaletteManagerContext {
+type PaletteManagerContext = {
   getInputColorProps: PropGetterFn;
   getColorsProps: PropGetterFn;
   getItemProps: PropGetterFn;
-}
+};
 
 declare const defaultColors: string[];
 

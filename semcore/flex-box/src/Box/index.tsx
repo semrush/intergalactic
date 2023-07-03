@@ -2,7 +2,7 @@ import React from 'react';
 import { Intergalactic, createBaseComponent } from '@semcore/core';
 import useBox, { BoxProps } from './useBox';
 
-function Box(props, ref) {
+function Box(props: any, ref: any) {
   const [Tag, boxProps] = useBox(props, ref);
   return <Tag {...boxProps} />;
 }

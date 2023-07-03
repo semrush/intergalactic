@@ -4,7 +4,7 @@ const COLORS = preval`
   module.exports = require('@semcore/babel-plugin-react-semcore').getColorVars(path.resolve(__dirname, '../', 'style/var.css'));
 `;
 
-function shadeHexColor(color, percent) {
+function shadeHexColor(color: string, percent: number) {
   const f = parseInt(color.slice(1), 16);
   const t = percent < 0 ? 0 : 255;
   const p = percent < 0 ? percent * -1 : percent;
@@ -21,7 +21,7 @@ function shadeHexColor(color, percent) {
     .slice(1)}`;
 }
 
-function shadeRGBColor(color, percent) {
+function shadeRGBColor(color: string, percent: number) {
   const [R, G, B] = colorRGB(color);
   const t = percent < 0 ? 0 : 255;
   const p = percent < 0 ? percent * -1 : percent;
@@ -38,7 +38,7 @@ export function shade(color?: string, percent = 1) {
   return shadeHexColor(color, percent);
 }
 
-function blendHexColors(colorOne, colorTwo, percent) {
+function blendHexColors(colorOne: string, colorTwo: string, percent: number) {
   const f = parseInt(colorOne.slice(1), 16);
   const t = parseInt(colorTwo.slice(1), 16);
   const R1 = f >> 16;
@@ -57,7 +57,7 @@ function blendHexColors(colorOne, colorTwo, percent) {
     .slice(1)}`;
 }
 
-function blendRGBColors(colorOne, colorTwo, percent) {
+function blendRGBColors(colorOne: string, colorTwo: string, percent: number) {
   const [R, G, B] = colorRGB(colorOne);
   const t = colorTwo.split(',');
 
@@ -81,7 +81,7 @@ export function blend(colorOne?: string, colorTwo?: string, percent = 1) {
   return blendHexColors(colorOne, colorTwo, percent);
 }
 
-function colorRGB(color) {
+function colorRGB(color: string) {
   const f = color.split(',');
   const R = parseInt(f[0].slice(4));
   const G = parseInt(f[1]);
@@ -89,12 +89,12 @@ function colorRGB(color) {
   return [R, G, B];
 }
 
-function hex2rgb(hex) {
+function hex2rgb(hex: string) {
   return hex
     .replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (m, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
     .substring(1)
     .match(/.{2}/g)
-    .map((x) => parseInt(x, 16));
+    ?.map((x) => parseInt(x, 16))!;
 }
 
 export function opacity(color?: string, percent = 1) {
@@ -109,7 +109,7 @@ export function opacity(color?: string, percent = 1) {
   return color;
 }
 
-export function brightness(color) {
+export function brightness(color: any) {
   if (!color) return;
   if (color.length <= 7) {
     color = hex2rgb(color);
@@ -121,7 +121,7 @@ export function brightness(color) {
   );
 }
 
-export default function resolveColor(color?: string): string {
+export default function resolveColor(color?: string): string | void {
   if (!color) return;
   if (color in (COLORS as Record<string, string>)) {
     return COLORS[color];
@@ -182,8 +182,8 @@ const rgbToHsl = (r: number, g: number, b: number) => {
 
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-  let h;
-  let s;
+  let h = 0;
+  let s = 0;
   const l = (max + min) / 2;
 
   if (max === min) {
@@ -204,7 +204,7 @@ const rgbToHsl = (r: number, g: number, b: number) => {
         break;
     }
 
-    h /= 6;
+    h! /= 6;
   }
 
   return [h, s, l] as [h: number, s: number, l: number];

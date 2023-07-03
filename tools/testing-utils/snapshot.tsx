@@ -18,7 +18,7 @@ require('dotenv').config(config);
 const DEFAULT_OPTIONS = { selector: '#root' };
 
 export const snapshot = async (
-  Component,
+  Component: any,
   { afterMount, ...options } = {} as {
     afterMount?: (root: HTMLDivElement) => void;
     selector?: string;
@@ -138,9 +138,9 @@ export const snapshot = async (
   return body;
 };
 
-snapshot.ProxyProps = function (props) {
+snapshot.ProxyProps = function (props: any) {
   const { children, ...others } = props;
-  return React.Children.map(children, (child, i) =>
+  return React.Children.map(children, (child: any, i: number) =>
     React.cloneElement(child, {
       key: `${i}`,
       ...others,
@@ -148,4 +148,4 @@ snapshot.ProxyProps = function (props) {
   );
 };
 
-snapshot.Row = (props) => <div {...props} />;
+snapshot.Row = (props: any) => <div {...props} />;

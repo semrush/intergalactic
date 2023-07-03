@@ -28,6 +28,7 @@ import {
   StackedArea,
   ReferenceLine,
   Radar,
+  // @ts-ignore
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 
@@ -81,7 +82,7 @@ describe('YAxis', () => {
         <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
           <YAxis ticks={[0, 1]}>
             <YAxis.Grid>
-              {(props) => {
+              {(props: any) => {
                 expect(props).toBeTruthy();
                 return props;
               }}
@@ -101,7 +102,7 @@ describe('YAxis', () => {
         <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
           <YAxis ticks={[0, 1]}>
             <YAxis.Ticks>
-              {(props) => {
+              {(props: any) => {
                 expect(props).toBeTruthy();
                 return props;
               }}
@@ -120,8 +121,8 @@ describe('YAxis', () => {
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test').attributes['data-ui-name']).toBeTruthy();
-    expect(queryByTestId('test').attributes['data-ui-name'].value).toBe('Axis.Ticks');
+    expect((queryByTestId('test')!.attributes as any)['data-ui-name']).toBeTruthy();
+    expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
   test.concurrent('should support change tag YAxis.Ticks', () => {
@@ -132,7 +133,7 @@ describe('YAxis', () => {
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test').tagName).toBe('FOREIGNOBJECT');
+    expect(queryByTestId('test')!.tagName).toBe('FOREIGNOBJECT');
   });
 });
 
@@ -359,7 +360,7 @@ describe('Area', () => {
   });
 
   test.concurrent('should render area', async ({ task }) => {
-    function formatDate(value, options) {
+    function formatDate(value: any, options: any) {
       return new Intl.DateTimeFormat('en', options).format(value);
     }
 
@@ -394,7 +395,7 @@ describe('Area', () => {
           </YAxis>
           <XAxis>
             <XAxis.Ticks ticks={data.map((d) => +d.time)}>
-              {({ value }) => ({
+              {({ value }: any) => ({
                 children: formatDate(value, {
                   month: 'short',
                   day: 'numeric',
@@ -554,8 +555,8 @@ describe('Venn', () => {
 
   test.concurrent('should render venn-orientation', async ({ task }) => {
     const orders = [
-      (val1, val2) => val2.radius - val1.radius,
-      (val1, val2) => val1.radius - val2.radius,
+      (val1: any, val2: any) => val2.radius - val1.radius,
+      (val1: any, val2: any) => val1.radius - val2.radius,
     ];
 
     const orientations = [Math.PI / 2, Math.PI];
@@ -1289,7 +1290,7 @@ describe('Bar', () => {
             <YAxis.Ticks />
           </YAxis>
           <HorizontalBar x='bar' y='category' duration={0}>
-            {({ value, x, y, width, height }) => {
+            {({ value, x, y, width, height }: any) => {
               return {
                 children: (
                   <text
@@ -1727,7 +1728,7 @@ describe('Radial', () => {
               <RadialTree.Radian.Cap />
               <RadialTree.Radian.Icon />
             </RadialTree.Radian>
-            <RadialTree.Title fontSize={lineHeight} fill='#AB6CFE'>
+            <RadialTree.Title textSize={lineHeight} color='#AB6CFE'>
               {textLines.map((line, lineIndex) => (
                 <tspan
                   key={line}
@@ -2054,7 +2055,7 @@ describe('d3 charts visual regression', () => {
           </XAxis>
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks(5)}>
-              {({ value }) => ({
+              {({ value }: any) => ({
                 children: yScale.tickFormat(5, '+%')(value),
               })}
             </YAxis.Ticks>
@@ -2091,7 +2092,7 @@ describe('d3 charts visual regression', () => {
           <YAxis>
             <YAxis.Ticks />
             <YAxis.Ticks position='right'>
-              {({ value }) => ({
+              {({ value }: any) => ({
                 children: Math.floor(value / 100000),
               })}
             </YAxis.Ticks>
@@ -2137,7 +2138,7 @@ describe('d3 charts visual regression', () => {
             <YAxis>
               <YAxis.Ticks />
               <YAxis.Ticks position='right'>
-                {({ value }) => ({
+                {({ value }: any) => ({
                   children: Math.floor(value / 100000),
                 })}
               </YAxis.Ticks>
@@ -2257,7 +2258,7 @@ describe('d3 charts visual regression', () => {
           .map((name) => ({ name, checked: true, opacity: false })),
       );
 
-      const MAP_THEME = {
+      const axe2theme: any = {
         y: 'orange',
         y2: 'green',
       };
@@ -2272,7 +2273,7 @@ describe('d3 charts visual regression', () => {
         .range([height - MARGIN, MARGIN])
         .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
 
-      const handleChange = (name) => (checked) => {
+      const handleChange = (name: any) => (checked: any) => {
         const newDataLegend = dataLegend.map((item) => {
           if (item.name === name) {
             return { ...item, checked };
@@ -2283,9 +2284,9 @@ describe('d3 charts visual regression', () => {
         setDataLegend(newDataLegend);
       };
 
-      const handleMouseEnter = (name) => () => {
+      const handleMouseEnter = (name: string) => () => {
         const activeItem = dataLegend.find((item) => item.name === name);
-        if (!activeItem.checked) return;
+        if (!activeItem?.checked) return;
         setDataLegend((data) =>
           data.map((item) => {
             if (item.name !== name) return { ...item, opacity: true };
@@ -2308,7 +2309,7 @@ describe('d3 charts visual regression', () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <Checkbox.Value
-                    theme={MAP_THEME[item.name]}
+                    theme={axe2theme[item.name]}
                     checked={item.checked}
                     onChange={handleChange(item.name)}
                   />
@@ -2332,7 +2333,7 @@ describe('d3 charts visual regression', () => {
                     key={item.name}
                     x='x'
                     y={item.name}
-                    color={MAP_THEME[item.name]}
+                    color={axe2theme[item.name]}
                     opacity={item.opacity ? 0.3 : 1}
                     duration={0}
                   />

@@ -34,22 +34,22 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
 
   const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef);
 
-  const handleOutsideClick = useEventCallback((e) => {
-    const isTargetEvent = [...excludeRefs, nodeRef]
+  const handleOutsideClick = useEventCallback((event: any) => {
+    const isTargetEvent = [...(excludeRefs as any), nodeRef]
       .filter((node) => getNodeByRef(node))
-      .some((node) => getNodeByRef(node).contains(targetRef.current || e.target));
+      .some((node) => getNodeByRef(node).contains(targetRef.current || event.target));
 
     if (!isTargetEvent) {
-      onOutsideClick(e);
+      onOutsideClick?.(event);
     }
   });
 
-  const handleMouseDown = useEventCallback((e) => {
-    targetRef.current = e.target;
+  const handleMouseDown = useEventCallback((event: any) => {
+    targetRef.current = event.target;
   });
 
   useEffect(() => {
-    const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current);
+    const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
 
     // Using capture to handle event faster than OutsideClick handler
     outsideRoot.addEventListener('mouseup', handleOutsideClick, true);

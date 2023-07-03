@@ -59,8 +59,8 @@ export type FlexProps = BoxProps & {
 
 export interface IFlexProps extends FlexProps {}
 
-function calculateFlexStyles(props) {
-  const DirectionReverse = {
+function calculateFlexStyles(props: any) {
+  const DirectionReverse: Record<string, string> = {
     row: 'row-reverse',
     column: 'column-reverse',
   };
@@ -80,7 +80,7 @@ function calculateFlexStyles(props) {
 
 export default function useFlex<T extends FlexProps>(
   props: T,
-  ref,
+  ref: React.Ref<HTMLElement>,
 ): [React.ElementType | string, any] {
   const [Tag, { className, style: styleProp, ...other }] = useBox(
     {

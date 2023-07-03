@@ -24,7 +24,13 @@
     "directory": "semcore/i18n-unplugin"
   },
   "devDependencies": {
+    "@rspack/core": "0.2.4",
     "@semcore/testing-utils": "1.0.0",
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@types/watchpack": "^2.4.1",
+    "@types/webpack": "4",
+    "@types/webpack-sources": "^3.2.0",
+    "rollup": "^3.26.0",
+    "webpack-dev-server": "4"
   }
 }

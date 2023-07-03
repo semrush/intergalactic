@@ -12,13 +12,13 @@ import Modal from '../src';
 describe('Modal', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Modal.Window, (props) => <Modal {...props} visible />);
-  shouldSupportRef(Modal.Window, (props) => <Modal {...props} visible />);
+  shouldSupportClassName(Modal.Window, (props: any) => <Modal {...props} visible />);
+  shouldSupportRef(Modal.Window, (props: any) => <Modal {...props} visible />);
 
   test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(<Modal visible data-testid='modal' data-name='modal' />);
 
-    expect(getByTestId('modal').attributes['data-name'].value).toBe('modal');
+    expect((getByTestId('modal').attributes as any)['data-name'].value).toBe('modal');
   });
 
   test.concurrent('should support onClose for CloseIcons', () => {

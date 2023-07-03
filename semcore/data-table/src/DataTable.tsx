@@ -165,9 +165,9 @@ export type DataTableRowProps = BoxProps & {
 
 /** @deprecated */
 export interface IDataTableCellProps extends DataTableCellProps, UnknownProperties {}
-export type DataTableCellProps = FlexProps & {
+export type DataTableCellProps<Name extends string = string> = FlexProps & {
   /** Unique name column or columns separated by / */
-  name: string;
+  name: Name;
   /** Theme for cell */
   theme?: DataTableTheme;
 };
@@ -531,11 +531,12 @@ type IntergalacticDataTableRowComponent = (<
 
 type IntergalacticDataTableCellComponent = (<
   Data extends DataTableData[],
+  Name extends string,
   Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
-    DataTableCellProps,
+    DataTableCellProps<Name>,
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
   >,

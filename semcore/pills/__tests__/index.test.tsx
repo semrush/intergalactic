@@ -33,7 +33,7 @@ describe('PillGroup', () => {
   test.concurrent('Should support onChange callback', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Pills value={1 as Number} onChange={spy}>
+      <Pills value={1 as number} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
@@ -234,7 +234,7 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('Should support size with Addon', async ({ task }) => {
-    const PillsSize = ({ size }) => (
+    const PillsSize = ({ size }: any) => (
       <Pills size={size}>
         <Pills.Item>
           <Pills.Item.Addon>
@@ -290,7 +290,7 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('Should correct render for alone Item, Item.Addon', async ({ task }) => {
-    const PillsSize = ({ size }) => (
+    const PillsSize = ({ size }: any) => (
       <>
         <Pills size={size}>
           <Pills.Item value={1}>

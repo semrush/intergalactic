@@ -71,7 +71,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         for (const extension in node.$extensions) {
           if (extension === 'studio.tokens') {
             modifications[path] ??= [];
-            modifications[path].push(node.$extensions['studio.tokens'].modify);
+            modifications[path].push((node.$extensions as any)['studio.tokens'].modify);
           } else {
             throw new Error(`Unsupported extension "${extension}" for design token "${path}"`);
           }
@@ -80,12 +80,12 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       return;
     }
     for (const key in node) {
-      traverse(node[key], [...pathParts, key]);
+      traverse((node as any)[key], [...pathParts, key]);
     }
   };
 
   traverse(tokens);
-  const resolveColor = (color: string) => {
+  const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
       return replaceColors(color);
     }
@@ -137,7 +137,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     if (color.startsWith('{') && color.split('.').length === 2 && color.endsWith('}')) {
       const [group, index] = color.substring(1, color.length - 1).split('.');
-      const resolvedColor = base[group][index].value;
+      const resolvedColor = (base as any)[group][index].value;
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
@@ -145,7 +145,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     if (color.startsWith('$') && color.split('.').length === 2) {
       const [group, index] = color.substring(1).split('.');
-      const resolvedColor = base[group]?.[index]?.value ?? values[`${group}-${index}`];
+      const resolvedColor = (base as any)[group]?.[index]?.value ?? values[`${group}-${index}`];
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found`);
       }
@@ -156,7 +156,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     }
     throw new Error(`Unable to process color ${color}`);
   };
-  const resolveToken = (token: string) => {
+  const resolveToken = (token: string): string => {
     if (token.includes('*')) {
       const [value, factor] = token.split('*');
       const resolvedValue = resolveToken(value);
@@ -241,7 +241,7 @@ export const tokensToCss = (tokens: { name: string; value: string; description: 
   return cssLines.join('\n');
 };
 export const tokensToJson = (tokens: { name: string; value: string; description: string }[]) => {
-  const themeFile = {};
+  const themeFile: Record<string, string> = {};
   for (const token of tokens) {
     themeFile[token.name] = token.value;
   }

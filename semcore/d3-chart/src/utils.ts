@@ -24,7 +24,7 @@ export const eventToPoint = (event: React.MouseEvent<HTMLElement>, svgRoot: SVGE
 
 type InvertableScale =
   | ScaleIdentity
-  | ScaleBand<unknown>
+  | ScaleBand<{}>
   | ScaleTime<unknown, unknown>
   | ScaleContinuousNumeric<unknown, unknown>;
 export const invert = <Scale extends InvertableScale = InvertableScale>(
@@ -198,8 +198,8 @@ export const getBandwidth = <Scale extends ScaleBand<{}>>(scale: Scale) => {
     return scale.bandwidth();
   }
 
-  const range = scale.range();
-  const domain = scale.domain();
+  const range = (scale as any).range();
+  const domain = (scale as any).domain();
   return Math.abs(range[range.length - 1] - range[0]) / domain.length;
 };
 

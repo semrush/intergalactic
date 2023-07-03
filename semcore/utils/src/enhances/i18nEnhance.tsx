@@ -26,8 +26,8 @@ const escapeHtml = (html: string) =>
 
 export function interpolate(template: string, variables: {} = {}) {
   return template.replace(interpolationRegex, (_, key) => {
-    if (variables[key] !== undefined) {
-      return escapeHtml(variables[key]);
+    if ((variables as any)[key] !== undefined) {
+      return escapeHtml((variables as any)[key]);
     }
     return _;
   });
@@ -118,7 +118,7 @@ export const useAsyncI18nMessages = (
   return store[locale] ?? fallbackMessages;
 };
 export default (container?: MessagesContainer) => {
-  return (props) => {
+  return (props: any) => {
     const { i18n, locale } = props;
     const getI18nText = useI18n(i18n, locale, container);
 

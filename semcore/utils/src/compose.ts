@@ -1,7 +1,7 @@
-export default function compose(...fns): <T extends {}>(Component: T) => T {
+export default function compose(...fns: any[]): <T extends {}>(Component: T) => T {
   return fns.reverse().reduce(
-    (prevFn, nextFn) => (value) => nextFn(prevFn(value)),
-    (value) => value,
+    (prevFn, nextFn) => (value: any) => nextFn(prevFn(value)),
+    (value: any) => value,
   );
 }
 

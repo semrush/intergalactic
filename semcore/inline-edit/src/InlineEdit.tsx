@@ -39,7 +39,7 @@ class InlineEdit extends Component<AsProps> {
 
   viewRef = React.createRef<HTMLElement>();
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.handleOnEdit = this.handleOnEdit.bind(this);
   }
@@ -70,7 +70,7 @@ class InlineEdit extends Component<AsProps> {
     };
   }
 
-  handlerKeyDownEdit = (event) => {
+  handlerKeyDownEdit = (event: React.KeyboardEvent) => {
     if (event.code === 'Enter' || event.code === 'Escape') {
       this.viewRef.current?.focus();
     }
@@ -126,7 +126,7 @@ const View: React.FC<AsProps> = (props) => {
       if (!visible) return;
       if (event.code === 'Enter' || event.code === 'Space') {
         event.preventDefault();
-        props.onEdit();
+        props.onEdit?.();
       }
     },
     [visible, props.onEdit],

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@semcore/base-trigger": "4.0.0-beta.0",
-    "@semcore/checkbox": "^6",
+    "@semcore/checkbox": "7.0.0-beta.0",
     "@semcore/divider": "4.0.0-beta.0",
     "@semcore/dropdown-menu": "4.0.0-beta.0",
     "@semcore/flex-box": "5.0.0-beta.0",

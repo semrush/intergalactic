@@ -31,9 +31,9 @@ describe('ScrollArea', () => {
         <ScrollArea.Bar orientation='vertical' data-testid='bar' />
       </ScrollArea>,
     );
-    expect(queryByTestId('bar').attributes['aria-valuemin']).toBeTruthy();
-    expect(queryByTestId('bar').attributes['aria-valuenow']).toBeTruthy();
-    expect(queryByTestId('bar').attributes['aria-valuemax']).toBeTruthy();
+    expect((queryByTestId('bar')?.attributes as any)['aria-valuemin']).toBeTruthy();
+    expect((queryByTestId('bar')?.attributes as any)['aria-valuenow']).toBeTruthy();
+    expect((queryByTestId('bar')?.attributes as any)['aria-valuemax']).toBeTruthy();
   });
 
   test.skip('should support shadow display on container', async ({ task }) => {

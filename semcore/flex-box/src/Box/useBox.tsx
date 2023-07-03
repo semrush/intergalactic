@@ -10,7 +10,7 @@ import style from '../style/use-box.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
 
 export function removeUndefinedKeys<T extends {}>(obj: T) {
-  return Object.entries(obj).reduce((acc, [key, value]) => {
+  return Object.entries(obj).reduce((acc: any, [key, value]) => {
     if (value !== undefined) {
       acc[key] = value;
     }
@@ -18,7 +18,7 @@ export function removeUndefinedKeys<T extends {}>(obj: T) {
   }, {});
 }
 
-function getSize(size) {
+function getSize(size: any) {
   if (typeof size !== 'number') {
     return size;
   }
@@ -157,7 +157,7 @@ export interface IBoxProps extends BoxProps, UnknownProperties {
   tag?: React.ElementType | string;
 }
 
-function calculateIndentStyles(props, scaleIndent) {
+function calculateIndentStyles(props: any, scaleIndent: number) {
   return removeUndefinedKeys({
     width: getSize(props['w']),
     height: getSize(props['h']),
@@ -205,7 +205,7 @@ function calculateIndentStyles(props, scaleIndent) {
 
 export default function useBox<T extends BoxProps>(
   props: T,
-  ref,
+  ref: React.Ref<HTMLElement>,
 ): [React.ElementType | string, any] {
   const {
     tag: Tag = 'div',

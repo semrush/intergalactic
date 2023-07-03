@@ -26,7 +26,7 @@ describe('Link', () => {
         Link
       </Link>,
     );
-    expect(getByTestId('link').attributes['data-name'].value).toBe('test');
+    expect((getByTestId('link').attributes as any)['data-name'].value).toBe('test');
   });
 
   test.concurrent('Should support children', async () => {

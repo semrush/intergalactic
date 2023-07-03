@@ -58,11 +58,6 @@ export type InputTagsContext = InputTagsProps & {
   getTagProps: PropGetterFn;
 };
 
-const MAP_SIZES_TAG = {
-  l: 'l',
-  m: 'm',
-};
-
 class InputTags extends Component<IInputTagsProps> {
   static displayName = 'InputTags';
   static style = style;
@@ -75,11 +70,11 @@ class InputTags extends Component<IInputTagsProps> {
 
   _input = React.createRef<HTMLInputElement>();
 
-  setFocusInput = (e) => {
+  setFocusInput = (event: React.FocusEvent) => {
     const inputRef = this._input.current;
-    if (inputRef && e.target !== inputRef) {
+    if (inputRef && event.target !== inputRef) {
       const caretPosition = inputRef.value.length;
-      e.preventDefault();
+      event.preventDefault();
       inputRef.focus();
       inputRef.setSelectionRange(caretPosition, caretPosition);
     }
@@ -92,7 +87,7 @@ class InputTags extends Component<IInputTagsProps> {
     const lastSymbol = value.slice(-1);
     const trimmedValue = value.trim();
 
-    if ((delimiters.includes(key) || (lastSymbol === ' ' && key === ' ')) && trimmedValue) {
+    if ((delimiters?.includes(key) || (lastSymbol === ' ' && key === ' ')) && trimmedValue) {
       event.preventDefault();
       fire(this, 'onAdd', trimmedValue, event);
       fire(this, 'onAppend', [trimmedValue], event);
@@ -119,7 +114,7 @@ class InputTags extends Component<IInputTagsProps> {
     const value = event.clipboardData.getData('text/plain');
     const { delimiters, onAdd, onAppend } = this.asProps;
     const reg = new RegExp(
-      delimiters
+      delimiters!
         .filter((s) => !/\w+/.test(String(s)))
         .map((s) => s.replace(/[\\^$*+?.()|[\]{}]/g, '\\$&'))
         .join('|'),
@@ -160,7 +155,7 @@ class InputTags extends Component<IInputTagsProps> {
 
   getTagProps({ editable }: { editable: boolean }) {
     return {
-      size: MAP_SIZES_TAG[this.asProps.size],
+      size: this.asProps.size,
       onClick: this.bindHandlerTagClick(editable),
     };
   }
@@ -185,21 +180,21 @@ class Value extends Component<IInputTagsValueProps> {
   };
 
   componentDidMount() {
-    this.updateInputStyles(this.asProps.value);
+    this.updateInputStyles(this.asProps.value!);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: any) {
     const { value, placeholder } = this.asProps;
     if (value !== prevProps.value || placeholder !== prevProps.placeholder) {
-      this.updateInputStyles(value);
+      this.updateInputStyles(value!);
     }
   }
 
-  handleChange = (value) => {
+  handleChange = (value: string) => {
     this.updateInputStyles(value);
   };
 
-  updateInputStyles = (value) => {
+  updateInputStyles = (value: string) => {
     const { current: spacerNode } = this._spacer;
     if (!spacerNode) return;
     const { placeholder } = this.props;
@@ -233,10 +228,10 @@ class Value extends Component<IInputTagsValueProps> {
   }
 }
 
-function InputTag(props) {
+function InputTag(props: any) {
   const STag = Root;
 
-  const onKeyDown = (event) => {
+  const onKeyDown = (event: React.KeyboardEvent) => {
     if (event.code === 'Enter') {
       props.onClick?.(event);
     }

@@ -6,8 +6,8 @@
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": false,
+    "skipLibCheck": false,
+    "strict": true,
     "noEmit": false,
     "sourceMap": true,
     "importHelpers": false,
@@ -28,6 +28,7 @@
   "exclude": [
     "node_modules",
     "tools/playground/examples/*",
-    "tools/playground/examples/**/*"
+    "tools/playground/examples/**/*",
+    "tools/icon-transform-svg/__tests__"
   ]
 }

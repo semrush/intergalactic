@@ -18,7 +18,7 @@ type ItemAsProps = {
 
 export function Item(props: ItemAsProps) {
   const { Children, styles, value, displayLabel, editable, selected, onRemove, getI18nText } =
-    props;
+    props as any;
   const SItemContainer = Root;
   const SLabel = Box;
   const SCloseIcon = Box;

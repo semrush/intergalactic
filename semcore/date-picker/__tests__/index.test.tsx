@@ -9,9 +9,9 @@ import { DatePicker, DateRangePicker, MonthRangePicker } from '../src';
 const RealDate = global.Date;
 
 // https://github.com/facebook/jest/issues/2234#issuecomment-384884729
-function mockDate(isoDate) {
+function mockDate(isoDate: any) {
   (global as any).Date = class extends RealDate {
-    constructor(...theArgs) {
+    constructor(...theArgs: any[]) {
       super();
       if (theArgs.length) {
         return new (RealDate as any)(...theArgs);
@@ -118,7 +118,7 @@ describe('DateRangePicker', () => {
   test('Should render correctly with selected date', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.InputTrigger size='l' />
+        <DatePicker.Trigger size='l' />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -171,7 +171,7 @@ describe('DateRangePicker', () => {
     await expect(
       await snapshot(
         <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-          <DatePicker.InputTrigger id='datapicker' />
+          <DatePicker.Trigger id='datapicker' />
           <DatePicker.Popper />
         </DatePicker>,
         {
@@ -202,7 +202,7 @@ describe('DateRangePicker', () => {
   test('Should support active item', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.InputTrigger id='datapicker' />
+        <DatePicker.Trigger id='datapicker' />
         <DatePicker.Popper />
       </DatePicker>
     );

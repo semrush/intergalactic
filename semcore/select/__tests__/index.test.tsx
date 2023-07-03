@@ -10,6 +10,7 @@ import { axe } from '@semcore/testing-utils/axe';
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import Select from '../src';
+// @ts-ignore
 import InputSearch from '../src/InputSearch';
 
 HTMLElement.prototype.scrollIntoView = () => {};
@@ -317,7 +318,7 @@ describe('Select Trigger', () => {
       act(() => {
         vi.runAllTimers();
       });
-      expect(document.activeElement.tagName).toBe('DIV');
+      expect(document.activeElement?.tagName).toBe('DIV');
 
       vi.useRealTimers();
     },

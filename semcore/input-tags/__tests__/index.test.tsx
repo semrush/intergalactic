@@ -33,7 +33,7 @@ describe('InputTags', () => {
       const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
       const [value, setValue] = React.useState('');
 
-      const handleAppendTags = (newTags) => {
+      const handleAppendTags = (newTags: string[]) => {
         setTags((tags) => [...tags, ...newTags]);
         setValue('');
       };
@@ -44,25 +44,25 @@ describe('InputTags', () => {
         setValue(`${tags.slice(-1)[0]} ${value}`);
       };
 
-      const handleCloseTag = (e) => {
-        e.preventDefault();
+      const handleCloseTag = (event: any) => {
+        event.preventDefault();
       };
 
-      const handleEditTag = (e) => {
-        const { dataset } = e.currentTarget;
+      const handleEditTag = (event: any) => {
+        const { dataset } = event.currentTarget;
         let allTags = [...tags];
         if (value) {
           allTags = [...allTags, value];
         }
         setTags(allTags.filter((tag, ind) => ind !== Number(dataset.id)));
-        if (!e.defaultPrevented) {
+        if (!event.defaultPrevented) {
           setValue(tags[dataset.id]);
         }
         return false;
       };
 
-      const handleBlurInput = (e) => {
-        const { value } = e.currentTarget;
+      const handleBlurInput = (event: any) => {
+        const { value } = event.currentTarget;
         if (value) handleAppendTags([value]);
       };
 
@@ -90,7 +90,7 @@ describe('InputTags', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
   test("renders url's example", async ({ task }) => {
-    const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
+    const isValidEmail = (value: string) => /.+@.+\..+/i.test(value.toLowerCase());
 
     const component = (
       <InputTags size='l'>

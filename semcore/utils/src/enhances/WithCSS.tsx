@@ -13,7 +13,7 @@ const getStylesheet = () => CSSinJS().raw;
  * @returns {Object}
  */
 function normaliseCss(obj: CssLikeObject) {
-  return Object.keys(obj).reduce((acc, key) => {
+  return Object.keys(obj).reduce((acc: any, key) => {
     const result = acc;
     if (obj[key] !== undefined) {
       result[key] = obj[key];
@@ -35,7 +35,7 @@ export type EnhancedWithCSSProps = {
   className?: string;
   css?: {};
 
-  children(props: { className: string }): React.ReactNode;
+  children(props: { className: string | undefined }): React.ReactNode;
 };
 
 class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
@@ -49,14 +49,14 @@ class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
     dynamicClassName: '',
   };
 
-  static getDerivedStateFromProps(props) {
+  static getDerivedStateFromProps(props: any) {
     const cleanCss = normaliseCss(props.css);
     return {
-      dynamicClassName: Object.keys(cleanCss).length ? CSSinJS().cache(cleanCss) : '',
+      dynamicClassName: Object.keys(cleanCss).length ? CSSinJS().cache?.(cleanCss) : '',
     };
   }
 
-  constructor(props, context) {
+  constructor(props: any, context: any) {
     super(props, context);
 
     initNanoCss(context);

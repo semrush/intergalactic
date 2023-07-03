@@ -1,15 +1,15 @@
 class Register {
-  data = {};
+  data: any = {};
 
-  get<D>(name, defaultValue?: D): D {
+  get<D>(name: string, defaultValue?: D): D {
     if (name in this.data) {
       return this.data[name];
     } else {
-      return this.set(name, defaultValue);
+      return this.set(name, defaultValue) as any;
     }
   }
 
-  set<D>(name, value: D): D {
+  set<D>(name: string, value: D): D {
     this.data[name] = value;
     return this.data[name];
   }

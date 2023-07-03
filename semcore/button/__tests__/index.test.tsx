@@ -59,8 +59,8 @@ describe('Button', () => {
         Text
       </Button>,
     );
-    expect(queryByTestId('button').attributes['disabled']).toBeTruthy();
-    expect(queryByTestId('button').querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
+    expect((queryByTestId('button')?.attributes as any)['disabled']).toBeTruthy();
+    expect(queryByTestId('button')?.querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
   });
 
   test.concurrent('should support save width at loading', async ({ task }) => {

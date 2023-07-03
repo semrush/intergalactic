@@ -1,7 +1,7 @@
 function Enhancement() {
   let defaultProps = {};
   return {
-    condition: function (Component) {
+    condition: function (Component: any) {
       if (!Component.defaultProps) {
         return false;
       }
@@ -10,13 +10,13 @@ function Enhancement() {
       }
       return Boolean(Object.keys(Component.defaultProps).length);
     },
-    static: function (WrapperComponent) {
+    static: function (WrapperComponent: any) {
       defaultProps = WrapperComponent.defaultProps;
       return {
         defaultProps: {},
       };
     },
-    wrapperProps: function (props) {
+    wrapperProps: function (props: any) {
       if (typeof defaultProps === 'function') {
         // TODO: optimization
         return Object.assign({}, defaultProps(props), props);

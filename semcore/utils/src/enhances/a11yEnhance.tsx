@@ -25,19 +25,23 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
   const onNeighborChange = options.onNeighborChange || defaultOnNeighborChange;
   const { childSelector } = options;
 
-  return (props) => {
+  return (props: any) => {
     if (!childSelector)
       throw `parameter childSelector not passed in options for a11yEnhance for ${props['data-ui-name']}`;
-    const getNeighbor = (listSelectors, element: HTMLElement, direction: string): HTMLElement => {
+    const getNeighbor = (
+      listSelectors: any,
+      element: HTMLElement,
+      direction: string,
+    ): HTMLElement => {
       const neighbor = findNeighbor(listSelectors, element, direction);
       if (!neighbor) return element;
       if (neighbor.disabled) return getNeighbor(listSelectors, neighbor, direction);
       return neighbor;
     };
 
-    const handleKeyDown = (e) => {
-      const parent = e.currentTarget;
-      const selectedElement = e.target;
+    const handleKeyDown = (event: any) => {
+      const parent = event.currentTarget;
+      const selectedElement = event.target;
       const [childAttrName, childAttrValue] = childSelector;
       if (!selectedElement.getAttribute(childAttrName)) return;
 
@@ -47,22 +51,22 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
       if (!listSelectors.length)
         throw `no children found querySelectorAll([${childAttrName}="${childAttrValue}"] a11yEnhance for ${props['data-ui-name']}`;
 
-      switch (e.keyCode) {
+      switch (event.keyCode) {
         case 37:
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'left'));
-          e.preventDefault();
+          event.preventDefault();
           break;
         case 38:
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'top'));
-          e.preventDefault();
+          event.preventDefault();
           break;
         case 39:
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'right'));
-          e.preventDefault();
+          event.preventDefault();
           break;
         case 40:
           onNeighborChange(getNeighbor(listSelectors, selectedElement, 'bottom'));
-          e.preventDefault();
+          event.preventDefault();
           break;
       }
     };

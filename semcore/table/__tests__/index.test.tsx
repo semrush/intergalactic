@@ -184,7 +184,7 @@ describe('Table.Body', () => {
 describe('Table.Row', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Table.Row, (props) => (
+  shouldSupportClassName(Table.Row, (props: any) => (
     <Table>
       <Table.Body {...props} />
     </Table>
@@ -205,7 +205,7 @@ describe('Table.Row', () => {
 describe('Table.CellHead', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Table.CellHead, (props) => (
+  shouldSupportClassName(Table.CellHead, (props: any) => (
     <Table>
       <Table.Head>
         <Table.Row {...props} />
@@ -311,7 +311,7 @@ describe('Table.CellHead', () => {
 describe('Table.Cell', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Table.Cell, (props) => (
+  shouldSupportClassName(Table.Cell, (props: any) => (
     <Table>
       <Table.Body>
         <Table.Row {...props} />
@@ -345,7 +345,7 @@ describe('Table.StickyHead', () => {
       </Table>,
     );
 
-    expect(getByTestId('sticky').attributes['data-name'].value).toBe('sticky');
+    expect((getByTestId('sticky').attributes as any)['data-name'].value).toBe('sticky');
   });
 
   test.concurrent('should support children', () => {
@@ -374,7 +374,7 @@ describe('Table.StickyHead', () => {
       </Table>,
     );
 
-    expect(container.querySelector('table').className).toContain('Table-parent');
-    expect(container.querySelector('thead').className).toContain('Header-hidden');
+    expect(container.querySelector('table')!.className).toContain('Table-parent');
+    expect(container.querySelector('thead')!.className).toContain('Header-hidden');
   });
 });

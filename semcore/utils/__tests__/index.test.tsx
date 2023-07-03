@@ -260,7 +260,7 @@ describe('Utils CSS in JS', () => {
   });
 
   test.concurrent('CSS in JS', async ({ task }) => {
-    const CSSJS = ({ css }) => {
+    const CSSJS = ({ css }: any) => {
       const className = useCss(css);
       return <div className={className} />;
     };
@@ -274,7 +274,7 @@ describe('Utils CSS in JS', () => {
     vi.resetModules();
     // TODO: resolve "Invalid hook call" issue
     const { default: useCss, getStylesheet, Provider } = require(`${__dirname}/../src/use/useCss`);
-    const CSSJS = ({ css }) => {
+    const CSSJS = ({ css }: any) => {
       const className = useCss(css);
       return <div className={className} />;
     };
@@ -295,7 +295,7 @@ describe('Utils isNode', () => {
 
   test.concurrent('should return false for invalid React elements', () => {
     const nodes = [Infinity, undefined, false, null];
-    const factory = (node) => {
+    const factory = (node: any) => {
       expect(isNode(node)).toBeFalsy();
     };
     nodes.forEach((i) => factory(i));
@@ -312,7 +312,7 @@ describe('Utils isNode', () => {
       <div>test</div>,
       [<div>test</div>, <div>test2</div>, <div>test3</div>],
     ];
-    const factory = (node) => {
+    const factory = (node: any) => {
       expect(isNode(node)).toBeTruthy();
     };
     nodes.forEach((i) => factory(i));
@@ -321,7 +321,7 @@ describe('Utils isNode', () => {
 
 describe('Utils compose', () => {
   test.concurrent('should compose functions', () => {
-    const functions = [(i) => `3, ${i}`, (i) => `2, ${i}`, (i) => `1, ${i}`];
+    const functions = [(i: any) => `3, ${i}`, (i: any) => `2, ${i}`, (i: any) => `1, ${i}`];
     expect(compose(...functions)('go!')).toBe('3, 2, 1, go!');
   });
 });
@@ -332,7 +332,7 @@ describe('Utils color', () => {
   test.concurrent('should support resolveColor for empty value', () => {
     expect(resolveColor(undefined)).toBe(undefined);
     expect(resolveColor('')).toBe(undefined);
-    expect(resolveColor(null)).toBe(undefined);
+    expect(resolveColor(null as any)).toBe(undefined);
   });
 
   test.concurrent('should support shade for empty value', () => {
@@ -440,7 +440,7 @@ describe('Utils ref', () => {
   });
 
   test.concurrent('[getRef] support unknown', () => {
-    expect(getRef(undefined)).toBe(null);
+    expect(getRef(undefined as any)).toBe(null);
   });
 
   test.concurrent('[setRef] support ref', () => {

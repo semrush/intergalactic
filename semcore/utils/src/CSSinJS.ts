@@ -4,7 +4,7 @@ import { addon as addonCache } from 'nano-css/addon/cache';
 import { addon as addonPrefixer } from 'nano-css/addon/prefixer';
 import { addon as addonHydrate } from 'nano-css/addon/hydrate';
 
-let _nano = null;
+let _nano: any = null;
 
 function style(opt?: NanoOptions): NanoRenderer {
   if (!_nano) {

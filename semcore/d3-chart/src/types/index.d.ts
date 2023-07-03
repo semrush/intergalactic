@@ -36,8 +36,10 @@ export * from './StackedArea';
 
 /** It becomes resolvable after building and moving file to lib dir */
 
+// @ts-ignore
 export { default as RadialTree } from './RadialTree';
 
+// @ts-ignore
 export * from './RadialTree';
 
 export { default as Radar } from './Radar';

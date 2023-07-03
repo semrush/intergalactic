@@ -2,7 +2,7 @@ import React from 'react';
 import { Intergalactic, createBaseComponent } from '@semcore/core';
 import useFlex, { FlexProps } from './useFlex';
 
-function Flex(props, ref) {
+function Flex(props: any, ref: any) {
   const [Tag, flexProps] = useFlex(props, ref);
   return <Tag {...flexProps} />;
 }

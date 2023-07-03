@@ -15,7 +15,7 @@ describe('Input', () => {
   shouldSupportRef(Input);
 
   test.concurrent('Should support sizes', async ({ task }) => {
-    const InputSize = (props) => (
+    const InputSize = (props: any) => (
       <>
         <Input {...props}>
           <Input.Addon tag={Search} />
@@ -205,7 +205,7 @@ describe('Input.Addon', () => {
       </Input>,
     );
     expect(spy).toHaveBeenCalledTimes(0);
-    fireEvent.mouseDown(queryByText('addon'));
+    fireEvent.mouseDown(queryByText('addon')!);
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
@@ -217,7 +217,7 @@ describe('Input.Addon', () => {
         <Input.Value onFocus={spy} />
       </Input>,
     );
-    fireEvent.mouseDown(queryByText('addon'));
+    fireEvent.mouseDown(queryByText('addon')!);
     expect(spy).toHaveBeenCalledTimes(0);
   });
 

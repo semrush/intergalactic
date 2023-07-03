@@ -2,7 +2,11 @@ import React from 'react';
 import { render } from '../testing-library';
 import { test, expect } from '../vitest';
 
-export const shouldSupportRef = (Component: any, Wrapper: any = React.Fragment, props = {}) => {
+export const shouldSupportRef = (
+  Component: any,
+  Wrapper: any = React.Fragment,
+  props: any = {},
+) => {
   test.concurrent('ref should return DOM-node', () => {
     const ref = React.createRef<HTMLElement>();
 
@@ -12,6 +16,6 @@ export const shouldSupportRef = (Component: any, Wrapper: any = React.Fragment, 
       </Wrapper>,
     );
 
-    expect(ref.current.nodeName).toBeDefined();
+    expect(ref.current?.nodeName).toBeDefined();
   });
 };

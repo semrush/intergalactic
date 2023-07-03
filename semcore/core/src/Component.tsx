@@ -106,7 +106,7 @@ abstract class RootComponent<Props = {}, Context = {}, State = {}> extends PureC
     >;
   }
 
-  Root: Root;
+  Root: Root = undefined as any;
 }
 
 export const Component = RootComponent;

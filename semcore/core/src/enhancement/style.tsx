@@ -6,12 +6,12 @@ import { STATIC_COMPONENT } from './staticChildren';
 export const STYLES_CONTEXT = Symbol('STYLES_CONTEXT');
 const STYLES_SELF = Symbol('STYLES_SELF');
 
-function Enhancement(childComponents, Context) {
+function Enhancement(childComponents: any, Context: any) {
   return {
-    condition: function (Component) {
+    condition: function (Component: any) {
       return Boolean(Component.style || Component[STATIC_COMPONENT]);
     },
-    init: function (props, WrapperComponent) {
+    init: function (this: any, props: any, WrapperComponent: any) {
       if (props.styles) {
         this[STYLES_SELF] = props.styles;
       }
@@ -19,7 +19,7 @@ function Enhancement(childComponents, Context) {
         this[STYLES_SELF] = sstyled.merge(WrapperComponent.style, props._styles);
       }
     },
-    context: function (context) {
+    context: function (this: any, context: any): any {
       // Optimization: if has no children there is no need to create new context (by lsroman)
       if (!this[STYLES_SELF] || !Object.keys(childComponents).length) {
         return context;
@@ -30,14 +30,14 @@ function Enhancement(childComponents, Context) {
       };
     },
 
-    asProps: function ({ _styles, styles, ...props }) {
+    asProps: function (this: any, { _styles, styles, ...props }: any) {
       return {
         ...props,
         styles: this[STYLES_SELF],
       };
     },
-    wrapperProps: function ({ styles, ...props }) {
-      const context = useContext(Context);
+    wrapperProps: function (this: any, { styles, ...props }: any) {
+      const context: any = useContext(Context);
       return {
         ...props,
         _styles: styles,

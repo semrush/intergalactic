@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-function notUsingNativeAutoFocus(autoFocus) {
+function notUsingNativeAutoFocus(autoFocus: any) {
   return typeof autoFocus === 'boolean' || typeof autoFocus === 'number';
 }
 
@@ -14,7 +14,7 @@ export type WithAutoFocusEnhanceProps = {
 };
 
 function autoFocusEnhance() {
-  return (props) => {
+  return (props: any) => {
     const { autoFocus, ref, ...other } = props;
     if (!notUsingNativeAutoFocus(autoFocus)) {
       return props;

@@ -23,9 +23,9 @@ const versionHash = version.split('.').join('_');
 
 await fs.mkdir(resolvePath(__dirname, 'lib/sprites'), { recursive: true });
 // Minimal size for png icon 14x11
-const FLAG_SIZES = { 1: 16, 2: 32 };
-// Offset for correct position icon
-const OFFSET = { x: 1, y: 3 };
+const flagSizes: any = { 1: 16, 2: 32 };
+// Offset for correct position
+const offset: any = { x: 1, y: 3 };
 
 for (const scaling of [1, 2]) {
   const spritesList = await fs.readdir(resolvePath(__dirname, `./png/${scaling}x`));
@@ -36,7 +36,7 @@ for (const scaling of [1, 2]) {
     spritesList.map(async (spriteName) => {
       const filePath = resolvePath(__dirname, `./png/${scaling}x/${spriteName}`);
       const buffer = await fs.readFile(filePath);
-      const png = PNG.sync.read(buffer);
+      const png = (PNG as any).sync.read(buffer);
 
       return {
         name: normalizeName(spriteName),
@@ -45,7 +45,7 @@ for (const scaling of [1, 2]) {
     }),
   );
   for (const part of parts) {
-    for (const aliasName of aliases[part.name] ?? []) {
+    for (const aliasName of (aliases as any)[part.name] ?? []) {
       parts.push({
         ...part,
         name: normalizeName(aliasName),
@@ -55,11 +55,11 @@ for (const scaling of [1, 2]) {
 
   const partWidth = parts.reduce(
     (width, part) => Math.max(width, part.image.width),
-    FLAG_SIZES[scaling],
+    flagSizes[scaling],
   );
   const partHeight = parts.reduce(
     (height, part) => Math.max(height, part.image.height),
-    FLAG_SIZES[scaling],
+    flagSizes[scaling],
   );
 
   const spriteUrl = `https://static.semrush.com/ui-kit/flags/${version}/sprite@${scaling}x.png`;
@@ -77,20 +77,23 @@ for (const scaling of [1, 2]) {
     const x = (i % spriteWidth) * partWidth;
     const y = Math.floor(i / spriteWidth) * partHeight;
     const { name, image } = parts[i];
-    const cssX = -x / scaling + OFFSET['x'];
-    const cssY = -y / scaling + OFFSET['y'];
+    const cssX = -x / scaling + offset['x'];
+    const cssY = -y / scaling + offset['y'];
     cssRules.push(`.flag-${name}-${versionHash} {\n  background-position: ${cssX}px ${cssY}px;\n}`);
     // for some weird reasons image.bitblt is undefined so here is a little trick with bind (I hate classes)
-    new PNG().bitblt.bind(image)(sprite, 0, 0, image.width, image.height, x, y);
+    (new PNG() as any).bitblt.bind(image)(sprite, 0, 0, image.width, image.height, x, y);
   }
 
   const cssOutput = cssRules.join('\n');
 
-  const spriteBuffer = PNG.sync.write(sprite);
+  const spriteBuffer = (PNG as any).sync.write(sprite);
   const reducedBuffer = await imagemin.buffer(spriteBuffer, {
     plugins: [imageminPngquant({ quality: [0.6, 0.8] })],
   });
-  await fs.writeFile(resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.png`), reducedBuffer);
+  await fs.writeFile(
+    resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.png`),
+    reducedBuffer as any,
+  );
   await fs.writeFile(resolvePath(__dirname, `./lib/sprites/sprite@${scaling}x.css`), cssOutput);
 
   const expectedCountries = Object.values(expectedOutputRequirements.iso2Name);

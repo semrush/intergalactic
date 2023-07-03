@@ -20,12 +20,12 @@ export function getScrollbarWidth() {
 
   const widthWithScroll = inner.offsetWidth;
 
-  outer.parentNode.removeChild(outer);
+  outer.parentNode?.removeChild(outer);
 
   return widthNoScroll - widthWithScroll;
 }
 
-function getIntValueFromCss(value) {
+function getIntValueFromCss(value: any) {
   return !Number.isNaN(Number(value)) ? Number(value) : Number.parseInt(value, 10);
 }
 
@@ -70,9 +70,10 @@ export default function usePreventScroll(visible = true, disabled = false) {
     return () => {
       scrollPreventers.delete(id);
       if (scrollPreventers.size !== 0) return;
-      document.body.style.overflow = lockedBodyStyles.overflow;
-      document.body.style.paddingRight = lockedBodyStyles.paddingRight;
-      document.body.style.boxSizing = lockedBodyStyles.boxSizing;
+      if (lockedBodyStyles.overflow) document.body.style.overflow = lockedBodyStyles.overflow;
+      if (lockedBodyStyles.paddingRight)
+        document.body.style.paddingRight = lockedBodyStyles.paddingRight;
+      if (lockedBodyStyles.boxSizing) document.body.style.boxSizing = lockedBodyStyles.boxSizing;
     };
   }, [visible, id, disabled]);
 }

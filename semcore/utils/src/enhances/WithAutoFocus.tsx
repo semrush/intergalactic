@@ -22,7 +22,7 @@ class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
     autoFocus: undefined,
   };
 
-  private timer: ReturnType<typeof setTimeout>;
+  private timer: ReturnType<typeof setTimeout> | undefined;
 
   notUsingNativeAutoFocus() {
     const { autoFocus } = this.props;
@@ -45,7 +45,7 @@ class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
   }
 
   render() {
-    const { children } = this.props;
+    const { children } = this.props as any;
     const props = {} as IEnhancedWithAutoFocusProps;
     if (this.notUsingNativeAutoFocus()) {
       props.autoFocus = undefined;

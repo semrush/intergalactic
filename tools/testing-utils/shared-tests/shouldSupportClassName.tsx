@@ -2,7 +2,11 @@ import React from 'react';
 import { render } from '../testing-library';
 import { test, expect } from '../vitest';
 
-export const shouldSupportClassName = (Component, Wrapper = React.Fragment, props = {}) => {
+export const shouldSupportClassName = (
+  Component: any,
+  Wrapper: any = React.Fragment,
+  props: any = {},
+) => {
   test.concurrent('should support className extending', () => {
     const className = 'more-then one-class';
 
@@ -12,6 +16,6 @@ export const shouldSupportClassName = (Component, Wrapper = React.Fragment, prop
       </Wrapper>,
     );
 
-    expect(getByTestId('component').attributes.getNamedItem('class').value).toContain(className);
+    expect(getByTestId('component').attributes.getNamedItem('class')?.value).toContain(className);
   });
 };

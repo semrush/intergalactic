@@ -19,7 +19,7 @@ const getStyles = () => ({
   },
 });
 
-function insert(code, hash) {
+function insert(code: any, hash: any) {
   const id = 'reshadow-'.concat(hash);
 
   if (isSSR) {
@@ -37,7 +37,7 @@ function insert(code, hash) {
       document.head.appendChild(container);
     } else {
       document.addEventListener('DOMContentLoaded', function () {
-        document.head.appendChild(container);
+        document.head.appendChild(container as any);
       });
     }
   }
@@ -56,7 +56,7 @@ function insert(code, hash) {
 }
 
 function merge(s1 = {}, s2 = {}) {
-  return Object.entries(s2).reduce((acc, [key, value]) => {
+  return Object.entries(s2).reduce((acc: any, [key, value]) => {
     if (key.startsWith('@') || key.startsWith('--')) {
       acc[key] = value;
     } else {
@@ -66,8 +66,8 @@ function merge(s1 = {}, s2 = {}) {
   }, Object.assign({}, s1));
 }
 
-function getClassAndVars(styles, name, props) {
-  function getPropValue(key, props) {
+function getClassAndVars(styles: any, name: any, props: any) {
+  function getPropValue(key: any, props: any) {
     return props[`use:${key}`] ?? props[key];
   }
 
@@ -97,8 +97,8 @@ function getClassAndVars(styles, name, props) {
   );
 }
 
-function reshadowToShadow(obj) {
-  return Object.entries(obj).reduce((style, [name, value]) => {
+function reshadowToShadow(obj: any) {
+  return Object.entries(obj).reduce((style: any, [name, value]) => {
     let n = name;
     if (name.startsWith('__')) {
       n = name.replace(/^__/, '');
@@ -110,7 +110,7 @@ function reshadowToShadow(obj) {
   }, {});
 }
 
-function sstyled(styles = {}): ((ReactNode) => ReactNode) & {
+function sstyled(styles = {}): ((ReactNode: any) => ReactNode) & {
   cn(name: string, props: any): any;
 } {
   // @ts-ignore
@@ -136,7 +136,7 @@ function sstyled(styles = {}): ((ReactNode) => ReactNode) & {
   };
 }
 
-sstyled.css = function (css): { [key: string]: string } {
+sstyled.css = function (css: any): { [key: string]: string } {
   throw new Error('Enable babel plugin');
 };
 sstyled.insert = insert;

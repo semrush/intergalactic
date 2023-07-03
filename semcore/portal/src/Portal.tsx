@@ -21,7 +21,7 @@ export type PortalProps = {
 const PortalContext = register.get(
   'portal-context',
 
-  React.createContext<NodeByRef>(canUseDOM() ? document.body : null),
+  React.createContext<NodeByRef>((canUseDOM() ? document.body : null) as any),
 );
 
 function Portal(props: IFunctionProps<IPortalProps>) {

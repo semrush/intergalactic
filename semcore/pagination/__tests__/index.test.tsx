@@ -79,7 +79,7 @@ describe('Pagination.PrevPage', () => {
         <Pagination.PrevPage data-testid='prevPage' />
       </Pagination>,
     );
-    expect(getByTestId('prevPage').attributes['disabled']).toBeDefined();
+    expect((getByTestId('prevPage').attributes as any)['disabled']).toBeDefined();
   });
 
   test('should not be disabled if currentPage > 1', () => {
@@ -88,7 +88,7 @@ describe('Pagination.PrevPage', () => {
         <Pagination.PrevPage data-testid='prevPage' />
       </Pagination>,
     );
-    expect(getByTestId('prevPage').attributes['disabled']).toBeUndefined();
+    expect((getByTestId('prevPage').attributes as any)['disabled']).toBeUndefined();
   });
 
   test('should call onCurrentPageChange(currentPage - 1) by one on click', () => {
@@ -118,7 +118,7 @@ describe('Pagination.NextPage', () => {
         <Pagination.NextPage data-testid='nextPage' />
       </Pagination>,
     );
-    expect(getByTestId('nextPage').attributes['disabled']).toBeDefined();
+    expect((getByTestId('nextPage').attributes as any)['disabled']).toBeDefined();
   });
 
   test('should not be disabled if currentPage < totalPages', () => {
@@ -127,7 +127,7 @@ describe('Pagination.NextPage', () => {
         <Pagination.NextPage data-testid='nextPage' />
       </Pagination>,
     );
-    expect(getByTestId('nextPage').attributes['disabled']).toBeUndefined();
+    expect((getByTestId('nextPage').attributes as any)['disabled']).toBeUndefined();
   });
 
   test('should call onCurrentPageChange(currentPage + 1) by one on click', () => {

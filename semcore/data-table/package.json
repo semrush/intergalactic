@@ -35,7 +35,7 @@
     "@semcore/spin-container": "*",
     "@semcore/sticky": "*",
     "@semcore/tooltip": "*",
-    "@types/node": "^17.0.45",
+    "@types/node": "^18.16.15",
     "csstype": "3.0.8"
   },
   "peerDependencies": {

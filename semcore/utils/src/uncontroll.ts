@@ -12,9 +12,9 @@ export function getState<C extends Component | PureComponent>(
   self: C,
   state: C['state'] = self.state,
 ) {
-  return Object.entries(state).reduce((combinedState, [key, value]) => {
+  return Object.entries(state).reduce((combinedState: any, [key, value]) => {
     if (isControlled(self, key)) {
-      combinedState[key] = self.props[key];
+      combinedState[key] = (self as any).props[key];
     } else {
       combinedState[key] = value;
     }
@@ -39,7 +39,7 @@ export function internalSetState<T, C extends Component<any, T> | PureComponent<
           }
           return newChanges;
         },
-        {},
+        {} as any,
       );
 
       return Object.keys(nonControlledChanges).length ? nonControlledChanges : {};

@@ -12,6 +12,7 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@types/babel__core": "^7.20.1",
     "esbuild": "0.14.29"
   },
   "peerDependencies": {
@@ -19,7 +20,7 @@
   },
   "dependencies": {
     "@babel/core": "7.19.1",
-    "@semcore/babel-preset-ui": "*",
-    "@semcore/babel-plugin-react-semcore": "*"
+    "@semcore/babel-plugin-react-semcore": "*",
+    "@semcore/babel-preset-ui": "*"
   }
 }

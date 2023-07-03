@@ -25,11 +25,11 @@ export const useUID = (prefix?: string): string => {
     register.set<ContextType>('uid-context', context);
   }, [uid]);
 
-  return context.prefix + uid;
+  return (context.prefix ?? '') + uid;
 };
 
 export default (prefix?: string) => {
-  return (props) => {
+  return (props: any) => {
     const uid = useUID(prefix);
     return {
       uid,
