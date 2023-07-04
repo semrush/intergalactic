@@ -84,7 +84,7 @@ export type RadioCtx = {
 
 type IntergalacticRadioGroupComponent = (<
   Value extends RadioValue,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = typeof Flex,
+  Tag extends Intergalactic.Tag = typeof Flex,
 >(
   props: Intergalactic.InternalTypings.ComponentProps<Tag, RadioGroupProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

@@ -102,11 +102,9 @@ export type MapProps<Props, Ctx = {}, UCProps = {}> = Props & {
     | React.ReactNode;
 };
 
-export type IntergalacticD3Component<
-  BaseTag extends Intergalactic.InternalTypings.ComponentTag,
-  Props,
-  Context = {},
-> = (<Tag extends Intergalactic.InternalTypings.ComponentTag = BaseTag>(
+export type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, Context = {}> = (<
+  Tag extends Intergalactic.Tag = BaseTag,
+>(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;

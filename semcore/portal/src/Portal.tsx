@@ -54,7 +54,4 @@ Portal.displayName = 'Portal';
 
 const { Provider: PortalProvider } = PortalContext;
 export { PortalProvider };
-export default createComponent(Portal) as Intergalactic.Component<
-  Intergalactic.InternalTypings.ComponentTag,
-  PortalProps
->;
+export default createComponent(Portal) as Intergalactic.Component<Intergalactic.Tag, PortalProps>;

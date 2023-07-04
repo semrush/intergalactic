@@ -62,7 +62,7 @@ type SliderItemProps = BoxProps;
 
 type IntergalacticSliderComponent = (<
   Value extends SliderValue,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<Tag, SliderProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

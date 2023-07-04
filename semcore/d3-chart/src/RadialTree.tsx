@@ -837,12 +837,8 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   ) as React.ReactElement;
 };
 
-type IntergalacticD3Component<
-  BaseTag extends Intergalactic.InternalTypings.ComponentTag,
-  Props,
-  Context = {},
-> = (<
-  Tag extends Intergalactic.InternalTypings.ComponentTag = Intergalactic.InternalTypings.ComponentTag,
+type IntergalacticD3Component<BaseTag extends Intergalactic.Tag, Props, Context = {}> = (<
+  Tag extends Intergalactic.Tag = Intergalactic.Tag,
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<Tag, Props, Context>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

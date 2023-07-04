@@ -35,11 +35,7 @@ export type BubbleContext = {
   index: number;
 };
 
-declare const Bubble: IntergalacticD3Component<
-  Intergalactic.InternalTypings.ComponentTag,
-  BubbleProps,
-  BubbleContext
-> & {
+declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, BubbleContext> & {
   Tooltip: TooltipType<
     BubbleProps & {
       /**

@@ -65,7 +65,7 @@ export type PillsHandlers = {
 
 type IntergalacticPillsComponent = (<
   Value extends PillsValue,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,

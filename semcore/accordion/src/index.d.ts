@@ -67,7 +67,7 @@ export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
 
 type IntergalacticAccordionComponent = (<
   Value extends AccordionValue,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,

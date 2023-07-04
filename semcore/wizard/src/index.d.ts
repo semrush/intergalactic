@@ -64,7 +64,7 @@ export type WizardStepperProps<T extends WizardStep = WizardStep> = BoxProps & {
 
 type IntergalacticWizardStepperComponent = (<
   Value extends WizardStep,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<Tag, WizardStepperProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &

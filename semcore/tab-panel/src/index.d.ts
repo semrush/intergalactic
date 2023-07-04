@@ -52,7 +52,7 @@ export type TabPanelHandlers = {
 
 type IntergalacticTabPanelComponent = (<
   Value extends TabPanelValue,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,

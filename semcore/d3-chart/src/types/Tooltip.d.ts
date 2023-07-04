@@ -36,7 +36,7 @@ export type TooltipTypeBase = {
 };
 
 export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
-  Tag extends Intergalactic.InternalTypings.ComponentTag = typeof Box,
+  Tag extends Intergalactic.Tag = typeof Box,
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
@@ -44,7 +44,7 @@ export type TooltipType<ChildrenRenderProps = {}, TooltipProps = {}> = (<
     ChildrenRenderProps & TooltipChartContext
   >,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-  Intergalactic.InternalTypings.ComponentAdditive<Intergalactic.InternalTypings.ComponentTag> &
+  Intergalactic.InternalTypings.ComponentAdditive<Intergalactic.Tag> &
   TooltipTypeBase;
 
 /**

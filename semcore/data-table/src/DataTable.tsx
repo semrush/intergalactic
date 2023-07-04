@@ -505,7 +505,7 @@ function ComponentDefinition() {
 
 type IntergalacticDataTableComponent = (<
   Data extends DataTableData[],
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
@@ -518,7 +518,7 @@ type IntergalacticDataTableComponent = (<
 
 type IntergalacticDataTableRowComponent = (<
   Data extends DataTableData[],
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
@@ -532,7 +532,7 @@ type IntergalacticDataTableRowComponent = (<
 type IntergalacticDataTableCellComponent = (<
   Data extends DataTableData[],
   Name extends string = string,
-  Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
+  Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,

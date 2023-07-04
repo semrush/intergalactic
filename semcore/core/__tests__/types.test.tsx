@@ -96,11 +96,13 @@ describe('Core types', () => {
       xProp2: 2;
     };
 
-    type IntergalacticPillsComponent<BaseTag extends Intergalactic.InternalTypings.ComponentTag> =
-      (<Value extends PillsValue, Tag extends Intergalactic.InternalTypings.ComponentTag = BaseTag>(
-        props: Intergalactic.InternalTypings.ComponentProps<Tag, PillsProps<Value>>,
-      ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
-        Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
+    type IntergalacticPillsComponent<BaseTag extends Intergalactic.Tag> = (<
+      Value extends PillsValue,
+      Tag extends Intergalactic.Tag = BaseTag,
+    >(
+      props: Intergalactic.InternalTypings.ComponentProps<Tag, PillsProps<Value>>,
+    ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+      Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
 
     const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
     const Pills: IntergalacticPillsComponent<'div'> = any;

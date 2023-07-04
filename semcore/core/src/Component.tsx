@@ -225,4 +225,5 @@ export namespace Intergalactic {
     props: InternalTypings.ComponentProps<Tag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
     InternalTypings.ComponentAdditive<BaseTag>;
+  export type Tag = InternalTypings.ComponentTag;
 }
