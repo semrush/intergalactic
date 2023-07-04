@@ -77,7 +77,7 @@
     "@semcore/tab-line": "3.3.25",
     "@semcore/tab-panel": "3.5.6",
     "@semcore/tag": "4.6.4",
-    "@semcore/textarea": "4.3.33",
+    "@semcore/textarea": "4.4.0",
     "@semcore/time-picker": "3.7.3",
     "@semcore/tooltip": "5.4.26",
     "@semcore/typography": "4.4.14",
