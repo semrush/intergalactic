@@ -2261,7 +2261,7 @@ importers:
         specifier: 4.6.4
         version: link:../tag
       '@semcore/textarea':
-        specifier: 4.3.33
+        specifier: 4.4.0
         version: link:../textarea
       '@semcore/time-picker':
         specifier: 3.7.3
