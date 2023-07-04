@@ -18,6 +18,6 @@
     "postcss-import": "12.0.1",
     "postcss-inline-comment": "3.0.0",
     "postcss-preset-env": "6.7.0",
-    "typescript": "4.5.5"
+    "typescript": "5.1.6"
   }
 }
