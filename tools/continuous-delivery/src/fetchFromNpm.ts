@@ -1,5 +1,6 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
+import semver from 'semver';
 
 type PackageNpmRegistry = {
   dependencies: {
@@ -54,10 +55,14 @@ export const fetchFromNpm = async (filter?: string[]) => {
           const npmResponse = await axios.get<ResponseNpmRegistry>(
             `https://registry.npmjs.org/${name}`,
           );
-          const lastVersions = npmResponse.data['dist-tags'].latest;
+          const versions = Object.keys(npmResponse.data.versions);
+          const sortedVersions = versions
+            .filter((version) => !version.includes('-'))
+            .sort(semver.compare);
+          const lastVersion = sortedVersions[sortedVersions.length - 1];
           currentVersions[name] = {
-            version: lastVersions,
-            dependencies: npmResponse.data.versions[lastVersions].dependencies,
+            version: lastVersion,
+            dependencies: npmResponse.data.versions[lastVersion].dependencies,
           };
         }),
     ),
