@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.3.33] - 2023-06-30
+## [4.4.0] - 2023-07-04
+
+### Changed
+
+- Textarea `minRows` now works without `maxRows`. 
 
 ## [4.3.32] - 2023-06-27
 
