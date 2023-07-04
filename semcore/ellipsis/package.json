@@ -14,8 +14,7 @@
   "dependencies": {
     "@semcore/utils": "4.0.0-beta.0",
     "@semcore/flex-box": "5.0.0-beta.0",
-    "@semcore/tooltip": "6.0.0-beta.0",
-    "resize-observer-polyfill": "1.5.1"
+    "@semcore/tooltip": "6.0.0-beta.0"
   },
   "peerDependencies": {
     "@semcore/core": "2.0.0-beta.0",

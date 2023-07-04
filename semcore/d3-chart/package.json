@@ -25,8 +25,7 @@
     "d3-scale": "3.3.0",
     "d3-shape": "3.1.0",
     "d3-transition": "3.0.1",
-    "hoist-non-react-statics": "3.3.2",
-    "resize-observer-polyfill": "1.5.1"
+    "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
     "@semcore/core": "2.0.0-beta.0",

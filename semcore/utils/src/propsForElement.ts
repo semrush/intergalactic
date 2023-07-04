@@ -67,7 +67,7 @@ export default function propsForElement<T extends {}>(
       }
       return acc;
     }, {});
-    if (element && (omittedCloseTags as any)[element]) {
+    if (element && (omittedCloseTags as any)[element as any]) {
       validProps['children'] = undefined;
     }
     return validProps;

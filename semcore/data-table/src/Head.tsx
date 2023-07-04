@@ -9,7 +9,6 @@ import { flattenColumns, getFixedStyle, getScrollOffsetValue } from './utils';
 import type { Column } from './types';
 import logger from '@semcore/utils/lib/logger';
 import { setRef } from '@semcore/utils/lib/ref';
-import 'resize-observer-polyfill';
 
 import scrollStyles from './style/scroll-area.shadow.css';
 

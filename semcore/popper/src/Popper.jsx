@@ -1,7 +1,5 @@
 import React, { useCallback, useRef } from 'react';
 
-import ResizeObserver from 'resize-observer-polyfill';
-
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';

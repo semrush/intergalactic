@@ -15,8 +15,7 @@
     "@semcore/flex-box": "5.0.0-beta.0",
     "@semcore/icon": "4.0.0-beta.0",
     "@semcore/scroll-area": "5.0.0-beta.0",
-    "@semcore/utils": "4.0.0-beta.0",
-    "resize-observer-polyfill": "^1.5"
+    "@semcore/utils": "4.0.0-beta.0"
   },
   "devDependencies": {
     "@types/react": "18.0.21",

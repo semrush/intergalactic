@@ -5,7 +5,6 @@ import ScrollArea from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
 import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import ResizeObserver from 'resize-observer-polyfill';
 import scrollStyles from './style/scroll-area.shadow.css';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';

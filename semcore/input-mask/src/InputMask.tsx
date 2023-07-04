@@ -304,7 +304,7 @@ class Value extends Component<IInputMaskValueProps> {
     );
 
     const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
-    const ref = forkRef(this.inputRef, forwardRef);
+    const ref = forkRef(this.inputRef, forwardRef!);
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>

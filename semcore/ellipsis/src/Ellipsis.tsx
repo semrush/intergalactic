@@ -161,7 +161,7 @@ class RootEllipsis extends Component<AsProps> {
     } = this.asProps;
     const { visible } = this.state;
     const text = reactToText(getOriginChildren(Children));
-    const tooltipProps = pick(this.asProps, includeTooltipProps) as TooltipProps;
+    const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
     if (trim === 'middle') {
       return sstyled(styles)(
         <EllipsisMiddle

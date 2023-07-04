@@ -32,12 +32,12 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
   const nodeRef = React.useRef(null);
   const targetRef = React.useRef(null);
 
-  const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef);
+  const handleRef = useForkRef(children ? children.ref : null, nodeRef, forwardRef!);
 
   const handleOutsideClick = useEventCallback((event: any) => {
     const isTargetEvent = [...(excludeRefs as any), nodeRef]
       .filter((node) => getNodeByRef(node))
-      .some((node) => getNodeByRef(node).contains(targetRef.current || event.target));
+      .some((node) => getNodeByRef(node)?.contains(targetRef.current || event.target));
 
     if (!isTargetEvent) {
       onOutsideClick?.(event);
@@ -52,12 +52,12 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
 
     // Using capture to handle event faster than OutsideClick handler
-    outsideRoot.addEventListener('mouseup', handleOutsideClick, true);
-    outsideRoot.addEventListener('mousedown', handleMouseDown, true);
+    outsideRoot?.addEventListener('mouseup', handleOutsideClick, true);
+    outsideRoot?.addEventListener('mousedown', handleMouseDown, true);
 
     return () => {
-      outsideRoot.removeEventListener('mouseup', handleOutsideClick, true);
-      outsideRoot.removeEventListener('mousedown', handleMouseDown, true);
+      outsideRoot?.removeEventListener('mouseup', handleOutsideClick, true);
+      outsideRoot?.removeEventListener('mousedown', handleMouseDown, true);
     };
   }, [root]);
 

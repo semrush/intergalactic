@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "1.0.0",
+    "@types/classnames": "2.2.6",
     "@types/react": "18.0.21",
     "imagemin": "8.0.1",
     "imagemin-pngquant": "9.0.2",

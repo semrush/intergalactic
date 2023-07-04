@@ -9,11 +9,11 @@ class Logger {
     };
   }
 
-  console(level: string, msg: string, component: string) {
+  console(level: string, msg: string, component: any) {
     this.logger[level](component ? `[${component}]: ${msg}` : msg);
   }
 
-  warn(condition: any, msg: string, component: string) {
+  warn(condition: any, msg: string, component: any) {
     if (DEV) {
       if (condition) {
         this.console('warn', msg, component);

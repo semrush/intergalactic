@@ -121,7 +121,7 @@ export function brightness(color: any) {
   );
 }
 
-export default function resolveColor(color?: string): string | void {
+export default function resolveColor(color?: string): string | undefined {
   if (!color) return;
   if (color in (COLORS as Record<string, string>)) {
     return COLORS[color];

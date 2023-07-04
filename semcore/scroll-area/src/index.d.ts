@@ -1,4 +1,3 @@
-import 'resize-observer-polyfill';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { NodeByRef } from '@semcore/utils/lib/ref';

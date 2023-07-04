@@ -103,7 +103,7 @@ function Enhancement(childComponents: any, createComponent: any, options: any) {
       return {
         ...context,
         // [getterMethod]: this[SELF_GETTER_METHOD],
-        ...pick(this, getterMethodNames),
+        ...pick(this, getterMethodNames as any),
       };
     },
     wrapperProps: function (this: any, props: any, WrapperComponent: any) {

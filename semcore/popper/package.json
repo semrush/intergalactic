@@ -18,8 +18,7 @@
     "@semcore/neighbor-location": "4.0.0-beta.0",
     "@semcore/outside-click": "3.0.0-beta.0",
     "@semcore/portal": "3.0.0-beta.0",
-    "@semcore/utils": "4.0.0-beta.0",
-    "resize-observer-polyfill": "1.5.1"
+    "@semcore/utils": "4.0.0-beta.0"
   },
   "peerDependencies": {
     "@semcore/core": "2.0.0-beta.0",

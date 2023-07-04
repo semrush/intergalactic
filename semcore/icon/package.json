@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@semcore/icon-transform-svg": "1.1.0",
+    "@types/classnames": "2.2.6",
     "@semcore/testing-utils": "1.0.0",
     "@types/react": "18.0.21"
   }

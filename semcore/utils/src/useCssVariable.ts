@@ -27,7 +27,7 @@ export const cssVariableEnhance = <
   P extends string,
   F = string,
   R = string,
-  M extends null | ((value: string) => R) = null,
+  M extends null | ((value: string) => R) = any,
 >({
   variable,
   fallback,

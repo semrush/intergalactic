@@ -56,7 +56,7 @@ function insert(code: any, hash: any) {
 }
 
 function merge(s1 = {}, s2 = {}) {
-  return Object.entries(s2).reduce((acc: any, [key, value]) => {
+  return Object.entries(s2).reduce((acc: any, [key, value]: any) => {
     if (key.startsWith('@') || key.startsWith('--')) {
       acc[key] = value;
     } else {
