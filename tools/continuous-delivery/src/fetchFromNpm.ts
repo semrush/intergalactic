@@ -60,10 +60,12 @@ export const fetchFromNpm = async (filter?: string[]) => {
             .filter((version) => !version.includes('-'))
             .sort(semver.compare);
           const lastVersion = sortedVersions[sortedVersions.length - 1];
-          currentVersions[name] = {
-            version: lastVersion,
-            dependencies: npmResponse.data.versions[lastVersion].dependencies,
-          };
+          if (lastVersion) {
+            currentVersions[name] = {
+              version: lastVersion,
+              dependencies: npmResponse.data.versions[lastVersion].dependencies,
+            };
+          }
         }),
     ),
   );
