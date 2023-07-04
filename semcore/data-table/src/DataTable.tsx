@@ -531,7 +531,7 @@ type IntergalacticDataTableRowComponent = (<
 
 type IntergalacticDataTableCellComponent = (<
   Data extends DataTableData[],
-  Name extends string,
+  Name extends string = string,
   Tag extends Intergalactic.InternalTypings.ComponentTag = 'div',
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<

@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { ReactNode } from 'react';
+/** @ts-ignore */
 import { getStyles as reshadowGetStyles } from '@reshadow/core';
 
 const RESHADOW_ID = '__reshadow__';

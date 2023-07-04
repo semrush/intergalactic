@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
-import { NanoOptions } from 'nano-css';
-import { CssLikeObject } from 'nano-css/types/common';
+import { NanoOptions } from '@phytonmk/nano-css';
+import { CssLikeObject } from '@phytonmk/nano-css/types/common';
 import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
 import { UnknownProperties, Intergalactic } from '@semcore/core';

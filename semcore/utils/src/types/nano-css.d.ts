@@ -1,3 +1,3 @@
-declare module 'nano-css/addon/prefixer' {
+declare module '@phytonmk/nano-css/addon/prefixer' {
   export const addon: any;
 }

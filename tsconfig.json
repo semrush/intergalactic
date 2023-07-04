@@ -6,7 +6,7 @@
     "jsx": "react",
     "declaration": true,
     "esModuleInterop": true,
-    "skipLibCheck": false,
+    "skipLibCheck": true,
     "strict": true,
     "noEmit": false,
     "sourceMap": true,
