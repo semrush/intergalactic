@@ -146,6 +146,8 @@ export type BoxProps = StyledProps & {
   right?: number | string;
 
   zIndex?: number;
+
+  children?: React.ReactNode;
 };
 
 /** @deprecated */

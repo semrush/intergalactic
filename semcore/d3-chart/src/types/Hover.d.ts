@@ -26,7 +26,7 @@ type HoverTooltip = (<X, Y>(
       /** Index in `data` array of the current item */
       yIndex: Y extends string ? string : never;
     }) => { children: ReturnEl };
-  } & IBoxProps,
+  } & Omit<IBoxProps, 'children'>,
 ) => ReturnEl) &
   TooltipTypeBase;
 

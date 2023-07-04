@@ -185,13 +185,13 @@ export namespace Intergalactic {
     > = {
       tag?: Tag;
       children?: ComponentChildren<
-        Props & { children: React.ReactNode },
+        Omit<Props, 'children'> & { children: React.ReactNode },
         Context,
         ReturnResult,
         AdditionalContext
       >;
     } & ComponentBasicProps &
-      MergeProps<Omit<Props, 'tag'>, ComponentPropsNesting<Tag>>;
+      MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
       Props,
@@ -200,7 +200,7 @@ export namespace Intergalactic {
     > = {
       tag?: Tag;
       children?: ComponentChildren<
-        Props & { children: React.ReactNode },
+        Omit<Props, 'children'> & { children: React.ReactNode },
         Context,
         Partial<
           Omit<MergeProps<Props, ComponentPropsNesting<Tag>>, 'children' | 'tag' | 'ref'> & {
@@ -210,7 +210,7 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps &
-      MergeProps<Omit<Props, 'tag'>, ComponentPropsNesting<Tag>>;
+      MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;
