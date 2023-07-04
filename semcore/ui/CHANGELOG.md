@@ -1,3 +1,9 @@
+## [14.10.0] - 2023-07-04
+
+### @semcore/textarea
+
+- **Changed** Textarea `minRows` now works without `maxRows`. 
+
 ## [14.9.0] - 2023-06-29
 
 ### @semcore/data-table
