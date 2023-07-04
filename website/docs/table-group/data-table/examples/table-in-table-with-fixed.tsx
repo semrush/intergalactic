@@ -4,7 +4,7 @@ import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
 
 const RowAccordion = React.forwardRef(
-  ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLElement>) => {
+  ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => {
     return (
       <Accordion.Item value={value} ref={ref}>
         <Accordion.Item.Toggle {...props} />

@@ -4,7 +4,7 @@ import { Box } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 export default () => {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [container, setContainer] = useState(null);
   const [top, setTop] = useState(0);
   useEffect(() => {

@@ -17,7 +17,7 @@ type AsProps = {
   styles?: React.CSSProperties;
   containerRect?: { width: number };
 
-  containerRef?: RefObject<HTMLElement | null>;
+  containerRef?: RefObject<HTMLDivElement>;
   includeTooltipProps?: string[];
 };
 
@@ -27,7 +27,7 @@ type AsPropsMiddle = {
   styles?: React.CSSProperties;
   containerRect?: { width: number };
 
-  containerRef?: RefObject<HTMLElement | null>;
+  containerRef?: RefObject<HTMLDivElement>;
   tooltipProps: TooltipProps;
 };
 
@@ -52,7 +52,7 @@ type EllipsisProps = BoxProps &
      * Ref to the item that will be observed by ResizeObserver
      */
     // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-    containerRef?: RefObject<HTMLElement | null>;
+    containerRef?: RefObject<HTMLDivElement>;
     /**
      * Explicit sizes of container text should be trimmed in
      **/
@@ -83,7 +83,7 @@ const defaultTooltipProps = [
   'onFirstUpdate',
 ];
 
-const createMeasurerElement = (element: HTMLElement) => {
+const createMeasurerElement = (element: HTMLDivElement) => {
   const styleElement = window.getComputedStyle(element, null);
   const temporaryElement = document.createElement('temporary-block');
   temporaryElement.style.display = 'inline-block';
@@ -100,7 +100,7 @@ const createMeasurerElement = (element: HTMLElement) => {
   return temporaryElement;
 };
 
-function isTextOverflowing(element: HTMLElement | null, multiline: boolean): boolean {
+function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean {
   if (!element) return false;
 
   const { height: currentHeight, width: currentWidth } = element.getBoundingClientRect();
@@ -134,11 +134,11 @@ class RootEllipsis extends Component<AsProps> {
     visible: false,
   };
 
-  textRef = React.createRef<HTMLElement>();
+  textRef = React.createRef<HTMLDivElement>();
 
   showTooltip() {
     const { maxLine = 1 } = this.asProps;
-    return isTextOverflowing(this.textRef.current, maxLine > 1);
+    return isTextOverflowing(this.textRef.current!, maxLine > 1);
   }
 
   handlerVisibleChange = (visible: boolean) => {
@@ -201,7 +201,7 @@ class RootEllipsis extends Component<AsProps> {
 
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const { styles, text, tooltip, containerRect, containerRef, tooltipProps } = props;
-  const resizeElement = useRef<HTMLElement | null>(null);
+  const resizeElement = useRef<HTMLDivElement>(null);
   const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
     symbolWidth: 0,

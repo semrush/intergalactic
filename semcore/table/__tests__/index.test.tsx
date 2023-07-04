@@ -190,7 +190,7 @@ describe('Table.Row', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef<HTMLTableRowElement>();
     render(
       <Table>
         <Table.Body>
@@ -213,7 +213,7 @@ describe('Table.CellHead', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef<HTMLTableCellElement>();
     render(
       <Table>
         <Table.Head>
@@ -319,7 +319,7 @@ describe('Table.Cell', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef<HTMLElement>();
+    const ref = React.createRef<HTMLTableCellElement>();
     render(
       <Table>
         <Table.Body>

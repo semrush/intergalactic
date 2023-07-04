@@ -7,7 +7,7 @@ import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/
 
 const RowAccordion = React.forwardRef(function (
   { value, collapse = {}, ...props }: any,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ) {
   return (
     <Accordion.Item value={value} ref={ref}>

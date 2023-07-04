@@ -51,7 +51,7 @@ const Demo = () => {
                       value: /.+@.+\..+/i,
                       message: 'Email is not valid',
                     },
-                  }) as React.ForwardedRef<HTMLElement>,
+                  }) as React.ForwardedRef<HTMLInputElement>,
                 })}
                 autoComplete='email'
                 aria-invalid={Boolean(errors['email'])}
@@ -88,7 +88,7 @@ const Demo = () => {
                   type: 'password',
                   ref: register({
                     required: 'Password is required',
-                  }) as React.ForwardedRef<HTMLElement>,
+                  }) as React.ForwardedRef<HTMLInputElement>,
                 })}
                 autoComplete='password'
                 aria-invalid={Boolean(errors['password'])}

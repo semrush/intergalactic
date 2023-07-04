@@ -16,7 +16,7 @@ const data = Array(20)
   }));
 
 export default () => {
-  const svgRef = React.useRef<HTMLElement>(null);
+  const svgRef = React.useRef<SVGSVGElement>(null);
   const width = 500;
   const height = 300;
   const MARGIN = 40;

@@ -141,8 +141,8 @@ export namespace Intergalactic {
   > =
     | ((props: MergeProps<Context, Props>, ...args: AdditionalContext) => RenderingResult)
     | InternalTypings.ReturnResult;
-  type ComponentBasicProps = {
-    ref?: React.ForwardedRef<HTMLElement | null>;
+  type ComponentBasicProps<Tag extends InternalTypings.ComponentTag> = {
+    ref?: React.Ref<InternalTypings.ComponentHtmlElement<Tag> | null>;
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
   };
@@ -164,7 +164,7 @@ export namespace Intergalactic {
         ? JSX.IntrinsicElements[Tag]
         : {}) &
         (Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}),
-      'children' | 'tag' | 'ref'
+      'children' | 'tag'
     >;
     export type ReturnResult =
       | React.ReactElement
@@ -190,7 +190,7 @@ export namespace Intergalactic {
         ReturnResult,
         AdditionalContext
       >;
-    } & ComponentBasicProps &
+    } & ComponentBasicProps<Tag> &
       MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
@@ -209,12 +209,24 @@ export namespace Intergalactic {
         >,
         AdditionalContext
       >;
-    } & ComponentBasicProps &
+    } & ComponentBasicProps<Tag> &
       MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;
     };
+    type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
+      T extends React.DetailedHTMLProps<infer _, infer Element> ? Element : HTMLElement;
+    type InferElementFromRef<T> = T extends React.Ref<infer Element> ? Element : never;
+    type InferRefElementFromProps<T> = 'ref' extends keyof T
+      ? InferElementFromRef<T['ref']>
+      : HTMLElement;
+    export type ComponentHtmlElement<Tag extends ComponentTag> =
+      Tag extends keyof JSX.IntrinsicElements
+        ? InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>
+        : Tag extends { __nestedProps: infer NestedProps }
+        ? InferRefElementFromProps<NestedProps>
+        : HTMLElement;
   }
   export type Component<
     BaseTag extends InternalTypings.ComponentTag = never,

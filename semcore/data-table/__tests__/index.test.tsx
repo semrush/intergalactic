@@ -469,7 +469,7 @@ describe('DataTable', () => {
   test.concurrent('Accordion in the table', async ({ task }) => {
     const RowAccordion = React.forwardRef(function (
       { value, collapse = {}, ...props }: any,
-      ref: React.Ref<HTMLElement>,
+      ref: React.Ref<HTMLDivElement>,
     ) {
       return (
         <Accordion.Item value={value} ref={ref}>
@@ -533,7 +533,7 @@ describe('DataTable', () => {
   test.concurrent('Table in table', async ({ task }) => {
     const RowAccordion = React.forwardRef(function (
       { value, collapse = {}, ...props }: any,
-      ref: React.Ref<HTMLElement>,
+      ref: React.Ref<HTMLDivElement>,
     ) {
       return (
         <Accordion.Item value={value} ref={ref}>

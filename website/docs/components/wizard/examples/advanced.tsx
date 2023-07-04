@@ -7,7 +7,7 @@ import ArrowRight from '@semcore/ui/icon/ArrowRight/m';
 import ArrowLeft from '@semcore/ui/icon/ArrowLeft/m';
 import Input from '@semcore/ui/input';
 
-const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLElement>) {
+const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
     <Flex ref={ref} direction='column'>
       <Input mb={4}>

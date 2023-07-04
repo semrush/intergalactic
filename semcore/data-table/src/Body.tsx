@@ -43,7 +43,7 @@ class Body extends Component<AsProps, State> {
     scrollOffset: 0,
   };
 
-  firstRowRef = React.createRef<HTMLElement>();
+  firstRowRef = React.createRef<HTMLDivElement>();
   firstRowResizeObserver: ResizeObserver | null = null;
 
   getRowHeight = () => {
