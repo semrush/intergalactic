@@ -81,8 +81,8 @@ Use pills in:
 
 Minimum in the component is 2, maximum – is unlimited. **But keep in mind that it will be difficult for the user to navigate the selection if there are too many items.** In this case, you can:
 
-- collapse pills in [DropdownMenu](/components/dropdown-menu/);
-- collapse the last pills into a pill with an ellipsis.
+- collapse pills in [DropdownMenu](/components/dropdown-menu/) with an `Ellipsis` icon;
+- use [Select](/components/select) instead.
 
 ![](static/pills-collapse.png)
 
