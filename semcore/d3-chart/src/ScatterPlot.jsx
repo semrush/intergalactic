@@ -1,6 +1,6 @@
 import React from 'react';
 import { transition } from 'd3-transition';
-import { Component, sstyled } from '@semcore/core';
+import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
@@ -26,11 +26,11 @@ class ScatterPlotRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX: x, clientY: y }) => {
     const { eventEmitter } = this.asProps;
     this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
     this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    eventEmitter.emit('onTooltipVisible', visible, props, tooltipProps, this.virtualElement);
   };
 
   animationCircle() {
@@ -63,8 +63,8 @@ class ScatterPlotRoot extends Component {
       <g
         aria-hidden
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i, index: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i, index: i })}
+        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i })}
       >
         <SScatterPlot
           aria-hidden
@@ -123,6 +123,13 @@ class ScatterPlotRoot extends Component {
   }
 }
 
-const ScatterPlot = createElement(ScatterPlotRoot, { Tooltip });
+const ScatterPlotTooltip = (props) => {
+  const SScatterPlotTooltip = Root;
+  return sstyled(props.styles)(<SScatterPlotTooltip render={Tooltip} excludeAnchorProps />);
+};
+
+const ScatterPlot = createElement(ScatterPlotRoot, {
+  Tooltip: [ScatterPlotTooltip, Tooltip._______childrenComponents],
+});
 
 export default ScatterPlot;

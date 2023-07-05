@@ -1,6 +1,6 @@
 import React from 'react';
 import { venn, normalizeSolution, scaleSolution, intersectionAreaPath } from '@upsetjs/venn.js';
-import { Component, sstyled } from '@semcore/core';
+import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { FadeInOut } from '@semcore/animation';
 import createElement from './createElement';
@@ -25,11 +25,11 @@ class VennRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX: x, clientY: y }) => {
     const { eventEmitter } = this.asProps;
     this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
     this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    eventEmitter.emit('onTooltipVisible', visible, props, tooltipProps, this.virtualElement);
   };
 
   getVennData() {
@@ -48,12 +48,18 @@ class VennRoot extends Component {
   }
 
   getCircleProps(props) {
+    const tooltipProps = {
+      dataKey: props.dataKey,
+      name: props.name,
+      color: props.color,
+    };
+
     return {
       duration: this.asProps.duration,
       data: this.vennData[props.dataKey],
       originalData: this.asProps.data[props.dataKey],
-      onMouseMove: this.bindHandlerTooltip(true, props),
-      onMouseLeave: this.bindHandlerTooltip(false, props),
+      onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
+      onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       transparent: this.asProps.transparent,
     };
   }
@@ -61,13 +67,21 @@ class VennRoot extends Component {
   getIntersectionProps(props) {
     const { duration, transparent } = this.asProps;
     const dataKeys = props.dataKey.split('/');
+    const tooltipProps = {
+      dataKey: props.dataKey,
+      name: props.name,
+      color: props.color,
+      duration: props.duration,
+      transparent: props.transparent,
+    };
+
     return {
       duration,
       delay: duration,
       data: Object.values(this.vennData).filter((d) => dataKeys.includes(d.setid)),
       originalData: this.asProps.data[props.dataKey],
-      onMouseMove: this.bindHandlerTooltip(true, props),
-      onMouseLeave: this.bindHandlerTooltip(false, props),
+      onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
+      onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       transparent,
     };
   }
@@ -146,6 +160,15 @@ function Intersection(props) {
   );
 }
 
-const Venn = createElement(VennRoot, { Circle, Intersection, Tooltip });
+const VennTooltip = (props) => {
+  const SVennTooltip = Root;
+  return sstyled(props.styles)(<SVennTooltip render={Tooltip} excludeAnchorProps />);
+};
+
+const Venn = createElement(VennRoot, {
+  Circle,
+  Intersection,
+  Tooltip: [VennTooltip, Tooltip._______childrenComponents],
+});
 
 export default Venn;

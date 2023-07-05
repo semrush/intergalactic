@@ -343,7 +343,7 @@ class AxisRoot extends Component {
     };
   }
 
-  handlerTooltipVisible = (visible, { index }) => {
+  handlerTooltipVisible = (_visible, _anchorProps, { index }) => {
     this.setState({
       activeLineIndex: index,
     });
@@ -524,7 +524,7 @@ class Hover extends Component {
         index,
       },
       () => {
-        eventEmitter.emit('onTooltipVisible', index !== null, { index }, this.virtualElement);
+        eventEmitter.emit('onTooltipVisible', index !== null, {}, { index }, this.virtualElement);
       },
     );
   });
@@ -535,7 +535,7 @@ class Hover extends Component {
         index: null,
       },
       () => {
-        this.asProps.eventEmitter.emit('onTooltipVisible', false, { index: null });
+        this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, { index: null });
       },
     );
   });
@@ -608,7 +608,9 @@ const Polygon = createElement(PolygonRoot, {
 
 const RadarTooltip = (props) => {
   const SRadarTooltip = Root;
-  return sstyled(props.styles)(<SRadarTooltip render={Tooltip} tag={Radar.Hover} />);
+  return sstyled(props.styles)(
+    <SRadarTooltip render={Tooltip} tag={Radar.Hover} excludeAnchorProps />,
+  );
 };
 
 const Radar = createElement(RadarRoot, {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { arc, pie } from 'd3-shape';
 import { interpolate } from 'd3-interpolate';
 import { transition } from 'd3-transition';
-import { Component, sstyled } from '@semcore/core';
+import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -160,11 +160,11 @@ class DonutRoot extends Component {
     return d3Pie(pieData);
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX: x, clientY: y }) => {
     const { eventEmitter } = this.asProps;
     this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
     this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    eventEmitter.emit('onTooltipVisible', visible, props, tooltipProps, this.virtualElement);
   };
 
   animationActivePie = ({ data, active, selector, element }) => {
@@ -211,14 +211,21 @@ class DonutRoot extends Component {
     if (active) {
       this.activeIndexPie = ind;
     }
+    const tooltipProps = {
+      dataKey: props.dataKey,
+      name: props.name,
+      color: props.color,
+      active: props.active,
+      transparent: props.transparent,
+    };
 
     return {
       data,
       d3Arc,
       d3ArcOut,
       $animationActivePie: this.animationActivePie,
-      onMouseMove: this.bindHandlerTooltip(true, props),
-      onMouseLeave: this.bindHandlerTooltip(false, props),
+      onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
+      onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       onMouseOver: (e) => {
         if (!active) {
           this.animationActivePie({
@@ -345,6 +352,16 @@ function Label({ Element: SLabel, styles, Children, children, label, dataHintsHa
   );
 }
 
-const Donut = createElement(DonutRoot, { Pie, Label, EmptyData, Tooltip });
+const DonutTooltip = (props) => {
+  const SDonutTooltip = Root;
+  return sstyled(props.styles)(<SDonutTooltip render={Tooltip} excludeAnchorProps />);
+};
+
+const Donut = createElement(DonutRoot, {
+  Pie,
+  Label,
+  EmptyData,
+  Tooltip: [DonutTooltip, Tooltip._______childrenComponents],
+});
 
 export default Donut;

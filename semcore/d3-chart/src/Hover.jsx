@@ -44,6 +44,7 @@ class Hover extends Component {
       eventEmitter.emit(
         'onTooltipVisible',
         xIndex !== null || yIndex !== null,
+        {},
         state,
         this.virtualElement,
       );
@@ -56,7 +57,7 @@ class Hover extends Component {
       yIndex: null,
     };
     this.setState(state, () => {
-      this.asProps.eventEmitter.emit('onTooltipVisible', false, state);
+      this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, state);
     });
   });
 
@@ -168,11 +169,15 @@ class HoverRectRoot extends Hover {
 
 const HoverLineTooltip = (props) => {
   const SHoverLineTooltip = Root;
-  return sstyled(props.styles)(<SHoverLineTooltip render={Tooltip} tag={HoverLine} />);
+  return sstyled(props.styles)(
+    <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
+  );
 };
 const HoverRectTooltip = (props) => {
   const SHoverRectTooltip = Root;
-  return sstyled(props.styles)(<SHoverRectTooltip render={Tooltip} tag={HoverRect} />);
+  return sstyled(props.styles)(
+    <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
+  );
 };
 
 const HoverLine = createElement(HoverLineRoot, {
