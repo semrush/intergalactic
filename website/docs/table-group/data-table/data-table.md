@@ -89,7 +89,9 @@ Sometimes we need to move the table header outside of the table, this can be don
 
 To apply some properties to a table row, you need to define `<DataTable.Row/>`. You can use multiple `<DataTable.Row/>` to separate the business logic.
 
-> `<DataTable.Row/>` must be a child component of `<DataTable.Body/>`.
+> `<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>`.
+>
+> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) is not allowed.
 
 @example row
 
@@ -97,7 +99,9 @@ To apply some properties to a table row, you need to define `<DataTable.Row/>`. 
 
 To apply some properties to a table cell, you need to define `<DataTable.Cell/>` with the appropriate `name={name}`. You can use multiple `<DataTable.Cell/>` for separating business logic.
 
-> `<DataTable.Cell/>` must be a child component of `<DataTable.Body/>`.
+> `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
+>
+> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) is not allowed.
 
 @example cell
 
