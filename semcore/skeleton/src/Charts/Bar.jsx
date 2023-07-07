@@ -19,7 +19,7 @@ const BarChartSkeleton = (props) => {
       render={Skeleton}
       bgRepeat={{ vertical: 'repeat-y', horizontal: 'repeat-x' }[layout]}
       bgPosition={{ vertical: 'left top', horizontal: 'left bottom' }[layout]}
-      bgSize={{ vertical: '50% auto', horizontal: 'auto 50%' }[layout]}
+      bgSize={{ horizontal: 'auto 50%' }[layout]}
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );
