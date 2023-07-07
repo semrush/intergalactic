@@ -2,7 +2,7 @@ name: cd
 on:
   pull_request:
   push:
-    branches: [master]
+    branches: [master, cd-debug]
   workflow_dispatch:
 concurrency:
   group: ${{ github.ref }}
