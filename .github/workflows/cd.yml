@@ -414,6 +414,12 @@ jobs:
       - name: Browser testing
         run: |
           pnpm run browser-test
+      - uses: actions/download-artifact@v3
+        with:
+          path: test-results
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: test-results
       - name: Setting success output
         id: final
         run: echo "success=true" >> $GITHUB_OUTPUT
