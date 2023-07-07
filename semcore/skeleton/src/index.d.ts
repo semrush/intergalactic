@@ -38,21 +38,26 @@ export type SkeletonTextProps = BoxProps & {
   amount?: string | number;
 };
 
-export interface AreaChartSkeletonProps extends ISkeletonProps {
+export type AreaChartSkeletonProps = SkeletonProps & {
   type?: 'linear' | 'monotone';
-}
+};
 
-export interface BarChartSkeletonProps extends ISkeletonProps {
+export type BarChartSkeletonProps = SkeletonProps & {
   layout?: 'horizontal' | 'vertical';
-}
+};
 
-export interface HistogramChartSkeletonProps extends ISkeletonProps {
+export type HistogramChartSkeletonProps = SkeletonProps & {
   layout?: 'horizontal' | 'vertical';
-}
+};
 
-export interface LineChartSkeletonProps extends ISkeletonProps {
+export type LineChartSkeletonProps = SkeletonProps & {
   type?: 'linear' | 'monotone';
-}
+};
+
+export type DonutChartSkeletonProps = SkeletonProps & {
+  /** Semi donut */
+  halfsize?: boolean;
+};
 
 declare const Skeleton: Intergalactic.Component<'svg', SkeletonProps, SkeletonCtx> & {
   Text: Intergalactic.Component<'rect', SkeletonTextProps>;
@@ -61,7 +66,7 @@ declare const AreaChartSkeleton: Intergalactic.Component<'svg', AreaChartSkeleto
 declare const BarChartSkeleton: Intergalactic.Component<'svg', BarChartSkeletonProps>;
 declare const HistogramChartSkeleton: Intergalactic.Component<'svg', HistogramChartSkeletonProps>;
 declare const LineChartSkeleton: Intergalactic.Component<'svg', LineChartSkeletonProps>;
-declare const PieChartSkeleton: typeof Skeleton;
+declare const DonutChartSkeleton: Intergalactic.Component<'svg', DonutChartSkeletonProps>;
 declare const VennChartSkeleton: typeof Skeleton;
 declare const BubbleChartSkeleton: typeof Skeleton;
 declare const ScatterPlotChartSkeleton: typeof Skeleton;
@@ -73,7 +78,7 @@ export {
   BarChartSkeleton,
   HistogramChartSkeleton,
   LineChartSkeleton,
-  PieChartSkeleton,
+  DonutChartSkeleton,
   VennChartSkeleton,
   BubbleChartSkeleton,
   ScatterPlotChartSkeleton,

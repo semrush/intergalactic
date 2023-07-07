@@ -1,33 +1,29 @@
 import React from 'react';
-import Skeleton from '../Skeleton';
+import createComponent, { Root, sstyled } from '@semcore/core';
+import { Skeleton } from '../Skeleton';
+import styles from '../style/chart.shadow.css';
+
+const linearPattern = preval`
+module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/line-chart-linear.svg'))
+`;
+const monotonePattern = preval`
+module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/line-chart-monotone.svg'))
+`;
 
 const LineChartSkeleton = (props) => {
-  const { type = 'linear' } = props;
-
-  const getDraw = (type) => {
-    switch (type) {
-      case 'monotone':
-        return 'M1.991 2c75.333 0 75.333 80 150.666 80S227.99 2 303.323 2c75.335 0 75.335 80 150.669 80 75.334 0 75.334-80 150.667-80 75.337 0 75.337 80 150.676 80 75.337 0 75.337-80 150.674-80';
-      default:
-        return 'M1.991 2l150.666 80L303.323 2l150.669 80L604.659 2l150.676 80L906.009 2';
-    }
-  };
-
-  return (
-    <Skeleton viewBox='0 0 904 90' preserveAspectRatio='xMidYMid meet' {...props}>
-      {({ gradientUrl }) => (
-        <path
-          fill='none'
-          stroke={gradientUrl}
-          fillRule='evenodd'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth='4'
-          d={getDraw(type)}
-        />
-      )}
-    </Skeleton>
+  const SChartSkeleton = Root;
+  const patternBase64 = { linear: linearPattern, monotone: monotonePattern }[
+    props.type ?? 'linear'
+  ];
+  return sstyled(styles)(
+    <SChartSkeleton
+      render={Skeleton}
+      bgRepeat='repeat-x'
+      bgPosition='left center'
+      bgSize='auto 50%'
+      bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
+    />,
   );
 };
 
-export default LineChartSkeleton;
+export default createComponent(LineChartSkeleton);

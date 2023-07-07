@@ -10,16 +10,43 @@ const MAP_COLOR_THEME = {
   invert: 'rgba(224, 225, 233, 0.8)',
 };
 
-class Skeleton extends Component {
+class SkeletonRoot extends Component {
   static displayName = 'Skeleton';
   static style = style;
   static defaultProps = {
     width: '100%',
     height: '100%',
-    theme: 'invert',
     duration: 2000,
   };
+
+  render() {
+    const SSkeleton = Root;
+    const { Children, styles, duration, hidden, style } = this.asProps;
+
+    if (hidden) return null;
+
+    return sstyled(styles)(
+      <SSkeleton
+        render={Box}
+        durationAnim={`${duration}ms`}
+        aria-busy='true'
+        aria-atomic='true'
+        aria-hidden='true'
+        alt=''
+      >
+        <Children />
+      </SSkeleton>,
+    );
+  }
+}
+
+class SkeletonSVG extends Component {
+  static displayName = 'SkeletonSVG';
   static enhance = [uniqueIDEnhancement()];
+
+  static defaultProps = {
+    theme: 'invert',
+  };
 
   setContext() {
     const { theme } = this.asProps;
@@ -29,29 +56,18 @@ class Skeleton extends Component {
   }
 
   render() {
-    const SSkeleton = Root;
-    const { Children, styles, duration, hidden, uid } = this.asProps;
-
-    if (hidden) return null;
+    const { Children, styles, uid, theme } = this.asProps;
+    const SSkeletonSVG = Root;
 
     return sstyled(styles)(
-      <SSkeleton
-        render={Box}
-        tag='svg'
-        preserveAspectRatio='none'
-        durationAnim={`${duration}ms`}
-        aria-busy='true'
-        aria-atomic='true'
-        aria-hidden='true'
-        alt=''
-      >
+      <SSkeletonSVG render={Skeleton} tag='svg' preserveAspectRatio='none' theme={theme}>
         <defs>
           <mask id={uid}>
             <Children />
           </mask>
         </defs>
         <rect x='0' y='0' width='100%' height='100%' mask={`url(#${uid})`} />
-      </SSkeleton>,
+      </SSkeletonSVG>,
     );
   }
 }
@@ -87,6 +103,10 @@ Text.defaultProps = {
   width: '100%',
 };
 
-export default createComponent(Skeleton, {
+const Skeleton = createComponent(SkeletonRoot);
+
+export { Skeleton };
+
+export default createComponent(SkeletonSVG, {
   Text,
 });
