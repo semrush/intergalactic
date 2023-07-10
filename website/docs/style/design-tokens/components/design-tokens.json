@@ -848,6 +848,14 @@
     ]
   },
   {
+    "name": "--intergalactic-border-date-picker-range-comparison",
+    "type": "color",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
+    "description": "Border color of the second period for the comparison mode in the DatePicker.",
+    "components": []
+  },
+  {
     "name": "--intergalactic-control-switch-bg",
     "type": "color",
     "rawValue": "{gray.300}",
@@ -1552,6 +1560,22 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-date-picker-cell-comparison-active",
+    "type": "color",
+    "rawValue": "{violet.500}",
+    "computedValue": "#8649e1",
+    "description": "Active (selected) date-picker cell background for comparison periods.",
+    "components": []
+  },
+  {
+    "name": "--intergalactic-date-picker-cell-comparison-active-hover",
+    "type": "color",
+    "rawValue": "{violet.600}",
+    "computedValue": "#5925ab",
+    "description": "Hover for the active (selected) date-picker cell background for comparison periods.",
     "components": []
   },
   {

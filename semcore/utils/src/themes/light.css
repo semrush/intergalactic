@@ -152,6 +152,8 @@
   --intergalactic-border-tooltip-invert: #6c6e79;
   /* Accent borders in the Table: for the accordion in the table and for the header of the secondary table. */
   --intergalactic-border-table-accent: #a9abb6;
+  /* Border color of the second period for the comparison mode in the DatePicker. */
+  --intergalactic-border-date-picker-range-comparison: #8649e1;
   /* Subtle background of the Switch control. */
   --intergalactic-control-switch-bg: #a9abb6;
   /* Background of the regular primary control. */
@@ -288,6 +290,10 @@
   --intergalactic-date-picker-cell-active-hover: #008ff8;
   /* Color for marking the active cell with the current date, month or year in the date-picker. */
   --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
+  /* Active (selected) date-picker cell background for comparison periods. */
+  --intergalactic-date-picker-cell-comparison-active: #8649e1;
+  /* Hover for the active (selected) date-picker cell background for comparison periods. */
+  --intergalactic-date-picker-cell-comparison-active-hover: #5925ab;
   /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: #ffffff;
   /* Hover state of the default background color for the list item in the dropdown-menu. */
