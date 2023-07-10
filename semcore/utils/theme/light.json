@@ -760,6 +760,11 @@
         "value": "{gray.300}",
         "type": "color",
         "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table."
+      },
+      "date-picker-range-comparison": {
+        "value": "{violet.500}",
+        "type": "color",
+        "description": "Border color of the second period for the comparison mode in the DatePicker."
       }
     },
     "control": {
@@ -1124,6 +1129,16 @@
         "value": "{gray.white}, 0.3",
         "type": "color",
         "description": "Color for marking the active cell with the current date, month or year in the date-picker."
+      },
+      "cell-comparison-active": {
+        "value": "{violet.500}",
+        "type": "color",
+        "description": "Active (selected) date-picker cell background for comparison periods."
+      },
+      "cell-comparison-active-hover": {
+        "value": "{violet.600}",
+        "type": "color",
+        "description": "Hover for the active (selected) date-picker cell background for comparison periods."
       }
     },
     "dropdown-menu": {
