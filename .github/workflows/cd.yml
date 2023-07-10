@@ -146,10 +146,18 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
       - name: Test
+        id: test
         env:
           SCREENSHOT_URL: ${{ secrets.SCREENSHOT_URL }}
         run: pnpm coverage
+      - name: Save test results as artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-results
+          path: test-results
       - name: Upload coverage to Codecov
+        if: steps.test.conclusion == 'success'
         uses: codecov/codecov-action@v3.1.4
       - name: Setting success output
         id: final
@@ -412,14 +420,17 @@ jobs:
       - name: Install Browser
         run: npx playwright install
       - name: Browser testing
+        id: browser-testing
         run: |
-          pnpm run browser-test || echo "browser testing failed"
+          pnpm run browser-test
       - name: Save test results as artifacts
+        if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: test-results
       - name: Setting success output
+        if: steps.browser-testing.conclusion == 'success'
         id: final
         run: echo "success=true" >> $GITHUB_OUTPUT
     outputs:
