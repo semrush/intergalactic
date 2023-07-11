@@ -45,25 +45,17 @@ describe('Radio', () => {
           <Radio.Text>Test quest</Radio.Text>
         </Radio>
         <Radio size='l'>
-          <Radio.Value id='radio-1' />
+          <Radio.Value checked />
           <Radio.Text>Test quest</Radio.Text>
         </Radio>
         <Radio size='m'>
-          <Radio.Value id='radio-2' />
+          <Radio.Value checked />
           <Radio.Text>Test quest</Radio.Text>
         </Radio>
       </snapshot.ProxyProps>
     );
 
-    await expect(
-      await snapshot(component, {
-        afterMount: (root) => {
-          // happy-dom fails to properly set checked prop via React
-          root.querySelector('#radio-1').setAttribute('checked', true);
-          root.querySelector('#radio-2').setAttribute('checked', true);
-        },
-      }),
-    ).toMatchImageSnapshot(task);
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support normal state', async ({ task }) => {
@@ -79,27 +71,18 @@ describe('Radio', () => {
           <Radio.Value keyboardFocused />
         </Radio>
         <Radio>
-          <Radio.Value id='radio-1' />
+          <Radio.Value checked />
         </Radio>
         <Radio>
-          <Radio.Value id='radio-2' disabled />
+          <Radio.Value checked disabled />
         </Radio>
         <Radio>
-          <Radio.Value id='radio-3' keyboardFocused />
+          <Radio.Value checked keyboardFocused />
         </Radio>
       </snapshot.ProxyProps>
     );
 
-    await expect(
-      await snapshot(component, {
-        afterMount: (root) => {
-          // happy-dom fails to properly set checked prop via React
-          root.querySelector('#radio-1').setAttribute('checked', true);
-          root.querySelector('#radio-2').setAttribute('checked', true);
-          root.querySelector('#radio-3').setAttribute('checked', true);
-        },
-      }),
-    ).toMatchImageSnapshot(task);
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support invalid state', async ({ task }) => {
@@ -115,27 +98,18 @@ describe('Radio', () => {
           <Radio.Value keyboardFocused />
         </Radio>
         <Radio state='invalid'>
-          <Radio.Value id='radio-1' />
+          <Radio.Value checked />
         </Radio>
         <Radio state='invalid'>
-          <Radio.Value id='radio-2' disabled />
+          <Radio.Value checked disabled />
         </Radio>
         <Radio state='invalid'>
-          <Radio.Value id='radio-3' keyboardFocused />
+          <Radio.Value checked keyboardFocused />
         </Radio>
       </snapshot.ProxyProps>
     );
 
-    await expect(
-      await snapshot(component, {
-        afterMount: (root) => {
-          // happy-dom fails to properly set checked prop via React
-          root.querySelector('#radio-1').setAttribute('checked', true);
-          root.querySelector('#radio-2').setAttribute('checked', true);
-          root.querySelector('#radio-3').setAttribute('checked', true);
-        },
-      }),
-    ).toMatchImageSnapshot(task);
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
   test.concurrent('Should support theme', async ({ task }) => {
@@ -145,30 +119,21 @@ describe('Radio', () => {
           <Radio.Value />
         </Radio>
         <Radio theme='yellow-400'>
-          <Radio.Value id='radio-1' />
+          <Radio.Value checked />
         </Radio>
         <Radio state='invalid' theme='yellow-400'>
           <Radio.Value />
         </Radio>
         <Radio state='invalid' theme='yellow-400'>
-          <Radio.Value id='radio-2' />
+          <Radio.Value checked />
         </Radio>
       </snapshot.ProxyProps>
     );
 
-    await expect(
-      await snapshot(component, {
-        afterMount: (root) => {
-          // happy-dom fails to properly set checked prop via React
-          root.querySelector('#radio-1').setAttribute('checked', true);
-          root.querySelector('#radio-2').setAttribute('checked', true);
-        },
-      }),
-    ).toMatchImageSnapshot(task);
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  // enable after https://github.com/capricorn86/happy-dom/pull/677 merged, https://github.com/capricorn86/happy-dom/issues/531 resolved and happy-dom updated
-  test.skip('Should support change of state "checked" on click in label', async () => {
+  test('Should support change of state "checked" on click in label', async () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Radio data-testid='label'>
@@ -196,8 +161,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('radio').name).toContain('test');
   });
 
-  // enable after https://github.com/capricorn86/happy-dom/pull/677 merged, https://github.com/capricorn86/happy-dom/issues/531 resolved and happy-dom updated
-  test.skip('Should support onChange', () => {
+  test('Should support onChange', () => {
     const onChange = vi.fn();
     const onChangeRadio = vi.fn();
     const value = 'test';

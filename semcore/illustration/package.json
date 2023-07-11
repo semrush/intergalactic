@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "esbuild": "0.14.29",
-    "happy-dom": "^9.20.3",
+    "jsdom": "22.1.0",
     "svg-to-jsx": "^1.0.4",
     "@types/react": "18.0.21"
   }
