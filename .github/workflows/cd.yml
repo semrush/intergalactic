@@ -412,7 +412,7 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
       - name: Install Browser
-        run: npx playwright install
+        run: npx playwright install --with-deps
       - name: Browser testing
         id: browser-testing
         run: |
