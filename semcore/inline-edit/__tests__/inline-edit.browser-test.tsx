@@ -1,3 +1,4 @@
+import { platform } from 'os';
 import { expect, test } from '@semcore/testing-utils/playwright';
 import { e2eStandToHtml } from '@semcore/testing-utils/e2e-stand';
 
@@ -11,7 +12,11 @@ test.describe('InlineEdit', () => {
     const randomText = Math.random().toString().substring(2);
 
     await page.click('[data-ui-name="InlineEdit"]');
-    await page.keyboard.press('Meta+A');
+    if (platform() === 'darwin') {
+      await page.keyboard.press('Meta+A');
+    } else {
+      await page.keyboard.press('Control+A');
+    }
     await page.type('input', randomText);
     await page.click('[data-ui-name="InlineInput.ConfirmControl"]');
 
