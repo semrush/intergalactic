@@ -1,0 +1,7 @@
+node_modules
+**/node_modules
+.cache
+**/.cache
+.pnpm-store
+__tests__
+**/__tests__
