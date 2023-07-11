@@ -66,7 +66,7 @@ export default defineConfig({
       '.git',
       '.cache',
     ],
-    environment: 'happy-dom',
+    environment: 'jsdom',
     setupFiles: resolvePath(__dirname, 'tools/testing-utils/setupTests'),
   },
   define: {

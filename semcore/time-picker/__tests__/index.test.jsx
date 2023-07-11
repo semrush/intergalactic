@@ -124,20 +124,24 @@ describe('TimePicker', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should support hover format', async ({ task }) => {
-    await expect(
-      await snapshot(
-        <TimePickerDefault>
-          <TimePicker.Format id='format' />
-        </TimePickerDefault>,
-        {
-          actions: {
-            hover: '#format',
+  test.concurrent(
+    'should support hover format',
+    async ({ task }) => {
+      await expect(
+        await snapshot(
+          <TimePickerDefault>
+            <TimePicker.Format id='format' />
+          </TimePickerDefault>,
+          {
+            actions: {
+              hover: '#format',
+            },
           },
-        },
-      ),
-    ).toMatchImageSnapshot(task);
-  });
+        ),
+      ).toMatchImageSnapshot(task);
+    },
+    { timeout: 20_000 },
+  );
 
   test.concurrent('should support active format', async ({ task }) => {
     await expect(

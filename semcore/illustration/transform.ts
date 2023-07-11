@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import { resolve as resolvePath } from 'path';
 import svgToJsx from 'svg-to-jsx';
-import { Window } from 'happy-dom';
+import { Window } from 'jsdom';
 import esbuild from 'esbuild';
 
 const illustrations = await fs.readdir('svg');
