@@ -19,7 +19,7 @@ const HistogramChartSkeleton = (props) => {
       render={Skeleton}
       bgRepeat={{ vertical: 'repeat-y', horizontal: 'repeat-x' }[layout]}
       bgPosition={{ vertical: 'left top', horizontal: 'left bottom' }[layout]}
-      bgSize={{ horizontal: 'auto 50%' }[layout]}
+      bgSize={{ vertical: 'contain', horizontal: 'auto 50%' }[layout]}
       bgPattern={`url(data:image/svg+xml;base64,${patternBase64})`}
     />,
   );

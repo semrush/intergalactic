@@ -37,10 +37,10 @@ import { BarChartSkeleton } from '@semcore/ui/skeleton';
 
 See an example of use in the [Bar chart](/data-display/bar-chart/bar-chart-d3-code/) component.
 
-@## PieChartSkeleton
+@## DonutChartSkeleton
 
 ```jsx
-import { PieChartSkeleton } from '@semcore/ui/skeleton';
+import { DonutChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
 See an example of use in the [Donut chart](/data-display/donut-chart/donut-chart-d3-code/) component.

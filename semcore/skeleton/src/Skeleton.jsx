@@ -43,6 +43,7 @@ class SkeletonRoot extends Component {
 class SkeletonSVG extends Component {
   static displayName = 'SkeletonSVG';
   static enhance = [uniqueIDEnhancement()];
+  static style = style;
 
   static defaultProps = {
     theme: 'invert',
