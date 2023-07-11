@@ -154,6 +154,7 @@ jobs:
         with:
           name: test-results
           path: test-results
+          retention-days: 3
       - name: Upload coverage to Codecov
         if: steps.test.conclusion == 'success'
         uses: codecov/codecov-action@v3.1.4
@@ -386,43 +387,44 @@ jobs:
         with:
           version: 7
           run_install: false
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3.3.1
-        name: Restore pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      - name: Restore cached build
-        uses: actions/cache@v3.3.1
-        with:
-          path: |
-            semcore/*/lib
-            tools/*/lib
-            semcore/icon/**/*.js
-            semcore/icon/**/*.mjs
-            semcore/icon/**/*.d.ts
-            semcore/illustration/**/*.js
-            semcore/illustration/**/*.mjs
-            semcore/illustration/**/*.d.ts
-          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-2
-      - name: Install restored dependencies
-        run: |
-          pnpm install --frozen-lockfile
-      - name: Install Browser
-        run: npx playwright install --with-deps
+      # - name: Get pnpm store directory
+      #   id: pnpm-cache
+      #   run: |
+      #     echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      # - uses: actions/cache@v3.3.1
+      #   name: Restore pnpm cache
+      #   with:
+      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      # - name: Restore cached build
+      #   uses: actions/cache@v3.3.1
+      #   with:
+      #     path: |
+      #       semcore/*/lib
+      #       tools/*/lib
+      #       semcore/icon/**/*.js
+      #       semcore/icon/**/*.mjs
+      #       semcore/icon/**/*.d.ts
+      #       semcore/illustration/**/*.js
+      #       semcore/illustration/**/*.mjs
+      #       semcore/illustration/**/*.d.ts
+      #     key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-2
+      # - name: Install restored dependencies
+      #   run: |
+      #     pnpm install --frozen-lockfile
+      # - name: Install Browser
+      #   run: npx playwright install --with-deps
       - name: Browser testing
         id: browser-testing
         run: |
-          pnpm playwright test --config playwright.browser.config.ts
+          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@7 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
       - name: Save test results as artifacts
         if: failure()
         uses: actions/upload-artifact@v3
         with:
           name: test-results
           path: test-results
+          retention-days: 3
       - name: Setting success output
         if: steps.browser-testing.conclusion == 'success'
         id: final

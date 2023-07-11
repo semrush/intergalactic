@@ -5,3 +5,7 @@ node_modules
 .pnpm-store
 __tests__
 **/__tests__
+lib
+**/lib
+src
+**/src
