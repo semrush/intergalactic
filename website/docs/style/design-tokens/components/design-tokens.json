@@ -1499,8 +1499,8 @@
   {
     "name": "--intergalactic-date-picker-cell-current",
     "type": "color",
-    "rawValue": "{gray.200}",
-    "computedValue": "#c4c7cf",
+    "rawValue": "{gray.400}",
+    "computedValue": "#8a8e9b",
     "description": "Color for marking the cell with the current date, month or year in the date-picker.",
     "components": []
   },
@@ -1557,8 +1557,8 @@
   {
     "name": "--intergalactic-date-picker-cell-current-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.3",
-    "computedValue": "rgba(255, 255, 255, 0.3)",
+    "rawValue": "{gray.white}, 0.5",
+    "computedValue": "rgba(255, 255, 255, 0.5)",
     "description": "Color for marking the active cell with the current date, month or year in the date-picker.",
     "components": []
   },

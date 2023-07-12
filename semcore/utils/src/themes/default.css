@@ -277,7 +277,7 @@
   /* Default date-picker cell background. */
   --intergalactic-date-picker-cell: #ffffff;
   /* Color for marking the cell with the current date, month or year in the date-picker. */
-  --intergalactic-date-picker-cell-current: #c4c7cf;
+  --intergalactic-date-picker-cell-current: #8a8e9b;
   /* Hover state of the default date-picker cell background. */
   --intergalactic-date-picker-cell-hover: #e0e1e9;
   /* Background for the cell which is included in the date range in the date-picker. */
@@ -289,7 +289,7 @@
   /* Hover for the active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active-hover: #008ff8;
   /* Color for marking the active cell with the current date, month or year in the date-picker. */
-  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
+  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.5);
   /* Active (selected) date-picker cell background for comparison periods. */
   --intergalactic-date-picker-cell-comparison-active: #8649e1;
   /* Hover for the active (selected) date-picker cell background for comparison periods. */
