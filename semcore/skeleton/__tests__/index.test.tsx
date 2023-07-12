@@ -67,8 +67,8 @@ describe('Skeleton Chart', () => {
   test.concurrent('LineChartSkeleton', async ({ task }) => {
     const component = (
       <>
-        <LineChartSkeleton type='monotone' height={100} />
-        <LineChartSkeleton height={100} />
+        <LineChartSkeleton h={150} w={300} />
+        <LineChartSkeleton type='monotone' h={150} w={300} />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);

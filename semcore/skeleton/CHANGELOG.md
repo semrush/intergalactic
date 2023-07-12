@@ -7,12 +7,18 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### BREAK
 
-* Change all skeleton for chart from svg to div with background.  
-* Rename `PieChartSkeleton` to `DonutChartSkeleton`.  
+* Changed all skeleton for chart from svg to HTMLDivElement with styled background.  
+* Renamed `PieChartSkeleton` to `DonutChartSkeleton`.  
 * Strict, backward incompatible typings.
 
 
+
 ## [4.4.34] - 2023-06-30
+
+### Changed
+
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/flex-box` [4.7.31 ~> 4.7.32]).
+
 
 ## [4.4.33] - 2023-06-27
 
