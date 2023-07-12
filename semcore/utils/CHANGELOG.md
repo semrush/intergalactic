@@ -80,11 +80,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Strict, backward incompatible typings.
 
-## [3.55.0] - 2023-07-10
+
+## [3.55.0] - 2023-07-12
 
 ### Added
 
 * Added new tokens for period comparison in DatePicker: `date-picker-cell-comparison-active`, `date-picker-cell-comparison-active-hover`, `border-date-picker-range-comparison`.
+
+### Changed
+
+* Updated references for `date-picker-cell-current` and `date-picker-cell-current-invert` tokens to make them more contrast against background.
+
 
 ## [3.54.1] - 2023-06-29
 

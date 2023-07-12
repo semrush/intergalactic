@@ -1096,7 +1096,7 @@
         "description": "Default date-picker cell background."
       },
       "cell-current": {
-        "value": "{gray.200}",
+        "value": "{gray.400}",
         "type": "color",
         "description": "Color for marking the cell with the current date, month or year in the date-picker."
       },
@@ -1126,7 +1126,7 @@
         "description": "Hover for the active (selected) date-picker cell background."
       },
       "cell-current-invert": {
-        "value": "{gray.white}, 0.3",
+        "value": "{gray.white}, 0.5",
         "type": "color",
         "description": "Color for marking the active cell with the current date, month or year in the date-picker."
       },
