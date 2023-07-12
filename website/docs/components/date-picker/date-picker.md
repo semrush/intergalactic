@@ -103,13 +103,15 @@ You also can add the "Reset" button for deselecting the selected values. In this
 
 ![](static/daterangepicker-reset-buttons.png)
 
-@## Comparison of periods in RangePicker
+@## Comparison of time periods in RangePicker
 
 In all RangePickers, you can enable the comparison of two periods. The periods can either intersect or not intersect.
 
 When the comparison of two periods is enabled in the RangePicker, each period in the `DatePicker.Trigger` has an addon with a color: the first period uses the `--date-picker-cell-active` token, and the second period uses the `--date-picker-cell-comparison-active` token.
 
 ### Interaction
+
+@table-caption Interaction states for RangePicker with time periods comparison
 
 | Description | Appearance example    |
 | ----------- | --------------------- |
