@@ -1,2 +1,4 @@
 declare const Skeleton: any;
-export default Skeleton;
+declare const SkeletonSVG: any;
+export { Skeleton }
+export default SkeletonSVG;
