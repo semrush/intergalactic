@@ -13,7 +13,9 @@ module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/histogram-
 const HistogramChartSkeleton = (props) => {
   const SChartSkeleton = Root;
   const layout = props.layout ?? 'horizontal';
-  const patternBase64 = { vertical: histogramVerticalSvg, horizontal: histogramHorizontalSvg }[layout];
+  const patternBase64 = { vertical: histogramVerticalSvg, horizontal: histogramHorizontalSvg }[
+    layout
+  ];
   return sstyled(styles)(
     <SChartSkeleton
       render={Skeleton}

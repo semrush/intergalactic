@@ -2,8 +2,8 @@ import { useMemo, useEffect } from 'react';
 import canUseDOM from '../canUseDOM';
 import { useUID } from '../uniqueID';
 
-export function getScrollbarWidth() {
-  if (!canUseDOM()) return;
+export function getScrollbarWidth(): number {
+  if (!canUseDOM()) return 0;
   const outer = document.createElement('div');
   outer.style.visibility = 'hidden';
   outer.style.width = '100px';
