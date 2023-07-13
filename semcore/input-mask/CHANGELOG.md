@@ -6,13 +6,15 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-- Strict, backward incompatible typings.
+* Strict, backward incompatible typings.
+
+## [4.5.16] - 2023-06-30
 
 ## [4.5.15] - 2023-06-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.7.0 ~> 3.7.1], `@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/flex-box` [4.7.31 ~> 4.7.32]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.7.0 ~> 3.7.1], `@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/flex-box` [4.7.31 ~> 4.7.32]).
 
 ## [4.5.14] - 2023-06-22
 
@@ -20,61 +22,61 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.31 ~> 3.6.32], `@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/flex-box` [4.7.30 ~> 4.7.31]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.31 ~> 3.6.32], `@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/flex-box` [4.7.30 ~> 4.7.31]).
 
 ## [4.5.12] - 2023-06-12
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.30 ~> 3.6.31], `@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/flex-box` [4.7.29 ~> 4.7.30]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.30 ~> 3.6.31], `@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/flex-box` [4.7.29 ~> 4.7.30]).
 
 ## [4.5.11] - 2023-06-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.29 ~> 3.6.30], `@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/flex-box` [4.7.28 ~> 4.7.29]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.29 ~> 3.6.30], `@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/flex-box` [4.7.28 ~> 4.7.29]).
 
 ## [4.5.10] - 2023-06-07
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.28 ~> 3.6.29], `@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/flex-box` [4.7.27 ~> 4.7.28]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.28 ~> 3.6.29], `@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/flex-box` [4.7.27 ~> 4.7.28]).
 
 ## [4.5.9] - 2023-05-31
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.27 ~> 3.6.28], `@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/flex-box` [4.7.26 ~> 4.7.27]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.27 ~> 3.6.28], `@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/flex-box` [4.7.26 ~> 4.7.27]).
 
 ## [4.5.8] - 2023-05-25
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.26 ~> 3.6.27], `@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/flex-box` [4.7.25 ~> 4.7.26]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.26 ~> 3.6.27], `@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/flex-box` [4.7.25 ~> 4.7.26]).
 
 ## [4.5.7] - 2023-05-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.6.25 ~> 3.6.26], `@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/flex-box` [4.7.24 ~> 4.7.25]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.6.25 ~> 3.6.26], `@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/flex-box` [4.7.24 ~> 4.7.25]).
 
 ## [4.5.6] - 2023-05-22
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.5.25 ~> 3.6.25], `@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/flex-box` [4.7.23 ~> 4.7.24]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.5.25 ~> 3.6.25], `@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/flex-box` [4.7.23 ~> 4.7.24]).
 
 ## [4.5.5] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.5.24 ~> 3.5.25], `@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23]).
 
 ## [4.5.4] - 2023-05-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.5.23 ~> 3.5.24], `@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22]).
 
 ## [4.5.1] - 2023-04-24
 
@@ -82,224 +84,224 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Remove `aria-invalid` because you can't enter the wrong value.
-- Added hint for screen reader.
-- Controls are now `display:none` rather than `visibility:hidden`, this gives more space for placeholder.
+* Remove `aria-invalid` because you can't enter the wrong value.
+* Added hint for screen reader.
+* Controls are now `display:none` rather than `visibility:hidden`, this gives more space for placeholder.
 
 ## [4.4.19] - 2023-03-28
 
 ### Changed
 
-- Changed color in default and focused states as in `Figma`.
+* Changed color in default and focused states as in `Figma`.
 
 ## [4.4.18] - 2023-03-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.5.17 ~> 3.5.18], `@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18]).
 
 ## [4.4.1] - 2022-12-13
 
 ### Changed
 
-- Added `react-dom` to peer dependencies.
+* Added `react-dom` to peer dependencies.
 
 ## [4.4.0] - 2022-12-12
 
 ### Added
 
-- Design tokens based theming.
+* Design tokens based theming.
 
 ## [4.3.7] - 2022-11-30
 
 ### Fixed
 
-- Fixed showing types in autocomplete IDE.
+* Fixed showing types in autocomplete IDE.
 
 ## [4.3.6] - 2022-11-30
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.3.0 ~> 3.3.1], `@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/flex-box` [4.6.3 ~> 4.6.4]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.3.0 ~> 3.3.1], `@semcore/utils` [3.40.0 ~> 3.41.0], `@semcore/flex-box` [4.6.3 ~> 4.6.4]).
 
 ## [4.3.4] - 2022-11-03
 
 ### Fixed
 
-- Fixed mask and text line-height mismatch.
+* Fixed mask and text line-height mismatch.
 
 ## [4.3.3] - 2022-10-28
 
 ### Added
 
-- Allowed to pass children.
+* Allowed to pass children.
 
 ## [4.3.2] - 2022-10-20
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.2.2 ~> 3.2.3], `@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/flex-box` [4.6.2 ~> 4.6.3]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.2.2 ~> 3.2.3], `@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/flex-box` [4.6.2 ~> 4.6.3]).
 
 ## [4.3.0] - 2022-10-10
 
 ### Changed
 
-- Added support for React 18 🔥
+* Added support for React 18 🔥
 
 ## [4.2.1] - 2022-10-10
 
 ### Fixed
 
-- Fixed displaying of addons placed on the end (right in ltr languages) of input.
-- Fixed mask underlay position desynchronization with html input content;
-- Hidden placeholders and mask from real DOM to exclude it from copied content.
+* Fixed displaying of addons placed on the end (right in ltr languages) of input.
+* Fixed mask underlay position desynchronization with html input content;
+* Hidden placeholders and mask from real DOM to exclude it from copied content.
 
 ## [4.2.0] - 2022-10-07
 
 ### Changed
 
-- Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+* Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
 
 ## [4.1.2] - 2022-10-06
 
 ### Fixed
 
-- Fixed addon placed before input value may be overlayed by input value.
-- Fixed previously broken in previous version backward compatibility of piping api.
+* Fixed addon placed before input value may be overlayed by input value.
+* Fixed previously broken in previous version backward compatibility of piping api.
 
 ## [4.1.1] - 2022-10-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/input` [3.0.15 ~> 3.0.16], `@semcore/utils` [3.37.1 ~> 3.37.2]).
+* Version patch update due to children dependencies update (`@semcore/input` [3.0.15 ~> 3.0.16], `@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [4.1.0] - 2022-09-20
 
 ### Added
 
-- Added accessibility for screen reader.
+* Added accessibility for screen reader.
 
 ## [4.0.14] - 2022-08-30
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/input` [3.0.14 ~> 3.0.15]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/input` [3.0.14 ~> 3.0.15]).
 
 ## [4.0.0] - 2022-05-17
 
 ### BREAK
 
-- Updated styles according to the library redesign policy.
-- Major dependency update Input.
+* Updated styles according to the library redesign policy.
+* Major dependency update Input.
 
 ## [3.2.3] - 2022-03-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2], `@semcore/input` [2.2.4 ~> 2.2.5]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2], `@semcore/input` [2.2.4 ~> 2.2.5]).
 
 ## [3.2.2] - 2022-02-24
 
 ### Added
 
-- Added repository field to package.json file.
+* Added repository field to package.json file.
 
 ## [3.2.1] - 2021-8-26
 
 ### Changed
 
-- Add 'sideEffect=false' for more optimal build via webpack
+* Add 'sideEffect=false' for more optimal build via webpack
 
 ## [3.2.0] - 2021-04-26
 
 ### Changed
 
-- Version of dependence `@semcore/core` has been changed to `1.11`.
-- Improved performance. Removed one component wrapper.
-- The style processing system has been changed.
-- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+* Version of dependence `@semcore/core` has been changed to `1.11`.
+* Improved performance. Removed one component wrapper.
+* The style processing system has been changed.
+* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
 ## [3.1.0] - 2020-12-17
 
 ### Added
 
-- Added supported react@17.
+* Added supported react@17.
 
 ## [3.0.1] - 2020-10-29
 
 ### Fixed
 
-- Added the placeholder for ID style tag to improve collision protection.
+* Added the placeholder for ID style tag to improve collision protection.
 
 ## [3.0.0] - 2020-09-28
 
 ### BREAK
 
-- Property `placeholderChar`, it is everything have to use `\_`, because mask show in value to input
+* Property `placeholderChar`, it is everything have to use `\_`, because mask show in value to input
 
 ### Added
 
-- Manage cursor position for `InputMask.Value` with show mask
-- Export function `getAfterPositionValue`. It use when need to know where last symbol of value.
+* Manage cursor position for `InputMask.Value` with show mask
+* Export function `getAfterPositionValue`. It use when need to know where last symbol of value.
 
 ### Fixed
 
-- Show mask for `InputMask.Value` when size input less than size mask
+* Show mask for `InputMask.Value` when size input less than size mask
 
 ## [2.0.1] - 2020-09-08
 
 ### Fixed
 
-- Fixed possible styles collisions between components with different versions, but same styles
+* Fixed possible styles collisions between components with different versions, but same styles
 
 ## [2.0.0] - 2020-06-18
 
 ### BREAK
 
-- Изменения описаны в [migration guide](/internal/migration-guide)
+* Изменения описаны в [migration guide](/internal/migration-guide)
 
 ## [1.1.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
-- Появилась возможность оптицонально подключать адаптивноссть
-- Появилась возможность изолировать стили даже в пределах одной страницы
+* Появилась возможность добавления различных стилистических тем через css переменные
+* Появилась возможность оптицонально подключать адаптивноссть
+* Появилась возможность изолировать стили даже в пределах одной страницы
 
 ### Changed
 
-- Изменен алгоритм вставки стилей в head
+* Изменен алгоритм вставки стилей в head
 
 ### Removed
 
-- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+* Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
 ## [1.0.4] - 2019-10-14
 
 ### Added
 
-- Добавлен `forwardRef` на компонент
+* Добавлен `forwardRef` на компонент
 
 ## [1.0.3] - 2019-09-30
 
 ### Changed
 
-- Нужные зависимости перенесены в `utils`, размер должен стать меньше
+* Нужные зависимости перенесены в `utils`, размер должен стать меньше
 
 ## [1.0.2] - 2019-09-05
 
 ### Fixed
 
-- Исправлена ошибка в типизации `InputMask.Value`
+* Исправлена ошибка в типизации `InputMask.Value`
 
 ## [1.0.1] - 2019-07-31
 
 ### Fixed
 
-- Исправлена сборка для рендера css на сервере
+* Исправлена сборка для рендера css на сервере
 
 ## [1.0.0] - 2019-07-26
 
 ### Added
 
-- Initial release
+* Initial release

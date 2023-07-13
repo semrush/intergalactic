@@ -133,7 +133,7 @@ describe('YAxis', () => {
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test')!.tagName).toBe('FOREIGNOBJECT');
+    expect(queryByTestId('test')!.tagName).toBe('foreignObject');
   });
 });
 

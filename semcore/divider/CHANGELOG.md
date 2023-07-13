@@ -6,91 +6,93 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-- Strict, backward incompatible typings.
+* Strict, backward incompatible typings.
+
+## [3.2.33] - 2023-06-30
 
 ## [3.2.32] - 2023-06-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [3.2.31] - 2023-06-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [3.2.30] - 2023-06-12
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
 
 ## [3.2.29] - 2023-06-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
 
 ## [3.2.28] - 2023-06-07
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
 
 ## [3.2.27] - 2023-05-31
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
 
 ## [3.2.26] - 2023-05-25
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
 
 ## [3.2.25] - 2023-05-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
 
 ## [3.2.24] - 2023-05-22
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
 
 ## [3.2.23] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [3.2.22] - 2023-05-04
 
 ### Changed
 
-- Role `separator` and `aria-orientation` were added for better accessability.
+* Role `separator` and `aria-orientation` were added for better accessability.
 
 ## [3.2.21] - 2023-05-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.4 ~> 3.50.5]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.4 ~> 3.50.5]).
 
 ## [3.2.8] - 2023-01-20
 
 ### Fixed
 
-- Fixed inverted state colors.
+* Fixed inverted state colors.
 
 ## [3.2.7] - 2023-01-20
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [3.2.5] - 2023-01-10
 
@@ -98,145 +100,145 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [3.2.1] - 2022-12-13
 
 ### Changed
 
-- Added `react-dom` to peer dependencies.
+* Added `react-dom` to peer dependencies.
 
 ## [3.2.0] - 2022-12-12
 
 ### Added
 
-- Design tokens based theming.
+* Design tokens based theming.
 
 ## [3.1.0] - 2022-10-10
 
 ### Changed
 
-- Added support for React 18 🔥
+* Added support for React 18 🔥
 
 ## [3.0.10] - 2022-10-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [3.0.0] - 2022-05-17
 
 ### BREAK
 
-- Updated styles according to the library redesign policy.
+* Updated styles according to the library redesign policy.
 
 ## [2.2.5] - 2022-03-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
 
 ## [2.2.4] - 2022-02-24
 
 ### Added
 
-- Added repository field to package.json file.
+* Added repository field to package.json file.
 
 ## [2.2.3] - 2022-2-15
 
 ### Fixed
 
-- Fixed explicit default theme
+* Fixed explicit default theme
 
 ## [2.2.2] - 2022-2-3
 
 ### Added
 
-- Added ability to use custom theme color
+* Added ability to use custom theme color
 
 ## [2.2.1] - 2021-8-26
 
 ### Changed
 
-- Add 'sideEffect=false' for more optimal build via webpack
+* Add 'sideEffect=false' for more optimal build via webpack
 
 ## [2.2.0] - 2021-06-08
 
 ### Changed
 
-- Rewrite code from TS to JS 🧑‍💻
-- Version of dependence `@semcore/core` has been changed to `1.11`.
-- Improved performance. Removed one component wrapper.
-- The style processing system has been changed.
-- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+* Rewrite code from TS to JS 🧑‍💻
+* Version of dependence `@semcore/core` has been changed to `1.11`.
+* Improved performance. Removed one component wrapper.
+* The style processing system has been changed.
+* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
 ## [2.1.0] - 2020-12-17
 
 ### Added
 
-- Added supported react@17.
+* Added supported react@17.
 
 ## [2.0.3] - 2020-10-29
 
 ### Fixed
 
-- Added the placeholder for ID style tag to improve collision protection.
+* Added the placeholder for ID style tag to improve collision protection.
 
 ## [2.0.2] - 2020-09-08
 
 ### Fixed
 
-- Fixed possible styles collisions between components with different versions, but same styles
+* Fixed possible styles collisions between components with different versions, but same styles
 
 ## [2.0.1] - 2020-09-02
 
 ### Added
 
-- Added `Divider` auto size height for vertical orientation, this fixed show `<Divider orientation="vertical"` in flex
+* Added `Divider` auto size height for vertical orientation, this fixed show `<Divider orientation="vertical"` in flex
 block.
 
 ## [2.0.0] - 2020-06-01
 
 ### BREAK
 
-- Изменения описаны в [migration guide](/internal/migration-guide)
+* Изменения описаны в [migration guide](/internal/migration-guide)
 
 ## [1.1.1] - 2019-12-17
 
 ### Fixed
 
-- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+* Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
 
 ## [1.1.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
-- Появилась возможность оптицонально подключать адаптивноссть
-- Появилась возможность изолировать стили даже в пределах одной страницы
+* Появилась возможность добавления различных стилистических тем через css переменные
+* Появилась возможность оптицонально подключать адаптивноссть
+* Появилась возможность изолировать стили даже в пределах одной страницы
 
 ### Changed
 
-- Изменен алгоритм вставки стилей в head
+* Изменен алгоритм вставки стилей в head
 
 ### Removed
 
-- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+* Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
 ## [1.0.2] - 2019-09-30
 
 ### Changed
 
-- Нужные зависимости перенесены в `utils`, размер должен стать меньше
+* Нужные зависимости перенесены в `utils`, размер должен стать меньше
 
 ## [1.0.1] - 2019-05-13
 
 ### Fixed
 
-- Изменен `display` `inline-block` на `block`
+* Изменен `display` `inline-block` на `block`
 
 ## [1.0.0] - 2019-02-21
 
 ### Added
 
-- Initial release
+* Initial release

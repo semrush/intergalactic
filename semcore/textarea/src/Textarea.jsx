@@ -53,7 +53,7 @@ class Textarea extends Component {
   calculateRows = rafTrottle((disabledScrolling = false) => {
     const { node } = this;
     const { rows, minRows, maxRows } = this.asProps;
-    if (!node || !canUseDOM() || rows || !maxRows) return;
+    if (!node || !canUseDOM() || rows || !(minRows || maxRows)) return;
 
     const lh = cssToIntDefault(getComputedStyle(node).getPropertyValue('line-height'));
     const previousRows = node.rows;
@@ -72,7 +72,11 @@ class Textarea extends Component {
     if (computed >= maxRows) {
       node.rows = maxRows;
     }
-    if (computed >= minRows && computed <= maxRows) {
+    if (
+      (minRows !== undefined || maxRows !== undefined) &&
+      (minRows === undefined || computed >= minRows) &&
+      (maxRows === undefined || computed <= maxRows)
+    ) {
       node.rows = computed;
     }
 

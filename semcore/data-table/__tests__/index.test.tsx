@@ -968,7 +968,7 @@ describe('DataTable.Column', () => {
         </DataTable.Head>
       </DataTable>,
     );
-    expect(getByTestId('column').style.flex).toBe('1 1 0px');
+    expect(getByTestId('column').style.flex).toBe('0 0px');
     rerender(
       <DataTable data={[]}>
         <DataTable.Head>
@@ -976,7 +976,7 @@ describe('DataTable.Column', () => {
         </DataTable.Head>
       </DataTable>,
     );
-    expect(getByTestId('column').style.flex).toBe('1 1 0px');
+    expect(getByTestId('column').style.flex).toBe('0 0px');
   });
 
   test.concurrent('Should support ref', () => {

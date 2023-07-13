@@ -58,9 +58,8 @@ export default function usePreventScroll(visible = true, disabled = false) {
     }
 
     document.body.style.overflow = 'hidden';
-    document.body.style.paddingRight = `${scrollbarWidth}${
-      intPaddingRight - intPaddingRightFromStyle
-    }px`;
+    document.body.style.paddingRight =
+      scrollbarWidth + (intPaddingRight - intPaddingRightFromStyle) + 'px';
     document.body.style.boxSizing = 'border-box';
   }, [visible, id, disabled]);
 
