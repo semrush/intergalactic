@@ -3,17 +3,17 @@ import createComponent, { Root, sstyled } from '@semcore/core';
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 
-const fullSvg = preval`
+const donutFullSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/donut-chart.svg'))
 `;
-const halfSvg = preval`
+const donutHalfSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/donut-chart-halfsize.svg'))
 `;
 
 const DonutChartSkeleton = (props) => {
   const SChartSkeleton = Root;
   const halfsize = props.halfsize ?? false;
-  const patternBase64 = { true: halfSvg, false: fullSvg }[halfsize];
+  const patternBase64 = { true: donutHalfSvg, false: donutFullSvg }[halfsize];
   return sstyled(styles)(
     <SChartSkeleton
       render={Skeleton}

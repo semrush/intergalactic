@@ -3,17 +3,17 @@ import createComponent, { Root, sstyled } from '@semcore/core';
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 
-const verticalPattern = preval`
+const histogramVerticalSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/histogram-chart-vertical.svg'))
 `;
-const horizontalPattern = preval`
+const histogramHorizontalSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/histogram-chart-horizontal.svg'))
 `;
 
 const HistogramChartSkeleton = (props) => {
   const SChartSkeleton = Root;
   const layout = props.layout ?? 'horizontal';
-  const patternBase64 = { vertical: verticalPattern, horizontal: horizontalPattern }[layout];
+  const patternBase64 = { vertical: histogramVerticalSvg, horizontal: histogramHorizontalSvg }[layout];
   return sstyled(styles)(
     <SChartSkeleton
       render={Skeleton}

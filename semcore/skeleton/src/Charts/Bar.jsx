@@ -3,17 +3,17 @@ import createComponent, { Root, sstyled } from '@semcore/core';
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 
-const verticalPattern = preval`
+const barVerticalSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/bar-chart-vertical.svg'))
 `;
-const horizontalPattern = preval`
+const barHorizontalSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/bar-chart-horizontal.svg'))
 `;
 
 const BarChartSkeleton = (props) => {
   const SChartSkeleton = Root;
   const layout = props.layout ?? 'horizontal';
-  const patternBase64 = { vertical: verticalPattern, horizontal: horizontalPattern }[layout];
+  const patternBase64 = { vertical: barVerticalSvg, horizontal: barHorizontalSvg }[layout];
   return sstyled(styles)(
     <SChartSkeleton
       render={Skeleton}

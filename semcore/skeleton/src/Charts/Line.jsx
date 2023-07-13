@@ -3,16 +3,16 @@ import createComponent, { Root, sstyled } from '@semcore/core';
 import { Skeleton } from '../Skeleton';
 import styles from '../style/chart.shadow.css';
 
-const linearPattern = preval`
+const lineLinearSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/line-chart-linear.svg'))
 `;
-const monotonePattern = preval`
+const lineMonotoneSvg = preval`
 module.exports = btoa(require('fs').readFileSync(__dirname + '/../svg/line-chart-monotone.svg'))
 `;
 
 const LineChartSkeleton = (props) => {
   const SChartSkeleton = Root;
-  const patternBase64 = { linear: linearPattern, monotone: monotonePattern }[
+  const patternBase64 = { linear: lineLinearSvg, monotone: lineMonotoneSvg }[
     props.type ?? 'linear'
   ];
   return sstyled(styles)(
