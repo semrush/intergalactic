@@ -2,7 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.10.3] - 2023-06-30
+## [3.11.0] - 2023-07-14
+
+### Fixed
+
+- `InputSearch` clear button keyboard support. 
 
 ## [3.10.2] - 2023-06-28
 
