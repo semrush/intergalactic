@@ -124,8 +124,8 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 @## List
 
-| px | Tokens | Styles | Numbered list | Unordered list | Check list |
-| --- || --------------------------- | ----------------------------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- |
+| px  | Tokens | Styles | Numbered list | Unordered list | Check list |
+| --- | ------ | ------ | ------------- | -------------- | ---------- |
 | 16px | `--fs-300`, `--lh-300` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-16.png) | ![](static/ul-16.png) | ![](static/checklist-16.png) |
 | 14px | `--fs-200`, `--lh-200` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-14.png) | ![](static/ul-14.png) | ![](static/checklist-14.png) |
 | 12px | `--fs-100`, `--lh-100` | `margin-bottom: 8px`, `padding-right: 8px` | ![](static/ol-12.png) | ![](static/ul-12.png) | ![](static/checklist-12.png) |
