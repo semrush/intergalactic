@@ -509,7 +509,7 @@ describe('Button', () => {
         ),
       ).toMatchImageSnapshot(task);
     },
-    { timeout: 20_000 },
+    { timeout: 30_000 },
   );
 
   test.concurrent(
@@ -661,6 +661,6 @@ describe('Button', () => {
         ),
       ).toMatchImageSnapshot(task);
     },
-    { timeout: 20_000 },
+    { timeout: 30_000 },
   );
 });

@@ -320,7 +320,7 @@ class Value extends Component<IInputMaskValueProps> {
                 <SMask
                   tag='span'
                   aria-hidden='true'
-                  data-neighborLocation={neighborLocation}
+                  data-neighbor-location={neighborLocation}
                   ref={this.maskRef}
                 >
                   {this.state.lastConformed && (

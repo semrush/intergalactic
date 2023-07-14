@@ -69,10 +69,9 @@ export default function usePreventScroll(visible = true, disabled = false) {
     return () => {
       scrollPreventers.delete(id);
       if (scrollPreventers.size !== 0) return;
-      if (lockedBodyStyles.overflow) document.body.style.overflow = lockedBodyStyles.overflow;
-      if (lockedBodyStyles.paddingRight)
-        document.body.style.paddingRight = lockedBodyStyles.paddingRight;
-      if (lockedBodyStyles.boxSizing) document.body.style.boxSizing = lockedBodyStyles.boxSizing;
+      document.body.style.overflow = lockedBodyStyles.overflow!;
+      document.body.style.paddingRight = lockedBodyStyles.paddingRight!;
+      document.body.style.boxSizing = lockedBodyStyles.boxSizing!;
     };
   }, [visible, id, disabled]);
 }
