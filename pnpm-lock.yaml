@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: false
+  excludeLinksFromLockfile: false
+
 overrides:
   csstype: 3.0.8
   minimist: 1.2.6
@@ -2196,7 +2200,7 @@ importers:
         specifier: 5.0.0-beta.1
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 3.11.0
+        specifier: 4.0.0-beta.1
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.0.0-beta.1
@@ -2232,7 +2236,7 @@ importers:
         specifier: 5.0.0-beta.1
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 3.7.4
+        specifier: 4.0.0-beta.1
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.0.0-beta.1
@@ -19342,7 +19346,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-settings:
-  autoInstallPeers: false
-  excludeLinksFromLockfile: false
