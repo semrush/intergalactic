@@ -1,8 +1,15 @@
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { createTextMaskInputElement } from 'text-mask-core';
 
-import createComponent, { Component, sstyled, Root, CProps, PropGetterFn } from '@semcore/core';
-import Input, { IInputProps, IInputValueProps } from '@semcore/input';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  PropGetterFn,
+  UnknownProperties,
+  Intergalactic,
+} from '@semcore/core';
+import Input, { InputProps, IInputProps, InputValueProps } from '@semcore/input';
 import fire from '@semcore/utils/lib/fire';
 import logger from '@semcore/utils/lib/logger';
 import NeighborLocation from '@semcore/neighbor-location';
@@ -16,11 +23,15 @@ import style from './style/input-mask.shadow.css';
 
 export type IInputMaskAsFn = (rawValue?: string) => string | RegExp[];
 
-export interface InputMaskAliases {
+/** @deprecated */
+export interface InputMaskAliases extends nputMaskAliases, UnknownProperties {}
+export type nputMaskAliases = {
   [s: string]: RegExp;
-}
+};
 
-export interface IInputMaskValueProps extends IInputValueProps {
+/** @deprecated */
+export interface IInputMaskValueProps extends InputMaskValueProps, UnknownProperties {}
+export type InputMaskValueProps = InputValueProps & {
   /**
    * Mask for entering text
    */
@@ -55,19 +66,16 @@ export interface IInputMaskValueProps extends IInputValueProps {
    * A field that explains the mask for blind users
    * */
   title?: string;
-}
+};
 
-interface IInputMaskCtx {
+type InputMaskCtx = {
   getInputProps: PropGetterFn;
   getValueProps: PropGetterFn;
-}
+};
 
-export function getAfterPositionValue(
-  value: string,
-  mask: IInputMaskValueProps['mask'] = '',
-): number {
+export function getAfterPositionValue(value: string, mask: any = ''): number {
   const { length } = value;
-  const isValid = (valueChar, maskChar) =>
+  const isValid = (valueChar: string, maskChar: string) =>
     maskChar !== undefined ? maskChar !== valueChar : /\w|\+|\(/.test(valueChar);
   let afterPotionValue = 0;
   for (let i = length - 1; i >= 0; i--) {
@@ -108,9 +116,9 @@ class Value extends Component<IInputMaskValueProps> {
 
   inputRef = React.createRef<HTMLInputElement>();
   maskRef = React.createRef<HTMLDivElement>();
-  textMaskCoreInstance = undefined;
-  usedMask = undefined;
-  prevConfirmedValue = undefined;
+  textMaskCoreInstance: any = undefined;
+  usedMask: any = undefined;
+  prevConfirmedValue: any = undefined;
   state: {
     lastConformed:
       | {
@@ -132,7 +140,7 @@ class Value extends Component<IInputMaskValueProps> {
     });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: any) {
     const maskConfigProps = ['mask', 'hideMask', 'pipe', 'keepCharPositions'];
     const maskConfigChanged = maskConfigProps.some(
       (prop) => this.asProps[prop] !== prevProps[prop],
@@ -157,7 +165,7 @@ class Value extends Component<IInputMaskValueProps> {
   uncontrolledProps() {
     return {
       value: [
-        (value) => {
+        (value: any) => {
           const {
             textMaskCoreInstance,
             asProps: { placeholder },
@@ -173,7 +181,7 @@ class Value extends Component<IInputMaskValueProps> {
           );
           return afterPositionValue === 0 && placeholder ? '' : previousConformedValue;
         },
-        (value) => {
+        (value: any) => {
           const { textMaskCoreInstance } = this;
           if (!textMaskCoreInstance) return;
           const { previousPlaceholder } = textMaskCoreInstance.state;
@@ -194,11 +202,11 @@ class Value extends Component<IInputMaskValueProps> {
     this.textMaskCoreInstance = createTextMaskInputElement({
       ...this.asProps,
       inputElement: this.inputRef.current,
-      mask: this.maskStrToRegexArray(mask),
+      mask: this.maskStrToRegexArray(mask as any),
       guide: !hideMask,
       showMask: !hideMask,
       placeholderChar: '_',
-      pipe: (conformedValue, pipeConfigs) => {
+      pipe: (conformedValue: any, pipeConfigs: any) => {
         let indexesOfPipedChars = null;
         if (userPipe) {
           const piped = userPipe(conformedValue, pipeConfigs);
@@ -212,7 +220,10 @@ class Value extends Component<IInputMaskValueProps> {
 
         let lastNonMaskCharPosition = 0;
         for (let i = 0; i < conformedValue?.length; i++) {
-          if (!this.asProps.maskOnlySymbols[conformedValue[i]] && /\w/.test(conformedValue[i]))
+          if (
+            !(this.asProps.maskOnlySymbols as any)[conformedValue[i]] &&
+            /\w/.test(conformedValue[i])
+          )
             lastNonMaskCharPosition = i + 1;
         }
 
@@ -239,10 +250,10 @@ class Value extends Component<IInputMaskValueProps> {
       },
     });
 
-    this.textMaskCoreInstance.update(value);
+    (this.textMaskCoreInstance as any).update(value);
     const {
       state: { previousConformedValue },
-    } = this.textMaskCoreInstance;
+    } = this.textMaskCoreInstance as any;
     this.handlers.value(previousConformedValue);
   };
 
@@ -255,15 +266,15 @@ class Value extends Component<IInputMaskValueProps> {
     }, 0);
   };
 
-  maskStrToRegexArray = (mask) => {
+  maskStrToRegexArray = (mask: string) => {
     if (typeof mask !== 'string') return mask;
     const { aliases } = this.asProps;
-    return mask.split('').map((symbol) => aliases[symbol] || symbol);
+    return mask.split('').map((symbol) => aliases?.[symbol] || symbol);
   };
 
-  handleMouseDownPlaceholder = (e) => {
-    e.preventDefault();
-    this.inputRef.current.focus();
+  handleMouseDownPlaceholder = (event: any) => {
+    event.preventDefault();
+    this.inputRef.current?.focus();
   };
 
   render() {
@@ -293,7 +304,7 @@ class Value extends Component<IInputMaskValueProps> {
     );
 
     const [controlProps, boxProps] = getInputProps(otherProps, includeInputProps as string[]);
-    const ref = forkRef(this.inputRef, forwardRef);
+    const ref = forkRef(this.inputRef, forwardRef!);
 
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
@@ -309,7 +320,7 @@ class Value extends Component<IInputMaskValueProps> {
                 <SMask
                   tag='span'
                   aria-hidden='true'
-                  neighborLocation={neighborLocation}
+                  data-neighbor-location={neighborLocation}
                   ref={this.maskRef}
                 >
                   {this.state.lastConformed && (
@@ -347,7 +358,7 @@ class Value extends Component<IInputMaskValueProps> {
 export default createComponent(InputMask, {
   Value,
   Addon: Input.Addon,
-}) as (<T>(props: CProps<IInputProps & T, IInputMaskCtx>) => React.ReactElement) & {
-  Value: <T>(props: IInputMaskValueProps & T) => React.ReactElement;
-  Addon: ComponentProps<typeof Input.Addon>;
+}) as any as Intergalactic.Component<'div', InputProps, InputMaskCtx> & {
+  Value: Intergalactic.Component<'div', InputMaskValueProps>;
+  Addon: typeof Input.Addon;
 };

@@ -38,7 +38,7 @@ await Promise.all(
     const html = `<svg>${document.body.querySelector('svg').innerHTML}</svg>`;
 
     let jsx: string = await new Promise((resolve, reject) =>
-      svgToJsx(html, {}, (error, result) => (error ? reject(error) : resolve(result))),
+      svgToJsx(html, {}, (error: any, result: any) => (error ? reject(error) : resolve(result))),
     );
 
     jsx = jsx.replace('<svg>', '').replace('</svg>', '');

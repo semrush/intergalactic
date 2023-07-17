@@ -19,13 +19,13 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
   <Flex {...props} gap={4}>
     <Flex flexWrap gap={4} tag='fieldset' m={0} p={0} style={{ border: 'none' }}>
       <ScreenReaderOnly>
-        <Text tag='legend' size='200' mb={2}>
+        <Text tag='legend' size={200} mb={2}>
           {name}
         </Text>
       </ScreenReaderOnly>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-strategy`} size='200'>
+          <Text tag='label' htmlFor={`${id}-strategy`} size={200}>
             Strategy
           </Text>
         </ScreenReaderOnly>
@@ -37,7 +37,7 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-entity`} size='200'>
+          <Text tag='label' htmlFor={`${id}-entity`} size={200}>
             Entity
           </Text>
         </ScreenReaderOnly>
@@ -49,7 +49,7 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-filter`} size='200'>
+          <Text tag='label' htmlFor={`${id}-filter`} size={200}>
             Filter
           </Text>
         </ScreenReaderOnly>
@@ -61,7 +61,7 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
       <Flex direction='column' wMin={120} gap={2}>
         <ScreenReaderOnly>
-          <Text tag='label' htmlFor={`${id}-value`} size='200'>
+          <Text tag='label' htmlFor={`${id}-value`} size={200}>
             Enter value
           </Text>
         </ScreenReaderOnly>
@@ -96,7 +96,7 @@ export default () => {
 
   return (
     <Flex direction='column' gap={2}>
-      <Text tag='label' htmlFor='advanced-filter' size='200'>
+      <Text tag='label' htmlFor='advanced-filter' size={200}>
         Advanced filter label
       </Text>
       <Dropdown visible={visible} onVisibleChange={setVisible}>

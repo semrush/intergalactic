@@ -1,14 +1,16 @@
 import React from 'react';
-import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
-import { IIconProps } from '@semcore/icon';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { IconProps } from '@semcore/icon';
 
 export type TagSize = 'xl' | 'l' | 'm';
 export type TagThemeOld = 'muted' | 'info' | 'success' | 'warning' | 'danger' | 'invert';
 export type TagTheme = 'primary' | 'secondary' | 'additional' | (string & TagThemeOld);
 export type TagUse = 'primary' | 'secondary';
 
-export interface ITagProps extends IBoxProps {
+/** @deprecated */
+export interface ITagProps extends TagProps, UnknownProperties {}
+export type TagProps = BoxProps & {
   /** Value responsible for tag availability
    */
   disabled?: boolean;
@@ -39,9 +41,11 @@ export interface ITagProps extends IBoxProps {
   /** Right addon tag */
   addonRight?: React.ElementType;
   locale?: string;
-}
+};
 
-export interface ITagCloseProps extends IIconProps {
+/** @deprecated */
+export interface ITagCloseProps extends TagCloseProps, UnknownProperties {}
+export type TagCloseProps = IconProps & {
   /** Tag type
    * @default secondary
    */
@@ -50,21 +54,27 @@ export interface ITagCloseProps extends IIconProps {
    * @default muted
    */
   theme?: TagTheme;
-}
+};
 
-export interface ITagContext extends ITagProps {
+/** @deprecated */
+export interface ITagContext extends TagContext, UnknownProperties {}
+export type TagContext = TagProps & {
   getCloseProps?: PropGetterFn;
-}
+};
 
-export interface ITagAddonProps extends IBoxProps {}
+/** @deprecated */
+export interface ITagAddonProps extends TagAddonProps, UnknownProperties {}
+export type TagAddonProps = BoxProps & {};
 
-export interface ITagTextProps extends IBoxProps {}
+/** @deprecated */
+export interface ITagTextProps extends TagTextProps, UnknownProperties {}
+export type TagTextProps = BoxProps & {};
 
-declare const Tag: (<T>(props: CProps<ITagProps & T, ITagContext>) => ReturnEl) & {
-  Text: <T>(props: ITagTextProps & T) => ReturnEl;
-  Addon: <T>(props: ITagAddonProps & T) => ReturnEl;
-  Close: <T>(props: ITagCloseProps & T) => ReturnEl;
-  Circle: <T>(props: ITagAddonProps & T) => ReturnEl;
+declare const Tag: Intergalactic.Component<'div', TagProps, TagContext> & {
+  Text: Intergalactic.Component<'div', TagTextProps>;
+  Addon: Intergalactic.Component<'div', TagAddonProps>;
+  Close: Intergalactic.Component<'div', TagCloseProps>;
+  Circle: Intergalactic.Component<'div', TagAddonProps>;
 };
 
 export default Tag;

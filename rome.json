@@ -69,6 +69,9 @@
       "a11y": { "useAnchorContent": "off", "noSvgWithoutTitle": "off" },
       "nursery": {
         "noConsoleLog": "error"
+      },
+      "complexity": {
+        "useFlatMap": "off"
       }
     }
   }

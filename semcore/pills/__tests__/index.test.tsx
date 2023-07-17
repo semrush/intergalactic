@@ -8,14 +8,32 @@ import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-
 import { axe } from '@semcore/testing-utils/axe';
 
 import Pills from '../src';
+import { Intergalactic } from '@semcore/core';
+import { assertType } from 'vitest';
 
 describe('PillGroup', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<Pills tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Pills href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<Pills value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<Pills value={1} onChange={(value: string) => {}} />);
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Should support onChange callback', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
-      <Pills value={1 as Number} onChange={spy}>
+      <Pills value={1 as number} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
         <Pills.Item value={2}>1</Pills.Item>
         <Pills.Item value={3}>1</Pills.Item>
@@ -29,7 +47,7 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should support onClick on Pill', () => {
+  test('Should support onClick on Pill', () => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Pills value={1}>
@@ -46,16 +64,16 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should not call PillGroup onChange after falsy onClick on Pill', () => {
+  test('Should not call PillGroup onChange after falsy onClick on Pill', () => {
     const spy = vi.fn();
     const spyClick = vi.fn(() => false);
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>1</Pills.Item>
-        <Pills.Item value={3}>1</Pills.Item>
+        <Pills.Item value={2}>2</Pills.Item>
+        <Pills.Item value={3}>3</Pills.Item>
         <Pills.Item value={4} data-testid={'tab-4'} onClick={spyClick}>
-          1
+          4
         </Pills.Item>
       </Pills>,
     );
@@ -65,16 +83,16 @@ describe('PillGroup', () => {
     expect(spyClick).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should not support clicks on disabled tab', () => {
+  test('Should not support clicks on disabled tab', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
       <Pills value={1} onChange={spy}>
         <Pills.Item value={1}>1</Pills.Item>
-        <Pills.Item value={2}>1</Pills.Item>
-        <Pills.Item value={3}>1</Pills.Item>
+        <Pills.Item value={2}>3</Pills.Item>
+        <Pills.Item value={3}>4</Pills.Item>
         <Pills.Item value={3} data-testid={'tab-4'} disabled>
-          1
+          4
         </Pills.Item>
       </Pills>,
     );
@@ -112,7 +130,7 @@ describe('PillGroup', () => {
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
-  test.concurrent('Should support behavior=radio', async () => {
+  test('Should support behavior=radio', async () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
@@ -161,7 +179,7 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('should support additional elements as props', async ({ task }) => {
-    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }, ref) {
+    const Addon = React.forwardRef(function ({ forwardRef, Children, Root, ...p }: any, ref) {
       return (
         <span ref={ref} {...p}>
           Addon prop
@@ -216,7 +234,7 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('Should support size with Addon', async ({ task }) => {
-    const PillsSize = ({ size }) => (
+    const PillsSize = ({ size }: any) => (
       <Pills size={size}>
         <Pills.Item>
           <Pills.Item.Addon>
@@ -272,7 +290,7 @@ describe('PillGroup', () => {
   });
 
   test.concurrent('Should correct render for alone Item, Item.Addon', async ({ task }) => {
-    const PillsSize = ({ size }) => (
+    const PillsSize = ({ size }: any) => (
       <>
         <Pills size={size}>
           <Pills.Item value={1}>

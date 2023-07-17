@@ -17,7 +17,7 @@ describe('Portal', () => {
     // Not render to container,
     expect(getByTestId('parent').children.length).toEqual(0);
     // but render to body
-    expect(document.body.lastChild.dataset.testid).toEqual('child');
+    expect((document.body.lastChild as HTMLElement)?.dataset.testid).toEqual('child');
   });
 
   test.concurrent('should render support disablePortal', () => {
@@ -31,7 +31,7 @@ describe('Portal', () => {
     // Render to container,
     expect(getByTestId('parent').children.length).toEqual(1);
     // but not render to body
-    expect(document.body.lastChild.dataset.testid).toEqual(undefined);
+    expect((document.body.lastChild as HTMLElement)?.dataset.testid).toEqual(undefined);
   });
 
   test.concurrent('should render change containerNode', () => {

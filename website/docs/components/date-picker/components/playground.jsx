@@ -40,25 +40,25 @@ export default PlaygroundGeneration(
       <>
         {type === 'date' && (
           <DatePicker value={value} onChange={(value) => onChange('value', value)}>
-            <DatePicker.InputTrigger />
+            <DatePicker.Trigger />
             <DatePicker.Popper />
           </DatePicker>
         )}
         {type === 'date-range' && (
           <DateRangePicker value={valueRange} onChange={(value) => onChange('valueRange', value)}>
-            <DateRangePicker.InputTrigger />
+            <DateRangePicker.Trigger />
             <DateRangePicker.Popper />
           </DateRangePicker>
         )}
         {type === 'month' && (
           <MonthPicker value={value} onChange={(value) => onChange('value', value)}>
-            <MonthPicker.InputTrigger />
+            <MonthPicker.Trigger />
             <MonthPicker.Popper />
           </MonthPicker>
         )}
         {type === 'month-range' && (
           <MonthRangePicker value={valueRange} onChange={(value) => onChange('valueRange', value)}>
-            <MonthRangePicker.InputTrigger />
+            <MonthRangePicker.Trigger />
             <MonthRangePicker.Popper />
           </MonthRangePicker>
         )}

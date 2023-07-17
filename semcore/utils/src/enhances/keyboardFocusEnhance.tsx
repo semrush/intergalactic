@@ -1,7 +1,10 @@
 import React from 'react';
 import assignProps from '../assignProps';
+import { UnknownProperties } from '@semcore/core';
 
-export interface IKeyboardFocusProps {
+/** @deprecated */
+export interface IKeyboardFocusProps extends KeyboardFocusProps, UnknownProperties {}
+export type KeyboardFocusProps = {
   /* Property responsible for displaying "keyboard" focus */
   keyboardFocused?: boolean;
   /**
@@ -9,9 +12,12 @@ export interface IKeyboardFocusProps {
    * @default false
    */
   autoFocus?: boolean;
-}
+};
 
-const focusSourceListeners = [];
+const focusSourceListeners: {
+  setFocusSource: (source: 'mouse' | 'keyboard' | 'none') => void;
+  subscribeListeners: () => void;
+}[] = [];
 export const useFocusSource = () => {
   const handleMouseDown = React.useCallback(
     () => focusSourceListeners.forEach((listener) => listener.setFocusSource('mouse')),
@@ -22,7 +28,7 @@ export const useFocusSource = () => {
     [],
   );
   const focusSourceRef = React.useRef<'none' | 'mouse' | 'keyboard'>('none');
-  const setFocusSource = React.useCallback((source) => {
+  const setFocusSource = React.useCallback((source: 'none' | 'mouse' | 'keyboard') => {
     focusSourceRef.current = source;
   }, []);
   const subscribeListeners = React.useCallback(() => {
@@ -55,11 +61,11 @@ export const useFocusSource = () => {
 };
 
 const keyboardFocusEnhance = () => {
-  return (props) => {
+  return (props: any) => {
     const { tabIndex = 0, disabled, autoFocus } = props;
     const [keyboardFocused, setKeyboardFocused] = React.useState(false);
     const focusSourceRef = useFocusSource();
-    const ref = React.useRef(null);
+    const ref = React.useRef<HTMLElement>(null);
 
     const handleFocus = React.useCallback((event: React.FocusEvent) => {
       if (event.isTrusted === true) {

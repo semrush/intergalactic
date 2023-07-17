@@ -17,16 +17,20 @@ require('dotenv').config(config);
 
 const DEFAULT_OPTIONS = { selector: '#root' };
 
-interface ISnapshot {
-  afterMount?: (root: HTMLDivElement) => void;
-  actions?: {
-    hover?: string;
-    active?: string;
-    focus?: string;
-  };
-}
-
-export const snapshot = async (Component, { afterMount, ...options } = {} as ISnapshot) => {
+export const snapshot = async (
+  Component: any,
+  { afterMount, ...options } = {} as {
+    afterMount?: (root: HTMLDivElement) => void;
+    selector?: string;
+    width?: number;
+    height?: number;
+    actions?: {
+      hover?: string | string[];
+      active?: string | string[];
+      focus?: string | string[];
+    };
+  },
+) => {
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
@@ -134,9 +138,9 @@ export const snapshot = async (Component, { afterMount, ...options } = {} as ISn
   return body;
 };
 
-snapshot.ProxyProps = function (props) {
+snapshot.ProxyProps = function (props: any) {
   const { children, ...others } = props;
-  return React.Children.map(children, (child, i) =>
+  return React.Children.map(children, (child: any, i: number) =>
     React.cloneElement(child, {
       key: `${i}`,
       ...others,
@@ -144,4 +148,4 @@ snapshot.ProxyProps = function (props) {
   );
 };
 
-snapshot.Row = (props) => <div {...props} />;
+snapshot.Row = (props: any) => <div {...props} />;

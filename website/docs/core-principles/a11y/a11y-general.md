@@ -62,7 +62,7 @@ Make sure that your markup and keyboard focus order are consistent and logical.
 - Bind `label` to all form controls (input, select and others). For example:
 
 ```html
-<label for='name'>Name:</label>
+<label htmlFor='name'>Name:</label>
 <input id='name' type='text'>
 ```
 

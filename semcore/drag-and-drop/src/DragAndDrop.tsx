@@ -156,16 +156,16 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
 
     this.setState({ a11yHint, dragging: null, previewSwap: null, hideHoverEffect: true });
     onDnD({
-      fromId: items[dragging.index]?.id,
-      fromIndex: dragging.index,
+      fromId: items[dragging!.index]?.id,
+      fromIndex: dragging!.index,
       toId: items[index]?.id,
       toIndex: index,
     });
     if (items[index]) {
       if (!items[index].draggingAllowed) {
-        this.asProps.onInsertDroppable?.(items[dragging.index]?.children, items[index].children);
+        this.asProps.onInsertDroppable?.(items[dragging!.index]?.children, items[index].children);
       } else {
-        this.asProps.onSwapDraggable?.(items[dragging.index]?.children, items[index].children);
+        this.asProps.onSwapDraggable?.(items[dragging!.index]?.children, items[index].children);
       }
     }
   };
@@ -185,7 +185,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         this.handleDrop(index)();
         this.setState({ dragging: null, previewSwap: null, hideHoverEffect: true });
         setTimeout(() => {
-          this.state.items[previewSwap]?.node.focus();
+          this.state.items[previewSwap as any]?.node.focus();
         }, 0);
       } else {
         this.handleDragStart(index)();
@@ -205,7 +205,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({ previewSwap: index });
   };
 
-  getDraggableProps(_, index) {
+  getDraggableProps(_: any, index: number) {
     return {
       index,
       onDragStart: this.handleDragStart(index),
@@ -248,7 +248,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState((prevState: State) => {
       if (!prevState.items[index]) return prevState;
       const { items } = prevState;
-      items[index] = undefined;
+      (items as any)[index] = undefined;
       return { items: [...items] };
     });
   };
@@ -272,7 +272,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   }
 }
 
-const Draggable = (props) => {
+const Draggable = (props: any) => {
   const SDraggable = Root;
   const ref = React.useRef();
   const { attach, detach } = React.useContext(DragAndDropContext);
@@ -283,7 +283,7 @@ const Draggable = (props) => {
   );
 
   useEnhancedEffect(() => {
-    attach({ index, children: resolvedChildren, node: ref.current, id, draggingAllowed: !noDrag });
+    attach({ index, children: resolvedChildren, node: ref.current!, id, draggingAllowed: !noDrag });
     return () => detach(index);
   }, [index, resolvedChildren, attach, detach, id]);
 
@@ -298,7 +298,7 @@ Draggable.defaultProps = {
   noDrag: false,
 };
 
-const DropZone = (props) => {
+const DropZone = (props: any) => {
   const SDropZone = Root;
   const { styles } = props;
 

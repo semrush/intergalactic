@@ -24,7 +24,7 @@ export default () => {
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
         <circle r={60} cx={width / 2} cy={height / 2} fill='#AB6CFE' />
-        <RadialTree.Title fill='#FFFFFF'>Sleeping</RadialTree.Title>
+        <RadialTree.Title color='#FFFFFF'>Sleeping</RadialTree.Title>
       </RadialTree>
     </Plot>
   );

@@ -20,6 +20,8 @@ import DropdownMenu from '@semcore/dropdown-menu';
 import { LinkTrigger } from '@semcore/base-trigger';
 import resolveColor from '@semcore/utils/lib/color';
 
+import { assertType } from 'vitest';
+import { Intergalactic } from '@semcore/core';
 import DataTable, { ROW_GROUP, DataTableTheme } from '../src';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -58,6 +60,31 @@ const data = [
 ];
 
 describe('DataTable', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<DataTable tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<DataTable href='https://google.com' />);
+    });
+    test('typed data', () => {
+      assertType<JSX.Element>(
+        <DataTable<{ a: number; b: number; c: number }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
+      );
+      assertType<JSX.Element>(
+        // @ts-expect-error
+        <DataTable<{ a: string; b: string; c: string }[]> data={[{ a: 1, b: 2, c: 3 }]} />,
+      );
+    });
+    test('data&uniqueKey relation', () => {
+      assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='a' />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<DataTable data={[{ a: 1, b: 2, c: 3 }]} uniqueKey='f' />);
+    });
+  });
+
   beforeEach(cleanup);
 
   shouldSupportClassName(DataTable);
@@ -202,25 +229,25 @@ describe('DataTable', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  /** Currently has no difference from DataTable without Sticky */
-  test.skip('Fixed header', async ({ task }) => {
-    const component = (
-      <div style={{ width: 800 }}>
-        <DataTable data={data}>
-          <Sticky zIndex={2} top={20}>
-            <DataTable.Head wMin={1000}>
-              <DataTable.Column name='keyword' children='Keyword' />
-              <DataTable.Column name='kd' children='KD,%' />
-              <DataTable.Column name='cpc' children='CPC' />
-              <DataTable.Column name='vol' children='Vol.' />
-            </DataTable.Head>
-          </Sticky>
-          <DataTable.Body />
-        </DataTable>
-      </div>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  // /** Currently has no difference from DataTable without Sticky */
+  // test.skip('Fixed header', async ({ task }) => {
+  //   const component = (
+  //     <div style={{ width: 800 }}>
+  //       <DataTable data={data}>
+  //         <Sticky zIndex={2} top={top}>
+  //           <DataTable.Head wMin={1000}>
+  //             <DataTable.Column name='keyword' children='Keyword' />
+  //             <DataTable.Column name='kd' children='KD,%' />
+  //             <DataTable.Column name='cpc' children='CPC' />
+  //             <DataTable.Column name='vol' children='Vol.' />
+  //           </DataTable.Head>
+  //         </Sticky>
+  //         <DataTable.Body />
+  //       </DataTable>
+  //     </div>
+  //   );
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   test.skip('Fixed columns', async ({ task }) => {
@@ -369,7 +396,7 @@ describe('DataTable', () => {
               {() => {
                 return {
                   style: {
-                    fontWeight: 'bold',
+                    fontWeight: 700,
                   },
                 };
               }}
@@ -440,7 +467,10 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Accordion in the table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }: any, ref) {
+    const RowAccordion = React.forwardRef(function (
+      { value, collapse = {}, ...props }: any,
+      ref: React.Ref<HTMLDivElement>,
+    ) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />
@@ -501,7 +531,10 @@ describe('DataTable', () => {
   });
 
   test.concurrent('Table in table', async ({ task }) => {
-    const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }: any, ref) {
+    const RowAccordion = React.forwardRef(function (
+      { value, collapse = {}, ...props }: any,
+      ref: React.Ref<HTMLDivElement>,
+    ) {
       return (
         <Accordion.Item value={value} ref={ref}>
           <Accordion.Item.Toggle {...props} />

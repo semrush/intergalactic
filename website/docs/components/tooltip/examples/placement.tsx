@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 import Tooltip from '@semcore/ui/tooltip';
+import { Placement } from '@semcore/ui/popper';
 
 const styleBox = {
   display: 'grid',
@@ -12,7 +13,7 @@ const styleBox = {
 };
 
 const Demo = () => {
-  const placements = [
+  const placements: Placement[] = [
     'top-start',
     'top',
     'top-end',

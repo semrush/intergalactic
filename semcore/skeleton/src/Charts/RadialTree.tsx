@@ -4,7 +4,7 @@ import { ISkeletonProps } from '../index';
 
 const RadialTreeChartSkeleton: React.FC<ISkeletonProps> = (props) => (
   <Skeleton visible viewBox='0 0 590 590' preserveAspectRatio='xMidYMid meet' {...props}>
-    {({ gradientUrl }) => (
+    {({ gradientUrl }: any) => (
       <g>
         <path
           d='M233 296C233 286.059 241.059 278 251 278H341C350.941 278 359 286.059 359 296C359 305.941 350.941 314 341 314H251C241.059 314 233 305.941 233 296Z'

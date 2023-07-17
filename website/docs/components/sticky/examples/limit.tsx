@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Box } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 import Link from '@semcore/ui/link';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
 import Spin from '@semcore/ui/spin';

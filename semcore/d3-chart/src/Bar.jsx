@@ -31,10 +31,11 @@ class BarRoot extends Component {
     hMin: MIN_HEIGHT,
   };
 
-  getBackgroundProps(props, index) {
+  getBackgroundProps(_props, index) {
     const { x, data } = this.asProps;
     return {
       value: data[index][x],
+      index,
     };
   }
 

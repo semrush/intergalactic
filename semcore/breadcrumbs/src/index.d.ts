@@ -1,29 +1,34 @@
-import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-export interface IBreadcrumbsProps extends IBoxProps {
+/** @deprecated */
+export interface IBreadcrumbsProps extends BreadcrumbsProps, UnknownProperties {}
+export type BreadcrumbsProps = BoxProps & {
   /**
    * Links divider
    * */
   separator?: React.ReactNode;
   locale?: string;
-}
+};
 
-export interface IBreadcrumbsItemProps extends IBoxProps, IKeyboardFocusProps {
-  /** The property is responsible for the activity of the element */
-  active?: boolean;
-  locale?: string;
-}
+/** @deprecated */
+export interface IBreadcrumbsItemProps extends BreadcrumbsItemProps, UnknownProperties {}
+export type BreadcrumbsItemProps = BoxProps &
+  KeyboardFocusProps & {
+    /** The property is responsible for the activity of the element */
+    active?: boolean;
+    locale?: string;
+  };
 
-export interface IBreadcrumbsContext extends IBreadcrumbsProps {
+/** @deprecated */
+export interface IBreadcrumbsContext extends BreadcrumbsContext, UnknownProperties {}
+export type BreadcrumbsContext = BreadcrumbsProps & {
   getItemProps: PropGetterFn;
-}
+};
 
-declare const Breadcrumbs: (<T>(
-  props: CProps<IBreadcrumbsProps & T, IBreadcrumbsContext>,
-) => ReturnEl) & {
-  Item: <T>(props: IBreadcrumbsItemProps & T) => ReturnEl;
+declare const Breadcrumbs: Intergalactic.Component<'div', BreadcrumbsProps, BreadcrumbsContext> & {
+  Item: Intergalactic.Component<'a', BreadcrumbsItemProps>;
 };
 
 export default Breadcrumbs;

@@ -1,11 +1,13 @@
-import { CProps, ReturnEl } from '@semcore/core';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
 import { Flex } from '@semcore/flex-box';
-import { IIconProps } from '@semcore/icon';
-import { IFadeInOutProps } from '@semcore/animation';
+import { IconProps } from '@semcore/icon';
+import { FadeInOutProps } from '@semcore/animation';
 
 export type NoticeGlobalTheme = 'danger' | 'warning' | 'success' | 'info' | 'neutral' | string;
 
-export interface INoticeGlobalProps extends IFadeInOutProps {
+/** @deprecated */
+export interface INoticeGlobalProps extends NoticeGlobalProps, UnknownProperties {}
+export type NoticeGlobalProps = FadeInOutProps & {
   /**
    * Notice theme
    * @default neutral
@@ -24,11 +26,11 @@ export interface INoticeGlobalProps extends IFadeInOutProps {
    */
   onClose?: (event: React.SyntheticEvent) => void;
   locale?: string;
-}
+};
 
-declare const NoticeGlobal: (<T>(props: CProps<INoticeGlobalProps & T>) => ReturnEl) & {
+declare const NoticeGlobal: Intergalactic.Component<'div', NoticeGlobalProps> & {
   Content: typeof Flex;
-  CloseIcon: <T>(props: IIconProps & T) => ReturnEl;
+  CloseIcon: Intergalactic.Component<'div', IconProps>;
 };
 
 export default NoticeGlobal;

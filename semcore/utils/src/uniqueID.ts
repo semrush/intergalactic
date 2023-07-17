@@ -1,6 +1,6 @@
 import { useState } from 'react';
 // @ts-ignore
-import { register } from '@semcore/core';
+import { UnknownProperties, register } from '@semcore/core';
 import useEnhancedEffect from './use/useEnhancedEffect';
 
 type ContextType = {
@@ -8,10 +8,12 @@ type ContextType = {
   value: number;
 };
 
-export interface IUniqueIDProps {
+/** @deprecated */
+export interface IUniqueIDProps extends UniqueIDProps, UnknownProperties {}
+export type UniqueIDProps = {
   /* Unique ID */
   uid?: string;
-}
+};
 
 const createSource = (prefix = 'ui-kit-'): ContextType => ({ value: 1, prefix });
 
@@ -23,11 +25,11 @@ export const useUID = (prefix?: string): string => {
     register.set<ContextType>('uid-context', context);
   }, [uid]);
 
-  return context.prefix + uid;
+  return (context.prefix ?? '') + uid;
 };
 
 export default (prefix?: string) => {
-  return (props) => {
+  return (props: any) => {
     const uid = useUID(prefix);
     return {
       uid,

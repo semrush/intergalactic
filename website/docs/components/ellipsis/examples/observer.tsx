@@ -16,7 +16,7 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' ref={containerRef} />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell name='vol'>
+        <DataTable.Cell<typeof data> name='vol'>
           {(props, row) => {
             return {
               children: (

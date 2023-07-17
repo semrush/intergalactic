@@ -19,7 +19,7 @@ function createRootRender() {
       // @ts-ignore
     } = Root.props;
 
-    const clearProps = Object.entries(props).reduce((props, [name, value]) => {
+    const clearProps = Object.entries(props).reduce((props: any, [name, value]) => {
       if (value !== undefined) {
         props[name] = value;
       }
@@ -55,10 +55,10 @@ function createRootRender() {
 
 function Enhancement() {
   return {
-    init: function () {
+    init: function (this: any) {
       this.Root = createRootRender();
     },
-    asProps: function (props, WrapperComponent, isFunction) {
+    asProps: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         return {
           ...props,
@@ -67,7 +67,7 @@ function Enhancement() {
       }
       return props;
     },
-    render: function (render, props) {
+    render: function (this: any, render: any, props: any) {
       this.Root.props = props;
       return render;
     },

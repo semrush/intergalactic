@@ -11,8 +11,9 @@ export default function numericChecker(float = false) {
 
   const { COMPLETE, INCOMPLETE } = float ? FLOAT : NUMBER;
   return {
-    complete: (value) => COMPLETE.test(value),
-    incomplete: (value) => INCOMPLETE.test(value),
-    numOrDefault: (value, defaultValue = 0) => (COMPLETE.test(value) ? value : defaultValue),
+    complete: (value: string) => COMPLETE.test(value),
+    incomplete: (value: string) => INCOMPLETE.test(value),
+    numOrDefault: (value: string, defaultValue = 0) =>
+      COMPLETE.test(value) ? value : defaultValue,
   };
 }

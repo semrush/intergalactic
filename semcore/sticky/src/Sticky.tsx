@@ -1,15 +1,17 @@
 import React from 'react';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import createComponent, { UnknownProperties, Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/sticky.shadow.css';
 
-export interface IStickyProps extends IBoxProps {
+/** @deprecated */
+export interface IStickyProps extends StickyProps, UnknownProperties {}
+export type StickyProps = BoxProps & {
   /** css property
    * @default 0
    * */
   top?: string | number;
-}
+};
 
 class StickyRoot extends Component<IStickyProps> {
   static displayName = 'Sticky';

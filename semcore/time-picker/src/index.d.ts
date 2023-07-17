@@ -1,10 +1,12 @@
 import React from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IInputProps, IInputValueProps } from '@semcore/input';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { InputProps, InputValueProps } from '@semcore/input';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
-export interface ITimePickerProps extends Omit<IInputProps, 'size'> {
+/** @deprecated */
+export interface ITimePickerProps extends TimePickerProps, UnknownProperties {}
+export type TimePickerProps = Omit<InputProps, 'size'> & {
   /** Time in the hh:mm format */
   value?: string;
   /** Default value if `value` property is not provided */
@@ -19,32 +21,43 @@ export interface ITimePickerProps extends Omit<IInputProps, 'size'> {
   /** 12-hour time format */
   is12Hour?: boolean;
   locale?: string;
-}
+};
 
-export interface ITimePickerItemProps extends IInputValueProps {
+/** @deprecated */
+export interface ITimePickerItemProps extends TimePickerItemProps, UnknownProperties {}
+export type TimePickerItemProps = InputValueProps & {
   /** Step for changing of the values in the dropdown list */
   step?: number;
-}
+};
 
-export interface ITimePickerFormatProps extends IBoxProps, IKeyboardFocusProps {}
+/** @deprecated */
+export interface ITimePickerFormatProps extends TimePickerFormatProps, UnknownProperties {}
+export type TimePickerFormatProps = BoxProps & KeyboardFocusProps & {};
 
-export interface ITimePickerContext {
+/** @deprecated */
+export interface ITimePickerContext extends TimePickerContext, UnknownProperties {}
+export type TimePickerContext = {
   getHoursProps: PropGetterFn;
   getFormatProps: PropGetterFn;
   getMinutesProps: PropGetterFn;
-}
+};
 
-export interface ITimePickerHandlers {
+/** @deprecated */
+export interface ITimePickerHandlers extends TimePickerHandlers, UnknownProperties {}
+export type TimePickerHandlers = {
   value: (value: string) => void;
-}
+};
 
-declare const TimePicker: (<T>(
-  props: CProps<ITimePickerProps & T, ITimePickerContext, ITimePickerHandlers>,
-) => ReturnEl) & {
-  Hours: <T>(props: ITimePickerItemProps & T) => ReturnEl;
-  Minutes: <T>(props: ITimePickerItemProps & T) => ReturnEl;
+declare const TimePicker: Intergalactic.Component<
+  'div',
+  TimePickerProps,
+  TimePickerContext,
+  [handlers: TimePickerHandlers]
+> & {
+  Hours: Intergalactic.Component<'div', TimePickerItemProps>;
+  Minutes: Intergalactic.Component<'div', TimePickerItemProps>;
   Separator: typeof Box;
-  Format: <T>(props: ITimePickerFormatProps & T) => ReturnEl;
+  Format: Intergalactic.Component<'div', TimePickerFormatProps>;
 };
 
 export default TimePicker;

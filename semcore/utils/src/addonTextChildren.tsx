@@ -18,11 +18,11 @@ function addonTextChildren(
   if (!isTextWrapIfEmptyChildren && !isNode(children)) {
     return null;
   }
-  return React.Children.toArray(children).some((element) => {
+  return React.Children.toArray(children).some((element: any) => {
     if (!React.isValidElement(element)) return false;
     if (element.type === React.Fragment) return true;
-    if (element.type[CHILDREN_COMPONENT]) {
-      const wrapChildren = addonTextChildren(element.type, Text, Addon);
+    if ((element.type as any)[CHILDREN_COMPONENT]) {
+      const wrapChildren: any = addonTextChildren(element.type, Text, Addon);
       if (wrapChildren.type[CHILDREN_COMPONENT]) {
         return true;
       } else {

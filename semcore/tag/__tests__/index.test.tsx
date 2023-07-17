@@ -21,7 +21,7 @@ describe('Tag', () => {
     'pink-500',
     'violet-500',
   ];
-  const themes = ['primary', 'secondary'];
+  const themes = ['primary', 'secondary'] as const;
 
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = <Tag>Tag</Tag>;
@@ -87,7 +87,7 @@ describe('Tag', () => {
   });
 
   test.concurrent('Should support size props', async ({ task }) => {
-    const component = ['xl', 'l', 'm'].map((size) => (
+    const component = (['xl', 'l', 'm'] as const).map((size) => (
       <Tag size={size} key={size}>
         <Tag.Circle>
           <div style={{ width: 100, height: 100, background: 'black' }} />
@@ -112,34 +112,34 @@ describe('Tag', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.skip('should support custom theme', async ({ task }) => {
-    const component = (
-      <>
-        <Tag theme='blanchedalmond'>
-          <Tag.Text>blanchedalmond</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag theme='#3eeb4c'>
-          <Tag.Text>#3eeb4c</Tag.Text>
-          <Tag.Close />
-        </Tag>
-        <Tag theme='dark-violet'>
-          <Tag.Text>dark-violet</Tag.Text>
-          <Tag.Close />
-        </Tag>
-      </>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  // test.skip('should support custom theme', async ({ task }) => {
+  //   const component = (
+  //     <>
+  //       <Tag theme={'blanchedalmond'}>
+  //         <Tag.Text>blanchedalmond</Tag.Text>
+  //         <Tag.Close />
+  //       </Tag>
+  //       <Tag theme='#3eeb4c'>
+  //         <Tag.Text>#3eeb4c</Tag.Text>
+  //         <Tag.Close />
+  //       </Tag>
+  //       <Tag theme='dark-violet'>
+  //         <Tag.Text>dark-violet</Tag.Text>
+  //         <Tag.Close />
+  //       </Tag>
+  //     </>
+  //   );
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
-  test.skip('should support color text', async ({ task }) => {
-    const component = (
-      <Tag theme='dark-violet' color='white'>
-        dark-violet
-      </Tag>
-    );
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  // test.skip('should support color text', async ({ task }) => {
+  //   const component = (
+  //     <Tag theme='dark-violet' color='white'>
+  //       dark-violet
+  //     </Tag>
+  //   );
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
   test.concurrent('should display ellipsis if text is too long', async ({ task }) => {
     const component = <Tag w={80}>Lorem ipsum dolor sit amet</Tag>;
@@ -176,8 +176,8 @@ describe('Tag', () => {
   test('a11y', async () => {
     const { container } = render(
       <>
-        <Tag theme='green-500'>
-          <Tag.Text>green-500</Tag.Text>
+        <Tag theme='primary'>
+          <Tag.Text>primary</Tag.Text>
           <Tag.Close />
         </Tag>
         <Tag>Test</Tag>

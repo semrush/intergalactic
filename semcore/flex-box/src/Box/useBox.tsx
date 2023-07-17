@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import cn from 'classnames';
 import { Properties, Property } from 'csstype';
-import { IStyledProps, sstyled } from '@semcore/core';
+import { sstyled, StyledProps, UnknownProperties } from '@semcore/core';
 import propsForElement from '@semcore/utils/lib/propsForElement';
 import logger from '@semcore/utils/lib/logger';
 
@@ -10,7 +10,7 @@ import style from '../style/use-box.shadow.css';
 import { getAutoOrScaleIndent } from '../utils';
 
 export function removeUndefinedKeys<T extends {}>(obj: T) {
-  return Object.entries(obj).reduce((acc, [key, value]) => {
+  return Object.entries(obj).reduce((acc: any, [key, value]) => {
     if (value !== undefined) {
       acc[key] = value;
     }
@@ -18,7 +18,7 @@ export function removeUndefinedKeys<T extends {}>(obj: T) {
   }, {});
 }
 
-function getSize(size) {
+function getSize(size: any) {
   if (typeof size !== 'number') {
     return size;
   }
@@ -30,7 +30,7 @@ function getSize(size) {
   }
 }
 
-export interface IBoxProps extends IStyledProps {
+export type BoxProps = StyledProps & {
   /** Sets the `inline-block` property */
   inline?: boolean;
 
@@ -130,12 +130,6 @@ export interface IBoxProps extends IStyledProps {
    */
   scaleIndent?: number;
 
-  /**
-   *  HTML tag name for the displayed item
-   * @default div
-   */
-  tag?: React.ElementType | string;
-
   /** Property for specifying css properties in js
    * @deprecated v4.0.0 */
   css?: React.CSSProperties;
@@ -153,10 +147,19 @@ export interface IBoxProps extends IStyledProps {
 
   zIndex?: number;
 
-  [key: string]: unknown;
+  children?: React.ReactNode;
+};
+
+/** @deprecated */
+export interface IBoxProps extends BoxProps, UnknownProperties {
+  /**
+   *  HTML tag name for the displayed item
+   * @default div
+   */
+  tag?: React.ElementType | string;
 }
 
-function calculateIndentStyles(props, scaleIndent) {
+function calculateIndentStyles(props: any, scaleIndent: number) {
   return removeUndefinedKeys({
     width: getSize(props['w']),
     height: getSize(props['h']),
@@ -202,9 +205,9 @@ function calculateIndentStyles(props, scaleIndent) {
   });
 }
 
-export default function useBox<T extends IBoxProps>(
+export default function useBox<T extends BoxProps>(
   props: T,
-  ref,
+  ref: React.Ref<HTMLElement>,
 ): [React.ElementType | string, any] {
   const {
     tag: Tag = 'div',
@@ -242,7 +245,7 @@ export default function useBox<T extends IBoxProps>(
     right,
     zIndex,
     ...other
-  } = props;
+  } = props as any;
 
   const indentStyles: Properties = useMemo(() => {
     return calculateIndentStyles(props, scaleIndent);

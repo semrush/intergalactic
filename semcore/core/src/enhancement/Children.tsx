@@ -6,9 +6,9 @@ const CHILDREN_SELF = Symbol('CHILDREN_SELF');
 
 const GETTER_REG = /^get[\w]+Props$/;
 
-function splitPropsAndGetters(props) {
+function splitPropsAndGetters(props: any) {
   return Object.entries(props).reduce(
-    (acc, [key, value]) => {
+    (acc: any, [key, value]) => {
       if (GETTER_REG.exec(key) === null) {
         acc.props[key] = value;
       } else {
@@ -20,16 +20,16 @@ function splitPropsAndGetters(props) {
   );
 }
 
-function getterToArray(getter) {
+function getterToArray(getter: any) {
   if (!Array.isArray(getter)) {
     return typeof getter === 'function' ? [getter] : [];
   }
   return getter;
 }
 
-function mergeObjects(a = {}, b = {}) {
+function mergeObjects(a: any = {}, b: any = {}) {
   const core = { ...a, ...b };
-  return Object.keys(core).reduce((acc, key) => {
+  return Object.keys(core).reduce((acc: any, key) => {
     a[key] = getterToArray(a[key]);
     b[key] = getterToArray(b[key]);
     acc[key] = [...a[key], ...b[key]];
@@ -45,8 +45,8 @@ function assignGettersChain(getters: Array<Function>) {
   };
 }
 
-function createChildren(Context, contexts) {
-  const Children = function () {
+function createChildren(Context: any, contexts: any) {
+  const Children: any = function () {
     const children = Children.origin;
     if (typeof children === 'function') {
       const {
@@ -54,7 +54,7 @@ function createChildren(Context, contexts) {
         getters = {},
         ...props
       } = [...contexts, Context].reduce((acc, ctx) => {
-        const { handlers, ...propsAndGetters } = useContext(ctx);
+        const { handlers, ...propsAndGetters } = useContext(ctx) as any;
         const { props, getters } = splitPropsAndGetters(propsAndGetters);
         return Object.assign({}, acc, {
           handlers: Object.assign({}, acc.handlers, handlers),
@@ -63,7 +63,7 @@ function createChildren(Context, contexts) {
         });
       }, Children.props);
 
-      const mergedGetters = Object.entries(getters).reduce((acc, [key, value]) => {
+      const mergedGetters = Object.entries(getters).reduce((acc: any, [key, value]) => {
         acc[key] = assignGettersChain(value as []);
         return acc;
       }, {});
@@ -80,15 +80,15 @@ function createChildren(Context, contexts) {
   return Children;
 }
 
-function Enhancement(Context, parent) {
+function Enhancement(this: any, Context: any, parent: any) {
   return {
-    init: function () {
+    init: function (this: any) {
       const contexts = (Array.isArray(parent) ? parent : [parent])
         .map((component) => component[CONTEXT_COMPONENT])
         .filter(Boolean);
       this[CHILDREN_SELF] = createChildren(Context, contexts);
     },
-    asProps: function (props) {
+    asProps: function (this: any, props: any) {
       // TODO: learn the reason what it was used for (by lsroman)
       // this[CHILDREN_SELF].origin = _Children ? _Children.origin : children;
       this[CHILDREN_SELF].origin = props.children;

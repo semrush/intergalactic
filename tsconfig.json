@@ -7,7 +7,7 @@
     "declaration": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "noEmit": false,
     "sourceMap": true,
     "importHelpers": false,
@@ -16,7 +16,7 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "baseUrl": "./semcore",
-    "typeRoots": ["node_modules/@types", "semcore/data-table/node_modules/@types", "tools/@types"]
+    "typeRoots": ["node_modules/@types", "tools/@types"]
   },
   "paths": {
     "@semcore/ui/*": ["semcore/*"],
@@ -27,9 +27,8 @@
   "include": ["semcore", "tools"],
   "exclude": [
     "node_modules",
-    "website",
-    "**/__tests__/**",
     "tools/playground/examples/*",
-    "tools/playground/examples/**/*"
+    "tools/playground/examples/**/*",
+    "tools/icon-transform-svg/__tests__"
   ]
 }

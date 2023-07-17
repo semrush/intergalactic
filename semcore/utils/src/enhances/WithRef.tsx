@@ -10,7 +10,7 @@ function WithForwardRef() {
     });
     Wrapped.displayName = getDisplayName(Component);
     Wrapped.defaultProps = Component.defaultProps;
-    return hoistNonReactStatics(Wrapped, Component);
+    return hoistNonReactStatics(Wrapped, Component) as any;
   };
 }
 

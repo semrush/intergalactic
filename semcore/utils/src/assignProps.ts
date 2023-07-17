@@ -3,8 +3,8 @@ import cn from 'classnames';
 import { sstyled } from '@semcore/core';
 import { forkRef } from './ref';
 
-export function callAllEventHandlers(...fns) {
-  return (...args) =>
+export function callAllEventHandlers(...fns: any[]) {
+  return (...args: any[]) =>
     !fns.some((fn) => {
       let result;
       if (fn) {
@@ -14,8 +14,8 @@ export function callAllEventHandlers(...fns) {
     });
 }
 
-export function assignHandlers(props, source) {
-  return Object.keys(source).reduce((proxySource, propName) => {
+export function assignHandlers(props: any, source: any) {
+  return Object.keys(source).reduce((proxySource: any, propName) => {
     if (typeof source[propName] === 'function' && propName.startsWith('on')) {
       proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
     }
@@ -23,8 +23,8 @@ export function assignHandlers(props, source) {
   }, {});
 }
 
-function assignHandlersInner(props, source) {
-  return Object.keys(source).reduce((proxySource, propName) => {
+function assignHandlersInner(props: any, source: any) {
+  return Object.keys(source).reduce((proxySource: any, propName) => {
     if (propName !== 'ref' && propName.startsWith('on')) {
       if (typeof source[propName] === 'function' && typeof props[propName] === 'function') {
         proxySource[propName] = callAllEventHandlers(props[propName], source[propName]);
@@ -63,11 +63,11 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
   const sourceDescriptorRef = Object.getOwnPropertyDescriptor(source, 'ref');
   const propsDescriptorRef = Object.getOwnPropertyDescriptor(props, 'ref');
   if (sourceDescriptorRef?.configurable && propsDescriptorRef?.configurable) {
-    newProps.ref = forkRef(source.ref, props.ref);
+    newProps.ref = forkRef(source.ref as any, props.ref as any);
   }
 
   if (props.forwardRef) {
-    newProps.ref = forkRef(newProps.ref, props.forwardRef);
+    newProps.ref = forkRef(newProps.ref as any, props.forwardRef as any);
   }
 
   if (source.style && props.style) {

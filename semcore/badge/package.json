@@ -1,7 +1,7 @@
 {
   "name": "@semcore/badge",
   "description": "Semrush Badge Component",
-  "version": "3.3.34",
+  "version": "4.0.0-beta.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
-    "@semcore/flex-box": "^4"
+    "@semcore/utils": "4.0.0-beta.1",
+    "@semcore/flex-box": "5.0.0-beta.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "2.0.0-beta.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

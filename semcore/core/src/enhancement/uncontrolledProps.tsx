@@ -3,31 +3,38 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 // @ts-ignore
 import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 
-function assign(target, source) {
+function assign(target: any, source: any) {
   return Object.defineProperties(
     target,
-    Object.keys(source).reduce((descriptors, key) => {
+    Object.keys(source).reduce((descriptors: any, key) => {
       descriptors[key] = Object.getOwnPropertyDescriptor(source, key);
       return descriptors;
     }, {}),
   );
 }
 
-function defaultProp(prop) {
+function defaultProp(prop: any) {
   return `default${capitalizeFirstLetter(prop)}`;
 }
 
-function handlerProp(prop) {
+function handlerProp(prop: any) {
   if (prop === 'value') prop = '';
   if (prop === 'checked') prop = '';
   return `on${capitalizeFirstLetter(prop)}Change`;
 }
 
-function isControlled(propValue) {
+function isControlled(propValue: any) {
   return propValue !== undefined;
 }
 
-function uncontrolledProp(self, propName, propValue, propDefaultValue, propHandler, chainHandler) {
+function uncontrolledProp(
+  self: any,
+  propName: any,
+  propValue: any,
+  propDefaultValue: any,
+  propHandler: any,
+  chainHandler: any,
+) {
   function getValue() {
     return isControlled(propValue)
       ? propValue
@@ -38,7 +45,7 @@ function uncontrolledProp(self, propName, propValue, propDefaultValue, propHandl
 
   return [
     getValue(),
-    (value, ...args) => {
+    (value: any, ...args: any[]) => {
       const oldValue = getValue();
       if (oldValue === value) return false;
       if (!isControlled(propValue)) self.setState({ [propName]: value });
@@ -47,7 +54,7 @@ function uncontrolledProp(self, propName, propValue, propDefaultValue, propHandl
   ];
 }
 
-function uncontrolledUniversal(props, config, uncontrolledProp) {
+function uncontrolledUniversal(props: any, config: any, uncontrolledProp: any) {
   const handlerProps = {};
   const uncontrolledProps = Object.keys(config).reduce((result, propName) => {
     const handlerName = handlerProp(propName);
@@ -71,7 +78,7 @@ function uncontrolledUniversal(props, config, uncontrolledProp) {
     let chainHandler = [];
 
     if (Array.isArray(setter)) [setter, ...chainHandler] = setter;
-    setter = setter || ((v) => v);
+    setter = setter || ((v: any) => v);
 
     const [value, handler] = uncontrolledProp(
       propName,
@@ -81,12 +88,12 @@ function uncontrolledUniversal(props, config, uncontrolledProp) {
       chainHandler,
     );
     // TODO: need to warn about recursion (by lsroman)
-    handlerProps[propName] = handler;
+    (handlerProps as any)[propName] = handler;
 
     return {
       ...other,
       [propName]: value,
-      [handlerName]: (eventOrValue, ...args) => {
+      [handlerName]: (eventOrValue: any, ...args: any[]) => {
         const result = [setter(eventOrValue, ...args), ...args];
         if (eventOrValue?.target) {
           result.push(eventOrValue);
@@ -98,16 +105,16 @@ function uncontrolledUniversal(props, config, uncontrolledProp) {
   return [uncontrolledProps, handlerProps];
 }
 
-function uncontrolled(self, props, config) {
+function uncontrolled(self: any, props: any, config: any) {
   return uncontrolledUniversal(props, config, uncontrolledProp.bind(undefined, self));
 }
 
 function Enhancement() {
   return {
-    condition: function (Component) {
+    condition: function (Component: any) {
       return Boolean(Component.prototype.uncontrolledProps);
     },
-    init: function () {
+    init: function (this: any) {
       this.state = this.state || {};
       assign(this, {
         get handlers() {
@@ -116,13 +123,13 @@ function Enhancement() {
         },
       });
     },
-    context: function (context) {
+    context: function (this: any, context: any) {
       return {
         ...context,
         handlers: this.handlers,
       };
     },
-    asProps: function (props) {
+    asProps: function (this: any, props: any) {
       // TODO: need to omit unneccessary props (by lsroman)
       const [uncontrolledProps] = uncontrolled(this, props, this.uncontrolledProps());
       return uncontrolledProps;

@@ -47,21 +47,6 @@ import { ResponsiveContainer } from '@semcore/ui/d3-chart';
 
 @typescript IResponsiveContainerProps
 
-@## Tooltip
-
-It have children components `Trigger, Popper, Title, Dot`.
-
-```js
-import { Tooltip } from '@semcore/ui/d3-chart';
-
-<Tooltip>
-  <Tooltip.Title />
-  <Tooltip.Dot />
-</Tooltip>;
-```
-
-@typescript ITooltipChartProps
-
 @## HoverLine
 
 Component for show line after hover on chart.

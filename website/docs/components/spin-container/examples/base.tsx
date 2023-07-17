@@ -4,6 +4,8 @@ import SpinContainer from '@semcore/ui/spin-container';
 
 class Demo extends React.PureComponent {
   state = { loading: true };
+  timerFetch: any;
+  timer: any;
 
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);

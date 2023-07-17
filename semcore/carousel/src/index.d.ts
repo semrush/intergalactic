@@ -1,6 +1,6 @@
 import React from 'react';
-import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
 type ChildRenderFn<Props> = Props & {
   children?: ({
@@ -10,7 +10,9 @@ type ChildRenderFn<Props> = Props & {
   }) => React.ReactElement | React.ReactElement[];
 };
 
-export interface ICarouselProps {
+/** @deprecated */
+export interface ICarouselProps extends CarouselProps, UnknownProperties {}
+export type CarouselProps = BoxProps & {
   /** Index active item */
   index?: number;
   /**
@@ -28,31 +30,46 @@ export interface ICarouselProps {
   bounded?: boolean;
   /** @ignore  */
   step?: number;
-}
+};
 
-export interface ICarouselContext {
+/** @deprecated */
+export interface ICarouselContext extends CarouselContext, UnknownProperties {}
+export type CarouselContext = {
   getContainerProps: PropGetterFn;
   getItemProps: PropGetterFn;
   getPrevProps: PropGetterFn;
   getNextProps: PropGetterFn;
   getIndicatorsProps: PropGetterFn;
-}
+};
 
-export interface ICarouselState {
+/** @deprecated */
+export interface ICarouselState extends CarouselState, UnknownProperties {}
+export type CarouselState = {
+  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
   items: { transform: number; position: number; node: HTMLDivElement }[];
-}
+};
 
-declare const Carousel: (<T>(
-  props: CProps<ICarouselProps & T, ICarouselContext, ICarouselState>,
-) => ReturnEl) & {
-  Container: <T>(props: IBoxProps & T) => ReturnEl;
-  Indicators: <T>(props: ChildRenderFn<IBoxProps & T>) => ReturnEl;
-  Indicator: <T>(
-    props: ChildRenderFn<IBoxProps & { active: boolean; onClick: () => void } & T>,
-  ) => ReturnEl;
-  Item: <T>(props: IBoxProps & T) => ReturnEl;
-  Prev: <T>(props: IBoxProps & T) => ReturnEl;
-  Next: <T>(props: IBoxProps & T) => ReturnEl;
+declare const Carousel: Intergalactic.Component<
+  'div',
+  CarouselProps,
+  CarouselContext & CarouselState
+> & {
+  Container: Intergalactic.Component<'div', BoxProps>;
+  Indicators: Intergalactic.Component<'div', BoxProps, CarouselState>;
+  Indicator: Intergalactic.Component<
+    'div',
+    Omit<BoxProps, 'position'> & {
+      active?: boolean;
+      onClick?: () => void;
+      transform?: number;
+      position?: number;
+      // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
+      node?: HTMLDivElement;
+    }
+  >;
+  Item: Intergalactic.Component<'div', BoxProps>;
+  Prev: Intergalactic.Component<'div', BoxProps>;
+  Next: Intergalactic.Component<'div', BoxProps>;
 };
 
 export default Carousel;

@@ -1,12 +1,14 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
 import { CurveFactory } from 'd3-shape';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IAreaProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IAreaProps extends AreaProps, UnknownProperties {}
+export type AreaProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis*/
+  /** Field name from `data` array item for the YAxis*/
   y?: string;
   /** Line color
    * @default '#50aef4'*/
@@ -21,33 +23,40 @@ export interface IAreaProps extends IContext {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IAreaDotsProps extends IContext {
+/** @deprecated */
+export interface IAreaDotsProps extends AreaDotsProps, UnknownProperties {}
+export type AreaDotsProps = Context & {
   /** Show all Dot */
   display?: boolean;
   /** Hide property */
   hide?: boolean;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IAreaDotsContext {
+/** @deprecated */
+export interface IAreaDotsContext extends AreaDotsContext, UnknownProperties {}
+export type AreaDotsContext = {
   /** Value element of data */
+  /** @deprecated */
   value?: any;
   /** Index element of data */
   index?: number;
-}
+};
 
-export interface IAreaNullProps extends IContext {
+/** @deprecated */
+export interface IAreaNullProps extends AreaNullProps, UnknownProperties {}
+export type AreaNullProps = Context & {
   /** Hide property */
   hide?: boolean;
-}
+};
 
-declare const Area: (<T>(props: MapProps<IAreaProps & T>) => ReturnEl) & {
-  Dots: <T>(props: MapProps<IAreaDotsProps & T, IAreaDotsContext>) => ReturnEl;
-  Null: <T>(props: MapProps<IAreaNullProps & T>) => ReturnEl;
-  Line: <T>(props: MapProps<IContext & T>) => ReturnEl;
+declare const Area: IntergalacticD3Component<'path', AreaProps, Context> & {
+  Dots: IntergalacticD3Component<'circle', AreaDotsProps, AreaDotsContext>;
+  Null: IntergalacticD3Component<'path', AreaNullProps, Context>;
+  Line: IntergalacticD3Component<'path', Context, Context>;
 };
 
 export default Area;

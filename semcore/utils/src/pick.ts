@@ -1,5 +1,5 @@
-export default function pick(obj, keys) {
-  const res = {};
+export default function pick<T extends {}, K extends keyof T>(obj: T, keys: K[]) {
+  const res: any = {};
   const len = keys.length;
   let idx = -1;
   while (++idx < len) {
@@ -8,5 +8,5 @@ export default function pick(obj, keys) {
       res[key] = obj[key];
     }
   }
-  return res;
+  return res as Pick<T, K>;
 }

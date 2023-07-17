@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "2.17.5",
+  "version": "3.0.0-beta.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "^1",
-    "@semcore/flex-box": "^4",
-    "@semcore/popper": "^4.9",
-    "@semcore/utils": "^3.42.0",
+    "@semcore/animation": "2.0.0-beta.1",
+    "@semcore/flex-box": "5.0.0-beta.1",
+    "@semcore/popper": "5.0.0-beta.1",
+    "@semcore/utils": "4.0.0-beta.1",
     "@types/d3-shape": "^3.1.0",
     "@upsetjs/venn.js": "1.4.1",
     "d3-array": "3.1.6",
@@ -25,11 +25,10 @@
     "d3-scale": "3.3.0",
     "d3-shape": "3.1.0",
     "d3-transition": "3.0.1",
-    "hoist-non-react-statics": "3.3.2",
-    "resize-observer-polyfill": "1.5.1"
+    "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.12",
+    "@semcore/core": "2.0.0-beta.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
@@ -44,11 +43,12 @@
     "@semcore/checkbox": "*",
     "@semcore/dropdown-menu": "*",
     "@semcore/icon": "*",
-    "@semcore/utils": "*",
     "@semcore/testing-utils": "1.0.0",
     "@semcore/typography": "*",
+    "@semcore/utils": "*",
     "@types/d3-array": "^3.0.2",
     "@types/d3-scale": "^4.0.2",
-    "@types/d3-transition": "^3.0.1"
+    "@types/d3-transition": "^3.0.1",
+    "@types/react": "18.0.21"
   }
 }

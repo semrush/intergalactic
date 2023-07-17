@@ -2,85 +2,91 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.0.0] - 2023-07-15
+
+### Break
+
+* Strict, backward incompatible typings.
+
 ## [6.2.40] - 2023-06-30
 
 ## [6.2.39] - 2023-06-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/spin` [4.2.31 ~> 4.2.32], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/animation` [1.10.19 ~> 1.10.20]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/spin` [4.2.31 ~> 4.2.32], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/animation` [1.10.19 ~> 1.10.20]).
 
 ## [6.2.38] - 2023-06-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/spin` [4.2.30 ~> 4.2.31], `@semcore/flex-box` [4.7.30 ~> 4.7.31], `@semcore/animation` [1.10.18 ~> 1.10.19]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/spin` [4.2.30 ~> 4.2.31], `@semcore/flex-box` [4.7.30 ~> 4.7.31], `@semcore/animation` [1.10.18 ~> 1.10.19]).
 
 ## [6.2.37] - 2023-06-12
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/spin` [4.2.29 ~> 4.2.30], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/animation` [1.10.17 ~> 1.10.18]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/spin` [4.2.29 ~> 4.2.30], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/animation` [1.10.17 ~> 1.10.18]).
 
 ## [6.2.36] - 2023-06-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/spin` [4.2.28 ~> 4.2.29], `@semcore/flex-box` [4.7.28 ~> 4.7.29], `@semcore/animation` [1.10.16 ~> 1.10.17]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/spin` [4.2.28 ~> 4.2.29], `@semcore/flex-box` [4.7.28 ~> 4.7.29], `@semcore/animation` [1.10.16 ~> 1.10.17]).
 
 ## [6.2.35] - 2023-06-07
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/spin` [4.2.27 ~> 4.2.28], `@semcore/flex-box` [4.7.27 ~> 4.7.28], `@semcore/animation` [1.10.15 ~> 1.10.16]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/spin` [4.2.27 ~> 4.2.28], `@semcore/flex-box` [4.7.27 ~> 4.7.28], `@semcore/animation` [1.10.15 ~> 1.10.16]).
 
 ## [6.2.34] - 2023-06-02
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.14 ~> 1.10.15]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.10.14 ~> 1.10.15]).
 
 ## [6.2.33] - 2023-05-31
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/spin` [4.2.26 ~> 4.2.27], `@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/animation` [1.10.13 ~> 1.10.14]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/spin` [4.2.26 ~> 4.2.27], `@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/animation` [1.10.13 ~> 1.10.14]).
 
 ## [6.2.32] - 2023-05-29
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.12 ~> 1.10.13]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.10.12 ~> 1.10.13]).
 
 ## [6.2.31] - 2023-05-25
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/spin` [4.2.25 ~> 4.2.26], `@semcore/flex-box` [4.7.25 ~> 4.7.26], `@semcore/animation` [1.10.11 ~> 1.10.12]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/spin` [4.2.25 ~> 4.2.26], `@semcore/flex-box` [4.7.25 ~> 4.7.26], `@semcore/animation` [1.10.11 ~> 1.10.12]).
 
 ## [6.2.30] - 2023-05-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/spin` [4.2.24 ~> 4.2.25], `@semcore/flex-box` [4.7.24 ~> 4.7.25], `@semcore/animation` [1.10.10 ~> 1.10.11]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/spin` [4.2.24 ~> 4.2.25], `@semcore/flex-box` [4.7.24 ~> 4.7.25], `@semcore/animation` [1.10.10 ~> 1.10.11]).
 
 ## [6.2.29] - 2023-05-22
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/spin` [4.2.23 ~> 4.2.24], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/animation` [1.10.9 ~> 1.10.10]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/spin` [4.2.23 ~> 4.2.24], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/animation` [1.10.9 ~> 1.10.10]).
 
 ## [6.2.28] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/spin` [4.2.22 ~> 4.2.23], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/animation` [1.10.8 ~> 1.10.9]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/spin` [4.2.22 ~> 4.2.23], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/animation` [1.10.8 ~> 1.10.9]).
 
 ## [6.2.27] - 2023-05-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/spin` [4.2.21 ~> 4.2.22], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/animation` [1.10.7 ~> 1.10.8]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/spin` [4.2.21 ~> 4.2.22], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/animation` [1.10.7 ~> 1.10.8]).
 
 ## [6.2.25] - 2023-05-02
 
@@ -92,7 +98,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/spin` [4.2.18 ~> 4.2.19], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/animation` [1.10.1 ~> 1.10.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/spin` [4.2.18 ~> 4.2.19], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/animation` [1.10.1 ~> 1.10.2]).
 
 ## [6.2.21] - 2023-04-03
 
@@ -100,7 +106,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/spin` [4.2.17 ~> 4.2.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/animation` [1.9.9 ~> 1.10.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/spin` [4.2.17 ~> 4.2.18], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/animation` [1.9.9 ~> 1.10.0]).
 
 ## [6.2.9] - 2023-02-09
 
@@ -108,7 +114,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/spin` [4.2.6 ~> 4.2.7], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/animation` [1.8.9 ~> 1.8.10]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/spin` [4.2.6 ~> 4.2.7], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/animation` [1.8.9 ~> 1.8.10]).
 
 ## [6.2.5] - 2023-01-10
 
@@ -116,215 +122,215 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/spin` [4.2.3 ~> 4.2.4], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/animation` [1.8.5 ~> 1.8.6]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/spin` [4.2.3 ~> 4.2.4], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/animation` [1.8.5 ~> 1.8.6]).
 
 ## [6.2.1] - 2022-12-13
 
 ### Changed
 
-- Added `react-dom` to peer dependencies.
+* Added `react-dom` to peer dependencies.
 
 ## [6.2.0] - 2022-12-12
 
 ### Added
 
-- Design tokens based theming.
+* Design tokens based theming.
 
 ## [6.1.0] - 2022-10-10
 
 ### Changed
 
-- Added support for React 18 🔥
+* Added support for React 18 🔥
 
 ## [6.0.12] - 2022-10-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2], `@semcore/spin` [4.0.10 ~> 4.0.11], `@semcore/flex-box` [4.5.11 ~> 4.5.12], `@semcore/animation` [1.5.10 ~> 1.5.11]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2], `@semcore/spin` [4.0.10 ~> 4.0.11], `@semcore/flex-box` [4.5.11 ~> 4.5.12], `@semcore/animation` [1.5.10 ~> 1.5.11]).
 
 ## [6.0.11] - 2022-09-20
 
 ### Fixed
 
-- Added essential accessibility attributes.
+* Added essential accessibility attributes.
 
 ## [6.0.10] - 2022-08-30
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/spin` [4.0.8 ~> 4.0.9], `@semcore/flex-box` [4.5.10 ~> 4.5.11], `@semcore/animation` [1.5.9 ~> 1.5.10]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.37.0 ~> 3.37.1], `@semcore/spin` [4.0.8 ~> 4.0.9], `@semcore/flex-box` [4.5.10 ~> 4.5.11], `@semcore/animation` [1.5.9 ~> 1.5.10]).
 
 ## [6.0.0] - 2022-05-17
 
 ### BREAK
 
-- Updated styles according to the library redesign policy.
+* Updated styles according to the library redesign policy.
 
 ## [5.1.0] - 2022-04-25
 
 ### Fixed
 
-- Fixed scollable spin-container (e.g. in `data-table`).
+* Fixed scollable spin-container (e.g. in `data-table`).
 
 ## [5.0.5] - 2022-04-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.0 ~> 1.5.0]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.5.0 ~> 1.5.0]).
 
 ## [5.0.2] - 2021-02-28
 
 ### Fixed
 
-- [ts] correct types.
+* [ts] correct types.
 
 ## [5.0.1] - 2022-02-24
 
 ### Added
 
-- Added repository field to package.json file.
+* Added repository field to package.json file.
 
 ## [5.0.0] - 2022-02-22
 
 ### BREAK
 
-- Add new children component `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
+* Add new children component `SpinContainer.Content` when using advanced mode along with `SpinContainer.Overlay`.
 
 ## [4.0.1] - 2021-8-26
 
 ### Changed
 
-- Add 'sideEffect=false' for more optimal build via webpack
+* Add 'sideEffect=false' for more optimal build via webpack
 
 ## [4.0.0] - 2021-07-05
 
 ### BREAK
 
-- Replace animation from package `react-transition-group` to `@semcore/animation`.
+* Replace animation from package `react-transition-group` to `@semcore/animation`.
 
 ### Changed
 
-- Version of dependence `@semcore/core` has been changed to `1.11`.
-- Improved performance. Removed one component wrapper.
-- The style processing system has been changed.
-- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
-- [TS] rewrite code from TS to JS.
+* Version of dependence `@semcore/core` has been changed to `1.11`.
+* Improved performance. Removed one component wrapper.
+* The style processing system has been changed.
+* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+* [TS] rewrite code from TS to JS.
 
 ## [3.1.0] - 2020-12-17
 
 ### Added
 
-- Added supported react@17.
+* Added supported react@17.
 
 ## [3.0.2] - 2020-10-29
 
 ### Fixed
 
-- Added the placeholder for ID style tag to improve collision protection.
+* Added the placeholder for ID style tag to improve collision protection.
 
 ## [3.0.1] - 2020-09-08
 
 ### Fixed
 
-- Fixed possible styles collisions between components with different versions, but same styles
+* Fixed possible styles collisions between components with different versions, but same styles
 
 ## [3.0.0] - 2020-05-28
 
 ### BREAK
 
-- Изменения описаны в [migration guide](/internal/migration-guide)
+* Изменения описаны в [migration guide](/internal/migration-guide)
 
 ### Added
 
-- Добавлена анимация на появление и скрытие
-- Добавлено свойство `duration` для управления скоростью анимации
+* Добавлена анимация на появление и скрытие
+* Добавлено свойство `duration` для управления скоростью анимации
 
 ## [2.3.0] - 2019-12-12
 
 ### Added
 
-- Появилась возможность добавления различных стилистических тем через css переменные
-- Появилась возможность оптицонально подключать адаптивноссть
-- Появилась возможность изолировать стили даже в пределах одной страницы
+* Появилась возможность добавления различных стилистических тем через css переменные
+* Появилась возможность оптицонально подключать адаптивноссть
+* Появилась возможность изолировать стили даже в пределах одной страницы
 
 ### Changed
 
-- Изменен алгоритм вставки стилей в head
+* Изменен алгоритм вставки стилей в head
 
 ### Removed
 
-- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+* Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
 ## [2.2.1] - 2019-11-25
 
 ### Fixed
 
-- Перезаллили `production` сборку с хэш именами классов
+* Перезаллили `production` сборку с хэш именами классов
 
 ## [2.2.0] - 2019-11-14
 
 ### Added
 
-- Поддержку рендер фукнции для `SpinContainer`
+* Поддержку рендер фукнции для `SpinContainer`
 
 ### Fixed
 
-- Исправили `SpinContainer.Overlay`, теперь это компонент с версткой
+* Исправили `SpinContainer.Overlay`, теперь это компонент с версткой
 
 ## [2.1.1] - 2019-09-30
 
 ### Changed
 
-- Нужные зависимости перенесены в `utils`, размер должен стать меньше
+* Нужные зависимости перенесены в `utils`, размер должен стать меньше
 
 ## [2.1.0] - 2019-06-18
 
 ### Added
 
-- `SpinContainer.Overlay` для возможноти кастомизации подложки под `Spin`
+* `SpinContainer.Overlay` для возможноти кастомизации подложки под `Spin`
 
 ### Fixed
 
-- Исправленно css свойство `display` c `inline-block` на `block`
+* Исправленно css свойство `display` c `inline-block` на `block`
 
 ## [2.0.1] - 2019-05-21
 
 ### Fixed
 
-- Исправленно поведение когда контент width: 100%
+* Исправленно поведение когда контент width: 100%
 
 ## [2.0.0] - 2019-05-13
 
 ### BREAK
 
-- Убрано свойство `spinner`
+* Убрано свойство `spinner`
 
 ### Changed
 
-- Добавлена обертка над контентом
+* Добавлена обертка над контентом
 
 ### Added
 
-- Добавлено новое свойство `background` для изменения фона
+* Добавлено новое свойство `background` для изменения фона
 
 ## [1.1.0] - 2018-11-23
 
 ### Added
 
-- Добавлен autocomplete для IDE
+* Добавлен autocomplete для IDE
 
 ## [1.0.0] - 2018-08-08
 
 ### Added
 
-- Добавленна поддержка зависимости от React15
+* Добавленна поддержка зависимости от React15
 
 ### Changed
 
-- Обновлена зависимость от utils
+* Обновлена зависимость от utils
 
 ## [1.0.0-0] - 2018-07-06
 
 ### Added
 
-- Initial release
+* Initial release

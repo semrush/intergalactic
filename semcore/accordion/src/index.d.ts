@@ -1,10 +1,11 @@
-import { Box, IFlexProps } from '@semcore/flex-box';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { ICollapseProps } from '@semcore/animation';
+import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { PropGetterFn, Intergalactic, UnknownProperties } from '@semcore/core';
+import { CollapseProps } from '@semcore/animation';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type AccordionValue = null | number | string | Array<number | string | null>;
 
-export interface IAccordionProps<T extends AccordionValue = AccordionValue> extends IFlexProps {
+export type AccordionProps<T extends AccordionValue = AccordionValue> = FlexProps & {
   /** Value for the active tab. Can be set as stroke, number, null or as array.
    * @type AccordionValue
    * */
@@ -18,21 +19,32 @@ export interface IAccordionProps<T extends AccordionValue = AccordionValue> exte
   /** Called when the selection is changed
    * @type (value: AccordionValue, event?: React.SyntheticEvent) => void
    * */
-  onChange?: (value: T, event?: React.SyntheticEvent) => void;
+  onChange?:
+    | ((value: T, event?: React.SyntheticEvent) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /** Animation duration of each Accordion.Item inside
    * @default 350 */
   duration?: number;
-}
+};
 
-export interface IAccordionContext {
+export interface IAccordionProps<T extends AccordionValue = AccordionValue>
+  extends AccordionProps<T> {}
+
+/** @deprecated */
+export interface IAccordionContext extends AccordionContext, UnknownProperties {}
+export type AccordionContext = {
   getItemProps: PropGetterFn;
-}
+};
 
-export interface IAccordionHandlers {
+/** @deprecated */
+export interface IAccordionHandlers extends AccordionHandlers, UnknownProperties {}
+export type AccordionHandlers = {
   value: (value: AccordionValue) => void;
-}
+};
 
-export interface IAccordionItemProps {
+/** @deprecated */
+export interface IAccordionItemProps extends AccordionItemProps, UnknownProperties {}
+export type AccordionItemProps = {
   /** Tab value */
   value: string | number;
   /** Disabling selection changes */
@@ -40,24 +52,42 @@ export interface IAccordionItemProps {
   /** Animation duration
    * @default 350 */
   duration?: number;
-}
+};
 
-export interface IAccordionItemContext {
+/** @deprecated */
+export interface IAccordionItemContext extends AccordionItemContext, UnknownProperties {}
+export type AccordionItemContext = {
   getToggleProps?: PropGetterFn;
   getCollapseProps?: PropGetterFn;
   getChevronProps?: PropGetterFn;
   selected?: boolean;
-}
+};
 
-declare const Accordion: (<T, V extends AccordionValue = AccordionValue>(
-  props: CProps<IAccordionProps<V> & T, IAccordionContext, IAccordionHandlers>,
-) => ReturnEl) & {
-  Item: (<T>(
-    props: CProps<IAccordionItemProps & T, IAccordionItemContext, IAccordionHandlers>,
-  ) => ReturnEl) & {
-    Toggle: typeof Box;
+export type AccordionItemToggleProps = BoxProps & KeyboardFocusProps;
+
+type IntergalacticAccordionComponent = (<
+  Value extends AccordionValue,
+  Tag extends Intergalactic.Tag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    AccordionProps<Value>,
+    AccordionContext & { value: Value },
+    [handlers: AccordionHandlers]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const Accordion: IntergalacticAccordionComponent & {
+  Item: Intergalactic.Component<
+    'div',
+    AccordionItemProps,
+    AccordionItemContext,
+    [handlers: AccordionHandlers]
+  > & {
+    Toggle: Intergalactic.Component<'div', AccordionItemToggleProps>;
     Chevron: typeof Box;
-    Collapse: <T>(props: ICollapseProps & T) => ReturnEl;
+    Collapse: Intergalactic.Component<'div', CollapseProps>;
   };
 };
 

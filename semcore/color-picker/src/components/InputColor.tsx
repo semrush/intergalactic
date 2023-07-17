@@ -26,7 +26,7 @@ function isValidHex(hex: string) {
   return hex[0] === '#' ? reg.test(hex) : reg.test(`#${hex}`);
 }
 
-function debounce(func: (...args: any[]) => void, timeout: number) {
+function debounce(this: any, func: (...args: any[]) => void, timeout: number) {
   let timer: any;
   return (...args: any[]) => {
     clearTimeout(timer);
@@ -54,13 +54,13 @@ class InputColorRoot extends Component<InputColorAsProps> {
   }
 
   handlerAdd = (event: React.MouseEvent | React.KeyboardEvent) => {
-    const { value, state } = this.asProps;
+    const { value, state } = this.asProps as any;
 
     if (value.length !== 0 && state === 'normal') {
       if (value[0] === '#') {
-        this.asProps?.onAdd(value.toLowerCase(), event);
+        this.asProps?.onAdd?.(value.toLowerCase(), event);
       } else {
-        this.asProps?.onAdd(`#${value.toLowerCase()}`, event);
+        this.asProps?.onAdd?.(`#${value.toLowerCase()}`, event);
       }
       this.handlers.value('', event);
     }
@@ -99,11 +99,11 @@ class InputColorRoot extends Component<InputColorAsProps> {
     const SConfirmColor = Input.Addon;
     const SClearConfirm = Input.Addon;
     const SItemColor = Box;
-    const valueColor = value[0] === '#' ? value : value ? `#${value}` : null;
+    const valueColor = value?.[0] === '#' ? value : value ? `#${value}` : null;
 
     return sstyled(styles)(
       <SPaletteManager>
-        <SItemColor value={valueColor} />
+        <SItemColor data-value={valueColor} />
         <SInputContainer>
           <span aria-hidden='true'>#</span>
           <SInput>

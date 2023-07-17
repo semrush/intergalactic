@@ -1,7 +1,7 @@
 {
   "name": "@semcore/select",
   "description": "Semrush Select Component",
-  "version": "3.10.3",
+  "version": "4.0.0-beta.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -11,18 +11,18 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/base-trigger": "^3.0.0",
-    "@semcore/checkbox": "^6",
-    "@semcore/divider": "^3",
-    "@semcore/dropdown-menu": "^3.0.0",
-    "@semcore/flex-box": "^4",
-    "@semcore/icon": "2.16 - 3",
-    "@semcore/input": "^3.0.0",
-    "@semcore/utils": "^3.15",
+    "@semcore/base-trigger": "4.0.0-beta.1",
+    "@semcore/checkbox": "7.0.0-beta.1",
+    "@semcore/divider": "4.0.0-beta.1",
+    "@semcore/dropdown-menu": "4.0.0-beta.1",
+    "@semcore/flex-box": "5.0.0-beta.1",
+    "@semcore/icon": "4.0.0-beta.1",
+    "@semcore/input": "4.0.0-beta.1",
+    "@semcore/utils": "4.0.0-beta.1",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "2.0.0-beta.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@types/react": "18.0.21",
+    "@types/classnames": "2.2.6",
     "@guidepup/playwright": "0.6.1",
     "@playwright/test": "1.25.1",
     "@semcore/testing-utils": "1.0.0"

@@ -180,7 +180,7 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
 
   return sstyled(styles)(
     <SDefaultTrigger render={Box} ref={ref}>
-      <STriggerCircle value={value}>
+      <STriggerCircle data-value={value}>
         {!value && (
           <STriggerCircleLine
             width='10'

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/table",
   "description": "Semrush Table Component",
-  "version": "3.5.1",
+  "version": "4.0.0-beta.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,16 +12,15 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "^3.15",
-    "@semcore/icon": "2.16 - 3",
-    "@semcore/flex-box": "^4",
-    "@semcore/typography": "^4.0.1",
-    "@semcore/scroll-area": "^4.0.0",
-    "resize-observer-polyfill": "1.5.1",
+    "@semcore/utils": "4.0.0-beta.1",
+    "@semcore/icon": "4.0.0-beta.1",
+    "@semcore/flex-box": "5.0.0-beta.1",
+    "@semcore/typography": "5.0.0-beta.1",
+    "@semcore/scroll-area": "5.0.0-beta.1",
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11",
+    "@semcore/core": "2.0.0-beta.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
@@ -31,6 +30,7 @@
     "directory": "semcore/table"
   },
   "devDependencies": {
+    "@types/classnames": "2.2.6",
     "@types/react": "18.0.21",
     "@semcore/testing-utils": "1.0.0"
   }

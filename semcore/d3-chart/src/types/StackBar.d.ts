@@ -1,27 +1,33 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
-import { IBarContext, IBarProps } from './Bar';
-import { IHorizontalBarProps } from './HorizontalBar';
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
+import { BarContext, BarProps } from './Bar';
+import { HorizontalBarProps } from './HorizontalBar';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IStackBarProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IStackBarProps extends StackBarProps, UnknownProperties {}
+export type StackBarProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Stack generators
    * @default d3.stack() */
+  /** @deprecated */
   stack?: any;
-}
+};
 
-export interface IStackBarContext {
+/** @deprecated */
+export interface IStackBarContext extends StackBarContext, UnknownProperties {}
+export type StackBarContext = {
   /** Series is an array of points, where each point corresponds to the element in the input data. */
+  /** @deprecated */
   series: any[];
-}
+};
 
-declare const StackBar: (<T>(props: MapProps<IStackBarProps & T, IStackBarContext>) => ReturnEl) & {
-  Bar: <T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl;
-  HorizontalBar: <T>(props: MapProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
+declare const StackBar: IntergalacticD3Component<'g', StackBarProps, StackBarContext> & {
+  Bar: IntergalacticD3Component<'path', BarProps, BarContext>;
+  HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext>;
 };
 
 export default StackBar;

@@ -73,7 +73,7 @@ for (const theme of themes) {
       projectCssPaths.map((path) => fs.readFile(path, 'utf-8')),
     );
 
-    const usedVariables = {};
+    const usedVariables: any = {};
 
     const legacyCssVariablesFile = await fs.readFile('./semcore/utils/style/var.css', 'utf-8');
     const legacyCssVariablesList = legacyCssVariablesFile
@@ -92,14 +92,14 @@ for (const theme of themes) {
           {
             postcssPlugin: 'variables-explored',
             prepare: (result) => {
-              const traverseAst = (nodes) => {
+              const traverseAst = (nodes: any[]) => {
                 for (const node of nodes) {
                   if (node.nodes) {
                     traverseAst(node.nodes);
                   }
                   if (node.value) {
                     const valueAst = valuesParser(node.value);
-                    const traverseValueAst = (nodes, parent) => {
+                    const traverseValueAst = (nodes: any[], parent: any) => {
                       for (const valueNode of nodes) {
                         if (valueNode.nodes) traverseValueAst(valueNode.nodes, valueNode);
                         if (valueNode.type === 'function' && valueNode.value === 'color-mod') {

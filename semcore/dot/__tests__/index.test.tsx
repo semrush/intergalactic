@@ -56,16 +56,10 @@ describe('Dot', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: '3px', position: 'relative' }}>
         <button type='button'>
-          Button <Dot size='xl' aria-label='Our brand new button!' />
-        </button>
-        <button type='button'>
           Button <Dot size='l' aria-label='Our brand new button!' />
         </button>
         <button type='button'>
           Button <Dot size='m' aria-label='Our brand new button!' />
-        </button>
-        <button type='button'>
-          Button <Dot up size='xl' aria-label='Our brand new button!' />
         </button>
         <button type='button'>
           Button <Dot up size='l' aria-label='Our brand new button!' />

@@ -1,5 +1,5 @@
 import React from 'react';
-import Pills from '@semcore/pills';
+import Pills from '@semcore/ui/pills';
 import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
 

@@ -1,35 +1,42 @@
-import { IBoxProps } from '@semcore/flex-box';
-import { IUniqueIDProps } from '@semcore/utils/lib/uniqueID';
-import { CProps, ReturnEl } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
+import { UniqueIDProps } from '@semcore/utils/lib/uniqueID';
 
-export interface ISkeletonProps extends IBoxProps, IUniqueIDProps {
-  /**
-   *  Skeleton visibility control property
-   */
-  hidden?: boolean;
-  /**
-   * Animation speed in ms
-   * @default 2000
-   */
-  duration?: string | number;
-  /**
-   * Skeleton theme
-   * @default invert
-   */
-  theme?: 'dark' | 'invert';
-}
+/** @deprecated */
+export interface ISkeletonProps extends SkeletonProps, UnknownProperties {}
+export type SkeletonProps = BoxProps &
+  UniqueIDProps & {
+    /**
+     *  Skeleton visibility control property
+     */
+    hidden?: boolean;
+    /**
+     * Animation speed in ms
+     * @default 2000
+     */
+    duration?: string | number;
+    /**
+     * Skeleton theme
+     * @default invert
+     */
+    theme?: 'dark' | 'invert';
+  };
 
-export interface ISkeletonCtx {
+/** @deprecated */
+export interface ISkeletonCtx extends SkeletonCtx, UnknownProperties {}
+export type SkeletonCtx = {
   gradientUrl: 'string';
-}
+};
 
-export interface ISkeletonTextProps extends IBoxProps {
+/** @deprecated */
+export interface ISkeletonTextProps extends SkeletonTextProps, UnknownProperties {}
+export type SkeletonTextProps = BoxProps & {
   /**
    * Number of items to be returned
    * @default 1
    */
   amount?: string | number;
-}
+};
 
 export interface AreaChartSkeletonProps extends ISkeletonProps {
   type?: 'linear' | 'monotone';
@@ -47,17 +54,18 @@ export interface LineChartSkeletonProps extends ISkeletonProps {
   type?: 'linear' | 'monotone';
 }
 
-declare const Skeleton: (<T>(props: CProps<ISkeletonProps & T, ISkeletonCtx>) => ReturnEl) & {
-  Text: <T>(props: ISkeletonTextProps & T) => ReturnEl;
+declare const Skeleton: Intergalactic.Component<'svg', SkeletonProps, SkeletonCtx> & {
+  Text: Intergalactic.Component<'rect', SkeletonTextProps>;
 };
-declare const AreaChartSkeleton: <T>(props: AreaChartSkeletonProps & T) => ReturnEl;
-declare const BarChartSkeleton: <T>(props: BarChartSkeletonProps & T) => ReturnEl;
-declare const HistogramChartSkeleton: <T>(props: HistogramChartSkeletonProps & T) => ReturnEl;
-declare const LineChartSkeleton: <T>(props: LineChartSkeletonProps & T) => ReturnEl;
+declare const AreaChartSkeleton: Intergalactic.Component<'svg', AreaChartSkeletonProps>;
+declare const BarChartSkeleton: Intergalactic.Component<'svg', BarChartSkeletonProps>;
+declare const HistogramChartSkeleton: Intergalactic.Component<'svg', HistogramChartSkeletonProps>;
+declare const LineChartSkeleton: Intergalactic.Component<'svg', LineChartSkeletonProps>;
 declare const PieChartSkeleton: typeof Skeleton;
 declare const VennChartSkeleton: typeof Skeleton;
 declare const BubbleChartSkeleton: typeof Skeleton;
 declare const ScatterPlotChartSkeleton: typeof Skeleton;
+declare const RadialTreeChartSkeleton: typeof Skeleton;
 
 export default Skeleton;
 export {
@@ -69,4 +77,5 @@ export {
   VennChartSkeleton,
   BubbleChartSkeleton,
   ScatterPlotChartSkeleton,
+  RadialTreeChartSkeleton,
 };

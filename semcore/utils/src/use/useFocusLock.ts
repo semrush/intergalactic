@@ -9,7 +9,7 @@ const focusBordersRefs = { before: null, after: null } as {
 
   after: null | HTMLElement;
 };
-const useFocusBorders = (disabled) => {
+const useFocusBorders = (disabled?: boolean) => {
   const id = useUID('focus-borders-consumer');
   const addBorders = React.useCallback(() => {
     if (!focusBordersRefs.before) {
@@ -68,21 +68,24 @@ export const useFocusLock = (
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
 
-  const handleFocusIn = React.useCallback((event) => {
-    const focusCameFrom = event.relatedTarget;
-    setTimeout(() => {
-      if (!focusCameFrom) return;
-      if (autoTriggerRef.current) return;
-      autoTriggerRef.current = focusCameFrom;
-    }, 0);
-    if (lastUserInteractionRef.current === 'mouse') return;
-    Promise.resolve().then(() => {
-      if (!trapRef.current) return;
-      if (focusInside([trapRef.current, ...focusLockUsers])) return;
+  const handleFocusIn = React.useCallback(
+    (event: Event & { relatedTarget?: HTMLElement; target?: HTMLElement }) => {
+      const focusCameFrom = event.relatedTarget;
+      setTimeout(() => {
+        if (!focusCameFrom) return;
+        if (autoTriggerRef.current) return;
+        autoTriggerRef.current = focusCameFrom;
+      }, 0);
+      if (lastUserInteractionRef.current === 'mouse') return;
+      Promise.resolve().then(() => {
+        if (!trapRef.current) return;
+        if (focusInside([trapRef.current, ...focusLockUsers])) return;
 
-      moveFocusInside(trapRef.current, event.target);
-    });
-  }, []);
+        moveFocusInside(trapRef.current, event.target);
+      });
+    },
+    [],
+  );
   const handleMouseEvent = React.useCallback(() => {
     lastUserInteractionRef.current = 'mouse';
   }, []);
@@ -115,10 +118,12 @@ export const useFocusLock = (
     if (disabled) return;
     if (!canUseDOM()) return;
     if (!trapRef.current) return;
-    const focusableChildren = Array.from(trapRef.current.children).flatMap(getFocusableIn);
+    const focusableChildren = Array.from(trapRef.current.children).flatMap((node) =>
+      getFocusableIn(node as HTMLElement),
+    );
     if (focusableChildren.length === 0) return;
 
-    document.body.addEventListener('focusin', handleFocusIn);
+    document.body.addEventListener('focusin', handleFocusIn as any);
     document.body.addEventListener('mousedown', handleMouseEvent);
     document.body.addEventListener('touchstart', handleMouseEvent);
     document.body.addEventListener('keydown', handleKeyboardEvent);
@@ -130,7 +135,7 @@ export const useFocusLock = (
       );
 
     return () => {
-      document.body.removeEventListener('focusin', handleFocusIn);
+      document.body.removeEventListener('focusin', handleFocusIn as any);
       document.body.removeEventListener('mousedown', handleMouseEvent);
       document.body.removeEventListener('touchstart', handleMouseEvent);
       document.body.removeEventListener('keydown', handleKeyboardEvent);

@@ -13,10 +13,10 @@
     "test": "echo \"no tests\""
   },
   "dependencies": {
-    "unplugin": "^1.0.0"
+    "unplugin": "1.2.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^1.11"
+    "@semcore/core": "2.0.0-beta.1"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,11 @@
   },
   "devDependencies": {
     "@semcore/testing-utils": "1.0.0",
-    "@types/react": "18.0.21"
+    "@types/react": "18.0.21",
+    "@types/watchpack": "^2.4.1",
+    "@types/webpack": "5",
+    "@types/webpack-dev-server": "^4.7.2",
+    "@types/webpack-sources": "^3.2.0",
+    "@types/rollup": "^0.54.0"
   }
 }

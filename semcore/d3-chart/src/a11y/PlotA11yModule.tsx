@@ -42,7 +42,7 @@ export const PlotA11yModule: React.FC<A11yViewProps> = (props) => {
     () => normalizeLocale(props.locale ?? contextLocale, localizedMessages),
     [props.locale],
   );
-  const t = useI18n(localizedMessages, locale);
+  const t = useI18n(localizedMessages, locale!);
 
   React.useEffect(() => {
     if (wasFocused) return;

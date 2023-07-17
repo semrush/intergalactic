@@ -5,6 +5,6 @@ export default function fire<T extends {}>(context: T, eventName: string, ...arg
   if (fn) return fn.call(context, ...args);
 }
 
-export function fireFn(fn: (...args: any) => void, ...args) {
+export function fireFn(fn: (...args: any) => void, ...args: any[]) {
   if (typeof fn === 'function') return fn(...args);
 }
