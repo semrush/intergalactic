@@ -2,29 +2,25 @@
 title: Example
 ---
 
-Note that each example uses it's own instance of `NoticeBubbleManager` what causes overlaying of notices from different example.
+Please note that each example uses its own instance of `NoticeBubbleManager`, which can lead to the overlaying of notices from different examples.
 
-@## Simple notice
+@## Basic notice
 
 @example simple
 
-@## Notice with action button
+@## Undo action
 
 @example action-button
 
-@## Dynamic notice
-
-@example dynamic
-
-@## Notice with action button with icon
+@## Reload action
 
 @example action-button-with-icon
 
-@## Notice with centered spinner
+@## Loading state
 
 @example spin-centered
 
-@## Notice with centered check mark
+@## Completion state
 
 @example success-centered
 
@@ -36,14 +32,22 @@ Note that each example uses it's own instance of `NoticeBubbleManager` what caus
 
 @example failure
 
-@## Illustrated notice
+@## Dynamic notice (for success/failure states)
+
+@example dynamic
+
+@## Special events notice
 
 @example illustration
 
-@## Warning notice with spinner
+@## No connection notice
+
+Use `type="warning"` for this case.
 
 @example warning-spin
 
-@## Warning notice with action
+@## No connection notice with action
+
+Use `type="warning"` for this case.
 
 @example warning-action

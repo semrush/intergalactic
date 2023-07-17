@@ -24,7 +24,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick}>Show notice with action button with icon</Button>
+      <Button onClick={handleClick}>Show notice with reload action</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );
