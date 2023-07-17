@@ -8,6 +8,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * Strict, backward incompatible typings.
 
+## [3.7.4] - 2023-07-17
+
 ## [3.7.3] - 2023-06-30
 
 ## [3.7.2] - 2023-06-28

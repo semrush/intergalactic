@@ -1,3 +1,9 @@
+## [14.11.0] - 2023-07-14
+
+### @semcore/select
+
+- **Fixed** `InputSearch` clear button keyboard support. 
+
 ## [14.10.0] - 2023-07-04
 
 ### @semcore/textarea
