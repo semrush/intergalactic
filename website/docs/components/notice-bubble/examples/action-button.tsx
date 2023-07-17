@@ -21,7 +21,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick}>Show notice with action button</Button>
+      <Button onClick={handleClick}>Show notice with undo action</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );
