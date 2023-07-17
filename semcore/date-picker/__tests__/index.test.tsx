@@ -52,7 +52,10 @@ describe('DatePicker', () => {
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     vi.useFakeTimers();
     const { getByText, getByLabelText } = render(
-      <DatePicker defaultVisible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z' />,
+      <DatePicker defaultVisible defaultDisplayedPeriod='2020-03-10T12:00:00.808Z'>
+        <DatePicker.ButtonTrigger aria-label='date picker'>Date picker</DatePicker.ButtonTrigger>
+        <DatePicker.Popper />
+      </DatePicker>,
     );
     fireEvent.click(getByLabelText('Next period'));
     // change visible
@@ -88,7 +91,9 @@ describe('DatePicker', () => {
   test('a11y', async () => {
     const { container } = render(
       <DatePicker visible disablePortal aria-label='date picker'>
-        <DatePicker.Trigger aria-label='date picker'>Open date picker</DatePicker.Trigger>
+        <DatePicker.ButtonTrigger aria-label='date picker'>
+          Open date picker
+        </DatePicker.ButtonTrigger>
         <DatePicker.Popper />
       </DatePicker>,
     );
@@ -118,7 +123,7 @@ describe('DateRangePicker', () => {
   test('Should render correctly with selected date', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.Trigger size='l' />
+        <DatePicker.ButtonTrigger size='l' />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -171,7 +176,7 @@ describe('DateRangePicker', () => {
     await expect(
       await snapshot(
         <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-          <DatePicker.Trigger id='datapicker' />
+          <DatePicker.ButtonTrigger id='datapicker' />
           <DatePicker.Popper />
         </DatePicker>,
         {
@@ -202,7 +207,7 @@ describe('DateRangePicker', () => {
   test('Should support active item', async ({ task }) => {
     const component = (
       <DatePicker value={new Date('January 1, 2021 00:00:00')}>
-        <DatePicker.Trigger id='datapicker' />
+        <DatePicker.ButtonTrigger id='datapicker' />
         <DatePicker.Popper />
       </DatePicker>
     );
@@ -229,7 +234,12 @@ describe('DateRangePicker', () => {
   test('Should support set custom displayPeriod after changed displayedPeriod', () => {
     vi.useFakeTimers();
     const component = (
-      <DateRangePicker visible defaultDisplayedPeriod={'2020-03-10T12:00:00.808Z'} />
+      <DateRangePicker visible defaultDisplayedPeriod={'2020-03-10T12:00:00.808Z'}>
+        <DateRangePicker.ButtonTrigger aria-label='date picker'>
+          Date picker
+        </DateRangePicker.ButtonTrigger>
+        <DateRangePicker.Popper />
+      </DateRangePicker>
     );
     const { getByText, getByLabelText } = render(component);
     fireEvent.click(getByLabelText('Next period'));
@@ -262,9 +272,9 @@ describe('DateRangePicker', () => {
   test('a11y', async () => {
     const { container } = render(
       <DateRangePicker visible disablePortal aria-label='data range picker'>
-        <DateRangePicker.Trigger aria-label='date range picker'>
+        <DateRangePicker.ButtonTrigger aria-label='date range picker'>
           Open date range picker
-        </DateRangePicker.Trigger>
+        </DateRangePicker.ButtonTrigger>
         <DateRangePicker.Popper />
       </DateRangePicker>,
     );

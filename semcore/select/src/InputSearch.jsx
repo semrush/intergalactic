@@ -24,6 +24,8 @@ class InputSearch extends Component {
     i18n: localizedMessages,
     locale: 'en',
   };
+  inputRef = React.createRef();
+  closeIconRef = React.createRef();
 
   static contextType = selectContext;
 
@@ -35,6 +37,14 @@ class InputSearch extends Component {
 
   handleClear = (e) => {
     this.handlers.value('', e);
+    setTimeout(() => {
+      if (
+        document.activeElement === document.body ||
+        document.activeElement === this.closeIconRef.current
+      ) {
+        this.inputRef.current?.focus();
+      }
+    }, 0);
   };
 
   render() {
@@ -52,18 +62,18 @@ class InputSearch extends Component {
         <Input.Addon>
           <IconSearch />
         </Input.Addon>
-        <Value render={Input.Value} autoFocus />
+        <Value render={Input.Value} autoFocus ref={this.inputRef} />
         <SClose
           role='button'
+          tag={IconClose}
+          ref={this.closeIconRef}
           /* hide through css because the width of the input changes */
           hide={hideClose}
           aria-hidden={hideClose}
           interactive
           aria-label={getI18nText('clearSearch')}
           onClick={this.handleClear}
-        >
-          <IconClose />
-        </SClose>
+        />
       </SInputSearch>,
     );
   }

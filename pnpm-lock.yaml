@@ -2196,7 +2196,7 @@ importers:
         specifier: 5.0.0-beta.1
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.0.0-beta.1
+        specifier: 3.11.0
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.0.0-beta.1
@@ -2232,7 +2232,7 @@ importers:
         specifier: 5.0.0-beta.1
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.0.0-beta.1
+        specifier: 3.7.4
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.0.0-beta.1
