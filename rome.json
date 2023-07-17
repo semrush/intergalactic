@@ -17,7 +17,8 @@
       "mailer",
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
-      "website/ts.json"
+      "website/ts.json",
+      "./tools/playground/examples/**"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -45,7 +46,8 @@
       "mailer",
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
-      "website/ts.json"
+      "website/ts.json",
+      "./tools/playground/examples/**"
     ],
     "rules": {
       "suspicious": {

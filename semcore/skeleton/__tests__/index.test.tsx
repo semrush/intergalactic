@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
+import { render, cleanup } from '@semcore/testing-utils/testing-library';
 import Skeleton, {
   LineChartSkeleton,
   AreaChartSkeleton,
   BarChartSkeleton,
-  PieChartSkeleton,
+  DonutChartSkeleton,
   HistogramChartSkeleton,
   BubbleChartSkeleton,
   ScatterPlotChartSkeleton,
   VennChartSkeleton,
 } from '../src';
-
-import { render, cleanup } from '@semcore/testing-utils/testing-library';
 
 describe('Skeleton', () => {
   beforeEach(cleanup);
@@ -64,78 +63,69 @@ describe('Skeleton', () => {
   });
 });
 
-describe('LineChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
+describe('Skeleton Chart', () => {
+  test.concurrent('LineChartSkeleton', async ({ task }) => {
     const component = (
       <>
-        <LineChartSkeleton type='monotone' height={100} />
-        <LineChartSkeleton height={100} />
+        <LineChartSkeleton h={150} w={300} />
+        <LineChartSkeleton type='monotone' h={150} w={300} />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-});
 
-describe('AreaChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
+  test.concurrent('AreaChartSkeleton', async ({ task }) => {
     const component = (
       <>
-        <AreaChartSkeleton type='monotone' height={100} />
-        <AreaChartSkeleton height={100} />
+        <AreaChartSkeleton h={150} w={300} />
+        <AreaChartSkeleton type='monotone' h={150} w={300} />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-});
 
-describe('BarChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
+  test.concurrent('BarChartSkeleton', async ({ task }) => {
     const component = (
       <>
-        <BarChartSkeleton layout='vertical' height={100} />
-        <BarChartSkeleton height={100} />
+        <BarChartSkeleton h={150} w={300} />
+        <BarChartSkeleton layout='vertical' h={150} w={300} />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-});
 
-describe('PieChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <PieChartSkeleton />;
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-});
-
-describe('HistogramChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
+  test.concurrent('DonutChartSkeleton', async ({ task }) => {
     const component = (
       <>
-        <HistogramChartSkeleton layout='vertical' height={100} />
-        <HistogramChartSkeleton height={100} />
+        <DonutChartSkeleton h={150} w={300} />
+        <DonutChartSkeleton halfsize h={150} w={300} />
       </>
     );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-});
 
-describe('BubbleChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <BubbleChartSkeleton height={100} />;
+  test.concurrent('HistogramChartSkeleton', async ({ task }) => {
+    const component = (
+      <>
+        <HistogramChartSkeleton h={150} w={300} />
+        <HistogramChartSkeleton layout='vertical' h={150} w={300} />
+      </>
+    );
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-});
 
-describe('ScatterPlotChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <ScatterPlotChartSkeleton height={100} />;
+  test.concurrent('BubbleChartSkeleton', async ({ task }) => {
+    const component = <BubbleChartSkeleton h={150} w={300} />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
-});
 
-describe('VennChartSkeleton', () => {
-  test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <VennChartSkeleton />;
+  test.concurrent('ScatterPlotChartSkeleton', async ({ task }) => {
+    const component = <ScatterPlotChartSkeleton h={150} w={300} />;
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('VennChartSkeleton', async ({ task }) => {
+    const component = <VennChartSkeleton h={150} w={300} />;
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 });

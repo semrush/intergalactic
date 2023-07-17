@@ -2,7 +2,7 @@ import { expect } from './vitest';
 import * as axeMatchers from 'vitest-axe/matchers';
 import { toHaveStyle, toHaveFocus } from '@testing-library/jest-dom/matchers';
 import { toMatchImageSnapshot } from './toMatchImageSnapshot';
-expect.extend({ toMatchImageSnapshot, toHaveStyle, toHaveFocus });
+expect.extend({ toMatchImageSnapshot, toHaveStyle, toHaveFocus } as any);
 expect.extend(axeMatchers);
 
 Object.defineProperty(window.SVGElement.prototype, 'getBBox', {

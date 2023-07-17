@@ -3,7 +3,6 @@ import { relative as resolveRelativePath, resolve as resolvePath } from 'path';
 import os from 'os';
 import { VoiceOver } from '@guidepup/guidepup/lib/macOS/VoiceOver/VoiceOver';
 import { CommandOptions } from '@guidepup/guidepup';
-import { R } from 'vitest/dist/types-2b1c412e';
 
 const darwin2macos: Record<number, string> = {
   22: 'Ventura 13',
