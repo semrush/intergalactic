@@ -11,12 +11,12 @@ export default () => {
   return (
     <>
       <Button onClick={() => setVisible(!visible)}>
-        {visible ? 'Close' : 'Open'} Global Notice
+        {visible ? 'Close' : 'Open'} NoticeGlobal
       </Button>
       <Portal>
         <NoticeGlobal
           hidden={!visible}
-          theme='light-blue'
+          theme='info'
           position='fixed'
           top='0px'
           w='100%'
@@ -24,7 +24,7 @@ export default () => {
         >
           <NoticeGlobal.Content tag={Flex} justifyContent='center'>
             <Text size={300} tag='span' color='white'>
-              Look at this cool notice!
+              Hey! It's an example of the global notice!
             </Text>
           </NoticeGlobal.Content>
           <NoticeGlobal.CloseIcon
