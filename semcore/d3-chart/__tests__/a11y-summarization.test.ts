@@ -260,7 +260,7 @@ describe('Plot a11y summarization', () => {
     EEE
   `);
 
-    const { insights } = extractDataInsights(data, makeHints(), makeConfig());
+    const { insights } = extractDataInsights(data as any, makeHints(), makeConfig());
     expect(insights).toEqual([
       {
         type: 'cluster',
@@ -421,7 +421,7 @@ describe('Plot a11y summarization', () => {
         horizontalAxes: 5,
       },
     };
-    const { insights } = extractDataInsights(data, hints, makeConfig());
+    const { insights } = extractDataInsights(data as any, hints, makeConfig());
     expect(insights.length).toBe(2);
   });
 
@@ -443,7 +443,7 @@ describe('Plot a11y summarization', () => {
         vertical: 'verticalAxes',
       },
     };
-    const { insights } = extractDataInsights(data, hints, makeConfig());
+    const { insights } = extractDataInsights(data as any, hints, makeConfig());
     expect(insights.length).toBeGreaterThan(0);
     expect(
       (insights as ClusterNode[]).map((insight) => [insight.center.xLabel, insight.center.yLabel]),
@@ -563,7 +563,7 @@ describe('Plot a11y summarization', () => {
   });
 
   test.concurrent('insights-extraction/auto-data-type/values-set/dict', () => {
-    const data = {};
+    const data: any = {};
     for (let i = 0; i < 27; i++) {
       const char = String.fromCharCode('A'.charCodeAt(0) + i);
       data[char] = i;
@@ -650,7 +650,7 @@ describe('Plot a11y summarization', () => {
     AAAAAAAAAAAAAAAAA
   `);
 
-    const { dataRange } = extractDataInsights(data, makeHints(), makeConfig());
+    const { dataRange } = extractDataInsights(data as any, makeHints(), makeConfig());
     expect(dataRange).toEqual([]);
   });
 
@@ -722,7 +722,8 @@ describe('Plot a11y summarization', () => {
       makeConfig(),
     );
     expect(
-      insights.find((insight) => insight.type === 'trend' && insight.from >= 5) !== undefined,
+      insights.find((insight) => insight.type === 'trend' && (insight as any).from >= 5) !==
+        undefined,
     ).toBeTruthy();
   });
 
@@ -740,17 +741,21 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
-      locale: 'en',
-      translations: translations.en,
-      availableLocales: { en: true },
-    });
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      {
+        locale: 'en',
+        translations: translations.en,
+        availableLocales: { en: true },
+      },
+    );
 
-    expect(text.includes('0')).toBeTruthy();
-    expect(text.includes('10')).toBeTruthy();
-    expect(text.includes('Awesome data')).toBeTruthy();
-    expect(text.includes('grow')).toBeTruthy();
-    expect(text.includes('x')).toBeTruthy();
+    expect(text!.includes('0')).toBeTruthy();
+    expect(text!.includes('10')).toBeTruthy();
+    expect(text!.includes('Awesome data')).toBeTruthy();
+    expect(text!.includes('grow')).toBeTruthy();
+    expect(text!.includes('x')).toBeTruthy();
   });
 
   test.concurrent('serizalizetion/insights-cut', () => {
@@ -767,14 +772,18 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 120, label: 'x' }];
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
-      locale: 'en',
-      translations: translations.en,
-      availableLocales: { en: true },
-    });
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      {
+        locale: 'en',
+        translations: translations.en,
+        availableLocales: { en: true },
+      },
+    );
 
     const limit = 550;
-    const length = text.length;
+    const length = text!.length;
 
     if (length >= limit) {
       // rome-ignore lint/nursery/noConsoleLog: <explanation>
@@ -799,17 +808,21 @@ describe('Plot a11y summarization', () => {
     const dataTitle = 'Awesome data';
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), {
-      locale: 'en',
-      translations: translations.en,
-      availableLocales: { en: true },
-    });
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      {
+        locale: 'en',
+        translations: translations.en,
+        availableLocales: { en: true },
+      },
+    );
 
-    expect(text.includes('0')).toBeTruthy();
-    expect(text.includes('10')).toBeTruthy();
-    expect(text.includes('Awesome data')).toBeTruthy();
-    expect(text.includes('grow')).toBeTruthy();
-    expect(text.includes('x')).toBeTruthy();
+    expect(text!.includes('0')).toBeTruthy();
+    expect(text!.includes('10')).toBeTruthy();
+    expect(text!.includes('Awesome data')).toBeTruthy();
+    expect(text!.includes('grow')).toBeTruthy();
+    expect(text!.includes('x')).toBeTruthy();
   });
 
   test.concurrent('serizalizetion/locale-switch', () => {
@@ -827,14 +840,18 @@ describe('Plot a11y summarization', () => {
     const dataType = 'time-series';
     const dataRange: AnalyzedData['dataRange'] = [{ from: 0, to: 10, label: 'x' }];
 
-    const locale = { locale: 'ES', translations: {}, availableLocales: { ES: true } };
+    const locale = { locale: 'ES', translations: {} as any, availableLocales: { ES: true } };
     for (const messageId in translations.en) {
       locale.translations[messageId] = 'EcmaScript';
     }
 
-    const text = serialize({ insights, dataType, dataRange, dataTitle }, makeConfig(), locale);
+    const text = serialize(
+      { insights, dataType, dataRange, dataTitle, entitiesCount: 0 },
+      makeConfig(),
+      locale,
+    );
 
-    expect(text.includes('EcmaScript')).toBeTruthy();
+    expect(text!.includes('EcmaScript')).toBeTruthy();
   });
 
   test.concurrent('serizalizetion/all-texts-are-used', () => {
@@ -846,7 +863,7 @@ describe('Plot a11y summarization', () => {
     const locale = {
       locale: 'en',
       translations: new Proxy(translations.en, {
-        get(target, property) {
+        get(target: any, property: any) {
           if (typeof property === 'symbol') return;
           usedMessages.add(property);
           return target[property];
@@ -1055,7 +1072,7 @@ describe('Plot a11y summarization', () => {
         EEE
 
         A
-      `),
+      `) as any,
         makeHints(),
         makeConfig(),
       ),
@@ -1066,7 +1083,7 @@ describe('Plot a11y summarization', () => {
       extractDataInsights(
         pixelArtToPointsList(`
         1
-      `),
+      `) as any,
         makeHints(),
         makeConfig(),
       ),
@@ -1102,7 +1119,7 @@ describe('Plot a11y summarization', () => {
         AAAAAAA
 
         A
-      `),
+      `) as any,
         makeHints(),
         makeConfig(),
       ),
@@ -1225,7 +1242,7 @@ describe('Plot a11y summarization', () => {
       },
     );
 
-    expect(text.includes('%TREND%')).toBeTruthy();
-    expect(text.includes('%ELLIPSIS%')).toBeFalsy();
+    expect(text!.includes('%TREND%')).toBeTruthy();
+    expect(text!.includes('%ELLIPSIS%')).toBeFalsy();
   });
 });

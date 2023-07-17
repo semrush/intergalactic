@@ -28,6 +28,7 @@ import {
   StackedArea,
   ReferenceLine,
   Radar,
+  // @ts-ignore
 } from '../src';
 import { getIndexFromData } from '../src/utils';
 
@@ -81,7 +82,7 @@ describe('YAxis', () => {
         <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
           <YAxis ticks={[0, 1]}>
             <YAxis.Grid>
-              {(props) => {
+              {(props: any) => {
                 expect(props).toBeTruthy();
                 return props;
               }}
@@ -101,7 +102,7 @@ describe('YAxis', () => {
         <Plot data={data} scale={[xScale, yScale]} width={100} height={100}>
           <YAxis ticks={[0, 1]}>
             <YAxis.Ticks>
-              {(props) => {
+              {(props: any) => {
                 expect(props).toBeTruthy();
                 return props;
               }}
@@ -120,8 +121,8 @@ describe('YAxis', () => {
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test').attributes['data-ui-name']).toBeTruthy();
-    expect(queryByTestId('test').attributes['data-ui-name'].value).toBe('Axis.Ticks');
+    expect((queryByTestId('test')!.attributes as any)['data-ui-name']).toBeTruthy();
+    expect((queryByTestId('test')!.attributes as any)['data-ui-name'].value).toBe('Axis.Ticks');
   });
 
   test.concurrent('should support change tag YAxis.Ticks', () => {
@@ -132,7 +133,7 @@ describe('YAxis', () => {
         </YAxis>
       </Plot>,
     );
-    expect(queryByTestId('test').tagName).toBe('foreignObject');
+    expect(queryByTestId('test')!.tagName).toBe('foreignObject');
   });
 });
 
@@ -143,7 +144,7 @@ describe('XAxis', () => {
   shouldSupportRef(XAxis, PlotTest);
 
   test.concurrent('should support hover for custom XAxis.Ticks', () => {
-    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => cb());
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation((cb) => (cb as any)());
     // const bisect = bisector((d) => d.x).center;
     class EventEmitter {
       emit() {}
@@ -179,7 +180,7 @@ describe('XAxis', () => {
 
     fireEvent.mouseMove(getAllByTestId('tick')[9]);
     expect(eventEmitter.emit).toHaveBeenCalledTimes(2); //onMouseMoveRoot, onMouseLeaveChart
-    window.requestAnimationFrame.mockRestore();
+    (window.requestAnimationFrame as any).mockRestore();
   });
 });
 
@@ -191,10 +192,10 @@ describe('utils', () => {
     ];
     const yScale = scaleBand()
       .range([100, 10])
-      .domain(data.map((d) => d.name));
+      .domain(data.map((d) => d.y));
 
     expect(getIndexFromData(data, xScale, 'x', 2)).toBe(1);
-    expect(getIndexFromData(data, yScale, 'y', 'test')).toBe(0);
+    expect((getIndexFromData as any)(data, yScale, 'y', 'test')).toBe(0);
   });
 });
 
@@ -359,7 +360,7 @@ describe('Area', () => {
   });
 
   test.concurrent('should render area', async ({ task }) => {
-    function formatDate(value, options) {
+    function formatDate(value: any, options: any) {
       return new Intl.DateTimeFormat('en', options).format(value);
     }
 
@@ -394,7 +395,7 @@ describe('Area', () => {
           </YAxis>
           <XAxis>
             <XAxis.Ticks ticks={data.map((d) => +d.time)}>
-              {({ value }) => ({
+              {({ value }: any) => ({
                 children: formatDate(value, {
                   month: 'short',
                   day: 'numeric',
@@ -554,8 +555,8 @@ describe('Venn', () => {
 
   test.concurrent('should render venn-orientation', async ({ task }) => {
     const orders = [
-      (val1, val2) => val2.radius - val1.radius,
-      (val1, val2) => val1.radius - val2.radius,
+      (val1: any, val2: any) => val2.radius - val1.radius,
+      (val1: any, val2: any) => val1.radius - val2.radius,
     ];
 
     const orientations = [Math.PI / 2, Math.PI];
@@ -644,7 +645,7 @@ describe('Bar', () => {
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.time))
+    .domain(data.map((d) => d.time.toString()))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
@@ -1027,7 +1028,7 @@ describe('Bar', () => {
 
       const xScale = scaleBand()
         .range([MARGIN, width - MARGIN])
-        .domain(data.map((d) => d.category))
+        .domain(data.map((d) => d.category.toString()))
         .paddingInner(0.4)
         .paddingOuter(0.2);
 
@@ -1289,7 +1290,7 @@ describe('Bar', () => {
             <YAxis.Ticks />
           </YAxis>
           <HorizontalBar x='bar' y='category' duration={0}>
-            {({ value, x, y, width, height }) => {
+            {({ value, x, y, width, height }: any) => {
               return {
                 children: (
                   <text
@@ -1629,7 +1630,7 @@ describe('Radial', () => {
               <RadialTree.Radian.Icon />
             </RadialTree.Radian>
             <circle r={60} cx={width / 2} cy={height / 2} fill='#AB6CFE' />
-            <RadialTree.Title fill='#FFFFFF'>Sleeping</RadialTree.Title>
+            <RadialTree.Title color='#FFFFFF'>Sleeping</RadialTree.Title>
           </RadialTree>
         </Plot>
       );
@@ -1727,7 +1728,7 @@ describe('Radial', () => {
               <RadialTree.Radian.Cap />
               <RadialTree.Radian.Icon />
             </RadialTree.Radian>
-            <RadialTree.Title fontSize={lineHeight} fill='#AB6CFE'>
+            <RadialTree.Title textSize={lineHeight} color='#AB6CFE'>
               {textLines.map((line, lineIndex) => (
                 <tspan
                   key={line}
@@ -2054,7 +2055,7 @@ describe('d3 charts visual regression', () => {
           </XAxis>
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks(5)}>
-              {({ value }) => ({
+              {({ value }: any) => ({
                 children: yScale.tickFormat(5, '+%')(value),
               })}
             </YAxis.Ticks>
@@ -2091,7 +2092,7 @@ describe('d3 charts visual regression', () => {
           <YAxis>
             <YAxis.Ticks />
             <YAxis.Ticks position='right'>
-              {({ value }) => ({
+              {({ value }: any) => ({
                 children: Math.floor(value / 100000),
               })}
             </YAxis.Ticks>
@@ -2137,7 +2138,7 @@ describe('d3 charts visual regression', () => {
             <YAxis>
               <YAxis.Ticks />
               <YAxis.Ticks position='right'>
-                {({ value }) => ({
+                {({ value }: any) => ({
                   children: Math.floor(value / 100000),
                 })}
               </YAxis.Ticks>
@@ -2243,180 +2244,6 @@ describe('d3 charts visual regression', () => {
     await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
   });
 
-  test.skip('should render export-in-image', async ({ task }) => {
-    const extensions = ['PNG', 'JPEG', 'WEBP'];
-
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => ({
-        x: i,
-        y: Math.abs(Math.sin(Math.exp(i))) * 10,
-      }));
-
-    function getSVGString(svgNode) {
-      svgNode.setAttribute('xlink', 'http://www.w3.org/1999/xlink');
-      const cssStyleText = getCSSStyles(svgNode);
-      appendCSS(cssStyleText, svgNode);
-
-      const serializer = new XMLSerializer();
-      let svgString = serializer.serializeToString(svgNode);
-      svgString = svgString.replace(/(\w+)?:?xlink=/g, 'xmlns:xlink='); // Fix root xlink without namespace
-      svgString = svgString.replace(/NS\d+:href/g, 'xlink:href'); // Safari NS namespace fix
-
-      return svgString;
-
-      function getCSSStyles(parentElement) {
-        const selectorTextArr = [];
-
-        for (let c = 0; c < parentElement.classList.length; c++) {
-          if (!contains(`.${parentElement.classList[c]}`, selectorTextArr))
-            selectorTextArr.push(`.${parentElement.classList[c]}`);
-        }
-
-        // Add Children element Ids and Classes to the list
-        const nodes = parentElement.getElementsByTagName('*');
-        for (let i = 0; i < nodes.length; i++) {
-          const id = nodes[i].id;
-          if (!contains(`#${id}`, selectorTextArr)) selectorTextArr.push(`#${id}`);
-
-          const classes = nodes[i].classList;
-          for (let c = 0; c < classes.length; c++)
-            if (!contains(`.${classes[c]}`, selectorTextArr))
-              selectorTextArr.push(`.${classes[c]}`);
-        }
-
-        // Extract CSS Rules
-        let extractedCSSText = '';
-        for (let i = 0; i < document.styleSheets.length; i++) {
-          const s = document.styleSheets[i];
-
-          try {
-            if (!s.cssRules) continue;
-          } catch (e) {
-            if (e.name !== 'SecurityError') throw e; // for Firefox
-            continue;
-          }
-
-          const cssRules = s.cssRules;
-          for (let r = 0; r < cssRules.length; r++) {
-            if (
-              cssRules[r].selectorText &&
-              selectorTextArr.some((s) => cssRules[r].selectorText.includes(s))
-            )
-              extractedCSSText += cssRules[r].cssText;
-          }
-        }
-
-        return extractedCSSText;
-
-        function contains(str, arr) {
-          return arr.indexOf(str) !== -1;
-        }
-      }
-
-      function appendCSS(cssText, element) {
-        const styleElement = document.createElement('style');
-        styleElement.setAttribute('type', 'text/css');
-        styleElement.innerHTML = cssText;
-        const refNode = element.hasChildNodes() ? element.children[0] : null;
-        element.insertBefore(styleElement, refNode);
-      }
-    }
-
-    function svgString2Image(svgString, width, height, format, callback) {
-      format = format ? format : 'png';
-      const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svgString)))}`;
-
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-
-      canvas.width = width;
-      canvas.height = height;
-
-      const image = new Image();
-      image.onload = function () {
-        context.clearRect(0, 0, width, height);
-        context.drawImage(image, 0, 0, width, height);
-
-        const img = canvas.toDataURL(`image/${format}`);
-        callback(img);
-      };
-
-      image.src = imgsrc;
-    }
-
-    const Component: React.FC = () => {
-      const [, setVisible] = React.useState(false);
-      const [linkElements, setLinkElements] = React.useState(
-        extensions.map((name) => ({ key: name, children: name })),
-      );
-
-      const svg = React.createRef();
-      const download = React.createRef();
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
-
-      React.useEffect(() => {
-        const svgElement = svg.current;
-        const svgString = getSVGString(svgElement);
-        extensions.forEach((name, ind) => {
-          const format = name.toLowerCase();
-          svgString2Image(svgString, 2 * width, 2 * height, format, save);
-
-          function save(image) {
-            linkElements[ind] = {
-              ...linkElements[ind],
-              download: `image.${format}`,
-              href: image,
-            };
-
-            setLinkElements([...linkElements]);
-          }
-        });
-      }, []);
-      return (
-        <Flex>
-          <Plot ref={svg} data={data} scale={[xScale, yScale]} width={width} height={height}>
-            <YAxis ticks={yScale.ticks()}>
-              <YAxis.Ticks />
-              <YAxis.Grid />
-            </YAxis>
-            <XAxis ticks={xScale.ticks()}>
-              <XAxis.Ticks />
-            </XAxis>
-            <Line x='x' y='y' duration={0}>
-              <Line.Dots display />
-            </Line>
-          </Plot>
-          <DropdownMenu onVisibleChange={setVisible}>
-            <DropdownMenu.Trigger tag={Button}>
-              <Button.Addon tag={FileExportXS} />
-              <Button.Text>Export</Button.Text>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Popper wMax='257px'>
-              <DropdownMenu.List ref={download}>
-                {extensions.map((name, ind) => (
-                  <DropdownMenu.Item tag='a' {...linkElements[ind]} />
-                ))}
-              </DropdownMenu.List>
-            </DropdownMenu.Popper>
-          </DropdownMenu>
-        </Flex>
-      );
-    };
-
-    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
-  });
-
   test.concurrent('should render legend', async ({ task }) => {
     const data = [...Array(10).keys()].map((d, i) => ({
       x: i,
@@ -2431,7 +2258,7 @@ describe('d3 charts visual regression', () => {
           .map((name) => ({ name, checked: true, opacity: false })),
       );
 
-      const MAP_THEME = {
+      const axe2theme: any = {
         y: 'orange',
         y2: 'green',
       };
@@ -2446,7 +2273,7 @@ describe('d3 charts visual regression', () => {
         .range([height - MARGIN, MARGIN])
         .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
 
-      const handleChange = (name) => (checked) => {
+      const handleChange = (name: any) => (checked: any) => {
         const newDataLegend = dataLegend.map((item) => {
           if (item.name === name) {
             return { ...item, checked };
@@ -2457,9 +2284,9 @@ describe('d3 charts visual regression', () => {
         setDataLegend(newDataLegend);
       };
 
-      const handleMouseEnter = (name) => () => {
+      const handleMouseEnter = (name: string) => () => {
         const activeItem = dataLegend.find((item) => item.name === name);
-        if (!activeItem.checked) return;
+        if (!activeItem?.checked) return;
         setDataLegend((data) =>
           data.map((item) => {
             if (item.name !== name) return { ...item, opacity: true };
@@ -2482,7 +2309,7 @@ describe('d3 charts visual regression', () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <Checkbox.Value
-                    theme={MAP_THEME[item.name]}
+                    theme={axe2theme[item.name]}
                     checked={item.checked}
                     onChange={handleChange(item.name)}
                   />
@@ -2506,7 +2333,7 @@ describe('d3 charts visual regression', () => {
                     key={item.name}
                     x='x'
                     y={item.name}
-                    color={MAP_THEME[item.name]}
+                    color={axe2theme[item.name]}
                     opacity={item.opacity ? 0.3 : 1}
                     duration={0}
                   />

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import InputTags from '@semcore/ui/input-tags';
-import Tag from '@semcore/ui/tag';
 import Select from '@semcore/ui/select';
 
 const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());

@@ -1,12 +1,14 @@
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IBoxProps, IFlexProps } from '@semcore/flex-box';
-import { ITextProps } from '@semcore/typography';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps, FlexProps } from '@semcore/flex-box';
+import { TextProps } from '@semcore/typography';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type CheckboxSize = 'm' | 'l';
 export type CheckboxState = 'normal' | 'invalid';
 
-export interface ICheckboxProps extends IBoxProps {
+/** @deprecated */
+export interface ICheckboxProps extends CheckboxProps, UnknownProperties {}
+export type CheckboxProps = BoxProps & {
   /**
    * Checkbox state
    * @default normal
@@ -20,46 +22,53 @@ export interface ICheckboxProps extends IBoxProps {
   /** A checkbox theme you can add your own color to
    */
   theme?: string;
-}
+};
 
-export interface ICheckboxValueProps extends IKeyboardFocusProps, IFlexProps {
-  /** Handler to change */
-  onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-  /** Control status */
-  checked?: boolean;
-  /** The initial status for uncontrolled mode
-   * @default false */
-  defaultChecked?: boolean;
-  /** The value responsible for the indeterminate attribute */
-  indeterminate?: boolean;
-  /** List of props that will be added to the hidden input */
-  includeInputProps?: string[];
-  /**
-   * The value responsible for the state of the component
-   * @default normal
-   */
-  state?: CheckboxState;
-  /**
-   * Checkbox size
-   * @default m
-   */
-  size?: CheckboxSize;
-  /** A checkbox theme you can add your own color to */
-  theme?: string;
-}
+/** @deprecated */
+export interface ICheckboxValueProps extends CheckboxValueProps, UnknownProperties {}
+export type CheckboxValueProps = KeyboardFocusProps &
+  FlexProps & {
+    /** Handler to change */
+    onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+    /** Control status */
+    checked?: boolean;
+    /** The initial status for uncontrolled mode
+     * @default false */
+    defaultChecked?: boolean;
+    /** The value responsible for the indeterminate attribute */
+    indeterminate?: boolean;
+    /** List of props that will be added to the hidden input */
+    includeInputProps?: string[];
+    /**
+     * The value responsible for the state of the component
+     * @default normal
+     */
+    state?: CheckboxState;
+    /**
+     * Checkbox size
+     * @default m
+     */
+    size?: CheckboxSize;
+    /** A checkbox theme you can add your own color to */
+    theme?: string;
+  };
 
-export interface ICheckboxContext {
+/** @deprecated */
+export interface ICheckboxContext extends CheckboxContext, UnknownProperties {}
+export type CheckboxContext = {
   getTextProps: PropGetterFn;
   getValueProps: PropGetterFn;
-}
+};
 
-export interface ICheckboxTextProps extends ITextProps {
+/** @deprecated */
+export interface ICheckboxTextProps extends CheckboxTextProps, UnknownProperties {}
+export type CheckboxTextProps = TextProps & {
   disabled?: boolean;
-}
+};
 
-declare const Checkbox: (<T>(props: CProps<ICheckboxProps & T, ICheckboxContext>) => ReturnEl) & {
-  Text: <T>(props: ICheckboxTextProps & T) => ReturnEl;
-  Value: <T>(props: ICheckboxValueProps & T) => ReturnEl;
+declare const Checkbox: Intergalactic.Component<'label', CheckboxProps, CheckboxContext> & {
+  Text: Intergalactic.Component<'span', CheckboxTextProps>;
+  Value: Intergalactic.Component<'input', CheckboxValueProps>;
 };
 
 export default Checkbox;

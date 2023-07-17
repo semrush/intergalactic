@@ -28,7 +28,7 @@ const movies = [
 export default () => {
   const width = 500;
   const height = 500;
-  const [genre, setGenre] = React.useState(movies[0].key);
+  const [genre, setGenre] = React.useState<string | null>(movies[0].key);
 
   return (
     <Flex direction='column'>

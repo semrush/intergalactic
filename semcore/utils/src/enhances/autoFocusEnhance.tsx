@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-function notUsingNativeAutoFocus(autoFocus) {
+function notUsingNativeAutoFocus(autoFocus: any) {
   return typeof autoFocus === 'boolean' || typeof autoFocus === 'number';
 }
 
-export interface IWithAutoFocusEnhanceProps {
+/** @deprecated */
+export interface IWithAutoFocusEnhanceProps extends WithAutoFocusEnhanceProps, UnknownProperties {}
+export type WithAutoFocusEnhanceProps = {
   /** Native autofocus, but with support for working inside modals, you can also transmit the number of ms before focus is triggered */
   autoFocus?: Boolean | Number;
-}
+};
 
 function autoFocusEnhance() {
-  return (props) => {
+  return (props: any) => {
     const { autoFocus, ref, ...other } = props;
     if (!notUsingNativeAutoFocus(autoFocus)) {
       return props;

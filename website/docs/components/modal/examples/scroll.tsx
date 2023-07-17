@@ -27,7 +27,7 @@ class Demo extends React.PureComponent {
         <Modal visible={visible} onClose={this.closeModal} w={500}>
           <div style={{ fontSize: '16px' }}>
             {Array(6)
-              .fill()
+              .fill(0)
               .map(() => loremSting)}
 
             <Flex justifyContent='center' mt={8}>

@@ -119,13 +119,13 @@ describe('FormatText', () => {
     );
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
+        <FormatText size='s'>
+          <Inner />
+        </FormatText>
         <FormatText size='m'>
           <Inner />
         </FormatText>
         <FormatText size='l'>
-          <Inner />
-        </FormatText>
-        <FormatText size='xl'>
           <Inner />
         </FormatText>
       </snapshot.ProxyProps>
@@ -152,13 +152,13 @@ describe('FormatText', () => {
 
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
+        <FormatText size='s'>
+          <Inner />
+        </FormatText>
         <FormatText size='m'>
           <Inner />
         </FormatText>
         <FormatText size='l'>
-          <Inner />
-        </FormatText>
-        <FormatText size='xl'>
           <Inner />
         </FormatText>
       </snapshot.ProxyProps>

@@ -182,7 +182,7 @@ class RangePickerAbstract extends Component {
     this.setState({ defaultInteraction: 'click' });
   };
 
-  getTriggerProps() {
+  getButtonTriggerProps() {
     const { value, size } = this.asProps;
 
     return {

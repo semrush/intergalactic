@@ -1,7 +1,7 @@
 import React from 'react';
-import Pills from '@semcore/pills';
-import { Flex } from '@semcore/flex-box';
-import { Text } from '@semcore/typography';
+import Pills from '@semcore/ui/pills';
+import { Flex } from '@semcore/ui/flex-box';
+import { Text } from '@semcore/ui/typography';
 
 export default () => {
   return (

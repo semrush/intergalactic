@@ -12,7 +12,7 @@ function randomInteger(min, max) {
 const Demo = () => {
   return (
     <DatePicker>
-      <DatePicker.InputTrigger />
+      <DatePicker.Trigger />
       <DatePicker.Popper>
         <DatePicker.Header />
         <DatePicker.Calendar>

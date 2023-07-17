@@ -6,17 +6,17 @@ import pick from '@semcore/utils/lib/pick';
 // @ts-ignore
 import logger from '@semcore/utils/lib/logger';
 
-function assign(target, source) {
+function assign(target: any, source: any) {
   return Object.defineProperties(
     target,
-    Object.keys(source).reduce((descriptors, key) => {
+    Object.keys(source).reduce((descriptors: any, key) => {
       descriptors[key] = Object.getOwnPropertyDescriptor(source, key);
       return descriptors;
     }, {}),
   );
 }
 
-export function getterMethodName(name) {
+export function getterMethodName(name: string) {
   return `get${name}Props`;
 }
 
@@ -26,7 +26,7 @@ export function getterMethodNameByDisplayName(displayName = '') {
   return getterMethodName(name);
 }
 
-function flatGetterMethodNames(childComponents, parentName?: string) {
+function flatGetterMethodNames(childComponents: any, parentName?: string) {
   return Object.entries(childComponents).reduce<string[]>((acc, [name, value]) => {
     if (Array.isArray(value)) {
       acc = [...acc, ...flatGetterMethodNames(value[1], name)];
@@ -41,14 +41,14 @@ export const STATIC_COMPONENT = Symbol('STATIC_COMPONENT');
 export const ROOT_COMPONENT = Symbol('ROOT_COMPONENT');
 const SELF_GETTER_METHOD = Symbol('SELF_GETTER_METHOD');
 
-function Enhancement(childComponents, createComponent, options) {
+function Enhancement(childComponents: any, createComponent: any, options: any) {
   const getterMethodNames = flatGetterMethodNames(childComponents);
   return {
-    condition: function (Component) {
+    condition: function (Component: any) {
       return Boolean(Component[STATIC_COMPONENT] || Object.keys(childComponents).length);
     },
-    init: function (props, WrapperComponent) {
-      const getterMethods = pick(this, getterMethodNames);
+    init: function (this: any, props: any, WrapperComponent: any) {
+      const getterMethods: any = pick(this, getterMethodNames);
       this[SELF_GETTER_METHOD] = () => {
         const selfGetterMethod = getterMethodNameByDisplayName(WrapperComponent.displayName);
         logger.warn(
@@ -59,7 +59,7 @@ function Enhancement(childComponents, createComponent, options) {
       };
       assign(
         this,
-        getterMethodNames.reduce((acc, name) => {
+        getterMethodNames.reduce((acc: any, name) => {
           const getterMethod = getterMethods[name];
           if (!getterMethod) return acc;
           acc[name] = (childrenProps = {}) => {
@@ -72,11 +72,11 @@ function Enhancement(childComponents, createComponent, options) {
         }, {}),
       );
     },
-    static: function (WrapperComponent, Component) {
+    static: function (WrapperComponent: any, Component: any) {
       if (Object.keys(childComponents).length && !WrapperComponent.displayName) {
         throw new Error('"displayName" is not defined');
       }
-      return Object.entries(childComponents).reduce((acc, [name, value]) => {
+      return Object.entries(childComponents).reduce((acc: any, [name, value]: any) => {
         let childComponents = {};
 
         if (Array.isArray(value)) {
@@ -98,17 +98,17 @@ function Enhancement(childComponents, createComponent, options) {
         return acc;
       }, {});
     },
-    context: function (context /*, WrapperComponent*/) {
+    context: function (context: any /*, WrapperComponent*/) {
       // const getterMethod = getterMethodNameByDisplayName(WrapperComponent.displayName);
       return {
         ...context,
         // [getterMethod]: this[SELF_GETTER_METHOD],
-        ...pick(this, getterMethodNames),
+        ...pick(this, getterMethodNames as any),
       };
     },
-    wrapperProps: function (props, WrapperComponent) {
+    wrapperProps: function (this: any, props: any, WrapperComponent: any) {
       if (!WrapperComponent[STATIC_COMPONENT]) return props;
-      const context = useContext(options.context);
+      const context: any = useContext(options.context);
       const getterMethod = context[getterMethodNameByDisplayName(WrapperComponent.displayName)];
       if (getterMethod) {
         if (!getterMethod.cache.has(this)) {
@@ -121,7 +121,7 @@ function Enhancement(childComponents, createComponent, options) {
       }
       return props;
     },
-    render: function (render) {
+    render: function (this: any, render: any) {
       getterMethodNames.forEach((name) => {
         if (this[name] === undefined) return;
         this[name].index = -1;

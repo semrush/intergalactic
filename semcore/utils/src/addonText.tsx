@@ -13,8 +13,8 @@ export default function addonText(
     (element) =>
       React.isValidElement(element) &&
       (element.type === React.Fragment ||
-        element.type['displayName'] === Text.displayName ||
-        element.type['displayName'] === Addon.displayName),
+        (element.type as any)['displayName'] === Text.displayName ||
+        (element.type as any)['displayName'] === Addon.displayName),
   ) ? (
     children
   ) : (

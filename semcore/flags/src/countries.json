@@ -505,23 +505,5 @@
     "YEM": "YE",
     "ZMB": "ZM",
     "ZWE": "ZW"
-  },
-
-  "nameWithoutIso": {
-    "ABKHAZIA": "Abkhazia",
-    "BASQUE_COUNTRY": "Basque Country",
-    "BRITISH_ANTARCTIC_TERRITORY": "British Antarctic Territory",
-    "CANARY_ISLANDS": "Canary Islands",
-    "COMMON_WEALTH": "Common Wealth",
-    "ENGLAND": "England",
-    "EUROPEAN_UNION": "European Union",
-    "MARS": "Mars",
-    "NAGORNO_KARABAKH": "Nagorno Karabakh",
-    "NATO": "NATO",
-    "NORTHERN_CYPRUS": "Northern Cyprus",
-    "SCOTLAND": "Scotland",
-    "SOUTH_OSSETIA": "South Ossetia",
-    "UNITED_NATIONS": "United Nations",
-    "WALES": "Wales"
   }
 }

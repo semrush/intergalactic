@@ -4,7 +4,7 @@ import { Context } from '@semcore/utils/lib/enhances/WithI18n';
 
 function i18nAppLocaleEnhance() {
   return {
-    wrapperProps: (props) => {
+    wrapperProps: (props: any) => {
       const { locale, ...other } = props;
       const contextLocale = React.useContext(Context);
       return {

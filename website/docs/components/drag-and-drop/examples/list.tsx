@@ -3,7 +3,7 @@ import Select from '@semcore/ui/select';
 import DnD from '@semcore/ui/drag-and-drop';
 
 const initialOptions = Array(6)
-  .fill()
+  .fill(0)
   .map((i, idx) => ({
     value: idx,
     title: `Awesome option ${idx}`,

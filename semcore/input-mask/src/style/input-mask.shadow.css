@@ -13,20 +13,24 @@ SMask {
   white-space: nowrap;
   color: var(--intergalactic-text-primary, #191b23);
 }
-SMask[neighborLocation='left'],
-SMask[neighborLocation='both'] {
+
+SMask[data-neighbor-location='left'],
+SMask[data-neighbor-location='both'] {
   left: 0;
 }
 
 SMaskHidden {
   opacity: 0;
 }
+
 SMaskHidden:before {
   content: attr(data-content);
 }
+
 SPlaceholder {
   color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
+
 SMaskHidden:before,
 SMaskVisible::before,
 SPlaceholder:before {

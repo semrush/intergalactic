@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <Flex direction='column' gap={2} w={224}>
-      <Text tag='label' htmlFor='aliases-example' size='200'>
+      <Text tag='label' htmlFor='aliases-example' size={200}>
         Item index
       </Text>
       <InputMask w={224}>
@@ -22,7 +22,7 @@ export default () => {
           title='4-digit number'
         />
       </InputMask>
-      <Text size='100' color='gray-500' id='aliases-example-hint'>
+      <Text size={100} color='gray-500' id='aliases-example-hint'>
         Write any 4 digits and after
       </Text>
     </Flex>

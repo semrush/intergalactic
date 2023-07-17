@@ -1,17 +1,20 @@
-import React, { ComponentProps } from 'react';
-import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
+import React from 'react';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import DropdownMenu, {
-  IDropdownMenuContext,
-  IDropdownMenuItemProps,
-  IDropdownMenuProps,
-  IDropdownMenuHandlers,
+  DropdownMenuContext,
+  DropdownMenuItemProps,
+  DropdownMenuProps,
+  DropdownMenuHandlers,
+  DropdownMenuTriggerProps,
 } from '@semcore/dropdown-menu';
-import { ButtonTrigger, IBaseTriggerProps } from '@semcore/base-trigger';
+import { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
-import { IInputValueProps } from '@semcore/input';
-import { IBoxProps } from '@semcore/flex-box';
+import { InputValueProps } from '@semcore/input';
+import { BoxProps } from '@semcore/flex-box';
 
-export interface ISelectInputSearch extends IInputValueProps {}
+/** @deprecated */
+export interface ISelectInputSearch extends SelectInputSearch, UnknownProperties {}
+export type SelectInputSearch = InputValueProps & {};
 
 export type OptionValue = string | number;
 export type SelectValue = string | number | Array<string | number> | null;
@@ -22,106 +25,126 @@ export type SelectOption = {
   label?: React.ReactNode;
 };
 
-export interface ISelectProps<T extends SelectValue = SelectValue>
-  extends IDropdownMenuProps,
-    IBaseTriggerProps {
-  /**
-   * Multiple select
-   */
-  multiselect?: boolean;
-  /**
-   * Options array
-   */
-  options?: SelectOption[];
-  /**
-   * The value or values array selected by default when using multiselect
-   * @type SelectValue
-   */
-  defaultValue?: T;
-  /**
-   * The selected value or values array when using multiselect
-   * @type SelectValue
-   */
-  value?: T;
-  /**
-   * Callback on value change
-   * @type (value: SelectValue, e: React.SyntheticEvent) => boolean | void
-   */
-  onChange?: (value: T, e: React.SyntheticEvent) => boolean | void;
-  /**
-   * Trigger placeholder at not selected value
-   */
-  placeholder?: React.ReactNode;
-  /**
-   * Trigger state
-   */
-  state?: 'normal' | 'valid' | 'invalid';
-  /**
-   * Disables select
-   */
-  disabled?: boolean;
-  /**
-   * Input name
-   */
-  name?: string;
-  locale?: string;
-  /**
-   * If enabled, after opening select popper view will be scrolled to selected option or, if there are multiple selected options, to the first selected option.
-   * @default true
-   */
-  scrollToSelected?: boolean;
-}
+/** @deprecated */
+export interface ISelectProps<T extends SelectValue = SelectValue> extends SelectProps<T> {}
+export type SelectProps<T extends SelectValue = SelectValue> = DropdownMenuProps &
+  BaseTriggerProps & {
+    /**
+     * Multiple select
+     */
+    multiselect?: boolean;
+    /**
+     * Options array
+     */
+    options?: SelectOption[];
+    /**
+     * The value or values array selected by default when using multiselect
+     * @type SelectValue
+     */
+    defaultValue?: T;
+    /**
+     * The selected value or values array when using multiselect
+     * @type SelectValue
+     */
+    value?: T;
+    /**
+     * Callback on value change
+     * @type (value: SelectValue, e: React.SyntheticEvent) => boolean | void
+     */
+    onChange?:
+      | ((value: T, e: React.SyntheticEvent) => boolean | void)
+      | React.Dispatch<React.SetStateAction<T>>;
+    /**
+     * Trigger placeholder at not selected value
+     */
+    placeholder?: React.ReactNode;
+    /**
+     * Trigger state
+     */
+    state?: 'normal' | 'valid' | 'invalid';
+    /**
+     * Disables select
+     */
+    disabled?: boolean;
+    /**
+     * Input name
+     */
+    name?: string;
+    locale?: string;
+    /**
+     * If enabled, after opening select popper view will be scrolled to selected option or, if there are multiple selected options, to the first selected option.
+     * @default true
+     */
+    scrollToSelected?: boolean;
+  };
 
-export interface ISelectOption {
-  value?: string | number;
-  [key: string]: any;
-}
+/** @deprecated */
+export interface ISelectOption extends SelectOption, UnknownProperties {}
 
-export interface ISelectOptionProps extends IDropdownMenuItemProps {
+/** @deprecated */
+export interface ISelectOptionProps extends SelectOptionProps, UnknownProperties {}
+export type SelectOptionProps = DropdownMenuItemProps & {
   /** Value of the option */
   value: string | number;
-}
+};
 
-export interface ISelectOptionCheckboxProps extends ISelectOptionProps {
+/** @deprecated */
+export interface ISelectOptionCheckboxProps extends SelectOptionCheckboxProps, UnknownProperties {}
+export type SelectOptionCheckboxProps = SelectOptionProps & {
   /** Checkbox theme */
   theme?: string;
-}
+};
 
-declare const InputSearch: <T>(props: ISelectInputSearch & T) => ReturnEl;
+declare const InputSearch: Intergalactic.Component<'div', SelectInputSearch>;
 
-export interface ISelectContext extends IDropdownMenuContext {
+/** @deprecated */
+export interface ISelectContext extends SelectContext, UnknownProperties {}
+export type SelectContext = DropdownMenuContext & {
   getOptionProps: PropGetterFn;
   getOptionCheckboxProps: PropGetterFn;
   getDividerProps: PropGetterFn;
-}
+};
 
-export interface ISelectHandlers extends IDropdownMenuHandlers {
+/** @deprecated */
+export interface ISelectHandlers extends SelectHandlers, UnknownProperties {}
+export type SelectHandlers = DropdownMenuHandlers & {
   value: (index: SelectValue) => void;
-}
+};
 
-declare const Select: (<T, V extends SelectValue = SelectValue>(
-  props: CProps<ISelectProps<V> & T, ISelectContext, ISelectHandlers>,
-) => ReturnEl) & {
-  Trigger: (<T>(
-    props: Merge<
-      ComponentProps<typeof DropdownMenu.Trigger>,
-      ComponentProps<typeof ButtonTrigger>
-    > &
-      T,
-  ) => ReturnEl) & {
+type IntergalacticSelectComponent = (<
+  Value extends SelectValue,
+  Tag extends Intergalactic.Tag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    SelectProps<Value>,
+    SelectContext,
+    [handlers: SelectHandlers]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const Select: IntergalacticSelectComponent & {
+  Trigger: Intergalactic.Component<
+    'div',
+    DropdownMenuTriggerProps & ButtonTriggerProps,
+    {},
+    [handlers: SelectHandlers]
+  > & {
     Addon: typeof ButtonTrigger.Addon;
     Text: typeof ButtonTrigger.Text;
   };
   Popper: typeof DropdownMenu.Popper;
   List: typeof DropdownMenu.List;
   Menu: typeof DropdownMenu.Menu;
-  Option: (<T>(
-    props: CProps<ISelectOptionProps & T, ISelectContext, ISelectHandlers>,
-  ) => ReturnEl) & {
+  Option: Intergalactic.Component<
+    'option',
+    SelectOptionProps,
+    SelectContext,
+    [handlers: SelectHandlers]
+  > & {
     Addon: typeof DropdownMenu.Item.Addon;
-    Checkbox: <T>(
-      props: CProps<IBoxProps & { theme?: string; selected?: boolean } & T>,
-    ) => ReturnEl;
+    Checkbox: Intergalactic.Component<'div', BoxProps & { theme?: string; selected?: boolean }>;
   };
   OptionTitle: typeof DropdownMenu.ItemTitle;
   OptionHint: typeof DropdownMenu.ItemHint;

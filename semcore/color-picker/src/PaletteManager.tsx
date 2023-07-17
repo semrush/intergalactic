@@ -43,7 +43,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
   }
 
   get colors(): string[] {
-    return this.props.colors !== undefined ? this.asProps.colors : this._colors;
+    return this.props.colors !== undefined ? this.asProps.colors! : this._colors;
   }
 
   bindHandlerItemRemove = (value: string) => (event: React.MouseEvent) => {
@@ -76,7 +76,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
     };
   }
 
-  getItemProps({ value }) {
+  getItemProps({ value }: any) {
     this._colors.push(value);
 
     return {
@@ -101,7 +101,7 @@ class PaletteManagerRoot extends Component<RootAsProps, State> {
     };
   }
 
-  render() {
+  render(this: any) {
     const { styles, Children } = this.asProps;
 
     this._colors = [];

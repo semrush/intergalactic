@@ -1,9 +1,11 @@
-import { CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
 export type SpinSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
-export interface ISpinProps extends IBoxProps {
+/** @deprecated */
+export interface ISpinProps extends SpinProps, UnknownProperties {}
+export type SpinProps = BoxProps & {
   /** Spinner size
    * @default m
    **/
@@ -17,8 +19,8 @@ export interface ISpinProps extends IBoxProps {
    * otherwise only horizontal alignment will occur.
    * */
   centered?: boolean;
-}
+};
 
-declare const Spin: <T>(props: CProps<ISpinProps & T>) => ReturnEl;
+declare const Spin: Intergalactic.Component<'div', SpinProps>;
 
 export default Spin;

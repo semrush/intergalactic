@@ -45,7 +45,7 @@ class Demo extends React.PureComponent {
         {checked.map((_, i) => (
           <div key={i}>
             <Checkbox mb={3}>
-              <Checkbox.Value id={i} checked={checked[i]} onChange={this.item} />
+              <Checkbox.Value id={`${i}`} checked={checked[i]} onChange={this.item} />
               <Checkbox.Text>{`Option ${i + 1}`}</Checkbox.Text>
             </Checkbox>
           </div>

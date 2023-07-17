@@ -4,16 +4,18 @@ import { DatePicker } from '@semcore/ui/date-picker';
 const Demo = () => {
   return (
     <DatePicker>
-      <DatePicker.InputTrigger />
+      <DatePicker.Trigger />
       <DatePicker.Popper>
         <DatePicker.Header>
           <DatePicker.Prev />
           <DatePicker.Title>
             {({ displayedPeriod }) =>
-              new Intl.DateTimeFormat('en-US', {
-                month: 'short',
-                year: 'numeric',
-              }).format(displayedPeriod)
+              typeof displayedPeriod === 'string'
+                ? displayedPeriod
+                : new Intl.DateTimeFormat('en-US', {
+                    month: 'short',
+                    year: 'numeric',
+                  }).format(displayedPeriod)
             }
           </DatePicker.Title>
           <DatePicker.Next />

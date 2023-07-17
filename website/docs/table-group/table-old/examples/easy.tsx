@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import Checkbox from '@semcore/ui/checkbox';
 import Tooltip from '@semcore/ui/tooltip';
 import Link from '@semcore/ui/link';
@@ -40,12 +40,12 @@ const data = [
   },
 ];
 
-const MAP_ORDER = {
+const sortOrder = {
   desc: 'asc',
   asc: 'desc',
 };
 
-const DEFAULT_ORDER = 'desc';
+const defaultSortOrder = 'desc';
 
 const StyledTable = styled(Table)`
   position: relative;
@@ -69,22 +69,24 @@ const StyledBody = styled(Table.Body)`
   }
 `;
 
+type SortOrder = 'asc' | 'desc';
+
 class Demo extends React.Component {
   state = {
     active: undefined,
     order: {
-      keyword: DEFAULT_ORDER,
-      cpc: DEFAULT_ORDER,
-      vol: DEFAULT_ORDER,
+      keyword: defaultSortOrder as SortOrder,
+      cpc: defaultSortOrder as SortOrder,
+      vol: defaultSortOrder as SortOrder,
     },
     loading: false,
   };
 
   _timer = null;
 
-  handleHeadKeyDown = (key) => (e) => {
-    if (e.key === 'Enter') {
-      this.handleHeadClick(key)(e);
+  handleHeadKeyDown = (key) => (event) => {
+    if (event.key === 'Enter') {
+      this.handleHeadClick(key)();
     }
   };
 
@@ -97,7 +99,7 @@ class Demo extends React.Component {
     this._timer = setTimeout(() => {
       const { active, order } = this.state;
       if (active === key) {
-        order[active] = MAP_ORDER[order[active]];
+        order[active] = sortOrder[order[active]];
       }
       this.setState({
         loading: false,

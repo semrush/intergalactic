@@ -11,7 +11,7 @@ const Demo = () => {
         <Flag iso2='US' />
       </Input.Addon>
       <Input.Value value={value} onChange={(v) => setValue(v)} />
-      {value > 2 && (
+      {Number.parseInt(value, 10) > 2 && (
         <Input.Addon
           tag={CloseM}
           interactive

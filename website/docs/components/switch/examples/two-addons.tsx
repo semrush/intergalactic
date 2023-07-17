@@ -7,7 +7,7 @@ import { Box } from '@semcore/ui/flex-box';
 const Demo = () => {
   return (
     <div>
-      <Text tag='label' size='200' htmlFor='email-subscription'>
+      <Text tag='label' size={200} htmlFor='email-subscription'>
         Receive updates
       </Text>
       <Box mt={2}>

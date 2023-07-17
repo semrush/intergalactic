@@ -2,7 +2,6 @@ node_modules
 __tests__
 components.json
 generate.js
-mailer.js
 tsconfig.json
 clear.ts
 generate-reexports.ts

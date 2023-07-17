@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 // import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
-import { render, /*fireEvent,*/ cleanup, act } from '@semcore/testing-utils/testing-library';
+import { render, fireEvent, cleanup, act } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
 import {
@@ -14,7 +14,7 @@ import {
 
 // const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
-const NoticeBubble = React.forwardRef((props, ref) => (
+const NoticeBubble = React.forwardRef((props: any, ref: React.Ref<HTMLElement>) => (
   <>
     <NoticeBubbleContainer style={{ position: 'static', width: 'auto' }} disablePortal />
     <NoticeBubbleImport ref={ref} style={{ marginBottom: 0 }} {...props} />
@@ -40,10 +40,10 @@ describe('NoticeBubbleContainer', () => {
       </div>,
     );
     // Not render to container,
-    expect(queryByTestId('container').children.length).toEqual(0);
+    expect(queryByTestId('container')?.children.length).toEqual(0);
 
     // but render to body
-    expect(document.body.lastChild.dataset.testid).toEqual('notice');
+    expect((document.body.lastChild as HTMLElement)?.dataset['testid']).toEqual('notice');
   });
 });
 
@@ -140,8 +140,8 @@ describe('NoticeBubble', () => {
     );
 
     const container = document.body.querySelector('[data-testid="container"]');
-    expect(container.querySelector('[data-testid="notice-1"]')).toBeTruthy();
-    expect(container.querySelector('[data-testid="notice-2"]')).toBeTruthy();
+    expect(container?.querySelector('[data-testid="notice-1"]')).toBeTruthy();
+    expect(container?.querySelector('[data-testid="notice-2"]')).toBeTruthy();
   });
 
   test('should support render outside dom', () => {
@@ -154,7 +154,7 @@ describe('NoticeBubble', () => {
     );
 
     const container = document.body.querySelector('[data-testid="container"]');
-    expect(container.querySelector('[data-testid="notice"]')).toBeTruthy();
+    expect(container?.querySelector('[data-testid="notice"]')).toBeTruthy();
   });
 
   test.concurrent('should render correctly', async ({ task }) => {

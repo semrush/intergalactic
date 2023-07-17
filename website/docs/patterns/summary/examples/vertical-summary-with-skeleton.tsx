@@ -58,7 +58,11 @@ const Demo = () => {
                 href='https://semrush.com'
                 target='_blank'
               >
-                <AnimatedNumber value={42} formatValue={Math.round} delay={300} />
+                <AnimatedNumber
+                  value={42}
+                  formatValue={(x) => Math.round(x).toString()}
+                  delay={300}
+                />
               </Text>
               <Text size={100} color='gray-500' tag='p'>
                 no change
@@ -91,7 +95,7 @@ const Demo = () => {
                 href='https://semrush.com'
                 target='_blank'
               >
-                <AnimatedNumber value={24765} formatValue={Math.round} />
+                <AnimatedNumber value={24765} formatValue={(x) => Math.round(x).toString()} />
               </Text>
               <Text size={100} color='gray-500' tag='p'>
                 no change
@@ -124,7 +128,7 @@ const Demo = () => {
                 href='https://semrush.com'
                 target='_blank'
               >
-                <AnimatedNumber value={908} formatValue={Math.round} />
+                <AnimatedNumber value={908} formatValue={(x) => Math.round(x).toString()} />
               </Text>
               <Text size={100} color='green-500' tag='p'>
                 ↑+12
@@ -156,7 +160,11 @@ const Demo = () => {
                 href='https://semrush.com'
                 target='_blank'
               >
-                <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
+                <AnimatedNumber
+                  value={145}
+                  formatValue={(x) => Math.round(x).toString()}
+                  delay={300}
+                />
               </Text>
               <Text size={100} color='green-500' tag='p'>
                 ↑+13

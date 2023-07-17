@@ -4,8 +4,8 @@ import { extractDependenciesList, serializeProperty, serializeTsNode } from './s
 export const serializeInterfaceDeclaration = (interfaceDeclaration: ts.InterfaceDeclaration) => {
   const name = interfaceDeclaration.name.escapedText as string;
   const genericsMap = {};
-  const inheritance = (interfaceDeclaration.heritageClauses ?? []).flatMap((clause) =>
-    clause.types.map((type) => ({
+  const inheritance = [...(interfaceDeclaration.heritageClauses ?? [])].flatMap((clause) =>
+    clause.types.map((type: any) => ({
       referenceTo: type.expression.escapedText,
       displayText: type.expression.escapedText,
     })),

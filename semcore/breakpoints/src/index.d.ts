@@ -1,9 +1,12 @@
 import React from 'react';
+import { UnknownProperties } from '@semcore/core';
 
 type listenerType = (index: number) => void;
 type mediaType = string[];
 
-export interface IMediaList {
+/** @deprecated */
+export interface IMediaList extends MediaList, UnknownProperties {}
+export type MediaList = {
   /** Destroy the subscription to the window.matchMedia */
   destructor(): void;
 
@@ -15,11 +18,13 @@ export interface IMediaList {
 
   /** Unsubscribe from changing the index in the media list. */
   removeListener(listener: listenerType): void;
-}
+};
 
-export interface IBreakpointsProps {
+/** @deprecated */
+export interface IBreakpointsProps extends BreakpointsProps, UnknownProperties {}
+export type BreakpointsProps = {
   children: React.ReactNode;
-}
+};
 
 type createBreakpointsType = (media: mediaType) => ((
   props: IBreakpointsProps,

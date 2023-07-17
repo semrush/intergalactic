@@ -14,7 +14,7 @@ const Example = () => {
       <Text tag='label' htmlFor='author-name' mr={2}>
         Author:
       </Text>
-      <InlineEdit editable={editable} onEditableChange={setEditable} onBlurBehavior={'confirm'}>
+      <InlineEdit editable={editable} onEditableChange={setEditable}>
         <InlineEdit.View style={{ display: 'flex', gap: 10, alignItems: 'center' }} pr={2}>
           {text} <EditM />
         </InlineEdit.View>
@@ -28,6 +28,7 @@ const Example = () => {
               setText(confirmedText);
               setEditable(false);
             }}
+            onBlurBehavior={'confirm'}
           >
             <InlineInput.Value autoFocus value={text} onChange={setText} id='author-name' />
             <InlineInput.ConfirmControl />

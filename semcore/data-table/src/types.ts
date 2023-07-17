@@ -35,6 +35,7 @@ export type Column<
   } & Partial<{
     flex: Property.Flex;
     justifyContent: Property.JustifyContent;
+    alignItems: Property.AlignItems;
     onClick: (event: React.MouseEvent) => void;
     onKeyDown: (event: React.KeyboardEvent) => void;
     forwardRef: React.Ref<HTMLElement>;
@@ -45,8 +46,8 @@ export type Column<
     sortable: boolean | SortDirection;
     sortDirection: SortDirection;
     vBorders: boolean;
-    borderLeft: boolean;
-    borderRight: boolean;
+    borderLeft: Property.BorderLeft;
+    borderRight: Property.BorderLeft;
   }> &
     Props;
   columns: Column[];

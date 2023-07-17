@@ -1,14 +1,16 @@
 import React from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps, Flex } from '@semcore/flex-box';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Text } from '@semcore/typography';
 
 export type RadioSize = 'm' | 'l';
 export type RadioState = 'normal' | 'invalid';
 export type RadioValue = string | number | boolean;
 
-export interface IRadioProps extends IBoxProps {
+/** @deprecated */
+export interface IRadioProps extends RadioProps, UnknownProperties {}
+export type RadioProps = BoxProps & {
   /**
    * The value displaying the state of the component
    * @default normal
@@ -21,9 +23,11 @@ export interface IRadioProps extends IBoxProps {
   size?: RadioSize;
   /** The theme of the radio button that you can send your color to */
   theme?: string;
-}
+};
 
-export interface IRadioGroupProps {
+/** @deprecated */
+export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {}
+export type RadioGroupProps<T extends RadioValue = RadioValue> = {
   /**
    *  HTML tag name for the displayed item
    */
@@ -31,52 +35,67 @@ export interface IRadioGroupProps {
   /** Radio group name */
   name?: string;
   /** Active default value */
-  defaultValue?: RadioValue;
+  defaultValue?: T;
   /** Active value */
-  value?: RadioValue;
+  value?: T;
   /** Called when the selected element is changed */
-  onChange?: (value: RadioValue, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+  onChange?:
+    | ((value: T, e?: React.SyntheticEvent<HTMLInputElement>) => void)
+    | React.Dispatch<React.SetStateAction<T>>;
   /** Radio button size */
   size?: RadioSize;
   /** The theme of the radio button that you can send your color to */
   theme?: string;
   /** Blocks access and changes to the form field */
   disabled?: boolean;
-}
+};
 
-export interface IRadioValueProps extends IBoxProps, IKeyboardFocusProps {
-  /** List of elements that can be put on a hidden input */
-  includeInputProps?: string[];
-  /**
-   * The value displaying the state of the component
-   * @default normal
-   */
-  state?: RadioState;
-  /** The theme of the radio button that you can send your color to */
-  theme?: string;
-  /** Radio button size */
-  size?: RadioSize;
-  /** The element value is required for RadioGroup */
-  value?: RadioValue;
-  /** Default value if `value` property is not provided */
-  defaultValue?: RadioValue;
-  /** Called when the value changes */
-  onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-  /** Blocks access and changes to the form field */
-  disabled?: boolean;
-}
+/** @deprecated */
+export interface IRadioValueProps extends RadioValueProps, UnknownProperties {}
+export type RadioValueProps = BoxProps &
+  KeyboardFocusProps & {
+    /** List of elements that can be put on a hidden input */
+    includeInputProps?: string[];
+    /**
+     * The value displaying the state of the component
+     * @default normal
+     */
+    state?: RadioState;
+    /** The theme of the radio button that you can send your color to */
+    theme?: string;
+    /** Radio button size */
+    size?: RadioSize;
+    /** The element value is required for RadioGroup */
+    value?: RadioValue;
+    /** Default value if `value` property is not provided */
+    defaultValue?: RadioValue;
+    /** Called when the value changes */
+    onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+    /** Blocks access and changes to the form field */
+    disabled?: boolean;
+  };
 
-export interface IRadioCtx {
+/** @deprecated */
+export interface IRadioCtx extends RadioCtx, UnknownProperties {}
+export type RadioCtx = {
   getValueProps: PropGetterFn;
   getTextProps: PropGetterFn;
-}
+};
 
-declare const RadioGroup: <T>(props: CProps<IRadioGroupProps & T>) => ReturnEl;
+type IntergalacticRadioGroupComponent = (<
+  Value extends RadioValue,
+  Tag extends Intergalactic.Tag = typeof Flex,
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, RadioGroupProps<Value>>,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+declare const RadioGroup: IntergalacticRadioGroupComponent;
 
 export { RadioGroup };
 
-declare const Radio: (<T>(props: CProps<IRadioProps & T, IRadioCtx>) => ReturnEl) & {
-  Value: <T>(props: IRadioValueProps & T) => ReturnEl;
+declare const Radio: Intergalactic.Component<'label', RadioProps, RadioCtx> & {
+  Value: Intergalactic.Component<'input', RadioValueProps>;
   Text: typeof Text;
 };
 

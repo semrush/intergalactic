@@ -1,9 +1,9 @@
 // THIS USE BABEL-PLUGIN-CSS-STYLE
 
-let sh = null;
+let sh: any = null;
 const selectorClass = '_css-style';
 
-function hashCode(str) {
+function hashCode(str: string) {
   let hash = 0;
   let i;
   let chr;
@@ -15,7 +15,7 @@ function hashCode(str) {
   return hash;
 }
 
-function injectStyle(css) {
+function injectStyle(css: string) {
   if (typeof window === 'object') {
     if (!sh) {
       const prevSh = document.querySelector(`.${selectorClass}`);

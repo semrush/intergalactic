@@ -58,7 +58,7 @@ export default function () {
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         {tagsFilter.map((tag, i) => (
-          <DropdownMenu.Item key={i} use='primary' onClick={() => onSelectTag(tag)}>
+          <DropdownMenu.Item key={i} onClick={() => onSelectTag(tag)}>
             {tag}
           </DropdownMenu.Item>
         ))}

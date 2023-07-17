@@ -1,0 +1,17 @@
+SChartSkeleton {
+  height: 200px;
+  width: 100%;
+  background-image: var(--bgPattern);
+}
+
+SChartSkeleton[bgPosition] {
+  background-position: var(--bgPosition);
+}
+
+SChartSkeleton[bgSize] {
+  background-size: var(--bgSize);
+}
+
+SChartSkeleton[bgRepeat] {
+  background-repeat: var(--bgRepeat);
+}

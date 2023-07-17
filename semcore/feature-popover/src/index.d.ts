@@ -1,8 +1,10 @@
-import { PropGetterFn, CProps, ReturnEl } from '@semcore/core';
-import Popper, { IPopperContext, IPopperPopperProps, IPopperProps } from '@semcore/popper';
+import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import Popper, { PopperContext, PopperPopperProps, PopperProps } from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
 
-export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
+/** @deprecated */
+export interface IFeaturePopoverPopperProps extends FeaturePopoverPopperProps, UnknownProperties {}
+export type FeaturePopoverPopperProps = PopperPopperProps & {
   /**
    * The property responsible for the visibility of the closing icon
    * @default false
@@ -14,17 +16,17 @@ export interface IFeaturePopoverPopperProps extends IPopperPopperProps {
   duration?: number;
 
   locale?: string;
-}
+};
 
-export interface IFeaturePopoverContext extends IPopperContext {
+/** @deprecated */
+export interface IFeaturePopoverContext extends FeaturePopoverContext, UnknownProperties {}
+export type FeaturePopoverContext = PopperContext & {
   getSpotProps: PropGetterFn;
-}
+};
 
-declare const FeaturePopover: ((
-  props: CProps<IPopperProps, IFeaturePopoverContext>,
-) => ReturnEl) & {
+declare const FeaturePopover: Intergalactic.Component<'div', PopperProps, FeaturePopoverContext> & {
   Trigger: typeof Popper.Trigger;
-  Popper: <T>(props: IFeaturePopoverPopperProps & T) => ReturnEl;
+  Popper: Intergalactic.Component<'div', FeaturePopoverPopperProps>;
   Spot: typeof Box;
 };
 

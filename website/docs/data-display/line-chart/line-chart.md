@@ -126,5 +126,4 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 @page line-chart-a11y
 @page line-chart-api
 @page line-chart-d3-code
-@page line-chart-recharts-code
 @page d3-chart-changelog

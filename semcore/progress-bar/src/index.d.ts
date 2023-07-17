@@ -1,7 +1,9 @@
-import { ReturnEl, CProps, PropGetterFn } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
-export interface IProgressBarProps extends IBoxProps {
+/** @deprecated */
+export interface IProgressBarProps extends ProgressBarProps, UnknownProperties {}
+export type ProgressBarProps = BoxProps & {
   /**
    * Progress bar theme
    * @default invert
@@ -18,23 +20,25 @@ export interface IProgressBarProps extends IBoxProps {
    * @default 1000
    */
   duration?: number;
-}
+};
 
-export interface IValueProps extends IBoxProps {
+/** @deprecated */
+export interface IValueProps extends ValueProps, UnknownProperties {}
+export type ValueProps = BoxProps & {
   size?: 's' | 'm' | 'l';
   value?: number;
   duration?: number;
   theme?: string;
-}
+};
 
-export interface IProgressBarCxt {
+/** @deprecated */
+export interface IProgressBarCxt extends ProgressBarCxt, UnknownProperties {}
+export type ProgressBarCxt = {
   getValueProps: PropGetterFn;
-}
+};
 
-declare const ProgressBar: (<T>(
-  props: CProps<IProgressBarProps & T, IProgressBarCxt>,
-) => ReturnEl) & {
-  Value: <T>(props: IValueProps & T) => ReturnEl;
+declare const ProgressBar: Intergalactic.Component<'div', ProgressBarProps, ProgressBarCxt> & {
+  Value: Intergalactic.Component<'div', ValueProps>;
 };
 
 export default ProgressBar;

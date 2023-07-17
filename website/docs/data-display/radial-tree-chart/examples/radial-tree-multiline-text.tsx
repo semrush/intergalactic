@@ -34,21 +34,15 @@ export default () => {
   const textLines = ['Lorem ipsum', 'dolor', 'sit amet'];
 
   return (
-    <Plot
-      data={data}
-      scale={[scaleLinear(), scaleLinear()]}
-      width={width}
-      height={height}
-      textSize={textSize}
-    >
-      <RadialTree color='#008FF8'>
+    <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
+      <RadialTree color='#008FF8' textSize={textSize}>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <RadialTree.Title fontSize={lineHeight} fill='#AB6CFE'>
+        <RadialTree.Title textSize={lineHeight} color='#AB6CFE'>
           {textLines.map((line, lineIndex) => (
             <tspan
               key={line}

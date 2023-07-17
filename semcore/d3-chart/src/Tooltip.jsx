@@ -16,6 +16,8 @@ class TooltipRoot extends Component {
 
   state = {
     $visible: false,
+    anchorProps: {},
+    tooltipProps: {},
   };
 
   handlerCancel = () => false;
@@ -27,8 +29,17 @@ class TooltipRoot extends Component {
   }
 
   getPopperProps() {
+    if (this.asProps.excludeAnchorProps) {
+      return {
+        $visible: this.state.$visible,
+        ...this.state.tooltipProps,
+      };
+    }
+
     return {
-      ...this.state,
+      $visible: this.state.$visible,
+      ...this.state.anchorProps,
+      ...this.state.tooltipProps,
     };
   }
 
@@ -36,10 +47,11 @@ class TooltipRoot extends Component {
     const { eventEmitter, rootRef } = this.asProps;
     this.unsubscribeTooltipVisible = eventEmitter.subscribe(
       'onTooltipVisible',
-      (visible, data, node) => {
+      (visible, anchorProps, tooltipProps, node) => {
         this.setState(
           {
-            ...data,
+            anchorProps,
+            tooltipProps,
             $visible: visible,
           },
           () => {

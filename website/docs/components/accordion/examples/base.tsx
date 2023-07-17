@@ -5,8 +5,9 @@ import { Flex, Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
   const [value, onChange] = useState([0]);
+
   return (
-    <Accordion value={value} onChange={onChange}>
+    <Accordion value={value} onChange={(value) => onChange(value)}>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index} disabled={index === 2}>
           <Accordion.Item.Toggle p='8px 12px'>

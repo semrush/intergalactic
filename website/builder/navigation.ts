@@ -23,7 +23,7 @@ export const buildNavigation = async (docsDir: string) => {
   const fileContentsList = await Promise.all(
     filesList.map((path) => readFile(resolvePath(docsDir, path), 'utf-8')),
   );
-  const fileMetasList = fileContentsList.map(parseMarkdownMeta).map((meta) => {
+  const fileMetasList = fileContentsList.map(parseMarkdownMeta).map((meta: any) => {
     if (meta.fileSource) {
       const packageJson = finderPackageJson(
         resolvePath(repoRoot, 'semcore', meta.fileSource),
@@ -77,6 +77,9 @@ export const buildNavigation = async (docsDir: string) => {
       const dirIndexFile = `${dir}/${fileName}`;
       const siblingFile = `${dir}.md`;
       const filePath = navigationMap[dirIndexFile] ? dirIndexFile : siblingFile;
+      if (!navigationMap[filePath]) {
+        throw new Error(`Found non-existing sub-page at ${filePath}`);
+      }
       const { meta, subPages, hasContent } = navigationMap[filePath];
       const navigationNode = {
         route: dir,
@@ -95,7 +98,7 @@ export const buildNavigation = async (docsDir: string) => {
       navigationParents[dir] = parentChain;
 
       if (subPages.length > 0) {
-        navigationNode.children = fillNavigation(subPages, chain);
+        (navigationNode as any).children = fillNavigation(subPages, chain);
       }
       navigation.push(navigationNode);
     }

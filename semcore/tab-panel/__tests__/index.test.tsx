@@ -7,8 +7,26 @@ import TabPanel from '../src';
 
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
+import { assertType } from 'vitest';
+import { Intergalactic } from '@semcore/core';
 
 describe('TabPanel', () => {
+  describe('types', () => {
+    const any: any = null;
+    test('props nesting', () => {
+      const Link: Intergalactic.Component<'a', { xProp1: 1 }> = any;
+
+      assertType<JSX.Element>(<TabPanel tag={Link} href='https://google.com' xProp1={1} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<TabPanel href='https://google.com' />);
+    });
+    test('value&onChange relation', () => {
+      assertType<JSX.Element>(<TabPanel value={1} onChange={(value: number) => {}} />);
+      // @ts-expect-error
+      assertType<JSX.Element>(<TabPanel value={1} onChange={(value: string) => {}} />);
+    });
+  });
+
   beforeEach(cleanup);
 
   test.concurrent('Render correctly', async ({ task }) => {
@@ -118,7 +136,7 @@ describe('TabPanel', () => {
     const spyChange = vi.fn();
     const spyClick = vi.fn();
     const { getByTestId } = render(
-      <TabPanel value={1 as Number} onChange={spyChange}>
+      <TabPanel value={1 as number} onChange={spyChange}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
         <TabPanel.Item value={3}>Item 3</TabPanel.Item>
@@ -137,7 +155,7 @@ describe('TabPanel', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <TabPanel value={1 as Number} onChange={spy}>
+      <TabPanel value={1 as number} onChange={spy}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
         <TabPanel.Item value={3}>Item 3</TabPanel.Item>
@@ -157,7 +175,7 @@ describe('TabPanel', () => {
     const spy = vi.fn();
 
     const { getByTestId } = render(
-      <TabPanel value={1 as Number} onChange={spy} data-testid={'tab-root'}>
+      <TabPanel value={1 as number} onChange={spy} data-testid={'tab-root'}>
         <TabPanel.Item value={1}>Item 1</TabPanel.Item>
         <TabPanel.Item value={2}>Item 2</TabPanel.Item>
         <TabPanel.Item value={3}>Item 3</TabPanel.Item>

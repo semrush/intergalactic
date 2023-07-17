@@ -71,7 +71,7 @@ const Demo = () => {
             href='https://semrush.com'
             target='_blank'
           >
-            <AnimatedNumber value={145} formatValue={Math.round} delay={300} />
+            <AnimatedNumber value={145} formatValue={(x) => Math.round(x).toString()} delay={300} />
           </Text>
           <Text size={100} color='green-500' tag='p'>
             ↑+12

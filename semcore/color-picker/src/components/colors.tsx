@@ -24,7 +24,7 @@ export function Colors(props: ColorsAsProps) {
       {Children.origin ? (
         <Children />
       ) : (
-        colors.map((color) => <ColorPicker.Item value={color} key={color} />)
+        colors?.map((color) => <ColorPicker.Item value={color} key={color} />)
       )}
     </SColors>,
   ) as React.ReactElement;
@@ -40,7 +40,7 @@ export function ColorsCustom(props: ColorsCustomAsProps) {
       {Children.origin ? (
         <Children />
       ) : (
-        colors.map((color) => <PaletteManager.Item value={color} key={color} />)
+        colors?.map((color) => <PaletteManager.Item value={color} key={color} />)
       )}
       <SPlusButton onClick={onPlusButtonClick} aria-hidden='true'>
         <MathPlusM color='gray-500' />

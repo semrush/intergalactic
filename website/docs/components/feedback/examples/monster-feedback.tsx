@@ -6,10 +6,17 @@ import InputNumber from '@semcore/ui/input-number';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import Select from '@semcore/ui/select';
 import { Text } from '@semcore/ui/typography';
-import { Flex, Box } from '@semcore/ui/flex-box';
+import { Flex } from '@semcore/ui/flex-box';
 
-const validate = (values) => {
-  const errors = {};
+type Data = {
+  title: string;
+  campaign: string;
+  call: boolean;
+  day: number;
+};
+
+const validate = (values: Data) => {
+  const errors: Partial<Record<keyof Data, string>> = {};
   if (!values.title) {
     errors.title = 'Title is required';
   }
@@ -31,7 +38,7 @@ const validate = (values) => {
 
 const Demo = () => (
   <FeedbackForm validate={validate}>
-    <FeedbackForm.Item name='title' validate={validate.email}>
+    <FeedbackForm.Item name='title' validate={(x) => validate(x).title}>
       {({ input }) => {
         const { state, className, ...other } = input;
         return (
@@ -52,7 +59,7 @@ const Demo = () => (
             <Select.Trigger id='campaign' {...input} m='0 0 16px' />
             <Select.Menu>
               {Array(4)
-                .fill()
+                .fill(0)
                 .map((item, ind) => (
                   <Select.Option
                     value={`Company ${ind}`}

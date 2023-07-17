@@ -100,7 +100,7 @@ const Demo = () => {
               animationsDisabled
             >
               <Tooltip.Popper id='form-emails-error' visible={Boolean(errors['emails'])}>
-                {errors['emails']?.message}
+                {String(errors['emails']?.[0])}
               </Tooltip.Popper>
               <InputTags
                 tag={Tooltip.Trigger}
@@ -112,7 +112,7 @@ const Demo = () => {
                 aria-errormessage={errors['emails'] ? 'form-emails-error' : undefined}
               >
                 {tags.map((tag, idx) => (
-                  <InputTags.Tag key={tag + idx} use='primary' theme='asphalt'>
+                  <InputTags.Tag key={tag + idx}>
                     <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
                     <InputTags.Tag.Close data-id={idx} onClick={handleCloseTag} />
                   </InputTags.Tag>

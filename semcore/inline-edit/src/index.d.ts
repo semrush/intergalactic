@@ -1,22 +1,16 @@
-import React from 'react';
-import { PropGetterFn } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
-import { IFadeInOutProps } from '@semcore/animation';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { FadeInOutProps } from '@semcore/animation';
 
-/* utils type */
-type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
-  children?:
-    | ((props: Props & Ctx, handlers: UCProps) => React.ReactNode)
-    | React.ReactNode
-    | React.ReactNode[];
-};
-/* utils type */
-
-export interface IInlineEditProps extends IBoxProps {
+/** @deprecated */
+export interface IInlineEditProps extends InlineEditProps, UnknownProperties {}
+export type InlineEditProps = BoxProps & {
   /**
    * Determines which children should be displayed
    */
   editable?: boolean;
+
+  onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
   /**
    * Default value if `editable` property is not provided
    * @default false
@@ -28,20 +22,22 @@ export interface IInlineEditProps extends IBoxProps {
    */
   onEdit?: () => void;
   locale?: string;
-}
+};
 
-export interface IInlineEditViewProps extends IBoxProps, IFadeInOutProps {}
-export interface IInlineEditEditProps extends IBoxProps, IFadeInOutProps {}
+/** @deprecated */
+export interface IInlineEditViewProps extends InlineEditViewProps, UnknownProperties {}
+export type InlineEditViewProps = BoxProps & FadeInOutProps & {};
+/** @deprecated */
+export interface IInlineEditEditProps extends InlineEditEditProps, UnknownProperties {}
+export type InlineEditEditProps = BoxProps & FadeInOutProps & {};
 
-interface IInputCtx {
+type InputCtx = {
   getViewProps: PropGetterFn;
   getEditProps: PropGetterFn;
-}
+};
 
-declare const InlineEdit: (<T>(
-  props: CProps<IInlineEditProps & T, IInputCtx>,
-) => React.ReactElement) & {
-  View: <T>(props: CProps<IInlineEditViewProps & T, IInlineEditProps>) => React.ReactElement;
-  Edit: <T>(props: CProps<IInlineEditEditProps & T, IInlineEditProps>) => React.ReactElement;
+declare const InlineEdit: Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
+  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
+  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
 };
 export default InlineEdit;

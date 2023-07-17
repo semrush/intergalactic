@@ -10,13 +10,13 @@ const Demo = () => {
     <Flex>
       <Box>
         <MonthPicker value={value} onChange={(date) => setValue(date)}>
-          <MonthPicker.InputTrigger />
+          <MonthPicker.Trigger />
           <MonthPicker.Popper />
         </MonthPicker>
       </Box>
       <Box ml={5}>
         <MonthRangePicker value={valueRange} onChange={(date) => setValueRange(date)}>
-          <MonthRangePicker.InputTrigger />
+          <MonthRangePicker.Trigger />
           <MonthRangePicker.Popper />
         </MonthRangePicker>
       </Box>

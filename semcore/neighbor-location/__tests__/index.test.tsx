@@ -3,7 +3,7 @@ import NeighborLocation from '../src';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
 import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
-const NeighborLocationItem: any = function ({ neighborlocation, ...other }) {
+const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any) {
   return (
     <NeighborLocation.Detect neighborlocation={neighborlocation}>
       {(neighborLocation) => <CustomComponent {...other} neighborLocation={neighborLocation} />}
@@ -11,7 +11,7 @@ const NeighborLocationItem: any = function ({ neighborlocation, ...other }) {
   );
 };
 
-const CustomComponent: any = function ({ neighborLocation, ...other }) {
+const CustomComponent: any = function ({ neighborLocation, ...other }: any) {
   return <div {...other} data-neighborlocation={neighborLocation} />;
 };
 
@@ -26,9 +26,9 @@ describe('neighbor-location', () => {
         <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
-    expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
-    expect(getByTestId('2').attributes['data-neighborlocation'].value).toBe('both');
-    expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
+    expect((getByTestId('1').attributes as any)['data-neighborlocation'].value).toBe('right');
+    expect((getByTestId('2').attributes as any)['data-neighborlocation'].value).toBe('both');
+    expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
   test.concurrent('should must work with component', () => {
@@ -46,9 +46,9 @@ describe('neighbor-location', () => {
       </NeighborLocation>,
     );
 
-    expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
-    expect(getByTestId('2').attributes['data-neighborlocation'].value).toBe('both');
-    expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
+    expect((getByTestId('1').attributes as any)['data-neighborlocation'].value).toBe('right');
+    expect((getByTestId('2').attributes as any)['data-neighborlocation'].value).toBe('both');
+    expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
   test.concurrent('should must props "controlsLength"', () => {
@@ -61,14 +61,14 @@ describe('neighbor-location', () => {
         <NeighborLocationItem data-testid='3' />
       </NeighborLocation>,
     );
-    expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
-    expect(getByTestId('2').attributes['data-neighborlocation'].value).toBe('both');
-    expect(getByTestId('3').attributes['data-neighborlocation'].value).toBe('left');
+    expect((getByTestId('1').attributes as any)['data-neighborlocation'].value).toBe('right');
+    expect((getByTestId('2').attributes as any)['data-neighborlocation'].value).toBe('both');
+    expect((getByTestId('3').attributes as any)['data-neighborlocation'].value).toBe('left');
   });
 
   test.concurrent('should must work without NeighborLocation', () => {
     const { getByTestId } = render(<NeighborLocationItem data-testid='test' />);
-    expect(getByTestId('test').attributes['data-neighborlocation']).toBe(undefined);
+    expect((getByTestId('test').attributes as any)['data-neighborlocation']).toBe(undefined);
   });
 
   test.concurrent('should correct work with other empty childrens', () => {
@@ -82,6 +82,6 @@ describe('neighbor-location', () => {
         <NeighborLocationItem />
       </NeighborLocation>,
     );
-    expect(getByTestId('1').attributes['data-neighborlocation'].value).toBe('right');
+    expect((getByTestId('1').attributes as any)['data-neighborlocation'].value).toBe('right');
   });
 });
