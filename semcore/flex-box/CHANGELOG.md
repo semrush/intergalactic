@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-* Strict, backward incompatible typings.
+- Strict, backward incompatible typings.
 
 ## [4.7.33] - 2023-06-30
 
@@ -14,67 +14,67 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [4.7.31] - 2023-06-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [4.7.30] - 2023-06-12
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
 
 ## [4.7.29] - 2023-06-09
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
 
 ## [4.7.28] - 2023-06-07
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
 
 ## [4.7.27] - 2023-05-31
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
 
 ## [4.7.26] - 2023-05-25
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
 
 ## [4.7.25] - 2023-05-24
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
 
 ## [4.7.24] - 2023-05-22
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
 
 ## [4.7.23] - 2023-05-11
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [4.7.22] - 2023-05-04
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [4.7.20] - 2023-04-24
 
@@ -82,7 +82,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
 
 ## [4.7.8] - 2023-02-09
 
@@ -90,7 +90,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [4.7.5] - 2023-01-10
 
@@ -98,269 +98,269 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [4.7.1] - 2022-12-13
 
 ### Changed
 
-* Added `react-dom` to peer dependencies.
+- Added `react-dom` to peer dependencies.
 
 ## [4.7.0] - 2022-12-12
 
 ### Added
 
-* Design tokens based theming.
+- Design tokens based theming.
 
 ## [4.6.5] - 2022-11-30
 
 ### Fixed
 
-* Fixed showing types in autocomplete IDE.
+- Fixed showing types in autocomplete IDE.
 
 ## [4.6.4] - 2022-11-30
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.41.0]).
 
 ## [4.6.0] - 2022-10-10
 
 ### Changed
 
-* Added support for React 18 🔥
+- Added support for React 18 🔥
 
 ## [4.5.12] - 2022-10-04
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [4.5.3] - 2022-05-19
 
 ### Fixed
 
-* Synced dependencies versions to remove duplicates in the single export package.
+- Synced dependencies versions to remove duplicates in the single export package.
 
 ## [4.5.1] - 2022-03-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
 
 ## [4.5.0] - 2022-02-24
 
 ### Added
 
-* Added `gap`, `rowGap` and `columnGap` css properties support for `Flex` component.
+- Added `gap`, `rowGap` and `columnGap` css properties support for `Flex` component.
 
 ## [4.4.3] - 2021-10-20
 
 ### Fixed
 
-* [TS] Fixed type `direction` for `Flex`.
+- [TS] Fixed type `direction` for `Flex`.
 
 ## [4.4.2] - 2021-10-13
 
 ### Fixed
 
-* [TS] Fixed type `position` for `Box`.
+- [TS] Fixed type `position` for `Box`.
 
 ## [4.4.1] - 2021-8-26
 
 ### Changed
 
-* Add 'sideEffect=false' for more optimal build via webpack
+- Add 'sideEffect=false' for more optimal build via webpack
 
 ## [4.4.0] - 2021-04-26
 
 ### Changed
 
-* Version of dependence `@semcore/core` has been changed to `1.11`.
-* Improved performance. Removed one component wrapper.
-* The style processing system has been changed.
-* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
 ## [4.3.2] - 2021-03-25
 
 ### Fixed
 
-* [TS] Fixed type `boxSize`, value `content-box` set browser by default.
+- [TS] Fixed type `boxSize`, value `content-box` set browser by default.
 
 ## [4.3.1] - 2021-02-19
 
 ### Fixed
 
-* [Box] Added change css styles after change value by props `top, left, right, bottom`.
+- [Box] Added change css styles after change value by props `top, left, right, bottom`.
 
 ## [4.3.0] - 2020-12-17
 
 ### Added
 
-* Added supported react@17.
+- Added supported react@17.
 
 ## [4.2.0] - 2020-12-03
 
 ### Added
 
-* Added new property: `zIndex`.
+- Added new property: `zIndex`.
 
 ## [4.1.1] - 2020-12-03
 
 ### Changed
 
-* Moved `flex` property from Flex to Box.
+- Moved `flex` property from Flex to Box.
 
 ## [4.1.0] - 2020-11-05
 
 ### Added
 
-* Added new property: `postion, top, left, right, bottom`.
+- Added new property: `postion, top, left, right, bottom`.
 
 ## [4.0.4] - 2020-10-29
 
 ### Fixed
 
-* Added the placeholder for ID style tag to improve collision protection.
+- Added the placeholder for ID style tag to improve collision protection.
 
 ## [4.0.3] - 2020-09-08
 
 ### Fixed
 
-* Fixed possible styles collisions between components with different versions, but same styles
+- Fixed possible styles collisions between components with different versions, but same styles
 
 ## [4.0.2] - 2020-09-07
 
 ### Fixed
 
-* Flag `sideEffects` now contain list of files with side effects
+- Flag `sideEffects` now contain list of files with side effects
 
 ## [4.0.1] - 2020-09-03
 
 ### Fixed
 
-* Added flag `sideEffects: false` to package.json
+- Added flag `sideEffects: false` to package.json
 
 ## [4.0.0] - 2020-05-28
 
 ### BREAK
 
-* Изменения описаны в [migration guide](/internal/migration-guide)
+- Изменения описаны в [migration guide](/internal/migration-guide)
 
 ## [3.5.3] - 2020-01-23
 
 ### Fixed
 
-* Откатили вставку свойств `inline` (inline-flex), `direction` & `reverse` (flex-direction), `wrap` (flex-wrap) через CSS-класс, т.к. это ломало обратную совметсимость.
+- Откатили вставку свойств `inline` (inline-flex), `direction` & `reverse` (flex-direction), `wrap` (flex-wrap) через CSS-класс, т.к. это ломало обратную совметсимость.
 
 ## [3.5.2] - 2020-01-16
 
 ### Changed
 
-* Свойство `inline` (inline-flex), `direction` & `reverse` (flex-direction), `wrap` (flex-wrap) выставляется через CSS-класс, это улучшает производиительность
+- Свойство `inline` (inline-flex), `direction` & `reverse` (flex-direction), `wrap` (flex-wrap) выставляется через CSS-класс, это улучшает производиительность
 
 ## [3.5.1] - 2020-01-15
 
 ### Fixed
 
-* Возвращены единицы измерения отступов в px(были в rem)
+- Возвращены единицы измерения отступов в px(были в rem)
 
 ## [3.5.0] - 2019-12-26
 
 ### Added
 
-* Появилась свойство собирательное свойство `flex`
+- Появилась свойство собирательное свойство `flex`
 
 ## [3.4.0] - 2019-12-12
 
 ### Added
 
-* Появилась возможность добавления различных стилистических тем через css переменные
-* Появилась возможность оптицонально подключать адаптивноссть
-* Появилась возможность изолировать стили даже в пределах одной страницы
+- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность оптицонально подключать адаптивноссть
+- Появилась возможность изолировать стили даже в пределах одной страницы
 
 ### Changed
 
-* Изменен алгоритм вставки стилей в head
+- Изменен алгоритм вставки стилей в head
 
 ### Removed
 
-* Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
 ## [3.3.0] - 2019-11-14
 
 ### Added
 
-* Добавлена адаптивность на маленьких экранах(<768px)
+- Добавлена адаптивность на маленьких экранах(<768px)
 
 ## [3.2.0] - 2019-10-10
 
 ### Added
 
-* Добавлен `ref` на дом ноду
+- Добавлен `ref` на дом ноду
 
 ### Changed
 
-* Переписано на функциональный компонент
+- Переписано на функциональный компонент
 
 ## [3.1.1] - 2019-09-30
 
 ### Changed
 
-* Нужные зависимости перенесены в `utils`, размер должен стать меньше
+- Нужные зависимости перенесены в `utils`, размер должен стать меньше
 
 ## [3.1.0] - 2019-02-11
 
 ### Added
 
-* Добавлены свойства `wMin`, `wMax`, `hMin` и `hMax`
+- Добавлены свойства `wMin`, `wMax`, `hMin` и `hMax`
 
 ## [3.0.0] - 2019-01-18
 
 ### BREAK
 
-* У `Flex` переименовано свойство `flex` -> `flexWrap`
-* У `Flex` свойства `alignItems`, `alignContent`, `justifyContent` теперь принимают значения соответствующие значениям в css
+- У `Flex` переименовано свойство `flex` -> `flexWrap`
+- У `Flex` свойства `alignItems`, `alignContent`, `justifyContent` теперь принимают значения соответствующие значениям в css
 
 ### Added
 
-* Добавлен `export default {Flex, Box}`
+- Добавлен `export default {Flex, Box}`
 
 ### Fixed
 
-* Исправлены не корректное поведение при отрицательных значениях рассчете размера и отступов а `Box`
+- Исправлены не корректное поведение при отрицательных значениях рассчете размера и отступов а `Box`
 
 ## [2.0.1] - 2018-12-11
 
 ### Removed
 
-* Убран `display: block` по умолчанию
+- Убран `display: block` по умолчанию
 
 ## [2.0.0] - 2018-12-10
 
 ### BREAK
 
-* Убраны свойства `alignSelf`, `flexBasis` , `flexGrow`, `flexShrink`, `flex`, `order`
-* Переименованны свойства `height` -> `h`, `width` -> `w`
+- Убраны свойства `alignSelf`, `flexBasis` , `flexGrow`, `flexShrink`, `flex`, `order`
+- Переименованны свойства `height` -> `h`, `width` -> `w`
 
 ### Added
 
-* Добавленно свойство `inline` для `Box`
+- Добавленно свойство `inline` для `Box`
 
 ## [1.1.0] - 2018-11-23
 
 ### Added
 
-* Добавлен autocomplete для IDE
+- Добавлен autocomplete для IDE
 
 ## [1.0.1] - 2018-11-07
 
 ### Fixed
 
-* исправлена работа свойств `width`/`height`
+- исправлена работа свойств `width`/`height`
 
 ## [1.0.0] - 2018-10-02
 
 ### Added
 
-* Initial release
+- Initial release
