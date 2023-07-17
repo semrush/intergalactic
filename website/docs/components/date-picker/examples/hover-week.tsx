@@ -31,19 +31,19 @@ const Demo = () => {
       onChange={setValue}
       highlighted={highlighted}
     >
-      <DateRangePicker.InputTrigger>
-        <DateRangePicker.InputTrigger.DateRange>
-          <DateRangePicker.InputTrigger.DateRange.Indicator />
-          <DateRangePicker.InputTrigger.DateRange.FromMaskedInput />
-          <DateRangePicker.InputTrigger.DateRange.RangeSep />
-          <DateRangePicker.InputTrigger.DateRange.ToMaskedInput disabled />
-        </DateRangePicker.InputTrigger.DateRange>
-      </DateRangePicker.InputTrigger>
+      <DateRangePicker.Trigger>
+        <DateRangePicker.Trigger.DateRange>
+          <DateRangePicker.Trigger.DateRange.Indicator />
+          <DateRangePicker.Trigger.DateRange.FromMaskedInput />
+          <DateRangePicker.Trigger.DateRange.RangeSep />
+          <DateRangePicker.Trigger.DateRange.ToMaskedInput disabled />
+        </DateRangePicker.Trigger.DateRange>
+      </DateRangePicker.Trigger>
       <DateRangePicker.Popper>
         <DateRangePicker.Header />
         <DateRangePicker.Calendar
           renderOutdated
-          onHighlighted={(date) => {
+          onHighlightedChange={(date) => {
             if (date.length === 1) setHighlighted([]);
           }}
         >

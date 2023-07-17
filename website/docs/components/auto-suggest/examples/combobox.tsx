@@ -5,7 +5,7 @@ import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const options = Array(12)
-  .fill()
+  .fill(0)
   .map((_, i) => ({
     value: `${i}:00`.padStart(5, '0'),
     title: `${i}:00`.padStart(5, '0'),
@@ -16,7 +16,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' size='200' htmlFor='release-time-picker'>
+      <Text tag='label' size={200} htmlFor='release-time-picker'>
         Select release time
       </Text>
       <Box mt={2}>

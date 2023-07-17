@@ -4,7 +4,7 @@ import os from 'os';
 import { VoiceOver } from '@guidepup/guidepup/lib/macOS/VoiceOver/VoiceOver';
 import { CommandOptions } from '@guidepup/guidepup';
 
-const darwin2macos = {
+const darwin2macos: Record<number, string> = {
   22: 'Ventura 13',
   21: 'Monterey 12',
   20: 'Big Sur 11',
@@ -142,7 +142,7 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
         }
         actionsLog.push(`Screen reader performs "${command.description}".`);
       } else {
-        const commandName = baseVoiceOver.commander.commands[command as any];
+        const commandName = (baseVoiceOver.commander.commands as any)[command as any];
         actionsLog.push(`Screen reader performs "${commandName}".`);
       }
 
@@ -151,8 +151,8 @@ export const makeVoiceOverReporter = async (baseVoiceOver: VoiceOver) => {
       return result;
     },
     click: async (options) => {
-      let action = `Screen reader clicks with ${options.button ?? 'left'} mouse button.`;
-      if (options.clickCount > 1) {
+      let action = `Screen reader clicks with ${options?.button ?? 'left'} mouse button.`;
+      if (options?.clickCount && options.clickCount > 1) {
         action += ` ${options.clickCount} times`;
       }
       actionsLog.push(action);

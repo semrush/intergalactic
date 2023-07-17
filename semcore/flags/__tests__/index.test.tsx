@@ -44,17 +44,17 @@ describe('Flags', () => {
     expect(link.tagName).toBe('LINK');
   });
 
-  test.skip('Should support no name country', async ({ task }) => {
-    const component = (
-      <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Flags />
-        <Flags iso2='AA' />
-        <Flags iso3='AAA' />
-      </snapshot.ProxyProps>
-    );
+  // test.skip('Should support no name country', async ({ task }) => {
+  //   const component = (
+  //     <snapshot.ProxyProps style={{ margin: 5 }}>
+  //       <Flags />
+  //       <Flags iso2='AA' />
+  //       <Flags iso3='AAA' />
+  //     </snapshot.ProxyProps>
+  //   );
 
-    await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
+  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  // });
 
   test.skip('a11y', async () => {
     const { container } = render(<Flags />);

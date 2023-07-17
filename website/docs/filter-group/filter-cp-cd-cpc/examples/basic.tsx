@@ -80,7 +80,7 @@ export default () => {
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState({ from: '', to: '' });
   const [displayValue, setDisplayValue] = useState('');
-  const clearAll = () => setFilters(0);
+  const clearAll = () => setFilters(false);
   const applyFilters = () => {
     const { from, to } = value;
     setVisible(false);

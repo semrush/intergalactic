@@ -35,7 +35,7 @@ const CONTEXT_COMPONENT = Symbol('CONTEXT_COMPONENT');
 const CREATE_COMPONENT = Symbol('CREATE_COMPONENT');
 const PARENT_COMPONENTS = Symbol('PARENT_COMPONENTS');
 
-function isEmptyObject(obj) {
+function isEmptyObject(obj: any) {
   return (
     Object.getOwnPropertyNames(obj).length === 0 &&
     Object.getOwnPropertySymbols && // For IE 11
@@ -44,16 +44,16 @@ function isEmptyObject(obj) {
   );
 }
 
-function createGetField(enhancements, Component, isFunction) {
-  return function getField(key) {
+function createGetField(enhancements: any, Component: any, isFunction: boolean) {
+  return function getField(key: string) {
     return enhancements
-      .filter((enhancement) => {
+      .filter((enhancement: any) => {
         if (!enhancement.condition) {
           return true;
         }
         return enhancement.condition(Component, isFunction);
       })
-      .reduce((acc, item) => {
+      .reduce((acc: any, item: any) => {
         if (item[key]) {
           acc.push(item[key]);
         }
@@ -62,7 +62,7 @@ function createGetField(enhancements, Component, isFunction) {
   };
 }
 
-function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
+function createForwardWrapper(Component: any, wrapperProps: any, statics: any, isFunction: any) {
   const RootComponent = Component[ROOT_COMPONENT];
   const getterMethodName = getterMethodNameByDisplayName(Component?.displayName);
   const getterMethod = RootComponent?.prototype
@@ -70,14 +70,17 @@ function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
     : undefined;
   const useGetterIndex = getterMethod?.length >= 2;
 
-  function WrapperForwardRefWithBind({ forwardRef = null, ...other }, ref) {
+  function WrapperForwardRefWithBind({ forwardRef = null, ...other }, ref: any) {
     return <BindingWrapper {...other} forwardRef={useForkRef(ref, forwardRef)} />;
   }
 
-  function WrapperForwardRef({ forwardRef = null, __WRAPPER_PROPS_BIND__, ...other }, ref) {
+  function WrapperForwardRef(
+    { forwardRef = null, __WRAPPER_PROPS_BIND__, ...other }: any,
+    ref: any,
+  ) {
     const { ref: enhancementRef = null, ...props } = (
       __WRAPPER_PROPS_BIND__ || wrapperProps
-    ).reduce((acc, enhancement) => enhancement(acc, WrapperComponent, isFunction), other);
+    ).reduce((acc: any, enhancement: any) => enhancement(acc, WrapperComponent, isFunction), other);
     return <Component {...props} forwardRef={useForkRef(enhancementRef, ref, forwardRef)} />;
   }
 
@@ -87,7 +90,7 @@ function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
       return (
         <WrapperForwardRef
           {...this.props}
-          __WRAPPER_PROPS_BIND__={wrapperProps.map((fn) => fn.bind(this))}
+          __WRAPPER_PROPS_BIND__={wrapperProps.map((fn: any) => fn.bind(this))}
         />
       );
     }
@@ -103,14 +106,14 @@ function createForwardWrapper(Component, wrapperProps, statics, isFunction) {
   // TODO: defaultProps is only empty
   WrapperComponent.defaultProps = Component.defaultProps;
   // STATIC
-  statics.forEach((enhancement) =>
+  statics.forEach((enhancement: any) =>
     Object.assign(WrapperComponent, enhancement(WrapperComponent, Component, isFunction)),
   );
 
   return WrapperComponent;
 }
 
-function wrapClass(OriginComponent, enhancements, Context) {
+function wrapClass(OriginComponent: any, enhancements: any, Context: any) {
   const getField = createGetField(enhancements, OriginComponent, false);
 
   const inits = getField('init');
@@ -125,10 +128,10 @@ function wrapClass(OriginComponent, enhancements, Context) {
     [CORE_INSTANCE] = WrapperComponent;
     [CORE_INIT] = false;
 
-    constructor(props, context) {
+    constructor(props: any, context: any) {
       super(props, context);
       // INITS
-      inits.forEach((enhancement) => enhancement.call(this, props, WrapperComponent, false));
+      inits.forEach((enhancement: any) => enhancement.call(this, props, WrapperComponent, false));
       this[CORE_INIT] = true;
     }
 
@@ -140,7 +143,7 @@ function wrapClass(OriginComponent, enhancements, Context) {
       if (!this[CORE_AS_PROPS]) {
         // PROPS
         this[CORE_AS_PROPS] = props.reduce(
-          (acc, enhancement) => enhancement.call(this, acc, WrapperComponent, false),
+          (acc: any, enhancement: any) => enhancement.call(this, acc, WrapperComponent, false),
           this.props,
         );
       }
@@ -151,7 +154,7 @@ function wrapClass(OriginComponent, enhancements, Context) {
       const contextProps = super.setContext ? super.setContext() : {};
       // CONTEXT
       return contexts.reduce(
-        (acc, enhancement) => enhancement.call(this, acc, WrapperComponent, false),
+        (acc: any, enhancement: any) => enhancement.call(this, acc, WrapperComponent, false),
         contextProps,
       );
     }
@@ -162,11 +165,12 @@ function wrapClass(OriginComponent, enhancements, Context) {
       if (!super.render) {
         throw new Error('Component `render` method is not defined');
       }
-      const asProps = this.asProps;
+      const asProps: any = this.asProps;
       const ctx = this.setContext();
       // RENDER
       const render = renders.reduce(
-        (acc, enhancement) => enhancement.call(this, acc, asProps, WrapperComponent, false),
+        (acc: any, enhancement: any) =>
+          enhancement.call(this, acc, asProps, WrapperComponent, false),
         super.render(),
       );
       if (!WrapperComponent[STATIC_COMPONENT] && !isEmptyObject(ctx)) {
@@ -177,11 +181,11 @@ function wrapClass(OriginComponent, enhancements, Context) {
     }
   }
 
-  const WrapperComponent = createForwardWrapper(Component, wrapperProps, statics, false);
+  const WrapperComponent: any = createForwardWrapper(Component, wrapperProps, statics, false);
   return WrapperComponent;
 }
 
-function wrapFunction(OriginComponent, enhancements, Context) {
+function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
   const getField = createGetField(enhancements, OriginComponent, true);
 
   const inits = getField('init');
@@ -199,24 +203,27 @@ function wrapFunction(OriginComponent, enhancements, Context) {
     }, []);
     if (firstRender.current) {
       // INITS
-      inits.forEach((enhancement) =>
+      inits.forEach((enhancement: any) =>
         enhancement.call(selfRef.current, other, WrapperComponent, true),
       );
     }
     // PROPS
     const asProps = props.reduce(
-      (acc, enhancement) => enhancement.call(selfRef.current, acc, WrapperComponent, true),
+      (acc: any, enhancement: any) =>
+        enhancement.call(selfRef.current, acc, WrapperComponent, true),
       other,
     );
     // CONTEXT
     const ctx = contexts.reduce(
-      (acc, enhancement) => enhancement.call(selfRef.current, acc, WrapperComponent, true),
+      (acc: any, enhancement: any) =>
+        enhancement.call(selfRef.current, acc, WrapperComponent, true),
       {},
     );
 
     // RENDER
     const render = renders.reduce(
-      (acc, enhancement) => enhancement.call(selfRef.current, acc, asProps, WrapperComponent, true),
+      (acc: any, enhancement: any) =>
+        enhancement.call(selfRef.current, acc, asProps, WrapperComponent, true),
       <OriginComponent {...asProps} />,
     );
 
@@ -227,12 +234,12 @@ function wrapFunction(OriginComponent, enhancements, Context) {
     }
   });
   Object.assign(Component, OriginComponent);
-  const WrapperComponent = createForwardWrapper(Component, wrapperProps, statics, true);
+  const WrapperComponent: any = createForwardWrapper(Component, wrapperProps, statics, true);
   return WrapperComponent;
 }
 
-function wrapCore(OriginComponent, enhancements, Context) {
-  const Component = function ({ Root }) {
+function wrapCore(OriginComponent: any, enhancements: any, Context: any) {
+  const Component = function ({ Root }: any) {
     return <Root render={OriginComponent} />;
   };
   hoistNonReactStatics(Component, OriginComponent);
@@ -241,7 +248,7 @@ function wrapCore(OriginComponent, enhancements, Context) {
   return wrapFunction(Component, enhancements, Context);
 }
 
-function createComposeComponent(OriginComponent, Context, enhancements): any {
+function createComposeComponent(OriginComponent: any, Context: any, enhancements: any): any {
   if (
     React.PureComponent.isPrototypeOf(OriginComponent) ||
     React.Component.isPrototypeOf(OriginComponent)
@@ -293,13 +300,13 @@ interface ClassWithUncontrolledProps<Props> {
   uncontrolledProps(): unknown;
 }
 
-function assignProps(p1, p2) {
+function assignProps(p1: any, p2: any) {
   return _assignProps(p2, p1);
 }
 
 function createComponent<ComponentProps, ChildComponentProps = {}, ContextType = {}, FNType = null>(
-  OriginComponent,
-  childComponents = {},
+  OriginComponent: any,
+  childComponents: any = {},
   options: {
     context?: React.Context<ContextType>;
     parent?: ComponentType<unknown> | ComponentType<unknown>[];
@@ -321,7 +328,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   } = options;
   let parents = Array.isArray(parent) ? parent : [parent];
   if (parents.length) {
-    const wholeFamily = parents.reduce((acc, parent) => {
+    const wholeFamily = parents.reduce((acc: any, parent: any) => {
       if (parent[PARENT_COMPONENTS]) {
         acc = [...parent[PARENT_COMPONENTS], ...acc];
       }
@@ -360,6 +367,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
     hoistPropsEnhancement(childComponents, context),
   ]);
   Component[CONTEXT_COMPONENT] = context;
+  Component._______childrenComponents = childComponents;
   Component[CREATE_COMPONENT] = function (
     _OriginComponent = OriginComponent,
     _childComponents = childComponents,
@@ -371,7 +379,7 @@ function createComponent<ComponentProps, ChildComponentProps = {}, ContextType =
   return Component;
 }
 
-function createBaseComponent<ComponentProps>(OriginComponent): ComponentType<ComponentProps> {
+function createBaseComponent<ComponentProps>(OriginComponent: any): ComponentType<ComponentProps> {
   let Component = null;
   if (
     !React.PureComponent.isPrototypeOf(OriginComponent) &&
@@ -384,12 +392,16 @@ function createBaseComponent<ComponentProps>(OriginComponent): ComponentType<Com
       'data-ui-name': OriginComponent.displayName,
       ...OriginComponent.defaultProps,
     };
-    Component[CORE_COMPONENT] = true;
+    (Component as any)[CORE_COMPONENT] = true;
   } else {
     throw new Error('createBaseComponent accepts only functional component');
   }
-  return Component;
+  return Component as any;
 }
+
+export type UnknownProperties = {
+  [key: string]: unknown;
+};
 
 export * from './Component';
 export * from './styled';

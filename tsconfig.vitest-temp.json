@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "lib": [
+      "dom",
+      "es2019"
+    ],
+    "jsx": "react",
+    "declaration": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": false,
+    "sourceMap": true,
+    "importHelpers": false,
+    "noEmitHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./semcore",
+    "typeRoots": [
+      "node_modules/@types",
+      "semcore/data-table/node_modules/@types",
+      "tools/@types"
+    ],
+    "emitDeclarationOnly": false,
+    "incremental": true,
+    "tsBuildInfoFile": "/Users/phytonmk/projects/intergalactic/node_modules/.pnpm/vitest@0.32.0_@vitest+browser@0.32.0_@vitest+ui@0.32.0_happy-dom@9.20.3_playwright@1.25.1/node_modules/vitest/dist/tsconfig.tmp.tsbuildinfo"
+  },
+  "paths": {
+    "@semcore/ui/*": [
+      "semcore/*"
+    ],
+    "@semcore/*": [
+      "semcore/*"
+    ],
+    "@tools/*": [
+      "tools/*"
+    ]
+  },
+  "project": [
+    "./semcore/*/tsconfig.json",
+    "./tools/*/tsconfig.json"
+  ],
+  "include": [
+    "semcore",
+    "tools"
+  ],
+  "exclude": [
+    "node_modules",
+    "tools/playground/examples/*",
+    "tools/playground/examples/**/*"
+  ]
+}

@@ -3,11 +3,10 @@ import { Text } from '@semcore/ui/typography';
 import Skeleton from '@semcore/ui/skeleton';
 
 class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.width = 600;
-    this.height = 100;
-  }
+  width = 600;
+  height = 100;
+  timerFetch: any = -1;
+  timer: any = -1;
 
   state = { loading: true };
 

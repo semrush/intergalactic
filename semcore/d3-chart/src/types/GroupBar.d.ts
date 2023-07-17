@@ -1,21 +1,24 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import { IBarContext, IBarProps } from './Bar';
-import { IHorizontalBarProps } from './HorizontalBar';
-import IContext from './context';
+import { UnknownProperties } from '@semcore/core';
+import { BarContext, BarProps } from './Bar';
+import { HorizontalBarProps } from './HorizontalBar';
+import { Context } from './context';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IGroupBarProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IGroupBarProps extends GroupBarProps, UnknownProperties {}
+export type GroupBarProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Scale for group bars */
+  /** @deprecated */
   scaleGroup?: any;
-}
+};
 
-declare const GroupBar: (<T>(props: MapProps<IGroupBarProps & T>) => ReturnEl) & {
-  Bar: <T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl;
-  HorizontalBar: <T>(props: MapProps<IHorizontalBarProps & T, IBarContext>) => ReturnEl;
+declare const GroupBar: IntergalacticD3Component<'g', GroupBarProps> & {
+  Bar: IntergalacticD3Component<'path', BarProps>;
+  HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext>;
 };
 
 export default GroupBar;

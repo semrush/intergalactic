@@ -3,15 +3,16 @@ import DataTable from '@semcore/ui/data-table';
 import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
 
-const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
-  return (
-    <Accordion.Item value={value} ref={ref}>
-      <Accordion.Item.Toggle {...props} />
-      {/* [3] Set a variable to remove overflow */}
-      <Accordion.Item.Collapse {...collapse} overflowHidden={false} />
-    </Accordion.Item>
-  );
-});
+const RowAccordion = React.forwardRef(
+  ({ value, collapse = {}, ...props }: any, ref: React.Ref<HTMLDivElement>) => {
+    return (
+      <Accordion.Item value={value} ref={ref}>
+        <Accordion.Item.Toggle {...props} />
+        <Accordion.Item.Collapse {...collapse} />
+      </Accordion.Item>
+    );
+  },
+);
 
 export default () => {
   const [value, setValue] = useState([]);
@@ -25,7 +26,7 @@ export default () => {
           <DataTable.Column name='vol' children='Vol.' />
         </DataTable.Head>
         <DataTable.Body>
-          <DataTable.Row<{}, typeof data> tag={RowAccordion}>
+          <DataTable.Row tag={RowAccordion}>
             {(_props, _row, index) => {
               return {
                 value: index,
@@ -48,7 +49,7 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<{}, typeof data> name='keyword'>
+          <DataTable.Cell<typeof data> name='keyword'>
             {(props) => {
               return {
                 children: (

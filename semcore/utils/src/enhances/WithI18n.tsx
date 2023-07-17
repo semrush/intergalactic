@@ -1,29 +1,34 @@
 import React, { Component, createContext } from 'react';
 import createHoc from '../createHoc';
 import { interpolate, useAsyncI18nMessages } from './i18nEnhance';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
 export type LocaleKeys = string;
 export type DictionaryItem = { [key: string]: string };
 export type Dictionary = { [locale: string]: DictionaryItem | (() => Promise<DictionaryItem>) };
-export const Context = createContext<LocaleKeys>(undefined);
+export const Context = createContext<LocaleKeys | undefined>(undefined);
 const { Provider: I18nProvider, Consumer: I18nConsumer } = Context;
 
 function getText(dictionaries: Dictionary, locale: LocaleKeys) {
   return function (key: keyof DictionaryItem) {
     const dictionary = dictionaries[locale];
-    return dictionary ? dictionary[key] : dictionaries['en'][key];
+    return dictionary ? (dictionary as any)[key] : (dictionaries as any)['en'][key];
   };
 }
 
-export interface IWithI18nInjectedProps {
+/** @deprecated */
+export interface IWithI18nInjectedProps extends WithI18nInjectedProps, UnknownProperties {}
+export type WithI18nInjectedProps = {
   getText: WithI18n['getText'];
-}
+};
 
-export interface IWithI18nProps extends IWithI18nInjectedProps {
+/** @deprecated */
+export interface IWithI18nProps extends WithI18nProps, UnknownProperties {}
+export type WithI18nProps = WithI18nInjectedProps & {
   locale?: LocaleKeys;
 
   children?(props: IWithI18nInjectedProps): React.ReactNode;
-}
+};
 
 /**
  * @deprecated use `useI18n` instead
@@ -37,14 +42,14 @@ class WithI18n extends Component<IWithI18nProps> {
     getText,
   };
 
-  getText = (dictionary: Dictionary, selfLocale) => {
+  getText = (dictionary: Dictionary, selfLocale?: string): string => {
     const { locale, getText } = this.props;
     const contextLocale = this.context;
     return getText(dictionary, selfLocale || locale || contextLocale);
   };
 
   render() {
-    const { children } = this.props;
+    const { children } = this.props as any;
     return children({
       getText: this.getText,
     });

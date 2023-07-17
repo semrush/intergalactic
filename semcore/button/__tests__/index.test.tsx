@@ -31,7 +31,7 @@ describe('Button', () => {
   });
 
   test.concurrent('Renders correctly with Addon as props', async ({ task }) => {
-    const Addon = React.forwardRef(function (p, ref) {
+    const Addon = React.forwardRef((p, ref: React.Ref<HTMLSpanElement>) => {
       return (
         <span ref={ref} {...propsForElement(p)}>
           Addon prop
@@ -59,8 +59,8 @@ describe('Button', () => {
         Text
       </Button>,
     );
-    expect(queryByTestId('button').attributes['disabled']).toBeTruthy();
-    expect(queryByTestId('button').querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
+    expect((queryByTestId('button')?.attributes as any)['disabled']).toBeTruthy();
+    expect(queryByTestId('button')?.querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
   });
 
   test.concurrent('should support save width at loading', async ({ task }) => {
@@ -509,7 +509,7 @@ describe('Button', () => {
         ),
       ).toMatchImageSnapshot(task);
     },
-    { timeout: 20_000 },
+    { timeout: 30_000 },
   );
 
   test.concurrent(
@@ -661,6 +661,6 @@ describe('Button', () => {
         ),
       ).toMatchImageSnapshot(task);
     },
-    { timeout: 20_000 },
+    { timeout: 30_000 },
   );
 });

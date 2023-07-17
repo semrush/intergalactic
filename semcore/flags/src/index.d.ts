@@ -1,5 +1,5 @@
-import { IBoxProps } from '@semcore/flex-box';
-import { ReturnEl } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
 export declare const iso2Name: {
   AF: string;
@@ -1279,6 +1279,7 @@ export declare const iso3iso2: {
  * Northern Cyprus,
  * Northern Ireland,
  * Scotland,
+ * Somaliland,
  * South Ossetia,
  * United Nations,
  * Wales.
@@ -1297,6 +1298,7 @@ export declare const nameWithoutIso: {
   northern_cyprus: string;
   northern_ireland: string;
   scotland: string;
+  somaliland: string;
   south_ossetia: string;
   united_nations: string;
   wales: string;
@@ -1313,6 +1315,7 @@ export declare const nameWithoutIso: {
   NORTHERN_CYPRUS: string;
   NORTHERN_IRELAND: string;
   SCOTLAND: string;
+  SOMALILAND: string;
   SOUTH_OSSETIA: string;
   UNITED_NATIONS: string;
   WALES: string;
@@ -1320,9 +1323,10 @@ export declare const nameWithoutIso: {
 
 type iso2 = keyof typeof iso2Name;
 type iso3 = keyof typeof iso3Name;
-type name = keyof typeof nameWithoutIso;
 
-export interface IFlagsProps extends IBoxProps {
+/** @deprecated */
+export interface IFlagsProps extends FlagsProps, UnknownProperties {}
+export type FlagsProps = BoxProps & {
   /** URL before css file with a sprite
    * @default `//static.semrush.com/ui-kit/flags/${version package}`
    */
@@ -1332,9 +1336,9 @@ export interface IFlagsProps extends IBoxProps {
   /** Country code in three-letter format */
   iso3?: iso3;
   /** Country code in two-letter or three-letter format or country/union of countries without ISO code */
-  name?: name | iso2 | iso3;
-}
+  name?: iso2 | iso3;
+};
 
-declare const Flags: <T>(props: IFlagsProps & T) => ReturnEl;
+declare const Flags: Intergalactic.Component<'div', FlagsProps>;
 
 export default Flags;

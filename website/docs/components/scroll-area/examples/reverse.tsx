@@ -24,6 +24,7 @@ const Block = styled.div`
 `;
 
 class Demo extends React.PureComponent {
+  mirror: any;
   handleScrollMain = (e) => {
     this.mirror.scrollTop =
       this.mirror.scrollHeight - this.mirror.clientHeight - e.currentTarget.scrollTop;

@@ -6,10 +6,10 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { render, cleanup, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
-function fakeTemporaryBlock(rect) {
+function fakeTemporaryBlock(rect: any) {
   const originalCreateElement = global.document.createElement;
 
-  global.document.createElement = (tag, ...other) => {
+  global.document.createElement = (tag: any, ...other: any[]) => {
     if (tag === 'temporary-block') {
       const temporaryBlock = originalCreateElement.call(document, tag, ...other);
       fakeBoundingClientRect(rect)(temporaryBlock);
@@ -23,8 +23,8 @@ function fakeTemporaryBlock(rect) {
   };
 }
 
-function fakeBoundingClientRect(rect) {
-  return (node) => {
+function fakeBoundingClientRect(rect: any) {
+  return (node: any) => {
     if (!node) return;
     node.getBoundingClientRect = () => ({
       width: 0,
@@ -74,7 +74,7 @@ describe('Ellipsis', () => {
     class ResizeObserver {
       private cb: any;
 
-      constructor(cb) {
+      constructor(cb: any) {
         this.cb = cb;
       }
 

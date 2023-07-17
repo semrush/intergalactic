@@ -2,7 +2,7 @@ import React from 'react';
 import { Plot, StackBar, YAxis, XAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import resolveColor from '@semcore/ui/utils/color';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
 

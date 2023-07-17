@@ -1,11 +1,10 @@
 import React from 'react';
 import { Component, sstyled, Root } from '@semcore/core';
-import { Box, Flex, IBoxProps } from '@semcore/flex-box';
+import { Box, Flex } from '@semcore/flex-box';
 import ScrollArea from '@semcore/scroll-area';
 import { getFixedStyle, getScrollOffsetValue } from './utils';
 import { RowData, Column, NestedCells, PropsLayer, Cell } from './types';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import ResizeObserver from 'resize-observer-polyfill';
 import scrollStyles from './style/scroll-area.shadow.css';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
@@ -44,7 +43,7 @@ class Body extends Component<AsProps, State> {
     scrollOffset: 0,
   };
 
-  firstRowRef = React.createRef<HTMLElement>();
+  firstRowRef = React.createRef<HTMLDivElement>();
   firstRowResizeObserver: ResizeObserver | null = null;
 
   getRowHeight = () => {
@@ -76,7 +75,7 @@ class Body extends Component<AsProps, State> {
         const vars = (Array.isArray(cell.cssVar) ? cell.cssVar : [cell.cssVar]).map(
           (name) => `var(${name})`,
         );
-        type CellProps = IBoxProps & {
+        type CellProps = any & {
           name: string;
           children: React.ReactNode;
           style: React.CSSProperties;
@@ -240,7 +239,8 @@ class Body extends Component<AsProps, State> {
   render() {
     const SBody = Root;
     const SBodyWrapper = Box;
-    const SScrollAreaBar = ScrollArea.Bar;
+    const SScrollAreaBar = ScrollArea.Bar as any;
+    const SScrollArea = ScrollArea as any;
     const SHeightHold = Box;
     const {
       Children,
@@ -269,7 +269,7 @@ class Body extends Component<AsProps, State> {
 
     return sstyled(styles)(
       <SBodyWrapper>
-        <ScrollArea
+        <SScrollArea
           shadow
           styles={scrollStyles}
           use:left={`${offsetLeftSum}px`}
@@ -277,13 +277,13 @@ class Body extends Component<AsProps, State> {
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
-          <ScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
+          <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
             <SBody render={Box}>
               {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
               {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
               {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
             </SBody>
-          </ScrollArea.Container>
+          </SScrollArea.Container>
           <SScrollAreaBar
             orientation='horizontal'
             left={`${offsetLeftSum}px`}
@@ -291,7 +291,7 @@ class Body extends Component<AsProps, State> {
             offsetSum={`${offsetSum}px`}
           />
           <SScrollAreaBar orientation='vertical' />
-        </ScrollArea>
+        </SScrollArea>
         {Children.origin}
       </SBodyWrapper>,
     );

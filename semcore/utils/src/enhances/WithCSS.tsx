@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import { NanoOptions } from 'nano-css';
-import { CssLikeObject } from 'nano-css/types/common';
+import { NanoOptions } from '@phytonmk/nano-css';
+import { CssLikeObject } from '@phytonmk/nano-css/types/common';
 import createHoc from '../createHoc';
 import CSSinJS from '../CSSinJS';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
 const getStylesheet = () => CSSinJS().raw;
 
@@ -12,7 +13,7 @@ const getStylesheet = () => CSSinJS().raw;
  * @returns {Object}
  */
 function normaliseCss(obj: CssLikeObject) {
-  return Object.keys(obj).reduce((acc, key) => {
+  return Object.keys(obj).reduce((acc: any, key) => {
     const result = acc;
     if (obj[key] !== undefined) {
       result[key] = obj[key];
@@ -28,12 +29,14 @@ function initNanoCss(options: NanoOptions = {}) {
   return CSSinJS(options);
 }
 
-export interface IEnhancedWithCSSProps {
+/** @deprecated */
+export interface IEnhancedWithCSSProps extends EnhancedWithCSSProps, UnknownProperties {}
+export type EnhancedWithCSSProps = {
   className?: string;
   css?: {};
 
-  children(props: { className: string }): React.ReactNode;
-}
+  children(props: { className: string | undefined }): React.ReactNode;
+};
 
 class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
   static contextType = WithCssContext;
@@ -46,14 +49,14 @@ class EnhancedWithCSS extends PureComponent<IEnhancedWithCSSProps> {
     dynamicClassName: '',
   };
 
-  static getDerivedStateFromProps(props) {
+  static getDerivedStateFromProps(props: any) {
     const cleanCss = normaliseCss(props.css);
     return {
-      dynamicClassName: Object.keys(cleanCss).length ? CSSinJS().cache(cleanCss) : '',
+      dynamicClassName: Object.keys(cleanCss).length ? CSSinJS().cache?.(cleanCss) : '',
     };
   }
 
-  constructor(props, context) {
+  constructor(props: any, context: any) {
     super(props, context);
 
     initNanoCss(context);

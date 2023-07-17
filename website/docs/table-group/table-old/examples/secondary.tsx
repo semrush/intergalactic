@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 
 const data = [
   {
@@ -37,7 +37,7 @@ const data = [
 const Demo = () => (
   <Table use='secondary'>
     <Table.Head>
-      <Table.Row theme='false'>
+      <Table.Row theme={false}>
         {Object.keys(data[0])
           .slice(0, -1)
           .map((name) => (

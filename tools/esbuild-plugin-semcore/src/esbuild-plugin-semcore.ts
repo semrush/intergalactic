@@ -17,7 +17,7 @@ const babelTransform = async (contents: string, path: string) => {
         cwd: resolveDirname(path),
         ...babelConfig(),
       },
-      (error, result) => {
+      (error: any, result: any) => {
         if (error) reject(error);
         else resolve(result?.code!);
       },

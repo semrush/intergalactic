@@ -2,91 +2,97 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.0.0] - 2023-07-15
+
+### Break
+
+* Strict, backward incompatible typings.
+
 ## [2.4.20] - 2023-06-30
 
 ## [2.4.19] - 2023-06-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.15.3 ~> 3.16.0]).
+* Version patch update due to children dependencies update (`@semcore/icon` [3.15.3 ~> 3.16.0]).
 
 ## [2.4.18] - 2023-06-27
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/animation` [1.10.19 ~> 1.10.20], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/portal` [2.6.14 ~> 2.6.15], `@semcore/outside-click` [2.5.36 ~> 2.5.37], `@semcore/icon` [3.15.2 ~> 3.15.3]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/animation` [1.10.19 ~> 1.10.20], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/portal` [2.6.14 ~> 2.6.15], `@semcore/outside-click` [2.5.36 ~> 2.5.37], `@semcore/icon` [3.15.2 ~> 3.15.3]).
 
 ## [2.4.17] - 2023-06-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/animation` [1.10.18 ~> 1.10.19], `@semcore/flex-box` [4.7.30 ~> 4.7.31], `@semcore/portal` [2.6.13 ~> 2.6.14], `@semcore/outside-click` [2.5.35 ~> 2.5.36], `@semcore/icon` [3.15.1 ~> 3.15.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/animation` [1.10.18 ~> 1.10.19], `@semcore/flex-box` [4.7.30 ~> 4.7.31], `@semcore/portal` [2.6.13 ~> 2.6.14], `@semcore/outside-click` [2.5.35 ~> 2.5.36], `@semcore/icon` [3.15.1 ~> 3.15.2]).
 
 ## [2.4.16] - 2023-06-12
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/animation` [1.10.17 ~> 1.10.18], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/portal` [2.6.12 ~> 2.6.13], `@semcore/outside-click` [2.5.34 ~> 2.5.35], `@semcore/icon` [3.15.0 ~> 3.15.1]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/animation` [1.10.17 ~> 1.10.18], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/portal` [2.6.12 ~> 2.6.13], `@semcore/outside-click` [2.5.34 ~> 2.5.35], `@semcore/icon` [3.15.0 ~> 3.15.1]).
 
 ## [2.4.15] - 2023-06-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/animation` [1.10.16 ~> 1.10.17], `@semcore/flex-box` [4.7.28 ~> 4.7.29], `@semcore/portal` [2.6.11 ~> 2.6.12], `@semcore/outside-click` [2.5.33 ~> 2.5.34], `@semcore/icon` [3.14.16 ~> 3.15.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/animation` [1.10.16 ~> 1.10.17], `@semcore/flex-box` [4.7.28 ~> 4.7.29], `@semcore/portal` [2.6.11 ~> 2.6.12], `@semcore/outside-click` [2.5.33 ~> 2.5.34], `@semcore/icon` [3.14.16 ~> 3.15.0]).
 
 ## [2.4.14] - 2023-06-07
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/animation` [1.10.15 ~> 1.10.16], `@semcore/flex-box` [4.7.27 ~> 4.7.28], `@semcore/portal` [2.6.10 ~> 2.6.11], `@semcore/outside-click` [2.5.32 ~> 2.5.33], `@semcore/icon` [3.14.15 ~> 3.14.16]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/animation` [1.10.15 ~> 1.10.16], `@semcore/flex-box` [4.7.27 ~> 4.7.28], `@semcore/portal` [2.6.10 ~> 2.6.11], `@semcore/outside-click` [2.5.32 ~> 2.5.33], `@semcore/icon` [3.14.15 ~> 3.14.16]).
 
 ## [2.4.13] - 2023-06-06
 
 ### Fixed
 
-- Fixed `SidePanel` default text color.
+* Fixed `SidePanel` default text color.
 
 ## [2.4.12] - 2023-06-02
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.14 ~> 1.10.15]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.10.14 ~> 1.10.15]).
 
 ## [2.4.11] - 2023-05-31
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/animation` [1.10.13 ~> 1.10.14], `@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/portal` [2.6.9 ~> 2.6.10], `@semcore/outside-click` [2.5.31 ~> 2.5.32], `@semcore/icon` [3.14.14 ~> 3.14.15]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/animation` [1.10.13 ~> 1.10.14], `@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/portal` [2.6.9 ~> 2.6.10], `@semcore/outside-click` [2.5.31 ~> 2.5.32], `@semcore/icon` [3.14.14 ~> 3.14.15]).
 
 ## [2.4.10] - 2023-05-29
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.12 ~> 1.10.13]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.10.12 ~> 1.10.13]).
 
 ## [2.4.9] - 2023-05-25
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/animation` [1.10.11 ~> 1.10.12], `@semcore/flex-box` [4.7.25 ~> 4.7.26], `@semcore/portal` [2.6.8 ~> 2.6.9], `@semcore/outside-click` [2.5.30 ~> 2.5.31], `@semcore/icon` [3.14.13 ~> 3.14.14]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/animation` [1.10.11 ~> 1.10.12], `@semcore/flex-box` [4.7.25 ~> 4.7.26], `@semcore/portal` [2.6.8 ~> 2.6.9], `@semcore/outside-click` [2.5.30 ~> 2.5.31], `@semcore/icon` [3.14.13 ~> 3.14.14]).
 
 ## [2.4.8] - 2023-05-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/animation` [1.10.10 ~> 1.10.11], `@semcore/flex-box` [4.7.24 ~> 4.7.25], `@semcore/portal` [2.6.7 ~> 2.6.8], `@semcore/outside-click` [2.5.29 ~> 2.5.30], `@semcore/icon` [3.14.12 ~> 3.14.13]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/animation` [1.10.10 ~> 1.10.11], `@semcore/flex-box` [4.7.24 ~> 4.7.25], `@semcore/portal` [2.6.7 ~> 2.6.8], `@semcore/outside-click` [2.5.29 ~> 2.5.30], `@semcore/icon` [3.14.12 ~> 3.14.13]).
 
 ## [2.4.7] - 2023-05-22
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/animation` [1.10.9 ~> 1.10.10], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/portal` [2.6.6 ~> 2.6.7], `@semcore/outside-click` [2.5.28 ~> 2.5.29], `@semcore/icon` [3.14.11 ~> 3.14.12]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/animation` [1.10.9 ~> 1.10.10], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/portal` [2.6.6 ~> 2.6.7], `@semcore/outside-click` [2.5.28 ~> 2.5.29], `@semcore/icon` [3.14.11 ~> 3.14.12]).
 
 ## [2.4.6] - 2023-05-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/portal` [2.6.5 ~> 2.6.6], `@semcore/outside-click` [2.5.27 ~> 2.5.28], `@semcore/icon` [3.14.10 ~> 3.14.11]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/portal` [2.6.5 ~> 2.6.6], `@semcore/outside-click` [2.5.27 ~> 2.5.28], `@semcore/icon` [3.14.10 ~> 3.14.11]).
 
 ## [2.4.5] - 2023-05-11
 
@@ -94,7 +100,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/portal` [2.6.3 ~> 2.6.4], `@semcore/outside-click` [2.5.26 ~> 2.5.27], `@semcore/icon` [3.14.9 ~> 3.14.10]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/portal` [2.6.3 ~> 2.6.4], `@semcore/outside-click` [2.5.26 ~> 2.5.27], `@semcore/icon` [3.14.9 ~> 3.14.10]).
 
 ## [2.4.2] - 2023-05-02
 
@@ -104,13 +110,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added `disablePreventScroll` prop.
+* Added `disablePreventScroll` prop.
 
 ## [2.3.18] - 2023-04-17
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/portal` [2.6.0 ~> 2.6.1], `@semcore/outside-click` [2.5.23 ~> 2.5.24], `@semcore/icon` [3.14.6 ~> 3.14.7]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3], `@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/portal` [2.6.0 ~> 2.6.1], `@semcore/outside-click` [2.5.23 ~> 2.5.24], `@semcore/icon` [3.14.6 ~> 3.14.7]).
 
 ## [2.3.17] - 2023-04-03
 
@@ -118,43 +124,43 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/portal` [2.5.17 ~> 2.6.0], `@semcore/outside-click` [2.5.22 ~> 2.5.23], `@semcore/icon` [3.14.5 ~> 3.14.6]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0], `@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/flex-box` [4.7.17 ~> 4.7.18], `@semcore/portal` [2.5.17 ~> 2.6.0], `@semcore/outside-click` [2.5.22 ~> 2.5.23], `@semcore/icon` [3.14.5 ~> 3.14.6]).
 
 ## [2.3.14] - 2023-03-24
 
 ### Fixed
 
-- Fixed local themes in side panels.
+* Fixed local themes in side panels.
 
 ## [2.3.13] - 2023-03-24
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/animation` [1.9.6 ~> 1.9.7], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/portal` [2.5.13 ~> 2.5.14], `@semcore/outside-click` [2.5.19 ~> 2.5.20], `@semcore/icon` [3.14.2 ~> 3.14.3]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.48.0 ~> 3.48.1], `@semcore/animation` [1.9.6 ~> 1.9.7], `@semcore/flex-box` [4.7.14 ~> 4.7.15], `@semcore/portal` [2.5.13 ~> 2.5.14], `@semcore/outside-click` [2.5.19 ~> 2.5.20], `@semcore/icon` [3.14.2 ~> 3.14.3]).
 
 ## [2.3.8] - 2023-03-09
 
 ### Fixed
 
-- Fixed focus locking and returning.
+* Fixed focus locking and returning.
 
 ## [2.3.7] - 2023-03-03
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.13.1 ~> 3.13.2]).
+* Version patch update due to children dependencies update (`@semcore/icon` [3.13.1 ~> 3.13.2]).
 
 ## [2.3.6] - 2023-03-01
 
 ### Fixed
 
-- Fixed `animationsDisabled` prop passing.
+* Fixed `animationsDisabled` prop passing.
 
 ## [2.3.4] - 2023-02-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.9.1 ~> 1.9.2]).
 
 ## [2.3.2] - 2023-02-22
 
@@ -162,19 +168,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/portal` [2.5.8 ~> 2.5.9], `@semcore/outside-click` [2.5.14 ~> 2.5.15], `@semcore/icon` [3.10.1 ~> 3.10.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/portal` [2.5.8 ~> 2.5.9], `@semcore/outside-click` [2.5.14 ~> 2.5.15], `@semcore/icon` [3.10.1 ~> 3.10.2]).
 
 ## [2.3.0] - 2023-02-20
 
 ### Changed
 
-- Animation duration now might be controlled with design tokens.
+* Animation duration now might be controlled with design tokens.
 
 ## [2.2.14] - 2023-02-13
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
+* Version patch update due to children dependencies update (`@semcore/icon` [3.9.0 ~> 3.10.0]).
 
 ## [2.2.13] - 2023-02-13
 
@@ -184,19 +190,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/animation` [1.8.9 ~> 1.8.10], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/portal` [2.5.5 ~> 2.5.6], `@semcore/outside-click` [2.5.11 ~> 2.5.12], `@semcore/icon` [3.7.0 ~> 3.8.0]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/animation` [1.8.9 ~> 1.8.10], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/portal` [2.5.5 ~> 2.5.6], `@semcore/outside-click` [2.5.11 ~> 2.5.12], `@semcore/icon` [3.7.0 ~> 3.8.0]).
 
 ## [2.2.9] - 2023-01-19
 
 ### Fixed
 
-- Removed font-family enforcement.
+* Removed font-family enforcement.
 
 ## [2.2.8] - 2023-01-11
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.8.7 ~> 1.8.8]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.8.7 ~> 1.8.8]).
 
 ## [2.2.7] - 2023-01-11
 
@@ -206,19 +212,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/animation` [1.8.5 ~> 1.8.6], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/portal` [2.5.2 ~> 2.5.3], `@semcore/outside-click` [2.5.8 ~> 2.5.9], `@semcore/icon` [3.5.0 ~> 3.5.1]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/animation` [1.8.5 ~> 1.8.6], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/portal` [2.5.2 ~> 2.5.3], `@semcore/outside-click` [2.5.8 ~> 2.5.9], `@semcore/icon` [3.5.0 ~> 3.5.1]).
 
 ## [2.2.1] - 2022-12-13
 
 ### Changed
 
-- Added `react-dom` to peer dependencies.
+* Added `react-dom` to peer dependencies.
 
 ## [2.2.0] - 2022-12-12
 
 ### Added
 
-- Design tokens based theming.
+* Design tokens based theming.
 
 ## [2.1.8] - 2022-11-08
 
@@ -226,132 +232,132 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Updated `focus-lock`.
+* Updated `focus-lock`.
 
 ## [2.1.6] - 2022-10-28
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/animation` [1.7.0 ~> 1.7.1], `@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/portal` [2.4.2 ~> 2.4.3], `@semcore/outside-click` [2.5.2 ~> 2.5.3], `@semcore/icon` [3.1.1 ~> 3.1.2]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.40.0 ~> 3.40.0], `@semcore/animation` [1.7.0 ~> 1.7.1], `@semcore/flex-box` [4.6.2 ~> 4.6.3], `@semcore/portal` [2.4.2 ~> 2.4.3], `@semcore/outside-click` [2.5.2 ~> 2.5.3], `@semcore/icon` [3.1.1 ~> 3.1.2]).
 
 ## [2.1.0] - 2022-10-10
 
 ### Changed
 
-- Added support for React 18 🔥
-- Extended version range for dependency `@semcore/icons`.
+* Added support for React 18 🔥
+* Extended version range for dependency `@semcore/icons`.
 
 ## [2.0.21] - 2022-10-06
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0]).
+* Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0]).
 
 ## [2.0.3] - 2022-05-19
 
 ### Fixed
 
-- Synced dependencies versions to remove duplicates in the single export package.
+* Synced dependencies versions to remove duplicates in the single export package.
 
 ## [2.0.2] - 2022-05-19
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/animation` [1.5.0 ~> 1.5.1], `@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/portal` [2.3.3 ~> 2.3.4], `@semcore/typography` [4.0.1 ~> 4.0.3], `@semcore/outside-click` [2.4.3 ~> 2.4.4], `@semcore/icon` [2.25.0 ~> 2.25.1]).
+* Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1], `@semcore/animation` [1.5.0 ~> 1.5.1], `@semcore/flex-box` [4.5.1 ~> 4.5.3], `@semcore/portal` [2.3.3 ~> 2.3.4], `@semcore/typography` [4.0.1 ~> 4.0.3], `@semcore/outside-click` [2.4.3 ~> 2.4.4], `@semcore/icon` [2.25.0 ~> 2.25.1]).
 
 ## [2.0.0] - 2022-05-17
 
 ### BREAK
 
-- Updated styles according to the library redesign policy.
+* Updated styles according to the library redesign policy.
 
 ### Added
 
-- Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
+* Added children components `Header, Footer, Body, Back, Title` for `SidePanel`.
 
 ## [1.3.8] - 2022-05-16
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0]).
+* Version patch update due to children dependencies update (`@semcore/icon` [2.21.0 ~> 2.24.0]).
 
 ## [1.3.4] - 2022-03-09
 
 ### Fixed
 
-- Fixed jumping content, when body don't have `box-sizing`.
+* Fixed jumping content, when body don't have `box-sizing`.
 
 ## [1.3.3] - 2022-03-05
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.4.0 ~> 1.4.1]).
+* Version patch update due to children dependencies update (`@semcore/animation` [1.4.0 ~> 1.4.1]).
 
 ## [1.3.2] - 2022-02-24
 
 ### Added
 
-- Added repository field to package.json file.
+* Added repository field to package.json file.
 
 ## [1.3.1] - 2022-01-25
 
 ### Changed
 
-- Replaced function `findComponent` to `isAdvanceMode` for check children in `SidePanel`.
+* Replaced function `findComponent` to `isAdvanceMode` for check children in `SidePanel`.
 
 ## [1.3.0] - 2022-01-18
 
 ### Changed
 
-- Up version icons and use new icon.
+* Up version icons and use new icon.
 
 ## [1.2.1] - 2021-8-26
 
 ### Changed
 
-- Add 'sideEffect=false' for more optimal build via webpack
+* Add 'sideEffect=false' for more optimal build via webpack
 
 ## [1.2.0] - 2021-07-05
 
 ### Changed
 
-- Version of dependence `@semcore/core` has been changed to `1.11`.
-- Improved performance. Removed one component wrapper.
-- The style processing system has been changed.
-- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+* Version of dependence `@semcore/core` has been changed to `1.11`.
+* Improved performance. Removed one component wrapper.
+* The style processing system has been changed.
+* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
 ## [1.1.0] - 2020-12-17
 
 ### Added
 
-- Added supported react@17.
+* Added supported react@17.
 
 ## [1.0.3] - 2020-10-29
 
 ### Fixed
 
-- Added the placeholder for ID style tag to improve collision protection.
+* Added the placeholder for ID style tag to improve collision protection.
 
 ## [1.0.2] - 2020-10-14
 
 ### Fixed
 
-- fixed wrong path for ES6 build
+* fixed wrong path for ES6 build
 
 ## [1.0.1] - 2020-10-01
 
 ### Fixed
 
-- Fixed call `onClose` when used for click on page with `SidePanel.Panel` in inside `<SidePanel visible={false}/>`.
+* Fixed call `onClose` when used for click on page with `SidePanel.Panel` in inside `<SidePanel visible={false}/>`.
 
 ## [1.0.0] - 2020-09-11
 
 ### Fixed
 
-- Fixed possible styles collisions between components with different versions, but same styles
+* Fixed possible styles collisions between components with different versions, but same styles
 
 ## [1.0.0-0] - 2020-08-14
 
 ### Added
 
-- SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его "шторкой"
+* SidePanel — компонент для отображения выезжающей панели (справа, снизу или слева). Иногда зовем его "шторкой"

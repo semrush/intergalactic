@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocaleKeys, useI18n } from './WithI18n';
+import { UnknownProperties } from '@semcore/core';
 
 const interpolationRegex = /{(.*?)}/g;
 
@@ -25,14 +26,16 @@ const escapeHtml = (html: string) =>
 
 export function interpolate(template: string, variables: {} = {}) {
   return template.replace(interpolationRegex, (_, key) => {
-    if (variables[key] !== undefined) {
-      return escapeHtml(variables[key]);
+    if ((variables as any)[key] !== undefined) {
+      return escapeHtml((variables as any)[key]);
     }
     return _;
   });
 }
 
-export interface IWithI18nEnhanceProps {
+/** @deprecated */
+export interface IWithI18nEnhanceProps extends WithI18nEnhanceProps, UnknownProperties {}
+export type WithI18nEnhanceProps = {
   /* Function for getting the required field from the translation dictionary */
   getI18nText?: (key?: string, variables?: {}) => any;
   /* Object with translations */
@@ -43,7 +46,7 @@ export interface IWithI18nEnhanceProps {
   };
   /* Locale for translations */
   locale?: LocaleKeys;
-}
+};
 
 type Messages = { [messageId: string]: string };
 type MessagesContainer = { [locale: string]: Messages | (() => Promise<Messages>) };
@@ -115,7 +118,7 @@ export const useAsyncI18nMessages = (
   return store[locale] ?? fallbackMessages;
 };
 export default (container?: MessagesContainer) => {
-  return (props) => {
+  return (props: any) => {
     const { i18n, locale } = props;
     const getI18nText = useI18n(i18n, locale, container);
 

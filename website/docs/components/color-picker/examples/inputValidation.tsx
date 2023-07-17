@@ -4,7 +4,7 @@ import ColorPicker, { PaletteManager } from '@semcore/ui/color-picker';
 const Demo = () => {
   const [state, setState] = React.useState('normal');
 
-  const onChange = (value, event) => {
+  const onChange = (value) => {
     if (value.toLowerCase() === 'ffffff') {
       setState('invalid');
     }

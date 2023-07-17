@@ -160,6 +160,6 @@ declare module 'marked-ast' {
     | Br
     | Del;
 
-  export const parse: (markdown) => Token[];
+  export const parse: (markdown: string) => Token[];
   export const render: (tokens: Token[]) => string;
 }

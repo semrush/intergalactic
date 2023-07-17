@@ -1,89 +1,94 @@
-import React, { ComponentProps } from 'react';
-import { CProps, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import Dot from '@semcore/dot';
+import React from 'react';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { DotProps } from '@semcore/dot';
 import { INeighborItemProps } from '@semcore/neighbor-location';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { IWithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 
-export interface IBaseTriggerProps
-  extends IBoxProps,
-    INeighborItemProps,
-    IKeyboardFocusProps,
-    IWithAnimatedSizeEnhanceProps {
-  /**
-   * Trigger size
-   * @default m
-   */
-  size?: 'm' | 'l';
-  /**
-   * Trigger state
-   */
-  state?: 'normal' | 'valid' | 'invalid';
-  /**
-   * Sets active state to trigger
-   */
-  active?: boolean;
-  /**
-   * Responsible for placeholder displaying
-   */
-  empty?: boolean;
-  /**
-   * Placeholder text
-   */
-  placeholder?: React.ReactNode;
-  /**
-   * Sets disabled state to trigger
-   */
-  disabled?: boolean;
-  /** Trigger theme
-   * @deprecated
-   * @use IBaseTriggerProps.state
-   * */
-  theme?: 'normal' | 'valid' | 'invalid' | false;
-}
+/** @deprecated */
+export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
+export type BaseTriggerProps = BoxProps &
+  INeighborItemProps &
+  KeyboardFocusProps &
+  IWithAnimatedSizeEnhanceProps & {
+    /**
+     * Trigger size
+     * @default m
+     */
+    size?: 'm' | 'l';
+    /**
+     * Trigger state
+     */
+    state?: 'normal' | 'valid' | 'invalid';
+    /**
+     * Sets active state to trigger
+     */
+    active?: boolean;
+    /**
+     * Responsible for placeholder displaying
+     */
+    empty?: boolean;
+    /**
+     * Placeholder text
+     */
+    placeholder?: React.ReactNode;
+    /**
+     * Sets disabled state to trigger
+     */
+    disabled?: boolean;
+    /** Trigger theme
+     * @deprecated
+     * @use IBaseTriggerProps.state
+     * */
+    theme?: 'normal' | 'valid' | 'invalid' | false;
+  };
 
-export interface IButtonTriggerProps extends Omit<IBaseTriggerProps, 'theme'> {
+/** @deprecated */
+export interface IButtonTriggerProps extends ButtonTriggerProps, UnknownProperties {}
+export type ButtonTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
-}
+};
 
-export interface ILinkTriggerProps extends Omit<IBaseTriggerProps, 'theme'> {
+/** @deprecated */
+export interface ILinkTriggerProps extends LinkTriggerProps, UnknownProperties {}
+export type LinkTriggerProps = Omit<BaseTriggerProps, 'theme'> & {
   /** Sets the loading state */
   loading?: boolean;
   /** Text color */
   color?: string;
-}
+};
 
-export interface IFilterTriggerProps extends IBaseTriggerProps {
+/** @deprecated */
+export interface IFilterTriggerProps extends FilterTriggerProps, UnknownProperties {}
+export type FilterTriggerProps = BaseTriggerProps & {
   /** Click on the filter cleaning cross */
   onClear?: (event: React.SyntheticEvent) => void;
   locale?: string;
   /** List of props that will be added to the select inside of filter */
   includeInputProps?: string[];
-}
+};
 
-declare const BaseTrigger: (<T>(props: CProps<IBaseTriggerProps & T>) => ReturnEl) & {
+declare const BaseTrigger: Intergalactic.Component<'div', BaseTriggerProps> & {
   Text: typeof Box;
   Addon: typeof Box;
 };
 
-declare const ButtonTrigger: (<T>(props: CProps<IButtonTriggerProps & T>) => ReturnEl) & {
+declare const ButtonTrigger: Intergalactic.Component<'div', ButtonTriggerProps> & {
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
 };
 
-declare const LinkTrigger: (<T>(props: CProps<ILinkTriggerProps & T>) => ReturnEl) & {
+declare const LinkTrigger: Intergalactic.Component<'div', LinkTriggerProps> & {
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
 };
 
-declare const FilterTrigger: (<T>(props: CProps<ILinkTriggerProps & T>) => ReturnEl) & {
+declare const FilterTrigger: Intergalactic.Component<'div', FilterTriggerProps> & {
   Text: typeof BaseTrigger.Text;
   Addon: typeof BaseTrigger.Addon;
-  Counter: <T>(
-    props: ComponentProps<typeof BaseTrigger.Addon> & ComponentProps<typeof Dot> & T,
-  ) => ReturnEl;
+  Counter: Intergalactic.Component<'div', BoxProps & DotProps>;
 };
 
 export default BaseTrigger;

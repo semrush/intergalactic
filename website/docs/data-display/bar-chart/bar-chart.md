@@ -145,5 +145,4 @@ When you hover over a clickable date, it changes background `--chart-grid-period
 @page bar-chart-a11y
 @page bar-chart-api
 @page bar-chart-d3-code
-@page bar-chart-recharts-code
 @page d3-chart-changelog

@@ -6,6 +6,8 @@ import Button from '@semcore/ui/button';
 
 class Demo extends React.PureComponent {
   state = { loading: true };
+  timerFetch: any;
+  timer: any;
 
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);

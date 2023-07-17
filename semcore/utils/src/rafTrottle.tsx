@@ -1,14 +1,14 @@
-function rafTrottle(callback) {
-  let ticking = null;
+function rafTrottle<T extends (...args: any[]) => any>(callback: T) {
+  let ticking: number | null = null;
 
-  let lastArgs;
+  let lastArgs: any;
 
-  const update = (context) => () => {
+  const update = (context: any) => () => {
     ticking = null;
     callback.apply(context, lastArgs);
   };
 
-  const throttled = function (...args) {
+  const throttled = function (this: any, ...args: any[]) {
     lastArgs = args;
     if (ticking === null) {
       ticking = requestAnimationFrame(update(this));
@@ -16,11 +16,11 @@ function rafTrottle(callback) {
   };
 
   throttled.cancel = () => {
-    cancelAnimationFrame(ticking);
+    if (typeof ticking === 'number') cancelAnimationFrame(ticking);
     ticking = null;
   };
 
-  return throttled;
+  return throttled as any as T;
 }
 
 export default rafTrottle;

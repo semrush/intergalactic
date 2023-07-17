@@ -64,6 +64,5 @@ If you disable all legend checkboxes, the chart should display the X-axis.
 
 ![](static/legend-turn-off.png)
 
-@page chart-legend-api
 @page chart-legend-code
 @page d3-chart-changelog

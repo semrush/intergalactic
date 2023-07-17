@@ -39,7 +39,7 @@ If you need a custom React component instead of a label, you can change the disp
 
 @## Tooltip
 
-You must use the `<Radar.Hover/>` component to add interactivity.
+You need to use the `<Radar.Tooltip />` component to add interactivity.
 
 @example tooltip
 

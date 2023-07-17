@@ -1,9 +1,11 @@
-import { CProps, ReturnEl, PropGetterFn } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
-import Dropdown, { IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
-import { IInputProps } from '@semcore/input';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import Dropdown, { DropdownProps, DropdownHandlers } from '@semcore/dropdown';
+import { InputProps } from '@semcore/input';
 
-export interface IItemProps extends IBoxProps {
+/** @deprecated */
+export interface IItemProps extends ItemProps, UnknownProperties {}
+export type ItemProps = BoxProps & {
   /**
    * Color item in hexadecimal format.
    */
@@ -24,23 +26,30 @@ export interface IItemProps extends IBoxProps {
    * Fired with color item when user clicks on the close icon
    */
   onRemove?: React.MouseEventHandler;
-}
+};
 
-export interface IColorsProps extends IBoxProps {
+/** @deprecated */
+export interface IColorsProps extends ColorsProps, UnknownProperties {}
+export type ColorsProps = BoxProps & {
   /**
    * Array of color items
    */
   colors?: string[];
-}
+};
 
-export interface IColorsCustomProps extends IColorsProps, IBoxProps {
-  /**
-   * Fired when user clicks on the plus icon in Palette Manager - focuses the input component
-   */
-  onPlusButtonClick?: React.MouseEventHandler;
-}
+/** @deprecated */
+export interface IColorsCustomProps extends ColorsCustomProps, UnknownProperties {}
+export type ColorsCustomProps = ColorsProps &
+  BoxProps & {
+    /**
+     * Fired when user clicks on the plus icon in Palette Manager - focuses the input component
+     */
+    onPlusButtonClick?: React.MouseEventHandler;
+  };
 
-export interface IInputColorProps extends IInputProps {
+/** @deprecated */
+export interface IInputColorProps extends InputColorProps, UnknownProperties {}
+export type InputColorProps = InputProps & {
   /**
    * Text value of input
    */
@@ -63,9 +72,11 @@ export interface IInputColorProps extends IInputProps {
    * Fired with entered value when user clicks on the check icon or hits `Enter` or `Space`
    */
   onAdd?: (value: string, event: React.MouseEvent | React.KeyboardEvent) => void;
-}
+};
 
-export interface IColorPickerProps extends IDropdownProps {
+/** @deprecated */
+export interface IColorPickerProps extends ColorPickerProps, UnknownProperties {}
+export type ColorPickerProps = DropdownProps & {
   /**
    * Selected color item. Should be used with `onChange` property together
    */
@@ -93,9 +104,11 @@ export interface IColorPickerProps extends IDropdownProps {
    * @default false
    */
   displayLabel?: boolean;
-}
+};
 
-export interface IPaletteManagerProps extends IBoxProps {
+/** @deprecated */
+export interface IPaletteManagerProps extends PaletteManagerProps, UnknownProperties {}
+export type PaletteManagerProps = BoxProps & {
   /**
    * Array of color items. Should be used with `onColorsChange` property together
    * @default []
@@ -110,41 +123,51 @@ export interface IPaletteManagerProps extends IBoxProps {
    * Fired when user adds or removes color items. Should be used with `colors` property together
    */
   onColorsChange?: (value: string, event: React.ChangeEvent) => void;
-}
+};
 
-export interface IColorPickerHandlers extends IDropdownHandlers {}
+/** @deprecated */
+export interface IColorPickerHandlers extends ColorPickerHandlers, UnknownProperties {}
+export type ColorPickerHandlers = DropdownHandlers & {};
 
-export interface IPaletteManagerHandlers extends IDropdownHandlers {}
+/** @deprecated */
+export interface IPaletteManagerHandlers extends PaletteManagerHandlers, UnknownProperties {}
+export type PaletteManagerHandlers = DropdownHandlers & {};
 
-interface IColorPickerContext {
+type ColorPickerContext = {
   getTriggerProps: PropGetterFn;
   getColorsProps: PropGetterFn;
   getItemProps: PropGetterFn;
-}
+};
 
-interface IPaletteManagerContext {
+type PaletteManagerContext = {
   getInputColorProps: PropGetterFn;
   getColorsProps: PropGetterFn;
   getItemProps: PropGetterFn;
-}
+};
 
 declare const defaultColors: string[];
 
-declare const PaletteManager: (<T>(
-  props: CProps<IPaletteManagerProps & T, IPaletteManagerContext, IPaletteManagerHandlers>,
-) => ReturnEl) & {
-  Item: <T>(props: IItemProps & T) => ReturnEl;
-  Colors: <T>(props: IColorsCustomProps & T) => ReturnEl;
-  InputColor: <T>(props: IInputColorProps & T) => ReturnEl;
+declare const PaletteManager: Intergalactic.Component<
+  'div',
+  PaletteManagerProps,
+  PaletteManagerContext,
+  [handlers: PaletteManagerHandlers]
+> & {
+  Item: Intergalactic.Component<'div', ItemProps>;
+  Colors: Intergalactic.Component<'div', ColorsCustomProps>;
+  InputColor: Intergalactic.Component<'div', InputColorProps>;
 };
 
-declare const ColorPicker: (<T>(
-  props: CProps<IColorPickerProps & T, IColorPickerContext, IColorPickerHandlers>,
-) => ReturnEl) & {
+declare const ColorPicker: Intergalactic.Component<
+  'div',
+  ColorPickerProps,
+  ColorPickerContext,
+  [handlers: ColorPickerHandlers]
+> & {
   Trigger: typeof Dropdown.Trigger;
   Popper: typeof Dropdown.Popper;
-  Item: <T>(props: IItemProps & T) => ReturnEl;
-  Colors: <T>(props: IColorsProps & T) => ReturnEl;
+  Item: Intergalactic.Component<'div', ItemProps>;
+  Colors: Intergalactic.Component<'div', ColorsProps>;
 };
 
 export { PaletteManager, defaultColors };

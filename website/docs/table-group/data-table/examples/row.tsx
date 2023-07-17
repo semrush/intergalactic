@@ -11,28 +11,28 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Row<{}, typeof data>>
+        <DataTable.Row<typeof data>>
           {(props, row) => {
             return {
               theme: row['kd'] === '-' ? 'warning' : props.theme,
             };
           }}
         </DataTable.Row>
-        <DataTable.Row<{}, typeof data>>
+        <DataTable.Row<typeof data>>
           {(props, row, index) => {
             return {
               style: {
                 cursor: 'pointer',
               },
               onClick: () => {
-                alert(`Click row 
+                alert(`Click row
                   props: ${JSON.stringify(Object.keys(props), null, '  ')};
                   row: ${JSON.stringify(row, null, '  ')};
                   index: ${index};`);
               },
               onKeyDown: (event) => {
                 if (event.key === ' ' || event.key === 'Enter')
-                  alert(`Click row 
+                  alert(`Click row
                     props: ${JSON.stringify(Object.keys(props), null, '  ')};
                     row: ${JSON.stringify(row, null, '  ')};
                     index: ${index};`);

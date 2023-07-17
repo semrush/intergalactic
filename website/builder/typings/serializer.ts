@@ -209,6 +209,15 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
 
         break;
       }
+      case ts.SyntaxKind.MethodSignature: {
+        const { name, parameters, type } = node as ts.MethodSignature;
+
+        return [traverse(name), '(', ...parameters.map(traverse), '):', traverse(type)];
+      }
+      case ts.SyntaxKind.FirstNode: {
+        const { left, right } = node as ts.QualifiedName;
+        return [traverse(left), '.', traverse(right)];
+      }
     }
 
     console.error(node);

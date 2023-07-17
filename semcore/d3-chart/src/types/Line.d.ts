@@ -1,13 +1,15 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
 import { CurveFactory } from 'd3-shape';
-import { IFadeInOutProps } from '@semcore/animation';
+import { FadeInOutProps } from '@semcore/animation';
+import { IntergalacticD3Component } from './Plot';
 
-export interface ILineProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface ILineProps extends LineProps, UnknownProperties {}
+export type LineProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/
@@ -22,32 +24,40 @@ export interface ILineProps extends IContext {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface ILineDotsProps extends IContext, IFadeInOutProps {
-  /** Show all Dot */
-  display?: boolean;
-  /** Hide property */
-  hide?: boolean;
-  /** Index active of element */
-  activeIndex?: number;
-}
+/** @deprecated */
+export interface ILineDotsProps extends LineDotsProps, UnknownProperties {}
+export type LineDotsProps = Context &
+  FadeInOutProps & {
+    /** Show all Dot */
+    display?: boolean;
+    /** Hide property */
+    hide?: boolean;
+    /** Index active of element */
+    activeIndex?: number;
+  };
 
-export interface ILineDotsContext {
+/** @deprecated */
+export interface ILineDotsContext extends LineDotsContext, UnknownProperties {}
+export type LineDotsContext = {
   /** Value element of data */
+  /** @deprecated */
   value?: any;
   /** Index element of data */
   index?: number;
-}
+};
 
-export interface ILineNullProps extends IContext {
+/** @deprecated */
+export interface ILineNullProps extends LineNullProps, UnknownProperties {}
+export type LineNullProps = Context & {
   /** Hide property */
   hide?: boolean;
-}
+};
 
-declare const Line: (<T>(props: MapProps<ILineProps & T>) => ReturnEl) & {
-  Dots: <T>(props: MapProps<ILineDotsProps & T, ILineDotsContext>) => ReturnEl;
-  Null: <T>(props: MapProps<ILineNullProps & T>) => ReturnEl;
+declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {
+  Dots: IntergalacticD3Component<'circle', LineDotsProps, LineDotsContext>;
+  Null: IntergalacticD3Component<'path', LineNullProps>;
 };
 
 export default Line;

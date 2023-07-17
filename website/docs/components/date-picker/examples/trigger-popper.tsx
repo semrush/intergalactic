@@ -4,12 +4,12 @@ import { DatePicker } from '@semcore/ui/date-picker';
 const Demo = () => {
   return (
     <DatePicker>
-      <DatePicker.InputTrigger>
-        <DatePicker.InputTrigger.SingleDateInput>
-          <DatePicker.InputTrigger.SingleDateInput.Indicator />
-          <DatePicker.InputTrigger.SingleDateInput.MaskedInput />
-        </DatePicker.InputTrigger.SingleDateInput>
-      </DatePicker.InputTrigger>
+      <DatePicker.Trigger>
+        <DatePicker.Trigger.SingleDateInput>
+          <DatePicker.Trigger.SingleDateInput.Indicator />
+          <DatePicker.Trigger.SingleDateInput.MaskedInput />
+        </DatePicker.Trigger.SingleDateInput>
+      </DatePicker.Trigger>
       <DatePicker.Popper />
     </DatePicker>
   );

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "3.54.1",
+  "version": "4.0.0",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -11,15 +11,17 @@
   },
   "devDependencies": {
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
-    "@semcore/core": "^1",
-    "@types/chroma-js": "^2.4.0",
+    "@semcore/core": "2.0.0",
     "@semcore/testing-utils": "1.0.0",
-    "@types/node": "^17.0.45",
+    "@types/chroma-js": "^2.4.0",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "@types/node": "^18.16.15",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "chroma-js": "^2.4.2",
     "fast-glob": "3.2.11",
     "postcss": "^8.4.19",
+    "@types/classnames": "2.2.6",
     "postcss-value-parser": "4.1.0"
   },
   "dependencies": {
@@ -27,10 +29,10 @@
     "classnames": "2.2.6",
     "focus-lock": "0.11.3",
     "hoist-non-react-statics": "3.3.2",
-    "nano-css": "5.3.4"
+    "@phytonmk/nano-css": "5.3.7"
   },
   "peerDependencies": {
-    "@semcore/core": "^1",
+    "@semcore/core": "2.0.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

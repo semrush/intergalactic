@@ -14,7 +14,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='2addon-example' size='200'>
+      <Text tag='label' htmlFor='2addon-example' size={200}>
         Your password
       </Text>
       <Box mt={2}>

@@ -36,8 +36,8 @@ describe('DragAndDrop', () => {
       <DnD tag={TabPanel} value={currentTab} onDnD={() => {}}>
         {tabs.map((tab) => (
           <DnD.Draggable placement='bottom' tag={TabPanel.Item} value={tab} key={tab} pb={0}>
-            {icons[tab] ?? null}
-            <TabPanel.Item.Text>{titles[tab]}</TabPanel.Item.Text>
+            {(icons as any)[tab] ?? null}
+            <TabPanel.Item.Text>{(titles as any)[tab]}</TabPanel.Item.Text>
           </DnD.Draggable>
         ))}
       </DnD>

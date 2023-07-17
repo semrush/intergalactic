@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip, { ITooltipProps } from '@semcore/tooltip';
+import Tooltip, { TooltipProps } from '@semcore/tooltip';
 import styles from './Copy.module.css';
 import cx from 'classnames';
 
@@ -7,7 +7,10 @@ const Copy: React.FC<
   {
     copiedToast: string;
     toCopy: string;
-  } & ITooltipProps
+    children: React.ReactElement;
+    className?: string;
+    onClick?: () => void;
+  } & TooltipProps
 > = (props) => {
   const [view, setView] = React.useState<string | undefined>(undefined);
   const handleClick = React.useCallback(async () => {
@@ -30,9 +33,11 @@ const Copy: React.FC<
       className={cx(props.className, styles.tooltipStyle)}
       title={view ?? props.title ?? 'Click to copy'}
       aria-label='Click to copy'
-      selfProps={{
-        popupTransitionName: 'popup-fade',
-      }}
+      {...({
+        selfProps: {
+          popupTransitionName: 'popup-fade',
+        },
+      } as any)}
     >
       {React.cloneElement(props.children, {
         onClick: handleClick,

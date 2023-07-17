@@ -1,3 +1,53 @@
+## [15.0.0] - 2023-07-17
+
+### @semcore/icon
+
+- **BREAK** Removed all icons from `@semcore/icon/lib/*` path.
+- **BREAK** Removed `Stoller` icon.
+- **BREAK** Removed `YoutubeAlt` icon.
+- **BREAK** Removed `YoutubeRed` icon.
+- **BREAK** Removed `FeauturedImage` icon.
+- **BREAK** Removed `FeauturedVideo` icon.
+- **Added** Added `Diners` pay icon.
+
+### @semcore/skeleton
+
+- **BREAK** Changed all skeleton for chart from svg to HTMLDivElement with styled background.  
+- **BREAK** Renamed `PieChartSkeleton` to `DonutChartSkeleton`.  
+
+### @semcore/date-picker
+
+- **BREAK** `DatePicker.Trigger` now represents input trigger (previously available as `DatePicker.InputTrigger`). Old and deprecated trigger still available as `.ButtonTrigger`.
+
+### @semcore/radio
+
+- **BREAK** `RadioGroup` now wraps it's content into `Flex` container (previously it was wrapping content into `React.Fragment` by default).
+
+### Global
+
+- **Break** Strict, backward incompatible typings.
+
+### @semcore/core
+
+- **Break** Strict typings.
+- **Changed** Internal API for exposing component destructuring children.
+
+### @semcore/d3-chart
+
+- **Break** Strict, backward incompatible typings.
+- **Changed** Deprecated `import { Tooltip } from '@semcore/ui/d3-chart` in favor of better typed Tooltips.
+- **Changed** On type level made `name` property of `Donut.Pie` obligatory.
+- **Changed** On type level made `name` property of `Venn.Circle` obligatory.
+- **Added** Typed `HoverLine.Tooltip`, `HoverRect.Tooltip`, `Radar.Tooltip`, `Bubble.Tooltip`, `Donut.Tooltip`, `ScatterPlot.Tooltip` and `Venn.Tooltip`.
+
+### @semcore/flags
+
+- **Break** Removed unused flags without ISO code.
+
+### @semcore/popper
+
+- **Break** Removed previously deprecated props `positionFixed`, `eventsDisabled`, `boundary`, `displayEvents`, `displayTimeout`, `popperZIndex`.
+
 ## [14.11.0] - 2023-07-14
 
 ### @semcore/select

@@ -115,7 +115,7 @@ describe('Table', () => {
   );
 
   test.concurrent('should support correct color theme', async ({ task }) => {
-    const Component = ({ theme = 'default' as RowTheme }) => (
+    const Component = ({ theme = 'default' }: { theme?: RowTheme }) => (
       <Table>
         <Table.Body>
           <Table.Row theme={theme}>
@@ -184,13 +184,13 @@ describe('Table.Body', () => {
 describe('Table.Row', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Table.Row, (props) => (
+  shouldSupportClassName(Table.Row, (props: any) => (
     <Table>
       <Table.Body {...props} />
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef<any>();
+    const ref = React.createRef<HTMLTableRowElement>();
     render(
       <Table>
         <Table.Body>
@@ -198,14 +198,14 @@ describe('Table.Row', () => {
         </Table.Body>
       </Table>,
     );
-    expect(ref.current.nodeName).toBe('TR');
+    expect(ref.current?.nodeName).toBe('TR');
   });
 });
 
 describe('Table.CellHead', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Table.CellHead, (props) => (
+  shouldSupportClassName(Table.CellHead, (props: any) => (
     <Table>
       <Table.Head>
         <Table.Row {...props} />
@@ -213,7 +213,7 @@ describe('Table.CellHead', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef<any>();
+    const ref = React.createRef<HTMLTableCellElement>();
     render(
       <Table>
         <Table.Head>
@@ -223,7 +223,7 @@ describe('Table.CellHead', () => {
         </Table.Head>
       </Table>,
     );
-    expect(ref.current.nodeName).toBe('TH');
+    expect(ref.current?.nodeName).toBe('TH');
   });
 
   test.concurrent('should support active state', async ({ task }) => {
@@ -311,7 +311,7 @@ describe('Table.CellHead', () => {
 describe('Table.Cell', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(Table.Cell, (props) => (
+  shouldSupportClassName(Table.Cell, (props: any) => (
     <Table>
       <Table.Body>
         <Table.Row {...props} />
@@ -319,7 +319,7 @@ describe('Table.Cell', () => {
     </Table>
   ));
   test.concurrent('should support ref', () => {
-    const ref = React.createRef<any>();
+    const ref = React.createRef<HTMLTableCellElement>();
     render(
       <Table>
         <Table.Body>
@@ -329,7 +329,7 @@ describe('Table.Cell', () => {
         </Table.Body>
       </Table>,
     );
-    expect(ref.current.nodeName).toBe('TD');
+    expect(ref.current?.nodeName).toBe('TD');
   });
 });
 
@@ -341,11 +341,11 @@ describe('Table.StickyHead', () => {
   test.concurrent('should support custom attributes', () => {
     const { getByTestId } = render(
       <Table>
-        <Table.StickyHead data-testid='sticky' name='sticky' />
+        <Table.StickyHead data-testid='sticky' data-name='sticky' />
       </Table>,
     );
 
-    expect(getByTestId('sticky').attributes['name'].value).toBe('sticky');
+    expect((getByTestId('sticky').attributes as any)['data-name'].value).toBe('sticky');
   });
 
   test.concurrent('should support children', () => {
@@ -374,7 +374,7 @@ describe('Table.StickyHead', () => {
       </Table>,
     );
 
-    expect(container.querySelector('table').className).toContain('Table-parent');
-    expect(container.querySelector('thead').className).toContain('Header-hidden');
+    expect(container.querySelector('table')!.className).toContain('Table-parent');
+    expect(container.querySelector('thead')!.className).toContain('Header-hidden');
   });
 });

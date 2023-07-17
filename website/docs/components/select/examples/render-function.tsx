@@ -26,7 +26,7 @@ export default () => (
       } = handlers;
 
       const handleClick = () => {
-        const newValue = currentValue.length ? [] : options.map(({ value }) => value);
+        const newValue = (currentValue as any).length ? [] : options.map(({ value }) => value);
         value(newValue);
         return false; // cancel the default handler
       };
@@ -35,8 +35,10 @@ export default () => (
         <React.Fragment>
           <Select.Trigger />
           <Select.Menu>
-            <Select.Option onClick={handleClick}>
-              <Text color='denim-blue'>{currentValue.length ? 'Deselect all' : 'Select all'}</Text>
+            <Select.Option value='%all%' onClick={handleClick}>
+              <Text color='denim-blue'>
+                {(currentValue as any).length ? 'Deselect all' : 'Select all'}
+              </Text>
             </Select.Option>
             {options.map((option) => (
               <Select.Option value={option.value} key={option.value}>

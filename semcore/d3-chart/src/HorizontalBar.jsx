@@ -30,10 +30,11 @@ class HorizontalBarRoot extends Component {
     wMin: MIN_WIDTH,
   };
 
-  getBackgroundProps(props, index) {
+  getBackgroundProps(_props, index) {
     const { data, y } = this.asProps;
     return {
       value: data[index][y],
+      index,
     };
   }
 

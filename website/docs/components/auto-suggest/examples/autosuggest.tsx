@@ -50,7 +50,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' size='200' htmlFor='website-autosuggest'>
+      <Text tag='label' size={200} htmlFor='website-autosuggest'>
         Your website
       </Text>
       <Box mt={2}>

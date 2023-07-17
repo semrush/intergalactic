@@ -1,11 +1,12 @@
 import React from 'react';
-import { Component, sstyled } from '@semcore/core';
+import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
 import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
 
 import style from './style/hover.shadow.css';
+import Tooltip from './Tooltip';
 
 class Hover extends Component {
   static style = style;
@@ -43,6 +44,7 @@ class Hover extends Component {
       eventEmitter.emit(
         'onTooltipVisible',
         xIndex !== null || yIndex !== null,
+        {},
         state,
         this.virtualElement,
       );
@@ -55,7 +57,7 @@ class Hover extends Component {
       yIndex: null,
     };
     this.setState(state, () => {
-      this.asProps.eventEmitter.emit('onTooltipVisible', false, state);
+      this.asProps.eventEmitter.emit('onTooltipVisible', false, {}, state);
     });
   });
 
@@ -165,7 +167,24 @@ class HoverRectRoot extends Hover {
   }
 }
 
-const HoverLine = createElement(HoverLineRoot);
-const HoverRect = createElement(HoverRectRoot);
+const HoverLineTooltip = (props) => {
+  const SHoverLineTooltip = Root;
+  return sstyled(props.styles)(
+    <SHoverLineTooltip render={Tooltip} tag={HoverLine} excludeAnchorProps />,
+  );
+};
+const HoverRectTooltip = (props) => {
+  const SHoverRectTooltip = Root;
+  return sstyled(props.styles)(
+    <SHoverRectTooltip render={Tooltip} tag={HoverRect} excludeAnchorProps />,
+  );
+};
+
+const HoverLine = createElement(HoverLineRoot, {
+  Tooltip: [HoverLineTooltip, Tooltip._______childrenComponents],
+});
+const HoverRect = createElement(HoverRectRoot, {
+  Tooltip: [HoverRectTooltip, Tooltip._______childrenComponents],
+});
 
 export { HoverLine, HoverRect };

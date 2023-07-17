@@ -1,8 +1,11 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
+import { TooltipType } from './Tooltip';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IDonutProps extends IContext {
+/** @deprecated */
+export interface IDonutProps extends DonutProps, UnknownProperties {}
+export type DonutProps = Context & {
   /** Inner radius
    * @default 0
    * */
@@ -17,13 +20,19 @@ export interface IDonutProps extends IContext {
    * @default 500
    */
   duration?: number;
-}
+};
 
-export interface IPieProps extends IContext {
+/** @deprecated */
+export interface IPieProps extends PieProps, UnknownProperties {}
+export type PieProps = Context & {
   /**
    * Name of the field in the data
    * */
   dataKey: string;
+  /**
+   * Human readable name of the segment
+   * */
+  name: string;
   /** Color pie
     @default #50aef4
    **/
@@ -34,16 +43,23 @@ export interface IPieProps extends IContext {
   active?: boolean;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IEmptyDataProps extends IContext {}
+/** @deprecated */
+export interface IEmptyDataProps extends EmptyDataProps, UnknownProperties {}
+export type EmptyDataProps = Context & {};
 
-export interface ILabelProps extends IContext {}
+/** @deprecated */
+export interface ILabelProps extends LabelProps, UnknownProperties {}
+export type LabelProps = Context & {
+  label?: string;
+};
 
-declare const Donut: (<T>(props: MapProps<IDonutProps & T>) => ReturnEl) & {
-  Pie: <T>(props: MapProps<IPieProps & T>) => ReturnEl;
-  EmptyData: <T>(props: MapProps<IEmptyDataProps & T>) => ReturnEl;
-  Label: <T>(props: MapProps<ILabelProps & T>) => ReturnEl;
+declare const Donut: IntergalacticD3Component<'g', DonutProps> & {
+  Pie: IntergalacticD3Component<'path', PieProps>;
+  EmptyData: IntergalacticD3Component<'path', IEmptyDataProps>;
+  Label: IntergalacticD3Component<'text', LabelProps>;
+  Tooltip: TooltipType<PieProps>;
 };
 
 export default Donut;

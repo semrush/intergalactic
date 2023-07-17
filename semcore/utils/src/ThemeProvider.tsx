@@ -28,11 +28,11 @@ export const useContextTheme = (ref: React.RefObject<HTMLElement>, available?: b
   }, [tokensKey, available]);
 };
 export const contextThemeEnhance = (getAvailable?: (props: any) => boolean | undefined) => {
-  return (props) => {
+  return (props: any) => {
     const existingRef = props.ref;
     const available = React.useMemo(() => getAvailable?.(props), Object.values(props));
-    const enhanceRef = React.useRef();
-    const refArr = React.useMemo(
+    const enhanceRef: any = React.useRef();
+    const refArr: any = React.useMemo(
       () => (existingRef ? [existingRef, enhanceRef] : [enhanceRef]),
       [existingRef, enhanceRef],
     );

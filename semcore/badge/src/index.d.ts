@@ -1,7 +1,9 @@
-import { CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
-export interface IBadgeProps extends IBoxProps {
+/** @deprecated */
+export interface IBadgeProps extends BadgeProps, UnknownProperties {}
+export type BadgeProps = BoxProps & {
   /** Fill color
    * @default gray-400
    * */
@@ -11,8 +13,8 @@ export interface IBadgeProps extends IBoxProps {
    * @default white
    * */
   color?: 'white' | 'gray20' | string;
-}
+};
 
-declare const Badge: <T>(props: CProps<IBadgeProps & T>) => ReturnEl;
+declare const Badge: Intergalactic.Component<'div', BadgeProps>;
 
 export default Badge;

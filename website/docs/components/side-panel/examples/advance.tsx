@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
-import SidePanel from '@semcore/side-panel';
+import SidePanel from '@semcore/ui/side-panel';
 
 export default () => {
   const [visible, setVisible] = useState(false);

@@ -1,15 +1,18 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
+import { Context } from './context';
+import { TooltipType } from './Tooltip';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IBubbleProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IBubbleProps extends BubbleProps, UnknownProperties {}
+export type BubbleProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y: string;
-  /** Field from data for circle radius */
+  /** Field name from `data` array item for the circle radius */
   value: string;
-  /** Field from data for circle label */
+  /** Field name from `data` array item for the circle label */
   label?: string;
   /** Circle color */
   color?: string;
@@ -23,13 +26,28 @@ export interface IBubbleProps extends IContext {
   duration?: number;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IBubbleContext {
+/** @deprecated */
+export interface IBubbleContext extends BubbleContext, UnknownProperties {}
+export type BubbleContext = {
   /** Index element of data */
   index: number;
-}
+};
 
-declare const Bubble: <T>(props: MapProps<IBubbleProps & T, IBubbleContext>) => ReturnEl;
+declare const Bubble: IntergalacticD3Component<Intergalactic.Tag, BubbleProps, BubbleContext> & {
+  Tooltip: TooltipType<
+    BubbleProps & {
+      /**
+       * @deprecated Use `index` instead.
+       */
+      xIndex: number;
+      /**
+       * Index of item in the `data` array used to render related bubble.
+       */
+      index: number;
+    }
+  >;
+};
 
 export default Bubble;

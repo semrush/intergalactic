@@ -8,7 +8,7 @@ import ArrowLeft from '@semcore/ui/icon/ArrowLeft/m';
 import Input from '@semcore/ui/input';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 
-const Step1 = React.forwardRef(function (props, ref) {
+const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>) {
   return (
     <Flex ref={ref} direction='column'>
       <Input mb={4}>
@@ -61,7 +61,7 @@ export default function () {
             }}
           </Wizard.Step>
           <Wizard.Step step={3}>
-            <RadioGroup name='radio' value={value} onChange={(v) => setValue(v)}>
+            <RadioGroup name='radio' value={value} onChange={setValue}>
               <Radio mr={2}>
                 <Radio.Value value='Manually' />
                 <Radio.Text>Manually</Radio.Text>

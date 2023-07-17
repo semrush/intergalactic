@@ -1,17 +1,10 @@
 import React from 'react';
-import { PropGetterFn } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
-/* utils type */
-type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
-  children?:
-    | ((props: Props & Ctx, handlers: UCProps) => React.ReactNode)
-    | React.ReactNode
-    | React.ReactNode[];
-};
-/* utils type */
-
-export interface IInlineInputProps extends IBoxProps {
+/** @deprecated */
+export interface IInlineInputProps extends InlineInputProps, UnknownProperties {}
+export type InlineInputProps = BoxProps & {
   /**
    * Visual state of inline input
    * @default normal
@@ -64,10 +57,14 @@ export interface IInlineInputProps extends IBoxProps {
    */
   onBlurBehavior?: 'cancel' | 'confirm';
   locale?: string;
-}
+};
 
-export interface IInlineInputAddonProps extends IBoxProps {}
-export interface IInlineInputValueProps extends IBoxProps {
+/** @deprecated */
+export interface IInlineInputAddonProps extends InlineInputAddonProps, UnknownProperties {}
+export type InlineInputAddonProps = BoxProps & {};
+/** @deprecated */
+export interface IInlineInputValueProps extends InlineInputValueProps, UnknownProperties {}
+export type InlineInputValueProps = BoxProps & {
   /**
    * id attribute of input tag
    */
@@ -104,8 +101,12 @@ export interface IInlineInputValueProps extends IBoxProps {
    * gray text in empty input tag
    */
   placeholder?: string;
-}
-export interface IInlineInputConfirmControlProps extends IBoxProps {
+};
+/** @deprecated */
+export interface IInlineInputConfirmControlProps
+  extends InlineInputConfirmControlProps,
+    UnknownProperties {}
+export type InlineInputConfirmControlProps = BoxProps & {
   /**
    * Text of tooltip
    * @default Confirm
@@ -116,8 +117,12 @@ export interface IInlineInputConfirmControlProps extends IBoxProps {
    * @default CheckM
    */
   icon?: React.FC;
-}
-export interface IInlineInputCancelControlProps extends IBoxProps {
+};
+/** @deprecated */
+export interface IInlineInputCancelControlProps
+  extends InlineInputCancelControlProps,
+    UnknownProperties {}
+export type InlineInputCancelControlProps = BoxProps & {
   /**
    * Text of tooltip
    * @default Cancel
@@ -128,25 +133,19 @@ export interface IInlineInputCancelControlProps extends IBoxProps {
    * @default CloseM
    */
   icon?: React.FC;
-}
+};
 
-interface IInlineInputCtx {
+type InlineInputCtx = {
   getAddonProps: PropGetterFn;
   getConfirmControlProps: PropGetterFn;
   getCancelControlProps: PropGetterFn;
   getValueProps: PropGetterFn;
-}
+};
 
-declare const InlineInput: (<T>(
-  props: CProps<IInlineInputProps & T, IInlineInputCtx>,
-) => React.ReactElement) & {
-  Addon: <T>(props: CProps<IInlineInputAddonProps & T, IInlineInputProps>) => React.ReactElement;
-  Value: <T>(props: CProps<IInlineInputValueProps & T, IInlineInputProps>) => React.ReactElement;
-  ConfirmControl: <T>(
-    props: CProps<IInlineInputConfirmControlProps & T, IInlineInputProps>,
-  ) => React.ReactElement;
-  CancelControl: <T>(
-    props: CProps<IInlineInputCancelControlProps & T, IInlineInputProps>,
-  ) => React.ReactElement;
+declare const InlineInput: Intergalactic.Component<'div', InlineInputProps, InlineInputCtx> & {
+  Addon: Intergalactic.Component<'div', InlineInputAddonProps, InlineInputProps>;
+  Value: Intergalactic.Component<'input', InlineInputValueProps, InlineInputProps>;
+  ConfirmControl: Intergalactic.Component<'div', InlineInputConfirmControlProps, InlineInputProps>;
+  CancelControl: Intergalactic.Component<'div', InlineInputCancelControlProps, InlineInputProps>;
 };
 export default InlineInput;

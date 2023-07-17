@@ -19,13 +19,13 @@ const Demo = () => {
     <Flex>
       <Box mr={5} mb={5}>
         <DateRangePicker periods={periods}>
-          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Trigger />
           <DateRangePicker.Popper />
         </DateRangePicker>
       </Box>
       <Box>
         <DateRangePicker>
-          <DateRangePicker.InputTrigger />
+          <DateRangePicker.Trigger />
           <DateRangePicker.Popper />
         </DateRangePicker>
       </Box>

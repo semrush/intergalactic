@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import Select from '@semcore/ui/select';
-import SidePanel from '@semcore/side-panel';
+import SidePanel, { SidePanelPlacement } from '@semcore/ui/side-panel';
 
-const placements = ['left', 'right', 'bottom'];
+const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
 export default () => {
   const [visible, setVisible] = useState(false);
-  const [placement, setPlacement] = useState('right');
+  const [placement, setPlacement] = useState(placements[1]);
 
   return (
     <React.Fragment>

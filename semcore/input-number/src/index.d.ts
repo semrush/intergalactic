@@ -1,18 +1,22 @@
 import React from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IInputAddonProps, IInputProps, IInputValueProps } from '@semcore/input';
+import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
+import { InputAddonProps, InputProps, InputValueProps } from '@semcore/input';
 
 export type InputNumberValue = string;
 export type InputNumberSize = 'm' | 'l';
 
-export interface IInputNumberProps extends IInputProps {
+/** @deprecated */
+export interface IInputNumberProps extends InputNumberProps, UnknownProperties {}
+export type InputNumberProps = InputProps & {
   /** Input size
    * @default m
    * */
   size?: InputNumberSize;
-}
+};
 
-export interface IInputNumberValueProps extends IInputValueProps {
+/** @deprecated */
+export interface IInputNumberValueProps extends InputNumberValueProps, UnknownProperties {}
+export type InputNumberValueProps = InputValueProps & {
   /** Minimum value
    * @default Number.MIN_SAFE_INTEGER
    */
@@ -30,27 +34,29 @@ export interface IInputNumberValueProps extends IInputValueProps {
   /** Called when the input value changes, it returns its current value in numeric format */
   onChange?: (value: InputNumberValue, event?: React.SyntheticEvent<HTMLInputElement>) => void;
   locale?: string;
-}
+};
 
-export interface IInputNumberControlsProps extends IInputAddonProps {
+/** @deprecated */
+export interface IInputNumberControlsProps extends InputNumberControlsProps, UnknownProperties {}
+export type InputNumberControlsProps = InputAddonProps & {
   /** Always displays controls (steppers)
    * @default false
    */
   showControls?: boolean;
-}
+};
 
-export interface IInputNumberCtx {
+/** @deprecated */
+export interface IInputNumberCtx extends InputNumberCtx, UnknownProperties {}
+export type InputNumberCtx = {
   getValueProps: PropGetterFn;
   getControlsProps: PropGetterFn;
   getAddonProps: PropGetterFn;
-}
+};
 
-declare const InputNumber: (<T>(
-  props: CProps<IInputNumberProps & T, IInputNumberCtx>,
-) => ReturnEl) & {
-  Value: <T>(props: IInputNumberValueProps & T) => ReturnEl;
-  Controls: <T>(props: IInputNumberControlsProps & T) => ReturnEl;
-  Addon: <T>(props: IInputAddonProps & T) => ReturnEl;
+declare const InputNumber: Intergalactic.Component<'div', InputNumberProps, InputNumberCtx> & {
+  Value: Intergalactic.Component<'input', InputNumberValueProps>;
+  Controls: Intergalactic.Component<'div', InputNumberControlsProps>;
+  Addon: Intergalactic.Component<'div', InputAddonProps>;
 };
 
 export default InputNumber;

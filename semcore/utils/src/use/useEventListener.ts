@@ -2,8 +2,13 @@ import { useEffect, useRef } from 'react';
 import canUseDOM from '../canUseDOM';
 import { getRef } from '../ref';
 
-const useEventListener = (elementOrRef, eventName, handler, options = undefined) => {
-  const savedHandler = useRef<(event) => {}>();
+const useEventListener = (
+  elementOrRef: any,
+  eventName: any,
+  handler: any,
+  options: any = undefined,
+) => {
+  const savedHandler = useRef<(event: any) => {}>();
 
   useEffect(() => {
     savedHandler.current = handler;
@@ -12,7 +17,7 @@ const useEventListener = (elementOrRef, eventName, handler, options = undefined)
   useEffect(() => {
     if (!canUseDOM()) return;
 
-    const eventListener = (event) => savedHandler.current(event);
+    const eventListener = (event: any) => savedHandler.current?.(event);
     const node = getRef(elementOrRef);
     if (!node) return;
     node.addEventListener(eventName, eventListener, options);

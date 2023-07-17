@@ -1,24 +1,29 @@
 import React from 'react';
-import { CProps, ReturnEl } from '@semcore/core';
-import Popper, { IPopperContext, IPopperProps, IPopperTriggerProps } from '@semcore/popper';
+import { Intergalactic, UnknownProperties } from '@semcore/core';
+import Popper, { PopperContext, PopperProps, PopperTriggerProps } from '@semcore/popper';
 
-export interface ITooltipProps extends IPopperProps, IPopperTriggerProps {
-  /**
-   * Tooltip text
-   */
-  title?: React.ReactNode;
-  /**
-   * Tooltip theme. You can use the default themes or create your own
-   * @default default
-   */
-  theme?: 'default' | 'warning' | 'invert';
-}
+/** @deprecated */
+export interface ITooltipProps extends TooltipProps, UnknownProperties {}
+export type TooltipProps = PopperProps &
+  PopperTriggerProps & {
+    /**
+     * Tooltip text
+     */
+    title?: React.ReactNode;
+    /**
+     * Tooltip theme. You can use the default themes or create your own
+     * @default default
+     */
+    theme?: 'default' | 'warning' | 'invert';
+  };
 
-export interface ITooltipContext extends IPopperContext {}
+/** @deprecated */
+export interface ITooltipContext extends TooltipContext, UnknownProperties {}
+export type TooltipContext = PopperContext & {};
 
-declare const Tooltip: ((props: CProps<ITooltipProps, ITooltipContext>) => ReturnEl) & {
+declare const Tooltip: Intergalactic.Component<'div', TooltipProps, TooltipContext> & {
   Trigger: typeof Popper.Trigger;
-  Popper: typeof Popper.Popper;
+  Popper: Intergalactic.Component<'div', TooltipProps, TooltipContext>;
 };
 
 export default Tooltip;

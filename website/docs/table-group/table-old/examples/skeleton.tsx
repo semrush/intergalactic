@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import Skeleton from '@semcore/ui/skeleton';
 import Checkbox from '@semcore/ui/checkbox';
 import Tooltip from '@semcore/ui/tooltip';
@@ -21,7 +21,7 @@ const data = [
 ];
 const fetchData = () => (
   <Table.Cell>
-    <Skeleton visible height={17}>
+    <Skeleton height={17}>
       <Skeleton.Text y='5' width='60%' />
     </Skeleton>
   </Table.Cell>

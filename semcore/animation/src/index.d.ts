@@ -1,5 +1,5 @@
-import { CProps, ReturnEl } from '@semcore/core';
-import { IBoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
 
 type CssTimingFunction =
   | 'ease'
@@ -10,7 +10,9 @@ type CssTimingFunction =
   | 'step-start'
   | 'step-end';
 
-export interface IAnimationProps extends IBoxProps {
+/** @deprecated */
+export interface IAnimationProps extends AnimationProps, UnknownProperties {}
+export type AnimationProps = BoxProps & {
   /** The property is responsible for the visibility of the element */
   visible?: boolean;
   /** Animation duration in ms
@@ -37,29 +39,37 @@ export interface IAnimationProps extends IBoxProps {
    * @default false
    */
   animationsDisabled?: boolean;
-}
+};
 
-export interface ICollapseProps extends IAnimationProps {
+/** @deprecated */
+export interface ICollapseProps extends CollapseProps, UnknownProperties {}
+export type CollapseProps = AnimationProps & {
   /**
    * Add overflow=hidden when passing animation
    * @default true
    * */
   overflowHidden?: boolean;
-}
+};
 
-export interface IFadeInOutProps extends IAnimationProps {}
+/** @deprecated */
+export interface IFadeInOutProps extends FadeInOutProps, UnknownProperties {}
+export type FadeInOutProps = AnimationProps & {};
 
-export interface ITransformProps extends IAnimationProps {
+/** @deprecated */
+export interface ITransformProps extends TransformProps, UnknownProperties {}
+export type TransformProps = AnimationProps & {
   /** Animation effects
    * @default []
    */
   transform?: [string, string];
-}
+};
 
-export interface IScaleProps extends IAnimationProps {
+/** @deprecated */
+export interface IScaleProps extends ScaleProps, UnknownProperties {}
+export type ScaleProps = AnimationProps & {
   /** Placement of appearing block
    */
-  placement:
+  placement?:
     | 'top-start'
     | 'top-end'
     | 'bottom-start'
@@ -68,24 +78,26 @@ export interface IScaleProps extends IAnimationProps {
     | 'right-end'
     | 'left-start'
     | 'left-end';
-}
+};
 
-export interface ISlideProps extends IAnimationProps {
+/** @deprecated */
+export interface ISlideProps extends SlideProps, UnknownProperties {}
+export type SlideProps = AnimationProps & {
   /** Direction from which slide animation will be performed
    */
   slideOrigin?: 'top' | 'bottom' | 'left' | 'right';
-}
+};
 
 type DisposeSubscription = () => void;
 declare const animationContext: React.Context<{
   onAnimationStart: (callback: () => void) => DisposeSubscription;
   onAnimationEnd: (callback: () => void) => DisposeSubscription;
 }>;
-declare const Animation: <T>(props: CProps<IAnimationProps & T>) => ReturnEl;
-declare const Collapse: <T>(props: CProps<ICollapseProps & T>) => ReturnEl;
-declare const FadeInOut: <T>(props: CProps<IFadeInOutProps & T>) => ReturnEl;
-declare const Transform: <T>(props: CProps<ITransformProps & T>) => ReturnEl;
-declare const Scale: <T>(props: CProps<IScaleProps & T>) => ReturnEl;
-declare const Slide: <T>(props: CProps<ISlideProps & T>) => ReturnEl;
+declare const Animation: Intergalactic.Component<'div', AnimationProps>;
+declare const Collapse: Intergalactic.Component<'div', CollapseProps>;
+declare const FadeInOut: Intergalactic.Component<'div', FadeInOutProps>;
+declare const Transform: Intergalactic.Component<'div', TransformProps>;
+declare const Scale: Intergalactic.Component<'div', ScaleProps>;
+declare const Slide: Intergalactic.Component<'div', SlideProps>;
 
 export { Animation, Collapse, FadeInOut, Transform, Scale, Slide, animationContext };

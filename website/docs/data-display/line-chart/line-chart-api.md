@@ -17,11 +17,3 @@ import { Line } from '@semcore/ui/d3-chart';
 ```
 
 @typescript ILineProps
-
-@## Recharts API
-
-```js
-import { LineChart } from '@semcore/chart';
-```
-
-We used [recharts](http://recharts.org) and styled it. All exports are recharts exports. Please refer to [recharts API](http://recharts.org/en-US/api) for detailed documentation and examples.

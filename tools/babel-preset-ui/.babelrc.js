@@ -17,13 +17,6 @@ module.exports = function (babel, opts = {}) {
           version: require('@babel/runtime/package.json').version,
         },
       ],
-      [
-        '@semcore/babel-plugin-recharts',
-        {
-          replacePattern: ['lib', 'es6'],
-          ...opts.recharts,
-        },
-      ],
     ],
     env: {
       commonjs: {
@@ -33,12 +26,6 @@ module.exports = function (babel, opts = {}) {
             '@babel/plugin-transform-modules-commonjs',
             {
               loose: false,
-            },
-          ],
-          [
-            '@semcore/babel-plugin-recharts',
-            {
-              replacePattern: ['es6', 'lib'],
             },
           ],
         ],

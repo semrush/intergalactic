@@ -5,7 +5,7 @@ import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const options = Array(6)
-  .fill()
+  .fill(0)
   .map((i, idx) => ({
     title: `Option ${idx}`,
   }));
@@ -13,7 +13,7 @@ const options = Array(6)
 export default () => {
   return (
     <>
-      <Text tag='label' htmlFor='filter-trigger' size='300'>
+      <Text tag='label' htmlFor='filter-trigger' size={300}>
         Filter trigger with options
       </Text>
       <Box mt={2}>

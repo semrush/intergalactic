@@ -1,12 +1,20 @@
 import React from 'react';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import createComponent, {
+  UnknownProperties,
+  Intergalactic,
+  Component,
+  sstyled,
+  Root,
+} from '@semcore/core';
 
 import style from './style/format-text.shadow.css';
 
-export interface IFormatTextProps extends IBoxProps {
+/** @deprecated */
+export interface IFormatTextProps extends FormatTextProps, UnknownProperties {}
+export type FormatTextProps = BoxProps & {
   size?: 's' | 'm' | 'l';
-}
+};
 
 class FormatText extends Component<IFormatTextProps> {
   static displayName = 'FormatText';
@@ -21,6 +29,7 @@ class FormatText extends Component<IFormatTextProps> {
     return sstyled(this.asProps.styles)(<SFormatText render={Box} />);
   }
 }
-export default createComponent(FormatText) as <T>(
-  props: IFormatTextProps & T,
-) => React.ReactElement;
+export default createComponent(FormatText) as any as Intergalactic.Component<
+  'div',
+  FormatTextProps
+>;
