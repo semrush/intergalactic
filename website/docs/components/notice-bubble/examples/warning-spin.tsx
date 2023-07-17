@@ -18,7 +18,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick}>Show warning notice with spinner</Button>
+      <Button onClick={handleClick}>Show no connection notice</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

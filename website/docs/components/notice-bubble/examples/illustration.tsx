@@ -17,7 +17,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick}>Show illustrated notice</Button>
+      <Button onClick={handleClick}>Show special event notice</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );

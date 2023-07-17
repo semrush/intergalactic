@@ -22,7 +22,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button onClick={handleClick}>Show notice with centered check mark</Button>
+      <Button onClick={handleClick}>Show notice with completion state</Button>
       <NoticeBubbleContainer manager={manager} />
     </>
   );
