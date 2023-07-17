@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-* Strict, backward incompatible typings.
+- Strict, backward incompatible typings.
 
 ## [3.1.39] - 2023-06-30
 
@@ -14,67 +14,67 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [3.1.37] - 2023-06-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [3.1.36] - 2023-06-12
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
 
 ## [3.1.35] - 2023-06-09
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
 
 ## [3.1.34] - 2023-06-07
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
 
 ## [3.1.33] - 2023-05-31
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
 
 ## [3.1.32] - 2023-05-25
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
 
 ## [3.1.31] - 2023-05-24
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
 
 ## [3.1.30] - 2023-05-22
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0]).
 
 ## [3.1.29] - 2023-05-11
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [3.1.28] - 2023-05-04
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [3.1.26] - 2023-04-24
 
@@ -82,7 +82,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
 
 ## [3.1.14] - 2023-02-09
 
@@ -90,7 +90,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [3.1.11] - 2023-01-10
 
@@ -98,13 +98,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [3.1.7] - 2022-12-13
 
 ### Changed
 
-* Added `react-dom` to peer dependencies.
+- Added `react-dom` to peer dependencies.
 
 ## [3.1.6] - 2022-12-12
 
@@ -112,109 +112,109 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0]).
 
 ## [3.1.0] - 2022-10-10
 
 ### Changed
 
-* Added support for React 18 🔥
+- Added support for React 18 🔥
 
 ## [3.0.0] - 2022-10-05
 
 ### BREAK
 
-* The approach to determining neighbors has been changed.
+- The approach to determining neighbors has been changed.
 
 ### Changed
 
-* React strict mode support.
+- React strict mode support.
 
 ## [2.3.16] - 2022-10-04
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [2.3.10] - 2022-07-13
 
 ### Fixed
 
-* Tuned up childildren elements counting (ignoring empty string).
+- Tuned up childildren elements counting (ignoring empty string).
 
 ## [2.3.9] - 2022-07-07
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.33.0 ~> 3.34.0]).
 
 ## [2.3.4] - 2022-02-24
 
 ### Added
 
-* Added repository field to package.json file.
+- Added repository field to package.json file.
 
 ## [2.3.3] - 2021-8-26
 
 ### Changed
 
-* Add 'sideEffect=false' for more optimal build via webpack
+- Add 'sideEffect=false' for more optimal build via webpack
 
 ## [2.3.2] - 2021-05-11
 
 ### Added
 
-* Added the ability to add a root tag
+- Added the ability to add a root tag
 
 ### Changed
 
-* Rewrite code from TS to JS 🧑‍💻
+- Rewrite code from TS to JS 🧑‍💻
 
 ## [2.2.0] - 2021-04-26
 
 ### Changed
 
-* Version of dependence `@semcore/core` has been changed to `1.11`.
-* Improved performance. Removed one component wrapper.
-* The style processing system has been changed.
-* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
 ## [2.1.0] - 2020-12-17
 
 ### Added
 
-* Added supported react@17.
+- Added supported react@17.
 
 ## [2.0.0] - 2020-05-28
 
 ### BREAK
 
-* Изменения описаны в [migration guide](/internal/migration-guide)
+- Изменения описаны в [migration guide](/internal/migration-guide)
 
 ## [1.1.0] - 2019-12-12
 
 ### Added
 
-* Появилась возможность добавления различных стилистических тем через css переменные
-* Появилась возможность оптицонально подключать адаптивноссть
-* Появилась возможность изолировать стили даже в пределах одной страницы
+- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность оптицонально подключать адаптивноссть
+- Появилась возможность изолировать стили даже в пределах одной страницы
 
 ### Changed
 
-* Изменен алгоритм вставки стилей в head
+- Изменен алгоритм вставки стилей в head
 
 ### Removed
 
-* Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
 ## [1.0.1] - 2019-09-30
 
 ### Changed
 
-* Нужные зависимости перенесены в `utils`, размер должен стать меньше
+- Нужные зависимости перенесены в `utils`, размер должен стать меньше
 
 ## [1.0.0] - 2019-01-18
 
 ### Added
 
-* Initial release
+- Initial release

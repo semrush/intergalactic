@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Break
 
-* Strict, backward incompatible typings.
+- Strict, backward incompatible typings.
 
 ## [1.4.4] - 2023-06-30
 
@@ -14,97 +14,97 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/icon` [3.15.3 ~> 3.16.0], `@semcore/modal` [3.8.2 ~> 3.8.3]).
+- Version patch update due to children dependencies update (`@semcore/icon` [3.15.3 ~> 3.16.0], `@semcore/modal` [3.8.2 ~> 3.8.3]).
 
 ## [1.4.2] - 2023-06-27
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/icon` [3.15.2 ~> 3.15.3], `@semcore/modal` [3.8.1 ~> 3.8.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0], `@semcore/flex-box` [4.7.31 ~> 4.7.32], `@semcore/icon` [3.15.2 ~> 3.15.3], `@semcore/modal` [3.8.1 ~> 3.8.2]).
 
 ## [1.4.1] - 2023-06-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/flex-box` [4.7.30 ~> 4.7.31], `@semcore/icon` [3.15.1 ~> 3.15.2], `@semcore/modal` [3.8.0 ~> 3.8.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4], `@semcore/flex-box` [4.7.30 ~> 4.7.31], `@semcore/icon` [3.15.1 ~> 3.15.2], `@semcore/modal` [3.8.0 ~> 3.8.1]).
 
 ## [1.4.0] - 2023-06-12
 
 ### Added
 
-* Swedish (`sv`) locale support.
+- Swedish (`sv`) locale support.
 
 ## [1.3.2] - 2023-06-12
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/icon` [3.15.0 ~> 3.15.1], `@semcore/modal` [3.7.1 ~> 3.7.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3], `@semcore/flex-box` [4.7.29 ~> 4.7.30], `@semcore/icon` [3.15.0 ~> 3.15.1], `@semcore/modal` [3.7.1 ~> 3.7.2]).
 
 ## [1.3.1] - 2023-06-09
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/flex-box` [4.7.28 ~> 4.7.29], `@semcore/icon` [3.14.16 ~> 3.15.0], `@semcore/modal` [3.7.0 ~> 3.7.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2], `@semcore/flex-box` [4.7.28 ~> 4.7.29], `@semcore/icon` [3.14.16 ~> 3.15.0], `@semcore/modal` [3.7.0 ~> 3.7.1]).
 
 ## [1.3.0] - 2023-06-09
 
 ### Added
 
-* Polish (`pl`) locale support.
+- Polish (`pl`) locale support.
 
 ## [1.2.50] - 2023-06-07
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/flex-box` [4.7.27 ~> 4.7.28], `@semcore/icon` [3.14.15 ~> 3.14.16], `@semcore/modal` [3.6.13 ~> 3.6.14]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1], `@semcore/flex-box` [4.7.27 ~> 4.7.28], `@semcore/icon` [3.14.15 ~> 3.14.16], `@semcore/modal` [3.6.13 ~> 3.6.14]).
 
 ## [1.2.49] - 2023-06-02
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/modal` [3.6.12 ~> 3.6.13]).
+- Version patch update due to children dependencies update (`@semcore/modal` [3.6.12 ~> 3.6.13]).
 
 ## [1.2.48] - 2023-05-31
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/icon` [3.14.14 ~> 3.14.15], `@semcore/modal` [3.6.11 ~> 3.6.12]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0], `@semcore/flex-box` [4.7.26 ~> 4.7.27], `@semcore/icon` [3.14.14 ~> 3.14.15], `@semcore/modal` [3.6.11 ~> 3.6.12]).
 
 ## [1.2.47] - 2023-05-29
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/modal` [3.6.10 ~> 3.6.11]).
+- Version patch update due to children dependencies update (`@semcore/modal` [3.6.10 ~> 3.6.11]).
 
 ## [1.2.46] - 2023-05-25
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/flex-box` [4.7.25 ~> 4.7.26], `@semcore/icon` [3.14.13 ~> 3.14.14], `@semcore/modal` [3.6.9 ~> 3.6.10]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0], `@semcore/flex-box` [4.7.25 ~> 4.7.26], `@semcore/icon` [3.14.13 ~> 3.14.14], `@semcore/modal` [3.6.9 ~> 3.6.10]).
 
 ## [1.2.45] - 2023-05-24
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/flex-box` [4.7.24 ~> 4.7.25], `@semcore/icon` [3.14.12 ~> 3.14.13], `@semcore/modal` [3.6.8 ~> 3.6.9]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1], `@semcore/flex-box` [4.7.24 ~> 4.7.25], `@semcore/icon` [3.14.12 ~> 3.14.13], `@semcore/modal` [3.6.8 ~> 3.6.9]).
 
 ## [1.2.44] - 2023-05-22
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/icon` [3.14.11 ~> 3.14.12], `@semcore/modal` [3.6.7 ~> 3.6.8]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.7 ~> 3.51.0], `@semcore/flex-box` [4.7.23 ~> 4.7.24], `@semcore/icon` [3.14.11 ~> 3.14.12], `@semcore/modal` [3.6.7 ~> 3.6.8]).
 
 ## [1.2.43] - 2023-05-22
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/modal` [3.6.6 ~> 3.6.7]).
+- Version patch update due to children dependencies update (`@semcore/modal` [3.6.6 ~> 3.6.7]).
 
 ## [1.2.42] - 2023-05-11
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11], `@semcore/modal` [3.6.5 ~> 3.6.6]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7], `@semcore/flex-box` [4.7.22 ~> 4.7.23], `@semcore/icon` [3.14.10 ~> 3.14.11], `@semcore/modal` [3.6.5 ~> 3.6.6]).
 
 ## [1.2.41] - 2023-05-11
 
@@ -112,7 +112,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/icon` [3.14.9 ~> 3.14.10], `@semcore/modal` [3.6.3 ~> 3.6.4]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6], `@semcore/flex-box` [4.7.21 ~> 4.7.22], `@semcore/icon` [3.14.9 ~> 3.14.10], `@semcore/modal` [3.6.3 ~> 3.6.4]).
 
 ## [1.2.38] - 2023-05-02
 
@@ -124,17 +124,17 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Title got semantic `h2` tag.
+- Title got semantic `h2` tag.
 
 ### Fixed
 
-* Added screen reader only hint about completed steps.
+- Added screen reader only hint about completed steps.
 
 ## [1.2.34] - 2023-04-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.2], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7], `@semcore/modal` [3.5.17 ~> 3.5.18]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.2], `@semcore/flex-box` [4.7.18 ~> 4.7.19], `@semcore/icon` [3.14.6 ~> 3.14.7], `@semcore/modal` [3.5.17 ~> 3.5.18]).
 
 ## [1.2.21] - 2023-03-01
 
@@ -142,7 +142,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/modal` [3.5.3 ~> 3.5.4]).
+- Version patch update due to children dependencies update (`@semcore/modal` [3.5.3 ~> 3.5.4]).
 
 ## [1.2.18] - 2023-02-22
 
@@ -150,25 +150,25 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/modal` [3.5.0 ~> 3.5.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.47.0 ~> 3.47.1], `@semcore/flex-box` [4.7.9 ~> 4.7.10], `@semcore/icon` [3.10.1 ~> 3.10.2], `@semcore/modal` [3.5.0 ~> 3.5.1]).
 
 ## [1.2.14] - 2023-02-10
 
 ### Fixed
 
-* Fixed issue with scroll on small screen
+- Fixed issue with scroll on small screen
 
 ## [1.2.13] - 2023-02-09
 
 ### Changed
 
-* Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`, `--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`, `--intergalactic-rounded-large` -> `--intergalactic-modal-rounded`).
 
 ## [1.2.12] - 2023-01-20
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/modal` [3.4.2 ~> 3.4.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0], `@semcore/flex-box` [4.7.6 ~> 4.7.7], `@semcore/icon` [3.7.0 ~> 3.8.0], `@semcore/modal` [3.4.2 ~> 3.4.3]).
 
 ## [1.2.7] - 2023-01-11
 
@@ -178,59 +178,59 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/icon` [3.5.0 ~> 3.5.1], `@semcore/modal` [3.3.2 ~> 3.3.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2], `@semcore/flex-box` [4.7.3 ~> 4.7.4], `@semcore/icon` [3.5.0 ~> 3.5.1], `@semcore/modal` [3.3.2 ~> 3.3.3]).
 
 ## [1.2.1] - 2022-12-13
 
 ### Changed
 
-* Added `react-dom` to peer dependencies.
+- Added `react-dom` to peer dependencies.
 
 ## [1.2.0] - 2022-12-12
 
 ### Added
 
-* Design tokens based theming.
+- Design tokens based theming.
 
 ## [1.1.12] - 2022-12-01
 
 ### Fixed
 
-* Fixed layout so that the white background in the rounded borders of the modal would not be visible.
+- Fixed layout so that the white background in the rounded borders of the modal would not be visible.
 
 ## [1.1.11] - 2022-11-30
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/icon` [3.3.1 ~> 3.3.2], `@semcore/modal` [3.1.10 ~> 3.1.11]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.41.0 ~> 3.42.0], `@semcore/flex-box` [4.6.4 ~> 4.6.5], `@semcore/icon` [3.3.1 ~> 3.3.2], `@semcore/modal` [3.1.10 ~> 3.1.11]).
 
 ## [1.1.0] - 2022-10-10
 
 ### Changed
 
-* Added support for React 18 🔥
-* Extended version range for dependency `@semcore/icons`.
+- Added support for React 18 🔥
+- Extended version range for dependency `@semcore/icons`.
 
 ## [1.0.15] - 2022-10-06
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0], `@semcore/modal` [3.0.23 ~> 3.0.24]).
+- Version patch update due to children dependencies update (`@semcore/icon` [2.32.2 ~> 2.33.0], `@semcore/modal` [3.0.23 ~> 3.0.24]).
 
 ## [1.0.1] - 2022-06-30
 
 ### Fixed
 
-* Fixed completed icon alignment
+- Fixed completed icon alignment
 
 ## [1.0.0] - 2022-06-29
 
 ### Changed
 
-* Changed api
+- Changed api
 
 ## [1.0.0-0] - 2022-06-01
 
 ### Added
 
-* Initial release
+- Initial release
