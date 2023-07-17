@@ -2,16 +2,16 @@
 title: Example
 ---
 
-@## Notice
+@## Basic usage
 
 @example notice
 
 @## NoticeSmart
 
-It's an example of how NoticeSmart works.
+It is an example that showcases the functionality of the [NoticeSmart](/components/notice/notice-api/#noticesmart) component.
 
 @example notice-smart
 
 @## Custom notice
 
-You can build any notice from its components. As an example see [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code/#a414bd).
+You have the flexibility to construct custom notices by utilizing individual components. For an example, refer to [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no-code/).

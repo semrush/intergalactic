@@ -7,7 +7,7 @@ fileSource: modal
 
 @example modal
 
-@## Height of the modal window is bigger the browser page
+@## Modal window height is bigger than the browser page
 
 Sometimes the amount of content overfills the window's visibility, but you don't need to worry about it, because the component will be adjusted and the scroll will appear.
 
@@ -15,39 +15,39 @@ Sometimes the amount of content overfills the window's visibility, but you don't
 
 @## Changing the alignment
 
-By default, the modal window is displayed in the center, sometimes we need to change the window when the content height inside the window is resized and the modal window begins to "jump". This can be done by making the desired indent on the respective side.
+By default, the modal window is centered. However, in some cases, when the content height inside the window changes dynamically and causes the modal window to "jump," it may be necessary to adjust the window alignment. This can be achieved by applying the desired margin on the respective side.
 
 @example position
 
 @## Modal window inside a modal window
 
-We do not recommend this, but sometimes it is necessary to open a model window in another modal window. You should put modal windows in each other, so that the background and keyboard control would be correct.
+While it is generally not recommended, there are instances where it may be necessary to open a modal window within another modal window. In such cases, it is important to nest the modal windows properly to ensure correct background visibility and keyboard control.
 
 @example modal-inside-modal
 
 @## Modal window with customization
 
-Example of a wizard 🧙🏻 requiring a custom header.
+Example of a modal window with a custom header.
 
 @example wizard
 
 @## Access to internal HTML nodes
 
-To access the background or the closing cross, you need to expand the modal window and recreate the same sequence of components.
+To access the background or the close `Close` icon, you will need to expand the modal window and recreate the same component sequence.
 
-We hope that in most cases you won't need it. **No custom cross is needed:**
+In most cases, it is expected that you will not require this functionality. **There is no need for a custom `Close` icon.** Instead, consider the following solutions:
 
-- send Analytics by click (**solution**: apply [`onClose`](/components/modal/modal-api/#aa518f) in Modal)
-- the spinner needs to overlap the cross (solution: take a look at the [example](/components/modal/modal-code/#adf9fc) above)
+- If you need to send analytics upon clicking the close icon, you can use the [`onClose` prop](/components/modal/modal-api/#IModalProps.onClose) in the Modal component.
+- To ensure the spinner overlaps the close icon, refer to the example provided above.
 
 @example modal-advanced
 
 @## Modal window inside the iframe
 
-Whenever it’s possible, use pages instead of modal windows. Modal windows in the iframe will not overlay the entire viewport – just an area of an iframe, and will not appear at the center of viewport – only at the center of an iframe, looking very awkward.
+Whenever possible, opt for using pages instead of modal windows. Modal windows within an iframe will not overlay the entire viewport; instead, they will only cover a portion of the iframe area. Additionally, they will not appear at the center of the viewport but rather at the center of the iframe, resulting in an awkward visual experience.
 
-One of the alternative solutions – fullscreen modal. It will cover the entire iframe and will look like a page, not a dialog.
+One alternative solution is to use a [FullscreenModal](/components/fullscreen-modal). This type of modal will cover the entire iframe and resemble a page rather than a dialog.
 
-> Avoid using fullscreen modals for simple confirmation dialogs or warnings.
+> It is advised to avoid using fullscreen modals for simple confirmation dialogs or warnings.
 
-When using simple modal dialog, you can apply a quick fix for better looking modal window - just set `margin-top: 0` or `<Modal mt={0}/>`.
+When using a simple modal dialog, you can apply a quick fix to improve its appearance by setting `margin-top: 0` or `<Modal mt={0}/>`.

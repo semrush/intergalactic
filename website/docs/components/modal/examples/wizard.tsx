@@ -3,10 +3,10 @@ import Modal from '@semcore/ui/modal';
 import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
-import CloseS from '@semcore/ui/icon/Close/m';
-import CheckS from '@semcore/ui/icon/Check/m';
-import ChevronRightS from '@semcore/ui/icon/ChevronRight/m';
-import ChevronLeftS from '@semcore/ui/icon/ChevronLeft/m';
+import CloseM from '@semcore/ui/icon/Close/m';
+import CheckM from '@semcore/ui/icon/Check/m';
+import ChevronRightM from '@semcore/ui/icon/ChevronRight/m';
+import ChevronLeftM from '@semcore/ui/icon/ChevronLeft/m';
 import styled from 'styled-components';
 
 const MAP_NAVIGATION = {
@@ -34,7 +34,7 @@ const NavigationItem = ({ onClick, value, stepNavigation }) => (
     alignItems='center'
   >
     <Flex w='40px' h='16px' inline justifyContent='center' alignItems='center'>
-      {stepNavigation === value ? <CheckS /> : value}
+      {stepNavigation === value ? <CheckM /> : value}
     </Flex>
     <Text size={200}>{MAP_NAVIGATION[value]}</Text>
   </Tab>
@@ -117,7 +117,7 @@ class Demo extends React.PureComponent {
           >
             <span />
             <Text size={200}>POSITION TRACKING SETTINGS</Text>
-            <CloseS
+            <CloseM
               title='Close'
               onClick={() => this.closeModal()}
               mr={2}
@@ -143,7 +143,7 @@ class Demo extends React.PureComponent {
                 onClick={() => this.updateStepNavigation(stepNavigation - 1)}
               >
                 {MAP_NAVIGATION[stepNavigation - 1] && (
-                  <ChevronLeftS mr={1} style={{ verticalAlign: 'middle' }} />
+                  <ChevronLeftM mr={1} style={{ verticalAlign: 'middle' }} />
                 )}
                 {MAP_NAVIGATION[stepNavigation - 1]}
               </Text>
@@ -156,7 +156,7 @@ class Demo extends React.PureComponent {
               >
                 {MAP_NAVIGATION[stepNavigation + 1]}
                 {MAP_NAVIGATION[stepNavigation + 1] && (
-                  <ChevronRightS ml={1} style={{ verticalAlign: 'middle' }} />
+                  <ChevronRightM ml={1} style={{ verticalAlign: 'middle' }} />
                 )}
               </Text>
             </Flex>

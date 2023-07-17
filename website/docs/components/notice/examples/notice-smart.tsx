@@ -1,6 +1,6 @@
 import React from 'react';
 import { NoticeSmart } from '@semcore/ui/notice';
-import QuestionAltS from '@semcore/ui/icon/Question/m';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
 
 const message = 'The reports are based on the data from the Russia Federation and CIS.';
 
@@ -27,7 +27,7 @@ class Demo extends React.PureComponent {
   render() {
     const { message } = this.state;
     return (
-      <NoticeSmart closable label={<QuestionAltS />} onClose={this.close} hidden={!message}>
+      <NoticeSmart closable label={<QuestionAltM />} onClose={this.close} hidden={!message}>
         {message}
       </NoticeSmart>
     );

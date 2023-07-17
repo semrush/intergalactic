@@ -16,7 +16,7 @@ const width = 600;
 const imageWidth = width - 75;
 
 const Demo = () => (
-  <Carousel w={width} defaultIndex={1}>
+  <Carousel w={width} defaultIndex={0}>
     <Flex>
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden' }}>

@@ -13,9 +13,11 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 * Removed `FeauturedImage` icon.
 * Removed `FeauturedVideo` icon.
 
-## [3.16.1] - 2023-06-30
+### Added
 
-## [3.16.0] - 2023-06-27
+- Added `Diners` pay icon.
+
+## [3.16.1] - 2023-06-30
 
 ### Added
 
