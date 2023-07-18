@@ -20,6 +20,10 @@
 
 - **Fix** Removed ResizeObserver initiating during SSR.
 
+### @semcore/textarea
+
+- **Changed** Enabled textarea resize observing even if no `maxRows` prop provided.
+
 ### @semcore/tooltip
 
 - **Change** Removed ScreenReaderOnly block for tooltips with `interaction=hover`.
