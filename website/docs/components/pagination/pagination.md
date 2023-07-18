@@ -8,84 +8,84 @@ tabName: Design
 
 @## Description
 
-**Pagination** is a component with a group of controls for navigation through the long list of data.
+**Pagination** is a component that provides a set of controls to navigate through long lists of data.
 
-### When to use
-
-It is recommended to use pagination in tables, as well as in a long list of data which is comfortable to be looked page by page.
+Using pagination is highly recommended for tables and long lists of data that users prefer to browse page by page.
 
 @## Component composition
 
+![](static/pagination-composition.png)
+
 **Pagination consists of:**
 
-- [Buttons](/components/button/);
-- [Input](/components/input/);
-- [Link](/components/link/)
-- [Text](/style/typography/).
-
-![](static/default.png)
+1. `Pagination.FirstPage`
+2. `Pagination.NextPage`
+3. `Pagination.PageInput`
+4. `Pagination.PageInput.Value`
+5. `Pagination.PrevPage`
+6. `Pagination.TotalPages`
 
 @## Margins
 
-- Margins between the buttons are always 8px.
-- Margin between the different controls are 16px: between the buttons and the input for current page, between the input for current page and the select.
+- The margins between buttons in the component are always 8px.
+- The margins between different controls are 16px, such as between the buttons and the input for the - current page, and between the input for the current page and the select.
 
 ![](static/margins.png)
 
-Margin from the table to the pagination is always 16px.
+The margin from the table to the pagination is consistently 16px.
 
 ![](static/margin-top.png)
 
 @## Number of the rows
 
-We have some recommendations for the table size:
+We provide some recommendations for the table size:
 
-- Use minimum two user screens (± 2000 px) for the table.
-- Show maximum 100 lines (if the lines are two-line, then 50 lines etc.).
+- Use a minimum of two user screens (± 2000 px) for the table.
+- Display a maximum of 100 lines (if the lines occupy two lines, then 50 lines, etc.).
 
 @## Interaction
 
-- The table should be scrolled up to the beginning when user moves between pages.
-- After sorting and filtration pagination always returns user to the first page.
+- The table should scroll to the beginning when the user moves between pages.
+- After sorting and filtering, the pagination always returns the user to the first page.
 
-| Appearance                                         | Action                                                                                                                                            |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Appearance example                | Action          |
+| --------------------------------- | --------------- |
 | ![](static/secondary-button.png)  | Opens the first page                                                                                                                              |
 | ![](static/secondary-button-2.png) | Opens the previous page                                                                                                                           |
 | ![](static/primary-button.png)     | Opens the next page                                                                                                                               |
-| ![](static/steps.png)              | When the input is in focus, the clickable `Return` icon with M size appears. By clicking it or pressing Enter the user moves to the entered page. |
+| ![](static/steps.png)              | When the input is in focus, a clickable `Return` icon with M size appears. By clicking it or pressing `Enter`, the user moves to the entered page. |
 
-The current page should be always displayed in the input:
+The current page should always be displayed in the input:
 
-- When the input is unfocused, show the current page, even if the user have changed this value, but did not press `Enter` or clicked the icon inside the input.
-- If the input is empty (for example the user cleared it) or 0 is entered, then the user will move to the first page by clicking the icon or pressing `Enter`.
-- Such input should have limitation for entering any symbols except for numerical ones.
+- When the input is unfocused, show the current page, even if the user has changed this value but has not pressed `Enter` or clicked the icon inside the input.
+- If the input is empty (for example, the user cleared it) or "0" is entered, then the user will move to the first page by clicking the icon inside the input or pressing `Enter`.
+- This input restricts the entry of any symbols except numerical characters.
 
-The link at the end of the pagination shows the total number of pages. User moves to the last page by clicking it.
+The link at the end of the pagination shows the total number of pages. The user moves to the last page by clicking it.
 
 @## States and cases
 
 ### User is on the first page
 
-The "First page" button and the "Prev" button are `disabled` in this case.
+In this case, the "First page" button and the "Prev" button are `disabled`.
 
 ![](static/first-page.png)
 
 ### User is on the last page
 
-The "Next page" button gets the `disabled` state, and the link to the last page becomes plain text.
+The "Next page" button becomes `disabled`, and the link to the last page appears as plain text.
 
 ![](static/last-page.png)
 
-### User enters the value that is more than the number of the pages
+### User enters a value that exceeds the number of pages
 
-Do not show the error in this case, just move the user to the last page.
+In this case, there should be no error shown; instead, the user should be moved to the last page.
 
-### One page
+### One page only
 
-Use this state only if there is some data and there might be more data.
+Use this state only when there is some data, and there might be more data.
 
-> If there is no data or the filter is applied, then there should not be any pagination. The table should contain a message that there is no data.
+> If there is no data or the filter is applied, pagination should not be displayed. Instead, the table should contain a message indicating that there is no data.
 
 ![](static/one-page.png)
 
@@ -93,21 +93,21 @@ Use this state only if there is some data and there might be more data.
 
 ### Page loading
 
-Do not show pagination while loading.
+During loading, do not display pagination.
 
-@## Optional states
+@## Additional states
 
-#### Select for choosing the number of rows
+### Select for choosing the number of rows
 
-After user changes the value in the select, the page should be refreshed and the value of the table rows from the select should be applied.
+After the user changes the value in the select, the page should be refreshed, and the value of the table rows from the select should be applied.
 
 Use only these values for the select: 10, 20, 50, 100.
 
 ![](static/page-select.png)
 
-### It is impossible to calculate the exact number of pages
+### Impossible to calculate the exact number of pages
 
-In this case add the `tilde (≈)` to the number of pages, and change the link with the number of all pages to the plain text.
+In this case, add the `tilde (≈)` to the number of pages and change the link displaying the number of all pages to plain text.
 
 ![](static/undefined-number.png)
 
