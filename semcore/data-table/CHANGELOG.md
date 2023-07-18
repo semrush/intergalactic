@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fix
 
 - Removed ResizeObserver initiating during SSR.
-## [4.0.0] - 2023-07-15
+## [4.0.0] - 2023-07-17
 
 ### Break
 
