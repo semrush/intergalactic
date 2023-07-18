@@ -31,13 +31,13 @@ const Preview = (preview) => {
   const before = bool({
     key: 'before',
     defaultValue: false,
-    label: 'Before',
+    label: 'AddonLeft',
   });
 
   const after = bool({
     key: 'after',
     defaultValue: false,
-    label: 'After',
+    label: 'AddonRight',
   });
 
   const disabled = bool({

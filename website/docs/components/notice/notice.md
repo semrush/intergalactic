@@ -65,7 +65,7 @@ Avoid stretching the text to the full width of the notice, particularly when the
 
 ![](static/notice-text-yes-no.png)
 
-@## Notice themes
+@## Themes
 
 @table-caption Notice themes
 
