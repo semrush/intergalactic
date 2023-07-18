@@ -16,7 +16,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [3.5.1] - 2023-06-30
 
-
 ### Added
 
 - Added background for active state for `Row`.
