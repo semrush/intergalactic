@@ -10,29 +10,30 @@ export type PillsValue = string | number | boolean | null;
 export interface IPillsProps<T extends PillsValue = PillsValue>
   extends PillsProps<T>,
     UnknownProperties {}
-export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps & {
-  /** Pills size */
-  size?: 'l' | 'm';
-  /** Disabled state */
-  disabled?: boolean;
-  /** Called when the selection is changed */
-  onChange?:
-    | ((value: T, e?: React.SyntheticEvent<HTMLSpanElement>) => void)
-    | React.Dispatch<React.SetStateAction<T>>;
-  /** Value for the selected pill */
-  value?: T;
-  /** Default value for the selected pill */
-  defaultValue?: T;
-  /** Sets semantic role for corresponding behavior,
-   * when set to `radio` pressing left and right arrows
-   * selects corresponding sibling pill.
-   *
-   * It's recommended to use `radio` behavior in forms
-   * while `tabs` behavior for navigation and layout.
-   * @default tabs
-   */
-  behavior?: 'tabs' | 'radio';
-};
+export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
+  BoxProps & {
+    /** Pills size */
+    size?: 'l' | 'm';
+    /** Disabled state */
+    disabled?: boolean;
+    /** Called when the selection is changed */
+    onChange?:
+      | ((value: T, e?: React.SyntheticEvent<HTMLSpanElement>) => void)
+      | React.Dispatch<React.SetStateAction<T>>;
+    /** Value for the selected pill */
+    value?: T;
+    /** Default value for the selected pill */
+    defaultValue?: T;
+    /** Sets semantic role for corresponding behavior,
+     * when set to `radio` pressing left and right arrows
+     * selects corresponding sibling pill.
+     *
+     * It's recommended to use `radio` behavior in forms
+     * while `tabs` behavior for navigation and layout.
+     * @default tabs
+     */
+    behavior?: 'tabs' | 'radio';
+  };
 
 /** @deprecated */
 export interface IPillProps extends PillProps, UnknownProperties {}
