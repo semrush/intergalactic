@@ -114,13 +114,13 @@ export const snapshot = async (
   for (let retry = 0; retry < retires; retry++) {
     try {
       const response = await post({
-        url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/',
+        url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/?r=1',
         encoding: null,
         form: {
           ...options,
           html,
           token: process.env.SCREENSHOT_TOKEN,
-          // noCache: true,
+          noCache: true,
         },
       });
       body = response.body;
