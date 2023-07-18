@@ -53,13 +53,13 @@ const Preview = (preview) => {
   const beforeIcon = bool({
     key: 'before',
     defaultValue: false,
-    label: 'Before',
+    label: 'AddonLeft',
   });
 
   const afterIcon = bool({
     key: 'after',
     defaultValue: false,
-    label: 'After',
+    label: 'AddonRight',
   });
 
   const child = text({

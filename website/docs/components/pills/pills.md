@@ -8,87 +8,103 @@ tabName: Design
 
 @## Description
 
-**Pills** is a component used for:
+**Pills** is a component designed for:
 
-- switching of states (tabs/views/screens with uniform content);
-- filtering data in lists/tables/graphs.
+- Switching between states, such as tabs, views, or screens with uniform content.
+- Filtering data in lists, tables, and charts.
 
-@## Sizes and paddings
+@## Component composition
 
-| Size (height in px) | Paddings                               |
-| ------------------- | -------------------------------------- |
-| L (40px)            | ![](static/pills-paddings-L.png) |
+![](static/pills-composition.png)
+
+Pills component consists of:
+
+1. `Pill.Item`
+2. `Pill.Item.Addon`
+3. `Pill.Item.Text`
+
+@## Sizes and margins
+
+@table-caption Pills sizes and margins
+
+| Size (height in px) | Margins                          |
+| ------------------- | -------------------------------- |
 | M (28px)            | ![](static/pills-paddings-M.png) |
+| L (40px)            | ![](static/pills-paddings-L.png) |
 
-Addons (icon, flag, badge, counter) have the same padding as the addons inside the [Button](/components/button/).
+Addons (icons, flags, badges, counters) have the same margin as the addons inside the [Button](/components/button/).
 
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
 
-@## Types
+@## Cases
 
-### Default pills
+### Default
 
-It is used in most cases in our products.
+The default appearance used in most cases across our design system.
 
 ![](static/normal_active.png)
 
-### Advanced pills (king-size 👑)
+### Adding new item
 
-In some products, the pills can act as a block with shared metrics. Pills can be made "main" if they contain the target figures of the report. What is their difference from the usual pills:
+> This type exists only in design, and the component doesn't cover this case yet.
 
-- they are higher in height due to the content;
-- they may have additional controls inside (usually adding/moving data by clicking on a link).
+@table-caption States for adding new item case in Pills
 
-![](static/pills-summary.png)
-
-### Pill for adding new item
-
-Note that this type is design-only yet.
-
-| State  | Appearance                                       |
-| ------ | ------------------------------------------------ |
-| Normal | ![](static/pills-add-normal.png) |
+| State  | Appearance                          |
+| ------ | ----------------------------------- |
+| Normal | ![](static/pills-add-normal.png)    |
 | Hover  | ![](static/pills-add-hover.png)     |
 | Active | ![](static/pills-add-active.png)    |
 
+### Pills as summary
+
+In some products, pills can act as a block with shared metrics. Their differences from the default pills are:
+
+- Increased height due to content.
+- Additional controls inside, usually for adding/moving data by clicking on a link.
+
+![](static/pills-summary.png)
+
 @## Interaction
 
-| State                                  | Appearance                                   |
-| -------------------------------------- | -------------------------------------------- |
+@table-caption States for Pills
+
+| State                                  | Appearance example             |
+| -------------------------------------- | ------------------------------ |
 | Skeleton (initial loading of the page) | ![](static/pills-skeleton.png) |
-| Normal, active                         | ![](static/normal_active.png)   |
-| Hover                                  | ![](static/hover.png)            |
-| Disabled                               | ![](static/disabled.png)      |
-| Disabled pill                          | ![](static/disabled-pill.png) |
+| Normal/Active                          | ![](static/normal_active.png)  |
+| Hover                                  | ![](static/hover.png)          |
+| Disabled                               | ![](static/disabled.png)       |
+| Disabled `Pills.Item`                  | ![](static/disabled-pill.png)  |
 | Loading                                | ![](static/loading.png)        |
 
 @## Usage in UX/UI
 
 Pills are used for:
 
-- actions with data: filtering, sorting, navigation (displaying data chunks);
-- changing the view/presentation of data.
+- Actions with data: filtering, sorting, navigation (displaying data chunks).
+- Changing the view/presentation of data.
 
-Use pills in:
+Pills can be used in:
 
-- lists;
-- [tables](/table-group/table/);
-- [charts](/data-display/chart-controls/);
-- local filters in widgets, etc.
+- Lists;
+- [Tables](/table-group/table/);
+- [Charts](/data-display/chart-controls/);
+- Local filters in widgets, etc.
 
 ### Number of pills
 
-Minimum in the component is 2, maximum – is unlimited. **But keep in mind that it will be difficult for the user to navigate the selection if there are too many items.** In this case, you can:
+The minimum number of pills in the component is 2, and the maximum is unlimited. However, keep in mind that it might be challenging for the user to navigate the selection with too many items. In such cases, you can:
 
-- collapse pills in [DropdownMenu](/components/dropdown-menu/) with an `Ellipsis` icon;
-- use [Select](/components/select) instead.
+- Collapse pills into a [DropdownMenu](/components/dropdown-menu/) with an `Ellipsis` icon;
+- Use [Select](/components/select) instead.
 
 ![](static/pills-collapse.png)
 
-By clicking on the last pill with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list put before pill with ellipsis.
+Clicking on the last pill with an ellipsis in the dropdown displays a list of items that did not fit. The selected item from this list will be placed before the pill with an ellipsis.
 
-### Examples of wrong use
+### Examples of wrong usage
 
 Do not use buttons instead of pills:
 
@@ -102,7 +118,7 @@ If words are too long, you can shorten them into abbreviations that users can un
 
 ![](static/pills-name-yes-no.png)
 
-Do not use one Pills.Item:
+Do not use a single `Pills.Item`:
 
 ![](static/pills-one-yes-no.png)
 

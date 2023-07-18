@@ -37,13 +37,13 @@ export default PlaygroundGeneration(
 
     const before = text({
       key: 'before',
-      label: 'Before',
+      label: 'AddonLeft',
       defaultValue: 'Off',
     });
 
     const after = text({
       key: 'after',
-      label: 'After',
+      label: 'AddonRight',
       defaultValue: 'On',
     });
 
