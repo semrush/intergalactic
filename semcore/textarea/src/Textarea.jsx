@@ -39,14 +39,12 @@ class Textarea extends Component {
   };
 
   addGlobalHandlers = () => {
-    const { maxRows } = this.asProps;
-    if (!canUseDOM() || !maxRows) return;
+    if (!canUseDOM()) return;
     window.addEventListener('resize', this.calculateRows);
   };
 
   removeGlobalHandlers = () => {
-    const { maxRows } = this.asProps;
-    if (!canUseDOM() || !maxRows) return;
+    if (!canUseDOM()) return;
     window.removeEventListener('resize', this.calculateRows);
   };
 
