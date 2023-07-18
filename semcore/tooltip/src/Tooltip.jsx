@@ -8,7 +8,6 @@ import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/tooltip.shadow.css';
-import { ScreenReaderOnly } from '@semcore/utils/lib/ScreenReaderOnly';
 
 const Popper = PopperOrigin[CREATE_COMPONENT]();
 
@@ -112,7 +111,6 @@ function TooltipPopper(props) {
         {(children = <Children />)}
         <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
       </STooltip>
-      {interaction === 'hover' && <ScreenReaderOnly>{children}</ScreenReaderOnly>}
     </>,
   );
 }
