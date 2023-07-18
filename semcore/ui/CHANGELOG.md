@@ -1,4 +1,34 @@
+## [15.0.1] - 2023-07-18
+
+### @semcore/d3-chart
+
+- **Fix** Removed ResizeObserver initiating during SSR.
+
+### @semcore/data-table
+
+- **Fix** Removed ResizeObserver initiating during SSR.
+
+### @semcore/ellipsis
+
+- **Fix** Removed ResizeObserver initiating during SSR.
+
+### @semcore/pills
+
+- **Fix** `PillsProps` wasn't including `BoxProps`. 
+
+### @semcore/popper
+
+- **Fix** Removed ResizeObserver initiating during SSR.
+
+### @semcore/tooltip
+
+- **Change** Removed ScreenReaderOnly block for tooltips with `interaction=hover`.
+
 ## [15.0.0] - 2023-07-17
+
+### Global
+
+- **Break** Strict, backward incompatible typings.
 
 ### @semcore/icon
 
@@ -22,10 +52,6 @@
 ### @semcore/radio
 
 - **BREAK** `RadioGroup` now wraps it's content into `Flex` container (previously it was wrapping content into `React.Fragment` by default).
-
-### Global
-
-- **Break** Strict, backward incompatible typings.
 
 ### @semcore/core
 
