@@ -1,3 +1,9 @@
+## [15.0.2] - 2023-07-18
+
+### @semcore/data-table
+
+- **Fixed** Fixed `disabledScroll` visual behavior.
+
 ## [15.0.1] - 2023-07-18
 
 ### @semcore/d3-chart

@@ -270,7 +270,19 @@ class Body extends Component<AsProps, State> {
       new Promise(() => this.setupRowSizeObserver());
     }
 
-    return sstyled(styles)(
+    const body = sstyled(styles)(
+      <SBody render={Box}>
+        {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
+        {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
+        {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
+      </SBody>,
+    );
+
+    if (disabledScroll) {
+      return <SBodyWrapper>{body}</SBodyWrapper>;
+    }
+
+    return (
       <SBodyWrapper>
         <SScrollArea
           shadow
@@ -281,11 +293,7 @@ class Body extends Component<AsProps, State> {
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >
           <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
-            <SBody render={Box}>
-              {holdHeight ? <SHeightHold hMin={holdHeight} aria-hidden={true} /> : null}
-              {columnsInitialized && !virtualScroll ? this.renderRows(rows) : null}
-              {columnsInitialized && virtualScroll ? this.renderVirtualizedRows(rows) : null}
-            </SBody>
+            {body}
           </SScrollArea.Container>
           <SScrollAreaBar
             orientation='horizontal'
@@ -296,7 +304,7 @@ class Body extends Component<AsProps, State> {
           <SScrollAreaBar orientation='vertical' />
         </SScrollArea>
         {Children.origin}
-      </SBodyWrapper>,
+      </SBodyWrapper>
     );
   }
 }
