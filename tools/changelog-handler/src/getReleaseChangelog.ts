@@ -5,7 +5,11 @@ import { fileURLToPath } from 'url';
 
 const filename = fileURLToPath(import.meta.url);
 
-const removedComponents = ['@semcore/babel-plugin-shadow', '@semcore/project-create'];
+const removedComponents = [
+  '@semcore/babel-plugin-shadow',
+  '@semcore/project-create',
+  '@semcore/chart',
+];
 
 export const getReleaseChangelog = async () => {
   const packagePath = resolvePath(filename, '../../../../semcore/ui');
