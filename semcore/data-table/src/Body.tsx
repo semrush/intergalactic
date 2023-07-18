@@ -8,6 +8,7 @@ import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProp
 import scrollStyles from './style/scroll-area.shadow.css';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import trottle from '@semcore/utils/lib/rafTrottle';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 const testEnv = process.env.NODE_ENV === 'test';
 
@@ -228,8 +229,10 @@ class Body extends Component<AsProps, State> {
   setupRowSizeObserver = () => {
     if (!this.firstRowRef.current) return;
     if (!this.asProps.virtualScroll) return;
-    this.firstRowResizeObserver = new ResizeObserver(this.handleFirstRowResize);
-    this.firstRowResizeObserver.observe(this.firstRowRef.current);
+    if (canUseDOM()) {
+      this.firstRowResizeObserver = new ResizeObserver(this.handleFirstRowResize);
+      this.firstRowResizeObserver.observe(this.firstRowRef.current);
+    }
   };
 
   componentWillUnmount() {

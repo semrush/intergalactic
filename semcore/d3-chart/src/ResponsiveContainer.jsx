@@ -4,6 +4,7 @@ import { Box } from '@semcore/flex-box';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import fire from '@semcore/utils/lib/fire';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 class ResponsiveContainerRoot extends Component {
   static displayName = 'ResponsiveContainer';
@@ -13,7 +14,9 @@ class ResponsiveContainerRoot extends Component {
 
   constructor(props) {
     super(props);
-    this.observer = new ResizeObserver(this.handleResize);
+    if (canUseDOM()) {
+      this.observer = new ResizeObserver(this.handleResize);
+    }
   }
 
   get $container() {
@@ -63,14 +66,14 @@ class ResponsiveContainerRoot extends Component {
   componentDidMount() {
     if (this.$container) {
       // TODO: may be we can increase perfomance here? (by lsroman)
-      this.observer.observe(this.$container);
+      this.observer?.observe(this.$container);
     }
   }
 
   // TODO component did update ref?
 
   componentWillUnmount() {
-    this.observer.disconnect();
+    this.observer?.disconnect();
   }
 
   render() {

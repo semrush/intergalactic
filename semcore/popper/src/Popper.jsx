@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';
@@ -113,9 +114,11 @@ class Popper extends Component {
 
   constructor(props) {
     super(props);
-    this.observer = new ResizeObserver(() => {
-      this.popper.current?.update();
-    });
+    if (canUseDOM()) {
+      this.observer = new ResizeObserver(() => {
+        this.popper.current?.update();
+      });
+    }
   }
 
   uncontrolledProps() {
@@ -166,8 +169,8 @@ class Popper extends Component {
       placement,
       strategy,
       onFirstUpdate: callAllEventHandlers(onFirstUpdate, () => {
-        this.observer.observe(this.triggerRef.current);
-        this.observer.observe(this.popperRef.current);
+        this.observer?.observe(this.triggerRef.current);
+        this.observer?.observe(this.popperRef.current);
       }),
       modifiers: modifiersMerge,
     };
@@ -207,9 +210,7 @@ class Popper extends Component {
     clearTimeout(this.timer);
     clearTimeout(this.timerMultiTrigger);
 
-    if (this.observer) {
-      this.observer.disconnect();
-    }
+    this.observer?.disconnect();
 
     if (this.popper.current) {
       this.popper.current.destroy();

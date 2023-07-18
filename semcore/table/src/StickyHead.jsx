@@ -153,7 +153,7 @@ function Head(props, ref) {
   useEffect(() => {
     let mutationObserver = null;
     let resizeObserver = null;
-    if (tableDOM) {
+    if (tableDOM && canUseDOM()) {
       mutationObserver = new MutationObserver(updateWithTh);
       resizeObserver = new ResizeObserver(updateWithTh);
       mutationObserver.observe(tableDOM, { subtree: true, childList: true });
