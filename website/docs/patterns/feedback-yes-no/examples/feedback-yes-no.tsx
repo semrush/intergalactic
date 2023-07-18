@@ -32,8 +32,14 @@ const validate = {
   },
 };
 
-class Feedback extends React.PureComponent {
-  handleChange = (fn) => (value, e) => {
+class Feedback extends React.PureComponent<{
+  status: string;
+  onSubmit: (data: any) => void;
+  onCancel: () => void;
+  onChange?: (event: any, trigger: string) => void;
+  value?: { description: string; email: string };
+}> {
+  handleChange = (fn) => (_, e) => {
     fn(e);
   };
 
@@ -101,11 +107,12 @@ class Feedback extends React.PureComponent {
 
 class FeedbackYesNo extends React.PureComponent {
   state = { status: 'default', visible: true };
-  onSubmit = (reaction, data) => {
+  timeout: any;
+  onSubmit = () => {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
-  requestServer = (status, time, cb) => {
+  requestServer = (status, time, cb?: () => void) => {
     this.timeout = setTimeout(() => {
       this.setState({ status });
       cb?.();
@@ -153,11 +160,11 @@ class FeedbackYesNo extends React.PureComponent {
                 </Button>
               </Dropdown.Trigger>
               <Dropdown.Popper>
-                {(props, { visible }) => (
+                {(_props, { visible }) => (
                   <Feedback
                     status={status}
                     onCancel={() => visible(false)}
-                    onSubmit={(data) => this.onSubmit('yes', data)}
+                    onSubmit={() => this.onSubmit()}
                   />
                 )}
               </Dropdown.Popper>
@@ -172,11 +179,11 @@ class FeedbackYesNo extends React.PureComponent {
                 </Button>
               </Dropdown.Trigger>
               <Dropdown.Popper>
-                {(props, { visible }) => (
+                {(_props, { visible }) => (
                   <Feedback
                     status={status}
                     onCancel={() => visible(false)}
-                    onSubmit={(data) => this.onSubmit('no', data)}
+                    onSubmit={() => this.onSubmit()}
                   />
                 )}
               </Dropdown.Popper>

@@ -1,7 +1,14 @@
 import React from 'react';
 import { Property } from 'csstype';
-import createComponent, { Component, PropGetterFn, Root, sstyled } from '@semcore/core';
-import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
+import createComponent, {
+  Component,
+  PropGetterFn,
+  Root,
+  sstyled,
+  UnknownProperties,
+  Intergalactic,
+} from '@semcore/core';
+import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import syncScroll from '@semcore/utils/lib/syncScroll';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import fire from '@semcore/utils/lib/fire';
@@ -51,16 +58,6 @@ type BodyAsProps = {
   uid: string;
 };
 
-/* utils type */
-type CProps<Props, Ctx = {}, UCProps = {}> = Props & {
-  children?: ((props: Props & Ctx, handlers: UCProps) => React.ReactNode) | React.ReactNode;
-};
-type ReturnEl = React.ReactElement | null;
-type ChildRenderFn<Props, DataTableData extends { [key: string]: unknown }[]> = Props & {
-  children?: (props: Props, column: DataTableData[0], index: number) => Partial<Props>;
-};
-/* utils type */
-
 export type DataTableData = { [key: string]: unknown };
 export type DataTableSort<Columns extends string | number | symbol = string> = [
   sortBy: Columns,
@@ -77,26 +74,33 @@ export type DataTableCell = {
   [key: string]: unknown;
 };
 
+/** @deprecated */
 export interface IDataTableProps<
-  DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[],
-> extends IBoxProps {
-  /** Theme for table
-   * @default primary
-   * */
-  use?: DataTableUse;
-  /** Data for table */
-  data?: DataTableData;
-  /** Active sort object */
-  sort?: DataTableSort<keyof DataTableData[0]>;
-  /** Handler call when will request change sort */
-  onSortChange?: (sort: DataTableSort<keyof DataTableData[0]>, e?: React.SyntheticEvent) => void;
-  /** Field name in one data entity that is unique accross all set of data
-   * @default id
-   */
-  uniqueKey?: keyof DataTableData[0];
-}
+  DataTableData extends { [key: string]: any }[] = UnknownProperties[],
+> extends DataTableProps<DataTableData> {}
+export type DataTableProps<DataTableData extends { [key: string]: any }[] = UnknownProperties[]> =
+  BoxProps & {
+    /** Theme for table
+     * @default primary
+     * */
+    use?: DataTableUse;
+    /** Data for table */
+    data?: DataTableData;
+    /** Active sort object */
+    sort?: DataTableSort<keyof DataTableData[0]>;
+    /** Handler call when will request change sort */
+    onSortChange?: (sort: DataTableSort<keyof DataTableData[0]>, e?: React.SyntheticEvent) => void;
+    /** Field name in one data entity that is unique accross all set of data
+     * @default id
+     */
+    uniqueKey?: keyof DataTableData[0];
+    /** Make cells less */
+    compact?: boolean;
+  };
 
-export interface IDataTableHeadProps extends IBoxProps {
+/** @deprecated */
+export interface IDataTableHeadProps extends DataTableHeadProps, UnknownProperties {}
+export type DataTableHeadProps = BoxProps & {
   /** Sticky header table
    * @deprecated
    * */
@@ -107,9 +111,11 @@ export interface IDataTableHeadProps extends IBoxProps {
 
   /** Disabled scroll */
   disabledScroll?: boolean;
-}
+};
 
-export interface IDataTableColumnProps extends IFlexProps {
+/** @deprecated */
+export interface IDataTableColumnProps extends DataTableColumnProps, UnknownProperties {}
+export type DataTableColumnProps = FlexProps & {
   /** Unique name column */
   name?: string;
   /** Enable sort for column also if you pass string you can set default sort */
@@ -127,11 +133,11 @@ export interface IDataTableColumnProps extends IFlexProps {
   borderRight?: boolean;
   /** Add vertical border to the left side */
   borderLeft?: boolean;
-  /** Make cells less */
-  compact?: boolean;
-}
+};
 
-export interface IDataTableBodyProps extends IBoxProps {
+/** @deprecated */
+export interface IDataTableBodyProps extends DataTableBodyProps, UnknownProperties {}
+export type DataTableBodyProps = BoxProps & {
   /** Rows table */
   rows?: DataTableRow[];
   /** When enabled, only visually acessable rows are rendered.
@@ -146,21 +152,25 @@ export interface IDataTableBodyProps extends IBoxProps {
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Disabled scroll */
   disabledScroll?: boolean;
-}
+};
 
-export interface IDataTableRowProps extends IBoxProps {
+/** @deprecated */
+export interface IDataTableRowProps extends DataTableRowProps, UnknownProperties {}
+export type DataTableRowProps = BoxProps & {
   /** Theme for row */
   theme?: DataTableTheme;
   /** Displays row as active */
   active?: boolean;
-}
+};
 
-export interface IDataTableCellProps extends IFlexProps {
+/** @deprecated */
+export interface IDataTableCellProps extends DataTableCellProps, UnknownProperties {}
+export type DataTableCellProps<Name extends string = string> = FlexProps & {
   /** Unique name column or columns separated by / */
-  name: string;
+  name: Name;
   /** Theme for cell */
   theme?: DataTableTheme;
-}
+};
 
 function setBorderGroupColumns(columns: Column[], side?: string) {
   const firstColumn = columns[0];
@@ -484,14 +494,54 @@ class RootDefinitionTable extends Component<AsProps> {
   }
 }
 
-interface IDataTableCtx {
+type DataTableCtx = {
   getHeadProps: PropGetterFn;
   getBodyProps: PropGetterFn;
-}
+};
 
 function ComponentDefinition() {
   return null;
 }
+
+type IntergalacticDataTableComponent = (<
+  Data extends DataTableData[],
+  Tag extends Intergalactic.Tag = 'div',
+>(
+  props: Intergalactic.InternalTypings.ComponentProps<
+    Tag,
+    DataTableProps<Data>,
+    DataTableCtx,
+    never
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+type IntergalacticDataTableRowComponent = (<
+  Data extends DataTableData[],
+  Tag extends Intergalactic.Tag = 'div',
+>(
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
+    Tag,
+    DataTableRowProps,
+    DataTableCtx & { data: Data },
+    [row: Data[0], index: number]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
+
+type IntergalacticDataTableCellComponent = (<
+  Data extends DataTableData[],
+  Name extends string = string,
+  Tag extends Intergalactic.Tag = 'div',
+>(
+  props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
+    Tag,
+    DataTableCellProps<Name>,
+    DataTableCtx & { data: Data },
+    [row: Data[0], index: number]
+  >,
+) => Intergalactic.InternalTypings.ComponentRenderingResults) &
+  Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
 const DefinitionTable = createComponent(
   RootDefinitionTable,
@@ -503,18 +553,12 @@ const DefinitionTable = createComponent(
     Row: ComponentDefinition,
   },
   {},
-) as (<Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
-  props: CProps<IDataTableProps<DataTableData> & Props, IDataTableCtx>,
-) => ReturnEl) & {
-  Head: <Props>(props: IDataTableHeadProps & Props) => ReturnEl;
-  Body: <Props>(props: IDataTableBodyProps & Props) => ReturnEl;
-  Column: <Props>(props: IDataTableColumnProps & Props) => ReturnEl;
-  Cell: <Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
-    props: ChildRenderFn<IDataTableCellProps & Props, DataTableData>,
-  ) => ReturnEl;
-  Row: <Props = {}, DataTableData extends { [key: string]: any }[] = { [key: string]: unknown }[]>(
-    props: ChildRenderFn<IDataTableRowProps & Props, DataTableData>,
-  ) => ReturnEl;
+) as IntergalacticDataTableComponent & {
+  Head: Intergalactic.Component<'div', DataTableHeadProps>;
+  Body: Intergalactic.Component<'div', DataTableBodyProps>;
+  Column: Intergalactic.Component<'div', DataTableColumnProps>;
+  Row: IntergalacticDataTableRowComponent;
+  Cell: IntergalacticDataTableCellComponent;
 };
 
 export { ROW_GROUP };

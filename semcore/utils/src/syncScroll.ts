@@ -3,8 +3,8 @@ import canUseDOM from './canUseDOM';
 export default function syncScroll() {
   const refs = new Map();
 
-  function handlerScroll(e) {
-    const scrolledNode = e.currentTarget;
+  function handlerScroll(event: any) {
+    const scrolledNode = event.currentTarget;
     if (!canUseDOM()) return;
     window.requestAnimationFrame(() => {
       refs.forEach((node) => {
@@ -19,7 +19,7 @@ export default function syncScroll() {
     });
   }
 
-  function syncScrollPosition(scrolledNode, node) {
+  function syncScrollPosition(scrolledNode: HTMLElement, node: HTMLElement) {
     const { scrollTop, scrollHeight, clientHeight, scrollLeft, scrollWidth, clientWidth } =
       scrolledNode;
 
@@ -37,14 +37,14 @@ export default function syncScroll() {
     }
   }
 
-  return (name) => {
+  return (name: string) => {
     refs.set(name, null);
-    return (ref) => {
+    return (ref: any) => {
       refs.get(name)?.removeEventListener('scroll', handlerScroll);
       refs.set(name, ref);
       if (ref) {
         ref.addEventListener('scroll', handlerScroll);
-        const scrolledNode = refs.values()[0];
+        const scrolledNode = [...refs.values()][0];
         if (scrolledNode) {
           syncScrollPosition(scrolledNode, ref);
         }

@@ -10,7 +10,7 @@ const Demo = () => {
 
   return (
     <div>
-      <Text tag='label' htmlFor='count-example' size='200'>
+      <Text tag='label' htmlFor='count-example' size={200}>
         Input with symbols counter
       </Text>
       <Box mt={2}>
@@ -23,13 +23,13 @@ const Demo = () => {
             id='count-example'
           />
           <Input.Addon>
-            <Tag size='s'>{value.length}/10</Tag>
+            <Tag size='m'>{value.length}/10</Tag>
           </Input.Addon>
         </Input>
       </Box>
       <br />
       <br />
-      <Text tag='label' htmlFor='badge-example' size='200'>
+      <Text tag='label' htmlFor='badge-example' size={200}>
         Input with badge
       </Text>
       <Box mt={2}>

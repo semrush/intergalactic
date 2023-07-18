@@ -24,7 +24,7 @@ const Demo = () => {
         <Pagination.PrevPage />
         <Pagination.NextPage />
         <Pagination.PageInput />
-        <Pagination.TotalPages mr={4} />
+        <Pagination.TotalPages />
       </Pagination>
     </form>
   );

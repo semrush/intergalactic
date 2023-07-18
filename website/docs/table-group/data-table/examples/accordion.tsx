@@ -5,7 +5,10 @@ import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
 import { Plot, Line, XAxis, YAxis, ResponsiveContainer, minMax } from '@semcore/ui/d3-chart';
 
-const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props }, ref) {
+const RowAccordion = React.forwardRef(function (
+  { value, collapse = {}, ...props }: any,
+  ref: React.Ref<HTMLDivElement>,
+) {
   return (
     <Accordion.Item value={value} ref={ref}>
       <Accordion.Item.Toggle {...props} />
@@ -15,7 +18,8 @@ const RowAccordion = React.forwardRef(function ({ value, collapse = {}, ...props
 });
 
 export default () => {
-  const [exapnded, setExapnded] = useState([]);
+  const [exapnded, setExapnded] = useState<number[]>([]);
+
   return (
     /* [1] Wrapping the table in the Accordion control component; */
     <Accordion value={exapnded} onChange={setExapnded}>
@@ -28,7 +32,7 @@ export default () => {
         </DataTable.Head>
         <DataTable.Body>
           {/* [2] Replacing the tag in DataTable.Row with our extended tag with Accordion.Item */}
-          <DataTable.Row<{}, typeof data> tag={RowAccordion}>
+          <DataTable.Row tag={RowAccordion}>
             {(_props, _row, index) => {
               return {
                 /* [3] Setting the value for Accordion.Item; */
@@ -42,7 +46,7 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<{}, typeof data> name='keyword'>
+          <DataTable.Cell<typeof data> name='keyword'>
             {(props) => {
               return {
                 children: (

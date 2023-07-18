@@ -107,11 +107,11 @@ STriggerCircle {
   /* disable-tokens-validator */
   margin-right: calc(var(--intergalactic-spacing-1x, 4px) + 1px);
   border-radius: 50%;
-  background-color: var(--value);
+  background-color: var(--data-value);
   border: 1px solid transparent;
 }
 
-STriggerCircle:not([value]) {
+STriggerCircle:not([data-value]) {
   border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
 }
 
@@ -142,7 +142,7 @@ SLine {
 
 SLabel {
   z-index: 1;
-  color: var(--value);
+  color: var(--data-value);
   /* disable-tokens-validator */
   font-size: calc(var(--intergalactic-fs-100, 12px) + 1px);
   font-weight: var(--intergalactic-bold, 700);
@@ -153,7 +153,7 @@ SItemColor {
   height: 20px;
   border-radius: 50%;
   border: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
-  background: var(--value);
+  background: var(--data-value);
 }
 
 SConfirmColor[hidden],

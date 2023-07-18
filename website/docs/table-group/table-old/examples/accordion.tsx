@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import Accordion from '@semcore/ui/accordion';
 import { Box } from '@semcore/ui/flex-box';
 

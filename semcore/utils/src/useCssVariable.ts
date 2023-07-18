@@ -23,21 +23,26 @@ export const useCssVariable = (name: string, fallbackValue: string, ref?: React.
   return value;
 };
 
-export const cssVariableEnhance = ({
+export const cssVariableEnhance = <
+  P extends string,
+  F = string,
+  R = string,
+  M extends null | ((value: string) => R) = any,
+>({
   variable,
   fallback,
   prop,
   map,
 }: {
   variable: string;
-  prop: string;
-  fallback: string;
-  map?: (value: string) => any;
+  prop: P;
+  fallback: F;
+  map?: M;
 }) => {
-  return (props) => {
-    const { ref } = props;
+  return <T extends {}>(props: T) => {
+    const { ref } = props as any;
     const nodeRef = React.useRef();
-    const variableValue = useCssVariable(variable, fallback, nodeRef);
+    const variableValue = useCssVariable(variable, fallback as any, nodeRef);
     const mappedValue = React.useMemo(
       () => (map ? map(variableValue) : variableValue),
       [map, variableValue],
@@ -46,7 +51,9 @@ export const cssVariableEnhance = ({
     return {
       ...props,
       ref: useForkRef(ref, nodeRef),
-      [prop]: props[prop] === undefined ? mappedValue : props[prop],
+      [prop]: (props as any)[prop] === undefined ? mappedValue : (props as any)[prop],
+    } as T & {
+      [key in P]: M extends (value: string) => R ? R : F;
     };
   };
 };

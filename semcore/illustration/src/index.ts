@@ -1,3 +1,5 @@
+declare const preval: any;
+
 const version = preval`module.exports = require('../package.json').version`;
 
 /**
@@ -10,7 +12,7 @@ const formatName = (name: string) => {
     .join('');
 };
 
-export const getIllustrationPath = (name) => {
+export const getIllustrationPath = (name: string) => {
   const formattedName = formatName(name);
 
   return `https://static.semrush.com/ui-kit/illustration/${version}/${formattedName}.svg`;

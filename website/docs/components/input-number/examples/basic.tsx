@@ -18,7 +18,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='p' size='200'>
+      <Text tag='p' size={200}>
         <Text tag='label' htmlFor='basic-example-from'>
           From
         </Text>

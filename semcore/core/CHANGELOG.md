@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.0] - 2023-06-20
+
+### Break
+
+- Strict typings.
+
+## [1.16.0] - 2023-06-20
+
+### Changed
+
+- Internal API for exposing component destructuring children.
+
 ## [1.15.8] - 2023-06-30
 
 ## [1.15.7] - 2023-06-27

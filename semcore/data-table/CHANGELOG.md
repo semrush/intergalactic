@@ -1,6 +1,21 @@
 # Changelog
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+## [4.0.1] - 2023-07-18
+
+### Fix
+
+- Removed ResizeObserver initiating during SSR.
+
+## [4.0.0] - 2023-07-17
+
+### Break
+
+- Strict, backward incompatible typings.
+
+### Changed
+
+- Version major update due to children dependencies update (`@semcore/icon` [4.0.0 ~> 4.0.0]).
 
 ## [3.11.1] - 2023-06-30
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
 import getOriginChildren from './getOriginChildren';
 
-function findComponent(Children, names) {
+function findComponent(Children: any, names: string[]): any {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   return React.Children.toArray(children).find((child) => {
     if (React.isValidElement(child)) {
@@ -12,12 +12,12 @@ function findComponent(Children, names) {
       }
       // @ts-ignore
       const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
-      return !!inheritedNames.find((name) => names.includes(name));
+      return !!inheritedNames.find((name: string) => names.includes(name));
     }
   });
 }
 
-export function isAdvanceMode(Children, name) {
+export function isAdvanceMode(Children: any, name: string[]) {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   if (!children) return false;
   if (typeof children === 'function') {

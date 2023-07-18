@@ -10,7 +10,7 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const copy = promisify(fs.cp);
 
-const resizeImage = (image: PNG, w: number, h: number) => {
+const resizeImage = (image: any, w: number, h: number) => {
   const result = new PNG({ width: w, height: h, fill: true, inputHasAlpha: true });
 
   for (let x = 0; x < w; x++) {
@@ -26,6 +26,7 @@ const resizeImage = (image: PNG, w: number, h: number) => {
 };
 
 export async function toMatchImageSnapshot(
+  this: any,
   snapshot: Buffer,
   task: any,
   options?: { maxPixelDiff?: number },
@@ -74,8 +75,8 @@ export async function toMatchImageSnapshot(
     }
   }
   const savedSnapshot = await readFile(snapshotPath);
-  let snapshotImage: PNG = PNG.sync.read(snapshot);
-  let savedSnapshotImage: PNG = PNG.sync.read(savedSnapshot);
+  let snapshotImage: any = PNG.sync.read(snapshot);
+  let savedSnapshotImage: any = PNG.sync.read(savedSnapshot);
 
   const width = Math.max(snapshotImage.width, savedSnapshotImage.width);
   const height = Math.max(snapshotImage.height, savedSnapshotImage.height);

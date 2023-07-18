@@ -1,7 +1,15 @@
 import React from 'react';
 import dayjs from 'dayjs';
 import createComponent from '@semcore/core';
-import { Header, Next, Popper, Prev, Title, Trigger, InputTrigger } from './components';
+import {
+  Header,
+  Next,
+  Popper,
+  Prev,
+  Title,
+  Trigger as ButtonTrigger,
+  InputTrigger,
+} from './components';
 import { CalendarMonths as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 
@@ -29,10 +37,10 @@ class MonthPickerRoot extends PickerAbstract {
     40: 3,
   };
 
-  getTriggerProps() {
+  getButtonTriggerProps() {
     const { value, locale } = this.asProps;
     return {
-      ...super.getTriggerProps(),
+      ...super.getButtonTriggerProps(),
       placeholder: 'Select month',
       children: value
         ? new Intl.DateTimeFormat(locale, {
@@ -43,12 +51,12 @@ class MonthPickerRoot extends PickerAbstract {
     };
   }
 
-  getInputTriggerProps() {
+  getTriggerProps() {
     const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
       this.asProps;
 
     return {
-      ...super.getTriggerProps(),
+      ...super.getButtonTriggerProps(),
       value,
       onChange,
       onDisplayedPeriodChange,
@@ -75,8 +83,8 @@ class MonthPickerRoot extends PickerAbstract {
 const MonthPicker = createComponent(
   MonthPickerRoot,
   {
-    Trigger,
-    InputTrigger,
+    Trigger: InputTrigger,
+    ButtonTrigger,
     Popper,
     Header,
     Title,

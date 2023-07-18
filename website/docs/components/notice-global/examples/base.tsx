@@ -20,7 +20,7 @@ export default () => {
           position='fixed'
           top='0px'
           w='100%'
-          style={{ zIndex: '9999' }}
+          style={{ zIndex: 9999 }}
         >
           <NoticeGlobal.Content tag={Flex} justifyContent='center'>
             <Text size={300} tag='span' color='white'>

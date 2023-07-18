@@ -1,6 +1,27 @@
 # Changelog
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+## [3.0.1] - 2023-07-18
+
+### Fix
+
+- Removed ResizeObserver initiating during SSR.
+
+## [3.0.0] - 2023-07-17
+
+### Break
+
+- Strict, backward incompatible typings.
+
+### Changed
+
+- Deprecated `import { Tooltip } from '@semcore/ui/d3-chart` in favor of better typed Tooltips.
+- On type level made `name` property of `Donut.Pie` obligatory.
+- On type level made `name` property of `Venn.Circle` obligatory.
+
+### Added
+
+- Typed `HoverLine.Tooltip`, `HoverRect.Tooltip`, `Radar.Tooltip`, `Bubble.Tooltip`, `Donut.Tooltip`, `ScatterPlot.Tooltip` and `Venn.Tooltip`.
 
 ## [2.17.5] - 2023-06-30
 
@@ -17,6 +38,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 - Version patch update due to children dependencies update (`@semcore/animation` [1.10.19 ~> 1.10.20], `@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [2.17.2] - 2023-06-22
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.18 ~> 1.10.19], `@semcore/utils` [3.53.3 ~> 3.53.4]).
+
+## [2.17.1] - 2023-06-14
 
 ### Changed
 

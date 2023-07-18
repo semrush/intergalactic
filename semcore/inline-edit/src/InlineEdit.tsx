@@ -1,7 +1,13 @@
 import React from 'react';
-import createComponent, { Component, sstyled, Root } from '@semcore/core';
-import { Box } from '@semcore/flex-box';
-import { FadeInOut } from '@semcore/animation';
+import createComponent, {
+  Component,
+  sstyled,
+  Root,
+  Intergalactic,
+  PropGetterFn,
+} from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { FadeInOut, FadeInOutProps } from '@semcore/animation';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { useCssVariable } from '@semcore/utils/lib/useCssVariable';
@@ -33,7 +39,7 @@ class InlineEdit extends Component<AsProps> {
 
   viewRef = React.createRef<HTMLElement>();
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.handleOnEdit = this.handleOnEdit.bind(this);
   }
@@ -64,7 +70,7 @@ class InlineEdit extends Component<AsProps> {
     };
   }
 
-  handlerKeyDownEdit = (event) => {
+  handlerKeyDownEdit = (event: React.KeyboardEvent) => {
     if (event.code === 'Enter' || event.code === 'Escape') {
       this.viewRef.current?.focus();
     }
@@ -120,7 +126,7 @@ const View: React.FC<AsProps> = (props) => {
       if (!visible) return;
       if (event.code === 'Enter' || event.code === 'Space') {
         event.preventDefault();
-        props.onEdit();
+        props.onEdit?.();
       }
     },
     [visible, props.onEdit],
@@ -142,7 +148,25 @@ const View: React.FC<AsProps> = (props) => {
   ) as React.ReactElement;
 };
 
+type InlineEditProps = BoxProps & {
+  editable?: boolean;
+  onEditableChange?: (editable: boolean, event?: React.SyntheticEvent) => void;
+  defaultEditable?: boolean;
+  onEdit?: () => void;
+  locale?: string;
+};
+type InlineEditViewProps = BoxProps & FadeInOutProps & {};
+type InlineEditEditProps = BoxProps & FadeInOutProps & {};
+
+type InputCtx = {
+  getViewProps: PropGetterFn;
+  getEditProps: PropGetterFn;
+};
+
 export default createComponent(InlineEdit, {
   Edit,
   View,
-});
+}) as Intergalactic.Component<'div', InlineEditProps, InputCtx> & {
+  View: Intergalactic.Component<'div', InlineEditViewProps, InlineEditProps>;
+  Edit: Intergalactic.Component<'div', InlineEditEditProps, InlineEditProps>;
+};

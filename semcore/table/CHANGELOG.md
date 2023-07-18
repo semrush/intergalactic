@@ -2,9 +2,26 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.0.1] - 2023-07-18
+
+### Fix
+
+- Removed ResizeObserver initiating during SSR.
+
+## [4.0.0] - 2023-07-17
+
+### Break
+
+- Strict, backward incompatible typings.
+
 ## [3.5.1] - 2023-06-30
 
-## [3.5.0] - 2023-06-28
+
+### Added
+
+- Added background for active state for `Row`.
+
+## [3.4.21] - 2023-06-28
 
 ### Changed
 

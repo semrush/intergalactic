@@ -1,5 +1,6 @@
 import { RefObject, useCallback, useState } from 'react';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 export const useResizeObserver = (
   ref: RefObject<HTMLElement>,
@@ -19,16 +20,17 @@ export const useResizeObserver = (
     if (hookOverride) {
       return;
     }
+    if (canUseDOM()) {
+      const ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+        handleResize(entries);
+      });
 
-    const ro = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-      handleResize(entries);
-    });
+      ro.observe(ref.current);
 
-    ro.observe(ref.current);
-
-    return () => {
-      ro.disconnect();
-    };
+      return () => {
+        ro.disconnect();
+      };
+    }
   }, [hookOverride]);
 
   if (hookOverride) {

@@ -1,11 +1,18 @@
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import Dropdown, { IDropdownContext, IDropdownProps, IDropdownHandlers } from '@semcore/dropdown';
-import { Box, IBoxProps, IFlexProps } from '@semcore/flex-box';
-import { IScrollAreaProps } from '@semcore/scroll-area';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import Dropdown, {
+  DropdownContext,
+  DropdownProps,
+  DropdownHandlers,
+  DropdownTriggerProps,
+} from '@semcore/dropdown';
+import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
+import { ScrollAreaProps } from '@semcore/scroll-area';
 
 export type DropdownMenuSize = 'm' | 'l';
 
-export interface IDropdownMenuProps extends IDropdownProps {
+/** @deprecated */
+export interface IDropdownMenuProps extends DropdownMenuProps, UnknownProperties {}
+export type DropdownMenuProps = DropdownProps & {
   /**
    * Size of the menu
    * @default m
@@ -25,19 +32,26 @@ export interface IDropdownMenuProps extends IDropdownProps {
    */
   onHighlightedIndexChange?: (highlightedIndex: number) => void;
   locale?: string;
-}
+};
 
-export interface IDropdownMenuListProps extends IBoxProps, IScrollAreaProps {
-  /**
-   * Size of the menu
-   * @default m
-   */
-  size?: DropdownMenuSize;
-}
+/** @deprecated */
+export interface IDropdownMenuListProps extends DropdownMenuListProps, UnknownProperties {}
+export type DropdownMenuListProps = BoxProps &
+  ScrollAreaProps & {
+    /**
+     * Size of the menu
+     * @default m
+     */
+    size?: DropdownMenuSize;
+  };
 
-export interface IDropdownMenuMenuProps extends IDropdownMenuListProps {}
+/** @deprecated */
+export interface IDropdownMenuMenuProps extends DropdownMenuMenuProps, UnknownProperties {}
+export type DropdownMenuMenuProps = DropdownMenuListProps & {};
 
-export interface IDropdownMenuItemProps extends IFlexProps {
+/** @deprecated */
+export interface IDropdownMenuItemProps extends DropdownMenuItemProps, UnknownProperties {}
+export type DropdownMenuItemProps = FlexProps & {
   /**
    * Enables selected state
    */
@@ -59,53 +73,77 @@ export interface IDropdownMenuItemProps extends IFlexProps {
    * @default m
    */
   size?: DropdownMenuSize;
-}
+};
 
-export interface IDropdownMenuItemHintProps extends IFlexProps {
+/** @deprecated */
+export interface IDropdownMenuItemHintProps extends DropdownMenuItemHintProps, UnknownProperties {}
+export type DropdownMenuItemHintProps = FlexProps & {
   /**
    * Size of the component
    * @default m
    */
   size?: DropdownMenuSize;
-}
+};
 
-export interface IDropdownMenuItemTitleProps extends IFlexProps {
+/** @deprecated */
+export interface IDropdownMenuItemTitleProps
+  extends DropdownMenuItemTitleProps,
+    UnknownProperties {}
+export type DropdownMenuItemTitleProps = FlexProps & {
   /**
    * Size of the component
    * @default m
    */
   size?: DropdownMenuSize;
-}
+};
 
-export interface IDropdownMenuContext extends IDropdownContext {
+/** @deprecated */
+export interface IDropdownMenuContext extends DropdownMenuContext, UnknownProperties {}
+export type DropdownMenuContext = DropdownContext & {
   getListProps: PropGetterFn;
   getItemProps: PropGetterFn;
   getItemHintProps: PropGetterFn;
   getItemTitleProps: PropGetterFn;
-}
+};
 
-export interface IDropdownMenuHandlers extends IDropdownHandlers {
+/** @deprecated */
+export interface IDropdownMenuHandlers extends DropdownMenuHandlers, UnknownProperties {}
+export type DropdownMenuHandlers = DropdownHandlers & {
   highlightedIndex: (index: number) => void;
-}
+};
 
-declare const DropdownMenu: (<T>(
-  props: CProps<IDropdownMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
-) => ReturnEl) & {
+export type DropdownMenuTriggerProps = DropdownTriggerProps;
+
+declare const DropdownMenu: Intergalactic.Component<
+  'div',
+  DropdownMenuProps,
+  IDropdownMenuContext,
+  [handlers: DropdownMenuHandlers]
+> & {
   Trigger: typeof Dropdown.Trigger;
-  Popper: typeof Dropdown.Popper;
-  List: <T>(
-    props: CProps<IDropdownMenuListProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
-  ) => ReturnEl;
-  Menu: <T>(
-    props: CProps<IDropdownMenuMenuProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
-  ) => ReturnEl;
-  Item: (<T>(
-    props: CProps<IDropdownMenuItemProps & T, IDropdownMenuContext, IDropdownMenuHandlers>,
-  ) => ReturnEl) & {
+  Popper: Intergalactic.Component<'div', DropdownMenuProps>;
+  List: Intergalactic.Component<
+    'div',
+    DropdownMenuListProps,
+    DropdownMenuContext,
+    [handlers: DropdownMenuHandlers]
+  >;
+  Menu: Intergalactic.Component<
+    'div',
+    DropdownMenuMenuProps,
+    DropdownMenuContext,
+    [handlers: DropdownMenuHandlers]
+  >;
+  Item: Intergalactic.Component<
+    'div',
+    DropdownMenuItemProps,
+    DropdownMenuContext,
+    [handlers: DropdownMenuHandlers]
+  > & {
     Addon: typeof Box;
   };
-  ItemTitle: <T>(props: IDropdownMenuItemTitleProps & T) => ReturnEl;
-  ItemHint: <T>(props: IDropdownMenuItemHintProps & T) => ReturnEl;
+  ItemTitle: Intergalactic.Component<'div', DropdownMenuItemTitleProps>;
+  ItemHint: Intergalactic.Component<'div', DropdownMenuItemHintProps>;
 };
 
 export default DropdownMenu;

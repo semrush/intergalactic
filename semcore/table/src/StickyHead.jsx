@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext, createContext, useRef } from 'react';
 
 import { createPortal } from 'react-dom';
-import ResizeObserver from 'resize-observer-polyfill';
 
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { fireFn } from '@semcore/utils/lib/fire';
@@ -154,7 +153,7 @@ function Head(props, ref) {
   useEffect(() => {
     let mutationObserver = null;
     let resizeObserver = null;
-    if (tableDOM) {
+    if (tableDOM && canUseDOM()) {
       mutationObserver = new MutationObserver(updateWithTh);
       resizeObserver = new ResizeObserver(updateWithTh);
       mutationObserver.observe(tableDOM, { subtree: true, childList: true });

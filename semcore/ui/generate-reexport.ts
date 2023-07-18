@@ -109,7 +109,7 @@ const GENERATOR = {
     const oldIconsDir = path.join(iconPath, '../..');
     const newIconsDir = path.join(iconPath, '../../..');
 
-    const isIconDir = (dir) =>
+    const isIconDir = (dir: string) =>
       fs.statSync(dir).isDirectory() &&
       !['__tests__', 'src', 'svg', 'svg-new', 'node_modules'].includes(path.basename(dir));
     const oldIcons = fs

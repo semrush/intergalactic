@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function isNode(node?) {
+export default function isNode(node?: any) {
   switch (typeof node) {
     case 'number':
       return Number.isFinite(node);

@@ -18,9 +18,9 @@ export default () => {
     <Flex alignItems='center' direction='column'>
       <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
-          <Venn.Circle dataKey='F' />
-          <Venn.Circle dataKey='S' color={colors['blue-03']} />
-          <Venn.Intersection dataKey='F/S' />
+          <Venn.Circle dataKey='F' name='F' />
+          <Venn.Circle dataKey='S' name='S' color={colors['blue-03']} />
+          <Venn.Intersection dataKey='F/S' name='F/S' />
         </Venn>
       </Plot>
       <Flex direction='row'>

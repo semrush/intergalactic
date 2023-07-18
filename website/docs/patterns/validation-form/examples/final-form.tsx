@@ -11,6 +11,8 @@ const required = (value) => (value ? undefined : 'Required');
 const email = (value) => (value?.includes('@') ? undefined : 'Enter email');
 
 class Demo extends React.Component {
+  focusDecorator: any;
+
   constructor(props) {
     super(props);
     this.focusDecorator = createFocusDecorator();

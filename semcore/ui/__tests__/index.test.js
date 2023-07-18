@@ -22,7 +22,6 @@ describe('@semcore/ui', () => {
     '@semcore/utils',
     // '@semcore/illustration',
     '@semcore/email',
-    '@semcore/chart',
   ];
   packages.forEach((pkg) => {
     if (EXCLUDE_PACKAGE.includes(pkg)) return;

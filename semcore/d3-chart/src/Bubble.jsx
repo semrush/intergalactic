@@ -1,12 +1,13 @@
 import React from 'react';
 import { scaleSqrt } from 'd3-scale';
 import { transition } from 'd3-transition';
-import { Component, sstyled } from '@semcore/core';
+import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
 import { CONSTANT, measureText } from './utils';
+import Tooltip from './Tooltip';
 
 import style from './style/bubble.shadow.css';
 
@@ -27,11 +28,11 @@ class BubbleRoot extends Component {
     return () => ({ width: 0, height: 0, top: y, right: x, bottom: y, left: x });
   }
 
-  bindHandlerTooltip = (visible, props) => ({ clientX: x, clientY: y }) => {
+  bindHandlerTooltip = (visible, props, tooltipProps) => ({ clientX: x, clientY: y }) => {
     const { eventEmitter } = this.asProps;
     this.virtualElement.getBoundingClientRect = this.generateGetBoundingClientRect(x, y);
     this.virtualElement[CONSTANT.VIRTUAL_ELEMENT] = true;
-    eventEmitter.emit('onTooltipVisible', visible, props, this.virtualElement);
+    eventEmitter.emit('onTooltipVisible', visible, props, tooltipProps, this.virtualElement);
   };
 
   animationCircle() {
@@ -101,8 +102,8 @@ class BubbleRoot extends Component {
     return sstyled(styles)(
       <g
         key={`circle(#${i})`}
-        onMouseMove={this.bindHandlerTooltip(true, { ...this.props, xIndex: i })}
-        onMouseLeave={this.bindHandlerTooltip(false, { ...this.props, xIndex: i })}
+        onMouseMove={this.bindHandlerTooltip(true, this.props, { xIndex: i, index: i })}
+        onMouseLeave={this.bindHandlerTooltip(false, this.props, { xIndex: i, index: i })}
       >
         {markedCross && (
           <SCenter
@@ -176,6 +177,13 @@ class BubbleRoot extends Component {
   }
 }
 
-const Bubble = createElement(BubbleRoot);
+const BubbleTooltip = (props) => {
+  const SBubbleTooltip = Root;
+  return sstyled(props.styles)(<SBubbleTooltip render={Tooltip} excludeAnchorProps />);
+};
+
+const Bubble = createElement(BubbleRoot, {
+  Tooltip: [BubbleTooltip, Tooltip._______childrenComponents],
+});
 
 export default Bubble;

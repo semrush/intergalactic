@@ -1,16 +1,40 @@
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { TooltipTypeBase } from './Tooltip';
+import { IBoxProps } from '@semcore/flex-box';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IHoverProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IHoverProps extends HoverProps, UnknownProperties {}
+export type HoverProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
-}
+};
 
-declare const HoverLine: <T>(props: MapProps<IHoverProps & T>) => ReturnEl;
+type HoverTooltip = (<X, Y>(
+  props: {
+    /** Field name from `data` array item for the XAxis */
+    x?: X;
+    /** Field name from `data` array item for the YAxis */
+    y?: Y;
+    children: (props: {
+      /** Index in `data` array of the current item */
+      xIndex: X extends string ? string : never;
+      /** Index in `data` array of the current item */
+      yIndex: Y extends string ? string : never;
+    }) => { children: ReturnEl };
+  } & Omit<IBoxProps, 'children'>,
+) => ReturnEl) &
+  TooltipTypeBase;
 
-declare const HoverRect: <T>(props: MapProps<IHoverProps & T>) => ReturnEl;
+declare const HoverLine: IntergalacticD3Component<'g', HoverProps> & {
+  Tooltip: HoverTooltip;
+};
 
+declare const HoverRect: IntergalacticD3Component<'g', HoverProps> & {
+  Tooltip: HoverTooltip;
+};
 export { HoverLine, HoverRect };

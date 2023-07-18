@@ -16,7 +16,7 @@ export default () => (
           value={18}
           duration={1000}
           delay={500}
-          formatValue={Math.round}
+          formatValue={(x) => Math.round(x).toString()}
         />
       </Dot>
     </Button.Addon>

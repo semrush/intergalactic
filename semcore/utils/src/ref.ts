@@ -10,7 +10,7 @@ export function setRef<T>(ref: Ref<T>, value: T) {
   }
 }
 
-export function getRef(ref: RefObject<Element> | Element): Element {
+export function getRef(ref: RefObject<Element> | Element): Element | null {
   if (!ref) return null;
   return 'current' in ref ? ref.current : ref;
 }
@@ -44,13 +44,13 @@ export function useCallbackRef<T>(
   return ref.facade;
 }
 
-export function useForkRef<T>(...refs): Ref<T> {
-  return useCallback((refValue) => {
+export function useForkRef<T>(...refs: Ref<T>[]): Ref<T> {
+  return useCallback((refValue: any) => {
     refs.forEach((ref) => setRef(ref, refValue));
   }, refs);
 }
 
-export function forkRef<T>(...refs): Ref<T> {
+export function forkRef<T>(...refs: Ref<T>[]): Ref<T> {
   if (refs.every((ref) => ref == null)) {
     return null;
   }
@@ -61,7 +61,7 @@ export function forkRef<T>(...refs): Ref<T> {
 
 export type NodeByRef = RefObject<Element> | Element | (() => RefObject<Element> | Element);
 
-export function getNodeByRef(ref: NodeByRef): Element {
+export function getNodeByRef(ref: NodeByRef): Element | null {
   if (typeof ref === 'function') {
     ref = ref();
   }

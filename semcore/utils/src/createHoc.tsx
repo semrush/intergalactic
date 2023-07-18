@@ -3,7 +3,7 @@ import hoistNonReactStatics from 'hoist-non-react-statics';
 import getDisplayName from './getDisplayName';
 
 function createHoc(
-  EnhancedComponent,
+  EnhancedComponent: any,
 ): (options?: {}) => (WrappedComponent: ComponentType) => ComponentClass {
   return function createWrapper(options = {}) {
     return (WrappedComponent) => {
@@ -16,7 +16,7 @@ function createHoc(
           const { forwardedRef, ...others } = this.props;
           return (
             <EnhancedComponent {...options} {...this.props}>
-              {(enhancedComponentProps) => (
+              {(enhancedComponentProps: any) => (
                 <WrappedComponent
                   forwardedRef={forwardedRef}
                   {...others}

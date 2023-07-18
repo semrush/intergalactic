@@ -1,8 +1,8 @@
-import React, { ComponentProps } from 'react';
-import { IPortalProps } from '@semcore/portal';
-import { IFadeInOutProps, ISlideProps } from '@semcore/animation';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps, Flex } from '@semcore/flex-box';
+import React from 'react';
+import { PortalProps } from '@semcore/portal';
+import { FadeInOutProps, SlideProps } from '@semcore/animation';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
 export type OnCloseTriggerType = 'onOutsideClick' | 'onEscape' | 'onCloseClick';
@@ -13,62 +13,72 @@ export type OnCloseType = (
 
 export type SidePanelPlacement = 'top' | 'left' | 'right' | 'bottom';
 
-export interface ISidePanelProps extends IPortalProps {
-  /** Animation display duration in ms
-   * @default 350
-   */
-  duration?: number;
-  /**
-   * The property responsible for the visibility of the component
-   */
-  visible?: boolean;
-  /**
-   * Callback for the component closure
-   */
-  onClose?: OnCloseType;
-  /**
-   * Property for displaying the close button
-   * @default true
-   */
-  closable?: boolean;
-  /**
-   * Position of a dropdown window
-   * @default right
-   */
-  placement?: SidePanelPlacement;
-  /**
-   * Setting `true` disables mechanism that hides document body scrollbar when SidePanel is visible
-   * @default false
-   */
-  disablePreventScroll?: boolean;
-}
+/** @deprecated */
+export interface ISidePanelProps extends SidePanelProps, UnknownProperties {}
+export type SidePanelProps = PortalProps &
+  BoxProps & {
+    /** Animation display duration in ms
+     * @default 350
+     */
+    duration?: number;
+    /**
+     * The property responsible for the visibility of the component
+     */
+    visible?: boolean;
+    /**
+     * Callback for the component closure
+     */
+    onClose?: OnCloseType;
+    /**
+     * Property for displaying the close button
+     * @default true
+     */
+    closable?: boolean;
+    /**
+     * Position of a dropdown window
+     * @default right
+     */
+    placement?: SidePanelPlacement;
+    /**
+     * Setting `true` disables mechanism that hides document body scrollbar when SidePanel is visible
+     * @default false
+     */
+    disablePreventScroll?: boolean;
+  };
 
-export interface ISidePanelOverlayProps extends IFadeInOutProps, IBoxProps {}
+/** @deprecated */
+export interface ISidePanelOverlayProps extends SidePanelOverlayProps, UnknownProperties {}
+export type SidePanelOverlayProps = FadeInOutProps & BoxProps & {};
 
-export interface ISidePanelPanelProps extends ISlideProps, IBoxProps {
-  onOutsideClick?: (e?: React.SyntheticEvent) => void;
-}
+/** @deprecated */
+export interface ISidePanelPanelProps extends SidePanelPanelProps, UnknownProperties {}
+export type SidePanelPanelProps = SlideProps &
+  BoxProps & {
+    onOutsideClick?: (e?: React.SyntheticEvent) => void;
+  };
 
-export interface ISidePanelContext {
+/** @deprecated */
+export interface ISidePanelContext extends SidePanelContext, UnknownProperties {}
+export type SidePanelContext = {
   getOverlayProps?: PropGetterFn;
   getPanelProps?: PropGetterFn;
   getCloseProps?: PropGetterFn;
-}
+};
 
-export interface ISidePanelHeaderProps extends IBoxProps {
+/** @deprecated */
+export interface ISidePanelHeaderProps extends SidePanelHeaderProps, UnknownProperties {}
+export type SidePanelHeaderProps = BoxProps & {
   title?: React.ReactNode;
-}
+};
 
-declare const SidePanel: (<T>(
-  props: CProps<ISidePanelProps & T, ISidePanelContext>,
-) => ReturnEl) & {
-  Header: <T>(props: ISidePanelHeaderProps & T) => ReturnEl;
-  Back: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Body: <T>(props: ComponentProps<typeof Box> & T) => ReturnEl;
-  Footer: <T>(props: ComponentProps<typeof Flex> & T) => ReturnEl;
-  Title: <T>(props: ComponentProps<typeof Text> & T) => ReturnEl;
-  Overlay: <T>(props: ISidePanelOverlayProps & T) => ReturnEl;
-  Panel: <T>(props: ISidePanelPanelProps & T) => ReturnEl;
+declare const SidePanel: Intergalactic.Component<'div', SidePanelProps, SidePanelContext> & {
+  Header: Intergalactic.Component<'div', SidePanelHeaderProps>;
+  Back: typeof Box;
+  Body: typeof Box;
+  Footer: typeof Flex;
+  Title: typeof Text;
+  Overlay: Intergalactic.Component<'div', SidePanelOverlayProps>;
+  Panel: Intergalactic.Component<'div', SidePanelPanelProps>;
   Close: typeof Box;
 };
 

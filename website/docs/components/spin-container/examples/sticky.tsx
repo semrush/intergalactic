@@ -3,7 +3,7 @@ import { Box } from '@semcore/ui/flex-box';
 import SpinContainer from '@semcore/ui/spin-container';
 import { Text } from '@semcore/ui/typography';
 import Spin from '@semcore/ui/spin';
-import { ScrollArea } from '@semcore/ui/scroll-area';
+import ScrollArea from '@semcore/ui/scroll-area';
 
 const Demo = () => (
   <ScrollArea h={300}>

@@ -20,7 +20,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='alternative-example' size='200'>
+      <Text tag='label' htmlFor='alternative-example' size={200}>
         Members count
       </Text>
       <Flex w={100} mt={2}>

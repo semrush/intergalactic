@@ -20,7 +20,7 @@ export default () => {
         <Select.Menu hMax={180}>
           {Object.keys(iso2Name).map((value) => (
             <Select.Option key={value} value={value}>
-              <Flags iso2={value} mr={2} />
+              <Flags iso2={value as keyof typeof iso2Name} mr={2} />
               {formatName(iso2Name[value])}
             </Select.Option>
           ))}

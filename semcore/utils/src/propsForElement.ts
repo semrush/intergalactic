@@ -29,7 +29,7 @@ const isCustomAttribute = RegExp.prototype.test.bind(
   new RegExp(`^(x|data|aria)-[${ATTRIBUTE_NAME_CHAR}]*$`),
 );
 
-export const validAttr = (name) =>
+export const validAttr = (name: string) =>
   ATTRIBUTE_REGEX.test(name) || isCustomAttribute(name.toLowerCase());
 
 const omittedCloseTags = {
@@ -60,14 +60,14 @@ export default function propsForElement<T extends {}>(
     return props;
   } else {
     // @ts-ignore
-    const { __excludeProps = [], ...other } = props;
-    const validProps = Object.keys(other).reduce((acc, propName) => {
+    const { __excludeProps = [], ...other } = props as any;
+    const validProps = Object.keys(other).reduce((acc: any, propName) => {
       if (!__excludeProps.includes(propName) && validAttr(propName)) {
         acc[propName] = other[propName];
       }
       return acc;
     }, {});
-    if (element && omittedCloseTags[element as string]) {
+    if (element && (omittedCloseTags as any)[element as any]) {
       validProps['children'] = undefined;
     }
     return validProps;

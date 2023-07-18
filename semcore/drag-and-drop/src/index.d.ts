@@ -1,7 +1,9 @@
-import { ReturnEl, CProps, PropGetterFn } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
 
-export interface IDragAndDropProps extends IBoxProps {
+/** @deprecated */
+export interface IDragAndDropProps extends DragAndDropProps, UnknownProperties {}
+export type DragAndDropProps = BoxProps & {
   /**
    * @deprecated don't use this prop
    */
@@ -19,9 +21,11 @@ export interface IDragAndDropProps extends IBoxProps {
    */
   onDnD: (dndData: { fromIndex: number; fromId: string; toIndex: number; toId: string }) => void;
   locale?: string;
-}
+};
 
-export interface IDraggableProps extends IBoxProps {
+/** @deprecated */
+export interface IDraggableProps extends DraggableProps, UnknownProperties {}
+export type DraggableProps = BoxProps & {
   /** Placement of visual drag-and-drop marker
    * @default right
    * */
@@ -34,17 +38,17 @@ export interface IDraggableProps extends IBoxProps {
    * Used as `fromId` or `toId` in `onDnD` handler.
    */
   id?: string;
-}
+};
 
-export interface IDragAndDropContext {
+/** @deprecated */
+export interface IDragAndDropContext extends DragAndDropContext, UnknownProperties {}
+export type DragAndDropContext = {
   getDraggableProps: PropGetterFn;
   getDroppableProps: PropGetterFn;
-}
+};
 
-declare const DragAndDrop: (<T>(
-  props: CProps<IDragAndDropProps, IDragAndDropContext> & T,
-) => ReturnEl) & {
-  Draggable: <T>(props: CProps<IDraggableProps> & T) => ReturnEl;
+declare const DragAndDrop: Intergalactic.Component<'div', DragAndDropProps, DragAndDropContext> & {
+  Draggable: Intergalactic.Component<'div', DraggableProps>;
   DropZone: typeof Box;
   /** @deprecated use `DragAndDrop.DropZone` instead */
   Droppable: typeof Box;

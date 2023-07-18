@@ -90,10 +90,10 @@ describe('FullscreenModal', () => {
 describe('FullscreenModal.Header', () => {
   beforeEach(cleanup);
 
-  shouldSupportClassName(FullscreenModal.Header, ({ children }) => (
+  shouldSupportClassName(FullscreenModal.Header, ({ children }: any) => (
     <FullscreenModal visible>{children}</FullscreenModal>
   ));
-  shouldSupportRef(FullscreenModal.Header, ({ children }) => (
+  shouldSupportRef(FullscreenModal.Header, ({ children }: any) => (
     <FullscreenModal visible>{children}</FullscreenModal>
   ));
 

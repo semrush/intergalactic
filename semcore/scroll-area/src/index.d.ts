@@ -1,9 +1,10 @@
-import 'resize-observer-polyfill';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { Box, BoxProps } from '@semcore/flex-box';
 import { NodeByRef } from '@semcore/utils/lib/ref';
 
-export interface IScrollAreaProps extends IBoxProps {
+/** @deprecated */
+export interface IScrollAreaProps extends ScrollAreaProps, UnknownProperties {}
+export type ScrollAreaProps = BoxProps & {
   /** Shadow display on container */
   shadow?: boolean;
   /** Scroll direction */
@@ -18,33 +19,35 @@ export interface IScrollAreaProps extends IBoxProps {
   onScroll?: (event: React.SyntheticEvent<HTMLElement>) => void;
   /** Tab index that is being bypassed to the scroll container. */
   tabIndex?: number | null;
-}
+};
 
-export interface IScrollAreaContext extends IScrollAreaProps {
+/** @deprecated */
+export interface IScrollAreaContext extends ScrollAreaContext, UnknownProperties {}
+export type ScrollAreaContext = ScrollAreaProps & {
   getContainerProps: PropGetterFn;
   getBarProps: PropGetterFn;
-}
+};
 
-export interface IScrollBarProps extends IBoxProps {
+/** @deprecated */
+export interface IScrollBarProps extends ScrollBarProps, UnknownProperties {}
+export type ScrollBarProps = BoxProps & {
   /** The direction of the scroll that can be calculated automatically  */
   orientation?: 'horizontal' | 'vertical';
   /** Link to the dom element, which will be a container with overflow */
   container?: NodeByRef;
-}
+};
 
-export interface IScrollBarContext extends IScrollBarProps {
+/** @deprecated */
+export interface IScrollBarContext extends ScrollBarContext, UnknownProperties {}
+export type ScrollBarContext = ScrollBarProps & {
   getSliderProps: PropGetterFn;
-}
+};
 
-declare const ScrollBar: (<T>(
-  props: CProps<IScrollBarProps & T, IScrollBarContext>,
-) => ReturnEl) & {
+declare const ScrollBar: Intergalactic.Component<'div', ScrollBarProps, ScrollBarContext> & {
   Slider: typeof Box;
 };
 
-declare const ScrollArea: (<T>(
-  props: CProps<IScrollAreaProps & T, IScrollAreaContext>,
-) => ReturnEl) & {
+declare const ScrollArea: Intergalactic.Component<'div', ScrollAreaProps, ScrollAreaContext> & {
   Container: typeof Box;
   Bar: typeof ScrollBar;
 };

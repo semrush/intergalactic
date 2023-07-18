@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Spin from '@semcore/ui/spin';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Text } from '@semcore/ui/typography';
-import Table from '@semcore/table';
+import Table from '@semcore/ui/table';
 import Tooltip from '@semcore/ui/tooltip';
 import Checkbox from '@semcore/ui/checkbox';
 import Link from '@semcore/ui/link';
@@ -91,7 +91,7 @@ const Demo = () => (
     <ScrollArea.Container>
       <TableLayoutFixed>
         <Table.Head>
-          <Table.Row theme='false'>
+          <Table.Row theme={false}>
             <StyledThSticky align='center' valign='middle' width='50' left={0}>
               <Checkbox size='l'>
                 <Checkbox.Value />

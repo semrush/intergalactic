@@ -22,11 +22,11 @@ describe('Link', () => {
 
   test.concurrent('Should support custom attributes', () => {
     const { getByTestId } = render(
-      <Link data-testid='link' name='test'>
+      <Link data-testid='link' data-name='test'>
         Link
       </Link>,
     );
-    expect(getByTestId('link').attributes['name'].value).toBe('test');
+    expect((getByTestId('link').attributes as any)['data-name'].value).toBe('test');
   });
 
   test.concurrent('Should support children', async () => {

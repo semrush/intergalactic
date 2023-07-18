@@ -37,7 +37,7 @@ describe('Error', () => {
   });
 
   test.concurrent('Render correctly with icon', async ({ task }) => {
-    const iconUrl = getIconPath('PageNotFound');
+    const iconUrl = getIconPath('page_not_found');
     const component = (
       <Error icon={iconUrl}>
         <Error.Title>Horrible error</Error.Title>
@@ -71,7 +71,7 @@ describe('Error', () => {
   });
 
   test.concurrent('Render correctly on small screen', async ({ task }) => {
-    const iconUrl = getIconPath('PageNotFound');
+    const iconUrl = getIconPath('page_not_found');
     const component = (
       <Error icon={iconUrl}>
         <Error.Title>Horrible error</Error.Title>

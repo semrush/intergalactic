@@ -9,7 +9,7 @@ const Demo = () => {
 
   return (
     <>
-      <Text tag='label' htmlFor='clear-example' size='200'>
+      <Text tag='label' htmlFor='clear-example' size={200}>
         Clearable input
       </Text>
       <Box mt={2}>

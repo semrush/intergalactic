@@ -1,7 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 
-import ResizeObserver from 'resize-observer-polyfill';
-
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import OutsideClick from '@semcore/outside-click';
@@ -115,9 +114,11 @@ class Popper extends Component {
 
   constructor(props) {
     super(props);
-    this.observer = new ResizeObserver(() => {
-      this.popper.current?.update();
-    });
+    if (canUseDOM()) {
+      this.observer = new ResizeObserver(() => {
+        this.popper.current?.update();
+      });
+    }
   }
 
   uncontrolledProps() {
@@ -141,70 +142,9 @@ class Popper extends Component {
   };
 
   getPopperOptions = () => {
-    let {
-      placement,
-      modifiers,
-      strategy,
-      onFirstUpdate,
-      positionFixed,
-      eventsDisabled,
-      boundary,
-      ...other
-    } = this.asProps;
+    const { placement, modifiers, strategy, onFirstUpdate, ...other } = this.asProps;
     const optionsModifiers = pick(other, MODIFIERS_OPTIONS);
     const modifiersFallback = [];
-
-    /* START positionFixed */
-    logger.warn(
-      positionFixed !== undefined,
-      "The 'positionFixed' property is deprecated, use 'strategy=\"fixed\"'",
-      other['data-ui-name'] || Popper.displayName,
-    );
-    if (positionFixed) {
-      strategy = 'fixed';
-    }
-    /* END positionFixed */
-    /* START eventsDisabled */
-    logger.warn(
-      eventsDisabled !== undefined,
-      "The 'eventsDisabled' property is deprecated, use 'eventListeners={{scroll: false, resize: false}}'",
-      other['data-ui-name'] || Popper.displayName,
-    );
-    if (eventsDisabled !== undefined) {
-      modifiersFallback.push({
-        name: 'eventListeners',
-        options: {
-          scroll: false,
-          resize: false,
-        },
-      });
-    }
-    /* END eventsDisabled */
-    /* START boundary */
-    logger.warn(
-      boundary !== undefined,
-      "The 'boundary' property is deprecated, use 'preventOverflow={{rootBoundary: \"document\", boundary: HTMLElement}}'",
-      other['data-ui-name'] || Popper.displayName,
-    );
-    if (boundary !== undefined) {
-      const options = {};
-      if (typeof boundary !== 'string') {
-        options.boundary = boundary;
-        options.rootBoundary = 'document';
-      } else if (boundary === 'window') {
-        options.rootBoundary = 'document';
-      } else if (boundary === 'viewport') {
-        options.rootBoundary = 'viewport';
-      } else if (boundary === 'scrollParent') {
-        options.boundary = 'clippingParents';
-        options.altBoundary = true;
-      }
-      modifiersFallback.push({
-        name: 'preventOverflow',
-        options,
-      });
-    }
-    /* END boundary */
 
     if (typeof optionsModifiers.offset === 'number') {
       optionsModifiers.offset = [0, optionsModifiers.offset];
@@ -229,8 +169,8 @@ class Popper extends Component {
       placement,
       strategy,
       onFirstUpdate: callAllEventHandlers(onFirstUpdate, () => {
-        this.observer.observe(this.triggerRef.current);
-        this.observer.observe(this.popperRef.current);
+        this.observer?.observe(this.triggerRef.current);
+        this.observer?.observe(this.popperRef.current);
       }),
       modifiers: modifiersMerge,
     };
@@ -270,9 +210,7 @@ class Popper extends Component {
     clearTimeout(this.timer);
     clearTimeout(this.timerMultiTrigger);
 
-    if (this.observer) {
-      this.observer.disconnect();
-    }
+    this.observer?.disconnect();
 
     if (this.popper.current) {
       this.popper.current.destroy();
@@ -281,22 +219,6 @@ class Popper extends Component {
   }
 
   handlersFromInteraction(interaction, component, visible) {
-    const { displayEvents, ...other } = this.asProps;
-    logger.warn(
-      displayEvents !== undefined,
-      "The 'displayEvents' property is deprecated, use 'interaction'",
-      other['data-ui-name'] || Popper.displayName,
-    );
-    if (displayEvents !== undefined) {
-      interaction = {
-        trigger: [displayEvents.show, displayEvents.hide],
-        popper: [],
-      };
-      if (displayEvents.hide.includes('onMouseLeave')) {
-        interaction.popper = interaction.trigger;
-      }
-    }
-
     const eventInteraction =
       typeof interaction === 'string' ? this.eventsInteractionMap[interaction] : interaction;
 
@@ -346,19 +268,8 @@ class Popper extends Component {
   };
 
   handlerChangeVisibleWithTimer = (visible, e, cb) => {
-    let { timeout, displayTimeout, ...other } = this.asProps;
+    const { timeout } = this.asProps;
     const handlers = this.handlers;
-
-    /* START displayTimeout */
-    logger.warn(
-      displayTimeout !== undefined,
-      "'DisplayTimeout' property is deprecated, use 'timeout'",
-      other['data-ui-name'] || Popper.displayName,
-    );
-    if (displayTimeout !== undefined) {
-      timeout = [displayTimeout.show, displayTimeout.hide];
-    }
-    /* END displayTimeout */
 
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
     const latency = visible ? timeoutConfig[0] : timeoutConfig[1];
@@ -394,7 +305,6 @@ class Popper extends Component {
       visible,
       disablePortal,
       interaction,
-      popperZIndex,
       placement,
       duration,
       animationsDisabled,
@@ -408,14 +318,6 @@ class Popper extends Component {
       visible,
     );
 
-    /* START popperZIndex */
-    logger.warn(
-      popperZIndex !== undefined,
-      "The 'popperZIndex' property is deprecated, use styles directly in '<Popper.Popper/>'",
-      other['data-ui-name'] || Popper.displayName,
-    );
-    /* END popperZIndex */
-
     return {
       ref: this.createPopperRef,
       triggerRef: this.triggerRef,
@@ -424,7 +326,6 @@ class Popper extends Component {
       disablePortal,
       ...interactionProps,
       onKeyDown: this.bindHandlerKeyDown(onKeyDown),
-      style: popperZIndex !== undefined ? { zIndex: popperZIndex } : null,
       placement,
       duration,
       animationsDisabled,

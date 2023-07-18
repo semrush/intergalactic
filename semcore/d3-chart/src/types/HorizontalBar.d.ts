@@ -1,12 +1,14 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
-import { IBarContext, IBackgroundProps } from './Bar';
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
+import { BarContext, BackgroundProps } from './Bar';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IHorizontalBarProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IHorizontalBarProps extends HorizontalBarProps, UnknownProperties {}
+export type HorizontalBarProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/
@@ -21,12 +23,10 @@ export interface IHorizontalBarProps extends IContext {
   r?: number | number[];
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-declare const HorizontalBar: (<T>(
-  props: MapProps<IHorizontalBarProps & T, IBarContext>,
-) => ReturnEl) & {
-  Background: <T>(props: MapProps<IBackgroundProps & T>) => ReturnEl;
+declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {
+  Background: IntergalacticD3Component<'rect', BackgroundProps, Context>;
 };
 
 export default HorizontalBar;

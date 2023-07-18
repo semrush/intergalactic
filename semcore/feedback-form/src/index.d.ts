@@ -1,12 +1,13 @@
-import { ComponentProps } from 'react';
 import { FormProps, FieldProps } from 'react-final-form';
 
-import { ReturnEl, CProps } from '@semcore/core';
+import { Intergalactic } from '@semcore/core';
 import Button from '@semcore/button';
 import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
 
-export interface IFeedbackForm extends FormProps {
+/** @deprecated */
+export interface IFeedbackForm extends FeedbackFormProps {}
+export type FeedbackFormProps = FormProps & {
   /* The event is called when the form is submitted */
   onSubmit: (values: any, form: any, callback?: (errors?: {}) => void) => {} | Promise<{}> | void;
   /**
@@ -21,14 +22,14 @@ export interface IFeedbackForm extends FormProps {
    * @default dark
    **/
   theme?: 'dark' | 'invert' | string;
-}
+};
 
-declare const FeedbackForm: (<T>(props: CProps<IFeedbackForm> & T) => ReturnEl) & {
-  Item: <T>(props: FieldProps<any, any> & T) => ReturnEl;
-  Success: <T>(props: CProps<ComponentProps<typeof Box>> & T) => ReturnEl;
-  Submit: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Cancel: <T>(props: ComponentProps<typeof Button> & T) => ReturnEl;
-  Notice: <T>(props: ComponentProps<typeof NoticeSmart> & T) => ReturnEl;
+declare const FeedbackForm: Intergalactic.Component<'form', FeedbackFormProps> & {
+  Item: Intergalactic.Component<'div', FieldProps<any, any>>;
+  Success: typeof Box;
+  Submit: typeof Button;
+  Cancel: typeof Button;
+  Notice: typeof NoticeSmart;
 };
 
 export default FeedbackForm;

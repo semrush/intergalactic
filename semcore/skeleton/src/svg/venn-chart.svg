@@ -1,0 +1,13 @@
+<svg width="200" height="180" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="paragraph=false, chart type=venn chart, picture div=false">
+<g id="skeleton-venn" clip-path="url(#clip0_10328_146989)">
+<path id="Shape" fill-rule="evenodd" clip-rule="evenodd" d="M77.7778 90C77.7778 71.0574 86.4277 54.1315 100 42.9431C113.572 54.1315 122.222 71.0574 122.222 90C122.222 108.943 113.572 125.869 100 137.057C86.4277 125.869 77.7778 108.943 77.7778 90ZM100 137.057C110.566 145.767 124.115 151 138.889 151C172.64 151 200 123.689 200 90C200 56.3106 172.64 29 138.889 29C124.115 29 110.566 34.2329 100 42.9431C89.434 34.2329 75.8848 29 61.1111 29C27.3604 29 0 56.3106 0 90C0 123.689 27.3604 151 61.1111 151C75.8848 151 89.434 145.767 100 137.057Z" fill="#E0E1E9" fill-opacity="0.8"/>
+<path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M100 43C113.437 54.1749 122 71.0803 122 90C122 108.92 113.437 125.825 100 137C86.5635 125.825 78 108.92 78 90C78 71.0803 86.5635 54.1749 100 43V43Z" fill="#E0E1E9" fill-opacity="0.8" stroke="white" stroke-width="4"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_10328_146989">
+<rect width="200" height="122" fill="white" transform="translate(0 29)"/>
+</clipPath>
+</defs>
+</svg>

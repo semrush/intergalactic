@@ -156,7 +156,7 @@ export const serialize = (
 ): string | null => {
   if (insights.length === 0) return null;
 
-  const intl = getIntl(locale, translations, availableLocales);
+  const intl = getIntl(locale, translations!, availableLocales!);
 
   const dataRangeSummary = intl.formatList(
     dataRange.map((range) => {

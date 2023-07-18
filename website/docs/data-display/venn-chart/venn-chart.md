@@ -142,5 +142,4 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 @page venn-chart-a11y
 @page venn-chart-api
 @page venn-chart-d3-code
-@page venn-chart-recharts-code
 @page d3-chart-changelog

@@ -1,17 +1,19 @@
 import React, { ChangeEvent, ComponentProps } from 'react';
 import dayjs from 'dayjs';
-import { Box, IBoxProps } from '@semcore/flex-box';
+import { Box, BoxProps } from '@semcore/flex-box';
+import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
 import Button from '@semcore/button';
-import { CProps, Merge, PropGetterFn, ReturnEl } from '@semcore/core';
-import Dropdown, { IDropdownProps } from '@semcore/dropdown';
-import { IWithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
-import BaseTrigger from '@semcore/base-trigger';
-import Input from '@semcore/input';
-import InputMask from '@semcore/input-mask';
+import Dropdown, { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
+import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
+import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
+import Input, { InputProps, InputValueProps } from '@semcore/input';
+import { InputMaskValueProps } from '@semcore/input-mask';
 
 export type DateConstructorParams = string | number | Date;
 
-export interface ICalendarProps extends IBoxProps {
+/** @deprecated */
+export interface ICalendarProps extends CalendarProps, UnknownProperties {}
+export type CalendarProps = BoxProps & {
   /**
    * Locale for displaying the days of a week and months, to be transferred to `Intl`
    * @default en
@@ -43,17 +45,25 @@ export interface ICalendarProps extends IBoxProps {
    * @default new Date()
    * */
   displayedPeriod?: Date;
-}
 
-export interface ICalendarDaysContext {
-  days: ICalendarUnitProps[];
-}
+  renderOutdated?: boolean;
+};
 
-export interface ICalendarMonthsContext {
-  months: ICalendarUnitProps[];
-}
+/** @deprecated */
+export interface ICalendarDaysContext extends CalendarDaysContext, UnknownProperties {}
+export type CalendarDaysContext = {
+  days: CalendarUnitProps[];
+};
 
-export interface ICalendarUnitProps extends IBoxProps {
+/** @deprecated */
+export interface ICalendarMonthsContext extends CalendarMonthsContext, UnknownProperties {}
+export type CalendarMonthsContext = {
+  months: CalendarUnitProps[];
+};
+
+/** @deprecated */
+export interface ICalendarUnitProps extends CalendarUnitProps, UnknownProperties {}
+export type CalendarUnitProps = BoxProps & {
   selected?: boolean;
   outdated?: boolean;
   disabled?: boolean;
@@ -63,124 +73,140 @@ export interface ICalendarUnitProps extends IBoxProps {
   highlighted?: boolean;
   startHighlighted?: boolean;
   endHighlighted?: boolean;
+  date?: Date;
   children?: React.ReactNode;
-}
-
-export interface ICalendarContext {
-  getUnitProps: PropGetterFn;
-}
-
-declare const Calendar: (<T>(
-  props: CProps<ICalendarProps & T, ICalendarContext, IAbstractDatePickerHandlers>,
-) => ReturnEl) & {
-  Unit: <T>(props: ICalendarUnitProps & T) => ReturnEl;
 };
 
-export interface IDatePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  value?: DateConstructorParams;
-  /**
-   * To be activated upon selecting the date
-   * */
-  onChange?: (date: Date) => void;
-  /**
-   * Array of dates blocked for selection
-   * */
-  disabled?: (Date | (Date | false)[] | string)[];
-  /**
-   * Date for showing the necessary month
-   * @default new Date()
-   * */
-  displayedPeriod?: DateConstructorParams;
-  /**
-   * To be activated upon changing the current shown month
-   * */
-  onDisplayedPeriodChange?: (date: Date) => void;
-  /**
-   * Component size
-   * @default m
-   */
-  size?: 'm' | 'l';
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  highlighted?: DateConstructorParams[];
-  /**
-   * Default value selected date, accepts everything which is accepted by `new Date()`
-   * */
-  defaultValue?: DateConstructorParams;
-  /**
-   * Default value date for showing the necessary month
-   * */
-  defaultDisplayedPeriod?: DateConstructorParams;
-  /**
-   * Default value selected date, accepts everything which is accepted by `new Date()`
-   * */
-  defaultHighlighted?: DateConstructorParams[];
-}
+/** @deprecated */
+export interface ICalendarContext extends CalendarContext, UnknownProperties {}
+export type CalendarContext = {
+  getUnitProps: PropGetterFn;
+};
 
-export interface IDateRangePickerProps extends IDropdownProps, IWithI18nEnhanceProps {
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  value?: DateConstructorParams[];
-  /**
-   * Default value selected date, accepts everything which is accepted by `new Date()`
-   * */
-  defaultValue?: DateConstructorParams[];
-  /**
-   * Default value date for showing the necessary month
-   * */
-  defaultDisplayedPeriod?: DateConstructorParams;
-  /**
-   * Default value selected date, accepts everything which is accepted by `new Date()`
-   * */
-  defaultHighlighted?: DateConstructorParams[];
-  /**
-   * To be activated upon selecting the date
-   * */
-  onChange?: (date: Date[]) => void;
-  /**
-   * Array of dates blocked for selection
-   * */
-  disabled?: (Date | (Date | false)[] | string)[];
-  /**
-   * Date for showing the necessary month
-   * @default new Date()
-   * */
-  displayedPeriod?: DateConstructorParams;
-  /**
-   * To be activated upon changing the current shown month
-   * */
-  onDisplayedPeriodChange?: (date: Date) => void;
-  /**
-   * Component size
-   * @default m
-   */
-  size?: 'm' | 'l' | 'xl';
-  /**
-   * The selected date, accepts everything which is accepted by `new Date()`
-   * */
-  highlighted?: DateConstructorParams[];
-  /**
-   * Remove the 'Reset' button
-   * */
-  unclearable?: boolean;
-  /**
-   * To be activated upon selecting the date
-   * */
-  onHighlightedChange?: (date: Date[]) => void;
-  /**
-   * Array of periods
-   * [{value: [new Date(), new Date()], children: "Today"}]
-   * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
-   * */
-  periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
-}
+declare const Calendar: Intergalactic.Component<
+  'div',
+  CalendarProps,
+  CalendarContext & CalendarDaysContext,
+  [handlers: AbstractDatePickerHandlers]
+> & {
+  Unit: Intergalactic.Component<'div', CalendarUnitProps>;
+};
 
-export interface IDateRangePickerPeriodProps extends IBoxProps {
+/** @deprecated */
+export interface IDatePickerProps extends DatePickerProps, UnknownProperties {}
+export type DatePickerProps = DropdownProps &
+  WithI18nEnhanceProps & {
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    value?: DateConstructorParams;
+    /**
+     * To be activated upon selecting the date
+     * */
+    onChange?: (date: Date) => void;
+    /**
+     * Array of dates blocked for selection
+     * */
+    disabled?: (Date | (Date | false)[] | string)[];
+    /**
+     * Date for showing the necessary month
+     * @default new Date()
+     * */
+    displayedPeriod?: DateConstructorParams;
+    /**
+     * To be activated upon changing the current shown month
+     * */
+    onDisplayedPeriodChange?: (date: Date) => void;
+    /**
+     * Component size
+     * @default m
+     */
+    size?: 'm' | 'l';
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    highlighted?: DateConstructorParams[];
+    /**
+     * Default value selected date, accepts everything which is accepted by `new Date()`
+     * */
+    defaultValue?: DateConstructorParams;
+    /**
+     * Default value date for showing the necessary month
+     * */
+    defaultDisplayedPeriod?: DateConstructorParams;
+    /**
+     * Default value selected date, accepts everything which is accepted by `new Date()`
+     * */
+    defaultHighlighted?: DateConstructorParams[];
+  };
+
+/** @deprecated */
+export interface IDateRangePickerProps extends DateRangePickerProps, UnknownProperties {}
+export type DateRangePickerProps = DropdownProps &
+  WithI18nEnhanceProps & {
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    value?: DateConstructorParams[];
+    /**
+     * Default value selected date, accepts everything which is accepted by `new Date()`
+     * */
+    defaultValue?: DateConstructorParams[];
+    /**
+     * Default value date for showing the necessary month
+     * */
+    defaultDisplayedPeriod?: DateConstructorParams;
+    /**
+     * Default value selected date, accepts everything which is accepted by `new Date()`
+     * */
+    defaultHighlighted?: DateConstructorParams[];
+    /**
+     * To be activated upon selecting the date
+     * */
+    onChange?: (date: Date[]) => void;
+    /**
+     * Array of dates blocked for selection
+     * */
+    disabled?: (Date | (Date | false)[] | string)[];
+    /**
+     * Date for showing the necessary month
+     * @default new Date()
+     * */
+    displayedPeriod?: DateConstructorParams;
+    /**
+     * To be activated upon changing the current shown month
+     * */
+    onDisplayedPeriodChange?: (date: Date) => void;
+    /**
+     * Component size
+     * @default m
+     */
+    size?: 'm' | 'l' | 'xl';
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    highlighted?: DateConstructorParams[];
+    /**
+     * Remove the 'Reset' button
+     * */
+    unclearable?: boolean;
+    /**
+     * To be activated upon selecting the date
+     * */
+    onHighlightedChange?: (date: Date[]) => void;
+    /**
+     * Array of periods
+     * [{value: [new Date(), new Date()], children: "Today"}]
+     * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
+     * */
+    periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
+  };
+
+/** @deprecated */
+export interface IDateRangePickerPeriodProps
+  extends DateRangePickerPeriodProps,
+    UnknownProperties {}
+export type DateRangePickerPeriodProps = BoxProps & {
   /**
    * Current selected period
    * */
@@ -203,9 +229,11 @@ export interface IDateRangePickerPeriodProps extends IBoxProps {
    * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
    * */
   periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
-}
+};
 
-export interface IDatePickerContext {
+/** @deprecated */
+export interface IDatePickerContext extends DatePickerContext, UnknownProperties {}
+export type DatePickerContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -214,85 +242,98 @@ export interface IDatePickerContext {
   getPrevProps: PropGetterFn;
   getCalendarProps: PropGetterFn;
   getTodayProps: PropGetterFn;
-}
+};
 
-export interface IAbstractDatePickerHandlers {
+/** @deprecated */
+export interface IAbstractDatePickerHandlers
+  extends AbstractDatePickerHandlers,
+    UnknownProperties {}
+export type AbstractDatePickerHandlers = {
   displayedPeriod: (value: DateConstructorParams) => void;
   visible: (index: boolean) => void;
   highlighted: (list: DateConstructorParams[]) => void;
   value: (index: DateConstructorParams) => void;
-}
+};
 
-export interface IDatePickerHandlers {
+/** @deprecated */
+export interface IDatePickerHandlers extends DatePickerHandlers, UnknownProperties {}
+export type DatePickerHandlers = {
   visible: (index: boolean) => void;
-}
+};
 
-export interface IInputTriggerProps {
-  value: Date;
+/** @deprecated */
+export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
+export type InputTriggerProps = InputProps & {
+  value?: Date;
   /**
    * Date input placeholder characters
    * @default { year: 'Y'; month: 'M'; day: 'D' }
    */
-  placeholders: { year: string; month: string; day: string };
-  onChange: (date: Date, event: ChangeEvent) => void;
+  placeholders?: { year: string; month: string; day: string };
+  onChange?: (date: Date, event: ChangeEvent) => void;
   locale?: string;
-  onDisplayedPeriodChange: (date: Date) => void;
-}
+  onDisplayedPeriodChange?: (date: Date) => void;
+};
 
-export interface ISingleDateInputProps extends IInputTriggerProps {}
+/** @deprecated */
+export interface ISingleDateInputProps extends SingleDateInputProps, UnknownProperties {}
+export type SingleDateInputProps = InputTriggerProps & {};
 
-export interface IDateRangeProps extends IInputTriggerProps {}
+/** @deprecated */
+export interface IDateRangeProps extends DateRangeProps, UnknownProperties {}
+export type DateRangeProps = InputTriggerProps & {};
 
-export interface IDatePickerMaskedInputProps {
+/** @deprecated */
+export interface IDatePickerMaskedInputProps
+  extends DatePickerMaskedInputProps,
+    UnknownProperties {}
+export type DatePickerMaskedInputProps = {
   date: Date;
   onDateChange: (date: Date, event: ChangeEvent) => void;
   onDisplayedPeriodChange: (date: Date) => void;
   locale?: string;
   parts: { year: Boolean; month: Boolean; day: Boolean };
   disabledDates: (Date | (Date | false)[] | string)[];
-}
+};
 
-declare const InputTrigger: (<T>(
-  props: Merge<ComponentProps<typeof Dropdown.Trigger>, IInputTriggerProps> & T,
-) => ReturnEl) & {
+declare const InputTrigger: Intergalactic.Component<
+  'div',
+  DropdownTriggerProps & InputTriggerProps
+> & {
   Addon: typeof Input.Addon;
   Value: typeof Input.Value;
-  SingleDateInput: (<T>(
-    props: Merge<ComponentProps<typeof InputMask>, ISingleDateInputProps> & T,
-  ) => ReturnEl) & {
+  SingleDateInput: Intergalactic.Component<'div', InputProps & ISingleDateInputProps> & {
     Indicator: typeof Input.Addon;
-    MaskedInput: <T>(
-      props: Merge<ComponentProps<typeof InputMask.Value>, IDatePickerMaskedInputProps> & T,
-    ) => ReturnEl;
+    MaskedInput: Intergalactic.Component<'input', InputMaskValueProps & DatePickerMaskedInputProps>;
   };
-  DateRange: (<T>(
-    props: Merge<ComponentProps<typeof InputMask>, IDateRangeProps> & T,
-  ) => ReturnEl) & {
+  DateRange: Intergalactic.Component<'div', InputValueProps & DateRangeProps> & {
     Indicator: typeof Input.Addon;
     RangeSep: typeof Input.Addon;
-    FromMaskedInput: <T>(
-      props: Merge<ComponentProps<typeof InputMask.Value>, IDatePickerMaskedInputProps> & T,
-    ) => ReturnEl;
-    ToMaskedInput: <T>(
-      props: Merge<ComponentProps<typeof InputMask.Value>, IDatePickerMaskedInputProps> & T,
-    ) => ReturnEl;
+    FromMaskedInput: Intergalactic.Component<
+      'input',
+      InputMaskValueProps & DatePickerMaskedInputProps
+    >;
+    ToMaskedInput: Intergalactic.Component<
+      'input',
+      InputMaskValueProps & DatePickerMaskedInputProps
+    >;
   };
 };
 
-declare const DatePicker: ((
-  props: CProps<IDatePickerProps, IDatePickerContext & ICalendarDaysContext, IDatePickerHandlers>,
-) => ReturnEl) & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
-  ) => ReturnEl) & {
+declare const DatePicker: Intergalactic.Component<
+  'div',
+  DatePickerProps,
+  DatePickerContext & CalendarDaysContext
+> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IDatePickerContext>) => ReturnEl;
+  Title: Intergalactic.Component<'div', DatePickerProps, DatePickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
@@ -301,7 +342,9 @@ declare const DatePicker: ((
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export interface IDateRangePickerContext {
+/** @deprecated */
+export interface IDateRangePickerContext extends DateRangePickerContext, UnknownProperties {}
+export type DateRangePickerContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -310,39 +353,36 @@ export interface IDateRangePickerContext {
   getPrevProps: PropGetterFn;
   getCalendarProps: PropGetterFn;
   getPeriodProps: PropGetterFn;
-}
+};
 
-declare const DateRangePicker: ((
-  props: CProps<
-    IDateRangePickerProps,
-    IDateRangePickerContext & ICalendarDaysContext,
-    IDatePickerHandlers
-  >,
-) => ReturnEl) & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
-  ) => ReturnEl) & {
+declare const DateRangePicker: Intergalactic.Component<
+  'div',
+  DateRangePickerProps,
+  DateRangePickerContext & CalendarDaysContext,
+  [handlers: DatePickerHandlers]
+> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
-  Popper: <T>(props: ComponentProps<typeof Dropdown.Popper> & T) => ReturnEl;
+  Trigger: typeof InputTrigger;
+  Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: <T>(
-    props: CProps<IDateRangePickerProps & IBoxProps & T, IDateRangePickerContext>,
-  ) => ReturnEl;
+  Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
-  Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
+  Period: Intergalactic.Component<'div', DateRangePickerPeriodProps>;
   Apply: typeof Button;
   Reset: typeof Button;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export interface IMonthPickerContext {
+/** @deprecated */
+export interface IMonthPickerContext extends MonthPickerContext, UnknownProperties {}
+export type MonthPickerContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -350,26 +390,23 @@ export interface IMonthPickerContext {
   getNextProps: PropGetterFn;
   getPrevProps: PropGetterFn;
   getCalendarProps: PropGetterFn;
-}
+};
 
-declare const MonthPicker: ((
-  props: CProps<
-    IDatePickerProps,
-    IMonthPickerContext & ICalendarMonthsContext,
-    IDatePickerHandlers
-  >,
-) => ReturnEl) & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
-  ) => ReturnEl) & {
+declare const MonthPicker: Intergalactic.Component<
+  'div',
+  DatePickerProps,
+  MonthPickerContext & CalendarMonthsContext,
+  [handlers: DatePickerHandlers]
+> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: <T>(props: CProps<IDatePickerProps & IBoxProps & T, IMonthPickerContext>) => ReturnEl;
+  Title: Intergalactic.Component<'div', DatePickerProps, MonthPickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
@@ -377,7 +414,9 @@ declare const MonthPicker: ((
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export interface IMonthRangePickerContext {
+/** @deprecated */
+export interface IMonthRangePickerContext extends MonthRangePickerContext, UnknownProperties {}
+export type MonthRangePickerContext = {
   getTriggerProps: PropGetterFn;
   getPopperProps: PropGetterFn;
   getHeaderProps: PropGetterFn;
@@ -386,32 +425,27 @@ export interface IMonthRangePickerContext {
   getPrevProps: PropGetterFn;
   getCalendarProps: PropGetterFn;
   getPeriodProps: PropGetterFn;
-}
+};
 
-declare const MonthRangePicker: ((
-  props: CProps<
-    IDateRangePickerProps,
-    IMonthRangePickerContext & ICalendarMonthsContext,
-    IDatePickerHandlers
-  >,
-) => ReturnEl) & {
-  /** @deprecated `DatePicker.Trigger` is deprecated, consider migrating to `DatePicker.InputTrigger` instead */
-  Trigger: (<T>(
-    props: Merge<ComponentProps<typeof Dropdown.Trigger>, ComponentProps<typeof BaseTrigger>> & T,
-  ) => ReturnEl) & {
+declare const MonthRangePicker: Intergalactic.Component<
+  'div',
+  DateRangePickerProps,
+  MonthRangePickerContext & CalendarMonthsContext,
+  [handlers: DatePickerHandlers]
+> & {
+  /** @deprecated `DatePicker.ButtonTrigger` is deprecated, consider migrating to `DatePicker.Trigger` instead */
+  ButtonTrigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  InputTrigger: typeof InputTrigger;
+  Trigger: typeof InputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
-  Title: <T>(
-    props: CProps<IDateRangePickerProps & IBoxProps & T, IMonthRangePickerContext>,
-  ) => ReturnEl;
+  Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
-  Period: <T>(props: IDateRangePickerPeriodProps & T) => ReturnEl;
+  Period: Intergalactic.Component<'div', DateRangePickerPeriodProps>;
   Apply: typeof Button;
   Reset: typeof Button;
   add: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;

@@ -1,6 +1,18 @@
 # Changelog
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+## [5.0.1] - 2023-07-18
+
+### Fix
+
+- Removed ResizeObserver initiating during SSR.
+
+## [5.0.0] - 2023-07-17
+
+### Break
+
+- Removed previously deprecated props `positionFixed`, `eventsDisabled`, `boundary`, `displayEvents`, `displayTimeout`, `popperZIndex`.
+- Strict, backward incompatible typings.
 
 ## [4.19.6] - 2023-06-30
 

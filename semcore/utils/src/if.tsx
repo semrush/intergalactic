@@ -1,9 +1,12 @@
+import { UnknownProperties } from '@semcore/core';
 import { FC, ReactNode } from 'react';
 
-export interface IIfProps {
+/** @deprecated */
+export interface IIfProps extends IfProps, UnknownProperties {}
+export type IfProps = {
   condition: boolean;
   children?: ReactNode;
-}
+};
 
 const If: FC<IIfProps> = (props) => {
   const { condition, children } = props;

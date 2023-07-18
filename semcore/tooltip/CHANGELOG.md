@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.0.1] - 2023-07-17
+
+### Change
+
+- Removed ScreenReaderOnly block for tooltips with `interaction=hover`.
+
+## [6.0.0] - 2023-07-17
+
+### Break
+
+- Strict, backward incompatible typings.
+
 ## [5.4.26] - 2023-06-30
 
 ## [5.4.25] - 2023-06-27

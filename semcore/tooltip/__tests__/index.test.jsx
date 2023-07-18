@@ -167,7 +167,7 @@ describe('Tooltip.Popper', () => {
 
     const { getAllByText } = render(component);
 
-    expect(getAllByText('test popper content', {})).toHaveLength(2);
+    expect(getAllByText('test popper content', {})).toHaveLength(1);
   });
 
   test('should support render function for children', () => {

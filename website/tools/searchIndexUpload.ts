@@ -66,7 +66,7 @@ const traverse = async (node, parentNode?) => {
   }
 
   for (const heading of article.headings) {
-    if (heading.html) {
+    if ('html' in heading && 'id' in heading) {
       objects.push({
         objectID: objectId++,
         pageTitle: node.title,

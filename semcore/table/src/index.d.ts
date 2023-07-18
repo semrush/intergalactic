@@ -1,26 +1,32 @@
-import { CProps, ReturnEl } from '@semcore/core';
-import { Box, IBoxProps } from '@semcore/flex-box';
-import { ITextProps } from '@semcore/typography';
-import { IScrollAreaProps } from '@semcore/scroll-area';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { BoxProps } from '@semcore/flex-box';
+import { TextProps } from '@semcore/typography';
+import { ScrollAreaProps } from '@semcore/scroll-area';
 
-export interface ITableCtx {
+/** @deprecated */
+export interface ITableCtx extends TableCtx, UnknownProperties {}
+export type TableCtx = {
   styles: { [key: string]: any };
   use: 'primary' | 'secondary' | false;
   self: { [key: string]: any };
-}
+};
 
 export type RowTheme = 'info' | 'success' | 'warning' | 'danger' | 'default' | false;
 
-export interface ITableProps extends IBoxProps {
+/** @deprecated */
+export interface ITableProps extends TableProps, UnknownProperties {}
+export type TableProps = BoxProps & {
   /**
    * @default primary
    */
   use?: ITableCtx['use'];
   /** Make cells less */
   compact?: boolean;
-}
+};
 
-export interface ICellProps extends ITextProps {
+/** @deprecated */
+export interface ICellProps extends CellProps, UnknownProperties {}
+export type CellProps = TextProps & {
   /** Positioning content horizontally in a cell
    * @default left
    */
@@ -41,25 +47,31 @@ export interface ICellProps extends ITextProps {
    * @default false
    */
   borderLeft?: boolean;
-}
+};
 
-export interface ITableCellHeadProps extends ICellProps {
+/** @deprecated */
+export interface ITableCellHeadProps extends TableCellHeadProps, UnknownProperties {}
+export type TableCellHeadProps = CellProps & {
   /** Responsible for the sort direction */
   sorting?: 'asc' | 'desc' | false;
   /** Responsible for the activity of the cell */
   active?: boolean;
-}
+};
 
-export interface ITableCellRowProps extends ICellProps {
+/** @deprecated */
+export interface ITableCellRowProps extends TableCellRowProps, UnknownProperties {}
+export type TableCellRowProps = CellProps & {
   /** Property responsible for highlighting the cell */
   highlighted?: boolean;
   /** Property responsible for the cell interactivity */
   interactive?: boolean;
   /** The cell theme */
   theme?: RowTheme;
-}
+};
 
-export interface IStickyHeadProps extends IScrollAreaProps {
+/** @deprecated */
+export interface IStickyHeadProps extends StickyHeadProps, UnknownProperties {}
+export type StickyHeadProps = ScrollAreaProps & {
   /** HTML element, which is used for table scrolling */
 
   container?: HTMLElement;
@@ -73,27 +85,29 @@ export interface IStickyHeadProps extends IScrollAreaProps {
   bottom?: string | number;
   /** Handler that is called when the fixed position is changed */
   onFixed?: (positionFixed: string) => void;
-}
+};
 
-export interface ITableRowProps extends IBoxProps {
+/** @deprecated */
+export interface ITableRowProps extends TableRowProps, UnknownProperties {}
+export type TableRowProps = BoxProps & {
   /** Property responsible for the row interactivity */
   interactive?: boolean;
   /** The cell theme
    * @default default
    * */
   theme?: RowTheme;
-}
+};
 
 /**
  * @deprecated Please, use package `@semcore/ui/data-table` instead. Package `@semcore/table` is deprecated.
  */
-declare const Table: (<T>(props: CProps<ITableProps & T, ITableCtx>) => ReturnEl) & {
-  Head: typeof Box;
-  Body: typeof Box;
-  StickyHead: <T>(props: IStickyHeadProps & T) => ReturnEl;
-  Row: <T>(props: ITableRowProps & T) => ReturnEl;
-  Cell: <T>(props: ITableCellRowProps & T) => ReturnEl;
-  CellHead: <T>(props: ITableCellHeadProps & T) => ReturnEl;
+declare const Table: Intergalactic.Component<'table', TableProps, TableCtx> & {
+  Head: Intergalactic.Component<'thead', BoxProps>;
+  Body: Intergalactic.Component<'tbody', BoxProps>;
+  StickyHead: Intergalactic.Component<'thead', StickyHeadProps>;
+  Row: Intergalactic.Component<'tr', TableRowProps>;
+  Cell: Intergalactic.Component<'td', TableCellRowProps>;
+  CellHead: Intergalactic.Component<'td', TableCellHeadProps>;
 };
 
 /**

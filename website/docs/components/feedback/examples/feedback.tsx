@@ -29,8 +29,14 @@ const validate = {
   },
 };
 
-class Feedback extends React.PureComponent {
-  handleChange = (fn) => (value, e) => {
+class Feedback extends React.PureComponent<{
+  status: string;
+  onSubmit: (data: any) => void;
+  onCancel: () => void;
+  onChange: (event: any, trigger: string) => void;
+  value: { description: string; email: string };
+}> {
+  handleChange = (fn) => (_, e) => {
     fn(e);
   };
 
@@ -106,7 +112,8 @@ class Feedback extends React.PureComponent {
 
 class FeedbackLink extends React.PureComponent {
   state = { status: 'default', value: { description: '', email: '' } };
-  onSubmit = (data) => {
+  timeout: any;
+  onSubmit = () => {
     this.requestServer('success', 1000);
     this.setState({ status: 'loading' });
   };
@@ -136,11 +143,11 @@ class FeedbackLink extends React.PureComponent {
           <Link.Text>Send feedback</Link.Text>
         </Dropdown.Trigger>
         <Dropdown.Popper>
-          {(props, { visible }) => (
+          {(_props, { visible }) => (
             <Feedback
               status={status}
               onCancel={() => visible(false)}
-              onSubmit={(data) => this.onSubmit(data)}
+              onSubmit={() => this.onSubmit()}
               value={value}
               onChange={this.onChange}
             />

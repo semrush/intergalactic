@@ -1,14 +1,19 @@
 import React, { PureComponent } from 'react';
 import { findDOMNode } from 'react-dom';
 import createHoc from '../createHoc';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-export interface IEnhancedWithAutoFocusProps {
+/** @deprecated */
+export interface IEnhancedWithAutoFocusProps
+  extends EnhancedWithAutoFocusProps,
+    UnknownProperties {}
+export type EnhancedWithAutoFocusProps = {
   /**
    * @default undefined
    */
   autoFocus?: string | number | boolean;
   children?: (props: IEnhancedWithAutoFocusProps) => React.ReactNode;
-}
+};
 
 class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
   static displayName = 'EnhancedWithAutoFocus';
@@ -17,7 +22,7 @@ class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
     autoFocus: undefined,
   };
 
-  private timer: ReturnType<typeof setTimeout>;
+  private timer: ReturnType<typeof setTimeout> | undefined;
 
   notUsingNativeAutoFocus() {
     const { autoFocus } = this.props;
@@ -40,7 +45,7 @@ class EnhancedWithAutoFocus extends PureComponent<IEnhancedWithAutoFocusProps> {
   }
 
   render() {
-    const { children } = this.props;
+    const { children } = this.props as any;
     const props = {} as IEnhancedWithAutoFocusProps;
     if (this.notUsingNativeAutoFocus()) {
       props.autoFocus = undefined;

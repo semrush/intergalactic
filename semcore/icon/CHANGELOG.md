@@ -2,9 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.16.1] - 2023-06-30
+## [4.0.0] - 2023-07-17
 
-## [3.16.0] - 2023-06-27
+### BREAK
+
+- Removed all icons from `@semcore/icon/lib/*` path.
+- Removed `Stoller` icon.
+- Removed `YoutubeAlt` icon.
+- Removed `YoutubeRed` icon.
+- Removed `FeauturedImage` icon.
+- Removed `FeauturedVideo` icon.
+
+### Added
+
+- Added `Diners` pay icon.
+
+## [3.16.1] - 2023-06-30
 
 ### Added
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import resolveColor from '@semcore/ui/utils/color';
 
 export default () => {
   const MARGIN = 40;
@@ -10,7 +10,7 @@ export default () => {
 
   const xScale = scaleLinear()
     .range([MARGIN * 2, width - MARGIN * 2])
-    .domain([0, Math.max(...data.map((d) => d.bar))]);
+    .domain([0, Math.max(...data.map((d) => Number.parseFloat(d.bar)))]);
 
   const yScale = scaleBand()
     .range([height - MARGIN, MARGIN])
@@ -24,7 +24,7 @@ export default () => {
         <YAxis.Ticks />
       </YAxis>
       <HorizontalBar x='bar' y='category'>
-        {({ value, x, y, width, height }) => {
+        {({ index, x, y, width, height }) => {
           return {
             children: (
               <text
@@ -34,7 +34,7 @@ export default () => {
                 alignmentBaseline='middle'
                 fill={resolveColor('gray60')}
               >
-                $ {value.bar}
+                $ {data[index].bar}
               </text>
             ),
           };
@@ -46,5 +46,5 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   category: `Category ${i}`,
-  bar: i + (Math.random() * 10).toFixed('2'),
+  bar: i + (Math.random() * 10).toFixed(2),
 }));

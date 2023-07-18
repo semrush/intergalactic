@@ -143,5 +143,4 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 @page bar-horizontal-a11y
 @page bar-horizontal-api
 @page bar-horizontal-d3-code
-@page bar-horizontal-recharts-code
 @page d3-chart-changelog

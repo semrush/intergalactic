@@ -1,6 +1,17 @@
 # Changelog
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+## [2.0.1] - 2023-07-18
+
+### Fix
+
+- Removed ResizeObserver initiating during SSR.
+
+## [2.0.0] - 2023-07-17
+
+### Break
+
+- Strict, backward incompatible typings.
 
 ## [1.2.32] - 2023-06-30
 

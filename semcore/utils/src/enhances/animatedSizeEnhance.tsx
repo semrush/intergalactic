@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
+import { UnknownProperties, Intergalactic } from '@semcore/core';
 
-export interface IWithAnimatedSizeEnhanceProps {
+/** @deprecated */
+export interface IWithAnimatedSizeEnhanceProps
+  extends WithAnimatedSizeEnhanceProps,
+    UnknownProperties {}
+export type WithAnimatedSizeEnhanceProps = {
   animationsDisabled?: boolean;
-}
+};
 
 let uniqueId = 0;
 
@@ -12,13 +17,13 @@ function animatedSizeEnhance({
   animateProps = [],
   onChangeOf = [],
 }: {
-  animateProps: ('wdith' | 'height')[];
+  animateProps: ('width' | 'height')[];
   onChangeOf: string[];
 }) {
-  return (props) => {
+  return (props: any) => {
     const { ref, __animatedEnhanceInstanceId, duration, ...other } = props;
     const nodeRef = React.createRef<HTMLElement>();
-    const lastSizesRef = React.useRef<number[]>([]);
+    const lastSizesRef = React.useRef<(number | undefined)[]>([]);
     const prevPropsRef = React.useRef(props);
     const animatedSizeInstanceIdRef = React.useRef(uniqueId++);
 
@@ -42,10 +47,10 @@ function animatedSizeEnhance({
         return;
       }
 
-      const sizes: number[] = [];
+      const sizes: (number | undefined)[] = [];
       for (let i = 0; i < animateProps.length; i++) {
         sizes[i] = node.getBoundingClientRect()[animateProps[i]];
-        if (Math.abs(lastSizesRef.current[i] - sizes[i]) < 3) {
+        if (Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3) {
           lastSizesRef.current[i] = sizes[i];
           sizes[i] = undefined;
         }
@@ -60,9 +65,9 @@ function animatedSizeEnhance({
       const handleTransitionEnd = () => {
         clearTimeout(timeout);
         if (!node) return;
-        node.style.transition = null;
+        node.style.transition = null as any;
         for (let i = 0; i < animateProps.length; i++) {
-          node.style[animateProps[i]] = null;
+          node.style[animateProps[i]] = null as any;
         }
         node.removeEventListener('transitionend', handleTransitionEnd);
         node.removeEventListener('transitioncancel', handleTransitionEnd);

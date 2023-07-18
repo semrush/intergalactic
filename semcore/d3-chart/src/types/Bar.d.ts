@@ -1,11 +1,13 @@
-import { ReturnEl } from '@semcore/core';
-import { MapProps } from './Plot';
-import IContext from './context';
+import { UnknownProperties } from '@semcore/core';
+import { Context } from './context';
+import { IntergalacticD3Component } from './Plot';
 
-export interface IBarProps extends IContext {
-  /** Field from data for XAxis */
+/** @deprecated */
+export interface IBarProps extends BarProps, UnknownProperties {}
+export type BarProps = Context & {
+  /** Field name from `data` array item for the XAxis */
   x?: string;
-  /** Field from data for YAxis */
+  /** Field name from `data` array item for the YAxis */
   y?: string;
   /** Line color
    * @default '#50aef4'*/
@@ -30,30 +32,44 @@ export interface IBarProps extends IContext {
   onClick?: (data: { [key: string]: string | number }, event: Event) => void;
   /** Enables element transparency */
   transparent?: boolean;
-}
+};
 
-export interface IBarContext {
-  /** Value element of data */
-  value: any;
-  /** Index element of data */
+/** @deprecated */
+export interface IBarContext extends BarContext, UnknownProperties {}
+export type BarContext = {
+  /** @deprecated */
+  value: unknown;
+  /** Index in `data` array */
   index: number;
-}
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
 
-export interface IBackgroundProps extends IContext {
+/** @deprecated */
+export interface IBackgroundProps extends BackgroundProps, UnknownProperties {}
+export type BackgroundProps = Context & {
   /** Coordinate x */
   x?: number | string;
   /** Coordinate y */
   y?: number | string;
   /** Value element of data */
+  /** @deprecated */
   value?: any;
   /** Width rect */
   width?: number | string;
   /** Height rect */
   height?: number | string;
-}
+};
 
-declare const Bar: (<T>(props: MapProps<IBarProps & T, IBarContext>) => ReturnEl) & {
-  Background: <T>(props: MapProps<IBackgroundProps & T>) => ReturnEl;
+type BackgroundContext = Context & {
+  /** Index in `data` array */
+  index: number;
+};
+
+declare const Bar: IntergalacticD3Component<'rect', BarProps, BarContext> & {
+  Background: IntergalacticD3Component<'rect', BackgroundProps, BackgroundContext>;
 };
 
 export default Bar;

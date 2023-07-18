@@ -1,52 +1,62 @@
 import React from 'react';
-import { CProps, PropGetterFn, ReturnEl } from '@semcore/core';
-import { IKeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import { IBoxProps } from '@semcore/flex-box';
+import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
+import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import { BoxProps } from '@semcore/flex-box';
 import { INeighborItemProps } from '@semcore/neighbor-location';
 
 export type ButtonSize = 'l' | 'm';
 
-export interface IButtonProps extends IBoxProps, INeighborItemProps, IKeyboardFocusProps {
-  /**
-   *  Button type
-   * @default secondary
-   */
-  use?: 'primary' | 'secondary' | 'tertiary';
-  /** Button theme */
-  theme?: 'info' | 'success' | 'warning' | 'danger' | 'muted' | 'invert';
-  /** Button activity state */
-  active?: boolean;
-  /**
-   *  Button size
-   * @default m
-   */
-  size?: ButtonSize;
-  /** Disabled button state */
-  disabled?: boolean;
-  /** Loading button state */
-  loading?: boolean;
-  /** Tag for the left Addon */
-  addonLeft?: React.ElementType;
-  /** Tag for the right Addon */
-  addonRight?: React.ElementType;
-}
+/** @deprecated */
+export interface IButtonProps extends ButtonProps, UnknownProperties {}
+export type ButtonProps = BoxProps &
+  INeighborItemProps &
+  KeyboardFocusProps & {
+    /**
+     *  Button type
+     * @default secondary
+     */
+    use?: 'primary' | 'secondary' | 'tertiary';
+    /** Button theme */
+    theme?: 'info' | 'success' | 'warning' | 'danger' | 'muted' | 'invert';
+    /** Button activity state */
+    active?: boolean;
+    /**
+     *  Button size
+     * @default m
+     */
+    size?: ButtonSize;
+    /** Disabled button state */
+    disabled?: boolean;
+    /** Loading button state */
+    loading?: boolean;
+    /** Tag for the left Addon */
+    addonLeft?: React.ElementType;
+    /** Tag for the right Addon */
+    addonRight?: React.ElementType;
+  };
 
-export interface IButtonTextProps extends IBoxProps {
+/** @deprecated */
+export interface IButtonTextProps extends ButtonTextProps, UnknownProperties {}
+export type ButtonTextProps = BoxProps & {
   size?: ButtonSize;
-}
+};
 
-export interface IButtonAddonProps extends IBoxProps {
+/** @deprecated */
+export interface IButtonAddonProps extends ButtonAddonProps, UnknownProperties {}
+export type ButtonAddonProps = BoxProps & {
   size?: ButtonSize;
-}
+};
 
-export interface IButtonContext {
+/** @deprecated */
+export interface IButtonContext extends ButtonContext, UnknownProperties {}
+export type ButtonContext = {
   getTextProps: PropGetterFn;
   getAddonProps: PropGetterFn;
-}
+};
 
-declare const Button: (<T>(props: CProps<IButtonProps & T, IButtonContext>) => ReturnEl) & {
-  Text: <T>(props: IButtonTextProps & T) => ReturnEl;
-  Addon: <T>(props: IButtonAddonProps & T) => ReturnEl;
+declare const Button: Intergalactic.Component<'button', ButtonProps, ButtonContext> & {
+  Text: Intergalactic.Component<'span', ButtonTextProps>;
+  Addon: Intergalactic.Component<'span', ButtonAddonProps>;
 };
 
 export default Button;
