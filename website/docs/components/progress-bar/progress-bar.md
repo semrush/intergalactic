@@ -6,50 +6,46 @@ tabName: Design
 
 @import playground
 
-> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
-
 @## Description
 
-**ProgressBar** is a component for displaying the loading status of a long process, usually more than 5 seconds. _For example, collecting keywords or updating mentions._
+**ProgressBar** is a component used to display the loading status of a long process, typically taking more than 5 seconds, such as collecting keywords or updating mentions.
 
-As a rule, the progress bar does not block working with the product. The exception is the first launch of the product when the data is partially displayed or not displayed at all.
+> This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
-> This component is one of the components that displays the loading and response to user actions in the interface. For general recommendations for such components, see [Loading patterns](/patterns/loading-states/).
+In general, the progress bar does not obstruct the functionality of the product. However, there is an exception during the first launch of the product when the data may be partially displayed or not displayed at all.
 
 @## Component composition
 
-ProgressBar consists from (surprise!) `ProgressBar` and `ProgressBar.Value`.
+ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value`.
 
 ![](static/progressbar-scheme.png)
 
-@## Sizes
+@## Sizes and styles
 
 Our ProgressBar has three sizes.
 
-| Size (height in px) | Appearance                               | Styles                                                   | Where to use                                                          |
-| ---- | ---------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------------------- |
-| S    | ![](static/size-s.png) | `height: 4px`, `border-radius: var(--rounded-medium)`  | Use in widgets inside reports/products.                               |
-| M    | ![](static/size-m.png) | `height: 8px`, `border-radius: var(--rounded-medium)`  | Use inside the product.                                               |
-| L    | ![](static/size-l.png) | `height: 12px`, `border-radius: var(--rounded-medium)` | Use in modal windows, on the start screen when launching the product. |
+@table-caption ProgressBar sizes and styles
 
-@## Themes and styles
+| Size (height in px) | Appearance example   | Border-radius token     | Where to use        |
+| ------------------- | -------------------- | ----------------------- | ------------------- |
+| S (4px)    | ![](static/size-s.png) | `--rounded-medium`  | Use in widgets inside reports/products.                               |
+| M (8px)    | ![](static/size-m.png) | `--rounded-medium`  | Use inside the product.                                               |
+| L (12px)    | ![](static/size-l.png) | `--rounded-medium` | Use in modal windows or the start screen. |
 
-ProgressBar has two themes: `dark` and `invert` – for using on light and dark/colored backgrounds, respectively.
+@## Themes
 
-Both themes use `--progress-bar-value` token for color with the gradient pattern to display progress value.
+ProgressBar offers two themes: `dark` and `invert`, which are suitable for light and dark/colored backgrounds respectively. Both themes use the `--progress-bar-value` token for color with a gradient pattern to indicate progress.
 
-| Theme  | Appearance                                            | Styles                                       |
-| ------ | ----------------------------------------------------- | -------------------------------------------- |
-| Invert | ![](static/size-l.png)   | `background: var(--progress-bar-bg)`        |
-| Dark   | ![](static/dark-theme.png) | `background: var(--progress-bar-bg-invert)` |
+@table-caption ProgressBar themes
+
+| Theme  | Appearance example       | Background token            |
+| ------ | ------------------------ | --------------------------- |
+| Invert | ![](static/size-l.png)   | `--progress-bar-bg`         |
+| Dark   | ![](static/dark-theme.png) | `--progress-bar-bg-invert`|
 
 @## ProgressBar with counter
 
-You can display a counter next to the progress bar to show how many of the files were loaded. If there is no data on the exact number of files, then display nothing.
-
-Depending on the usage context, place a counter above or near the progress bar.
-
-**The margins between the counter and the progress bar shall be a multiple of 4**.
+A counter can be added next to the ProgressBar to indicate the number of loaded data. If the exact number of the data is unknown, the counter should not be displayed. **Place the counter above or near the ProgressBar, ensuring that the margins between the counter and the ProgressBar are multiples of 4.**
 
 ![](static/progressbar-counter.png)
 
@@ -59,56 +55,54 @@ Depending on the usage context, place a counter above or near the progress bar.
 
 ### States
 
-ProgressBar has three states:
+The ProgressBar has three states:
 
-- 0% – the progress bar is colored in gray and has animation.
+@table-caption ProgressBar states
 
-![](static/loading-gray.png)
+| State | Appearance example  |
+| ----- | ------------------- |
+| 0% – The progress bar is colored in gray and animated. | ![](static/loading-gray.png) |
+| 1-99% – The progress bar is partially filled and the pattern is animated. | ![](static/size-l.png) |
+| 100% – The progress bar is static and green. | ![](static/loaded.png) |
 
-- 1-99% – the progress bar is partially filled and the pattern is animated.
+The progress bar should not remain in the 100% state. Once the process is completed, either a success message should be displayed, or the user should be provided with further actions.
 
-![](static/size-l.png)
-
-- 100% – the progress bar is static, green.
-
-![](static/loaded.png)
-
-The progress bar shall not remain in the 100% state – once the process is completed, either a message about the success of the process shall be displayed, or offer the user further actions.
-
-> If it is not possible to perform the action immediately, the success status shall be displayed and the user shall be told what to do next.
+> If it is not possible to perform the action immediately, display the success status and instruct the user on what to do next.
 
 ### Animation
 
-Progress value is always animated with `ease-in`.
+The progress value is always animated with `ease-in`.
 
 @## Usage in UX/UI
 
 ### When to use ProgressBar
 
-- If you need to visualize a long process and it doesn't block working with data.
-- When you need to visualize a short process, but it is important to show how much is left until the end of the process. _For example, uploading multiple files._
-- If the process is long and blocks working with data, but it is necessary to let the user know when this process will end.
+- To visualize a long process that does not block working with data.
+- When you need to visualize a short process, but it is essential to show how much is left until the end of the process, such as uploading multiple files.
+- If the process is long and blocks working with data, but the user needs to know when the process will end.
 
-> Sometimes you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take. Or make a fake progress bar which will create the illusion of the user approaching the end of the process.
+> In certain cases, you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take or to create the illusion of the user approaching the end of the process.
 
 ### Pinned ProgressBar
 
-When scrolling, the progress bar can be pinned. In this case, pin it above all components, including filters, table headers, etc.
+When scrolling, the progress bar can be pinned, remaining visible above all components, including filters and table headers.
 
 ![](static/progressbar-sticky.png)
 
-### Don't use ProgressBar
+### Avoid Using ProgressBar
 
-- If you need to show some short action (no more than 5 seconds). It is better to use [Spin](/components/spin/) in this case.
-- To display steps (for example, when filling out a form).
+- For short actions that take less than 5 seconds, consider using [Spin](/components/spin/) instead.
+- To display steps, such as when filling out a form.
 
-### Operation algorithm and time
+### Specific cases
 
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
 - If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
 - In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
-
-> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+  
+- If the download process is expected to be long, visualize the progress immediately.
+- If the exact or approximate loading time is unknown, wait for 3 seconds and display the fake progress.
+- For very fast loading, set the minimum time for displaying the progress bar to 3 seconds to avoid interface "blinking."
 
 @page progress-bar-a11y
 @page progress-bar-api

@@ -2,8 +2,6 @@
 title: Example
 ---
 
-@## Base
-
-It's an example of base use.
+@## Basic use
 
 @example base

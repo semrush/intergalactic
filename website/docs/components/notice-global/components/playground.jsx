@@ -5,7 +5,7 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import NoticeGlobal from '@semcore/ui/notice-global';
 import { Box } from '@semcore/ui/flex-box';
 
-const THEME = ['danger', 'warning', 'success', 'info', 'neutral'];
+const THEME = ['danger', 'info', 'neutral', 'success', 'warning'];
 
 const LayoutPreview = (props) => (
   <Box wMin={200} wMax={500}>

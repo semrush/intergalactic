@@ -2,10 +2,10 @@
 title: Example
 ---
 
-### Simple usage example
+### Basic usage
 
 @example base
 
-### Extended usage example
+### Extended usage
 
 @example complex

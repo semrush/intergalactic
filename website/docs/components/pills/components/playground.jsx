@@ -31,12 +31,12 @@ export default PlaygroundGeneration(
     const before = bool({
       key: 'addon left',
       defaultValue: false,
-      label: 'Addon Left',
+      label: 'AddonLeft',
     });
     const after = bool({
       key: 'addon right',
       defaultValue: false,
-      label: 'Addon Right',
+      label: 'AddonRight',
     });
 
     const disabled = bool({
