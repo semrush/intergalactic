@@ -22,17 +22,21 @@ Multi-selection, which is commonly used in filters, is the exception to the imag
 
 Checkbox has two sizes: M and L. The text label is always positioned to the right of the checkbox.
 
+@table-caption Checkbox sizes
+
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
-| M (16px * 16px) | ![](static/size-m.png) |
-| L (20px * 20px) | ![](static/size-l.png) |
+| M (16px * 16px) | ![](static/size-m.png)   |
+| L (20px * 20px) | ![](static/size-l.png)   |
 
 ### Margins
 
 The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
 
-| Size (px)        | Margins      |
-| ---------------- | ----------------------- |
+@table-caption Checkbox margins
+
+| Size (px)        | Margins                                         |
+| ---------------- | ----------------------------------------------- |
 | M (16px * 16px) | ![](static/margins-m.png) ![](static/vert-m.png) |
 | L (20px * 20px) | ![](static/margins-l.png) ![](static/vert-l.png) |
 
@@ -40,8 +44,10 @@ The spacing between options may differ based on the context in which they are us
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-| Checkbox size (px) | Paragraph size (px)                        | Appearance example                |
-| ------------------ | -------------------------------------- | -------------------------------------- |
+@table-caption Checkbox with a paragraph of text
+
+| Checkbox size (px) | Paragraph size (px)    | Appearance example                           |
+| ------------------ | ---------------------- | -------------------------------------------- |
 | M (16px * 16px)   | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
 | L (20px * 20px)   | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
@@ -73,6 +79,8 @@ Text label may contain a [Link](/components/link).
 - When the checkbox is disabled, the text and related words should also be "disabled." It's recommended to include a tooltip explaining why the checkbox is disabled.
 
 ### States
+
+@table-caption Checkbox states
 
 | State                 | Appearance example                            |
 | --------------------- | --------------------------------------------- |
@@ -128,8 +136,8 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 Here are some other checkbox recommendations:
 
 - Only use checkboxes for changing settings and not as action buttons.
-- The [switch](/components/switch/) is better for binary settings since it performs an action while checkboxes have a status. [Radiobuttons](/components/radio/) are also good for binary settings.
-- Use checkboxes for suspended actions and radiobuttons for immediate actions. [Switches](/components/switch/) and [radiobuttons](/components/radio/) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
+- The [switch](/components/switch/) is better for binary settings since it performs an action while checkboxes have a status. [Radio buttons](/components/radio/) are also good for binary settings.
+- Use checkboxes for suspended actions and radio buttons for immediate actions. [Switches](/components/switch/) and [radio buttons](/components/radio/) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
 - For checkbox groups with more than six options, include "Select all" and "Deselect all" controls to save time.
 - When a checkbox is used in a table to select the entire row, make sure the target area covers the entire table cell where the checkbox is located.
 
