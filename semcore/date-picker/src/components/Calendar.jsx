@@ -17,12 +17,10 @@ function getDayJSLocaleParams(locale) {
   if (locale.includes('en') || locale.includes('ja')) {
     return {
       weekStart: 0,
-      ...dayjs.Ls[locale],
     };
   }
   return {
     weekStart: 1,
-    ...dayjs.Ls[locale],
   };
 }
 
@@ -35,9 +33,10 @@ class CalendarWeekDaysRoot extends Component {
   };
 
   getDaysByWeek() {
-    const { locale } = this.asProps;
-
-    let date = dayjs().locale(locale, getDayJSLocaleParams(locale)).startOf('week');
+    const { locale, localeParams } = this.asProps;
+    let date = dayjs()
+      .locale(locale, localeParams ?? getDayJSLocaleParams(locale))
+      .startOf('week');
     return range(7, () => {
       const weekday = new Intl.DateTimeFormat(locale, { weekday: 'short' }).format(date.valueOf());
       date = date.add(1, 'day');
@@ -162,14 +161,14 @@ class CalendarDaysRoot extends CalendarAbstract {
   };
 
   getDaysByMonth() {
-    const { displayedPeriod, renderOutdated, locale } = this.asProps;
+    const { displayedPeriod, renderOutdated, locale, localeParams } = this.asProps;
     let date = dayjs(displayedPeriod).startOf('month');
     let prevDate = date.subtract(1, 'month');
     let nextDate = date.add(1, 'month');
 
     /* 0 - 6 */
     const dateStartOfWeek = date
-      .locale(locale, getDayJSLocaleParams(locale))
+      .locale(locale, localeParams ?? getDayJSLocaleParams(locale))
       .startOf('week')
       .get('d')
       ? (date.get('d') || 7) - 1
@@ -218,11 +217,11 @@ class CalendarDaysRoot extends CalendarAbstract {
   render() {
     const SCalendar = Root;
     const SGridDays = 'div';
-    const { Children, styles, locale } = this.asProps;
+    const { Children, styles, locale, localeParams } = this.asProps;
 
     return sstyled(styles)(
       <SCalendar render={Box} aria-hidden='true'>
-        <CalendarWeekDays locale={locale} />
+        <CalendarWeekDays locale={locale} localeParams={localeParams} />
         <SGridDays onMouseLeave={this.handleMouseLeave}>
           <Children />
         </SGridDays>

@@ -19,6 +19,8 @@ export type CalendarProps = BoxProps & {
    * @default en
    * */
   locale?: NavigatorLanguage['language'];
+  /** Locale setting for dayjs */
+  localeParams?: ILocale;
   /**
    * Array of dates blocked for selection
    * Accepts the date or the range of dates for specifying infinity ([Date | false, Date | false]), crontab(6,7)
@@ -138,6 +140,8 @@ export type DatePickerProps = DropdownProps &
      * Default value selected date, accepts everything which is accepted by `new Date()`
      * */
     defaultHighlighted?: DateConstructorParams[];
+    /** Locale setting for dayjs */
+    localeParams?: ILocale;
   };
 
 /** @deprecated */
@@ -200,6 +204,8 @@ export type DateRangePickerProps = DropdownProps &
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
     periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
+    /** Locale setting for dayjs */
+    localeParams?: ILocale;
   };
 
 /** @deprecated */

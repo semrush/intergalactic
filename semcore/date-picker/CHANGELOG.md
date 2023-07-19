@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2023-07-19
+
+### Added
+
+- Added `localeParams` property to manage locale properties.
+
+### Changed
+
+- Update version `dayjs`.
+
 ## [4.0.0] - 2023-07-17
 
 ### BREAK

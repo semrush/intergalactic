@@ -280,6 +280,7 @@ class RangePickerAbstract extends Component {
   getCalendarProps(_props, index) {
     const {
       locale,
+      localeParams,
       displayedPeriod,
       disabled,
       value,
@@ -291,6 +292,7 @@ class RangePickerAbstract extends Component {
 
     return {
       locale,
+      localeParams,
       displayedPeriod: dayjs(displayedPeriod)
         .add(index, this.navigateStep)
         .startOf(this.navigateStep)
