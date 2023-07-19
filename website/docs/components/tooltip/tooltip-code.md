@@ -33,6 +33,6 @@ to improve UX.
 
 @## Singleton
 
-When tooltip is rendered on the age of `relative`ly positioned block, popup mechanism may try to push it inside of the block as much as possible. If it is not a desired behavior, set `ignorePortalsStacking` prop.
+When a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may attempt to push it inside the block as much as possible. If this behavior is not desired, you can set the `ignorePortalsStacking` prop.
 
 @example ignore-portals-stacking
