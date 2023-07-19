@@ -182,10 +182,19 @@ class PickerAbstract extends Component {
   }
 
   getCalendarProps() {
-    const { locale, displayedPeriod, disabled, value, highlighted, onVisibleChange, onChange } =
-      this.asProps;
+    const {
+      locale,
+      localeParams,
+      displayedPeriod,
+      disabled,
+      value,
+      highlighted,
+      onVisibleChange,
+      onChange,
+    } = this.asProps;
     return {
       locale,
+      localeParams,
       displayedPeriod,
       disabled,
       onChange,

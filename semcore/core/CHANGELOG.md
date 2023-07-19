@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.0.1] - 2023-07-19
+
+### Fixed
+
+- Do not set locale to undefined if one is not given.
+
 ## [2.0.0] - 2023-06-20
 
 ### Break
