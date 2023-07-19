@@ -41,8 +41,8 @@ title: Components
 @page product-head
 @page progress-bar
 @page radio
-@page select
 @page scroll-area
+@page select
 @page side-panel
 @page skeleton
 @page slider

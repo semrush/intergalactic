@@ -10,7 +10,7 @@ The component is a wrap over [@semcore/ui/popper](/utils/popper/) with the follo
 - Stylization and themes for a dropdown window
 - Displaying the arrow of a dropdown window
 
-@## Basic use
+@## Basic usage
 
 As mentioned above, tooltip is just a stylized wrap over the [@semcore/ui/popper](/utils/popper/). It works exactly the same way.
 

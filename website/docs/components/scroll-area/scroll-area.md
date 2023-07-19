@@ -6,19 +6,21 @@ tabName: Design
 
 @## Description
 
-**ScrollArea** is a component for customizing native scroll functionality. Scroll helps navigate through content inside a window/block vertically and/or horizontally.
+**ScrollArea** is a component that allows you to customize the native scroll functionality. It enables smooth navigation through content within a window or block, both vertically and horizontally.
 
-@## Appearance
+@## Component composition
 
-### Component composition
+![](static/scroll-composition.png)
+
+The ScrollArea consists of the following elements:
 
 - Container with content (`ScrollArea.Container`).
 - Scroll indicator (`ScrollArea.Bar`).
 - Slider (`ScrollArea.Bar.Slider`).
 
-![](static/scroll-scheme.png)
+@## Styles
 
-### Styles
+@table-caption ScrollArea styles
 
 | Element                 | Styles                                      |
 | ----------------------- | ------------------------------------------- |
@@ -27,12 +29,12 @@ tabName: Design
 
 @## Interaction
 
-The scroll inside the block can be controlled by:
+Scrolling inside the block can be controlled by:
 
-- mouse wheel;
-- arrow keys while focusing on an element;
-- touchpad gestures;
-- elements of a scrollbar like sliders and buttons.
+- Mouse wheel.
+- Arrow keys while focusing on an element.
+- Touchpad gestures.
+- Elements of a scrollbar such as sliders and buttons.
 
 <!-- @## Infinite scrolling
 

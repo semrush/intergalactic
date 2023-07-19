@@ -3,9 +3,9 @@ title: Example
 fileSource: scroll-area
 ---
 
-@## Basic use
+@## Basic usage
 
-For basic use it is enough just to wrap your content into `ScrollArea`. It will create a couple of wraps (`div`) and make the necessary calculations. The height or width should be set at the scroll itself or somewhere higher, `max-height` and `max-width` are also supported.
+To use the ScrollArea component, wrap your content with `ScrollArea`. It will create a couple of `div` wraps and handle the necessary calculations. You can set the `height` or `width` directly on the `ScrollArea` or somewhere higher in the hierarchy. `max-height` and `max-width` are also supported.
 
 @example basic
 
@@ -23,6 +23,6 @@ For basic use it is enough just to wrap your content into `ScrollArea`. It will 
 
 @## Dynamic virtual list
 
-[React-virtualized](https://github.com/bvaughn/react-virtualized) is responsible for work of the virtual list.
+The dynamic virtual list is powered by [React-virtualized](https://github.com/bvaughn/react-virtualized).
 
 @example virtual-list

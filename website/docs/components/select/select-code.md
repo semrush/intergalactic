@@ -3,69 +3,69 @@ title: Example
 fileSource: select
 ---
 
-> ⚠️ If you need to customize work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/)
+> If you need to customize the dropdown menu's behavior, please refer to the [@semcore/ui/popper](/utils/popper/) documentation.
 
-The component is a wrap over [@semcore/ui/dropdown-menu](/components/dropdown-menu) with the functionality of list item selection.
+The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu) with the additional functionality of item selection.
 
-@## Basic use
+@## Basic usage
 
-In the simplest case, it is enough to pass an array of options to the select to implement it. `options` is an array of objects with the following fields:
+In the simplest case, you can implement the select by passing an array of options. The `options` array consists of objects with the following fields:
 
-- `value` is a value of the selected option
-- `label` is a value displayed in the trigger when selecting an option
-- `children` means `children`-options displayed in the dropdown list
+- `value`: the value of the selected option.
+- `label`: the value displayed in the trigger when selecting an option.
+- `children`: represents nested options displayed in the dropdown list.
 
 @example basic
 
 @## Controlled and uncontrolled modes
 
-The component may operate in either controlled or uncontrolled mode.
+The component can operate in either controlled or uncontrolled mode.
 
 @example controll-uncontroll
 
-@## Component customization
+@## Trigger customization
 
-When it is necessary to replace the trigger, you can pass the desired component to the `tag` of the select. Property will get to `Select.Trigger` and replace its render.
+When you need to customize the trigger, you can pass the desired component to the `tag` property of the select. The property will be passed to `Select.Trigger` and replace its render.
 
 @example simple-trigger
 
-In cases when you need deeper customization, "unfold" the component into constituents. **The example below shows how to make Select with the selection of the list of countries.**
+In cases when you require deeper customization, you can "unfold" the component into its constituents. The example below shows how to create a Select component for selecting a list of countries.
 
 @example custom-trigger
 
-@## Customizing the dropdown-menu
+@## DropdownMenu customization
 
-As with [@semcore/ui/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
+Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`
 
-These components are the wraps over the corresponding components of the [DropdownMenu](/components/dropdown-menu).
+These components serve as wrappers over the corresponding components of the [DropdownMenu](/components/dropdown-menu).
 
-- `Select.Popper` is a dropdown window layout
-- `Select.List` is a component of the option list with the [ScrollArea](/components/scroll-area/) inside
-- `Select.Menu` is a wrap over `Select.Popper` и `Select.List`, all props will get to `Select.List`
+- `Select.Popper` is a layout for the dropdown window.
+- `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/) inside.
+- `Select.Menu` is a wrapper over `Select.Popper` and `Select.List`, and all props are passed to `Select.List`.
 
-The example below shows how to insert [Notice](/components/notice/) in the Select dropdown window.
+The example below shows how to insert a [Notice](/components/notice/) in the Select dropdown window.
 
 @example notice
 
 @## Options
 
-The component has several variants of options layout:
+The component offers several variants of options layout:
 
-- `Select.Option` is an element of the list (can be selected from the keyboard).
-- `Select.OptionCheckbox` is an element of the list for multiple selection (can be selected from the keyboard).
-- `Select.OptionTitle` is a title of the list (cannot be selected from the keyboard).
-- `Select.OptionHint` is a subtitle of the list or a message with additional information (cannot be selected from the keyboard).
+- `Select.Option`: an element of the list (can be selected from the keyboard).
+- `Select.OptionCheckbox`: an element of the list for multiple selections (can be selected from the keyboard).
+- `Select.OptionTitle`: a title of the list (cannot be selected from the keyboard).
+- `Select.OptionHint`: a subtitle of the list or a message with additional information (cannot be selected from the keyboard).
 
 @example options
 
 @## Options filtration
 
-`InputSearch` is added to Select for filtration of elements of the list. This is a stylized wrap over the [Input](/components/input/) component.
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component.
 
-> The `InputSearch` component is difficult to customize. All props will get to `Input.Value`. If this is not enough, you can collect yours 😇
+> The `InputSearch` component is difficult to customize. All props are passed to `Input.Value`. If this is not enough, you can create your own custom solution.
 
 The example below shows one of the ways to implement filtering.
 
@@ -73,13 +73,13 @@ The example below shows one of the ways to implement filtering.
 
 @## Multiselect
 
-The component has the ability to select several options. This functionality can be enabled by using `multiselect` property.
+The component has the ability to select several options. This functionality can be enabled by using the `multiselect` property.
 
 The layout of options inside the component will be changed to `Select.OptionCheckbox`, and the `value` will become an array.
 
 @example multiselect
 
-@## Sorting Multiselect options
+@## Sorting multiselect options
 
 The example below shows one of the ways to sort the selected options.
 
@@ -89,6 +89,6 @@ The example below shows one of the ways to sort the selected options.
 
 As with many of our components, you can access the logic of the component by passing a render-function to it.
 
-The example below shows how to implement `select all` and `deselect all` buttons using this function.
+The example below shows how to implement "Select all" and "Deselect all" buttons using this function.
 
 @example render-function

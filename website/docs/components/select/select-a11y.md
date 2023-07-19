@@ -47,7 +47,7 @@ The list below describes roles and attributes that component already has.
 
 - [Listbox Example with Grouped Options](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-grouped/) article demonstrates a single-select listbox widget with grouped options.
 - Find more information in [ARIA Authoring Practices Guide from W3C](https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html).
-- For more information about the radio or checkbox list see [Radiobutton](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
+- For more information about the radio or checkbox list see [Radio button](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
 - For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
 
 @## Considerations for developers
