@@ -3,7 +3,7 @@ title: Example
 fileSource: ellipsis
 ---
 
-@## Basic use
+@## Basic usage
 
 @example basic
 

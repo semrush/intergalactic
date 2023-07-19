@@ -20,7 +20,7 @@ See detailed information for the controlling dropdown with the keyboard in the [
 
 ### Roles and attributes
 
-- For more information about the radio or checkbox list, see [Radiobutton](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
+- For more information about the radio or checkbox list, see [Radio button](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
 - For information about the dropdown behavior, see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
 - Fo more information about the input behavior, refer to [Input](/components/input/input-a11y/).
 

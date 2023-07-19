@@ -12,7 +12,7 @@ export default () => {
 
   return (
     <React.Fragment>
-      <Text size={200} tag='div' mb={2}>
+      <Text size={300} tag='div' mb={2}>
         Placement:
       </Text>
       <Select
@@ -21,7 +21,7 @@ export default () => {
         onChange={setPlacement}
         size='l'
       />
-      <Button onClick={() => setVisible(true)} use='primary' theme='success' size='l' ml={5}>
+      <Button onClick={() => setVisible(true)} use='primary' theme='success' size='l' ml={3}>
         Show SidePanel
       </Button>
       <SidePanel
