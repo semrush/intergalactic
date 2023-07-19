@@ -27,6 +27,15 @@ To be considered a notice, it must meet four specific criteria. If it fails to m
 - Notifications about outdated browser versions.
 - Messages related to the entire site's operations, such as downgrades, technical work, and other similar events.
 
+@## Component composition
+
+![](static/notice-global-composition.png)
+
+NoticeGlobal component consists of:
+
+1. `NoticeGlobal.Content`
+2. `NoticeGlobal.CloseIcon` (optional);
+
 @## Styles
 
 ### Paddings

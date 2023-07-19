@@ -12,6 +12,17 @@ tabName: Design
 
 The radio button indicates the user's selection status and is primarily used for group settings with a list of options, where only one can be selected.
 
+@## Component composition
+
+![](static/progressbar-composition.png)
+
+Radio component consists of:
+
+1. `RadioGroup`
+2. `Radio`
+3. `Radio.Value`
+4. `Radio.Text`
+
 @## Sizes and margins
 
 The radio button has two sizes: M and L. The text label is always positioned to the right of the radio button.

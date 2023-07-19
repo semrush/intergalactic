@@ -30,14 +30,18 @@ It must fulfill four criteria to be considered a notice. Let's compare it to [No
 
 @## Component composition
 
+![](static/notice-composition.png)
+
+Notice component consists of:
+
 1. `Notice.Content`
 2. `Notice.Label`. It can be an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
 3. `Notice.Actions` (optional).
 4. `Notice.CloseIcon` (optional);
 
-![](static/notice-composition.png)
-
 @## Notice content examples
+
+@table-caption Notice content examples
 
 |           | Appearance example |
 | --------- | -------------------|

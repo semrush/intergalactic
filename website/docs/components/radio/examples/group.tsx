@@ -10,7 +10,7 @@ const Demo = () => {
       <RadioGroup name='radio' value={value} onChange={(v) => setValue(v)}>
         <div role='radiogroup' aria-labelledby='radioGroup'>
           <Text tag='p' id='radioGroup' size={200}>
-            Select value:
+            Select value
           </Text>
           <Flex mt={2}>
             <Radio mr={3}>

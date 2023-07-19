@@ -34,6 +34,8 @@ Don't show modals before the user has interacted with the interface. **Modal win
 
 @## Component composition
 
+![](static/modal-composition.png)
+
 The modal window consists of:
 
 - `Modal.Window`.
@@ -41,8 +43,6 @@ The modal window consists of:
 - Content.
 - `Modal.Close`.
 - `Modal.Overlay`.
-
-![](static/modal-scheme.png)
 
 @## Modal window types
 
