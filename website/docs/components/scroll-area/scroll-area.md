@@ -38,7 +38,7 @@ Scrolling inside the block can be controlled by:
 
 <!-- @## Infinite scrolling
 
-With infinite scrolling content is loaded in portions. This type of scrolling is especially good if there is a lot of content on the page, and you do not need to divide it into separate pages.
+With infinite scrolling content is loaded in portions. This type of scrolling is especially good if there is a lot of content on the page, and you don’t need to divide it into separate pages.
 
 > _Infinite scrolling helps to build a narration and sends the user on a journey._
 >

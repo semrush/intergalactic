@@ -11,16 +11,16 @@ export default () => (
     <Card.Header>
       <Flex alignItems='center' tag='h4'>
         <Card.Title tag={Ellipsis} hint={tooltipContent}>
-          Very long card title which should show ellipsis when there is not enough space
+          Very long card title which should show ellipsis when there isn’t enough space
         </Card.Title>
       </Flex>
       <Card.Description tag={Ellipsis}>
-        Very long description title which should show ellipsis when there is not enough space
+        Very long description title which should show ellipsis when there isn’t enough space
       </Card.Description>
     </Card.Header>
     <Card.Body tag={Ellipsis}>
       <Text size={100}>
-        Very long card body which should show ellipsis when there is not enough space
+        Very long card body which should show ellipsis when there isn’t enough space
       </Text>
     </Card.Body>
   </Card>

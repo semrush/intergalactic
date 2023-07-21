@@ -66,7 +66,7 @@ To make sure your users get a meaningful data summary, provide a `locale` proper
 3. Make sure that all the information in the tooltips is also provided in the `data` property of `<Plot />`.
 4. If you are redefining children rendering of the `<XAxis.Ticks>` or `<YAxis.Ticks>` component, return both the `children` and the `value` properties. More on this below.
 5. Only use chart interactivity for visual, unimportant effects.
-6. If your chart is highly customized, the summary generator may struggle with the summary. To fix that, either tweak the data summarizer configuratoin or add your own summary manually. More on this below.
+6. If your chart is highly customized, the summary generator may struggle with the summary. To fix that, either tweak the data summarizer configuration or add your own summary manually. More on this below.
 
 ### Edge cases
 
@@ -94,7 +94,7 @@ If the chart summary looks similar to what you expect to tell users but not good
 
 #### Add summary manually
 
-If the automatically generated summary is not suitable for the data provided to the `<Plot />` component, simply disable the summarizer and provide your own text.
+If the automatically generated summary isn’t suitable for the data provided to the `<Plot />` component, simply disable the summarizer and provide your own text.
 
 ```jsx
 <Plot

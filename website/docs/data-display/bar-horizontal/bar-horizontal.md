@@ -18,7 +18,7 @@ tabName: Design
 
 Important points to keep in mind when presenting data as a bar chart:
 
-- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can denote the axes.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
 @## Usage
@@ -71,7 +71,7 @@ If you need to demonstrate the ratio of the category value to 100%, don't use gr
 
 ### With grid and axes
 
-If you do not need to present the ratio of values to 100%, but just to display their distribution, use the additional axes and the X-axis.
+If you don’t need to present the ratio of values to 100%, but just to display their distribution, use the additional axes and the X-axis.
 
 ![](static/grid.png)
 
@@ -120,7 +120,7 @@ If all the values on the chart are zero, then in the tooltip we shall display nu
 
 ### Some dots have no data
 
-Do not display bars without data.
+Don’t display bars without data.
 
 When you hover over a dot without data, show tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
 

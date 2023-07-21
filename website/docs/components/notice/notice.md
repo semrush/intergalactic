@@ -114,15 +114,15 @@ The notice should appear instantaneously without any delays or visual effects. I
 
 Since the notice serves as a temporary notification, it should have a predefined "lifespan." The lifespan can be determined by the following rules:
 
-- Number of days (e.g., for the duration of an experiment)
+- Number of days (for example, for the duration of an experiment)
 - Number of user sessions
-- Specific events (e.g., completion of tasks, bug fixes, transitioning features out of beta)
-- User actions as triggers (e.g., installing something, viewing specific content, resolving an error)
+- Specific events (for example, completion of tasks, bug fixes, transitioning features out of beta)
+- User actions as triggers (for example, installing something, viewing specific content, resolving an error)
 
 ### Hiding
 
 - Clicking on the `Close` icon.
-- Clicking on a link that triggers a re-opening condition (e.g., "Ask me later," "Never show again," etc.).
+- Clicking on a link that triggers a re-opening condition (for example, "Ask me later," "Never show again," etc.).
 - If there is no `Close` icon or hide link, the user cannot manually hide the notice. It will be hidden automatically based on conditions set by the service (such as a specific duration, a certain number of sessions, or triggering a specific action).
 
 ### Animation
@@ -166,7 +166,7 @@ A notice should not be mistaken for other components:
 
 - **[NoticeBubble](/components/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
 - **[Tooltip](/components/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
-- **[Notes, hints](/style/typography/#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and do not explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
+- **[Notes, hints](/style/typography/#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
 
 ### Examples of incorrect usage
 

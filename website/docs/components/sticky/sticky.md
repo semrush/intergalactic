@@ -19,13 +19,13 @@ The block can either be centered in relation to the height and width of the pare
 
 @## Pinning of header and columns in table
 
-When scrolling a table, pin its header. Do not add have any shadows to pinned table header.
+When scrolling a table, pin its header. Don’t add have any shadows to pinned table header.
 
 If there is a status bar or a table row with quick actions, then pin them under the table header.
 
 ![](static/sticky-row.png)
 
-In some cases, it is necessary to pin the first one or two columns in the table. Do not forget to add shadows to then when scrolling, so that the user can see that there is more content.
+In some cases, it is necessary to pin the first one or two columns in the table. Don’t forget to add shadows to then when scrolling, so that the user can see that there is more content.
 
 Shadow has the following styles:
 

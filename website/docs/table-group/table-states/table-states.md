@@ -53,14 +53,14 @@ When scrolling the table, fix the progressbar to the table header. The message r
 
 This state is for cases when user filters/sorts/searchs data. In this case, use [Spin](/components/spin/).
 
-If data loading is fast, then this state is not necessary.
+If data loading is fast, then this state isn’t necessary.
 
 **Use spin when:**
 
 - filtering vast data volumes in a table;
 - sorting a large amount of data in a table;
 - going to another page;
-- having other data operations that do not require a long wait;
+- having other data operations that don’t require a long wait;
 - searching in the table (if possible, show the search query).
 
 The loading message gets the [`sticky` property](/components/sticky/) and is centered relative to the screen that the user scrolls.
@@ -144,7 +144,7 @@ For all empty states of the table, keep the header. If it has sorting icons, als
 ### There is no data in the cell
 
 - Show the `n/a` text in the secondary text color (use `--text-secondary` token).
-- It is recommended to show a tooltip with an explanation that the data is not available (and for what reason).
+- It is recommended to show a tooltip with an explanation that the data isn’t available (and for what reason).
 
 ![](static/cell-na.png)
 

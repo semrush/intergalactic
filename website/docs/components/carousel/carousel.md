@@ -105,14 +105,14 @@ When using a carousel, keep in mind that some users may only see the first frame
 
 > If carousel images cycle automatically, provide a pause button to let users stop the movement.
 
-**Do not auto-play slides if:**
+**Don’t auto-play slides if:**
 
 - You are not sure you can get the timing right, so that most people read and understand the content within the time you specified. Sometimes carousels move too quickly, and users can’t read the information, which is frustrating for them. Sometimes carousels move too slowly, so when they do animate, it can be surprising to the user.
 - Your content looks like an advertisement. Users are more likely to ignore an animated item that looks like an ad ([if they are not in a shopping mindset](https://www.nngroup.com/articles/designing-effective-carousels/))).
 
 ### Auto-play tips
 
-- Do not add auto-play on mobile devices, because: (1) it slows down the page, and (2) because pages are short, users often scroll quickly, so by the time the carousel changes, the user is likely looking below the fold and won’t see the change anyway.
+- Don’t add auto-play on mobile devices, because: (1) it slows down the page, and (2) because pages are short, users often scroll quickly, so by the time the carousel changes, the user is likely looking below the fold and won’t see the change anyway.
 - Test for the right timing, or at least estimate how long it might take the average user to read the text and process the images. Nielsen Norman Group recommends 1 second per 3 words for auto-rotating slides. Don’t stop at the last frame. Continue cycling through the frames (and displaying which frame is selected).
 - Auto-play should pause on hover.
 - Auto-play should permanently stop after any active user interaction.

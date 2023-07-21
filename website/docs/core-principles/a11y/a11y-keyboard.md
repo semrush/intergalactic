@@ -52,13 +52,13 @@ Keyboard control should be performed sequentially across all interactive element
 ### Input и textarea
 
 - Input fields get focus by pressing the `Tab` key.
-- When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (e.g., orange).
+- When focused, the fields are highlighted with a blue outline. For fields that have been validated, the outline corresponds to the border color (for example, orange).
 - The target action is performed by pressing `Enter` (saving, applying a filter, etc.).
 
 ### Checkbox, radio и switch
 
 - Selection controls get focus when you press `Tab`.
-- When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (e.g., orange).
+- When focused, the controls are highlighted with a blue outline. For controls that have been validated, the outline corresponds to the border color (for example, orange).
 - When you press `Enter`, an element is checked/unchecked, depending on the initial state.
 
 ### Any other controls (FilterTrigger, Pills, TabLine, etc.)

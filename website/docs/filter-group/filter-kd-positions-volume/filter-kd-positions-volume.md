@@ -35,8 +35,8 @@ They have a set of preset values and a custom range inputs.
 | Filter             | Appearance example                                                      | Description                                                                                                                                                                |
 | ------------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Keyword Difficulty | ![default](static/placeholder-kd.png) ![active](static/active-kd.png)   | The Keyword Difficulty filter trigger always has one size. Abbreviate the name to **KD %**.                                                                                |
-| Positions          | ![default](static/placeholder-pos.png) ![active](static/active-pos.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Positions in full. If they do not fit, abbreviate the filter name to **Pos.**. |
-| Volume             | ![default](static/placeholder-vol.png) ![active](static/active-vol.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Volume in full. If they do not fit, abbreviate the filter name to **Vol.**.    |
+| Positions          | ![default](static/placeholder-pos.png) ![active](static/active-pos.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Positions in full. If they don’t fit, abbreviate the filter name to **Pos.**. |
+| Volume             | ![default](static/placeholder-vol.png) ![active](static/active-vol.png) | If the filter name and the value fits the width of the trigger, show the name of the filter Volume in full. If they don’t fit, abbreviate the filter name to **Vol.**.    |
 
 ### Dropdown
 

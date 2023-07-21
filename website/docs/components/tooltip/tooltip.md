@@ -100,7 +100,7 @@ Tooltip usually contain unformatted text.
 
 ![](static/tooltip-basic.png)
 
-In some cases (e.g., for advertising purposes) you can format text and add other components to the tooltip:
+In some cases (for example, for advertising purposes) you can format text and add other components to the tooltip:
 
 - [Button](/components/button/), [Link](/components/link/), etc.;
 - image;
@@ -125,7 +125,7 @@ Main recommendations:
 
 ![](static/tooltip-trigger-yes-no.png)
 
-**When the trigger is not obvious enough, add a title to the tooltip.** It is also necessary to add a title when the trigger does not sufficiently explain the topic of the tooltip. For example, you can describe additional conditions in the header, or expand the idea behind the trigger.
+**When the trigger isn’t obvious enough, add a title to the tooltip.** It is also necessary to add a title when the trigger does not sufficiently explain the topic of the tooltip. For example, you can describe additional conditions in the header, or expand the idea behind the trigger.
 
 ![](static/tooltip-trigger2-yes-no.png)
 
@@ -135,7 +135,7 @@ Main recommendations:
 
 ![](static/tooltip-text-yes-no.png)
 
-**Do not overload the tooltip with information.** The large amount of content is inconvenient to view in the tooltip. If there is too much content and you cannot remove anything, think about whether you need a separate paragraph on the page or widget instead of a tooltip.
+**Don’t overload the tooltip with information.** The large amount of content is inconvenient to view in the tooltip. If there is too much content and you cannot remove anything, think about whether you need a separate paragraph on the page or widget instead of a tooltip.
 
 ![](static/tooltip-content-yes-no.png)
 

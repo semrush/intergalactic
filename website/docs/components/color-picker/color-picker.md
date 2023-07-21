@@ -57,7 +57,7 @@ An item can have two different types:
 | Type            | Appearance example                                                             | Usage                                                                                                                 |
 | --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | Item for background color | ![](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
-| Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, e.g.                                                                                             |
+| Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, for example                                                                                             |
 
 @## Interaction
 

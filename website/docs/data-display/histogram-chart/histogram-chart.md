@@ -10,12 +10,12 @@ tabName: Design
 
 **Histogram chart** helps grouping numeric data for comparison by quantitative indicators. It shows the distribution of values.
 
-Use histogram when you need to display the distribution of data sets by groups (e.g., quantitative ranges).
+Use histogram when you need to display the distribution of data sets by groups (for example, quantitative ranges).
 
 **Important points to keep in mind when presenting data as a histogram:**
 
 - Always start the Y-axis from zero.
-- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can denote the axes.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 - You can place histogram bars horizontally if the range names are long and there are many ranges.
 
@@ -119,7 +119,7 @@ If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 ### A part of the chart contains no data
 
-- Do not display bars in the area without data.
+- Don’t display bars in the area without data.
 - When you hover over a range without data, show the tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
 
 ![](static/histogram-partially.png)
@@ -143,9 +143,9 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 @## Usage in UX/UI
 
 - Start the columns from zero.
-- By comparing columns, we are actually comparing the length. If we do not start the scale from zero, there will be a visual illusion.
+- By comparing columns, we are actually comparing the length. If we don’t start the scale from zero, there will be a visual illusion.
 
-Check out the charts below. In the wrong case, the scale does not start from zero, and it seems that the `Y value` is almost half as large as the `X value`. However, this is not true.
+Check out the charts below. In the wrong case, the scale does not start from zero, and it seems that the `Y value` is almost half as large as the `X value`. However, this isn’t true.
 
 ![](static/deception-yes-no.png)
 

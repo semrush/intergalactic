@@ -16,9 +16,9 @@ _For example, set up and run a report, submit a very large form._
 - A task has a predefined sequence of steps that the user must follow in order to complete it. In such cases, the user is unlikely to miss any important part and make fewer mistakes when performing the task.
 - If the task has two steps, you hardly need a wizard. And if the task has 10 or more steps, perhaps you should think about simplifying it. Usually the optimal number of steps for a wizard is 3-5.
 
-@## When do not use wizard
+@## When don’t use wizard
 
-- You need to educate the user. Wizards do not help in user education, because they usually focus users on solving a large problem, rather than reading additional information. For learning, use other components - FeaturePopover, `Info` icons, pseudo links, videos, etc.
+- You need to educate the user. Wizards don’t help in user education, because they usually focus users on solving a large problem, rather than reading additional information. For learning, use other components - FeaturePopover, `Info` icons, pseudo links, videos, etc.
 - If your audience is quite advanced and trained, they may not feel comfortable using a wizard with a predefined set of steps. Usually this applies to various kinds of IDE and graphic editors, for example.
 
 @## Component composition

@@ -60,7 +60,7 @@ See [Typography](/style/typography/) if want to learn more about our recommendat
 
 @## Breakpoints
 
-> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization. So adaptivity is not yet required for all products.
+> **TL;DR or main thoughts**: most of our products are designed to work with data on the desktop, since there is a lot of data visualization. So adaptivity isn’t yet required for all products.
 
 The main breakpoints that we recommend to use in our interfaces are:
 

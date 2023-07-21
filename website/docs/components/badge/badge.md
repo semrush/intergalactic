@@ -15,8 +15,8 @@ _For example, you added a new tab to the report. In this case, you can highlight
 **Main features of the component:**
 
 - Badge cannot be deleted or added by a user. Badge is added to the elements by the system according to the rules described below in the table.
-- Badge is not clickable.
-- Do not use badge for filtering the data.
+- Badge isn’t clickable.
+- Don’t use badge for filtering the data.
 
 @## Appearance
 
@@ -30,7 +30,7 @@ Use the following badges in the products depending on the status of the feature 
 
 | Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
 | -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![](static/admin.png) | `--blue-400`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge is not visible to the other users.                                                                                                                                         |
+| ![](static/admin.png) | `--blue-400`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge isn’t visible to the other users.                                                                                                                                         |
 | ![](static/alpha.png) | `--red-400`    | Use it with features which are available only to admins and a limited number of users who have been granted access as `alpha` users. The functionality under this badge should be used without any guarantees, it is unstable, and may be changed significantly over time or be disabled. |
 | ![](static/beta.png)   | `--orange-400` | Use only for unstable functionality of a feature or product. A product/feature with this badge was released to test the product hypothesis, and it can have major changes in the future.                                                                                                  |
 | ![](static/new.png)     | `--green-400`  | Use with products and features that are out of beta, and with new features that are available to all users. Use it to attract attention to a new product or feature.                                                                                                                      |
@@ -64,7 +64,7 @@ The feature status can be shown inside most of the components and controls.
 
 ### Badge vs. Tag
 
-Do not confuse [Tag](/components/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
+Don’t confuse [Tag](/components/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
 
 ![](static/table-yes-no.png)
 

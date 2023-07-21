@@ -17,7 +17,7 @@ We have collected the table of differences between these search patterns.
 | AutoComplete | ❌                           | ✅                                      | ✅                                           | ✅                                          |
 | AutoSuggest  | ❌                           | ✅                                      | ❌                                           | ✅                                          |
 
-> If your search behavior differs from those described in the table, do not hesitate to drop us a line so we can update the guide.
+> If your search behavior differs from those described in the table, don’t hesitate to drop us a line so we can update the guide.
 
 @## Pattern composition
 

@@ -10,7 +10,7 @@ tabName: Design
 
 **Dot** is a component that marks updates in the interface. For example, it shows that a new item has appeared in the button, selection, tab, filter, or dropdown menu.
 
-> Keep in mind that a dot is not used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
+> Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
 
 **You can use it to:**
 
@@ -68,7 +68,7 @@ If there is one update, show a dot without a counter inside.
 
 If there are more than nine updates, shorten the value displayed in the counter to 9+. When the counter with a large value is used inside the dot, it “grows” only inside the control.
 
-> Note that this behavior is not implemented in the component.
+> Note that this behavior isn’t implemented in the component.
 
 ![](static/counter-2.png)
 

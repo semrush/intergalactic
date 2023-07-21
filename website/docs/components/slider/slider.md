@@ -69,7 +69,7 @@ The easiest way to solve the problem of entering an invalid value is to use an i
 
 This design helps to reduce errors associated with homing (moving the hand from mouse to keyboard, and vice versa). When doing this, make sure that the keyboard shortcuts can still be used while the input has the focus state.
 
-- If the user enters a value through an input associated with the slider, the hover is not applied to the slider. The slider knob moves depending on the value entered into the input.
+- If the user enters a value through an input associated with the slider, the hover isn’t applied to the slider. The slider knob moves depending on the value entered into the input.
 
 | State        | Description                                                                                                 | Appearance                                           |
 | ------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
@@ -91,7 +91,7 @@ This design helps to reduce errors associated with homing (moving the hand from 
 
 ### When to use the slider
 
-This input works best in cases where the user is not interested in entering a specific value, but choosing an approximate value.
+This input works best in cases where the user isn’t interested in entering a specific value, but choosing an approximate value.
 
 As the example above was given – changing color brightness or volume are the main cases for using slider component.
 
@@ -101,7 +101,7 @@ Consider the context of the interface. It can be difficult for a user to click a
 
 ### Input values placement
 
-Consider how the user will interact with the control. Do not place value labels under the input on mobile devices. Otherwise, when using such kind of control on mobile devices, the user will close all the values with his finger when interacting with it.
+Consider how the user will interact with the control. Don’t place value labels under the input on mobile devices. Otherwise, when using such kind of control on mobile devices, the user will close all the values with his finger when interacting with it.
 
 To keep the labels of such input visible when interacting with it, place them either on the left/right, or above.
 

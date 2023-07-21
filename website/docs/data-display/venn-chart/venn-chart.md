@@ -38,7 +38,7 @@ In the default state for all circles:
 - Minimum Venn chart size is **180px \* 180px**.
 - Maximum Venn chart size is **300px \* 300px**.
 
-> It is not recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you should not "enlarge" the report with an unnecessarily large chart.
+> It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you should not "enlarge" the report with an unnecessarily large chart.
 
 |                                                     | Appearance example                         |
 | --------------------------------------------------- | ------------------------------------------ |
@@ -121,7 +121,7 @@ In this case, show the data sets left aligned.
 
 ### Not available data
 
-- If the values of data set is not available, don't show the them on the chart.
+- If the values of data set isn’t available, don't show the them on the chart.
 - The legend shall show the value as `n/a`.
 - If the values for all data sets are not known, then show a circle with `--chart-palette-order-null` color.
 

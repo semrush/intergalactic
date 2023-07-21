@@ -6,7 +6,7 @@ tabName: Design
 
 @## Adaptivity
 
-Most of Semrush products are designed to work with data on the desktop, so adaptivity is not yet required for all products.
+Most of Semrush products are designed to work with data on the desktop, so adaptivity isn’t yet required for all products.
 
 > Most of the core components can be used on the smaller screens. You need to increase their size to the biggest (`L`) for ease of use on touch devices. You can find the examples in the [Example tab](/layout/breakpoints/breakpoints-code/).
 

@@ -5,7 +5,7 @@ a11y: AA
 
 @## Considerations for developers
 
-According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (e.g., `button`, `link`).
+According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (for example, `button`, `link`).
 
 - The best way to make SVGs accessible to Assistive Technologies like screen readers and speech recognition tools is to put it directly into your HTML using the `<svg>` tag.
 - Icon also might be interactive, just use role `button` or `link` for it (see the table below). Note that icon gets `role="button"` automatically, if you add prop `interactive` to it.

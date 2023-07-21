@@ -42,7 +42,7 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 
 If you need captions for bubbles (in addition to the legend), show captions to the right or left of the bubble. Keep in mind that adding such captions to a data-dense chart can make the chart hard to read.
 
-> Remember to check contrast for the text labels. We do not recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
+> Remember to check contrast for the text labels. We don’t recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
 
 ![](static/labels.png)
 
@@ -79,7 +79,7 @@ If you have several datasets on the chart, then it is important to show their co
 
 @## Bubbles intersection
 
-For this type of charts, we do not show values for the intersection of categories. On hovering over a specific circle, we show the values for that circle only.
+For this type of charts, we don’t show values for the intersection of categories. On hovering over a specific circle, we show the values for that circle only.
 
 ![](static/hover-1.png)
 

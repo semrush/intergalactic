@@ -22,7 +22,7 @@ tabName: Design
 Input should have a text label.
 
 - Font weight should be `regular`. In cases when you need an extra accent fo the input's label you can use `bold` font-weight.
-- **Do not put a colon after the text label.**
+- **Don’t put a colon after the text label.**
 
 You also can mark the input as an optional.
 
@@ -43,8 +43,8 @@ In cases, when the form is centered on the page, input labels can be right-align
 
 Placeholders are required to prompt the user about what data should be entered.
 
-- It is not user-friendly to use only placeholders for inputs. When completed, such form becomes poorly readable.
-- Do not put a specific value as a placeholder. The user may think that the input has already been filled.
+- It isn’t user-friendly to use only placeholders for inputs. When completed, such form becomes poorly readable.
+- Don’t put a specific value as a placeholder. The user may think that the input has already been filled.
 
 You can omit the placeholder only if the input’s purpose is obvious.
 
@@ -81,7 +81,7 @@ Briefly:
 **When to use?**
 
 - The form is small and simple.
-- The cost of a mistake after completing the form is not big.
+- The cost of a mistake after completing the form isn’t big.
 
 ![](static/label-1.png)
 
@@ -94,13 +94,13 @@ Briefly:
 **Disadvantages of vertical form layout**
 
 - It needs more vertical space.
-- It is not an ideal solution for large forms (and the complex ones).
+- It isn’t an ideal solution for large forms (and the complex ones).
 
 ### Horizontal form layout, left label alignment
 
 **When to use?**
 
-- The form is large and/or complex, and you need to slow the user down in order he/she do not make mistakes.
+- The form is large and/or complex, and you need to slow the user down in order they don’t make mistakes.
 - “Price of the mistake” after the completion of a large form is significant.
 
 ![](static/label-3.png)

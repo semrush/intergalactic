@@ -19,7 +19,7 @@ The list below describes roles and attributes that component already has.
 
 | Role    | Attribute                 | Element | Usage                                                                                                                                                             |
 | ------- | ------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `group` |                           |         | The `group` role identifies a set of user interface objects that is not intended to be included in a page summary or table of contents by assistive technologies. |
+| `group` |                           |         | The `group` role identifies a set of user interface objects that isn’t intended to be included in a page summary or table of contents by assistive technologies. |
 |         | `aria-label="Breadcrumbs"` | `div`   | Provides a label for the group of links that describes the type of navigation provided.                                                                             |
 |         | `aria-current="page"`     | `a`     | Applied to the last link in the set to indicate that it represents the current page.                                                                              |
 

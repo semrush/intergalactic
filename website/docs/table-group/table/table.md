@@ -123,11 +123,11 @@ Horizontal scroll in our tables is needed in order to indicate the presence of h
 
 In this case, it appears when:
 
-- all table columns do not fit the viewport;
+- all table columns don’t fit the viewport;
 - when you add a new column to a table from the settings manager, the table data will no longer fit in the viewport;
 - the screen, on which the user views the report is smaller than 992px.
 
-> It is not a bad practice, when a large table has a horizontal scroll – this is a familiar experience for most users (see Excel). It is wrong, when adding columns to a table makes them incredibly narrow, but without the need for scrolling.
+> It isn’t a bad practice, when a large table has a horizontal scroll – this is a familiar experience for most users (see Excel). It is wrong, when adding columns to a table makes them incredibly narrow, but without the need for scrolling.
 >
 > Russian article – [UX tables to work with](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)
 
@@ -139,7 +139,7 @@ See the detailed recommendations in the [Table controls](/table-group/table-cont
 
 @## Table states
 
-About table states you can read in a particular notable document [Table states](/table-group/table-states/).
+About table states read in a particular notable document [Table states](/table-group/table-states/).
 
 @page table-a11y
 @page table-code

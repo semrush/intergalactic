@@ -84,7 +84,7 @@ Always put quotation marks inside the link.
 
 ![](static/name-example-4.png)
 
-If a sentence ends with an email, URL, or domain that is a link, do not include a period at the end of the sentence as users often copy the address and may accidentally include the period.
+If a sentence ends with an email, URL, or domain that is a link, don’t include a period at the end of the sentence as users often copy the address and may accidentally include the period.
 
 ![](static/name-example-5.png)
 

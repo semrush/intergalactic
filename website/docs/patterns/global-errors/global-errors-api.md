@@ -75,7 +75,7 @@ import { PageError } from '@semcore/ui/errors';
 
 @## PageNotFound
 
-Placeholder for the 404 error, when the page is not found.
+Placeholder for the 404 error, when the page isn’t found.
 
 ```jsx
 import { PageNotFound } from '@semcore/ui/errors';

@@ -44,8 +44,8 @@ The list always drops down, regardless of space availability under the trigger. 
 
 @## States
 
-- If the list is taking a long time to load or filter results (e.g., due to a slow connection), the dropdown should display "Loading...".
-- If a user enters a value that is not in the list, the dropdown should display "Nothing found".
+- If the list is taking a long time to load or filter results (for example, due to a slow connection), the dropdown should display "Loading...".
+- If a user enters a value that isn’t in the list, the dropdown should display "Nothing found".
 - If there are backend errors, a warning message should be displayed with the text "Something went wrong. Please try again later."
 
 ![](static/loading-flow.png)
@@ -54,7 +54,7 @@ The list always drops down, regardless of space availability under the trigger. 
 
 @## Data loading
 
-If the list takes time to load, such as when the system cannot load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger is not clickable and remains in the default state.
+If the list takes time to load, such as when the system cannot load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
 
 For more information about trigger states, refer to [Select / Multiselect](/components/select/#a24650).
 
@@ -64,7 +64,7 @@ For more information about trigger states, refer to [Select / Multiselect](/comp
 
 If the list includes a search input, it should automatically receive focus when the user opens the dropdown.
 
-As the user enters a value into the input, only the items that match the input should remain in the list. Do not highlight these items in this case.
+As the user enters a value into the input, only the items that match the input should remain in the list. Don’t highlight these items in this case.
 
 @## List item states
 
@@ -90,7 +90,7 @@ The dropdown list can be separated by [Divider](/components/divider/).
 
 ### Title
 
-List item can be a title. It does not have `hover` or `active` state and it is not clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
+List item can be a title. It does not have `hover` or `active` state and it isn’t clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
 
 ![](static/headings.png)
 
@@ -191,7 +191,7 @@ You can place a text counter after the text. It should have the same size that i
 
 ### Badge
 
-Badge can be placed after the text. The margin between the text and the badge is always 4px. If item with badge is selected, then do not show badge in the trigger.
+Badge can be placed after the text. The margin between the text and the badge is always 4px. If item with badge is selected, then don’t show badge in the trigger.
 
 ![badge](static/badge.png)
 
@@ -212,7 +212,7 @@ If DropdownMenu has more than seven items, show scroll. We also recommend adding
 
 ![list-scroll](static/scroll-1.png)
 
-> If you use a DropdownMenu for a menu, show all the items even if there are more than seven. It's important for the user to see all available options, especially if there are links or different controls. We do not recommend using a scroll for such menus.
+> If you use a DropdownMenu for a menu, show all the items even if there are more than seven. It's important for the user to see all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
 
 ### Fixed item
 
@@ -239,7 +239,7 @@ Nested groups will be hidden after a delay of 0.3 seconds in the following cases
 
 - When the user hovers over another item in the parent list.
 - When the mouse cursor moves away from the dropdown.
-- When the entire dropdown closes (e.g., by pressing the `Esc` button).
+- When the entire dropdown closes (for example, by pressing the `Esc` button).
 
 If you select a nested item, only its name will be displayed in the trigger, without the name of the parent item.
 

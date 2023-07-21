@@ -13,7 +13,7 @@ tabName: Design
 **Important points to keep in mind when presenting data as an area chart:**
 
 - A chart with areas shall be used when you need to show a larger picture of the data. _For example, line charts can be used to show the change in a population over time, while charts with areas are excellent for demonstrating the total volume of population over a time period._
-- Try not to use too many categories (**it is not recommended to use more than 4 categories**). In such cases, it is better to use a line chart as it provides a cleaner and clearer data reading.
+- Try not to use too many categories (**it isn’t recommended to use more than 4 categories**). In such cases, it is better to use a line chart as it provides a cleaner and clearer data reading.
 - Don't forget to clearly name the chart so that the axes are understandable enough.
 - Use [Stacked area chart](/data-display/stacked-area-chart/) when, in addition to data amount, you need to display the part to the whole data.
 

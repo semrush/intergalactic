@@ -65,7 +65,7 @@ The component offers several variants of options layout:
 
 The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component.
 
-> The `InputSearch` component is difficult to customize. All props are passed to `Input.Value`. If this is not enough, you can create your own custom solution.
+> The `InputSearch` component is difficult to customize. All props are passed to `Input.Value`. If this isn’t enough, you can create your own custom solution.
 
 The example below shows one of the ways to implement filtering.
 

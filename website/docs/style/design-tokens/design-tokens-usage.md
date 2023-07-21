@@ -101,7 +101,7 @@ Use it for backgrounds only.
 Use it for:
 
 - Light borders.
-- Active faded backgrounds (e.g. widget backgrounds, accordions, table headers).
+- Active faded backgrounds (for example, widget backgrounds, accordions, table headers).
 
 > APCA ~ 15 to white (minimum visible elements)
 
@@ -112,7 +112,7 @@ Use it for:
 Use it for:
 
 - Active borders.
-- Active backgrounds (e.g. widget backgrounds, accordions, table headers).
+- Active backgrounds (for example, widget backgrounds, accordions, table headers).
 
 @import color-group {"group": "shade200"}
 

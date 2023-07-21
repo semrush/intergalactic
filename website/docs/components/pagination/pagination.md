@@ -57,7 +57,7 @@ We provide some recommendations for the table size:
 
 The current page should always be displayed in the input:
 
-- When the input is unfocused, show the current page, even if the user has changed this value but has not pressed `Enter` or clicked the icon inside the input.
+- When the input is unfocused, show the current page, even if the user has changed this value but hasn’t pressed `Enter` or clicked the icon inside the input.
 - If the input is empty (for example, the user cleared it) or "0" is entered, then the user will move to the first page by clicking the icon inside the input or pressing `Enter`.
 - This input restricts the entry of any symbols except numerical characters.
 
@@ -67,7 +67,7 @@ The link at the end of the pagination shows the total number of pages. The user 
 
 ### User is on the first page
 
-In this case, the "First page" button and the "Prev" button are `disabled`.
+In this case, the "First page" button and the "Previous" button are `disabled`.
 
 ![](static/first-page.png)
 
@@ -93,7 +93,7 @@ Use this state only when there is some data, and there might be more data.
 
 ### Page loading
 
-During loading, do not display pagination.
+During loading, don’t display pagination.
 
 @## Additional states
 

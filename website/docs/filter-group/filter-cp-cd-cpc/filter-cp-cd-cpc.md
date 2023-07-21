@@ -32,7 +32,7 @@ They contain only a field for a custom range value, there is no preset data, sin
 
 | Filter              | Appearance example                                                    | Description                                                                         |
 | ------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Click Potential     | ![default](static/placeholder-cp.png) ![active](static/active-cp.png) | The Click Potential filter trigger always has one size. Do not abbreviate its name. |
+| Click Potential     | ![default](static/placeholder-cp.png) ![active](static/active-cp.png) | The Click Potential filter trigger always has one size. Don’t abbreviate its name. |
 | Competitive Density | ![default](static/placeholder-cd.png) ![active](static/active-cd.png) |                                                                                     |
 | CPC                 | ![default](static/placeholder.png) ![active](static/active.png)       | The CPC filter trigger always has one size. Abbreviate its name to CPC (USD).       |
 

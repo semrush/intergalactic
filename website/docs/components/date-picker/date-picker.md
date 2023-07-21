@@ -63,7 +63,7 @@ You can place [TimePicker](/components/time-picker/) inside the dropdown.
 
 ![](static/datepicker-timepicker-normal.png)
 
-And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (e.g., user account settings).
+And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (for example, user account settings).
 
 ![](static/datepicker-timepicker-12h-24h.png)
 

@@ -91,7 +91,7 @@ The button width is determined by its content. But it can also be stretched to a
 w="100%"
 ```
 
-It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it is not good to make the button small-sized in such cases.
+It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
 
 ![](static/button-width.png)
 
@@ -116,7 +116,7 @@ If you need to use a single button we recommend you to set it's width to at leas
 @## Usage in UX/UI
 
 - Try to have one call-to-action button on the page in the modal window. _For example, one green button._
-- We recommend you do not disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
+- We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
 - If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
 
@@ -133,16 +133,16 @@ We recommend using a button with an icon and text in cases when:
 
 - the button is a CTA, and it needs an additional visual accent (icon);
 - the interface has enough space for buttons;
-- user is not yet familiar with the functionality of the button, and icon or only text may not be enough for them to understand.
+- user isn’t yet familiar with the functionality of the button, and icon or only text may not be enough for them to understand.
 
 ### Icon-only button
 
 We recommend using the icon-only button if:
 
-- interface has not enough space;
+- interface hasn’t enough space;
 - user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
-> **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon is not the obvious one.
+> **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
 
 @## Button label
 

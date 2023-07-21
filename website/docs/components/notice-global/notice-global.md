@@ -23,7 +23,7 @@ To be considered a notice, it must meet four specific criteria. If it fails to m
 
 **Use the global notice to communicate the following:**
 
-- Special viewing modes of a page, product, or site (e.g., pertaining to admin or other rights on the page).
+- Special viewing modes of a page, product, or site (for example, pertaining to admin or other rights on the page).
 - Notifications about outdated browser versions.
 - Messages related to the entire site's operations, such as downgrades, technical work, and other similar events.
 
@@ -97,8 +97,8 @@ As the notice is a temporary message, it should have a preset "lifespan." The "l
 
 - Number of days (for example, during an experiment).
 - Number of user sessions.
-- Events (e.g., completion of works, bug fixes, moving features out of beta).
-- User actions as triggers (e.g., installing something, viewing specific content, fixing an error).
+- Events (for example, completion of works, bug fixes, moving features out of beta).
+- User actions as triggers (for example, installing something, viewing specific content, fixing an error).
 
 ### Hiding
 
@@ -107,7 +107,7 @@ When user hides the notice, the entire page moves up to the height of the closed
 NoticeGlobal can be hide by:
 
 - Clicking on the `Close` icon.
-- Clicking on the link that triggers the re-opening condition (e.g., "Ask me later," "Never show again," etc.).
+- Clicking on the link that triggers the re-opening condition (for example, "Ask me later," "Never show again," etc.).
 - If there is no `Close` icon or hide link, the user can't manually hide such notice. It will be hidden according to the conditions set by the service (after a certain time, a certain number of sessions, after clicking on the trigger, etc.).
 
 ### Animation
@@ -141,7 +141,7 @@ In situations where a user on the site has two or more global messages to displa
 
 @## Usage in UX/UI
 
-- You can use global notices to notify about the following: website mode (e.g., admin), system status (error, failure, end of works).
+- You can use global notices to notify about the following: website mode (for example, admin), system status (error, failure, end of works).
 - Keep the messages concise, so they don't obscure other widgets or report functionality. Try to convey the message's meaning to users in just one line.
 
 @page notice-global-a11y
