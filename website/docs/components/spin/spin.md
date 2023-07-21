@@ -52,7 +52,7 @@ For Spin appearance and disappearance use animation with 300ms delay and `ease-o
 
 @## Usage in UX/UI
 
-Remember that the page loading indicator should help user to estimate the interface's response time (i.e. how long he should wait for a certain result). Therefore, in cases when system does not know exactly how long it will take to load data, we recommend you to add explanatory message next to a spinner, for example: **Loading...**.
+Remember that the page loading indicator should help user to estimate the interface's response time (specifically how long he should wait for a certain result). Therefore, in cases when system does not know exactly how long it will take to load data, we recommend you to add explanatory message next to a spinner, for example: **Loading...**.
 
 > This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 

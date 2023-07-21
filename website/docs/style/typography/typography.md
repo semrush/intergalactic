@@ -16,7 +16,7 @@ For the secondary text color use `--text-secondary` token.
 
 Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
 
-> Use this opportunity thoughtfully, and do not abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
+> Use this opportunity thoughtfully, and don’t abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
 
 @## Font size and line height
 

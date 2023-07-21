@@ -14,7 +14,7 @@ If you have an array of values for a certain period, you can use this chart type
 
 **Important points to keep in mind when presenting data as a line chart:**
 
-- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can add labels for the axes.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can add labels for the axes.
 - Remove all unnecessary visual information, such as extra additional background lines and a bunch of colors. Otherwise, this may distract the user from being able to understand the data.
 - If the data doesn't start from zero, in some cases you can zoom the chart to the `Y-axis`. This can make your data more readable and easier to understand.
 - **Try not to compare more than 5-7 categories on a line chart**. The chart may become unreadable and confusing.
@@ -52,7 +52,7 @@ When user hovers over the chart area without values, show tooltip with informati
 
 If there are a lot of categories on the chart, the tooltip shows dots and values for all dots under the cursor.
 
-> Do not change the order of categories inside the tooltip in relation to the order of lines on the chart.
+> Don’t change the order of categories inside the tooltip in relation to the order of lines on the chart.
 
 ![](static/popover-2.png)
 

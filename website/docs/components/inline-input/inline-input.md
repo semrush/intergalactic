@@ -12,9 +12,9 @@ tabName: Design
 
 - you need to switch between view-only and text editing without reloading the page (for example, edit the title, description or tag);
 - data in the interface is placed tightly, you need to save space;
-- transferring data to the system is not the main task of the interface (for example, additional information and notes in cards).
+- transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
 
-> Do not use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
+> Don’t use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
 
 @## Appearance
 
@@ -142,7 +142,7 @@ _For example, if the heading you need to edit has 24px font-size, then it should
 
 ### Using InlineInput in form
 
-Use inputs as intended. We do not recommend mixing the normal and inline inputs in the form for sending data to the system.
+Use inputs as intended. We don’t recommend mixing the normal and inline inputs in the form for sending data to the system.
 
 _An InlineInput is convenient when you need to add a note, an additional description, set your name, category, etc._
 

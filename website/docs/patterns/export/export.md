@@ -22,7 +22,7 @@ To export data, use a button that the user can click to set up export and/or dow
 
 ![](static/short-export.png)
 
-- Use compact version if there's not enough space for the default version. Do not forget to add tooltip with its label so the user will know what this button does.
+- Use compact version if there's not enough space for the default version. Don’t forget to add tooltip with its label so the user will know what this button does.
 - Export button opens a dropdown menu with the form.
 
 ### Expanded version
@@ -32,7 +32,7 @@ To export data, use a button that the user can click to set up export and/or dow
 - Use this version if export is possible to the only one format and there are no additional settings.
 - Export button opens a dropdown menu with the form.
 
-> If there is nothing to download, the file is anyway downloaded with the table headers. The file shouldn't be empty, because it is important to show the user that the export is working.
+> If there isn’thing to download, the file is anyway downloaded with the table headers. The file shouldn't be empty, because it is important to show the user that the export is working.
 >
 > If the process is time consuming, the button gets loading state. The recommended time for showing spinner is `300ms`.
 

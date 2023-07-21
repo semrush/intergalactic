@@ -36,7 +36,7 @@ Basic rules for visualizing data as a Radial Tree:
 - Stroke width – 1px.
 - Default size of the circle bullet – `8px * 8px`.
 - Font size – 14px (`--fs-200`).
-- In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.
+- In the default state, use 400 hue colors. For example, `--blue-400`, `--red-400`, `--green-400` , etc.
 
 #### Active state
 
@@ -59,9 +59,9 @@ This chart doesn't need tooltip.
 
 | State   | Appearance example                              | Styles                                                                                                                                                                                                                                                    |
 | ------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Default | ![](static/default.png) | In the default state, use 400 hue colors. E.g., `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
-| Hover   | ![](static/hover.png)     | For the text's hover state use the next color hue. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. **Do not change the color of the additional line and the circle bullet.**                                                                        |
-| Active  | ![](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. E.g., `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
+| Default | ![](static/default.png) | In the default state, use 400 hue colors. For example, `--blue-400`, `--red-400`, `--green-400` , etc.                                                                                                                                                           |
+| Hover   | ![](static/hover.png)     | For the text's hover state use the next color hue. For example, `--blue-500`, `--red-500`, `--green-500` , etc. **Don’t change the color of the additional line and the circle bullet.**                                                                        |
+| Active  | ![](static/active.png)  | In the active state, the text has the same color as on hover, but changes its font-weight to 700. For example, `--blue-500`, `--red-500`, `--green-500` , etc. The circle bullet grows to `16px * 16px` size. You can place an icon inside the bullet if needed. |
 
 @## Animation
 

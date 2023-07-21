@@ -19,9 +19,9 @@ The list below describes roles and attributes that component already has.
 | Role   | Attribute              | Element  | Usage                                                                                                                                                                          |
 | ------ | ---------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | switch |                        | `button` | When you can, use a `<button>` element and include `aria-pressed` or `role="switch"` for your toggles.                                                                         |
-|        | `aria-checked="true"`  | `button`    | Indicates the switch is on. CSS attribute selectors (e.g. [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute.   |
-|        | `aria-checked="false"` | `button`    | Indicates the switch is off. CSS attribute selectors (e.g. [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. |
-|        | `aria-readonly`        | `button`    | Indicates that the element is not editable, but is otherwise operable.                                                                                                         |
+|        | `aria-checked="true"`  | `button`    | Indicates the switch is on. CSS attribute selectors (for example [`aria-checked="true"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute.   |
+|        | `aria-checked="false"` | `button`    | Indicates the switch is off. CSS attribute selectors (for example [`aria-checked="false"`]) are used to synchronize the visual states with the value of the `aria-checked` attribute. |
+|        | `aria-readonly`        | `button`    | Indicates that the element isn’t editable, but is otherwise operable.                                                                                                         |
 
 @## Considerations for designers
 

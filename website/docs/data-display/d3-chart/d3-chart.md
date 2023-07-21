@@ -108,7 +108,7 @@ The tooltip appears next to the cursor. It is always located inside the chart co
 - The tooltip can contain the total value.
 - If several charts have the same timeline under each other, then they can be synchronized – when you hover over one of the charts, the hover is triggered on the other. This is quite useful for comparing data.
 
-> As a rule, we do not put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
+> As a rule, we don’t put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
 
 ### Styles
 

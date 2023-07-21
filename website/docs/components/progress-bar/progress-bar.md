@@ -67,7 +67,7 @@ The ProgressBar has three states:
 
 The progress bar should not remain in the 100% state. Once the process is completed, either a success message should be displayed, or the user should be provided with further actions.
 
-> If it is not possible to perform the action immediately, display the success status and instruct the user on what to do next.
+> If it isn’t possible to perform the action immediately, display the success status and instruct the user on what to do next.
 
 ### Animation
 
@@ -97,7 +97,7 @@ When scrolling, the progress bar can be pinned, remaining visible above all comp
 ### Specific cases
 
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
-- If the exact or approximate loading time is not known, wait for 3 seconds and display the fake progress.
+- If the exact or approximate loading time isn’t known, wait for 3 seconds and display the fake progress.
 - In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
   
 - If the download process is expected to be long, visualize the progress immediately.

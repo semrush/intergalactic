@@ -130,7 +130,7 @@ Use `dashed` lines for scales:
 
 #### Variables with different scales
 
-Variables can have different scales. To reduce visual noise, we recommend that you don't show values on the axes. **The example below is not the recommendation, it's for illustration purpose only.**
+Variables can have different scales. To reduce visual noise, we recommend that you don't show values on the axes. **The example below isn’t the recommendation, it's for illustration purpose only.**
 
 ![Radar chart with variables that have different scales.](static/scales-3.png)
 
@@ -242,7 +242,7 @@ More than three data sets should be presented on their own radar charts or visua
 
 Don’t use too many variables or the chart risks becoming confusing.
 
-Consider using other chart type – e.g. Bar chart.
+Consider using other chart type – for example, bar chart.
 
 ![](static/variable-number-yes-no.png)
 

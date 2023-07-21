@@ -46,7 +46,7 @@ import Button from '@semcore/ui/button';
 
 This approach provides more flexibility:
 
-- The renderer is not limited by our API.
+- The renderer isn’t limited by our API.
 - The API is cleaner and more consistent.
 - You have access to each part of the component.
 
@@ -164,7 +164,7 @@ import { Flex } from '@semcore/ui/flex-box';
 
 @## Browser support
 
-We do not support legacy browsers as we do not want to encourage their use.
+We don’t support legacy browsers as we don’t want to encourage their use.
 
 | Chrome | Firefox | Safari(macOS) | Safari(iOS) | Edge  |
 | ------ | ------- | ------------- | ----------- | ----- |

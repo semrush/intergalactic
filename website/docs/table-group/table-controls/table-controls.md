@@ -27,7 +27,7 @@ A table row can be expanded as an [Accordion](/components/accordion/). As a rule
 - The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. Icon has M size and `--icon-secondary-neutral` token for color.
 - The row that opened additional data from must remain highlighted. The `active` state of a row has `--table-td-cell-active` token as background color.
 - When the row with accordion is opened, the `ChevronRight` icon should change to `ChevronDown` of the same size and color.
-- The row inside the accordion has `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-table-accent)`. It is necessary so that when several rows with accordion are opened, they do not visually merge with each other.
+- The row inside the accordion has `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-table-accent)`. It is necessary so that when several rows with accordion are opened, they don’t visually merge with each other.
 
 ![](static/accordion.png)
 
@@ -56,7 +56,7 @@ The [Checkbox](/components/checkbox/) must have the entire cell in the table as 
 
 ### Rows highlighting and pagination
 
-When switching between pages of the table, do not reset checked checkboxes.
+When switching between pages of the table, don’t reset checked checkboxes.
 
 _For example, on page 1, the user selected 3 lines, went to page 2, and selected 5 lines there. When the user returns to page 1, the selected rows should be saved._
 
@@ -181,7 +181,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 - The sort icon should be displayed while hovering on columns that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. Descending order is used by default (use `SortDesc` icon).
 - If sorting on a column is active, the icon has an `active` state and shows the corresponding sorting direction.
-- **When you select a different column**, the icon on the selected column becomes active. Icons on other columns do not change their direction.
+- **When you select a different column**, the icon on the selected column becomes active. Icons on other columns don’t change their direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
 
 > When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
@@ -211,7 +211,7 @@ When scrolling a table, this row should be pinned to the table header. In this c
 ### The actions and rules of use
 
 - "Deselect all" deselects all selected rows (on any page).
-- "Select all" is not an obvious action, so we recommend avoiding this and using the following instead.
+- "Select all" isn’t an obvious action, so we recommend avoiding this and using the following instead.
 - "Select all on page (N)" selects all rows on the current page of the table.
 - "Select all on table (N)" selects all rows in the table.
 

@@ -7,7 +7,7 @@ a11y: AA
 
 ### Roles & attributes
 
-According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (e.g., `button`, `link`).
+According to the ARIA in HTML document, [SVG has no default corresponding role](https://www.w3.org/TR/html-aria/#svg), but you can set the role this icon has in the interface (for example, `button`, `link`).
 
 The list below describes roles and attributes that component already has.
 
@@ -47,7 +47,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | **Informative image**                       | Images that graphically represent concepts and information, typically pictures, photos, and illustrations. The text alternative should be at least a short description conveying the essential information presented by the image.                            |
 | **Decorative image**                        | Provide a null text alternative (alt="") when the only purpose of an image is to add visual decoration to the page, rather than to convey information that is important to understanding the page.                                                            |
 | **Functional image**                        | The text alternative of an image used as a link or as a button should describe the functionality of the link or button rather than the visual image. Examples of such images are a printer icon to represent the print function or a button to submit a form. |
-| **Image of text**                           | Readable text is sometimes presented within an image. If the image is not a logo, avoid text in images. However, if images of text are used, the text alternative should contain the same words as in the image.                                              |
+| **Image of text**                           | Readable text is sometimes presented within an image. If the image isn’t a logo, avoid text in images. However, if images of text are used, the text alternative should contain the same words as in the image.                                              |
 | **Complex image such as graph and diagram** | To convey data or detailed information, provide a complete text equivalent of the data or information provided in the image as the text alternative.                                                                                                          |
 | **Group of images**                         | If multiple images convey a single piece of information, the text alternative for one image should convey the information for the entire group.                                                                                                               |
 | **Image map**                               | The text alternative for an image that contains multiple target areas should provide an overall context for the set of links. Also, each individually target area should have alternative text that describes the purpose or destination of the link.   |

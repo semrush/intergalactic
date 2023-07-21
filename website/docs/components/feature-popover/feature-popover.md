@@ -106,18 +106,18 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 ### General recommendations
 
 - Use FeaturePopover only to display promotional or onboarding information. The purpose of component is to emphasize a feature and/or explain why it can be useful to the user.
-- Mind the user path and the context, in which users will see FeaturePopover. Show it ad hoc and do not overload the message with unnecessary information.
-- Always allow the user to close FeaturePopover. Do not force the user to use a feature.
+- Mind the user path and the context, in which users will see FeaturePopover. Show it ad hoc and don’t overload the message with unnecessary information.
+- Always allow the user to close FeaturePopover. Don’t force the user to use a feature.
 - Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to `Info` icons, hint links and so on.
 - Make sure that FeaturePopover does not cover important parts in the interface that the user needs in the context of use.
 
 ### Terms of use
 
-- Do not show more than one FeaturePopover on a page at the same time.
+- Don’t show more than one FeaturePopover on a page at the same time.
 - FeaturePopover for a new function should be shown for no more than a month.
-- FeaturePopover should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show FeaturePopover on the element in the table. Do not distract the user.
-- **Do not show FeaturePopover if the user has already interacted with the advertised item.**
-- FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", do not show this message to him again.
+- FeaturePopover should be shown in context, for example, when the user interacts with elements in a certain part of the page, or when the next step in the flow should be the highlighted element. If the user interacts with filters, there is no need to show FeaturePopover on the element in the table. Don’t distract the user.
+- **Don’t show FeaturePopover if the user has already interacted with the advertised item.**
+- FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", don’t show this message to him again.
 
 @## Recommendations for copy
 
@@ -135,7 +135,7 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 
 @## FeaturePopover as part of onboarding
 
-Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, do not show it again to them.
+Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, don’t show it again to them.
 
 @page feature-popover-a11y
 @page feature-popover-api

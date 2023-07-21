@@ -10,9 +10,9 @@ tabName: Design
 @## How validation works
 
 - Validation in forms and filters can be performed simultaneously by `unFocus` and `Submit`. _This option does not apply to forms with limits – use only `Submit` for them._
-- Do not validate empty fields (in which user has not entered a value) by `unFocus`.
+- Don’t validate empty fields (in which user hasn’t entered a value) by `unFocus`.
 
-> Since form validation can be performed by clicking on a button, it is not recommended to set the main buttons to `disabled` state. This creates a false impression that the form or filter doesn't work at all.
+> Since form validation can be performed by clicking on a button, it isn’t recommended to set the main buttons to `disabled` state. This creates a false impression that the form or filter doesn't work at all.
 
 - After validation by `unFocus`, an input with the error is highlighted. When you focus on it, a tooltip appears with a hint what you need to fix in the form.
 - After validation by `Submit`, all inputs with errors get the `invalid` state, and `focus` with the tooltip with a hint is passed to the first invalid input.

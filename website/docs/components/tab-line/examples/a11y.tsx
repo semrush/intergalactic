@@ -24,7 +24,7 @@ export default () => {
           <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
             <h3>Overview</h3>
             <p>
-              The important achievement of Apollo was demonstrating that humanity is not forever
+              The important achievement of Apollo was demonstrating that humanity isn’t forever
               chained to this planet and our visions go rather further than that and our
               opportunities are unlimited.
             </p>

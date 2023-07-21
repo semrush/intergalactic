@@ -67,7 +67,7 @@ Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/meaningfu
 
 Make sure that when you zoom in to 200%, the page is still readable and functional, and the user doesn't need to scroll horizontally to see everything.
 
-People should be also able to increase the size of text to up to 200%. This helps those with partial sight to read your content comfortably. Although this change is implemented in code, it's important to keep it in mind when designing page layouts. Check that the text can flow at a larger size and is not limited by a fixed-width or fixed-height layout.
+People should be also able to increase the size of text to up to 200%. This helps those with partial sight to read your content comfortably. Although this change is implemented in code, it's important to keep it in mind when designing page layouts. Check that the text can flow at a larger size and isn’t limited by a fixed-width or fixed-height layout.
 
 > **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
 
@@ -114,7 +114,7 @@ Make sure that your media content (videos, images, etc.) is accessible to hearin
 
 @## Forms
 
-![The illustration is in two parts; "Don't" on the left and "Good" on the right. In the "Don't" section, two input fields are shown - one labeled "Phone number" and the other labeled "Company name." There are no helpful hints or placeholders. The "Good" side shows a more user-friendly form. The first input is labeled "Phone number" and includes the USA flag and telephone code, so the user doesn't need to remember it. The second input is labeled "Company name" and includes the placeholder "Enter keywords you need." There's also a hint below the input box that says "E.g., if your company is 'Apple,' then type in 'iPhone, Mac'."](/core-principles/a11y/static/forms.png)
+![The illustration is in two parts; "Don't" on the left and "Good" on the right. In the "Don't" section, two input fields are shown - one labeled "Phone number" and the other labeled "Company name." There are no helpful hints or placeholders. The "Good" side shows a more user-friendly form. The first input is labeled "Phone number" and includes the USA flag and telephone code, so the user doesn't need to remember it. The second input is labeled "Company name" and includes the placeholder "Enter keywords you need." There's also a hint below the input box that says "For example, if your company is 'Apple,' then type in 'iPhone, Mac'."](/core-principles/a11y/static/forms.png)
 
 Provide instructions and hints to help users avoid mistakes when filling out a form.
 

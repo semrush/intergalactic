@@ -32,7 +32,7 @@ Any design token from the [tokens list](/style/design-tokens/#semantic_tokens) m
 
 @## Local theme
 
-We do not recommend using tokens for local theming or specific instances, because it can lead to visual inconsistencies within the design system and may require more effort to maintain visual decisions. Besides, using tokens only for a certain component will cause changes to be applied to the internal content of the component as well, which may be unnecessary.
+We don’t recommend using tokens for local theming or specific instances, because it can lead to visual inconsistencies within the design system and may require more effort to maintain visual decisions. Besides, using tokens only for a certain component will cause changes to be applied to the internal content of the component as well, which may be unnecessary.
 
 If you do need to make pointed changes, then instead of using design tokens, you need to use **sstyled** and apply the styles directly to the component.
 

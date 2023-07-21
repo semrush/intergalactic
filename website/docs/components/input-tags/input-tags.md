@@ -27,7 +27,7 @@ When there are too many tags to fit within the input, the input field's height i
 
 > To learn more about tags, refer to the [Tag](/components/tag).
 
-In most cases, we recommend using tags with the `primary` type and the `muted` theme for entering homogeneous information in these inputs. It is not recommended to use the [Secondary tag](/components/tag/) inside the input as it adds unnecessary visual noise with its border.
+In most cases, we recommend using tags with the `primary` type and the `muted` theme for entering homogeneous information in these inputs. It isn’t recommended to use the [Secondary tag](/components/tag/) inside the input as it adds unnecessary visual noise with its border.
 
 ![](static/default-tag.png)
 
@@ -57,7 +57,7 @@ If the input field doesn't have preset options and allows users to enter any dat
 
 The text entered by the user is automatically converted into a tag inside InputTags in the following cases:
 
-- When the input field loses focus (e.g., by tabbing out).
+- When the input field loses focus (for example, by tabbing out).
 - When the user presses the `Enter` key.
 - When entering a punctuation separator ("," , ";" , "|").
 - When there is a double space.
@@ -75,9 +75,9 @@ If the text cursor is positioned in front of a tag, pressing the `Delete` key wi
 
 @## Handling long text within a tag
 
-> Note that this behavior is not recommended for full accessibility. Web page content should be responsive and adaptable to small viewport widths, text enlargement, and changes in text spacing.
+> Note that this behavior isn’t recommended for full accessibility. Web page content should be responsive and adaptable to small viewport widths, text enlargement, and changes in text spacing.
 
-You can set a maximum width for tags, although it is not necessary in all cases. If the tag text exceeds the specified width, truncate it with an ellipsis. Hovering over the tag will display a tooltip with the full text of the tag.
+You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an ellipsis. Hovering over the tag will display a tooltip with the full text of the tag.
 
 ![](static/ellipsis.png)
 

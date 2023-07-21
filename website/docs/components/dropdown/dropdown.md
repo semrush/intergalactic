@@ -22,7 +22,7 @@ Dropdown component consists of `Dropdown.Trigger` and `Dropdown.Popper`.
 
 The component doesn't have any fixed sizes since they are defined by the content inside it.
 
-> If dropdown changes its state while user interacts with it, do not change the dropdown size (width and height).
+> If dropdown changes its state while user interacts with it, don’t change the dropdown size (width and height).
 
 ### Trigger
 
@@ -54,7 +54,7 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 
 @## Usage in UX/UI
 
-- Do not use dropdown inside dropdown.
+- Don’t use dropdown inside dropdown.
 - When dropdown is opened, the trigger should get the `active` state.
 
 ![](static/dropdown-trigger-yes-no.png)

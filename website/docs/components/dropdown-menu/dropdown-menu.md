@@ -12,6 +12,8 @@ tabName: Design
 
 DropdownMenu has two sizes.
 
+@table-caption DropdownMenu sizes
+
 | Size | Appearance example and indents |
 | ---- | ------------------------------ |
 | M    | ![](static/dropdown-m.png)     |
@@ -20,6 +22,8 @@ DropdownMenu has two sizes.
 ### Width
 
 The width of the dropdown can be defined several ways:
+
+@table-caption DropdownMenu width
 
 |        | Example    |
 | ------ | ---------- |
@@ -40,8 +44,8 @@ The list always drops down, regardless of space availability under the trigger. 
 
 @## States
 
-- If the list is taking a long time to load or filter results (e.g., due to a slow connection), the dropdown should display "Loading...".
-- If a user enters a value that is not in the list, the dropdown should display "Nothing found".
+- If the list is taking a long time to load or filter results (for example, due to a slow connection), the dropdown should display "Loading...".
+- If a user enters a value that isn’t in the list, the dropdown should display "Nothing found".
 - If there are backend errors, a warning message should be displayed with the text "Something went wrong. Please try again later."
 
 ![](static/loading-flow.png)
@@ -50,7 +54,7 @@ The list always drops down, regardless of space availability under the trigger. 
 
 @## Data loading
 
-If the list takes time to load, such as when the system cannot load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger is not clickable and remains in the default state.
+If the list takes time to load, such as when the system cannot load it all at once or when searching for data elsewhere, change the `Chevron` icon to a spinner with XS size. In this case, the trigger isn’t clickable and remains in the default state.
 
 For more information about trigger states, refer to [Select / Multiselect](/components/select/#a24650).
 
@@ -60,11 +64,13 @@ For more information about trigger states, refer to [Select / Multiselect](/comp
 
 If the list includes a search input, it should automatically receive focus when the user opens the dropdown.
 
-As the user enters a value into the input, only the items that match the input should remain in the list. Do not highlight these items in this case.
+As the user enters a value into the input, only the items that match the input should remain in the list. Don’t highlight these items in this case.
 
 @## List item states
 
 ### States
+
+@table-caption DropdownMenu item states
 
 |                     | Appearance                                                                           | Tokens                                |
 | ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------- |
@@ -84,7 +90,7 @@ The dropdown list can be separated by [Divider](/components/divider/).
 
 ### Title
 
-List item can be a title. It does not have `hover` or `active` state and it is not clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
+List item can be a title. It does not have `hover` or `active` state and it isn’t clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
 
 ![](static/headings.png)
 
@@ -106,6 +112,8 @@ The item with button should have the same hover as a regular item in the list.
 
 This item with such a button adds a new item and has the following states:
 
+@table-caption DropdownMenu addition button states
+
 | State                  | Appearance example                      | Description                                                                                                                                                                                                                                                   |
 | ---------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Default trigger button | ![](static/button-1.png)  | Trigger has the same styles as a regular item.                                                                                                                                                                                                                |
@@ -117,6 +125,8 @@ This item with such a button adds a new item and has the following states:
 #### Button inside the item
 
 You can add an icon to the right of an item for an additional action.
+
+@table-caption Button inside the item cases of use
 
 | Case          | Appearance example                        | Description                                                                                                                                                                                                                                      |
 | ------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -147,11 +157,13 @@ You can put the following addons before and after the text inside the list item:
 
 Before the text you can place an icon, flag or image. In this case icon always has the color of the text.
 
-| Addon        | Appearance example                   |
-| ------------ | ------------------------------------ |
+@table-caption Addon before the text examples
+
+| Addon        | Appearance example         |
+| ------------ | -------------------------- |
 | Icon         | ![](static/icon-addon.png) |
 | Flag         | ![](static/flag-addon.png) |
-| Image/avatar | ![](static/pic-addon.png)   |
+| Image/avatar | ![](static/pic-addon.png)  |
 
 ### Addon after the text
 
@@ -179,7 +191,7 @@ You can place a text counter after the text. It should have the same size that i
 
 ### Badge
 
-Badge can be placed after the text. The margin between the text and the badge is always 4px. If item with badge is selected, then do not show badge in the trigger.
+Badge can be placed after the text. The margin between the text and the badge is always 4px. If item with badge is selected, then don’t show badge in the trigger.
 
 ![badge](static/badge.png)
 
@@ -187,8 +199,10 @@ Badge can be placed after the text. The margin between the text and the badge is
 
 You can add additional text with `--text-secondary` color under the main text of the item.
 
-| Size of the list | Appearance example                          | Tokens     |
-| ---------------- | ------------------------------------------- | ---------- |
+@table-caption Secondary text sizes
+
+| Size of the list | Appearance example         | Tokens                  |
+| ---------------- | -------------------------- | ----------------------- |
 | M                | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
 | L                | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
 
@@ -198,11 +212,13 @@ If DropdownMenu has more than seven items, show scroll. We also recommend adding
 
 ![list-scroll](static/scroll-1.png)
 
-> If you use a DropdownMenu for a menu, show all the items even if there are more than seven. It's important for the user to see all available options, especially if there are links or different controls. We do not recommend using a scroll for such menus.
+> If you use a DropdownMenu for a menu, show all the items even if there are more than seven. It's important for the user to see all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
 
 ### Fixed item
 
 You can fix an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/) and fixed while scrolling the list.
+
+@table-caption Fixed item examples
 
 | Item content      | Appearance example                                                                            | Description                                                                                                                                                                           |
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -223,7 +239,7 @@ Nested groups will be hidden after a delay of 0.3 seconds in the following cases
 
 - When the user hovers over another item in the parent list.
 - When the mouse cursor moves away from the dropdown.
-- When the entire dropdown closes (e.g., by pressing the `Esc` button).
+- When the entire dropdown closes (for example, by pressing the `Esc` button).
 
 If you select a nested item, only its name will be displayed in the trigger, without the name of the parent item.
 

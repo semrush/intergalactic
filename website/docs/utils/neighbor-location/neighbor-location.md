@@ -36,7 +36,7 @@ If you group secondary buttons, the left one will hide it's right border.
 
 ![](static/secondary-buttons-group.png)
 
-> Do not group tertiary buttons this way.
+> Don’t group tertiary buttons this way.
 
 @example neighbor-location
 

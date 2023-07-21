@@ -10,7 +10,7 @@ a11y: AA
 - Navigating through the `<h1>` and `<h2>` give a user an overview of a page and how its content is structured. The `<h3>` through `<h6>` elements provide a quick understanding of the details in each section.
 - Heading tags should be in order. That means an `<h1>` is followed by an `<h2>`, an `<h2>` is followed by a `<h2>` or `<h3>` and so on. It is ok to skip heading levels when going up in order (ex. `<h4>` to `<h1>`).
 - Keep heading tags consistent. Inconsistently implementing headings can create confusion and frustration for users using assistive technologies.
-- Do not style text to give the visual appearance of headings – use actual heading tags.
+- Don’t style text to give the visual appearance of headings – use actual heading tags.
 
 _Source – [A11y style guide](https://a11y-style-guide.com/style-guide/section-structure.html#kssref-structure-headings)_
 
@@ -32,7 +32,7 @@ Make sure that the user can easily read the text on the page.
 
 - **Set the paragraph width for comfortable reading**. Don't make paragraphs too long or too short: 45 to 75 characters is an acceptable length, 66 is optimal. Shorter text is good for forms, image captions, and unimportant notes.
 
-- **Choose a legible font**. It's recommended to use sans serif fonts for interfaces and serif fonts for long documents, but this is not an absolute rule. Make sure that your font:
+- **Choose a legible font**. It's recommended to use sans serif fonts for interfaces and serif fonts for long documents, but this isn’t an absolute rule. Make sure that your font:
 
   - Reads well regardless of the scale
   - Has large-height lowercase letters (x-height)
@@ -47,7 +47,7 @@ Make sure that the user can easily read the text on the page.
 
 @## Resources
 
-[Use of Color](https://www.w3.org/WAI/WCAG21/quickref/#use-of-color) – color is not used as the only visual means of
+[Use of Color](https://www.w3.org/WAI/WCAG21/quickref/#use-of-color) – color isn’t used as the only visual means of
 conveying information, indicating an action, prompting a response, or distinguishing a visual element.
 _(Level A)_
 

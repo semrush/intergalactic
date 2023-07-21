@@ -14,7 +14,12 @@ tabName: Design
 
 @## Component composition
 
-![](static/margins.png)
+![](static/button-composition.png)
+
+Button consists of:
+
+1. `Button.Text`
+2. `Button.Addon`
 
 `Button.Text` has margins on the right and left sides. You can add addons before and after the text. As addons you can use:
 
@@ -23,14 +28,60 @@ tabName: Design
 - [Badge](/components/badge/),
 - [Flag](/components/flags/).
 
-Addon before the text has margin-left, while the trailing addon has margin-right.
+Addon before the text has `margin-left`, while the trailing addon has `margin-right`.
 
-@## Sizes
+@## Sizes and margins
 
-| Button size  | Icon size | Appearance example             | Description                                                                                                              |
-| ------------ | --------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+@table-caption Button sizes and margins
+
+| Button size (height in px)  | Icon size | Margins             | Description     |
+| --------------------------- | --------- | ------------------- | --------------- |
 | **M (28px)** | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
+| **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
+
+@## Button types and themes
+
+### Types
+
+Intergalactic design system has three button types (`use` property in API):
+
+- `primary`: Main accent button for filters and basic actions on the page.
+- `secondary`: Default non-accent button for secondary/repetitive actions on the page.
+- `tertiary`: Button type for third-party actions on the page. The tertiary button can be used when there is enough space and a large click area is needed.
+
+All button types can be used on a white and gray background, as well as on a transparent colored background.
+
+@table-caption Button types
+
+| Button type | Appearance example               |
+| ----------- | -------------------------------- |
+| `primary`   | ![](static/button-primary.png)   |
+| `secondary` | ![](static/button-secondary.png) |
+| `tertiary`  | ![](static/button-tertiary.png)  |
+
+### Themes
+
+You can use themes for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale) guide.
+
+Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
+
+@table-caption Button themes
+
+| Button type | Muted      | Info                 | Success              | Danger          | Invert |
+| ----------- | ---------- | -------------------- | -------------------- | --------------- | ------ |
+| `primary`   | _no theme_ | ![](static/info-butt.png) | ![](static/success-butt.png) | ![](static/danger-butt.png) | ![](static/invert-normal.png) |
+| `secondary` | ![](static/secondary-muted.png)  | _deprecated_ | _no theme_ | _no theme_ | ![](static/invert-second-normal.png) |
+| `tertiary`  | ![](static/tertiary-muted.png) | ![](static/tertiary-info.png)  | _no theme_ | _no theme_ | ![](static/invert-tertiary-normal.png) |
+
+@## Button states
+
+@table-caption States for all buttons types and themes
+
+| Button type | Normal    | Hover       | Active        | Loading        | Disabled     |
+| ----------- | --------- | ----------- | ------------- | -------------- | ------------ |
+| `primary`     | ![](static/button-normal.png) | ![](static/button-hover.png) | ![](static/button-active.png) | ![](static/button-loading.png) | ![](static/button-disabled.png) |
+| `secondary`   | ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
+| `tertiary`    | ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
 
 @## Button width
 
@@ -40,7 +91,7 @@ The button width is determined by its content. But it can also be stretched to a
 w="100%"
 ```
 
-It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it is not good to make the button small-sized in such cases.
+It is necessary when the button text is short, but the button is a CTA on the page or in a modal window, or it performs an important action. Also, in terms of visual hierarchy, it isn’t good to make the button small-sized in such cases.
 
 ![](static/button-width.png)
 
@@ -52,55 +103,11 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 ![](static/button-width3.png)
 
-@## Button types
-
-Intergalactic design system has three button types (`use` in API). All button types can be used on a white and gray background, as well as on a transparent colored background.
-
-### Primary
-
-Main accent button for filters and basic actions on the page.
-
-| Normal                              | Hover                             | Active                              | Loading                               | Disabled                                |
-| ----------------------------------- | --------------------------------- | ----------------------------------- | ------------------------------------- | --------------------------------------- |
-| ![](static/button-normal.png) | ![](static/button-hover.png) | ![](static/button-active.png) | ![](static/button-loading.png) | ![](static/button-disabled.png) |
-
-### Secondary
-
-Default non-accent button for secondary/repetitive actions on the page.
-
-| Normal                          | Hover                                | Active                                 | Loading                                  | Disabled                                   |
-| ------------------------------- | ------------------------------------ | -------------------------------------- | ---------------------------------------- | ------------------------------------------ |
-| ![](static/secondary.png) | ![](static/secondary-hover.png) | ![](static/secondary-active.png) | ![](static/secondary-loading.png) | ![](static/secondary-disabled.png) |
-
-### Tertiary
-
-Button type for third-party actions on the page. The tertiary button can be used when there is enough space and a large click area is needed.
-
-| Normal                         | Hover                               | Active                                | Loading                                 | Disabled                                  |
-| ------------------------------ | ----------------------------------- | ------------------------------------- | --------------------------------------- | ----------------------------------------- |
-| ![](static/tertiary.png) | ![](static/tertiary-hover.png) | ![](static/tertiary-active.png) | ![](static/tertiary-loading.png) | ![](static/tertiary-disabled.png) |
-
-@## Themes
-
-For the primary button you can use themes according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale) guide.
-
-| Info                                 | Success                                    | Danger                                   |
-| ------------------------------------ | ------------------------------------------ | ---------------------------------------- |
-| ![](static/info-butt.png) | ![](static/success-butt.png) | ![](static/danger-butt.png) |
-
-### Invert theme
-
-Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
-
-|           | Normal                                       | Hover                                      | Active                                       | Loading                                        | Disabled                                         |
-| --------- | -------------------------------------------- | ------------------------------------------ | -------------------------------------------- | ---------------------------------------------- | ------------------------------------------------ |
-| Primary   | ![](static/invert-normal.png)          | ![](static/invert-hover.png)          | ![](static/invert-active.png)          | ![](static/invert-loading.png)          | ![](static/invert-disabled.png)          |
-| Secondary | ![](static/invert-second-normal.png)   | ![](static/invert-second-hover.png)   | ![](static/invert-second-active.png)   | ![](static/invert-second-loading.png)   | ![](static/invert-second-disabled.png)   |
-| Tertiary  | ![](static/invert-tertiary-normal.png) | ![](static/invert-tertiary-hover.png) | ![](static/invert-tertiary-active.png) | ![](static/invert-tertiary-loading.png) | ![](static/invert-tertiary-disabled.png) |
-
 @## Margins between buttons
 
 **The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+
+@table-caption Margins between buttons
 
 | L (40px)                 | M (28px)                 |
 | ------------------------ | ------------------------ |
@@ -109,7 +116,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 @## Usage in UX/UI
 
 - Try to have one call-to-action button on the page in the modal window. _For example, one green button._
-- We recommend you do not disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
+- We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
 - If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
 
@@ -126,16 +133,16 @@ We recommend using a button with an icon and text in cases when:
 
 - the button is a CTA, and it needs an additional visual accent (icon);
 - the interface has enough space for buttons;
-- user is not yet familiar with the functionality of the button, and icon or only text may not be enough for them to understand.
+- user isn’t yet familiar with the functionality of the button, and icon or only text may not be enough for them to understand.
 
 ### Icon-only button
 
 We recommend using the icon-only button if:
 
-- interface has not enough space;
+- interface hasn’t enough space;
 - user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
-> **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon is not the obvious one.
+> **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
 
 @## Button label
 

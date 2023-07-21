@@ -65,7 +65,7 @@ The list of “empty” states in the widgets:
 - No data
 - Nothing found
 - No more results
-- Product is not set up
+- Product isn’t set up
 - Something went wrong (has also specific version: "Cannot filter data")
 
 @## No data
@@ -82,7 +82,7 @@ Use this state, when for some reason there is no data or system cannot show it. 
 | ![](static/big-empty.png)         | ![](static/medium-empty.png)         | Title: "Nothing found". Description: {Hint message}. |
 | ![](static/big-empty-filters.png) | ![](static/medium-empty-filters.png) | Title: "Nothing found". Description: {Hint message}. |
 
-> **Be brief**. Do not write too much text in these states. Two or three short sentences are enough.
+> **Be brief**. Don’t write too much text in these states. Two or three short sentences are enough.
 
 If your widget has width less than 300px, you may leave just the title with styles of the description text. And hide the description into the Info icon with M size.
 
@@ -126,7 +126,7 @@ If your widget has width less than 300px, you may leave just the title with styl
 
 ![](static/small-error.png)
 
-### We do not know that there are problems at the backend
+### We don’t know that there are problems at the backend
 
 Show the following instead of the data in this case:
 
@@ -170,7 +170,7 @@ Use this state, when the data is absent because user needs to connect something.
 - In some cases the product may be set up at once by clicking the corresponding button.
 - In other cases user should write to the specified email address for setting up the product.
 
-> Title and description must be written in a positive form. _For example, write: “Set up the service” instead of “The service is not set up”._
+> Title and description must be written in a positive form. _For example, write: “Set up the service” instead of “The service isn’t set up”._
 
 Show the following instead of the data in this state:
 

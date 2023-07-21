@@ -36,7 +36,7 @@ Animation is added per data block (widgets, tables, charts). There is no need to
 
 Content appearance animation is 300ms with `ease-out`. Skeleton gradient animation has 2000ms duration by default.
 
-> In case you do not need animation in the Skeleton, you can stop the animation using the property `duration="0"` 🕺🏻
+> In case you don’t need animation in the Skeleton, you can stop the animation using the property `duration="0"` 🕺🏻
 
 @## How to skeleton different components and elements on a page?
 
@@ -90,7 +90,7 @@ Skeleton of images depends on their size:
 
 ### Icons
 
-In most cases, do not skeleton the icons. Either do not show them or leave them in the `disabled` state.
+In most cases, don’t skeleton the icons. Either don’t show them or leave them in the `disabled` state.
 
 If it's necessary to show a Skeleton "bone" instead of an icon, the size of "bone" should be equal to the size of the icon. If there are several icons, the distance between them should be a multiple of 4.
 
@@ -98,7 +98,7 @@ If it's necessary to show a Skeleton "bone" instead of an icon, the size of "bon
 
 General recommendations:
 
-- Do not show axes and labels.
+- Don’t show axes and labels.
 - Replace legend with Skeleton.
 
 For a detailed guide, see the [Chart principles](/data-display/d3-chart).
@@ -110,11 +110,11 @@ For a detailed guide, see the [Chart principles](/data-display/d3-chart).
 | 1. Buttons or link takes the user to another page.        | While initial loading of the page/widget, leave such buttons and links as is. |
 | 2. Buttons or link submits data or confirm user's action. | When loading such controls, **set such buttons and links to disabled state**. |
 
-> When you do not know what type (primary or secondary) of the button should be loaded (depends on different extreme cases of UX script), skeleton the button.
+> When you don’t know what type (primary or secondary) of the button should be loaded (depends on different extreme cases of UX script), skeleton the button.
 
 @## When to use
 
-Skeleton shows the structure of the page/component as long as it is loaded so that the user has a mental model of the loaded information. In other words, it is a simplified page view. Therefore, it is not recommended to skeleton every component on the page.
+Skeleton shows the structure of the page/component as long as it is loaded so that the user has a mental model of the loaded information. In other words, it is a simplified page view. Therefore, it isn’t recommended to skeleton every component on the page.
 
 Skeleton is recommended for using while/when:
 
@@ -122,14 +122,14 @@ Skeleton is recommended for using while/when:
 - the whole page is loading;
 - complex component is loading.
 
-> It is not recommended to use Skeleton for pages that are indexed by Google (for example, blog pages).
+> It isn’t recommended to use Skeleton for pages that are indexed by Google (for example, blog pages).
 
 @## Loaded data
 
 Data is more important than skeletons, animations and everything else. As soon as it is possible to show data, show it.
 
 - Data of widgets can be loaded asynchronously and not in sequence. The main thing is that the content of the widget is loaded simultaneously.
-- It is better to load the data in tables either at once or sequentially so that the lines do not change their places.
+- It is better to load the data in tables either at once or sequentially so that the lines don’t change their places.
 - In some cases, it is better to load data in groups: panel summary group, select group, etc.
 
 > If the loading takes more than 5 seconds, but it is necessary to show the already loaded data, it is recommended to use Skeleton paired with the [ProgressBar](/components/progress-bar/).
@@ -143,13 +143,13 @@ The information on the page can be divided into 2 categories:
 
 ### Static information (does not need Skeleton)
 
-- Text, data and components that do not depend on user actions and product settings.
+- Text, data and components that don’t depend on user actions and product settings.
 - Product name.
 - Widget titles, tips.
 - Table headers.
 - Components of the action, which are buttons, inputs, toggles and pills.
 
-These components do not require additional loading and can be displayed immediately.
+These components don’t require additional loading and can be displayed immediately.
 
 ### Dynamic information (should be skeletonized)
 
@@ -204,7 +204,7 @@ In addition, the following components should never use Skeleton, as they should 
 
 ### Summary
 
-- Do not show trends, information and additional links.
+- Don’t show trends, information and additional links.
 - Info icons should be active while initial loading.
 - Icons inside the PanelSummary are replaced with Skeleton “bones" with the same size.
 - The values are replaced with Skeleton “bones" with the size of value's line-height.
@@ -225,7 +225,7 @@ At the initial loading of the page, the counters in the pills can be skeletonize
 
 Skeletonize them same way as Summary.
 
-- Do not show trends, information and additional links.
+- Don’t show trends, information and additional links.
 - The values are replaced with Skeleton “bones" with the size of value's line-height.
 
 ![skeleton-big-pills](static/big-pills.png)
@@ -244,11 +244,11 @@ Static information should be shown immediately. **It should not be disabled**.
 
 ![skeleton-dynamic-info](static/dynamic-yes-no.png)
 
-**Skeleton only main information**, and do not at all additional information. _For example, do not show trends and tags while initial loading of the page._
+**Skeleton only main information**, and don’t at all additional information. _For example, don’t show trends and tags while initial loading of the page._
 
 ![skeleton-color](static/color-yes-no.png)
 
-**Do not skeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main information.
+**Don’t skeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main information.
 
 ![skeleton-link](static/link-yes-no.png)
 
@@ -264,7 +264,7 @@ Show dropdowns and selects immediately while initial loading.
 
 ![](static/dropdown-yes-no.png)
 
-**Do not add to much Skeleton "bones".** Add no more than three. Otherwise you'll increase the page load time.
+**Don’t add to much Skeleton "bones".** Add no more than three. Otherwise you'll increase the page load time.
 
 ![](static/count-yes-no.png)
 

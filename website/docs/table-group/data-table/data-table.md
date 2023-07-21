@@ -69,7 +69,7 @@ To fix table columns, pass the `fixed` property to `<DataTable.Column/>`.
 
 @## Multi-level header
 
-To create a multi-level header, insert columns into each other. However, the `name` is not applicable for the group column.
+To create a multi-level header, insert columns into each other. However, the `name` isn’t applicable for the group column.
 
 @example multi-header
 
@@ -91,7 +91,7 @@ To apply some properties to a table row, you need to define `<DataTable.Row/>`. 
 
 > `<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>`.
 >
-> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) is not allowed.
+> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
 
 @example row
 
@@ -101,7 +101,7 @@ To apply some properties to a table cell, you need to define `<DataTable.Cell/>`
 
 > `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
 >
-> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) is not allowed.
+> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
 
 @example cell
 
@@ -211,7 +211,7 @@ To add a border to a column, you need to pass `vBorders` properties to that colu
 
 @## Сolumn expand
 
-The active column will expand if there is not enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
+The active column will expand if there isn’t enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
 
 @example expanding-column
 

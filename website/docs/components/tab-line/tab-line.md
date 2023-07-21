@@ -10,7 +10,7 @@ tabName: Design
 
 **TabLine** is a component for navigating inside a report and grouping homogeneous content in the interface.
 
-**Do not use this component:**
+**Don’t use this component:**
 
 - for the main navigation in your interface. For this purpose use the main menu instead as it is more appropriate in terms of visual hierarchy;
 - for switching states. For this case use [Switch](/components/switch/) or [Radio](/components/radio/) instead.
@@ -31,7 +31,7 @@ Size (height in px) | Margins                    |
 
 Addons inside TabLine.Item has the same margins as addons inside the [Button](/components/button/) have.
 
-> Do not place icon without a text inside TabLine.Item.
+> Don’t place icon without a text inside TabLine.Item.
 
 | Addon   | Appearance example               |
 | ------- | -------------------------------- |
@@ -56,7 +56,7 @@ Use TabLine with border-bottom to visually separate navigation from the content 
 
 ### Tabs without border
 
-Use TabLine with border-bottom if you do not need to separate navigation from the content. Usually it's useful for switching content inside a widget.
+Use TabLine with border-bottom if you don’t need to separate navigation from the content. Usually it's useful for switching content inside a widget.
 
 ![](static/tab-without-border.png)
 
@@ -86,7 +86,7 @@ TabLine is always placed under the [ProductHead](/components/product-head/) of t
 
 @## Usage in UX/UI
 
-In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
+In cases when you have many tabs or there isn’t enough space for the tab text, collapse the text into the `ellipsis`.
 
 > Be sure to add the tooltip with the full text string to such tabs.
 

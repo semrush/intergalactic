@@ -12,7 +12,7 @@ Refer to [A11y style guide](https://a11y-style-guide.com/style-guide/section-str
 
 @## Considerations for designers
 
-If you need to show different states of the table rows or cells, please do not rely solely on color to convey information. Add some non-color visual indicator of the state, such as text or an icon with appropriate alternative text into the cells.
+If you need to show different states of the table rows or cells, please don’t rely solely on color to convey information. Add some non-color visual indicator of the state, such as text or an icon with appropriate alternative text into the cells.
 
 @## Other recommendations
 

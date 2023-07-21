@@ -84,7 +84,7 @@ Metrics can be placed not only in separate widgets, but also inside the table ce
 
 @## Title
 
-- If there are a lot of metrics and they do not fit into the page width, collapse their title into `ellipsis`.
+- If there are a lot of metrics and they don’t fit into the page width, collapse their title into `ellipsis`.
 - Show the full title of the metric while hovering the title in the tooltip. You can also duplicate the title in the `Info` icon tooltip.
 
 ![](static/minitrend3.png)
@@ -92,7 +92,7 @@ Metrics can be placed not only in separate widgets, but also inside the table ce
 @## Difference value
 
 - Don't show the metric's title in the tooltip, because we already have it in the summary.
-- While hovering diff value, show the tooltip with the previous and current value next to the metric. Do not abbreviate the values in the tooltip.
+- While hovering diff value, show the tooltip with the previous and current value next to the metric. Don’t abbreviate the values in the tooltip.
 - You can show both absolute and relative values inside the tooltip if needed.
 
 ![](static/diff.png) ![](static/diff2.png)
@@ -105,7 +105,7 @@ Minitrends is a shortcut version of charts for displaying a trend, comparing a m
 
 | Case                                                                                                                            | Appearance example                  |
 | ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| If the metrics do not fit into the maximum page width, arrange the data in a column – **move the minitrends under the metric.** | ![](static/minitrend2.png) |
+| If the metrics don’t fit into the maximum page width, arrange the data in a column – **move the minitrends under the metric.** | ![](static/minitrend2.png) |
 | If your metrics use the same type of minitrends (for example, linear), make them the same width.                                | ![](static/minitrend1.png) |
 
 ### Tooltip
@@ -153,6 +153,6 @@ You can "hide" more detailed information (a whole widget with a full chart, for 
 Summary widget can have maximum and minimum width at different resolutions.
 
 - The maximum width of the Summary always depends on the content it contains.
-- **Do not stretch the metrics widget to the full width of the page.**
+- **Don’t stretch the metrics widget to the full width of the page.**
 
 @page summary-code

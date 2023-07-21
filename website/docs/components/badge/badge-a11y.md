@@ -4,7 +4,7 @@ a11y: AA
 ---
 
 
-Do not hide the badges from assistive technology users with the `aria-hidden` attribute.
+Don’t hide the badges from assistive technology users with the `aria-hidden` attribute.
 
 @## Other recommendations
 

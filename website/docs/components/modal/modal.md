@@ -34,6 +34,8 @@ Don't show modals before the user has interacted with the interface. **Modal win
 
 @## Component composition
 
+![](static/modal-composition.png)
+
 The modal window consists of:
 
 - `Modal.Window`.
@@ -41,8 +43,6 @@ The modal window consists of:
 - Content.
 - `Modal.Close`.
 - `Modal.Overlay`.
-
-![](static/modal-scheme.png)
 
 @## Modal window types
 
@@ -116,7 +116,7 @@ When the modal window is closed, the focus should return to its trigger.
 
 If the potential consequences of accidentally closing the window are significant, please alert the user about the potential loss of information.
 
-It is recommended to save the information entered by the user when closing and reopening the modal window. If it is not possible to do so, inform users that their entered data will be lost upon closing the window.
+It is recommended to save the information entered by the user when closing and reopening the modal window. If it isn’t possible to do so, inform users that their entered data will be lost upon closing the window.
 
 ### Loading
 

@@ -15,7 +15,7 @@ title: Example
 
 @## Counter in forms
 
-> As design guide recommends, the counter changes color to orange and then red when the limit is reached and exceeded, respectively. This rule is not implemented in the example.
+> As design guide recommends, the counter changes color to orange and then red when the limit is reached and exceeded, respectively. This rule isn’t implemented in the example.
 
 @example counter-textarea
 

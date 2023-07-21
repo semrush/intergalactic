@@ -23,7 +23,7 @@ Numeric values can represent quantities of something, such as:
 - Price.
 - Age.
 
-Dates and various codes (e.g., pin codes) are also examples of numeric values.
+Dates and various codes (for example, pin codes) are also examples of numeric values.
 
 **InputNumber offers the following features:**
 
@@ -32,7 +32,7 @@ Dates and various codes (e.g., pin codes) are also examples of numeric values.
 - You can set minimum and maximum values that the user can enter.
 - You can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
 
-> **HTML specifications do not recommend using InputNumber for numeric values that contain non-numeric characters (e.g., slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
+> **HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
 >
 > For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
 
@@ -59,7 +59,7 @@ Stepper buttons are enabled when the InputNumber field receives focus. The targe
 >
 > _When testing mobile flight booking forms, we found people preferred steppers for selecting the number of passengers. No dropdown menu required, especially since there’s a maximum of 8 travelers allowed and the vast majority select 1–2 travelers._
 >
-> The only downside is that the browser-provided spinners are tiny, which make them difficult to use. And some brows- ers don’t show them at all. We can solve this problem by creating our own custom stepper component.
+> The only downside is that the browser-provided spinners are tiny, which make them difficult to use. And some browsers don’t show them at all. We can solve this problem by creating our own custom stepper component.
 >
 > _from [Form Design Patterns](https://www.smashingmagazine.com/printed-books/form-design-patterns/)_
 

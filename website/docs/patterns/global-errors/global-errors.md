@@ -283,7 +283,7 @@ Your payment cannot be accepted
 
 **Message**
 
-Unfortunately, we do not accept payments from {Russian Federation}.
+Unfortunately, we don’t accept payments from {Russian Federation}.
 
 **Controls**
 
@@ -305,7 +305,7 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 
 - Most likely: if the owner just signed up for Cloudflare it can take a few minutes for the website's information to be distributed to our global network.
 
-- Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (e.g., a hosting provider) and the provider's DNS fails.
+- Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (for example, a hosting provider) and the provider's DNS fails.
 
   - Ray ID: {000000000000000}
 
@@ -365,7 +365,7 @@ There are two possible cases of the pattern's use:
 2. In other cases, it is recommended to add controls allowing the user:
    2.1 to leave the page:" Go to homepage";
    2.2 to take some actions to get rid of this state and load the page: "Reload page" / "Try again" / "Submit".
-3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something is not working.
+3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something isn’t working.
 
 @page global-errors-a11y
 @page global-errors-api
