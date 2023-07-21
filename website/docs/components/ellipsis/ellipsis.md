@@ -35,6 +35,8 @@ To include an ellipsis, use `…` (HTML symbol `&hellip;`).
 
 Ellipsis has two types of text truncation:
 
+@table-caption Ellipsis types
+
 | Type     | Appearance example                                                                                                       | Description                                                                                                                                                                                                                                                           |
 | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `End`    | ![](static/ellipsis-end.png) ![ellipsis at the end with tooltip](static/ellipsis-end-tooltp.png)      | Truncates the end of the text string. It's the most common case. Use an ellipsis at the end of a text string or paragraph to indicate that there is more content, or to shorten a long text string.                                                                   |

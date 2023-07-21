@@ -13,7 +13,7 @@ tabName: Design
 @## Appearance
 
 - The component includes two [comboboxes](/components/auto-suggest/#a70085) inside the input.
-- If the user needs to choose the time in a 12-hour format, then add a button for switching AM/PM. It saves an extra click on the seelct opening.
+- If the user needs to choose the time in a 12-hour format, then add a button for switching AM/PM. It saves an extra click on the select opening.
 
 ### 24-hour format
 
@@ -71,7 +71,7 @@ Validation in this component is required in several cases:
 ### How the validation is performed
 
 - All the fields related to selection of the date and time get the status `invalid`.
-- The tooltip with the description of the error is shown in the first field, upon that the focus is not placed on the field.
+- The tooltip with the description of the error is shown in the first field, upon that the focus isn’t placed on the field.
 - Validation happens by `Submit` of the whole form.
 
 ![](static/validation.png)

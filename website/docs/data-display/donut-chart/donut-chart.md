@@ -27,7 +27,7 @@ The length of each segment is a proportional fraction, and the entire circle is 
 >
 > The creation of the donut chart is credited to the Scottish engineer William Playfair. Back in 1801, he used it to show the proportions of land occupied by the Turkish Empire in Asia, Europe and Africa.
 >
-> The French do not call such charts donut chart, they compare it with round cheese Camembert.
+> The French don’t call such charts donut chart, they compare it with round cheese Camembert.
 >
 > [How to design pie charts](https://visage.co/data-visualization-101-pie-charts/)
 
@@ -138,7 +138,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Null values
 
-If the data for any category is zero, then do not disable the legend. Show 0 as the values in the legend, use `--text-secondary` color. The zero value sector is not displayed on the chart.
+If the data for any category is zero, then don’t disable the legend. Show 0 as the values in the legend, use `--text-secondary` color. The zero value sector isn’t displayed on the chart.
 
 ![](static/donut-null.png)
 
@@ -150,7 +150,7 @@ In this case, display 1% of the sector.
 
 ### Not available data
 
-If for some reason the data is not known or not available, show `n/a` in the legend and tooltip, use `--text-secondary` color.
+If for some reason the data isn’t known or not available, show `n/a` in the legend and tooltip, use `--text-secondary` color.
 
 ![](static/donut-na.png)
 
@@ -174,7 +174,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 @## Usage in UX/UI
 
-> **It is not recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
+> **It isn’t recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
 
 Don't use donut chart to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart).
 

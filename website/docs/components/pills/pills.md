@@ -106,11 +106,11 @@ Clicking on the last pill with an ellipsis in the dropdown displays a list of it
 
 ### Examples of wrong usage
 
-Do not use buttons instead of pills:
+Don’t use buttons instead of pills:
 
 ![](static/pills-butt-yes-no.png)
 
-Do not use pills instead of buttons:
+Don’t use pills instead of buttons:
 
 ![](static/butt-pills-yes-no.png)
 
@@ -118,7 +118,7 @@ If words are too long, you can shorten them into abbreviations that users can un
 
 ![](static/pills-name-yes-no.png)
 
-Do not use a single `Pills.Item`:
+Don’t use a single `Pills.Item`:
 
 ![](static/pills-one-yes-no.png)
 

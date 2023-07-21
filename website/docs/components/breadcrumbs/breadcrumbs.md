@@ -16,7 +16,7 @@ tabName: Design
 - they help you link to other pages on the site (useful for SEO);
 - they allow you to move between higher/lower nesting navigation levels without clicking the forward/backward buttons in the browser.
 
-Do not use breadcrumbs on the main pages.
+Don’t use breadcrumbs on the main pages.
 
 @## Appearance
 
@@ -25,6 +25,8 @@ Links inside this component have custom styles.
 > The last item in the breadcrumbs is always non-clickable.
 
 ![](static/breadcrumbs.png)
+
+@table-caption Breadcrumbs styles
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
@@ -39,13 +41,15 @@ Margins between the links inside the breadcrumbs is 8px.
 
 @## Long links truncation
 
-If there is not enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
+If there isn’t enough place for the breadcrumbs (screen is too small or the text is too long), the last item is collapsed into `ellipsis`.
 
 ![](static/ellipsis.png)
 
 @## Interaction
 
 ![](static/hover.png)
+
+@table-caption Breadcrumbs states
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |

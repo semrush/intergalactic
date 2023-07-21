@@ -30,8 +30,10 @@ The trigger for a ColorPicker is a Select with a circle as the leading addon.
 
 A list of colors can include either a single ColorPicker.Item or multiple ones, which are preview swatches that display all available color values.
 
-| ColorPicker.Item                                             | List of ColorPicker.Items                             |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
+@table-caption List of colors and its items
+
+| ColorPicker.Item     | List of ColorPicker.Items                             |
+| -------------------- | ----------------------------------------------------- |
 | ![](static/colorpicker-item-bg-default.png) | ![](static/colorpicker-inline.png) |
 
 @## Size
@@ -50,10 +52,12 @@ All margins must be [multiples of 4](/layout/box-system/#spacing_system). The de
 
 An item can have two different types:
 
+@table-caption Color items
+
 | Type            | Appearance example                                                             | Usage                                                                                                                 |
 | --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | Item for background color | ![](static/colorpicker-item-bg-default.png) | Use for changing the background color. For example, a user can pick colors to visually separate their competitors. |
-| Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, e.g.                                                                                             |
+| Item for text color      | ![](static/colorpicker-item-text-default.png)    | Use for changing the Tag color, for example                                                                                             |
 
 @## Interaction
 
@@ -61,6 +65,8 @@ An item can have two different types:
 - In the active state, trigger changes its border color to `var(--border-info-active)`.
 
 ### Default item
+
+@table-caption Color item states
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
@@ -71,12 +77,16 @@ An item can have two different types:
 
 ### Item for custom colors
 
+@table-caption Custom color item states
+
 | | Normal | Hover | Active                                              | Usage |
 | ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
 | Background color | ![](static/colorpicker-item-custom-default.png) | ![](static/colorpicker-item-custom-hover.png) | ![](static/colorpicker-item-custom-active.png)      | Use for changing the background color of other components.|
 | Text color | ![](static/colorpicker-item-custom-text-default.png) | ![](static/colorpicker-item-custom-text-hover.png) | ![](static/colorpicker-item-custom-text-active.png) | Use for changing the text and background colors of other components.|
 
 ### Item for adding colors
+
+@table-caption States of item for adding colors
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
@@ -88,11 +98,13 @@ An item can have two different types:
 
 **The recommended width of a dropdown is 188px.** The height of a dropdown list depends on its content.
 
-Showing all available colors in the dropdown menu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
+Showing all available colors in the DropdownMenu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
 
-| Dropdown menu | Dropdown menu with more than 20 colors |
-| ------------------------------------------------------------ | ----------------------------------------------------- |
-| ![](static/dropdown-menu.png) | ![](static/scroll.png) |
+@table-caption DropdownMenu appearance
+
+| DropdownMenu                  | DropdownMenu with more than 20 colors |
+| ----------------------------- | ------------------------------------- |
+| ![](static/dropdown-menu.png) | ![](static/scroll.png)                |
 
 ### Margins and paddings
 

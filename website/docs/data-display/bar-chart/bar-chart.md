@@ -19,12 +19,12 @@ tabName: Design
 Important points to keep in mind when presenting data as a bar chart:
 
 - Always start the Y-axis from zero.
-- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can denote the axes.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
 @## Appearance
 
-If you have two categories of values, you can place them next to each other – this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (e.g., a stacked bar chart).
+If you have two categories of values, you can place them next to each other – this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (for example, a stacked bar chart).
 
 > It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data does not turn into mess.
 
@@ -52,13 +52,13 @@ In some cases some of the values in the data can be very different from the majo
 
 ![](static/outlier-1.png)
 
-> You can read the **[article about other solutions](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).**
+> Read the **[article about other solutions](https://tomhopper.me/2010/08/30/graphing-highly-skewed-data/).**
 
 If there are very large values, you may choose a different chart type which is better suited to solve your problem. Perhaps your visualization needs to focus on these large values?
 
 @## Legend
 
-If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title is not enough.
+If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title isn’t enough.
 
 | Vertical bar chart example      | Horizontal bar chart example    |
 | ------------------------------- | ------------------------------- |
@@ -99,7 +99,7 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 
 ### Start the axes from zero
 
-By comparing columns, we are actually comparing the length. If we do not start the axis from zero, there will be a visual illusion. Check out the charts below. In the wrong case, the axis does not start from zero, and it seems that the value on the right is almost half as large as the value on the left. However, this is not true.
+By comparing columns, we are actually comparing the length. If we don’t start the axis from zero, there will be a visual illusion. Check out the charts below. In the wrong case, the axis does not start from zero, and it seems that the value on the right is almost half as large as the value on the left. However, this isn’t true.
 
 ![](static/deception-yes-no.png)
 

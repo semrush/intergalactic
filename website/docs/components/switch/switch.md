@@ -70,7 +70,7 @@ Avoid negations like "Don't show trending subtopics," as they may create confusi
 
 When creating labels, use verbs to indicate actions, such as "Send by email".
 
-However, in cases where there is limited space in the interface or when the label belongs to a group of switches (e.g., in settings), it is acceptable to use a label without a verb.
+However, in cases where there is limited space in the interface or when the label belongs to a group of switches (for example, in settings), it is acceptable to use a label without a verb.
 
 @page switch-a11y
 @page switch-api

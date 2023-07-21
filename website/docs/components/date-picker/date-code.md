@@ -47,6 +47,6 @@ Date ranges may be customized or switched off at all, by transferring `periods={
 
 @## Week picker
 
-You can manually select a custom period, if needed (e.g., a week) by taking all the control in manual mode.
+You can manually select a custom period, if needed (for example, a week) by taking all the control in manual mode.
 
 @example hover-week

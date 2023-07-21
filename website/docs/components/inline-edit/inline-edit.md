@@ -12,7 +12,7 @@ tabName: Design
 
 - you need to switch between view-only and text editing without reloading the page (for example, edit the title, description or tag);
 - data in the interface is placed tightly, you need to save space;
-- transferring data to the system is not the main task of the interface (for example, additional information and notes in cards).
+- transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
 
 @## Appearance
 

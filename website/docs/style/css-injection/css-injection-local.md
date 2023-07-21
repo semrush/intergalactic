@@ -76,7 +76,7 @@ export default (props) => <Button styles={styles} {...props} />;
 
 Look at the source of styles in GitHub, styles are written in the same format.
 
-- By convention, all of our styled tags are capitalized `S + ComponentName`. You do not need to write styles with the `.button` classes, just use the tag names `SButton`.
+- By convention, all of our styled tags are capitalized `S + ComponentName`. You don’t need to write styles with the `.button` classes, just use the tag names `SButton`.
 - If you need to access the properties of a component, then use `SButton[keybordFocus]` or properties with the value `SButton[size="m"]`.
 - If you need properties like `:hover` and others, then they are available as usual `SButton:hover`.
 

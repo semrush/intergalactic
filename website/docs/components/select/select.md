@@ -83,7 +83,7 @@ The select trigger can contain an icon, flag, or other addon before the text. Th
 
 @## DropdownMenu
 
-You can read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/).
+Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/).
 
 @## Multiselect
 
@@ -121,19 +121,19 @@ In long lists (for example, in the list of countries), the values selected by th
 | ----------------------------- | -------------------------------------------------------- |
 | If nothing is selected, write "Select" + the required value.   | ![](static/multiselect-trigger-1.png) |
 | If everything is selected, write `All`.    | ![](static/multiselect-trigger-2.png) |
-| If the user selects 1 or 2 values, show them in the trigger listing them with commas. If they do not fit, collapse the text in `ellipsis`. | ![](static/multiselect-trigger-3.png) |
+| If the user selects 1 or 2 values, show them in the trigger listing them with commas. If they don’t fit, collapse the text in `ellipsis`. | ![](static/multiselect-trigger-3.png) |
 | **The select has a label.** If more than 2 values are selected, add them to the "Label: N selected" construction. | ![](static/multiselect-trigger-4.png) |
 | **The select does not have a label.** If more than 2 values are selected, add them to the "N selected" construction. | ![](static/multiselect-trigger-5.png) |
 
 ### Search
 
-If the user searches for something and clicks "Select all" or "Deselect all", all found results will be selected or deselected. Other values, those that have not been searched for, do not change their state.
+If the user searches for something and clicks "Select all" or "Deselect all", all found results will be selected or deselected. Other values, those that haven’t been searched for, don’t change their state.
 
 For example, if the user has selected the "Gunship" and then searches for the "A" bands, then clicks "Select all", three more visible bands will be selected. As a result, four values will be marked as selected (three bands that start with "A" and the previously checked "Gunship").
 
 ![](static/multiselect-something-found.png)
 
-Do not show "Select all" or "Deselect all" at the time when the user has searched and got no results.
+Don’t show "Select all" or "Deselect all" at the time when the user has searched and got no results.
 
 ![](static/multiselect-nothing-found.png)
 

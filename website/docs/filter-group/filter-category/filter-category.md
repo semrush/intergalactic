@@ -56,7 +56,7 @@ The counters in the list are optional. If the table is heavy with data, it can b
 
 **Collapse long categories according to the [rules for long URLs](/table-group/table-controls/#a5b913).**
 
-We recommend always add a label to the filter. But, if there is not enough space and if you are sure that without a label, users will understand what kind of filter they are using, you can remove the label.
+We recommend always add a label to the filter. But, if there isn’t enough space and if you are sure that without a label, users will understand what kind of filter they are using, you can remove the label.
 
 ![long category](static/label-cat.png)
 
@@ -143,7 +143,7 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 @## Usage in UX/UI
 
-> Technically, categories do not have nesting, it is purely visual to distinguish between categories.
+> Technically, categories don’t have nesting, it is purely visual to distinguish between categories.
 >
 > **Example:**
 >

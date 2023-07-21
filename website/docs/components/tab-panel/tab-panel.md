@@ -10,7 +10,7 @@ tabName: Design
 
 **TabPanel** is a component for grouping heterogeneous content.
 
-**Do not use this component:**
+**Don’t use this component:**
 
 - for the main navigation in your interface. For this purpose use the main menu instead as it is more appropriate in terms of visual hierarchy;
 - for switching states. For this case use [Switch](/components/switch/) or [Radio](/components/radio/) instead.
@@ -28,7 +28,7 @@ tabName: Design
 
 Addons inside TabLine.Item has the same margins as addons inside the [Button](/components/button/) have.
 
-> Do not place icon without a text inside TabPanel.Item.
+> Don’t place icon without a text inside TabPanel.Item.
 
 | Addon   | Appearance example               |
 | ------- | -------------------------------- |
@@ -54,7 +54,7 @@ Addons inside TabLine.Item has the same margins as addons inside the [Button](/c
 
 @## Usage in UX/UI
 
-In cases when you have many tabs or there is not enough space for the tab text, collapse the text into the `ellipsis`.
+In cases when you have many tabs or there isn’t enough space for the tab text, collapse the text into the `ellipsis`.
 
 > Be sure to add the tooltip with the full text string to such tabs.
 

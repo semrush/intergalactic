@@ -28,7 +28,7 @@ The list below describes roles and attributes that component already has.
 |          | `aria-expanded="true"`    | `button` | Set to `true` when the Accordion panel is expanded, otherwise set to `false`.                                                                                                                                               |
 |          | `aria-controls="ID"`      | `button` | Points to the `ID` of the panel which the header controls.                                                                                                                                                                  |
 |          | `aria-labelledby="IDREF"` | `div`    | Defines the accessible name for the region element. References the accordion header button that expands and collapses the region. `region` elements are required to have an accessible name to be identified as a landmark. |
-|          | `aria-disabled`             |          | The `aria-disabled` state indicates that the element is perceivable but disabled, so it is not editable or otherwise operable. |
+|          | `aria-disabled`             |          | The `aria-disabled` state indicates that the element is perceivable but disabled, so it isn’t editable or otherwise operable. |
 
 @## Considerations for developers
 

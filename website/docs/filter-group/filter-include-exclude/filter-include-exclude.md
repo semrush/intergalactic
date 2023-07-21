@@ -66,7 +66,7 @@ When opening a dropdown texarea immediately gets the focus.
 - If user closes the square bracket in a line, then move the cursor to the next line.
 - **The "AND" logic works in the line between words.**
 - Change the logic between the lines using radio buttons (in the "Include keywords" filter).
-- Do not allow to nest additional square brackets inside square brackets. When user opens (or when inserting) a new open parenthesis, close the previous word and wrap the data onto a new line of data.
+- Don’t allow to nest additional square brackets inside square brackets. When user opens (or when inserting) a new open parenthesis, close the previous word and wrap the data onto a new line of data.
 
 @## Validation
 
@@ -101,7 +101,7 @@ For each error, be sure to show a tooltip with an explanation of what needs to b
 
 @## Abbreviations and tooltips
 
-If the names of filters "Include keywords" and "Exclude keywords" do not fit completely, abbreviate them to "Include" and "Exclude", respectively.
+If the names of filters "Include keywords" and "Exclude keywords" don’t fit completely, abbreviate them to "Include" and "Exclude", respectively.
 
 ![filter tooltips](static/tooltips.png)
 

@@ -4,7 +4,7 @@ title: A11y
 
 @## Considerations for developers
 
-- Use the `label` element, and, in specific cases, other mechanisms (e.g. WAI-ARIA, title attribute etc.), to identify each form control.
+- Use the `label` element, and, in specific cases, other mechanisms (for example, WAI-ARIA, title attribute etc.), to identify each form control.
 - Use the `fieldset` and `legend` elements to group and associate related form controls.
 - Validate input provided by the user and provide options to undo changes and confirm data entry.
 - Use autocomplete attribute for common fields.
@@ -22,7 +22,7 @@ See detailed information about the keyboard support for the all form elements in
 - Use autocomplete for common fields.
 - Notify users about successful task completion, any errors, and provide instructions to help them correct mistakes.
 - Divide long forms into multiple smaller forms that constitute a series of logical steps or stages and inform users about their progress.
-- Don't use inputs in forms without a visible label. Placeholder text is not a suitable substitute as it disappears when users start typing, which is difficult for those with cognitive disabilities. Also, assistive technology may not recognize it as the field's name. Input labels should always be visible.
+- Don't use inputs in forms without a visible label. Placeholder text isn’t a suitable substitute as it disappears when users start typing, which is difficult for those with cognitive disabilities. Also, assistive technology may not recognize it as the field's name. Input labels should always be visible.
 - Use appropriate form layout. Check [advantages and disadvantages of the vertical and horizontal form layouts](/patterns/form/#vertical_form_layout_vs_horizontal_form_layout).
 
 @## Resources

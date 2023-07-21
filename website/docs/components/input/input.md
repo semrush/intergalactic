@@ -35,7 +35,7 @@ The input has two sizes.
 
 @## Label
 
-We recommend adding a visible text label to the input wherever possible. If the input is not required, be sure to mark it with the "optional" text label.
+We recommend adding a visible text label to the input wherever possible. If the input isn’t required, be sure to mark it with the "optional" text label.
 
 @table-caption Input text label sizes
 
@@ -90,7 +90,7 @@ The search input can have a non-clickable icon before the text and the icon for 
 
 You can place [Counter](/components/counter/) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
-> Please do not use the [Tag](/components/tag/) component for the counter. It has a different purpose and functionality.
+> Please don’t use the [Tag](/components/tag/) component for the counter. It has a different purpose and functionality.
 
 @table-caption Input with counter
 

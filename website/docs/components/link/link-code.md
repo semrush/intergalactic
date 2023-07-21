@@ -4,7 +4,7 @@ title: Example
 
 @## Link inside the content
 
-By default, links are displayed as `inline-block` and do not wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
+By default, links are displayed as `inline-block` and don’t wrap properly within the text. To achieve proper wrapping and underlining of links, set `noWrap=false` and `inline=true`.
 
 @example inline
 

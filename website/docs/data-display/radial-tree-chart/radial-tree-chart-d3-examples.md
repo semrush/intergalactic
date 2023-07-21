@@ -23,7 +23,7 @@ Any svg elements may be used in the center of radial tree.
 
 @## Multiline text
 
-Multiline text implementation is not trivial in svg. Text on the leafs of tree is split into lines by `\n` symbol automatically. Text in the chart center should be split into lines manually.
+Multiline text implementation isn’t trivial in svg. Text on the leafs of tree is split into lines by `\n` symbol automatically. Text in the chart center should be split into lines manually.
 
 @example radial-tree-multiline-text
 
@@ -33,6 +33,6 @@ Multiline text implementation is not trivial in svg. Text on the leafs of tree i
 
 @example radial-tree-without-data
 
-- If data is not ready yet – show chart skeleton.
+- If data isn’t ready yet – show chart skeleton.
 
 @example radial-tree-loading

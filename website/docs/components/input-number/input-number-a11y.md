@@ -16,11 +16,11 @@ a11y: AA
 | `Down Arrow` or `Shift` + `Down Arrow` | Decreases the value.                           |
 | `Enter`                          | Submits the entered value.                     |
 
-See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
 
 ### Roles & attributes
 
-"The implicit role for the `<input type="number">` element is `spinbutton`. If `spinbutton` is not an important feature for your form control, consider not using type="number". Instead, use `inputmode="numeric"` along with a pattern attribute that limits the characters to numbers and associated characters. With `<input type="number">`, there is a risk of users accidentally incrementing a number when they're trying to do something else. Additionally, if users try to enter something that's not a number, there's no explicit feedback about what they're doing wrong."
+"The implicit role for the `<input type="number">` element is `spinbutton`. If `spinbutton` isn’t an important feature for your form control, consider not using type="number". Instead, use `inputmode="numeric"` along with a pattern attribute that limits the characters to numbers and associated characters. With `<input type="number">`, there is a risk of users accidentally incrementing a number when they're trying to do something else. Additionally, if users try to enter something that's not a number, there's no explicit feedback about what they're doing wrong."
 
 Find more in MDN guides:
 

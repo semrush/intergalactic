@@ -16,7 +16,7 @@ tabName: Design
 
 - Textarea for feedback.
 - Buttons for submitting and cancelling the entered message.
-- Information on GDPR is obligatory only for European users. Show the following text before the submitting buttons: "We will only use this email to respond to you on your feedback". Do not forget the link to the Privacy Policy at the end of this text.
+- Information on GDPR is obligatory only for European users. Show the following text before the submitting buttons: "We will only use this email to respond to you on your feedback". Don’t forget the link to the Privacy Policy at the end of this text.
 
 ![](static/default.png)
 
@@ -114,7 +114,7 @@ Message text for the tooltip: "Your feedback must contain at least 3 words (10 c
 - If an error occurred after submitting the form, show the message instead of the message with `mailto` link under the submitting button.
 - If `mailto` link already exists, change its color into red and replace the message text.
 
-Message text for this case: "Your message has not been sent. Please try again or contact us at at {mail address}".
+Message text for this case: "Your message hasn’t been sent. Please try again or contact us at at {mail address}".
 
 ![](static/error.png)
 

@@ -14,7 +14,7 @@ The list below describes roles and attributes that component already has.
 
 | Role   | Attribute            | Element           | Usage                                                                                                                                                                                                            |
 | ------ | -------------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status |                      | `div`             | Defines a live region containing advisory information for the user that is not important enough to be an `alert`.                                                                                                |
+| status |                      | `div`             | Defines a live region containing advisory information for the user that isn’t important enough to be an `alert`.                                                                                                |
 |        | `aria-live="polite"` | Implicit on `div` | Any region which receives updates that are important for the user to receive, but not so rapid as to be annoying, should receive this attribute. The screen reader will speak changes whenever the user is idle. |
 
 @## Resources

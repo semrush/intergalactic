@@ -18,7 +18,7 @@ tabName: Design
 
 Important points to keep in mind when presenting data as a bar chart:
 
-- The axes should be clear to the user from the chart name. However, in cases where the chart name is not enough, you can denote the axes.
+- The axes should be clear to the user from the chart name. However, in cases where the chart name isn’t enough, you can denote the axes.
 - Don't use too many colors to represent categories. One color or shades of one color is enough. However, you can always highlight a category if necessary.
 
 @## Usage

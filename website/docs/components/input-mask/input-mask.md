@@ -19,7 +19,7 @@ The mask helps users prevent errors by ensuring they enter the correct number of
 - When the format for the data is known.
 - When the user needs to enter a specific (usually lengthy) number of characters.
 
-However, if you don't have precise information about the format of the data, it is not recommended to use InputMask.
+However, if you don't have precise information about the format of the data, it isn’t recommended to use InputMask.
 
 @## Appearance
 

@@ -55,7 +55,7 @@ If all the values on the chart are zero, then in the tooltip we shall display nu
 
 ### Some dots have no data
 
-Do not display columns for the dots without data.
+Don’t display columns for the dots without data.
 
 When you hover over a dot without data, show tooltip with the `n/a` value. We also recommend you to add a message, which explains why there is no data, and when it will be available (if possible).
 

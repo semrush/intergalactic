@@ -22,6 +22,8 @@ Trigger is built on the [Input](/components/input/) component.
 > Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
 <!-- > _For example: "Mar 4–10, 2022"._ -->
 
+@table-caption Date picker trigger's states and cases
+
 | State or case                      | Appearance example                    |
 | ---------------------------------- | ------------------------------------- |
 | Placeholder                        | ![Trigger with "MM/DD/YYYY" placeholder text inside](static/placeholder.png)    |
@@ -61,7 +63,7 @@ You can place [TimePicker](/components/time-picker/) inside the dropdown.
 
 ![](static/datepicker-timepicker-normal.png)
 
-And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (e.g., user account settings).
+And you can show 12-hour or 24-hour format of time for TimePicker, depending on the selected region (for example, user account settings).
 
 ![](static/datepicker-timepicker-12h-24h.png)
 
