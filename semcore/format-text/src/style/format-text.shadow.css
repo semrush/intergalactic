@@ -88,11 +88,8 @@ SFormatText {
   }
 
   & ol {
-    counter-reset: item 0;
-
     & li:before {
-      counter-increment: item;
-      content: counters(item, '.');
+      content: counters(list-item, '.');
     }
   }
 
