@@ -25,6 +25,8 @@ tabName: Design
 
 The component has two sizes: M and L.
 
+@table-caption Dot sizes
+
 | Size                    | Margins | Usage         |
 | ----------------------- | ---------- | ---------------------------------------------------- |
 | M    | ![](static/dot-m.png)     | Use it to mark text items inside the list.               |
@@ -52,6 +54,8 @@ If dot points to a new element in the list inside the [DropdownMenu](/components
 The dot may contain a notification counter, and for more information about this, you can refer to the [Counter](/components/counter) for more information about this case.
 
 > When the dot has a counter, it increases in size accordingly.
+
+@table-caption Dot with and without a counter
 
 |                   | Appearance example                        |
 | ----------------- | ----------------------------------------- |
@@ -85,6 +89,8 @@ The dot has a standard size, making it compatible with controls of various types
 @## Interaction
 
 We have two scenarios of how the dot disappears from a component or an item in the list:
+
+@table-caption Interaction with Dot
 
 |                                             | Conditions under which the dot disappears                     |
 | ------------------------------------------- | ------------------------------------------------------------- |

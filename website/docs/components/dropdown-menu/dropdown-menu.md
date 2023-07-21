@@ -12,6 +12,8 @@ tabName: Design
 
 DropdownMenu has two sizes.
 
+@table-caption DropdownMenu sizes
+
 | Size | Appearance example and indents |
 | ---- | ------------------------------ |
 | M    | ![](static/dropdown-m.png)     |
@@ -20,6 +22,8 @@ DropdownMenu has two sizes.
 ### Width
 
 The width of the dropdown can be defined several ways:
+
+@table-caption DropdownMenu width
 
 |        | Example    |
 | ------ | ---------- |
@@ -66,6 +70,8 @@ As the user enters a value into the input, only the items that match the input s
 
 ### States
 
+@table-caption DropdownMenu item states
+
 |                     | Appearance                                                                           | Tokens                                |
 | ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------- |
 | Default             | ![](static/item-default.png)                           | `--dropdown-menu-item`               |
@@ -106,6 +112,8 @@ The item with button should have the same hover as a regular item in the list.
 
 This item with such a button adds a new item and has the following states:
 
+@table-caption DropdownMenu addition button states
+
 | State                  | Appearance example                      | Description                                                                                                                                                                                                                                                   |
 | ---------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Default trigger button | ![](static/button-1.png)  | Trigger has the same styles as a regular item.                                                                                                                                                                                                                |
@@ -117,6 +125,8 @@ This item with such a button adds a new item and has the following states:
 #### Button inside the item
 
 You can add an icon to the right of an item for an additional action.
+
+@table-caption Button inside the item cases of use
 
 | Case          | Appearance example                        | Description                                                                                                                                                                                                                                      |
 | ------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -147,11 +157,13 @@ You can put the following addons before and after the text inside the list item:
 
 Before the text you can place an icon, flag or image. In this case icon always has the color of the text.
 
-| Addon        | Appearance example                   |
-| ------------ | ------------------------------------ |
+@table-caption Addon before the text examples
+
+| Addon        | Appearance example         |
+| ------------ | -------------------------- |
 | Icon         | ![](static/icon-addon.png) |
 | Flag         | ![](static/flag-addon.png) |
-| Image/avatar | ![](static/pic-addon.png)   |
+| Image/avatar | ![](static/pic-addon.png)  |
 
 ### Addon after the text
 
@@ -187,8 +199,10 @@ Badge can be placed after the text. The margin between the text and the badge is
 
 You can add additional text with `--text-secondary` color under the main text of the item.
 
-| Size of the list | Appearance example                          | Tokens     |
-| ---------------- | ------------------------------------------- | ---------- |
+@table-caption Secondary text sizes
+
+| Size of the list | Appearance example         | Tokens                  |
+| ---------------- | -------------------------- | ----------------------- |
 | M                | ![](static/secondary-m.png) | `--fs-200`, `--lh-200` |
 | L                | ![](static/secondary-l.png) | `--fs-300`, `--lh-300` |
 
@@ -203,6 +217,8 @@ If DropdownMenu has more than seven items, show scroll. We also recommend adding
 ### Fixed item
 
 You can fix an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/) and fixed while scrolling the list.
+
+@table-caption Fixed item examples
 
 | Item content      | Appearance example                                                                            | Description                                                                                                                                                                           |
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

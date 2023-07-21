@@ -13,7 +13,7 @@ tabName: Design
 It is used in various components such as:
 
 - controls,
-- limit progressbars,
+- limit progress bars,
 - widget titles,
 - table headers,
 - etc.
@@ -24,8 +24,10 @@ It is used in various components such as:
 
 The appropriate theme for a counter varies based on its context and the component it is located in or near.
 
-| Theme          | Appearance examples                      | Styles                                                                                                                      | Usage                                                               |
-| -------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+@table-caption Counter themes
+
+| Theme     | Appearance examples      | Styles    | Usage           |
+| --------- | ------------------------ | --------- | --------------- |
 | Default        | ![](static/secondary.png) | `background-color: var(--bg-primary-neutral)`, `border: 1px solid var(--border-primary)`, `color: var(--text-secondary)` | Use inside secondary controls and next to various types of inputs. |
 |                | ![](static/textarea.png) |                                                                                                                             |                                                                     |
 | Light-blue     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to focus on the selected values.                    |
@@ -57,8 +59,10 @@ The counter should always be positioned to the right of other interface elements
 
 Use a counter to display an element that changes numerically.
 
-|                      | Examples                                     | Usage                                                                                                                                                                                                                                    |
-| -------------------- | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+@table-caption Counter usage examples
+
+|                      | Examples      | Usage    |
+| -------------------- | ------------- | -------- |
 | Output data counter  | ![](static/table.png)         | Usually it shows the total results. Use it next to the title of a table or widget.                                                                                                                                         |
 | Entered data counter | ![](static/textarea.png)      | The counter typically displays the limit of characters allowed, commonly used in [Input](/components/input/) and [Textarea](/components/textarea/). When the limit is reached or surpassed, the color of the counter changes. |
 | Limits               | ![](static/limit-counter.png) | The counter changes color to indicate when the limit has been exceeded.                                                                                |

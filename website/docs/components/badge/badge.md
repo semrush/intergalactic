@@ -26,6 +26,8 @@ Component has one size.
 
 Use the following badges in the products depending on the status of the feature or product:
 
+@table-caption Badge types
+
 | Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
 | -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![](static/admin.png) | `--blue-400`   | Use it with features that are only available for users with admin rights. The functionality with `admin` badge is not visible to the other users.                                                                                                                                         |
@@ -71,6 +73,8 @@ Do not confuse [Tag](/components/tag) and Badge components. Tag is used for them
 Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 
 @## Usage in UX/UI
+
+@table-caption Badge usage examples
 
 | Component/block     | Appearance example                        |
 | ------------------- | ----------------------------------------- |

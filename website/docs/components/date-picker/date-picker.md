@@ -22,6 +22,8 @@ Trigger is built on the [Input](/components/input/) component.
 > Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
 <!-- > _For example: "Mar 4–10, 2022"._ -->
 
+@table-caption Date picker trigger's states and cases
+
 | State or case                      | Appearance example                    |
 | ---------------------------------- | ------------------------------------- |
 | Placeholder                        | ![Trigger with "MM/DD/YYYY" placeholder text inside](static/placeholder.png)    |

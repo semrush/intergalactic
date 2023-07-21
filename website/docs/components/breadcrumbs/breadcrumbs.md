@@ -26,6 +26,8 @@ Links inside this component have custom styles.
 
 ![](static/breadcrumbs.png)
 
+@table-caption Breadcrumbs styles
+
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
 | Link                | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
@@ -46,6 +48,8 @@ If there is not enough place for the breadcrumbs (screen is too small or the tex
 @## Interaction
 
 ![](static/hover.png)
+
+@table-caption Breadcrumbs states
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |

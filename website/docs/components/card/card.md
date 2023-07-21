@@ -24,6 +24,8 @@ Component consists of:
 
 @## Appearance
 
+@table-caption Card sizes
+
 | Size  | Example                                      |
 | ----- | -------------------------------------------- |
 | Small | ![](static/card-small.png) |
@@ -51,8 +53,10 @@ The card may have a description. It usually contains an explanation of what the 
 
 ### Paddings
 
-| Case  | Paddings                                         |
-| ----- | ------------------------------------------------ |
+@table-caption Card paddings
+
+| Case  | Paddings                       |
+| ----- | ------------------------------ |
 | Chart | ![](static/card-paddings2.png) |
 | Table | ![](static/card-paddings3.png) |
 

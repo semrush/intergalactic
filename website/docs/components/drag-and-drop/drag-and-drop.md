@@ -65,6 +65,8 @@ Use `--bg-primary-neutral-hover` token for background-color and `border: 1px das
 
 @## Where to use
 
+@table-caption Where to use drag and drop component
+
 | Component                                | Appearance example                                                                                      |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | [Accordion](/components/accordion/)       | ![](static/drag-accordion.png)                                                |
@@ -83,6 +85,8 @@ When dragging either a clickable or non-clickable element, a long click on any p
 
 When dragging, the axis is not restricted, allowing the element to be moved anywhere on the page but only added to certain areas.
 
+@table-caption States of draggable element
+
 | State    | Appearance example                                              | Description                                                                                                                                                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Default  | ![](static/drag-default.png)                             | Do not show the `MoveAlt` icon and pattern with dots in default state.                                                                                                                                                                                                                                        |
@@ -91,6 +95,8 @@ When dragging, the axis is not restricted, allowing the element to be moved anyw
 | no-drop  | ![](static/no-drop.png)                                  | If the drop zone under the dragged object is unavailable, the cursor changes to `not-allowed`.                                                                                                                                                                                                           |
 
 ### States of droppable area
+
+@table-caption States of droppable area
 
 | State    | Appearance example                                                                        | Description                                                                                                                                                                                                                                                                               |
 | -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

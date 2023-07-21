@@ -9,6 +9,8 @@ tabName: Design
 
 We have collected the table of differences between these search patterns.
 
+@table-caption Differences between AutoSuggest, AutoComplete and Combobox search patterns
+
 | Pattern      | List is shown while focusing | List filtering while entering the value | Upon searching, the options menu is scrolled | User can enter data different from the list |
 | ------------ | ---------------------------- | --------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 | Combobox     | ✅                           | ❌                                      | ✅                                           | ❌                                          |
@@ -67,17 +69,21 @@ As the user enters information into the input, the item list is filtered and onl
 
 Activating an item in the list selects it and the DropdownMenu closes.
 
-| State                | Appearance example                                         |
-| -------------------- | ---------------------------------------------------------- |
-| Default              | ![](static/default.png)                       |
-| Start typing         | ![](static/start.png)                          |
-| Loading results      | ![](static/loading-1.png)                     |
-| Something went wrong | ![](static/error.png)                           |
-| Results              | ![](static/results.png)                       |
-| Loading results      | ![](static/loading-2.png)                     |
+@table-caption AutoComplete states
+
+| State                | Appearance example                      |
+| -------------------- | --------------------------------------- |
+| Default              | ![](static/default.png)                 |
+| Start typing         | ![](static/start.png)                   |
+| Loading results      | ![](static/loading-1.png)               |
+| Something went wrong | ![](static/error.png)                   |
+| Results              | ![](static/results.png)                 |
+| Loading results      | ![](static/loading-2.png)               |
 | Nothing found        | ![](static/nothing-found-auto-tips.png) |
 
 @## Usage examples
+
+@table-caption Usage examples
 
 | Search type                                            | Appearance example                       |
 | ------------------------------------------------------ | ---------------------------------------- |

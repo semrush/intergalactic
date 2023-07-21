@@ -32,6 +32,8 @@ Component has default styles, but you can change them depending on your task.
 
 ### Default styles
 
+@table-caption Carousel default styles
+
 |                         | Default styles                                                        |
 | ----------------------- | --------------------------------------------------------------------- |
 | Navigation buttons      | Use L size for Chevron icons and `--icon-primary-neutral` token for color. |
@@ -60,6 +62,8 @@ This example has the same styles as the example on the light background, except 
 
 Navigation buttons are always center aligned.
 
+@table-caption Navigation buttons states
+
 | State    | Appearance example                      | Styles                                               |
 | -------- | --------------------------------------- | ---------------------------------------------------- |
 | Default  | ![](static/default.png)   | `color: var(--icon-primary-neutral)`              |
@@ -69,6 +73,8 @@ Navigation buttons are always center aligned.
 ### Slides number indicators
 
 ![](static/default-indicators.png)
+
+@table-caption Slides number indicators states
 
 | State               | Styles                                                                                    |
 | ------------------- | ----------------------------------------------------------------------------------------- |
@@ -86,6 +92,8 @@ Default animation properties:
 @## Usage in UX/UI
 
 When using a carousel, keep in mind that some users may only see the first frame or nothing at all. Therefore, it's important to intentionally place essential content on each frame. Consider using a static carousel or a single image instead of a rotating one.
+
+@table-caption Carousel usage advices
 
 |       | Advice                                                                                                 | Description                                                                                                                                                                                                                                                                           |
 | ----- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
