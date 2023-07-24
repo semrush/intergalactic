@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-**Skeleton** is a component is used to display the structure of a widget or page during its initial loading. Its purpose is to provide users with a mental map of the data being loaded.
+**Skeleton** is a component used to display the structure of a widget or page during its initial loading. Its purpose is to provide users with a mental map of the data being loaded.
 
 > This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
