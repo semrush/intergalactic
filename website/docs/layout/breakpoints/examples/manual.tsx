@@ -14,5 +14,5 @@ export default () => {
     };
   }, []);
 
-  return <Button size={['m', 'l'][index]}>Button size {['M', 'L'][index]}</Button>;
+  return <Button size={(['m', 'l'] as const)[index]}>Button size {['M', 'L'][index]}</Button>;
 };

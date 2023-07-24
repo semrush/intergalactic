@@ -24,14 +24,14 @@ export type NeighborItemProps = {
 export interface INeighborLocationDetectProps
   extends NeighborLocationDetectProps,
     UnknownProperties {}
-export type NeighborLocationDetectProps = INeighborItemProps & {
+export type NeighborLocationDetectProps = NeighborItemProps & {
   children?:
     | React.ReactElement
     | ((neighborLocation: 'right' | 'both' | 'left' | undefined) => ReturnEl);
 };
 
 declare const NeighborLocation: Intergalactic.Component<'div', NeighborLocationProps> & {
-  Detect: Intergalactic.Component<'div', INeighborItemProps, 'right' | 'both' | 'left' | undefined>;
+  Detect: Intergalactic.Component<'div', NeighborItemProps, 'right' | 'both' | 'left' | undefined>;
 };
 
 declare const useNeighborLocationDetect: (index: number) => 'right' | 'both' | 'left' | false;

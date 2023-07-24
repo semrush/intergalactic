@@ -36,7 +36,7 @@ const Demo = () => {
         placement='right'
       >
         <InputNumber mt={4} w={140} size='m' state={error ? 'invalid' : 'normal'}>
-          <InputNumber.Value step={1} value={value} onChange={handleInput} />
+          <InputNumber.Value step={1} value={value.toString()} onChange={handleInput} />
           <InputNumber.Controls showControls />
         </InputNumber>
       </Tooltip>

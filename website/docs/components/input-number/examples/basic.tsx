@@ -36,7 +36,7 @@ const Demo = () => {
               value={from}
               onChange={setFrom}
               onBlur={handleBlur}
-              placeholder={min}
+              placeholder={min.toString()}
               id='basic-example-from'
             />
             <InputNumber.Controls />
@@ -48,7 +48,7 @@ const Demo = () => {
               value={to}
               onChange={setTo}
               onBlur={handleBlur}
-              placeholder={max}
+              placeholder={max.toString()}
               id='basic-example-to'
             />
             <InputNumber.Controls />

@@ -194,7 +194,7 @@ describe('Pagination.PageInput', () => {
           </Pagination.PageInput>
         </Pagination>
         <Pagination currentPage={1} totalPages={1234}>
-          <Pagination.PageInput focused>
+          <Pagination.PageInput {...{ focused: true }}>
             <Pagination.PageInput.Value id='page-number' />
             <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
           </Pagination.PageInput>
@@ -214,7 +214,7 @@ describe('Pagination.PageInput', () => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
         <Pagination currentPage={1234} totalPages={1234}>
-          <Pagination.PageInput focused>
+          <Pagination.PageInput {...{ focused: true }}>
             <Pagination.PageInput.Value id='page-number' />
             <Pagination.PageInput.Addon tag={Return} interactive aria-label='Confirm page number' />
           </Pagination.PageInput>

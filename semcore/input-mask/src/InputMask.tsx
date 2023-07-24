@@ -66,6 +66,8 @@ export type InputMaskValueProps = InputValueProps & {
    * A field that explains the mask for blind users
    * */
   title?: string;
+
+  includeInputProps?: string[];
 };
 
 type InputMaskCtx = {

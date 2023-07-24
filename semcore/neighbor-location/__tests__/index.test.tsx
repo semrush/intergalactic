@@ -5,7 +5,7 @@ import { cleanup, render } from '@semcore/testing-utils/testing-library';
 
 const NeighborLocationItem: any = function ({ neighborlocation, ...other }: any) {
   return (
-    <NeighborLocation.Detect neighborlocation={neighborlocation}>
+    <NeighborLocation.Detect neighborLocation={neighborlocation}>
       {(neighborLocation) => <CustomComponent {...other} neighborLocation={neighborLocation} />}
     </NeighborLocation.Detect>
   );
