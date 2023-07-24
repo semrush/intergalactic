@@ -18,7 +18,7 @@ In general, the progress bar doesn't obstruct the functionality of the product. 
 
 ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value`.
 
-![](static/progressbar-scheme.png)
+![](static/progressbar-composition.png)
 
 @## Sizes and styles
 

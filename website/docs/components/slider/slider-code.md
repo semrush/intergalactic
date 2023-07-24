@@ -13,6 +13,6 @@ fileSource: slider
 
 @## Numeric slider
 
-The slider can be used in combination with [InputNumber](/components/input-number/). Also, if you enter too large or too small value into the [InputNumber](/components/input-number/), an error is shown.
+The Slider can be used in conjunction with the [InputNumber](/components/input-number/) component. Additionally, if you input a value that is either too large or too small into the InputNumber, an error will be displayed.
 
 @example slider-with-input

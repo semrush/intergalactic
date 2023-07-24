@@ -27,15 +27,15 @@ tabName: Design
 
 ![](static/sidepanel-composition.png)
 
-SidePanel consists of:
+The SidePanel consists of:
 
-1. SidePanel.Header
-2. SidePanel.Back
-3. SidePanel.Title
-4. SidePanel.Close
-5. SidePanel.Body
-6. SidePanel.Footer
-7. SidePanel.Overlay
+1. `SidePanel.Header`
+2. `SidePanel.Back`
+3. `SidePanel.Title`
+4. `SidePanel.Close`
+5. `SidePanel.Body`
+6. `SidePanel.Footer`
+7. `SidePanel.Overlay`
 
 @## Trigger
 

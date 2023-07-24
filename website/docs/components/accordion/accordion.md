@@ -21,7 +21,7 @@ tabName: Design
 
 @## Appearance
 
-The accordion consists of:
+The Accordion consists of:
 
 - a trigger (`Accordion.Item.Toggle`) that includes the `ChevronRight` icon and a text label;
 - collapsed areas with content (`Accordion.Item.Collapse`).

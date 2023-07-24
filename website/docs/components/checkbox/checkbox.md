@@ -20,7 +20,7 @@ Multi-selection, which is commonly used in filters, is the exception to the imag
 
 ![](static/checkbox-composition.png)
 
-Checkbox component consists of:
+The Checkbox component consists of:
 
 1. `Checkbox`
 2. `Checkbox.Value`
