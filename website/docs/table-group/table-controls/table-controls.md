@@ -82,7 +82,7 @@ The area that you can grab and change the size of the column includes not only t
 
 1. When you hover over the line, you can see the `Edit` icon with S size and `--icon-secondary-neutral` token for color.
 
-It is always nailed to the right side of the cell and has a `margin-left: 4px`, so that it is easier to get into it with the cursor and the content does not stick to it.
+It is always nailed to the right side of the cell and has a `margin-left: 4px`, so that it is easier to get into it with the cursor and the content doesn't stick to it.
 
 ![](static/edit-1.png)
 
@@ -202,7 +202,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 We recommend using the status row when the table has multi-row selection and pagination at the same time. This is necessary so that the user understands that the table has selected rows when paginating the table. You can also show popular actions that can be performed on rows in the status row.
 
-When scrolling a table, this row should be pinned to the table header. In this case, it does not have a shadow, as well as a pinned header.
+When scrolling a table, this row should be pinned to the table header. In this case, it doesn't have a shadow, as well as a pinned header.
 
 | Appearance                                         | Styles                                                                              |
 | -------------------------------------------------- | ----------------------------------------------------------------------------------- |

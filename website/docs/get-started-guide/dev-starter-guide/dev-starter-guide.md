@@ -58,7 +58,7 @@ We also have [a mechanism](/style/design-tokens/#themes/) for changing our style
 
 ### Controlled & uncontrolled
 
-We develop our components in a way that does not have a state and has all statuses set externally. This allows us to ensure that you have full control over the state and its changes.
+We develop our components in a way that doesn't have a state and has all statuses set externally. This allows us to ensure that you have full control over the state and its changes.
 
 Every property that can be changed has a handler. For example, `visible` is a property that you set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` gets a new value.
 

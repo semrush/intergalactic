@@ -20,7 +20,7 @@ tabName: Design
 
 ### Sizes
 
-InlineInput itself does not have a set sizes. You can set its height and font size that suit your use case.
+InlineInput itself doesn't have a set sizes. You can set its height and font size that suit your use case.
 
 ### Styles
 
@@ -150,7 +150,7 @@ _An InlineInput is convenient when you need to add a note, an additional descrip
 
 ### Using InlineInput with Tag
 
-For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/). A regular input does not have the ability to change the height of the input to fit it into a compact table.
+For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/). A regular input doesn't have the ability to change the height of the input to fit it into a compact table.
 
 ![](static/inline-tag-yes-no.png)
 

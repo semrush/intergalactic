@@ -157,7 +157,7 @@ The text can be wrapped in a **hint link (pseudo-link)**. In this case, it becom
 | Normal       | ![](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.                                                                                            | `help` or `pointer`, if clickable                               |
 | Active/hover | ![](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If link is used with an icon, the icon changes its color along with the text. | `help`, `default` or `pointer` (depending on the usage context) |
 | Disabled     | ![](static/hint-disabled.png) | `--disabled-opacity`. Use this state as the last resort and be sure to label the disabled link with an explanatory tooltip.                        | `default`                                                       |
-| visited      |                                       | This link does not have `visited` state.                                                                                                           |                                                                 |
+| visited      |                                       | This link doesn't have `visited` state.                                                                                                           |                                                                 |
 
 @## Which heading with which paragraph size shall be used?
 

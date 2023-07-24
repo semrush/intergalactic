@@ -106,7 +106,7 @@ If your widget has width less than 300px, you may leave just the title with styl
 
 @## Something went wrong
 
-Use this state, when something went wrong at the backend. And either product team does not have any information, what exactly went wrong and where it will be repaired, or product team know about the problem and inform the user about it.
+Use this state, when something went wrong at the backend. And either product team doesn't have any information, what exactly went wrong and where it will be repaired, or product team know about the problem and inform the user about it.
 
 ### We know that there are problems at the backend
 

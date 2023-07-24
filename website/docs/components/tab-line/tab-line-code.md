@@ -11,7 +11,7 @@ Try to reduce the page and see how tabs are compressed. If the text inside a tab
 
 @## Custom indents and occupying the entire space
 
-As you may notice, the **TabLine** does not have indents at the edges. To make the **TabLine** occupy the entire width of the parent block (which has indents), you need to set the desired `padding` and `margin` for it.
+As you may notice, the **TabLine** doesn't have indents at the edges. To make the **TabLine** occupy the entire width of the parent block (which has indents), you need to set the desired `padding` and `margin` for it.
 
 ```typescript
 <Box p={5}>

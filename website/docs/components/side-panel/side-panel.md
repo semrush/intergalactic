@@ -60,7 +60,7 @@ The trigger for opening the SidePanel can be the following:
 
 ### Width
 
-SidePanel has a fixed width that does not change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
+SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
 
 ### Container
 
@@ -128,7 +128,7 @@ border-top: 1px solid var(–-border-primary);
 ### Placement in the interface
 
 - You can customize whether the SidePanel should open in the product area or over the entire website (as modal windows do). If the SidePanel refers to a specific product, it should be rendered in the product under the main header.
-- The focus remains inside the SidePanel and does not move to the page content. You can navigate through the controls inside the SidePanel using  `Tab`.
+- The focus remains inside the SidePanel and doesn't move to the page content. You can navigate through the controls inside the SidePanel using  `Tab`.
 
 ### Page scroll
 
@@ -153,7 +153,7 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 ### What happens when the browser window size changes
 
-- SidePanel has a fixed width that does not change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
+- SidePanel has a fixed width that doesn't change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
 - On a 320px screen, SidePanel should not occupy more than 80% of the screen width so that the user can click outside of it and close it.
 
 ![](static/320-width.png)

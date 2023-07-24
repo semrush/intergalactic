@@ -12,7 +12,7 @@ tabName: Design
 
 > This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
-In general, the progress bar does not obstruct the functionality of the product. However, there is an exception during the first launch of the product when the data may be partially displayed or not displayed at all.
+In general, the progress bar doesn't obstruct the functionality of the product. However, there is an exception during the first launch of the product when the data may be partially displayed or not displayed at all.
 
 @## Component composition
 
@@ -77,7 +77,7 @@ The progress value is always animated with `ease-in`.
 
 ### When to use ProgressBar
 
-- To visualize a long process that does not block working with data.
+- To visualize a long process that doesn't block working with data.
 - When you need to visualize a short process, but it is essential to show how much is left until the end of the process, such as uploading multiple files.
 - If the process is long and blocks working with data, but the user needs to know when the process will end.
 

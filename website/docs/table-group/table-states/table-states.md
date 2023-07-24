@@ -8,7 +8,7 @@ title: Table states
 >
 > Thus the user will always see what is happening with the table, and won't need to scroll to the top of it.
 
-Message with a loading or error state must have `margin-top: 40px`, so that when the user changes the size of the viewport, the message does not "stick" to table header.
+Message with a loading or error state must have `margin-top: 40px`, so that when the user changes the size of the viewport, the message doesn't "stick" to table header.
 
 |                                                       | First screen                                                | The state of the page scrolling                             |
 | ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |

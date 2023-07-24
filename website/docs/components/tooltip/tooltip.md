@@ -117,7 +117,7 @@ In some cases (for example, for advertising purposes) you can format text and ad
 Main recommendations:
 
 - Use the tooltip to show hints and additional information. It can be a text, a formatted text with lists, links, buttons and small images.
-- Make sure that the tooltip does not overlap the information important for the user.
+- Make sure that the tooltip doesn't overlap the information important for the user.
 
 > For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
 
@@ -125,7 +125,7 @@ Main recommendations:
 
 ![](static/tooltip-trigger-yes-no.png)
 
-**When the trigger isn’t obvious enough, add a title to the tooltip.** It is also necessary to add a title when the trigger does not sufficiently explain the topic of the tooltip. For example, you can describe additional conditions in the header, or expand the idea behind the trigger.
+**When the trigger isn’t obvious enough, add a title to the tooltip.** It is also necessary to add a title when the trigger doesn't sufficiently explain the topic of the tooltip. For example, you can describe additional conditions in the header, or expand the idea behind the trigger.
 
 ![](static/tooltip-trigger2-yes-no.png)
 

@@ -52,7 +52,7 @@ For the header of the fullscreen window use the following styles:
 
 ### Long title
 
-If the title of the window is too long, and does not fit into the space, collapse it into `ellipsis`.
+If the title of the window is too long, and doesn't fit into the space, collapse it into `ellipsis`.
 
 `Close` icon has `margin-left: var(--spacing-3x)`.
 

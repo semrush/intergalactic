@@ -21,7 +21,7 @@ Important points to keep in mind when presenting data as a Stacked bar chart:
 
 Stacked bar chart has no margin between values inside the column. **Choose contrasting colors for different categories.**
 
-> It is recommended to make a minimum 20% margin between a bars. This is necessary so that the data does not turn into a mess.
+> It is recommended to make a minimum 20% margin between a bars. This is necessary so that the data doesn't turn into a mess.
 
 ![stacked bar chart](static/stacked-bar-chart.png)
 

@@ -4,7 +4,7 @@ fileSource: data-table
 tabName: Example
 ---
 
-The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and does not use native tables.
+The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and doesn't use native tables.
 
 @## Simple usage example
 

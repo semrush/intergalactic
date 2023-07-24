@@ -109,7 +109,7 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 - Mind the user path and the context, in which users will see FeaturePopover. Show it ad hoc and don’t overload the message with unnecessary information.
 - Always allow the user to close FeaturePopover. Don’t force the user to use a feature.
 - Write briefly and concisely. The information in FeaturePopover should not exceed the minimum required to start using the function. Move additional step-by-step instructions to `Info` icons, hint links and so on.
-- Make sure that FeaturePopover does not cover important parts in the interface that the user needs in the context of use.
+- Make sure that FeaturePopover doesn't cover important parts in the interface that the user needs in the context of use.
 
 ### Terms of use
 
