@@ -33,6 +33,7 @@ export type NoticeBubbleProps = BoxProps & {
    * */
   children?: React.ReactNode;
   manager?: NoticeBubbleManager;
+  icon?: React.ReactElement;
 };
 /** @deprecated */
 export interface INoticeBubbleInfoProps extends NoticeBubbleInfoProps, UnknownProperties {}
@@ -70,11 +71,9 @@ type NoticeBubbleManagerClass = {
   /**
    * Creates and shows a notice.
    * */
-  add: (props: INoticeBubbleInfoProps | INoticeBubbleWarningProps) => {
+  add: (props: NoticeBubbleInfoProps | NoticeBubbleWarningProps) => {
     uid: string;
-    update: (
-      props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
-    ) => boolean;
+    update: (props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>) => boolean;
     remove: () => boolean;
   };
   /**
@@ -82,7 +81,7 @@ type NoticeBubbleManagerClass = {
    * */
   update: (
     uid: string,
-    props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
+    props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>,
   ) => boolean;
   /**
    * Removes notice by uid.
@@ -113,11 +112,9 @@ declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
   /**
    * Creates and shows a notice.
    * */
-  add(props: INoticeBubbleInfoProps | INoticeBubbleWarningProps): {
+  add(props: NoticeBubbleInfoProps | NoticeBubbleWarningProps): {
     uid: string;
-    update: (
-      props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
-    ) => boolean;
+    update: (props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>) => boolean;
     remove: () => boolean;
   };
   /**
@@ -125,7 +122,7 @@ declare class NoticeBubbleManager implements NoticeBubbleManagerClass {
    * */
   update(
     uid: string,
-    props: Partial<INoticeBubbleInfoProps> | Partial<INoticeBubbleWarningProps>,
+    props: Partial<NoticeBubbleInfoProps> | Partial<NoticeBubbleWarningProps>,
   ): boolean;
   /**
    * Removes notice by uid.

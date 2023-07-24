@@ -57,7 +57,7 @@ export type LabelProps = Context & {
 
 declare const Donut: IntergalacticD3Component<'g', DonutProps> & {
   Pie: IntergalacticD3Component<'path', PieProps>;
-  EmptyData: IntergalacticD3Component<'path', IEmptyDataProps>;
+  EmptyData: IntergalacticD3Component<'path', EmptyDataProps>;
   Label: IntergalacticD3Component<'text', LabelProps>;
   Tooltip: TooltipType<PieProps>;
 };

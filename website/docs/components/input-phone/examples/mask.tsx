@@ -298,7 +298,7 @@ const Demo = () => {
 
         <Select.Popper>
           <>
-            <InputSearch cleared placeholder='Search' value={filter} onChange={setFilterValue} />
+            <InputSearch placeholder='Search' value={filter} onChange={setFilterValue} />
 
             <Select.List hMax='240px' w='232px'>
               {Object.keys(listActuallyCountryCodes)

@@ -117,7 +117,7 @@ export type DropdownMenuTriggerProps = DropdownTriggerProps;
 declare const DropdownMenu: Intergalactic.Component<
   'div',
   DropdownMenuProps,
-  IDropdownMenuContext,
+  DropdownMenuContext,
   [handlers: DropdownMenuHandlers]
 > & {
   Trigger: typeof Dropdown.Trigger;

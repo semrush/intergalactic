@@ -70,7 +70,7 @@ describe('Input', () => {
   test.concurrent('Should support focus states', async ({ task }) => {
     await expect(
       await snapshot(
-        <Input state='normal' focused>
+        <Input state='normal' {...{ focused: true }}>
           <Input.Value id='input' />
         </Input>,
         {
@@ -82,7 +82,7 @@ describe('Input', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(
-        <Input state='valid' focused>
+        <Input state='valid' {...{ focused: true }}>
           <Input.Value id='input' />
         </Input>,
         {
@@ -94,7 +94,7 @@ describe('Input', () => {
     ).toMatchImageSnapshot(task);
     await expect(
       await snapshot(
-        <Input state='invalid' focused>
+        <Input state='invalid' {...{ focused: true }}>
           <Input.Value id='input' />
         </Input>,
         {

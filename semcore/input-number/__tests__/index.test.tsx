@@ -163,7 +163,7 @@ describe('InputNumber', () => {
 
   test.concurrent('Should support view controls', async ({ task }) => {
     const component = (
-      <InputNumber focused>
+      <InputNumber {...{ focused: true }}>
         <InputNumber.Value id='input' />
         <InputNumber.Controls />
       </InputNumber>
