@@ -28,7 +28,7 @@ The left and right margins are:
 
 We have a default template for our product newsletter that is adaptive for desktop and mobile screens.
 
-The template content is fluid and has `max-width: 600px`. It switches to the mobile version when its width is less than 480 px.
+The template content is fluid and has `max-width: 680px`. It switches to the mobile version when its width is less than 480 px.
 
 | Desktop version                          | Mobile version                         |
 | ---------------------------------------- | -------------------------------------- |
