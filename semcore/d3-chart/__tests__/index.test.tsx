@@ -643,9 +643,9 @@ describe('Bar', () => {
     { time: 9, stack1: 5, stack2: 5, stack3: 3 },
   ];
 
-  const xScale = scaleBand()
+  const xScale = scaleBand<number>()
     .range([MARGIN, width - MARGIN])
-    .domain(data.map((d) => d.time.toString()))
+    .domain(data.map((d) => d.time))
     .paddingInner(0.4)
     .paddingOuter(0.2);
 
@@ -1028,7 +1028,7 @@ describe('Bar', () => {
 
       const xScale = scaleBand()
         .range([MARGIN, width - MARGIN])
-        .domain(data.map((d) => d.category.toString()))
+        .domain(data.map((d) => d.category))
         .paddingInner(0.4)
         .paddingOuter(0.2);
 

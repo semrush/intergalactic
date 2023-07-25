@@ -3,7 +3,14 @@ import { Component, sstyled, Root } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
-import { scaleOfBandwidth, getIndexFromData, eventToPoint, invert, CONSTANT } from './utils';
+import {
+  scaleOfBandwidth,
+  getIndexFromData,
+  eventToPoint,
+  invert,
+  CONSTANT,
+  scaleToBand,
+} from './utils';
 
 import style from './style/hover.shadow.css';
 import Tooltip from './Tooltip';
@@ -137,6 +144,8 @@ class HoverRectRoot extends Hover {
 
     const xRange = xScale.range();
     const yRange = yScale.range();
+    const xBand = scaleToBand(xScale);
+    const yBand = scaleToBand(yScale);
 
     return sstyled(styles)(
       <>
@@ -145,9 +154,9 @@ class HoverRectRoot extends Hover {
             aria-hidden
             render='rect'
             index={xIndex}
-            width={xScale.step() - xScale.paddingInner() / 2}
+            width={xBand.step() - xBand.paddingInner() / 2}
             height={yRange[0] - yRange[1]}
-            x={xScale(data[xIndex][x]) - (xScale.step() * xScale.paddingInner()) / 2}
+            x={xScale(data[xIndex][x]) - (xBand.step() * xBand.paddingInner()) / 2}
             y={yRange[1]}
           />
         ) : null}
@@ -157,9 +166,9 @@ class HoverRectRoot extends Hover {
             render='rect'
             index={yIndex}
             width={xRange[1] - xRange[0]}
-            height={yScale.step() - yScale.paddingInner() / 2}
+            height={yBand.step() - yBand.paddingInner() / 2}
             x={xRange[0]}
-            y={yScale(data[yIndex][y]) - (yScale.step() * yScale.paddingInner()) / 2}
+            y={yScale(data[yIndex][y]) - (yBand.step() * yBand.paddingInner()) / 2}
           />
         ) : null}
       </>,

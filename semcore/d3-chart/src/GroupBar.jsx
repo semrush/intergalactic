@@ -4,6 +4,8 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
+import { scaleBand } from 'd3-scale';
+import { scaleToBand } from './utils';
 
 class GroupBarRoot extends Component {
   static displayName = 'GroupBar';
@@ -29,11 +31,10 @@ class GroupBarRoot extends Component {
       return acc;
     }, []);
 
-    return xyScale
-      .copy()
-      .range([0, xyScale.bandwidth()])
+    return scaleBand()
+      .range([0, scaleToBand(xyScale).bandwidth()])
       .domain(domain)
-      .paddingInner(xyScale.paddingOuter())
+      .paddingInner(scaleToBand(xyScale).paddingOuter())
       .paddingOuter(0);
   }
 
@@ -42,7 +43,7 @@ class GroupBarRoot extends Component {
 
     return {
       offset: [this.scaleGroup(y), 0],
-      width: this.scaleGroup.bandwidth(),
+      width: scaleToBand(this.scaleGroup).bandwidth(),
       x,
       groupKey: x,
     };
@@ -53,7 +54,7 @@ class GroupBarRoot extends Component {
 
     return {
       offset: [0, this.scaleGroup(x)],
-      height: this.scaleGroup.bandwidth(),
+      height: scaleToBand(this.scaleGroup).bandwidth(),
       y,
       groupKey: y,
     };

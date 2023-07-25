@@ -3,7 +3,7 @@ import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
-import { getBandwidth, roundedPath } from './utils';
+import { scaleToBand, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
@@ -65,7 +65,7 @@ class HorizontalBarRoot extends Component {
     const absWidth = Math.abs(
       xScale(d[x]) - Math.max(xScale(xScale.domain()[0]), xScale(d[x0] ?? 0)),
     );
-    const height = heightProps || getBandwidth(yScale);
+    const height = heightProps || scaleToBand(yScale).bandwidth();
     const width = Number(d[x] - (d[x0] ?? 0)) === 0 ? 0 : Math.max(absWidth, wMin);
     const barY = yScale(d[y]) + offset[1];
     const barX =
@@ -148,7 +148,7 @@ function Background(props) {
       render='rect'
       childrenPosition='above'
       width={xRange[1] - xRange[0]}
-      height={yScale.bandwidth()}
+      height={scaleToBand(yScale).bandwidth()}
       x={xRange[0]}
       y={yScale(value)}
     />,

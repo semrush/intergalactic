@@ -7,6 +7,7 @@ import {
   ScaleBand,
   ScalePoint,
   NumberValue,
+  scaleBand,
 } from 'd3-scale';
 import React from 'react';
 
@@ -193,14 +194,16 @@ export const roundedPath = (
   return result;
 };
 
-export const getBandwidth = <Scale extends ScaleBand<{}>>(scale: Scale) => {
+export const scaleToBand = (scale: ScaleBand<{}>) => {
   if ('bandwidth' in scale) {
-    return scale.bandwidth();
+    return scale;
   }
 
-  const range = (scale as any).range();
-  const domain = (scale as any).domain();
-  return Math.abs(range[range.length - 1] - range[0]) / domain.length;
+  const band = scaleBand()
+    .range((scale as any).range())
+    .domain((scale as any).domain());
+
+  return band;
 };
 
 export const memoize = <Func extends (...args: any[]) => any>(func: Func): Func => {
