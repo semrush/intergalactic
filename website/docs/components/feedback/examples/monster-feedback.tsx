@@ -16,6 +16,7 @@ type Data = {
 };
 
 const validate = (values: Data) => {
+  if (!values) return {};
   const errors: Partial<Record<keyof Data, string>> = {};
   if (!values.title) {
     errors.title = 'Title is required';
