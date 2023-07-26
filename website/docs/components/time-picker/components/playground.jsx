@@ -33,16 +33,16 @@ export default PlaygroundGeneration(
       })),
     });
 
-    const disabled = bool({
-      key: 'disabled',
-      defaultValue: false,
-      label: 'Disabled',
-    });
-
     const is12Hour = bool({
       key: 'is12Hour',
       defaultValue: false,
       label: '12 Hour format',
+    });
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
     });
 
     return (
