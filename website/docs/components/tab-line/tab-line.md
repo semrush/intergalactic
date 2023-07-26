@@ -10,91 +10,95 @@ tabName: Design
 
 **TabLine** is a component for navigating inside a report and grouping homogeneous content in the interface.
 
-**Don’t use this component:**
+**Don't use this component in the following scenarios:**
 
-- for the main navigation in your interface. For this purpose use the main menu instead as it is more appropriate in terms of visual hierarchy;
-- for switching states. For this case use [Switch](/components/switch/) or [Radio](/components/radio/) instead.
+- As the main navigation in your interface; in such cases, use the main menu instead as it provides better visual hierarchy.
+- For switching between states; for this purpose, use either the [Switch](/components/switch/) or [Radio](/components/radio/) components.
 
-@## Appearance
+@## Sizes and margins
 
-### Sizes and margins
+- The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
+- Addons before and after the text have a margin of 8px.
 
-- TabLine.Item has `margin-right: var(--spacing-4x)` (except for `last-child`).
-- Margins of addons before and after the text is 8px.
+@table-caption TabLine sizes and margins
 
-Size (height in px) | Margins                    |
-| --------- | -------------------------- |
-| M (28px)  | ![](static/tab-m.png) |
-| L (40px)  | ![](static/tab-l.png) |
-
-### Addons
-
-Addons inside TabLine.Item has the same margins as addons inside the [Button](/components/button/) have.
-
-> Don’t place icon without a text inside TabLine.Item.
-
-| Addon   | Appearance example               |
-| ------- | -------------------------------- |
-| Icon    | ![](static/icon.png)   |
-| Flag    | ![](static/flag.png)   |
-| Badge   | ![](static/badge.png) |
-| Counter | ![](static/counter.png)   |
-
-> **A flag and an icon cannot be placed in a tab at the same time**. If there are badge and counter inside the tab, then place badge after the counter.
-
-![](static/monster.png)
+| Size (height in px) | Margins               |
+| ------------------- | --------------------- |
+| M (28px)            | ![](static/tab-m.png) |
+| L (40px)            | ![](static/tab-l.png) |
 
 @## Types
 
-Depending on the context you can use TabLine with or without border-bottom. The border use `--border-primary` token for color.
+Depending on the context, you can use TabLine with or without a border-bottom. The border uses the `--border-primary` token for its color.
 
-### Tabs with border
+### Tabs with border (underlined)
 
-Use TabLine with border-bottom to visually separate navigation from the content it switches. Usually it's helpful for secondary navigation on the page.
+Use TabLine with border-bottom to visually separate navigation from the content it switches. This is particularly helpful for secondary navigation on a page.
 
 ![](static/tab-with-border.png)
 
 ### Tabs without border
 
-Use TabLine with border-bottom if you don’t need to separate navigation from the content. Usually it's useful for switching content inside a widget.
+Use TabLine with border-bottom to visually separate navigation from the content it switches. This is particularly helpful for secondary navigation on a page.
 
 ![](static/tab-without-border.png)
 
+@## Addons
+
+Addons inside TabLine.Item have the same margins as addons inside the [Button](/components/button/) component.
+
+@table-caption Examples of addons for TabLine
+
+| Addon   | Appearance example        |
+| ------- | ------------------------- |
+| Icon    | ![](static/icon.png)      |
+| Flag    | ![](static/flag.png)      |
+| Badge   | ![](static/badge.png)     |
+| Counter | ![](static/counter.png)   |
+
+**Note the following:**
+
+- Avoid placing a single icon without accompanying text inside `TabLine.Item` (tabs with `Ellipsis` icon is an exception, refer to [Usage in UX/UI section](/components/tab-line/#usage_in_ux_ui)).
+- A flag and an icon cannot be placed together in a tab.
+- If both a [Badge](/components/badge/) and a [Counter](/components/counter/) are present inside the tab, the Badge should be placed after the Counter.
+
+![](static/monster.png)
+
 @## Interaction
 
-| State           | Appearance                                           | Styles                                                                                                                                                                                                               |
-| --------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal          | ![](static/normal-active.png)            | `color: var(--text-primary)`                                                                                                                                                                                        |
-| Hover           | ![](static/hover.png)                     | `border-bottom: 2px solid var(--border-primary)`                                                                                                                                                                    |
-| Active          | ![](static/normal-active.png)            | `border-bottom: 2px solid var(--border-info-active)`                                                                                                                                                                |
-| Disabled        | ![](static/disabled.png)               | Use `--disabled-opacity` token.                                                                                                                                                                                      |
-| Initial loading | ![](static/initial-loading.png) | When it is necessary to show that the data in the counter inside the TabLine.Item is being loaded for the first time, use [Skeleton](/components/skeleton/) with the size of the text's line-height.                 |
-| Loading         | ![](static/loading.png)                 | When it is necessary to show that the data in the counter inside the TabLine.Item is being loaded, use [Spin](/components/spin/) with the smallest size (the sizes are the same as in [Button](/components/button)). |
+@table-caption TabLine states
+
+| State           | Appearance example       | Styles  |
+| --------------- | ------------------------ | ------- |
+| Normal          | ![](static/normal-active.png)            | `color: var(--text-primary)`  |
+| Hover           | ![](static/hover.png)                     | `border-bottom: 2px solid var(--border-primary)` |
+| Active          | ![](static/normal-active.png)            | `border-bottom: 2px solid var(--border-info-active)` |
+| Disabled        | ![](static/disabled.png)               | Use `--disabled-opacity` token.  |
+| Initial loading | ![](static/initial-loading.png) | When indicating that data is being loaded for the first time in the counter inside `TabLine.Item`, use Skeleton with the size of the text's line-height.                 |
+| Loading         | ![](static/loading.png)                 | When showing that data in the counter inside `TabLine.Item` is currently being loaded, use [Spin](/components/spin/) with the smallest size (same as in [Button](/components/button)).|
 
 ### Animation
 
-While switching active tabs, the border-bottom moves with `ease` transition and `500ms` duration.
+When switching between active tabs, the border-bottom moves with an `ease` transition and a duration of `500ms`.
 
 @## Placement in the interface
 
-TabLine is always placed under the [ProductHead](/components/product-head/) of the report, after the title, additional controls and filters that affect the entire report.
+TabLine is always placed under the [ProductHead](/components/product-head/) of the report, following the title, additional controls, and filters that affect the entire report.
 
-- **The margin between ProductHead content and TabLine is always 24px.**
-- The margin between TabLine and title/widget below is always 16px.
+- The margin between ProductHead content and TabLine is always 24px.
+- The margin between TabLine and the title/widget below is always 16px.
 
 ![](static/tabs-margins.png)
 
 @## Usage in UX/UI
 
-In cases when you have many tabs or there isn’t enough space for the tab text, collapse the text into the `ellipsis`.
+In cases where you have many tabs or there isn't enough space for the full tab text, collapse the text using an `ellipsis`.
 
-> Be sure to add the tooltip with the full text string to such tabs.
+> Make sure to add a tooltip with the full text message to such collapsed tabs.
 
 ![](static/ellipsis.png)
 
-Also you can collapse the last tabs into a tab with an `Ellipsis` icon.
-
-> By clicking on the last tab with an ellipsis in the dropdown, it is possible to display a list of items that did not fit. The item selected from this list put before tab with ellipsis.
+Additionally, you can collapse the last tabs into a tab with an `Ellipsis` icon. By clicking on the last tab with an `Ellipsis` icon, open dropdown with a list of items that did not fit. The selected item from this list is then placed before the tab with the `Ellipsis` icon.
 
 ![](static/tabline-collapse.png)
 
@@ -104,11 +108,11 @@ Use TabLine to group homogeneous content and navigate through the groups.
 
 ![](static/tabs-example.png)
 
-You can also use the TabLine on the settings pages and landings to separate information that differs in meaning.
+TabLine can also be used on settings pages and landings to separate information that differs in meaning.
 
 ![](static/tabs-example-2.png)
 
-The rules for the name and order of items are similar to the [Pills](/components/pills/) component. The rules for the `disabled` state are also similar to the [Pills](/components/pills/).
+The rules for the naming and ordering of items are similar to the [Pills](/components/pills/) component, and the rules for the `disabled` state are also similar to the Pills.
 
 @page tab-line-a11y
 @page tab-line-api
