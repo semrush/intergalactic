@@ -15,6 +15,16 @@ tabName: Design
 - As the main navigation in your interface; in such cases, use the main menu instead as it provides better visual hierarchy.
 - For switching between states; for this purpose, use either the [Switch](/components/switch/) or [Radio](/components/radio/) components.
 
+@## Component composition
+
+![](static/tabline-composition.png)
+
+Component consists of:
+
+- `TabLine.Item`
+- `TabLine.Item.Addon`
+- `TabLine.Item.Text`
+
 @## Sizes and margins
 
 - The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).

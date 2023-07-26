@@ -12,7 +12,7 @@ tabName: Design
 
 ![](static/check-or-toggle.png)
 
-@## Component composition:
+@## Component composition
 
 ![](static/switch-composition.png)
 
