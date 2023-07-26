@@ -5,7 +5,7 @@ import Checkbox from '@semcore/checkbox';
 import fire from '@semcore/utils/lib/fire';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
-import CopyS from '@semcore/icon/Copy/m';
+import CopyM from '@semcore/icon/Copy/m';
 import Radio, { RadioGroup } from '@semcore/radio';
 import Pills from '@semcore/pills';
 import { createPlayground, Playground } from '../components/playground';
@@ -201,7 +201,7 @@ class PlaygroundView extends React.Component {
             </Code>
             <div className={styles.iconCopy}>
               <Copy toCopy={source} title='Click to copy code'>
-                <CopyS />
+                <CopyM />
               </Copy>
             </div>
           </div>

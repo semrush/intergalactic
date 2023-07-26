@@ -1,8 +1,8 @@
 import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import Link from '@semcore/ui/link';
-import CheckXS from '@semcore/ui/icon/Check/m';
-import ArrowRightXS from '@semcore/ui/icon/ArrowRight/m';
+import CheckM from '@semcore/ui/icon/Check/m';
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 
 const SIZE = [
   { value: '100', name: '100 = 12px' },
@@ -71,9 +71,9 @@ const Preview = (preview) => {
   const renderIcon = (position) => {
     switch (position) {
       case 'before':
-        return <CheckXS />;
+        return <CheckM />;
       case 'after':
-        return <ArrowRightXS />;
+        return <ArrowRightM />;
       default:
         return false;
     }

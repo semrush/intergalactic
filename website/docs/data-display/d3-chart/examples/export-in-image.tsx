@@ -4,7 +4,7 @@ import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Button from '@semcore/ui/button';
-import FileExportXS from '@semcore/ui/icon/FileExport/m';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 
 const extensions = ['png', 'jpeg', 'webp'];
 
@@ -74,7 +74,7 @@ export default () => {
       <DropdownMenu>
         <DropdownMenu.Trigger tag={Button}>
           <Button.Addon>
-            <FileExportXS />
+            <FileExportM />
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>

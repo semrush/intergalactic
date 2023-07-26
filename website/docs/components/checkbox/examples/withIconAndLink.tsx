@@ -1,7 +1,7 @@
 import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
 import Tooltip from '@semcore/ui/tooltip';
-import InfoXS from '@semcore/ui/icon/Info/m';
+import InfoM from '@semcore/ui/icon/Info/m';
 import Link from '@semcore/ui/link';
 
 function noop(e) {
@@ -17,7 +17,7 @@ const Demo = () => (
           <Checkbox.Text>{`Note ${item + 1}`}</Checkbox.Text>
         </Checkbox>
         <Tooltip title='There is information about point.' placement='right-start' ml={1}>
-          <InfoXS color='stone' interactive aria-label='Additional info' />
+          <InfoM color='stone' interactive aria-label='Additional info' />
         </Tooltip>
       </div>
     ))}

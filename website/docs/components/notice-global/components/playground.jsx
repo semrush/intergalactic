@@ -29,7 +29,7 @@ const Preview = (preview) => {
   const closable = bool({
     key: 'closable',
     defaultValue: true,
-    label: 'Close icon',
+    label: 'Close Icon',
   });
 
   const msg = text({

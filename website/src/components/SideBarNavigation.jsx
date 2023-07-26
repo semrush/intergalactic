@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
-import ChevronRightXS from '@semcore/icon/ChevronRight/m';
+import ChevronRightM from '@semcore/icon/ChevronRight/m';
 import WarningM from '@semcore/icon/Warning/m';
 import Tooltip from '@semcore/tooltip';
 import cx from 'classnames';
@@ -49,7 +49,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
               }}
             >
               <Text fontSize='16px' lineHeight='150%'>
-                <ChevronRightXS
+                <ChevronRightM
                   mr={2}
                   color='#898D9A'
                   style={{

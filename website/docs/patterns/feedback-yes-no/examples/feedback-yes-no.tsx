@@ -7,8 +7,8 @@ import Dropdown from '@semcore/ui/dropdown';
 import Textarea from '@semcore/ui/textarea';
 import Notice from '@semcore/ui/notice';
 import Button from '@semcore/ui/button';
-import ThumbUpXS from '@semcore/ui/icon/ThumbUp/m';
-import ThumbDownXS from '@semcore/ui/icon/ThumbDown/m';
+import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
+import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
 import { Text } from '@semcore/ui/typography';
 
 const validate = {
@@ -154,7 +154,7 @@ class FeedbackYesNo extends React.PureComponent {
               <Dropdown.Trigger>
                 <Button>
                   <Button.Addon>
-                    <ThumbUpXS />
+                    <ThumbUpM />
                   </Button.Addon>
                   <Button.Text>Yes</Button.Text>
                 </Button>
@@ -173,7 +173,7 @@ class FeedbackYesNo extends React.PureComponent {
               <Dropdown.Trigger ml={2}>
                 <Button>
                   <Button.Addon>
-                    <ThumbDownXS />
+                    <ThumbDownM />
                   </Button.Addon>
                   <Button.Text>No</Button.Text>
                 </Button>
