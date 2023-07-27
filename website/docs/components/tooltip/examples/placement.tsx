@@ -34,9 +34,7 @@ const Demo = () => {
           <React.Fragment key={i}>
             {['right', 'right-start', 'right-end'].includes(placement) && <div />}
             <Tooltip placement={placement}>
-              <Tooltip.Trigger tag={Button}>
-                {placement.toLocaleUpperCase()}
-              </Tooltip.Trigger>
+              <Tooltip.Trigger tag={Button}>{placement.toLocaleUpperCase()}</Tooltip.Trigger>
               <Tooltip.Popper>Hi there!</Tooltip.Popper>
             </Tooltip>
           </React.Fragment>

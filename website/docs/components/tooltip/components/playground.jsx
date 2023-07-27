@@ -19,11 +19,7 @@ const PLACEMENT = [
   'left-end',
 ];
 
-const EVENT = [
-  'hover',
-  'click',
-  'focus',
-];
+const EVENT = ['hover', 'click', 'focus'];
 
 export default PlaygroundGeneration((createGroupWidgets) => {
   const { radio, select } = createGroupWidgets('Tooltip');
