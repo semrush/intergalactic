@@ -9,7 +9,7 @@ import NoticeGlobal from '@semcore/ui/notice-global';
 <NoticeGlobal />;
 ```
 
-@typescript INoticeGlobalProps
+@typescript NoticeGlobalProps
 
 @## NoticeGlobal.Content
 

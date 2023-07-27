@@ -12,7 +12,7 @@ import Input from '@semcore/ui/input';
 <Input />;
 ```
 
-@typescript IInputProps
+@typescript InputProps
 
 @## Input.Value
 
@@ -23,7 +23,7 @@ import Input from '@semcore/ui/input';
 <Input.Value />;
 ```
 
-@typescript IInputValueProps
+@typescript InputValueProps
 
 @## Input.Addon
 
@@ -36,4 +36,4 @@ import Input from '@semcore/ui/input';
 <Input.Addon />;
 ```
 
-@typescript IInputAddonProps
+@typescript InputAddonProps

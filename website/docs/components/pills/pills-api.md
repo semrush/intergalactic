@@ -9,7 +9,7 @@ fileSource: pills
 import Pills from '@semcore/ui/pills';
 ```
 
-@typescript IPillsProps
+@typescript PillsProps
 
 @## Pill.Item
 
@@ -18,7 +18,7 @@ import Pills from '@semcore/ui/pills';
 <Pills.Item />;
 ```
 
-@typescript IPillProps
+@typescript PillProps
 
 @## Pill.Item.Addon
 

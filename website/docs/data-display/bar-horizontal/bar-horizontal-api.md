@@ -13,7 +13,7 @@ Horizontal chart Bar.
 import { HorizontalBar } from '@semcore/ui/d3-chart';
 ```
 
-@typescript IHorizontalBarProps
+@typescript HorizontalBarProps
 
 @## GroupBar
 
@@ -28,4 +28,4 @@ import { GroupBar } from '@semcore/ui/d3-chart';
 </GroupBar>;
 ```
 
-@typescript IGroupBarProps
+@typescript GroupBarProps

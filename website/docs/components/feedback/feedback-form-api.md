@@ -11,7 +11,7 @@ import FeedbackForm from '@semcore/ui/feedback-form';
 <FeedbackForm />;
 ```
 
-@typescript IFeedbackForm
+@typescript FeedbackFormProps
 
 @## FeedbackForm.Item
 

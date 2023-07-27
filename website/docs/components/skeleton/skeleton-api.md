@@ -10,7 +10,7 @@ import Skeleton from '@semcore/ui/skeleton';
 <Skeleton />;
 ```
 
-@typescript ISkeletonProps
+@typescript SkeletonProps
 
 @## Skeleton.Text
 
@@ -19,7 +19,7 @@ import Skeleton from '@semcore/ui/skeleton';
 <Skeleton.Text />;
 ```
 
-@typescript ISkeletonTextProps
+@typescript SkeletonTextProps
 
 @## LineChartSkeleton
 

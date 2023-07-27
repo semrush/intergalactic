@@ -10,7 +10,7 @@ import Slider from '@semcore/ui/slider';
 <Slider />;
 ```
 
-@typescript ISliderProps
+@typescript SliderProps
 
 @## Slider.Bar
 

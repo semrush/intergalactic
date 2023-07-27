@@ -38,7 +38,7 @@ import Card from '@semcore/ui/card';
 <Card.Title />;
 ```
 
-@typescript ITitleProps
+@typescript TitleProps
 
 @## Card.Description
 

@@ -11,7 +11,7 @@ Root element for all charts.
 import { Plot } from '@semcore/ui/d3-chart';
 ```
 
-@typescript IPlotProps
+@typescript PlotProps
 
 @## Axis
 
@@ -27,15 +27,15 @@ import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 </XAxis>;
 ```
 
-@typescript IXAxisProps
+@typescript XAxisProps
 
-@typescript IYAxisProps
+@typescript YAxisProps
 
-@typescript IAxisTitleProps
+@typescript AxisTitleProps
 
-@typescript IAxisTicksProps
+@typescript AxisTicksProps
 
-@typescript IAxisGridProps
+@typescript AxisGridProps
 
 @## ResponsiveContainer
 
@@ -45,7 +45,7 @@ Container watch to size block.
 import { ResponsiveContainer } from '@semcore/ui/d3-chart';
 ```
 
-@typescript IResponsiveContainerProps
+@typescript ResponsiveContainerProps
 
 @## HoverLine
 
@@ -55,7 +55,7 @@ Component for show line after hover on chart.
 import { HoverLine } from '@semcore/ui/d3-chart';
 ```
 
-@typescript IHoverProps
+@typescript HoverProps
 
 @## HoverRect
 
@@ -65,4 +65,4 @@ Component for show sector after hover on chart.
 import { HoverRect } from '@semcore/ui/d3-chart';
 ```
 
-@typescript IHoverProps
+@typescript HoverProps

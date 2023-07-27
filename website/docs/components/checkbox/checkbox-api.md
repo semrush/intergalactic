@@ -11,7 +11,7 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox />;
 ```
 
-@typescript ICheckboxProps
+@typescript CheckboxProps
 
 @## Checkbox.Value
 
@@ -22,7 +22,7 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value />;
 ```
 
-@typescript ICheckboxValueProps
+@typescript CheckboxValueProps
 
 @## Checkbox.Text
 
@@ -33,4 +33,4 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Text />;
 ```
 
-@typescript ICheckboxTextProps
+@typescript CheckboxTextProps

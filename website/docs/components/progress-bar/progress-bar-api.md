@@ -12,7 +12,7 @@ import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar />;
 ```
 
-@typescript IProgressBarProps
+@typescript ProgressBarProps
 
 @## ProgressBar.Value
 
@@ -23,4 +23,4 @@ import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar.Value />;
 ```
 
-@typescript IValueProps
+@typescript ValueProps

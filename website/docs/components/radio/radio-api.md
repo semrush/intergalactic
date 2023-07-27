@@ -12,7 +12,7 @@ import { RadioGroup } from '@semcore/ui/radio';
 <RadioGroup />;
 ```
 
-@typescript IRadioGroupProps
+@typescript RadioGroupProps
 
 @## Radio
 
@@ -23,7 +23,7 @@ import Radio from '@semcore/ui/radio';
 <Radio />;
 ```
 
-@typescript IRadioProps
+@typescript RadioProps
 
 @## Radio.Value
 
@@ -32,7 +32,7 @@ import Radio from '@semcore/ui/radio';
 <Radio.Value />;
 ```
 
-@typescript IRadioValueProps
+@typescript RadioValueProps
 
 @## Radio.Text
 

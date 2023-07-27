@@ -9,11 +9,11 @@ fileSource: time-picker
 import Timepicker from '@semcore/ui/time-picker';
 ```
 
-@typescript ITimePickerProps
+@typescript TimePickerProps
 
 ### TimePicker.Hours, TimePicker.Minutes
 
-@typescript ITimePickerItemProps
+@typescript TimePickerItemProps
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
@@ -25,7 +25,7 @@ import Timepicker from '@semcore/ui/time-picker';
 
 ### TimePicker.Format
 
-@typescript ITimePickerFormatProps
+@typescript TimePickerFormatProps
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';

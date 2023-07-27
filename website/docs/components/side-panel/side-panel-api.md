@@ -10,7 +10,7 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel />;
 ```
 
-@typescript ISidePanelProps
+@typescript SidePanelProps
 
 @## SidePanel.Overlay
 
@@ -30,7 +30,7 @@ import SidePanel from '@semcore/ui/side-panel';
 
 This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) and [FocusLock](https://github.com/theKashey/react-focus-lock/blob/master/interfaces.d.ts#L4).
 
-@typescript ISidePanelPanelProps
+@typescript SidePanelPanelProps
 
 @## SidePanel.Close
 
