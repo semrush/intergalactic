@@ -27,7 +27,7 @@ class Input extends Component {
     this.inputRef.current?.focus();
   };
   handleKeyDown = (event) => {
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       setTimeout(() => {
         if (document.activeElement === document.body) {
           this.inputRef.current?.focus();

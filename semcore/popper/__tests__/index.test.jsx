@@ -196,17 +196,17 @@ describe('focus control', () => {
       </div>,
     );
 
-    fireEvent.keyDown(document.body, { code: 'Tab' });
+    fireEvent.keyDown(document.body, { key: 'Tab' });
     fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(getByTestId('popper')).toHaveFocus();
 
-    fireEvent.keyDown(document.body, { code: 'Tab' });
+    fireEvent.keyDown(document.body, { key: 'Tab' });
     fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(getByTestId('popper')).toHaveFocus();
 
-    fireEvent.keyDown(document.body, { code: 'Tab' });
+    fireEvent.keyDown(document.body, { key: 'Tab' });
     fireEvent.focusIn(document.body);
     await new Promise((resolve) => setTimeout(resolve, 1));
     expect(getByTestId('popper')).toHaveFocus();
@@ -281,7 +281,7 @@ describe('focus control', () => {
     act(() => getByTestId('input-before-popper').focus());
     expect(getByTestId('input-before-popper')).toHaveFocus();
     vi.useFakeTimers();
-    fireEvent.keyDown(getByTestId('input-before-popper'), { code: 'Tab' });
+    fireEvent.keyDown(getByTestId('input-before-popper'), { key: 'Tab' });
     act(() => getByTestId('focusable-in-trigger').focus());
     fireEvent.focusIn(getByTestId('input-before-popper'));
     act(() => {

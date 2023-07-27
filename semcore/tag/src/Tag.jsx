@@ -147,7 +147,7 @@ function Close(props) {
       return props.onKeyDown(event);
     }
 
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       props.onClick?.(event);
     }
   }
