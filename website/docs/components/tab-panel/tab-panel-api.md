@@ -13,7 +13,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel />;
 ```
 
-@typescript ITabPanelProps
+@typescript TabPanelProps
 
 @## TabPanel.Item
 
@@ -26,7 +26,7 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item />;
 ```
 
-@typescript ITabPanelItemProps
+@typescript TabPanelItemProps
 
 @## TabPanel.Item.Addon
 

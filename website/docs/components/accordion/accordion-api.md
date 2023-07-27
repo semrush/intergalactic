@@ -10,7 +10,7 @@ import Accordion from '@semcore/ui/accordion';
 <Accordion />;
 ```
 
-@typescript IAccordionProps
+@typescript AccordionProps
 
 @## Accordion.Item
 
@@ -20,7 +20,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item />;
 ```
 
-@typescript IAccordionItemProps
+@typescript AccordionItemProps
 
 @## Accordion.Item.Toggle
 
@@ -40,7 +40,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item.Collapse />;
 ```
 
-@typescript ICollapseProps
+@typescript CollapseProps
 
 Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 

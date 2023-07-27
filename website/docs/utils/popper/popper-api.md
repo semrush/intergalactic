@@ -12,7 +12,7 @@ import Popper from '@semcore/ui/popper';
 <Popper />;
 ```
 
-@typescript IPopperProps
+@typescript PopperProps
 
 @## Popper.Trigger
 
@@ -23,7 +23,7 @@ import Popper from '@semcore/ui/popper';
 <Popper.Trigger />;
 ```
 
-@typescript IPopperTriggerProps
+@typescript PopperTriggerProps
 
 @## Popper.Popper
 
@@ -34,4 +34,4 @@ import Popper from '@semcore/ui/popper';
 <Popper.Popper />;
 ```
 
-@typescript IPopperPopperProps
+@typescript PopperPopperProps

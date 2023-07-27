@@ -14,7 +14,7 @@ import DropdownMenu from '@semcore/ui/dropdown';
 <DropdownMenu />;
 ```
 
-@typescript IDropdownMenuProps
+@typescript DropdownMenuProps
 
 @## DropdownMenu.Trigger
 
@@ -43,7 +43,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.List />;
 ```
 
-@typescript IDropdownMenuListProps
+@typescript DropdownMenuListProps
 
 @## DropdownMenu.Menu
 
@@ -54,7 +54,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Menu />;
 ```
 
-@typescript IDropdownMenuMenuProps
+@typescript DropdownMenuMenuProps
 
 @## DropdownMenu.Item
 
@@ -65,7 +65,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item />;
 ```
 
-@typescript IDropdownMenuItemProps
+@typescript DropdownMenuItemProps
 
 @## DropdownMenu.ItemTitle
 
@@ -76,7 +76,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.ItemTitle />;
 ```
 
-@typescript IDropdownMenuItemTitleProps
+@typescript DropdownMenuItemTitleProps
 
 @## DropdownMenu.ItemHint
 
@@ -87,10 +87,10 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.ItemHint />;
 ```
 
-@typescript IDropdownMenuItemHintProps
+@typescript DropdownMenuItemHintProps
 
 @## Context
 
 Context of the component is available inside the render-function.
 
-@typescript IDropdownMenuContext
+@typescript DropdownMenuContext

@@ -12,7 +12,7 @@ import DnD from '@semcore/ui/drag-and-drop;
 <DnD />;
 ```
 
-@typescript IDragAndDropProps
+@typescript DragAndDropProps
 
 @## DnD.Draggable
 
@@ -25,7 +25,7 @@ import DnD from '@semcore/ui/drag-and-drop;
 </DnD>
 ```
 
-@typescript IDraggableProps
+@typescript DraggableProps
 
 @## DnD.DropZone
 

@@ -18,7 +18,7 @@ import InputMask from '@semcore/ui/input-mask';
 <InputMask.Value />;
 ```
 
-@typescript IInputMaskValueProps
+@typescript InputMaskValueProps
 
 @## InputMask.Addon
 

@@ -12,7 +12,7 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine />;
 ```
 
-@typescript ITabLineProps
+@typescript TabLineProps
 
 @## TabLine.Item
 
@@ -23,7 +23,7 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item />;
 ```
 
-@typescript ITabLineItemProps
+@typescript TabLineItemProps
 
 @## TabLine.Item.Addon
 

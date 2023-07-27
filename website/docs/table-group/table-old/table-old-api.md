@@ -9,7 +9,7 @@ import Table from '@semcore/ui/table';
 <Table />;
 ```
 
-@typescript ITableProps
+@typescript TableProps
 
 @## Table.Row
 
@@ -18,7 +18,7 @@ import Table from '@semcore/ui/table';
 <Table.Row />;
 ```
 
-@typescript ITableRowProps
+@typescript TableRowProps
 
 @## Table.Cell
 
@@ -27,7 +27,7 @@ import Table from '@semcore/ui/table';
 <Table.Cell />;
 ```
 
-@typescript ITableCellRowProps
+@typescript TableCellRowProps
 
 @## Table.CellHead
 
@@ -36,7 +36,7 @@ import Table from '@semcore/ui/table';
 <Table.CellHead />;
 ```
 
-@typescript ITableCellHeadProps
+@typescript TableCellHeadProps
 
 @## Table.StickyHead
 
@@ -48,4 +48,4 @@ import Table from '@semcore/ui/table';
 </Table>;
 ```
 
-@typescript IStickyHeadProps
+@typescript StickyHeadProps

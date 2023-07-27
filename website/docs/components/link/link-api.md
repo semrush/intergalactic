@@ -11,7 +11,7 @@ import Link from '@semcore/ui/link';
 <Link />;
 ```
 
-@typescript ILinkProps
+@typescript LinkProps
 
 @## Link.Addon
 
