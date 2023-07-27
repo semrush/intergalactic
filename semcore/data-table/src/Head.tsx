@@ -43,7 +43,7 @@ class Head extends Component<AsProps> {
   };
 
   bindHandlerKeyDown = (name: string) => (event: React.KeyboardEvent) => {
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       this.asProps.$onSortClick(name, event);
     }
   };

@@ -1,3 +1,9 @@
+## [15.1.0] - 2023-07-27
+
+### Global
+
+- **Changed** Use `event.key` instead of `event.code` for better support of non QWERTY keyboard layouts.
+
 ## [15.0.3] - 2023-07-24
 
 ### @semcore/base-trigger

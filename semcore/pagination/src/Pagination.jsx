@@ -111,7 +111,7 @@ class PaginationRoot extends Component {
   };
 
   handlePageInputKeyDown = (event) => {
-    if (event.code !== 'Enter') return;
+    if (event.key !== 'Enter') return;
     const dirtyCurrentPage = this.getDirtyCurrentPage();
     this.handlePageChange(dirtyCurrentPage);
   };

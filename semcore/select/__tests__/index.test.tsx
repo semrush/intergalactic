@@ -342,7 +342,7 @@ describe('Select Trigger', () => {
     act(() => {
       vi.runAllTimers();
     });
-    fireEvent.keyDown(document.body, { code: 'Tab' });
+    fireEvent.keyDown(document.body, { key: 'Tab' });
     act(() => getByTestId('input-in-trigger').focus());
     act(() => {
       vi.runAllTimers();

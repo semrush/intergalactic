@@ -177,7 +177,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({ hideHoverEffect: false });
   };
   handleKeyDown = (index: number) => (event: KeyboardEvent) => {
-    if (event.code === 'Space') {
+    if (event.key === 'Space') {
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
@@ -191,7 +191,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
         this.handleDragStart(index)();
       }
       return false;
-    } else if (event.code === 'Escape' && this.state.dragging) {
+    } else if (event.key === 'Escape' && this.state.dragging) {
       event.preventDefault();
       event.stopPropagation();
       const { getI18nText } = this.asProps;
