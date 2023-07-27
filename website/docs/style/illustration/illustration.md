@@ -21,6 +21,6 @@ We use illustrations of three sizes.
 | Small (40px * 40px)   | ![](static/small-size.png)                                                                | Use this size for secondary messages that should not draw much attention. |
 
 @page illustration-a11y
-@page illustration-code
 @page illustration-api
+@page illustration-code
 @page illustration-changelog
