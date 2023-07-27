@@ -10,7 +10,7 @@ import Modal from '@semcore/ui/modal';
 <Modal />;
 ```
 
-@typescript IModalProps
+@typescript ModalProps
 
 @## Modal.Overlay
 

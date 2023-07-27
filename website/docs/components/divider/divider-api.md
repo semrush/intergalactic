@@ -10,4 +10,4 @@ import Divider from '@semcore/ui/divider';
 <Divider />;
 ```
 
-@typescript IDividerProps
+@typescript DividerProps

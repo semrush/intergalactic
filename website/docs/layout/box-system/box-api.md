@@ -12,7 +12,7 @@ import { Box } from '@semcore/ui/flex-box';
 <Box />;
 ```
 
-@typescript IBoxProps
+@typescript BoxProps
 
 @## Flex
 
@@ -23,4 +23,4 @@ import { Flex } from '@semcore/ui/flex-box';
 <Flex />;
 ```
 
-@typescript IFlexProps
+@typescript FlexProps

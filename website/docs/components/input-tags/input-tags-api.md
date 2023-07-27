@@ -9,7 +9,7 @@ fileSource: input-tags
 import InputTags from '@semcore/ui/input-tags';
 ```
 
-@typescript IInputTagsProps
+@typescript InputTagsProps
 
 @## InputTags.Value
 
@@ -18,7 +18,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Value />;
 ```
 
-@typescript IInputTagsValueProps
+@typescript InputTagsValueProps
 
 @## InputTags.Tag
 
@@ -29,7 +29,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag />;
 ```
 
-@typescript IInputTagsTagProps
+@typescript InputTagsTagProps
 
 @## InputTags.Tag.Addon
 

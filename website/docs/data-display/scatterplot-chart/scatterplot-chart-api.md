@@ -11,4 +11,4 @@ import { ScatterPlot } from '@semcore/ui/d3-chart';
 <ScatterPlot />;
 ```
 
-@typescript IScatterPlotProps
+@typescript ScatterPlotProps

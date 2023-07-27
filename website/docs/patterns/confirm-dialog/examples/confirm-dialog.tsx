@@ -20,7 +20,7 @@ const Demo = () => {
   const [value, setValue] = React.useState('');
   const [visible, setVisible] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
-  const [state, setState] = React.useState('normal');
+  const [state, setState] = React.useState<'normal' | 'invalid' | 'valid'>('normal');
   const isValid = value === 'test';
   const handleOpen = React.useCallback(() => setVisible(true), []);
   const handleClose = React.useCallback(() => setVisible(false), []);

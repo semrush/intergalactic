@@ -17,4 +17,4 @@ import { Donut } from '@semcore/ui/d3-chart';
 </Donut>;
 ```
 
-@typescript IDonutProps
+@typescript DonutProps

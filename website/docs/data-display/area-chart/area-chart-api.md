@@ -16,4 +16,4 @@ import { Area } from '@semcore/ui/d3-chart';
 </Area>;
 ```
 
-@typescript IAreaProps
+@typescript AreaProps

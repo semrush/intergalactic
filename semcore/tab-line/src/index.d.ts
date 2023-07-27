@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
-import { INeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 export type TabLineValue = string | number | boolean;
@@ -36,7 +36,7 @@ export type TabLineProps<T extends TabLineValue = TabLineValue> = BoxProps &
 export interface ITabLineItemProps extends TabLineItemProps, UnknownProperties {}
 export type TabLineItemProps = BoxProps &
   KeyboardFocusProps &
-  INeighborItemProps & {
+  NeighborItemProps & {
     /** Makes a tab selected. This property is determined automatically depending on the value. */
     selected?: boolean;
     /** Disabled state  */

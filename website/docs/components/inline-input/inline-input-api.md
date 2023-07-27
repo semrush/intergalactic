@@ -11,7 +11,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput />;
 ```
 
-@typescript IInlineInputProps
+@typescript InlineInputProps
 
 @## InlineInput.Value
 
@@ -22,7 +22,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.Value />;
 ```
 
-@typescript IInlineInputValueProps
+@typescript InlineInputValueProps
 
 @## InlineInput.Addon
 
@@ -46,7 +46,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.ConfirmControl />;
 ```
 
-@typescript IInlineInputConfirmControlProps
+@typescript InlineInputConfirmControlProps
 
 @## InlineInput.CancelControl
 
@@ -57,4 +57,4 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.CancelControl />;
 ```
 
-@typescript IInlineInputCancelControlProps
+@typescript InlineInputCancelControlProps

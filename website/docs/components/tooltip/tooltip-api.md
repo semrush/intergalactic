@@ -8,4 +8,4 @@ import Tooltip from '@semcore/ui/tooltip';
 <Tooltip />;
 ```
 
-@typescript ITooltipProps
+@typescript TooltipProps

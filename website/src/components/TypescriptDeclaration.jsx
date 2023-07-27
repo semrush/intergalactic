@@ -69,6 +69,7 @@ export const TypescriptDeclarationView = ({
       />,
     );
   }
+  const minimizedType = type.length === 1 && type[0] === '{...}';
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -81,7 +82,7 @@ export const TypescriptDeclarationView = ({
           {inheritanceList}
         </code>
       </div>
-      {type && <TypeView typeParts={type} dependencies={dependencies} />}
+      {type && !minimizedType && <TypeView typeParts={type} dependencies={dependencies} />}
       {properties.length > 0 && (
         <table cellSpacing='0' className={styles.table}>
           <thead className={styles.tableHead}>

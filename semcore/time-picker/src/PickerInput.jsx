@@ -168,10 +168,10 @@ class Hours extends ItemPicker {
 
   handleKeyDown = (event) => {
     const { currentTarget } = event;
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       this.submitChanges(event);
     }
-    if (event.code === 'ArrowRight') {
+    if (event.key === 'ArrowRight') {
       if (
         currentTarget.selectionStart >= currentTarget.value.length &&
         currentTarget.selectionStart === currentTarget.selectionEnd
@@ -212,7 +212,7 @@ class Minutes extends ItemPicker {
 
   handleKeyDown = (event) => {
     const { currentTarget } = event;
-    if (event.code === 'ArrowLeft') {
+    if (event.key === 'ArrowLeft') {
       if (
         currentTarget.selectionStart <= 0 &&
         currentTarget.selectionStart === currentTarget.selectionEnd
@@ -221,14 +221,14 @@ class Minutes extends ItemPicker {
         this.focusPrev();
       }
     }
-    if (event.code === 'Backspace') {
+    if (event.key === 'Backspace') {
       if (currentTarget.value.length === 0) {
         event.preventDefault();
         this.focusPrev();
       }
     }
-    if (event.code === 'Enter') this.submitChanges(event);
-    if (event.code === 'ArrowRight') {
+    if (event.key === 'Enter') this.submitChanges(event);
+    if (event.key === 'ArrowRight') {
       if (
         currentTarget.selectionStart >= currentTarget.value.length &&
         currentTarget.selectionStart === currentTarget.selectionEnd

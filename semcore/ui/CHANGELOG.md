@@ -1,3 +1,59 @@
+## [15.1.0] - 2023-07-27
+
+### Global
+
+- **Changed** Use `event.key` instead of `event.code` for better support of non QWERTY keyboard layouts.
+
+## [15.0.3] - 2023-07-24
+
+### @semcore/base-trigger
+
+- **Fixed** `BaseTrigger` props strictness.
+
+### @semcore/button
+
+- **Fixed** `Button` props strictness.
+
+### @semcore/d3-chart
+
+- **Fixed** Broken tooltip styles.
+
+### @semcore/date-picker
+
+- **Fixed** `SingleDateInput` props strictness.
+
+### @semcore/input
+
+- **Fixed** `Input` and `Input.Value` props strictness.
+
+### @semcore/input-mask
+
+- **Fixed** `InputMask` props strictness.
+
+### @semcore/input-number
+
+- **Fixed** `InputNumber` props strictness.
+
+### @semcore/neighbor-location
+
+- **Fixed** `NeighborLocation` props strictness.
+
+### @semcore/notice-bubble
+
+- **Fixed** Notice bubble manager methods strictness.
+
+### @semcore/pills
+
+- **Fixed** `Pills` props strictness.
+
+### @semcore/switch
+
+- **Fixed** `Switch` props strictness.
+
+### @semcore/tab-line
+
+- **Fixed** `TabLine` props strictness.
+
 ## [15.0.2] - 2023-07-18
 
 ### @semcore/data-table

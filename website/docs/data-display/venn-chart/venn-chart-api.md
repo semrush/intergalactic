@@ -16,4 +16,4 @@ import { Venn } from '@semcore/ui/d3-chart';
 </Venn>;
 ```
 
-@typescript IVennProps
+@typescript VennProps

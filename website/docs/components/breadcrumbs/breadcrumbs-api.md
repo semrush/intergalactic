@@ -11,7 +11,7 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs />;
 ```
 
-@typescript IBreadcrumbsProps
+@typescript BreadcrumbsProps
 
 @## Breadcrumbs.Item
 
@@ -22,4 +22,4 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs.Item />;
 ```
 
-@typescript IBreadcrumbsItemProps
+@typescript BreadcrumbsItemProps

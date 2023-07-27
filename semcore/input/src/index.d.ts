@@ -1,15 +1,15 @@
 import React from 'react';
 import { Intergalactic, PropGetterFn, UnknownProperties } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
-import { INeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
-import { IWithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
+import { NeighborItemProps, NeighborLocationProps } from '@semcore/neighbor-location';
+import { WithAutoFocusEnhanceProps } from '@semcore/utils/lib/enhances/autoFocusEnhance';
 
 export type InputSize = 'm' | 'l';
 
 /** @deprecated */
 export interface IInputProps extends InputProps, UnknownProperties {}
 export type InputProps = BoxProps &
-  INeighborItemProps &
+  NeighborItemProps &
   NeighborLocationProps & {
     /**
      * Sets the input and addons to the disabled state
@@ -30,8 +30,8 @@ export type InputProps = BoxProps &
 /** @deprecated */
 export interface IInputValueProps extends InputValueProps, UnknownProperties {}
 export type InputValueProps = BoxProps &
-  INeighborItemProps &
-  IWithAutoFocusEnhanceProps & {
+  NeighborItemProps &
+  WithAutoFocusEnhanceProps & {
     /**
      * Input value
      */
@@ -62,7 +62,7 @@ export type InputValueProps = BoxProps &
 /** @deprecated */
 export interface IInputAddonProps extends InputAddonProps, UnknownProperties {}
 export type InputAddonProps = BoxProps &
-  INeighborItemProps & {
+  NeighborItemProps & {
     /**
      * Adds styles for interactive icons
      */

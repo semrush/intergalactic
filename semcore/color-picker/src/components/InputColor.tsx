@@ -83,7 +83,7 @@ class InputColorRoot extends Component<InputColorAsProps> {
   }, 300);
 
   handlekeyDown = (event: React.KeyboardEvent) => {
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       event.preventDefault();
       this.handlerAdd(event);
     }

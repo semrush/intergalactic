@@ -71,7 +71,7 @@ class InlineEdit extends Component<AsProps> {
   }
 
   handlerKeyDownEdit = (event: React.KeyboardEvent) => {
-    if (event.code === 'Enter' || event.code === 'Escape') {
+    if (event.key === 'Enter' || event.key === 'Escape') {
       this.viewRef.current?.focus();
     }
   };
@@ -124,7 +124,7 @@ const View: React.FC<AsProps> = (props) => {
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
       if (!visible) return;
-      if (event.code === 'Enter' || event.code === 'Space') {
+      if (event.key === 'Enter' || event.key === 'Space') {
         event.preventDefault();
         props.onEdit?.();
       }

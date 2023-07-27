@@ -123,12 +123,14 @@ function PopperPopper(props) {
     />,
   );
 }
+PopperPopper.style = style;
 
 function Title(props) {
   const STitle = Root;
   const { styles } = props;
   return sstyled(styles)(<STitle render={Box} __excludeProps={['data', 'scale']} />);
 }
+Title.style = style;
 
 function Dot(props) {
   const { styles, color, Children } = props;
@@ -141,12 +143,14 @@ function Dot(props) {
     </SDotGroup>,
   );
 }
+Dot.style = style;
 
 function Footer(props) {
   const { styles } = props;
   const SFooter = Root;
   return sstyled(styles)(<SFooter render={Box} __excludeProps={['data', 'scale']} />);
 }
+Footer.style = style;
 
 const Tooltip = createElement(TooltipRoot, {
   Trigger: Popper.Trigger,

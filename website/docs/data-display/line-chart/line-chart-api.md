@@ -16,4 +16,4 @@ import { Line } from '@semcore/ui/d3-chart';
 </Line>;
 ```
 
-@typescript ILineProps
+@typescript LineProps

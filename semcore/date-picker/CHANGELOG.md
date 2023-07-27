@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2023-07-27
+
+### Changed
+
+- Use `event.key` instead of `event.code` for better support of non QWERTY keyboard layouts.
+
+## [4.0.1] - 2023-07-24
+
+### Fixed
+
+- `SingleDateInput` props strictness.
+
 ## [4.0.0] - 2023-07-17
 
 ### BREAK
