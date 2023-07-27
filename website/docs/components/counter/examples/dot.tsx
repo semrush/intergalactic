@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from '@semcore/ui/button';
-import NotificationXS from '@semcore/ui/icon/Notification/m';
+import NotificationM from '@semcore/ui/icon/Notification/m';
 import Dot from '@semcore/ui/dot';
 import { AnimatedNumber } from '@semcore/ui/counter';
 
 export default () => (
   <Button aria-label='Open notifications'>
     <Button.Addon>
-      <NotificationXS />
+      <NotificationM />
       <Dot up aria-labelledby='notifications-counter'>
         <AnimatedNumber
           id='notifications-counter'

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Input from '@semcore/ui/input';
-import CloseXS from '@semcore/ui/icon/Close/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 import Search from '@semcore/ui/icon/Search/m';
 import Button from '@semcore/ui/button';
 import NeighborLocation from '@semcore/ui/neighbor-location';
@@ -47,7 +47,7 @@ const Demo = () => {
             />
             {value && (
               <Input.Addon
-                tag={CloseXS}
+                tag={CloseM}
                 interactive
                 onClick={handleClick}
                 aria-label='Clear filter'

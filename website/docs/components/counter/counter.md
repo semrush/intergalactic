@@ -28,12 +28,11 @@ The appropriate theme for a counter varies based on its context and the componen
 
 | Theme     | Appearance examples      | Styles    | Usage           |
 | --------- | ------------------------ | --------- | --------------- |
-| Default        | ![](static/secondary.png) | `background-color: var(--bg-primary-neutral)`, `border: 1px solid var(--border-primary)`, `color: var(--text-secondary)` | Use inside secondary controls and next to various types of inputs. |
-|                | ![](static/textarea.png) |                                                                                                                             |                                                                     |
-| Light-blue     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to focus on the selected values.                    |
-| Orange         | ![](static/orange.png)     | `background-color: var(--bg-primary-warning)`, `color: var(--text-invert)`                                                | Use to display the reached limit.                                  |
-| Red            | ![](static/red.png)           | `background-color: var(--bg-primary-critical)`, `color: var(--text-invert)`                                               | Use to display the over-limit.                                     |
-| White (invert) | ![](static/invert.png)     | `background-color: var(--bg-primary-neutral)`, `color: var(--text-primary)`                                               | Use inside primary controls with a bright/dark background color.   |
+| default        | ![](static/secondary.png) ![](static/textarea.png) | `background-color: var(--bg-primary-neutral)`, `border: 1px solid var(--border-primary)`, `color: var(--text-secondary)` | Use inside secondary controls and next to various types of inputs. |                                                                    |
+| `light-blue`     | ![](static/filter.png) | `background-color: var(--bg-primary-info)`, `color: var(--text-invert)`                                                   | Use in filters to focus on the selected values.                    |
+| `orange`         | ![](static/orange.png)     | `background-color: var(--bg-primary-warning)`, `color: var(--text-invert)`                                                | Use to display the reached limit.                                  |
+| `red`            | ![](static/red.png)           | `background-color: var(--bg-primary-critical)`, `color: var(--text-invert)`                                               | Use to display the over-limit.                                     |
+| `white` (invert) | ![](static/invert.png)     | `background-color: var(--bg-primary-neutral)`, `color: var(--text-primary)`                                               | Use inside primary controls with a bright/dark background color.   |
 
 @## Text counters
 

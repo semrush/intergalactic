@@ -8,56 +8,71 @@ tabName: Design
 
 @## Description
 
-**Time picker** is a component with comboboxes for entering/selecting time.
+**Time picker** is a component that consists of comboboxes designed for entering or selecting a time value.
+
+@## Component composition
+
+![](static/timepicker-composition.png)
+
+Component consists of:
+
+- `TimePicker.Hours`
+- `TimePicker.Minutes`
+- `TimePicker.Format`
+- `TimePicker.Separator`
 
 @## Appearance
 
-- The component includes two [comboboxes](/components/auto-suggest/#a70085) inside the input.
-- If the user needs to choose the time in a 12-hour format, then add a button for switching AM/PM. It saves an extra click on the select opening.
+The component includes [comboboxes](/components/auto-suggest/#Combobox) inside the input field.
 
-### 24-hour format
+If the user needs to choose the time in a 12-hour format, an additional button for switching between AM/PM is provided, eliminating the need for an extra click on the dropdown.
 
-![](static/input-default-l.png)
+@table-caption TimePicker 24-hour and 12-hour formats
 
-### 12-hour format
-
-![](static/input-l.png)
+| Time format    | Appearance example              |
+| -------------- | ------------------------------- |
+| 24-hour format | ![](static/input-default-l.png) |
+| 12-hour format | ![](static/input-l.png)         |
 
 @## Sizes and paddings
 
-| Input size | Appearance                                                                          | Paddings                           |
-| ---------- | ----------------------------------------------------------------------------------- | ---------------------------------- |
-| M          | ![](static/input-default-m.png) ![](static/input-m.png) | ![paddings](static/paddings-m.png) |
-| L          | ![](static/input-default-l.png) ![](static/input-l.png) | ![paddings](static/paddings-l.png) |
+@table-caption TimePicker sizes and paddings
+
+| Input size (height in px) | Appearance example                 | Paddings                           |
+| ------------------------- | ---------------------------------- | ---------------------------------- |
+| M (28px)                  | ![](static/input-default-m.png) ![](static/input-m.png) | ![paddings](static/paddings-m.png) |
+| L (40px)                  | ![](static/input-default-l.png) ![](static/input-l.png) | ![paddings](static/paddings-l.png) |
 
 @## Interaction
 
-The first combobox is hours selection, the second one is minutes selection.
+The first combobox is used for selecting hours, while the second one is for selecting minutes.
 
-Upon focus on the combobox, the list with all the possible variants is opened. Upon focus on this group of controls, at first the input is highlighted.
+Upon focusing on a combobox, a list with all the possible options is opened. When focusing on this group of controls, the input field is highlighted.
 
-> The dropdown with the list is shifted to the left by 9px in order to put the list items accurately under the combobox figures.
+> The dropdown with the list is shifted to the left by 9px to accurately align the list items with the combobox figures.
 
 ![](static/focus-1.png)
 
-The button switches the `am/pm value` by click.
+The button allows the user to switch between AM and PM values with a click.
 
 ![](static/focus-2.png)
 
-When user navigates to a button with Tab, the button gets `focus`.
+When the user navigates to a button with the `Tab` key, the button receives `focus` state.
 
 ![](static/focus-3.png)
 
-- Using the comboboxes inside the time picker, the user may both select the time using the mouse and enter it manually.
-- After the first field is completed, the cursor moves to the second field.
-- The inputs accept only figures with limitation of two symbols in each combobox.
+- Users can select the time using the comboboxes with the mouse or enter it manually.
+- After completing the first field, the cursor automatically moves to the second field.
+- The inputs only accept numeric values with a maximum of two digits in each combobox.
 
 ### Comboboxes content
 
-> Comboboxes content may be both exact, up to a minute, and with the preset step.
+The content of the comboboxes can be exact, up to a minute, or with preset steps.
 
-- In the first case the combobox step equals a minute. The user can set, for example, 13:13.
-- In the second case the combobox step can range depending on the required time pre-settings. For example, 00, 15, 30, 45 etc. are rather popular for minutes.
+- In the first case, the combobox step equals one minute, allowing the user to set precise times, such as 13:13.
+- In the second case, the combobox step can be adjusted depending on the required time pre-settings. For example, popular steps may include 00, 15, 30, 45, etc., for minutes.
+
+> Comboboxes content may be both exact, up to a minute, and with the preset step.
 
 @## Validation
 
@@ -65,14 +80,14 @@ When user navigates to a button with Tab, the button gets `focus`.
 
 Validation in this component is required in several cases:
 
-- when there is the selection of several time slots and they cannot be set equal;
-- when you cannot select time in the past or the future (in this case the time selection also depends on the date selection and validation is common for the whole controls group).
+- When there is a selection of multiple time slots, and they cannot be set to equal values.
+- When users cannot select times in the past or future. In this case, the time selection also depends on the date selection, and the validation applies to the entire group of controls.
 
 ### How the validation is performed
 
-- All the fields related to selection of the date and time get the status `invalid`.
-- The tooltip with the description of the error is shown in the first field, upon that the focus isn’t placed on the field.
-- Validation happens by `Submit` of the whole form.
+- All the fields related to the selection of the date and time receive the status `invalid`.
+- A tooltip with the description of the error is shown in the first field without placing the focus on the field.
+- Validation occurs upon submitting the entire form.
 
 ![](static/validation.png)
 

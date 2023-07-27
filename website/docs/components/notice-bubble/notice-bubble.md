@@ -103,7 +103,7 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 - Users can close the notification by clicking on the `Close` icon in the upper-right corner.
 - If the notification is closed automatically by a timer, hovering the mouse over it (`onMouseEnter`) will reset the timer, and it will start counting down again to the closing.
 -The "Undo" button allows users to cancel a completed action. Upon clicking it, a message with the text "Undone!" will briefly appear in the notification. This state remains active for 2 seconds.
-- If the undone process takes time, display an intermediate state with a spinner (within the same notice) and the corresponding text. Once the process is successfully completed, confirm it with the message "Undone!". When the loading state is closed, consider the undone notice to be closed as well, specifically it should not appear additionally.
+- If the undone process takes time, display an intermediate state with a spinner (within the same notice) and the corresponding text. Once the process is successfully completed, confirm it with the message "Undone!". When the loading state is closed, consider the undone notice to be closed as well, specifically it shouldn't appear additionally.
 
 ### Several notices at a time
 

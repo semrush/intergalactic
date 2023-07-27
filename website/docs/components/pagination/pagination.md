@@ -85,7 +85,7 @@ In this case, there should be no error shown; instead, the user should be moved 
 
 Use this state only when there is some data, and there might be more data.
 
-> If there is no data or the filter is applied, pagination should not be displayed. Instead, the table should contain a message indicating that there is no data.
+> If there is no data or the filter is applied, pagination shouldn't be displayed. Instead, the table should contain a message indicating that there is no data.
 
 ![](static/one-page.png)
 

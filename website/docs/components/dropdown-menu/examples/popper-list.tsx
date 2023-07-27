@@ -5,7 +5,7 @@ import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import Notice from '@semcore/ui/notice';
 import SpinContainer from '@semcore/ui/spin-container';
-import FileExportXS from '@semcore/ui/icon/FileExport/m';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 
 export default function () {
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ export default function () {
       <DropdownMenu.Trigger>
         <Button>
           <Button.Addon>
-            <FileExportXS />
+            <FileExportM />
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </Button>

@@ -29,12 +29,6 @@ export default PlaygroundGeneration(
 
     const icon = bool({ key: 'children', defaultValue: false, label: 'Icon' });
 
-    const disabled = bool({
-      key: 'disabled',
-      defaultValue: false,
-      label: 'Disabled',
-    });
-
     const before = text({
       key: 'before',
       label: 'AddonLeft',
@@ -45,6 +39,12 @@ export default PlaygroundGeneration(
       key: 'after',
       label: 'AddonRight',
       defaultValue: 'On',
+    });
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
     });
 
     return (

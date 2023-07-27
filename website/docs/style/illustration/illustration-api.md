@@ -12,4 +12,4 @@ import IllustrationName from '@semcore/ui/illustration/illustrationName';
 
 @## getIllustrationPath
 
-You can get any illustration using function `getIllustrationPath`. It returns url `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.
+To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.

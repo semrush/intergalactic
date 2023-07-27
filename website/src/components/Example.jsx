@@ -3,7 +3,7 @@ import styles from './Example.module.css';
 import Code from './Code';
 import Copy from './Copy';
 import Sandbox from './Sandbox';
-import CopyS from '@semcore/icon/Copy/m';
+import CopyM from '@semcore/icon/Copy/m';
 import { logEvent } from '../utils/amplitude';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
@@ -41,7 +41,7 @@ class Example extends React.PureComponent {
                   title='Click to copy code'
                   onClick={() => logEvent('tab_examples:copy_code:click', eventProperties)}
                 >
-                  <CopyS />
+                  <CopyM />
                 </Copy>
               </div>
             </div>

@@ -10,7 +10,7 @@ tabName: Design
 
 **InputMask** is a wrapper that enables you to define the format for an input value. It provides users with guidance on the expected number and format of the data they need to enter.
 
-> Note that InputMask should not be used as a placeholder for the input field.
+> Note that InputMask shouldn't be used as a placeholder for the input field.
 
 The mask helps users prevent errors by ensuring they enter the correct number of characters and automatically formats the input value.
 

@@ -76,7 +76,7 @@ The area that you can grab and change the size of the column includes not only t
 
 ![](static/resize-click-zone.png)
 
-> Changing the size of one column should not change the size of other columns.
+> Changing the size of one column shouldn't change the size of other columns.
 
 @## Editing and adding content
 
@@ -176,7 +176,7 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 ### Rules for sorting
 
-> If the data in the column should not be sorted, there should be no sorting icon.
+> If the data in the column shouldn't be sorted, there should be no sorting icon.
 
 - The sort icon should be displayed while hovering on columns that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. Descending order is used by default (use `SortDesc` icon).

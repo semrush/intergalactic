@@ -162,7 +162,7 @@ The advertising notice differs from the default notice through the inclusion of 
 
 ### Incorrect use
 
-A notice should not be mistaken for other components:
+A notice shouldn't be mistaken for other components:
 
 - **[NoticeBubble](/components/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
 - **[Tooltip](/components/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.

@@ -6,7 +6,7 @@ import Notice from '@semcore/ui/notice';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
-import QuestionAltS from '@semcore/ui/icon/Question/m';
+import QuestionAltM from '@semcore/ui/icon/Question/m';
 
 const THEME = ['danger', 'warning', 'success', 'info'];
 
@@ -44,7 +44,7 @@ const Preview = (preview) => {
   const closable = bool({
     key: 'closable',
     defaultValue: true,
-    label: 'Close icon',
+    label: 'Close Icon',
   });
 
   const msg = text({
@@ -69,7 +69,7 @@ const Preview = (preview) => {
     <Notice theme={theme} hidden={hidden}>
       {label && (
         <Notice.Label>
-          <QuestionAltS />
+          <QuestionAltM />
         </Notice.Label>
       )}
       <Notice.Content>

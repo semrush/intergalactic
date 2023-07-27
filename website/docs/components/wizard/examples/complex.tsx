@@ -57,7 +57,7 @@ export default function () {
           <Wizard.Step tag={Step1} step={1} />
           <Wizard.Step step={2}>
             {(props, handlers) => {
-              return 'Here might be your keywords';
+              return 'Keywords';
             }}
           </Wizard.Step>
           <Wizard.Step step={3}>

@@ -13,9 +13,9 @@ tabName: Design
 **Use this type of input in the following cases:**
 
 - When it's beneficial for the user to increment/decrement the value using stepper buttons.
-- When the value should not contain non-numeric characters such as letters, slashes, or other symbols.
+- When the value shouldn't contain non-numeric characters such as letters, slashes, or other symbols.
 
-**InputNumber should not be used for every numeric value.**
+**InputNumber shouldn't be used for every numeric value.**
 
 Numeric values can represent quantities of something, such as:
 
@@ -38,7 +38,7 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 
 @## Input width
 
-The width of the input should not exceed the maximum number that can be entered. Using an excessively long input, such as for the number of days in a week, can confuse the user and add unnecessary complexity to the interface.
+The width of the input shouldn't exceed the maximum number that can be entered. Using an excessively long input, such as for the number of days in a week, can confuse the user and add unnecessary complexity to the interface.
 
 ![](static/size-yes-no.png)
 

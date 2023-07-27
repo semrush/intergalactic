@@ -1,12 +1,12 @@
 import React from 'react';
 import Tag from '@semcore/ui/tag';
-import MathPlusXS from '@semcore/ui/icon/MathPlus/m';
+import MathPlusM from '@semcore/ui/icon/MathPlus/m';
 
 const Demo = () => {
   return (
     <Tag interactive theme='additional'>
       <Tag.Addon>
-        <MathPlusXS />
+        <MathPlusM />
       </Tag.Addon>
       <Tag.Text>Add tag</Tag.Text>
     </Tag>
