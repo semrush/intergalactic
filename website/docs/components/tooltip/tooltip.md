@@ -24,6 +24,7 @@ Component consists of:
 
 - `Tooltip.Trigger`
 - `Tooltip.Popper`
+- `Tooltip.Title`
 
 @## Themes
 

@@ -49,15 +49,15 @@ export default function () {
           <Wizard.Step tag={Step1} step={1} />
           <Wizard.Step step={2}>
             {(props, handlers) => {
-              return 'Second page';
+              return 'Second step';
             }}
           </Wizard.Step>
           <Wizard.Step step={3}>
             <Text size={400} fontWeight={500}>
-              Final page
+              Final step
             </Text>
             <Text tag='p' mt={2}>
-              Congratulations on passing all the steps
+              Congratulations on passing all the steps!
             </Text>
           </Wizard.Step>
           <Flex justifyContent='space-between' w='100%'>
