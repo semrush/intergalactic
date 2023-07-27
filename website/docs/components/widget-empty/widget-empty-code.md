@@ -3,32 +3,32 @@ title: Example
 fileSource: widget-empty
 ---
 
-@## No Data example
+@## NoData example
 
-The template already has the title. You should only transfer the data type and description.
+The template already includes the title. You only need to provide the data type and description.
 
-> The locale may be either transferred to the component itself, or wrap your application in `I18nProvider` from the `@react-semocre/utils` package, as in the example below.
+> The locale can be passed directly to the component or wrap your application in `I18nProvider` from the `@react-semocre/utils` package, as shown in the example below.
 
 @example no-data
 
-@## Nothing Found example
+@## NothingFound example
 
 @example nothing-found
 
 @## Error example
 
-The template already has the title and the image. You should only transfer the description and additional elements if necessary.
+The template already includes the `title` and the `icon`. You only need to provide the `description` and additional elements if necessary.
 
 @example error
 
 @## Custom examples
 
-You can create custom messages. For example, "[Set up your tool](/components/widget-empty/#set_up_your_tool)" message.
+You can create custom messages, such as the "[Set up your tool](/components/widget-empty/#set_up_your_product)" message.
 
-To get the link to the image use the function `getIconPath` from the package.
+To get the link to the [illustration](/style/illustration/), use the function `getIconPath` from the package.
 
 @example setup
 
-There you can find other examples of a custom message you can create with WidgetEmpty component.
+You can find other examples of custom messages you can create with the WidgetEmpty component.
 
 @example custom

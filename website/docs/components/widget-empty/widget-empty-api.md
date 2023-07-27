@@ -5,7 +5,7 @@ fileSource: widget-empty
 
 @## WidgetEmpty
 
-This component is used for displaying message for different "empty" states in the widget.
+This component is used for displaying message for "empty" states in the widgets.
 
 ```jsx
 import WidgetEmpty from '@semcore/ui/widget-empty';
@@ -38,4 +38,4 @@ import { Error } from '@semcore/ui/widget-empty';
 
 @## Images
 
-All possible images for the component can be found in `https://static.semrush.com/ui-kit/widget-empty/${version}/${name}.svg`.
+You can find all the possible images for the component in the [Illustration](/style/illustration/illustration-api/#getillustrationpath) component. To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.

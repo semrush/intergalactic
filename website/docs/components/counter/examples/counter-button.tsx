@@ -1,13 +1,13 @@
 import React from 'react';
 import Counter from '@semcore/ui/counter';
 import Button from '@semcore/ui/button';
-import SettingsXS from '@semcore/ui/icon/Settings/m';
+import SettingsM from '@semcore/ui/icon/Settings/m';
 
 export default () => (
   <>
     <Button mr={4}>
       <Button.Addon>
-        <SettingsXS />
+        <SettingsM />
       </Button.Addon>
       <Button.Text>Manage columns</Button.Text>
       <Button.Addon>
@@ -16,7 +16,7 @@ export default () => (
     </Button>
     <Button use='primary'>
       <Button.Addon>
-        <SettingsXS />
+        <SettingsM />
       </Button.Addon>
       <Button.Text>Manage columns</Button.Text>
       <Button.Addon>

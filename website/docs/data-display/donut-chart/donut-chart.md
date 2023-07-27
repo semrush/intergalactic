@@ -73,7 +73,7 @@ endAngle={0}
 
 Show legend with the values.
 
-- The legend should not be far from the chart, the margin is 24px maximum.
+- The legend shouldn't be far from the chart, the margin is 24px maximum.
 - **The legend label has 16px margin-right. The margin between the values is 12px.**
 - The legend is aligned to the top of the chart.
 

@@ -8,7 +8,7 @@ const options = Array(50)
 
 export default () => (
   <Select>
-    <Select.Trigger placeholder='Scroll menu' />
+    <Select.Trigger placeholder='Select option' />
     <Select.Menu>
       <Tooltip timeout={[0, 50]} placement='right'>
         {options.map((option, index) => (
@@ -16,7 +16,7 @@ export default () => (
             {option}
           </Select.Option>
         ))}
-        <Tooltip.Popper w={150}>Hello, stranger 😉</Tooltip.Popper>
+        <Tooltip.Popper w={86}>Hey there!</Tooltip.Popper>
       </Tooltip>
     </Select.Menu>
   </Select>

@@ -14,7 +14,7 @@ const Demo = () => (
         minRows={4}
         maxRows={10}
         id='autoscalable-textarea'
-        placeholder='Try type something really big'
+        placeholder='Try typing a really big message'
       />
     </Box>
   </div>

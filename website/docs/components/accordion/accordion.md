@@ -53,7 +53,7 @@ You can set the width of the accordion that is appropriate for the context.
 
 You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
-**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion should not be equal to or greater than the size of the main titles on the page.
+**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
 
 ### Margins and paddings
 
@@ -65,7 +65,7 @@ You can use this component to hide almost any content. This can be a text conten
 
 @## Interaction
 
-> **By default, when a section of the accordion is opened, other sections that have already been opened should not be closed**.
+> **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
 >
 > The user expects this behavior when working with the desktop device interface.
 >

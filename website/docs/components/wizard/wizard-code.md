@@ -2,20 +2,20 @@
 title: Example
 ---
 
-Wizard is inherited from the [Modal](/components/modal/modal-api/), so you can use all its properties
+The Wizard component inherits from the [Modal](/components/modal/modal-api/) component, so you can use all of its properties.
 
 @## Basic example
 
 @example simple
 
-@## Customised step
+@## Custom step
 
-Since the wizard is usually a complex component, you can use your own components for the steps or pass a function inside for more control
+As the Wizard is typically a complex component, you have the flexibility to use your own components for the steps or pass a function inside to have more control.
 
 @example advanced
 
-@## Customised stepper
+@## Custom stepper
 
-The stepper can also pass everything needed
+The stepper can also be customized.
 
 @example complex

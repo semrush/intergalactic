@@ -4,7 +4,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
-const SIZES = ['xxs', 'xs', 's', 'm', 'l', 'xl', 'xxl'];
+const SIZES = ['xs', 's', 'm', 'l', 'xl', 'xxl'];
 const THEMES = ['dark', 'invert'];
 function getSizeText(sizeSpin) {
   if (sizeSpin.includes('l') || sizeSpin.includes('m')) {

@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Input from '@semcore/ui/input';
-import CloseXS from '@semcore/ui/icon/Close/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 import Search from '@semcore/ui/icon/Search/m';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
@@ -35,7 +35,7 @@ const Demo = () => {
           placeholder='Enter keyword here'
         />
         {value && (
-          <Input.Addon tag={CloseXS} interactive onClick={handleClick} aria-label='Clear filters' />
+          <Input.Addon tag={CloseM} interactive onClick={handleClick} aria-label='Clear filters' />
         )}
       </Input>
     </Flex>
