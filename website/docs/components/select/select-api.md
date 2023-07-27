@@ -12,7 +12,7 @@ import Select from '@semcore/ui/select';
 <Select />;
 ```
 
-@typescript ISelectProps
+@typescript SelectProps
 
 @## Select.Trigger
 
@@ -46,7 +46,7 @@ import Select from '@semcore/ui/select';
 <Select.Option />;
 ```
 
-@typescript ISelectOptionProps
+@typescript SelectOptionProps
 
 @## Select.OptionHint
 
@@ -69,7 +69,7 @@ import Select from '@semcore/ui/select';
 <Select.OptionCheckbox />;
 ```
 
-@typescript ISelectOptionCheckboxProps
+@typescript SelectOptionCheckboxProps
 
 @## Select.Option.Checkbox
 

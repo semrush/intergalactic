@@ -9,7 +9,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable />;
 ```
 
-@typescript IDataTableProps
+@typescript DataTableProps
 
 @## DataTable.Head
 
@@ -18,7 +18,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Head />;
 ```
 
-@typescript IDataTableHeadProps
+@typescript DataTableHeadProps
 
 @## DataTable.Column
 
@@ -27,7 +27,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Column />;
 ```
 
-@typescript IDataTableColumnProps
+@typescript DataTableColumnProps
 
 @## DataTable.Body
 
@@ -45,7 +45,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Row />;
 ```
 
-@typescript IDataTableRowProps
+@typescript DataTableRowProps
 
 @## DataTable.Cell
 
@@ -54,4 +54,4 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Cell />;
 ```
 
-@typescript IDataTableCellProps
+@typescript DataTableCellProps

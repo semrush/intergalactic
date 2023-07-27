@@ -12,7 +12,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
-@typescript IPopperProps
+@typescript PopperProps
 
 @## FeaturePopover.Trigger
 
@@ -23,7 +23,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
-@typescript IPopperTriggerProps
+@typescript PopperTriggerProps
 
 @## FeaturePopover.Popper
 
@@ -34,7 +34,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
-@typescript IFeaturePopoverPopperProps
+@typescript FeaturePopoverPopperProps
 
 @## FeaturePopover.Spot
 

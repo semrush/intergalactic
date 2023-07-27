@@ -7,4 +7,4 @@ fileSource: portal
 import Portal, { PortalProvider } from '@semcore/ui/portal';
 ```
 
-@typescript IPortalProps
+@typescript PortalProps

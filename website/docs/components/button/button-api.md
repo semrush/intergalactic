@@ -11,7 +11,7 @@ import Button from '@semcore/ui/button';
 <Button />;
 ```
 
-@typescript IButtonProps
+@typescript ButtonProps
 
 @## Button.Addon
 

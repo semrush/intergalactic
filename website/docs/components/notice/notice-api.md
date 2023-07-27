@@ -9,7 +9,7 @@ import Notice from '@semcore/ui/notice';
 <Notice />;
 ```
 
-@typescript INoticeProps
+@typescript NoticeProps
 
 @## Notice.Label
 
@@ -56,4 +56,4 @@ import { NoticeSmart } from '@semcore/ui/notice';
 <NoticeSmart />;
 ```
 
-@typescript INoticeSmartProps
+@typescript NoticeSmartProps

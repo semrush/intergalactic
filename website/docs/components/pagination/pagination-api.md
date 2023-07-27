@@ -9,7 +9,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
-@typescript IPaginationProps
+@typescript PaginationProps
 
 @## Pagination.FirstPage
 
@@ -36,7 +36,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput />;
 ```
 
-@typescript IPageInputProps
+@typescript PageInputProps
 
 @## Pagination.PageInput.Value
 
@@ -45,7 +45,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
-@typescript IInputValueProps
+@typescript InputValueProps
 
 @## Pagination.PrevPage
 
@@ -63,4 +63,4 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.TotalPages />;
 ```
 
-@typescript ITotalPagesProps
+@typescript TotalPagesProps

@@ -19,7 +19,7 @@ const computeTypingStringLength = (typingsParts) =>
     0,
   );
 
-export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
+export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembersOf = []) => {
   const traverse = (node: ts.Node) => {
     switch (node.kind) {
       case ts.SyntaxKind.NumberKeyword:
@@ -70,10 +70,28 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}) => {
         return ['...', traverse((node as ts.RestTypeNode).type)];
       case ts.SyntaxKind.TypeLiteral: {
         const members = (node as ts.TypeLiteralNode).members.map((member) => traverse(member));
-        return ['{', members, '}'];
+        const result = ['{'];
+        if (minimizeMembersOf.includes(node)) {
+          result.push('...');
+        } else {
+          for (const member of members) {
+            if (result.length > 1) result.push('; ');
+            result.push(member);
+          }
+        }
+        result.push('}');
+        return result;
       }
-      case ts.SyntaxKind.TupleType:
-        return ['[', (node as ts.TupleTypeNode).elements.map((element) => traverse(element)), ']'];
+      case ts.SyntaxKind.TupleType: {
+        const elements = (node as ts.TupleTypeNode).elements.map((element) => traverse(element));
+        const result = ['['];
+        for (const element of elements) {
+          if (result.length > 1) result.push(', ');
+          result.push(element);
+        }
+        result.push(']');
+        return result;
+      }
       case ts.SyntaxKind.PropertySignature: {
         const signature = serializeProperty(node as ts.PropertySignature, genericsMap);
         const result = [signature.name];

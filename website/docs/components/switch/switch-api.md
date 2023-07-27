@@ -10,7 +10,7 @@ import Switch from '@semcore/ui/switch';
 <Switch />;
 ```
 
-@typescript ISwitchProps
+@typescript SwitchProps
 
 @## Switch.Value
 
@@ -19,7 +19,7 @@ import Switch from '@semcore/ui/switch';
 <Switch.Value />;
 ```
 
-@typescript ISwitchValueProps
+@typescript SwitchValueProps
 
 @## Switch.Addon
 
@@ -28,4 +28,4 @@ import Switch from '@semcore/ui/switch';
 <Switch.Addon />;
 ```
 
-@typescript ISwitchAddonProps
+@typescript SwitchAddonProps

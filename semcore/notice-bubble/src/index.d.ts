@@ -67,7 +67,7 @@ export type NoticeBubbleWarningProps = NoticeBubbleProps & {
 
 /** @deprecated */
 export interface INoticeBubbleManager extends NoticeBubbleManagerClass, UnknownProperties {}
-type NoticeBubbleManagerClass = {
+export type NoticeBubbleManagerClass = {
   /**
    * Creates and shows a notice.
    * */

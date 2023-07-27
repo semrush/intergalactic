@@ -48,13 +48,13 @@ class RootPills extends Component {
   }
 
   handleKeyDown = (event) => {
-    if (event.code !== 'ArrowLeft' && event.code !== 'ArrowRight') return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
     if (this.asProps.behavior === 'radio') {
       let selectedIndex = this.itemValues.findIndex((value) => value === this.asProps.value);
       if (selectedIndex === -1) return;
 
-      if (event.code === 'ArrowLeft') selectedIndex--;
-      if (event.code === 'ArrowRight') selectedIndex++;
+      if (event.key === 'ArrowLeft') selectedIndex--;
+      if (event.key === 'ArrowRight') selectedIndex++;
       if (selectedIndex < 0 || selectedIndex >= this.itemValues.length) return;
 
       this.handlers.value(this.itemValues[selectedIndex], event);
@@ -62,8 +62,8 @@ class RootPills extends Component {
       let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
       if (focusedIndex === -1) return;
 
-      if (event.code === 'ArrowLeft') focusedIndex--;
-      if (event.code === 'ArrowRight') focusedIndex++;
+      if (event.key === 'ArrowLeft') focusedIndex--;
+      if (event.key === 'ArrowRight') focusedIndex++;
 
       this.itemRefs[focusedIndex]?.focus();
     }

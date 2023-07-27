@@ -9,11 +9,11 @@ fileSource: fullscreen-modal
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 ```
 
-@typescript IFullscreenModalProps
+@typescript FullscreenModalProps
 
 @## FullscreenModal.Header
 
-@typescript IFullscreenModalHeaderProps
+@typescript FullscreenModalHeaderProps
 
 @## FullscreenModal.Close
 

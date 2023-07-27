@@ -10,7 +10,7 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea />;
 ```
 
-@typescript IScrollAreaProps
+@typescript ScrollAreaProps
 
 @## ScrollArea.Container
 
@@ -28,7 +28,7 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar />;
 ```
 
-@typescript IScrollBarProps
+@typescript ScrollBarProps
 
 @## ScrollArea.Bar.Slider
 

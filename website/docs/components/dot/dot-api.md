@@ -10,4 +10,4 @@ import Dot from '@semcore/ui/dot';
 <Dot aria-label="..." />;
 ```
 
-@typescript IDotProps
+@typescript DotProps

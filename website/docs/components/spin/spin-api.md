@@ -12,4 +12,4 @@ import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 
-@typescript ISpinProps
+@typescript SpinProps

@@ -92,7 +92,7 @@ describe('Icon', () => {
     const onClick = vi.fn();
     const { getByTestId } = render(<Icon data-testid='icon' interactive aria-label='Test icon' />);
 
-    fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
+    fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
     expect(onClick).toHaveBeenCalledTimes(0);
   });
 
@@ -109,7 +109,7 @@ describe('Icon', () => {
       />,
     );
 
-    fireEvent.keyDown(getByTestId('icon'), { code: 'Enter' });
+    fireEvent.keyDown(getByTestId('icon'), { key: 'Enter' });
     expect(onKeyDown).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalledTimes(0);
   });

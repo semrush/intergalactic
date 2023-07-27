@@ -10,4 +10,4 @@ import Ellipsis from '@semcore/ui/ellipsis';
 <Ellipsis />;
 ```
 
-@typescript IEllipsisProps
+@typescript EllipsisProps

@@ -5,7 +5,7 @@ fileSource: tag
 
 @## Tag
 
-@typescript ITagProps
+@typescript TagProps
 
 @## Tag.Addon
 

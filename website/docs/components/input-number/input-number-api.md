@@ -9,7 +9,7 @@ fileSource: input-number
 import InputNumber from '@semcore/ui/input-number';
 ```
 
-@typescript IInputNumberProps
+@typescript InputNumberProps
 
 @## InputNumber.Value
 
@@ -18,7 +18,7 @@ import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Value />;
 ```
 
-@typescript IInputNumberValueProps
+@typescript InputNumberValueProps
 
 @## InputNumber.Controls
 
@@ -27,7 +27,7 @@ import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Controls />;
 ```
 
-@typescript IInputNumberControlsProps
+@typescript InputNumberControlsProps
 
 @## InputNumber.Addon
 

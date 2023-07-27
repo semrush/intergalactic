@@ -147,7 +147,7 @@ describe('ColorPicker', () => {
     const input = getByTestId('inputColor') as HTMLInputElement;
     fireEvent.change(input, { target: { value: '635472' } });
     fireEvent.focus(input);
-    fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
 
     expect(input.value).toBe('');
     expect(spy).toBeCalledTimes(1);
@@ -182,7 +182,7 @@ describe('ColorPicker', () => {
     expect(input.value).toBe('#635472');
 
     fireEvent.focus(input);
-    fireEvent.keyDown(input, { code: 'Enter', keyCode: 13 });
+    fireEvent.keyDown(input, { key: 'Enter', keyCode: 13 });
 
     expect(spy).toBeCalledTimes(1);
     expect(spy).toBeCalledWith(['#635472'], expect.anything());

@@ -12,7 +12,7 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 <WidgetEmpty />;
 ```
 
-@typescript IWidgetEmptyProps
+@typescript WidgetEmptyProps
 
 @## NoData
 
@@ -23,7 +23,7 @@ import { NoData } from '@semcore/ui/widget-empty';
 <NoData />;
 ```
 
-@typescript IWidgetNoDataProps
+@typescript WidgetNoDataProps
 
 @## Error
 
@@ -34,7 +34,7 @@ import { Error } from '@semcore/ui/widget-empty';
 <Error />;
 ```
 
-@typescript IWidgetErrorProps
+@typescript WidgetErrorProps
 
 @## Images
 

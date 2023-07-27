@@ -43,7 +43,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
               tabIndex={0}
               onClick={() => handleClickCategory(currentCategory)}
               onKeyDown={() => {
-                if (event.code === 'Enter' || event.code === 'Space') {
+                if (event.key === 'Enter' || event.key === 'Space') {
                   handleClickCategory(currentCategory);
                 }
               }}

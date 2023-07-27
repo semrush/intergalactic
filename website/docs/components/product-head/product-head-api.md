@@ -48,7 +48,7 @@ import { Title } from '@semcore/ui/product-head';
 <Title />;
 ```
 
-@typescript IHeaderTitleProps
+@typescript HeaderTitleProps
 
 @## Info
 
@@ -68,4 +68,4 @@ import { Info } from '@semcore/ui/product-head';
 <Info.Item />;
 ```
 
-@typescript IInfoItemProps
+@typescript InfoItemProps

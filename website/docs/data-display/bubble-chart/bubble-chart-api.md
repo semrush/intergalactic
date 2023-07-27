@@ -11,4 +11,4 @@ import { Bubble } from '@semcore/ui/d3-chart';
 <Bubble />;
 ```
 
-@typescript IBubbleProps
+@typescript BubbleProps

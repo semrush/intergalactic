@@ -14,7 +14,7 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown />;
 ```
 
-@typescript IDropdownProps
+@typescript DropdownProps
 
 @## Dropdown.Trigger
 
@@ -25,7 +25,7 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Trigger />;
 ```
 
-@typescript IPopperTriggerProps
+@typescript PopperTriggerProps
 
 @## Dropdown.Popper
 
@@ -36,4 +36,4 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Popper />;
 ```
 
-@typescript IPopperPopperProps
+@typescript PopperPopperProps
