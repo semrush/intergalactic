@@ -19,14 +19,23 @@ const PLACEMENT = [
   'left-end',
 ];
 
+const EVENT = [
+  'hover',
+  'click',
+  'focus',
+];
+
 export default PlaygroundGeneration((createGroupWidgets) => {
   const { radio, select } = createGroupWidgets('Tooltip');
 
-  const interactive = radio({
+  const interactive = select({
     key: 'interactive',
     defaultValue: 'hover',
     label: 'Interactive event',
-    options: ['hover', 'click', 'focus'],
+    options: EVENT.map((value) => ({
+      name: value,
+      value,
+    })),
   });
 
   const placement = select({
@@ -61,7 +70,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
 
   return (
     <Tooltip
-      title='Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae ea hic ipsam iste mollitia, numquam quia quos sapiente soluta vitae! Corporis culpa cupiditate deserunt dolores fugit libero molestias praesentium repellat?'
+      title='Hey there! I am just a tooltip, not a magic genie, but I am here to sprinkle some knowledge on you!'
       placement={placement}
       interaction={interactive}
       theme={theme}
