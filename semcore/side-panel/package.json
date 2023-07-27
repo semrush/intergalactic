@@ -1,7 +1,7 @@
 {
   "name": "@semcore/side-panel",
   "description": "Semrush SidePanel Component",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,9 +16,9 @@
     "@semcore/animation": "2.0.0",
     "@semcore/flex-box": "5.0.0",
     "@semcore/portal": "3.0.0",
-    "@semcore/typography": "5.0.0",
+    "@semcore/typography": "5.1.0",
     "@semcore/outside-click": "3.0.0",
-    "@semcore/icon": "4.0.0"
+    "@semcore/icon": "4.1.0"
   },
   "peerDependencies": {
     "@semcore/core": "2.0.0",
