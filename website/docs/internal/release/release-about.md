@@ -49,4 +49,4 @@ import Button from '@semcore/ui/button';
 
 If you need a newer version of any component before we publish our package, you can install and use it separately.
 
-> ⚠️ Don't install **`@semcore/core`** separately. It's already included in **ui** and should not be duplicated.
+> ⚠️ Don't install **`@semcore/core`** separately. It's already included in **ui** and shouldn't be duplicated.

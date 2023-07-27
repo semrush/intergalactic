@@ -59,7 +59,7 @@ Make sure that user can easily understand the meaning and structure of the page 
 - All content and design of the page should have meaningful sequence and fit into the logical structure.
 - Make sure that users can navigate the site in multiple ways: with a table of contents, a sitemap, links between pages, and search on the website.
 - Screen readers should read the information in the same order it is displayed.
-- Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading should not be marked up as H1 in the code. Also, don't use plain text for headings.
+- Use styles correctly. Level 1 headings in the layout must be H1 headings in code. At the same time, text that is clearly not a level 1 heading shouldn't be marked up as H1 in the code. Also, don't use plain text for headings.
 
 Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html) to know more about meaningful sequence.
 

@@ -12,7 +12,7 @@ The list below describes roles and attributes that component already has.
 
 | Attribute            | Element | Usage                                                                                                                        |
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `aria-hidden="true"` | `img`   | Hides images from the assistive technologies, because this element is auxiliary and should not be played by a screen reader. |
+| `aria-hidden="true"` | `img`   | Hides images from the assistive technologies, because this element is auxiliary and shouldn't be played by a screen reader. |
 
 @## Considerations for developers
 

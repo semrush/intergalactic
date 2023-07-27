@@ -169,7 +169,7 @@ Refer to [examples](/components/modal/modal-code/) of the modal window to see ho
 
 If the height of the modal window exceeds the height of the browser window, it should be positioned with a 40px margin from the top border.
 
-**The content underneath the overlay should not be scrollable.**
+**The content underneath the overlay shouldn't be scrollable.**
 
 ![](static/scroll-1.png)
 ![](static/scroll-2.png)

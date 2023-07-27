@@ -35,10 +35,10 @@ In the default state for all circles:
 
 ### Sizes
 
-- Minimum Venn chart size is **180px \* 180px**.
-- Maximum Venn chart size is **300px \* 300px**.
+- Minimum Venn chart size is **180px * 180px**.
+- Maximum Venn chart size is **300px * 300px**.
 
-> It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you should not "enlarge" the report with an unnecessarily large chart.
+> It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you shouldn't "enlarge" the report with an unnecessarily large chart.
 
 |                                                     | Appearance example                         |
 | --------------------------------------------------- | ------------------------------------------ |
@@ -56,7 +56,7 @@ If the legend doesn't fit the widget width, you can put it under the chart.
 
 ### General recommendations
 
-- The legend should not be far from the chart, the margin is 24px maximum.
+- The legend shouldn't be far from the chart, the margin is 24px maximum.
 - **The legend label has 16px margin-right.**
 - The legend is aligned to the top of the chart.
 

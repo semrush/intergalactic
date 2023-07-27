@@ -23,7 +23,7 @@ You also can make a cell compact simply by using `compact` prop. In this case pa
 | Description                     | Appearance                                | Styles                                                                        |
 | ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
 | Heading                         | ![](static/th-styles.png)        | `background-color: var(--table-th-primary-cell)`, `border-bottom: 1px solid var(--border-secondary)` |
-| Heading of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header should not have a shadow.      |
+| Heading of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header shouldn't have a shadow.      |
 | Default row                     | ![](static/td-default.png)      | `border-bottom: 1px solid var(--border-secondary)`                                   |
 | The last line of the accordion  | ![](static/accordion.png)  | `border-bottom: 1px solid var(--table-td-cell-actions-accordion)`                                   |
 

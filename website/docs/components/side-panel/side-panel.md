@@ -154,7 +154,7 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 ### What happens when the browser window size changes
 
 - SidePanel has a fixed width that does not change when the browser window is resized. The default width of the panel is 256px. You can change it if necessary.
-- On a 320px screen, SidePanel should not occupy more than 80% of the screen width so that the user can click outside of it and close it.
+- On a 320px screen, SidePanel shouldn't occupy more than 80% of the screen width so that the user can click outside of it and close it.
 
 ![](static/320-width.png)
 
