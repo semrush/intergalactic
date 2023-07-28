@@ -6,19 +6,21 @@ tabName: Design
 
 @## Font
 
-We use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family in the design system.
+In our design system, we use the [Inter](https://fonts.google.com/specimen/Inter?query=inter) font family.
 
 @## Basic text colors
 
-For the main text color use `--text-primary` token.
+To specify the main text color, use the `--text-primary` token.
 
-For the secondary text color use `--text-secondary` token.
+For the secondary text color, utilize the `--text-secondary` token.
 
-Besides, both paragraphs headings and text can be colored in our main semantic colors. Depending on the situation, they are green, red, and orange.
+Additionally, both paragraphs, headings, and text can be colored with our main semantic colors, which include `--text-success`, `--text-critical` and others.
 
-> Use this opportunity thoughtfully, and don’t abuse the text coloring, as it can reduce it's readability. **Don't forget to check the text for contrast against its background**.
+Please use text coloring thoughtfully and avoid excessive use, as it may reduce readability. Always ensure text contrast against its background.
 
 @## Font size and line height
+
+@table-caption Font size and line height
 
 | px   | em      | Font size tokens | Line height tokens |
 | ---- | ------- | ---------------- | ------------------ |
@@ -35,18 +37,22 @@ Besides, both paragraphs headings and text can be colored in our main semantic c
 
 @## Heading
 
-There are 6 sizes of headings in the design system.
+Our design system offers six different heading sizes.
 
-The first 4 headings are usually used in hero blocks, large advertising screens, banners and landing pages. Use `semibold` font-weight (`--semi-bold` token) for the big headings.
+The first four headings are typically used for hero blocks, large advertising screens, banners, and landing pages. These headings should use the `semibold` font-weight (`--semi-bold` token).
 
-|     | Appearance           | Styles                                                   | Tokens                 |
-| --- | -------------------- | -------------------------------------------------------- | ---------------------- |
+@table-caption Heading from h1 to h4 levels and styles
+
+|     | Appearance           | Styles                     | Tokens                 |
+| --- | -------------------- | -------------------------- | ---------------------- |
 | h1  | ![](static/h1.png) | `font-size: 48px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-800`, `--lh-800` |
 | h2  | ![](static/h2.png) | `font-size: 36px`, `line-height: 1.11`, `font-weight: semibold` | `--fs-700`, `--lh-700`  |
 | h3  | ![](static/h3.png) | `font-size: 32px`, `line-height: 1.25`, `font-weight: semibold` | `--fs-600`, `--lh-600`  |
 | h4  | ![](static/h4.png) | `font-size: 24px`, `line-height: 1.17`, `font-weight: semibold` | `--fs-500`, `--lh-500`  |
 
-The remaining headings are used for the content part of products and landing pages. For the headings with 16px size and smaller use `bold` font-weight (`--bold` token).
+The remaining headings are used for the content part of products and landing pages. For headings with a size of 16px and smaller, use the `bold` font-weight (`--bold` token).
+
+@table-caption Heading from h5 to h6 levels and styles
 
 |     | Appearance           | Styles                                                  | Tokens                |
 | --- | -------------------- | ------------------------------------------------------- | --------------------- |
@@ -55,15 +61,17 @@ The remaining headings are used for the content part of products and landing pag
 
 @## Heading with counter
 
-A heading can contain additional information, such as a counter of results found, and so on. They can be found in table headings. In these cases, the additional information is presented by secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
+In certain cases, headings can include additional information, such as a counter of results found. These are often used in table headings. In such cases, the additional information is presented using the secondary text (`--text-secondary` token) and `regular` font-weight (`--regular` token).
 
 ![](static/secondary-info.png)
 
 @## Heading for mobile devices
 
-To improve readability on different screens, change the size of the headings, depending on the [breakpoint](/layout/grid-system/).
+To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/).
 
-> Change only font styles, not the markup.
+> Only change font styles, not the markup.
+
+@table-caption Heading styles for mobile devices
 
 | 0px – 768px                        | 768px – ∞                           |
 | ---------------------------------- | ----------------------------------- |
@@ -76,7 +84,7 @@ To improve readability on different screens, change the size of the headings, de
 
 @## Paragraph
 
-There are three text sizes we use in our products.
+There are three text sizes commonly used in our products:
 
 ### 16px text
 
@@ -94,18 +102,20 @@ There are three text sizes we use in our products.
 
 @## Paragraph margins
 
-Paragraphs have a margin-bottom, and each of the three paragraph sizes has its own margin. A paragraph of 16px has a margin-bottom of 16px, a paragraph of 14px – 12px, a paragraph of 12px text – 8px.
+Paragraphs have a `margin-bottom`, and each paragraph size has its own specific `margin`. For instance, a paragraph with a 16px font size has a `margin-bottom: 14px`, a paragraph with a 14px font size has a `margin-bottom: 12px`, and a paragraph with a 12px font size has a `margin-bottom: 8px`.
 
-You can also use these margins when a paragraph is followed by a paragraph of smaller font size.
+These margins can also be applied when a paragraph is followed by a paragraph with a smaller font size.
 
 ![](static/paragraph_margins.png)
 
 @## Metric
 
-Use these styles for highlighting metrics in your interface.
+For highlighting metrics in your interface, use the following styles:
 
-| px   | Tokens                | Appearance                           |
-| ---- | --------------------- | ------------------------------------ |
+@table-caption Font styles for metrics
+
+| px   | Tokens                | Appearance                  |
+| ---- | --------------------- | --------------------------- |
 | 32px | `--fs-600`, `--lh-600` | ![](static/metric-600.png) |
 | 24px | `--fs-500`, `--lh-500` | ![](static/metric-500.png) |
 | 20px | `--fs-400`, `--lh-400` | ![](static/metric-400.png) |
@@ -116,11 +126,13 @@ Use these styles for highlighting metrics in your interface.
 
 @## Text styles
 
-You can change text's style: make it `bold`, `italic`, a [link](/components/link/), a hint, or even `strikethrough`.
+You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link](/components/link/), a [hint](/style/typography/#hints_hint_links), or applying `strikethrough`.
 
 @example text-emphasis
 
 @## List
+
+@table-caption Font styles for lists
 
 | px  | Tokens | Styles | Numbered list | Unordered list | Check list |
 | --- | ------ | ------ | ------------- | -------------- | ---------- |
@@ -130,7 +142,9 @@ You can change text's style: make it `bold`, `italic`, a [link](/components/link
 
 @## Nested list
 
-Each next level of the nested list is always indented to the left. **Indents between the list levels for all font sizes are 8px**.
+Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes are 8px.
+
+@table-caption Font styles for nested lists
 
 | px   | Tokens                | Margins                                          |
 | ---- | --------------------- | ------------------------------------------------ |
@@ -140,28 +154,30 @@ Each next level of the nested list is always indented to the left. **Indents bet
 
 @## Quote
 
-We have special styles for highlighting quotes in paragraphs.
+We have specific styles for highlighting quotes in paragraphs.
 
 ![](static/blockquote-paddings.png)
 
 @## Hints (hint links)
 
-The text can be wrapped in a **hint link (pseudo-link)**. In this case, it becomes an inactive control that triggers events on the page without its reloading. Use a pseudo-link for hints.
+Text can be wrapped in a hint link (pseudo-link), creating an inactive control that triggers events on the page without reloading. This pseudo-link is usually used for hints.
 
 ![](static/hint-link.png)
 
 ### Hint link states
 
-| State        | Appearance                            | Styles and tokens                                                                                                                                  | Cursor                                                          |
-| ------------ | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| Normal       | ![](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.                                                                                            | `help` or `pointer`, if clickable                               |
-| Active/hover | ![](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If link is used with an icon, the icon changes its color along with the text. | `help`, `default` or `pointer` (depending on the usage context) |
-| Disabled     | ![](static/hint-disabled.png) | `--disabled-opacity`. Use this state as the last resort and be sure to label the disabled link with an explanatory tooltip.                        | `default`                                                       |
-| visited      |                                       | This link does not have `visited` state.                                                                                                           |                                                                 |
+@table-caption Hint link states
 
-@## Which heading with which paragraph size shall be used?
+| State        | Appearance example  | Styles and tokens      | Cursor          |
+| ------------ | ------------------- | ---------------------- | --------------- |
+| Normal       | ![](static/hint-default.png)    | `--text-hint` and underlined with dashed border-bottom.     | `help` or `pointer`, if clickable   |
+| Active/hover | ![](static/hint-hover.png)       | `--text-hint-hover-active` and underlined with dashed border-bottom. If used with an icon, the icon changes color along with the text. | `help`, `default` or `pointer` (depending on the usage context) |
+| Disabled     | ![](static/hint-disabled.png) | `--disabled-opacity`. Use this state as a last resort and be sure to label the disabled link with an explanatory tooltip.     | `default`       |
+| visited      |             | This link does not have `visited` state.  |                   |
 
-**Use 16px paragraph with the following headings:**
+@## Which heading with which paragraph size shall be used
+
+**Use a 16px paragraph with the following headings:**
 
 ![](static/h1-p.png)
 
@@ -169,7 +185,7 @@ The text can be wrapped in a **hint link (pseudo-link)**. In this case, it becom
 
 ![](static/h3-p.png)
 
-**Use 14px paragraph with the following heading:**
+**Use a 14px paragraph with the following headings:**
 
 ![](static/h4-p.png)
 
