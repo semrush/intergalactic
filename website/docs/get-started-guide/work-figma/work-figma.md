@@ -19,8 +19,6 @@ Feel free to use our Figma libraries:
 - Interface icons: **[Internal](https://www.figma.com/file/lVX2dKnVFtcSTQV7eSS5j1/%F0%9F%94%8D-Icons), [Public](https://www.figma.com/community/file/1104055318873511031)**
 - Charts: **[Internal](https://www.figma.com/file/eODzGSSSlI8fl0x5fsv9cf/%E2%9C%A8-Charts), [Public](https://www.figma.com/community/file/1104055641569356920)**
 
-![](static/figma-libraries.png)
-
 @embedded_video https://www.loom.com/share/593126f16b494b719949649d1d7fa331
 
 @embedded_video https://www.loom.com/share/f31be4be9b9649899661b6139b31b3d7
@@ -43,7 +41,7 @@ How to choose the right visualization for your task?
 
 @## Additional libraries
 
-We also have special libraries for inner usage (they are available only for Semrush designers):
+In addition, we offer libraries for internal use, which are accessible solely to Semrush designers.
 
 - UX/UI patterns with common modules and patterns we use across different Semrush products – **[UX Patterns](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/%F0%9F%92%A0-Patterns)**;
 - UI illustrations – **[UI Illustration](https://www.figma.com/file/0eyXfQt4cbmx5y8L5oddeo/%F0%9F%91%A9%E2%80%8D%F0%9F%8E%A4-UI-illustrations)**;
@@ -53,6 +51,6 @@ We also have special libraries for inner usage (they are available only for Semr
 - library for experimental components and patterns – **[Experiments](https://www.figma.com/file/n694tB9BkzBkhxetdTiFE8/Experimental-components)**;
 - components for organizing your files and specs – **[Design File Template Library](https://www.figma.com/file/ZDRC056k8PbUFi3qoFAWj9/Design-File-Template-Library)**.
 
-> **Libraries with UI illustrations, patterns, experiments and email templates are open for editing for all Product Design Team members**.
->
-> Therefore, if you have a new illustration, pattern or email template, feel free to add them to the shared libraries. This will make it easier for your colleagues to find ready-to-use illustrations, icons and email templates in the future.
+> All Product Design Team members have editing access to the Libraries containing UI illustrations, patterns, experiments, and email templates.
+> 
+> As a result, if you create any new illustrations, patterns, or email templates, you are encouraged to add them to the shared libraries. By doing so, you will facilitate your colleagues in finding readily usable illustrations, icons, and email templates in the future.
