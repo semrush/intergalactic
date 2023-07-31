@@ -12,15 +12,14 @@ tabName: Design
 
 @## Component composition
 
+![](static/card-composition.png)
+
 Component consists of:
 
-- Header (can have Title and Description inside);
-- [Divider](/components/divider/) (use only for big cards);
-- Body.
-
-![](static/card-scheme2.png)
-
-![](static/card-scheme.png)
+- `Card.Header`
+- `Card.Body`
+- `Card.Title`
+- `Card.Description`
 
 @## Appearance
 
