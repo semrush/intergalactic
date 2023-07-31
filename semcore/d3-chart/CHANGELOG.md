@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.1.1] - 2023-07-31
+
+### Fixed
+
+- Donut chart hover animation after chart resizing.
+
 ## [3.1.0] - 2023-07-27
 
 ### Changed
