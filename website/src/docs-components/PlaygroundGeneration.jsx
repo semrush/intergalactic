@@ -102,10 +102,10 @@ Playground.createWidget(
         <div className={styles.control}>
           <Pills value={value} onChange={(value) => onChange(value)} behavior='radio' {...others}>
             {options.map((o, i) => {
-              const option = typeof o === 'string' ? { value: o, name: o } : o;
+              const option = typeof o !== 'object' ? { value: o, name: o } : o;
               return (
                 <Pills.Item key={option.name} value={option.value}>
-                  {option.name}
+                  {String(option.name)}
                 </Pills.Item>
               );
             })}

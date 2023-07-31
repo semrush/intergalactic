@@ -5,7 +5,7 @@ import { Text } from '@semcore/typography';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration((preview) => {
-  const { bool, radio, text } = preview('Dropdown');
+  const { radio, text } = preview('Dropdown');
 
   const trim = radio({
     key: 'trim',
@@ -14,10 +14,11 @@ export default PlaygroundGeneration((preview) => {
     options: ['end', 'middle'],
   });
 
-  const tooltip = bool({
+  const tooltip = radio({
     key: 'tooltip',
     defaultValue: true,
     label: 'Show tooltip',
+    options: [true, false],
   });
 
   const maxLine = text({
