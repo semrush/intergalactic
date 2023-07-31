@@ -32,7 +32,7 @@
     "@semcore/drag-and-drop": "3.1.0",
     "@semcore/dropdown": "4.0.1",
     "@semcore/dropdown-menu": "4.0.1",
-    "@semcore/d3-chart": "3.1.0",
+    "@semcore/d3-chart": "3.1.1",
     "@semcore/ellipsis": "2.0.1",
     "@semcore/email": "1.0.2",
     "@semcore/errors": "4.0.1",
