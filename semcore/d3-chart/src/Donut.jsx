@@ -170,6 +170,9 @@ class DonutRoot extends Component {
   animationActivePie = ({ data, active, selector, element }) => {
     const { duration, innerRadius, d3Arc } = this.asProps;
     const outerRadius = d3Arc.outerRadius()();
+    const outerRadiusStartEnd = active
+      ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
+      : [+element.dataset['currentRadius'] || outerRadius, outerRadius];
     if (this.canAnimatedHover && duration > 0) {
       transitionRadiusPie({
         data,
@@ -177,9 +180,7 @@ class DonutRoot extends Component {
         element,
         duration: duration === 0 ? 0 : 300,
         innerRadius,
-        outerRadiusStartEnd: active
-          ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
-          : [+element.dataset['currentRadius'] || outerRadius, outerRadius],
+        outerRadiusStartEnd,
       });
     }
   };
@@ -205,7 +206,7 @@ class DonutRoot extends Component {
   };
 
   getPieProps(props, ind) {
-    const { d3Arc, d3ArcOut } = this.asProps;
+    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize } = this.asProps;
     const { active } = props;
     const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
     if (active) {
@@ -223,6 +224,9 @@ class DonutRoot extends Component {
       data,
       d3Arc,
       d3ArcOut,
+      innerRadius,
+      outerRadius,
+      halfsize,
       $animationActivePie: this.animationActivePie,
       onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
@@ -299,6 +303,9 @@ function Pie({
   dataKey,
   dataHintsHandler,
   transparent,
+  innerRadius,
+  outerRadius,
+  halfsize,
   ...other
 }) {
   const [isMount, setIsMount] = useState(false);
@@ -321,6 +328,9 @@ function Pie({
       });
     }
   }, [active]);
+  useEffect(() => {
+    pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
+  }, [active, innerRadius, outerRadius, halfsize]);
 
   dataHintsHandler.establishDataType('values-set');
   dataHintsHandler.describeValueEntity(dataKey, name);
