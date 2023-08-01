@@ -1,3 +1,21 @@
+## [15.2.0] - 2023-08-01
+
+### @semcore/core
+
+- **Change** Supported `tag={React.Fragment}` for all root components.
+
+### @semcore/date-picker
+
+- **Fixed** Different calendar cells color for selected and highlighted states. 
+
+### @semcore/flex-box
+
+- **Change** Supported `tag={React.Fragment}` for all components based on `Flex` or `Box`.
+
+### @semcore/icon
+
+- **Added** Added new `GoogleGenerativeAI` icon.
+
 ## [15.1.1] - 2023-07-31
 
 ### @semcore/d3-chart
