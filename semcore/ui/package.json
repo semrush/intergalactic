@@ -25,7 +25,7 @@
     "@semcore/color-picker": "2.2.0",
     "@semcore/core": "2.1.0",
     "@semcore/counter": "3.1.0",
-    "@semcore/data-table": "4.2.0",
+    "@semcore/data-table": "4.2.1",
     "@semcore/date-picker": "4.1.1",
     "@semcore/divider": "4.1.0",
     "@semcore/dot": "5.1.0",
