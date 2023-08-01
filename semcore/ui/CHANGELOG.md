@@ -1,3 +1,9 @@
+## [15.2.1] - 2023-08-01
+
+### @semcore/data-table
+
+- **Fixed** Using special characters and spaces in the data keys were braking columns width. 
+
 ## [15.2.0] - 2023-08-01
 
 ### @semcore/core

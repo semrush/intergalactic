@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.1] - 2023-08-01
+
+### Fixed
+
+- Using special characters and spaces in the data keys were braking columns width. 
+
 ## [4.2.0] - 2023-08-01
 
 ### Changed
