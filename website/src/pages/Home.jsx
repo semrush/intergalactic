@@ -10,7 +10,7 @@ import whale from '../static/illustration/whale.svg';
 import layout from '../static/illustration/layout.svg';
 import principles from '../static/illustration/principles.svg';
 import style from '../static/illustration/style.svg';
-import ArrowXS from '@semcore/icon/ArrowRight/m';
+import ArrowM from '@semcore/icon/ArrowRight/m';
 import { Box, Flex } from '@semcore/flex-box';
 // import updatesButton from '../static/illustration/search-for-updates.svg';
 import SideBarNavigation from '../components/SideBarNavigation';
@@ -386,7 +386,7 @@ function Home() {
                   })
                 }
               >
-                For developers <ArrowXS />
+                For developers <ArrowM />
               </Link>
               <Link
                 to='/get-started-guide/dis-starter-guide/'
@@ -399,7 +399,7 @@ function Home() {
                   })
                 }
               >
-                For designers <ArrowXS />
+                For designers <ArrowM />
               </Link>
               <Link
                 to='/get-started-guide/work-figma/'
@@ -412,7 +412,7 @@ function Home() {
                   })
                 }
               >
-                Figma libraries <ArrowXS />
+                Figma libraries <ArrowM />
               </Link>
             </section>
             {getCustomPage(mappingTableToImg.principles)}

@@ -8,39 +8,55 @@ tabName: Design
 
 @## Description
 
-**Tooltip** is a component to display all sorts of tips. It's a wrapper over [Popper component](/utils/popper/).
+**Tooltip** is a component used to display various tips and hints, and serves as a wrapper over the [Popper](/utils/popper/) component.
 
-Tooltip's differences from [Dropdown](/components/dropdown/):
+Differences between Tooltip and [Dropdown](/components/dropdown/):
 
-- It appears only while hovering over the trigger.
-- It has an arrow that points to the trigger.
-- It contains only hints and additional information.
+- Tooltip appears only when hovering over the trigger.
+- It includes an arrow pointing to the trigger.
+- Tooltip contains only hints and additional information.
+
+@## Component composition
+
+![](static/tooltip-composition.png)
+
+Component consists of:
+
+- `Tooltip.Trigger`
+- `Tooltip.Popper`
+- `Tooltip.Title`
 
 @## Themes
 
-Tooltip has themes: `default`, `invert` for using on a dark background and `warning` for validation messages. In both cases, the text color changes to `--white` and the background color changes to the corresponding one.
+Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
 
-> In [3.1.0 version](/components/tooltip/tooltip-changelog/), you can set your own theme and change background color to custom.
+> Starting from [version 3.1.0](/components/tooltip/tooltip-changelog/), you can set your own custom theme and change the background color.
 
-| Theme   | Appearance                                 | Styles                                                                                                                                 |
-| ------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Default | ![](static/default-theme.png) | `background-color: var(--tooltip-default)`, `border: 1px solid var(--border-secondary)`, `box-shadow: var(--box-shadow-popper)`     |
-| Invert  | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
-| Warning | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
+@table-caption Tooltip themes
+
+| Theme   | Appearance example              | Styles      |
+| ------- | ------------------------------- | ----------- |
+| `default` | ![](static/default-theme.png) | `background-color: var(--tooltip-default)`, `border: 1px solid var(--border-secondary)`, `box-shadow: var(--box-shadow-popper)`     |
+| `invert`  | ![](static/invert-theme.png)   | `background-color: var(--tooltip-invert)`, `border: 1px solid var(--border-tooltip-invert)`, `box-shadow: var(--box-shadow-popper)` |
+| `warning` | ![](static/alert-theme.png)     | `background-color: var(--tooltip-warning)`, `border: 1px solid var(--border-danger-active)`, `box-shadow: var(--box-shadow-popper)` |
 
 @## Maximum width and offset
 
-The basic tooltip has a maximum width – `max-width: 250px`. But you can set a different width if necessary.
+By default, the Tooltip has a maximum width of 250px, but you can set a different width if needed.
 
-### Offset
+### Offset and arrow placement
 
-The offset from the trigger to the tooltip is 4px.
+The distance between the trigger and the tooltip is 4px.
 
 ![](static/tooltip-offset.png)
 
+The placement of the arrow depends on the `placement` property, refer to the live examples in the [Placement](/components/tooltip/#placement) section.
+
+![](static/tooltip-arrow-paddings.png)
+
 @## Paddings and margins
 
-The content area has default padding – 12px.
+The content area of the tooltip has a default padding of 12px.
 
 ![](static/tooltip-content-paddings.png)
 
@@ -48,27 +64,23 @@ The content area has default padding – 12px.
 
 ![](static/tooltip-button.png)
 
-> Note that it is better to use 14px for the title for the non-advertising messages.
+> It's recommended to use a font size of 14px (`--fs-200`, `--lh-200` tokens) for the title in non-advertising messages.
 
-Image has size 130px \* 130px.
+The image inside the tooltip has a size of 130px * 130px.
 
 ![](static/tooltip-pic-paddings.png)
 
-Arrow can be placed either in the middle of the component or next to any side. See live examples in the [Placement section](/components/tooltip/#placement).
+### Data margins
 
-![](static/tooltip-arrow-paddings.png)
-
-### Margins inside the data
-
-To make tooltip data more readable we recommend you the following margins between the labels and values. You also can find the detailed recommendations for tooltip margins in [Data visualization](/data-display/d3-chart/#tooltip) and [Summary](/patterns/summary/#difference_value).
+To improve readability, it is recommended to use specific margins between labels and values inside the tooltip. Detailed recommendations for tooltip margins can be found in [Data visualization](/data-display/d3-chart/#tooltip) and [Summary](/patterns/summary/#difference_value).
 
 ![](static/tooltip-margins.png)
 
 @## Placement
 
-- Tooltip is built with the [Popper.js](https://popper.js.org/) library. So you can change the placement of the component according to [Popper API](/utils/popper/popper-api/).
+The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api/).
 
-- Tooltip shouldn't change its position while scrolling a page (for example, if it appeared upwards, when scrolling it shouldn't appear at the edge of the browser and moved down). The default tooltip placement – `top`.
+The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top`.
 
 #### Placement properties
 
@@ -76,37 +88,39 @@ To make tooltip data more readable we recommend you the following margins betwee
 
 @## Interaction
 
-For the tooltip trigger you can use a formatted text, table header, or interactive components such as [Icon](/style/icon/), [Link](/components/link/), [Button](/components/button/), etc.
+For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/), [Link](/components/link/), [Button](/components/button/), etc.
 
 ### Appearance and hiding
 
-| Hidden                                                                   |                                |
-| ------------------------------------------------------------------------ | ------------------------------ |
-| Cursor left the trigger                                                  | ![](static/hover-1.png) |
-| Cursor left the trigger or the tooltip itself (for tooltip with control) | ![](static/hover-2.png) |
+@table-caption Tooltip's appearance and hiding
+
+| Hidden    |                                |
+| --------- | ------------------------------ |
+| Cursor leaves the trigger                                                  | ![](static/hover-1.png) |
+| Cursor leaves the trigger or the tooltip itself (for tooltip with control) | ![](static/hover-2.png) |
 
 ### Delay of appearance and hiding
 
 Default values for tooltip appearance and hiding:
 
-- appearance: `100ms`;
-- hiding: `50ms`.
+- Appearance: `100ms`
+- Hiding: `50ms`
 
-If tooltip has controls inside, the time for hiding should be increased to `100ms`.
+If the tooltip has interactive elements inside, the hiding time should be increased to `100ms`.
 
 @## Content
 
-Tooltip usually contain unformatted text.
+Tooltip usually contains unformatted text.
 
 ![](static/tooltip-basic.png)
 
-In some cases (for example, for advertising purposes) you can format text and add other components to the tooltip:
+In some cases (e.g., for advertising purposes), you can format the text and add other components to the tooltip:
 
-- [Button](/components/button/), [Link](/components/link/), etc.;
-- image;
-- different background color.
+- [Button](/components/button/), [Link](/components/link/), etc.
+- Image
+- Different background color
 
-**Remember, that tooltip should contain only hints and tips.**
+**Remember, the tooltip should only contain hints and tips.**
 
 ![](static/tooltip-advanced.png)
 
@@ -116,16 +130,16 @@ In some cases (for example, for advertising purposes) you can format text and ad
 
 Main recommendations:
 
-- Use the tooltip to show hints and additional information. It can be a text, a formatted text with lists, links, buttons and small images.
-- Make sure that the tooltip doesn't overlap the information important for the user.
+- Use the tooltip to show hints and additional information, such as text, formatted text, lists, links, buttons, and small images.
+- Ensure that the tooltip does not overlap important information for the user.
 
 > For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
 
-**If the tooltip trigger tells about the new feature, the tooltip title should not duplicate the trigger text.** The title may not be used if the trigger text already explains the tooltip content.
+**If the tooltip trigger conveys information about a new feature, avoid duplicating the trigger text in the tooltip title.** The title may not be necessary if the trigger text already explains the tooltip content.
 
 ![](static/tooltip-trigger-yes-no.png)
 
-**When the trigger isn’t obvious enough, add a title to the tooltip.** It is also necessary to add a title when the trigger doesn't sufficiently explain the topic of the tooltip. For example, you can describe additional conditions in the header, or expand the idea behind the trigger.
+**When the trigger isn’t clear enough, add a title to the tooltip.** Additionally, include a title when the trigger doesn't adequately explain the topic of the tooltip. For example, you can describe additional conditions in the header or expand on the trigger's idea.
 
 ![](static/tooltip-trigger2-yes-no.png)
 
@@ -135,11 +149,11 @@ Main recommendations:
 
 ![](static/tooltip-text-yes-no.png)
 
-**Don’t overload the tooltip with information.** The large amount of content is inconvenient to view in the tooltip. If there is too much content and you cannot remove anything, think about whether you need a separate paragraph on the page or widget instead of a tooltip.
+**Avoid overloading the tooltip with information.** A large amount of content can be inconvenient to view in the tooltip. If there is too much content and nothing can be removed, consider using a separate paragraph on the page or widget instead of a tooltip.
 
 ![](static/tooltip-content-yes-no.png)
 
-**A tooltip should not prevent you from pointing the cursor at a nearby trigger.**
+**Ensure that the tooltip does not prevent users from interacting with nearby triggers.**
 
 ![](static/tooltip-hover-yes-no.png)
 

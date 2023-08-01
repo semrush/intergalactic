@@ -91,7 +91,7 @@ To apply some properties to a table row, you need to define `<DataTable.Row/>`. 
 
 > `<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>`.
 >
-> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
+> It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
 
 @example row
 
@@ -101,7 +101,7 @@ To apply some properties to a table cell, you need to define `<DataTable.Cell/>`
 
 > `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
 >
-> It should not be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
+> It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
 
 @example cell
 

@@ -83,7 +83,7 @@ Dynamic content usually includes:
 - sports stats;
 - other similar elements.
 
-Live regions need to exist in the DOM from the initial page load. And they should not be overused. There should not be too many live regions within a single page, and the content within a live region should be short. Live regions should not be used for entire sections of content.
+Live regions need to exist in the DOM from the initial page load. And they shouldn't be overused. There shouldn't be too many live regions within a single page, and the content within a live region should be short. Live regions shouldn't be used for entire sections of content.
 
 To mark an area that has dynamic content, use the ARIA attribute `aria-live=""` with a special ARIA role, learn more about in the section below.
 

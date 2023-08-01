@@ -86,6 +86,7 @@ class Playground extends Component {
         showDefaultProps: false,
         useFragmentShortSyntax: false,
         maxInlineAttributesLineLength: 40,
+        useBooleanShorthandSyntax: false,
         filterProps,
       }),
       controls,

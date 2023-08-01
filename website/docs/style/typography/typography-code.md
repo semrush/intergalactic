@@ -2,22 +2,22 @@
 title: Example
 ---
 
-@## Basic typography usage
+@## Basic usage
 
-Our typography primitives have no margins cause they may differ in the end products. You may add them by yourself.
+Our typography primitives have no margins as they may differ in the end products. You may add them yourself according to your specific requirements.
 
 @example text
 
 @## List with custom bullets
 
-With the example below, you can easily make any type of list.
+Using the example below, you can easily create lists with custom bullets.
 
 @example list
 
-@## Typography and native tags
+@## Native typography tags
 
-To style native tags, use the `FormatText` from the `@semcore/ui/format-text` package.
+To style native tags, use the `FormatText` component from the `@semcore/ui/format-text` package.
 
-It's ok to style third party HTML. In other cases, we recommend using `Text`.
+It's acceptable to style third-party HTML. However, in other cases, we recommend using the `Text` component.
 
 @example format-text

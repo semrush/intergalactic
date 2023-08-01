@@ -7,8 +7,8 @@ import algoliasearch from 'algoliasearch/lite';
 import IconGroup, { IconGroups, ListIcons } from './icon-group';
 import Input from '@semcore/ui/input';
 import { Text } from '@semcore/ui/typography';
-import SearchS from '@semcore/ui/icon/Search/m';
-import CloseXS from '@semcore/ui/icon/Close/m';
+import SearchM from '@semcore/ui/icon/Search/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 import staticFiles from '@static';
 import algoliaConfig from '@components/algolia-config';
 
@@ -37,7 +37,7 @@ const SuggestSearch = connectAutoComplete(
     return (
       <Input size='l' mb={4}>
         <Input.Addon>
-          <SearchS />
+          <SearchM />
         </Input.Addon>
         <Input.Value
           {...others}
@@ -47,7 +47,7 @@ const SuggestSearch = connectAutoComplete(
         />
         {!!currentRefinement && (
           <Input.Addon
-            tag={CloseXS}
+            tag={CloseM}
             interactive
             onClick={() => handleChangeValue('')}
             aria-label='Clear field'

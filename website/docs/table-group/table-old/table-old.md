@@ -49,7 +49,7 @@ You can use secondary table for compact displaying small amount of data inside w
 
 @## Table with no data
 
-These states for widgets are described in detail in [Widget enpty state](/components/widget-empty/widget-empty-code/).
+These states for widgets are described in detail in [Widget empty state](/components/widget-empty/widget-empty-code/).
 
 @example no-data
 

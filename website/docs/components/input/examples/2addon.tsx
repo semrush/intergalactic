@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
-import CloseXS from '@semcore/ui/icon/Close/m';
-import ShowYesXS from '@semcore/ui/icon/ShowYes/m';
-import ShowNoXS from '@semcore/ui/icon/ShowNo/m';
+import CloseM from '@semcore/ui/icon/Close/m';
+import ShowYesM from '@semcore/ui/icon/ShowYes/m';
+import ShowNoM from '@semcore/ui/icon/ShowNo/m';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
@@ -28,7 +28,7 @@ const Demo = () => {
           />
           {value && (
             <Input.Addon
-              tag={CloseXS}
+              tag={CloseM}
               pl={2}
               pr={1}
               interactive
@@ -45,7 +45,7 @@ const Demo = () => {
             tabIndex={0}
             onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
           >
-            {type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
+            {type === 'password' ? <ShowYesM /> : <ShowNoM />}
           </Input.Addon>
         </Input>
       </Box>

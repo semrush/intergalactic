@@ -19,41 +19,45 @@ tabName: Design
 >
 > Use dropdown primarily to hide additional features and sometimes additional information.
 
-@## Appearance
+@## Component composition
+
+![](static/accordion-composition.png)
 
 The Accordion consists of:
 
-- a trigger (`Accordion.Item.Toggle`) that includes the `ChevronRight` icon and a text label;
-- collapsed areas with content (`Accordion.Item.Collapse`).
+- `Accordion.Item`
+- `Accordion.Item.Toggle`
+- Collapsed areas with content (`Accordion.Item.Collapse`)
+- `Accordion.Item.Chevron`
+
+@## Styles and sizes
 
 The `ChevronRight` icon always has M size and `margin-right: 8px` with all font sizes.
 
 ![](static/margins.png)
 
-> Please note that you can use different styles for the trigger and collapsed content than the default ones described below.
-
-@## Sizes
-
 You can set the width of the accordion that is appropriate for the context.
 
 ![](static/max-width.png)
 
+> You can set different styles for the trigger and collapsed content than the default ones described below.
+
 @## Trigger
 
-> You can use text, link or button of any size you need as the accordion trigger.
+You are free to set link or button of any size you need as the accordion trigger.
 
 @table-caption Trigger appearance
 
-| Trigger type                             | Appearance example                          | Default styles                                                                                                                                                                                                                                 |
-| ---------------------------- | ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.                                                                                                                                                  |
+| Trigger type       | Appearance example  | Default styles      |
+| ------------------ | ------------------- | ------------------- |
+| Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.    |
 | Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
 
 @## Collapsed content
 
 You can use this component to hide almost any content. This can be a text content, an additional information (for example, in a table), or even an entire table with a chart.
 
-**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion should not be equal to or greater than the size of the main titles on the page.
+**Remember about visual hierarchy when designing the accordion**. If you use, the accordion, for example, in a table, then the title inside the accordion shouldn't be equal to or greater than the size of the main titles on the page.
 
 ### Margins and paddings
 
@@ -65,7 +69,7 @@ You can use this component to hide almost any content. This can be a text conten
 
 @## Interaction
 
-> **By default, when a section of the accordion is opened, other sections that have already been opened should not be closed**.
+> **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
 >
 > The user expects this behavior when working with the desktop device interface.
 >

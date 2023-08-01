@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from '@semcore/ui/input';
-import CloseXS from '@semcore/ui/icon/Close/m';
+import CloseM from '@semcore/ui/icon/Close/m';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
@@ -22,7 +22,7 @@ const Demo = () => {
           />
           {value && (
             <Input.Addon
-              tag={CloseXS}
+              tag={CloseM}
               interactive
               aria-label='Clear field'
               onClick={() => setValue('')}

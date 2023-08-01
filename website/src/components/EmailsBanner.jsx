@@ -3,7 +3,7 @@ import styles from './EmailsBanner.module.css';
 import RouterLink from './RouterLink.jsx';
 import emailImg from '../static/illustration/email-library-pic.svg';
 import { Box } from '@semcore/flex-box';
-import ArrowRightXS from '@semcore/icon/ArrowRight/m';
+import ArrowRightM from '@semcore/icon/ArrowRight/m';
 
 function BannerBlock() {
   return (
@@ -25,7 +25,7 @@ function BannerBlock() {
           <RouterLink size={300} color='#171A22' to='/product-emails/grid-email/'>
             <RouterLink.Text>Dive into examples</RouterLink.Text>
             <RouterLink.Addon>
-              <ArrowRightXS color='#171A22' />
+              <ArrowRightM color='#171A22' />
             </RouterLink.Addon>
           </RouterLink>
         </Box>

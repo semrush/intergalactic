@@ -8,40 +8,47 @@ tabName: Design
 
 @## Description
 
-**Tag** is a component for thematic grouping of information in the interface (in tables, filters, cards, etc.).
+**Tag** is a component used to thematically group information in the interface, commonly found in tables, filters, cards, and other components.
 
-Tag is usually set by the system or by the user.
+Tags are typically set either by the system or by the user.
 
 @## Component composition
 
+![](static/tag-composition.png)
+
 Component consists of:
 
-- text;
-- icon or any other addon before the text (optional);
-- `Close` icon (optional).
+- `Tag.Text`
+- `Tag.Addon`: icon or any other small element before the text
+- `Tag.Close`
+- `Tag.Circle`: a circle image
 
 @## Sizes and paddings
 
-Size (height in px) | Paddings                                                     |
-| --------- | ------------------------------------------------------------ |
-| M (20px)  | ![](static/tag-M.png) ![](static/tag2-M.png)     |
-| L (28px)  | ![](static/tag-L.png) ![](static/tag2-L.png)     |
-| XL (40px) | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
+@table-caption Tag sizes and paddings
+
+Size (height in px) | Paddings                                       |
+| ----------------- | ---------------------------------------------- |
+| M (20px)          | ![](static/tag-M.png) ![](static/tag2-M.png)   |
+| L (28px)          | ![](static/tag-L.png) ![](static/tag2-L.png)   |
+| XL (40px)         | ![](static/tag-XL.png) ![](static/tag2-XL.png) |
 
 @## Themes
 
-There are several themes of tags.
+The component offers several themes for tags.
 
-| Tag theme                         | Appearance example                                           | Description                                                                                                                                                                                                                        |
-| --------------------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `primary`                         | ![](static/primary.png)                   | The main type of tag for using on a light background. Any color from our [color palette](/style/design-tokens/) can be set as a tag color, the default color is `--gray-500` (background gets color with 100 shade – for example, `--gray-100`). |
-| `secondary`                       | ![](static/secondary.png)               | The secondary tag type for using on a light background when it is necessary to make the contrast between the primary and secondary tags.                                                                                           |
-| `primary` with `color:"white"`    | ![](static/primary-invert.png)     | It is an inversion of the primary tag for using on dark or colored background.                                                                                                                                                     |
-| `secondary` with `color:"white"`  | ![](static/secondary-invert.png) | It is an inversion of the secondary tag for using on dark or colored background.                                                                                                                                                   |
-| `additional`                      | ![](static/additional.png)             | The additional type for special tag that adds other tag.                                                                                                                                                                           |
-| `additional` with `color:"white"` | ![](static/additional-invert.png)      | It is an inversion of the additional type for special tag that adds other tag.                                                                                                                                                     |
+| Tag theme     | Appearance example            | Description     |
+| ------------- | ----------------------------- | --------------- |
+| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background gets color with 100 shade, for example, `--gray-100`). |
+| `primary` with `color:"white"`    | ![](static/primary-invert.png)     | An inversion of the `primary` tag meant for dark or colored backgrounds.|
+| `secondary`                       | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required.|
+| `secondary` with `color:"white"`  | ![](static/secondary-invert.png) | An inversion of the `secondary` tag suitable for dark or colored backgrounds.|
+| `additional`                      | ![](static/additional.png)             | Ideal for special tags that are added to other tags. |
+| `additional` with `color:"white"` | ![](static/additional-invert.png)      | An inversion of the `additional` theme used for special tags that are added to other tags. |
 
 @## Interaction
+
+@table-caption Tag states
 
 | Tag theme                        | States                                                                |
 | -------------------------------- | --------------------------------------------------------------------- |
@@ -52,33 +59,31 @@ There are several themes of tags.
 
 @## Adding tag
 
-User can create a tag using a tag with the `additional` theme.
+Users can create tags using tags with the `additional` theme.
 
-| State  | Appearance                          | Styles                                                                                                                         |
-| ------ | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| State  | Appearance example                  | Styles    |
+| ------ | ----------------------------------- | --------- |
 | Normal | ![](static/normal.png) | `color: var(--text-secondary)`, `background-color: var(--tag-secondary-normal)`, `border: 1px dotted var(--border-primary)` |
 | Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                         |
 | Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                         |
 
-This tag opens [InlineInput](/components/inline-input/). You can add a [mask label](/components/input-mask/) to keep the user in the context of what he needs to type into the input.
+This tag opens [InlineInput](/components/inline-input/), and you can add a [mask label](/components/input-mask/) to guide the user on what to type into the input.
 
 ![](static/add-input-L.png)
 
-By clicking on the Check icon or `Enter`, the value in the input is saved and wraps into a tag.
+Upon clicking the `Check` icon or pressing `Enter`, the input value is saved and transformed into a tag.
 
 ![](static/add-loading-L.png)
 
-If the space for tag placement is limited, then reduce the text into the `ellipsis`. When hovering over a tag with the `ellipsis`, show the tooltip with the full tag label.
+If space for tag placement is limited, the text should be truncated with an `ellipsis`. Hovering over a tag with an `ellipsis` displays a tooltip with the full tag label.
 
 @## Editing tag
 
-For editable tags use [InlineInput](/components/inline-input/) component as for the adding tag case. [See live example](/components/tag/tag-code/#editing_tag).
+For editable tags, use the [InlineInput](/components/inline-input/) component, similar to adding a tag. Refer to the [live example](/components/tag/tag-code/#editing_tag).
 
 @## Long text
 
-You can set the maximum width for the tag.
-
-If the text of a tag exceeds the maximum width, collapse it into `ellipsis` and show a tooltip with a full tag label while hovering over such a tag.
+You can set a maximum width for the tag. If the text of a tag exceeds this limit, it will be collapsed with an `ellipsis`, and hovering over the tag will show a tooltip with the full tag label.
 
 ![](static/ellipsis.png)
 
@@ -92,11 +97,13 @@ In case you have a huge number of tags and don’t need to show them all at once
 
 @## Margins between tags
 
-Size (height in px) | Margins                               |
-| --------- | ------------------------------------- |
+@table-caption Margins between tags
+
+Size (height in px) | Margins                 |
+| --------- | ------------------------------- |
 | M (20px)  | ![](static/tag-margins-M.png)   |
 | L (28px)  | ![](static/tag-margins-L.png)   |
-| XL (40px) | ![](static/tag-margins-XL.png) |
+| XL (40px) | ![](static/tag-margins-XL.png)  |
 
 <!-- @## Tag and other components
 
@@ -109,11 +116,11 @@ Recommendations on positioning of tags in relation to other components:
 
 Use tags for visual marking of objects, fast recognition and navigation.
 
-### Example of use in a card
+### Example of usage in card
 
 ![](static/tag-card.png)
 
-### Example of use in the table
+### Example of usage in table
 
 ![](static/tag-table-pic.png)
 

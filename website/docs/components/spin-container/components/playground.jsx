@@ -23,7 +23,7 @@ const playground = (createGroupWidgets) => {
   const background = text({
     key: 'background',
     defaultValue: '',
-    label: 'Background',
+    label: 'Overlay color',
   });
 
   return (

@@ -1,3 +1,9 @@
+## [15.1.1] - 2023-07-31
+
+### @semcore/d3-chart
+
+- **Fixed** Donut chart hover animation after chart resizing.
+
 ## [15.1.0] - 2023-07-27
 
 ### Global

@@ -12,7 +12,7 @@ Message with a loading or error state must have `margin-top: 40px`, so that when
 
 |                                                       | First screen                                                | The state of the page scrolling                             |
 | ----------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| Example with [Progressbar](/components/progress-bar/) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
+| Example with [ProgressBar](/components/progress-bar/) | ![](static/table-sticky-1.png) | ![](static/table-sticky-2.png) |
 | Example with [Spin](/components/spin/)                | ![](static/sticky-loading-1.png)   | ![](static/sticky-loading-2.png)   |
 
 > It is also not recommended to change the table height when switching between states.
@@ -37,7 +37,7 @@ In a secondary table, you can show the skeleton for all the rows (there are usua
 
 ![](static/skeleton-secondary.png)
 
-@## Progressbar
+@## ProgressBar
 
 If gathering data takes a large period of time **(more than 1 minute, for example)**, show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
 
@@ -45,13 +45,13 @@ A message with a progress bar gets [`sticky` property](/components/sticky/) and 
 
 ![](static/table-sticky-1.png)
 
-When scrolling the table, fix the progressbar to the table header. The message remains centered relative to the user's viewport.
+When scrolling the table, fix the progress bar to the table header. The message remains centered relative to the user's viewport.
 
 ![](static/table-sticky-2.png)
 
 @## Loading
 
-This state is for cases when user filters/sorts/searchs data. In this case, use [Spin](/components/spin/).
+This state is for cases when user filters, sorts, or search results data. In this case, use [Spin](/components/spin/).
 
 If data loading is fast, then this state isn’t necessary.
 
@@ -117,7 +117,7 @@ Show this state when there was an error in the product on the backend, so we can
 
 - error happened while user was working with the table.
 
-|                                            | Apperance example                                         |
+|                                            | Appearance example                                         |
 | ------------------------------------------ | --------------------------------------------------------- |
 | We are aware of the problem, and report it | ![](static/error-known.png)         |
 | We don't know about the problem            | ![](static/error-not-known.png) |

@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Button from '@semcore/ui/button';
-import FileExportXS from '@semcore/ui/icon/FileExport/m';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
 import DataTable from '@semcore/ui/data-table';
 
 const extensions = ['png', 'jpeg', 'webp'];
@@ -58,7 +58,7 @@ export default () => {
       <DropdownMenu>
         <DropdownMenu.Trigger tag={Button} ml={4}>
           <Button.Addon>
-            <FileExportXS />
+            <FileExportM />
           </Button.Addon>
           <Button.Text>Export</Button.Text>
         </DropdownMenu.Trigger>

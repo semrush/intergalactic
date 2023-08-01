@@ -3,36 +3,35 @@ title: Example
 fileSource: tooltip
 ---
 
-> ⚠️ If you need to customize work with the tooltip, see the [@semcore/ui/popper](/utils/popper/) documentation.
+> ⚠️ If you require customizing the tooltip behavior, please refer to the [@semcore/ui/popper](/utils/popper/) documentation.
 
-The component is a wrap over [@semcore/ui/popper](/utils/popper/) with the following additions:
+The tooltip component is a wrap over [@semcore/ui/popper](/utils/popper/) with additional features:
 
-- Stylization and themes for a dropdown window
-- Displaying the arrow of a dropdown window
+- Stylization and themes for the popper.
+- Displaying the arrow of the popper.
 
 @## Basic usage
 
-As mentioned above, tooltip is just a stylized wrap over the [@semcore/ui/popper](/utils/popper/). It works exactly the same way.
+As previously mentioned, the tooltip is essentially a styled version of [@semcore/ui/popper](/utils/popper/) and functions in the same way.
 
 @example tooltip
 
 @## Title
 
-For your convenience, the component has property `title`, to which you can pass content for a dropdown window. This will allow you to reduce the volume of the code 🧐
+To simplify code, the component includes a `title` property where you can pass the content for the popper. This helps reduce code volume .
 
-The code below fully repeats the functionality of the previous example.
+The code below replicates the functionality of the previous example.
 
 @example tooltip-title
 
 @## Singleton
 
-Use a single tooltip for many different reference elements. This allows you to "group" tooltips with a shared timer
-to improve UX.
+You can use a single tooltip for multiple reference elements. This allows you to "group" tooltips with a shared timer to improve the user experience.
 
 @example tooltip-singleton
 
-@## Singleton
+@## Ignore portal stacking
 
-When a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may attempt to push it inside the block as much as possible. If this behavior isn’t desired, you can set the `ignorePortalsStacking` prop.
+By default, when a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may try to push it inside the block as much as possible. If you don't want this behavior, you can set the `ignorePortalsStacking` prop.
 
 @example ignore-portals-stacking

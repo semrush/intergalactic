@@ -31,7 +31,7 @@ There are two types of tables in our design system – [primary](../table-primar
 
 @## Tooltip
 
-The column header should not contain the `Info` icon. Show additional information about the column in the tooltip by hovering over the column title.
+The column header shouldn't contain the `Info` icon. Show additional information about the column in the tooltip by hovering over the column title.
 
 ### Conditions for the tooltip appearance
 
@@ -55,7 +55,7 @@ Hover is needed to "highlight" information in vast volumes of data, with which y
 
 The table colors are based on `gray` palette.
 
-If the entire row is in the `disabled` state, it should not have the `hover` state.
+If the entire row is in the `disabled` state, it shouldn't have the `hover` state.
 
 | State                    | Appearance                                   | Styles                                                                                                                                                                          |
 | ------------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -76,7 +76,7 @@ If the entire row is in the `disabled` state, it should not have the `hover` sta
 
 ### Cells coloring
 
-If the cell was colored, it remains colored when you hover over it. The user should not lose information about the color of the cell when hovering over a row.
+If the cell was colored, it remains colored when you hover over it. The user shouldn't lose information about the color of the cell when hovering over a row.
 
 ![](static/td-style-hover.png)
 

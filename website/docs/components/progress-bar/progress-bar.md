@@ -45,7 +45,7 @@ ProgressBar offers two themes: `dark` and `invert`, which are suitable for light
 
 @## ProgressBar with counter
 
-A counter can be added next to the ProgressBar to indicate the number of loaded data. If the exact number of the data is unknown, the counter should not be displayed. **Place the counter above or near the ProgressBar, ensuring that the margins between the counter and the ProgressBar are multiples of 4.**
+A counter can be added next to the ProgressBar to indicate the number of loaded data. If the exact number of the data is unknown, the counter shouldn't be displayed. **Place the counter above or near the ProgressBar, ensuring that the margins between the counter and the ProgressBar are multiples of 4.**
 
 ![](static/progressbar-counter.png)
 
@@ -65,7 +65,7 @@ The ProgressBar has three states:
 | 1-99% – The progress bar is partially filled and the pattern is animated. | ![](static/size-l.png) |
 | 100% – The progress bar is static and green. | ![](static/loaded.png) |
 
-The progress bar should not remain in the 100% state. Once the process is completed, either a success message should be displayed, or the user should be provided with further actions.
+The progress bar shouldn't remain in the 100% state. Once the process is completed, either a success message should be displayed, or the user should be provided with further actions.
 
 > If it isn’t possible to perform the action immediately, display the success status and instruct the user on what to do next.
 
