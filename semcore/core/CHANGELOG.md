@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.0] - 2023-08-01
+
+### Change
+
+- Supported `tag={React.Fragment}` for all root components.
+
 ## [2.0.0] - 2023-06-20
 
 ### Break
