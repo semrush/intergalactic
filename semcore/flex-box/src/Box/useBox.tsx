@@ -288,6 +288,8 @@ export default function useBox<T extends BoxProps>(
 
   const styles = sstyled(style);
 
+  if (Tag === React.Fragment) return [React.Fragment, { children: props.children }];
+
   return [
     Tag,
     {
