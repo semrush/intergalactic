@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.1.0] - 2023-08-01
+
+### Change
+
+- Supported `tag={React.Fragment}` for all components based on `Flex` or `Box`.
+
 ## [5.0.0] - 2023-07-17
 
 ### Break

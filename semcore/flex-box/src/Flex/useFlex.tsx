@@ -121,6 +121,8 @@ export default function useFlex<T extends FlexProps>(
 
   const styles = sstyled(style);
 
+  if (Tag === React.Fragment) return [React.Fragment, { children: props.children }];
+
   return [
     Tag,
     {
