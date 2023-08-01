@@ -3808,7 +3808,7 @@ const iconsList = {
       name: 'GoogleGenerativeAI',
       size: ['l', 'm'],
       group: 'Brand',
-      tags: ['google', `гугл`, 'logo', 'лого', 'generative', 'ai', 'искусственный', `интеллект`],
+      tags: ['google', 'гугл', 'logo', 'лого', 'generative', 'ai', 'искусственный', 'интеллект'],
     },
     {
       name: 'Opera',
