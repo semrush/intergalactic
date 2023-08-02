@@ -2098,7 +2098,7 @@ importers:
         specifier: 4.1.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: 2.1.0
+        specifier: 2.1.1
         version: link:../ellipsis
       '@semcore/email':
         specifier: 1.0.2
