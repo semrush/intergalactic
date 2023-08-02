@@ -2,8 +2,8 @@
 title: UX patterns
 ---
 
-@page modal-content
 @page confirm-dialog
+@page modal-content
 @page empty-page
 @page global-errors
 @page export
