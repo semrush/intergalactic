@@ -31,7 +31,7 @@ type AsPropsMiddle = {
   tooltipProps: TooltipProps;
 };
 
-type EllipsisProps = BoxProps &
+export type EllipsisProps = BoxProps &
   Partial<TooltipProps> & {
     /**
      * Rows count in multiline Ellipsis
