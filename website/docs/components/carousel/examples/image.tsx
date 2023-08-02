@@ -19,7 +19,7 @@ const Demo = () => (
   <Carousel w={width} defaultIndex={0}>
     <Flex>
       <Carousel.Prev />
-      <Box style={{ overflow: 'hidden' }}>
+      <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
         <Carousel.Container>
           {images.map((url, index) => (
             <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />

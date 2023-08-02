@@ -35,7 +35,7 @@ const defaultSortDirection: SortDirection = 'desc';
 
 const ROW_GROUP = Symbol('ROW_GROUP');
 
-const cssVarReg = /[:;]/g;
+const cssVarReg = /[:;\W]/g;
 
 const createCssVarForWidth = (name: string) => {
   return `--${name.replace(cssVarReg, '_')}_width`;

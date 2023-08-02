@@ -1,3 +1,39 @@
+## [15.2.3] - 2023-08-02
+
+### @semcore/ellipsis
+
+- **Fixed** Passing jsx element to tooltip inherited `title` prop was causing setting DOM attribute `title` to `[object Object]`.
+
+## [15.2.2] - 2023-08-02
+
+### @semcore/ellipsis
+
+- **Fixed** Added missing `EllipsisProps` export.
+
+## [15.2.1] - 2023-08-01
+
+### @semcore/data-table
+
+- **Fixed** Using special characters and spaces in the data keys were braking columns width. 
+
+## [15.2.0] - 2023-08-01
+
+### @semcore/core
+
+- **Change** Supported `tag={React.Fragment}` for all root components.
+
+### @semcore/date-picker
+
+- **Fixed** Different calendar cells color for selected and highlighted states. 
+
+### @semcore/flex-box
+
+- **Change** Supported `tag={React.Fragment}` for all components based on `Flex` or `Box`.
+
+### @semcore/icon
+
+- **Added** Added new `GoogleGenerativeAI` icon.
+
 ## [15.1.1] - 2023-07-31
 
 ### @semcore/d3-chart
