@@ -14,7 +14,7 @@ tabName: Design
 
 ![](static/timepicker-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `TimePicker.Hours`
 - `TimePicker.Minutes`

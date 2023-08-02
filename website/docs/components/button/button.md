@@ -16,7 +16,7 @@ tabName: Design
 
 ![](static/button-composition.png)
 
-Button consists of:
+Component consists of the following:
 
 1. `Button.Text`
 2. `Button.Addon`

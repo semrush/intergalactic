@@ -27,7 +27,7 @@ tabName: Design
 
 ![](static/sidepanel-composition.png)
 
-SidePanel consists of:
+Component consists of the following:
 
 1. SidePanel.Header
 2. SidePanel.Back

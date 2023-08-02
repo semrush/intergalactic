@@ -6,56 +6,50 @@ tabName: Design
 
 @## Description
 
-**InlineEdit** is a wrapper component for switching between viewing and editing data.
+**InlineEdit** is a wrapper component that enables a smooth transition between viewing and editing data.
 
 **Use this component when:**
 
-- you need to switch between view-only and text editing without reloading the page (for example, edit the title, description or tag);
-- data in the interface is placed tightly, you need to save space;
-- transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
+- You need to effortlessly switch between read-only and text editing modes without requiring a page reload.
+- The interface is spatially constrained, necessitating efficient use of space.
+- Transmitting data to the system isn't the primary focus of the interface (for example, providing supplementary information and notes within cards).
 
 @## Appearance
 
-The component consists of:
-
-- wrapper over an input;
-- trigger (it can be any necessary component - text or tag, for example);
-- input of any type.
-
-> Note that the example below is just an example. It's not a default variant. Any control component can be used as a trigger - a [button](/components/button/), an [icon](/style/icon/), text with an icon.
+It's important to note that the example below serves merely as an illustration and isn't the default configuration. Any control component, whether it's a [Button](/components/button/), an [Icon](/style/icon/), or text with an icon, can be utilized as a trigger.
 
 ![](static/inline-edit.png)
 
-The color of the placeholder is the same as a regular input has - `--text-placeholder`. Text and icon has one active zone.
+The placeholder's color aligns with that of a typical input element, utilizing the variable `--text-placeholder`. The text and icon share an active zone.
 
 @## Interaction
 
-- The user has clicked a trigger that opens an Input.
-- Input immediately receives focus.
-- The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
-- When focus is lost (for example, the user is distracted by another screen), `onBlur` persists the entered value.
+- The user clicks the trigger, which opens an input field.
+- The input field gains immediate `focus`.
+- The user inputs data and can choose to save it. Alternatively, the user can revert to view mode by using the cancel button or the `Esc` key.
+- When the input field loses `focus` (for instance, if the user switches to another screen), the `onBlur` event preserves the entered value.
 
-Below you can see an example of how such a component works with one of the possible triggers.
+Below is an example demonstrating how this component functions with one of the possible triggers.
 
 @table-caption InlineEdit states
 
-| State                   | Appearance example                              | Styles                                                                                                                                                                                                                          |
-| ----------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Normal                  | ![](static/normal.png)        | The color of the placeholder is the same as a regular input has - `--text-placeholder`.                                                                                                                                         |
-| Hover                   | ![](static/hover.png)         | Cursor changes to `pointer`. The icon changes color to `--icon-secondary-neutral-hover-active`.                                                                                                                                 |
-| Focus                   | ![](static/opened.png)        | Show the input you need for data entry ([normal](/components/input/), [textarea](/components/textarea/), [select](/components/select), [color-picker](/components/color-picker), [time-picker](/components/time-picker), etc.). |
-| Entered data            | ![](static/success.png)       | Text color is `--text-primary`.                                                                                                                                                                                                 |
-| Entered data with hover | ![](static/success-hover.png) | Cursor changes to `pointer`. The interactive trailing addon changes color to `--icon-secondary-neutral-hover-active`.                                                                                                           |
+| State                   | Appearance example     | Styles  |
+| ----------------------- | ---------------------- | ------- |
+| Normal                  | ![](static/normal.png)        | The placeholder's color matches that of a default input `--text-placeholder`.    |
+| Hover                   | ![](static/hover.png)         | The cursor changes to a `pointer`. The icon's color shifts to `--icon-secondary-neutral-hover-active`.    |
+| Focus                   | ![](static/opened.png)        | Display the input type required for data entry ([normal](/components/input/), [textarea](/components/textarea/), [select](/components/select), [color-picker](/components/color-picker), [time-picker](/components/time-picker), for example). |
+| Entered data            | ![](static/success.png)       | Text color changes to `--text-primary`.      |
+| Entered data with hover | ![](static/success-hover.png) | The cursor changes to a `pointer`. The interactive trailing add-on's color shifts to `--icon-secondary-neutral-hover-active`.|
 
 @## Animation
 
-The transition between the wrapped trigger and the input can be done with an `ease-in-out` of `50ms`.
+The transition between the wrapped trigger and the input field can be accomplished with an `ease-in-out` effect lasting `50ms`.
 
 @## UX/UI use
 
-In view-mode, set the text size to the same size as the edit input you selected.
+In view mode, ensure that the text size matches the size of the edit input you've selected.
 
-_For example, if the heading you need to edit has 24px font-size, then it should also be 24px when you enter edit mode._
+For instance, if the heading you wish to edit employs a font size of 24px, maintain the same font size of 24px when transitioning to edit mode.
 
 ![](static/inline-edit-yes-no.png)
 

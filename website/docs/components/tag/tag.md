@@ -16,7 +16,7 @@ Tags are typically set either by the system or by the user.
 
 ![](static/tag-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `Tag.Text`
 - `Tag.Addon`: icon or any other small element before the text

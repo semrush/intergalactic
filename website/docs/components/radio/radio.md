@@ -16,7 +16,7 @@ The radio button indicates the user's selection status and is primarily used for
 
 ![](static/progressbar-composition.png)
 
-Radio component consists of:
+Component consists of the following:
 
 1. `RadioGroup`
 2. `Radio`

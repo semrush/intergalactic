@@ -36,7 +36,7 @@ Don't show modals before the user has interacted with the interface. **Modal win
 
 ![](static/modal-composition.png)
 
-The modal window consists of:
+The Modal window consists of the following:
 
 - `Modal.Window`.
 - `Modal.Title`.

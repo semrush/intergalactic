@@ -16,7 +16,7 @@ tabName: Design
 
 ![](static/switch-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `Switch.Value`
 - `Switch.Addon`

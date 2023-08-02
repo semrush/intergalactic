@@ -12,7 +12,7 @@ title: SSO page (Login form)
 
 @## Appearance
 
-SSO from the design point of view consists of:
+SSO from the design point of view consists of the following:
 
 - forms for user authorization/registration;
 - optional block with contact information.

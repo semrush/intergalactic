@@ -20,7 +20,7 @@ Differences between Tooltip and [Dropdown](/components/dropdown/):
 
 ![](static/tooltip-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `Tooltip.Trigger`
 - `Tooltip.Popper`
