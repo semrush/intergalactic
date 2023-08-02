@@ -1,3 +1,9 @@
+## [15.2.2] - 2023-08-02
+
+### @semcore/ellipsis
+
+- **Fixed** Added missing `EllipsisProps` export.
+
 ## [15.2.1] - 2023-08-01
 
 ### @semcore/data-table
