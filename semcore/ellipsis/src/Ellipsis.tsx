@@ -19,6 +19,7 @@ type AsProps = {
 
   containerRef?: RefObject<HTMLDivElement>;
   includeTooltipProps?: string[];
+  __excludeProps?: string[];
 };
 
 type AsPropsMiddle = {
@@ -128,6 +129,7 @@ class RootEllipsis extends Component<AsProps> {
     trim: 'end',
     tooltip: true,
     includeTooltipProps: defaultTooltipProps,
+    __excludeProps: ['title'],
   };
 
   state = {

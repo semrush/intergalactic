@@ -1,3 +1,9 @@
+## [15.2.3] - 2023-08-02
+
+### @semcore/ellipsis
+
+- **Fixed** Passing jsx element to tooltip inherited `title` prop was causing setting DOM attribute `title` to `[object Object]`.
+
 ## [15.2.2] - 2023-08-02
 
 ### @semcore/ellipsis

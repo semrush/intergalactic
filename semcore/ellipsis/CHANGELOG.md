@@ -2,7 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [2.1.1] - 2023-08-01
+## [2.1.2] - 2023-08-02
+
+### Fixed
+
+- Passing jsx element to tooltip inherited `title` prop was causing setting DOM attribute `title` to `[object Object]`.
+
+## [2.1.1] - 2023-08-02
 
 ### Fixed
 
