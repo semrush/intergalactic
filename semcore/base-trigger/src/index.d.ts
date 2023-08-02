@@ -2,14 +2,14 @@ import React from 'react';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { DotProps } from '@semcore/dot';
-import { INeighborItemProps } from '@semcore/neighbor-location';
+import { NeighborItemProps } from '@semcore/neighbor-location';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { IWithAnimatedSizeEnhanceProps } from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 
 /** @deprecated */
 export interface IBaseTriggerProps extends BaseTriggerProps, UnknownProperties {}
 export type BaseTriggerProps = BoxProps &
-  INeighborItemProps &
+  NeighborItemProps &
   KeyboardFocusProps &
   IWithAnimatedSizeEnhanceProps & {
     /**

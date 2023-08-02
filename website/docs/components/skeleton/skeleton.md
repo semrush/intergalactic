@@ -209,7 +209,7 @@ Skeletonize big pills similarly to the Summary.
 
 ![skeleton-heading](static/heading-yes-no.png)
 
-**Static information should be shown immediately.** It should not be disabled.
+Static information should be shown immediately. **It shouldn't be disabled**.
 
 ![skeleton-info](static/info-yes-no.png)
 

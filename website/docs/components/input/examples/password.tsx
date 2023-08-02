@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '@semcore/ui/input';
-import ShowYesXS from '@semcore/ui/icon/ShowYes/m';
-import ShowNoXS from '@semcore/ui/icon/ShowNo/m';
+import ShowYesM from '@semcore/ui/icon/ShowYes/m';
+import ShowNoM from '@semcore/ui/icon/ShowNo/m';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
@@ -28,7 +28,7 @@ const Demo = () => {
             tabIndex={0}
             onClick={() => setType((type) => (type === 'password' ? 'text' : 'password'))}
           >
-            {type === 'password' ? <ShowYesXS /> : <ShowNoXS />}
+            {type === 'password' ? <ShowYesM /> : <ShowNoM />}
           </Input.Addon>
         </Input>
       </Box>

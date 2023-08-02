@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.1] - 2023-08-01
+
+### Fixed
+
+- Using special characters and spaces in the data keys were braking columns width. 
+
+## [4.2.0] - 2023-08-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.0.0 ~> 5.1.0], `@semcore/icon` [4.1.0 ~> 4.2.0]).
+
+## [4.1.0] - 2023-07-27
+
+### Changed
+
+- Use `event.key` instead of `event.code` for better support of non QWERTY keyboard layouts.
+
 ## [4.0.2] - 2023-07-18
 
 ### Fixed

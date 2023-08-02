@@ -11,7 +11,7 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit />;
 ```
 
-@typescript IInlineEditProps
+@typescript InlineEditProps
 
 @## InlineEdit.View
 

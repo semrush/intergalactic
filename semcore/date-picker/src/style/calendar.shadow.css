@@ -59,7 +59,7 @@ SCalendarUnit {
   min-height: 32px;
   min-width: 32px;
   position: relative;
-  transition: color 0.15s, background 0.15s;
+  transition: color 0.15s, background 0.15s, border-radius 0.15s 0.15s;
   outline: none;
   margin: 0;
 
@@ -98,6 +98,7 @@ SCalendarUnit[today]SCalendarUnit[endSelected] {
 SCalendarUnit[selected] {
   background: var(--intergalactic-date-picker-cell-range, #c4e5fe);
   border-radius: 0;
+  transition: color 0.15s, background 0.15s, border-radius 0s 0s;
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
@@ -106,8 +107,9 @@ SCalendarUnit[selected] {
 }
 
 SCalendarUnit[highlighted] {
-  background: var(--intergalactic-date-picker-cell-range, #c4e5fe);
+  background: var(--intergalactic-date-picker-cell-range-hover, #8ecdff);
   border-radius: 0;
+  transition: color 0.15s, background 0.15s, border-radius 0s 0s;
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
@@ -116,12 +118,15 @@ SCalendarUnit[highlighted] {
 }
 
 SCalendarUnit[startSelected] {
-  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-bottom-right-radius: 0;
-  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-right-radius: 0;
   color: var(--intergalactic-text-primary-invert, #ffffff);
   background: var(--intergalactic-date-picker-cell-active, #2bb3ff);
+
+  &:not([highlighted]) {
+    border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+    border-bottom-right-radius: 0;
+    border-top-left-radius: var(--intergalactic-control-rounded, 6px);
+    border-top-right-radius: 0;
+  }
 
   &:hover {
     color: var(--intergalactic-text-primary-invert, #ffffff);
@@ -131,11 +136,14 @@ SCalendarUnit[startSelected] {
 
 SCalendarUnit[endSelected] {
   background: var(--intergalactic-date-picker-cell-active, #2bb3ff);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
-  border-top-left-radius: 0;
-  border-top-right-radius: var(--intergalactic-control-rounded, 6px);
   color: var(--intergalactic-text-primary-invert, #ffffff);
+
+  &:not([highlighted]) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
+    border-top-left-radius: 0;
+    border-top-right-radius: var(--intergalactic-control-rounded, 6px);
+  }
 
   &:hover {
     color: var(--intergalactic-text-primary-invert, #ffffff);
@@ -143,14 +151,14 @@ SCalendarUnit[endSelected] {
   }
 }
 
-SCalendarUnit[startHighlighted] {
+SCalendarUnit[startHighlighted]:not([selected]) {
   border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
   border-bottom-right-radius: 0;
   border-top-left-radius: var(--intergalactic-control-rounded, 6px);
   border-top-right-radius: 0;
 }
 
-SCalendarUnit[endHighlighted] {
+SCalendarUnit[endHighlighted]:not([selected]) {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
   border-top-left-radius: 0;
@@ -182,7 +190,10 @@ SCalendarUnit[disabled] {
 }
 
 @media (prefers-reduced-motion) {
-  SCalendarUnit {
+
+  SCalendarUnit,
+  SCalendarUnit[selected],
+  SCalendarUnit[highlighted] {
     transition: none;
   }
 }

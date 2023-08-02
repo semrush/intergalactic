@@ -12,7 +12,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker />;
 ```
 
-@typescript IColorPickerProps
+@typescript ColorPickerProps
 
 @## ColorPicker.Trigger
 
@@ -41,7 +41,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Colors />;
 ```
 
-@typescript IColorsProps
+@typescript ColorsProps
 
 @## ColorPicker.Item
 
@@ -52,7 +52,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Item />;
 ```
 
-@typescript IItemProps
+@typescript ItemProps
 
 @## PaletteManager
 
@@ -63,7 +63,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager />;
 ```
 
-@typescript IPaletteManagerProps
+@typescript PaletteManagerProps
 
 @## PaletteManager.Colors
 
@@ -74,7 +74,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Colors />;
 ```
 
-@typescript IColorsCustomProps
+@typescript ColorsCustomProps
 
 @## PaletteManager.Item
 
@@ -85,7 +85,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Item />;
 ```
 
-@typescript IItemProps
+@typescript ItemProps
 
 @## ColorPicker.InputColor
 
@@ -96,4 +96,4 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.InputColor />;
 ```
 
-@typescript IInputColorProps
+@typescript InputColorProps

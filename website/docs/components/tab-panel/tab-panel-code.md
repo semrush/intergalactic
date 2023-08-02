@@ -5,15 +5,15 @@ fileSource: tab-panel
 
 @## Basic usage
 
-Try to reduce the page and see how tabs are compressed. You can also wrap the `<TabPanel.Item />` in other components.
+Try changing the page size to observe how the tabs are compressed. Additionally, you have the flexibility to wrap the `<TabPanel.Item />` in other components.
 
-> Be sure to put the full text tooltip on the tabs with the text shortened into the `ellipsis`.
+> Make sure to provide a tooltip with full text for tabs with text truncated with an `ellipsis`.
 
 @example base
 
 @## Custom indents and occupying the entire space
 
-As you may notice, the TabPanel doesn't have indents at the edges. To make the TabPanel occupy the entire width of the parent block (which has indents), you need to set the desired `padding` and `margin` for it.
+As you may have noticed, the TabPanel doesn't have default margins at the edges. To make the TabPanel span the entire width of its parent block (which may have its own margins), you need to set the desired `padding` and `margin` for it.
 
 ```typescript
 <Box p={5}>

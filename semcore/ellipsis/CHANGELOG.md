@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.2] - 2023-08-02
+
+### Fixed
+
+- Passing jsx element to tooltip inherited `title` prop was causing setting DOM attribute `title` to `[object Object]`.
+
+## [2.1.1] - 2023-08-02
+
+### Fixed
+
+- Added missing `EllipsisProps` export.
+
+## [2.1.0] - 2023-08-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.0.0 ~> 5.1.0]).
+
 ## [2.0.1] - 2023-07-18
 
 ### Fix

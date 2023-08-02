@@ -16,4 +16,4 @@ import { StackBar } from '@semcore/ui/d3-chart';
 </StackBar>;
 ```
 
-@typescript IStackBarProps
+@typescript StackBarProps

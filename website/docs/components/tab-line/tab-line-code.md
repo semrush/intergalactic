@@ -5,13 +5,13 @@ fileSource: tab-line
 
 @## Basic example
 
-Try to reduce the page and see how tabs are compressed. If the text inside a tab is very long, it will be added to `ellipsis`. You can also wrap the `<TabLine.Item />` in other components.
+Try changing the page size to observe how the tabs are compressed. If the text inside a tab is too long, it will be truncated with an `ellipsis`. You can also place the `<TabLine.Item />` within other components.
 
 @example base
 
 @## Custom indents and occupying the entire space
 
-As you may notice, the **TabLine** doesn't have indents at the edges. To make the **TabLine** occupy the entire width of the parent block (which has indents), you need to set the desired `padding` and `margin` for it.
+As you might have noticed, the TabLine component doesn't have default margins at the edges. To make the TabLine span the entire width of its parent block (which might have its own margins), you can set the desired `padding` and `margin` for the TabLine component.
 
 ```typescript
 <Box p={5}>

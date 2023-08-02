@@ -8,4 +8,4 @@ title: API
 import Flags from '@semcore/ui/flags';
 ```
 
-@typescript IFlagsProps
+@typescript FlagsProps

@@ -288,12 +288,12 @@ export interface IDatePickerMaskedInputProps
   extends DatePickerMaskedInputProps,
     UnknownProperties {}
 export type DatePickerMaskedInputProps = {
-  date: Date;
-  onDateChange: (date: Date, event: ChangeEvent) => void;
-  onDisplayedPeriodChange: (date: Date) => void;
+  date?: Date;
+  onDateChange?: (date: Date, event: ChangeEvent) => void;
+  onDisplayedPeriodChange?: (date: Date) => void;
   locale?: string;
-  parts: { year: Boolean; month: Boolean; day: Boolean };
-  disabledDates: (Date | (Date | false)[] | string)[];
+  parts?: { year: Boolean; month: Boolean; day: Boolean };
+  disabledDates?: (Date | (Date | false)[] | string)[];
 };
 
 declare const InputTrigger: Intergalactic.Component<
@@ -302,7 +302,7 @@ declare const InputTrigger: Intergalactic.Component<
 > & {
   Addon: typeof Input.Addon;
   Value: typeof Input.Value;
-  SingleDateInput: Intergalactic.Component<'div', InputProps & ISingleDateInputProps> & {
+  SingleDateInput: Intergalactic.Component<'div', InputProps & SingleDateInputProps> & {
     Indicator: typeof Input.Addon;
     MaskedInput: Intergalactic.Component<'input', InputMaskValueProps & DatePickerMaskedInputProps>;
   };

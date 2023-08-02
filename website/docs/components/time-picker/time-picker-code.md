@@ -5,6 +5,6 @@ fileSource: time-picker
 
 @## Expanded access to all the components
 
-For deeper customization you may explode the component.
+For deeper customization, you can expand the component.
 
 @example expanded

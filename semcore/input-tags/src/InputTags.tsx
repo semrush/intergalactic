@@ -38,8 +38,8 @@ export type InputTagsProps = Omit<InputProps, 'size'> &
     onAppend?: (values: string[], event: React.KeyboardEvent | React.ClipboardEvent) => void;
     /** Event is called when tags need to be removed  */
     onRemove?: (event: React.KeyboardEvent | React.MouseEvent) => void;
-    /** List delimiter of tags
-     * @default [',', ';', '|']
+    /** List delimiter of tags. Don't forget to add 'Enter' and 'Tab' to hande corresponding hotkeys.
+     * @default [',', ';', '|', 'Enter', 'Tab']
      * */
     delimiters?: string[];
   };
@@ -232,7 +232,7 @@ function InputTag(props: any) {
   const STag = Root;
 
   const onKeyDown = (event: React.KeyboardEvent) => {
-    if (event.code === 'Enter') {
+    if (event.key === 'Enter') {
       props.onClick?.(event);
     }
   };

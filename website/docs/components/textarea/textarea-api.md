@@ -12,4 +12,4 @@ import Textarea from '@semcore/ui/textarea';
 <Textarea />;
 ```
 
-@typescript ITextareaProps
+@typescript TextareaProps

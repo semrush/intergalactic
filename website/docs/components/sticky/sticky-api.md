@@ -13,4 +13,4 @@ The component is a wrap over CSS `position: sticky`.
 import Sticky from '@semcore/ui/sticky';
 ```
 
-@typescript IStickyProps
+@typescript StickyProps

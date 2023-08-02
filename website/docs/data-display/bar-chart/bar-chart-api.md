@@ -11,4 +11,4 @@ Chart Bar.
 import { Bar } from '@semcore/ui/d3-chart';
 ```
 
-@typescript IBarProps
+@typescript BarProps

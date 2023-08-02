@@ -2,14 +2,14 @@ import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { BoxProps } from '@semcore/flex-box';
-import { INeighborItemProps } from '@semcore/neighbor-location';
+import { NeighborItemProps } from '@semcore/neighbor-location';
 
 export type ButtonSize = 'l' | 'm';
 
 /** @deprecated */
 export interface IButtonProps extends ButtonProps, UnknownProperties {}
 export type ButtonProps = BoxProps &
-  INeighborItemProps &
+  NeighborItemProps &
   KeyboardFocusProps & {
     /**
      *  Button type

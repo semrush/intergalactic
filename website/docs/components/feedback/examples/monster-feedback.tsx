@@ -1,4 +1,3 @@
-//https://github.com/semrush/intergalactic/tree/master/website/docs/components/feedback/examples/monster-feedback.tsx
 import React from 'react';
 import FeedbackForm from '@semcore/ui/feedback-form';
 import Input from '@semcore/ui/input';
@@ -16,6 +15,7 @@ type Data = {
 };
 
 const validate = (values: Data) => {
+  if (!values) return {};
   const errors: Partial<Record<keyof Data, string>> = {};
   if (!values.title) {
     errors.title = 'Title is required';
@@ -37,8 +37,8 @@ const validate = (values: Data) => {
 };
 
 const Demo = () => (
-  <FeedbackForm validate={validate}>
-    <FeedbackForm.Item name='title' validate={(x) => validate(x).title}>
+  <FeedbackForm validate={validate} p={1}>
+    <FeedbackForm.Item name='title'>
       {({ input }) => {
         const { state, className, ...other } = input;
         return (

@@ -22,7 +22,7 @@ class RootLink extends Component {
   componentDidMount() {
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
-        !hasLabels(this.containerRef.current),
+        this.containerRef.current && !hasLabels(this.containerRef.current),
         `'aria-label' or 'aria-labelledby' are required props for links without text content`,
         this.asProps['data-ui-name'] || RootLink.displayName,
       );

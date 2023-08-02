@@ -13,7 +13,7 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation />;
 ```
 
-@typescript INeighborLocationProps
+@typescript NeighborLocationProps
 
 @## NeighborLocation.Detect
 
@@ -25,4 +25,4 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation.Detect />;
 ```
 
-@typescript INeighborItemProps
+@typescript NeighborItemProps

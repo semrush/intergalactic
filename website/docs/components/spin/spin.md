@@ -6,19 +6,19 @@ tabName: Design
 
 @import playground
 
-> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
-
 @## Description
 
-**Spin** is a component for displaying the loading status of the page, section or widget when system doesn't know the exact time of data loading.
+**Spin** is a component used to display the loading state of a page, section, or widget when the system does not have an exact data loading time.
 
-For displaying Spin around any component, use [SpinContainer](/components/spin-container/).
+To display Spin around any component, use [SpinContainer](/components/spin-container/).
 
-@## Sizes
+> This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
-We have six sizes of Spin.
+@## Sizes and margins
 
-> **The size of the text should be at least 14px.**
+The Spin component comes in six different sizes. The text size should be at least 14px.
+
+@table-caption Spin sizes and margins
 
 | Size    | Text below                        | Text on the right                   |
 | ------- | --------------------------------- | ----------------------------------- |
@@ -31,30 +31,30 @@ We have six sizes of Spin.
 
 @## Styles
 
-> For recommendations on Spin positioning and indents in blocks and on the page, see [SpinContainer](/components/spin-container/).
+> For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/).
 
-You can place text, which tells user that data is being loaded, next to the spinner. Text should use `--text-secondary` token for color, because it is a secondary message according to the whole visual hierarchy of the page.
+You can place text next to the spinner to inform the user that data is being loaded. The text should use the `--text-secondary` token for color, as it is considered a secondary message according to the overall visual hierarchy of the page.
 
-**Text can be placed on the right or under the spinner**. Place the text to the right of the spinner in small components, blocks and widgets. If Spin with text is placed in a large component, around a block of components or inside large blocks and widgets, we recommended you to place the text below the spinner and use one of the four biggest Spin sizes.
+**Text can be placed on the right or below the spinner.** In small components, blocks, and widgets, place the text to the right of the spinner. For large components, blocks of components, or inside large blocks and widgets, we recommend placing the text below the spinner and using one of the four largest Spin sizes.
 
 @## Themes
 
-Spin has two themes: `dark` and `invert` – for using on light and dark/colored backgrounds, respectively. You also can make your Spin colored in a custom color if needed.
+Spin has two themes: `dark` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
 
-| Theme  | Appearance example        | Description                                            |
-| ------ | ------------------------- | ------------------------------------------------------ |
-| Dark   | ![](static/dark-m.png)    | Use Spin with this theme on a light background.        |
-| Invert | ![](static/invert-m.png)  | Use Spin with this theme on a dark/colored background. |
+@table-caption Spin themes
+
+| Theme    | Appearance example        | Description                                          |
+| -------- | ------------------------- | ---------------------------------------------------- |
+| `dark`   | ![](static/dark-m.png)    | Use this theme of Spin on a light background.        |
+| `invert` | ![](static/invert-m.png)  | Use this theme of Spin on a dark/colored background. |
 
 @## Animation
 
-For Spin appearance and disappearance use animation with 300ms delay and `ease-out`.
+For Spin appearance and disappearance, use an animation with a 300ms delay and `ease-out` easing.
 
 @## Usage in UX/UI
 
-Remember that the page loading indicator should help user to estimate the interface's response time (specifically how long he should wait for a certain result). Therefore, in cases when system doesn't know exactly how long it will take to load data, we recommend you to add explanatory message next to a spinner, for example: **Loading...**.
-
-> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
 
 @page spin-a11y
 @page spin-api

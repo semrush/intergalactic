@@ -1,6 +1,6 @@
 import React from 'react';
 import Tag from '@semcore/ui/tag';
-import EditXS from '@semcore/ui/icon/Edit/m';
+import EditM from '@semcore/ui/icon/Edit/m';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 export default PlaygroundGeneration((createGroupWidgets) => {
@@ -45,16 +45,16 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     })),
   });
 
-  const imageIcon = bool({
-    key: 'image Icon',
-    defaultValue: false,
-    label: 'Image Icon',
-  });
-
   const beforeIcon = bool({
     key: 'before Icon',
     defaultValue: false,
-    label: 'Before Icon',
+    label: 'AddonLeft',
+  });
+
+  const imageIcon = bool({
+    key: 'image Icon',
+    defaultValue: false,
+    label: 'Image Addon',
   });
 
   const closeIcon = bool({
@@ -63,20 +63,22 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     label: 'Close Icon',
   });
 
-  const disabled = bool({
-    key: 'disabled',
+  const interactive = bool({
+    key: 'interactive',
     defaultValue: false,
-    label: 'Disabled',
+    label: 'Interactive',
   });
+
   const active = bool({
     key: 'active',
     defaultValue: false,
     label: 'Active',
   });
-  const interactive = bool({
-    key: 'interactive',
+
+  const disabled = bool({
+    key: 'disabled',
     defaultValue: false,
-    label: 'Interactive',
+    label: 'Disabled',
   });
 
   return (
@@ -90,7 +92,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     >
       {beforeIcon && (
         <Tag.Addon>
-          <EditXS />
+          <EditM />
         </Tag.Addon>
       )}
 

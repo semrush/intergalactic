@@ -11,7 +11,7 @@ import Error from '@semcore/ui/errors';
 <Error />;
 ```
 
-@typescript IErrorsProps
+@typescript ErrorsProps
 
 @## Error.Title
 
@@ -49,7 +49,7 @@ import { AccessDenied } from '@semcore/ui/errors';
 <AccessDenied />;
 ```
 
-@typescript IAccessDeniedProps
+@typescript AccessDeniedProps
 
 @## Maintenance
 
@@ -60,7 +60,7 @@ import { Maintenance } from '@semcore/ui/errors';
 <Maintenance />;
 ```
 
-@typescript IMaintenanceProps
+@typescript MaintenanceProps
 
 @## PageError
 
@@ -71,7 +71,7 @@ import { PageError } from '@semcore/ui/errors';
 <PageError />;
 ```
 
-@typescript IPageErrorProps
+@typescript PageErrorProps
 
 @## PageNotFound
 
@@ -82,7 +82,7 @@ import { PageNotFound } from '@semcore/ui/errors';
 <PageNotFound />;
 ```
 
-@typescript IPageNotFoundProps
+@typescript PageNotFoundProps
 
 @## ProjectNotFound
 
@@ -93,4 +93,4 @@ import { ProjectNotFound } from '@semcore/ui/errors';
 <ProjectNotFound />;
 ```
 
-@typescript IProjectNotFoundProps
+@typescript ProjectNotFoundProps

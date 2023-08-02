@@ -9,4 +9,4 @@ import Badge from '@semcore/ui/badge';
 <Badge />;
 ```
 
-@typescript IBadgeProps
+@typescript BadgeProps

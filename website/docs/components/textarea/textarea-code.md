@@ -5,8 +5,8 @@ fileSource: textarea
 
 @## Textarea with auto height
 
-The component can be automatically stretched when the user types text.
+The component can automatically adjust its height as the user types text.
 
-You can limit the number of lines, on which the area will be stretched until a scroll appears inside it, using the `maxRows`/`minRows`.
+To control the automatic stretching, you can set limits on the number of lines using `maxRows` and `minRows`. This way, the area will stretch until a scrollbar appears inside it.
 
 @example autoHeight

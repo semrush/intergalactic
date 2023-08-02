@@ -136,7 +136,7 @@ class DateRangeRoot extends Component {
     if (!this.fromRef.current) return;
 
     if (
-      event.code === 'ArrowRight' &&
+      event.key === 'ArrowRight' &&
       this.fromRef.current.selectionStart === this.fromRef.current.value.length &&
       this.fromRef.current.selectionEnd === this.fromRef.current.value.length
     ) {
@@ -150,7 +150,7 @@ class DateRangeRoot extends Component {
     if (!this.toRef.current) return;
     if (!this.fromRef.current) return;
 
-    if (event.code === 'Backspace' && !this.toRef.current.value) {
+    if (event.key === 'Backspace' && !this.toRef.current.value) {
       const value = this.fromRef.current.value;
       this.fromRef.current.focus();
       setTimeout(() => {
@@ -158,7 +158,7 @@ class DateRangeRoot extends Component {
       }, 0);
     }
     if (
-      event.code === 'ArrowLeft' &&
+      event.key === 'ArrowLeft' &&
       this.toRef.current.selectionStart === 0 &&
       this.toRef.current.selectionEnd === 0
     ) {

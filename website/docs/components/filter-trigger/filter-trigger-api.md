@@ -11,7 +11,7 @@ Basic trigger-button for all dropdowns.
 import { BaseTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript IBaseTriggerProps
+@typescript BaseTriggerProps
 
 @## ButtonTrigger
 
@@ -21,7 +21,7 @@ Button-trigger with the `ChevronDownM` icon.
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript IButtonTriggerProps
+@typescript ButtonTriggerProps
 
 @## LinkTrigger
 
@@ -31,7 +31,7 @@ This trigger looks like a link with the `ChevronDownM` icon.
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript ILinkTriggerProps
+@typescript LinkTriggerProps
 
 @## FilterTrigger
 
@@ -41,4 +41,4 @@ Trigger for filters.
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 ```
 
-@typescript IFilterTriggerProps
+@typescript FilterTriggerProps

@@ -3,18 +3,18 @@ title: Example
 fileSource: spin-container
 ---
 
-@## Use for content
+@## Usage in content
 
 @example base
 
-@## Use in dropdown lists
+@## Usage in dropdown lists
 
-This example shows how you can resize and display everything in the SpinContainer.
+This example demonstrates how to resize and display content within the SpinContainer.
 
 @example other
 
 @## Use with Sticky (deprecated)
 
-You can fix the spinner when scrolling the page with the [Sticky](/components/sticky/) component.
+You had the ability to fix the spinner while scrolling the page using the [Sticky](/components/sticky/) component. However, please note that this approach is now deprecated.
 
 @example sticky

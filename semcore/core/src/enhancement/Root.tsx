@@ -46,6 +46,8 @@ function createRootRender() {
     if (!Tag) {
       throw new Error('`render` prop of Root is not provided');
     }
+    if (Tag === React.Fragment) return <React.Fragment>{other.children}</React.Fragment>;
+
     return <Tag {...other} />;
   });
   // @ts-ignore

@@ -122,11 +122,11 @@ describe('PillGroup', () => {
     const pill = getByTestId('pill');
 
     act(() => pill.focus());
-    fireEvent.keyDown(pill, { code: 'ArrowRight' });
+    fireEvent.keyDown(pill, { key: 'ArrowRight' });
     expect(spyRight).toHaveBeenCalledTimes(1);
 
     act(() => pill.focus());
-    fireEvent.keyDown(pill, { code: 'ArrowLeft' });
+    fireEvent.keyDown(pill, { key: 'ArrowLeft' });
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
@@ -144,10 +144,10 @@ describe('PillGroup', () => {
     );
     const pill = getByTestId('pill');
 
-    fireEvent.keyDown(pill, { code: 'ArrowLeft' });
+    fireEvent.keyDown(pill, { key: 'ArrowLeft' });
     expect(spy).toBeCalledWith(1, expect.anything());
 
-    fireEvent.keyDown(pill, { code: 'ArrowRight' });
+    fireEvent.keyDown(pill, { key: 'ArrowRight' });
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 

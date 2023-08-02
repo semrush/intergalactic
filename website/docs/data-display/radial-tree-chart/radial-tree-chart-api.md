@@ -21,4 +21,4 @@ import { RadialTree } from '@semcore/ui/d3-chart';
 </RadialTree>;
 ```
 
-@typescript IRadialTreeProps
+@typescript RadialTreeProps

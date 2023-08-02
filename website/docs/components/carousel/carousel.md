@@ -19,12 +19,14 @@ Use the carousel as an additional highlight of important website features and in
 
 @## Component composition
 
-1. Navigation buttons: `Carousel.Prev`, `Carousel.Next`.
-2. Slides number indicator (optional): `Carousel.Indicators`.
-3. Slide with content: `Carousel.Item`. Slide contains image, video or another type of information.
-4. Container for items: `Carousel.Container`.
+![](static/carousel-composition.png)
 
-![](static/carousel-scheme.png)
+Component consists of:
+
+- Container for items: `Carousel.Container`
+- Slide with content: `Carousel.Item`. Slide contains image, video or another type of information
+- Slides number indicator (optional): `Carousel.Indicators`
+- Navigation buttons: `Carousel.Prev`, `Carousel.Next`
 
 @## Appearance
 

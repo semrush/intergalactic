@@ -4,33 +4,25 @@ title: For developers
 
 @## Introduction
 
-Let's look at the design system we use at [Semrush](https://semrush.com), and which you can use for your project.
-
-The design system consists of over 70 [React](https://reactjs.org) components. Each of them has design guides and [Figma components](https://www.figma.com/@semrush) with examples of use and API descriptions.
-
-We also have big [icons library](/style/icon/) and [charts library](/data-display/d3-chart/d3-chart-code/).
+Let's explore the design system used at [Semrush](https://semrush.com), which you can also integrate into your own projects. The design system has more than 70 [React](https://reactjs.org) components, each of them accompanied by design guides, Figma components, usage examples and API descriptions. Additionally, we offer an extensive [icons library](/style/icon/) and [charts library](/data-display/d3-chart/d3-chart-code/).
 
 @## Installation
 
-Components are installed in a single package.
-
-Example:
+All components are bundled together in a single package, making the installation process straightforward. For example:
 
 ```bash
 npm i @semcore/ui
 ```
 
-After the installation, all components will be available at `@semcore/ui/{{ component name }}`.
+After the installation, you can access each component at `@semcore/ui/{{ component name }}`.
 
-@## Basic moments
+@## Key features
 
-We have developed the design system with flexibility and ease of use in mind. Therefore, it has some features, which will be described below.
+We have developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
 
 ### Free template
 
-Components often consist of a complex HTML structure. We provide free template. This means that you are templating the internals of the components from the design system.
-
-For example:
+Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/) component:
 
 ```jsx
 import Button from '@semcore/ui/button';
@@ -44,47 +36,38 @@ import Button from '@semcore/ui/button';
 </Button>;
 ```
 
-This approach provides more flexibility:
+This approach provides multiple benefits:
 
-- The renderer isn’t limited by our API.
-- The API is cleaner and more consistent.
-- You have access to each part of the component.
+- The renderer is not constrained by our API.
+- The API remains clean and consistent.
+- You gain access to each part of the component.
 
 ### Theme
 
-You can change the default styles for your project. We have design tokens that you can change in each component individually or globally throughout the project.
-
-We also have [a mechanism](/style/design-tokens/#themes/) for changing our styles, this allows us to completely change the design of components and extend components with new properties.
+You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/#themes/), enabling complete design customization and the extension of components with new properties.
 
 ### Controlled & uncontrolled
 
-We develop our components in a way that doesn't have a state and has all statuses set externally. This allows us to ensure that you have full control over the state and its changes.
+Our components are designed to be controlled externally, meaning they do not have an internal state. This grants you complete control over the state and its changes. Each property that can be modified comes with a corresponding handler. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
 
-Every property that can be changed has a handler. For example, `visible` is a property that you set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` gets a new value.
-
-> You may have seen this type of logic in the [native input](https://reactjs.org/docs/forms.html#controlled-components) where you control the value and the `onChange` serves as a
-> request for change. In this case it's up to you whether to change the value or not.
+> This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
 >
-> The handlers for these types of properties have a specific notation: `on{{ eventName }}Change`.
+> The handlers for these types of properties follow a specific notation: `on{{ eventName }}Change`.
 
-If you don't set these properties, the component will run in uncontrolled mode.
-
-Also, all properties that can be changed have an initial state located in the `default + {{ Property name }}` property. It can be changed by assigning a different value.
-
-For example, a tooltip has a `visible` property which is closed by default. If you want its initial state to be opened, you can assign it the `defaultVisible={true}` value.
+If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + {{ Property name }}` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
 
 @### Handlers
 
-Consistency is essential for a library because it helps you understand what to expect in any particular case. This is why all event handlers in our library have the same format:
+Consistency is crucial for a library as it ensures predictability. In our library, all event handlers follow the same format:
 
 ```tsx
 (value, event) => void | boolean
 ```
 
-- The first argument is the value that is obtained as a result of the handler response.
-- The second argument is the event that called this handler.
+- The first argument is the value that results from the handler response.
+- The second argument is the event that triggers this handler.
 
-Such handlers are extremely convenient if you use React hooks, since it's no longer necessary to create custom handlers and obtain the value from the event. You can simply assign a function from the hook directly to the handler:
+These handlers are especially convenient when using React hooks, as you no longer need to create custom handlers and extract values from the event. Instead, you can directly assign a function from the hook to the handler, as shown in this example using the Input component:
 
 ```jsx
 import React, { useState } from 'react';
@@ -103,19 +86,19 @@ export default () => {
 
 ### Merge props
 
-For convenience, all properties are merged according to a logical principle. Classname concatenations, styles merge, callbacks queue up, and refs fork. All other properties are overwritten, so it helps not to think that you will break the component by setting props.
+For convenience, all properties are merged logically. Classname concatenations, styles merging, callback queues, and refs forking are all handled appropriately. Other properties are simply overwritten, eliminating the concern of accidentally breaking the component by setting props.
 
 ### Refs
 
-All our components return a DOM node in the `ref` property. This was made for the following reasons:
+All our components return a DOM node in the `ref` property. This decision was made for several reasons:
 
-- You can always get a DOM node to integrate with other libraries.
-- The API becomes less cluttered thanks to the absence of props like `innerRef`, `rootRef` and others.
-- It is a bad practice to render the class instance, as it reveals the internal workings of our code.
+- You can always obtain a DOM node to integrate with other libraries.
+- The API becomes less cluttered without the need for props like `innerRef`, `rootRef`, and others.
+- Rendering the class instance is considered a bad practice, as it reveals the internal workings of our code.
 
 ### Base component
 
-There is ["Box"](/layout/box-system/) under the hood of all our components.
+Underlying all our components is ["Box"](/layout/box-system/), which serves as a foundational building block. By importing Box from @semcore/ui/flex-box, you can leverage its capabilities, including:
 
 ```jsx
 import { Box } from '@semcore/ui/flex-box';
@@ -123,28 +106,28 @@ import { Box } from '@semcore/ui/flex-box';
 
 `Box` allows you to:
 
-- set such indents as `margin` or `padding` directly in `jsx`:
+- Directly setting indents such as `margin` or `padding` in JSX:
 
 ```jsx
 <Box mr={5} p={1} />
 ```
 
-- Set the sizes directly in `jsx`:
+- Setting sizes directly in JSX:
 
 ```jsx
 <Box h={10} wMax="300px" />
 ```
 
-- assign a `tag` to a component. The tag can be a string or another component:
+- Assigning a `tag` to a component. The `tag` can be a string or another component:
 
 ```jsx
 <Box tag="ul" />
 <Box tag={Component} />
 ```
 
-> **Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles and the order of the styles can break you the display.
+> **Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles, and the order of the styles may affect the display.
 
-`Box` serves as the basis for other components, meaning its features are available across the entire library:
+`Box` serves as the foundation for other components, making its features available throughout the entire library. For example:
 
 ```jsx
 import Button from '@semcore/ui/button';
@@ -154,7 +137,8 @@ import Button from '@semcore/ui/button';
 </Button>;
 ```
 
-It is also worth looking at the ["Flex"](/layout/box-system/) component, which is used to build the layout. `Flex` is a wrapper for `Box` with the ability to assign properties for the **CSS Flexbox**:
+Additionally, consider exploring the ["Flex"](/layout/box-system/) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
+
 
 ```jsx
 import { Flex } from '@semcore/ui/flex-box';
@@ -164,7 +148,9 @@ import { Flex } from '@semcore/ui/flex-box';
 
 @## Browser support
 
-We don’t support legacy browsers as we don’t want to encourage their use.
+To ensure the best performance and user experience, we do not support legacy browsers. Our design system is optimized for the following browser versions:
+
+@table-caption Browser support
 
 | Chrome | Firefox | Safari(macOS) | Safari(iOS) | Edge  |
 | ------ | ------- | ------------- | ----------- | ----- |

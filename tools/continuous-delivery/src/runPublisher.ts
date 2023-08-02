@@ -44,7 +44,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     }
   }
   if (nonSemcoreUiPatches.length !== 0) {
-    execSync(`pnpm ${pnpmFilter} run build`, {
+    execSync('pnpm build', {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });

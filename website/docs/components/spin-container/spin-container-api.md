@@ -10,7 +10,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
-@typescript ISpinContainerProps
+@typescript SpinContainerProps
 
 @## SpinContainer.Content
 

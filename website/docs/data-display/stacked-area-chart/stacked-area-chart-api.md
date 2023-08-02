@@ -15,4 +15,4 @@ import { StackedArea } from '@semcore/ui/d3-chart';
 </StackedArea>;
 ```
 
-@typescript IStackedAreaProps
+@typescript StackedAreaProps

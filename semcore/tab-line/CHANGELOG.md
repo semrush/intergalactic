@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.1.0] - 2023-08-01
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.0.0 ~> 5.1.0]).
+
+## [4.0.1] - 2023-07-24
+
+### Fixed
+
+- `TabLine` props strictness.
+
 ## [4.0.0] - 2023-07-17
 
 ### Break

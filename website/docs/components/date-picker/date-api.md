@@ -13,7 +13,7 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker />;
 ```
 
-@typescript IDatePickerProps
+@typescript DatePickerProps
 
 @## DateRangePicker
 
@@ -25,7 +25,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 <MonthRangePicker />;
 ```
 
-@typescript IDateRangePickerProps
+@typescript DateRangePickerProps
 
 @## DatePicker.Trigger and DateRangePicker.Trigger
 
@@ -36,7 +36,7 @@ import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
-@typescript IBaseTriggerProps
+@typescript BaseTriggerProps
 
 @## DateRangePicker.Period
 
@@ -47,7 +47,7 @@ import { DateRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker.Period />;
 ```
 
-@typescript IDateRangePickerPeriodProps
+@typescript DateRangePickerPeriodProps
 
 @## Calendar
 
@@ -59,7 +59,7 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker.Calendar />;
 ```
 
-@typescript ICalendarProps
+@typescript CalendarProps
 
 @## Calendar.Unit
 
@@ -71,4 +71,4 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker.Calendar.Unit />;
 ```
 
-@typescript ICalendarUnitProps
+@typescript CalendarUnitProps

@@ -11,7 +11,7 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel />;
 ```
 
-@typescript ICarouselProps
+@typescript CarouselProps
 
 @## Carousel.Container
 

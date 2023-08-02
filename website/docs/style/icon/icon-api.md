@@ -10,4 +10,4 @@ Any icon can be obtained using a template.
 import IconNameSize from '@semcore/ui/icon/iconName/size';
 ```
 
-@typescript IIconProps
+@typescript IconProps

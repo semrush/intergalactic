@@ -9,7 +9,7 @@ import Counter from '@semcore/ui/counter';
 <Counter />;
 ```
 
-@typescript ICounterProps
+@typescript CounterProps
 
 @## AnimatedNumber
 
@@ -18,4 +18,4 @@ import { AnimatedNumber } from '@semcore/ui/counter';
 <AnimatedNumber />;
 ```
 
-@typescript IAnimatedNumberBaseProps
+@typescript AnimatedNumberBaseProps

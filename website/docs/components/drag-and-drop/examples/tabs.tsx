@@ -1,13 +1,13 @@
 import React from 'react';
 import DnD from '@semcore/ui/drag-and-drop';
 import Badge from '@semcore/ui/badge';
-import LinkedInS from '@semcore/ui/icon/LinkedIn/m';
+import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
 import TabPanel from '@semcore/ui/tab-panel';
 
 const icons = {
   social: (
     <TabPanel.Item.Addon>
-      <LinkedInS />
+      <LinkedInM />
     </TabPanel.Item.Addon>
   ),
   issues: (

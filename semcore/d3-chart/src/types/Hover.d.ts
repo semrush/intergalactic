@@ -2,7 +2,7 @@ import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { ReturnEl } from '@semcore/core';
 import { TooltipTypeBase } from './Tooltip';
-import { IBoxProps } from '@semcore/flex-box';
+import { BoxProps } from '@semcore/flex-box';
 import { IntergalacticD3Component } from './Plot';
 
 /** @deprecated */
@@ -26,7 +26,7 @@ type HoverTooltip = (<X, Y>(
       /** Index in `data` array of the current item */
       yIndex: Y extends string ? string : never;
     }) => { children: ReturnEl };
-  } & Omit<IBoxProps, 'children'>,
+  } & Omit<BoxProps, 'children'>,
 ) => ReturnEl) &
   TooltipTypeBase;
 

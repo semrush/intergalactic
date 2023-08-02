@@ -44,7 +44,7 @@ function Icon(props, ref) {
       return propsEnhance.onKeyDown(event);
     }
 
-    if (interactive && event.code === 'Enter') {
+    if (interactive && event.key === 'Enter') {
       propsEnhance.onClick?.(event);
     }
   }
@@ -54,7 +54,7 @@ function Icon(props, ref) {
     if (!interactive) return;
     if (process.env.NODE_ENV !== 'production') {
       logger.warn(
-        !hasLabels(labelCheckRef.current),
+        labelCheckRef.current && !hasLabels(labelCheckRef.current),
         `'aria-label' or 'aria-labelledby' are required props for interactive icons`,
         props['data-ui-name'] || Icon.displayName,
       );

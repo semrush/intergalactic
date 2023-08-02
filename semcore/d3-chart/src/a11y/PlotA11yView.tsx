@@ -111,7 +111,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   }, []);
   const handleSkipKeyboard = React.useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.code !== 'Enter') return;
+      if (event.key !== 'Enter') return;
 
       handleSkip();
     },
@@ -122,7 +122,7 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
   }, []);
   const handleGoToTableKeyboard = React.useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.code !== 'Enter') return;
+      if (event.key !== 'Enter') return;
 
       handleGoToTable();
     },

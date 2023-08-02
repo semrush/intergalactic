@@ -5,13 +5,13 @@ fileSource: tag
 
 @## Tag addon
 
-Addons can be set by passing the desired tag to the `addonLeft`/`addonRight` property or rendering `Tag.Addon`/`Tag.Text` into the component body. The examples below are the same.
+You can add addons to the Tag component in two ways: by passing the desired tag to the `addonLeft` or `addonRight` property, or by directly rendering `Tag.Addon` or `Tag.Text` within the component.
 
 @example addon
 
 @## Custom tag color
 
-Tag colors can be set by yourself
+You can set custom tag colors.
 
 @example custom-color
 

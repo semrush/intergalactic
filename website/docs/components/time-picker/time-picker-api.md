@@ -9,11 +9,11 @@ fileSource: time-picker
 import Timepicker from '@semcore/ui/time-picker';
 ```
 
-@typescript ITimePickerProps
+@typescript TimePickerProps
 
-### TimePicker.Hours, TimePicker.Minutes
+@## TimePicker.Hours, TimePicker.Minutes
 
-@typescript ITimePickerItemProps
+@typescript TimePickerItemProps
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
@@ -23,16 +23,16 @@ import Timepicker from '@semcore/ui/time-picker';
 </Timepicker>;
 ```
 
-### TimePicker.Format
+@## TimePicker.Format
 
-@typescript ITimePickerFormatProps
+@typescript TimePickerFormatProps
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Format />;
 ```
 
-### TimePicker.Separator
+@## TimePicker.Separator
 
 It is a usual `span`-element, it takes the HTML-attributes available for it.
 
