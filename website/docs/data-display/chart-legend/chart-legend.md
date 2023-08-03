@@ -36,7 +36,7 @@ For an interactive legend use a group of [checkboxes](/components/checkbox/) or 
 
 @## Non-interactive legend
 
-A non-interactive legend is a colored circle with a label. This legend does not disable/enable the lines on the chart.
+A non-interactive legend is a colored circle with a label. This legend doesn't disable/enable the lines on the chart.
 
 | Appearance example                                  | Styles                                                                                               |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |

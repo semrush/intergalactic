@@ -53,7 +53,7 @@ It is recommended to provide visible text instructions for inputs with specific 
 ### Important points for cases when the user's country and phone format can be determined
 
 - **Only numeric characters can be entered in this field.** All other characters are removed when entered or pasted from the clipboard.
-- If a number with a country code is inserted, and the code does not correspond to a specific country, the country changes to the one associated with the inserted code.
+- If a number with a country code is inserted, and the code doesn't correspond to a specific country, the country changes to the one associated with the inserted code.
 - **The user should have the option to change the country and the corresponding code.** This is useful when entering a phone number while being in a different country, for example.
 - In the dropdown, each country name should be associated with the respective country code.
 - When the phone format is known, the input should have a mask specific to the country. If the format is unknown, it is recommended to remove the format mask altogether, as mentioned in [Baymard Research](https://baymard.com/blog/input-masking-form-field) (only leave the + country code at the beginning of the input).
@@ -91,7 +91,7 @@ This option is most suitable when collecting phone numbers from users in one or 
 
 @## Usage in UX/UI
 
-To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the phone number input field as clear as possible. Typically, the width does not exceed 160px-250px for the input sizes.
+To ensure user clarity about how much information they need to enter, it is recommended to keep the width of the phone number input field as clear as possible. Typically, the width doesn't exceed 160px-250px for the input sizes.
 
 ![](static/size-yes-no.png)
 

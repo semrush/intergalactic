@@ -123,7 +123,7 @@ In long lists (for example, in the list of countries), the values selected by th
 | If everything is selected, write `All`.    | ![](static/multiselect-trigger-2.png) |
 | If the user selects 1 or 2 values, show them in the trigger listing them with commas. If they don’t fit, collapse the text in `ellipsis`. | ![](static/multiselect-trigger-3.png) |
 | **The select has a label.** If more than 2 values are selected, add them to the "Label: N selected" construction. | ![](static/multiselect-trigger-4.png) |
-| **The select does not have a label.** If more than 2 values are selected, add them to the "N selected" construction. | ![](static/multiselect-trigger-5.png) |
+| **The select doesn't have a label.** If more than 2 values are selected, add them to the "N selected" construction. | ![](static/multiselect-trigger-5.png) |
 
 ### Search
 

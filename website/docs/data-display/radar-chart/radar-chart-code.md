@@ -7,7 +7,7 @@ fileSource: d3-chart
 
 @## Scale
 
-You must pass a scale with a specified `domain`, `range` does not need to be specified as it is calculated automatically.
+You must pass a scale with a specified `domain`, `range` doesn't need to be specified as it is calculated automatically.
 You can modify the range or use a non-linear scale.
 
 @example scale

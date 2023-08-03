@@ -6,22 +6,27 @@ tabName: Design
 
 @## Description
 
-> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
+**Skeleton** is a component used to display the structure of a widget or page when it's initially loading. 
+Its purpose is to provide users with a mental map of the data being loaded.
 
-**Skeleton** is a component for displaying the structure of a widget and/or a page during their initial loading. Skeleton is needed to form user's mental map about the data being loaded.
+> This component demonstrates the loading and response to user actions in the interface. 
+For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
-### When to use Skeleton
+**Use Skeleton for the following cases**
 
-- If the content is loading from 0 to 5 seconds. If it takes more time, use it in combination with [ProgressBar](/components/progress-bar/).
-- When the number and approximate layout of elements are known in advance.
+- The content takes 0 to 5 seconds to load. If it takes longer, combine it with the [ProgressBar](/components/progress-bar/).
+- The number and approximate layout of elements are known in advance.
+- When displaying dynamic information during initial loading: pages, widgets, complex components such as tables, charts, or selects.
 
-Several skeletons can be shown simultaneously or asynchronously while initial loading of the elements.
+Multiple skeletons can be shown simultaneously or asynchronously during the initial loading of elements.
+
+> It isn't recommended to use Skeleton for pages that are indexed by Google such as blog pages.
 
 @## Themes
 
-Skeleton has [two themes](/components/skeleton/skeleton-api/): `dark` and `invert` – for using on light and dark/colored backgrounds, respectively.
+Skeleton has two themes—`dark` and `invert`–for using on light and dark/colored backgrounds, respectively. All skeleton “bones” have a `border-radius` of 4px.
 
-All skeleton “bones” have `border-radius` of 4px.
+@table-caption Skeleton themes
 
 | Theme  | Appearance example                     | Styles                                    |
 | ------ | -------------------------------------- | ----------------------------------------- |
@@ -30,163 +35,139 @@ All skeleton “bones” have `border-radius` of 4px.
 
 @## Animation
 
-Our Skeleton is animated. You can see the live skeleton animation in the [Code](/components/skeleton/skeleton-code) tab.
+The Skeleton is animated with a content appearance animation lasting 300 ms with an `ease-out` effect (refer to [Code examples](/components/skeleton/skeleton-code)). 
+The Skeleton gradient animation has a default duration of 2000 ms. 
+Animation is applied per data block (widgets, tables, charts) without the need for synchronization between elements.
 
-Animation is added per data block (widgets, tables, charts). There is no need to synchronize it between different elements/widgets, as it may affect the page loading time.
+> If you don't need animation in the Skeleton, you can stop the animation using the `duration="0"` property.
 
-Content appearance animation is 300ms with `ease-out`. Skeleton gradient animation has 2000ms duration by default.
+@## What should be skeletonized
 
-> In case you don’t need animation in the Skeleton, you can stop the animation using the property `duration="0"` 🕺🏻
+The information on the page can be divided into 2 categories:
 
-@## How to skeleton different components and elements on a page?
+- Static information (doesn't need Skeleton).
+- Dynamic information (needs Skeleton).
+
+### Static information (doesn't need Skeleton)
+
+- Text, data, and components that don't depend on user actions and product settings.
+- Product name.
+- Widget titles and tooltips.
+- Table headers.
+- Components for actions such as buttons, inputs, toggles, and pills.
+
+These components don't require additional loading and can be displayed immediately.
+
+### Dynamic information (should be skeletonized)
+
+This information requires additional requests and a long time to load. 
+It varies depending on the user's actions and specific projects. 
+In most cases, this group includes:
+
+- Widgets
+- Tables
+- Charts
+- Project statistics
+- Selects
+
+### Components that should never be skeletonized
+
+Additionally, the following components should never use Skeleton—they should be loaded by the time the user interacts with them:
+
+- [NoticeBubble](/components/notice-bubble/).
+- [Dropdown](/components/dropdown/) (selects and dropdowns are loaded immediately. However, if the dropdown contains a table with data, you can use a skeleton for it).
+- [Tooltip](/components/tooltip/).
+- [Modal](/components/modal/).
+- [Spin](/components/spin/).
+
+@## Text skeleton
 
 ### Paragraph
 
-Any paragraph should be replaced by one type of skeleton.
+Replace any paragraph with a single type of Skeleton.
 
-- Show three "bones".
-- The width of "bones" is equal to the width of the paragraph, but no more than 600px.
-- The length of the last "bone" is 3/4 of the previous two "bones".
+- We recommend showing no more than three "bones."
+- The width of the "bones" should match the width of the paragraph, but not exceed 600px.
+- The length of the last "bone" should be 3/4 of the previous two "bones."
 
 ![](static/text.png)
 
 ### Headers
 
-Each header is replaced by a "bone" with the height equal to the header's line-height.
+Each header is replaced by a "bone" with a height equal to the header's line-height.
 
-- The header is always replaced by the one line of the Skeleton "bone", even if the header consists of two lines.
-- The width of "bones" is 150px. In rare cases, you can increase it, if it is necessary.
+- The header is always replaced by a single line of the skeleton "bone," even if it spans two lines.
+- The width of the "bones" is set to 150px, and it can be increased in rare cases if necessary.
 
-| h#    | Appearance            |
-| ----- | --------------------- |
-| h1    | ![](static/h1.png)    |
-| h2-h3 | ![](static/h2-h3.png) |
-| h4    | ![](static/h4.png)    |
-| h5-h6 | ![](static/h5-h6.png) |
+@table-caption Skeleton appearance for all heading levels
 
-### Images
+| Heading level   | Appearance example    |
+| --------------- | --------------------- |
+| h1              | ![](static/h1.png)    |
+| h2-h3           | ![](static/h2-h3.png) |
+| h4              | ![](static/h4.png)    |
+| h5-h6           | ![](static/h5-h6.png) |
 
-Skeleton of images depends on their size:
+@## Image skeleton
 
-- Images of small size: user pictures, preview of advertising.
-- Images of big size: big screenshots on the landings, pictures in the blog and instructions.
+### Illustrations
 
-**Images of small size** are shown by the Skeleton “bone” corresponding to the image size, and are immediately replaced by the real image at loading.
+The Skeleton for illustrations depends on their size:
 
-| Step                            | Example                                |
-| ------------------------------- | -------------------------------------- |
-| 1. Skeleton                     | ![](static/pics.png)      |
-| 2. Replace by pictures and text | ![](static/pics-pics.png) |
+- For small-sized illustrations like user pictures or advertising previews, show a skeleton "bone" corresponding to the illustration size, and immediately replace it with the actual illustration upon loading.
 
-**Images of big size** are shown as follows:
+@table-caption Skeleton for small illustrations
 
-> In cases when it is possible from the technical point of view, skip the first step of the next scheme for large images.
+| Step                                 | Appearance example        |
+| ------------------------------------ | ------------------------- |
+| 1. Initial loading                   | ![](static/pics.png)      |
+| 2. Replace by illustrations and text | ![](static/pics-pics.png) |
 
-| Step                                                                                                  | Пример                                        |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| 1. Skeleton                                                                                           | ![](static/big-pic.png)      |
-| 2. Small pictures and skeleton are replaced by text and user picture, the large one is loaded blurred | ![](static/big-pic-blur.png) |
-| 3. Big picture is loaded fully                                                                        | ![](static/big-pic-pic.png)  |
+- For large-sized illustrations like screenshots on landings or blog pictures, consider using a multi-step loading process. Show small pictures and the Skeleton initially, replace them with text and user pictures, and then load the large image blurred before fully loading it.
+  
+@table-caption Skeleton for large illustrations
+
+| Step                        | Appearance example                |
+| --------------------------- | --------------------------------- |
+| 1. Initial loading          | ![](static/big-pic.png)      |
+| 2. Small illustrations and skeleton are replaced by text and user picture, the large one is loaded blurred | ![](static/big-pic-blur.png) |
+| 3. Big illustrations is fully loaded     | ![](static/big-pic-pic.png)  |
 
 ### Icons
 
-In most cases, don’t skeleton the icons. Either don’t show them or leave them in the `disabled` state.
+In most cases, avoid using a Skeleton for icons. Either hide them or leave them in a `disabled` state. If needed, a skeleton "bone" for an icon should match the icon's size, and there should be a multiple of 4 margin between multiple icons.
 
-If it's necessary to show a Skeleton "bone" instead of an icon, the size of "bone" should be equal to the size of the icon. If there are several icons, the distance between them should be a multiple of 4.
+@## Chart skeleton
 
-### Charts
+For charts, avoid showing axes and labels. Replace the legend with a Skeleton, and refer to [Chart principles](/data-display/d3-chart) for more detailed guidelines.
 
-General recommendations:
+@## Button and link skeletons
 
-- Don’t show axes and labels.
-- Replace legend with Skeleton.
+- If a button or link takes the user to another page, leave them as is during the initial loading of the page/widget.
+- If a button or link submits data or confirms user actions, set them to a `disabled` state while loading.
 
-For a detailed guide, see the [Chart principles](/data-display/d3-chart).
+> When you don’t know what type of button (`primary` or `secondary`) should be loaded, 
+show Skeleton instead of the button.
 
-### Buttons and links
-
-| Case                                                      | Description                                                                   |
-| --------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| 1. Buttons or link takes the user to another page.        | While initial loading of the page/widget, leave such buttons and links as is. |
-| 2. Buttons or link submits data or confirm user's action. | When loading such controls, **set such buttons and links to disabled state**. |
-
-> When you don’t know what type (primary or secondary) of the button should be loaded (depends on different extreme cases of UX script), skeleton the button.
-
-@## When to use
-
-Skeleton shows the structure of the page/component as long as it is loaded so that the user has a mental model of the loaded information. In other words, it is a simplified page view. Therefore, it isn’t recommended to skeleton every component on the page.
-
-Skeleton is recommended for using while/when:
-
-- initial loading;
-- the whole page is loading;
-- complex component is loading.
-
-> It isn’t recommended to use Skeleton for pages that are indexed by Google (for example, blog pages).
-
-@## Loaded data
-
-Data is more important than skeletons, animations and everything else. As soon as it is possible to show data, show it.
-
-- Data of widgets can be loaded asynchronously and not in sequence. The main thing is that the content of the widget is loaded simultaneously.
-- It is better to load the data in tables either at once or sequentially so that the lines don’t change their places.
-- In some cases, it is better to load data in groups: panel summary group, select group, etc.
-
-> If the loading takes more than 5 seconds, but it is necessary to show the already loaded data, it is recommended to use Skeleton paired with the [ProgressBar](/components/progress-bar/).
-
-@## What should be skeletonized?
-
-The information on the page can be divided into 2 categories:
-
-- static information (does not need Skeleton);
-- dynamic information (need Skeleton).
-
-### Static information (does not need Skeleton)
-
-- Text, data and components that don’t depend on user actions and product settings.
-- Product name.
-- Widget titles, tips.
-- Table headers.
-- Components of the action, which are buttons, inputs, toggles and pills.
-
-These components don’t require additional loading and can be displayed immediately.
-
-### Dynamic information (should be skeletonized)
-
-This information requires additional request and a long time to load. It varies depending on the user's actions and specific projects. In most cases, this group includes:
-
-- widgets;
-- tables;
-- charts, project statistics;
-- selects.
-
-In addition, the following components should never use Skeleton, as they should be loaded by the time the user interacts with them:
-
-- [NoticeBubble](/components/notice-bubble/);
-- [Dropdown](/components/dropdown/) (selects and dropdowns are loaded immediately. However, if the dropdown contains a table with data, you can skeleton it);
-- [Tooltip](/components/tooltip/);
-- [Modal](/components/modal/);
-- [Spin](/components/spin/).
-
-@## Use in different components
+@## Skeleton in complex components
 
 ### Table
 
-#### Primary tables
+**Primary tables**
 
 - Replace text and links with Skeleton.
-- Row controls are recommended to be disabled while initial loading of the table.
-- Table header and sorting should be active while initial loading of the table.
+- Disable row controls during the initial loading of the table.
+- Keep the table header and sorting active during the initial loading of the table.
 
 ![](static/table.png)
 
 ![](static/table-table.png)
 
-#### Secondary tables
+**Secondary tables**
 
 - Replace text and links with Skeleton.
-- The header should be active while initial loading of the table.
-- In widgets, where the maximum number of lines is 5, show them all.
+- Keep the header active during the initial loading of the table.
+- For widgets with a maximum of five text rows, show all of them.
 
 ![](static/table-2.png)
 
@@ -194,9 +175,11 @@ In addition, the following components should never use Skeleton, as they should 
 
 ### Chart
 
-- Pills should be active while initial loading of the table.
-- The legend is replaced by Skeleton “bones" of the same size. But if the legend values are known in advance, show it while initial loading.
-- The chart is replaced with the Skeleton corresponding to the chart type. See more in [Chart principles](/data-display/d3-chart).
+- Keep pills active during the initial loading of the table.
+- Replace the legend with skeleton "bones" of the same size. 
+If the legend values are known in advance, show them during the initial loading.
+- Replace the chart with the corresponding Skeleton based on the chart type. 
+For more details, refer to [Chart principles](/data-display/d3-chart).
 
 ![skeleton-chart](static/chart.png)
 
@@ -204,71 +187,76 @@ In addition, the following components should never use Skeleton, as they should 
 
 ### Summary
 
-- Don’t show trends, information and additional links.
-- Info icons should be active while initial loading.
-- Icons inside the PanelSummary are replaced with Skeleton “bones" with the same size.
-- The values are replaced with Skeleton “bones" with the size of value's line-height.
+- Avoid showing trends, additional information, and links during initial loading.
+- Keep `Info` icons active during initial loading.
+- Replace icons inside the Summary with Skeleton "bones" of the same size.
+- Replace the values with Skeleton "bones" matching the size of the value's line-height.
 
 ![skeleton-summary](static/summary.png)
 
 ### Pills
 
-Pills are never disabled. They are always active (even while initial loading) so the user can navigate to the tab he needs.
+Pills should never be disabled. They should always remain active, even during the initial loading, to let users navigate to their desired tabs.
 
-#### Pills with a number
+**Pills with counters**
 
-At the initial loading of the page, the counters in the pills can be skeletonized. For more information about the page loading, see [Web-performance](/patterns/web-performance/) 🙌🏻
+During the initial loading of the page, the counters in the pills can be displayed as skeletons. 
+For more information about page loading, refer to [Web-performance](/patterns/web-performance/).
 
 ![skeleton-pills](static/pills.png)
 
-#### Big Pills
+**Big pills**
 
-Skeletonize them same way as Summary.
+Skeletonize big pills similarly to the Summary.
 
-- Don’t show trends, information and additional links.
-- The values are replaced with Skeleton “bones" with the size of value's line-height.
+- Avoid showing trends, additional information, and links during initial loading.
+- Replace the values with skeleton "bones" matching the size of the value's line-height.
 
 ![skeleton-big-pills](static/big-pills.png)
 
 @## Usage in UX/UI
 
-**Use Skeleton only for displaying dynamic information.** Information that can be shown at once and will not change should be shown immediately.
+**Use Skeleton only for displaying dynamic information.** 
+Information that can be shown instantly and remains unchanged should be displayed immediately.
 
 ![skeleton-heading](static/heading-yes-no.png)
 
-Static information should be shown immediately. **It shouldn't be disabled**.
+**Static information should be shown immediately.** It shouldn't be disabled.
 
 ![skeleton-info](static/info-yes-no.png)
 
-**Use Skeleton to display the changing page titles**. For example, for the project name or widget title that depends on something.
+**Use Skeleton to display changing page titles**—for example, 
+the project name or widget title that depends on certain factors.
 
 ![skeleton-dynamic-info](static/dynamic-yes-no.png)
 
-**Skeleton only main information**, and don’t at all additional information. _For example, don’t show trends and tags while initial loading of the page._
+**Show only the main information** and avoid showing unnecessary additional details 
+during the initial loading of the page.
 
 ![skeleton-color](static/color-yes-no.png)
 
-**Don’t skeleton icons separately from the text or links they belong to**. The exception is for the icons which represents main information.
+**Avoid displaying icons separately from the text or links they belong to.** 
+The exception is for icons that represent critical information.
 
 ![skeleton-link](static/link-yes-no.png)
 
-**Buttons, checkboxes need to be disabled while initial loading of the table.**
+**Buttons and checkboxes need to be disabled during the initial loading of the table.**
 
 ![](static/table-yes-no.png)
 
-**Show Info icons and tooltips.** So during the initial loading, the user will be able to read the information about the loading data.
+**Show `Info` icons and tooltips** so that users can read loading information 
+during the initial loading.
 
 ![](static/tooltip-yes-no.png)
 
-Show dropdowns and selects immediately while initial loading.
+**Show dropdowns and selects immediately during initial loading.**
 
 ![](static/dropdown-yes-no.png)
 
-**Don’t add to much Skeleton "bones".** Add no more than three. Otherwise you'll increase the page load time.
+**Don’t add too many skeleton "bones."** Add no more than three. 
+Otherwise, you'll increase the page load time excessively.
 
 ![](static/count-yes-no.png)
-
-> This component is one of the components that displays interface's reaction to user actions in the interface. For general rules on such components, see the [Loading patterns](/patterns/loading-states/).
 
 @page skeleton-a11y
 @page skeleton-api

@@ -3,16 +3,16 @@ title: Example
 fileSource: skeleton
 ---
 
-@## Example of use for text downloading
+@## Text initial loading
 
 @example base
 
-@## Example of use with other elements
+@## Usage with other elements
 
 @example other
 
-@## Example for Charts
+@## Skeleton examples for charts
 
-You can use `h={100}` and `w={100}` to adjust the height and width of skeleton
+Use `h={100}` and `w={100}` to adjust the height and width of the skeleton.
 
 @example charts

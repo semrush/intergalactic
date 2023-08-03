@@ -26,7 +26,7 @@ Important points to keep in mind when presenting data as a bar chart:
 
 If you have two categories of values, you can place them next to each other – this makes it easier to track the trend of each of them. If there are more than two categories of values, represent the data as a different chart type (for example, a stacked bar chart).
 
-> It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data does not turn into mess.
+> It is recommended to make a minimum 20% margin between a group of columns. This is necessary so that the data doesn't turn into mess.
 
 ### Chart colors
 
@@ -44,7 +44,7 @@ On the other hand, color can focus attention on a specific portion of data. For 
 
 In some cases some of the values in the data can be very different from the majority of values. If you show this picture as it is, then large values will have all the attention, while the rest of the data will look like null.
 
-> **The bar has a min-height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
+> **The bar has a min-height of 2px.** It is necessary so that the column doesn't "disappear" if there are extremely large values next to it.
 
 ![](static/outlier.png)
 
@@ -99,7 +99,7 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 
 ### Start the axes from zero
 
-By comparing columns, we are actually comparing the length. If we don’t start the axis from zero, there will be a visual illusion. Check out the charts below. In the wrong case, the axis does not start from zero, and it seems that the value on the right is almost half as large as the value on the left. However, this isn’t true.
+By comparing columns, we are actually comparing the length. If we don’t start the axis from zero, there will be a visual illusion. Check out the charts below. In the wrong case, the axis doesn't start from zero, and it seems that the value on the right is almost half as large as the value on the left. However, this isn’t true.
 
 ![](static/deception-yes-no.png)
 

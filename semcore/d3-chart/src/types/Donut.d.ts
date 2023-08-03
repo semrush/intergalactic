@@ -16,7 +16,7 @@ export type DonutProps = Context & {
   outerRadius?: number;
   /** Semi donut */
   halfsize?: boolean;
-  /** Animation duration in ms
+  /** Animation duration in ms. Set `0` to disable animation.
    * @default 500
    */
   duration?: number;

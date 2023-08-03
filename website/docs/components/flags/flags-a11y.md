@@ -3,7 +3,7 @@ title: A11y
 a11y: AA
 ---
 
-Flags is a straight-forward component that does not require special compliance for accessibility.
+Flags is a straight-forward component that doesn't require special compliance for accessibility.
 
 @## Other recommendations
 

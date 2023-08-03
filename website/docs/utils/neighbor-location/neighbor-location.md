@@ -58,7 +58,7 @@ You can group input, select, and button.
 
 @## Adding a wrapper
 
-By default, `<NeighborLocation/>` does not create an HTML wrapper, but you can pass the component tag you want.
+By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pass the component tag you want.
 
 > For the correct type mapping in the TC, you must also pass the interface.
 > `<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`

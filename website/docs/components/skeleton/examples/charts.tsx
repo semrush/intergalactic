@@ -17,7 +17,7 @@ const Demo = () => {
     <>
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>LineChartSkeleton</Card.Title>
+          <Card.Title>LineChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <LineChartSkeleton />
@@ -26,7 +26,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>LineChartSkeleton + type=monotone</Card.Title>
+          <Card.Title>LineChart skeleton (type=monotone)</Card.Title>
         </Card.Header>
         <Card.Body>
           <LineChartSkeleton type='monotone' />
@@ -35,7 +35,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>AreaChartSkeleton</Card.Title>
+          <Card.Title>AreaChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <AreaChartSkeleton />
@@ -44,7 +44,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>AreaChartSkeleton + type=monotone</Card.Title>
+          <Card.Title>AreaChart skeleton (type=monotone)</Card.Title>
         </Card.Header>
         <Card.Body>
           <AreaChartSkeleton type='monotone' />
@@ -53,7 +53,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>BarChartSkeleton</Card.Title>
+          <Card.Title>BarChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <BarChartSkeleton />
@@ -62,7 +62,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>BarChartSkeleton + layout=vertical</Card.Title>
+          <Card.Title>BarChart skeleton (layout=vertical)</Card.Title>
         </Card.Header>
         <Card.Body>
           <BarChartSkeleton layout='vertical' />
@@ -71,7 +71,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>HistogramChartSkeleton</Card.Title>
+          <Card.Title>HistogramChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <HistogramChartSkeleton />
@@ -80,7 +80,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>HistogramChartSkeleton + layout=vertical</Card.Title>
+          <Card.Title>HistogramChart skeleton (layout=vertical)</Card.Title>
         </Card.Header>
         <Card.Body>
           <HistogramChartSkeleton layout='vertical' />
@@ -89,7 +89,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>DonutChartSkeleton</Card.Title>
+          <Card.Title>DonutChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <DonutChartSkeleton />
@@ -98,7 +98,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>DonutChartSkeleton + halfsize</Card.Title>
+          <Card.Title>DonutChart skeleton (halfsize)</Card.Title>
         </Card.Header>
         <Card.Body>
           <DonutChartSkeleton halfsize />
@@ -107,7 +107,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>ScatterPlotChartSkeleton</Card.Title>
+          <Card.Title>ScatterPlotChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <ScatterPlotChartSkeleton />
@@ -116,7 +116,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>BubbleChartSkeleton</Card.Title>
+          <Card.Title>BubbleChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <BubbleChartSkeleton />
@@ -125,7 +125,7 @@ const Demo = () => {
 
       <Card mb={5}>
         <Card.Header>
-          <Card.Title>BubbleChartSkeleton</Card.Title>
+          <Card.Title>VennChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <VennChartSkeleton />
@@ -134,7 +134,7 @@ const Demo = () => {
 
       <Card>
         <Card.Header>
-          <Card.Title>RadialTreeChartSkeleton</Card.Title>
+          <Card.Title>RadialTreeChart skeleton</Card.Title>
         </Card.Header>
         <Card.Body>
           <RadialTreeChartSkeleton />

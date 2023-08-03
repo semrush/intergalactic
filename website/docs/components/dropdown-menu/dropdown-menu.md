@@ -90,7 +90,7 @@ The dropdown list can be separated by [Divider](/components/divider/).
 
 ### Title
 
-List item can be a title. It does not have `hover` or `active` state and it isn’t clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
+List item can be a title. It doesn't have `hover` or `active` state and it isn’t clickable. The title always has `font-weight: var(--bold)` and the same size as the list items have.
 
 ![](static/headings.png)
 

@@ -5,7 +5,7 @@ fileSource: popper
 
 @## Popper
 
-This is a wrapper for creating a context, which does not create additional nodes in the house.
+This is a wrapper for creating a context, which doesn't create additional nodes in the house.
 
 ```jsx
 import Popper from '@semcore/ui/popper';
