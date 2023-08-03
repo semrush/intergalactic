@@ -81,7 +81,7 @@ Include/Exclude filters are linked, so user can enter only 300 keywords in both 
 
 ### Limit for keyword length
 
-The keyword cannot be longer than 255 characters. If a keyword does not fit on a line, wrap it to the next line. Highlight such a long keyword, show a tooltip with a description of the error.
+The keyword cannot be longer than 255 characters. If a keyword doesn't fit on a line, wrap it to the next line. Highlight such a long keyword, show a tooltip with a description of the error.
 
 ![filter validation](static/validation-2.png)
 

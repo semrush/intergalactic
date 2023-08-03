@@ -119,12 +119,12 @@ Show tooltips with values while hovering over the minitrend if necessary.
 You can "hide" more detailed information (a whole widget with a full chart, for example) in the minitrend and make it clickable if:
 
 - there is no need to show all charts at the same time;
-- user flow does not provide for frequent analysis of charts.
+- user flow doesn't provide for frequent analysis of charts.
 
 #### Important tips
 
 - The default period of the minitrend and the detailed chart must coincide.
-- Changing the period on the chart visually does not affect the minitrend in the metric.
+- Changing the period on the chart visually doesn't affect the minitrend in the metric.
 
 #### Mechanics
 

@@ -62,7 +62,7 @@ The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
 @## Legend and axes
 
-As a rule, a histogram does not need a legend. You only need to clearly name the chart and in some cases you can add names to the axes.
+As a rule, a histogram doesn't need a legend. You only need to clearly name the chart and in some cases you can add names to the axes.
 
 ![axes](static/axes.png)
 
@@ -80,7 +80,7 @@ In some cases some of the values in our data are very different from the majorit
 
 If you show this picture as it is, with a zero value on the `Y-axis`, then large values will draw all the attention to themselves, while the rest of the data will appear to be zero.
 
-> **The bar has a minimum height of 2px.** It is necessary so that the column does not "disappear" if there are extremely large values next to it.
+> **The bar has a minimum height of 2px.** It is necessary so that the column doesn't "disappear" if there are extremely large values next to it.
 
 ![outliers in histogram](static/outliers.png)
 
@@ -145,7 +145,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 - Start the columns from zero.
 - By comparing columns, we are actually comparing the length. If we don’t start the scale from zero, there will be a visual illusion.
 
-Check out the charts below. In the wrong case, the scale does not start from zero, and it seems that the `Y value` is almost half as large as the `X value`. However, this isn’t true.
+Check out the charts below. In the wrong case, the scale doesn't start from zero, and it seems that the `Y value` is almost half as large as the `X value`. However, this isn’t true.
 
 ![](static/deception-yes-no.png)
 

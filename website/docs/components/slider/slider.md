@@ -6,104 +6,120 @@ tabName: Design
 
 @## Description
 
-**Slider** is a component for entering values from the available range.
+**Slider** is a component designed for choosing values within a specified range.
 
-In [practical point of view](https://www.nngroup.com/articles/sliders-knobs/), a slider with a large range of values instead of a few fixed parameters is considered as a continuous control because that is how it feels in the user experience.
+According to [Nielsen Norman Group](https://www.nngroup.com/articles/sliders-knobs/), 
+a slider with a wide range of values offers a smoother and continuous control experience for the user 
+compared to controls with only a few fixed options.
 
 **Use it when:**
 
-- you need to visualize a range from which the user can select an approximate value;
-- you need to additionally visualize the maximum range of the usual [InputNumber](/components/input-number/);
-- the user needs to specify an approximate value (for example, a change of the color brightness).
+- You need to visualize a range from which the user can select an approximate value.
+- You want to visualize the maximum range of a usual [InputNumber](/components/input-number/).
+- The user needs to specify an approximate value, such as adjusting color brightness.
 
 @## Component composition
+
+![](static/slider-composition.png)
+
+The Slider component consists of the following:
 
 - `Slider.Knob`
 - `Slider.Bar`
 - Value
-- `Slider.Options` with `Slider.Item` inside (optional)
+- (Optional) `Slider.Options` with `Slider.Item` inside.
 
-![](static/scheme.png)
-
-> When designing such kind of an input, keep in mind the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law). It describes the dependence of the time for performing an action on the thickness and width of the horizontal control with which this action can be performed. So the larger the slider knob and the larger the bar itself, the easier and faster it is to manipulate it.
+> When designing this type of input, consider the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law), 
+> which describes how the time taken to perform an action depends on the thickness and width of the horizontal control used for that action. 
+> Larger slider knobs and bars make using sliders easier and faster.
 
 @## Sizes
 
 Default component sizes:
 
-- `bar height – 4px`
-- `knob size – 20px * 20px`
+- Bar height: 4px
+- Knob size: 20px * 20px
 
-@## Default styles
+@## Styles
 
 Default component styles:
 
-- bar color – `--progress-bar-bg`
-- progress and knob color – `--control-primary-info`
+- Bar color: `--progress-bar-bg`
+- Progress and knob color: `--control-primary-info`
 
 ![](static/default.png)
 
 @## Value labels
 
-You can show values under the input.
+You can display values under the input.
 
 ![](static/value-labels.png)
 
 ![](static/value-labels2.png)
 
-> For mobile devices, show values or tooltips with values **OVER the input**. When using this component on touch devices, the values will fall under the finger when manipulating the slider knob.
+> For mobile devices, display values or tooltips with values above the input. 
+> On touch devices, the values should appear above the finger while manipulating the slider knob.
 
 @## Interaction
 
 ### States
 
-| State        | Description                                                                                                                                                 | Appearance                                                              |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Default      | Knob size is `20px * 20px`.                                                                                                                                 | ![](static/default.png)                            |
-| Hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. Change the cursor to `pointer`. | ![](static/bar-hover.png) ![](static/hover.png) |
-| Active/focus | The slider knob scales to `30px * 30px`. By clicking on the bar anywhere, the slider is pulled up and gets the `active` state.                              | ![](static/active.png)                                     |
+@table-caption Slider states
+
+| State        | Description         | Appearance example         |
+| ------------ | ------------------- | -------------------------- |
+| Default      | Knob size is `20px * 20px`.        | ![](static/default.png)      |
+| Hover        | The color of the bar changes to `--progress-bar-bg-hover`. The slider knob changes color to `--control-primary-info-hover`. The cursor changes to `pointer`. | ![](static/bar-hover.png) ![](static/hover.png) |
+| Active/Focus | The slider knob scales to `30px * 30px`. Clicking anywhere on the bar pulls up the slider and sets it to the `active` state.   | ![](static/active.png)      |
 
 ### Linked input
 
-The easiest way to solve the problem of entering an invalid value is to use an input next, so users can enter the exact value.
+The easiest way to avoid invalid values is to provide an input alongside the slider, 
+letting users enter the exact value.
 
-This design helps to reduce errors associated with homing (moving the hand from mouse to keyboard, and vice versa). When doing this, make sure that the keyboard shortcuts can still be used while the input has the focus state.
+This design reduces errors associated with switching between mouse and keyboard. 
+Ensure that keyboard shortcuts can still be used when the input is focused.
 
-- If the user enters a value through an input associated with the slider, the hover isn’t applied to the slider. The slider knob moves depending on the value entered into the input.
+- If the user enters a value through the associated input, 
+the hover effect is not applied to the slider. 
+The slider knob moves according to the value entered in the input.
 
-| State        | Description                                                                                                 | Appearance                                           |
-| ------------ | ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Active/focus | By clicking on the input, the slider knob is pulled to the corresponding value and gets the `active` state. | ![](static/linked-input.png) |
+@table-caption Slider with linked input in active state
 
-- If the input has a maximum value, and the user entered a value greater than the maximum, show a warning tooltip with an appropriate message.
+| State        | Description          | Appearance example   |
+| ------------ | -------------------- | -------------------- |
+| Active/Focus | Clicking on the input pulls the slider knob to the corresponding value and sets it to the `active` state. | ![](static/linked-input.png) |
+
+- If the input has a maximum value, and the user enters a value greater than the maximum, 
+show a warning tooltip with an appropriate message.
 
 ![](static/maximum.png)
-
-@## Keyboard support
-
-- `Tab` moves focus to the slider.
-- Keyboard arrows, '←' and '→', move the slider knob to the step specified in the input.
-- `Esc` removes focus from the input.
-
-> If the slider knob has focus, the user can move it with the keyboard arrows – '←', '→'.
 
 @## Usage in UX/UI
 
 ### When to use the slider
 
-This input works best in cases where the user isn’t interested in entering a specific value, but choosing an approximate value.
+This input works best when the user doesn't need to enter a specific value 
+but wants to choose an approximate value.
 
-As the example above was given – changing color brightness or volume are the main cases for using slider component.
+As shown in the earlier example, changing color brightness or volume 
+are the main use cases for the slider component.
 
-### Use on mobile devices
+### Usage on mobile devices
 
-Consider the context of the interface. It can be difficult for a user to click and drag a control to an exact location on mobile devices. Many users accidentally move the slider knob off the value they were trying to select when they lift their finger off the screen, as NNGroup writes.
+Consider the context of the interface. 
+Clicking and dragging a control to an exact location on mobile devices can be challenging. 
+Many users accidentally move the slider knob off the value they were trying to select 
+when lifting their finger off the screen, [as mentioned by Nielsen Norman Group](https://www.nngroup.com/articles/sliders-knobs/).
 
 ### Input values placement
 
-Consider how the user will interact with the control. Don’t place value labels under the input on mobile devices. Otherwise, when using such kind of control on mobile devices, the user will close all the values with his finger when interacting with it.
+Consider how users will interact with the control. 
+Avoid placing value labels under the input on mobile devices, 
+as this may obscure them when users interact with the control.
 
-To keep the labels of such input visible when interacting with it, place them either on the left/right, or above.
+To ensure the labels remain visible during interaction, 
+place them either to the left/right or above the slider.
 
 ![](static/mobile.png)
 

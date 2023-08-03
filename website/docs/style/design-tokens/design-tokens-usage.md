@@ -40,7 +40,7 @@ For example, compare token for primary neutral background:
 
 ![scheme of tokens naming structure: --{theme-name}-{category}-{priority}-{context}-{invert}-{state}](static/token-naming.png)
 
-> The token name does not have to contain all the elements of the naming structure. The naming structure creates a system so you can easily name the new token, and it will fit into the design system.
+> The token name doesn't have to contain all the elements of the naming structure. The naming structure creates a system so you can easily name the new token, and it will fit into the design system.
 
 @## Tokens usage
 

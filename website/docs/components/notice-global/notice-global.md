@@ -31,7 +31,7 @@ To be considered a notice, it must meet four specific criteria. If it fails to m
 
 ![](static/notice-global-composition.png)
 
-NoticeGlobal component consists of:
+The NoticeGlobal component consists of:
 
 1. `NoticeGlobal.Content`
 2. `NoticeGlobal.CloseIcon` (optional);

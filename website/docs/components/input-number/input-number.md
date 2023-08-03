@@ -120,7 +120,7 @@ In certain cases, when you need to display the steppers as buttons with `Plus` a
 
 If the user enters an invalid value (below the minimum or above the maximum), the value will be reset to the minimum or maximum value, respectively, when input loses the focus (`onBlur`).
 
-If the input does not have a defined range of acceptable values, no validation will be applied, and the entered value will be retained.
+If the input doesn't have a defined range of acceptable values, no validation will be applied, and the entered value will be retained.
 
 ### Fractional numbers
 

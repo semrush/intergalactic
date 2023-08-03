@@ -17,7 +17,7 @@ tabName: Design
 
 ![](static/pills-composition.png)
 
-Pills component consists of:
+The Pills component consists of:
 
 1. `Pill.Item`
 2. `Pill.Item.Addon`

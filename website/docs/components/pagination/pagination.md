@@ -16,7 +16,7 @@ Using pagination is highly recommended for tables and long lists of data that us
 
 ![](static/pagination-composition.png)
 
-**Pagination consists of:**
+The Pagination consists of:
 
 1. `Pagination.FirstPage`
 2. `Pagination.NextPage`

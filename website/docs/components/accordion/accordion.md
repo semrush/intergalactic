@@ -23,7 +23,7 @@ tabName: Design
 
 ![](static/accordion-composition.png)
 
-The accordion consists of:
+The Accordion consists of:
 
 - `Accordion.Item`
 - `Accordion.Item.Toggle`

@@ -16,7 +16,7 @@ tabName: Design
 
 @## Appearance
 
-The component consists of:
+Component consists of:
 
 - wrapper over an input;
 - trigger (it can be any necessary component - text or tag, for example);

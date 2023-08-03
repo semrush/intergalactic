@@ -11,10 +11,10 @@ It is required when there is no space or possibility to put, for example, [hint 
 
 @## Appearance
 
-The informer consists of:
+The Informer pattern consists of:
 
-- Info icon with `margin-left: 4px`;
-- [tooltip](/components/tooltip/) with a hint message (appears when you hover over the icon).
+- `Info` icon with `margin-left: 4px`.
+- [Tooltip](/components/tooltip/) with a hint message (appears when you hover over the icon).
 
 > The Info icon shouldn't be used with the h1 title. This is usually the title of hero blocks, etc. Hiding hints in an info icon next to the main page's title is strange, isn't it? 😎
 
