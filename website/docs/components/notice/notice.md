@@ -32,7 +32,7 @@ It must fulfill four criteria to be considered a notice. Let's compare it to [No
 
 ![](static/notice-composition.png)
 
-Notice component consists of:
+The Notice component consists of:
 
 1. `Notice.Content`
 2. `Notice.Label`. It can be an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
@@ -139,7 +139,7 @@ The feedback notice deviates from the regular notice as it is attached to the he
 
 ### Advertising
 
-The advertising notice is designed to capture the user's attention more effectively than a notice with default theme. It should be used when announcing features, updated versions, relocations, limited-time promotional actions, and similar purposes. If your product does not require such emphasis, use a notice with the `info` theme.
+The advertising notice is designed to capture the user's attention more effectively than a notice with default theme. It should be used when announcing features, updated versions, relocations, limited-time promotional actions, and similar purposes. If your product doesn't require such emphasis, use a notice with the `info` theme.
 
 The advertising notice differs from the default notice through the inclusion of advertising illustrations and the option to incorporate controls like input fields and select dropdowns to engage users quickly.
 

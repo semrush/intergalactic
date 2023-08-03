@@ -5,7 +5,7 @@ fileSource: radio
 
 @## RadioGroup example
 
-RadioGroup acts as a controlling component and does not have an actual HTML element beneath it.
+RadioGroup acts as a controlling component and doesn't have an actual HTML element beneath it.
 
 @example group
 

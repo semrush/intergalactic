@@ -20,13 +20,13 @@ The list below describes roles and attributes that component already has.
 | Role     | Attribute              | Element    | Usage                                                                                                                                       |
 | -------- | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `button` |                        | `div`, `a` | Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`. |
-|          | `tabindex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it does not have a `href` attribute.                          |
+|          | `tabindex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it doesn't have a `href` attribute.                          |
 |          | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button isn’t pressed.                                                       |
 |          | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                                           |
 
 @## Considerations for developers
 
-- A `<button>` tag does not need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
+- A `<button>` tag doesn't need anything special to work. Use `<button>` when you can, but it is possible to use other elements as long as you add role="button" and add JavaScript to replicate the button functionality.
 - Ensure visual labels and programmatic labels match.
 - Just like links, you can add `class="visuallyhidden"` with descriptive text to give more context to the button's purpose.
 - Usually, SVG icons should be hidden from screen readers on a button that has a text label.

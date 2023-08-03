@@ -5,7 +5,7 @@ fileSource: neighbor-location
 
 @## NeighborLocation
 
-Root wrapper-component does not create a node but provides a context for defining neighbors.
+Root wrapper-component doesn't create a node but provides a context for defining neighbors.
 
 ```jsx
 import NeighborLocation from '@semcore/ui/neighbor-location';

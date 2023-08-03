@@ -6,7 +6,7 @@ We have templates for two types of issues: a Feature Request and a Bug. If you w
 
 Try to follow this advice to fill a great issue:
 
-- Check that issue tracker does not contain issues similar to your.
+- Check that issue tracker doesn't contain issues similar to your.
 - Use a clear and descriptive title for the issue to identify the suggestion.
 - Provide a step-by-step description of the suggested enhancement in as many details as possible.
 - Provide specific examples to demonstrate the steps. Include copy/pasteable snippets which you use in those examples, as Markdown code blocks.
