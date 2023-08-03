@@ -7,7 +7,7 @@ docs: true
 
 @## Chart widget anatomy
 
-In our interfaces, data is usually placed in [Card](/components/card/), which consists of:
+In our interfaces, data is usually placed in [Card](/components/card/), which consists of the following:
 
 ![widget-scheme](static/widget-paddings.png)
 

@@ -32,7 +32,7 @@ It must fulfill four criteria to be considered a notice. Let's compare it to [No
 
 ![](static/notice-composition.png)
 
-The Notice component consists of:
+Component consists of the following:
 
 1. `Notice.Content`
 2. `Notice.Label`. It can be an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);

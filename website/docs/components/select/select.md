@@ -14,7 +14,7 @@ The component is composed of a trigger button (explained in this guide) and the 
 
 ![](static/select-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `Select.Trigger`
 - `Select.Menu`

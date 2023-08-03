@@ -2,6 +2,6 @@
 title: Example
 ---
 
-@## ConfirmDialog example
+@## Confirm modal example
 
 @example confirm-dialog

@@ -19,12 +19,12 @@ tabName: Design
 
 @## Pattern composition
 
-Pattern consists of:
+Pattern consists of the following:
 
-- metric's title;
-- additional information about date, period, location or database of the data;
-- metric;
-- additional information related to the metric (difference in values for a certain period, trend, etc. optional information).
+- Metric's title
+- Additional information about date, period, location or database of the data
+- Metric
+- Additional information related to the metric (difference in values for a certain period, trend, etc. optional information)
 
 ![](static/summary-metric.png)
 

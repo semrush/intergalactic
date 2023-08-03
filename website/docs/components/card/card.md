@@ -14,7 +14,7 @@ tabName: Design
 
 ![](static/card-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `Card.Header`
 - `Card.Body`

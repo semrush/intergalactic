@@ -21,7 +21,7 @@ Use the carousel as an additional highlight of important website features and in
 
 ![](static/carousel-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - Container for items: `Carousel.Container`
 - Slide with content: `Carousel.Item`. Slide contains image, video or another type of information
