@@ -19,7 +19,7 @@ tabName: Design
 
 ![](static/tabline-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `TabLine.Item`
 - `TabLine.Item.Addon`

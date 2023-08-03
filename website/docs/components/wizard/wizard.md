@@ -23,7 +23,7 @@ tabName: Design
 
 ![](static/wizard-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `Wizard.Sidebar`
 - `Wizard.Stepper`

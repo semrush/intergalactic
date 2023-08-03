@@ -19,7 +19,7 @@ tabName: Design
 
 ![](static/tabpanel-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `TabPanel.Item`
 - `TabPanel.Item.Addon`

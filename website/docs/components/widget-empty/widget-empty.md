@@ -14,7 +14,7 @@ Widgets have "empty" states, when there is no data to show. In such cases, the W
 
 ![](static/widgetempty-composition.png)
 
-Component consists of:
+Component consists of the following:
 
 - `WidgetEmpty.Title`
 - `WidgetEmpty.Description`
