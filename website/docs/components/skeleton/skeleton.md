@@ -116,22 +116,22 @@ The Skeleton for illustrations depends on their size:
 
 - For small-sized illustrations like user pictures or advertising previews, show a skeleton "bone" corresponding to the illustration size, and immediately replace it with the actual illustration upon loading.
 
-    @table-caption Skeleton for small illustrations
+@table-caption Skeleton for small illustrations
 
-    | Step                                 | Appearance example        |
-    | ------------------------------------ | ------------------------- |
-    | 1. Initial loading                   | ![](static/pics.png)      |
-    | 2. Replace by illustrations and text | ![](static/pics-pics.png) |
+| Step                                 | Appearance example        |
+| ------------------------------------ | ------------------------- |
+| 1. Initial loading                   | ![](static/pics.png)      |
+| 2. Replace by illustrations and text | ![](static/pics-pics.png) |
 
 - For large-sized illustrations like screenshots on landings or blog pictures, consider using a multi-step loading process. Show small pictures and the Skeleton initially, replace them with text and user pictures, and then load the large image blurred before fully loading it.
+  
+@table-caption Skeleton for large illustrations
 
-    @table-caption Skeleton for large illustrations
-
-    | Step                        | Appearance example                |
-    | --------------------------- | --------------------------------- |
-    | 1. Initial loading          | ![](static/big-pic.png)      |
-    | 2. Small illustrations and skeleton are replaced by text and user picture, the large one is loaded blurred | ![](static/big-pic-blur.png) |
-    | 3. Big illustrations is fully loaded     | ![](static/big-pic-pic.png)  |
+| Step                        | Appearance example                |
+| --------------------------- | --------------------------------- |
+| 1. Initial loading          | ![](static/big-pic.png)      |
+| 2. Small illustrations and skeleton are replaced by text and user picture, the large one is loaded blurred | ![](static/big-pic-blur.png) |
+| 3. Big illustrations is fully loaded     | ![](static/big-pic-pic.png)  |
 
 ### Icons
 
