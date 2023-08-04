@@ -1,3 +1,9 @@
+## [15.2.4] - 2023-08-04
+
+### @semcore/ellipsis
+
+- **Fixed** Component build output was corrupted after the previous change.
+
 ## [15.2.3] - 2023-08-02
 
 ### @semcore/ellipsis
