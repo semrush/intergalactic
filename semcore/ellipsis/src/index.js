@@ -1,2 +1,2 @@
-export { default, EllipsisProps } from './Ellipsis';
+export { default } from './Ellipsis';
 export { useResizeObserver } from './useResizeObserver';

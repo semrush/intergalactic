@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.1.3] - 2023-08-04
+
+### Fixed
+
+- Component build output was corrupted after the previous change.
+
 ## [2.1.2] - 2023-08-02
 
 ### Fixed
