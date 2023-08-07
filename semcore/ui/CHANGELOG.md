@@ -1,3 +1,9 @@
+## [15.3.0] - 2023-08-07
+
+### @semcore/utils
+
+- **Fixed** Fixed core invalid peer dependencies warning. 
+
 ## [15.2.4] - 2023-08-04
 
 ### @semcore/ellipsis
