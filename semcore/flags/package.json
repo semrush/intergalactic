@@ -18,7 +18,7 @@
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "2.0.0",
+    "@semcore/core": "^2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
