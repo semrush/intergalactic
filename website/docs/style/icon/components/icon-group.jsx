@@ -23,13 +23,11 @@ function modalLayout() {
 class PanelChangeIcon extends PureComponent {
   state = { action: 'copy' };
   get SIZE() {
-    return this.props.old
-      ? { L: 44, M: 22, S: 16, XS: 12, XXS: 8, 32: 32, 20: 20 }
-      : { L: 24, M: 16 };
+    return { L: 24, M: 16 };
   }
 
   renderIconSize = (size, index) => {
-    const { name, old, json: dataIcons, icon: Icon } = this.props;
+    const { name, json: dataIcons, icon: Icon } = this.props;
     const { action } = this.state;
 
     const iconSize = this.SIZE[size.toUpperCase()] || '';
@@ -47,7 +45,7 @@ class PanelChangeIcon extends PureComponent {
         nameSvg = name.replace(/([A-Z])/g, '/$1').slice(1);
       }
 
-      const url = `semcore/icon/${old ? 'svg' : 'svg-new'}/${includeGroupName}/${nameSvg}.svg`;
+      const url = `semcore/icon/svg/${includeGroupName}/${nameSvg}.svg`;
       return (
         <Tooltip title='Download!' key={index}>
           <div className={styles.previewChangeIcon}>
@@ -73,8 +71,7 @@ class PanelChangeIcon extends PureComponent {
     const haveSizeIcon = filterIcons.size.length > 1;
     const includeName = haveSizeIcon ? `${name}${size.toUpperCase()}` : name;
     const includeSize = haveSizeIcon ? `/${size}` : '';
-    const includeLib = old ? '/lib' : '';
-    const importText = `import ${includeName} from '@semcore/ui/icon${includeLib}${includeGroupName}/${name}${includeSize}'`;
+    const importText = `import ${includeName} from '@semcore/ui/icon${includeGroupName}/${name}${includeSize}'`;
 
     return (
       <Copy copiedToast='Copied!' toCopy={importText} key={index} trigger='click'>
@@ -134,7 +131,7 @@ class PanelChangeIcon extends PureComponent {
   }
 }
 
-export const ListIcons = ({ data, icons, json, old = false }) => (
+export const ListIcons = ({ data, icons, json }) => (
   <div className={styles.list}>
     {data.map((icon, index) => {
       const Icon = icons[icon.name];
@@ -154,7 +151,7 @@ export const ListIcons = ({ data, icons, json, old = false }) => (
             const node = modalLayout();
             if (!node) return;
             ReactDOM.render(
-              <PanelChangeIcon name={icon.name} icon={icons[icon.name]} old={old} json={json} />,
+              <PanelChangeIcon name={icon.name} icon={icons[icon.name]} json={json} />,
               node,
             );
           }}
