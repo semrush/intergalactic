@@ -1026,7 +1026,7 @@ describe('Bar', () => {
       const width = 500;
       const height = 300;
 
-      const xScale = scaleBand()
+      const xScale = scaleBand<number>()
         .range([MARGIN, width - MARGIN])
         .domain(data.map((d) => d.category))
         .paddingInner(0.4)
