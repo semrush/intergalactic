@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2023-09-08
+
+### Changed
+
+- Updated d3 dependencies to resolve peerDependencies mismatch.
+
 ## [3.3.1] - 2023-08-08
 
 ### Changed

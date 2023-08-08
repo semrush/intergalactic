@@ -1,3 +1,9 @@
+## [15.4.0] - 2023-08-09
+
+### @semcore/d3-chart
+
+- **Changed** Updated d3 dependencies to resolve peerDependencies mismatch.
+
 ## [15.3.3] - 2023-08-08
 
 ### @semcore/i18n-unplugin
