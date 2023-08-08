@@ -1,3 +1,9 @@
+## [15.3.1] - 2023-08-08
+
+### @semcore/d3-chart
+
+- **Changed** Added `exports` fields for better nextjs support.  
+
 ## [15.3.0] - 2023-08-07
 
 ### @semcore/utils
