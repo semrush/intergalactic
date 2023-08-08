@@ -1,3 +1,9 @@
+## [15.3.3] - 2023-08-08
+
+### @semcore/i18n-unplugin
+
+- **Changed** Updated `@semcore/core` peer dependency from major 1 to major 2.
+
 ## [15.3.1] - 2023-08-08
 
 ### @semcore/d3-chart
@@ -4948,7 +4954,7 @@
 ### @semcore/typography
 
 - **Fixed** Исправлены не работающие props fontSize и lineHeight у компонента Text
-
+g
 ### @semcore/utils
 
 - **Added** Добавлена функция brightness в color для вычисления контраста

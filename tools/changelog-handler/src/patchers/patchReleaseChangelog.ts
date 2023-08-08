@@ -33,9 +33,13 @@ export const patchReleaseChangelog = async (
     exportedPackages.map((packageName) => [packageName, true]),
   );
 
-  const previousVersionIndex = releaseChangelog.changelogs.findIndex(
+  let previousVersionIndex = releaseChangelog.changelogs.findIndex(
     (changelog) => changelog.version === previousVersionId,
   );
+
+  if (previousVersionIndex === -1) {
+    previousVersionIndex = 0;
+  }
 
   const componentChanges = componentChangelogs.map(({ changelogs, package: component }) =>
     changelogs
