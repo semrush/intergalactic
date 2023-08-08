@@ -2134,7 +2134,7 @@ importers:
         specifier: 5.2.0
         version: link:../grid
       '@semcore/i18n-unplugin':
-        specifier: 0.0.5
+        specifier: 0.0.6
         version: link:../i18n-unplugin
       '@semcore/icon':
         specifier: 4.3.0
