@@ -1,0 +1,219 @@
+---
+title: DataTable code and API
+fileSource: data-table
+tabName: Example
+---
+
+The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and doesn't use native tables.
+
+@## Simple usage example
+
+To build a table, we must provide columns with titles `<DataTable.Column name={name}/>` and data `data={data}`.
+
+> `<DataTable.Column/>` must be a child component of `<DataTable.Head/>`
+
+@example base
+
+@## Scroll in the table
+
+`<DataTable/>`, `<DataTable.Head/>`, `<DataTable.Body/>` are inherited from the `Box` component and accept all its parameters. `<DataTable/>` is a wrapper for `<DataTable.Head/>`, `<DataTable.Body />`, where scrolls are implemented.
+
+> If you don't see horizontal scrolling in the example, reduce the window size.
+
+@example table-scroll
+
+@## Customizing the header
+
+You can use `children` to insert tooltips, selectors, and other components in the header.
+
+@example custom-header
+
+@## The size of the columns
+
+Columns are inherited from the `Flex` component and accept all its parameters. With `flex`, `wMin`, `wMax`, you can flexibly adjust the column width.
+
+@example width-header
+
+@## The alignment of the columns
+
+Since columns and cells are inherited from the `Flex` component, you can use `justifyContent/alignItems` to align the column to the desired edge. This property is automatically applied to table cells.
+
+@example align-header
+
+@## Sorting
+
+If you can sort by column, then:
+
+1. Specify the `sortable` property on the column;
+2. Subscribe to `onSortChange`;
+3. Pass the `sort` property to the table.
+4. Sort data, provided to `data` property.
+
+@example sort
+
+@## Fixed header
+
+To fix the table header, use the `<Box position="sticky" top={top} />` component.
+
+> Set `zIndex=2` for correct display.
+
+@example sticky
+
+@## Fixed columns
+
+To fix table columns, pass the `fixed` property to `<DataTable.Column/>`.
+
+> If you don't see fixed columns in the example, reduce the window size.
+
+@example fixed
+
+@## Multi-level header
+
+To create a multi-level header, insert columns into each other. However, the `name` isn’t applicable for the group column.
+
+@example multi-header
+
+@## Adding additional elements to the header
+
+If you add custom components to `<DataTable.Head/>`, they will be inserted at the end of the header.
+
+@example add-head
+
+@## Header separation
+
+Sometimes we need to move the table header outside of the table, this can be done using the portal. All functionality will work, the table body will adjust to the size of the header.
+
+@example portal-head
+
+@## Access to Row
+
+To apply some properties to a table row, you need to define `<DataTable.Row/>`. You can use multiple `<DataTable.Row/>` to separate the business logic.
+
+> `<DataTable.Row/>` must be a direct child component of `<DataTable.Body/>`.
+>
+> It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
+
+@example row
+
+@## Access to Cell
+
+To apply some properties to a table cell, you need to define `<DataTable.Cell/>` with the appropriate `name={name}`. You can use multiple `<DataTable.Cell/>` for separating business logic.
+
+> `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
+>
+> It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
+
+@example cell
+
+@## Access to a set of cells
+
+To apply properties to multiple table cells, you need to define `<DataTable.Cell />` with their names listed via `/`.
+
+@example multi-cell
+
+@## Adding additional elements to the table body
+
+When adding custom components to `<DataTable.Body/>` they will be inserted at the end of the table body.
+
+> To block fixed columns , you need to specify `z-index=1` to block scrolling, you need to specify `z-index=2`.
+
+@example add-body
+
+@## Custom footer cells
+
+To reuse size of columns, use css variables `var(--<%column-name%>_width)`.
+
+@example summary
+
+@## Accordion in the table
+
+We use the `@semcore/ui/accordion` component to extend the functionality of the string.
+
+1. Wrapping the table in the `Accordion` control component;
+2. Replacing the tag in `DataTable.Row` with our extended tag with `Accordion.Item`;
+3. Setting the value for `Accordion.Item`;
+4. Calculating the active line to highlight it;
+5. Render the children to accordion content;
+6. Set the arrow (Chevron icon), if necessary.
+
+@example accordion
+
+@## Table in table
+
+We use the example with [the accordion above](/table-group/data-table/#accordion_in_the_table).
+
+1. Hide the table header;
+2. Set "inherit" to use the size from the top table for each column;
+
+@example table-in-table
+
+@## Table in table with fixed column
+
+We use the example with [the table above](/table-group/data-table/#table_in_table).
+
+1. Set the desired z-index;
+2. Set the variable to block the scroll;
+3. Set the variable to remove overflow
+
+@example table-in-table-with-fixed
+
+@## Virtual scroll in the table
+
+Use `virtualScroll` property to enable scroll virtualization.
+
+@example virtual-scroll
+
+@## Download status
+
+You can replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with the spinner.
+
+@example loading
+
+@## Skeleton in the table
+
+You can substitute the skeleton directly in `data`, but you can also replace `rows` with `<DataTable .Body/>`.
+
+@example skeleton
+
+@## Merging columns
+
+To combine two or more columns, we can change the table data by combining the column keys via `/`.
+
+@example col-group
+
+@## Row merging
+
+To merge two or more rows, we can change the table data by adding a special grouping key.
+
+@example row-group
+
+@## Secondary table
+
+You can use secondary table for compact displaying small amount of data inside widgets.
+
+@example secondary
+
+@## Export in image
+
+@example export-to-pdf
+
+@## Compact
+
+To make the table with smaller indents you need to add `compact` property.
+
+@example compact
+
+@## Borders
+
+To add a border to a column, you need to pass `vBorders` properties to that column.
+
+@example borders
+
+@## Сolumn expand
+
+The active column will expand if there isn’t enough space. Fixed width columns will not change size. If a column width limit is set using `wMax` prop, then the sort icon on hover will run over the text in the column header, and the non-fitting part of the text will not be visible.
+
+@example expanding-column
+
+@page data-table-api
+@page data-table-changelog
