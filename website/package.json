@@ -12,9 +12,9 @@
     "build:ensure": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-pre-built.ts",
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js tools/searchIndexUpload.ts",
     "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:dev": "vitepress dev docs2",
+    "docs:build": "vitepress build docs2",
+    "docs:preview": "vitepress preview docs2"
   },
   "dependencies": {
     "algoliasearch": "4.8.4",
