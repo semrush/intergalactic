@@ -5,6 +5,7 @@ title: Example
 ::: warning
 :rotating_light: `Table` component is deprecated and will be removed in the next major release. Please, use [DataTable](/table-group/data-table/) instead.
 :::
+
 Our library has two components for tables:
 
 - `Table` component is the old one.

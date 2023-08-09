@@ -40,10 +40,48 @@ export default function () {
 
 To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
 
-@example one-addon
+::: my-sandbox {entry=/App.tsx, template=vite-react-ts}
+
+```tsx /App.tsx [active]
+import React from 'react';
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+
+export default function () {
+  return (
+    <Button aria-label='Confirm'>
+      <Button.Addon>
+        <CheckM />
+      </Button.Addon>
+    </Button>
+  );
+}
+```
+
+:::
 
 ## Button accessibility
 
 If there is no text in the button, it is necessary to add aria-label with a button description.
 
-@example a11y
+::: my-sandbox {entry=/App.tsx, template=vite-react-ts}
+
+```tsx /App.tsx [active]
+import React from 'react';
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+import CloseM from '@semcore/ui/icon/Close/m';
+
+export default function () {
+  return (
+    <>
+      <Button addonLeft={CloseM} aria-label='Close' />
+      <Button ml={2} aria-label='Confirm'>
+        <CheckM />
+      </Button>
+    </>
+  );
+}
+```
+
+:::

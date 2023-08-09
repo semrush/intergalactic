@@ -3,11 +3,11 @@ title: Example
 fileSource: spin-container
 ---
 
-@## Usage in content
+## Usage in content
 
 @example base
 
-@## Usage in dropdown lists
+## Usage in dropdown lists
 
 This example demonstrates how to resize and display content within the SpinContainer.
 

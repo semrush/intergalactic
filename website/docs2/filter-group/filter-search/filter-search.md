@@ -18,8 +18,8 @@ tabName: Design
 
 This filter inherits all [Input](/components/input/) styles and properties.
 
-| Inactive filter                 | Active filter                  |
-| ------------------------------- | ------------------------------ |
+| Inactive filter                                | Active filter                               |
+| ---------------------------------------------- | ------------------------------------------- |
 | ![](static/filters-default.png) | ![](static/filters-active.png) |
 
 ## Interaction
@@ -36,11 +36,11 @@ Dynamic search applies entered value as soon as at least one character is entere
 
 > Set a delay for sending the entered value. So you'll not burden the search engine and it will show the results more smoothly and predictably.
 
-| State       | Appearance example          | Description                                                                                                                                                                                                                                         |
-| ----------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| State       | Appearance example                                 | Description                                                                                                                                                                                                                                        |
+| ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Placeholder | ![](static/placeholder.png) | Default filter state. Input should always have a placeholder that reflects the purpose of the filter. If it searches only for one parameter, then write: "Filter by {parameter}". **If it searches for many parameters, then write just "Search"**. |
-| Focus       | ![](static/focus.png)       | The placeholder remains until at least one character is entered.                                                                                                                                                                                    |
-| Filled      | ![](static/filled.png)      | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                                |
+| Focus       | ![](static/focus.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                   |
+| Filled      | ![](static/filled.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                               |
 
 > **Why not "Search"**
 >
@@ -57,21 +57,21 @@ Slow but accurate user assistant, searches by button or by clicking "Enter".
 
 Use [NeighborLocation](/utils/neighbor-location/) to "glue" multiple controls.
 
-| State       | Appearance example                 | Description                                                                                                                                                                                                                                         |
-| ----------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| State       | Appearance example                                        | Description                                                                                                                                                                                                                                        |
+| ----------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Placeholder | ![](static/placeholder-button.png) | Default filter state. Input should always have a placeholder that reflects the purpose of the filter. If it searches only for one parameter, then write: "Filter by {parameter}'. **If it searches for many parameters, then write just "Search"**. |
-| Focus       | ![](static/focus-button.png)       | The placeholder remains until at least one character is entered.                                                                                                                                                                                    |
-| Filled      | ![](static/filled-button.png)      | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                                |
+| Focus       | ![](static/focus-button.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                   |
+| Filled      | ![](static/filled-button.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                               |
 
 ## Search tuning
 
 For the case when fine-tuning of the filter is needed, add select next to the input. You can also use a combo – input with both select and button.
 
-| State       | Appearance example                 | Description                                                                                                                                                                                                                                       |
-| ----------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| State       | Appearance example                                        | Description                                                                                                                                                                                                                                      |
+| ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Placeholder | ![](static/placeholder-select.png) | Default filter state. Input should always have a placeholder that reflects the essence of the filter. If you search only for one parameter, then write: "Filter by {parameter}". **If you search for many parameters, then write just "Search"**. |
-| Focus       | ![](static/focus-select.png)       | The placeholder remains until at least one character is entered.                                                                                                                                                                                  |
-| Filled      | ![](static/filled-select.png)      | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                              |
+| Focus       | ![](static/focus-select.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                 |
+| Filled      | ![](static/filled-select.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                             |
 
 ## Text label
 

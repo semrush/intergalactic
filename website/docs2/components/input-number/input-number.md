@@ -36,7 +36,7 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 >
 > For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
 
-@## Input width
+## Input width
 
 The width of the input shouldn't exceed the maximum number that can be entered. Using an excessively long input, such as for the number of days in a week, can confuse the user and add unnecessary complexity to the interface.
 
@@ -108,13 +108,13 @@ If the user enters a value in the right input that is less than the value in the
 | ------------------------------------------- | ------------------------------------------------- |
 | ![](static/range-1.png)                     | ![](static/range-2.png)                           |
 
-@## Appearance customization
+## Appearance customization
 
 In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code/#appearance_customization).
 
 ![](static/alternative.png)
 
-@## Edge cases
+## Edge cases
 
 ### Invalid values
 

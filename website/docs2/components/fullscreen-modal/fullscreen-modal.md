@@ -31,7 +31,7 @@ The header and footer of the modal window should be straightened to the full wid
 
 ![](static/fullscreen-yes-no.png)
 
-@## Header styles
+## Header styles
 
 For the header of the fullscreen window use the following styles:
 
@@ -58,7 +58,7 @@ If the title of the window is too long, and doesn't fit into the space, collapse
 
 ![](static/long-heading.png)
 
-@## Content styles
+## Content styles
 
 - For content title use text less than 20px (`--fs-500`) to maintain hierarchy in the content.
 - You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
@@ -88,7 +88,7 @@ If the title of the window is too long, and doesn't fit into the space, collapse
 | ------------------------- | ------------------------- |
 | ![](static/content-1.png) | ![](static/content-2.png) |
 
-@## Footer styles
+## Footer styles
 
 Footer has the same paddings as the header has.
 
@@ -113,7 +113,7 @@ Fullscreen modal window can be closed:
 
 > When the fullscreen modal window is closed, focus always returns to its trigger.
 
-@## Edge cases
+## Edge cases
 
 ### Loading
 

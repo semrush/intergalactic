@@ -6,6 +6,6 @@ title: Example
 
 @example one-addon
 
-@## Two addons
+## Two addons
 
 @example two-addons

@@ -16,7 +16,7 @@ npm i @semcore/ui
 
 After the installation, you can access each component at `@semcore/ui/{{ component name }}`.
 
-@## Key features
+## Key features
 
 We have developed this design system with a strong focus on flexibility and ease of use, resulting in several notable features described below:
 

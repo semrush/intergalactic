@@ -13,7 +13,7 @@ tabName: Design
 - Switching between states, such as tabs, views, or screens with uniform content.
 - Filtering data in lists, tables, and charts.
 
-@## Component composition
+## Component composition
 
 ![](static/pills-composition.png)
 
@@ -23,7 +23,7 @@ Component consists of the following:
 2. `Pill.Item.Addon`
 3. `Pill.Item.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 @table-caption Pills sizes and margins
 
@@ -37,7 +37,7 @@ Addons (icons, flags, badges, counters) have the same margin as the addons insid
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
 
-@## Cases
+## Cases
 
 ### Default
 
@@ -66,7 +66,7 @@ In some products, pills can act as a block with shared metrics. Their difference
 
 ![](static/pills-summary.png)
 
-@## Interaction
+## Interaction
 
 @table-caption States for Pills
 

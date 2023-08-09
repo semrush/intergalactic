@@ -40,7 +40,7 @@ Default component sizes:
 - Bar height: 4px
 - Knob size: 20px * 20px
 
-@## Styles
+## Styles
 
 Default component styles:
 
@@ -95,7 +95,7 @@ show a warning tooltip with an appropriate message.
 
 ![](static/maximum.png)
 
-@## Usage in UX/UI
+## Usage in UX/UI
 
 ### When to use the slider
 

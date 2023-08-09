@@ -3,7 +3,7 @@ title: Example
 fileSource: tab-panel
 ---
 
-@## Basic usage
+## Basic usage
 
 Try changing the page size to observe how the tabs are compressed. Additionally, you have the flexibility to wrap the `<TabPanel.Item />` in other components.
 

@@ -5,7 +5,9 @@ tabName: Example
 deprecated: true
 ---
 
-> 🚨 Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/). It is based on `CSS-flex` technology and doesn't use native tables.
+::: warning
+:rotating_light: Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/). It is based on `CSS-flex` technology and doesn't use native tables.
+:::
 
 ## Simple usage example
 

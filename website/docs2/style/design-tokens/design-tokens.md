@@ -115,7 +115,6 @@ This is where the magic of converting the json file with tokens into a new theme
 We recommend you to check:
 
 <!-- - [Themes section](/style/design-tokens/#themes); -->
-
 - [Usage in development](/style/design-tokens/design-tokens-usage-development/);
 - [Example for custom component](/style/design-tokens/design-tokens-code/);
 - [CSS Injection guide](/style/css-injection/).

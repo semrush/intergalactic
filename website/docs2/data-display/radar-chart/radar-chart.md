@@ -58,8 +58,8 @@ Radar charts are most beneficial when there are a few items to compare. That is 
 - Use the `--chart-grid-line` token for the color of the all axis and variables lines.
 - Use dashed lines for variables.
 
-| Minimum variables (3)                                                  | Maximum recommended variables (10)                                      |
-| ---------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Minimum variables (3)                                                 | Maximum recommended variables (10)                                     |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | ![Radar chart with 3 minimum variables.](static/variables-minimum.png) | ![Radar chart with 10 maximum variables.](static/variables-maximum.png) |
 
 You can turn off grid ticks and labels if needed. It can be helpful for small-sized charts like the following one:
@@ -84,8 +84,8 @@ If there are three or four variables grid is displayed as a circle.
 
 But in case if you have more than four variables, you can also display the grid as a circle instead of a polygon. Use `type="circle"` in this case.
 
-| Grid as a polygon                                                                 | Grid as a circle                                                                  |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Grid as a polygon                                                                | Grid as a circle                                                                 |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
 | ![Radar chart with circular grid instead of a polygon.](static/circle-type-2.png) | ![Radar chart with circular grid instead of a polygon.](static/circle-type-3.png) |
 
 ### Filled areas
@@ -143,8 +143,8 @@ The radar chart is best suited for comparing several dimensions when there isn't
 - Line thickness for data sets is 3px.
 - Dot size is 8px with 2px outer border (use the `--chart-grid-border` color token).
 
-| Minimum data sets (1)                                           | Maximum recommended data sets (3)                                                      |
-| --------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| Minimum data sets (1)                                          | Maximum recommended data sets (3)                                                     |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | ![Radar chart with one data set.](static/data-sets-minimum.png) | ![Radar chart with three maximum recommended data sets.](static/data-sets-maximum.png) |
 
 ### Data set with curve
@@ -160,8 +160,8 @@ Your charts could look like this:
 
 If there is more than one data set, your chart needs a legend. Place it above the chart or on the right side.
 
-| Legend placement | Appearance example                                                                           | Margins                                                                                                   |
-| ---------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Legend placement | Appearance example                                                                          | Margins                                                                                                  |
+| ---------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | Top              | ![Radar chart with the legend above the chart for two data sets.](static/area.png)           | ![Margin between the radar chart and legend above it is 20px.](static/legend-top-margins.png)             |
 | Right            | ![Radar chart with the legend right the chart for three data sets.](static/legend-right.png) | ![Margin between the radar chart and legend to the right to it is 20px.](static/legend-right-margins.png) |
 

@@ -28,10 +28,10 @@ Skeleton has two themes—`dark` and `invert`–for using on light and dark/colo
 
 @table-caption Skeleton themes
 
-| Theme  | Appearance example          | Styles                                   |
-| ------ | --------------------------- | ---------------------------------------- |
+| Theme  | Appearance example                     | Styles                                    |
+| ------ | -------------------------------------- | ----------------------------------------- |
 | Dark   | ![](static/theme-light.png) | `background: var(--skeleton-bg)`.        |
-| Invert | ![](static/theme-dark.png)  | `background: var(--skeleton-bg-invert)`. |
+| Invert | ![](static/theme-dark.png)   | `background: var(--skeleton-bg-invert)`. |
 
 ## Animation
 
@@ -41,7 +41,7 @@ Animation is applied per data block (widgets, tables, charts) without the need f
 
 > If you don't need animation in the Skeleton, you can stop the animation using the `duration="0"` property.
 
-@## What should be skeletonized
+## What should be skeletonized
 
 The information on the page can be divided into 2 categories:
 
@@ -80,7 +80,7 @@ Additionally, the following components should never use Skeleton—they should b
 - [Modal](/components/modal/).
 - [Spin](/components/spin/).
 
-@## Text skeleton
+## Text skeleton
 
 ### Paragraph
 
@@ -108,7 +108,7 @@ Each header is replaced by a "bone" with a height equal to the header's line-hei
 | h4              | ![](static/h4.png)    |
 | h5-h6           | ![](static/h5-h6.png) |
 
-@## Image skeleton
+## Image skeleton
 
 ### Illustrations
 
@@ -137,11 +137,11 @@ The Skeleton for illustrations depends on their size:
 
 In most cases, avoid using a Skeleton for icons. Either hide them or leave them in a `disabled` state. If needed, a skeleton "bone" for an icon should match the icon's size, and there should be a multiple of 4 margin between multiple icons.
 
-@## Chart skeleton
+## Chart skeleton
 
 For charts, avoid showing axes and labels. Replace the legend with a Skeleton, and refer to [Chart principles](/data-display/d3-chart) for more detailed guidelines.
 
-@## Button and link skeletons
+## Button and link skeletons
 
 - If a button or link takes the user to another page, leave them as is during the initial loading of the page/widget.
 - If a button or link submits data or confirms user actions, set them to a `disabled` state while loading.
@@ -149,7 +149,7 @@ For charts, avoid showing axes and labels. Replace the legend with a Skeleton, a
 > When you don’t know what type of button (`primary` or `secondary`) should be loaded, 
 show Skeleton instead of the button.
 
-@## Skeleton in complex components
+## Skeleton in complex components
 
 ### Table
 

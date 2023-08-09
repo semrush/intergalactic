@@ -68,10 +68,10 @@ Sometimes you need to group the metrics. In this case, don't separate metrics re
 - The main metrics of the report/widget can be placed both horizontally and vertically, if required by the report layout.
 - The vertical layout is more compact and saves space.
 
-| Condition                                            | Layout type                                   | Appearance example         |
-| ---------------------------------------------------- | --------------------------------------------- | -------------------------- |
+| Condition                                            | Layout type                                   | Appearance example                          |
+| ---------------------------------------------------- | --------------------------------------------- | ------------------------------------------- |
 | If there are more than 3 metrics in the interface -> | use horizontal layout                         | ![](static/horizontal.png) |
-| If there are 3 or less metrics in the frontend ->    | vertical layout                               | ![](static/vertical.png)   |
+| If there are 3 or less metrics in the frontend ->    | vertical layout                               | ![](static/vertical.png)     |
 | If there is one metric in the interface, than ->     | show the values of which this metric consists | ![](static/one-metric.png) |
 
 ![](static/metric-yes-no.png)
@@ -132,21 +132,21 @@ You can "hide" more detailed information (a whole widget with a full chart, for 
 - The detailed chart unfolds like an [Accordion](/components/accordion/), shifting the page content.
 - When the [Accordion](/components/accordion/) is expanded, clicking on another minitrend replaces the content in it with the selected value.
 
-| State   | Appearance example                   |
-| ------- | ------------------------------------ |
+| State   | Appearance example                            |
+| ------- | --------------------------------------------- |
 | Default | ![](static/clickable-minitrend1.png) |
 | Hover   | ![](static/clickable-minitrend2.png) |
 | Active  | ![](static/clickable-minitrend3.png) |
 
 ## Edge cases
 
-| State                                                                                                                                                                               | Appearance example               |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![](static/summary-skeleton.png) |
-| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                          | ![](static/spin.png)             |
-| Show `n/a` message if data is missing.                                                                                                                                              | ![](static/not-available.png)    |
-| If you cannot show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![](static/error2.png)           |
-| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![](static/error.png)            |
+| State                                                                                                                                                                               | Appearance example                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Show [Skeleton](/components/skeleton) while the first page load.                                                                                                                    | ![](static/summary-skeleton.png)   |
+| Show [Spin](/components/spin) after reloading the data, applying filters on the page, etc.                                                                                          | ![](static/spin.png)                   |
+| Show `n/a` message if data is missing.                                                                                                                                              | ![](static/not-available.png) |
+| If you cannot show metric because of the error, show `Warning` icon with M size and the reload link. While hovering over the icon show tooltip with `Something went wrong` message. | ![](static/error2.png)                |
+| Show `Something went wrong` message for metrics with errors. _The entire widget or individual metrics are covered by a white overlay with 80% transparency._                        | ![](static/error.png)                 |
 
 ## Adaptivity
 

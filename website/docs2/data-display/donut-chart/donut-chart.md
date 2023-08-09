@@ -55,19 +55,19 @@ endAngle={0}
 
 ### Donut chart ("doughnut") 🍩
 
-|                                                              | Appearance example           | Description, styles                                                                                  |
-| ------------------------------------------------------------ | ---------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/). | ![](static/donut-small.png)  | The donut size is 24px \* 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
-| Chart inside small widgets (less than 400px).                | ![](static/donut-medium.png) | The donut size is 80px \* 80px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`   |
-| Chart inside large widgets (more than 400px).                | ![](static/donut-big.png)    | The donut size is 180px \* 180px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
+|                                                              | Appearance example                                 | Description, styles                                                                                  |
+| ------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Charts inside [Summary type components](/patterns/summary/). | ![](static/donut-small.png)   | The donut size is 24px * 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
+| Chart inside small widgets (less than 400px).                | ![](static/donut-medium.png) | The donut size is 80px * 80px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`   |
+| Chart inside large widgets (more than 400px).                | ![](static/donut-big.png)       | The donut size is 180px * 180px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
 
 ### Semi donut chart ("half doughnut") 🔪🍩
 
-|                                                              | Appearance example                | Description, styles                                                                                 |
-| ------------------------------------------------------------ | --------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/). | ![](static/semi-donut-small.png)  | The donut size is 24px \* 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
-| Chart inside small narrow widgets (less than 400px).         | ![](static/semi-donut-medium.png) | The donut size is 80px \* 40px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`  |
-| Chart inside large widgets (more than 400px).                | ![](static/semi-donut-big.png)    | The donut size is 180px \* 90px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
+|                                                              | Appearance example                                           | Description, styles                                                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| Charts inside [Summary type components](/patterns/summary/). | ![](static/semi-donut-small.png)   | The donut size is 24px * 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
+| Chart inside small narrow widgets (less than 400px).         | ![](static/semi-donut-medium.png) | The donut size is 80px * 40px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`  |
+| Chart inside large widgets (more than 400px).                | ![](static/semi-donut-big.png)       | The donut size is 180px * 90px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
 
 ## Legend
 
@@ -108,18 +108,18 @@ If you have a small donut and the widget should be compact, the metric can be pl
 >
 > In a half-sized donut, the name of the metric should be as short as possible, and the explanation can be contained in the Info icon.
 
-| Donut                                                         | Semi donut                                                              | Donut in a small widget            |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------- |
+| Donut                                                                                                 | Semi donut                                                                                                                | Donut in a small widget                                |
+| ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
 | ![](static/donut-metric-1.png) ![](static/donut-metric-2.png) | ![](static/semi-donut-metric-1.png) ![](static/semi-donut-metric-2.png) | ![](static/donut-metric-small.png) |
 
 ## Interaction
 
 > The cursor changes to `pointer` when the sector is clickable. In all other cases, the cursor is `default`.
 
-|             | Appearance examples                                                 | Styles                                                                                                                                   |
-| ----------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| **default** | ![](static/donut-big.png)                                           |                                                                                                                                          |
-| **hover**   | ![](static/donut-hover-big.png) ![](static/donut-hover-small.png)   | When hovering over a sector, `outerRadius` increases by 8px. For a clickable sector the cursor changes to `pointer`.                     |
+|             | Appearance examples                                                                                               | Styles                                                                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **default** | ![](static/donut-big.png)                                                                   |                                                                                                                                          |
+| **hover**   | ![](static/donut-hover-big.png) ![](static/donut-hover-small.png)     | When hovering over a sector, `outerRadius` increases by 8px. For a clickable sector the cursor changes to `pointer`.                     |
 | **active**  | ![](static/donut-active-big.png) ![](static/donut-active-small.png) | The `outerRadius` of the active sector is increased by 8px. In the legend, the elements related to the inactive sectors get 30% opacity. |
 
 ## Tooltip

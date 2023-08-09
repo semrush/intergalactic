@@ -28,7 +28,7 @@ Show [counter](/components/counter) only for **Advanced filters** and filters th
 
 ![](static/counter-or-not.png)
 
-@## Margins between FilterTriggers
+## Margins between FilterTriggers
 
 Use the same margins as other inputs and [buttons](/components/button/#margins_between_buttons) have.
 

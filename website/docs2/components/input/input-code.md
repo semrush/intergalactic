@@ -3,7 +3,7 @@ title: Example
 fileSource: input
 ---
 
-@## Password input
+## Password input
 
 Button with the `ShowYes` icon enables the password display. `ShowNo` hides the password and shows bullets, respectively.
 

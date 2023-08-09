@@ -35,7 +35,7 @@ When the user's country is known, it's important to display the flag of the coun
 
 For actual examples of phone number inputs, refer to the [Example tab](/components/input-phone/input-phone-code).
 
-@## Hint instructions
+## Hint instructions
 
 It is recommended to provide visible text instructions for inputs with specific data formats.
 

@@ -12,7 +12,7 @@ tabName: Design
 
 The radio button indicates the user's selection status and is primarily used for group settings with a list of options, where only one can be selected.
 
-@## Component composition
+## Component composition
 
 ![](static/progressbar-composition.png)
 
@@ -23,7 +23,7 @@ Component consists of the following:
 3. `Radio.Value`
 4. `Radio.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 The radio button has two sizes: M and L. The text label is always positioned to the right of the radio button.
 
@@ -45,7 +45,7 @@ The spacing between options may differ based on the context in which they are us
 | M (16px * 16px) | ![](static/vert-m.png) ![](static/margins-m.png) |
 | L (20px * 20px) | ![](static/vert-l.png) ![](static/margins-l.png) |
 
-@## Radio button with a paragraph
+## Radio button with a paragraph
 
 All radio button sizes can be used with the corresponding text paragraphs.
 
@@ -56,7 +56,7 @@ All radio button sizes can be used with the corresponding text paragraphs.
 | M (16px * 16px)       | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/paragraph-m.png) |
 | L (20px * 20px)       | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/paragraph-l.png) |
 
-@## Radio button with Info icon
+## Radio button with Info icon
 
 Add an `Info` icon next to the radio button label to provide more information about radio button's purpose. User can hover over the icon to see a tooltip with additional details.
 
@@ -66,7 +66,7 @@ Add an `Info` icon next to the radio button label to provide more information ab
 
 ![](static/info-icon-margin.png)
 
-@## Radio button with a link inside
+## Radio button with a link inside
 
 Text label may contain a [Link](/components/link).
 

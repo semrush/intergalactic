@@ -19,7 +19,7 @@ tabName: Design
 >
 > Use dropdown primarily to hide additional features and sometimes additional information.
 
-@## Component composition
+## Component composition
 
 ![](static/accordion-composition.png)
 
@@ -30,7 +30,7 @@ Component consists of the following:
 - Collapsed areas with content (`Accordion.Item.Collapse`)
 - `Accordion.Item.Chevron`
 
-@## Styles and sizes
+## Styles and sizes
 
 The `ChevronRight` icon always has M size and `margin-right: 8px` with all font sizes.
 
@@ -42,7 +42,7 @@ You can set the width of the accordion that is appropriate for the context.
 
 > You can set different styles for the trigger and collapsed content than the default ones described below.
 
-@## Trigger
+## Trigger
 
 You are free to set link or button of any size you need as the accordion trigger.
 

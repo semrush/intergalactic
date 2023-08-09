@@ -95,7 +95,7 @@ Use this state only when there is some data, and there might be more data.
 
 During loading, don’t display pagination.
 
-@## Additional states
+## Additional states
 
 ### Select for choosing the number of rows
 

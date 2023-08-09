@@ -20,8 +20,8 @@ You also can make a cell compact simply by using `compact` prop. In this case pa
 
 > Content inside header cells and rows is aligned to the top.
 
-| Description                     | Appearance                       | Styles                                                                                               |
-| ------------------------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Description                     | Appearance                                | Styles                                                                        |
+| ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
 | Heading                         | ![](static/th-styles.png)        | `background-color: var(--table-th-primary-cell)`, `border-bottom: 1px solid var(--border-secondary)` |
 | Heading of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header shouldn't have a shadow.      |
 | Default row                     | ![](static/td-default.png)      | `border-bottom: 1px solid var(--border-secondary)`                                   |
@@ -42,9 +42,9 @@ In other cases, if there is insufficient space, two lines of text in one cell ca
 
 ## Table header states
 
-| State  | Appearance                | Styles                                                                     |
-| ------ | ------------------------- | -------------------------------------------------------------------------- |
-| Hover  | ![](static/th-hover.png)  | `background-color: var(--table-th-primary-cell-hover)`, `cursor: pointer`  |
+| State  | Appearance                         | Styles                                                |
+| ------ | ---------------------------------- | ----------------------------------------------------- |
+| Hover  | ![](static/th-hover.png)   | `background-color: var(--table-th-primary-cell-hover)`, `cursor: pointer` |
 | Sorted | ![](static/th-styles.png) | `background-color: var(--table-th-primary-cell-active)`, `cursor: pointer` |
 
 ## Row states

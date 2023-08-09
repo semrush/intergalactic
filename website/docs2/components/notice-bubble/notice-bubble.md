@@ -68,7 +68,7 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 | **No connection with action** | For interfaces unable to monitor the network connection and requiring a page refresh, utilize a notice with the "Reload the page" button. | ![](static/reload.png) |
 | **Special event notification** | This notification is specifically designed for various events, holidays, and similar occasions. You can animate elements inside this notification to add visual appeal and engagement. | ![](static/event-alert.png) |
 
-@## Styles
+## Styles
 
 - The notice appears in the upper-right corner of the report, below the main website menu, with 12px margins at the top and right.
 - When scrolling, it remains fixed in the upper-right corner with the same 12px margins.

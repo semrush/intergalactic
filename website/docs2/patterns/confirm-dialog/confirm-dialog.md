@@ -12,7 +12,7 @@ The dialog must have a clear descriptive message that explains what is happening
 
 The dialog is built using the [Modal](/components/modal/) component.
 
-@## When to use
+## When to use
 
 When the user is about to take an irreversible action, like permanently deleting an item, or when they're about to lose unsaved data, you need to ask them in advance if they understand what’s going to happen.
 

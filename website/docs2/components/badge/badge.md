@@ -80,7 +80,7 @@ Badge is usually placed to the right of the element. As an exception, in the [No
 | ------------------- | ----------------------------------------- |
 | Product header      | ![](static/product-head.png) |
 | Landing page header | ![](static/landing-header.png) |
-| Widget              | ![](static/widget.png)         |
+| Widget              | ![](static/widget.png)              |
 
 @page badge-a11y
 @page badge-api

@@ -16,10 +16,10 @@ The cell in the primary table, whether it is a header or a row, has 8px padding.
 
 > If there is a sorting icon in the column, icon should be in active state and has `--icon-secondary-neutral-hover-active` color.
 
-| Description | Appearance                   | Styles                                                                                        |
-| ----------- | ---------------------------- | --------------------------------------------------------------------------------------------- |
+| Description | Appearance                                  | Styles                                                                      |
+| ----------- | ------------------------------------------- | --------------------------------------------------------------------------- |
 | Heading     | ![](static/th-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-table-accent)` |
-| Default row | ![](static/td-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)`    |
+| Default row | ![](static/td-secondary.png) | `background-color: var(--table-td-cell); border-bottom: 1px solid var(--border-secondary)` |
 
 ## Row states
 

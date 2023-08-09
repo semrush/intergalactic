@@ -8,7 +8,7 @@ fileSource: d3-chart
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar />;
+<Radar/>;
 ```
 
 @typescript RadarProps
@@ -18,7 +18,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar.Axis />;
+<Radar.Axis/>;
 ```
 
 @typescript RadarAxisProps
@@ -28,7 +28,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar.Axis.Labels />;
+<Radar.Axis.Labels/>;
 ```
 
 @typescript RadarAxisLabelsProps
@@ -38,7 +38,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar.Axis.Ticks />;
+<Radar.Axis.Ticks/>;
 ```
 
 @typescript RadarAxisTicksProps
@@ -48,7 +48,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar.Polygon />;
+<Radar.Polygon/>;
 ```
 
 @typescript RadialPolygonProps
@@ -58,7 +58,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar.Polygon.Line />;
+<Radar.Polygon.Line/>;
 ```
 
 @typescript RadialPolygonLineProps
@@ -68,7 +68,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```js
 import { Radar } from '@semcore/ui/d3-chart';
 
-<Radar.Polygon.Dots />;
+<Radar.Polygon.Dots/>;
 ```
 
 @typescript RadialPolygonDotsProps

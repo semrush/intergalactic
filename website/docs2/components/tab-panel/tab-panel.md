@@ -15,7 +15,7 @@ tabName: Design
 - As the main navigation in your interface; instead, use the main menu, which offers better visual hierarchy.
 - For switching between states; for this purpose, use either the [Switch](/components/switch/) or [Radio](/components/radio/) components.
 
-@## Component composition
+## Component composition
 
 ![](static/tabpanel-composition.png)
 
@@ -25,14 +25,14 @@ Component consists of the following:
 - `TabPanel.Item.Addon`
 - `TabPanel.Item.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 - The TabPanel.Item has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 Addons before and after the text have a margin of 8px.
 
 ![](static/tab-m.png)
 
-@## Addons
+## Addons
 
 Addons inside TabPanel.Item have the same margins as addons inside the [Button](/components/button/) component.
 

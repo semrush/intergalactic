@@ -10,8 +10,8 @@ tabName: Design
 
 There are two icon sizes:
 
-- M (16 \* 16px)
-- L (24 \* 24px)
+- M (16 * 16px)
+- L (24 * 24px)
 
 All icon sizes use a consistent stroke width of 2px. That applies to both inner and outer strokes.
 

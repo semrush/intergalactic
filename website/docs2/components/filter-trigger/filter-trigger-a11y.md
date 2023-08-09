@@ -13,10 +13,10 @@ See detailed information about the keyboard support for the FilterTrigger in the
 
 The list below describes roles and attributes that component already has.
 
-| Role     | Attribute    | Element         | Usage                                                                                                             |
-| -------- | ------------ | --------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `button` |              | `button`        | Identifies the element as a button. Accessible name for the button is defined by the text content of the element. |
-| `group`  |              | `div`           | Identifies the `div` element as a group container for the buttons.                                                |
+| Role     | Attribute    | Element             | Usage                                                                                                             |
+| -------- | ------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `button` |              | `button`            | Identifies the element as a button. Accessible name for the button is defined by the text content of the element. |
+| `group`  |              | `div`               | Identifies the `div` element as a group container for the buttons.                                                |
 |          | `aria-label` | `div`, `button` | The `aria-label` attribute defines a string value that labels an interactive element.                             |
 
 ## Other recommendations

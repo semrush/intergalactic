@@ -15,7 +15,7 @@ These are widgets for selecting a single month and a range of months, respective
 
 @example monthpicker
 
-@## Trigger and Popper
+## Trigger and Popper
 
 To access the internal components, you must expand the component. The `Trigger` and `Popper` components are wrapped by `Dropdown.Trigger` and `Dropdown.Popper`, respectively. All the properties and examples available in `Dropdown` also work in `DatePicker`.
 

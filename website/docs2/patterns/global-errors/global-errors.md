@@ -40,7 +40,7 @@ The message is centered horizontally and vertically. Give a container with an er
 For screens less than 768px:
 
 - change layout of the message to vertical;
-- change illustration's size to 200px \* 200px;
+- change illustration's size to 200px * 200px;
 - change margin between the illustration and a message from 40px to 8px;
 - stretch controls to the width of the content.
 
@@ -355,8 +355,8 @@ There are two possible cases of the pattern's use:
 
 > The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
 
-| For the whole website          | In the product                       |
-| ------------------------------ | ------------------------------------ |
+| For the whole website                                | In the product                                             |
+| ---------------------------------------------------- | ---------------------------------------------------------- |
 | ![](static/ge_page-smthng.png) | ![](static/ge_under-maintenance.png) |
 
 ### Controls

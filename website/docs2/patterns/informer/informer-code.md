@@ -2,6 +2,6 @@
 title: Example
 ---
 
-@## Basic usage
+## Basic usage
 
 @example base

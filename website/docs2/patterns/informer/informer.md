@@ -18,29 +18,29 @@ The informer consists of the following:
 
 > The Info icon shouldn't be used with the h1 title. This is usually the title of hero blocks, etc. Hiding hints in an info icon next to the main page's title is strange, isn't it? 😎
 
-| Font size                            | Icon size | Use                                            |
-| ------------------------------------ | --------- | ---------------------------------------------- |
-| 36px (`--fs-700`), 32px (`--fs-600`) | L         | Use only with the largest titles and controls. |
-|                                      |           | ![](static/big-headings.png)                   |
-| Smaller than 24px (`--fs-500`)       | M         | Use with text sizes smaller than 24px.         |
-|                                      |           | ![](static/other-headings.png)                 |
-|                                      |           | ![](static/text.png)                           |
-|                                      |           | ![](static/dropdown-item-icon.png)             |
+| Font size                            | Icon size | Use                                                                  |
+| ------------------------------------ | --------- | -------------------------------------------------------------------- |
+| 36px (`--fs-700`), 32px (`--fs-600`) | L         | Use only with the largest titles and controls.                       |
+|                                      |           | ![](static/big-headings.png)               |
+| Smaller than 24px (`--fs-500`)       | M         | Use with text sizes smaller than 24px.                               |
+|                                      |           | ![](static/other-headings.png)                |
+|                                      |           | ![](static/text.png)                    |
+|                                      |           | ![](static/dropdown-item-icon.png) |
 
 ## Interaction
 
-| State  | Appearance example         | Styles                                                                         |
-| ------ | -------------------------- | ------------------------------------------------------------------------------ |
-| Normal | ![](static/info.png)       | `background-color: var(--icon-secondary-neutral)`                              |
+| State  | Appearance example                             | Styles                                                                          |
+| ------ | ---------------------------------------------- | ------------------------------------------------------------------------------- |
+| Normal | ![](static/info.png)                  | `background-color: var(--icon-secondary-neutral)`                              |
 | Hover  | ![](static/info-hover.png) | The icon color doesn't change on hover. Only cursor changes to `cursor: help`. |
 
 ## Click zone
 
 | Icon size | The size of the target zone  |
 | --------- | ---------------------------- |
-| L         | 24px \* 24px                 |
+| L         | 24px * 24px                  |
 |           | ![](static/hover-zone-l.png) |
-| M         | 16px \* 16px                 |
+| M         | 16px * 16px                  |
 |           | ![](static/hover-zone-m.png) |
 
 ## Tooltip

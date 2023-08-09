@@ -1,7 +1,7 @@
 ---
 title: Example
 ---
-@## Basic example
+## Basic example
 
 An example of the default styles of cards with the title.
 

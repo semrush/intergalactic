@@ -5,7 +5,9 @@ tabName: Design
 deprecated: true
 ---
 
-> 🚨 The library `@semcore/sticky` has been deprecated. Please use [`@semcore/flex-box`](/layout/box-system/) instead.
+::: warning
+:rotating_light: The library `@semcore/sticky` has been deprecated. Please use [`@semcore/flex-box`](/layout/box-system/) instead.
+:::
 
 ## Description
 
@@ -17,7 +19,7 @@ The block can either be centered in relation to the height and width of the pare
 
 @example limit
 
-@## Pinned header and columns in table
+## Pinned header and columns in table
 
 When scrolling through a table, the header can be affixed to remain visible. Avoid adding shadows to the fixed table header.
 
@@ -35,7 +37,7 @@ background-image: linear-gradient(to left, rgba(25, 27, 35, .1), rgba(255, 255, 
 
 ![](static/sticky-column.png)
 
-@## Pinned messages inside the block
+## Pinned messages inside the block
 
 Within larger blocks and widgets, you can fix messages to the vertical and horizontal center of the parent block.
 
@@ -43,7 +45,7 @@ Within larger blocks and widgets, you can fix messages to the vertical and horiz
 
 ![](static/sticky-loading-1.png)
 
-@## Pinned ProgressBar
+## Pinned ProgressBar
 
 You can fix the [ProgressBar](/components/progress-bar/) to the top of the page or to any other block fixed above it (for example, to the table header).
 
@@ -51,7 +53,7 @@ You can fix the [ProgressBar](/components/progress-bar/) to the top of the page 
 
 ![](static/sticky-2.png)
 
-@## Pinned content in blocks with limits
+## Pinned content in blocks with limits
 
 If a limit message appears in the block, center this message towards its parent block while scrolling.
 

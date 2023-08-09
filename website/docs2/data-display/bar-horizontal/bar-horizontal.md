@@ -44,9 +44,9 @@ Important points to keep in mind when presenting data as a bar chart:
 
 ### Horizontal bar chart
 
-|                | Appearance example      | Styles                                 |
-| -------------- | ----------------------- | -------------------------------------- |
-| One category   | ![](static/one-cat.png) | `border-radius: 2px`                   |
+|                | Appearance example                          | Styles                                 |
+| -------------- | ------------------------------------------- | -------------------------------------- |
+| One category   | ![](static/one-cat.png)  | `border-radius: 2px`                   |
 | Two categories | ![](static/two-cat.png) | The margin between two columns is 4px. |
 
 > If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
@@ -58,8 +58,8 @@ Important points to keep in mind when presenting data as a bar chart:
 | Description                                                                                                | Appearance example                         |
 | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
 | `margin: 8px 0px`                                                                                          | ![bar-chart margins](static/margins-1.png) |
-| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png)                  |
-| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png)                  |
+| The margin between categories and values on the Y-axis and bars is 16px. The margin between values is 8px. | ![](static/margins-2.png) |
+| The margin between categories shall be 20px minimum. Otherwise, the data becomes a mess.                   | ![](static/margins-3.png) |
 
 ## Grid and axes
 
@@ -91,9 +91,9 @@ When you hover over a column, we highlight it with `--chart-grid-bar-chart-hover
 
 If the column is clickable, the cursor changes to `pointer`.
 
-|                                   | Appearance example      |
-| --------------------------------- | ----------------------- |
-| Chart with one category           | ![](static/hover-1.png) |
+|                                   | Appearance example                                         |
+| --------------------------------- | ---------------------------------------------------------- |
+| Chart with one category           | ![](static/hover-1.png)                |
 | Chart with two or more categories | ![](static/hover-2.png) |
 
 ## Edge cases

@@ -6,7 +6,7 @@ tabName: Design
 
 @import playground
 
-@## Description
+## Description
 
 **Spin** is a component used to display the loading state of a page, section, or widget when the system does not have an exact data loading time.
 
@@ -14,7 +14,7 @@ To display Spin around any component, use [SpinContainer](/components/spin-conta
 
 > This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
-@## Sizes and margins
+## Sizes and margins
 
 The Spin component comes in six different sizes. The text size should be at least 14px.
 

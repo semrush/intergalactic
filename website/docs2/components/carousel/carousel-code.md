@@ -6,7 +6,7 @@ title: Example
 
 @example image
 
-@## Item indicators
+## Item indicators
 
 @example dots
 

@@ -11,11 +11,11 @@ tabName: Design
 
 ## Layout
 
-| Layout type | Example                    |
-| ----------- | -------------------------- |
-| Horizontal  | ![](static/horizontal.png) |
-| Vertical    | ![](static/vertical.png)   |
-| Inline      | ![](static/inline.png)     |
+| Layout type | Example                      |
+| ----------- | ---------------------------- |
+| Horizontal  | ![](static/horizontal.png)   |
+| Vertical    | ![](static/vertical.png)     |
+| Inline      | ![](static/inline.png)       |
 
 ## Input labels
 
@@ -26,12 +26,12 @@ Input should have a text label.
 
 You also can mark the input as an optional.
 
-| Input size | Vertical layout            | Horizontal layout               | Font size                                |
-| ---------- | -------------------------- | ------------------------------- | ---------------------------------------- |
-| M          | ![](static/input-m.png)    | ![](static/input-left-m.png)    | 14px (Use `--fs-200`, `--lh-200` tokens) |
+| Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                |
+| ---------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- |
+| M          | ![](static/input-m.png)       | ![](static/input-left-m.png)       | 14px (Use `--fs-200`, `--lh-200` tokens) |
 |            | ![](static/checkbox-m.png) | ![](static/checkbox-left-m.png) |                                          |
 |            | ![](static/textarea-m.png) | ![](static/textarea-left-m.png) |                                          |
-| L          | ![](static/input-l.png)    | ![](static/input-left-l.png)    | 16px (Use `--fs-300`, `--lh-300` tokens) |
+| L          | ![](static/input-l.png)       | ![](static/input-left-l.png)       | 16px (Use `--fs-300`, `--lh-300` tokens) |
 |            | ![](static/checkbox-l.png) | ![](static/checkbox-left-l.png) |                                          |
 |            | ![](static/textarea-l.png) | ![](static/textarea-left-l.png) |                                          |
 

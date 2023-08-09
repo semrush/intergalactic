@@ -6,8 +6,8 @@ tabName: Design
 
 ::: warning
 :rotating_light: `NeighborLocation` component is deprecated and will be removed in the next releases.
-:::
 
+:::
 > Use property `neighborLocation` specification on components.
 >
 > We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in

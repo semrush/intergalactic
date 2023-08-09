@@ -4,15 +4,15 @@ fileSource: illustration
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **Illustration** is a component for importing illustrations from our library to your project.
 
-@## Illustrations
+## Illustrations
 
 @import illustrations
 
-@## Sizes
+## Sizes
 
 We use illustrations of three sizes.
 

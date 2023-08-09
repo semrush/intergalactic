@@ -30,7 +30,7 @@ Component consists of the following:
 
 Addon before the text has `margin-left`, while the trailing addon has `margin-right`.
 
-@## Sizes and margins
+## Sizes and margins
 
 @table-caption Button sizes and margins
 
@@ -39,7 +39,7 @@ Addon before the text has `margin-left`, while the trailing addon has `margin-ri
 | **M (28px)** | M         | ![](static/size-m.png) | This is the default size of the button. Use it freely in filters, dropdowns, tables, etc.                                |
 | **L (40px)** | M         | ![](static/size-l.png) | Use this size in modal windows for main actions, empty pages and page states that need to focus user on the main action. |
 
-@## Button types and themes
+## Button types and themes
 
 ### Types
 
@@ -73,7 +73,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 | `secondary` | ![](static/secondary-muted.png)  | _deprecated_ | _no theme_ | _no theme_ | ![](static/invert-second-normal.png) |
 | `tertiary`  | ![](static/tertiary-muted.png) | ![](static/tertiary-info.png)  | _no theme_ | _no theme_ | ![](static/invert-tertiary-normal.png) |
 
-@## Button states
+## Button states
 
 @table-caption States for all buttons types and themes
 
@@ -103,7 +103,7 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 ![](static/button-width3.png)
 
-@## Margins between buttons
+## Margins between buttons
 
 **The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 

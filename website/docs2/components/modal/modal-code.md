@@ -7,7 +7,7 @@ fileSource: modal
 
 @example modal
 
-@## Modal window height is bigger than the browser page
+## Modal window height is bigger than the browser page
 
 Sometimes the amount of content overfills the window's visibility, but you don't need to worry about it, because the component will be adjusted and the scroll will appear.
 

@@ -64,7 +64,7 @@ Use a counter to display an element that changes numerically.
 | -------------------- | ------------- | -------- |
 | Output data counter  | ![](static/table.png)         | Usually it shows the total results. Use it next to the title of a table or widget.                                                                                                                                         |
 | Entered data counter | ![](static/textarea.png)      | The counter typically displays the limit of characters allowed, commonly used in [Input](/components/input/) and [Textarea](/components/textarea/). When the limit is reached or surpassed, the color of the counter changes. |
-| Limits               | ![](static/limit-counter.png) | The counter changes color to indicate when the limit has been exceeded.                                                                                                                                                       |
+| Limits               | ![](static/limit-counter.png) | The counter changes color to indicate when the limit has been exceeded.                                                                                |
 
 In primary controls, use a counter with the `white` (invert) theme. Otherwise, it will not be readable on a bright/dark background.
 

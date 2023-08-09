@@ -30,15 +30,15 @@ By default, we show a chart with straight lines. This view facilitates reading t
 
 > Add a possibility to select either straight or smooth line type in the widget settings.
 
-| Example                      | Styles                 |
-| ---------------------------- | ---------------------- |
+| Example                                       | Styles                 |
+| --------------------------------------------- | ---------------------- |
 | ![](static/without-dots.png) | Line thickness is 3px. |
 
 We recommended you to display the dots on lines either when there are few of them (one or two), or when data collection is irregular.
 
-| Example              | Styles                                                                                                                  |
-| -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| ![](static/dots.png) | Point size is 8px _ 8px, `border: 2px solid var(--chart-grid-border)`. When hovering, the dot increases to 12px _ 12px. |
+| Example                            | Styles                                                                                                                      |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![](static/dots.png) | Point size is 8px * 8px, `border: 2px solid var(--chart-grid-border)`. When hovering, the dot increases to 12px * 12px. |
 
 ## Interaction
 

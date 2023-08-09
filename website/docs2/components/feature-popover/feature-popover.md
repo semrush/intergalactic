@@ -95,7 +95,7 @@ You can use `wMax` property to set the maximum width of the FeaturePopover's pop
 - The invert `primary` & `tertiary` muted button has M size. Top margin for the group of controls is 16px (`--spacing-4x` token).
 - Illustration's margin-right is 16px (`--spacing-4x` token).
 
-@## Appearance and hiding
+## Appearance and hiding
 
 Component appears according to the timings you set through the `timeout` property.
 
@@ -119,7 +119,7 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 - **Don’t show FeaturePopover if the user has already interacted with the advertised item.**
 - FeaturePopover should be shown only once (exception for cases where user clicked "Show later"). If the user has closed FeaturePopover or clicked "Got it", don’t show this message to him again.
 
-@## Recommendations for copy
+## Recommendations for copy
 
 ### Title
 
@@ -133,7 +133,7 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 - Describe a feature or a tip with one or two sentences.
 - Tell not only about the feature itself, but also about how to use it and how it can help the user.
 
-@## FeaturePopover as part of onboarding
+## FeaturePopover as part of onboarding
 
 Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, don’t show it again to them.
 

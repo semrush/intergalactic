@@ -87,7 +87,7 @@ Common cases about focus behavior when working with all kind of poppers (dropdow
 
 > The trigger always has a `tabIndex=0` (even when disabled) or is an input/textarea. The popper always has a `tabIndex=0`.
 
-@## Focus, OnClick and popper
+## Focus, OnClick and popper
 
 1. By pressing `Tab`, the trigger gets focus.
 2. When the trigger is focused, pressing `Enter`/`Space` opens a popper.

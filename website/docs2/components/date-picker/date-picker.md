@@ -20,7 +20,6 @@ tabName: Design
 Trigger is built on the [Input](/components/input/) component.
 
 > Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
-
 <!-- > _For example: "Mar 4–10, 2022"._ -->
 
 @table-caption Date picker trigger's states and cases
@@ -31,10 +30,10 @@ Trigger is built on the [Input](/components/input/) component.
 | Day                                | ![Trigger with "Mar 14, 2023" date inside](static/date-trigger-1.png) |
 | Range of days in one month         | ![Trigger with "Mar 10, 2023-Mar 13, 2023" date range inside](static/date-trigger-2.png) |
 | Range of days in one year          | ![Trigger with "Mar 21, 2023-Apr 13, 2023" date range inside](static/date-trigger-3.png) |
-| Range of days in different years   | ![Trigger with "Mar 8, 2022-Feb 13, 2023" date range inside](static/date-trigger-4.png)  |
-| Month                              | ![Trigger with "Sep, 2022" month inside](static/date-trigger-5.png)                      |
-| Range of months in one year        | ![Trigger with "Sep, 2023-Dec, 2023" month range inside](static/date-trigger-6.png)      |
-| Range of months in different years | ![Trigger with "Sep, 2022-Dec, 2023" month range inside](static/date-trigger-7.png)      |
+| Range of days in different years   | ![Trigger with "Mar 8, 2022-Feb 13, 2023" date range inside](static/date-trigger-4.png) |
+| Month                              | ![Trigger with "Sep, 2022" month inside](static/date-trigger-5.png) |
+| Range of months in one year        | ![Trigger with "Sep, 2023-Dec, 2023" month range inside](static/date-trigger-6.png) |
+| Range of months in different years | ![Trigger with "Sep, 2022-Dec, 2023" month range inside](static/date-trigger-7.png) |
 
 ## "Apply" button
 

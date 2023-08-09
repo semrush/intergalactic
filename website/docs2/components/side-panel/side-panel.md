@@ -37,7 +37,7 @@ Component consists of the following:
 6. `SidePanel.Footer`
 7. `SidePanel.Overlay`
 
-@## Trigger
+## Trigger
 
 The trigger for opening the SidePanel can be the following:
 
@@ -56,7 +56,7 @@ The trigger for opening the SidePanel can be the following:
 | Without overlay | ![](static/light-theme.png) | In this case the panel has only the shadow: `box-shadow: 0px 1px 12px var(--box-shadow-popper)`. There is no overlay. | Use this version if you need to show additional information for a report/product/block. |
 | With overlay    | ![](static/dark-theme.png)   | In this case panel has an overlay with styles: `background-color: var(--overlay-primary)`.   | If you need to focus the user on information inside SidePanel, enable overlay.          |
 
-@## Sizes and indents
+## Sizes and indents
 
 ### Width
 
@@ -76,7 +76,7 @@ The padding between the title and content:
 
 ![](static/content-paddings.png)
 
-@## Default styles
+## Default styles
 
 ### Header
 
@@ -158,7 +158,7 @@ SidePanel opens and closes with the animation: `transition: all 350ms ease-in-ou
 
 ![](static/320-width.png)
 
-@## Edge cases
+## Edge cases
 
 SidePanel should have a header in all cases.
 

@@ -16,7 +16,7 @@ The checkbox component is used to select one or more options from a list. It dis
 
 Multi-selection, which is commonly used in filters, is the exception to the image above.
 
-@## Component composition
+## Component composition
 
 ![](static/checkbox-composition.png)
 
@@ -26,7 +26,7 @@ Component consists of the following:
 2. `Checkbox.Value`
 3. `Checkbox.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 ### Sizes
 

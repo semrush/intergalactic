@@ -3,7 +3,7 @@ title: Example
 fileSource: widget-empty
 ---
 
-@## NoData example
+## NoData example
 
 The template already includes the title. You only need to provide the data type and description.
 
@@ -11,7 +11,7 @@ The template already includes the title. You only need to provide the data type 
 
 @example no-data
 
-@## NothingFound example
+## NothingFound example
 
 @example nothing-found
 

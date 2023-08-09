@@ -17,7 +17,7 @@ tabName: Design
 - **Default link:** An accent control that links to another web page.
 - **Custom link:** A link with customized functionality and visual appearance. When creating custom links, follow the basic rules of default links. Avoid excessive use of custom links in your interface.
 
-@## Sizes and margins
+## Sizes and margins
 
 You can add addons before and after the link text. Addons always have a 4px margin from the link text.
 
@@ -56,7 +56,7 @@ Hided this section because it's for the dark theme.
 | visited       | ![visited](static/default-invert-visited.png)            | Link has `--purple-500` color. This state is an optional.                                                                                                                                     | `pointer` |
 | visited hover | ![visited-hover](static/hover-active-invert-visited.png) | Link has `--purple-500` color with a solid underline. This state is optional.                                                                                                                 | `pointer` | -->
 
-@## Links on a dark and colored background
+## Links on a dark and colored background
 
 Default links can be used on a colored background within a [Notice](/components/notice/) component.
 
@@ -98,7 +98,7 @@ If a link spans two lines, ensure that the cursor remains consistent throughout 
 
 ![](static/name-example-7.png)
 
-@## Margin between links
+## Margin between links
 
 For links placed in one line, maintain a margin between them that is a multiple of 4px:
 

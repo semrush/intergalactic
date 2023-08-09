@@ -64,8 +64,8 @@ Users can create tags using tags with the `additional` theme.
 | State  | Appearance example                  | Styles    |
 | ------ | ----------------------------------- | --------- |
 | Normal | ![](static/normal.png) | `color: var(--text-secondary)`, `background-color: var(--tag-secondary-normal)`, `border: 1px dotted var(--border-primary)` |
-| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                       |
-| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                       |
+| Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                         |
+| Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                         |
 
 This tag opens [InlineInput](/components/inline-input/), and you can add a [mask label](/components/input-mask/) to guide the user on what to type into the input.
 

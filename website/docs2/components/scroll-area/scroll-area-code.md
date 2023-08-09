@@ -3,7 +3,7 @@ title: Example
 fileSource: scroll-area
 ---
 
-@## Basic usage
+## Basic usage
 
 To use the ScrollArea component, wrap your content with `ScrollArea`. It will create a couple of `div` wraps and handle the necessary calculations. You can set the `height` or `width` directly on the `ScrollArea` or somewhere higher in the hierarchy. `max-height` and `max-width` are also supported.
 

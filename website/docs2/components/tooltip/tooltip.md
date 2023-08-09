@@ -16,7 +16,7 @@ Differences between Tooltip and [Dropdown](/components/dropdown/):
 - It includes an arrow pointing to the trigger.
 - Tooltip contains only hints and additional information.
 
-@## Component composition
+## Component composition
 
 ![](static/tooltip-composition.png)
 
@@ -54,7 +54,7 @@ The placement of the arrow depends on the `placement` property, refer to the liv
 
 ![](static/tooltip-arrow-paddings.png)
 
-@## Paddings and margins
+## Paddings and margins
 
 The content area of the tooltip has a default padding of 12px.
 

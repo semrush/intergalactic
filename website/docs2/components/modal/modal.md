@@ -44,7 +44,7 @@ The Modal window consists of the following:
 - `Modal.Close`.
 - `Modal.Overlay`.
 
-@## Modal window types
+## Modal window types
 
 We have several modal window types in the design system:
 
@@ -52,7 +52,7 @@ We have several modal window types in the design system:
 - [Carousel](/components/carousel/);
 - [FullscreenModal](/components/fullscreen-modal/), can also be one- or two-zoned.
 
-@## Modal window styles
+## Modal window styles
 
 ### Modal.Window (Container)
 
@@ -83,7 +83,7 @@ We have several modal window types in the design system:
 
 > Use a modal window inside another modal window only if no other solution fits your case. Refer to an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows.
 
-@## Modal window size
+## Modal window size
 
 The modal window must have `min-width` of 320px for the desktop version.
 
@@ -165,7 +165,7 @@ Refer to [examples](/components/modal/modal-code/) of the modal window to see ho
 
 ![](static/position-5-2.png)
 
-@## Scrolling the window
+## Scrolling the window
 
 If the height of the modal window exceeds the height of the browser window, it should be positioned with a 40px margin from the top border.
 
@@ -196,7 +196,7 @@ If the modal window is used for confirmation, the title should pose a question, 
 
 ![](static/heading-yes-no.png)
 
-@## Button usage in modal window
+## Button usage in modal window
 
 The alignment of the buttons should follow the same centering as the title.
 

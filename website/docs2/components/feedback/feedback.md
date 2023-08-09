@@ -28,7 +28,7 @@ tabName: Design
 
 ![](static/options.png)
 
-@## Appearance
+## Appearance
 
 - Dropdown has `padding: var(--spacing-4x)`.
 - All inputs in this form has one size – M.
@@ -86,7 +86,7 @@ Message text for this case: "Thank you for your feedback!".
 
 ![](static/success.png)
 
-@## Validation
+## Validation
 
 ### Invalid textarea
 

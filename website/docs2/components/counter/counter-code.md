@@ -3,7 +3,6 @@ title: Example
 ---
 
 ## Counter in filters
-
 [FilterTrigger](/components/filter-trigger/) is normally used together with [Select](/components/select/) or [Dropdown](/components/dropdown/). Go to [the guide](/components/filter-trigger/) for more information.
 
 @example counter-filter

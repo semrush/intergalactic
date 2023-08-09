@@ -31,7 +31,7 @@ Links inside this component have custom styles.
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
 | Link                | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
-| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                                   |
+| `ChevronRight` icon | `color: var(--icon-secondary-neutral)`, `cursor: default`                              |
 
 ### Margins
 
@@ -54,8 +54,8 @@ If there isn’t enough place for the breadcrumbs (screen is too small or the te
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
 | Normal | `font-size: var(--fs-200)`, `color: var(--text-hint)`, `cursor: pointer`, no `line-height`. |
-| Hover  | `color: var(--text-hint-hover-active)` + underline                                          |
-| Active | `color: var(--text-primary)`, `cursor: default`                                             |
+| Hover  | `color: var(--text-hint-hover-active)` + underline                                       |
+| Active | `color: var(--text-primary)`, `cursor: default`                                         |
 
 ## Usage in UX/UI
 

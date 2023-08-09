@@ -10,7 +10,7 @@ tabName: Design
 
 The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/).
 
-@## Component composition
+## Component composition
 
 ![](static/select-composition.png)
 
@@ -81,7 +81,7 @@ The select trigger can contain an icon, flag, or other addon before the text. Th
 | Avatar  | ![](static/pic-primary.png)     | ![](static/inline-pic.png)     | ![](static/tertiary-pic.png)     |
 | Badge   | ![](static/badge-primary.png) | ![](static/inline-badge.png) | ![](static/tertiary-badge.png) |
 
-@## DropdownMenu
+## DropdownMenu
 
 Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/).
 

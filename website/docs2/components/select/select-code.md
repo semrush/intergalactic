@@ -7,7 +7,7 @@ fileSource: select
 
 The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu) with the additional functionality of item selection.
 
-@## Basic usage
+## Basic usage
 
 In the simplest case, you can implement the select by passing an array of options. The `options` array consists of objects with the following fields:
 
@@ -23,7 +23,7 @@ The component can operate in either controlled or uncontrolled mode.
 
 @example controll-uncontroll
 
-@## Trigger customization
+## Trigger customization
 
 When you need to customize the trigger, you can pass the desired component to the `tag` property of the select. The property will be passed to `Select.Trigger` and replace its render.
 
@@ -33,7 +33,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 
 @example custom-trigger
 
-@## DropdownMenu customization
+## DropdownMenu customization
 
 Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
 
@@ -79,7 +79,7 @@ The layout of options inside the component will be changed to `Select.OptionChec
 
 @example multiselect
 
-@## Sorting multiselect options
+## Sorting multiselect options
 
 The example below shows one of the ways to sort the selected options.
 

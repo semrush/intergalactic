@@ -3,11 +3,11 @@ title: Example
 fileSource: pills
 ---
 
-@## Basic example
+## Basic example
 
 @example basic
 
-@## Behavior arrows
+## Behavior arrows
 
 Switch to Pills using the `Tab` key and attempt switching with the arrow keys.
 

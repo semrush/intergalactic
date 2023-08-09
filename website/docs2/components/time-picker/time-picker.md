@@ -10,7 +10,7 @@ tabName: Design
 
 **Time picker** is a component that consists of comboboxes designed for entering or selecting a time value.
 
-@## Component composition
+## Component composition
 
 ![](static/timepicker-composition.png)
 

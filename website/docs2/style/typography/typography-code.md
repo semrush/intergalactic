@@ -2,7 +2,7 @@
 title: Example
 ---
 
-@## Basic usage
+## Basic usage
 
 Our typography primitives have no margins as they may differ in the end products. You may add them yourself according to your specific requirements.
 
@@ -14,7 +14,7 @@ Using the example below, you can easily create lists with custom bullets.
 
 @example list
 
-@## Native typography tags
+## Native typography tags
 
 To style native tags, use the `FormatText` component from the `@semcore/ui/format-text` package.
 

@@ -36,7 +36,7 @@ Find an example of using a mask in an input field for entering a phone number in
 | Placeholder | ![](static/placeholder-default-2.png) | Placeholder use `--text-placeholder` as color. |
 | Mask        | ![](static/mask-default-2.png)        | Mask use `--text-primary` as color.            |
 
-@## Hint instructions
+## Hint instructions
 
 We suggest including clear text instructions for inputs that have specific data format requirements.
 

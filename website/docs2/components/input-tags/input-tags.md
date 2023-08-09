@@ -53,7 +53,7 @@ When you focus on the input field, if there are preset options available (such a
 
 If the input field doesn't have preset options and allows users to enter any data, the entered data will be wrapped in a tag using punctuation separators, as described below.
 
-@## Wrapping text in tag
+## Wrapping text in tag
 
 The text entered by the user is automatically converted into a tag inside InputTags in the following cases:
 
@@ -73,7 +73,7 @@ After inserting data, the text is split into tags based on punctuation separator
 
 If the text cursor is positioned in front of a tag, pressing the `Delete` key will convert the tag back into plain text, allowing for editing and deletion.
 
-@## Handling long text within a tag
+## Handling long text within a tag
 
 > Note that this behavior isn’t recommended for full accessibility. Web page content should be responsive and adaptable to small viewport widths, text enlargement, and changes in text spacing.
 

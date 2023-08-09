@@ -28,7 +28,7 @@ Component consists of the following:
 | Size  | Example                                      |
 | ----- | -------------------------------------------- |
 | Small | ![](static/card-small.png) |
-| Big   | ![](static/card-big.png)   |
+| Big   | ![](static/card-big.png)     |
 
 ## Card.Header
 

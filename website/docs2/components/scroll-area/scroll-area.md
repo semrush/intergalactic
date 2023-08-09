@@ -8,7 +8,7 @@ tabName: Design
 
 **ScrollArea** is a component that allows you to customize the native scroll functionality. It enables smooth navigation through content within a window or block, both vertically and horizontally.
 
-@## Component composition
+## Component composition
 
 ![](static/scroll-composition.png)
 
@@ -18,12 +18,12 @@ The ScrollArea consists of the following elements:
 - Scroll indicator (`ScrollArea.Bar`).
 - Slider (`ScrollArea.Bar.Slider`).
 
-@## Styles
+## Styles
 
 @table-caption ScrollArea styles
 
-| Element                 | Styles                                     |
-| ----------------------- | ------------------------------------------ |
+| Element                 | Styles                                      |
+| ----------------------- | ------------------------------------------- |
 | `ScrollArea.Bar`        | `background: transparent`                  |
 | `ScrollArea.Bar.Slider` | `background: var(--scroll-bar-background)` |
 

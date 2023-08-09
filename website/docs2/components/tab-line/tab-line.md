@@ -15,7 +15,7 @@ tabName: Design
 - As the main navigation in your interface; in such cases, use the main menu instead as it provides better visual hierarchy.
 - For switching between states; for this purpose, use either the [Switch](/components/switch/) or [Radio](/components/radio/) components.
 
-@## Component composition
+## Component composition
 
 ![](static/tabline-composition.png)
 
@@ -25,7 +25,7 @@ Component consists of the following:
 - `TabLine.Item.Addon`
 - `TabLine.Item.Text`
 
-@## Sizes and margins
+## Sizes and margins
 
 - The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 - Addons before and after the text have a margin of 8px.
@@ -53,7 +53,7 @@ Use TabLine with border-bottom to visually separate navigation from the content 
 
 ![](static/tab-without-border.png)
 
-@## Addons
+## Addons
 
 Addons inside TabLine.Item have the same margins as addons inside the [Button](/components/button/) component.
 
@@ -74,7 +74,7 @@ Addons inside TabLine.Item have the same margins as addons inside the [Button](/
 
 ![](static/monster.png)
 
-@## Interaction
+## Interaction
 
 @table-caption TabLine states
 

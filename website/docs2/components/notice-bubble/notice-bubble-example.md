@@ -4,23 +4,23 @@ title: Example
 
 Please note that each example uses its own instance of `NoticeBubbleManager`, which can lead to the overlaying of notices from different examples.
 
-@## Basic notice
+## Basic notice
 
 @example simple
 
-@## Undo action
+## Undo action
 
 @example action-button
 
-@## Reload action
+## Reload action
 
 @example action-button-with-icon
 
-@## Loading state
+## Loading state
 
 @example spin-centered
 
-@## Completion state
+## Completion state
 
 @example success-centered
 
@@ -32,21 +32,21 @@ Please note that each example uses its own instance of `NoticeBubbleManager`, wh
 
 @example failure
 
-@## Dynamic notice (for success/failure states)
+## Dynamic notice (for success/failure states)
 
 @example dynamic
 
-@## Special events notice
+## Special events notice
 
 @example illustration
 
-@## No connection notice
+## No connection notice
 
 Use `type="warning"` for this case.
 
 @example warning-spin
 
-@## No connection notice with action
+## No connection notice with action
 
 Use `type="warning"` for this case.
 

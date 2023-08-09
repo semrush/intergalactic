@@ -10,13 +10,13 @@ Here we have compiled recommendations for content styles in modal windows.
 
 @table-caption Margins for the content of the modal window
 
-| Margin                                                                                       | Appearance example                      |
-| -------------------------------------------------------------------------------------------- | --------------------------------------- |
-| 16px to a text (`--spacing-4x` token)                                                        | ![](static/margins-heading.png)         |
-| 24px to controls and inputs (`--spacing-6x` token)                                           | ![](static/big-margins-heading.png)     |
-| For confirm modals use small margin of 8px (`--spacing-2x` token)                            | ![](static/margins-heading-confirm.png) |
-| Margin between the content and CTA buttons is 24px (`--spacing-6x` token)                    | ![](static/big-margins.png)             |
-| For confirm modals margin between the content and CTA buttons is 16px (`--spacing-4x` token) | ![](static/margins.png)                 |
+| Margin                                             | Appearance example                         |
+| -------------------------------------------------- | ------------------------------------------ |
+| 16px to a text (`--spacing-4x` token)              | ![](static/margins-heading.png)            |
+| 24px to controls and inputs (`--spacing-6x` token) | ![](static/big-margins-heading.png)        |
+| For confirm modals use small margin of 8px (`--spacing-2x` token) | ![](static/margins-heading-confirm.png)    |
+| Margin between the content and CTA buttons is 24px (`--spacing-6x` token) | ![](static/big-margins.png)                |
+| For confirm modals margin between the content and CTA buttons is 16px (`--spacing-4x` token) | ![](static/margins.png) |
 
 ## Title and text
 

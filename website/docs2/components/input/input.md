@@ -39,12 +39,12 @@ We recommend adding a visible text label to the input wherever possible. If the 
 
 @table-caption Input text label sizes
 
-| Size (height in px) | Text size                                | Appearance example                                             | Margins                              |
-| ------------------- | ---------------------------------------- | -------------------------------------------------------------- | ------------------------------------ |
+| Size (height in px) | Text size | Appearance example            | Margins                              |
+| ------------------- | --------- | ----------------------------- | ------------------------------------ |
 | M (28px)            | 14px (use `--fs-200`, `--lh-200` tokens) | ![](static/input-label-m.png) ![](static/input-optional-m.png) | ![](static/input-label-margin-m.png) |
 | L (40px)            | 16px (use `--fs-300`, `--lh-300` tokens) | ![](static/input-label-l.png) ![](static/input-optional-l.png) | ![](static/input-label-margin-l.png) |
 
-@## Addons
+## Addons
 
 **Addon** is a slot inside the input field – to the left and right of the text – for placing icons, badges, counters, etc. Addon can be non-clickable and clickable.
 
@@ -76,7 +76,7 @@ We recommend adding a visible text label to the input wherever possible. If the 
 | Valid   | ![](static/input-valid.png)     | ![](static/input-valid-focus.png)     | ![](static/input-valid-disabled.png)     |                                                        |
 | Invalid | ![](static/input-invalid.png) | ![](static/input-invalid-focus.png) | ![](static/input-invalid-disabled.png) |                                                    |
 
-@## Input types
+## Input types
 
 For live examples of the input types, refer to [Example tab](/components/input/input-code).
 

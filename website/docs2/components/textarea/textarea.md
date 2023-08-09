@@ -19,7 +19,7 @@ Size (height in px for one row of text) | Appearance example                 |
 | M (28px)                              | ![](static/m.png) |
 | L (40px)                              | ![](static/l.png) |
 
-@## Resize control
+## Resize control
 
 You can enable the resize control for the textarea to allow users to adjust its size. They can stretch it horizontally, vertically, or both ways.
 

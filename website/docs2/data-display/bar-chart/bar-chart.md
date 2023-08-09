@@ -60,15 +60,15 @@ If there are very large values, you may choose a different chart type which is b
 
 If there is only one category of values in the bar chart, you don't need legend. It is enough to clearly name the chart. Add labels to the axes only in specific cases, when chart title isn’t enough.
 
-| Vertical bar chart example | Horizontal bar chart example    |
-| -------------------------- | ------------------------------- |
-| ![](static/legend.png)     | ![](static/hor-bar-example.png) |
+| Vertical bar chart example      | Horizontal bar chart example    |
+| ------------------------------- | ------------------------------- |
+| ![](static/legend.png)          | ![](static/hor-bar-example.png) |
 
 > **Legend is required when there are two or more categories in the data set.**
 
-| Vertical bar chart example  | Horizontal bar chart example |
-| --------------------------- | ---------------------------- |
-| ![](static/bar-chart-2.png) | ![](static/hor-legend.png)   |
+| Vertical bar chart example   | Horizontal bar chart example      |
+| ---------------------------- | --------------------------------- |
+| ![](static/bar-chart-2.png)  | ![](static/hor-legend.png)        |
 
 ## Trend
 
@@ -88,9 +88,9 @@ If the column is clickable, the cursor changes to `pointer`.
 
 If the chart has a trend line, then while hovering a line and a point shall be displayed on the trend line.
 
-|                                   | Appearance example                                        |
-| --------------------------------- | --------------------------------------------------------- |
-| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)   |
+|                                   | Appearance example                        |
+| --------------------------------- | ----------------------------------------- |
+| Chart with one category           | ![](/data-display/bar-chart/static/bar-chart-hover.png)                  |
 | Chart with two or more categories | ![](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
 > To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
@@ -137,9 +137,9 @@ In this case, clicking on the date/column opens the detailed and switches the pe
 
 When you hover over a clickable date, it changes background `--chart-grid-period-bg`. In active state clickable date changes text color to `--text-invert` and background color to `--chart-x-axis-accent-period-active`.
 
-| Vertical bar chart example    | Horizontal bar chart example       |
-| ----------------------------- | ---------------------------------- |
-| ![](static/interactive-2.png) | ![](static/hor-widget-example.png) |
+| Vertical bar chart example     | Horizontal bar chart example       |
+| ------------------------------ | ---------------------------------- |
+| ![](static/interactive-2.png)  | ![](static/hor-widget-example.png) |
 
 @page bar-chart-vertical
 @page bar-chart-a11y

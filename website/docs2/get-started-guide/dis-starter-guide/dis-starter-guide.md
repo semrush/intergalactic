@@ -2,7 +2,7 @@
 title: For designers
 ---
 
-@## Introduction
+## Introduction
 
 Welcome to a series of quick and convenient guides to help you get started with the Intergalactic Design System for your product designs.
 

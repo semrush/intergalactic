@@ -9,7 +9,7 @@ Here's an example where tags have a limited width and can be edited by clicking 
 
 @example basic
 
-@## Wrapping email in tag
+## Wrapping email in tag
 
 In this example, emails are wrapped in tags without any width limitation.
 

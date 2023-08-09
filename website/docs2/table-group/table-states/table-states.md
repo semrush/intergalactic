@@ -37,7 +37,7 @@ In a secondary table, you can show the skeleton for all the rows (there are usua
 
 ![](static/skeleton-secondary.png)
 
-@## ProgressBar
+## ProgressBar
 
 If gathering data takes a large period of time **(more than 1 minute, for example)**, show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
 

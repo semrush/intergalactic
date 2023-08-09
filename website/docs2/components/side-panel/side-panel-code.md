@@ -11,7 +11,7 @@ fileSource: side-panel
 
 @example fullset
 
-@## Access to internal components
+## Access to internal components
 
 You can access the internal components by expanding `SidePanel` for `SidePanel.Overlay`, `SidePanel.Panel` or `SidePanel.Close`.
 
@@ -29,7 +29,7 @@ By default, the component is rendered with an overlay, but you can change this b
 
 @example overlay
 
-@## Portals
+## Portals
 
 By default, the component is rendered to the portal, at the bottom of the body. You can redefine this behavior with [`PortalProvider`](/utils/portal/) and disable it with `disablePortal`.
 

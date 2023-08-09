@@ -38,7 +38,7 @@ A list of colors can include either a single ColorPicker.Item or multiple ones, 
 
 ## Size
 
-ColorPicker.Item has 28px \* 28px size.
+ColorPicker.Item has 28px * 28px size.
 
 ![](static/colorpicker-item-size.png)
 

@@ -21,8 +21,8 @@ Basic rules for visualizing data as a Radial Tree:
 - Keep it simple. The simpler the visualization, the more readable and understandable it is.
 - There should be as much space as possible for such a chart. Otherwise, the data will be difficult to read.
 
-| Appearance example         | Styles and sizes                                                     |
-| -------------------------- | -------------------------------------------------------------------- |
+| Appearance example                                    | Styles and sizes                                                     |
+| ----------------------------------------------------- | -------------------------------------------------------------------- |
 | ![](static/radialtree.png) | The recommended minimum chart size is 600px (don't make it smaller). |
 
 ### Value's styles
@@ -73,15 +73,15 @@ The transparency of values appearance changes from 0 to 100 with `ease-in` and `
 
 Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
 
-| Case                                                                                                                                                                                                                           | Appearance example                   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
-| **One value**                                                                                                                                                                                                                  | ![](static/one-value.png)            |
-| **Two values**                                                                                                                                                                                                                 | ![](static/two-values.png)           |
-| **Few values.** If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.                                                                | ![](static/few-values.png)           |
-| **Very long main element.** Don't fold the long center value into ellipsis. Wrap it on the second line.                                                                                                                        | ![](static/long-value.png)           |
-| **No data.** Show a special WidgetEmpty message for cases when there is no data.                                                                                                                                               | ![](static/no-data-state.png)        |
-| **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![](static/n-a-state.png)            |
-| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![](static/radial-tree-skeleton.png) |
+| Case                                                                                                                                                                                                                           | Appearance example                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------- |
+| **One value**                                                                                                                                                                                                                  | ![](static/one-value.png)               |
+| **Two values**                                                                                                                                                                                                                 | ![](static/two-values.png)             |
+| **Few values.** If there are very few values, then they are evenly distributed around the entire circle relative to the central value in a clockwise direction.                                                                | ![](static/few-values.png)             |
+| **Very long main element.** Don't fold the long center value into ellipsis. Wrap it on the second line.                                                                                                                        | ![](static/long-value.png) |
+| **No data.** Show a special WidgetEmpty message for cases when there is no data.                                                                                                                                               | ![](static/no-data-state.png)             |
+| **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![](static/n-a-state.png)           |
+| **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![](static/radial-tree-skeleton.png)     |
 
 @page radial-tree-chart-api
 @page radial-tree-chart-a11y

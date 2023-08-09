@@ -29,7 +29,7 @@ import { LineChartSkeleton } from '@semcore/ui/skeleton';
 
 @typescript LineChartSkeletonProps
 
-@## AreaChartSkeleton
+## AreaChartSkeleton
 
 ```jsx
 import { AreaChartSkeleton } from '@semcore/ui/skeleton';
@@ -37,7 +37,7 @@ import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 
 @typescript AreaChartSkeletonProps
 
-@## BarChartSkeleton
+## BarChartSkeleton
 
 ```jsx
 import { BarChartSkeleton } from '@semcore/ui/skeleton';
@@ -45,7 +45,7 @@ import { BarChartSkeleton } from '@semcore/ui/skeleton';
 
 @typescript BarChartSkeletonProps
 
-@## HistogramChartSkeleton
+## HistogramChartSkeleton
 
 ```jsx
 import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
@@ -53,7 +53,7 @@ import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 
 @typescript HistogramChartSkeletonProps
 
-@## DonutChartSkeleton
+## DonutChartSkeleton
 
 ```jsx
 import { DonutChartSkeleton } from '@semcore/ui/skeleton';
@@ -61,13 +61,13 @@ import { DonutChartSkeleton } from '@semcore/ui/skeleton';
 
 @typescript DonutChartSkeletonProps
 
-@## BubbleChartSkeleton
+## BubbleChartSkeleton
 
 ```jsx
 import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@## ScatterPlotChartSkeleton
+## ScatterPlotChartSkeleton
 
 ```jsx
 import { ScatterPlotChartSkeleton } from '@semcore/ui/skeleton';
@@ -79,7 +79,7 @@ import { ScatterPlotChartSkeleton } from '@semcore/ui/skeleton';
 import { VennChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@## RadialTreeChartSkeleton
+## RadialTreeChartSkeleton
 
 ```jsx
 import { RadialTreeChartSkeleton } from '@semcore/ui/skeleton';

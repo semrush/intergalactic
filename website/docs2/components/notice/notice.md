@@ -28,7 +28,7 @@ It must fulfill four criteria to be considered a notice. Let's compare it to [No
 - contextual, appearing on product pages, widgets, and cards;
 - global, relating to the entire product.
 
-@## Component composition
+## Component composition
 
 ![](static/notice-composition.png)
 
@@ -39,7 +39,7 @@ Component consists of the following:
 3. `Notice.Actions` (optional).
 4. `Notice.CloseIcon` (optional);
 
-@## Notice content examples
+## Notice content examples
 
 @table-caption Notice content examples
 
@@ -69,7 +69,7 @@ Avoid stretching the text to the full width of the notice, particularly when the
 
 ![](static/notice-text-yes-no.png)
 
-@## Themes
+## Themes
 
 @table-caption Notice themes
 

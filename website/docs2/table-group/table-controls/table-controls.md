@@ -159,8 +159,8 @@ By default, use `SortDesc`.
 
 ### Click zone for sorting
 
-| Case                                                                                  | Click zone                   |
-| ------------------------------------------------------------------------------------- | ---------------------------- |
+| Case                                                                                  | Click zone                             |
+| ------------------------------------------------------------------------------------- | -------------------------------------- |
 | If there is a simple text/icon inside the cell.                                       | ![](static/hover-zone-1.png) |
 | If there is a control inside the cell (for example, a [Select](/components/select/)). | ![](static/hover-zone-2.png) |
 
@@ -188,13 +188,13 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 ### Sort direction
 
-|                                                                                                                                                                                                                                  | Ascending (SortAsc)                  | Descending (SortDesc)                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------ |
-| **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)                  | ![](static/desc.png)                 |
+|                                                                                                                                                                                                                                  | Ascending (SortAsc)                  | Descending (SortDesc)               |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------------- |
+| **Icon**                                                                                                                                                                                                                         | ![](static/asc.png)          | ![](static/desc.png)       |
 | **Numbers**. Values `-`, `n/a`, `0`, etc. are smaller values.                                                                                                                                                                    | From smaller to larger – 0, 1, 2 → 9 | From larger to smaller – 9, 8, 7 → 0 |
-| **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                               |
-| **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO       |
-| **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one    |
+| **Texts**. If there are several languages in the table, it is recommended to divide them into groups and sort them according to the priority and user needs (it may also depend on the target audience, product specifics, etc.) | A to Z                               | Z to A                              |
+| **Statuses**. At the discretion of the priority, SOFTWARE, or utility for users. We recommend using gradations of the form: good/bad, necessary/not necessary, fresh/not fresh, higher/lower, etc.                               | At the discretion of UX and PO       | At the discretion of UX and PO      |
+| **Dates**                                                                                                                                                                                                                        | From a newer date to an older one    | From an older date to a newer one   |
 
 ## Status and actions row
 
@@ -204,8 +204,8 @@ We recommend using the status row when the table has multi-row selection and pag
 
 When scrolling a table, this row should be pinned to the table header. In this case, it doesn't have a shadow, as well as a pinned header.
 
-| Appearance                        | Styles                                                                                                            |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Appearance                                         | Styles                                                                              |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | ![](static/action-row-scroll.png) | `background-color: var(--table-td-cell-actions-accordion)` and `border-bottom: 1px solid var(--border-secondary)` |
 
 ### The actions and rules of use

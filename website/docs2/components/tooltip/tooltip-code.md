@@ -10,7 +10,7 @@ The tooltip component is a wrap over [@semcore/ui/popper](/utils/popper/) with a
 - Stylization and themes for the popper.
 - Displaying the arrow of the popper.
 
-@## Basic usage
+## Basic usage
 
 As previously mentioned, the tooltip is essentially a styled version of [@semcore/ui/popper](/utils/popper/) and functions in the same way.
 
@@ -30,7 +30,7 @@ You can use a single tooltip for multiple reference elements. This allows you to
 
 @example tooltip-singleton
 
-@## Ignore portal stacking
+## Ignore portal stacking
 
 By default, when a tooltip is rendered on the edge of a relatively positioned block, the popup mechanism may try to push it inside the block as much as possible. If you don't want this behavior, you can set the `ignorePortalsStacking` prop.
 

@@ -4,7 +4,7 @@ fileSource: widget-empty
 tabName: Design
 ---
 
-@## Description
+## Description
 
 **WidgetEmpty** is a component designed to display messages in widgets.
 
@@ -21,7 +21,7 @@ Component consists of the following:
 - [Illustration](/style/illustration/)
 - Controls
 
-@## Styles
+## Styles
 
 We recommend to add maximum 400px width for the "empty" state message to ensure readability.
 
@@ -42,7 +42,7 @@ We recommend to add maximum 400px width for the "empty" state message to ensure 
 
 ![](static/margins-scheme-2.png)
 
-@## Widget sizes
+## Widget sizes
 
 The height of the widget in the "empty" state is usually the same as the height of the widget with data.
 
