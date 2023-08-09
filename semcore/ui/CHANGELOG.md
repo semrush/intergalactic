@@ -4954,7 +4954,7 @@
 ### @semcore/typography
 
 - **Fixed** Исправлены не работающие props fontSize и lineHeight у компонента Text
-g
+
 ### @semcore/utils
 
 - **Added** Добавлена функция brightness в color для вычисления контраста
