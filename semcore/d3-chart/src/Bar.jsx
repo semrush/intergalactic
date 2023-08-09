@@ -4,7 +4,7 @@ import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import ClipPath from './ClipPath';
-import { getBandwidth, roundedPath } from './utils';
+import { scaleToBand, roundedPath } from './utils';
 
 import style from './style/bar.shadow.css';
 
@@ -83,7 +83,7 @@ class BarRoot extends Component {
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
-    const width = widthProps || getBandwidth(xScale);
+    const width = widthProps || scaleToBand(xScale).bandwidth();
     const barX = xScale(d[x]) + offset[0];
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y])) +
@@ -160,7 +160,7 @@ function Background(props) {
       aria-hidden
       render='rect'
       childrenPosition='above'
-      width={xScale.bandwidth()}
+      width={scaleToBand(xScale).bandwidth()}
       height={yRange[0] - yRange[1]}
       x={xScale(value)}
       y={yRange[1]}

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.0.6] - 2023-08-08
+
+### Changed
+
+- Updated `@semcore/core` peer dependency from major 1 to major 2.
+
 ## [0.0.5] - 2023-02-17
 
 ### Fixed

@@ -1,3 +1,27 @@
+## [15.3.3] - 2023-08-08
+
+### @semcore/i18n-unplugin
+
+- **Changed** Updated `@semcore/core` peer dependency from major 1 to major 2.
+
+## [15.3.1] - 2023-08-08
+
+### @semcore/d3-chart
+
+- **Changed** Added `exports` fields for better nextjs support.  
+
+## [15.3.0] - 2023-08-07
+
+### @semcore/utils
+
+- **Fixed** Fixed core invalid peer dependencies warning. 
+
+## [15.2.4] - 2023-08-04
+
+### @semcore/ellipsis
+
+- **Fixed** Component build output was corrupted after the previous change.
+
 ## [15.2.3] - 2023-08-02
 
 ### @semcore/ellipsis
@@ -4930,7 +4954,7 @@
 ### @semcore/typography
 
 - **Fixed** Исправлены не работающие props fontSize и lineHeight у компонента Text
-
+g
 ### @semcore/utils
 
 - **Added** Добавлена функция brightness в color для вычисления контраста

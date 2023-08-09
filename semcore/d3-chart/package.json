@@ -1,34 +1,40 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.2.0",
+  "version": "3.3.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/es6/index.js"
+  },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts"
   },
   "dependencies": {
     "@formatjs/intl": "2.3.0",
-    "@semcore/animation": "2.1.0",
-    "@semcore/flex-box": "5.1.0",
-    "@semcore/popper": "5.1.0",
-    "@semcore/utils": "4.0.0",
+    "@semcore/animation": "2.2.0",
+    "@semcore/flex-box": "5.2.0",
+    "@semcore/popper": "5.2.0",
+    "@semcore/utils": "4.1.0",
     "@types/d3-shape": "^3.1.0",
-    "@upsetjs/venn.js": "1.4.1",
+    "@upsetjs/venn.js": "1.4.2",
     "d3-array": "3.1.6",
     "d3-interpolate": "3.0.1",
     "d3-polygon": "^3.0.1",
-    "d3-scale": "3.3.0",
-    "d3-shape": "3.1.0",
+    "d3-scale": "4.0.2",
+    "d3-shape": "3.2.0",
+    "d3-time": "3.1.0",
+    "d3-time-format": "4.1.0",
     "d3-transition": "3.0.1",
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/core": "2.0.0",
+    "@semcore/core": "^2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

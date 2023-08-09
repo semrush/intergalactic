@@ -25,7 +25,6 @@ export type EllipsisProps = BoxProps &
     /**
      * Ref to the item that will be observed by ResizeObserver
      */
-    // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
     containerRef?: RefObject<HTMLElement | null>;
     /**
      * Explicit sizes of container text should be trimmed in
