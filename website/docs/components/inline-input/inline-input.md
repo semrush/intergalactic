@@ -66,7 +66,7 @@ Addons are slots inside the input to the left or right of the text for additiona
 
 Through the addon, you can add a label.
 
-_It's needed so that the user understands what data he needs to enter. For example, tag name, project name, etc._
+_It's needed so that the user understands what data they need to enter. For example, tag name, project name, etc._
 
 ![](static/permanent-placeholder.png)
 

@@ -82,7 +82,7 @@ Show this element if the report or product has an alternative form for sending f
 
 @## Remembering states
 
-1. If the user sent the feedback, **the notice isn’t shown to him/her anymore**.
+1. If the user sent the feedback, **the notice isn’t shown to them anymore**.
 2. It's recommended to store this status in `user`. In order not to be obtrusive.
 3. It's allowed to store the statuses of closing and showing in `local storage`.
 
