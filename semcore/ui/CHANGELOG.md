@@ -1,3 +1,9 @@
+## [15.4.7] - 2023-08-10
+
+### @semcore/select
+
+- **Fixed** Default options DOM ids where not synced with aria-activedescendant value.
+
 ## [15.4.0] - 2023-08-09
 
 ### @semcore/d3-chart
