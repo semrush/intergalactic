@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.1] - 2023-08-10
+
+### Fixed
+
+- Default options DOM ids where not synced with aria-activedescendant value.
+
 ## [4.3.0] - 2023-08-07
 
 ### Changed
