@@ -83,9 +83,9 @@ export const patchReleaseChangelog = async (
   }
 
   let guessedVersion = semver.inc(previousVersionId, releaseIncrement, undefined, updateIdentifier);
-  // temporally hack (remove when non-beta 15.3.1 is published) because 15.3.0-beta.0 is not unpublishable
-  if (guessedVersion === '15.3.0-beta.0' || guessedVersion === '15.3.0-beta.1') {
-    guessedVersion = '15.3.1-beta.0';
+  // temporally hack (remove when non-beta 15.5.0 is published) because 15.5.0-beta.1 is not unpublishable
+  if (guessedVersion === '15.5.0-beta.0' || guessedVersion === '15.5.0-beta.1') {
+    guessedVersion = '15.5.0-beta.2';
   }
 
   const versionChangelog: Changelog = releaseChangelog.changelogs[previousVersionIndex - 1] ?? {
