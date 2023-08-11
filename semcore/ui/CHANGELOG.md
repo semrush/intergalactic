@@ -1,3 +1,9 @@
+## [15.5.0-beta.2] - 2023-08-11
+
+### @semcore/textarea
+
+- **Fixed** Line height of textarea of `l` size changed from `lh-400` to `lh-300`.
+
 ## [15.4.7] - 2023-08-10
 
 ### @semcore/select
