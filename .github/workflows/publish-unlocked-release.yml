@@ -65,11 +65,5 @@ jobs:
       - name: NPM auth check
         run: pnpm whoami
       - name: Publish release
-        run: pnpm publish-release --dry-run
-      - name: Save repository state as artifacts
-        if: failure()
-        uses: actions/upload-artifact@v3
-        with:
-          name: repository-state
-          path: .
-          retention-days: 1
+        run: pnpm publish-release
+    
