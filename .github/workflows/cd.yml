@@ -2,11 +2,11 @@ name: cd
 on:
   pull_request:
   push:
-    branches: [master, cd-debug]
+    branches: [master]
+    paths: [semcore/*/CHANGELOG.md, pnpm-lock.yaml]
   workflow_dispatch:
 concurrency:
-  group: ${{ github.ref }}
-  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -221,8 +221,8 @@ jobs:
           echo "strict-peer-dependencies=false" >> ".npmrc"
       - name: NPM auth check
         run: pnpm whoami
-      - name: Delivery
-        run: pnpm continuous-delivery
+      - name: Deliver prerelease
+        run: pnpm deliver-prerelease
   publish-website:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
@@ -387,33 +387,7 @@ jobs:
         with:
           version: 7
           run_install: false
-      # - name: Get pnpm store directory
-      #   id: pnpm-cache
-      #   run: |
-      #     echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-      # - uses: actions/cache@v3.3.1
-      #   name: Restore pnpm cache
-      #   with:
-      #     path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-      #     key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-      # - name: Restore cached build
-      #   uses: actions/cache@v3.3.1
-      #   with:
-      #     path: |
-      #       semcore/*/lib
-      #       tools/*/lib
-      #       semcore/icon/**/*.js
-      #       semcore/icon/**/*.mjs
-      #       semcore/icon/**/*.d.ts
-      #       semcore/illustration/**/*.js
-      #       semcore/illustration/**/*.mjs
-      #       semcore/illustration/**/*.d.ts
-      #     key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-2
-      # - name: Install restored dependencies
-      #   run: |
-      #     pnpm install --frozen-lockfile
-      # - name: Install Browser
-      #   run: npx playwright install --with-deps
+
       - name: Browser testing
         id: browser-testing
         run: |

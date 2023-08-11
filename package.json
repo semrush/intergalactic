@@ -15,7 +15,6 @@
     "lint": "pnpm lint:es && pnpm lint-changelogs && pnpm lint:ts",
     "lint-changelogs": "pnpm --filter @semcore/changelogs-handler run lint-changelogs",
     "publish:website": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/trigger-website-publish.ts",
-    "publish:ui": "pnpm --filter @semcore/ui run update-changelog && pnpm --filter @semcore/ui run update-dependencies && pnpm install",
     "build:icons": "pnpm --filter @semcore/icon run build",
     "build:illustration": "pnpm --filter @semcore/illustration run build",
     "clean": "rm -rf semcore/*/lib && pnpm clean:icon && pnpm clean:illustration",

@@ -2,9 +2,10 @@ import { VersionPatch } from './makeVersionPatches';
 import { resolve as resolvePath } from 'path';
 import fs from 'fs-extra';
 import semver from 'semver';
-import { carefulVersionUpdate } from './utils';
+import { carefulVersionUpdate, log } from './utils';
 
 export const updateVersions = async (versionPatches: VersionPatch[]) => {
+  log('Updating package.json files versions...');
   const packageFiles = await Promise.all(
     versionPatches.map((patch) => fs.readJson(resolvePath(patch.package.path, 'package.json'))),
   );
@@ -19,7 +20,7 @@ export const updateVersions = async (versionPatches: VersionPatch[]) => {
         setVersions[packageFile.name],
       );
     }
-    for (const dependenciesType of ['dependencies', 'devDependencies']) {
+    for (const dependenciesType of ['dependencies']) {
       for (const dependency in packageFile[dependenciesType]) {
         if (
           setVersions[dependency] &&
@@ -40,4 +41,5 @@ export const updateVersions = async (versionPatches: VersionPatch[]) => {
       }),
     ),
   );
+  log('package.json files versions updated.');
 };

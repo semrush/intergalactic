@@ -69,3 +69,10 @@ export const isValidSemver = (version: string) => {
 export const formatMarkdown = (markdown: string) => {
   return markdown.replace(/\n\*\s/g, '\n- ').replace(/\*\*\s\s+/g, '** ') + '\n';
 };
+
+const start = Date.now();
+export const log = (message: string) => {
+  const secondsPassed = ((Date.now() - start) / 1000).toFixed(1);
+  // rome-ignore lint/nursery/noConsoleLog:
+  console.log(`[${secondsPassed}s] ${message}`);
+};
