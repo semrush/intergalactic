@@ -1,3 +1,9 @@
+## [15.5.0-beta.0] - 2023-08-11
+
+### @semcore/dropdown-menu
+
+- **Changed** Test change
+
 ## [15.4.7] - 2023-08-10
 
 ### @semcore/select
