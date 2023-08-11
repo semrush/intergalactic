@@ -1677,7 +1677,7 @@ importers:
         specifier: 4.2.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.2.0
+        specifier: 4.3.0-beta.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.2.0
@@ -1978,7 +1978,7 @@ importers:
         specifier: 4.3.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.3.1
+        specifier: 4.4.0-beta.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.1.0
@@ -2101,7 +2101,7 @@ importers:
         specifier: 4.2.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.2.0
+        specifier: 4.3.0-beta.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.2.0
@@ -2206,7 +2206,7 @@ importers:
         specifier: 5.2.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.3.1
+        specifier: 4.4.0-beta.0
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.3.0
@@ -2242,7 +2242,7 @@ importers:
         specifier: 5.2.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.3.1
+        specifier: 4.4.0-beta.0
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.2.0
