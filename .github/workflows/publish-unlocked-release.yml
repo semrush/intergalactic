@@ -1,0 +1,75 @@
+name: publish-unlocked-release
+on:
+  push:
+    branches: [master, release-lock-testing]
+    paths: .ci/.unlocked-releases.txt
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  publish-unlocked-release:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_SECRET: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+      GCLOUD_SECRET: ${{ secrets.GCLOUD_SECRET }}
+      SLACK_API_ENDPOINTS: ${{ secrets.SLACK_WEBHOOK_URLS }}
+    steps:
+      - uses: actions/checkout@v3.5.3
+        with:
+          token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
+      - uses: pnpm/action-setup@v2.2.4
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - uses: actions/setup-node@v3.6.0
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3.3.1
+        name: Restore pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Restore cached build
+        uses: actions/cache@v3.3.1
+        with:
+          path: |
+            semcore/*/lib
+            tools/*/lib
+            semcore/icon/**/*.js
+            semcore/icon/**/*.mjs
+            semcore/icon/**/*.d.ts
+            semcore/illustration/**/*.js
+            semcore/illustration/**/*.mjs
+            semcore/illustration/**/*.d.ts
+          key: build-${{ hashFiles('**/pnpm-lock.yaml', '**/CHANGELOG.md') }}-2
+      - name: Install restored dependencies
+        run: |
+          pnpm install
+      - name: Github GPG Auth
+        uses: crazy-max/ghaction-import-gpg@v5.3.0
+        with:
+          gpg_private_key: ${{ secrets.BOT_ACCOUNT_GPG_PRIVATE_KEY }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+          git_committer_name: semrush-ci-whale
+          git_committer_email: semrush-ci-whale@users.noreply.github.com
+      - name: NPM setup
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ".npmrc"
+          echo "strict-peer-dependencies=false" >> ".npmrc"
+      - name: NPM auth check
+        run: pnpm whoami
+      - name: Publish release
+        run: pnpm publish-release --dry-run
+      - name: Save repository state as artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: repository-state
+          path: .
+          retention-days: 1

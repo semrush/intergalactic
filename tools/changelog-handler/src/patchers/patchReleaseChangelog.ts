@@ -72,7 +72,21 @@ export const patchReleaseChangelog = async (
     'patch' as semver.ReleaseType,
   );
 
-  const guessedVersion = semver.inc(previousVersionId, releaseIncrement);
+  let updateIdentifier: string | undefined = undefined;
+  if (releaseIncrement.startsWith('pre')) {
+    for (const { version } of componentChanges.flat()) {
+      const identifier = version.match(/-(\w+)\./)?.[1];
+      if (!identifier) continue;
+      updateIdentifier = identifier;
+      break;
+    }
+  }
+
+  let guessedVersion = semver.inc(previousVersionId, releaseIncrement, undefined, updateIdentifier);
+  // temporally hack (remove when non-beta 15.3.1 is published) because 15.3.0-beta.0 is not unpublishable
+  if (guessedVersion === '15.3.0-beta.0' || guessedVersion === '15.3.0-beta.1') {
+    guessedVersion = '15.3.1-beta.0';
+  }
 
   const versionChangelog: Changelog = releaseChangelog.changelogs[previousVersionIndex - 1] ?? {
     component: releaseChangelog.package.name,

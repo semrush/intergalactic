@@ -1,20 +1,20 @@
 import { execSync } from 'child_process';
-import fs from 'fs/promises';
 import { VersionPatch } from './makeVersionPatches';
 import Git from 'simple-git';
 import dotenv from 'dotenv';
-import {
-  getReleaseChangelog,
-  serializeReleaseChangelog,
-  toMarkdown,
-} from '@semcore/changelog-handler';
-import { sendMessage, makeMessageFromChangelogs } from '@semcore/slack-integration';
+
+import { log } from './utils';
+import { publishReleaseNotes } from './publishReleaseNotes';
 
 dotenv.config();
 const git = Git();
 
 export const runPublisher = async (versionPatches: VersionPatch[]) => {
-  if (versionPatches.length === 0) return;
+  log('Running publisher...');
+  if (versionPatches.length === 0) {
+    log('No versions patches found, stopping.');
+    return;
+  }
   const status = await git.status();
 
   let commitMessage = '[chore] bumped';
@@ -24,7 +24,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     commitMessage += ' versions of ';
   }
   commitMessage += versionPatches.map((patch) => `${patch.package.name}@${patch.to}`).join(', ');
-  const pnpmOptions = process.argv.includes('--dry-run')
+  let pnpmOptions = process.argv.includes('--dry-run')
     ? '--dry-run --no-git-checks'
     : '--no-git-checks';
   const gitTags = versionPatches.map((patch) => `${patch.package.name}@${patch.to}`);
@@ -34,100 +34,102 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
   const nonSemcoreUiPatches = toPublish.filter((patch) => patch !== semcoreUiPatch);
   const pnpmFilter = nonSemcoreUiPatches.map((patch) => `--filter ${patch.package.name}`).join(' ');
 
+  const prerelease = versionPatches.some((patch) => patch.to.includes('-beta.'));
+  if (prerelease) {
+    pnpmOptions += ' --tag beta';
+  }
+
+  log(`Commit message "${commitMessage}".`);
+  log(`Git tags "${gitTags.join(', ')}".`);
+  log(`pnpm filter "${pnpmFilter}".`);
+  log(`pnpm options "${pnpmOptions}".`);
+
   if (status.files.length) {
-    await git.add('.');
+    log('Committing changes...');
     if (!process.argv.includes('--dry-run')) {
+      await git.add('.');
       await git.commit(commitMessage, []);
       for (const tag of gitTags) {
         await git.tag(['-f', tag]);
       }
     }
+    log('Changes committed.');
   }
   if (nonSemcoreUiPatches.length !== 0) {
+    log('Building packages...');
     execSync('pnpm build', {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
+    log('Build finished.');
     if (!process.argv.includes('--dry-run')) {
+      log('Uploading static files...');
       execSync(`pnpm ${pnpmFilter} run upload-static`, {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
       });
+      log('Static upload done.');
+      log('Publishing to registry...');
       execSync(`pnpm ${pnpmFilter} publish ${pnpmOptions}`, {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
       });
+      log('Published.');
     }
   }
   if (semcoreUiPatch) {
+    log('Building semcore/ui package...');
     execSync('pnpm --filter @semcore/ui run build', {
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
     });
+    log('Building semcore/ui package finished.');
     let status = await git.status();
     if (status.files.length) {
-      await git.add('.');
+      log('Committing @semcore/ui changes...');
       if (!process.argv.includes('--dry-run')) {
+        await git.add('.');
         await git.commit(['[chore] @semcore/ui package version bump'], []);
         await git.tag(['-f', `@semcore/ui@${semcoreUiPatch.to}`]);
       }
+      log('@semcore/ui changes committed.');
     }
     if (!process.argv.includes('--dry-run')) {
+      log('Publishing @semcore/ui...');
       execSync(`pnpm --filter @semcore/ui publish ${pnpmOptions}`, {
         encoding: 'utf-8',
         stdio: ['inherit', 'inherit', 'inherit'],
       });
+      log('@semcore/ui published.');
     }
     status = await git.status();
     if (status.files.length) {
+      log('Committing lockfile...');
       await git.add('pnpm-lock.yaml');
       if (!process.argv.includes('--dry-run')) {
         await git.commit(['[chore] updated lock file'], []);
       }
+      log('Lockfile committed.');
     }
   }
+
   if (!process.argv.includes('--dry-run')) {
+    log('Rebasing on git origin...');
     try {
-      await git.pull('origin', 'master', { '--rebase': 'true' });
+      await git.pull('origin', 'release-lock-testing', { '--rebase': 'true' });
     } catch (err) {
       // rome-ignore lint/nursery/noConsoleLog: <explanation>
       console.log(await git.status());
       throw err;
     }
-    await git.push('origin', 'master', { '--follow-tags': null });
+    log('Rebased on git origin.');
+    log('Pushing to git origin...');
+    await git.push('origin', 'release-lock-testing', { '--follow-tags': null });
+    log('Pushed to git origin.');
 
-    if (semcoreUiPatch) {
-      await fs.writeFile('./.gh-auth-token.txt', String(process.env.GITHUB_SECRET));
-      execSync('gh auth login --with-token < ./.gh-auth-token.txt', {
-        encoding: 'utf-8',
-        stdio: ['inherit', 'inherit', 'inherit'],
-      });
-      await fs.rm('./.gh-auth-token.txt');
-      const semcoreUiChangelog = await getReleaseChangelog();
-      const version = semcoreUiChangelog.package.version;
-      const lastVersionChangelogs = semcoreUiChangelog.changelogs.slice(0, 1);
-      const releaseNotes = toMarkdown(serializeReleaseChangelog(lastVersionChangelogs))
-        .split('\n')
-        .slice(2)
-        .join('\n');
-      await fs.writeFile('./.github-release-notes.txt', releaseNotes);
-      execSync(
-        `gh release create "v${version}" --title "v${version}" --notes-file .github-release-notes.txt`,
-        {
-          encoding: 'utf-8',
-          stdio: ['inherit', 'inherit', 'inherit'],
-        },
-      );
-      await fs.rm('./.github-release-notes.txt');
-
-      const title = `New release v${version} is here!`;
-      const body = makeMessageFromChangelogs(lastVersionChangelogs, false);
-
-      await sendMessage({
-        title,
-        body,
-        dryRun: false,
-      });
+    if (semcoreUiPatch && !prerelease) {
+      await publishReleaseNotes();
     }
   }
+  log('Publisher work is done.');
 };

@@ -1,8 +1,11 @@
 name: publish-website
 on:
   workflow_dispatch:
+  push:
+    branches: [master, release-lock-testing]
+    paths: website/docs
 concurrency:
-  group: ${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.actor == 'semrush-ci-whale' }}
   cancel-in-progress: true
 jobs:
   publish-website:
