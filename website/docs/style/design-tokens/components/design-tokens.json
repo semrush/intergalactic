@@ -2202,7 +2202,6 @@
     "components": [
       "format-text",
       "product-head",
-      "textarea",
       "typography"
     ]
   },
@@ -2224,6 +2223,7 @@
       "switch",
       "tab-line",
       "tag",
+      "textarea",
       "typography",
       "widget-empty",
       "wizard"

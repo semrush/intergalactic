@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.3.0] - 2023-08-11
+
+### Fixed
+
+- Line height of textarea of `l` size changed from `lh-400` to `lh-300`.
+
 ## [5.2.0] - 2023-08-07
 
 ### Changed

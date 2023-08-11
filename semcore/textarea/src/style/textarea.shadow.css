@@ -29,10 +29,9 @@ STextarea[size='m'] {
 }
 
 STextarea[size='l'] {
-  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px)
-    var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
+  padding: var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-2x, 8px) var(--intergalactic-spacing-3x, 12px);
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-400, 120%);
+  line-height: var(--intergalactic-lh-300, 150%);
 }
 
 STextarea[state='normal'] {
@@ -44,6 +43,7 @@ STextarea[state='normal'] {
 
 STextarea[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);
+
   &:focus {
     box-shadow: var(--intergalactic-keyboard-focus-valid, 0px 0px 0px 3px rgba(0, 159, 129, 0.5));
   }
@@ -51,6 +51,7 @@ STextarea[state='valid'] {
 
 STextarea[state='invalid'] {
   border-color: var(--intergalactic-border-critical-active, #d1002f);
+
   &:focus {
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
   }
