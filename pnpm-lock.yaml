@@ -1677,7 +1677,7 @@ importers:
         specifier: 4.2.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.2.1-beta.5
+        specifier: 4.2.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.2.0
@@ -1978,7 +1978,7 @@ importers:
         specifier: 4.3.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.3.2-beta.5
+        specifier: 4.3.1
         version: link:../select
       '@semcore/utils':
         specifier: 4.1.0
@@ -2071,7 +2071,7 @@ importers:
         specifier: 7.2.0
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: 2.3.1
+        specifier: 2.3.0
         version: link:../color-picker
       '@semcore/core':
         specifier: 2.2.0
@@ -2086,7 +2086,7 @@ importers:
         specifier: 4.3.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.2.1
+        specifier: 4.2.0
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.2.0
@@ -2101,7 +2101,7 @@ importers:
         specifier: 4.2.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.2.1-beta.5
+        specifier: 4.2.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.2.0
@@ -2110,13 +2110,13 @@ importers:
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 4.2.1
+        specifier: 4.2.0
         version: link:../errors
       '@semcore/feature-popover':
         specifier: 4.3.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 6.2.1
+        specifier: 6.2.0
         version: link:../feedback-form
       '@semcore/flags':
         specifier: 4.2.0
@@ -2182,7 +2182,7 @@ importers:
         specifier: 3.1.0
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 4.3.1
+        specifier: 4.3.0
         version: link:../pagination
       '@semcore/pills':
         specifier: 5.3.0
@@ -2206,7 +2206,7 @@ importers:
         specifier: 5.2.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.3.2-beta.5
+        specifier: 4.3.1
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.3.0
@@ -2242,7 +2242,7 @@ importers:
         specifier: 5.2.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.3.2-beta.5
+        specifier: 4.3.1
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.2.0
