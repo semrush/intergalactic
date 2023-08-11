@@ -1,7 +1,10 @@
-import { resolve as resolvePath } from 'path';
+import { resolve as resolvePath, dirname as resolveDirname } from 'path';
 import fs from 'fs-extra';
-import { isValidSemver } from './utils';
+import { isValidSemver, log } from './utils';
 import { componentChangelogParser, Changelog } from '@semcore/changelog-handler';
+import { fileURLToPath } from 'url';
+
+const dirname = resolveDirname(fileURLToPath(import.meta.url));
 
 export type Package = {
   name: string;
@@ -16,12 +19,13 @@ export type Package = {
 export const collectPackages = async (inNpmVersions: {
   [packageName: string]: { version: string };
 }) => {
+  log('Collecting data about local fs packages...');
   const packagePaths = [
-    ...(await fs.readdir(resolvePath('./semcore'))).map((packageName) =>
-      resolvePath('./semcore', packageName),
+    ...(await fs.readdir(resolvePath(dirname, '../../../semcore'))).map((packageName) =>
+      resolvePath(dirname, '../../../semcore', packageName),
     ),
-    ...(await fs.readdir(resolvePath('./tools'))).map((packageName) =>
-      resolvePath('./tools', packageName),
+    ...(await fs.readdir(resolvePath(dirname, '../../../tools'))).map((packageName) =>
+      resolvePath(dirname, '../../../tools', packageName),
     ),
   ];
   const files = (
@@ -113,6 +117,8 @@ export const collectPackages = async (inNpmVersions: {
         : null;
     }
   }
+
+  log(`Collected data about ${packages.length} package(s).`);
 
   return packages;
 };
