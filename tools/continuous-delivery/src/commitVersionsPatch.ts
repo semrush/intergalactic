@@ -1,9 +1,16 @@
 import { Package } from './collectPackages';
 import Git from 'simple-git';
 import { log } from './utils';
+import { execSync } from 'child_process';
+
 const git = Git();
 
 export const commitVersionsPatch = async (packages: Package[]) => {
+  log('Updating lockfile...');
+  execSync('pnpm install --frozen-lockfile false', {
+    stdio: 'inherit',
+  });
+  log('Lockfile updated.');
   log('Committing changes...');
   await git.add('.');
   await git.commit(['[chore] changed versions from beta prereleases to latests'], []);
