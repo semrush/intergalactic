@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.0] - 2023-08-14
+
+### Fixed
+
+Fixed colors of `--intergalactic-table-td-cell-hover` and `--intergalactic-table-td-cell-active` design tokens to a lighter ones.
+
 ## [4.1.0] - 2023-08-07
 
 ### Fixed
