@@ -208,7 +208,11 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
       const color = chroma(values[token]);
       if (modification.type === 'lighten') {
         if (['hsl'].includes(modification.space)) {
-          values[token] = color.brighten(modification.value).css();
+          const rgba = chroma(color.alpha(color.alpha() * modification.value));
+          const alpha = rgba.alpha();
+          const colorWithFullAlpha = rgba.alpha(1);
+          const rgb = chroma.average([colorWithFullAlpha, 'white'], 'rgb', [alpha, 1 - alpha]);
+          values[token] = rgb.css();
         } else {
           throw new Error(`Unsupported color space ${modification.space} of token ${token}`);
         }
