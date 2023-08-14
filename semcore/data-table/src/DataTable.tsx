@@ -485,7 +485,7 @@ class RootDefinitionTable extends Component<AsProps> {
         render={Box}
         __excludeProps={['data']}
         ref={this.tableRef}
-        role="table"
+        role='table'
         aria-rowcount={(data ?? []).length}
       >
         <Children />
