@@ -86,7 +86,7 @@ type IntergalacticRadioGroupComponent = (<
   Value extends RadioValue,
   Tag extends Intergalactic.Tag = typeof Flex,
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, RadioGroupProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 

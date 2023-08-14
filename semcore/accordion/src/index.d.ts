@@ -71,6 +71,7 @@ type IntergalacticAccordionComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     AccordionProps<Value>,
     AccordionContext & { value: Value },
     [handlers: AccordionHandlers]

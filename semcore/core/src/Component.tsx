@@ -179,6 +179,7 @@ export namespace Intergalactic {
       | ReactFCLike;
     export type ComponentProps<
       Tag extends ComponentTag,
+      BaseTag extends ComponentTag | never,
       Props,
       Context = never,
       AdditionalContext extends any[] = never[],
@@ -191,7 +192,10 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
-      MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
+      MergeProps<
+        Omit<Props, 'tag' | 'children'>,
+        ComponentPropsNesting<BaseTag> & ComponentPropsNesting<Tag>
+      >;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
       Props,
@@ -234,7 +238,7 @@ export namespace Intergalactic {
     Context = {},
     AdditionalContext extends any[] = never[],
   > = (<Tag extends InternalTypings.ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
-    props: InternalTypings.ComponentProps<Tag, Props, Context, AdditionalContext>,
+    props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
     InternalTypings.ComponentAdditive<BaseTag>;
   export type Tag = InternalTypings.ComponentTag;

@@ -70,6 +70,7 @@ type IntergalacticPillsComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     PillsProps<Value>,
     PillsContext,
     [handlers: PillsHandlers]

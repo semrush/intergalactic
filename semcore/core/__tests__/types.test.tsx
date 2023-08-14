@@ -100,7 +100,7 @@ describe('Core types', () => {
       Value extends PillsValue,
       Tag extends Intergalactic.Tag = BaseTag,
     >(
-      props: Intergalactic.InternalTypings.ComponentProps<Tag, PillsProps<Value>>,
+      props: Intergalactic.InternalTypings.ComponentProps<Tag, BaseTag, PillsProps<Value>>,
     ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
       Intergalactic.InternalTypings.ComponentAdditive<BaseTag>;
 
