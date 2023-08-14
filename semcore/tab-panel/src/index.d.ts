@@ -56,6 +56,7 @@ type IntergalacticTabPanelComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     TabPanelProps<Value>,
     TabPanelContext,
     [handlers: TabPanelHandlers]

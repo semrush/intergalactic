@@ -17,7 +17,7 @@
     "@semcore/utils": "4.1.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2",
+    "@semcore/core": "^2.2.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

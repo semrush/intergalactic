@@ -6,7 +6,7 @@ import { NoticeSmart } from '@semcore/notice';
 import { Box } from '@semcore/flex-box';
 
 /** @deprecated */
-export interface IFeedbackForm extends FeedbackFormProps {}
+export type IFeedbackForm = FeedbackFormProps;
 export type FeedbackFormProps = FormProps & {
   /* The event is called when the form is submitted */
   onSubmit: (values: any, form: any, callback?: (errors?: {}) => void) => {} | Promise<{}> | void;

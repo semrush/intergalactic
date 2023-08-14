@@ -66,7 +66,7 @@ type IntergalacticWizardStepperComponent = (<
   Value extends WizardStep,
   Tag extends Intergalactic.Tag = 'div',
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, WizardStepperProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', WizardStepperProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
