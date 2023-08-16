@@ -1,3 +1,20 @@
+## [15.6.0] - 2023-08-16
+
+### @semcore/core
+
+- **Changed** Internal typings update that fixes edge cases of props nesting.
+- **Changed** Internal typings update that fixes edge cases of props nesting.
+
+### @semcore/flex-box
+
+- **Changed** Deprecated `IFlexProps`.
+- **Changed** Deprecated `IFlexProps`.
+
+### @semcore/utils
+
+- **Fixed** Fixed colors of `--intergalactic-table-td-cell-hover` and `--intergalactic-table-td-cell-active` design tokens to a lighter ones.
+- **Fixed** Fixed colors of `--intergalactic-table-td-cell-hover` and `--intergalactic-table-td-cell-active` design tokens to a lighter ones.
+
 ## [15.5.0] - 2023-08-11
 
 ### @semcore/textarea
