@@ -83,9 +83,9 @@ function UpdateBlock() {
       url: 'mailer/post',
       data: { email: value },
     })
-      // rome-ignore lint/nursery/noConsoleLog: <explanation>
+      // rome-ignore lint/nursery/noConsoleLog:
       .then((response) => console.log(response))
-      // rome-ignore lint/nursery/noConsoleLog: <explanation>
+      // rome-ignore lint/nursery/noConsoleLog:
       .catch((error) => console.log(error));
   };
 

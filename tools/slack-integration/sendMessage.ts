@@ -36,11 +36,11 @@ export const sendMessage = async ({
         log += `\nImage: ${image.full} (thumb ${image.thumb})\n===`;
       }
 
-      // rome-ignore lint/nursery/noConsoleLog: <explanation>
+      // rome-ignore lint/nursery/noConsoleLog:
       console.log(log);
 
       if (dryRun) {
-        // rome-ignore lint/nursery/noConsoleLog: <explanation>
+        // rome-ignore lint/nursery/noConsoleLog:
         console.log('Sending is canceled due to dry run');
         return null;
       }

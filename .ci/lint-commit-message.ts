@@ -16,7 +16,7 @@ const specialScopes = ['global', 'chore', 'ci', 'website', 'docs', 'tests'];
 const allowedScopes = [...specialScopes, ...semcoreComponents, ...toolsComponents];
 
 const outputError = (message: string) => {
-  // rome-ignore lint/nursery/noConsoleLog: <explanation>
+  // rome-ignore lint/nursery/noConsoleLog:
   console.log(
     `\n${pc.red('Invalid commit message!')} ${message}\nGot commit message: ${pc.gray(
       commitMessage,

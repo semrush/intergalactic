@@ -7,7 +7,7 @@ function ImageFromModal({ content, ...other }) {
     <Modal visible={!!content} {...other}>
       <div
         className={styles.imageContainer}
-        // rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        // rome-ignore lint/security/noDangerouslySetInnerHtml:
         dangerouslySetInnerHTML={{ __html: content }}
         role='img'
       />
