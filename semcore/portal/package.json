@@ -1,7 +1,7 @@
 {
   "name": "@semcore/portal",
   "description": "Semrush Portal Component",
-  "version": "3.2.0-release.0",
+  "version": "3.1.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,10 +12,10 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
-    "@semcore/utils": "4.2.0-pre-release.0"
+    "@semcore/utils": "4.1.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.2.1-pre-release.0",
+    "@semcore/core": "^2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

@@ -2,17 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [5.2.1-pre-release.0] - 2023-08-16
-
-### Changed
-
-- Deprecated `IFlexProps`.
-
 ## [5.2.1] - 2023-08-14
 
 ### Changed
 
 - Deprecated `IFlexProps`.
+
 
 ## [5.2.0] - 2023-08-07
 
