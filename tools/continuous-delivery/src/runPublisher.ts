@@ -102,6 +102,11 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       });
       log('@semcore/ui published.');
     }
+    log('Updating lockfile...');
+    execSync('pnpm install --frozen-lockfile false', {
+      stdio: 'inherit',
+    });
+    log('Lockfile updated.');
     status = await git.status();
     if (status.files.length) {
       log('Committing lockfile...');

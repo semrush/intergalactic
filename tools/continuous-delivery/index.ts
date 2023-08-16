@@ -35,7 +35,17 @@ export const deliverPrerelease = async () => {
     await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
     await updateReleaseChangelog();
 
-    await updateVersions(versionPatches.filter((patch) => patch.package.name === '@semcore/ui'));
+    if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
+      const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
+      versionPatches.push({
+        package: pkg,
+        from: pkg.currentVersion,
+        to: pkg.currentVersion,
+        changes: [],
+        changelogUpdated: true,
+        needPublish: true,
+      });
+    }
     await runPublisher(versionPatches);
   }
 };
