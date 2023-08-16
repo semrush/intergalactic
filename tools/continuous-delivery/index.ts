@@ -5,7 +5,7 @@ import { updateVersions } from './src/updateVersions';
 import { updateChangelogs } from './src/updateChangelogs';
 import { runPublisher } from './src/runPublisher';
 import { syncCheck } from './src/syncCheck';
-import { formatMarkdown, log } from './src/utils';
+import { formatMarkdown, log, prerelaseSuffix } from './src/utils';
 import { getUnlockedPrerelease } from './src/getUnlockedPrereelase';
 import { publishReleaseNotes } from './src/publishReleaseNotes';
 import { collectTarballs } from './src/collectTarballs';
@@ -18,6 +18,7 @@ import {
   removeBetaVersionFromReleaseChangelog,
   updateReleaseChangelog,
 } from '@semcore/changelog-handler';
+import semver from 'semver';
 
 export const deliverPrerelease = async () => {
   const npmData = await fetchFromNpm();
@@ -37,14 +38,21 @@ export const deliverPrerelease = async () => {
 
     if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
       const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
-      versionPatches.push({
+      const patch = {
         package: pkg,
         from: pkg.currentVersion,
-        to: pkg.currentVersion,
+        to: semver.inc(
+          pkg.currentVersion,
+          'prerelease' as semver.ReleaseType,
+          undefined,
+          prerelaseSuffix,
+        )!,
         changes: [],
         changelogUpdated: true,
         needPublish: true,
-      });
+      };
+      await updateVersions([patch]);
+      versionPatches.push(patch);
     }
     await runPublisher(versionPatches);
   }
