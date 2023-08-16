@@ -24,6 +24,8 @@ const orderedReleaseType: semver.ReleaseType[] = [
   'prerelease',
 ];
 
+const maxSemver = (v1: string, v2: string) => (semver.compare(v1, v2) === 1 ? v1 : v2);
+
 export const makeVersionPatches = (packages: Package[]) => {
   log('Making version patches...');
 
@@ -59,13 +61,12 @@ export const makeVersionPatches = (packages: Package[]) => {
     if (packageFile.lastPublishedVersion === null) {
       throw new Error(`${packageFile.name} not found in npm registry`);
     }
-
-    const hasNewerVersion =
-      semver.compare(packageFile.lastPublishedVersion, lastChangelog.version) === -1;
+    const newVersion = maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
+    const hasNewerVersion = semver.compare(newVersion, lastChangelog.version) === -1;
 
     if (!hasNewerVersion) continue;
 
-    const diff = semver.diff(packageFile.lastPublishedVersion, lastChangelog.version);
+    const diff = semver.diff(newVersion, lastChangelog.version);
     if (diff?.startsWith('pre')) {
       lastChangelog.version = semver.inc(
         lastChangelog.version,
