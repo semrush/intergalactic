@@ -107,7 +107,7 @@ export const makeVersionPatches = (packages: Package[]) => {
       let needUpdate = false;
       const updatedDependencies: { name: string; from: string; to: string }[] = [];
 
-      for (const dependenciesType of ['dependencies']) {
+      for (const dependenciesType of ['dependencies', 'peerDependencies']) {
         for (const dependency in packageFile[dependenciesType as 'dependencies']) {
           const dependencyVersionPatch = versionPatchesMap.get(dependency);
           if (!dependencyVersionPatch) continue;

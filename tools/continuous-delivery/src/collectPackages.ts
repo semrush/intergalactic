@@ -69,7 +69,7 @@ export const collectPackages = async (inNpmVersions: {
         : componentChangelogParser(packageFile.name, changelogFile, changelogPath);
 
     const dependencies: Package['dependencies'] = {};
-    for (const dependenciesType of ['dependencies']) {
+    for (const dependenciesType of ['dependencies', 'peerDependencies']) {
       for (const dependency in packageFile[dependenciesType as 'dependencies']) {
         if (!knownPackages[dependency]) continue;
 
