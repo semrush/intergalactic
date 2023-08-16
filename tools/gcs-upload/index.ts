@@ -7,7 +7,7 @@ import pLimit from 'p-limit';
 const filename = fileURLToPath(import.meta.url);
 
 const log = (message: string) => {
-  // rome-ignore lint/nursery/noConsoleLog: <explanation>
+  // rome-ignore lint/nursery/noConsoleLog:
   console.log(`[gcs-upload tool]: ${message}`);
 };
 
@@ -104,7 +104,7 @@ export const upload = async (
                 cacheControl: 'public, max-age=31536000',
               },
             })
-            // rome-ignore lint/nursery/noConsoleLog: <explanation>
+            // rome-ignore lint/nursery/noConsoleLog:
             .then(() => console.log(`${fileName} uploaded to ${destination}`))
         );
       }),
@@ -132,7 +132,7 @@ export const remove = async (filePaths: string[]) => {
         .file(filePath)
         .delete()
 
-        // rome-ignore lint/nursery/noConsoleLog: <explanation>
+        // rome-ignore lint/nursery/noConsoleLog:
         .then((file) => console.log(`gs://${BUCKET_NAME}/${file} removed`));
     }),
   );
@@ -183,7 +183,7 @@ export const uploadFilesInFolders = async (folderPaths: string[]) => {
                 },
               })
 
-              // rome-ignore lint/nursery/noConsoleLog: <explanation>
+              // rome-ignore lint/nursery/noConsoleLog:
               .then(() => console.log(`${folderName}/{${fileName} uploaded to ${destination}`))
           );
         }),

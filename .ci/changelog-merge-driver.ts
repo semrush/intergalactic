@@ -8,7 +8,7 @@ try {
     throw new Error(`Found ${merge.conflictsCount} conflicts`);
   }
 } catch (error) {
-  // rome-ignore lint/nursery/noConsoleLog: <explanation>
+  // rome-ignore lint/nursery/noConsoleLog:
   console.log(error);
   process.exit(1);
 }

@@ -68,7 +68,10 @@
         "noUnreachableSuper": "off",
         "noConstructorReturn": "off"
       },
-      "a11y": { "useAnchorContent": "off", "noSvgWithoutTitle": "off" },
+      "a11y": {
+        "useAnchorContent": "off",
+        "noSvgWithoutTitle": "off"
+      },
       "nursery": {
         "noConsoleLog": "error"
       },
