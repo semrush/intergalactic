@@ -3,7 +3,7 @@ import { VersionPatch } from './makeVersionPatches';
 import Git from 'simple-git';
 import dotenv from 'dotenv';
 
-import { log } from './utils';
+import { log, prerelaseSuffix } from './utils';
 import { publishReleaseNotes } from './publishReleaseNotes';
 
 dotenv.config();
@@ -34,7 +34,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
   const nonSemcoreUiPatches = toPublish.filter((patch) => patch !== semcoreUiPatch);
   const pnpmFilter = nonSemcoreUiPatches.map((patch) => `--filter ${patch.package.name}`).join(' ');
 
-  const prerelease = versionPatches.some((patch) => patch.to.includes('-beta.'));
+  const prerelease = versionPatches.some((patch) => patch.to.includes(`-${prerelaseSuffix}.`));
   if (prerelease) {
     pnpmOptions += ' --tag beta';
   }

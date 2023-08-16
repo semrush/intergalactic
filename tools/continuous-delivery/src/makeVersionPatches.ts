@@ -1,7 +1,7 @@
 import semver from 'semver';
 import { ChangelogChange } from '@semcore/changelog-handler';
 import { Package } from './collectPackages';
-import { log, normalizeSemver } from './utils';
+import { log, normalizeSemver, prerelaseSuffix } from './utils';
 import dayjs from 'dayjs';
 import { reversedTopologicalSort } from './reversedTolopologicalSort';
 
@@ -72,10 +72,10 @@ export const makeVersionPatches = (packages: Package[]) => {
         lastChangelog.version,
         'prerelease' as semver.ReleaseType,
         undefined,
-        'beta',
+        prerelaseSuffix,
       )!;
-    } else if (!lastChangelog.version.includes('-beta.')) {
-      lastChangelog.version += '-beta.0';
+    } else if (!lastChangelog.version.includes(`-${prerelaseSuffix}.`)) {
+      lastChangelog.version += `-${prerelaseSuffix}.0`;
     }
     if (lastChangelog.changes[0]) {
       lastChangelog.changes[0].version = lastChangelog.version;
