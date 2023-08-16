@@ -76,3 +76,5 @@ export const log = (message: string) => {
   // rome-ignore lint/nursery/noConsoleLog:
   console.log(`[${secondsPassed}s] ${message}`);
 };
+
+export const prerelaseSuffix = 'prerelease';
