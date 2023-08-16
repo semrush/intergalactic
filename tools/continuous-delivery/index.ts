@@ -21,22 +21,20 @@ import {
 
 export const deliverPrerelease = async () => {
   const npmData = await fetchFromNpm();
-  let packages = await collectPackages(npmData);
+  const packages = await collectPackages(npmData);
 
   if (process.argv.includes('--check')) {
     await syncCheck(packages);
     process.exit();
   }
 
-  let versionPatches = await makeVersionPatches(packages);
+  const versionPatches = await makeVersionPatches(packages);
 
   if (versionPatches.length > 0) {
     await updateVersions(versionPatches);
     await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
     await updateReleaseChangelog();
 
-    packages = await collectPackages(npmData);
-    versionPatches = await makeVersionPatches(packages);
     await updateVersions(versionPatches.filter((patch) => patch.package.name === '@semcore/ui'));
     await runPublisher(versionPatches);
   }
