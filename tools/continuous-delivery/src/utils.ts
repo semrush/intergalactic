@@ -77,4 +77,4 @@ export const log = (message: string) => {
   console.log(`[${secondsPassed}s] ${message}`);
 };
 
-export const prerelaseSuffix = 'prerelease';
+export const prerelaseSuffix = 'pre-release';
