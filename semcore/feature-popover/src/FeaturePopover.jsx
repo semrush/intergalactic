@@ -127,10 +127,11 @@ class FeaturePopoverPopper extends Component {
       $onCloseClick,
       animationsDisabled,
       getI18nText,
+      zIndex,
     } = this.asProps;
 
     return sstyled(styles)(
-      <Popper.Popper disableEnforceFocus>
+      <Popper.Popper disableEnforceFocus zIndex={zIndex}>
         <Animation
           visible={visible}
           duration={duration}
