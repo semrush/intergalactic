@@ -1,3 +1,17 @@
+## [15.7.0-test.0] - 2023-08-17
+
+### @semcore/input-tags
+
+- **Fixed** Fixed aria roles issues.
+
+### @semcore/scroll-area
+
+- **Changed** Focus ring is now provided by overflowing pseudo element.
+
+### @semcore/tag
+
+- **Changed** Remove tag button aria-label now refers both to the tag and remove button itself. 
+
 ## [15.6.1] - 2023-08-16
 
 ### @semcore/core
