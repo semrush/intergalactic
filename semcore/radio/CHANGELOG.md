@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.2.2] - 2023-08-17
+
+### Fixed
+
+- Removed wrong `tag` component declaration in `RadioGroupProps` type.
+- Fixed vertical direction of radio group (due to `typo` it was horizontal by default).
+
 ## [6.2.1] - 2023-08-14
 
 ### Changed

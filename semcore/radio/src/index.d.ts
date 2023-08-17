@@ -26,12 +26,13 @@ export type RadioProps = BoxProps & {
 };
 
 /** @deprecated */
-export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {}
-export type RadioGroupProps<T extends RadioValue = RadioValue> = {
+export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {
   /**
    *  HTML tag name for the displayed item
    */
   tag?: React.ElementType | string;
+}
+export type RadioGroupProps<T extends RadioValue = RadioValue> = {
   /** Radio group name */
   name?: string;
   /** Active default value */

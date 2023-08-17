@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.2.1] - 2023-08-17
+
+### Fixed
+
+- Removed wrong `tag` component declaration in `NeighborLocationProps` type.
+
 ## [4.2.0] - 2023-08-16
 
 ### Changed
