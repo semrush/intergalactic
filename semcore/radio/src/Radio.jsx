@@ -39,7 +39,7 @@ class RadioGroupRoot extends Component {
     const { Children } = this.asProps;
 
     return (
-      <Root render={Flex} flexDirection='coumn' role='radiogroup' __excludeProps={['onChange']}>
+      <Root render={Flex} direction='column' role='radiogroup' __excludeProps={['onChange']}>
         <Children />
       </Root>
     );
