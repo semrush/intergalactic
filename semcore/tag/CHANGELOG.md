@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.4.0] - 2023-08-07
+
+### Changed
+
+- Remove tag button aria-label now refers both to the tag and remove button itself. 
+
 ## [5.3.1] - 2023-08-16
 
 ### Changed

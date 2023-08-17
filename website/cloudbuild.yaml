@@ -30,11 +30,8 @@ steps:
     args:
       - -c
       - |
-        if [[ "$BRANCH_NAME" == "website/release" ]]
-        then
-          npm install --global pnpm@7
-          pnpm install && pnpm run upload-search-index
-        fi
+        npm install --global pnpm@7
+        pnpm install && pnpm run upload-search-index
     dir: website
     env:
       - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY

@@ -163,10 +163,13 @@ class InputTags extends Component<IInputTagsProps> {
   render() {
     const SInputTags = Root;
     const { Children, styles } = this.asProps;
+    const SListAriaWrapper = 'div';
 
     return sstyled(styles)(
-      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput} role='list'>
-        <Children />
+      <SInputTags render={Input} tag={ScrollArea} onMouseDown={this.setFocusInput}>
+        <SListAriaWrapper role='list'>
+          <Children />
+        </SListAriaWrapper>
       </SInputTags>,
     );
   }
@@ -221,8 +224,8 @@ class Value extends Component<IInputTagsValueProps> {
 
     return sstyled(this.asProps.styles)(
       <>
-        <SValue render={Input.Value} style={{ width: this.state.width }} />
-        <SSpacer ref={this._spacer} />
+        <SValue render={Input.Value} style={{ width: this.state.width }} role='listitem' />
+        <SSpacer ref={this._spacer} role='none' />
       </>,
     );
   }

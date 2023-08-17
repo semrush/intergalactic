@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.3.0] - 2023-08-16
+
+### Changed
+
+- Focus ring is now provided by overflowing pseudo element.
+
 ## [5.2.1] - 2023-08-16
 
 ### Changed

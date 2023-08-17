@@ -76,3 +76,7 @@ SSpacer {
   letter-spacing: inherit;
   text-transform: inherit;
 }
+
+SListAriaWrapper {
+  display: contents;
+}
