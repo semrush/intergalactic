@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.2] - 2023-08-17
+
+### Fixed
+
+- `zIndex` passing.
+
 ## [4.3.1] - 2023-08-16
 
 ### Changed
