@@ -671,7 +671,6 @@ export type RadialTreeRadianIconProps = {
   color?: string;
   ['data-radial-animation']?: `${string}-cap-icon`;
   ['data-radian-index']?: number;
-  tag?: React.FC;
   isActive?: boolean;
   transparent?: boolean;
 };
