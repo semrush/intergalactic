@@ -178,7 +178,9 @@ export const extractDataInsights = (
       }
 
       for (const valueKey of valuesKeys) {
-        const values = (data as Record<string, number>[]).map((row) => row[valueKey]);
+        const values = (data as Record<string, number>[])
+          .map((row) => row[valueKey])
+          .filter((value) => typeof value !== 'symbol');
         const sum = values.reduce((sum, value) => sum + value, 0);
         const average = sum / values.length;
         const variance =

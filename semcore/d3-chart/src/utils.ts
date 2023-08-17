@@ -238,3 +238,5 @@ export const measureText = memoize((text: string, fontSize?: number) => {
 
 let idCounter = 0;
 export const uniqueId = (prefix = 'id-') => `${prefix}${idCounter++}`;
+
+export const interpolateValue = Symbol('intergalactic-d3-chart-line-interpolate');
