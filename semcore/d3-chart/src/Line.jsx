@@ -3,7 +3,13 @@ import { curveLinear, line as d3Line } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import { definedData, definedNullData, scaleOfBandwidth, getNullData } from './utils';
+import {
+  definedData,
+  definedNullData,
+  scaleOfBandwidth,
+  getNullData,
+  interpolateValue,
+} from './utils';
 import Dots from './Dots';
 import ClipPath from './ClipPath';
 
@@ -39,7 +45,9 @@ class LineRoot extends Component {
   }
 
   getNullProps() {
-    const { x, y, d3, color, data } = this.asProps;
+    const { x, y, d3, color } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
+
     return {
       d3,
       // TODO: vertical
@@ -50,7 +58,8 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, uid, size, d3, data, duration, x, y, transparent } = this.asProps;
+    const { styles, hide, color, uid, size, d3, duration, x, y, transparent } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');

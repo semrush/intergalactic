@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2023-08-17
+
+### Added
+
+- Added special `interpolateValue` symbol that allows to interpolate points on line and area charts.
+
 ## [3.4.1] - 2023-08-16
 
 ### Changed
