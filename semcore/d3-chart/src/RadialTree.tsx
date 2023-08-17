@@ -681,6 +681,7 @@ type RadialTreeRadianIconAsProps = IRadialTreeRadianIconProps & {
   y: number;
   iconSize: number;
   styles: React.CSSProperties;
+  tag?: React.FC;
 };
 const Icon: React.FC<RadialTreeRadianIconAsProps> = ({
   Element: SIcon,
