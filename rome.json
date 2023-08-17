@@ -17,8 +17,7 @@
       "mailer",
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
-      "website/ts.json",
-      "./tools/playground/examples/**"
+      "website/ts.json"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
