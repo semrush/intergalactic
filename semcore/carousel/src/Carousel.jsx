@@ -5,6 +5,8 @@ import { Box } from '@semcore/flex-box';
 import ChevronRight from '@semcore/icon/ChevronRight/l';
 import ChevronLeft from '@semcore/icon/ChevronLeft/l';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/carousel.shadow.css';
 
@@ -47,10 +49,12 @@ class CarouselRoot extends Component {
     duration: 350,
     step: 100,
     bounded: false,
+    i18n: localizedMessages,
+    locale: 'en',
   };
 
   static style = style;
-  static enhance = [uniqueIDEnhancement()];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
   refContainer = React.createRef();
   transform = 0;
@@ -290,6 +294,7 @@ class CarouselRoot extends Component {
       toggleItem: this.toggleItem,
       uid: this.asProps.uid,
       index,
+      current: index === this.asProps.index,
     };
   }
 
@@ -302,7 +307,7 @@ class CarouselRoot extends Component {
   };
 
   getPrevProps() {
-    const { index, bounded } = this.asProps;
+    const { index, bounded, getI18nText } = this.asProps;
     const { items } = this.state;
     let disabled = false;
     if (items.length && bounded) {
@@ -312,11 +317,12 @@ class CarouselRoot extends Component {
       onClick: this.bindHandlerClick('left'),
       onKeyDown: this.bindHandlerKeydownControl('left'),
       disabled,
+      label: getI18nText('prev'),
     };
   }
 
   getNextProps() {
-    const { index, bounded } = this.asProps;
+    const { index, bounded, getI18nText } = this.asProps;
     const { items } = this.state;
     let disabled = false;
     if (items.length && bounded) {
@@ -326,6 +332,7 @@ class CarouselRoot extends Component {
       onClick: this.bindHandlerClick('right'),
       onKeyDown: this.bindHandlerKeydownControl('right'),
       disabled,
+      label: getI18nText('next'),
     };
   }
 
@@ -349,6 +356,7 @@ class CarouselRoot extends Component {
     return sstyled(styles)(
       <SCarousel
         render={Box}
+        role='group'
         onKeyDown={this.handlerKeyDown}
         tabIndex={0}
         onTouchStart={this.handlerTouchStart}
@@ -368,7 +376,7 @@ const Container = (props) => {
 };
 
 const Item = (props) => {
-  const { styles, toggleItem, index, uid } = props;
+  const { styles, toggleItem, index, uid, current } = props;
   const SItem = Root;
   const refItem = React.createRef();
   useEffect(() => {
@@ -381,29 +389,37 @@ const Item = (props) => {
   }, []);
 
   return sstyled(styles)(
-    <SItem render={Box} ref={refItem} role='listitem' id={`igc-${uid}-carousel-item-${index}`} />,
+    <SItem
+      render={Box}
+      ref={refItem}
+      role='listitem'
+      id={`igc-${uid}-carousel-item-${index}`}
+      aria-current={current}
+    />,
   );
 };
 
 const Prev = (props) => {
-  const { styles } = props;
+  const { styles, children, label } = props;
   const SPrev = Root;
-  return sstyled(styles)(<SPrev render={Box} aria-hidden='true' />);
+  return sstyled(styles)(
+    <SPrev render={Box}>{children || <ChevronLeft interactive aria-label={label} />}</SPrev>,
+  );
 };
 
 Prev.defaultProps = () => ({
-  children: <ChevronLeft interactive aria-label='Visual navigation, previous' />,
   top: 0,
 });
 
 const Next = (props) => {
-  const { styles } = props;
+  const { styles, children, label } = props;
   const SNext = Root;
-  return sstyled(styles)(<SNext render={Box} aria-hidden='true' />);
+  return sstyled(styles)(
+    <SNext render={Box}>{children || <ChevronRight interactive aria-label={label} />}</SNext>,
+  );
 };
 
 Next.defaultProps = () => ({
-  children: <ChevronRight interactive aria-label='Visual navigation, next' />,
   top: 0,
 });
 

@@ -20,7 +20,7 @@ const Demo = () => (
     <Flex>
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
-        <Carousel.Container>
+        <Carousel.Container aria-roledescription='image carousel' aria-label='Beauty of Nature'>
           {images.map((url, index) => (
             <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
           ))}
@@ -39,6 +39,7 @@ const Demo = () => (
             src={images[index]}
             w={100}
             h={100}
+            aria-roledescription='slide'
           />
         ))
       }
