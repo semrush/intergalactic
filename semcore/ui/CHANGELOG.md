@@ -1,3 +1,22 @@
+## [15.7.0-test.0] - 2023-08-18
+
+### @semcore/core
+
+- **Added** Exported type `Intergalactic.DomProps` that may be helpful for typing component wrappers.
+
+### @semcore/d3-chart
+
+- **Added** `paddingAngle` prop for Donut chart.
+
+### @semcore/data-table
+
+- **Added** `data` prop for `DataTable.Cell` and `DataTable.Row` that allows more convenient typings than `DataTable.Cell<typeof data>`.
+- **Fixed** Collapsing of table included in row of other table.
+
+### @semcore/utils
+
+- **Changed** Made `resolveColor` types generic.
+
 ## [15.7.0] - 2023-08-18
 
 ### @semcore/carousel

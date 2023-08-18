@@ -1,7 +1,7 @@
 {
   "name": "@semcore/switch",
   "description": "Semrush Switch Component",
-  "version": "5.2.2",
+  "version": "5.3.0-test.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,12 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.2.1",
-    "@semcore/neighbor-location": "4.2.1",
-    "@semcore/utils": "4.2.0"
+    "@semcore/flex-box": "5.3.0-test.0",
+    "@semcore/neighbor-location": "4.3.0-test.0",
+    "@semcore/utils": "4.3.0-test.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.2.1-test.0",
+    "@semcore/core": "^2.3.0-test.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
