@@ -185,7 +185,7 @@ describe('DataTable', () => {
             />
           </DataTable.Head>
           <DataTable.Body>
-            <DataTable.Cell name='keyword'>
+            <DataTable.Cell name='keyword' data={data}>
               {(props, row) => {
                 return {
                   children: (
@@ -385,7 +385,7 @@ describe('DataTable', () => {
             <DataTable.Column name='vol' children='Vol.' />
           </DataTable.Head>
           <DataTable.Body>
-            <DataTable.Cell name='keyword'>
+            <DataTable.Cell name='keyword' data={data}>
               {(props, row) => {
                 return {
                   children: <>[{row[props.name]}]</>,
