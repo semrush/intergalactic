@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.6.4-test.0",
+  "version": "15.6.4",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -20,7 +20,7 @@
     "@semcore/breakpoints": "1.4.0",
     "@semcore/button": "5.2.2",
     "@semcore/card": "5.3.1",
-    "@semcore/carousel": "3.4.0-test.0",
+    "@semcore/carousel": "3.4.0",
     "@semcore/checkbox": "7.2.1",
     "@semcore/color-picker": "2.3.2",
     "@semcore/core": "2.2.1",

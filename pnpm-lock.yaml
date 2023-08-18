@@ -2065,7 +2065,7 @@ importers:
         specifier: 5.3.1
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.4.0-test.0
+        specifier: 3.4.0
         version: link:../carousel
       '@semcore/checkbox':
         specifier: 7.2.1
