@@ -46,7 +46,7 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<typeof data> name='keyword'>
+          <DataTable.Cell data={data} name='keyword'>
             {(props) => {
               return {
                 children: (
