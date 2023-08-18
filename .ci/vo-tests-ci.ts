@@ -1,11 +1,9 @@
 import fs from 'fs/promises';
 import { execSync } from 'child_process';
+import { generateVoTestsHash } from './vo-tests-hash';
 
 const oldHash = await fs.readFile('./.ci/.vo-test-hash.txt', 'utf-8');
-
-await import('./vo-tests-hash');
-
-const newHash = await fs.readFile('./.ci/.vo-test-hash.txt', 'utf-8');
+const newHash = await generateVoTestsHash();
 
 if (oldHash === newHash) {
   // rome-ignore lint/nursery/noConsoleLog:
@@ -13,3 +11,5 @@ if (oldHash === newHash) {
 } else {
   execSync('pnpm vo-test', { stdio: 'inherit' });
 }
+
+await fs.writeFile('./.ci/.vo-test-hash.txt', newHash);
