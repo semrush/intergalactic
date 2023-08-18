@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import DataTable from '@semcore/ui/data-table';
-import Accordion from '../../../../../semcore/accordion/src';
+import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
 
 const RowAccordion = React.forwardRef(
