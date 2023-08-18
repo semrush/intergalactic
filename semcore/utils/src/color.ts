@@ -121,12 +121,14 @@ export function brightness(color: any) {
   );
 }
 
-export default function resolveColor(color?: string): string | undefined {
-  if (!color) return;
+export default function resolveColor<T extends string | undefined>(
+  color?: T,
+): T extends string ? string : undefined {
+  if (!color) return undefined as any;
   if (color in (COLORS as Record<string, string>)) {
     return COLORS[color];
   }
-  return color;
+  return color as any;
 }
 
 const lightMemo: { [input: string]: string } = {};
