@@ -219,7 +219,7 @@ export namespace Intergalactic {
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;
     };
-    type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
+    export type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
       T extends React.DetailedHTMLProps<infer _, infer Element> ? Element : HTMLElement;
     type InferElementFromRef<T> = T extends React.Ref<infer Element> ? Element : never;
     type InferRefElementFromProps<T> = 'ref' extends keyof T
@@ -242,4 +242,6 @@ export namespace Intergalactic {
   ) => InternalTypings.ComponentRenderingResults) &
     InternalTypings.ComponentAdditive<BaseTag>;
   export type Tag = InternalTypings.ComponentTag;
+  export type DomProps<Tag extends keyof JSX.IntrinsicElements> =
+    InternalTypings.InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>;
 }
