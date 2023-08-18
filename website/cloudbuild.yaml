@@ -31,7 +31,7 @@ steps:
       - -c
       - |
         npm install --global pnpm@7
-        pnpm install && pnpm run upload-search-index
+        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install && pnpm run upload-search-index
     dir: website
     env:
       - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
