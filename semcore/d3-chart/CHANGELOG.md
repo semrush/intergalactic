@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.6.0] - 2023-08-17
+
+### Added
+
+- `paddingAngle` prop for Donut chart.
+
 ## [3.5.0] - 2023-08-17
 
 ### Added

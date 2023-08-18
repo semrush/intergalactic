@@ -58,6 +58,7 @@ function transitionRadiusPie({
   duration,
   innerRadius,
   outerRadiusStartEnd,
+  paddingAngle,
 }) {
   return transition()
     .selection()
@@ -71,7 +72,10 @@ function transitionRadiusPie({
       return function (t) {
         const outerRadiusPX = iOuterRadius(t);
         element.dataset['currentRadius'] = outerRadiusPX;
-        const d3ArcOut = arc().innerRadius(innerRadius).outerRadius(outerRadiusPX);
+        const d3ArcOut = arc()
+          .innerRadius(innerRadius)
+          .outerRadius(outerRadiusPX)
+          .padAngle(paddingAngle);
         return d3ArcOut(data);
       };
     });
@@ -85,6 +89,8 @@ function getOuterRadius({ size, halfsize }) {
   return minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
 }
 
+const gradToRad = (grad) => (grad * Math.PI) / 180;
+
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
@@ -92,17 +98,20 @@ class DonutRoot extends Component {
 
   static defaultProps = ({
     innerRadius = 0,
+    paddingAngle = 0,
     outerRadius,
     halfsize = false,
     $rootProps: { size },
   }) => {
     const d3Arc = arc()
       .outerRadius(outerRadius || getOuterRadius({ size, halfsize, outerRadius }))
-      .innerRadius(innerRadius);
+      .innerRadius(innerRadius)
+      .padAngle(paddingAngle);
 
     const d3ArcOut = arc()
       .outerRadius((outerRadius || getOuterRadius({ size, halfsize })) + increaseFactor)
-      .innerRadius(innerRadius);
+      .innerRadius(innerRadius)
+      .padAngle(paddingAngle);
 
     let d3Pie = pie()
       .sort(null)
@@ -117,6 +126,7 @@ class DonutRoot extends Component {
       d3Arc,
       d3ArcOut,
       duration: 500,
+      paddingAngle,
     };
   };
 
@@ -168,7 +178,7 @@ class DonutRoot extends Component {
   };
 
   animationActivePie = ({ data, active, selector, element }) => {
-    const { duration, innerRadius, d3Arc } = this.asProps;
+    const { duration, innerRadius, d3Arc, paddingAngle } = this.asProps;
     const outerRadius = d3Arc.outerRadius()();
     const outerRadiusStartEnd = active
       ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
@@ -181,6 +191,7 @@ class DonutRoot extends Component {
         duration: duration === 0 ? 0 : 300,
         innerRadius,
         outerRadiusStartEnd,
+        paddingAngle,
       });
     }
   };
