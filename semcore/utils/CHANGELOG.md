@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.0] - 2023-08-18
+
+### Changed
+
+- Made `resolveColor` types generic.
+
 ## [4.2.0] - 2023-08-14
 
 ### Fixed
