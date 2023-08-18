@@ -1,4 +1,4 @@
-## [15.7.0] - 2023-08-18
+## [15.6.3] - 2023-08-18
 
 ### @semcore/d3-chart
 
@@ -17,7 +17,7 @@
 - **Fixed** Removed wrong `tag` component declaration in `RadioGroupProps` type.
 - **Fixed** Fixed vertical direction of radio group (due to `typo` it was horizontal by default).
 
-## [15.7.0] - 2023-08-17
+## [15.6.2] - 2023-08-17
 
 ### @semcore/input-tags
 
