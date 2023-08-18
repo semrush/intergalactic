@@ -39,3 +39,4 @@ identifier,source_phrase,context,translation
 "view-data-summary","Data summary","Label for block of text that contains text summary of data table (like trends or clusters)",""
 "view-summary-placeholder","Generating chart data summary","Placeholder for chart data summary that is displayed while summary being generated",""
 "view-table","Data table","Label for table that contains all data that was provided for chart",""
+"data-not-available","n/a","Short phrase or abbreviation that exaplains that data (abstract) is not available",""

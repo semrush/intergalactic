@@ -16,13 +16,25 @@ const width = 600;
 const imageWidth = width - 75;
 
 const Demo = () => (
-  <Carousel w={width} defaultIndex={0}>
+  <Carousel
+    w={width}
+    defaultIndex={0}
+    aria-roledescription='image carousel'
+    aria-label='Beauty of Nature'
+  >
     <Flex>
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
         <Carousel.Container>
           {images.map((url, index) => (
-            <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
+            <Carousel.Item
+              tag='img'
+              key={url}
+              src={url}
+              w={imageWidth}
+              alt={altTexts[index]}
+              aria-roledescription='slide'
+            />
           ))}
         </Carousel.Container>
       </Box>

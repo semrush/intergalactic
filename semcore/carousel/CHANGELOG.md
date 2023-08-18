@@ -2,6 +2,14 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.4.0] - 2023-08-18
+
+### Changed
+
+- Removed `aria-hidden` from navigation buttons.
+- Added `aria-current` on the current slide.
+- Added i18n locales for `aria-label` of Next and Previous buttons.
+
 ## [3.3.1] - 2023-08-16
 
 ### Changed
