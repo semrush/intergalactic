@@ -9,6 +9,7 @@
     "test:types": "vitest typecheck",
     "vo-test:setup": "npx @guidepup/setup",
     "vo-test": "playwright test --config playwright.vo.config.ts",
+    "vo-test:ci": "tsm --require=./.ci/tsm-filter-warnings.js ./.ci/vo-tests-ci.ts",
     "browser-test:build-image": "docker build -t intergalactic-playwright -f playwright.dockerfile .",
     "browser-test:run-container": "docker run -e PLAYWRIGHT_ARGS= --rm -it --network host -v $(pwd)/package.json:/work/package.json -v $(pwd)/playwright.browser.config.ts:/work/playwright.browser.config.ts -v $(pwd)/semcore:/work/semcore/ -v $(pwd)/tools:/work/tools/ -v $(pwd)/website:/work/website/ -v $(pwd)/test-results:/work/test-results/ -w /work/ intergalactic-playwright",
     "website": "pnpm --dir website start",

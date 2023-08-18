@@ -42,6 +42,7 @@ const metas = await Promise.all(
       write: false,
       platform: 'node',
       bundle: true,
+      metafile: true,
       logLevel: 'error',
       plugins: [esbuildPluginSemcoreSourcesResolve('.')],
       external: ['@semcore/testing-utils/e2e-stand', '@playwright/*', '*.png', '*.css'],
@@ -67,4 +68,6 @@ const hashes = await Promise.all(
   }),
 );
 
-await fs.writeFile('./.ci/.vo-test-hash.txt', hash(hashes.join(','), { seed }).toString());
+const finalHash = hash(hashes.join(','), { seed }).toString();
+
+await fs.writeFile('./.ci/.vo-test-hash.txt', finalHash);
