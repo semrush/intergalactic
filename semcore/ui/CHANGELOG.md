@@ -1,4 +1,4 @@
-## [15.7.0] - 2023-08-18
+## [15.6.5] - 2023-08-18
 
 ### @semcore/core
 
@@ -17,7 +17,7 @@
 
 - **Changed** Made `resolveColor` types generic.
 
-## [15.7.0] - 2023-08-18
+## [15.6.4] - 2023-08-18
 
 ### @semcore/carousel
 
