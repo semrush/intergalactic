@@ -20,6 +20,10 @@ export type DonutProps = Context & {
    * @default 500
    */
   duration?: number;
+  /** Additional padding between segments in radians.
+   * @default 0
+   */
+  paddingAngle?: number;
 };
 
 /** @deprecated */
