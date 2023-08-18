@@ -1,3 +1,11 @@
+## [15.7.0-test.0] - 2023-08-18
+
+### @semcore/carousel
+
+- **Changed** Removed `aria-hidden` from navigation buttons.
+- **Changed** Added `aria-current` on the current slide.
+- **Changed** Added i18n locales for `aria-label` of Next and Previous buttons.
+
 ## [15.6.3] - 2023-08-18
 
 ### @semcore/d3-chart
