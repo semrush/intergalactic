@@ -1,3 +1,22 @@
+## [15.7.0-test.0] - 2023-08-18
+
+### @semcore/d3-chart
+
+- **Added** Added special `interpolateValue` symbol that allows to interpolate points on line and area charts.
+
+### @semcore/feature-popover
+
+- **Fixed** `zIndex` passing.
+
+### @semcore/neighbor-location
+
+- **Fixed** Removed wrong `tag` component declaration in `NeighborLocationProps` type.
+
+### @semcore/radio
+
+- **Fixed** Removed wrong `tag` component declaration in `RadioGroupProps` type.
+- **Fixed** Fixed vertical direction of radio group (due to `typo` it was horizontal by default).
+
 ## [15.7.0] - 2023-08-17
 
 ### @semcore/input-tags
