@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - `data` prop for `DataTable.Cell` and `DataTable.Row` that allows more convenient typings than `DataTable.Cell<typeof data>`.
 
+### Fixed
+
+- Collapsing of table included in row of other table.
+
 ## [4.4.0] - 2023-08-17
 
 ### Changed
