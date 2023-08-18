@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.0] - 2023-08-23
+
+### Fixed
+
+- Fixed token for hover state of the range cell (`SCalendarUnit[selected]`).
+
 ## [4.3.3] - 2023-08-22
 
 ### Fixed
