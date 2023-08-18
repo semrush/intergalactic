@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.3.2] - 2023-08-17
+
+### Fixed
+
+- Broken keyboard drag-and-drop handling.
+
 ## [3.3.1] - 2023-08-16
 
 ### Changed
