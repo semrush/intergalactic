@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.3.1] - 2023-08-21
+
+### Fixed
+
+- Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
+
 ## [2.3.0] - 2023-08-18
 
 ### Added
