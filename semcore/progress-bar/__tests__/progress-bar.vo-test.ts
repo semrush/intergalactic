@@ -8,6 +8,7 @@ test('Users can interact with ProgressBar via VoiceOver', async ({ page, voiceOv
 
   await page.setContent(htmlContent);
   await voiceOver.interact();
+  await voiceOver.next();
 
   for (let i = 0; i < 10; i++) {
     expect(await voiceOver.itemText()).toContain('% progress indicator');
