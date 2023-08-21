@@ -1,5 +1,5 @@
 import { collectPackages } from './src/collectPackages';
-import { makeVersionPatches } from './src/makeVersionPatches';
+import { makeVersionPatches, orderedReleaseType } from './src/makeVersionPatches';
 import { fetchFromNpm } from './src/fetchFromNpm';
 import { updateVersions } from './src/updateVersions';
 import { updateChangelogs } from './src/updateChangelogs';
@@ -38,12 +38,23 @@ export const deliverPrerelease = async () => {
 
     if (!versionPatches.find((patch) => patch.package.name === '@semcore/ui')) {
       const pkg = packages.find((pkg) => pkg.name === '@semcore/ui')!;
+      const diffs = versionPatches.map((patch) => semver.diff(patch.from, patch.to));
+      if (diffs.includes('major') || diffs.includes('premajor')) {
+        throw new Error(
+          'Unexpected major release preventer is here. Comment this line if you sure that you really want to release major version.',
+        );
+      }
+      let releaseType = diffs.sort(
+        (a, b) => orderedReleaseType.indexOf(a!) - orderedReleaseType.indexOf(b!),
+      )[0];
+      if (!releaseType) releaseType = 'prepatch';
+      if (!releaseType.startsWith('pre')) releaseType = 'pre' + releaseType;
       const patch = {
         package: pkg,
         from: pkg.currentVersion,
         to: semver.inc(
           pkg.currentVersion,
-          'prerelease' as semver.ReleaseType,
+          releaseType as semver.ReleaseType,
           undefined,
           prerelaseSuffix,
         )!,
