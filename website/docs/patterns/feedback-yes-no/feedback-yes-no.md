@@ -6,24 +6,24 @@ tabName: Design
 
 @## Description
 
-**FeedbackYesNo** is a pattern for collecting of the feedback. It that consists of [Notice](/components/notice/) and [Feedback form](/components/feedback/). This pattern helps to introduce the feature to the user and contains a simple question about the work of the product. _For example, “Meet our new Dashboard! Is it working well for you?”._
+**FeedbackYesNo** represents a feedback collection pattern. This pattern consists of the [Notice](/components/notice/) and [Feedback form](/components/feedback/). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
 
-@## Component appearing
+@## Component appearance
 
-### Two variants are possible for the notice appearing
+There are two potential variants for the notice to appear:
 
-1. The notice is shown simultaneously with the product or report loading.
-2. The notice is shown for the first time in the second session (recommended). Further it is shown until closing or clicking the "Ask me later" button.
+1. The notice appears simultaneously with the loading of the product or report.
+2. The notice is displayed for the first time in the second session (recommended). Subsequently, it remains visible until closed or the "Ask me later" button is clicked.
 
-> The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
+The length of a session is determined by the Product Owner or UX designer of the product. It might be defined as a time interval, the next page load, or an update of company data.
 
 @## Location
 
-This component is usually located on the top of the report or product.
+Typically, this component is positioned at the top of a report or product.
 
 ![](static/send-feedback-notice-on-top.png)
 
-And next to the feature you want feedback on.
+It is also could be placed next to the feature for which feedback is desired.
 
 ![](static/send-feedback-notice-next-to-feature.png)
 
@@ -31,62 +31,64 @@ And next to the feature you want feedback on.
 
 ![](static/feedback-yes-no.png)
 
-- Height of the notice – 72px.
-- Before the text place the [image](https://static.semrush.com/ui-kit/illustration/1.4.0/Feedback.svg). The image size is 40px х 40px.
-- The button "Ask me later" is a button with `use="tertiary"`and `theme="info"`. Not a link.
+- The notice's height is 72px.
+- Preceding the text, include the [Feedback illustration](/style/illustration/). The image dimensions are 40px x 40px.
+- The "Ask me later" button is designed as a button with `use="tertiary"` and `theme="info"`, not as a link.
 
-@## Margins and paddings
+### Margins and paddings
 
 ![](static/feedback-yes-no-sizes.png)
 
 @## Form behavior
 
-See the detailed description of behavior of the feedback dropdown in [Feedback](/components/feedback/).
+Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback/).
 
 @## Buttons behavior
 
 ### "Yes" and "No" buttons
 
-- the pressed button becomes `active`;
-- the dropdown with the feedback form drops down from the pressed button during `500ms`;
-- focus is at the textarea. Placeholder says: `Please tell us your suggestion or report an issue`.
+- The pressed button becomes `active`.
+- The dropdown with the feedback form appears from the pressed button over `500ms`.
+- The focus is directed to the textarea, with a placeholder stating: "Please provide suggestions or report issues."
 
 ### "Send feedback" button
 
-- the button from which the dropdown drops for sending a message is still `active`;
-- after validation of the fields and sending of the message we show the illustration and the text `Thank you for your feedback!` in the dropdown;
-- after `2500ms` the dropdown is smoothly closed with a fade of `500ms`; after `500ms` more the dropdown with buttons is also closed, dragging the whole page content up during `500ms`.
+- The button that triggers the dropdown for sending a message remains `active`.
+- After field validation and message sending, an illustration and the text "Thank you for your feedback!" are displayed in the dropdown.
+- After `2500ms`, the dropdown is gently closed with a `500ms` `fade-out` effect. An additional `500ms` later, the dropdown with buttons is also closed, smoothly lifting the entire page content over `500ms`.
 
 ### "Cancel" button
 
-- the pressed button `Yes` or `No` switches to normal status;
-- the notice isn’t hidden.
+- Pressing the "Yes" or "No" button reverts it to its normal state.
+- The notice remains visible.
 
 @## Closing and appearing of the notice
 
 ### "Ask me later" button
 
-1. It is always in the notice, after the `Yes` и `No` buttons.
-2. By clicking this button the notice will close;
-3. During `500ms` the product/report content is dragged up;
-4. The notice appears in the next user session.
+1. This button is consistently present within the notice, following the "Yes" and "No" buttons.
+2. Clicking this button closes the notice.
+3. Over `500ms`, the product/report content shifts upwards.
+4. The notice reappears in the user's next session.
 
 ### Close icon
 
-> It's an optional element.
+The `Close` icon is optional.
 
-Show this element if the report or product has an alternative form for sending feedback (`Send Feedback` link next to the settings).
+Display this element if the report or product offers an alternate method for sending feedback (such as a "Send Feedback" link next to the settings).
 
-- The first variant: it is always in the notice.
-- The second variant (**recommended**): when you click on `Ask me later`, the Close icon appears upon opening in the second session (may appear in the second or the third or the n-session).
+- The first option involves having the `Close` icon always present within the notice.
+- The second option (**recommended**) entails the `Close` icon appearing after clicking "Ask me later" and upon reopening the notice in the second session (which could be the second, third, or subsequent sessions).
 
 @## Remembering states
 
-1. If the user sent the feedback, **the notice isn’t shown to him/her anymore**.
-2. It's recommended to store this status in `user`. In order not to be obtrusive.
-3. It's allowed to store the statuses of closing and showing in `local storage`.
+1. If the user submits feedback, the notice will no longer appear to them.
+2. Storing this status in the user's profile is advisable, in order to avoid being intrusive.
+3. It is permissible to use local storage for saving the closing and appearing statuses.
 
 @## Events arrangement
+
+@table-caption Events arrangement
 
 | Description                                                          | Action        | Label               | Value       |
 | -------------------------------------------------------------------- | ------------- | ------------------- | ----------- |

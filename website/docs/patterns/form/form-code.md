@@ -4,7 +4,7 @@ title: Example
 
 These examples use [`react-hook-form@6`](https://github.com/react-hook-form/react-hook-form/tree/v6.15.8) library.
 
-@## Inputs in form
+@## Default log in form
 
 @example user&password
 
