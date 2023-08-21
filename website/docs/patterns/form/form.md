@@ -5,11 +5,13 @@ tabName: Design
 
 @## Description
 
-**Form** is a pattern for collecting and sending data to the system. It always consists of different types of inputs and controls.
+**Form** is a pattern used for the collection and submission of data to the system. It consistently includes various types of inputs and controls.
 
-> Use one size of inputs and controls in the form.
+**Use one size for inputs and controls within the form.**
 
-@## Layout
+@## Layout types
+
+@table-caption Form layout types
 
 | Layout type | Example                      |
 | ----------- | ---------------------------- |
@@ -19,42 +21,42 @@ tabName: Design
 
 @## Input labels
 
-Input should have a text label.
+Input should have accompanying text label.
 
-- Font weight should be `regular`. In cases when you need an extra accent fo the input's label you can use `bold` font-weight.
-- **Don’t put a colon after the text label.**
+- The font weight should be set to `regular`. Use `bold` font-weight sparingly for emphasizing input labels.
+- Omit the use of a colon after the text label.
+  
+You also could mark the input as an optional.
 
-You also can mark the input as an optional.
-
-| Input size | Vertical layout                                                  | Horizontal layout                                                       | Font size                                |
-| ---------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- |
-| M          | ![](static/input-m.png)       | ![](static/input-left-m.png)       | 14px (Use `--fs-200`, `--lh-200` tokens) |
+| Input size | Vertical layout    | Horizontal layout        | Font size         |
+| ---------- | ------------------ | ------------------------ | ----------------- |
+| M          | ![](static/input-m.png)       | ![](static/input-left-m.png)       | 14px (`--fs-200`, `--lh-200` tokens) |
 |            | ![](static/checkbox-m.png) | ![](static/checkbox-left-m.png) |                                          |
 |            | ![](static/textarea-m.png) | ![](static/textarea-left-m.png) |                                          |
-| L          | ![](static/input-l.png)       | ![](static/input-left-l.png)       | 16px (Use `--fs-300`, `--lh-300` tokens) |
+| L          | ![](static/input-l.png)       | ![](static/input-left-l.png)       | 16px (`--fs-300`, `--lh-300` tokens) |
 |            | ![](static/checkbox-l.png) | ![](static/checkbox-left-l.png) |                                          |
 |            | ![](static/textarea-l.png) | ![](static/textarea-left-l.png) |                                          |
 
-In cases, when the form is centered on the page, input labels can be right-aligned.
+When the form is centered on the page, input labels can be aligned to the right.
 
 ![](static/align-center.png)
 
 @## Placeholders
 
-Placeholders are required to prompt the user about what data should be entered.
+Placeholders are necessary to guide users on the expected data input.
 
-- It isn’t user-friendly to use only placeholders for inputs. When completed, such form becomes poorly readable.
-- Don’t put a specific value as a placeholder. The user may think that the input has already been filled.
+- Relying solely on placeholders for inputs isn't user-friendly, as the completed form can become difficult to read.
+- Avoid using specific values as placeholders, as users might think the input is pre-filled.
 
-You can omit the placeholder only if the input’s purpose is obvious.
+Placeholders can be omitted when the input's purpose is self-evident.
 
-To format values that the user enters use [InputMask](/components/input-mask/).
+For formatting user-entered values, use the [InputMask](/components/input-mask/).
 
-@## Inputs
+@## Margins between inputs
 
-> After opening the form the first input should get the `focus`.
+The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/#spacing_system) for further information.
 
-**The main denominator in the design system is 4.** All margins between the components and widgets shall be a multiple of this denominator. See [Spacing system](/layout/box-system/#spacing_system) for more information.
+@table-caption Margins between inputs
 
 | Input size | Example           |
 | ---------- | ----------------- |
@@ -63,79 +65,79 @@ To format values that the user enters use [InputMask](/components/input-mask/).
 
 @## Form validation
 
-See detailed information about the form validation in [Validation](/patterns/validation-form/).
+Find detailed information about form validation in the [Validation](/patterns/validation-form/).
 
 @## Usage in UX/UI
 
 ### Vertical form layout vs. horizontal form layout
 
-Depending on your task, you can use vertical or horizontal form layout.
+Depending on your objectives, you can choose between vertical and horizontal form layouts.
 
-Briefly:
+In brief:
 
-- vertical layout is good for short simple forms and forms for mobile screens;
-- horizontal layout is suitable for complex forms, where you need to slow the user down to help them avoid mistakes.
+- Vertical layout is suitable for short and simple forms, especially on mobile screens.
+- Horizontal layout is preferable for complex forms, slowing users down to reduce errors.
 
 ### Vertical form layout
 
-**When to use?**
+**When to use**
 
-- The form is small and simple.
-- The cost of a mistake after completing the form isn’t big.
+- The form is small and straightforward.
+- Mistakes made after form completion have minimal consequences.
 
 ![](static/label-1.png)
 
 **Advantages of vertical form layout**
 
-- It is quicker to be completed (see the [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
-- It is simpler to be scanned with eyes.
-- It is ideal for multilingual interfaces.
+- Faster completion (refer to [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
+- Easier scanning with the eyes.
+- Ideal for multilingual interfaces.
 
 **Disadvantages of vertical form layout**
 
-- It needs more vertical space.
-- It isn’t an ideal solution for large forms (and the complex ones).
+- Requires more vertical space.
+- Not ideal for extensive or complex forms.
 
 ### Horizontal form layout, left label alignment
 
-**When to use?**
+**When to use**
 
-- The form is large and/or complex, and you need to slow the user down in order they don’t make mistakes.
-- “Price of the mistake” after the completion of a large form is significant.
+- The form is sizable and/or complex, warranting a slower user pace to prevent errors.
+- Substantial consequences result from mistakes after completing a large form.
 
 ![](static/label-3.png)
 
 **Advantages of horizontal form layout with left label alignment**
 
-- It can be compact (take less vertical space, unlike the forms with vertical layout).
-- It claims more user’s attention.
+- Can be more compact (uses less vertical space than vertical layouts).
+- Attracts more user attention.
 
 **Disadvantages of horizontal form layout with left label alignment**
 
-- It needs more horizontal space.
-- It takes more time to complete (see the [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
-- It is less suitable for multilingual interfaces.
-- Screen magnification users may find it challenging to match labels with inputs as they only see a small part of the screen at a time.
+- Requires more horizontal space.
+- Takes longer to complete (see [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
+- Less suitable for multilingual interfaces.
+- Users who magnify their screens may struggle to match labels with inputs, given their limited screen visibility.
 
 ### Horizontal form layout, right label alignment
 
-**When to use?**
+**When to use**
 
-- The form is large and/or complex, and you need to slow the user down to help them avoid mistakes.
-- Right alignment of labels visually better connects labels with inputs, in comparison with left alignment.
+- The form is sizable and/or complex, requiring a slower user pace to prevent errors.
+- Right-aligned labels enhance the visual connection between labels and inputs, compared to left alignment.
 
 ![](static/label-4.png)
 
 **Advantages of horizontal form layout with right label alignment**
 
-- In view of visual connection between the label and the input this variant is better than the previous one.
-- Higher results of filling rate, in comparison with the previous one (see the [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
-- It can be more compact in comparison with the forms with vertical layout.
+- Improved visual connection between labels and inputs.
+- Higher completion rates compared to the previous layout (see [research](https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php)).
+- Potentially more compact than vertical layouts.
 
 **Disadvantages of horizontal form layout with right label alignment**
 
-- Such forms are more difficult to be scanned and read (labels are right aligned, user needs more time to find the beginning of the following line).
-- It is less suitable for multilingual interfaces.
+- More challenging to scan and read (labels are right-aligned, requiring more time to find the start of each line).
+- Less suitable for multilingual interfaces.
 
 @page form-a11y
 @page form-code
