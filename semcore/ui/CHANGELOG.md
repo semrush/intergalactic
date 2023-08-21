@@ -1,3 +1,17 @@
+## [15.7.0-test.0] - 2023-08-21
+
+### @semcore/core
+
+- **Fixed** Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
+
+### @semcore/d3-chart
+
+- **Changed** Donut chart now doesn't render `Donut.Pie` that represent 0 part of circle.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Broken keyboard drag-and-drop handling.
+
 ## [15.6.5] - 2023-08-18
 
 ### @semcore/core
