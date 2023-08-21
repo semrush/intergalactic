@@ -48,16 +48,11 @@ export const deliverPrerelease = async () => {
         (a, b) => orderedReleaseType.indexOf(a!) - orderedReleaseType.indexOf(b!),
       )[0];
       if (!releaseType) releaseType = 'prepatch';
-      if (!releaseType.startsWith('pre')) releaseType = 'pre' + releaseType;
+      if (!releaseType.startsWith('pre')) releaseType = ('pre' + releaseType) as semver.ReleaseType;
       const patch = {
         package: pkg,
         from: pkg.currentVersion,
-        to: semver.inc(
-          pkg.currentVersion,
-          releaseType as semver.ReleaseType,
-          undefined,
-          prerelaseSuffix,
-        )!,
+        to: semver.inc(pkg.currentVersion, releaseType, undefined, prerelaseSuffix)!,
         changes: [],
         changelogUpdated: true,
         needPublish: true,
