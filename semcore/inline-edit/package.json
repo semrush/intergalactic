@@ -1,7 +1,7 @@
 {
   "name": "@semcore/inline-edit",
   "description": "Semrush Input Component",
-  "version": "4.4.0",
+  "version": "4.4.1-test.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,9 +12,9 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/animation": "2.3.0",
-    "@semcore/flex-box": "5.3.0",
-    "@semcore/utils": "4.3.0"
+    "@semcore/animation": "2.3.1-test.0",
+    "@semcore/flex-box": "5.3.1-test.0",
+    "@semcore/utils": "4.3.1-test.0"
   },
   "devDependencies": {
     "@guidepup/playwright": "0.6.1",
@@ -23,7 +23,7 @@
     "@types/react": "18.0.21"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.3.0-test.0",
+    "@semcore/core": "^2.3.1-test.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
