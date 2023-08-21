@@ -5,3 +5,4 @@
 15.6.3-test.0=883ecfb3de5b8f2e8777ddad28b9ae72e3e15ccd
 15.6.4-test.0=883ecfb3de5b8f2e8777ddad28b9ae72e3e15ccd
 15.6.5-test.0=883ecfb3de5b8f2e8777ddad28b9ae72e3e15ccd
+15.6.6-test.0=883ecfb3de5b8f2e8777ddad28b9ae72e3e15ccd

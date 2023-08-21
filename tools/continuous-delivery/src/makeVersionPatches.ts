@@ -14,7 +14,7 @@ export type VersionPatch = {
   needPublish: boolean;
 };
 
-const orderedReleaseType: semver.ReleaseType[] = [
+export const orderedReleaseType: semver.ReleaseType[] = [
   'major',
   'premajor',
   'minor',

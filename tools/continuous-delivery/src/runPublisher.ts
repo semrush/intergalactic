@@ -9,6 +9,16 @@ import { publishReleaseNotes } from './publishReleaseNotes';
 dotenv.config();
 const git = Git();
 
+let alreadyHasCommit = false;
+const commitOrAmend = async (message: string) => {
+  if (alreadyHasCommit) {
+    await git.commit(message, ['--amend', '--no-edit']);
+  } else {
+    await git.commit(message, []);
+    alreadyHasCommit = true;
+  }
+};
+
 export const runPublisher = async (versionPatches: VersionPatch[]) => {
   log('Running publisher...');
   if (versionPatches.length === 0) {
@@ -48,7 +58,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
     log('Committing changes...');
     if (!process.argv.includes('--dry-run')) {
       await git.add('.');
-      await git.commit(commitMessage, []);
+      await commitOrAmend(commitMessage);
       for (const tag of gitTags) {
         await git.tag(['-f', tag]);
       }
@@ -89,7 +99,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       log('Committing @semcore/ui changes...');
       if (!process.argv.includes('--dry-run')) {
         await git.add('.');
-        await git.commit(['[chore] @semcore/ui package version bump'], []);
+        await commitOrAmend('[chore] @semcore/ui package version bump');
         await git.tag(['-f', `@semcore/ui@${semcoreUiPatch.to}`]);
       }
       log('@semcore/ui changes committed.');
@@ -112,7 +122,7 @@ export const runPublisher = async (versionPatches: VersionPatch[]) => {
       log('Committing lockfile...');
       await git.add('pnpm-lock.yaml');
       if (!process.argv.includes('--dry-run')) {
-        await git.commit(['[chore] updated lock file'], []);
+        await commitOrAmend('[chore] updated lock file');
       }
       log('Lockfile committed.');
     }

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/color-picker",
   "description": "Semrush ColorPicker Component",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,16 +12,16 @@
     "build": "pnpm semcore-builder --source=ts"
   },
   "dependencies": {
-    "@semcore/button": "5.3.0",
-    "@semcore/divider": "4.3.0",
-    "@semcore/dropdown": "4.3.0",
-    "@semcore/flex-box": "5.3.0",
-    "@semcore/icon": "4.4.0",
-    "@semcore/input": "4.4.0",
-    "@semcore/utils": "4.3.0"
+    "@semcore/button": "5.3.1",
+    "@semcore/divider": "4.3.1",
+    "@semcore/dropdown": "4.3.1",
+    "@semcore/flex-box": "5.3.1",
+    "@semcore/icon": "4.4.1",
+    "@semcore/input": "4.4.1",
+    "@semcore/utils": "4.3.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.3.0-test.0",
+    "@semcore/core": "^2.3.1-test.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
