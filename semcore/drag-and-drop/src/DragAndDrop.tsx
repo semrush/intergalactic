@@ -177,7 +177,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
     this.setState({ hideHoverEffect: false });
   };
   handleKeyDown = (index: number) => (event: KeyboardEvent) => {
-    if (event.key === 'Space') {
+    if (event.key === ' ') {
       event.preventDefault();
       event.stopPropagation();
       if (this.state.dragging) {
