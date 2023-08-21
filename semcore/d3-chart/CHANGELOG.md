@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-08-17
+
+### Changed
+
+- Donut chart now doesn't render `Donut.Pie` that represent 0 part of circle.
+
 ## [3.6.0] - 2023-08-17
 
 ### Added
