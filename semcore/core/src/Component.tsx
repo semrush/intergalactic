@@ -154,16 +154,18 @@ export namespace Intergalactic {
   /** @private */
   export namespace InternalTypings {
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
-      (Tag extends React.FC
-        ? ReactFCProps<Tag>
-        : Tag extends React.ComponentClass
-        ? ReactComponentProps<Tag>
-        : Tag extends ReactFCLike
-        ? ReactFCLikeProps<Tag>
-        : Tag extends keyof JSX.IntrinsicElements
-        ? JSX.IntrinsicElements[Tag]
-        : {}) &
-        (Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}),
+      MergeProps<
+        Tag extends React.FC
+          ? ReactFCProps<Tag>
+          : Tag extends React.ComponentClass
+          ? ReactComponentProps<Tag>
+          : Tag extends ReactFCLike
+          ? ReactFCLikeProps<Tag>
+          : Tag extends keyof JSX.IntrinsicElements
+          ? JSX.IntrinsicElements[Tag]
+          : {},
+        Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}
+      >,
       'children' | 'tag'
     >;
     export type ReturnResult =
@@ -194,7 +196,7 @@ export namespace Intergalactic {
     } & ComponentBasicProps<Tag> &
       MergeProps<
         Omit<Props, 'tag' | 'children'>,
-        ComponentPropsNesting<BaseTag> & ComponentPropsNesting<Tag>
+        MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
       >;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
