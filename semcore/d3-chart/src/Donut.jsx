@@ -155,7 +155,7 @@ class DonutRoot extends Component {
         return acc;
       }, []);
       pieData = Object.entries(data)
-        .filter(([key]) => keys.includes(key))
+        .filter(([key, value]) => keys.includes(key) && value > 0)
         .sort(([a], [b]) => (keys.indexOf(a) > keys.indexOf(b) ? 1 : -1));
     }
     const minValue =
@@ -323,6 +323,7 @@ function Pie({
   const pieRef = useRef(null);
 
   useEffect(() => {
+    if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
 
     // do not run animation on first render
@@ -338,10 +339,13 @@ function Pie({
         element: pieRef.current,
       });
     }
-  }, [active]);
+  }, [active, Boolean(data)]);
   useEffect(() => {
+    if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
-  }, [active, innerRadius, outerRadius, halfsize]);
+  }, [active, innerRadius, outerRadius, halfsize, Boolean(data)]);
+
+  if (!data) return;
 
   dataHintsHandler.establishDataType('values-set');
   dataHintsHandler.describeValueEntity(dataKey, name);
