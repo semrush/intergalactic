@@ -75,7 +75,7 @@ All changes, including changes by the project members, must go through a code re
 Thanks to all contributors, you are so awesome! ❤️
 
 - [Roman Lysov](https://github.com/lsroman)
-- [Michael Sereniti](https://github.com/phytonmk)
+- [Michael Sereniti](https://github.com/msereniti)
 - [Julia Mnizhek](https://github.com/j-mnizhek)
 - [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
 - [Ruslan Gaiazov](https://github.com/freeyoungstrong)
