@@ -234,6 +234,7 @@ class CalendarDaysRoot extends CalendarAbstract {
 class CalendarMonthsRoot extends CalendarAbstract {
   static displayName = 'CalendarMonths';
   static defaultProps = {
+    locale: 'en',
     children: ({ months }) => months.map((data, i) => <CalendarMonths.Unit key={i} {...data} />),
   };
 

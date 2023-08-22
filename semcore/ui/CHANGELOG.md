@@ -1,3 +1,13 @@
+## [15.6.7] - 2023-08-22
+
+### @semcore/date-picker
+
+- **Fixed** MonthPicker default locale wasn't `en` and was based on the system locale.  
+
+### @semcore/pagination
+
+- **Fixed** Base DOM element of `Pagination.TotalPages` component typings.
+
 ## [15.6.6] - 2023-08-21
 
 ### @semcore/core
