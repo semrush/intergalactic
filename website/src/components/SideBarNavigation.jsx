@@ -84,7 +84,7 @@ const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
                       to={`/${item.route}/`}
                       key={`page-${i}`}
                       aria-disabled={!!item.metadata.disabled}
-                      // rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+                      // rome-ignore lint/security/noDangerouslySetInnerHtml:
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                     {!!item.metadata.deprecated && (

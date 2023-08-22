@@ -149,15 +149,15 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
 
   return sstyled(styles)(
     <SPlotA11yView render={Box} tabIndex={0} aria-label={texts.label}>
-      {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
+      {/* rome-ignore lint/a11y/useValidAnchor: */}
       <a aria-hidden onClick={handleSkip}>
         {texts.close}
       </a>
-      {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
+      {/* rome-ignore lint/a11y/useValidAnchor: */}
       <a role='link' tabIndex={0} onKeyDown={handleSkipKeyboard} onClick={handleSkip}>
         {texts.skipPlot}
       </a>
-      {/* rome-ignore lint/a11y/useValidAnchor: <explanation> */}
+      {/* rome-ignore lint/a11y/useValidAnchor: */}
       <a role='link' tabIndex={0} onKeyDown={handleGoToTableKeyboard} onClick={handleGoToTable}>
         {texts.goToTable}
       </a>
@@ -180,10 +180,16 @@ export const PlotA11yView: React.FC<A11yViewProps> = ({
         </thead>
         <tbody>
           {data.map((row, index) => (
-            <tr key={`${Object.values(row).join('-')}-${index}`}>
-              {keys.map((key, index) => (
-                <td key={`${key}-${index}`}>{formatValue(intl, row[key])}</td>
-              ))}
+            <tr
+              key={`${Object.values(row)
+                .filter((item) => typeof item !== 'symbol')
+                .join('-')}-${index}`}
+            >
+              {keys
+                .map((key) => (typeof row[key] !== 'symbol' ? [key, row[key]] : [key, '']))
+                .map(([key, value], index) => (
+                  <td key={`${key}-${index}`}>{formatValue(intl, value)}</td>
+                ))}
             </tr>
           ))}
         </tbody>

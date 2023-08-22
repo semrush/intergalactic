@@ -1,5 +1,6 @@
 // Utils
 export declare function minMax(data: any, key: string | number): any;
+export declare const interpolateValue: Symbol;
 
 // Color
 export declare const colors: { [key: string]: string };

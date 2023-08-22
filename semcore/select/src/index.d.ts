@@ -117,6 +117,7 @@ type IntergalacticSelectComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     SelectProps<Value>,
     SelectContext,
     [handlers: SelectHandlers]

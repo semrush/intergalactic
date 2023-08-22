@@ -1,0 +1,27 @@
+---
+name: Bug report
+about: Create a report to help us improve
+title: ''
+labels: bug
+assignees: msereniti
+
+---
+
+**Describe the bug**
+A clear and concise description of what the bug is.
+
+**Code example**
+Open [codesandbox](https://codesandbox.io/api/v1/sandboxes/define?parameters=N4IgZglgNgpgziAXKADgQwMYGs0HMYB0AVnAPYB2SoGFALjObVSACYwoNvkYTzMBOMTE0QgAjAA4QAGhAABODAC2NQQHoArhCQgoaenCazBwgLQtSSnZJnzFK0utUwdeg0wC-X2XH4Y1EORsAB4EtHDBzDSMDCIgEEoojrQABABKQhipYPyWKQA6ICZZhQDc-eQJSfypwCkYJvRppKSpHik5eYXFtOaWahhQvIxlFVXJKQCCKCgduUoFIARq0yij5BXRhim5rSkAvPWNMM2tABQWGBpKsQT4tACisDeMAEIAngCSLGfdLbSFACUgPK5F2tAIgiCMH4ZwAPKsUmoAHwgiogDw-PwrGZhCJROixHRqNQAC1otBQcEQJNwEFopI0ACMCDQlGp7PwNHBSQEYvxcGg9FkIP5aIIYGolGhDDC1AB3GBMuD0yWXOADSxJcixDWBFAaWhqGDBNCJWAaqCkNAsQK4PHBMaJCYZYTSFJ1bkwB5gMAwLLur0AZVo-hgKXanQWAHIetHQeMailPuQDdl5ilowplM5NBA-Wn407qqkgyhAnM8ln7LmtBzy-Qi5VnUm6gAVE1tSsx7MOdR12jvJK4fhoFCk95NxO1FKvUjBCPdzO92v5sCwYKmJnzpubCjbAAiylIBxSZ0BB2RHoqKXq-9SAG0AG5CjQwd2KWgANVfMAAuqewahvQZzRtGaLkLeWyPlaNp2h-MC0AAMtatrkLgAGHEBYZnGAQqKBBN4pF6Pp-lkZznpe16Qbed7kNstAJDCp6fm2TGkIaFEXvsV6fihcHobh-EwIC7piAADJJEG0TsiEaPwkGUTx9SwGg_BsTcHG0GcjE3Pw0kRu6z6_n-hE0WAGjcIxFApKSaBBLA_ApmmZxPhewBEbefGoXaOlciJoIyZ-P5QG-rkGR4FREYItDyYpnkpHCyIJbecIdsEqShrg-zRnoTIwFA0a2bQShQAAYo4OWwWhuCmCaZooLARUqgAXjA-zAAATJJHjJTRMm3s5hopPK9Kkik1V2ikhhhiliVqOltB9QNiVzguSi0B1nW9XNqVDak8pbQALOJO39StiX7QQIVvrtA0QCwVU-ehdWmuaMDRndMmNZgMCkqQUBsPwOVtkO4ZkDcDJTbQJ6KOG8qOID00NpU6EEOjn3nRdKQvqF7XALjb6RVjF0UAAwnZ6H45TLCOftxPY7eKJfR6k3oSkABkHNnize2poaBCTCwFjkMtjMyXCZYVq17XRsEcBFczJMrXCahXULIti9jgIMxdqv7VrtGq2thuq2LEEeKCFQmiWKRsHhGhQKkR5KKQoIYl4QA), modify code to make the bug reproducible and paste the link to the new codesadnbox.
+
+**To Reproduce**
+Steps to reproduce the behavior:
+1. Go to '...'
+2. Click on '....'
+3. Scroll down to '....'
+4. See error
+
+**Expected behavior**
+A clear and concise description of what you expected to happen.
+
+**Additional context**
+Add any other context about the problem here.

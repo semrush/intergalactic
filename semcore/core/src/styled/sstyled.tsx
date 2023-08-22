@@ -88,7 +88,7 @@ function getClassAndVars(styles: any, name: any, props: any) {
           acc[0][value] = Boolean(propValue ?? false);
         } else {
           // @ts-ignore
-          // rome-ignore lint/suspicious/noDoubleEquals: <explanation>
+          // rome-ignore lint/suspicious/noDoubleEquals:
           acc[0][value] = propValue == modValue;
         }
       }

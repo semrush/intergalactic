@@ -1,8 +1,9 @@
 import semver from 'semver';
 import { ChangelogChange } from '@semcore/changelog-handler';
 import { Package } from './collectPackages';
-import { normalizeSemver } from './utils';
+import { log, normalizeSemver, prerelaseSuffix } from './utils';
 import dayjs from 'dayjs';
+import { reversedTopologicalSort } from './reversedTolopologicalSort';
 
 export type VersionPatch = {
   package: Package;
@@ -13,7 +14,7 @@ export type VersionPatch = {
   needPublish: boolean;
 };
 
-const orderedReleaseType: semver.ReleaseType[] = [
+export const orderedReleaseType: semver.ReleaseType[] = [
   'major',
   'premajor',
   'minor',
@@ -23,7 +24,11 @@ const orderedReleaseType: semver.ReleaseType[] = [
   'prerelease',
 ];
 
+const maxSemver = (v1: string, v2: string) => (semver.compare(v1, v2) === 1 ? v1 : v2);
+
 export const makeVersionPatches = (packages: Package[]) => {
+  log('Making version patches...');
+
   const packagesMap = new Map<string, Package>();
   for (const packageFile of packages) {
     packagesMap.set(packageFile.name, packageFile);
@@ -56,16 +61,29 @@ export const makeVersionPatches = (packages: Package[]) => {
     if (packageFile.lastPublishedVersion === null) {
       throw new Error(`${packageFile.name} not found in npm registry`);
     }
-
-    const hasNewerVersion =
-      semver.compare(packageFile.lastPublishedVersion, lastChangelog.version) === -1;
+    const newVersion = maxSemver(packageFile.currentVersion, packageFile.lastPublishedVersion);
+    const hasNewerVersion = semver.compare(newVersion, lastChangelog.version) === -1;
 
     if (!hasNewerVersion) continue;
 
+    const diff = semver.diff(newVersion, lastChangelog.version);
+    if (diff?.startsWith('pre')) {
+      lastChangelog.version = semver.inc(
+        lastChangelog.version,
+        'prerelease' as semver.ReleaseType,
+        undefined,
+        prerelaseSuffix,
+      )!;
+    } else if (!lastChangelog.version.includes(`-${prerelaseSuffix}.`)) {
+      lastChangelog.version += `-${prerelaseSuffix}.0`;
+    }
+    if (lastChangelog.changes[0]) {
+      lastChangelog.changes[0].version = lastChangelog.version;
+    }
     const versionPatch: VersionPatch = {
       package: packageFile,
       from: packageFile.currentVersion,
-      to: lastChangelog.version,
+      to: lastChangelog.version, //semver.inc(lastChangelog.version, 'prerelease', undefined, 'beta')!, // ?? lastChangelog.version,
       changes: lastChangelog.changes,
       changelogUpdated: true,
       needPublish: true,
@@ -84,11 +102,12 @@ export const makeVersionPatches = (packages: Package[]) => {
       if (packageFile.name === '@semcore/ui') continue;
 
       let updateType: semver.ReleaseType | null = null;
+      let updateIdentifier: string | undefined = undefined;
       let updateTypeFallback: 'patch' | 'prerelease' = 'patch';
       let needUpdate = false;
       const updatedDependencies: { name: string; from: string; to: string }[] = [];
 
-      for (const dependenciesType of ['dependencies']) {
+      for (const dependenciesType of ['dependencies', 'peerDependencies']) {
         for (const dependency in packageFile[dependenciesType as 'dependencies']) {
           const dependencyVersionPatch = versionPatchesMap.get(dependency);
           if (!dependencyVersionPatch) continue;
@@ -123,6 +142,7 @@ export const makeVersionPatches = (packages: Package[]) => {
               orderedReleaseType.indexOf(updateType) < orderedReleaseType.indexOf(diffType!)
             ) {
               updateType = diffType;
+              updateIdentifier = dependencyVersionPatch.to.match(/-(\w+)\./)?.[1];
             }
           }
         }
@@ -136,13 +156,21 @@ export const makeVersionPatches = (packages: Package[]) => {
           ? packageFile.currentVersion
           : packageFile.lastPublishedVersion;
 
-        const version = semver.inc(versionBase, updateType || updateTypeFallback);
-        const descriptionBefore = `Version ${
-          updateType || updateTypeFallback
-        } update due to children dependencies update (`;
-        const description = `${descriptionBefore}${updatedDependencies
-          .map(({ name, from, to }) => `\`${name}\` [${from} ~> ${to}]`)
-          .join(', ')}).`;
+        const version = semver.inc(
+          versionBase,
+          updateType || updateTypeFallback,
+          undefined,
+          updateIdentifier,
+        );
+        const updateTypeLabel = updateType || updateTypeFallback;
+        const descriptionBefore = `Version ${updateTypeLabel} update due to children dependencies update (`;
+        const updatedDependenciesList = updatedDependencies
+          .map(({ name, from, to }) => {
+            const clearTo = to.split('-')[0];
+            return `\`${name}\` [${from} ~> ${clearTo}]`;
+          })
+          .join(', ');
+        const description = `${descriptionBefore}${updatedDependenciesList}).`;
 
         const versionPatch: VersionPatch = {
           package: packageFile,
@@ -185,81 +213,15 @@ export const makeVersionPatches = (packages: Package[]) => {
     }
   }
 
-  const sortedPatches = reversedTopologicalSort(versionPatches);
+  const sortedPatches = reversedTopologicalSort(
+    versionPatches.map((patch) => ({
+      data: patch,
+      name: patch.package.name,
+      dependencies: Object.keys(patch.package.dependencies),
+    })),
+  );
+
+  log('Made and sorted versions patches.');
 
   return sortedPatches;
-};
-
-const reversedTopologicalSort = (patches: VersionPatch[]) => {
-  const patchesMap = new Map<string, VersionPatch>();
-  const rootPatches = new Set(patches);
-  for (const patch of patches) {
-    patchesMap.set(patch.package.name, patch);
-  }
-  for (const patch of patches) {
-    for (const dependency in patch.package.dependencies) {
-      rootPatches.delete(patchesMap.get(dependency)!);
-    }
-  }
-  const sumPatchPriority = new Map<VersionPatch, number>();
-
-  for (const rootPatch of rootPatches) {
-    // Tarjan algo. Only difference that we already know root.
-    // https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm
-
-    const patchIndex = new Map<VersionPatch, number>();
-    const patchPriority = new Map<VersionPatch, number>();
-    const patchLowLink = new Map<VersionPatch, number>();
-    let index = 0;
-    const stack: VersionPatch[] = [];
-    const onStack = new Map<VersionPatch, boolean>();
-
-    const strongconnect = (patch: VersionPatch) => {
-      patchIndex.set(patch, index);
-      patchLowLink.set(patch, index);
-      index++;
-      stack.push(patch);
-      onStack.set(patch, true);
-
-      for (const dependency in patch.package.dependencies) {
-        const dependantPatch = patchesMap.get(dependency);
-        if (!dependantPatch) continue;
-        if (!patchIndex.has(dependantPatch)) {
-          strongconnect(dependantPatch);
-          patchLowLink.set(
-            patch,
-            Math.min(patchLowLink.get(patch)!, patchLowLink.get(dependantPatch)!),
-          );
-        } else if (onStack.get(dependantPatch)) {
-          patchLowLink.set(
-            patch,
-            Math.min(patchLowLink.get(patch)!, patchIndex.get(dependantPatch)!),
-          );
-        }
-      }
-
-      if (patchLowLink.get(patch) === patchIndex.get(patch)) {
-        let dependantPatch: VersionPatch | null = null;
-        let priority = 0;
-        while (stack.length > 0) {
-          dependantPatch = stack.pop()!;
-          onStack.set(dependantPatch, false);
-          priority += patchLowLink.get(dependantPatch)!;
-        }
-        priority += patchLowLink.get(patch)!;
-        patchPriority.set(patch, priority);
-      }
-    };
-
-    strongconnect(rootPatch);
-
-    for (const patch of patches) {
-      sumPatchPriority.set(
-        patch,
-        (sumPatchPriority.get(patch) || 0) + (patchPriority.get(patch) || 0),
-      );
-    }
-  }
-
-  return [...patches].sort((a, b) => sumPatchPriority.get(b)! - sumPatchPriority.get(a)!);
 };

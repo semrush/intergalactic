@@ -2,7 +2,7 @@ import React, { ChangeEvent, ComponentProps } from 'react';
 import dayjs from 'dayjs';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic, PropGetterFn } from '@semcore/core';
-import Button from '@semcore/button';
+import Button, { ButtonProps } from '@semcore/button';
 import Dropdown, { DropdownProps, DropdownTriggerProps } from '@semcore/dropdown';
 import { WithI18nEnhanceProps } from '@semcore/utils/lib/enhances/i18nEnhance';
 import BaseTrigger, { BaseTriggerProps } from '@semcore/base-trigger';
@@ -199,7 +199,7 @@ export type DateRangePickerProps = DropdownProps &
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
      * */
-    periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
+    periods?: (ButtonProps & { value: Date[] })[];
   };
 
 /** @deprecated */
@@ -228,7 +228,7 @@ export type DateRangePickerPeriodProps = BoxProps & {
    * [{value: [new Date(), new Date()], children: "Today"}]
    * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
    * */
-  periods?: (ComponentProps<typeof Button> & { value: Date[] })[];
+  periods?: (ButtonProps & { value: Date[] })[];
 };
 
 /** @deprecated */

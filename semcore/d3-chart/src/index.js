@@ -24,5 +24,5 @@ export { default as ReferenceLine } from './ReferenceLine';
 
 export { HoverLine, HoverRect } from './Hover';
 
-export { minMax } from './utils';
+export { minMax, interpolateValue } from './utils';
 export { colors } from './color';

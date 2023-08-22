@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
-import { eventToPoint, invert } from './utils';
+import { eventToPoint, invert, interpolateValue } from './utils';
 
 import style from './style/dot.shadow.css';
 
@@ -13,7 +13,6 @@ function Dots(props) {
   const {
     Element: SDot,
     styles,
-    data,
     color,
     d3,
     x,
@@ -29,6 +28,10 @@ function Dots(props) {
   const SDots = 'g';
   const bisect = bisector((d) => d[x]).center;
   const [activeIndex, setActiveIndex] = useState(null);
+  const data = React.useMemo(
+    () => props.data.filter((item) => item[y] !== interpolateValue),
+    [props.data],
+  );
 
   const handlerMouseMoveRoot = useCallback(
     trottle((e) => {

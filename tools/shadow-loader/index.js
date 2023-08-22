@@ -56,7 +56,7 @@ async function loader(source) {
     compiler.hooks.afterEnvironment.intercept({
       name: 'VirtualModulesPlugin',
       context: true,
-      // rome-ignore lint/style/noCommaOperator: <explanation>
+      // rome-ignore lint/style/noCommaOperator:
       register: (tap) => (tap.fn(), tap),
     });
     virtualModules.apply(compiler);

@@ -1,3 +1,113 @@
+## [15.6.7] - 2023-08-22
+
+### @semcore/date-picker
+
+- **Fixed** MonthPicker default locale wasn't `en` and was based on the system locale.  
+
+### @semcore/pagination
+
+- **Fixed** Base DOM element of `Pagination.TotalPages` component typings.
+
+## [15.6.6] - 2023-08-21
+
+### @semcore/core
+
+- **Fixed** Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
+
+### @semcore/d3-chart
+
+- **Changed** Donut chart now doesn't render `Donut.Pie` that represent 0 part of circle.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Broken keyboard drag-and-drop handling.
+
+## [15.6.5] - 2023-08-18
+
+### @semcore/core
+
+- **Added** Exported type `Intergalactic.DomProps` that may be helpful for typing component wrappers.
+
+### @semcore/d3-chart
+
+- **Added** `paddingAngle` prop for Donut chart.
+
+### @semcore/data-table
+
+- **Added** `data` prop for `DataTable.Cell` and `DataTable.Row` that allows more convenient typings than `DataTable.Cell<typeof data>`.
+- **Fixed** Collapsing of table included in row of other table.
+
+### @semcore/utils
+
+- **Changed** Made `resolveColor` types generic.
+
+## [15.6.4] - 2023-08-18
+
+### @semcore/carousel
+
+- **Changed** Removed `aria-hidden` from navigation buttons.
+- **Changed** Added `aria-current` on the current slide.
+- **Changed** Added i18n locales for `aria-label` of Next and Previous buttons.
+
+## [15.6.3] - 2023-08-18
+
+### @semcore/d3-chart
+
+- **Added** Added special `interpolateValue` symbol that allows to interpolate points on line and area charts.
+
+### @semcore/feature-popover
+
+- **Fixed** `zIndex` passing.
+
+### @semcore/neighbor-location
+
+- **Fixed** Removed wrong `tag` component declaration in `NeighborLocationProps` type.
+
+### @semcore/radio
+
+- **Fixed** Removed wrong `tag` component declaration in `RadioGroupProps` type.
+- **Fixed** Fixed vertical direction of radio group (due to `typo` it was horizontal by default).
+
+## [15.6.2] - 2023-08-17
+
+### @semcore/input-tags
+
+- **Fixed** Fixed aria roles issues.
+
+### @semcore/scroll-area
+
+- **Changed** Focus ring is now provided by overflowing pseudo element.
+
+### @semcore/tag
+
+- **Changed** Remove tag button aria-label now refers both to the tag and remove button itself. 
+
+## [15.6.1] - 2023-08-16
+
+### @semcore/core
+
+- **Changed** Internal typings update that fixes edge cases of props nesting.
+
+### @semcore/flex-box
+
+- **Changed** Deprecated `IFlexProps`.
+
+### @semcore/utils
+
+- **Fixed** Fixed colors of `--intergalactic-table-td-cell-hover` and `--intergalactic-table-td-cell-active` design tokens to a lighter ones.
+
+## [15.6.0] - 2023-08-11
+
+### @semcore/textarea
+
+- **Fixed** Line height of textarea of `l` size changed from `lh-400` to `lh-300`.
+
+## [15.4.7] - 2023-08-10
+
+### @semcore/select
+
+- **Fixed** Default options DOM ids where not synced with aria-activedescendant value.
+
 ## [15.4.0] - 2023-08-09
 
 ### @semcore/d3-chart

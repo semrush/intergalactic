@@ -7,6 +7,7 @@ import logger from '@semcore/utils/lib/logger';
 import CloseM from '@semcore/icon/Close/m';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
+import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/tag.shadow.css';
 
@@ -76,7 +77,7 @@ const legacyThemeRecommendedMigration = {
 class RootTag extends Component {
   static displayName = 'Tag';
   static style = style;
-  static enhance = [i18nEnhance(localizedMessages)];
+  static enhance = [i18nEnhance(localizedMessages), uniqueIDEnhancement()];
   static defaultProps = {
     theme: 'primary',
     color: 'gray-500',
@@ -103,21 +104,33 @@ class RootTag extends Component {
   }
 
   getCloseProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, id, uid } = this.asProps;
 
-    return { getI18nText };
+    return { getI18nText, tagId: id || `igc-${uid}-tag`, uid };
   }
 
   render() {
     const STag = Root;
-    const { Children, styles, theme, color, interactive, disabled, addonLeft, addonRight } =
-      this.asProps;
+    const {
+      Children,
+      styles,
+      theme,
+      color,
+      interactive,
+      disabled,
+      addonLeft,
+      addonRight,
+      id: outerId,
+      uid,
+    } = this.asProps;
+    const id = outerId || `igc-${uid}-tag`;
 
     const colors = theme !== 'primary' ? getSecondaryColors(color) : getPrimaryColors(color);
 
     return sstyled(styles)(
       <STag
         render={Box}
+        id={id}
         use:interactive={!disabled && interactive}
         colorBg={colors.colorBg}
         colorBgHover={colors.colorBgHover}
@@ -140,7 +153,7 @@ function Text(props) {
 
 function Close(props) {
   const SClose = Root;
-  const { styles, getI18nText } = props;
+  const { styles, getI18nText, tagId, uid } = props;
 
   function onKeyDown(event) {
     if (props.onKeyDown) {
@@ -157,6 +170,8 @@ function Close(props) {
       render={Box}
       tag={CloseM}
       interactive
+      id={`igc-${uid}-tag-clear`}
+      aria-labelledby={`igc-${uid}-tag-clear ${tagId}`}
       aria-label={getI18nText('remove')}
       onKeyDown={onKeyDown}
     />,

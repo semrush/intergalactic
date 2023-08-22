@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "main": "index.ts",
   "bin": {
-    "continuous-delivery": "bin/cli.ts"
+    "deliver-prerelease": "bin/deliver-prerelease.ts",
+    "publish-release": "bin/publish-release.ts",
+    "format-changelogs": "bin/format-changelogs.ts"
   },
   "private": true,
   "license": "MIT",
@@ -11,6 +13,7 @@
     "@semcore/changelog-handler": "*",
     "@semcore/slack-integration": "*",
     "axios": "0.25.0",
+    "compressing": "^1.9.1",
     "dayjs": "1.8.36",
     "dotenv": "^16.0.3",
     "execa": "6.1.0",

@@ -509,6 +509,7 @@ type IntergalacticDataTableComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     DataTableProps<Data>,
     DataTableCtx,
     never
@@ -522,7 +523,12 @@ type IntergalacticDataTableRowComponent = (<
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
-    DataTableRowProps,
+    DataTableRowProps & {
+      /**
+       * That property is ONLY used for the component strict typings. In the component runtime `data` prop set on `<DataTable>...</DataTable> is used.
+       */
+      data?: Data;
+    },
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
   >,
@@ -530,13 +536,18 @@ type IntergalacticDataTableRowComponent = (<
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
 type IntergalacticDataTableCellComponent = (<
-  Data extends DataTableData[],
+  Data extends DataTableData[] = [],
   Name extends string = string,
   Tag extends Intergalactic.Tag = 'div',
 >(
   props: Intergalactic.InternalTypings.PropsRenderingResultComponentProps<
     Tag,
-    DataTableCellProps<Name>,
+    DataTableCellProps<Name> & {
+      /**
+       * That property is ONLY used for the componenct strict typings. In the component runtime `data` prop set on `<DataTable>...</DataTable> is used.
+       */
+      data?: Data;
+    },
     DataTableCtx & { data: Data },
     [row: Data[0], index: number]
   >,
