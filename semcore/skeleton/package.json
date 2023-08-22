@@ -16,7 +16,7 @@
     "@semcore/flex-box": "5.3.1"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.3.1-test.0",
+    "@semcore/core": "^2.3.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

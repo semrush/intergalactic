@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "Semrush DatePicker Component",
-  "version": "4.3.2-test.0",
+  "version": "4.3.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -26,7 +26,7 @@
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.3.1-test.0",
+    "@semcore/core": "^2.3.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
