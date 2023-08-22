@@ -352,6 +352,7 @@ class YAxisRoot extends AxisRoot {
     ...AxisRoot.defaultProps,
     indexScale: 1,
     position: 'left',
+    hide: true,
   };
 }
 
