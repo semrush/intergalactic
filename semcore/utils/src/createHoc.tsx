@@ -9,11 +9,10 @@ function createHoc(
     return (WrappedComponent) => {
       class Component extends PureComponent {
         static displayName = getDisplayName(WrappedComponent);
-        static defaultProps = WrappedComponent.defaultProps || {};
 
         render() {
           // @ts-ignore
-          const { forwardedRef, ...others } = this.props;
+          const { forwardedRef, ...others } = { ...WrappedComponent.defaultProps, ...this.props };
           return (
             <EnhancedComponent {...options} {...this.props}>
               {(enhancedComponentProps: any) => (

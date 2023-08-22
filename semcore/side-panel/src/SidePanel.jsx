@@ -175,14 +175,14 @@ function Footer(props) {
   return sstyled(props.styles)(<SFooter render={Flex} />);
 }
 
-function Close(props) {
+function Close({ styles, children, Children }) {
   const SClose = Root;
-  return sstyled(props.styles)(<SClose render={Box} tag='button' />);
+  return sstyled(styles)(
+    <SClose render={Box} tag='button'>
+      {children ? <Children /> : <CloseIcon title='Close' />}
+    </SClose>,
+  );
 }
-Close.defaultProps = {
-  children: <CloseIcon title='Close' />,
-};
-Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
   const STitle = Root;

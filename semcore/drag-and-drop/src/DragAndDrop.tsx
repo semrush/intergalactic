@@ -276,7 +276,16 @@ const Draggable = (props: any) => {
   const SDraggable = Root;
   const ref = React.useRef();
   const { attach, detach } = React.useContext(DragAndDropContext);
-  const { styles, placement, noDrag, index, children, swapPreview, Children, id } = props;
+  const {
+    styles,
+    placement = 'right',
+    noDrag = false,
+    index,
+    children,
+    swapPreview,
+    Children,
+    id,
+  } = props;
   const resolvedChildren = React.useMemo(
     () => (typeof children === 'function' ? children(props) : children),
     [children, props],
@@ -292,10 +301,6 @@ const Draggable = (props: any) => {
       {swapPreview ? swapPreview : <Children />}
     </SDraggable>,
   );
-};
-Draggable.defaultProps = {
-  placement: 'right',
-  noDrag: false,
 };
 
 const DropZone = (props: any) => {

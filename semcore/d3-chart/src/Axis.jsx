@@ -190,6 +190,7 @@ class AxisRoot extends Component {
   static displayName = 'Axis';
 
   static style = style;
+  static defaultProps = {};
 
   get ticks() {
     const { ticks, indexScale, scale } = this.asProps;
@@ -332,25 +333,32 @@ function Title(props) {
   );
 }
 
-const XAxis = createElement(AxisRoot, {
-  Ticks,
-  Grid,
-  Title,
-});
-XAxis.defaultProps = {
-  indexScale: 0,
-  position: 'bottom',
-};
+class XAxisRoot extends AxisRoot {
+  static defaultProps = {
+    ...AxisRoot.defaultProps,
+    indexScale: 0,
+    position: 'bottom',
+  };
+}
 
-const YAxis = createElement(AxisRoot, {
+const XAxis = createElement(XAxisRoot, {
   Ticks,
   Grid,
   Title,
 });
-YAxis.defaultProps = {
-  indexScale: 1,
-  position: 'left',
-  hide: true,
-};
+
+class YAxisRoot extends AxisRoot {
+  static defaultProps = {
+    ...AxisRoot.defaultProps,
+    indexScale: 1,
+    position: 'left',
+  };
+}
+
+const YAxis = createElement(YAxisRoot, {
+  Ticks,
+  Grid,
+  Title,
+});
 
 export { XAxis, YAxis };
