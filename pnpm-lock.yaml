@@ -1900,20 +1900,20 @@ importers:
   semcore/table:
     dependencies:
       '@semcore/flex-box':
-        specifier: 5.3.1-test.0
-        version: 5.3.1-test.0
+        specifier: 5.3.1
+        version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.4.1-test.0
-        version: 4.4.1-test.0
+        specifier: 4.4.1
+        version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.4.1-test.0
-        version: 5.4.1-test.0
+        specifier: 5.4.1
+        version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.4.1-test.0
-        version: 5.4.1-test.0
+        specifier: 5.4.1
+        version: link:../typography
       '@semcore/utils':
-        specifier: 4.3.1-test.0
-        version: 4.3.1-test.0
+        specifier: 4.3.1
+        version: link:../utils
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -2086,7 +2086,7 @@ importers:
         specifier: 4.5.1
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.3.2-test.0
+        specifier: 4.3.2
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.3.1
@@ -2182,7 +2182,7 @@ importers:
         specifier: 3.3.1
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 4.4.2-test.0
+        specifier: 4.4.2
         version: link:../pagination
       '@semcore/pills':
         specifier: 5.4.1
@@ -5655,76 +5655,14 @@ packages:
     dev: true
     optional: true
 
-  /@semcore/flex-box@5.3.1-test.0:
-    resolution: {integrity: sha512-1JQAp7rnVdbbiBOGdC5M4lB/WlfzwxseTYbb1cmU8xstsQdmFYlvya5W9w+VAzdvjoBTGWAwDjzbEftLKiIfLw==}
-    peerDependencies:
-      '@semcore/core': ^2.3.1-test.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/utils': 4.3.1-test.0
-      classnames: 2.2.6
-      csstype: 3.0.8
-    dev: false
-
-  /@semcore/icon@4.4.1-test.0:
-    resolution: {integrity: sha512-WK9XeY9SiKnd4RjktoEzoA4T1/XXNM2J9f0CAKhZSRqIjVunG3n7SBL7ryEGuVuw7dOclEorjyvjbzE/UJQCvg==}
-    peerDependencies:
-      '@semcore/core': ^2.3.1-test.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.3.1-test.0
-      '@semcore/utils': 4.3.1-test.0
-      classnames: 2.2.6
-    dev: false
-
-  /@semcore/scroll-area@5.4.1-test.0:
-    resolution: {integrity: sha512-nMG0NdrCMdPdDEwDeNtlzQ6yGjyodQGX574p/yhu/9u7fhpgoluFmzFQmcUP0+W5uK5HRe2zIpiIrktHzA80zA==}
-    peerDependencies:
-      '@semcore/core': ^2.3.1-test.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.3.1-test.0
-      '@semcore/utils': 4.3.1-test.0
-    dev: false
-
   /@semcore/theme-redesign@1.5.12:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
     dev: true
-
-  /@semcore/typography@5.4.1-test.0:
-    resolution: {integrity: sha512-s6dhg1iSOxPdCMpisQhNEZ+8l8hLSxrfpMKEsUbPVKVE6WkZIZZakeBDA81j4//M6qfQ1oKSHId+ffMyZUtf6w==}
-    peerDependencies:
-      '@semcore/core': ^2.3.1-test.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.3.1-test.0
-      '@semcore/icon': 4.4.1-test.0
-      '@semcore/utils': 4.3.1-test.0
-      csstype: 3.0.8
-    dev: false
 
   /@semcore/utils@4.3.0:
     resolution: {integrity: sha512-l8uqn7vS51VSecy9v55hczL/YbrI5CvixJJb3Bn7O9WSQoD8D3QrBWfwyBo2fpLsLJcuLpfXcHegcVYWxcLfOw==}
     peerDependencies:
       '@semcore/core': ^2.3.0-test.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7
-      classnames: 2.2.6
-      focus-lock: 0.11.3
-      hoist-non-react-statics: 3.3.2
-    dev: false
-
-  /@semcore/utils@4.3.1-test.0:
-    resolution: {integrity: sha512-LV6nzxHXZZqmCAoyExS36Scx+NkQgZVv1vGX2QJRI9XT5j+iu/ViKGwC/2DRuRANWKhEXNUecFOeoOjV04+HSA==}
-    peerDependencies:
-      '@semcore/core': ^2.3.1-test.0
       react: 16.8 - 18
       react-dom: 16.8 - 18
     dependencies:

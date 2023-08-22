@@ -16,7 +16,7 @@
     "unplugin": "1.2.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.3.1-test.0"
+    "@semcore/core": "^2.3.1"
   },
   "repository": {
     "type": "git",
