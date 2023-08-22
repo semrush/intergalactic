@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.2] - 2023-08-22
+
+### Fixed
+
+- Base DOM element of `Pagination.TotalPages` component typings.
+
 ## [4.4.1] - 2023-08-21
 
 ### Changed
