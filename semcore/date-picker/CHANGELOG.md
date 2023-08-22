@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.3.2] - 2023-08-22
+
+### Fixed
+
+- MonthPicker default locale wasn't `en` and was based on the system locale.  
+
 ## [4.3.1] - 2023-08-21
 
 ### Changed
