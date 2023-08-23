@@ -2086,7 +2086,7 @@ importers:
         specifier: 4.5.1
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.3.2
+        specifier: 4.3.3-prerelease.0
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.3.1
