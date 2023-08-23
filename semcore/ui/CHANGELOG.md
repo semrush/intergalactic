@@ -1,3 +1,71 @@
+## [15.8.0] - 2023-08-23
+
+### @semcore/button
+
+- **Fixed** Fixed paddings for Button's text and addons.
+
+### @semcore/carousel
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/color-picker
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/d3-chart
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/date-picker
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+- **Fixed** Fixed token for hover state of the range cell (`SCalendarUnit[selected]`).
+
+### @semcore/drag-and-drop
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/feedback-form
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/format-text
+
+- **Changed** Disable forced lists counter reset if `start`, `reversed` or `type` attributes are set on corresponding `ol` or `ul` tags.
+
+### @semcore/icon
+
+- **Changed** Updated `Twitter` and `TwitterCarousel` icons, bye-bye birdie 😢
+
+### @semcore/input
+
+- **Fixed** Fixed padding for addons.
+- **Changed** Enforced input wrapper to be non-focusable (primary for other components that use input wrapper).
+
+### @semcore/input-tags
+
+- **Changed** Improved visual state of focused tags container. 
+
+### @semcore/outside-click
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/side-panel
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/skeleton
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/tag
+
+- **Changed** Improved visual state of focusable tags.
+
+### @semcore/utils
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
 ## [15.6.7] - 2023-08-23
 
 ### @semcore/date-picker
