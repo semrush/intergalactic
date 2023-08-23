@@ -1,5 +1,6 @@
 SFormatText {
   color: var(--intergalactic-text-primary, #191b23);
+
   & abbr {
     color: var(--intergalactic-text-secondary, #6c6e79);
     text-decoration: underline dashed var(--intergalactic-text-hint, #6c6e79);
@@ -67,8 +68,8 @@ SFormatText {
     }
   }
 
-  & ol,
-  & ul {
+  & ol:not(ol[start], ol[reversed], ol[type]),
+  & ul:not(ul[start], ul[reversed], ul[type]) {
     margin: var(--intergalactic-spacing-2x, 8px) 0;
     padding: 0;
     list-style: none;
@@ -82,12 +83,12 @@ SFormatText {
       }
     }
 
-    & li + li {
+    & li+li {
       margin: var(--intergalactic-spacing-2x, 8px) 0 0 0;
     }
   }
 
-  & ol {
+  & ol:not(ol[start], ol[reversed], ol[type]) {
     counter-reset: item 0;
 
     & li:before {
@@ -96,7 +97,7 @@ SFormatText {
     }
   }
 
-  & ul li:before {
+  & ul:not(ul[start], ul[reversed], ul[type]) li:before {
     content: '';
     background-color: var(--intergalactic-icon-primary-neutral, #6c6e79);
   }
@@ -182,6 +183,7 @@ SFormatText {
 }
 
 SFormatText[size='s'] {
+
   & p,
   & li {
     font-size: var(--intergalactic-fs-100, 12px);
@@ -189,8 +191,7 @@ SFormatText[size='s'] {
   }
 
   & p {
-    margin: 0 0 calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px))
-      0;
+    margin: 0 0 calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)) 0;
 
     &:last-child {
       margin-bottom: 0;
@@ -198,22 +199,15 @@ SFormatText[size='s'] {
   }
 
   & li {
-    padding-left: calc(
-      var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ol ol li {
-    padding-left: calc(
-      var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ol ol ol li {
-    padding-left: calc(
-      var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) +
-      var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ul li:before {
@@ -226,6 +220,7 @@ SFormatText[size='s'] {
 }
 
 SFormatText[size='m'] {
+
   & p,
   & li {
     font-size: var(--intergalactic-fs-200, 14px);
@@ -241,22 +236,15 @@ SFormatText[size='m'] {
   }
 
   & li {
-    padding-left: calc(
-      var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ol ol li {
-    padding-left: calc(
-      var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ol ol ol li {
-    padding-left: calc(
-      var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) +
-      var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ul li:before {
@@ -270,6 +258,7 @@ SFormatText[size='m'] {
 }
 
 SFormatText[size='l'] {
+
   & p,
   & li {
     font-size: var(--intergalactic-fs-300, 16px);
@@ -285,22 +274,15 @@ SFormatText[size='l'] {
   }
 
   & li {
-    padding-left: calc(
-      var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-4x, 16px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ol ol li {
-    padding-left: calc(
-      var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-6x, 24px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ol ol ol li {
-    padding-left: calc(
-      var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) +
-      var(--intergalactic-spacing-05x, 2px)
-    );
+    padding-left: calc(var(--intergalactic-spacing-8x, 32px) + var(--intergalactic-spacing-1x, 4px) + var(--intergalactic-spacing-05x, 2px));
   }
 
   & ul li:before {
