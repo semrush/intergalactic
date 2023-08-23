@@ -569,7 +569,7 @@ importers:
         specifier: 4.5.0
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.5.0
+        specifier: 5.6.0-prerelease.0
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.4.0
@@ -800,7 +800,7 @@ importers:
         specifier: 5.4.0
         version: link:../flex-box
       '@semcore/scroll-area':
-        specifier: 5.5.0
+        specifier: 5.6.0-prerelease.0
         version: link:../scroll-area
       '@semcore/utils':
         specifier: 4.4.0
@@ -1304,7 +1304,7 @@ importers:
         specifier: 4.6.0
         version: link:../input
       '@semcore/scroll-area':
-        specifier: 5.5.0
+        specifier: 5.6.0-prerelease.0
         version: link:../scroll-area
       '@semcore/tag':
         specifier: 5.6.0
@@ -1677,7 +1677,7 @@ importers:
         specifier: 4.4.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.5.0
+        specifier: 4.6.0-prerelease.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.4.0
@@ -1906,8 +1906,8 @@ importers:
         specifier: 4.5.0-prerelease.0
         version: 4.5.0-prerelease.0
       '@semcore/scroll-area':
-        specifier: 5.5.0-prerelease.0
-        version: 5.5.0-prerelease.0
+        specifier: 5.6.0-prerelease.0
+        version: link:../scroll-area
       '@semcore/typography':
         specifier: 5.5.0-prerelease.0
         version: 5.5.0-prerelease.0
@@ -1978,7 +1978,7 @@ importers:
         specifier: 4.6.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.6.0
+        specifier: 4.7.0-prerelease.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.4.0
@@ -2083,7 +2083,7 @@ importers:
         specifier: 3.8.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.6.0
+        specifier: 4.7.0-prerelease.0
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.5.0
@@ -2101,7 +2101,7 @@ importers:
         specifier: 4.4.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.5.0
+        specifier: 4.6.0-prerelease.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.4.0
@@ -2158,7 +2158,7 @@ importers:
         specifier: 5.5.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.5.0
+        specifier: 4.6.0-prerelease.0
         version: link:../input-tags
       '@semcore/link':
         specifier: 5.4.0
@@ -2203,10 +2203,10 @@ importers:
         specifier: 6.4.0
         version: link:../radio
       '@semcore/scroll-area':
-        specifier: 5.5.0
+        specifier: 5.6.0-prerelease.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.6.0
+        specifier: 4.7.0-prerelease.0
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.5.0
@@ -2242,7 +2242,7 @@ importers:
         specifier: 5.5.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.6.0
+        specifier: 4.7.0-prerelease.0
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.4.0
@@ -5677,17 +5677,6 @@ packages:
       '@semcore/flex-box': 5.4.0-prerelease.0
       '@semcore/utils': 4.4.0-prerelease.0
       classnames: 2.2.6
-    dev: false
-
-  /@semcore/scroll-area@5.5.0-prerelease.0:
-    resolution: {integrity: sha512-RJNGRgJcl/haJcsa9itP05SdsSR5IPHZ6yWIoHdj9/X5lnswCPja9p50onPojfCYxIY3eUo4t3SmoQ7GLbL2gg==}
-    peerDependencies:
-      '@semcore/core': ^2.4.0-prerelease.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.4.0-prerelease.0
-      '@semcore/utils': 4.4.0-prerelease.0
     dev: false
 
   /@semcore/theme-redesign@1.5.12:
