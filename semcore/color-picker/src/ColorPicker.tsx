@@ -51,6 +51,7 @@ type TriggerAsProps = {
 type PopperAsProps = {
   styles?: React.CSSProperties;
   Children: React.FC;
+  children?: React.ReactNode;
   getI18nText: (messageId: string, values?: { [key: string]: string | number }) => string;
 };
 
@@ -204,21 +205,15 @@ const DefaultTrigger = React.forwardRef(function (props: TriggerAsProps, ref) {
 });
 
 export function Popper(props: PopperAsProps) {
-  const { styles, Children, getI18nText } = props;
+  const { styles, Children, getI18nText, children } = props;
   const SColorPickerPopper = Root;
 
   return sstyled(styles)(
     <SColorPickerPopper render={Dropdown.Popper} aria-label={getI18nText('palette')}>
-      <Children />
+      {children ? <Children /> : <ColorPicker.Colors getI18nText={props.getI18nText} />}
     </SColorPickerPopper>,
   );
 }
-
-Popper.defaultProps = (props: PopperAsProps) => {
-  return {
-    children: <ColorPicker.Colors getI18nText={props.getI18nText} />,
-  };
-};
 
 const ColorPicker = createComponent(ColorPickerRoot, {
   Trigger,

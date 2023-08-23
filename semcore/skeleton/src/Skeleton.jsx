@@ -75,7 +75,7 @@ class SkeletonSVG extends Component {
 
 function Text(props) {
   const SText = Box;
-  const { amount, y, x, styles, forwardRef, ...other } = props;
+  const { y = 0, x = 0, amount = 1, width = '100%', styles, forwardRef, ...other } = props;
   const amountLine = Number(amount);
 
   const renderRect = (props) => {
@@ -90,19 +90,13 @@ function Text(props) {
           y: y || 20 * index,
           x,
           ref: forwardRef,
+          width,
           ...other,
         }),
       )}
     </React.Fragment>
   );
 }
-
-Text.defaultProps = {
-  x: 0,
-  y: 0,
-  amount: 1,
-  width: '100%',
-};
 
 const Skeleton = createComponent(SkeletonRoot);
 

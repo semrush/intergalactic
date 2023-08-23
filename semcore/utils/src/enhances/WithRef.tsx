@@ -6,10 +6,9 @@ function WithForwardRef() {
   return function ForwardRef<T extends React.ComponentType>(Component: T) {
     const Wrapped = React.forwardRef((props, ref) => {
       // @ts-ignore
-      return <Component {...props} forwardedRef={ref} />;
+      return <Component {...(Component.defaultProps || {})} {...props} forwardedRef={ref} />;
     });
     Wrapped.displayName = getDisplayName(Component);
-    Wrapped.defaultProps = Component.defaultProps;
     return hoistNonReactStatics(Wrapped, Component) as any;
   };
 }

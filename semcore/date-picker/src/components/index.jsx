@@ -51,7 +51,7 @@ export const Title = ({ Children, styles }) => {
   );
 };
 
-export function Prev({ getI18nText }) {
+export function Prev({ getI18nText, children, Children }) {
   return (
     <Root
       render={Button}
@@ -60,15 +60,13 @@ export function Prev({ getI18nText }) {
       size='l'
       tabIndex={-1}
       aria-label={getI18nText('prev')}
-    />
+    >
+      {children ? <Children /> : <ChevronLeft />}
+    </Root>
   );
 }
 
-Prev.defaultProps = {
-  children: <ChevronLeft />,
-};
-
-export function Next({ getI18nText }) {
+export function Next({ getI18nText, children, Children }) {
   return (
     <Root
       render={Button}
@@ -77,13 +75,11 @@ export function Next({ getI18nText }) {
       size='l'
       tabIndex={-1}
       aria-label={getI18nText('next')}
-    />
+    >
+      {children ? <Children /> : <ChevronLeft />}
+    </Root>
   );
 }
-
-Next.defaultProps = {
-  children: <ChevronRight />,
-};
 
 export class Period extends Component {
   getActiveControl = (period = [], value = undefined) => {
