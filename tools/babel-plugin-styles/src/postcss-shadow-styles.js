@@ -27,14 +27,20 @@ function walkRule(
     } else if (node.type === 'class') {
       if (tokens[`__${node.name}`]) element = node.name;
     } else if (node.type === 'attribute' && !node.content.startsWith('data-')) {
-      node.type = 'class';
-      let [mod, value] = node.content.split('=');
-      mod = mod.split('|').pop();
-      if (value) {
-        value = value.replace(/['"]/g, '');
-        tokens[`_${mod}_${value}`] = node.name = generateClassName([element, mod, value]);
-      } else {
-        tokens[`_${mod}`] = node.name = generateClassName([element, mod]);
+      const listAttributes =
+        ['li', 'ol', 'ul'].includes(parentNode.nodes[0].name) &&
+        ['type', 'start', 'reversed'].includes(node.content);
+
+      if (!listAttributes) {
+        node.type = 'class';
+        let [mod, value] = node.content.split('=');
+        mod = mod.split('|').pop();
+        if (value) {
+          value = value.replace(/['"]/g, '');
+          tokens[`_${mod}_${value}`] = node.name = generateClassName([element, mod, value]);
+        } else {
+          tokens[`_${mod}`] = node.name = generateClassName([element, mod]);
+        }
       }
     } else {
       element = undefined;
