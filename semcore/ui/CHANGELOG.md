@@ -1,3 +1,9 @@
+## [15.9.0-prerelease.0] - 2023-08-23
+
+### @semcore/scroll-area
+
+- **Fixed** SSR rendering.
+
 ## [15.8.0] - 2023-08-23
 
 ### @semcore/button
