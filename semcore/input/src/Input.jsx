@@ -104,6 +104,7 @@ class Input extends Component {
                 'aria-autocomplete',
                 'aria-owns',
                 'aria-activedescendant',
+                'tabIndex',
               ]}
             >
               <NeighborLocation controlsLength={controlsLength}>

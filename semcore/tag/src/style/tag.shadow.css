@@ -19,12 +19,17 @@ STag {
   &[active] {
     background-color: var(--colorBgHover);
   }
+
+  &:has(SText:focus) {
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  }
 }
 
 STag[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  pointer-events: none;
+  /* Disable link interactions */
 }
 
 STag[interactive] {
@@ -91,6 +96,7 @@ STag[theme='primary-invert'] {
     background-color: var(--intergalactic-tag-primary-white-hover-active, rgba(255, 255, 255, 0.3));
   }
 }
+
 STag[theme='secondary-invert'],
 STag[theme='additional-invert'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
@@ -114,6 +120,7 @@ SText {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  outline: none;
 }
 
 SText:not(:only-child):first-child {

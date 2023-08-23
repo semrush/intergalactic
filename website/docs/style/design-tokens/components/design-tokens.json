@@ -731,6 +731,7 @@
       "color-picker",
       "inline-input",
       "input",
+      "input-tags",
       "pills",
       "radio",
       "tab-line",
@@ -2087,6 +2088,7 @@
       "inline-edit",
       "inline-input",
       "input",
+      "input-tags",
       "link",
       "modal",
       "pills",
@@ -2098,6 +2100,7 @@
       "switch",
       "tab-line",
       "tab-panel",
+      "tag",
       "textarea",
       "time-picker",
       "typography"

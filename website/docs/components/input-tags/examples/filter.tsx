@@ -39,22 +39,14 @@ export default function () {
       visible={visible}
       onVisibleChange={(visible) => setVisible(visible)}
     >
-      <DropdownMenu.Trigger>
-        {({ getTriggerProps }) => (
-          <InputTags w={200} size='l' onRemove={onRemoveLastTag} {...getTriggerProps({})}>
-            {tags.map((tag, i) => (
-              <InputTags.Tag key={i} theme='primary'>
-                <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-                <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
-              </InputTags.Tag>
-            ))}
-            <InputTags.Value
-              value={valueInput}
-              onChange={onChangeValue}
-              aria-label='input with tags'
-            />
-          </InputTags>
-        )}
+      <DropdownMenu.Trigger tag={InputTags} w={200} size='l' onRemove={onRemoveLastTag}>
+        {tags.map((tag, i) => (
+          <InputTags.Tag key={i} theme='primary'>
+            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
+          </InputTags.Tag>
+        ))}
+        <InputTags.Value value={valueInput} onChange={onChangeValue} aria-label='input with tags' />
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         {tagsFilter.map((tag, i) => (
