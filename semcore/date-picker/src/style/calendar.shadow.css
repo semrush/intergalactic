@@ -102,7 +102,7 @@ SCalendarUnit[selected] {
   color: var(--intergalactic-text-primary, #191b23);
 
   &:hover {
-    background: var(--intergalactic-date-picker-cell-active-hover, #008ff8);
+    background: var(--intergalactic-date-picker-cell-range-hover, #8ecdff);
   }
 }
 
