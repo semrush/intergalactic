@@ -2,59 +2,59 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [6.0.0] - 2023-08-08
+## [5.5.0] - 2023-08-23
 
 ### Fixed
 
-* Fixed paddings for Button's text and addons.
+- Fixed paddings for Button's text and addons.
 
 ## [5.3.1] - 2023-08-21
 
 ### Changed
 
-* Version prepatch update due to children dependencies update (`@semcore/core` [2.3.0 ~> 2.3.1]).
+- Version prepatch update due to children dependencies update (`@semcore/core` [2.3.0 ~> 2.3.1]).
 
 ## [5.3.0] - 2023-08-18
 
 ### Changed
 
-* Version preminor update due to children dependencies update (`@semcore/utils` [4.2.0 ~> 4.3.0], `@semcore/core` [2.2.1 ~> 2.3.0]).
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.2.0 ~> 4.3.0], `@semcore/core` [2.2.1 ~> 2.3.0]).
 
 ## [5.2.2] - 2023-08-18
 
 ### Changed
 
-* Version prepatch update due to children dependencies update (`@semcore/neighbor-location` [4.2.0 ~> 4.2.1]).
+- Version prepatch update due to children dependencies update (`@semcore/neighbor-location` [4.2.0 ~> 4.2.1]).
 
 ## [5.2.1] - 2023-08-16
 
 ### Changed
 
-* Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.2.0 ~> 5.2.1], `@semcore/utils` [4.1.0 ~> 4.2.0], `@semcore/core` [2.2.0 ~> 2.2.1]).
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.2.0 ~> 5.2.1], `@semcore/utils` [4.1.0 ~> 4.2.0], `@semcore/core` [2.2.0 ~> 2.2.1]).
 
 ## [5.2.0] - 2023-08-07
 
 ### Changed
 
-* Version minor update due to children dependencies update (`@semcore/utils` [4.0.0 ~> 4.1.0]).
+- Version minor update due to children dependencies update (`@semcore/utils` [4.0.0 ~> 4.1.0]).
 
 ## [5.1.0] - 2023-08-01
 
 ### Changed
 
-* Version minor update due to children dependencies update (`@semcore/flex-box` [5.0.0 ~> 5.1.0]).
+- Version minor update due to children dependencies update (`@semcore/flex-box` [5.0.0 ~> 5.1.0]).
 
 ## [5.0.1] - 2023-07-24
 
 ### Fixed
 
-* `Button` props strictness.
+- `Button` props strictness.
 
 ## [5.0.0] - 2023-07-17
 
 ### Break
 
-* Strict, backward incompatible typings.
+- Strict, backward incompatible typings.
 
 ## [4.4.9] - 2023-06-30
 
@@ -62,67 +62,67 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [4.4.7] - 2023-06-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [4.4.6] - 2023-06-12
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.2 ~> 3.53.3]).
 
 ## [4.4.5] - 2023-06-09
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.1 ~> 3.53.2]).
 
 ## [4.4.4] - 2023-06-07
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.53.0 ~> 3.53.1]).
 
 ## [4.4.3] - 2023-05-31
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.52.0 ~> 3.53.0]).
 
 ## [4.4.2] - 2023-05-25
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.1 ~> 3.52.0]).
 
 ## [4.4.1] - 2023-05-24
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.51.0 ~> 3.51.1]).
 
 ## [4.4.0] - 2023-05-22
 
 ### Changed
 
-* Fixed token for text in button with `use="secondary"` and `theme="info"`.
+- Fixed token for text in button with `use="secondary"` and `theme="info"`.
 
 ## [4.3.24] - 2023-05-11
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [4.3.23] - 2023-05-04
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [4.3.21] - 2023-04-24
 
@@ -130,458 +130,458 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.50.0 ~> 3.50.3]).
 
 ## [4.3.19] - 2023-04-11
 
 ### Fixed
 
-* Removed `role=button` from native button.
+- Removed `role=button` from native button.
 
 ## [4.3.18] - 2023-03-28
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.49.1 ~> 3.50.0]).
 
 ## [4.3.8] - 2023-02-09
 
 ### Changed
 
-* Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
+- Renamed rounding design token (`--intergalactic-rounded-medium` -> `--intergalactic-control-rounded`).
 
 ## [4.3.7] - 2023-01-20
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.45.0 ~> 3.46.0]).
 
 ## [4.3.6] - 2023-01-19
 
 ### Fixed
 
-* Removed font-family enforcement.
+- Removed font-family enforcement.
 
 ## [4.3.5] - 2023-01-10
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [4.3.1] - 2022-12-13
 
 ### Changed
 
-* Added `react-dom` to peer dependencies.
+- Added `react-dom` to peer dependencies.
 
 ## [4.3.0] - 2022-12-12
 
 ### Added
 
-* Design tokens based theming.
+- Design tokens based theming.
 
 ## [4.2.3] - 2022-10-26
 
 ### Fixed
 
-* Lazy checks for necessity of `aria-label` in non production environment.
+- Lazy checks for necessity of `aria-label` in non production environment.
 
 ## [4.2.2] - 2022-10-20
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.39.0 ~> 3.39.1]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.39.0 ~> 3.39.1]).
 
 ## [4.2.0] - 2022-10-10
 
 ### Changed
 
-* Added support for React 18 🔥
+- Added support for React 18 🔥
 
 ## [4.1.0] - 2022-10-07
 
 ### Changed
 
-* Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
+- Updated major dependency `@semcore/neighbor-location` [2.3.15 ~> 3.0.0]
 
 ## [4.0.18] - 2022-10-04
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [4.0.15] - 2022-08-29
 
 ### Fixed
 
-* Fixed aria warning detection.
+- Fixed aria warning detection.
 
 ## [4.0.14] - 2022-08-24
 
 ### Fixed
 
-* Update version `@semcore/utils` to use additional functions.
+- Update version `@semcore/utils` to use additional functions.
 
 ## [4.0.13] - 2022-08-19
 
 ### Added
 
-* Added empty button aria-label check.
+- Added empty button aria-label check.
 
 ## [4.0.12] - 2022-08-18
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.36.0 ~> 3.37.0]).
 
 ## [4.0.4] - 2022-05-27
 
 ### Fixed
 
-* Fixed `width, height` for size Button.
+- Fixed `width, height` for size Button.
 
 ## [4.0.3] - 2022-05-23
 
 ### Fixed
 
-* Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
+- Fixed background-color active state for `<Button use='primary' theme='warning'/>`.
 
 ## [4.0.2] - 2022-05-19
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1]
+- Version patch update due to children dependencies update (`@semcore/utils` [3.32.0 ~> 3.32.1]
 , `@semcore/flex-box` [4.5.1 ~> 4.5.3]).
 
 ## [4.0.1] - 2022-05-19
 
 ### Fixed
 
-* Updated Intergalactic internal dependencies to the latest.
+- Updated Intergalactic internal dependencies to the latest.
 
 ## [4.0.0] - 2022-05-17
 
 ### BREAK
 
-* Updated styles according to the library redesign policy.
-* Remove value "xl" and "s" for "size".
+- Updated styles according to the library redesign policy.
+- Remove value "xl" and "s" for "size".
 
 ## [3.3.7] - 2022-03-14
 
 ### Changed
 
-* Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2]).
 
 ## [3.3.5] - 2022-02-24
 
 ### Added
 
-* Added repository field to package.json file.
+- Added repository field to package.json file.
 
 ## [3.3.4] - 2021-12-23
 
 ### Changed
 
-* Changed `line-height` from 1.2 to 1.1 for correct display in all browsers.
+- Changed `line-height` from 1.2 to 1.1 for correct display in all browsers.
 
 ## [3.3.1] - 2021-8-26
 
 ### Changed
 
-* Add 'sideEffect=false' for more optimal build via webpack
+- Add 'sideEffect=false' for more optimal build via webpack
 
 ## [3.3.0] - 2021-04-26
 
 ### Changed
 
-* Version of dependence `@semcore/core` has been changed to `1.11`.
-* Improved performance. Removed one component wrapper.
-* The style processing system has been changed.
-* Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
+- Version of dependence `@semcore/core` has been changed to `1.11`.
+- Improved performance. Removed one component wrapper.
+- The style processing system has been changed.
+- Removed the ability to apply media styles via a plugin `babel-plugin-react-semcore`.
 
 ## [3.2.1] - 2021-04-16
 
 ### Changed
 
-* Changed line-height value
+- Changed line-height value
 
 ## [3.2.0] - 2020-12-17
 
 ### Added
 
-* Added supported react@17.
+- Added supported react@17.
 
 ## [3.1.4] - 2020-12-02
 
 ### Fixed
 
-* My little fix build 😬
+- My little fix build 😬
 
 ## [3.1.2] - 2020-10-29
 
 ### Fixed
 
-* Added the placeholder for ID style tag to improve collision protection.
+- Added the placeholder for ID style tag to improve collision protection.
 
 ## [3.1.1] - 2020-10-14
 
 ### Fixed
 
-* fixed wrong path for ES6 build
+- fixed wrong path for ES6 build
 
 ## [3.1.0] - 2020-10-13
 
 ### Added
 
-* Added alternative api for inserting `Addon`.
+- Added alternative api for inserting `Addon`.
 
 ## [3.0.3] - 2020-09-08
 
 ### Fixed
 
-* Fixed possible styles collisions between components with different versions, but same styles
+- Fixed possible styles collisions between components with different versions, but same styles
 
 ## [3.0.2] - 2020-07-13
 
 ### Changed
 
-* Теперь z-index изменяется на +1 при фокусе с клавиатуры, для правильного отображения бордера с соседними элементами.
+- Теперь z-index изменяется на +1 при фокусе с клавиатуры, для правильного отображения бордера с соседними элементами.
 
 ## [3.0.1] - 2020-06-22
 
 ### Fixed
 
-* Поменялся цвет текста с `gray40` на `gray60` у `secondary-muted` и `tertiary-muted`.
+- Поменялся цвет текста с `gray40` на `gray60` у `secondary-muted` и `tertiary-muted`.
 
 ## [3.0.0] - 2020-05-29
 
 ### BREAK
 
-* Изменения описаны в [migration guide](/internal/migration-guide)
+- Изменения описаны в [migration guide](/internal/migration-guide)
 
 ## [2.5.1] - 2020-02-14
 
 ### Added
 
-* [theme] Обновили стили `<Button use="tertiary">` для `sellerly`
+- [theme] Обновили стили `<Button use="tertiary">` для `sellerly`
 
 ## [2.5.0] - 2020-02-13
 
 ### Added
 
-* Добавлена тема `sellerly`, фокус у контрола по умолчанию цвета `light-ultramarine`
+- Добавлена тема `sellerly`, фокус у контрола по умолчанию цвета `light-ultramarine`
 
 ## [2.4.1] - 2019-12-17
 
 ### Fixed
 
-* Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
+- Исправлен транспайл цветовых переменных для стилей без префиксов (build.css)
 
 ## [2.4.0] - 2019-12-12
 
 ### Added
 
-* Появилась возможность добавления различных стилистических тем через css переменные
-* Появилась возможность оптицонально подключать адаптивноссть
-* Появилась возможность изолировать стили даже в пределах одной страницы
-* Добавлено прокидываение классов на `Spin` внутри кнопки
+- Появилась возможность добавления различных стилистических тем через css переменные
+- Появилась возможность оптицонально подключать адаптивноссть
+- Появилась возможность изолировать стили даже в пределах одной страницы
+- Добавлено прокидываение классов на `Spin` внутри кнопки
 
 ### Changed
 
-* Изменен алгоритм вставки стилей в head
+- Изменен алгоритм вставки стилей в head
 
 ### Removed
 
-* Убраны относительные единицы измерения(rem), которые использовались для адаптивности
+- Убраны относительные единицы измерения(rem), которые использовались для адаптивности
 
 ## [2.3.0] - 2019-11-14
 
 ### Added
 
-* Добавлена адаптивность на маленьких экранах(<768px)
+- Добавлена адаптивность на маленьких экранах(<768px)
 
 ## [2.2.0] - 2019-09-30
 
 ### Added
 
-* Добавлен `forwardRef` на компонент
+- Добавлен `forwardRef` на компонент
 
 ## [2.1.13] - 2019-09-30
 
 ### Changed
 
-* Нужные зависимости перенесены в `utils`, размер должен стать меньше
+- Нужные зависимости перенесены в `utils`, размер должен стать меньше
 
 ## [2.1.12] - 2019-09-23
 
 ### Changed
 
-* Обоновлена типизация. Теперь компонент принимает св-ва от `React.LinkHTMLAttributes`
+- Обоновлена типизация. Теперь компонент принимает св-ва от `React.LinkHTMLAttributes`
 
 ## [2.1.11] - 2019-08-12
 
 ### Changed
 
-* Обновлены `utils`
-* Улучшена функция оборачивания в `Text`
+- Обновлены `utils`
+- Улучшена функция оборачивания в `Text`
 
 ## [2.1.10] - 2019-08-07
 
 ### Fixed
 
-* Исправлено отоборажение в NeighborLocation для `use="primary"`
+- Исправлено отоборажение в NeighborLocation для `use="primary"`
 
 ## [2.1.9] - 2019-07-31
 
 ### Fixed
 
-* Исправлена сборка для рендера css на сервере
+- Исправлена сборка для рендера css на сервере
 
 ## [2.1.8] - 2019-07-24
 
 ### Fixed
 
-* Добавлен `font-weight: normal`
+- Добавлен `font-weight: normal`
 
 ## [2.1.7] - 2019-07-05
 
 ### Removed
 
-* Зависимость от `@semcore/control`
+- Зависимость от `@semcore/control`
 
 ## [2.1.6] - 2019-06-03
 
 ### Changed
 
-* Обновлена версия `@semcore/control`
+- Обновлена версия `@semcore/control`
 
 ## [2.1.5] - 2019-05-27
 
 ### Fixed
 
-* Добавлен пропущенный `color`
+- Добавлен пропущенный `color`
 
 ## [2.1.4] - 2019-05-13
 
 ### Changed
 
-* Обнавлена версия `Spin` и изменена верстка
+- Обнавлена версия `Spin` и изменена верстка
 
 ### Fixed
 
-* Добавлен `line-height: 1` для выравнивания текста
-* Добавлен `border: transparent` по умолчанию
-* Исправлено добавление лишнего `Button.Text` при вставке через фрагмент
+- Добавлен `line-height: 1` для выравнивания текста
+- Добавлен `border: transparent` по умолчанию
+- Исправлено добавление лишнего `Button.Text` при вставке через фрагмент
 
 ## [2.1.3] - 2019-05-07
 
 ### Changed
 
-* Исправлены стили для корректной работы с `@semcore/control`
-* Обновлена версия `@semcore/control`
+- Исправлены стили для корректной работы с `@semcore/control`
+- Обновлена версия `@semcore/control`
 
 ## [2.1.2] - 2019-04-24
 
 ### Fixed
 
-* Добавили `line-height: 1` к тексту кнопки
+- Добавили `line-height: 1` к тексту кнопки
 
 ### Changed
 
-* Изменены отступы `Button.Addon` для размера `xl` с 8px на 12px
+- Изменены отступы `Button.Addon` для размера `xl` с 8px на 12px
 
 ## [2.1.1] - 2019-03-18
 
 ### Fixed
 
-* Исправлена работа свойства `active`
+- Исправлена работа свойства `active`
 
 ## [2.1.0] - 2019-02-13
 
 ### Added
 
-* Зависимость от комопнента `Control`
+- Зависимость от комопнента `Control`
 
 ## [2.0.0] - 2019-01-18
 
 ### BREAK
 
-* Убрано свойство `before`/`after`
-* Убрано свойство `fullWidth`
-* Убрано свойство `inputRef`
-* Убраны стили для не используемых тем
-* Добавленно свойство css `vertical-align: middle;`
+- Убрано свойство `before`/`after`
+- Убрано свойство `fullWidth`
+- Убрано свойство `inputRef`
+- Убраны стили для не используемых тем
+- Добавленно свойство css `vertical-align: middle;`
 
 ### Added
 
-* Компонент унаследован от `Box`
-* Добавлены статические компоненты `Text`, `Addon`
-* Добавлена возможность сбрасывать темы и размеры
+- Компонент унаследован от `Box`
+- Добавлены статические компоненты `Text`, `Addon`
+- Добавлена возможность сбрасывать темы и размеры
 
 ### Fixed
 
-* Корректное отобрежение цветной темы в `Spin`
+- Корректное отобрежение цветной темы в `Spin`
 
 ## [1.3.0] - 2018-11-17
 
 ### Fixed
 
-* Исправлены стили для корректной работы с другим тэгом
-* Добавлены недостающие HTML-attributes
+- Исправлены стили для корректной работы с другим тэгом
+- Добавлены недостающие HTML-attributes
 
 ## [1.2.0] - 2018-11-23
 
 ### Added
 
-* Добавлен autocomplete для IDE
-* Добавлена возможность изменять тег на произвольный
-* Добавлена возможность отключать размер и стили
+- Добавлен autocomplete для IDE
+- Добавлена возможность изменять тег на произвольный
+- Добавлена возможность отключать размер и стили
 
 ## [1.1.1] - 2018-10-09
 
 ### Fixed
 
-* Цвет текста для типа `tertiary` с темой `info` изменен на `--denim-blue`
+- Цвет текста для типа `tertiary` с темой `info` изменен на `--denim-blue`
 
 ### Added
 
-* `warning` для типа `primary` с темой `muted`
+- `warning` для типа `primary` с темой `muted`
 
 ## [1.1.0] - 2018-08-17
 
 ### Added
 
-* Добавленна возможность работы с компонентом `ControlsGroup`
+- Добавленна возможность работы с компонентом `ControlsGroup`
 
 ### Removed
 
-* Убрали поддержку зависимости от React15
+- Убрали поддержку зависимости от React15
 
 ## [1.0.0] - 2018-08-08
 
 ### Added
 
-* Добавленна поддержка зависимости от React15
+- Добавленна поддержка зависимости от React15
 
 ### Changed
 
-* Обновлена зависимость от utils
+- Обновлена зависимость от utils
 
 ## [1.0.0-3] - 2018-07-13
 
 ### Added
 
-* Свойсво "fullWidth" для растягивания кнопки по всей ширине
-* Добавлен spin для состояния loading
+- Свойсво "fullWidth" для растягивания кнопки по всей ширине
+- Добавлен spin для состояния loading
 
 ## [1.0.0-2] - 2018-07-06
 
 ### Added
 
-* Инкапсуляция стилей
+- Инкапсуляция стилей
 
 ## [1.0.0-1] - 2018-06-04
 
 ### Added
 
-* Initial release
+- Initial release
