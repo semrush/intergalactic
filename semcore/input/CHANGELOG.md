@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.0] - 2023-08-23
+
+### Changed
+
+- Enforced input wrapper to be non-focusable (primary for other components that use input wrapper).
+
 ## [4.4.1] - 2023-08-21
 
 ### Changed

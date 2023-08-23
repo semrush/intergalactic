@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.6.0] - 2023-08-21
+
+### Changed
+
+- Improved visual state of focusable tags.
+
 ## [5.5.1] - 2023-08-21
 
 ### Changed
