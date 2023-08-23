@@ -97,7 +97,7 @@ SAddon[size='m']:not(SButton) {
   padding: 0 var(--intergalactic-spacing-2x, 8px);
 }
 SAddon[size='l']:not(SButton) {
-  padding: 0 var(--intergalactic-spacing-3x, 12px);
+  padding: 0 var(--intergalactic-spacing-2x, 8px) 0 var(--intergalactic-spacing-3x, 12px);
 }
 
 SInput SAddon:nth-last-child(2) {
