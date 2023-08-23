@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.6.7-prerelease.0",
+  "version": "15.7.0-prerelease.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -58,7 +58,7 @@
     "@semcore/notice-global": "2.4.1",
     "@semcore/notice-bubble": "5.4.1",
     "@semcore/outside-click": "3.3.1",
-    "@semcore/pagination": "4.4.2",
+    "@semcore/pagination": "4.5.0-prerelease.0",
     "@semcore/pills": "5.4.1",
     "@semcore/popper": "5.3.1",
     "@semcore/portal": "3.3.1",
