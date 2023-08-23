@@ -400,28 +400,24 @@ const Item = (props) => {
 };
 
 const Prev = (props) => {
-  const { styles, children, label } = props;
+  const { styles, children, Children, label, top = 0 } = props;
   const SPrev = Root;
   return sstyled(styles)(
-    <SPrev render={Box}>{children || <ChevronLeft interactive aria-label={label} />}</SPrev>,
+    <SPrev render={Box} top={top}>
+      {children ? <Children /> : <ChevronLeft interactive aria-label={label} />}
+    </SPrev>,
   );
 };
-
-Prev.defaultProps = () => ({
-  top: 0,
-});
 
 const Next = (props) => {
-  const { styles, children, label } = props;
+  const { styles, children, Children, label, top = 0 } = props;
   const SNext = Root;
   return sstyled(styles)(
-    <SNext render={Box}>{children || <ChevronRight interactive aria-label={label} />}</SNext>,
+    <SNext render={Box} top={top}>
+      {children ? <Children /> : <ChevronRight interactive aria-label={label} />}
+    </SNext>,
   );
 };
-
-Next.defaultProps = () => ({
-  top: 0,
-});
 
 const Indicators = ({ items, styles, Children }) => {
   const SIndicators = Root;

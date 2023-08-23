@@ -26,8 +26,9 @@ export type OutsideClickProps = {
   root?: NodeByRef;
 };
 
+const noop = () => {};
 function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
-  const { Children, forwardRef, root, excludeRefs, onOutsideClick } = props;
+  const { Children, forwardRef, root, excludeRefs = [], onOutsideClick = noop } = props;
   const children = getOriginChildren(Children);
   const nodeRef = React.useRef(null);
   const targetRef = React.useRef(null);
@@ -65,11 +66,6 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
 }
 
 OutsideClick.displayName = 'OutsideClick';
-
-OutsideClick.defaultProps = {
-  excludeRefs: [],
-  onOutsideClick: () => {},
-};
 
 export default createComponent(OutsideClick) as Intergalactic.Component<
   Intergalactic.Tag,

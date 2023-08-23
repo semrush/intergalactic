@@ -58,6 +58,7 @@ export const useAsyncI18nMessages = (
 ) => {
   const container = React.useMemo(() => {
     if (!fallbackContainer) return primaryContainer;
+    if (!primaryContainer) return fallbackContainer;
     if (primaryContainer === fallbackContainer) return primaryContainer;
     const container: MessagesContainer = {};
     for (const locale in primaryContainer) {
