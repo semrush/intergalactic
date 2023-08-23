@@ -6,6 +6,15 @@ SInputTags {
   overflow: initial;
 }
 
+SInputTags SContainer:focus SOutline {
+  border-color: var(--intergalactic-border-info-active, #006dca);
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+}
+
+SInputTags SContainer:focus:has(SOutline)::after {
+  box-shadow: none;
+}
+
 SContainer {
   padding: 1px 0;
   box-sizing: border-box;
@@ -13,13 +22,13 @@ SContainer {
   border-top: 1px solid transparent;
 }
 
-SInputTags > div > div {
+SInputTags>div>div {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
 }
 
-SInputTags > div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
+SInputTags>div[data-ui-name='ScrollArea.Bar'][orientation='vertical'] {
   right: 1px !important;
 }
 
