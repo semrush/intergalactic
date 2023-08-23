@@ -10,6 +10,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import BarRoot, { setAreaValue } from './ScrollBar';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
 import style from './style/scroll-area.shadow.css';
 
@@ -55,7 +56,9 @@ class ScrollAreaRoot extends Component {
   constructor(props) {
     super(props);
 
-    this.observer = new ResizeObserver(callAllEventHandlers(props.onResize, this.calculate));
+    if (canUseDOM()) {
+      this.observer = new ResizeObserver(callAllEventHandlers(props.onResize, this.calculate));
+    }
   }
 
   refWrapper = (node) => {
@@ -174,10 +177,10 @@ class ScrollAreaRoot extends Component {
     this.calculate();
     this.updateBarsAria();
     if (this.$inner) {
-      this.observer.observe(this.$inner);
+      this.observer?.observe(this.$inner);
     }
     if (this.$container) {
-      this.observer.observe(this.$container);
+      this.observer?.observe(this.$container);
     }
   }
 
@@ -186,7 +189,7 @@ class ScrollAreaRoot extends Component {
   }
 
   componentWillUnmount() {
-    this.observer.disconnect();
+    this.observer?.disconnect();
   }
 
   render() {
