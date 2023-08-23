@@ -183,6 +183,7 @@ function Close({ styles, children, Children }) {
     </SClose>,
   );
 }
+Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {
   const STitle = Root;
