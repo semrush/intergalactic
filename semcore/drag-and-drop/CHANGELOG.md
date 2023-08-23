@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.5.0] - 2023-08-23
+
+### Changed
+
+- Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
 ## [3.4.1] - 2023-08-21
 
 ### Fixed
