@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Keyboard triggered focus was not properly detected for recently mounted components.
 
+### Added
+
+- Improved modals and side panels focus lock behavior by adding "single focus owner mode" to focus lock handler.
+
 ## [4.4.0] - 2023-08-23
 
 ### Changed
