@@ -56,12 +56,14 @@ const useFocusBorders = (disabled?: boolean) => {
 };
 
 const focusLockUsers = new Set<HTMLElement>();
+let currentFocusMaster: HTMLElement | null = null;
 
 export const useFocusLock = (
   trapRef: React.RefObject<HTMLElement>,
   autoFocus: boolean,
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
-  disabled?: boolean,
+  disabled = false,
+  focusMaster = false,
 ) => {
   useFocusBorders(disabled);
 
@@ -79,7 +81,11 @@ export const useFocusLock = (
       if (lastUserInteractionRef.current === 'mouse') return;
       Promise.resolve().then(() => {
         if (!trapRef.current) return;
-        if (focusInside([trapRef.current, ...focusLockUsers])) return;
+        if (currentFocusMaster && currentFocusMaster !== trapRef.current) return;
+        const trapNodes = currentFocusMaster
+          ? [trapRef.current]
+          : [trapRef.current, ...focusLockUsers];
+        if (focusInside(trapNodes)) return;
 
         moveFocusInside(trapRef.current, event.target);
       });
@@ -114,6 +120,22 @@ export const useFocusLock = (
       focusLockUsers.delete(node);
     };
   }, [trapRef]);
+  React.useEffect(() => {
+    if (typeof trapRef !== 'object' || trapRef === null) return;
+    if (disabled) return;
+    if (!canUseDOM()) return;
+    if (!trapRef.current) return;
+
+    if (focusMaster) {
+      currentFocusMaster = trapRef.current;
+    }
+
+    return () => {
+      if (focusMaster && currentFocusMaster === trapRef.current) {
+        currentFocusMaster = null;
+      }
+    };
+  }, [disabled, focusMaster]);
   React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM()) return;

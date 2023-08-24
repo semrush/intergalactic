@@ -14,6 +14,7 @@ export type KeyboardFocusProps = {
   autoFocus?: boolean;
 };
 
+let lastFocusSource: 'mouse' | 'keyboard' | 'none' = 'none';
 const focusSourceListeners: {
   setFocusSource: (source: 'mouse' | 'keyboard' | 'none') => void;
   subscribeListeners: () => void;
@@ -27,9 +28,10 @@ export const useFocusSource = () => {
     () => focusSourceListeners.forEach((listener) => listener.setFocusSource('keyboard')),
     [],
   );
-  const focusSourceRef = React.useRef<'none' | 'mouse' | 'keyboard'>('none');
+  const focusSourceRef = React.useRef<'none' | 'mouse' | 'keyboard'>(lastFocusSource);
   const setFocusSource = React.useCallback((source: 'none' | 'mouse' | 'keyboard') => {
     focusSourceRef.current = source;
+    lastFocusSource = source;
   }, []);
   const subscribeListeners = React.useCallback(() => {
     document.addEventListener('mousedown', handleMouseDown, { capture: true });
