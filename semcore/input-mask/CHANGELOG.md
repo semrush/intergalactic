@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.6.0] - 2023-08-23
+
+### Fixed
+
+- Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+
 ## [5.5.0] - 2023-08-23
 
 ### Changed
