@@ -1,8 +1,7 @@
 ---
-title: Utils 🛠
+title: Utils
 ---
 
-@page base-trigger
 @page neighbor-location
 @page popper
 @page portal
