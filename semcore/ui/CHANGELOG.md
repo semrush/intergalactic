@@ -1,3 +1,26 @@
+## [15.10.0-prerelease.0] - 2023-08-24
+
+### @semcore/input-mask
+
+- **Fixed** Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+
+### @semcore/modal
+
+- **Changed** Enabled "single focus owner mode" to better handle nested modals focus lock.
+
+### @semcore/progress-bar
+
+- **Fixed** Progress bar animation wasn't working.
+
+### @semcore/side-panel
+
+- **Changed** Enabled "single focus owner mode" to better handle nested side panels focus lock.
+
+### @semcore/utils
+
+- **Fixed** Keyboard triggered focus was not properly detected for recently mounted components.
+- **Added** Improved modals and side panels focus lock behavior by adding "single focus owner mode" to focus lock handler.
+
 ## [15.9.0] - 2023-08-23
 
 ### @semcore/scroll-area
