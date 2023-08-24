@@ -196,13 +196,12 @@ class ScrollAreaRoot extends Component {
     const SScrollArea = Root;
     const SShadowVertical = BoxWithoutPosition;
     const SShadowHorizontal = BoxWithoutPosition;
-    const { Children, styles, orientation, tabIndex } = this.asProps;
+    const { Children, styles, orientation, tabIndex, forcedAdvancedMode } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
-    const advancedMode = isAdvanceMode(Children, [
-      ScrollArea.Container.displayName,
-      ScrollArea.Bar.displayName,
-    ]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(Children, [ScrollArea.Container.displayName, ScrollArea.Bar.displayName]);
 
     return sstyled(styles)(
       <SScrollArea

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.5.0] - 2023-08-24
+
+### Added
+
+- Ellipsis advanced usage with `Ellipsis.Content` and `Ellipsis.Popper` components.
+
 ## [2.4.1] - 2023-08-24
 
 ### Changed

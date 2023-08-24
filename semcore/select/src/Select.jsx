@@ -243,11 +243,11 @@ class RootSelect extends Component {
   };
 
   render() {
-    const { Children, options, multiselect, value, uid, ...other } = this.asProps;
-    const advancedMode = findComponent(Children, [
-      Select.Trigger.displayName,
-      Select.Popper.displayName,
-    ]);
+    const { Children, options, multiselect, value, uid, forcedAdvancedMode, ...other } =
+      this.asProps;
+    const advancedMode =
+      forcedAdvancedMode ||
+      findComponent(Children, [Select.Trigger.displayName, Select.Popper.displayName]);
 
     logger.warn(
       options && advancedMode,

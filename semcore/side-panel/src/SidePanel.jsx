@@ -134,12 +134,15 @@ function Overlay(props) {
 
 function Panel(props) {
   const SPanel = Root;
-  const { Children, styles, visible, closable, placement, onOutsideClick } = props;
-  const advancedMode = isAdvanceMode(Children, [
-    SidePanel.Header.displayName,
-    SidePanel.Body.displayName,
-    SidePanel.Footer.displayName,
-  ]);
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } =
+    props;
+  const advancedMode =
+    forcedAdvancedMode ||
+    isAdvanceMode(Children, [
+      SidePanel.Header.displayName,
+      SidePanel.Body.displayName,
+      SidePanel.Footer.displayName,
+    ]);
 
   const sidebarRef = useRef(null);
 
