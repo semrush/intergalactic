@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.8.2] - 2023-08-24
+
+### Fixed
+
+- Passing `x` and `y` props to `Donut.Label` component.
+
 ## [3.8.1] - 2023-08-24
 
 ### Changed
