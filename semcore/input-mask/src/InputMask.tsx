@@ -339,7 +339,6 @@ class Value extends Component<IInputMaskValueProps> {
                   neighborLocation={neighborLocation}
                   ref={ref}
                   onFocus={this.onFocus}
-                  pattern={mask}
                   value={value}
                   wMin={this.state.maskWidth}
                   aria-describedby={`hint-${uid}`}
