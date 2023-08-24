@@ -15,9 +15,11 @@ class CardRoot extends Component {
 
   render() {
     const SCard = Root;
-    const { Children, styles } = this.asProps;
+    const { Children, styles, forcedAdvancedMode } = this.asProps;
 
-    const advancedMode = isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(Children, [Card.Header.displayName, Card.Body.displayName]);
 
     return sstyled(styles)(
       <SCard render={Box}>

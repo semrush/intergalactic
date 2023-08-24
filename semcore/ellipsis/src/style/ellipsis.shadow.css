@@ -13,6 +13,11 @@ SEllipsis {
   white-space: nowrap;
 }
 
+SEllipsis[middle-mod] {
+  display: flex;
+  overflow: hidden;
+}
+
 SEllipsis[maxLine] {
   display: -webkit-box;
   -webkit-line-clamp: var(--maxLine);

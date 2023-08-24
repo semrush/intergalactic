@@ -50,12 +50,11 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    const { Children, title, offset, ...other } = this.asProps;
+    const { Children, title, offset, forcedAdvancedMode, ...other } = this.asProps;
 
-    const advancedMode = isAdvanceMode(Children, [
-      Tooltip.Trigger.displayName,
-      Tooltip.Popper.displayName,
-    ]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
 
     logger.warn(
       title && advancedMode,

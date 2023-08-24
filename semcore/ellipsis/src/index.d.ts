@@ -1,7 +1,7 @@
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { RefObject } from 'react';
-import { BoxProps } from '@semcore/flex-box';
-import { TooltipProps } from '@semcore/tooltip';
+import { Box, BoxProps } from '@semcore/flex-box';
+import Tooltip, { TooltipProps } from '@semcore/tooltip';
 
 /** @deprecated */
 export interface IEllipsisProps extends EllipsisProps, UnknownProperties {}
@@ -41,7 +41,10 @@ declare const useResizeObserver: (
   hookOverride?: { width: number },
 ) => { width: number };
 
-declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps>;
+declare const Ellipsis: Intergalactic.Component<'div', EllipsisProps> & {
+  Content: typeof Box;
+  Popper: typeof Tooltip.Popper;
+};
 
 export { useResizeObserver };
 export default Ellipsis;

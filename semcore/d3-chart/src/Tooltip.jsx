@@ -72,12 +72,11 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    const { Children, children, tag, ...other } = this.asProps;
+    const { Children, children, tag, forcedAdvancedMode, ...other } = this.asProps;
 
-    const advancedMode = !!findComponent(Children, [
-      Tooltip.Trigger.displayName,
-      Tooltip.Popper.displayName,
-    ]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      !!findComponent(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
     return (
       <Root
         render={Popper}

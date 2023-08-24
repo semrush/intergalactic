@@ -41,12 +41,13 @@ class NoticeGlobalRoot extends Component {
 
   render() {
     const SNoticeGlobal = Root;
-    const { Children, styles, hidden, theme, closable, onClose } = this.asProps;
+    const { Children, styles, hidden, theme, closable, onClose, forcedAdvancedMode } = this.asProps;
     const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
-    const advancedMode = isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
+    const advancedMode =
+      forcedAdvancedMode || isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
 
     return sstyled(styles)(
       <SNoticeGlobal
