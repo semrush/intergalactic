@@ -101,14 +101,14 @@ class ModalRoot extends Component {
   render() {
     const { Children, disablePortal } = this.asProps;
 
-    const advanceMode = isAdvanceMode(Children, [
+    const advancedMode = isAdvanceMode(Children, [
       Modal.Overlay.displayName,
       Modal.Window.displayName,
     ]);
 
     return (
       <Portal disablePortal={disablePortal}>
-        {advanceMode ? (
+        {advancedMode ? (
           <Children />
         ) : (
           <Modal.Overlay>

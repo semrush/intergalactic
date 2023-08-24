@@ -135,7 +135,7 @@ function Overlay(props) {
 function Panel(props) {
   const SPanel = Root;
   const { Children, styles, visible, closable, placement, onOutsideClick } = props;
-  const advanceMode = isAdvanceMode(Children, [
+  const advancedMode = isAdvanceMode(Children, [
     SidePanel.Header.displayName,
     SidePanel.Body.displayName,
     SidePanel.Footer.displayName,
@@ -157,7 +157,7 @@ function Panel(props) {
       >
         <PortalProvider value={sidebarRef}>
           {closable && <SidePanel.Close />}
-          {advanceMode ? (
+          {advancedMode ? (
             <Children />
           ) : (
             <SidePanel.Body>
