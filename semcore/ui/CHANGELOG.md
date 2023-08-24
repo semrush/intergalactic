@@ -1,3 +1,9 @@
+## [15.11.1] - 2023-08-24
+
+### @semcore/d3-chart
+
+- **Fixed** Passing `x` and `y` props to `Donut.Label` component.
+
 ## [15.11.0] - 2023-08-24
 
 ### @semcore/ellipsis
