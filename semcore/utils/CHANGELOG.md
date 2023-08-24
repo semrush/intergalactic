@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.4.1] - 2023-08-24
+
+### Fixed
+
+- Keyboard triggered focus was not properly detected for recently mounted components.
+
 ## [4.4.0] - 2023-08-23
 
 ### Changed
