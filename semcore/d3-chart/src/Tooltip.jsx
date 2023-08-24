@@ -74,7 +74,7 @@ class TooltipRoot extends Component {
   render() {
     const { Children, children, tag, ...other } = this.asProps;
 
-    const advanceMode = !!findComponent(Children, [
+    const advancedMode = !!findComponent(Children, [
       Tooltip.Trigger.displayName,
       Tooltip.Popper.displayName,
     ]);
@@ -92,7 +92,7 @@ class TooltipRoot extends Component {
           this.setPopperTrigger = setTrigger;
           this.popper = popper;
           this.popper.current?.update();
-          return advanceMode ? (
+          return advancedMode ? (
             <Children />
           ) : (
             <>

@@ -199,7 +199,7 @@ class ScrollAreaRoot extends Component {
     const { Children, styles, orientation, tabIndex } = this.asProps;
     const { shadowVertical, shadowHorizontal } = this.state;
 
-    const advanceMode = isAdvanceMode(Children, [
+    const advancedMode = isAdvanceMode(Children, [
       ScrollArea.Container.displayName,
       ScrollArea.Bar.displayName,
     ]);
@@ -213,7 +213,7 @@ class ScrollAreaRoot extends Component {
       >
         {shadowVertical && <SShadowVertical position={shadowVertical} />}
         {shadowHorizontal && <SShadowHorizontal position={shadowHorizontal} />}
-        {advanceMode ? (
+        {advancedMode ? (
           <Children />
         ) : (
           <>

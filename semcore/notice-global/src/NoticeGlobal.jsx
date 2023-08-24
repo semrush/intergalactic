@@ -46,7 +46,7 @@ class NoticeGlobalRoot extends Component {
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
-    const advanceMode = isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
+    const advancedMode = isAdvanceMode(Children, [NoticeGlobal.Content.displayName]);
 
     return sstyled(styles)(
       <SNoticeGlobal
@@ -57,7 +57,7 @@ class NoticeGlobalRoot extends Component {
         role='status'
         aria-live={isAssertive ? 'assertive' : 'polite'}
       >
-        {advanceMode ? (
+        {advancedMode ? (
           <Children />
         ) : (
           <NoticeGlobal.Content>
