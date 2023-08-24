@@ -1,3 +1,13 @@
+## [15.11.0-prerelease.0] - 2023-08-24
+
+### @semcore/ellipsis
+
+- **Added** Ellipsis advanced usage with `Ellipsis.Content` and `Ellipsis.Popper` components.
+
+### @semcore/tooltip
+
+- **Added** Internal API for enforcing component advanced mode.
+
 ## [15.10.0] - 2023-08-24
 
 ### @semcore/input-mask
