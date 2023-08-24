@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.6.0] - 2023-08-24
+
+### Changed 
+
+- Enabled "single focus owner mode" to better handle nested modals focus lock.
+
 ## [4.5.0] - 2023-08-23
 
 ### Changed

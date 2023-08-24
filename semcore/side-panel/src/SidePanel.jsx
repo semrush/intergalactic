@@ -143,7 +143,7 @@ function Panel(props) {
 
   const sidebarRef = useRef(null);
 
-  useFocusLock(sidebarRef, true, 'auto', !visible);
+  useFocusLock(sidebarRef, true, 'auto', !visible, true);
 
   return sstyled(styles)(
     <>
