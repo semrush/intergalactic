@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.6.1-prerelease.0] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/input` [4.6.0 ~> 4.6.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
+
 ## [4.6.0] - 2023-08-23
 
 ### Changed
