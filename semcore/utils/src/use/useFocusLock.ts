@@ -9,15 +9,16 @@ import React from 'react';
  */
 let focusMoveRequests: number[] = [];
 let focusMoveDisabledUntil = 0;
+let lastUserAction = 0;
 const safeMoveFocusInside: typeof moveFocusInside = (...args) => {
   if (focusMoveDisabledUntil > Date.now()) return;
   focusMoveRequests.push(Date.now());
-  if (focusMoveRequests.length > 10) {
-    const timeBetweenCloseButNotNeighborFocusMoveRequests = Math.abs(
-      focusMoveRequests[focusMoveRequests.length - 10] -
-        focusMoveRequests[focusMoveRequests.length - 1],
-    );
-    if (timeBetweenCloseButNotNeighborFocusMoveRequests < 20) {
+  if (focusMoveRequests.length > 10 && Date.now() - lastUserAction > 600) {
+    const lastFocusMoveRequests = focusMoveRequests.slice(-10);
+    const timeBetweenFocusMoveRequests = lastFocusMoveRequests
+      .slice(1)
+      .map((time, index) => Math.abs(time - lastFocusMoveRequests[index]));
+    if (timeBetweenFocusMoveRequests.every((time) => time < 250)) {
       focusMoveDisabledUntil = Date.now() + 10000;
       focusMoveRequests = [];
       console.error(
@@ -30,6 +31,14 @@ const safeMoveFocusInside: typeof moveFocusInside = (...args) => {
 
   return moveFocusInside(...args);
 };
+if (canUseDOM()) {
+  document.addEventListener('keydown', () => {
+    lastUserAction = Date.now();
+  });
+  document.addEventListener('mousedown', () => {
+    lastUserAction = Date.now();
+  });
+}
 
 const focusBordersConsumers = new Set();
 const focusBordersRefs = { before: null, after: null } as {
