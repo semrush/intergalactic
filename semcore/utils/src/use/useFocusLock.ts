@@ -3,43 +3,71 @@ import { useUID } from '../uniqueID';
 import moveFocusInside, { focusInside, getFocusableIn } from 'focus-lock';
 import React from 'react';
 
+/** "safe" focus movement means that function wrapper tries
+ * to detect focus war (when two focus locks are trying to
+ * control focus recursively) and disables it for 10 seconds
+ */
+let focusMoveRequests: number[] = [];
+let focusMoveDisabledUntil = 0;
+const safeMoveFocusInside: typeof moveFocusInside = (...args) => {
+  if (focusMoveDisabledUntil > Date.now()) return;
+  focusMoveRequests.push(Date.now());
+  if (focusMoveRequests.length > 10) {
+    const timeBetweenCloseButNotNeighborFocusMoveRequests = Math.abs(
+      focusMoveRequests[focusMoveRequests.length - 10] -
+        focusMoveRequests[focusMoveRequests.length - 1],
+    );
+    if (timeBetweenCloseButNotNeighborFocusMoveRequests < 20) {
+      focusMoveDisabledUntil = Date.now() + 10000;
+      focusMoveRequests = [];
+      console.error(
+        '[useFocusLock] Probably the focus war was detected. It is a process when multiple browser focus control subjects are reacting to "blur" event on their element and are trying to get it back. Focus move function was disabled for 10 seconds. Probably your page has different focus lock systems. If you have multiple versions of Intergalactic components, updated them to the latest version.',
+      );
+      return;
+    }
+  }
+  if (focusMoveRequests.length > 500) focusMoveRequests = focusMoveRequests.slice(-10);
+
+  return moveFocusInside(...args);
+};
+
 const focusBordersConsumers = new Set();
 const focusBordersRefs = { before: null, after: null } as {
   before: null | HTMLElement;
 
   after: null | HTMLElement;
 };
+const addBorders = () => {
+  if (!focusBordersRefs.before) {
+    focusBordersRefs.before = document.createElement('div');
+    focusBordersRefs.before.setAttribute('tabindex', '0');
+    focusBordersRefs.before.style.position = 'fixed';
+    focusBordersRefs.before.dataset.id = '__intergalactic-focus-border-before';
+    document.body.prepend(focusBordersRefs.before);
+  }
+  if (!focusBordersRefs.after) {
+    focusBordersRefs.after = document.createElement('div');
+    focusBordersRefs.after.setAttribute('tabindex', '0');
+    focusBordersRefs.after.dataset.id = '__intergalactic-focus-border-after';
+    focusBordersRefs.after.style.position = 'fixed';
+    document.body.append(focusBordersRefs.after);
+  }
+};
+const removeBorders = () => {
+  focusBordersRefs.before?.remove();
+  focusBordersRefs.after?.remove();
+  focusBordersRefs.before = null;
+  focusBordersRefs.after = null;
+};
+const areBordersPlacedCorrectly = () => {
+  if (!focusBordersRefs.before || !focusBordersRefs.after) return true;
+  if (document.body.children[0] !== focusBordersRefs.before) return false;
+  if (document.body.children[document.body.children.length - 1] !== focusBordersRefs.after)
+    return false;
+  return true;
+};
 const useFocusBorders = (disabled?: boolean) => {
   const id = useUID('focus-borders-consumer');
-  const addBorders = React.useCallback(() => {
-    if (!focusBordersRefs.before) {
-      focusBordersRefs.before = document.createElement('div');
-      focusBordersRefs.before.setAttribute('tabindex', '0');
-      focusBordersRefs.before.style.position = 'fixed';
-      focusBordersRefs.before.dataset.id = '__intergalactic-focus-border-before';
-      document.body.prepend(focusBordersRefs.before);
-    }
-    if (!focusBordersRefs.after) {
-      focusBordersRefs.after = document.createElement('div');
-      focusBordersRefs.after.setAttribute('tabindex', '0');
-      focusBordersRefs.after.dataset.id = '__intergalactic-focus-border-after';
-      focusBordersRefs.after.style.position = 'fixed';
-      document.body.append(focusBordersRefs.after);
-    }
-  }, []);
-  const removeBorders = React.useCallback(() => {
-    focusBordersRefs.before?.remove();
-    focusBordersRefs.after?.remove();
-    focusBordersRefs.before = null;
-    focusBordersRefs.after = null;
-  }, []);
-  const areBordersPlacedCorrectly = React.useCallback(() => {
-    if (!focusBordersRefs.before || !focusBordersRefs.after) return true;
-    if (document.body.children[0] !== focusBordersRefs.before) return false;
-    if (document.body.children[document.body.children.length - 1] !== focusBordersRefs.after)
-      return false;
-    return true;
-  }, []);
   React.useEffect(() => {
     if (!disabled) {
       focusBordersConsumers.add(id);
@@ -55,10 +83,35 @@ const useFocusBorders = (disabled?: boolean) => {
   }, [id, disabled]);
 };
 
-const focusLockUsers = new Set<HTMLElement>();
-let currentFocusMaster: HTMLElement | null = null;
+/**
+ * In some cases same page might contain different versions of components.
+ * In such cases, we need to ensure that only one version of focus lock hook is used.
+ * So, it's why we have `useFocusLockHook` function that is wrapped into `useFocusLock`.
+ *
+ * While evaluating this file code, we check if global focus lock hook is already defined.
+ * If it's defined, we replace it ONLY if our version is higher and no components currently use it.
+ * The last condition is very important because we are unable to replace React hook without reimplementing
+ * React hooks lifecycle in some kind of wrapper.
+ *
+ * Such versions merging requires us to keep hook api backward compatible.
+ * When hook logic changes, the variable `focusLockVersion` should be incremented.
+ */
+const focusLockVersion = 1;
+const globalFocusLockHookKey = '__intergalactic_focus_lock_hook';
 
-export const useFocusLock = (
+const focusLockAllTraps = new Set<HTMLElement>();
+const focusLockUsedInMountedComponents = new Set<string>();
+/** Focus master is a special mode in which focus lock might work.
+ * Normally, focus lock hook allows user focus to move freely between
+ * all active focus traps. When component provides `focusMaster=true`
+ * parameter, it says that it doesn't want to share focus with other traps.
+ * It is very useful for a big components like modals or side-bars that
+ * also have some visual backdrop.
+ * The last element in focus masters stack is considered as a current focus master.
+ */
+const focusMastersStack: HTMLElement[] = [];
+
+const useFocusLockHook = (
   trapRef: React.RefObject<HTMLElement>,
   autoFocus: boolean,
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
@@ -81,13 +134,14 @@ export const useFocusLock = (
       if (lastUserInteractionRef.current === 'mouse') return;
       Promise.resolve().then(() => {
         if (!trapRef.current) return;
+        const currentFocusMaster = focusMastersStack[focusMastersStack.length - 1];
         if (currentFocusMaster && currentFocusMaster !== trapRef.current) return;
         const trapNodes = currentFocusMaster
           ? [trapRef.current]
-          : [trapRef.current, ...focusLockUsers];
+          : [trapRef.current, ...focusLockAllTraps];
         if (focusInside(trapNodes)) return;
 
-        moveFocusInside(trapRef.current, event.target);
+        safeMoveFocusInside(trapRef.current, event.target);
       });
     },
     [],
@@ -103,21 +157,21 @@ export const useFocusLock = (
     if (!focusInside(trapNode)) return;
     if (typeof returnFocusTo === 'object' && returnFocusTo?.current) {
       const returnFocusNode = returnFocusTo?.current;
-      setTimeout(() => moveFocusInside(returnFocusNode, trapNode), 0);
+      setTimeout(() => safeMoveFocusInside(returnFocusNode, trapNode), 0);
     }
     if (returnFocusTo === 'auto' && autoTriggerRef.current) {
       const autoTrigger = autoTriggerRef.current;
-      setTimeout(() => moveFocusInside(autoTrigger, trapNode), 0);
+      setTimeout(() => safeMoveFocusInside(autoTrigger, trapNode), 0);
     }
   }, [returnFocusTo]);
   React.useEffect(() => {
     if (typeof trapRef !== 'object' || trapRef === null) return;
     const node = trapRef.current;
     if (!node) return;
-    focusLockUsers.add(node);
+    focusLockAllTraps.add(node);
     return () => {
       if (!node) return;
-      focusLockUsers.delete(node);
+      focusLockAllTraps.delete(node);
     };
   }, [trapRef]);
   React.useEffect(() => {
@@ -127,12 +181,15 @@ export const useFocusLock = (
     if (!trapRef.current) return;
 
     if (focusMaster) {
-      currentFocusMaster = trapRef.current;
+      focusMastersStack.push(trapRef.current);
     }
 
     return () => {
-      if (focusMaster && currentFocusMaster === trapRef.current) {
-        currentFocusMaster = null;
+      if (!focusMaster) return;
+      if (focusMastersStack[focusMastersStack.length - 1] === trapRef.current) {
+        focusMastersStack.pop();
+      } else {
+        focusMastersStack.splice(focusMastersStack.indexOf(trapRef.current!), 1);
       }
     };
   }, [disabled, focusMaster]);
@@ -151,7 +208,7 @@ export const useFocusLock = (
     document.body.addEventListener('keydown', handleKeyboardEvent);
 
     if (autoFocus)
-      moveFocusInside(
+      safeMoveFocusInside(
         trapRef.current,
         typeof returnFocusTo === 'object' ? returnFocusTo?.current! : document.body,
       );
@@ -165,7 +222,38 @@ export const useFocusLock = (
       autoTriggerRef.current = null;
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
+
+  const id = useUID('focus-lock-consumer');
+  React.useEffect(() => {
+    if (disabled) return;
+    focusLockUsedInMountedComponents.add(id);
+    return () => {
+      focusLockUsedInMountedComponents.delete(id);
+    };
+  }, [disabled]);
+};
+const establishHookAsGlobal = () => {
+  (globalThis as any)[globalFocusLockHookKey] = {
+    hook: useFocusLockHook,
+    version: focusLockVersion,
+    usedInComponents: focusLockUsedInMountedComponents,
+  };
+};
+if (!(globalThis as any)[globalFocusLockHookKey]) {
+  establishHookAsGlobal();
+} else if (typeof (globalThis as any)[globalFocusLockHookKey].version !== 'number') {
+  establishHookAsGlobal();
+} else {
+  const { version: theirVersion, usedInComponents } = (globalThis as any)[globalFocusLockHookKey];
+  if (focusLockVersion > theirVersion && usedInComponents.size === 0) {
+    establishHookAsGlobal();
+  }
+}
+
+export const useFocusLock: typeof useFocusLockHook = (...args) => {
+  const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
+  return hook(...args);
 };
 
 export const isFocusInside = focusInside;
-export const setFocus = moveFocusInside as (topNode: HTMLElement, lastNode?: Element) => void;
+export const setFocus = safeMoveFocusInside as (topNode: HTMLElement, lastNode?: Element) => void;
