@@ -4,33 +4,33 @@ title: Loading states
 
 @## Description
 
-Components that we use to work with user expectations:
+These components are employed to manage user expectations:
 
 - [Spin](/components/spin/)
 - [Skeleton](/components/skeleton/)
 - [ProgressBar](/components/progress-bar/)
 
-**Use them for different cases.** For a detailed description of each component, see its guide.
+**Use them for different cases.** For detailed insights into each component, refer to their guides.
 
-> The container that contains the loading message should have margins, so in edge cases (for example, when the user changes the size of the viewport), the container doesn't "stick" to other elements on the page. The margins depend on the component where the loading message is used. They are usually multiple of 4 (for example, for spinner we recommend to use `margin: 40px`).
+> Ensure that the container housing the loading message has margins. This prevents the container from becoming tightly attached to other elements on the page during cases like viewport size adjustments. The margin values are usually multiples of 4 (for example, for the spinner, we recommend using `margin: 40px`).
 
 @## Response from the system
 
 ### Lazy loading
 
-If you know how much it takes to load a page, then load the page using the “Lazy loading" principle.
+When you possess insight into the loading time of a page, apply the "Lazy Loading" principle to load the page.
 
-_For example, you know that landing page loads quickly. For this reason on such pages, you can load elements in turn, without showing either the spinner or the skeleton. First, important functionality appears (input and a submit button, for example), then illustrations and marketing text._
+For instance, if you know that a landing page loads quickly, you can progressively load elements without displaying either the spinner or the skeleton. Essential functionality, such as input fields and submit buttons, appear first, followed by illustrations and marketing content.
 
 ### Page loading
 
-In all other cases, show [Skeleton](/components/skeleton) when loading the page.
+In all other circumstances, implement [Skeleton](/components/skeleton) to display while the page loads.
 
-All products should have a delay of `600ms` before the skeleton appears. This is to prevent flickering when switching from product to product.
+A delay of `600ms` should be incorporated before the skeleton becomes visible across all products. This delay mitigates flickering during transitions between products.
 
-### Spin as the interface's response to interaction
+### Spin as user interface feedback
 
-[Spin](/components/spin) is only used when the user interacts with a clickable interface element on the page.
+[Spin](/components/spin) should solely be employed when users interact with clickable interface elements on the page.
 
 @## Usage rules
 
@@ -38,9 +38,9 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 
 **Use it for:**
 
-- initial data loading;
-- showing the structure of the loading page and data;
-- uploading new data.
+- Initial data loading.
+- Displaying the structure of loading pages and data.
+- Uploading new data.
 
 ![](static/loading-skeleton.png)
 
@@ -48,16 +48,16 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 
 **Use it while:**
 
-- filtering a large amount of data in a widget/table/page;
-- sorting a large amount of data in a widget/table/page;
-- searching the data.
+- Filtering substantial data within widgets/tables/pages.
+- Sorting significant data within widgets/tables/pages.
+- Conducting data searches.
 
-> If the download is fast, you can do without this state.
+> If the download process is rapid, this state can be omitted.
 
 ![](static/spin.png)
 
 ### ProgressBar
 
-Use it for cases when data collection takes a long time (more than 5 seconds). In different widgets this may take different time. _For example, in the table, if data collection takes more than 1 minute._
+Use it for scenarios where data collection extends beyond 5 seconds. This duration may differ across various widgets. For instance, within tables, if data collection takes longer than 1 minute.
 
 ![](static/progressbar.png)
