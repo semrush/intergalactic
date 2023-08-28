@@ -2,10 +2,10 @@
 title: ProjectSelect
 ---
 
-**ProjectSelect** is a module that is usually placed in the project header and helps user:
+**ProjectSelect** module is typically positioned within the project header and serves the following purposes for users:
 
-- switch between saved projects in the product;
-- create new projects;
-- see projects shared with you and customize them.
+- Switch between saved projects within the product.
+- Create new projects.
+- View projects shared with the user and personalize them.
 
-> See the detailed guide in the [inner Figma project](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=134%3A123098). **It's available only for Semrush developers.**
+For a more comprehensive guide, refer to the [inner Figma project](https://www.figma.com/file/EWdX1ly5KsoNu8sywYJdKk/?node-id=134%3A123098). Please note that access is limited to Semrush developers only.
