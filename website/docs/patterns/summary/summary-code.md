@@ -6,18 +6,18 @@ title: Example
 
 @example simple-summary
 
-@## Example of a vertical layout with skeleton
+@## Vertical layout with skeleton
 
-You can place main metrics vertically, if it's required by the report layout. Show [Skeleton](/components/skeleton/) on the first data download.
+In case your report layout demands it, you have the option to vertically arrange the metrics. To enhance user experience during the initial data retrieval, consider displaying [Skeleton](/components/skeleton/).
 
 @example vertical-summary-with-skeleton
 
-@## Summary with a minitrend
+@## Summary with minitrend
 
-If the metrics don't fit into the maximum page width, arrange the data in a column – move the minitrends under the metric.
+If the metrics are wider than the page's maximum width, a good approach is to organize them in columns. This means placing the minitrends below their corresponding metrics, ensuring a clear and visually appealing layout.
 
 @example summary-with-minitrend
 
-@## Summary with an error
+@## Summary with error
 
 @example summary-error
