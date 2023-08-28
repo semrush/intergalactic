@@ -1,3 +1,11 @@
+## [15.12.0] - 2023-08-28
+
+### @semcore/utils
+
+- **Changed** Focus lock got focus war surrender mechanism to prevent page freeze if page contains older focus lock. In such case the error is logged into console.
+- **Changed** Focus lock got improved focus control in multiple nested modals (or side-panels) when modals count is bigger then 2.
+- **Changed** Focus lock uses only one version of it if multiple focus lock versions are present on same page.
+
 ## [15.11.1] - 2023-08-24
 
 ### @semcore/d3-chart
