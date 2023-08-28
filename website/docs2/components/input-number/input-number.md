@@ -2,6 +2,7 @@
 title: InputNumber & InputRange
 fileSource: input-number
 tabName: Design
+tabs: InputNumber & InputRange('input-number'), A11y('input-number-a11y'), API('input-number-api'), Example('input-number-code'), Changelog('input-number-changelog')
 ---
 
 @import playground
@@ -32,9 +33,11 @@ Dates and various codes (for example, pin codes) are also examples of numeric va
 - You can set minimum and maximum values that the user can enter.
 - You can define a step for the value, which determines how much the value increases or decreases when using the stepper buttons (`Up Arrow` and `Down Arrow`), or with the combination of `Shift` + `Up Arrow` or `Down Arrow`.
 
-> **HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
->
-> For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
+::: tip
+**HTML specifications don’t recommend using InputNumber for numeric values that contain non-numeric characters (for example, slash, letter, hyphen, etc.)**, as this input field removes all non-numeric characters by default.
+
+For numbers with non-numeric characters, it is recommended to use a standard input with `inputmode="numeric"` and the corresponding pattern attribute.
+:::
 
 ## Input width
 
@@ -46,26 +49,28 @@ The width of the input shouldn't exceed the maximum number that can be entered. 
 
 Stepper buttons are enabled when the InputNumber field receives focus. The target area for the steppers is larger than their visual size.
 
-@table-caption InputNumber's stepper button sizes
+Table: InputNumber's stepper button sizes
 
 | Input size (height in px) | Appearance example      |
 | ------------------------- | ----------------------- |
 | M (28px)                  | ![](static/m-sizes.png) |
 | L (40px)                  | ![](static/l-sizes.png) |
 
-> **Interesting fact**
->
-> Number inputs have little stepper buttons, which let users increase or decrease the input’s value by a constant amount. Luke Wroblewski’s usability testing shows that users prefer them to dropdown menus:
->
-> _When testing mobile flight booking forms, we found people preferred steppers for selecting the number of passengers. No dropdown menu required, especially since there’s a maximum of 8 travelers allowed and the vast majority select 1–2 travelers._
->
-> The only downside is that the browser-provided spinners are tiny, which make them difficult to use. And some browsers don’t show them at all. We can solve this problem by creating our own custom stepper component.
->
-> _from [Form Design Patterns](https://www.smashingmagazine.com/printed-books/form-design-patterns/)_
+::: tip
+**Interesting fact**
+
+Number inputs have little stepper buttons, which let users increase or decrease the input’s value by a constant amount. Luke Wroblewski’s usability testing shows that users prefer them to dropdown menus:
+
+_When testing mobile flight booking forms, we found people preferred steppers for selecting the number of passengers. No dropdown menu required, especially since there’s a maximum of 8 travelers allowed and the vast majority select 1–2 travelers._
+
+The only downside is that the browser-provided spinners are tiny, which make them difficult to use. And some browsers don’t show them at all. We can solve this problem by creating our own custom stepper component.
+
+_from [Form Design Patterns](https://www.smashingmagazine.com/printed-books/form-design-patterns/)_
+:::
 
 If needed, you can utilize a number as a placeholder within this type of input.
 
-@table-caption InputNumbers states
+Table: InputNumbers states
 
 | State         | L (40px)                      | M (28px)                      | Styles                                                             |
 | ------------- | ----------------------------- | ----------------------------- | ------------------------------------------------------------------ |
@@ -89,9 +94,11 @@ To assist users in entering correct and valid data, you can:
 
 To input a range of numbers, you can use two InputNumbers grouped together.
 
-> Placeholders such as "From" and "To" can be used in these inputs.
+::: tip
+Placeholders such as "From" and "To" can be used in these inputs.
+:::
 
-@table-caption InputRange states
+Table: InputRange states
 
 | Size (height in px) | Default                         | Focus                   |
 | ------------------- | ------------------------------- | ----------------------- |
@@ -102,7 +109,7 @@ To input a range of numbers, you can use two InputNumbers grouped together.
 
 If the user enters a value in the right input that is less than the value in the left input, the values will switch when the focus is lost (`onBlur`).
 
-@table-caption Validation case for InputRange
+Table: Validation case for InputRange
 
 | The right value is less than the left value | After submitting, inputs will switch their values |
 | ------------------------------------------- | ------------------------------------------------- |
@@ -126,7 +133,9 @@ If the input doesn't have a defined range of acceptable values, no validation wi
 
 You can use a dot to enter a fractional value in the input.
 
-> The dot and comma are interchangeable characters depending on the locale.
+::: tip
+The dot and comma are interchangeable characters depending on the locale.
+:::
 
 For instance, if the user enters a value with a dot and the locale uses commas for fractional values, the originally entered dot should be changed to a comma, and vice versa.
 
@@ -141,9 +150,7 @@ Treat the zero value like any other number:
 - If 0 is a valid value, the input will retain this entered value.
 - If 0 is less than the minimum value, the input will reset the value to the minimum.
 
-> If the input is already set to 0, when the input receives focus, the user can enter a value after the 0. Upon onBlur, the entire value in the input is formatted, and the leading 0 will be removed. For example, `001` is formatted to `1`.
+::: tip
+If the input is already set to 0, when the input receives focus, the user can enter a value after the 0. Upon onBlur, the entire value in the input is formatted, and the leading 0 will be removed. For example, `001` is formatted to `1`.
+:::
 
-@page input-number-a11y
-@page input-number-api
-@page input-number-code
-@page input-number-changelog

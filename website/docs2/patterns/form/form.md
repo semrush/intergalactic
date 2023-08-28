@@ -1,13 +1,16 @@
 ---
 title: Form
 tabName: Design
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
 
 **Form** is a pattern for collecting and sending data to the system. It always consists of different types of inputs and controls.
 
-> Use one size of inputs and controls in the form.
+::: tip
+Use one size of inputs and controls in the form.
+:::
 
 ## Layout
 
@@ -52,7 +55,9 @@ To format values that the user enters use [InputMask](/components/input-mask/).
 
 ## Inputs
 
-> After opening the form the first input should get the `focus`.
+::: tip
+After opening the form the first input should get the `focus`.
+:::
 
 **The main denominator in the design system is 4.** All margins between the components and widgets shall be a multiple of this denominator. See [Spacing system](/layout/box-system/#spacing_system) for more information.
 
@@ -137,5 +142,3 @@ Briefly:
 - Such forms are more difficult to be scanned and read (labels are right aligned, user needs more time to find the beginning of the following line).
 - It is less suitable for multilingual interfaces.
 
-@page form-a11y
-@page form-code

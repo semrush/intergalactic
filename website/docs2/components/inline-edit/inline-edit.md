@@ -2,6 +2,7 @@
 title: InlineEdit
 fileSource: inline-edit
 tabName: Design
+tabs: InlineEdit('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), Example('inline-edit-example'), Changelog('inline-edit-changelog')
 ---
 
 ## Description
@@ -31,7 +32,7 @@ The placeholder's color aligns with that of a typical input element, utilizing t
 
 Below is an example demonstrating how this component functions with one of the possible triggers.
 
-@table-caption InlineEdit states
+Table: InlineEdit states
 
 | State                   | Appearance example     | Styles  |
 | ----------------------- | ---------------------- | ------- |
@@ -53,7 +54,3 @@ For instance, if the heading you wish to edit employs a font size of 24px, maint
 
 ![](static/inline-edit-yes-no.png)
 
-@page inline-edit-a11y
-@page inline-edit-api
-@page inline-edit-example
-@page inline-edit-changelog

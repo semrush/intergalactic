@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: spin
+tabs: Spin('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')
 ---
 
 ## Spin
@@ -12,4 +13,8 @@ import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 
-@typescript SpinProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SpinProps" :types={...types} />

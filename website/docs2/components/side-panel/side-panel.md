@@ -2,9 +2,12 @@
 title: SidePanel
 fileSource: side-panel
 tabName: Design
+tabs: SidePanel('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
-> In the [2.0.0 version](/components/side-panel/side-panel-changelog/), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
+::: tip
+In the [2.0.0 version](/components/side-panel/side-panel-changelog/), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
+:::
 
 ## Description
 
@@ -15,7 +18,9 @@ tabName: Design
 - To show sub-tasks, additional support information, and links that may be useful to the user while working with a report, a specific widget, or the entire product.
 - To keep the user in the context of the page (even if the SidePanel has an overlay).
 
-> Use [Modal windows](/components/modal/) to show important information or request a response from the user.
+::: tip
+Use [Modal windows](/components/modal/) to show important information or request a response from the user.
+:::
 
 **For example, you can use SidePanel as:**
 
@@ -49,7 +54,7 @@ The trigger for opening the SidePanel can be the following:
 
 ## Overlay
 
-@table-caption SidePanel with and without overlay
+Table: SidePanel with and without overlay
 
 |                 | Appearance example                     | Styles                                                                                                           | When to use                                                                             |
 | --------------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -82,9 +87,11 @@ The padding between the title and content:
 
 For the panel's title, use 16px text (`--fs-300`, `--lh-300` tokens) with `font-weight: var(--bold)`.
 
-> Pin the header when scrolling large content inside the SidePanel.
+::: tip
+Pin the header when scrolling large content inside the SidePanel.
+:::
 
-@table-caption SidePanel.Header styles
+Table: SidePanel.Header styles
 
 | Appearance example     | Styles         |
 | ---------------------- | -------------- |
@@ -134,7 +141,9 @@ border-top: 1px solid var(–-border-primary);
 
 Page scroll is disabled by default. We recommend you to enable it only when SidePanel has some tips and additional information for the page, and no overlay is enabled.
 
-> Always disable page scroll for SidePanel with an overlay.
+::: tip
+Always disable page scroll for SidePanel with an overlay.
+:::
 
 ### SidePanel opening and closing
 
@@ -180,7 +189,3 @@ If an error occurs during data loading, show the corresponding message and the "
 
 ![](static/error.png)
 
-@page side-panel-a11y
-@page side-panel-api
-@page side-panel-code
-@page side-panel-changelog

@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: input
+tabs: Input('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
 ## Input
@@ -12,7 +13,11 @@ import Input from '@semcore/ui/input';
 <Input />;
 ```
 
-@typescript InputProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="InputProps" :types={...types} />
 
 ## Input.Value
 
@@ -23,7 +28,7 @@ import Input from '@semcore/ui/input';
 <Input.Value />;
 ```
 
-@typescript InputValueProps
+<TypesView type="InputValueProps" :types={...types} />
 
 ## Input.Addon
 
@@ -36,4 +41,4 @@ import Input from '@semcore/ui/input';
 <Input.Addon />;
 ```
 
-@typescript InputAddonProps
+<TypesView type="InputAddonProps" :types={...types} />

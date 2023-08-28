@@ -2,6 +2,7 @@
 title: Flex-box and spacing system
 fileSource: flex-box
 tabName: Design
+tabs: Flex-box and spacing system('box-system'), API('box-api'), Changelog('box-changelog')
 ---
 
 **Flex-box** is a component for managing arrangement and alignment of other components and elements in the interface.
@@ -12,11 +13,60 @@ tabName: Design
 
 Example below shows how to implement equal margins between form components.
 
-@example space
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+
+const Demo = () => (
+  <div>
+    <Button>Button</Button>
+    <Box inline w={8} />
+    <Button>Button</Button>
+    <Box inline w={8} />
+    <Button>Button</Button>
+    <Box inline w={8} />
+    <Button>Button</Button>
+  </div>
+);
+
+
+</script>
+
+:::
 
 Example below shows how a component creates indents using dynamically generated classes. Thus, you can get this class generated into the component by passing it to `tag`.
 
-@example space-tag
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+
+const Demo = () => (
+  <div>
+    <Box tag={Button} mr={2}>
+      Button
+    </Box>
+    <Box tag={Button} mr={2}>
+      Button
+    </Box>
+    <Box tag={Button} mr={2}>
+      Button
+    </Box>
+    <Box tag={Button} mr={2}>
+      Button
+    </Box>
+  </div>
+);
+
+
+</script>
+
+:::
 
 ## Flex
 
@@ -24,7 +74,38 @@ Example below shows how a component creates indents using dynamically generated 
 
 Example below shows how Flex component takes all properties of a Box component.
 
-@example flex
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Box, Flex } from '@semcore/ui/flex-box';
+
+const Demo = () => {
+  const styleBox = {
+    background: 'rgba(79, 96, 213, 0.5)',
+  };
+
+  return (
+    <div>
+      <Flex justifyContent='space-between'>
+        <Box m={5} p={5} style={styleBox} />
+        <Box m={5} p={5} style={styleBox} />
+        <Box m={5} p={5} style={styleBox} />
+      </Flex>
+      <hr />
+      <Flex alignItems='center'>
+        <Box h={100} m={5} p={5} style={styleBox} />
+        <Box h={60} m={5} p={5} style={styleBox} />
+        <Box ml='auto' m={5} p={5} style={styleBox} />
+      </Flex>
+    </div>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Spacing system
 
@@ -32,7 +113,9 @@ The spacing system helps maintain a vertical and horizontal rhythms in the inter
 
 In addition, vertical and horizontal rhythms help maintain visual hierarchy on the page, structure components and blocks according their importance to the user.
 
-> **Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/).
+::: tip
+**Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/).
+:::
 
 Here is a table with [spacing tokens](/style/design-tokens/) we use in our design system.
 
@@ -52,5 +135,3 @@ Here is a table with [spacing tokens](/style/design-tokens/) we use in our desig
 | `--spacing-24x` | 96          | 6            | 24                       |
 | `--spacing-30x` | 120         | 7.5          | 30                       |
 
-@page box-api
-@page box-changelog

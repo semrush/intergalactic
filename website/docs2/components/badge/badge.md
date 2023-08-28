@@ -2,6 +2,7 @@
 title: Badge
 fileSource: badge
 tabName: Design
+tabs: Badge('badge'), A11y('badge-a11y'), API('badge-api'), Example('badge-code'), Changelog('badge-changelog')
 ---
 
 @import playground
@@ -26,7 +27,7 @@ Component has one size.
 
 Use the following badges in the products depending on the status of the feature or product:
 
-@table-caption Badge types
+Table: Badge types
 
 | Badge                      | Background     | When used                                                                                                                                                                                                                                                                                 |
 | -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -74,7 +75,7 @@ Badge is usually placed to the right of the element. As an exception, in the [No
 
 ## Usage in UX/UI
 
-@table-caption Badge usage examples
+Table: Badge usage examples
 
 | Component/block     | Appearance example                        |
 | ------------------- | ----------------------------------------- |
@@ -82,7 +83,3 @@ Badge is usually placed to the right of the element. As an exception, in the [No
 | Landing page header | ![](static/landing-header.png) |
 | Widget              | ![](static/widget.png)              |
 
-@page badge-a11y
-@page badge-api
-@page badge-code
-@page badge-changelog

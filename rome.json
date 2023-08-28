@@ -18,6 +18,7 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
+      "website/docs2/.vitepress",
       "./tools/playground/examples/**"
     ],
     "lineWidth": 100,
@@ -47,6 +48,7 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
+      "website/docs2/.vitepress",
       "./tools/playground/examples/**"
     ],
     "rules": {
@@ -68,7 +70,10 @@
         "noUnreachableSuper": "off",
         "noConstructorReturn": "off"
       },
-      "a11y": { "useAnchorContent": "off", "noSvgWithoutTitle": "off" },
+      "a11y": {
+        "useAnchorContent": "off",
+        "noSvgWithoutTitle": "off"
+      },
       "nursery": {
         "noConsoleLog": "error"
       },

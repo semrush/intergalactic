@@ -2,6 +2,7 @@
 title: ColorPicker
 tabName: Design
 fileSource: color-picker
+tabs: ColorPicker('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
 @import playground
@@ -30,7 +31,7 @@ The trigger for a ColorPicker is a Select with a circle as the leading addon.
 
 A list of colors can include either a single ColorPicker.Item or multiple ones, which are preview swatches that display all available color values.
 
-@table-caption List of colors and its items
+Table: List of colors and its items
 
 | ColorPicker.Item     | List of ColorPicker.Items                             |
 | -------------------- | ----------------------------------------------------- |
@@ -52,7 +53,7 @@ All margins must be [multiples of 4](/layout/box-system/#spacing_system). The de
 
 An item can have two different types:
 
-@table-caption Color items
+Table: Color items
 
 | Type            | Appearance example                                                             | Usage                                                                                                                 |
 | --------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -66,7 +67,7 @@ An item can have two different types:
 
 ### Default item
 
-@table-caption Color item states
+Table: Color item states
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
@@ -77,7 +78,7 @@ An item can have two different types:
 
 ### Item for custom colors
 
-@table-caption Custom color item states
+Table: Custom color item states
 
 | | Normal | Hover | Active                                              | Usage |
 | ------------------- | ------------------------------- | -------------------------- |-----------------------------------------------------| -------------------- |
@@ -86,7 +87,7 @@ An item can have two different types:
 
 ### Item for adding colors
 
-@table-caption States of item for adding colors
+Table: States of item for adding colors
 
 | | Normal | Hover | Active | Usage |
 | ------------------- | ------------------------------- | -------------------------- | ----------------------- | -------------------- |
@@ -100,7 +101,7 @@ An item can have two different types:
 
 Showing all available colors in the DropdownMenu is crucial, however, if a user has added more than 20 custom colors, a scrollbar should be displayed.
 
-@table-caption DropdownMenu appearance
+Table: DropdownMenu appearance
 
 | DropdownMenu                  | DropdownMenu with more than 20 colors |
 | ----------------------------- | ------------------------------------- |
@@ -124,7 +125,9 @@ Use input with M size.
 
 The color value is always a 6-character string that specifies the color in the HEX format.
 
-> User can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+::: tip
+User can enter both upper-case and lower-case characters, but the input will save them as upper-case.
+:::
 
 ## Interaction
 
@@ -132,7 +135,9 @@ Users have the ability to add or remove custom colors, but they cannot modify de
 
 ### Adding custom color
 
-> We recommend that your product sync and save the user's custom palette in different parts of the interface.
+::: tip
+We recommend that your product sync and save the user's custom palette in different parts of the interface.
+:::
 
 Users can add a color to the custom palette by clicking either the button with the `MathPlus` icon or the input field. They can add a color value by clicking the `Check` icon and remove a color by clicking the `Close` icon.
 
@@ -173,7 +178,3 @@ ColorPicker.Item can be placed inside the following components:
 
 ![](static/color-picker-places.png)
 
-@page color-picker-a11y
-@page color-picker-api
-@page color-picker-code
-@page color-picker-changelog

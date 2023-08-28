@@ -2,15 +2,140 @@
 title: Button
 fileSource: button
 tabName: Design
+tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
-@import playground
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+
+import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
+
+const SIZES = ['m', 'l'];
+const USE = ['primary', 'secondary', 'tertiary'];
+const THEME = {
+  primary: ['info', 'success', 'warning', 'danger', 'invert'],
+  secondary: ['info', 'muted', 'invert'],
+  tertiary: ['info', 'muted', 'invert'],
+};
+
+const Preview = (preview) => {
+  const { bool, select, radio, text } = preview('Button');
+
+  const size = radio({
+    key: 'size',
+    defaultValue: 'm',
+    label: 'Size',
+    options: SIZES,
+  });
+
+  const use = select({
+    key: 'use',
+    defaultValue: 'secondary',
+    label: 'Use',
+    options: USE.map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const theme = select({
+    key: 'theme',
+    placeholder: 'Select theme',
+    label: 'Theme',
+    options: THEME[use].map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const active = bool({
+    key: 'active',
+    defaultValue: false,
+    label: 'Active',
+  });
+
+  const disabled = bool({
+    key: 'disabled',
+    defaultValue: false,
+    label: 'Disabled',
+  });
+
+  const loading = bool({
+    key: 'loading',
+    defaultValue: false,
+    label: 'Loading',
+  });
+
+  const beforeIcon = bool({
+    key: 'before',
+    defaultValue: false,
+    label: 'Before',
+  });
+
+  const afterIcon = bool({
+    key: 'after',
+    defaultValue: false,
+    label: 'After',
+  });
+
+  const child = text({
+    key: 'children',
+    defaultValue: 'Default text',
+    label: 'Text',
+  });
+  const beforeIconMap = {
+    l: <CheckM />,
+    m: <CheckM />,
+  };
+  const afterIconMap = {
+    l: <ArrowRightM />,
+    m: <ArrowRightM />,
+  };
+
+  const renderIcon = (position, size) => {
+    switch (position) {
+      case 'before':
+        return beforeIconMap[size];
+      case 'after':
+        return afterIconMap[size];
+      default:
+        return false;
+    }
+  };
+
+  return (
+    <Button
+      use={use}
+      theme={theme}
+      size={size}
+      loading={loading}
+      disabled={disabled || loading}
+      active={active}
+    >
+      {beforeIcon && <Button.Addon>{renderIcon(beforeIcon && 'before', size)}</Button.Addon>}
+      {(beforeIcon || afterIcon) && child ? <Button.Text>{child}</Button.Text> : child}
+      {afterIcon && <Button.Addon>{renderIcon(afterIcon && 'after', size)}</Button.Addon>}
+    </Button>
+  );
+};
+
+</script>
+
+:::
 
 ## Description
 
 **Button** is a control component that performs an action on the page. Compared to [Link](/components/link/), it's an accent control or call-to-action for performing actions on the page.
 
-> In some cases, you can use the button as a [Link](/components/link/) that leads to another page.
+::: tip
+In some cases, you can use the button as a [Link](/components/link/) that leads to another page.
+:::
 
 ## Component composition
 
@@ -32,7 +157,7 @@ Addon before the text has `margin-left`, while the trailing addon has `margin-ri
 
 ## Sizes and margins
 
-@table-caption Button sizes and margins
+Table: Button sizes and margins
 
 | Button size (height in px)  | Icon size | Margins             | Description     |
 | --------------------------- | --------- | ------------------- | --------------- |
@@ -51,7 +176,7 @@ Intergalactic design system has three button types (`use` property in API):
 
 All button types can be used on a white and gray background, as well as on a transparent colored background.
 
-@table-caption Button types
+Table: Button types
 
 | Button type | Appearance example               |
 | ----------- | -------------------------------- |
@@ -65,7 +190,7 @@ You can use themes for the buttons according to the visual hierarchy on the page
 
 Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
 
-@table-caption Button themes
+Table: Button themes
 
 | Button type | `muted`    | `info`               | `success`            | `danger`        | `invert`|
 | ----------- | ---------- | -------------------- | -------------------- | --------------- | ------- |
@@ -75,7 +200,7 @@ Invert theme button is used on dark or colored background. For example in [Toolt
 
 ## Button states
 
-@table-caption States for all buttons types and themes
+Table: States for all buttons types and themes
 
 | Button type | Normal    | Hover       | Active        | Loading        | Disabled     |
 | ----------- | --------- | ----------- | ------------- | -------------- | ------------ |
@@ -107,7 +232,7 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 **The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
-@table-caption Margins between buttons
+Table: Margins between buttons
 
 | L (40px)                 | M (28px)                 |
 | ------------------------ | ------------------------ |
@@ -142,7 +267,9 @@ We recommend using the icon-only button if:
 - interface hasn’t enough space;
 - user can easily understand from the context its function (purpose) / user understands the functionality of the button without an explanation.
 
-> **Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
+::: tip
+**Add a tooltip with information about button's function to the icon-only buttons**. It helps user to understand functionality of the button if the icon isn’t the obvious one.
+:::
 
 ## Button label
 
@@ -181,7 +308,3 @@ It may also be helpful checking the following branding guidelines:
 
 To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
 
-@page button-a11y
-@page button-api
-@page button-code
-@page button-changelog

@@ -1,9 +1,12 @@
 ---
 title: Keyword Difficulty, Positions, Volume
 tabName: Design
+tabs: Keyword Difficulty, Positions, Volume('filter-kd-positions-volume'), Example('filter-kd-position-volume-code')
 ---
 
-> **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+::: tip
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+:::
 
 **These filters are combined in one guide, since they differ only in the sorting parameter, a set of preset values and the name.** The principle of work and states are the same.
 
@@ -50,7 +53,9 @@ They have a set of preset values and a custom range inputs.
 
 ### Preset values
 
-> Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
+::: tip
+Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
+:::
 
 | Filter             | Keyword Difficulty                 | Positions                            | Volume                               |
 | ------------------ | ---------------------------------- | ------------------------------------ | ------------------------------------ |
@@ -89,4 +94,3 @@ Validation is described in the [Filter common rules](/filter-group/filter-rules/
 
 "Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
 
-@page filter-kd-position-volume-code

@@ -2,6 +2,7 @@
 title: Radio
 fileSource: radio
 tabName: Design
+tabs: Radio('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
 @import playground
@@ -27,7 +28,7 @@ Component consists of the following:
 
 The radio button has two sizes: M and L. The text label is always positioned to the right of the radio button.
 
-@table-caption Radio button sizes
+Table: Radio button sizes
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
@@ -38,7 +39,7 @@ The radio button has two sizes: M and L. The text label is always positioned to 
 
 The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
 
-@table-caption Radio button margins
+Table: Radio button margins
 
 | Size (px)        | Margins                                         |
 | ---------------- | ----------------------------------------------- |
@@ -49,7 +50,7 @@ The spacing between options may differ based on the context in which they are us
 
 All radio button sizes can be used with the corresponding text paragraphs.
 
-@table-caption Radio button with a paragraph of text
+Table: Radio button with a paragraph of text
 
 | Radio button size (px) | Paragraph size (px)     | Appearance example                          |
 | ---------------------- | ----------------------- | ------------------------------------------- |
@@ -62,7 +63,9 @@ Add an `Info` icon next to the radio button label to provide more information ab
 
 ![](static/info-icon.png)
 
-> Info icon should have `margin-left: 4px`.
+::: tip
+Info icon should have `margin-left: 4px`.
+:::
 
 ![](static/info-icon-margin.png)
 
@@ -72,7 +75,9 @@ Text label may contain a [Link](/components/link).
 
 ![](static/link.png)
 
-> Note, that the radio button text active zone shouldn't include a link.
+::: tip
+Note, that the radio button text active zone shouldn't include a link.
+:::
 
 ![](static/link-hover-zone.png)
 
@@ -85,7 +90,7 @@ Text label may contain a [Link](/components/link).
 
 ### States
 
-@table-caption Radio button states
+Table: Radio button states
 
 |           | Appearance                            |
 | --------- | ------------------------------------- |
@@ -101,7 +106,3 @@ Text label may contain a [Link](/components/link).
 - Use radio buttons only for binary settings (when you need to select one of them).
 - This control is most often used in lists of settings. In filters, we recommend using the [Pills](/components/pills/) component instead of radio buttons.
 
-@page radio-a11y
-@page radio-api
-@page radio-code
-@page radio-changelog

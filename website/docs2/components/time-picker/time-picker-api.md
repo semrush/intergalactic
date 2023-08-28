@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: time-picker
+tabs: TimePicker('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
 ## Time picker
@@ -9,11 +10,15 @@ fileSource: time-picker
 import Timepicker from '@semcore/ui/time-picker';
 ```
 
-@typescript TimePickerProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TimePickerProps" :types={...types} />
 
 ## TimePicker.Hours, TimePicker.Minutes
 
-@typescript TimePickerItemProps
+<TypesView type="TimePickerItemProps" :types={...types} />
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';
@@ -25,7 +30,7 @@ import Timepicker from '@semcore/ui/time-picker';
 
 ## TimePicker.Format
 
-@typescript TimePickerFormatProps
+<TypesView type="TimePickerFormatProps" :types={...types} />
 
 ```jsx
 import Timepicker from '@semcore/ui/time-picker';

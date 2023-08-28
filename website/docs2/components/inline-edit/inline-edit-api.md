@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: InlineEdit('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), Example('inline-edit-example'), Changelog('inline-edit-changelog')
 ---
 
 ## InlineEdit
@@ -11,7 +12,11 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit />;
 ```
 
-@typescript InlineEditProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="InlineEditProps" :types={...types} />
 
 ## InlineEdit.View
 

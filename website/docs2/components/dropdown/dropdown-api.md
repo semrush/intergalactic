@@ -1,9 +1,12 @@
 ---
 title: API
 fileSource: dropdown
+tabs: Dropdown('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
-> The `Dropdown` is a wrap over the `Popper` with the addition of styles, presets and modifiers.
+::: tip
+The `Dropdown` is a wrap over the `Popper` with the addition of styles, presets and modifiers.
+:::
 
 ## Dropdown
 
@@ -14,7 +17,11 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown />;
 ```
 
-@typescript DropdownProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="DropdownProps" :types={...types} />
 
 ## Dropdown.Trigger
 
@@ -25,7 +32,7 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Trigger />;
 ```
 
-@typescript PopperTriggerProps
+<TypesView type="PopperTriggerProps" :types={...types} />
 
 ## Dropdown.Popper
 
@@ -36,4 +43,4 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown.Popper />;
 ```
 
-@typescript PopperPopperProps
+<TypesView type="PopperPopperProps" :types={...types} />

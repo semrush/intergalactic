@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: ProgressBar('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
 ## What component has

@@ -290,7 +290,7 @@ Semrush Inc. is based in the United States and other members of our group are ba
 
 If you have any questions or concerns regarding Semrush’s Privacy Policy or use of personal data, or if you want to exercise your rights regarding your personal data, please contact us by email at our designated request address at privacy@semrush.com or by regular mail to:
 
-```js
+```
 Semrush Inc.
 800 Boylston Street, Suite 2475
 Boston, MA, 02199
@@ -300,7 +300,7 @@ Attention: General Counsel
 
 If your request relates to the European Data Protection Law, including the GDPR, please contact:
 
-```js
+```
 Semrush CZ s.r.o.
 Na Hřebenech II 1718/10
 Nusle, 140 00 Praha

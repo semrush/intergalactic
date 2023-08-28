@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: DataTable code and API('data-table'), API('data-table-api'), Changelog('data-table-changelog')
 ---
 
 ## DataTable
@@ -9,7 +10,11 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable />;
 ```
 
-@typescript DataTableProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="DataTableProps" :types={...types} />
 
 ## DataTable.Head
 
@@ -18,7 +23,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Head />;
 ```
 
-@typescript DataTableHeadProps
+<TypesView type="DataTableHeadProps" :types={...types} />
 
 ## DataTable.Column
 
@@ -27,7 +32,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Column />;
 ```
 
-@typescript DataTableColumnProps
+<TypesView type="DataTableColumnProps" :types={...types} />
 
 ## DataTable.Body
 
@@ -45,7 +50,7 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Row />;
 ```
 
-@typescript DataTableRowProps
+<TypesView type="DataTableRowProps" :types={...types} />
 
 ## DataTable.Cell
 
@@ -54,4 +59,4 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable.Cell />;
 ```
 
-@typescript DataTableCellProps
+<TypesView type="DataTableCellProps" :types={...types} />

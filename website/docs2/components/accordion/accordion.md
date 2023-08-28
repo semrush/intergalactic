@@ -2,6 +2,7 @@
 title: Accordion
 fileSource: accordion
 tabName: Design
+tabs: Accordion('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
 ---
 
 ## Description
@@ -13,11 +14,13 @@ tabName: Design
 - **You have a large amount of data and don't want to show it all at once**. By hiding a part of the content, you help users focus on their task. _For example, you can use an accordion in a table with a large amount of data or in large widgets with additional information._
 - **When screen area is limited (for example, on a mobile device)**. Mobile users usually don't have much choice for navigating through site content other than scrolling. Therefore, using the accordion on small screens helps reduce the scroll area, simplify the structure of content and navigation through it.
 
-> **Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
->
-> Use accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
->
-> Use dropdown primarily to hide additional features and sometimes additional information.
+::: tip
+**Don't confuse hiding content in accordion with hiding content and functionality in dropdown**. These components have different tasks.
+
+Use accordion to collapse additional information (sometimes functions) in order to save space and time for the user.
+
+Use dropdown primarily to hide additional features and sometimes additional information.
+:::
 
 ## Component composition
 
@@ -40,13 +43,15 @@ You can set the width of the accordion that is appropriate for the context.
 
 ![](static/max-width.png)
 
-> You can set different styles for the trigger and collapsed content than the default ones described below.
+::: tip
+You can set different styles for the trigger and collapsed content than the default ones described below.
+:::
 
 ## Trigger
 
 You are free to set link or button of any size you need as the accordion trigger.
 
-@table-caption Trigger appearance
+Table: Trigger appearance
 
 | Trigger type       | Appearance example  | Default styles      |
 | ------------------ | ------------------- | ------------------- |
@@ -69,17 +74,19 @@ You can use this component to hide almost any content. This can be a text conten
 
 ## Interaction
 
-> **By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
->
-> The user expects this behavior when working with the desktop device interface.
->
-> On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
+::: tip
+**By default, when a section of the accordion is opened, other sections that have already been opened shouldn't be closed**.
+
+The user expects this behavior when working with the desktop device interface.
+
+On mobile devices and in the menu, it is recommended to close previously opened sections when a new data section is opened, as this reduces the scroll area.
+:::
 
 **The icon and text label have the same target zone**.
 
 ![](static/hoverzone.png)
 
-@table-caption Accordion states
+Table: Accordion states
 
 | State    | Appearance examples                              | Description and styles                                                                                                                                                                 |
 | -------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -112,7 +119,3 @@ Mostly, the advantages of the accordion relate to long pages that are loaded wit
 - Hiding additional information makes the page look less intimidatingly loaded.
 - Accordions can be a great alternative to links as they don't break the mental model the way the links do.
 
-@page accordion-a11y
-@page accordion-api
-@page accordion-code
-@page accordion-changelog

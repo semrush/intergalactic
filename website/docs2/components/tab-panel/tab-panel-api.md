@@ -2,6 +2,7 @@
 title: API
 fileSource: tab-panel
 a11y: AA
+tabs: TabPanel('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ## TabPanel
@@ -13,20 +14,26 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel />;
 ```
 
-@typescript TabPanelProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TabPanelProps" :types={...types} />
 
 ## TabPanel.Item
 
 The tab element may contain `Addon` and `Text`, its structure is similar to [Button](/components/button/). It takes some properties from TabLine (for example, `size`, `disabled`) and may override them.
 
-> It is recommended to make tabs with links, so that the user can open a separate tab with the report with the right mouse button if necessary.
+::: tip
+It is recommended to make tabs with links, so that the user can open a separate tab with the report with the right mouse button if necessary.
+:::
 
 ```jsx
 import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item />;
 ```
 
-@typescript TabPanelItemProps
+<TypesView type="TabPanelItemProps" :types={...types} />
 
 ## TabPanel.Item.Addon
 

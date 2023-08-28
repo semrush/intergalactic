@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog') 
 ---
 
 ## Button
@@ -11,7 +12,11 @@ import Button from '@semcore/ui/button';
 <Button />;
 ```
 
-@typescript ButtonProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="ButtonProps" :types={...types} />
 
 ## Button.Addon
 

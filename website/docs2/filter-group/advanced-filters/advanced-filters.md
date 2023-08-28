@@ -1,6 +1,7 @@
 ---
 title: Advanced filters
 tabName: Design
+tabs: Advanced filters('advanced-filters'), Example('advanced-filters-code')
 ---
 
 ## Description
@@ -155,4 +156,3 @@ Always visually separate filter triggers from the filters themselves. For exampl
 
 ![filter border](static/advanced-filters-dropdown2.png)
 
-@page advanced-filters-code

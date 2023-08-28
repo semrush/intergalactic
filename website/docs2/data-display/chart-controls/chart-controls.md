@@ -3,9 +3,12 @@ title: Chart controls
 fileSource: d3-chart
 tabName: Design
 docs: true
+tabs: Chart controls('chart-controls'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
+:::
 
 ## Control types
 
@@ -43,7 +46,9 @@ These controls filter the data, axes, and some controls shown below.
 
 We use several types of legends in our charts. Find more details in the [Chart legend](/data-display/chart-legend/) guide.
 
-> We recommend you to place legend in the top left – above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
+::: tip
+We recommend you to place legend in the top left – above the chart. For charts with a large number of filters, place the legend in the left bottom under the data.
+:::
 
 ![](static/legend-top.png)
 
@@ -97,4 +102,3 @@ Divide different controls or groups of controls with [Divider](/components/divid
 
 ![](static/widget-yes-no.png)
 
-@page d3-chart-changelog

@@ -2,6 +2,7 @@
 title: FilterTrigger
 fileSource: base-trigger
 tabName: Design
+tabs: FilterTrigger('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---
 
 ## Description
@@ -17,7 +18,7 @@ This component helps users to:
 
 FilterTrigger has two sizes. Note that all sizes use `Close` and `ChevronDown` icons with M size.
 
-@table-caption FilterTrigger sizes
+Table: FilterTrigger sizes
 
 | Size (height in px) | Default state         | Active filter                                      | Active filter with counter                             |
 | ----- | ---------------------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------- |
@@ -32,7 +33,7 @@ Show [counter](/components/counter) only for **Advanced filters** and filters th
 
 Use the same margins as other inputs and [buttons](/components/button/#margins_between_buttons) have.
 
-@table-caption Margins between FilterTriggers
+Table: Margins between FilterTriggers
 
 | Size (height in px)  | Margins between controls   |
 | -------------------- | -------------------------- |
@@ -45,7 +46,7 @@ Use the same margins as other inputs and [buttons](/components/button/#margins_b
 
 <!-- > There were doubts that if there is no chevron in the active state of the filter, the user will not understand how to change the filter. However, **corridor tests** and user’s work with the filter at the production did not confirm the doubts. -->
 
-@table-caption Default FilterTrigger states
+Table: Default FilterTrigger states
 
 | State                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                            | Appearance example                  |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
@@ -62,7 +63,7 @@ Use the same margins as other inputs and [buttons](/components/button/#margins_b
 
 ### FilterTrigger with counter
 
-@table-caption States of FilterTrigger for advanced filters
+Table: States of FilterTrigger for advanced filters
 
 | State                          | Description                                                                                                                                                         | Appearance example                  |
 | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
@@ -103,7 +104,3 @@ If the value is complex, it is acceptable to display only the **{Filter Name}** 
 
 You can find more details on writing numbers and periods in English in the [text guide provided by UX writers](https://docs.google.com/document/d/1HZHNKEW-5k0PqvgDaIWBgu8NWyRr3rM4xCm-725PoUU/edit#heading=h.iue5c2168b0n) (it is available for Semrush employees only).
 
-@page filter-trigger-a11y
-@page filter-trigger-api
-@page filter-trigger-code
-@page filter-trigger-changelog

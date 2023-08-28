@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: grid
+tabs: Grid and page layout('grid-system'), API('grid-api'), Grid system('grid-code'), Changelog('grid-changelog')
 ---
 
 ## Row
@@ -10,7 +11,11 @@ import { Row } from '@semcore/ui/grid';
 <Row />;
 ```
 
-@typescript RowProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="RowProps" :types={...types} />
 
 ## Col
 
@@ -19,4 +24,4 @@ import { Col } from '@semcore/ui/grid';
 <Col />;
 ```
 
-@typescript ColProps
+<TypesView type="ColProps" :types={...types} />

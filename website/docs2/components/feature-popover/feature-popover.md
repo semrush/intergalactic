@@ -2,6 +2,7 @@
 title: FeaturePopover
 fileSource: feature-popover
 tabName: Design
+tabs: FeaturePopover('feature-popover'), A11y('feature-popover-a11y'), API('feature-popover-api'), Example('feature-popover-code'), Changelog('feature-popover-changelog')
 ---
 
 @import playground
@@ -60,7 +61,7 @@ Two buttons are always placed under the message.
 
 You can use the default illustration, or your own. The illustration should help the user to understand the basic idea of the feature being advertised. It can also be animated if it makes it easier to understand the feature.
 
-@table-caption FeaturePopover illustration sizes
+Table: FeaturePopover illustration sizes
 
 | Illustration size       | Illustration example              |
 | ----------------------- | --------------------------------- |
@@ -69,7 +70,7 @@ You can use the default illustration, or your own. The illustration should help 
 
 ### Styles
 
-@table-caption FeaturePopover default styles
+Table: FeaturePopover default styles
 
 | Element      | Tokens                                                                              |
 | ------------ | ----------------------------------------------------------------------------------- |
@@ -137,7 +138,3 @@ FeaturePopover hides only by clicking on the buttons or the `Close` icon, or by 
 
 Show onboarding only to new users who have never seen it. If the user has already seen onboarding once, don’t show it again to them.
 
-@page feature-popover-a11y
-@page feature-popover-api
-@page feature-popover-code
-@page feature-popover-changelog

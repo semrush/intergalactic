@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: date-picker
+tabs: DatePicker('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
 ---
 
 ## DatePicker and MonthPicker
@@ -13,7 +14,11 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker />;
 ```
 
-@typescript DatePickerProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="DatePickerProps" :types={...types} />
 
 ## DateRangePicker
 
@@ -25,7 +30,7 @@ import { DateRangePicker, MonthRangePicker } from '@semcore/ui/date-picker';
 <MonthRangePicker />;
 ```
 
-@typescript DateRangePickerProps
+<TypesView type="DateRangePickerProps" :types={...types} />
 
 ## DatePicker.Trigger and DateRangePicker.Trigger
 
@@ -36,7 +41,7 @@ import { DatePicker } from '@semcore/ui/date-picker';
 <DatePicker.Trigger />;
 ```
 
-@typescript BaseTriggerProps
+<TypesView type="BaseTriggerProps" :types={...types} />
 
 ## DateRangePicker.Period
 
@@ -47,7 +52,7 @@ import { DateRangePicker } from '@semcore/ui/date-picker';
 <DateRangePicker.Period />;
 ```
 
-@typescript DateRangePickerPeriodProps
+<TypesView type="DateRangePickerPeriodProps" :types={...types} />
 
 ## Calendar
 
@@ -59,7 +64,7 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker.Calendar />;
 ```
 
-@typescript CalendarProps
+<TypesView type="CalendarProps" :types={...types} />
 
 ## Calendar.Unit
 
@@ -71,4 +76,4 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker.Calendar.Unit />;
 ```
 
-@typescript CalendarUnitProps
+<TypesView type="CalendarUnitProps" :types={...types} />

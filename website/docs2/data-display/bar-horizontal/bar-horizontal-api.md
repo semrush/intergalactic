@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
+tabs: Horizontal bar chart('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API
@@ -13,7 +14,11 @@ Horizontal chart Bar.
 import { HorizontalBar } from '@semcore/ui/d3-chart';
 ```
 
-@typescript HorizontalBarProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="HorizontalBarProps" :types={...types} />
 
 ## GroupBar
 
@@ -28,4 +33,4 @@ import { GroupBar } from '@semcore/ui/d3-chart';
 </GroupBar>;
 ```
 
-@typescript GroupBarProps
+<TypesView type="GroupBarProps" :types={...types} />

@@ -2,9 +2,12 @@
 title: Scatterplot chart
 fileSource: d3-chart
 tabName: Design
+tabs: Scatterplot chart('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterplot-chart-api'), Examples('scatterplot-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -14,7 +17,9 @@ This chart type helps to analyze patterns between two variables.
 
 Unlike other types of charts, a scatterplot chart can display trends, clusters, patterns, and relationships in a dataset, especially a very large one. Such charts allow to quickly understand if there is a dependency between the variables or not.
 
-> The scatterplot is arguably the most versatile, polymorphic, and generally useful invention in the history of statistical graphics ( [Journal of the History of the Behavioral Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract), 2005).
+::: tip
+The scatterplot is arguably the most versatile, polymorphic, and generally useful invention in the history of statistical graphics ( [Journal of the History of the Behavioral Sciences](http://onlinelibrary.wiley.com/doi/10.1002/jhbs.20078/abstract), 2005).
+:::
 
 Use a scatterplot chart when you need to show the correlation between two variables in a large dataset. Scatterplots are sometimes called correlation plots because they show how two variables are correlated.
 
@@ -26,7 +31,9 @@ Use a scatterplot chart when you need to show the correlation between two variab
 | If the line runs from top left to bottom right, there is likely a negative correlation between the two variables.                    | ![](static/negative-correlation.png) |
 | If the overall trend doesn't form a clear straight line, there is probably no correlation.                                           | ![](static/no-correlation.png)             |
 
-> Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
+::: tip
+Note that correlation isn't always equal to causation. Other unnoticed variables can influence the data in the chart.
+:::
 
 ## Appearance
 
@@ -119,11 +126,9 @@ Otherwise, it can visually distort the presence of a correlation between the dat
 
 ### Number of datasets
 
-> The more datasets you cram into your scatterplot chart, the harder it is to read.
+::: tip
+The more datasets you cram into your scatterplot chart, the harder it is to read.
+:::
 
 ![](static/categories-yes-no.png)
 
-@page scatterplot-chart-a11y
-@page scatterplot-chart-api
-@page scatterplot-chart-d3-code
-@page d3-chart-changelog

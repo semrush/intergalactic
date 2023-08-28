@@ -42,7 +42,9 @@ The list of categories is sorted:
 - alphabetically (if there are no counters in the list options);
 - by the number of domains (if there are domain counters in the list optons).
 
-> Add search if there are more than 10 categories in the list.
+::: tip
+Add search if there are more than 10 categories in the list.
+:::
 
 Collapse long categories according to the [rules for long URLs](/table-group/table-controls/#a5b913) and add a tooltip to them.
 
@@ -102,7 +104,9 @@ The list of categories is sorted:
 - alphabetically (if there are no counters in the list options);
 - by the number of domains (if there are domain counters in the list optons).
 
-> Add search if there are more than 10 categories in the list.
+::: tip
+Add search if there are more than 10 categories in the list.
+:::
 
 Collapse long categories according to the [rules for long URLs](/table-group/table-controls/#a5b913) and add a tooltip to them.
 
@@ -112,7 +116,9 @@ Select all / Deselect all functionality is optional.
 | ------------------ | -------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------------------------ |
 | Appearance example | ![dropdown without counters](static/without-counter-multiselect.png) | ![dropdown with counters](static/counter-multiselect.png) | ![long category](static/long-category-multiselect.png) |
 
-> The counters in the list are optional, as if there are many filters nearby, it can be difficult to recount data on the fly. Also, if the table is heavy, it can also be difficult to calculate right away. However, if possible, we recommend using counters.
+::: tip
+The counters in the list are optional, as if there are many filters nearby, it can be difficult to recount data on the fly. Also, if the table is heavy, it can also be difficult to calculate right away. However, if possible, we recommend using counters.
+:::
 
 ### Filled trigger
 
@@ -121,7 +127,9 @@ Select all / Deselect all functionality is optional.
 
 The label is required, as without the label it will be difficult for the user to understand what the filter is about.
 
-> Selected categories are always pinned at the very top of the list, as in the [example](/components/select/#sorting_multiselect_options).
+::: tip
+Selected categories are always pinned at the very top of the list, as in the [example](/components/select/#sorting_multiselect_options).
+:::
 
 ### Loading
 
@@ -143,20 +151,24 @@ Show an error in the dropdown with the ability to update the filter if an error 
 
 ## Usage in UX/UI
 
-> Technically, categories don’t have nesting, it is purely visual to distinguish between categories.
->
-> **Example:**
->
-> News > Team Sports > **Baseball** – website with basebal news
->
-> Goods > Sports Goods > **Baseball** – website with baseball goods
+::: tip
+Technically, categories don’t have nesting, it is purely visual to distinguish between categories.
+
+**Example:**
+
+News > Team Sports > **Baseball** – website with basebal news
+
+Goods > Sports Goods > **Baseball** – website with baseball goods
+:::
 
 ### Category abbreviations rules
 
 1. The last part of the category name is the most important, so show it by all means.
 2. Therefore, collapse the category name so that the last part is read in full and the collapsed part starts with >.
 
-> When hovering over the collapsed category name, always show the tooltip with category's full name.
+::: tip
+When hovering over the collapsed category name, always show the tooltip with category's full name.
+:::
 
 ![category ellipsis](static/name-ellipsis.png)
 

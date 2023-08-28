@@ -2,9 +2,12 @@
 title: Radar chart
 fileSource: d3-chart
 tabName: Design
+tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -12,7 +15,9 @@ tabName: Design
 
 It is designed to show similarities, differences, and outliers, or any other item of interest at a glance.
 
-> The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
+::: tip
+The radar chart is also known as web chart, spider chart, spider graph, spider web chart, star chart, star plot, cobweb chart, irregular polygon, polar chart, or Kiviat diagram. It is equivalent to a parallel coordinates plot, with the axes arranged radially.
+:::
 
 **Use radar chart when:**
 
@@ -24,7 +29,9 @@ It is designed to show similarities, differences, and outliers, or any other ite
 
 Radar charts are at their best when used to quickly compare multiple dimensions in a compact space. They can be attention-grabbing, due both to their circular structure and their relative novelty compared to other business graphs, so they can be effective when you need to visually engage your audience. A general audience might find them confusing or intimidating to read without additional guidance (which you can provide – we’ll talk more about that in a later section), but technical audiences might find them intriguing.
 
-> Instead of the radar chart, you can use the parallel coordinates chart. This chart "unwinds" the same data into a straight line, which can make the comparisons across data easier to see.
+::: tip
+Instead of the radar chart, you can use the parallel coordinates chart. This chart "unwinds" the same data into a straight line, which can make the comparisons across data easier to see.
+:::
 
 ### Advantages of radar charts
 
@@ -43,7 +50,9 @@ Their main cons are:
 - Radar charts can create connections where there are none.
 - Radar charts can cause occlusion and confusion.
 
-> Additionally, humans recognize and can discern data in shapes like squares, circles, and triangles. Therefore, from a psychological standpoint, the random nature of radar chart shapes makes them less useful than known and quantifiable shapes.
+::: tip
+Additionally, humans recognize and can discern data in shapes like squares, circles, and triangles. Therefore, from a psychological standpoint, the random nature of radar chart shapes makes them less useful than known and quantifiable shapes.
+:::
 
 ## Appearance
 
@@ -70,9 +79,11 @@ You can turn off grid ticks and labels if needed. It can be helpful for small-si
 
 You can curve polygons (data sets), if needed.
 
-> To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
->
-> You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+::: tip
+To get smoothed lines, you need to transfer curve with the required rounding method to the chart. Just like in Line chart.
+
+You can find all available methods in the [d3 Curves documentation](https://github.com/d3/d3-shape#curves).
+:::
 
 ![Radar chart with curved polygons as data sets.](static/curved-radar-1.png)
 
@@ -250,5 +261,3 @@ If there are multiple data series, the filled-in color should be transparent.
 
 ![](static/multiple-sets-yes-no.png)
 
-@page radar-chart-api
-@page radar-chart-code

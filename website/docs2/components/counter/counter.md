@@ -2,6 +2,7 @@
 title: Counter
 fileSource: counter
 tabName: Design
+tabs: Counter('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
 @import playground
@@ -18,13 +19,15 @@ It is used in various components such as:
 - table headers,
 - etc.
 
-> Counter is a static component and shouldn't be clickable.
+::: tip
+Counter is a static component and shouldn't be clickable.
+:::
 
 ## Themes
 
 The appropriate theme for a counter varies based on its context and the component it is located in or near.
 
-@table-caption Counter themes
+Table: Counter themes
 
 | Theme     | Appearance examples      | Styles    | Usage           |
 | --------- | ------------------------ | --------- | --------------- |
@@ -58,7 +61,7 @@ The counter should always be positioned to the right of other interface elements
 
 Use a counter to display an element that changes numerically.
 
-@table-caption Counter usage examples
+Table: Counter usage examples
 
 |                      | Examples      | Usage    |
 | -------------------- | ------------- | -------- |
@@ -76,7 +79,3 @@ For notifications, use the [Dot](/components/dot/) component with a counter insi
 
 In a table, a text counter can be used inside a tag to mark or group the data.
 
-@page counter-a11y
-@page counter-api
-@page counter-code
-@page counter-changelog

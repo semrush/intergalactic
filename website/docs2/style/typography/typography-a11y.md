@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Typography('typography'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
 ---
 
 ## Considerations for developers

@@ -1,5 +1,6 @@
 ---
 title: Keyboard support
+tabs: Accessibility('a11y'), Development requirements('a11y-general'), Keyboard support('a11y-keyboard'), Design requirements('a11y-design')
 ---
 
 ## Points to check
@@ -14,17 +15,21 @@ Make sure that it's possible to interact with your interface using a keyboard on
 - Use hotkeys on the website. Avoid overriding hotkeys. For example, don't override `Control+C` (or `Command+C` on Mac).
 - When opening a modal window, focus should move to the window, and then return back to the control that activated the modal.
 
-> Note that the components of the design system already can be operated with the keyboard, and all the sections below about working with the keyboard for specific components and interface elements describes how it already works in design system components. **But everything related to the focus order and using hotkeys, you should always verify in your own interface.**
+::: tip
+Note that the components of the design system already can be operated with the keyboard, and all the sections below about working with the keyboard for specific components and interface elements describes how it already works in design system components. **But everything related to the focus order and using hotkeys, you should always verify in your own interface.**
+:::
 
 ## Basic rules
 
-> **Brief guide to keyboard control**
->
-> - **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc.
-> - **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
-> - **Enter**, **Space** or **↓** **(for the select/menu trigger)** opens a dropdown. And if it has interactive elements inside, `focus` moves to the first one.
-> - `Down Arrow` inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the `Top Arrow`, but backwards 🙃
-> - **Esc** discards choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
+::: tip
+**Brief guide to keyboard control**
+
+- **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc.
+- **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
+- **Enter**, **Space** or **↓** **(for the select/menu trigger)** opens a dropdown. And if it has interactive elements inside, `focus` moves to the first one.
+- `Down Arrow` inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the `Top Arrow`, but backwards 🙃
+- **Esc** discards choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.
+:::
 
 Keyboard control should be performed sequentially across all interactive elements (which have focus) on the page.
 
@@ -42,7 +47,9 @@ Keyboard control should be performed sequentially across all interactive element
 - Links are highlighted with a blue border (see keyboard-focus tokens [Design tokens](/style/design-tokens/#semantic_tokens)).
 - When you press `Enter`, the link is clicked or an action is performed.
 
-> Note that links (anchor elements) are only keyboard operable by default if they have a valid href attribute.
+::: tip
+Note that links (anchor elements) are only keyboard operable by default if they have a valid href attribute.
+:::
 
 ### Button
 
@@ -85,7 +92,9 @@ Keyboard control should be performed sequentially across all interactive element
 
 Common cases about focus behavior when working with all kind of poppers (dropdown, select, tooltip, etc.) are described below.
 
-> The trigger always has a `tabIndex=0` (even when disabled) or is an input/textarea. The popper always has a `tabIndex=0`.
+::: tip
+The trigger always has a `tabIndex=0` (even when disabled) or is an input/textarea. The popper always has a `tabIndex=0`.
+:::
 
 ## Focus, OnClick and popper
 

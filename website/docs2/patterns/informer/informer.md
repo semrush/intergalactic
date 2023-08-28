@@ -1,6 +1,7 @@
 ---
 title: Informer
 tabName: Design
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
@@ -16,7 +17,9 @@ The informer consists of the following:
 - `Info` icon with `margin-left: 4px`
 - [Tooltip](/components/tooltip/) with a hint message (appears when you hover over the icon)
 
-> The Info icon shouldn't be used with the h1 title. This is usually the title of hero blocks, etc. Hiding hints in an info icon next to the main page's title is strange, isn't it? 😎
+::: tip
+The Info icon shouldn't be used with the h1 title. This is usually the title of hero blocks, etc. Hiding hints in an info icon next to the main page's title is strange, isn't it? 😎
+:::
 
 | Font size                            | Icon size | Use                                                                  |
 | ------------------------------------ | --------- | -------------------------------------------------------------------- |
@@ -57,4 +60,3 @@ In the case when controls have text labels, place Info icon next to the labels.
 
 ![](static/info-with-butt-group.png)
 
-@page informer-code

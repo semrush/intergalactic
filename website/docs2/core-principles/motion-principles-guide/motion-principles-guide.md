@@ -26,7 +26,7 @@ Motion provides a visual response to an action, seamless transitions between sta
 
 ## Durations
 
-@table-caption Durations
+Table: Durations
 
 | Token            | Value   | Usage                                                                                                                             |
 | ---------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------- |

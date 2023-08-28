@@ -2,6 +2,7 @@
 title: Checkbox
 fileSource: checkbox
 tabName: Design
+tabs: Checkbox('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
 @import playground
@@ -32,7 +33,7 @@ Component consists of the following:
 
 Checkbox has two sizes: M and L. The text label is always positioned to the right of the checkbox.
 
-@table-caption Checkbox sizes
+Table: Checkbox sizes
 
 | Size (px)        | Appearance example      |
 | ---------------- | ----------------------- |
@@ -43,7 +44,7 @@ Checkbox has two sizes: M and L. The text label is always positioned to the righ
 
 The spacing between options may differ based on the context in which they are used. To maintain consistency, it's recommended to use margins that are multiples of 4. The default margins are displayed below.
 
-@table-caption Checkbox margins
+Table: Checkbox margins
 
 | Size (px)        | Margins                                         |
 | ---------------- | ----------------------------------------------- |
@@ -54,7 +55,7 @@ The spacing between options may differ based on the context in which they are us
 
 All checkbox sizes can be used with the corresponding text paragraphs.
 
-@table-caption Checkbox with a paragraph of text
+Table: Checkbox with a paragraph of text
 
 | Checkbox size (px) | Paragraph size (px)    | Appearance example                           |
 | ------------------ | ---------------------- | -------------------------------------------- |
@@ -67,7 +68,9 @@ Add an `Info` icon next to the checkbox label to provide more information about 
 
 ![](static/info-icon.png)
 
-> Info icon should have `margin-left: 4px`.
+::: tip
+Info icon should have `margin-left: 4px`.
+:::
 
 ![](static/info-icon-margin.png)
 
@@ -77,7 +80,9 @@ Text label may contain a [Link](/components/link).
 
 ![](static/link.png)
 
-> Note, that the checkbox text active zone shouldn't include a link.
+::: tip
+Note, that the checkbox text active zone shouldn't include a link.
+:::
 
 ![](static/link-hover-zone.png)
 
@@ -90,7 +95,7 @@ Text label may contain a [Link](/components/link).
 
 ### States
 
-@table-caption Checkbox states
+Table: Checkbox states
 
 | State                 | Appearance example                            |
 | --------------------- | --------------------------------------------- |
@@ -118,7 +123,9 @@ If you have a checkbox tree, the top-level checkbox has three states:
 - `checked`;
 - `indeterminate` - this state shows that some options of the tree are selected.
 
-> If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
+::: tip
+If user clicks the checkbox in the `indeterminate` state, all the lower-level checkboxes get `checked` state.
+:::
 
 ![](static/tree.png)
 
@@ -151,7 +158,3 @@ Here are some other checkbox recommendations:
 - For checkbox groups with more than six options, include "Select all" and "Deselect all" controls to save time.
 - When a checkbox is used in a table to select the entire row, make sure the target area covers the entire table cell where the checkbox is located.
 
-@page checkbox-a11y
-@page checkbox-api
-@page checkbox-code
-@page checkbox-changelog

@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: spin-container
+tabs: SpinContainer('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
 ## SpinContainer
@@ -10,7 +11,11 @@ import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
-@typescript SpinContainerProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SpinContainerProps" :types={...types} />
 
 ## SpinContainer.Content
 

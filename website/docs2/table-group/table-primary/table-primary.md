@@ -2,6 +2,7 @@
 title: Primary table
 fileSource: data-table
 tabName: Design
+tabs: Primary table('table-primary'), Example('table-primary-code')
 ---
 
 **Primary** is the basic type of tables for displaying large data volumes and complex functionality.
@@ -18,7 +19,9 @@ You also can make a cell compact simply by using `compact` prop. In this case pa
 
 ## Styles
 
-> Content inside header cells and rows is aligned to the top.
+::: tip
+Content inside header cells and rows is aligned to the top.
+:::
 
 | Description                     | Appearance                                | Styles                                                                        |
 | ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
@@ -51,4 +54,3 @@ In other cases, if there is insufficient space, two lines of text in one cell ca
 
 See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
 
-@page table-primary-code

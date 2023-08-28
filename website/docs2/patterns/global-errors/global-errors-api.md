@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Error message('global-errors'), A11y('global-errors-a11y'), API('global-errors-api'), Example('global-errors-code'), Changelog('global-errors-changelog')
 ---
 
 ## Error
@@ -11,7 +12,11 @@ import Error from '@semcore/ui/errors';
 <Error />;
 ```
 
-@typescript ErrorsProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="ErrorsProps" :types={...types} />
 
 ## Error.Title
 
@@ -49,7 +54,7 @@ import { AccessDenied } from '@semcore/ui/errors';
 <AccessDenied />;
 ```
 
-@typescript AccessDeniedProps
+<TypesView type="AccessDeniedProps" :types={...types} />
 
 ## Maintenance
 
@@ -60,7 +65,7 @@ import { Maintenance } from '@semcore/ui/errors';
 <Maintenance />;
 ```
 
-@typescript MaintenanceProps
+<TypesView type="MaintenanceProps" :types={...types} />
 
 ## PageError
 
@@ -71,7 +76,7 @@ import { PageError } from '@semcore/ui/errors';
 <PageError />;
 ```
 
-@typescript PageErrorProps
+<TypesView type="PageErrorProps" :types={...types} />
 
 ## PageNotFound
 
@@ -82,7 +87,7 @@ import { PageNotFound } from '@semcore/ui/errors';
 <PageNotFound />;
 ```
 
-@typescript PageNotFoundProps
+<TypesView type="PageNotFoundProps" :types={...types} />
 
 ## ProjectNotFound
 
@@ -93,4 +98,4 @@ import { ProjectNotFound } from '@semcore/ui/errors';
 <ProjectNotFound />;
 ```
 
-@typescript ProjectNotFoundProps
+<TypesView type="ProjectNotFoundProps" :types={...types} />

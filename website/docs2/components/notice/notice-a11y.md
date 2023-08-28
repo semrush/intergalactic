@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Notice('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
 ## What component has
@@ -11,7 +12,9 @@ See detailed information about the keyboard support for the all clickable elemen
 
 ### Roles & attributes
 
-> Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
+::: tip
+Note that it is necessary for elements that have attributes such as `aria-live` or `status` to be present before they are used.
+:::
 
 The list below describes roles and attributes that component already has.
 

@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Modal('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
 ---
 
 ## What component has
@@ -25,7 +26,9 @@ You can close the modal window by clicking on the following controls:
 - "Back" in the browser (nothing changes on the parent page);
 - outside the container area.
 
-> When the modal window is closed, the focus should always return to the trigger.
+::: tip
+When the modal window is closed, the focus should always return to the trigger.
+:::
 
 ## Resources
 

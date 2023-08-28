@@ -2,6 +2,7 @@
 title: DatePicker
 fileSource: date-picker
 tabName: Design
+tabs: DatePicker('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
 ---
 
 @import playground
@@ -19,10 +20,12 @@ tabName: Design
 
 Trigger is built on the [Input](/components/input/) component.
 
-> Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
+::: tip
+Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
+:::
 <!-- > _For example: "Mar 4–10, 2022"._ -->
 
-@table-caption Date picker trigger's states and cases
+Table: Date picker trigger's states and cases
 
 | State or case                      | Appearance example                    |
 | ---------------------------------- | ------------------------------------- |
@@ -47,7 +50,9 @@ Trigger is built on the [Input](/components/input/) component.
 
 Date picker selects a single day. Once the day is selected, the dropdown closes and the date in the trigger updates.
 
-> If date has `disabled` state, then nothing should happen after user clicks it.
+::: tip
+If date has `disabled` state, then nothing should happen after user clicks it.
+:::
 
 ![](static/timepicker-norma-opened.png)
 
@@ -113,7 +118,3 @@ You can also add the presets of date ranges for such picker.
 
 ![](static/monthrangepicker-presets.png)
 
-@page date-a11y
-@page date-api
-@page date-code
-@page date-changelog

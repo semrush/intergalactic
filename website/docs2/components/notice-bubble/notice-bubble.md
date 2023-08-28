@@ -2,6 +2,7 @@
 title: NoticeBubble
 fileSource: notice-bubble
 tabName: Design
+tabs: NoticeBubble('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-example'), Changelog('notice-bubble-changelog')
 ---
 
 ## Description
@@ -10,7 +11,7 @@ tabName: Design
 
 Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal](/components/notice-global/) based on the following criteria:
 
-@table-caption Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 | Criteria         | Notice | NoticeBubble | NoticeGlobal |
 | ---------------- | ------ | ------------ | ------------ |
@@ -44,7 +45,7 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 
 ## Types
 
-@table-caption NoticeBubble types
+Table: NoticeBubble types
 
 | Type     | Description | Appearance example |
 | -------- | ----------- | ------------------ |
@@ -53,7 +54,7 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 
 ### Use cases for NoticeBubble types
 
-@table-caption Use cases for NoticeBubble types
+Table: Use cases for NoticeBubble types
 
 | Use case | Description | Appearance example |
 | -------- | ----------- | ------------------ |
@@ -107,7 +108,9 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 
 ### Several notices at a time
 
-> Note that you can choose to show several notices at a time if necessary, but use this option thoughtfully.
+::: tip
+Note that you can choose to show several notices at a time if necessary, but use this option thoughtfully.
+:::
 
 - It is recommended to display only one notification at a time for two primary reasons. Firstly, having multiple messages can hide valuable screen workspace, and secondly, they may scatter the user's focus of attention. If multiple messages are shown simultaneously, there is a likelihood that they will not be read.
 - If several actions are performed simultaneously by the system, they overlap each other in the same way as user actions, so only the last message will be visible.
@@ -122,7 +125,3 @@ Let's compare NoticeBubble with [Notice](/components/notice/) and [NoticeGlobal]
 1. For interfaces that can monitor the network connection themselves, use a notification without a button.
 2. For interfaces that cannot monitor the network connection themselves and require a page refresh, use an alert notification with the "Reload the page" button.
 
-@page notice-bubble-a11y
-@page notice-bubble-api
-@page notice-bubble-example
-@page notice-bubble-changelog

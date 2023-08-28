@@ -2,9 +2,12 @@
 title: Bubble chart
 fileSource: d3-chart
 tabName: Design
+tabs: Bubble chart('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -19,9 +22,11 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 - patterns between data categories.
 - the third or fourth dimension of the data (the size and color of the bubbles, respectively).
 
-> A bubble chart is a variation of a scatterplot chart, but with one or two additional dimensions added to the data (the size and color of the circles, respectively).
->
-> **Note that the more colors you use for the categories, the harder it will be to read the chart.**
+::: tip
+A bubble chart is a variation of a scatterplot chart, but with one or two additional dimensions added to the data (the size and color of the circles, respectively).
+
+**Note that the more colors you use for the categories, the harder it will be to read the chart.**
+:::
 
 ## Appearance
 
@@ -31,7 +36,9 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 - labels for the X and Y axes (don't color them, as this makes the chart harder to read);
 - a legend if the dataset has different categories, each with a different color.
 
-> Make sure to add information on what the bubble size means.
+::: tip
+Make sure to add information on what the bubble size means.
+:::
 
 | Case             | Appearance example                                     | Styles                                                                                                                                                                                                                                                                                                           |
 | ---------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -42,7 +49,9 @@ As the documentation for [Microsoft Office](https://en.wikipedia.org/wiki/Micros
 
 If you need captions for bubbles (in addition to the legend), show captions to the right or left of the bubble. Keep in mind that adding such captions to a data-dense chart can make the chart hard to read.
 
-> Remember to check contrast for the text labels. We don’t recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
+::: tip
+Remember to check contrast for the text labels. We don’t recommend to use light colors from the palette for the Bubble chart data. Use colors with 400 shade and higher, they have the minimum necessary contrast with the white background.
+:::
 
 ![](static/labels.png)
 
@@ -99,7 +108,9 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ### Subheading with additional information
 
-> Accompany the bubble chart with additional information on what determines the size of the circles.
+::: tip
+Accompany the bubble chart with additional information on what determines the size of the circles.
+:::
 
 ![](static/ux-1.png)
 
@@ -120,11 +131,9 @@ The data will be difficult to read and compare.
 
 ### Number of datasets
 
-> The more datasets you cram into your scatterplot chart, the harder it is to read.
+::: tip
+The more datasets you cram into your scatterplot chart, the harder it is to read.
+:::
 
 ![](static/categories-yes-no.png)
 
-@page bubble-chart-a11y
-@page bubble-chart-api
-@page bubble-chart-d3-code
-@page d3-chart-changelog

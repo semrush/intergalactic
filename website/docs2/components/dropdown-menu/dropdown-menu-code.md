@@ -1,16 +1,43 @@
 ---
 title: Example
 fileSource: dropdown-menu
+tabs: DropdownMenu('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Example('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
 ---
 
-> ⚠️ If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/)
+::: warning
+:warning: If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/)
+:::
 
 The component is a wrap over [@semcore/ui/dropdown](/components/dropdown) with the following logic:
 
 - Display of the list of options in a dropdown window
 - Scrolling the list of options using the keyboard
 
-@example basic
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+
+const Demo = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenu.Trigger>
+        <ButtonTrigger>Click me</ButtonTrigger>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Menu>
+        <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 4</DropdownMenu.Item>
+      </DropdownMenu.Menu>
+    </DropdownMenu>
+  );
+}
+</script>
+
+:::
 
 ## Dropdown-menu
 
@@ -25,7 +52,72 @@ We implement it with the help of the combination of two components:
 
 This method is good when you need a flexible content customization in a dropdown menu.
 
-@example popper-list
+::: sandbox
+
+<script lang="tsx">
+import React, { useState } from 'react';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import Button from '@semcore/ui/base-trigger';
+import Link from '@semcore/ui/link';
+import { Text } from '@semcore/ui/typography';
+import Notice from '@semcore/ui/notice';
+import SpinContainer from '@semcore/ui/spin-container';
+import FileExportM from '@semcore/ui/icon/FileExport/m';
+
+const Demo = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = () => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000);
+  };
+
+  return (
+    <DropdownMenu>
+      <DropdownMenu.Trigger>
+        <Button>
+          <Button.Addon>
+            <FileExportM />
+          </Button.Addon>
+          <Button.Text>Export</Button.Text>
+        </Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Popper wMax='257px'>
+        <SpinContainer loading={loading}>
+          <DropdownMenu.List>
+            <DropdownMenu.Item onClick={handleClick}>Excel</DropdownMenu.Item>
+            <DropdownMenu.Item onClick={handleClick}>CSV</DropdownMenu.Item>
+            <DropdownMenu.Item onClick={handleClick}>CSV Semicolon</DropdownMenu.Item>
+          </DropdownMenu.List>
+          <Notice
+            theme='warning'
+            style={{
+              padding: '12px 8px',
+              borderWidth: 0,
+              borderTopWidth: '1px',
+              borderRadius: '0 0 6px 6px',
+            }}
+          >
+            <Notice.Content>
+              <Text tag='strong' mb={1} style={{ display: 'block' }}>
+                Export failed
+              </Text>
+              <Text lineHeight='18px'>
+                If the problem persists, please contact us at{' '}
+                <Link inline href='mailto:feedback@semrush.com'>
+                  feedback@semrush.com
+                </Link>
+              </Text>
+            </Notice.Content>
+          </Notice>
+        </SpinContainer>
+      </DropdownMenu.Popper>
+    </DropdownMenu>
+  );
+}
+</script>
+
+:::
 
 ### The second method
 
@@ -35,7 +127,38 @@ It is appropriate when it is necessary to manage only the content within the opt
 
 `DropdownMenu.Menu` is a wrap over `DropdownMenu.Popper` and `DropdownMenu.List`. All props will fall through to `DropdownMenu.List`.
 
-@example menu
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+
+const Demo = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenu.Trigger>
+        <ButtonTrigger>Click me</ButtonTrigger>
+      </DropdownMenu.Trigger>
+      {/* Adding max-height to the dropdown menu */}
+      <DropdownMenu.Menu hMax={'180px'}>
+        <DropdownMenu.ItemTitle>List heading</DropdownMenu.ItemTitle>
+        <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 4</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 5</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 6</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 7</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 8</DropdownMenu.Item>
+        <DropdownMenu.Item>Item 9</DropdownMenu.Item>
+      </DropdownMenu.Menu>
+    </DropdownMenu>
+  );
+}
+</script>
+
+:::
 
 ## Elements of the list
 
@@ -45,7 +168,30 @@ The component has several variants of list elements layout:
 - `DropdownMenu.ItemTitle`, which is the title of the list (cannot be selected with the keyboard)
 - `DropdownMenu.ItemHint`, which is list subhead or message with additional information (cannot be selected with the keyboard)
 
-@example options
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+
+const Demo = () => {
+  return (
+    <DropdownMenu>
+      <DropdownMenu.Trigger>
+        <ButtonTrigger>I'll show u some options, buddy 😉</ButtonTrigger>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Menu>
+        <DropdownMenu.ItemTitle>I'm title</DropdownMenu.ItemTitle>
+        <DropdownMenu.ItemHint>I'm hint</DropdownMenu.ItemHint>
+        <DropdownMenu.Item>I'm item</DropdownMenu.Item>
+      </DropdownMenu.Menu>
+    </DropdownMenu>
+  );
+}
+</script>
+
+:::
 
 ## Render-function
 
@@ -53,4 +199,66 @@ As with the lower-level components, you can access the component logic by passin
 
 You can see the list of available methods in the [API](/components/dropdown-menu/dropdown-menu-api/#aad4e2).
 
-@example context
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import styled from 'styled-components';
+import DropdownMenu from '@semcore/ui/dropdown-menu';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+
+const Popper = styled.div`
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+  background: #fff;
+  border: 1px solid green;
+  padding: 10px;
+  z-index: 10;
+`;
+
+const ListItem = styled.li`
+  color: ${(props) => (props.highlighted ? 'red' : '#000')};
+`;
+
+const Demo = () => {
+  return (
+    <DropdownMenu>
+      {(props, handlers) => {
+        const {
+          getTriggerProps, // encapsulates Trigger logic
+          getPopperProps, // encapsulates Popper logic
+          getListProps, // encapsulates List logic
+          getItemProps, // // encapsulates Item logic
+        } = props;
+
+        const {
+          visible, // manages internal visibility state
+          highlightedIndex, // controls the internal state of selecting list items from the keyboard
+        } = handlers;
+
+        return (
+          <React.Fragment>
+            <ButtonTrigger {...getTriggerProps()}>Click me</ButtonTrigger>
+            <Popper {...getPopperProps()}>
+              <ul {...getListProps()}>
+                <ListItem {...getItemProps()}>Option 1</ListItem>
+                <ListItem {...getItemProps()}>Option 2</ListItem>
+                <ListItem {...getItemProps()}>Option 3</ListItem>
+                <ListItem {...getItemProps()}>Option 4</ListItem>
+                <ListItem {...getItemProps()}>Option 5</ListItem>
+              </ul>
+              <button type='button' onClick={() => visible(false)}>
+                Close me
+              </button>
+              <button type='button' onClick={() => highlightedIndex(2)}>
+                Highlight item 3
+              </button>
+            </Popper>
+          </React.Fragment>
+        );
+      }}
+    </DropdownMenu>
+  );
+}
+</script>
+
+:::

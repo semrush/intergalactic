@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: input-mask
+tabs: InputMask('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
 ---
 
 ## InputMask
@@ -18,7 +19,11 @@ import InputMask from '@semcore/ui/input-mask';
 <InputMask.Value />;
 ```
 
-@typescript InputMaskValueProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="InputMaskValueProps" :types={...types} />
 
 ## InputMask.Addon
 

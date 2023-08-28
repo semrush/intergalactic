@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: InlineInput('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-example'), Changelog('inline-input-changelog')
 ---
 
 ## InlineInput
@@ -11,7 +12,11 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput />;
 ```
 
-@typescript InlineInputProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="InlineInputProps" :types={...types} />
 
 ## InlineInput.Value
 
@@ -22,7 +27,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.Value />;
 ```
 
-@typescript InlineInputValueProps
+<TypesView type="InlineInputValueProps" :types={...types} />
 
 ## InlineInput.Addon
 
@@ -46,7 +51,7 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.ConfirmControl />;
 ```
 
-@typescript InlineInputConfirmControlProps
+<TypesView type="InlineInputConfirmControlProps" :types={...types} />
 
 ## InlineInput.CancelControl
 
@@ -57,4 +62,4 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput.CancelControl />;
 ```
 
-@typescript InlineInputCancelControlProps
+<TypesView type="InlineInputCancelControlProps" :types={...types} />

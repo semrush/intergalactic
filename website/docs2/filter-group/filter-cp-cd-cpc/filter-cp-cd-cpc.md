@@ -1,9 +1,12 @@
 ---
 title: Click Potential, Competitive Density, CPC
 tabName: Design
+tabs: Click Potential, Competitive Density, CPC('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 ---
 
-> **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+::: tip
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+:::
 
 **These filters are combined in one guide, since they differ only in the sorting parameter and the name.** The principle of work and states are the same.
 
@@ -76,4 +79,3 @@ Validation is described in the [Filter common rules](/filter-group/filter-rules/
 
 "Empty" states is described in the [Filter common rules](/filter-group/filter-rules/).
 
-@page filter-cp-cd-cpc-code

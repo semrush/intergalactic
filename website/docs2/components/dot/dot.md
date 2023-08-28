@@ -2,6 +2,7 @@
 title: Dot
 fileSource: dot
 tabName: Design
+tabs: Dot('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Changelog('dot-changelog')
 ---
 
 @import playground
@@ -10,14 +11,18 @@ tabName: Design
 
 **Dot** is a component that marks updates in the interface. For example, it shows that a new item has appeared in the button, selection, tab, filter, or dropdown menu.
 
-> Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
+::: tip
+Keep in mind that a dot isn’t used to display the status of a feature, new data types, or tabs in the report. It cannot be green, red, blue, or any other color. It can only be orange.
+:::
 
 **You can use it to:**
 
 - draw the user's attention to updated controls and menu items. Clicking an item with a dot will reveal other items marked with a dot.
 - show new notifications, like in a blog.
 
-> Dot must disappear after user clicks/hovers over an item with a dot. See the details of these cases below.
+::: tip
+Dot must disappear after user clicks/hovers over an item with a dot. See the details of these cases below.
+:::
 
 ## Appearance
 
@@ -25,7 +30,7 @@ tabName: Design
 
 The component has two sizes: M and L.
 
-@table-caption Dot sizes
+Table: Dot sizes
 
 | Size                    | Margins | Usage         |
 | ----------------------- | ---------- | ---------------------------------------------------- |
@@ -53,9 +58,11 @@ If dot points to a new element in the list inside the [DropdownMenu](/components
 
 The dot may contain a notification counter, and for more information about this, you can refer to the [Counter](/components/counter) for more information about this case.
 
-> When the dot has a counter, it increases in size accordingly.
+::: tip
+When the dot has a counter, it increases in size accordingly.
+:::
 
-@table-caption Dot with and without a counter
+Table: Dot with and without a counter
 
 |                   | Appearance example                        |
 | ----------------- | ----------------------------------------- |
@@ -68,7 +75,9 @@ If there is one update, show a dot without a counter inside.
 
 If there are more than nine updates, shorten the value displayed in the counter to 9+. When the counter with a large value is used inside the dot, it “grows” only inside the control.
 
-> Note that this behavior isn’t implemented in the component.
+::: tip
+Note that this behavior isn’t implemented in the component.
+:::
 
 ![](static/counter-2.png)
 
@@ -90,7 +99,7 @@ The dot has a standard size, making it compatible with controls of various types
 
 We have two scenarios of how the dot disappears from a component or an item in the list:
 
-@table-caption Interaction with Dot
+Table: Interaction with Dot
 
 |                                             | Conditions under which the dot disappears                     |
 | ------------------------------------------- | ------------------------------------------------------------- |
@@ -99,7 +108,3 @@ We have two scenarios of how the dot disappears from a component or an item in t
 | The dot disappears from an item in the list | after the user **has hovered** a new item of the list.        |
 |                                             | after the user **has clicked** on a new item of the list.     |
 
-@page dot-a11y
-@page dot-api
-@page dot-code
-@page dot-changelog

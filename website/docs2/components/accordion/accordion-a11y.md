@@ -1,13 +1,14 @@
 ---
 title: A11y
 a11y: AA
+tabs: Accordion('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
 ---
 
 ## What component has
 
 ### Keyboard support
 
-@table-caption Keyboard support
+Table: Keyboard support
 
 | Key              | Function                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------- |
@@ -19,7 +20,7 @@ a11y: AA
 
 The list below describes roles and attributes that component already has.
 
-@table-caption Roles and attributes
+Table: Roles and attributes
 
 | Role     | Attribute                 | Element  | Usage                                                                                                                                                                                                                       |
 | -------- | ------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

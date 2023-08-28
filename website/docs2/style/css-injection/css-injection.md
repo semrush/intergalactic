@@ -1,5 +1,6 @@
 ---
 title: CSS Injection
+tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
 ::: warning
@@ -55,5 +56,3 @@ Using this approach, you can publish CSS injections to `NPM` and reuse them late
 
 You can write CSS injections for our components this way with [global use](/style/css-injection/css-injection-global/).
 
-@page css-injection-local
-@page css-injection-global

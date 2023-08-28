@@ -1,14 +1,17 @@
 ---
 title: Content in modal window
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
-> Description of the component for modal windows can be found in the [Modal](/components/modal/).
+::: tip
+Description of the component for modal windows can be found in the [Modal](/components/modal/).
+:::
 
 Here we have compiled recommendations for content styles in modal windows.
 
 ## Margins
 
-@table-caption Margins for the content of the modal window
+Table: Margins for the content of the modal window
 
 | Margin                                             | Appearance example                         |
 | -------------------------------------------------- | ------------------------------------------ |

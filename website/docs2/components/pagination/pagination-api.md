@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Pagination('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
 ## Pagination
@@ -9,7 +10,11 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
-@typescript PaginationProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="PaginationProps" :types={...types} />
 
 ## Pagination.FirstPage
 
@@ -36,7 +41,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput />;
 ```
 
-@typescript PageInputProps
+<TypesView type="PageInputProps" :types={...types} />
 
 ## Pagination.PageInput.Value
 
@@ -45,7 +50,7 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.PageInput.Value />;
 ```
 
-@typescript InputValueProps
+<TypesView type="InputValueProps" :types={...types} />
 
 ## Pagination.PrevPage
 
@@ -63,4 +68,4 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination.TotalPages />;
 ```
 
-@typescript TotalPagesProps
+<TypesView type="TotalPagesProps" :types={...types} />

@@ -2,6 +2,7 @@
 title: Divider
 fileSource: divider
 tabName: Design
+tabs: Divider('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('divider-changelog')
 ---
 
 @import playground
@@ -14,7 +15,7 @@ tabName: Design
 
 Divider has two types: `primary` and `secondary`. Secondary type helps to separate and show the connection between two parts of the content.
 
-@table-caption Divider types
+Table: Divider types
 
 | Type       | Appearance              | Styles                                      |
 | ---------- | ----------------------- | ------------------------------------------- |
@@ -23,7 +24,7 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 
 ## Orientation
 
-@table-caption Divider orientation
+Table: Divider orientation
 
 | Orientation  | Example                         |
 | ------------ | ------------------------------- |
@@ -34,7 +35,7 @@ Divider has two types: `primary` and `secondary`. Secondary type helps to separa
 
 The divider can be used either on a light or dark/colored background.
 
-@table-caption Divider themes
+Table: Divider themes
 
 | Theme   | Appearance                   | Styles                                            |
 | ------- | ---------------------------- | ------------------------------------------------- |
@@ -45,13 +46,10 @@ The divider can be used either on a light or dark/colored background.
 
 The divider separates content visually and semantically, whether it is different or similar in meaning.
 
-@table-caption Divider usage
+Table: Divider usage
 
 | Case    | Example                          |
 | ------- | -------------------------------- |
 | Contact information needs to be visually separated from the form.                                                        | ![](static/use-1.png) |
 | Separate information about a report's data visually from the form, but maintain its connection to the form. | ![](static/use-2.png) |
 
-@page divider-a11y
-@page divider-api
-@page divider-changelog

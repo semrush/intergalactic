@@ -2,6 +2,7 @@
 title: Select / Multiselect
 fileSource: select
 tabName: Design
+tabs: Select / Multiselect('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
 ## Description
@@ -28,7 +29,7 @@ Component consists of the following:
 
 For the select trigger, you can use the following BaseTrigger types:
 
-@table-caption Trigger button types
+Table: Trigger button types
 
 | BaseTrigger type | Appearance example |
 | ---------------- | ------------------ |
@@ -38,7 +39,7 @@ For the select trigger, you can use the following BaseTrigger types:
 
 ### Trigger sizes
 
-@table-caption Trigger button sizes
+Table: Trigger button sizes
 
 | Size | ButtonTrigger         | LinkTrigger      | LinkTrigger with the color of text          |
 | ---- | --------------------- | ---------------- | ------------------------------------------- |
@@ -55,7 +56,7 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 
 ## Trigger states
 
-@table-caption Trigger button states
+Table: Trigger button states
 
 | State         | ButtonTrigger        | LinkTrigger          | LinkTrigger with the color of text    |
 | ------------- | -------------------- | -------------------- | ------------------------------------- |
@@ -72,7 +73,7 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 
 The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/) should be placed in the upper right corner of the trigger.
 
-@table-caption Content types trigger button can have
+Table: Content types trigger button can have
 
 | Element | Button                             | Link as Button                              | Link (as Button) with the color of text                  |
 | ------- | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
@@ -93,7 +94,9 @@ Read about the dropdown list, its content, and states in [DropdownMenu](/compone
 
 If the list includes more than 10 values, add a search input. Otherwise, it will be difficult for the user to navigate among all values.
 
-> The search input should receive the focus state when the user opens the list, helping the user avoid extra clicks.
+::: tip
+The search input should receive the focus state when the user opens the list, helping the user avoid extra clicks.
+:::
 
 ![](static/multiselect-scroll.png)
 
@@ -107,7 +110,7 @@ If you have more than three values, add the "Select all" option at the very begi
 
 In long lists (for example, in the list of countries), the values selected by the user should be pinned to the very top of the list when the user has closed/opened the select.
 
-@table-caption Specific cases for multiselect
+Table: Specific cases for multiselect
 
 | User opens select and starts selecting the items.    | User closes select.    | User has reopened select, and the items they selected are pinned at the very top of the list. When unchecking these items, they remain in the same place. |
 | ------------------------------------------------------- | ---------------------- | -------------------------------------- |
@@ -115,7 +118,7 @@ In long lists (for example, in the list of countries), the values selected by th
 
 ### Displaying the selected values in the trigger
 
-@table-caption States for displaying the selected values in the trigger
+Table: States for displaying the selected values in the trigger
 
 |                                                                                                                                      | Appearance example                                       |
 | ----------------------------- | -------------------------------------------------------- |
@@ -143,11 +146,9 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 - In this case, once the user has selected the required number, all other items should receive the `disabled` state.
 - Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
-> We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.
+::: tip
+We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.
+:::
 
 ![](static/multiselect-limit.png)
 
-@page select-a11y
-@page select-api
-@page select-code
-@page select-changelog

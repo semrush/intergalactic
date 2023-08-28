@@ -1,6 +1,7 @@
 ---
 title: Example
 fileSource: utils
+tabs: Breakpoints('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 ---
 
 ## Simple use
@@ -8,20 +9,101 @@ fileSource: utils
 To use breakpoints in your application, you need to wrap it in a `<Breakpoints />` component.
 And then you can get the value of the media query in any part of your application through the context.
 
-> Resize the window to see the changes.
+::: tip
+Resize the window to see the changes.
+:::
 
-@example simple
+::: sandbox
+
+<script lang="tsx">
+import React, { useContext } from 'react';
+import Breakpoints from '@semcore/ui/breakpoints';
+import Button from '@semcore/ui/button';
+
+const buttonSizes = ['m', 'l'] as const;
+
+const Demo = () => {
+  const index = useContext(Breakpoints.Context);
+
+  return <Button size={buttonSizes[index]}>Button size {buttonSizes[index]}</Button>;
+};
+
+export default () => {
+  return (
+    <Breakpoints>
+      <Demo />
+    </Breakpoints>
+  );
+};
+</script>
+
+:::
 
 ## Manual control
 
 You can use an instance of the `MediaList` class, it has methods `matches`/`addListener`/`removeListener` and `destructor`.
 
-@example manual
+::: sandbox
+
+<script lang="tsx">
+import React, { useEffect, useState } from 'react';
+import Breakpoints from '@semcore/ui/breakpoints';
+import Button from '@semcore/ui/button';
+
+export default () => {
+  const [index, setIndex] = useState(Breakpoints.mediaList.matches());
+
+  useEffect(() => {
+    const unsubscribe = Breakpoints.mediaList.addListener((index) => {
+      setIndex(index);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  return <Button size={(['m', 'l'] as const)[index]}>Button size {['M', 'L'][index]}</Button>;
+};
+</script>
+
+:::
 
 ## Custom media
 
 If you want to create a custom breakpoint component you need to call the `createBreakpoints()` function and pass an array of media queries.
 
-> The 'Breakpoints.mediaList.matches()' will return the intex of the first matching media query. From left to right.
+::: tip
+The 'Breakpoints.mediaList.matches()' will return the intex of the first matching media query. From left to right.
+:::
 
-@example custom
+::: sandbox
+
+<script lang="tsx">
+import React, { useContext } from 'react';
+import { createBreakpoints } from '@semcore/ui/breakpoints';
+
+const MEDIA = [
+  '(max-width: 300px)',
+  '(max-width: 500px)',
+  '(max-width: 700px)',
+  '(max-width: 900px)',
+  '(max-width: 1100px)',
+];
+const Breakpoints = createBreakpoints(MEDIA);
+
+const Demo = () => {
+  const index = useContext(Breakpoints.Context);
+
+  return <div>Media matches "{MEDIA[index] || 'ZOOM WINDOW'}"</div>;
+};
+
+export default () => {
+  return (
+    <Breakpoints>
+      <Demo />
+    </Breakpoints>
+  );
+};
+</script>
+
+:::

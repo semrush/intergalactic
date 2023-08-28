@@ -2,6 +2,7 @@
 title: FullscreenModal
 fileSource: fullscreen-modal
 tabName: Design
+tabs: FullscreenModal('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen-modal-api'), Example('fullscreen-modal-code'), Changelog('fullscreen-modal-changelog')
 ---
 
 ## Description
@@ -40,7 +41,9 @@ For the header of the fullscreen window use the following styles:
 - for return button use button with M size.
 - for window closing icon use `Close` icon with M size.
 
-> Fix the header, while user scrolls the content of the window.
+::: tip
+Fix the header, while user scrolls the content of the window.
+:::
 
 ### Sizes, margins and paddings
 
@@ -63,7 +66,7 @@ If the title of the window is too long, and doesn't fit into the space, collapse
 - For content title use text less than 20px (`--fs-500`) to maintain hierarchy in the content.
 - You can divide content area into several areas. To visually separate them, use `--bg-secondary-neutral` token as a background color for one of them.
 
-@table-caption Content styles for single-zone and dual-zone modal windows
+Table: Content styles for single-zone and dual-zone modal windows
 
 | Single-zone modal window           | Dual-zone modal window             |
 | ---------------------------------- | ---------------------------------- |
@@ -71,7 +74,7 @@ If the title of the window is too long, and doesn't fit into the space, collapse
 
 ### Paddings
 
-@table-caption Paddings for single-zone and dual-zone modal windows
+Table: Paddings for single-zone and dual-zone modal windows
 
 | Single-zone modal window | Dual-zone modal window     |
 | ------------------------ | -------------------------- |
@@ -82,7 +85,7 @@ If the title of the window is too long, and doesn't fit into the space, collapse
 - If there are two columns / zones for content in the modal window, the content inside them should be placed with `align: left`.
 - If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. We also recommend you to use a [default modal window](/components/modal) in this case instead.
 
-@table-caption Content alignment for single-zone and dual-zone modal windows
+Table: Content alignment for single-zone and dual-zone modal windows
 
 | Single-zone modal window  | Dual-zone modal window    |
 | ------------------------- | ------------------------- |
@@ -98,7 +101,9 @@ Footer has the same paddings as the header has.
 
 You can use buttons either M or L size depending on the context of the problem you are solving in such a modal window.
 
-> Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
+::: tip
+Note that the example below shows a default composition of the content. For example, buttons may not be center aligned.
+:::
 
 ![](static/footer-fixed2.png)
 
@@ -111,7 +116,9 @@ Fullscreen modal window can be closed:
 - With the `Esc` button;
 - With the back button in the browser (nothing changes on the parent page in this case).
 
-> When the fullscreen modal window is closed, focus always returns to its trigger.
+::: tip
+When the fullscreen modal window is closed, focus always returns to its trigger.
+:::
 
 ## Edge cases
 
@@ -131,7 +138,3 @@ For error messages use [Widget empty state](/components/widget-empty/) component
 
 ![](static/limit.png)
 
-@page fullscreen-modal-a11y
-@page fullscreen-modal-api
-@page fullscreen-modal-code
-@page fullscreen-modal-changelog

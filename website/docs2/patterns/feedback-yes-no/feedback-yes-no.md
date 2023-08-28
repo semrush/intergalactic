@@ -2,6 +2,7 @@
 title: FeedbackYesNo
 fileSource: feedback-form
 tabName: Design
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
@@ -15,7 +16,9 @@ tabName: Design
 1. The notice is shown simultaneously with the product or report loading.
 2. The notice is shown for the first time in the second session (recommended). Further it is shown until closing or clicking the "Ask me later" button.
 
-> The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
+::: tip
+The session time is determined by the PO or UX of the product. It may be a time interval, the next loading of the page or an update of the company data.
+:::
 
 ## Location
 
@@ -73,7 +76,9 @@ See the detailed description of behavior of the feedback dropdown in [Feedback](
 
 ### Close icon
 
-> It's an optional element.
+::: tip
+It's an optional element.
+:::
 
 Show this element if the report or product has an alternative form for sending feedback (`Send Feedback` link next to the settings).
 
@@ -105,5 +110,3 @@ Show this element if the report or product has an alternative form for sending f
 | Appearance of the [red notice](/components/notice/) on wrong sending | FeedbackYesNo | Error Send          |             |
 | Click email for communication `You can also send us an email...`     | FeedbackYesNo | Click Email Support |             |
 
-@page feedback-yes-no-a11y
-@page feedback-yes-no-code

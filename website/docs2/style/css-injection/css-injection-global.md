@@ -1,5 +1,6 @@
 ---
 title: Global CSS Injection
+tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
 ::: warning
@@ -16,7 +17,9 @@ Install the component you want to restyle and our React Semcore plugin. They're 
 npm i @semcore/babel-plugin-react-semcore
 ```
 
-> ⚠️ **Attention**. Don't process our files with Babel plugins in your code. This may lead to unpredictable results 🤕
+::: warning
+:warning: **Attention**. Don't process our files with Babel plugins in your code. This may lead to unpredictable results 🤕
+:::
 
 ## Step two
 
@@ -60,7 +63,9 @@ Add a new rule to your `webpack-config`:
     }
 ```
 
-> You can also use the name of the package with CSS injections, for example `{ theme: "my-css injection-npm-package" }`.
+::: tip
+You can also use the name of the package with CSS injections, for example `{ theme: "my-css injection-npm-package" }`.
+:::
 
 After that, all the styles created in your CSS injection style directory will be applied to the corresponding components.
 
@@ -68,7 +73,9 @@ After that, all the styles created in your CSS injection style directory will be
 
 ## Versioning
 
-> Versioning is optional, but recommended for your own comfort.
+::: tip
+Versioning is optional, but recommended for your own comfort.
+:::
 
 You can design a CSS injection for different component versions. To do this, create a `versions.json` file and specify the versions and paths to the `.css` files.
 
@@ -95,7 +102,9 @@ An example of the `versions.json` file :
 }
 ```
 
-> Versions follow the [SemVer](https://semver.org/) format, you can also specify `*`.
+::: tip
+Versions follow the [SemVer](https://semver.org/) format, you can also specify `*`.
+:::
 
 ## Note
 

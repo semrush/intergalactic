@@ -2,6 +2,7 @@
 title: ProgressBar
 fileSource: progress-bar
 tabName: Design
+tabs: ProgressBar('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
 @import playground
@@ -10,7 +11,9 @@ tabName: Design
 
 **ProgressBar** is a component used to display the loading status of a long process, typically taking more than 5 seconds, such as collecting keywords or updating mentions.
 
-> This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
+::: tip
+This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
+:::
 
 In general, the progress bar doesn't obstruct the functionality of the product. However, there is an exception during the first launch of the product when the data may be partially displayed or not displayed at all.
 
@@ -24,7 +27,7 @@ ProgressBar consists of two main elements: `ProgressBar` and `ProgressBar.Value`
 
 Our ProgressBar has three sizes.
 
-@table-caption ProgressBar sizes and styles
+Table: ProgressBar sizes and styles
 
 | Size (height in px) | Appearance example   | Border-radius token     | Where to use        |
 | ------------------- | -------------------- | ----------------------- | ------------------- |
@@ -36,7 +39,7 @@ Our ProgressBar has three sizes.
 
 ProgressBar offers two themes: `dark` and `invert`, which are suitable for light and dark/colored backgrounds respectively. Both themes use the `--progress-bar-value` token for color with a gradient pattern to indicate progress.
 
-@table-caption ProgressBar themes
+Table: ProgressBar themes
 
 | Theme  | Appearance example       | Background token            |
 | ------ | ------------------------ | --------------------------- |
@@ -57,7 +60,7 @@ A counter can be added next to the ProgressBar to indicate the number of loaded 
 
 The ProgressBar has three states:
 
-@table-caption ProgressBar states
+Table: ProgressBar states
 
 | State | Appearance example  |
 | ----- | ------------------- |
@@ -67,7 +70,9 @@ The ProgressBar has three states:
 
 The progress bar shouldn't remain in the 100% state. Once the process is completed, either a success message should be displayed, or the user should be provided with further actions.
 
-> If it isn’t possible to perform the action immediately, display the success status and instruct the user on what to do next.
+::: tip
+If it isn’t possible to perform the action immediately, display the success status and instruct the user on what to do next.
+:::
 
 ### Animation
 
@@ -81,7 +86,9 @@ The progress value is always animated with `ease-in`.
 - When you need to visualize a short process, but it is essential to show how much is left until the end of the process, such as uploading multiple files.
 - If the process is long and blocks working with data, but the user needs to know when the process will end.
 
-> In certain cases, you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take or to create the illusion of the user approaching the end of the process.
+::: tip
+In certain cases, you can use an animation without the green bar instead of the progress bar when launching the product. This can be done when you don't know how long the data collection will take or to create the illusion of the user approaching the end of the process.
+:::
 
 ### Pinned ProgressBar
 
@@ -104,7 +111,3 @@ When scrolling, the progress bar can be pinned, remaining visible above all comp
 - If the exact or approximate loading time is unknown, wait for 3 seconds and display the fake progress.
 - For very fast loading, set the minimum time for displaying the progress bar to 3 seconds to avoid interface "blinking."
 
-@page progress-bar-a11y
-@page progress-bar-api
-@page progress-bar-code
-@page progress-bar-changelog

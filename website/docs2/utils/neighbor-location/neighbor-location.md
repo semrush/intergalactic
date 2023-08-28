@@ -2,16 +2,19 @@
 title: NeighborLocation
 fileSource: neighbor-location
 tabName: Design
+tabs: NeighborLocation('neighbor-location'), API('neighbor-location-api'), Changelog('neighbor-location-changelog')
 ---
 
 ::: warning
 :rotating_light: `NeighborLocation` component is deprecated and will be removed in the next releases.
 
 :::
-> Use property `neighborLocation` specification on components.
->
-> We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in
-> React 18's parallel render.
+::: tip
+Use property `neighborLocation` specification on components.
+
+We did this because of the unreliability of the API and the unpredictability of neighbor detection, especially in
+React 18's parallel render.
+:::
 
 ## Description
 
@@ -39,17 +42,119 @@ If you group secondary buttons, the left one will hide it's right border.
 
 ![](static/secondary-buttons-group.png)
 
-> Don’t group tertiary buttons this way.
+::: tip
+Don’t group tertiary buttons this way.
+:::
 
-@example neighbor-location
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Button from '@semcore/ui/button';
+import Divider from '@semcore/ui/divider';
+import { Flex } from '@semcore/ui/flex-box';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+
+const Demo = () => {
+  return (
+    <>
+      <Flex>
+        <Button neighborLocation='right'>left</Button>
+        <Button neighborLocation='both'>center</Button>
+        <Button neighborLocation='left'>right</Button>
+      </Flex>
+      <Divider my={4} />
+      {/* NeighborLocation is DEPRECATED */}
+      <NeighborLocation>
+        <Button>left</Button>
+        <Button>center</Button>
+        <Button>right</Button>
+      </NeighborLocation>
+    </>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Grouped input and button
 
-@example neighbor-location-input
+::: sandbox
+
+<script lang="tsx">
+//https://github.com/semrush/intergalactic/tree/master/website/docs/utils/neighbor-location/examples/neighbor-location-input.tsx
+import React from 'react';
+import Input from '@semcore/ui/input';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+
+const Demo = () => {
+  return (
+    <>
+      <Flex mb={4}>
+        <Input neighborLocation='right' w={200}>
+          <Input.Value placeholder='Placeholder' />
+        </Input>
+        <Button neighborLocation='left'>Button</Button>
+      </Flex>
+      <Flex mb={4}>
+        <Input neighborLocation='right' w={200}>
+          <Input.Value placeholder='Placeholder' />
+        </Input>
+        <Button neighborLocation='left' use='primary'>
+          Button
+        </Button>
+      </Flex>
+      <Flex>
+        <Input neighborLocation='right' w={200}>
+          <Input.Value placeholder='Placeholder' />
+        </Input>
+        <Button neighborLocation='left' use='primary' theme='success'>
+          Button
+        </Button>
+      </Flex>
+    </>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Grouped input and select
 
-@example neighbor-location-input-select
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
+import { Flex } from '@semcore/ui/flex-box';
+
+const Demo = () => {
+  return (
+    <Flex>
+      <Input neighborLocation='right' w={200}>
+        <Input.Value placeholder='Placeholder' />
+      </Input>
+      <Select
+        neighborLocation='left'
+        options={[
+          { value: 'Option 1', children: 'Option 1' },
+          { value: 'Option 2', children: 'Option 2' },
+        ]}
+      />
+    </Flex>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Grouped input, select, and button
 
@@ -57,16 +162,78 @@ You can group input, select, and button.
 
 ![](static/combo.png)
 
-@example neighbor-location-combo
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Input from '@semcore/ui/input';
+import Select from '@semcore/ui/select';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+
+const Demo = () => {
+  return (
+    <Flex>
+      <Input neighborLocation='right' w={200}>
+        <Input.Value placeholder='Placeholder' />
+      </Input>
+      <Select
+        neighborLocation='both'
+        options={[
+          { value: 'Option 1', children: 'Option 1' },
+          { value: 'Option 2', children: 'Option 2' },
+        ]}
+      />
+      <Button neighborLocation='left' use='primary'>
+        Button
+      </Button>
+    </Flex>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Adding a wrapper
 
 By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pass the component tag you want.
 
-> For the correct type mapping in the TC, you must also pass the interface.
-> `<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`
+::: tip
+For the correct type mapping in the TC, you must also pass the interface.
+`<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`
+:::
 
-@example neighbor-location-with-tag
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Button from '@semcore/ui/button';
+import { Flex } from '@semcore/ui/flex-box';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+
+const Demo = () => {
+  return (
+    <>
+      <NeighborLocation tag={Flex} mb={4}>
+        <Button use='primary'>left</Button>
+        <Button use='primary'>center</Button>
+        <Button use='primary'>right</Button>
+      </NeighborLocation>
+      <NeighborLocation tag={Flex}>
+        <Button>left</Button>
+        <Button>center</Button>
+        <Button>right</Button>
+      </NeighborLocation>
+    </>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Using a custom component
 
@@ -74,9 +241,38 @@ You can apply <NeighborLocation/> to your components. You will need to use the c
 and
 then the `neighborLocation` prop will come to your component.
 
-> You can use the render function or the element will be cloned.
+::: tip
+You can use the render function or the element will be cloned.
+:::
 
-@example neighbor-location-with-custom
+::: sandbox
 
-@page neighbor-location-api
-@page neighbor-location-changelog
+<script lang="tsx">
+import React from 'react';
+import NeighborLocation from '@semcore/ui/neighbor-location';
+
+const CustomComponent: React.FC<{ neighborLocation?: string }> = ({ neighborLocation }) => {
+  return <span>{neighborLocation}</span>;
+};
+
+const Demo = () => {
+  return (
+    <NeighborLocation>
+      <NeighborLocation.Detect>
+        {(neighborLocation) => <span>{neighborLocation}</span>}
+      </NeighborLocation.Detect>
+      <NeighborLocation.Detect>
+        {(neighborLocation) => <span> | {neighborLocation} | </span>}
+      </NeighborLocation.Detect>
+      <NeighborLocation.Detect>
+        <CustomComponent />
+      </NeighborLocation.Detect>
+    </NeighborLocation>
+  );
+};
+
+
+</script>
+
+:::
+

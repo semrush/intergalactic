@@ -2,6 +2,7 @@
 title: Error message
 fileSource: errors
 tabName: Design
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
@@ -20,7 +21,9 @@ Composition, styles, and margins of the message:
 
 ![](static/ge_margins.png)
 
-> Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
+::: tip
+Be brief. Don't write too long message in the state description. Two or three small sentences usually are enough.
+:::
 
 ### Margins
 
@@ -353,7 +356,9 @@ There are two possible cases of the pattern's use:
 - As a full-page for the whole website.
 - As a state of the product.
 
-> The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+::: tip
+The location is the same in both cases: the placeholder is centered vertically and horizontally on the page.
+:::
 
 | For the whole website                                | In the product                                             |
 | ---------------------------------------------------- | ---------------------------------------------------------- |
@@ -367,7 +372,3 @@ There are two possible cases of the pattern's use:
    2.2 to take some actions to get rid of this state and load the page: "Reload page" / "Try again" / "Submit".
 3. The "Contact us" button is only used for unexpected error states. In order that the user could contact support and report that something isn’t working.
 
-@page global-errors-a11y
-@page global-errors-api
-@page global-errors-code
-@page global-errors-changelog

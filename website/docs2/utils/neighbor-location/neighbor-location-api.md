@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: neighbor-location
+tabs: NeighborLocation('neighbor-location'), API('neighbor-location-api'), Changelog('neighbor-location-changelog')
 ---
 
 ## NeighborLocation
@@ -13,7 +14,11 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation />;
 ```
 
-@typescript NeighborLocationProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="NeighborLocationProps" :types={...types} />
 
 ## NeighborLocation.Detect
 
@@ -25,4 +30,4 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation.Detect />;
 ```
 
-@typescript NeighborItemProps
+<TypesView type="NeighborItemProps" :types={...types} />

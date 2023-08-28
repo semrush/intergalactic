@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Divider('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('divider-changelog')
 ---
 
 Divider is a decorative component that doesn't require special compliance for accessibility.

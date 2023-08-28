@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: slider
+tabs: Slider('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
 ---
 
 ## Slider
@@ -10,7 +11,11 @@ import Slider from '@semcore/ui/slider';
 <Slider />;
 ```
 
-@typescript SliderProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SliderProps" :types={...types} />
 
 ## Slider.Bar
 

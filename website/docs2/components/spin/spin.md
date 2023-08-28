@@ -2,6 +2,7 @@
 title: Spin
 fileSource: spin
 tabName: Design
+tabs: Spin('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')
 ---
 
 @import playground
@@ -12,13 +13,15 @@ tabName: Design
 
 To display Spin around any component, use [SpinContainer](/components/spin-container/).
 
-> This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
+::: tip
+This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
+:::
 
 ## Sizes and margins
 
 The Spin component comes in six different sizes. The text size should be at least 14px.
 
-@table-caption Spin sizes and margins
+Table: Spin sizes and margins
 
 | Size    | Text below                        | Text on the right                   |
 | ------- | --------------------------------- | ----------------------------------- |
@@ -31,7 +34,9 @@ The Spin component comes in six different sizes. The text size should be at leas
 
 ## Styles
 
-> For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/).
+::: tip
+For recommendations on Spin positioning and indents in blocks and on the page, refer to [SpinContainer](/components/spin-container/).
+:::
 
 You can place text next to the spinner to inform the user that data is being loaded. The text should use the `--text-secondary` token for color, as it is considered a secondary message according to the overall visual hierarchy of the page.
 
@@ -41,7 +46,7 @@ You can place text next to the spinner to inform the user that data is being loa
 
 Spin has two themes: `dark` and `invert` – for use on light and dark/colored backgrounds, respectively. Additionally, you can customize the Spin color as needed.
 
-@table-caption Spin themes
+Table: Spin themes
 
 | Theme    | Appearance example        | Description                                          |
 | -------- | ------------------------- | ---------------------------------------------------- |
@@ -56,6 +61,3 @@ For Spin appearance and disappearance, use an animation with a 300ms delay and `
 
 Remember that the page loading indicator should help the user estimate the interface's response time (specifically how long they should wait for a certain result). Therefore, in cases where the system cannot determine the exact data loading time, we recommend adding an explanatory message next to the spinner, for example:  **Loading...**.
 
-@page spin-a11y
-@page spin-api
-@page spin-changelog

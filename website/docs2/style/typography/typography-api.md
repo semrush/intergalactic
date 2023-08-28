@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Typography('typography'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
 ---
 
 ## Text
@@ -11,7 +12,11 @@ import { Text } from '@semcore/ui/typography';
 <Text />;
 ```
 
-@typescript TextProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TextProps" :types={...types} />
 
 ## List
 
@@ -22,7 +27,7 @@ import { List } from '@semcore/ui/typography';
 <List />;
 ```
 
-@typescript ListProps
+<TypesView type="ListProps" :types={...types} />
 
 ## List.Item
 
@@ -33,7 +38,7 @@ import { List } from '@semcore/ui/typography';
 <List.Item />;
 ```
 
-@typescript ListItemProps
+<TypesView type="ListItemProps" :types={...types} />
 
 ## Blockquote
 
@@ -44,7 +49,7 @@ import { Blockquote } from '@semcore/ui/typography';
 <Blockquote />;
 ```
 
-@typescript BlockquoteProps
+<TypesView type="BlockquoteProps" :types={...types} />
 
 ## Hint
 
@@ -58,17 +63,19 @@ import { Hint } from '@semcore/ui/typography';
 </Hint>;
 ```
 
-@typescript HintProps
+<TypesView type="HintProps" :types={...types} />
 
 ## FormatText
 
 A wrapper component required to add styles to native tags.
 
-> Note that the component is in another package `@semcore/ui/format-text`.
+::: tip
+Note that the component is in another package `@semcore/ui/format-text`.
+:::
 
 ```jsx
 import FormatText from '@semcore/ui/format-text';
 <FormatText />;
 ```
 
-@typescript FormatTextProps
+<TypesView type="FormatTextProps" :types={...types} />

@@ -50,7 +50,7 @@ Example:
 npm i @semcore/ui
 ```
 
-After the installation, all components will be available at `@semcore/ui/{{ component name }}`.
+After the installation, all components will be available at `@semcore/ui/{{component_name}}`.
 
 ### Package system
 

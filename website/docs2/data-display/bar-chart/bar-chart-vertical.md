@@ -1,6 +1,7 @@
 ---
 title: Vertical bar chart
 fileSource: d3-chart
+tabs: Bar chart('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('bar-chart-a11y'), API('bar-chart-api'), Examples('bar-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## Description
@@ -10,7 +11,9 @@ fileSource: d3-chart
 - Time change shall be used when you need to focus on the value of each point, rather than on the trend. _For example, achieving a goal in a specific month, or increasing or decreasing the audience on a specific day._
 - Compare different categories with each other.
 
-> Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
+::: tip
+Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
+:::
 
 ![](/data-display/bar-chart/static/example-2.png)
 
@@ -23,9 +26,11 @@ fileSource: d3-chart
 | One                  | ![](/data-display/bar-chart/static/bar-chart.png)     | The upper part of the column shall have `border-radius: 2px`. |
 | Two                  | ![](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                        |
 
-> If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
->
-> It is also a good solution to allow users to switch the chart type in the widget settings.
+::: tip
+If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
+
+It is also a good solution to allow users to switch the chart type in the widget settings.
+:::
 
 ![](/data-display/bar-chart/static/stacked-bar-chart.png)
 
@@ -49,7 +54,9 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
-> **Zero is also data. 0 ≠ `n/a`.**
+::: tip
+**Zero is also data. 0 ≠ `n/a`.**
+:::
 
 ![](/data-display/bar-chart/static/null-bar-chart.png)
 

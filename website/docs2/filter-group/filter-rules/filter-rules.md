@@ -12,9 +12,11 @@ title: Filter common rules
 - quickly reset the entered data and search again;
 - be able to change data.
 
-> **It is good practice to save the entered/selected value in the filter dropdown if the user haven't saved their selection.**
->
-> For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the entered data when re-opening the filter dropdown. It's not necessary to keep the scroll position.
+::: tip
+**It is good practice to save the entered/selected value in the filter dropdown if the user haven't saved their selection.**
+
+For example, a user opened a filter dropdown, entered something into the search input, but got distracted and accidentally closed the dropdown. In this case, save the entered data when re-opening the filter dropdown. It's not necessary to keep the scroll position.
+:::
 
 ## Appearance
 
@@ -30,7 +32,9 @@ Dropdown has styles of [Dropdown-menu](/components/dropdown-menu/).
 
 ### Preset values
 
-> Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
+::: tip
+Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
+:::
 
 ## Custom range
 
@@ -143,7 +147,9 @@ If the user entered an invalid value (less than minimum, greater than maximum), 
 
 **Keyboard support**
 
-> See all main rules and recommendations in the [Keyboard control](/core-principles/a11y/a11y-keyboard/) guide.
+::: tip
+See all main rules and recommendations in the [Keyboard control](/core-principles/a11y/a11y-keyboard/) guide.
+:::
 
 The shortcut keys `Cmd` + `Enter` (macOS) and `Ctrl` + `Enter` (Windows) apply the filter.
 

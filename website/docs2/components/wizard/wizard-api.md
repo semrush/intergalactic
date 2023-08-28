@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Wizard('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-code'), Changelog('wizard-changelog')
 ---
 
 ## Wizard
@@ -9,7 +10,11 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard />;
 ```
 
-@typescript WizardProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="WizardProps" :types={...types} />
 
 ## Wizard.Sidebar
 
@@ -18,7 +23,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Sidebar />;
 ```
 
-@typescript WizardSidebarProps
+<TypesView type="WizardSidebarProps" :types={...types} />
 
 ## Wizard.Step
 
@@ -27,7 +32,7 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Step />;
 ```
 
-@typescript WizardStepProps
+<TypesView type="WizardStepProps" :types={...types} />
 
 ## Wizard.Stepper
 
@@ -36,4 +41,4 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard.Stepper />;
 ```
 
-@typescript WizardStepperProps
+<TypesView type="WizardStepperProps" :types={...types} />

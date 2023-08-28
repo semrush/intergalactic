@@ -4,9 +4,11 @@ title: For production
 
 Here you will find the solutions to the problems you may encounter while using the @semcore library, as well as some tips for optimizing the library in production.
 
-## ⚠️ СSS extract
+## :warning: СSS extract
 
-> ⚠️ This guide is for updated components using the new style format.
+::: warning
+:warning: This guide is for updated components using the new style format.
+:::
 
 The styles in our library are ready to use and don't require any additional actions. They are applied automatically and added to the head of your application by inserting CSS into JavaScript.
 
@@ -146,6 +148,8 @@ Check your `package.json` for any critical updates by running the following comm
 npx update-by-scope @semcore
 ```
 
-> Eliminating duplicates helps reduce the bundle size by **~30%** on average.
+::: tip
+Eliminating duplicates helps reduce the bundle size by **~30%** on average.
+:::
 
 Use these commands regularly and monitor the size of your bundle with [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) 👀

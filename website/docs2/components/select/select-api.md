@@ -1,9 +1,12 @@
 ---
 title: API
 fileSource: select
+tabs: Select / Multiselect('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
-> `Select` is a wrap over `DropdownMenu` with the addition of new selection features.
+::: tip
+`Select` is a wrap over `DropdownMenu` with the addition of new selection features.
+:::
 
 ## Select
 
@@ -12,7 +15,11 @@ import Select from '@semcore/ui/select';
 <Select />;
 ```
 
-@typescript SelectProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SelectProps" :types={...types} />
 
 ## Select.Trigger
 
@@ -46,7 +53,7 @@ import Select from '@semcore/ui/select';
 <Select.Option />;
 ```
 
-@typescript SelectOptionProps
+<TypesView type="SelectOptionProps" :types={...types} />
 
 ## Select.OptionHint
 
@@ -69,7 +76,7 @@ import Select from '@semcore/ui/select';
 <Select.OptionCheckbox />;
 ```
 
-@typescript SelectOptionCheckboxProps
+<TypesView type="SelectOptionCheckboxProps" :types={...types} />
 
 ## Select.Option.Checkbox
 

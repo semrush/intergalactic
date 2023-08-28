@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: NoticeBubble('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-example'), Changelog('notice-bubble-changelog')
 ---
 
 ## What component has

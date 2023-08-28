@@ -2,6 +2,7 @@
 title: A11y
 fileSource: textarea
 a11y: AA
+tabs: Textarea('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('textarea-code'), Changelog('textarea-changelog')
 ---
 
 ## What component has

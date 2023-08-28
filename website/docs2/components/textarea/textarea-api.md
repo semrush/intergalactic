@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: textarea
+tabs: Textarea('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('textarea-code'), Changelog('textarea-changelog')
 ---
 
 ## Textarea
@@ -12,4 +13,8 @@ import Textarea from '@semcore/ui/textarea';
 <Textarea />;
 ```
 
-@typescript TextareaProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TextareaProps" :types={...types} />

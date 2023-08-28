@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
+tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
 ## Plot
@@ -11,7 +12,11 @@ Root element for all charts.
 import { Plot } from '@semcore/ui/d3-chart';
 ```
 
-@typescript PlotProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="PlotProps" :types={...types} />
 
 ## Axis
 
@@ -27,15 +32,15 @@ import { XAxis, YAxis } from '@semcore/ui/d3-chart';
 </XAxis>;
 ```
 
-@typescript XAxisProps
+<TypesView type="XAxisProps" :types={...types} />
 
-@typescript YAxisProps
+<TypesView type="YAxisProps" :types={...types} />
 
-@typescript AxisTitleProps
+<TypesView type="AxisTitleProps" :types={...types} />
 
-@typescript AxisTicksProps
+<TypesView type="AxisTicksProps" :types={...types} />
 
-@typescript AxisGridProps
+<TypesView type="AxisGridProps" :types={...types} />
 
 ## ResponsiveContainer
 
@@ -45,7 +50,7 @@ Container watch to size block.
 import { ResponsiveContainer } from '@semcore/ui/d3-chart';
 ```
 
-@typescript ResponsiveContainerProps
+<TypesView type="ResponsiveContainerProps" :types={...types} />
 
 ## HoverLine
 
@@ -55,7 +60,7 @@ Component for show line after hover on chart.
 import { HoverLine } from '@semcore/ui/d3-chart';
 ```
 
-@typescript HoverProps
+<TypesView type="HoverProps" :types={...types} />
 
 ## HoverRect
 
@@ -65,4 +70,4 @@ Component for show sector after hover on chart.
 import { HoverRect } from '@semcore/ui/d3-chart';
 ```
 
-@typescript HoverProps
+<TypesView type="HoverProps" :types={...types} />

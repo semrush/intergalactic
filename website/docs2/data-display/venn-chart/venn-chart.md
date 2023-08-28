@@ -2,9 +2,12 @@
 title: Venn chart
 fileSource: d3-chart
 tabName: Design
+tabs: Venn chart('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Examples('venn-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
+::: tip
+Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -14,7 +17,9 @@ tabName: Design
 - The circles overlapping area is called the "intersection area", – it shows data with common qualities from all intersecting sets.
 - This chart type focuses on how much different groups of sets have in common (or how different they are).
 
-> Keep in mind that when comparing more than 2 sets on one chart, the chart may become unreadable.
+::: tip
+Keep in mind that when comparing more than 2 sets on one chart, the chart may become unreadable.
+:::
 
 **When is it better to use a Venn chart?**
 
@@ -22,9 +27,11 @@ tabName: Design
 - When you need to compare two or more data sets, and clearly show what they have in common.
 - When you need to show boolean expressions, such as "or" and "and" expressions.
 
-> John Venn came up with this type of chart around 1880. They were used in the study of set theory as they excellently illustrated the relations of different groups.
->
-> [Venn diagram on datavizproject](https://datavizproject.com/data-type/venn-diagram/)
+::: tip
+John Venn came up with this type of chart around 1880. They were used in the study of set theory as they excellently illustrated the relations of different groups.
+
+[Venn diagram on datavizproject](https://datavizproject.com/data-type/venn-diagram/)
+:::
 
 ## Appearance
 
@@ -38,7 +45,9 @@ In the default state for all circles:
 - Minimum Venn chart size is **180px * 180px**.
 - Maximum Venn chart size is **300px * 300px**.
 
-> It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you shouldn't "enlarge" the report with an unnecessarily large chart.
+::: tip
+It isn’t recommended to make Venn charts smaller or larger than these values, because in the first case, the intersection area may be very small and, consequently, invisible. In the second case, you shouldn't "enlarge" the report with an unnecessarily large chart.
+:::
 
 |                                                     | Appearance example                         |
 | --------------------------------------------------- | ------------------------------------------ |
@@ -139,7 +148,3 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![](static/venn-skeleton.png)
 
-@page venn-chart-a11y
-@page venn-chart-api
-@page venn-chart-d3-code
-@page d3-chart-changelog

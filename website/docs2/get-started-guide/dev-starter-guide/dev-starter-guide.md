@@ -14,7 +14,7 @@ All components are bundled together in a single package, making the installation
 npm i @semcore/ui
 ```
 
-After the installation, you can access each component at `@semcore/ui/{{ component name }}`.
+After the installation, you can access each component at `@semcore/ui/{component_name}`.
 
 ## Key features
 
@@ -50,11 +50,13 @@ You have the ability to change the default styles for your project. We offer [de
 
 Our components are designed to be controlled externally, meaning they do not have an internal state. This grants you complete control over the state and its changes. Each property that can be modified comes with a corresponding handler. For instance, `visible` is a property that you can set for a component, while `onVisibleChange` is the handler to which you subscribe and which is called when `visible` receives a new value.
 
-> This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
->
-> The handlers for these types of properties follow a specific notation: `on{{ eventName }}Change`.
+::: tip
+This logic is similar to the [native input](https://reactjs.org/docs/forms.html#controlled-components) behavior, where you control the value and the `onChange` serves as a request for change. In this case, it's up to you whether to change the value or not.
 
-If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + {{ Property name }}` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
+The handlers for these types of properties follow a specific notation: `on{ eventName }Change`.
+:::
+
+If you choose not to set these properties, the component will operate in an uncontrolled mode. Furthermore, all properties that can be changed have an initial state located in the `default + { Property name }` property, which can be modified by assigning a different value. For example, if a tooltip has a `visible` property that is closed by default, you can set the `defaultVisible={true}` value to have it initially open.
 
 ### Handlers
 
@@ -125,7 +127,9 @@ import { Box } from '@semcore/ui/flex-box';
 <Box tag={Component} />
 ```
 
-> **Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles, and the order of the styles may affect the display.
+::: tip
+**Important!** When you use `Box` this way `(Box tag={Component})`, the component styles merge with `Box` styles, and the order of the styles may affect the display.
+:::
 
 `Box` serves as the foundation for other components, making its features available throughout the entire library. For example:
 
@@ -150,7 +154,7 @@ import { Flex } from '@semcore/ui/flex-box';
 
 To ensure the best performance and user experience, we do not support legacy browsers. Our design system is optimized for the following browser versions:
 
-@table-caption Browser support
+Table: Browser support
 
 | Chrome | Firefox | Safari(macOS) | Safari(iOS) | Edge  |
 | ------ | ------- | ------------- | ----------- | ----- |

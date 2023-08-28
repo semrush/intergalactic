@@ -2,19 +2,24 @@
 title: Stacked horizontal bar chart
 fileSource: d3-chart
 tabName: Design
+tabs: Stacked horizontal bar chart('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
-> **Difference from histogram chart**
->
-> Bar chart displays distribution of data sets by quality categories.
->
-> Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+::: tip
+**Difference from histogram chart**
+
+Bar chart displays distribution of data sets by quality categories.
+
+Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+:::
 
 Important points to keep in mind when presenting data as a bar chart:
 
@@ -59,7 +64,3 @@ Edge cases for stacked bar chart are pretty much the same as [Horizontal bar cha
 
 See detailed information in the section about data loading in the [Horizontal bar chart guide](/data-display/bar-horizontal/#ac26f2).
 
-@page stacked-horizontal-bar-a11y
-@page stacked-horizontal-bar-api
-@page stacked-horizontal-bar-d3-code
-@page d3-chart-changelog

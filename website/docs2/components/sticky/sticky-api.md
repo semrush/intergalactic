@@ -1,9 +1,12 @@
 ---
 title: API
 fileSource: sticky
+tabs: Sticky('sticky'), API('sticky-api'), Changelog('sticky-changelog')
 ---
 
-> This component doesn't work properly inside the iframe.
+::: tip
+This component doesn't work properly inside the iframe.
+:::
 
 ## Sticky
 
@@ -13,4 +16,8 @@ The component is a wrap over CSS `position: sticky`.
 import Sticky from '@semcore/ui/sticky';
 ```
 
-@typescript StickyProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="StickyProps" :types={...types} />

@@ -1,5 +1,6 @@
 ---
 title: Loading states
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
@@ -12,7 +13,9 @@ Components that we use to work with user expectations:
 
 **Use them for different cases.** For a detailed description of each component, see its guide.
 
-> The container that contains the loading message should have margins, so in edge cases (for example, when the user changes the size of the viewport), the container doesn't "stick" to other elements on the page. The margins depend on the component where the loading message is used. They are usually multiple of 4 (for example, for spinner we recommend to use `margin: 40px`).
+::: tip
+The container that contains the loading message should have margins, so in edge cases (for example, when the user changes the size of the viewport), the container doesn't "stick" to other elements on the page. The margins depend on the component where the loading message is used. They are usually multiple of 4 (for example, for spinner we recommend to use `margin: 40px`).
+:::
 
 ## Response from the system
 
@@ -52,7 +55,9 @@ All products should have a delay of `600ms` before the skeleton appears. This is
 - sorting a large amount of data in a widget/table/page;
 - searching the data.
 
-> If the download is fast, you can do without this state.
+::: tip
+If the download is fast, you can do without this state.
+:::
 
 ![](static/spin.png)
 

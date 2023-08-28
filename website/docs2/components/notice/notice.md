@@ -2,11 +2,14 @@
 title: Notice
 fileSource: notice
 tabName: Design
+tabs: Notice('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
 @import playground
 
-> In the update of [version 4.0.0](/components/notice/notice-changelog/#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/). This change was made to enhance their usability.
+::: tip
+In the update of [version 4.0.0](/components/notice/notice-changelog/#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/). This change was made to enhance their usability.
+:::
 
 ## Description
 
@@ -14,7 +17,7 @@ tabName: Design
 
 It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/):
 
-@table-caption Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 | Criteria         | Notice | NoticeBubble | NoticeGlobal |
 | ---------------- | ------ | ------------ | ------------ |
@@ -41,7 +44,7 @@ Component consists of the following:
 
 ## Notice content examples
 
-@table-caption Notice content examples
+Table: Notice content examples
 
 |           | Appearance example |
 | --------- | -------------------|
@@ -65,13 +68,15 @@ The internal paddings of the notice match those of the component it is nested wi
 
 Avoid stretching the text to the full width of the notice, particularly when the notice spans the entire screen width. Fully stretched text is inconvenient to read.
 
-> We recommend to set the maximum width of the notice message to 650-800px.
+::: tip
+We recommend to set the maximum width of the notice message to 650-800px.
+:::
 
 ![](static/notice-text-yes-no.png)
 
 ## Themes
 
-@table-caption Notice themes
+Table: Notice themes
 
 | Theme | Appearance example |
 | ----- | ------------------ |
@@ -86,7 +91,9 @@ Avoid stretching the text to the full width of the notice, particularly when the
 
 If the notice is applicable to the entire product, position it in the product header (below the breadcrumbs) and let it inherit the width of the content section. For more information about paddings and margins, refer to the [ProductHead](/components/product-head/).
 
-> Avoid placing multiple notices on the page simultaneously.
+::: tip
+Avoid placing multiple notices on the page simultaneously.
+:::
 
 ![](static/notice-placement-yes-no.png)
 
@@ -147,7 +154,9 @@ The advertising notice differs from the default notice through the inclusion of 
 
 ![](static/notice-advertising-pic-button.png)
 
-> Please refrain from using an advertising notice for an "empty" state on a page or inside a component.
+::: tip
+Please refrain from using an advertising notice for an "empty" state on a page or inside a component.
+:::
 
 ![](static/notice-no.png)
 
@@ -182,7 +191,3 @@ A notice appearing on top of the interface to indicate the completion of a hidde
 
 ![](static/notice-use-2-yes-no.png)
 
-@page notice-a11y
-@page notice-api
-@page notice-code
-@page notice-changelog

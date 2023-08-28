@@ -2,6 +2,7 @@
 title: InlineInput
 fileSource: inline-input
 tabName: Design
+tabs: InlineInput('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-example'), Changelog('inline-input-changelog')
 ---
 
 ## Description
@@ -14,7 +15,9 @@ tabName: Design
 - data in the interface is placed tightly, you need to save space;
 - transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
 
-> Don’t use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
+::: tip
+Don’t use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
+:::
 
 ## Appearance
 
@@ -55,7 +58,7 @@ Addons are slots inside the input to the left or right of the text for additiona
 - Icon use `--icon-secondary-neutral` token for color, no hover, normal cursor.
 - **Notice the leading addon is underlined too**.
 
-@table-caption Leading addon styles
+Table: Leading addon styles
 
 |                                                               | Appearance example                               | Margins                                                | Icon size and color                             |
 | ------------------------------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ | ----------------------------------------------- |
@@ -77,7 +80,7 @@ The color of the placeholder is the same as a regular input has - `--text-placeh
 Trailing addons are clickable icons to save input and cancel and return to view mode.
 The save icon is always has `--icon-secondary-success` token as color, the cancel icon – `--icon-secondary-neutral`.
 
-@table-caption Trailing addon styles
+Table: Trailing addon styles
 
 |                                                               | Appearance example                                       | Margins                              | Icon size |
 | ------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------ | --------- |
@@ -107,7 +110,7 @@ InlineInput can take on the same states as a [normal input](/components/input/),
 - The user enters data. Either saves the data, or using the cancel button / `Esc` key returns from edit mode to view mode.
 - When focus is lost (for example, the user is distracted by another screen), `onBlur` saves the entered value.
 
-@table-caption InlineInput states
+Table: InlineInput states
 
 | State         | Appearance example                       | Styles                                                                                                                                             |
 | ------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -154,7 +157,3 @@ For a tag that adds another tag, use InlineInput instead of [normal input](/comp
 
 ![](static/inline-tag-yes-no.png)
 
-@page inline-input-a11y
-@page inline-input-api
-@page inline-input-example
-@page inline-input-changelog

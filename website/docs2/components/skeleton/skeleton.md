@@ -2,6 +2,7 @@
 title: Skeleton
 fileSource: skeleton
 tabName: Design
+tabs: Skeleton('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
 ## Description
@@ -9,7 +10,9 @@ tabName: Design
 **Skeleton** is a component used to display the structure of a widget or page when it's initially loading. 
 Its purpose is to provide users with a mental map of the data being loaded.
 
-> This component demonstrates the loading and response to user actions in the interface. 
+::: tip
+This component demonstrates the loading and response to user actions in the interface. 
+:::
 For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
 
 **Use Skeleton for the following cases**
@@ -20,13 +23,15 @@ For general recommendations regarding such components, refer to the [Loading pat
 
 Multiple skeletons can be shown simultaneously or asynchronously during the initial loading of elements.
 
-> It isn't recommended to use Skeleton for pages that are indexed by Google such as blog pages.
+::: tip
+It isn't recommended to use Skeleton for pages that are indexed by Google such as blog pages.
+:::
 
 ## Themes
 
 Skeleton has two themes—`dark` and `invert`–for using on light and dark/colored backgrounds, respectively. All skeleton “bones” have a `border-radius` of 4px.
 
-@table-caption Skeleton themes
+Table: Skeleton themes
 
 | Theme  | Appearance example                     | Styles                                    |
 | ------ | -------------------------------------- | ----------------------------------------- |
@@ -39,7 +44,9 @@ The Skeleton is animated with a content appearance animation lasting 300 ms with
 The Skeleton gradient animation has a default duration of 2000 ms. 
 Animation is applied per data block (widgets, tables, charts) without the need for synchronization between elements.
 
-> If you don't need animation in the Skeleton, you can stop the animation using the `duration="0"` property.
+::: tip
+If you don't need animation in the Skeleton, you can stop the animation using the `duration="0"` property.
+:::
 
 ## What should be skeletonized
 
@@ -99,7 +106,7 @@ Each header is replaced by a "bone" with a height equal to the header's line-hei
 - The header is always replaced by a single line of the skeleton "bone," even if it spans two lines.
 - The width of the "bones" is set to 150px, and it can be increased in rare cases if necessary.
 
-@table-caption Skeleton appearance for all heading levels
+Table: Skeleton appearance for all heading levels
 
 | Heading level   | Appearance example    |
 | --------------- | --------------------- |
@@ -116,7 +123,7 @@ The Skeleton for illustrations depends on their size:
 
 - For small-sized illustrations like user pictures or advertising previews, show a skeleton "bone" corresponding to the illustration size, and immediately replace it with the actual illustration upon loading.
 
-@table-caption Skeleton for small illustrations
+Table: Skeleton for small illustrations
 
 | Step                                 | Appearance example        |
 | ------------------------------------ | ------------------------- |
@@ -125,7 +132,7 @@ The Skeleton for illustrations depends on their size:
 
 - For large-sized illustrations like screenshots on landings or blog pictures, consider using a multi-step loading process. Show small pictures and the Skeleton initially, replace them with text and user pictures, and then load the large image blurred before fully loading it.
   
-@table-caption Skeleton for large illustrations
+Table: Skeleton for large illustrations
 
 | Step                        | Appearance example                |
 | --------------------------- | --------------------------------- |
@@ -146,7 +153,9 @@ For charts, avoid showing axes and labels. Replace the legend with a Skeleton, a
 - If a button or link takes the user to another page, leave them as is during the initial loading of the page/widget.
 - If a button or link submits data or confirms user actions, set them to a `disabled` state while loading.
 
-> When you don’t know what type of button (`primary` or `secondary`) should be loaded, 
+::: tip
+When you don’t know what type of button (`primary` or `secondary`) should be loaded, 
+:::
 show Skeleton instead of the button.
 
 ## Skeleton in complex components
@@ -258,7 +267,3 @@ Otherwise, you'll increase the page load time excessively.
 
 ![](static/count-yes-no.png)
 
-@page skeleton-a11y
-@page skeleton-api
-@page skeleton-code
-@page skeleton-changelog

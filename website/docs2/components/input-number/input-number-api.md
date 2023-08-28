@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: input-number
+tabs: InputNumber & InputRange('input-number'), A11y('input-number-a11y'), API('input-number-api'), Example('input-number-code'), Changelog('input-number-changelog')
 ---
 
 ## InputNumber
@@ -9,7 +10,11 @@ fileSource: input-number
 import InputNumber from '@semcore/ui/input-number';
 ```
 
-@typescript InputNumberProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="InputNumberProps" :types={...types} />
 
 ## InputNumber.Value
 
@@ -18,7 +23,7 @@ import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Value />;
 ```
 
-@typescript InputNumberValueProps
+<TypesView type="InputNumberValueProps" :types={...types} />
 
 ## InputNumber.Controls
 
@@ -27,7 +32,7 @@ import InputNumber from '@semcore/ui/input-number';
 <InputNumber.Controls />;
 ```
 
-@typescript InputNumberControlsProps
+<TypesView type="InputNumberControlsProps" :types={...types} />
 
 ## InputNumber.Addon
 

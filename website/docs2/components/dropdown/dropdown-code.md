@@ -1,9 +1,12 @@
 ---
 title: Example
 fileSource: dropdown
+tabs: Dropdown('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
-> ⚠️ If you need to customize your work with a dropdown window, refer to the documentation [@semcore/ui/popper](/utils/popper/)
+::: warning
+:warning: If you need to customize your work with a dropdown window, refer to the documentation [@semcore/ui/popper](/utils/popper/)
+:::
 
 The component is a wrap over [@semcore/ui/popper](/utils/popper/) with styles for a dropdown window.
 
@@ -11,4 +14,19 @@ The component is a wrap over [@semcore/ui/popper](/utils/popper/) with styles fo
 
 The component API is completely identical to [@semcore/ui/popper](/utils/popper/)
 
-@example dropdown
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { ButtonTrigger } from '@semcore/ui/base-trigger';
+import Dropdown from '@semcore/ui/dropdown';
+
+export default () => (
+  <Dropdown>
+    <Dropdown.Trigger tag={ButtonTrigger}>Trigger</Dropdown.Trigger>
+    <Dropdown.Popper p={4}>Content</Dropdown.Popper>
+  </Dropdown>
+);
+</script>
+
+:::

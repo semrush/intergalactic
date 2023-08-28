@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Carousel('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
 ---
 
 ## What component has

@@ -2,6 +2,7 @@
 title: Icon
 fileSource: icon
 tabName: Design
+tabs: Icon('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
 @import icons
@@ -31,7 +32,9 @@ Almost all our icons are drawn in an outline style.
 
 Some icons also have a filled variation. Filled icon can be used to represent an action that has been carried out, such as using a filled star when a post has been “favorited“.
 
-> For the filled version of the icon add **Filled** at the end of the icon name. _For example: Favorite / FavoriteFilled._
+::: tip
+For the filled version of the icon add **Filled** at the end of the icon name. _For example: Favorite / FavoriteFilled._
+:::
 
 ![](static/variations.png)
 
@@ -87,7 +90,9 @@ Don't forget to use a 2px gap between the line and the icon shape.
 
 ## Add an icon to the library
 
-> If you add a new icon to the library, make sure to add it in all necessary sizes at once.
+::: tip
+If you add a new icon to the library, make sure to add it in all necessary sizes at once.
+:::
 
 1. Icons should be “SVG production-ready”, meaning there shouldn’t be more than one shape inside the icon's frame (merged and flattened).
 
@@ -109,7 +114,3 @@ Tagging the icon with synonymic names in both English and Russian helps your col
 
 If you add new icons, make sure to put them in the appropriate group, use the **UppercaseCamelCase** naming, and add tags. Provide those tags to the design system team when adding those icons to the design system.
 
-@page icon-a11y
-@page icon-api
-@page icon-code
-@page icon-changelog

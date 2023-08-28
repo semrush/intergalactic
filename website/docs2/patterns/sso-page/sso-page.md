@@ -19,7 +19,9 @@ SSO from the design point of view consists of the following:
 
 ## The main recommendations on styles
 
-> All variables are taken from a common file with variables in `semcore` 😏
+::: tip
+All variables are taken from a common file with variables in `semcore` 😏
+:::
 
 - `L` size inputs (pills, input fields, checkboxes, buttons, links).
 - Modal window has H4 heading (25px, `--fs-500`). Page with a form has H2 heading (36px, `--fs-700`).
@@ -86,7 +88,9 @@ If the system processes data with a delay, then we hang a [SpinContainer](/compo
 
 If the email that the user entered matches a user that already exists in the system, you will see a message about this: `This user is already registered`.
 
-> For some reason, all Semrush forms now use the danger notification. Although, following the logic of using notifications, there should be a warning notification.
+::: tip
+For some reason, all Semrush forms now use the danger notification. Although, following the logic of using notifications, there should be a warning notification.
+:::
 
 ![form with error](static/error.png)
 
@@ -118,8 +122,10 @@ If the data was sent successfully, we show the user a text prompt to check their
 
 ![form with success](static/success.png)
 
-> We just sent an email with a link to reset your password to the email address you specified.
->
-> Please check your inbox to find instructions. You may need to check your Spam or Junk folder as well.
->
-> If you don't receive an email in the next 24 hours, please contact our support team via contact form or by email at [[email]@semrush.com](mailto:[email]@semrush.com)
+::: tip
+We just sent an email with a link to reset your password to the email address you specified.
+
+Please check your inbox to find instructions. You may need to check your Spam or Junk folder as well.
+
+If you don't receive an email in the next 24 hours, please contact our support team via contact form or by email at [[email]@semrush.com](mailto:[email]@semrush.com)
+:::

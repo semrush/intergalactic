@@ -1,9 +1,12 @@
 ---
 title: Include/Exclude keywords
 tabName: Design
+tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-include-exclude-code')
 ---
 
-> **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+::: tip
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+:::
 
 ## Description
 
@@ -48,7 +51,9 @@ tabName: Design
 
 ## Interaction
 
-> All common rules for working and interacting with filters are described in the [Filter common rules guide](/filter-group/filter-rules/).
+::: tip
+All common rules for working and interacting with filters are described in the [Filter common rules guide](/filter-group/filter-rules/).
+:::
 
 When opening a dropdown texarea immediately gets the focus.
 
@@ -107,11 +112,13 @@ If the names of filters "Include keywords" and "Exclude keywords" don’t fit co
 
 ## Old browsers support
 
-> **Why do we have a separate view of this filter for the older browsers?**
->
-> Some of our users have old browsers, and we want them to be able working in them.
->
-> To make users use this filter, we have a cut version of it.
+::: tip
+**Why do we have a separate view of this filter for the older browsers?**
+
+Some of our users have old browsers, and we want them to be able working in them.
+
+To make users use this filter, we have a cut version of it.
+:::
 
 - For users with a new browser, show errors on the fly and highlight them, and add line numbering with keywords in the input.
 - In the old browser, these convenient things are absent, and the validation applies only after the clicking on "Apply" button.
@@ -129,4 +136,3 @@ Determine that the user has an input in the old browser only at the moment of th
 
 "Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
 
-@page filter-include-exclude-code

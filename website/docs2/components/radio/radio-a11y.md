@@ -2,6 +2,7 @@
 title: A11y
 fileSource: radio
 a11y: AA
+tabs: Radio('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
 ## What component has

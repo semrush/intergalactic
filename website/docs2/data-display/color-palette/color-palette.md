@@ -11,7 +11,9 @@ docs: true
 - If there are several widgets on a page that mention the same entity, then use the same color for the entity in all widgets on the same page.
 - **Keep in mind that green and red are often associated with good and bad, growth and decline.**
 
-> **We recommend using red carefully**. It is usually used for destructive actions and invalid states.
+::: tip
+**We recommend using red carefully**. It is usually used for destructive actions and invalid states.
+:::
 
 ## Chart tokens
 
@@ -94,7 +96,9 @@ This way helps to color your data in a monochromatic way. In this case use token
 
 ## Need more colors?
 
-> The recommended maximum number of colors on a chart is 30.
+::: tip
+The recommended maximum number of colors on a chart is 30.
+:::
 
 30 and more colors are for the really complex cases where you need a large number of colors that will be set for the data by the system.
 

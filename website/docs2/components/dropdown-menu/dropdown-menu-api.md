@@ -1,9 +1,12 @@
 ---
 title: API
 fileSource: dropdown-menu
+tabs: DropdownMenu('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Example('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
 ---
 
-> `DropdownMenu` is a wrap over `Dropdown` with the addition of features for switching options from the keyboard.
+::: tip
+`DropdownMenu` is a wrap over `Dropdown` with the addition of features for switching options from the keyboard.
+:::
 
 ## DropdownMenu
 
@@ -14,7 +17,11 @@ import DropdownMenu from '@semcore/ui/dropdown';
 <DropdownMenu />;
 ```
 
-@typescript DropdownMenuProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="DropdownMenuProps" :types={...types} />
 
 ## DropdownMenu.Trigger
 
@@ -43,7 +50,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.List />;
 ```
 
-@typescript DropdownMenuListProps
+<TypesView type="DropdownMenuListProps" :types={...types} />
 
 ## DropdownMenu.Menu
 
@@ -54,7 +61,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Menu />;
 ```
 
-@typescript DropdownMenuMenuProps
+<TypesView type="DropdownMenuMenuProps" :types={...types} />
 
 ## DropdownMenu.Item
 
@@ -65,7 +72,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.Item />;
 ```
 
-@typescript DropdownMenuItemProps
+<TypesView type="DropdownMenuItemProps" :types={...types} />
 
 ## DropdownMenu.ItemTitle
 
@@ -76,7 +83,7 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.ItemTitle />;
 ```
 
-@typescript DropdownMenuItemTitleProps
+<TypesView type="DropdownMenuItemTitleProps" :types={...types} />
 
 ## DropdownMenu.ItemHint
 
@@ -87,10 +94,10 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 <DropdownMenu.ItemHint />;
 ```
 
-@typescript DropdownMenuItemHintProps
+<TypesView type="DropdownMenuItemHintProps" :types={...types} />
 
 ## Context
 
 Context of the component is available inside the render-function.
 
-@typescript DropdownMenuContext
+<TypesView type="DropdownMenuContext" :types={...types} />

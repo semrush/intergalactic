@@ -2,6 +2,7 @@
 title: TabLine
 fileSource: tab-line
 tabName: Design
+tabs: TabLine('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
 @import playground
@@ -30,7 +31,7 @@ Component consists of the following:
 - The `TabLine.Item` has a `margin-right: var(--spacing-4x)` (except for the `last-child`).
 - Addons before and after the text have a margin of 8px.
 
-@table-caption TabLine sizes and margins
+Table: TabLine sizes and margins
 
 | Size (height in px) | Margins               |
 | ------------------- | --------------------- |
@@ -57,7 +58,7 @@ Use TabLine with border-bottom to visually separate navigation from the content 
 
 Addons inside TabLine.Item have the same margins as addons inside the [Button](/components/button/) component.
 
-@table-caption Examples of addons for TabLine
+Table: Examples of addons for TabLine
 
 | Addon   | Appearance example        |
 | ------- | ------------------------- |
@@ -76,7 +77,7 @@ Addons inside TabLine.Item have the same margins as addons inside the [Button](/
 
 ## Interaction
 
-@table-caption TabLine states
+Table: TabLine states
 
 | State           | Appearance example       | Styles  |
 | --------------- | ------------------------ | ------- |
@@ -104,7 +105,9 @@ TabLine is always placed under the [ProductHead](/components/product-head/) of t
 
 In cases where you have many tabs or there isn't enough space for the full tab text, collapse the text using an `ellipsis`.
 
-> Make sure to add a tooltip with the full text message to such collapsed tabs.
+::: tip
+Make sure to add a tooltip with the full text message to such collapsed tabs.
+:::
 
 ![](static/ellipsis.png)
 
@@ -124,7 +127,3 @@ TabLine can also be used on settings pages and landings to separate information 
 
 The rules for the naming and ordering of items are similar to the [Pills](/components/pills/) component, and the rules for the `disabled` state are also similar to the Pills.
 
-@page tab-line-a11y
-@page tab-line-api
-@page tab-line-code
-@page tab-line-changelog

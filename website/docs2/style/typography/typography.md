@@ -2,6 +2,7 @@
 title: Typography
 fileSource: typography
 tabName: Design
+tabs: Typography('typography'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
 ---
 
 ## Font
@@ -20,7 +21,7 @@ Please use text coloring thoughtfully and avoid excessive use, as it may reduce 
 
 ## Font size and line height
 
-@table-caption Font size and line height
+Table: Font size and line height
 
 | px   | em      | Font size tokens | Line height tokens |
 | ---- | ------- | ---------------- | ------------------ |
@@ -33,7 +34,43 @@ Please use text coloring thoughtfully and avoid excessive use, as it may reduce 
 | 14px | 0.875em | `--fs-200`      | `--lh-200`        |
 | 12px | 0.75em  | `--fs-100`      | `--lh-100`        |
 
-@example text-sizes
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Text } from '@semcore/ui/typography';
+
+export default () => (
+  <div>
+    <Text size={800} tag='p' mb={6} mt={0}>
+      48px / 3em / --fs-800,--lh-800
+    </Text>
+    <Text size={700} tag='p' mb={4} mt={0}>
+      36px / 2.25em / --fs-700,--lh-700
+    </Text>
+    <Text size={600} tag='p' mb={4} mt={0}>
+      32px / 2em / --fs-600,--lh-600
+    </Text>
+    <Text size={500} tag='p' mb={3} mt={0}>
+      24px / 1.5em / --fs-500,--lh-500
+    </Text>
+    <Text size={400} tag='p' mb={2} mt={0}>
+      20px / 1.25em / --fs-400,--lh-400
+    </Text>
+    <Text size={300} tag='p' mb={1} mt={0}>
+      16px / 1em / --fs-300,--lh-300
+    </Text>
+    <Text size={200} tag='p' mb={1} mt={0}>
+      14px / 0.875em / --fs-200,--lh-200
+    </Text>
+    <Text size={100} tag='p' mb={1} mt={0}>
+      12px / 0.75em / --fs-100,--lh-100
+    </Text>
+  </div>
+);
+</script>
+
+:::
 
 ## Heading
 
@@ -41,7 +78,7 @@ Our design system offers six different heading sizes.
 
 The first four headings are typically used for hero blocks, large advertising screens, banners, and landing pages. These headings should use the `semibold` font-weight (`--semi-bold` token).
 
-@table-caption Heading from h1 to h4 levels and styles
+Table: Heading from h1 to h4 levels and styles
 
 |     | Appearance           | Styles                     | Tokens                 |
 | --- | -------------------- | -------------------------- | ---------------------- |
@@ -52,7 +89,7 @@ The first four headings are typically used for hero blocks, large advertising sc
 
 The remaining headings are used for the content part of products and landing pages. For headings with a size of 16px and smaller, use the `bold` font-weight (`--bold` token).
 
-@table-caption Heading from h5 to h6 levels and styles
+Table: Heading from h5 to h6 levels and styles
 
 |     | Appearance           | Styles                                                  | Tokens                |
 | --- | -------------------- | ------------------------------------------------------- | --------------------- |
@@ -69,9 +106,11 @@ In certain cases, headings can include additional information, such as a counter
 
 To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/).
 
-> Only change font styles, not the markup.
+::: tip
+Only change font styles, not the markup.
+:::
 
-@table-caption Heading styles for mobile devices
+Table: Heading styles for mobile devices
 
 | 0px – 768px                        | 768px – ∞                           |
 | ---------------------------------- | ----------------------------------- |
@@ -98,7 +137,28 @@ There are three text sizes commonly used in our products:
 
 ![Paragraph with 12px text has 8px margin-bottom.](static/p-12.png)
 
-@example paragraph
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Text } from '@semcore/ui/typography';
+
+export default () => (
+  <div>
+    <Text size={300} tag='p' mb={4} mt={0}>
+      Paragraph 16px / 1em / --fs-300,--lh-300
+    </Text>
+    <Text size={200} tag='p' mb={3} mt={0}>
+      Paragraph 14px / 0.875em / --fs-200,--lh-200
+    </Text>
+    <Text size={100} tag='p' mb={2} mt={0}>
+      Paragraph 12px / 0.75em / --fs-100,--lh-100
+    </Text>
+  </div>
+);
+</script>
+
+:::
 
 ## Paragraph margins
 
@@ -112,7 +172,7 @@ These margins can also be applied when a paragraph is followed by a paragraph wi
 
 For highlighting metrics in your interface, use the following styles:
 
-@table-caption Font styles for metrics
+Table: Font styles for metrics
 
 | px   | Tokens                | Appearance                  |
 | ---- | --------------------- | --------------------------- |
@@ -122,17 +182,85 @@ For highlighting metrics in your interface, use the following styles:
 | 16px | `--fs-300`, `--lh-300` | ![](static/metric-300.png) |
 | 14px | `--fs-200`, `--lh-200` | ![](static/metric-200.png) |
 
-@example metric
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Text } from '@semcore/ui/typography';
+import { Box } from '@semcore/ui/flex-box';
+
+export default () => (
+  <div>
+    <Text size={600} tag='strong' mb={4} mt={0}>
+      Metric 32px / 2em / --fs-600,--lh-600
+    </Text>
+    <Box h={8} />
+    <Text size={500} tag='strong' mb={3} mt={0}>
+      Metric 24px / 1.5em / --fs-500,--lh-500
+    </Text>
+    <Box h={8} />
+    <Text size={400} tag='strong' mb={2} mt={0}>
+      Metric 20px / 1.25em / --fs-400,--lh-400
+    </Text>
+    <Box h={8} />
+    <Text size={300} tag='strong' mb={1} mt={0}>
+      Metric 16px / 1em / --fs-300,--lh-300
+    </Text>
+    <Box h={8} />
+    <Text size={200} tag='strong' mb={1} mt={0}>
+      Metric 14px / 0.875em / --fs-200,--lh-200
+    </Text>
+  </div>
+);
+</script>
+
+:::
 
 ## Text styles
 
 You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link](/components/link/), a [hint](/style/typography/#hints_hint_links), or applying `strikethrough`.
 
-@example text-emphasis
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Hint, Text } from '@semcore/ui/typography';
+
+export default () => (
+  <div>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text tag='em'>good burger</Text>. Mm-mm-mm.
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text color='green'>good burger</Text>. Mm-mm-mm.
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Hint>good burger</Hint>. Mm-mm-mm.
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0}>
+      But I do love the taste of a <Text tag='s'>good burger</Text>. Mm-mm-mm.
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0} uppercase>
+      uppercase text
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0} capitalize>
+      capitalize text
+    </Text>
+    <Text size={300} tag='p' mb={2} mt={0} lowercase>
+      LOWERCASE TEXT
+    </Text>
+  </div>
+);
+</script>
+
+:::
 
 ## List
 
-@table-caption Font styles for lists
+Table: Font styles for lists
 
 | px  | Tokens | Styles | Numbered list | Unordered list | Check list |
 | --- | ------ | ------ | ------------- | -------------- | ---------- |
@@ -144,7 +272,7 @@ You have the flexibility to change the style of text by making it `bold`, `itali
 
 Each subsequent level of the nested list is indented to the left. The `margin` between list levels for all font sizes are 8px.
 
-@table-caption Font styles for nested lists
+Table: Font styles for nested lists
 
 | px   | Tokens                | Margins                                          |
 | ---- | --------------------- | ------------------------------------------------ |
@@ -166,7 +294,7 @@ Text can be wrapped in a hint link (pseudo-link), creating an inactive control t
 
 ### Hint link states
 
-@table-caption Hint link states
+Table: Hint link states
 
 | State        | Appearance example  | Styles and tokens      | Cursor          |
 | ------------ | ------------------- | ---------------------- | --------------- |
@@ -193,7 +321,3 @@ Text can be wrapped in a hint link (pseudo-link), creating an inactive control t
 
 ![](static/h6-p.png)
 
-@page typography-a11y
-@page typography-api
-@page typography-code
-@page typography-changelog

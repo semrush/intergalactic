@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Icon('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
 ## Icon
@@ -10,4 +11,8 @@ Any icon can be obtained using a template.
 import IconNameSize from '@semcore/ui/icon/iconName/size';
 ```
 
-@typescript IconProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="IconProps" :types={...types} />

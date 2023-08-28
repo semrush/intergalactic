@@ -2,9 +2,12 @@
 title: Design tokens
 fileSource: utils
 tabName: Tokens
+tabs: Design tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
 ---
 
-> Design tokens are available for use from **@semcore/ui@13.5.0** version.
+::: tip
+Design tokens are available for use from **@semcore/ui@13.5.0** version.
+:::
 
 ## Description
 
@@ -73,7 +76,42 @@ Theme for React components subtree may be applied via `<ThemeProvider />`.
 
 `<ThemeProvider />` applies provided tokens on DOM node and handles passing them into React Portal created with `@semcore/portal`.
 
-@example theme-provider -->
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Button from '@semcore/button';
+import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
+
+const violetPrimaryButtonTheme = {
+  '--intergalactic-control-primary-info': '#8649e1',
+  '--intergalactic-control-primary-info-hover': '#5925ab',
+  '--intergalactic-control-primary-info-active': '#5925ab',
+};
+const grayPrimaryButtonTheme = {
+  '--intergalactic-control-primary-info': '#6c6e79',
+  '--intergalactic-control-primary-info-hover': '#484a54',
+  '--intergalactic-control-primary-info-active': '#2b2e38',
+};
+
+const Demo = () => {
+  return (
+    <>
+      <ThemeProvider tokens={violetPrimaryButtonTheme}>
+        <Button use='primary'>Violet primary button theme</Button>
+      </ThemeProvider>
+      <br />
+      <br />
+      <ThemeProvider tokens={grayPrimaryButtonTheme}>
+        <Button use='primary'>Gray primary button theme</Button>
+      </ThemeProvider>
+    </>
+  );
+};
+
+</script>
+
+:::
 
 ## Creating your own theme
 
@@ -96,7 +134,9 @@ Let's take a look at the two main theme creation situations: local and global.
 
 In this case we recommend you using [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files, and it can help you save time trying new values for tokens of your new theme.
 
-> There, you can find the detailed process for creating a new theme for our design system explained: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
+::: tip
+There, you can find the detailed process for creating a new theme for our design system explained: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
+:::
 
 #### **Global theme: you need to develop a theme for the entire design system**
 
@@ -119,6 +159,3 @@ We recommend you to check:
 - [Example for custom component](/style/design-tokens/design-tokens-code/);
 - [CSS Injection guide](/style/css-injection/).
 
-@page design-tokens-usage
-@page design-tokens-usage-development
-@page design-tokens-code

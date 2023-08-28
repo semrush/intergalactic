@@ -2,6 +2,7 @@
 title: Breadcrumbs
 fileSource: breadcrumbs
 tabName: Design
+tabs: Breadcrumbs('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
 @import playground
@@ -22,11 +23,13 @@ Don’t use breadcrumbs on the main pages.
 
 Links inside this component have custom styles.
 
-> The last item in the breadcrumbs is always non-clickable.
+::: tip
+The last item in the breadcrumbs is always non-clickable.
+:::
 
 ![](static/breadcrumbs.png)
 
-@table-caption Breadcrumbs styles
+Table: Breadcrumbs styles
 
 | Element             | Styles                                                                              |
 | ------------------- | ----------------------------------------------------------------------------------- |
@@ -49,7 +52,7 @@ If there isn’t enough place for the breadcrumbs (screen is too small or the te
 
 ![](static/hover.png)
 
-@table-caption Breadcrumbs states
+Table: Breadcrumbs states
 
 | State  | Styles                                                                                    |
 | ------ | ----------------------------------------------------------------------------------------- |
@@ -66,7 +69,3 @@ The recommended order of the navigation levels in the breadcrumbs:
 3. The third link is the **Name of the project**.
 4. The fourth link is the **Name of the product**.
 
-@page breadcrumbs-a11y
-@page breadcrumbs-api
-@page breadcrumbs-code
-@page breadcrumbs-changelog

@@ -10,7 +10,7 @@ We want interfaces to help users solve their problems. Building your interface w
 
 The table lists the main styles of our controls, arranged according to the scale of visual loudness.
 
-@table-caption Controls on the visual loudness scale
+Table: Controls on the visual loudness scale
 
 | Appearance                                 | Type (`use`) and `theme`            | Loudness                                                                                                                                                                                                    | Frequency of use         | When to use                                                                                                                                      |
 | ------------------------------------------ | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |

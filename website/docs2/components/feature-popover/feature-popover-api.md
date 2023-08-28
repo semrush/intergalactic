@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: feature-popover
+tabs: FeaturePopover('feature-popover'), A11y('feature-popover-a11y'), API('feature-popover-api'), Example('feature-popover-code'), Changelog('feature-popover-changelog')
 ---
 
 ## FeaturePopover
@@ -12,7 +13,11 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
-@typescript PopperProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="PopperProps" :types={...types} />
 
 ## FeaturePopover.Trigger
 
@@ -23,7 +28,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Trigger />;
 ```
 
-@typescript PopperTriggerProps
+<TypesView type="PopperTriggerProps" :types={...types} />
 
 ## FeaturePopover.Popper
 
@@ -34,7 +39,7 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Popper />;
 ```
 
-@typescript FeaturePopoverPopperProps
+<TypesView type="FeaturePopoverPopperProps" :types={...types} />
 
 ## FeaturePopover.Spot
 

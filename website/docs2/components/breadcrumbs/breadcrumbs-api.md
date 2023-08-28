@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Breadcrumbs('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
 ## Breadcrumbs
@@ -11,7 +12,11 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs />;
 ```
 
-@typescript BreadcrumbsProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="BreadcrumbsProps" :types={...types} />
 
 ## Breadcrumbs.Item
 
@@ -22,4 +27,4 @@ import Breadcrumbs from '@semcore/ui/breadcrumbs';
 <Breadcrumbs.Item />;
 ```
 
-@typescript BreadcrumbsItemProps
+<TypesView type="BreadcrumbsItemProps" :types={...types} />

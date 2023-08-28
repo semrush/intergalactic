@@ -2,6 +2,7 @@
 title: TimePicker
 fileSource: time-picker
 tabName: Design
+tabs: TimePicker('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
 @import playground
@@ -27,7 +28,7 @@ The component includes [comboboxes](/components/auto-suggest/#Combobox) inside t
 
 If the user needs to choose the time in a 12-hour format, an additional button for switching between AM/PM is provided, eliminating the need for an extra click on the dropdown.
 
-@table-caption TimePicker 24-hour and 12-hour formats
+Table: TimePicker 24-hour and 12-hour formats
 
 | Time format    | Appearance example              |
 | -------------- | ------------------------------- |
@@ -36,7 +37,7 @@ If the user needs to choose the time in a 12-hour format, an additional button f
 
 ## Sizes and paddings
 
-@table-caption TimePicker sizes and paddings
+Table: TimePicker sizes and paddings
 
 | Input size (height in px) | Appearance example                 | Paddings                           |
 | ------------------------- | ---------------------------------- | ---------------------------------- |
@@ -49,7 +50,9 @@ The first combobox is used for selecting hours, while the second one is for sele
 
 Upon focusing on a combobox, a list with all the possible options is opened. When focusing on this group of controls, the input field is highlighted.
 
-> The dropdown with the list is shifted to the left by 9px to accurately align the list items with the combobox figures.
+::: tip
+The dropdown with the list is shifted to the left by 9px to accurately align the list items with the combobox figures.
+:::
 
 ![](static/focus-1.png)
 
@@ -72,7 +75,9 @@ The content of the comboboxes can be exact, up to a minute, or with preset steps
 - In the first case, the combobox step equals one minute, allowing the user to set precise times, such as 13:13.
 - In the second case, the combobox step can be adjusted depending on the required time pre-settings. For example, popular steps may include 00, 15, 30, 45, etc., for minutes.
 
-> Comboboxes content may be both exact, up to a minute, and with the preset step.
+::: tip
+Comboboxes content may be both exact, up to a minute, and with the preset step.
+:::
 
 ## Validation
 
@@ -91,7 +96,3 @@ Validation in this component is required in several cases:
 
 ![](static/validation.png)
 
-@page time-picker-a11y
-@page time-picker-api
-@page time-picker-code
-@page time-picker-changelog

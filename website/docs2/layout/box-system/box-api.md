@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: flex-box
+tabs: Flex-box and spacing system('box-system'), API('box-api'), Changelog('box-changelog')
 ---
 
 ## Box
@@ -12,7 +13,11 @@ import { Box } from '@semcore/ui/flex-box';
 <Box />;
 ```
 
-@typescript BoxProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="BoxProps" :types={...types} />
 
 ## Flex
 
@@ -23,4 +28,4 @@ import { Flex } from '@semcore/ui/flex-box';
 <Flex />;
 ```
 
-@typescript FlexProps
+<TypesView type="FlexProps" :types={...types} />

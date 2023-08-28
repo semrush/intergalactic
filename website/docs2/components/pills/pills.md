@@ -2,6 +2,7 @@
 title: Pills
 fileSource: pills
 tabName: Design
+tabs: Pills('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
 ---
 
 @import playground
@@ -25,7 +26,7 @@ Component consists of the following:
 
 ## Sizes and margins
 
-@table-caption Pills sizes and margins
+Table: Pills sizes and margins
 
 | Size (height in px) | Margins                          |
 | ------------------- | -------------------------------- |
@@ -47,9 +48,11 @@ The default appearance used in most cases across our design system.
 
 ### Adding new item
 
-> This type exists only in design, and the component doesn't cover this case yet.
+::: tip
+This type exists only in design, and the component doesn't cover this case yet.
+:::
 
-@table-caption States for adding new item case in Pills
+Table: States for adding new item case in Pills
 
 | State  | Appearance                          |
 | ------ | ----------------------------------- |
@@ -68,7 +71,7 @@ In some products, pills can act as a block with shared metrics. Their difference
 
 ## Interaction
 
-@table-caption States for Pills
+Table: States for Pills
 
 | State                                  | Appearance example             |
 | -------------------------------------- | ------------------------------ |
@@ -122,7 +125,3 @@ Don’t use a single `Pills.Item`:
 
 ![](static/pills-one-yes-no.png)
 
-@page pills-a11y
-@page pills-api
-@page pills-code
-@page pills-changelog

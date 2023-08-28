@@ -2,9 +2,12 @@
 title: Stacked bar chart
 fileSource: d3-chart
 tabName: Design
+tabs: Stacked bar chart('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-bar-chart-api'), Examples('stacked-bar-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -21,7 +24,9 @@ Important points to keep in mind when presenting data as a Stacked bar chart:
 
 Stacked bar chart has no margin between values inside the column. **Choose contrasting colors for different categories.**
 
-> It is recommended to make a minimum 20% margin between a bars. This is necessary so that the data doesn't turn into a mess.
+::: tip
+It is recommended to make a minimum 20% margin between a bars. This is necessary so that the data doesn't turn into a mess.
+:::
 
 ![stacked bar chart](static/stacked-bar-chart.png)
 
@@ -59,7 +64,3 @@ See detailed information in the section about data loading in the [Bar chart gui
 
 See detailed information in the [Bar chart guide](/data-display/bar-chart/#a1d837).
 
-@page stacked-bar-chart-a11y
-@page stacked-bar-chart-api
-@page stacked-bar-chart-d3-code
-@page d3-chart-changelog

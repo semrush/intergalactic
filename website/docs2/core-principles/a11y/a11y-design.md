@@ -1,5 +1,6 @@
 ---
 title: Design requirements
+tabs: Accessibility('a11y'), Development requirements('a11y-general'), Keyboard support('a11y-keyboard'), Design requirements('a11y-design')
 ---
 
 ## Color and contrast
@@ -49,10 +50,12 @@ Make sure that user can easily understand the meaning and structure of the page 
 
 ![The illustration has two sections: "Don't" on the left and "Good" on the right. In the "Don't" section, there are incorrect HTML tags, such as h4 for "Your first report", h1 for "Group your marketing activities by goals", and h6 for the paragraph that follows. The "Good" side shows the proper usage of HTML tags: h1 for "Your first report", h2 for "Group your marketing activities by goals", and p for the paragraph that follows.](/core-principles/a11y/static/structure.png)
 
-> **Why it's important**
->
-> - It allows users to quickly find the necessary information and solve their cases.
-> - It helps users quickly understand what's happening on the page.
+::: tip
+**Why it's important**
+
+- It allows users to quickly find the necessary information and solve their cases.
+- It helps users quickly understand what's happening on the page.
+:::
 
 **Requirements:**
 
@@ -69,7 +72,9 @@ Make sure that when you zoom in to 200%, the page is still readable and function
 
 People should be also able to increase the size of text to up to 200%. This helps those with partial sight to read your content comfortably. Although this change is implemented in code, it's important to keep it in mind when designing page layouts. Check that the text can flow at a larger size and isn’t limited by a fixed-width or fixed-height layout.
 
-> **Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
+::: tip
+**Why it's important**. It's important for people with poor eyesight and when browsing the site on a mobile device.
+:::
 
 Use adaptive layout to allow the user to choose their preferred scale while preserving the readability of the site. This is especially important for elements that contain small and low-contrast text.
 
@@ -110,7 +115,9 @@ Make sure that your media content (videos, images, etc.) is accessible to hearin
 - Add subtitles and a transcript to your audio and video content to make it accessible to the hard-of-hearing and the users who don't speak the language the content is presented in.
 - Avoid harmful design elements. Make sure that you don't have elements that flash more than three times per second.
 
-> Animated website elements, flickering or flashing logos or ads can cause a seizure in people suffering from photosensitive epilepsy.
+::: tip
+Animated website elements, flickering or flashing logos or ads can cause a seizure in people suffering from photosensitive epilepsy.
+:::
 
 ## Forms
 
@@ -122,20 +129,22 @@ Provide instructions and hints to help users avoid mistakes when filling out a f
 - Let the user know the data format in advance (date, phone number, zip code, etc.). It's also a good practice letting the user know when their Caps Lock button is enabled.
 - Provide clear instructions to help user fix any errors.
 
-> Minimize the need to enter text or search. Whenever possible, enable voice input, text field autocomplete, and previews.
->
-> **Useful resources**
->
-> Web content accessibility guidelines on:
->
-> - [Non-text Content ›](https://www.w3.org/TR/WCAG21/#non-text-content)
-> - [Info and Relationships ›](https://www.w3.org/TR/WCAG21/#info-and-relationships)
-> - [On Focus ›](https://www.w3.org/TR/WCAG21/#on-focus)
-> - [Error Identification ›](https://www.w3.org/TR/WCAG21/#error-identification)
-> - [Labels or Instructions ›](https://www.w3.org/TR/WCAG21/#labels-or-instructions)
-> - [Error Suggestion ›](https://www.w3.org/TR/WCAG21/#error-suggestion)
-> - [Error Prevention ›](https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data)
-> - [Name, Role, Value ›](https://www.w3.org/TR/WCAG21/#name-role-value)
+::: tip
+Minimize the need to enter text or search. Whenever possible, enable voice input, text field autocomplete, and previews.
+
+**Useful resources**
+
+Web content accessibility guidelines on:
+
+- [Non-text Content ›](https://www.w3.org/TR/WCAG21/#non-text-content)
+- [Info and Relationships ›](https://www.w3.org/TR/WCAG21/#info-and-relationships)
+- [On Focus ›](https://www.w3.org/TR/WCAG21/#on-focus)
+- [Error Identification ›](https://www.w3.org/TR/WCAG21/#error-identification)
+- [Labels or Instructions ›](https://www.w3.org/TR/WCAG21/#labels-or-instructions)
+- [Error Suggestion ›](https://www.w3.org/TR/WCAG21/#error-suggestion)
+- [Error Prevention ›](https://www.w3.org/TR/WCAG21/#error-prevention-legal-financial-data)
+- [Name, Role, Value ›](https://www.w3.org/TR/WCAG21/#name-role-value)
+:::
 
 ## Labels and instructions
 
@@ -155,12 +164,14 @@ Make sure that the labels for the elements clearly indicate what will happen whe
 
 ![](/core-principles/a11y/static/instructions.png)
 
-> **Useful resources**
->
-> Web content accessibility guidelines on:
->
-> - [Link Purpose (In Context) ›](https://www.w3.org/TR/WCAG21/#link-purpose-in-context)
-> - [Sensory Characteristics ›](https://www.w3.org/TR/WCAG21/#sensory-characteristics)
+::: tip
+**Useful resources**
+
+Web content accessibility guidelines on:
+
+- [Link Purpose (In Context) ›](https://www.w3.org/TR/WCAG21/#link-purpose-in-context)
+- [Sensory Characteristics ›](https://www.w3.org/TR/WCAG21/#sensory-characteristics)
+:::
 
 ## Touch targets
 
@@ -174,19 +185,23 @@ Make sure that the touch targets of the items are large enough and are easily ac
 
 ![The illustration has two sides; "Don't" on the left and "Good" on the right. The "Don't" side has text that says "You need to click the button to confirm your subscription." In comparison, the "Good" side shows a big blue button labeled "Confirm subscription."](/core-principles/a11y/static/click-zone.png)
 
-> **Useful resources**
->
-> Web content accessibility guidelines on:
->
-> - [Touch Target ›](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
-> - [Touch Target Size and Spacing ›](https://www.w3.org/TR/mobile-accessibility-mapping/#touch-target-size-and-spacing)
-> - [Placing buttons where they are easy to access ›](https://www.w3.org/TR/mobile-accessibility-mapping/#h-placing-buttons-where-they-are-easy-to-access)
+::: tip
+**Useful resources**
+
+Web content accessibility guidelines on:
+
+- [Touch Target ›](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html)
+- [Touch Target Size and Spacing ›](https://www.w3.org/TR/mobile-accessibility-mapping/#touch-target-size-and-spacing)
+- [Placing buttons where they are easy to access ›](https://www.w3.org/TR/mobile-accessibility-mapping/#h-placing-buttons-where-they-are-easy-to-access)
+:::
 
 ## Text readability
 
-> **Why it's important**
->
-> Some of your users may suffer from dyslexia or developmental disorders, making it difficult for them to read and understand complex sentences with rich or wordy expressions. Some of your users might not understand technical terms or slang. Mobile users also have difficulty reading long paragraphs of text.
+::: tip
+**Why it's important**
+
+Some of your users may suffer from dyslexia or developmental disorders, making it difficult for them to read and understand complex sentences with rich or wordy expressions. Some of your users might not understand technical terms or slang. Mobile users also have difficulty reading long paragraphs of text.
+:::
 
 **Requirements**:
 
@@ -196,4 +211,6 @@ Make sure that the touch targets of the items are large enough and are easily ac
 
 - **Avoid idioms**. Try not to use idioms or other expressions whose meaning cannot be easily recognized from the usual meanings of the words that they consist of. For example, an expression like _play the fool_ can be taken literally by users with mental disabilities or those who use a sign language to communicate.
 
-> To learn more, visit the [Readable](https://www.w3.org/TR/WCAG21/#readable) section of the WCAG website.
+::: tip
+To learn more, visit the [Readable](https://www.w3.org/TR/WCAG21/#readable) section of the WCAG website.
+:::

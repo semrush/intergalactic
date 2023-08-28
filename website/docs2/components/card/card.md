@@ -2,9 +2,12 @@
 title: Card
 fileSource: card
 tabName: Design
+tabs: Card('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
-> In the last major update, component was divided into two parts: `Header` and `Body`. It was done to make it easier to use the component. Also, `Card` now has a white background.
+::: tip
+In the last major update, component was divided into two parts: `Header` and `Body`. It was done to make it easier to use the component. Also, `Card` now has a white background.
+:::
 
 ## Description
 
@@ -23,7 +26,7 @@ Component consists of the following:
 
 ## Appearance
 
-@table-caption Card sizes
+Table: Card sizes
 
 | Size  | Example                                      |
 | ----- | -------------------------------------------- |
@@ -52,7 +55,7 @@ The card may have a description. It usually contains an explanation of what the 
 
 ### Paddings
 
-@table-caption Card paddings
+Table: Card paddings
 
 | Case  | Paddings                       |
 | ----- | ------------------------------ |
@@ -75,7 +78,3 @@ By default, the card is non-clickable. But you can use `--box-shadow-card-hover`
 
 ![](static/card-clickable.png)
 
-@page card-a11y
-@page card-api
-@page card-code
-@page card-changelog

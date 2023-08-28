@@ -2,6 +2,7 @@
 title: NoticeGlobal
 fileSource: notice-global
 tabName: Design
+tabs: NoticeGlobal('notice-global'), A11y('notice-global-a11y'), API('notice-global-api'), Example('notice-global-code'), Changelog('notice-global-changelog')
 ---
 
 @import playground
@@ -12,7 +13,7 @@ tabName: Design
 
 To be considered a notice, it must meet four specific criteria. If it fails to meet at least one of these criteria, it cannot be classified as a notice. Let's explore the distinctions between NoticeGlobal and [Notice](/components/notice/) as well as [NoticeBubble](/components/notice-bubble/).
 
-@table-caption Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
+Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
 | Criteria         | Notice | NoticeBubble | NoticeGlobal |
 | ---------------- | ------ | ------------ | ------------ |
@@ -144,7 +145,3 @@ In situations where a user on the site has two or more global messages to displa
 - You can use global notices to notify about the following: website mode (for example, admin), system status (error, failure, end of works).
 - Keep the messages concise, so they don't obscure other widgets or report functionality. Try to convey the message's meaning to users in just one line.
 
-@page notice-global-a11y
-@page notice-global-api
-@page notice-global-code
-@page notice-global-changelog

@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Card('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
 ## Card
@@ -38,7 +39,11 @@ import Card from '@semcore/ui/card';
 <Card.Title />;
 ```
 
-@typescript TitleProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TitleProps" :types={...types} />
 
 ## Card.Description
 

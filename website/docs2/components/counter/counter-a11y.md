@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Counter('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
 Counter component doesn't require any special accessibility considerations, but make sure to include it in the reading order so screen readers can access it. Since it's not interactive, it doesn't need to be in the focus (tab) order.

@@ -2,6 +2,7 @@
 title: ProductHead
 fileSource: product-head
 tabName: Design
+tabs: ProductHead('product-head'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
 ---
 
 ## Description
@@ -66,7 +67,9 @@ If there is a [Notice](/components/notice/) in the header, it has an 8px margin-
 
 ![max element product-head](static/max-info.png)
 
-> When the domain and/or project names are too long and don't fit in the intended place, collapse them into an `ellipsis`. If you have controls on the right, add a “protective” left margin of 24px.
+::: tip
+When the domain and/or project names are too long and don't fit in the intended place, collapse them into an `ellipsis`. If you have controls on the right, add a “protective” left margin of 24px.
+:::
 
 ![title in ellipsis and controls margin](static/ellipsis-and-margin.png)
 
@@ -82,7 +85,3 @@ In these cases, the margin between the row with the product's title and the TabL
 
 ![product-head without filters](static/min-info.png)
 
-@page product-head-a11y
-@page product-head-api
-@page product-head-code
-@page product-head-changelog

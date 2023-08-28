@@ -1,5 +1,6 @@
 ---
 title: Local CSS Injection
+tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
 ::: warning
@@ -59,7 +60,9 @@ const styles = sstyled.css`
 import styles from './custom.shadow.css';
 ```
 
-> ⚠️ The extension `.shadow.css` is required.
+::: warning
+:warning: The extension `.shadow.css` is required.
+:::
 
 ### Step four
 

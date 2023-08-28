@@ -3,6 +3,7 @@ title: D3 chart principles
 fileSource: d3-chart
 tabName: Design
 docs: true
+tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
 ## Chart widget anatomy
@@ -25,7 +26,9 @@ In our interfaces, data is usually placed in [Card](/components/card/), which co
    2. Chart – axes, values and chart itself (`margin-top: 20px`)
    3. Bottom controls (`margin-top: 20px`) – _optional_
 
-> Optional elements mean that their presence depends on the case you are solving in your interface.
+::: tip
+Optional elements mean that their presence depends on the case you are solving in your interface.
+:::
 
 ## Card header
 
@@ -67,7 +70,9 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 
 **Axes** help user navigate the data and relate values to each other.
 
-> Please don't make the additional lines bright and colored – the emphasis should be on the data, not on the grid.
+::: tip
+Please don't make the additional lines bright and colored – the emphasis should be on the data, not on the grid.
+:::
 
 ![axes-scheme](static/axes-scheme.png)
 
@@ -83,7 +88,9 @@ The legend can work as a filter or be unclickable representation of the data. Fo
 
 To make it easier to track changes, use 3-5 additional horizontal guides. Round the values on the axes, like _25K − 20K − 15K − 10K_, instead of using exact values like _24.8K − 20.0K − 15.2K − 10.2K_.
 
-> **The recommended minimum height of the chart is 118px.** For such a chart, it is recommended to display 3 additional horizontal guides. Keep in mind that it can be difficult to read changes on the charts that has such small height.
+::: tip
+**The recommended minimum height of the chart is 118px.** For such a chart, it is recommended to display 3 additional horizontal guides. Keep in mind that it can be difficult to read changes on the charts that has such small height.
+:::
 
 Minimum (small) chart height has 3 additional horizontal guides.
 
@@ -108,7 +115,9 @@ The tooltip appears next to the cursor. It is always located inside the chart co
 - The tooltip can contain the total value.
 - If several charts have the same timeline under each other, then they can be synchronized – when you hover over one of the charts, the hover is triggered on the other. This is quite useful for comparing data.
 
-> As a rule, we don’t put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
+::: tip
+As a rule, we don’t put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
+:::
 
 ### Styles
 
@@ -144,7 +153,9 @@ During initial data loading, the widget displays the [Skeleton](/components/skel
 
 If the chart has a title, it should be displayed during the initial loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-> Note that every chart has it's own skeleton. For more information see guides for every chart type.
+::: tip
+Note that every chart has it's own skeleton. For more information see guides for every chart type.
+:::
 
 ## Edge cases
 
@@ -152,7 +163,3 @@ The particular edge cases differ for different chart types, so see them in the d
 
 General recommendations of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 
-@page d3-chart-code
-@page d3-chart-api
-@page d3-chart-a11y
-@page d3-chart-changelog

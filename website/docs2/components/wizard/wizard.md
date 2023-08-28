@@ -2,6 +2,7 @@
 title: Wizard
 fileSource: wizard
 tabName: Design
+tabs: Wizard('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-code'), Changelog('wizard-changelog')
 ---
 
 ## Description
@@ -32,7 +33,7 @@ Component consists of the following:
 
 ## Sidebar styles
 
-@table-caption Wizard sidebar styles
+Table: Wizard sidebar styles
 
 |           | Appearance example |
 | --------- | ------------------ |
@@ -42,7 +43,7 @@ Component consists of the following:
 
 ## Stepper states
 
-@table-caption Stepper states
+Table: Stepper states
 
 | State    | Appearance example     | Styles      |
 | -------- | ---------------------- | ----------- |
@@ -54,7 +55,7 @@ Component consists of the following:
 
 ## Content area styles
 
-@table-caption Wizard content area styles
+Table: Wizard content area styles
 
 |          | Appearance example |
 | -------- | ------------------ |
@@ -104,9 +105,11 @@ Center the Wizard relative to the user's viewport. And leave margins of 40px out
 
 ## Usage in UX/UI
 
-> For consistent user experience within products of the same platform, use a Wizard for setting up products.
->
-> In exceptional cases, steps can be placed in the content area of the page.
+::: tip
+For consistent user experience within products of the same platform, use a Wizard for setting up products.
+
+In exceptional cases, steps can be placed in the content area of the page.
+:::
 
 Here are some scenarios where a universal solution is recommended:
 
@@ -134,7 +137,3 @@ In the form, use the same sizes for inputs and controls.
 
 If data entered into the form by the user was not sent and the window is closed, save the entered data so that the user doesn't lose it.
 
-@page wizard-a11y
-@page wizard-api
-@page wizard-code
-@page wizard-changelog

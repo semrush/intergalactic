@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: modal
+tabs: Modal('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
 ---
 
 ## Modal
@@ -10,7 +11,11 @@ import Modal from '@semcore/ui/modal';
 <Modal />;
 ```
 
-@typescript ModalProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="ModalProps" :types={...types} />
 
 ## Modal.Overlay
 

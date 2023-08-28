@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: tab-line
+tabs: TabLine('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
 ## TabLine
@@ -12,7 +13,11 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine />;
 ```
 
-@typescript TabLineProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TabLineProps" :types={...types} />
 
 ## TabLine.Item
 
@@ -23,7 +28,7 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item />;
 ```
 
-@typescript TabLineItemProps
+<TypesView type="TabLineItemProps" :types={...types} />
 
 ## TabLine.Item.Addon
 

@@ -2,6 +2,7 @@
 title: TabPanel
 fileSource: tab-panel
 tabName: Design
+tabs: TabPanel('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 @import playground
@@ -36,7 +37,7 @@ Addons before and after the text have a margin of 8px.
 
 Addons inside TabPanel.Item have the same margins as addons inside the [Button](/components/button/) component.
 
-@table-caption Examples of addons for TabPanel
+Table: Examples of addons for TabPanel
 
 | Addon   | Appearance example        |
 | ------- | ------------------------- |
@@ -53,9 +54,11 @@ Addons inside TabPanel.Item have the same margins as addons inside the [Button](
 
 ## Interaction
 
-> We recommend adding links to tabs so that users can open different tabs of the report in separate tabs using the right mouse button if necessary.
+::: tip
+We recommend adding links to tabs so that users can open different tabs of the report in separate tabs using the right mouse button if necessary.
+:::
 
-@table-caption TabPanel states
+Table: TabPanel states
 
 | State           | Appearance     | Styles     |
 | --------------- | -------------- | ---------- |
@@ -70,17 +73,17 @@ Addons inside TabPanel.Item have the same margins as addons inside the [Button](
 
 In cases where you have numerous tabs or there isn't enough space for the full tab text, truncate the text using an `ellipsis`.
 
-> Make sure to add a tooltip with the full text message to such collapsed tabs.
+::: tip
+Make sure to add a tooltip with the full text message to such collapsed tabs.
+:::
 
 ![](static/ellipsis.png)
 
 Additionally, you can collapse the last tabs into a tab with an `Ellipsis` icon.
 
-> By clicking on the last tab with an `ellipsis` in the dropdown, it is possible to display a list of items that did not fit. The selected item from this list is then placed before the tab with the ellipsis.
+::: tip
+By clicking on the last tab with an `ellipsis` in the dropdown, it is possible to display a list of items that did not fit. The selected item from this list is then placed before the tab with the ellipsis.
+:::
 
 ![](static/tab-collapse.png)
 
-@page tab-panel-a11y
-@page tab-panel-api
-@page tab-panel-code
-@page tab-panel-changelog

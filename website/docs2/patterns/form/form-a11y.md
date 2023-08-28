@@ -1,5 +1,6 @@
 ---
 title: A11y
+tabs: Form('form'), A11y('form-a11y'), Example('form-code')
 ---
 
 ## Considerations for developers

@@ -2,6 +2,7 @@
 title: Link
 fileSource: link
 tabName: Design
+tabs: Link('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
 @import playground
@@ -24,7 +25,7 @@ You can add addons before and after the link text. Addons always have a 4px marg
 - The icon should represent the action that will be performed by the link.
 - If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/) component.
 
-@table-caption Link text and addon sizes and margins
+Table: Link text and addon sizes and margins
 
 | Text size                               | Appearance example     | Icon size |
 | --------------------------------------- | ---------------------- | --------- |
@@ -33,7 +34,7 @@ You can add addons before and after the link text. Addons always have a 4px marg
 
 ## Interaction
 
-@table-caption Default link states
+Table: Default link states
 
 | State         | Appearance    | Description     | Cursor    |
 | ------------- | ------------- | --------------- | --------- |
@@ -64,11 +65,13 @@ Default links can be used on a colored background within a [Notice](/components/
 
 ## Link text and target zone
 
-> _Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
->
-> _Links shouldn't be too large on mobile. Very large links that take up much of the viewport can be accidentally activated, such as when a user touches the screen to scroll up or down._
->
-> [Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
+::: tip
+_Link sizes should be generous. Large link sizes make it easier for users with low coordination or on mobile devices to activate links. Link size consideration is most important for links that are not contained within blocks or paragraphs of text, such as call to action links. Links should be at least 44px wide and 22px tall._
+
+_Links shouldn't be too large on mobile. Very large links that take up much of the viewport can be accidentally activated, such as when a user touches the screen to scroll up or down._
+
+[Yale University article about the accessible links](https://usability.yale.edu/web-accessibility/articles/links#other-design-considerations)
+:::
 
 When clicking on a link that leads to another page or opens a modal window, the link text should clearly indicate the type of page or modal window it will be. Use an infinitive form ("What should be done?") for the link text.
 
@@ -109,12 +112,14 @@ For links placed in one line, maintain a margin between them that is a multiple 
 
 ## Default link or Hint link?
 
-> Find detailed information on the hint link in the [Typography guide](/style/typography/#hints_hint_links).
+::: tip
+Find detailed information on the hint link in the [Typography guide](/style/typography/#hints_hint_links).
+:::
 
 - Default link is suitable for internal and external transitions, reloading the page, updating data in a small block/widget, and clickable email.
 - Hint link is recommended for updating data in a table row, opening a modal window, opening a dropdown, opening an accordion, opening the full text on the same page, and tooltip on click/hover.
 
-@table-caption How to choose what type of link you should use
+Table: How to choose what type of link you should use
 
 | Action on the page   | Default link       | Hint link |
 | -------------------- | ------------------ | --------- |
@@ -139,9 +144,11 @@ For links placed in one line, maintain a margin between them that is a multiple 
 
 ## External links
 
-> External links always open in a new tab.
+::: tip
+External links always open in a new tab.
+:::
 
-@table-caption Cases for appearance of external links
+Table: Cases for appearance of external links
 
 | Case description     | Transition inside product | Transition to external resource | Appearance example     |
 | ---- | ------------------------------------------------ | ---------------------- | --------------------------------------------- |
@@ -162,7 +169,3 @@ Avoid using the link component for text that doesn't lead to another page or per
 
 ![](static/yes-no-link.png)
 
-@page link-a11y
-@page link-api
-@page link-code
-@page link-changelog

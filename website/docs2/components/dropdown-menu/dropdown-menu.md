@@ -2,6 +2,7 @@
 title: DropdownMenu
 fileSource: dropdown-menu
 tabName: Design
+tabs: DropdownMenu('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-api'), Example('dropdown-menu-code'), Changelog('dropdown-menu-changelog')
 ---
 
 ## Description
@@ -12,7 +13,7 @@ tabName: Design
 
 DropdownMenu has two sizes.
 
-@table-caption DropdownMenu sizes
+Table: DropdownMenu sizes
 
 | Size | Appearance example and indents |
 | ---- | ------------------------------ |
@@ -23,7 +24,7 @@ DropdownMenu has two sizes.
 
 The width of the dropdown can be defined several ways:
 
-@table-caption DropdownMenu width
+Table: DropdownMenu width
 
 |        | Example    |
 | ------ | ---------- |
@@ -70,7 +71,7 @@ As the user enters a value into the input, only the items that match the input s
 
 ### States
 
-@table-caption DropdownMenu item states
+Table: DropdownMenu item states
 
 |                     | Appearance                                                                           | Tokens                                |
 | ------------------- | ------------------------------------------------------------------------------------ | ------------------------------------- |
@@ -112,7 +113,7 @@ The item with button should have the same hover as a regular item in the list.
 
 This item with such a button adds a new item and has the following states:
 
-@table-caption DropdownMenu addition button states
+Table: DropdownMenu addition button states
 
 | State                  | Appearance example                      | Description                                                                                                                                                                                                                                                   |
 | ---------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -126,7 +127,7 @@ This item with such a button adds a new item and has the following states:
 
 You can add an icon to the right of an item for an additional action.
 
-@table-caption Button inside the item cases of use
+Table: Button inside the item cases of use
 
 | Case          | Appearance example                        | Description                                                                                                                                                                                                                                      |
 | ------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -157,7 +158,7 @@ You can put the following addons before and after the text inside the list item:
 
 Before the text you can place an icon, flag or image. In this case icon always has the color of the text.
 
-@table-caption Addon before the text examples
+Table: Addon before the text examples
 
 | Addon        | Appearance example         |
 | ------------ | -------------------------- |
@@ -199,7 +200,7 @@ Badge can be placed after the text. The margin between the text and the badge is
 
 You can add additional text with `--text-secondary` color under the main text of the item.
 
-@table-caption Secondary text sizes
+Table: Secondary text sizes
 
 | Size of the list | Appearance example         | Tokens                  |
 | ---------------- | -------------------------- | ----------------------- |
@@ -212,13 +213,15 @@ If DropdownMenu has more than seven items, show scroll. We also recommend adding
 
 ![list-scroll](static/scroll-1.png)
 
-> If you use a DropdownMenu for a menu, show all the items even if there are more than seven. It's important for the user to see all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
+::: tip
+If you use a DropdownMenu for a menu, show all the items even if there are more than seven. It's important for the user to see all available options, especially if there are links or different controls. We don’t recommend using a scroll for such menus.
+:::
 
 ### Fixed item
 
 You can fix an item with a title, input, notice or a button on the top or at the bottom of the list. Such item should be separated by a [Divider](/components/divider/) and fixed while scrolling the list.
 
-@table-caption Fixed item examples
+Table: Fixed item examples
 
 | Item content      | Appearance example                                                                            | Description                                                                                                                                                                           |
 | ----------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -243,7 +246,3 @@ Nested groups will be hidden after a delay of 0.3 seconds in the following cases
 
 If you select a nested item, only its name will be displayed in the trigger, without the name of the parent item.
 
-@page dropdown-menu-a11y
-@page dropdown-menu-api
-@page dropdown-menu-code
-@page dropdown-menu-changelog

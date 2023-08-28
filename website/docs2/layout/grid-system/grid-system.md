@@ -2,6 +2,7 @@
 title: Grid and page layout
 fileSource: grid
 tabName: Design
+tabs: Grid and page layout('grid-system'), API('grid-api'), Grid system('grid-code'), Changelog('grid-changelog')
 ---
 
 ## Description
@@ -14,7 +15,9 @@ tabName: Design
 
 ![breakpoints-scheme](static/scheme.png)
 
-> On 1200px left menu with width of 250px appears and "eats away" space of the product page.
+::: tip
+On 1200px left menu with width of 250px appears and "eats away" space of the product page.
+:::
 
 | Breakpoint                      | Columns | Gutter | Max. content width                                    | Content wrapper margins                                                                  | Layout scheme                                                    | Description                                                                                                               |
 | ------------------------------- | ------- | ------ | ----------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
@@ -34,6 +37,3 @@ Sizes in our grid system are based on the sizes of the left menu width (250px) a
 - for the product landing pages is 980px;
 - for the product pages is 1920px.
 
-@page grid-api
-@page grid-code
-@page grid-changelog

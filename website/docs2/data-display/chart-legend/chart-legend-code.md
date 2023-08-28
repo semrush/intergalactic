@@ -1,6 +1,7 @@
 ---
 title: Example
 fileSource: d3-chart
+tabs: Chart legend('chart-legend'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
 ---
 
 ## Example in line chart

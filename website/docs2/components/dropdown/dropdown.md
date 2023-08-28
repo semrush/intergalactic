@@ -2,6 +2,7 @@
 title: Dropdown
 fileSource: dropdown
 tabName: Design
+tabs: Dropdown('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
 @import playground
@@ -22,7 +23,9 @@ Dropdown component consists of `Dropdown.Trigger` and `Dropdown.Popper`.
 
 The component doesn't have any fixed sizes since they are defined by the content inside it.
 
-> If dropdown changes its state while user interacts with it, don’t change the dropdown size (width and height).
+::: tip
+If dropdown changes its state while user interacts with it, don’t change the dropdown size (width and height).
+:::
 
 ### Trigger
 
@@ -50,7 +53,9 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 
 ![All possible positions for Dropdown component based on Popper.js properties clockwise: top-start, top, top-end, right-start, right, right-end, bottom-end, bottom, bottom-start, left-end, left, left-start.](static/dropdown-directions.png)
 
-> **Dropdown component should maintain its position and not move when a user scrolls the page.** For instance, if the dropdown opens upward, it should stay in that position even if the user scrolls the page.
+::: tip
+**Dropdown component should maintain its position and not move when a user scrolls the page.** For instance, if the dropdown opens upward, it should stay in that position even if the user scrolls the page.
+:::
 
 ## Usage in UX/UI
 
@@ -59,7 +64,3 @@ By default, the Dropdown component drops down from the trigger. However, if ther
 
 ![](static/dropdown-trigger-yes-no.png)
 
-@page dropdown-a11y
-@page dropdown-api
-@page dropdown-code
-@page dropdown-changelog

@@ -2,6 +2,7 @@
 title: Tag
 fileSource: tag
 tabName: Design
+tabs: Tag('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
 ---
 
 @import playground
@@ -25,7 +26,7 @@ Component consists of the following:
 
 ## Sizes and paddings
 
-@table-caption Tag sizes and paddings
+Table: Tag sizes and paddings
 
 Size (height in px) | Paddings                                       |
 | ----------------- | ---------------------------------------------- |
@@ -48,7 +49,7 @@ The component offers several themes for tags.
 
 ## Interaction
 
-@table-caption Tag states
+Table: Tag states
 
 | Tag theme                        | States                                                                |
 | -------------------------------- | --------------------------------------------------------------------- |
@@ -91,13 +92,15 @@ You can set a maximum width for the tag. If the text of a tag exceeds this limit
 
 In case you have a huge number of tags and don’t need to show them all at once, minimize them to a tag with three dots. When you click on it, all hidden tags will be opened.
 
-> Unfortunately, this solution can be found in several places so far.
+::: tip
+Unfortunately, this solution can be found in several places so far.
+:::
 
 ![more tags example](static/more-tags.png) -->
 
 ## Margins between tags
 
-@table-caption Margins between tags
+Table: Margins between tags
 
 Size (height in px) | Margins                 |
 | --------- | ------------------------------- |
@@ -124,7 +127,3 @@ Use tags for visual marking of objects, fast recognition and navigation.
 
 ![](static/tag-table-pic.png)
 
-@page tag-a11y
-@page tag-api
-@page tag-code
-@page tag-changelog

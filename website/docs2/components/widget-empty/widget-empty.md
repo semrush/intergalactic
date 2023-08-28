@@ -2,6 +2,7 @@
 title: Widget empty state
 fileSource: widget-empty
 tabName: Design
+tabs: Widget empty state('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
 ## Description
@@ -27,7 +28,7 @@ We recommend to add maximum 400px width for the "empty" state message to ensure 
 
 ![](static/medium-nothing.png)
 
-@table-caption WidgetEmpty styles
+Table: WidgetEmpty styles
 
 | Element             | Styles   |
 | ------------------- | -------- |
@@ -81,7 +82,7 @@ Use this state when there is no data or the system cannot display it for some re
 - An optional button to help users remedy the situation.
 - Optional filters to help remedy the situation.
 
-@table-caption No data message examples
+Table: No data message examples
 
 | Large widget     | Medium widget       | Text           |
 | ---------------- | ------------------- | -------------- |
@@ -102,7 +103,7 @@ This specific state is used when there are no data results in a search, table, o
 - A text message specifying that there is no data based on the user's request.
 - An optional button to help remedy the situation.
 
-@table-caption Nothing found message examples
+Table: Nothing found message examples
 
 | Large widget        | Medium widget      | Text     |
 | ------------------- | ------------------ | -------- |
@@ -124,7 +125,7 @@ Display the following:
 - A text message specifying what the user should do.
 - An additional button (recommended).
 
-@table-caption Something went wrong message examples
+Table: Something went wrong message examples
 
 | Large widget       | Medium widget               | Text    |
 | ------------------ | --------------------------- | ------- |
@@ -142,7 +143,7 @@ Display the following:
 - A text message specifying what the user should set up.
 - An additional button (recommended).
 
-@table-caption Something went wrong message examples
+Table: Something went wrong message examples
 
 | Large widget  | Medium widget         | Text       |
 | ------------- | --------------------- | ---------- |
@@ -163,7 +164,7 @@ Display the following:
 - An illustration.
 - A text message specifying what the user should do.
 
-@table-caption Custom message examples
+Table: Custom message examples
 
 | Large widget   | Medium widget        | Text      |
 | -------------- | -------------------- | --------- |
@@ -186,7 +187,7 @@ Display the following:
 - A text message specifying what the user should set up or do to obtain the data.
 - A button.
 
-@table-caption Set up your product message examples
+Table: Set up your product message examples
 
 | Large widget           | Medium widget    | Text         |
 | ---------------------- | ---------------- | ------------ |
@@ -204,7 +205,3 @@ Add the text: "No more results" and center it both vertically and horizontally.
 
 ![](static/no-more-results.png)
 
-@page widget-empty-a11y
-@page widget-empty-api
-@page widget-empty-code
-@page widget-empty-changelog

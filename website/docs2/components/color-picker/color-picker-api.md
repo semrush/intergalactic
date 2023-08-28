@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: color-picker
+tabs: ColorPicker('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
 ## ColorPicker
@@ -12,7 +13,11 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker />;
 ```
 
-@typescript ColorPickerProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="ColorPickerProps" :types={...types} />
 
 ## ColorPicker.Trigger
 
@@ -41,7 +46,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Colors />;
 ```
 
-@typescript ColorsProps
+<TypesView type="ColorsProps" :types={...types} />
 
 ## ColorPicker.Item
 
@@ -52,7 +57,7 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker.Item />;
 ```
 
-@typescript ItemProps
+<TypesView type="ItemProps" :types={...types} />
 
 ## PaletteManager
 
@@ -63,7 +68,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager />;
 ```
 
-@typescript PaletteManagerProps
+<TypesView type="PaletteManagerProps" :types={...types} />
 
 ## PaletteManager.Colors
 
@@ -74,7 +79,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Colors />;
 ```
 
-@typescript ColorsCustomProps
+<TypesView type="ColorsCustomProps" :types={...types} />
 
 ## PaletteManager.Item
 
@@ -85,7 +90,7 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.Item />;
 ```
 
-@typescript ItemProps
+<TypesView type="ItemProps" :types={...types} />
 
 ## ColorPicker.InputColor
 
@@ -96,4 +101,4 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 <PaletteManager.InputColor />;
 ```
 
-@typescript InputColorProps
+<TypesView type="InputColorProps" :types={...types} />

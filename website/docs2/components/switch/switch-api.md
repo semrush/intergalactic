@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: switch
+tabs: Switch('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
 ---
 
 ## Switch
@@ -10,7 +11,11 @@ import Switch from '@semcore/ui/switch';
 <Switch />;
 ```
 
-@typescript SwitchProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SwitchProps" :types={...types} />
 
 ## Switch.Value
 
@@ -19,7 +24,7 @@ import Switch from '@semcore/ui/switch';
 <Switch.Value />;
 ```
 
-@typescript SwitchValueProps
+<TypesView type="SwitchValueProps" :types={...types} />
 
 ## Switch.Addon
 
@@ -28,4 +33,4 @@ import Switch from '@semcore/ui/switch';
 <Switch.Addon />;
 ```
 
-@typescript SwitchAddonProps
+<TypesView type="SwitchAddonProps" :types={...types} />

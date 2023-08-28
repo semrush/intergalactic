@@ -2,6 +2,7 @@
 title: Carousel
 fileSource: carousel
 tabName: Design
+tabs: Carousel('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
 ---
 
 ## Description
@@ -13,7 +14,9 @@ tabName: Design
 - There is a group of content on the same level (for example, images or modals with data opened from table rows). In this case, the carousel saves the user's clicks.
 - There is insufficient space in the interface, so carousel can save it.
 
-> Carousels are great for cases when multiple content items need to occupy the same space on a page. Note, that carousels on the homepages are typically ignored by users, don’t engage and frustrate users. Learn more in [this funny explanation website about usage of a carousel component](http://shouldiuseacarousel.com/).
+::: tip
+Carousels are great for cases when multiple content items need to occupy the same space on a page. Note, that carousels on the homepages are typically ignored by users, don’t engage and frustrate users. Learn more in [this funny explanation website about usage of a carousel component](http://shouldiuseacarousel.com/).
+:::
 
 Use the carousel as an additional highlight of important website features and information, never as the only path to an important content.
 
@@ -34,7 +37,7 @@ Component has default styles, but you can change them depending on your task.
 
 ### Default styles
 
-@table-caption Carousel default styles
+Table: Carousel default styles
 
 |                         | Default styles                                                        |
 | ----------------------- | --------------------------------------------------------------------- |
@@ -64,7 +67,7 @@ This example has the same styles as the example on the light background, except 
 
 Navigation buttons are always center aligned.
 
-@table-caption Navigation buttons states
+Table: Navigation buttons states
 
 | State    | Appearance example                      | Styles                                               |
 | -------- | --------------------------------------- | ---------------------------------------------------- |
@@ -76,7 +79,7 @@ Navigation buttons are always center aligned.
 
 ![](static/default-indicators.png)
 
-@table-caption Slides number indicators states
+Table: Slides number indicators states
 
 | State               | Styles                                                                                    |
 | ------------------- | ----------------------------------------------------------------------------------------- |
@@ -95,7 +98,7 @@ Default animation properties:
 
 When using a carousel, keep in mind that some users may only see the first frame or nothing at all. Therefore, it's important to intentionally place essential content on each frame. Consider using a static carousel or a single image instead of a rotating one.
 
-@table-caption Carousel usage advices
+Table: Carousel usage advices
 
 |       | Advice                                                                                                 | Description                                                                                                                                                                                                                                                                           |
 | ----- | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -105,7 +108,9 @@ When using a carousel, keep in mind that some users may only see the first frame
 
 ## Auto-play
 
-> If carousel images cycle automatically, provide a pause button to let users stop the movement.
+::: tip
+If carousel images cycle automatically, provide a pause button to let users stop the movement.
+:::
 
 **Don’t auto-play slides if:**
 
@@ -126,7 +131,3 @@ Make sure users interested in the carousel understand that there is more to it t
 - navigation controls and icons (as noted above);
 - cutting off, or “bleeding” an image and displaying part of the next image.
 
-@page carousel-a11y
-@page carousel-api
-@page carousel-code
-@page carousel-changelog

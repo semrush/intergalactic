@@ -2,9 +2,12 @@
 title: Area chart
 fileSource: d3-chart
 tabName: Design
+tabs: Area chart('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -17,16 +20,20 @@ tabName: Design
 - Don't forget to clearly name the chart so that the axes are understandable enough.
 - Use [Stacked area chart](/data-display/stacked-area-chart/) when, in addition to data amount, you need to display the part to the whole data.
 
-> Useful materials about line chart vs. area chart:
->
-> - [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
-> - [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
+::: tip
+Useful materials about line chart vs. area chart:
+
+- [Choosing the right chart type: Line charts vs Area charts](https://www.fusioncharts.com/blog/line-charts-vs-area-charts/)
+- [The Fine Line In a Gray Area: When to Use Line vs Area Charts](https://visual.ly/blog/line-vs-area-charts/)
+:::
 
 ## Appearance
 
 By default, we show a chart with straight lines. This view facilitates reading the exact values on the trend. This is what most people look at the chart for.
 
-> Add a possibility to select either straight or smooth line type in the widget settings.
+::: tip
+Add a possibility to select either straight or smooth line type in the widget settings.
+:::
 
 | Example                                             | Styles                                                                                                     |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -42,7 +49,9 @@ We recommend you to display the dots on lines either when there are few of them 
 
 When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
-> To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
+::: tip
+To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
+:::
 
 ## Edge cases
 
@@ -75,13 +84,17 @@ For this case enable the display of dots on the chart by default.
 
 If all values on the chart are zero, then show the trend line on the zero axis.
 
-> **Zero is also data. 0 ≠ `n/a`.**
+::: tip
+**Zero is also data. 0 ≠ `n/a`.**
+:::
 
 ![](static/null-area-chart.png)
 
 ## No data
 
-> **When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
+::: tip
+**When there is no data, you can't draw a zero line. Zero is also data. 0 ≠ `n/a`.**
+:::
 
 In the area without data, show a dashed line between known dots. If the not available period is at the beginning or end of the chart, then the lines must be horizontal.
 
@@ -109,7 +122,3 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 ![](static/area-skeleton.png)
 
-@page area-chart-a11y
-@page area-chart-api
-@page area-chart-d3-code
-@page d3-chart-changelog

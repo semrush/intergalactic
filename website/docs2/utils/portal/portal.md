@@ -2,6 +2,7 @@
 title: Portal
 fileSource: portal
 tabName: Design
+tabs: Portal('portal'), API('portal-api'), Changelog('portal-changelog')
 ---
 
 The component is child element rendering in a DOM node that exists outside of the parent component's DOM hierarchy (portal).
@@ -27,5 +28,3 @@ const $ref = useRef(null)
 <Modal>
 ```
 
-@page portal-api
-@page portal-changelog

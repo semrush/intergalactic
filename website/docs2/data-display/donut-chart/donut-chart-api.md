@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
+tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API
@@ -17,4 +18,8 @@ import { Donut } from '@semcore/ui/d3-chart';
 </Donut>;
 ```
 
-@typescript DonutProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="DonutProps" :types={...types} />

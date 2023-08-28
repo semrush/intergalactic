@@ -4,7 +4,9 @@ title: Chrome extension
 
 We have [Chrome extension](https://chrome.google.com/webstore/detail/ui-kit-highlighting/capgemjgihoboclcfdblhbdokpldhemf/) that highlights components in the products according to the ui-kit version.
 
-> Note that this extension is available only for the users registered in the corporate mail.
+::: tip
+Note that this extension is available only for the users registered in the corporate mail.
+:::
 
 Our extension can collect data about components from all our libraries used in the Semrush products. We need this data for the development of our design system.
 

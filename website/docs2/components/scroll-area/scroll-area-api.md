@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: scroll-area
+tabs: ScrollArea('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
 ## ScrollArea
@@ -10,7 +11,11 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea />;
 ```
 
-@typescript ScrollAreaProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="ScrollAreaProps" :types={...types} />
 
 ## ScrollArea.Container
 
@@ -28,7 +33,7 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar />;
 ```
 
-@typescript ScrollBarProps
+<TypesView type="ScrollBarProps" :types={...types} />
 
 ## ScrollArea.Bar.Slider
 

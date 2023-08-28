@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
+tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
 ## D3 API
@@ -11,7 +12,11 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar/>;
 ```
 
-@typescript RadarProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="RadarProps" :types={...types} />
 
 ## Radar.Axis
 
@@ -21,7 +26,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Axis/>;
 ```
 
-@typescript RadarAxisProps
+<TypesView type="RadarAxisProps" :types={...types} />
 
 ## Radar.Axis.Labels
 
@@ -31,7 +36,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Axis.Labels/>;
 ```
 
-@typescript RadarAxisLabelsProps
+<TypesView type="RadarAxisLabelsProps" :types={...types} />
 
 ## Radar.Axis.Ticks
 
@@ -41,7 +46,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Axis.Ticks/>;
 ```
 
-@typescript RadarAxisTicksProps
+<TypesView type="RadarAxisTicksProps" :types={...types} />
 
 ## Radar.Polygon
 
@@ -51,7 +56,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Polygon/>;
 ```
 
-@typescript RadialPolygonProps
+<TypesView type="RadialPolygonProps" :types={...types} />
 
 ## Radar.Polygon.Line
 
@@ -61,7 +66,7 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Polygon.Line/>;
 ```
 
-@typescript RadialPolygonLineProps
+<TypesView type="RadialPolygonLineProps" :types={...types} />
 
 ## Radar.Polygon.Dots
 
@@ -71,4 +76,4 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar.Polygon.Dots/>;
 ```
 
-@typescript RadialPolygonDotsProps
+<TypesView type="RadialPolygonDotsProps" :types={...types} />

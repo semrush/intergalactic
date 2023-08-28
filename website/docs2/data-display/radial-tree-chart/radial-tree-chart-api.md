@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
+tabs: Radial Tree chart('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API
@@ -21,4 +22,8 @@ import { RadialTree } from '@semcore/ui/d3-chart';
 </RadialTree>;
 ```
 
-@typescript RadialTreeProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="RadialTreeProps" :types={...types} />

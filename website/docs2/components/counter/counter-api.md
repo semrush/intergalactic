@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Counter('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
 ## Counter
@@ -9,7 +10,11 @@ import Counter from '@semcore/ui/counter';
 <Counter />;
 ```
 
-@typescript CounterProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="CounterProps" :types={...types} />
 
 ## AnimatedNumber
 
@@ -18,4 +23,4 @@ import { AnimatedNumber } from '@semcore/ui/counter';
 <AnimatedNumber />;
 ```
 
-@typescript AnimatedNumberBaseProps
+<TypesView type="AnimatedNumberBaseProps" :types={...types} />

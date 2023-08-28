@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Link('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
 ## Link
@@ -11,7 +12,11 @@ import Link from '@semcore/ui/link';
 <Link />;
 ```
 
-@typescript LinkProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="LinkProps" :types={...types} />
 
 ## Link.Addon
 

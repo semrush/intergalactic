@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Feedback('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
 
 ## FeedbackForm
@@ -11,7 +12,11 @@ import FeedbackForm from '@semcore/ui/feedback-form';
 <FeedbackForm />;
 ```
 
-@typescript FeedbackFormProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="FeedbackFormProps" :types={...types} />
 
 ## FeedbackForm.Item
 

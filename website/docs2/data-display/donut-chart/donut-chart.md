@@ -2,9 +2,12 @@
 title: Donut / Pie chart
 fileSource: d3-chart
 tabName: Design
+tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -23,13 +26,15 @@ The length of each segment is a proportional fraction, and the entire circle is 
 - They take up more space than, for example, [Bar chart](/data-display/bar-chart/).
 - They are inconvenient for making accurate comparisons between different data sets, since visually the area of segments is more difficult to compare than the length.
 
-> **Interesting fact**
->
-> The creation of the donut chart is credited to the Scottish engineer William Playfair. Back in 1801, he used it to show the proportions of land occupied by the Turkish Empire in Asia, Europe and Africa.
->
-> The French don’t call such charts donut chart, they compare it with round cheese Camembert.
->
-> [How to design pie charts](https://visage.co/data-visualization-101-pie-charts/)
+::: tip
+**Interesting fact**
+
+The creation of the donut chart is credited to the Scottish engineer William Playfair. Back in 1801, he used it to show the proportions of land occupied by the Turkish Empire in Asia, Europe and Africa.
+
+The French don’t call such charts donut chart, they compare it with round cheese Camembert.
+
+[How to design pie charts](https://visage.co/data-visualization-101-pie-charts/)
+:::
 
 ## Appearance
 
@@ -104,9 +109,11 @@ If you have a small donut and the widget should be compact, the metric can be pl
 - There is no margin between them.
 - They are centered vertically and horizontally relative to the chart.
 
-> If the metrics name is too long, wrap it to the next line.
->
-> In a half-sized donut, the name of the metric should be as short as possible, and the explanation can be contained in the Info icon.
+::: tip
+If the metrics name is too long, wrap it to the next line.
+
+In a half-sized donut, the name of the metric should be as short as possible, and the explanation can be contained in the Info icon.
+:::
 
 | Donut                                                                                                 | Semi donut                                                                                                                | Donut in a small widget                                |
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
@@ -114,7 +121,9 @@ If you have a small donut and the widget should be compact, the metric can be pl
 
 ## Interaction
 
-> The cursor changes to `pointer` when the sector is clickable. In all other cases, the cursor is `default`.
+::: tip
+The cursor changes to `pointer` when the sector is clickable. In all other cases, the cursor is `default`.
+:::
 
 |             | Appearance examples                                                                                               | Styles                                                                                                                                   |
 | ----------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -126,7 +135,9 @@ If you have a small donut and the widget should be compact, the metric can be pl
 
 Hovering over the chart triggers a tooltip with the name and value of the data.
 
-> Disable tooltip for the smallest charts which serve as an illustration to a particular metric.
+::: tip
+Disable tooltip for the smallest charts which serve as an illustration to a particular metric.
+:::
 
 ![](static/donut-hover-big.png)
 
@@ -174,7 +185,9 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 
 ## Usage in UX/UI
 
-> **It isn’t recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
+::: tip
+**It isn’t recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
+:::
 
 Don't use donut chart to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart).
 
@@ -184,7 +197,3 @@ The starting angle for displaying values is always `90 degrees`.
 
 ![](static/start-yes-no.png)
 
-@page donut-chart-a11y
-@page donut-chart-api
-@page donut-chart-d3-code
-@page d3-chart-changelog

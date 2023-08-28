@@ -2,6 +2,7 @@
 title: InputTags
 fileSource: input-tags
 tabName: Design
+tabs: InputTags('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Example('input-tags-code'), Changelog('input-tags-changelog')
 ---
 
 @import playground
@@ -16,7 +17,7 @@ This input field is useful for entering a large amount of similar information in
 
 When there are too many tags to fit within the input, the input field's height increases by one line of text.
 
-@table-caption InputTags sizes
+Table: InputTags sizes
 
 | Size     | Appearance      |                 | Margins        |
 | -------- | --------------- | --------------- | -------------- |
@@ -25,7 +26,9 @@ When there are too many tags to fit within the input, the input field's height i
 
 ## Tag colors
 
-> To learn more about tags, refer to the [Tag](/components/tag).
+::: tip
+To learn more about tags, refer to the [Tag](/components/tag).
+:::
 
 In most cases, we recommend using tags with the `primary` type and the `muted` theme for entering homogeneous information in these inputs. It isn’t recommended to use the [Secondary tag](/components/tag/) inside the input as it adds unnecessary visual noise with its border.
 
@@ -43,7 +46,7 @@ In some cases, you can use color tags to represent different categories, if appl
 
 In an input field with tags, you can enter data either by selecting preset options from the combobox or by entering your own data (which will be wrapped in tags if they have punctuation separators). You can also combine both options.
 
-@table-caption Interaction with InputTags
+Table: Interaction with InputTags
 
 | Data from the combobox    | User-entered data   | Data from the combobox and user-entered data    |
 | ------------------------- | ------------------- | ------------------------ |
@@ -63,7 +66,9 @@ The text entered by the user is automatically converted into a tag inside InputT
 - When there is a double space.
 - When the user presses the Tab key to insert data.
 
-> Leading and trailing spaces are trimmed when creating tags.
+::: tip
+Leading and trailing spaces are trimmed when creating tags.
+:::
 
 ## Text insertion
 
@@ -75,13 +80,11 @@ If the text cursor is positioned in front of a tag, pressing the `Delete` key wi
 
 ## Handling long text within a tag
 
-> Note that this behavior isn’t recommended for full accessibility. Web page content should be responsive and adaptable to small viewport widths, text enlargement, and changes in text spacing.
+::: tip
+Note that this behavior isn’t recommended for full accessibility. Web page content should be responsive and adaptable to small viewport widths, text enlargement, and changes in text spacing.
+:::
 
 You can set a maximum width for tags, although it isn’t necessary in all cases. If the tag text exceeds the specified width, truncate it with an ellipsis. Hovering over the tag will display a tooltip with the full text of the tag.
 
 ![](static/ellipsis.png)
 
-@page input-tags-a11y
-@page input-tags-api
-@page input-tags-code
-@page input-tags-changelog

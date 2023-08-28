@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Table code and API('table-old'), API('table-old-api'), Changelog('table-old-changelog')
 ---
 
 ## Table
@@ -9,7 +10,11 @@ import Table from '@semcore/ui/table';
 <Table />;
 ```
 
-@typescript TableProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TableProps" :types={...types} />
 
 ## Table.Row
 
@@ -18,7 +23,7 @@ import Table from '@semcore/ui/table';
 <Table.Row />;
 ```
 
-@typescript TableRowProps
+<TypesView type="TableRowProps" :types={...types} />
 
 ## Table.Cell
 
@@ -27,7 +32,7 @@ import Table from '@semcore/ui/table';
 <Table.Cell />;
 ```
 
-@typescript TableCellRowProps
+<TypesView type="TableCellRowProps" :types={...types} />
 
 ## Table.CellHead
 
@@ -36,7 +41,7 @@ import Table from '@semcore/ui/table';
 <Table.CellHead />;
 ```
 
-@typescript TableCellHeadProps
+<TypesView type="TableCellHeadProps" :types={...types} />
 
 ## Table.StickyHead
 
@@ -48,4 +53,4 @@ import Table from '@semcore/ui/table';
 </Table>;
 ```
 
-@typescript StickyHeadProps
+<TypesView type="StickyHeadProps" :types={...types} />

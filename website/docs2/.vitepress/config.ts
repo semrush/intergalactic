@@ -1,6 +1,12 @@
 import { defineConfig } from 'vitepress';
 import container from 'markdown-it-container';
-import { renderSandbox } from 'vitepress-plugin-sandpack';
+import { renderSandbox } from './renderSandbox';
+import { createUnplugin } from 'unplugin';
+import { resolveSemcoreSources } from './resolve-semcore-sources';
+import { loadSemcoreSources } from './load-semcore-sources';
+import pluginReact from '@vitejs/plugin-react';
+import { resolve as resolvePath } from 'path';
+import tableCaptions from 'markdown-it-table-captions';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -15,15 +21,54 @@ export default defineConfig({
             return renderSandbox(tokens, idx, 'sandbox');
           },
         })
-        .use(container, 'my-sandbox', {
-          render(tokens, idx) {
-            return renderSandbox(tokens, idx, 'my-sandbox');
-          },
-        });
+        .use(tableCaptions);
     },
   },
 
+  lastUpdated: true,
+  vite: {
+    plugins: [
+      pluginReact(),
+      createUnplugin<{}>((options) => ({
+        name: 'semcore-resolve',
+
+        async resolveId(id) {
+          if (!id.includes('@semcore') && !id.includes('/semcore/')) return null;
+          if (id.endsWith('.md')) return null;
+          // console.log(id);
+          const resolved = await resolveSemcoreSources(id);
+          return resolved;
+        },
+        loadInclude: (id) => {
+          return id.includes('/semcore/');
+        },
+        async load(id) {
+          const result = await loadSemcoreSources(id);
+          // console.log(result.code);
+          return result;
+        },
+        enforce: 'pre',
+      })).vite({}),
+      createUnplugin<{}>((options) => ({
+        name: 'xxx',
+        async resolveId(id) {
+          if (!id.startsWith('@components/')) return null;
+          const purePath = id.substring('@components/'.length);
+          return `${resolvePath(__dirname, '../../src/docs-components', purePath)}.jsx`;
+        },
+      })).vite({}),
+    ],
+  },
+
   themeConfig: {
+    docFooter: {
+      prev: false,
+      next: false,
+    },
+    editLink: {
+      pattern: 'https://github.com/semrush/intergalactic/edit/master/website/docs/:path',
+      text: 'Edit this page on GitHub',
+    },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },

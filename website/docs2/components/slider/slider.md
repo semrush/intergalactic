@@ -2,6 +2,7 @@
 title: Slider
 fileSource: slider
 tabName: Design
+tabs: Slider('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
 ---
 
 ## Description
@@ -29,9 +30,11 @@ The Slider component consists of the following:
 - Value
 - (Optional) `Slider.Options` with `Slider.Item` inside.
 
-> When designing this type of input, consider the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law), 
-> which describes how the time taken to perform an action depends on the thickness and width of the horizontal control used for that action. 
-> Larger slider knobs and bars make using sliders easier and faster.
+::: tip
+When designing this type of input, consider the [Akkot-Tsai law](https://en.wikipedia.org/wiki/Steering_law), 
+which describes how the time taken to perform an action depends on the thickness and width of the horizontal control used for that action. 
+Larger slider knobs and bars make using sliders easier and faster.
+:::
 
 ## Sizes
 
@@ -57,14 +60,16 @@ You can display values under the input.
 
 ![](static/value-labels2.png)
 
-> For mobile devices, display values or tooltips with values above the input. 
-> On touch devices, the values should appear above the finger while manipulating the slider knob.
+::: tip
+For mobile devices, display values or tooltips with values above the input. 
+On touch devices, the values should appear above the finger while manipulating the slider knob.
+:::
 
 ## Interaction
 
 ### States
 
-@table-caption Slider states
+Table: Slider states
 
 | State        | Description         | Appearance example         |
 | ------------ | ------------------- | -------------------------- |
@@ -84,7 +89,7 @@ Ensure that keyboard shortcuts can still be used when the input is focused.
 the hover effect is not applied to the slider. 
 The slider knob moves according to the value entered in the input.
 
-@table-caption Slider with linked input in active state
+Table: Slider with linked input in active state
 
 | State        | Description          | Appearance example   |
 | ------------ | -------------------- | -------------------- |
@@ -123,7 +128,3 @@ place them either to the left/right or above the slider.
 
 ![](static/mobile.png)
 
-@page slider-a11y
-@page slider-api
-@page slider-code
-@page slider-changelog

@@ -2,19 +2,24 @@
 title: Horizontal bar chart
 fileSource: d3-chart
 tabName: Design
+tabs: Horizontal bar chart('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
 
-> **Difference from histogram chart**
->
-> Bar chart displays distribution of data sets by quality categories.
->
-> Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+::: tip
+**Difference from histogram chart**
+
+Bar chart displays distribution of data sets by quality categories.
+
+Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+:::
 
 Important points to keep in mind when presenting data as a bar chart:
 
@@ -49,9 +54,11 @@ Important points to keep in mind when presenting data as a bar chart:
 | One category   | ![](static/one-cat.png)  | `border-radius: 2px`                   |
 | Two categories | ![](static/two-cat.png) | The margin between two columns is 4px. |
 
-> If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
->
-> It is also a good solution to allow users to switch the chart type in the widget settings.
+::: tip
+If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
+
+It is also a good solution to allow users to switch the chart type in the widget settings.
+:::
 
 ## Margins
 
@@ -75,7 +82,9 @@ If you don’t need to present the ratio of values to 100%, but just to display 
 
 ![](static/grid.png)
 
-> Don't forget to provide space for category values in the right and left parts of the chart.
+::: tip
+Don't forget to provide space for category values in the right and left parts of the chart.
+:::
 
 ## Labels of categories
 
@@ -112,7 +121,9 @@ Display message: "No more results" – below the values with a 32px margin.
 
 If all the values on the chart are zero, then in the tooltip we shall display null all of them in the tooltips.
 
-> **Zero is also data. 0 ≠ `n/a`.**
+::: tip
+**Zero is also data. 0 ≠ `n/a`.**
+:::
 
 ![](static/null-bar-horizontal.png)
 
@@ -140,7 +151,3 @@ For more information about this state, refer to [Skeleton](/components/skeleton/
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
-@page bar-horizontal-a11y
-@page bar-horizontal-api
-@page bar-horizontal-d3-code
-@page d3-chart-changelog

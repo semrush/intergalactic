@@ -1,6 +1,7 @@
 ---
 title: A11y
 a11y: AA
+tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog') 
 ---
 
 @## What component has

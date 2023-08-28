@@ -1,5 +1,6 @@
 ---
 title: Changelog
+tabs: Email templates & grid('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
 ---
 
 ::: warning

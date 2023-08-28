@@ -2,14 +2,17 @@
 title: Email templates & grid
 tabName: Design
 deprecated: true
+tabs: Email templates & grid('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
 ---
 
 ::: warning
 :rotating_light: The current `@semcore/email` package is deprecated and using it isn’t recommended. A new major version is under way.
 
 :::
->
-> If you're a Semrush designer, you can find all the basic design components, blocks, and styles for product emails in the **[internal Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164).**
+::: tip
+
+If you're a Semrush designer, you can find all the basic design components, blocks, and styles for product emails in the **[internal Figma library](https://www.figma.com/file/uBxKSTlXSEDiKvFp6txzrr/NEW-%E2%80%A2-Product-emails?node-id=1%3A164).**
+:::
 
 ## Typography and styles
 
@@ -43,6 +46,3 @@ If you're a Semrush designer, you can find all the interface icons and small ill
 
 ![icons](static/icons.png)
 
-@page grid-email-code
-@page grid-email-readme
-@page grid-email-changelog

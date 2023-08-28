@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: product-head
+tabs: ProductHead('product-head'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
 ---
 
 ## ProductHead
@@ -48,7 +49,11 @@ import { Title } from '@semcore/ui/product-head';
 <Title />;
 ```
 
-@typescript HeaderTitleProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="HeaderTitleProps" :types={...types} />
 
 ## Info
 
@@ -68,4 +73,4 @@ import { Info } from '@semcore/ui/product-head';
 <Info.Item />;
 ```
 
-@typescript InfoItemProps
+<TypesView type="InfoItemProps" :types={...types} />

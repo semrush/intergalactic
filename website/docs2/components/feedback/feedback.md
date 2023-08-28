@@ -2,13 +2,16 @@
 title: Feedback
 fileSource: feedback-form
 tabName: Design
+tabs: Feedback('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
 
 ## Description
 
 **Feedback** component is the form for sending feedback or suggestions about the product. In most cases it opens from the "Send feedback" link or button.
 
-> When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
+::: tip
+When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
+:::
 
 ## Сomponent composition
 
@@ -48,7 +51,9 @@ In some cases it may open from the button "Send feedback", placed in the widgets
 
 ## Interaction
 
-> If the user closes the form and then opens it again, save the content previously entered into the inputs.
+::: tip
+If the user closes the form and then opens it again, save the content previously entered into the inputs.
+:::
 
 ### Input's behavior
 
@@ -118,7 +123,3 @@ Message text for this case: "Your message hasn’t been sent. Please try again o
 
 ![](static/error.png)
 
-@page feedback-form-a11y
-@page feedback-form-api
-@page feedback-form-code
-@page feedback-form-changelog

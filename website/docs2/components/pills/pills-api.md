@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: pills
+tabs: Pills('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
 ---
 
 ## Pills
@@ -9,7 +10,11 @@ fileSource: pills
 import Pills from '@semcore/ui/pills';
 ```
 
-@typescript PillsProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="PillsProps" :types={...types} />
 
 ## Pill.Item
 
@@ -18,7 +23,7 @@ import Pills from '@semcore/ui/pills';
 <Pills.Item />;
 ```
 
-@typescript PillProps
+<TypesView type="PillProps" :types={...types} />
 
 ## Pill.Item.Addon
 

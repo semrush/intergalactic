@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Notice('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
 ## Notice
@@ -9,7 +10,11 @@ import Notice from '@semcore/ui/notice';
 <Notice />;
 ```
 
-@typescript NoticeProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="NoticeProps" :types={...types} />
 
 ## Notice.Label
 
@@ -56,4 +61,4 @@ import { NoticeSmart } from '@semcore/ui/notice';
 <NoticeSmart />;
 ```
 
-@typescript NoticeSmartProps
+<TypesView type="NoticeSmartProps" :types={...types} />

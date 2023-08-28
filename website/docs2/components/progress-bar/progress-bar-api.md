@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: progress-bar
+tabs: ProgressBar('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
 ## ProgressBar
@@ -12,7 +13,11 @@ import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar />;
 ```
 
-@typescript ProgressBarProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="ProgressBarProps" :types={...types} />
 
 ## ProgressBar.Value
 
@@ -23,4 +28,4 @@ import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar.Value />;
 ```
 
-@typescript ValueProps
+<TypesView type="ValueProps" :types={...types} />

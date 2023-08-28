@@ -1,6 +1,7 @@
 ---
 title: About
 tabName: About @semcore/ui package
+tabs: Changelogs('release'), About('release-about')
 ---
 
 ## What is it?
@@ -19,7 +20,9 @@ Using the release system allows us to preserve the flexibility of our current de
 
 Our release cycle is **2 weeks**. That means that every two weeks we collect the changes for all packages, update the components to their new versions, write a changelog, and publish them to the library.
 
-> There may be some deviations from this schedule due to critical errors or holidays 🥳
+::: tip
+There may be some deviations from this schedule due to critical errors or holidays 🥳
+:::
 
 ## How to use
 
@@ -43,10 +46,14 @@ It can be replaced with the corresponding import from the ui package:
 import Button from '@semcore/ui/button';
 ```
 
-> Due to the folder-based access to components, we cannot automatically connect commonJS or ES6. For now, we only support ES6.
+::: tip
+Due to the folder-based access to components, we cannot automatically connect commonJS or ES6. For now, we only support ES6.
+:::
 
 ## How to use (with @semcore)
 
 If you need a newer version of any component before we publish our package, you can install and use it separately.
 
-> ⚠️ Don't install **`@semcore/core`** separately. It's already included in **ui** and shouldn't be duplicated.
+::: warning
+:warning: Don't install **`@semcore/core`** separately. It's already included in **ui** and shouldn't be duplicated.
+:::

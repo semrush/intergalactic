@@ -2,9 +2,12 @@
 title: Modal
 fileSource: modal
 tabName: Design
+tabs: Modal('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
 ---
 
-> For general recommendations on modal window content styles, refer to [Content in modal window](/patterns/modal-content/).
+::: tip
+For general recommendations on modal window content styles, refer to [Content in modal window](/patterns/modal-content/).
+:::
 
 ## Description
 
@@ -12,9 +15,11 @@ tabName: Design
 
 It always disables user interaction with the main window but keeps it visible. The modal window remains on the screen until the user performs the required action or closes the window.
 
-> _🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to prompt me to feed her. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at her. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task._
->
-> Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
+::: tip
+_🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to prompt me to feed her. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at her. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task._
+
+Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
+:::
 
 **Use modal window:**
 
@@ -28,7 +33,9 @@ It always disables user interaction with the main window but keeps it visible. T
 - To notify of an error in the interface or system.
 - To show content that is required for the user to complete the main task in the interface.
 
-> If you want to hide a lot of information in the modal window, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/) or even a separate page.
+::: tip
+If you want to hide a lot of information in the modal window, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/) or even a separate page.
+:::
 
 Don't show modals before the user has interacted with the interface. **Modal windows with information about limits are the exception in this case.**
 
@@ -56,7 +63,7 @@ We have several modal window types in the design system:
 
 ### Modal.Window (Container)
 
-@table-caption Container styles for Modal window
+Table: Container styles for Modal window
 
 | Styles                                                                 | Appearance example                                 |
 | ---------------------------------------------------------------------- | --------------------------------------- |
@@ -64,7 +71,7 @@ We have several modal window types in the design system:
 
 ### Modal.Close (Close button)
 
-@table-caption Close button styles for Modal window
+Table: Close button styles for Modal window
 
 | Styles                                                                                                                                                 | Appearance example                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
@@ -74,14 +81,16 @@ We have several modal window types in the design system:
 
 ### Modal.Overlay
 
-@table-caption Overlay styles for Modal window
+Table: Overlay styles for Modal window
 
 | Tokens                                                                                        | Appearance example                                     |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------- |
 | `--overlay-primary`                                                                           | ![](static/modal-overlay.png)  |
 | Second overlay appears when opening a modal window inside another modal window, and uses `--overlay-secondary` token. | ![](static/second-modal.png) |
 
-> Use a modal window inside another modal window only if no other solution fits your case. Refer to an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows.
+::: tip
+Use a modal window inside another modal window only if no other solution fits your case. Refer to an [amazing Manifesto](https://modalzmodalzmodalz.com/) against the ubiquitous use of modal windows.
+:::
 
 ## Modal window size
 
@@ -159,9 +168,11 @@ Currently, when the browser width is reduced to 320px, the modal window is propo
 
 Refer to [examples](/components/modal/modal-code/) of the modal window to see how modal changes to fit the screen.
 
-> _It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling._
->
-> [10 guidelines to consider when using overlays/modals](http://www.uxforthemasses.com/overlays/)
+::: tip
+_It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling._
+
+[10 guidelines to consider when using overlays/modals](http://www.uxforthemasses.com/overlays/)
+:::
 
 ![](static/position-5-2.png)
 
@@ -208,7 +219,3 @@ It is advisable to limit the usage of main buttons within the modal window to a 
 
 ![](static/button-yes-no.png)
 
-@page modal-a11y
-@page modal-api
-@page modal-code
-@page modal-changelog

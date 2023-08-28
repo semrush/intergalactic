@@ -3,9 +3,12 @@ title: Chart legend
 fileSource: d3-chart
 tabName: Design
 docs: true
+tabs: Chart legend('chart-legend'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
 ---
 
-> Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
+::: tip
+Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
+:::
 
 ## Description
 
@@ -16,7 +19,9 @@ docs: true
 3. **The margin between the legend items is 16px.**
 4. If legend items are too long, move them to the second row. The spacing between the rows is 8px.
 
-> **The recommended placement of the legend is the top left position above the chart.** However, in some cases (for example, two charts under each other with one hover, or a lot of filters over the chart), place the legend to the left bottom under the chart.
+::: tip
+**The recommended placement of the legend is the top left position above the chart.** However, in some cases (for example, two charts under each other with one hover, or a lot of filters over the chart), place the legend to the left bottom under the chart.
+:::
 
 ## Legend types
 
@@ -64,5 +69,3 @@ If you disable all legend checkboxes, the chart should display the X-axis.
 
 ![](static/legend-turn-off.png)
 
-@page chart-legend-code
-@page d3-chart-changelog

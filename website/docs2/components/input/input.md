@@ -2,6 +2,7 @@
 title: Input
 fileSource: input
 tabName: Design
+tabs: Input('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
 @import playground
@@ -26,7 +27,7 @@ Other input types for entering certain data:
 
 The input has two sizes.
 
-@table-caption Input sizes
+Table: Input sizes
 
 | Size (height in px) | Appearance example      |
 | ------------------- | ----------------------- |
@@ -37,7 +38,7 @@ The input has two sizes.
 
 We recommend adding a visible text label to the input wherever possible. If the input isn’t required, be sure to mark it with the "optional" text label.
 
-@table-caption Input text label sizes
+Table: Input text label sizes
 
 | Size (height in px) | Text size | Appearance example            | Margins                              |
 | ------------------- | --------- | ----------------------------- | ------------------------------------ |
@@ -51,24 +52,28 @@ We recommend adding a visible text label to the input wherever possible. If the 
 - When adding an icon before the text (leading addon), use a non-clickable icon. This icon is usually colored to match the text or a different color based on the purpose it serves.
 - When adding an addon after the text (trailing addon), you have various options such as a clickable icon, a counter, a badge, a spinner, an icon button, or a link. The clickable icon should have the `--icon-secondary-neutral` color. When hovering over it, the color should change to `--icon-secondary-neutral-hover-active`, and the cursor should change to a pointer.
 
-@table-caption Input addon indents and sizes
+Table: Input addon indents and sizes
 
 | Input size | Icon size   | Addon's indents      | Addon's minimum width       |
 | ---------- | ----------- | -------------------- | --------------------------- |
 | M    | M size ![](static/addon-m-icon.png) | ![](static/addon-m-padding.png) | ![](static/addon-m-width.png) |
 | L    | M size ![](static/addon-l-icon.png) | ![](static/addon-l-padding.png) | ![](static/addon-l-width.png) |
 
-> When two addons are stacked together, their indents will be divided in half. This ensures that there is a sufficient clickable zone (touch target) around each addon.
+::: tip
+When two addons are stacked together, their indents will be divided in half. This ensures that there is a sufficient clickable zone (touch target) around each addon.
+:::
 
 ![](static/padding_collapse.png)
 
 ## Interaction
 
-> Use `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
->
-> Use `disabled` state if you need to show affect of one component to another.
+::: tip
+Use `read-only` state for component that cannot be interacted with, except for copy its value. Also use it for links which might be copied.
 
-@table-caption Input states
+Use `disabled` state if you need to show affect of one component to another.
+:::
+
+Table: Input states
 
 | State   | Normal        | Focus                 | Disabled       | Read-only     |
 | ------- | ------------- | --------------------- | -------------- | ------------- |
@@ -90,9 +95,11 @@ The search input can have a non-clickable icon before the text and the icon for 
 
 You can place [Counter](/components/counter/) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
-> Please don’t use the [Tag](/components/tag/) component for the counter. It has a different purpose and functionality.
+::: tip
+Please don’t use the [Tag](/components/tag/) component for the counter. It has a different purpose and functionality.
+:::
 
-@table-caption Input with counter
+Table: Input with counter
 
 | Size (height in px) | Counter next to the input's label  | Counter inside the input     |
 | ------------------- | ---------------------------------- | ---------------------------- |
@@ -105,7 +112,3 @@ You can place [Counter](/components/counter/) inside the input or next to its la
 2. Label the inputs clearly, so users can quickly understand what data needs to be entered.
 3. Select an appropriate width for the input field based on the content to be entered. For example, if it's for a phone number, the input width shouldn't be wider than what is expected for a phone number.
 
-@page input-a11y
-@page input-api
-@page input-code
-@page input-changelog

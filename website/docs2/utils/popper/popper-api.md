@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: popper
+tabs: Popper('popper'), API('popper-api'), Changelog('popper-changelog')
 ---
 
 ## Popper
@@ -12,7 +13,11 @@ import Popper from '@semcore/ui/popper';
 <Popper />;
 ```
 
-@typescript PopperProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="PopperProps" :types={...types} />
 
 ## Popper.Trigger
 
@@ -23,7 +28,7 @@ import Popper from '@semcore/ui/popper';
 <Popper.Trigger />;
 ```
 
-@typescript PopperTriggerProps
+<TypesView type="PopperTriggerProps" :types={...types} />
 
 ## Popper.Popper
 
@@ -34,4 +39,4 @@ import Popper from '@semcore/ui/popper';
 <Popper.Popper />;
 ```
 
-@typescript PopperPopperProps
+<TypesView type="PopperPopperProps" :types={...types} />

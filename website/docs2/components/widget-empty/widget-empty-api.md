@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: widget-empty
+tabs: Widget empty state('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
 ## WidgetEmpty
@@ -12,7 +13,11 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 <WidgetEmpty />;
 ```
 
-@typescript WidgetEmptyProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="WidgetEmptyProps" :types={...types} />
 
 ## NoData
 
@@ -23,7 +28,7 @@ import { NoData } from '@semcore/ui/widget-empty';
 <NoData />;
 ```
 
-@typescript WidgetNoDataProps
+<TypesView type="WidgetNoDataProps" :types={...types} />
 
 ## Error
 
@@ -34,7 +39,7 @@ import { Error } from '@semcore/ui/widget-empty';
 <Error />;
 ```
 
-@typescript WidgetErrorProps
+<TypesView type="WidgetErrorProps" :types={...types} />
 
 ## Images
 

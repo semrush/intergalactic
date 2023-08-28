@@ -1,11 +1,16 @@
 ---
 title: API
 fileSource: tag
+tabs: Tag('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
 ---
 
 ## Tag
 
-@typescript TagProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="TagProps" :types={...types} />
 
 ## Tag.Addon
 

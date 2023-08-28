@@ -2,6 +2,7 @@
 title: Tooltip
 fileSource: tooltip
 tabName: Design
+tabs: Tooltip('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
 @import playground
@@ -30,9 +31,11 @@ Component consists of the following:
 
 Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
 
-> Starting from [version 3.1.0](/components/tooltip/tooltip-changelog/), you can set your own custom theme and change the background color.
+::: tip
+Starting from [version 3.1.0](/components/tooltip/tooltip-changelog/), you can set your own custom theme and change the background color.
+:::
 
-@table-caption Tooltip themes
+Table: Tooltip themes
 
 | Theme   | Appearance example              | Styles      |
 | ------- | ------------------------------- | ----------- |
@@ -64,7 +67,9 @@ The content area of the tooltip has a default padding of 12px.
 
 ![](static/tooltip-button.png)
 
-> It's recommended to use a font size of 14px (`--fs-200`, `--lh-200` tokens) for the title in non-advertising messages.
+::: tip
+It's recommended to use a font size of 14px (`--fs-200`, `--lh-200` tokens) for the title in non-advertising messages.
+:::
 
 The image inside the tooltip has a size of 130px * 130px.
 
@@ -84,7 +89,59 @@ The tooltip's position shouldn't change when scrolling the page, ensuring it rem
 
 #### Placement properties
 
-@example placement
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Box } from '@semcore/ui/flex-box';
+import Button from '@semcore/ui/button';
+import Tooltip from '@semcore/ui/tooltip';
+import { Placement } from '@semcore/ui/popper';
+
+const styleBox = {
+  display: 'grid',
+  gridTemplateRows: '1fr 1fr 1fr',
+  gridTemplateColumns: '1fr 1fr 1fr',
+  gridGap: '2vw',
+  padding: '60px',
+};
+
+const Demo = () => {
+  const placements: Placement[] = [
+    'top-start',
+    'top',
+    'top-end',
+    'left-start',
+    'right-start',
+    'left',
+    'right',
+    'left-end',
+    'right-end',
+    'bottom-start',
+    'bottom',
+    'bottom-end',
+  ];
+  return (
+    <Box style={styleBox}>
+      {placements.map((placement, i) => {
+        return (
+          <React.Fragment key={i}>
+            {['right', 'right-start', 'right-end'].includes(placement) && <div />}
+            <Tooltip placement={placement}>
+              <Tooltip.Trigger tag={Button}>{placement.toLocaleUpperCase()}</Tooltip.Trigger>
+              <Tooltip.Popper>Hi there!</Tooltip.Popper>
+            </Tooltip>
+          </React.Fragment>
+        );
+      })}
+    </Box>
+  );
+};
+
+
+</script>
+
+:::
 
 ## Interaction
 
@@ -92,7 +149,7 @@ For the tooltip trigger, you can use formatted text, table headers, or interacti
 
 ### Appearance and hiding
 
-@table-caption Tooltip's appearance and hiding
+Table: Tooltip's appearance and hiding
 
 | Hidden    |                                |
 | --------- | ------------------------------ |
@@ -133,7 +190,9 @@ Main recommendations:
 - Use the tooltip to show hints and additional information, such as text, formatted text, lists, links, buttons, and small images.
 - Ensure that the tooltip does not overlap important information for the user.
 
-> For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
+::: tip
+For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
+:::
 
 **If the tooltip trigger conveys information about a new feature, avoid duplicating the trigger text in the tooltip title.** The title may not be necessary if the trigger text already explains the tooltip content.
 
@@ -157,7 +216,3 @@ Main recommendations:
 
 ![](static/tooltip-hover-yes-no.png)
 
-@page tooltip-a11y
-@page tooltip-api
-@page tooltip-code
-@page tooltip-changelog

@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: NoticeGlobal('notice-global'), A11y('notice-global-a11y'), API('notice-global-api'), Example('notice-global-code'), Changelog('notice-global-changelog')
 ---
 
 ## Notice
@@ -9,7 +10,11 @@ import NoticeGlobal from '@semcore/ui/notice-global';
 <NoticeGlobal />;
 ```
 
-@typescript NoticeGlobalProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="NoticeGlobalProps" :types={...types} />
 
 ## NoticeGlobal.Content
 

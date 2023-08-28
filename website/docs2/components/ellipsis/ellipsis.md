@@ -2,6 +2,7 @@
 title: Ellipsis
 fileSource: ellipsis
 tabName: Design
+tabs: Ellipsis('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
 @import playground
@@ -35,7 +36,7 @@ To include an ellipsis, use `…` (HTML symbol `&hellip;`).
 
 Ellipsis has two types of text truncation:
 
-@table-caption Ellipsis types
+Table: Ellipsis types
 
 | Type     | Appearance example                                                                                                       | Description                                                                                                                                                                                                                                                           |
 | -------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -84,7 +85,3 @@ To show more data in a limited space you can truncate paragraphs at the end. In 
 
 ![](static/ellipsis-pharagraph.png)
 
-@page ellipsis-a11y
-@page ellipsis-api
-@page ellipsis-code
-@page ellipsis-changelog

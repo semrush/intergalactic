@@ -2,6 +2,7 @@
 title: Pagination
 fileSource: pagination
 tabName: Design
+tabs: Pagination('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
 @import playground
@@ -85,7 +86,9 @@ In this case, there should be no error shown; instead, the user should be moved 
 
 Use this state only when there is some data, and there might be more data.
 
-> If there is no data or the filter is applied, pagination shouldn't be displayed. Instead, the table should contain a message indicating that there is no data.
+::: tip
+If there is no data or the filter is applied, pagination shouldn't be displayed. Instead, the table should contain a message indicating that there is no data.
+:::
 
 ![](static/one-page.png)
 
@@ -111,7 +114,3 @@ In this case, add the `tilde (≈)` to the number of pages and change the link d
 
 ![](static/undefined-number.png)
 
-@page pagination-a11y
-@page pagination-api
-@page pagination-code
-@page pagination-changelog

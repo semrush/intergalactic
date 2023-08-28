@@ -1,5 +1,6 @@
 ---
 title: Usage in design
+tabs: Design tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
 ---
 
 ## What is a design token?
@@ -40,7 +41,9 @@ For example, compare token for primary neutral background:
 
 ![scheme of tokens naming structure: --{theme-name}-{category}-{priority}-{context}-{invert}-{state}](static/token-naming.png)
 
-> The token name doesn't have to contain all the elements of the naming structure. The naming structure creates a system so you can easily name the new token, and it will fit into the design system.
+::: tip
+The token name doesn't have to contain all the elements of the naming structure. The naming structure creates a system so you can easily name the new token, and it will fit into the design system.
+:::
 
 ## Tokens usage
 
@@ -92,7 +95,9 @@ Use them for text, titles, and hints.
 
 Use it for backgrounds only.
 
-> May be completely invisible to users with poor vision or low-contrast monitor
+::: tip
+May be completely invisible to users with poor vision or low-contrast monitor
+:::
 
 @import color-group {"group": "shade50"}
 
@@ -103,7 +108,9 @@ Use it for:
 - Light borders.
 - Active faded backgrounds (for example, widget backgrounds, accordions, table headers).
 
-> APCA ~ 15 to white (minimum visible elements)
+::: tip
+APCA ~ 15 to white (minimum visible elements)
+:::
 
 @import color-group {"group": "shade100"}
 
@@ -135,7 +142,9 @@ Use it for:
 
 Text colored in this shade can be placed on a white background
 
-> Contrast parameters: APCA ~ 65 to white, WCAG 3:1 to 50 shade.
+::: tip
+Contrast parameters: APCA ~ 65 to white, WCAG 3:1 to 50 shade.
+:::
 
 @import color-group {"group": "shade400"}
 

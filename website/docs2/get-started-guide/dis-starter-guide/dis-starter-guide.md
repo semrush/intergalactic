@@ -55,7 +55,7 @@ See [Typography](/style/typography/) if want to learn more about our recommendat
 
 While most of our products are designed for desktop data visualization, we suggest using the following main breakpoints for adaptivity:
 
-@table-caption Breakpoints tokens
+Table: Breakpoints tokens
 
 | Token                  | Value  | Usage                                    |
 | ---------------------- | ------ | ---------------------------------------- |

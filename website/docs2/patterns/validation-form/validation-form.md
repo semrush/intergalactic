@@ -1,6 +1,7 @@
 ---
 title: Validation
 tabName: Design
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
@@ -12,13 +13,17 @@ tabName: Design
 - Validation in forms and filters can be performed simultaneously by `unFocus` and `Submit`. _This option doesn't apply to forms with limits – use only `Submit` for them._
 - Don’t validate empty fields (in which user hasn’t entered a value) by `unFocus`.
 
-> Since form validation can be performed by clicking on a button, it isn’t recommended to set the main buttons to `disabled` state. This creates a false impression that the form or filter doesn't work at all.
+::: tip
+Since form validation can be performed by clicking on a button, it isn’t recommended to set the main buttons to `disabled` state. This creates a false impression that the form or filter doesn't work at all.
+:::
 
 - After validation by `unFocus`, an input with the error is highlighted. When you focus on it, a tooltip appears with a hint what you need to fix in the form.
 - After validation by `Submit`, all inputs with errors get the `invalid` state, and `focus` with the tooltip with a hint is passed to the first invalid input.
 - The `focus` on the first input with an error should scroll the page to it, if the page is long, show a tooltip with a hint of what to fix.
 
-> The tooltip tells user why the input gets invalid state or what to do to send the data. If possible, it should be placed so that important content is also visible next to the input or control. Don't forget to put a full stop at the end of the text in the tooltip.
+::: tip
+The tooltip tells user why the input gets invalid state or what to do to send the data. If possible, it should be placed so that important content is also visible next to the input or control. Don't forget to put a full stop at the end of the text in the tooltip.
+:::
 
 ### How the invalid state is removed from the input
 
@@ -64,5 +69,3 @@ The General pattern for the text: `Please enter something`.
 | If the field is filled in with an error                          | For example, the field with email: `Please enter a valid email`.                                         |
 | Standard error in the checkbox when accepting Terms & Conditions | `Please confirm that you agree to our Terms and Conditions and Privacy Policy`.                          |
 
-@page validation-form-a11y
-@page validation-form-code

@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Checkbox('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
 ## Checkbox
@@ -11,7 +12,11 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox />;
 ```
 
-@typescript CheckboxProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="CheckboxProps" :types={...types} />
 
 ## Checkbox.Value
 
@@ -22,7 +27,7 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value />;
 ```
 
-@typescript CheckboxValueProps
+<TypesView type="CheckboxValueProps" :types={...types} />
 
 ## Checkbox.Text
 
@@ -33,4 +38,4 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Text />;
 ```
 
-@typescript CheckboxTextProps
+<TypesView type="CheckboxTextProps" :types={...types} />

@@ -108,7 +108,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         const { parameters, type } = node as ts.FunctionTypeNode;
         const params = parameters.map((param) => traverse(param));
         const returnType = traverse(type);
-        const result = [];
+        const result: any[] = [];
         result.push('(');
         for (let i = 0; i < params.length; i++) {
           if (i !== 0) result.push(', ');
@@ -137,9 +137,9 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         return [
           '[',
           traverse(typeParameter.name),
-          traverse(typeParameter.constraint),
+          traverse(typeParameter.constraint!),
           ']:',
-          traverse(type),
+          traverse(type!),
         ];
       }
       case ts.SyntaxKind.IndexSignature: {
@@ -169,7 +169,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
       }
       case ts.SyntaxKind.UnionType: {
         const { types } = node as ts.UnionTypeNode;
-        const result = [];
+        const result: any[] = [];
         for (let i = 0; i < types.length; i++) {
           if (i !== 0) result.push(' | ');
           result.push(traverse(types[i]));
@@ -178,7 +178,7 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
       }
       case ts.SyntaxKind.IntersectionType: {
         const { types } = node as ts.IntersectionTypeNode;
-        const result = [];
+        const result: any[] = [];
         for (let i = 0; i < types.length; i++) {
           if (i !== 0) result.push(' & ');
           result.push(traverse(types[i]));
@@ -228,9 +228,20 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
         break;
       }
       case ts.SyntaxKind.MethodSignature: {
-        const { name, parameters, type } = node as ts.MethodSignature;
+        const { type, name, parameters } = node as ts.MethodSignature;
+        const params = parameters.map((param) => traverse(param));
+        const returnType = traverse(type);
+        const result: any[] = [];
+        result.push(traverse(name));
+        result.push('(');
+        for (let i = 0; i < params.length; i++) {
+          if (i !== 0) result.push(', ');
+          result.push(params[i]);
+        }
+        result.push('): ');
+        result.push(returnType);
 
-        return [traverse(name), '(', ...parameters.map(traverse), '):', traverse(type)];
+        return result;
       }
       case ts.SyntaxKind.FirstNode: {
         const { left, right } = node as ts.QualifiedName;
@@ -257,9 +268,9 @@ export const serializeTsNode = (node: ts.Node, genericsMap = {}, minimizeMembers
 };
 
 export const serializeProperty = (propertyDeclaration: ts.PropertySignature, genericsMap) => {
-  const name = (propertyDeclaration as { name?: ts.Identifier }).name.escapedText;
+  const name = (propertyDeclaration as { name?: ts.Identifier }).name!.escapedText;
   const isOptional = propertyDeclaration.questionToken !== undefined;
-  const type = serializeTsNode(propertyDeclaration.type, genericsMap);
+  const type = serializeTsNode(propertyDeclaration.type!, genericsMap);
   const dependencies = extractDependenciesList(type);
 
   const jsDoc = (propertyDeclaration as { jsDoc?: ts.JSDoc[] }).jsDoc ?? [];
@@ -269,11 +280,12 @@ export const serializeProperty = (propertyDeclaration: ts.PropertySignature, gen
       .flatMap((jsDocBlock) => jsDocBlock.tags ?? [])
       .map((tag) => {
         const paramName = tag.tagName.escapedText;
-        const paramValue = tag.typeExpression && serializeTsNode(tag.typeExpression, genericsMap);
+        const paramValue =
+          (tag as any).typeExpression && serializeTsNode((tag as any).typeExpression, genericsMap);
 
         if (paramName === 'use') {
-          const useInstead = tag.comment.split('.')[0];
-          let useInsteadPostfix = tag.comment.split('.').slice(1).join('.');
+          const useInstead = (tag as any).comment.split('.')[0];
+          let useInsteadPostfix = (tag as any).comment.split('.').slice(1).join('.');
           if (useInsteadPostfix.length > 0) {
             useInsteadPostfix = `.${useInsteadPostfix}`;
           }

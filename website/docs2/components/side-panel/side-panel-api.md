@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: side-panel
+tabs: SidePanel('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
 ## SidePanel
@@ -10,7 +11,11 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel />;
 ```
 
-@typescript SidePanelProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SidePanelProps" :types={...types} />
 
 ## SidePanel.Overlay
 
@@ -30,7 +35,7 @@ import SidePanel from '@semcore/ui/side-panel';
 
 This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) and [FocusLock](https://github.com/theKashey/react-focus-lock/blob/master/interfaces.d.ts#L4).
 
-@typescript SidePanelPanelProps
+<TypesView type="SidePanelPanelProps" :types={...types} />
 
 ## SidePanel.Close
 

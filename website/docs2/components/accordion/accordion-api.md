@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Accordion('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
 ---
 
 ## Accordion
@@ -10,7 +11,11 @@ import Accordion from '@semcore/ui/accordion';
 <Accordion />;
 ```
 
-@typescript AccordionProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="AccordionProps" :types={...types} />
 
 ## Accordion.Item
 
@@ -20,7 +25,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item />;
 ```
 
-@typescript AccordionItemProps
+<TypesView type="AccordionItemProps" :types={...types} />
 
 ## Accordion.Item.Toggle
 
@@ -40,7 +45,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item.Collapse />;
 ```
 
-@typescript CollapseProps
+<TypesView type="CollapseProps" :types={...types} />
 
 Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
 

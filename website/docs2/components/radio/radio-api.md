@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: radio
+tabs: Radio('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
 ## RadioGroup
@@ -12,7 +13,11 @@ import { RadioGroup } from '@semcore/ui/radio';
 <RadioGroup />;
 ```
 
-@typescript RadioGroupProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="RadioGroupProps" :types={...types} />
 
 ## Radio
 
@@ -23,7 +28,7 @@ import Radio from '@semcore/ui/radio';
 <Radio />;
 ```
 
-@typescript RadioProps
+<TypesView type="RadioProps" :types={...types} />
 
 ## Radio.Value
 
@@ -32,7 +37,7 @@ import Radio from '@semcore/ui/radio';
 <Radio.Value />;
 ```
 
-@typescript RadioValueProps
+<TypesView type="RadioValueProps" :types={...types} />
 
 ## Radio.Text
 

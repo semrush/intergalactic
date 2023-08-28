@@ -2,6 +2,7 @@
 title: A11y
 fileSource: select
 a11y: AA
+tabs: Select / Multiselect('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
 ## What component has

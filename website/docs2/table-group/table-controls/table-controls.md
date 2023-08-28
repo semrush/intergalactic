@@ -2,27 +2,33 @@
 title: Table controls
 ---
 
-> For all the main table styles and principles, see [Table](/table-group/table/).
+::: tip
+For all the main table styles and principles, see [Table](/table-group/table/).
+:::
 
 Here we describe all the elements and controls that are important when working with our tables.
 
-> ...what exactly do users do with tables:
->
-> 1. viewing data,
-> 2. enter data,
-> 3. search for data,
-> 4. control data,
-> 5. collect data.
->
-> **Each item is a separate process that requires attention.**.
->
-> _[Article by M. Grekov about UX tables that are used (in Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)_
+::: tip
+...what exactly do users do with tables:
+
+1. viewing data,
+2. enter data,
+3. search for data,
+4. control data,
+5. collect data.
+
+**Each item is a separate process that requires attention.**.
+
+_[Article by M. Grekov about UX tables that are used (in Russian)](https://designpub.ru/ux-%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86-%D1%81-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC%D0%B8-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D1%8E%D1%82-%D1%87%D0%B0%D1%81%D1%82%D1%8C-1-%D0%BF%D1%80%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-5ea60df37f12)_
+:::
 
 ## Accordion
 
 A table row can be expanded as an [Accordion](/components/accordion/). As a rule such row has more detailed information on row data - chart, text, links, etc.
 
-> If you have too much data inside a row with accordion, you may need to think about a separate page for it.
+::: tip
+If you have too much data inside a row with accordion, you may need to think about a separate page for it.
+:::
 
 - The accordion row must have the `ChevronRight` icon in the leftmost column. It indicates that this line can be expanded. Icon has M size and `--icon-secondary-neutral` token for color.
 - The row that opened additional data from must remain highlighted. The `active` state of a row has `--table-td-cell-active` token as background color.
@@ -76,7 +82,9 @@ The area that you can grab and change the size of the column includes not only t
 
 ![](static/resize-click-zone.png)
 
-> Changing the size of one column shouldn't change the size of other columns.
+::: tip
+Changing the size of one column shouldn't change the size of other columns.
+:::
 
 ## Editing and adding content
 
@@ -143,9 +151,11 @@ If the table has more than one page, it must have [Pagination](/components/pagin
 
 If the table contains a small amount of data, we show the pagination for one page.
 
-> When you navigate through the pages in the table, **scroll the table to the first row**. Otherwise, the user have to scroll on their own.
->
-> Applying filters to a table always takes the user to the first page of the table.
+::: tip
+When you navigate through the pages in the table, **scroll the table to the first row**. Otherwise, the user have to scroll on their own.
+
+Applying filters to a table always takes the user to the first page of the table.
+:::
 
 ## Sorting
 
@@ -176,7 +186,9 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 ### Rules for sorting
 
-> If the data in the column shouldn't be sorted, there should be no sorting icon.
+::: tip
+If the data in the column shouldn't be sorted, there should be no sorting icon.
+:::
 
 - The sort icon should be displayed while hovering on columns that can be sorted. **The icon shows not the current state, but how the column will be sorted if sorting is activated.**
 - The default sorting must be set for each column to be sorted. Descending order is used by default (use `SortDesc` icon).
@@ -184,7 +196,9 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 - **When you select a different column**, the icon on the selected column becomes active. Icons on other columns don’t change their direction.
 - When you reload data in a table where data was sorted in one of the columns, the header of the sorted column remains highlighted.
 
-> When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
+::: tip
+When you click on the sorting icon in the header, the table should be reloaded and always return the user to the top of the first row.
+:::
 
 ### Sort direction
 
@@ -198,7 +212,9 @@ If table has only one column with sorting, usually its sorting icon is unclickab
 
 ## Status and actions row
 
-> The row must have `transition: 400ms` specified for appearing and hiding.
+::: tip
+The row must have `transition: 400ms` specified for appearing and hiding.
+:::
 
 We recommend using the status row when the table has multi-row selection and pagination at the same time. This is necessary so that the user understands that the table has selected rows when paginating the table. You can also show popular actions that can be performed on rows in the status row.
 
@@ -217,4 +233,6 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 Use no more than 3-5 actions, which are the most popular among actions on the table rows.
 
-> For all the main table styles and principles, see [Table](/table-group/table/).
+::: tip
+For all the main table styles and principles, see [Table](/table-group/table/).
+:::

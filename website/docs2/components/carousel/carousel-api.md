@@ -1,5 +1,6 @@
 ---
 title: API
+tabs: Carousel('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
 ---
 
 ## Carousel
@@ -11,7 +12,11 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel />;
 ```
 
-@typescript CarouselProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="CarouselProps" :types={...types} />
 
 ## Carousel.Container
 

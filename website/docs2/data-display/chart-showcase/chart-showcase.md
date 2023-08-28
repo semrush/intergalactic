@@ -3,6 +3,7 @@ title: Charts showcase
 fileSource: d3-chart
 tabName: Design
 docs: true
+tabs: Charts showcase('chart-showcase'), Changelog('d3-chart-changelog')
 ---
 
 We use many types of charts in the interface. Each of them is designed to visualize different cases and data.
@@ -11,7 +12,9 @@ We use many types of charts in the interface. Each of them is designed to visual
 - [Chart tooltip](/data-display/d3-chart/#tooltip)
 - [Chart legend](/data-display/chart-legend/)
 
-> Note that some chart types are in the development yet (they aren't clickable).
+::: tip
+Note that some chart types are in the development yet (they aren't clickable).
+:::
 
 ## Comparison
 
@@ -77,4 +80,3 @@ _For example: Show website audience by country or region on a map._
 
 @import chart-group {"group": ["choroplethMap"]}
 
-@page d3-chart-changelog

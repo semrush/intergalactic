@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: skeleton
+tabs: Skeleton('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
 ## Skeleton
@@ -10,7 +11,11 @@ import Skeleton from '@semcore/ui/skeleton';
 <Skeleton />;
 ```
 
-@typescript SkeletonProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="SkeletonProps" :types={...types} />
 
 ## Skeleton.Text
 
@@ -19,7 +24,7 @@ import Skeleton from '@semcore/ui/skeleton';
 <Skeleton.Text />;
 ```
 
-@typescript SkeletonTextProps
+<TypesView type="SkeletonTextProps" :types={...types} />
 
 ## LineChartSkeleton
 
@@ -27,7 +32,7 @@ import Skeleton from '@semcore/ui/skeleton';
 import { LineChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript LineChartSkeletonProps
+<TypesView type="LineChartSkeletonProps" :types={...types} />
 
 ## AreaChartSkeleton
 
@@ -35,7 +40,7 @@ import { LineChartSkeleton } from '@semcore/ui/skeleton';
 import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript AreaChartSkeletonProps
+<TypesView type="AreaChartSkeletonProps" :types={...types} />
 
 ## BarChartSkeleton
 
@@ -43,7 +48,7 @@ import { AreaChartSkeleton } from '@semcore/ui/skeleton';
 import { BarChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript BarChartSkeletonProps
+<TypesView type="BarChartSkeletonProps" :types={...types} />
 
 ## HistogramChartSkeleton
 
@@ -51,7 +56,7 @@ import { BarChartSkeleton } from '@semcore/ui/skeleton';
 import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript HistogramChartSkeletonProps
+<TypesView type="HistogramChartSkeletonProps" :types={...types} />
 
 ## DonutChartSkeleton
 
@@ -59,7 +64,7 @@ import { HistogramChartSkeleton } from '@semcore/ui/skeleton';
 import { DonutChartSkeleton } from '@semcore/ui/skeleton';
 ```
 
-@typescript DonutChartSkeletonProps
+<TypesView type="DonutChartSkeletonProps" :types={...types} />
 
 ## BubbleChartSkeleton
 

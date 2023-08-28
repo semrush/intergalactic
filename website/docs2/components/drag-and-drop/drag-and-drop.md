@@ -2,13 +2,16 @@
 title: Drag and drop
 fileSource: drag-and-drop
 tabName: Design
+tabs: Drag and drop('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
 ---
 
 ## Description
 
 **Drag and drop** is a component that allows user to move elements within the interface, changing their order and sometimes their properties.
 
-> One common use case is reordering columns in a table, using dropdowns known as "Table settings controls".
+::: tip
+One common use case is reordering columns in a table, using dropdowns known as "Table settings controls".
+:::
 
 The component imitates the physical dragging of objects, and two essential considerations for this are:
 
@@ -65,7 +68,7 @@ Use `--bg-primary-neutral-hover` token for background-color and `border: 1px das
 
 ## Where to use
 
-@table-caption Where to use drag and drop component
+Table: Where to use drag and drop component
 
 | Component                                | Appearance example                                                                                      |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -85,7 +88,7 @@ When dragging either a clickable or non-clickable element, a long click on any p
 
 When dragging, the axis isn’t restricted, allowing the element to be moved anywhere on the page but only added to certain areas.
 
-@table-caption States of draggable element
+Table: States of draggable element
 
 | State    | Appearance example                                              | Description                                                                                                                                                                                                                                                                                                        |
 | -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -96,7 +99,7 @@ When dragging, the axis isn’t restricted, allowing the element to be moved any
 
 ### States of droppable area
 
-@table-caption States of droppable area
+Table: States of droppable area
 
 | State    | Appearance example                                                                        | Description                                                                                                                                                                                                                                                                               |
 | -------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -113,13 +116,11 @@ This component imitates physically dragging objects, so keep the following in mi
 - Display the area where the element can be placed.
 - Avoid placing the draggable element and its drop area too far apart.
 
-> Use appropriate cursors such as `move`, `grab`, or `grabbing` when interacting with draggable elements.
+::: tip
+Use appropriate cursors such as `move`, `grab`, or `grabbing` when interacting with draggable elements.
+:::
 
 Note that short and long clicks have different meanings, with long clicks used for clickable draggable objects.
 
 Apply the required styles to show that an element is being dragged during the `DragEvent`.
 
-@page drag-and-drop-a11y
-@page drag-and-drop-api
-@page drag-and-drop-code
-@page drag-and-drop-changelog

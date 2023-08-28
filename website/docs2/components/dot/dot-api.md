@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: dot
+tabs: Dot('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Changelog('dot-changelog')
 ---
 
 ## Dot
@@ -10,4 +11,8 @@ import Dot from '@semcore/ui/dot';
 <Dot aria-label="..." />;
 ```
 
-@typescript DotProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="DotProps" :types={...types} />

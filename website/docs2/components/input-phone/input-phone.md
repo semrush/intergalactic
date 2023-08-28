@@ -1,6 +1,7 @@
 ---
 title: InputPhone
 tabName: Design
+tabs: InputPhone('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
 ---
 
 ## Description
@@ -12,7 +13,9 @@ tabName: Design
 - Provide preset values for the phone code, such as the country code or a flag along with the country code for clarity.
 - Utilize a mask to display the number in the desired format, eliminating the need for users to type brackets, hyphens, and other formatting characters.
 
-> In a [study conducted by Baymard Research](https://baymard.com/blog/input-masking-form-field), it was found that even with formatting examples provided, 89% of users entered numerical inputs in various formats. Some users hesitated before entering their data, fearing that the format they used wouldn't be validated, even on sites that accepted all formatting.
+::: tip
+In a [study conducted by Baymard Research](https://baymard.com/blog/input-masking-form-field), it was found that even with formatting examples provided, 89% of users entered numerical inputs in various formats. Some users hesitated before entering their data, fearing that the format they used wouldn't be validated, even on sites that accepted all formatting.
+:::
 
 ## Appearance
 
@@ -21,7 +24,7 @@ The appearance of the phone number input can vary based on:
 - User's country and/or number format
 - Whether phone numbers from the same country are required
 
-@table-caption InputPhone variants
+Table: InputPhone variants
 
 | Case | Appearance example  |
 | ---- | ------------------- |
@@ -31,7 +34,9 @@ The appearance of the phone number input can vary based on:
 
 When the user's country is known, it's important to display the flag of the country in the input field. This helps users navigate through the entered data more easily, as seen in the [Form guide](/patterns/form/).
 
-> Be sure to add the label "Phone number" to the input. Especially if there are no visual indications of the mask type, country code, or format,
+::: tip
+Be sure to add the label "Phone number" to the input. Especially if there are no visual indications of the mask type, country code, or format,
+:::
 
 For actual examples of phone number inputs, refer to the [Example tab](/components/input-phone/input-phone-code).
 
@@ -39,7 +44,7 @@ For actual examples of phone number inputs, refer to the [Example tab](/componen
 
 It is recommended to provide visible text instructions for inputs with specific data formats.
 
-@table-caption Sizes of InputPhone's hint text
+Table: Sizes of InputPhone's hint text
 
 | Size (height in px) | Hint text size | Appearance example                  | Margins                                   |
 | ------------------- | ------------------- | ----------------------------------- | ----------------------------------------- |
@@ -48,7 +53,9 @@ It is recommended to provide visible text instructions for inputs with specific 
 
 ## Interaction
 
-> here are characters entered in the input, a "clear all" button will appear.
+::: tip
+here are characters entered in the input, a "clear all" button will appear.
+:::
 
 ### Important points for cases when the user's country and phone format can be determined
 
@@ -59,11 +66,13 @@ It is recommended to provide visible text instructions for inputs with specific 
 - When the phone format is known, the input should have a mask specific to the country. If the format is unknown, it is recommended to remove the format mask altogether, as mentioned in [Baymard Research](https://baymard.com/blog/input-masking-form-field) (only leave the + country code at the beginning of the input).
 - If the country code is known, it should be pre-filled in the input. The user can delete it if necessary.
 
-> According to [Baymard Research](https://baymard.com/blog/input-masking-form-field), if you are not certain about the correct regional formatting, or if the target audience is deemed to be too small, it is best to disable the input mask for all users in unverified or unsupported countries and use a traditional form field without any input restrictions.
+::: tip
+According to [Baymard Research](https://baymard.com/blog/input-masking-form-field), if you are not certain about the correct regional formatting, or if the target audience is deemed to be too small, it is best to disable the input mask for all users in unverified or unsupported countries and use a traditional form field without any input restrictions.
+:::
 
 ### Unknown country and/or phone number format
 
-@table-caption States for the case when country and/or phone number format are unknown
+Table: States for the case when country and/or phone number format are unknown
 
 | Normal          | Focus          | Filled               |
 | --------------- | -------------- | -------------------- |
@@ -71,7 +80,7 @@ It is recommended to provide visible text instructions for inputs with specific 
 
 ### Known country but unknown phone number format
 
-@table-caption States for the case when only country is known, while phone number format is unknown
+Table: States for the case when only country is known, while phone number format is unknown
 
 | Countries number   | Normal         | Focus         | Filled             |
 | ------------------ | -------------- | ------------- | ------------------ |
@@ -82,7 +91,7 @@ It is recommended to provide visible text instructions for inputs with specific 
 
 This option is most suitable when collecting phone numbers from users in one or a limited number of countries.
 
-@table-caption States for the case when both country and phone number format are known
+Table: States for the case when both country and phone number format are known
 
 | Countries number   | Normal                 | Focus               | Filled               |
 | ------------------ | ---------------------- | ------------------- | -------------------- |
@@ -95,5 +104,3 @@ To ensure user clarity about how much information they need to enter, it is reco
 
 ![](static/size-yes-no.png)
 
-@page input-phone-a11y
-@page input-phone-code

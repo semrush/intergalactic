@@ -1,6 +1,7 @@
 ---
 title: Filter Search
 tabName: Design
+tabs: Filter Search('filter-search'), Example('filter-search-code')
 ---
 
 ## Description
@@ -34,7 +35,9 @@ Dynamic search applies entered value as soon as at least one character is entere
 
 **Suitable for filters that are not limited, and there is little data**.
 
-> Set a delay for sending the entered value. So you'll not burden the search engine and it will show the results more smoothly and predictably.
+::: tip
+Set a delay for sending the entered value. So you'll not burden the search engine and it will show the results more smoothly and predictably.
+:::
 
 | State       | Appearance example                                 | Description                                                                                                                                                                                                                                        |
 | ----------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -42,9 +45,11 @@ Dynamic search applies entered value as soon as at least one character is entere
 | Focus       | ![](static/focus.png)             | The placeholder remains until at least one character is entered.                                                                                                                                                                                   |
 | Filled      | ![](static/filled.png)           | When filling in the input, the filter is triggered for each character. Be sure to display the Close icon to reset the entered value.                                                                                                               |
 
-> **Why not "Search"**
->
-> This search filter works exactly like a filter. In order to make it obvious by what parameter it searches, indicate it in the placeholder. Leave "Search" only for simple search inputs, or when there is an additional functionality for choosing by which parameter to search.
+::: tip
+**Why not "Search"**
+
+This search filter works exactly like a filter. In order to make it obvious by what parameter it searches, indicate it in the placeholder. Leave "Search" only for simple search inputs, or when there is an additional functionality for choosing by which parameter to search.
+:::
 
 ## Search by button
 
@@ -108,4 +113,3 @@ You can change the secondary text if necessary.
 | No data at all                | ![](static/empty-no-data.png) |
 | No data due to applied filter | ![](static/empty-filter.png)  |
 
-@page filter-search-code

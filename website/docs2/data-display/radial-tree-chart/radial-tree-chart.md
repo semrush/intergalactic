@@ -2,6 +2,7 @@
 title: Radial Tree chart
 fileSource: d3-chart
 tabName: Design
+tabs: Radial Tree chart('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
 ---
 
 ## Description
@@ -83,7 +84,3 @@ Here you will find the states for some specific cases. All other "empty states" 
 | **N/a.** Show a special WidgetEmpty message for cases when data isn't available.                                                                                                                                               | ![](static/n-a-state.png)           |
 | **Initial loading.** Show the skeleton for this state. If the chart has a title, it should be displayed while the chart is loading. The user must understand what exactly is being loaded and whether they should wait for it. | ![](static/radial-tree-skeleton.png)     |
 
-@page radial-tree-chart-api
-@page radial-tree-chart-a11y
-@page radial-tree-chart-d3-examples
-@page d3-chart-changelog

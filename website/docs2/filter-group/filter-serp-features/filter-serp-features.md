@@ -3,7 +3,9 @@ title: SERP Features
 tabName: Design
 ---
 
-> **General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+::: tip
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+:::
 
 ## Description
 

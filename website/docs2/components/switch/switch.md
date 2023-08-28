@@ -2,6 +2,7 @@
 title: Switch
 fileSource: switch
 tabName: Design
+tabs: Switch('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
 ---
 
 @import playground
@@ -27,7 +28,7 @@ The switch comes in three sizes: `m`, `l` and `xl`.
 
 The switch includes a text label, which can be added to one or both of the states. When the option is enabled, the text color uses the `--text-primary` token, and when the option is disabled, the text color uses the `--text-secondary` token.
 
-@table-caption Switch sizes and styles
+Table: Switch sizes and styles
 
 | Switch size (height in px) | Appearance example and margins   | Styles       |
 | -------------------------- | -------------------------------- | ------------ |
@@ -39,7 +40,7 @@ The switch includes a text label, which can be added to one or both of the state
 
 The Switch component offers two themes: `info` and `success`.
 
-@table-caption Switch themes
+Table: Switch themes
 
 | Theme     | Appearance example         | Usage                       |
 | --------- | -------------------------- | --------------------------- |
@@ -50,7 +51,7 @@ The Switch component offers two themes: `info` and `success`.
 
 For larger sizes of the component (`l` and `xl`), you have the option to include an icon within the `Switch.Value`. It is recommended to use different icons for the off and on states.
 
-@table-caption Icon inside the Switch.Value
+Table: Icon inside the Switch.Value
 
 | Switch size | Normal state                       | Checked state                     |
 | ----------- | ---------------------------------- | --------------------------------- |
@@ -59,7 +60,7 @@ For larger sizes of the component (`l` and `xl`), you have the option to include
 
 ## Interaction
 
-@table-caption Switch states
+Table: Switch states
 
 | State   | Appearance example      | Styles        |
 | ------- | ----------------------- | ------------- |
@@ -77,7 +78,3 @@ When making labels, use action verbs like "Send by email" to clearly indicate th
 
 But, in cases with limited interface space or when the label is part of a switch group (specifically in settings), it's okay to use labels without verbs.
 
-@page switch-a11y
-@page switch-api
-@page switch-code
-@page switch-changelog

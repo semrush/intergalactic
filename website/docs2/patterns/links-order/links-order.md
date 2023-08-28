@@ -1,5 +1,6 @@
 ---
 title: Links order in ProductHead
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 Place additional links in the upper right corner of [ProductHead](/components/product-head/) in the following order:
@@ -21,4 +22,6 @@ Place additional links in the upper right corner of [ProductHead](/components/pr
 | **User manual**                                             | Opens page with manual in the Knowledge Base.                                       | ![](static/link11.png) |
 | **Send feedback**                                           | Opens dropdown with feedback form.                                                  | ![](static/link12.png) |
 
-> For more information about link styles, check the guide for [Link](/components/link/).
+::: tip
+For more information about link styles, check the guide for [Link](/components/link/).
+:::

@@ -1,6 +1,7 @@
 ---
 title: API
 fileSource: input-tags
+tabs: InputTags('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Example('input-tags-code'), Changelog('input-tags-changelog')
 ---
 
 ## InputTags
@@ -9,7 +10,11 @@ fileSource: input-tags
 import InputTags from '@semcore/ui/input-tags';
 ```
 
-@typescript InputTagsProps
+<script setup>
+  import { data as types } from '../../../builder/typings/types.data.ts'
+</script>
+
+<TypesView type="InputTagsProps" :types={...types} />
 
 ## InputTags.Value
 
@@ -18,7 +23,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Value />;
 ```
 
-@typescript InputTagsValueProps
+<TypesView type="InputTagsValueProps" :types={...types} />
 
 ## InputTags.Tag
 
@@ -29,7 +34,7 @@ import InputTags from '@semcore/ui/input-tags';
 <InputTags.Tag />;
 ```
 
-@typescript InputTagsTagProps
+<TypesView type="InputTagsTagProps" :types={...types} />
 
 ## InputTags.Tag.Addon
 
