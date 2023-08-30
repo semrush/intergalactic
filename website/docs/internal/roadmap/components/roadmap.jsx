@@ -135,12 +135,12 @@ const components = {
   ],
   'Q2 2023': [{ text: 'Enhancing accessibility of the components', size: { kit: '1/11' } }],
   'Q3 2023': [
-    { text: 'Documentation fixes', size: { ui: `1/7` } },
-    { text: 'Periods comparison for DatePicker', size: { ui: `1/5`, kit: '5/15' } },
-    { text: 'Website upgrades', size: { kit: '9/15', ui: `11/15` } },
+    { text: 'Documentation fixes', size: { ui: '1/7' } },
+    { text: 'Periods comparison for DatePicker', size: { ui: '1/5', kit: '5/15' } },
+    { text: 'Website upgrades', size: { kit: '9/15', ui: '11/15' } },
     { text: 'Technical improvements', size: { kit: '1/15' } },
   ],
-  'Q4 2023': [{ text: 'Plans in development...', size: { ui: `1/15` } }],
+  'Q4 2023': [{ text: 'Plans in development...', size: { ui: '1/15' } }],
 };
 
 function Gant(props) {
