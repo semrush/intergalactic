@@ -1,5 +1,7 @@
 {
   "./website/src/utils/{theme}-theme": [
+    "--intergalactic-bg-tertiary-neutral",
+    "--intergalactic-brand-tertiary",
     "--intergalactic-control-lift-me-up",
     "--intergalactic-control-lift-me-up-hover-active",
     "--intergalactic-box-shadow-top-menu",

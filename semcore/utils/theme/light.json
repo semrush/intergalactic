@@ -2385,5 +2385,45 @@
         "description": "Use for Summary or Counter."
       }
     }
+  },
+  "website-tokens": {
+    "control": {
+      "lift-me-up": {
+        "value": "{gray.100}",
+        "type": "color",
+        "description": "Used for background of the Up button on the Intergalactic website."
+      },
+      "lift-me-up-hover-active": {
+        "value": "{gray.200}",
+        "type": "color",
+        "description": "Used for background of the Up button in hover and active states on the Intergalactic website."
+      }
+    },
+    "top-menu": {
+      "value": "5px 8px 25px 0px rgba({gray.800}, 0.10)",
+      "type": "boxShadow",
+      "description": "Used for main header of the Intergalactic website."
+    },
+    "principles": {
+      "value": "10px 10px 45px 0px rgba({gray.800}, 0.14)",
+      "type": "boxShadow",
+      "description": "Used for cards on the Intergalactic website."
+    },
+    "brand": {
+      "tertiary": {
+        "value": "{orange.400}",
+        "type": "color",
+        "description": "Used for branded links on the Intergalactic website."
+      }
+    },
+    "bg": {
+      "tertiary": {
+        "neutral": {
+          "value": "{gray.white}",
+          "type": "color",
+          "description": "Used for the background of the header and cards with links on the Intergalactic website."
+        }
+      }
+    }
   }
 }
