@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.7.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/input` [4.6.1 ~> 4.7.0], `@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/flex-box` [5.4.1 ~> 5.5.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+
+## [5.6.0] - 2023-08-23
+
+### Fixed
+
+- Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+
+## [5.5.0] - 2023-08-23
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/input` [4.4.1 ~> 4.6.0], `@semcore/utils` [4.3.1 ~> 4.4.0], `@semcore/flex-box` [5.3.1 ~> 5.4.0], `@semcore/core` [2.3.1 ~> 2.4.0]).
+
 ## [5.4.1] - 2023-08-21
 
 ### Changed

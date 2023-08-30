@@ -1,9 +1,10 @@
 import React, { RefObject, useRef, useMemo, useState } from 'react';
-import createComponent, { Component, Intergalactic, sstyled } from '@semcore/core';
+import createComponent, { Component, Intergalactic, Root, sstyled } from '@semcore/core';
 import Tooltip, { TooltipProps } from '@semcore/tooltip';
 import { Box, BoxProps } from '@semcore/flex-box';
 import { useResizeObserver } from './useResizeObserver';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
+import findComponent, { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import style from './style/ellipsis.shadow.css';
 import reactToText from '@semcore/utils/lib/reactToText';
@@ -30,6 +31,8 @@ type AsPropsMiddle = {
 
   containerRef?: RefObject<HTMLDivElement>;
   tooltipProps: TooltipProps;
+  children?: React.ReactNode;
+  advanceMode?: boolean;
 };
 
 type EllipsisProps = BoxProps &
@@ -122,6 +125,9 @@ function isTextOverflowing(element: HTMLDivElement, multiline: boolean): boolean
   return currentSize < initialSize;
 }
 
+const forcedAdvancedMode = { forcedAdvancedMode: true } as any;
+const noAdvancedMode = {} as any;
+
 class RootEllipsis extends Component<AsProps> {
   static displayName = 'Ellipsis';
   static style = style;
@@ -147,6 +153,20 @@ class RootEllipsis extends Component<AsProps> {
     this.setState({ visible: visible && this.showTooltip() });
   };
 
+  getContentProps() {
+    return {
+      ref: this.textRef,
+      maxLine: this.asProps.maxLine,
+    };
+  }
+
+  getPopperProps() {
+    const { Children, includeTooltipProps } = this.asProps;
+    const text = reactToText(getOriginChildren(Children));
+    const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
+    return { children: text, ...tooltipProps };
+  }
+
   render() {
     const SEllipsis = this.Root;
     const SContainer = Tooltip;
@@ -162,7 +182,12 @@ class RootEllipsis extends Component<AsProps> {
       includeTooltipProps,
     } = this.asProps;
     const { visible } = this.state;
-    const text = reactToText(getOriginChildren(Children));
+    const advancedContent = findComponent(Children, [(Ellipsis as any).Content.displayName]);
+    const text = reactToText(advancedContent || getOriginChildren(Children));
+    const advanceMode = isAdvanceMode(Children, [
+      (Ellipsis as any).Content.displayName,
+      (Ellipsis as any).Popper.displayName,
+    ]);
     const tooltipProps = pick(this.asProps, includeTooltipProps as any) as TooltipProps;
     if (trim === 'middle') {
       return sstyled(styles)(
@@ -173,36 +198,63 @@ class RootEllipsis extends Component<AsProps> {
           containerRect={containerRect}
           containerRef={containerRef}
           tooltipProps={tooltipProps}
-        />,
+          advanceMode={advanceMode}
+        >
+          <Children />
+        </EllipsisMiddle>,
       );
     }
     if (tooltip) {
       return sstyled(styles)(
         <SContainer
           interaction='hover'
-          title={text as any}
+          title={!advanceMode ? text : undefined}
           visible={visible}
           onVisibleChange={this.handlerVisibleChange}
           {...tooltipProps}
+          {...(advanceMode ? forcedAdvancedMode : noAdvancedMode)}
         >
-          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+          {advanceMode ? (
             <Children />
-          </SEllipsis>
+          ) : (
+            <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+              <Children />
+            </SEllipsis>
+          )}
         </SContainer>,
       );
     }
     return sstyled(styles)(
       <SNoTooltipContainer>
-        <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+        {advanceMode ? (
           <Children />
-        </SEllipsis>
+        ) : (
+          <SEllipsis render={Box} ref={this.textRef} maxLine={maxLine}>
+            <Children />
+          </SEllipsis>
+        )}
       </SNoTooltipContainer>,
     );
   }
 }
 
+const EllipsisMiddleContext = React.createContext<null | {
+  begining: string;
+  tail: string;
+  ref: React.RefObject<HTMLElement>;
+}>(null);
+
 const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
-  const { styles, text, tooltip, containerRect, containerRef, tooltipProps } = props;
+  const {
+    styles,
+    text,
+    tooltip,
+    containerRect,
+    containerRef,
+    tooltipProps,
+    children,
+    advanceMode,
+  } = props;
   const resizeElement = useRef<HTMLDivElement>(null);
   const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
@@ -211,6 +263,9 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const blockWidth = useResizeObserver(resizeElement, containerRect).width;
 
   useEnhancedEffect(() => {
+    const node = containerRef?.current || resizeElement?.current;
+    if (!node) return;
+
     const dateSpan = document.createElement('temporary-block');
     dateSpan.setAttribute('style', `fontSize: ${dimension.fontSize}px`);
     dateSpan.innerHTML = 'a';
@@ -218,10 +273,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     const rect = dateSpan.getBoundingClientRect();
 
     setDimension({
-      fontSize: window
-        // @ts-ignore
-        .getComputedStyle(containerRef?.current ?? resizeElement.current, null)
-        .getPropertyValue('font-size'),
+      fontSize: window.getComputedStyle(node, null).getPropertyValue('font-size'),
       symbolWidth: rect.width,
     });
     document.body.removeChild(dateSpan);
@@ -230,37 +282,93 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const STail = 'span';
   const SBeginning = 'span';
   const SContainerMiddle = Box;
+  const SAdvancedModeContainerMiddle = Tooltip;
   const displayedSymbols = useMemo(
     () => Math.round(blockWidth / dimension.symbolWidth),
     [blockWidth, dimension.symbolWidth],
   );
 
+  const interaction = text.length > displayedSymbols ? 'hover' : 'none';
+  const ref = containerRef ?? resizeElement;
+  const contextValue = React.useMemo(
+    () => ({
+      begining: text.substring(0, text.length - displayedSymbols / 2 - 1),
+      tail: text.substring(text.length - displayedSymbols / 2 - 1),
+      ref,
+    }),
+    [text, displayedSymbols],
+  );
+
+  if (advanceMode) {
+    return sstyled(styles)(
+      <SAdvancedModeContainerMiddle
+        interaction={interaction}
+        {...tooltipProps}
+        {...forcedAdvancedMode}
+      >
+        <EllipsisMiddleContext.Provider value={contextValue}>
+          {children}
+        </EllipsisMiddleContext.Provider>
+      </SAdvancedModeContainerMiddle>,
+    ) as any;
+  }
   if (tooltip) {
     return sstyled(styles)(
       <SContainerMiddle
-        interaction={text.length > displayedSymbols ? 'hover' : 'none'}
+        interaction={interaction}
         title={text as any}
-        ref={containerRef ?? resizeElement}
+        ref={ref}
         tag={Tooltip}
+        __excludeProps={['title']}
         {...tooltipProps}
       >
         <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
         <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
       </SContainerMiddle>,
     ) as any;
-  } else {
-    return sstyled(styles)(
-      <SContainerMiddle ref={containerRef ?? resizeElement}>
-        <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
-        <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
-      </SContainerMiddle>,
-    ) as any;
   }
+  return sstyled(styles)(
+    <SContainerMiddle ref={containerRef ?? resizeElement}>
+      <SBeginning>{text.substring(0, text.length - displayedSymbols / 2 - 1)}</SBeginning>
+      <STail>{text.substring(text.length - displayedSymbols / 2 - 1)}</STail>
+    </SContainerMiddle>,
+  ) as any;
 };
 
-const Ellipsis = createComponent(RootEllipsis) as any as Intergalactic.Component<
-  'div',
-  EllipsisProps
->;
+type EllipsisContentAsProps = {
+  styles: any;
+  Children: React.FC;
+};
+
+const Content: React.FC<EllipsisContentAsProps> = ({ styles, Children }) => {
+  const SEllipsis = Root;
+  const ellipsisMiddleContext = React.useContext(EllipsisMiddleContext);
+  const STail = 'span';
+  const SBeginning = 'span';
+
+  if (ellipsisMiddleContext) {
+    const { begining, tail, ref } = ellipsisMiddleContext;
+    return sstyled(styles)(
+      <SEllipsis render={Tooltip.Trigger} middle-mod ref={ref}>
+        <SBeginning>{begining}</SBeginning>
+        <STail>{tail}</STail>
+      </SEllipsis>,
+    ) as any;
+  }
+
+  return sstyled(styles)(
+    <SEllipsis render={Tooltip.Trigger}>
+      <Children />
+    </SEllipsis>,
+  ) as any;
+};
+
+const Ellipsis = createComponent(RootEllipsis, {
+  Content,
+  Popper: Tooltip.Popper,
+}) as any as Intergalactic.Component<'div', EllipsisProps> & {
+  Content: typeof Box;
+  Popper: typeof Tooltip.Popper;
+};
 
 export default Ellipsis;

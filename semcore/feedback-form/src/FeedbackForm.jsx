@@ -173,15 +173,10 @@ function Cancel(props) {
 }
 
 function Notice(props) {
-  const { styles } = props;
+  const { styles, theme = 'gray96', use = 'secondary' } = props;
   const SNotice = Root;
-  return sstyled(styles)(<SNotice render={NoticeSmart} />);
+  return sstyled(styles)(<SNotice render={NoticeSmart} theme={theme} use={use} />);
 }
-
-Notice.defaultProps = {
-  theme: 'gray96',
-  use: 'secondary',
-};
 
 export default createComponent(FeedbackForm, {
   Item,

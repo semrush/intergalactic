@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.7.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.6.0 ~> 5.7.0], `@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+
+## [3.6.0] - 2023-08-24
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.5.1 ~> 5.6.0]).
+
+## [3.5.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.5.0 ~> 5.5.1], `@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
+
+## [3.5.0] - 2023-08-23
+
+### Changed
+
+- Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
 ## [3.4.1] - 2023-08-21
 
 ### Fixed

@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.5.0] - 2023-08-28
+
+### Changed
+
+- Focus lock got focus war surrender mechanism to prevent page freeze if page contains older focus lock. In such case the error is logged into console.
+- Focus lock got improved focus control in multiple nested modals (or side-panels) when modals count is bigger then 2.
+- Focus lock uses only one version of it if multiple focus lock versions are present on same page.
+
+## [4.4.1] - 2023-08-24
+
+### Fixed
+
+- Keyboard triggered focus was not properly detected for recently mounted components.
+
+### Added
+
+- Improved modals and side panels focus lock behavior by adding "single focus owner mode" to focus lock handler.
+
+## [4.4.0] - 2023-08-23
+
+### Changed
+
+- Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
 ## [4.3.1] - 2023-08-21
 
 ### Changed

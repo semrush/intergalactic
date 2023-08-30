@@ -2,7 +2,31 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.3.2] - 2023-08-22
+## [4.6.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/base-trigger` [4.5.1 ~> 4.6.0], `@semcore/button` [5.5.1 ~> 5.6.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+
+## [4.5.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/base-trigger` [4.5.0 ~> 4.5.1], `@semcore/button` [5.5.0 ~> 5.5.1], `@semcore/input-mask` [5.5.0 ~> 5.6.0], `@semcore/core` [2.4.0 ~> 2.4.1]).
+
+## [4.5.0] - 2023-08-23
+
+### Changed
+
+- Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+## [4.4.0] - 2023-08-23
+
+### Fixed
+
+- Fixed token for hover state of the range cell (`SCalendarUnit[selected]`).
+
+## [4.3.3] - 2023-08-22
 
 ### Fixed
 

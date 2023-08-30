@@ -50,22 +50,21 @@ class TooltipRoot extends Component {
   }
 
   render() {
-    const { Children, title, offset, ...other } = this.asProps;
+    const { Children, title, offset, forcedAdvancedMode, ...other } = this.asProps;
 
-    const advanceMode = isAdvanceMode(Children, [
-      Tooltip.Trigger.displayName,
-      Tooltip.Popper.displayName,
-    ]);
+    const advancedMode =
+      forcedAdvancedMode ||
+      isAdvanceMode(Children, [Tooltip.Trigger.displayName, Tooltip.Popper.displayName]);
 
     logger.warn(
-      title && advanceMode,
+      title && advancedMode,
       "You can't use 'title' and '<Tooltip.Trigger/>/<Tooltip.Popper/>' at the same time",
       other['data-ui-name'] || Tooltip.displayName,
     );
 
     return (
       <Root render={Popper}>
-        {advanceMode ? (
+        {advancedMode ? (
           <Children />
         ) : (
           <>

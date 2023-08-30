@@ -1,4 +1,125 @@
-## [15.6.7] - 2023-08-22
+## [15.12.0] - 2023-08-28
+
+### @semcore/utils
+
+- **Changed** Focus lock got focus war surrender mechanism to prevent page freeze if page contains older focus lock. In such case the error is logged into console.
+- **Changed** Focus lock got improved focus control in multiple nested modals (or side-panels) when modals count is bigger then 2.
+- **Changed** Focus lock uses only one version of it if multiple focus lock versions are present on same page.
+
+## [15.11.1] - 2023-08-24
+
+### @semcore/d3-chart
+
+- **Fixed** Passing `x` and `y` props to `Donut.Label` component.
+
+## [15.11.0] - 2023-08-24
+
+### @semcore/ellipsis
+
+- **Added** Ellipsis advanced usage with `Ellipsis.Content` and `Ellipsis.Popper` components.
+
+### @semcore/tooltip
+
+- **Added** Internal API for enforcing component advanced mode.
+
+## [15.10.0] - 2023-08-24
+
+### @semcore/input-mask
+
+- **Fixed** Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+
+### @semcore/modal
+
+- **Changed** Enabled "single focus owner mode" to better handle nested modals focus lock.
+
+### @semcore/progress-bar
+
+- **Fixed** Progress bar animation wasn't working.
+
+### @semcore/side-panel
+
+- **Changed** Enabled "single focus owner mode" to better handle nested side panels focus lock.
+
+### @semcore/utils
+
+- **Fixed** Keyboard triggered focus was not properly detected for recently mounted components.
+- **Added** Improved modals and side panels focus lock behavior by adding "single focus owner mode" to focus lock handler.
+
+## [15.9.0] - 2023-08-23
+
+### @semcore/scroll-area
+
+- **Fixed** SSR rendering.
+
+## [15.8.0] - 2023-08-23
+
+### @semcore/button
+
+- **Fixed** Fixed paddings for Button's text and addons.
+
+### @semcore/carousel
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/color-picker
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/d3-chart
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/date-picker
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+- **Fixed** Fixed token for hover state of the range cell (`SCalendarUnit[selected]`).
+
+### @semcore/drag-and-drop
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/feedback-form
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/format-text
+
+- **Changed** Disable forced lists counter reset if `start`, `reversed` or `type` attributes are set on corresponding `ol` or `ul` tags.
+
+### @semcore/icon
+
+- **Changed** Updated `Twitter` and `TwitterCarousel` icons, bye-bye birdie 😢
+
+### @semcore/input
+
+- **Fixed** Fixed padding for addons.
+- **Changed** Enforced input wrapper to be non-focusable (primary for other components that use input wrapper).
+
+### @semcore/input-tags
+
+- **Changed** Improved visual state of focused tags container. 
+
+### @semcore/outside-click
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/side-panel
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/skeleton
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/tag
+
+- **Changed** Improved visual state of focusable tags.
+
+### @semcore/utils
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+## [15.6.7] - 2023-08-23
 
 ### @semcore/date-picker
 

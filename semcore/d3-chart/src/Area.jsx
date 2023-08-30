@@ -81,9 +81,22 @@ class AreaRoot extends Component {
   render() {
     const SArea = this.Element;
     const SAreaLine = 'path';
-    const { styles, hide, d3, d3Line, color, uid, size, duration, x, y, Children, transparent } =
-      this.asProps;
-    const advanceMode = !!findComponent(Children, [Area.Line.displayName]);
+    const {
+      styles,
+      hide,
+      d3,
+      d3Line,
+      color,
+      uid,
+      size,
+      duration,
+      x,
+      y,
+      Children,
+      transparent,
+      forcedAdvancedMode,
+    } = this.asProps;
+    const advancedMode = forcedAdvancedMode || !!findComponent(Children, [Area.Line.displayName]);
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
@@ -91,7 +104,7 @@ class AreaRoot extends Component {
 
     return sstyled(styles)(
       <>
-        {!advanceMode && (
+        {!advancedMode && (
           <SAreaLine
             aria-hidden
             clipPath={`url(#${uid})`}
