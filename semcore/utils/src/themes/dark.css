@@ -71,7 +71,6 @@
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
   /* Focusing values in the input. */
   --intergalactic-bg-highlight-focus: rgba(0, 143, 248, 0.2);
-  --intergalactic-bg-tertiary-neutral: rgba(54, 56, 67, 1);
   /* Primary text. */
   --intergalactic-text-primary: #f4f5f9;
   /* Secondary text. */
@@ -360,7 +359,6 @@
   --intergalactic-brand-primary: #dcb8ff;
   /* Secondary brand color. */
   --intergalactic-brand-secondary: #421983;
-  --intergalactic-brand-tertiary: #ffffff;
   /* Pinterest brand color. */
   --intergalactic-brand-pinterest: #bd081c;
   /* Instagram brand color. */

@@ -71,7 +71,6 @@
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
   /* Focusing values in the input. */
   --intergalactic-bg-highlight-focus: rgba(0, 143, 248, 0.2);
-  --intergalactic-bg-tertiary-neutral: #ffffff;
   /* Primary text. */
   --intergalactic-text-primary: #191b23;
   /* Secondary text. */
@@ -390,7 +389,6 @@
   --intergalactic-brand-google-green: #016723;
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
-  --intergalactic-brand-tertiary: #ff642d;
   /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12);
   /* Hover state for the shadow of the Card with hover state. */
