@@ -10,7 +10,8 @@
   "license": "MIT",
   "exports": {
     "require": "./lib/cjs/index.js",
-    "import": "./lib/es6/index.js"
+    "import": "./lib/es6/index.js",
+    "types": "./lib/types/index.d.ts"
   },
   "scripts": {
     "build": "pnpm semcore-builder --source=js,ts"

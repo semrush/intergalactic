@@ -2,6 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.10.0] - 2023-08-28
+
+### Fixed
+
+- Added `exports.types` field to fix types resolving.
+- Removed deprecation notes from `ticks` props (it was added by mistake).
+
+### Added
+
+- Added `radius` prop on `Line.Dot` component.
+
 ## [3.9.0] - 2023-08-28
 
 ### Changed

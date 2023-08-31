@@ -36,6 +36,10 @@ export type LineDotsProps = Context &
     hide?: boolean;
     /** Index active of element */
     activeIndex?: number;
+    /** Dot radius, radius of active dot is 4/3 times larger
+     * @default 6
+     */
+    radius?: number;
   };
 
 /** @deprecated */
