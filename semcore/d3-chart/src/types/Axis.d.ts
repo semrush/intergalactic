@@ -12,7 +12,6 @@ export type XAxisProps = Context & {
    * @default false */
   hide?: boolean;
   /** Values for axis ticks */
-  /** @deprecated */
   ticks?: any[];
 };
 
@@ -26,7 +25,6 @@ export type YAxisProps = Context & {
    * @default true */
   hide?: boolean;
   /** Values for axis ticks */
-  /** @deprecated */
   ticks?: any[];
 };
 
@@ -38,7 +36,6 @@ export type AxisTicksProps = Context & {
   /** Element hide property */
   hide?: boolean;
   /** Values for axis ticks */
-  /** @deprecated */
   ticks?: any[];
 };
 
@@ -46,7 +43,6 @@ export type AxisTicksProps = Context & {
 export interface IAxisGridProps extends AxisGridProps, UnknownProperties {}
 export type AxisGridProps = Context & {
   /** Values for axis ticks */
-  /** @deprecated */
   ticks?: any[];
 };
 
