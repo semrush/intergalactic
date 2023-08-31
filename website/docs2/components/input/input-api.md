@@ -13,10 +13,6 @@ import Input from '@semcore/ui/input';
 <Input />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="InputProps" :types={...types} />
 
 ## Input.Value
@@ -42,3 +38,5 @@ import Input from '@semcore/ui/input';
 ```
 
 <TypesView type="InputAddonProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

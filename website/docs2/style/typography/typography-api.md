@@ -12,10 +12,6 @@ import { Text } from '@semcore/ui/typography';
 <Text />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TextProps" :types={...types} />
 
 ## List
@@ -79,3 +75,5 @@ import FormatText from '@semcore/ui/format-text';
 ```
 
 <TypesView type="FormatTextProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

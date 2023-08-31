@@ -11,10 +11,6 @@ import Switch from '@semcore/ui/switch';
 <Switch />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SwitchProps" :types={...types} />
 
 ## Switch.Value
@@ -34,3 +30,5 @@ import Switch from '@semcore/ui/switch';
 ```
 
 <TypesView type="SwitchAddonProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

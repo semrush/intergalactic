@@ -13,10 +13,6 @@ import { RadioGroup } from '@semcore/ui/radio';
 <RadioGroup />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="RadioGroupProps" :types={...types} />
 
 ## Radio
@@ -45,3 +41,5 @@ import Radio from '@semcore/ui/radio';
 import Radio from '@semcore/ui/radio';
 <Radio.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

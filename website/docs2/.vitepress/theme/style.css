@@ -80,3 +80,78 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
+
+.vp-doc .anchor-like-button {
+  font-weight: 500;
+  color: var(--vp-c-brand);
+}
+
+.vp-doc .anchor-like-button a:hover {
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
+}
+
+.vp-doc dialog {
+  box-shadow: var(--vp-shadow-3);
+  border: 0;
+  border-radius: 8px;
+  min-width: 400px;
+  min-height: 200px;
+  max-width: 600px;
+  animation: show-vp-dialog 0.1s ease-out normal;
+  animation-fill-mode: forwards;
+}
+
+.vp-doc dialog.closing {
+  animation: hide-vp-dialog 0.1s ease-out normal;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show-vp-dialog {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide-vp-dialog {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+.vp-doc dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: show-vp-dialog 0.1s ease-out normal;
+  animation-fill-mode: forwards;
+}
+
+.vp-doc dialog.closing::backdrop {
+  animation: hide-vp-dialog 0.1s ease-out normal;
+  animation-fill-mode: forwards;
+}
+
+.dark .vp-doc dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.vp-doc dialog table {
+  margin-top: 16px;
+}
+
+.vp-doc dialog .close-dialog {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  font-size: 24px;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+}

@@ -17,8 +17,6 @@ import { Venn } from '@semcore/ui/d3-chart';
 </Venn>;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="VennProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

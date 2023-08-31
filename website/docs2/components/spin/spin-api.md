@@ -13,8 +13,6 @@ import Spin from '@semcore/ui/spin';
 <Spin />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SpinProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

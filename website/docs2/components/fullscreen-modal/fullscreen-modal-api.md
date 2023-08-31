@@ -10,10 +10,6 @@ tabs: FullscreenModal('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('f
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="FullscreenModalProps" :types={...types} />
 
 ## FullscreenModal.Header
@@ -47,3 +43,5 @@ The component is the `Text` with pre-configured styles.
 ## FullscreenModal.Description
 
 The component is the `Text` with pre-configured styles.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

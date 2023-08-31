@@ -10,10 +10,6 @@ tabs: Pills('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'
 import Pills from '@semcore/ui/pills';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="PillsProps" :types={...types} />
 
 ## Pill.Item
@@ -42,3 +38,5 @@ Plain text, it sets correct indents depending on the size. If only text with no 
 import Pills from '@semcore/ui/pills';
 <Pills.Item.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

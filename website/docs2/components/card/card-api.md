@@ -39,10 +39,6 @@ import Card from '@semcore/ui/card';
 <Card.Title />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TitleProps" :types={...types} />
 
 ## Card.Description
@@ -53,3 +49,5 @@ Has all properties as the [Text](/style/typography/typography-api/#a9dffb).
 import Card from '@semcore/ui/card';
 <Card.Description />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

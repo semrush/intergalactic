@@ -17,10 +17,6 @@ import DropdownMenu from '@semcore/ui/dropdown';
 <DropdownMenu />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="DropdownMenuProps" :types={...types} />
 
 ## DropdownMenu.Trigger
@@ -101,3 +97,5 @@ import DropdownMenu from '@semcore/ui/dropdown-menu';
 Context of the component is available inside the render-function.
 
 <TypesView type="DropdownMenuContext" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

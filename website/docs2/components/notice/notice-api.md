@@ -10,10 +10,6 @@ import Notice from '@semcore/ui/notice';
 <Notice />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="NoticeProps" :types={...types} />
 
 ## Notice.Label
@@ -62,3 +58,5 @@ import { NoticeSmart } from '@semcore/ui/notice';
 ```
 
 <TypesView type="NoticeSmartProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

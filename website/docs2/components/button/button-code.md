@@ -12,26 +12,6 @@ Addons can be installed either by passing the required `tag` to the `addonLeft`/
 <script lang="tsx">
 import React from 'react';
 import Button from '@semcore/ui/button';
-
-const Demo = () => {
-  return (
-    <>
-      <Button>
-        Button
-      </Button>
-    </>
-  );
-}
-</script>
-
-:::
-
-
-::: sandbox
-
-<script lang="tsx">
-import React from 'react';
-import Button from '@semcore/ui/button';
 import CheckM from '@semcore/ui/icon/Check/m';
 import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 
@@ -49,6 +29,56 @@ const Demo = () => {
         <Button.Addon>
           <ArrowRightM />
         </Button.Addon>
+      </Button>
+    </>
+  );
+}
+</script>
+
+:::
+
+## Button with Icon
+
+To use a button with a single icon, you need to wrap it in an `<Button.Addon/>`.
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+
+const Demo = () => {
+  return (
+    <Button aria-label='Confirm'>
+      <Button.Addon>
+        <CheckM />
+      </Button.Addon>
+    </Button>
+  );
+}
+</script>
+
+:::
+
+## Button accessibility
+
+If there is no text in the button, it is necessary to add aria-label with a button description.
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import Button from '@semcore/ui/button';
+import CheckM from '@semcore/ui/icon/Check/m';
+import CloseM from '@semcore/ui/icon/Close/m';
+
+const Demo = () => {
+  return (
+    <>
+      <Button addonLeft={CloseM} aria-label='Close' />
+      <Button ml={2} aria-label='Confirm'>
+        <CheckM />
       </Button>
     </>
   );

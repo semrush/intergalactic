@@ -14,10 +14,6 @@ Horizontal chart Bar.
 import { HorizontalBar } from '@semcore/ui/d3-chart';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="HorizontalBarProps" :types={...types} />
 
 ## GroupBar
@@ -34,3 +30,5 @@ import { GroupBar } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="GroupBarProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -12,10 +12,6 @@ import Link from '@semcore/ui/link';
 <Link />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="LinkProps" :types={...types} />
 
 ## Link.Addon
@@ -35,3 +31,5 @@ Plain text, it sets correct paddings depending on the size. If only text with no
 import Link from '@semcore/ui/link';
 <Link.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

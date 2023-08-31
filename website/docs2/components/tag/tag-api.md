@@ -6,10 +6,6 @@ tabs: Tag('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changel
 
 ## Tag
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TagProps" :types={...types} />
 
 ## Tag.Addon
@@ -55,3 +51,5 @@ It accepts all `Box` properties.
 import Tag from '@semcore/ui/tag';
 <Tag.Circle />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

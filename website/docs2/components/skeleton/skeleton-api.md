@@ -11,10 +11,6 @@ import Skeleton from '@semcore/ui/skeleton';
 <Skeleton />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SkeletonProps" :types={...types} />
 
 ## Skeleton.Text
@@ -89,3 +85,5 @@ import { VennChartSkeleton } from '@semcore/ui/skeleton';
 ```jsx
 import { RadialTreeChartSkeleton } from '@semcore/ui/skeleton';
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

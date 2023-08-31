@@ -12,10 +12,6 @@ import FeedbackForm from '@semcore/ui/feedback-form';
 <FeedbackForm />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="FeedbackFormProps" :types={...types} />
 
 ## FeedbackForm.Item
@@ -54,3 +50,5 @@ The pre-configured component `Notice`.
 import FeedbackForm from '@semcore/ui/feedback-form';
 <FeedbackForm.Notice />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -12,10 +12,6 @@ Root element for all charts.
 import { Plot } from '@semcore/ui/d3-chart';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="PlotProps" :types={...types} />
 
 ## Axis
@@ -71,3 +67,5 @@ import { HoverRect } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="HoverProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

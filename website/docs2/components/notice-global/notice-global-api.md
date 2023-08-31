@@ -10,10 +10,6 @@ import NoticeGlobal from '@semcore/ui/notice-global';
 <NoticeGlobal />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="NoticeGlobalProps" :types={...types} />
 
 ## NoticeGlobal.Content
@@ -33,3 +29,5 @@ The component is inherited from `Box` and is used to insert the close cross.
 import NoticeGlobal from '@semcore/ui/notice';
 <NoticeGlobal.CloseIcon />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

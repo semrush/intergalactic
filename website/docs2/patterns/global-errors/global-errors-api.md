@@ -12,10 +12,6 @@ import Error from '@semcore/ui/errors';
 <Error />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="ErrorsProps" :types={...types} />
 
 ## Error.Title
@@ -99,3 +95,5 @@ import { ProjectNotFound } from '@semcore/ui/errors';
 ```
 
 <TypesView type="ProjectNotFoundProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

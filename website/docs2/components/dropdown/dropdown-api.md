@@ -17,10 +17,6 @@ import Dropdown from '@semcore/ui/dropdown';
 <Dropdown />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="DropdownProps" :types={...types} />
 
 ## Dropdown.Trigger
@@ -44,3 +40,5 @@ import Dropdown from '@semcore/ui/dropdown';
 ```
 
 <TypesView type="PopperPopperProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

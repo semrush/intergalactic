@@ -11,8 +11,6 @@ Any icon can be obtained using a template.
 import IconNameSize from '@semcore/ui/icon/iconName/size';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="IconProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

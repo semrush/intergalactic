@@ -14,10 +14,6 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 <NeighborLocation />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="NeighborLocationProps" :types={...types} />
 
 ## NeighborLocation.Detect
@@ -31,3 +27,5 @@ import NeighborLocation from '@semcore/ui/neighbor-location';
 ```
 
 <TypesView type="NeighborItemProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

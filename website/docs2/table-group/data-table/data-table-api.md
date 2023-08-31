@@ -10,10 +10,6 @@ import DataTable from '@semcore/ui/data-table';
 <DataTable />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="DataTableProps" :types={...types} />
 
 ## DataTable.Head
@@ -60,3 +56,5 @@ import DataTable from '@semcore/ui/data-table';
 ```
 
 <TypesView type="DataTableCellProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

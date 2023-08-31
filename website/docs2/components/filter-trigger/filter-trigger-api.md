@@ -12,10 +12,6 @@ Basic trigger-button for all dropdowns.
 import { BaseTrigger } from '@semcore/ui/base-trigger';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="BaseTriggerProps" :types={...types} />
 
 ## ButtonTrigger
@@ -47,3 +43,5 @@ import { FilterTrigger } from '@semcore/ui/base-trigger';
 ```
 
 <TypesView type="FilterTriggerProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -11,10 +11,6 @@ import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SpinContainerProps" :types={...types} />
 
 ## SpinContainer.Content
@@ -34,3 +30,5 @@ By default, it is a UI component and a base that closes the content under `Spin`
 import SpinContainer from '@semcore/ui/spin-container';
 <SpinContainer.Overlay />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

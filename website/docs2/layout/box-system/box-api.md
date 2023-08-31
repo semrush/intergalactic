@@ -13,10 +13,6 @@ import { Box } from '@semcore/ui/flex-box';
 <Box />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="BoxProps" :types={...types} />
 
 ## Flex
@@ -29,3 +25,5 @@ import { Flex } from '@semcore/ui/flex-box';
 ```
 
 <TypesView type="FlexProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -14,10 +14,6 @@ import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TabPanelProps" :types={...types} />
 
 ## TabPanel.Item
@@ -56,3 +52,5 @@ It takes all the properties of the `Box`.
 import TabPanel from '@semcore/ui/tab-panel';
 <TabPanel.Item.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

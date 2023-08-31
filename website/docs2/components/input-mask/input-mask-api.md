@@ -19,10 +19,6 @@ import InputMask from '@semcore/ui/input-mask';
 <InputMask.Value />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="InputMaskValueProps" :types={...types} />
 
 ## InputMask.Addon
@@ -33,3 +29,5 @@ import InputMask from '@semcore/ui/input-mask';
 ```
 
 The API is the same as [Input.Addon](/components/input/input-api).
+
+<script setup>import { data as types } from '@types.data.ts';</script>

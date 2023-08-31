@@ -9,8 +9,6 @@ import Tooltip from '@semcore/ui/tooltip';
 <Tooltip />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TooltipProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

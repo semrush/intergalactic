@@ -13,10 +13,6 @@ import DnD from '@semcore/ui/drag-and-drop;
 <DnD />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="DragAndDropProps" :types={...types} />
 
 ## DnD.Draggable
@@ -44,3 +40,5 @@ import DnD from '@semcore/ui/drag-and-drop;
 ```
 
 Takes the same properties, as [Box](/layout/box-system/box-api/#a3cfce).
+
+<script setup>import { data as types } from '@types.data.ts';</script>

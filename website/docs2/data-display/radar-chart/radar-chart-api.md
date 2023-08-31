@@ -12,10 +12,6 @@ import { Radar } from '@semcore/ui/d3-chart';
 <Radar/>;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="RadarProps" :types={...types} />
 
 ## Radar.Axis
@@ -77,3 +73,5 @@ import { Radar } from '@semcore/ui/d3-chart';
 ```
 
 <TypesView type="RadialPolygonDotsProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

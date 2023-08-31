@@ -18,8 +18,6 @@ import { Donut } from '@semcore/ui/d3-chart';
 </Donut>;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="DonutProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

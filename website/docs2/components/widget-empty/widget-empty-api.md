@@ -13,10 +13,6 @@ import WidgetEmpty from '@semcore/ui/widget-empty';
 <WidgetEmpty />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="WidgetEmptyProps" :types={...types} />
 
 ## NoData
@@ -44,3 +40,5 @@ import { Error } from '@semcore/ui/widget-empty';
 ## Images
 
 You can find all the possible images for the component in the [Illustration](/style/illustration/illustration-api/#getillustrationpath) component. To obtain any illustration, you can use the `getIllustrationPath` function, which returns the URL in the format `https://static.semrush.com/ui-kit/illustration/${version}/${name}.svg`.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

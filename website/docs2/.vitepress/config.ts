@@ -7,6 +7,7 @@ import { loadSemcoreSources } from './load-semcore-sources';
 import pluginReact from '@vitejs/plugin-react';
 import { resolve as resolvePath } from 'path';
 import tableCaptions from 'markdown-it-table-captions';
+import { renderTypescript } from './renderTypescript';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -15,10 +16,14 @@ export default defineConfig({
   markdown: {
     config(md) {
       md
-        // the second parameter is html tag name
         .use(container, 'sandbox', {
           render(tokens, idx) {
             return renderSandbox(tokens, idx, 'sandbox');
+          },
+        })
+        .use(container, 'typescript', {
+          render(tokens, idx) {
+            return renderTypescript(tokens, idx);
           },
         })
         .use(tableCaptions);
@@ -29,32 +34,34 @@ export default defineConfig({
   vite: {
     plugins: [
       pluginReact(),
-      createUnplugin<{}>((options) => ({
+      createUnplugin<{}>(() => ({
         name: 'semcore-resolve',
-
         async resolveId(id) {
           if (!id.includes('@semcore') && !id.includes('/semcore/')) return null;
           if (id.endsWith('.md')) return null;
-          // console.log(id);
-          const resolved = await resolveSemcoreSources(id);
-          return resolved;
+          return await resolveSemcoreSources(id);
         },
         loadInclude: (id) => {
           return id.includes('/semcore/');
         },
         async load(id) {
-          const result = await loadSemcoreSources(id);
-          // console.log(result.code);
-          return result;
+          return await loadSemcoreSources(id);
         },
         enforce: 'pre',
       })).vite({}),
-      createUnplugin<{}>((options) => ({
-        name: 'xxx',
+      createUnplugin<{}>(() => ({
+        name: 'docs-components-resolver',
         async resolveId(id) {
           if (!id.startsWith('@components/')) return null;
           const purePath = id.substring('@components/'.length);
           return `${resolvePath(__dirname, '../../src/docs-components', purePath)}.jsx`;
+        },
+      })).vite({}),
+      createUnplugin<{}>(() => ({
+        name: 'typescript-data-resolver',
+        async resolveId(id) {
+          if (id !== '@types.data.ts') return null
+          return resolvePath(__dirname, '../../builder/typings/types.data.ts')
         },
       })).vite({}),
     ],

@@ -10,10 +10,6 @@ tabs: TimePicker('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'
 import Timepicker from '@semcore/ui/time-picker';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TimePickerProps" :types={...types} />
 
 ## TimePicker.Hours, TimePicker.Minutes
@@ -45,3 +41,5 @@ It is a usual `span`-element, it takes the HTML-attributes available for it.
 import Timepicker from '@semcore/ui/time-picker';
 <Timepicker.Separator />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

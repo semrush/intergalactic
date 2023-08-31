@@ -12,10 +12,6 @@ import Checkbox from '@semcore/ui/checkbox';
 <Checkbox />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="CheckboxProps" :types={...types} />
 
 ## Checkbox.Value
@@ -39,3 +35,5 @@ import Checkbox from '@semcore/ui/checkbox';
 ```
 
 <TypesView type="CheckboxTextProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

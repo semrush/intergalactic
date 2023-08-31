@@ -10,10 +10,6 @@ import Counter from '@semcore/ui/counter';
 <Counter />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="CounterProps" :types={...types} />
 
 ## AnimatedNumber
@@ -24,3 +20,5 @@ import { AnimatedNumber } from '@semcore/ui/counter';
 ```
 
 <TypesView type="AnimatedNumberBaseProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

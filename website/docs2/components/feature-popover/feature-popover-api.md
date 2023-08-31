@@ -13,10 +13,6 @@ import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="PopperProps" :types={...types} />
 
 ## FeaturePopover.Trigger
@@ -49,3 +45,5 @@ This blinking circle is inherited from `<Box>`.
 import FeaturePopover from '@semcore/ui/feature-popover';
 <FeaturePopover.Spot />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

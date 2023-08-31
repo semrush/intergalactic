@@ -11,10 +11,6 @@ import Accordion from '@semcore/ui/accordion';
 <Accordion />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="AccordionProps" :types={...types} />
 
 ## Accordion.Item
@@ -58,3 +54,5 @@ import { Accordion } from '@semcore/ui/accordion';
 ```
 
 Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

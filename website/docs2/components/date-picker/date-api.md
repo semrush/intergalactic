@@ -14,10 +14,6 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 <MonthPicker />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="DatePickerProps" :types={...types} />
 
 ## DateRangePicker
@@ -77,3 +73,5 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 ```
 
 <TypesView type="CalendarUnitProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

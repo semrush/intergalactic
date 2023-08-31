@@ -49,10 +49,6 @@ import { Title } from '@semcore/ui/product-head';
 <Title />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="HeaderTitleProps" :types={...types} />
 
 ## Info
@@ -74,3 +70,5 @@ import { Info } from '@semcore/ui/product-head';
 ```
 
 <TypesView type="InfoItemProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

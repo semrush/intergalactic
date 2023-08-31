@@ -10,10 +10,6 @@ import Pagination from '@semcore/ui/pagination';
 <Pagination />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="PaginationProps" :types={...types} />
 
 ## Pagination.FirstPage
@@ -69,3 +65,5 @@ import Pagination from '@semcore/ui/pagination';
 ```
 
 <TypesView type="TotalPagesProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

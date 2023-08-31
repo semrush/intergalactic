@@ -13,10 +13,6 @@ import ProgressBar from '@semcore/ui/progress-bar';
 <ProgressBar />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="ProgressBarProps" :types={...types} />
 
 ## ProgressBar.Value
@@ -29,3 +25,5 @@ import ProgressBar from '@semcore/ui/progress-bar';
 ```
 
 <TypesView type="ValueProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

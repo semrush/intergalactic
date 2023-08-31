@@ -13,10 +13,6 @@ import ColorPicker from '@semcore/ui/color-picker';
 <ColorPicker />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="ColorPickerProps" :types={...types} />
 
 ## ColorPicker.Trigger
@@ -102,3 +98,5 @@ import { PaletteManager } from '@semcore/ui/color-picker';
 ```
 
 <TypesView type="InputColorProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

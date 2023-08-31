@@ -22,8 +22,6 @@ import { RadialTree } from '@semcore/ui/d3-chart';
 </RadialTree>;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="RadialTreeProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -10,10 +10,6 @@ tabs: InputTags('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), E
 import InputTags from '@semcore/ui/input-tags';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="InputTagsProps" :types={...types} />
 
 ## InputTags.Value
@@ -71,3 +67,5 @@ import InputTags from '@semcore/ui/input-tags';
 ```
 
 Inherited from the [Tag.Circle](/components/tag/tag-api/#a701f6) component.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

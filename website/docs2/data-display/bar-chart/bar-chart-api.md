@@ -12,8 +12,6 @@ Chart Bar.
 import { Bar } from '@semcore/ui/d3-chart';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="BarProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

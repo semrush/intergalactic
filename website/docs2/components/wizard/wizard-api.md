@@ -10,10 +10,6 @@ import Wizard from '@semcore/ui/wizard';
 <Wizard />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="WizardProps" :types={...types} />
 
 ## Wizard.Sidebar
@@ -42,3 +38,5 @@ import Wizard from '@semcore/ui/wizard';
 ```
 
 <TypesView type="WizardStepperProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

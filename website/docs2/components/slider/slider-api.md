@@ -11,10 +11,6 @@ import Slider from '@semcore/ui/slider';
 <Slider />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SliderProps" :types={...types} />
 
 ## Slider.Bar
@@ -39,3 +35,5 @@ import Slider from '@semcore/ui/slider';
   <Slider.Item />
 </Slider.Options>;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

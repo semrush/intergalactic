@@ -11,10 +11,6 @@ import SidePanel from '@semcore/ui/side-panel';
 <SidePanel />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SidePanelProps" :types={...types} />
 
 ## SidePanel.Overlay
@@ -45,3 +41,5 @@ import SidePanel from '@semcore/ui/side-panel';
 ```
 
 This is a wrap over the [Box](/layout/box-system/box-api/#a3cfce) component.
+
+<script setup>import { data as types } from '@types.data.ts';</script>

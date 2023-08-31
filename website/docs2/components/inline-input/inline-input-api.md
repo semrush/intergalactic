@@ -12,10 +12,6 @@ import InlineInput from '@semcore/ui/inline-input';
 <InlineInput />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="InlineInputProps" :types={...types} />
 
 ## InlineInput.Value
@@ -63,3 +59,5 @@ import InlineInput from '@semcore/ui/inline-input';
 ```
 
 <TypesView type="InlineInputCancelControlProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

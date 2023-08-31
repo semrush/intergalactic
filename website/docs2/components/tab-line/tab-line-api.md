@@ -13,10 +13,6 @@ import TabLine from '@semcore/ui/tab-line';
 <TabLine />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="TabLineProps" :types={...types} />
 
 ## TabLine.Item
@@ -49,3 +45,5 @@ It takes all the properties of the `Box`.
 import TabLine from '@semcore/ui/tab-line';
 <TabLine.Item.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

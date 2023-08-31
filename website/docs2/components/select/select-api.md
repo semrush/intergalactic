@@ -15,10 +15,6 @@ import Select from '@semcore/ui/select';
 <Select />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="SelectProps" :types={...types} />
 
 ## Select.Trigger
@@ -86,3 +82,5 @@ import Select from '@semcore/ui/select';
 ```
 
 Styled [`Box`](/layout/box-system/box-api/#a3cfce).
+
+<script setup>import { data as types } from '@types.data.ts';</script>

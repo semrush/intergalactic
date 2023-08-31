@@ -12,10 +12,6 @@ import Button from '@semcore/ui/button';
 <Button />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="ButtonProps" :types={...types} />
 
 ## Button.Addon
@@ -35,3 +31,5 @@ Plain text, it sets the correct margins depending on the button size. If the but
 import Button from '@semcore/ui/button';
 <Button.Text />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

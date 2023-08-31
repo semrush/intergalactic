@@ -11,10 +11,6 @@ import Modal from '@semcore/ui/modal';
 <Modal />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="ModalProps" :types={...types} />
 
 ## Modal.Overlay
@@ -52,3 +48,5 @@ Component which represents the title. It adds `aria-labelledby` attribute to mod
 import Modal from '@semcore/ui/modal';
 <Modal.Title />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

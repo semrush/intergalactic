@@ -12,10 +12,6 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="CarouselProps" :types={...types} />
 
 ## Carousel.Container
@@ -54,3 +50,5 @@ import Carousel from '@semcore/ui/carousel';
 <Carousel.Prev />
 <Carousel.Next />
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

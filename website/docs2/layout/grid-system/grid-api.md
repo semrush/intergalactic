@@ -11,10 +11,6 @@ import { Row } from '@semcore/ui/grid';
 <Row />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="RowProps" :types={...types} />
 
 ## Col
@@ -25,3 +21,5 @@ import { Col } from '@semcore/ui/grid';
 ```
 
 <TypesView type="ColProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

@@ -11,8 +11,6 @@ import Ellipsis from '@semcore/ui/ellipsis';
 <Ellipsis />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="EllipsisProps" :types={...types} />
+
+<script setup>import { data as types } from '@types.data.ts';</script>

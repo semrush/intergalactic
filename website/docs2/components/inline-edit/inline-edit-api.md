@@ -12,10 +12,6 @@ import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="InlineEditProps" :types={...types} />
 
 ## InlineEdit.View
@@ -35,3 +31,5 @@ All children of `InlineEdit.Edit` is displayed when `editable` property of `Inli
 import InlineEdit from '@semcore/ui/inline-edit';
 <InlineEdit.Edit />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

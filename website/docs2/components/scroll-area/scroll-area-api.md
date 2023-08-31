@@ -11,10 +11,6 @@ import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea />;
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="ScrollAreaProps" :types={...types} />
 
 ## ScrollArea.Container
@@ -43,3 +39,5 @@ Stylized div. It takes all properties of `Box`.
 import ScrollArea from '@semcore/ui/scroll-area';
 <ScrollArea.Bar.Slider />;
 ```
+
+<script setup>import { data as types } from '@types.data.ts';</script>

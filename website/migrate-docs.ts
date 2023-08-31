@@ -73,19 +73,16 @@ await Promise.all(
       }
       if (lines[i].startsWith('@typescript ')) {
         const typeName = lines[i].split(' ')[1];
-        let newLines: string[] = [];
-        if (lines.some((line) => line.startsWith('  import { data as types } from'))) {
-          newLines = [`<TypesView type="${typeName}" :types={...types} />`];
-        } else {
-          newLines = [
-            '<script setup>',
-            "  import { data as types } from '../../../builder/typings/types.data.ts'",
-            '</script>',
-            '',
-            `<TypesView type="${typeName}" :types={...types} />`,
-          ];
+        if (
+          !lines.some(
+            (line) =>
+              line.trim() ===
+              "<script setup>import { data as types } from '@types.data.ts';</script>",
+          )
+        ) {
+          lines.push("<script setup>import { data as types } from '@types.data.ts';</script>");
         }
-        lines.splice(i, 1, ...newLines);
+        lines.splice(i, 1, `<TypesView type="${typeName}" :types={...types} />`);
       }
       if (lines[i].startsWith('@table-caption ')) {
         lines[i] = lines[i].replace('@table-caption ', 'Table: ');

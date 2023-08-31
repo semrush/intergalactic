@@ -10,10 +10,6 @@ tabs: InputNumber & InputRange('input-number'), A11y('input-number-a11y'), API('
 import InputNumber from '@semcore/ui/input-number';
 ```
 
-<script setup>
-  import { data as types } from '../../../builder/typings/types.data.ts'
-</script>
-
 <TypesView type="InputNumberProps" :types={...types} />
 
 ## InputNumber.Value
@@ -42,3 +38,5 @@ import InputNumber from '@semcore/ui/input-number';
 ```
 
 API is the same as [Input.Addon](/components/input/input-api) has.
+
+<script setup>import { data as types } from '@types.data.ts';</script>
