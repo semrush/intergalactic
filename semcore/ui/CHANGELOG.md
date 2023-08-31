@@ -1,3 +1,11 @@
+## [15.13.0-prerelease.0] - 2023-08-31
+
+### @semcore/d3-chart
+
+- **Fixed** Added `exports.types` field to fix types resolving.
+- **Fixed** Removed deprecation notes from `ticks` props (it was added by mistake).
+- **Added** Added `radius` prop on `Line.Dot` component.
+
 ## [15.12.0] - 2023-08-28
 
 ### @semcore/utils
