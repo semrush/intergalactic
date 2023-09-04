@@ -1,3 +1,9 @@
+## [15.14.0-prerelease.0] - 2023-09-04
+
+### @semcore/core
+
+- **Changed** Core types compilation speed up.
+
 ## [15.13.0] - 2023-08-31
 
 ### @semcore/d3-chart
