@@ -66,7 +66,7 @@ export default () => {
                 checked={item.checked}
                 onChange={handleChange(item.name)}
               />
-              <Checkbox.Text pr={3}>{item.name}</Checkbox.Text>
+              <Checkbox.Text pr={4}>{item.name}</Checkbox.Text>
             </Checkbox>
           );
         })}
