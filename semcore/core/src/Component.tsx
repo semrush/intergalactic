@@ -146,11 +146,11 @@ export namespace Intergalactic {
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
   };
-  type MergeProps<HighPriorityProps, LowPriorityProps> = Omit<
-    LowPriorityProps,
-    keyof HighPriorityProps
-  > &
-    HighPriorityProps;
+  type MergeProps<HighPriorityProps, LowPriorityProps> = {
+    [K in keyof LowPriorityProps]: K extends keyof HighPriorityProps
+      ? HighPriorityProps[K]
+      : LowPriorityProps[K];
+  } & HighPriorityProps;
   /** @private */
   export namespace InternalTypings {
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<

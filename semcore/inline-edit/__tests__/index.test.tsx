@@ -6,7 +6,7 @@ import { axe } from '@semcore/testing-utils/axe';
 
 import InlineEdit from '../src';
 
-const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible: boolean }> =
+const InstantFadeInOut: React.FC<{ children: React.ReactNode; visible?: boolean }> =
   React.forwardRef((props, ref: React.Ref<HTMLDivElement>) => {
     return (
       <div ref={ref} style={{ opacity: props.visible ? 1 : 0 }}>
