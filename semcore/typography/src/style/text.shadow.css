@@ -53,6 +53,10 @@ SText[medium] {
   font-weight: var(--intergalactic-medium, 500);
 }
 
+SText[semibold] {
+  font-weight: var(--intergalactic-semi-bold, 600);
+}
+
 SText[bold] {
   font-weight: var(--intergalactic-bold, 700);
 }
