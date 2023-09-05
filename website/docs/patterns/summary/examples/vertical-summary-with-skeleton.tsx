@@ -3,26 +3,8 @@ import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Tooltip from '@semcore/ui/tooltip';
 import Skeleton from '@semcore/ui/skeleton';
-import styled from 'styled-components';
 import '@semcore/ui/utils/style/var.css';
 import { AnimatedNumber } from '@semcore/ui/counter/src';
-
-const BoxBlock = styled(Box)`
-  overflow: hidden;
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--gray-200);
-  &:last-child {
-    border-bottom: none !important;
-  }
-`;
-const FlexBlock = styled(Flex)`
-  overflow: hidden;
-`;
-const Title = styled(Text)`
-  &:hover {
-    cursor: pointer;
-  }
-`;
 
 const Demo = () => {
   const [loading, setLoading] = useState(true);
@@ -36,12 +18,12 @@ const Demo = () => {
   }, [loading]);
 
   return (
-    <FlexBlock direction='column'>
-      <BoxBlock h={92} w={146}>
+    <Flex direction='column' style={{ overflow: 'hidden' }}>
+      <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
         <Tooltip title='Keyword' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Keyword
-          </Title>
+          </Text>
         </Tooltip>
         {!loading && (
           <>
@@ -73,12 +55,12 @@ const Demo = () => {
         <Skeleton hidden={!loading} mt={2}>
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
-      </BoxBlock>
-      <BoxBlock h={92} w={146}>
+      </Box>
+      <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
         <Tooltip title='Traffic' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic
-          </Title>
+          </Text>
         </Tooltip>
         {!loading && (
           <>
@@ -106,12 +88,12 @@ const Demo = () => {
         <Skeleton hidden={!loading} mt={2}>
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
-      </BoxBlock>
-      <BoxBlock h={92} w={146}>
+      </Box>
+      <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
         <Tooltip title='Traffic cost' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic cost
-          </Title>
+          </Text>
         </Tooltip>
         {!loading && (
           <>
@@ -139,12 +121,12 @@ const Demo = () => {
         <Skeleton hidden={!loading} mt={2}>
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
-      </BoxBlock>
-      <BoxBlock h={92} w={146}>
+      </Box>
+      <Box h={92} w={146} mb={6} style={{ borderBottom: '1px solid var(--gray-200)' }}>
         <Tooltip title='Branded traffic' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Branded traffic
-          </Title>
+          </Text>
         </Tooltip>
         {!loading && (
           <>
@@ -175,12 +157,12 @@ const Demo = () => {
         <Skeleton hidden={!loading} mt={2}>
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
-      </BoxBlock>
-      <BoxBlock h={92} w={146}>
+      </Box>
+      <Box h={92} w={146}>
         <Tooltip title='Non-branded traffic' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Non-branded traffic
-          </Title>
+          </Text>
         </Tooltip>
         {!loading && (
           <>
@@ -210,8 +192,8 @@ const Demo = () => {
         <Skeleton hidden={!loading} mt={2}>
           <Skeleton.Text amount={1} height={30} width={70} />
         </Skeleton>
-      </BoxBlock>
-    </FlexBlock>
+      </Box>
+    </Flex>
   );
 };
 

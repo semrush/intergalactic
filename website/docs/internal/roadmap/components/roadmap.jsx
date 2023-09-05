@@ -1,71 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import Tabs from '@semcore/ui/tab-panel';
+import styles from './roadmap.module.css';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
-import { css } from '@semcore/ui/core';
 import './roadmap-page.css';
-
-const styles = css`
-  STabPanelItem {
-    &:active,
-    &[active] {
-      color: var(--intergalactic-control-primary-brand);
-    }
-  }
-`;
-
-const LinkComponent = styled(Link)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
-
-const Oval = styled.span`
-  display: inline-block;
-  margin-right: var(--intergalactic-spacing-2x);
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  flex-shrink: 0;
-`;
-
-const Legenda = styled.ul`
-  display: flex;
-  padding: 0;
-  margin: 0 0 var(--intergalactic-spacing-4x) !important;
-  list-style: none;
-
-  li {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  li:first-child {
-    span {
-      background: var(--intergalactic-chart-palette-order-14);
-    }
-  }
-
-  li:nth-child(2) {
-    margin-left: var(--intergalactic-spacing-6x);
-    span {
-      background: var(--intergalactic-chart-palette-order-6);
-    }
-  }
-`;
-
-const Row_Column = styled.div`
-  grid-template-columns: ${({ size }) => `repeat(${size}, calc(100% / ${size}));`};
-`;
-
-const Row_Bar = styled.ul`
-  grid-template-columns: ${({ size }) => `repeat(${size}, 1fr);`};
-`;
 
 dayjs.locale('ru');
 // 1month = 2sprints
@@ -149,7 +89,10 @@ function Gant(props) {
 
   return (
     <div className='gantt'>
-      <Row_Column className='gantt__row gantt__row--months' size={lengthSprint}>
+      <div
+        className={`gantt__row gantt__row--months ${styles.row__column}`}
+        style={{ '--size': lengthSprint }}
+      >
         {sprint.map((date, index) => {
           if (index === lengthSprint) return null;
           return (
@@ -158,8 +101,11 @@ function Gant(props) {
               .format('D MMM')}`}</span>
           );
         })}
-      </Row_Column>
-      <Row_Column className='gantt__row gantt__row--lines' size={lengthSprint}>
+      </div>
+      <div
+        className={`gantt__row gantt__row--lines ${styles.row__column}`}
+        style={{ '--size': lengthSprint }}
+      >
         {sprint.map((date, index) => {
           const currentDate = dayjs();
           if (index === lengthSprint) return null;
@@ -168,11 +114,15 @@ function Gant(props) {
           }
           return <span key={date} />;
         })}
-      </Row_Column>
+      </div>
 
       {/* rome-ignore lint/style/useDefaultParameterLast: */}
       {components.map((component = {}, index) => (
-        <Row_Bar className='gantt__row-bars' size={lengthSprint * 2} key={index}>
+        <div
+          className={`gantt__row-bars ${styles.row__bar}`}
+          style={{ '--size': lengthSprint * 2 }}
+          key={index}
+        >
           {Object.keys(component.size).map((team, index) => (
             <li
               key={index}
@@ -182,11 +132,13 @@ function Gant(props) {
               className={`gantt__row-bars__${team}`}
               title={component.text}
             >
-              {component.name && <LinkComponent to={`/components/${component.name}`} />}
+              {component.name && (
+                <Link className={styles.link} to={`/components/${component.name}`} />
+              )}
               {component.text}
             </li>
           ))}
-        </Row_Bar>
+        </div>
       ))}
     </div>
   );
@@ -224,23 +176,23 @@ function Roadmap() {
   }
   return (
     <>
-      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} styles={styles} className='tabs'>
+      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} className='tabs'>
         {Object.keys(components).map((nameQ, i) => (
           <Tabs.Item key={nameQ} value={i}>
             {nameQ}
           </Tabs.Item>
         ))}
       </Tabs>
-      <Legenda>
+      <ul className={styles.legend}>
         <li>
-          <Oval />
+          <span className={styles.oval} />
           UX/UI
         </li>
         <li>
-          <Oval />
+          <span className={styles.oval} />
           Development
         </li>
-      </Legenda>
+      </ul>
       {TabContent}
     </>
   );

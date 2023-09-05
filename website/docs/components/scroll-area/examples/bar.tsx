@@ -1,11 +1,12 @@
 import React, { useRef } from 'react';
-import styled from 'styled-components';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 let randomIndex = 1;
-const stableRandom = () =>
-  Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+const stableRandom = () => {
+  if (randomIndex > 20) randomIndex = 1;
+  return Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+};
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -14,14 +15,6 @@ function getRandomColor() {
   }
   return color;
 }
-
-const Block = styled.div`
-  display: inline-block;
-  margin: 10px;
-  width: 120px;
-  height: 120px;
-  background-color: ${() => getRandomColor()};
-`;
 
 const Demo = () => {
   const containerRef = useRef();
@@ -32,7 +25,14 @@ const Demo = () => {
           <ScrollArea.Container ref={containerRef}>
             <Box w={1200}>
               {[...new Array(100)].map((_, index) => (
-                <Block ind={index} key={index} />
+                <Box
+                  key={index}
+                  inline
+                  m={2}
+                  w={120}
+                  h={120}
+                  style={{ backgroundColor: getRandomColor() }}
+                />
               ))}
             </Box>
           </ScrollArea.Container>

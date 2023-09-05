@@ -17,10 +17,6 @@ tabName: Design
 
 ![](static/spincontainer-dropdown.png)
 
-@## Fixed Spin with Sticky (deprecated)
-
-For larger blocks, widgets, and pages, you had the option to enclose the Spin within the [Sticky](/components/sticky/) component, ensuring that the loading message remains visible within the user's viewport at all times. However, this approach is now deprecated.
-
 @page spin-container-a11y
 @page spin-container-api
 @page spin-container-code

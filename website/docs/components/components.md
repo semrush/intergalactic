@@ -48,7 +48,6 @@ title: Components
 @page slider
 @page spin
 @page spin-container
-@page sticky
 @page switch
 @page tab-line
 @page tab-panel
