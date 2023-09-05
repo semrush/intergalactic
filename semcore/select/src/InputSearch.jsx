@@ -9,12 +9,7 @@ import { localizedMessages } from './translations/__intergalactic-dynamic-locale
 
 import style from './style/input-search.shadow.css';
 
-const sizeToIcon = {
-  m: [SearchM, CloseM],
-  l: [SearchM, CloseM],
-};
-
-class InputSearch extends Component {
+class InputSearchRoot extends Component {
   static displayName = 'InputSearch';
 
   static style = style;
@@ -47,36 +42,78 @@ class InputSearch extends Component {
     }, 0);
   };
 
+  getValueProps() {
+    const { value } = this.asProps;
+    return {
+      value,
+      onChange: this.handlers.value,
+      autoFocus: true,
+      ref: this.inputRef,
+    };
+  }
+  getClearProps() {
+    const { value, getI18nText } = this.asProps;
+    return {
+      role: 'button',
+      ref: this.closeIconRef,
+      /* hide through css because the width of the input changes */
+      hide: !value,
+      'aria-hidden': !value,
+      interactive: true,
+      'aria-label': getI18nText('clearSearch'),
+      onClick: this.handleClear,
+    };
+  }
+
   render() {
     const Value = Root;
     const SInputSearch = Input;
-    const SClose = Input.Addon;
-    const { size, value, styles, getI18nText } = this.asProps;
-    const finalSize = size || this.context.size || 'm';
-    const hideClose = !value;
-    const IconClose = sizeToIcon[finalSize][1];
-    const IconSearch = sizeToIcon[finalSize][0];
+    const { size, styles, children: hasChildren, Children } = this.asProps;
 
     return sstyled(styles)(
-      <SInputSearch size={finalSize} styles={styles}>
-        <Input.Addon>
-          <IconSearch />
-        </Input.Addon>
-        <Value render={Input.Value} autoFocus ref={this.inputRef} />
-        <SClose
-          role='button'
-          tag={IconClose}
-          ref={this.closeIconRef}
-          /* hide through css because the width of the input changes */
-          hide={hideClose}
-          aria-hidden={hideClose}
-          interactive
-          aria-label={getI18nText('clearSearch')}
-          onClick={this.handleClear}
-        />
+      <SInputSearch size={size || this.context.size || 'm'} styles={styles}>
+        {hasChildren ? (
+          <Children />
+        ) : (
+          <>
+            <InputSearch.SearchIcon />
+            <Value render={InputSearch.Value} />
+            <InputSearch.Clear />
+          </>
+        )}
       </SInputSearch>,
     );
   }
 }
 
-export default createComponent(InputSearch);
+const SearchIcon = (props) => {
+  const SSearchIcon = Root;
+  const { styles } = props;
+  return sstyled(styles)(
+    <SSearchIcon render={Input.Addon}>
+      <SearchM />
+    </SSearchIcon>,
+  );
+};
+const SearchValue = (props) => {
+  const SSearchValue = Root;
+  const { styles } = props;
+  return sstyled(styles)(<SSearchValue render={Input.Value} />);
+};
+const SearchClear = (props) => {
+  const SSearchClear = Root;
+  const { styles, Children } = props;
+  return sstyled(styles)(
+    <SSearchClear render={Input.Addon} tag={CloseM}>
+      <Children />
+    </SSearchClear>,
+  );
+};
+
+const InputSearch = createComponent(InputSearchRoot, {
+  SearchIcon: SearchIcon,
+  Value: SearchValue,
+  Clear: SearchClear,
+});
+
+export default InputSearch;
