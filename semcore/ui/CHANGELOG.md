@@ -1,3 +1,22 @@
+## [15.15.0-prerelease.0] - 2023-09-05
+
+### @semcore/core
+
+- **Fixed** Functional component default props warnings from the nextjs.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed rendering zero segments pies in React<17.
+
+### @semcore/drag-and-drop
+
+- **Added** Added `customFocus` prop that allows keyboard users to use drag and drops without moving actual browser focus. Especially useful for comboboxes and selects that allows to reorder items.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Both highlighted and selected menu items were not visually distinguishable from selected items.
+- **Fixed** `highlightedIndex` prop was added to `DropdownMenu.Menu` context type.
+
 ## [15.14.0] - 2023-09-04
 
 ### @semcore/core
