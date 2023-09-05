@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.6.2, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v15.14.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/pills/examples/basic.tsx).**
@@ -15,5 +15,5 @@ Guidepup v0.13.1, MacOS Monterey 12._
 7. Screen reader triggers element default action.
 8. Screen reader says "selected".
 9. Screen reader goes to the previous element.
-10. Screen reader says "Don't care tab, 2 of 3".
+10. Screen reader says "You are currently on a tab, 2 of 3, inside of web content. To select this option, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow.".
 ```

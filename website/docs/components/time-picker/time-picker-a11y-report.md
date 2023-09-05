@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.6.2, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v15.14.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/time-picker/examples/expanded.tsx).**
@@ -22,8 +22,9 @@ Guidepup v0.13.1, MacOS Monterey 12._
 14. Screen reader says "end of Time input, entered time is 4: AM group".
 15. Screen reader types "20".
 16. Screen reader says "20".
-17. Screen reader goes out of active element.
-18. Screen reader says "Your time group".
-19. Screen reader goes into the active element.
-20. Screen reader says "Time input, entered time is 4:20 AM group".
+17. Screen reader presses the "Enter" button.
+18. Screen reader goes out of active element.
+19. Screen reader says "Your time group".
+20. Screen reader goes into the active element.
+21. Screen reader says "Time input, entered time is 4:20 AM group".
 ```
