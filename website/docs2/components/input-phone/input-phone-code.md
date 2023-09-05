@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: InputPhone('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
+tabs: InputPhone('index'), A11y('input-phone-a11y'), Example('input-phone-code')
 ---
 
 ## Unknown country and number format
@@ -36,8 +36,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -77,8 +75,6 @@ const Demo = () => {
     </Input>
   );
 };
-
-
 </script>
 
 :::
@@ -437,8 +433,6 @@ const Demo = () => {
     </NeighborLocation>
   );
 };
-
-
 </script>
 
 :::

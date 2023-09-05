@@ -1,6 +1,6 @@
 ---
 title: API
-tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog') 
+tabs: Button('index'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
 ## Button
@@ -31,5 +31,4 @@ Plain text, it sets the correct margins depending on the button size. If the but
 import Button from '@semcore/ui/button';
 <Button.Text />;
 ```
-
 <script setup>import { data as types } from '@types.data.ts';</script>

@@ -40,7 +40,7 @@ Table: Font size and line height
 import React from 'react';
 import { Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <div>
     <Text size={800} tag='p' mb={6} mt={0}>
       48px / 3em / --fs-800,--lh-800
@@ -143,7 +143,7 @@ There are three text sizes commonly used in our products:
 import React from 'react';
 import { Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <div>
     <Text size={300} tag='p' mb={4} mt={0}>
       Paragraph 16px / 1em / --fs-300,--lh-300
@@ -189,7 +189,7 @@ import React from 'react';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
-export default () => (
+const Demo = () => (
   <div>
     <Text size={600} tag='strong' mb={4} mt={0}>
       Metric 32px / 2em / --fs-600,--lh-600
@@ -226,7 +226,7 @@ You have the flexibility to change the style of text by making it `bold`, `itali
 import React from 'react';
 import { Hint, Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <div>
     <Text size={300} tag='p' mb={2} mt={0}>
       But I do love the taste of a <Text tag='strong'>good burger</Text>. Mm-mm-mm.

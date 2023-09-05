@@ -1,6 +1,6 @@
 ---
 title: API
-tabs: Notice('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
+tabs: Notice('index'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
 ## Notice

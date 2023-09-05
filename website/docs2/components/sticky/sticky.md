@@ -130,8 +130,6 @@ const Demo = () => (
     </Table>
   </ScrollArea>
 );
-
-
 </script>
 
 :::

@@ -13,5 +13,3 @@ const Demo = () => (
     <Button>Button</Button>
   </div>
 );
-
-export default Demo;

@@ -11,5 +11,3 @@ const Demo = () => {
     </Checkbox>
   );
 };
-
-export default Demo;

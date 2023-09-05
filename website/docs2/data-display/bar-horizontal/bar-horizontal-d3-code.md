@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Horizontal bar chart('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
+tabs: Horizontal bar chart('index'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -21,7 +21,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -85,7 +85,7 @@ import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import resolveColor from '@semcore/ui/utils/color';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -151,7 +151,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -226,7 +226,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;

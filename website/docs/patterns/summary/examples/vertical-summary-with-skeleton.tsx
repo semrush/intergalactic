@@ -214,5 +214,3 @@ const Demo = () => {
     </FlexBlock>
   );
 };
-
-export default Demo;

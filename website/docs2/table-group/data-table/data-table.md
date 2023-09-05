@@ -21,7 +21,7 @@ To build a table, we must provide columns with titles `<DataTable.Column name={n
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -85,7 +85,7 @@ If you don't see horizontal scrolling in the example, reduce the window size.
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head wMin={1000}>
@@ -179,7 +179,7 @@ import { Text } from '@semcore/ui/typography';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -265,7 +265,7 @@ Columns are inherited from the `Flex` component and accept all its parameters. W
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -325,7 +325,7 @@ Since columns and cells are inherited from the `Flex` component, you can use `ju
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -392,7 +392,7 @@ import DataTable, { DataTableSort } from '@semcore/ui/data-table';
 
 type SortableColumn = Exclude<keyof typeof data[0], 'keyword'>;
 
-export default () => {
+const Demo = () => {
   const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['kd', 'desc']);
   const sortedData = React.useMemo(
     () =>
@@ -421,15 +421,15 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' sortable />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<typeof data> name='kd'>
+        <DataTable.Cell data={data} name='kd'>
           {(_, row) => ({ children: row.kd === -1 ? 'n/a' : numberFormat.format(row.kd) })}
         </DataTable.Cell>
-        <DataTable.Cell<typeof data> name='cpc'>
+        <DataTable.Cell data={data} name='cpc'>
           {(_, row) => ({
             children: row.cpc === -1 ? 'n/a' : currencyFormat.format(row.cpc),
           })}
         </DataTable.Cell>
-        <DataTable.Cell<typeof data> name='vol'>
+        <DataTable.Cell data={data} name='vol'>
           {(_, row) => ({ children: row.vol === -1 ? 'n/a' : numberFormat.format(row.vol) })}
         </DataTable.Cell>
       </DataTable.Body>
@@ -489,7 +489,7 @@ import DataTable from '@semcore/ui/data-table';
 import { Box } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
-export default () => {
+const Demo = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [container, setContainer] = useState(null);
   const [top, setTop] = useState(0);
@@ -579,7 +579,7 @@ If you don't see fixed columns in the example, reduce the window size.
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head wMin={1000}>
@@ -639,7 +639,7 @@ To create a multi-level header, insert columns into each other. However, the `na
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -703,7 +703,7 @@ import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import ProgressBar from '@semcore/ui/progress-bar';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -768,7 +768,7 @@ import DataTable from '@semcore/ui/data-table';
 import Divider from '@semcore/ui/divider';
 import Portal, { PortalProvider } from '@semcore/ui/portal';
 
-export default () => {
+const Demo = () => {
   const portalRef = useRef(null);
   return (
     <>
@@ -843,7 +843,7 @@ It shouldn't be wrapped in any kind of HOC, using styled components (for example
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -853,14 +853,14 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Row<typeof data>>
+        <DataTable.Row data={data}>
           {(props, row) => {
             return {
               theme: row['kd'] === '-' ? 'warning' : props.theme,
             };
           }}
         </DataTable.Row>
-        <DataTable.Row<typeof data>>
+        <DataTable.Row data={data}>
           {(props, row, index) => {
             return {
               style: {
@@ -940,7 +940,7 @@ import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Link from '@semcore/ui/link';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -950,14 +950,14 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<typeof data> name='keyword'>
+        <DataTable.Cell data={data} name='keyword'>
           {(props, row) => {
             return {
               children: <Link>{row[props.name]}</Link>,
             };
           }}
         </DataTable.Cell>
-        <DataTable.Cell<typeof data> name='keyword'>
+        <DataTable.Cell data={data} name='keyword'>
           {(props, row, index) => {
             return {
               style: {
@@ -1031,7 +1031,7 @@ import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Spin from '@semcore/ui/spin';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -1041,7 +1041,7 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<typeof data> name='keyword/kd/cpc/vol'>
+        <DataTable.Cell data={data} name='keyword/kd/cpc/vol'>
           {(props, row) => {
             return {
               children: ['-', '$0', 'n/a'].includes(row[props.name]) ? <Spin /> : props.children,
@@ -1103,7 +1103,7 @@ To block fixed columns , you need to specify `z-index=1` to block scrolling, you
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -1180,7 +1180,7 @@ import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import { Box, Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -1276,7 +1276,7 @@ const RowAccordion = React.forwardRef(function (
   );
 });
 
-export default () => {
+const Demo = () => {
   const [exapnded, setExapnded] = useState<number[]>([]);
 
   return (
@@ -1305,7 +1305,7 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<typeof data> name='keyword'>
+          <DataTable.Cell data={data} name='keyword'>
             {(props) => {
               return {
                 children: (
@@ -1405,7 +1405,7 @@ We use the example with [the accordion above](/table-group/data-table/#accordion
 <script lang="tsx">
 import React, { useState } from 'react';
 import DataTable from '@semcore/ui/data-table';
-import Accordion from '../../../../../semcore/accordion/src';
+import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
 
 const RowAccordion = React.forwardRef(
@@ -1419,7 +1419,7 @@ const RowAccordion = React.forwardRef(
   },
 );
 
-export default () => {
+const Demo = () => {
   const [value, setValue] = useState<number[]>([]);
 
   return (
@@ -1455,7 +1455,7 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<typeof data> name='keyword'>
+          <DataTable.Cell data={data} name='keyword'>
             {(props) => {
               return {
                 children: (
@@ -1536,7 +1536,7 @@ const RowAccordion = React.forwardRef(
   },
 );
 
-export default () => {
+const Demo = () => {
   const [value, setValue] = useState([]);
   return (
     <Accordion value={value} onChange={setValue}>
@@ -1571,7 +1571,7 @@ export default () => {
               };
             }}
           </DataTable.Row>
-          <DataTable.Cell<typeof data> name='keyword'>
+          <DataTable.Cell data={data} name='keyword'>
             {(props) => {
               return {
                 children: (
@@ -1654,7 +1654,7 @@ const data = Array(10000)
     ],
   }));
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -1686,7 +1686,7 @@ import React, { useEffect, useState } from 'react';
 import DataTable from '@semcore/ui/data-table';
 import SpinContainer from '@semcore/ui/spin-container';
 
-export default () => {
+const Demo = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setInterval(() => {
@@ -1770,7 +1770,7 @@ function getSkeleton() {
   }));
 }
 
-export default () => {
+const Demo = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const timer = setInterval(() => {
@@ -1860,7 +1860,7 @@ const data = [
   },
 ];
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -1925,7 +1925,7 @@ const data = [
   },
 ];
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data}>
       <DataTable.Head>
@@ -1952,7 +1952,7 @@ You can use secondary table for compact displaying small amount of data inside w
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data} use='secondary' sort={['kd', 'desc']}>
       <DataTable.Head>
@@ -2016,7 +2016,7 @@ import DataTable from '@semcore/ui/data-table';
 
 const extensions = ['png', 'jpeg', 'webp'];
 
-export default () => {
+const Demo = () => {
   const svgRef = React.useRef<SVGSVGElement>(null);
   const width = 500;
   const height = 300;
@@ -2179,12 +2179,7 @@ const svgElementToSvgText = (svgNode: Element) => {
   return svgString;
 };
 
-export const svgText2DownloadUrl = async (
-  svg: string,
-  width: number,
-  height: number,
-  format: string,
-) =>
+const svgText2DownloadUrl = async (svg: string, width: number, height: number, format: string) =>
   new Promise<string>((resolve, reject) => {
     const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svg)))}`;
 
@@ -2220,7 +2215,7 @@ To make the table with smaller indents you need to add `compact` property.
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   return (
     <DataTable data={data} compact>
       <DataTable.Head>
@@ -2280,7 +2275,7 @@ To add a border to a column, you need to pass `vBorders` properties to that colu
 import React, { useState } from 'react';
 import DataTable, { DataTableSort } from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   const [sort, setSort] = useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
@@ -2351,7 +2346,7 @@ The active column will expand if there isn’t enough space. Fixed width columns
 import React, { useState } from 'react';
 import DataTable, { DataTableSort } from '@semcore/ui/data-table';
 
-export default () => {
+const Demo = () => {
   const [sort, setSort] = useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (

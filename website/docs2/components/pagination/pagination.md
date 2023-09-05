@@ -5,7 +5,45 @@ tabName: Design
 tabs: Pagination('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
-@import playground
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+
+import Pagination from '@semcore/ui/pagination';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { onChange, text } = createGroupWidgets('Pagination');
+
+    const currentPage = text({
+      key: 'currentPage',
+      defaultValue: 1,
+      label: 'CurrentPage',
+    });
+
+    const totalPages = text({
+      key: 'totalPages',
+      defaultValue: 122360,
+      label: 'TotalPages',
+    });
+
+    return (
+      <Pagination
+        currentPage={currentPage}
+        onCurrentPageChange={(value) => onChange('currentPage', value)}
+        totalPages={totalPages}
+      />
+    );
+  },
+  {
+    filterProps: ['onChange'],
+  },
+);
+</script>
+
+:::
 
 ## Description
 

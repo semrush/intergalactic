@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: base-trigger
-tabs: FilterTrigger('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
+tabs: FilterTrigger('index'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---
 
 The component is used as an active state of a trigger in filters.
@@ -25,7 +25,7 @@ const options = Array(6)
     title: `Option ${idx}`,
   }));
 
-export default () => {
+const Demo = () => {
   return (
     <>
       <Text tag='label' htmlFor='filter-trigger' size={300}>
@@ -67,7 +67,7 @@ import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   const [filters, setFilters] = useState(0);
   const [visible, setVisible] = useState(false);
 

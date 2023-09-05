@@ -1,7 +1,7 @@
 ---
 title: Concept and code
 fileSource: d3-chart
-tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
+tabs: D3 chart principles('index'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -67,7 +67,7 @@ import React from 'react';
 import { Plot, Line, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 300;
 
@@ -105,7 +105,7 @@ import React from 'react';
 import { Plot, Line, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 100;
   const width = 500;
   const height = 300;
@@ -163,7 +163,7 @@ import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -216,7 +216,7 @@ import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 60;
   const width = 500;
   const height = 300;
@@ -271,7 +271,7 @@ import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -324,7 +324,7 @@ import { Bar, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 import React from 'react';
 import { scaleBand, scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -378,7 +378,7 @@ function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -468,7 +468,7 @@ import React, { useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import { Line, minMax, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
-export default () => {
+const Demo = () => {
   const [[width, height], setSize] = useState([0, 0]);
   const MARGIN = 40;
   const xScale = scaleLinear()
@@ -519,7 +519,7 @@ import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 
-export default () => {
+const Demo = () => {
   const [dataLegend, setDataLegend] = useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
@@ -629,7 +629,7 @@ import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Plot, ReferenceLine, XAxis, YAxis } from '@semcore/ui/d3-chart';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -696,7 +696,7 @@ import EventEmitter from '@semcore/ui/utils/eventEmitter';
 
 const eventEmitter = new EventEmitter();
 
-export default () => {
+const Demo = () => {
   const [width, height] = [600, 300];
   const MARGIN = 80;
 
@@ -800,7 +800,7 @@ const data = Array(20)
     y: Math.random() * 10,
   }));
 
-export default () => {
+const Demo = () => {
   const svgRef = React.useRef<SVGSVGElement>(null);
   const width = 500;
   const height = 300;
@@ -938,12 +938,7 @@ const svgElementToSvgText = (svgNode: Element) => {
   return svgString;
 };
 
-export const svgText2DownloadUrl = async (
-  svg: string,
-  width: number,
-  height: number,
-  format: string,
-) =>
+const svgText2DownloadUrl = async (svg: string, width: number, height: number, format: string) =>
   new Promise<string>((resolve, reject) => {
     const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svg)))}`;
 

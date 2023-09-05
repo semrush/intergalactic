@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Typography('typography'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
+tabs: Typography('index'), A11y('typography-a11y'), API('typography-api'), Example('typography-code'), Changelog('typography-changelog')
 ---
 
 ## Basic usage
@@ -13,7 +13,7 @@ Our typography primitives have no margins as they may differ in the end products
 import React from 'react';
 import { Blockquote, Hint, List, Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <div>
     <Text size={800} tag='h1' mb={6} mt={0}>
       H1, 48px
@@ -86,7 +86,7 @@ import React from 'react';
 import { List } from '@semcore/ui/typography';
 import CheckM from '@semcore/ui/icon/Check/m';
 
-export default () => (
+const Demo = () => (
   <div>
     <List size={300} marker={<CheckM color='green' mt={1} />}>
       <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
@@ -113,7 +113,7 @@ It's acceptable to style third-party HTML. However, in other cases, we recommend
 import React from 'react';
 import FormatText from '@semcore/ui/format-text';
 
-export default () => (
+const Demo = () => (
   <FormatText>
     <h1>
       H1, <small>48px</small>

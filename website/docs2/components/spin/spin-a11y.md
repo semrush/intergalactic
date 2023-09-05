@@ -2,7 +2,7 @@
 title: A11y
 fileSource: spin
 a11y: AA
-tabs: Spin('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')
+tabs: Spin('index'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')
 ---
 
 ## What component has

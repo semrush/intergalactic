@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: ellipsis
-tabs: Ellipsis('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
+tabs: Ellipsis('index'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('ellipsis-code'), Changelog('ellipsis-changelog')
 ---
 
 ## Basic usage
@@ -121,7 +121,7 @@ import React, { useRef } from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 
-export default () => {
+const Demo = () => {
   const containerRef = useRef(null);
 
   const containerRect = useResizeObserver(containerRef);
@@ -135,7 +135,7 @@ export default () => {
         <DataTable.Column name='vol' children='Vol.' ref={containerRef} />
       </DataTable.Head>
       <DataTable.Body>
-        <DataTable.Cell<typeof data> name='vol'>
+        <DataTable.Cell data={data} name='vol'>
           {(props, row) => {
             return {
               children: (

@@ -38,7 +38,6 @@ const Preview = (preview) => {
   const theme = select({
     key: 'theme',
     placeholder: 'Select theme',
-    // defaultValue: THEME["secondary"][1],
     label: 'Theme',
     options: THEME[use].map((value) => ({
       name: value,

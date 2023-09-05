@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: date-picker
-tabs: DatePicker('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
+tabs: DatePicker('index'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
 ---
 
 ## DatePicker
@@ -36,8 +36,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -74,8 +72,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -103,8 +99,6 @@ const Demo = () => {
     </DatePicker>
   );
 };
-
-
 </script>
 
 :::
@@ -143,8 +137,6 @@ const Demo = () => {
     </DatePicker>
   );
 };
-
-
 </script>
 
 :::
@@ -195,8 +187,6 @@ const Demo = () => {
     </DatePicker>
   );
 };
-
-
 </script>
 
 :::
@@ -220,8 +210,6 @@ const Demo = () => {
     </DatePicker>
   );
 };
-
-
 </script>
 
 :::
@@ -267,8 +255,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -350,8 +336,6 @@ const Demo = () => {
     </DateRangePicker>
   );
 };
-
-
 </script>
 
 :::

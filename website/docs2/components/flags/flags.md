@@ -25,8 +25,6 @@ const Demo = () => (
     ))}
   </Flex>
 );
-
-
 </script>
 
 :::

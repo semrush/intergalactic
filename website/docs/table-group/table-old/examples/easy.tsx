@@ -72,15 +72,18 @@ const StyledBody = styled(Table.Body)`
 type SortOrder = 'asc' | 'desc';
 
 class Demo extends React.Component {
-  state = {
-    active: undefined,
-    order: {
-      keyword: defaultSortOrder as SortOrder,
-      cpc: defaultSortOrder as SortOrder,
-      vol: defaultSortOrder as SortOrder,
-    },
-    loading: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: undefined,
+      order: {
+        keyword: defaultSortOrder as SortOrder,
+        cpc: defaultSortOrder as SortOrder,
+        vol: defaultSortOrder as SortOrder,
+      },
+      loading: false,
+    };
+  }
 
   _timer = null;
 
@@ -189,5 +192,3 @@ class Demo extends React.Component {
     );
   }
 }
-
-export default Demo;

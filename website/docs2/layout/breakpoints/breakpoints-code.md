@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: utils
-tabs: Breakpoints('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
+tabs: Breakpoints('index'), API('breakpoints-api'), Example('breakpoints-code')
 ---
 
 ## Simple use
@@ -22,16 +22,16 @@ import Button from '@semcore/ui/button';
 
 const buttonSizes = ['m', 'l'] as const;
 
-const Demo = () => {
+const Example = () => {
   const index = useContext(Breakpoints.Context);
 
   return <Button size={buttonSizes[index]}>Button size {buttonSizes[index]}</Button>;
 };
 
-export default () => {
+const Demo = () => {
   return (
     <Breakpoints>
-      <Demo />
+      <Example />
     </Breakpoints>
   );
 };
@@ -50,7 +50,7 @@ import React, { useEffect, useState } from 'react';
 import Breakpoints from '@semcore/ui/breakpoints';
 import Button from '@semcore/ui/button';
 
-export default () => {
+const Demo = () => {
   const [index, setIndex] = useState(Breakpoints.mediaList.matches());
 
   useEffect(() => {
@@ -91,16 +91,16 @@ const MEDIA = [
 ];
 const Breakpoints = createBreakpoints(MEDIA);
 
-const Demo = () => {
+const Example = () => {
   const index = useContext(Breakpoints.Context);
 
   return <div>Media matches "{MEDIA[index] || 'ZOOM WINDOW'}"</div>;
 };
 
-export default () => {
+const Demo = () => {
   return (
     <Breakpoints>
-      <Demo />
+      <Example />
     </Breakpoints>
   );
 };

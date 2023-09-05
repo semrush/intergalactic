@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Notice('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
+tabs: Notice('index'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
 ## Basic usage
@@ -17,7 +17,7 @@ import Question from '@semcore/ui/icon/Question/m';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <Notice>
     <Notice.Label mt={1} mr={2} aria-hidden={true}>
       <Question />
@@ -63,25 +63,27 @@ import QuestionAltM from '@semcore/ui/icon/Question/m';
 const message = 'The reports are based on the data from the Russia Federation and CIS.';
 
 class Demo extends React.PureComponent {
-  state = {
-    message,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      message,
+    };
 
-  show = () => {
-    setTimeout(() => {
-      this.changeText(message);
-    }, 2000);
-  };
+    this.show = () => {
+      setTimeout(() => {
+        this.changeText(message);
+      }, 2000);
+    };
 
-  close = () => {
-    this.show();
-    this.changeText(null);
-  };
+    this.close = () => {
+      this.show();
+      this.changeText(null);
+    };
 
-  changeText = (message) => {
-    this.setState({ message });
-  };
-
+    this.changeText = (message) => {
+      this.setState({ message });
+    };
+  }
   render() {
     const { message } = this.state;
     return (
@@ -91,8 +93,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::

@@ -1,6 +1,6 @@
 ---
 title: Global CSS Injection
-tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
+tabs: CSS Injection('index'), Local CSS Injection('css-injection-local'), Global CSS Injection('css-injection-global')
 ---
 
 ::: warning

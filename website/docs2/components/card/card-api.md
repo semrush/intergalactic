@@ -1,6 +1,6 @@
 ---
 title: API
-tabs: Card('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
+tabs: Card('index'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
 ## Card

@@ -22,5 +22,3 @@ const Demo = () => {
     </Input>
   );
 };
-
-export default Demo;

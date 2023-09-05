@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: fullscreen-modal
-tabs: FullscreenModal('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen-modal-api'), Example('fullscreen-modal-code'), Changelog('fullscreen-modal-changelog')
+tabs: FullscreenModal('index'), A11y('fullscreen-modal-a11y'), API('fullscreen-modal-api'), Example('fullscreen-modal-code'), Changelog('fullscreen-modal-changelog')
 ---
 
 ## Basic Fullscreen.Header's use
@@ -30,7 +30,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -92,8 +91,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::

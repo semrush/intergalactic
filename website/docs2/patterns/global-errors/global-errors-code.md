@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Error message('global-errors'), A11y('global-errors-a11y'), API('global-errors-api'), Example('global-errors-code'), Changelog('global-errors-changelog')
+tabs: Error message('index'), A11y('global-errors-a11y'), API('global-errors-api'), Example('global-errors-code'), Changelog('global-errors-changelog')
 ---
 
 ## Example of using templates
@@ -28,7 +28,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
   }),
 );
 
-export default () => {
+const Demo = () => {
   const [lang, setLang] = useState('en');
 
   return (
@@ -59,7 +59,7 @@ import React from 'react';
 import Error, { getIconPath } from '@semcore/ui/errors';
 import Button from '@semcore/ui/button';
 
-export default () => (
+const Demo = () => (
   <Error icon={getIconPath('confirmation')}>
     <Error.Title>Confirm you are a real person</Error.Title>
     <Error.Description wMax={510}>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import * as reactHookForm from 'react-hook-form';
+const { useForm, Controller } = reactHookForm;
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
@@ -112,5 +113,3 @@ const Demo = () => {
     </Flex>
   );
 };
-
-export default Demo;

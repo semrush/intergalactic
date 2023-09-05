@@ -73,8 +73,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -118,8 +116,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -150,8 +146,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -190,8 +184,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -229,8 +221,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -270,8 +260,6 @@ const Demo = () => {
     </NeighborLocation>
   );
 };
-
-
 </script>
 
 :::

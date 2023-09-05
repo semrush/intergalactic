@@ -44,5 +44,3 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-export default Demo;

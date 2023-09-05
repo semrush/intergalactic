@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: skeleton
-tabs: Skeleton('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
+tabs: Skeleton('index'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
 ## Skeleton

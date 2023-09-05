@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Advanced filters('advanced-filters'), Example('advanced-filters-code')
+tabs: Advanced filters('index'), Example('advanced-filters-code')
 ---
 
 ## Filters with filter-conditions
@@ -86,7 +86,7 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
   </Flex>
 );
 
-export default () => {
+const Demo = () => {
   const [filtersCount, setFiltersCount] = React.useState(1);
   const [visible, setVisible] = React.useState(false);
   const buttonRef = React.useRef(null);

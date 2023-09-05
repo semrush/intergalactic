@@ -2,7 +2,7 @@
 title: A11y
 fileSource: d3-chart
 a11y: AA
-tabs: Radial Tree chart('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
+tabs: Radial Tree chart('index'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
 ---
 
 Radial tree chart is accessible for screen readers [as all other charts](/data-display/d3-chart/d3-chart-a11y). If you are making your radial tree interactive, make sure that chart isn’t the only way to accomplish user scenario. For example, provide `<Select />` to allow user to pick the radians.
@@ -37,7 +37,7 @@ const movies = [
   { label: 'Found\nFootage Horror', key: '\nFootage Horror', color: '#ff4953' },
 ];
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
   const [genre, setGenre] = React.useState<string | null>(movies[0].key);

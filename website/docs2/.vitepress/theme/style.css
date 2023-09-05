@@ -1,3 +1,5 @@
+@import url('../../../../semcore/utils/lib/themes/auto.css');
+
 /**
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css

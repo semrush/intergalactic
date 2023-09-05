@@ -12,5 +12,3 @@ const Demo = () => {
     </Tag>
   );
 };
-
-export default Demo;

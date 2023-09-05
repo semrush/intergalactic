@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Icon('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
+tabs: Icon('index'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
 ## Interactive
@@ -16,8 +16,6 @@ import LinkExternalM from '@semcore/ui/icon/LinkExternal/m';
 const Demo = () => (
   <LinkExternalM interactive aria-label='Go to our awesome article' color='stone' />
 );
-
-
 </script>
 
 :::

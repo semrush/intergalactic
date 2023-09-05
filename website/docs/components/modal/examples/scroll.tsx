@@ -12,11 +12,13 @@ const loremSting =
   '          quia repudiandae tempore';
 
 class Demo extends React.PureComponent {
-  state = { visible: false };
-  onVisibleChange = (visible) => this.setState({ visible });
-  openModal = () => this.onVisibleChange(true);
-  closeModal = () => this.onVisibleChange(false);
-
+  constructor(props) {
+    super(props);
+    this.state = { visible: false };
+    this.onVisibleChange = (visible) => this.setState({ visible });
+    this.openModal = () => this.onVisibleChange(true);
+    this.closeModal = () => this.onVisibleChange(false);
+  }
   render() {
     const { visible } = this.state;
     return (
@@ -41,5 +43,3 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-export default Demo;

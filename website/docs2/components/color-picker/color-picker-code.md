@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: ColorPicker('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
+tabs: ColorPicker('index'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
 ## PaletteManager
@@ -27,8 +27,6 @@ const Demo = () => {
     </ColorPicker>
   );
 };
-
-
 </script>
 
 :::
@@ -67,8 +65,6 @@ const Demo = () => {
     </ColorPicker>
   );
 };
-
-
 </script>
 
 :::
@@ -112,8 +108,6 @@ const Demo = () => {
     </ColorPicker>
   );
 };
-
-
 </script>
 
 :::
@@ -189,8 +183,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -235,8 +227,6 @@ const Demo = () => {
     </ColorPicker>
   );
 };
-
-
 </script>
 
 :::

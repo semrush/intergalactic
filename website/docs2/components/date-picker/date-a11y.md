@@ -2,7 +2,7 @@
 title: A11y
 fileSource: date-picker
 a11y: AA
-tabs: DatePicker('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
+tabs: DatePicker('index'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
 ---
 
 ## What component has

@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Bubble chart('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Bubble chart('index'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -18,7 +18,7 @@ import { Plot, Bubble, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -82,7 +82,7 @@ import { Plot, Bubble, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -142,7 +142,7 @@ const data = [
 import React from 'react';
 import { BubbleChartSkeleton } from '@semcore/ui/skeleton';
 
-export default () => (
+const Demo = () => (
   <React.Fragment>
     <BubbleChartSkeleton />
   </React.Fragment>

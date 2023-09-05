@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: drag-and-drop
-tabs: Drag and drop('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
+tabs: Drag and drop('index'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
 ---
 
 ## Use in the DropdownMenu
@@ -49,8 +49,6 @@ const Demo = () => {
     </Select>
   );
 };
-
-
 </script>
 
 :::
@@ -97,12 +95,7 @@ const Demo = () => {
   }, []);
 
   return (
-    <DnD
-      tag={TabPanel}
-      value={currentTab}
-      onChange={(tab) => setCurrentTab(tab as string)}
-      onDnD={handleDnD}
-    >
+    <DnD tag={TabPanel} value={currentTab} onChange={setCurrentTab} onDnD={handleDnD}>
       {tabs.map((tab) => (
         <DnD.Draggable placement='bottom' tag={TabPanel.Item} value={tab} key={tab} pb={0}>
           {icons[tab] ?? null}
@@ -112,8 +105,6 @@ const Demo = () => {
     </DnD>
   );
 };
-
-
 </script>
 
 :::
@@ -179,8 +170,6 @@ const Demo = () => {
     </DnD>
   );
 };
-
-
 </script>
 
 :::

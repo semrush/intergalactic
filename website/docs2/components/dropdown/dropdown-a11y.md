@@ -2,7 +2,7 @@
 title: A11y
 fileSource: dropdown
 a11y: AA
-tabs: Dropdown('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
+tabs: Dropdown('index'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
 ## What component has

@@ -3,10 +3,10 @@ import { Text } from '@semcore/ui/typography';
 import SpinContainer from '@semcore/ui/spin-container';
 
 class Demo extends React.PureComponent {
-  state = { loading: true };
-  timerFetch: any;
-  timer: any;
-
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
   }
@@ -39,5 +39,3 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-export default Demo;

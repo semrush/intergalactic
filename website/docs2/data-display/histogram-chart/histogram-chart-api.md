@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
-tabs: Histogram chart('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('d3-chart-changelog')
+tabs: Histogram chart('index'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('d3-chart-changelog')
 ---
 
 Histogram chart is based on the [bar chart](/data-display/bar-chart), but has slightly different settings.

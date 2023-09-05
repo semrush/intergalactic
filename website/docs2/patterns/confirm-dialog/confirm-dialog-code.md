@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Confirmation modal window('confirm-dialog'), Example('confirm-dialog-code')
+tabs: Confirmation modal window('index'), Example('confirm-dialog-code')
 ---
 
 ## Confirm modal example
@@ -104,8 +104,6 @@ const Demo = () => {
     </React.Fragment>
   );
 };
-
-
 </script>
 
 :::

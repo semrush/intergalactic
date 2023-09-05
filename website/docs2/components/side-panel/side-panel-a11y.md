@@ -2,7 +2,7 @@
 title: A11y
 fileSource: side-panel
 a11y: AA
-tabs: SidePanel('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
+tabs: SidePanel('index'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
 ## What component has

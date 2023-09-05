@@ -2,7 +2,7 @@
 title: A11y
 fileSource: time-picker
 a11y: AA
-tabs: Widget empty state('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
+tabs: Widget empty state('index'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
 ## What component has

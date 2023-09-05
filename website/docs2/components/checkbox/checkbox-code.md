@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Checkbox('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
+tabs: Checkbox('index'), A11y('checkbox-a11y'), API('checkbox-api'), Example('checkbox-code'), Changelog('checkbox-changelog')
 ---
 
 ## Partial selection
@@ -14,30 +14,32 @@ import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
 
 class Demo extends React.PureComponent {
-  state = {
-    checked: [false, false, false],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      checked: [false, false, false],
+    };
+    this.all = (checked) => {
+      this.setState({
+        checked: this.state.checked.map(() => checked),
+      });
+    };
 
-  all = (checked) => {
-    this.setState({
-      checked: this.state.checked.map(() => checked),
-    });
-  };
+    this.item = (checked, e) => {
+      const { id } = e.currentTarget;
 
-  item = (checked, e) => {
-    const { id } = e.currentTarget;
+      this.setState({
+        checked: this.state.checked.map((item, i) => {
+          if (i === Number(id)) return !item;
+          return item;
+        }),
+      });
+    };
 
-    this.setState({
-      checked: this.state.checked.map((item, i) => {
-        if (i === Number(id)) return !item;
-        return item;
-      }),
-    });
-  };
-
-  indeterminate = (checked) => {
-    return checked.includes(true) && checked.indexOf(false) >= 0;
-  };
+    this.indeterminate = (checked) => {
+      return checked.includes(true) && checked.indexOf(false) >= 0;
+    };
+  }
 
   render() {
     const { checked } = this.state;
@@ -66,8 +68,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -116,8 +116,6 @@ const Demo = () => (
     ))}
   </>
 );
-
-
 </script>
 
 :::
@@ -143,8 +141,6 @@ const Demo = () => {
     </Checkbox>
   );
 };
-
-
 </script>
 
 :::

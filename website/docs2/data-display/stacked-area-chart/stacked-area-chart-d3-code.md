@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Stacked area chart('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Stacked area chart('index'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -26,7 +26,7 @@ function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -135,7 +135,7 @@ import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;

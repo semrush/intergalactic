@@ -23,4 +23,3 @@ const Demo = () => {
     </Accordion>
   );
 };
-export default Demo;

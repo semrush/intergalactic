@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: ProductHead('product-head'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
+tabs: ProductHead('index'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
 ---
 
 ## What component has

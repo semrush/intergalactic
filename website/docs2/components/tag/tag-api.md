@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: tag
-tabs: Tag('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
+tabs: Tag('index'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
 ---
 
 ## Tag

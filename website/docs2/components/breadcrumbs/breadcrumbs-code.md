@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Breadcrumbs('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
+tabs: Breadcrumbs('index'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
 ## Usage example
@@ -14,7 +14,7 @@ import React from 'react';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import Tooltip from '@semcore/ui/tooltip';
 
-export default () => (
+const Demo = () => (
   <Breadcrumbs tag='nav'>
     <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
     <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
@@ -45,7 +45,7 @@ import React from 'react';
 import Breadcrumbs from '@semcore/ui/breadcrumbs';
 import Link from '@semcore/ui/link';
 
-export default () => (
+const Demo = () => (
   <Breadcrumbs tag='nav'>
     <Breadcrumbs.Item tag='a' href='/'>
       main page

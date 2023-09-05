@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: radio
-tabs: Radio('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
+tabs: Radio('index'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
 ## RadioGroup example
@@ -44,8 +44,6 @@ const Demo = () => {
     </div>
   );
 };
-
-
 </script>
 
 :::
@@ -71,8 +69,6 @@ const Demo = () => {
     </Radio>
   );
 };
-
-
 </script>
 
 :::

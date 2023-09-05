@@ -63,5 +63,3 @@ const Demo = () => (
     </Table.Body>
   </Table>
 );
-
-export default Demo;

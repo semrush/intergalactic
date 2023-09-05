@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
+tabs: Radar chart('index'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
 ::: tip
@@ -21,7 +21,7 @@ import { scaleLinear } from 'd3-scale';
 import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   const width = 250;
   const height = 250;
 
@@ -78,7 +78,7 @@ import React from 'react';
 import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -124,7 +124,7 @@ import React from 'react';
 import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -171,7 +171,7 @@ import { scaleLinear } from 'd3-scale';
 import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   const width = 250;
   const height = 250;
 
@@ -216,7 +216,7 @@ import { Plot, Radar, getLabelOffsetPosition } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Tag from '@semcore/ui/tag';
 
-export default () => {
+const Demo = () => {
   const width = 250;
   const height = 250;
 
@@ -284,7 +284,7 @@ import React from 'react';
 import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -349,7 +349,7 @@ import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -412,7 +412,7 @@ import React from 'react';
 import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -461,7 +461,7 @@ import { curveCardinalClosed } from 'd3-shape';
 import Slider from '@semcore/slider';
 
 const scale = scaleLinear().domain([0, 10]);
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
   const [angleDegOffset, setAngleDegOffset] = React.useState(45);

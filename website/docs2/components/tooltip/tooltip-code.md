@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: tooltip
-tabs: Tooltip('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
+tabs: Tooltip('index'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
 ::: warning
@@ -25,7 +25,7 @@ import Tooltip from '@semcore/ui/tooltip';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
       <Tooltip>
@@ -55,7 +55,7 @@ import Tooltip from '@semcore/ui/tooltip';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import Link from '@semcore/ui/link';
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
       <Tooltip title='Hello, stranger 😉'>
@@ -83,7 +83,7 @@ const options = Array(50)
   .fill('')
   .map((_, index) => `Option ${index}`);
 
-export default () => (
+const Demo = () => (
   <Select>
     <Select.Trigger placeholder='Select option' />
     <Select.Menu>
@@ -159,8 +159,6 @@ const Demo = () => {
     </React.Fragment>
   );
 };
-
-
 </script>
 
 :::

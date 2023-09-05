@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: tab-line
-tabs: TabLine('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
+tabs: TabLine('index'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
 ## TabLine

@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Modal('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
+tabs: Modal('index'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
 ---
 
 ## What component has

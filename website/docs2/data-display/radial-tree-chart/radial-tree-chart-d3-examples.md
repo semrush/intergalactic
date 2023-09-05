@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Radial Tree chart('radial-tree-chart'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
+tabs: Radial Tree chart('index'), API('radial-tree-chart-api'), A11y('radial-tree-chart-a11y'), Examples('radial-tree-chart-d3-examples'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -18,7 +18,7 @@ import { Plot, RadialTree } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import LikeM from '@semcore/ui/icon/Like/m';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -79,7 +79,7 @@ const movies = [
   { label: 'Found\nFootage Horror', color: '#ff4953' },
 ];
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -113,7 +113,7 @@ import { Plot, RadialTree } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import LikeM from '@semcore/ui/icon/Like/m';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -155,7 +155,7 @@ import { Plot, RadialTree } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import LikeM from '@semcore/ui/icon/Like/m';
 
-export default () => {
+const Demo = () => {
   const width = 500;
   const height = 500;
 
@@ -223,7 +223,7 @@ export default () => {
 import React from 'react';
 import { NoData } from '@semcore/ui/widget-empty';
 
-export default () => {
+const Demo = () => {
   return <NoData type='radial-tree-chart' />;
 };
 </script>
@@ -238,7 +238,7 @@ export default () => {
 import React from 'react';
 import { RadialTreeChartSkeleton } from '@semcore/ui/skeleton';
 
-export default () => {
+const Demo = () => {
   return <RadialTreeChartSkeleton />;
 };
 </script>

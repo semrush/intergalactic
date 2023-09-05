@@ -7,12 +7,18 @@ import { loadSemcoreSources } from './load-semcore-sources';
 import pluginReact from '@vitejs/plugin-react';
 import { resolve as resolvePath } from 'path';
 import tableCaptions from 'markdown-it-table-captions';
-import { renderTypescript } from './renderTypescript';
+import { renderComponentChangelog } from './renderComponentChangelog';
+import { unpluginIcons } from './unplugins/unplugin-icons';
+import { unpluginStatic } from './unplugins/unplugin-static';
+import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
+import { unpluginCssModules } from './unplugins/unplugin-css-modules';
+import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Intergalactic',
   description: 'Design system',
+  ignoreDeadLinks: true,
   markdown: {
     config(md) {
       md
@@ -21,9 +27,14 @@ export default defineConfig({
             return renderSandbox(tokens, idx, 'sandbox');
           },
         })
-        .use(container, 'typescript', {
+        .use(container, 'react-view', {
           render(tokens, idx) {
-            return renderTypescript(tokens, idx);
+            return renderSandbox(tokens, idx, 'react-view');
+          },
+        })
+        .use(container, 'changelog', {
+          render(tokens, idx) {
+            return renderComponentChangelog(tokens, idx);
           },
         })
         .use(tableCaptions);
@@ -57,6 +68,25 @@ export default defineConfig({
           return `${resolvePath(__dirname, '../../src/docs-components', purePath)}.jsx`;
         },
       })).vite({}),
+      createUnplugin<{}>(() => ({
+        name: 'docs-resolver',
+        async resolveId(id) {
+          if (!id.startsWith('@docs/')) return null;
+          const purePath = id.substring('@docs/'.length);
+          return `${resolvePath(__dirname, '../../src/docs', purePath)}.jsx`;
+        },
+      })).vite({}),
+      unpluginIcons.vite({}),
+      unpluginStatic.vite({}),
+      unpluginIllustrations.vite({}),
+      unpluginCssModules.vite({}),
+      unpluginCrutches.vite({}),
+
+    // build.onResolve({ filter: /^@docs\/.*\.md$/ }, async ({ path }) => {
+    //   const purePath = resolvePath(docsDir, path.substring('@docs/'.length));
+
+    //   return { path: purePath };
+    // });
       createUnplugin<{}>(() => ({
         name: 'typescript-data-resolver',
         async resolveId(id) {

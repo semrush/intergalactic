@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: InputTags('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Example('input-tags-code'), Changelog('input-tags-changelog')
+tabs: InputTags('index'), A11y('input-tags-a11y'), API('input-tags-api'), Example('input-tags-code'), Changelog('input-tags-changelog')
 ---
 
 ## What component has

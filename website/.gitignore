@@ -37,4 +37,5 @@ Icon[
 # Env variable
 .env
 docs2/.vitepress/cache
-/.vitepress/cache
+docs2/.vitepress/.temp
+docs2/.vitepress/dist

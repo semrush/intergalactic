@@ -5,7 +5,18 @@ tabName: Design
 tabs: Icon('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
-@import icons
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Components from './index';
+import dataIcons from './icons-list';
+
+import icons from '@icons';
+const App = () => <Components icons={icons} json={dataIcons} />;
+</script>
+
+:::
 
 ## Sizes
 

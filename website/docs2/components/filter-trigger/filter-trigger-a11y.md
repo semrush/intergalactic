@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: FilterTrigger('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
+tabs: FilterTrigger('index'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---
 
 ## What component has

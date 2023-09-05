@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: modal
-tabs: Modal('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
+tabs: Modal('index'), A11y('modal-a11y'), API('modal-api'), Example('modal-code'), Changelog('modal-changelog')
 ---
 
 ## Basic modal window usage
@@ -39,7 +39,6 @@ const Demo = () => {
     </React.Fragment>
   );
 };
-
 </script>
 
 :::
@@ -65,11 +64,13 @@ const loremSting =
   '          quia repudiandae tempore';
 
 class Demo extends React.PureComponent {
-  state = { visible: false };
-  onVisibleChange = (visible) => this.setState({ visible });
-  openModal = () => this.onVisibleChange(true);
-  closeModal = () => this.onVisibleChange(false);
-
+  constructor(props) {
+    super(props);
+    this.state = { visible: false };
+    this.onVisibleChange = (visible) => this.setState({ visible });
+    this.openModal = () => this.onVisibleChange(true);
+    this.closeModal = () => this.onVisibleChange(false);
+  }
   render() {
     const { visible } = this.state;
     return (
@@ -94,8 +95,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -140,8 +139,6 @@ const Demo = () => {
     </React.Fragment>
   );
 };
-
-
 </script>
 
 :::
@@ -195,8 +192,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -251,18 +246,21 @@ const NavigationItem = ({ onClick, value, stepNavigation }) => (
 );
 
 class Demo extends React.PureComponent {
-  state = { visible: false, stepNavigation: 1 };
-  onVisibleChange = (visible) => this.setState({ visible });
-  closeModal = () => this.onVisibleChange(false);
-  openModal = () => this.onVisibleChange(true);
+  constructor(props) {
+    super(props);
+    this.state = { visible: false, stepNavigation: 1 };
+    this.onVisibleChange = (visible) => this.setState({ visible });
+    this.closeModal = () => this.onVisibleChange(false);
+    this.openModal = () => this.onVisibleChange(true);
 
-  updateStepNavigation = (step) => {
-    MAP_NAVIGATION[step] && this.setState({ stepNavigation: step });
-  };
+    this.updateStepNavigation = (step) => {
+      MAP_NAVIGATION[step] && this.setState({ stepNavigation: step });
+    };
 
-  handleItemClick = (value) => () => {
-    this.setState({ stepNavigation: value });
-  };
+    this.handleItemClick = (value) => () => {
+      this.setState({ stepNavigation: value });
+    };
+  }
 
   render() {
     const { visible, stepNavigation } = this.state;
@@ -376,8 +374,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -403,14 +399,15 @@ const closeStyles = {
   fontSize: '20px',
 };
 
-export default class Demo extends React.Component {
-  state = {
-    visible: false,
-  };
-
-  handleClose = () => this.setState({ visible: false });
-
-  handleOpen = () => this.setState({ visible: true });
+const Demo = class Demo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+    this.handleClose = () => this.setState({ visible: false });
+    this.handleOpen = () => this.setState({ visible: true });
+  }
 
   render() {
     const { visible } = this.state;

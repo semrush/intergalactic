@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Secondary table('table-secondary'), Example('table-secondary-code')
+tabs: Secondary table('index'), Example('table-secondary-code')
 ---
 
 ::: warning

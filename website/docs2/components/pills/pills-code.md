@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: pills
-tabs: Pills('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
+tabs: Pills('index'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
 ---
 
 ## Basic example
@@ -14,7 +14,7 @@ import Pills from '@semcore/ui/pills';
 import ThumbUpM from '@semcore/ui/icon/ThumbUp/m';
 import ThumbDownM from '@semcore/ui/icon/ThumbDown/m';
 
-export default () => {
+const Demo = () => {
   const [choice, setChoice] = React.useState(null);
 
   return (
@@ -47,7 +47,7 @@ import Pills from '@semcore/ui/pills';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   return (
     <Flex gap={5}>
       <Flex gap={2} direction='column'>

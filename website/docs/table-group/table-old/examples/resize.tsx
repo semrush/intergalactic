@@ -92,4 +92,4 @@ const DemoResize = () => {
   );
 };
 
-export default DemoResize;
+Resize;

@@ -105,5 +105,3 @@ const Demo = () => (
     </Table>
   </ScrollArea>
 );
-
-export default Demo;

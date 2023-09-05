@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Feedback('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
+tabs: Feedback('index'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
 
 ## Default feedback form
@@ -48,9 +48,12 @@ class Feedback extends React.PureComponent<{
   onChange: (event: any, trigger: string) => void;
   value: { description: string; email: string };
 }> {
-  handleChange = (fn) => (_, e) => {
-    fn(e);
-  };
+  constructor(props) {
+    super(props);
+    this.handleChange = (fn) => (_, e) => {
+      fn(e);
+    };
+  }
 
   render() {
     const { status, onSubmit, onCancel, value } = this.props;
@@ -123,22 +126,24 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackLink extends React.PureComponent {
-  state = { status: 'default', value: { description: '', email: '' } };
-  timeout: any;
-  onSubmit = () => {
-    this.requestServer('success', 1000);
-    this.setState({ status: 'loading' });
-  };
-  onChange = (e, trigger) => {
-    const { value } = e.currentTarget;
-    this.setState({ value: { ...this.state.value, [trigger]: value } });
-  };
-  requestServer = (status, time = 500, cb = () => {}) => {
-    this.timeout = setTimeout(() => {
-      this.setState({ status });
-      cb();
-    }, time);
-  };
+  constructor(props) {
+    super(props);
+    this.state = { status: 'default', value: { description: '', email: '' } };
+    this.onSubmit = () => {
+      this.requestServer('success', 1000);
+      this.setState({ status: 'loading' });
+    };
+    this.onChange = (e, trigger) => {
+      const { value } = e.currentTarget;
+      this.setState({ value: { ...this.state.value, [trigger]: value } });
+    };
+    this.requestServer = (status, time = 500, cb = () => {}) => {
+      this.timeout = setTimeout(() => {
+        this.setState({ status });
+        cb();
+      }, time);
+    };
+  }
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
@@ -170,7 +175,7 @@ class FeedbackLink extends React.PureComponent {
   }
 }
 
-export default FeedbackLink;
+const Demo = FeedbackLink;
 </script>
 
 :::
@@ -292,8 +297,6 @@ const Demo = () => (
     <FeedbackForm.Submit>Submit this strange form</FeedbackForm.Submit>
   </FeedbackForm>
 );
-
-
 </script>
 
 :::

@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Line chart('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Examples('line-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Line chart('index'), A11y('line-chart-a11y'), API('line-chart-api'), Examples('line-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -20,7 +20,7 @@ import React from 'react';
 import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -71,7 +71,7 @@ import React from 'react';
 import { Plot, XAxis, YAxis, HoverLine, minMax } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -120,7 +120,7 @@ import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -195,7 +195,7 @@ function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -279,7 +279,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import { curveCardinal } from 'd3-shape';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -352,7 +352,7 @@ const lineColors = {
   line3: resolveColor('green-200'),
 };
 
-export default () => {
+const Demo = () => {
   const MARGIN = 30;
   const width = 500;
   const height = 300;

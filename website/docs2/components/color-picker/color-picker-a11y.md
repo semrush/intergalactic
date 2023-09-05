@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: ColorPicker('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
+tabs: ColorPicker('index'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
 Color picker component provides basic support for keyboard and screen readers.

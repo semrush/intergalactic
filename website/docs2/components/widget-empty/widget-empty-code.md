@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: widget-empty
-tabs: Widget empty state('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
+tabs: Widget empty state('index'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
 ## NoData example
@@ -30,7 +30,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
   }),
 );
 
-export default () => {
+const Demo = () => {
   const [lang, setLang] = useState('en');
 
   return (
@@ -221,7 +221,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
   }),
 );
 
-export default () => {
+const Demo = () => {
   const [lang, setLang] = useState('en');
 
   return (
@@ -273,7 +273,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
   }),
 );
 
-export default () => {
+const Demo = () => {
   const [lang, setLang] = useState('en');
 
   return (
@@ -336,7 +336,7 @@ import Card from '@semcore/ui/card';
 import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
 import Divider from '@semcore/ui/divider';
 
-export default () => {
+const Demo = () => {
   return (
     <div>
       <Card my={5}>
@@ -375,7 +375,7 @@ import Card from '@semcore/ui/card';
 import WidgetEmpty, { getIconPath } from '@semcore/ui/widget-empty';
 import Divider from '@semcore/ui/divider';
 
-export default () => {
+const Demo = () => {
   return (
     <div>
       <Card my={5}>

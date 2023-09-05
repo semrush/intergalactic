@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Form('form'), A11y('form-a11y'), Example('form-code')
+tabs: Form('index'), A11y('form-a11y'), Example('form-code')
 ---
 
 These examples use [`react-hook-form@6`](https://github.com/react-hook-form/react-hook-form/tree/v6.15.8) library.
@@ -11,7 +11,8 @@ These examples use [`react-hook-form@6`](https://github.com/react-hook-form/reac
 
 <script lang="tsx">
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import * as reactHookForm from 'react-hook-form';
+const { useForm } = reactHookForm;
 import { Flex } from '@semcore/ui/flex-box';
 import Tooltip from '@semcore/ui/tooltip';
 import Input from '@semcore/ui/input';
@@ -117,8 +118,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::
@@ -129,7 +128,8 @@ const Demo = () => {
 
 <script lang="tsx">
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import * as reactHookForm from 'react-hook-form';
+const { useForm, Controller } = reactHookForm;
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Select from '@semcore/ui/select';
@@ -262,8 +262,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -274,7 +272,8 @@ const Demo = () => {
 
 <script lang="tsx">
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import * as reactHookForm from 'react-hook-form';
+const { useForm, Controller } = reactHookForm;
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import { DatePicker } from '@semcore/ui/date-picker';
@@ -386,8 +385,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -398,7 +395,8 @@ const Demo = () => {
 
 <script lang="tsx">
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import * as reactHookForm from 'react-hook-form';
+const { useForm, Controller } = reactHookForm;
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
@@ -511,8 +509,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::

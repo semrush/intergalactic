@@ -108,5 +108,3 @@ const Demo = () => (
     <FeedbackForm.Submit>Submit this strange form</FeedbackForm.Submit>
   </FeedbackForm>
 );
-
-export default Demo;

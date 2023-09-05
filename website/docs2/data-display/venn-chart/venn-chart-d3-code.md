@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Venn chart('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Examples('venn-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Venn chart('index'), A11y('venn-chart-a11y'), API('venn-chart-api'), Examples('venn-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -33,7 +33,7 @@ const data = {
   'G/F/C': 100,
 };
 
-export default () => {
+const Demo = () => {
   return (
     <Plot height={300} width={400} data={data}>
       <Venn>
@@ -75,7 +75,7 @@ If you want to change the intersection styles, you can add additional styles to 
 import React from 'react';
 import { colors, Plot, Venn } from '@semcore/ui/d3-chart';
 
-export default () => {
+const Demo = () => {
   return (
     <Plot height={300} width={400} data={data}>
       <Venn>
@@ -131,7 +131,7 @@ const orders = [
 
 const orientations = [Math.PI / 2, Math.PI];
 
-export default () => {
+const Demo = () => {
   const [orientation, setOrientation] = useState(0);
   const [order, setOrder] = useState(0);
 

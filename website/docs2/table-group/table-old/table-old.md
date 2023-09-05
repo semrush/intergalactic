@@ -89,15 +89,18 @@ const StyledBody = styled(Table.Body)`
 type SortOrder = 'asc' | 'desc';
 
 class Demo extends React.Component {
-  state = {
-    active: undefined,
-    order: {
-      keyword: defaultSortOrder as SortOrder,
-      cpc: defaultSortOrder as SortOrder,
-      vol: defaultSortOrder as SortOrder,
-    },
-    loading: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: undefined,
+      order: {
+        keyword: defaultSortOrder as SortOrder,
+        cpc: defaultSortOrder as SortOrder,
+        vol: defaultSortOrder as SortOrder,
+      },
+      loading: false,
+    };
+  }
 
   _timer = null;
 
@@ -206,8 +209,6 @@ class Demo extends React.Component {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -293,17 +294,19 @@ const StyledBody = styled(Table.Body)`
 type SortOrder = 'asc' | 'desc';
 
 class Demo extends React.Component {
-  state = {
-    active: undefined,
-    order: {
-      keyword: defaultSortOrder as SortOrder,
-      cpc: defaultSortOrder as SortOrder,
-      vol: defaultSortOrder as SortOrder,
-    },
-    loading: false,
-  };
-
-  _timer = null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: undefined,
+      order: {
+        keyword: defaultSortOrder as SortOrder,
+        cpc: defaultSortOrder as SortOrder,
+        vol: defaultSortOrder as SortOrder,
+      },
+      loading: false,
+    };
+    this._timer = null;
+  }
 
   handleHeadKeyDown = (key) => (event) => {
     if (event.key === 'Enter') {
@@ -417,8 +420,6 @@ class Demo extends React.Component {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -435,7 +436,7 @@ import Table from '@semcore/ui/table';
 import Accordion from '@semcore/ui/accordion';
 import { Box } from '@semcore/ui/flex-box';
 
-export default () => (
+const Demo = () => (
   <Table>
     <Table.Head>
       <Table.Row>
@@ -606,7 +607,7 @@ const DemoResize = () => {
   );
 };
 
-export default DemoResize;
+Resize;
 </script>
 
 :::
@@ -773,8 +774,6 @@ const Demo = () => (
     <ScrollArea.Bar w='calc(100% - 200px)' ml='200px' />
   </StyledScrollArea>
 );
-
-
 </script>
 
 :::
@@ -936,8 +935,6 @@ const Demo = () => {
     </ScrollArea>
   );
 };
-
-
 </script>
 
 :::
@@ -1014,8 +1011,6 @@ const Demo = () => (
     </Table.Body>
   </Table>
 );
-
-
 </script>
 
 :::
@@ -1093,8 +1088,6 @@ const Demo = () => (
     </Table.Body>
   </Table>
 );
-
-
 </script>
 
 :::
@@ -1135,8 +1128,6 @@ const Demo = () => {
     </Table>
   );
 };
-
-
 </script>
 
 :::

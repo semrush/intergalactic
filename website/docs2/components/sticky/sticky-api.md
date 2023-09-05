@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: sticky
-tabs: Sticky('sticky'), API('sticky-api'), Changelog('sticky-changelog')
+tabs: Sticky('index'), API('sticky-api'), Changelog('sticky-changelog')
 ---
 
 ::: tip

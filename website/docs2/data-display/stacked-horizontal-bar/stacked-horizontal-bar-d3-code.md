@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Stacked horizontal bar chart('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-d3-code'), Changelog('d3-chart-changelog')
+tabs: Stacked horizontal bar chart('index'), A11y('stacked-horizontal-bar-a11y'), API('stacked-horizontal-bar-api'), Examples('stacked-horizontal-bar-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -25,7 +25,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex, Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;

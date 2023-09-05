@@ -155,5 +155,3 @@ const Demo = () => (
     <ScrollArea.Bar w='calc(100% - 200px)' ml='200px' />
   </StyledScrollArea>
 );
-
-export default Demo;

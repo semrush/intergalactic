@@ -43,5 +43,3 @@ const Demo = () => {
     </Box>
   );
 };
-
-export default Demo;

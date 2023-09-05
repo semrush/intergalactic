@@ -20,5 +20,3 @@ const Demo = () => {
     </NeighborLocation>
   );
 };
-
-export default Demo;

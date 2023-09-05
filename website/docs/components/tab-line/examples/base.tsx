@@ -29,5 +29,3 @@ const Demo = () => {
     </TabLine>
   );
 };
-
-export default Demo;

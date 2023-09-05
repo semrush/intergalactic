@@ -29,5 +29,3 @@ const Demo = () => {
     </form>
   );
 };
-
-export default Demo;

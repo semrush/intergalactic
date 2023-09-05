@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Flags('flags'), A11y('flags-a11y'), API('flags-api'), Changelog('flags-changelog')
+tabs: Flags('index'), A11y('flags-a11y'), API('flags-api'), Changelog('flags-changelog')
 ---
 
 Flags is a straight-forward component that doesn't require special compliance for accessibility.

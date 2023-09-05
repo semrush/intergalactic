@@ -4,28 +4,21 @@
   align-items: center;
   width: 100%;
 }
+
 .label {
   flex: 0 0 70px;
 }
+
 .control {
   margin-left: calc(var(--intergalactic-spacing-2x) + 2px);
 }
 
 .wrapperPlayground {
   display: flex;
-  border: 1px solid var(--intergalactic-border-secondary);
   overflow: hidden;
   border-radius: var(--intergalactic-rounded-medium);
   height: auto;
   margin-bottom: var(--intergalactic-spacing-8x);
-}
-.wrapperPlayground p {
-  margin: 0;
-}
-@media (max-width: 767px) {
-  .wrapperPlayground {
-    display: none;
-  }
 }
 
 .resultView {
@@ -58,43 +51,16 @@
 
 .widgetsBar {
   position: relative;
-  width: 30%;
-  padding: var(--intergalactic-spacing-8x);
   font-size: var(--intergalactic-fs-200);
-  background-color: var(--intergalactic-bg-secondary-neutral);
-  border-left: 1px solid var(--intergalactic-border-secondary);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  padding-left: 8px;
+  padding-right: 4px;
 }
 
 .widgetGroup {
-  padding-bottom: 15px;
-}
-
-.iconCopy {
-  position: absolute;
-  right: var(--intergalactic-spacing-4x);
-  top: var(--intergalactic-spacing-4x);
-  cursor: pointer;
-}
-.iconCopy > span {
-  display: inline-block;
-}
-
-.iconCopy svg {
-  width: 22px;
-  height: 22px;
-  fill: #999;
-}
-.iconCopy svg:hover {
-  opacity: 0.8;
-}
-
-.chooseBackgroundColor {
-  width: 25px;
-  height: 25px;
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  display: flex;
+  flex-direction: column;
 }

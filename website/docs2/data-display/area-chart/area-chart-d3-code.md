@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Area chart('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Area chart('index'), A11y('area-chart-a11y'), API('area-chart-api'), Examples('area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -26,7 +26,7 @@ function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -90,7 +90,7 @@ import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -159,7 +159,7 @@ import { Area, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 
 const customLineStyles = { strokeWidth: 1, stroke: 'orange' };
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;

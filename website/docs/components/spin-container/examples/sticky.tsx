@@ -26,5 +26,3 @@ const Demo = () => (
     </SpinContainer>
   </ScrollArea>
 );
-
-export default Demo;

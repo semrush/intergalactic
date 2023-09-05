@@ -14,5 +14,3 @@ const Demo = () => {
     </DatePicker>
   );
 };
-
-export default Demo;

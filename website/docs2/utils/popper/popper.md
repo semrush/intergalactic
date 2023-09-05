@@ -22,7 +22,7 @@ import { Flex } from '@semcore/ui/flex-box';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '10px' };
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
@@ -63,7 +63,7 @@ import Popper from '@semcore/ui/popper';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 
-export default () => (
+const Demo = () => (
   <Popper interaction='hover'>
     <Popper.Trigger style={style}>Hover me pls</Popper.Trigger>
     <Popper.Popper style={style}>Attached content</Popper.Popper>
@@ -89,7 +89,7 @@ import Popper from '@semcore/ui/popper';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 
-export default () => (
+const Demo = () => (
   <Popper
     onOutsideClick={() => {
       // cancel hide popper
@@ -128,7 +128,7 @@ const styleBox = {
   padding: '60px',
 };
 
-export default () => (
+const Demo = () => (
   <Box style={styleBox}>
     <Popper placement='top-start' interaction='hover'>
       <Popper.Trigger w='100px' tag={Button}>
@@ -235,7 +235,7 @@ import HamburgerM from '@semcore/ui/icon/Hamburger/m';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 
-export default () => (
+const Demo = () => (
   <Popper>
     <Popper.Trigger tag={Button}>
       <Button.Addon>
@@ -267,7 +267,7 @@ import Popper from '@semcore/ui/popper';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 
-export default () => (
+const Demo = () => (
   <Popper interaction='focus'>
     {({ getTriggerProps }) => (
       <>
@@ -294,7 +294,7 @@ import Popper from '@semcore/ui/popper';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 
-export default () => (
+const Demo = () => (
   <Popper>
     {(props, handlers) => {
       // function for managing the visibility state of Popper.Popper
@@ -338,7 +338,7 @@ import Button from '@semcore/ui/button';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '20px' };
 
-export default () => (
+const Demo = () => (
   <>
     <Popper disablePortal>
       <Popper.Trigger tag={Button} mr={8}>

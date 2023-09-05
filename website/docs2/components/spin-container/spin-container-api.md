@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: spin-container
-tabs: SpinContainer('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
+tabs: SpinContainer('index'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
 ## SpinContainer

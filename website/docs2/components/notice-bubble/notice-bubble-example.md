@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: NoticeBubble('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-example'), Changelog('notice-bubble-changelog')
+tabs: NoticeBubble('index'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-example'), Changelog('notice-bubble-changelog')
 ---
 
 Please note that each example uses its own instance of `NoticeBubbleManager`, which can lead to the overlaying of notices from different examples.
@@ -37,7 +37,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -75,7 +74,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -116,7 +114,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -155,7 +152,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -194,7 +190,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -228,7 +223,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -271,7 +265,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -341,7 +334,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -375,7 +367,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -412,7 +403,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::
@@ -456,7 +446,6 @@ const Demo = () => {
     </>
   );
 };
-
 </script>
 
 :::

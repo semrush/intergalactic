@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: dropdown
-tabs: Dropdown('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
+tabs: Dropdown('index'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
 ::: tip

@@ -72,17 +72,19 @@ const StyledBody = styled(Table.Body)`
 type SortOrder = 'asc' | 'desc';
 
 class Demo extends React.Component {
-  state = {
-    active: undefined,
-    order: {
-      keyword: defaultSortOrder as SortOrder,
-      cpc: defaultSortOrder as SortOrder,
-      vol: defaultSortOrder as SortOrder,
-    },
-    loading: false,
-  };
-
-  _timer = null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: undefined,
+      order: {
+        keyword: defaultSortOrder as SortOrder,
+        cpc: defaultSortOrder as SortOrder,
+        vol: defaultSortOrder as SortOrder,
+      },
+      loading: false,
+    };
+    this._timer = null;
+  }
 
   handleHeadKeyDown = (key) => (event) => {
     if (event.key === 'Enter') {
@@ -196,5 +198,3 @@ class Demo extends React.Component {
     );
   }
 }
-
-export default Demo;

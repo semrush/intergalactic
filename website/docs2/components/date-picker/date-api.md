@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: date-picker
-tabs: DatePicker('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
+tabs: DatePicker('index'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')
 ---
 
 ## DatePicker and MonthPicker

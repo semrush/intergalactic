@@ -5,5 +5,5 @@ tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-
 
 
 
-<!-- @changelog button -->
-<!--@include: ../../../../semcore/button/CHANGELOG.md-->
+
+::: changelog button :::

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Primary table('table-primary'), Example('table-primary-code')
+tabs: Primary table('index'), Example('table-primary-code')
 ---
 
 ::: warning

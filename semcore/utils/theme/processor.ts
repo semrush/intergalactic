@@ -17,6 +17,8 @@ const excludeTokens = JSON.parse(
   await fs.readFile(resolvePath(dirname, './exclude-tokens.json'), 'utf-8'),
 );
 
+const autoTheme: Record<string, { name: string; value: string; description: string }[]> = {};
+
 for (const theme of themes) {
   const prefix = 'intergalactic';
   const { base, tokens } = JSON.parse(
@@ -52,6 +54,8 @@ for (const theme of themes) {
 
   await fs.writeFile(`./semcore/utils/src/themes/${theme}.css`, tokensToCss(processedTokens));
   await fs.writeFile(`./semcore/utils/src/themes/${theme}.json`, tokensToJson(processedTokens));
+
+  autoTheme[theme] = processedTokens;
 
   const usages: { [tokenName: string]: string[] } = {};
   if (theme === defaultTheme) {
@@ -288,6 +292,14 @@ for (const theme of themes) {
     );
   }
 }
+
+const autoThemeLines: string[] = [];
+for (const theme in autoTheme) {
+  const selector = theme === defaultTheme ? ':root' : `.${theme}`;
+  autoThemeLines.push(tokensToCss(autoTheme[theme], selector));
+}
+
+await fs.writeFile('./semcore/utils/src/themes/auto.css', autoThemeLines.join('\n'));
 
 execSync('pnpm lint:css --fix', {
   encoding: 'utf-8',

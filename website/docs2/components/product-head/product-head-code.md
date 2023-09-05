@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: product-head
-tabs: ProductHead('product-head'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
+tabs: ProductHead('index'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
 ---
 
 ## Extended example of the header with tabs
@@ -30,7 +30,7 @@ import Select from '@semcore/ui/select';
 
 import Header, { Info, Title } from '@semcore/ui/product-head';
 
-export default () => {
+const Demo = () => {
   return (
     <>
       <Header mx={6}>

@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: slider
-tabs: Slider('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
+tabs: Slider('index'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
 ---
 
 ## Slider

@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: select
-tabs: Select / Multiselect('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
+tabs: Select / Multiselect('index'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
 ::: tip
@@ -33,7 +33,7 @@ const options = Array(6)
     children: `Option ${index}`, // option's children displayed in the dropdown
   }));
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Select options={options} placeholder='Select an option, sir 🧐' m='auto' />
   </Flex>
@@ -63,7 +63,7 @@ const options = Array(6)
 
 const { value: initialValue } = options[0];
 
-export default () => {
+const Demo = () => {
   const [value, setValue] = useState(initialValue);
 
   return (
@@ -109,7 +109,7 @@ const options = Array(6)
     children: `Option ${index}`,
   }));
 
-export default () => (
+const Demo = () => (
   <Flex>
     {/* ButtonTrigger is the default trigger */}
     <Select tag={ButtonTrigger} options={options} placeholder='Select an option, sir 🧐' m='auto' />
@@ -132,7 +132,7 @@ import Flags, { iso2Name } from '@semcore/ui/flags';
 
 const formatName = (name) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 
-export default () => {
+const Demo = () => {
   const [value, setValue] = useState(null);
 
   return (
@@ -193,7 +193,7 @@ const noticeStyle = {
   padding: '12px 8px',
 };
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Select placeholder={'Select something'}>
       <Select.Trigger m='auto' />
@@ -232,7 +232,7 @@ import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Select m='auto'>
       <Select.Trigger placeholder="I'll show u some options, buddy 😉" />
@@ -275,7 +275,7 @@ const data = Array(26)
     value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
   }));
 
-export default () => {
+const Demo = () => {
   const [filter, setFilter] = useState('');
   const options = React.useMemo(
     () => data.filter((option) => option.value.toString().includes(filter)),
@@ -345,7 +345,7 @@ const options = Array(20)
     children: `Option ${index}`,
   }));
 
-export default () => (
+const Demo = () => (
   <Flex>
     <Select options={options} multiselect m='auto' />
   </Flex>
@@ -378,7 +378,7 @@ const Option = ({ value, title }) => (
   </Select.Option>
 );
 
-export default () => {
+const Demo = () => {
   const [selected, setSelected] = useState([]);
   const [prevSelected, setPrevSelected] = useState([]);
 
@@ -441,7 +441,7 @@ const options = Array(5)
     value: `Option ${idx}`,
   }));
 
-export default () => (
+const Demo = () => (
   <Select placeholder='Select value' multiselect>
     {(props, handlers) => {
       const {

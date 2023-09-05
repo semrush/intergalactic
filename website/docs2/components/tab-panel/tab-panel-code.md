@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: tab-panel
-tabs: TabPanel('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
+tabs: TabPanel('index'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ## Basic usage
@@ -45,8 +45,6 @@ const Demo = () => {
     </TabPanel>
   );
 };
-
-
 </script>
 
 :::
@@ -69,7 +67,7 @@ As you may have noticed, the TabPanel doesn't have default margins at the edges.
 import React, { useState } from 'react';
 import TabPanel from '@semcore/ui/tab-panel';
 
-export default () => {
+const Demo = () => {
   const [value, onChange] = useState(1);
   return (
     <>

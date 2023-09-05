@@ -5,7 +5,25 @@ tabName: Design
 tabs: Breadcrumbs('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), Example('breadcrumbs-code'), Changelog('breadcrumbs-changelog')
 ---
 
-@import playground
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Breadcrumbs from '@semcore/ui/breadcrumbs';
+
+const App = PlaygroundGeneration(() => {
+  return (
+    <Breadcrumbs>
+      <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
+      <Breadcrumbs.Item href='#'>Projects</Breadcrumbs.Item>
+      <Breadcrumbs.Item active>semrush.com</Breadcrumbs.Item>
+    </Breadcrumbs>
+  );
+});
+</script>
+
+:::
 
 ## Description
 

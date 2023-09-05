@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Card('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
+tabs: Card('index'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 ## Basic example
 
@@ -16,7 +16,7 @@ import SettingsM from '@semcore/ui/icon/Settings/m';
 
 const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 
-export default () => (
+const Demo = () => (
   <Card>
     <Card.Header>
       <Card.Title hint={tooltipContent} tag='h4' inline my={0}>
@@ -64,7 +64,7 @@ const options = Array(6)
     children: `Option ${index}`,
   }));
 
-export default () => (
+const Demo = () => (
   <Card>
     <Card.Header>
       <Flex alignItems='center' justifyContent='space-between'>
@@ -105,7 +105,7 @@ import { Flex } from '@semcore/ui/flex-box';
 
 const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
 
-export default () => (
+const Demo = () => (
   <Card w={'50%'}>
     <Card.Header>
       <Flex alignItems='center' tag='h4'>

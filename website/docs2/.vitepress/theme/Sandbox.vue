@@ -1,15 +1,34 @@
 <template>
-  <div :id="playgroundId" style="margin-top: 40px"></div>
-  <div class="code-wrapper">
-
-    <span v-html="htmlCode" v-if="!hideCode"></span>
-    <slot />
+  <div :id="playgroundId" :class="{ 'playground-runtime': !hideCode, 'documentation-sandbox': true }"></div>
+  <div class="code-wrapper" v-if="!hideCode">
+    <span v-html="htmlCode"></span>
     <a title="Open CodeSandbox" class="open-codesandbox" target="_blank" rel='noopener noreferrer'
       :href="codesandboxUrl"></a>
   </div>
 </template>
 
 <style>
+.playground-runtime {
+  padding-top: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: -5px;
+  border-radius: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.dark .playground-runtime {
+  /* background-color: white; */
+}
+
+@media (min-width: 640px) {
+  .playground-runtime {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
 .code-wrapper {
   position: relative;
 }
@@ -49,14 +68,26 @@
 .code-wrapper:hover .copy.copy.copy.copy {
   opacity: 1;
 }
+
+.documentation-sandbox {
+  margin-top: 20px;
+}
 </style>
 
 <script setup lang="ts">
 import { createRoot as createReactRoot } from 'react-dom/client'
-import { compressToBase64 as lzCompressToBase64 } from 'lz-string';
-(window as any).createReactRoot = createReactRoot;
-const { playgroundId, htmlCode: codeEncoded, rawCode, hideCode } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String })
-const htmlCode = decodeURIComponent(codeEncoded!);
+import lzString from 'lz-string';
+const { compressToBase64: lzCompressToBase64 } = lzString;
+
+(globalThis as any).createReactRoot = createReactRoot;
+const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode, } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String })
+const htmlCode = JSON.parse(codeEncoded!);
+const rawCode = JSON.parse(rawCodeEncoded!);
+
+console.log({
+  htmlCode,
+  rawCode
+})
 
 
 const dataToLzCompressedJson = (data) => {

@@ -11,5 +11,3 @@ const Demo = () => {
     </Radio>
   );
 };
-
-export default Demo;

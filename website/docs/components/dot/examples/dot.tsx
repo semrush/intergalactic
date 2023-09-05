@@ -20,5 +20,3 @@ const Demo = () => {
     </Button>
   );
 };
-
-export default Demo;

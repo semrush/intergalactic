@@ -1,18 +1,55 @@
 
 <template>
-  <div class="page-top-tabs">
-    <VPFeature v-for="tab in tabs" :title="tab.title" :link="tab.url" :data-current="tab.current" />
+  <div class="page-top-tabs-container">
+    <div class="page-top-tabs-content">
+      <VPFeature v-for="tab in tabs" :title="tab.title" :link="tab.url" :data-current="tab.current" />
+    </div>
+    <div class="page-top-tabs-fake-aside"></div>
   </div>
 </template>
 
 <style>
-.page-top-tabs {
+.page-top-tabs-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-top-tabs-content {
   width: 100%;
   max-width: 688px;
-  margin-left: 80px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  flex-direction: column;
+}
+
+.page-top-tabs-fake-aside {
+  display: none;
+  position: relative;
+  flex-grow: 1;
+  padding-left: 32px;
+  width: 100%;
+  max-width: 256px;
+}
+
+@media (min-width: 680px) and (max-width: 1280px) {
+  .page-top-tabs-container {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-top-tabs-fake-aside {
+    display: block;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-top-tabs-content {
+    flex-direction: row;
+  }
 }
 
 .VPFeature {
@@ -21,10 +58,6 @@
 
 .VPFeature[data-current="true"] {
   border-color: var(--vp-c-brand);
-}
-
-.page-top-tabs .VPFeature .box {
-  padding: 12px;
 }
 </style>
 <script setup>

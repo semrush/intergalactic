@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: side-panel
-tabs: SidePanel('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
+tabs: SidePanel('index'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
 ## Basic example
@@ -14,7 +14,7 @@ import Button from '@semcore/ui/button';
 import { List } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -46,7 +46,7 @@ import React, { useState } from 'react';
 import Button from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -83,7 +83,7 @@ import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -122,7 +122,7 @@ import SidePanel, { SidePanelPlacement } from '@semcore/ui/side-panel';
 
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
   const [placement, setPlacement] = useState(placements[1]);
 
@@ -174,7 +174,7 @@ import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -207,7 +207,7 @@ import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
-export default () => {
+const Demo = () => {
   const [visible, setVisible] = useState(false);
 
   return (

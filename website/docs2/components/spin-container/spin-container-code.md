@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: spin-container
-tabs: SpinContainer('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
+tabs: SpinContainer('index'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
 ## Usage in content
@@ -14,10 +14,10 @@ import { Text } from '@semcore/ui/typography';
 import SpinContainer from '@semcore/ui/spin-container';
 
 class Demo extends React.PureComponent {
-  state = { loading: true };
-  timerFetch: any;
-  timer: any;
-
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
   }
@@ -50,8 +50,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -70,9 +68,10 @@ import Dropdown from '@semcore/ui/dropdown';
 import Button from '@semcore/ui/button';
 
 class Demo extends React.PureComponent {
-  state = { loading: true };
-  timerFetch: any;
-  timer: any;
+  constructor(props) {
+    super(props);
+    this.state = { loading: true };
+  }
 
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
@@ -107,8 +106,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -148,8 +145,6 @@ const Demo = () => (
     </SpinContainer>
   </ScrollArea>
 );
-
-
 </script>
 
 :::

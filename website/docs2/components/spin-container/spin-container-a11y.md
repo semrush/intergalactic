@@ -2,7 +2,7 @@
 title: A11y
 fileSource: spin-container
 a11y: AA
-tabs: SpinContainer('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
+tabs: SpinContainer('index'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
 ## What component has

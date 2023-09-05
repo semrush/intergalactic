@@ -41,18 +41,21 @@ const NavigationItem = ({ onClick, value, stepNavigation }) => (
 );
 
 class Demo extends React.PureComponent {
-  state = { visible: false, stepNavigation: 1 };
-  onVisibleChange = (visible) => this.setState({ visible });
-  closeModal = () => this.onVisibleChange(false);
-  openModal = () => this.onVisibleChange(true);
+  constructor(props) {
+    super(props);
+    this.state = { visible: false, stepNavigation: 1 };
+    this.onVisibleChange = (visible) => this.setState({ visible });
+    this.closeModal = () => this.onVisibleChange(false);
+    this.openModal = () => this.onVisibleChange(true);
 
-  updateStepNavigation = (step) => {
-    MAP_NAVIGATION[step] && this.setState({ stepNavigation: step });
-  };
+    this.updateStepNavigation = (step) => {
+      MAP_NAVIGATION[step] && this.setState({ stepNavigation: step });
+    };
 
-  handleItemClick = (value) => () => {
-    this.setState({ stepNavigation: value });
-  };
+    this.handleItemClick = (value) => () => {
+      this.setState({ stepNavigation: value });
+    };
+  }
 
   render() {
     const { visible, stepNavigation } = this.state;
@@ -166,5 +169,3 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-export default Demo;

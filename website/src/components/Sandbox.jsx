@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import Tooltip from '@semcore/tooltip';
-import { compressToBase64 as lzCompressToBase64 } from 'lz-string';
+import lzString from 'lz-string';
+const { compressToBase64: lzCompressToBase64 } = lzString;
 
 const dataToLzCompressedJson = (data) => {
   /**

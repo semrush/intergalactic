@@ -1,7 +1,7 @@
 ---
 title: A11y
 fileSource: d3-chart
-tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
+tabs: D3 chart principles('index'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
 ## How charts accessibility works

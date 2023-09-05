@@ -28,5 +28,3 @@ const Demo = () => {
     </TabPanel>
   );
 };
-
-export default Demo;

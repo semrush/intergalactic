@@ -5,25 +5,27 @@ import QuestionAltM from '@semcore/ui/icon/Question/m';
 const message = 'The reports are based on the data from the Russia Federation and CIS.';
 
 class Demo extends React.PureComponent {
-  state = {
-    message,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      message,
+    };
 
-  show = () => {
-    setTimeout(() => {
-      this.changeText(message);
-    }, 2000);
-  };
+    this.show = () => {
+      setTimeout(() => {
+        this.changeText(message);
+      }, 2000);
+    };
 
-  close = () => {
-    this.show();
-    this.changeText(null);
-  };
+    this.close = () => {
+      this.show();
+      this.changeText(null);
+    };
 
-  changeText = (message) => {
-    this.setState({ message });
-  };
-
+    this.changeText = (message) => {
+      this.setState({ message });
+    };
+  }
   render() {
     const { message } = this.state;
     return (
@@ -33,5 +35,3 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-export default Demo;

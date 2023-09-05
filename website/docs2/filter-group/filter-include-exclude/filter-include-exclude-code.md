@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-include-exclude-code')
+tabs: Include/Exclude keywords('index'), Example('filter-include-exclude-code')
 ---
 
 ## Basic example
@@ -17,7 +17,7 @@ import { Text } from '@semcore/ui/typography';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import Textarea from '@semcore/ui/textarea';
 
-export default () => {
+const Demo = () => {
   const [filters, setFilters] = useState(false);
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState('');

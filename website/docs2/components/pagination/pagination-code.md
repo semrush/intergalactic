@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Pagination('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
+tabs: Pagination('index'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
 ### Basic usage
@@ -12,8 +12,6 @@ import React from 'react';
 import Pagination from '@semcore/ui/pagination';
 
 const Demo = () => <Pagination totalPages={122360} />;
-
-
 </script>
 
 :::
@@ -54,8 +52,6 @@ const Demo = () => {
     </form>
   );
 };
-
-
 </script>
 
 :::

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Link('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
+tabs: Link('index'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
 ## Link inside the content
@@ -56,8 +56,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -119,8 +117,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -166,8 +162,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::

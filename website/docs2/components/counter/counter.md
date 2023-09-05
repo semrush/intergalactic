@@ -5,7 +5,54 @@ tabName: Design
 tabs: Counter('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
-@import playground
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import Counter from '@semcore/ui/counter';
+
+const SIZES = ['m', 'l', 'xl'];
+
+const THEME = ['', 'warning', 'danger', 'light-blue', 'white'];
+
+const Preview = (preview) => {
+  const { select, radio, text } = preview('Counter');
+
+  const size = radio({
+    key: 'size',
+    defaultValue: 'm',
+    label: 'Size',
+    options: SIZES,
+  });
+
+  const theme = select({
+    key: 'theme',
+    defaultValue: '',
+    label: 'Theme',
+    options: THEME.map((value) => ({
+      name: value,
+      value,
+    })),
+  });
+
+  const child = text({
+    key: 'children',
+    defaultValue: '42',
+    label: 'Value',
+  });
+
+  return (
+    <Counter theme={theme} size={size}>
+      {child}
+    </Counter>
+  );
+};
+
+const App = PlaygroundGeneration(Preview);
+</script>
+
+:::
 
 ## Description
 

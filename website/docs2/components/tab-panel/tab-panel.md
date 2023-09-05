@@ -5,7 +5,57 @@ tabName: Design
 tabs: TabPanel('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
-@import playground
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import TabPanel from '@semcore/ui/tab-panel';
+import Badge from '@semcore/ui/badge';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { bool, radio } = createGroupWidgets('TabPanel');
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
+    });
+
+    const addon = bool({
+      key: 'addon',
+      defaultValue: false,
+      label: 'With addon',
+    });
+
+    return (
+      <TabPanel defaultValue={1}>
+        <TabPanel.Item value={1}>Overview</TabPanel.Item>
+        <TabPanel.Item value={2}>Issues</TabPanel.Item>
+        <TabPanel.Item disabled={disabled} value={3}>
+          Progress
+        </TabPanel.Item>
+        <TabPanel.Item value={4}>
+          {addon
+            ? [
+                <TabPanel.Item.Text key={1}>Statistics</TabPanel.Item.Text>,
+                <TabPanel.Item.Addon key={2}>
+                  <Badge bg='green'>new</Badge>
+                </TabPanel.Item.Addon>,
+              ]
+            : 'Statistics'}
+        </TabPanel.Item>
+      </TabPanel>
+    );
+  },
+  {
+    filterProps: ['defaultValue'],
+  },
+);
+</script>
+
+:::
 
 ## Description
 

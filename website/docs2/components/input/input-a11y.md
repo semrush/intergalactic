@@ -2,7 +2,7 @@
 title: A11y
 fileSource: input
 a11y: AA
-tabs: Input('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
+tabs: Input('index'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
 ## What component has

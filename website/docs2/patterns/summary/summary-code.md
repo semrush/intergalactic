@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Summary('summary'), Example('summary-code')
+tabs: Summary('index'), Example('summary-code')
 ---
 
 ## Default summary example
@@ -176,8 +176,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -405,8 +403,6 @@ const Demo = () => {
     </FlexBlock>
   );
 };
-
-
 </script>
 
 :::
@@ -582,8 +578,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -736,8 +730,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::

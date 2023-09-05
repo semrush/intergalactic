@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Switch('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
+tabs: Switch('index'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
 ---
 
 ## Basic example
@@ -31,8 +31,6 @@ const Demo = () => {
     </div>
   );
 };
-
-
 </script>
 
 :::
@@ -66,8 +64,6 @@ const Demo = () => {
     </div>
   );
 };
-
-
 </script>
 
 :::

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Carousel('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
+tabs: Carousel('index'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
 ---
 
 ## Image & video galleries
@@ -55,8 +55,6 @@ const Demo = () => (
     </Carousel.Indicators>
   </Carousel>
 );
-
-
 </script>
 
 :::
@@ -99,8 +97,6 @@ const Demo = () => (
     <Carousel.Indicators />
   </Carousel>
 );
-
-
 </script>
 
 :::
@@ -157,8 +153,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::

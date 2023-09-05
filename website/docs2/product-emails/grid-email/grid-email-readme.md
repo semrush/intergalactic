@@ -1,6 +1,6 @@
 ---
 title: Readme
-tabs: Email templates & grid('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
+tabs: Email templates & grid('index'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
 ---
 
 ::: warning
@@ -65,7 +65,7 @@ To include your styles, link an external stylesheet, or put the styles in the `<
 
 or
 
-```htmlqq
+html
 <block name="content">
   <style>
     YOUR STYLES

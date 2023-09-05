@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Stacked bar chart('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-bar-chart-api'), Examples('stacked-bar-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Stacked bar chart('index'), A11y('stacked-bar-chart-a11y'), API('stacked-bar-chart-api'), Examples('stacked-bar-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -27,7 +27,7 @@ import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
@@ -112,7 +112,7 @@ const barColors = {
   stack3: resolveColor('green-200'),
 };
 
-export default () => {
+const Demo = () => {
   const MARGIN = 30;
   const width = 500;
   const height = 300;

@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: input-mask
-tabs: InputMask('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
+tabs: InputMask('index'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
 ---
 
 ## InputMask
@@ -24,7 +24,7 @@ import InputMask from '@semcore/ui/input-mask';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   return (
     <Flex direction='column' gap={2} w={224}>
       <Text tag='label' htmlFor='basic-example' size={200}>
@@ -65,7 +65,7 @@ import InputMask from '@semcore/ui/input-mask';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   const [value, setValue] = useState('99');
 
   return (
@@ -108,7 +108,7 @@ import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import InputMask from '@semcore/ui/input-mask';
 
-export default () => {
+const Demo = () => {
   const expireDateInput = React.useRef(null);
   const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
 

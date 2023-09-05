@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Link('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
+tabs: Link('index'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
 ## What component has

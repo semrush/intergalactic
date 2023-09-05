@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: tab-line
-tabs: TabLine('tab-line'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
+tabs: TabLine('index'), A11y('tab-line-a11y'), API('tab-line-api'), Example('tab-line-code'), Changelog('tab-line-changelog')
 ---
 
 ## Basic example
@@ -42,8 +42,6 @@ const Demo = () => {
     </TabLine>
   );
 };
-
-
 </script>
 
 :::
@@ -66,7 +64,7 @@ As you might have noticed, the TabLine component doesn't have default margins at
 import React, { useState } from 'react';
 import TabLine from '@semcore/ui/tab-line';
 
-export default () => {
+const Demo = () => {
   const [value, onChange] = useState(1);
   return (
     <>

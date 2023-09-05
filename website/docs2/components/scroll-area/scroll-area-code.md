@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: scroll-area
-tabs: ScrollArea('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
+tabs: ScrollArea('index'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
 ## Basic usage
@@ -46,8 +46,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -126,8 +124,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -209,8 +205,6 @@ class Demo extends React.PureComponent {
     );
   }
 }
-
-
 </script>
 
 :::
@@ -278,8 +272,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::
@@ -364,8 +356,6 @@ const Demo = () => {
     </Flex>
   );
 };
-
-
 </script>
 
 :::

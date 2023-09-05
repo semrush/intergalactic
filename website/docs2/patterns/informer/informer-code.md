@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Informer('informer'), Example('informer-code')
+tabs: Informer('index'), Example('informer-code')
 ---
 
 ## Basic usage
@@ -66,8 +66,6 @@ class Demo extends React.Component {
     );
   }
 }
-
-
 </script>
 
 :::

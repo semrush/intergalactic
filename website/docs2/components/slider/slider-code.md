@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: slider
-tabs: Slider('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
+tabs: Slider('index'), A11y('slider-a11y'), API('slider-api'), Example('slider-code'), Changelog('slider-changelog')
 ---
 
 ## Slider with options
@@ -30,8 +30,6 @@ const Demo = () => {
     />
   );
 };
-
-
 </script>
 
 :::
@@ -70,8 +68,6 @@ const Demo = () => {
     </Slider>
   );
 };
-
-
 </script>
 
 :::
@@ -128,8 +124,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::

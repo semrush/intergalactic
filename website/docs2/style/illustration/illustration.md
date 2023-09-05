@@ -11,7 +11,18 @@ tabs: Illustration('illustration'), A11y('illustration-a11y'), API('illustration
 
 ## Illustrations
 
-@import illustrations
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Components from './index';
+import dataIllustrations from './illustrations-list';
+
+import icons from '@illustrations';
+const App = () => <Components illustrations={icons} json={dataIllustrations} />;
+</script>
+
+:::
 
 ## Sizes
 

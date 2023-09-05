@@ -35,12 +35,7 @@ const Demo = () => {
   }, []);
 
   return (
-    <DnD
-      tag={TabPanel}
-      value={currentTab}
-      onChange={(tab) => setCurrentTab(tab as string)}
-      onDnD={handleDnD}
-    >
+    <DnD tag={TabPanel} value={currentTab} onChange={setCurrentTab} onDnD={handleDnD}>
       {tabs.map((tab) => (
         <DnD.Draggable placement='bottom' tag={TabPanel.Item} value={tab} key={tab} pb={0}>
           {icons[tab] ?? null}
@@ -50,5 +45,3 @@ const Demo = () => {
     </DnD>
   );
 };
-
-export default Demo;

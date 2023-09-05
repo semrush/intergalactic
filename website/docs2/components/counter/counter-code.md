@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Counter('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
+tabs: Counter('index'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 
 ## Counter in filters
@@ -13,7 +13,7 @@ import React from 'react';
 import Counter, { AnimatedNumber } from '@semcore/ui/counter';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 
-export default () => (
+const Demo = () => (
   <FilterTrigger>
     <FilterTrigger.Text>Link to website</FilterTrigger.Text>
     <FilterTrigger.Addon>
@@ -41,7 +41,7 @@ import Counter from '@semcore/ui/counter';
 import Button from '@semcore/ui/button';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 
-export default () => (
+const Demo = () => (
   <>
     <Button mr={4}>
       <Button.Addon>
@@ -83,7 +83,7 @@ import Textarea from '@semcore/ui/textarea';
 import Counter from '@semcore/ui/counter';
 import { ScreenReaderOnly } from '@semcore/ui/utils/ScreenReaderOnly';
 
-export default () => (
+const Demo = () => (
   <Flex direction='column' w={350}>
     <Flex mb={2} justifyContent='space-between'>
       <Text size={200} tag='label' htmlFor='limited-text-field'>
@@ -118,7 +118,7 @@ The text counters shall be implemented using [Typography](/style/typography) wit
 import React from 'react';
 import { Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <>
     <Text size={300}>
       Lorem ipsum <Text color='gray60'>12,457</Text>
@@ -144,7 +144,7 @@ import React from 'react';
 import Pills from '@semcore/ui/pills';
 import { Text } from '@semcore/ui/typography';
 
-export default () => (
+const Demo = () => (
   <Pills defaultValue='all'>
     <Pills.Item value='all'>
       <Pills.Item.Text>All</Pills.Item.Text>
@@ -183,7 +183,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import ProgressBar from '@semcore/ui/progress-bar';
 import WarningM from '@semcore/ui/icon/Warning/m';
 
-export default () => (
+const Demo = () => (
   <Flex direction='column' w={350}>
     <Flex mb={1} justifyContent='space-between'>
       <Text size={100}>SEO Ideas Units</Text>
@@ -214,7 +214,7 @@ import NotificationM from '@semcore/ui/icon/Notification/m';
 import Dot from '@semcore/ui/dot';
 import { AnimatedNumber } from '@semcore/ui/counter';
 
-export default () => (
+const Demo = () => (
   <Button aria-label='Open notifications'>
     <Button.Addon>
       <NotificationM />

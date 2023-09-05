@@ -5,7 +5,66 @@ tabName: Design
 tabs: Radio('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
-@import playground
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import Radio from '@semcore/ui/radio';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+
+const App = PlaygroundGeneration(
+  (createGroupWidgets) => {
+    const { bool, radio, select, text, onChange } = createGroupWidgets('Radio');
+
+    const size = radio({
+      key: 'size',
+      defaultValue: 'm',
+      label: 'Size',
+      options: ['m', 'l'],
+    });
+
+    const checked = bool({
+      key: 'checked',
+      defaultValue: false,
+      label: 'Checked',
+    });
+
+    const state = select({
+      key: 'state',
+      defaultValue: 'normal',
+      label: 'State',
+      options: ['normal', 'invalid'].map((value) => ({
+        name: value,
+        value,
+      })),
+    });
+
+    const disabled = bool({
+      key: 'disabled',
+      defaultValue: false,
+      label: 'Disabled',
+    });
+
+    const children = text({
+      key: 'children',
+      defaultValue: 'Label text',
+      label: 'Children',
+    });
+
+    return (
+      <Radio size={size} state={state}>
+        <Radio.Value disabled={disabled} checked={checked} />
+        <Radio.Text>{children}</Radio.Text>
+      </Radio>
+    );
+  },
+  {
+    filterProps: ['onChange'],
+  },
+);
+</script>
+
+:::
 
 ## Description
 

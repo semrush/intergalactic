@@ -31,5 +31,3 @@ const Demo = () => (
     <Carousel.Indicators />
   </Carousel>
 );
-
-export default Demo;

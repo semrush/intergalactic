@@ -28,11 +28,16 @@ const CustomComponent = () => {
   const toggleVisible = () => {
     setVisible(!visible);
   };
+  React.useEffect(() => {
+    const styleSheet = document.createElement('style');
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    return () => styleSheet.remove();
+  }, []);
 
   return (
     <ThemeProvider tokens={violetPrimaryButtonTheme}>
       <Flex className='wrapper' h={220} alignItems='flex-end'>
-        <style>{styles}</style>
         <Box className='kraken' style={{ display: visible ? 'block' : 'none' }}>
           <Kraken />
         </Box>

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Click Potential, Competitive Density, CPC('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
+tabs: Click Potential, Competitive Density, CPC('index'), Example('filter-cp-cd-cpc-code')
 ---
 
 ## Basic example
@@ -85,7 +85,7 @@ const setTriggerText = ({ from, to }) => {
   return null;
 };
 
-export default () => {
+const Demo = () => {
   const [filters, setFilters] = useState(false);
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState({ from: '', to: '' });

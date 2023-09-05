@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Feedback('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
+tabs: Feedback('index'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
 
 ## What pattern has

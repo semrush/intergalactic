@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: time-picker
-tabs: TimePicker('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
+tabs: TimePicker('index'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
 ## Expanded access to all the components
@@ -33,8 +33,6 @@ const Demo = () => {
     </>
   );
 };
-
-
 </script>
 
 :::

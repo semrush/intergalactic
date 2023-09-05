@@ -10,7 +10,6 @@ const Highlight = ({ highlight, children }) => {
     const re = new RegExp(highlight.toLowerCase(), 'g');
     html = html.replace(re, `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`);
   }
-  // rome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
@@ -79,4 +78,3 @@ const Demo = () => {
     </>
   );
 };
-export default Demo;

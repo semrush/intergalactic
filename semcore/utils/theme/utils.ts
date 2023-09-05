@@ -230,9 +230,12 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
   return { processedTokens, values, types, rawValues, descriptions };
 };
 
-export const tokensToCss = (tokens: { name: string; value: string; description: string }[]) => {
+export const tokensToCss = (
+  tokens: { name: string; value: string; description: string }[],
+  selector = ':root',
+) => {
   const cssLines: string[] = [];
-  cssLines.push(':root {');
+  cssLines.push(`${selector} {`);
   for (const token of tokens) {
     if (token.description) cssLines.push(`  /* ${token.description} */`);
     cssLines.push(`  ${token.name}: ${token.value};`);

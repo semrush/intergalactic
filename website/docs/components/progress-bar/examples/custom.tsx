@@ -8,5 +8,3 @@ const Demo = () => {
     </ProgressBar>
   );
 };
-
-export default Demo;

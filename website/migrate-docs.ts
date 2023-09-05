@@ -1,13 +1,29 @@
 import glob from 'fast-glob';
 import fs from 'fs/promises';
 import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import parseImports from 'parse-es-import';
 
-const markdowns = await glob('**/*.md', { cwd: 'docs' });
+let markdowns = await glob('**/*.md', { cwd: 'docs2' });
+// await Promise.all(
+//   markdowns.map(async (path) => {
+//     const parts = path.split('/');
+//     const name = parts[parts.length - 1];
+//     const parentDir = parts[parts.length - 2];
+//     if (name === parentDir + '.md') {
+//       await fs.rename('docs/' + path, 'docs/' + parts.slice(0, -1).join('/') + '/index.md');
+//     }
+//   }),
+// );
+
+const alreadyMovedDependencies: { [fromPath: string]: boolean } = {};
+
+markdowns = await glob('**/*.md', { cwd: 'docs' });
 const tabs: { [fromPath: string]: string[] } = {};
 await Promise.all(
   markdowns.map(async (path) => {
     let content = await fs.readFile(`docs/${path}`, 'utf-8');
     content = content.replace(/\n@#/g, '\n#');
+    content = content.replace(/```htmlqq/g, 'html');
 
     let lines = content.split('\n');
     for (let i = 0; i < lines.length; i++) {
@@ -47,7 +63,9 @@ await Promise.all(
         let exampleCode: string | null = null;
         try {
           exampleCode = await fs.readFile(examplePath, 'utf-8');
-        } catch {}
+        } catch {
+          console.log(`Example not found: ${examplePath}`);
+        }
         if (!exampleCode) continue;
 
         if (exampleCode.endsWith('\n')) {
@@ -56,6 +74,7 @@ await Promise.all(
         exampleCode = exampleCode.replace('export default function()', 'const Demo = () =>');
         exampleCode = exampleCode.replace('export default function ()', 'const Demo = () =>');
         exampleCode = exampleCode.replace('export default Demo;', '');
+        exampleCode = exampleCode.replace('export default ', 'const Demo = ');
 
         const newLines = [
           '::: sandbox',
@@ -88,8 +107,75 @@ await Promise.all(
         lines[i] = lines[i].replace('@table-caption ', 'Table: ');
       }
       if (lines[i].startsWith('@import ')) {
+        const componentName = lines[i].split(' ')[1];
+        const examplePath = resolvePath(
+          'docs',
+          resolveDirname(path),
+          'components',
+          `${componentName}.jsx`,
+        );
+        let exampleCode: string | null = null;
+        try {
+          exampleCode = await fs.readFile(examplePath, 'utf-8');
+        } catch {
+          console.log(`Component not found: ${examplePath}`);
+        }
+        if (!exampleCode) continue;
+
+        if (exampleCode.endsWith('\n')) {
+          exampleCode = exampleCode.substring(0, exampleCode.length - 1);
+        }
+        exampleCode = exampleCode.replace('export default function()', 'const App = () =>');
+        exampleCode = exampleCode.replace('export default function ()', 'const App = () =>');
+        exampleCode = exampleCode.replace('export default App;', '');
+        exampleCode = exampleCode.replace('export default ', 'const App = ');
+
+        const newLines = [
+          '::: react-view',
+          '',
+          '<script lang="tsx">',
+          ...exampleCode.split('\n'),
+          '</script>',
+          '',
+          ':::',
+        ];
+        lines.splice(i, 1, ...newLines);
+        try {
+          await fs.rm(
+            resolvePath('docs2', resolveDirname(path), 'components', `${componentName}.tsx`),
+          );
+        } catch {}
+        const { imports } = parseImports(exampleCode);
+        for (const importExpression of imports) {
+          if (importExpression.moduleName.startsWith('.')) {
+            let name = importExpression.moduleName;
+            const key = resolvePath('docs2', resolveDirname(path), 'components', name);
+            if (alreadyMovedDependencies[key]) continue;
+            if (!name.split('/').pop()!.includes('.')) {
+              for (const extention of ['.tsx', '.jsx', '.ts', '.js', '.json']) {
+                try {
+                  await fs.stat(
+                    resolvePath('docs2', resolveDirname(path), 'components', name + extention),
+                  );
+                  name += extention;
+                  break;
+                } catch {}
+              }
+            }
+            const importedPath = resolvePath('docs2', resolveDirname(path), 'components', name);
+            const newPath = resolvePath('docs2', resolveDirname(path), name);
+            try {
+              await fs.rename(importedPath, newPath);
+              alreadyMovedDependencies[key] = true;
+            } catch {
+              console.log(`Unable to move dependency: ${importedPath}`);
+            }
+          }
+        }
       }
       if (lines[i].startsWith('@changelog ')) {
+        const componentName = lines[i].substring('@changelog '.length);
+        return `::: changelog ${componentName} :::`;
       }
     }
     let removeFile = false;

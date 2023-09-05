@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: FeedbackYesNo('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+tabs: FeedbackYesNo('index'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## FeedbackYesNo example
@@ -116,22 +116,23 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackYesNo extends React.PureComponent {
-  state = { status: 'default', visible: true };
-  timeout: any;
-  onSubmit = () => {
-    this.requestServer('success', 1000);
-    this.setState({ status: 'loading' });
-  };
-  requestServer = (status, time, cb?: () => void) => {
-    this.timeout = setTimeout(() => {
-      this.setState({ status });
-      cb?.();
-    }, time || 500);
-  };
-  changeVisible = (visible) => {
-    this.setState({ visible });
-  };
-
+  constructor(props) {
+    super(props);
+    this.state = { status: 'default', visible: true };
+    this.onSubmit = () => {
+      this.requestServer('success', 1000);
+      this.setState({ status: 'loading' });
+    };
+    this.requestServer = (status, time, cb?: () => void) => {
+      this.timeout = setTimeout(() => {
+        this.setState({ status });
+        cb?.();
+      }, time || 500);
+    };
+    this.changeVisible = (visible) => {
+      this.setState({ visible });
+    };
+  }
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }
@@ -209,7 +210,7 @@ class FeedbackYesNo extends React.PureComponent {
   }
 }
 
-export default FeedbackYesNo;
+const Demo = FeedbackYesNo;
 </script>
 
 :::

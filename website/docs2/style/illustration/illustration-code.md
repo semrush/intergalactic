@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Illustration('illustration'), A11y('illustration-a11y'), API('illustration-api'), Example('illustration-code'), Changelog('illustration-changelog')
+tabs: Illustration('index'), A11y('illustration-a11y'), API('illustration-api'), Example('illustration-code'), Changelog('illustration-changelog')
 ---
 
 ## Basic usage
@@ -14,8 +14,6 @@ import MailSentReact from '@semcore/ui/illustration/MailSent';
 const Demo = () => {
   return <MailSentReact />;
 };
-
-
 </script>
 
 :::

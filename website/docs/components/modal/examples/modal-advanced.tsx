@@ -8,13 +8,14 @@ const closeStyles = {
 };
 
 export default class Demo extends React.Component {
-  state = {
-    visible: false,
-  };
-
-  handleClose = () => this.setState({ visible: false });
-
-  handleOpen = () => this.setState({ visible: true });
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: false,
+    };
+    this.handleClose = () => this.setState({ visible: false });
+    this.handleOpen = () => this.setState({ visible: true });
+  }
 
   render() {
     const { visible } = this.state;

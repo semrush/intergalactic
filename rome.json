@@ -79,6 +79,9 @@
       },
       "complexity": {
         "useFlatMap": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
       }
     }
   }

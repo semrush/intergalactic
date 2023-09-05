@@ -1,7 +1,6 @@
 ---
 title: About
 tabName: About @semcore/ui package
-tabs: Changelogs('release'), About('release-about')
 ---
 
 ## What is it?

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Keyword Difficulty, Positions, Volume('filter-kd-positions-volume'), Example('filter-kd-position-volume-code')
+tabs: Keyword Difficulty, Positions, Volume('index'), Example('filter-kd-position-volume-code')
 ---
 
 ## Basic example
@@ -89,7 +89,7 @@ const setTriggerText = ({ from, to }) => {
   return null;
 };
 
-export default () => {
+const Demo = () => {
   const [filters, setFilters] = useState(false);
   const [visible, setVisible] = useState(false);
   const [value, setValue] = useState({ from: '', to: '' });

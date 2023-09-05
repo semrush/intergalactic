@@ -2,13 +2,14 @@
 title: Button
 fileSource: button
 tabName: Design
-tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
+tabs: Button('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
-::: sandbox
+::: react-view
 
 <script lang="tsx">
 import React from 'react';
+
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 import Button from '@semcore/ui/button';
@@ -75,13 +76,13 @@ const Preview = (preview) => {
   const beforeIcon = bool({
     key: 'before',
     defaultValue: false,
-    label: 'Before',
+    label: 'AddonLeft',
   });
 
   const afterIcon = bool({
     key: 'after',
     defaultValue: false,
-    label: 'After',
+    label: 'AddonRight',
   });
 
   const child = text({
@@ -125,6 +126,7 @@ const Preview = (preview) => {
   );
 };
 
+const App = PlaygroundGeneration(Preview);
 </script>
 
 :::
@@ -307,4 +309,3 @@ It may also be helpful checking the following branding guidelines:
 ## Grouped buttons
 
 To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
-

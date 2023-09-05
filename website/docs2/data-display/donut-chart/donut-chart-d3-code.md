@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Donut / Pie chart('index'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
@@ -22,7 +22,7 @@ import { Donut, Plot, colors } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   return (
     <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
@@ -73,7 +73,7 @@ import Checkbox from '@semcore/ui/checkbox';
 const data = { a: 3, b: 1, c: 2 };
 const pieColors = [colors['blue-03'], colors['green-02'], colors['violet-04']];
 
-export default () => {
+const Demo = () => {
   const [selected, setSelected] = React.useState(['b']);
   const handleCheckboxToggle = React.useCallback(
     (name) => () => {
@@ -136,7 +136,7 @@ import { Plot, Donut, colors } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
-export default () => {
+const Demo = () => {
   return (
     <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
@@ -191,7 +191,7 @@ import React from 'react';
 import { Plot, Donut } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 
-export default () => {
+const Demo = () => {
   return (
     <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
@@ -223,7 +223,7 @@ const data = {
 import React from 'react';
 import { Plot, Donut, colors } from '@semcore/ui/d3-chart';
 
-export default () => {
+const Demo = () => {
   return (
     <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
@@ -263,7 +263,7 @@ const pieColors = {
   c: resolveColor('green-200'),
 };
 
-export default () => {
+const Demo = () => {
   const width = 250;
   const height = 250;
 

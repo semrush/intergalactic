@@ -28,7 +28,19 @@ The list of base tokens is our palette. It was built with [Huetone tool](https:/
 
 Shades of the same color have a value ranging from 50 to 800, depending on its tone. Each shade has recommendations for use based on [Huetone's contrast ratio calculation](https://huetone.ardov.me/).
 
-@import base-tokens
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import tokens from './base-tokens.json';
+import BaseTokensTable from '@components/BaseTokens';
+
+const BaseTokens = () => <BaseTokensTable tokens={tokens} />;
+
+const App = BaseTokens;
+</script>
+
+:::
 
 ## Semantic tokens
 
@@ -45,7 +57,19 @@ Semantic tokens include tokens for:
 
 To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage/#token_naming_structure).
 
-@import design-tokens
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import tokens from './design-tokens.json';
+import DesignTokensTable from '@components/DesignTokens';
+
+const DesignTokens = () => <DesignTokensTable tokens={tokens} />;
+
+const App = DesignTokens;
+</script>
+
+:::
 
 ## Themes
 
@@ -54,64 +78,6 @@ If you are creating a product that differs in style from other products of Semru
 ### What is a theme?
 
 Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Check [Usage in development](/style/design-tokens/design-tokens-usage-development/).
-
-<!-- ### Global theme
-
-Global themes should be preferred over local ones until multiple themes appear on the same page.
-
-To apply a global theme, define CSS variables on the `:root` via CSS or JS. For example, following CSS will make all main backgrounds black and all primary texts white.
-
-```css
-:root {
-  --intergalactic-bg-primary-neutral: #000;
-  --intergalactic-text-primary: #fff;
-}
-```
-
-Any design token from the [tokens list](/style/design-tokens/#semantic_tokens) may be applied. -->
-
-<!-- ### Local theme
-
-Theme for React components subtree may be applied via `<ThemeProvider />`.
-
-`<ThemeProvider />` applies provided tokens on DOM node and handles passing them into React Portal created with `@semcore/portal`.
-
-::: sandbox
-
-<script lang="tsx">
-import React from 'react';
-import Button from '@semcore/button';
-import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
-
-const violetPrimaryButtonTheme = {
-  '--intergalactic-control-primary-info': '#8649e1',
-  '--intergalactic-control-primary-info-hover': '#5925ab',
-  '--intergalactic-control-primary-info-active': '#5925ab',
-};
-const grayPrimaryButtonTheme = {
-  '--intergalactic-control-primary-info': '#6c6e79',
-  '--intergalactic-control-primary-info-hover': '#484a54',
-  '--intergalactic-control-primary-info-active': '#2b2e38',
-};
-
-const Demo = () => {
-  return (
-    <>
-      <ThemeProvider tokens={violetPrimaryButtonTheme}>
-        <Button use='primary'>Violet primary button theme</Button>
-      </ThemeProvider>
-      <br />
-      <br />
-      <ThemeProvider tokens={grayPrimaryButtonTheme}>
-        <Button use='primary'>Gray primary button theme</Button>
-      </ThemeProvider>
-    </>
-  );
-};
-
-</script>
-
-:::
 
 ## Creating your own theme
 
