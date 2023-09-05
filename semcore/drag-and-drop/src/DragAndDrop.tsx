@@ -298,7 +298,7 @@ class DragAndDropRoot extends Component<AsProps, {}, State> {
   componentDidUpdate(prevProps: AsProps) {
     if (prevProps.customFocus !== this.asProps.customFocus) {
       const itemIndex = this.getCustomFocusItemIndex(this.asProps.customFocus);
-      if (this.state.items[itemIndex!]) this.handleItemFocus(itemIndex);
+      if (this.state.items[itemIndex!]) this.handleItemFocus(itemIndex!);
     }
   }
 
