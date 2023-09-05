@@ -2,6 +2,84 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.0] - 2023-09-05
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/select` [4.9.1 ~> 4.10.0]).
+
+## [4.9.1] - 2023-09-05
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.7.0 ~> 5.7.1], `@semcore/flex-box` [5.6.0 ~> 5.6.1], `@semcore/input` [4.8.0 ~> 4.8.1], `@semcore/select` [4.9.0 ~> 4.9.1], `@semcore/core` [2.6.0 ~> 2.6.1]).
+
+## [4.9.0] - 2023-09-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/button` [5.6.0 ~> 5.7.0], `@semcore/flex-box` [5.5.0 ~> 5.6.0], `@semcore/input` [4.7.0 ~> 4.8.0], `@semcore/select` [4.8.0 ~> 4.9.0], `@semcore/core` [2.5.0 ~> 2.6.0]).
+
+## [4.8.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/button` [5.5.1 ~> 5.6.0], `@semcore/flex-box` [5.4.1 ~> 5.5.0], `@semcore/input` [4.6.1 ~> 4.7.0], `@semcore/select` [4.7.1 ~> 4.8.0], `@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+
+## [4.7.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.5.0 ~> 5.5.1], `@semcore/flex-box` [5.4.0 ~> 5.4.1], `@semcore/input` [4.6.0 ~> 4.6.1], `@semcore/select` [4.7.0 ~> 4.7.1], `@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
+
+## [4.7.0] - 2023-08-23
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/select` [4.6.0 ~> 4.7.0]).
+
+## [4.6.0] - 2023-08-23
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/button` [5.3.1 ~> 5.5.0], `@semcore/flex-box` [5.3.1 ~> 5.4.0], `@semcore/input` [4.4.1 ~> 4.6.0], `@semcore/select` [4.5.1 ~> 4.6.0], `@semcore/utils` [4.3.1 ~> 4.4.0], `@semcore/core` [2.3.1 ~> 2.4.0]).
+
+## [4.5.1] - 2023-08-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.3.0 ~> 5.3.1], `@semcore/flex-box` [5.3.0 ~> 5.3.1], `@semcore/input` [4.4.0 ~> 4.4.1], `@semcore/select` [4.5.0 ~> 4.5.1], `@semcore/core` [2.3.0 ~> 2.3.1]).
+
+## [4.5.0] - 2023-08-18
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/button` [5.2.2 ~> 5.3.0], `@semcore/flex-box` [5.2.1 ~> 5.3.0], `@semcore/input` [4.3.2 ~> 4.4.0], `@semcore/select` [4.4.1 ~> 4.5.0], `@semcore/utils` [4.2.0 ~> 4.3.0], `@semcore/core` [2.2.1 ~> 2.3.0]).
+
+## [4.4.1] - 2023-08-18
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.2.1 ~> 5.2.2], `@semcore/input` [4.3.1 ~> 4.3.2], `@semcore/select` [4.4.0 ~> 4.4.1]).
+
+## [4.4.0] - 2023-08-17
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/select` [4.3.2 ~> 4.4.0]).
+
+## [4.3.2] - 2023-08-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.2.0 ~> 5.2.1], `@semcore/flex-box` [5.2.0 ~> 5.2.1], `@semcore/input` [4.3.0 ~> 4.3.1], `@semcore/select` [4.3.1 ~> 4.3.2], `@semcore/utils` [4.1.0 ~> 4.2.0], `@semcore/core` [2.2.0 ~> 2.2.1]).
+
+## [4.3.1] - 2023-08-10
+
+### Changed
+
+- Version patch update due to children dependencies update (`@semcore/select` [4.3.0 ~> 4.3.1]).
+
 ## [4.3.0] - 2023-08-07
 
 ### Changed

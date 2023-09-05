@@ -42,3 +42,9 @@ To get smoothed lines, you need to transfer curve with the required rounding met
 @## Legend
 
 @example legend
+
+@## Interpolation
+
+If exact values of specific point is not available, you can pass `interpolateValue` and value will be automatically interpolated.
+
+@example line-interpolation

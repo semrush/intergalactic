@@ -25,29 +25,11 @@ Intergalactic is a constantly developing design system of [React](https://reactj
 - Microsoft Edge
 - Safari (two last versions)
 
-## Before you start
-
-This repository is a single development point for all library components. Each component is a separate package located in the `@semcore` namespace.
-
-You can add our components to your project using any package manager.
-
 ## Installation 🛠
 
-The library supports two delivery systems:
-
-- Package system where each individual component is a separate package
-- Release system where all components are combined in a single package
-
-We recommend you using the release system, since it's more convenient and it reduces the risk of bundle bloat due to package duplicates. With the release system, you can also install component packages separately if you need to.
-
-### Release system
-
-Components are installed in a single package.
-
-Example:
-
-```
-npm i @semcore/ui
+```sh
+pnpm add @semcore/ui
+# or npm install @semcore/ui
 ```
 
 After the installation, all components will be available at `@semcore/ui/{{component_name}}`.
@@ -68,14 +50,14 @@ npm i @semcore/button @semcore/core
 
 ## How to contribute to the project
 
-All changes, including changes by the project members, must go through a code review. We use pull requests on GitHub for this purpose. [Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
+[Learn more about contributing ›](https://github.com/semrush/intergalactic/blob/master/CONTRIBUTING.md)
 
 ### Contributors
 
 Thanks to all contributors, you are so awesome! ❤️
 
 - [Roman Lysov](https://github.com/lsroman)
-- [Michael Sereniti](https://github.com/phytonmk)
+- [Michael Sereniti](https://github.com/msereniti)
 - [Julia Mnizhek](https://github.com/j-mnizhek)
 - [Elena Krasnopolskaia](https://github.com/ekrasnopolskaia)
 - [Ruslan Gaiazov](https://github.com/freeyoungstrong)
@@ -87,4 +69,9 @@ Thanks to all contributors, you are so awesome! ❤️
 
 Great job!
 
-You always can open an [issue in the repository](https://github.com/semrush/intergalactic/issues/new?issue). We'll be glad to help!
+You always can open an [issue in the repository](https://github.com/semrush/intergalactic/issues/new/choose). We'll be glad to help!
+
+
+### I have a question or feature request! 🙋
+
+You can also open an [issue](https://github.com/semrush/intergalactic/issues/new/choose). We will review it soon!

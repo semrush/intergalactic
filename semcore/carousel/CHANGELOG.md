@@ -2,6 +2,68 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.9.0] - 2023-09-05
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.7.1 ~> 4.8.0]).
+
+## [3.8.1] - 2023-09-05
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/core` [2.6.0 ~> 2.6.1]).
+
+## [3.8.0] - 2023-09-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/core` [2.5.0 ~> 2.6.0]).
+
+## [3.7.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.4.1 ~> 4.5.0]).
+
+## [3.6.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1]).
+
+## [3.6.0] - 2023-08-23
+
+### Changed
+
+- Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+## [3.5.1] - 2023-08-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/core` [2.3.0 ~> 2.3.1]).
+
+## [3.5.0] - 2023-08-18
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.2.0 ~> 4.3.0], `@semcore/core` [2.2.1 ~> 2.3.0]).
+
+## [3.4.0] - 2023-08-18
+
+### Changed
+
+- Removed `aria-hidden` from navigation buttons.
+- Added `aria-current` on the current slide.
+- Added i18n locales for `aria-label` of Next and Previous buttons.
+
+## [3.3.1] - 2023-08-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.2.0 ~> 5.2.1], `@semcore/utils` [4.1.0 ~> 4.2.0], `@semcore/core` [2.2.0 ~> 2.2.1]).
+
 ## [3.3.0] - 2023-08-07
 
 ### Changed

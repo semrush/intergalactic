@@ -72,7 +72,22 @@ export const patchReleaseChangelog = async (
     'patch' as semver.ReleaseType,
   );
 
-  const guessedVersion = semver.inc(previousVersionId, releaseIncrement);
+  let updateIdentifier: string | undefined = undefined;
+  if (releaseIncrement.startsWith('pre')) {
+    for (const { version } of componentChanges.flat()) {
+      const identifier = version.match(/-(\w+)\./)?.[1];
+      if (!identifier) continue;
+      updateIdentifier = identifier;
+      break;
+    }
+  }
+
+  const guessedVersion = semver.inc(
+    previousVersionId,
+    releaseIncrement,
+    undefined,
+    updateIdentifier,
+  );
 
   const versionChangelog: Changelog = releaseChangelog.changelogs[previousVersionIndex - 1] ?? {
     component: releaseChangelog.package.name,

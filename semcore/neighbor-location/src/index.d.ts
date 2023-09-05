@@ -2,13 +2,14 @@ import React from 'react';
 import { Intergalactic, ReturnEl, UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
-export interface INeighborLocationProps extends NeighborLocationProps, UnknownProperties {}
-export type NeighborLocationProps = {
+export interface INeighborLocationProps extends NeighborLocationProps, UnknownProperties {
   /**
    *  HTML tag name for the displayed item
    * @default div
    */
   tag?: React.ElementType | string;
+}
+export type NeighborLocationProps = {
   /** Number of elements in a group */
   controlsLength?: number;
 };

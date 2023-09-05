@@ -6,11 +6,13 @@ import {
   componentChangelogParser,
   serializeComponentChangelog,
   toMarkdown,
+  updateReleaseChangelog,
 } from '@semcore/changelog-handler';
 import dayjs from 'dayjs';
-import { formatMarkdown } from './utils';
+import { formatMarkdown, log } from './utils';
 
 export const updateChangelogs = async (versionPatches: VersionPatch[]) => {
+  log('Updating changelogs...');
   const packageFiles: { name: string; version: string }[] = await Promise.all(
     versionPatches.map((patch) => fs.readJson(resolvePath(patch.package.path, 'package.json'))),
   );
@@ -27,19 +29,24 @@ export const updateChangelogs = async (versionPatches: VersionPatch[]) => {
     const patch = versionPatches[index];
     const packageFile = packageFiles[index];
 
-    if (componentChangelog.some((changelog) => changelog.version === packageFile.version)) {
-      return componentChangelog;
-    }
+    const patchedChangelogs = [...componentChangelog];
+    for (const changelog of componentChangelog) {
+      if (
+        changelog.version.replace(/-\w+\.\d+/, '') === packageFile.version.replace(/-\w+\.\d+/, '')
+      ) {
+        changelog.version = packageFile.version;
 
-    return [
-      {
-        component: packageFile.name,
-        version: packageFile.version,
-        date: dayjs().format('YYYY-MM-DD'),
-        changes: patch.changes,
-      },
-      ...componentChangelog,
-    ];
+        return patchedChangelogs;
+      }
+    }
+    patchedChangelogs.unshift({
+      component: packageFile.name,
+      version: packageFile.version,
+      date: dayjs().format('YYYY-MM-DD'),
+      changes: patch.changes,
+    });
+
+    return patchedChangelogs;
   });
   await Promise.all(
     patchedChangelogs.map((changelogs, index) =>
@@ -49,4 +56,5 @@ export const updateChangelogs = async (versionPatches: VersionPatch[]) => {
       ),
     ),
   );
+  log('Changelogs updated.');
 };

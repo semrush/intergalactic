@@ -30,6 +30,7 @@ export type CarouselProps = BoxProps & {
   bounded?: boolean;
   /** @ignore  */
   step?: number;
+  locale?: string;
 };
 
 /** @deprecated */

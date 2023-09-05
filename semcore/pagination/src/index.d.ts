@@ -62,7 +62,7 @@ declare const Pagination: Intergalactic.Component<
   NextPage: typeof Button;
   FirstPage: typeof Button;
   TotalPages: Intergalactic.Component<
-    Intergalactic.Tag,
+    'button',
     TotalPagesProps,
     {},
     [handlers: PaginationHandlers]

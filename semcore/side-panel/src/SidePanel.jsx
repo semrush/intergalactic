@@ -134,16 +134,19 @@ function Overlay(props) {
 
 function Panel(props) {
   const SPanel = Root;
-  const { Children, styles, visible, closable, placement, onOutsideClick } = props;
-  const advanceMode = isAdvanceMode(Children, [
-    SidePanel.Header.displayName,
-    SidePanel.Body.displayName,
-    SidePanel.Footer.displayName,
-  ]);
+  const { Children, styles, visible, closable, placement, onOutsideClick, forcedAdvancedMode } =
+    props;
+  const advancedMode =
+    forcedAdvancedMode ||
+    isAdvanceMode(Children, [
+      SidePanel.Header.displayName,
+      SidePanel.Body.displayName,
+      SidePanel.Footer.displayName,
+    ]);
 
   const sidebarRef = useRef(null);
 
-  useFocusLock(sidebarRef, true, 'auto', !visible);
+  useFocusLock(sidebarRef, true, 'auto', !visible, true);
 
   return sstyled(styles)(
     <>
@@ -157,7 +160,7 @@ function Panel(props) {
       >
         <PortalProvider value={sidebarRef}>
           {closable && <SidePanel.Close />}
-          {advanceMode ? (
+          {advancedMode ? (
             <Children />
           ) : (
             <SidePanel.Body>
@@ -175,13 +178,14 @@ function Footer(props) {
   return sstyled(props.styles)(<SFooter render={Flex} />);
 }
 
-function Close(props) {
+function Close({ styles, children, Children }) {
   const SClose = Root;
-  return sstyled(props.styles)(<SClose render={Box} tag='button' />);
+  return sstyled(styles)(
+    <SClose render={Box} tag='button'>
+      {children ? <Children /> : <CloseIcon title='Close' />}
+    </SClose>,
+  );
 }
-Close.defaultProps = {
-  children: <CloseIcon title='Close' />,
-};
 Close.enhance = [keyboardFocusEnhance()];
 
 function Title(props) {

@@ -50,7 +50,7 @@ const Demo = () => {
             data-id={idx}
             onClick={handleEditTag}
           >
-            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Text tabIndex={0}>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag} />
           </Tooltip.Trigger>
           <Tooltip.Popper>tag</Tooltip.Popper>

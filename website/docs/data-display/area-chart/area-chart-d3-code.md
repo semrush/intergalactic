@@ -24,3 +24,11 @@ fileSource: d3-chart
 @## Custom line
 
 @example area-custom-line
+
+@## Interpolation
+
+If exact values of specific point is not available, you can pass `interpolateValue` and value will be automatically interpolated.
+
+> 🚨 Interpolation doesn't works with `StackedArea`.
+
+@example area-interpolation

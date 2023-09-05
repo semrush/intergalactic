@@ -9,7 +9,7 @@ import DropdownMenu, {
 } from '@semcore/dropdown-menu';
 import { ButtonTrigger, BaseTriggerProps, ButtonTriggerProps } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
-import { InputValueProps } from '@semcore/input';
+import Input, { InputValueProps } from '@semcore/input';
 import { BoxProps } from '@semcore/flex-box';
 
 /** @deprecated */
@@ -95,7 +95,11 @@ export type SelectOptionCheckboxProps = SelectOptionProps & {
   theme?: string;
 };
 
-declare const InputSearch: Intergalactic.Component<'div', SelectInputSearch>;
+declare const InputSearch: Intergalactic.Component<'div', SelectInputSearch> & {
+  SearchIcon: typeof Input.Addon;
+  Value: typeof Input.Value;
+  Clear: typeof Input.Addon;
+};
 
 /** @deprecated */
 export interface ISelectContext extends SelectContext, UnknownProperties {}
@@ -117,6 +121,7 @@ type IntergalacticSelectComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     SelectProps<Value>,
     SelectContext,
     [handlers: SelectHandlers]

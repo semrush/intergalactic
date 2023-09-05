@@ -243,14 +243,14 @@ class RootSelect extends Component {
   };
 
   render() {
-    const { Children, options, multiselect, value, ...other } = this.asProps;
-    const advanceMode = findComponent(Children, [
-      Select.Trigger.displayName,
-      Select.Popper.displayName,
-    ]);
+    const { Children, options, multiselect, value, uid, forcedAdvancedMode, ...other } =
+      this.asProps;
+    const advancedMode =
+      forcedAdvancedMode ||
+      findComponent(Children, [Select.Trigger.displayName, Select.Popper.displayName]);
 
     logger.warn(
-      options && advanceMode,
+      options && advancedMode,
       "Don't use at the same time 'options' property and '<Select.Trigger/>/<Select.Popper/>'",
       other['data-ui-name'] || Select.displayName,
     );
@@ -260,11 +260,11 @@ class RootSelect extends Component {
         <Root render={DropdownMenu}>
           <Select.Trigger {...other} />
           <Select.Menu>
-            {options.map((option) => {
+            {options.map((option, index) => {
               return (
                 <Select.Option
                   key={option.value}
-                  id={option.value}
+                  id={`igc-${uid}-option-${index}`}
                   aria-selected={value === option.value}
                   {...option}
                 >

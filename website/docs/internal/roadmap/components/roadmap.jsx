@@ -97,46 +97,6 @@ const year2023 = [
 
 const dateSprint = [...year2020, ...year2021, ...year2022, ...year2023];
 const components = {
-  'Q1 2021': [
-    { text: 'Wake up sprint ⏰', size: { kit: '1/3' } },
-    { text: 'Mobile first guides', size: { ui: '3/9' } },
-    { text: 'Mobile first components', size: { kit: '3/11' } },
-    { text: 'D3 Charts: Line, Bar', size: { kit: '3/7' } },
-    { text: 'GlobalNotice', size: { ui: '7/11', kit: '9/13' } },
-    { text: 'Slider', size: { ui: '9/13', kit: '11/13' } },
-    { text: 'Themes enchancement', size: { kit: '7/13' } },
-    { text: 'D3 Charts: Donut', size: { kit: '9/13' } },
-    { text: 'D3 Charts: Area', size: { kit: '11/13' } },
-  ],
-  'Q2 2021': [
-    { text: 'Slider', size: { kit: '1/3' } },
-    { text: 'D3 Charts: Donut', size: { kit: '1/5' } },
-    { text: 'InputNumber improvements', size: { kit: '5/7' } },
-    { text: 'PanelSummary', size: { ui: '5/9', kit: '11/15' } },
-    { text: 'D3 Charts: Venn', size: { kit: '7/11' } },
-    { text: 'Filter examples', size: { kit: '9/13' } },
-    { text: 'D3 Charts: ScatterPlot', size: { kit: '11/15' } },
-    { text: 'Themes & styles enchancement', size: { kit: '1/9' } },
-  ],
-  'Q3 2021': [
-    { text: 'Technical sprint', size: { kit: '1/3' } },
-    { text: 'Filter forms examples', size: { kit: '3/7' } },
-    { text: 'Product emails library', size: { kit: '3/13' } },
-    {
-      text: 'Data visualization section restyling',
-      size: { ui: '3/9', kit: '9/15' },
-    },
-    { text: 'Components restyling', size: { ui: '1/15' } },
-  ],
-  'Q4 2021': [
-    { text: 'Technical sprint', size: { kit: '1/5' } },
-    { text: 'Restyling', size: { ui: '1/4', kit: '4/9' } },
-    { text: 'Scatterplot chart', size: { ui: '3/7', kit: '7/11' } },
-    { text: 'Bubble chart', size: { ui: '5/7', kit: '7/11' } },
-    { text: 'Sandbox', size: { kit: '7/11' } },
-    { text: 'Mind Map chart', size: { ui: '9/13' } },
-    { text: 'Technical sprint', size: { kit: '11/13' } },
-  ],
   'Q1 2022': [
     { text: 'Scatterplot chart', size: { ui: '1/3', kit: '1/5' } },
     { text: 'New icons', size: { kit: '1/5' } },
@@ -174,6 +134,13 @@ const components = {
     { text: 'BottomSheet (draft name)', size: { ui: '9/15', kit: '11/15' } },
   ],
   'Q2 2023': [{ text: 'Enhancing accessibility of the components', size: { kit: '1/11' } }],
+  'Q3 2023': [
+    { text: 'Documentation fixes', size: { ui: '1/7' } },
+    { text: 'Periods comparison for DatePicker', size: { ui: '1/5', kit: '5/15' } },
+    { text: 'Website upgrades', size: { kit: '9/15', ui: '11/15' } },
+    { text: 'Technical improvements', size: { kit: '1/15' } },
+  ],
+  'Q4 2023': [{ text: 'Plans in development...', size: { ui: '1/15' } }],
 };
 
 function Gant(props) {
@@ -226,39 +193,33 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(9);
+  const [value, setValue] = useState(6);
   let TabContent = null;
 
   switch (value) {
     case 0:
-      TabContent = <Gant sprint={dateSprint.slice(26, 33)} components={components['Q1 2021']} />;
-      break;
-    case 1:
-      TabContent = <Gant sprint={dateSprint.slice(32, 39)} components={components['Q2 2021']} />;
-      break;
-    case 2:
-      TabContent = <Gant sprint={dateSprint.slice(38, 47)} components={components['Q3 2021']} />;
-      break;
-    case 3:
-      TabContent = <Gant sprint={dateSprint.slice(46, 53)} components={components['Q4 2021']} />;
-      break;
-    case 4:
       TabContent = <Gant sprint={dateSprint.slice(53, 61)} components={components['Q1 2022']} />;
       break;
-    case 5:
+    case 1:
       TabContent = <Gant sprint={dateSprint.slice(60, 67)} components={components['Q2 2022']} />;
       break;
-    case 6:
+    case 2:
       TabContent = <Gant sprint={dateSprint.slice(66, 73)} components={components['Q3 2022']} />;
       break;
-    case 7:
+    case 3:
       TabContent = <Gant sprint={dateSprint.slice(72, 80)} components={components['Q4 2022']} />;
       break;
-    case 8:
+    case 4:
       TabContent = <Gant sprint={dateSprint.slice(80, 87)} components={components['Q1 2023']} />;
       break;
-    case 9:
+    case 5:
       TabContent = <Gant sprint={dateSprint.slice(86, 93)} components={components['Q2 2023']} />;
+      break;
+    case 6:
+      TabContent = <Gant sprint={dateSprint.slice(92, 100)} components={components['Q3 2023']} />;
+      break;
+    case 7:
+      TabContent = <Gant sprint={dateSprint.slice(99, 107)} components={components['Q4 2023']} />;
       break;
   }
   return (

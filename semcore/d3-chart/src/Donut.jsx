@@ -58,6 +58,7 @@ function transitionRadiusPie({
   duration,
   innerRadius,
   outerRadiusStartEnd,
+  paddingAngle,
 }) {
   return transition()
     .selection()
@@ -71,7 +72,10 @@ function transitionRadiusPie({
       return function (t) {
         const outerRadiusPX = iOuterRadius(t);
         element.dataset['currentRadius'] = outerRadiusPX;
-        const d3ArcOut = arc().innerRadius(innerRadius).outerRadius(outerRadiusPX);
+        const d3ArcOut = arc()
+          .innerRadius(innerRadius)
+          .outerRadius(outerRadiusPX)
+          .padAngle(paddingAngle);
         return d3ArcOut(data);
       };
     });
@@ -85,6 +89,8 @@ function getOuterRadius({ size, halfsize }) {
   return minORmax(width - increaseFactor * 2, height - increaseFactor * 2) / 2;
 }
 
+const gradToRad = (grad) => (grad * Math.PI) / 180;
+
 class DonutRoot extends Component {
   static displayName = 'Donut';
   static style = style;
@@ -92,17 +98,20 @@ class DonutRoot extends Component {
 
   static defaultProps = ({
     innerRadius = 0,
+    paddingAngle = 0,
     outerRadius,
     halfsize = false,
     $rootProps: { size },
   }) => {
     const d3Arc = arc()
       .outerRadius(outerRadius || getOuterRadius({ size, halfsize, outerRadius }))
-      .innerRadius(innerRadius);
+      .innerRadius(innerRadius)
+      .padAngle(paddingAngle);
 
     const d3ArcOut = arc()
       .outerRadius((outerRadius || getOuterRadius({ size, halfsize })) + increaseFactor)
-      .innerRadius(innerRadius);
+      .innerRadius(innerRadius)
+      .padAngle(paddingAngle);
 
     let d3Pie = pie()
       .sort(null)
@@ -117,6 +126,7 @@ class DonutRoot extends Component {
       d3Arc,
       d3ArcOut,
       duration: 500,
+      paddingAngle,
     };
   };
 
@@ -145,7 +155,7 @@ class DonutRoot extends Component {
         return acc;
       }, []);
       pieData = Object.entries(data)
-        .filter(([key]) => keys.includes(key))
+        .filter(([key, value]) => keys.includes(key) && value > 0)
         .sort(([a], [b]) => (keys.indexOf(a) > keys.indexOf(b) ? 1 : -1));
     }
     const minValue =
@@ -168,7 +178,7 @@ class DonutRoot extends Component {
   };
 
   animationActivePie = ({ data, active, selector, element }) => {
-    const { duration, innerRadius, d3Arc } = this.asProps;
+    const { duration, innerRadius, d3Arc, paddingAngle } = this.asProps;
     const outerRadius = d3Arc.outerRadius()();
     const outerRadiusStartEnd = active
       ? [+element.dataset['currentRadius'] || outerRadius, outerRadius + increaseFactor]
@@ -181,6 +191,7 @@ class DonutRoot extends Component {
         duration: duration === 0 ? 0 : 300,
         innerRadius,
         outerRadiusStartEnd,
+        paddingAngle,
       });
     }
   };
@@ -312,6 +323,7 @@ function Pie({
   const pieRef = useRef(null);
 
   useEffect(() => {
+    if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
 
     // do not run animation on first render
@@ -327,10 +339,13 @@ function Pie({
         element: pieRef.current,
       });
     }
-  }, [active]);
+  }, [active, Boolean(data)]);
   useEffect(() => {
+    if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
-  }, [active, innerRadius, outerRadius, halfsize]);
+  }, [active, innerRadius, outerRadius, halfsize, Boolean(data)]);
+
+  if (!data) return null;
 
   dataHintsHandler.establishDataType('values-set');
   dataHintsHandler.describeValueEntity(dataKey, name);
@@ -352,11 +367,20 @@ function EmptyData({ Element: SEmptyData, styles, d3Arc, color }) {
   );
 }
 
-function Label({ Element: SLabel, styles, Children, children, label, dataHintsHandler }) {
+function Label({
+  Element: SLabel,
+  styles,
+  Children,
+  children,
+  label,
+  dataHintsHandler,
+  x = 0,
+  y = 0,
+}) {
   dataHintsHandler.setTitle('vertical', label || children);
 
   return sstyled(styles)(
-    <SLabel render='text' x='0' y='0' aria-hidden>
+    <SLabel render='text' x={x} y={y} aria-hidden>
       <Children />
     </SLabel>,
   );

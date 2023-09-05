@@ -26,12 +26,13 @@ export type RadioProps = BoxProps & {
 };
 
 /** @deprecated */
-export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {}
-export type RadioGroupProps<T extends RadioValue = RadioValue> = {
+export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {
   /**
    *  HTML tag name for the displayed item
    */
   tag?: React.ElementType | string;
+}
+export type RadioGroupProps<T extends RadioValue = RadioValue> = {
   /** Radio group name */
   name?: string;
   /** Active default value */
@@ -86,7 +87,7 @@ type IntergalacticRadioGroupComponent = (<
   Value extends RadioValue,
   Tag extends Intergalactic.Tag = typeof Flex,
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, RadioGroupProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, typeof Flex, RadioGroupProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 

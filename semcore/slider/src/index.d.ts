@@ -64,7 +64,7 @@ type IntergalacticSliderComponent = (<
   Value extends SliderValue,
   Tag extends Intergalactic.Tag = 'div',
 >(
-  props: Intergalactic.InternalTypings.ComponentProps<Tag, SliderProps<Value>>,
+  props: Intergalactic.InternalTypings.ComponentProps<Tag, 'div', SliderProps<Value>>,
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 

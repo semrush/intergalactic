@@ -112,6 +112,7 @@ class Body extends Component<AsProps, State> {
             key={cell.name}
             role='cell'
             headers={headerIds.join(' ')}
+            __excludeProps={['data']}
             {...props}
             fixed={cell.fixed}
             theme={props.theme}
@@ -154,7 +155,12 @@ class Body extends Component<AsProps, State> {
     }
 
     return sstyled(styles)(
-      <SRow data-nested={nested.toString()} role={!nested ? 'row' : undefined} {...props} />,
+      <SRow
+        data-nested={nested.toString()}
+        role={!nested ? 'row' : undefined}
+        __excludeProps={['data']}
+        {...props}
+      />,
     );
   }
 

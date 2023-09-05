@@ -67,6 +67,7 @@ type IntergalacticTabLineComponent = (<
 >(
   props: Intergalactic.InternalTypings.ComponentProps<
     Tag,
+    'div',
     TabLineProps<Value>,
     TabLineContext,
     [handlers: TabLineHandlers]

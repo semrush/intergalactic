@@ -2,6 +2,77 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.11.1] - 2023-09-05
+
+### Fixed
+
+- Fixed rendering zero segments pies in React<17.
+
+## [3.11.0] - 2023-09-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.5.0 ~> 2.6.0], `@semcore/core` [2.5.0 ~> 2.6.0]).
+
+## [3.10.0] - 2023-08-28
+
+### Fixed
+
+- Added `exports.types` field to fix types resolving.
+- Removed deprecation notes from `ticks` props (it was added by mistake).
+
+### Added
+
+- Added `radius` prop on `Line.Dot` component.
+
+## [3.9.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.4.1 ~> 2.5.0], `@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+
+## [3.8.2] - 2023-08-24
+
+### Fixed
+
+- Passing `x` and `y` props to `Donut.Label` component.
+
+## [3.8.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.4.0 ~> 2.4.1], `@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
+
+## [3.8.0] - 2023-08-23
+
+### Changed
+
+- Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+## [3.7.0] - 2023-08-17
+
+### Changed
+
+- Donut chart now doesn't render `Donut.Pie` that represent 0 part of circle.
+
+## [3.6.0] - 2023-08-17
+
+### Added
+
+- `paddingAngle` prop for Donut chart.
+
+## [3.5.0] - 2023-08-17
+
+### Added
+
+- Added special `interpolateValue` symbol that allows to interpolate points on line and area charts.
+
+## [3.4.1] - 2023-08-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.2.0 ~> 2.2.1], `@semcore/flex-box` [5.2.0 ~> 5.2.1], `@semcore/utils` [4.1.0 ~> 4.2.0], `@semcore/core` [2.2.0 ~> 2.2.1]).
+
 ## [3.4.0] - 2023-09-08
 
 ### Changed

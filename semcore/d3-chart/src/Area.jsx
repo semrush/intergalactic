@@ -5,7 +5,13 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import findComponent from '@semcore/utils/lib/findComponent';
 import Dots from './Dots';
 import createElement from './createElement';
-import { definedData, scaleOfBandwidth, getNullData, definedNullData } from './utils';
+import {
+  definedData,
+  scaleOfBandwidth,
+  getNullData,
+  definedNullData,
+  interpolateValue,
+} from './utils';
 import ClipPath from './ClipPath';
 
 import style from './style/area.shadow.css';
@@ -36,7 +42,8 @@ class AreaRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, color, data, d3Line, transparent } = this.asProps;
+    const { x, y, color, d3Line, transparent } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     return {
       x,
@@ -49,7 +56,9 @@ class AreaRoot extends Component {
   }
 
   getNullProps() {
-    const { x, y, color, data, d3Line } = this.asProps;
+    const { x, y, color, d3Line } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
+
     return {
       data: getNullData(data, definedNullData(x, y), y),
       d3: d3Line,
@@ -77,7 +86,6 @@ class AreaRoot extends Component {
       hide,
       d3,
       d3Line,
-      data,
       color,
       uid,
       size,
@@ -86,15 +94,17 @@ class AreaRoot extends Component {
       y,
       Children,
       transparent,
+      forcedAdvancedMode,
     } = this.asProps;
-    const advanceMode = !!findComponent(Children, [Area.Line.displayName]);
+    const advancedMode = forcedAdvancedMode || !!findComponent(Children, [Area.Line.displayName]);
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
     this.asProps.dataHintsHandler.establishDataType('time-series');
 
     return sstyled(styles)(
       <>
-        {!advanceMode && (
+        {!advancedMode && (
           <SAreaLine
             aria-hidden
             clipPath={`url(#${uid})`}

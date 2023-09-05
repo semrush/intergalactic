@@ -6,11 +6,6 @@ import { IntergalacticD3Component } from './Plot';
 export interface IClipPath extends ClipPath, UnknownProperties {}
 export type ClipPath = {
   /**
-   *  HTML tag name for the displayed item
-   * @default rect
-   */
-  tag?: string;
-  /**
    *  HTML selector
    */
   id?: string;

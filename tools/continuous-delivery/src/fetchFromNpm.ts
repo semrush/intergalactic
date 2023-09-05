@@ -1,6 +1,7 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
 import semver from 'semver';
+import { log } from './utils';
 
 type PackageNpmRegistry = {
   dependencies: {
@@ -8,14 +9,19 @@ type PackageNpmRegistry = {
   };
 };
 
-type ResponseNpmRegistry = {
+export type ResponseNpmRegistry = {
   'dist-tags': { latest: string };
+  dist: { tarball: string };
   versions: {
     [version: string]: PackageNpmRegistry;
+  };
+  dependencies: {
+    [name: string]: string;
   };
 };
 
 export const fetchFromNpm = async (filter?: string[]) => {
+  log('Fetching info about packages from npm registry...');
   const { data: npmSearchResult } = await axios.get<
     {},
     {
@@ -69,6 +75,8 @@ export const fetchFromNpm = async (filter?: string[]) => {
         }),
     ),
   );
+
+  log(`Fetched info about ${Object.keys(currentVersions).length} packages.`);
 
   return currentVersions;
 };

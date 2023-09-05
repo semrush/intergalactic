@@ -93,6 +93,8 @@ To apply some properties to a table row, you need to define `<DataTable.Row/>`. 
 >
 > It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
 
+> You can provide `data` property for `<DataTable.Row/>`. It is not used in the component runtime but improves strict typings. 
+
 @example row
 
 @## Access to Cell
@@ -102,6 +104,8 @@ To apply some properties to a table cell, you need to define `<DataTable.Cell/>`
 > `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
 >
 > It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
+
+> You can provide `data` property for `<DataTable.Cell/>`. It is not used in the component runtime but improves strict typings. 
 
 @example cell
 

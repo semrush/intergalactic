@@ -114,7 +114,7 @@ Tooltip usually contains unformatted text.
 
 ![](static/tooltip-basic.png)
 
-In some cases (e.g., for advertising purposes), you can format the text and add other components to the tooltip:
+In some cases (for example, for advertising purposes), you can format the text and add other components to the tooltip:
 
 - [Button](/components/button/), [Link](/components/link/), etc.
 - Image

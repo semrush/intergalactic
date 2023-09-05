@@ -2,6 +2,84 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.0] - 2023-09-05
+
+### Added
+
+- `InputSearch` advanced usage with `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
+
+## [4.9.1] - 2023-09-05
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.7.0 ~> 4.7.1], `@semcore/checkbox` [7.6.0 ~> 7.6.1], `@semcore/divider` [4.6.0 ~> 4.6.1], `@semcore/dropdown-menu` [4.8.0 ~> 4.8.1], `@semcore/flex-box` [5.6.0 ~> 5.6.1], `@semcore/icon` [4.7.0 ~> 4.7.1], `@semcore/input` [4.8.0 ~> 4.8.1], `@semcore/core` [2.6.0 ~> 2.6.1]).
+
+## [4.9.0] - 2023-09-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.6.0 ~> 4.7.0], `@semcore/checkbox` [7.5.0 ~> 7.6.0], `@semcore/divider` [4.5.0 ~> 4.6.0], `@semcore/dropdown-menu` [4.7.0 ~> 4.8.0], `@semcore/flex-box` [5.5.0 ~> 5.6.0], `@semcore/icon` [4.6.0 ~> 4.7.0], `@semcore/input` [4.7.0 ~> 4.8.0], `@semcore/core` [2.5.0 ~> 2.6.0]).
+
+## [4.8.0] - 2023-08-28
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.5.1 ~> 4.6.0], `@semcore/checkbox` [7.4.1 ~> 7.5.0], `@semcore/divider` [4.4.1 ~> 4.5.0], `@semcore/dropdown-menu` [4.6.1 ~> 4.7.0], `@semcore/flex-box` [5.4.1 ~> 5.5.0], `@semcore/icon` [4.5.1 ~> 4.6.0], `@semcore/input` [4.6.1 ~> 4.7.0], `@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+
+## [4.7.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.5.0 ~> 4.5.1], `@semcore/checkbox` [7.4.0 ~> 7.4.1], `@semcore/divider` [4.4.0 ~> 4.4.1], `@semcore/dropdown-menu` [4.6.0 ~> 4.6.1], `@semcore/flex-box` [5.4.0 ~> 5.4.1], `@semcore/icon` [4.5.0 ~> 4.5.1], `@semcore/input` [4.6.0 ~> 4.6.1], `@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
+
+## [4.7.0] - 2023-08-23
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/dropdown-menu` [4.5.0 ~> 4.6.0]).
+
+## [4.6.0] - 2023-08-23
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.4.1 ~> 4.5.0], `@semcore/checkbox` [7.3.1 ~> 7.4.0], `@semcore/divider` [4.3.1 ~> 4.4.0], `@semcore/dropdown-menu` [4.4.1 ~> 4.5.0], `@semcore/flex-box` [5.3.1 ~> 5.4.0], `@semcore/icon` [4.4.1 ~> 4.5.0], `@semcore/input` [4.4.1 ~> 4.6.0], `@semcore/utils` [4.3.1 ~> 4.4.0], `@semcore/core` [2.3.1 ~> 2.4.0]).
+
+## [4.5.1] - 2023-08-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.4.0 ~> 4.4.1], `@semcore/checkbox` [7.3.0 ~> 7.3.1], `@semcore/divider` [4.3.0 ~> 4.3.1], `@semcore/dropdown-menu` [4.4.0 ~> 4.4.1], `@semcore/flex-box` [5.3.0 ~> 5.3.1], `@semcore/icon` [4.4.0 ~> 4.4.1], `@semcore/input` [4.4.0 ~> 4.4.1], `@semcore/core` [2.3.0 ~> 2.3.1]).
+
+## [4.5.0] - 2023-08-18
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.3.2 ~> 4.4.0], `@semcore/checkbox` [7.2.1 ~> 7.3.0], `@semcore/divider` [4.2.1 ~> 4.3.0], `@semcore/dropdown-menu` [4.3.0 ~> 4.4.0], `@semcore/flex-box` [5.2.1 ~> 5.3.0], `@semcore/icon` [4.3.1 ~> 4.4.0], `@semcore/input` [4.3.2 ~> 4.4.0], `@semcore/utils` [4.2.0 ~> 4.3.0], `@semcore/core` [2.2.1 ~> 2.3.0]).
+
+## [4.4.1] - 2023-08-18
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.3.1 ~> 4.3.2], `@semcore/input` [4.3.1 ~> 4.3.2]).
+
+## [4.4.0] - 2023-08-17
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/dropdown-menu` [4.2.1 ~> 4.3.0]).
+
+## [4.3.2] - 2023-08-14
+
+### Changed
+
+- Version minor update due to children dependencies update (`@semcore/core` [2.2.0 ~> 2.2.1]).
+
+## [4.3.1] - 2023-08-10
+
+### Fixed
+
+- Default options DOM ids where not synced with aria-activedescendant value.
+
 ## [4.3.0] - 2023-08-07
 
 ### Changed

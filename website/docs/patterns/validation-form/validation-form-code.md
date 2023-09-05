@@ -2,6 +2,6 @@
 title: Example
 ---
 
-@## Example of a form with validation
+@## Form validation example
 
 @example final-form

@@ -1,3 +1,281 @@
+## [15.16.0] - 2023-09-05
+
+### @semcore/icon
+
+- **Added** Added new `Phone` icon.
+
+### @semcore/select
+
+- **Added** `InputSearch` advanced usage with `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
+
+### @semcore/typography
+
+- **Added** `semibold` prop to `Text` component.
+
+## [15.15.0] - 2023-09-05
+
+### @semcore/core
+
+- **Fixed** Functional component default props warnings from the nextjs.
+
+### @semcore/d3-chart
+
+- **Fixed** Fixed rendering zero segments pies in React<17.
+
+### @semcore/drag-and-drop
+
+- **Added** Added `customFocus` prop that allows keyboard users to use drag and drops without moving actual browser focus. Especially useful for comboboxes and selects that allows to reorder items.
+
+### @semcore/dropdown-menu
+
+- **Fixed** Both highlighted and selected menu items were not visually distinguishable from selected items.
+- **Fixed** `highlightedIndex` prop was added to `DropdownMenu.Menu` context type.
+
+## [15.14.0] - 2023-09-04
+
+### @semcore/core
+
+- **Changed** Core types compilation speed up.
+
+## [15.13.0] - 2023-08-31
+
+### @semcore/d3-chart
+
+- **Fixed** Added `exports.types` field to fix types resolving.
+- **Fixed** Removed deprecation notes from `ticks` props (it was added by mistake).
+- **Added** Added `radius` prop on `Line.Dot` component.
+
+## [15.12.0] - 2023-08-28
+
+### @semcore/utils
+
+- **Changed** Focus lock got focus war surrender mechanism to prevent page freeze if page contains older focus lock. In such case the error is logged into console.
+- **Changed** Focus lock got improved focus control in multiple nested modals (or side-panels) when modals count is bigger then 2.
+- **Changed** Focus lock uses only one version of it if multiple focus lock versions are present on same page.
+
+## [15.11.1] - 2023-08-24
+
+### @semcore/d3-chart
+
+- **Fixed** Passing `x` and `y` props to `Donut.Label` component.
+
+## [15.11.0] - 2023-08-24
+
+### @semcore/ellipsis
+
+- **Added** Ellipsis advanced usage with `Ellipsis.Content` and `Ellipsis.Popper` components.
+
+### @semcore/tooltip
+
+- **Added** Internal API for enforcing component advanced mode.
+
+## [15.10.0] - 2023-08-24
+
+### @semcore/input-mask
+
+- **Fixed** Removed `pattern` prop that were not providing any helpful user experience enhancements but was causing unexpected html form validation errors.
+
+### @semcore/modal
+
+- **Changed** Enabled "single focus owner mode" to better handle nested modals focus lock.
+
+### @semcore/progress-bar
+
+- **Fixed** Progress bar animation wasn't working.
+
+### @semcore/side-panel
+
+- **Changed** Enabled "single focus owner mode" to better handle nested side panels focus lock.
+
+### @semcore/utils
+
+- **Fixed** Keyboard triggered focus was not properly detected for recently mounted components.
+- **Added** Improved modals and side panels focus lock behavior by adding "single focus owner mode" to focus lock handler.
+
+## [15.9.0] - 2023-08-23
+
+### @semcore/scroll-area
+
+- **Fixed** SSR rendering.
+
+## [15.8.0] - 2023-08-23
+
+### @semcore/button
+
+- **Fixed** Fixed paddings for Button's text and addons.
+
+### @semcore/carousel
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/color-picker
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/d3-chart
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/date-picker
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+- **Fixed** Fixed token for hover state of the range cell (`SCalendarUnit[selected]`).
+
+### @semcore/drag-and-drop
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/feedback-form
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/format-text
+
+- **Changed** Disable forced lists counter reset if `start`, `reversed` or `type` attributes are set on corresponding `ol` or `ul` tags.
+
+### @semcore/icon
+
+- **Changed** Updated `Twitter` and `TwitterCarousel` icons, bye-bye birdie 😢
+
+### @semcore/input
+
+- **Fixed** Fixed padding for addons.
+- **Changed** Enforced input wrapper to be non-focusable (primary for other components that use input wrapper).
+
+### @semcore/input-tags
+
+- **Changed** Improved visual state of focused tags container. 
+
+### @semcore/outside-click
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/side-panel
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/skeleton
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+### @semcore/tag
+
+- **Changed** Improved visual state of focusable tags.
+
+### @semcore/utils
+
+- **Changed** Moved default props value from deprecated `FCComponent.defaultProps` to function default arguments.
+
+## [15.6.7] - 2023-08-23
+
+### @semcore/date-picker
+
+- **Fixed** MonthPicker default locale wasn't `en` and was based on the system locale.  
+
+### @semcore/pagination
+
+- **Fixed** Base DOM element of `Pagination.TotalPages` component typings.
+
+## [15.6.6] - 2023-08-21
+
+### @semcore/core
+
+- **Fixed** Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
+
+### @semcore/d3-chart
+
+- **Changed** Donut chart now doesn't render `Donut.Pie` that represent 0 part of circle.
+
+### @semcore/drag-and-drop
+
+- **Fixed** Broken keyboard drag-and-drop handling.
+
+## [15.6.5] - 2023-08-18
+
+### @semcore/core
+
+- **Added** Exported type `Intergalactic.DomProps` that may be helpful for typing component wrappers.
+
+### @semcore/d3-chart
+
+- **Added** `paddingAngle` prop for Donut chart.
+
+### @semcore/data-table
+
+- **Added** `data` prop for `DataTable.Cell` and `DataTable.Row` that allows more convenient typings than `DataTable.Cell<typeof data>`.
+- **Fixed** Collapsing of table included in row of other table.
+
+### @semcore/utils
+
+- **Changed** Made `resolveColor` types generic.
+
+## [15.6.4] - 2023-08-18
+
+### @semcore/carousel
+
+- **Changed** Removed `aria-hidden` from navigation buttons.
+- **Changed** Added `aria-current` on the current slide.
+- **Changed** Added i18n locales for `aria-label` of Next and Previous buttons.
+
+## [15.6.3] - 2023-08-18
+
+### @semcore/d3-chart
+
+- **Added** Added special `interpolateValue` symbol that allows to interpolate points on line and area charts.
+
+### @semcore/feature-popover
+
+- **Fixed** `zIndex` passing.
+
+### @semcore/neighbor-location
+
+- **Fixed** Removed wrong `tag` component declaration in `NeighborLocationProps` type.
+
+### @semcore/radio
+
+- **Fixed** Removed wrong `tag` component declaration in `RadioGroupProps` type.
+- **Fixed** Fixed vertical direction of radio group (due to `typo` it was horizontal by default).
+
+## [15.6.2] - 2023-08-17
+
+### @semcore/input-tags
+
+- **Fixed** Fixed aria roles issues.
+
+### @semcore/scroll-area
+
+- **Changed** Focus ring is now provided by overflowing pseudo element.
+
+### @semcore/tag
+
+- **Changed** Remove tag button aria-label now refers both to the tag and remove button itself. 
+
+## [15.6.1] - 2023-08-16
+
+### @semcore/core
+
+- **Changed** Internal typings update that fixes edge cases of props nesting.
+
+### @semcore/flex-box
+
+- **Changed** Deprecated `IFlexProps`.
+
+### @semcore/utils
+
+- **Fixed** Fixed colors of `--intergalactic-table-td-cell-hover` and `--intergalactic-table-td-cell-active` design tokens to a lighter ones.
+
+## [15.6.0] - 2023-08-11
+
+### @semcore/textarea
+
+- **Fixed** Line height of textarea of `l` size changed from `lh-400` to `lh-300`.
+
+## [15.4.7] - 2023-08-10
+
+### @semcore/select
+
+- **Fixed** Default options DOM ids where not synced with aria-activedescendant value.
+
 ## [15.4.0] - 2023-08-09
 
 ### @semcore/d3-chart

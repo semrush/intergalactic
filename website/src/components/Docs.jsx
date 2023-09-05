@@ -116,7 +116,7 @@ export const Docs = ({ tokens, tabs }) => {
           })}
         </TabLine>
       )}
-      {/* rome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+      {/* rome-ignore lint/a11y/useKeyWithClickEvents: */}
       <main className={styles.main} ref={contentRef} onClick={handleClick}>
         <RenderMarkdown tokens={tokens} onRender={scrollCallback} />
       </main>

@@ -146,24 +146,26 @@ export namespace Intergalactic {
     /** @private DO NOT USE IT. Low-level api that prevents specified props from being applied as DOM attribute. */
     __excludeProps?: string[];
   };
-  type MergeProps<HighPriorityProps, LowPriorityProps> = Omit<
-    LowPriorityProps,
-    keyof HighPriorityProps
-  > &
-    HighPriorityProps;
+  type MergeProps<HighPriorityProps, LowPriorityProps> = {
+    [K in keyof LowPriorityProps]: K extends keyof HighPriorityProps
+      ? HighPriorityProps[K]
+      : LowPriorityProps[K];
+  } & HighPriorityProps;
   /** @private */
   export namespace InternalTypings {
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
-      (Tag extends React.FC
-        ? ReactFCProps<Tag>
-        : Tag extends React.ComponentClass
-        ? ReactComponentProps<Tag>
-        : Tag extends ReactFCLike
-        ? ReactFCLikeProps<Tag>
-        : Tag extends keyof JSX.IntrinsicElements
-        ? JSX.IntrinsicElements[Tag]
-        : {}) &
-        (Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}),
+      MergeProps<
+        Tag extends React.FC
+          ? ReactFCProps<Tag>
+          : Tag extends React.ComponentClass
+          ? ReactComponentProps<Tag>
+          : Tag extends ReactFCLike
+          ? ReactFCLikeProps<Tag>
+          : Tag extends keyof JSX.IntrinsicElements
+          ? JSX.IntrinsicElements[Tag]
+          : {},
+        Tag extends { __nestedProps: infer NestedProps } ? NestedProps : {}
+      >,
       'children' | 'tag'
     >;
     export type ReturnResult =
@@ -179,6 +181,7 @@ export namespace Intergalactic {
       | ReactFCLike;
     export type ComponentProps<
       Tag extends ComponentTag,
+      BaseTag extends ComponentTag | never,
       Props,
       Context = never,
       AdditionalContext extends any[] = never[],
@@ -191,7 +194,10 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
-      MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
+      MergeProps<
+        Omit<Props, 'tag' | 'children'>,
+        MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
+      >;
     export type PropsRenderingResultComponentProps<
       Tag extends ComponentTag,
       Props,
@@ -215,7 +221,7 @@ export namespace Intergalactic {
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;
     };
-    type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
+    export type InferJsxIntrinsicElement<T extends React.DetailedHTMLProps<any, any>> =
       T extends React.DetailedHTMLProps<infer _, infer Element> ? Element : HTMLElement;
     type InferElementFromRef<T> = T extends React.Ref<infer Element> ? Element : never;
     type InferRefElementFromProps<T> = 'ref' extends keyof T
@@ -234,8 +240,10 @@ export namespace Intergalactic {
     Context = {},
     AdditionalContext extends any[] = never[],
   > = (<Tag extends InternalTypings.ComponentTag = BaseTag, Props extends BaseProps = BaseProps>(
-    props: InternalTypings.ComponentProps<Tag, Props, Context, AdditionalContext>,
+    props: InternalTypings.ComponentProps<Tag, BaseTag, Props, Context, AdditionalContext>,
   ) => InternalTypings.ComponentRenderingResults) &
     InternalTypings.ComponentAdditive<BaseTag>;
   export type Tag = InternalTypings.ComponentTag;
+  export type DomProps<Tag extends keyof JSX.IntrinsicElements> =
+    InternalTypings.InferJsxIntrinsicElement<JSX.IntrinsicElements[Tag]>;
 }

@@ -99,6 +99,7 @@ class Head extends Component<AsProps> {
         active={isGroup ? false : column.active}
         group={isGroup}
         tabIndex={column.sortable && 0}
+        __excludeProps={['hidden']}
         {...column.props}
         ref={this.refColumn(column.props)}
         onClick={callAllEventHandlers(
@@ -168,7 +169,7 @@ class Head extends Component<AsProps> {
           onResize={onResize}
         >
           <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
-            <SHead render={Box} role='row' aria-rowindex='1'>
+            <SHead render={Box} role='row' aria-rowindex='1' __excludeProps={['hidden']}>
               {this.renderColumns(columnsChildren, 100 / this.columns.length)}
             </SHead>
           </SScrollArea.Container>

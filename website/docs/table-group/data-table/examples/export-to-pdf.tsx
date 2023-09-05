@@ -65,7 +65,9 @@ export default () => {
         <DropdownMenu.Popper wMax='257px'>
           <DropdownMenu.List>
             {extensions.map((name) => (
-              <DropdownMenu.Item onClick={downloadImage(name)}>{name}</DropdownMenu.Item>
+              <DropdownMenu.Item key={name} onClick={downloadImage(name)}>
+                {name}
+              </DropdownMenu.Item>
             ))}
           </DropdownMenu.List>
         </DropdownMenu.Popper>

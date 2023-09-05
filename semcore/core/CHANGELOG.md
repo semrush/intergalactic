@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.1] - 2023-09-05
+
+### Fixed
+
+- Functional component default props warnings from the nextjs.
+
+## [2.6.0] - 2023-09-04
+
+### Changed
+
+- Core types compilation speed up.
+
+## [2.4.1] - 2023-08-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1]).
+
+## [2.4.0] - 2023-08-23
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.3.1 ~> 4.4.0]).
+
+## [2.3.1] - 2023-08-21
+
+### Fixed
+
+- Component types edge case when two nested prop with same name from different components create conjunction instead of disjunction.
+
+## [2.3.0] - 2023-08-18
+
+### Added
+
+- Exported type `Intergalactic.DomProps` that may be helpful for typing component wrappers.
+
+## [2.2.1] - 2023-08-14
+
+### Changed
+
+- Internal typings update that fixes edge cases of props nesting.
+
 ## [2.2.0] - 2023-08-07
 
 ### Changed
