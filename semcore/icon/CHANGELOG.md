@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.0] - 2023-09-05
+
+### Added
+
+- Added new `Phone` icon.
+
 ## [4.7.1] - 2023-09-05
 
 ### Changed

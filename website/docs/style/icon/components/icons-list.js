@@ -1822,6 +1822,12 @@ const iconsList = {
       tags: ['mobile', 'cell', 'iphone', 'android', 'телефон', 'мобильный', 'device'],
     },
     {
+      name: 'Phone',
+      size: ['l', 'm'],
+      group: 'Hardware',
+      tags: ['phone', 'telephone', 'call', 'телефон', 'mobile', 'cell', 'мобильный', 'звонок'],
+    },
+    {
       name: 'Tablet',
       size: ['l', 'm'],
       group: 'Hardware',
