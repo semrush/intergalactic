@@ -14,6 +14,8 @@ export type TextProps = BoxProps & {
   noWrap?: boolean;
   /** CSS property `font-weight: 700;` */
   bold?: boolean;
+  /** CSS property `font-weight: 600;` */
+  semibold?: boolean;
   /** CSS property `font-weight: 500;` */
   medium?: boolean;
   /** Italicized text */

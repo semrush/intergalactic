@@ -14,6 +14,13 @@
 
 @font-face {
   font-family: 'Inter';
+  font-style: semi-bold;
+  font-weight: 600;
+  src: url('./fonts/Inter-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   src: url('./fonts/Inter-Bold.ttf');

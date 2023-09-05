@@ -40,6 +40,8 @@ describe('Text', () => {
       <React.Fragment>
         <Text bold>bold</Text>
         <br />
+        <Text semibold>bold</Text>
+        <br />
         <Text medium>medium</Text>
         <br />
         <Text italic>italic</Text>

@@ -2291,7 +2291,8 @@
     "components": [
       "errors",
       "modal",
-      "product-head"
+      "product-head",
+      "typography"
     ]
   },
   {
