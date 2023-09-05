@@ -49,7 +49,6 @@
     "reflect-metadata": "0.1.13",
     "sharp": "^0.31.3",
     "sitemap": "^7.1.1",
-    "styled-components": "5.0.1",
     "whatwg-fetch": "3.6.2"
   },
   "devDependencies": {

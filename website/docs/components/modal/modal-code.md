@@ -25,12 +25,6 @@ While it is generally not recommended, there are instances where it may be neces
 
 @example modal-inside-modal
 
-@## Modal window with customization
-
-Example of a modal window with a custom header.
-
-@example wizard
-
 @## Access to internal HTML nodes
 
 To access the background or the close `Close` icon, you will need to expand the modal window and recreate the same component sequence.

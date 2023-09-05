@@ -70,7 +70,6 @@
     "@semcore/slider": "workspace:*",
     "@semcore/spin": "workspace:*",
     "@semcore/spin-container": "workspace:*",
-    "@semcore/sticky": "workspace:*",
     "@semcore/switch": "workspace:*",
     "@semcore/tab-line": "workspace:*",
     "@semcore/tab-panel": "workspace:*",
@@ -96,7 +95,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "17.0.1",
-    "styled-components": "5.3.5",
     "tsm": "2.2.2"
   },
   "devDependencies": {

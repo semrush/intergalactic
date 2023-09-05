@@ -5,16 +5,15 @@ import Modal from '@semcore/ui/modal';
 import { Text, List } from '@semcore/ui/typography';
 import Input from '@semcore/ui/input';
 import Tooltip from '@semcore/ui/tooltip';
-import styled from 'styled-components';
 import '@semcore/ui/utils/style/var.css';
 
-const WarningBlock = styled(Flex)`
-  background: var(--red-50);
-  border: 1px solid var(--red-200);
-  border-radius: var(--rounded-m);
-  margin-bottom: 24px;
-  padding: 16px;
-`;
+const warningBlockStyles = {
+  background: 'var(--red-50)',
+  border: '1px solid var(--red-200)',
+  borderRadius: 'var(--rounded-m)',
+  marginBottom: '24px',
+  padding: '16px',
+};
 
 const Demo = () => {
   const [value, setValue] = React.useState('');
@@ -52,7 +51,7 @@ const Demo = () => {
           <List.Item>Backlink Audit</List.Item>
           <List.Item>Content Analyzer</List.Item>
         </List>
-        <WarningBlock tag='label' direction='column' htmlFor='project'>
+        <Flex style={warningBlockStyles} tag='label' direction='column' htmlFor='project'>
           <Text size={300} mb={2} tag='p'>
             Confirm deletion by typing the project name{' '}
             <Text tag='strong' color='red-500'>
@@ -83,7 +82,7 @@ const Demo = () => {
               />
             </Input>
           </Tooltip>
-        </WarningBlock>
+        </Flex>
         <Button use='primary' theme='danger' size='l' onClick={handleDelete}>
           Delete
         </Button>

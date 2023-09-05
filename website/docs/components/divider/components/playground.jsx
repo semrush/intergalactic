@@ -1,23 +1,17 @@
 import React from 'react';
 import Divider from '@semcore/ui/divider';
+import { Flex } from '@semcore/ui/flex-box';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import styled from 'styled-components';
 
 const USE = ['primary', 'secondary'];
 const THEMES = ['default', 'invert'];
 const ORIENTATIONS = ['horizontal', 'vertical'];
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 200px;
-  padding: 20px;
-  box-sizing: border-box;
-`;
-
-const LayoutPreview = (props) => <Wrapper>{props.children}</Wrapper>;
+const LayoutPreview = (props) => (
+  <Flex justifyContent='center' alignItems='center' w={200} h={100} p={5}>
+    {props.children}
+  </Flex>
+);
 
 export default PlaygroundGeneration(
   (createGroupWidgets) => {

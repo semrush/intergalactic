@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
+import { Flex } from '@semcore/flex-box';
 
 import IconGroup, { IconGroups, ListIcons } from './icon-group';
 import Input from '@semcore/ui/input';
@@ -13,16 +13,6 @@ import staticFiles from '@static';
 import algoliaConfig from '@components/algolia-config';
 
 const searchClient = algoliasearch(algoliaConfig.ALGOLIA_APP, algoliaConfig.ALGOLIA_OPEN_KEY);
-
-const NotFound = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--intergalactic-spacing-10x);
-  margin: auto;
-  border-radius: var(--intergalactic-rounded-medium);
-  border: solid 1px #d1d4db;
-`;
 
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIcons, onChangeValue, ...others }) => {
@@ -78,12 +68,21 @@ export default function ({ icons, old, json }) {
         filterIcons.length ? (
           <ListIcons data={filterIcons} icons={icons} old={old} json={json} />
         ) : (
-          <NotFound>
+          <Flex
+            justifyContent='center'
+            alignItems='center'
+            direction='column'
+            p={5}
+            style={{
+              borderRadius: 'var(--intergalactic-rounded-medium)',
+              border: 'solid 1px #d1d4db',
+            }}
+          >
             <img src={staticFiles['search/observatory.svg']} alt='observatory' />
             <Text size={300} mt={2}>
               We found something… it's nothing
             </Text>
-          </NotFound>
+          </Flex>
         )
       ) : (
         <IconGroups icons={icons} old={old} json={json}>
