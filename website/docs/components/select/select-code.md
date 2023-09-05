@@ -61,15 +61,21 @@ The component offers several variants of options layout:
 
 @example options
 
-@## Options filtration
+@## Options filtering
 
-The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component.
-
-> The `InputSearch` component is difficult to customize. All props are passed to `Input.Value`. If this isn’t enough, you can create your own custom solution.
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component with clear button.
 
 The example below shows one of the ways to implement filtering.
 
 @example filtering
+
+@## Advanced filtering control
+
+To get more control over the parts of `InputSearch` component, you can use children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
+
+In the example below clear button handler is disabled.
+
+@example filtering-advanced
 
 @## Multiselect
 
