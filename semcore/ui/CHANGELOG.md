@@ -1,3 +1,17 @@
+## [15.16.0-prerelease.0] - 2023-09-05
+
+### @semcore/icon
+
+- **Added** Added new `Phone` icon.
+
+### @semcore/select
+
+- **Added** `InputSearch` advanced usage with `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
+
+### @semcore/typography
+
+- **Added** `semibold` prop to `Text` component.
+
 ## [15.15.0] - 2023-09-05
 
 ### @semcore/core
