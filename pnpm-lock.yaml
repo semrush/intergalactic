@@ -608,9 +608,6 @@ importers:
       '@semcore/spin-container':
         specifier: '*'
         version: link:../spin-container
-      '@semcore/sticky':
-        specifier: '*'
-        version: link:../sticky
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
@@ -1818,22 +1815,6 @@ importers:
         specifier: 18.0.21
         version: 18.0.21
 
-  semcore/sticky:
-    dependencies:
-      '@semcore/flex-box':
-        specifier: 5.6.1
-        version: link:../flex-box
-      '@semcore/utils':
-        specifier: 4.6.1
-        version: link:../utils
-    devDependencies:
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../../tools/testing-utils
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
-
   semcore/switch:
     dependencies:
       '@semcore/flex-box':
@@ -2223,9 +2204,6 @@ importers:
       '@semcore/spin-container':
         specifier: 7.6.1
         version: link:../spin-container
-      '@semcore/sticky':
-        specifier: 3.6.1
-        version: link:../sticky
       '@semcore/switch':
         specifier: 5.6.1
         version: link:../switch
@@ -2902,9 +2880,6 @@ importers:
       '@semcore/spin-container':
         specifier: workspace:*
         version: link:../../semcore/spin-container
-      '@semcore/sticky':
-        specifier: workspace:*
-        version: link:../../semcore/sticky
       '@semcore/switch':
         specifier: workspace:*
         version: link:../../semcore/switch
@@ -2980,9 +2955,6 @@ importers:
       react-is:
         specifier: 17.0.1
         version: 17.0.1
-      styled-components:
-        specifier: 5.3.5
-        version: 5.3.5(react-dom@18.2.0)(react-is@17.0.1)(react@18.2.0)
       tsm:
         specifier: 2.2.2
         version: 2.2.2
@@ -3246,9 +3218,6 @@ importers:
       sitemap:
         specifier: ^7.1.1
         version: 7.1.1
-      styled-components:
-        specifier: 5.0.1
-        version: 5.0.1(react-dom@18.2.0)(react@18.2.0)
       whatwg-fetch:
         specifier: 3.6.2
         version: 3.6.2
@@ -4793,24 +4762,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /@babel/traverse@7.21.3(supports-color@5.5.0):
-    resolution: {integrity: sha512-XLyopNeaTancVitYZe2MlUEvgKb6YVVPXzofHgqHijCImG33b/uTurMS488ht/Hbsb2XK3U2BnSTxKVNGV3nGQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.21.3
-      '@babel/helper-environment-visitor': 7.18.9
-      '@babel/helper-function-name': 7.21.0
-      '@babel/helper-hoist-variables': 7.18.6
-      '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.21.3
-      '@babel/types': 7.21.3
-      debug: 4.3.4(supports-color@5.5.0)
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
   /@babel/types@7.21.3:
     resolution: {integrity: sha512-sBGdETxC+/M4o/zKC0sl6sjWv62WFR/uzxrJ6uYyMLZOUlPnwzw0tKgVHOXxaAd5l2g8pEDM5RZ495GPQI77kg==}
     engines: {node: '>=6.9.0'}
@@ -4883,34 +4834,6 @@ packages:
     dependencies:
       buffer-crc32: 0.2.13
       fd-slicer2: 1.2.0
-    dev: false
-
-  /@emotion/is-prop-valid@0.8.8:
-    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
-    dependencies:
-      '@emotion/memoize': 0.7.4
-    dev: false
-
-  /@emotion/is-prop-valid@1.2.0:
-    resolution: {integrity: sha512-3aDpDprjM0AwaxGE09bOPkNxHpBd+kA6jty3RnaEXdweX1DF1U3VQpPYb0g1IStAuK7SVQ1cy+bNBBKp4W3Fjg==}
-    dependencies:
-      '@emotion/memoize': 0.8.0
-    dev: false
-
-  /@emotion/memoize@0.7.4:
-    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
-    dev: false
-
-  /@emotion/memoize@0.8.0:
-    resolution: {integrity: sha512-G/YwXTkv7Den9mXDO7AhLWkE3q+I92B+VqAE+dYG4NGPaHZGvt3G8Q0p9vmE+sq7rTGphUbAvmQ9YpbfMQGGlA==}
-    dev: false
-
-  /@emotion/stylis@0.8.5:
-    resolution: {integrity: sha512-h6KtPihKFn3T9fuIrwvXXUOwlx3rfUvfZIcP5a6rh8Y7zjE3O06hT5Ss4S/YI1AYhuZ1kjaE/5EaOOI2NqSylQ==}
-    dev: false
-
-  /@emotion/unitless@0.7.5:
-    resolution: {integrity: sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==}
     dev: false
 
   /@esbuild/android-arm64@0.17.19:
@@ -7147,36 +7070,6 @@ packages:
     resolution: {integrity: sha512-NmHOpGOLqSnZgefu/rmCviGIlp51WLGk8OY9CiQmp9qrpBy6jFVNvxIP4jR9WXZlNOPfBdGpuhPJe8upV4DTGw==}
     dev: false
 
-  /babel-plugin-styled-components@2.0.7(styled-components@5.0.1):
-    resolution: {integrity: sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA==}
-    peerDependencies:
-      styled-components: '>= 2'
-    dependencies:
-      '@babel/helper-annotate-as-pure': 7.18.6
-      '@babel/helper-module-imports': 7.18.6
-      babel-plugin-syntax-jsx: 6.18.0
-      lodash: 4.17.21
-      picomatch: 2.3.1
-      styled-components: 5.0.1(react-dom@18.2.0)(react@18.2.0)
-    dev: false
-
-  /babel-plugin-styled-components@2.0.7(styled-components@5.3.5):
-    resolution: {integrity: sha512-i7YhvPgVqRKfoQ66toiZ06jPNA3p6ierpfUuEWxNF+fV27Uv5gxBkf8KZLHUCc1nFA9j6+80pYoIpqCeyW3/bA==}
-    peerDependencies:
-      styled-components: '>= 2'
-    dependencies:
-      '@babel/helper-annotate-as-pure': 7.18.6
-      '@babel/helper-module-imports': 7.18.6
-      babel-plugin-syntax-jsx: 6.18.0
-      lodash: 4.17.21
-      picomatch: 2.3.1
-      styled-components: 5.3.5(react-dom@18.2.0)(react-is@17.0.1)(react@18.2.0)
-    dev: false
-
-  /babel-plugin-syntax-jsx@6.18.0:
-    resolution: {integrity: sha512-qrPaCSo9c8RHNRHIotaufGbuOBN8rtdC4QrrFFc43vyWCCz7Kl7GL1PGaXtMGQZUXrkCjNEgxDfmAuAabr/rlw==}
-    dev: false
-
   /babel-plugin-tester@7.0.1:
     resolution: {integrity: sha512-+K1d6BGmFDSMVtf9HG4sPhIZEHLVnUIV3BeJGkpR+l7Y5MCaB9Gv98kWFbqtmg/B3DVRFT3UncyAeOdc91HooQ==}
     engines: {node: '>=8', npm: '>=6'}
@@ -7629,10 +7522,6 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
     dev: true
-
-  /camelize@1.0.1:
-    resolution: {integrity: sha512-dU+Tx2fsypxTgtLoE36npi3UqcjSSMNYfkqgmoEhtZrraP5VWq0K7FkWVTYa8eMPtnU/G2txVsfdCJTn9uzpuQ==}
-    dev: false
 
   /caniuse-api@3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
@@ -8315,11 +8204,6 @@ packages:
       postcss: 7.0.39
     dev: false
 
-  /css-color-keywords@1.0.0:
-    resolution: {integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==}
-    engines: {node: '>=4'}
-    dev: false
-
   /css-declaration-sorter@6.4.0(postcss@8.2.13):
     resolution: {integrity: sha512-jDfsatwWMWN0MODAFuHszfjphEXfNw9JUAhmY4pLu3TyTU+ohUpsbVtbU+1MZn4a47D9kqh03i4eyOm+74+zew==}
     engines: {node: ^10 || ^12 || >=14}
@@ -8380,14 +8264,6 @@ packages:
     dependencies:
       cssesc: 3.0.0
       fastparse: 1.1.2
-
-  /css-to-react-native@3.2.0:
-    resolution: {integrity: sha512-e8RKaLXMOFii+02mOlqwjbD00KSEKqblnpO9e++1aXS1fPQOpS1YoqdVHBqPjHNoxeF2mimzVqawm2KCbEdtHQ==}
-    dependencies:
-      camelize: 1.0.1
-      css-color-keywords: 1.0.0
-      postcss-value-parser: 4.1.0
-    dev: false
 
   /css-tree@1.1.3:
     resolution: {integrity: sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q==}
@@ -8829,19 +8705,6 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-
-  /debug@4.3.4(supports-color@5.5.0):
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
-      supports-color: 5.5.0
-    dev: false
 
   /decamelize-keys@1.1.1:
     resolution: {integrity: sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==}
@@ -17213,10 +17076,6 @@ packages:
   /setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  /shallowequal@1.1.0:
-    resolution: {integrity: sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==}
-    dev: false
-
   /sharp@0.31.3:
     resolution: {integrity: sha512-XcR4+FCLBFKw1bdB+GEhnUNXNXvnt0tDo4WsBsraKymuo/IAuPuCBVAL2wIkUw2r/dwFW5Q5+g66Kwl2dgDFVg==}
     engines: {node: '>=14.15.0'}
@@ -17881,51 +17740,6 @@ packages:
   /style-search@0.1.0:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
     dev: true
-
-  /styled-components@5.0.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-E0xKTRIjTs4DyvC1MHu/EcCXIj6+ENCP8hP01koyoADF++WdBUOrSGwU1scJRw7/YaYOhDvvoad6VlMG+0j53A==}
-    peerDependencies:
-      react: '>= 16.8.0'
-      react-dom: '>= 16.8.0'
-      react-is: '>= 16.8.0'
-    dependencies:
-      '@babel/helper-module-imports': 7.18.6
-      '@babel/traverse': 7.21.3(supports-color@5.5.0)
-      '@emotion/is-prop-valid': 0.8.8
-      '@emotion/stylis': 0.8.5
-      '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.0.7(styled-components@5.0.1)
-      css-to-react-native: 3.2.0
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      shallowequal: 1.1.0
-      supports-color: 5.5.0
-    dev: false
-
-  /styled-components@5.3.5(react-dom@18.2.0)(react-is@17.0.1)(react@18.2.0):
-    resolution: {integrity: sha512-ndETJ9RKaaL6q41B69WudeqLzOpY1A/ET/glXkNZ2T7dPjPqpPCXXQjDFYZWwNnE5co0wX+gTCqx9mfxTmSIPg==}
-    engines: {node: '>=10'}
-    requiresBuild: true
-    peerDependencies:
-      react: '>= 16.8.0'
-      react-dom: '>= 16.8.0'
-      react-is: '>= 16.8.0'
-    dependencies:
-      '@babel/helper-module-imports': 7.18.6
-      '@babel/traverse': 7.21.3(supports-color@5.5.0)
-      '@emotion/is-prop-valid': 1.2.0
-      '@emotion/stylis': 0.8.5
-      '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.0.7(styled-components@5.3.5)
-      css-to-react-native: 3.2.0
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-is: 17.0.1
-      shallowequal: 1.1.0
-      supports-color: 5.5.0
-    dev: false
 
   /stylehacks@5.1.1(postcss@8.2.13):
     resolution: {integrity: sha512-sBpcd5Hx7G6seo7b1LkpttvTz7ikD0LlH5RmdcBNb6fFR0Fl7LQwHDFr300q4cwUqi+IYrFGmsIHieMBfnN/Bw==}
