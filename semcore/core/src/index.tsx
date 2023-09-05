@@ -240,11 +240,11 @@ function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
 
 function wrapCore(OriginComponent: any, enhancements: any, Context: any) {
   const Component = function ({ Root }: any) {
-    return <Root render={OriginComponent} />;
+    const defaultProps = OriginComponent.defaultProps || {};
+    return <Root {...defaultProps} render={OriginComponent} />;
   };
   hoistNonReactStatics(Component, OriginComponent);
   Component.displayName = OriginComponent.displayName;
-  Component.defaultProps = OriginComponent.defaultProps;
   return wrapFunction(Component, enhancements, Context);
 }
 

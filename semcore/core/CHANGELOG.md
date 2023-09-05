@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.1] - 2023-09-05
+
+### Fixed
+
+- Functional component default props warnings from the nextjs.
+
 ## [2.6.0] - 2023-09-04
 
 ### Changed
