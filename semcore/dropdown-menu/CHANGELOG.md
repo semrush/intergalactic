@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.1] - 2023-09-05
+
+### Fixed
+
+- Both highlighted and selected menu items were not visually distinguishable from selected items.
+- `highlightedIndex` prop was added to `DropdownMenu.Menu` context type.
+
 ## [4.8.0] - 2023-09-04
 
 ### Changed
