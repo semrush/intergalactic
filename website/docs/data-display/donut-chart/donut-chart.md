@@ -33,7 +33,7 @@ The length of each segment is a proportional fraction, and the entire circle is 
 
 @## Appearance
 
-For all types, show the values clockwise, starting with the largest one. The angle of the padding between the values:
+For all types, show the values clockwise. The angle of the padding between the values:
 
 ![](static/donut-padding-angle.png)
 
