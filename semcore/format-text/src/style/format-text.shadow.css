@@ -41,6 +41,10 @@ SFormatText {
     }
   }
 
+  & code {
+    font-family: Consolas, 'Roboto Mono', Menlo, Courier, monospace;
+  }
+
   & blockquote {
     position: relative;
     /* disable-tokens-validator */
