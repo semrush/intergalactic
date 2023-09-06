@@ -25,12 +25,10 @@ export const generateVoTestsHash = async () => {
       const content = await fs.readFile(filePath, 'utf-8');
       const lines = content.split('\n');
       for (const line of lines) {
-        const trimmed = line.trim();
-        if (trimmed.startsWith("'../../../website/docs") && trimmed.endsWith("',")) {
-          const relativePath = trimmed.substring("'../../../".length, trimmed.length - 2);
-          if (relativePath.endsWith('.jsx') || relativePath.endsWith('.tsx')) {
-            additionalFiles.push(relativePath);
-          }
+        if (!line.includes('website/docs')) continue;
+        const standPath = line.substring(line.indexOf("'website/docs") + 1, line.lastIndexOf("'"));
+        if (standPath.endsWith('.jsx') || standPath.endsWith('.tsx')) {
+          additionalFiles.push(standPath);
         }
       }
     }),
@@ -50,7 +48,7 @@ export const generateVoTestsHash = async () => {
       }),
     ),
   );
-  const usedFiles = [...inputFiles];
+  let usedFiles = [...inputFiles];
   for (const meta of metas) {
     if (!meta.metafile) continue;
     for (const inputFile in meta.metafile.inputs) {
@@ -59,6 +57,7 @@ export const generateVoTestsHash = async () => {
       }
     }
   }
+  usedFiles = [...new Set(usedFiles)];
   usedFiles.sort();
 
   const hashes = await Promise.all(

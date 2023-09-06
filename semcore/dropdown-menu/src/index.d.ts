@@ -100,6 +100,7 @@ export type DropdownMenuItemTitleProps = FlexProps & {
 /** @deprecated */
 export interface IDropdownMenuContext extends DropdownMenuContext, UnknownProperties {}
 export type DropdownMenuContext = DropdownContext & {
+  highlightedIndex?: number;
   getListProps: PropGetterFn;
   getItemProps: PropGetterFn;
   getItemHintProps: PropGetterFn;

@@ -24,6 +24,7 @@ function Dots(props) {
     scale,
     duration = 500,
     transparent,
+    radius = 6,
   } = props;
   const SDots = 'g';
   const bisect = bisector((d) => d[x]).center;
@@ -90,6 +91,7 @@ function Dots(props) {
           hide={hide}
           color={color}
           transparent={transparent}
+          radius={radius}
         />,
       ),
     );

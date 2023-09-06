@@ -1,19 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import { ButtonTrigger } from '@semcore/ui/base-trigger';
-
-const Popper = styled.div`
-  display: ${(props) => (props.visible ? 'block' : 'none')};
-  background: #fff;
-  border: 1px solid green;
-  padding: 10px;
-  z-index: 10;
-`;
-
-const ListItem = styled.li`
-  color: ${(props) => (props.highlighted ? 'red' : '#000')};
-`;
+import { Box } from '@semcore/flex-box';
 
 export default function () {
   return (
@@ -26,29 +14,35 @@ export default function () {
           getItemProps, // // encapsulates Item logic
         } = props;
 
-        const {
-          visible, // manages internal visibility state
-          highlightedIndex, // controls the internal state of selecting list items from the keyboard
-        } = handlers;
+        const popperProps = getPopperProps();
 
         return (
           <React.Fragment>
             <ButtonTrigger {...getTriggerProps()}>Click me</ButtonTrigger>
-            <Popper {...getPopperProps()}>
+            <Box
+              {...popperProps}
+              hidden={!popperProps.visible}
+              zIndex={10}
+              p={2}
+              style={{
+                backgroundColor: 'var(--intergalactic-bg-primary-neutral, #FFF)',
+                border: '1px solid gray',
+              }}
+            >
               <ul {...getListProps()}>
-                <ListItem {...getItemProps()}>Option 1</ListItem>
-                <ListItem {...getItemProps()}>Option 2</ListItem>
-                <ListItem {...getItemProps()}>Option 3</ListItem>
-                <ListItem {...getItemProps()}>Option 4</ListItem>
-                <ListItem {...getItemProps()}>Option 5</ListItem>
+                <li {...getItemProps()}>Option 1</li>
+                <li {...getItemProps()}>Option 2</li>
+                <li {...getItemProps()}>Option 3</li>
+                <li {...getItemProps()}>Option 4</li>
+                <li {...getItemProps()}>Option 5</li>
               </ul>
-              <button type='button' onClick={() => visible(false)}>
+              <button type='button' onClick={() => handlers.visible(false)}>
                 Close me
               </button>
-              <button type='button' onClick={() => highlightedIndex(2)}>
+              <button type='button' onClick={() => handlers.highlightedIndex(2)}>
                 Highlight item 3
               </button>
-            </Popper>
+            </Box>
           </React.Fragment>
         );
       }}

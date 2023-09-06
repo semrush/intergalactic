@@ -5,7 +5,6 @@ import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
 import React from 'react';
-import Sticky from '@semcore/sticky';
 import ProgressBar from '@semcore/progress-bar';
 import Divider from '@semcore/divider';
 import Portal, { PortalProvider } from '@semcore/portal';
@@ -228,26 +227,6 @@ describe('DataTable', () => {
       }),
     ).toMatchImageSnapshot(task);
   });
-
-  // /** Currently has no difference from DataTable without Sticky */
-  // test.skip('Fixed header', async ({ task }) => {
-  //   const component = (
-  //     <div style={{ width: 800 }}>
-  //       <DataTable data={data}>
-  //         <Sticky zIndex={2} top={top}>
-  //           <DataTable.Head wMin={1000}>
-  //             <DataTable.Column name='keyword' children='Keyword' />
-  //             <DataTable.Column name='kd' children='KD,%' />
-  //             <DataTable.Column name='cpc' children='CPC' />
-  //             <DataTable.Column name='vol' children='Vol.' />
-  //           </DataTable.Head>
-  //         </Sticky>
-  //         <DataTable.Body />
-  //       </DataTable>
-  //     </div>
-  //   );
-  //   await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  // });
 
   /** Currently screenshot service unable to execute js and scroll area shadows needs to run js for containers measuring */
   test.skip('Fixed columns', async ({ task }) => {

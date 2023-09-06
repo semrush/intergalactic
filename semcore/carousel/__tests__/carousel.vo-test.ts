@@ -17,8 +17,10 @@ test('Users can interact with Carousel via VoiceOver', async ({
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.itemText()).toBe('list');
+  expect(await voiceOver.itemText()).toBe('Beauty of Nature image carousel');
   await voiceOver.interact();
+  await voiceOver.next();
+  expect(await voiceOver.lastSpokenPhrase()).toContain('list 3 items');
   await voiceOver.next();
   expect(await voiceOver.lastSpokenPhrase()).toContain('1 of 3');
   await voiceOver.next();

@@ -345,7 +345,7 @@ function Pie({
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
   }, [active, innerRadius, outerRadius, halfsize, Boolean(data)]);
 
-  if (!data) return;
+  if (!data) return null;
 
   dataHintsHandler.establishDataType('values-set');
   dataHintsHandler.describeValueEntity(dataKey, name);

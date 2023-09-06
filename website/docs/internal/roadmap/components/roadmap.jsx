@@ -1,71 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import Tabs from '@semcore/ui/tab-panel';
+import styles from './roadmap.module.css';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/en';
-import { css } from '@semcore/ui/core';
 import './roadmap-page.css';
-
-const styles = css`
-  STabPanelItem {
-    &:active,
-    &[active] {
-      color: var(--intergalactic-control-primary-brand);
-    }
-  }
-`;
-
-const LinkComponent = styled(Link)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
-
-const Oval = styled.span`
-  display: inline-block;
-  margin-right: var(--intergalactic-spacing-2x);
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  flex-shrink: 0;
-`;
-
-const Legenda = styled.ul`
-  display: flex;
-  padding: 0;
-  margin: 0 0 var(--intergalactic-spacing-4x) !important;
-  list-style: none;
-
-  li {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  li:first-child {
-    span {
-      background: var(--intergalactic-chart-palette-order-14);
-    }
-  }
-
-  li:nth-child(2) {
-    margin-left: var(--intergalactic-spacing-6x);
-    span {
-      background: var(--intergalactic-chart-palette-order-6);
-    }
-  }
-`;
-
-const Row_Column = styled.div`
-  grid-template-columns: ${({ size }) => `repeat(${size}, calc(100% / ${size}));`};
-`;
-
-const Row_Bar = styled.ul`
-  grid-template-columns: ${({ size }) => `repeat(${size}, 1fr);`};
-`;
 
 dayjs.locale('ru');
 // 1month = 2sprints
@@ -97,46 +37,6 @@ const year2023 = [
 
 const dateSprint = [...year2020, ...year2021, ...year2022, ...year2023];
 const components = {
-  'Q1 2021': [
-    { text: 'Wake up sprint ⏰', size: { kit: '1/3' } },
-    { text: 'Mobile first guides', size: { ui: '3/9' } },
-    { text: 'Mobile first components', size: { kit: '3/11' } },
-    { text: 'D3 Charts: Line, Bar', size: { kit: '3/7' } },
-    { text: 'GlobalNotice', size: { ui: '7/11', kit: '9/13' } },
-    { text: 'Slider', size: { ui: '9/13', kit: '11/13' } },
-    { text: 'Themes enchancement', size: { kit: '7/13' } },
-    { text: 'D3 Charts: Donut', size: { kit: '9/13' } },
-    { text: 'D3 Charts: Area', size: { kit: '11/13' } },
-  ],
-  'Q2 2021': [
-    { text: 'Slider', size: { kit: '1/3' } },
-    { text: 'D3 Charts: Donut', size: { kit: '1/5' } },
-    { text: 'InputNumber improvements', size: { kit: '5/7' } },
-    { text: 'PanelSummary', size: { ui: '5/9', kit: '11/15' } },
-    { text: 'D3 Charts: Venn', size: { kit: '7/11' } },
-    { text: 'Filter examples', size: { kit: '9/13' } },
-    { text: 'D3 Charts: ScatterPlot', size: { kit: '11/15' } },
-    { text: 'Themes & styles enchancement', size: { kit: '1/9' } },
-  ],
-  'Q3 2021': [
-    { text: 'Technical sprint', size: { kit: '1/3' } },
-    { text: 'Filter forms examples', size: { kit: '3/7' } },
-    { text: 'Product emails library', size: { kit: '3/13' } },
-    {
-      text: 'Data visualization section restyling',
-      size: { ui: '3/9', kit: '9/15' },
-    },
-    { text: 'Components restyling', size: { ui: '1/15' } },
-  ],
-  'Q4 2021': [
-    { text: 'Technical sprint', size: { kit: '1/5' } },
-    { text: 'Restyling', size: { ui: '1/4', kit: '4/9' } },
-    { text: 'Scatterplot chart', size: { ui: '3/7', kit: '7/11' } },
-    { text: 'Bubble chart', size: { ui: '5/7', kit: '7/11' } },
-    { text: 'Sandbox', size: { kit: '7/11' } },
-    { text: 'Mind Map chart', size: { ui: '9/13' } },
-    { text: 'Technical sprint', size: { kit: '11/13' } },
-  ],
   'Q1 2022': [
     { text: 'Scatterplot chart', size: { ui: '1/3', kit: '1/5' } },
     { text: 'New icons', size: { kit: '1/5' } },
@@ -174,6 +74,13 @@ const components = {
     { text: 'BottomSheet (draft name)', size: { ui: '9/15', kit: '11/15' } },
   ],
   'Q2 2023': [{ text: 'Enhancing accessibility of the components', size: { kit: '1/11' } }],
+  'Q3 2023': [
+    { text: 'Documentation fixes', size: { ui: '1/7' } },
+    { text: 'Periods comparison for DatePicker', size: { ui: '1/5', kit: '5/15' } },
+    { text: 'Website upgrades', size: { kit: '9/15', ui: '11/15' } },
+    { text: 'Technical improvements', size: { kit: '1/15' } },
+  ],
+  'Q4 2023': [{ text: 'Plans in development...', size: { ui: '1/15' } }],
 };
 
 function Gant(props) {
@@ -182,7 +89,10 @@ function Gant(props) {
 
   return (
     <div className='gantt'>
-      <Row_Column className='gantt__row gantt__row--months' size={lengthSprint}>
+      <div
+        className={`gantt__row gantt__row--months ${styles.row__column}`}
+        style={{ '--size': lengthSprint }}
+      >
         {sprint.map((date, index) => {
           if (index === lengthSprint) return null;
           return (
@@ -191,8 +101,11 @@ function Gant(props) {
               .format('D MMM')}`}</span>
           );
         })}
-      </Row_Column>
-      <Row_Column className='gantt__row gantt__row--lines' size={lengthSprint}>
+      </div>
+      <div
+        className={`gantt__row gantt__row--lines ${styles.row__column}`}
+        style={{ '--size': lengthSprint }}
+      >
         {sprint.map((date, index) => {
           const currentDate = dayjs();
           if (index === lengthSprint) return null;
@@ -201,11 +114,15 @@ function Gant(props) {
           }
           return <span key={date} />;
         })}
-      </Row_Column>
+      </div>
 
       {/* rome-ignore lint/style/useDefaultParameterLast: */}
       {components.map((component = {}, index) => (
-        <Row_Bar className='gantt__row-bars' size={lengthSprint * 2} key={index}>
+        <div
+          className={`gantt__row-bars ${styles.row__bar}`}
+          style={{ '--size': lengthSprint * 2 }}
+          key={index}
+        >
           {Object.keys(component.size).map((team, index) => (
             <li
               key={index}
@@ -215,71 +132,67 @@ function Gant(props) {
               className={`gantt__row-bars__${team}`}
               title={component.text}
             >
-              {component.name && <LinkComponent to={`/components/${component.name}`} />}
+              {component.name && (
+                <Link className={styles.link} to={`/components/${component.name}`} />
+              )}
               {component.text}
             </li>
           ))}
-        </Row_Bar>
+        </div>
       ))}
     </div>
   );
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(9);
+  const [value, setValue] = useState(6);
   let TabContent = null;
 
   switch (value) {
     case 0:
-      TabContent = <Gant sprint={dateSprint.slice(26, 33)} components={components['Q1 2021']} />;
-      break;
-    case 1:
-      TabContent = <Gant sprint={dateSprint.slice(32, 39)} components={components['Q2 2021']} />;
-      break;
-    case 2:
-      TabContent = <Gant sprint={dateSprint.slice(38, 47)} components={components['Q3 2021']} />;
-      break;
-    case 3:
-      TabContent = <Gant sprint={dateSprint.slice(46, 53)} components={components['Q4 2021']} />;
-      break;
-    case 4:
       TabContent = <Gant sprint={dateSprint.slice(53, 61)} components={components['Q1 2022']} />;
       break;
-    case 5:
+    case 1:
       TabContent = <Gant sprint={dateSprint.slice(60, 67)} components={components['Q2 2022']} />;
       break;
-    case 6:
+    case 2:
       TabContent = <Gant sprint={dateSprint.slice(66, 73)} components={components['Q3 2022']} />;
       break;
-    case 7:
+    case 3:
       TabContent = <Gant sprint={dateSprint.slice(72, 80)} components={components['Q4 2022']} />;
       break;
-    case 8:
+    case 4:
       TabContent = <Gant sprint={dateSprint.slice(80, 87)} components={components['Q1 2023']} />;
       break;
-    case 9:
+    case 5:
       TabContent = <Gant sprint={dateSprint.slice(86, 93)} components={components['Q2 2023']} />;
+      break;
+    case 6:
+      TabContent = <Gant sprint={dateSprint.slice(92, 100)} components={components['Q3 2023']} />;
+      break;
+    case 7:
+      TabContent = <Gant sprint={dateSprint.slice(99, 107)} components={components['Q4 2023']} />;
       break;
   }
   return (
     <>
-      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} styles={styles} className='tabs'>
+      <Tabs value={value} onChange={(v) => setValue(v)} mb={5} className='tabs'>
         {Object.keys(components).map((nameQ, i) => (
           <Tabs.Item key={nameQ} value={i}>
             {nameQ}
           </Tabs.Item>
         ))}
       </Tabs>
-      <Legenda>
+      <ul className={styles.legend}>
         <li>
-          <Oval />
+          <span className={styles.oval} />
           UX/UI
         </li>
         <li>
-          <Oval />
+          <span className={styles.oval} />
           Development
         </li>
-      </Legenda>
+      </ul>
       {TabContent}
     </>
   );
