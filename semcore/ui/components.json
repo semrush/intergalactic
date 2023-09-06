@@ -60,6 +60,7 @@
     "@semcore/slider",
     "@semcore/spin",
     "@semcore/spin-container",
+    "@semcore/sticky",
     "@semcore/switch",
     "@semcore/tab-line",
     "@semcore/tab-panel",
