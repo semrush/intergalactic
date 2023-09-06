@@ -1,27 +1,19 @@
 import React, { useRef, useState } from 'react';
 import { findDOMNode } from 'react-dom';
-import styled from 'styled-components';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
 import { List } from 'react-virtualized';
 
-const Block = styled.div`
-  display: inline-flex;
-  width: 120px;
-  height: 120px;
-  border: 1px solid black;
-`;
-
 const list = [...new Array(6)];
 const renderRow = ({ key, index, style }) => {
   return (
-    <Block key={key} style={style}>
+    <Box key={key} inline m={2} w={120} h={120} style={{ border: '1px solid black', ...style }}>
       <Text bold size={200} m='auto'>
         {index + 1}
       </Text>
-    </Block>
+    </Box>
   );
 };
 

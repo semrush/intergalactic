@@ -32,7 +32,6 @@
     "@semcore/skeleton": "*",
     "@semcore/spin": "*",
     "@semcore/spin-container": "*",
-    "@semcore/sticky": "*",
     "@semcore/tooltip": "*",
     "@types/node": "^18.16.15",
     "csstype": "3.0.8"

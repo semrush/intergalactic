@@ -6,8 +6,6 @@
 
 > This component is part of the Intergalactic design system
 
-### 📖 [Component documentation](https://developer.semrush.com/intergalactic/components/sticky/)
-
 ### 🏠 [Design system](https://developer.semrush.com/intergalactic/)
 
 ## Install

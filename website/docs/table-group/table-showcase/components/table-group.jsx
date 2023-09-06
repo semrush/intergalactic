@@ -1,6 +1,6 @@
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
+import ComponentCard from '@docs/../src/components/ComponentCard';
+import { getImageName } from '@docs/../src/pages/Home';
 
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
@@ -112,22 +112,31 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: 12px 12px;
-  width: 100%;
-  margin: 0;
-  margin-top: 12px;
-  padding: 0;
+const styles = `
+  .table-group-grid {
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-columns: repeat(auto-fill, 176px);
+    grid-gap: 12px 12px;
+    width: 100%;
+    margin: 0;
+    margin-top: 12px;
+    padding: 0;
+  }
 `;
 
 export default function (props) {
+  React.useEffect(() => {
+    const styleSheet = document.createElement('style');
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    return () => styleSheet.remove();
+  }, []);
+
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <div className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -138,6 +147,6 @@ export default function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </div>
   );
 }

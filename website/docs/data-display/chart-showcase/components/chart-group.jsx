@@ -1,6 +1,7 @@
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
+import ComponentCard from '@docs/../src/components/ComponentCard';
+import { getImageName } from '@docs/../src/pages/Home';
+import { Box } from '@semcore/flex-box';
 
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
@@ -151,22 +152,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 export default function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -177,6 +178,6 @@ export default function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }

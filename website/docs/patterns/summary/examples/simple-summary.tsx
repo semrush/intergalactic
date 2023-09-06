@@ -2,27 +2,8 @@ import React from 'react';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Tooltip from '@semcore/ui/tooltip';
-import styled from 'styled-components';
 import '@semcore/ui/utils/style/var.css';
 import { AnimatedNumber } from '@semcore/ui/counter/src';
-
-const BoxBlock = styled(Box)`
-  overflow: hidden;
-  border-left: 1px solid var(--gray-200);
-  padding-left: 24px;
-  &:first-child {
-    border-left: none !important;
-    padding-left: 0 !important;
-  }
-  &:last-child {
-    border-right: none !important;
-  }
-`;
-const Title = styled(Text)`
-  &:hover {
-    cursor: pointer;
-  }
-`;
 
 const container = document.getElementsByClassName('container');
 function detectWrap(node) {
@@ -53,11 +34,11 @@ document.addEventListener('resize', (e) => {
 const Demo = () => {
   return (
     <Flex flexWrap className='container'>
-      <BoxBlock w={160} mb={4}>
+      <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
         <Tooltip title='Keyword' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Keyword
-          </Title>
+          </Text>
         </Tooltip>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
@@ -78,12 +59,12 @@ const Demo = () => {
             no change
           </Text>
         </Flex>
-      </BoxBlock>
-      <BoxBlock w={160} mb={4}>
+      </Box>
+      <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
         <Tooltip title='Traffic' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic
-          </Title>
+          </Text>
         </Tooltip>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
@@ -108,12 +89,12 @@ const Demo = () => {
             no change
           </Text>
         </Flex>
-      </BoxBlock>
-      <BoxBlock w={160} mb={4}>
+      </Box>
+      <Box w={160} mb={4} style={{ borderRight: '1px solid #c4c7cf' }} mr={5}>
         <Tooltip title='Traffic cost' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Traffic cost
-          </Title>
+          </Text>
         </Tooltip>
         <Text size={100} color='gray-500' tag='p'>
           last 30 days
@@ -134,12 +115,12 @@ const Demo = () => {
             ↑+12
           </Text>
         </Flex>
-      </BoxBlock>
-      <BoxBlock w={160} mb={4}>
+      </Box>
+      <Box w={160} mb={4}>
         <Tooltip title='Non-branded traffic' wMax='100%'>
-          <Title size={200} tag='p' noWrap tabIndex={0}>
+          <Text size={200} tag='p' noWrap tabIndex={0}>
             Non-branded traffic
-          </Title>
+          </Text>
         </Tooltip>
         <Text size={100} color='gray-500' tag='p'>
           all time
@@ -162,7 +143,7 @@ const Demo = () => {
             ↓-12
           </Text>
         </Flex>
-      </BoxBlock>
+      </Box>
     </Flex>
   );
 };
