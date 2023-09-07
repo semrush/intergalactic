@@ -17,7 +17,7 @@ RUN pnpm --filter core run build
 RUN pnpm --filter utils run build
 RUN pnpm build:icons
 RUN pnpm build:illustration
-RUN NODE_OPTIONS=--max-old-space-size=32768 pnpm --filter intergalactic-documentation run docs:build
+RUN NODE_OPTIONS=--max-old-space-size=32768 pnpm --filter intergalactic-documentation run build
 
 FROM nginx:alpine
 

@@ -7,14 +7,11 @@
   "type": "module",
   "scripts": {
     "start": "pnpm dev",
-    "dev": "pnpm build:ensure && WATCH_TYPES=true tsm --require=../.ci/tsm-filter-warnings.js ./builder/dev-server.ts",
-    "build": "PUBLIC_PATH=/intergalactic/ NODE_ENV=production tsm --require=../.ci/tsm-filter-warnings.js ./builder/ssr.ts --reset-cache",
-    "build:ensure": "tsm --require=../.ci/tsm-filter-warnings.js ./builder/ensure-pre-built.ts",
     "upload-search-index": "tsm --require=../.ci/tsm-filter-warnings.js tools/searchIndexUpload.ts",
     "update-illustration": "tsm --require=../.ci/tsm-filter-warnings.js tools/figmaIllustration.ts",
-    "docs:dev": "vitepress dev docs2",
-    "docs:build": "vitepress build docs2",
-    "docs:preview": "vitepress preview docs2"
+    "dev": "vitepress dev docs2",
+    "build": "vitepress build docs2",
+    "preview": "vitepress preview docs2"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.1",

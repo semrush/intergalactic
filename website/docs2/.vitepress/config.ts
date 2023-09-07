@@ -13,6 +13,7 @@ import { unpluginStatic } from './unplugins/unplugin-static';
 import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginCssModules } from './unplugins/unplugin-css-modules';
 import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
+import { renderLoomVideo } from './renderLoomVideo';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -37,7 +38,12 @@ export default defineConfig({
             return renderComponentChangelog(tokens, idx);
           },
         })
-        .use(tableCaptions);
+        .use(tableCaptions)
+        .use(container, 'loom_video', {
+          render(tokens, idx) {
+            return renderLoomVideo(tokens, idx);
+          },
+        })
     },
   },
 

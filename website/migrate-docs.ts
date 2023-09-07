@@ -994,6 +994,10 @@ await Promise.all(
       if (lines[i].startsWith('@table-caption ')) {
         lines[i] = lines[i].replace('@table-caption ', 'Table: ');
       }
+      if (lines[i].startsWith('@embedded_video ')) {
+        const url = lines[i].split(' ')[1];
+        lines[i] = `::: loom_video ${url} :::`;
+      }
       if (lines[i].startsWith('@import ')) {
         const componentName = lines[i].split(' ')[1];
         const examplePath = resolvePath(
