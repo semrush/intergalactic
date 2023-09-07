@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.15.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v15.16.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/accordion/examples/base.tsx).**
@@ -29,11 +29,10 @@ Guidepup v0.13.1, MacOS Monterey 12._
 21. Screen reader goes to the previous element.
 22. Screen reader says "Section 1 expanded button".
 23. Screen reader triggers element default action.
-24. Screen reader says "Section 1 collapsed button".
-25. Screen reader goes to the next element.
-26. Screen reader says "Section 2 collapsed button".
-27. Screen reader goes to the next element.
-28. Screen reader says "Section 3 dimmed collapsed button".
-29. Screen reader triggers element default action.
-30. Screen reader says "dimmed".
+24. Screen reader goes to the next element.
+25. Screen reader says "Section 2 collapsed button".
+26. Screen reader goes to the next element.
+27. Screen reader says "Section 3 dimmed collapsed button".
+28. Screen reader triggers element default action.
+29. Screen reader says "dimmed".
 ```
