@@ -22,6 +22,20 @@ The list below describes roles and attributes that component already has.
 |            | `tabindex="0"` | `div`   | Includes the element in the `Tab` sequence.                                                            |
 | `list`     |                |         | The ARIA `list` role can be used to identify a list of items. It is used to identify a list container. |
 | `listitem` |                |         | The ARIA `listitem` role can be used to identify an item inside a list of items.                       |
+|            | `aria-current="active"` | `div`   | `aria-current` state on an element indicates that this element represents the current item within a container or set of related elements. |
+|            | `aria-label="Previous"`            | `button`   | Defines a string value that labels button that opens previous list item. It is a required for buttons without text content.  |
+|            | `aria-label="Next"`            | `button`   | Defines a string value that labels button that opens next list item. It is a required for buttons without text content.  |
+
+@## Considerations for developers and designers
+
+### Roles and attributes
+
+The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+| Attribute         | Element | Usage                                                                                                                                                                 |
+| ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `aria-label="Previous"`            | `button`   | Defines a string value that labels button that opens previous list item. It is a required for buttons without text content. You can change the `aria-label` for this button to specify the list item.  |
+| `aria-label="Next"`            | `button`   | Defines a string value that labels button that opens next list item. It is a required for buttons without text content. You can change the `aria-label` for this button to specify the list item.  |
 
 @## Resources
 
