@@ -165,3 +165,24 @@
   color: var(--vp-c-text-2);
   cursor: pointer;
 }
+
+
+.vp-doc table caption:first-child {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.VPDocOutlineDropdown {
+  display: none !important;
+}
+
+.vp-doc h2 {
+  border-top: none;
+}

@@ -18,7 +18,7 @@ import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
 export default defineConfig({
   title: 'Intergalactic',
   description: 'Design system',
-  ignoreDeadLinks: true,
+  // ignoreDeadLinks: true,
   markdown: {
     config(md) {
       md
