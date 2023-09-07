@@ -42,8 +42,8 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is required props for buttons without text content.                                                     |
-| `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content. |
+| `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is a required for buttons without text content.                                                     |
+| `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is a required for buttons without text content. |
 
 @## Resources
 
