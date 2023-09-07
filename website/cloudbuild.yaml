@@ -24,17 +24,17 @@ steps:
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
       - --labels=gcb-trigger-id=$_TRIGGER_ID
-  - id: 'Update search'
-    name: node:16
-    entrypoint: 'bash'
-    args:
-      - -c
-      - |
-        npm install --global pnpm@7
-        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install && pnpm run upload-search-index
-    dir: website
-    env:
-      - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
+  # - id: 'Update search'
+  #   name: node:16
+  #   entrypoint: 'bash'
+  #   args:
+  #     - -c
+  #     - |
+  #       npm install --global pnpm@7
+  #       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install && pnpm run upload-search-index
+  #   dir: website
+  #   env:
+  #     - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
 images:
   - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
 timeout: 3600s
