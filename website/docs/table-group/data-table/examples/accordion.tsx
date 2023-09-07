@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import DataTable from '@semcore/ui/data-table';
 import Accordion from '@semcore/ui/accordion';
@@ -18,7 +18,7 @@ const RowAccordion = React.forwardRef(function (
 });
 
 export default () => {
-  const [exapnded, setExapnded] = useState<number[]>([]);
+  const [exapnded, setExapnded] = React.useState<number[]>([]);
 
   return (
     /* [1] Wrapping the table in the Accordion control component; */
@@ -66,7 +66,7 @@ export default () => {
 };
 
 const ChartExample = () => {
-  const [[width, height], setSize] = useState([0, 0]);
+  const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
   const dataChart = Array(20)
     .fill({})

@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react';
+import React from 'react';
 import canUseDOM from '../canUseDOM';
 import { useUID } from '../uniqueID';
 
@@ -36,10 +36,10 @@ const lockedBodyStyles = {
   boxSizing: null as string | null,
 };
 export default function usePreventScroll(visible = true, disabled = false) {
-  const scrollbarWidth = useMemo(getScrollbarWidth, [getScrollbarWidth]);
+  const scrollbarWidth = React.useMemo(getScrollbarWidth, [getScrollbarWidth]);
   const id = useUID('scroll-preventer-');
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM() || !visible) return;
     scrollPreventers.add(id);
@@ -63,7 +63,7 @@ export default function usePreventScroll(visible = true, disabled = false) {
     document.body.style.boxSizing = 'border-box';
   }, [visible, id, disabled]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (disabled) return;
     if (!canUseDOM() || !visible) return;
     return () => {

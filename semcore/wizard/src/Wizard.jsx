@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Modal from '@semcore/modal';
@@ -91,14 +91,14 @@ function Stepper(props) {
   const SStepDescription = 'span';
   const SCompleted = CheckM;
 
-  const handlerClick = useCallback(
+  const handlerClick = React.useCallback(
     (e) => {
       if (onActive) onActive(step, e);
     },
     [step, onActive],
   );
 
-  const handlerKeyDown = useCallback(
+  const handlerKeyDown = React.useCallback(
     (e) => {
       if (onActive && e.key === 'Enter') {
         onActive(step, e);

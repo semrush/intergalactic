@@ -319,10 +319,10 @@ function Pie({
   halfsize,
   ...other
 }) {
-  const [isMount, setIsMount] = useState(false);
-  const pieRef = useRef(null);
+  const [isMount, setIsMount] = React.useState(false);
+  const pieRef = React.useRef(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
 
@@ -340,7 +340,7 @@ function Pie({
       });
     }
   }, [active, Boolean(data)]);
-  useEffect(() => {
+  React.useEffect(() => {
     if (!pieRef.current) return;
     pieRef.current.dataset['currentRadius'] = (active ? d3ArcOut : d3Arc).outerRadius()();
   }, [active, innerRadius, outerRadius, halfsize, Boolean(data)]);

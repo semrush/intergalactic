@@ -19,7 +19,7 @@ The component is child element rendering in a DOM node that exists outside of th
 Or
 
 ```javascript
-const $ref = useRef(null)
+const $ref = React.useRef(null)
 <Modal ref={$ref}>
   <PortalProvider value={$ref}>
     <Select/>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
 
 const options = Array(20)
@@ -16,8 +16,8 @@ const Option = ({ value, title }) => (
 );
 
 export default () => {
-  const [selected, setSelected] = useState([]);
-  const [prevSelected, setPrevSelected] = useState([]);
+  const [selected, setSelected] = React.useState([]);
+  const [prevSelected, setPrevSelected] = React.useState([]);
 
   const handleVisibleChange = (value) => {
     if (value) return;

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 import { Properties, Property } from 'csstype';
@@ -247,7 +247,7 @@ export default function useBox<T extends BoxProps>(
     ...other
   } = props as any;
 
-  const indentStyles: Properties = useMemo(() => {
+  const indentStyles: Properties = React.useMemo(() => {
     return calculateIndentStyles(props, scaleIndent);
   }, [
     scaleIndent,

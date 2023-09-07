@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useMemo } from 'react';
+import React from 'react';
 import { createPortal } from 'react-dom';
 import createComponent, {
   IFunctionProps,
@@ -26,15 +26,15 @@ const PortalContext = register.get(
 
 function Portal(props: IFunctionProps<IPortalProps>) {
   const { Children, disablePortal, ignorePortalsStacking } = props;
-  const container = useContext(PortalContext);
-  const initialMountNode = useMemo(() => {
+  const container = React.useContext(PortalContext);
+  const initialMountNode = React.useMemo(() => {
     if (!ignorePortalsStacking) return getNodeByRef(container);
     if (canUseDOM()) return document.body;
     return null;
   }, [ignorePortalsStacking, container]);
-  const [mountNode, setMountNode] = useState(initialMountNode);
+  const [mountNode, setMountNode] = React.useState(initialMountNode);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (disablePortal) return;
     if (ignorePortalsStacking) {
       setMountNode(canUseDOM() ? document.body : null);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import rafTrottle from '@semcore/utils/lib/rafTrottle';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
@@ -43,9 +43,9 @@ class MediaList {
 
 function createBreakpoints(media) {
   function Breakpoints({ children }) {
-    const [index, setIndex] = useState(Breakpoints.mediaList.matches());
+    const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());
 
-    useEffect(
+    React.useEffect(
       () => Breakpoints.mediaList.addListener(() => setIndex(Breakpoints.mediaList.matches())),
       [],
     );

@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const SideBarContext = React.createContext({});
 
 const { Provider } = SideBarContext;
 
 const SidebarWrapper = (props) => {
-  const [typing, setTyping] = useState(null);
-  const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [loadingError, setLoadingError] = useState(null);
-  const [, setHistory] = useState([]);
+  const [typing, setTyping] = React.useState(null);
+  const [visible, setVisible] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+  const [loadingError, setLoadingError] = React.useState(null);
+  const [, setHistory] = React.useState([]);
 
   const inspectTyping = React.useCallback(
     (typing) => async () => {

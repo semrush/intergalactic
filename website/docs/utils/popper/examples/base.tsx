@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Popper from '@semcore/ui/popper';
 import { Flex } from '@semcore/ui/flex-box';
 
 const style = { background: '#FFF', border: '1px solid black', padding: '10px' };
 
 export default () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   const toggleVisible = () => {
     setVisible(!visible);

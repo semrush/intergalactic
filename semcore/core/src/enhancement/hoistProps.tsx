@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React from 'react';
 // @ts-ignore
 import assignProps from '@semcore/utils/lib/assignProps';
 // @ts-ignore
@@ -31,7 +31,7 @@ function Enhancement(childComponents: any, Context: any) {
     init: function (this: any, props: any, WrapperComponent: any, isFunction: boolean) {
       if (isFunction) {
         // TODO: might breake rules of hooks (by lsroman)
-        this[HOIST_SELF] = useState({});
+        this[HOIST_SELF] = React.useState({});
       } else {
         this[HOIST_SELF] = [
           {},
@@ -60,7 +60,7 @@ function Enhancement(childComponents: any, Context: any) {
     },
     wrapperProps: function (props: any, WrapperComponent: any) {
       if (WrapperComponent.hoistProps?.length) {
-        const context: any = useContext(Context);
+        const context: any = React.useContext(Context);
         const renameProps: any = WrapperComponent.hoistProps.reduce((acc: any, propName: any) => {
           const [name, rename] = propName.split(':');
           acc[name] = rename || name;

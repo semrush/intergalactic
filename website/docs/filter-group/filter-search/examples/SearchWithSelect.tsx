@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import CloseM from '@semcore/ui/icon/Close/m';
 import Search from '@semcore/ui/icon/Search/m';
@@ -11,21 +11,21 @@ import { Flex, Box } from '@semcore/ui/flex-box';
 const selectOptions = ['Option 1', 'Option 2'];
 
 const Demo = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = React.useState('');
 
   const options = selectOptions.map((option) => ({
     value: option,
     children: option,
   }));
 
-  const handleChange = useCallback(
+  const handleChange = React.useCallback(
     (v) => {
       setValue(v);
     },
     [value],
   );
 
-  const handleClick = useCallback(() => {
+  const handleClick = React.useCallback(() => {
     setValue('');
   }, ['']);
 

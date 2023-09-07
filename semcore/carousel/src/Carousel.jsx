@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import { Box } from '@semcore/flex-box';
@@ -379,7 +379,7 @@ const Item = (props) => {
   const { styles, toggleItem, index, uid, current } = props;
   const SItem = Root;
   const refItem = React.createRef();
-  useEffect(() => {
+  React.useEffect(() => {
     // add item
     toggleItem({ node: refItem.current });
     return () => {

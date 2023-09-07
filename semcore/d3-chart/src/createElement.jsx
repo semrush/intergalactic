@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 import createComponent, { createBaseComponent, CONTEXT_COMPONENT } from '@semcore/core';
 import assignProps from '@semcore/utils/lib/assignProps';
@@ -107,7 +107,7 @@ function elementEnhancement() {
 
 function WrapComponent(Element) {
   function ElementWithContext(props, ref) {
-    const { $rootProps } = useContext(Plot[CONTEXT_COMPONENT]);
+    const { $rootProps } = React.useContext(Plot[CONTEXT_COMPONENT]);
     return <Element ref={ref} $rootProps={$rootProps} {...props} />;
   }
 

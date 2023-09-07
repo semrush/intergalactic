@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import createComponent, { Root, Component, register } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import isNode from '@semcore/utils/lib/isNode';
@@ -98,7 +98,7 @@ class Detect extends Component {
 }
 
 function useNeighborLocationDetect(index) {
-  const { controlsLengthRef } = useContext(Context);
+  const { controlsLengthRef } = React.useContext(Context);
   if (controlsLengthRef.current === undefined) return false;
   return calculateNeighborLocation(controlsLengthRef.current, index);
 }

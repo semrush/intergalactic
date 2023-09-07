@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Portal from '@semcore/ui/portal';
 import NoticeGlobal from '@semcore/ui/notice-global';
 import { Text } from '@semcore/ui/typography';
@@ -6,7 +6,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 
 export default () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>

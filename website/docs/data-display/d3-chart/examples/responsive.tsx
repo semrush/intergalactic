@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { Line, minMax, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
 export default () => {
-  const [[width, height], setSize] = useState([0, 0]);
+  const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])

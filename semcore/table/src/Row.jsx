@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Context from './context';
@@ -17,7 +17,7 @@ RowInner.displayName = 'Row';
 const RowCore = createBaseComponent(RowInner);
 
 const Row = React.forwardRef((props, ref) => {
-  const contextProps = useContext(Context);
+  const contextProps = React.useContext(Context);
   const styles = sstyled.merge(contextProps.styles, props.styles);
   return <RowCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });

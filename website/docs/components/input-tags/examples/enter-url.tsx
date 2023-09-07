@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputTags from '@semcore/ui/input-tags';
 import Select from '@semcore/ui/select';
 
@@ -7,8 +7,8 @@ const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 const defaultTags = ['bob@vk.com', 'wolf@instagram.dot', 'fekla@fk.com', 'tuz@twitter.net'];
 
 const Demo = () => {
-  const [tags, setTags] = useState(defaultTags);
-  const [value, setValue] = useState('');
+  const [tags, setTags] = React.useState(defaultTags);
+  const [value, setValue] = React.useState('');
 
   const changeState = (tags, value) => {
     if (tags !== undefined) {

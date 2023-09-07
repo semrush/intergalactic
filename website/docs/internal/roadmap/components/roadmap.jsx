@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Tabs from '@semcore/ui/tab-panel';
 import styles from './roadmap.module.css';
@@ -145,7 +145,7 @@ function Gant(props) {
 }
 
 function Roadmap() {
-  const [value, setValue] = useState(6);
+  const [value, setValue] = React.useState(6);
   let TabContent = null;
 
   switch (value) {

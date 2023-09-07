@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import postman from '../static/illustration/email-pic.svg';
 import GitHubL from '@semcore/icon/color/GitHub/l';
@@ -9,9 +9,9 @@ import { getThemePreference } from '../utils/theme';
 import styles from './ContactUs.module.css';
 
 const Contacts = () => {
-  const [theme, setTheme] = useState('');
+  const [theme, setTheme] = React.useState('');
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const currentTheme = getThemePreference();
     setTheme(currentTheme);
   }, [getThemePreference()]);

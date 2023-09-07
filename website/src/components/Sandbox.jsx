@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Tooltip from '@semcore/tooltip';
 import { compressToBase64 as lzCompressToBase64 } from 'lz-string';
 
@@ -66,7 +66,7 @@ ${ExampleRawComponent}`,
     },
   });
 
-  const openHandler = useCallback(() => {
+  const openHandler = React.useCallback(() => {
     onClick();
     if (window.dataLayer) {
       dataLayer.push({

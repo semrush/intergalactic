@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Badge from '@semcore/ui/badge';
 import Tag from '@semcore/ui/tag';
@@ -6,7 +6,7 @@ import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('heh');
+  const [value, setValue] = React.useState('heh');
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Wizard from '@semcore/ui/wizard';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
@@ -24,9 +24,9 @@ const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>)
 const steps = [{ title: 'Personal' }, { title: 'Keywords' }, { title: 'Import source' }];
 
 export default function () {
-  const [step, setStep] = useState(1);
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState('');
+  const [step, setStep] = React.useState(1);
+  const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState('');
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 

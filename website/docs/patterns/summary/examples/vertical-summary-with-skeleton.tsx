@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Tooltip from '@semcore/ui/tooltip';
@@ -7,8 +7,8 @@ import '@semcore/ui/utils/style/var.css';
 import { AnimatedNumber } from '@semcore/ui/counter/src';
 
 const Demo = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
     const timer = setInterval(() => {
       setLoading(!loading);
     }, 2000);

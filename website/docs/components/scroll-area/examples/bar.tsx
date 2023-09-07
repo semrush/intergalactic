@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
@@ -17,7 +17,7 @@ function getRandomColor() {
 }
 
 const Demo = () => {
-  const containerRef = useRef();
+  const containerRef = React.useRef();
   return (
     <Flex>
       <Box style={{ position: 'relative' }}>

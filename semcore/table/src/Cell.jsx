@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Text } from '@semcore/typography';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import SortAsc from '@semcore/icon/SortAsc/m';
@@ -47,7 +47,7 @@ CellRowInner.displayName = 'CellRow';
 const CellRowCore = createBaseComponent(CellRowInner);
 
 const CellRow = React.forwardRef((props, ref) => {
-  const contextProps = useContext(Context);
+  const contextProps = React.useContext(Context);
   const styles = sstyled.merge(contextProps.styles, props.styles);
   return <CellRowCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });
@@ -80,7 +80,7 @@ CellHeadInner.displayName = 'CellHead';
 const CellHeadCore = createBaseComponent(CellHeadInner);
 
 const CellHead = React.forwardRef((props, ref) => {
-  const contextProps = useContext(Context);
+  const contextProps = React.useContext(Context);
   const styles = sstyled.merge(contextProps.styles, props.styles);
   return <CellHeadCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });

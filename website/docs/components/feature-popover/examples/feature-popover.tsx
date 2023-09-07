@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import FeaturePopover from '@semcore/ui/feature-popover';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import { Flex, Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible) => () => setVisible(visible);
 
   return (

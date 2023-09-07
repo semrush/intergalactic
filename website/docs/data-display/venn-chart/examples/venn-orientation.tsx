@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { colors, Plot, Venn } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
@@ -11,8 +11,8 @@ const orders = [
 const orientations = [Math.PI / 2, Math.PI];
 
 export default () => {
-  const [orientation, setOrientation] = useState(0);
-  const [order, setOrder] = useState(0);
+  const [orientation, setOrientation] = React.useState(0);
+  const [order, setOrder] = React.useState(0);
 
   return (
     <Flex alignItems='center' direction='column'>
