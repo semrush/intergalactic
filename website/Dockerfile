@@ -10,6 +10,7 @@ WORKDIR /app
 
 COPY ./ ./
 
+RUN apk add git
 RUN npm install --global pnpm@7
 RUN pnpm install --frozen-lockfile --ignore-scripts 
 RUN pnpm build:icons
