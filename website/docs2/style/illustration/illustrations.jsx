@@ -1,5 +1,5 @@
 import React from 'react';
-import Components from './index';
+import Components from './illustrations-view';
 import dataIllustrations from './illustrations-list';
 
 import icons from '@illustrations';

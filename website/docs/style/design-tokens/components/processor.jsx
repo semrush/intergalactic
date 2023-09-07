@@ -4,7 +4,6 @@ import Button from '@semcore/ui/button';
 import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import cx from 'classnames';
-import Code from '../../../../src/components/Code';
 import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
 import styles from './processor.module.css';
 import Copy from '@components/Copy';
@@ -161,9 +160,7 @@ const DesignTokensProcessor = () => {
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <Code lang='css' className={styles.codeBlock}>
-              {css}
-            </Code>
+            <code className={styles.codeBlock}>{css}</code>
           </div>
           <div className={styles.processedBlock}>
             <h4>
@@ -173,9 +170,9 @@ const DesignTokensProcessor = () => {
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <Code lang='css' className={styles.codeBlock}>
+            <code lang='css' className={styles.codeBlock}>
               {json}
-            </Code>
+            </code>
           </div>
         </div>
       )}

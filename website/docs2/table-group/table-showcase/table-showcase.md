@@ -24,7 +24,6 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-
 const group = {
   accordion: {
     title: 'Accordion',
@@ -186,7 +185,6 @@ const getImageName = (title) => {
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
 
-
 const group = {
   accordion: {
     title: 'Accordion',
@@ -347,7 +345,6 @@ const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
-
 
 const group = {
   accordion: {

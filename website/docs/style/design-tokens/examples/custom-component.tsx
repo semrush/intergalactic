@@ -30,10 +30,12 @@ const CustomComponent = () => {
   };
 
   React.useEffect(() => {
-    const style = document.createElement('style');
-    style.innerHTML = styles;
-    document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    const stylesheet = document.createElement('style');
+    stylesheet.innerHTML = styles;
+    document.head.appendChild(stylesheet);
+    return () => {
+      document.head.removeChild(stylesheet);
+    };
   }, []);
 
   return (
