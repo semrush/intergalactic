@@ -64,6 +64,36 @@
     max-width: 480px;
     max-height: 480px;
   }
+
+  .VPHome .image-container {
+    perspective: 500px;
+  }
+
+  .VPHome .VPImage {
+    animation: image_slight_rotating 30s ease-in-out infinite;
+  }
+}
+
+@keyframes image_slight_rotating {
+  0% {
+    transform: rotate3d(0, -1, 0, 2deg) translate(-50%, -50%);
+  }
+
+  25% {
+    transform: rotate3d(1, -1, 1, -2deg) translate(-50%, -50%);
+  }
+
+  50% {
+    transform: rotate3d(0, -1, 1, 2deg) translate(-50%, -50%);
+  }
+
+  75% {
+    transform: rotate3d(-1, 0, 1, -2deg) translate(-50%, -50%);
+  }
+
+  100% {
+    transform: rotate3d(0, -1, 0, 2deg) translate(-50%, -50%);
+  }
 }
 
 

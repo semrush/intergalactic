@@ -16,6 +16,7 @@
   border-radius: 8px;
   padding-left: 4px;
   padding-right: 4px;
+  line-height: normal;
 }
 
 .dark .playground-runtime {
@@ -67,6 +68,14 @@
 .code-wrapper:hover .open-codesandbox,
 .code-wrapper:hover .copy.copy.copy.copy {
   opacity: 1;
+}
+
+.code-wrapper .copy.copy.copy.copy {
+  border-radius: 4px;
+}
+
+.code-wrapper .copy.copy.copy.copy.copied:before {
+  display: none;
 }
 
 .documentation-sandbox {
