@@ -78,7 +78,7 @@ const Demo = () => {
 
 ## Numeric slider
 
-The Slider can be used in conjunction with the [InputNumber](/components/input-number/) component. Additionally, if you input a value that is either too large or too small into the InputNumber, an error will be displayed.
+The Slider can be used in conjunction with the [InputNumber](/components/input-number/input-number) component. Additionally, if you input a value that is either too large or too small into the InputNumber, an error will be displayed.
 
 ::: sandbox
 

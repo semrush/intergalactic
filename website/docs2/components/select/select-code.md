@@ -5,10 +5,10 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 ---
 
 ::: tip
-If you need to customize the dropdown menu's behavior, please refer to the [@semcore/ui/popper](/utils/popper/) documentation.
+If you need to customize the dropdown menu's behavior, please refer to the [@semcore/ui/popper](/utils/popper/popper) documentation.
 :::
 
-The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu) with the additional functionality of item selection.
+The Select component serves as a wrapper over [@semcore/ui/dropdown-menu](/components/dropdown-menu/dropdown-menu) with the additional functionality of item selection.
 
 ## Basic usage
 
@@ -162,18 +162,18 @@ const Demo = () => {
 
 ## DropdownMenu customization
 
-Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu), the dropdown menu can be implemented in two ways:
+Similar to [@semcore/ui/dropdown-menu](/components/dropdown-menu/dropdown-menu), the dropdown menu can be implemented in two ways:
 
 - `Select.Menu`
 - `Select.Popper` + `Select.List`
 
-These components serve as wrappers over the corresponding components of the [DropdownMenu](/components/dropdown-menu).
+These components serve as wrappers over the corresponding components of the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 
 - `Select.Popper` is a layout for the dropdown window.
-- `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/) inside.
+- `Select.List` is a component for the option list with the [ScrollArea](/components/scroll-area/scroll-area) inside.
 - `Select.Menu` is a wrapper over `Select.Popper` and `Select.List`, and all props are passed to `Select.List`.
 
-The example below shows how to insert a [Notice](/components/notice/) in the Select dropdown window.
+The example below shows how to insert a [Notice](/components/notice/notice) in the Select dropdown window.
 
 ::: sandbox
 
@@ -254,7 +254,7 @@ const Demo = () => (
 
 ## Options filtering
 
-The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component with clear button.
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/input) component with clear button.
 
 The example below shows one of the ways to implement filtering.
 

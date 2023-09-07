@@ -105,13 +105,13 @@ The feature status can be shown inside most of the components and controls.
 
 ### Badge vs. Tag
 
-Don’t confuse [Tag](/components/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
+Don’t confuse [Tag](/components/tag/tag) and Badge components. Tag is used for thematic grouping and labeling data, while the Badge indicates the status of a feature or product.
 
 ![](static/table-yes-no.png)
 
 ## Location
 
-Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
+Badge is usually placed to the right of the element. As an exception, in the [Notice](/components/notice/notice) component, badge is positioned to the left relative to the text. Badge's margins are always multiples of 4.
 
 ## Usage in UX/UI
 

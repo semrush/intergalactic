@@ -29,7 +29,7 @@ See [Forms Tutorial from W3](https://www.w3.org/WAI/tutorials/forms/) for the de
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ## Considerations for designers
 
@@ -39,4 +39,4 @@ See detailed information about the keyboard support for the all form elements in
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

@@ -5,7 +5,7 @@ tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-includ
 ---
 
 ::: tip
-**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).**
 :::
 
 ## Description
@@ -29,7 +29,7 @@ tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-includ
 
 ### Trigger
 
-- For trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/) components.
+- For trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
 - **Set the trigger min-width to 140px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
 
 ![filter placeholder](static/placeholder-include.png)
@@ -52,7 +52,7 @@ tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-includ
 ## Interaction
 
 ::: tip
-All common rules for working and interacting with filters are described in the [Filter common rules guide](/filter-group/filter-rules/).
+All common rules for working and interacting with filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).
 :::
 
 When opening a dropdown texarea immediately gets the focus.
@@ -134,5 +134,5 @@ Determine that the user has an input in the old browser only at the moment of th
 
 ## Nothing found
 
-"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
+"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 

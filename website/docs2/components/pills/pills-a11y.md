@@ -15,13 +15,13 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 | `Space`, `Enter`       | Change pill's state to active.                                                                                                                                                                                                |
 | `Left Arrow`, `Right Arrow` | Moves focus to and checks the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively. The state of the previously checked button is changed to unchecked. |
 
-See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_button_link_input_etc).
+See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_button_link_input_etc).
 
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
 
-Note that Pills component works as radio buttons, that's why it has the same roles and attributes as [Radio](/components/radio) has.
+Note that Pills component works as radio buttons, that's why it has the same roles and attributes as [Radio](/components/radio/radio) has.
 
 | Role  | Attribute              | Element | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -54,6 +54,6 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include pills-a11y-report

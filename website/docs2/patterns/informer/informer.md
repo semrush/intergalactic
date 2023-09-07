@@ -1,19 +1,19 @@
 ---
 title: Informer
 tabName: Design
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
+tabs: Informer('informer'), Example('informer-code')
 ---
 
 ## Description
 
-**Informer** is a pattern used to visually indicate hints within the interface. It is useful when there is limited space to add, for example, a [hint link](/style/typography/) alongside a component.
+**Informer** is a pattern used to visually indicate hints within the interface. It is useful when there is limited space to add, for example, a [hint link](/style/typography/typography) alongside a component.
 
 ## Appearance
 
 The informer consists of the following elements:
 
 - `Info` icon with `margin-left: 4px`
-- [Tooltip](/components/tooltip/) containing the hint message (appears upon hovering over the icon)
+- [Tooltip](/components/tooltip/tooltip) containing the hint message (appears upon hovering over the icon)
 
 ::: tip
 Avoid using the `Info` icon with the `h1` title. This title typically pertains to hero blocks and similar elements. Adding hints to the main page title might seem unusual.
@@ -46,7 +46,7 @@ Table: Informer click zone
 
 ## Tooltip
 
-For comprehensive details, refer to the [Tooltip](/components/tooltip/).
+For comprehensive details, refer to the [Tooltip](/components/tooltip/tooltip).
 
 ## Usage in UX/UI
 

@@ -6,19 +6,19 @@ tabs: Area chart('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), 
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Area chart** visualizes a trend and the ratio of numeric variables over a period of time. It can be used instead of [Line chart](/data-display/line-chart/) when it is important to demonstrate the ratio of parts to the whole.
+**Area chart** visualizes a trend and the ratio of numeric variables over a period of time. It can be used instead of [Line chart](/data-display/line-chart/line-chart) when it is important to demonstrate the ratio of parts to the whole.
 
 **Important points to keep in mind when presenting data as an area chart:**
 
 - A chart with areas shall be used when you need to show a larger picture of the data. _For example, line charts can be used to show the change in a population over time, while charts with areas are excellent for demonstrating the total volume of population over a time period._
 - Try not to use too many categories (**it isn’t recommended to use more than 4 categories**). In such cases, it is better to use a line chart as it provides a cleaner and clearer data reading.
 - Don't forget to clearly name the chart so that the axes are understandable enough.
-- Use [Stacked area chart](/data-display/stacked-area-chart/) when, in addition to data amount, you need to display the part to the whole data.
+- Use [Stacked area chart](/data-display/stacked-area-chart/stacked-area-chart) when, in addition to data amount, you need to display the part to the whole data.
 
 ::: tip
 Useful materials about line chart vs. area chart:
@@ -50,12 +50,12 @@ We recommend you to display the dots on lines either when there are few of them 
 When user hovers over the chart area, show a vertical guide line at the nearest dot and a tooltip with detailed data for the dot appears next to it. The color of the vertical guide line is `--chart-grid-y-accent-hover-line`.
 
 ::: tip
-To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
+To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip) or [Line chart](/data-display/line-chart/line-chart).
 :::
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ## One value
 
@@ -106,11 +106,11 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 ## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

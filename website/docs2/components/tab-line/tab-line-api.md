@@ -17,7 +17,7 @@ import TabLine from '@semcore/ui/tab-line';
 
 ## TabLine.Item
 
-This tab element may contain `Addon` and `Text`. The structure is similar to [Button](/components/button/). It takes some properties of the TabLine (for example, `size`, `disabled`) and can override them.
+This tab element may contain `Addon` and `Text`. The structure is similar to [Button](/components/button/button). It takes some properties of the TabLine (for example, `size`, `disabled`) and can override them.
 
 ```jsx
 import TabLine from '@semcore/ui/tab-line';

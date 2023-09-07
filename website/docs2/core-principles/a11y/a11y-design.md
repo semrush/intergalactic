@@ -32,7 +32,7 @@ Refer to [WCAG guidelines](https://www.w3.org/WAI/WCAG21/Understanding/non-text-
 
 ## Typography
 
-Refer to the [Typography guide](/style/typography/typography-a11y/) for the detailed recommendations.
+Refer to the [Typography guide](/style/typography/typography-a11y) for the detailed recommendations.
 
 ## Focus visible
 

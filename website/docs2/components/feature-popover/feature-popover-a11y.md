@@ -7,7 +7,7 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 
 ### Keyboard support
 
-See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
+See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
 
 ### Roles & attributes
 
@@ -25,4 +25,4 @@ The list below describes roles and attributes that component already has.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

@@ -8,7 +8,7 @@ tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d
 
 ## Chart widget anatomy
 
-In the Intergalactic Design System, data is typically organized within a [Card](/components/card/), which consists of the `Card.Header` and `Card.Body`.
+In the Intergalactic Design System, data is typically organized within a [Card](/components/card/card), which consists of the `Card.Header` and `Card.Body`.
 
 ![widget-scheme](static/widget-paddings.png)
 
@@ -32,7 +32,7 @@ The presence of optional elements depends on the specific interface case.
 
 #### Title
 
-**A chart must include a title** that succinctly and clearly describes the displayed data. In cases where the title is distant from the chart, as in a table or report's [Summary](/patterns/summary/), ensure there are adequate margins between widgets. The user should easily grasp what data the chart represents.
+**A chart must include a title** that succinctly and clearly describes the displayed data. In cases where the title is distant from the chart, as in a table or report's [Summary](/patterns/summary/summary), ensure there are adequate margins between widgets. The user should easily grasp what data the chart represents.
 
 The title can be clickable.
 
@@ -40,7 +40,7 @@ You can place an `Info` icon with M size next to the title if you need to hide a
 
 ![chart-heading](static/heading.png)
 
-For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/).
+For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/link).
 
 #### Description
 
@@ -52,17 +52,17 @@ For the description text, use 14px text (`--fs-200`, `--lh-200`) and `--text-sec
 
 ## Chart controls
 
-For detailed information about chart controls, refer to the [Chart controls](/data-display/chart-controls/).
+For detailed information about chart controls, refer to the [Chart controls](/data-display/chart-controls/chart-controls).
 
 ## Collapsing rows
 
-When necessary, you can collapse card rows. Find more information in the [Chart controls](/data-display/chart-controls/#collapsing_rows_with_controls).
+When necessary, you can collapse card rows. Find more information in the [Chart controls](/data-display/chart-controls/chart-controls#collapsing_rows_with_controls).
 
 ## Legend
 
 The legend provides additional visual information explaining the data on the chart.
 
-The legend can function as a filter or simply represent the data without being clickable. For detailed information about the legend and its types, refer to [Chart legend](/data-display/chart-legend/).
+The legend can function as a filter or simply represent the data without being clickable. For detailed information about the legend and its types, refer to [Chart legend](/data-display/chart-legend/chart-legend).
 
 ## Grid and axes
 
@@ -152,7 +152,7 @@ To display the trend line or average value on the chart, use gray color with the
 
 ## Data loading
 
-During the initial data loading, the widget displays the [Skeleton](/components/skeleton/) instead of the chart.
+During the initial data loading, the widget displays the [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, it should be displayed during the initial loading. The user should be aware of what is being loaded and whether they need to wait for the process to complete.
 
@@ -164,5 +164,5 @@ Keep in mind that each chart type has its own skeleton. Refer to the guides for 
 
 Specific edge cases may vary depending on the chart type. Refer to the documentation for the specific chart type you are working with.
 
-General recommendations for "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
+General recommendations for "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/widget-empty).
 

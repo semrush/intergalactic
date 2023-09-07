@@ -6,7 +6,7 @@ tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -110,7 +110,7 @@ Areas use the same color as the line, but with 20% opacity. Areas are enabled by
 
 ### Size
 
-Size can be set through the `width` and `height` properties ([check API](data-display/d3-chart/d3-chart-api/#plot)). Chart components don't have maximum and minimum size.
+Size can be set through the `width` and `height` properties ([check API](/data-display/d3-chart/d3-chart-api#plot)). Chart components don't have maximum and minimum size.
 
 For a small radar chart, we recommend turning off scales, variables, labels, and data points to reduce visual noise. For example:
 
@@ -126,7 +126,7 @@ If a variable's label is too long, wrap it to the next line:
 
 ### Non-text labels
 
-Variables can be labeled with other components such as [Tag](/components/tag), [Button](/components/button), or [Icon](/style/icon):
+Variables can be labeled with other components such as [Tag](/components/tag/tag), [Button](/components/button/button), or [Icon](/style/icon/icon):
 
 ![Radar chart with Tag component as variables' labels instead of text labels.](static/non-text-variables.png)
 
@@ -229,11 +229,11 @@ If for some reason data isn't available, show `n/a` in the tooltip. Data point i
 
 ### Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

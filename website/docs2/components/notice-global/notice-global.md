@@ -81,7 +81,7 @@ const App = PlaygroundGeneration(Preview, { LayoutPreview });
 
 **NoticeGlobal** is a component designed for conveying messages about events related to the entire website's operations.
 
-To be considered a notice, it must meet four specific criteria. If it fails to meet at least one of these criteria, it cannot be classified as a notice. Let's explore the distinctions between NoticeGlobal and [Notice](/components/notice/) as well as [NoticeBubble](/components/notice-bubble/).
+To be considered a notice, it must meet four specific criteria. If it fails to meet at least one of these criteria, it cannot be classified as a notice. Let's explore the distinctions between NoticeGlobal and [Notice](/components/notice/notice) as well as [NoticeBubble](/components/notice-bubble/notice-bubble).
 
 Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 

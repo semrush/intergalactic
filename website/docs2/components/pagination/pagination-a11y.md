@@ -13,7 +13,7 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 | `Tab`         | Moves focus to the next focusable element.     |
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 
-See detailed information about the keyboard support for the buttons, links, inputs, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the buttons, links, inputs, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ### Roles & attributes
 
@@ -34,4 +34,4 @@ The list below describes roles and attributes that component already has.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

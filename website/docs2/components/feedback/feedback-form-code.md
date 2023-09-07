@@ -5,7 +5,7 @@ tabs: Design('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), 
 
 ## Default feedback form
 
-The information on the GDPR should be obligatorily shown to the users from Europe. See the [component's guide](/components/feedback/) for the styles and its content.
+The information on the GDPR should be obligatorily shown to the users from Europe. See the [component's guide](/components/feedback/feedback) for the styles and its content.
 
 ::: sandbox
 
@@ -177,7 +177,7 @@ const Demo = FeedbackLink;
 
 ## Feedback form example
 
-Refer for more details about forms in the [Form](/patterns/form/).
+Refer for more details about forms in the [Form](/patterns/form/form).
 
 ::: sandbox
 

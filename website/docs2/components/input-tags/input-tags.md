@@ -107,7 +107,7 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**InputTags** is an input field that wraps entered information into tags. It is commonly used alongside the [Combobox](/components/auto-suggest/).
+**InputTags** is an input field that wraps entered information into tags. It is commonly used alongside the [Combobox](/components/auto-suggest/auto-suggest).
 
 This input field is useful for entering a large amount of similar information in a single field, such as keywords or employee emails.
 
@@ -125,10 +125,10 @@ Table: InputTags sizes
 ## Tag colors
 
 ::: tip
-To learn more about tags, refer to the [Tag](/components/tag).
+To learn more about tags, refer to the [Tag](/components/tag/tag).
 :::
 
-In most cases, we recommend using tags with the `primary` type and the `muted` theme for entering homogeneous information in these inputs. It isn’t recommended to use the [Secondary tag](/components/tag/) inside the input as it adds unnecessary visual noise with its border.
+In most cases, we recommend using tags with the `primary` type and the `muted` theme for entering homogeneous information in these inputs. It isn’t recommended to use the [Secondary tag](/components/tag/tag) inside the input as it adds unnecessary visual noise with its border.
 
 ![](static/default-tag.png)
 
@@ -150,7 +150,7 @@ Table: Interaction with InputTags
 | ------------------------- | ------------------- | ------------------------ |
 | ![](static/input-tag1.png) | ![](static/input-tag2.png) | ![](static/input-tag3.png) |
 
-When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [Combobox](/components/auto-suggest/) will open. Clicking on a line in the combobox will insert the corresponding data into the input field and wrap it in a tag.
+When you focus on the input field, if there are preset options available (such as a database of minion addresses or previously entered keywords), a [Combobox](/components/auto-suggest/auto-suggest) will open. Clicking on a line in the combobox will insert the corresponding data into the input field and wrap it in a tag.
 
 If the input field doesn't have preset options and allows users to enter any data, the entered data will be wrapped in a tag using punctuation separators, as described below.
 

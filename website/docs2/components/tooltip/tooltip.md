@@ -91,9 +91,9 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 ## Description
 
-**Tooltip** is a component used to display various tips and hints, and serves as a wrapper over the [Popper](/utils/popper/) component.
+**Tooltip** is a component used to display various tips and hints, and serves as a wrapper over the [Popper](/utils/popper/popper) component.
 
-Differences between Tooltip and [Dropdown](/components/dropdown/):
+Differences between Tooltip and [Dropdown](/components/dropdown/dropdown):
 
 - Tooltip appears only when hovering over the trigger.
 - It includes an arrow pointing to the trigger.
@@ -114,7 +114,7 @@ Component consists of the following:
 Tooltip has three themes: `default`, `invert` for use on a dark background, and `warning` for validation messages. In all cases, the text color changes to `--text-primary-invert`, and the background color changes accordingly.
 
 ::: tip
-Starting from [version 3.1.0](/components/tooltip/tooltip-changelog/), you can set your own custom theme and change the background color.
+Starting from [version 3.1.0](/components/tooltip/tooltip-changelog), you can set your own custom theme and change the background color.
 :::
 
 Table: Tooltip themes
@@ -135,7 +135,7 @@ The distance between the trigger and the tooltip is 4px.
 
 ![](static/tooltip-offset.png)
 
-The placement of the arrow depends on the `placement` property, refer to the live examples in the [Placement](/components/tooltip/#placement) section.
+The placement of the arrow depends on the `placement` property, refer to the live examples in the [Placement](/components/tooltip/tooltip#placement) section.
 
 ![](static/tooltip-arrow-paddings.png)
 
@@ -159,13 +159,13 @@ The image inside the tooltip has a size of 130px * 130px.
 
 ### Data margins
 
-To improve readability, it is recommended to use specific margins between labels and values inside the tooltip. Detailed recommendations for tooltip margins can be found in [Data visualization](/data-display/d3-chart/#tooltip) and [Summary](/patterns/summary/#difference_value).
+To improve readability, it is recommended to use specific margins between labels and values inside the tooltip. Detailed recommendations for tooltip margins can be found in [Data visualization](/data-display/d3-chart/d3-chart#tooltip) and [Summary](/patterns/summary/summary#difference_value).
 
 ![](static/tooltip-margins.png)
 
 ## Placement
 
-The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api/).
+The tooltip is built using the [Popper.js](https://popper.js.org/) library, allowing you to change its placement according to the [Popper API](/utils/popper/popper-api).
 
 The tooltip's position shouldn't change when scrolling the page, ensuring it remains visible to the user. The default tooltip placement is `top`.
 
@@ -227,7 +227,7 @@ const Demo = () => {
 
 ## Interaction
 
-For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/), [Link](/components/link/), [Button](/components/button/), etc.
+For the tooltip trigger, you can use formatted text, table headers, or interactive components like [Icon](/style/icon/icon), [Link](/components/link/link), [Button](/components/button/button), etc.
 
 ### Appearance and hiding
 
@@ -255,7 +255,7 @@ Tooltip usually contains unformatted text.
 
 In some cases (for example, for advertising purposes), you can format the text and add other components to the tooltip:
 
-- [Button](/components/button/), [Link](/components/link/), etc.
+- [Button](/components/button/button), [Link](/components/link/link), etc.
 - Image
 - Different background color
 
@@ -273,7 +273,7 @@ Main recommendations:
 - Ensure that the tooltip does not overlap important information for the user.
 
 ::: tip
-For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/).
+For complex content and forms, use [Dropdown-menu](/components/dropdown-menu/dropdown-menu).
 :::
 
 **If the tooltip trigger conveys information about a new feature, avoid duplicating the trigger text in the tooltip title.** The title may not be necessary if the trigger text already explains the tooltip content.

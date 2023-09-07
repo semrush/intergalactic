@@ -7,14 +7,14 @@ tabs: Chart legend('chart-legend'), Example('chart-legend-code'), Changelog('d3-
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
+Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
 **Chart legend** helps a user read the data presented on the chart.
 
-1. Legend items can be controls ([checkboxes](/components/checkbox/) or [radio](/components/radio/) buttons) or non-interactive markers. The marker colors match the data on the chart. In addition to the marker and text label, the legend item can also contain an icon and/or counter.
+1. Legend items can be controls ([checkboxes](/components/checkbox/checkbox) or [radio](/components/radio/radio) buttons) or non-interactive markers. The marker colors match the data on the chart. In addition to the marker and text label, the legend item can also contain an icon and/or counter.
 2. If there is only one data set on the chart, then don’t display the legend – the purpose of the data should be clear from the chart context: chart title, description, etc.
 3. **The margin between the legend items is 16px.**
 4. If legend items are too long, move them to the second row. The spacing between the rows is 8px.
@@ -29,7 +29,7 @@ The legend can be interactive or non-interactive.
 
 ## Interactive legend
 
-For an interactive legend use a group of [checkboxes](/components/checkbox/) or [radio buttons](/components/radio/) with specified colors.
+For an interactive legend use a group of [checkboxes](/components/checkbox/checkbox) or [radio buttons](/components/radio/radio) with specified colors.
 
 | Component                                     | Appearance example                                                                                     | Styles                                                                                                                                                                                       |
 | --------------------------------------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,7 +49,7 @@ A non-interactive legend is a colored circle with a label. This legend doesn't d
 
 ## Trend or average value in the legend
 
-To show the trend or average value in the legend, use the `--chart-palette-order-total-amount` token for color. At the same time, we must separate it from the main legend with a [divider](/components/divider/) with `margin: 0 16px`.
+To show the trend or average value in the legend, use the `--chart-palette-order-total-amount` token for color. At the same time, we must separate it from the main legend with a [divider](/components/divider/divider) with `margin: 0 16px`.
 
 ![](static/legend-trend.png)
 

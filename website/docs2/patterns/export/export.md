@@ -1,6 +1,5 @@
 ---
 title: Export
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
@@ -95,7 +94,7 @@ Additional controls can also be added to the dropdown.
 
 - Place this information below the buttons.
 - Use it to explain conditions for downloading all data, addressing limitations, large export sizes, etc.
-- Use the [Divider](/components/divider/) to separate this information from the form above.
+- Use the [Divider](/components/divider/divider) to separate this information from the form above.
 
 ![](static/dropdown-info-1.png)
 
@@ -104,7 +103,7 @@ Use this message for such cases: "To export all data, please contact us at {emai
 ### Additional information concerning the selected export settings
 
 - Place this information below the buttons.
-- If additional information in the dropdown pertains to data export due to selected settings, use the [Divider](/components/divider/) to separate it from the form above.
+- If additional information in the dropdown pertains to data export due to selected settings, use the [Divider](/components/divider/divider) to separate it from the form above.
 
 ![](static/dropdown-info-2.png)
 
@@ -114,11 +113,11 @@ Use this message for such cases: "To export all data, please contact us at {emai
 
 For error messages, employ the following text: "Please try again later. If the problem persists, contact us at {email}".
 
-- In case of export operation failure, display a [warning notice](/components/notice) at the dropdown's bottom.
+- In case of export operation failure, display a [warning notice](/components/notice/notice) at the dropdown's bottom.
 - If the problem is known, describe it in the notice title immediately.
 - If the problem can't be identified, use a standard text along with the team's email.
 
-For the compact dropdown version, use a [NoticeBubble](/components/notice-bubble) for such errors.
+For the compact dropdown version, use a [NoticeBubble](/components/notice-bubble/notice-bubble) for such errors.
 
 ![](static/export-error-2.png)
 
@@ -126,7 +125,7 @@ For the compact dropdown version, use a [NoticeBubble](/components/notice-bubble
 
 ### Limit
 
-For limit messages, display a [Notice](/components/notice) at the dropdown's bottom.
+For limit messages, display a [Notice](/components/notice/notice) at the dropdown's bottom.
 
 Users can access all settings, allowing them to explore export options that may necessitate an upgrade. However, the export buttons remain disabled.
 
@@ -137,8 +136,8 @@ Users can access all settings, allowing them to explore export options that may 
 ### Loading
 
 - Loading may occur upon the initial dropdown opening and after clicking the export button.
-- During loading, wrap the entire form within a [SpinContainer](/components/spin-container/).
-- Employ the [Spin](/components/spin/) component with an XL size for all dropdowns.
+- During loading, wrap the entire form within a [SpinContainer](/components/spin-container/spin-container).
+- Employ the [Spin](/components/spin/spin) component with an XL size for all dropdowns.
 - The dropdown closes following the loading state, initiating file download in the browser.
 
 ![](static/export-loading.png)

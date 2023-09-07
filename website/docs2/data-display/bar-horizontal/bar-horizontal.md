@@ -6,12 +6,12 @@ tabs: Horizontal bar chart('bar-horizontal'), A11y('bar-horizontal-a11y'), API('
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
+**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/bar-chart) or horizontal.
 
 ::: tip
 **Difference from histogram chart**
@@ -36,9 +36,9 @@ Important points to keep in mind when presenting data as a bar chart:
 
 **Horizontal bars are not recommended when:**
 
-- you need to display a trend (use [Line chart](/data-display/line-chart/) instead);
-- you need to compare data for a certain period of time (use Vertical bar chart or [Line chart](/data-display/line-chart/) in this case);
-- compare category values if they all add up to 100% (use [Donut chart](/data-display/donut-chart/)).
+- you need to display a trend (use [Line chart](/data-display/line-chart/line-chart) instead);
+- you need to compare data for a certain period of time (use Vertical bar chart or [Line chart](/data-display/line-chart/line-chart) in this case);
+- compare category values if they all add up to 100% (use [Donut chart](/data-display/donut-chart/donut-chart)).
 
 **Horizontal bars help you compare data in the following cases:**
 
@@ -55,7 +55,7 @@ Important points to keep in mind when presenting data as a bar chart:
 | Two categories | ![](static/two-cat.png) | The margin between two columns is 4px. |
 
 ::: tip
-If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/) or try to present the data using a different type of chart.
+If there are more than 3-4 categories, use a [Stacked horizontal bar chart](/data-display/stacked-horizontal-bar/stacked-horizontal-bar) or try to present the data using a different type of chart.
 
 It is also a good solution to allow users to switch the chart type in the widget settings.
 :::
@@ -107,7 +107,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ### No more results
 
@@ -141,13 +141,13 @@ When you hover over a dot without data, show tooltip with the `n/a` value. We al
 
 ## Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
 ![](static/bar-horizontal-skeleton.png)
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

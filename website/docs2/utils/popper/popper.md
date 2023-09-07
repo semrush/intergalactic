@@ -7,7 +7,7 @@ tabs: Popper('popper'), API('popper-api'), Changelog('popper-changelog')
 
 The component is our `React`-wrapper over the popular [popper.js](https://popper.js.org/) library.
 
-We use it in all pop-ups: [dropdown](/components/dropdown/), [tooltip](/components/tooltip/), [select](/components/select), etc.
+We use it in all pop-ups: [dropdown](/components/dropdown/dropdown), [tooltip](/components/tooltip/tooltip), [select](/components/select/select), etc.
 
 ## Show/hide
 

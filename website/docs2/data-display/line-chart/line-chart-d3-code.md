@@ -5,7 +5,7 @@ tabs: Line chart('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), 
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Line

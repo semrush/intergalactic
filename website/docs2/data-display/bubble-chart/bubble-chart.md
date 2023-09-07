@@ -6,7 +6,7 @@ tabs: Bubble chart('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -94,7 +94,7 @@ For this type of charts, we don’t show values for the intersection of categori
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 | Case                                   | Description                                                                                                                                                                                                       | Appearance example                                                    |
 | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |

@@ -146,7 +146,7 @@ Info icon should have `margin-left: 4px`.
 
 ## Checkbox with a link inside
 
-Text label may contain a [Link](/components/link).
+Text label may contain a [Link](/components/link/link).
 
 ![](static/link.png)
 
@@ -223,8 +223,8 @@ When user clicks on a checkbox with the `indeterminate` state, all sub-level che
 Here are some other checkbox recommendations:
 
 - Only use checkboxes for changing settings and not as action buttons.
-- The [switch](/components/switch/) is better for binary settings since it performs an action while checkboxes have a status. [Radio buttons](/components/radio/) are also good for binary settings.
-- Use checkboxes for suspended actions and radio buttons for immediate actions. [Switches](/components/switch/) and [radio buttons](/components/radio/) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
+- The [switch](/components/switch/switch) is better for binary settings since it performs an action while checkboxes have a status. [Radio buttons](/components/radio/radio) are also good for binary settings.
+- Use checkboxes for suspended actions and radio buttons for immediate actions. [Switches](/components/switch/switch) and [radio buttons](/components/radio/radio) work for actions that are applied instantly. Checkbox is useful when users need to check their settings before applying them or when additional steps are necessary to make changes.
 - For checkbox groups with more than six options, include "Select all" and "Deselect all" controls to save time.
 - When a checkbox is used in a table to select the entire row, make sure the target area covers the entire table cell where the checkbox is located.
 

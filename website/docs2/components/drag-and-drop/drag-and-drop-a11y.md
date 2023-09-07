@@ -32,6 +32,6 @@ The list below describes roles and attributes that component already has.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include drag-and-drop-a11y-report

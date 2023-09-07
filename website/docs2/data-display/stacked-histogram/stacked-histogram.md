@@ -7,6 +7,6 @@ tabs: Stacked histogram chart('stacked-histogram'), Changelog('d3-chart-changelo
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 

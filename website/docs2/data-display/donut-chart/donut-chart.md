@@ -6,7 +6,7 @@ tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-cha
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -18,12 +18,12 @@ The length of each segment is a proportional fraction, and the entire circle is 
 **Important points to keep in mind when using donut chart:**
 
 - We recommend using a donut chart when you need to focus on the proportions of categories, rather than on specific values.
-- If you need to visualize more than 5 categories, we recommend using a different chart type (for example, [Bar chart](/data-display/bar-chart/)).
+- If you need to visualize more than 5 categories, we recommend using a different chart type (for example, [Bar chart](/data-display/bar-chart/bar-chart)).
 
 **Donut chart has several disadvantages:**
 
 - The number of displayed values is very limited, because the more values, the smaller the size of each individual segment. Accordingly, these charts are not suitable for working with large amounts of data.
-- They take up more space than, for example, [Bar chart](/data-display/bar-chart/).
+- They take up more space than, for example, [Bar chart](/data-display/bar-chart/bar-chart).
 - They are inconvenient for making accurate comparisons between different data sets, since visually the area of segments is more difficult to compare than the length.
 
 ::: tip
@@ -62,7 +62,7 @@ endAngle={0}
 
 |                                                              | Appearance example                                 | Description, styles                                                                                  |
 | ------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/). | ![](static/donut-small.png)   | The donut size is 24px * 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
+| Charts inside [Summary type components](/patterns/summary/summary). | ![](static/donut-small.png)   | The donut size is 24px * 24px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`     |
 | Chart inside small widgets (less than 400px).                | ![](static/donut-medium.png) | The donut size is 80px * 80px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`   |
 | Chart inside large widgets (more than 400px).                | ![](static/donut-big.png)       | The donut size is 180px * 180px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
 
@@ -70,7 +70,7 @@ endAngle={0}
 
 |                                                              | Appearance example                                           | Description, styles                                                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
-| Charts inside [Summary type components](/patterns/summary/). | ![](static/semi-donut-small.png)   | The donut size is 24px * 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
+| Charts inside [Summary type components](/patterns/summary/summary). | ![](static/semi-donut-small.png)   | The donut size is 24px * 12px. The line thickness is 6px. `innerRadius={6}`, `outerRadius={12}`    |
 | Chart inside small narrow widgets (less than 400px).         | ![](static/semi-donut-medium.png) | The donut size is 80px * 40px. The line thickness is 20px. `innerRadius={20}`, `outerRadius={40}`  |
 | Chart inside large widgets (more than 400px).                | ![](static/semi-donut-big.png)       | The donut size is 180px * 90px. The line thickness is 30px. `innerRadius={60}`, `outerRadius={90}` |
 
@@ -145,7 +145,7 @@ Disable tooltip for the smallest charts which serve as an illustration to a part
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ### Null values
 
@@ -173,11 +173,11 @@ In this case, move legend under the chart. The margin from the chart to the lege
 
 ## Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 
@@ -189,7 +189,7 @@ Use the `--skeleton-bg` color token for the skeleton background color.
 **It isn’t recommended to display more than five of data on the donut chart**. If there are more than five categories, display the largest five, and place the others in the sixth category and name it Other.
 :::
 
-Don't use donut chart to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart).
+Don't use donut chart to compare two sets of values. Instead, you can use [Stacked bar chart](/data-display/bar-chart/bar-chart).
 
 ![](static/donut-yes-no.png)
 

@@ -56,7 +56,7 @@ Table: Trigger appearance
 | Trigger type       | Appearance example  | Default styles      |
 | ------------------ | ------------------- | ------------------- |
 | Trigger without background | ![](static/default.png)    | For the icon color use `--icon-primary-neutral` token; for the text `--text-primary` token.    |
-| Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
+| Trigger with background    | ![](static/default-bg.png) | For the background and text color you can use any background color from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) depending on the usage context. For the default background color use `--bg-secondary-neutral` token. |
 
 ## Collapsed content
 
@@ -93,8 +93,8 @@ Table: Accordion states
 | Default  | ![](static/default-state.png) ![](static/default-state-2.png)  |              |
 | Hover    | ![](static/hover-state.png) ![](static/hover-state-2.png)       | Cursor changes to `pointer`. If the accordion trigger has a background, it should change color to the next one in the palette. |
 | Active   | ![](static/active-state.png) ![](static/active-state-2.png)     | The `ChevronRight` icon rotates to 90 degrees: `transform: rotate(90deg)`. All other trigger styles remain the same as in the `hover` state.                                          |
-| Disabled | ![](static/disabled-state.png) ![](static/disabled-state-2.png) | Use [`--disabled-opacity`](/style/design-tokens/) token.  |
-| Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)  | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/) with a respective size. By default, the spinner size is XS.                  |
+| Disabled | ![](static/disabled-state.png) ![](static/disabled-state-2.png) | Use [`--disabled-opacity`](/style/design-tokens/design-tokens) token.  |
+| Loading  | ![](static/loading-state.png) ![](static/loading-state-2.png)  | If the system needs time to load the content hidden in the accordion, then show [Spin](/components/spin/spin) with a respective size. By default, the spinner size is XS.                  |
 
 ## Animation
 

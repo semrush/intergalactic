@@ -63,7 +63,7 @@ const App = PlaygroundGeneration((preview) => {
 
 - You need to keep the text from wrapping to a new line.
 - You need to truncate the text at a certain line.
-- The text is user-entered or dynamic and it's difficult to know how much space to allocate, for example, for [InlineInput](/components/inline-input) width.
+- The text is user-entered or dynamic and it's difficult to know how much space to allocate, for example, for [InlineInput](/components/inline-input/inline-input) width.
 
 **Avoid the following:**
 
@@ -101,7 +101,7 @@ Add a tooltip on hover to truncated items to show the entire text string, or phr
 
 ### Long URL links
 
-Usually, long URL links are most common for tables and other widgets. Read the detailed information about long URL links in [Table](table-group//table-controls/#long_links_and_text).
+Usually, long URL links are most common for tables and other widgets. Read the detailed information about long URL links in [Table](/table-group/table-controls/table-controls#long_links_and_text).
 
 ![](static/ellipsis-end.png)
 
@@ -123,7 +123,7 @@ When you need to truncate links in Breadcrumbs, collapse them into ellipsis at t
 
 ### Card titles
 
-To show more data in a limited space you can truncate the [Card](/components/card) title. In this case always show a tooltip on hover to show the entire title.
+To show more data in a limited space you can truncate the [Card](/components/card/card) title. In this case always show a tooltip on hover to show the entire title.
 
 ![](static/card-ellipsis.png)
 

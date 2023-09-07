@@ -14,7 +14,7 @@ tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the modal window.                       |
 
-See more about the focus behavior in the modal window in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_modal_window).
+See more about the focus behavior in the modal window in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_modal_window).
 
 ### Closing modal window
 
@@ -36,6 +36,6 @@ When the modal window is closed, the focus should always return to the trigger.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include modal-a11y-report

@@ -14,7 +14,7 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the modal window.                       |
 
-See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the all form elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ### Roles and attributes
 
@@ -33,4 +33,4 @@ The list below describes roles and attributes that component already has.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

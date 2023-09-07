@@ -13,11 +13,11 @@ Its purpose is to provide users with a mental map of the data being loaded.
 ::: tip
 This component demonstrates the loading and response to user actions in the interface. 
 :::
-For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
+For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
 
 **Use Skeleton for the following cases**
 
-- The content takes 0 to 5 seconds to load. If it takes longer, combine it with the [ProgressBar](/components/progress-bar/).
+- The content takes 0 to 5 seconds to load. If it takes longer, combine it with the [ProgressBar](/components/progress-bar/progress-bar).
 - The number and approximate layout of elements are known in advance.
 - When displaying dynamic information during initial loading: pages, widgets, complex components such as tables, charts, or selects.
 
@@ -81,11 +81,11 @@ In most cases, this group includes:
 
 Additionally, the following components should never use Skeleton—they should be loaded by the time the user interacts with them:
 
-- [NoticeBubble](/components/notice-bubble/).
-- [Dropdown](/components/dropdown/) (selects and dropdowns are loaded immediately. However, if the dropdown contains a table with data, you can use a skeleton for it).
-- [Tooltip](/components/tooltip/).
-- [Modal](/components/modal/).
-- [Spin](/components/spin/).
+- [NoticeBubble](/components/notice-bubble/notice-bubble).
+- [Dropdown](/components/dropdown/dropdown) (selects and dropdowns are loaded immediately. However, if the dropdown contains a table with data, you can use a skeleton for it).
+- [Tooltip](/components/tooltip/tooltip).
+- [Modal](/components/modal/modal).
+- [Spin](/components/spin/spin).
 
 ## Text skeleton
 
@@ -146,7 +146,7 @@ In most cases, avoid using a Skeleton for icons. Either hide them or leave them 
 
 ## Chart skeleton
 
-For charts, avoid showing axes and labels. Replace the legend with a Skeleton, and refer to [Chart principles](/data-display/d3-chart) for more detailed guidelines.
+For charts, avoid showing axes and labels. Replace the legend with a Skeleton, and refer to [Chart principles](/data-display/d3-chart/d3-chart) for more detailed guidelines.
 
 ## Button and link skeletons
 
@@ -188,7 +188,7 @@ show Skeleton instead of the button.
 - Replace the legend with skeleton "bones" of the same size. 
 If the legend values are known in advance, show them during the initial loading.
 - Replace the chart with the corresponding Skeleton based on the chart type. 
-For more details, refer to [Chart principles](/data-display/d3-chart).
+For more details, refer to [Chart principles](/data-display/d3-chart/d3-chart).
 
 ![skeleton-chart](static/chart.png)
 
@@ -210,7 +210,7 @@ Pills should never be disabled. They should always remain active, even during th
 **Pills with counters**
 
 During the initial loading of the page, the counters in the pills can be displayed as skeletons. 
-For more information about page loading, refer to [Web-performance](/patterns/web-performance/).
+For more information about page loading, refer to [Web-performance](/patterns/web-performance/web-performance).
 
 ![skeleton-pills](static/pills.png)
 

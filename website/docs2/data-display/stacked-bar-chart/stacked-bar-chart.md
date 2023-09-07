@@ -6,7 +6,7 @@ tabs: Stacked bar chart('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), AP
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -32,7 +32,7 @@ It is recommended to make a minimum 20% margin between a bars. This is necessary
 
 ### Chart colors
 
-Use [color palette](/data-display/color-palette/) and follow the rules prescribed for it.
+Use [color palette](/data-display/color-palette/color-palette) and follow the rules prescribed for it.
 
 ## Interaction
 
@@ -42,7 +42,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ![stacked bar chart](static/stacked-bar-chart-hover.png)
 
-See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5/).
+See detailed information in the common [Bar chart guide](/data-display/bar-chart/bar-chart#a61ee5/).
 
 ## Trend
 
@@ -54,13 +54,13 @@ When you hover over any part of the bar, display the tooltip with the values for
 
 ## Edge cases
 
-Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart-vertical/#a54381) has.
+Edge cases for Stacked bar chart are pretty much the same as [Bar chart](/data-display/bar-chart/bar-chart-vertical#a54381) has.
 
 ## Initial loading
 
-See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart-vertical/#ac26f2).
+See detailed information in the section about data loading in the [Bar chart guide](/data-display/bar-chart/bar-chart-vertical#ac26f2).
 
 ## Usage in UX/UI
 
-See detailed information in the [Bar chart guide](/data-display/bar-chart/#a1d837).
+See detailed information in the [Bar chart guide](/data-display/bar-chart/bar-chart#a1d837).
 

@@ -3,7 +3,7 @@ title: Table controls
 ---
 
 ::: tip
-For all the main table styles and principles, see [Table](/table-group/table/).
+For all the main table styles and principles, see [Table](/table-group/table/table).
 :::
 
 Here we describe all the elements and controls that are important when working with our tables.
@@ -24,7 +24,7 @@ _[Article by M. Grekov about UX tables that are used (in Russian)](https://desig
 
 ## Accordion
 
-A table row can be expanded as an [Accordion](/components/accordion/). As a rule such row has more detailed information on row data - chart, text, links, etc.
+A table row can be expanded as an [Accordion](/components/accordion/accordion). As a rule such row has more detailed information on row data - chart, text, links, etc.
 
 ::: tip
 If you have too much data inside a row with accordion, you may need to think about a separate page for it.
@@ -50,13 +50,13 @@ In the `active` state, the cell must be additionally highlighted with the `backg
 
 ## Checkboxes
 
-If you need to select several rows in the table at the same time and perform actions on them, add a [Checkbox](/components/checkbox/) in the leftmost cell of the each row.
+If you need to select several rows in the table at the same time and perform actions on them, add a [Checkbox](/components/checkbox/checkbox) in the leftmost cell of the each row.
 
-To highlight all rows, the table header must have the main [Checkbox](/components/checkbox/). When you click on the checkbox in the header, all the rows on **the first page are highlighted as selected**.
+To highlight all rows, the table header must have the main [Checkbox](/components/checkbox/checkbox). When you click on the checkbox in the header, all the rows on **the first page are highlighted as selected**.
 
 ![](static/selected-hover.png)
 
-The [Checkbox](/components/checkbox/) must have the entire cell in the table as the target zone.
+The [Checkbox](/components/checkbox/checkbox) must have the entire cell in the table as the target zone.
 
 ![](static/checkbox-hover-zone.png)
 
@@ -96,7 +96,7 @@ It is always nailed to the right side of the cell and has a `margin-left: 4px`, 
 
 ![](static/edit-2.png)
 
-2. Clicking on the `Edit` icon shows an [InlineInput](/components/inline-input/).
+2. Clicking on the `Edit` icon shows an [InlineInput](/components/inline-input/inline-input).
 
 ![](static/edit-3.png)
 
@@ -147,7 +147,7 @@ This option is suitable for cases when the cell can have more than one row of a 
 
 ## Pagination
 
-If the table has more than one page, it must have [Pagination](/components/pagination/). Margin between the table and the pagination is 16px.
+If the table has more than one page, it must have [Pagination](/components/pagination/pagination). Margin between the table and the pagination is 16px.
 
 If the table contains a small amount of data, we show the pagination for one page.
 
@@ -172,7 +172,7 @@ By default, use `SortDesc`.
 | Case                                                                                  | Click zone                             |
 | ------------------------------------------------------------------------------------- | -------------------------------------- |
 | If there is a simple text/icon inside the cell.                                       | ![](static/hover-zone-1.png) |
-| If there is a control inside the cell (for example, a [Select](/components/select/)). | ![](static/hover-zone-2.png) |
+| If there is a control inside the cell (for example, a [Select](/components/select/select)). | ![](static/hover-zone-2.png) |
 
 ### Sorting icon styles
 
@@ -234,5 +234,5 @@ When scrolling a table, this row should be pinned to the table header. In this c
 Use no more than 3-5 actions, which are the most popular among actions on the table rows.
 
 ::: tip
-For all the main table styles and principles, see [Table](/table-group/table/).
+For all the main table styles and principles, see [Table](/table-group/table/table).
 :::

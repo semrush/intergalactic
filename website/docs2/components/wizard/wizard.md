@@ -17,7 +17,7 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 
 ### When don’t use wizard
 
-- Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/), `Info` icons, [hint links](/style/typography/#hints_hint_links), or videos for education.
+- Avoid using wizards for educational purposes, as they focus on task completion rather than providing additional information for learning. Instead, use components like [FeaturePopover](/components/feature-popover/feature-popover), `Info` icons, [hint links](/style/typography/typography#hints_hint_links), or videos for education.
 - Advanced users may find predefined steps in a wizard restrictive. Consider using wizards for audiences that would benefit from step-by-step guidance.
 
 ## Component composition
@@ -70,7 +70,7 @@ Table: Wizard content area styles
 - Users can move between interactive elements within the window using the `Tab` key.
 - The window can be closed with the `Esc` key.
 
-When the fullscreen modal closes, the focus should return to the page. Refer to [Accessibility](/core-principles/a11y/) guidelines.
+When the fullscreen modal closes, the focus should return to the page. Refer to [Accessibility](/core-principles/a11y/a11y) guidelines.
 
 ## Wizard in Modal
 
@@ -95,7 +95,7 @@ Collapse the panel to 44px, leaving only the step numbers. On hover per step, sh
 
 ### Placement
 
-The scroll behavior inside and outside the window, the general rules for content, etc. are the same as for the [Modal component](/components/modal/).
+The scroll behavior inside and outside the window, the general rules for content, etc. are the same as for the [Modal component](/components/modal/modal).
 
 Center the Wizard relative to the user's viewport. And leave margins of 40px outside the window.
 
@@ -117,7 +117,7 @@ Here are some scenarios where a universal solution is recommended:
 
 After submitting a form, highlight all invalid inputs and focus on the first invalid input.
 
-For more information about validation, refer to the [Validation](/patterns/validation-form/).
+For more information about validation, refer to the [Validation](/patterns/validation-form/validation-form).
 
 ![](static/validation.png)
 

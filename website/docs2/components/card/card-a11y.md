@@ -21,4 +21,4 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

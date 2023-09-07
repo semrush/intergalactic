@@ -1,7 +1,7 @@
 ---
 title: Validation
 tabName: Design
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
+tabs: Validation('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
 ---
 
 ## Description
@@ -54,7 +54,7 @@ Uniformly, all form elements assume an `invalid` state, marked by a `var(--borde
 
 ## Notice with error message
 
-For guidance on positioning the error message notice, consult the [Notice guide](/components/notice/).
+For guidance on positioning the error message notice, consult the [Notice guide](/components/notice/notice).
 
 ## Validation messages
 

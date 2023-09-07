@@ -16,7 +16,7 @@ compared to controls with only a few fixed options.
 **Use it when:**
 
 - You need to visualize a range from which the user can select an approximate value.
-- You want to visualize the maximum range of a usual [InputNumber](/components/input-number/).
+- You want to visualize the maximum range of a usual [InputNumber](/components/input-number/input-number).
 - The user needs to specify an approximate value, such as adjusting color brightness.
 
 ## Component composition

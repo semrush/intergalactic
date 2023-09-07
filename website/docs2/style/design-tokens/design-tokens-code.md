@@ -48,7 +48,7 @@ const CustomComponent = () => {
     return () => {
       document.head.removeChild(stylesheet);
     };
-  }, [])
+  }, []);
 
   return (
     <ThemeProvider tokens={violetPrimaryButtonTheme}>
@@ -385,7 +385,7 @@ const Kraken = () => {
 
 ## Transforming JSON files to ready to use files in your code
 
-Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-tokens-usage/#how_to_make_a_new_theme) can't be used as is in Frontend application. Use the widgets below to transform output of Figma plugin to [ready to import CSS file](/style/design-tokens/design-tokens-usage-development/#global_theme) or [ready to use JSON files](/style/design-tokens/design-tokens-usage-development/#global_theme).
+Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-tokens-usage#how_to_make_a_new_theme) can't be used as is in Frontend application. Use the widgets below to transform output of Figma plugin to [ready to import CSS file](/style/design-tokens/design-tokens-usage-development#global_theme) or [ready to use JSON files](/style/design-tokens/design-tokens-usage-development#global_theme).
 
 ::: react-view
 
@@ -552,9 +552,7 @@ const DesignTokensProcessor = () => {
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <code className={styles.codeBlock}>
-              {css}
-            </code>
+            <code className={styles.codeBlock}>{css}</code>
           </div>
           <div className={styles.processedBlock}>
             <h4>

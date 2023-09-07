@@ -11,4 +11,4 @@ tabs: Design('ellipsis'), A11y('ellipsis-a11y'), API('ellipsis-api'), Example('e
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/#contrast).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y#contrast).

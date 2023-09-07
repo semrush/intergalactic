@@ -15,7 +15,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 | `Enter`       | Submits the entered value.                     |
 | `Esc`         | Returns from edit mode to view mode.           |
 
-See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+See detailed information about the keyboard support for the input fileds in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
 ## Considerations for developers
 
@@ -36,6 +36,6 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include inline-edit-a11y-report

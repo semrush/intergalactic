@@ -8,9 +8,9 @@ tabs: Charts showcase('chart-showcase'), Changelog('d3-chart-changelog')
 
 There are various chart types within the Intergalactic Design System, each designed for distinct scenarios and data representation.
 
-- [Grid & axes](/data-display/d3-chart/#grid_and_axes)
-- [Chart tooltip](/data-display/d3-chart/#tooltip)
-- [Chart legend](/data-display/chart-legend/)
+- [Grid & axes](/data-display/d3-chart/d3-chart#grid_and_axes)
+- [Chart tooltip](/data-display/d3-chart/d3-chart#tooltip)
+- [Chart legend](/data-display/chart-legend/chart-legend)
 
 ::: tip
 Note that some chart types are still under development and are not yet clickable.

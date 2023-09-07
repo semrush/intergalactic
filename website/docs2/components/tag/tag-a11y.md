@@ -18,14 +18,14 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 ## Considerations for developers
 
 - Make sure screenreader reads your tags list as a group.
-- Tags that are used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y/).
+- Tags that are used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y).
 - Make sure that any function accessible by hovering with a mouse is also available using only the keyboard.
 
 ## Considerations for designers
 
 - Tag text should be clear and concise.
-- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design/#color_and_contrast).
-- Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y/).
+- Make sure to [check the contrast of the tag text against the background](/core-principles/a11y/a11y-design#color_and_contrast).
+- Tag that is used as a link for filtering content should also follow the accessibility guidelines for [Link](/components/link/link-a11y).
 
 ## Resources
 
@@ -33,4 +33,4 @@ To find more information on the ways to make your tags accessible by the keyboar
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/#contrast).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y#contrast).

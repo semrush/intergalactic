@@ -6,7 +6,7 @@ tabs: Histogram chart('histogram-chart'), A11y('histogram-chart-a11y'), API('his
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -30,7 +30,7 @@ Difference from bar chart
 
 `Histograms are used to show distributions of variables while bar charts are used to compare variables`, [source](https://www.forbes.com/sites/naomirobbins/2012/01/04/a-histogram-is-not-a-bar-chart/#93b29b6d775f).
 
-_For example, we want to compare revenues of five companies. In this case, we should use [bar chart](/data-display/bar-chart/)._
+_For example, we want to compare revenues of five companies. In this case, we should use [bar chart](/data-display/bar-chart/bar-chart)._
 
 If we want to compare the number of companies that earn from 0 to 10,000; from 10,000 to 20,000; from 20,000 to 30,000, etc., then we should use the histogram chart.
 
@@ -60,7 +60,7 @@ The bars have `border-radius` of 2px. Margin between the bar is minimal.
 
 ## Color usage
 
-- Use [color palette](/data-display/color-palette/) and follow the the recommendations it has.
+- Use [color palette](/data-display/color-palette/color-palette) and follow the the recommendations it has.
 - **You can color the histogram bars in different colors when this can be useful for easier reading of the chart.** But use it carefully. _For example, you need to highlight a certain gradation of ranges. In this case, you can choose the appropriate colors from the chart palette._
 
 ![colors in histogram](static/color-yes-no.png)
@@ -93,7 +93,7 @@ If you show this picture as it is, with a zero value on the `Y-axis`, then large
 
 ![outliers in histogram](static/outliers.png)
 
-Possible solutions for such cases are described in the guide about bar charts, [see the section describing outliers](/data-display/bar-chart/). **The recommended solution is to make the scale logarithmic instead of linear.**
+Possible solutions for such cases are described in the guide about bar charts, [see the section describing outliers](/data-display/bar-chart/bar-chart). **The recommended solution is to make the scale logarithmic instead of linear.**
 
 ## Interaction
 
@@ -105,7 +105,7 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ### Data for one range
 
@@ -139,11 +139,11 @@ If all the values on the chart are zero, then show 0 for them in the tooltip.
 
 ### Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

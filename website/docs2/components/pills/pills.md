@@ -103,7 +103,7 @@ Table: Pills sizes and margins
 | M (28px)            | ![](static/pills-paddings-M.png) |
 | L (40px)            | ![](static/pills-paddings-L.png) |
 
-Addons (icons, flags, badges, counters) have the same margin as the addons inside the [Button](/components/button/).
+Addons (icons, flags, badges, counters) have the same margin as the addons inside the [Button](/components/button/button).
 
 ![](static/badge-paddings.png)
 ![](static/counter-paddings.png)
@@ -162,16 +162,16 @@ Pills are used for:
 Pills can be used in:
 
 - Lists;
-- [Tables](/table-group/table/);
-- [Charts](/data-display/chart-controls/);
+- [Tables](/table-group/table/table);
+- [Charts](/data-display/chart-controls/chart-controls);
 - Local filters in widgets, etc.
 
 ### Number of pills
 
 The minimum number of pills in the component is 2, and the maximum is unlimited. However, keep in mind that it might be challenging for the user to navigate the selection with too many items. In such cases, you can:
 
-- Collapse pills into a [DropdownMenu](/components/dropdown-menu/) with an `Ellipsis` icon;
-- Use [Select](/components/select) instead.
+- Collapse pills into a [DropdownMenu](/components/dropdown-menu/dropdown-menu) with an `Ellipsis` icon;
+- Use [Select](/components/select/select) instead.
 
 ![](static/pills-collapse.png)
 

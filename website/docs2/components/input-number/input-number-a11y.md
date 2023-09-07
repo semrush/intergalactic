@@ -17,7 +17,7 @@ tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api')
 | `Down Arrow` or `Shift` + `Down Arrow` | Decreases the value.                           |
 | `Enter`                          | Submits the entered value.                     |
 
-See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
 ### Roles & attributes
 
@@ -28,7 +28,7 @@ Find more in MDN guides:
 - [input type="number"](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number#accessibility)
 - [spinbutton role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role)
 
-InputNumber also has the same accessibility recommendations as [Input](/components/input/input-a11y/) has.
+InputNumber also has the same accessibility recommendations as [Input](/components/input/input-a11y) has.
 
 ## Considerations for designers
 
@@ -43,4 +43,4 @@ InputNumber also has the same accessibility recommendations as [Input](/componen
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

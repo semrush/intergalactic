@@ -5,7 +5,7 @@ tabs: Radial Tree chart('radial-tree-chart'), API('radial-tree-chart-api'), A11y
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Radial Tree

@@ -17,6 +17,6 @@ If you need to show different states of the table rows or cells, please don’t 
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include data-table-a11y-report

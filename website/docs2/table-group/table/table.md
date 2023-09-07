@@ -13,7 +13,7 @@ tabs: Table principles('table'), A11y('table-a11y'), Example('table-code')
 
 ### Types
 
-There are two types of tables in our design system – [primary](../table-primary/) and [secondary](../table-secondary/). Colors of both are based on the `gray` palette.
+There are two types of tables in our design system – [primary](/table-group/table-primary/table-primary) and [secondary](/table-group/table-secondary/table-secondary). Colors of both are based on the `gray` palette.
 
 ### Common styles for the table content
 
@@ -24,12 +24,12 @@ There are two types of tables in our design system – [primary](../table-primar
 | Secondary text                         | `color: var(--text-secondary)`                  |
 | Stand alone icon                       | icon with M size, `color: var(--icon-secondary-neutral)`    |
 | The icon next to the text              | icon with M size, `color: var(--icon-secondary-neutral)`    |
-| Checkbox in the header and in the cell | [Checkbox](/components/checkbox/) with M size  |
+| Checkbox in the header and in the cell | [Checkbox](/components/checkbox/checkbox) with M size  |
 
 ## Sorting
 
 ::: tip
-For detailed information about sorting columns in the table, see [Table controls](/table-group/table-controls/).
+For detailed information about sorting columns in the table, see [Table controls](/table-group/table-controls/table-controls).
 :::
 
 ## Tooltip
@@ -142,9 +142,9 @@ Russian article – [UX tables to work with](https://designpub.ru/ux-%D1%82%D0%B
 
 ## Pagination
 
-See the detailed recommendations in the [Table controls](/table-group/table-controls/#acbb81) guide.
+See the detailed recommendations in the [Table controls](/table-group/table-controls/table-controls#acbb81) guide.
 
 ## Table states
 
-About table states read in a particular notable document [Table states](/table-group/table-states/).
+About table states read in a particular notable document [Table states](/table-group/table-states/table-states).
 

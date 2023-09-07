@@ -130,7 +130,7 @@ Info icon should have `margin-left: 4px`.
 
 ## Radio button with a link inside
 
-Text label may contain a [Link](/components/link).
+Text label may contain a [Link](/components/link/link).
 
 ![](static/link.png)
 
@@ -163,5 +163,5 @@ Table: Radio button states
 - **Make lists of options vertically and left aligned**, one option per line. If using a horizontal layout, ensure that there is enough space between options to differentiate them.
 - **Use positive language for radio button labels** to clarify the action taken when the radio button is enabled.
 - Use radio buttons only for binary settings (when you need to select one of them).
-- This control is most often used in lists of settings. In filters, we recommend using the [Pills](/components/pills/) component instead of radio buttons.
+- This control is most often used in lists of settings. In filters, we recommend using the [Pills](/components/pills/pills) component instead of radio buttons.
 

@@ -55,7 +55,7 @@ const Demo = () => {
 
 ## Usage with Dropdown
 
-It is more complex example with [Dropdown](/components/dropdown/) and [Counter](/components/counter/). It is recommended to use it for **advanced filters** where it is important to show that there are several additional filters inside.
+It is more complex example with [Dropdown](/components/dropdown/dropdown) and [Counter](/components/counter/counter). It is recommended to use it for **advanced filters** where it is important to show that there are several additional filters inside.
 
 ::: sandbox
 

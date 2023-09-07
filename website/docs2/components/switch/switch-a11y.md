@@ -32,7 +32,7 @@ The list below describes roles and attributes that component already has.
 ## Considerations for developers
 
 - You can add optional labels to your toggles, just make sure the label element includes an `id` and the toggle button includes an `aria-labelledby` tag that match.
-- Make sure you [check the contrast of the toggle text](/core-principles/a11y/a11y-design/#color_and_contrast) against the background (if text is used).
+- Make sure you [check the contrast of the toggle text](/core-principles/a11y/a11y-design#color_and_contrast) against the background (if text is used).
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-toggles).
 
@@ -51,6 +51,6 @@ The list below will help you to keep in mind the necessary roles and attributes 
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include switch-a11y-report

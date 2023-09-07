@@ -104,7 +104,7 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It is a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale) guide.
+**Link** is a component used to create clickable links that lead to other web pages or elements. Links can be internal (within the same website) or external. It is a "quiet request" (visually subtle) control according to the [Visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
 
 ## Appearance
 
@@ -118,7 +118,7 @@ const App = PlaygroundGeneration(Preview);
 You can add addons before and after the link text. Addons always have a 4px margin from the link text.
 
 - The icon should represent the action that will be performed by the link.
-- If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/) component.
+- If clicking the link with an icon triggers a time-consuming process, you can replace the icon with the [Spin](/components/spin/spin) component.
 
 Table: Link text and addon sizes and margins
 
@@ -154,7 +154,7 @@ Hided this section because it's for the dark theme.
 
 ## Links on a dark and colored background
 
-Default links can be used on a colored background within a [Notice](/components/notice/) component.
+Default links can be used on a colored background within a [Notice](/components/notice/notice) component.
 
 ![](static/default-yes.png)
 
@@ -208,7 +208,7 @@ For links placed in one line, maintain a margin between them that is a multiple 
 ## Default link or Hint link?
 
 ::: tip
-Find detailed information on the hint link in the [Typography guide](/style/typography/#hints_hint_links).
+Find detailed information on the hint link in the [Typography guide](/style/typography/typography#hints_hint_links).
 :::
 
 - Default link is suitable for internal and external transitions, reloading the page, updating data in a small block/widget, and clickable email.
@@ -232,7 +232,7 @@ Table: How to choose what type of link you should use
 
 ## Links in tables
 
-- If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/).
+- If there is limited space in the interface, use links instead of buttons in tables. If there is sufficient space, prefer using [tertiary buttons](/components/button/button).
 - In table rows, use 14px links. If the link is a URL leading to an external page, include the `LinkExternal` icon with M size and `--icon-secondary-neutral` color next to it. Ensure it has a `margin-left: var(--spacing-1x)`.
 
 ![](static/table-yes-no.png)

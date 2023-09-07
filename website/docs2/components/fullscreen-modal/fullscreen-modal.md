@@ -83,7 +83,7 @@ Table: Paddings for single-zone and dual-zone modal windows
 ### Content alignment
 
 - If there are two columns / zones for content in the modal window, the content inside them should be placed with `align: left`.
-- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. We also recommend you to use a [default modal window](/components/modal) in this case instead.
+- If there is only one zone for content in the modal window, it is necessary to center the content with `align:center` horizontally. We also recommend you to use a [default modal window](/components/modal/modal) in this case instead.
 
 Table: Content alignment for single-zone and dual-zone modal windows
 
@@ -124,7 +124,7 @@ When the fullscreen modal window is closed, focus always returns to its trigger.
 
 ### Loading
 
-When loading and reloading the content of the window, use [Spin](/components/spin) with XL size.
+When loading and reloading the content of the window, use [Spin](/components/spin/spin) with XL size.
 
 ![](static/loading.png)
 
@@ -132,7 +132,7 @@ When loading and reloading the content of the window, use [Spin](/components/spi
 
 If an error occurred during data loading, show the error message with the "Reload" button.
 
-For error messages use [Widget empty state](/components/widget-empty/) component.
+For error messages use [Widget empty state](/components/widget-empty/widget-empty) component.
 
 ### Limit
 

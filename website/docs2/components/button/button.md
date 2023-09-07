@@ -134,10 +134,10 @@ const App = PlaygroundGeneration(Preview);
 
 ## Description
 
-**Button** is a control component that performs an action on the page. Compared to [Link](/components/link/), it's an accent control or call-to-action for performing actions on the page.
+**Button** is a control component that performs an action on the page. Compared to [Link](/components/link/link), it's an accent control or call-to-action for performing actions on the page.
 
 ::: tip
-In some cases, you can use the button as a [Link](/components/link/) that leads to another page.
+In some cases, you can use the button as a [Link](/components/link/link) that leads to another page.
 :::
 
 ## Component composition
@@ -151,10 +151,10 @@ Component consists of the following:
 
 `Button.Text` has margins on the right and left sides. You can add addons before and after the text. As addons you can use:
 
-- [Icon](/style/icon/),
-- [Counter](/components/counter/),
-- [Badge](/components/badge/),
-- [Flag](/components/flags/).
+- [Icon](/style/icon/icon),
+- [Counter](/components/counter/counter),
+- [Badge](/components/badge/badge),
+- [Flag](/components/flags/flags).
 
 Addon before the text has `margin-left`, while the trailing addon has `margin-right`.
 
@@ -189,9 +189,9 @@ Table: Button types
 
 ### Themes
 
-You can use themes for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale) guide.
+You can use themes for the buttons according to the visual hierarchy on the page. See the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide.
 
-Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/), [NoticeBubble](/components/notice-bubble/), etc.
+Invert theme button is used on dark or colored background. For example in [Tooltip](/components/tooltip/tooltip), [NoticeBubble](/components/notice-bubble/notice-bubble), etc.
 
 Table: Button themes
 
@@ -233,7 +233,7 @@ If you need to use a single button we recommend you to set it's width to at leas
 
 ## Margins between buttons
 
-**The margin between buttons shall be [multiple of 4](/layout/box-system/#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
+**The margin between buttons shall be [multiple of 4](/layout/box-system/box-system#spacing_system)**. If there are several buttons next to each other, use the recommended margins shown in table below.
 
 Table: Margins between buttons
 
@@ -246,7 +246,7 @@ Table: Margins between buttons
 - Try to have one call-to-action button on the page in the modal window. _For example, one green button._
 - We recommend you don’t disable CTA, even if something went wrong (especially in filters and modal windows with a single CTA). User needs to understand that the product/service is working. When user clicks on the button, add a message about the error or what user needs to do in this case.
 - If you can't do without a button in the disabled state, be sure to include a tooltip for it explaining why the primary action is disabled.
-- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
+- If there are a lot of actions in your interface, first of all set your priorities. Place controls in your interface according to the [visual loudness scale](/core-principles/visual-loudness-scale/visual-loudness-scale) guide. Use inactive "quiet" buttons in the interface. Don't "shout" at the user with your interface, let them work with your product in visual "silence" and comfort.
 
 ## Button variations
 
@@ -309,5 +309,5 @@ It may also be helpful checking the following branding guidelines:
 
 ## Grouped buttons
 
-To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
+To combine the components such as Button, [Input](/components/input/input), and [Select](/components/select/select), use the [`neighborLocation`](/components/button/button-api) property.
 

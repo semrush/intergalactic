@@ -6,12 +6,12 @@ tabs: Stacked area chart('stacked-area-chart'), A11y('stacked-area-chart-a11y'),
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Area chart** visualizes a trend and the ratio of quantitative indicators over a period of time. It can be used instead of [Line chart](/data-display/line-chart/) when it is important to demonstrate the ratio of parts to the whole.
+**Area chart** visualizes a trend and the ratio of quantitative indicators over a period of time. It can be used instead of [Line chart](/data-display/line-chart/line-chart) when it is important to demonstrate the ratio of parts to the whole.
 
 Use stacked area chart when, in addition to data amount, you need to display the parts to the whole ratio.
 
@@ -51,12 +51,12 @@ It is recommended to display the dots on lines either when there are few of them
 When you hover over the chart area, a vertical guide line is shown at the nearest point; this point is enlarged itself, and a tooltip with detailed data for the point appears next to it.
 
 ::: tip
-To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip) or [Line chart](/data-display/line-chart/).
+To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip) or [Line chart](/data-display/line-chart/line-chart).
 :::
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ## One value
 
@@ -107,11 +107,11 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 ## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

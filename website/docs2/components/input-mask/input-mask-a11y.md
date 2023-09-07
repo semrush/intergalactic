@@ -15,7 +15,7 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Enter`       | Submits the entered value.                     |
 
-See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#input_i_textarea).
+See detailed information about the keyboard support for the input fields in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#input_i_textarea).
 
 ## Considerations for developers
 
@@ -40,6 +40,6 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include input-mask-a11y-report

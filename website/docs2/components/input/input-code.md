@@ -56,7 +56,7 @@ const Demo = () => {
 
 ## Loading state in the input
 
-If the input is in a loading state while searching, sending, or entering data dynamically, add a [spin](/components/spin) to the right addon. The [spin](/components/spin) takes the place of the icon that is normally in the addon slot. During this time, the input may also be `disabled`.
+If the input is in a loading state while searching, sending, or entering data dynamically, add a [spin](/components/spin/spin) to the right addon. The [spin](/components/spin/spin) takes the place of the icon that is normally in the addon slot. During this time, the input may also be `disabled`.
 
 ::: sandbox
 
@@ -163,7 +163,7 @@ const Demo = () => {
 In the focused state, a clickable send/confirm icon can be placed inside the input alongside the typed text. It is only visible when the input is `focused`.
 
 ::: tip
-Please note that this is an outdated pattern. Now we use it only in the input inside the [pagination](/components/pagination/).
+Please note that this is an outdated pattern. Now we use it only in the input inside the [pagination](/components/pagination/pagination).
 :::
 
 ::: sandbox
@@ -328,7 +328,7 @@ const Demo = () => {
 
 ## Input with other component inside
 
-You can also place a [Badge](/components/badge/) or a [Tag](/components/tag/) inside the input field. All input sizes have the same size for badges.
+You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag/tag) inside the input field. All input sizes have the same size for badges.
 
 ::: sandbox
 

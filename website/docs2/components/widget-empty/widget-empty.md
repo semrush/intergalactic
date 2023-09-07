@@ -19,7 +19,7 @@ Component consists of the following:
 
 - `WidgetEmpty.Title`
 - `WidgetEmpty.Description`
-- [Illustration](/style/illustration/)
+- [Illustration](/style/illustration/illustration)
 - Controls
 
 ## Styles

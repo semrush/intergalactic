@@ -1403,7 +1403,7 @@ const data = [
 
 ## Table in table
 
-We use the example with [the accordion above](/table-group/data-table/#accordion_in_the_table).
+We use the example with [the accordion above](/table-group/data-table/data-table#accordion_in_the_table).
 
 1. Hide the table header;
 2. Set "inherit" to use the size from the top table for each column;
@@ -1519,7 +1519,7 @@ const data = [
 
 ## Table in table with fixed column
 
-We use the example with [the table above](/table-group/data-table/#table_in_table).
+We use the example with [the table above](/table-group/data-table/data-table#table_in_table).
 
 1. Set the desired z-index;
 2. Set the variable to block the scroll;

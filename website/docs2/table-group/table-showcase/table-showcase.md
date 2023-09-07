@@ -7,8 +7,8 @@ docs: true
 
 Here you will find all quick links for our table and its specific use cases.
 
-- [Primary table](/table-group/table-primary/)
-- [Secondary table](/table-group/table-secondary/)
+- [Primary table](/table-group/table-primary/table-primary)
+- [Secondary table](/table-group/table-secondary/table-secondary)
 
 ## Controls
 

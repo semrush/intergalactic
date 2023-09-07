@@ -26,8 +26,8 @@ If your search behavior differs from those described in the table, don’t hesit
 
 These patterns use the following components:
 
-- [Input](/components/input);
-- [Select](/components/select).
+- [Input](/components/input/input);
+- [Select](/components/select/select).
 
 ## Combobox
 
@@ -37,7 +37,7 @@ These patterns use the following components:
 User cannot enter the data not corresponding to the items list.
 :::
 
-Use combobox when usual input, select or autocomplete are not appropriate for your case. For example, we use it in the [TimePicker](/components/time-picker/).
+Use combobox when usual input, select or autocomplete are not appropriate for your case. For example, we use it in the [TimePicker](/components/time-picker/time-picker).
 
 ### Interaction
 
@@ -54,11 +54,11 @@ Unlike the autocomplete, combobox has no items filtration. If user have entered 
 
 ### Validation
 
-Combobox validation works similarly to the other forms. You can find the detailed information in the [Validation](/patterns/validation-form/).
+Combobox validation works similarly to the other forms. You can find the detailed information in the [Validation](/patterns/validation-form/validation-form).
 
 ### Long loading
 
-If your interface needs more time to load the items list, show [Spin](/components/spin/) in the input.
+If your interface needs more time to load the items list, show [Spin](/components/spin/spin) in the input.
 
 ![](static/spinner.png)
 
@@ -96,6 +96,6 @@ Table: Usage examples
 
 | Search type                                            | Appearance example                       |
 | ------------------------------------------------------ | ---------------------------------------- |
-| Combobox in the [TimePicker](/components/time-picker/) | ![](static/combobox.png)         |
+| Combobox in the [TimePicker](/components/time-picker/time-picker) | ![](static/combobox.png)         |
 | AutoComplete                                           | ![](static/autocomplete.png) |
 

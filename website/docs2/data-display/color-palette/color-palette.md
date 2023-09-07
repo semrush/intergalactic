@@ -17,7 +17,7 @@ docs: true
 
 ## Chart tokens
 
-You can find all tokens for charts in the [tokens list](/style/design-tokens/#semantic_tokens). They all have `chart` in their token name.
+You can find all tokens for charts in the [tokens list](/style/design-tokens/design-tokens#semantic_tokens). They all have `chart` in their token name.
 
 ## Tokens for text and additional information
 
@@ -34,7 +34,7 @@ There are two ways of coloring your data with our palette.
 
 ### Categorical order
 
-This way helps to choose colors with a predefined order and contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/#base_tokens_palette).
+This way helps to choose colors with a predefined order and contrast for your data. Use chart tokens from the [semantic tokens list](/style/design-tokens/design-tokens#semantic_tokens) or tokens from the base palette in the [base tokens list](/style/design-tokens/design-tokens#base_tokens_palette).
 
 #### Basic pack
 
@@ -336,7 +336,7 @@ const App = function (props) {
 
 ### Sequental order
 
-This way helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/#base).
+This way helps to color your data in a monochromatic way. In this case use tokens from the base palette in the [tokens list](/style/design-tokens/design-tokens#base).
 
 #### Blue
 
@@ -1012,4 +1012,4 @@ The recommended maximum number of colors on a chart is 30.
 
 30 and more colors are for the really complex cases where you need a large number of colors that will be set for the data by the system.
 
-To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.
+To make a usable palette for this case first use [tokens from the base palette](/style/design-tokens/design-tokens#base_tokens_palette) with a hue of 300, then 200, then 400 and repeat this steps until you get the desired number of colors.

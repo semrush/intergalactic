@@ -15,7 +15,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the side panel.                         |
 
-See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_button_link_input_etc).
+See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_button_link_input_etc).
 
 ## Considerations for developers and designers
 
@@ -28,4 +28,4 @@ See detailed information about the keyboard support for the clickable elements i
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

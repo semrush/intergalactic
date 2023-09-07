@@ -104,7 +104,7 @@ In certain cases, headings can include additional information, such as a counter
 
 ## Heading for mobile devices
 
-To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/).
+To improve readability on different screens, adjust the size of headings based on the [breakpoints](/layout/grid-system/grid-system).
 
 ::: tip
 Only change font styles, not the markup.
@@ -218,7 +218,7 @@ const Demo = () => (
 
 ## Text styles
 
-You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link](/components/link/), a [hint](/style/typography/#hints_hint_links), or applying `strikethrough`.
+You have the flexibility to change the style of text by making it `bold`, `italic`, adding a [link](/components/link/link), a [hint](/style/typography/typography#hints_hint_links), or applying `strikethrough`.
 
 ::: sandbox
 

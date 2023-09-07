@@ -23,12 +23,12 @@ neighbors.
 
 For example, you can group together:
 
-- [Button](/components/button/)
-- [Input](/components/input/)
-- [Select](/components/select)
+- [Button](/components/button/button)
+- [Input](/components/input/input)
+- [Select](/components/select/select)
 
 You may also need a `flex-box` to align the components. For more information, see
-the [Flex-box and indent system](/layout/box-system/).
+the [Flex-box and indent system](/layout/box-system/box-system).
 
 ## Grouped buttons
 

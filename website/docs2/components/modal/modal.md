@@ -6,7 +6,7 @@ tabs: Design('modal'), A11y('modal-a11y'), API('modal-api'), Example('modal-code
 ---
 
 ::: tip
-For general recommendations on modal window content styles, refer to [Content in modal window](/patterns/modal-content/).
+For general recommendations on modal window content styles, refer to [Content in modal window](/patterns/modal-content/modal-content).
 :::
 
 ## Description
@@ -34,7 +34,7 @@ Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 - To show content that is required for the user to complete the main task in the interface.
 
 ::: tip
-If you want to hide a lot of information in the modal window, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/) or even a separate page.
+If you want to hide a lot of information in the modal window, this component may not be the best solution. Consider using [FullscreenModal](/components/fullscreen-modal/fullscreen-modal) or even a separate page.
 :::
 
 Don't show modals before the user has interacted with the interface. **Modal windows with information about limits are the exception in this case.**
@@ -56,8 +56,8 @@ The Modal window consists of the following:
 We have several modal window types in the design system:
 
 - default (it can be one- and two-zoned);
-- [Carousel](/components/carousel/);
-- [FullscreenModal](/components/fullscreen-modal/), can also be one- or two-zoned.
+- [Carousel](/components/carousel/carousel);
+- [FullscreenModal](/components/fullscreen-modal/fullscreen-modal), can also be one- or two-zoned.
 
 ## Modal window styles
 
@@ -129,7 +129,7 @@ It is recommended to save the information entered by the user when closing and r
 
 ### Loading
 
-When loading or reloading content within the modal window, display the [Spin](/components/spin/) component over the content.
+When loading or reloading content within the modal window, display the [Spin](/components/spin/spin) component over the content.
 
 Spin styles for this scenario:
 
@@ -166,7 +166,7 @@ If the size of the modal window changes when the user interacts with it, it is r
 
 Currently, when the browser width is reduced to 320px, the modal window is proportionally scaled down while maintaining the margins to the 12px. Simultaneously, the window occupies a larger portion of the viewport, shrinking proportionally to match the size of the device screen.
 
-Refer to [examples](/components/modal/modal-code/) of the modal window to see how modal changes to fit the screen.
+Refer to [examples](/components/modal/modal-code) of the modal window to see how modal changes to fit the screen.
 
 ::: tip
 _It is recommended to avoid using modal windows on mobile devices. However, if you use modal windows on mobile devices, leave a link to the parent page. If scrolling in modal window appears due to the amount of content, then it is recommend placing the window close button both at the top and at the end of such window, or fixing it in the header when scrolling._
@@ -187,7 +187,7 @@ If the height of the modal window exceeds the height of the browser window, it s
 
 ### Scrolling content in the window
 
-Individual elements within the window, such as tables, can be scrolled. The scrolling functionality is described in [ScrollArea](/components/scroll-area/).
+Individual elements within the window, such as tables, can be scrolled. The scrolling functionality is described in [ScrollArea](/components/scroll-area/scroll-area).
 
 ![](static/scroll-3.png)
 

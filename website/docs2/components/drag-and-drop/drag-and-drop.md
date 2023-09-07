@@ -72,11 +72,11 @@ Table: Where to use drag and drop component
 
 | Component                                | Appearance example                                                                                      |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| [Accordion](/components/accordion/)       | ![](static/drag-accordion.png)                                                |
-| [Card](/components/card/)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
-| [Table](/table-group/table/)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
-| [TabPanel](/components/tab-panel/)        | ![](static/drag-tabpanel.png)                                                  |
-| [Select/Multiselect](/components/select/) | ![](static/drag-default.png) ![](static/dragging.png) |
+| [Accordion](/components/accordion/accordion)       | ![](static/drag-accordion.png)                                                |
+| [Card](/components/card/card)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
+| [Table](/table-group/table/table)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
+| [TabPanel](/components/tab-panel/tab-panel)        | ![](static/drag-tabpanel.png)                                                  |
+| [Select/Multiselect](/components/select/select) | ![](static/drag-default.png) ![](static/dragging.png) |
 
 ## Interaction
 

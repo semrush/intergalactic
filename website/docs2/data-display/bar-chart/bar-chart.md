@@ -6,12 +6,12 @@ tabs: Bar chart('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('ba
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](../bar-chart/bar-chart-vertical/) or [horizontal](/data-display/bar-horizontal/).
+**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](/data-display/bar-chart/bar-chart-vertical) or [horizontal](/data-display/bar-horizontal/bar-horizontal).
 
 ::: tip
 **Difference from histogram chart**
@@ -37,7 +37,7 @@ It is recommended to make a minimum 20% margin between a group of columns. This 
 
 ### Chart colors
 
-Use [special chart palette](/data-display/color-palette/) and follow the rules prescribed for it.
+Use [special chart palette](/data-display/color-palette/color-palette) and follow the rules prescribed for it.
 
 ::: tip
 If the data refers to the same category, the values shall not have different colors.
@@ -109,7 +109,7 @@ If the chart has a trend line, then while hovering a line and a point shall be d
 | Chart with two or more categories | ![](/data-display/bar-chart/static/bar-chart-2-hover.png) |
 
 ::: tip
-To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
+To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip).
 :::
 
 ## Usage in UX/UI

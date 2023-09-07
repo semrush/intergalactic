@@ -102,15 +102,15 @@ const App = PlaygroundGeneration(Preview);
 
 Other input types for entering certain data:
 
-- [InputMask](/components/input-mask/)
-- [InputNumber](/components/input-number/)
-- [InputPhone](/components/input-phone/)
-- [InputTags](/components/input-tags/)
-- [DatePicker](/components/date-picker)
-- [TimePicker](/components/time-picker)
-- [ColorPicker](/components/color-picker)
-- [Checkbox](/components/checkbox)
-- [Radio](/components/radio)
+- [InputMask](/components/input-mask/input-mask)
+- [InputNumber](/components/input-number/input-number)
+- [InputPhone](/components/input-phone/input-phone)
+- [InputTags](/components/input-tags/input-tags)
+- [DatePicker](/components/date-picker/date-picker)
+- [TimePicker](/components/time-picker/time-picker)
+- [ColorPicker](/components/color-picker/color-picker)
+- [Checkbox](/components/checkbox/checkbox)
+- [Radio](/components/radio/radio)
 
 ## Sizes
 
@@ -182,10 +182,10 @@ The search input can have a non-clickable icon before the text and the icon for 
 
 ## Input with a counter
 
-You can place [Counter](/components/counter/) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
+You can place [Counter](/components/counter/counter) inside the input or next to its label. Counter usually shows the number of available characters, limits, etc. The counter is usually non-clickable.
 
 ::: tip
-Please don’t use the [Tag](/components/tag/) component for the counter. It has a different purpose and functionality.
+Please don’t use the [Tag](/components/tag/tag) component for the counter. It has a different purpose and functionality.
 :::
 
 Table: Input with counter
@@ -197,7 +197,7 @@ Table: Input with counter
 
 ## Usage in UX/UI
 
-1. Use input fields only for single-line information. If you need to enter a lot of data, use a [Textarea](/components/textarea/) instead.
+1. Use input fields only for single-line information. If you need to enter a lot of data, use a [Textarea](/components/textarea/textarea) instead.
 2. Label the inputs clearly, so users can quickly understand what data needs to be entered.
 3. Select an appropriate width for the input field based on the content to be entered. For example, if it's for a phone number, the input width shouldn't be wider than what is expected for a phone number.
 

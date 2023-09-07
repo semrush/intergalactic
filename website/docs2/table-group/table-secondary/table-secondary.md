@@ -5,7 +5,7 @@ tabName: Design
 tabs: Secondary table('table-secondary'), Example('table-secondary-code')
 ---
 
-**Secondary** is a table type for compact displaying small amount of data inside widgets and [cards](/components/card/). These tables commonly either don't have any functionality, or they have something simple like sorting.
+**Secondary** is a table type for compact displaying small amount of data inside widgets and [cards](/components/card/card). These tables commonly either don't have any functionality, or they have something simple like sorting.
 
 ## Paddings
 
@@ -26,5 +26,5 @@ If there is a sorting icon in the column, icon should be in active state and has
 
 ## Row states
 
-See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
+See more information in the common [Table principles](/table-group/table/table#a1c3dd) guide.
 

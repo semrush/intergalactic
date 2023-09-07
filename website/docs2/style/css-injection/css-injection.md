@@ -4,7 +4,7 @@ tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local')
 ---
 
 ::: warning
-:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/#themes).
+:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
 :::
 
 ## Description
@@ -33,7 +33,7 @@ Styles composition helps us to extend basic styles of our components, and someti
 - No style de-duplication.
 - It is difficult to reuse the styles.
 
-Read more about [how to apply styles composition in practice](/style/css-injection/css-injection-local/).
+Read more about [how to apply styles composition in practice](/style/css-injection/css-injection-local).
 
 ## Global specific
 
@@ -54,5 +54,5 @@ Using this approach, you can publish CSS injections to `NPM` and reuse them late
 - Strict structure and naming.
 - Need to configure webpack.
 
-You can write CSS injections for our components this way with [global use](/style/css-injection/css-injection-global/).
+You can write CSS injections for our components this way with [global use](/style/css-injection/css-injection-global).
 

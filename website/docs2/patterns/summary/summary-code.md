@@ -175,7 +175,7 @@ const Demo = () => {
 
 ## Vertical layout with skeleton
 
-In case your report layout demands it, you have the option to vertically arrange the metrics. To enhance user experience during the initial data retrieval, consider displaying [Skeleton](/components/skeleton/).
+In case your report layout demands it, you have the option to vertically arrange the metrics. To enhance user experience during the initial data retrieval, consider displaying [Skeleton](/components/skeleton/skeleton).
 
 ::: sandbox
 

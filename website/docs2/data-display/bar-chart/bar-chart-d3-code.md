@@ -5,7 +5,7 @@ tabs: Bar chart('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('ba
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Bar

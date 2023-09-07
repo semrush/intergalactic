@@ -9,7 +9,7 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 
 **Select** component allows users to choose one or more values from a list. It can optionally include search input, titles, buttons, grouping, and nesting.
 
-The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/).
+The component is composed of a trigger button (explained in this guide) and the [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 
 ## Component composition
 
@@ -71,7 +71,7 @@ Table: Trigger button states
 
 ## Trigger content
 
-The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/) should be placed in the upper right corner of the trigger.
+The select trigger can contain an icon, flag, or other addon before the text. The [Badge](/components/badge/badge) should be placed to the right of the text. For all sizes, the margin between the badge and the text is 8px. The [Dot](/components/dot/dot) should be placed in the upper right corner of the trigger.
 
 Table: Content types trigger button can have
 
@@ -84,7 +84,7 @@ Table: Content types trigger button can have
 
 ## DropdownMenu
 
-Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/).
+Read about the dropdown list, its content, and states in [DropdownMenu](/components/dropdown-menu/dropdown-menu).
 
 ## Multiselect
 
@@ -144,7 +144,7 @@ Don’t show "Select all" or "Deselect all" at the time when the user has search
 
 - Sometimes, user selection can be limited by the number of required items.
 - In this case, once the user has selected the required number, all other items should receive the `disabled` state.
-- Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
+- Inform the user that the choice is limited. This can be done, for example, by putting a [Hint](/style/typography/typography#hints_hint_links) next to the input's label. Also, you can add a tooltip to the items in the `disabled` state that explains why they got this state.
 
 ::: tip
 We recommend hiding the "Select all" and "Deselect all" buttons for lists with limitations because, for such cases, the user cannot select or deselect all options due to limitations.

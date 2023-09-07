@@ -30,6 +30,6 @@ tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-c
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include date-a11y-report

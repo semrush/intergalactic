@@ -6,7 +6,7 @@ tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code
 
 ## Description
 
-**Input** is a component designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/). This input field ensures that users can enter their phone numbers correctly without any uncertainty about the format.
+**Input** is a component designed to facilitate the entry of phone numbers using a [mask](/components/input-mask/input-mask). This input field ensures that users can enter their phone numbers correctly without any uncertainty about the format.
 
 ### Recommendations for using this input
 
@@ -32,7 +32,7 @@ Table: InputPhone variants
 | Known country but unknown phone number format | ![](static/input-phone-2.png) |
 | Known country and phone number format | ![](static/input-phone-3.png) |
 
-When the user's country is known, it's important to display the flag of the country in the input field. This helps users navigate through the entered data more easily, as seen in the [Form guide](/patterns/form/).
+When the user's country is known, it's important to display the flag of the country in the input field. This helps users navigate through the entered data more easily, as seen in the [Form guide](/patterns/form/form).
 
 ::: tip
 Be sure to add the label "Phone number" to the input. Especially if there are no visual indications of the mask type, country code, or format,

@@ -1,6 +1,5 @@
 ---
 title: Success state
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 
@@ -37,7 +36,7 @@ Here are some general recommendations that can help you:
 * Ensure that the success message or feedback is clear, so that users can easily understand what they need to do next.
 * Users should be able to close the success modal window or notice at any time – for example, with a close button or by pressing the `Escape` key.
 
-For example, if a [Feedback form](/components/feedback/) has been sent successfully, show the success message in the same place next to the form's trigger.
+For example, if a [Feedback form](/components/feedback/feedback) has been sent successfully, show the success message in the same place next to the form's trigger.
 
 ![](static/success-response.png)
 
@@ -51,10 +50,10 @@ You can also close the success state automatically after 3—5 seconds, but be s
 
 ## Other methods
 
-You can use [NoticeBubble](/components/notice-bubble/) to notify a user about successfully completing a small part of a scenario.
+You can use [NoticeBubble](/components/notice-bubble/notice-bubble) to notify a user about successfully completing a small part of a scenario.
 
 ![](static/notice-bubble.png)
 
-You can also use [Notice](/components/notice/) in a similar way to provide a user with some feedback.
+You can also use [Notice](/components/notice/notice) in a similar way to provide a user with some feedback.
 
 ![](static/notice.png)

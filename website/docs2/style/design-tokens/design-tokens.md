@@ -53,7 +53,7 @@ Semantic tokens include tokens for:
 - box-shadows;
 - border-radius.
 
-To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage/#token_naming_structure).
+To learn more about the tokens names see [Token naming structure section](/style/design-tokens/design-tokens-usage#token_naming_structure).
 
 ::: react-view
 
@@ -75,7 +75,7 @@ If you are creating a product that differs in style from other products of Semru
 
 ### What is a theme?
 
-Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Check [Usage in development](/style/design-tokens/design-tokens-usage-development/).
+Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Check [Usage in development](/style/design-tokens/design-tokens-usage-development).
 
 ## Creating your own theme
 
@@ -106,7 +106,7 @@ There, you can find the detailed process for creating a new theme for our design
 
 In this case, you need to take more steps.
 
-1. Duplicate [the library with tokens and three main libraries with components](/get-started-guide/work-figma/#core_libraries).
+1. Duplicate [the library with tokens and three main libraries with components](/get-started-guide/work-figma/work-figma#core_libraries).
 2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playground: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
 3. Test and try on the theme for all components of the library in the theme playground.
 4. Save the JSON of the theme, and either give it to the developers, or commit it yourself.
@@ -118,7 +118,7 @@ This is where the magic of converting the json file with tokens into a new theme
 
 We recommend you to check:
 
-- [Usage in development](/style/design-tokens/design-tokens-usage-development/);
-- [Example for custom component](/style/design-tokens/design-tokens-code/);
-- [CSS Injection guide](/style/css-injection/).
+- [Usage in development](/style/design-tokens/design-tokens-usage-development);
+- [Example for custom component](/style/design-tokens/design-tokens-code);
+- [CSS Injection guide](/style/css-injection/css-injection).
 

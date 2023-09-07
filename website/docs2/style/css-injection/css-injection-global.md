@@ -4,7 +4,7 @@ tabs: CSS Injection('css-injection'), Local CSS Injection('css-injection-local')
 ---
 
 ::: warning
-:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/#themes).
+:rotating_light: If you are using CSS Injection for theming purpose, consider review [design tokens based theming](/style/design-tokens/design-tokens#themes).
 :::
 
 All our components use default Semrush styles (default theme prefixed with `--intergalactic` in tokens). However, if your product uses a different color palette or you need to style the components differently, you may want to change the default Semrush styles. This page contains instructions on how to do that using the React Semcore plugin for Babel.

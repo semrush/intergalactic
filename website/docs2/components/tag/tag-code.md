@@ -89,7 +89,7 @@ const Demo = () => {
 
 ## Editing tag
 
-Use [InlineEdit](/components/inline-edit/) for this case.
+Use [InlineEdit](/components/inline-edit/inline-edit) for this case.
 
 ::: sandbox
 

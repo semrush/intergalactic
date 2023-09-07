@@ -5,10 +5,10 @@ tabs: Design('dropdown-menu'), A11y('dropdown-menu-a11y'), API('dropdown-menu-ap
 ---
 
 ::: warning
-:warning: If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/)
+:warning: If you need to customize your work with the dropdown menu, please refer to the documentation [@semcore/ui/popper](/utils/popper/popper)
 :::
 
-The component is a wrap over [@semcore/ui/dropdown](/components/dropdown) with the following logic:
+The component is a wrap over [@semcore/ui/dropdown](/components/dropdown/dropdown) with the following logic:
 
 - Display of the list of options in a dropdown window
 - Scrolling the list of options using the keyboard
@@ -48,7 +48,7 @@ There are several methods of displaying the dropdown menu in the component. We w
 We implement it with the help of the combination of two components:
 
 - `DropdownMenu.Popper` – layout of a dropdown window
-- `DropdownMenu.List` and [ScrollArea](/components/scroll-area/) with option list styles
+- `DropdownMenu.List` and [ScrollArea](/components/scroll-area/scroll-area) with option list styles
 
 This method is good when you need a flexible content customization in a dropdown menu.
 
@@ -197,7 +197,7 @@ const Demo = () => {
 
 As with the lower-level components, you can access the component logic by passing the render-function into the body.
 
-You can see the list of available methods in the [API](/components/dropdown-menu/dropdown-menu-api/#aad4e2).
+You can see the list of available methods in the [API](/components/dropdown-menu/dropdown-menu-api#aad4e2).
 
 ::: sandbox
 

@@ -5,7 +5,7 @@ tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Scale

@@ -32,7 +32,7 @@ The list below describes roles and attributes that component already has.
 |          | `aria-haspopup`          | `div`   | Indicates the availability and type of interactive popup element that can be triggered by the element on which the attribute is set.                                                                                         |
 |          | `aria-valuenow="NUMBER"` | `div`   | Defines the current value for a widget.                                                                                                                                                                                      |
 
-For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#a9cbfb).
+For information about the dropdown behavior see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#a9cbfb).
 
 ## Resources
 
@@ -40,6 +40,6 @@ Find live examples of accessible inputs with different types in [DigitalA11y pro
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include time-picker-a11y-report

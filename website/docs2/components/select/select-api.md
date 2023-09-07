@@ -19,7 +19,7 @@ import Select from '@semcore/ui/select';
 
 ## Select.Trigger
 
-It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/filter-trigger/filter-trigger-api/#a7d101).
+It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/filter-trigger/filter-trigger-api#a7d101).
 
 ```jsx
 import Select from '@semcore/ui/select';
@@ -81,6 +81,6 @@ import Select from '@semcore/ui/select';
 <Select.Option.Checkbox />;
 ```
 
-Styled [`Box`](/layout/box-system/box-api/#a3cfce).
+Styled [`Box`](/layout/box-system/box-api#a3cfce).
 
 <script setup>import { data as types } from '@types.data.ts';</script>

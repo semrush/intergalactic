@@ -17,13 +17,13 @@ tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-c
 | `Space`, `Enter`               | Selects the option and closes the dropdown.                                                                                               |
 | `Esc`                          | Closes the dropdown and returns focus to the AutoSuggest trigger.                                                                         |
 
-See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
+See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
 
 ### Roles and attributes
 
-- For more information about the radio or checkbox list, see [Radio button](/components/radio/radio-a11y/) and [Checkbox](/components/checkbox/checkbox-a11y/) guides.
-- For information about the dropdown behavior, see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
-- Fo more information about the input behavior, refer to [Input](/components/input/input-a11y/).
+- For more information about the radio or checkbox list, see [Radio button](/components/radio/radio-a11y) and [Checkbox](/components/checkbox/checkbox-a11y) guides.
+- For information about the dropdown behavior, see [Keyboard support for dropdown](/core-principles/a11y/a11y-keyboard#keyboard_support_for_popper).
+- Fo more information about the input behavior, refer to [Input](/components/input/input-a11y).
 
 ## Resources
 
@@ -31,6 +31,6 @@ See detailed information for the controlling dropdown with the keyboard in the [
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include auto-suggest-a11y-report

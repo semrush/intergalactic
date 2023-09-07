@@ -1,10 +1,9 @@
 ---
 title: Content in modal window
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ::: tip
-Description of the component for modal windows can be found in the [Modal](/components/modal/).
+Description of the component for modal windows can be found in the [Modal](/components/modal/modal).
 :::
 
 Here we have compiled recommendations for content styles in modal windows.
@@ -62,7 +61,7 @@ When scrolling the modal's content area, the fixed areas acquire shadows from th
 
 ## Loading
 
-While content inside the modal window is loading or reloading, display the [Spin](/components/spin/) overlay on top of the content.
+While content inside the modal window is loading or reloading, display the [Spin](/components/spin/spin) overlay on top of the content.
 
 - Use the largest Spin size – XXL.
 - Ensure the spinner is centered relative to the hidden content.

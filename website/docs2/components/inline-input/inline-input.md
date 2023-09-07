@@ -16,7 +16,7 @@ tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api')
 - transferring data to the system isn’t the main task of the interface (for example, additional information and notes in cards).
 
 ::: tip
-Don’t use such an input in a [form](/patterns/form/) along with regular inputs (see the example in the UX/UI use section below).
+Don’t use such an input in a [form](/patterns/form/form) along with regular inputs (see the example in the UX/UI use section below).
 :::
 
 ## Appearance
@@ -103,7 +103,7 @@ In some cases, where space allows and there is a need to show regular buttons, y
 
 ## Interaction
 
-InlineInput can take on the same states as a [normal input](/components/input/), except for the normal, read-only, and disabled states.
+InlineInput can take on the same states as a [normal input](/components/input/input), except for the normal, read-only, and disabled states.
 
 - The user has activated a trigger that opens an InlineInput.
 - InlineInput immediately receives focus.
@@ -120,7 +120,7 @@ Table: InlineInput states
 | Invalid focus | ![](static/invalid-focus.png) | `border-bottom: 1px solid var(--border-danger-active)`, `box-shadow: var(--keyboard-focus-invalid)`                                              |
 | Valid         | ![](static/valid.png)         | `border-bottom: 1px solid var(--border-success-active)`                                                                                           |
 | Valid focus   | ![](static/valid-focus.png)   | `border-bottom: 1px solid var(--border-success-active)`, `box-shadow: var(--keyboard-focus-valid)`                                               |
-| Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/) token). |
+| Loading       | ![](static/loading.png)     | Spin with XS size. The cancel button gets the disabled state while the input is loading (use [`--disabled-opacity`](/style/design-tokens/design-tokens) token). |
 
 ## Save и Cancel icon buttons
 
@@ -153,7 +153,7 @@ _An InlineInput is convenient when you need to add a note, an additional descrip
 
 ### Using InlineInput with Tag
 
-For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/). A regular input doesn't have the ability to change the height of the input to fit it into a compact table.
+For a tag that adds another tag, use InlineInput instead of [normal input](/components/input/input). A regular input doesn't have the ability to change the height of the input to fit it into a compact table.
 
 ![](static/inline-tag-yes-no.png)
 

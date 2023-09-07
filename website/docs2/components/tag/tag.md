@@ -153,7 +153,7 @@ The component offers several themes for tags.
 
 | Tag theme     | Appearance example            | Description     |
 | ------------- | ----------------------------- | --------------- |
-| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background gets color with 100 shade, for example, `--gray-100`). |
+| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background gets color with 100 shade, for example, `--gray-100`). |
 | `primary` with `color:"white"`    | ![](static/primary-invert.png)     | An inversion of the `primary` tag meant for dark or colored backgrounds.|
 | `secondary`                       | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required.|
 | `secondary` with `color:"white"`  | ![](static/secondary-invert.png) | An inversion of the `secondary` tag suitable for dark or colored backgrounds.|
@@ -181,7 +181,7 @@ Users can create tags using tags with the `additional` theme.
 | Hover  | ![](static/hover.png)  | `background-color: var(--tag-secondary-hover-active)`                                                                         |
 | Active | ![](static/active.png) | `background-color: var(--tag-secondary-hover-active)`                                                                         |
 
-This tag opens [InlineInput](/components/inline-input/), and you can add a [mask label](/components/input-mask/) to guide the user on what to type into the input.
+This tag opens [InlineInput](/components/inline-input/inline-input), and you can add a [mask label](/components/input-mask/input-mask) to guide the user on what to type into the input.
 
 ![](static/add-input-L.png)
 
@@ -193,7 +193,7 @@ If space for tag placement is limited, the text should be truncated with an `ell
 
 ## Editing tag
 
-For editable tags, use the [InlineInput](/components/inline-input/) component, similar to adding a tag. Refer to the [live example](/components/tag/tag-code/#editing_tag).
+For editable tags, use the [InlineInput](/components/inline-input/inline-input) component, similar to adding a tag. Refer to the [live example](/components/tag/tag-code#editing_tag).
 
 ## Long text
 

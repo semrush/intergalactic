@@ -25,13 +25,13 @@ Table: FilterTrigger sizes
 | M (28px)  | ![](static/filter-default-m.png) | ![](static/filter-active-m.png) | ![](static/filter-active-counter-m.png) |
 | L (40px)  | ![](static/filter-default-l.png) | ![](static/filter-active-l.png) | ![](static/filter-active-counter-l.png) |
 
-Show [counter](/components/counter) only for **Advanced filters** and filters that have several additional filters inside. The counter in the FilterTrigger respectively indicates the number of additional filters applied.
+Show [counter](/components/counter/counter) only for **Advanced filters** and filters that have several additional filters inside. The counter in the FilterTrigger respectively indicates the number of additional filters applied.
 
 ![](static/counter-or-not.png)
 
 ## Margins between FilterTriggers
 
-Use the same margins as other inputs and [buttons](/components/button/#margins_between_buttons) have.
+Use the same margins as other inputs and [buttons](/components/button/button#margins_between_buttons) have.
 
 Table: Margins between FilterTriggers
 
@@ -56,7 +56,7 @@ Table: Default FilterTrigger states
 | Something went wrong | If for some reason it was not possible to show all the filter options, show “**Something went wrong”** text in the dropdown. You can add **Reload** link, which sends the request again.  | ![](static/ft-5.png)  |
 | Placeholder (active trigger)               | The opened trigger should always get the `active` state. Dropdown may be closed by clicking on an option or outside the dropdown.                                                                                                                                                                                                                                                                                                       | ![](static/ft-6.png)  |
 | Active filter               | The trigger size changes according to the selected value or values. **If only one value can be chosen, it's suggested to display a tooltip that explains the specific selection when hovering over the active filter.** If multiple values can be selected, there's no need to show all of them in the tooltip. Instead, the tooltip can provide a description of how the filter works. | ![](static/ft-7.png) ![](static/ft-9.png)  |
-|                                          | If the filter allows [selecting more than two values](/components/select/), simplify the display by showing **"N selected"** in the trigger, indicating the number of selected values. | ![](static/ft-10.png) |
+|                                          | If the filter allows [selecting more than two values](/components/select/select), simplify the display by showing **"N selected"** in the trigger, indicating the number of selected values. | ![](static/ft-10.png) |
 | Active filter (hover)           | When user clicks the button with the `Close` icon, it removes the value in the trigger and restores it to the default state with the placeholder. | ![](static/ft-11.png) |
 |                                          | Add a tooltip to the button with the `Close` icon saying **"Reset filter"** and increase the display delay from the default value of 100 to 150.  | ![](static/ft-12.png) |
 |  | When user clicks on the trigger, a dropdown opens up, allowing user to change the selected value. The dropdown closes when user clicks on an option or outside the dropdown. | ![](static/ft-13.png) |

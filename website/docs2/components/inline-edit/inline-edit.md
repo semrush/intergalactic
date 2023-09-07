@@ -17,7 +17,7 @@ tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), E
 
 ## Appearance
 
-It's important to note that the example below serves merely as an illustration and isn't the default configuration. Any control component, whether it's a [Button](/components/button/), an [Icon](/style/icon/), or text with an icon, can be utilized as a trigger.
+It's important to note that the example below serves merely as an illustration and isn't the default configuration. Any control component, whether it's a [Button](/components/button/button), an [Icon](/style/icon/icon), or text with an icon, can be utilized as a trigger.
 
 ![](static/inline-edit.png)
 
@@ -38,7 +38,7 @@ Table: InlineEdit states
 | ----------------------- | ---------------------- | ------- |
 | Normal                  | ![](static/normal.png)        | The placeholder's color matches that of a default input `--text-placeholder`.    |
 | Hover                   | ![](static/hover.png)         | The cursor changes to a `pointer`. The icon's color shifts to `--icon-secondary-neutral-hover-active`.    |
-| Focus                   | ![](static/opened.png)        | Display the input type required for data entry ([normal](/components/input/), [textarea](/components/textarea/), [select](/components/select), [color-picker](/components/color-picker), [time-picker](/components/time-picker), for example). |
+| Focus                   | ![](static/opened.png)        | Display the input type required for data entry ([normal](/components/input/input), [textarea](/components/textarea/textarea), [select](/components/select/select), [color-picker](/components/color-picker/color-picker), [time-picker](/components/time-picker/time-picker), for example). |
 | Entered data            | ![](static/success.png)       | Text color changes to `--text-primary`.      |
 | Entered data with hover | ![](static/success-hover.png) | The cursor changes to a `pointer`. The interactive trailing add-on's color shifts to `--icon-secondary-neutral-hover-active`.|
 

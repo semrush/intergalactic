@@ -71,7 +71,7 @@ ColorPicker.Item has 28px * 28px size.
 
 ## Margins
 
-All margins must be [multiples of 4](/layout/box-system/#spacing_system). The default recommended margins are 4px:
+All margins must be [multiples of 4](/layout/box-system/box-system#spacing_system). The default recommended margins are 4px:
 
 ![](static/colorpicker-margins.png)
 
@@ -139,7 +139,7 @@ Table: DropdownMenu appearance
 
 ## Input (optional)
 
-In case when a ColorPicker allows users to add custom colors, include an input that only accepts HEX values. For more information, refer to the [Validation section](/components/color-picker/#validation).
+In case when a ColorPicker allows users to add custom colors, include an input that only accepts HEX values. For more information, refer to the [Validation section](/components/color-picker/color-picker#validation).
 
 ### Size, margins and paddings
 
@@ -185,22 +185,22 @@ To help users fix the invalid input, add the following message to the tooltip: "
 
 Components that you can use as a trigger for the ColorPicker:
 
-- [Input](/components/input/)
-- [Link](/components/link/)
-- [Select](/components/select/)
+- [Input](/components/input/input)
+- [Link](/components/link/link)
+- [Select](/components/select/select)
 
 ![](static/color-picker-triggers.png)
 
 ColorPicker.Item can be placed inside the following components:
 
-- [Button](/components/button/)
-- [FilterTrigger](/components/filter-trigger/)
-- [Pills](/components/pills/)
-- [Select/Multiselect](/components/select/)
-- [TabLine](/components/tab-line/)
-- [TabPanel](/components/tab-panel/)
-- [Tag](/components/tag/)
-- [Option](/components/dropdown-menu/#a66af9)
+- [Button](/components/button/button)
+- [FilterTrigger](/components/filter-trigger/filter-trigger)
+- [Pills](/components/pills/pills)
+- [Select/Multiselect](/components/select/select)
+- [TabLine](/components/tab-line/tab-line)
+- [TabPanel](/components/tab-panel/tab-panel)
+- [Tag](/components/tag/tag)
+- [Option](/components/dropdown-menu/dropdown-menu#a66af9)
 
 ![](static/color-picker-places.png)
 

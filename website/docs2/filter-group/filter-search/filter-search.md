@@ -6,7 +6,7 @@ tabs: Filter Search('filter-search'), Example('filter-search-code')
 
 ## Description
 
-**Filter search** is an [Input](/components/input/) we use in filters to search in a table or other kind of data. It can apply entered data dynamically and by clicking on the submit button.
+**Filter search** is an [Input](/components/input/input) we use in filters to search in a table or other kind of data. It can apply entered data dynamically and by clicking on the submit button.
 
 **When working with Filter Search, it is important for the user:**
 
@@ -17,7 +17,7 @@ tabs: Filter Search('filter-search'), Example('filter-search-code')
 
 ## Appearance
 
-This filter inherits all [Input](/components/input/) styles and properties.
+This filter inherits all [Input](/components/input/input) styles and properties.
 
 | Inactive filter                                | Active filter                               |
 | ---------------------------------------------- | ------------------------------------------- |
@@ -60,7 +60,7 @@ Slow but accurate user assistant, searches by button or by clicking "Enter".
 - filters are limited;
 - there is a lot of data and each filter application is a long and expensive query.
 
-Use [NeighborLocation](/utils/neighbor-location/) to "glue" multiple controls.
+Use [NeighborLocation](/utils/neighbor-location/neighbor-location) to "glue" multiple controls.
 
 | State       | Appearance example                                        | Description                                                                                                                                                                                                                                        |
 | ----------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

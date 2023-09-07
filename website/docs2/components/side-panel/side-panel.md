@@ -6,7 +6,7 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 ---
 
 ::: tip
-In the [2.0.0 version](/components/side-panel/side-panel-changelog/), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
+In the [2.0.0 version](/components/side-panel/side-panel-changelog), the component was divided into three parts: `Header`, `Body`, and `Footer`. This was done to make it easier to restyle the component. Additionally, an optional `Back` button was added.
 :::
 
 ## Description
@@ -19,7 +19,7 @@ In the [2.0.0 version](/components/side-panel/side-panel-changelog/), the compon
 - To keep the user in the context of the page (even if the SidePanel has an overlay).
 
 ::: tip
-Use [Modal windows](/components/modal/) to show important information or request a response from the user.
+Use [Modal windows](/components/modal/modal) to show important information or request a response from the user.
 :::
 
 **For example, you can use SidePanel as:**
@@ -47,7 +47,7 @@ Component consists of the following:
 The trigger for opening the SidePanel can be the following:
 
 - A `News` icon in the main header of the website.
-- Additional links in [ProductHead](/components/product-head/).
+- Additional links in [ProductHead](/components/product-head/product-head).
 - Controls that hide additional information.
 - Charts that can be clicked to show additional information.
 - On small screens, other controls can serve as triggers to open SidePanel.
@@ -102,7 +102,7 @@ Table: SidePanel.Header styles
 
 General recommendations for SidePanel content styles:
 
-- Choose the text size for the panel to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/).
+- Choose the text size for the panel to maintain a hierarchy of headers in the content within SidePanel. If necessary, you can experiment and use your text size hierarchy within our [typographic scale](/style/typography/typography).
 
 ![](static/hierarchy.png)
 
@@ -114,7 +114,7 @@ General recommendations for SidePanel content styles:
 
 You can place common controls for SidePanel content in the footer.
 
-- Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar) can be placed there.
+- Typically, any controls, CTA, or other elements like [ProgressBar](/components/progress-bar/progress-bar) can be placed there.
 - The recommended size of controls in the panel on the desktop is M. Depending on the context, use M or L controls in the panel on small screens.
 
 Footer styles:
@@ -173,13 +173,13 @@ SidePanel should have a header in all cases.
 
 ### Initial load
 
-At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/).
+At the initial load of the SidePanel content, show the content structure with [Skeleton](/components/skeleton/skeleton).
 
 ![](static/side-panel-skeleton.png)
 
 ### Reloading
 
-When loading and reloading SidePanel content, show [Spin](/components/spin/) with XL size in the center.
+When loading and reloading SidePanel content, show [Spin](/components/spin/spin) with XL size in the center.
 
 ![](static/spin.png)
 

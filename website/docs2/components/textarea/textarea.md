@@ -137,7 +137,7 @@ Table: Textarea with counter
 
 ## Interaction
 
-The styles of the textarea in different states correspond to those of the [Input](/components/input/) component for the same states.
+The styles of the textarea in different states correspond to those of the [Input](/components/input/input) component for the same states.
 
 Table: Textarea states
 
@@ -149,6 +149,6 @@ Table: Textarea states
 
 ## Usage in UX/UI
 
-- Use the Textarea when users need to input a substantial amount of data. For short inputs with 1-3 words, use the [Input](/components/input/) component instead.
+- Use the Textarea when users need to input a substantial amount of data. For short inputs with 1-3 words, use the [Input](/components/input/input) component instead.
 - Provide a descriptive name for the textarea so that users understand the type of data they should enter.
 

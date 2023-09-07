@@ -2,12 +2,12 @@
 title: FeedbackYesNo
 fileSource: feedback-form
 tabName: Design
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
+tabs: FeedbackYesNo('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## Description
 
-**FeedbackYesNo** represents a feedback collection pattern. This pattern consists of the [Notice](/components/notice/) and [Feedback form](/components/feedback/). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
+**FeedbackYesNo** represents a feedback collection pattern. This pattern consists of the [Notice](/components/notice/notice) and [Feedback form](/components/feedback/feedback). Its purpose is to introduce a new feature to the user and pose a straightforward question about the product's performance. _For instance, "Discover our new Dashboard! Is it functioning effectively for you?"_
 
 ## Component appearance
 
@@ -33,7 +33,7 @@ It is also could be placed next to the feature for which feedback is desired.
 ![](static/feedback-yes-no.png)
 
 - The notice's height is 72px.
-- Preceding the text, include the [Feedback illustration](/style/illustration/). The image dimensions are 40px x 40px.
+- Preceding the text, include the [Feedback illustration](/style/illustration/illustration). The image dimensions are 40px x 40px.
 - The "Ask me later" button is designed as a button with `use="tertiary"` and `theme="info"`, not as a link.
 
 ### Margins and paddings
@@ -42,7 +42,7 @@ It is also could be placed next to the feature for which feedback is desired.
 
 ## Form behavior
 
-Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback/).
+Refer to the comprehensive behavior description of the feedback dropdown in the [Feedback](/components/feedback/feedback).
 
 ## Buttons behavior
 
@@ -105,6 +105,6 @@ Table: Events arrangement
 | Appearance of an error in the input for the email                    | FeedbackYesNo | No valid Email      |             |
 | Error of empty email                                                 | FeedbackYesNo | Empty Email         |             |
 | Error of empty comment                                               | FeedbackYesNo | Empty Comment       |             |
-| Appearance of the [red notice](/components/notice/) on wrong sending | FeedbackYesNo | Error Send          |             |
+| Appearance of the [red notice](/components/notice/notice) on wrong sending | FeedbackYesNo | Error Send          |             |
 | Click email for communication `You can also send us an email...`     | FeedbackYesNo | Click Email Support |             |
 

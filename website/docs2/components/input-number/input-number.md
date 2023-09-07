@@ -147,7 +147,7 @@ Table: InputNumbers states
 
 ## Validation
 
-Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [Validation](/patterns/validation-form/) guide.
+Like any input field, InputNumber can be set as a required field. For general recommendations on form and input validation, refer to the [Validation](/patterns/validation-form/validation-form) guide.
 
 To assist users in entering correct and valid data, you can:
 
@@ -183,7 +183,7 @@ Table: Validation case for InputRange
 
 ## Appearance customization
 
-In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code/#appearance_customization).
+In certain cases, when you need to display the steppers as buttons with `Plus` and `Minus` icons, you can utilize an alternative view of this component. Refer to the [Example tab](/components/input-number/input-number-code#appearance_customization).
 
 ![](static/alternative.png)
 

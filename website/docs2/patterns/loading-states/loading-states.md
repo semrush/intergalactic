@@ -1,15 +1,14 @@
 ---
 title: Loading states
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
 
 These components are employed to manage user expectations:
 
-- [Spin](/components/spin/)
-- [Skeleton](/components/skeleton/)
-- [ProgressBar](/components/progress-bar/)
+- [Spin](/components/spin/spin)
+- [Skeleton](/components/skeleton/skeleton)
+- [ProgressBar](/components/progress-bar/progress-bar)
 
 **Use them for different cases.** For detailed insights into each component, refer to their guides.
 
@@ -27,13 +26,13 @@ For instance, if you know that a landing page loads quickly, you can progressive
 
 ### Page loading
 
-In all other circumstances, implement [Skeleton](/components/skeleton) to display while the page loads.
+In all other circumstances, implement [Skeleton](/components/skeleton/skeleton) to display while the page loads.
 
 A delay of `600ms` should be incorporated before the skeleton becomes visible across all products. This delay mitigates flickering during transitions between products.
 
 ### Spin as user interface feedback
 
-[Spin](/components/spin) should solely be employed when users interact with clickable interface elements on the page.
+[Spin](/components/spin/spin) should solely be employed when users interact with clickable interface elements on the page.
 
 ## Usage rules
 

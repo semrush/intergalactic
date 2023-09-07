@@ -197,7 +197,7 @@ const Demo = () => {
 
 ## Items with tooltips
 
-You can use default items with other components. For example, with [Tooltip](/components/tooltip).
+You can use default items with other components. For example, with [Tooltip](/components/tooltip/tooltip).
 
 ::: sandbox
 

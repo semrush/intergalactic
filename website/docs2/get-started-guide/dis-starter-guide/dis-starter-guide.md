@@ -38,7 +38,7 @@ The Intergalactic Design System relies on two sets of design tokens: basic and s
 
 Tools like [Huetone](https://huetone.ardov.me/) can help you creating new palette.
 
-Refer to [Design tokens](/style/design-tokens) to learn more about the tokens and their usage.
+Refer to [Design tokens](/style/design-tokens/design-tokens) to learn more about the tokens and their usage.
 
 ## Typography
 
@@ -49,7 +49,7 @@ The main font used in the Intergalactic Design System is Inter. Our type scale i
 
 We strongly recommend using 14px and 16px font sizes for text messages to optimize readability.
 
-See [Typography](/style/typography/) if want to learn more about our recommendations on typography.
+See [Typography](/style/typography/typography) if want to learn more about our recommendations on typography.
 
 ## Breakpoints
 
@@ -63,26 +63,26 @@ Table: Breakpoints tokens
 | `--screen-small`       | 768px  | Phones and tablets.                      |
 | `--screen-medium`      | 1200px | Big tablets and desktop devices.         |
 
-Refer to [Breakpoints](/layout/breakpoints/) and [Grid and page layout](/layout/grid-system/) for more information.
+Refer to [Breakpoints](/layout/breakpoints/breakpoints) and [Grid and page layout](/layout/grid-system/grid-system) for more information.
 
 ## Grid system
 
 Our product interfaces use a 12-column grid with a 24px gutter. Some products use a flexible grid, while others use a fixed one based on their requirements. The standard width of our design frames for product pages is 1440px.
 
-Refer to [Grid and page layout](/layout/grid-system) for a detailed description with code examples.
+Refer to [Grid and page layout](/layout/grid-system/grid-system) for a detailed description with code examples.
 
 ## Charts
 
 Charts play a significant role in our interfaces, and we employ a variety of chart types to visualize different data. Before utilizing a specific chart, be sure to consult the guidelines for its proper use.
 
-Check out [Data visualization](/data-display/d3-chart) for a detailed guideline on how to build widgets with data.
+Check out [Data visualization](/data-display/d3-chart/d3-chart) for a detailed guideline on how to build widgets with data.
 
 ## Tables
 
 Tables are crucial components of our product interfaces, with primary tables offering various functionalities and secondary tables used to visualize smaller data sets.
 
-Because of the large number of use cases and edge states we have separate guidelines for [Table principles](/table-group/table/), [Table controls](/table-group/table-controls/) and [Table states](/table-group/table-states/). We highly recommend you give all of them a look.
+Because of the large number of use cases and edge states we have separate guidelines for [Table principles](/table-group/table/table), [Table controls](/table-group/table-controls/table-controls) and [Table states](/table-group/table-states/table-states). We highly recommend you give all of them a look.
 
 ## Resources
 
-For all the resources you need to start creating an interface for the Semrush suite, refer to the [Figma libraries page](/get-started-guide/work-figma/).
+For all the resources you need to start creating an interface for the Semrush suite, refer to the [Figma libraries page](/get-started-guide/work-figma/work-figma).

@@ -5,7 +5,7 @@ tabs: Stacked area chart('stacked-area-chart'), A11y('stacked-area-chart-a11y'),
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Stacked area

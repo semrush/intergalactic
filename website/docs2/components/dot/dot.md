@@ -110,13 +110,13 @@ If dot shows an update in the control, locate it in the upper right corner above
 
 ![](static/bg.png)
 
-If dot points to a new element in the list inside the [DropdownMenu](/components/dropdown-menu/), it is located to the right of the item text and has a smaller size (use `size="m"` prop).
+If dot points to a new element in the list inside the [DropdownMenu](/components/dropdown-menu/dropdown-menu), it is located to the right of the item text and has a smaller size (use `size="m"` prop).
 
 ![](static/s-margins.png)
 
 ## Counter
 
-The dot may contain a notification counter, and for more information about this, you can refer to the [Counter](/components/counter) for more information about this case.
+The dot may contain a notification counter, and for more information about this, you can refer to the [Counter](/components/counter/counter) for more information about this case.
 
 ::: tip
 When the dot has a counter, it increases in size accordingly.

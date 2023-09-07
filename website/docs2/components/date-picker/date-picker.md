@@ -94,7 +94,7 @@ const App = PlaygroundGeneration(
 
 ## Trigger
 
-Trigger is built on the [Input](/components/input/) component.
+Trigger is built on the [Input](/components/input/input) component.
 
 ::: tip
 Use the **en dash** to indicate range of dates. Don’t add a space on either side of the **en dash**.
@@ -140,7 +140,7 @@ You can include a "Today" button that selects the current date. Upon clicking th
 
 ## Date picker and time picker
 
-You can place [TimePicker](/components/time-picker/) inside the dropdown.
+You can place [TimePicker](/components/time-picker/time-picker) inside the dropdown.
 
 ![](static/datepicker-timepicker-normal.png)
 

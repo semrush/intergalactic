@@ -21,4 +21,4 @@ Don't forget to add `aria-label` for this element so it can be read by assistive
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

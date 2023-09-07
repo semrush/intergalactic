@@ -12,7 +12,7 @@ tabs: Bar chart('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('ba
 - Compare different categories with each other.
 
 ::: tip
-Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
+Important! Consider [horizontal bar chart](/data-display/bar-horizontal/bar-horizontal) for this task first. It is easier to fit the category names in the columns.
 :::
 
 ![](/data-display/bar-chart/static/example-2.png)
@@ -27,7 +27,7 @@ Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for thi
 | Two                  | ![](/data-display/bar-chart/static/bar-chart-2.png) | The margin between two columns is 4px.                        |
 
 ::: tip
-If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/) or try to present the data using a different type of chart.
+If there are more than 3-4 categories, use a [stacked bar chart](/data-display/stacked-bar-chart/stacked-bar-chart) or try to present the data using a different type of chart.
 
 It is also a good solution to allow users to switch the chart type in the widget settings.
 :::
@@ -36,11 +36,11 @@ It is also a good solution to allow users to switch the chart type in the widget
 
 ## Interaction
 
-See detailed information in the common [Bar chart guide](/data-display/bar-chart/#a61ee5/).
+See detailed information in the common [Bar chart guide](/data-display/bar-chart/bar-chart#a61ee5/).
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ### One dot with a data
 
@@ -70,11 +70,11 @@ When you hover over a dot without data, show tooltip with the `n/a` value. We al
 
 ## Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

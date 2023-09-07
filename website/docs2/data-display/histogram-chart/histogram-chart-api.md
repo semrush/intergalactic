@@ -4,10 +4,10 @@ fileSource: d3-chart
 tabs: Histogram chart('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('d3-chart-changelog')
 ---
 
-Histogram chart is based on the [bar chart](/data-display/bar-chart), but has slightly different settings.
+Histogram chart is based on the [bar chart](/data-display/bar-chart/bar-chart), but has slightly different settings.
 
 ::: tip
-Please note that histogram chart and [bar chart](/data-display/bar-chart) are used in the various cases. Check out the guides for more information.
+Please note that histogram chart and [bar chart](/data-display/bar-chart/bar-chart) are used in the various cases. Check out the guides for more information.
 :::
 
 ## D3 API

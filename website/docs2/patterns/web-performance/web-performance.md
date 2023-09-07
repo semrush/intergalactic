@@ -1,15 +1,14 @@
 ---
 title: Web-performance
 tabName: Design
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 After adding new features to your product, check whether the loading time fits into the recommendations. Download speed can be checked with [Speedcurve](https://speedcurve.com/) or [tool from Google](https://developers.google.com/speed/pagespeed/insights/).
 
 You can also read about the skeleton and spinner in the guides:
 
-- [Skeleton](/components/skeleton/#adbd55) (it also describes loading heavy images)
-- [Spin](/components/spin/)
+- [Skeleton](/components/skeleton/skeleton#adbd55) (it also describes loading heavy images)
+- [Spin](/components/spin/spin)
 
 Animation of the appearance and disappearance of the skeleton and spinner – `ease-out 0.3`. **The exception is the first spinner that launches the product – it doesn't have animation**, because the `@semcore` components haven't loaded yet.
 

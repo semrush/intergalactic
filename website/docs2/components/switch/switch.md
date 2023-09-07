@@ -138,7 +138,7 @@ Table: Switch states
 | ------- | ----------------------- | ------------- |
 | Normal   | ![](static/off.png)     | `background: var(--control-switch-bg)`   |
 | Checked | ![](static/on-success.png) ![](static/on-info.png)    | `background: var(--control-primary-success)` or `background: var(--control-primary-info)`.           |
-| Disabled | ![](static/disabled.png) ![](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/) token. |
+| Disabled | ![](static/disabled.png) ![](static/disabled-success.png) | Transparency of the component changes to 30%. Use [`--disabled-opacity`](/style/design-tokens/design-tokens) token. |
 
 ## Usage in UX/UI
 

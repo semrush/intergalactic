@@ -50,7 +50,7 @@ Find more information in the [Yale University article about the accessible links
 
 ## Other recommendations
 
-See more accessibility recommendations for the links in the common [Accessibility guide](/core-principles/a11y/a11y-keyboard/#ae2a0e).
+See more accessibility recommendations for the links in the common [Accessibility guide](/core-principles/a11y/a11y-keyboard#ae2a0e).
 
 ## Resources
 

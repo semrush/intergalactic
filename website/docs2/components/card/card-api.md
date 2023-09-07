@@ -43,7 +43,7 @@ import Card from '@semcore/ui/card';
 
 ## Card.Description
 
-Has all properties as the [Text](/style/typography/typography-api/#a9dffb).
+Has all properties as the [Text](/style/typography/typography-api#a9dffb).
 
 ```jsx
 import Card from '@semcore/ui/card';

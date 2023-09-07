@@ -47,23 +47,23 @@ The counter appears after applying the filter. It shows the number of filters ap
 
 ## Loading
 
-When the filter's content or some of the filters are loading, show [Spin](/components/spin/) with the "Loading ..." text.
+When the filter's content or some of the filters are loading, show [Spin](/components/spin/spin) with the "Loading ..." text.
 
 ![filter loading state](static/loading.png)
 
-Wrap filter form into [SpinContainer](/components/spin-container/) when the user-selected data needs a time to be applied.
+Wrap filter form into [SpinContainer](/components/spin-container/spin-container) when the user-selected data needs a time to be applied.
 
 ![filter loading state](static/advanced-filters-loading.png)
 
 ## Nothing found
 
-Show an ["empty" state](/components/widget-empty/) with the option to update the filter.
+Show an ["empty" state](/components/widget-empty/widget-empty) with the option to update the filter.
 
 ![filter nothing found state](static/nothing-found-advanced-filters.png)
 
 ## Interaction
 
-For the filter trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/) components.
+For the filter trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
 
 | State       | Appearance                                         |
 | ----------- | -------------------------------------------------- |

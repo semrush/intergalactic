@@ -1,7 +1,7 @@
 ---
 title: Form
 tabName: Design
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
+tabs: Form('form'), A11y('form-a11y'), Example('form-code')
 ---
 
 ## Description
@@ -51,11 +51,11 @@ Placeholders are necessary to guide users on the expected data input.
 
 Placeholders can be omitted when the input's purpose is self-evident.
 
-For formatting user-entered values, use the [InputMask](/components/input-mask/).
+For formatting user-entered values, use the [InputMask](/components/input-mask/input-mask).
 
 ## Margins between inputs
 
-The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/#spacing_system) for further information.
+The key unit in the design system is 4. All spacings between components and widgets should be multiples of this unit. Refer to the [Spacing system](/layout/box-system/box-system#spacing_system) for further information.
 
 Table: Margins between inputs
 
@@ -66,7 +66,7 @@ Table: Margins between inputs
 
 ## Form validation
 
-Find detailed information about form validation in the [Validation](/patterns/validation-form/).
+Find detailed information about form validation in the [Validation](/patterns/validation-form/validation-form).
 
 ## Usage in UX/UI
 

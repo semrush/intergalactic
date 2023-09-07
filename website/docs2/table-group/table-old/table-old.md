@@ -7,12 +7,12 @@ tabs: Table code and API('table-old'), API('table-old-api'), Changelog('table-ol
 ---
 
 ::: warning
-:rotating_light: Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/). It is based on `CSS-flex` technology and doesn't use native tables.
+:rotating_light: Library `@semcore/table` is deprecated. Use new library [@semcore/data-table](/table-group/data-table/data-table). It is based on `CSS-flex` technology and doesn't use native tables.
 :::
 
 ## Table with an accordion
 
-Example of a table with an [accordion](/components/accordion) 😎
+Example of a table with an [accordion](/components/accordion/accordion) 😎
 
 ::: sandbox
 
@@ -414,7 +414,7 @@ const Demo = () => (
 
 ## Table with no data
 
-These states for widgets are described in detail in [Widget empty state](/components/widget-empty/widget-empty-code/).
+These states for widgets are described in detail in [Widget empty state](/components/widget-empty/widget-empty-code).
 
 ::: sandbox
 

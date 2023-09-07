@@ -31,7 +31,7 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item.Toggle />;
 ```
 
-Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
+Has all properties as [IBoxProps](/layout/box-system/box-api) prop does.
 
 ## Accordion.Item.Collapse
 
@@ -43,7 +43,7 @@ import { Accordion } from '@semcore/ui/accordion';
 
 <TypesView type="CollapseProps" :types={...types} />
 
-Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
+Has all properties as [IBoxProps](/layout/box-system/box-api) prop does.
 
 ## Accordion.Item.Chevron
 
@@ -53,6 +53,6 @@ import { Accordion } from '@semcore/ui/accordion';
 <Accordion.Item.Chevron />;
 ```
 
-Has all properties as [IBoxProps](/layout/box-system/box-api/) prop does.
+Has all properties as [IBoxProps](/layout/box-system/box-api) prop does.
 
 <script setup>import { data as types } from '@types.data.ts';</script>

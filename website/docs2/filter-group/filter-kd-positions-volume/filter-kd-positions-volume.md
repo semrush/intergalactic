@@ -5,7 +5,7 @@ tabs: Keyword Difficulty, Positions, Volume('filter-kd-positions-volume'), Examp
 ---
 
 ::: tip
-**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/).**
+**General recommendations for filters are described in the [Filter common rules guide](/filter-group/filter-rules/filter-rules).**
 :::
 
 **These filters are combined in one guide, since they differ only in the sorting parameter, a set of preset values and the name.** The principle of work and states are the same.
@@ -32,7 +32,7 @@ They have a set of preset values and a custom range inputs.
 
 ### Trigger
 
-- For trigger use [Select](/components/select/) and [FilterTrigger](/components/filter-trigger/) components.
+- For trigger use [Select](/components/select/select) and [FilterTrigger](/components/filter-trigger/filter-trigger) components.
 - **Set the trigger min-width to 80px**. It's not recommended to make the trigger smaller. When there is enough space in the interface, make the width of the trigger dependent on the content, so the label inside the trigger doesn't have to be collapsed into the `ellipsis`.
 
 | Filter             | Appearance example                                                      | Description                                                                                                                                                                |
@@ -63,7 +63,7 @@ Use an en dash, not a hyphen, between values – `Opt/Alt` + `-`.
 
 ## Custom range
 
-Use [InputNumber](/components/input-number/), if the filter has the ability to select a custom period.
+Use [InputNumber](/components/input-number/input-number), if the filter has the ability to select a custom period.
 
 |                                                                    | Appearance example                   |
 | ------------------------------------------------------------------ | ------------------------------------ |
@@ -74,11 +74,11 @@ Use [InputNumber](/components/input-number/), if the filter has the ability to s
 
 When you open a dropdown, the focus immediately goes to the first custom range input.
 
-Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/).
+Working and interacting with the filter are described in detail in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 ## Tooltips
 
-For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/).
+For more information about tooltips, see [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 | Filter             | Appearance example                       |
 | ------------------ | ---------------------------------------- |
@@ -88,9 +88,9 @@ For more information about tooltips, see [Filter common rules](/filter-group/fil
 
 ## Validation
 
-Validation is described in the [Filter common rules](/filter-group/filter-rules/).
+Validation is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 
 ## Nothing found
 
-"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/).
+"Empty" state is described in the [Filter common rules](/filter-group/filter-rules/filter-rules).
 

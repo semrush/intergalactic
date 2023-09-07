@@ -114,10 +114,10 @@ The spacing system helps maintain a vertical and horizontal rhythms in the inter
 In addition, vertical and horizontal rhythms help maintain visual hierarchy on the page, structure components and blocks according their importance to the user.
 
 ::: tip
-**Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/).
+**Use 4 as the multiple of all the indents**. It is a main denominator of our design system (`scaleIndent` property in API, `--scale-indent` in tokens), see [Design tokens](/style/design-tokens/design-tokens).
 :::
 
-Here is a table with [spacing tokens](/style/design-tokens/) we use in our design system.
+Here is a table with [spacing tokens](/style/design-tokens/design-tokens) we use in our design system.
 
 | Token name      | Value in px | Value in rem | Value as a multiple of 4 |
 | --------------- | ----------- | ------------ | ------------------------ |

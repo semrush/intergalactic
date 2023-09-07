@@ -18,4 +18,4 @@ deprecated: true
 
 ## Color text
 
-See example for color text in [Core email colors guide](/product-emails/core-email/#a0d3d2).
+See example for color text in [Core email colors guide](/product-emails/core-email/core-email#a0d3d2).

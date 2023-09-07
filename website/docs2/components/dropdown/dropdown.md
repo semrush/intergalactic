@@ -70,7 +70,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
 
 ## Description
 
-**Dropdown** is a component that displays content, such as a form or message, when triggered by a clickable item. This clickable item, also known as the trigger, can be a [Select](/components/select/), [Button](/components/button/), [Input](/components/input/), or any other component.
+**Dropdown** is a component that displays content, such as a form or message, when triggered by a clickable item. This clickable item, also known as the trigger, can be a [Select](/components/select/select), [Button](/components/button/button), [Input](/components/input/input), or any other component.
 
 ### Component composition
 

@@ -5,7 +5,7 @@ tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-cha
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Donut

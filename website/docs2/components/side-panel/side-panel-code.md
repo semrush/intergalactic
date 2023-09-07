@@ -197,7 +197,7 @@ const Demo = () => {
 
 ## Portals
 
-By default, the component is rendered to the portal, at the bottom of the body. You can redefine this behavior with [`PortalProvider`](/utils/portal/) and disable it with `disablePortal`.
+By default, the component is rendered to the portal, at the bottom of the body. You can redefine this behavior with [`PortalProvider`](/utils/portal/portal) and disable it with `disablePortal`.
 
 ::: sandbox
 
@@ -230,4 +230,4 @@ const Demo = () => {
 
 ## Iframe
 
-**We recommend not using this component inside an iframe.** Instead, use [modal window](/components/modal/) or [dropdown](/components/dropdown/).
+**We recommend not using this component inside an iframe.** Instead, use [modal window](/components/modal/modal) or [dropdown](/components/dropdown/dropdown).

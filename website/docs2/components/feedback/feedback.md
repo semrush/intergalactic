@@ -10,7 +10,7 @@ tabs: Design('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), 
 **Feedback** component is the form for sending feedback or suggestions about the product. In most cases it opens from the "Send feedback" link or button.
 
 ::: tip
-When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/).
+When the link that triggers the feedback form is placed in the [ProductHead](/components/product-head/product-head), it should be always the far right. Learn more in the [Links order in ProductHead](/patterns/links-order/links-order).
 :::
 
 ## Сomponent composition
@@ -41,7 +41,7 @@ When the link that triggers the feedback form is placed in the [ProductHead](/co
 
 ## Placement
 
-In most cases the feedback form opens from the "Send feedback" link at the upper right of the page or from the "Send feedback" buttons inside a [notice for feedback collection](/patterns/feedback-yes-no).
+In most cases the feedback form opens from the "Send feedback" link at the upper right of the page or from the "Send feedback" buttons inside a [notice for feedback collection](/patterns/feedback-yes-no/feedback-yes-no).
 
 ![](static/send-feedback.png)
 
@@ -79,7 +79,7 @@ Placeholder for this textarea: "I need help, please contact me".
 
 ### Message submitting
 
-To show loading state after submitting the form, wrap the form into the [SpinContainer](/components/spin-container/) with the [XL size Spin](/components/spin/).
+To show loading state after submitting the form, wrap the form into the [SpinContainer](/components/spin-container/spin-container) with the [XL size Spin](/components/spin/spin).
 
 ![](static/loading.png)
 

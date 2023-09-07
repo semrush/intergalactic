@@ -7,7 +7,7 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 ## Extended example of the header with tabs
 
 ::: tip
-[TabLine](/components/tab-line/) isn't part of the header, it is a part of the page content.
+[TabLine](/components/tab-line/tab-line) isn't part of the header, it is a part of the page content.
 :::
 
 ::: sandbox

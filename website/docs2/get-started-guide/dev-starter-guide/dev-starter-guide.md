@@ -4,7 +4,7 @@ title: For developers
 
 ## Introduction
 
-Let's explore the design system used at [Semrush](https://semrush.com), which you can also integrate into your own projects. The design system has more than 70 [React](https://reactjs.org) components, each of them accompanied by design guides, Figma components, usage examples and API descriptions. Additionally, we offer an extensive [icons library](/style/icon/) and [charts library](/data-display/d3-chart/d3-chart-code/).
+Let's explore the design system used at [Semrush](https://semrush.com), which you can also integrate into your own projects. The design system has more than 70 [React](https://reactjs.org) components, each of them accompanied by design guides, Figma components, usage examples and API descriptions. Additionally, we offer an extensive [icons library](/style/icon/icon) and [charts library](/data-display/d3-chart/d3-chart-code).
 
 ## Installation
 
@@ -22,7 +22,7 @@ We have developed this design system with a strong focus on flexibility and ease
 
 ### Free template
 
-Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/) component:
+Components often consist of complex HTML structures. To enhance flexibility, we provide a free template, allowing you to customize the internals of the components from the design system. Here's an example using the [Button](/components/button/button) component:
 
 ```jsx
 import Button from '@semcore/ui/button';
@@ -44,7 +44,7 @@ This approach provides multiple benefits:
 
 ### Theme
 
-You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/#themes/), enabling complete design customization and the extension of components with new properties.
+You have the ability to change the default styles for your project. We offer [design tokens](/style/design-tokens/design-tokens) that can be adjusted on a per-component basis or applied globally throughout the project. Additionally, we provide a [mechanism for changing styles](/style/design-tokens/design-tokens#themes/), enabling complete design customization and the extension of components with new properties.
 
 ### Controlled & uncontrolled
 
@@ -100,7 +100,7 @@ All our components return a DOM node in the `ref` property. This decision was ma
 
 ### Base component
 
-Underlying all our components is ["Box"](/layout/box-system/), which serves as a foundational building block. By importing Box from @semcore/ui/flex-box, you can leverage its capabilities, including:
+Underlying all our components is ["Box"](/layout/box-system/box-system), which serves as a foundational building block. By importing Box from @semcore/ui/flex-box, you can leverage its capabilities, including:
 
 ```jsx
 import { Box } from '@semcore/ui/flex-box';
@@ -141,7 +141,7 @@ import Button from '@semcore/ui/button';
 </Button>;
 ```
 
-Additionally, consider exploring the ["Flex"](/layout/box-system/) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
+Additionally, consider exploring the ["Flex"](/layout/box-system/box-system) component, which is a wrapper for `Box` and allows you to apply properties for **CSS Flexbox**:
 
 
 ```jsx

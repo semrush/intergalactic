@@ -4,7 +4,7 @@ tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('coun
 ---
 
 ## Counter in filters
-[FilterTrigger](/components/filter-trigger/) is normally used together with [Select](/components/select/) or [Dropdown](/components/dropdown/). Go to [the guide](/components/filter-trigger/) for more information.
+[FilterTrigger](/components/filter-trigger/filter-trigger) is normally used together with [Select](/components/select/select) or [Dropdown](/components/dropdown/dropdown). Go to [the guide](/components/filter-trigger/filter-trigger) for more information.
 
 ::: sandbox
 
@@ -110,7 +110,7 @@ const Demo = () => (
 
 ## Counter and typography
 
-The text counters shall be implemented using [Typography](/style/typography) without using the `Counter` component.
+The text counters shall be implemented using [Typography](/style/typography/typography) without using the `Counter` component.
 
 ::: sandbox
 
@@ -135,7 +135,7 @@ const Demo = () => (
 
 ## Counter in Pills
 
-As you can see, there are text counters inside [Pills](/components/pills/). Implement them via [Typography](/style/typography), as well, without using the `Counter` component.
+As you can see, there are text counters inside [Pills](/components/pills/pills). Implement them via [Typography](/style/typography/typography), as well, without using the `Counter` component.
 
 ::: sandbox
 
@@ -172,7 +172,7 @@ const Demo = () => (
 
 ## Counter in limits
 
-Implement the text counters in limits using [Typography](/style/typography) without using the `Counter` component.
+Implement the text counters in limits using [Typography](/style/typography/typography) without using the `Counter` component.
 
 ::: sandbox
 
@@ -203,7 +203,7 @@ const Demo = () => (
 
 ## Counter in Dot
 
-The `Dot` component can also contain a text counter. For more information, see the [Dot](/components/dot/).
+The `Dot` component can also contain a text counter. For more information, see the [Dot](/components/dot/dot).
 
 ::: sandbox
 

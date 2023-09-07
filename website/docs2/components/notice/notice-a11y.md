@@ -8,7 +8,7 @@ tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the all clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+See detailed information about the keyboard support for the all clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 
 ### Roles & attributes
 
@@ -36,4 +36,4 @@ Note that it is necessary for elements that have attributes such as `aria-live` 
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

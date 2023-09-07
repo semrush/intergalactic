@@ -86,7 +86,7 @@ Table: Counter themes
 
 ## Text counters
 
-The size of text counters is determined by the typography used in the element where the numeric value is being displayed. Typically, these counters are positioned near widget or table titles, within text, and other relevant locations. Additional examples can be found in the [Example tab](/components/counter/counter-code/).
+The size of text counters is determined by the typography used in the element where the numeric value is being displayed. Typically, these counters are positioned near widget or table titles, within text, and other relevant locations. Additional examples can be found in the [Example tab](/components/counter/counter-code).
 
 _For example, the counter in the table title has the same text size as the title itself._
 
@@ -113,14 +113,14 @@ Table: Counter usage examples
 |                      | Examples      | Usage    |
 | -------------------- | ------------- | -------- |
 | Output data counter  | ![](static/table.png)         | Usually it shows the total results. Use it next to the title of a table or widget.                                                                                                                                         |
-| Entered data counter | ![](static/textarea.png)      | The counter typically displays the limit of characters allowed, commonly used in [Input](/components/input/) and [Textarea](/components/textarea/). When the limit is reached or surpassed, the color of the counter changes. |
+| Entered data counter | ![](static/textarea.png)      | The counter typically displays the limit of characters allowed, commonly used in [Input](/components/input/input) and [Textarea](/components/textarea/textarea). When the limit is reached or surpassed, the color of the counter changes. |
 | Limits               | ![](static/limit-counter.png) | The counter changes color to indicate when the limit has been exceeded.                                                                                |
 
 In primary controls, use a counter with the `white` (invert) theme. Otherwise, it will not be readable on a bright/dark background.
 
 ![](static/button-counter.png)
 
-For notifications, use the [Dot](/components/dot/) component with a counter inside.
+For notifications, use the [Dot](/components/dot/dot) component with a counter inside.
 
 ![](static/notification-yes-no.png)
 

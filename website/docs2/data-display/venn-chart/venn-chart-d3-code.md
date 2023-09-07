@@ -5,7 +5,7 @@ tabs: Venn chart('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), 
 ---
 
 ::: tip
-See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
+See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Venn

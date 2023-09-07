@@ -6,7 +6,7 @@ tabs: Line chart('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), 
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
+Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -66,12 +66,12 @@ Don’t change the order of categories inside the tooltip in relation to the ord
 ![](static/popover-2.png)
 
 ::: tip
-To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/#tooltip).
+To see detailed information about tooltip for charts see [Chart principles](/data-display/d3-chart/d3-chart#tooltip).
 :::
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ## One value
 
@@ -128,11 +128,11 @@ When user hovers over a dot without data, show the tooltip with the `n/a` value.
 
 ## Initial data loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

@@ -6,7 +6,7 @@ tabs: Venn chart('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), 
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
+Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
@@ -103,7 +103,7 @@ If legend label is very long, wrap it to the next line.
 
 ## Edge cases
 
-Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/).
+Here you will find the states for some specific cases. All other "empty states" for widgets are specified in [Error & n/a widget states](/components/widget-empty/widget-empty).
 
 ### Value less than 1%
 
@@ -138,11 +138,11 @@ In this case, show the data sets left aligned.
 
 ### Initial loading
 
-When the chart is loading for the first time, show [Skeleton](/components/skeleton/) instead of the chart.
+When the chart is loading for the first time, show [Skeleton](/components/skeleton/skeleton) instead of the chart.
 
 If the chart has a title, show it during loading. The user will have an idea of what is being loaded and whether they need to wait for the loading process to complete.
 
-For more information about this state, refer to [Skeleton](/components/skeleton/).
+For more information about this state, refer to [Skeleton](/components/skeleton/skeleton).
 
 Use the `--skeleton-bg` color token for the skeleton background color.
 

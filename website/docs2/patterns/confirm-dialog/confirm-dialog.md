@@ -2,7 +2,7 @@
 title: Confirmation modal window
 fileSource: modal
 tabName: Design
-tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
+tabs: Confirmation modal window('confirm-dialog'), Example('confirm-dialog-code')
 ---
 
 ## Description
@@ -11,7 +11,7 @@ tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Cont
 
 The dialog must have a clear descriptive message that explains what is happening. The user should be able to understand the message and have controls to act.
 
-The dialog is built using the [Modal](/components/modal/) component.
+The dialog is built using the [Modal](/components/modal/modal) component.
 
 ## When to use
 

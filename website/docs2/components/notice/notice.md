@@ -109,14 +109,14 @@ const App = PlaygroundGeneration(Preview, { LayoutPreview });
 :::
 
 ::: tip
-In the update of [version 4.0.0](/components/notice/notice-changelog/#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/). This change was made to enhance their usability.
+In the update of [version 4.0.0](/components/notice/notice-changelog#v_4_0_0), instead of using `use=primary/secondary`, the component was split into two separate components - Notice and [NoticeGlobal](/components/notice-global/notice-global). This change was made to enhance their usability.
 :::
 
 ## Description
 
 **Notice** is a component for displaying messages related to events concerning the user's work in the interface.
 
-It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/) and [NoticeGlobal](/components/notice-global/):
+It must fulfill four criteria to be considered a notice. Let's compare it to [NoticeBubble](/components/notice-bubble/notice-bubble) and [NoticeGlobal](/components/notice-global/notice-global):
 
 Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 
@@ -139,7 +139,7 @@ Table: Comparison table of criteria for Notice, NoticeBubble and NoticeGlobal
 Component consists of the following:
 
 1. `Notice.Content`
-2. `Notice.Label`. It can be an [icon](/style/icon/), [badge](/components/badge/) or illustration that accompanies the message (optional);
+2. `Notice.Label`. It can be an [icon](/style/icon/icon), [badge](/components/badge/badge) or illustration that accompanies the message (optional);
 3. `Notice.Actions` (optional).
 4. `Notice.CloseIcon` (optional);
 
@@ -181,7 +181,7 @@ Table: Notice themes
 
 | Theme | Appearance example |
 | ----- | ------------------ |
-| **Info**: Used for neutral messages, information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/#advertising)). | ![](static/info.png) |
+| **Info**: Used for neutral messages, information, and collecting feedback. For announcing new features or other products, consider using this notice with a large image (often referred to as [advertising notices](/components/notice/notice#advertising)). | ![](static/info.png) |
 | **Success**: Used for triggers related to purchasing or taking a trial, as well as displaying successful completion of forms, for example. | ![](static/success.png) |
 | **Warning**: Suitable for important but non-critical errors or warnings, such as service reports, unavailable functionality, or temporary failures. |![](static/warning.png) |
 | **Danger**: Intended for serious errors, problems, or actions that prevent users from continuing their work or result in data loss. | ![](static/danger.png) |
@@ -190,7 +190,7 @@ Table: Notice themes
 
 ### On the page
 
-If the notice is applicable to the entire product, position it in the product header (below the breadcrumbs) and let it inherit the width of the content section. For more information about paddings and margins, refer to the [ProductHead](/components/product-head/).
+If the notice is applicable to the entire product, position it in the product header (below the breadcrumbs) and let it inherit the width of the content section. For more information about paddings and margins, refer to the [ProductHead](/components/product-head/product-head).
 
 ::: tip
 Avoid placing multiple notices on the page simultaneously.
@@ -198,7 +198,7 @@ Avoid placing multiple notices on the page simultaneously.
 
 ![](static/notice-placement-yes-no.png)
 
-If the message pertains solely to the content of a specific tab within the product, position the notice beneath the [TabLine](/components/tab-line/).
+If the message pertains solely to the content of a specific tab within the product, position the notice beneath the [TabLine](/components/tab-line/tab-line).
 
 ### Inside the widget
 
@@ -243,7 +243,7 @@ Custom notices have their own rules and distinct styles compared to the default 
 
 ### Feedback notice
 
-The feedback notice deviates from the regular notice as it is attached to the header and spans the entire width of the content section of the report. It has no margins at the top, right, or left. You can refer to the [FeedbackYesNo](/patterns/feedback-yes-no) guide for an example.
+The feedback notice deviates from the regular notice as it is attached to the header and spans the entire width of the content section of the report. It has no margins at the top, right, or left. You can refer to the [FeedbackYesNo](/patterns/feedback-yes-no/feedback-yes-no) guide for an example.
 
 ### Advertising
 
@@ -274,9 +274,9 @@ Please refrain from using an advertising notice for an "empty" state on a page o
 
 A notice shouldn't be mistaken for other components:
 
-- **[NoticeBubble](/components/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
-- **[Tooltip](/components/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
-- **[Notes, hints](/style/typography/#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
+- **[NoticeBubble](/components/notice-bubble/notice-bubble)**: NoticeBubble is a local component used to respond to user actions, while a notice is a global component that is generally not associated with user actions.
+- **[Tooltip](/components/tooltip/tooltip)**: Tooltips are used to provide hints or descriptions of functionality and are permanently displayed upon hover. On the other hand, notices are temporary components that typically appear immediately after user actions.
+- **[Notes, hints](/style/typography/typography#hints_hint_links)**: Notes and hints provide additional information about functionality and are permanent in nature. In contrast, notices are temporary and don’t explain the functionality itself. At most, they may provide guidance on resolving reported problems or performing required actions.
 
 ### Examples of incorrect usage
 
@@ -288,7 +288,7 @@ An error related to a temporary failure. In this case, a notice with `warning` t
 
 ![](static/export-yes-no.png)
 
-A notice appearing on top of the interface to indicate the completion of a hidden process. It is advised to avoid this and use [NoticeBubble](/components/notice-bubble) instead in such cases.
+A notice appearing on top of the interface to indicate the completion of a hidden process. It is advised to avoid this and use [NoticeBubble](/components/notice-bubble/notice-bubble) instead in such cases.
 
 ![](static/notice-use-2-yes-no.png)
 

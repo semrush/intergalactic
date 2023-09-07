@@ -110,7 +110,7 @@ The animated spot is always located in the lower corner of the element you want 
 
 ![](static/spotlight-dot.png)
 
-Try to avoid situations where the control has both [Dot](/components/dot/) and FeaturePopover.Spot.
+Try to avoid situations where the control has both [Dot](/components/dot/dot) and FeaturePopover.Spot.
 
 ![](static/spot-yes-no.png)
 
@@ -122,7 +122,7 @@ The title should be brief, contain a call to action, and summarize the main thou
 
 ### Feature description
 
-The feature description should be short and informative. Try using no more than one or two sentences. A paragraph may contain [links](/components/link/) and formatted text.
+The feature description should be short and informative. Try using no more than one or two sentences. A paragraph may contain [links](/components/link/link) and formatted text.
 
 ### Close icon
 

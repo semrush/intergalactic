@@ -6,12 +6,12 @@ tabs: Stacked horizontal bar chart('stacked-horizontal-bar'), A11y('stacked-hori
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 ## Description
 
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.
+**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/bar-chart) or horizontal.
 
 ::: tip
 **Difference from histogram chart**
@@ -28,19 +28,19 @@ Important points to keep in mind when presenting data as a bar chart:
 
 ## Usage
 
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/#ac6451).
+See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#ac6451).
 
 ## Margins
 
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/#abd326).
+See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#abd326).
 
 ## Grid and axes
 
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/#a9e6f0).
+See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#a9e6f0).
 
 ## Labels of categories
 
-See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/#a05155).
+See detailed information in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#a05155).
 
 ## Appearance
 
@@ -58,9 +58,9 @@ If the column is clickable, the cursor changes to `pointer`.
 
 ## Edge cases
 
-Edge cases for stacked bar chart are pretty much the same as [Horizontal bar chart](/data-display/bar-horizontal/#a54381) has.
+Edge cases for stacked bar chart are pretty much the same as [Horizontal bar chart](/data-display/bar-horizontal/bar-horizontal#a54381) has.
 
 ## Data loading
 
-See detailed information in the section about data loading in the [Horizontal bar chart guide](/data-display/bar-horizontal/#ac26f2).
+See detailed information in the section about data loading in the [Horizontal bar chart guide](/data-display/bar-horizontal/bar-horizontal#ac26f2).
 

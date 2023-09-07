@@ -52,5 +52,5 @@ In other cases, if there is insufficient space, two lines of text in one cell ca
 
 ## Row states
 
-See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
+See more information in the common [Table principles](/table-group/table/table#a1c3dd) guide.
 

@@ -18,7 +18,7 @@ It is always positioned below the main Semrush header and search bar.
 **The report header includes the following:**
 
 1. `ProductHead.Row`: The header is divided into rows with components, and they are separated from each other by equal paddings.
-2. `ProductHead.Links`: They are usually placed at the top right of the header, refer to [Additional links pattern](/patterns/links-order).
+2. `ProductHead.Links`: They are usually placed at the top right of the header, refer to [Additional links pattern](/patterns/links-order/links-order).
 3. `ProductHead.Buttons`.
 4. `Title`: It's a name of the product and the project. Can have additional controls for customizing the product or performing additional actions.
 5. `Info`: It's a row with global filters and/or additional information.
@@ -30,7 +30,7 @@ It is always positioned below the main Semrush header and search bar.
 
 ![product-head margins](static/margins.png)
 
-If there is a [Notice](/components/notice/) in the header, it has an 8px margin-bottom to the elements in ProductHead.
+If there is a [Notice](/components/notice/notice) in the header, it has an 8px margin-bottom to the elements in ProductHead.
 
 ![product-head notice-margins](static/notice-margins.png)
 
@@ -42,8 +42,8 @@ If there is a [Notice](/components/notice/) in the header, it has an 8px margin-
 
 ### Breadcrumbs and additional links
 
-- [Breadcrumbs](/components/breadcrumbs/) and [additional links](/patterns/links-order) are center-aligned.
-- [Links](/components/link/) have a size of 14px.
+- [Breadcrumbs](/components/breadcrumbs/breadcrumbs) and [additional links](/patterns/links-order/links-order) are center-aligned.
+- [Links](/components/link/link) have a size of 14px.
 - The margin between the links is 20px.
 
 ### Heading and main controls
@@ -53,7 +53,7 @@ If there is a [Notice](/components/notice/) in the header, it has an 8px margin-
 - Use `--text-primary` token for the text color, and for the project's name, use `--text-secondary` token.
 - The size of nearby icons should be M. For icon color, use the `--icon-secondary-neutral` token.
 - The icons are aligned with the title's baseline.
-- [Button](/components/button/) has a size of M.
+- [Button](/components/button/button) has a size of M.
 
 ### Filters and/or additional information
 

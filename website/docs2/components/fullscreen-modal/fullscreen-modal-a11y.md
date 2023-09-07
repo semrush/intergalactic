@@ -14,7 +14,7 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 | `Shift + Tab` | Moves focus to the previous focusable element. |
 | `Esc`         | Closes the modal window.                       |
 
-- See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/).
+- See detailed information about the keyboard support for the all buttons, input, etc., in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard).
 - Don't forget to check recommendations on accessibility for [Form](/patterns/form/form-a11y).
 
 ## Considerations for developers
@@ -28,4 +28,4 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).

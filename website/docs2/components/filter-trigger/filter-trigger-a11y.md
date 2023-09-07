@@ -8,7 +8,7 @@ tabs: Design('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger
 
 ### Keyboard support
 
-See detailed information about the keyboard support for the FilterTrigger in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#any_other_controls_filtertrigger_pills_tabline_i_pr).
+See detailed information about the keyboard support for the FilterTrigger in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#any_other_controls_filtertrigger_pills_tabline_i_pr).
 
 ### Roles and attributes
 
@@ -22,6 +22,6 @@ The list below describes roles and attributes that component already has.
 
 ## Other recommendations
 
-See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
+See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
 @include filter-trigger-a11y-report

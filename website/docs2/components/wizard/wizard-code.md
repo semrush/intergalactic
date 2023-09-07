@@ -3,7 +3,7 @@ title: Example
 tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-code'), Changelog('wizard-changelog')
 ---
 
-The Wizard component inherits from the [Modal](/components/modal/modal-api/) component, so you can use all of its properties.
+The Wizard component inherits from the [Modal](/components/modal/modal-api) component, so you can use all of its properties.
 
 ## Basic example
 

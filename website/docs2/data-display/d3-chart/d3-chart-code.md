@@ -5,7 +5,7 @@ tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d
 ---
 
 ::: tip
-Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
+Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
 These components serve as the base for building charts from your data in the product.
@@ -48,7 +48,7 @@ Since many SVG elements don't support nesting, they are rendered sequentially. F
 </Line>
 ```
 
-CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/#themes) for more information on how to customize it.
+CSS is responsible for all the chart styles. See [Themes](/style/design-tokens/design-tokens#themes) for more information on how to customize it.
 
 ## Base
 
@@ -508,7 +508,7 @@ const data = Array(20)
 
 ## Chart legend
 
-See [Chart legend](/data-display/chart-legend/) for a guide on how to implement a clickable chart legend.
+See [Chart legend](/data-display/chart-legend/chart-legend) for a guide on how to implement a clickable chart legend.
 
 ::: sandbox
 
@@ -966,5 +966,5 @@ const svgText2DownloadUrl = async (svg: string, width: number, height: number, f
 
 ## Initial loading
 
-Use [Skeleton](/components/skeleton/) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
+Use [Skeleton](/components/skeleton/skeleton) with the appropriate chart type for the initial loading of the charts. If a chart widget has a title, it should be displayed while the chart is loading.
 

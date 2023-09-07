@@ -73,7 +73,7 @@ const App = PlaygroundGeneration(Preview, { LayoutPreview });
 **ProgressBar** is a component used to display the loading status of a long process, typically taking more than 5 seconds, such as collecting keywords or updating mentions.
 
 ::: tip
-This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/).
+This component demonstrates the loading and response to user actions in the interface. For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
 :::
 
 In general, the progress bar doesn't obstruct the functionality of the product. However, there is an exception during the first launch of the product when the data may be partially displayed or not displayed at all.
@@ -159,7 +159,7 @@ When scrolling, the progress bar can be pinned, remaining visible above all comp
 
 ### Avoid Using ProgressBar
 
-- For short actions that take less than 5 seconds, consider using [Spin](/components/spin/) instead.
+- For short actions that take less than 5 seconds, consider using [Spin](/components/spin/spin) instead.
 - To display steps, such as when filling out a form.
 
 ### Specific cases

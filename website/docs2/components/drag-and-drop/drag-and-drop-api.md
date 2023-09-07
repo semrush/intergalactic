@@ -39,6 +39,6 @@ import DnD from '@semcore/ui/drag-and-drop;
 </DnD>
 ```
 
-Takes the same properties, as [Box](/layout/box-system/box-api/#a3cfce).
+Takes the same properties, as [Box](/layout/box-system/box-api#a3cfce).
 
 <script setup>import { data as types } from '@types.data.ts';</script>
