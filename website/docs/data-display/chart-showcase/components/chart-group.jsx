@@ -1,6 +1,10 @@
 import React from 'react';
-import ComponentCard from '@docs/../src/components/ComponentCard';
-import { getImageName } from '@docs/../src/pages/Home';
+import ComponentCard from '@components/../components/ComponentCard';
+const getImageName = (title) => {
+  const name = title.replace(/[ \/]+/g, '');
+  return name.charAt(0).toLowerCase() + name.slice(1);
+};
+
 import { Box } from '@semcore/flex-box';
 
 const group = {

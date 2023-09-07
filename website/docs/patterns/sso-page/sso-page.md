@@ -19,7 +19,7 @@ SSO from the design point of view consists of the following:
 
 @## The main recommendations on styles
 
-> All variables are taken from a common file with variables in `semcore` 😏
+> All variables are taken from a common file with variables in `semcore`
 
 - `L` size inputs (pills, input fields, checkboxes, buttons, links).
 - Modal window has H4 heading (25px, `--fs-500`). Page with a form has H2 heading (36px, `--fs-700`).

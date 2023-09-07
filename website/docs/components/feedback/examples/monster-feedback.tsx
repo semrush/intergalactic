@@ -94,7 +94,7 @@ const Demo = () => (
           <Flex direction='column' gap={1} my={4}>
             <Radio>
               <Radio.Value value='yes' />
-              <Radio.Text>Call me 😏</Radio.Text>
+              <Radio.Text>Call me</Radio.Text>
             </Radio>
             <Radio>
               <Radio.Value value='no' />

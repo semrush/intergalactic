@@ -31,7 +31,7 @@ export default () => {
         mt={placement === 'bottom' ? 0 : 20}
       >
         <Text size={300} tag='p'>
-          Waba-laba-dub-dub! 😏
+          Waba-laba-dub-dub!
         </Text>
         <Button mt={3}>I'm just a button</Button>
       </SidePanel>

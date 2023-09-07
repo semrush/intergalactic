@@ -15,7 +15,7 @@ const Demo = () => {
       <Box mt={2}>
         <Input w={240}>
           <Input.Value
-            placeholder='Type something to clear something 😏'
+            placeholder='Type something to clear something'
             value={value}
             onChange={(v) => setValue(v)}
             id='clear-example'

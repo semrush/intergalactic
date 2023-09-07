@@ -12,7 +12,7 @@ export default () => {
         <DataTable.Column name='keyword'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             <Text noWrap>
-              Keyword <Text color='gray60'>(1 – 100)</Text>
+              Keyword <Text color='gray60'>(1 - 100)</Text>
             </Text>
           </Tooltip>
         </DataTable.Column>
