@@ -14,7 +14,7 @@ RUN npm install --global pnpm@7
 RUN pnpm install --frozen-lockfile --ignore-scripts 
 RUN pnpm build:icons
 RUN pnpm build:illustration
-RUN pnpm --filter intergalactic-documentation run build
+RUN pnpm --filter intergalactic-documentation run docs:build
 
 FROM nginx:alpine
 
@@ -22,7 +22,7 @@ WORKDIR /app
 
 COPY ./website/nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=builder /app/website/dist ./static
+COPY --from=builder /app/website/docs2/.vitepress/dist ./static
 
 EXPOSE 8080
 
