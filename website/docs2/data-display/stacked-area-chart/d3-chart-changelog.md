@@ -6,4 +6,4 @@ tabs: Stacked area chart('stacked-area-chart'), A11y('stacked-area-chart-a11y'),
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

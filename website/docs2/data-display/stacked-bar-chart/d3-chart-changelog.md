@@ -6,4 +6,4 @@ tabs: Stacked bar chart('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), AP
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

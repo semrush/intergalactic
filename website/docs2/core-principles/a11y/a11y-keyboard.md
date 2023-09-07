@@ -1,6 +1,6 @@
 ---
 title: Keyboard support
-tabs: Accessibility('index'), Development requirements('a11y-general'), Keyboard support('a11y-keyboard'), Design requirements('a11y-design')
+tabs: Accessibility('a11y'), Development requirements('a11y-general'), Keyboard support('a11y-keyboard'), Design requirements('a11y-design')
 ---
 
 ## Points to check

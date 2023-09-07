@@ -6,4 +6,4 @@ tabs: Line chart('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), 
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

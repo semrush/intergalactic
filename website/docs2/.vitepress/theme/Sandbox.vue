@@ -75,20 +75,21 @@
 </style>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { createRoot as createReactRoot } from 'react-dom/client'
 import lzString from 'lz-string';
 const { compressToBase64: lzCompressToBase64 } = lzString;
 
 (globalThis as any).createReactRoot = createReactRoot;
-const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode, } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String })
-const htmlCode = JSON.parse(codeEncoded!);
-const rawCode = JSON.parse(rawCodeEncoded!);
 
-console.log({
-  htmlCode,
-  rawCode
+const { playgroundId, htmlCode: codeEncoded, rawCode: rawCodeEncoded, hideCode: hideCodeEncoded, } = defineProps({ playgroundId: String, htmlCode: String, rawCode: String, hideCode: String })
+const htmlCode = atob(codeEncoded!);
+const rawCode = atob(rawCodeEncoded!);
+const hideCode = hideCodeEncoded === 'true';
+
+onMounted(() => {
+  globalThis[`render_${playgroundId}`]?.()
 })
-
 
 const dataToLzCompressedJson = (data) => {
   /**
@@ -153,4 +154,5 @@ root.render(<App />);
 });
 
 const codesandboxUrl = `https://codesandbox.io/api/v1/sandboxes/define?parameters=${codesandboxParameters}`;
+
 </script>

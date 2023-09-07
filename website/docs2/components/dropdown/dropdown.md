@@ -2,7 +2,7 @@
 title: Dropdown
 fileSource: dropdown
 tabName: Design
-tabs: Dropdown('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
+tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
 ::: react-view
@@ -60,7 +60,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       <Dropdown.Trigger>
         <ButtonTrigger>Trigger</ButtonTrigger>
       </Dropdown.Trigger>
-      <Dropdown.Popper>Hello there! I'm Dropdown's content 🤓</Dropdown.Popper>
+      <Dropdown.Popper>Hello there! I'm Dropdown's content</Dropdown.Popper>
     </Dropdown>
   );
 });

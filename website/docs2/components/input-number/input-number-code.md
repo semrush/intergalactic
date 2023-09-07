@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: input-number
-tabs: InputNumber & InputRange('index'), A11y('input-number-a11y'), API('input-number-api'), Example('input-number-code'), Changelog('input-number-changelog')
+tabs: Design('input-number'), A11y('input-number-a11y'), API('input-number-api'), Example('input-number-code'), Changelog('input-number-changelog')
 ---
 
 ## Range of values
@@ -71,6 +71,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -130,6 +132,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::

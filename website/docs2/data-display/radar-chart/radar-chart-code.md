@@ -1,7 +1,7 @@
 ---
 title: Examples
 fileSource: d3-chart
-tabs: Radar chart('index'), API('radar-chart-api'), Examples('radar-chart-code')
+tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
 ::: tip

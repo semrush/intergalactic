@@ -5,8 +5,8 @@ tabs: Typography('typography'), A11y('typography-a11y'), API('typography-api'), 
 
 ### @semcore/ui/typography
 
-@changelog typography
+::: changelog typography :::
 
 ### @semcore/ui/format-text
 
-@changelog format-text
+::: changelog format-text :::

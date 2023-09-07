@@ -2,7 +2,7 @@
 title: Pagination
 fileSource: pagination
 tabName: Design
-tabs: Pagination('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
+tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Example('pagination-code'), Changelog('pagination-changelog')
 ---
 
 ::: react-view

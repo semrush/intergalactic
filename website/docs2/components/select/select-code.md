@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: select
-tabs: Select / Multiselect('index'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
+tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-code'), Changelog('select-changelog')
 ---
 
 ::: tip
@@ -35,7 +35,7 @@ const options = Array(6)
 
 const Demo = () => (
   <Flex>
-    <Select options={options} placeholder='Select an option, sir 🧐' m='auto' />
+    <Select options={options} placeholder='Select an option, sir' m='auto' />
   </Flex>
 );
 </script>
@@ -72,14 +72,14 @@ const Demo = () => {
         value={value}
         onChange={setValue}
         options={options}
-        placeholder='Select an option, sir 🧐'
+        placeholder='Select an option, sir'
         m='auto'
       />
       <Select
         defaultValue={initialValue}
         onChange={setValue}
         options={options}
-        placeholder='Select an option, sir 🧐'
+        placeholder='Select an option, sir'
         m='auto'
       />
     </Flex>
@@ -112,8 +112,8 @@ const options = Array(6)
 const Demo = () => (
   <Flex>
     {/* ButtonTrigger is the default trigger */}
-    <Select tag={ButtonTrigger} options={options} placeholder='Select an option, sir 🧐' m='auto' />
-    <Select tag={LinkTrigger} options={options} placeholder='Select an option, sir 🧐' m='auto' />
+    <Select tag={ButtonTrigger} options={options} placeholder='Select an option, sir' m='auto' />
+    <Select tag={LinkTrigger} options={options} placeholder='Select an option, sir' m='auto' />
   </Flex>
 );
 </script>
@@ -206,7 +206,7 @@ const Demo = () => (
           ))}
         </Select.List>
         <Notice style={noticeStyle}>
-          <Notice.Content aria-live='polite'>Woooop, it's simple magic! 🧙</Notice.Content>
+          <Notice.Content aria-live='polite'>Woooop, it's simple magic!</Notice.Content>
         </Notice>
       </Select.Popper>
     </Select>
@@ -235,7 +235,7 @@ import Select from '@semcore/ui/select';
 const Demo = () => (
   <Flex>
     <Select m='auto'>
-      <Select.Trigger placeholder="I'll show u some options, buddy 😉" />
+      <Select.Trigger placeholder="I'll show u some options, buddy" />
       <Select.Menu>
         <Select.Option value={1}>I'm option</Select.Option>
         <Select.Option value={2}>
@@ -252,13 +252,9 @@ const Demo = () => (
 
 :::
 
-## Options filtration
+## Options filtering
 
-The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component.
-
-::: tip
-The `InputSearch` component is difficult to customize. All props are passed to `Input.Value`. If this isn’t enough, you can create your own custom solution.
-:::
+The `InputSearch` is added to Select for filtering elements in the list. This is a stylized wrapper over the [Input](/components/input/) component with clear button.
 
 The example below shows one of the ways to implement filtering.
 
@@ -299,6 +295,80 @@ const Demo = () => {
               aria-expanded='true'
               aria-activedescendant={`option-${highlightedIndex}`}
             />
+            <Select.List hMax={'224px'} id='search-list'>
+              {options.map(({ value, label }, index) => (
+                <Select.Option
+                  value={value}
+                  key={value}
+                  id={`option-${index}`}
+                  aria-selected={index === highlightedIndex}
+                >
+                  {label}
+                </Select.Option>
+              ))}
+              {!options.length && (
+                <Select.OptionHint key='Nothing'>Nothing found</Select.OptionHint>
+              )}
+            </Select.List>
+          </>
+        )}
+      </Select.Popper>
+    </Select>
+  );
+};
+</script>
+
+:::
+
+## Advanced filtering control
+
+To get more control over the parts of `InputSearch` component, you can use children `InputSearch.SearchIcon`, `InputSearch.Value` and `InputSearch.Clear` components.
+
+In the example below clear button handler is disabled.
+
+::: sandbox
+
+<script lang="tsx">
+import React, { useState } from 'react';
+import Select, { InputSearch } from '@semcore/ui/select';
+
+const data = Array(26)
+  .fill(0)
+  .map((_, index) => ({
+    label: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
+    value: `Option ${String.fromCharCode('a'.charCodeAt(0) + index)}`,
+  }));
+
+const Demo = () => {
+  const [filter, setFilter] = useState('');
+  const options = React.useMemo(
+    () => data.filter((option) => option.value.toString().includes(filter)),
+    [filter],
+  );
+
+  return (
+    <Select placeholder='Select value'>
+      <Select.Trigger />
+      <Select.Popper>
+        {({ highlightedIndex }) => (
+          <>
+            <InputSearch value={filter} onChange={setFilter}>
+              <InputSearch.SearchIcon />
+              <InputSearch.Value
+                placeholder='Search'
+                role='combobox'
+                aria-autocomplete='list'
+                aria-controls='search-list'
+                aria-owns='search-list'
+                aria-expanded='true'
+                aria-activedescendant={`option-${highlightedIndex}`}
+              />
+              <InputSearch.Clear
+                onClick={() => {
+                  return false;
+                }}
+              />
+            </InputSearch>
             <Select.List hMax={'224px'} id='search-list'>
               {options.map(({ value, label }, index) => (
                 <Select.Option

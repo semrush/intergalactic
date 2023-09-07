@@ -73,6 +73,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -116,6 +118,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -146,6 +150,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::
@@ -184,6 +190,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::
@@ -194,7 +202,7 @@ By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pa
 
 ::: tip
 For the correct type mapping in the TC, you must also pass the interface.
-`<NeighborLocation<IFlexProps> tag={Flex} w={200}/>`
+`<NeighborLocation<FlexProps> tag={Flex} w={200}/>`
 :::
 
 ::: sandbox
@@ -221,13 +229,15 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
 
 ## Using a custom component
 
-You can apply <NeighborLocation/> to your components. You will need to use the component `<NeighborLocation.Detect/>`
+You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>`
 and
 then the `neighborLocation` prop will come to your component.
 
@@ -260,6 +270,8 @@ const Demo = () => {
     </NeighborLocation>
   );
 };
+
+
 </script>
 
 :::

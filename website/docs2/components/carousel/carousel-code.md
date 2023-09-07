@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Carousel('index'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
+tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('carousel-code'), Changelog('carousel-changelog')
 ---
 
 ## Image & video galleries
@@ -30,7 +30,7 @@ const Demo = () => (
     <Flex>
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
-        <Carousel.Container>
+        <Carousel.Container aria-roledescription='image carousel' aria-label='Beauty of Nature'>
           {images.map((url, index) => (
             <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
           ))}
@@ -49,12 +49,15 @@ const Demo = () => (
             src={images[index]}
             w={100}
             h={100}
+            aria-roledescription='slide'
           />
         ))
       }
     </Carousel.Indicators>
   </Carousel>
 );
+
+
 </script>
 
 :::
@@ -82,13 +85,25 @@ const width = 600;
 const imageWidth = width - 75;
 
 const Demo = () => (
-  <Carousel w={width} defaultIndex={0}>
+  <Carousel
+    w={width}
+    defaultIndex={0}
+    aria-roledescription='image carousel'
+    aria-label='Beauty of Nature'
+  >
     <Flex>
       <Carousel.Prev />
       <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
         <Carousel.Container>
           {images.map((url, index) => (
-            <Carousel.Item tag='img' key={url} src={url} w={imageWidth} alt={altTexts[index]} />
+            <Carousel.Item
+              tag='img'
+              key={url}
+              src={url}
+              w={imageWidth}
+              alt={altTexts[index]}
+              aria-roledescription='slide'
+            />
           ))}
         </Carousel.Container>
       </Box>
@@ -97,6 +112,8 @@ const Demo = () => (
     <Carousel.Indicators />
   </Carousel>
 );
+
+
 </script>
 
 :::
@@ -119,10 +136,14 @@ const Demo = () => {
     <>
       <Button onClick={() => setVisible(!visible)}>Open Carousel</Button>
       <Modal visible={visible} onClose={() => setVisible(false)} w={664}>
-        <Carousel tabIndex={0}>
+        <Carousel tabIndex={0} aria-roledescription='text carousel' aria-label='Kafka'>
           <Carousel.Container>
-            {[1, 2].map((_, ind) => (
-              <Carousel.Item key={ind}>
+            {[1, 2].map((id) => (
+              <Carousel.Item
+                key={id}
+                aria-roledescription='text slide'
+                aria-label={`story part ${id}`}
+              >
                 <Text size={500} mb={4} bold tag='h4'>
                   Heading
                 </Text>
@@ -153,6 +174,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::

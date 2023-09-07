@@ -1,48 +1,46 @@
 ---
 title: Validation
 tabName: Design
-tabs: Validation('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
 
-**Validation** is the system's verification of values entered by the user.
+**Validation** refers to the system's process of confirming values entered by the user.
 
 ## How validation works
 
-- Validation in forms and filters can be performed simultaneously by `unFocus` and `Submit`. _This option doesn't apply to forms with limits – use only `Submit` for them._
-- Don’t validate empty fields (in which user hasn’t entered a value) by `unFocus`.
+- In forms and filters, validation can be executed concurrently through `unFocus` and `Submit`. Note: This option is not suitable for forms with limits; use only `Submit` for them.
+- Empty fields (where the user has not entered any value) should not be validated by `unFocus`.
 
 ::: tip
-Since form validation can be performed by clicking on a button, it isn’t recommended to set the main buttons to `disabled` state. This creates a false impression that the form or filter doesn't work at all.
+Since form validation can be triggered by button clicks, it is advisable not to disable primary buttons. This prevents users from mistakenly thinking that the form or filter is entirely dysfunctional.
 :::
 
-- After validation by `unFocus`, an input with the error is highlighted. When you focus on it, a tooltip appears with a hint what you need to fix in the form.
-- After validation by `Submit`, all inputs with errors get the `invalid` state, and `focus` with the tooltip with a hint is passed to the first invalid input.
-- The `focus` on the first input with an error should scroll the page to it, if the page is long, show a tooltip with a hint of what to fix.
+- Following validation by `unFocus`, erroneous inputs are highlighted. Upon focusing on them, a tooltip emerges, guiding users on necessary adjustments within the form.
+- Post validation via `Submit`, inputs with errors acquire an `invalid` state. Focus, accompanied by a tooltip, is directed towards the first erroneous input.
+- If the page is long, focusing on the initial input with an error should scroll the page to it. In such cases, a tooltip providing correction guidance should also be visible.
 
 ::: tip
-The tooltip tells user why the input gets invalid state or what to do to send the data. If possible, it should be placed so that important content is also visible next to the input or control. Don't forget to put a full stop at the end of the text in the tooltip.
+The tooltip elucidates why an input receives an invalid state or offers instructions for sending data. Whenever possible, ensure the tooltip is positioned near the input or control and conclude the text with a period.
 :::
 
 ### How the invalid state is removed from the input
 
-- If validation is performed in the browser, you can reset the `invalid` state as soon as the input becomes valid.
-- If validation is performed on the server, you can reset the `invalid` state whenever the data in the input changes.
+- If browser-based validation is in play, the `invalid` state can be reset as soon as the input becomes `valid`.
+- For server-based validation, the `invalid` state can be reset each time input data changes.
 
-If the user corrects inputs with errors out of order, all uncorrected inputs are highlighted if no changes were made to them.
+If users address inputs with errors out of sequence, all uncorrected inputs will remain highlighted, unless changes are made to them.
 
 ## unFocus validation
 
-You can validate the inputs immediately, as the user fills out the form, if there are no deductions of paid limits and additional difficulties on the backend.
-
-Use this validation to make it easier for the user to fill out forms and filters. We recommend you to immediately show the user what needs to be corrected before submitting the form.
+Where deductions of paid limits and backend complexities are absent, immediate validation can be applied as users complete forms. Utilize this validation approach to facilitate form and filter completion. Displaying correction cues before submitting the form is recommended.
 
 ![](static/immediate-validation.png)
 
 ## Appearance
 
-All form elements have the same `invalid` state: a `var(--border-danger-active)` border and a tooltip with the `warning` theme when focused.
+Uniformly, all form elements assume an `invalid` state, marked by a `var(--border-danger-active)` border. When focused, this state triggers a tooltip in the `warning` theme.
 
 ![](./static/checkbox-validation.png)
 
@@ -56,16 +54,18 @@ All form elements have the same `invalid` state: a `var(--border-danger-active)`
 
 ## Notice with error message
 
-Find more about the placement of the notice with an error message in the [Notice guide](/components/notice/).
+For guidance on positioning the error message notice, consult the [Notice guide](/components/notice/).
 
-## Validation texts
+## Validation messages
 
-The General pattern for the text: `Please enter something`.
+A standard text pattern is: Please enter something.
 
-| Condition                                                        | Text                                                                                                     |
-| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| If the field is empty                                            | If we mean that the user enters their data in the form, then we write: `Please enter your [field name]`. |
-| If the user enters someone else's data                           | Simply write: `Please enter a/an [field name]`.                                                          |
-| If the field is filled in with an error                          | For example, the field with email: `Please enter a valid email`.                                         |
-| Standard error in the checkbox when accepting Terms & Conditions | `Please confirm that you agree to our Terms and Conditions and Privacy Policy`.                          |
+Table: Validation messages
+
+| Condition  | Text            |
+| ---------- | --------------- |
+| Empty field | If referring to user data input, use: Please enter your [field name]. |
+| Entering someone else's data | Use: Please enter a/an [field name].  |
+| Field filled with erroneous data | For instance, with email field: Please enter a valid email. |
+| Checkbox error for Terms & Conditions | Use: Please confirm that you agree to our Terms and Conditions and Privacy Policy.   |
 

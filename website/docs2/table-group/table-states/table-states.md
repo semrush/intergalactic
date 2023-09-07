@@ -47,7 +47,7 @@ In a secondary table, you can show the skeleton for all the rows (there are usua
 
 If gathering data takes a large period of time **(more than 1 minute, for example)**, show that data is being collected. Use the [ProgressBar](/components/progress-bar) in this case.
 
-A message with a progress bar gets [`sticky` property](/components/sticky/) and is centered relative to the screen that the user scrolls.
+A message with a progress bar gets `sticky` property and is centered relative to the screen that the user scrolls.
 
 ![](static/table-sticky-1.png)
 
@@ -69,7 +69,7 @@ If data loading is fast, then this state isn’t necessary.
 - having other data operations that don’t require a long wait;
 - searching in the table (if possible, show the search query).
 
-The loading message gets the [`sticky` property](/components/sticky/) and is centered relative to the screen that the user scrolls.
+The loading message gets the `sticky` property and is centered relative to the screen that the user scrolls.
 
 ![](static/sticky-loading-1.png)
 

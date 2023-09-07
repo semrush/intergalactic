@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: popper
-tabs: Popper('index'), API('popper-api'), Changelog('popper-changelog')
+tabs: Popper('popper'), API('popper-api'), Changelog('popper-changelog')
 ---
 
 ## Popper

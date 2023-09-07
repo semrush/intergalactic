@@ -3,11 +3,6 @@ import ComponentCard from '@docs/../src/components/ComponentCard';
 import { getImageName } from '@docs/../src/pages/Home';
 import { Box } from '@semcore/flex-box';
 
-const getImageName = (title) => {
-  const name = title.replace(/[ \/]+/g, '');
-  return name.charAt(0).toLowerCase() + name.slice(1);
-};
-
 const group = {
   line: {
     title: 'Line chart',

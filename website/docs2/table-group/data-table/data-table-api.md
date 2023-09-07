@@ -1,6 +1,6 @@
 ---
 title: API
-tabs: DataTable code and API('index'), API('data-table-api'), Changelog('data-table-changelog')
+tabs: DataTable code and API('data-table'), API('data-table-api'), Changelog('data-table-changelog')
 ---
 
 ## DataTable

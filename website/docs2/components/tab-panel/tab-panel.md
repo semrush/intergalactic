@@ -2,7 +2,7 @@
 title: TabPanel
 fileSource: tab-panel
 tabName: Design
-tabs: TabPanel('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
+tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ::: react-view

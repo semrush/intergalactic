@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: divider
-tabs: Divider('index'), A11y('divider-a11y'), API('divider-api'), Changelog('divider-changelog')
+tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('divider-changelog')
 ---
 
 ## Divider

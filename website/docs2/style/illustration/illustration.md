@@ -15,7 +15,7 @@ tabs: Illustration('illustration'), A11y('illustration-a11y'), API('illustration
 
 <script lang="tsx">
 import React from 'react';
-import Components from './index';
+import Components from './illustrations-view';
 import dataIllustrations from './illustrations-list';
 
 import icons from '@illustrations';

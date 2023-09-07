@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: time-picker
-tabs: TimePicker('index'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
+tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
 ## Time picker

@@ -2,7 +2,7 @@
 title: Tooltip
 fileSource: tooltip
 tabName: Design
-tabs: Tooltip('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
+tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
 ::: react-view
@@ -219,6 +219,8 @@ const Demo = () => {
     </Box>
   );
 };
+
+
 </script>
 
 :::
@@ -251,7 +253,7 @@ Tooltip usually contains unformatted text.
 
 ![](static/tooltip-basic.png)
 
-In some cases (e.g., for advertising purposes), you can format the text and add other components to the tooltip:
+In some cases (for example, for advertising purposes), you can format the text and add other components to the tooltip:
 
 - [Button](/components/button/), [Link](/components/link/), etc.
 - Image

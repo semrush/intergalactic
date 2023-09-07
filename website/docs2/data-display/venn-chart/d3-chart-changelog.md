@@ -6,4 +6,4 @@ tabs: Venn chart('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), 
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

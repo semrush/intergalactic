@@ -54,3 +54,5 @@ const Demo = () => {
     </DnD>
   );
 };
+
+export default Demo;

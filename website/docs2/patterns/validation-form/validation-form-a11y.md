@@ -1,6 +1,6 @@
 ---
 title: A11y
-tabs: Validation('index'), A11y('validation-form-a11y'), Example('validation-form-code')
+tabs: Validation('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
 ---
 
 ## Considerations for developers

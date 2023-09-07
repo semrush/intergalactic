@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Click Potential, Competitive Density, CPC('index'), Example('filter-cp-cd-cpc-code')
+tabs: Click Potential, Competitive Density, CPC('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 ---
 
 ## Basic example

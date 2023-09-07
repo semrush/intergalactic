@@ -15,6 +15,7 @@ title: UX patterns
 @page project-create
 @page project-select
 @page success-state
+<!-- @page sso-page -->
 
 @page summary
 @page validation-form

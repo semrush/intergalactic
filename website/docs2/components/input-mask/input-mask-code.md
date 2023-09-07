@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: input-mask
-tabs: InputMask('index'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
+tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Example('input-mask-code'), Changelog('input-mask-changelog')
 ---
 
 ## InputMask
@@ -129,7 +129,7 @@ const Demo = () => {
           mask='9999 9999 9999 9999'
           placeholder='____ ____ ____ ____'
           onSuccess={handleSuccess}
-          title='card number – 16-digits'
+          title='card number - 16-digits'
           id='card_number'
         />
       </InputMask>
@@ -143,7 +143,7 @@ const Demo = () => {
             mask='99/99'
             placeholder='MM/YY'
             pipe={pipeExpireDate}
-            title='month and year of card expiration – 4 digits in total'
+            title='month and year of card expiration - 4 digits in total'
             id='expire_date'
           />
         </InputMask>

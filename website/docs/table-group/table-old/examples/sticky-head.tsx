@@ -150,3 +150,5 @@ const Demo = () => {
     </ScrollArea>
   );
 };
+
+export default Demo;

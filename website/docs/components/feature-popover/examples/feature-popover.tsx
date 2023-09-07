@@ -46,3 +46,5 @@ const Demo = () => {
     </FeaturePopover>
   );
 };
+
+export default Demo;

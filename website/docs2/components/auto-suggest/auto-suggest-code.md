@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: AutoSuggest('index'), A11y('auto-suggest-a11y'), Example('auto-suggest-code')
+tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-code')
 ---
 
 To create one of the search patterns (Combobox, AutoSuggest) you will need the following:
@@ -51,6 +51,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -72,6 +74,7 @@ const Highlight = ({ highlight, children }) => {
     const re = new RegExp(highlight.toLowerCase(), 'g');
     html = html.replace(re, `<span style="font-weight: bold; padding: 2px 0">${highlight}</span>`);
   }
+  // rome-ignore lint/security/noDangerouslySetInnerHtml:
   return <span dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
@@ -140,6 +143,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::

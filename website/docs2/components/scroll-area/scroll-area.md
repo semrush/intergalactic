@@ -2,7 +2,7 @@
 title: ScrollArea
 fileSource: scroll-area
 tabName: Design
-tabs: ScrollArea('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
+tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
 ## Description

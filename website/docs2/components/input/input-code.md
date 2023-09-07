@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: input
-tabs: Input('index'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
+tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
 ## Password input
@@ -48,6 +48,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -102,6 +104,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -130,7 +134,7 @@ const Demo = () => {
       <Box mt={2}>
         <Input w={240}>
           <Input.Value
-            placeholder='Type something to clear something 😏'
+            placeholder='Type something to clear something'
             value={value}
             onChange={(v) => setValue(v)}
             id='clear-example'
@@ -148,6 +152,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -191,6 +197,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -245,6 +253,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -310,6 +320,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -366,6 +378,8 @@ const Demo = () => {
     </div>
   );
 };
+
+
 </script>
 
 :::

@@ -1,11 +1,13 @@
 import React from 'react';
+import '@semcore/ui/utils/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
 import Button from '@semcore/ui/button';
 import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import cx from 'classnames';
-import Copy from '@components/Copy';
+import Code from '../../../../src/components/Code';
 import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
 import styles from './processor.module.css';
+import Copy from '@components/Copy';
 
 const FileInput = ({ id, onFile, multiple, accept }) => {
   const [dragging, setDragging] = React.useState(false);

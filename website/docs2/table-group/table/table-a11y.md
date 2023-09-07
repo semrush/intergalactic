@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Table principles('index'), A11y('table-a11y'), Example('table-code')
+tabs: Table principles('table'), A11y('table-a11y'), Example('table-code')
 ---
 
 ## Considerations for developers

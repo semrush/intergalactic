@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: scroll-area
-tabs: ScrollArea('index'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
+tabs: Design('scroll-area'), A11y('scroll-area-a11y'), API('scroll-area-api'), Example('scroll-area-code'), Changelog('scroll-area-changelog')
 ---
 
 ## Basic usage
@@ -12,20 +12,14 @@ To use the ScrollArea component, wrap your content with `ScrollArea`. It will cr
 
 <script lang="tsx">
 import React from 'react';
-import styled from 'styled-components';
 import Scroll from '@semcore/ui/scroll-area';
-
-const Block = styled.div`
-  display: inline-block;
-  margin: 10px;
-  width: 120px;
-  height: 120px;
-  background-color: ${() => getRandomColor()};
-`;
+import { Box } from '@semcore/flex-box';
 
 let randomIndex = 1;
-const stableRandom = () =>
-  Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+const stableRandom = () => {
+  if (randomIndex > 20) randomIndex = 1;
+  return Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+};
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -40,12 +34,21 @@ class Demo extends React.PureComponent {
     return (
       <Scroll h={300}>
         {[...new Array(100)].map((_, index) => (
-          <Block ind={index} key={index} />
+          <Box
+            key={index}
+            inline
+            m={2}
+            w={120}
+            h={120}
+            style={{ backgroundColor: getRandomColor() }}
+          />
         ))}
       </Scroll>
     );
   }
 }
+
+
 </script>
 
 :::
@@ -56,13 +59,14 @@ class Demo extends React.PureComponent {
 
 <script lang="tsx">
 import React from 'react';
-import styled from 'styled-components';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 let randomIndex = 1;
-const stableRandom = () =>
-  Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+const stableRandom = () => {
+  if (randomIndex > 20) randomIndex = 1;
+  return Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+};
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -71,14 +75,6 @@ function getRandomColor() {
   }
   return color;
 }
-
-const Block = styled.div`
-  display: inline-block;
-  margin: 10px;
-  width: 120px;
-  height: 120px;
-  background-color: ${() => getRandomColor()};
-`;
 
 class Demo extends React.PureComponent {
   controlled: any;
@@ -98,7 +94,14 @@ class Demo extends React.PureComponent {
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container onScroll={this.handleMainScroll}>
               {[...new Array(100)].map((_, index) => (
-                <Block ind={index} key={index} />
+                <Box
+                  key={index}
+                  inline
+                  m={2}
+                  w={120}
+                  h={120}
+                  style={{ backgroundColor: getRandomColor() }}
+                />
               ))}
             </ScrollArea.Container>
             <ScrollArea.Bar />
@@ -114,7 +117,14 @@ class Demo extends React.PureComponent {
               }}
             >
               {[...new Array(100)].map((_, index) => (
-                <Block ind={index} key={index} />
+                <Box
+                  key={index}
+                  inline
+                  m={2}
+                  w={120}
+                  h={120}
+                  style={{ backgroundColor: getRandomColor() }}
+                />
               ))}
             </ScrollArea.Container>
             <ScrollArea.Bar />
@@ -124,6 +134,8 @@ class Demo extends React.PureComponent {
     );
   }
 }
+
+
 </script>
 
 :::
@@ -134,13 +146,14 @@ class Demo extends React.PureComponent {
 
 <script lang="tsx">
 import React from 'react';
-import styled from 'styled-components';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 let randomIndex = 1;
-const stableRandom = () =>
-  Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+const stableRandom = () => {
+  if (randomIndex > 20) randomIndex = 1;
+  return Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+};
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -149,14 +162,6 @@ function getRandomColor() {
   }
   return color;
 }
-
-const Block = styled.div`
-  display: inline-block;
-  margin: 10px;
-  width: 120px;
-  height: 120px;
-  background-color: ${() => getRandomColor()};
-`;
 
 class Demo extends React.PureComponent {
   mirror: any;
@@ -177,7 +182,14 @@ class Demo extends React.PureComponent {
           <ScrollArea w={300} h={300}>
             <ScrollArea.Container onScroll={this.handleScrollMain}>
               {[...new Array(100)].map((_, index) => (
-                <Block ind={index} key={index} />
+                <Box
+                  key={index}
+                  inline
+                  m={2}
+                  w={120}
+                  h={120}
+                  style={{ backgroundColor: getRandomColor() }}
+                />
               ))}
             </ScrollArea.Container>
             <ScrollArea.Bar />
@@ -194,7 +206,14 @@ class Demo extends React.PureComponent {
             >
               <Flex flexWrap reverse>
                 {[...new Array(100)].map((_, index) => (
-                  <Block ind={index} key={index} />
+                  <Box
+                    key={index}
+                    inline
+                    m={2}
+                    w={120}
+                    h={120}
+                    style={{ backgroundColor: getRandomColor() }}
+                  />
                 ))}
               </Flex>
             </ScrollArea.Container>
@@ -205,6 +224,8 @@ class Demo extends React.PureComponent {
     );
   }
 }
+
+
 </script>
 
 :::
@@ -215,13 +236,14 @@ class Demo extends React.PureComponent {
 
 <script lang="tsx">
 import React, { useRef } from 'react';
-import styled from 'styled-components';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 let randomIndex = 1;
-const stableRandom = () =>
-  Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+const stableRandom = () => {
+  if (randomIndex > 20) randomIndex = 1;
+  return Math.abs(Math.sin(Math.exp(Math.PI * randomIndex * Math.cos(100 - randomIndex++))));
+};
 function getRandomColor() {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -230,14 +252,6 @@ function getRandomColor() {
   }
   return color;
 }
-
-const Block = styled.div`
-  display: inline-block;
-  margin: 10px;
-  width: 120px;
-  height: 120px;
-  background-color: ${() => getRandomColor()};
-`;
 
 const Demo = () => {
   const containerRef = useRef();
@@ -248,7 +262,14 @@ const Demo = () => {
           <ScrollArea.Container ref={containerRef}>
             <Box w={1200}>
               {[...new Array(100)].map((_, index) => (
-                <Block ind={index} key={index} />
+                <Box
+                  key={index}
+                  inline
+                  m={2}
+                  w={120}
+                  h={120}
+                  style={{ backgroundColor: getRandomColor() }}
+                />
               ))}
             </Box>
           </ScrollArea.Container>
@@ -272,6 +293,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::
@@ -285,28 +308,20 @@ The dynamic virtual list is powered by [React-virtualized](https://github.com/bv
 <script lang="tsx">
 import React, { useRef, useState } from 'react';
 import { findDOMNode } from 'react-dom';
-import styled from 'styled-components';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
 import { List } from 'react-virtualized';
 
-const Block = styled.div`
-  display: inline-flex;
-  width: 120px;
-  height: 120px;
-  border: 1px solid black;
-`;
-
 const list = [...new Array(6)];
 const renderRow = ({ key, index, style }) => {
   return (
-    <Block key={key} style={style}>
+    <Box key={key} inline m={2} w={120} h={120} style={{ border: '1px solid black', ...style }}>
       <Text bold size={200} m='auto'>
         {index + 1}
       </Text>
-    </Block>
+    </Box>
   );
 };
 
@@ -356,6 +371,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::

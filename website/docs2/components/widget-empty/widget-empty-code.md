@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: widget-empty
-tabs: Widget empty state('index'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
+tabs: Design('widget-empty'), A11y('widget-empty-a11y'), API('widget-empty-api'), Example('widget-empty-code'), Changelog('widget-empty-changelog')
 ---
 
 ## NoData example
@@ -347,7 +347,7 @@ const Demo = () => {
         <WidgetEmpty icon={getIconPath('combined-chart')}>
           <WidgetEmpty.Title>Set up your [Name Tool]</WidgetEmpty.Title>
           <WidgetEmpty.Description>
-            [Name Tool] allows you to get daily updates on positions in Google’s top 100 organic and
+            [Name Tool] allows you to get daily updates on positions in Google's top 100 organic and
             paid search results.
           </WidgetEmpty.Description>
           <Box mt={4}>

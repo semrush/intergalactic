@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
-tabs: Horizontal bar chart('index'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
+tabs: Horizontal bar chart('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal-api'), Examples('bar-horizontal-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Error message('index'), A11y('global-errors-a11y'), API('global-errors-api'), Example('global-errors-code'), Changelog('global-errors-changelog')
+tabs: Error message('global-errors'), A11y('global-errors-a11y'), API('global-errors-api'), Example('global-errors-code'), Changelog('global-errors-changelog')
 ---
 
 ## Example of using templates

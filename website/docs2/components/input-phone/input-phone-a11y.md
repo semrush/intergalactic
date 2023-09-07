@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: InputPhone('index'), A11y('input-phone-a11y'), Example('input-phone-code')
+tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
 ---
 
 ## What component has

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Keyword Difficulty, Positions, Volume('index'), Example('filter-kd-position-volume-code')
+tabs: Keyword Difficulty, Positions, Volume('filter-kd-positions-volume'), Example('filter-kd-position-volume-code')
 ---
 
 ## Basic example

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Filter Search('index'), Example('filter-search-code')
+tabs: Filter Search('filter-search'), Example('filter-search-code')
 ---
 
 ## Dynamic search
@@ -53,6 +53,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::
@@ -120,6 +122,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::
@@ -197,6 +201,8 @@ const Demo = () => {
     </Flex>
   );
 };
+
+
 </script>
 
 :::

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: FeedbackYesNo('index'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+tabs: FeedbackYesNo('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## FeedbackYesNo example
@@ -92,7 +92,7 @@ class Feedback extends React.PureComponent<{
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight='18px' size={100} color='#6c6e79'>
+            <Text lineHeight='18px' size={200} color='#6c6e79'>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
@@ -116,23 +116,22 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackYesNo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { status: 'default', visible: true };
-    this.onSubmit = () => {
-      this.requestServer('success', 1000);
-      this.setState({ status: 'loading' });
-    };
-    this.requestServer = (status, time, cb?: () => void) => {
-      this.timeout = setTimeout(() => {
-        this.setState({ status });
-        cb?.();
-      }, time || 500);
-    };
-    this.changeVisible = (visible) => {
-      this.setState({ visible });
-    };
-  }
+  state = { status: 'default', visible: true };
+  timeout: any;
+  onSubmit = () => {
+    this.requestServer('success', 1000);
+    this.setState({ status: 'loading' });
+  };
+  requestServer = (status, time, cb?: () => void) => {
+    this.timeout = setTimeout(() => {
+      this.setState({ status });
+      cb?.();
+    }, time || 500);
+  };
+  changeVisible = (visible) => {
+    this.setState({ visible });
+  };
+
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }

@@ -28,11 +28,12 @@ const CustomComponent = () => {
   const toggleVisible = () => {
     setVisible(!visible);
   };
+
   React.useEffect(() => {
-    const styleSheet = document.createElement('style');
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-    return () => styleSheet.remove();
+    const style = document.createElement('style');
+    style.innerHTML = styles;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
   }, []);
 
   return (

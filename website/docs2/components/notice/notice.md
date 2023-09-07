@@ -2,7 +2,7 @@
 title: Notice
 fileSource: notice
 tabName: Design
-tabs: Notice('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
+tabs: Design('notice'), A11y('notice-a11y'), API('notice-api'), Example('notice-code'), Changelog('notice-changelog')
 ---
 
 ::: react-view

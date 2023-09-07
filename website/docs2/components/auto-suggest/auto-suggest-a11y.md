@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: AutoSuggest('index'), A11y('auto-suggest-a11y'), Example('auto-suggest-code')
+tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-code')
 ---
 
 ## What component has

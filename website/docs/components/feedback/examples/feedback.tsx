@@ -36,12 +36,9 @@ class Feedback extends React.PureComponent<{
   onChange: (event: any, trigger: string) => void;
   value: { description: string; email: string };
 }> {
-  constructor(props) {
-    super(props);
-    this.handleChange = (fn) => (_, e) => {
-      fn(e);
-    };
-  }
+  handleChange = (fn) => (_, e) => {
+    fn(e);
+  };
 
   render() {
     const { status, onSubmit, onCancel, value } = this.props;
@@ -114,24 +111,22 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackLink extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { status: 'default', value: { description: '', email: '' } };
-    this.onSubmit = () => {
-      this.requestServer('success', 1000);
-      this.setState({ status: 'loading' });
-    };
-    this.onChange = (e, trigger) => {
-      const { value } = e.currentTarget;
-      this.setState({ value: { ...this.state.value, [trigger]: value } });
-    };
-    this.requestServer = (status, time = 500, cb = () => {}) => {
-      this.timeout = setTimeout(() => {
-        this.setState({ status });
-        cb();
-      }, time);
-    };
-  }
+  state = { status: 'default', value: { description: '', email: '' } };
+  timeout: any;
+  onSubmit = () => {
+    this.requestServer('success', 1000);
+    this.setState({ status: 'loading' });
+  };
+  onChange = (e, trigger) => {
+    const { value } = e.currentTarget;
+    this.setState({ value: { ...this.state.value, [trigger]: value } });
+  };
+  requestServer = (status, time = 500, cb = () => {}) => {
+    this.timeout = setTimeout(() => {
+      this.setState({ status });
+      cb();
+    }, time);
+  };
 
   componentWillUnmount() {
     clearTimeout(this.timeout);

@@ -1,13 +1,13 @@
 ---
 title: Example
 fileSource: product-head
-tabs: ProductHead('index'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
+tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api'), Example('product-head-code'), Changelog('product-head-changelog')
 ---
 
 ## Extended example of the header with tabs
 
 ::: tip
-[TabLine](/components/tab-line/) isn’t part of the header, it is a part of the page content.
+[TabLine](/components/tab-line/) isn't part of the header, it is a part of the page content.
 :::
 
 ::: sandbox
@@ -85,7 +85,7 @@ const Demo = () => {
         <Header.Row>
           <Info>
             <Info.Item label='Location:'>
-              <Select value={['us']} placeholder='Select an option, sir 🧐' m='auto'>
+              <Select value={['us']} placeholder='Select an option, sir' m='auto'>
                 <Select.Trigger tag={Link}>
                   United States
                   <Link.Addon tag={ChevronDownM} />
@@ -103,7 +103,7 @@ const Demo = () => {
               </Select>
             </Info.Item>
             <Info.Item label='Device:'>
-              <Select value={['desktop']} placeholder='Select an option, sir 🧐' m='auto'>
+              <Select value={['desktop']} placeholder='Select an option, sir' m='auto'>
                 <Select.Trigger tag={Link}>
                   Desktop
                   <Link.Addon tag={ChevronDownM} />
@@ -117,7 +117,7 @@ const Demo = () => {
             <Info.Item label='Data:'>
               Fresh
               <Tooltip
-                title='Some more details why data is fresh 🌚'
+                title='Some more details why data is fresh'
                 style={{ display: 'inline-flex' }}
               >
                 <InfoM ml={1} color='gray-300' cursor='help' />

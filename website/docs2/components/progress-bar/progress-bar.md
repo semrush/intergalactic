@@ -2,27 +2,25 @@
 title: ProgressBar
 fileSource: progress-bar
 tabName: Design
-tabs: ProgressBar('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
+tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import styled from 'styled-components';
+import { Box } from '@semcore/flex-box';
 
 import ProgressBar from '@semcore/ui/progress-bar';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const SIZES = ['l', 'm', 's'];
 
-const Wrapper = styled.div`
-  width: 300px;
-  border-radius: 5px;
-  padding: 20px;
-`;
-
-const LayoutPreview = (props) => <Wrapper>{props.children}</Wrapper>;
+const LayoutPreview = (props) => (
+  <Box w={200} p={5}>
+    {props.children}
+  </Box>
+);
 
 const Preview = (preview) => {
   const { radio, text, select } = preview('ProgressBar');

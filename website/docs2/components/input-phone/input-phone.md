@@ -1,7 +1,7 @@
 ---
 title: InputPhone
 tabName: Design
-tabs: InputPhone('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
+tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
 ---
 
 ## Description

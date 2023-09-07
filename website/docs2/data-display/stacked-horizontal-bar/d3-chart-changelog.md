@@ -6,4 +6,4 @@ tabs: Stacked horizontal bar chart('stacked-horizontal-bar'), A11y('stacked-hori
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

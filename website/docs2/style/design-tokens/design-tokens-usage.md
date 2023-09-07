@@ -1,6 +1,6 @@
 ---
 title: Usage in design
-tabs: Design tokens('index'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
+tabs: Design tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
 ---
 
 ## What is a design token?

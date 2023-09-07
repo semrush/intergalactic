@@ -2,7 +2,7 @@
 title: Tag
 fileSource: tag
 tabName: Design
-tabs: Tag('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
+tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')
 ---
 
 ::: react-view

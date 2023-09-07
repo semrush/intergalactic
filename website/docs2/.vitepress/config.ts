@@ -79,7 +79,7 @@ export default defineConfig({
       unpluginIcons.vite({}),
       unpluginStatic.vite({}),
       unpluginIllustrations.vite({}),
-      unpluginCssModules.vite({}),
+      // unpluginCssModules.vite({}),
       unpluginCrutches.vite({}),
 
     // build.onResolve({ filter: /^@docs\/.*\.md$/ }, async ({ path }) => {
@@ -97,10 +97,31 @@ export default defineConfig({
     ],
   },
 
+
+  head: [
+    ['link', { rel: 'icon', href: '/miniwhale.png' }],
+  ],
+
   themeConfig: {
     docFooter: {
       prev: false,
       next: false,
+    },
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © Semrush'
+    },
+    logo: { src: '/miniwhale.svg', width: 24, height: 24 },
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: 'PDUJZB0TBK',
+        apiKey: '9ad1935d853b24ce3fe9c0039bcf7b40',
+        indexName: 'intergalactic',
+        searchParameters: {
+          // facetFilters: []
+        }
+      }
     },
     editLink: {
       pattern: 'https://github.com/semrush/intergalactic/edit/master/website/docs/:path',
@@ -108,8 +129,8 @@ export default defineConfig({
     },
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
+      { text: 'Releases', link: 'https://github.com/semrush/intergalactic/releases', target: '_blank' },
+      { text: 'Report a bug / Discuss features', link: 'https://github.com/semrush/intergalactic/issues', target: '_blank' },
     ],
 
     sidebar: [
@@ -2569,6 +2590,6 @@ export default defineConfig({
       },
     ],
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/semrush/intergalactic' }],
   },
 });

@@ -2,7 +2,7 @@
 title: Card
 fileSource: card
 tabName: Design
-tabs: Card('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
+tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 
 ::: tip

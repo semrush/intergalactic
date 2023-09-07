@@ -10,7 +10,7 @@ const MEDIA = [
 ];
 const Breakpoints = createBreakpoints(MEDIA);
 
-const Example = () => {
+const Demo = () => {
   const index = useContext(Breakpoints.Context);
 
   return <div>Media matches "{MEDIA[index] || 'ZOOM WINDOW'}"</div>;
@@ -19,7 +19,7 @@ const Example = () => {
 export default () => {
   return (
     <Breakpoints>
-      <Example />
+      <Demo />
     </Breakpoints>
   );
 };

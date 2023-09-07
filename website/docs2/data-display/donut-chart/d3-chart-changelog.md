@@ -6,4 +6,4 @@ tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-cha
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

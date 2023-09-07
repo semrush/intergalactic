@@ -4,7 +4,7 @@ import Button from '@semcore/ui/button';
 
 const buttonSizes = ['m', 'l'] as const;
 
-const Example = () => {
+const Demo = () => {
   const index = useContext(Breakpoints.Context);
 
   return <Button size={buttonSizes[index]}>Button size {buttonSizes[index]}</Button>;
@@ -13,7 +13,7 @@ const Example = () => {
 export default () => {
   return (
     <Breakpoints>
-      <Example />
+      <Demo />
     </Breakpoints>
   );
 };

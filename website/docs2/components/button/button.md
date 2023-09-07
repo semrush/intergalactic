@@ -2,7 +2,7 @@
 title: Button
 fileSource: button
 tabName: Design
-tabs: Button('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
+tabs: Design('button'), A11y('button-a11y'), API('button-api'), Example('button-code'), Changelog('button-changelog')
 ---
 
 ::: react-view
@@ -48,6 +48,7 @@ const Preview = (preview) => {
   const theme = select({
     key: 'theme',
     placeholder: 'Select theme',
+    // defaultValue: THEME["secondary"][1],
     label: 'Theme',
     options: THEME[use].map((value) => ({
       name: value,
@@ -309,3 +310,4 @@ It may also be helpful checking the following branding guidelines:
 ## Grouped buttons
 
 To combine the components such as Button, [Input](/components/input), and [Select](/components/select), use the [`neighborLocation`](/components/button/button-api/) property.
+

@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Advanced filters('index'), Example('advanced-filters-code')
+tabs: Advanced filters('advanced-filters'), Example('advanced-filters-code')
 ---
 
 ## Filters with filter-conditions

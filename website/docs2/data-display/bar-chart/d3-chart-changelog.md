@@ -6,4 +6,4 @@ tabs: Bar chart('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('ba
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

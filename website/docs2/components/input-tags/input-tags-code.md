@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: input-tags
-tabs: InputTags('index'), A11y('input-tags-a11y'), API('input-tags-api'), Example('input-tags-code'), Changelog('input-tags-changelog')
+tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Example('input-tags-code'), Changelog('input-tags-changelog')
 ---
 
 ## Entering and editing tags
@@ -63,7 +63,7 @@ const Demo = () => {
             data-id={idx}
             onClick={handleEditTag}
           >
-            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Text tabIndex={0}>{tag}</InputTags.Tag.Text>
             <InputTags.Tag.Close onClick={handleCloseTag} />
           </Tooltip.Trigger>
           <Tooltip.Popper>tag</Tooltip.Popper>
@@ -78,6 +78,8 @@ const Demo = () => {
     </InputTags>
   );
 };
+
+
 </script>
 
 :::
@@ -167,6 +169,8 @@ const Demo = () => {
     </Select>
   );
 };
+
+
 </script>
 
 :::
@@ -219,22 +223,14 @@ const Demo = () => {
       visible={visible}
       onVisibleChange={(visible) => setVisible(visible)}
     >
-      <DropdownMenu.Trigger>
-        {({ getTriggerProps }) => (
-          <InputTags w={200} size='l' onRemove={onRemoveLastTag} {...getTriggerProps({})}>
-            {tags.map((tag, i) => (
-              <InputTags.Tag key={i} theme='primary'>
-                <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
-                <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
-              </InputTags.Tag>
-            ))}
-            <InputTags.Value
-              value={valueInput}
-              onChange={onChangeValue}
-              aria-label='input with tags'
-            />
-          </InputTags>
-        )}
+      <DropdownMenu.Trigger tag={InputTags} w={200} size='l' onRemove={onRemoveLastTag}>
+        {tags.map((tag, i) => (
+          <InputTags.Tag key={i} theme='primary'>
+            <InputTags.Tag.Text>{tag}</InputTags.Tag.Text>
+            <InputTags.Tag.Close onClick={onRemoveTag.bind(this, i)} />
+          </InputTags.Tag>
+        ))}
+        <InputTags.Value value={valueInput} onChange={onChangeValue} aria-label='input with tags' />
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         {tagsFilter.map((tag, i) => (

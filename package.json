@@ -106,5 +106,10 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "react-hook-form@6.10.1": "patches/react-hook-form@6.10.1.patch"
+    }
   }
 }

@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
-tabs: Line chart('index'), A11y('line-chart-a11y'), API('line-chart-api'), Examples('line-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Line chart('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Examples('line-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API

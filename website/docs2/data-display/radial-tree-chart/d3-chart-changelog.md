@@ -6,4 +6,4 @@ tabs: Radial Tree chart('radial-tree-chart'), API('radial-tree-chart-api'), A11y
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

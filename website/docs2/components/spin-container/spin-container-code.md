@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: spin-container
-tabs: SpinContainer('index'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
+tabs: Design('spin-container'), A11y('spin-container-a11y'), API('spin-container-api'), Example('spin-container-code'), Changelog('spin-container-changelog')
 ---
 
 ## Usage in content
@@ -14,10 +14,10 @@ import { Text } from '@semcore/ui/typography';
 import SpinContainer from '@semcore/ui/spin-container';
 
 class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
+  state = { loading: true };
+  timerFetch: any;
+  timer: any;
+
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
   }
@@ -50,6 +50,8 @@ class Demo extends React.PureComponent {
     );
   }
 }
+
+
 </script>
 
 :::
@@ -68,10 +70,9 @@ import Dropdown from '@semcore/ui/dropdown';
 import Button from '@semcore/ui/button';
 
 class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
+  state = { loading: true };
+  timerFetch: any;
+  timer: any;
 
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
@@ -106,45 +107,8 @@ class Demo extends React.PureComponent {
     );
   }
 }
-</script>
 
-:::
 
-## Use with Sticky (deprecated)
-
-You had the ability to fix the spinner while scrolling the page using the [Sticky](/components/sticky/) component. However, please note that this approach is now deprecated.
-
-::: sandbox
-
-<script lang="tsx">
-import React from 'react';
-import { Box } from '@semcore/ui/flex-box';
-import SpinContainer from '@semcore/ui/spin-container';
-import { Text } from '@semcore/ui/typography';
-import Spin from '@semcore/ui/spin';
-import ScrollArea from '@semcore/ui/scroll-area';
-
-const Demo = () => (
-  <ScrollArea h={300}>
-    <SpinContainer h={500} w={150} loading style={{ overflow: 'initial' }}>
-      <SpinContainer.Content>
-        <Text size={100}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam atque beatae
-          distinctio doloremque, et id quae reiciendis repellat saepe sapiente sequi veritatis.
-          Adipisci, consequuntur excepturi nobis porro quas recusandae? Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Aliquam aperiam atque beatae distinctio doloremque, et id
-          quae reiciendis repellat saepe sapiente sequi veritatis. Adipisci, consequuntur excepturi
-          nobis porro quas recusandae?
-        </Text>
-      </SpinContainer.Content>
-      <SpinContainer.Overlay style={{ alignItems: 'flex-start' }}>
-        <Box position='sticky' top='100px'>
-          <Spin size='xxl' />
-        </Box>
-      </SpinContainer.Overlay>
-    </SpinContainer>
-  </ScrollArea>
-);
 </script>
 
 :::

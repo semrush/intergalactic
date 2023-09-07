@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: tab-panel
-tabs: TabPanel('index'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
+tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
 ## Basic usage
@@ -36,7 +36,7 @@ const Demo = () => {
           <Badge bg='green'>new</Badge>
         </TabPanel.Item.Addon>
       </TabPanel.Item>
-      <Tooltip title='Progress isn’t available during collecting process' placement='top'>
+      <Tooltip title="Progress isn't available during collecting process" placement='top'>
         <TabPanel.Item disabled value={3}>
           Progress
         </TabPanel.Item>
@@ -45,6 +45,8 @@ const Demo = () => {
     </TabPanel>
   );
 };
+
+
 </script>
 
 :::
@@ -90,7 +92,7 @@ const Demo = () => {
           <div id='tab-panel-1' role='tabpanel' aria-labelledby='tab-label-1' tabIndex={-1}>
             <h3>Overview</h3>
             <p>
-              The important achievement of Apollo was demonstrating that humanity isn’t forever
+              The important achievement of Apollo was demonstrating that humanity isn't forever
               chained to this planet and our visions go rather further than that and our
               opportunities are unlimited.
             </p>

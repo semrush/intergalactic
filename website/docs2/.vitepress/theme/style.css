@@ -59,6 +59,14 @@
   }
 }
 
+@media (min-width: 960px) {
+  .VPHome .VPImage {
+    max-width: 480px;
+    max-height: 480px;
+  }
+}
+
+
 /**
  * Component: Custom Block
  * -------------------------------------------------------------------------- */

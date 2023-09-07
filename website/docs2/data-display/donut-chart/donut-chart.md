@@ -38,7 +38,7 @@ The French don’t call such charts donut chart, they compare it with round chee
 
 ## Appearance
 
-For all types, show the values clockwise, starting with the largest one. The angle of the padding between the values: `(paddingAngle='1')`.
+For all types, show the values clockwise, starting with the largest one. The angle of the padding between the values:
 
 ![](static/donut-padding-angle.png)
 

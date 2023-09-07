@@ -2,7 +2,7 @@
 title: Grid system
 fileSource: grid
 tabName: Example
-tabs: Grid and page layout('index'), API('grid-api'), Grid system('grid-code'), Changelog('grid-changelog')
+tabs: Grid and page layout('grid-system'), API('grid-api'), Grid system('grid-code'), Changelog('grid-changelog')
 ---
 
 ## Description
@@ -56,6 +56,8 @@ const Demo = () => {
     </Row>
   );
 };
+
+
 </script>
 
 :::
@@ -116,6 +118,8 @@ const Demo = () => {
     </Row>
   );
 };
+
+
 </script>
 
 :::
@@ -164,6 +168,8 @@ const Demo = () => {
     </Row>
   );
 };
+
+
 </script>
 
 :::
@@ -207,6 +213,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::
@@ -250,6 +258,8 @@ const Demo = () => {
     </Row>
   );
 };
+
+
 </script>
 
 :::
@@ -289,6 +299,8 @@ const Demo = () => {
     </Row>
   );
 };
+
+
 </script>
 
 :::

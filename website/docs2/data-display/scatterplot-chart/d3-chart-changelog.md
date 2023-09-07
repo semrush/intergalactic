@@ -6,4 +6,4 @@ tabs: Scatterplot chart('scatterplot-chart'), A11y('scatterplot-chart-a11y'), AP
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

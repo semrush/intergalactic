@@ -21,10 +21,9 @@ function modalLayout() {
 }
 
 class PanelChangeIcon extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { action: 'copy' };
-    this.SIZE = { L: 24, M: 16 };
+  state = { action: 'copy' };
+  get SIZE() {
+    return { L: 24, M: 16 };
   }
 
   renderIconSize = (size, index) => {

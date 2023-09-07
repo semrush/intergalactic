@@ -9,7 +9,7 @@ tabs: Icon('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Ch
 
 <script lang="tsx">
 import React from 'react';
-import Components from './index';
+import Components from './icons-view';
 import dataIcons from './icons-list';
 
 import icons from '@icons';

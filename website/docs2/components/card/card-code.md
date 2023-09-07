@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Card('index'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
+tabs: Design('card'), A11y('card-a11y'), API('card-api'), Example('card-code'), Changelog('card-changelog')
 ---
 ## Basic example
 
@@ -14,7 +14,7 @@ import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
+const tooltipContent = `Hey! Don't forget to place some useful info here`;
 
 const Demo = () => (
   <Card>
@@ -32,7 +32,7 @@ const Demo = () => (
       <Card.Description>This is card additional information or insights.</Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text size={100}>Your awesome card content ✨</Text>
+      <Text size={100}>Your awesome card content</Text>
     </Card.Body>
   </Card>
 );
@@ -55,7 +55,7 @@ import Close from '@semcore/ui/icon/Close/m';
 import Select from '@semcore/ui/select';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
+const tooltipContent = `Hey! Don't forget to place some useful info here`;
 const options = Array(6)
   .fill('')
   .map((_, index) => ({
@@ -84,7 +84,7 @@ const Demo = () => (
       </Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text size={200}>Your awesome card content ✨</Text>
+      <Text size={200}>Your awesome card content</Text>
     </Card.Body>
   </Card>
 );
@@ -103,23 +103,23 @@ import { Text } from '@semcore/ui/typography';
 import Ellipsis from '@semcore/ui/ellipsis';
 import { Flex } from '@semcore/ui/flex-box';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
+const tooltipContent = `Hey! Don't forget to place some useful info here`;
 
 const Demo = () => (
   <Card w={'50%'}>
     <Card.Header>
       <Flex alignItems='center' tag='h4'>
         <Card.Title tag={Ellipsis} hint={tooltipContent}>
-          Very long card title which should show ellipsis when there isn’t enough space
+          Very long card title which should show ellipsis when there isn't enough space
         </Card.Title>
       </Flex>
       <Card.Description tag={Ellipsis}>
-        Very long description title which should show ellipsis when there isn’t enough space
+        Very long description title which should show ellipsis when there isn't enough space
       </Card.Description>
     </Card.Header>
     <Card.Body tag={Ellipsis}>
       <Text size={100}>
-        Very long card body which should show ellipsis when there isn’t enough space
+        Very long card body which should show ellipsis when there isn't enough space
       </Text>
     </Card.Body>
   </Card>

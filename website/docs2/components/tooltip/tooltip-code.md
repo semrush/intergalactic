@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: tooltip
-tabs: Tooltip('index'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
+tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
 ::: warning
@@ -32,7 +32,7 @@ const Demo = () => (
         <Tooltip.Trigger>
           <Link>Trigger</Link>
         </Tooltip.Trigger>
-        <Tooltip.Popper>Hello, stranger 😉</Tooltip.Popper>
+        <Tooltip.Popper>Hello, stranger</Tooltip.Popper>
       </Tooltip>
     </Box>
   </Flex>
@@ -58,7 +58,7 @@ import Link from '@semcore/ui/link';
 const Demo = () => (
   <Flex>
     <Box m='auto' p={5}>
-      <Tooltip title='Hello, stranger 😉'>
+      <Tooltip title='Hello, stranger'>
         <Link>Trigger</Link>
       </Tooltip>
     </Box>
@@ -159,6 +159,8 @@ const Demo = () => {
     </React.Fragment>
   );
 };
+
+
 </script>
 
 :::

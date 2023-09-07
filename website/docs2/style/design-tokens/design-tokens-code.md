@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Design tokens('index'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
+tabs: Design tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
 ---
 
 ## Tokens with custom component
@@ -40,12 +40,15 @@ const CustomComponent = () => {
   const toggleVisible = () => {
     setVisible(!visible);
   };
+
   React.useEffect(() => {
-    const styleSheet = document.createElement('style');
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-    return () => styleSheet.remove();
-  }, []);
+    const stylesheet = document.createElement('style');
+    stylesheet.innerHTML = styles;
+    document.head.appendChild(stylesheet);
+    return () => {
+      document.head.removeChild(stylesheet);
+    };
+  }, [])
 
   return (
     <ThemeProvider tokens={violetPrimaryButtonTheme}>
@@ -388,13 +391,14 @@ Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-t
 
 <script lang="tsx">
 import React from 'react';
+import '@semcore/ui/utils/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
 import Button from '@semcore/ui/button';
 import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';
 import cx from 'classnames';
-import Copy from '@components/Copy';
 import { processTokens, tokensToJson, tokensToCss } from '@semcore/utils/theme/utils';
 import styles from './processor.module.css';
+import Copy from '@components/Copy';
 
 const FileInput = ({ id, onFile, multiple, accept }) => {
   const [dragging, setDragging] = React.useState(false);
@@ -548,9 +552,9 @@ const DesignTokensProcessor = () => {
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <Code lang='css' className={styles.codeBlock}>
+            <code className={styles.codeBlock}>
               {css}
-            </Code>
+            </code>
           </div>
           <div className={styles.processedBlock}>
             <h4>
@@ -560,9 +564,9 @@ const DesignTokensProcessor = () => {
                 <span className={styles.clickToCopy}>click copy</span>
               </Copy>
             </h4>
-            <Code lang='css' className={styles.codeBlock}>
+            <code lang='css' className={styles.codeBlock}>
               {json}
-            </Code>
+            </code>
           </div>
         </div>
       )}

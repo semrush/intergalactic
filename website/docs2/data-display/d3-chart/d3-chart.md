@@ -8,158 +8,161 @@ tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d
 
 ## Chart widget anatomy
 
-In our interfaces, data is usually placed in [Card](/components/card/), which consists of the following:
+In the Intergalactic Design System, data is typically organized within a [Card](/components/card/), which consists of the `Card.Header` and `Card.Body`.
 
 ![widget-scheme](static/widget-paddings.png)
 
-1. **Header:**
+**Card.Header:**
 
    1. Title (`margin-bottom: 8px`)
-   2. Additional information under the heading (`margin-bottom: 8px`) – _optional_
-   3. General widget controls (export or view settings, etc.) – _optional_
+   2. Optional additional information below the title (`margin-bottom: 8px`)
+   3. Optional general widget controls (for example, export or view settings)
 
-2. **[Divider](/components/divider/)**
+**Card.Body:**
 
-3. **Body:**
-
-   1. Top controls (filters, buttons, etc.) – _optional_
-   2. Chart – axes, values and chart itself (`margin-top: 20px`)
-   3. Bottom controls (`margin-top: 20px`) – _optional_
+   1. Optional top controls (for example, filters, buttons)
+   2. Chart – axes, values, and the chart itself (`margin-top: 20px`)
+   3. Optional bottom controls (`margin-top: 20px`)
 
 ::: tip
-Optional elements mean that their presence depends on the case you are solving in your interface.
+The presence of optional elements depends on the specific interface case.
 :::
 
-## Card header
+### Card header
 
-### Title
+#### Title
 
-**The chart shall have a title** which briefly and clearly indicates what data is shown on the chart. If the chart belongs to a table or report's [Summary](/patterns/summary/), and the title is far from the chart, then keep an eye on the margins between widgets. The user shall clearly understand what data is on the chart.
+**A chart must include a title** that succinctly and clearly describes the displayed data. In cases where the title is distant from the chart, as in a table or report's [Summary](/patterns/summary/), ensure there are adequate margins between widgets. The user should easily grasp what data the chart represents.
 
 The title can be clickable.
 
-Place M size [Info](/style/icon/) icon next to the title.
+You can place an `Info` icon with M size next to the title if you need to hide additional information about the chart.
 
-| Appearance                           | Styles                                                                                                                                                                                                                                                                                               |
-| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![chart-heading](static/heading.png) | For chart title use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/). |
+![chart-heading](static/heading.png)
 
-### Description
+For the chart title, use 16px text (`--fs-300`, `--lh-300`, `font-weight: var(--bold)`) and `--text-primary` token for color. M size `Info` icon has `--icon-secondary-neutral` color and `margin-left: 4px`. Hover state for the clickable title matches the [styles for link hover](/components/link/).
 
-**The header may have a description text.** It usually contains information about maximum/minimum data statuses or explanation of what the data is based on, etc. Or some interesting insight/advice for the visualized data.
+#### Description
 
-| Appearance                             | Styles                                                                                              |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| ![chart-subtitle](static/subtitle.png) | For description text use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color. |
+**The header may contain a description text.** Typically, this text provides information on maximum/minimum data statuses, explains the data source, or offers insightful advice related to the visualized data.
+
+![](static/subtitle.png)
+
+For the description text, use 14px text (`--fs-200`, `--lh-200`) and `--text-secondary` token for color.
 
 ## Chart controls
 
-For detailed information about chart controls, see [Chart controls](/data-display/chart-controls/).
+For detailed information about chart controls, refer to the [Chart controls](/data-display/chart-controls/).
 
 ## Collapsing rows
 
-You can collapse card rows if necessary. See more information in the [Chart controls](/data-display/chart-controls/#adbaac) guide.
+When necessary, you can collapse card rows. Find more information in the [Chart controls](/data-display/chart-controls/#collapsing_rows_with_controls).
 
 ## Legend
 
-**Legend** is an additional visual information that explains the data on the chart.
+The legend provides additional visual information explaining the data on the chart.
 
-The legend can work as a filter or be unclickable representation of the data. For more information about the legend and its types, see [Chart legend](/data-display/chart-legend/).
+The legend can function as a filter or simply represent the data without being clickable. For detailed information about the legend and its types, refer to [Chart legend](/data-display/chart-legend/).
 
 ## Grid and axes
 
-**Axes** help user navigate the data and relate values to each other.
+Axes assist users in navigating the data and understanding the relationships between values.
 
 ::: tip
-Please don't make the additional lines bright and colored – the emphasis should be on the data, not on the grid.
-:::
-
-![axes-scheme](static/axes-scheme.png)
-
-![axes-scheme](static/axes-scheme2.png)
-
-- The **Y axis** is hidden by default.
-- The color of additional axes is `--chart-grid-line`.
-- Color of the X axis and additional active lines on the grid (if needed) – `--chart-grid-x-axis`.
-- Left and right margin to the Y axis values is 16px.
-- `margin-top` of the X axis values is 12px.
-
-### Minimum and maximum number of axes
-
-To make it easier to track changes, use 3-5 additional horizontal guides. Round the values on the axes, like _25K − 20K − 15K − 10K_, instead of using exact values like _24.8K − 20.0K − 15.2K − 10.2K_.
-
-::: tip
-**The recommended minimum height of the chart is 118px.** For such a chart, it is recommended to display 3 additional horizontal guides. Keep in mind that it can be difficult to read changes on the charts that has such small height.
-:::
-
-Minimum (small) chart height has 3 additional horizontal guides.
-
-![min-height](static/min-height.png)
-
-**The maximum height of the chart is up to your case.** For high-height charts, use no more than 5-6 additional horizontal guides.
-
-![max-height](static/max-height.png)
-
-## Tooltip
-
-When hovering over any part of the chart, show a tooltip with data for the dot or dots.
-
-The tooltip is displayed even for the dots with no data. In this case, we show `n/a` instead of the value and recommend adding a note about the forecast.
-
-![tooltip-scheme](static/tooltip-scheme.png)
-
-The tooltip appears next to the cursor. It is always located inside the chart container. _In other words, if the dot is near the upper or lower border of the chart area, the tooltip will position within the chart area._
-
-- The tooltip shows data for all the lines for the selected date.
-- For tooltip title use the date or data category name. For easy comparison, the values shall be right-aligned.
-- The tooltip can contain the total value.
-- If several charts have the same timeline under each other, then they can be synchronized – when you hover over one of the charts, the hover is triggered on the other. This is quite useful for comparing data.
-
-::: tip
-As a rule, we don’t put the measurement unit for the values inside the tooltip (it should be clear from the chart name and the axes). However, in some complex charts such as scatterplot, a measurement unit can be added to make data reading more easy.
+Avoid making the additional lines overly bright and colorful – the emphasis should remain on the data.
 :::
 
 ### Styles
 
-The data tooltip shall always be displayed relative to the dot with an 8px margin.
+- The Y axis is hidden by default.
+- The color of additional axes is `--chart-grid-line`.
+- The color of the X axis and additional active lines on the grid (if needed) is `--chart-grid-x-axis`.
+- The left and right margins for Y-axis values are 16px.
+- The `margin-top` for X-axis values is 12px.
 
-| Appearance                                                                                      | Styles description                                                                                                          |
-| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| ![tooltip paddings](static/tooltip-paddings.png) ![tooltip margins](static/tooltip-margins.png) | The inner tooltip padding is 12px.                                                                                          |
-| ![one-dot](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
-| ![one-dot](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--chart-grid-bar-chart-hover`                                           |
+![](static/axes-scheme.png)
+
+![](static/axes-scheme2.png)
+
+### Minimum and maximum number of axes
+
+To make it easier to track changes, use 3-5 additional horizontal guides. Round the values on the axes, such as _25K − 20K − 15K − 10K_, instead of using exact figures like _24.8K − 20.0K − 15.2K − 10.2K_.
+
+::: tip
+The recommended minimum chart height is 118px. For such a chart, it's advisable to display 3 additional horizontal guides. Keep in mind that charts with such minimal height can make it challenging to discern changes.
+:::
+
+Minimum (small) chart height has 3 additional horizontal guides.
+
+![](static/min-height.png)
+
+The maximum chart height depends on your specific case. For charts with greater heights, utilize no more than 5-6 additional horizontal guides.
+
+![](static/max-height.png)
+
+## Tooltip
+
+When hovering over any part of the chart, a tooltip should appear, providing data for the dot or dots.
+
+The tooltip is displayed even for dots with no data. In such cases, display "n/a" instead of the value and consider adding a note about the forecast.
+
+![](static/tooltip-scheme.png)
+
+The tooltip appears adjacent to the cursor and is always positioned within the chart container. In other words, if the dot is near the upper or lower border of the chart area, the tooltip will still be contained within the chart area.
+
+- The tooltip displays data for all lines for the selected date.
+- For the tooltip title, use the date or the data category name. Ensure that the values are right-aligned for easy comparison.
+- The tooltip can also contain the total value.
+- If several charts share the same timeline, they can be synchronized. Hovering over one chart triggers the hover state on the others. This is useful for data comparison.
+
+::: tip
+Typically, measurement units are not included inside the tooltip (they should be clear from the chart title and axes). However, in more complex charts, such as scatterplots, adding a measurement unit can enhance data comprehension.
+:::
+
+### Styles
+
+The data tooltip should always be displayed relative to the dot, with an 8px margin.
+
+Table: Chart tooltip styles
+
+| Appearance        | Styles   |
+| ----------------- | -------- |
+| ![](static/tooltip-4.png) ![](static/tooltip-2.png) | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`. |
+| ![](static/tooltip-1.png)                                                                | The color for the additional vertical line that appears on line charts when hovering is `--chart-grid-y-accent-hover-line`. |
+| ![](static/tooltip-3.png)                                                                | The background color that appears on bar charts is `--chart-grid-bar-chart-hover`                                           |
+| ![](static/tooltip-paddings.png) ![](static/tooltip-margins.png) | The inner tooltip padding is 12px.                                                                                          |
 
 ### Cases
 
-| Case                     | Appearance                               | Styles description                                                                                                                                                                          |
-| ------------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| One dot                  | ![one-dot](static/tooltip-1.png)         | The default dot size is `12px * 12px`. The size of the dot in a hover state is `16px * 16px`.                                                                                               |
-| Several dots             | ![many-dots](static/tooltip-2.png)       |
-| Not available data       | ![not-available](static/partially.png)   | Use a dashed line to show not available data.                                                                                                                                               |
-| Start of data collecting | ![new-data](static/new-data-tooltip.png) | Solid line, color of the dot corresponds to the legend. In the tooltip, the text about the beginning of data collection is 12px and has `--chart-grid-y-accent-hover-line` token for color. |
+Table: Chart tooltip cases
+
+| Case                     | Appearance                               | Styles            |
+| ------------------------ | ---------------------------------------- | ----------------- |
+| Not available data       | ![](static/partially.png)   | Use a dashed line to represent not available data. |
+| Start of data collecting | ![](static/new-data-tooltip.png) | A solid line is used, and the dot color corresponds to the legend. In the tooltip, text about the beginning of data collection is 12px and has `--chart-grid-y-accent-hover-line` token for color. |
 
 ## Trend and average value
 
-To display the trend line or average value on the chart, use gray color with styles: `border: solid 2px var(--chart-palette-order-total-amount)`. Similarly, we can display total values.
+To display the trend line or average value on the chart, use gray color with the following styles: `border: solid 2px var(--chart-palette-order-total-amount)`. Similarly, you can display total values.
 
 - Dots on the line are optional.
-- The legend must have a checkbox for the trend line. On the charts, the universal color for the checkbox is `--chart-palette-order-total-amount`.
+- The legend must include a checkbox for the trend line. On the charts, the universal color for the checkbox is `--chart-palette-order-total-amount`.
 
-![checkbox total legend](static/d3-trend.png)
+![](static/d3-trend.png)
 
 ## Data loading
 
-During initial data loading, the widget displays the [Skeleton](/components/skeleton/) instead of the chart.
+During the initial data loading, the widget displays the [Skeleton](/components/skeleton/) instead of the chart.
 
-If the chart has a title, it should be displayed during the initial loading. The user shall have an idea of what is being loaded and whether they need to wait for the loading process to complete.
+If the chart has a title, it should be displayed during the initial loading. The user should be aware of what is being loaded and whether they need to wait for the process to complete.
 
 ::: tip
-Note that every chart has it's own skeleton. For more information see guides for every chart type.
+Keep in mind that each chart type has its own skeleton. Refer to the guides for specific chart types for more information.
 :::
 
 ## Edge cases
 
-The particular edge cases differ for different chart types, so see them in the documentation for specific chart you need.
+Specific edge cases may vary depending on the chart type. Refer to the documentation for the specific chart type you are working with.
 
-General recommendations of "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
+General recommendations for "empty" states for widgets with charts are described in [Error & n/a widget states](/components/widget-empty/).
 

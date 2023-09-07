@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: d3-chart
-tabs: Bubble chart('index'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Bubble chart('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api'), Examples('bubble-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API

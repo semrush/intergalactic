@@ -2,7 +2,7 @@
 title: ColorPicker
 tabName: Design
 fileSource: color-picker
-tabs: ColorPicker('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
+tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---
 
 ::: react-view

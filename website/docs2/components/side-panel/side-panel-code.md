@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: side-panel
-tabs: SidePanel('index'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
+tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')
 ---
 
 ## Basic example
@@ -147,7 +147,7 @@ const Demo = () => {
         mt={placement === 'bottom' ? 0 : 20}
       >
         <Text size={300} tag='p'>
-          Waba-laba-dub-dub! 😏
+          Waba-laba-dub-dub!
         </Text>
         <Button mt={3}>I'm just a button</Button>
       </SidePanel>

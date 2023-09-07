@@ -2,7 +2,7 @@
 title: Input
 fileSource: input
 tabName: Design
-tabs: Input('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
+tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 
 ::: react-view

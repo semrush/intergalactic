@@ -2,7 +2,7 @@
 title: FeaturePopover
 fileSource: feature-popover
 tabName: Design
-tabs: FeaturePopover('feature-popover'), A11y('feature-popover-a11y'), API('feature-popover-api'), Example('feature-popover-code'), Changelog('feature-popover-changelog')
+tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popover-api'), Example('feature-popover-code'), Changelog('feature-popover-changelog')
 ---
 
 ::: react-view
@@ -88,11 +88,19 @@ FeaturePopover contains only simple reference/promotional information. The purpo
 - It is necessary to draw the user’s attention to an interface part.
 - You need to point at the next step for the user.
 
+## Component composition
+
+![](static/featurepopover-composition.png)
+
+Component consists of the following:
+
+- `FeaturePopover.Trigger`
+- `FeaturePopover.Spot`
+- `FeaturePopover.Popper`
+- `closeIcon` property (for `FeaturePopover.Popper`)
+- Content
+
 ## Appearance
-
-### Component composition
-
-![](static/spotlight-scheme.png)
 
 ### Spot
 
@@ -112,7 +120,7 @@ The title should be brief, contain a call to action, and summarize the main thou
 
 ![](static/title-yes-no.png)
 
-### Description
+### Feature description
 
 The feature description should be short and informative. Try using no more than one or two sentences. A paragraph may contain [links](/components/link/) and formatted text.
 

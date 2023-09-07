@@ -6,4 +6,4 @@ tabs: Chart legend('chart-legend'), Example('chart-legend-code'), Changelog('d3-
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

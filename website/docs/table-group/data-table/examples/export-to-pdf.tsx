@@ -172,7 +172,12 @@ const svgElementToSvgText = (svgNode: Element) => {
   return svgString;
 };
 
-const svgText2DownloadUrl = async (svg: string, width: number, height: number, format: string) =>
+export const svgText2DownloadUrl = async (
+  svg: string,
+  width: number,
+  height: number,
+  format: string,
+) =>
   new Promise<string>((resolve, reject) => {
     const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svg)))}`;
 

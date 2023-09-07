@@ -5,12 +5,19 @@ import { transformSync } from 'esbuild'
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'));
 
+const findLastIndex = <T>(arr: T[], predicate: (item: T) => boolean): number => {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (predicate(arr[i])) return i;
+  }
+  return -1;
+}
+
 const clearScriptTagFromTags = (scriptTag: string) => {
   const lines = scriptTag.split('\n');
   const code = lines
     .slice(
       lines.findIndex((line) => line.includes('<script')) + 1,
-      lines.findLastIndex((line) => line.includes('</script')),
+      findLastIndex(lines, (line) => line.includes('</script')),
     )
     .join('\n');
   return code;
@@ -61,7 +68,7 @@ const makePlaygroundExecutedCode = (codeWithTypes: string, playgroundId: string,
     '; {\n' +
     importAliasLines.join('\n') +
     codeWithoutImports +
-    `;\n setTimeout(() => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }, 0); }`
+    `;\n globalThis["render_${playgroundId}"] = () => { globalThis.createReactRoot?.(globalThis.document?.getElementById("${playgroundId}")).render(<${entryPoint} />); }; }`
   );
 };
 
@@ -79,7 +86,7 @@ export const renderSandbox = (tokenList: any[], index: number, htmlTagName: stri
       const params = /params="([^"]+)"/.exec(scriptHead)?.[1];
       const meta = (lang ?? '') + (params ?? '');
 
-      const highlightedCode = JSON.stringify(
+      const htmlCode = (
         markdownRenderer.render('```' + meta + '\n' + code + '\n```\n'),
       );
       let lastScriptTokenIndex = -1;
@@ -105,9 +112,16 @@ export const renderSandbox = (tokenList: any[], index: number, htmlTagName: stri
         tokens[idx + 1].executedCode = executedCode;
       }
 
-      // return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}">`;
+      
+      
+      // const encodedHtmlCode = atob(encodeURIComponent(htmlCode));
+      // const encodedRawCode = atob(encodeURIComponent(code));
+
+      const encodedHtmlCode = btoa(htmlCode);
+      const encodedRawCode = btoa(code);
+      return `<Sandbox playgroundId="${playgroundId}" hideCode="${hideCode}" htmlCode="${encodedHtmlCode}" rawCode="${encodedRawCode}">`;
     }
-    // return '</Sandbox>';
+    return '</Sandbox>';
   };
   return renderFunc(tokenList, index, htmlTagName);
 };

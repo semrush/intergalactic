@@ -27,3 +27,5 @@ const Demo = () => {
     </Table>
   );
 };
+
+export default Demo;

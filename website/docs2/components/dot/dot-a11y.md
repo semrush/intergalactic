@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Dot('index'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Changelog('dot-changelog')
+tabs: Design('dot'), A11y('dot-a11y'), API('dot-api'), Example('dot-code'), Changelog('dot-changelog')
 ---
 
 ## What component has

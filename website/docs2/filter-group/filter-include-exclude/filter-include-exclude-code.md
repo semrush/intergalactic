@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Include/Exclude keywords('index'), Example('filter-include-exclude-code')
+tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-include-exclude-code')
 ---
 
 ## Basic example

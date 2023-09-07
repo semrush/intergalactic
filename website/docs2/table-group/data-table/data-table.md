@@ -186,7 +186,7 @@ const Demo = () => {
         <DataTable.Column name='keyword'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             <Text noWrap>
-              Keyword <Text color='gray60'>(1 – 100)</Text>
+              Keyword <Text color='gray60'>(1 - 100)</Text>
             </Text>
           </Tooltip>
         </DataTable.Column>
@@ -837,6 +837,10 @@ To apply some properties to a table row, you need to define `<DataTable.Row/>`. 
 It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Row)`...` ``) isn’t allowed.
 :::
 
+::: tip
+You can provide `data` property for `<DataTable.Row/>`. It is not used in the component runtime but improves strict typings. 
+:::
+
 ::: sandbox
 
 <script lang="tsx">
@@ -931,6 +935,10 @@ To apply some properties to a table cell, you need to define `<DataTable.Cell/>`
 `<DataTable.Cell/>` must be a direct  child component of `<DataTable.Body/>`.
 
 It shouldn't be wrapped in any kind of HOC, using styled components (for example, `` styled(DataTable.Cell)`...` ``) isn’t allowed.
+:::
+
+::: tip
+You can provide `data` property for `<DataTable.Cell/>`. It is not used in the component runtime but improves strict typings. 
 :::
 
 ::: sandbox
@@ -2074,7 +2082,9 @@ const Demo = () => {
         <DropdownMenu.Popper wMax='257px'>
           <DropdownMenu.List>
             {extensions.map((name) => (
-              <DropdownMenu.Item onClick={downloadImage(name)}>{name}</DropdownMenu.Item>
+              <DropdownMenu.Item key={name} onClick={downloadImage(name)}>
+                {name}
+              </DropdownMenu.Item>
             ))}
           </DropdownMenu.List>
         </DropdownMenu.Popper>
@@ -2179,7 +2189,12 @@ const svgElementToSvgText = (svgNode: Element) => {
   return svgString;
 };
 
-const svgText2DownloadUrl = async (svg: string, width: number, height: number, format: string) =>
+const svgText2DownloadUrl = async (
+  svg: string,
+  width: number,
+  height: number,
+  format: string,
+) =>
   new Promise<string>((resolve, reject) => {
     const imgsrc = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(svg)))}`;
 

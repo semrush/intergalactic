@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: NoticeBubble('index'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-example'), Changelog('notice-bubble-changelog')
+tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-api'), Example('notice-bubble-example'), Changelog('notice-bubble-changelog')
 ---
 
 Please note that each example uses its own instance of `NoticeBubbleManager`, which can lead to the overlaying of notices from different examples.
@@ -37,6 +37,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -74,6 +75,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -114,6 +116,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -152,6 +155,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -190,6 +194,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -223,6 +228,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -265,6 +271,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -334,6 +341,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -353,7 +361,7 @@ const manager = new NoticeBubbleManager();
 const Demo = () => {
   const handleClick = () => {
     manager.add({
-      children: 'Your post is on the way – we will take care!',
+      children: 'Your post is on the way - we will take care!',
       icon: <MailSent />,
       initialAnimation: true,
       duration: 3000,
@@ -367,6 +375,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -403,6 +412,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::
@@ -446,6 +456,7 @@ const Demo = () => {
     </>
   );
 };
+
 </script>
 
 :::

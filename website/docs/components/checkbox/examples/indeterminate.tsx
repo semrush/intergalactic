@@ -2,32 +2,30 @@ import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
 
 class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      checked: [false, false, false],
-    };
-    this.all = (checked) => {
-      this.setState({
-        checked: this.state.checked.map(() => checked),
-      });
-    };
+  state = {
+    checked: [false, false, false],
+  };
 
-    this.item = (checked, e) => {
-      const { id } = e.currentTarget;
+  all = (checked) => {
+    this.setState({
+      checked: this.state.checked.map(() => checked),
+    });
+  };
 
-      this.setState({
-        checked: this.state.checked.map((item, i) => {
-          if (i === Number(id)) return !item;
-          return item;
-        }),
-      });
-    };
+  item = (checked, e) => {
+    const { id } = e.currentTarget;
 
-    this.indeterminate = (checked) => {
-      return checked.includes(true) && checked.indexOf(false) >= 0;
-    };
-  }
+    this.setState({
+      checked: this.state.checked.map((item, i) => {
+        if (i === Number(id)) return !item;
+        return item;
+      }),
+    });
+  };
+
+  indeterminate = (checked) => {
+    return checked.includes(true) && checked.indexOf(false) >= 0;
+  };
 
   render() {
     const { checked } = this.state;
@@ -56,3 +54,5 @@ class Demo extends React.PureComponent {
     );
   }
 }
+
+export default Demo;

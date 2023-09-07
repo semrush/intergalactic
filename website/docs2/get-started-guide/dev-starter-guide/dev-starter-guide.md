@@ -14,7 +14,7 @@ All components are bundled together in a single package, making the installation
 npm i @semcore/ui
 ```
 
-After the installation, you can access each component at `@semcore/ui/{component_name}`.
+After the installation, you can access each component at `@semcore/ui/{ component name }`.
 
 ## Key features
 

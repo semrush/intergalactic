@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: neighbor-location
-tabs: NeighborLocation('index'), API('neighbor-location-api'), Changelog('neighbor-location-changelog')
+tabs: NeighborLocation('neighbor-location'), API('neighbor-location-api'), Changelog('neighbor-location-changelog')
 ---
 
 ## NeighborLocation

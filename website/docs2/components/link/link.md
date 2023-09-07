@@ -2,7 +2,7 @@
 title: Link
 fileSource: link
 tabName: Design
-tabs: Link('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
+tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), Changelog('link-changelog')
 ---
 
 ::: react-view

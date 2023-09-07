@@ -2,7 +2,7 @@
 title: A11y
 fileSource: switch
 a11y: AA
-tabs: Switch('index'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
+tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
 ---
 
 ## What component has

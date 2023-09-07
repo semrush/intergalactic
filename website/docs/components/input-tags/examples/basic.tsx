@@ -65,3 +65,5 @@ const Demo = () => {
     </InputTags>
   );
 };
+
+export default Demo;

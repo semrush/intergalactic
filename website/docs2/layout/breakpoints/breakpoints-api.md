@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: utils
-tabs: Breakpoints('index'), API('breakpoints-api'), Example('breakpoints-code')
+tabs: Breakpoints('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 ---
 
 ## Breakpoints

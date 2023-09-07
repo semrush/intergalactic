@@ -2,7 +2,7 @@
 title: Radio
 fileSource: radio
 tabName: Design
-tabs: Radio('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
+tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code'), Changelog('radio-changelog')
 ---
 
 ::: react-view

@@ -47,3 +47,5 @@ const Demo = () => {
     </Row>
   );
 };
+
+export default Demo;

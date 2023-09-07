@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: skeleton
-tabs: Skeleton('index'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
+tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 
 ## Text initial loading
@@ -14,23 +14,13 @@ import { Text } from '@semcore/ui/typography';
 import Skeleton from '@semcore/ui/skeleton';
 
 class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  width = 600;
+  height = 100;
+  timerFetch: any = -1;
+  timer: any = -1;
 
-    this.width = 600;
-    this.height = 100;
-    this.timerFetch = -1;
-    this.timer = -1;
+  state = { loading: true };
 
-    this.state = { loading: true };
-
-    this.fetchData = () => {
-      this.setState({ loading: false });
-      setTimeout(() => {
-        this.timer = this.setState({ loading: true });
-      }, 1000);
-    };
-  }
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
   }
@@ -39,6 +29,13 @@ class Demo extends React.PureComponent {
     clearInterval(this.timerFetch);
     clearInterval(this.timer);
   }
+
+  fetchData = () => {
+    this.setState({ loading: false });
+    setTimeout(() => {
+      this.timer = this.setState({ loading: true });
+    }, 1000);
+  };
 
   render() {
     const { loading } = this.state;
@@ -60,6 +57,8 @@ class Demo extends React.PureComponent {
     );
   }
 }
+
+
 </script>
 
 :::
@@ -82,6 +81,8 @@ const Demo = () => {
     </Skeleton>
   );
 };
+
+
 </script>
 
 :::
@@ -238,6 +239,8 @@ const Demo = () => {
     </>
   );
 };
+
+
 </script>
 
 :::

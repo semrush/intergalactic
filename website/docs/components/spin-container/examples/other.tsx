@@ -5,10 +5,9 @@ import Dropdown from '@semcore/ui/dropdown';
 import Button from '@semcore/ui/button';
 
 class Demo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
+  state = { loading: true };
+  timerFetch: any;
+  timer: any;
 
   componentDidMount() {
     this.timerFetch = setInterval(this.fetchData, 3000);
@@ -43,3 +42,5 @@ class Demo extends React.PureComponent {
     );
   }
 }
+
+export default Demo;

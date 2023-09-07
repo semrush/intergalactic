@@ -106,23 +106,22 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackYesNo extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { status: 'default', visible: true };
-    this.onSubmit = () => {
-      this.requestServer('success', 1000);
-      this.setState({ status: 'loading' });
-    };
-    this.requestServer = (status, time, cb?: () => void) => {
-      this.timeout = setTimeout(() => {
-        this.setState({ status });
-        cb?.();
-      }, time || 500);
-    };
-    this.changeVisible = (visible) => {
-      this.setState({ visible });
-    };
-  }
+  state = { status: 'default', visible: true };
+  timeout: any;
+  onSubmit = () => {
+    this.requestServer('success', 1000);
+    this.setState({ status: 'loading' });
+  };
+  requestServer = (status, time, cb?: () => void) => {
+    this.timeout = setTimeout(() => {
+      this.setState({ status });
+      cb?.();
+    }, time || 500);
+  };
+  changeVisible = (visible) => {
+    this.setState({ visible });
+  };
+
   componentWillUnmount() {
     clearTimeout(this.timeout);
   }

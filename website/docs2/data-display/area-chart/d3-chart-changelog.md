@@ -6,4 +6,4 @@ tabs: Area chart('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), 
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

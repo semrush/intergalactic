@@ -6,33 +6,33 @@ docs: true
 tabs: Charts showcase('chart-showcase'), Changelog('d3-chart-changelog')
 ---
 
-We use many types of charts in the interface. Each of them is designed to visualize different cases and data.
+There are various chart types within the Intergalactic Design System, each designed for distinct scenarios and data representation.
 
 - [Grid & axes](/data-display/d3-chart/#grid_and_axes)
 - [Chart tooltip](/data-display/d3-chart/#tooltip)
 - [Chart legend](/data-display/chart-legend/)
 
 ::: tip
-Note that some chart types are in the development yet (they aren't clickable).
+Note that some chart types are still under development and are not yet clickable.
 :::
 
 ## Comparison
 
-Compare values of items in a list that has no particular order.
+This chart type is used to compare values within a list that has no specific order.
 
-_For example: Compare audience in a list of selected domains versus the whole market._
+_For instance, you can compare the audience of selected domains to the overall market._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -178,22 +178,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -204,7 +204,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -213,21 +213,21 @@ const App = function (props) {
 
 ## Ranking
 
-Rank items from highest to lowest, or vice versa.
+Rank items in either ascending or descending order based on their values.
 
-_For example: Rank countries by market share._
+_For example, you can rank countries by their market share._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -373,22 +373,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -399,7 +399,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -408,21 +408,21 @@ const App = function (props) {
 
 ## Change over time (Trend)
 
-Show the variation of values over time.
+This chart type visualizes how values change over time.
 
-_For example: Show the traffic trend over time for different devices._
+_For instance, it can be used to display the traffic trend over time for various devices._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -568,22 +568,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -594,7 +594,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -603,21 +603,21 @@ const App = function (props) {
 
 ## Part to whole
 
-Display the contribution of individual values to the whole.
+Use this chart to illustrate the contribution of individual values to the whole.
 
-_For example: Show the traffic share for different devices._
+_For example, it's useful for showing the traffic share of different devices._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -763,22 +763,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -789,7 +789,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -798,21 +798,21 @@ const App = function (props) {
 
 ## Distribution
 
-Show the distribution within a set of values.
+This chart type depicts the distribution within a set of values.
 
-_For example: Show the distribution of leaders, niche players and game changeres in the market._
+_For instance, you can use it to show the distribution of leaders, niche players, and game changers in the market._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -958,22 +958,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -984,7 +984,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -993,21 +993,21 @@ const App = function (props) {
 
 ## Correlation
 
-Show the correlation between two or three sets of values.
+Employ this chart to demonstrate the relationship between two or three sets of values.
 
-_For example: Show how website traffic are impacted by customer age._
+_For example, it can show how website traffic is influenced by customer age._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -1153,22 +1153,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -1179,7 +1179,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -1188,21 +1188,21 @@ const App = function (props) {
 
 ## Deviation
 
-Show the deviation, difference, or gap between two sets of values.
+Use this chart to visualize the deviation, difference, or gap between two sets of values.
 
-_For example: Show the deviation between actual and target audience of the website._
+_For example, it can illustrate the deviation between the actual and target audience of a website._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -1348,22 +1348,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -1374,7 +1374,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>
@@ -1383,21 +1383,21 @@ const App = function (props) {
 
 ## Geographical values
 
-Use a map to show the values associated with geographical areas.
+Utilize a map to represent values associated with geographical areas.
 
-_For example: Show website audience by country or region on a map._
+_For instance, you can display website audience by country or region on a map._
 
 ::: react-view
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
+import { Box } from '@semcore/flex-box';
 
 const group = {
   line: {
@@ -1543,22 +1543,22 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x);
-  width: 100%;
-  margin: 0;
-  margin-top: var(--intergalactic-spacing-3x);
-  padding: 0;
-`;
+const cardsStyle = {
+  display: 'grid',
+  gridTemplateRows: 'max-content',
+  gridTemplateColumns: 'repeat(auto-fill, 176px)',
+  gridGap: 'var(--intergalactic-spacing-3x) var(--intergalactic-spacing-3x)',
+  width: '100%',
+  margin: '0',
+  marginTop: 'var(--intergalactic-spacing-3x)',
+  padding: '0',
+};
 
 const App = function (props) {
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <Box style={cardsStyle}>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -1569,7 +1569,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </Box>
   );
 }
 </script>

@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: tooltip
-tabs: Tooltip('index'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
+tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')
 ---
 
 ```jsx

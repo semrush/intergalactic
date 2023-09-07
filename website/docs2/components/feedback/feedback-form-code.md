@@ -1,6 +1,6 @@
 ---
 title: Example
-tabs: Feedback('index'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
+tabs: Design('feedback'), A11y('feedback-form-a11y'), API('feedback-form-api'), Example('feedback-form-code'), Changelog('feedback-form-changelog')
 ---
 
 ## Default feedback form
@@ -48,12 +48,9 @@ class Feedback extends React.PureComponent<{
   onChange: (event: any, trigger: string) => void;
   value: { description: string; email: string };
 }> {
-  constructor(props) {
-    super(props);
-    this.handleChange = (fn) => (_, e) => {
-      fn(e);
-    };
-  }
+  handleChange = (fn) => (_, e) => {
+    fn(e);
+  };
 
   render() {
     const { status, onSubmit, onCancel, value } = this.props;
@@ -102,7 +99,7 @@ class Feedback extends React.PureComponent<{
             </FeedbackForm.Item>
           </Flex>
           <Box mt={2}>
-            <Text lineHeight='18px' size={100} color='#6c6e79'>
+            <Text lineHeight='18px' size={200} color='#6c6e79'>
               We will only use this email to respond to you on your feedback.{' '}
               <Link href='https://www.semrush.com/company/legal/privacy-policy/'>
                 Privacy Policy
@@ -126,24 +123,22 @@ class Feedback extends React.PureComponent<{
 }
 
 class FeedbackLink extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { status: 'default', value: { description: '', email: '' } };
-    this.onSubmit = () => {
-      this.requestServer('success', 1000);
-      this.setState({ status: 'loading' });
-    };
-    this.onChange = (e, trigger) => {
-      const { value } = e.currentTarget;
-      this.setState({ value: { ...this.state.value, [trigger]: value } });
-    };
-    this.requestServer = (status, time = 500, cb = () => {}) => {
-      this.timeout = setTimeout(() => {
-        this.setState({ status });
-        cb();
-      }, time);
-    };
-  }
+  state = { status: 'default', value: { description: '', email: '' } };
+  timeout: any;
+  onSubmit = () => {
+    this.requestServer('success', 1000);
+    this.setState({ status: 'loading' });
+  };
+  onChange = (e, trigger) => {
+    const { value } = e.currentTarget;
+    this.setState({ value: { ...this.state.value, [trigger]: value } });
+  };
+  requestServer = (status, time = 500, cb = () => {}) => {
+    this.timeout = setTimeout(() => {
+      this.setState({ status });
+      cb();
+    }, time);
+  };
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
@@ -283,7 +278,7 @@ const Demo = () => (
           <Flex direction='column' gap={1} my={4}>
             <Radio>
               <Radio.Value value='yes' />
-              <Radio.Text>Call me 😏</Radio.Text>
+              <Radio.Text>Call me</Radio.Text>
             </Radio>
             <Radio>
               <Radio.Value value='no' />
@@ -297,6 +292,8 @@ const Demo = () => (
     <FeedbackForm.Submit>Submit this strange form</FeedbackForm.Submit>
   </FeedbackForm>
 );
+
+
 </script>
 
 :::

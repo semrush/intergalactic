@@ -93,23 +93,21 @@ const cssContents = new Map();
 export const unpluginCssModules = createUnplugin(() => ({
   name: 'unplugin-css-modules',
   async resolveId(id) {
-    if (id.endsWith('.module.css')) return id;
+    if (id.endsWith('.module.css')) return `css-module://${id}.ts`;
   },
   async load(id) {
-    // if (id.startsWith('css-module://')) return cssContents.get(id);
-    if (!id.endsWith('.module.css')) return null;
+    // // if (id.startsWith('css-module://')) return cssContents.get(id);
+    if (!id.startsWith('css-module://')) return null;
 
-    const { css, styles, namespace } = await transform(id);
+    // if (id.endsWith('.ts')) {
+    //   const { css, styles, namespace } = await transform(id);
+    //   const importPath = `css-module://${namespace}.css`;
+    //   cssContents.set(importPath, css);
 
-    const importPath = `css-module://${namespace}`;
-
-    cssContents.set(importPath, css);
-
-    return {
-      // import "${importPath}";
-      // export default ${JSON.stringify(styles)}
-      code: ``,
-      lang: 'js'
-    };
+    //   return {
+    //     // import "${importPath}";
+    //     code: `export default ${JSON.stringify(styles)};`,
+    //   };
+    // }
   },
 }));

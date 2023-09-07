@@ -2,7 +2,7 @@
 title: Switch
 fileSource: switch
 tabName: Design
-tabs: Switch('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
+tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')
 ---
 
 ::: react-view

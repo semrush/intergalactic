@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: pills
-tabs: Pills('index'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
+tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code'), Changelog('pills-changelog')
 ---
 
 ## Basic example

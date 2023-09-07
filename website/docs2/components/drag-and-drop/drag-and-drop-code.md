@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: drag-and-drop
-tabs: Drag and drop('index'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
+tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api'), Example('drag-and-drop-code'), Changelog('drag-and-drop-changelog')
 ---
 
 ## Use in the DropdownMenu
@@ -9,6 +9,7 @@ tabs: Drag and drop('index'), A11y('drag-and-drop-a11y'), API('drag-and-drop-api
 ::: sandbox
 
 <script lang="tsx">
+//https://github.com/semrush/intergalactic/tree/master/website/docs/components/drag-and-drop/examples/list.tsx
 import React from 'react';
 import Select from '@semcore/ui/select';
 import DnD from '@semcore/ui/drag-and-drop';
@@ -24,11 +25,14 @@ const Demo = () => {
   const [options, setOptions] = React.useState(initialOptions);
 
   const handleDnD = React.useCallback(
-    ({ fromIndex, toIndex }) => {
-      const newOptions = [...options];
-      newOptions[fromIndex] = options[toIndex];
-      newOptions[toIndex] = options[fromIndex];
-      setOptions(newOptions);
+    ({ fromIndex, toIndex }: { fromIndex: number; toIndex: number }) => {
+      setOptions((options) => {
+        const newOptions = [...options];
+        const swap = newOptions[fromIndex];
+        newOptions[fromIndex] = newOptions[toIndex];
+        newOptions[toIndex] = swap;
+        return newOptions;
+      });
     },
     [options],
   );
@@ -36,19 +40,27 @@ const Demo = () => {
   return (
     <Select multiselect>
       <Select.Trigger />
-      <DnD tag={Select.Menu} onDnD={handleDnD}>
-        {options.map((option, idx) => {
-          const { value, title } = option;
+      <Select.Menu>
+        {({ highlightedIndex }) => {
           return (
-            <DnD.Draggable tag={Select.Option} value={value} key={idx} pr={5}>
-              {title}
-            </DnD.Draggable>
+            <DnD onDnD={handleDnD} customFocus={highlightedIndex}>
+              {options.map((option, idx) => {
+                const { value, title } = option;
+                return (
+                  <DnD.Draggable tag={Select.Option} value={value} key={idx} pr={5}>
+                    {title}
+                  </DnD.Draggable>
+                );
+              })}
+            </DnD>
           );
-        })}
-      </DnD>
+        }}
+      </Select.Menu>
     </Select>
   );
 };
+
+
 </script>
 
 :::
@@ -95,7 +107,12 @@ const Demo = () => {
   }, []);
 
   return (
-    <DnD tag={TabPanel} value={currentTab} onChange={setCurrentTab} onDnD={handleDnD}>
+    <DnD
+      tag={TabPanel}
+      value={currentTab}
+      onChange={(tab) => setCurrentTab(tab as string)}
+      onDnD={handleDnD}
+    >
       {tabs.map((tab) => (
         <DnD.Draggable placement='bottom' tag={TabPanel.Item} value={tab} key={tab} pb={0}>
           {icons[tab] ?? null}
@@ -105,6 +122,8 @@ const Demo = () => {
     </DnD>
   );
 };
+
+
 </script>
 
 :::
@@ -170,6 +189,8 @@ const Demo = () => {
     </DnD>
   );
 };
+
+
 </script>
 
 :::

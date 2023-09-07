@@ -1,7 +1,7 @@
 ---
 title: A11y
 a11y: AA
-tabs: Icon('index'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
+tabs: Icon('icon'), A11y('icon-a11y'), API('icon-api'), Example('icon-code'), Changelog('icon-changelog')
 ---
 
 ## Considerations for developers

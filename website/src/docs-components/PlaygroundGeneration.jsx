@@ -133,21 +133,16 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
 
   return (
     <div className={styles.wrapperPlayground} aria-hidden='true'>
-      <div className={styles.workArea} style={{ width: !hasWidget ? '100%' : '70%' }}>
-        <div className={'playground-runtime'} style={{ margin: 0 }}>
+      <div className={styles.workArea}>
+        <div className={`playground-runtime ${styles.playgroundRuntime}`} style={{ margin: 0 }}>
           <div>{result}</div>
         </div>
         <div className='language-tsx vp-adaptive-theme'>
-          {/* <Code lang='jsx' block>
-            {highlightedSource}
-          </Code> */}
           {highlightedSource ? (
             <span dangerouslySetInnerHTML={{ __html: highlightedSource }} />
           ) : (
             source
           )}
-          {/* rome-ignore lint/a11y/useButtonType: */}
-          <button title='Copy Code' className='copy' />
         </div>
       </div>
       {hasWidget ? (

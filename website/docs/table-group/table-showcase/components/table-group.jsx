@@ -2,11 +2,6 @@ import React from 'react';
 import ComponentCard from '@docs/../src/components/ComponentCard';
 import { getImageName } from '@docs/../src/pages/Home';
 
-const getImageName = (title) => {
-  const name = title.replace(/[ \/]+/g, '');
-  return name.charAt(0).toLowerCase() + name.slice(1);
-};
-
 const group = {
   accordion: {
     title: 'Accordion',

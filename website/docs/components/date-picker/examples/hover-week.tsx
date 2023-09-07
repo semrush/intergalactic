@@ -68,3 +68,5 @@ const Demo = () => {
     </DateRangePicker>
   );
 };
+
+export default Demo;

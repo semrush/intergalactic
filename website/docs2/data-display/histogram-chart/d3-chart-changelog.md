@@ -6,4 +6,4 @@ tabs: Histogram chart('histogram-chart'), A11y('histogram-chart-a11y'), API('his
 
 Common changelog of `d3-chart` package.
 
-@changelog d3-chart
+::: changelog d3-chart :::

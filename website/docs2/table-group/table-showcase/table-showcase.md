@@ -18,13 +18,12 @@ Here you’ll find all controls and recommendations which are important when wor
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
 
 const group = {
   accordion: {
@@ -131,22 +130,31 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: 12px 12px;
-  width: 100%;
-  margin: 0;
-  margin-top: 12px;
-  padding: 0;
+const styles = `
+  .table-group-grid {
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-columns: repeat(auto-fill, 176px);
+    grid-gap: 12px 12px;
+    width: 100%;
+    margin: 0;
+    margin-top: 12px;
+    padding: 0;
+  }
 `;
 
 const App = function (props) {
+  React.useEffect(() => {
+    const styleSheet = document.createElement('style');
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    return () => styleSheet.remove();
+  }, []);
+
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <div className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -157,7 +165,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </div>
   );
 }
 </script>
@@ -172,13 +180,12 @@ This section describes the most common table use cases.
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
 
 const group = {
   accordion: {
@@ -285,22 +292,31 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: 12px 12px;
-  width: 100%;
-  margin: 0;
-  margin-top: 12px;
-  padding: 0;
+const styles = `
+  .table-group-grid {
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-columns: repeat(auto-fill, 176px);
+    grid-gap: 12px 12px;
+    width: 100%;
+    margin: 0;
+    margin-top: 12px;
+    padding: 0;
+  }
 `;
 
 const App = function (props) {
+  React.useEffect(() => {
+    const styleSheet = document.createElement('style');
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    return () => styleSheet.remove();
+  }, []);
+
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <div className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -311,7 +327,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </div>
   );
 }
 </script>
@@ -326,13 +342,12 @@ Here we have descriptions for all table states.
 
 <script lang="tsx">
 import React from 'react';
-import ComponentCard from '@docs/../components/ComponentCard';
-import styled from 'styled-components';
-
+import ComponentCard from '@components/../components/ComponentCard';
 const getImageName = (title) => {
   const name = title.replace(/[ \/]+/g, '');
   return name.charAt(0).toLowerCase() + name.slice(1);
 };
+
 
 const group = {
   accordion: {
@@ -439,22 +454,31 @@ const group = {
   },
 };
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-rows: max-content;
-  grid-template-columns: repeat(auto-fill, 176px);
-  grid-gap: 12px 12px;
-  width: 100%;
-  margin: 0;
-  margin-top: 12px;
-  padding: 0;
+const styles = `
+  .table-group-grid {
+    display: grid;
+    grid-template-rows: max-content;
+    grid-template-columns: repeat(auto-fill, 176px);
+    grid-gap: 12px 12px;
+    width: 100%;
+    margin: 0;
+    margin-top: 12px;
+    padding: 0;
+  }
 `;
 
 const App = function (props) {
+  React.useEffect(() => {
+    const styleSheet = document.createElement('style');
+    styleSheet.innerText = styles;
+    document.head.appendChild(styleSheet);
+    return () => styleSheet.remove();
+  }, []);
+
   const items = props.group.map((el) => group[el]);
 
   return (
-    <Cards>
+    <div className='table-group-grid'>
       {items.map((item) => (
         <ComponentCard
           key={item.title}
@@ -465,7 +489,7 @@ const App = function (props) {
           type={item.type}
         />
       ))}
-    </Cards>
+    </div>
   );
 }
 </script>

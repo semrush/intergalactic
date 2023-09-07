@@ -1,9 +1,9 @@
 ---
 title: Example
-tabs: Validation('index'), A11y('validation-form-a11y'), Example('validation-form-code')
+tabs: Validation('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
 ---
 
-## Example of a form with validation
+## Form validation example
 
 ::: sandbox
 
@@ -147,6 +147,8 @@ class Demo extends React.Component {
     );
   }
 }
+
+
 </script>
 
 :::

@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: base-trigger
-tabs: FilterTrigger('index'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
+tabs: Design('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---
 
 The component is used as an active state of a trigger in filters.

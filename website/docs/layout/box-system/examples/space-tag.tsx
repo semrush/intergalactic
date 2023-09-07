@@ -18,3 +18,5 @@ const Demo = () => (
     </Box>
   </div>
 );
+
+export default Demo;

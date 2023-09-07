@@ -5,21 +5,28 @@ layout: home
 hero:
   name: "Intergalactic"
   text: "Design system"
-  tagline: My great project tagline
+  tagline: Intergalactic is a constantly developing system of UI components, guidelines and UX patterns. With all these tools you can build your own product.
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get started
+      link: /get-started-guide/dev-starter-guide/dev-starter-guide
     - theme: alt
-      text: API Examples
-      link: /api-examples
-
+      text: Explore Github
+      link: https://github.com/semrush/intergalactic
+  image:
+    src: /galaxy-whale.png
+    alt: Galaxy whale – mascot
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 80+ components
+    icon: 🤓
+    details: High-quality React components out of the box
+  - title: Predictable static types
+    icon: 🚀
+    details: Written in TypeScript with predictable static types
+  - title: Themization
+    icon: 🙌
+    details: Theme customization in every detail (find details in the Design tokens guide)
+  - title: Powerful collection of charts
+    icon: 🤟
+    details: More than 12 chart types built with accessibility in mind
 ---
-

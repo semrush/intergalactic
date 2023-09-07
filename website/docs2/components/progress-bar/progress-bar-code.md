@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: progress-bar
-tabs: ProgressBar('index'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
+tabs: Design('progress-bar'), A11y('progress-bar-a11y'), API('progress-bar-api'), Example('progress-bar-code'), Changelog('progress-bar-changelog')
 ---
 
 ## Complex usage example
@@ -40,6 +40,8 @@ const Demo = () => {
     </div>
   );
 };
+
+
 </script>
 
 :::
@@ -61,6 +63,8 @@ const Demo = () => {
     </ProgressBar>
   );
 };
+
+
 </script>
 
 :::

@@ -11,3 +11,5 @@ const Demo = () => {
     </Skeleton>
   );
 };
+
+export default Demo;

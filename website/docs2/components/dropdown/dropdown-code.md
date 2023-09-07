@@ -1,7 +1,7 @@
 ---
 title: Example
 fileSource: dropdown
-tabs: Dropdown('index'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
+tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 
 ::: warning

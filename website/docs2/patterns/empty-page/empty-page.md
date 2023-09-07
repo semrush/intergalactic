@@ -1,31 +1,30 @@
 ---
 title: Empty page
+tabs: UX patterns('patterns'), Confirmation modal window('confirm-dialog'), Content in modal window('modal-content'), Empty page('empty-page'), Error message('global-errors'), Export('export'), FeedbackYesNo('feedback-yes-no'), Form('form'), Informer('informer'), Links order in ProductHead('links-order'), Loading states('loading-states'), ProjectCreate('project-create'), ProjectSelect('project-select'), Success state('success-state'), Summary('summary'), Validation('validation-form'), Web-performance('web-performance')
 ---
 
 ## Description
 
-**Empty page** is the pattern for "blank" state of the product. May be helpful as an advertising state to enable other product/service.
+**Empty page** pattern represents the "blank" state of the product. It can serve as an advertising state to promote other products or services.
 
-Commonly, the user faces this state, when certain actions are required to start working and gather data in the product.
+Typically, users encounter this state when certain actions are necessary to initiate product functionality and gather data.
 
-**For example, this state indicates that:**
+**For instance, this state indicates:**
 
-- we can't display the data because the user doesn't have the right product / service / account enabled;
-- there is no data to display because the user hasn't created or configured anything in the product yet;
-- "Soon there will be an awesome report here" (you need to display something as an advertising for the future feature).
+- Inability to display data due to the user's lack of access to the required product, service, or account.
+- Absence of displayed data because the user has not yet created or configured anything within the product.
+- A placeholder for an upcoming feature, such as "An exciting report will be available here soon," which functions as a preview for future features.
 
 ## Default styles
 
-1. Illustration is always located to the left of the message and size – 300px * 230px.
-2. For title use text with 20px size (`--fs-400`, `--lh-400`).
-3. For the description use 14px size (`--fs-200`, `-lh-200` tokens). Use this font-size carefully, and always check it's readability and contrast against background.
-4. For CTA use button with `use:"primary"` and M size.
-5. The entire message "sticks" to the left side of the page and doesn't stretch over the full width of the page.
-6. **Don't make content width more than 660px (otherwise it becomes difficult to read).**
+1. The illustration consistently resides to the left of the message, sized at 300px by 230px.
+2. For the title, use text with a font size of 20px (`--fs-400`, `--lh-400` tokens).
+3. Apply a font size of 14px (`--fs-200`, `--lh-200` tokens) for the description. Employ this font size judiciously, ensuring readability and contrast against the background.
+4. The call-to-action (CTA) employs a button with the attribute use:"primary" and a medium (M) size.
+5. The entire message aligns with the left side of the page and doesn't span the full width.
+6. **Avoid content widths exceeding 660px, as it becomes difficult to read.**
 
-::: tip
-As an option, add tertiary button, which can open a dropdown with additional information.
-:::
+As an option, consider adding a tertiary button that opens a dropdown with supplementary information.
 
 ### Margins and sizes
 
@@ -33,18 +32,20 @@ As an option, add tertiary button, which can open a dropdown with additional inf
 
 ![](static/empty-page-2.png)
 
-## "Empty" state and sidebar
+## Illustration
+
+You can create illustrations for specific scenarios. These illustrations should fulfill an advertising role while reflecting the core essence of the product that is currently concealed from the user.
+
+![](static/example-1.png)
+
+## Usage examples
+
+### "Empty" state and sidebar
 
 ![](static/empty-page-3.png)
 
-## "Empty" state in the table
+### "Empty" state in the table
 
-See more information in the [Table states](/table-group/table-states/#empty_table/).
+For further details, refer to the [Table states](/table-group/table-states/#empty_table/).
 
 ![](static/empty-page-4.png)
-
-## Examples of images for empty states
-
-You can make your illustrations for each specific situation. Illustration should carry out an advertising function and reflect the essence of the product which is currently hidden from the user.
-
-![](static/example-1.png)

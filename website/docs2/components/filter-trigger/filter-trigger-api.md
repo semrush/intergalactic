@@ -1,7 +1,7 @@
 ---
 title: API
 fileSource: base-trigger
-tabs: FilterTrigger('index'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
+tabs: Design('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---
 
 ## BaseTrigger

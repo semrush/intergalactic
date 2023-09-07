@@ -1,9 +1,13 @@
 import glob from 'fast-glob';
 import fs from 'fs/promises';
-import { resolve as resolvePath, dirname as resolveDirname } from 'path';
+import {
+  resolve as resolvePath,
+  dirname as resolveDirname,
+  basename as resolveBasename,
+} from 'path';
 import parseImports from 'parse-es-import';
 
-let markdowns = await glob('**/*.md', { cwd: 'docs2' });
+// let markdowns = await glob('**/*.md', { cwd: 'docs2' });
 // await Promise.all(
 //   markdowns.map(async (path) => {
 //     const parts = path.split('/');
@@ -15,9 +19,19 @@ let markdowns = await glob('**/*.md', { cwd: 'docs2' });
 //   }),
 // );
 
+const ensureDir = async (dirPath: string) => {
+  try {
+    await fs.access(dirPath);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      await fs.mkdir(dirPath, { recursive: true });
+    }
+  }
+};
+
 const alreadyMovedDependencies: { [fromPath: string]: boolean } = {};
 
-markdowns = await glob('**/*.md', { cwd: 'docs' });
+const markdowns = await glob('**/*.md', { cwd: 'docs' });
 const tabs: { [fromPath: string]: string[] } = {};
 await Promise.all(
   markdowns.map(async (path) => {
@@ -175,7 +189,7 @@ await Promise.all(
       }
       if (lines[i].startsWith('@changelog ')) {
         const componentName = lines[i].substring('@changelog '.length);
-        return `::: changelog ${componentName} :::`;
+        lines[i] = `::: changelog ${componentName} :::`;
       }
     }
     let removeFile = false;
@@ -212,7 +226,27 @@ await Promise.all(
     content = lines.join('\n');
     content = content.replace(/⚠️/g, ':warning:');
     if (!removeFile) {
+      await ensureDir(resolvePath('docs2', resolveDirname(path)));
       await fs.writeFile(`docs2/${path}`, content);
+    }
+
+    const docsDirEntities = await fs.readdir(resolvePath('docs', resolveDirname(path)));
+    if (docsDirEntities.includes('static')) {
+      const docs2DirEntities = await fs.readdir(resolvePath('docs2', resolveDirname(path)));
+      if (!docs2DirEntities.includes('static')) {
+        await fs.mkdir(resolvePath('docs2', resolveDirname(path), 'static'));
+      }
+      const files = await fs.readdir(resolvePath('docs', resolveDirname(path), 'static'));
+      await Promise.all(
+        files
+          .filter((file) => !file.startsWith('.'))
+          .map(async (file) => {
+            await fs.copyFile(
+              resolvePath('docs', resolveDirname(path), 'static', file),
+              resolvePath('docs2', resolveDirname(path), 'static', file),
+            );
+          }),
+      );
     }
   }),
 );
@@ -235,7 +269,16 @@ await Promise.all(
         }
       }),
     );
-    const mainTitle = mainContent.split('\ntitle: ')[1]?.split('\n')[0];
+    let mainTitle = mainContent.split('\ntitle: ')[1]?.split('\n')[0];
+
+    if (
+      mainFile.split('/').slice(-3)[0] === 'components' &&
+      resolveDirname(mainFile).split('/').pop() ===
+        resolveBasename(mainFile).toLowerCase().replace('.md', '')
+    ) {
+      mainTitle = 'Design';
+    }
+
     const subTitles = subContents.map((content) => content.split('\ntitle: ')[1]?.split('\n')[0]);
     const mainId = mainFile?.split('/').pop()?.split('.')[0];
     const subIds = subFiles.map((content) => content?.split('/').pop()?.split('.')[0]);
@@ -250,11 +293,13 @@ await Promise.all(
 
     if (mainContent && !mainContent.includes('tabs: ')) {
       mainContent = mainContent.replace('\n---\n', `\ntabs: ${tabsStr}\n---\n`);
+      await ensureDir(resolveDirname(mainFile));
       await fs.writeFile(mainFile, mainContent);
     }
     for (let i = 0; i < subFiles.length; i++) {
       if (subContents[i] && !subContents[i].includes('tabs: ')) {
         const content = subContents[i].replace('\n---\n', `\ntabs: ${tabsStr}\n---\n`);
+        await ensureDir(resolveDirname(subFiles[i]));
         await fs.writeFile(subFiles[i], content);
       }
     }

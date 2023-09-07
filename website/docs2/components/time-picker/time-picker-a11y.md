@@ -2,7 +2,7 @@
 title: A11y
 fileSource: time-picker
 a11y: AA
-tabs: TimePicker('index'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
+tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')
 ---
 
 ## What component has
