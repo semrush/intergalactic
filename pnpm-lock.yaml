@@ -17,6 +17,9 @@ overrides:
   axe-core: 4.4.0
 
 patchedDependencies:
+  parse-es-import@0.6.0:
+    hash: es5kxqeif6ghjeazo562grsbqa
+    path: patches/parse-es-import@0.6.0.patch
   react-hook-form@6.10.1:
     hash: jxraglplq2tfs5abx45wc74mnq
     path: patches/react-hook-form@6.10.1.patch
@@ -3211,7 +3214,7 @@ importers:
         version: 4.0.0
       parse-es-import:
         specifier: ^0.6.0
-        version: 0.6.0
+        version: 0.6.0(patch_hash=es5kxqeif6ghjeazo562grsbqa)
       prism-react-renderer:
         specifier: 1.0.2
         version: 1.0.2(react@18.2.0)
@@ -15576,12 +15579,13 @@ packages:
     dependencies:
       callsites: 3.1.0
 
-  /parse-es-import@0.6.0:
+  /parse-es-import@0.6.0(patch_hash=es5kxqeif6ghjeazo562grsbqa):
     resolution: {integrity: sha512-9JS+ahgEGKEYQZX4sIkGoqKlCgjMR50554STGFwIrh7tqmEJqejA2yDPxuW1jlw5Ug79+2BTfWNPkuCUBzeISQ==}
     dependencies:
       acorn: 8.10.0
       acorn-jsx: 5.3.2(acorn@8.10.0)
     dev: false
+    patched: true
 
   /parse-glob@3.0.4:
     resolution: {integrity: sha512-FC5TeK0AwXzq3tUBFtH74naWkPQCEWs4K+xMxWZBlKDWu0bVHXGZa+KKqxKidd7xwhdZ19ZNuF2uO1M/r196HA==}
