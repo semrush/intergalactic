@@ -42,7 +42,6 @@ const ChangelogByComponent = ({ blocks }) => {
           <ul className={styles.list}>
             {changes.map(({ type, text }) => (
               <li className={styles.listItem} key={`${type}-${text}`}>
-                {/* rome-ignore lint/security/noDangerouslySetInnerHtml: */}
                 {getLabel(type)} <Text dangerouslySetInnerHTML={{ __html: text }} />
               </li>
             ))}

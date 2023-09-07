@@ -24,7 +24,6 @@ class RootProjectNotFound extends Component {
     return (
       <Root render={Error}>
         <Error.Title>{getI18nText('title')}</Error.Title>
-        {/* rome-ignore lint/security/noDangerouslySetInnerHtml: */}
         <Error.Description tag={FormatText} size='l' dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>

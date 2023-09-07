@@ -78,6 +78,7 @@ await Promise.all(
         try {
           exampleCode = await fs.readFile(examplePath, 'utf-8');
         } catch {
+          // rome-ignore lint/nursery/noConsoleLog:
           console.log(`Example not found: ${examplePath}`);
         }
         if (!exampleCode) continue;
@@ -132,6 +133,7 @@ await Promise.all(
         try {
           exampleCode = await fs.readFile(examplePath, 'utf-8');
         } catch {
+          // rome-ignore lint/nursery/noConsoleLog:
           console.log(`Component not found: ${examplePath}`);
         }
         if (!exampleCode) continue;
@@ -182,6 +184,7 @@ await Promise.all(
               await fs.rename(importedPath, newPath);
               alreadyMovedDependencies[key] = true;
             } catch {
+              // rome-ignore lint/nursery/noConsoleLog:
               console.log(`Unable to move dependency: ${importedPath}`);
             }
           }
