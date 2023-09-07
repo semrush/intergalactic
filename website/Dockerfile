@@ -13,6 +13,7 @@ COPY ./ ./
 RUN apk add git
 RUN npm install --global pnpm@7
 RUN pnpm install --frozen-lockfile --ignore-scripts 
+RUN pnpm --filter core run build
 RUN pnpm --filter utils run build
 RUN pnpm build:icons
 RUN pnpm build:illustration
