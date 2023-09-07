@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { withRouter, useLocation } from 'react-router-dom';
 import { InstantSearch, Highlight, Configure } from 'react-instantsearch/dom';
 import { connectAutoComplete, connectStateResults } from 'react-instantsearch/connectors';
@@ -138,9 +138,9 @@ const Search = ({
   const pages = hits.filter((el) => !el.heading);
   const content = hits.filter((el) => el.heading);
   const location = useLocation();
-  const [value, setValue] = useState(ru.toEn(currentRefinement) || '');
+  const [value, setValue] = React.useState(ru.toEn(currentRefinement) || '');
 
-  useEffect(() => {
+  React.useEffect(() => {
     refine('');
   }, [location]);
 

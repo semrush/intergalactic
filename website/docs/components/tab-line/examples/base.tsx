@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TabLine from '@semcore/ui/tab-line';
 import Badge from '@semcore/ui/badge';
 import Tooltip from '@semcore/ui/tooltip';
 import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
 
 const Demo = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
 
   return (
     <TabLine onChange={setValue} value={value} aria-label='Page'>

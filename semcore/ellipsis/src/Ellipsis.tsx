@@ -1,4 +1,4 @@
-import React, { RefObject, useRef, useMemo, useState } from 'react';
+import React, { RefObject } from 'react';
 import createComponent, { Component, Intergalactic, Root, sstyled } from '@semcore/core';
 import Tooltip, { TooltipProps } from '@semcore/tooltip';
 import { Box, BoxProps } from '@semcore/flex-box';
@@ -255,8 +255,8 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
     children,
     advanceMode,
   } = props;
-  const resizeElement = useRef<HTMLDivElement>(null);
-  const [dimension, setDimension] = useState<{ fontSize: string; symbolWidth: number }>({
+  const resizeElement = React.useRef<HTMLDivElement>(null);
+  const [dimension, setDimension] = React.useState<{ fontSize: string; symbolWidth: number }>({
     fontSize: '14',
     symbolWidth: 0,
   });
@@ -283,7 +283,7 @@ const EllipsisMiddle: React.FC<AsPropsMiddle> = (props) => {
   const SBeginning = 'span';
   const SContainerMiddle = Box;
   const SAdvancedModeContainerMiddle = Tooltip;
-  const displayedSymbols = useMemo(
+  const displayedSymbols = React.useMemo(
     () => Math.round(blockWidth / dimension.symbolWidth),
     [blockWidth, dimension.symbolWidth],
   );

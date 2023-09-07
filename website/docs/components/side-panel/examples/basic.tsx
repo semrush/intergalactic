@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { List } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
 export default () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <React.Fragment>

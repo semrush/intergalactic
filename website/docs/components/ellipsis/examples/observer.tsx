@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 
 export default () => {
-  const containerRef = useRef(null);
+  const containerRef = React.useRef(null);
 
   const containerRect = useResizeObserver(containerRef);
 

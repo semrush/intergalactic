@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { findDOMNode } from 'react-dom';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Box, Flex } from '@semcore/ui/flex-box';
@@ -18,8 +18,8 @@ const renderRow = ({ key, index, style }) => {
 };
 
 const Demo = () => {
-  const [data, setData] = useState(list);
-  const innerRef = useRef();
+  const [data, setData] = React.useState(list);
+  const innerRef = React.useRef();
   const ref = (node) => {
     node = findDOMNode(node);
     if (node) {

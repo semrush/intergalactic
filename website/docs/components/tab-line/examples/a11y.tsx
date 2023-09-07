@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TabLine from '@semcore/ui/tab-line';
 
 export default () => {
-  const [value, onChange] = useState(1);
+  const [value, onChange] = React.useState(1);
   return (
     <>
       <TabLine value={value} onChange={onChange} aria-label='Page'>

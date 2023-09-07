@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text } from '@semcore/ui/typography';
 import Carousel from '@semcore/ui/carousel';
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>

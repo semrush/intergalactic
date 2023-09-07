@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React from 'react';
 // @ts-ignore
 import assignProps from '@semcore/utils/lib/assignProps';
 // @ts-ignore
@@ -108,7 +108,7 @@ function Enhancement(childComponents: any, createComponent: any, options: any) {
     },
     wrapperProps: function (this: any, props: any, WrapperComponent: any) {
       if (!WrapperComponent[STATIC_COMPONENT]) return props;
-      const context: any = useContext(options.context);
+      const context: any = React.useContext(options.context);
       const getterMethod = context[getterMethodNameByDisplayName(WrapperComponent.displayName)];
       if (getterMethod) {
         if (!getterMethod.cache.has(this)) {

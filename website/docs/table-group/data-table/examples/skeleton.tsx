@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Skeleton from '@semcore/ui/skeleton';
 
@@ -15,8 +15,8 @@ function getSkeleton() {
 }
 
 export default () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
     const timer = setInterval(() => {
       setLoading(!loading);
     }, 2000);

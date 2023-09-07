@@ -1,4 +1,4 @@
-import { MutableRefObject, Ref, RefObject, useCallback, useState } from 'react';
+import React, { MutableRefObject, Ref, RefObject } from 'react';
 import { findDOMNode } from 'react-dom';
 
 export function setRef<T>(ref: Ref<T>, value: T) {
@@ -19,7 +19,7 @@ export function useCallbackRef<T>(
   initialValue: T | null,
   callback: (newValue: T | null, lastValue: T | null) => void,
 ): MutableRefObject<T | null> {
-  const [ref] = useState(() => ({
+  const [ref] = React.useState(() => ({
     // value
     value: initialValue,
     // last callback
@@ -45,7 +45,7 @@ export function useCallbackRef<T>(
 }
 
 export function useForkRef<T>(...refs: Ref<T>[]): Ref<T> {
-  return useCallback((refValue: any) => {
+  return React.useCallback((refValue: any) => {
     refs.forEach((ref) => setRef(ref, refValue));
   }, refs);
 }

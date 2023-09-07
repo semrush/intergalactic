@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
 import { Box } from '@semcore/ui/flex-box';
 import { I18nProvider } from '@semcore/ui/utils/enhances/WithI18n';
@@ -18,7 +18,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
 );
 
 export default () => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = React.useState('en');
 
   return (
     <div>

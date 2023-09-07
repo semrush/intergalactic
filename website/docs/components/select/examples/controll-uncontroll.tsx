@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
 
@@ -13,7 +13,7 @@ const options = Array(6)
 const { value: initialValue } = options[0];
 
 export default () => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = React.useState(initialValue);
 
   return (
     <Flex>

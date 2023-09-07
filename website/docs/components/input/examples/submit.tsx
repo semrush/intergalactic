@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import CheckM from '@semcore/ui/icon/Check/m';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [focus, setFocus] = useState(false);
+  const [focus, setFocus] = React.useState(false);
 
   return (
     <>

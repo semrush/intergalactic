@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
@@ -15,7 +15,7 @@ const RowAccordion = React.forwardRef(
 );
 
 export default () => {
-  const [value, setValue] = useState([]);
+  const [value, setValue] = React.useState([]);
   return (
     <Accordion value={value} onChange={setValue}>
       <DataTable data={data}>

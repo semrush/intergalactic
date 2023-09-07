@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Dropdown from '@semcore/ui/dropdown';
 import { Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
@@ -76,10 +76,10 @@ const setTriggerText = ({ from, to }) => {
 };
 
 export default () => {
-  const [filters, setFilters] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState({ from: '', to: '' });
-  const [displayValue, setDisplayValue] = useState('');
+  const [filters, setFilters] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState({ from: '', to: '' });
+  const [displayValue, setDisplayValue] = React.useState('');
   const clearAll = () => setFilters(false);
   const applyFilters = () => {
     const { from, to } = value;

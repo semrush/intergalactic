@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Spin from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [value, setValue] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, [value]);

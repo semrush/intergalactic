@@ -196,8 +196,8 @@ function wrapFunction(OriginComponent: any, enhancements: any, Context: any) {
   const contexts = getField('context');
 
   const Component = React.memo(function FunctionMemoComponent(other) {
-    const selfRef = useRef({});
-    const firstRender = useRef(true);
+    const selfRef = React.useRef({});
+    const firstRender = React.useRef(true);
     useEnhancedEffect(() => {
       firstRender.current = false;
     }, []);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/input';
 import Button from '@semcore/button';
 import updatesImg from '../static/illustration/updates.svg';
@@ -55,11 +55,11 @@ const ButtonSubscribe = css`
 `;
 
 function UpdateBlock() {
-  const [value, setValue] = useState('');
-  const [hiddenValue, setHiddenValue] = useState('');
-  const [error, setError] = useState('');
-  const [status, setStatus] = useState('initial');
-  const [touched, setTouched] = useState(false);
+  const [value, setValue] = React.useState('');
+  const [hiddenValue, setHiddenValue] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [status, setStatus] = React.useState('initial');
+  const [touched, setTouched] = React.useState(false);
 
   const handleInput = (value) => {
     setValue(value);

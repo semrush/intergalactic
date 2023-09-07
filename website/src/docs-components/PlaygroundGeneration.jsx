@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -117,7 +117,7 @@ Playground.createWidget(
 );
 
 const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
-  const [color, setColor] = useState(backgroundColor || 'white');
+  const [color, setColor] = React.useState(backgroundColor || 'white');
 
   return (
     <RadioGroup

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
 import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const [secondVisible, setSecondVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const [secondVisible, setSecondVisible] = React.useState(false);
 
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);

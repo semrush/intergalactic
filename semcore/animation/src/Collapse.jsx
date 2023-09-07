@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React from 'react';
 import { createBaseComponent, sstyled } from '@semcore/core';
 import Animation from './Animation';
 import style from './style/keyframes.shadow.css';
@@ -7,8 +7,8 @@ import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 
 function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...props }, ref) {
   const SCollapse = Animation;
-  const overflowRef = useRef('initial');
-  const innerRef = useRef(null);
+  const overflowRef = React.useRef('initial');
+  const innerRef = React.useRef(null);
   const forkedRef = useForkRef(innerRef, ref);
 
   useEnhancedEffect(() => {
@@ -25,7 +25,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     if (!props.visible) innerRef.current.style.height = `${0}px`;
   }, []);
 
-  const handleAnimationStart = useCallback(
+  const handleAnimationStart = React.useCallback(
     (event) => {
       if (event.currentTarget !== event.target) return;
       if (onAnimationStart) onAnimationStart(event);
@@ -40,7 +40,7 @@ function Collapse({ onAnimationStart, onAnimationEnd, overflowHidden = true, ...
     [props.visible],
   );
 
-  const handleAnimationEnd = useCallback((event) => {
+  const handleAnimationEnd = React.useCallback((event) => {
     if (event.currentTarget !== event.target) return;
     if (onAnimationEnd) onAnimationEnd(event);
     const element = event.currentTarget;

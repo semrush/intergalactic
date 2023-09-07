@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 
@@ -16,7 +16,7 @@ import styles from './style/table.shadow.css';
 
 const Table = React.forwardRef((props, ref) => {
   const STable = Box;
-  const refTable = useRef(null);
+  const refTable = React.useRef(null);
   const {
     use = 'primary',
     style: styleProps = {},

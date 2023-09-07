@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputMask from '@semcore/ui/input-mask';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
 export default () => {
-  const [value, setValue] = useState('99');
+  const [value, setValue] = React.useState('99');
 
   return (
     <Flex direction='column' gap={2} w={224}>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './App.module.css';
 import { BrowserRouter, StaticRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Helmet from 'react-helmet';
@@ -45,9 +45,9 @@ const Router = !globalThis.__ssr
     };
 
 export function App() {
-  const [currentTheme, setCurrentTheme] = useState(getThemePreference());
+  const [currentTheme, setCurrentTheme] = React.useState(getThemePreference());
 
-  useEffect(() => {
+  React.useEffect(() => {
     addTheme();
   }, [currentTheme]);
 

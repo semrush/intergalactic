@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('1');
+  const [value, setValue] = React.useState('1');
   return (
     <div>
       <RadioGroup name='radio' value={value} onChange={(v) => setValue(v)}>

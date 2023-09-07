@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, createContext, useRef } from 'react';
+import React, { createContext } from 'react';
 
 import { createPortal } from 'react-dom';
 
@@ -139,10 +139,10 @@ const renderColGroup = (listWidthTh = []) => {
 
 function Head(props, ref) {
   const { children, ...other } = props;
-  const refTable = useRef(null);
-  const { self, styles: tableStyles } = useContext(ContextTable);
-  const { tableDOM } = useContext(StickyHeadContext);
-  const [listWidthTh, setListWidthTh] = useState(calculateWidthTh(tableDOM));
+  const refTable = React.useRef(null);
+  const { self, styles: tableStyles } = React.useContext(ContextTable);
+  const { tableDOM } = React.useContext(StickyHeadContext);
+  const [listWidthTh, setListWidthTh] = React.useState(calculateWidthTh(tableDOM));
 
   setRef(ref, refTable.current);
 
@@ -150,7 +150,7 @@ function Head(props, ref) {
     setListWidthTh(calculateWidthTh(tableDOM));
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     let mutationObserver = null;
     let resizeObserver = null;
     if (tableDOM && canUseDOM()) {
@@ -214,8 +214,8 @@ function ContainerSticky(props, ref) {
     style = {},
     ...other
   } = props;
-  const { styles } = useContext(ContextTable);
-  const { container, tableDOM } = useContext(StickyHeadContext);
+  const { styles } = React.useContext(ContextTable);
+  const { container, tableDOM } = React.useContext(StickyHeadContext);
   const thead = container.getElementsByTagName('thead')[0];
   const styleBar = {};
 
@@ -273,11 +273,11 @@ function StickyHeadInner(props, ref) {
   const top = typeof offsetTop === 'number' ? offsetTop : parseInt(offsetTop, 10);
   const bottom = typeof offsetBottom === 'number' ? offsetBottom : parseInt(offsetBottom, 10);
 
-  const [positionFixed, setPositionFixed] = useState('top');
-  const [refScrollContainer, setRefScrollContainer] = useState(null);
-  const [container, setContainerNode] = useState(propsContainer);
+  const [positionFixed, setPositionFixed] = React.useState('top');
+  const [refScrollContainer, setRefScrollContainer] = React.useState(null);
+  const [container, setContainerNode] = React.useState(propsContainer);
 
-  const { self } = useContext(ContextTable);
+  const { self } = React.useContext(ContextTable);
   const heightHeader = refScrollContainer ? refScrollContainer.offsetHeight : 0;
   let lastScrollLeft = 0;
 
@@ -361,7 +361,7 @@ function StickyHeadInner(props, ref) {
     }
   });
 
-  useEffect(
+  React.useEffect(
     function updateContainer() {
       if (!canUseDOM()) {
         return;
@@ -381,7 +381,7 @@ function StickyHeadInner(props, ref) {
     [container],
   );
 
-  useEffect(
+  React.useEffect(
     function updateScrollContainer() {
       if (refScrollContainer) {
         refScrollContainer.addEventListener('scroll', handleScroll);
@@ -408,7 +408,7 @@ function StickyHeadInner(props, ref) {
     setLeftPositionContainerSticky('auto', positionFixed);
   });
 
-  useEffect(
+  React.useEffect(
     function addListenerToContainer() {
       if (refScrollContainer && container) {
         container.addEventListener('scroll', handleScroll);
@@ -421,7 +421,7 @@ function StickyHeadInner(props, ref) {
     [container, refScrollContainer],
   );
 
-  useEffect(
+  React.useEffect(
     function addResizeObserverToContainer() {
       let resizeObserver = null;
 

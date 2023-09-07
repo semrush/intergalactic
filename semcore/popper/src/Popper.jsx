@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React from 'react';
 
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
@@ -515,10 +515,10 @@ function PopperPopper(props) {
     popper,
     focusableTriggerReturnFocusToRef,
   } = props;
-  const ref = useRef(null);
+  const ref = React.useRef(null);
 
   // https://github.com/facebook/react/issues/11387
-  const stopPropagation = useCallback((event) => event.stopPropagation(), []);
+  const stopPropagation = React.useCallback((event) => event.stopPropagation(), []);
 
   useFocusLock(
     ref,

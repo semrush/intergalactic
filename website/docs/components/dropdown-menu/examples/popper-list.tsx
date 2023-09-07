@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 import Button from '@semcore/ui/base-trigger';
 import Link from '@semcore/ui/link';
@@ -8,7 +8,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 import FileExportM from '@semcore/ui/icon/FileExport/m';
 
 export default function () {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClick = () => {
     setLoading(true);

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Accordion from '@semcore/ui/accordion';
 import { Text } from '@semcore/ui/typography';
 import { Flex, Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, onChange] = useState([0]);
+  const [value, onChange] = React.useState([0]);
 
   return (
     <Accordion value={value} onChange={(value) => onChange(value)}>

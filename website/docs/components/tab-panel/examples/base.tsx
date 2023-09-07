@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TabPanel from '@semcore/ui/tab-panel';
 import Badge from '@semcore/ui/badge';
 import Tooltip from '@semcore/ui/tooltip';
 import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
 
 const Demo = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
   return (
     <TabPanel onChange={setValue} value={value} aria-label='Page'>
       <TabPanel.Item value={0}>Overview</TabPanel.Item>

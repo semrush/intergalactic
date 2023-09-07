@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
 import { UnknownProperties, Intergalactic } from '@semcore/core';

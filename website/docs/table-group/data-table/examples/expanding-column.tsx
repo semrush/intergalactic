@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable, { DataTableSort } from '@semcore/ui/data-table';
 
 export default () => {
-  const [sort, setSort] = useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
     <DataTable data={data} sort={sort} onSortChange={setSort}>

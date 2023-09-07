@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React from 'react';
 // @ts-ignore
 import { sstyled } from '../styled';
 import { STATIC_COMPONENT } from './staticChildren';
@@ -37,7 +37,7 @@ function Enhancement(childComponents: any, Context: any) {
       };
     },
     wrapperProps: function (this: any, { styles, ...props }: any) {
-      const context: any = useContext(Context);
+      const context: any = React.useContext(Context);
       return {
         ...props,
         _styles: styles,
