@@ -2080,7 +2080,7 @@ importers:
         specifier: 3.11.1
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.10.1-prerelease.0
+        specifier: 4.10.1
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.8.1

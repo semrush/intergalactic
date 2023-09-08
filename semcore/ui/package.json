@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.16.2-prerelease.0",
+  "version": "15.16.2",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -25,7 +25,7 @@
     "@semcore/color-picker": "2.8.0",
     "@semcore/core": "2.6.1",
     "@semcore/counter": "3.6.1",
-    "@semcore/data-table": "4.10.1-prerelease.0",
+    "@semcore/data-table": "4.10.1",
     "@semcore/date-picker": "4.8.1",
     "@semcore/divider": "4.6.1",
     "@semcore/dot": "5.6.1",
