@@ -1,3 +1,9 @@
+## [15.16.1] - 2023-09-08
+
+### @semcore/date-picker
+
+- **Fixed** Navigation arrow in calendar that were navigating to the next month/year was visually displayed as a navigation arrow to the previous month/year.
+
 ## [15.16.0] - 2023-09-05
 
 ### @semcore/icon
