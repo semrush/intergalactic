@@ -76,7 +76,7 @@ export function Next({ getI18nText, children, Children }) {
       tabIndex={-1}
       aria-label={getI18nText('next')}
     >
-      {children ? <Children /> : <ChevronLeft />}
+      {children ? <Children /> : <ChevronRight />}
     </Root>
   );
 }
