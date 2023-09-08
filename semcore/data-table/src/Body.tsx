@@ -91,6 +91,8 @@ class Body extends Component<AsProps, State> {
           borderRight: lastColumn?.borderRight,
           style: {
             width: vars.length === 1 ? vars[0] : `calc(${vars.join(' + ')})`,
+            minWidth: column?.props?.wMin,
+            maxWidth: column?.props?.wMax,
           },
         };
         if (name !== undefined && value !== undefined) {

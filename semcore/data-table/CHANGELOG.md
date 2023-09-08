@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.1] - 2023-09-08
+
+### Fixed
+
+- Fixed initial columns rendering width when `wMax` or `wMin` props provided.
+
 ## [4.10.0] - 2023-09-05
 
 ### Changed
