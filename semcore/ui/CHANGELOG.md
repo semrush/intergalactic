@@ -1,3 +1,9 @@
+## [15.16.3] - 2023-09-08
+
+### @semcore/utils
+
+- **Fixed** Focus lock version merger was not respecting React version and was causing React#321 error.
+
 ## [15.16.2] - 2023-09-08
 
 ### @semcore/data-table
