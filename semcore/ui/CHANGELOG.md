@@ -1,3 +1,9 @@
+## [15.16.2] - 2023-09-08
+
+### @semcore/data-table
+
+- **Fixed** Fixed initial columns rendering width when `wMax` or `wMin` props provided.
+
 ## [15.16.1] - 2023-09-08
 
 ### @semcore/date-picker
