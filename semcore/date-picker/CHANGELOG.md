@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.1] - 2023-09-08
+
+### Fixed
+
+- Navigation arrow in calendar that were navigating to the next month/year was visually displayed as a navigation arrow to the previous month/year.
+
 ## [4.8.0] - 2023-09-05
 
 ### Changed
