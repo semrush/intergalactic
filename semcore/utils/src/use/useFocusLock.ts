@@ -22,7 +22,7 @@ const safeMoveFocusInside: typeof moveFocusInside = (...args) => {
       focusMoveDisabledUntil = Date.now() + 10000;
       focusMoveRequests = [];
       console.error(
-        '[useFocusLock] Probably the focus war was detected. It is a process when multiple browser focus control subjects are reacting to "blur" event on their element and are trying to get it back. Focus move function was disabled for 10 seconds. Probably your page has different focus lock systems. If you have multiple versions of Intergalactic components, updated them to the latest version.',
+        '[useFocusLock] Probably the focus war was detected. It is a process when multiple browser focus control subjects are reacting to "blur" event on their element and are trying to get it back. Focus move function was disabled for 10 seconds. Probably your page has different focus lock systems. If you have multiple versions of Intergalactic components, updated them to the latest version (at least to 15.16.3).',
       );
       return;
     }
@@ -90,9 +90,7 @@ const useFocusBorders = (disabled?: boolean) => {
       if (focusBordersConsumers.size === 0) removeBorders();
     };
   }, [id, disabled]);
-};
-
-/**
+}; /**
  * In some cases same page might contain different versions of components.
  * In such cases, we need to ensure that only one version of focus lock hook is used.
  * So, it's why we have `useFocusLockHook` function that is wrapped into `useFocusLock`.
@@ -104,9 +102,13 @@ const useFocusBorders = (disabled?: boolean) => {
  *
  * Such versions merging requires us to keep hook api backward compatible.
  * When hook logic changes, the variable `focusLockVersion` should be incremented.
+ *
+ *
+ * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
+ * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
  */
 const focusLockVersion = 1;
-const globalFocusLockHookKey = '__intergalactic_focus_lock_hook';
+const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
 
 const focusLockAllTraps = new Set<HTMLElement>();
 const focusLockUsedInMountedComponents = new Set<string>();
@@ -120,7 +122,10 @@ const focusLockUsedInMountedComponents = new Set<string>();
  */
 const focusMastersStack: HTMLElement[] = [];
 
+type ReactT = typeof React;
+
 const useFocusLockHook = (
+  React: ReactT,
   trapRef: React.RefObject<HTMLElement>,
   autoFocus: boolean,
   returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
@@ -261,7 +266,7 @@ if (!(globalThis as any)[globalFocusLockHookKey]) {
 
 export const useFocusLock: typeof useFocusLockHook = (...args) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(...args);
+  return hook(React, ...args);
 };
 
 export const isFocusInside = focusInside;

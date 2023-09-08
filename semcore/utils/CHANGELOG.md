@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.6.2] - 2023-09-08
+
+### Fixed
+
+- Focus lock version merger was not respecting React version and was causing React#321 error.
+
 ## [4.6.1] - 2023-09-05
 
 ### Changed
