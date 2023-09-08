@@ -3,7 +3,7 @@ import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
-import resolveColor from '@semcore/ui/utils/color';
+import resolveColor from '@semcore/ui/utils/lib/color';
 
 const pieColors = {
   a: resolveColor('blue-300'),

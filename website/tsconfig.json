@@ -19,7 +19,7 @@
       "utils/*": ["src/utils/*"],
       "@semcore/*": ["../semcore/*"],
       "@semcore/ui/*": ["../semcore/*"],
-      "@semcore/ui/utils/*": ["../semcore/utils/src/*"]
+      "@semcore/ui/utils/lib/*": ["../semcore/utils/src/*"]
     }
   },
   "include": ["src", "docs", "types"]
