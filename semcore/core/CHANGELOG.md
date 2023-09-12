@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.6.3] - 2023-09-12
+
+### Fixed
+
+- Fixed `locale` propagation in complex components.
+
 ## [2.6.2] - 2023-09-08
 
 ### Changed
