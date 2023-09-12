@@ -7,6 +7,7 @@ function i18nAppLocaleEnhance() {
     wrapperProps: (props: any) => {
       const { locale, ...other } = props;
       const contextLocale = React.useContext(Context);
+      if (!locale && !contextLocale) return props;
       return {
         ...other,
         locale: locale ?? contextLocale,
