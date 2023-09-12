@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.4] - 2023-09-12
+
+### Fixed
+
+- Enforced input trigger line height to prevent visual break due to non `normal` line height on page.
+
 ## [4.8.3] - 2023-09-12
 
 ### Changed
