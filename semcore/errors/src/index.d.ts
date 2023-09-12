@@ -33,6 +33,11 @@ export type ProjectNotFoundProps = WithI18nEnhanceProps & {
   projectsLink?: string;
   contactsLink?: string;
   supportTeamLink?: string;
+  /**
+   * HTML tag of the error title
+   * @default h2
+   */
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
 };
 
 /** @deprecated */
@@ -43,6 +48,11 @@ export type PageNotFoundProps = WithI18nEnhanceProps & {
    * @default /
    */
   homeLink?: string;
+  /**
+   * HTML tag of the error title
+   * @default h2
+   */
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
 };
 
 /** @deprecated */
@@ -53,6 +63,11 @@ export type PageErrorProps = WithI18nEnhanceProps & {
    * @default () => { if (canUseDOM()) { location.reload(); } }
    */
   onClick?: (e: React.MouseEvent) => void;
+  /**
+   * HTML tag of the error title
+   * @default h2
+   */
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
 };
 
 /** @deprecated */
@@ -67,6 +82,11 @@ export type MaintenanceProps = WithI18nEnhanceProps & {
    * @default /
    */
   homeLink?: string;
+  /**
+   * HTML tag of the error title
+   * @default h2
+   */
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
 };
 
 /** @deprecated */
@@ -77,6 +97,11 @@ export type AccessDeniedProps = WithI18nEnhanceProps & {
    * @default /
    */
   homeLink?: string;
+  /**
+   * HTML tag of the error title
+   * @default h2
+   */
+  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
 };
 
 declare const Error: Intergalactic.Component<'div', ErrorsProps, ErrorsContext> & {

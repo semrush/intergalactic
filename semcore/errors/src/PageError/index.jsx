@@ -14,6 +14,7 @@ class RootPageError extends Component {
     i18n: localizedMessages,
     locale: 'en',
     icon: getIconPath('page_error'),
+    titleTag: 'h2',
   };
 
   handleReload = () => {
@@ -23,11 +24,11 @@ class RootPageError extends Component {
   };
 
   render() {
-    const { Children, getI18nText, onClick, ...other } = this.asProps;
+    const { Children, getI18nText, onClick, titleTag, ...other } = this.asProps;
 
     return (
       <Error {...other}>
-        <Error.Title>{getI18nText('title')}</Error.Title>
+        <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>

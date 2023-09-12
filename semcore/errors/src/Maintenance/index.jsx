@@ -13,14 +13,15 @@ class RootMaintenance extends Component {
     locale: 'en',
     homeLink: '/',
     icon: getIconPath('maintenance'),
+    titleTag: 'h2',
   };
 
   render() {
-    const { Children, getI18nText, homeLink, toolName } = this.asProps;
+    const { Children, getI18nText, homeLink, toolName, titleTag } = this.asProps;
 
     return (
       <Root render={Error}>
-        <Error.Title>{`${toolName} ${getI18nText('title')}`}</Error.Title>
+        <Error.Title tag={titleTag}>{`${toolName} ${getI18nText('title')}`}</Error.Title>
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
