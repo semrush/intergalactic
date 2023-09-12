@@ -29,6 +29,18 @@ export const semcoreI18nUnplugin: UnpluginInstance<Options> = createUnplugin((op
       if (options?.bundleLocales?.length === 0) {
         throw new Error(`At least one locale should be mentioned in "bundleLocales" list.`);
       }
+      for (const locale of options?.bundleLocales ?? []) {
+        if (options?.excludeLocales?.includes(locale)) {
+          throw new Error(
+            `Locale "${locale}" is mentioned in "bundleLocales" but excluded with "excludeLocales". Bundled locales might not be excluded.`,
+          );
+        }
+        if (options.includeLocales && !options.includeLocales.includes(locale)) {
+          throw new Error(
+            `Locale "${locale}" is mentioned in "bundleLocales" but not included with "includeLocales". Bundled locales must be included.`,
+          );
+        }
+      }
 
       if (options?.includeLocales || options?.bundleLocales) {
         for (const locale of [
