@@ -1,3 +1,13 @@
+## [15.18.0-prerelease.0] - 2023-09-12
+
+### @semcore/core
+
+- **Fixed** Fixed `locale` propagation in complex components.
+
+### @semcore/errors
+
+- **Added** `titleTag` prop for specifying error widget tag (`h2` by default).
+
 ## [15.16.3] - 2023-09-08
 
 ### @semcore/utils
