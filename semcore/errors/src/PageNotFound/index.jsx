@@ -13,14 +13,15 @@ class RootPageNotFound extends Component {
     locale: 'en',
     icon: getIconPath('page_not_found'),
     homeLink: '/',
+    titleTag: 'h2',
   };
 
   render() {
-    const { Children, getI18nText, homeLink } = this.asProps;
+    const { Children, getI18nText, homeLink, titleTag } = this.asProps;
 
     return (
       <Root render={Error}>
-        <Error.Title>{getI18nText('title')}</Error.Title>
+        <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
         <Error.Description>{getI18nText('text')}</Error.Description>
         <Children />
         <Error.Controls>
