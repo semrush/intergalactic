@@ -52,47 +52,58 @@ SButton SInner {
 
 SInputMask {
   color: var(--intergalactic-text-primary, #191b23);
+  line-height: normal;
 }
 
 SIndicator {
   color: var(--intergalactic-text-secondary, #6c6e79);
 }
+
 SHumanizedDate {
   position: absolute;
   pointer-events: none;
 }
+
 SSingleDateInput SValue,
 SDateRange SMask,
 SSingleDateInput SMask,
 SDateRange SValue {
   opacity: 0;
 }
+
 SSingleDateInput:focus-within SHumanizedDate {
   opacity: 0;
   z-index: var(--intergalactic-z-index-deep, -999);
 }
+
 SSingleDateInput:focus-within SValue,
 SSingleDateInput:focus-within SMask {
   opacity: 1;
 }
+
 SDateRange SValue {
   opacity: 0;
 }
+
 SDateRange:focus-within SHumanizedDate {
   opacity: 0;
   z-index: var(--intergalactic-z-index-deep, -999);
 }
+
 SDateRange:focus-within SValue,
 SDateRange:focus-within SMask {
   opacity: 1;
 }
+
 SInputMask[noHumanizedDate] SValue,
 SInputMask[noHumanizedDate] SMask {
   opacity: 1;
 }
+
 SDateRange SInputMask:focus-within SMask {
   background-color: var(--intergalactic-bg-highlight-focus, rgba(0, 143, 248, 0.2));
 }
+
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
   color: var(--intergalactic-text-primary, #191b23);
