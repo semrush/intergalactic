@@ -1,3 +1,13 @@
+## [15.19.0-prerelease.0] - 2023-09-13
+
+### @semcore/date-picker
+
+- **Fixed** Enforced input trigger line height to prevent visual break due to non `normal` line height on page.
+
+### @semcore/i18n-unplugin
+
+- **Changed** Added error throwing if bundled locales are excluded or not included.
+
 ## [15.18.0] - 2023-09-12
 
 ### @semcore/core
