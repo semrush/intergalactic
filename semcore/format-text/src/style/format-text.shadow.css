@@ -41,7 +41,8 @@ SFormatText {
     }
   }
 
-  & code {
+  & code,
+  & pre {
     font-family: Consolas, 'Roboto Mono', Menlo, Courier, monospace;
   }
 
