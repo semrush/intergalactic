@@ -49,13 +49,17 @@ Date picker selects a single day. Once the day is selected, the dropdown closes 
 
 > If date has `disabled` state, then nothing should happen after user clicks it.
 
-![](static/timepicker-norma-opened.png)
+![](static/datepicker-normal-opened.png)
+
+### Grid margins
+
+![](static/datepicker-margins-row.png)
 
 @## Date picker and "Today" button
 
 You can include a "Today" button that selects the current date. Upon clicking the button, the present date is selected, and the calendar automatically scrolls up to the current month (if it wasn't already displayed).
 
-![](static/timepicker-today-style.png)
+![](static/datepicker-today-style.png)
 
 @## Date picker and time picker
 
@@ -71,7 +75,7 @@ And you can show 12-hour or 24-hour format of time for TimePicker, depending on 
 
 You can add a small progress bar under the date to show the progress of the metrics you need to show.
 
-![](static/timepicker-metric-normal.png)
+![](static/datepicker-metric-normal.png)
 
 @## Month picker
 
@@ -81,7 +85,9 @@ While a calendar with two month blocks can be displayed, it is more commonly use
 
 ![](static/monthpicker-normal-2sizes.png)
 
-![](static/monthpicker-paddings-row.png)
+### Grid margins
+
+![](static/monthpicker-margins-row.png)
 
 @## Date range picker
 
@@ -96,6 +102,23 @@ You can add presets for date ranges. Presets and their names may be customized. 
 You also can add the "Reset" button for deselecting the selected values. In this case the trigger changes its value to the placeholder.
 
 ![](static/daterangepicker-reset-buttons.png)
+
+@## Comparison of time periods in RangePicker
+
+In all RangePickers, you can enable the comparison of two periods. The periods can either intersect or not intersect.
+
+When the comparison of two periods is enabled in the RangePicker, each period in the `DatePicker.Trigger` has an addon with a color: the first period uses the `--date-picker-cell-active` token, and the second period uses the `--date-picker-cell-comparison-active` token.
+
+### Interaction
+
+@table-caption Interaction states for RangePicker with time periods comparison
+
+| Description | Appearance example    |
+| ----------- | --------------------- |
+| In the default state, the second period, which is activated by toggling the "Compare to" checkbox, is in a `disabled` state. | ![](static/periods-comparison-1.png) |
+| When enabling the comparison period, the focus shifts to the input field for selecting the second period. The preset set with periods changes to the one defined for the second period. | ![](static/periods-comparison-2.png) |
+| The selected date is immediately displayed in the input field. | ![](static/periods-comparison-3.png) ![](static/periods-comparison-4.png) |
+| The selected periods are applied after clicking the "Apply" button. | ![](static/periods-comparison-5.png) ![](static/periods-comparison-6.png) |
 
 @## Week picker
 
