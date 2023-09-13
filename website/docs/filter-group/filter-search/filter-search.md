@@ -89,7 +89,7 @@ Always add minimum width of 160px for the search input, otherwise something like
 
 @## Results highlighting
 
-This is an optional functionality. It helps the user to find on the page what he was looking for.
+This is an optional functionality. It helps the user to find on the page what they were looking for.
 
 Use `--yellow-300` color with 40% opacity for highlighting. The height of the highlighted area must match the line-height of the line.
 

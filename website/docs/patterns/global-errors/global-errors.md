@@ -268,8 +268,8 @@ Please complete the security check, and we’ll be out of your way.
 
 **Controls**
 
-- Submit (confirms the action, then we take the user to the page where he was going).
-- Captcha (confirms the action, then we take the user to the page where he was going).
+- Submit (confirms the action, then we take the user to the page where they were going).
+- Captcha (confirms the action, then we take the user to the page where they were going).
 
 @## Payment cannot be accepted
 

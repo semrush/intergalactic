@@ -7,7 +7,7 @@ title: SSO page (Login form)
 **SSO (Single Sign-On)** is a login and registration form that the user gets to when:
 
 - the user visited the site/page of the product for the first time and wants to create an account;
-- the user was logged out or he left the account;
+- the user was logged out or they left the account;
 - free-the user has reached the limit of using the product.
 
 @## Appearance

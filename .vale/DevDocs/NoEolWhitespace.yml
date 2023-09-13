@@ -1,0 +1,6 @@
+extends: existence
+message: "Remove whitespace characters at the end of the line."
+level: warning
+scope: raw
+raw:
+  - " +\n"
