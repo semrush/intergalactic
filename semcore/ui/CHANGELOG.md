@@ -1,3 +1,23 @@
+## [15.20.0-prerelease.0] - 2023-09-13
+
+### @semcore/format-text
+
+- **Changed** Specified font for `code` and `pre` tags inside of `FormatText` component.
+
+### @semcore/icon
+
+- **Fixed** Fixed strange svg issue that was cutting the edge of the `Favorite` and `FavoriteFilled` icons.
+
+### @semcore/typography
+
+- **Added** `monospace` prop to `Text` component.
+
+### @semcore/utils
+
+- **Added** Added new design tokens for period comparison in DatePicker: `date-picker-cell-comparison-active`, `date-picker-cell-comparison-active-hover`, `border-date-picker-range-comparison`.
+- **Changed** Changed colors of `--intergalactic-date-picker-cell-current` and `--intergalactic-date-picker-cell-current-invert` design tokens to make them more contrast against background.
+- **Changed** Removed design tokens `--intergalactic-bg-tertiary-neutral` and `--intergalactic-brand-tertiary` that was added by mistake.
+
 ## [15.19.0] - 2023-09-13
 
 ### @semcore/date-picker
