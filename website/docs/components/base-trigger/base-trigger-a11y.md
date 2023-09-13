@@ -22,5 +22,3 @@ The list below describes roles and attributes that component already has.
 @## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/).
-
-@include base-trigger-a11y-report
