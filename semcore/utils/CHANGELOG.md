@@ -6,11 +6,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Added new tokens for period comparison in DatePicker: `date-picker-cell-comparison-active`, `date-picker-cell-comparison-active-hover`, `border-date-picker-range-comparison`.
+- Added new design tokens for period comparison in DatePicker: `date-picker-cell-comparison-active`, `date-picker-cell-comparison-active-hover`, `border-date-picker-range-comparison`.
 
 ### Changed
 
-- Updated references for `date-picker-cell-current` and `date-picker-cell-current-invert` tokens to make them more contrast against background.
+- Changed colors of `--intergalactic-date-picker-cell-current` and `--intergalactic-date-picker-cell-current-invert` design tokens to make them more contrast against background.
+- Removed design tokens `--intergalactic-bg-tertiary-neutral` and `--intergalactic-brand-tertiary` that was added by mistake.
 
 ## [4.6.3] - 2023-09-12
 
@@ -36,11 +37,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/core` [2.5.0 ~> 2.6.0]).
 
-## [4.5.1] - 2023-08-30
-
-### Fixed
-
-- Moved all website tokens to the separate group.
 
 ## [4.5.0] - 2023-08-28
 
