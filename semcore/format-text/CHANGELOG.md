@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.7.0] - 2023-09-06
+
+### Changed
+
+- Specified font for `code` and `pre` tags inside of `FormatText` component.
+
 ## [4.6.3] - 2023-09-12
 
 ### Changed
