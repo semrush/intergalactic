@@ -65,6 +65,10 @@ SText[italic] {
   font-style: italic;
 }
 
+SText[monospace] {
+  font-family: Consolas, 'Roboto Mono', Menlo, Courier, monospace;
+}
+
 SText[uppercase] {
   text-transform: uppercase;
 }
