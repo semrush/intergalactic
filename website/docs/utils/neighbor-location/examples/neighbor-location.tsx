@@ -8,16 +8,16 @@ const Demo = () => {
   return (
     <>
       <Flex>
-        <Button neighborLocation='right'>left</Button>
-        <Button neighborLocation='both'>center</Button>
-        <Button neighborLocation='left'>right</Button>
+        <Button neighborLocation='right'>Left</Button>
+        <Button neighborLocation='both'>Center</Button>
+        <Button neighborLocation='left'>Right</Button>
       </Flex>
       <Divider my={4} />
       {/* NeighborLocation is DEPRECATED */}
       <NeighborLocation>
-        <Button>left</Button>
-        <Button>center</Button>
-        <Button>right</Button>
+        <Button>Left</Button>
+        <Button>Center</Button>
+        <Button>Right</Button>
       </NeighborLocation>
     </>
   );

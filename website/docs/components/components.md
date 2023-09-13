@@ -5,6 +5,7 @@ title: Components
 @page accordion
 @page auto-suggest
 @page badge
+@page base-trigger
 @page breadcrumbs
 @page button
 @page card
