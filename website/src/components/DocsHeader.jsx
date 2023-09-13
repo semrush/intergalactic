@@ -173,8 +173,8 @@ export default function (props) {
             </Tooltip.Trigger>
             <Tooltip.Popper>
               <Text size={200}>
-                If you notice an error or typo, please help us find and fix it. Fork the project and
-                send us the changes. Thank you!
+                If you've noticed an error or typo, you can fork the project and send us the
+                changes. Thank you!
               </Text>
             </Tooltip.Popper>
           </Tooltip>

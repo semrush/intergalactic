@@ -7,14 +7,14 @@ const Demo = () => {
   return (
     <>
       <NeighborLocation tag={Flex} mb={4}>
-        <Button use='primary'>left</Button>
-        <Button use='primary'>center</Button>
-        <Button use='primary'>right</Button>
+        <Button use='primary'>Left</Button>
+        <Button use='primary'>Center</Button>
+        <Button use='primary'>Right</Button>
       </NeighborLocation>
       <NeighborLocation tag={Flex}>
-        <Button>left</Button>
-        <Button>center</Button>
-        <Button>right</Button>
+        <Button>Left</Button>
+        <Button>Center</Button>
+        <Button>Right</Button>
       </NeighborLocation>
     </>
   );

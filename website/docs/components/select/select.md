@@ -26,21 +26,21 @@ Component consists of the following:
 
 @## Trigger
 
-For the select trigger, you can use the following BaseTrigger types:
+For the select trigger, you can use one of the following [BaseTrigger](/components/base-trigger) types:
 
 @table-caption Trigger button types
 
 | BaseTrigger type | Appearance example |
 | ---------------- | ------------------ |
-| **BaseTrigger**. Has two sizes: M and L. | ![](static/primary-default.png) |
-| **LinkTrigger (looks like a link, but it's a button)**. Used it in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
-| **LinkTrigger with the color of text (looks like a link, but it's a button)**. Used it in two sizes: 14px text and 16px text. | ![](static/tertiary.png) |
+| [ButtonTrigger](/components/base-trigger/#buttontrigger). Has two sizes: M and L. | ![](static/primary-default.png) |
+| [LinkTrigger](/components/base-trigger/#linktrigger) (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text. | ![](static/inline-select-placeholder.png) |
+| LinkTrigger with the color of text (looks like a link, but it's a button). Used it in two sizes: 14px text and 16px text. | ![](static/tertiary.png) |
 
 ### Trigger sizes
 
 @table-caption Trigger button sizes
 
-| Size | ButtonTrigger         | LinkTrigger      | LinkTrigger with the color of text          |
+| Size | [ButtonTrigger](/components/base-trigger/#buttontrigger)         | [LinkTrigger](/components/base-trigger/#linktrigger)      | LinkTrigger with the color of text          |
 | ---- | --------------------- | ---------------- | ------------------------------------------- |
 | M    | ![](static/primary-select-m.png) | ![](static/inline-select-m.png) | ![](static/tertiary-select-m.png) |
 | L    | ![](static/primary-select-l.png) | ![](static/inline-select-l.png) | ![](static/tertiary-select-l.png) |
@@ -57,7 +57,7 @@ If the trigger has a maximum width, collapse long values into an `ellipsis`. Whe
 
 @table-caption Trigger button states
 
-| State         | ButtonTrigger        | LinkTrigger          | LinkTrigger with the color of text    |
+| State         | [ButtonTrigger](/components/base-trigger/#buttontrigger)        | [LinkTrigger](/components/base-trigger/#linktrigger)          | LinkTrigger with the color of text    |
 | ------------- | -------------------- | -------------------- | ------------------------------------- |
 | Default       | ![](static/primary-default.png)           | ![](static/inline-select-placeholder.png) | ![](static/tertiary-select-placeholder.png) |
 | Hover | ![](static/primary-hover.png) | ![](static/inline-select-hover.png)         | ![](static/tertiary-select-hover.png)         |
@@ -74,7 +74,7 @@ The select trigger can contain an icon, flag, or other addon before the text. Th
 
 @table-caption Content types trigger button can have
 
-| Element | Button                             | Link as Button                              | Link (as Button) with the color of text                  |
+| Element | [ButtonTrigger](/components/base-trigger/#buttontrigger)  | [LinkTrigger](/components/base-trigger/#linktrigger)     | LinkTrigger with the color of text                  |
 | ------- | ---------------------------------- | ------------------------------------------- | -------------------------------------------- |
 | Flag    | ![](static/flag-primary.png)   | ![](static/inline-flag.png)   | ![](static/tertiary-flag.png)   |
 | Icon    | ![](static/icon-primary.png)   | ![](static/inline-icon.png)   | ![](static/tertiary-icon.png)   |
