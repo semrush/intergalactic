@@ -52,5 +52,5 @@ In addition, we offer libraries for internal use, which are accessible solely to
 - components for organizing your files and specs – **[Design File Template Library](https://www.figma.com/file/ZDRC056k8PbUFi3qoFAWj9/Design-File-Template-Library)**.
 
 > All Product Design Team members have editing access to the Libraries containing UI illustrations, patterns, experiments, and email templates.
-> 
+>
 > As a result, if you create any new illustrations, patterns, or email templates, you are encouraged to add them to the shared libraries. By doing so, you will facilitate your colleagues in finding readily usable illustrations, icons, and email templates in the future.

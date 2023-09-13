@@ -25,7 +25,7 @@ The length of each segment is a proportional fraction, and the entire circle is 
 
 > **Interesting fact**
 >
-> The creation of the donut chart is credited to the Scottish engineer William Playfair. Back in 1801, he used it to show the proportions of land occupied by the Turkish Empire in Asia, Europe and Africa.
+> The creation of the donut chart is credited to the Scottish engineer William Playfair. Back in 1801, <!-- vale DevDocs.Gender = NO -->he<!-- vale DevDocs.Gender = NO --> used it to show the proportions of land occupied by the Turkish Empire in Asia, Europe and Africa.
 >
 > The French don’t call such charts donut chart, they compare it with round cheese Camembert.
 >
