@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.7.0] - 2023-09-13
+## [4.7.0-prerelease.0] - 2023-09-13
 
 ### Added
 
@@ -36,7 +36,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/core` [2.5.0 ~> 2.6.0]).
-
 
 ## [4.5.0] - 2023-08-28
 
