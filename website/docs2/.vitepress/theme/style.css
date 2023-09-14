@@ -232,3 +232,78 @@
   width: 100%;
   height: 100%;
 }
+
+.playground-runtime {
+  padding-top: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: -5px;
+  border-radius: 8px;
+  padding-left: 4px;
+  padding-right: 4px;
+  line-height: normal;
+  isolation: isolate;
+}
+
+.dark .playground-runtime {
+  /* background-color: white; */
+}
+
+@media (min-width: 640px) {
+  .playground-runtime {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.code-wrapper {
+  position: relative;
+}
+
+.open-codesandbox {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 64px;
+  direction: ltr;
+  position: absolute;
+  top: 12px;
+  z-index: 3;
+  border: 1px solid var(--vp-code-copy-code-border-color);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--vp-code-copy-code-bg);
+  opacity: 0;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' fill='rgba(128,128,128,1)'%3E%3Cpath d='M755 140.3l0.5-0.3h0.3L512 0 268.3 140h-0.3l0.8 0.4L68.6 256v512L512 1024l443.4-256V256L755 140.3z m-30 506.4v171.2L548 920.1V534.7L883.4 341v215.7l-158.4 90z m-584.4-90.6V340.8L476 534.4v385.7L300 818.5V646.7l-159.4-90.6zM511.7 280l171.1-98.3 166.3 96-336.9 194.5-337-194.6 165.7-95.7L511.7 280z' /%3E%3C/svg%3E");
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition: border-color 0.25s, background-color 0.25s, opacity 0.25s;
+}
+
+.open-codesandbox:hover,
+.open-codesandbox:focus,
+.open-codesandbox:active {
+  opacity: 1;
+  border-color: var(--vp-code-copy-code-hover-border-color);
+  background-color: var(--vp-code-copy-code-hover-bg);
+}
+
+.code-wrapper:hover .open-codesandbox,
+.code-wrapper:hover .copy.copy.copy.copy {
+  opacity: 1;
+}
+
+.code-wrapper .copy.copy.copy.copy {
+  border-radius: 4px;
+}
+
+.code-wrapper .copy.copy.copy.copy.copied:before {
+  display: none;
+}
+
+.documentation-sandbox {
+  margin-top: 20px;
+}
