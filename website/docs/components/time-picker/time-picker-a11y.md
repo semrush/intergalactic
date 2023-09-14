@@ -8,6 +8,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key                      | Function                                                                                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                    | Focus moves to the hour/minute select and opens the dropdown with hour/minute options.                                                    |
@@ -19,6 +21,8 @@ a11y: AA
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+@table-caption Roles and attributes
 
 | Role     | Attribute                | Element | Usage                                                                                                                                                                                                                        |
 | -------- | ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

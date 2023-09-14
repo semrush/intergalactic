@@ -7,6 +7,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key              | Function                                       |
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
@@ -16,6 +18,8 @@ a11y: AA
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+@table-caption Roles and attributes
 
 | Role     | Attribute              | Element    | Usage                                                                                                                                       |
 | -------- | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,6 +43,8 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+@table-caption Attributes
 
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

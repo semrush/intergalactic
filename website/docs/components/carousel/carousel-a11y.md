@@ -7,6 +7,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key                             | Function                                                                                                                                                            |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                           | Moves focus through interactive elements in the carousel. Rotation control, previous slide, and next slide buttons precede the slide content in the `Tab` sequence. |
@@ -16,6 +18,8 @@ a11y: AA
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+@table-caption Roles and attributes
 
 | Role       | Attribute      | Element | Usage                                                                                                  |
 | ---------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------ |
@@ -31,6 +35,8 @@ The list below describes roles and attributes that component already has.
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+@table-caption Attributes
 
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

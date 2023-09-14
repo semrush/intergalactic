@@ -7,13 +7,14 @@ fileSource: tab-line
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key           | Function                                                                                                                                                                                                    |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`         | When focus moves into the tab list, places focus on the active `tab` element. When the tab list contains the focus, moves focus to the next element in the `Tab` sequence, which is the `tabpanel` element. |
 | `Right Arrow` | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab.                                                                                                                     |
 | `Left Arrow`  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab.                                                                                                                 |
-| `Space`       | Activates focused tab                                                                                                                                                                                       |
-| `Enter`       | Activates focused tab                                                                                                                                                                                       |
+| `Space`, `Enter`       | Activates focused tab.                    |
 
 @## Considerations for developers
 
@@ -28,10 +29,12 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
 
+@table-caption Roles and attributes
+
 | Role     | Attribute                 | Element  | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | -------- | ------------------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `tablist`  |                           | `div`    | Indicates that the element serves as a container for a set of tabs.                                                                                                                                                                                                                                                                                                                                                                  |
-| `tab`      |                           | `button` | Indicates the element serves as a tab control. When focused, is automatically activated, causing its associated `tabpanel` to be displayed. Provides a title for its associated `tabpanel`.                                                                                                                                                                                                                                          |
+| `tab`      |                           | `button` | Indicates the element serves as a `tab` control. When focused, is automatically activated, causing its associated `tabpanel` to be displayed. Provides a title for its associated `tabpanel`.                                                                                                                                                                                                                                          |
 |          | `aria-selected="true"`    | `button` | Indicates the tab control is activated and its associated panel is displayed. Set when a tab receives focus.                                                                                                                                                                                                                                                                                                                         |
 |          | `aria-selected="false"`   | `button` | Indicates the tab control isn’t active and its associated panel isn’t displayed. Set for all tab elements in the tab set except the focused tab.                                                                                                                                                                                                                                                                                   |
 |          | `tabindex="-1"`           | `button` | Removes the element from the page `Tab` sequence. Set when a tab isn’t selected so that only the selected tab is in the page `Tab` sequence. Since an HTML `button` element is used for the tab, it isn’t necessary to set `tabindex=0` on the selected (active) tab element. This approach to managing focus is described in the section on [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex). |

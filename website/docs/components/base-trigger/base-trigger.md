@@ -49,6 +49,8 @@ ButtonTrigger has the same sizes as BaseTrigger has.
 | M (28px)            | ![](static/button-trigger-normal-m.png) |
 | L (40px)            | ![](static/button-trigger-normal-l.png) |
 
+#### ButtonTrigger states
+
 @table-caption ButtonTrigger states
 
 | State  | Appearance example |
@@ -75,6 +77,8 @@ LinkTrigger has the styles of [Link](/components/link).
 | ------------------- | ------------------------------------- |
 | M (28px)            | ![](static/link-trigger-normal-m.png) |
 | L (40px)            | ![](static/link-trigger-normal-l.png) |
+
+#### LinkTrigger states
 
 @table-caption LinkTrigger states
 
