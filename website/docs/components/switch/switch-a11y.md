@@ -8,6 +8,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key              | Function                                               |
 | ---------------- | ------------------------------------------------------ |
 | `Space`, `Enter` | Changes state of the switch to checked or not checked. |
@@ -38,6 +40,8 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+@table-caption Attributes
 
 | Attribute         | Element | Usage                                                                                                                                                                  |
 | ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

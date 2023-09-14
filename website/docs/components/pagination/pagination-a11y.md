@@ -7,6 +7,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
@@ -17,6 +19,8 @@ See detailed information about the keyboard support for the buttons, links, inpu
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+@table-caption Attributes
 
 | Attribute                         | Element  | Usage                                                                                                         |
 | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |
