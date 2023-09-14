@@ -1,5 +1,8 @@
 
 <template>
+  <div class="page-title-container" v-if="title">
+    <h1 class="page-title">{{ title }}</h1>
+  </div>
   <div class="page-top-tabs-container">
     <div class="page-top-tabs-content">
       <VPFeature v-for="tab in tabs" :title="tab.title" :link="tab.url" :data-current="tab.current" />
@@ -9,11 +12,24 @@
 </template>
 
 <style>
-.page-top-tabs-container {
+.page-top-tabs-container,
+.page-title-container {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   width: 100%;
+}
+
+.page-title {
+  width: 100%;
+  max-width: 688px;
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+  line-height: 40px;
+  font-size: 28px;
+
+  margin-bottom: 20px;
 }
 
 .page-top-tabs-content {
@@ -73,4 +89,5 @@ const tabs = computed(() => (typeof frontmatter.value.tabs === 'string') ? front
   const current = route.path === url || route.path === (url + '.html');
   return { url, title, current }
 }) : []);
+const title = computed(() => frontmatter.value.title);
 </script>

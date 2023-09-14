@@ -1,6 +1,5 @@
 ---
 title: ColorPicker
-tabName: Design
 fileSource: color-picker
 tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---

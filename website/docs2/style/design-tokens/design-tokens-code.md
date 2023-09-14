@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Design tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
+title: Design tokens
+tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
 ---
 
 ## Tokens with custom component

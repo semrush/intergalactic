@@ -1,8 +1,7 @@
 ---
 title: Email templates & grid
-tabName: Design
 deprecated: true
-tabs: Email templates & grid('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
+tabs: Design('grid-email'), Email grid('grid-email-code'), Readme('grid-email-readme'), Changelog('grid-email-changelog')
 ---
 
 ::: warning

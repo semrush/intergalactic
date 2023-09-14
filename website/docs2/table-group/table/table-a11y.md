@@ -1,7 +1,7 @@
 ---
-title: A11y
+title: Table principles
 a11y: AA
-tabs: Table principles('table'), A11y('table-a11y'), Example('table-code')
+tabs: Design('table'), A11y('table-a11y'), Example('table-code')
 ---
 
 ## Considerations for developers

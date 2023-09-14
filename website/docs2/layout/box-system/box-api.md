@@ -1,7 +1,7 @@
 ---
-title: API
+title: Flex-box and spacing system
 fileSource: flex-box
-tabs: Flex-box and spacing system('box-system'), API('box-api'), Changelog('box-changelog')
+tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 ---
 
 ## Box

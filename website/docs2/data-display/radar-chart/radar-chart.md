@@ -1,8 +1,7 @@
 ---
 title: Radar chart
 fileSource: d3-chart
-tabName: Design
-tabs: Radar chart('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
+tabs: Design('radar-chart'), API('radar-chart-api'), Examples('radar-chart-code')
 ---
 
 ::: tip

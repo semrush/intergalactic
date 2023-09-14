@@ -1,7 +1,6 @@
 ---
 title: InlineInput
 fileSource: inline-input
-tabName: Design
 tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api'), Example('inline-input-example'), Changelog('inline-input-changelog')
 ---
 

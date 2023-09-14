@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Accordion
 a11y: AA
 tabs: Design('accordion'), A11y('accordion-a11y'), API('accordion-api'), Example('accordion-code'), Changelog('accordion-changelog')
 ---

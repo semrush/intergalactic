@@ -1,5 +1,5 @@
 ---
-title: Example
+title: AutoSuggest
 tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-code')
 ---
 

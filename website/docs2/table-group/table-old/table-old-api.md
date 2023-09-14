@@ -1,6 +1,6 @@
 ---
-title: API
-tabs: Table code and API('table-old'), API('table-old-api'), Changelog('table-old-changelog')
+title: Table code and API
+tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog')
 ---
 
 ## Table

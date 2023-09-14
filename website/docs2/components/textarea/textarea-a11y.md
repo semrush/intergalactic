@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Textarea
 fileSource: textarea
 a11y: AA
 tabs: Design('textarea'), A11y('textarea-a11y'), API('textarea-api'), Example('textarea-code'), Changelog('textarea-changelog')

@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Skeleton
 a11y: AA
 tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---

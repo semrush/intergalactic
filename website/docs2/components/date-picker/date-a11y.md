@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: DatePicker
 fileSource: date-picker
 a11y: AA
 tabs: Design('date-picker'), A11y('date-a11y'), API('date-api'), Example('date-code'), Changelog('date-changelog')

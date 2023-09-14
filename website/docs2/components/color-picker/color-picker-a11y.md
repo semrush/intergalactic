@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: ColorPicker
 a11y: AA
 tabs: Design('color-picker'), A11y('color-picker-a11y'), API('color-picker-api'), Example('color-picker-code'), Changelog('color-picker-changelog')
 ---

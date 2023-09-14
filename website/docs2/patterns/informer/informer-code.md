@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Informer('informer'), Example('informer-code')
+title: Informer
+tabs: Design('informer'), Example('informer-code')
 ---
 
 ## Basic usage

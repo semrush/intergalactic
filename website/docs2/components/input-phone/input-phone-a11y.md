@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: InputPhone
 a11y: AA
 tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code')
 ---

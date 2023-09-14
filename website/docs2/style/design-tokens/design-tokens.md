@@ -1,8 +1,7 @@
 ---
 title: Design tokens
 fileSource: utils
-tabName: Tokens
-tabs: Design tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
+tabs: Tokens('design-tokens'), Usage in design('design-tokens-usage'), Usage in development('design-tokens-usage-development'), Example('design-tokens-code')
 ---
 
 ::: tip

@@ -1,7 +1,6 @@
 ---
 title: Counter
 fileSource: counter
-tabName: Design
 tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---
 

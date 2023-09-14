@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: FilterTrigger
 a11y: AA
 tabs: Design('filter-trigger'), A11y('filter-trigger-a11y'), API('filter-trigger-api'), Example('filter-trigger-code'), Changelog('filter-trigger-changelog')
 ---

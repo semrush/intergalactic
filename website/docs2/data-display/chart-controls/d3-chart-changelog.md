@@ -1,7 +1,7 @@
 ---
-title: Changelog
+title: Chart controls
 fileSource: d3-chart
-tabs: Chart controls('chart-controls'), Changelog('d3-chart-changelog')
+tabs: Design('chart-controls'), Changelog('d3-chart-changelog')
 ---
 
 Common changelog of `d3-chart` package.

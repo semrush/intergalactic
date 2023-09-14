@@ -1,7 +1,6 @@
 ---
 title: Input
 fileSource: input
-tabName: Design
 tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code'), Changelog('input-changelog')
 ---
 

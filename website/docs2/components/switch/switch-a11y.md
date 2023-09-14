@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Switch
 fileSource: switch
 a11y: AA
 tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-code'), Changelog('switch-changelog')

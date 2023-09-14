@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: FeedbackYesNo('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+title: FeedbackYesNo
+tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## FeedbackYesNo example

@@ -1,7 +1,6 @@
 ---
 title: Filter Search
-tabName: Design
-tabs: Filter Search('filter-search'), Example('filter-search-code')
+tabs: Design('filter-search'), Example('filter-search-code')
 ---
 
 ## Description

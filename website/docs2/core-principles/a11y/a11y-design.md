@@ -1,6 +1,6 @@
 ---
-title: Design requirements
-tabs: Accessibility('a11y'), Development requirements('a11y-general'), Keyboard support('a11y-keyboard'), Design requirements('a11y-design')
+title: Accessibility
+tabs: Main terms('a11y'), Development requirements('a11y-general'), Keyboard support('a11y-keyboard'), Design requirements('a11y-design')
 ---
 
 ## Color and contrast

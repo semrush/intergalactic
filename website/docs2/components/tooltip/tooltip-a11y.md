@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Tooltip
 fileSource: tooltip
 a11y: AA
 tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tooltip-code'), Changelog('tooltip-changelog')

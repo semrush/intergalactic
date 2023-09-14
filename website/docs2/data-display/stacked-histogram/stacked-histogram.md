@@ -1,9 +1,8 @@
 ---
 title: Stacked histogram chart
 fileSource: d3-chart
-tabName: Design
 disabled: true
-tabs: Stacked histogram chart('stacked-histogram'), Changelog('d3-chart-changelog')
+tabs: Design('stacked-histogram'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip

@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Spin
 fileSource: spin
 a11y: AA
 tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')

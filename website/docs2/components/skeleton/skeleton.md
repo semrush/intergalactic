@@ -1,7 +1,6 @@
 ---
 title: Skeleton
 fileSource: skeleton
-tabName: Design
 tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('skeleton-code'), Changelog('skeleton-changelog')
 ---
 

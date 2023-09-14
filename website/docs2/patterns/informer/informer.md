@@ -1,7 +1,6 @@
 ---
 title: Informer
-tabName: Design
-tabs: Informer('informer'), Example('informer-code')
+tabs: Design('informer'), Example('informer-code')
 ---
 
 ## Description

@@ -1,7 +1,7 @@
 ---
-title: API
+title: Donut / Pie chart
 fileSource: d3-chart
-tabs: Donut / Pie chart('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), Examples('donut-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ## D3 API

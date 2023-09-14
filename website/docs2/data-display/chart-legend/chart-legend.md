@@ -1,9 +1,8 @@
 ---
 title: Chart legend
 fileSource: d3-chart
-tabName: Design
 docs: true
-tabs: Chart legend('chart-legend'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
+tabs: Design('chart-legend'), Example('chart-legend-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip

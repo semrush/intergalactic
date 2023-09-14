@@ -1,8 +1,7 @@
 ---
 title: FeedbackYesNo
 fileSource: feedback-form
-tabName: Design
-tabs: FeedbackYesNo('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## Description

@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: TimePicker
 fileSource: time-picker
 a11y: AA
 tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), Example('time-picker-code'), Changelog('time-picker-changelog')

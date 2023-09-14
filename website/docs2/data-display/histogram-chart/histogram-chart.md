@@ -1,8 +1,7 @@
 ---
 title: Histogram chart
 fileSource: d3-chart
-tabName: Design
-tabs: Histogram chart('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('d3-chart-changelog')
+tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-chart-api'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip

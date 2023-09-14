@@ -1149,22 +1149,15 @@ await Promise.all(
         }
       }),
     );
-    let mainTitle = mainContent.split('\ntitle: ')[1]?.split('\n')[0];
-
-    if (
-      mainFile.split('/').slice(-3)[0] === 'components' &&
-      resolveDirname(mainFile).split('/').pop() ===
-        resolveBasename(mainFile).toLowerCase().replace('.md', '')
-    ) {
-      mainTitle = 'Design';
-    }
+    const mainTitle = mainContent.split('\ntitle: ')[1]?.split('\n')[0];
+    const mainTabName = mainContent.split('\ntabName: ')[1]?.split('\n')[0] || mainTitle;
 
     const subTitles = subContents.map((content) => content.split('\ntitle: ')[1]?.split('\n')[0]);
     const mainId = mainFile?.split('/').pop()?.split('.')[0];
     const subIds = subFiles.map((content) => content?.split('/').pop()?.split('.')[0]);
     const tabsList: string[] = [];
-    if (mainTitle) {
-      tabsList.push(`${mainTitle}('${mainId}')`);
+    if (mainTabName) {
+      tabsList.push(`${mainTabName}('${mainId}')`);
     }
     subTitles.forEach((title, index) => {
       if (title) tabsList.push(`${title}('${subIds[index]}')`);
@@ -1173,12 +1166,19 @@ await Promise.all(
 
     if (mainContent && !mainContent.includes('tabs: ')) {
       mainContent = mainContent.replace('\n---\n', `\ntabs: ${tabsStr}\n---\n`);
+      mainContent = mainContent.replace(`\ntabName: ${mainTabName}\n`, '\n');
       await ensureDir(resolveDirname(mainFile));
       await fs.writeFile(mainFile, mainContent);
     }
     for (let i = 0; i < subFiles.length; i++) {
       if (subContents[i] && !subContents[i].includes('tabs: ')) {
-        const content = subContents[i].replace('\n---\n', `\ntabs: ${tabsStr}\n---\n`);
+        let content = subContents[i];
+        const title = content.split('\ntitle: ')[1]?.split('\n')[0];
+        const tabName = content.split('\ntabName: ')[1]?.split('\n')[0] || mainTitle;
+        content = content.replace('\n---\n', `\ntabs: ${tabsStr}\n---\n`);
+        content = content.replace(`\ntabName: ${tabName}\n`, '\n');
+        content = content.replace(`\ntitle: ${title}\n`, `\ntitle: ${mainTitle}\n`);
+        // add or replace title
         await ensureDir(resolveDirname(subFiles[i]));
         await fs.writeFile(subFiles[i], content);
       }

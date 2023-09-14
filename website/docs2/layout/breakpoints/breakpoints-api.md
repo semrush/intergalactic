@@ -1,7 +1,7 @@
 ---
-title: API
+title: Breakpoints
 fileSource: utils
-tabs: Breakpoints('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
+tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 ---
 
 ## Breakpoints

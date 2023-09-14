@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Primary table('table-primary'), Example('table-primary-code')
+title: Primary table
+tabs: Design('table-primary'), Example('table-primary-code')
 ---
 
 ::: warning

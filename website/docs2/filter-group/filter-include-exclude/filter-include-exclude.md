@@ -1,7 +1,6 @@
 ---
 title: Include/Exclude keywords
-tabName: Design
-tabs: Include/Exclude keywords('filter-include-exclude'), Example('filter-include-exclude-code')
+tabs: Design('filter-include-exclude'), Example('filter-include-exclude-code')
 ---
 
 ::: tip

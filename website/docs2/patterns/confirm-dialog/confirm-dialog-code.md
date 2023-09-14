@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Confirmation modal window('confirm-dialog'), Example('confirm-dialog-code')
+title: Confirmation modal window
+tabs: Design('confirm-dialog'), Example('confirm-dialog-code')
 ---
 
 ## Confirm modal example

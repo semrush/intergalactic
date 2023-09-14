@@ -1,8 +1,7 @@
 ---
 title: Popper
 fileSource: popper
-tabName: Design
-tabs: Popper('popper'), API('popper-api'), Changelog('popper-changelog')
+tabs: Design('popper'), API('popper-api'), Changelog('popper-changelog')
 ---
 
 The component is our `React`-wrapper over the popular [popper.js](https://popper.js.org/) library.

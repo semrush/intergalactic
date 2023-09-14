@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Summary('summary'), Example('summary-code')
+title: Summary
+tabs: Design('summary'), Example('summary-code')
 ---
 
 ## Default summary example

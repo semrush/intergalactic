@@ -1,8 +1,7 @@
 ---
 title: DataTable code and API
 fileSource: data-table
-tabName: Example
-tabs: DataTable code and API('data-table'), API('data-table-api'), Changelog('data-table-changelog')
+tabs: Example('data-table'), API('data-table-api'), Changelog('data-table-changelog')
 ---
 
 The DataTable component is needed to simplify the construction of tabular data. The table is based on `CSS-flex` technology and doesn't use native tables.

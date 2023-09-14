@@ -1,9 +1,8 @@
 ---
 title: Table code and API
 fileSource: table
-tabName: Example
 deprecated: true
-tabs: Table code and API('table-old'), API('table-old-api'), Changelog('table-old-changelog')
+tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog')
 ---
 
 ::: warning

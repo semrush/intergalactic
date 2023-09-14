@@ -1,7 +1,6 @@
 ---
 title: Spin
 fileSource: spin
-tabName: Design
 tabs: Design('spin'), A11y('spin-a11y'), API('spin-api'), Changelog('spin-changelog')
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Table principles('table'), A11y('table-a11y'), Example('table-code')
+title: Table principles
+tabs: Design('table'), A11y('table-a11y'), Example('table-code')
 ---
 
 ::: warning

@@ -1,9 +1,8 @@
 ---
 title: D3 chart principles
 fileSource: d3-chart
-tabName: Design
 docs: true
-tabs: D3 chart principles('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
+tabs: Design('d3-chart'), Concept and code('d3-chart-code'), API('d3-chart-api'), A11y('d3-chart-a11y'), Changelog('d3-chart-changelog')
 ---
 
 ## Chart widget anatomy

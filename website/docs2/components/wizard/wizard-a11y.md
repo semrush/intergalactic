@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Wizard
 a11y: AA
 tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-code'), Changelog('wizard-changelog')
 ---

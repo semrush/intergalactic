@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Tag
 fileSource: tag
 a11y: AA
 tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Changelog('tag-changelog')

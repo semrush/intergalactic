@@ -1,8 +1,7 @@
 ---
 title: Table principles
 fileSource: table
-tabName: Design
-tabs: Table principles('table'), A11y('table-a11y'), Example('table-code')
+tabs: Design('table'), A11y('table-a11y'), Example('table-code')
 ---
 
 ## Description

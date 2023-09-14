@@ -1,7 +1,6 @@
 ---
 title: Click Potential, Competitive Density, CPC
-tabName: Design
-tabs: Click Potential, Competitive Density, CPC('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
+tabs: Design('filter-cp-cd-cpc'), Example('filter-cp-cd-cpc-code')
 ---
 
 ::: tip

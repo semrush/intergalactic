@@ -1,8 +1,7 @@
 ---
 title: Primary table
 fileSource: data-table
-tabName: Design
-tabs: Primary table('table-primary'), Example('table-primary-code')
+tabs: Design('table-primary'), Example('table-primary-code')
 ---
 
 **Primary** is the basic type of tables for displaying large data volumes and complex functionality.

@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Dropdown
 fileSource: dropdown
 a11y: AA
 tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')

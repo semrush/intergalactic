@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: InlineEdit
 a11y: AA
 tabs: Design('inline-edit'), A11y('inline-edit-a11y'), API('inline-edit-api'), Example('inline-edit-example'), Changelog('inline-edit-changelog')
 ---

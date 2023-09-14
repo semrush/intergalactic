@@ -1,7 +1,6 @@
 ---
 title: Dropdown
 fileSource: dropdown
-tabName: Design
 tabs: Design('dropdown'), A11y('dropdown-a11y'), API('dropdown-api'), Example('dropdown-code'), Changelog('dropdown-changelog')
 ---
 

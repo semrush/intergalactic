@@ -1,9 +1,8 @@
 ---
 title: Charts showcase
 fileSource: d3-chart
-tabName: Design
 docs: true
-tabs: Charts showcase('chart-showcase'), Changelog('d3-chart-changelog')
+tabs: Design('chart-showcase'), Changelog('d3-chart-changelog')
 ---
 
 There are various chart types within the Intergalactic Design System, each designed for distinct scenarios and data representation.

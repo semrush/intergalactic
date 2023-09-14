@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Form('form'), A11y('form-a11y'), Example('form-code')
+title: Form
+tabs: Design('form'), A11y('form-a11y'), Example('form-code')
 ---
 
 These examples use [`react-hook-form@6`](https://github.com/react-hook-form/react-hook-form/tree/v6.15.8) library.

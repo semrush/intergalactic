@@ -1,7 +1,7 @@
 ---
-title: A11y
+title: FeedbackYesNo
 a11y: AA
-tabs: FeedbackYesNo('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
+tabs: Design('feedback-yes-no'), A11y('feedback-yes-no-a11y'), Example('feedback-yes-no-code')
 ---
 
 ## What pattern has

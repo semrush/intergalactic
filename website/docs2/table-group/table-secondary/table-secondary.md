@@ -1,8 +1,7 @@
 ---
 title: Secondary table
 fileSource: data-table
-tabName: Design
-tabs: Secondary table('table-secondary'), Example('table-secondary-code')
+tabs: Design('table-secondary'), Example('table-secondary-code')
 ---
 
 **Secondary** is a table type for compact displaying small amount of data inside widgets and [cards](/components/card/card). These tables commonly either don't have any functionality, or they have something simple like sorting.

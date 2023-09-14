@@ -1,8 +1,7 @@
 ---
 title: Scatterplot chart
 fileSource: d3-chart
-tabName: Design
-tabs: Scatterplot chart('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterplot-chart-api'), Examples('scatterplot-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterplot-chart-api'), Examples('scatterplot-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip

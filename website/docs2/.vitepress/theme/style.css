@@ -142,6 +142,7 @@
   animation-fill-mode: forwards;
 }
 
+
 .vp-doc dialog.closing {
   animation: hide-vp-dialog 0.1s ease-out normal;
   animation-fill-mode: forwards;

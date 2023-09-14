@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: Counter
 a11y: AA
 tabs: Design('counter'), A11y('counter-a11y'), API('counter-api'), Example('counter-code'), Changelog('counter-changelog')
 ---

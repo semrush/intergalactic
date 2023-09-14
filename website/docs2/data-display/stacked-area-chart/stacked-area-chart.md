@@ -1,8 +1,7 @@
 ---
 title: Stacked area chart
 fileSource: d3-chart
-tabName: Design
-tabs: Stacked area chart('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-d3-code'), Changelog('d3-chart-changelog')
+tabs: Design('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacked-area-chart-api'), Examples('stacked-area-chart-d3-code'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip

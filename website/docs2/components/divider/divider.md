@@ -1,7 +1,6 @@
 ---
 title: Divider
 fileSource: divider
-tabName: Design
 tabs: Design('divider'), A11y('divider-a11y'), API('divider-api'), Changelog('divider-changelog')
 ---
 

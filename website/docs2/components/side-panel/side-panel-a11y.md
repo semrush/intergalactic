@@ -1,5 +1,5 @@
 ---
-title: A11y
+title: SidePanel
 fileSource: side-panel
 a11y: AA
 tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Example('side-panel-code'), Changelog('side-panel-changelog')

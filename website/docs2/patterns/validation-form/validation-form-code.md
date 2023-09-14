@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Validation('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
+title: Validation
+tabs: Design('validation-form'), A11y('validation-form-a11y'), Example('validation-form-code')
 ---
 
 ## Form validation example

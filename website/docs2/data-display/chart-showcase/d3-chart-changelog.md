@@ -1,7 +1,7 @@
 ---
-title: Changelog
+title: Charts showcase
 fileSource: d3-chart
-tabs: Charts showcase('chart-showcase'), Changelog('d3-chart-changelog')
+tabs: Design('chart-showcase'), Changelog('d3-chart-changelog')
 ---
 
 Common changelog of `d3-chart` package.

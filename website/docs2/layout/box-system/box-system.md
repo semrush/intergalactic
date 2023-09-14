@@ -1,8 +1,7 @@
 ---
 title: Flex-box and spacing system
 fileSource: flex-box
-tabName: Design
-tabs: Flex-box and spacing system('box-system'), API('box-api'), Changelog('box-changelog')
+tabs: Design('box-system'), API('box-api'), Changelog('box-changelog')
 ---
 
 **Flex-box** is a component for managing arrangement and alignment of other components and elements in the interface.

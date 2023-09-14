@@ -1,7 +1,7 @@
 ---
-title: Changelog
+title: Stacked histogram chart
 fileSource: d3-chart
-tabs: Stacked histogram chart('stacked-histogram'), Changelog('d3-chart-changelog')
+tabs: Design('stacked-histogram'), Changelog('d3-chart-changelog')
 ---
 
 Common changelog of `d3-chart` package.

@@ -1,6 +1,6 @@
 ---
-title: Example
-tabs: Secondary table('table-secondary'), Example('table-secondary-code')
+title: Secondary table
+tabs: Design('table-secondary'), Example('table-secondary-code')
 ---
 
 ::: warning

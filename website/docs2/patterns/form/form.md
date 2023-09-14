@@ -1,7 +1,6 @@
 ---
 title: Form
-tabName: Design
-tabs: Form('form'), A11y('form-a11y'), Example('form-code')
+tabs: Design('form'), A11y('form-a11y'), Example('form-code')
 ---
 
 ## Description

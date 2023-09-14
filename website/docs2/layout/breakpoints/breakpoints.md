@@ -1,8 +1,7 @@
 ---
 title: Breakpoints
 fileSource: utils
-tabName: Design
-tabs: Breakpoints('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
+tabs: Design('breakpoints'), API('breakpoints-api'), Example('breakpoints-code')
 ---
 
 ## Adaptivity

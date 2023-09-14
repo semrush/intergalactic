@@ -1,7 +1,6 @@
 ---
 title: Summary
-tabName: Design
-tabs: Summary('summary'), Example('summary-code')
+tabs: Design('summary'), Example('summary-code')
 ---
 
 ## Description
