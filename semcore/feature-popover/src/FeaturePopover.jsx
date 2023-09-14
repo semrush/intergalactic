@@ -139,7 +139,7 @@ class FeaturePopoverPopper extends Component {
           initialAnimation
           animationsDisabled={animationsDisabled}
         >
-          <SFeaturePopover render={Box}>
+          <SFeaturePopover render={Box} aria-live='polite'>
             {closeIcon && (
               <SClose interactive onClick={$onCloseClick} aria-label={getI18nText('close')} />
             )}
