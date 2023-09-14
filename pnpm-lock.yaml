@@ -2107,7 +2107,7 @@ importers:
         specifier: 4.9.0
         version: link:../errors
       '@semcore/feature-popover':
-        specifier: 4.8.3
+        specifier: 4.8.4-prerelease.0
         version: link:../feature-popover
       '@semcore/feedback-form':
         specifier: 6.8.0
