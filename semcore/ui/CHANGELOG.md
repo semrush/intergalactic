@@ -1,3 +1,9 @@
+## [15.20.1] - 2023-09-14
+
+### @semcore/feature-popover
+
+- **Fixed** Added missing `aria-live='polite'` attribute.
+
 ## [15.20.0] - 2023-09-13
 
 ### @semcore/format-text

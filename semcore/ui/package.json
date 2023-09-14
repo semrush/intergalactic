@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.20.0",
+  "version": "15.20.1-prerelease.0",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -36,7 +36,7 @@
     "@semcore/ellipsis": "2.8.0",
     "@semcore/email": "1.0.2",
     "@semcore/errors": "4.9.0",
-    "@semcore/feature-popover": "4.8.3",
+    "@semcore/feature-popover": "4.8.4-prerelease.0",
     "@semcore/feedback-form": "6.8.0",
     "@semcore/flags": "4.7.0",
     "@semcore/flex-box": "5.7.0",
