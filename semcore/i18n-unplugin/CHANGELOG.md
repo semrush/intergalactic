@@ -12,17 +12,8 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added error throwing if bundled locales are excluded or not included.
+- Added error throwing if bundled locales are excluded or not included.## [0.5.3] - 2023-09-12
 
-## [0.5.3] - 2023-09-12
-
-### Changed
-
-- Version prepatch update due to children dependencies update (`@semcore/core` [2.6.2 ~> 2.6.3]).
-
-## [0.5.3-prerelease.0] - 2023-09-12
-
-### Changed
 
 - Version prepatch update due to children dependencies update (`@semcore/core` [2.6.2 ~> 2.6.3]).
 
