@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.0-prerelease.0] - 2023-09-15
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/checkbox` [7.8.0 ~> 7.9.0]).
+
 ## [4.10.3] - 2023-09-13
 
 ### Changed

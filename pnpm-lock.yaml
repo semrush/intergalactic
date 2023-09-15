@@ -337,7 +337,7 @@ importers:
         specifier: 6.8.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -381,7 +381,7 @@ importers:
         specifier: 5.7.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -654,7 +654,7 @@ importers:
         specifier: 4.7.0
         version: link:../neighbor-location
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -726,7 +726,7 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.9.3
+        specifier: 5.10.0-prerelease.0
         version: link:../card
       '@semcore/flex-box':
         specifier: 5.7.0
@@ -907,7 +907,7 @@ importers:
         specifier: 2.7.0
         version: link:../illustration
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1060,10 +1060,10 @@ importers:
         specifier: 4.8.3
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.9.3
+        specifier: 4.10.0-prerelease.0
         version: link:../modal
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1326,7 +1326,7 @@ importers:
         specifier: 5.7.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1360,7 +1360,7 @@ importers:
         specifier: 3.7.0
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1492,10 +1492,10 @@ importers:
         specifier: 4.9.0
         version: link:../input
       '@semcore/link':
-        specifier: 5.8.0
+        specifier: 5.9.0-prerelease.0
         version: link:../link
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1630,7 +1630,7 @@ importers:
         specifier: 5.7.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1665,7 +1665,7 @@ importers:
         specifier: 4.8.3
         version: link:../base-trigger
       '@semcore/checkbox':
-        specifier: 7.8.0
+        specifier: 7.9.0-prerelease.0
         version: link:../checkbox
       '@semcore/divider':
         specifier: 4.7.0
@@ -1723,7 +1723,7 @@ importers:
         specifier: 3.7.0
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1903,7 +1903,7 @@ importers:
         specifier: 5.9.0
         version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -1972,7 +1972,7 @@ importers:
         specifier: 4.9.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.10.3
+        specifier: 4.11.0-prerelease.0
         version: link:../select
       '@semcore/utils':
         specifier: 4.7.0
@@ -2056,13 +2056,13 @@ importers:
         specifier: 5.8.0
         version: link:../button
       '@semcore/card':
-        specifier: 5.9.3
+        specifier: 5.10.0-prerelease.0
         version: link:../card
       '@semcore/carousel':
         specifier: 3.9.3
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 7.8.0
+        specifier: 7.9.0-prerelease.0
         version: link:../checkbox
       '@semcore/color-picker':
         specifier: 2.8.3
@@ -2080,7 +2080,7 @@ importers:
         specifier: 4.10.4
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.8.5
+        specifier: 4.9.0-prerelease.0
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.7.0
@@ -2089,7 +2089,7 @@ importers:
         specifier: 5.7.0
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: 3.10.3
+        specifier: 3.11.0-prerelease.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
         specifier: 4.7.0
@@ -2104,7 +2104,7 @@ importers:
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 4.9.0
+        specifier: 4.10.0-prerelease.0
         version: link:../errors
       '@semcore/feature-popover':
         specifier: 4.8.4
@@ -2122,7 +2122,7 @@ importers:
         specifier: 4.7.0
         version: link:../format-text
       '@semcore/fullscreen-modal':
-        specifier: 3.8.3
+        specifier: 3.9.0-prerelease.0
         version: link:../fullscreen-modal
       '@semcore/grid':
         specifier: 5.7.0
@@ -2155,10 +2155,10 @@ importers:
         specifier: 4.9.0
         version: link:../input-tags
       '@semcore/link':
-        specifier: 5.8.0
+        specifier: 5.9.0-prerelease.0
         version: link:../link
       '@semcore/modal':
-        specifier: 4.9.3
+        specifier: 4.10.0-prerelease.0
         version: link:../modal
       '@semcore/neighbor-location':
         specifier: 4.7.0
@@ -2176,7 +2176,7 @@ importers:
         specifier: 3.7.0
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 4.9.3
+        specifier: 4.10.0-prerelease.0
         version: link:../pagination
       '@semcore/pills':
         specifier: 5.8.0
@@ -2194,16 +2194,16 @@ importers:
         specifier: 4.7.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 6.8.0
+        specifier: 6.9.0-prerelease.0
         version: link:../radio
       '@semcore/scroll-area':
         specifier: 5.9.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.10.3
+        specifier: 4.11.0-prerelease.0
         version: link:../select
       '@semcore/side-panel':
-        specifier: 3.9.3
+        specifier: 3.10.0-prerelease.0
         version: link:../side-panel
       '@semcore/skeleton':
         specifier: 5.7.0
@@ -2236,13 +2236,13 @@ importers:
         specifier: 5.8.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.10.3
+        specifier: 4.11.0-prerelease.0
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.8.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.9.0
+        specifier: 5.10.0-prerelease.0
         version: link:../typography
       '@semcore/utils':
         specifier: 4.7.0
@@ -2251,7 +2251,7 @@ importers:
         specifier: 4.7.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 2.8.3
+        specifier: 2.9.0-prerelease.0
         version: link:../wizard
     devDependencies:
       '@semcore/continuous-delivery':
@@ -2362,7 +2362,7 @@ importers:
         specifier: 4.8.3
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.9.3
+        specifier: 4.10.0-prerelease.0
         version: link:../modal
       '@semcore/utils':
         specifier: 4.7.0

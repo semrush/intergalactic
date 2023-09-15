@@ -1,3 +1,9 @@
+## [15.21.0-prerelease.0] - 2023-09-15
+
+### @semcore/typography
+
+- **Added** `use` and `disabled` props to `Text` component.
+
 ## [15.20.1] - 2023-09-14
 
 ### @semcore/feature-popover
