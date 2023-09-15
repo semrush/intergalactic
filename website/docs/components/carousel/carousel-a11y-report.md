@@ -1,13 +1,13 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.17.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v15.20.1, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/carousel/examples/dots.tsx).**
 
 ```
 1. Screen reader goes into the active element.
-2. Screen reader says "In web content Beauty of Nature image carousel".
+2. Screen reader says "You are currently on a image carousel, inside of web content.".
 3. Screen reader goes into the active element.
 4. Screen reader says "Previous button".
 5. Screen reader goes to the next element.
