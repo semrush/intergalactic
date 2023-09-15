@@ -14,7 +14,10 @@ Please note that our maintainers primarily develop on macOS. While developing on
 ### Getting Started
 
 1. Clone the repository by running: `git clone git@github.com:semrush/intergalactic.git && cd intergalactic`.
-2. Install project dependencies using: `pnpm install`.
+2. Install project dependencies using: `pnpm install`. 
+   
+   2.1 If you have and error with `libpng` like `make sure that libpng is installed` - you need to install it manually. On Mac OS the simplest way is to use homebrew: `brew install libpng pkg-config`.
+
 3. Build components with: `pnpm build`.
 
 ### Submitting Changes
