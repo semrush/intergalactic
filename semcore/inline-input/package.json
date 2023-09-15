@@ -26,7 +26,7 @@
     "@semcore/tooltip": "*"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.7.0-prerelease.0",
+    "@semcore/core": "^2.7.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
