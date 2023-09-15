@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.0] - 2023-09-15
+
+### Changed
+
+- Enforced cells with `use="secondary"` color text to prevent it from inheriting secondary text color from `Text` component.
+
 ## [4.10.3] - 2023-09-13
 
 ### Changed
