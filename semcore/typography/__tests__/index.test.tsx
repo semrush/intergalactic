@@ -112,6 +112,32 @@ describe('Text', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('Should support use prop', async ({ task }) => {
+    const component = (
+      <React.Fragment>
+        <Text>Normal text</Text>
+        <br />
+        <Text use='primary'>Use primary</Text>
+        <br />
+        <Text use='secondary'>Use secondary</Text>
+      </React.Fragment>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should support disabled prop', async ({ task }) => {
+    const component = (
+      <React.Fragment>
+        <Text>Normal text</Text>
+        <br />
+        <Text disabled>Disabled text</Text>
+      </React.Fragment>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('Should support ellipsis', async ({ task }) => {
     const component = (
       <Text inline noWrap w={100}>

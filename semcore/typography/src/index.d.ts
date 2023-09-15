@@ -42,6 +42,10 @@ export type TextProps = BoxProps & {
   fontWeight?: Property.FontWeight;
   /** Text alignment */
   textAlign?: Property.TextAlign;
+  /** Enforces text color */
+  use?: 'primary' | 'secondary';
+  /** Makes text semi-transparent to indicate disabled state */
+  disabled?: boolean;
 };
 
 /** @deprecated */

@@ -104,3 +104,15 @@ SText[fontWeight] {
 SText[textAlign] {
   text-align: var(--textAlign);
 }
+
+SText[use='primary'] {
+  color: var(--intergalactic-text-primary, #191b23);
+}
+
+SText[use='secondary'] {
+  color: var(--intergalactic-text-secondary, #6c6e79);
+}
+
+SText[disabled] {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+}

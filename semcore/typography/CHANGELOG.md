@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.10.0] - 2023-09-15
+
+### Added
+
+- `use` and `disabled` props to `Text` component.
+
 ## [5.9.0] - 2023-09-06
 
 ### Added
