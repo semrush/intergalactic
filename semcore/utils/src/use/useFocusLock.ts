@@ -41,11 +41,11 @@ if (canUseDOM()) {
 }
 
 const focusBordersConsumers = new Set();
-const focusBordersRefs = { before: null, after: null } as {
-  before: null | HTMLElement;
+const focusBordersRefs: {
+  before: HTMLElement | null;
+  after: HTMLElement | null;
+} = { before: null, after: null };
 
-  after: null | HTMLElement;
-};
 const addBorders = () => {
   if (!focusBordersRefs.before) {
     focusBordersRefs.before = document.createElement('div');
@@ -155,7 +155,9 @@ const useFocusLockHook = (
           : [trapRef.current, ...focusLockAllTraps];
         if (focusInside(trapNodes)) return;
 
-        safeMoveFocusInside(trapRef.current, event.target);
+        if (focusCameFrom) {
+          safeMoveFocusInside(trapRef.current, focusCameFrom);
+        }
       });
     },
     [],
@@ -187,7 +189,7 @@ const useFocusLockHook = (
       if (!node) return;
       focusLockAllTraps.delete(node);
     };
-  }, [trapRef]);
+  }, []);
   React.useEffect(() => {
     if (typeof trapRef !== 'object' || trapRef === null) return;
     if (disabled) return;
@@ -264,9 +266,15 @@ if (!(globalThis as any)[globalFocusLockHookKey]) {
   }
 }
 
-export const useFocusLock: typeof useFocusLockHook = (...args) => {
+export const useFocusLock = (
+  trapRef: React.RefObject<HTMLElement>,
+  autoFocus: boolean,
+  returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
+  disabled = false,
+  focusMaster = false,
+) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(React, ...args);
+  return hook(React, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
 };
 
 export const isFocusInside = focusInside;
