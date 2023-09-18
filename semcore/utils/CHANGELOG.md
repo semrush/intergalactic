@@ -5,7 +5,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ## [4.7.1] - 2023-09-18
 ### Fixed
 
-- Reverse focus in modals
+- Reverse focus in modals (Fixed `useFocuseLock`. Call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target))
 
 ## [4.7.0] - 2023-09-13
 

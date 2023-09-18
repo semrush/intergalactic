@@ -103,11 +103,13 @@ const useFocusBorders = (disabled?: boolean) => {
  * Such versions merging requires us to keep hook api backward compatible.
  * When hook logic changes, the variable `focusLockVersion` should be incremented.
  *
+ * update version `1 -> 2`. Fixed call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target)
+ *
  *
  * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
  * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
  */
-const focusLockVersion = 1;
+const focusLockVersion = 2;
 const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
 
 const focusLockAllTraps = new Set<HTMLElement>();

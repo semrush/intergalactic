@@ -2,14 +2,13 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import Modal from '../src';
 import Button from '../../button/src';
-import {createEvent} from "@testing-library/react";
 
 describe('Modal', () => {
   beforeEach(cleanup);
@@ -195,18 +194,20 @@ describe('Modal', () => {
     expect(results).toHaveNoViolations();
   });
 
-  test.concurrent('Should support correct focusing inside modals in forward and reverse "tabs"', async () => {
+  test.concurrent(
+    'Should support correct focusing inside modals in forward and reverse "tabs"',
+    async () => {
       const { getByTestId } = render(
-          <Modal visible={true} data-testid={'Modal'}>
-              <Modal.Title>Do you want to save your changes?</Modal.Title>
+        <Modal visible={true} data-testid={'Modal'}>
+          <Modal.Title>Do you want to save your changes?</Modal.Title>
 
-              <Button use='primary' theme='success' size='l' data-testid={'SaveChangesButton'}>
-                  Save changes
-              </Button>
-              <Button size='l' ml={2} data-testid={'CancelButton'}>
-                  Don't save
-              </Button>
-          </Modal>
+          <Button use='primary' theme='success' size='l' data-testid={'SaveChangesButton'}>
+            Save changes
+          </Button>
+          <Button size='l' ml={2} data-testid={'CancelButton'}>
+            Don't save
+          </Button>
+        </Modal>,
       );
 
       const SaveButton = getByTestId('SaveChangesButton');
@@ -230,5 +231,6 @@ describe('Modal', () => {
 
       await userEvent.keyboard('{Shift>}[Tab]');
       expect(CancelButton).toHaveFocus();
-  });
+    },
+  );
 });
