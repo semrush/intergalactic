@@ -9,10 +9,9 @@ export const renderLoomVideo = (tokenList: any[], index: number) => {
         url = `https://www.loom.com/embed/${url.substring('https://www.loom.com/share/'.length)}`;
       }
 
-      return `<div class="embedded-video-container"><iframe src="${url}" frameborder='0' webkitAllowFullScreen mozAllowFullScreen allowFullScreen class="embedded-video-iframe" title='video' /></div>`
-      
+      return `<div class="embedded-video-container"><iframe src="${url}" frameborder='0' webkitAllowFullScreen mozAllowFullScreen allowFullScreen class="embedded-video-iframe" title='video' /></div>`;
     }
-    return []
+    return [];
   };
   return renderFunc(tokenList, index);
 };

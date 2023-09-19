@@ -1,6 +1,6 @@
 import { createMarkdownRenderer } from 'vitepress/dist/node/index';
 import { resolve as resolvePath } from 'path';
-import fs from 'fs'
+import fs from 'fs';
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'));
 const changelogsCache: { [key: string]: string } = {};
@@ -16,15 +16,17 @@ export const renderComponentChangelog = (tokenList: any[], index: number) => {
         try {
           changelogFile = fs.readFileSync(changelogPath, 'utf-8');
         } catch (error) {
-          console.error(error)
-          throw new Error(`Unable to find changelog for ${component} (searching in ${changelogPath})).`);
+          console.error(error);
+          throw new Error(
+            `Unable to find changelog for ${component} (searching in ${changelogPath})).`,
+          );
         }
       }
       const changelogBody = changelogFile.substring(changelogFile.indexOf('##'));
 
       return markdownRenderer.render(changelogBody);
     }
-    return []
+    return [];
   };
   return renderFunc(tokenList, index);
 };

@@ -41,7 +41,6 @@ export const esbuildPluginDocs = (): Plugin => ({
 //   },
 //   async load(id) {
 //     if (id !== '@docs') return null;
-    
 
 //     // build.onLoad({ filter: /.*\.md$/ }, async ({ path }) => {
 //     //   const relativePath = resolveRelativePath(docsDir, path);

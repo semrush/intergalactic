@@ -45,6 +45,7 @@ const objects: {
   disabled: boolean;
   heading: boolean;
   category: string;
+  hierarchy: {};
 }[] = [];
 
 let objectId = 1;
@@ -62,6 +63,7 @@ const traverse = async (node, parentNode?) => {
       disabled: node.metadata.disabled ?? false,
       heading: false,
       category: parentNode?.title,
+      hierarchy: {},
     });
   }
 
@@ -75,6 +77,7 @@ const traverse = async (node, parentNode?) => {
         disabled: node.metadata.disabled ?? false,
         heading: true,
         category: parentNode?.title,
+        hierarchy: {},
       });
     }
   }

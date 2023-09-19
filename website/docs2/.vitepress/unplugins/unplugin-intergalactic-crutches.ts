@@ -29,5 +29,5 @@ export const unpluginCrutches = createUnplugin(() => ({
       export default bpfrpt_proptype_WindowScroller;
       export const IS_SCROLLING_TIMEOUT = false;
     `;
-  }
+  },
 }));

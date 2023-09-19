@@ -45,19 +45,19 @@ export const unpluginStatic = createUnplugin(() => ({
     if (id === '@static') return id;
   },
   async load(id) {
-    if (id !== '@static') return null
+    if (id !== '@static') return null;
     const relativePaths = await glob('**/*', { cwd: staticDir });
-      const imports = relativePaths.map(
-        (path, index) => `import static_${index} from "static/${path}"`,
-      );
-      const exports = relativePaths.map((path, index) => `["${path}"]: static_${index}`);
+    const imports = relativePaths.map(
+      (path, index) => `import static_${index} from "static/${path}"`,
+    );
+    const exports = relativePaths.map((path, index) => `["${path}"]: static_${index}`);
 
-      const contents =
-        imports.join('\n') +
-        '\nconst importsMap = {' +
-        exports.join(',\n') +
-        '};\nexport default importsMap;';
+    const contents =
+      imports.join('\n') +
+      '\nconst importsMap = {' +
+      exports.join(',\n') +
+      '};\nexport default importsMap;';
 
-      return contents
+    return contents;
   },
-}))
+}));

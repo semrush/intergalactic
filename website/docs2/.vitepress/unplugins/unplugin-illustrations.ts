@@ -47,7 +47,7 @@ export const unpluginIllustrations = createUnplugin(() => ({
     if (id === '@illustrations') return id;
   },
   async load(id) {
-    if (id !== '@illustrations') return null
+    if (id !== '@illustrations') return null;
     const fullPath = resolvePath(illustrationsDir);
     const allIllustrations = await glob('**/index.mjs', {
       cwd: fullPath,
@@ -68,6 +68,6 @@ export const unpluginIllustrations = createUnplugin(() => ({
       exports.join(',\n') +
       '};\nexport default importsMap;';
 
-    return contents
-  }
-}))
+    return contents;
+  },
+}));

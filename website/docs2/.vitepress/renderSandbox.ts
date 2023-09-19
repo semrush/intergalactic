@@ -1,7 +1,7 @@
 import { createMarkdownRenderer } from 'vitepress/dist/node/index';
 import { resolve as resolvePath } from 'path';
 import parseImports from 'parse-es-import';
-import { transformSync } from 'esbuild'
+import { transformSync } from 'esbuild';
 
 const markdownRenderer = await createMarkdownRenderer(resolvePath(__dirname, '..'));
 
@@ -10,7 +10,7 @@ const findLastIndex = <T>(arr: T[], predicate: (item: T) => boolean): number => 
     if (predicate(arr[i])) return i;
   }
   return -1;
-}
+};
 
 const clearScriptTagFromTags = (scriptTag: string) => {
   const lines = scriptTag.split('\n');
@@ -22,8 +22,12 @@ const clearScriptTagFromTags = (scriptTag: string) => {
     .join('\n');
   return code;
 };
-const makePlaygroundExecutedCode = (codeWithTypes: string, playgroundId: string, entryPoint: string) => {
-  let { code } = transformSync(codeWithTypes, { loader: 'tsx' });
+const makePlaygroundExecutedCode = (
+  codeWithTypes: string,
+  playgroundId: string,
+  entryPoint: string,
+) => {
+  const { code } = transformSync(codeWithTypes, { loader: 'tsx' });
   const { imports } = parseImports(code);
   const importLines: string[] = [];
   const importAliasLines: string[] = [];
@@ -72,23 +76,31 @@ const makePlaygroundExecutedCode = (codeWithTypes: string, playgroundId: string,
   );
 };
 
-export const renderSandbox = (tokenList: any[], index: number, htmlTagName: string) => {
+export const renderSandbox = (
+  tokenList: any[],
+  index: number,
+  htmlTagName: string,
+  renderNothing = false,
+) => {
   const renderFunc = (tokens: any[], idx: number, htmlTag: string) => {
+    if (renderNothing) return '';
     if (tokens[idx].nesting === 1) {
       const scriptTag = tokens[idx + 1].content;
       const playgroundId = 'playground_' + Math.random().toString().substring(2);
       const code = clearScriptTagFromTags(scriptTag);
-      const executedCode = makePlaygroundExecutedCode(code, playgroundId, htmlTag === 'sandbox' ? 'Demo' : 'App');
+      const executedCode = makePlaygroundExecutedCode(
+        code,
+        playgroundId,
+        htmlTag === 'sandbox' ? 'Demo' : 'App',
+      );
       const lines = scriptTag.split('\n');
       const scriptHead = lines[lines.findIndex((line) => line.includes('<script'))];
-      const hideCode = htmlTagName !== 'sandbox'
+      const hideCode = htmlTagName !== 'sandbox';
       const lang = /lang="([^"]+)"/.exec(scriptHead)?.[1];
       const params = /params="([^"]+)"/.exec(scriptHead)?.[1];
       const meta = (lang ?? '') + (params ?? '');
 
-      const htmlCode = (
-        markdownRenderer.render('```' + meta + '\n' + code + '\n```\n'),
-      );
+      const htmlCode = markdownRenderer.render('```' + meta + '\n' + code + '\n```\n');
       let lastScriptTokenIndex = -1;
       for (let i = tokens.length - 1; i >= 0; i--) {
         const tokenContent = tokens[i].content;
@@ -112,8 +124,6 @@ export const renderSandbox = (tokenList: any[], index: number, htmlTagName: stri
         tokens[idx + 1].executedCode = executedCode;
       }
 
-      
-      
       // const encodedHtmlCode = atob(encodeURIComponent(htmlCode));
       // const encodedRawCode = atob(encodeURIComponent(code));
 

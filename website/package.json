@@ -37,6 +37,7 @@
     "normalize.css": "8.0.1",
     "p-limit": "4.0.0",
     "parse-es-import": "^0.6.0",
+    "parse-md": "^3.0.3",
     "prism-react-renderer": "1.0.2",
     "prism-themes": "^1.9.0",
     "prismjs": "1.27.0",
@@ -69,6 +70,7 @@
     "@babel/preset-react": "7.12.1",
     "@types/classnames": "2.2.6",
     "@types/express": "4.17.1",
+    "@types/markdown-it": "^13.0.1",
     "@types/mdast": "3.0.10",
     "@types/node": "^18.16.15",
     "@types/react": "18.0.21",
@@ -90,6 +92,7 @@
     "tsm": "2.2.2",
     "typescript": "5.1.6",
     "unified": "10.1.2",
+    "vite": "^4.4.9",
     "vitepress": "1.0.0-rc.10"
   },
   "resolutions": {
