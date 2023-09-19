@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Margins in `ProductHeader.Title` manually set to `0px`.
+- Enforced `0` margins of `ProductHeader.Title`.
 
 ## [4.7.0] - 2023-09-13
 
