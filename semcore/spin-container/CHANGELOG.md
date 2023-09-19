@@ -2,12 +2,6 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [7.8.0] - 2023-09-19
-
-### Added
-
-- Added size in playground for SpinContainer
-
 ## [7.7.0] - 2023-09-13
 
 ### Changed
