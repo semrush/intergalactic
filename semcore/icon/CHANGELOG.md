@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.9.0] - 2023-09-18
+
+### Added
+
+- Added new `Plug` icon.
+
 ## [4.8.3] - 2023-09-13
 
 ### Fixed

@@ -1,3 +1,9 @@
+## [15.22.0] - 2023-09-19
+
+### @semcore/icon
+
+- **Added** Added new `Plug` icon.
+
 ## [15.21.0] - 2023-09-15
 
 ### @semcore/typography
