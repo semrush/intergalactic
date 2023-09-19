@@ -8,6 +8,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Added size in playground for SpinContainer
 
+### Fixed
+
+- Fixed view in example of SpinContainer in DropDown
+
 ## [7.7.0] - 2023-09-13
 
 ### Changed
