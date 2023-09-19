@@ -20,6 +20,13 @@ const playground = (createGroupWidgets) => {
     options: ['dark', 'invert'],
   });
 
+  const size = radio({
+    key: 'size',
+    defaultValue: 'xxl',
+    label: 'Size',
+    options: ['xs', 's', 'm', 'l', 'xl', 'xxl'],
+  });
+
   const background = text({
     key: 'background',
     defaultValue: '',
@@ -30,6 +37,7 @@ const playground = (createGroupWidgets) => {
     <SpinContainer
       loading={loading}
       theme={theme}
+      size={size}
       background={background ? background : undefined}
       p='3px'
     >
