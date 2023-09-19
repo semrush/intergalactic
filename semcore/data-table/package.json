@@ -1,7 +1,7 @@
 {
   "name": "@semcore/data-table",
   "description": "Semrush DataTable Component",
-  "version": "4.10.4",
+  "version": "4.11.0-prerelease.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@semcore/flex-box": "5.7.0",
-    "@semcore/icon": "4.8.3",
+    "@semcore/icon": "4.9.0-prerelease.0",
     "@semcore/scroll-area": "5.9.0",
     "@semcore/utils": "4.7.0"
   },
