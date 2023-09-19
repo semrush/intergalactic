@@ -29,7 +29,7 @@ describe('Modal', () => {
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
-  test.concurrent('should support onClose for OutsideClick', () => {
+  test.concurrent('should support onClose for OutsideClick', async ({ expect }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Modal onClose={spy} visible>
@@ -58,7 +58,7 @@ describe('Modal', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test.concurrent('should support render function for children', () => {
+  test.concurrent('should support render function for children', async ({ expect }) => {
     const component = <Modal visible>{() => <Modal.Overlay />}</Modal>;
     render(component);
 
@@ -67,14 +67,14 @@ describe('Modal', () => {
     ).toBe(1);
   });
 
-  test.concurrent('should block global scroll when visible', () => {
+  test.concurrent('should block global scroll when visible', async ({ expect }) => {
     const component = render(<Modal visible>Content</Modal>);
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
-  test.concurrent('Should render correctly', async ({ task }) => {
+  test.concurrent('Should render correctly', async ({ expect, task }) => {
     const component = (
       <Modal disablePortal visible>
         Test
@@ -126,7 +126,7 @@ describe('Modal', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support nested modal', async ({ task }) => {
+  test('Should support nested modal', async ({ task }) => {
     const component = (
       <Modal disablePortal visible>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam atque doloribus eius
@@ -196,7 +196,7 @@ describe('Modal', () => {
 
   test.concurrent(
     'Should support correct focusing inside modals in forward and reverse "tabs"',
-    async () => {
+    async ({ expect }) => {
       const { getByTestId } = render(
         <Modal visible={true} data-testid={'Modal'}>
           <Modal.Title>Do you want to save your changes?</Modal.Title>
