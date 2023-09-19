@@ -10,4 +10,4 @@ deprecated: true
 
 ## Basic example
 
-@email_html compiled-examples/table-index.html src/table/examples/index.html
+::: legacy_emails_view compiled-examples/table-index.html src/table/examples/index.html :::

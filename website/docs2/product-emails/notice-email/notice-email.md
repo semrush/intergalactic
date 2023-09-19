@@ -10,8 +10,8 @@ deprecated: true
 
 ## Theme notice
 
-@email_html compiled-examples/notice-theme.html src/notice/examples/theme.html
+::: legacy_emails_view compiled-examples/notice-theme.html src/notice/examples/theme.html :::
 
 ## Notice with addons
 
-@email_html compiled-examples/notice-addons.html src/notice/examples/addons.html
+::: legacy_emails_view compiled-examples/notice-addons.html src/notice/examples/addons.html :::

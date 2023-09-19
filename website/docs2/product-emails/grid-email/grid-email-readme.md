@@ -65,7 +65,7 @@ To include your styles, link an external stylesheet, or put the styles in the `<
 
 or
 
-html
+```html
 <block name="content">
   <style>
     YOUR STYLES

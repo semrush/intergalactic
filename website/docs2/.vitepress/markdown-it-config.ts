@@ -5,6 +5,7 @@ import { renderLoomVideo } from './renderLoomVideo';
 
 import tableCaptions from 'markdown-it-table-captions';
 import { renderComponentChangelog } from './renderComponentChangelog';
+import { renderLegacyEmails } from './renderLegacyEmails';
 
 export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
   md.use(container, 'sandbox', {
@@ -31,6 +32,11 @@ export const configureMarkdownIt = (md: MarkdownIt, plainTextOnly = false) => {
     .use(container, 'loom_video', {
       render(tokens, idx) {
         return renderLoomVideo(tokens, idx);
+      },
+    })
+    .use(container, 'legacy_emails_view', {
+      render(tokens, idx) {
+        return renderLegacyEmails(tokens, idx);
       },
     });
 };

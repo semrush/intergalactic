@@ -3284,6 +3284,9 @@ importers:
       vue:
         specifier: ^3.3.4
         version: 3.3.4
+      vue-shadow-dom:
+        specifier: ^4.2.0
+        version: 4.2.0
       whatwg-fetch:
         specifier: 3.6.2
         version: 3.6.2
@@ -19895,6 +19898,10 @@ packages:
     dependencies:
       vue: 3.3.4
     dev: true
+
+  /vue-shadow-dom@4.2.0:
+    resolution: {integrity: sha512-lguI064rT2HT/dxqSmXtz860KOvCq+W3nU1jMqroTmX3K1H46q22BMR4emh/Ld3ozy35XJKOaNGcr6mkJ/t/yg==}
+    dev: false
 
   /vue@3.3.4:
     resolution: {integrity: sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==}

@@ -10,4 +10,4 @@ deprecated: true
 
 ## Basic example
 
-@email_html compiled-examples/divider-index.html src/divider/examples/index.html
+::: legacy_emails_view compiled-examples/divider-index.html src/divider/examples/index.html :::

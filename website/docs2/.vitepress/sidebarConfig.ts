@@ -2335,17 +2335,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         collapsed: true,
         items: [
           {
-            link: '/utils/code-mod/code-mod',
-            text: 'Codemod',
-            collapsed: true,
-            items: [
-              {
-                link: '/utils/code-mod/code-mod-changelog',
-                text: 'Changelog',
-              },
-            ],
-          },
-          {
             link: '/utils/neighbor-location/neighbor-location',
             text: 'NeighborLocation',
             collapsed: true,

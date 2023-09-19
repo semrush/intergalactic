@@ -10,11 +10,11 @@ deprecated: true
 
 ## Link example
 
-@email_html compiled-examples/typography-link.html src/typography/examples/link.html
+::: legacy_emails_view compiled-examples/typography-link.html src/typography/examples/link.html :::
 
 ## Sizes
 
-@email_html compiled-examples/typography-size.html src/typography/examples/size.html
+::: legacy_emails_view compiled-examples/typography-size.html src/typography/examples/size.html :::
 
 ## Color text
 

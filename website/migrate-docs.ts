@@ -994,6 +994,9 @@ await Promise.all(
       if (lines[i].startsWith('@table-caption ')) {
         lines[i] = lines[i].replace('@table-caption ', 'Table: ');
       }
+      if (lines[i].startsWith('@email_html ')) {
+        lines[i] = lines[i].replace('@email_html ', '::: legacy_emails_view ') + ' :::';
+      }
       if (lines[i].startsWith('@embedded_video ')) {
         const url = lines[i].split(' ')[1];
         lines[i] = `::: loom_video ${url} :::`;

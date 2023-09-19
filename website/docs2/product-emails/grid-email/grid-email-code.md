@@ -9,8 +9,8 @@ tabs: Design('grid-email'), Email grid('grid-email-code'), Readme('grid-email-re
 
 ## Grid example
 
-@email_html compiled-examples/grid-column.html src/grid/examples/column.html
+::: legacy_emails_view compiled-examples/grid-column.html src/grid/examples/column.html :::
 
 ## Basic template
 
-@email_html compiled-examples/grid-template.html src/grid/examples/template.html
+::: legacy_emails_view compiled-examples/grid-template.html src/grid/examples/template.html :::

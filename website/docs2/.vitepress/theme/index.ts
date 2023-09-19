@@ -3,8 +3,10 @@ import { h } from 'vue';
 import Theme from 'vitepress/theme';
 import './style.css';
 import Sandbox from './Sandbox.vue';
+import LegacyEmailsView from './LegacyEmailsView.vue';
 import PageTopTabs from './PageTopTabs.vue';
 import TypesView from './TypesView.vue';
+import ShadowRoot from 'vue-shadow-dom'
 
 export default {
   ...Theme,
@@ -16,6 +18,8 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     app.component('Sandbox', Sandbox);
+    app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
+    app.use(ShadowRoot);
   },
 };

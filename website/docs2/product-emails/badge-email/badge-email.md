@@ -10,4 +10,4 @@ deprecated: true
 
 ## Badge/tag themes
 
-@email_html compiled-examples/badge-index.html src/badge/examples/index.html
+::: legacy_emails_view compiled-examples/badge-index.html src/badge/examples/index.html :::
