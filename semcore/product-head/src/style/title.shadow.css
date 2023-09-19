@@ -9,6 +9,7 @@ STitle {
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--intergalactic-text-primary, #191b23);
+  margin: 0;
 }
 
 STool {
