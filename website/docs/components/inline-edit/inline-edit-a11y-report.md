@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.22.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v15.23.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/inline-edit/examples/simple-text.tsx).**
@@ -9,7 +9,7 @@ Guidepup v0.13.1, MacOS Monterey 12._
 1. Screen reader goes into the active element.
 2. Screen reader says "Author:".
 3. Screen reader goes to the next element.
-4. Screen reader says "Tap to edit:Martin Eden button".
+4. Screen reader says "You are currently on a button, inside of web content. To click this button, press Control-Option-Space. To exit this web area, press Control-Option-Shift-Up Arrow.".
 5. Screen reader triggers element default action.
 6. Screen reader says "Martin Eden Insertion at end of text. Author: edit text Press Enter to apply value, press Escape to discard changes group".
 7. Screen reader presses the "Backspace" button.
@@ -30,8 +30,8 @@ Guidepup v0.13.1, MacOS Monterey 12._
 22. Screen reader presses the "Backspace" button.
 23. Screen reader says "r".
 24. Screen reader presses the "Backspace" button.
-25. Screen reader presses the "Backspace" button.
-26. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+25. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+26. Screen reader presses the "Backspace" button.
 27. Screen reader presses the "Backspace" button.
 28. Screen reader types "Algernon".
 29. Screen reader says "Algernon".
