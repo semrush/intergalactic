@@ -41,11 +41,11 @@ if (canUseDOM()) {
 }
 
 const focusBordersConsumers = new Set();
-const focusBordersRefs = { before: null, after: null } as {
-  before: null | HTMLElement;
+const focusBordersRefs: {
+  before: HTMLElement | null;
+  after: HTMLElement | null;
+} = { before: null, after: null };
 
-  after: null | HTMLElement;
-};
 const addBorders = () => {
   if (!focusBordersRefs.before) {
     focusBordersRefs.before = document.createElement('div');
@@ -103,11 +103,13 @@ const useFocusBorders = (disabled?: boolean) => {
  * Such versions merging requires us to keep hook api backward compatible.
  * When hook logic changes, the variable `focusLockVersion` should be incremented.
  *
+ * update version `1 -> 2`. Fixed call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target)
+ *
  *
  * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
  * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
  */
-const focusLockVersion = 1;
+const focusLockVersion = 2;
 const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
 
 const focusLockAllTraps = new Set<HTMLElement>();
@@ -155,7 +157,9 @@ const useFocusLockHook = (
           : [trapRef.current, ...focusLockAllTraps];
         if (focusInside(trapNodes)) return;
 
-        safeMoveFocusInside(trapRef.current, event.target);
+        if (focusCameFrom) {
+          safeMoveFocusInside(trapRef.current, focusCameFrom);
+        }
       });
     },
     [],
@@ -187,7 +191,7 @@ const useFocusLockHook = (
       if (!node) return;
       focusLockAllTraps.delete(node);
     };
-  }, [trapRef]);
+  }, []);
   React.useEffect(() => {
     if (typeof trapRef !== 'object' || trapRef === null) return;
     if (disabled) return;
@@ -264,9 +268,15 @@ if (!(globalThis as any)[globalFocusLockHookKey]) {
   }
 }
 
-export const useFocusLock: typeof useFocusLockHook = (...args) => {
+export const useFocusLock = (
+  trapRef: React.RefObject<HTMLElement>,
+  autoFocus: boolean,
+  returnFocusTo: React.RefObject<HTMLElement> | null | 'auto',
+  disabled = false,
+  focusMaster = false,
+) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(React, ...args);
+  return hook(React, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
 };
 
 export const isFocusInside = focusInside;
