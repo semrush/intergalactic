@@ -88,10 +88,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             collapsed: true,
             items: [
               {
-                link: '/style/icon/icon-old',
-                text: 'Old icons',
-              },
-              {
                 link: '/style/icon/icon-a11y',
                 text: 'A11y',
               },
@@ -1262,21 +1258,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             ],
           },
           {
-            link: '/components/sticky/sticky',
-            text: 'Sticky',
-            collapsed: true,
-            items: [
-              {
-                link: '/components/sticky/sticky-api',
-                text: 'API',
-              },
-              {
-                link: '/components/sticky/sticky-changelog',
-                text: 'Changelog',
-              },
-            ],
-          },
-          {
             link: '/components/switch/switch',
             text: 'Switch',
             collapsed: true,
@@ -1563,10 +1544,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             collapsed: true,
             items: [
               {
-                link: '/data-display/chart-legend/chart-legend-api',
-                text: 'API',
-              },
-              {
                 link: '/data-display/chart-legend/chart-legend-code',
                 text: 'Example',
               },
@@ -1598,10 +1575,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'Examples',
               },
               {
-                link: '/data-display/area-chart/area-chart-recharts-code',
-                text: 'Legacy examples',
-              },
-              {
                 link: '/data-display/area-chart/d3-chart-changelog',
                 text: 'Changelog',
               },
@@ -1623,10 +1596,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               {
                 link: '/data-display/stacked-area-chart/stacked-area-chart-d3-code',
                 text: 'Examples',
-              },
-              {
-                link: '/data-display/stacked-area-chart/stacked-area-chart-recharts-code',
-                text: 'Legacy examples',
               },
               {
                 link: '/data-display/stacked-area-chart/d3-chart-changelog',
@@ -1656,10 +1625,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'Examples',
               },
               {
-                link: '/data-display/bar-chart/bar-chart-recharts-code',
-                text: 'Legacy examples',
-              },
-              {
                 link: '/data-display/bar-chart/d3-chart-changelog',
                 text: 'Changelog',
               },
@@ -1681,10 +1646,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               {
                 link: '/data-display/stacked-bar-chart/stacked-bar-chart-d3-code',
                 text: 'Examples',
-              },
-              {
-                link: '/data-display/stacked-bar-chart/stacked-bar-chart-recharts-code',
-                text: 'Legacy examples',
               },
               {
                 link: '/data-display/stacked-bar-chart/d3-chart-changelog',
@@ -1710,10 +1671,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'Examples',
               },
               {
-                link: '/data-display/bar-horizontal/bar-horizontal-recharts-code',
-                text: 'Legacy examples',
-              },
-              {
                 link: '/data-display/bar-horizontal/d3-chart-changelog',
                 text: 'Changelog',
               },
@@ -1735,10 +1692,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               {
                 link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar-d3-code',
                 text: 'Examples',
-              },
-              {
-                link: '/data-display/stacked-horizontal-bar/stacked-horizontal-bar-recharts-code',
-                text: 'Legacy examples',
               },
               {
                 link: '/data-display/stacked-horizontal-bar/d3-chart-changelog',
@@ -1787,10 +1740,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'Examples',
               },
               {
-                link: '/data-display/donut-chart/donut-chart-recharts-code',
-                text: 'Legacy examples',
-              },
-              {
                 link: '/data-display/donut-chart/d3-chart-changelog',
                 text: 'Changelog',
               },
@@ -1808,10 +1757,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               {
                 link: '/data-display/histogram-chart/histogram-chart-api',
                 text: 'API',
-              },
-              {
-                link: '/data-display/histogram-chart/histogram-chart-code',
-                text: 'Legacy examples',
               },
               {
                 link: '/data-display/histogram-chart/d3-chart-changelog',
@@ -1835,10 +1780,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               {
                 link: '/data-display/line-chart/line-chart-d3-code',
                 text: 'Examples',
-              },
-              {
-                link: '/data-display/line-chart/line-chart-recharts-code',
-                text: 'Legacy examples',
               },
               {
                 link: '/data-display/line-chart/d3-chart-changelog',
@@ -1923,10 +1864,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
               {
                 link: '/data-display/venn-chart/venn-chart-d3-code',
                 text: 'Examples',
-              },
-              {
-                link: '/data-display/venn-chart/venn-chart-recharts-code',
-                text: 'Legacy examples',
               },
               {
                 link: '/data-display/venn-chart/d3-chart-changelog',
@@ -2382,39 +2319,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           {
             link: '/utils/i18n/i18n',
             text: 'i18n',
-          },
-        ],
-      },
-      {
-        text: 'Docs',
-        collapsed: true,
-        items: [
-          {
-            link: '/internal/production',
-            text: 'For production',
-          },
-          {
-            link: '/internal/release/release',
-            text: 'Changelogs',
-            collapsed: true,
-            items: [
-              {
-                link: '/internal/release/release-about',
-                text: 'About',
-              },
-            ],
-          },
-          {
-            link: '/internal/migration-guide',
-            text: 'Migration guide (RU)',
-          },
-          {
-            link: '/internal/roadmap/roadmap',
-            text: 'Roadmap',
-          },
-          {
-            link: '/internal/extension/extension',
-            text: 'Chrome extension',
           },
         ],
       },
