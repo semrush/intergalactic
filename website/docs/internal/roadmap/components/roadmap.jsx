@@ -116,7 +116,7 @@ function Gant(props) {
         })}
       </div>
 
-      {/* rome-ignore lint/style/useDefaultParameterLast: */}
+      {/* biome-ignore lint/style/useDefaultParameterLast: */}
       {components.map((component = {}, index) => (
         <div
           className={`gantt__row-bars ${styles.row__bar}`}

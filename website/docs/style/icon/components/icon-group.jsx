@@ -141,7 +141,7 @@ export const ListIcons = ({ data, icons, json }) => (
       }
 
       return (
-        // rome-ignore lint/a11y/useKeyWithClickEvents:
+        // biome-ignore lint/a11y/useKeyWithClickEvents:
         <div
           className={styles.previewIcon}
           tabIndex={0}

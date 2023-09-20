@@ -1,4 +1,3 @@
-'use strict';
 const os = require('os');
 const fs = require('fs');
 const path = require('path');
@@ -56,7 +55,7 @@ async function loader(source) {
     compiler.hooks.afterEnvironment.intercept({
       name: 'VirtualModulesPlugin',
       context: true,
-      // rome-ignore lint/style/noCommaOperator:
+      // biome-ignore lint/style/noCommaOperator:
       register: (tap) => (tap.fn(), tap),
     });
     virtualModules.apply(compiler);
