@@ -67,6 +67,12 @@ export type AxisTicksContext = {
   value: any;
   /** Index element of data */
   index: number;
+  /** Horizontal coordinate of tick */
+  x: number;
+  /** Vertical coordinate of tick */
+  y: number;
+  /** Size of plot */
+  size: [width: number, height: number];
 };
 
 declare const XAxis: IntergalacticD3Component<'path', XAxisProps> & {
