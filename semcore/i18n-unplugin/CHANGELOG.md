@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [0.7.1-prerelease.0] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/core` [2.7.0 ~> 2.7.1]).
+
 ## [0.7.0] - 2023-09-13
 
 ### Changed
@@ -13,8 +19,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Added error throwing if bundled locales are excluded or not included.## [0.5.3] - 2023-09-12
-
-
 - Version prepatch update due to children dependencies update (`@semcore/core` [2.6.2 ~> 2.6.3]).
 
 ## [0.5.2] - 2023-09-08
