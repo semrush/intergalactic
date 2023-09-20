@@ -2,12 +2,13 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, fireEvent, render } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
 
 import Modal from '../src';
+import Button from '../../button/src';
 
 describe('Modal', () => {
   beforeEach(cleanup);
@@ -28,7 +29,7 @@ describe('Modal', () => {
     expect(spy).toBeCalledWith('onCloseClick', expect.anything());
   });
 
-  test.concurrent('should support onClose for OutsideClick', () => {
+  test.concurrent('should support onClose for OutsideClick', async ({ expect }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <Modal onClose={spy} visible>
@@ -57,7 +58,7 @@ describe('Modal', () => {
     expect(getByTestId('child')).toBeTruthy();
   });
 
-  test.concurrent('should support render function for children', () => {
+  test.concurrent('should support render function for children', async ({ expect }) => {
     const component = <Modal visible>{() => <Modal.Overlay />}</Modal>;
     render(component);
 
@@ -66,14 +67,14 @@ describe('Modal', () => {
     ).toBe(1);
   });
 
-  test.concurrent('should block global scroll when visible', () => {
+  test.concurrent('should block global scroll when visible', async ({ expect }) => {
     const component = render(<Modal visible>Content</Modal>);
     expect(document.body).toHaveStyle('overflow: hidden');
     component.unmount();
     expect(document.body).not.toHaveStyle('overflow: hidden');
   });
 
-  test.concurrent('Should render correctly', async ({ task }) => {
+  test.concurrent('Should render correctly', async ({ expect, task }) => {
     const component = (
       <Modal disablePortal visible>
         Test
@@ -125,7 +126,7 @@ describe('Modal', () => {
     ).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Should support nested modal', async ({ task }) => {
+  test('Should support nested modal', async ({ task }) => {
     const component = (
       <Modal disablePortal visible>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam atque doloribus eius
@@ -192,4 +193,44 @@ describe('Modal', () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
+
+  test.concurrent(
+    'Should support correct focusing inside modals in forward and reverse "tabs"',
+    async ({ expect }) => {
+      const { getByTestId } = render(
+        <Modal visible={true} data-testid={'Modal'}>
+          <Modal.Title>Do you want to save your changes?</Modal.Title>
+
+          <Button use='primary' theme='success' size='l' data-testid={'SaveChangesButton'}>
+            Save changes
+          </Button>
+          <Button size='l' ml={2} data-testid={'CancelButton'}>
+            Don't save
+          </Button>
+        </Modal>,
+      );
+
+      const SaveButton = getByTestId('SaveChangesButton');
+      const CancelButton = getByTestId('CancelButton');
+      const CloseButton = getByTestId('Modal').children[0];
+
+      await userEvent.keyboard('[Tab]');
+      expect(SaveButton).toHaveFocus();
+
+      await userEvent.keyboard('[Tab]');
+      expect(CancelButton).toHaveFocus();
+
+      await userEvent.keyboard('[Tab]');
+      expect(CloseButton).toHaveFocus();
+
+      await userEvent.keyboard('[Tab]');
+      expect(SaveButton).toHaveFocus();
+
+      await userEvent.keyboard('{Shift>}[Tab]');
+      expect(CloseButton).toHaveFocus();
+
+      await userEvent.keyboard('{Shift>}[Tab]');
+      expect(CancelButton).toHaveFocus();
+    },
+  );
 });
