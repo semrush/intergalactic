@@ -18,19 +18,19 @@ export const Nav: React.FC = () => {
 
   return (
     <nav className='intergalactic-playground_nav'>
-      {/* rome-ignore lint/a11y/useKeyWithClickEvents: */}
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: */}
       <div
         className='intergalactic-playground_logo'
         style={{ backgroundImage: `url(${LogoImage})` }}
         onClick={goHome}
       />
-      {/* rome-ignore lint/a11y/useKeyWithClickEvents: */}
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: */}
       <h1 className='intergalactic-playground_title' onClick={goHome}>
         Intergalactic playground
       </h1>
       <ul>
         {playgroundsList.map((playgroundName) => (
-          // rome-ignore lint/a11y/useKeyWithClickEvents:
+          // biome-ignore lint/a11y/useKeyWithClickEvents:
           <li
             onClick={handlePlaygroundNameClick(playgroundName)}
             key={playgroundName}

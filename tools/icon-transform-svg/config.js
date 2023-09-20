@@ -1,5 +1,3 @@
-'use strict';
-
 // Source: https://developer.mozilla.org/en-US/docs/Web/SVG/Element#SVG_elements
 const svgElementTagNames = {
   animatemotion: 'animateMotion',
