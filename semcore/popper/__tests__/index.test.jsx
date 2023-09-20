@@ -1,7 +1,7 @@
 import React from 'react';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 
-import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -196,20 +196,21 @@ describe('focus control', () => {
       </div>,
     );
 
-    fireEvent.keyDown(document.body, { key: 'Tab' });
-    fireEvent.focusIn(document.body);
-    await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(getByTestId('popper')).toHaveFocus();
+    const PopperElement = getByTestId('popper');
 
-    fireEvent.keyDown(document.body, { key: 'Tab' });
-    fireEvent.focusIn(document.body);
-    await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(getByTestId('popper')).toHaveFocus();
+    await userEvent.keyboard('[Tab]');
 
-    fireEvent.keyDown(document.body, { key: 'Tab' });
-    fireEvent.focusIn(document.body);
-    await new Promise((resolve) => setTimeout(resolve, 1));
-    expect(getByTestId('popper')).toHaveFocus();
+    expect(PopperElement).toHaveFocus();
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    expect(PopperElement).toHaveFocus();
+
+    await userEvent.keyboard('{Shift>}[Tab]');
+    await userEvent.keyboard('{Shift>}[Tab]');
+
+    expect(PopperElement).toHaveFocus();
   });
 
   test('focus return', () => {
