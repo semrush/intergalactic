@@ -27,7 +27,7 @@ const Demo = () => {
             }}
           />
           <div>
-            <Text size={300} bold tag='h3' mb={1}>
+            <Text size={300} bold tag='h3' mb={1} mt={0}>
               Look! We got a new feature!
             </Text>
             <Text mb={4} size={200} tag='p'>
