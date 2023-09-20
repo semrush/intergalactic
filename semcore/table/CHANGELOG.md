@@ -2,19 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.12.1-prerelease.0] - 2023-09-20
+## [4.12.1] - 2023-09-20
 
 ### Changed
 
 - Version prepatch update due to children dependencies update (`@semcore/utils` [4.7.0 ~> 4.7.1], `@semcore/icon` [4.9.0 ~> 4.9.1], `@semcore/flex-box` [5.7.0 ~> 5.7.1], `@semcore/scroll-area` [5.9.0 ~> 5.9.1], `@semcore/core` [2.7.0 ~> 2.7.1]).
 
-## [4.12.0-prerelease.0] - 2023-09-19
+## [4.12.0] - 2023-09-19
 
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/icon` [4.8.3 ~> 4.9.0]).
 
-## [4.11.0-prerelease.0] - 2023-09-15
+## [4.11.0] - 2023-09-15
 
 ### Changed
 
@@ -510,7 +510,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Заменили рисование бордеров у ячеек таблицы с `box-shadow` на `border`, это решило проблему отображения бордера у
-последней ячейки `Table.CellHead`
+  последней ячейки `Table.CellHead`
 - Перенесли нижний бордер с `Table` на `Table.Body`, это решило проблему двойного бордера снизу у таблицы
 
 ## [1.6.3] - 2020-03-12

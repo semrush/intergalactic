@@ -1894,20 +1894,20 @@ importers:
   semcore/table:
     dependencies:
       '@semcore/flex-box':
-        specifier: 5.7.1-prerelease.0
-        version: 5.7.1-prerelease.0
+        specifier: 5.7.1
+        version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.9.1-prerelease.0
-        version: 4.9.1-prerelease.0
+        specifier: 4.9.1
+        version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.9.1-prerelease.0
-        version: 5.9.1-prerelease.0
+        specifier: 5.9.1
+        version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.11.1-prerelease.0
-        version: 5.11.1-prerelease.0
+        specifier: 5.11.1
+        version: link:../typography
       '@semcore/utils':
-        specifier: 4.7.1-prerelease.0
-        version: 4.7.1-prerelease.0
+        specifier: 4.7.1
+        version: link:../utils
       classnames:
         specifier: 2.2.6
         version: 2.2.6
@@ -5698,71 +5698,9 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@semcore/flex-box@5.7.1-prerelease.0:
-    resolution: {integrity: sha512-ht3NPE4re91wTKV5NbkNIb2p3TPCQIJKxqrWfLfC68Ni9udm8LB8LUxxYAwpcxO2cg4Hc1wwJxJdhn6aVWoqKw==}
-    peerDependencies:
-      '@semcore/core': ^2.7.1-prerelease.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/utils': 4.7.1-prerelease.0
-      classnames: 2.2.6
-      csstype: 3.0.8
-    dev: false
-
-  /@semcore/icon@4.9.1-prerelease.0:
-    resolution: {integrity: sha512-nSUf02CYbwwZUhJtVcT0KbdCLcL5NejsZKs52nV8evRKeZQTA+mixzcqMqIy5kmKUknGAyFajwC/HwM1WNERCQ==}
-    peerDependencies:
-      '@semcore/core': ^2.7.1-prerelease.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.7.1-prerelease.0
-      '@semcore/utils': 4.7.1-prerelease.0
-      classnames: 2.2.6
-    dev: false
-
-  /@semcore/scroll-area@5.9.1-prerelease.0:
-    resolution: {integrity: sha512-qY8EPy6FrjHk5xaPnhs6VR6FT/rX3+CBwqrghjEhRatfs6diUGt2hhBfMPY3DMflxB6xEnToiFoz4fwmLhXkUw==}
-    peerDependencies:
-      '@semcore/core': ^2.7.1-prerelease.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.7.1-prerelease.0
-      '@semcore/utils': 4.7.1-prerelease.0
-    dev: false
-
   /@semcore/theme-redesign@1.5.12:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
     dev: true
-
-  /@semcore/typography@5.11.1-prerelease.0:
-    resolution: {integrity: sha512-hJlIoJEg8xsJATAlEBcLjldG0VgzowUbxSmR3Y8tHkezRpY0Y+Mb/XEsn5Gzt2iPZ/DSbOoFnkz5m3AiSNCE8Q==}
-    peerDependencies:
-      '@semcore/core': ^2.7.1-prerelease.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/flex-box': 5.7.1-prerelease.0
-      '@semcore/icon': 4.9.1-prerelease.0
-      '@semcore/utils': 4.7.1-prerelease.0
-      csstype: 3.0.8
-    dev: false
-
-  /@semcore/utils@4.7.1-prerelease.0:
-    resolution: {integrity: sha512-FZbC/z+tbSb5cD8d4FViMuutLCcLtUSjNNsnioSJknEeZbl/13r4i4/OYmrANfltREjd01Z5fnUeD9IkQHSDsg==}
-    peerDependencies:
-      '@semcore/core': ^2.7.1-prerelease.0
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7
-      classnames: 2.2.6
-      focus-lock: 0.11.3
-      hoist-non-react-statics: 3.3.2
-    dev: false
 
   /@sinclair/typebox@0.25.24:
     resolution: {integrity: sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==}
