@@ -263,16 +263,23 @@ export type DatePickerHandlers = {
 
 /** @deprecated */
 export interface IInputTriggerProps extends InputTriggerProps, UnknownProperties {}
-export type InputTriggerProps = InputProps & {
-  value?: Date;
+type BaseInputTriggerProps = InputProps & {
   /**
    * Date input placeholder characters
    * @default { year: 'Y'; month: 'M'; day: 'D' }
    */
   placeholders?: { year: string; month: string; day: string };
-  onChange?: (date: Date, event: ChangeEvent) => void;
   locale?: string;
   onDisplayedPeriodChange?: (date: Date) => void;
+};
+export type InputTriggerProps = BaseInputTriggerProps & {
+  value?: Date;
+  onChange?: (date: Date, event: ChangeEvent) => void;
+};
+
+export type RangeInputTriggerProps = BaseInputTriggerProps & {
+  value?: Date[];
+  onChange?: (date: Date[], event: ChangeEvent) => void;
 };
 
 /** @deprecated */
@@ -281,7 +288,7 @@ export type SingleDateInputProps = InputTriggerProps & {};
 
 /** @deprecated */
 export interface IDateRangeProps extends DateRangeProps, UnknownProperties {}
-export type DateRangeProps = InputTriggerProps & {};
+export type DateRangeProps = RangeInputTriggerProps & {};
 
 /** @deprecated */
 export interface IDatePickerMaskedInputProps
@@ -306,6 +313,14 @@ declare const InputTrigger: Intergalactic.Component<
     Indicator: typeof Input.Addon;
     MaskedInput: Intergalactic.Component<'input', InputMaskValueProps & DatePickerMaskedInputProps>;
   };
+};
+
+declare const RangeInputTrigger: Intergalactic.Component<
+  'div',
+  DropdownTriggerProps & RangeInputTriggerProps
+> & {
+  Addon: typeof Input.Addon;
+  Value: typeof Input.Value;
   DateRange: Intergalactic.Component<'div', InputValueProps & DateRangeProps> & {
     Indicator: typeof Input.Addon;
     RangeSep: typeof Input.Addon;
@@ -366,7 +381,7 @@ declare const DateRangePicker: Intergalactic.Component<
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  Trigger: typeof InputTrigger;
+  Trigger: typeof RangeInputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, DateRangePickerContext>;
@@ -438,7 +453,7 @@ declare const MonthRangePicker: Intergalactic.Component<
     Addon: typeof BaseTrigger.Addon;
     Text: typeof BaseTrigger.Text;
   };
-  Trigger: typeof InputTrigger;
+  Trigger: typeof RangeInputTrigger;
   Popper: typeof Dropdown.Popper;
   Header: typeof Box;
   Title: Intergalactic.Component<'div', DateRangePickerProps, MonthRangePickerContext>;
