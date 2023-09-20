@@ -1,3 +1,26 @@
+## [15.23.0-prerelease.0] - 2023-09-20
+
+### @semcore/d3-chart
+
+- **Added** `index` to render function context type of `HoverLine` and `HoverRect`.
+- **Added** `size`, `x` and `y` to render function context type of `XAxis.Ticks` and `YAxis.Ticks`.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed types for `value` and `onChange` in DateRangePicker.Trigger.
+
+### @semcore/product-head
+
+- **Changed** Enforced `0` margins of `ProductHeader.Title`.
+
+### @semcore/spin-container
+
+- **Added** Added size in playground for SpinContainer
+
+### @semcore/utils
+
+- **Fixed** Reverse focus in modals (Fixed `useFocuseLock`. Call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target))
+
 ## [15.22.0] - 2023-09-19
 
 ### @semcore/icon
