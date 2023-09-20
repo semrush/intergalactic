@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.13.0] - 2023-09-20
+
+### Added
+
+- `index` to render function context type of `HoverLine` and `HoverRect`.
+- `size`, `x` and `y` to render function context type of `XAxis.Ticks` and `YAxis.Ticks`.
+
 ## [3.12.0] - 2023-09-13
 
 ### Changed
@@ -101,7 +108,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added `exports` fields for better nextjs support.  
+- Added `exports` fields for better nextjs support.
 
 ## [3.3.0] - 2023-08-07
 
