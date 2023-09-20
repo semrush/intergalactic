@@ -5,7 +5,7 @@ import Input from '@semcore/ui/input';
 import { Box } from '@semcore/ui/flex-box';
 
 const playground = (createGroupWidgets) => {
-  const { bool, radio, text } = createGroupWidgets('SpinContainer');
+  const { bool, radio, text, select } = createGroupWidgets('SpinContainer');
 
   const loading = bool({
     key: 'loading',
@@ -20,7 +20,7 @@ const playground = (createGroupWidgets) => {
     options: ['dark', 'invert'],
   });
 
-  const size = radio({
+  const size = select({
     key: 'size',
     defaultValue: 'xxl',
     label: 'Size',
