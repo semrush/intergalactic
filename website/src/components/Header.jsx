@@ -57,7 +57,7 @@ function Header({ theme, setTheme }) {
           )}
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
-          {/* rome-ignore lint/a11y/useValidAnchor: */}
+          {/* biome-ignore lint/a11y/useValidAnchor: */}
           <a className={styles.devportalLink} href='/' onClick={() => logEvent('logo_dev:click')}>
             <SemrushL className={styles.semrushLogo} />
             <Tooltip>
@@ -149,7 +149,7 @@ function Header({ theme, setTheme }) {
               <Link to='/internal/release/' onClick={() => setMenuVisible(false)}>
                 Releases
               </Link>
-              {/* rome-ignore lint/a11y/useValidAnchor: */}
+              {/* biome-ignore lint/a11y/useValidAnchor: */}
               <a
                 href='https://github.com/semrush/intergalactic'
                 target='_blank'

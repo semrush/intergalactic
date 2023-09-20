@@ -7,14 +7,14 @@ export const syncCheck = async (packages: Package[]) => {
   );
 
   if (unsynchronizedPackages.length > 0) {
-    // rome-ignore lint/nursery/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsoleLog:
     console.log('\n\n');
 
     for (const { name, currentVersion, lastPublishedVersion } of unsynchronizedPackages) {
-      // rome-ignore lint/nursery/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(`[${name}]: ${currentVersion} (in repo) ${lastPublishedVersion} (in npm)`);
     }
-    // rome-ignore lint/nursery/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsoleLog:
     console.log('\n\n');
   }
 

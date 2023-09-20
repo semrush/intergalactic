@@ -46,7 +46,7 @@ const MAP_BABEL_ENV: Record<string, string> = {
   es6: 'es6',
 };
 
-// rome-ignore lint/nursery/noConsoleLog:
+// biome-ignore lint/suspicious/noConsoleLog:
 console.log(`running builder from dir ${workingDir}\n`);
 
 await runCommand('CLEANUP');

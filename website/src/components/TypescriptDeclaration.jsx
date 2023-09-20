@@ -33,7 +33,7 @@ const TypeView = ({ typeParts, dependencies, route = '' }) => {
         if (typeof part === 'object') {
           return (
             <a
-              // rome-ignore lint/a11y/useValidAnchor:
+              // biome-ignore lint/a11y/useValidAnchor:
               onClick={() => {
                 (group || page) &&
                   logEvent('props:click', { group, page, tab: 'api', label: part.displayText });
@@ -142,7 +142,7 @@ export const TypescriptDeclarationView = ({
                     </div>
                   </td>
                   <td className={styles.descriptionCell}>
-                    {/* rome-ignore lint/security/noDangerouslySetInnerHtml: */}
+                    {/* biome-ignore lint/security/noDangerouslySetInnerHtml: */}
                     <span dangerouslySetInnerHTML={{ __html: property.description }} />
                   </td>
                 </tr>

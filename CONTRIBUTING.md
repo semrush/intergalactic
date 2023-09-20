@@ -14,8 +14,8 @@ Please note that our maintainers primarily develop on macOS. While developing on
 ### Getting Started
 
 1. Clone the repository by running: `git clone git@github.com:semrush/intergalactic.git && cd intergalactic`.
-2. Install project dependencies using: `pnpm install`. 
-   
+2. Install project dependencies using: `pnpm install`.
+
    2.1 If you have and error with `libpng` like `make sure that libpng is installed` - you need to install it manually. On Mac OS the simplest way is to use homebrew: `brew install libpng pkg-config`.
 
 3. Build components with: `pnpm build`.
@@ -52,7 +52,8 @@ We use [vitest](https://vitest.dev/) for our testing needs.
 
 ## Formatting & Linting
 
-We rely on [rome](https://rome.tools/) for formatting and linting. It is integrated into our Git hooks and also offers a [VS Code Extension](https://docs.rome.tools/vscode/).
+We rely on [biome](https://biomejs.dev/) for formatting and linting. It is integrated into our Git hooks and also offers a [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome). It's going to get IntelliJ Platform LSP very soon: [https://github.com/biomejs/biome/pull/185](https://github.com/biomejs/biome/pull/185).
+
 ## Website
 
 To preview the website locally, run `pnpm website`. The site will be accessible at `http://localhost:3000`. Keep in mind that you may need to reload the page to see any changes made to the documentation.
@@ -78,7 +79,6 @@ To facilitate screenshot tests for components, we use our own screenshot service
 
 Certain components have text translations in multiple languages. When adding or modifying text, focus on English only. Following the pull request review, core maintainers will handle translations for other languages using [Crowdin](https://crowdin.com).
 
-
 ### Unconventional Website Code
 
 Our documentation website's foundation has undergone several iterations and may appear unconventional due to underlying changes. Knowing about its imperfections, we are actively working on migrating to [VitePress](https://vitepress.dev/) for a more streamlined development experience.
@@ -100,10 +100,10 @@ Current components have performance issues, primarily tied to a 5000-character r
 Due to historical reasons, our code goes through specific Babel plugins (`babel-plugin-root` and `babel-plugin-styles`) that result in the final code functioning differently than it may initially appear. Below is a simplified example of the `Link` component's code:
 
 ```jsx
-import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { Text } from '@semcore/typography';
-import style from './style/link.shadow.css';
+import React from "react";
+import createComponent, { Component, Root, sstyled } from "@semcore/core";
+import { Text } from "@semcore/typography";
+import style from "./style/link.shadow.css";
 
 class RootLink extends Component {
   static style = style;
@@ -113,9 +113,9 @@ class RootLink extends Component {
     const { styles, Children } = this.asProps;
 
     return sstyled(styles)(
-      <SLink render={Text} tag='a'>
+      <SLink render={Text} tag="a">
         <Children />
-      </SLink>,
+      </SLink>
     );
   }
 }
@@ -129,7 +129,11 @@ After normal jsx to js transformation the following expression are getting retur
 
 ```js
 sstyled(styles)(
-  React.createElement(SLink, { render: Text, tag: 'a' }, React.createElement(Children))
+  React.createElement(
+    SLink,
+    { render: Text, tag: "a" },
+    React.createElement(Children)
+  )
 );
 ```
 
@@ -144,7 +148,11 @@ The `babel-plugin-root` plugin ensures that all the props passed to a component 
 
 ```js
 sstyled(styles)(
-  React.createElement(SLink, assignProps({ render: Text, tag: 'a' }, this.asProps), React.createElement(Children))
+  React.createElement(
+    SLink,
+    assignProps({ render: Text, tag: "a" }, this.asProps),
+    React.createElement(Children)
+  )
 );
 ```
 

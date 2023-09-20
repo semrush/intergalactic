@@ -79,7 +79,7 @@ export const ListIllustrations = ({ data, illustrations, json }) => (
       }
 
       return (
-        // rome-ignore lint/a11y/useKeyWithClickEvents:
+        // biome-ignore lint/a11y/useKeyWithClickEvents:
         <div
           className={styles.previewIllustration}
           tabIndex={0}
