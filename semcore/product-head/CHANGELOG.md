@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.0] - 2023-09-19
+
+### Changed
+
+- Enforced `0` margins of `ProductHeader.Title`.
+
 ## [4.7.0] - 2023-09-13
 
 ### Changed
