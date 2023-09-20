@@ -1,6 +1,6 @@
 import React from 'react';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import Notice from '@semcore/ui/notice';
@@ -17,13 +17,11 @@ export default function () {
 
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger>
-        <Button>
-          <Button.Addon>
-            <FileExportM />
-          </Button.Addon>
-          <Button.Text>Export</Button.Text>
-        </Button>
+      <DropdownMenu.Trigger tag={Button}>
+        <Button.Addon>
+          <FileExportM />
+        </Button.Addon>
+        <Button.Text>Export</Button.Text>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper wMax='257px'>
         <SpinContainer loading={loading}>
