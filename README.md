@@ -1,4 +1,6 @@
-<img src=".github/images/semrush-hero.png" alt="team's picture">
+<p align="center">
+  <img src=".github/images/galaxy-whale.png" alt="Intergalactic galaxy whale" width="300" height="250">
+</p>
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
 [![version](https://img.shields.io/npm/v/@semcore/ui.svg)](https://www.npmjs.com/package/@semcore/ui)
@@ -56,7 +58,6 @@ Thanks to all contributors, you are so awesome! ❤️
 Great job!
 
 You always can open an [issue in the repository](https://github.com/semrush/intergalactic/issues/new/choose). We'll be glad to help!
-
 
 ### I have a question or feature request! 🙋
 
