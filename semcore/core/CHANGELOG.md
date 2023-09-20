@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.7.2] - 2023-09-20
+
+### Fixed
+
+- Release doesn't contain any meaningful changes but contains inner dependencies fixes required by the previous release.
+
 ## [2.7.1] - 2023-09-20
 
 ### Changed
