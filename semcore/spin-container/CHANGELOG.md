@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.8.1-prerelease.0] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/spin` [5.7.1 ~> 5.7.2], `@semcore/flex-box` [5.7.1 ~> 5.7.2], `@semcore/animation` [2.7.1 ~> 2.7.2], `@semcore/core` [2.7.1 ~> 2.7.2]).
+
 ## [7.8.0] - 2023-09-19
 
 ### Added

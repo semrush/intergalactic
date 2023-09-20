@@ -1,3 +1,9 @@
+## [15.23.1] - 2023-09-20
+
+### @semcore/core
+
+- **Fixed** Release doesn't contain any meaningful changes but contains inner dependencies fixes required by the previous release.
+
 ## [15.23.0] - 2023-09-20
 
 ### @semcore/d3-chart
