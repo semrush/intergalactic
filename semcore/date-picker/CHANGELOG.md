@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.1] - 2023-09-20
+
+### Fixed
+
+- Fixed types for `value` and `onChange` in DateRangePicker.Trigger.
+
 ## [4.10.0] - 2023-09-19
 
 ### Changed
