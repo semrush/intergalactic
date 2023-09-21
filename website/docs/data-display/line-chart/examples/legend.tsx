@@ -60,7 +60,11 @@ export default () => {
 
   return (
     <Card w={'550px'}>
-      <Card.Header pt={4}> Chart legend</Card.Header>
+      <Card.Header pt={4}>
+        <Card.Title tag={'h4'} m={0} hint={'Chanrt about ...'} inline={true}>
+          Chart legend
+        </Card.Title>
+      </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
           {linesList.map((line) => {
