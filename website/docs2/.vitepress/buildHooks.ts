@@ -12,21 +12,21 @@ const excludeFromSearch = ['a11y-report'];
 const algoliaIndexName = 'intergalactic-docs';
 const algoliaApp = 'PDUJZB0TBK';
 
-if (!process.env.ALGOLIA_SECRET_KEY) {
-  throw new Error('Create .env file and insert ALGOLIA_SECRET_KEY variable');
-}
+// if (!process.env.ALGOLIA_SECRET_KEY) {
+//   throw new Error('Create .env file and insert ALGOLIA_SECRET_KEY variable');
+// }
 
-{
-  const key = process.env.ALGOLIA_SECRET_KEY;
-  const escapedKey =
-    key.substring(0, 5) +
-    key.substring(5, key.length - 5).replace(/./g, 'X') +
-    key.substring(key.length - 5);
+// {
+//   const key = process.env.ALGOLIA_SECRET_KEY;
+//   const escapedKey =
+//     key.substring(0, 5) +
+//     key.substring(5, key.length - 5).replace(/./g, 'X') +
+//     key.substring(key.length - 5);
 
-  console.info(
-    `Publishing algolia search with application id "${algoliaApp}" and secret key "${escapedKey}"`,
-  );
-}
+//   console.info(
+//     `Publishing algolia search with application id "${algoliaApp}" and secret key "${escapedKey}"`,
+//   );
+// }
 
 const sitemapLinks: { url: string; lastmod?: number }[] = [];
 const searchObjects: {
@@ -153,12 +153,12 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
   await new Promise((resolve) => writeStream.on('finish', resolve));
 
   // await fs.writeFile('search-index.json', JSON.stringify(searchObjects, null, 2));
-  const client = algoliasearch(algoliaApp, process.env.ALGOLIA_SECRET_KEY!);
-  const index = client.initIndex(algoliaIndexName);
-  await index.clearObjects();
-  await index.partialUpdateObjects(searchObjects, {
-    createIfNotExists: true,
-  });
+  // const client = algoliasearch(algoliaApp, process.env.ALGOLIA_SECRET_KEY!);
+  // const index = client.initIndex(algoliaIndexName);
+  // await index.clearObjects();
+  // await index.partialUpdateObjects(searchObjects, {
+  //   createIfNotExists: true,
+  // });
 };
 
 export const buildHooks = { transformHtml, buildEnd };
