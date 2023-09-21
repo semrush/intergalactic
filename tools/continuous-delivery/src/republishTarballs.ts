@@ -1,8 +1,6 @@
 import fs from 'fs-extra';
-import { Package } from './collectPackages';
 import { log } from './utils';
 import { resolve as resolvePath } from 'path';
-import { VersionPatch } from './makeVersionPatches';
 import { reversedTopologicalSort } from './reversedTolopologicalSort';
 import { execSync } from 'child_process';
 import Git from 'simple-git';
