@@ -7,7 +7,6 @@ import LegacyEmailsView from './LegacyEmailsView.vue';
 import PageTopTabs from './PageTopTabs.vue';
 import TypesView from './TypesView.vue';
 import Page404 from './Page404.vue';
-import ShadowRoot from 'vue-shadow-dom'
 
 export default {
   ...Theme,
@@ -22,6 +21,5 @@ export default {
     app.component('Sandbox', Sandbox);
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
-    // app.use(ShadowRoot);
   },
 };

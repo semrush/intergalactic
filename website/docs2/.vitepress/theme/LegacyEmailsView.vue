@@ -1,8 +1,8 @@
 <template>
   <div>
-    <shadow-root>
+    <ShadowRoot>
       <div v-html="compiledCode"></div>
-    </shadow-root>
+    </ShadowRoot>
     <div class="code-wrapper">
       <span v-html="sourceCode"></span>
     </div>
@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import ShadowRoot from './ShadowRoot.vue'
 const { compiledCode: encodedCompiledCode, sourceCode: encodedSourceCode } = defineProps({ compiledCode: String, sourceCode: String })
 const compiledCode = decodeURIComponent(atob(encodedCompiledCode!));
 const sourceCode = decodeURIComponent(atob(encodedSourceCode!));

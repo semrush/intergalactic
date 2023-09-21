@@ -60,7 +60,6 @@
     "unplugin": "^1.0.0",
     "vitest": "^0.34.1",
     "vue": "^3.3.4",
-    "vue-shadow-dom": "^4.2.0",
     "whatwg-fetch": "3.6.2"
   },
   "devDependencies": {
