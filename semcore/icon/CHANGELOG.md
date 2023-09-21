@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.9.3] - 2023-09-21
+
+### Fixed
+
+- Fixed bug with strange crop in icons if there are a lot of them on a page 
+
 ## [4.9.2] - 2023-09-20
 
 ### Changed
