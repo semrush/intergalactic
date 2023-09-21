@@ -332,6 +332,7 @@ SCell {
   border-bottom: 1px solid var(--intergalactic-border-secondary, #e0e1e9);
   overflow: hidden;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
 SCell[use='primary'] {
