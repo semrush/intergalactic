@@ -6,6 +6,7 @@ import Sandbox from './Sandbox.vue';
 import LegacyEmailsView from './LegacyEmailsView.vue';
 import PageTopTabs from './PageTopTabs.vue';
 import TypesView from './TypesView.vue';
+import Page404 from './Page404.vue';
 import ShadowRoot from 'vue-shadow-dom'
 
 export default {
@@ -14,12 +15,13 @@ export default {
     return h(Theme.Layout, null, {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-top': () => h(PageTopTabs),
+      'not-found': () => h(Page404),
     });
   },
   enhanceApp({ app, router, siteData }) {
     app.component('Sandbox', Sandbox);
     app.component('LegacyEmailsView', LegacyEmailsView);
     app.component('TypesView', TypesView);
-    app.use(ShadowRoot);
+    // app.use(ShadowRoot);
   },
 };
