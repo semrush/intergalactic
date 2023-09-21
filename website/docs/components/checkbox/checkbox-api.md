@@ -15,14 +15,32 @@ import Checkbox from '@semcore/ui/checkbox';
 
 @## Checkbox.Value
 
-Represents `input[type=checkbox]` and `span` with an icon. Properties apply to the icon, except for those specified in `includeInputProps`.
+Represents `input[type=checkbox]` and `span` with an icon.
 
 ```jsx
 import Checkbox from '@semcore/ui/checkbox';
 <Checkbox.Value />;
 ```
 
-@typescript CheckboxValueProps
+@## Checkbox.Value.Control
+
+Represents `input[type=checkbox]` 
+
+```jsx
+import Checkbox from '@semcore/ui/checkbox';
+<Checkbox.Value.Control />;
+```
+
+@typescript CheckboxValueControlProps
+
+Represents `span` in `Checkbox.Value`.
+
+```jsx
+import Checkbox from '@semcore/ui/checkbox';
+<Checkbox.Value.CheckMark />;
+```
+
+@typescript CheckboxValueCheckMarkProps
 
 @## Checkbox.Text
 
