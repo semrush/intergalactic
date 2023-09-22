@@ -10,7 +10,7 @@ WORKDIR /app
 
 COPY ./ ./
 
-RUN npm install --global pnpm@7
+RUN npm install --global pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts 
 RUN pnpm build:icons
 RUN pnpm build:illustration
