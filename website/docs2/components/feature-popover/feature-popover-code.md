@@ -9,14 +9,14 @@ tabs: Design('feature-popover'), A11y('feature-popover-a11y'), API('feature-popo
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import FeaturePopover from '@semcore/ui/feature-popover';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import { Flex, Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = React.useState(true);
   const handleVisibleChange = (visible) => () => setVisible(visible);
 
   return (
@@ -38,7 +38,7 @@ const Demo = () => {
             }}
           />
           <div>
-            <Text size={300} bold tag='h3' mb={1}>
+            <Text size={300} bold tag='h3' mb={1} mt={0}>
               Look! We got a new feature!
             </Text>
             <Text mb={4} size={200} tag='p'>

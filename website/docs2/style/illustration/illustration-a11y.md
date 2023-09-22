@@ -12,6 +12,8 @@ According to the ARIA in HTML document, [SVG has no default corresponding role](
 
 The list below describes roles and attributes that component already has.
 
+Table: Roles and attributes
+
 | Attribute            | Element      | Usage                                                                                                                        |
 | -------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------- |
 | `aria-hidden="true"` | `img`, `svg` | Hides images from the assistive technologies, because this element is auxiliary and shouldn't be played by a screen reader. |
@@ -29,10 +31,12 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
 
+Table: Attributes
+
 | Attribute         | Element | Usage                                                                                                                                                                 |
 | ----------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is required props for buttons without text content.                                                     |
-| `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is required props for buttons without text content. |
+| `aria-label`      | `div`   | Defines a string value that labels an interactive element. It is a required for buttons without text content.                                                     |
+| `aria-labelledby` | `div`   | The `aria-labelledby` attribute identifies the element (or elements) that labels the element it is applied to. It is a required for buttons without text content. |
 
 ## Considerations for designers
 
@@ -42,6 +46,8 @@ The list below will help you to keep in mind the necessary roles and attributes 
 - Check illustration contrast against background. [The contrast ratio should be at least 3:1](https://www.w3.org/WAI/WCAG21/Techniques/general/G207).
 
 ### How to provide appropriate text alternatives based on the purpose of the image
+
+Table: Image types
 
 | Image type                                  | Description                                                                                                                                                                                                                                                   |
 | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -132,7 +132,7 @@ should be directed, but occasionally, this behavior needs to be modified.
 <script lang="tsx">
 import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
-import { inputProps } from '@semcore/ui/utils/inputProps';
+import { inputProps } from '@semcore/ui/utils/lib/inputProps';
 
 const Demo = () => {
   const includeInputProps = [...inputProps, 'data-test-id'];

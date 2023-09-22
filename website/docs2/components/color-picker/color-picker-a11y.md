@@ -13,6 +13,8 @@ Color picker component provides basic support for keyboard and screen readers.
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key              | Function                                       |
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
@@ -23,6 +25,8 @@ Color picker component provides basic support for keyboard and screen readers.
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role | Attribute    | Element | Usage                                                                                                                                                   |
 | ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -46,6 +50,8 @@ See more accessibility recommendations in the common [Accessibility guide](/core
 - When the dropdown is closed, the focus returns to the trigger.
 
 ### Keyboard support
+
+Table: Keyboard support
 
 | Key              | Function                                       |
 | ---------------- | ---------------------------------------------- |

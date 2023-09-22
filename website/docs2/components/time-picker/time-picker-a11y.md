@@ -9,6 +9,8 @@ tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), E
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key                      | Function                                                                                                                                  |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                    | Focus moves to the hour/minute select and opens the dropdown with hour/minute options.                                                    |
@@ -20,6 +22,8 @@ tabs: Design('time-picker'), A11y('time-picker-a11y'), API('time-picker-api'), E
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role     | Attribute                | Element | Usage                                                                                                                                                                                                                        |
 | -------- | ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

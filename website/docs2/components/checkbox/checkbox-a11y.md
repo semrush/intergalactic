@@ -8,6 +8,8 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                               |
 | ------------- | ------------------------------------------------------ |
 | `Tab`         | Moves focus to the next focusable element.             |
@@ -17,6 +19,8 @@ tabs: Design('checkbox'), A11y('checkbox-a11y'), API('checkbox-api'), Example('c
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role       | Attribute              | Element | Usage                                                                                                                                                                                                                                                                                                                                                                                 |
 | ---------- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -32,10 +36,11 @@ The list below describes roles and attributes that component already has.
 
 Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-guide/section-forms.html#kssref-forms-radio-buttons).
 
-
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
+Table: Roles
 
 | Role    | Element | Usage                                                                 |
 | ------- | ------- | --------------------------------------------------------------------- |

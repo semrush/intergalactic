@@ -8,7 +8,7 @@ tabs: Design('filter-kd-positions-volume'), Example('filter-kd-position-volume-c
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
@@ -90,10 +90,10 @@ const setTriggerText = ({ from, to }) => {
 };
 
 const Demo = () => {
-  const [filters, setFilters] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState({ from: '', to: '' });
-  const [displayValue, setDisplayValue] = useState('');
+  const [filters, setFilters] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState({ from: '', to: '' });
+  const [displayValue, setDisplayValue] = React.useState('');
   const clearAll = () => {
     setFilters(false);
   };

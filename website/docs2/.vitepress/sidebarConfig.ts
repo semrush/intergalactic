@@ -289,6 +289,29 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             ],
           },
           {
+            link: '/components/base-trigger/base-trigger',
+            text: 'BaseTrigger',
+            collapsed: true,
+            items: [
+              {
+                link: '/components/base-trigger/base-trigger-a11y',
+                text: 'A11y',
+              },
+              {
+                link: '/components/base-trigger/base-trigger-api',
+                text: 'API',
+              },
+              {
+                link: '/components/base-trigger/base-trigger-code',
+                text: 'Example',
+              },
+              {
+                link: '/components/base-trigger/base-trigger-changelog',
+                text: 'Changelog',
+              },
+            ],
+          },
+          {
             link: '/components/breadcrumbs/breadcrumbs',
             text: 'Breadcrumbs',
             collapsed: true,

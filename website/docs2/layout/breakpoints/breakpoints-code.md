@@ -16,14 +16,14 @@ Resize the window to see the changes.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useContext } from 'react';
+import React from 'react';
 import Breakpoints from '@semcore/ui/breakpoints';
 import Button from '@semcore/ui/button';
 
 const buttonSizes = ['m', 'l'] as const;
 
 const Example = () => {
-  const index = useContext(Breakpoints.Context);
+  const index = React.useContext(Breakpoints.Context);
 
   return <Button size={buttonSizes[index]}>Button size {buttonSizes[index]}</Button>;
 };
@@ -46,14 +46,14 @@ You can use an instance of the `MediaList` class, it has methods `matches`/`addL
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Breakpoints from '@semcore/ui/breakpoints';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [index, setIndex] = useState(Breakpoints.mediaList.matches());
+  const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());
 
-  useEffect(() => {
+  React.useEffect(() => {
     const unsubscribe = Breakpoints.mediaList.addListener((index) => {
       setIndex(index);
     });
@@ -79,7 +79,7 @@ The 'Breakpoints.mediaList.matches()' will return the intex of the first matchin
 ::: sandbox
 
 <script lang="tsx">
-import React, { useContext } from 'react';
+import React from 'react';
 import { createBreakpoints } from '@semcore/ui/breakpoints';
 
 const MEDIA = [
@@ -92,7 +92,7 @@ const MEDIA = [
 const Breakpoints = createBreakpoints(MEDIA);
 
 const Example = () => {
-  const index = useContext(Breakpoints.Context);
+  const index = React.useContext(Breakpoints.Context);
 
   return <div>Media matches "{MEDIA[index] || 'ZOOM WINDOW'}"</div>;
 };

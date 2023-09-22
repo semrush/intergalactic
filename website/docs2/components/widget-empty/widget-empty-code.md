@@ -15,9 +15,9 @@ The locale can be passed directly to the component or wrap your application in `
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
-import { I18nProvider } from '@semcore/ui/utils/enhances/WithI18n';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
 import { NoData } from '@semcore/ui/widget-empty';
 import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
@@ -31,7 +31,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
 );
 
 const Demo = () => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = React.useState('en');
 
   return (
     <div>
@@ -204,10 +204,10 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
-import { I18nProvider } from '@semcore/ui/utils/enhances/WithI18n';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
 import { NoData } from '@semcore/ui/widget-empty';
 import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
@@ -222,7 +222,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
 );
 
 const Demo = () => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = React.useState('en');
 
   return (
     <div>
@@ -254,10 +254,10 @@ The template already includes the `title` and the `icon`. You only need to provi
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
 import { Box } from '@semcore/ui/flex-box';
-import { I18nProvider } from '@semcore/ui/utils/enhances/WithI18n';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
 import { Error } from '@semcore/ui/widget-empty';
 import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
@@ -274,7 +274,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
 );
 
 const Demo = () => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = React.useState('en');
 
   return (
     <div>

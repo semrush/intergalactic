@@ -61,17 +61,17 @@ If the input is in a loading state while searching, sending, or entering data dy
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Spin from '@semcore/ui/spin';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [value, setValue] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, [value]);
@@ -117,14 +117,14 @@ The input field may have a clickable `Close` icon inside it to clear the entered
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import CloseM from '@semcore/ui/icon/Close/m';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = React.useState('');
 
   return (
     <>
@@ -169,14 +169,14 @@ Please note that this is an outdated pattern. Now we use it only in the input in
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import CheckM from '@semcore/ui/icon/Check/m';
 import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [focus, setFocus] = useState(false);
+  const [focus, setFocus] = React.useState(false);
 
   return (
     <>
@@ -266,7 +266,7 @@ When stacking two addons, the indents of the adjacent addons should be divided i
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import CloseM from '@semcore/ui/icon/Close/m';
@@ -277,8 +277,8 @@ import { Box } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [value, setValue] = useState('');
-  const [type, setType] = useState('password');
+  const [value, setValue] = React.useState('');
+  const [type, setType] = React.useState('password');
 
   return (
     <>
@@ -333,7 +333,7 @@ You can also place a [Badge](/components/badge/badge) or a [Tag](/components/tag
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Badge from '@semcore/ui/badge';
 import Tag from '@semcore/ui/tag';
@@ -341,7 +341,7 @@ import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('heh');
+  const [value, setValue] = React.useState('heh');
 
   return (
     <div>

@@ -137,12 +137,12 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Tag from '@semcore/ui/tag';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [tags, setTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
+  const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
 
   const handleEditTag = (e) => {
     const { dataset } = e.currentTarget.parentElement;

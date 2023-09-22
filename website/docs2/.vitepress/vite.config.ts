@@ -71,4 +71,7 @@ export const viteConfig = defineConfig({
       },
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1500,
+  },
 });

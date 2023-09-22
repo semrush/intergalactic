@@ -83,7 +83,7 @@ To draw the values of the bars, pass the function to `<Bar/>` to receive all req
 import React from 'react';
 import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import resolveColor from '@semcore/ui/utils/color';
+import resolveColor from '@semcore/ui/utils/lib/color';
 
 const Demo = () => {
   const MARGIN = 40;

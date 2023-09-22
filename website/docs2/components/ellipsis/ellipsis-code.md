@@ -117,12 +117,12 @@ in case of multiple use of a component for optimization you can use one observer
 ::: sandbox
 
 <script lang="tsx">
-import React, { useRef } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Ellipsis, { useResizeObserver } from '@semcore/ui/ellipsis';
 
 const Demo = () => {
-  const containerRef = useRef(null);
+  const containerRef = React.useRef(null);
 
   const containerRect = useResizeObserver(containerRef);
 

@@ -9,6 +9,8 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |

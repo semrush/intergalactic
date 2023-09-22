@@ -9,6 +9,8 @@ tabs: Design('input'), A11y('input-a11y'), API('input-api'), Example('input-code
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |

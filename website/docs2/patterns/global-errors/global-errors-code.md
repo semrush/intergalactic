@@ -10,9 +10,9 @@ Both graphics and texts are already included in ready-to-use templates. The loca
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
-import { I18nProvider } from '@semcore/ui/utils/enhances/WithI18n';
+import { I18nProvider } from '@semcore/ui/utils/lib/enhances/WithI18n';
 import {
   AccessDenied,
   Maintenance,
@@ -29,7 +29,7 @@ const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi
 );
 
 const Demo = () => {
-  const [lang, setLang] = useState('en');
+  const [lang, setLang] = React.useState('en');
 
   return (
     <div>

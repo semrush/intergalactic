@@ -9,6 +9,8 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key                      | Function                                       |
 | ------------------------ | ---------------------------------------------- |
 | `Tab`                    | Moves focus to the next focusable element.     |
@@ -20,6 +22,8 @@ tabs: Design('drag-and-drop'), A11y('drag-and-drop-a11y'), API('drag-and-drop-ap
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role    | Attribute                      | Element | Usage                                                                                                                                                                                                                               |
 | ------- | ------------------------------ | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

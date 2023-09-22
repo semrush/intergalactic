@@ -391,7 +391,7 @@ Design token JSON-files [produced by Figma plugin](/style/design-tokens/design-t
 
 <script lang="tsx">
 import React from 'react';
-import '@semcore/ui/utils/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
+import '@semcore/ui/utils/lib/themes/default.css'; /** TO REMOVE WHEN THEME PR WILL BE MERGED */
 import Button from '@semcore/ui/button';
 import { Box } from '@semcore/ui/flex-box';
 import CheckM from '@semcore/icon/Check/m';

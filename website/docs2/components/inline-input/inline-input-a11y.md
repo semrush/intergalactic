@@ -8,6 +8,8 @@ tabs: Design('inline-input'), A11y('inline-input-a11y'), API('inline-input-api')
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |

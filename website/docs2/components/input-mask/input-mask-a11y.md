@@ -9,6 +9,8 @@ tabs: Design('input-mask'), A11y('input-mask-a11y'), API('input-mask-api'), Exam
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |

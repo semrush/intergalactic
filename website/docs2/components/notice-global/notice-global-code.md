@@ -8,7 +8,7 @@ tabs: Design('notice-global'), A11y('notice-global-a11y'), API('notice-global-ap
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Portal from '@semcore/ui/portal';
 import NoticeGlobal from '@semcore/ui/notice-global';
 import { Text } from '@semcore/ui/typography';
@@ -16,7 +16,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>

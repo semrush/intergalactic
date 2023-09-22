@@ -235,7 +235,7 @@ class Demo extends React.PureComponent {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useRef } from 'react';
+import React from 'react';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
@@ -254,7 +254,7 @@ function getRandomColor() {
 }
 
 const Demo = () => {
-  const containerRef = useRef();
+  const containerRef = React.useRef();
   return (
     <Flex>
       <Box style={{ position: 'relative' }}>
@@ -306,7 +306,7 @@ The dynamic virtual list is powered by [React-virtualized](https://github.com/bv
 ::: sandbox
 
 <script lang="tsx">
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { findDOMNode } from 'react-dom';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Box, Flex } from '@semcore/ui/flex-box';
@@ -326,8 +326,8 @@ const renderRow = ({ key, index, style }) => {
 };
 
 const Demo = () => {
-  const [data, setData] = useState(list);
-  const innerRef = useRef();
+  const [data, setData] = React.useState(list);
+  const innerRef = React.useRef();
   const ref = (node) => {
     node = findDOMNode(node);
     if (node) {

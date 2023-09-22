@@ -8,6 +8,8 @@ tabs: Design('wizard'), A11y('wizard-a11y'), API('wizard-api'), Example('wizard-
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
@@ -19,6 +21,8 @@ See detailed information about the keyboard support for the all form elements in
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role       | Attribute               | Element | Usage                                                                                                                                     |
 | ---------- | ----------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------- |

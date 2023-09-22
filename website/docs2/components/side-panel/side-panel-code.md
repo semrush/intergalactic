@@ -9,13 +9,13 @@ tabs: Design('side-panel'), A11y('side-panel-a11y'), API('side-panel-api'), Exam
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { List } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -42,12 +42,12 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import SidePanel from '@semcore/ui/side-panel';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>
@@ -78,13 +78,13 @@ You can access the internal components by expanding `SidePanel` for `SidePanel.O
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -114,7 +114,7 @@ The component is supplied with three positioning options.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import Select from '@semcore/ui/select';
@@ -123,8 +123,8 @@ import SidePanel, { SidePanelPlacement } from '@semcore/ui/side-panel';
 const placements: SidePanelPlacement[] = ['left', 'right', 'bottom'];
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const [placement, setPlacement] = useState(placements[1]);
+  const [visible, setVisible] = React.useState(false);
+  const [placement, setPlacement] = React.useState(placements[1]);
 
   return (
     <React.Fragment>
@@ -169,13 +169,13 @@ By default, the component is rendered with an overlay, but you can change this b
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -202,13 +202,13 @@ By default, the component is rendered to the portal, at the bottom of the body. 
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
 import SidePanel from '@semcore/ui/side-panel';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <React.Fragment>

@@ -9,12 +9,12 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>
@@ -40,7 +40,7 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import FullscreenModal from '@semcore/ui/fullscreen-modal';
 import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
@@ -49,7 +49,7 @@ import ArrowLeftM from '@semcore/ui/icon/ArrowLeft/m';
 import ArrowRightM from '@semcore/ui/icon/ArrowRight/m';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>

@@ -49,7 +49,7 @@ The component can operate in either controlled or uncontrolled mode.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { Flex } from '@semcore/ui/flex-box';
 import Select from '@semcore/ui/select';
 
@@ -64,7 +64,7 @@ const options = Array(6)
 const { value: initialValue } = options[0];
 
 const Demo = () => {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = React.useState(initialValue);
 
   return (
     <Flex>
@@ -125,7 +125,7 @@ In cases when you require deeper customization, you can "unfold" the component i
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
 import { Flex } from '@semcore/ui/flex-box';
 import Flags, { iso2Name } from '@semcore/ui/flags';
@@ -133,7 +133,7 @@ import Flags, { iso2Name } from '@semcore/ui/flags';
 const formatName = (name) => name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 
 const Demo = () => {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = React.useState(null);
 
   return (
     <Flex>
@@ -261,7 +261,7 @@ The example below shows one of the ways to implement filtering.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select, { InputSearch } from '@semcore/ui/select';
 
 const data = Array(26)
@@ -272,7 +272,7 @@ const data = Array(26)
   }));
 
 const Demo = () => {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
     () => data.filter((option) => option.value.toString().includes(filter)),
     [filter],
@@ -329,7 +329,7 @@ In the example below clear button handler is disabled.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select, { InputSearch } from '@semcore/ui/select';
 
 const data = Array(26)
@@ -340,7 +340,7 @@ const data = Array(26)
   }));
 
 const Demo = () => {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
     () => data.filter((option) => option.value.toString().includes(filter)),
     [filter],
@@ -431,7 +431,7 @@ The example below shows one of the ways to sort the selected options.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Select from '@semcore/ui/select';
 
 const options = Array(20)
@@ -449,8 +449,8 @@ const Option = ({ value, title }) => (
 );
 
 const Demo = () => {
-  const [selected, setSelected] = useState([]);
-  const [prevSelected, setPrevSelected] = useState([]);
+  const [selected, setSelected] = React.useState([]);
+  const [prevSelected, setPrevSelected] = React.useState([]);
 
   const handleVisibleChange = (value) => {
     if (value) return;

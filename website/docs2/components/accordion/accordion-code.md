@@ -12,13 +12,13 @@ Don't specify `padding` and `margin` for `Accordion.Item.Collapse`, this will br
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Accordion from '@semcore/ui/accordion';
 import { Text } from '@semcore/ui/typography';
 import { Flex, Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, onChange] = useState([0]);
+  const [value, onChange] = React.useState([0]);
 
   return (
     <Accordion value={value} onChange={(value) => onChange(value)}>
@@ -111,7 +111,9 @@ const Demo = () => {
     const style = document.createElement('style');
     style.innerHTML = styles;
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   return (
@@ -149,13 +151,13 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Accordion from '@semcore/ui/accordion';
 import { Text } from '@semcore/ui/typography';
 import { Box, Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, onChange] = useState(null); // or []
+  const [value, onChange] = React.useState(null); // or []
   return (
     <Accordion value={value} onChange={onChange}>
       {[...new Array(3)].map((_, index) => (

@@ -9,6 +9,8 @@ tabs: Design('tag'), A11y('tag-a11y'), API('tag-api'), Example('tag-code'), Chan
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                                                          |
 | ------------- | --------------------------------------------------------------------------------- |
 | `Tab`         | Moves keyboard focus to the interactive tag and its `Close` icon button.          |

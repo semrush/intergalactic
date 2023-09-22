@@ -9,6 +9,8 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key                   | Function                                                |
 | --------------------- | ------------------------------------------------------- |
 | `Tab`                 | Moves focus to the slider.                              |
@@ -20,6 +22,8 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role     | Attribute                 | Element | Usage                                                                                                                                                          |
 | -------- | ------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |

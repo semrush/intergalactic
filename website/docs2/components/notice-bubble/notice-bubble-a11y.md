@@ -8,6 +8,8 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                                                                                                                                            |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element. When focus is on the last focusable element in the dialog, moves focus to the first focusable element in the dialog.     |
@@ -19,6 +21,8 @@ tabs: Design('notice-bubble'), A11y('notice-bubble-a11y'), API('notice-bubble-ap
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role   | Attribute               | Element                                                      | Usage                                                                                                                                                                                                                               |
 | ------ | ----------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -39,6 +43,8 @@ Note that it is necessary for elements that have attributes such as `aria-live` 
 ### Roles & attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+Table: Roles and attributes
 
 | Role        | Attribute                  | Element | Usage                                                                                                                                                        |
 | ----------- | -------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |

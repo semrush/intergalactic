@@ -11,13 +11,13 @@ Here's an example where tags have a limited width and can be edited by clicking 
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import InputTags from '@semcore/ui/input-tags';
 import Tooltip from '@semcore/ui/tooltip';
 
 const Demo = () => {
-  const [tags, setTags] = useState(['vk', 'fk', 'twitter', 'instagram']);
-  const [value, setValue] = useState('');
+  const [tags, setTags] = React.useState(['vk', 'fk', 'twitter', 'instagram']);
+  const [value, setValue] = React.useState('');
 
   const handleAppendTags = (newTags) => {
     setTags((tags) => [...tags, ...newTags]);
@@ -91,7 +91,7 @@ In this example, emails are wrapped in tags without any width limitation.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import InputTags from '@semcore/ui/input-tags';
 import Select from '@semcore/ui/select';
 
@@ -100,8 +100,8 @@ const isValidEmail = (value) => /.+@.+\..+/i.test(value.toLowerCase());
 const defaultTags = ['bob@vk.com', 'wolf@instagram.dot', 'fekla@fk.com', 'tuz@twitter.net'];
 
 const Demo = () => {
-  const [tags, setTags] = useState(defaultTags);
-  const [value, setValue] = useState('');
+  const [tags, setTags] = React.useState(defaultTags);
+  const [value, setValue] = React.useState('');
 
   const changeState = (tags, value) => {
     if (tags !== undefined) {
@@ -182,16 +182,16 @@ In this example, selected options from the dropdown menu are wrapped in tags wit
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import InputTags from '@semcore/ui/input-tags';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
 
 const Demo = () => {
-  const [tags, setTags] = useState([]);
-  const [valueInput, setValueInput] = useState('');
-  const [visible, setVisible] = useState(false);
+  const [tags, setTags] = React.useState([]);
+  const [valueInput, setValueInput] = React.useState('');
+  const [visible, setVisible] = React.useState(false);
 
   function onRemoveLastTag() {
     if (tags.length) {

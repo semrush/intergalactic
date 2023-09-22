@@ -9,6 +9,8 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 
 ### Keyboard support for select and multiselect lists
 
+Table: Keyboard support
+
 | Key                            | Function                                                                                                                                  |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                          | Moves focus to the next focusable element.                                                                                                |
@@ -22,6 +24,8 @@ tabs: Design('select'), A11y('select-a11y'), API('select-api'), Example('select-
 
 The list below describes roles and attributes that component already has.
 
+Table: Roles and attributes
+
 | Role       | Attribute                      | Element | Usage                                                                                                                                                                 |
 | ---------- | ------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `button`   |                                | `div`   | Identifies Select.Trigger as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`.                        |
@@ -34,6 +38,8 @@ The list below describes roles and attributes that component already has.
 ### Roles and attributes for combobox
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role       | Attribute                       | Element | Usage                                                                                                                                                                                                                                                                                                                                 |
 | ---------- | ------------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -56,6 +62,8 @@ The list below describes roles and attributes that component already has.
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+Table: Roles and attributes
 
 | Role | Attribute    | Element | Usage                                                                                                            |
 | ---- | ------------ | ------- | ---------------------------------------------------------------------------------------------------------------- |

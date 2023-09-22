@@ -21,7 +21,7 @@ They have a set of preset values and a custom range inputs.
 
 **When working with filters, it is important for the user to:**
 
-- understand that there are preset values and the ability to enter what he needs;
+- understand that there are preset values and the ability to enter what they need;
 - quickly navigate and choose a value from the preset ones;
 - quickly understand that nothing was found;
 - quickly reset the entered data and search again;

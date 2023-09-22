@@ -166,7 +166,6 @@ When scrolling, the progress bar can be pinned, remaining visible above all comp
 - If the download process is too long and we know about it in advance, the progress shall be visualized immediately.
 - If the exact or approximate loading time isn’t known, wait for 3 seconds and display the fake progress.
 - In cases when loading is very fast, set the minimum time for displaying the progress bar – 3 seconds. This is necessary to avoid "blinking" of the interface.
-  
 - If the download process is expected to be long, visualize the progress immediately.
 - If the exact or approximate loading time is unknown, wait for 3 seconds and display the fake progress.
 - For very fast loading, set the minimum time for displaying the progress bar to 3 seconds to avoid interface "blinking."

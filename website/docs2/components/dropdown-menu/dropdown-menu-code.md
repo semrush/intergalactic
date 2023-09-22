@@ -55,9 +55,9 @@ This method is good when you need a flexible content customization in a dropdown
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
-import Button from '@semcore/ui/base-trigger';
+import Button from '@semcore/ui/button';
 import Link from '@semcore/ui/link';
 import { Text } from '@semcore/ui/typography';
 import Notice from '@semcore/ui/notice';
@@ -65,7 +65,7 @@ import SpinContainer from '@semcore/ui/spin-container';
 import FileExportM from '@semcore/ui/icon/FileExport/m';
 
 const Demo = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClick = () => {
     setLoading(true);
@@ -74,13 +74,11 @@ const Demo = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenu.Trigger>
-        <Button>
-          <Button.Addon>
-            <FileExportM />
-          </Button.Addon>
-          <Button.Text>Export</Button.Text>
-        </Button>
+      <DropdownMenu.Trigger tag={Button}>
+        <Button.Addon>
+          <FileExportM />
+        </Button.Addon>
+        <Button.Text>Export</Button.Text>
       </DropdownMenu.Trigger>
       <DropdownMenu.Popper wMax='257px'>
         <SpinContainer loading={loading}>

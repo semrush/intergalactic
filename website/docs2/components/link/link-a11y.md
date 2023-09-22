@@ -8,6 +8,8 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
@@ -19,6 +21,8 @@ tabs: Design('link'), A11y('link-a11y'), API('link-api'), Example('link-code'), 
 ### Roles & attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
+Table: Roles and attributes
 
 | Role   | Attribute      | Element       | Usage                                                 |
 | ------ | -------------- | ------------- | ----------------------------------------------------- |

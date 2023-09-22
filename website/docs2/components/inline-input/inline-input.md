@@ -68,7 +68,7 @@ Table: Leading addon styles
 
 Through the addon, you can add a label.
 
-_It's needed so that the user understands what data he needs to enter. For example, tag name, project name, etc._
+_It's needed so that the user understands what data they need to enter. For example, tag name, project name, etc._
 
 ![](static/permanent-placeholder.png)
 

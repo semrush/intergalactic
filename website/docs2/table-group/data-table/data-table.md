@@ -483,16 +483,16 @@ Set `zIndex=2` for correct display.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import { Box } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 const Demo = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [container, setContainer] = useState(null);
-  const [top, setTop] = useState(0);
-  useEffect(() => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [container, setContainer] = React.useState(null);
+  const [top, setTop] = React.useState(0);
+  React.useEffect(() => {
     containerRef.current &&
       setContainer(containerRef.current.closest('[data-ui-name="ScrollArea.Container"]'));
     const header = document.getElementsByTagName('header')[0];
@@ -762,13 +762,13 @@ Sometimes we need to move the table header outside of the table, this can be don
 ::: sandbox
 
 <script lang="tsx">
-import React, { useRef } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Divider from '@semcore/ui/divider';
 import Portal, { PortalProvider } from '@semcore/ui/portal';
 
 const Demo = () => {
-  const portalRef = useRef(null);
+  const portalRef = React.useRef(null);
   return (
     <>
       <div style={{ border: '1px solid' }} ref={portalRef} />
@@ -1264,7 +1264,7 @@ We use the `@semcore/ui/accordion` component to extend the functionality of the 
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import DataTable from '@semcore/ui/data-table';
 import Accordion from '@semcore/ui/accordion';
@@ -1284,7 +1284,7 @@ const RowAccordion = React.forwardRef(function (
 });
 
 const Demo = () => {
-  const [exapnded, setExapnded] = useState<number[]>([]);
+  const [exapnded, setExapnded] = React.useState<number[]>([]);
 
   return (
     /* [1] Wrapping the table in the Accordion control component; */
@@ -1332,7 +1332,7 @@ const Demo = () => {
 };
 
 const ChartExample = () => {
-  const [[width, height], setSize] = useState([0, 0]);
+  const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
   const dataChart = Array(20)
     .fill({})
@@ -1410,7 +1410,7 @@ We use the example with [the accordion above](/table-group/data-table/data-table
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
@@ -1427,7 +1427,7 @@ const RowAccordion = React.forwardRef(
 );
 
 const Demo = () => {
-  const [value, setValue] = useState<number[]>([]);
+  const [value, setValue] = React.useState<number[]>([]);
 
   return (
     <Accordion value={value} onChange={setValue}>
@@ -1527,7 +1527,7 @@ We use the example with [the table above](/table-group/data-table/data-table#tab
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Accordion from '@semcore/ui/accordion';
 import { Flex } from '@semcore/ui/flex-box';
@@ -1544,7 +1544,7 @@ const RowAccordion = React.forwardRef(
 );
 
 const Demo = () => {
-  const [value, setValue] = useState([]);
+  const [value, setValue] = React.useState([]);
   return (
     <Accordion value={value} onChange={setValue}>
       <DataTable data={data}>
@@ -1689,13 +1689,13 @@ You can replace the `tag` property with `<DataTable.Body/>` on the `SpinContaine
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import SpinContainer from '@semcore/ui/spin-container';
 
 const Demo = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
     const timer = setInterval(() => {
       setLoading(!loading);
     }, 1500);
@@ -1761,7 +1761,7 @@ You can substitute the skeleton directly in `data`, but you can also replace `ro
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import Skeleton from '@semcore/ui/skeleton';
 
@@ -1778,8 +1778,8 @@ function getSkeleton() {
 }
 
 const Demo = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
     const timer = setInterval(() => {
       setLoading(!loading);
     }, 2000);
@@ -2281,11 +2281,11 @@ To add a border to a column, you need to pass `vBorders` properties to that colu
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable, { DataTableSort } from '@semcore/ui/data-table';
 
 const Demo = () => {
-  const [sort, setSort] = useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
     <DataTable data={data} sort={sort} onSortChange={setSort}>
@@ -2352,11 +2352,11 @@ The active column will expand if there isn’t enough space. Fixed width columns
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import DataTable, { DataTableSort } from '@semcore/ui/data-table';
 
 const Demo = () => {
-  const [sort, setSort] = useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
+  const [sort, setSort] = React.useState<DataTableSort<keyof typeof data[0]>>(['cpc', 'desc']);
 
   return (
     <DataTable data={data} sort={sort} onSortChange={setSort}>

@@ -18,7 +18,7 @@ const Demo = () => {
   const [choice, setChoice] = React.useState(null);
 
   return (
-    <Pills value={choice} onChange={setChoice}>
+    <Pills value={choice} onChange={setChoice} behavior='radio'>
       <Pills.Item value={'like'}>
         <Pills.Item.Addon tag={ThumbUpM} />
         <Pills.Item.Text>Like</Pills.Item.Text>

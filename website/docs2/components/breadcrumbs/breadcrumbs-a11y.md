@@ -8,6 +8,8 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key              | Function                                         |
 | ---------------- | ------------------------------------------------ |
 | `Tab`            | Moves focus to the next focusable element.       |
@@ -17,6 +19,8 @@ tabs: Design('breadcrumbs'), A11y('breadcrumbs-a11y'), API('breadcrumbs-api'), E
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role    | Attribute                 | Element | Usage                                                                                                                                                             |
 | ------- | ------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |

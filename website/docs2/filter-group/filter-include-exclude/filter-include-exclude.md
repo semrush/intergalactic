@@ -66,7 +66,7 @@ When opening a dropdown texarea immediately gets the focus.
 
 ### Additional cases
 
-- If user pressed the square bracket at the beginning and then he pressed a comma or "Enter", then close the square bracket in this line. This behavior should work in the case when the user puts only a square bracket at the end.
+- If user pressed the square bracket at the beginning and then they pressed a comma or "Enter", then close the square bracket in this line. This behavior should work in the case when the user puts only a square bracket at the end.
 - If user closes the square bracket in a line, then move the cursor to the next line.
 - **The "AND" logic works in the line between words.**
 - Change the logic between the lines using radio buttons (in the "Include keywords" filter).

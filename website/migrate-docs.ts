@@ -1117,7 +1117,9 @@ await Promise.all(
     if (docsDirEntities.includes('static')) {
       const docs2DirEntities = await fs.readdir(resolvePath('docs2', resolveDirname(path)));
       if (!docs2DirEntities.includes('static')) {
-        await fs.mkdir(resolvePath('docs2', resolveDirname(path), 'static'));
+        try {
+          await fs.mkdir(resolvePath('docs2', resolveDirname(path), 'static'));
+        } catch {}
       }
       const files = await fs.readdir(resolvePath('docs', resolveDirname(path), 'static'));
       await Promise.all(

@@ -15,14 +15,14 @@ Make sure to provide a tooltip with full text for tabs with text truncated with 
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import TabPanel from '@semcore/ui/tab-panel';
 import Badge from '@semcore/ui/badge';
 import Tooltip from '@semcore/ui/tooltip';
 import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
 
 const Demo = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
   return (
     <TabPanel onChange={setValue} value={value} aria-label='Page'>
       <TabPanel.Item value={0}>Overview</TabPanel.Item>
@@ -66,11 +66,11 @@ As you may have noticed, the TabPanel doesn't have default margins at the edges.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import TabPanel from '@semcore/ui/tab-panel';
 
 const Demo = () => {
-  const [value, onChange] = useState(1);
+  const [value, onChange] = React.useState(1);
   return (
     <>
       <TabPanel value={value} onChange={onChange} aria-label='Page'>

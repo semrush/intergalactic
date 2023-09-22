@@ -247,7 +247,7 @@ Table: Cases for appearance of external links
 | Case description     | Transition inside product | Transition to external resource | Appearance example     |
 | ---- | ------------------------------------------------ | ---------------------- | --------------------------------------------- |
 | Link leads to a page within the product. In this case, you don't need to add the `LinkExternal` icon to the link. Add URL only to the link text.      | ✅         | ❌                                            | ![](static/link-example-1.png) |
-| If the link leads to an external website or product, then only the `LinkExternal` icon next to the link should have a URL. The icon is always grey.          | ❌                                               | ✅                                            | ![](static/link-example-2.png)                                                                           |
+| If the link leads to an external website or product, then only the `LinkExternal` icon next to the link should have a URL. The icon is always gray.          | ❌                                               | ✅                                            | ![](static/link-example-2.png)                                                                           |
 | If the link leads to both a page within the product and an external resource, the text and `LinkExternal` icon must have a different URL and color. The text always leads to a page within the product, and `LinkExternal` icon always leads to an external resource. | ✅                                               | ✅                                            | ![](static/link-example-3.png)                                                                           |
 
 ### Styles

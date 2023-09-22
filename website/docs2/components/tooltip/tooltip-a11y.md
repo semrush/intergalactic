@@ -9,6 +9,8 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key   | Function            |
 | ----- | ------------------- |
 | `Esc` | Closes the tooltip. |
@@ -16,6 +18,8 @@ tabs: Design('tooltip'), A11y('tooltip-a11y'), API('tooltip-api'), Example('tool
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role      | Attribute                 | Element                                                   | Usage                                                                                                                                                                                                                                                             |
 | --------- | ------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

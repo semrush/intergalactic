@@ -10,13 +10,13 @@ The input field is pre-filled with the value: `+`.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import CloseM from '@semcore/ui/icon/Close/m';
 import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
-  const [value, setValue] = useState('+');
+  const [value, setValue] = React.useState('+');
   return (
     <>
       <Text tag='label' htmlFor='basic-example' size={200} mr={2}>
@@ -53,13 +53,13 @@ In certain countries, there may be multiple valid formats for phone numbers. The
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Flag from '@semcore/ui/flags';
 import CloseM from '@semcore/ui/icon/Close/m';
 
 const Demo = () => {
-  const [value, setValue] = useState('+1');
+  const [value, setValue] = React.useState('+1');
   return (
     <Input w={180}>
       <Input.Addon>
@@ -96,7 +96,7 @@ Make sure to verify the available valid phone number formats for the specific co
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import InputMask, { getAfterPositionValue } from '@semcore/ui/input-mask';
 import Select, { InputSearch } from '@semcore/ui/select';
@@ -361,18 +361,18 @@ const listActuallyCountryCodes = Object.keys(CountryCodes)
   }, {});
 
 const Demo = () => {
-  const inputMaskRef = useRef(null);
-  const [filter, setFilterValue] = useState('');
-  const [option, setOption] = useState(listActuallyCountryCodes['Zimbabwe']);
-  const [value, setValue] = useState(option.dial_code);
-  const [valueMask, setValueMask] = useState(`${option.dial_code} (___)___-____`);
+  const inputMaskRef = React.useRef(null);
+  const [filter, setFilterValue] = React.useState('');
+  const [option, setOption] = React.useState(listActuallyCountryCodes['Zimbabwe']);
+  const [value, setValue] = React.useState(option.dial_code);
+  const [valueMask, setValueMask] = React.useState(`${option.dial_code} (___)___-____`);
   let country;
 
-  useEffect(() => {
+  React.useEffect(() => {
     setValueMask(`${option.dial_code} (___)___-____`);
   }, [option]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (value === valueMask) {
       const position = getAfterPositionValue(value);
       inputMaskRef?.current.setSelectionRange(position, position);

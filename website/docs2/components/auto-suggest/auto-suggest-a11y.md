@@ -8,6 +8,8 @@ tabs: Design('auto-suggest'), A11y('auto-suggest-a11y'), Example('auto-suggest-c
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key                            | Function                                                                                                                                  |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                          | Moves focus to the next focusable element.                                                                                                |

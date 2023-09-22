@@ -6,11 +6,11 @@ tabs: Design('skeleton'), A11y('skeleton-a11y'), API('skeleton-api'), Example('s
 
 ## Description
 
-**Skeleton** is a component used to display the structure of a widget or page when it's initially loading. 
+**Skeleton** is a component used to display the structure of a widget or page when it's initially loading.
 Its purpose is to provide users with a mental map of the data being loaded.
 
 ::: tip
-This component demonstrates the loading and response to user actions in the interface. 
+This component demonstrates the loading and response to user actions in the interface.
 :::
 For general recommendations regarding such components, refer to the [Loading patterns](/patterns/loading-states/loading-states).
 
@@ -39,8 +39,8 @@ Table: Skeleton themes
 
 ## Animation
 
-The Skeleton is animated with a content appearance animation lasting 300 ms with an `ease-out` effect (refer to [Code examples](/components/skeleton/skeleton-code)). 
-The Skeleton gradient animation has a default duration of 2000 ms. 
+The Skeleton is animated with a content appearance animation lasting 300 ms with an `ease-out` effect (refer to [Code examples](/components/skeleton/skeleton-code)).
+The Skeleton gradient animation has a default duration of 2000 ms.
 Animation is applied per data block (widgets, tables, charts) without the need for synchronization between elements.
 
 ::: tip
@@ -66,8 +66,8 @@ These components don't require additional loading and can be displayed immediate
 
 ### Dynamic information (should be skeletonized)
 
-This information requires additional requests and a long time to load. 
-It varies depending on the user's actions and specific projects. 
+This information requires additional requests and a long time to load.
+It varies depending on the user's actions and specific projects.
 In most cases, this group includes:
 
 - Widgets
@@ -130,7 +130,7 @@ Table: Skeleton for small illustrations
 | 2. Replace by illustrations and text | ![](static/pics-pics.png) |
 
 - For large-sized illustrations like screenshots on landings or blog pictures, consider using a multi-step loading process. Show small pictures and the Skeleton initially, replace them with text and user pictures, and then load the large image blurred before fully loading it.
-  
+
 Table: Skeleton for large illustrations
 
 | Step                        | Appearance example                |
@@ -153,7 +153,7 @@ For charts, avoid showing axes and labels. Replace the legend with a Skeleton, a
 - If a button or link submits data or confirms user actions, set them to a `disabled` state while loading.
 
 ::: tip
-When you don’t know what type of button (`primary` or `secondary`) should be loaded, 
+When you don’t know what type of button (`primary` or `secondary`) should be loaded,
 :::
 show Skeleton instead of the button.
 
@@ -184,9 +184,9 @@ show Skeleton instead of the button.
 ### Chart
 
 - Keep pills active during the initial loading of the table.
-- Replace the legend with skeleton "bones" of the same size. 
+- Replace the legend with skeleton "bones" of the same size.
 If the legend values are known in advance, show them during the initial loading.
-- Replace the chart with the corresponding Skeleton based on the chart type. 
+- Replace the chart with the corresponding Skeleton based on the chart type.
 For more details, refer to [Chart principles](/data-display/d3-chart/d3-chart).
 
 ![skeleton-chart](static/chart.png)
@@ -208,7 +208,7 @@ Pills should never be disabled. They should always remain active, even during th
 
 **Pills with counters**
 
-During the initial loading of the page, the counters in the pills can be displayed as skeletons. 
+During the initial loading of the page, the counters in the pills can be displayed as skeletons.
 For more information about page loading, refer to [Web-performance](/patterns/web-performance/web-performance).
 
 ![skeleton-pills](static/pills.png)
@@ -224,7 +224,7 @@ Skeletonize big pills similarly to the Summary.
 
 ## Usage in UX/UI
 
-**Use Skeleton only for displaying dynamic information.** 
+**Use Skeleton only for displaying dynamic information.**
 Information that can be shown instantly and remains unchanged should be displayed immediately.
 
 ![skeleton-heading](static/heading-yes-no.png)
@@ -233,17 +233,17 @@ Information that can be shown instantly and remains unchanged should be displaye
 
 ![skeleton-info](static/info-yes-no.png)
 
-**Use Skeleton to display changing page titles**—for example, 
+**Use Skeleton to display changing page titles**—for example,
 the project name or widget title that depends on certain factors.
 
 ![skeleton-dynamic-info](static/dynamic-yes-no.png)
 
-**Show only the main information** and avoid showing unnecessary additional details 
+**Show only the main information** and avoid showing unnecessary additional details
 during the initial loading of the page.
 
 ![skeleton-color](static/color-yes-no.png)
 
-**Avoid displaying icons separately from the text or links they belong to.** 
+**Avoid displaying icons separately from the text or links they belong to.**
 The exception is for icons that represent critical information.
 
 ![skeleton-link](static/link-yes-no.png)
@@ -252,7 +252,7 @@ The exception is for icons that represent critical information.
 
 ![](static/table-yes-no.png)
 
-**Show `Info` icons and tooltips** so that users can read loading information 
+**Show `Info` icons and tooltips** so that users can read loading information
 during the initial loading.
 
 ![](static/tooltip-yes-no.png)
@@ -261,7 +261,7 @@ during the initial loading.
 
 ![](static/dropdown-yes-no.png)
 
-**Don’t add too many skeleton "bones."** Add no more than three. 
+**Don’t add too many skeleton "bones."** Add no more than three.
 Otherwise, you'll increase the page load time excessively.
 
 ![](static/count-yes-no.png)

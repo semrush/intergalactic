@@ -9,6 +9,8 @@ tabs: Design('switch'), A11y('switch-a11y'), API('switch-api'), Example('switch-
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key              | Function                                               |
 | ---------------- | ------------------------------------------------------ |
 | `Space`, `Enter` | Changes state of the switch to checked or not checked. |
@@ -39,6 +41,8 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 ### Roles and attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in the particular cases in your interfaces.
+
+Table: Attributes
 
 | Attribute         | Element | Usage                                                                                                                                                                  |
 | ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

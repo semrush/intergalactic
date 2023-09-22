@@ -11,13 +11,13 @@ RadioGroup acts as a controlling component and doesn't have an actual HTML eleme
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Radio, { RadioGroup } from '@semcore/ui/radio';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState('1');
+  const [value, setValue] = React.useState('1');
   return (
     <div>
       <RadioGroup name='radio' value={value} onChange={(v) => setValue(v)}>
@@ -25,16 +25,16 @@ const Demo = () => {
           <Text tag='p' id='radioGroup' size={200}>
             Select value
           </Text>
-          <Flex mt={2}>
-            <Radio mr={3}>
+          <Flex mt={2} direction={'column'}>
+            <Radio mb={3}>
               <Radio.Value value='1' />
               <Radio.Text>Value 1</Radio.Text>
             </Radio>
-            <Radio mr={3}>
+            <Radio mb={3}>
               <Radio.Value value='2' />
               <Radio.Text>Value 2</Radio.Text>
             </Radio>
-            <Radio mr={3}>
+            <Radio mb={3}>
               <Radio.Value value='3' />
               <Radio.Text>Value 3</Radio.Text>
             </Radio>
@@ -60,7 +60,7 @@ should be directed, but occasionally, this behavior needs to be modified.
 <script lang="tsx">
 import React from 'react';
 import Radio from '@semcore/ui/radio';
-import { inputProps } from '@semcore/ui/utils/inputProps';
+import { inputProps } from '@semcore/ui/utils/lib/inputProps';
 
 const Demo = () => {
   const includeInputProps = [...inputProps, 'data-test-id'];

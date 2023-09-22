@@ -8,6 +8,8 @@ tabs: Design('input-tags'), A11y('input-tags-a11y'), API('input-tags-api'), Exam
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key                                  | Function                                                                          |
 | ------------------------------------ | --------------------------------------------------------------------------------- |
 | `Tab`                                | Moves focus to the next focusable element.                                        |

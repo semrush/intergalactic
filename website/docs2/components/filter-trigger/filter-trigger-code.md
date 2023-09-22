@@ -60,7 +60,7 @@ It is more complex example with [Dropdown](/components/dropdown/dropdown) and [C
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { FilterTrigger } from '@semcore/ui/base-trigger';
 import Dropdown from '@semcore/ui/dropdown';
 import Button from '@semcore/ui/button';
@@ -68,8 +68,8 @@ import { Text } from '@semcore/ui/typography';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [filters, setFilters] = useState(0);
-  const [visible, setVisible] = useState(false);
+  const [filters, setFilters] = React.useState(0);
+  const [visible, setVisible] = React.useState(false);
 
   return (
     <>

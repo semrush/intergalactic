@@ -8,6 +8,8 @@ tabs: Design('fullscreen-modal'), A11y('fullscreen-modal-a11y'), API('fullscreen
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |

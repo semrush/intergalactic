@@ -11,6 +11,8 @@ When dropdown is closed, the focus returns to the trigger.
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key              | Function                                       |
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
@@ -23,6 +25,8 @@ See detailed information for the controlling dropdown with the keyboard in the [
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Roles and attributes
 
 | Role | Attribute    | Element | Usage                                                                                                                                                   |
 | ---- | ------------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |

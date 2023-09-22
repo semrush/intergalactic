@@ -10,7 +10,7 @@ The Wizard component inherits from the [Modal](/components/modal/modal-api) comp
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Wizard from '@semcore/ui/wizard';
 import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
@@ -20,8 +20,8 @@ import ArrowLeft from '@semcore/ui/icon/ArrowLeft/m';
 const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 
 const Demo = () => {
-  const [step, setStep] = useState(1);
-  const [visible, setVisible] = useState(false);
+  const [step, setStep] = React.useState(1);
+  const [visible, setVisible] = React.useState(false);
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 
@@ -86,7 +86,7 @@ As the Wizard is typically a complex component, you have the flexibility to use 
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Wizard from '@semcore/ui/wizard';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
@@ -111,8 +111,8 @@ const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>)
 const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 
 const Demo = () => {
-  const [step, setStep] = useState(1);
-  const [visible, setVisible] = useState(false);
+  const [step, setStep] = React.useState(1);
+  const [visible, setVisible] = React.useState(false);
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 
@@ -188,7 +188,7 @@ The stepper can also be customized.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Wizard from '@semcore/ui/wizard';
 import Button from '@semcore/ui/button';
 import { Text } from '@semcore/ui/typography';
@@ -214,9 +214,9 @@ const Step1 = React.forwardRef(function (_props, ref: React.Ref<HTMLDivElement>)
 const steps = [{ title: 'Personal' }, { title: 'Keywords' }, { title: 'Import source' }];
 
 const Demo = () => {
-  const [step, setStep] = useState(1);
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState('');
+  const [step, setStep] = React.useState(1);
+  const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState('');
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 

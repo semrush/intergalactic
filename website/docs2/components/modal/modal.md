@@ -10,12 +10,12 @@ For general recommendations on modal window content styles, refer to [Content in
 
 ## Description
 
-**Modal window** is a modal dialog that appears on top of the page, and shows an important information or request a response from the user. 
+**Modal window** is a modal dialog that appears on top of the page, and shows an important information or request a response from the user.
 
 It always disables user interaction with the main window but keeps it visible. The modal window remains on the screen until the user performs the required action or closes the window.
 
 ::: tip
-_🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to prompt me to feed her. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at her. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task._
+_🐈 A modal dialog is like my cat, Emma – who meows at 7am every morning to prompt me to feed <!-- vale DevDocs.Gender = NO -->her<!-- vale DevDocs.Gender = NO -->. I might be trying to sleep or get ready for the day, but my cat will place herself in front of me, then meow louder and incessantly until I look at <!-- vale DevDocs.Gender = NO -->her<!-- vale DevDocs.Gender = NO -->. I have to stop what I am doing to address the cat immediately if I ever hope to finish my task._
 
 Article at [NNGroup](https://www.nngroup.com/articles/modal-nonmodal-dialog/)
 :::

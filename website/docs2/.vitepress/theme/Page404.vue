@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-import path from 'path';
 import OriginalNotFoundPate from 'vitepress/dist/client/theme-default/NotFound.vue'
 import { onMounted } from 'vue';
 
@@ -12,6 +11,7 @@ const redirects = {
   "/intergalactic/components/accordion": "/intergalactic/components/accordion/accordion",
   "/intergalactic/components/auto-suggest": "/intergalactic/components/auto-suggest/auto-suggest",
   "/intergalactic/components/badge": "/intergalactic/components/badge/badge",
+  "/intergalactic/components/base-trigger": "/intergalactic/components/base-trigger/base-trigger",
   "/intergalactic/components/breadcrumbs": "/intergalactic/components/breadcrumbs/breadcrumbs",
   "/intergalactic/components/button": "/intergalactic/components/button/button",
   "/intergalactic/components/card": "/intergalactic/components/card/card",

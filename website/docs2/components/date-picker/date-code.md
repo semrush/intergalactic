@@ -11,13 +11,13 @@ These are widgets for selecting dates and date ranges. The `DatePicker` componen
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { DatePicker, DateRangePicker } from '@semcore/ui/date-picker';
 import { Box, Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState(new Date('06/29/2020'));
-  const [valueRange, setValueRange] = useState([]);
+  const [value, setValue] = React.useState(new Date('06/29/2020'));
+  const [valueRange, setValueRange] = React.useState([]);
 
   return (
     <Flex>
@@ -49,13 +49,13 @@ These are widgets for selecting a single month and a range of months, respective
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { MonthPicker, MonthRangePicker } from '@semcore/ui/date-picker';
 import { Box, Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState(new Date());
-  const [valueRange, setValueRange] = useState([]);
+  const [value, setValue] = React.useState(new Date());
+  const [valueRange, setValueRange] = React.useState([]);
 
   return (
     <Flex>
@@ -280,7 +280,7 @@ You can manually select a custom period, if needed (for example, a week) by taki
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { DateRangePicker } from '@semcore/ui/date-picker';
 
 function dateToClosestWeek(date) {
@@ -293,9 +293,9 @@ function dateToClosestWeek(date) {
 }
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState([]);
-  const [highlighted, setHighlighted] = useState([]);
+  const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState([]);
+  const [highlighted, setHighlighted] = React.useState([]);
 
   React.useEffect(() => {
     if (!value[0]) return;

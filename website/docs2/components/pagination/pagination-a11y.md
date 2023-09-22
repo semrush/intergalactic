@@ -8,6 +8,8 @@ tabs: Design('pagination'), A11y('pagination-a11y'), API('pagination-api'), Exam
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
@@ -18,6 +20,8 @@ See detailed information about the keyboard support for the buttons, links, inpu
 ### Roles & attributes
 
 The list below describes roles and attributes that component already has.
+
+Table: Attributes
 
 | Attribute                         | Element  | Usage                                                                                                         |
 | --------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------- |

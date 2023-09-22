@@ -11,14 +11,14 @@ Try changing the page size to observe how the tabs are compressed. If the text i
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import TabLine from '@semcore/ui/tab-line';
 import Badge from '@semcore/ui/badge';
 import Tooltip from '@semcore/ui/tooltip';
 import LinkedInM from '@semcore/ui/icon/LinkedIn/m';
 
 const Demo = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
 
   return (
     <TabLine onChange={setValue} value={value} aria-label='Page'>
@@ -63,11 +63,11 @@ As you might have noticed, the TabLine component doesn't have default margins at
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import TabLine from '@semcore/ui/tab-line';
 
 const Demo = () => {
-  const [value, onChange] = useState(1);
+  const [value, onChange] = React.useState(1);
   return (
     <>
       <TabLine value={value} onChange={onChange} aria-label='Page'>

@@ -96,7 +96,7 @@ const data = [
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Spin from '@semcore/ui/spin';
 import ScrollArea from '@semcore/ui/scroll-area';
 import { Text } from '@semcore/ui/typography';
@@ -177,8 +177,8 @@ data.forEach((d) => {
 });
 
 const Demo = () => {
-  const [top, setTop] = useState(0);
-  useEffect(() => {
+  const [top, setTop] = React.useState(0);
+  React.useEffect(() => {
     const header = document.getElementsByTagName('header')[0];
     header && setTop(header.offsetHeight);
   }, []);

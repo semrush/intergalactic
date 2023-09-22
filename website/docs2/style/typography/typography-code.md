@@ -148,6 +148,9 @@ const Demo = () => (
     <h6>
       H6, <small>16px</small>
     </h6>
+    <p>
+      But I do love the taste of a <code>good burger</code>. Mm-mm-mm.
+    </p>
     <ul>
       <li>I'm gonna make him an offer he can't refuse.</li>
       <li>Carpe diem. Seize the day, boys. Make your lives extraordinary.</li>

@@ -184,12 +184,12 @@ Use `scaleBand` when you need to display dates on one of the axes.
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Bar, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
 const Demo = () => {
-  const [[width, height], setSize] = useState([0, 0]);
+  const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
 
   const xScale = scaleBand()
@@ -401,7 +401,7 @@ You can combine charts with each other. For example, to display a trend line on 
 <script lang="tsx">
 import React from 'react';
 import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/ui/d3-chart';
-import resolveColor from '@semcore/ui/utils/color';
+import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {

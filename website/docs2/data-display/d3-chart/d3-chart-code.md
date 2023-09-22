@@ -464,12 +464,12 @@ For SVG charts to display correctly on responsive layouts, you need to dynamical
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { scaleLinear } from 'd3-scale';
 import { Line, minMax, ResponsiveContainer, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 
 const Demo = () => {
-  const [[width, height], setSize] = useState([0, 0]);
+  const [[width, height], setSize] = React.useState([0, 0]);
   const MARGIN = 40;
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
@@ -513,14 +513,14 @@ See [Chart legend](/data-display/chart-legend/chart-legend) for a guide on how t
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import { Line, minMax, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 
 const Demo = () => {
-  const [dataLegend, setDataLegend] = useState(
+  const [dataLegend, setDataLegend] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
       .map((name) => ({ name, checked: true, opacity: false })),
@@ -692,7 +692,7 @@ Be careful when choosing the `scale` for the axis, since it's common across diff
 import React from 'react';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Bar, HoverLine, HoverRect, Line, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
-import EventEmitter from '@semcore/ui/utils/eventEmitter';
+import EventEmitter from '@semcore/ui/utils/lib/eventEmitter';
 
 const eventEmitter = new EventEmitter();
 

@@ -107,7 +107,7 @@ By default, the modal window is centered. However, in some cases, when the conte
 ::: sandbox
 
 <script lang="tsx">
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
 
@@ -115,9 +115,9 @@ const DEFAULT_TEXT =
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab atque commodi corporis culpa, eius error impedit itaque minus nemo nostrum numquam odio omnis sapiente soluta temporibus vel voluptatibus? Exercitationem?';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const [text, setText] = useState(DEFAULT_TEXT);
-  useEffect(() => {
+  const [visible, setVisible] = React.useState(false);
+  const [text, setText] = React.useState(DEFAULT_TEXT);
+  React.useEffect(() => {
     const timer = setInterval(() => {
       if (text.length > 5000) {
         setText(DEFAULT_TEXT);
@@ -153,14 +153,14 @@ While it is generally not recommended, there are instances where it may be neces
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/ui/button';
 import Modal from '@semcore/ui/modal';
 import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const [secondVisible, setSecondVisible] = useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const [secondVisible, setSecondVisible] = React.useState(false);
 
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);

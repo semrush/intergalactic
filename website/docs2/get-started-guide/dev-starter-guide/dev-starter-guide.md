@@ -80,11 +80,11 @@ Consistency is crucial for a library as it ensures predictability. In our librar
 These handlers are especially convenient when using React hooks, as you no longer need to create custom handlers and extract values from the event. Instead, you can directly assign a function from the hook to the handler, as shown in this example using the Input component:
 
 ```jsx
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 
 export default () => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = React.useState('');
 
   return (
     <Input>

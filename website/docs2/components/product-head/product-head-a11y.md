@@ -8,6 +8,8 @@ tabs: Design('product-head'), A11y('product-head-a11y'), API('product-head-api')
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |

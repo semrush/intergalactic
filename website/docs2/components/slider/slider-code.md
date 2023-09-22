@@ -9,11 +9,11 @@ tabs: Design('slider'), A11y('slider-a11y'), API('slider-api'), Example('slider-
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from '@semcore/ui/slider';
 
 const Demo = () => {
-  const [value, setValue] = useState('medium');
+  const [value, setValue] = React.useState('medium');
 
   return (
     <Slider
@@ -41,11 +41,11 @@ const Demo = () => {
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from '@semcore/ui/slider';
 
 const Demo = () => {
-  const [value, setValue] = useState('medium');
+  const [value, setValue] = React.useState('medium');
 
   return (
     <Slider
@@ -83,15 +83,15 @@ The Slider can be used in conjunction with the [InputNumber](/components/input-n
 ::: sandbox
 
 <script lang="tsx">
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from '@semcore/ui/slider';
 import InputNumber from '@semcore/ui/input-number';
 import Tooltip from '@semcore/ui/tooltip';
 import { Box } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState(51);
-  const [error, setError] = useState('');
+  const [value, setValue] = React.useState(51);
+  const [error, setError] = React.useState('');
   const min = 10;
   const max = 100;
 

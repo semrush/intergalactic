@@ -8,6 +8,8 @@ tabs: Design('input-phone'), A11y('input-phone-a11y'), Example('input-phone-code
 
 ### Keyboard support
 
+Table: Keyboard support
+
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
 | `Tab`         | Moves focus to the next focusable element.     |
