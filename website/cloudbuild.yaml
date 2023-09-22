@@ -10,6 +10,8 @@ steps:
       - --tag=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --file=website/Dockerfile
       - .
+    env:
+      - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
   - id: 'Push docker'
     name: gcr.io/cloud-builders/docker
     args:

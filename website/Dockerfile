@@ -10,6 +10,8 @@ WORKDIR /app
 
 COPY ./ ./
 
+ENV ALGOLIA_SECRET_KEY $ALGOLIA_SECRET_KEY
+
 RUN apk add git
 RUN npm install --global pnpm@7
 RUN pnpm install --frozen-lockfile --ignore-scripts 
@@ -17,7 +19,7 @@ RUN pnpm --filter core run build
 RUN pnpm --filter utils run build
 RUN pnpm build:icons
 RUN pnpm build:illustration
-RUN NODE_OPTIONS=--max-old-space-size=32768 pnpm --filter intergalactic-documentation run build
+RUN NODE_OPTIONS=--max-old-space-size=32768 CI=true pnpm --filter intergalactic-documentation run build
 
 FROM nginx:alpine
 
