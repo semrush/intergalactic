@@ -5,6 +5,10 @@
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
 
+ ::selection {
+  background: rgba(171, 108, 254, 0.2);
+}
+
 /**
  * Colors
  * -------------------------------------------------------------------------- */
@@ -24,13 +28,13 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-button-brand-border: var(--vp-c-brand-light);
+  --vp-button-brand-border: var(--vp-c-brand-2);
   --vp-button-brand-text: var(--vp-c-white);
   --vp-button-brand-bg: var(--vp-c-brand);
-  --vp-button-brand-hover-border: var(--vp-c-brand-light);
+  --vp-button-brand-hover-border: var(--vp-c-brand-1);
   --vp-button-brand-hover-text: var(--vp-c-white);
   --vp-button-brand-hover-bg: var(--vp-c-brand-light);
-  --vp-button-brand-active-border: var(--vp-c-brand-light);
+  --vp-button-brand-active-border: var(--vp-c-brand-1);
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-active-bg: var(--vp-button-brand-bg);
 }
@@ -40,10 +44,10 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  --vp-home-hero-name-color: linear-gradient(99deg, #8832FF 30%, #8CE3FF 100%);
+  --vp-home-hero-name-background: -webkit-linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
 
-  --vp-home-hero-image-background-image: linear-gradient(-45deg, #bd34fe 50%, #47caff 50%);
+  --vp-home-hero-image-background-image: linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
   --vp-home-hero-image-filter: blur(40px);
 }
 

@@ -5,10 +5,10 @@ layout: home
 hero:
   name: "Intergalactic"
   text: "Design system"
-  tagline: Intergalactic is a constantly developing system of UI components, guidelines and UX patterns. With all these tools you can build your own product.
+  tagline: Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.
   actions:
     - theme: brand
-      text: Get started
+      text: View Documentation
       link: /get-started-guide/dev-starter-guide/dev-starter-guide
     - theme: alt
       text: Explore Github
@@ -20,13 +20,13 @@ features:
   - title: 80+ components
     icon: 🤓
     details: High-quality React components out of the box
+  - title: Powerful collection of charts
+    icon: 🤟
+    details: More than 12 chart types built with accessibility in mind
   - title: Predictable static types
     icon: 🚀
     details: Written in TypeScript with predictable static types
   - title: Themization
     icon: 🙌
     details: Theme customization in every detail (find details in the Design tokens guide)
-  - title: Powerful collection of charts
-    icon: 🤟
-    details: More than 12 chart types built with accessibility in mind
 ---
