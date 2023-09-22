@@ -309,6 +309,10 @@
   margin-top: 20px;
 }
 
+.vp-doc tr:nth-child(2n) {
+  background: transparent;
+}
+
 
 /** Our custom theme **/
 
