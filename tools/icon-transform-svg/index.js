@@ -11,6 +11,7 @@ const outputFile = util.promisify(fs.outputFile);
 const readFile = util.promisify(fs.readFile);
 
 const rootDir = process.cwd();
+const packageJson = require(path.resolve(rootDir, 'package.json'));
 process.chdir(__dirname);
 let customConfig = () => {};
 
@@ -54,6 +55,48 @@ function getDescriptionIcons(iconPath, outLib) {
   };
 }
 
+function makeId(idLetter, name, group) {
+  const version = packageJson.version;
+
+  return `intergalactic-icon-${name}_${group}_${idLetter}-${version}`;
+}
+
+function patchSvg($svg, fromElement, toElement, name, group) {
+  let shouldPatchId = false;
+
+  $svg.find(fromElement).each(function () {
+    const fillData = this.attribs.fill;
+
+    if (fillData) {
+      const match = fillData.match(/^url\(#([a-z0-9])+\)$/);
+
+      if (match && match.length > 1 && match[1]) {
+        const idLetter = match[1];
+
+        this.attribs.fill = `url(#${makeId(idLetter, name, group)})`;
+
+        shouldPatchId = true;
+      }
+    }
+  });
+
+  if (shouldPatchId) {
+    $svg.find(toElement).each(function () {
+      const idLetter = this.attribs.id;
+
+      this.attribs.id = makeId(idLetter, name, group);
+    });
+  }
+}
+
+function patchLinearGradient($svg, name, group) {
+  patchSvg($svg, 'path', 'linearGradient', name, group);
+}
+
+function patchClipPath($svg, name, group) {
+  patchSvg($svg, 'g', 'clipPath', name, group);
+}
+
 async function svgToReactComponent(iconPath, name, group) {
   try {
     const svg = await readFile(iconPath, 'utf-8');
@@ -63,6 +106,10 @@ async function svgToReactComponent(iconPath, name, group) {
     if ($svg.attr('viewBox') === undefined) {
       throw new Error(`Icon "${iconPath}" hasn't viewBox attribute`);
     }
+
+    patchLinearGradient($svg, name, group);
+    patchClipPath($svg, name, group);
+
     $svg.find('path').attr('shape-rendering', 'geometricPrecision');
     const iconSvg = converter
       ? converter.convert(`<svg>${$svg.html()}</svg>`)
