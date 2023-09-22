@@ -22,7 +22,7 @@ export default () => {
     .domain(minMax(data, 'x'));
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, 0])
+    .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
   const linesList = Object.keys(data[0]).filter((name) => name !== 'x');
