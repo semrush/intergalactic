@@ -68,7 +68,7 @@ function patchSvg($svg, fromElement, toElement, name, group) {
     const fillData = this.attribs.fill;
 
     if (fillData) {
-      const match = fillData.match(/^url\(#(.*)+\)$/);
+      const match = fillData.match(/^url\(#([a-z0-9])+\)$/);
 
       if (match && match.length > 1 && match[1]) {
         const idLetter = match[1];
