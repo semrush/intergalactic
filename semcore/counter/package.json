@@ -1,7 +1,7 @@
 {
   "name": "@semcore/counter",
   "description": "Semrush Counter Component",
-  "version": "3.6.1",
+  "version": "3.7.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.6.1",
-    "@semcore/flex-box": "5.6.1"
+    "@semcore/utils": "4.7.2",
+    "@semcore/flex-box": "5.7.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.6.1-prerelease.0",
+    "@semcore/core": "^2.7.2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

@@ -1,5 +1,5 @@
 ---
-title: Utils 🛠
+title: Utils
 ---
 
 @page neighbor-location

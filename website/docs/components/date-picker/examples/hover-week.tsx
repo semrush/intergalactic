@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { DateRangePicker } from '@semcore/ui/date-picker';
 
 function dateToClosestWeek(date) {
@@ -11,9 +11,9 @@ function dateToClosestWeek(date) {
 }
 
 const Demo = () => {
-  const [visible, setVisible] = useState(false);
-  const [value, setValue] = useState([]);
-  const [highlighted, setHighlighted] = useState([]);
+  const [visible, setVisible] = React.useState(false);
+  const [value, setValue] = React.useState([]);
+  const [highlighted, setHighlighted] = React.useState([]);
 
   React.useEffect(() => {
     if (!value[0]) return;

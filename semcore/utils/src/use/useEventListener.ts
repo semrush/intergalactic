@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import React from 'react';
 import canUseDOM from '../canUseDOM';
 import { getRef } from '../ref';
 
@@ -8,13 +8,13 @@ const useEventListener = (
   handler: any,
   options: any = undefined,
 ) => {
-  const savedHandler = useRef<(event: any) => {}>();
+  const savedHandler = React.useRef<(event: any) => {}>();
 
-  useEffect(() => {
+  React.useEffect(() => {
     savedHandler.current = handler;
   }, [handler]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!canUseDOM()) return;
 
     const eventListener = (event: any) => savedHandler.current?.(event);

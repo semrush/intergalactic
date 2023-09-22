@@ -3258,6 +3258,23 @@ const iconsList = {
       tags: ['photography', 'photo', 'picture', 'фотография', 'фотоаппарат', 'фото', 'картинка'],
     },
     {
+      name: 'Plug',
+      size: ['l', 'm'],
+      group: 'Misc',
+      tags: [
+        'plug',
+        'socket',
+        'electronics',
+        'cable',
+        'power',
+        'штепсель',
+        'розетка',
+        'электроника',
+        'кабель',
+        'электричество',
+      ],
+    },
+    {
       name: 'Popup',
       size: ['l', 'm'],
       group: 'Misc',

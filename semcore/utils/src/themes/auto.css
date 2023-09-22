@@ -71,7 +71,6 @@
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
   /* Focusing values in the input. */
   --intergalactic-bg-highlight-focus: rgba(0, 143, 248, 0.2);
-  --intergalactic-bg-tertiary-neutral: #ffffff;
   /* Primary text. */
   --intergalactic-text-primary: #191b23;
   /* Secondary text. */
@@ -152,6 +151,8 @@
   --intergalactic-border-tooltip-invert: #6c6e79;
   /* Accent borders in the Table: for the accordion in the table and for the header of the secondary table. */
   --intergalactic-border-table-accent: #a9abb6;
+  /* Border color of the second period for the comparison mode in the DatePicker. */
+  --intergalactic-border-date-picker-range-comparison: #8649e1;
   /* Subtle background of the Switch control. */
   --intergalactic-control-switch-bg: #a9abb6;
   /* Background of the regular primary control. */
@@ -275,7 +276,7 @@
   /* Default date-picker cell background. */
   --intergalactic-date-picker-cell: #ffffff;
   /* Color for marking the cell with the current date, month or year in the date-picker. */
-  --intergalactic-date-picker-cell-current: #c4c7cf;
+  --intergalactic-date-picker-cell-current: #8a8e9b;
   /* Hover state of the default date-picker cell background. */
   --intergalactic-date-picker-cell-hover: #e0e1e9;
   /* Background for the cell which is included in the date range in the date-picker. */
@@ -287,7 +288,11 @@
   /* Hover for the active (selected) date-picker cell background. */
   --intergalactic-date-picker-cell-active-hover: #008ff8;
   /* Color for marking the active cell with the current date, month or year in the date-picker. */
-  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.3);
+  --intergalactic-date-picker-cell-current-invert: rgba(255, 255, 255, 0.5);
+  /* Active (selected) date-picker cell background for comparison periods. */
+  --intergalactic-date-picker-cell-comparison-active: #8649e1;
+  /* Hover for the active (selected) date-picker cell background for comparison periods. */
+  --intergalactic-date-picker-cell-comparison-active-hover: #5925ab;
   /* Default background color for the list item in the dropdown-menu. */
   --intergalactic-dropdown-menu-item: #ffffff;
   /* Hover state of the default background color for the list item in the dropdown-menu. */
@@ -384,7 +389,6 @@
   --intergalactic-brand-google-green: #016723;
   /* Google My Business brand color. */
   --intergalactic-brand-google-my-business: #1a73e8;
-  --intergalactic-brand-tertiary: #ff642d;
   /* Default shadow of the Card. */
   --intergalactic-box-shadow-card: 0px 0px 1px 0px rgba(25, 27, 35, 0.16), 0px 1px 2px 0px rgba(25, 27, 35, 0.12);
   /* Hover state for the shadow of the Card with hover state. */
@@ -788,7 +792,6 @@
   --intergalactic-bg-highlight-results: rgba(239, 152, 0, 0.4);
   /* Focusing values in the input. */
   --intergalactic-bg-highlight-focus: rgba(0, 143, 248, 0.2);
-  --intergalactic-bg-tertiary-neutral: rgba(54, 56, 67, 1);
   /* Primary text. */
   --intergalactic-text-primary: #f4f5f9;
   /* Secondary text. */
@@ -1077,7 +1080,6 @@
   --intergalactic-brand-primary: #dcb8ff;
   /* Secondary brand color. */
   --intergalactic-brand-secondary: #421983;
-  --intergalactic-brand-tertiary: #ffffff;
   /* Pinterest brand color. */
   --intergalactic-brand-pinterest: #bd081c;
   /* Instagram brand color. */

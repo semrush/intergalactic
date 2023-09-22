@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InputTags from '@semcore/ui/input-tags';
 import DropdownMenu from '@semcore/ui/dropdown-menu';
 
 const tagsSelect = ['vk', 'fk', 'twitter', 'instagram'];
 
 export default function () {
-  const [tags, setTags] = useState([]);
-  const [valueInput, setValueInput] = useState('');
-  const [visible, setVisible] = useState(false);
+  const [tags, setTags] = React.useState([]);
+  const [valueInput, setValueInput] = React.useState('');
+  const [visible, setVisible] = React.useState(false);
 
   function onRemoveLastTag() {
     if (tags.length) {

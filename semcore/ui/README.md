@@ -19,7 +19,7 @@ npm install @semcore/ui
 ## Usage
 
 ```jsx
-import ComponentName from '@semcore/ui/{{component_name}}';
+import ComponentName from '@semcore/ui/{component_name}';
 ```
 
 ## 👤 Author

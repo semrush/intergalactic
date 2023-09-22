@@ -37,7 +37,7 @@ await Promise.all(
       csvFiles.map(
         (fileName) =>
           new Promise<{ identifier: string; source_phrase: string; translation: string }[]>(
-            // rome-ignore lint/suspicious/noAsyncPromiseExecutor:
+            // biome-ignore lint/suspicious/noAsyncPromiseExecutor:
             async (resolve, reject) => {
               const fileContent = await readFile(resolvePath(dirPath, fileName), 'utf-8');
               parseCsv(

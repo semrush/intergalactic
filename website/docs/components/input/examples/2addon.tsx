@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Link from '@semcore/ui/link';
 import CloseM from '@semcore/ui/icon/Close/m';
@@ -9,8 +9,8 @@ import { Box } from '@semcore/ui/flex-box';
 import Button from '@semcore/ui/button';
 
 const Demo = () => {
-  const [value, setValue] = useState('');
-  const [type, setType] = useState('password');
+  const [value, setValue] = React.useState('');
+  const [type, setType] = React.useState('password');
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React from 'react';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import { Box, Flex } from '@semcore/flex-box';
@@ -48,9 +48,9 @@ export default function (props) {
     route,
   } = props;
   const [group, page] = route.split('/');
-  const [theme, setTheme] = useState('');
+  const [theme, setTheme] = React.useState('');
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const currentTheme = getThemePreference();
     setTheme(currentTheme);
   }, [getThemePreference()]);
@@ -173,8 +173,8 @@ export default function (props) {
             </Tooltip.Trigger>
             <Tooltip.Popper>
               <Text size={200}>
-                If you notice an error or typo, please help us find and fix it. Fork the project and
-                send us the changes. Thank you!
+                If you've noticed an error or typo, you can fork the project and send us the
+                changes. Thank you!
               </Text>
             </Tooltip.Popper>
           </Tooltip>

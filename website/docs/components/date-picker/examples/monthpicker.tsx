@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MonthPicker, MonthRangePicker } from '@semcore/ui/date-picker';
 import { Box, Flex } from '@semcore/ui/flex-box';
 
 const Demo = () => {
-  const [value, setValue] = useState(new Date());
-  const [valueRange, setValueRange] = useState([]);
+  const [value, setValue] = React.useState(new Date());
+  const [valueRange, setValueRange] = React.useState([]);
 
   return (
     <Flex>

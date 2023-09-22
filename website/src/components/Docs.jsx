@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback, useState } from 'react';
+import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-jsx';
@@ -22,7 +22,7 @@ const BLOCKQUOTE_A11Y_MAP = {
 
 function useScrollHash(options = {}) {
   const readyStateComplete = new Promise((resolve) => {
-    useEffect(() => {
+    React.useEffect(() => {
       function checkReady() {
         if (document.readyState === 'complete') {
           setTimeout(() => {
@@ -45,24 +45,24 @@ function useScrollHash(options = {}) {
 
 export const Docs = ({ tokens, tabs }) => {
   const match = useRouteMatch();
-  const [contentModal, setContentModal] = useState(false);
-  const contentRef = useRef(null);
+  const [contentModal, setContentModal] = React.useState(false);
+  const contentRef = React.useRef(null);
   const prefetch = (route) => {
     routes[route]?.loadPage();
   };
-  useEffect(() => {
+  React.useEffect(() => {
     Prismjs.highlightAllUnder(contentRef.current);
   });
 
   const scrollCallback = useScrollHash();
-  const handleClick = useCallback(
+  const handleClick = React.useCallback(
     (e) => {
       if (e.target.tagName !== 'IMG' || e.defaultPrevented) return;
       setContentModal(e.target.outerHTML);
     },
     [1],
   );
-  const handleModalClose = useCallback(() => {
+  const handleModalClose = React.useCallback(() => {
     setContentModal(null);
   }, [1]);
   const activeTab = tabs.find((tab) => `/${tab.route}/` === match.url);
@@ -116,7 +116,7 @@ export const Docs = ({ tokens, tabs }) => {
           })}
         </TabLine>
       )}
-      {/* rome-ignore lint/a11y/useKeyWithClickEvents: */}
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: */}
       <main className={styles.main} ref={contentRef} onClick={handleClick}>
         <RenderMarkdown tokens={tokens} onRender={scrollCallback} />
       </main>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import IF from '@semcore/utils/lib/if';
 import { Text } from '@semcore/typography';
@@ -11,7 +11,7 @@ import styles from './SideBarNavigation.module.css';
 
 const SideBarNavigation = ({ navigation = [], onNavigate, className }) => {
   const { category, page } = useParams();
-  const [collapseCategories, setCollapseCategories] = useState([category]);
+  const [collapseCategories, setCollapseCategories] = React.useState([category]);
   const handleClickCategory = (currentCategory) => {
     logEvent('left_menu:click', {
       label: currentCategory.route,

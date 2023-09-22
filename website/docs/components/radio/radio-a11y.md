@@ -8,6 +8,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key                                  | Function                                                                                                                                                                                                                                              |
 | ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`                                | Moves focus to the checked `radio` button in the `radiogroup`. If a `radio` button isn’t checked, focus moves to the first `radio` button in the group.                                                                                              |
@@ -18,6 +20,8 @@ a11y: AA
 ### Roles and attributes
 
 The list below describes roles and attributes that component already has.
+
+@table-caption Roles and attributes
 
 | Role  | Attribute              | Element | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -36,6 +40,8 @@ Find live examples in the [A11y style guide](https://a11y-style-guide.com/style-
 ### Roles & attributes
 
 The list below will help you to keep in mind the necessary roles and attributes to make our components fully accessible in your interfaces.
+
+@table-caption Roles and attributes
 
 | Role       | Attribute                   | Element | Usage                                                                                                                                                                                                                                                                                                                                           |
 | ---------- | --------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

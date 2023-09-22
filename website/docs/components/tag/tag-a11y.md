@@ -8,6 +8,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key           | Function                                                                          |
 | ------------- | --------------------------------------------------------------------------------- |
 | `Tab`         | Moves keyboard focus to the interactive tag and its `Close` icon button.          |

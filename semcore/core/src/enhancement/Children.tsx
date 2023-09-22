@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import React from 'react';
 import { CONTEXT_COMPONENT } from '../index';
 
 export const CHILDREN_COMPONENT = Symbol('CHILDREN_COMPONENT');
@@ -54,7 +54,7 @@ function createChildren(Context: any, contexts: any) {
         getters = {},
         ...props
       } = [...contexts, Context].reduce((acc, ctx) => {
-        const { handlers, ...propsAndGetters } = useContext(ctx) as any;
+        const { handlers, ...propsAndGetters } = React.useContext(ctx) as any;
         const { props, getters } = splitPropsAndGetters(propsAndGetters);
         return Object.assign({}, acc, {
           handlers: Object.assign({}, acc.handlers, handlers),

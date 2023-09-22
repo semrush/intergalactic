@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import ProgressBar from '@semcore/ui/progress-bar';
 
 const Demo = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = React.useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timerFetch = setInterval(() => {
       setValue((value) => {
         if (value < 100) {

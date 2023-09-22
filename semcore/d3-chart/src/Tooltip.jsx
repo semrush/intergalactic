@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import Popper from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
@@ -108,7 +108,7 @@ class TooltipRoot extends Component {
 function PopperPopper(props) {
   const { Element: STooltip, styles, $visible, x, y } = props;
 
-  const handlerCancel = useCallback(() => false, []);
+  const handlerCancel = React.useCallback(() => false, []);
 
   if (!$visible) return null;
 

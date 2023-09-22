@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import CloseM from '@semcore/ui/icon/Close/m';
 import { Text } from '@semcore/ui/typography';
 
 const Demo = () => {
-  const [value, setValue] = useState('+');
+  const [value, setValue] = React.useState('+');
   return (
     <>
       <Text tag='label' htmlFor='basic-example' size={200} mr={2}>

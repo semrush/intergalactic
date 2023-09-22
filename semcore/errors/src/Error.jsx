@@ -40,7 +40,7 @@ class RootError extends Component {
 
 function Title(props) {
   const STitle = Root;
-  return sstyled(props.styles)(<STitle render={Box} tag='h2' />);
+  return sstyled(props.styles)(<STitle render={Box} data-errors-title tag='h2' />);
 }
 
 function Description(props) {

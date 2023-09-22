@@ -22,7 +22,9 @@ const Demo = () => {
     const style = document.createElement('style');
     style.innerHTML = styles;
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
 
   return (

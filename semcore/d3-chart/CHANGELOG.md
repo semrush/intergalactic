@@ -2,6 +2,37 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.13.1] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.1 ~> 2.7.2], `@semcore/core` [2.7.1 ~> 2.7.2]).
+
+## [3.13.0] - 2023-09-20
+
+### Added
+
+- `index` to render function context type of `HoverLine` and `HoverRect`.
+- `size`, `x` and `y` to render function context type of `XAxis.Ticks` and `YAxis.Ticks`.
+
+## [3.12.0] - 2023-09-13
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.6.3 ~> 2.7.0], `@semcore/utils` [4.6.3 ~> 4.7.0], `@semcore/core` [2.6.3 ~> 2.7.0]).
+
+## [3.11.3] - 2023-09-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.2 ~> 2.6.3], `@semcore/core` [2.6.2 ~> 2.6.3]).
+
+## [3.11.2] - 2023-09-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.1 ~> 2.6.2], `@semcore/utils` [4.6.1 ~> 4.6.2], `@semcore/core` [2.6.1 ~> 2.6.2]).
+
 ## [3.11.1] - 2023-09-05
 
 ### Fixed
@@ -83,7 +114,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added `exports` fields for better nextjs support.  
+- Added `exports` fields for better nextjs support.
 
 ## [3.3.0] - 2023-08-07
 

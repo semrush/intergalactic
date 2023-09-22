@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { InstantSearch } from 'react-instantsearch/dom';
 import { connectAutoComplete } from 'react-instantsearch/connectors';
 import algoliasearch from 'algoliasearch/lite';
@@ -20,7 +20,7 @@ const SuggestSearch = connectAutoComplete(
       onChangeValue(value);
       return refine(value);
     };
-    useEffect(() => {
+    React.useEffect(() => {
       filteredIllustrations(hits);
     });
 
@@ -57,8 +57,8 @@ function SearchIllustrations(props) {
 }
 
 export default function ({ illustrations, json }) {
-  const [inputValue, setInputValue] = useState('');
-  const [filterIllustrations, setFilterIllustrations] = useState([]);
+  const [inputValue, setInputValue] = React.useState('');
+  const [filterIllustrations, setFilterIllustrations] = React.useState([]);
 
   return (
     <>

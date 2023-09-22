@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Wizard from '@semcore/ui/wizard';
 import Button from '@semcore/ui/button';
 import { Flex } from '@semcore/ui/flex-box';
@@ -8,8 +8,8 @@ import ArrowLeft from '@semcore/ui/icon/ArrowLeft/m';
 const steps = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }];
 
 export default function () {
-  const [step, setStep] = useState(1);
-  const [visible, setVisible] = useState(false);
+  const [step, setStep] = React.useState(1);
+  const [visible, setVisible] = React.useState(false);
   const handleOpen = () => setVisible(true);
   const handleClose = () => setVisible(false);
 

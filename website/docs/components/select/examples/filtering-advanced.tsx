@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Select, { InputSearch } from '@semcore/ui/select';
 
 const data = Array(26)
@@ -9,7 +9,7 @@ const data = Array(26)
   }));
 
 export default () => {
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = React.useState('');
   const options = React.useMemo(
     () => data.filter((option) => option.value.toString().includes(filter)),
     [filter],

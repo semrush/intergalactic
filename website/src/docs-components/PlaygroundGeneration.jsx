@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@semcore/button';
 import { Flex } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
@@ -26,7 +26,7 @@ Playground.createWidget(
     return (
       <label className={styles.field}>
         <div className={styles.control}>
-          <Button w="100%" onClick={() => onChange(!value)} theme="hollow" type="muted" {...others}>
+          <Button w='100%' onClick={() => onChange(!value)} theme='hollow' type='muted' {...others}>
             {(value ? positiveLabel : negativeLabel) || label}
           </Button>
         </div>
@@ -97,10 +97,10 @@ Playground.createWidget(
   'radio',
   ({ value, onChange, label, options, positiveLabel, negativeLabel, ...others }) => {
     return (
-      <label className={styles.field} htmlFor="">
+      <label className={styles.field} htmlFor=''>
         <div className={styles.label}>{(value ? positiveLabel : negativeLabel) || label}</div>
         <div className={styles.control}>
-          <Pills value={value} onChange={(value) => onChange(value)} behavior="radio" {...others}>
+          <Pills value={value} onChange={(value) => onChange(value)} behavior='radio' {...others}>
             {options.map((o, i) => {
               const option = typeof o !== 'object' ? { value: o, name: o } : o;
               return (
@@ -132,13 +132,13 @@ const PlaygroundView = ({ result, source, widgetControls }) => {
   });
 
   return (
-    <div className={styles.wrapperPlayground} aria-hidden="true">
+    <div className={styles.wrapperPlayground} aria-hidden='true'>
       <div className={styles.workArea}>
         <div className={`playground-runtime ${styles.playgroundRuntime}`} style={{ margin: 0 }}>
           <div>{result}</div>
         </div>
         {highlightedSource && (
-          <div className="language-tsx vp-adaptive-theme">
+          <div className='language-tsx vp-adaptive-theme'>
             <span dangerouslySetInnerHTML={{ __html: highlightedSource }} />
           </div>
         )}

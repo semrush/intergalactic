@@ -832,7 +832,7 @@ for (let i = 0; i < deadLinks.length; i++) {
       await fs.access('./docs2' + link + `/${lastPart}.md`);
       fixedLinks[i] = link + `/${lastPart}`;
     } catch (err) {
-      // rome-ignore lint/nursery/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsoleLog:
       console.log('x', link);
       process.exit(1);
     }
@@ -951,7 +951,7 @@ await Promise.all(
         try {
           exampleCode = await fs.readFile(examplePath, 'utf-8');
         } catch {
-          // rome-ignore lint/nursery/noConsoleLog:
+          // biome-ignore lint/suspicious/noConsoleLog:
           console.log(`Example not found: ${examplePath}`);
         }
         if (!exampleCode) continue;
@@ -1013,7 +1013,7 @@ await Promise.all(
         try {
           exampleCode = await fs.readFile(examplePath, 'utf-8');
         } catch {
-          // rome-ignore lint/nursery/noConsoleLog:
+          // biome-ignore lint/suspicious/noConsoleLog:
           console.log(`Component not found: ${examplePath}`);
         }
         if (!exampleCode) continue;
@@ -1064,7 +1064,7 @@ await Promise.all(
               await fs.rename(importedPath, newPath);
               alreadyMovedDependencies[key] = true;
             } catch {
-              // rome-ignore lint/nursery/noConsoleLog:
+              // biome-ignore lint/suspicious/noConsoleLog:
               console.log(`Unable to move dependency: ${importedPath}`);
             }
           }

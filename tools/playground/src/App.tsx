@@ -39,7 +39,7 @@ export const PlaygroundWrapper: React.FC = () => {
   const Playground = playgrounds[playground];
 
   if (typeof Playground !== 'function') {
-    // rome-ignore lint/nursery/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsoleLog:
     console.log({ Playground });
     return (
       <div>

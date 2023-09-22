@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import cn from 'classnames';
 import { Property, Properties } from 'csstype';
@@ -105,7 +105,7 @@ export default function useFlex<T extends FlexProps>(
     scaleIndent,
   } = props;
 
-  const flexStyles: Properties = useMemo(() => {
+  const flexStyles: Properties = React.useMemo(() => {
     return calculateFlexStyles(props);
   }, [
     flexWrap,

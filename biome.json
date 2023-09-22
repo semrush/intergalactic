@@ -1,5 +1,8 @@
 {
-  "$schema": "./node_modules/rome/configuration_schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "organizeImports": {
+    "enabled": false
+  },
   "formatter": {
     "enabled": true,
     "ignore": [
@@ -18,7 +21,8 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
-      "website/docs2/.vitepress",
+      "website/docs2/.vitepress/dist",
+      "website/docs2/.vitepress/cache",
       "./tools/playground/examples/**"
     ],
     "lineWidth": 100,
@@ -27,7 +31,8 @@
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "trailingComma": "all"
+      "trailingComma": "all",
+      "jsxQuoteStyle": "single"
     }
   },
   "linter": {
@@ -48,7 +53,8 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
-      "website/docs2/.vitepress",
+      "website/docs2/.vitepress/dist",
+      "website/docs2/.vitepress/cache",
       "./tools/playground/examples/**"
     ],
     "rules": {
@@ -58,12 +64,14 @@
         "noPrototypeBuiltins": "off",
         "noRedeclare": "off",
         "noShadowRestrictedNames": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noConsoleLog": "error"
       },
       "style": {
         "noParameterAssign": "off",
         "noNonNullAssertion": "off",
-        "useTemplate": "off"
+        "useTemplate": "off",
+        "useExponentiationOperator": "off"
       },
       "correctness": {
         "noChildrenProp": "off",
@@ -72,13 +80,16 @@
       },
       "a11y": {
         "useAnchorContent": "off",
-        "noSvgWithoutTitle": "off"
-      },
-      "nursery": {
-        "noConsoleLog": "error"
+        "noSvgWithoutTitle": "off",
+        "noNoninteractiveTabindex": "off"
       },
       "complexity": {
-        "useFlatMap": "off"
+        "useFlatMap": "off",
+        "useLiteralKeys": "off",
+        "noBannedTypes": "off",
+        "noUselessThisAlias": "off",
+        "noStaticOnlyClass": "off",
+        "noUselessFragments": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"

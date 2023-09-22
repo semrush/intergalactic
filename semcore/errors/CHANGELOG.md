@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.2] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.8.1 ~> 5.8.2], `@semcore/core` [2.7.1 ~> 2.7.2]).
+
+## [4.10.1] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.8.0 ~> 5.8.1], `@semcore/utils` [4.7.0 ~> 4.7.1], `@semcore/core` [2.7.0 ~> 2.7.1]).
+
+## [4.10.0] - 2023-09-15
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/typography` [5.9.0 ~> 5.10.0]).
+
+## [4.9.0] - 2023-09-13
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/button` [5.7.3 ~> 5.8.0], `@semcore/format-text` [4.6.3 ~> 4.7.0], `@semcore/typography` [5.8.2 ~> 5.9.0], `@semcore/utils` [4.6.3 ~> 4.7.0], `@semcore/core` [2.6.3 ~> 2.7.0]).
+
+## [4.8.0] - 2023-09-12
+
+### Added
+
+- `titleTag` prop for specifying error widget tag (`h2` by default).
+
+## [4.7.1] - 2023-09-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/button` [5.7.1 ~> 5.7.2], `@semcore/utils` [4.6.1 ~> 4.6.2], `@semcore/core` [2.6.1 ~> 2.6.2]).
+
 ## [4.7.0] - 2023-09-05
 
 ### Changed

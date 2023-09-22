@@ -550,12 +550,6 @@
         "value": "{blue.400}, 0.2",
         "type": "color",
         "description": "Focusing values in the input."
-      },
-      "tertiary": {
-        "neutral": {
-          "value": "{gray.white}",
-          "type": "color"
-        }
       }
     },
     "text": {
@@ -760,6 +754,11 @@
         "value": "{gray.300}",
         "type": "color",
         "description": "Accent borders in the Table: for the accordion in the table and for the header of the secondary table."
+      },
+      "date-picker-range-comparison": {
+        "value": "{violet.500}",
+        "type": "color",
+        "description": "Border color of the second period for the comparison mode in the DatePicker."
       }
     },
     "control": {
@@ -953,14 +952,6 @@
           "type": "color",
           "description": "Active (selected) state of the inverted version of the tertiary control."
         }
-      },
-      "lift-me-up": {
-        "value": "{gray.100}",
-        "type": "color"
-      },
-      "lift-me-up-hover-active": {
-        "value": "{gray.200}",
-        "type": "color"
       }
     },
     "icon": {
@@ -1091,7 +1082,7 @@
         "description": "Default date-picker cell background."
       },
       "cell-current": {
-        "value": "{gray.200}",
+        "value": "{gray.400}",
         "type": "color",
         "description": "Color for marking the cell with the current date, month or year in the date-picker."
       },
@@ -1121,9 +1112,19 @@
         "description": "Hover for the active (selected) date-picker cell background."
       },
       "cell-current-invert": {
-        "value": "{gray.white}, 0.3",
+        "value": "{gray.white}, 0.5",
         "type": "color",
         "description": "Color for marking the active cell with the current date, month or year in the date-picker."
+      },
+      "cell-comparison-active": {
+        "value": "{violet.500}",
+        "type": "color",
+        "description": "Active (selected) date-picker cell background for comparison periods."
+      },
+      "cell-comparison-active-hover": {
+        "value": "{violet.600}",
+        "type": "color",
+        "description": "Hover for the active (selected) date-picker cell background for comparison periods."
       }
     },
     "dropdown-menu": {
@@ -1402,10 +1403,6 @@
         "value": "#1a73e8",
         "type": "color",
         "description": "Google My Business brand color."
-      },
-      "tertiary": {
-        "value": "{orange.400}",
-        "type": "color"
       }
     },
     "box-shadow": {
@@ -1433,14 +1430,6 @@
         "value": "0px 1px 12px 0px rgba({gray.800}, 0.15)",
         "type": "boxShadow",
         "description": "Default shadow of all Poppers, Dropdowns and Tooltips."
-      },
-      "top-menu": {
-        "value": "5px 8px 25px 0px rgba({gray.800}, 0.10)",
-        "type": "boxShadow"
-      },
-      "principles": {
-        "value": "10px 10px 45px 0px rgba({gray.800}, 0.14)",
-        "type": "boxShadow"
       }
     },
     "keyboard-focus": {
@@ -2368,6 +2357,46 @@
         "value": "{duration.fast}",
         "type": "other",
         "description": "Use for Summary or Counter."
+      }
+    }
+  },
+  "website-tokens": {
+    "control": {
+      "lift-me-up": {
+        "value": "{gray.100}",
+        "type": "color",
+        "description": "Used for background of the Up button on the Intergalactic website."
+      },
+      "lift-me-up-hover-active": {
+        "value": "{gray.200}",
+        "type": "color",
+        "description": "Used for background of the Up button in hover and active states on the Intergalactic website."
+      }
+    },
+    "top-menu": {
+      "value": "5px 8px 25px 0px rgba({gray.800}, 0.10)",
+      "type": "boxShadow",
+      "description": "Used for main header of the Intergalactic website."
+    },
+    "principles": {
+      "value": "10px 10px 45px 0px rgba({gray.800}, 0.14)",
+      "type": "boxShadow",
+      "description": "Used for cards on the Intergalactic website."
+    },
+    "brand": {
+      "tertiary": {
+        "value": "{orange.400}",
+        "type": "color",
+        "description": "Used for branded links on the Intergalactic website."
+      }
+    },
+    "bg": {
+      "tertiary": {
+        "neutral": {
+          "value": "{gray.white}",
+          "type": "color",
+          "description": "Used for the background of the header and cards with links on the Intergalactic website."
+        }
       }
     }
   }

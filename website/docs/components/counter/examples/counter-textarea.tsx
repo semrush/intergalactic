@@ -3,7 +3,7 @@ import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import Textarea from '@semcore/ui/textarea';
 import Counter from '@semcore/ui/counter';
-import { ScreenReaderOnly } from '@semcore/ui/utils/ScreenReaderOnly';
+import { ScreenReaderOnly } from '@semcore/ui/utils/lib/ScreenReaderOnly';
 
 export default () => (
   <Flex direction='column' w={350}>

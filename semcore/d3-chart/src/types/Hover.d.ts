@@ -30,11 +30,16 @@ type HoverTooltip = (<X, Y>(
 ) => ReturnEl) &
   TooltipTypeBase;
 
-declare const HoverLine: IntergalacticD3Component<'g', HoverProps> & {
+type HoverContext = {
+  /** Index in `data` array of the current item */
+  index: number;
+};
+
+declare const HoverLine: IntergalacticD3Component<'g', HoverProps, HoverContext> & {
   Tooltip: HoverTooltip;
 };
 
-declare const HoverRect: IntergalacticD3Component<'g', HoverProps> & {
+declare const HoverRect: IntergalacticD3Component<'g', HoverProps, HoverContext> & {
   Tooltip: HoverTooltip;
 };
 export { HoverLine, HoverRect };

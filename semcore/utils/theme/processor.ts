@@ -213,26 +213,26 @@ for (const theme of themes) {
 
     if (warning) {
       if (unusedVariables.length > 0) {
-        // rome-ignore lint/nursery/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Unused design tokens:');
-        // rome-ignore lint/nursery/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsoleLog:
         console.log(unusedVariables.join('\n'));
       }
       if (Object.values(legacyCssVariables).reduce((sum, item) => sum + item) > 0) {
-        // rome-ignore lint/nursery/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Still used legacy variables:');
         for (const variable in legacyCssVariables) {
           if (legacyCssVariables[variable] !== 0) {
-            // rome-ignore lint/nursery/noConsoleLog:
+            // biome-ignore lint/suspicious/noConsoleLog:
             console.log(`${variable} (${legacyCssVariables[variable]})`);
           }
         }
       }
       if (colorLiterals.length > 0) {
-        // rome-ignore lint/nursery/noConsoleLog:
+        // biome-ignore lint/suspicious/noConsoleLog:
         console.log('Unexpected color literals:');
         for (const literal of colorLiterals) {
-          // rome-ignore lint/nursery/noConsoleLog:
+          // biome-ignore lint/suspicious/noConsoleLog:
           console.log(`${literal.name} in ${literal.path}`);
         }
       }

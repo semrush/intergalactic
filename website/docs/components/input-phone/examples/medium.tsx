@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import Flag from '@semcore/ui/flags';
 import CloseM from '@semcore/ui/icon/Close/m';
 
 const Demo = () => {
-  const [value, setValue] = useState('+1');
+  const [value, setValue] = React.useState('+1');
   return (
     <Input w={180}>
       <Input.Addon>

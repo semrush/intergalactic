@@ -89,9 +89,9 @@ export default {
       }
       return typings;
     } catch (err) {
-      // rome-ignore lint/nursery/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsoleLog:
       console.log(String(err).substring(0, 1000));
-      // rome-ignore lint/nursery/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsoleLog:
       console.log('Failed to serialize typings');
       return {};
     }

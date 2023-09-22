@@ -130,7 +130,7 @@ module.exports = function () {
     }),
   )
     .then(() => {
-      // rome-ignore lint/nursery/noConsoleLog:
+      // biome-ignore lint/suspicious/noConsoleLog:
       console.log('Done! Wrote all icon files.');
     })
     .catch((err) => {

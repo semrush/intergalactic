@@ -6,7 +6,7 @@ tabName: Design
 
 @## Description
 
-**FilterTrigger** is a component for using as an active state of a filter. Commonly it's placed above the data it filters.
+**FilterTrigger** is one of the [BaseTrigger](/components/base-trigger) types for using as an active state of a filter. Commonly it's placed above the data it filters.
 
 This component helps users to:
 

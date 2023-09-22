@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { FadeInOut, Slide } from '@semcore/animation';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import Portal, { PortalProvider } from '@semcore/portal';
@@ -122,7 +122,7 @@ class ModalRoot extends Component {
 function Window(props) {
   const SWindow = Root;
   const { Children, styles, visible, closable, duration } = props;
-  const windowRef = useRef(null);
+  const windowRef = React.useRef(null);
 
   useFocusLock(windowRef, true, 'auto', !visible, true);
 
@@ -148,7 +148,7 @@ function Window(props) {
 function Overlay(props) {
   const SOverlay = Root;
   const { Children, styles, onOutsideClick, visible } = props;
-  const overlayRef = useRef(null);
+  const overlayRef = React.useRef(null);
   usePreventScroll(visible, props.disablePreventScroll);
   useContextTheme(overlayRef, visible);
 
@@ -177,7 +177,7 @@ function Title(props) {
   const { setHasTitle, styles } = props;
   const STitle = Root;
 
-  useEffect(() => setHasTitle());
+  React.useEffect(() => setHasTitle());
 
   return sstyled(styles)(<STitle render={Text} tag='h2' />);
 }

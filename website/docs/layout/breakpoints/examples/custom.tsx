@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createBreakpoints } from '@semcore/ui/breakpoints';
 
 const MEDIA = [
@@ -11,7 +11,7 @@ const MEDIA = [
 const Breakpoints = createBreakpoints(MEDIA);
 
 const Example = () => {
-  const index = useContext(Breakpoints.Context);
+  const index = React.useContext(Breakpoints.Context);
 
   return <div>Media matches "{MEDIA[index] || 'ZOOM WINDOW'}"</div>;
 };

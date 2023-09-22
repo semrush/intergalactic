@@ -1,5 +1,5 @@
 import { bisector } from 'd3-array';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { sstyled } from '@semcore/core';
 import trottle from '@semcore/utils/lib/rafTrottle';
 import createElement from './createElement';
@@ -28,13 +28,13 @@ function Dots(props) {
   } = props;
   const SDots = 'g';
   const bisect = bisector((d) => d[x]).center;
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = React.useState(null);
   const data = React.useMemo(
     () => props.data.filter((item) => item[y] !== interpolateValue),
     [props.data],
   );
 
-  const handlerMouseMoveRoot = useCallback(
+  const handlerMouseMoveRoot = React.useCallback(
     trottle((e) => {
       const [xScale] = scale;
       const [pX] = eventToPoint(e, rootRef.current);
@@ -44,14 +44,14 @@ function Dots(props) {
     [scale, data],
   );
 
-  const handlerMouseLeaveRoot = useCallback(
+  const handlerMouseLeaveRoot = React.useCallback(
     trottle(() => {
       setActiveIndex(null);
     }),
     [],
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     const unsubscribeMouseMoveRoot = eventEmitter.subscribe('onMouseMoveChart', (e) => {
       e.persist();
       handlerMouseMoveRoot(e);

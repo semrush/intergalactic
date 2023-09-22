@@ -11,6 +11,8 @@ a11y: AA
 
 ### Keyboard support
 
+@table-caption Keyboard support
+
 | Key              | Function                                                                                                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Tab`            | Moves focus to next element in the dropdown `Tab` sequence. If focus is on the last button (specifically "OK"), moves focus to the first button (specifically Previous Year).                       |

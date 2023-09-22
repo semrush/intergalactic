@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '@semcore/ui/card';
 import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/color';
+import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
 import Checkbox from '@semcore/ui/checkbox';
 

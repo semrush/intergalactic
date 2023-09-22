@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Box } from '@semcore/flex-box';
 import { createBaseComponent, sstyled } from '@semcore/core';
 
@@ -14,7 +14,7 @@ BodyInner.displayName = 'Body';
 const BodyCore = createBaseComponent(BodyInner);
 
 const Body = React.forwardRef((props, ref) => {
-  const contextProps = useContext(Context);
+  const contextProps = React.useContext(Context);
   const styles = sstyled.merge(contextProps.styles, props.styles);
   return <BodyCore ref={ref} {...contextProps} {...props} styles={styles} />;
 });

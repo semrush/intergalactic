@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForkRef } from '../ref';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 
@@ -20,7 +20,7 @@ function autoFocusEnhance() {
       return props;
     }
     const nodeRef = React.createRef<HTMLElement>();
-    useEffect(() => {
+    React.useEffect(() => {
       if (autoFocus === false) return;
       const { current: inputNode } = nodeRef;
       if (!inputNode || !inputNode.focus) return;

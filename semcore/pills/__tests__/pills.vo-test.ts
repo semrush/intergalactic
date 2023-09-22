@@ -14,11 +14,11 @@ test('Users can interact with Pills via VoiceOver', async ({ page, voiceOver: pu
   const { voiceOver, getReport } = await makeVoiceOverReporter(pureVoiceOver);
   await voiceOver.interact();
 
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Like tab, 1 of 3');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Like radio button, 1 of 3');
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe("Don't care selected tab, 2 of 3");
+  expect(await voiceOver.lastSpokenPhrase()).toBe("Don't care selected radio button, 2 of 3");
   await voiceOver.next();
-  expect(await voiceOver.lastSpokenPhrase()).toBe('Dislike tab, 3 of 3');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Dislike radio button, 3 of 3');
   await voiceOver.act();
   expect(await voiceOver.lastSpokenPhrase()).toContain('selected');
   await voiceOver.previous();

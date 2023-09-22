@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import DataTable from '@semcore/ui/data-table';
 import { Box } from '@semcore/ui/flex-box';
 import ScrollArea from '@semcore/ui/scroll-area';
 
 export default () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [container, setContainer] = useState(null);
-  const [top, setTop] = useState(0);
-  useEffect(() => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [container, setContainer] = React.useState(null);
+  const [top, setTop] = React.useState(0);
+  React.useEffect(() => {
     containerRef.current &&
       setContainer(containerRef.current.closest('[data-ui-name="ScrollArea.Container"]'));
     const header = document.getElementsByTagName('header')[0];

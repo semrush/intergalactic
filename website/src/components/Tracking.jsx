@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Tracking(props) {
   const { listen } = useHistory();
 
-  useEffect(() => {
+  React.useEffect(() => {
     return listen((location) => {
       const trackingId = props.trackingId ?? window.GA_TRACKING_ID;
       if (!window.gtag || !trackingId) return;

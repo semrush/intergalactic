@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import Input from '@semcore/ui/input';
 import InputMask, { getAfterPositionValue } from '@semcore/ui/input-mask';
 import Select, { InputSearch } from '@semcore/ui/select';
@@ -263,18 +263,18 @@ const listActuallyCountryCodes = Object.keys(CountryCodes)
   }, {});
 
 const Demo = () => {
-  const inputMaskRef = useRef(null);
-  const [filter, setFilterValue] = useState('');
-  const [option, setOption] = useState(listActuallyCountryCodes['Zimbabwe']);
-  const [value, setValue] = useState(option.dial_code);
-  const [valueMask, setValueMask] = useState(`${option.dial_code} (___)___-____`);
+  const inputMaskRef = React.useRef(null);
+  const [filter, setFilterValue] = React.useState('');
+  const [option, setOption] = React.useState(listActuallyCountryCodes['Zimbabwe']);
+  const [value, setValue] = React.useState(option.dial_code);
+  const [valueMask, setValueMask] = React.useState(`${option.dial_code} (___)___-____`);
   let country;
 
-  useEffect(() => {
+  React.useEffect(() => {
     setValueMask(`${option.dial_code} (___)___-____`);
   }, [option]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (value === valueMask) {
       const position = getAfterPositionValue(value);
       inputMaskRef?.current.setSelectionRange(position, position);

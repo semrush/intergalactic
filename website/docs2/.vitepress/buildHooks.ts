@@ -6,7 +6,7 @@ import { resolve as resolvePath } from 'path';
 import fs from 'fs/promises';
 import algoliasearch from 'algoliasearch';
 import parseMarkdownMetadata from 'parse-md';
-import 'dotenv/config'
+import 'dotenv/config';
 
 const excludeFromSearch = ['a11y-report'];
 
@@ -17,14 +17,14 @@ if (process.env.CI) {
   if (!process.env.ALGOLIA_SECRET_KEY) {
     throw new Error('Create .env file and insert ALGOLIA_SECRET_KEY variable');
   }
-  
+
   {
     const key = process.env.ALGOLIA_SECRET_KEY;
     const escapedKey =
       key.substring(0, 5) +
       key.substring(5, key.length - 5).replace(/./g, 'X') +
       key.substring(key.length - 5);
-  
+
     console.info(
       `Publishing algolia search with application id "${algoliaApp}" and secret key "${escapedKey}"`,
     );

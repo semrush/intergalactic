@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Line, minMax, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 
 export default () => {
-  const [dataLegend, setDataLegend] = useState(
+  const [dataLegend, setDataLegend] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
       .map((name) => ({ name, checked: true, opacity: false })),

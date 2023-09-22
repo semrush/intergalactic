@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from '@semcore/ui/slider';
 
 const Demo = () => {
-  const [value, setValue] = useState('medium');
+  const [value, setValue] = React.useState('medium');
 
   return (
     <Slider

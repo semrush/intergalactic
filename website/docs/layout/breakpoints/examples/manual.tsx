@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Breakpoints from '@semcore/ui/breakpoints';
 import Button from '@semcore/ui/button';
 
 export default () => {
-  const [index, setIndex] = useState(Breakpoints.mediaList.matches());
+  const [index, setIndex] = React.useState(Breakpoints.mediaList.matches());
 
-  useEffect(() => {
+  React.useEffect(() => {
     const unsubscribe = Breakpoints.mediaList.addListener((index) => {
       setIndex(index);
     });

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useLayoutEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import NavLink from './NavLink';
 import HamburgerL from '@semcore/icon/Hamburger/l';
@@ -22,15 +22,15 @@ import { logEvent } from '../utils/amplitude';
 import { getThemePreference } from '../utils/theme';
 
 function Header({ theme, setTheme }) {
-  const [menuVisible, setMenuVisible] = useState(false);
-  const [searchVisible, setSearchVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = React.useState(false);
+  const [searchVisible, setSearchVisible] = React.useState(false);
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     const currentTheme = getThemePreference();
     setTheme(currentTheme);
   }, []);
 
-  const renderThemeToggle = useCallback(() => {
+  const renderThemeToggle = React.useCallback(() => {
     if (theme) {
       return theme === 'light' ? (
         <TimeNightL color='var(--intergalactic-icon-non-interactive)' />
@@ -57,7 +57,7 @@ function Header({ theme, setTheme }) {
           )}
         </div>
         <div className={cx(styles.logo, searchVisible && styles.activeSearch)}>
-          {/* rome-ignore lint/a11y/useValidAnchor: */}
+          {/* biome-ignore lint/a11y/useValidAnchor: */}
           <a className={styles.devportalLink} href='/' onClick={() => logEvent('logo_dev:click')}>
             <SemrushL className={styles.semrushLogo} />
             <Tooltip>
@@ -149,7 +149,7 @@ function Header({ theme, setTheme }) {
               <Link to='/internal/release/' onClick={() => setMenuVisible(false)}>
                 Releases
               </Link>
-              {/* rome-ignore lint/a11y/useValidAnchor: */}
+              {/* biome-ignore lint/a11y/useValidAnchor: */}
               <a
                 href='https://github.com/semrush/intergalactic'
                 target='_blank'

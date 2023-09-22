@@ -1,3 +1,114 @@
+## [15.24.0] - 2023-09-21
+
+### @semcore/data-table
+
+- **Added** `font-variant-numeric` for table cells
+
+## [15.23.1] - 2023-09-20
+
+### @semcore/core
+
+- **Fixed** Release doesn't contain any meaningful changes but contains inner dependencies fixes required by the previous release.
+
+## [15.23.0] - 2023-09-20
+
+### @semcore/d3-chart
+
+- **Added** `index` to render function context type of `HoverLine` and `HoverRect`.
+- **Added** `size`, `x` and `y` to render function context type of `XAxis.Ticks` and `YAxis.Ticks`.
+
+### @semcore/date-picker
+
+- **Fixed** Fixed types for `value` and `onChange` in DateRangePicker.Trigger.
+
+### @semcore/product-head
+
+- **Changed** Enforced `0` margins of `ProductHeader.Title`.
+
+### @semcore/spin-container
+
+- **Added** Added size in playground for SpinContainer
+
+### @semcore/utils
+
+- **Fixed** Reverse focus in modals (Fixed `useFocuseLock`. Call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target))
+
+## [15.22.0] - 2023-09-19
+
+### @semcore/icon
+
+- **Added** Added new `Plug` icon.
+
+## [15.21.0] - 2023-09-15
+
+### @semcore/typography
+
+- **Added** `use` and `disabled` props to `Text` component.
+
+## [15.20.1] - 2023-09-14
+
+### @semcore/feature-popover
+
+- **Fixed** Added missing `aria-live='polite'` attribute.
+
+## [15.20.0] - 2023-09-13
+
+### @semcore/format-text
+
+- **Changed** Specified font for `code` and `pre` tags inside of `FormatText` component.
+
+### @semcore/icon
+
+- **Fixed** Fixed strange svg issue that was cutting the edge of the `Favorite` and `FavoriteFilled` icons.
+
+### @semcore/typography
+
+- **Added** `monospace` prop to `Text` component.
+
+### @semcore/utils
+
+- **Added** Added new design tokens for period comparison in DatePicker: `date-picker-cell-comparison-active`, `date-picker-cell-comparison-active-hover`, `border-date-picker-range-comparison`.
+- **Changed** Changed colors of `--intergalactic-date-picker-cell-current` and `--intergalactic-date-picker-cell-current-invert` design tokens to make them more contrast against background.
+- **Changed** Removed design tokens `--intergalactic-bg-tertiary-neutral` and `--intergalactic-brand-tertiary` that was added by mistake.
+
+## [15.19.0] - 2023-09-13
+
+### @semcore/date-picker
+
+- **Fixed** Enforced input trigger line height to prevent visual break due to non `normal` line height on page.
+
+### @semcore/i18n-unplugin
+
+- **Changed** Added error throwing if bundled locales are excluded or not included.
+
+## [15.18.0] - 2023-09-12
+
+### @semcore/core
+
+- **Fixed** Fixed `locale` propagation in complex components.
+
+### @semcore/errors
+
+- **Added** `titleTag` prop for specifying error widget tag (`h2` by default).
+
+## [15.16.3] - 2023-09-08
+
+### @semcore/utils
+
+- **Fixed** Focus lock version merger was not respecting React version and was causing React#321 error.
+
+## [15.16.2] - 2023-09-08
+
+### @semcore/data-table
+
+- **Fixed** Fixed initial columns rendering width when `wMax` or `wMin` props provided.
+
+## [15.16.1] - 2023-09-08
+
+### @semcore/date-picker
+
+- **Fixed** Navigation arrow in calendar that were navigating to the next month/year was visually displayed as a navigation arrow to the previous month/year.
+
 ## [15.16.0] - 2023-09-05
 
 ### @semcore/icon

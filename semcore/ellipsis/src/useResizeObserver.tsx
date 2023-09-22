@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useState } from 'react';
+import React, { RefObject } from 'react';
 import useEnhancedEffect from '@semcore/utils/lib/use/useEnhancedEffect';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 
@@ -6,9 +6,9 @@ export const useResizeObserver = (
   ref: RefObject<HTMLElement>,
   hookOverride?: { width: number },
 ) => {
-  const [width, setWidth] = useState<number>(0);
+  const [width, setWidth] = React.useState<number>(0);
 
-  const handleResize = useCallback((entries: ResizeObserverEntry[]) => {
+  const handleResize = React.useCallback((entries: ResizeObserverEntry[]) => {
     setWidth(entries[0].contentRect.width);
   }, []);
 

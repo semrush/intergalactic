@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.2] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.1 ~> 2.7.2], `@semcore/flex-box` [5.7.1 ~> 5.7.2], `@semcore/icon` [4.9.1 ~> 4.9.2], `@semcore/core` [2.7.1 ~> 2.7.2]).
+
+## [4.11.1] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.0 ~> 2.7.1], `@semcore/flex-box` [5.7.0 ~> 5.7.1], `@semcore/icon` [4.9.0 ~> 4.9.1], `@semcore/utils` [4.7.0 ~> 4.7.1], `@semcore/core` [2.7.0 ~> 2.7.1]).
+
+## [4.11.0] - 2023-09-19
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.8.3 ~> 4.9.0]).
+
+## [4.10.0] - 2023-09-15
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/typography` [5.9.0 ~> 5.10.0]).
+
+## [4.9.3] - 2023-09-13
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.3 ~> 2.7.0], `@semcore/flex-box` [5.6.3 ~> 5.7.0], `@semcore/icon` [4.8.2 ~> 4.8.3], `@semcore/typography` [5.8.2 ~> 5.9.0], `@semcore/utils` [4.6.3 ~> 4.7.0], `@semcore/core` [2.6.3 ~> 2.7.0]).
+
+## [4.9.2] - 2023-09-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.2 ~> 2.6.3], `@semcore/flex-box` [5.6.2 ~> 5.6.3], `@semcore/icon` [4.8.1 ~> 4.8.2], `@semcore/core` [2.6.2 ~> 2.6.3]).
+
+## [4.9.1] - 2023-09-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.1 ~> 2.6.2], `@semcore/flex-box` [5.6.1 ~> 5.6.2], `@semcore/icon` [4.8.0 ~> 4.8.1], `@semcore/utils` [4.6.1 ~> 4.6.2], `@semcore/core` [2.6.1 ~> 2.6.2]).
+
 ## [4.9.0] - 2023-09-05
 
 ### Changed

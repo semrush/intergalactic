@@ -49,7 +49,7 @@ function OutsideClick(props: IFunctionProps<IOutsideClickProps>) {
     targetRef.current = event.target;
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const outsideRoot = root ? getNodeByRef(root) : ownerDocument(nodeRef.current as any);
 
     // Using capture to handle event faster than OutsideClick handler

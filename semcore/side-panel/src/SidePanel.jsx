@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import { FadeInOut, Slide } from '@semcore/animation';
@@ -126,7 +126,7 @@ class RootSidePanel extends Component {
 
 function Overlay(props) {
   const SOverlay = Root;
-  const overlayRef = useRef(null);
+  const overlayRef = React.useRef(null);
   usePreventScroll(props.visible, props.disablePreventScroll);
   useContextTheme(overlayRef, props.visible);
   return sstyled(props.styles)(<SOverlay render={FadeInOut} ref={overlayRef} />);
@@ -144,7 +144,7 @@ function Panel(props) {
       SidePanel.Footer.displayName,
     ]);
 
-  const sidebarRef = useRef(null);
+  const sidebarRef = React.useRef(null);
 
   useFocusLock(sidebarRef, true, 'auto', !visible, true);
 

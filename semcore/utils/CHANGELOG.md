@@ -2,6 +2,41 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.7.2] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/core` [2.7.1 ~> 2.7.2]).
+
+## [4.7.1] - 2023-09-18
+
+### Fixed
+
+- Reverse focus in modals (Fixed `useFocuseLock`. Call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target))
+
+## [4.7.0] - 2023-09-13
+
+### Added
+
+- Added new design tokens for period comparison in DatePicker: `date-picker-cell-comparison-active`, `date-picker-cell-comparison-active-hover`, `border-date-picker-range-comparison`.
+
+### Changed
+
+- Changed colors of `--intergalactic-date-picker-cell-current` and `--intergalactic-date-picker-cell-current-invert` design tokens to make them more contrast against background.
+- Removed design tokens `--intergalactic-bg-tertiary-neutral` and `--intergalactic-brand-tertiary` that was added by mistake.
+
+## [4.6.3] - 2023-09-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/core` [2.6.2 ~> 2.6.3]).
+
+## [4.6.2] - 2023-09-08
+
+### Fixed
+
+- Focus lock version merger was not respecting React version and was causing React#321 error.
+
 ## [4.6.1] - 2023-09-05
 
 ### Changed

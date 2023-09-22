@@ -73,7 +73,7 @@ You can use both internal and external variables in your HTML code.
 - Internal variables:
 
   ```html
-  <p>{{text}}</p>
+  <p>{text}</p>
   <script locals>
     module.exports = {
       text: 'Hello',
@@ -85,7 +85,7 @@ You can use both internal and external variables in your HTML code.
 
   ```html
   <p>
-    <raw>{{text}}</raw>
+    <raw>{text}</raw>
   </p>
   ```
 

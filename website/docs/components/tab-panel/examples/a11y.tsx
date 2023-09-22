@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import TabPanel from '@semcore/ui/tab-panel';
 
 export default () => {
-  const [value, onChange] = useState(1);
+  const [value, onChange] = React.useState(1);
   return (
     <>
       <TabPanel value={value} onChange={onChange} aria-label='Page'>

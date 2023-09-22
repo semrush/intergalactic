@@ -2,43 +2,85 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.10.0-prerelease.0] - 2023-09-05
+## [4.12.2] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/icon` [4.9.1 ~> 4.9.2], `@semcore/flex-box` [5.7.1 ~> 5.7.2], `@semcore/scroll-area` [5.9.1 ~> 5.9.2], `@semcore/core` [2.7.1 ~> 2.7.2]).
+
+## [4.12.1] - 2023-09-20
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.7.0 ~> 4.7.1], `@semcore/icon` [4.9.0 ~> 4.9.1], `@semcore/flex-box` [5.7.0 ~> 5.7.1], `@semcore/scroll-area` [5.9.0 ~> 5.9.1], `@semcore/core` [2.7.0 ~> 2.7.1]).
+
+## [4.12.0] - 2023-09-19
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.8.3 ~> 4.9.0]).
+
+## [4.11.0] - 2023-09-15
+
+### Changed
+
+- Enforced cells with `use="secondary"` color text to prevent it from inheriting secondary text color from `Text` component.
+
+## [4.10.3] - 2023-09-13
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.6.3 ~> 4.7.0], `@semcore/icon` [4.8.2 ~> 4.8.3], `@semcore/flex-box` [5.6.3 ~> 5.7.0], `@semcore/typography` [5.8.2 ~> 5.9.0], `@semcore/scroll-area` [5.8.3 ~> 5.9.0], `@semcore/core` [2.6.3 ~> 2.7.0]).
+
+## [4.10.2] - 2023-09-12
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/icon` [4.8.1 ~> 4.8.2], `@semcore/flex-box` [5.6.2 ~> 5.6.3], `@semcore/scroll-area` [5.8.2 ~> 5.8.3], `@semcore/core` [2.6.2 ~> 2.6.3]).
+
+## [4.10.1] - 2023-09-08
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.6.1 ~> 4.6.2], `@semcore/icon` [4.8.0 ~> 4.8.1], `@semcore/flex-box` [5.6.1 ~> 5.6.2], `@semcore/scroll-area` [5.8.1 ~> 5.8.2], `@semcore/core` [2.6.1 ~> 2.6.2]).
+
+## [4.10.0] - 2023-09-05
 
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/icon` [4.7.1 ~> 4.8.0], `@semcore/typography` [5.7.1 ~> 5.8.0]).
 
-## [4.9.1-prerelease.0] - 2023-09-05
+## [4.9.1] - 2023-09-05
 
 ### Changed
 
 - Version prepatch update due to children dependencies update (`@semcore/icon` [4.7.0 ~> 4.7.1], `@semcore/flex-box` [5.6.0 ~> 5.6.1], `@semcore/scroll-area` [5.8.0 ~> 5.8.1], `@semcore/core` [2.6.0 ~> 2.6.1]).
 
-## [4.9.0-prerelease.0] - 2023-09-04
+## [4.9.0] - 2023-09-04
 
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/icon` [4.6.0 ~> 4.7.0], `@semcore/flex-box` [5.5.0 ~> 5.6.0], `@semcore/scroll-area` [5.7.0 ~> 5.8.0], `@semcore/core` [2.5.0 ~> 2.6.0]).
 
-## [4.8.0-prerelease.0] - 2023-08-28
+## [4.8.0] - 2023-08-28
 
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/icon` [4.5.1 ~> 4.6.0], `@semcore/flex-box` [5.4.1 ~> 5.5.0], `@semcore/scroll-area` [5.6.1 ~> 5.7.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
 
-## [4.7.1-prerelease.0] - 2023-08-24
+## [4.7.1] - 2023-08-24
 
 ### Changed
 
 - Version prepatch update due to children dependencies update (`@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/icon` [4.5.0 ~> 4.5.1], `@semcore/flex-box` [5.4.0 ~> 5.4.1], `@semcore/scroll-area` [5.6.0 ~> 5.6.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
 
-## [4.7.0-prerelease.0] - 2023-08-23
+## [4.7.0] - 2023-08-23
 
 ### Changed
 
 - Version preminor update due to children dependencies update (`@semcore/scroll-area` [5.5.0 ~> 5.6.0]).
 
-## [4.6.0-prerelease.0] - 2023-08-23
+## [4.6.0] - 2023-08-23
 
 ### Changed
 

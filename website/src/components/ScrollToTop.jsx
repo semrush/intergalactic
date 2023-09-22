@@ -1,11 +1,11 @@
-import { useEffect, useRef } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 export default function ScrollToTop() {
-  const isInitialMount = useRef(true);
+  const isInitialMount = React.useRef(true);
   const { pathname } = useLocation();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
     } else {

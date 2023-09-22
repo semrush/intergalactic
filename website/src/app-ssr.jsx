@@ -3,6 +3,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import { App } from './App';
 import { sstyled as semcoreSstyled } from '@semcore/core';
 
+globalThis.React = React;
 globalThis.renderApp = () => {
   return {
     html: ReactDOMServer.renderToString(<App />),

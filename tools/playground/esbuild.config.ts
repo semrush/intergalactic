@@ -31,7 +31,7 @@ esbuild
     },
   )
   .then(() => {
-    // rome-ignore lint/nursery/noConsoleLog:
+    // biome-ignore lint/suspicious/noConsoleLog:
     console.log('\nStarted on ' + picocolros.yellow(`http://localhost:${port}\n`));
   })
   .catch((err) => {
