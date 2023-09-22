@@ -22,7 +22,7 @@ export default () => {
     .domain(minMax(data, 'x'));
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, 0])
+    .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
   const linesList = Object.keys(data[0]).filter((name) => name !== 'x');
@@ -60,7 +60,11 @@ export default () => {
 
   return (
     <Card w={'550px'}>
-      <Card.Header pt={4}> Chart legend</Card.Header>
+      <Card.Header pt={4}>
+        <Card.Title tag={'h4'} m={0} hint={'Chart about ...'} inline={true}>
+          Chart legend
+        </Card.Title>
+      </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
           {linesList.map((line) => {
