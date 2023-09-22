@@ -10,9 +10,9 @@ import { Text } from '@semcore/ui/typography';
 import SearchM from '@semcore/ui/icon/Search/m';
 import CloseM from '@semcore/ui/icon/Close/m';
 import staticFiles from '@static';
-import algoliaConfig from '@components/algolia-config';
+import { algoliaConfig } from '../../../algoliaConfig';
 
-const searchClient = algoliasearch(algoliaConfig.ALGOLIA_APP, algoliaConfig.ALGOLIA_OPEN_KEY);
+const searchClient = algoliasearch(algoliaConfig.appName, algoliaConfig.openKey);
 
 const SuggestSearch = connectAutoComplete(
   ({ currentRefinement, refine, hits, filteredIcons, onChangeValue, ...others }) => {
@@ -50,7 +50,7 @@ const SuggestSearch = connectAutoComplete(
 
 function SearchIcons(props) {
   return (
-    <InstantSearch searchClient={searchClient} indexName={algoliaConfig.ALGOLIA_INDEX_ICONS}>
+    <InstantSearch searchClient={searchClient} indexName={algoliaConfig.iconsSearchIndexName}>
       <SuggestSearch {...props} />
     </InstantSearch>
   );

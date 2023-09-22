@@ -5,6 +5,7 @@ import { configureMarkdownIt } from './markdown-it-config';
 import { viteConfig } from './vite.config';
 import { sideBarConfig } from './sidebarConfig';
 import { buildHooks } from './buildHooks';
+import { algoliaConfig } from '../../algoliaConfig';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -35,9 +36,9 @@ export default defineConfig({
     search: {
       provider: 'algolia',
       options: {
-        appId: 'PDUJZB0TBK',
-        apiKey: '9ad1935d853b24ce3fe9c0039bcf7b40',
-        indexName: 'intergalactic-docs',
+        appId: algoliaConfig.appName,
+        apiKey: algoliaConfig.openKey,
+        indexName: algoliaConfig.mainSearchIndexName,
         searchParameters: {
           attributesToRetrieve: [
             'hierarchy',

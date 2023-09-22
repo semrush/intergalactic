@@ -131,38 +131,39 @@ class PanelChangeIcon extends PureComponent {
   }
 }
 
-export const ListIcons = ({ data, icons, json }) => (
-  <div className={styles.list}>
-    {data.map((icon, index) => {
-      const Icon = icons[icon.name];
-      if (!Icon) {
-        new Error(`Icon ${icon.name} was not founded in import from @icons`);
-        return null;
-      }
+export const ListIcons = ({ data, icons, json }) => {
+  return (
+    <div className={styles.list}>
+      {data.map((icon, index) => {
+        const Icon = icons[icon.name];
+        if (!Icon) {
+          throw new Error(`Icon ${icon.name} was not founded in import from @icons`);
+        }
 
-      return (
-        // biome-ignore lint/a11y/useKeyWithClickEvents:
-        <div
-          className={styles.previewIcon}
-          tabIndex={0}
-          key={index}
-          data-name={icon.name}
-          onClick={() => {
-            const node = modalLayout();
-            if (!node) return;
-            ReactDOM.render(
-              <PanelChangeIcon name={icon.name} icon={icons[icon.name]} json={json} />,
-              node,
-            );
-          }}
-        >
-          <Icon width={20} height={20} />
-          <span>{icon.name}</span>
-        </div>
-      );
-    })}
-  </div>
-);
+        return (
+          // biome-ignore lint/a11y/useKeyWithClickEvents:
+          <div
+            className={styles.previewIcon}
+            tabIndex={0}
+            key={index}
+            data-name={icon.name}
+            onClick={() => {
+              const node = modalLayout();
+              if (!node) return;
+              ReactDOM.render(
+                <PanelChangeIcon name={icon.name} icon={icons[icon.name]} json={json} />,
+                node,
+              );
+            }}
+          >
+            <Icon width={20} height={20} />
+            <span>{icon.name}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 const Context = React.createContext();
 

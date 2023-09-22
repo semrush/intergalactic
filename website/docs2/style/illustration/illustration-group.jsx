@@ -72,10 +72,9 @@ export const ListIllustrations = ({ data, illustrations, json }) => (
     {data.map((illustration, index) => {
       const Illustration = illustrations[illustration.name];
       if (!Illustration) {
-        new Error(
+        throw new Error(
           `Illustration ${illustration.name} was not founded in import from @illustrations`,
         );
-        return null;
       }
 
       return (

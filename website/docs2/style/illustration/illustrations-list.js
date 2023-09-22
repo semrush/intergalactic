@@ -25,10 +25,6 @@ const illustartionsList = {
       group: 'States',
     },
     {
-      name: 'Confetti',
-      group: 'States',
-    },
-    {
       name: 'Congrats',
       group: 'States',
     },
@@ -117,10 +113,6 @@ const illustartionsList = {
       group: 'Data types',
     },
     {
-      name: 'Ads',
-      group: 'Data types',
-    },
-    {
       name: 'DeletedPage',
       group: 'Data types',
     },
@@ -133,10 +125,6 @@ const illustartionsList = {
       group: 'Data types',
     },
     {
-      name: 'NextTime',
-      group: 'Data types',
-    },
-    {
       name: 'OtherData',
       group: 'Data types',
     },
@@ -146,10 +134,6 @@ const illustartionsList = {
     },
     {
       name: 'Suggestions',
-      group: 'Data types',
-    },
-    {
-      name: 'TextLinks',
       group: 'Data types',
     },
     {

@@ -6,7 +6,7 @@ import { createUnplugin } from 'unplugin';
 
 const __dirname = resolveDirname(fileURLToPath(import.meta.url));
 
-const iconsDir = resolvePath(__dirname, '../../semcore/icon');
+const iconsDir = resolvePath(__dirname, '../../../../semcore/icon');
 
 export const unpluginIcons = createUnplugin(() => ({
   name: 'unplugin-icons',
@@ -33,8 +33,10 @@ export const unpluginIcons = createUnplugin(() => ({
       }
     });
 
-    const imports = iconPaths.map((path, index) => `import icon_${index} from "./${path}"`);
-    const exports = iconNames.map((path, index) => `["${path}"]: icon_${index}`);
+    const imports = iconPaths.map(
+      (path, index) => `import icon_${index} from "@semcore/icon/${path.replace(/^\.\//, '')}"`,
+    );
+    const exports = iconNames.map((name, index) => `["${name}"]: icon_${index}`);
     const contents =
       imports.join('\n') +
       '\nconst importsMap = {' +

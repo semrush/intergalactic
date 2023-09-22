@@ -6,12 +6,13 @@ import { resolve as resolvePath } from 'path';
 import fs from 'fs/promises';
 import algoliasearch from 'algoliasearch';
 import parseMarkdownMetadata from 'parse-md';
+import iconsList from '../style/icon/icons-list.js';
+import illustrationsList from '../style/illustration/illustrations-list.js';
+
 import 'dotenv/config';
+import { algoliaConfig } from '../../algoliaConfig.js';
 
 const excludeFromSearch = ['a11y-report'];
-
-const algoliaIndexName = 'intergalactic-docs';
-const algoliaApp = 'PDUJZB0TBK';
 
 if (process.env.CI) {
   if (!process.env.ALGOLIA_SECRET_KEY) {
@@ -26,7 +27,7 @@ if (process.env.CI) {
       key.substring(key.length - 5);
 
     console.info(
-      `Publishing algolia search with application id "${algoliaApp}" and secret key "${escapedKey}"`,
+      `Publishing algolia search with application id "${algoliaConfig.appName}" and secret key "${escapedKey}"`,
     );
   }
 }
@@ -157,10 +158,38 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
 
   if (process.env.CI) {
     // await fs.writeFile('search-index.json', JSON.stringify(searchObjects, null, 2));
-    const client = algoliasearch(algoliaApp, process.env.ALGOLIA_SECRET_KEY!);
-    const index = client.initIndex(algoliaIndexName);
-    await index.clearObjects();
-    await index.partialUpdateObjects(searchObjects, {
+    const client = algoliasearch(algoliaConfig.appName, process.env.ALGOLIA_SECRET_KEY!);
+    const mainSearchIndex = client.initIndex(algoliaConfig.mainSearchIndexName);
+    const iconsSearchIndex = client.initIndex(algoliaConfig.iconsSearchIndexName);
+    const illustrationsSearchIndex = client.initIndex(algoliaConfig.illustrationsSearchIndexName!);
+
+    const iconsSearchObjects = iconsList.icons.map((o, i) => ({ objectID: i, ...o }));
+    const illustrationsSearchObjects = illustrationsList.illustrations.map((o, i) => ({
+      objectID: i,
+      ...o,
+    }));
+
+    if (!searchObjects.length || !iconsSearchObjects.length || !illustrationsSearchObjects.length) {
+      console.info({
+        searchObjects,
+        objectIcons: iconsSearchObjects,
+        objectIllustrations: illustrationsSearchObjects,
+      });
+      throw new Error('Empty index was going to be sent to algolia, see above');
+    }
+
+    await mainSearchIndex.clearObjects();
+    await mainSearchIndex.partialUpdateObjects(searchObjects, {
+      createIfNotExists: true,
+    });
+
+    await iconsSearchIndex.clearObjects();
+    await iconsSearchIndex.partialUpdateObjects(iconsSearchObjects, {
+      createIfNotExists: true,
+    });
+
+    await illustrationsSearchIndex.clearObjects();
+    await illustrationsSearchIndex.partialUpdateObjects(illustrationsSearchObjects, {
       createIfNotExists: true,
     });
   }

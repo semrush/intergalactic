@@ -17,8 +17,8 @@ import React from 'react';
 import Components from './illustrations-view';
 import dataIllustrations from './illustrations-list';
 
-import icons from '@illustrations';
-const App = () => <Components illustrations={icons} json={dataIllustrations} />;
+import illustrations from '@illustrations';
+const App = () => <Components illustrations={illustrations} json={dataIllustrations} />;
 </script>
 
 :::
