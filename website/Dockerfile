@@ -21,7 +21,6 @@ RUN pnpm --filter utils run build
 RUN pnpm build:icons
 RUN pnpm build:illustration
 RUN echo "ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY" > .env
-RUN cat .env
 RUN NODE_OPTIONS=--max-old-space-size=32768 CI=true ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY pnpm --filter intergalactic-documentation run build
 
 FROM nginx:alpine
