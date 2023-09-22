@@ -37,7 +37,7 @@
   max-width: 688px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   flex-direction: column;
 }
 

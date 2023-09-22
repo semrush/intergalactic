@@ -31,10 +31,8 @@
   --vp-button-brand-border: var(--vp-c-brand-2);
   --vp-button-brand-text: var(--vp-c-white);
   --vp-button-brand-bg: var(--vp-c-brand);
-  --vp-button-brand-hover-border: var(--vp-c-brand-1);
   --vp-button-brand-hover-text: var(--vp-c-white);
   --vp-button-brand-hover-bg: var(--vp-c-brand-light);
-  --vp-button-brand-active-border: var(--vp-c-brand-1);
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-active-bg: var(--vp-button-brand-bg);
 }
@@ -106,13 +104,11 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-darker);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
 }
 
 .dark {
-  --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
 }
@@ -220,6 +216,7 @@
 
 .vp-doc h2 {
   border-top: none;
+  margin: 24px 0 16px;
 }
 
 .embedded-video-container {
@@ -331,14 +328,14 @@
   --vp-c-brand: var(--vp-c-brand-1);
   --vp-c-brand-1: #5925ab;
   --vp-c-brand-2: #8649e1;
-  --vp-c-brand-3: #ab6cfe;
+  --vp-c-brand-3: #A56EF5;
   --vp-c-brand-soft: #5925ab24;
   --vp-c-danger-1: var(--vp-c-red-1);
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
-  --vp-c-default-1: var(--vp-c-gray-1);
-  --vp-c-default-2: var(--vp-c-gray-2);
+  --vp-c-default-1: rgba(196, 199, 207, 0.6);
+  --vp-c-default-2: rgba(224, 225, 233, 0.7);
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
   --vp-c-divider: #e0e1e9;
@@ -391,8 +388,8 @@
   --vp-badge-warning-text: var(--vp-c-warning-1);
   --vp-button-alt-active-bg: var(--vp-c-default-1);
   --vp-button-alt-active-text: var(--vp-c-text-1);
-  --vp-button-alt-bg: var(--vp-c-default-3);
-  --vp-button-alt-hover-bg: var(--vp-c-default-2);
+  --vp-button-alt-bg: var(--vp-c-default-2);
+  --vp-button-alt-hover-bg: var(--vp-c-default-1);
   --vp-button-alt-hover-text: var(--vp-c-text-1);
   --vp-button-alt-text: var(--vp-c-text-1);
   --vp-button-brand-active-bg: var(--vp-c-brand-1);
@@ -547,10 +544,10 @@
   --vp-button-alt-hover-bg: var(--vp-c-default-2);
   --vp-button-alt-hover-text: var(--vp-c-text-1);
   --vp-button-alt-text: var(--vp-c-text-1);
-  --vp-button-brand-active-bg: var(--vp-c-brand-1);
+  --vp-button-brand-active-bg: var(--vp-c-brand-3);
   --vp-button-brand-active-text: var(--vp-c-white);
   --vp-button-brand-bg: var(--vp-c-brand-2);
-  --vp-button-brand-hover-bg: var(--vp-c-brand-1);
+  --vp-button-brand-hover-bg: var(--vp-c-brand-3);
   --vp-button-brand-hover-text: var(--vp-c-white);
   --vp-button-brand-text: var(--vp-c-white);
   --vp-button-sponsor-active-border: var(--vp-c-sponsor);
