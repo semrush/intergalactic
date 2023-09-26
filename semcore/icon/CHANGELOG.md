@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.0] - 2023-09-26
+
+### Changed
+
+- `Redo` and `Undo` icons according to their actual design.
+
 ## [4.9.3] - 2023-09-21
 
 ### Fixed
 
-- Fixed bug with strange crop in icons if there are a lot of them on a page 
+- Fixed bug with strange crop in icons if there are a lot of them on a page
 
 ## [4.9.2] - 2023-09-20
 
