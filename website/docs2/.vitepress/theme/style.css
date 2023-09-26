@@ -133,6 +133,10 @@
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
 
+.DocSearch-Button {
+  border-radius: 6px;
+}
+
 .vp-doc .anchor-like-button {
   font-weight: 500;
   color: var(--vp-c-brand);
@@ -319,7 +323,7 @@
 }
 
 .documentation-sandbox {
-  margin-top: 20px;
+  margin-top: 24px;
 }
 
 .vp-doc tr:nth-child(2n) {
