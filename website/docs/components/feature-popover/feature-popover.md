@@ -17,6 +17,8 @@ FeaturePopover contains only simple reference/promotional information. The purpo
 - It is necessary to draw the user’s attention to an interface part.
 - You need to point at the next step for the user.
 
+> 🚨 Despite using Popper, FeaturePopover should not intercept or manipulate keyboard focus as it can appear while the user is engaged in another scenario and distract them.
+
 @## Component composition
 
 ![](static/featurepopover-composition.png)
