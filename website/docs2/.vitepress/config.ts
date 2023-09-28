@@ -91,7 +91,7 @@ export default defineConfig({
         target: '_blank',
       },
       {
-        text: 'Requests & issues',
+        text: 'Report a bug / Discuss feature',
         link: 'https://github.com/semrush/intergalactic/issues',
         target: '_blank',
       },
