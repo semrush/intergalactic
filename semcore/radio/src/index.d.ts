@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps, Flex } from '@semcore/flex-box';
+import { Box, BoxProps, Flex } from '@semcore/flex-box';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import { Text } from '@semcore/typography';
 
@@ -10,20 +10,34 @@ export type RadioValue = string | number | boolean;
 
 /** @deprecated */
 export interface IRadioProps extends RadioProps, UnknownProperties {}
-export type RadioProps = BoxProps & {
-  /**
-   * The value displaying the state of the component
-   * @default normal
-   */
-  state?: RadioState;
-  /**
-   * Radio button size
-   * @default m
-   **/
-  size?: RadioSize;
-  /** The theme of the radio button that you can send your color to */
-  theme?: string;
-};
+export type RadioProps = BoxProps &
+  (
+    | {
+        /** Radio item value **/
+        value: string;
+      }
+    | {
+        /** Radio item checked flag **/
+        checked: boolean;
+      }
+  ) & {
+    /**
+     * The value displaying the state of the component
+     * @default normal
+     */
+    state?: RadioState;
+    /**
+     * Radio button size
+     * @default m
+     **/
+    size?: RadioSize;
+    /** The theme of the radio button that you can send your color to */
+    theme?: string;
+    /** Radio item text **/
+    label?: string;
+    /** Blocks access and changes to the radio item **/
+    disabled?: boolean;
+  };
 
 /** @deprecated */
 export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {
@@ -58,21 +72,40 @@ export type RadioValueProps = BoxProps &
     /** List of elements that can be put on a hidden input */
     includeInputProps?: string[];
     /**
+     * @deprecated set `state` on root Radio instead
      * The value displaying the state of the component
      * @default normal
      */
     state?: RadioState;
-    /** The theme of the radio button that you can send your color to */
+    /**
+     * @deprecated
+     * The theme of the radio button that you can send your color to
+     */
     theme?: string;
-    /** Radio button size */
+    /**
+     * @deprecated set `size` on root RadioGroup instead
+     * Radio button size
+     */
     size?: RadioSize;
-    /** The element value is required for RadioGroup */
+    /**
+     * @deprecated set `value` on root Radio instead
+     * The element value is required for RadioGroup
+     */
     value?: RadioValue;
-    /** Default value if `value` property is not provided */
+    /**
+     * @deprecated set `defaultValue` on root RadioGroup instead
+     * Default value if `value` property is not provided
+     */
     defaultValue?: RadioValue;
-    /** Called when the value changes */
+    /**
+     * @deprecated set `onChange` on root RadioGroup instead
+     * Called when the value changes
+     */
     onChange?: (value: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-    /** Blocks access and changes to the form field */
+    /**
+     * @deprecated set `disabled` on root Radio instead
+     * Blocks access and changes to the form field
+     */
     disabled?: boolean;
   };
 
@@ -91,12 +124,18 @@ type IntergalacticRadioGroupComponent = (<
 ) => Intergalactic.InternalTypings.ComponentRenderingResults) &
   Intergalactic.InternalTypings.ComponentAdditive<'div'>;
 
+export type RadioValueControlProps = {};
+export type RadioValueMarkProps = {};
+
 declare const RadioGroup: IntergalacticRadioGroupComponent;
 
 export { RadioGroup };
 
 declare const Radio: Intergalactic.Component<'label', RadioProps, RadioCtx> & {
-  Value: Intergalactic.Component<'input', RadioValueProps>;
+  Value: Intergalactic.Component<'input', RadioValueProps> & {
+    Control: Intergalactic.Component<'input', RadioValueControlProps>;
+    RadioMark: Intergalactic.Component<typeof Box, RadioValueMarkProps>;
+  };
   Text: typeof Text;
 };
 

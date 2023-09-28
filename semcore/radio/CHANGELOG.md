@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.10.0] - 2023-09-29
+
+### Added
+
+- simplified use: `<Radio />`.
+- advanced use with new sub-components `<Radio.Value.Control />` and `<Radio.Value.RadioMark />`
+- added warning about using `disabled` prop on `Radio.Value` with recommendation to use `disabled` prop on root `Radio` because it may cause SSR related issues.
+- input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
 ## [6.9.2] - 2023-09-20
 
 ### Changed

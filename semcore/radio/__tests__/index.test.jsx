@@ -64,14 +64,14 @@ describe('Radio', () => {
         <Radio>
           <Radio.Value />
         </Radio>
-        <Radio>
-          <Radio.Value disabled />
+        <Radio disabled>
+          <Radio.Value />
         </Radio>
         <Radio>
           <Radio.Value keyboardFocused />
         </Radio>
-        <Radio>
-          <Radio.Value checked />
+        <Radio checked>
+          <Radio.Value />
         </Radio>
         <Radio>
           <Radio.Value checked disabled />
@@ -183,7 +183,7 @@ describe('RadioGroup', () => {
     expect(onChangeRadio).toHaveBeenCalled();
   });
 
-  test.concurrent('Should support initial value', () => {
+  test.concurrent('Should support initial value in Radio.Value', () => {
     const { getByTestId } = render(
       <RadioGroup name='test' value='1'>
         <Radio>
@@ -203,6 +203,26 @@ describe('RadioGroup', () => {
 
     expect(getByTestId('radio').checked).toBeTruthy();
     expect(getByTestId('radioSecond').checked).toBeFalsy();
+  });
+
+  test.concurrent('Should support initial value in Radio', () => {
+    const { getByTestId } = render(
+      <RadioGroup name='test' value='2'>
+        <Radio value={'1'}>
+          <Radio.Value>
+            <Radio.Value.Control data-testid='radioControl' />
+          </Radio.Value>
+        </Radio>
+        <Radio value={'2'}>
+          <Radio.Value>
+            <Radio.Value.Control data-testid='radioControlSecond' />
+          </Radio.Value>
+        </Radio>
+      </RadioGroup>,
+    );
+
+    expect(getByTestId('radioControl').checked).toBeFalsy();
+    expect(getByTestId('radioControlSecond').checked).toBeTruthy();
   });
 
   test.concurrent('Should support sizes', async ({ task }) => {
