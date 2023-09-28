@@ -64,9 +64,7 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 4px;
+  padding: 20px;
   background-color: var(--vp-c-bg-alt);
 }
 
