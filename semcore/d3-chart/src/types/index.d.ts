@@ -35,14 +35,6 @@ export * from './Area';
 export { default as StackedArea } from './StackedArea';
 export * from './StackedArea';
 
-/** It becomes resolvable after building and moving file to lib dir */
-
-// @ts-ignore
-export { default as RadialTree } from './RadialTree';
-
-// @ts-ignore
-export * from './RadialTree';
-
 export { default as Radar } from './Radar';
 export * from './Radar';
 
@@ -63,3 +55,21 @@ export * from './ReferenceLine';
 
 export { default as Venn } from './Venn';
 export * from './Venn';
+
+/** It becomes resolvable after building and moving file to lib dir */
+
+// @ts-ignore
+export { default as RadialTree } from './RadialTree';
+
+// @ts-ignore
+export * from './RadialTree';
+
+// @ts-ignore
+export { default as ChartLegend } from './component/ChartLegend';
+
+// @ts-ignore
+export * from './component/ChartLegend/LegendFlex/LegendFlex.type';
+// @ts-ignore
+export * from './component/ChartLegend/LegendTable/LegendTable.type';
+// @ts-ignore
+export * from './component/ChartLegend/LegendItem/LegendItem.type';

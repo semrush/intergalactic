@@ -1,0 +1,95 @@
+SLegendItem {
+  align-items: center;
+}
+
+SLegendItem:hover {
+  cursor: pointer;
+}
+
+SLegendItem[disabled]:hover {
+  cursor: default;
+}
+
+SPointShape[color] {
+  background-color: var(--color);
+  margin-right: 6px;
+}
+
+SPointShape[shape='Circle'][size='l'] {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+}
+
+SPointShape[shape='Circle'][size='m'] {
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+}
+
+SPointShape[shape='Line'][size='l'] {
+  width: 16px;
+  height: 4px;
+  border-radius: 3px;
+}
+
+SPointShape[shape='Line'][size='m'] {
+  width: 12px;
+  height: 4px;
+  border-radius: 3px;
+}
+
+SPointShape[shape='Square'][size='l'] {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+}
+
+SPointShape[shape='Square'][size='m'] {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+SIcon {
+  line-height: 0;
+  margin-right: 4px;
+  margin-left: 2px;
+}
+
+SLabel[size='l'], SAdditionalLabel[size='l'], SCount[size='l'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+}
+
+SLabel[size='m'], SAdditionalLabel[size='m'], SCount[size='m'] {
+  font-size: var(--intergalactic-fs-200, 14px);
+}
+
+SAdditionalLabel, SCount {
+  margin-left: 4px;
+}
+
+SAdditionalLabel {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+SAdditionalLabel::before {
+  content: '';
+  display: inline-block;
+  background-color: var(--intergalactic-text-secondary, #6c6e79);
+  margin-right: 4px;
+}
+
+SAdditionalLabel[size='l']::before {
+  height: 6px;
+  width: 6px;
+  border-radius: 3px;
+}
+
+SAdditionalLabel[size='m']::before {
+  height: 4px;
+  width: 4px;
+  border-radius: 2px;
+}
