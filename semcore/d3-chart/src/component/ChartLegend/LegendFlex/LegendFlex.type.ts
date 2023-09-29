@@ -1,0 +1,38 @@
+import { Flex, FlexProps } from '@semcore/flex-box';
+import { Intergalactic } from '@semcore/core';
+import { LegendItemType } from '../LegendItem/LegendItem.type';
+import { LegendProps } from '../BaseLegend.type';
+
+export type TrendProps = {
+  /**
+   * Flag for include trend LegendItem in Legend
+   */
+  withTrend: true;
+  /**
+   * Trend label (for localization)
+   */
+  trendLabel: string;
+  /**
+   * Flag for describe are trend is visible
+   */
+  trendIsVisible: boolean;
+  /**
+   * Handler for change trend visibility
+   */
+  onChangeTrendVisible: (isVisible: boolean) => void;
+};
+
+type SuffixProps = {
+  /**
+   * Element after all Legend items
+   */
+  suffix?: React.ReactElement;
+};
+
+type AddonProps = ({ withTrend?: never } & SuffixProps) | ({ suffix?: never } & TrendProps);
+
+export type LegendFlexProps = LegendProps & AddonProps & FlexProps;
+
+export type LegendFlexType = Intergalactic.Component<typeof Flex, LegendFlexProps> & {
+  LegendItem: LegendItemType;
+};
