@@ -1,0 +1,11 @@
+extends: substitution
+message: "Avoid Latin words and expressions. Use '%s' instead of '%s'."
+link: "https://technical-writers.pages.semrush.net/styleguide/style/english/#examples"
+ignorecase: true
+level: error
+nonword: true
+action:
+  name: replace
+swap:
+  '\b(?:eg|e\.g\.)[\s,]': "for example' or 'such as"
+  '\b(?:ie|i\.e\.)[\s,]': "that is', 'namely', or 'specifically"
