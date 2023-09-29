@@ -4030,8 +4030,8 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@18.16.15)
       vitepress:
-        specifier: 1.0.0-rc.15
-        version: 1.0.0-rc.15(@algolia/client-search@4.20.0)(@types/node@18.16.15)(@types/react@18.0.21)(fuse.js@6.6.2)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.2)
+        specifier: 1.0.0-rc.20
+        version: 1.0.0-rc.20(@algolia/client-search@4.20.0)(@types/node@18.16.15)(@types/react@18.0.21)(fuse.js@6.6.2)(postcss@8.4.13)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.2)
 
 packages:
 
@@ -21687,23 +21687,28 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitepress@1.0.0-rc.15(@algolia/client-search@4.20.0)(@types/node@18.16.15)(@types/react@18.0.21)(fuse.js@6.6.2)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.2):
-    resolution: {integrity: sha512-5criiHoEibkT/du7t6wQ2xQVsuTNuirQZbMAi0M9Hp0YzJoJvEX68Ej9p2PtNC84bYb/CxAh5QkMtMutk03lHw==}
+  /vitepress@1.0.0-rc.20(@algolia/client-search@4.20.0)(@types/node@18.16.15)(@types/react@18.0.21)(fuse.js@6.6.2)(postcss@8.4.13)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.2):
+    resolution: {integrity: sha512-CykMUJ8JLxLcGWek0ew3wln4RYbsOd1+0YzXITTpajggpynm2S331TNkJVOkHrMRc6GYe3y4pS40GfgcW0ZwAw==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2
+      postcss: ^8.4.30
     peerDependenciesMeta:
       markdown-it-mathjax3:
+        optional: true
+      postcss:
         optional: true
     dependencies:
       '@docsearch/css': 3.5.2
       '@docsearch/js': 3.5.2(@algolia/client-search@4.20.0)(@types/react@18.0.21)(react-dom@18.2.0)(react@18.2.0)(search-insights@2.8.2)
+      '@types/markdown-it': 13.0.1
       '@vue/devtools-api': 6.5.0
       '@vueuse/core': 10.4.1(vue@3.3.4)
       '@vueuse/integrations': 10.4.1(focus-trap@7.5.2)(fuse.js@6.6.2)(vue@3.3.4)
       focus-trap: 7.5.2
       mark.js: 8.11.1
       minisearch: 6.1.0
+      postcss: 8.4.13
       shiki: 0.14.4
       vite: 4.4.9(@types/node@18.16.15)
       vue: 3.3.4
