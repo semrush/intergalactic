@@ -78,17 +78,11 @@ const areBordersPlacedCorrectly = () => {
 type ReactT = typeof LocalReact;
 
 let uniqueId = 0;
-const useUniqueId = (React: ReactT, prefix: string) => {
-  const id = React.useMemo(
-    () => `${prefix}-${Math.random().toString(36).slice(2)}-${uniqueId++}`,
-    [],
-  ); // prefix is considered as a static value
-  const idRef = React.useRef(id);
-  return idRef.current;
-};
+const getUniqueId = (prefix: string) =>
+  `${prefix}-${Math.random().toString(36).slice(2)}-${uniqueId++}`;
 const useFocusBorders = (React: ReactT, disabled?: boolean) => {
-  const id = useUniqueId(React, 'focus-borders-consumer');
   React.useEffect(() => {
+    const id = getUniqueId('focus-borders-consumer');
     if (!disabled) {
       focusBordersConsumers.add(id);
     }
@@ -100,7 +94,7 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
       focusBordersConsumers.delete(id);
       if (focusBordersConsumers.size === 0) removeBorders();
     };
-  }, [id, disabled]);
+  }, [disabled]);
 };
 /**
  * In some cases same page might contain different versions of components.
@@ -251,8 +245,8 @@ const useFocusLockHook = (
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
 
-  const id = useUniqueId(React, 'focus-lock-consumer');
   React.useEffect(() => {
+    const id = getUniqueId('focus-lock-consumer');
     if (disabled) return;
     focusLockUsedInMountedComponents.add(id);
     return () => {
