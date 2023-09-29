@@ -161,7 +161,7 @@ describe('RadioGroup', () => {
     expect(getByTestId('radio').name).toContain('test');
   });
 
-  test('Should support onChange', () => {
+  test('Should not call group onChange if no value in context', () => {
     const onChange = vi.fn();
     const onChangeRadio = vi.fn();
     const value = 'test';
@@ -179,8 +179,30 @@ describe('RadioGroup', () => {
     );
 
     fireEvent.click(getByTestId('radio'));
-    expect(onChange).toHaveBeenCalledWith(value, expect.anything());
+    expect(onChange).not.toHaveBeenCalled(value, expect.anything());
     expect(onChangeRadio).toHaveBeenCalled();
+  });
+
+  test('Should not call value onChange if value exist in context', () => {
+    const onChange = vi.fn();
+    const onChangeRadio = vi.fn();
+    const value = 'test';
+    const { getByTestId } = render(
+      <RadioGroup value={'someValue'} onChange={onChange}>
+        <Radio>
+          <Radio.Value
+            includeInputProps={['data-testid', ...inputProps]}
+            data-testid='radio'
+            value={value}
+            onChange={onChangeRadio}
+          />
+        </Radio>
+      </RadioGroup>,
+    );
+
+    fireEvent.click(getByTestId('radio'));
+    expect(onChange).toHaveBeenCalled(value, expect.anything());
+    expect(onChangeRadio).not.toHaveBeenCalled();
   });
 
   test.concurrent('Should support initial value in Radio.Value', () => {

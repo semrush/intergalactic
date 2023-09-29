@@ -160,15 +160,16 @@ class ValueRoot extends Component {
       state,
       ...commonControlProps,
       value: inputValue,
-      checked: this.props.checked ?? currentValue === inputValue,
-      onChange: callAllEventHandlers((...args) => {
-        // must write like that, because onChange could return `false` and `this.bindHandlerChange` will never called
-        commonControlProps.onChange(...args);
-      }, this.bindHandlerChange(inputValue)),
+      checked: this.props.checked,
     };
 
-    if (this.asProps.tag !== 'label') {
-      controlProps.onClick = this.bindHandlerChange(inputValue);
+    if (currentValue ?? false) {
+      controlProps.checked = currentValue === inputValue;
+      controlProps.onChange = this.bindHandlerChange(inputValue);
+
+      if (this.asProps.tag !== 'label') {
+        controlProps.onClick = this.bindHandlerChange(inputValue);
+      }
     }
 
     return controlProps;
