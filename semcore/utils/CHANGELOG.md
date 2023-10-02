@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.0] - 2023-10-02
+
+### Fixed
+
+- Extended internal mechanism of component wrapper props modifying.
+
 ## [4.7.3] - 2023-09-28
 
 ### Fixed
