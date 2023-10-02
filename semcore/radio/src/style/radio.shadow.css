@@ -4,13 +4,6 @@ SRadio {
   cursor: pointer;
 }
 
-SRadio[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
-  cursor: default;
-  pointer-events: none;
-  user-select: none;
-}
-
 SText {
   margin-left: var(--intergalactic-spacing-2x, 8px);
   color: var(--intergalactic-text-primary, #191b23);
@@ -61,6 +54,13 @@ SValue {
     border-radius: 50%;
     background: var(--intergalactic-bg-primary-neutral, #ffffff);
   }
+}
+
+SValue[disabled] {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
 }
 
 SValue[size='m'] {

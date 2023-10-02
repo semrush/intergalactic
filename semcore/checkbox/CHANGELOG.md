@@ -2,6 +2,15 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.10.0] - 2023-09-21
+
+### Added
+
+- simplified use: `<Checkbox />`.
+- advanced use with new sub-components `<Checkbox.Value.Control />` and `<Checkbox.Value.CheckMark />`
+- added warning about using `disabled` prop on `Checkbox.Value` with recommendation to use `disabled` prop on root `Checkbox` because it may cause SSR related issues.
+- input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
 ## [7.9.2] - 2023-09-20
 
 ### Changed

@@ -13,18 +13,9 @@ const Demo = () => {
             Select value
           </Text>
           <Flex mt={2} direction={'column'}>
-            <Radio mb={3}>
-              <Radio.Value value='1' />
-              <Radio.Text>Value 1</Radio.Text>
-            </Radio>
-            <Radio mb={3}>
-              <Radio.Value value='2' />
-              <Radio.Text>Value 2</Radio.Text>
-            </Radio>
-            <Radio mb={3}>
-              <Radio.Value value='3' />
-              <Radio.Text>Value 3</Radio.Text>
-            </Radio>
+            <Radio mb={3} value={'1'} label={'Value 1'} />
+            <Radio mb={3} value={'2'} label={'Value 2'} />
+            <Radio mb={3} value={'3'} label={'Value 3'} />
           </Flex>
         </div>
       </RadioGroup>

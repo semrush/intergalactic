@@ -1,5 +1,5 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
-import { BoxProps, FlexProps } from '@semcore/flex-box';
+import { Box, BoxProps, FlexProps } from '@semcore/flex-box';
 import { TextProps } from '@semcore/typography';
 import { KeyboardFocusProps } from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
@@ -9,8 +9,18 @@ export type CheckboxState = 'normal' | 'invalid';
 /** @deprecated */
 export interface ICheckboxProps extends CheckboxProps, UnknownProperties {}
 export type CheckboxProps = BoxProps & {
+  onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
+  checked?: boolean;
+  /** Default state of uncontrolled checkbox */
+  defaultChecked?: boolean;
+  /** Checkbox text */
+  label?: string;
+  /** Special indeterminate state */
+  indeterminate?: boolean;
+  /** Special disabled state */
+  disabled?: boolean;
   /**
-   * Checkbox state
+   * Checkbox visual state
    * @default normal
    */
   state?: CheckboxState;
@@ -19,39 +29,56 @@ export type CheckboxProps = BoxProps & {
    * @default m
    */
   size?: CheckboxSize;
-  /** A checkbox theme you can add your own color to
-   */
+  /**
+   * @deprecated */
   theme?: string;
 };
 
 /** @deprecated */
 export interface ICheckboxValueProps extends CheckboxValueProps, UnknownProperties {}
 export type CheckboxValueProps = KeyboardFocusProps &
-  FlexProps & {
-    /** Handler to change */
+  FlexProps &
+  CheckboxValueControlProps & {
+    /**
+     * @deprecated set `onChange` on root Checkbox instead
+     * */
     onChange?: (checked: boolean, e?: React.SyntheticEvent<HTMLInputElement>) => void;
-    /** Control status */
+    /**
+     * @deprecated set `checked` on root Checkbox instead
+     * */
     checked?: boolean;
-    /** The initial status for uncontrolled mode
-     * @default false */
+    /**
+     * @deprecated set `defaultChecked` on root Checkbox instead
+     * */
     defaultChecked?: boolean;
-    /** The value responsible for the indeterminate attribute */
+    /**
+     * @deprecated set `defaultChecked` on root Checkbox instead
+     * */
     indeterminate?: boolean;
-    /** List of props that will be added to the hidden input */
+    /**
+     * @deprecated set `disabled` on root Checkbox instead
+     * */
+    disabled?: boolean;
+    /** List of props that will be added to the hidden input
+     * @deprecated use `Checkbox.Value.Control` and `Checkbox.Value.CheckMark` instead
+     * */
     includeInputProps?: string[];
     /**
-     * The value responsible for the state of the component
-     * @default normal
-     */
+     * @deprecated set `state` on root Checkbox instead
+     * */
     state?: CheckboxState;
     /**
-     * Checkbox size
-     * @default m
-     */
+     * @deprecated set `size` on root Checkbox instead
+     * */
     size?: CheckboxSize;
-    /** A checkbox theme you can add your own color to */
+    /**
+     * @deprecated
+     * */
     theme?: string;
   };
+
+export type CheckboxValueControlProps = {};
+export type CheckboxValueCheckMarkProps = {};
 
 /** @deprecated */
 export interface ICheckboxContext extends CheckboxContext, UnknownProperties {}
@@ -63,12 +90,16 @@ export type CheckboxContext = {
 /** @deprecated */
 export interface ICheckboxTextProps extends CheckboxTextProps, UnknownProperties {}
 export type CheckboxTextProps = TextProps & {
+  /** @deprecated Set disabled state on Checkbox root component */
   disabled?: boolean;
 };
 
 declare const Checkbox: Intergalactic.Component<'label', CheckboxProps, CheckboxContext> & {
   Text: Intergalactic.Component<'span', CheckboxTextProps>;
-  Value: Intergalactic.Component<'input', CheckboxValueProps>;
+  Value: Intergalactic.Component<'input', CheckboxValueProps> & {
+    Control: Intergalactic.Component<'input', CheckboxValueControlProps>;
+    CheckMark: Intergalactic.Component<typeof Box, CheckboxValueCheckMarkProps>;
+  };
 };
 
 export default Checkbox;
