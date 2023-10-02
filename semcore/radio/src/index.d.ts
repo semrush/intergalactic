@@ -10,34 +10,30 @@ export type RadioValue = string | number | boolean;
 
 /** @deprecated */
 export interface IRadioProps extends RadioProps, UnknownProperties {}
-export type RadioProps = BoxProps &
-  (
-    | {
-        /** Radio item value **/
-        value: string;
-      }
-    | {
-        /** Radio item checked flag **/
-        checked: boolean;
-      }
-  ) & {
-    /**
-     * The value displaying the state of the component
-     * @default normal
-     */
-    state?: RadioState;
-    /**
-     * Radio button size
-     * @default m
-     **/
-    size?: RadioSize;
-    /** The theme of the radio button that you can send your color to */
-    theme?: string;
-    /** Radio item text **/
-    label?: string;
-    /** Blocks access and changes to the radio item **/
-    disabled?: boolean;
-  };
+export type RadioProps = BoxProps & {
+  /** Radio item value **/
+  value?: string;
+
+  /** Radio item checked flag **/
+  checked?: boolean;
+
+  /**
+   * The value displaying the state of the component
+   * @default normal
+   */
+  state?: RadioState;
+  /**
+   * Radio button size
+   * @default m
+   **/
+  size?: RadioSize;
+  /** The theme of the radio button that you can send your color to */
+  theme?: string;
+  /** Radio item text **/
+  label?: string;
+  /** Blocks access and changes to the radio item **/
+  disabled?: boolean;
+};
 
 /** @deprecated */
 export interface IRadioGroupProps extends RadioGroupProps, UnknownProperties {
