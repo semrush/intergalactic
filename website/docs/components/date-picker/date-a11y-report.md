@@ -7,13 +7,13 @@ Guidepup v0.13.1, MacOS Monterey 12._
 
 ```
 1. Screen reader goes into the active element.
-2. Screen reader says "You are currently on a group, inside of web content.".
+2. Screen reader says "In web content Date field group".
 3. Screen reader goes into the active element.
 4. Screen reader says "06/29/2020 Insertion at end of text. Date MM/DD/YYYY edit text".
 5. Screen reader presses the "Backspace" button.
 6. Screen reader says "0".
 7. Screen reader presses the "Backspace" button.
-8. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+8. Screen reader says "2".
 9. Screen reader presses the "Backspace" button.
 10. Screen reader says "0".
 11. Screen reader presses the "Backspace" button.
@@ -47,7 +47,7 @@ Guidepup v0.13.1, MacOS Monterey 12._
 39. Screen reader types "2000".
 40. Screen reader says "05/29/2000 Insertion at end of text. from date MM/DD/YYYY edit text".
 41. Screen reader types "05".
-42. Screen reader says "to date MM/DD/YYYY edit text".
+42. Screen reader says "05 Insertion at end of text. to date MM/DD/YYYY edit text".
 43. Screen reader types "29".
 44. Screen reader says "29".
 45. Screen reader types "2000".
