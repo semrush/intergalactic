@@ -70,6 +70,7 @@ class RadioRoot extends Component {
   };
 
   getTextProps() {
+    // The default values are here, since you cannot rewrite out of context
     const { size = 'm', disabled, label } = assignProps(this.asProps, this.context);
     const { hoistedDisabled } = this.state;
 
@@ -85,6 +86,7 @@ class RadioRoot extends Component {
   }
 
   getValueProps() {
+    // The default values are here, since you cannot rewrite out of context
     const {
       size = 'm',
       state = 'normal',
@@ -160,36 +162,53 @@ class ValueRoot extends Component {
       state,
       ...commonControlProps,
       value: inputValue,
-      checked: this.props.checked,
     };
 
-    if (currentValue ?? false) {
-      controlProps.checked = currentValue === inputValue;
-      controlProps.onChange = this.bindHandlerChange(inputValue);
+    if (currentValue !== undefined) {
+      const { onChange, onClick } = this.props;
 
-      if (this.asProps.tag !== 'label') {
-        controlProps.onClick = this.bindHandlerChange(inputValue);
-      }
+      controlProps.checked = currentValue === inputValue;
+      controlProps.onChange = callAllEventHandlers(onChange, this.bindHandlerChange(inputValue));
     }
 
     return controlProps;
   }
 
   getRadioMarkProps() {
-    const { size, state, theme, keyboardFocused, checked, disabled, includeInputProps, ...other } =
-      this.asProps;
+    const currentValue = this.context.value;
+    const {
+      size,
+      state,
+      theme,
+      keyboardFocused,
+      value,
+      tag,
+      disabled,
+      includeInputProps,
+      ...other
+    } = this.asProps;
     const [, radioMarkProps] = getInputProps(other, includeInputProps);
     const { children, Children, ...propsWithoutChildren } = radioMarkProps;
+    const inputValue = value ?? '';
 
-    return {
+    const markProps = {
       theme,
       size,
       state,
       keyboardFocused,
-      checked,
       disabled,
       ...propsWithoutChildren,
     };
+
+    if (currentValue !== undefined) {
+      const { onClick } = this.props;
+
+      if (tag !== 'label') {
+        markProps.onClick = callAllEventHandlers(onClick, this.bindHandlerChange(inputValue));
+      }
+    }
+
+    return markProps;
   }
 
   componentDidUpdate() {
