@@ -1,3 +1,37 @@
+## [15.25.0-prerelease.0] - 2023-10-02
+
+### @semcore/base-trigger
+
+- **Fixed** Empty FilterTrigger now gets role `button` during empty state instead of `group`.
+
+### @semcore/checkbox
+
+- **Added** simplified use: `<Checkbox />`.
+- **Added** advanced use with new sub-components `<Checkbox.Value.Control />` and `<Checkbox.Value.CheckMark />`
+- **Added** added warning about using `disabled` prop on `Checkbox.Value` with recommendation to use `disabled` prop on root `Checkbox` because it may cause SSR related issues.
+- **Added** input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
+### @semcore/core
+
+- **Changed** Improved core component typings flexibility
+
+### @semcore/icon
+
+- **Changed** `Redo` and `Undo` icons according to their actual design.
+- **Fixed** Fixed bug with strange crop in icons if there are a lot of them on a page
+
+### @semcore/radio
+
+- **Added** simplified use: `<Radio />`.
+- **Added** advanced use with new sub-components `<Radio.Value.Control />` and `<Radio.Value.RadioMark />`
+- **Added** added warning about using `disabled` prop on `Radio.Value` with recommendation to use `disabled` prop on root `Radio` because it may cause SSR related issues.
+- **Added** input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
+### @semcore/utils
+
+- **Fixed** Extended internal mechanism of component wrapper props modifying.
+- **Fixed** React invalid Hooks call caused by `useFocusLock` in some rare cases from it's nested hooks.
+
 ## [15.24.0] - 2023-09-21
 
 ### @semcore/data-table
