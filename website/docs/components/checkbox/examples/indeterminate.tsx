@@ -1,58 +1,45 @@
 import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
 
-class Demo extends React.PureComponent {
-  state = {
-    checked: [false, false, false],
-  };
+const Demo = () => {
+  const [checked, setChecked] = React.useState([false, false, false]);
+  const handleGroupChange = React.useCallback(
+    (value: boolean) => {
+      setChecked((checked) => checked.map(() => value));
+    },
+    [setChecked],
+  );
+  const handleItemChange = React.useCallback(
+    (index: number) => (value: boolean) => {
+      setChecked((checked) => checked.map((item, i) => (i === index ? value : item)));
+    },
+    [setChecked],
+  );
 
-  all = (checked) => {
-    this.setState({
-      checked: this.state.checked.map(() => checked),
-    });
-  };
-
-  item = (checked, e) => {
-    const { id } = e.currentTarget;
-
-    this.setState({
-      checked: this.state.checked.map((item, i) => {
-        if (i === Number(id)) return !item;
-        return item;
-      }),
-    });
-  };
-
-  indeterminate = (checked) => {
-    return checked.includes(true) && checked.indexOf(false) >= 0;
-  };
-
-  render() {
-    const { checked } = this.state;
-
-    return (
-      <>
-        <div>
-          <Checkbox mb={3}>
-            <Checkbox.Value
-              onChange={this.all}
-              indeterminate={this.indeterminate(checked)}
-              checked={checked.indexOf(false) < 0}
-            />
-            <Checkbox.Text>Select all</Checkbox.Text>
-          </Checkbox>
+  return (
+    <>
+      <div>
+        <Checkbox
+          mb={3}
+          label='Select all'
+          onChange={handleGroupChange}
+          indeterminate={checked.includes(false) && checked.includes(true)}
+          checked={checked.includes(true)}
+        />
+      </div>
+      {checked.map((value, index) => (
+        <div key={index}>
+          <Checkbox
+            mb={3}
+            key={index}
+            checked={value}
+            onChange={handleItemChange(index)}
+            label={`Option ${index + 1}`}
+          />
         </div>
-        {checked.map((_, i) => (
-          <div key={i}>
-            <Checkbox mb={3}>
-              <Checkbox.Value id={`${i}`} checked={checked[i]} onChange={this.item} />
-              <Checkbox.Text>{`Option ${i + 1}`}</Checkbox.Text>
-            </Checkbox>
-          </div>
-        ))}
-      </>
-    );
-  }
-}
+      ))}
+    </>
+  );
+};
 
 export default Demo;

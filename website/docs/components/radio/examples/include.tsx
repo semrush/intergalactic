@@ -1,14 +1,18 @@
 import React from 'react';
-import Radio from '@semcore/ui/radio';
-import { inputProps } from '@semcore/ui/utils/lib/inputProps';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 
 const Demo = () => {
-  const includeInputProps = [...inputProps, 'data-test-id'];
   return (
-    <Radio>
-      <Radio.Value includeInputProps={includeInputProps} data-test-id='value' />
-      <Radio.Text>Value</Radio.Text>
-    </Radio>
+    <RadioGroup>
+      <Radio mb={3} value={'1'}>
+        <Radio.Value>
+          <Radio.Value.Control data-test-id={'TEST_ID'} />
+          <Radio.Value.RadioMark />
+        </Radio.Value>
+        <Radio.Text>Value</Radio.Text>
+      </Radio>
+      <Radio mb={3} value={'2'} label={'Second value'} />
+    </RadioGroup>
   );
 };
 

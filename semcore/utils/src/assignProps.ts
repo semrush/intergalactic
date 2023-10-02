@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { sstyled } from '@semcore/core';
 import { forkRef } from './ref';
 
-export function callAllEventHandlers(...fns: any[]) {
+export function callAllEventHandlers(...fns: Array<Function | undefined>) {
   return (...args: any[]) =>
     !fns.some((fn) => {
       let result;
