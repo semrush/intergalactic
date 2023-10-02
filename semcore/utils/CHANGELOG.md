@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.0] - 2023-10-02
+
+### Fixed
+
+- Extended internal mechanism of component wrapper props modifying.
+
+## [4.7.3] - 2023-09-28
+
+### Fixed
+
+- React invalid Hooks call caused by `useFocusLock` in some rare cases from it's nested hooks.
+
 ## [4.7.2] - 2023-09-20
 
 ### Changed
@@ -12,7 +24,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Reverse focus in modals (Fixed `useFocuseLock`. Call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target))
+- Reversed focus trap looping.
 
 ## [4.7.0] - 2023-09-13
 
