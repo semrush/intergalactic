@@ -1,3 +1,9 @@
+## [15.24.0] - 2023-09-21
+
+### @semcore/data-table
+
+- **Added** `font-variant-numeric` for table cells
+
 ## [15.23.1] - 2023-09-20
 
 ### @semcore/core

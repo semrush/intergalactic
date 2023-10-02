@@ -6,7 +6,7 @@ ENV PLAYWRIGHT_BROWSERS_PATH=/usr/bin
 
 COPY . .
 
-RUN npm install --global pnpm@7
+RUN npm install --global pnpm
 RUN pnpm install --ignore-scripts 
 RUN npx playwright install
 

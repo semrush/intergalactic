@@ -21,7 +21,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -67,7 +67,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -111,7 +111,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -164,7 +164,7 @@ jobs:
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 7
+          version: 8
           run_install: false
       - uses: actions/setup-node@v3.6.0
       - name: Get pnpm store directory
@@ -217,7 +217,7 @@ jobs:
           token: ${{ secrets.BOT_ACCOUNT_GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
+          version: 8
           run_install: false
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -278,13 +278,13 @@ jobs:
       - uses: actions/checkout@v3.5.3
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
+          version: 8
           run_install: false
 
       - name: Browser testing
         id: browser-testing
         run: |
-          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm@7 && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+          docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
       - name: Save test results as artifacts
         if: failure()
         uses: actions/upload-artifact@v3

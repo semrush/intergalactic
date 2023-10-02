@@ -30,7 +30,7 @@ steps:
     args:
       - -c
       - |
-        npm install --global pnpm@7
+        npm install --global pnpm
         PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install && pnpm run upload-search-index
     dir: website
     env:
