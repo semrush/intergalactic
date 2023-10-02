@@ -18,20 +18,21 @@ Guidepup v0.13.1, MacOS Monterey 12._
 10. Screen reader goes to the previous element.
 11. Screen reader says "Section 1 collapsed button".
 12. Screen reader triggers element default action.
-13. Screen reader goes to the next element.
-14. Screen reader says "Section 1 region".
-15. Screen reader goes into the active element.
-16. Screen reader says "Hello Section 1".
-17. Screen reader goes out of active element.
-18. Screen reader says "Section 1 region".
-19. Screen reader goes to the previous element.
-20. Screen reader says "Section 1 expanded button".
-21. Screen reader triggers element default action.
-22. Screen reader says "Section 1 collapsed button".
-23. Screen reader goes to the next element.
-24. Screen reader says "Section 2 collapsed button".
-25. Screen reader goes to the next element.
-26. Screen reader says "Section 3 dimmed collapsed button".
-27. Screen reader triggers element default action.
-28. Screen reader says "dimmed".
+13. Screen reader says "Section 1 expanded button".
+14. Screen reader goes to the next element.
+15. Screen reader says "Section 1 region".
+16. Screen reader goes into the active element.
+17. Screen reader says "Hello Section 1".
+18. Screen reader goes out of active element.
+19. Screen reader says "Section 1 region".
+20. Screen reader goes to the previous element.
+21. Screen reader says "Section 1 expanded button".
+22. Screen reader triggers element default action.
+23. Screen reader says "Section 1 collapsed button".
+24. Screen reader goes to the next element.
+25. Screen reader says "Section 2 collapsed button".
+26. Screen reader goes to the next element.
+27. Screen reader says "Section 3 dimmed collapsed button".
+28. Screen reader triggers element default action.
+29. Screen reader says "dimmed".
 ```

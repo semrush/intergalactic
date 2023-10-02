@@ -30,17 +30,16 @@ Guidepup v0.13.1, MacOS Monterey 12._
 22. Screen reader presses the "Backspace" button.
 23. Screen reader says "r".
 24. Screen reader presses the "Backspace" button.
-25. Screen reader says "You are currently on a text field. To enter text in this field, type.".
+25. Screen reader presses the "Backspace" button.
 26. Screen reader presses the "Backspace" button.
-27. Screen reader presses the "Backspace" button.
-28. Screen reader types "Algernon".
-29. Screen reader says "Algernon".
-30. Screen reader presses the "Enter" button.
-31. Screen reader says "Tap to edit:Algernon button".
-32. Screen reader triggers element default action.
-33. Screen reader says "Algernon Insertion at end of text. Author: edit text Press Enter to apply value, press Escape to discard changes group".
-34. Screen reader types "Hello world?".
-35. Screen reader says "world ?".
-36. Screen reader presses the "Escape" button.
-37. Screen reader says "Tap to edit:Algernon button".
+27. Screen reader types "Algernon".
+28. Screen reader says "Algernon".
+29. Screen reader presses the "Enter" button.
+30. Screen reader says "Tap to edit:Algernon button".
+31. Screen reader triggers element default action.
+32. Screen reader says "Algernon Insertion at end of text. Author: edit text Press Enter to apply value, press Escape to discard changes group".
+33. Screen reader types "Hello world?".
+34. Screen reader says "world ?".
+35. Screen reader presses the "Escape" button.
+36. Screen reader says "Tap to edit:Algernon button".
 ```
