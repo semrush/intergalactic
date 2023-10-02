@@ -58,6 +58,18 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
     ...props,
     ...assignHandlersInner(props, source),
   };
+  for (const key in source) {
+    if (key.startsWith('use:')) {
+      const originalKey = key.slice('use:'.length);
+      newProps[originalKey] = source[key];
+    }
+  }
+  for (const key in props) {
+    if (key.startsWith('use:')) {
+      const originalKey = key.slice('use:'.length);
+      newProps[originalKey] = props[key];
+    }
+  }
 
   // because react set getter for ref
   const sourceDescriptorRef = Object.getOwnPropertyDescriptor(source, 'ref');
