@@ -54,7 +54,7 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-home-hero-name-color: linear-gradient(99deg, #8832FF 30%, #8CE3FF 100%);
+  --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
 
   --vp-home-hero-image-background-image: linear-gradient(315deg, #8932FF 35%, #91E4FF 65%);
@@ -266,12 +266,12 @@
 
 .vp-doc div[class*='language-'], 
 .vp-block {
-  border-radius: 0;
+  border-radius: 6px;
   margin: 16px 0 0;
 }
 
-.dark .playground-runtime {
-  /* background-color: white; */
+.vp-doc .documentation-sandbox div[class*='language-'] {
+  border-radius: 0;
 }
 
 @media (min-width: 640px) {
@@ -339,6 +339,57 @@
 
 
 /** Our custom theme **/
+
+.VPButton.VPButton.medium {
+  border-radius: 6px;
+}
+
+.VPSwitch.VPSwitchAppearance:before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  right: -10px;
+  bottom: -20px;
+}
+
+.devportal-logo {
+  margin-right: 8px;
+}
+
+.intergalactic-logo {
+  margin-right: 8px;
+}
+
+.vp-doc a {
+  color: var(--vp-c-indigo-2);
+}
+.vp-doc a:hover, .vp-doc a:visited {
+  color: var(--vp-c-indigo-3);
+}
+.edit-link-button.edit-link-button {
+  color: var(--vp-c-indigo-2);
+}
+.edit-link-button.edit-link-button:hover, .edit-link-button.edit-link-button:visited {
+  color: var(--vp-c-indigo-3);
+}
+
+.VPLocalNavOutlineDropdown .items {
+  border-radius: 6px;
+}
+.VPLocalNavOutlineDropdown .items, .VPLocalNavOutlineDropdown .header, .VPLocalNavOutlineDropdown .outline {
+  background-color: var(--vp-c-bg-elv);
+}
+
+.vp-doc a {
+  text-decoration: none;
+}
+.vp-doc a:hover, .vp-doc a:active {
+  text-decoration: underline;
+}
+.shiki.github-dark {
+  background-color: #0C0E13 !important;
+}
 
 :root {
   /* base */

@@ -6,6 +6,7 @@ import { viteConfig } from './vite.config';
 import { sideBarConfig } from './sidebarConfig';
 import { buildHooks } from './buildHooks';
 import { algoliaConfig } from '../../algoliaConfig';
+import { figmaIcon } from './figma-icon';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -32,7 +33,8 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: 'Copyright © Semrush',
     },
-    logo: { src: '/semrush-logo.svg', width: 30, height: 30 },
+    siteTitle: false,
+
     search: {
       provider: 'algolia',
       options: {
@@ -99,7 +101,10 @@ export default defineConfig({
 
     sidebar: sideBarConfig,
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/semrush/intergalactic' }],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/semrush/intergalactic' },
+      { icon: { svg: figmaIcon }, link: 'https://figma.com/@semrush' },
+    ],
   },
 
   transformHtml: buildHooks.transformHtml,

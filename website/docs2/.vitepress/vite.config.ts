@@ -46,14 +46,7 @@ export const viteConfig = defineConfig({
     unpluginIcons.vite({}),
     unpluginStatic.vite({}),
     unpluginIllustrations.vite({}),
-    // unpluginCssModules.vite({}),
     unpluginCrutches.vite({}),
-
-    // build.onResolve({ filter: /^@docs\/.*\.md$/ }, async ({ path }) => {
-    //   const purePath = resolvePath(docsDir, path.substring('@docs/'.length));
-
-    //   return { path: purePath };
-    // });
     createUnplugin<{}>(() => ({
       name: 'typescript-data-resolver',
       async resolveId(id) {

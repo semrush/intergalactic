@@ -7,6 +7,7 @@ import LegacyEmailsView from './LegacyEmailsView.vue';
 import PageTopTabs from './PageTopTabs.vue';
 import TypesView from './TypesView.vue';
 import Page404 from './Page404.vue';
+import DevportalLogo from './DevportalLogo.vue';
 
 export default {
   ...Theme,
@@ -15,6 +16,7 @@ export default {
       // https://vitepress.dev/guide/extending-default-theme#layout-slots
       'doc-top': () => h(PageTopTabs),
       'not-found': () => h(Page404),
+      'nav-bar-title-before': () => h(DevportalLogo),
     });
   },
   enhanceApp({ app, router, siteData }) {

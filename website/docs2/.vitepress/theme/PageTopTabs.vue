@@ -2,6 +2,7 @@
 <template>
   <div class="page-title-container" v-if="title">
     <h1 class="page-title">{{ title }}</h1>
+    <div class="page-top-tabs-fake-aside"></div>
   </div>
   <div class="page-top-tabs-container">
     <div class="page-top-tabs-content">
@@ -68,12 +69,28 @@
   }
 }
 
+@media (min-width: 960px) {
+
+  .page-top-tabs-container,
+  .page-title-container {
+    padding: 0 32px;
+  }
+}
+
 .VPFeature {
   flex: 1;
 }
 
 .VPFeature[data-current="true"] {
   border-color: var(--vp-c-brand);
+}
+
+.page-top-tabs-content .VPFeature {
+  border-radius: 6px;
+}
+
+.page-top-tabs-content .VPFeature .box {
+  padding: 12px;
 }
 </style>
 <script setup>

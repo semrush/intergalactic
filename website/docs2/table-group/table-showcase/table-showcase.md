@@ -27,103 +27,103 @@ const getImageName = (title) => {
 const group = {
   accordion: {
     title: 'Accordion',
-    route: '/table-group/table-controls/#a4d5aa',
+    route: '/intergalactic/table-group/table-controls/#a4d5aa',
     disabled: false,
     type: 'table',
   },
   checkboxes: {
     title: 'Checkboxes',
-    route: '/table-group/table-controls/#ac425f',
+    route: '/intergalactic/table-group/table-controls/#ac425f',
     disabled: false,
     type: 'table',
   },
   resizing: {
     title: 'Columns resizing',
-    route: '/table-group/table-controls/#aaac27',
+    route: '/intergalactic/table-group/table-controls/#aaac27',
     disabled: false,
     type: 'table',
   },
   editing: {
     title: 'Editing and adding content',
-    route: '/table-group/table-controls/#af4b38',
+    route: '/intergalactic/table-group/table-controls/#af4b38',
     disabled: false,
     type: 'table',
   },
   highlighting: {
     title: 'Highlighting content',
-    route: '/table-group/table-controls/#a25eaa',
+    route: '/intergalactic/table-group/table-controls/#a25eaa',
     disabled: false,
     type: 'table',
   },
   links: {
     title: 'Internal and external links',
-    route: '/table-group/table-controls/#a5d124',
+    route: '/intergalactic/table-group/table-controls/#a5d124',
     disabled: false,
     type: 'table',
   },
   linksLong: {
     title: 'Long links and text',
-    route: '/table-group/table-controls/#a5b913',
+    route: '/intergalactic/table-group/table-controls/#a5b913',
     disabled: false,
     type: 'table',
   },
   pagination: {
     title: 'Pagination',
-    route: '/table-group/table-controls/#acbb81',
+    route: '/intergalactic/table-group/table-controls/#acbb81',
     disabled: false,
     type: 'table',
   },
   sorting: {
     title: 'Sorting',
-    route: '/table-group/table-controls/#a2808a',
+    route: '/intergalactic/table-group/table-controls/#a2808a',
     disabled: false,
     type: 'table',
   },
   actionsRow: {
     title: 'Status and actions row',
-    route: '/table-group/table-controls/#a02c09',
+    route: '/intergalactic/table-group/table-controls/#a02c09',
     disabled: false,
     type: 'table',
   },
   empty: {
     title: 'Empty table',
-    route: '/table-group/table-states/#a2d2d0',
+    route: '/intergalactic/table-group/table-states/#a2d2d0',
     disabled: false,
     type: 'table',
   },
   loading: {
     title: 'Loading',
-    route: '/table-group/table-states/#a16bfb',
+    route: '/intergalactic/table-group/table-states/#a16bfb',
     disabled: false,
     type: 'table',
   },
   noData: {
     title: 'No data',
-    route: '/table-group/table-states/#a42a7b',
+    route: '/intergalactic/table-group/table-states/#a42a7b',
     disabled: false,
     type: 'table',
   },
   nothingFound: {
     title: 'Nothing found',
-    route: '/table-group/table-states/#a9076c',
+    route: '/intergalactic/table-group/table-states/#a9076c',
     disabled: false,
     type: 'table',
   },
   progressbar: {
     title: 'Progressbar',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/intergalactic/table-group/table-states/#a6ab48',
     disabled: false,
     type: 'table',
   },
   skeleton: {
     title: 'Skeleton',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/intergalactic/table-group/table-states/#a6ab48',
     disabled: false,
     type: 'table',
   },
   error: {
     title: 'Something went wrong',
-    route: '/table-group/table-states/#a6609d',
+    route: '/intergalactic/table-group/table-states/#a6609d',
     disabled: false,
     type: 'table',
   },
@@ -150,7 +150,7 @@ const App = function (props) {
     return () => styleSheet.remove();
   }, []);
 
-  const items = props.group.map((el) => group[el]);
+  const items = Object.keys(group).map((el) => group[el]);
 
   return (
     <div className='table-group-grid'>
@@ -188,103 +188,103 @@ const getImageName = (title) => {
 const group = {
   accordion: {
     title: 'Accordion',
-    route: '/table-group/table-controls/#a4d5aa',
+    route: '/intergalactic/table-group/table-controls/#a4d5aa',
     disabled: false,
     type: 'table',
   },
   checkboxes: {
     title: 'Checkboxes',
-    route: '/table-group/table-controls/#ac425f',
+    route: '/intergalactic/table-group/table-controls/#ac425f',
     disabled: false,
     type: 'table',
   },
   resizing: {
     title: 'Columns resizing',
-    route: '/table-group/table-controls/#aaac27',
+    route: '/intergalactic/table-group/table-controls/#aaac27',
     disabled: false,
     type: 'table',
   },
   editing: {
     title: 'Editing and adding content',
-    route: '/table-group/table-controls/#af4b38',
+    route: '/intergalactic/table-group/table-controls/#af4b38',
     disabled: false,
     type: 'table',
   },
   highlighting: {
     title: 'Highlighting content',
-    route: '/table-group/table-controls/#a25eaa',
+    route: '/intergalactic/table-group/table-controls/#a25eaa',
     disabled: false,
     type: 'table',
   },
   links: {
     title: 'Internal and external links',
-    route: '/table-group/table-controls/#a5d124',
+    route: '/intergalactic/table-group/table-controls/#a5d124',
     disabled: false,
     type: 'table',
   },
   linksLong: {
     title: 'Long links and text',
-    route: '/table-group/table-controls/#a5b913',
+    route: '/intergalactic/table-group/table-controls/#a5b913',
     disabled: false,
     type: 'table',
   },
   pagination: {
     title: 'Pagination',
-    route: '/table-group/table-controls/#acbb81',
+    route: '/intergalactic/table-group/table-controls/#acbb81',
     disabled: false,
     type: 'table',
   },
   sorting: {
     title: 'Sorting',
-    route: '/table-group/table-controls/#a2808a',
+    route: '/intergalactic/table-group/table-controls/#a2808a',
     disabled: false,
     type: 'table',
   },
   actionsRow: {
     title: 'Status and actions row',
-    route: '/table-group/table-controls/#a02c09',
+    route: '/intergalactic/table-group/table-controls/#a02c09',
     disabled: false,
     type: 'table',
   },
   empty: {
     title: 'Empty table',
-    route: '/table-group/table-states/#a2d2d0',
+    route: '/intergalactic/table-group/table-states/#a2d2d0',
     disabled: false,
     type: 'table',
   },
   loading: {
     title: 'Loading',
-    route: '/table-group/table-states/#a16bfb',
+    route: '/intergalactic/table-group/table-states/#a16bfb',
     disabled: false,
     type: 'table',
   },
   noData: {
     title: 'No data',
-    route: '/table-group/table-states/#a42a7b',
+    route: '/intergalactic/table-group/table-states/#a42a7b',
     disabled: false,
     type: 'table',
   },
   nothingFound: {
     title: 'Nothing found',
-    route: '/table-group/table-states/#a9076c',
+    route: '/intergalactic/table-group/table-states/#a9076c',
     disabled: false,
     type: 'table',
   },
   progressbar: {
     title: 'Progressbar',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/intergalactic/table-group/table-states/#a6ab48',
     disabled: false,
     type: 'table',
   },
   skeleton: {
     title: 'Skeleton',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/intergalactic/table-group/table-states/#a6ab48',
     disabled: false,
     type: 'table',
   },
   error: {
     title: 'Something went wrong',
-    route: '/table-group/table-states/#a6609d',
+    route: '/intergalactic/table-group/table-states/#a6609d',
     disabled: false,
     type: 'table',
   },
@@ -311,7 +311,7 @@ const App = function (props) {
     return () => styleSheet.remove();
   }, []);
 
-  const items = props.group.map((el) => group[el]);
+  const items = Object.keys(group).map((el) => group[el]);
 
   return (
     <div className='table-group-grid'>
@@ -349,103 +349,103 @@ const getImageName = (title) => {
 const group = {
   accordion: {
     title: 'Accordion',
-    route: '/table-group/table-controls/#a4d5aa',
+    route: '/intergalactic/table-group/table-controls/#a4d5aa',
     disabled: false,
     type: 'table',
   },
   checkboxes: {
     title: 'Checkboxes',
-    route: '/table-group/table-controls/#ac425f',
+    route: '/intergalactic/table-group/table-controls/#ac425f',
     disabled: false,
     type: 'table',
   },
   resizing: {
     title: 'Columns resizing',
-    route: '/table-group/table-controls/#aaac27',
+    route: '/intergalactic/table-group/table-controls/#aaac27',
     disabled: false,
     type: 'table',
   },
   editing: {
     title: 'Editing and adding content',
-    route: '/table-group/table-controls/#af4b38',
+    route: '/intergalactic/table-group/table-controls/#af4b38',
     disabled: false,
     type: 'table',
   },
   highlighting: {
     title: 'Highlighting content',
-    route: '/table-group/table-controls/#a25eaa',
+    route: '/intergalactic/table-group/table-controls/#a25eaa',
     disabled: false,
     type: 'table',
   },
   links: {
     title: 'Internal and external links',
-    route: '/table-group/table-controls/#a5d124',
+    route: '/intergalactic/table-group/table-controls/#a5d124',
     disabled: false,
     type: 'table',
   },
   linksLong: {
     title: 'Long links and text',
-    route: '/table-group/table-controls/#a5b913',
+    route: '/intergalactic/table-group/table-controls/#a5b913',
     disabled: false,
     type: 'table',
   },
   pagination: {
     title: 'Pagination',
-    route: '/table-group/table-controls/#acbb81',
+    route: '/intergalactic/table-group/table-controls/#acbb81',
     disabled: false,
     type: 'table',
   },
   sorting: {
     title: 'Sorting',
-    route: '/table-group/table-controls/#a2808a',
+    route: '/intergalactic/table-group/table-controls/#a2808a',
     disabled: false,
     type: 'table',
   },
   actionsRow: {
     title: 'Status and actions row',
-    route: '/table-group/table-controls/#a02c09',
+    route: '/intergalactic/table-group/table-controls/#a02c09',
     disabled: false,
     type: 'table',
   },
   empty: {
     title: 'Empty table',
-    route: '/table-group/table-states/#a2d2d0',
+    route: '/intergalactic/table-group/table-states/#a2d2d0',
     disabled: false,
     type: 'table',
   },
   loading: {
     title: 'Loading',
-    route: '/table-group/table-states/#a16bfb',
+    route: '/intergalactic/table-group/table-states/#a16bfb',
     disabled: false,
     type: 'table',
   },
   noData: {
     title: 'No data',
-    route: '/table-group/table-states/#a42a7b',
+    route: '/intergalactic/table-group/table-states/#a42a7b',
     disabled: false,
     type: 'table',
   },
   nothingFound: {
     title: 'Nothing found',
-    route: '/table-group/table-states/#a9076c',
+    route: '/intergalactic/table-group/table-states/#a9076c',
     disabled: false,
     type: 'table',
   },
   progressbar: {
     title: 'Progressbar',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/intergalactic/table-group/table-states/#a6ab48',
     disabled: false,
     type: 'table',
   },
   skeleton: {
     title: 'Skeleton',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/intergalactic/table-group/table-states/#a6ab48',
     disabled: false,
     type: 'table',
   },
   error: {
     title: 'Something went wrong',
-    route: '/table-group/table-states/#a6609d',
+    route: '/intergalactic/table-group/table-states/#a6609d',
     disabled: false,
     type: 'table',
   },
@@ -472,7 +472,7 @@ const App = function (props) {
     return () => styleSheet.remove();
   }, []);
 
-  const items = props.group.map((el) => group[el]);
+  const items = Object.keys(group).map((el) => group[el]);
 
   return (
     <div className='table-group-grid'>
