@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.7.4] - 2023-10-03
+
+### Fixed
+
+- Incorrect animation on mouse right button click.
+
 ## [5.7.3] - 2023-10-02
 
 ### Changed
