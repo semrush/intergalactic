@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.10.1] - 2023-10-03
+
+### Fixed
+
+- Radio in invalid state was missing red outline.
+
 ## [6.10.0] - 2023-09-29
 
 ### Added
