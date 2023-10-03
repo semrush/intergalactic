@@ -247,6 +247,35 @@ describe('RadioGroup', () => {
     expect(getByTestId('radioControlSecond').checked).toBeTruthy();
   });
 
+  test.concurrent('Should support invalid state with RadioGroup', async ({ task }) => {
+    const component = (
+      <RadioGroup>
+        <snapshot.ProxyProps m='5px'>
+          <Radio state='invalid'>
+            <Radio.Value />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value disabled />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value keyboardFocused />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value checked />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value checked disabled />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value checked keyboardFocused />
+          </Radio>
+        </snapshot.ProxyProps>
+      </RadioGroup>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px'>
@@ -262,7 +291,15 @@ describe('RadioGroup', () => {
           <Radio>
             <Radio.Value />
           </Radio>
-          <Radio>
+          <Radio size='l'>
+            <Radio.Value />
+          </Radio>
+        </RadioGroup>
+        <RadioGroup>
+          <Radio size='m'>
+            <Radio.Value />
+          </Radio>
+          <Radio size='l'>
             <Radio.Value />
           </Radio>
         </RadioGroup>
