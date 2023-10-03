@@ -14,8 +14,6 @@ class RadioGroupRoot extends Component {
   static displayName = 'RadioGroup';
 
   static defaultProps = {
-    state: 'normal',
-    size: 'm',
     defaultValue: null,
   };
 
