@@ -1,3 +1,17 @@
+## [15.25.1] - 2023-10-03
+
+### @semcore/radio
+
+- **Fixed** Radio in invalid state was missing red outline.
+
+### @semcore/switch
+
+- **Fixed** Incorrect animation on mouse right button click.
+
+### @semcore/utils
+
+- **Fixed** After getting disabled components were not loosing focus visual state.
+
 ## [15.25.0] - 2023-10-02
 
 ### @semcore/base-trigger
