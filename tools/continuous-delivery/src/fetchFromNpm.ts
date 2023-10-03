@@ -18,6 +18,9 @@ export type ResponseNpmRegistry = {
   dependencies: {
     [name: string]: string;
   };
+  time: {
+    [versionName: string]: string;
+  };
 };
 
 export const fetchFromNpm = async (filter?: string[]) => {
