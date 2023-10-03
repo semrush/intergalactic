@@ -89,7 +89,7 @@ const keyboardFocusEnhance = () => {
 
     return assignProps(props, {
       tabIndex: disabled ? -1 : tabIndex,
-      keyboardFocused,
+      keyboardFocused: keyboardFocused && !disabled,
       onFocus: handleFocus,
       onBlur: handlerBlur,
       ref,
