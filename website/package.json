@@ -76,7 +76,7 @@
     "micromark-extension-gfm": "2.0.1",
     "node-watch": "0.7.3",
     "picocolors": "1.0.0",
-    "postcss": "8.4.13",
+    "postcss": "8.4.31",
     "tsm": "2.2.2",
     "typescript": "5.1.6",
     "unified": "10.1.2"
