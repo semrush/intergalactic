@@ -82,10 +82,6 @@
   .VPHome .image-container {
     perspective: 500px;
   }
-
-  .VPHome .VPImage {
-    animation: image_slight_rotating 30s ease-in-out infinite;
-  }
 }
 
 @keyframes image_slight_rotating {
