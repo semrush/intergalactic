@@ -6,7 +6,7 @@
  */
 
  ::selection {
-  background: rgba(171, 108, 254, 0.2);
+  background: rgba(171, 108, 254, 0.24);
 }
 
 /**
@@ -129,7 +129,6 @@
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
 
-/**Can we add our --intergalactic-rounded-medium variable there? */
 .DocSearch-Button {
   border-radius: 6px;
 }
@@ -246,6 +245,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  border-radius: 6px;
 }
 
 .playground-runtime {
@@ -363,7 +363,8 @@
 .vp-doc a:hover {
   color: var(--vp-c-indigo-1);
 }
-.edit-link-button.edit-link-button, .edit-link-button.edit-link-button:visited {
+.edit-link-button.edit-link-button, 
+.edit-link-button.edit-link-button:visited {
   color: var(--vp-c-indigo-2);
 }
 .edit-link-button.edit-link-button:hover {
@@ -373,7 +374,9 @@
 .VPLocalNavOutlineDropdown .items {
   border-radius: 6px;
 }
-.VPLocalNavOutlineDropdown .items, .VPLocalNavOutlineDropdown .header, .VPLocalNavOutlineDropdown .outline {
+.VPLocalNavOutlineDropdown .items, 
+.VPLocalNavOutlineDropdown .header, 
+.VPLocalNavOutlineDropdown .outline {
   background-color: var(--vp-c-bg-elv);
 }
 
@@ -548,6 +551,8 @@
   --vp-nav-bg-color: var(--vp-c-bg);
   --vp-nav-screen-bg-color: var(--vp-c-bg);
   --vp-sidebar-bg-color: var(--vp-c-bg-alt);
+  --docsearch-modal-background: var(--vp-c-bg-elv);
+  --docsearch-container-background: rgba(25, 27, 35, 0.6);
 }
 
 
@@ -700,4 +705,6 @@
   --vp-nav-bg-color: var(--vp-c-bg);
   --vp-nav-screen-bg-color: var(--vp-c-bg);
   --vp-sidebar-bg-color: var(--vp-c-bg-alt);
+  --docsearch-modal-background: var(--vp-c-bg-elv);
+  --docsearch-container-background: rgba(25, 27, 35, 0.6);
 }
