@@ -80,6 +80,8 @@ class RootButton extends Component {
               neighborLocation={neighborLocation}
               use:theme={useTheme}
               ref={this.containerRef}
+              aria-busy={loading}
+              aria-disabled={disabled}
             >
               <SInner tag='span' loading={loading}>
                 {addonLeft ? <Button.Addon tag={addonLeft} /> : null}
