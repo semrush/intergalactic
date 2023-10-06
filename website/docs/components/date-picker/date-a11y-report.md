@@ -1,6 +1,6 @@
 ## Automated screen reader testing
 
-_Intergalactic v15.25.0, React v18.2.0, Playwright v1.25.1,
+_Intergalactic v15.25.1, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
 **Running screen reader against [this file](https://github.com/semrush/intergalactic/blob/master/website/docs/components/date-picker/examples/datepicker.tsx).**
@@ -28,7 +28,7 @@ Guidepup v0.13.1, MacOS Monterey 12._
 20. Screen reader says "0".
 21. Screen reader types "05".
 22. Screen reader types "29".
-23. Screen reader says "9".
+23. Screen reader says "2".
 24. Screen reader goes out of active element.
 25. Screen reader says "Date field group".
 26. Screen reader goes into the active element.
@@ -45,13 +45,13 @@ Guidepup v0.13.1, MacOS Monterey 12._
 37. Screen reader types "29".
 38. Screen reader says "29".
 39. Screen reader types "2000".
-40. Screen reader says "to date MM/DD/YYYY edit text".
+40. Screen reader says "05/29/2000 Insertion at end of text. from date MM/DD/YYYY edit text".
 41. Screen reader types "05".
-42. Screen reader says "05".
+42. Screen reader says "200".
 43. Screen reader types "29".
 44. Screen reader says "29".
 45. Screen reader types "2000".
 46. Screen reader says "05/29/2000 Insertion at end of text. to date MM/DD/YYYY edit text".
 47. Screen reader goes out of active element.
-48. Screen reader says "Date field group".
+48. Screen reader says "2000".
 ```
