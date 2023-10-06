@@ -133,6 +133,25 @@
   border-radius: 6px;
 }
 
+.DocSearch-Modal[class*='DocSearch'] {
+  --docsearch-modal-background: var(--vp-c-bg-elv) !important;
+}
+
+.dark .DocSearch-Modal[class*='DocSearch'] {
+  --docsearch-modal-background: var(--vp-c-bg-soft) !important;
+  --docsearch-modal-shadow: 0 3px 8px 0 #030304 !important;
+}
+
+.dark .DocSearch-Hit[aria-selected=true] a {
+  background-color: var(--vp-c-brand-2);
+}
+
+.DocSearch-Footer {
+  border-radius: 0 0 6px 6px;
+  background: var(--vp-c-bg-alt);
+  box-shadow: none;
+}
+
 .vp-doc .anchor-like-button {
   font-weight: 500;
   color: var(--vp-c-brand);
@@ -248,6 +267,10 @@
   border-radius: 6px;
 }
 
+img {
+  border-radius: 6px;
+}
+
 .playground-runtime {
   padding-top: 24px;
   margin-top: 20px;
@@ -357,18 +380,49 @@
   margin-right: 8px;
 }
 
+.VPNavBarMenuLink:hover {
+  color: var(--vp-c-sponsor) !important;
+}
+
+.VPSidebarItem.level-0.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-1.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-2.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-3.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-4.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-5.is-link > .item > .link:hover .text {
+  color: var(--vp-c-sponsor) !important;
+}
+
+.VPSidebarItem.level-1:hover .text, 
+.VPSidebarItem.level-2:hover .text,
+.VPSidebarItem.level-3:hover .text,
+.VPSidebarItem.level-4:hover .text,
+.VPSidebarItem.level-5:hover .text {
+  color: var(--vp-c-text-1) !important;
+}
+
 .vp-doc a, .vp-doc a:visited {
   color: var(--vp-c-indigo-2);
 }
 .vp-doc a:hover {
   color: var(--vp-c-indigo-1);
 }
+
+.dark .vp-doc a:hover {
+  color: var(--vp-c-indigo-2);
+}
+
 .edit-link-button.edit-link-button, 
 .edit-link-button.edit-link-button:visited {
   color: var(--vp-c-indigo-2);
 }
 .edit-link-button.edit-link-button:hover {
   color: var(--vp-c-indigo-1);
+  text-decoration: underline;
+}
+
+.dark .edit-link-button.edit-link-button:hover {
+  color: var(--vp-c-indigo-2);
 }
 
 .VPLocalNavOutlineDropdown .items {
