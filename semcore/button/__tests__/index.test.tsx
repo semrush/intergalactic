@@ -63,28 +63,28 @@ describe('Button', () => {
     expect(queryByTestId('button')?.querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
   });
 
-  test('should support aria-busy when loading', () => {
+  test.concurrent('should support aria-busy when loading', () => {
     const { queryByTestId } = render(
-      <Button data-testid='button' loading>
+      <Button data-testid='busy-button' loading>
         Text
       </Button>,
     );
 
-    const ButtonElement = queryByTestId('button');
+    const buttonElement = queryByTestId('busy-button');
 
-    expect(ButtonElement).toHaveAttribute('aria-busy', 'true');
+    expect(buttonElement?.attributes['aria-busy'].value).toBe('true');
   });
 
-  test('should support aria-busy when disabled', () => {
+  test.concurrent('should support aria-disabled when disabled', () => {
     const { queryByTestId } = render(
-      <Button data-testid='button' disabled>
+      <Button data-testid='disabled-button' disabled>
         Text
       </Button>,
     );
 
-    const ButtonElement = queryByTestId('button');
+    const buttonElement = queryByTestId('disabled-button');
 
-    expect(ButtonElement).toHaveAttribute('aria-busy', 'true');
+    expect(buttonElement?.attributes['aria-disabled'].value).toBe('true');
   });
 
   test.concurrent('should support save width at loading', async ({ task }) => {

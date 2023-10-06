@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- added `aria-busy='true'` for disabled or loading `Button`
+- added `aria-busy='true'` for loading state and `aria-disable` for disabled state.
 
 ## [5.8.4] - 2023-10-03
 
