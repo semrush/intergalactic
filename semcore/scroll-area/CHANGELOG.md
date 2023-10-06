@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.9.5] - 2023-10-06
+
+### Fixed
+
+- In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge. 
+
 ## [5.9.4] - 2023-10-03
 
 ### Changed
