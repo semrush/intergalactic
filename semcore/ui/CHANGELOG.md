@@ -1,3 +1,30 @@
+## [15.25.2] - 2023-10-06
+
+### @semcore/base-trigger
+
+- **Fixed** Invalid attribute React warnings. 
+
+### @semcore/button
+
+- **Fixed** added `aria-busy='true'` for loading state and `aria-disable` for disabled state.
+
+### @semcore/data-table
+
+- **Fixed** Table with columns with fixed position was not displayed correctly. 
+
+### @semcore/pills
+
+- **Fixed** Pills with `behavior="tabs"` had focus ring both on container and on pills. Now focus ring is only on pills.
+- **Fixed** Focus ring of every pill was overlaped by the next sibling pill. 
+
+### @semcore/scroll-area
+
+- **Fixed** In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge. 
+
+### @semcore/utils
+
+- **Fixed** Duplicated ref function callback.
+
 ## [15.25.1] - 2023-10-03
 
 ### @semcore/radio
