@@ -72,7 +72,7 @@ describe('Button', () => {
 
     const buttonElement = queryByTestId('busy-button');
 
-    expect(buttonElement?.attributes['aria-busy'].value).toBe('true');
+    expect((buttonElement?.attributes as any)['aria-busy'].value).toBe('true');
   });
 
   test.concurrent('should support aria-disabled when disabled', () => {
@@ -84,7 +84,7 @@ describe('Button', () => {
 
     const buttonElement = queryByTestId('disabled-button');
 
-    expect(buttonElement?.attributes['aria-disabled'].value).toBe('true');
+    expect((buttonElement?.attributes as any)['aria-disabled'].value).toBe('true');
   });
 
   test.concurrent('should support save width at loading', async ({ task }) => {
