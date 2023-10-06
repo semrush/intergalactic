@@ -178,7 +178,7 @@ describe('Utils CSS in JS', () => {
     result2.ref();
     result3.ref();
     expect(result1.ref).not.toEqual(spy1);
-    expect(spy1).toBeCalledTimes(2);
+    expect(spy1).toBeCalledTimes(1);
     expect(spy2).toBeCalledTimes(1);
     expect(result2.ref).toEqual(spy2);
     expect(spy3).toBeCalledTimes(1);
