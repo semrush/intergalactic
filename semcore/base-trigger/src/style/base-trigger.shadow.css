@@ -157,7 +157,7 @@ SBaseTrigger[neighborLocation='left'] {
   margin-left: -1px;
 }
 
-SText[placeholder] {
+SText[display-placeholder] {
   color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
 
