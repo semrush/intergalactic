@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * For `NoticeBubbleContainer` with `disabledPortal` added new styles for `position sticky` behavior.
 
+## [5.9.6] - 2023-10-06
+
+### Changed
+
+* Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/icon` [4.10.1 ~> 4.10.2], `@semcore/flex-box` [5.7.4 ~> 5.7.5], `@semcore/animation` [2.7.4 ~> 2.7.5], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
 ## [5.9.6-prerelease.0] - 2023-10-06
 
 ### Changed
