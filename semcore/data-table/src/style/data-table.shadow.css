@@ -378,8 +378,8 @@ SScrollAreaBar[orientation='horizontal'] {
   left: 0;
   margin-top: calc(-1 * var(--intergalactic-spacing-3x, 12px));
   z-index: 2;
-  margin-left: calc(var(--left) + var(--intergalactic-spacing-1x, 4px));
-  margin-right: calc(var(--right) + var(--intergalactic-spacing-1x, 4px));
+  margin-left: calc(var(--left-offset) + var(--intergalactic-spacing-1x, 4px));
+  margin-right: calc(var(--right-offset) + var(--intergalactic-spacing-1x, 4px));
   width: calc(100% - var(--offsetSum) - 8px);
 }
 
