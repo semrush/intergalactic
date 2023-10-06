@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.12.3] - 2023-10-03
+
+### Fixed
+
+- Table with columns with fixed position was not displayed correctly. 
+
 ## [4.12.2] - 2023-10-03
 
 ### Changed
