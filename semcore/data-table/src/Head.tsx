@@ -163,8 +163,8 @@ class Head extends Component<AsProps> {
       <SHeadWrapper sticky={sticky}>
         <SScrollArea
           styles={scrollStyles}
-          use:left={`${offsetLeftSum}px`}
-          use:right={`${offsetRightSum}px`}
+          left-offset={`${offsetLeftSum}px`}
+          right-offset={`${offsetRightSum}px`}
           shadow
           onResize={onResize}
         >
