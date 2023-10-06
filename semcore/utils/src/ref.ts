@@ -46,7 +46,8 @@ export function useCallbackRef<T>(
 
 export function useForkRef<T>(...refs: Ref<T>[]): Ref<T> {
   return React.useCallback((refValue: any) => {
-    refs.forEach((ref) => setRef(ref, refValue));
+    const uniqueRefs = [...new Set(refs)];
+    uniqueRefs.forEach((ref) => setRef(ref, refValue));
   }, refs);
 }
 
@@ -55,7 +56,8 @@ export function forkRef<T>(...refs: Ref<T>[]): Ref<T> {
     return null;
   }
   return (refValue) => {
-    refs.forEach((ref) => setRef(ref, refValue));
+    const uniqueRefs = [...new Set(refs)];
+    uniqueRefs.forEach((ref) => setRef(ref, refValue));
   };
 }
 
