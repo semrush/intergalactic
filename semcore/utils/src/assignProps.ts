@@ -80,6 +80,7 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
 
   if (props.forwardRef) {
     newProps.ref = forkRef(newProps.ref as any, props.forwardRef as any);
+    newProps.forwardRef = newProps.ref;
   }
 
   if (source.style && props.style) {
