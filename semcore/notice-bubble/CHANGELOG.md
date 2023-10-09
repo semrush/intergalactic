@@ -14,6 +14,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * `nl` locale support.
 
+## [5.10.0-prerelease.0] - 2023-10-09
+
+### Added
+
+* `nl` locale support.
+
 ## [5.9.6] - 2023-10-06
 
 ### Changed

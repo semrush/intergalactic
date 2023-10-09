@@ -1,3 +1,105 @@
+## [15.26.0-prerelease.0] - 2023-10-09
+
+### @semcore/base-trigger
+
+- **Added** `nl` locale support.
+
+### @semcore/breadcrumbs
+
+- **Added** `nl` locale support.
+
+### @semcore/carousel
+
+- **Added** `nl` locale support.
+
+### @semcore/color-picker
+
+- **Added** `nl` locale support.
+
+### @semcore/d3-chart
+
+- **Added** `nl` locale support.
+
+### @semcore/date-picker
+
+- **Added** `nl` locale support.
+
+### @semcore/drag-and-drop
+
+- **Added** `nl` locale support.
+
+### @semcore/dropdown
+
+- **Added** `nl` locale support.
+
+### @semcore/dropdown-menu
+
+- **Added** `nl` locale support.
+
+### @semcore/errors
+
+- **Added** `nl` locale support.
+
+### @semcore/feature-popover
+
+- **Added** `nl` locale support.
+
+### @semcore/fullscreen-modal
+
+- **Added** `nl` locale support.
+
+### @semcore/inline-edit
+
+- **Added** `nl` locale support.
+
+### @semcore/inline-input
+
+- **Added** `nl` locale support.
+
+### @semcore/input-number
+
+- **Added** `nl` locale support.
+
+### @semcore/modal
+
+- **Added** `nl` locale support.
+
+### @semcore/notice
+
+- **Added** `nl` locale support.
+
+### @semcore/notice-bubble
+
+- **Added** `nl` locale support.
+
+### @semcore/notice-global
+
+- **Added** `nl` locale support.
+
+### @semcore/pagination
+
+- **Added** `nl` locale support.
+
+### @semcore/select
+
+- **Added** `nl` locale support.
+
+### @semcore/tag
+
+- **Added** `nl` locale support.
+
+### @semcore/time-picker
+
+- **Added** `nl` locale support.
+
+### @semcore/widget-empty
+
+- **Added** `nl` locale support.
+
+### @semcore/wizard
+
+- **Added** `nl` locale support.
+
 ## [15.25.2] - 2023-10-06
 
 ### @semcore/base-trigger
