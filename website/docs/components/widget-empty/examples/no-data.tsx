@@ -6,12 +6,25 @@ import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import Divider from '@semcore/ui/divider';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl', 'sv'].map(
-  (o) => ({
-    value: o,
-    children: o,
-  }),
-);
+const options = [
+  'de',
+  'en',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'pt',
+  'ru',
+  'zh',
+  'ko',
+  'nl',
+  'vi',
+  'pl',
+  'sv',
+].map((o) => ({
+  value: o,
+  children: o,
+}));
 
 export default () => {
   const [lang, setLang] = React.useState('en');
