@@ -3,18 +3,20 @@ title: Example
 fileSource: d3-chart
 ---
 
-@## Example in line chart
+@## Usage with Line chart
 
-See an example of a line chart with a legend in the [Line chart guide](/data-display/line-chart/line-chart-d3-code/#legend).
+Refer to the example in the [Line chart](/data-display/line-chart/line-chart-d3-code/#legend).
 
-@## Example in bar chart
+@## Usage with Bar chart
 
-See an example of a bar chart with a legend in the [Bar chart guide](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code/#legend).
+Refer to the example in the [Bar chart](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code/#legend).
 
-@## Example in donut chart
+@## Usage with Donut chart
 
-See an example of a bar chart with a legend in the [Donut chart guide](/data-display/donut-chart/donut-chart-d3-code/#legend).
+Refer to the example in the [Donut chart](/data-display/donut-chart/donut-chart-d3-code/#legend).
 
-@## Custom Shapes
+@## Custom shape as LegendItem
+
+You can set your custom SVG shape for a LegendItem.
 
 @example custom-shapes

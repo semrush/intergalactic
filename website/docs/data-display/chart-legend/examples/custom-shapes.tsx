@@ -4,10 +4,10 @@ import resolveColor from '@semcore/ui/utils/lib/color';
 
 const lineColors = {
   line1: resolveColor('blue-300'),
-  line2: resolveColor('orange-400'),
-  line3: resolveColor('green-200'),
-  line4: resolveColor('pink-500'),
-  line5: resolveColor('yellow-400'),
+  line2: resolveColor('green-200'),
+  line3: resolveColor('orange-400'),
+  line4: resolveColor('pink-300'),
+  line5: resolveColor('yellow-200'),
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
