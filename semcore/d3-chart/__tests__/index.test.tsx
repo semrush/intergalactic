@@ -28,6 +28,8 @@ import {
   StackedArea,
   ReferenceLine,
   Radar,
+  ChartLegend,
+  LegendItem,
   // @ts-ignore
 } from '../src';
 import { getIndexFromData } from '../src/utils';
@@ -36,10 +38,7 @@ import { curveCardinal } from 'd3-shape';
 import { Flex, Box } from '@semcore/flex-box';
 import resolveColor from '@semcore/utils/lib/color';
 import { Text } from '@semcore/typography';
-import DropdownMenu from '@semcore/dropdown-menu';
 import Button from '@semcore/button';
-import FileExportXS from '@semcore/icon/FileExport/m';
-import Checkbox from '@semcore/checkbox';
 import LikeM from '@semcore/icon/Like/m';
 import { I18nProvider } from '@semcore/utils/lib/enhances/WithI18n';
 
@@ -2251,17 +2250,27 @@ describe('d3 charts visual regression', () => {
       y2: Math.abs(Math.sin(Math.exp(i))) * (i + 2),
     }));
 
+    const axe2theme: any = {
+      y: 'orange',
+      y2: 'green',
+    };
+
     const Component: React.FC = () => {
       const [dataLegend, setDataLegend] = React.useState(
         Object.keys(data[0])
           .filter((name) => name !== 'x')
-          .map((name) => ({ name, checked: true, opacity: false })),
+          .reduce<Record<string, LegendItem>>((res, item) => {
+            res[item] = {
+              id: item,
+              label: item,
+              checked: true,
+              color: axe2theme[item],
+            };
+
+            return res;
+          }, {}),
       );
 
-      const axe2theme: any = {
-        y: 'orange',
-        y2: 'green',
-      };
       const width = 500;
       const height = 300;
       const MARGIN = 40;
@@ -2271,52 +2280,56 @@ describe('d3 charts visual regression', () => {
 
       const yScale = scaleLinear()
         .range([height - MARGIN, MARGIN])
-        .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
+        .domain(Object.values(dataLegend).find((item) => item.checked) ? [0, 10] : []);
 
-      const handleChange = (name: any) => (checked: any) => {
-        const newDataLegend = dataLegend.map((item) => {
-          if (item.name === name) {
-            return { ...item, checked };
-          }
-          return { ...item, opacity: checked };
-        });
+      const [opacityLines, setOpacityLines] = React.useState<{ [key: string]: boolean }>(
+        Object.keys(dataLegend).reduce((o, key) => ({ ...o, [key]: false }), {}),
+      );
+      const displayedLinesList = React.useMemo(
+        () =>
+          Object.entries(dataLegend)
+            .filter(([, line]) => line.checked)
+            .map(([line]) => line),
+        [dataLegend],
+      );
 
-        setDataLegend(newDataLegend);
+      const handleChange = (key: string, isVisible: boolean) => {
+        setDataLegend((prevDisplayedLines) => ({
+          ...prevDisplayedLines,
+          [key]: {
+            ...prevDisplayedLines[key],
+            checked: isVisible,
+          },
+        }));
       };
 
-      const handleMouseEnter = (name: string) => () => {
-        const activeItem = dataLegend.find((item) => item.name === name);
-        if (!activeItem?.checked) return;
-        setDataLegend((data) =>
-          data.map((item) => {
-            if (item.name !== name) return { ...item, opacity: true };
-            return item;
-          }),
-        );
+      const handleMouseEnter = (line: string) => {
+        if (displayedLinesList.includes(line)) {
+          const opacity = { ...opacityLines };
+
+          Object.keys(opacity).forEach((key) => {
+            if (key !== line) {
+              opacity[key] = true;
+            }
+          });
+
+          setOpacityLines({ ...opacity });
+        }
       };
+
       const handleMouseLeave = () => {
-        setDataLegend(dataLegend.map((item) => ({ ...item, opacity: false })));
+        setOpacityLines(Object.keys(dataLegend).reduce((o, key) => ({ ...o, [key]: false }), {}));
       };
 
       return (
         <>
           <Box>
-            {dataLegend.map((item) => {
-              return (
-                <Checkbox
-                  key={item.name}
-                  onMouseEnter={handleMouseEnter(item.name)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Checkbox.Value
-                    theme={axe2theme[item.name]}
-                    checked={item.checked}
-                    onChange={handleChange(item.name)}
-                  />
-                  <Checkbox.Text pr={3}>{item.name}</Checkbox.Text>
-                </Checkbox>
-              );
-            })}
+            <ChartLegend.Flex
+              items={dataLegend}
+              onChangeVisibleItem={handleChange}
+              onMouseEnterItem={handleMouseEnter}
+              onMouseLeaveItem={handleMouseLeave}
+            />
           </Box>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
             <YAxis>
@@ -2326,19 +2339,18 @@ describe('d3 charts visual regression', () => {
             <XAxis>
               <XAxis.Ticks />
             </XAxis>
-            {dataLegend.map(
-              (item) =>
-                item.checked && (
-                  <Line
-                    key={item.name}
-                    x='x'
-                    y={item.name}
-                    color={axe2theme[item.name]}
-                    opacity={item.opacity ? 0.3 : 1}
-                    duration={0}
-                  />
-                ),
-            )}
+            {displayedLinesList.map((item) => {
+              return (
+                <Line
+                  key={item}
+                  x='x'
+                  y={item}
+                  color={axe2theme[item]}
+                  opacity={opacityLines[item] ? 0.3 : 1}
+                  duration={0}
+                />
+              );
+            })}
           </Plot>
         </>
       );
