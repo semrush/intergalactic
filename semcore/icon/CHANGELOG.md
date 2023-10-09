@@ -2,11 +2,11 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.12.0] - 2023-10-26
+## [4.12.0] - 2023-10-09
 
 ### Changed
 
-- `Twitter` and `TwitterCarousel` icons.
+- Made `Twitter` and `TwitterCarousel` icons bolder.
 
 ## [4.11.2] - 2023-10-24
 
