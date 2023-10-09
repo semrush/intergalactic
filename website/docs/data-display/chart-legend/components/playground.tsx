@@ -3,18 +3,12 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import { ChartLegend as ChartL, LegendItem, LegendFlexProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
-import ComicsIcon from '@semcore/ui/icon/Comics/m';
+import DesktopIcon from '@semcore/ui/icon/Desktop/m';
 import { Intergalactic } from '@semcore/core';
 import { IconProps } from '@semcore/icon';
 
 const Preview = (preview) => {
   const { select, radio, text, bool } = preview('ChartLegend');
-
-  const withTrend = bool({
-    key: 'withTrend',
-    defaultValue: false,
-    label: 'With trend',
-  });
 
   const direction = radio({
     key: 'direction',
@@ -37,6 +31,12 @@ const Preview = (preview) => {
     options: ['Checkbox', 'Line', 'Circle', 'Square'],
   });
 
+  const withIcon = bool({
+    key: 'withIcon',
+    defaultValue: false,
+    label: 'With icon',
+  });
+
   const additionLabel = text({
     key: 'additionLabel',
     defaultValue: '',
@@ -49,10 +49,10 @@ const Preview = (preview) => {
     label: 'Count',
   });
 
-  const withIcon = bool({
-    key: 'withIcon',
+  const withTrend = bool({
+    key: 'withTrend',
     defaultValue: false,
-    label: 'With icon',
+    label: 'With trend',
   });
 
   return (
@@ -70,10 +70,10 @@ const Preview = (preview) => {
 
 const lineColors = {
   line1: resolveColor('blue-300'),
-  line2: resolveColor('orange-400'),
-  line3: resolveColor('green-200'),
-  line4: resolveColor('pink-500'),
-  line5: resolveColor('yellow-400'),
+  line2: resolveColor('green-200'),
+  line3: resolveColor('orange-400'),
+  line4: resolveColor('pink-300'),
+  line5: resolveColor('yellow-200'),
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
@@ -122,7 +122,7 @@ const ChartLegend = (props: ChartLProps) => {
         }
 
         if (withIcon) {
-          res[key].icon = (<ComicsIcon />) as unknown as Intergalactic.Component<'svg', IconProps>;
+          res[key].icon = (<DesktopIcon />) as unknown as Intergalactic.Component<'svg', IconProps>;
         } else {
           res[key].icon = undefined;
         }
