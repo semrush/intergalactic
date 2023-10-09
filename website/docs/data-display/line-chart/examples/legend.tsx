@@ -6,9 +6,9 @@ import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
 
 const lineColors = {
-  line1: resolveColor('blue-300'),
-  line2: resolveColor('orange-400'),
-  line3: resolveColor('green-200'),
+  Line1: resolveColor('blue-300'),
+  Line2: resolveColor('green-200'),
+  Line3: resolveColor('orange-400'),
 };
 
 export default () => {
@@ -119,7 +119,7 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  line1: Math.random() * 10,
-  line2: Math.random() * 10,
-  line3: Math.random() * 10,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+  Line3: Math.random() * 10,
 }));

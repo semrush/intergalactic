@@ -6,9 +6,9 @@ import Checkbox from '@semcore/ui/checkbox';
 import resolveColor from '@semcore/ui/utils/lib/color';
 
 const pieColors = {
-  a: resolveColor('blue-300'),
-  b: resolveColor('violet-400'),
-  c: resolveColor('green-200'),
+  Dataset1: resolveColor('blue-300'),
+  Dataset2: resolveColor('violet-400'),
+  Dataset3: resolveColor('green-200'),
 };
 
 export default () => {
@@ -100,7 +100,7 @@ export default () => {
 };
 
 const data = {
-  a: 3,
-  b: 1,
-  c: 2,
+  Dataset1: 3,
+  Dataset2: 1,
+  Dataset3: 2,
 };

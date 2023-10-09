@@ -69,20 +69,20 @@ const Preview = (preview) => {
 };
 
 const lineColors = {
-  line1: resolveColor('blue-300'),
-  line2: resolveColor('green-200'),
-  line3: resolveColor('orange-400'),
-  line4: resolveColor('pink-300'),
-  line5: resolveColor('yellow-200'),
+  Line1: resolveColor('blue-300'),
+  Line2: resolveColor('green-200'),
+  Line3: resolveColor('orange-400'),
+  Line4: resolveColor('pink-300'),
+  Line5: resolveColor('yellow-200'),
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  line1: Math.random() * 10,
-  line2: Math.random() * 10,
-  line3: Math.random() * 10,
-  line4: Math.random() * 10,
-  line5: Math.random() * 10,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+  Line3: Math.random() * 10,
+  Line4: Math.random() * 10,
+  Line5: Math.random() * 10,
 }));
 
 type ChartLProps = Omit<LegendFlexProps, 'items'> & {

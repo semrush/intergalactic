@@ -9,7 +9,7 @@ Refer to the example in the [Line chart](/data-display/line-chart/line-chart-d3-
 
 @## Usage with Bar chart
 
-Refer to the example in the [Bar chart](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code/#legend).
+Refer to the example in the [Stacked bar chart](/data-display/stacked-bar-chart/stacked-bar-chart-d3-code/#legend).
 
 @## Usage with Donut chart
 

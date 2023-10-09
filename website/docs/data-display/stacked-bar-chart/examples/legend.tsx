@@ -6,9 +6,9 @@ import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
 
 const barColors = {
-  stack1: resolveColor('blue-300'),
-  stack2: resolveColor('orange-400'),
-  stack3: resolveColor('green-200'),
+  Dataset1: resolveColor('blue-300'),
+  Dataset2: resolveColor('blue-200'),
+  Dataset3: resolveColor('yellow-200'),
 };
 
 export default () => {
@@ -118,7 +118,7 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   category: `Category ${i}`,
-  stack1: Math.random() * 5,
-  stack2: Math.random() * 5,
-  stack3: Math.random() * 5,
+  Dataset1: Math.random() * 5,
+  Dataset2: Math.random() * 5,
+  Dataset3: Math.random() * 5,
 }));
