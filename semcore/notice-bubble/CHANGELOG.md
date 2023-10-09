@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.10.0] - 2023-10-09
+
+### Changed
+
+- For `NoticeBubbleContainer` with `disabledPortal` added new styles for `position sticky` behavior.
+
 ## [5.9.5] - 2023-10-03
 
 ### Changed
