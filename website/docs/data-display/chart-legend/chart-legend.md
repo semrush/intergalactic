@@ -7,6 +7,8 @@ docs: true
 
 > Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Chart legend** helps a user read the data presented on the chart.

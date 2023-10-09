@@ -1,5 +1,5 @@
 import React from 'react';
-import { Donut, Plot } from '@semcore/ui/d3-chart';
+import { ChartLegend, Donut, LegendItem, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
@@ -15,22 +15,31 @@ export default () => {
   const width = 250;
   const height = 250;
 
-  const piesList = Object.keys(data);
-  const [opacityPie, setOpacityPie] = React.useState(
-    piesList.reduce((o, key) => ({ ...o, [key]: false }), {}),
+  const [pies, setPies] = React.useState(
+    Object.keys(data).reduce<Record<string, LegendItem>>((res, item) => {
+      res[item] = {
+        id: item,
+        label: item,
+        checked: true,
+        color: pieColors[item],
+      };
+
+      return res;
+    }, {}),
   );
-  const [displayPie, setDisplayPie] = React.useState(
-    piesList.reduce((o, key) => ({ ...o, [key]: true }), {}),
+
+  const [opacityPie, setOpacityPie] = React.useState(
+    Object.keys(pies).reduce((o, key) => ({ ...o, [key]: false }), {}),
   );
   const displayedPiesList = React.useMemo(
     () =>
-      Object.entries(displayPie)
-        .filter(([, displayed]) => displayed)
+      Object.entries(pies)
+        .filter(([, pie]) => pie.checked)
         .map(([line]) => line),
-    [displayPie],
+    [pies],
   );
 
-  const handleMouseEnter = (pie) => () => {
+  const handleMouseEnter = (pie) => {
     if (displayedPiesList.includes(pie)) {
       const opacity = { ...opacityPie };
 
@@ -45,38 +54,33 @@ export default () => {
   };
 
   const handleMouseLeave = () => {
-    setOpacityPie(piesList.reduce((o, key) => ({ ...o, [key]: false }), {}));
+    setOpacityPie(Object.keys(pies).reduce((o, key) => ({ ...o, [key]: false }), {}));
   };
 
   return (
     <Card w={'550px'}>
-      <Card.Header pt={4}> Chart legend</Card.Header>
-      <Card.Body tag={Flex} direction='column'>
-        <Flex flexWrap w={width}>
-          {piesList.map((pie) => {
-            return (
-              <Checkbox
-                key={pie}
-                theme={pieColors[pie]}
-                mr={4}
-                mb={2}
-                onMouseEnter={handleMouseEnter(pie)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Checkbox.Value
-                  checked={displayPie[pie]}
-                  onChange={(checked) =>
-                    setDisplayPie((prevDisplayedLines) => ({
-                      ...prevDisplayedLines,
-                      [pie]: checked,
-                    }))
-                  }
-                />
-                <Checkbox.Text>{pie}</Checkbox.Text>
-              </Checkbox>
-            );
-          })}
-        </Flex>
+      <Card.Header pt={4}>
+        <Card.Title tag={'h4'} m={0} inline={true}>
+          Chart legend
+        </Card.Title>
+      </Card.Header>
+      <Card.Body tag={Flex} direction='row'>
+        <ChartLegend.Flex
+          direction={'column'}
+          wMin={100}
+          items={pies}
+          onChangeVisibleItem={(key, isVisible) => {
+            setPies((prevDisplayedLines) => ({
+              ...prevDisplayedLines,
+              [key]: {
+                ...prevDisplayedLines[key],
+                checked: isVisible,
+              },
+            }));
+          }}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+        />
         <Plot width={width} height={height} data={data}>
           <Donut innerRadius={height / 2 - 50}>
             {displayedPiesList.map((pie) => (

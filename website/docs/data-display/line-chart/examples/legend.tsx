@@ -1,10 +1,9 @@
 import React from 'react';
 import Card from '@semcore/ui/card';
-import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
+import { Line, minMax, Plot, XAxis, YAxis, ChartLegend, LegendItem } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
-import Checkbox from '@semcore/ui/checkbox';
 
 const lineColors = {
   line1: resolveColor('blue-300'),
@@ -25,22 +24,33 @@ export default () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
-  const linesList = Object.keys(data[0]).filter((name) => name !== 'x');
-  const [displayLines, setDisplayLines] = React.useState(
-    linesList.reduce((o, key) => ({ ...o, [key]: true }), {}),
+  const [lines, setLines] = React.useState(
+    Object.keys(data[0])
+      .filter((name) => name !== 'x')
+      .reduce<Record<string, LegendItem>>((res, item) => {
+        res[item] = {
+          id: item,
+          label: item,
+          checked: true,
+          color: lineColors[item],
+        };
+
+        return res;
+      }, {}),
   );
+
   const [opacityLines, setOpacityLines] = React.useState(
-    linesList.reduce((o, key) => ({ ...o, [key]: false }), {}),
+    Object.keys(lines).reduce((o, key) => ({ ...o, [key]: false }), {}),
   );
   const displayedLinesList = React.useMemo(
     () =>
-      Object.entries(displayLines)
-        .filter(([, displayed]) => displayed)
+      Object.entries(lines)
+        .filter(([, line]) => line.checked)
         .map(([line]) => line),
-    [displayLines],
+    [lines],
   );
 
-  const handleMouseEnter = (line) => () => {
+  const handleMouseEnter = (line) => {
     if (displayedLinesList.includes(line)) {
       const opacity = { ...opacityLines };
 
@@ -55,7 +65,7 @@ export default () => {
   };
 
   const handleMouseLeave = () => {
-    setOpacityLines(linesList.reduce((o, key) => ({ ...o, [key]: false }), {}));
+    setOpacityLines(Object.keys(lines).reduce((o, key) => ({ ...o, [key]: false }), {}));
   };
 
   return (
@@ -66,31 +76,20 @@ export default () => {
         </Card.Title>
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
-        <Flex flexWrap w={width} mt={1}>
-          {linesList.map((line) => {
-            return (
-              <Checkbox
-                key={line}
-                theme={lineColors[line]}
-                mr={4}
-                mb={2}
-                onMouseEnter={handleMouseEnter(line)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Checkbox.Value
-                  checked={displayLines[line]}
-                  onChange={(checked) =>
-                    setDisplayLines((prevDisplayedLines) => ({
-                      ...prevDisplayedLines,
-                      [line]: checked,
-                    }))
-                  }
-                />
-                <Checkbox.Text>{line}</Checkbox.Text>
-              </Checkbox>
-            );
-          })}
-        </Flex>
+        <ChartLegend.Flex
+          items={lines}
+          onChangeVisibleItem={(key, isVisible) => {
+            setLines((prevDisplayedLines) => ({
+              ...prevDisplayedLines,
+              [key]: {
+                ...prevDisplayedLines[key],
+                checked: isVisible,
+              },
+            }));
+          }}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+        />
         <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks(4)} />

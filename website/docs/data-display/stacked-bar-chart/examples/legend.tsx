@@ -1,10 +1,9 @@
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, ChartLegend, LegendItem } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
-import Checkbox from '@semcore/ui/checkbox';
 
 const barColors = {
   stack1: resolveColor('blue-300'),
@@ -27,22 +26,33 @@ export default () => {
     .range([height - MARGIN, 0])
     .domain([0, 15]);
 
-  const barsList = Object.keys(data[0]).filter((name) => name !== 'category');
-  const [displayedBars, setDisplayedBars] = React.useState(
-    barsList.reduce((o, key) => ({ ...o, [key]: true }), {}),
+  const [bars, setBars] = React.useState(
+    Object.keys(data[0])
+      .filter((name) => name !== 'category')
+      .reduce<Record<string, LegendItem>>((res, item) => {
+        res[item] = {
+          id: item,
+          label: item,
+          checked: true,
+          color: barColors[item],
+        };
+
+        return res;
+      }, {}),
   );
+
   const [opacityBars, setOpacityBars] = React.useState(
-    barsList.reduce((o, key) => ({ ...o, [key]: false }), {}),
+    Object.keys(bars).reduce((o, key) => ({ ...o, [key]: false }), {}),
   );
   const displayedBarsList = React.useMemo(
     () =>
-      Object.entries(displayedBars)
-        .filter(([, displayed]) => displayed)
+      Object.entries(bars)
+        .filter(([, barItem]) => barItem.checked)
         .map(([stack]) => stack),
-    [displayedBars],
+    [bars],
   );
 
-  const handleMouseEnter = (stack) => () => {
+  const handleMouseEnter = (stack) => {
     if (displayedBarsList.includes(stack)) {
       const opacity = { ...opacityBars };
 
@@ -57,38 +67,31 @@ export default () => {
   };
 
   const handleMouseLeave = () => {
-    setOpacityBars(barsList.reduce((o, key) => ({ ...o, [key]: false }), {}));
+    setOpacityBars(Object.keys(bars).reduce((o, key) => ({ ...o, [key]: false }), {}));
   };
 
   return (
     <Card w={'550px'}>
-      <Card.Header pt={4}> Chart legend</Card.Header>
+      <Card.Header pt={4}>
+        <Card.Title tag={'h4'} m={0} inline={true}>
+          Chart legend
+        </Card.Title>
+      </Card.Header>
       <Card.Body tag={Flex} direction='column'>
-        <Flex flexWrap w={width} mt={1}>
-          {barsList.map((stack) => {
-            return (
-              <Checkbox
-                key={stack}
-                theme={barColors[stack]}
-                mr={4}
-                mb={2}
-                onMouseEnter={handleMouseEnter(stack)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Checkbox.Value
-                  checked={displayedBars[stack]}
-                  onChange={(checked) =>
-                    setDisplayedBars((prevDisplayedBar) => ({
-                      ...prevDisplayedBar,
-                      [stack]: checked,
-                    }))
-                  }
-                />
-                <Checkbox.Text>{stack}</Checkbox.Text>
-              </Checkbox>
-            );
-          })}
-        </Flex>
+        <ChartLegend.Flex
+          items={bars}
+          onChangeVisibleItem={(key, isVisible) => {
+            setBars((prevDisplayedLines) => ({
+              ...prevDisplayedLines,
+              [key]: {
+                ...prevDisplayedLines[key],
+                checked: isVisible,
+              },
+            }));
+          }}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+        />
         <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
           <YAxis>
             <YAxis.Ticks />
