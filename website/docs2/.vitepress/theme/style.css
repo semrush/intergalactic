@@ -146,6 +146,14 @@
   background-color: var(--vp-c-brand-2);
 }
 
+.DocSearch-Hit-source {
+  background: var(--vp-c-bg-elv);
+}
+
+.dark .DocSearch-Hit-source {
+  background: var(--vp-c-bg-soft);
+}
+
 .DocSearch-Footer {
   border-radius: 0 0 6px 6px;
   background: var(--vp-c-bg-alt);
@@ -388,6 +396,7 @@ img {
 
 .VPButton.VPButton.medium {
   border-radius: 6px;
+  padding: 0 12px;
 }
 
 .VPSwitch.VPSwitchAppearance:before {
