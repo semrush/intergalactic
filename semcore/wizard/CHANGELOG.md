@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.11.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
 ## [2.10.5] - 2023-10-06
 
 ### Changed
