@@ -54,10 +54,7 @@ export type ShapeProps = LegendItem & {
 
 export const StaticShapes = ['Circle', 'Line', 'Square'] as const;
 
-export type ShapeType =
-  | 'Checkbox'
-  | typeof StaticShapes[number]
-  | Intergalactic.Component<Intergalactic.InternalTypings.ComponentTag, LegendItem>;
+export type ShapeType = 'Checkbox' | typeof StaticShapes[number];
 
 export type LegendItemType = Intergalactic.Component<typeof Flex, LegendItemProps> & {
   Shape: Intergalactic.Component<Intergalactic.InternalTypings.ComponentTag, ShapeProps>;

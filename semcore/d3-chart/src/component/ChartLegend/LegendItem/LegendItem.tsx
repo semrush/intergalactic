@@ -110,17 +110,21 @@ class LegendItemRoot extends Component<LegendItemProps> {
 
 function Shape(props: IRootComponentProps & ShapeProps) {
   const SPointShape = Root;
-  const { styles, size, shape, checked, color } = props;
+  const { styles, size, shape, checked, color, Children, children: hasChildren } = props;
 
-  if (typeof shape !== 'string') {
-    return shape;
+  if (hasChildren) {
+    return <Children />;
   }
 
   if (shape === 'Checkbox') {
     return <Checkbox size={size} checked={checked} theme={checked ? color : undefined} />;
   }
 
-  return sstyled(styles)(<SPointShape render={Box} />);
+  return sstyled(styles)(
+    <SPointShape render={Box}>
+      <Children />
+    </SPointShape>,
+  );
 }
 
 function Icon({ styles, children: hasChildren, Children }: IRootComponentProps) {

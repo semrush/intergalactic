@@ -14,3 +14,7 @@ See an example of a bar chart with a legend in the [Bar chart guide](/data-displ
 @## Example in donut chart
 
 See an example of a bar chart with a legend in the [Donut chart guide](/data-display/donut-chart/donut-chart-d3-code/#legend).
+
+@## Custom Shapes
+
+@example custom-shapes
