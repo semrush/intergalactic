@@ -241,6 +241,33 @@
   border-width: 0;
 }
 
+.vp-doc th, .vp-doc td {
+  border: none;
+}
+
+.vp-doc tr {
+  border-top: none;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc tr:not(:first-child):hover {
+  background-color: var(--vp-c-bg-alt);
+  transition: background-color 0.5s;
+}
+
+.dark .vp-doc tr:not(:first-child):hover {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc tbody tr:hover {
+  background-color: var(--vp-c-bg-alt);
+  transition: background-color 0.5s;
+}
+
+.dark .vp-doc tbody tr:hover {
+  background-color: var(--vp-c-bg-soft);
+}
+
 .VPDocOutlineDropdown {
   display: none !important;
 }
@@ -272,9 +299,9 @@ img {
 }
 
 .playground-runtime {
-  padding-top: 24px;
+  padding-top: 40px;
   margin-top: 20px;
-  padding-bottom: 24px;
+  padding-bottom: 40px;
   margin-bottom: -5px;
   border-radius: 6px;
   padding-left: 4px;
@@ -391,14 +418,6 @@ img {
 .VPSidebarItem.level-4.is-link > .item > .link:hover .text,
 .VPSidebarItem.level-5.is-link > .item > .link:hover .text {
   color: var(--vp-c-sponsor) !important;
-}
-
-.VPSidebarItem.level-1:hover .text, 
-.VPSidebarItem.level-2:hover .text,
-.VPSidebarItem.level-3:hover .text,
-.VPSidebarItem.level-4:hover .text,
-.VPSidebarItem.level-5:hover .text {
-  color: var(--vp-c-text-1) !important;
 }
 
 .vp-doc a, .vp-doc a:visited {
