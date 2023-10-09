@@ -5,6 +5,7 @@ import fr from './fr.json';
 import it from './it.json';
 import ja from './ja.json';
 import ko from './ko.json';
+import nl from './nl.json';
 import pt from './pt.json';
 import tr from './tr.json';
 import vi from './vi.json';
@@ -20,6 +21,7 @@ export const localizedMessages = {
   it,
   ja,
   ko,
+  nl,
   pt,
   tr,
   vi,

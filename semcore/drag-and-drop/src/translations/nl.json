@@ -1,0 +1,6 @@
+{
+  "grabbed": "{itemText} vastgepakt, huidige positie is {itemPosition} van {itemsCount}",
+  "grabbing": "{itemText} is vastgepakt, nieuwe positie is {itemPosition} van {itemsCount}",
+  "dropped": "{itemText} losgelaten, eindpositie is {itemPosition} van {itemsCount}",
+  "discarded": "Verslepen genegeerd"
+}
