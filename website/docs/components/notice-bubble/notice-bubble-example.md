@@ -8,6 +8,14 @@ Please note that each example uses its own instance of `NoticeBubbleManager`, wh
 
 @example simple
 
+@## NoticeBubble not in portal
+
+If NoticeBubbleContainer has `disablePortal` it will add `position: sticky` to `Bubbles`.
+
+Parent should have `position: relative` and `overflow` with scroll.
+
+@example not-in-portal
+
 @## Undo action
 
 @example action-button

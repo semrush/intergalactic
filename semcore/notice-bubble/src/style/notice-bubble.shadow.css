@@ -55,6 +55,11 @@ SNoticeBubble {
     width: calc(100% - var(--intergalactic-spacing-6x, 24px));
   }
 }
+SNoticeBubble[disablePortal] {
+  position: sticky;
+  margin-left: auto;
+  height: 0;
+}
 
 SMessage a {
   color: var(--intergalactic-text-link-invert, #8ecdff);
