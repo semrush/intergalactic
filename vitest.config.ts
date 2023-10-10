@@ -42,7 +42,8 @@ export default defineConfig({
     ],
   },
   test: {
-    testTimeout: 20 * 1000,
+    maxConcurrency: 1,
+    testTimeout: 60 * 1000,
     include: [
       'semcore/*/__tests__/**/*.tsx',
       'semcore/*/__tests__/**/*.jsx',

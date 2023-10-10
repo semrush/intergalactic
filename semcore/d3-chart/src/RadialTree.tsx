@@ -2,7 +2,6 @@ import React from 'react';
 import { transition } from 'd3-transition';
 import { Component, sstyled, ReturnEl, UnknownProperties, Intergalactic } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { shade } from '@semcore/utils/lib/color';
 import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
@@ -751,7 +750,6 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   const sstyles = sstyled(styles);
   const sLabelStyles = sstyles.cn('SLabel', {
     color,
-    'color-hovered': shade(color, -0.12),
     'text-cursor': isHorizontal ? 'text' : 'vertical-text',
     transparent,
   });

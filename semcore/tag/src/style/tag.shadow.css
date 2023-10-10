@@ -1,27 +1,40 @@
 STag {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
-  box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
+  border: 1px solid var(--intergalactic-bg-primary-neutral, #ffffff);
   border-radius: var(--intergalactic-tag-rounded, 24px);
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
   font-weight: var(--intergalactic-medium, 500);
-  background-color: var(--colorBg);
-  color: var(--colorText);
-  border-color: var(--colorBorder);
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  color: var(--tag-color);
 
   &[interactive]:hover,
   &[interactive]:active,
   &[active] {
-    background-color: var(--colorBgHover);
+    &:before {
+      opacity: 0.3;
+    }
   }
 
   &:has(SText:focus) {
     box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    border-radius: var(--intergalactic-tag-rounded, 24px);
+    background-color: var(--tag-color);
+    opacity: 0.1;
+    filter: brightness(1.5) saturate(1.5);
   }
 }
 
@@ -29,7 +42,6 @@ STag[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
   pointer-events: none;
-  /* Disable link interactions */
 }
 
 STag[interactive] {
@@ -74,39 +86,20 @@ STag[size='xl'] {
   }
 }
 
-STag[theme='primary'] {
-  background-color: var(--colorBg);
-  border-color: var(--colorBg);
-  color: var(--colorText);
-
-  &[interactive]:hover,
-  &[interactive]:active,
-  &[active] {
-    background-color: var(--colorBgHover);
-  }
+STag[theme='secondary'],
+STag[theme='additional'] {
+  border-color: var(--tag-color);
 }
 
 STag[theme='primary-invert'] {
   background-color: var(--intergalactic-tag-primary-white-normal, rgba(255, 255, 255, 0.15));
   color: var(--intergalactic-text-primary-invert, #ffffff);
-
-  &[interactive]:hover,
-  &[interactive]:active,
-  &[active] {
-    background-color: var(--intergalactic-tag-primary-white-hover-active, rgba(255, 255, 255, 0.3));
-  }
 }
 
 STag[theme='secondary-invert'],
 STag[theme='additional-invert'] {
   color: var(--intergalactic-text-primary-invert, #ffffff);
-  border-color: var(--intergalactic-border-secondary-invert, rgba(255, 255, 255, 0.3));
-
-  &[interactive]:hover,
-  &[interactive]:active,
-  &[active] {
-    background-color: var(--intergalactic-tag-secondary-hover-active, #f4f5f9);
-  }
+  border-color: var(--tag-color);
 }
 
 STag[theme='additional'] {
@@ -121,6 +114,7 @@ SText {
   overflow: hidden;
   text-overflow: ellipsis;
   outline: none;
+  position: relative;
 }
 
 SText:not(:only-child):first-child {
@@ -143,6 +137,7 @@ SAddon {
   justify-content: center;
   padding-left: var(--intergalactic-spacing-1x, 4px);
   padding-right: var(--intergalactic-spacing-1x, 4px);
+  position: relative;
 }
 
 SCircle {
