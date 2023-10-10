@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input",
   "description": "Semrush Input Component",
-  "version": "4.10.0-prerelease.0",
+  "version": "4.10.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,7 +14,7 @@
   "dependencies": {
     "@semcore/utils": "4.8.2",
     "@semcore/neighbor-location": "4.7.5",
-    "@semcore/flex-box": "5.8.0-prerelease.0"
+    "@semcore/flex-box": "5.8.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.7.5",

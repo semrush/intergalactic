@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 * `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
 
+## [3.14.1] - 2023-10-10
+
+### Changed
+
+* Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.5 ~> 2.8.0], `@semcore/flex-box` [5.7.5 ~> 5.8.0], `@semcore/popper` [5.7.5 ~> 5.7.6]).
+
 ## [3.14.1-prerelease.0] - 2023-10-10
 
 ### Changed
