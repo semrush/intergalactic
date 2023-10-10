@@ -15,7 +15,8 @@ SIcon[keyboardFocused] {
 
 SIcon[interactive] {
   cursor: pointer;
+
   &:hover {
-    color: var(--color-interactive);
+    filter: brightness(0.8);
   }
 }

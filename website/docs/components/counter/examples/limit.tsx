@@ -9,12 +9,12 @@ export default () => (
     <Flex mb={1} justifyContent='space-between'>
       <Text size={100}>SEO Ideas Units</Text>
       <Flex alignItems='center'>
-        <WarningM color='orange' />
+        <WarningM color='--intergalactic-bg-primary-warning' />
         <Text size={100} ml={1} bold>
-          10<Text color='gray60'>/10</Text>
+          10<Text color='--intergalactic-text-secondary'>/10</Text>
         </Text>
       </Flex>
     </Flex>
-    <ProgressBar theme='orange' size='s' />
+    <ProgressBar theme='--intergalactic-bg-primary-warning' size='s' />
   </Flex>
 );

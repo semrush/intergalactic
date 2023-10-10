@@ -1,13 +1,14 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/badge.shadow.css';
 
 class RootBadge extends Component {
   static displayName = 'Badge';
   static style = style;
+  static enhance = [resolveColorEnhance()];
   static defaultProps = {
     color: 'white',
     bg: 'gray-400',
@@ -15,7 +16,7 @@ class RootBadge extends Component {
 
   render() {
     const SBadge = Root;
-    const { styles, color, bg } = this.asProps;
+    const { styles, color, bg, resolveColor } = this.asProps;
 
     return sstyled(styles)(
       <SBadge render={Box} tag='span' use:color={resolveColor(color)} use:bg={resolveColor(bg)} />,

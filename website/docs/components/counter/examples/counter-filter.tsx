@@ -6,7 +6,7 @@ export default () => (
   <FilterTrigger>
     <FilterTrigger.Text>Link to website</FilterTrigger.Text>
     <FilterTrigger.Addon>
-      <Counter theme='light-blue'>
+      <Counter theme='--intergalactic-bg-primary-info'>
         <AnimatedNumber value={500} delay={1000} formatValue={(x) => Math.round(x).toString()} />
       </Counter>
     </FilterTrigger.Addon>

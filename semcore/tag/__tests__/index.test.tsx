@@ -26,7 +26,7 @@ describe('Tag', () => {
   test.concurrent('Renders correctly', async ({ task }) => {
     const component = themes.flatMap((theme) =>
       colors.map((color) => (
-        <Tag key={`${theme}-${color}`} theme={theme} color={color} active>
+        <Tag key={`${theme}-${color}`} theme={theme} color={color}>
           <Tag.Text>Tag name</Tag.Text>
           <Tag.Close />
         </Tag>

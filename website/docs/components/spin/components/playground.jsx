@@ -84,7 +84,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
             tag='div'
             m={textRight ? getMarginText('right', size) : getMarginText('bottom', size)}
           >
-            <Text size={getSizeText(size)} color='gray60'>
+            <Text size={getSizeText(size)} color='--intergalactic-text-secondary'>
               {text}
             </Text>
           </Text>

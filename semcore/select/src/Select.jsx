@@ -6,7 +6,7 @@ import { ButtonTrigger } from '@semcore/base-trigger';
 import Divider from '@semcore/divider';
 import findComponent from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import InputSearch from './InputSearch';
 import { useBox } from '@semcore/flex-box';
@@ -43,7 +43,7 @@ class RootSelect extends Component {
   static displayName = 'Select';
 
   static style = style;
-  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+  static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages), resolveColorEnhance()];
 
   static defaultProps = (props) => ({
     placeholder: props.multiselect ? 'Select options' : 'Select option',
@@ -174,7 +174,7 @@ class RootSelect extends Component {
   };
 
   getOptionCheckboxProps(props) {
-    const { size } = this.asProps;
+    const { size, resolveColor } = this.asProps;
     const hasOption = props.value === undefined;
     const optionProps = hasOption ? {} : this.getOptionProps(props);
     const selected = this._optionSelected;
@@ -183,6 +183,7 @@ class RootSelect extends Component {
       ...optionProps,
       size,
       selected,
+      resolveColor,
     };
   }
 
@@ -330,7 +331,7 @@ function Trigger({
 
 function Checkbox(props) {
   const [SOptionCheckbox, componentProps] = useBox(props, props.forwardRef);
-  const { size, theme, selected } = props;
+  const { size, theme, selected, resolveColor } = props;
   const styles = sstyled(props.styles);
 
   const { className, style } = styles.cn('SOptionCheckbox', {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBaseComponent, Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import resolveColor from '@semcore/utils/lib/color';
 
 import styles from './style/text.shadow.css';
+import { useColorResolver } from '@semcore/utils/lib/use/useColorResolver';
 
 function getTextDecoration(underline, lineThrough) {
   if (underline) {
@@ -19,6 +19,7 @@ function Text(props, ref) {
   const SText = Root;
   const { color, underline, lineThrough } = props;
   const textDecoration = getTextDecoration(underline, lineThrough);
+  const resolveColor = useColorResolver();
 
   return sstyled(styles)(
     <SText
