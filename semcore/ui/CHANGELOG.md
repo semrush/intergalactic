@@ -1,3 +1,17 @@
+## [15.27.0-prerelease.0] - 2023-10-10
+
+### @semcore/flex-box
+
+- **Added** `display` css property as prop to `Box` component.
+
+### @semcore/notice-bubble
+
+- **Changed** For `NoticeBubbleContainer` with `disabledPortal` added new styles for `position sticky` behavior.
+
+### @semcore/popper
+
+- **Fixed** Prevent to scroll to `Trigger` item after `Popper` is closed. 
+
 ## [15.26.0] - 2023-10-09
 
 ### @semcore/base-trigger
