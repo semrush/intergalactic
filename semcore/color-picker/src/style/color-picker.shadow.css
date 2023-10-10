@@ -30,7 +30,7 @@ SItemContainer {
   }
 }
 
-SItemContainer:hover>SCloseIcon {
+SItemContainer:hover > SCloseIcon {
   opacity: 1;
 }
 
@@ -44,8 +44,7 @@ SItemContainer[selected] {
 
 SItemContainer[displayLabel] {
   &::after {
-    background: var(--value);
-    opacity: 0.15;
+    background: var(--lightBackground);
   }
 }
 

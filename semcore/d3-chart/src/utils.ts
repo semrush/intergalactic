@@ -141,6 +141,7 @@ export const getIndexFromData = <
   }
   // detect bar chart
   else if ('step' in scale && typeof scale.step !== 'undefined') {
+    // console.log({ key, scale, value });
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
   } else {

@@ -12,7 +12,7 @@ const Demo = () => {
       <Box mt={2}>
         <Input size='l' w={300}>
           <Input.Addon pr='3px' id='permanent-placeholder-l-addon'>
-            <Text color='--intergalactic-text-large-secondary'>Permanent text:</Text>
+            <Text color='gray70'>Permanent text:</Text>
           </Input.Addon>
           <Input.Value
             placeholder='Placeholder'
@@ -29,7 +29,7 @@ const Demo = () => {
       <Box mt={2}>
         <Input size='m' w={300}>
           <Input.Addon pr='2px' id='permanent-placeholder-m-addon'>
-            <Text color='--intergalactic-text-large-secondary'>Permanent text:</Text>
+            <Text color='gray70'>Permanent text:</Text>
           </Input.Addon>
           <Input.Value
             placeholder='Placeholder'

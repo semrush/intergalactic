@@ -19,8 +19,7 @@ export default () => (
       H3, 32px
     </Text>
     <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text color='--intergalactic-text-success'>good burger</Text>.
-      Mm-mm-mm.
+      But I do love the taste of a <Text color='green'>good burger</Text>. Mm-mm-mm.
     </Text>
     <Text size={500} tag='h4' fontWeight={500} mb={3} mt={0}>
       H4, 24px

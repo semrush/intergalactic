@@ -1,13 +1,12 @@
 import React from 'react';
 import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/ui/d3-chart';
-import { useColorResolver } from '@semcore/ui/utils/lib/use/useColorResolver';
+import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 export default () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
-  const resolveColor = useColorResolver();
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
@@ -34,7 +33,7 @@ export default () => {
       <Line
         x='category'
         y='bar'
-        color={resolveColor('--intergalactic-text-secondary')}
+        color={resolveColor('wall')}
         style={{ strokeWidth: 3, strokeDasharray: 5 }}
       >
         <Line.Dots display />
