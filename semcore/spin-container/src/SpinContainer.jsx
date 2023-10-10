@@ -3,7 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { FadeInOut } from '@semcore/animation';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColor from '@semcore/utils/lib/color';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 
 import style from './style/spin-container.shadow.css';
@@ -16,10 +16,9 @@ class SpinContainerRoot extends Component {
     theme: 'dark',
     duration: 200,
   };
-  static enhance = [resolveColorEnhance()];
 
   getOverlayProps() {
-    const { loading, background, duration, size, theme, resolveColor } = this.asProps;
+    const { loading, background, duration, size, theme } = this.asProps;
     return {
       background,
       // for Animated
@@ -28,7 +27,6 @@ class SpinContainerRoot extends Component {
       // for Spin
       size,
       theme,
-      resolveColor,
     };
   }
 
@@ -67,7 +65,7 @@ class Overlay extends Component {
 
   render() {
     const SOverlay = Root;
-    const { styles, theme, background, loading, duration, resolveColor } = this.asProps;
+    const { styles, theme, background, loading, duration } = this.asProps;
     const useTheme = background ? 'custom' : theme;
 
     return sstyled(styles)(

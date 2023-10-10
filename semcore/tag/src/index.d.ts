@@ -4,16 +4,8 @@ import { BoxProps } from '@semcore/flex-box';
 import { IconProps } from '@semcore/icon';
 
 export type TagSize = 'xl' | 'l' | 'm';
-/** @deprecated */
-export type TagThemeOld =
-  | 'muted'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'invert'
-  | 'additional';
-export type TagTheme = 'primary' | 'secondary' | TagThemeOld;
+export type TagThemeOld = 'muted' | 'info' | 'success' | 'warning' | 'danger' | 'invert';
+export type TagTheme = 'primary' | 'secondary' | 'additional' | (string & TagThemeOld);
 export type TagUse = 'primary' | 'secondary';
 
 /** @deprecated */
@@ -35,7 +27,7 @@ export type TagProps = BoxProps & {
    */
   use?: TagUse;
   /** Tag theme, there are several default themes or you can use your color
-   * @default primary
+   * @default muted
    */
   theme?: TagTheme;
   /** Tag color text */

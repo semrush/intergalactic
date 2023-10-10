@@ -26,12 +26,7 @@ export default () => (
           <Text size={200} color='#6C6E79' mr={2}>
             Info about data (optiona)
           </Text>
-          <Close
-            color='--intergalactic-icon-secondary-neutral'
-            ml='auto'
-            interactive
-            aria-label='Close card'
-          />
+          <Close color='stone' ml='auto' interactive aria-label='Close card' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>

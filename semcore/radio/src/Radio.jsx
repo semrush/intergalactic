@@ -3,7 +3,7 @@ import createComponent, { Component, CONTEXT_COMPONENT, sstyled, Root } from '@s
 import { Flex, Box } from '@semcore/flex-box';
 import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColor from '@semcore/utils/lib/color';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 
 import style from './style/radio.shadow.css';
@@ -132,7 +132,7 @@ class ValueRoot extends Component {
     includeInputProps: inputProps,
     defaultChecked: false,
   };
-  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
+  static enhance = [keyboardFocusEnhance()];
   static displayName = 'Value';
   static contextType = RadioGroup[CONTEXT_COMPONENT];
   static style = style;
@@ -183,7 +183,6 @@ class ValueRoot extends Component {
       tag,
       disabled,
       includeInputProps,
-      resolveColor,
       ...other
     } = this.asProps;
     const [, radioMarkProps] = getInputProps(other, includeInputProps);
@@ -196,7 +195,6 @@ class ValueRoot extends Component {
       state,
       keyboardFocused,
       disabled,
-      resolveColor,
       ...propsWithoutChildren,
     };
 
@@ -250,7 +248,7 @@ Control.displayName = 'Control';
 
 const RadioMark = (props) => {
   const SValue = Root;
-  const { theme, styles, resolveColor } = props;
+  const { theme, styles } = props;
 
   return sstyled(styles)(<SValue render={Box} tag='div' use:theme={resolveColor(theme)} />);
 };

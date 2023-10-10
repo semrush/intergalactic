@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, CREATE_COMPONENT, sstyled, Root } from '@semcore/core';
 import PopperOrigin from '@semcore/popper';
 import { Box } from '@semcore/flex-box';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColor from '@semcore/utils/lib/color';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import logger from '@semcore/utils/lib/logger';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -14,7 +14,7 @@ const Popper = PopperOrigin[CREATE_COMPONENT]();
 class TooltipRoot extends Component {
   static displayName = 'Tooltip';
   static style = style;
-  static enhance = [uniqueIDEnhancement(), resolveColorEnhance()];
+  static enhance = [uniqueIDEnhancement()];
   static defaultProps = {
     theme: 'default',
     placement: 'top',
@@ -39,15 +39,13 @@ class TooltipRoot extends Component {
   }
 
   getPopperProps() {
-    const { theme, uid, disablePortal, ignorePortalsStacking, interaction, resolveColor } =
-      this.asProps;
+    const { theme, uid, disablePortal, ignorePortalsStacking, interaction } = this.asProps;
     return {
       id: `igc-${uid}-popper`,
       theme,
       disablePortal,
       ignorePortalsStacking,
       interaction,
-      resolveColor,
     };
   }
 
@@ -93,9 +91,12 @@ function TooltipTrigger(props) {
 }
 
 function TooltipPopper(props) {
-  const { Children, styles, theme, resolveColor } = props;
+  const { Children, styles, theme, interaction } = props;
   const STooltip = Root;
   const SArrow = Box;
+
+  // for one render children
+  let children = null;
 
   return sstyled(styles)(
     <>
@@ -105,7 +106,8 @@ function TooltipPopper(props) {
         use:theme={resolveColor(theme)}
         aria-live={theme === 'warning' ? 'assertive' : 'polite'}
       >
-        <Children />
+        {/* biome-ignore lint/suspicious/noAssignInExpressions: */}
+        {(children = <Children />)}
         <SArrow data-popper-arrow use:theme={resolveColor(theme)} />
       </STooltip>
     </>,

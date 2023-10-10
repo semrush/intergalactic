@@ -43,7 +43,7 @@ SLinkTrigger[color] {
   color: var(--color);
 
   &:hover {
-    filter: brightness(0.8);
+    color: var(--color-hover);
   }
 }
 
@@ -91,7 +91,6 @@ SLinkTrigger[size='l'] {
 @media (prefers-reduced-motion) {
   SLinkTrigger {
     transition: none;
-
     & SText {
       transition: none;
     }

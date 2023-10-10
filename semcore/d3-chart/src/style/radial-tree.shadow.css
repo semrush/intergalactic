@@ -39,7 +39,7 @@ SLabel[transparent] {
 }
 
 SRadian:hover SLabel {
-  filter: brightness(0.8);
+  fill: var(--color-hovered);
 }
 
 @media (prefers-reduced-motion) {

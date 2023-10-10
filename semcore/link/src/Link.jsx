@@ -4,6 +4,7 @@ import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import resolveColor, { shade } from '@semcore/utils/lib/color';
 import logger from '@semcore/utils/lib/logger';
 import hasLabels from '@semcore/utils/lib/hasLabels';
 
@@ -31,6 +32,7 @@ class RootLink extends Component {
   render() {
     const SLink = Root;
     const { Children, styles, noWrap, addonLeft, addonRight, color, disabled } = this.asProps;
+    const colorHoverText = shade(resolveColor(color), -0.12);
 
     return sstyled(styles)(
       <SLink
@@ -39,6 +41,7 @@ class RootLink extends Component {
         aria-disabled={!!disabled}
         render={Text}
         tag='a'
+        colorHoverText={colorHoverText}
         noWrapText={noWrap}
         use:noWrap={false}
         ref={this.containerRef}
