@@ -45,7 +45,7 @@ const Preview = (preview) => {
 
   const count = text({
     key: 'count',
-    defaultValue: 0,
+    defaultValue: '',
     label: 'Count',
   });
 
@@ -112,12 +112,20 @@ const ChartLegend = (props: ChartLProps) => {
   React.useEffect(() => {
     setLines(() => {
       const newLines = Object.keys(lines).reduce<Record<string, LegendItem>>((res, key) => {
-        res[key].additionalInfo = {
-          label: additionLabel,
-          count: count,
-        };
-
-        if (!additionLabel && !count) {
+        if (additionLabel && count) {
+          res[key].additionalInfo = {
+            label: additionLabel,
+            count: count,
+          };
+        } else if (additionLabel && !count) {
+          res[key].additionalInfo = {
+            label: additionLabel,
+          };
+        } else if (!additionLabel && count) {
+          res[key].additionalInfo = {
+            count: count,
+          };
+        } else {
           res[key].additionalInfo = undefined;
         }
 
