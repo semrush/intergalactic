@@ -434,7 +434,7 @@ const useFocusCatch = (active, popperRef) => {
   return { focusCatch, handleFocusCatchBlur, handleFocusCatchRef };
 };
 
-const focusCatcherStyles = { position: 'absolute' };
+const focusCatcherStyles = { position: 'fixed' };
 function Trigger(props) {
   const STrigger = Root;
   const SFocusHint = 'span';
