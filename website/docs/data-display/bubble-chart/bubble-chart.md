@@ -64,8 +64,8 @@ If you need captions for bubbles (in addition to the legend), show captions to t
 
 Show the following values in the tooltip for this chart type:
 
-- the value for the point on the X axis;
-- the value for the point on the Y axis.
+- the value for the point on the X-axis;
+- the value for the point on the Y-axis.
 - sometimes it is necessary to show a third value for a bubble, which affects its size (this may be the difference between the axes, or there may be a different value).
 
 **In the tooltip, focus on values rather than axis names or data categories.**
