@@ -14,15 +14,16 @@ const Demo = () => {
         </>
       ),
       initialAnimation: true,
-      duration: 3000,
+      duration: 300000,
     });
   };
 
   return (
-    <div style={{ background: '#eee', height: '180px', position: 'relative', overflow: 'auto' }}>
+    <div
+      style={{ border: '1px dashed #eee', height: '180px', position: 'relative', overflow: 'auto' }}
+    >
       <div style={{ height: '800px' }}>
-        <NoticeBubbleContainer manager={manager} disablePortal={true} />{' '}
-        {/* Should be before another content! */}
+        <NoticeBubbleContainer manager={manager} disablePortal={true} />
         <Button onClick={handleClick}>Show basic notice</Button>
       </div>
     </div>
