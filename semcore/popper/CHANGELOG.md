@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Prevent to return focus to `Trigger` after popper is closed
+- Prevent to scroll to `Trigger` item after `Popper` is closed. 
 
 ## [5.7.5] - 2023-10-06
 
