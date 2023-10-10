@@ -302,4 +302,46 @@ describe('focus control', () => {
     expect(document.activeElement.nodeName).toBe('DIV');
     vi.useRealTimers();
   });
+
+  test('prevent focus return', () => {
+    let hidePopper = undefined;
+    vi.useFakeTimers();
+    const Component = () => {
+      const [visible, setVisible] = React.useState(true);
+      hidePopper = () => setVisible(false);
+
+      return (
+        <>
+          <Popper visible={visible} preventFocusCatch={true}>
+            <Popper.Trigger data-testid='trigger'>trigger</Popper.Trigger>
+            <Popper.Popper autoFocus data-testid='popper'>
+              <div tabIndex={0} data-testid='focusable-in-popper'>
+                popper
+              </div>
+            </Popper.Popper>
+          </Popper>
+        </>
+      );
+    };
+    const { getByTestId } = render(
+      <div data-testid='container'>
+        <Component />
+      </div>,
+    );
+
+    act(() => {
+      vi.runAllTimers();
+    });
+
+    expect(getByTestId('popper')).toHaveFocus();
+
+    act(() => hidePopper());
+    fireEvent.animationEnd(getByTestId('popper'));
+    act(() => {
+      vi.runAllTimers();
+    });
+
+    expect(getByTestId('trigger')).not.toHaveFocus();
+    vi.useRealTimers();
+  });
 });
