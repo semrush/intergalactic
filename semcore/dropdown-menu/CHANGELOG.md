@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.1-prerelease.0] - 2023-10-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.8.0 ~> 4.8.1], `@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
 ## [4.10.0] - 2023-10-09
 
 ### Added
