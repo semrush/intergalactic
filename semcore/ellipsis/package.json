@@ -1,7 +1,7 @@
 {
   "name": "@semcore/ellipsis",
   "description": "Semrush Ellipsis Component",
-  "version": "2.8.5",
+  "version": "2.9.0-prerelease.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@semcore/utils": "4.8.2",
-    "@semcore/flex-box": "5.7.5",
-    "@semcore/tooltip": "6.8.5"
+    "@semcore/flex-box": "5.8.0-prerelease.0",
+    "@semcore/tooltip": "6.8.6-prerelease.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.7.5",
