@@ -10,7 +10,7 @@ tabName: Design
 
 **Histogram chart** helps grouping numeric data for comparison by quantitative indicators. It shows the distribution of values.
 
-Use histogram when you need to display the distribution of data sets by groups (for example, quantitative ranges).
+Use histogram when you need to display the distribution of datasets by groups (for example, quantitative ranges).
 
 **Important points to keep in mind when presenting data as a histogram:**
 
@@ -21,8 +21,8 @@ Use histogram when you need to display the distribution of data sets by groups (
 
 > Difference from bar chart
 >
-> - Histogram chart are used to display distribution of data sets: how often values fall into quantitative ranges.
-> - Bar chart displays the distribution of data sets by quality categories for comparison.
+> - Histogram chart are used to display distribution of datasets: how often values fall into quantitative ranges.
+> - Bar chart displays the distribution of datasets by quality categories for comparison.
 >
 > `Histograms are used to show distributions of variables while bar charts are used to compare variables`, [source](https://www.forbes.com/sites/naomirobbins/2012/01/04/a-histogram-is-not-a-bar-chart/#93b29b6d775f).
 >
@@ -68,7 +68,7 @@ As a rule, a histogram doesn't need a legend. You only need to clearly name the 
 
 @## Sorting of columns
 
-Don't forget to use a reasonable order of values to distribute your data sets. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
+Don't forget to use a reasonable order of values to distribute your datasets. For example, from the largest value to the smallest one, and if they represent months - from January to December, etc.
 
 > You can't change the order of the bars on the histogram, depending on the size of bars on the `Y-axis`. This will make it harder to read the data.
 
