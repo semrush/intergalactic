@@ -126,8 +126,10 @@ export default function resolveColor<T extends string | undefined>(
 ): T extends string ? string : undefined {
   if (!color) return undefined as any;
   if (color in (COLORS as Record<string, string>)) {
+    // warn here
     return COLORS[color];
   }
+  // if ()
   return color as any;
 }
 

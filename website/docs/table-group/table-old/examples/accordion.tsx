@@ -22,7 +22,9 @@ export default () => (
                   key={value}
                   style={ind === 0 ? { display: 'flex', alignItems: 'center' } : {}}
                 >
-                  {ind === 0 && <Accordion.Item.Chevron color='stone' mr={2} />}
+                  {ind === 0 && (
+                    <Accordion.Item.Chevron color='--intergalactic-icon-secondary-neutral' mr={2} />
+                  )}
                   {value}
                 </Table.Cell>
               ))}
