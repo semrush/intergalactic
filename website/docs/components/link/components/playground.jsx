@@ -29,7 +29,7 @@ const Preview = (preview) => {
     key: 'color',
     label: 'Color',
     defaultValue: '',
-    placeholder: '',
+    placeholder: 'red',
   });
 
   const active = bool({

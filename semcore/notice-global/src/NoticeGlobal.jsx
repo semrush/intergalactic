@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Close from '@semcore/icon/Close/m';
-import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
+import resolveColor from '@semcore/utils/lib/color';
 import { FadeInOut } from '@semcore/animation';
 import { isAdvanceMode } from '@semcore/utils/lib/findComponent';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
@@ -26,7 +26,6 @@ class NoticeGlobalRoot extends Component {
       map: Number.parseInt,
       prop: 'duration',
     }),
-    resolveColorEnhance(),
   ];
   static defaultProps = {
     theme: 'neutral',
@@ -42,8 +41,7 @@ class NoticeGlobalRoot extends Component {
 
   render() {
     const SNoticeGlobal = Root;
-    const { Children, styles, hidden, theme, closable, onClose, forcedAdvancedMode, resolveColor } =
-      this.asProps;
+    const { Children, styles, hidden, theme, closable, onClose, forcedAdvancedMode } = this.asProps;
     const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;

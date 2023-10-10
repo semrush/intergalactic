@@ -26,7 +26,6 @@ SLink {
     border: none;
     padding: 0;
   }
-
   &[active],
   &:hover,
   &:active {
@@ -36,7 +35,6 @@ SLink {
       border-color: currentColor;
     }
   }
-
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
     color: var(--intergalactic-text-link-visited, #8649e1);
@@ -54,8 +52,7 @@ SLink[keyboardFocused]::after {
 SLink[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none;
-  /* Disable link interactions */
+  pointer-events: none; /* Disable link interactions */
 }
 
 SLink[noWrapText] {
@@ -93,7 +90,7 @@ SText {
 
 SLink[color] {
   &:hover {
-    filter: brightness(0.8);
+    color: var(--colorHoverText);
   }
 }
 

@@ -36,7 +36,7 @@ export default () => (
           <Select.Trigger />
           <Select.Menu>
             <Select.Option value='%all%' onClick={handleClick}>
-              <Text color='--intergalactic-text-link'>
+              <Text color='denim-blue'>
                 {(currentValue as any).length ? 'Deselect all' : 'Select all'}
               </Text>
             </Select.Option>
