@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.15.0] - 2023-10-11
+
+### Added
+
+- `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
+
 ## [3.14.0] - 2023-10-09
 
 ### Added
