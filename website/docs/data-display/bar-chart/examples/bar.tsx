@@ -10,7 +10,6 @@ export default () => {
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
     .domain(data.map((d) => d.category))
-    .paddingInner(0.4)
     .paddingOuter(0.2);
 
   const yScale = scaleLinear()
@@ -26,7 +25,7 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bar x='category' y='bar' />
+      <Bar x='category' y='bar' maxBarSize={20} />
     </Plot>
   );
 };

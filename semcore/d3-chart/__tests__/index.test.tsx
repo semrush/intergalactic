@@ -747,6 +747,23 @@ describe('Bar', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test.concurrent('should render Bar chart with maxBarSize correctly', async ({ task }) => {
+    const component = (
+      <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        <Bar x='time' y='stack1' duration={0} maxBarSize={6} />
+      </Plot>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('should render StackBar chart correctly', async ({ task }) => {
     const component = (
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>

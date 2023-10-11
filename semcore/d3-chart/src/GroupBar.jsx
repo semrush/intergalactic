@@ -34,27 +34,35 @@ class GroupBarRoot extends Component {
     return scaleBand()
       .range([0, scaleToBand(xyScale).bandwidth()])
       .domain(domain)
-      .paddingInner(scaleToBand(xyScale).paddingOuter())
-      .paddingOuter(0);
+      .paddingInner(0.1)
+      .paddingOuter(0.1);
   }
 
   getBarProps({ y }) {
-    const { x } = this.asProps;
+    const { x, maxBarSize = Infinity } = this.asProps;
+
+    const bandWidth = this.scaleGroup.bandwidth();
+    const width = Math.min(bandWidth, maxBarSize);
+    const offsetX = this.scaleGroup(y) + bandWidth / 2 - width / 2;
 
     return {
-      offset: [this.scaleGroup(y), 0],
-      width: scaleToBand(this.scaleGroup).bandwidth(),
+      offset: [offsetX, 0],
+      width,
       x,
       groupKey: x,
     };
   }
 
   getHorizontalBarProps({ x }) {
-    const { y } = this.asProps;
+    const { y, maxBarSize = Infinity } = this.asProps;
+
+    const bandWidth = this.scaleGroup.bandwidth();
+    const height = Math.min(bandWidth, maxBarSize);
+    const offsetY = this.scaleGroup(x) + bandWidth / 2 - height / 2;
 
     return {
-      offset: [0, this.scaleGroup(x)],
-      height: scaleToBand(this.scaleGroup).bandwidth(),
+      offset: [0, offsetY],
+      height,
       y,
       groupKey: y,
     };
