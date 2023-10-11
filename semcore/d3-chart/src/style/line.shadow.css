@@ -30,3 +30,13 @@ SNull {
 SNull[hide] {
   display: none;
 }
+
+SAria {
+  transition-property: d;
+  transition-duration: var(--duration);
+  transition-timing-function: ease-in-out;
+  opacity: 0.3;
+}
+SAria[color] {
+  fill: var(--color);
+}

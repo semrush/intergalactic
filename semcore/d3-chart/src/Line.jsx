@@ -1,5 +1,5 @@
 import React from 'react';
-import { curveLinear, line as d3Line } from 'd3-shape';
+import { curveLinear, line as d3Line, area as d3AreaDefine, curveCardinal } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
@@ -29,6 +29,12 @@ class LineRoot extends Component {
         .x((p) => scaleOfBandwidth(xScale, p[x]))
         .y((p) => scaleOfBandwidth(yScale, p[y])),
       duration: 500,
+      d3Area: d3AreaDefine()
+        .defined(definedData(x, y))
+        .curve(curveCardinal)
+        .x((d) => xScale(d[x]))
+        .y0((d) => yScale(d[y] - 2))
+        .y1((d) => yScale(d[y] + 2)),
     };
   };
 
@@ -58,7 +64,9 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, uid, size, d3, duration, x, y, transparent } = this.asProps;
+    const SAria = this.Element;
+    const { styles, hide, color, uid, size, d3, d3Area, duration, x, y, transparent } =
+      this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
@@ -74,6 +82,15 @@ class LineRoot extends Component {
           color={color}
           transparent={transparent}
           d={d3(data)}
+          use:duration={`${duration}ms`}
+        />
+        <SAria
+          aria-hidden
+          clipPath={`url(#${uid})`}
+          render='path'
+          hide={hide}
+          color={color}
+          d={d3Area(data)}
           use:duration={`${duration}ms`}
         />
         {duration && (
