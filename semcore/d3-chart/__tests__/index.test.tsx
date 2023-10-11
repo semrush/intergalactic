@@ -1990,52 +1990,13 @@ describe('Line', () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => {
-        return {
-          x: i,
-          y: Math.abs(Math.sin(Math.exp(i))) * 10,
-        };
-      });
-
-    const Component: React.FC = () => {
-      const MARGIN = 40;
-      const width = 500;
-      const height = 300;
-
-      const xScale = scaleLinear()
-        .range([MARGIN, width - MARGIN])
-        .domain(minMax(data, 'x'));
-
-      const yScale = scaleLinear()
-        .range([height - MARGIN, MARGIN])
-        .domain([0, 10]);
-
-      return (
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
-          <YAxis>
-            <YAxis.Ticks />
-            <YAxis.Grid />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks />
-          </XAxis>
-          <Line x='x' y='y' duration={0}>
-            <Line.Area wide={0.4} />
-          </Line>
-        </Plot>
-      );
-    };
-
-    await expect(await snapshot(<Component />)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('should render line with area if in data no y0/y1', async ({ task }) => {
-    const data = Array(20)
-      .fill({})
-      .map((d, i) => {
         const y = Math.abs(Math.sin(Math.exp(i))) * 10;
+
         return {
           x: i,
-          y: Math.abs(Math.sin(Math.exp(i))) * 10,
+          y,
+          y0: y - 2,
+          y1: y + 2,
         };
       });
 
@@ -2062,7 +2023,7 @@ describe('Line', () => {
             <XAxis.Ticks />
           </XAxis>
           <Line x='x' y='y' duration={0}>
-            <Line.Area y0={'y0'} y1={'y1'} />
+            <Line.Area y0='y0' y1='y1' />
           </Line>
         </Plot>
       );

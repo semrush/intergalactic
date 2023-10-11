@@ -126,35 +126,17 @@ function Area(props) {
     color,
     scale,
     x,
-    y,
     y0,
     y1,
-    wide = 0.3,
     curve = curveCardinal,
   } = props;
   const [xScale, yScale] = scale;
 
-  /**
-   * Method for calculate area width.
-   * If the wide is less as 1, then area width is percent from full height of chart.
-   * Otherwise, area width will calculate with +- wide value.
-   */
-  const calculateAreaWidth = (value, i) => {
-    if (wide < 1) {
-      const range = yScale.range();
-      const size = (Math.abs(range[0] - range[1]) * wide) / 2;
-
-      return yScale(value) + size * i;
-    }
-
-    return yScale(value + wide * i);
-  };
-
   const d3 = d3Area()
     .curve(curve)
     .x((data) => xScale(data[x]))
-    .y0((data) => (data[y0] !== undefined ? yScale(data[y0]) : calculateAreaWidth(data[y], -1)))
-    .y1((data) => (data[y1] !== undefined ? yScale(data[y1]) : calculateAreaWidth(data[y], 1)));
+    .y0((data) => yScale(data[y0]))
+    .y1((data) => yScale(data[y1]));
 
   return sstyled(styles)(
     <SAria

@@ -14,8 +14,7 @@ fileSource: d3-chart
 
 @## Line with area
 
-- `wide` could be usage as % of all chart height (if < 1) and as value (if >= 1).
-- You can define `y0` and `y1` in `Line.Area` props and in the `data`. If so, you don't need to set `wide`.
+- You must define `y0` and `y1` in `Line.Area` props and in the `data`.
 
 @example line-with-area
 

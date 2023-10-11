@@ -25,7 +25,7 @@ export default () => {
         <XAxis.Ticks />
       </XAxis>
       <Line x='x' y='y'>
-        <Line.Area wide={0.5} />
+        <Line.Area y0='y0' y1='y1' />
       </Line>
     </Plot>
   );
@@ -33,7 +33,13 @@ export default () => {
 
 const data = Array(20)
   .fill({})
-  .map((d, i) => ({
-    x: i,
-    y: Math.random() * 10,
-  }));
+  .map((d, i) => {
+    const y = Math.random() * 10;
+
+    return {
+      x: i,
+      y,
+      y0: y + 2,
+      y1: y - 2,
+    };
+  });

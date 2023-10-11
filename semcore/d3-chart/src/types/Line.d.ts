@@ -59,28 +59,16 @@ export type LineNullProps = Context & {
   hide?: boolean;
 };
 
-export type LineAreaProps = Omit<LineProps, 'transparent'> &
-  (
-    | {
-        /**
-         * Width of Area. Could be in percents (if < 1) or in values (if >= 1)
-         */
-        wide: number;
-        y0?: never;
-        y1?: never;
-      }
-    | {
-        wide?: never;
-        /**
-         * Field name from `data` array for y0 point by the YAxis for the Area
-         */
-        y0: string;
-        /**
-         * Field name from `data` array for y1 point by the YAxis for the Area
-         */
-        y1: string;
-      }
-  );
+export type LineAreaProps = Omit<LineProps, 'transparent'> & {
+  /**
+   * Field name from `data` array for y0 point by the YAxis for the Area
+   */
+  y0: string;
+  /**
+   * Field name from `data` array for y1 point by the YAxis for the Area
+   */
+  y1: string;
+};
 
 declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {
   Dots: IntergalacticD3Component<'circle', LineDotsProps, LineDotsContext>;
