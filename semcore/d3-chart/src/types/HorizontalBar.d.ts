@@ -23,6 +23,10 @@ export type HorizontalBarProps = Context & {
   r?: number | number[];
   /** Enables element transparency */
   transparent?: boolean;
+  /**
+   * The maximum width of each Bar
+   */
+  maxBarSize?: number;
 };
 
 declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {

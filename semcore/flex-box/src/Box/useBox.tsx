@@ -31,6 +31,11 @@ function getSize(size: any) {
 }
 
 export type BoxProps = StyledProps & {
+  /**
+   * CSS `display` property
+   */
+  display?: Property.Display;
+
   /** Sets the `inline-block` property */
   inline?: boolean;
 
@@ -159,8 +164,9 @@ export interface IBoxProps extends BoxProps, UnknownProperties {
   tag?: React.ElementType | string;
 }
 
-function calculateIndentStyles(props: any, scaleIndent: number) {
+function calculateIndentStyles(props: BoxProps, scaleIndent: number) {
   return removeUndefinedKeys({
+    display: props['display'],
     width: getSize(props['w']),
     height: getSize(props['h']),
     minWidth: getSize(props['wMin']),
@@ -214,6 +220,7 @@ export default function useBox<T extends BoxProps>(
     className,
     style: styleProp,
     scaleIndent = 4,
+    display,
     boxSizing,
     inline,
     flex,
@@ -251,6 +258,7 @@ export default function useBox<T extends BoxProps>(
     return calculateIndentStyles(props, scaleIndent);
   }, [
     scaleIndent,
+    display,
     w,
     h,
     wMin,

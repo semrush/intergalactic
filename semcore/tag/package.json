@@ -1,7 +1,7 @@
 {
   "name": "@semcore/tag",
   "description": "Semrush Tag Component",
-  "version": "5.11.0",
+  "version": "5.12.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@semcore/utils": "4.8.2",
-    "@semcore/icon": "4.10.2",
-    "@semcore/flex-box": "5.7.5"
+    "@semcore/icon": "4.11.0",
+    "@semcore/flex-box": "5.8.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.7.5",

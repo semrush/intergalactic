@@ -1,7 +1,7 @@
 {
   "name": "@semcore/counter",
   "description": "Semrush Counter Component",
-  "version": "3.7.5",
+  "version": "3.8.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@semcore/utils": "4.8.2",
-    "@semcore/flex-box": "5.7.5"
+    "@semcore/flex-box": "5.8.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.7.5",

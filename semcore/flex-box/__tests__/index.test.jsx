@@ -236,6 +236,11 @@ describe('Box', () => {
     expect(getByTestId('box').style.marginTop).toBe('20px');
   });
 
+  test('Should support display property', () => {
+    const { getByTestId } = render(<Box display={'grid'} data-testid='box' />);
+    expect(getByTestId('box').style.display).toBe('grid');
+  });
+
   test('Should support css property', async () => {
     const MAP_CSS = {
       inline: { css: 'display', values: ['inline-block'] },

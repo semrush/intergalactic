@@ -15,6 +15,10 @@ export type StackBarProps = Context & {
    * @default d3.stack() */
   /** @deprecated */
   stack?: any;
+  /**
+   * The maximum width of each Bar
+   */
+  maxBarSize?: number;
 };
 
 /** @deprecated */

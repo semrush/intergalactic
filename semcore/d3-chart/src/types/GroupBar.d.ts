@@ -14,6 +14,11 @@ export type GroupBarProps = Context & {
   /** Scale for group bars */
   /** @deprecated */
   scaleGroup?: any;
+
+  /**
+   * The maximum width of each Bar
+   */
+  maxBarSize?: number;
 };
 
 declare const GroupBar: IntergalacticD3Component<'g', GroupBarProps> & {

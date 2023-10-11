@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Venn chart** shows the relationship and intersections between two (or sometimes more) data sets. This chart type is also called a **set chart**.
+**Venn chart** shows the relationship and intersections between two (or sometimes more) datasets. This chart type is also called a **set chart**.
 
 - Each circle in such a chart is a set of data.
 - The circles overlapping area is called the "intersection area", – it shows data with common qualities from all intersecting sets.
@@ -18,8 +18,8 @@ tabName: Design
 
 **When is it better to use a Venn chart?**
 
-- When you need to visually show the relationships between data sets, their common features and differences between them.
-- When you need to compare two or more data sets, and clearly show what they have in common.
+- When you need to visually show the relationships between datasets, their common features and differences between them.
+- When you need to compare two or more datasets, and clearly show what they have in common.
 - When you need to show boolean expressions, such as "or" and "and" expressions.
 
 > John Venn came up with this type of chart around 1880. They were used in the study of set theory as they excellently illustrated the relations of different groups.
@@ -68,7 +68,7 @@ If the legend doesn't fit the widget width, you can put it under the chart.
 
 ### Legend content
 
-If you need to add the name of the data set in the legend and what it refers to, then use the secondary text `--text-secondary` of the same size as the set name.
+If you need to add the name of the dataset in the legend and what it refers to, then use the secondary text `--text-secondary` of the same size as the set name.
 
 ![](static/venn-legend.png)
 
@@ -89,7 +89,7 @@ If legend label is very long, wrap it to the next line.
 
 |                                           | Appearance example                          | Tooltip content                                                                                                                                        |
 | ----------------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Hovering over a sector                    | ![](static/venn-hover.png)  | Show the name of the data set and its value.                                                                                                           |
+| Hovering over a sector                    | ![](static/venn-hover.png)  | Show the name of the dataset and its value.                                                                                                           |
 | Hovering over the intersection of sectors | ![](static/venn-hover2.png) | Show how much is the intersection of sectors as a percentage and the value. Below you can show the names of all intersecting sectors and their values. |
 
 @## Edge cases
@@ -104,26 +104,26 @@ Show circle with the minimum size – 12px * 12px.
 
 ### Intersection 100%
 
-In this case, show the data sets left aligned.
+In this case, show the datasets left aligned.
 
 ![](static/venn-100-per-cent.png)
 
 ### Null values
 
-- If the data set value is zero, don't show it on the chart.
+- If the dataset value is zero, don't show it on the chart.
 - The legend shall contain the information that the value is 0.
 
 ![](static/venn-null.png)
 
-- If the values for all data sets are 0, then show a circle with `--chart-palette-order-null` color.
+- If the values for all datasets are 0, then show a circle with `--chart-palette-order-null` color.
 
 ![](static/venn-null-2.png)
 
 ### Not available data
 
-- If the values of data set isn’t available, don't show the them on the chart.
+- If the values of dataset isn’t available, don't show the them on the chart.
 - The legend shall show the value as `n/a`.
-- If the values for all data sets are not known, then show a circle with `--chart-palette-order-null` color.
+- If the values for all datasets are not known, then show a circle with `--chart-palette-order-null` color.
 
 ![](static/venn-na.png)
 
