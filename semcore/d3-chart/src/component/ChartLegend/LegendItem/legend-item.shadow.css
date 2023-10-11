@@ -72,12 +72,12 @@ SIcon[size='m'] {
 
 SLabel[size='l'], SAdditionalLabel[size='l'], SCount[size='l'] {
   font-size: var(--intergalactic-fs-300, 16px);
-  line-height: var(--intergalactic-lh-300, 24px);
+  line-height: var(--intergalactic-lh-300, 150%);
 }
 
 SLabel[size='m'], SAdditionalLabel[size='m'], SCount[size='m'] {
   font-size: var(--intergalactic-fs-200, 14px);
-  line-height: var(--intergalactic-lh-200, 20px);
+  line-height: var(--intergalactic-lh-200, 142%);
 }
 
 SAdditionalLabel, SCount {
