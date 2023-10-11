@@ -4,7 +4,7 @@ import { scaleLinear } from 'd3-scale';
 
 export default () => {
   const MARGIN = 40;
-  const width = 500;
+  const width = 800;
   const height = 300;
 
   const xScale = scaleLinear()
@@ -25,7 +25,7 @@ export default () => {
         <XAxis.Ticks />
       </XAxis>
       <Line x='x' y='y'>
-        <Line.Dots display />
+        <Line.Area wide={0.5} />
       </Line>
     </Plot>
   );
