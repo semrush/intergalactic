@@ -1990,10 +1990,9 @@ describe('Line', () => {
     const data = Array(20)
       .fill({})
       .map((d, i) => {
-        const y = Math.abs(Math.sin(Math.exp(i))) * 10;
         return {
           x: i,
-          y: i === 2 || i === 3 ? null : y,
+          y: Math.abs(Math.sin(Math.exp(i))) * 10,
         };
       });
 
@@ -2020,7 +2019,7 @@ describe('Line', () => {
             <XAxis.Ticks />
           </XAxis>
           <Line x='x' y='y' duration={0}>
-            <Line.Area />
+            <Line.Area wide={0.4} />
           </Line>
         </Plot>
       );
@@ -2036,7 +2035,7 @@ describe('Line', () => {
         const y = Math.abs(Math.sin(Math.exp(i))) * 10;
         return {
           x: i,
-          y: i === 2 || i === 3 ? null : y,
+          y: Math.abs(Math.sin(Math.exp(i))) * 10,
         };
       });
 

@@ -4,7 +4,7 @@ import { scaleLinear } from 'd3-scale';
 
 export default () => {
   const MARGIN = 40;
-  const width = 800;
+  const width = 500;
   const height = 300;
 
   const xScale = scaleLinear()
