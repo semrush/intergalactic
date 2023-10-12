@@ -2276,16 +2276,16 @@ describe('d3 charts visual regression', () => {
       const [dataLegend, setDataLegend] = React.useState(
         Object.keys(data[0])
           .filter((name) => name !== 'x')
-          .reduce<Record<string, LegendItem>>((res, item) => {
-            res[item] = {
+          .reduce<LegendItem[]>((res, item) => {
+            res.push({
               id: item,
               label: item,
               checked: true,
               color: axe2theme[item],
-            };
+            });
 
             return res;
-          }, {}),
+          }, []),
       );
 
       const width = 500;
@@ -2297,55 +2297,13 @@ describe('d3 charts visual regression', () => {
 
       const yScale = scaleLinear()
         .range([height - MARGIN, MARGIN])
-        .domain(Object.values(dataLegend).find((item) => item.checked) ? [0, 10] : []);
-
-      const [opacityLines, setOpacityLines] = React.useState<{ [key: string]: boolean }>(
-        Object.keys(dataLegend).reduce((o, key) => ({ ...o, [key]: false }), {}),
-      );
-      const displayedLinesList = React.useMemo(
-        () =>
-          Object.entries(dataLegend)
-            .filter(([, line]) => line.checked)
-            .map(([line]) => line),
-        [dataLegend],
-      );
-
-      const handleChange = (key: string, isVisible: boolean) => {
-        setDataLegend((prevDisplayedLines) => ({
-          ...prevDisplayedLines,
-          [key]: {
-            ...prevDisplayedLines[key],
-            checked: isVisible,
-          },
-        }));
-      };
-
-      const handleMouseEnter = (line: string) => {
-        if (displayedLinesList.includes(line)) {
-          const opacity = { ...opacityLines };
-
-          Object.keys(opacity).forEach((key) => {
-            if (key !== line) {
-              opacity[key] = true;
-            }
-          });
-
-          setOpacityLines({ ...opacity });
-        }
-      };
-
-      const handleMouseLeave = () => {
-        setOpacityLines(Object.keys(dataLegend).reduce((o, key) => ({ ...o, [key]: false }), {}));
-      };
+        .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
 
       return (
         <>
           <Box>
             <ChartLegend.Flex
               items={dataLegend}
-              onChangeVisibleItem={handleChange}
-              onMouseEnterItem={handleMouseEnter}
-              onMouseLeaveItem={handleMouseLeave}
             />
           </Box>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
@@ -2356,14 +2314,13 @@ describe('d3 charts visual regression', () => {
             <XAxis>
               <XAxis.Ticks />
             </XAxis>
-            {displayedLinesList.map((item) => {
+            {dataLegend.map((item) => {
               return (
                 <Line
-                  key={item}
+                  key={item.id}
                   x='x'
-                  y={item}
-                  color={axe2theme[item]}
-                  opacity={opacityLines[item] ? 0.3 : 1}
+                  y={item.id}
+                  color={axe2theme[item.id]}
                   duration={0}
                 />
               );
