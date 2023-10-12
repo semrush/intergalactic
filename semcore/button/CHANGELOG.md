@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.9.1] - 2023-10-13
+
+### Fixed
+
+- Removed `box-shadow` for focused `Buttons` in `loading` or `disabled` states.
+
 ## [5.9.0] - 2023-10-10
 
 ### Changed

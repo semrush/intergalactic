@@ -63,6 +63,18 @@ describe('Button', () => {
     expect(queryByTestId('button')?.querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
   });
 
+  test.concurrent('should not have box-shadow and focus while loading', async ({ task }) => {
+    const Component = (
+      <Button
+        loading={true}
+        keyboardFocused={true} // emulate focus on component by Tab click
+      >
+        Text
+      </Button>
+    );
+    await expect(await snapshot(Component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('should support aria-busy when loading', () => {
     const { queryByTestId } = render(
       <Button data-testid='busy-button' loading>
