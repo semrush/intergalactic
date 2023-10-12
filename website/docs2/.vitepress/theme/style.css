@@ -440,6 +440,10 @@ img {
   color: var(--vp-c-indigo-2);
 }
 
+.vp-doc .header-anchor:hover {
+  text-decoration: none;
+}
+
 .edit-link-button.edit-link-button, 
 .edit-link-button.edit-link-button:visited {
   color: var(--vp-c-indigo-2);
