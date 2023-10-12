@@ -1,5 +1,5 @@
 import { Flex } from '@semcore/flex-box';
-import { Intergalactic } from '@semcore/core';
+import { Intergalactic, Root } from '@semcore/core';
 import Icon from '@semcore/icon';
 import { Text } from '@semcore/typography';
 import { LSize } from '../BaseLegend.type';
@@ -56,10 +56,10 @@ export const StaticShapes = ['Circle', 'Line', 'Square'] as const;
 
 export type ShapeType = 'Checkbox' | typeof StaticShapes[number];
 
-export type LegendItemType = Intergalactic.Component<typeof Flex, LegendItemProps> & {
-  Shape: Intergalactic.Component<Intergalactic.InternalTypings.ComponentTag, ShapeProps>;
-  Icon: Intergalactic.Component<typeof Icon, LegendItem>;
-  Label: Intergalactic.Component<typeof Text, Omit<LegendItem, 'theme'>>;
-  AdditionalLabel: Intergalactic.Component<typeof Text, LegendItem>;
-  Count: Intergalactic.Component<typeof Text, LegendItem>;
+export type LegendItemType = Intergalactic.Component<typeof Flex, Partial<LegendItemProps>> & {
+  Shape: Intergalactic.Component<typeof Root, Partial<ShapeProps>>;
+  Icon: Intergalactic.Component<typeof Icon, Partial<LegendItem>>;
+  Label: Intergalactic.Component<typeof Text, Partial<Omit<LegendItem, 'theme'>>>;
+  AdditionalLabel: Intergalactic.Component<typeof Text, Partial<LegendItem>>;
+  Count: Intergalactic.Component<typeof Text, Partial<LegendItem>>;
 };

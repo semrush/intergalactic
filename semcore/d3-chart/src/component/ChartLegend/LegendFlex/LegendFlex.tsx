@@ -15,10 +15,7 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
 
   static defaultProps = () => ({
     direction: 'row',
-    children: (
-      // @ts-ignore
-      <LegendFlex.LegendItem />
-    ),
+    children: <LegendFlex.LegendItem />,
   });
 
   renderTrend() {

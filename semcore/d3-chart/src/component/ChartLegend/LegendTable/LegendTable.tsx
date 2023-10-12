@@ -11,10 +11,7 @@ class LegendTableRoot extends BaseLegend<LegendTableProps> {
   static style = style;
 
   static defaultProps = () => ({
-    children: (
-      // @ts-ignore
-      <LegendTable.LegendItem />
-    ),
+    children: <LegendTable.LegendItem />,
   });
 
   render() {

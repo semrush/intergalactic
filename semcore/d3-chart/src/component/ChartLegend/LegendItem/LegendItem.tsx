@@ -20,20 +20,10 @@ class LegendItemRoot extends Component<LegendItemProps> {
   static defaultProps = () => ({
     children: (
       <>
-        {/*
-          // @ts-ignore */}
         <LegendItemComponent.Shape />
-        {/*
-          // @ts-ignore */}
         <LegendItemComponent.Icon />
-        {/*
-          // @ts-ignore */}
         <LegendItemComponent.Label />
-        {/*
-          // @ts-ignore */}
         <LegendItemComponent.AdditionalLabel />
-        {/*
-          // @ts-ignore */}
         <LegendItemComponent.Count />
       </>
     ),

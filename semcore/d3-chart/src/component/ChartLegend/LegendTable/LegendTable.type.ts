@@ -18,5 +18,5 @@ export type LegendColumnProps = {
 
 export type LegendTableType = Intergalactic.Component<typeof Box, LegendTableProps> & {
   LegendItem: LegendItemType;
-  Column: Intergalactic.Component<typeof Box, LegendColumnProps>;
+  Column: Intergalactic.Component<typeof Box, Partial<LegendColumnProps>>;
 };
