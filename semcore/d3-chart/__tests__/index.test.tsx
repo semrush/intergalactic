@@ -2302,9 +2302,7 @@ describe('d3 charts visual regression', () => {
       return (
         <>
           <Box>
-            <ChartLegend.Flex
-              items={dataLegend}
-            />
+            <ChartLegend.Flex items={dataLegend} />
           </Box>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
             <YAxis>
@@ -2316,13 +2314,7 @@ describe('d3 charts visual regression', () => {
             </XAxis>
             {dataLegend.map((item) => {
               return (
-                <Line
-                  key={item.id}
-                  x='x'
-                  y={item.id}
-                  color={axe2theme[item.id]}
-                  duration={0}
-                />
+                <Line key={item.id} x='x' y={item.id} color={axe2theme[item.id]} duration={0} />
               );
             })}
           </Plot>
