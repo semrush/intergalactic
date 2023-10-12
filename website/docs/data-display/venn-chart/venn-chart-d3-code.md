@@ -7,7 +7,7 @@ fileSource: d3-chart
 
 @## Venn
 
-A Venn chart allows you to see all kinds of intersections between two or more data sets.
+A Venn chart allows you to see all kinds of intersections between two or more datasets.
 
 - `Circle` are a component for circles.
 - `Intersection` is for intersections between the circles.

@@ -1,7 +1,7 @@
 {
   "name": "@semcore/d3-chart",
   "description": "Semrush D3 Chart Component",
-  "version": "3.13.2",
+  "version": "3.14.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -36,7 +36,7 @@
     "hoist-non-react-statics": "3.3.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.7.3",
+    "@semcore/core": "^2.7.5",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

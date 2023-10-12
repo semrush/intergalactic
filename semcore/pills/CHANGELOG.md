@@ -2,6 +2,25 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.9.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
+## [5.8.5] - 2023-10-06
+
+### Fixed
+
+- Pills with `behavior="tabs"` had focus ring both on container and on pills. Now focus ring is only on pills.
+- Focus ring of every pill was overlaped by the next sibling pill. 
+
+## [5.8.4] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.7.3 ~> 5.7.4], `@semcore/neighbor-location` [4.7.3 ~> 4.7.4], `@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
 ## [5.8.3] - 2023-10-02
 
 ### Changed

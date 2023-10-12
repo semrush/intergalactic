@@ -44,7 +44,7 @@ class StackBarRoot extends Component {
   }
 
   getBarProps({ y, hMin = MIN_HEIGHT }) {
-    const { x, r, scale } = this.asProps;
+    const { x, r, scale, maxBarSize } = this.asProps;
     const [, yScale] = scale;
 
     const seriesIndex = this.series.findIndex((s) => s.key === y);
@@ -81,11 +81,12 @@ class StackBarRoot extends Component {
       r: rBar,
       groupKey: x,
       offset: calcOffset,
+      maxBarSize,
     };
   }
 
   getHorizontalBarProps({ x, wMin = MIN_WIDTH }) {
-    const { y, r, scale } = this.asProps;
+    const { y, r, scale, maxBarSize } = this.asProps;
     const [xScale] = scale;
 
     const seriesIndex = this.series.findIndex((s) => s.key === x);
@@ -121,6 +122,7 @@ class StackBarRoot extends Component {
       r: rBar,
       groupKey: y,
       offset: calcOffset,
+      maxBarSize,
     };
   }
 

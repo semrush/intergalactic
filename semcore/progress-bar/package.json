@@ -1,7 +1,7 @@
 {
   "name": "@semcore/progress-bar",
   "description": "Semrush ProgressBar Component",
-  "version": "4.7.3",
+  "version": "4.8.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.7.3",
-    "@semcore/utils": "4.8.0"
+    "@semcore/flex-box": "5.8.0",
+    "@semcore/utils": "4.8.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.7.3",
+    "@semcore/core": "^2.7.5",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

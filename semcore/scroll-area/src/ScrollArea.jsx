@@ -122,17 +122,19 @@ class ScrollAreaRoot extends Component {
   };
 
   toggleShadow = (scroll, maxScroll, orientation) => {
+    const roundedScroll = Math.round(scroll);
+    const roundedMaxScroll = Math.round(maxScroll);
     let shadow = '';
     // not scroll
-    if (maxScroll <= 0) {
+    if (roundedMaxScroll <= 0) {
       // start scroll
-    } else if (scroll <= 0) {
+    } else if (roundedScroll <= 0) {
       shadow = 'end';
       // end scroll
-    } else if (scroll >= maxScroll) {
+    } else if (roundedScroll >= roundedMaxScroll) {
       shadow = 'start';
       // median scroll
-    } else if (scroll > 0) {
+    } else if (roundedScroll > 0) {
       shadow = 'median';
     }
     this.setState({

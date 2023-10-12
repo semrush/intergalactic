@@ -63,6 +63,30 @@ describe('Button', () => {
     expect(queryByTestId('button')?.querySelectorAll('[data-ui-name="Spin"]')).toHaveLength(1);
   });
 
+  test.concurrent('should support aria-busy when loading', () => {
+    const { queryByTestId } = render(
+      <Button data-testid='busy-button' loading>
+        Text
+      </Button>,
+    );
+
+    const buttonElement = queryByTestId('busy-button');
+
+    expect((buttonElement?.attributes as any)['aria-busy'].value).toBe('true');
+  });
+
+  test.concurrent('should support aria-disabled when disabled', () => {
+    const { queryByTestId } = render(
+      <Button data-testid='disabled-button' disabled>
+        Text
+      </Button>,
+    );
+
+    const buttonElement = queryByTestId('disabled-button');
+
+    expect((buttonElement?.attributes as any)['aria-disabled'].value).toBe('true');
+  });
+
   test.concurrent('should support save width at loading', async ({ task }) => {
     const Component = <Button loading>Text long Text long</Button>;
     await expect(await snapshot(Component)).toMatchImageSnapshot(task);

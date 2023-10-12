@@ -40,7 +40,8 @@ class Switch extends Component {
     this.setState({ active: false });
     window.removeEventListener('mouseup', this.handleMouseUp);
   };
-  handleMouseDown = () => {
+  handleMouseDown = (event) => {
+    if (event?.button !== 0) return;
     this.setState({ active: true });
     window.addEventListener('mouseup', this.handleMouseUp);
   };

@@ -29,7 +29,7 @@ export type LineProps = Context & {
 /** @deprecated */
 export interface ILineDotsProps extends LineDotsProps, UnknownProperties {}
 export type LineDotsProps = Context &
-  FadeInOutProps & {
+  Omit<FadeInOutProps, 'display'> & {
     /** Show all Dot */
     display?: boolean;
     /** Hide property */

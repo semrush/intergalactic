@@ -115,7 +115,7 @@ describe('NoticeBubble', () => {
     const component = (
       <>
         <NoticeBubbleContainer
-          style={{ position: 'static', width: 'auto' }}
+          style={{ position: 'static', width: 'auto', height: 'auto' }}
           disablePortal
           manager={manager}
         />
@@ -162,7 +162,7 @@ describe('NoticeBubble', () => {
     const component = (
       <>
         <NoticeBubbleContainer
-          style={{ position: 'static', width: 'auto' }}
+          style={{ position: 'static', width: 'auto', height: 'auto' }}
           disablePortal
           manager={manager}
         />
@@ -178,7 +178,7 @@ describe('NoticeBubble', () => {
     const component = (
       <>
         <NoticeBubbleContainer
-          style={{ position: 'static', width: 'auto' }}
+          style={{ position: 'static', width: 'auto', height: 'auto' }}
           disablePortal
           manager={manager}
         />
@@ -210,10 +210,10 @@ describe('NoticeBubble', () => {
   test.concurrent('Should render correctly for screen size 760px', async ({ task }) => {
     const manager = new NoticeBubbleManager();
     const component = (
-      <>
+      <div style={{ width: '320px', height: '90px', position: 'relative' }}>
         <NoticeBubbleContainer disablePortal manager={manager} />
         <NoticeBubbleImport manager={manager}>Message</NoticeBubbleImport>
-      </>
+      </div>
     );
     await expect(
       await snapshot(component, {

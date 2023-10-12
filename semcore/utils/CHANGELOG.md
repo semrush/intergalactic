@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.2] - 2023-10-06
+
+### Fixed
+
+- Duplicated ref function callback.
+
+## [4.8.1] - 2023-10-03
+
+### Fixed
+
+- After getting disabled components were not loosing focus visual state.
+
 ## [4.8.0] - 2023-10-02
 
 ### Fixed

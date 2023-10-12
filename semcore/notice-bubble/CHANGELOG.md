@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.10.1] - 2023-10-10
+
+### Changed
+
+- For `NoticeBubbleContainer` with `disabledPortal` added new styles for `position sticky` behavior.
+
+## [5.10.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
+## [5.9.6] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/icon` [4.10.1 ~> 4.10.2], `@semcore/flex-box` [5.7.4 ~> 5.7.5], `@semcore/animation` [2.7.4 ~> 2.7.5], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [5.9.5] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/icon` [4.10.0 ~> 4.10.1], `@semcore/flex-box` [5.7.3 ~> 5.7.4], `@semcore/animation` [2.7.3 ~> 2.7.4], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
 ## [5.9.4] - 2023-10-02
 
 ### Changed

@@ -2,6 +2,30 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.14.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/card` [5.11.5 ~> 5.12.0], `@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
+## [3.13.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
+## [3.12.5] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.11.4 ~> 5.11.5], `@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [3.12.4] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/card` [5.11.3 ~> 5.11.4], `@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
 ## [3.12.3] - 2023-10-02
 
 ### Changed
