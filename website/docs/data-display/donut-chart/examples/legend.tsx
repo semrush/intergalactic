@@ -2,7 +2,6 @@ import React from 'react';
 import { ChartLegend, Donut, LegendItem, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
-import Checkbox from '@semcore/ui/checkbox';
 import resolveColor from '@semcore/ui/utils/lib/color';
 
 const pieColors = {
@@ -15,47 +14,41 @@ export default () => {
   const width = 250;
   const height = 250;
 
-  const [pies, setPies] = React.useState(
-    Object.keys(data).reduce<Record<string, LegendItem>>((res, item) => {
-      res[item] = {
-        id: item,
-        label: item,
-        checked: true,
-        color: pieColors[item],
-      };
+  const [legendItems, setLegendItems] = React.useState(
+    Object.keys(data[0])
+      .filter((name) => name !== 'x')
+      .reduce<LegendItem[]>((res, item) => {
+        res.push({
+          id: item,
+          label: item,
+          checked: true,
+          color: pieColors[item],
+        });
 
-      return res;
-    }, {}),
+        return res;
+      }, []),
   );
 
-  const [opacityPie, setOpacityPie] = React.useState(
-    Object.keys(pies).reduce((o, key) => ({ ...o, [key]: false }), {}),
-  );
-  const displayedPiesList = React.useMemo(
-    () =>
-      Object.entries(pies)
-        .filter(([, pie]) => pie.checked)
-        .map(([line]) => line),
-    [pies],
-  );
+  const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
-  const handleMouseEnter = (pie) => {
-    if (displayedPiesList.includes(pie)) {
-      const opacity = { ...opacityPie };
-
-      Object.keys(opacity).forEach((key) => {
-        if (key !== pie) {
-          opacity[key] = true;
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
         }
+
+        return item;
       });
+    });
+  }, []);
 
-      setOpacityPie({ ...opacity });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setOpacityPie(Object.keys(pies).reduce((o, key) => ({ ...o, [key]: false }), {}));
-  };
+  const handleMouseEnter = React.useCallback((id: string) => {
+    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+  }, []);
+  const handleMouseLeave = React.useCallback(() => {
+    setHighlightedLine(-1);
+  }, []);
 
   return (
     <Card w={'550px'}>
@@ -68,30 +61,26 @@ export default () => {
         <ChartLegend.Flex
           direction={'column'}
           wMin={100}
-          items={pies}
-          onChangeVisibleItem={(key, isVisible) => {
-            setPies((prevDisplayedLines) => ({
-              ...prevDisplayedLines,
-              [key]: {
-                ...prevDisplayedLines[key],
-                checked: isVisible,
-              },
-            }));
-          }}
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
         />
         <Plot width={width} height={height} data={data}>
           <Donut innerRadius={height / 2 - 50}>
-            {displayedPiesList.map((pie) => (
-              <Donut.Pie
-                dataKey={pie}
-                key={pie}
-                name={pie}
-                color={pieColors[pie]}
-                transparent={opacityPie[pie]}
-              />
-            ))}
+            {legendItems.map((pie, index) => {
+              return (
+                pie.checked && (
+                  <Donut.Pie
+                    dataKey={pie.id}
+                    key={pie.id}
+                    name={pie.label}
+                    color={pieColors[pie.id]}
+                    transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  />
+                )
+              );
+            })}
           </Donut>
         </Plot>
       </Card.Body>

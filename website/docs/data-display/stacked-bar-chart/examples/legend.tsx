@@ -26,49 +26,41 @@ export default () => {
     .range([height - MARGIN, 0])
     .domain([0, 15]);
 
-  const [bars, setBars] = React.useState(
+  const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
-      .filter((name) => name !== 'category')
-      .reduce<Record<string, LegendItem>>((res, item) => {
-        res[item] = {
+      .filter((name) => name !== 'x')
+      .reduce<LegendItem[]>((res, item) => {
+        res.push({
           id: item,
           label: item,
           checked: true,
           color: barColors[item],
-        };
+        });
 
         return res;
-      }, {}),
+      }, []),
   );
 
-  const [opacityBars, setOpacityBars] = React.useState(
-    Object.keys(bars).reduce((o, key) => ({ ...o, [key]: false }), {}),
-  );
-  const displayedBarsList = React.useMemo(
-    () =>
-      Object.entries(bars)
-        .filter(([, barItem]) => barItem.checked)
-        .map(([stack]) => stack),
-    [bars],
-  );
+  const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
-  const handleMouseEnter = (stack) => {
-    if (displayedBarsList.includes(stack)) {
-      const opacity = { ...opacityBars };
-
-      Object.keys(opacity).forEach((key) => {
-        if (key !== stack) {
-          opacity[key] = true;
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
         }
+
+        return item;
       });
+    });
+  }, []);
 
-      setOpacityBars({ ...opacity });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setOpacityBars(Object.keys(bars).reduce((o, key) => ({ ...o, [key]: false }), {}));
-  };
+  const handleMouseEnter = React.useCallback((id: string) => {
+    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+  }, []);
+  const handleMouseLeave = React.useCallback(() => {
+    setHighlightedLine(-1);
+  }, []);
 
   return (
     <Card w={'550px'}>
@@ -79,16 +71,8 @@ export default () => {
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <ChartLegend.Flex
-          items={bars}
-          onChangeVisibleItem={(key, isVisible) => {
-            setBars((prevDisplayedLines) => ({
-              ...prevDisplayedLines,
-              [key]: {
-                ...prevDisplayedLines[key],
-                checked: isVisible,
-              },
-            }));
-          }}
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
         />
@@ -101,14 +85,18 @@ export default () => {
             <XAxis.Ticks />
           </XAxis>
           <StackBar x='category'>
-            {displayedBarsList.map((stack) => (
-              <StackBar.Bar
-                y={stack}
-                key={stack}
-                color={barColors[stack]}
-                transparent={opacityBars[stack]}
-              />
-            ))}
+            {legendItems.map((stack, index) => {
+              return (
+                stack.checked && (
+                  <StackBar.Bar
+                    y={stack.id}
+                    key={stack.id}
+                    color={barColors[stack.id]}
+                    transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  />
+                )
+              );
+            })}
           </StackBar>
         </Plot>
       </Card.Body>

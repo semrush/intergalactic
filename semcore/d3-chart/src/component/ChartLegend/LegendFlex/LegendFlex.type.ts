@@ -19,7 +19,7 @@ export type TrendProps = {
   /**
    * Handler for change trend visibility
    */
-  onChangeTrendVisible: (isVisible: boolean) => void;
+  onTrendIsVisibleChange: (isVisible: boolean) => void;
 };
 
 type SuffixProps = {
