@@ -22,26 +22,28 @@ class LegendFlexRoot extends BaseLegend<LegendFlexProps> {
   });
 
   renderTrend() {
-    const { onChangeTrendVisible, trendIsVisible, trendLabel } = this.asProps as TrendProps;
+    const { onTrendIsVisibleChange, trendIsVisible, trendLabel, size } = this
+      .asProps as TrendProps & LegendFlexProps;
 
     return (
       <Checkbox
         checked={trendIsVisible}
-        onChange={onChangeTrendVisible}
+        onChange={onTrendIsVisibleChange}
         theme={'gray-400'}
         label={trendLabel}
+        size={size}
       />
     );
   }
 
   render() {
     const SLegendFlex = Root;
-    const { styles, Children, direction, withTrend, suffix } = this.asProps;
+    const { styles, Children, direction, withTrend, suffix, items } = this.asProps;
     const orientation = direction === 'row' ? 'vertical' : 'horizontal';
 
     return sstyled(styles)(
       <SLegendFlex render={Flex}>
-        {this.itemsAsList.map(({ id }) => {
+        {items.map(({ id }) => {
           return <Children key={id} />;
         })}
         {(withTrend || suffix) && <Divider orientation={orientation} />}
