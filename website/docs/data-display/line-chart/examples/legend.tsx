@@ -24,49 +24,41 @@ export default () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
-  const [lines, setLines] = React.useState(
+  const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .reduce<Record<string, LegendItem>>((res, item) => {
-        res[item] = {
+      .reduce<LegendItem[]>((res, item) => {
+        res.push({
           id: item,
           label: item,
           checked: true,
           color: lineColors[item],
-        };
+        });
 
         return res;
-      }, {}),
+      }, []),
   );
 
-  const [opacityLines, setOpacityLines] = React.useState(
-    Object.keys(lines).reduce((o, key) => ({ ...o, [key]: false }), {}),
-  );
-  const displayedLinesList = React.useMemo(
-    () =>
-      Object.entries(lines)
-        .filter(([, line]) => line.checked)
-        .map(([line]) => line),
-    [lines],
-  );
+  const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
-  const handleMouseEnter = (line) => {
-    if (displayedLinesList.includes(line)) {
-      const opacity = { ...opacityLines };
-
-      Object.keys(opacity).forEach((key) => {
-        if (key !== line) {
-          opacity[key] = true;
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
         }
+
+        return item;
       });
+    });
+  }, []);
 
-      setOpacityLines({ ...opacity });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setOpacityLines(Object.keys(lines).reduce((o, key) => ({ ...o, [key]: false }), {}));
-  };
+  const handleMouseEnter = React.useCallback((id: string) => {
+    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+  }, []);
+  const handleMouseLeave = React.useCallback(() => {
+    setHighlightedLine(-1);
+  }, []);
 
   return (
     <Card w={'550px'}>
@@ -77,16 +69,8 @@ export default () => {
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <ChartLegend.Flex
-          items={lines}
-          onChangeVisibleItem={(key, isVisible) => {
-            setLines((prevDisplayedLines) => ({
-              ...prevDisplayedLines,
-              [key]: {
-                ...prevDisplayedLines[key],
-                checked: isVisible,
-              },
-            }));
-          }}
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
         />
@@ -98,17 +82,19 @@ export default () => {
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks(5)} />
           </XAxis>
-          {displayedLinesList.map((line) => {
+          {legendItems.map((item, index) => {
             return (
-              <Line
-                x='x'
-                y={line}
-                key={line}
-                color={lineColors[line]}
-                transparent={opacityLines[line]}
-              >
-                <Line.Dots display />
-              </Line>
+              item.checked && (
+                <Line
+                  x='x'
+                  y={item.id}
+                  key={item.id}
+                  color={lineColors[item.id]}
+                  transparent={highlightedLine !== -1 && highlightedLine !== index}
+                >
+                  <Line.Dots display />
+                </Line>
+              )
             );
           })}
         </Plot>

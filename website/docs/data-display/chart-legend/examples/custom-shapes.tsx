@@ -37,41 +37,22 @@ const Shape = (props) => {
 };
 
 export default () => {
-  const [lines, setLines] = React.useState(
-    Object.keys(data[0])
-      .filter((name) => name !== 'x')
-      .reduce<Record<string, LegendItem>>((res, item) => {
-        res[item] = {
-          id: item,
-          label: item,
-          checked: true,
-          color: lineColors[item],
-        };
+  const lines = Object.keys(data[0])
+    .filter((name) => name !== 'x')
+    .reduce<LegendItem[]>((res, item) => {
+      res.push({
+        id: item,
+        label: item,
+        checked: true,
+        color: lineColors[item],
+      });
 
-        return res;
-      }, {}),
-  );
-
-  const onChangeDisplayLine = (key: string, isDisplay: boolean) => {
-    setLines((prevDisplayedLines) => ({
-      ...prevDisplayedLines,
-      [key]: {
-        ...prevDisplayedLines[key],
-        checked: isDisplay,
-      },
-    }));
-  };
-
-  const [trendIsVisible, setTrendIsVisible] = React.useState(false);
+      return res;
+    }, []);
 
   return (
     <div>
-      <ChartLegend.Flex
-        items={lines}
-        onChangeVisibleItem={onChangeDisplayLine}
-        trendIsVisible={trendIsVisible}
-        onChangeTrendVisible={(isVisible) => setTrendIsVisible(isVisible)}
-      >
+      <ChartLegend.Flex items={lines}>
         <ChartLegend.Flex.LegendItem>
           <ChartLegend.Flex.LegendItem.Shape style={{ background: 'transparent' }}>
             {(props) => {

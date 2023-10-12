@@ -97,59 +97,61 @@ const ChartLegend = (props: ChartLProps) => {
   const [lines, setLines] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .reduce<Record<string, LegendItem>>((res, item) => {
-        res[item] = {
+      .reduce<LegendItem[]>((res, item) => {
+        res.push({
           id: item,
           label: item,
           checked: true,
           color: lineColors[item],
-        };
+        });
 
         return res;
-      }, {}),
+      }, []),
   );
 
   React.useEffect(() => {
     setLines(() => {
-      const newLines = Object.keys(lines).reduce<Record<string, LegendItem>>((res, key) => {
+      const newLines = lines.map((item) => {
         if (additionLabel && count) {
-          res[key].additionalInfo = {
+          item.additionalInfo = {
             label: additionLabel,
             count: count,
           };
         } else if (additionLabel && !count) {
-          res[key].additionalInfo = {
+          item.additionalInfo = {
             label: additionLabel,
           };
         } else if (!additionLabel && count) {
-          res[key].additionalInfo = {
+          item.additionalInfo = {
             count: count,
           };
         } else {
-          res[key].additionalInfo = undefined;
+          item.additionalInfo = undefined;
         }
 
         if (withIcon) {
-          res[key].icon = (<DesktopIcon />) as unknown as Intergalactic.Component<'svg', IconProps>;
+          item.icon = (<DesktopIcon />) as unknown as Intergalactic.Component<'svg', IconProps>;
         } else {
-          res[key].icon = undefined;
+          item.icon = undefined;
         }
 
-        return res;
-      }, lines);
+        return item;
+      });
 
-      return { ...newLines };
+      return newLines;
     });
   }, [additionLabel, count, withIcon]);
 
   const onChangeDisplayLine = (key: string, isDisplay: boolean) => {
-    setLines((prevDisplayedLines) => ({
-      ...prevDisplayedLines,
-      [key]: {
-        ...prevDisplayedLines[key],
-        checked: isDisplay,
-      },
-    }));
+    setLines((prevDisplayedLines) => {
+      return prevDisplayedLines.map((item) => {
+        if (item.id === key) {
+          item.checked = isDisplay;
+        }
+
+        return item;
+      });
+    });
   };
 
   const [trendIsVisible, setTrendIsVisible] = React.useState(false);
@@ -165,7 +167,7 @@ const ChartLegend = (props: ChartLProps) => {
         onChangeVisibleItem={onChangeDisplayLine}
         size={size}
         trendIsVisible={trendIsVisible}
-        onChangeTrendVisible={(isVisible) => setTrendIsVisible(isVisible)}
+        onTrendIsVisibleChange={setTrendIsVisible}
       />
     </div>
   );

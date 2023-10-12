@@ -27,5 +27,5 @@ export type LegendProps = BoxProps &
     /**
      * Legend items
      */
-    items: Record<LegendItemKey, Omit<LegendItem, 'id'>>;
+    items: LegendItem[];
   };
