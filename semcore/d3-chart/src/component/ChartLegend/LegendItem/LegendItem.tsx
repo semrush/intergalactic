@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
-import Checkbox from '@semcore/checkbox';
+import Checkbox, { CheckboxProps } from '@semcore/checkbox';
 import { Text as TypographyText } from '@semcore/typography';
 
 import style from './legend-item.shadow.css';
@@ -29,8 +29,8 @@ class LegendItemRoot extends Component<LegendItemProps> {
     ),
   });
 
-  getShapeProps(): ShapeProps {
-    const { checked, color, shape, label, id, size } = this.asProps;
+  getShapeProps(): ShapeProps & CheckboxProps {
+    const { checked, color, shape, label, id, size, onClick } = this.asProps;
 
     return {
       id,
@@ -39,6 +39,11 @@ class LegendItemRoot extends Component<LegendItemProps> {
       checked,
       color,
       size,
+      onChange: () => {
+        if (onClick) {
+          onClick();
+        }
+      },
     };
   }
 
@@ -98,16 +103,34 @@ class LegendItemRoot extends Component<LegendItemProps> {
   }
 }
 
-function Shape(props: IRootComponentProps & ShapeProps) {
+function Shape(props: IRootComponentProps & ShapeProps & CheckboxProps) {
   const SPointShape = Root;
-  const { styles, size, shape, checked, color, Children, children: hasChildren } = props;
+  const {
+    styles,
+    size,
+    shape,
+    checked,
+    color,
+    Children,
+    children: hasChildren,
+    onChange,
+    label,
+  } = props;
 
   if (hasChildren) {
     return <Children />;
   }
 
   if (shape === 'Checkbox') {
-    return <Checkbox size={size} checked={checked} theme={checked ? color : undefined} />;
+    return (
+      <Checkbox
+        size={size}
+        checked={checked}
+        theme={checked ? color : undefined}
+        onChange={onChange}
+        aria-label={label}
+      />
+    );
   }
 
   return sstyled(styles)(

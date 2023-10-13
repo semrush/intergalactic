@@ -45,6 +45,11 @@ export type LegendItemProps = LegendItem & {
    * Shape of data item on Legend panel
    */
   shape: ShapeType;
+  /**
+   * Handler for select/deselect legend item.
+   * !Need to redefine onClick, because we don't have `event` in it.
+   */
+  onClick: () => void;
 };
 
 export type ShapeProps = LegendItem & {

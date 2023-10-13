@@ -29,7 +29,7 @@ class PlotRoot extends Component {
 
   rootRef = React.createRef();
 
-  dataStructureHints = makeDataHintsContainer();
+  dataStructureHints = this.props.dataHints || makeDataHintsContainer();
   dataHintsHandler = makeDataHintsHandlers(this.dataStructureHints);
 
   handlerMouseMove = (e) => {

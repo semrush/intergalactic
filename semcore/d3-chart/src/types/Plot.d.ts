@@ -1,6 +1,7 @@
 import { BoxProps } from '@semcore/flex-box';
 import { UnknownProperties, Intergalactic } from '@semcore/core';
 import { Context } from './context';
+import { DataStructureHints } from '../a11y/hints';
 
 /** @deprecated */
 export interface IPlotProps extends PlotProps, UnknownProperties {}
@@ -19,6 +20,10 @@ export type PlotProps = Context &
      * @default en
      * */
     locale?: NavigatorLanguage['language'];
+    /**
+     * Optional container for data hints (use it if you have a legend component upper in tree)
+     */
+    dataHints?: DataStructureHints;
     /** Optional prop to tune up alt text generating for charts */
     a11yAltTextConfig?: PlotSummarizerConfig;
 

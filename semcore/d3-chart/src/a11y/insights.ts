@@ -266,7 +266,7 @@ export const extractDataInsights = (
             to: shortMovingAverage[shortMovingAverage.length - 1],
           },
           width: data.length,
-          label: { from, to, dataKey: valueKey },
+          label: { from, to, dataKey: hints.titles.valuesAxes[valueKey] ?? valueKey },
         })!;
         const localTrends: Insight[] = [];
         {

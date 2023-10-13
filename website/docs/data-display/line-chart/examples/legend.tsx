@@ -1,6 +1,15 @@
 import React from 'react';
 import Card from '@semcore/ui/card';
-import { Line, minMax, Plot, XAxis, YAxis, ChartLegend, LegendItem } from '@semcore/ui/d3-chart';
+import {
+  Line,
+  minMax,
+  Plot,
+  XAxis,
+  YAxis,
+  ChartLegend,
+  LegendItem,
+  makeDataHintsContainer,
+} from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
@@ -30,7 +39,7 @@ export default () => {
       .reduce<LegendItem[]>((res, item) => {
         res.push({
           id: item,
-          label: item,
+          label: item + item + item,
           checked: true,
           color: lineColors[item],
         });
@@ -60,6 +69,8 @@ export default () => {
     setHighlightedLine(-1);
   }, []);
 
+  const dataHints = makeDataHintsContainer();
+
   return (
     <Card w={'550px'}>
       <Card.Header pt={4}>
@@ -69,12 +80,19 @@ export default () => {
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <ChartLegend.Flex
+          dataHints={dataHints}
           items={legendItems}
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
         />
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+          dataHints={dataHints}
+        >
           <YAxis>
             <YAxis.Ticks ticks={yScale.ticks(4)} />
             <YAxis.Grid ticks={yScale.ticks(4)} />

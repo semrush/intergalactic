@@ -2,8 +2,28 @@ import React from 'react';
 import { Component, Intergalactic } from '@semcore/core';
 import { LegendItemKey, LegendItemProps } from './LegendItem/LegendItem.type';
 import { LegendProps } from './BaseLegend.type';
+import { makeDataHintsHandlers } from '../../a11y/hints';
 
 export abstract class BaseLegend<T extends LegendProps> extends Component<T> {
+  componentDidMount() {
+    this.setHints();
+  }
+
+  componentDidUpdate(prevProps: T) {
+    if (prevProps.items !== this.props.items || prevProps.dataHints !== this.props.dataHints) {
+      this.setHints();
+    }
+  }
+
+  setHints() {
+    const { items, dataHints } = this.asProps;
+    const dataHintsHandler = dataHints ? makeDataHintsHandlers(dataHints) : undefined;
+
+    items.forEach((legendItem) => {
+      dataHintsHandler?.labelKey('value', legendItem.id, legendItem.label);
+    });
+  }
+
   getItem(index: number) {
     const line = this.asProps.items[index];
 
