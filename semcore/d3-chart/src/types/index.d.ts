@@ -75,3 +75,6 @@ export * from './component/ChartLegend/LegendFlex/LegendFlex.type';
 export * from './component/ChartLegend/LegendTable/LegendTable.type';
 // @ts-ignore
 export * from './component/ChartLegend/LegendItem/LegendItem.type';
+
+export { default as Chart } from './component/Chart';
+export * from './component/Chart.type';
