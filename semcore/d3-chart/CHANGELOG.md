@@ -7,6 +7,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Added
 
 * `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
+* `Line.Area` component.
 
 ## [3.14.1] - 2023-10-10
 
