@@ -302,7 +302,7 @@ export const extractDataInsights = (
                   to: shortMovingAverage[i],
                 },
                 width: i - lastSwitch,
-                label: { from, to, dataKey: valueKey },
+                label: { from, to, dataKey: hints.titles.valuesAxes[valueKey] ?? valueKey },
               })!,
             );
             lastSwitch = i;
@@ -325,7 +325,7 @@ export const extractDataInsights = (
                   label: {
                     from: data[lastSwitch][labelsKey],
                     to: data[lastIndex][labelsKey],
-                    dataKey: valueKey,
+                    dataKey: hints.titles.valuesAxes[valueKey] ?? valueKey,
                   },
                 })!,
               );

@@ -15,10 +15,12 @@ import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
 
 const lineColors = {
-  Line1: resolveColor('blue-300'),
-  Line2: resolveColor('green-200'),
-  Line3: resolveColor('orange-400'),
+  1: resolveColor('blue-300'),
+  2: resolveColor('green-200'),
+  3: resolveColor('orange-400'),
 };
+
+const dataHints = makeDataHintsContainer();
 
 export default () => {
   const MARGIN = 30;
@@ -39,7 +41,7 @@ export default () => {
       .reduce<LegendItem[]>((res, item) => {
         res.push({
           id: item,
-          label: item + item + item,
+          label: `Line${item}`,
           checked: true,
           color: lineColors[item],
         });
@@ -68,8 +70,6 @@ export default () => {
   const handleMouseLeave = React.useCallback(() => {
     setHighlightedLine(-1);
   }, []);
-
-  const dataHints = makeDataHintsContainer();
 
   return (
     <Card w={'550px'}>
@@ -123,7 +123,7 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
-  Line1: Math.random() * 10,
-  Line2: Math.random() * 10,
-  Line3: Math.random() * 10,
+  1: Math.random() * 10,
+  2: Math.random() * 10,
+  3: Math.random() * 10,
 }));
