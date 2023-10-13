@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.0.0] - 2023-10-13
+
+### Changed
+
+- Fixed name for `--intergalactic-text-secondary-invert` and it's value, from `0.75` to `0.8`.
+
 ## [4.8.2] - 2023-10-06
 
 ### Fixed

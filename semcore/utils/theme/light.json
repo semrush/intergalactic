@@ -593,8 +593,8 @@
         "type": "color",
         "description": "Inverted version of the primary text."
       },
-      "secondary-Invert": {
-        "value": "{gray.white}, 0.75",
+      "secondary-invert": {
+        "value": "{gray.white}, 0.8",
         "type": "color",
         "description": "Inverted version of the secondary text."
       },
