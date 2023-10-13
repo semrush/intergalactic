@@ -1,3 +1,14 @@
+## [15.28.0-prerelease.0] - 2023-10-13
+
+### @semcore/button
+
+- **Fixed** Removed `box-shadow` for focused `Buttons` in `loading` or `disabled` states.
+
+### @semcore/d3-chart
+
+- **Added** `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
+- **Added** `Line.Area` component.
+
 ## [15.27.0] - 2023-10-10
 
 ### @semcore/flex-box
