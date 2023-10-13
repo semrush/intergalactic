@@ -2,6 +2,8 @@
 export declare function minMax(data: any, key: string | number): any;
 export declare const interpolateValue: Symbol;
 
+export { makeDataHintsContainer } from './a11y/hints';
+
 // Color
 export declare const colors: { [key: string]: string };
 
