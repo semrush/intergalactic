@@ -35,6 +35,14 @@
   --vp-shadow-5: 0px 18px 56px 0px rgba(25, 27, 35, 0.16), 0px 4px 12px 0px rgba(25, 27, 35, 0.16);
 }
 
+.dark {
+  --vp-shadow-1: 0px 1px 2px 0px rgba(25, 27, 35, 0.04), 0px 1px 2px 0px rgba(25, 27, 35, 0.06);
+  --vp-shadow-2: 0px 3px 12px 0px rgba(255, 255, 355, 0.07), 0px 1px 4px 0px rgba(255, 255, 255, 0.07);
+  --vp-shadow-3: 0px 12px 32px 0px rgba(25, 27, 35, 0.10), 0px 2px 6px 0px rgba(25, 27, 35, 0.08);
+  --vp-shadow-4: 0px 14px 44px 0px rgba(25, 27, 35, 0.12), 0px 3px 9px 0px rgba(25, 27, 35, 0.12);
+  --vp-shadow-5: 0px 18px 56px 0px rgba(25, 27, 35, 0.16), 0px 4px 12px 0px rgba(25, 27, 35, 0.16);
+}
+
 /**
  * Component: Button
  * -------------------------------------------------------------------------- */
@@ -106,6 +114,14 @@
   }
 }
 
+/**
+ * Component: Aside
+ * -------------------------------------------------------------------------- */
+
+ :root {
+  /* For our wide text logo */
+  --vp-sidebar-width: 288px;
+ }
 
 /**
  * Component: Custom Block
@@ -234,6 +250,54 @@
   font-size: 24px;
   color: var(--vp-c-text-2);
   cursor: pointer;
+}
+
+/** Our custom theme **/
+
+.VPButton.VPButton.medium {
+  border-radius: 6px;
+  padding: 0 12px;
+}
+
+.VPSwitch.VPSwitchAppearance:before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -10px;
+  right: -10px;
+  bottom: -20px;
+}
+
+.devportal-logo {
+  margin-right: 8px;
+}
+
+.intergalactic-logo {
+  margin-right: 8px;
+}
+
+.VPNavBarMenuLink:hover {
+  color: var(--vp-c-sponsor) !important;
+}
+
+.VPNavScreenMenuLink:hover {
+  color: var(--vp-c-sponsor) !important;
+}
+
+
+/* .VPFeature.link:hover {
+  border-color: var(--vp-c-bg-soft) !important;
+  box-shadow: var(--vp-shadow-2);
+  transition: 0.5s;
+} */
+
+.VPSidebarItem.level-0.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-1.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-2.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-3.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-4.is-link > .item > .link:hover .text,
+.VPSidebarItem.level-5.is-link > .item > .link:hover .text {
+  color: var(--vp-c-sponsor) !important;
 }
 
 
@@ -389,44 +453,6 @@ img {
 
 .vp-doc tr:nth-child(2n) {
   background: transparent;
-}
-
-
-/** Our custom theme **/
-
-.VPButton.VPButton.medium {
-  border-radius: 6px;
-  padding: 0 12px;
-}
-
-.VPSwitch.VPSwitchAppearance:before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -10px;
-  right: -10px;
-  bottom: -20px;
-}
-
-.devportal-logo {
-  margin-right: 8px;
-}
-
-.intergalactic-logo {
-  margin-right: 8px;
-}
-
-.VPNavBarMenuLink:hover {
-  color: var(--vp-c-sponsor) !important;
-}
-
-.VPSidebarItem.level-0.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-1.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-2.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-3.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-4.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-5.is-link > .item > .link:hover .text {
-  color: var(--vp-c-sponsor) !important;
 }
 
 .vp-doc a, .vp-doc a:visited {

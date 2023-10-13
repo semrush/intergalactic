@@ -2,7 +2,6 @@ import { DefaultTheme } from 'vitepress';
 
 export const sideBarConfig: DefaultTheme.Sidebar = [
   {
-    text: 'Docs',
     items: [
       {
         text: 'Get started',
@@ -22,6 +21,11 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
         ],
       },
+    ],
+  },
+  {
+    text: 'Foundation',
+    items: [
       {
         text: 'Principles',
         collapsed: true,
@@ -223,6 +227,11 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
         ],
       },
+    ],
+  },
+  {
+    text: 'Documentation',
+    items: [
       {
         text: 'Components',
         collapsed: true,
@@ -2345,6 +2354,10 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
         ],
       },
+    ],
+  },
+  {
+    items: [
       {
         text: 'Bugs and requests',
         collapsed: true,

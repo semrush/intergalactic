@@ -31,7 +31,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © Semrush',
+      copyright: '© 2008-2023 Powered by Semrush. All rights reserved.',
     },
     siteTitle: false,
 
@@ -88,6 +88,11 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       {
+        text: 'Roadmap',
+        link: 'https://github.com/orgs/semrush/projects/3/views/2',
+        target: '_blank',
+      },
+      {
         text: 'Releases',
         link: 'https://github.com/semrush/intergalactic/releases',
         target: '_blank',
@@ -102,8 +107,16 @@ export default defineConfig({
     sidebar: sideBarConfig,
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/semrush/intergalactic' },
-      { icon: { svg: figmaIcon }, link: 'https://figma.com/@semrush' },
+      {
+        icon: 'github',
+        link: 'https://github.com/semrush/intergalactic',
+        ariaLabel: 'Go to GitHub repository',
+      },
+      {
+        icon: { svg: figmaIcon },
+        link: 'https://figma.com/@semrush',
+        ariaLabel: 'Go to Intergalactic Design System Figma libraries',
+      },
     ],
   },
 
