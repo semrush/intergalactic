@@ -36,16 +36,19 @@ SButton {
   }
 }
 
-SButton[disabled] {
-  opacity: var(--intergalactic-disabled-opacity, 0.3);
-  cursor: default;
-  pointer-events: none;
-}
-
 SButton[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
   z-index: 1;
 }
+
+SButton[disabled] {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+  z-index: 0;
+}
+
 SButton[size='m'] {
   height: 28px;
   min-width: 28px;
