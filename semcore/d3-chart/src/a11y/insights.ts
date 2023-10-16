@@ -340,10 +340,10 @@ export const extractDataInsights = (
       const guessedYKey = [...hints.fields.verticalAxes.values(), 'y'][0];
       const guessedValueKey = [...hints.fields.valueAxes.values(), 'value'][0];
       const guessedLabelKey = keysMap['label'] ? 'label' : guessedValueKey;
-      const normalized = data.map((row) => ({
+      const normalized = data.map((row, index) => ({
         x: row[guessedXKey] as number,
         y: row[guessedYKey] as number,
-        label: row[guessedLabelKey],
+        label: hints.titles.valuesAxes[index] ?? row[guessedLabelKey],
         value: row[guessedValueKey] as number,
       }));
       let gridSize =
@@ -541,8 +541,8 @@ export const extractDataInsights = (
           for (const field of fields) {
             values.push({
               label:
-                hints.titles.getVerticalAxesTitle?.(field) ??
                 hints.titles.valuesAxes[field] ??
+                hints.titles.getVerticalAxesTitle?.(field) ??
                 (field as string),
               value: getPropByPath(row, field),
             });
@@ -587,8 +587,8 @@ export const extractDataInsights = (
     }
     const values = fields.map((field) => ({
       label:
-        hints.titles.getValueAxesTitle?.(field) ??
         hints.titles.valuesAxes[field] ??
+        hints.titles.getValueAxesTitle?.(field) ??
         (field as string),
       value: getPropByPath(data, field),
     }));
