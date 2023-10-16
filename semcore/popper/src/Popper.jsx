@@ -417,7 +417,12 @@ const useFocusCatch = (active, popperRef) => {
 
   const [focusCatch, setFocusCatch] = React.useState(false);
   const handleFocusCatchBlur = React.useCallback(() => setFocusCatch(false), []);
-  const handleFocusCatchRef = React.useCallback((node) => node?.focus(), []);
+  const handleFocusCatchRef = React.useCallback((node) => {
+    if (activeRef.current) return setFocusCatch(false);
+    if (!isFocusInside(popperRef.current) && document.activeElement !== document.body)
+      return setFocusCatch(false);
+    node?.focus();
+  }, []);
 
   React.useEffect(() => {
     if (!active) return;
