@@ -1,32 +1,32 @@
 import React from 'react';
-import { ChartLegend, Donut, LegendItem, Plot } from '@semcore/ui/d3-chart';
+import { ChartLegend, Donut, LegendItem, makeDataHintsContainer, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import resolveColor from '@semcore/ui/utils/lib/color';
 
 const pieColors = {
-  Dataset1: resolveColor('blue-300'),
-  Dataset2: resolveColor('violet-400'),
-  Dataset3: resolveColor('green-200'),
+  1: resolveColor('blue-300'),
+  2: resolveColor('violet-400'),
+  3: resolveColor('green-200'),
 };
+
+const dataHints = makeDataHintsContainer();
 
 export default () => {
   const width = 250;
   const height = 250;
 
   const [legendItems, setLegendItems] = React.useState(
-    Object.keys(data[0])
-      .filter((name) => name !== 'x')
-      .reduce<LegendItem[]>((res, item) => {
-        res.push({
-          id: item,
-          label: item,
-          checked: true,
-          color: pieColors[item],
-        });
+    Object.keys(data).reduce<LegendItem[]>((res, item) => {
+      res.push({
+        id: item,
+        label: `Dataset${item}`,
+        checked: true,
+        color: pieColors[item],
+      });
 
-        return res;
-      }, []),
+      return res;
+    }, []),
   );
 
   const [highlightedLine, setHighlightedLine] = React.useState(-1);
@@ -65,8 +65,9 @@ export default () => {
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
+          dataHints={dataHints}
         />
-        <Plot width={width} height={height} data={data}>
+        <Plot width={width} height={height} data={data} dataHints={dataHints}>
           <Donut innerRadius={height / 2 - 50}>
             {legendItems.map((pie, index) => {
               return (
@@ -89,7 +90,7 @@ export default () => {
 };
 
 const data = {
-  Dataset1: 3,
-  Dataset2: 1,
-  Dataset3: 2,
+  1: 3,
+  2: 1,
+  3: 2,
 };
