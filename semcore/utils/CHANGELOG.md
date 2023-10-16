@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Fixed name for `--intergalactic-text-secondary-invert` and it's value, from `0.75` to `0.8`.
+- Fixed name for `--intergalactic-text-secondary-invert` (from `--intergalactic-text-secondary-Invert`) and changed it's value, from `0.75` to `0.8`.
 
 ## [4.8.2] - 2023-10-06
 
