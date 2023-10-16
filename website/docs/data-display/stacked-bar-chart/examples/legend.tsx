@@ -1,15 +1,25 @@
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, ChartLegend, LegendItem } from '@semcore/ui/d3-chart';
+import {
+  Plot,
+  StackBar,
+  YAxis,
+  XAxis,
+  ChartLegend,
+  LegendItem,
+  makeDataHintsContainer,
+} from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
 
 const barColors = {
-  Dataset1: resolveColor('blue-300'),
-  Dataset2: resolveColor('blue-200'),
-  Dataset3: resolveColor('yellow-200'),
+  1: resolveColor('blue-300'),
+  2: resolveColor('blue-200'),
+  3: resolveColor('yellow-200'),
 };
+
+const dataHints = makeDataHintsContainer();
 
 export default () => {
   const MARGIN = 30;
@@ -28,11 +38,11 @@ export default () => {
 
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
-      .filter((name) => name !== 'x')
+      .filter((name) => name !== 'category')
       .reduce<LegendItem[]>((res, item) => {
         res.push({
           id: item,
-          label: item,
+          label: `Dataset${item}`,
           checked: true,
           color: barColors[item],
         });
@@ -75,8 +85,15 @@ export default () => {
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}
           onMouseLeaveItem={handleMouseLeave}
+          dataHints={dataHints}
         />
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+          dataHints={dataHints}
+        >
           <YAxis>
             <YAxis.Ticks />
             <YAxis.Grid />
@@ -106,7 +123,7 @@ export default () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   category: `Category ${i}`,
-  Dataset1: Math.random() * 5,
-  Dataset2: Math.random() * 5,
-  Dataset3: Math.random() * 5,
+  1: Math.random() * 5,
+  2: Math.random() * 5,
+  3: Math.random() * 5,
 }));
