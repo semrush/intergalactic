@@ -73,7 +73,7 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
     {closable ? (
       <TrashM
         my={2}
-        color='--intergalactic-icon-secondary-neutral'
+        color='icon-secondary-neutral'
         interactive
         aria-label={`Remove ${name}`}
         onClick={onClose}

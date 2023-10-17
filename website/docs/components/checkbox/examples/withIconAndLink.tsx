@@ -14,11 +14,7 @@ const Demo = () => (
       <div key={item}>
         <Checkbox mb={3} label={`Note ${item + 1}`} />
         <Tooltip title='There is information about point.' placement='right-start' ml={1}>
-          <InfoM
-            color='--intergalactic-icon-secondary-neutral'
-            interactive
-            aria-label='Additional info'
-          />
+          <InfoM color='icon-secondary-neutral' interactive aria-label='Additional info' />
         </Tooltip>
       </div>
     ))}

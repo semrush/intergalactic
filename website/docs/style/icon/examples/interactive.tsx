@@ -5,7 +5,7 @@ const Demo = () => (
   <LinkExternalM
     interactive
     aria-label='Go to our awesome article'
-    color='--intergalactic-icon-secondary-neutral'
+    color='icon-secondary-neutral'
   />
 );
 

@@ -31,7 +31,7 @@ describe('Counter', () => {
           <Counter>42</Counter>
           <Counter theme='warning'>42</Counter>
           <Counter theme='danger'>42</Counter>
-          <Counter theme='--intergalactic-bg-primary-info'>42</Counter>
+          <Counter theme='bg-primary-info'>42</Counter>
           <Counter theme='white'>42</Counter>
         </snapshot.ProxyProps>
       </div>

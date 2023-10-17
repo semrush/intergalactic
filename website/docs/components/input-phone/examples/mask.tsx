@@ -313,7 +313,7 @@ const Demo = () => {
                     <Text size={200} mr={2}>
                       {countryName}
                     </Text>
-                    <Text size={200} color='--intergalactic-text-secondary'>
+                    <Text size={200} color='text-secondary'>
                       {listActuallyCountryCodes[countryName].dial_code}
                     </Text>
                   </Select.Option>

@@ -52,7 +52,7 @@ export default () => {
                 children: (
                   <Flex alignItems='center'>
                     {/* [6] Set the arrow (Chevron icon), if necessary. */}
-                    <Accordion.Item.Chevron color='--intergalactic-icon-secondary-neutral' mr={2} />
+                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
                     {props.children}
                   </Flex>
                 ),
