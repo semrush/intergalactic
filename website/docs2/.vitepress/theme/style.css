@@ -340,7 +340,7 @@
   background-color: var(--vp-c-bg-elv) !important;
   border-radius: 6px !important;
   border: 1px solid var(--vp-c-bg-elv) !important;
-  transition: box-shadow 0.25s !important;
+  transition: color 1s, margin-left 1.2s, box-shadow 0.25s !important;
   box-shadow: var(--vp-shadow-1);
 }
 
@@ -353,8 +353,12 @@
   box-shadow: var(--vp-shadow-2);
 }
 
-.VPFeatures .VPFeature.h2.title:hover {
-  color: var(--vp-c-brand-1) !important;
+.VPFeatures .VPFeature.link:hover h2.title {
+  color: var(--vp-c-brand-1);
+}
+
+.VPFeatures .VPFeature.link:hover p.link-text-value .link-text-icon {
+  margin-left: 8px;
 }
 
 .dark .VPFeatures .VPFeature.link:hover {
