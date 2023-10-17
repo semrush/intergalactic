@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.9.0] - 2023-10-23
+
+### Added
+
+- Internal api for design tokens resolving.
+
 ## [4.8.3] - 2023-10-13
 
 ### Changed

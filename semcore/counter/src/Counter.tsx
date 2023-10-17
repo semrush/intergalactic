@@ -24,7 +24,6 @@ class Counter extends Component<{
     const { styles, theme, resolveColor, Children } = this.asProps;
 
     const colorBG = resolveColor(theme);
-    // const colorText = '#fff'; // brightness(colorBG)! > 200 ? resolveColor('gray-800') : '#fff';
 
     return sstyled(styles)(
       <SCounter render={Box} use:theme={colorBG}>

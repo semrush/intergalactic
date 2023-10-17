@@ -2,6 +2,20 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.16.0] - 2023-10-23
+
+### Added
+
+- Design tokens resolving for `color` props.
+
+### Changed
+
+- Default color of grouped charts (e.g for pie chart) are different by default.
+
+### Changed
+
+- Default text color is based on inversed and processed background color.
+
 ## [3.15.1] - 2023-10-16
 
 ### Changed
