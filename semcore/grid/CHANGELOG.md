@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.8.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/flex-box` [5.8.0 ~> 5.8.1], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
 ## [5.8.0] - 2023-10-10
 
 ### Changed

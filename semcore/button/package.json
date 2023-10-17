@@ -1,7 +1,7 @@
 {
   "name": "@semcore/button",
   "description": "Semrush Button Component",
-  "version": "5.9.0",
+  "version": "5.9.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,13 +12,13 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/flex-box": "5.8.0",
-    "@semcore/neighbor-location": "4.7.5",
-    "@semcore/spin": "5.8.0",
-    "@semcore/utils": "4.8.2"
+    "@semcore/flex-box": "5.8.1",
+    "@semcore/neighbor-location": "4.7.6",
+    "@semcore/spin": "5.8.1",
+    "@semcore/utils": "4.8.3"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.7.5",
+    "@semcore/core": "^2.7.6",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

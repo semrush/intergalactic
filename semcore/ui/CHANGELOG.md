@@ -1,3 +1,28 @@
+## [15.28.1] - 2023-10-16
+
+### @semcore/button
+
+- **Fixed** Improved `focus` for `Buttons` in `disabled` states.
+
+### @semcore/popper
+
+- **Fixed** Added additional checks to prevent focus catching after popper close in some cases when focus is moved to another component and focus catch is not necessary.
+
+### @semcore/utils
+
+- **Changed** Fixed name for `--intergalactic-text-secondary-invert` (from `--intergalactic-text-secondary-Invert`) and changed it's value, from `0.75` to `0.8`.
+
+## [15.28.0] - 2023-10-13
+
+### @semcore/button
+
+- **Fixed** Removed `box-shadow` for focused `Buttons` in `loading` or `disabled` states.
+
+### @semcore/d3-chart
+
+- **Added** `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
+- **Added** `Line.Area` component.
+
 ## [15.27.0] - 2023-10-10
 
 ### @semcore/flex-box
