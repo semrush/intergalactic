@@ -14,3 +14,7 @@ You can rotate a chart using the `<HorizontalBar/>` component by swapping `scale
 To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` component.
 
 @example bar-horizontal-stack
+
+@## Legend
+
+@example legend
