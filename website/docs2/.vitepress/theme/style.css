@@ -28,19 +28,19 @@
  * -------------------------------------------------------------------------- */
 
  :root {
-  --vp-shadow-1: 0px 1px 2px 0px rgba(25, 27, 35, 0.04), 0px 1px 2px 0px rgba(25, 27, 35, 0.06);
+  --vp-shadow-1: 0px 1px 2px 0px rgba(25, 27, 35, 0.12), 0px 0px 1px 0px rgba(25, 27, 35, 0.16);
   --vp-shadow-2: 0px 3px 12px 0px rgba(25, 27, 35, 0.07), 0px 1px 4px 0px rgba(25, 27, 35, 0.07);
-  --vp-shadow-3: 0px 12px 32px 0px rgba(25, 27, 35, 0.10), 0px 2px 6px 0px rgba(25, 27, 35, 0.08);
+  --vp-shadow-3: 3px 3px 30px 0px rgba(25, 27, 35, 0.15);
   --vp-shadow-4: 0px 14px 44px 0px rgba(25, 27, 35, 0.12), 0px 3px 9px 0px rgba(25, 27, 35, 0.12);
   --vp-shadow-5: 0px 18px 56px 0px rgba(25, 27, 35, 0.16), 0px 4px 12px 0px rgba(25, 27, 35, 0.16);
 }
 
 .dark {
-  --vp-shadow-1: 0px 1px 2px 0px rgba(25, 27, 35, 0.04), 0px 1px 2px 0px rgba(25, 27, 35, 0.06);
-  --vp-shadow-2: 0px 3px 12px 0px rgba(255, 255, 355, 0.07), 0px 1px 4px 0px rgba(255, 255, 255, 0.07);
-  --vp-shadow-3: 0px 12px 32px 0px rgba(25, 27, 35, 0.10), 0px 2px 6px 0px rgba(25, 27, 35, 0.08);
-  --vp-shadow-4: 0px 14px 44px 0px rgba(25, 27, 35, 0.12), 0px 3px 9px 0px rgba(25, 27, 35, 0.12);
-  --vp-shadow-5: 0px 18px 56px 0px rgba(25, 27, 35, 0.16), 0px 4px 12px 0px rgba(25, 27, 35, 0.16);
+  --vp-shadow-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 1);
+  --vp-shadow-2: 0px 3px 12px 0px rgba(0, 0, 0, 0.5), 0px 1px 4px 0px rgba(0, 0, 0, 0.5);
+  --vp-shadow-3: 0px 12px 20px 0px rgba(0, 0, 0, 0.4), 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
+  --vp-shadow-4: 0px 16px 28px 0px rgba(0, 0, 0, 0.6), 0px 2px 6px 0px rgba(0, 0, 0, 0.6);
+  --vp-shadow-5: 0px 16px 36px 0px rgba(0, 0, 0, 0.7), 0px 4px 16px 0px rgba(0, 0, 0, 0.7);
 }
 
 /**
@@ -120,8 +120,23 @@
 
  :root {
   /* For our wide text logo */
-  --vp-sidebar-width: 288px;
+  --vp-sidebar-width: 312px;
  }
+
+ .VPSidebarItem.level-0 > .item > .text:hover,
+ .VPSidebarItem.level-1 > .item > .text:hover,
+ .VPSidebarItem.level-2 > .item > .text:hover,
+ .VPSidebarItem.level-3 > .item > .text:hover,
+ .VPSidebarItem.level-4 > .item > .text:hover,
+ .VPSidebarItem.level-5 > .item > .text:hover,
+ .VPSidebarItem.level-0 > .item > .link > .text:hover,
+ .VPSidebarItem.level-1 > .item > .link > .text:hover,
+ .VPSidebarItem.level-2 > .item > .link > .text:hover,
+ .VPSidebarItem.level-3 > .item > .link > .text:hover,
+ .VPSidebarItem.level-4 > .item > .link > .text:hover,
+ .VPSidebarItem.level-5 > .item > .link > .text:hover {
+  color: var(--vp-c-text-1) !important;
+}
 
 /**
  * Component: Custom Block
@@ -252,11 +267,23 @@
   cursor: pointer;
 }
 
-/** Our custom theme **/
+.VPDocOutlineDropdown {
+  display: none !important;
+}
+
+/**
+ * Our custom theme
+ * -------------------------------------------------------------------------- */
 
 .VPButton.VPButton.medium {
   border-radius: 6px;
   padding: 0 12px;
+}
+
+/* Dividers in the header */
+.menu + .appearance:before,
+.appearance + .social-links:before {
+  height: 20px !important;
 }
 
 .VPSwitch.VPSwitchAppearance:before {
@@ -268,13 +295,27 @@
   bottom: -20px;
 }
 
-.devportal-logo {
+/* Logo */
+
+.devportal-logo, .intergalactic-logo {
+  display: flex;
+  align-items: center;
   margin-right: 8px;
 }
 
-.intergalactic-logo {
-  margin-right: 8px;
+.devportal-logo-img {
+  margin-right: 4px;
 }
+
+.intergalactic-logo:before {
+  margin-right: 8px;
+  width: 1px;
+  height: 20px;
+  background-color: var(--vp-c-divider);
+  content: "";
+}
+
+/* Links in the header and left sidebar */
 
 .VPNavBarMenuLink:hover {
   color: var(--vp-c-sponsor) !important;
@@ -283,13 +324,6 @@
 .VPNavScreenMenuLink:hover {
   color: var(--vp-c-sponsor) !important;
 }
-
-
-/* .VPFeature.link:hover {
-  border-color: var(--vp-c-bg-soft) !important;
-  box-shadow: var(--vp-shadow-2);
-  transition: 0.5s;
-} */
 
 .VPSidebarItem.level-0.is-link > .item > .link:hover .text,
 .VPSidebarItem.level-1.is-link > .item > .link:hover .text,
@@ -300,6 +334,34 @@
   color: var(--vp-c-sponsor) !important;
 }
 
+/* Feature cards */
+
+.VPFeatures .VPFeature {
+  background-color: var(--vp-c-bg-elv) !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--vp-c-bg-elv) !important;
+  transition: box-shadow 0.25s !important;
+  box-shadow: var(--vp-shadow-1);
+}
+
+.dark .VPFeatures .VPFeature {
+  background-color: var(--vp-c-bg-elv) !important;
+  box-shadow: var(--vp-shadow-2);
+}
+
+.VPFeatures .VPFeature.link:hover {
+  box-shadow: var(--vp-shadow-2);
+}
+
+.VPFeatures .VPFeature.h2.title:hover {
+  color: var(--vp-c-brand-1) !important;
+}
+
+.dark .VPFeatures .VPFeature.link:hover {
+  box-shadow: var(--vp-shadow-4);
+}
+
+/* Table styles */
 
 .vp-doc table caption:first-child {
   position: absolute;
@@ -311,6 +373,10 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+th, tr, td {
+  vertical-align: top;
 }
 
 .vp-doc th, .vp-doc td {
@@ -339,6 +405,8 @@
 .dark .vp-doc tbody tr:hover {
   background-color: var(--vp-c-bg-soft);
 }
+
+/* Documentation styles */
 
 .VPDocOutlineDropdown {
   display: none !important;
@@ -503,15 +571,25 @@ img {
 }
 
 .custom-block.tip a,
-.custom-block.tip code,
-.custom-block.tip a:visited,
-.custom-block.tip code:visited {
+.custom-block.tip a:visited {
   color: var(--vp-c-indigo-2);
 }
 
-.custom-block.tip a:hover,
-.custom-block.tip code:hover {
+.custom-block.tip code,
+.custom-block.tip code:visited {
+  color: var(--vp-c-brand-1);
+}
+
+.custom-block.info code {
+  color: var(--vp-c-text-2);
+}
+
+.custom-block.tip a:hover {
   color: var(--vp-c-indigo-1);
+}
+
+.custom-block.tip code:hover {
+  color: none;
 }
 
 :root {

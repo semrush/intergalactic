@@ -18,28 +18,36 @@ hero:
     alt: Galaxy whale – mascot
 
 features:
-  - title: Themization & Design tokens
-    details: Equip your components with a custom theme
-    link: /style/design-tokens/design-tokens
-    linkText: Start exploring
   - title: Components
     details: 80+ React components out of the box
     link: /components/accordion/accordion
-    linkText: Start exploring
+    linkText: Explore
   - title: Сharts
-    details: Over 12 chart types designed with accessibility in mind
+    details: 14+ chart types built with d3.js and accessibility in mind
     link: /data-display/chart-showcase/chart-showcase
-    linkText: Start exploring
+    linkText: Explore
   - title: Tables
-    details: Create data tables effortlessly with power of CSS Flexbox
+    details: Table components to effortlessly visualize data with CSS Flexbox
     link: /table-group/table-showcase/table-showcase
-    linkText: Start exploring
+    linkText: Explore
+  - title: Icons
+    details: Library of 250+ icons for a large number of cases
+    link: /style/icon/icon
+    linkText: Explore
   - title: Filter patterns
-    details: Design patterns we stick to in Semrush to help users filter the data
+    details: Design patterns to help users filter the data
     link: /filter-group/filter-rules/filter-rules
-    linkText: Start exploring
+    linkText: Explore
   - title: UX patterns
     details: Constellation of Semrush UX patterns to make user journey smooth and friendly
     link: /patterns/modal-content/modal-content
-    linkText: Start exploring
+    linkText: Explore
+  - title: Design tokens & Themization
+    details: Equip your components with a custom theme
+    link: /style/design-tokens/design-tokens
+    linkText: Explore
+  - title: Accessibility
+    details: Principles and recommendations to help you build interface for all
+    link: /core-principles/a11y/a11y
+    linkText: Explore
 ---
