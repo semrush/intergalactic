@@ -10,7 +10,7 @@ class Counter extends Component<{
   resolveColor: (color: string) => string;
 }> {
   static displayName = 'Counter';
-  static enhance = [resolveColorEnhance(['theme'])];
+  static enhance = [resolveColorEnhance()];
 
   static style = style;
 

@@ -83,7 +83,7 @@ class StackBarRoot extends Component {
       groupKey: x,
       offset: calcOffset,
       maxBarSize,
-      color: color || getChartDefaultColorName(index),
+      color: getChartDefaultColorName(index),
     };
   }
 
@@ -125,7 +125,7 @@ class StackBarRoot extends Component {
       groupKey: y,
       offset: calcOffset,
       maxBarSize,
-      color: color || getChartDefaultColorName(index),
+      color: getChartDefaultColorName(index),
     };
   }
 
