@@ -62,8 +62,19 @@ export const useFocusSource = () => {
   return focusSourceRef;
 };
 
-const keyboardFocusEnhance = () => {
-  return (props: any) => {
+export type KeyboardFocusEnhanceHook = (props: {
+  tabIndex?: number;
+  disabled?: boolean;
+  autoFocus?: boolean;
+}) => {
+  tabIndex: number;
+  keyboardFocused: boolean;
+  onFocus: (e: React.FocusEvent) => void;
+  onBlur: () => void;
+};
+
+const keyboardFocusEnhance = (): KeyboardFocusEnhanceHook => {
+  return (props) => {
     const { tabIndex = 0, disabled, autoFocus } = props;
     const [keyboardFocused, setKeyboardFocused] = React.useState(false);
     const focusSourceRef = useFocusSource();
@@ -86,6 +97,11 @@ const keyboardFocusEnhance = () => {
         clearTimeout(timer);
       };
     }, [autoFocus]);
+    React.useEffect(() => {
+      if (disabled) {
+        setKeyboardFocused(false);
+      }
+    }, [disabled]);
 
     return assignProps(props, {
       tabIndex: disabled ? -1 : tabIndex,

@@ -1,7 +1,7 @@
 import React from 'react';
-import { curveLinear, line as d3Line } from 'd3-shape';
+import { curveLinear, line as d3Line, area as d3Area, curveCardinal } from 'd3-shape';
 import { Component, sstyled } from '@semcore/core';
-import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
+import uniqueIDEnhancement, { useUID } from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
 import {
   definedData,
@@ -56,6 +56,21 @@ class LineRoot extends Component {
     };
   }
 
+  getAreaProps() {
+    const { x, y, color, hide, duration, scale } = this.asProps;
+    const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
+
+    return {
+      x,
+      y,
+      data,
+      color,
+      hide,
+      duration,
+      scale,
+    };
+  }
+
   render() {
     const SLine = this.Element;
     const { styles, hide, color, uid, size, d3, duration, x, y, transparent } = this.asProps;
@@ -100,7 +115,44 @@ function Null(props) {
   return sstyled(styles)(<SNull render='path' d={d3(data)} hide={hide} />);
 }
 
+function Area(props) {
+  const uid = useUID();
+  const {
+    Element: SAria,
+    styles,
+    data,
+    hide,
+    duration,
+    color,
+    scale,
+    x,
+    y0,
+    y1,
+    curve = curveCardinal,
+  } = props;
+  const [xScale, yScale] = scale;
+
+  const d3 = d3Area()
+    .curve(curve)
+    .x((data) => xScale(data[x]))
+    .y0((data) => yScale(data[y0]))
+    .y1((data) => yScale(data[y1]));
+
+  return sstyled(styles)(
+    <SAria
+      aria-hidden
+      clipPath={`url(#${uid})`}
+      render='path'
+      hide={hide}
+      color={color}
+      d={d3(data)}
+      use:duration={`${duration}ms`}
+    />,
+  );
+}
+
 export default createElement(LineRoot, {
   Dots,
   Null,
+  Area,
 });

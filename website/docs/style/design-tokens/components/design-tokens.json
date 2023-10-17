@@ -433,10 +433,10 @@
     ]
   },
   {
-    "name": "--intergalactic-text-secondary-Invert",
+    "name": "--intergalactic-text-secondary-invert",
     "type": "color",
-    "rawValue": "{gray.white}, 0.75",
-    "computedValue": "rgba(255, 255, 255, 0.75)",
+    "rawValue": "{gray.white}, 0.8",
+    "computedValue": "rgba(255, 255, 255, 0.8)",
     "description": "Inverted version of the secondary text.",
     "components": []
   },

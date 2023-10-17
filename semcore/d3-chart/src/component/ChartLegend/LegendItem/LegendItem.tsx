@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { DOMAttributes } from 'react';
 import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
 import Checkbox, { CheckboxProps } from '@semcore/checkbox';
@@ -29,7 +29,7 @@ class LegendItemRoot extends Component<LegendItemProps> {
     ),
   });
 
-  getShapeProps(): ShapeProps & CheckboxProps {
+  getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
     const { checked, color, shape, label, id, size, onClick } = this.asProps;
 
     return {
@@ -39,8 +39,8 @@ class LegendItemRoot extends Component<LegendItemProps> {
       checked,
       color,
       size,
-      onChange: () => {
-        if (onClick) {
+      onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
+        if (onClick && e.key === ' ') {
           onClick();
         }
       },
@@ -103,7 +103,7 @@ class LegendItemRoot extends Component<LegendItemProps> {
   }
 }
 
-function Shape(props: IRootComponentProps & ShapeProps & CheckboxProps) {
+function Shape(props: IRootComponentProps & ShapeProps & DOMAttributes<HTMLLabelElement>) {
   const SPointShape = Root;
   const {
     styles,
@@ -113,7 +113,7 @@ function Shape(props: IRootComponentProps & ShapeProps & CheckboxProps) {
     color,
     Children,
     children: hasChildren,
-    onChange,
+    onKeyUp,
     label,
   } = props;
 
@@ -127,7 +127,7 @@ function Shape(props: IRootComponentProps & ShapeProps & CheckboxProps) {
         size={size}
         checked={checked}
         theme={checked ? color : undefined}
-        onChange={onChange}
+        onKeyUp={onKeyUp}
         aria-label={label}
       />
     );

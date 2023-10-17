@@ -18,3 +18,7 @@ If you need to display a part-to-whole ratio – use the `<StackedArea/>` and `<
 - Two consecutively known values will automatically be displayed as the `StackedArea` component.
 
 @example stacked-area-without-data
+
+@## Legend
+
+@example legend
