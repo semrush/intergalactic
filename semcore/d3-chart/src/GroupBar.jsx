@@ -5,7 +5,7 @@ import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 import { scaleBand } from 'd3-scale';
-import { scaleToBand } from './utils';
+import { getChartDefaultColorName, scaleToBand } from './utils';
 
 class GroupBarRoot extends Component {
   static displayName = 'GroupBar';
@@ -38,7 +38,7 @@ class GroupBarRoot extends Component {
       .paddingOuter(0.1);
   }
 
-  getBarProps({ y }) {
+  getBarProps({ y }, index) {
     const { x, maxBarSize = Infinity } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
@@ -48,12 +48,13 @@ class GroupBarRoot extends Component {
     return {
       offset: [offsetX, 0],
       width,
+      color: getChartDefaultColorName(index),
       x,
       groupKey: x,
     };
   }
 
-  getHorizontalBarProps({ x }) {
+  getHorizontalBarProps({ x }, index) {
     const { y, maxBarSize = Infinity } = this.asProps;
 
     const bandWidth = this.scaleGroup.bandwidth();
@@ -63,6 +64,7 @@ class GroupBarRoot extends Component {
     return {
       offset: [0, offsetY],
       height,
+      color: getChartDefaultColorName(index),
       y,
       groupKey: y,
     };

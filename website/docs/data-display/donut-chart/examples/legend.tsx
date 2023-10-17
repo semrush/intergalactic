@@ -3,13 +3,6 @@ import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
-import resolveColor from '@semcore/ui/utils/lib/color';
-
-const pieColors = {
-  a: resolveColor('blue-300'),
-  b: resolveColor('violet-400'),
-  c: resolveColor('green-200'),
-};
 
 export default () => {
   const width = 250;
@@ -53,11 +46,11 @@ export default () => {
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width}>
-          {piesList.map((pie) => {
+          {piesList.map((pie, index) => {
             return (
               <Checkbox
                 key={pie}
-                theme={pieColors[pie]}
+                theme={`chart-palette-order-${index + 1}`}
                 mr={4}
                 mb={2}
                 onMouseEnter={handleMouseEnter(pie)}
@@ -80,13 +73,7 @@ export default () => {
         <Plot width={width} height={height} data={data}>
           <Donut innerRadius={height / 2 - 50}>
             {displayedPiesList.map((pie) => (
-              <Donut.Pie
-                dataKey={pie}
-                key={pie}
-                name={pie}
-                color={pieColors[pie]}
-                transparent={opacityPie[pie]}
-              />
+              <Donut.Pie dataKey={pie} key={pie} name={pie} transparent={opacityPie[pie]} />
             ))}
           </Donut>
         </Plot>

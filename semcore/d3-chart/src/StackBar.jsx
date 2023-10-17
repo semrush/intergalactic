@@ -5,6 +5,7 @@ import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import createElement from './createElement';
 import Bar, { MIN_HEIGHT } from './Bar';
 import HorizontalBar, { MIN_WIDTH } from './HorizontalBar';
+import { getChartDefaultColorName } from './utils';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const XY0 = Symbol('XY0');
@@ -43,7 +44,7 @@ class StackBarRoot extends Component {
     return stack(data);
   }
 
-  getBarProps({ y, hMin = MIN_HEIGHT }) {
+  getBarProps({ y, hMin = MIN_HEIGHT }, index) {
     const { x, r, scale, maxBarSize } = this.asProps;
     const [, yScale] = scale;
 
@@ -82,10 +83,11 @@ class StackBarRoot extends Component {
       groupKey: x,
       offset: calcOffset,
       maxBarSize,
+      color: color || getChartDefaultColorName(index),
     };
   }
 
-  getHorizontalBarProps({ x, wMin = MIN_WIDTH }) {
+  getHorizontalBarProps({ x, wMin = MIN_WIDTH }, index) {
     const { y, r, scale, maxBarSize } = this.asProps;
     const [xScale] = scale;
 
@@ -123,6 +125,7 @@ class StackBarRoot extends Component {
       groupKey: y,
       offset: calcOffset,
       maxBarSize,
+      color: color || getChartDefaultColorName(index),
     };
   }
 

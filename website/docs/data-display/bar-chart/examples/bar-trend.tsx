@@ -34,7 +34,7 @@ export default () => {
       <Line
         x='category'
         y='bar'
-        color={resolveColor('--intergalactic-text-secondary')}
+        color='text-secondary'
         style={{ strokeWidth: 3, strokeDasharray: 5 }}
       >
         <Line.Dots display />

@@ -97,41 +97,6 @@ const basicPalette: Record<string, string> = {
   '--google-my-business': '#1a73e8',
   '--google-blue': '#1a0dab',
   '--google-green': '#016723',
-  '--keyboard-focus': 'var(--intergalactic-boxShadow-keyboard-focus)',
-  '--keyborad-focus': 'var(--intergalactic-boxShadow-keyboard-focus)',
-  '--keyboard-focus-valid': 'var(--intergalactic-boxShadow-keyboard-focus-valid)',
-  '--keyboard-focus-invalid': 'var(--intergalactic-boxShadow-keyboard-focus-invalid)',
-  '--rounded-s': '4px',
-  '--rounded-m': '6px',
-  '--rounded-l': '12px',
-  '--form-control-m': '28px',
-  '--form-control-l': '40px',
-  '--box-shadow-card':
-    '0px 1px 2px 0px rgba(25, 27, 35, 0.12), 0px 0px 1px 0px rgba(25, 27, 35, 0.16)',
-  '--box-shadow-hover': '3px 3px 30px 0px rgba(25, 27, 35, 0.15)',
-  '--box-shadow-popper': '0px 1px 12px 0px rgba(25, 27, 35, 0.15)',
-  '--box-shadow-modal': '0px 3px 8px 0px rgba(25, 27, 35, 0.2)',
-  '--box-shadow-dnd': '0 0 1px rgba(25, 27, 35, 0.16), 0 12px 40px rgba(25, 27, 35, 0.16)',
-  '--fs-100': '12px',
-  '--lh-100': '1.33',
-  '--fs-200': '14px',
-  '--lh-200': '1.42',
-  '--fs-300': '16px',
-  '--lh-300': '1.5',
-  '--fs-400': '20px',
-  '--lh-400': '1.2',
-  '--fs-500': '24px',
-  '--lh-500': '1.17',
-  '--fs-600': '32px',
-  '--lh-600': '1.25',
-  '--fs-700': '36px',
-  '--lh-700': '1.1',
-  '--fs-800': '48px',
-  '--lh-800': '1.17',
-  '--disabled-opacity': '0.3',
-  '--xs-screen': '320px',
-  '--sm-screen': '768px',
-  '--md-screen': '1200px',
 };
 const deprecatedPalette: Record<string, string> = {
   '--denim-blue': '#006dca',
@@ -225,6 +190,9 @@ export const useColorResolver = () => {
       }
 
       return `var(${color})`;
+    }
+    if (defaultDesignTheme[`--intergalactic-${color}`]) {
+      return `var(--intergalactic-${color}, ${defaultDesignTheme[`--intergalactic-${color}`]})`;
     }
     if (deprecatedPalette[`--${color}`]) {
       logger.warn(true, makeDeprecationMessage(color), undefined);

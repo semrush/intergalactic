@@ -42,7 +42,7 @@ class AreaRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, color, d3Line, transparent } = this.asProps;
+    const { x, y, color, d3Line, transparent, resolveColor } = this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     return {
@@ -51,29 +51,32 @@ class AreaRoot extends Component {
       data,
       d3: d3Line,
       color,
+      resolveColor,
       transparent,
     };
   }
 
   getNullProps() {
-    const { x, y, color, d3Line } = this.asProps;
+    const { x, y, color, resolveColor, d3Line } = this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     return {
       data: getNullData(data, definedNullData(x, y), y),
       d3: d3Line,
       color,
+      resolveColor,
     };
   }
 
   getLineProps() {
-    const { duration, color, data, d3Line, uid } = this.asProps;
+    const { duration, color, resolveColor, data, d3Line, uid } = this.asProps;
 
     return {
       uid,
       data,
       d3: d3Line,
       color,
+      resolveColor,
       duration,
     };
   }
@@ -95,6 +98,7 @@ class AreaRoot extends Component {
       Children,
       transparent,
       forcedAdvancedMode,
+      resolveColor,
     } = this.asProps;
     const advancedMode = forcedAdvancedMode || !!findComponent(Children, [Area.Line.displayName]);
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
@@ -109,7 +113,7 @@ class AreaRoot extends Component {
             aria-hidden
             clipPath={`url(#${uid})`}
             d={d3Line(data)}
-            color={color}
+            color={resolveColor(color)}
             use:duration={`${duration}ms`}
             transparent={transparent}
           />
@@ -120,7 +124,7 @@ class AreaRoot extends Component {
           render='path'
           d={d3(data)}
           hide={hide}
-          color={color}
+          color={resolveColor(color)}
           use:duration={`${duration}ms`}
           transparent={transparent}
         />
@@ -144,13 +148,23 @@ class AreaRoot extends Component {
 }
 
 function Line(props) {
-  const { Element: SAreaLine, styles, d3, data, color, duration, uid, transparent } = props;
+  const {
+    Element: SAreaLine,
+    styles,
+    d3,
+    data,
+    color,
+    resolveColor,
+    duration,
+    uid,
+    transparent,
+  } = props;
   return sstyled(styles)(
     <SAreaLine
       render='path'
       clipPath={`url(#${uid})`}
       d={d3(data)}
-      color={color}
+      color={resolveColor(color)}
       use:duration={`${duration}ms`}
       transparent={transparent}
     />,
@@ -158,8 +172,10 @@ function Line(props) {
 }
 
 function Null(props) {
-  const { Element: SNull, styles, d3, data, hide, color } = props;
-  return sstyled(styles)(<SNull render='path' d={d3(data)} hide={hide} color={color} />);
+  const { Element: SNull, styles, d3, data, hide, color, resolveColor } = props;
+  return sstyled(styles)(
+    <SNull render='path' d={d3(data)} hide={hide} color={resolveColor(color)} />,
+  );
 }
 
 const Area = createElement(AreaRoot, {

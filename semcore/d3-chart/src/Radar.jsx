@@ -7,7 +7,7 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { polygonContains } from 'd3-polygon';
 import { line, lineRadial, curveLinearClosed, arc } from 'd3-shape';
 import createElement from './createElement';
-import { CONSTANT, eventToPoint, measureText } from './utils';
+import { CONSTANT, eventToPoint, getChartDefaultColorName, measureText } from './utils';
 import Tooltip from './Tooltip';
 
 import style from './style/radar.shadow.css';
@@ -154,7 +154,7 @@ class RadarRoot extends Component {
     };
   }
 
-  getPolygonProps({ dataKey }) {
+  getPolygonProps({ dataKey }, index) {
     const { data, scale, angleOffset } = this.asProps;
 
     return {
@@ -162,6 +162,7 @@ class RadarRoot extends Component {
       data: data[dataKey] || [],
       scale,
       angleOffset,
+      color: getChartDefaultColorName(index),
     };
   }
 
@@ -227,12 +228,21 @@ class PolygonRoot extends Component {
   };
 
   getDotsProps() {
-    const { data, scale, color, transparent, dataKey, dataHintsHandler, angleOffset } =
-      this.asProps;
+    const {
+      data,
+      scale,
+      color,
+      resolveColor,
+      transparent,
+      dataKey,
+      dataHintsHandler,
+      angleOffset,
+    } = this.asProps;
     return {
       data,
       scale,
       color,
+      resolveColor,
       transparent,
       categoryKey: dataKey,
       dataHintsHandler,
@@ -241,25 +251,33 @@ class PolygonRoot extends Component {
   }
 
   getLineProps() {
-    const { d3, data, color, transparent } = this.asProps;
+    const { d3, data, color, resolveColor, transparent } = this.asProps;
     return {
       data,
       color,
+      resolveColor,
       transparent,
       d3,
     };
   }
 
   render() {
-    const { Element: SPolygon, styles, d3, data, color, fill } = this.asProps;
-    return sstyled(styles)(<SPolygon render='path' d={d3(data)} color={fill || color} />);
+    const { Element: SPolygon, styles, d3, data, color, resolveColor, fill } = this.asProps;
+    return sstyled(styles)(
+      <SPolygon render='path' d={d3(data)} color={resolveColor(fill || color)} />,
+    );
   }
 }
 
 function PolygonLine(props) {
-  const { Element: SPolygonLine, styles, d3, color, data, transparent } = props;
+  const { Element: SPolygonLine, styles, d3, color, resolveColor, data, transparent } = props;
   return sstyled(styles)(
-    <SPolygonLine render='path' d={d3(data)} color={color} transparent={transparent} />,
+    <SPolygonLine
+      render='path'
+      d={d3(data)}
+      color={resolveColor(color)}
+      transparent={transparent}
+    />,
   );
 }
 
@@ -268,6 +286,7 @@ function PolygonDots(props) {
     Element: SPolygonDot,
     styles,
     color,
+    resolveColor,
     data,
     scale,
     transparent,
@@ -285,7 +304,7 @@ function PolygonDots(props) {
         render='circle'
         cx={cx}
         cy={cy}
-        color={color}
+        color={resolveColor(color)}
         transparent={transparent}
       />,
     );
