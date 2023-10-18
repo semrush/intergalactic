@@ -9,8 +9,6 @@ title: Charts
 @page chart-legend
 @page notes
 
-@page chart-view
-
 @page area-chart
 @page stacked-area-chart
 

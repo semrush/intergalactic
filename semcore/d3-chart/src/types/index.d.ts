@@ -77,4 +77,5 @@ export * from './component/ChartLegend/LegendTable/LegendTable.type';
 export * from './component/ChartLegend/LegendItem/LegendItem.type';
 
 export { default as Chart } from './component/Chart';
-export * from './component/Chart.type';
+export * from './component/Chart/Chart.type';
+export * from './component/Chart/LineChart.type';

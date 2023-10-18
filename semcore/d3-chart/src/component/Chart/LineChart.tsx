@@ -1,15 +1,17 @@
 import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { LineChartProps } from './Chart.type';
+import { ChartMap } from './Chart.type';
+import { LineChartProps } from './LineChart.type';
 import { Flex } from '@semcore/flex-box';
 import { scaleLinear, scaleTime } from 'd3-scale';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { makeDataHintsContainer } from '../../a11y/hints';
 import ChartLegend from '../ChartLegend';
-import { Plot, YAxis, XAxis, Line, minMax, HoverLine } from '../..';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import { Text } from '@semcore/typography';
 import { interpolateValue } from '../../utils';
+// @ts-ignore
+import { HoverLine, Line, minMax, Plot, XAxis, YAxis } from '../..';
 
 type LineChartState = {
   legendItems: LegendItem[];
@@ -174,6 +176,7 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
       disableDots,
       disableTooltip,
       curve,
+      direction,
     } = this.asProps;
 
     return sstyled(styles)(
@@ -184,6 +187,7 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
             items={this.state.legendItems}
             size={legendProps?.size}
             shape={legendProps?.shape}
+            direction={legendProps?.direction ?? (direction === 'row' ? 'column' : 'row')}
             onChangeVisibleItem={
               legendProps?.disableCheckedItems
                 ? undefined
@@ -235,28 +239,35 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
           })}
           {disableTooltip !== true && (
             <HoverLine.Tooltip x={xKey} wMin={100}>
-              {({ xIndex }) => {
-                return {
-                  children: (
-                    <>
-                      <HoverLine.Tooltip.Title>{data[xIndex][xKey]}</HoverLine.Tooltip.Title>
+              {
+                // @ts-ignore
+                ({ xIndex }) => {
+                  return {
+                    children: (
+                      <>
+                        <HoverLine.Tooltip.Title>
+                          {data[xIndex][xKey].toString()}
+                        </HoverLine.Tooltip.Title>
 
-                      {this.state.legendItems
-                        .filter((item) => item.checked)
-                        .map((item) => {
-                          return (
-                            <Flex justifyContent='space-between' key={item.id}>
-                              <HoverLine.Tooltip.Dot mr={4} color={item.color}>
-                                {item.label}
-                              </HoverLine.Tooltip.Dot>
-                              <Text bold>{this.tooltipValueFormatter(data[xIndex][item.id])}</Text>
-                            </Flex>
-                          );
-                        })}
-                    </>
-                  ),
-                };
-              }}
+                        {this.state.legendItems
+                          .filter((item) => item.checked)
+                          .map((item) => {
+                            return (
+                              <Flex justifyContent='space-between' key={item.id}>
+                                <HoverLine.Tooltip.Dot mr={4} color={item.color}>
+                                  {item.label}
+                                </HoverLine.Tooltip.Dot>
+                                <Text bold>
+                                  {this.tooltipValueFormatter(data[xIndex][item.id])}
+                                </Text>
+                              </Flex>
+                            );
+                          })}
+                      </>
+                    ),
+                  };
+                }
+              }
             </HoverLine.Tooltip>
           )}
         </Plot>
@@ -265,4 +276,4 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
   }
 }
 
-export const LineChart = createComponent(LineChartComponent);
+export const LineChart: ChartMap['Line'] = createComponent(LineChartComponent);
