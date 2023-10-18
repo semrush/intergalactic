@@ -50,7 +50,7 @@ If you are creating a product that differs in style from other products of Semru
 
 ### What is a theme?
 
-Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Check [Usage in development](/style/design-tokens/design-tokens-usage-development/).
+Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Refer to [Usage in development](/style/design-tokens/design-tokens-usage-development/).
 
 <!-- ### Global theme
 
@@ -96,14 +96,14 @@ Let's take a look at the two main theme creation situations: local and global.
 
 In this case we recommend you using [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978). It's one of the most powerful tools for managing tokens, linking styles between the code and Figma files, and it can help you save time trying new values for tokens of your new theme.
 
-> There, you can find the detailed process for creating a new theme for our design system explained: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
+> There, you can find the detailed process for creating a new theme for our design system explained: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), [public](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
 
 #### **Global theme: you need to develop a theme for the entire design system**
 
 In this case, you need to take more steps.
 
 1. Duplicate [the library with tokens and three main libraries with components](/get-started-guide/work-figma/#core_libraries).
-2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playground: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), public (link will be here soon).
+2. Using the [Tokens Studio plugin for Figma](https://www.figma.com/community/plugin/843461159747178978), you connect the tokens of the default theme with your dublicated file. How to use it to create your own set of tokens for the new theme, check the playground: [internal](https://www.figma.com/file/K1s6wF8NTH3uNHvjkn6hjc/Themes-playground-%26-tutorial-%F0%9F%8E%93?node-id=24%3A90461&t=uZCoQy8xPBjC1ctm-11), [public](https://www.figma.com/community/file/1274028958101796491/semrush-design-tokens).
 3. Test and try on the theme for all components of the library in the theme playground.
 4. Save the JSON of the theme, and either give it to the developers, or commit it yourself.
 5. Voila! You are awesome!
