@@ -14,3 +14,7 @@ fileSource: d3-chart
 You can set your custom SVG shape for a LegendItem.
 
 @example custom-shapes
+
+@## Table view
+
+@example table-view
