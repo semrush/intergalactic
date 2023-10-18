@@ -2,11 +2,14 @@ import React from 'react';
 import createComponent, { Component, Root, sstyled } from '@semcore/core';
 import { LineChartProps } from './Chart.type';
 import { Flex } from '@semcore/flex-box';
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleTime } from 'd3-scale';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 import { makeDataHintsContainer } from '../../a11y/hints';
 import ChartLegend from '../ChartLegend';
-import { Plot, YAxis, XAxis, Line, minMax } from '../..';
+import { Plot, YAxis, XAxis, Line, minMax, HoverLine } from '../..';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
+import { Text } from '@semcore/typography';
+import { interpolateValue } from '../../utils';
 
 type LineChartState = {
   legendItems: LegendItem[];
@@ -34,15 +37,16 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.resolveColor = this.resolveColor.bind(this);
+    this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
   }
 
-  get defaultLegendItems() {
-    const { data, legendMap, xKey } = this.props;
+  get defaultLegendItems(): LegendItem[] {
+    const { data, legendProps, xKey } = this.props;
 
     return Object.keys(data[0])
       .filter((key) => key !== xKey)
       .map((key) => {
-        const legendData = legendMap?.[key];
+        const legendData = legendProps?.legendMap?.[key];
 
         const legendItem: LegendItem = {
           id: key,
@@ -67,12 +71,19 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
   get xScale() {
     const { xScale, margin = 30, width, data, xKey } = this.asProps;
 
-    return (
-      xScale ??
-      scaleLinear()
-        .range([margin, width - margin])
-        .domain(minMax(data, xKey))
-    );
+    if (xScale) {
+      return xScale;
+    }
+
+    const testItem = data[0][xKey];
+    const range = [margin, width - margin];
+    const domain = minMax(data, xKey);
+
+    if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
+      return scaleTime(domain, range);
+    }
+
+    return scaleLinear(domain, range);
   }
 
   get yScale() {
@@ -139,19 +150,57 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
     return this.props.colorMap?.[id] ?? '';
   }
 
+  tooltipValueFormatter(value: number | typeof interpolateValue | Date): string {
+    const { tooltipValueFormatter } = this.asProps;
+
+    if (tooltipValueFormatter) {
+      return tooltipValueFormatter(value);
+    }
+
+    return value.toString();
+  }
+
   render() {
     const SChart = Root;
-    const { styles, margin = 30, width, height, data, xKey } = this.asProps;
+    const {
+      styles,
+      margin = 30,
+      width,
+      height,
+      data,
+      xKey,
+      hideLegend,
+      legendProps,
+      disableDots,
+      disableTooltip,
+      curve,
+    } = this.asProps;
 
     return sstyled(styles)(
       <SChart render={Flex}>
-        <ChartLegend.Flex
-          dataHints={this.dataHints}
-          items={this.state.legendItems}
-          onChangeVisibleItem={this.handleChangeVisible}
-          onMouseEnterItem={this.handleMouseEnter}
-          onMouseLeaveItem={this.handleMouseLeave}
-        />
+        {hideLegend !== true && (
+          <ChartLegend.Flex
+            dataHints={this.dataHints}
+            items={this.state.legendItems}
+            size={legendProps?.size}
+            shape={legendProps?.shape}
+            onChangeVisibleItem={
+              legendProps?.disableCheckedItems
+                ? undefined
+                : callAllEventHandlers(legendProps?.onChangeVisibleItem, this.handleChangeVisible)
+            }
+            onMouseEnterItem={
+              legendProps?.disableSelectItems
+                ? undefined
+                : callAllEventHandlers(legendProps?.onMouseEnterItem, this.handleMouseEnter)
+            }
+            onMouseLeaveItem={
+              legendProps?.disableSelectItems
+                ? undefined
+                : callAllEventHandlers(legendProps?.onMouseLeaveItem, this.handleMouseLeave)
+            }
+          />
+        )}
         <Plot
           data={data}
           scale={[this.xScale, this.yScale]}
@@ -177,12 +226,39 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
                   transparent={
                     this.state.highlightedLine !== -1 && this.state.highlightedLine !== index
                   }
+                  curve={curve}
                 >
-                  <Line.Dots display />
+                  {disableDots !== true && <Line.Dots display />}
                 </Line>
               )
             );
           })}
+          {disableTooltip !== true && (
+            <HoverLine.Tooltip x={xKey} wMin={100}>
+              {({ xIndex }) => {
+                return {
+                  children: (
+                    <>
+                      <HoverLine.Tooltip.Title>{data[xIndex][xKey]}</HoverLine.Tooltip.Title>
+
+                      {this.state.legendItems
+                        .filter((item) => item.checked)
+                        .map((item) => {
+                          return (
+                            <Flex justifyContent='space-between' key={item.id}>
+                              <HoverLine.Tooltip.Dot mr={4} color={item.color}>
+                                {item.label}
+                              </HoverLine.Tooltip.Dot>
+                              <Text bold>{this.tooltipValueFormatter(data[xIndex][item.id])}</Text>
+                            </Flex>
+                          );
+                        })}
+                    </>
+                  ),
+                };
+              }}
+            </HoverLine.Tooltip>
+          )}
         </Plot>
       </SChart>,
     );
