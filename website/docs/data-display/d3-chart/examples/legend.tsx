@@ -1,16 +1,10 @@
 import React from 'react';
-import { Line, minMax, XAxis, Plot, YAxis } from '@semcore/ui/d3-chart';
+import { Line, minMax, XAxis, Plot, YAxis, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Box } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 
 export default () => {
-  const [dataLegend, setDataLegend] = React.useState(
-    Object.keys(data[0])
-      .filter((name) => name !== 'x')
-      .map((name) => ({ name, checked: true, opacity: false })),
-  );
-
   const MAP_THEME = {
     y: 'orange',
     y2: 'green',
@@ -18,58 +12,58 @@ export default () => {
   const width = 500;
   const height = 300;
   const MARGIN = 40;
+
+  const [legendItems, setLegendItems] = React.useState(
+    Object.keys(data[0])
+      .filter((name) => name !== 'x')
+      .map((item) => {
+        return {
+          id: item,
+          label: item,
+          checked: true,
+          color: MAP_THEME[item],
+        };
+      }),
+  );
+
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
     .domain(minMax(data, 'x'));
 
   const yScale = scaleLinear()
     .range([height - MARGIN, MARGIN])
-    .domain(dataLegend.find((item) => item.checked) ? [0, 10] : []);
+    .domain(legendItems.find((item) => item.checked) ? [0, 10] : []);
 
-  const handleChange = (name) => (checked) => {
-    const newDataLegend = dataLegend.map((item) => {
-      if (item.name === name) {
-        return { ...item, checked };
-      }
-      return { ...item, opacity: checked };
-    });
+  const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
-    setDataLegend(newDataLegend);
-  };
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
+        }
 
-  const handleMouseEnter = (name) => () => {
-    const activeItem = dataLegend.find((item) => item.name === name);
-    if (!activeItem.checked) return;
-    setDataLegend((data) =>
-      data.map((item) => {
-        if (item.name !== name) return { ...item, opacity: true };
         return item;
-      }),
-    );
-  };
-  const handleMouseLeave = () => {
-    setDataLegend(dataLegend.map((item) => ({ ...item, opacity: false })));
-  };
+      });
+    });
+  }, []);
+
+  const handleMouseEnter = React.useCallback((id: string) => {
+    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+  }, []);
+  const handleMouseLeave = React.useCallback(() => {
+    setHighlightedLine(-1);
+  }, []);
 
   return (
     <>
       <Box>
-        {dataLegend.map((item) => {
-          return (
-            <Checkbox
-              key={item.name}
-              onMouseEnter={handleMouseEnter(item.name)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Checkbox.Value
-                theme={MAP_THEME[item.name]}
-                checked={item.checked}
-                onChange={handleChange(item.name)}
-              />
-              <Checkbox.Text pr={4}>{item.name}</Checkbox.Text>
-            </Checkbox>
-          );
-        })}
+        <ChartLegend.Flex
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+        />
       </Box>
       <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
         <YAxis>
@@ -79,18 +73,19 @@ export default () => {
         <XAxis>
           <XAxis.Ticks />
         </XAxis>
-        {dataLegend.map(
-          (item) =>
+        {legendItems.map((item, index) => {
+          return (
             item.checked && (
               <Line
-                key={item.name}
+                key={item.id}
                 x='x'
-                y={item.name}
-                color={MAP_THEME[item.name]}
-                opacity={item.opacity ? 0.3 : 1}
+                y={item.id}
+                color={MAP_THEME[item.id]}
+                transparent={highlightedLine !== -1 && highlightedLine !== index}
               />
-            ),
-        )}
+            )
+          );
+        })}
       </Plot>
     </>
   );

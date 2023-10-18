@@ -28,16 +28,14 @@ export default () => {
     .domain([0, 10]);
 
   const [legendItems, setLegendItems] = React.useState(
-    data.reduce<LegendItem[]>((res, item, index) => {
-      res.push({
+    data.map((item, index) => {
+      return {
         id: index.toString(),
         label: `Round item (${item.label}) [${index}]`,
         checked: true,
         color: item.color,
-      });
-
-      return res;
-    }, []),
+      };
+    }),
   );
 
   return (
