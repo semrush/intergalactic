@@ -230,7 +230,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
     ],
   },
   {
-    text: 'Documentation',
+    text: 'Components & Patterns',
     items: [
       {
         text: 'Components',
@@ -2300,7 +2300,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
         ],
       },
       {
-        text: 'Utils 🛠',
+        text: 'Utils',
         collapsed: true,
         items: [
           {
