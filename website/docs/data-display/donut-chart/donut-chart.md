@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Donut chart** visualizes parts to the whole by dividing the circle into proportional segments.

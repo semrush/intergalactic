@@ -1,7 +1,9 @@
 import React from 'react';
 // @ts-ignore
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
-import { Chart, LineChartProps } from '@semcore/d3-chart';
+// @ts-ignore
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
 
@@ -9,8 +11,6 @@ const lineColors = {
   Line1: resolveColor('blue-300'),
   Line2: resolveColor('green-200'),
   Line3: resolveColor('orange-400'),
-  Line4: resolveColor('pink-300'),
-  Line5: resolveColor('yellow-200'),
 };
 
 const data = [...Array(5).keys()].map((d, i) => ({
@@ -18,9 +18,31 @@ const data = [...Array(5).keys()].map((d, i) => ({
   Line1: Math.random() * 10,
   Line2: Math.random() * 10,
   Line3: Math.random() * 10,
-  Line4: Math.random() * 10,
-  Line5: Math.random() * 10,
 }));
+
+const area = {
+  Line1: data.map((item) => {
+    return {
+      x: item.x,
+      y0: item.Line1 - 1,
+      y1: item.Line1 + 1,
+    };
+  }),
+  Line2: data.map((item) => {
+    return {
+      x: item.x,
+      y0: item.Line2 - 1,
+      y1: item.Line2 + 1,
+    };
+  }),
+  Line3: data.map((item) => {
+    return {
+      x: item.x,
+      y0: item.Line3 - 1,
+      y1: item.Line3 + 1,
+    };
+  }),
+};
 
 const curveMap = {
   curveCardinal,
@@ -29,28 +51,21 @@ const curveMap = {
 };
 
 const Preview = (preview) => {
-  const { select, radio, text, bool } = preview('Chart.Line');
+  const { select, radio, label, bool } = preview('Chart.Line');
 
-  const direction = radio({
-    key: 'direction',
-    defaultValue: 'column',
-    label: 'Direction',
-    options: ['row', 'column'],
-  });
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    hideXAxis,
+    hideYAxis,
+    hideTooltip,
+    hideLegend,
+    legendProps,
+    showTotalInTooltip,
+  } = chartPlayground({ select, radio, label, bool });
 
-  const size = radio({
-    key: 'size',
-    defaultValue: 'm',
-    label: 'Size',
-    options: ['m', 'l'],
-  });
-
-  const shape = select({
-    key: 'shape',
-    defaultValue: 'Checkbox',
-    label: 'Shape',
-    options: ['Checkbox', 'Line', 'Circle', 'Square'],
-  });
+  label({ label: 'Linear chart props', key: 'linearChartProps' });
 
   const curveName = select({
     key: 'curveName',
@@ -59,57 +74,46 @@ const Preview = (preview) => {
     options: ['No curve', ...Object.keys(curveMap)],
   });
 
-  const disableTooltip = bool({
-    key: 'disableTooltip',
-    defaultValue: false,
-    label: 'Disable tooltip',
-  });
-
   const disableDots = bool({
     key: 'disableDots',
     defaultValue: false,
     label: 'Disable dots',
   });
 
-  const hideLegend = bool({
-    key: 'hideLegend',
+  const withArea = bool({
+    key: 'withArea',
     defaultValue: false,
-    label: 'Hide legend',
+    label: 'Enable area',
   });
 
-  const disableCheck = bool({
-    key: 'disableCheck',
-    defaultValue: false,
-    label: 'Disable check',
+  const areaCurve = select({
+    key: 'areaCurve',
+    defaultValue: 'No curve',
+    label: 'Area Curve',
+    options: ['No curve', ...Object.keys(curveMap)],
   });
-
-  const disableSelect = bool({
-    key: 'disableSelect',
-    defaultValue: false,
-    label: 'Disable select',
-  });
-
-  const legendProps: LineChartProps['legendProps'] = {
-    shape,
-    size,
-    disableSelectItems: disableSelect,
-    disableCheckedItems: disableCheck,
-  };
 
   return (
     // @ts-ignore
     <Chart.Line
       data={data}
-      xKey={'x'}
+      groupKey={'x'}
       colorMap={lineColors}
-      width={500}
-      height={300}
+      showTotalInTooltip={showTotalInTooltip}
+      plotWidth={500}
+      plotHeight={300}
       legendProps={legendProps}
       direction={direction}
       hideLegend={hideLegend}
-      disableTooltip={disableTooltip}
+      hideTooltip={hideTooltip}
       disableDots={disableDots}
       curve={curveMap[curveName]}
+      hideXAxis={hideXAxis}
+      hideYAxis={hideYAxis}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+      area={withArea ? area : undefined}
+      areaCurve={curveMap[areaCurve]}
     />
   );
 };

@@ -5,6 +5,10 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
+@## Basic usage
+
+@example base
+
 @## Venn
 
 A Venn chart allows you to see all kinds of intersections between two or more datasets.

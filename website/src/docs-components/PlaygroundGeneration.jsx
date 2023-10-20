@@ -16,6 +16,10 @@ import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
 import darkThemeTokens from '@semcore/utils/lib/themes/dark.json';
 
+Playground.createWidget('label', ({ label }) => {
+  return <h3>{label}</h3>;
+});
+
 Playground.createWidget('empty', () => {
   return null;
 });

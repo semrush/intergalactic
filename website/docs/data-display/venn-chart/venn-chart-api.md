@@ -5,6 +5,16 @@ fileSource: d3-chart
 
 @## D3 API
 
+@## Chart.Venn
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+@typescript VennChartProps
+
+@## Venn
+
 It have children components `Circle`, `Intersection`.
 
 ```js

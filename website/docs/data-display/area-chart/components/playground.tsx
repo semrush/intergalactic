@@ -1,0 +1,89 @@
+import React from 'react';
+// @ts-ignore
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+// @ts-ignore
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart } from '@semcore/d3-chart';
+import resolveColor from '@semcore/ui/utils/lib/color';
+import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
+
+const lineColors = {
+  Line1: resolveColor('blue-300'),
+  Line2: resolveColor('green-200'),
+  Line3: resolveColor('orange-400'),
+};
+
+const data = [...Array(5).keys()].map((d, i) => ({
+  x: i,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+  Line3: Math.random() * 10,
+}));
+
+const curveMap = {
+  curveCardinal,
+  curveLinearClosed,
+  curveBumpX,
+};
+
+const Preview = (preview) => {
+  const { select, radio, label, bool } = preview('Chart.Area');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    hideXAxis,
+    hideYAxis,
+    showTotalInTooltip,
+    hideTooltip,
+    hideLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  label({ label: 'Linear chart props', key: 'linearChartProps' });
+
+  const curveName = select({
+    key: 'curveName',
+    defaultValue: 'No curve',
+    label: 'Curve',
+    options: ['No curve', ...Object.keys(curveMap)],
+  });
+
+  const disableDots = bool({
+    key: 'disableDots',
+    defaultValue: false,
+    label: 'Disable dots',
+  });
+
+  const stacked = bool({
+    key: 'stacked',
+    defaultValue: false,
+    label: 'Is stacked',
+  });
+
+  return (
+    // @ts-ignore
+    <Chart.Area
+      data={data}
+      groupKey={'x'}
+      colorMap={lineColors}
+      plotWidth={500}
+      plotHeight={300}
+      legendProps={legendProps}
+      showTotalInTooltip={showTotalInTooltip}
+      direction={direction}
+      hideLegend={hideLegend}
+      hideTooltip={hideTooltip}
+      disableDots={disableDots}
+      curve={curveMap[curveName]}
+      hideXAxis={hideXAxis}
+      hideYAxis={hideYAxis}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+      stacked={stacked}
+    />
+  );
+};
+
+export default PlaygroundGeneration(Preview);

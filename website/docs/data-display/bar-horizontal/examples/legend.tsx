@@ -5,7 +5,6 @@ import {
   YAxis,
   XAxis,
   HoverRect,
-  colors,
   LegendItem,
   makeDataHintsContainer,
   ChartLegend,
@@ -102,6 +101,7 @@ export default () => {
             .map((item, index) => {
               return (
                 <GroupBar.HorizontalBar
+                  key={item.id}
                   x={item.id}
                   color={lineColors[item.id]}
                   transparent={highlightedLine !== -1 && highlightedLine !== index}

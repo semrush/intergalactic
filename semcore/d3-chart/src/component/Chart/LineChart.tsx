@@ -1,85 +1,27 @@
 import React from 'react';
-import createComponent, { Component, Root, sstyled } from '@semcore/core';
-import { ChartMap } from './Chart.type';
+import createComponent from '@semcore/core';
+import { ChartMap } from './AbstractChart.type';
 import { LineChartProps } from './LineChart.type';
-import { Flex } from '@semcore/flex-box';
-import { scaleLinear, scaleTime } from 'd3-scale';
-import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
-import { makeDataHintsContainer } from '../../a11y/hints';
-import ChartLegend from '../ChartLegend';
-import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import { Text } from '@semcore/typography';
-import { interpolateValue } from '../../utils';
+import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
-import { HoverLine, Line, minMax, Plot, XAxis, YAxis } from '../..';
+import { Line, minMax, HoverLine } from '../..';
+import { AbstractChart } from './AbstractChart';
+import { Box, Flex } from '@semcore/flex-box';
+import { Text } from '@semcore/typography';
 
-type LineChartState = {
-  legendItems: LegendItem[];
-  highlightedLine: number;
-};
+class LineChartComponent extends AbstractChart<LineChartProps> {
+  static displayName = 'Chart.Line';
 
-class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
-  static style = {};
-  static defaultProps = {
-    direction: 'column',
-  };
-
-  dataHints = makeDataHintsContainer();
-
-  state = {
-    legendItems: this.defaultLegendItems,
-    highlightedLine: -1,
-  };
-
-  constructor(props: LineChartProps) {
-    super(props);
-
-    this.setHighlightedLine = this.setHighlightedLine.bind(this);
-    this.handleChangeVisible = this.handleChangeVisible.bind(this);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    this.resolveColor = this.resolveColor.bind(this);
-    this.tooltipValueFormatter = this.tooltipValueFormatter.bind(this);
-  }
-
-  get defaultLegendItems(): LegendItem[] {
-    const { data, legendProps, xKey } = this.props;
-
-    return Object.keys(data[0])
-      .filter((key) => key !== xKey)
-      .map((key) => {
-        const legendData = legendProps?.legendMap?.[key];
-
-        const legendItem: LegendItem = {
-          id: key,
-          label: legendData?.label ?? key,
-          icon: legendData?.icon ?? undefined,
-          checked: legendData?.defaultChecked ?? true,
-          color: this.resolveColor(key),
-        };
-
-        if (legendData?.additionalInfo || legendData?.count) {
-          legendItem.additionalInfo = legendData.additionalInfo
-            ? { label: legendData.additionalInfo }
-            : legendData.count
-            ? { count: legendData.count }
-            : undefined;
-        }
-
-        return legendItem;
-      });
-  }
-
-  get xScale() {
-    const { xScale, margin = 30, width, data, xKey } = this.asProps;
+  protected get xScale() {
+    const { xScale, marginY = 30, plotWidth, data, groupKey } = this.asProps;
 
     if (xScale) {
       return xScale;
     }
 
-    const testItem = data[0][xKey];
-    const range = [margin, width - margin];
-    const domain = minMax(data, xKey);
+    const testItem = data[0][groupKey];
+    const range = [marginY, plotWidth - this.plotPadding];
+    const domain = minMax(data, groupKey);
 
     if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
       return scaleTime(domain, range);
@@ -88,190 +30,90 @@ class LineChartComponent extends Component<LineChartProps, {}, LineChartState> {
     return scaleLinear(domain, range);
   }
 
-  get yScale() {
-    const { yScale, margin = 30, height, data, xKey } = this.asProps;
+  protected get yScale(): ScaleLinear<any, any> {
+    const { yScale, marginX = 30, plotHeight } = this.asProps;
 
-    const flatValues = data.reduce<Set<number>>((result, item) => {
-      Object.entries(item).forEach(([key, value]) => {
-        if (key !== xKey && typeof value === 'number') {
-          result.add(value);
-        }
-      });
+    if (yScale) {
+      return yScale;
+    }
 
-      return result;
-    }, new Set());
+    const flatValues = super.flatValues;
 
-    const min = Math.min(...flatValues);
     const max = Math.max(...flatValues);
+    const min = Math.min(...flatValues);
 
-    return (
-      yScale ??
-      scaleLinear()
-        .range([height - margin, margin])
-        .domain([min, max])
-    );
+    return scaleLinear()
+      .range([plotHeight - marginX, this.plotPadding])
+      .domain([min, max]);
   }
 
-  get xTicks() {
-    return this.xScale.ticks(this.props.data.length);
-  }
+  protected renderChart() {
+    const { groupKey, curve, disableDots, area, areaCurve } = this.asProps;
+    const { legendItems, highlightedLine } = this.state;
 
-  get yTicks() {
-    const dataKeys = Object.keys(this.props.data[0]);
-
-    return this.yScale.ticks(dataKeys.length - 1);
-  }
-
-  setHighlightedLine(index: number) {
-    this.setState({ highlightedLine: index });
-  }
-
-  handleChangeVisible(id: string, isVisible: boolean) {
-    this.setState((prevState) => {
-      const legendItems = prevState.legendItems.map((item) => {
-        if (item.id === id) {
-          item.checked = isVisible;
-        }
-
-        return item;
-      });
-
-      return { legendItems };
+    return legendItems.map((item, index) => {
+      return (
+        item.checked && (
+          <Line
+            x={groupKey.toString()}
+            y={item.id}
+            key={item.id}
+            color={this.resolveColor(item.id)}
+            transparent={highlightedLine !== -1 && highlightedLine !== index}
+            curve={curve}
+          >
+            {disableDots !== true && <Line.Dots display />}
+            {area?.[item.id] && (
+              <Line.Area area={area[item.id]} y0={'y0'} y1={'y1'} curve={areaCurve} />
+            )}
+          </Line>
+        )
+      );
     });
   }
 
-  handleMouseEnter(id: string) {
-    this.setHighlightedLine(this.state.legendItems.findIndex((line) => line.id === id));
-  }
+  protected renderTooltip() {
+    const { data, groupKey, showTotalInTooltip } = this.asProps;
+    const { legendItems } = this.state;
 
-  handleMouseLeave() {
-    this.setHighlightedLine(-1);
-  }
+    return (
+      <HoverLine.Tooltip x={groupKey} wMin={100}>
+        {({ xIndex }: any) => {
+          const dataItem: any = data[xIndex];
 
-  resolveColor(id: string) {
-    return this.props.colorMap?.[id] ?? '';
-  }
+          const total = legendItems.reduce((sum, legendItem) => {
+            return sum + dataItem[legendItem.id];
+          }, 0);
 
-  tooltipValueFormatter(value: number | typeof interpolateValue | Date): string {
-    const { tooltipValueFormatter } = this.asProps;
+          return {
+            children: (
+              <>
+                <HoverLine.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverLine.Tooltip.Title>
 
-    if (tooltipValueFormatter) {
-      return tooltipValueFormatter(value);
-    }
+                {legendItems.map((item) => {
+                  return (
+                    item.checked && (
+                      <Flex justifyContent='space-between' key={item.id}>
+                        <HoverLine.Tooltip.Dot mr={4} color={item.color}>
+                          {item.label}
+                        </HoverLine.Tooltip.Dot>
+                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                      </Flex>
+                    )
+                  );
+                })}
 
-    return value.toString();
-  }
-
-  render() {
-    const SChart = Root;
-    const {
-      styles,
-      margin = 30,
-      width,
-      height,
-      data,
-      xKey,
-      hideLegend,
-      legendProps,
-      disableDots,
-      disableTooltip,
-      curve,
-      direction,
-    } = this.asProps;
-
-    return sstyled(styles)(
-      <SChart render={Flex}>
-        {hideLegend !== true && (
-          <ChartLegend.Flex
-            dataHints={this.dataHints}
-            items={this.state.legendItems}
-            size={legendProps?.size}
-            shape={legendProps?.shape}
-            direction={legendProps?.direction ?? (direction === 'row' ? 'column' : 'row')}
-            onChangeVisibleItem={
-              legendProps?.disableCheckedItems
-                ? undefined
-                : callAllEventHandlers(legendProps?.onChangeVisibleItem, this.handleChangeVisible)
-            }
-            onMouseEnterItem={
-              legendProps?.disableSelectItems
-                ? undefined
-                : callAllEventHandlers(legendProps?.onMouseEnterItem, this.handleMouseEnter)
-            }
-            onMouseLeaveItem={
-              legendProps?.disableSelectItems
-                ? undefined
-                : callAllEventHandlers(legendProps?.onMouseLeaveItem, this.handleMouseLeave)
-            }
-          />
-        )}
-        <Plot
-          data={data}
-          scale={[this.xScale, this.yScale]}
-          width={width}
-          height={height}
-          dataHints={this.dataHints}
-        >
-          <YAxis>
-            <YAxis.Ticks ticks={this.yTicks} />
-            <YAxis.Grid ticks={this.yTicks} />
-          </YAxis>
-          <XAxis>
-            <XAxis.Ticks ticks={this.xTicks} />
-          </XAxis>
-          {this.state.legendItems.map((item, index) => {
-            return (
-              item.checked && (
-                <Line
-                  x={xKey.toString()}
-                  y={item.id}
-                  key={item.id}
-                  color={this.resolveColor(item.id)}
-                  transparent={
-                    this.state.highlightedLine !== -1 && this.state.highlightedLine !== index
-                  }
-                  curve={curve}
-                >
-                  {disableDots !== true && <Line.Dots display />}
-                </Line>
-              )
-            );
-          })}
-          {disableTooltip !== true && (
-            <HoverLine.Tooltip x={xKey} wMin={100}>
-              {
-                // @ts-ignore
-                ({ xIndex }) => {
-                  return {
-                    children: (
-                      <>
-                        <HoverLine.Tooltip.Title>
-                          {data[xIndex][xKey].toString()}
-                        </HoverLine.Tooltip.Title>
-
-                        {this.state.legendItems
-                          .filter((item) => item.checked)
-                          .map((item) => {
-                            return (
-                              <Flex justifyContent='space-between' key={item.id}>
-                                <HoverLine.Tooltip.Dot mr={4} color={item.color}>
-                                  {item.label}
-                                </HoverLine.Tooltip.Dot>
-                                <Text bold>
-                                  {this.tooltipValueFormatter(data[xIndex][item.id])}
-                                </Text>
-                              </Flex>
-                            );
-                          })}
-                      </>
-                    ),
-                  };
-                }
-              }
-            </HoverLine.Tooltip>
-          )}
-        </Plot>
-      </SChart>,
+                {showTotalInTooltip === true && (
+                  <Flex mt={2} justifyContent='space-between'>
+                    <Box mr={4}>Total</Box>
+                    <Text bold>{total}</Text>
+                  </Flex>
+                )}
+              </>
+            ),
+          };
+        }}
+      </HoverLine.Tooltip>
     );
   }
 }

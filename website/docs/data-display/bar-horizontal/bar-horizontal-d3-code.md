@@ -5,6 +5,10 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
+@## Basic usage
+
+@example base
+
 @## Horizontal bar
 
 You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart guide](/data-display/bar-chart/bar-chart-d3-code/#addc35).

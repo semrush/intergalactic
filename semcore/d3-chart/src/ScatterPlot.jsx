@@ -79,7 +79,7 @@ class ScatterPlotRoot extends Component {
           use:duration={`${duration}ms`}
           transparent={transparent}
         />
-        {d[value] && (
+        {d[value] !== undefined && (
           <SValue
             aria-hidden
             x={xScale(d[x]) + offset[0]}
