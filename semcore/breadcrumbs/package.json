@@ -1,7 +1,7 @@
 {
   "name": "@semcore/breadcrumbs",
   "description": "Semrush Breadcrumbs Component",
-  "version": "5.11.1",
+  "version": "5.11.2-prerelease.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,12 +12,12 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.8.3",
-    "@semcore/icon": "4.11.1",
-    "@semcore/flex-box": "5.8.1"
+    "@semcore/utils": "4.8.4-prerelease.0",
+    "@semcore/icon": "4.11.2-prerelease.0",
+    "@semcore/flex-box": "5.8.2-prerelease.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.7.6",
+    "@semcore/core": "^2.7.7-prerelease.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
