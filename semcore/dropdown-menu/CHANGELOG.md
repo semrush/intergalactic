@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.3] - 2023-10-24
+
+### Fixed
+
+- Added onBlur handler for `DropdownMenu.Trigger` for correct close `DropdownMenu.Menu`.
+
 ## [4.10.2] - 2023-10-16
 
 ### Changed
