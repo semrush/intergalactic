@@ -82,7 +82,16 @@ export type PopperProps = OutsideClickProps &
 
 /** @deprecated */
 export interface IPopperTriggerProps extends PopperTriggerProps, UnknownProperties {}
-export type PopperTriggerProps = BoxProps & {};
+export type PopperTriggerProps = BoxProps & {
+  /**
+   * Disabled focus trap, autofocus and focus return
+   */
+  disableEnforceFocus?: boolean;
+  /**
+   * Flag shows that trigger element is selected by keyboard but not focused
+   */
+  highlighted?: boolean;
+};
 
 /** @deprecated */
 export interface IPopperPopperProps extends PopperPopperProps, UnknownProperties {}
