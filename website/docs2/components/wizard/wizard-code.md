@@ -27,7 +27,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use='primary' onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
@@ -118,7 +118,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use='primary' onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>
@@ -222,7 +222,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use='primary' onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         Open modal
       </Button>
       <Wizard visible={visible} step={step} w={600} onClose={handleClose}>

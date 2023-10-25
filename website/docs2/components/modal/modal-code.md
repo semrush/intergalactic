@@ -21,7 +21,7 @@ const Demo = () => {
 
   return (
     <React.Fragment>
-      <Button use='primary' onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>
@@ -74,7 +74,7 @@ class Demo extends React.PureComponent {
     const { visible } = this.state;
     return (
       <React.Fragment>
-        <Button use='primary' onClick={this.openModal}>
+        <Button onClick={this.openModal}>
           Open modal
         </Button>
         <Modal visible={visible} onClose={this.closeModal} w={500}>
@@ -131,7 +131,7 @@ const Demo = () => {
   }, [text]);
   return (
     <React.Fragment>
-      <Button use='primary' onClick={() => setVisible(true)}>
+      <Button onClick={() => setVisible(true)}>
         Open modal
       </Button>
       <Modal mt={0} w={500} visible={visible} onClose={() => setVisible(false)}>
@@ -170,7 +170,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use='primary' onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose}>

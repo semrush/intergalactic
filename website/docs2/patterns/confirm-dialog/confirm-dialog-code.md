@@ -44,7 +44,7 @@ const Demo = () => {
 
   return (
     <React.Fragment>
-      <Button use='primary' onClick={handleOpen}>
+      <Button onClick={handleOpen}>
         Open modal
       </Button>
       <Modal visible={visible} onClose={handleClose} w={536}>

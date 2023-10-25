@@ -18,7 +18,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use='primary' onClick={() => setVisible(true)}>
+      <Button onClick={() => setVisible(true)}>
         Open fullscreen window
       </Button>
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>
@@ -53,7 +53,7 @@ const Demo = () => {
 
   return (
     <>
-      <Button use='primary' onClick={() => setVisible(true)}>
+      <Button onClick={() => setVisible(true)}>
         Open fullscreen window
       </Button>
       <FullscreenModal visible={visible} onClose={() => setVisible(false)}>

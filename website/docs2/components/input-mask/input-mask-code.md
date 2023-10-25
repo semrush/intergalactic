@@ -113,7 +113,7 @@ const Demo = () => {
   const handleSuccess = React.useCallback(() => expireDateInput.current.focus(), []);
 
   return (
-    <Box wMax={225} p={8} m='0 auto' style={{ borderRadius: '12px', background: '#F4F5F9' }}>
+    <Box w={300} p={8} m='0 auto' style={{ borderRadius: '12px', border: '1px solid' }}>
       <Text
         tag='label'
         size={300}
@@ -137,7 +137,7 @@ const Demo = () => {
         <Text tag='label' mr={2} size={300} htmlFor='expire_date'>
           Expire date
         </Text>
-        <InputMask size='l' wMax={85}>
+        <InputMask size='l' w={85}>
           <InputMask.Value
             ref={expireDateInput}
             mask='99/99'

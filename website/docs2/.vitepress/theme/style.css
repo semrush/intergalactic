@@ -5,7 +5,7 @@
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
 
- ::selection {
+::selection {
   background: rgba(171, 108, 254, 0.24);
 }
 
@@ -27,7 +27,7 @@
  * Shadows
  * -------------------------------------------------------------------------- */
 
- :root {
+:root {
   --vp-shadow-1: 0px 1px 2px 0px rgba(25, 27, 35, 0.12), 0px 0px 1px 0px rgba(25, 27, 35, 0.16);
   --vp-shadow-2: 0px 3px 12px 0px rgba(25, 27, 35, 0.07), 0px 1px 4px 0px rgba(25, 27, 35, 0.07);
   --vp-shadow-3: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
@@ -120,23 +120,23 @@
  * Component: Aside
  * -------------------------------------------------------------------------- */
 
- :root {
+:root {
   /* For our wide text logo */
   --vp-sidebar-width: 312px;
- }
+}
 
- .VPSidebarItem.level-0 > .item > .text:hover,
- .VPSidebarItem.level-1 > .item > .text:hover,
- .VPSidebarItem.level-2 > .item > .text:hover,
- .VPSidebarItem.level-3 > .item > .text:hover,
- .VPSidebarItem.level-4 > .item > .text:hover,
- .VPSidebarItem.level-5 > .item > .text:hover,
- .VPSidebarItem.level-0 > .item > .link > .text:hover,
- .VPSidebarItem.level-1 > .item > .link > .text:hover,
- .VPSidebarItem.level-2 > .item > .link > .text:hover,
- .VPSidebarItem.level-3 > .item > .link > .text:hover,
- .VPSidebarItem.level-4 > .item > .link > .text:hover,
- .VPSidebarItem.level-5 > .item > .link > .text:hover {
+.VPSidebarItem.level-0>.item>.text:hover,
+.VPSidebarItem.level-1>.item>.text:hover,
+.VPSidebarItem.level-2>.item>.text:hover,
+.VPSidebarItem.level-3>.item>.text:hover,
+.VPSidebarItem.level-4>.item>.text:hover,
+.VPSidebarItem.level-5>.item>.text:hover,
+.VPSidebarItem.level-0>.item>.link>.text:hover,
+.VPSidebarItem.level-1>.item>.link>.text:hover,
+.VPSidebarItem.level-2>.item>.link>.text:hover,
+.VPSidebarItem.level-3>.item>.link>.text:hover,
+.VPSidebarItem.level-4>.item>.link>.text:hover,
+.VPSidebarItem.level-5>.item>.link>.text:hover {
   color: var(--vp-c-text-1) !important;
 }
 
@@ -283,8 +283,8 @@
 }
 
 /* Dividers in the header */
-.menu + .appearance:before,
-.appearance + .social-links:before {
+.menu+.appearance:before,
+.appearance+.social-links:before {
   height: 20px !important;
 }
 
@@ -299,7 +299,8 @@
 
 /* Logo */
 
-.devportal-logo, .intergalactic-logo {
+.devportal-logo,
+.intergalactic-logo {
   display: flex;
   align-items: center;
   margin-right: 8px;
@@ -327,12 +328,12 @@
   color: var(--vp-c-sponsor) !important;
 }
 
-.VPSidebarItem.level-0.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-1.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-2.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-3.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-4.is-link > .item > .link:hover .text,
-.VPSidebarItem.level-5.is-link > .item > .link:hover .text {
+.VPSidebarItem.level-0.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-1.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-2.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-3.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-4.is-link>.item>.link:hover .text,
+.VPSidebarItem.level-5.is-link>.item>.link:hover .text {
   color: var(--vp-c-sponsor) !important;
 }
 
@@ -384,11 +385,14 @@
   border-width: 0;
 }
 
-th, tr, td {
+th,
+tr,
+td {
   vertical-align: top;
 }
 
-.vp-doc th, .vp-doc td {
+.vp-doc th,
+.vp-doc td {
   border: none;
 }
 
@@ -459,7 +463,7 @@ img {
   isolation: isolate;
 }
 
-.vp-doc div[class*='language-'], 
+.vp-doc div[class*='language-'],
 .vp-block {
   border-radius: 6px;
   margin: 16px 0 0;
@@ -467,6 +471,10 @@ img {
 
 .vp-doc .documentation-sandbox div[class*='language-'] {
   border-radius: 0;
+}
+
+.playground-runtime a {
+  text-decoration: none;
 }
 
 @media (min-width: 640px) {
@@ -532,7 +540,8 @@ img {
   background: transparent;
 }
 
-.vp-doc a, .vp-doc a:visited {
+.vp-doc a,
+.vp-doc a:visited {
   color: var(--vp-c-indigo-2);
 }
 
@@ -561,10 +570,11 @@ img {
   text-decoration: none;
 }
 
-.edit-link-button.edit-link-button, 
+.edit-link-button.edit-link-button,
 .edit-link-button.edit-link-button:visited {
   color: var(--vp-c-indigo-2);
 }
+
 .edit-link-button.edit-link-button:hover {
   color: var(--vp-c-indigo-1);
   text-decoration: underline;
@@ -577,8 +587,9 @@ img {
 .VPLocalNavOutlineDropdown .items {
   border-radius: 6px;
 }
-.VPLocalNavOutlineDropdown .items, 
-.VPLocalNavOutlineDropdown .header, 
+
+.VPLocalNavOutlineDropdown .items,
+.VPLocalNavOutlineDropdown .header,
 .VPLocalNavOutlineDropdown .outline {
   background-color: var(--vp-c-bg-elv);
 }
@@ -586,9 +597,12 @@ img {
 .vp-doc a {
   text-decoration: none;
 }
-.vp-doc a:hover, .vp-doc a:active {
+
+.vp-doc a:hover,
+.vp-doc a:active {
   text-decoration: underline;
 }
+
 .shiki.github-dark {
   background-color: #0C0E13 !important;
 }
