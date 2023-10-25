@@ -29,7 +29,7 @@ export default () => {
         <XAxis.Ticks />
       </XAxis>
       <Bar x='category' y='bar1' color='chart-palette-order-1' />
-      <Bar x='category' y='bar2' color='chart-palette-order-2' />
+      <Bar x='category' y='bar2' color='chart-palette-order-3' />
       <XAxis position={0} />
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {
