@@ -246,6 +246,8 @@ jobs:
           pnpm install --frozen-lockfile
       - name: Install Browser
         run: npx playwright install webkit
+      - name: (WIP) Enable DND
+        run: node ./.ci/wip-enable-dnd.js
       - name: Enable VoiceOver Automation
         uses: guidepup/setup-action@0.11.2
       - name: Voice Over testing
