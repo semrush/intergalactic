@@ -1,3 +1,17 @@
+## [15.28.2] - 2023-10-24
+
+### @semcore/popper
+
+- **Fixed** Undelivered ResizeObserver's loop in popper after it is closed.
+
+### @semcore/switch
+
+- **Fixed** View of `Switch` with long text in addons.
+
+### @semcore/utils
+
+- **Fixed** Focus lock merging was causing invalid hooks order error.
+
 ## [15.28.1] - 2023-10-16
 
 ### @semcore/button

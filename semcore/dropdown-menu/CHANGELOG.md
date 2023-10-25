@@ -2,11 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.10.3] - 2023-10-24
+## [4.10.4] - 2023-10-24
 
 ### Fixed
 
-- Added onBlur handler for `DropdownMenu.Trigger` for correct close `DropdownMenu.Menu`.
+- Prevent to blur opened `DropdownMenu.Menu`.
+
+## [4.10.3] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown` [4.8.2 ~> 4.8.3], `@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/core` [2.7.6 ~> 2.7.7]).
 
 ## [4.10.2] - 2023-10-16
 
