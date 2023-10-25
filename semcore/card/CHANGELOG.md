@@ -4,9 +4,9 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ## [5.12.2] - 2023-10-24
 
-### Changed
+### Fixed
 
-- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
+- Hint icon is interactive.
 
 ## [5.12.1] - 2023-10-16
 
