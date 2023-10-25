@@ -8,6 +8,7 @@ import PageTopTabs from './PageTopTabs.vue';
 import TypesView from './TypesView.vue';
 import Page404 from './Page404.vue';
 import DevportalLogo from './DevportalLogo.vue';
+import DocFooter from './DocFooter.vue';
 
 export default {
   ...Theme,
@@ -17,6 +18,7 @@ export default {
       'doc-top': () => h(PageTopTabs),
       'not-found': () => h(Page404),
       'nav-bar-title-before': () => h(DevportalLogo),
+      'doc-after': () => h(DocFooter),
     });
   },
   enhanceApp({ app, router, siteData }) {

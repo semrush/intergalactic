@@ -52,35 +52,9 @@ export default defineConfig({
             'heading',
             'content',
           ],
-          // facetFilters: []
         },
       },
     },
-    // search: {
-    //   provider: 'local',
-    //   options: {
-    //     detailedView: true,
-    //     miniSearch: {
-    //       options: {
-    //         extractField: (document, fieldName) => {
-    //           if (fieldName === 'id') {
-    //             if (/#changed$/.test(document.id) || /#changed-\d+$/.test(document.id))
-    //               return `${document[fieldName]}-${uniqueId++}`;
-    //             if (/#added$/.test(document.id) || /#added-\d+$/.test(document.id))
-    //               return `${document[fieldName]}-${uniqueId++}`;
-    //             if (/#fixed$/.test(document.id) || /#fixed-\d+$/.test(document.id))
-    //               return `${document[fieldName]}-${uniqueId++}`;
-    //             if (/#break$/.test(document.id) || /#break-\d+$/.test(document.id))
-    //               return `${document[fieldName]}-${uniqueId++}`;
-    //             if (/#removed$/.test(document.id) || /#removed-\d+$/.test(document.id))
-    //               return `${document[fieldName]}-${uniqueId++}`;
-    //           }
-    //           return document[fieldName];
-    //         },
-    //       },
-    //     },
-    //   },
-    // },
     editLink: {
       pattern: 'https://github.com/semrush/intergalactic/edit/master/website/docs/:path',
       text: 'Edit this page on GitHub',

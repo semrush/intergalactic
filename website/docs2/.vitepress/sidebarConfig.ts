@@ -5,7 +5,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
     items: [
       {
         text: 'Get started',
-        collapsed: true,
+        collapsed: false,
         items: [
           {
             link: '/get-started-guide/dev-starter-guide/dev-starter-guide',

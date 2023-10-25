@@ -6,7 +6,7 @@
   </div>
   <div class="page-top-tabs-container">
     <div class="page-top-tabs-content">
-      <VPFeature v-for="tab in tabs" :title="tab.title" :link="tab.url" :data-current="tab.current" />
+      <a class="page-top-tabs-tab" v-for="tab in tabs" :href="tab.url" :data-current="tab.current">{{ tab.title }}</a>
     </div>
     <div class="page-top-tabs-fake-aside"></div>
   </div>
@@ -37,9 +37,9 @@
   width: 100%;
   max-width: 688px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  flex-direction: column;
+  gap: 16px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  overflow: auto;
 }
 
 .page-top-tabs-fake-aside {
@@ -63,12 +63,6 @@
   }
 }
 
-@media (min-width: 768px) {
-  .page-top-tabs-content {
-    flex-direction: row;
-  }
-}
-
 @media (min-width: 960px) {
 
   .page-top-tabs-container,
@@ -77,6 +71,21 @@
   }
 }
 
+.page-top-tabs-tab {
+  border-bottom: 3px solid transparent;
+  font-weight: 600;
+  padding-bottom: 5px;
+}
+
+.page-top-tabs-tab:hover {
+  border-color: var(--vp-c-divider);
+}
+
+.page-top-tabs-tab[data-current=true] {
+  border-color: var(--vp-c-brand);
+}
+
+/* 
 .VPFeature {
   flex: 1;
 }
@@ -91,12 +100,11 @@
 
 .page-top-tabs-content .VPFeature .box {
   padding: 12px;
-}
+} */
 </style>
 <script setup>
 import { computed } from 'vue'
 import { useData, useRoute } from 'vitepress'
-import VPFeature from 'vitepress/dist/client/theme-default/components/VPFeature.vue';
 const { frontmatter } = useData();
 const route = useRoute();
 const tabs = computed(() => (typeof frontmatter.value.tabs === 'string') ? frontmatter.value.tabs.split(',').map(tab => {

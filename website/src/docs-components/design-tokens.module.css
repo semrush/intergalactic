@@ -3,9 +3,14 @@
   max-width: 400px;
 }
 
+.searchInputIcon path {
+  fill: var(--intergalactic-icon-secondary-neutral);
+}
+
 .tokenNameWrapper {
   max-width: 100%;
 }
+
 .tokenName {
   cursor: pointer;
   max-width: 100%;
@@ -14,6 +19,7 @@
 .tokenValueWrapper {
   max-width: 100%;
 }
+
 .tokenValue {
   cursor: pointer;
   display: flex;

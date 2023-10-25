@@ -66,6 +66,7 @@
   flex-direction: column;
   padding: 20px;
   background-color: var(--vp-c-bg-alt);
+  min-width: 200px;
 }
 
 .widgetGroup {
