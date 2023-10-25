@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
@@ -175,34 +175,6 @@ describe('DropdownMenu', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
-  });
-
-  test.concurrent('should hide Menu after blur Trigger', async ({ expect }) => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <>
-        <DropdownMenu onVisibleChange={spy}>
-          <DropdownMenu.Trigger>
-            <div tabIndex={0} data-testid='trigger'>
-              Select trigger
-            </div>
-          </DropdownMenu.Trigger>
-          <DropdownMenu.Menu>
-            <DropdownMenu.Item>Option 1</DropdownMenu.Item>
-            <DropdownMenu.Item>Option 2</DropdownMenu.Item>
-          </DropdownMenu.Menu>
-        </DropdownMenu>
-      </>,
-    );
-
-    await userEvent.keyboard('[Tab]');
-    expect(getByTestId('trigger')).toHaveFocus();
-
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toBeCalledWith(true);
-
-    await userEvent.keyboard('[Tab]');
-    expect(spy).toBeCalledWith(false);
   });
 
   test('a11y', async () => {

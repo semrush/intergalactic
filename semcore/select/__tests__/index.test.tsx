@@ -4,7 +4,7 @@ import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
 
-import { cleanup, fireEvent, render, act, userEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, fireEvent, render, act } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 const { shouldSupportClassName, shouldSupportRef } = sharedTests;
@@ -361,32 +361,6 @@ describe('Select Trigger', () => {
     expect(document.activeElement?.tagName).toBe('DIV');
 
     vi.useRealTimers();
-  });
-
-  test.concurrent('should hide Menu after blur Trigger', async ({ expect }) => {
-    const spy = vi.fn();
-    const { getByTestId } = render(
-      <>
-        <Select onVisibleChange={spy}>
-          <Select.Trigger aria-label='Select trigger' data-testid='trigger'>
-            Select trigger
-          </Select.Trigger>
-          <Select.Menu>
-            <Select.Option value='1'>Option 1</Select.Option>
-            <Select.Option value='2'>Option 2</Select.Option>
-          </Select.Menu>
-        </Select>
-      </>,
-    );
-
-    await userEvent.keyboard('[Tab]');
-    expect(getByTestId('trigger')).toHaveFocus();
-
-    await userEvent.keyboard('[Enter]');
-    expect(spy).toBeCalledWith(true);
-
-    await userEvent.keyboard('[Tab]');
-    expect(spy).toBeCalledWith(false);
   });
 });
 

@@ -81,11 +81,6 @@ class DropdownMenuRoot extends Component {
       'aria-activedescendant':
         visible && highlightedIndex !== null ? `igc-${uid}-option-${highlightedIndex}` : undefined,
       onKeyDown: this.bindHandlerKeyDown('trigger'),
-      onBlur: () => {
-        if (visible) {
-          this.handlers.visible(false);
-        }
-      },
     };
   }
 

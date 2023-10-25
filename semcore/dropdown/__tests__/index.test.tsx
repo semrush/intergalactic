@@ -1,7 +1,7 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import Dropdown from '../src';
@@ -39,6 +39,34 @@ describe('Dropdown', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('should not loose focus by Tab after opened', async ({ expect }) => {
+    const spy = vi.fn();
+    const { getByTestId } = render(
+      <>
+        <Dropdown onVisibleChange={spy}>
+          <Dropdown.Trigger>
+            <div tabIndex={0} data-testid='trigger'>
+              Select trigger
+            </div>
+          </Dropdown.Trigger>
+          <Dropdown.Popper p={4}>Content</Dropdown.Popper>
+        </Dropdown>
+      </>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('trigger')).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(spy).toBeCalledWith(true);
+
+    await userEvent.keyboard('[Tab]');
+    expect(getByTestId('trigger')).toHaveFocus();
+
+    await userEvent.keyboard('[Escape]');
+    expect(spy).toBeCalledWith(false, expect.anything());
   });
 
   test('a11y', async () => {
