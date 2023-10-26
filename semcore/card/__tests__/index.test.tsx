@@ -2,7 +2,7 @@ import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import * as sharedTests from '@semcore/testing-utils/shared-tests';
 import { expect, test, describe, beforeEach } from '@semcore/testing-utils/vitest';
-import { cleanup } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, screen, userEvent } from '@semcore/testing-utils/testing-library';
 
 import { Text } from '@semcore/typography';
 import SettingsM from '@semcore/icon/Settings/m';
@@ -98,5 +98,25 @@ describe('Card', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('should support keyboard navigation to the Hint', async ({ expect }) => {
+    const tooltipContent = 'Some tooltip content';
+
+    render(
+      <Card>
+        <Card.Header>
+          <Card.Title hint={tooltipContent} tag='h4' inline my={0}>
+            Card heading
+          </Card.Title>
+        </Card.Header>
+      </Card>,
+    );
+
+    await userEvent.keyboard('[Tab]');
+
+    const hints = await screen.findAllByText(tooltipContent);
+
+    expect(hints).toHaveLength(1);
   });
 });

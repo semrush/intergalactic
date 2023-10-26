@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.7.8] - 2023-10-24
+
+### Fixed
+
+- Undelivered ResizeObserver's loop in popper after it is closed.
+
+## [5.7.7] - 2023-10-10
+
+### Fixed
+
+- Added additional checks to prevent focus catching after popper close in some cases when focus is moved to another component and focus catch is not necessary.
+
 ## [5.7.6] - 2023-10-10
 
 ### Fixed

@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.8.4] - 2023-10-13
+
+### Fixed
+
+- Focus lock merging was causing invalid hooks order error.
+
+## [4.8.3] - 2023-10-13
+
+### Changed
+
+- Fixed name for `--intergalactic-text-secondary-invert` (from `--intergalactic-text-secondary-Invert`) and changed it's value, from `0.75` to `0.8`.
+
 ## [4.8.2] - 2023-10-06
 
 ### Fixed

@@ -2,6 +2,24 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.9.3] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
+
+## [5.9.2] - 2023-10-16
+
+### Fixed
+
+- Improved `focus` for `Buttons` in `disabled` states.
+
+## [5.9.1] - 2023-10-13
+
+### Fixed
+
+- Removed `box-shadow` for focused `Buttons` in `loading` or `disabled` states.
+
 ## [5.9.0] - 2023-10-10
 
 ### Changed

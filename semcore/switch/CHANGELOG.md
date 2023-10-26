@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.8.2] - 2023-10-24
+
+### Fixed
+
+- View of `Switch` with long text in addons.
+
+## [5.8.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.8.0 ~> 5.8.1], `@semcore/neighbor-location` [4.7.5 ~> 4.7.6], `@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
 ## [5.8.0] - 2023-10-10
 
 ### Changed
