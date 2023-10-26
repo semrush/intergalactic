@@ -2,11 +2,11 @@
 
 SRadian {
   cursor: pointer;
-  fill: var(--intergalactic-chart-palette-order-9, #008ff8);
+  fill: var(--intergalactic-blue-400, #008ff8);
 }
 
 SLine {
-  stroke: var(--intergalactic-chart-palette-order-9, #008ff8);
+  stroke: var(--intergalactic-blue-400, #008ff8);
 }
 
 SLine[color] {
@@ -31,7 +31,6 @@ SIcon[transparent] {
 
 SLabel {
   fill: var(--color);
-  cursor: var(--text-cursor);
 }
 
 SLabel[transparent] {
@@ -39,7 +38,8 @@ SLabel[transparent] {
 }
 
 SRadian:hover SLabel {
-  filter: brightness(0.8);
+  cursor: pointer;
+  filter: brightness(0.6);
 }
 
 @media (prefers-reduced-motion) {

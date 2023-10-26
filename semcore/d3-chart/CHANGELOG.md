@@ -16,6 +16,10 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Default text color is based on inversed and processed background color.
 
+### Changed
+
+- Default styles for `RadialTree` chart.
+
 ## [3.15.1] - 2023-10-16
 
 ### Changed
