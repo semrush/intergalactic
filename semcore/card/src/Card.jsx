@@ -45,7 +45,7 @@ function Title(props) {
       <STitle render={Text} />
       {hint && (
         <STooltip title={hint}>
-          <SIcon />
+          <SIcon interactive />
         </STooltip>
       )}
     </>,
