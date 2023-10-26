@@ -1,6 +1,6 @@
 <template>
   <span v-for="token in type" v-if="!(type.length === 1 && type[0] === '{...}')">
-    <button class="anchor-like-button" v-if="typeof token === 'object'"
+    <button class="anchor-like-button types-view-reference" v-if="typeof token === 'object'"
       @click.prevent="handleDialogOpen(token.referenceTo, token.displayText)">
       {{ token.displayText }}
     </button>
