@@ -4,7 +4,13 @@ import Counter from '@semcore/ui/counter';
 
 const SIZES = ['m', 'l', 'xl'];
 
-const THEME = ['', 'bg-primary-warning', 'bg-primary-critical', 'bg-primary-info', 'bg-primary-neutral'];
+const THEME = [
+  '',
+  'bg-primary-warning',
+  'bg-primary-critical',
+  'bg-primary-info',
+  'bg-primary-neutral',
+];
 
 const Preview = (preview) => {
   const { select, radio, text } = preview('Counter');

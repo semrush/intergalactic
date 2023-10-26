@@ -101,6 +101,10 @@ STag[theme='primary'] {
     bottom: -1px;
   }
 
+  &:after {
+    display: none;
+  }
+
   &[interactive]:hover,
   &[interactive]:active,
   &[active] {
