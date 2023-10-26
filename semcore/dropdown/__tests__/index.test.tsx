@@ -41,7 +41,7 @@ describe('Dropdown', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('should not loose focus by Tab after opened', async ({ expect }) => {
+  test('should not loose focus by Tab after opened', async ({ expect }) => {
     const spy = vi.fn();
     const { getByTestId } = render(
       <>
