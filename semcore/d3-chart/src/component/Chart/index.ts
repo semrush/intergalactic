@@ -6,6 +6,7 @@ import { AreaChart } from './AreaChart';
 import { BubbleChart } from './BubbleChart';
 import { DonutChart } from './DonutChart';
 import { VennChart } from './VennChart';
+import { RadarChart } from './RadarChart';
 
 export default {
   Line: LineChart,
@@ -16,4 +17,5 @@ export default {
   Bubble: BubbleChart,
   Donut: DonutChart,
   Venn: VennChart,
+  Radar: RadarChart,
 };

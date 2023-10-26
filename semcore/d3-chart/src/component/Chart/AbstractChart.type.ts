@@ -12,6 +12,7 @@ import { BubbleChartType } from './BubbleChart.type';
 import { DonutChartType } from './DonutChart.type';
 import { VennChartType } from './VennChart.type';
 import { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
+import { RadarChartType } from './RadarChart.type';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -172,4 +173,5 @@ export type ChartMap = {
   Bubble: BubbleChartType;
   Donut: DonutChartType;
   Venn: VennChartType;
+  Radar: RadarChartType;
 };

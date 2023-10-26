@@ -253,7 +253,9 @@ export abstract class AbstractChart<T extends BaseChartProps> extends Component<
     return this.props.colorMap?.[id] ?? '';
   }
 
-  protected tooltipValueFormatter(value?: number | typeof interpolateValue | Date): string {
+  protected tooltipValueFormatter(
+    value?: string | number | typeof interpolateValue | Date,
+  ): string {
     const { tooltipValueFormatter } = this.asProps;
 
     if (tooltipValueFormatter) {

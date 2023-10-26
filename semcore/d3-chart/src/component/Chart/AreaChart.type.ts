@@ -12,7 +12,7 @@ export type AreaChartProps = BaseChartProps & {
   groupKey: string;
   xScale?: ScaleLinear<any, any> | ScaleTime<any, any>;
   yScale?: ScaleLinear<any, any>;
-  disableDots?: boolean;
+  hideDots?: boolean;
   curve?: CurveFactory;
   stacked?: boolean;
 };
