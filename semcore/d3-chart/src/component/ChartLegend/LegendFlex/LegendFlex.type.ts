@@ -11,7 +11,7 @@ export type TrendProps = {
   /**
    * Trend label (for localization)
    */
-  trendLabel: string;
+  trendLabel?: string;
   /**
    * Flag for describe are trend is visible
    */
