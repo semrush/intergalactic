@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [3.16.0] - 2023-10-23
+## [3.16.0] - 2023-10-26
 
 ### Added
 
@@ -11,14 +11,14 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Default color of grouped charts (e.g for pie chart) are different by default.
-
-### Changed
-
 - Default text color is based on inversed and processed background color.
+- Default styles for `RadialTree` chart.
+
+## [3.15.2] - 2023-10-24
 
 ### Changed
 
-- Default styles for `RadialTree` chart.
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.1 ~> 2.8.2], `@semcore/popper` [5.7.7 ~> 5.7.8], `@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/core` [2.7.6 ~> 2.7.7]).
 
 ## [3.15.1] - 2023-10-16
 

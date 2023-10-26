@@ -2,7 +2,7 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.9.0] - 2023-10-23
+## [4.9.0] - 2023-10-26
 
 ### Added
 
@@ -11,6 +11,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Changed
 
 - Default text color is based on inversed and processed background color.
+
+## [4.8.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
 
 ## [4.8.1] - 2023-10-16
 

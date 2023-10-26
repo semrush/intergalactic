@@ -116,7 +116,9 @@ class Popper extends Component {
     super(props);
     if (canUseDOM()) {
       this.observer = new ResizeObserver(() => {
-        this.popper.current?.update();
+        requestAnimationFrame(() => {
+          this.popper.current?.update();
+        });
       });
     }
   }

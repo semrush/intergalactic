@@ -1,7 +1,7 @@
 {
   "name": "@semcore/animation",
   "description": "Semrush Animation Component",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.8.3",
-    "@semcore/flex-box": "5.8.1"
+    "@semcore/utils": "4.8.4",
+    "@semcore/flex-box": "5.8.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.7.6",
+    "@semcore/core": "^2.7.7",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
