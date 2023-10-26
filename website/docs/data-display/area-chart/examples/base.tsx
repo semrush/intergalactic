@@ -3,8 +3,8 @@ import { Chart } from '@semcore/ui/d3-chart';
 
 function formatDate(value) {
   const options = {
-    month: 'short',
-    day: 'numeric',
+    month: 'short' as const,
+    day: 'numeric' as const,
   };
 
   return new Intl.DateTimeFormat('en', options).format(value);
@@ -17,7 +17,7 @@ export default () => {
       data={data}
       plotWidth={500}
       plotHeight={300}
-      tooltipFormat={formatDate}
+      tooltipValueFormatter={formatDate}
     />
   );
 };

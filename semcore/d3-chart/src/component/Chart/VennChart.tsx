@@ -6,13 +6,13 @@ import { scaleLinear } from 'd3-scale';
 import { Venn } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
-import { VennChartProps } from './VennChart.type';
+import { VennChartData, VennChartProps } from './VennChart.type';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
-class VennChartComponent extends AbstractChart<VennChartProps> {
+class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
   static displayName = 'Chart.Venn';
 
-  static defaultProps: Partial<BaseChartProps> = {
+  static defaultProps: Partial<BaseChartProps<VennChartData>> = {
     direction: 'row-reverse',
     alignItems: 'center',
     marginY: 0,

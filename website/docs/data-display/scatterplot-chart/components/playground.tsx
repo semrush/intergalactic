@@ -3,7 +3,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/utils/src/color';
 
 const colorMap = {
@@ -32,27 +32,27 @@ const Preview = (preview) => {
     legendProps,
   } = chartPlayground({ select, radio, label, bool }, { direction: 'column' });
 
-  return (
-    // @ts-ignore
-    <Chart.ScatterPlot
-      data={data}
-      groupKey={'x'}
-      valueKey={'value'}
-      colorMap={colorMap}
-      plotWidth={500}
-      plotHeight={300}
-      legendProps={legendProps}
-      direction={direction}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      xTicksCount={10}
-      yTicksCount={6}
-    />
-  );
+  const chartProps: ScatterPlotChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 500,
+    plotHeight: 300,
+    colorMap,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.ScatterPlot {...chartProps} valueKey={'value'} xTicksCount={10} yTicksCount={6} />;
 };
 
 export default PlaygroundGeneration(Preview);

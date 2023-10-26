@@ -3,11 +3,10 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, DonutChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
-import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
 
-const lineColors = {
+const colorMap = {
   a: resolveColor('blue-300'),
   b: resolveColor('green-200'),
   c: resolveColor('orange-400'),
@@ -62,26 +61,29 @@ const Preview = (preview) => {
     c: { label: 'Milk' },
   };
 
-  return (
-    // @ts-ignore
-    <Chart.Donut
-      data={data}
-      plotWidth={300}
-      plotHeight={300}
-      colorMap={lineColors}
-      legendProps={legendProps}
-      direction={direction}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      innerRadius={innerRadius}
-      halfsize={halfSize}
-      innerLabel={innerLabel}
-    />
-  );
+  const chartProps: DonutChartProps = {
+    data,
+    plotWidth: 500,
+    plotHeight: 300,
+    colorMap,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+    halfsize: halfSize,
+    innerRadius,
+    innerLabel,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Donut {...chartProps} />;
 };
 
 export default PlaygroundGeneration(Preview);

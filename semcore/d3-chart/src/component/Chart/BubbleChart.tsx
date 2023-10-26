@@ -5,11 +5,11 @@ import { scaleLinear, ScaleLinear } from 'd3-scale';
 // @ts-ignore
 import { Bubble, minMax } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { BubbleChartProps } from './BubbleChart.type';
+import { BubbleChartData, BubbleChartProps } from './BubbleChart.type';
 import { Text } from '@semcore/typography';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
-class BubbleChartComponent extends AbstractChart<BubbleChartProps> {
+class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartProps> {
   static displayName = 'Chart.Bubble';
 
   protected get legendKeys(): string[] {

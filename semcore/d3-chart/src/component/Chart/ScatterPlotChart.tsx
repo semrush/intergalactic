@@ -5,10 +5,10 @@ import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { minMax, ScatterPlot } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { ScatterPlotChartProps } from './ScatterPlotChart.type';
+import { ScatterPlotChartData, ScatterPlotChartProps } from './ScatterPlotChart.type';
 import { Text } from '@semcore/typography';
 
-class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartProps> {
+class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, ScatterPlotChartProps> {
   static displayName = 'Chart.ScatterPlot';
   static defaultProps: Partial<ScatterPlotChartProps> = {
     hideLegend: true,

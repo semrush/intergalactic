@@ -3,7 +3,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, BarChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
 
 const lineColors = {
@@ -34,26 +34,28 @@ const Preview = (preview) => {
     legendProps,
   } = chartPlayground({ select, radio, label, bool }, { showTotalInTooltip: true });
 
-  return (
-    // @ts-ignore
-    <Chart.Bar
-      groupKey={'x'}
-      type={'stack'}
-      colorMap={lineColors}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      plotWidth={500}
-      plotHeight={300}
-      legendProps={legendProps}
-      direction={direction}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      data={data}
-      showTotalInTooltip={showTotalInTooltip}
-    />
-  );
+  const chartProps: BarChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 500,
+    plotHeight: 300,
+    colorMap: lineColors,
+    showTotalInTooltip,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Bar {...chartProps} type={'stack'} />;
 };
 
 export default PlaygroundGeneration(Preview);

@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent from '@semcore/core';
 import { BaseLegendProps, ChartMap } from './AbstractChart.type';
-import { BarChartProps } from './BarChart.type';
+import { BarChartData, BarChartProps } from './BarChart.type';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Bar, minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
@@ -11,7 +11,7 @@ import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
-class BarChartComponent extends AbstractChart<BarChartProps> {
+class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
   static displayName = 'Chart.Bar';
 
   get xScale() {

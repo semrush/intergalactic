@@ -4,7 +4,7 @@ import { ScaleBand, ScaleLinear, ScaleTime } from 'd3-scale';
 import { interpolateValue } from '../../utils';
 import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
-import { BaseChartProps, BaseLegendProps } from './AbstractChart.type';
+import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import ChartLegend from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
@@ -19,9 +19,12 @@ type ChartState = {
   withTrend: boolean;
 };
 
-export abstract class AbstractChart<T extends BaseChartProps> extends Component<T, {}, ChartState> {
+export abstract class AbstractChart<
+  D extends ListData | ObjectData,
+  T extends BaseChartProps<D>,
+> extends Component<T, {}, ChartState> {
   public static style = {};
-  public static defaultProps: Partial<BaseChartProps> = {
+  public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
   };
 

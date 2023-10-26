@@ -3,7 +3,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, VennChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/utils/src/color';
 
 const data = {
@@ -45,23 +45,26 @@ const Preview = (preview) => {
     U: { label: 'Uniq' },
   };
 
-  return (
-    // @ts-ignore
-    <Chart.Venn
-      data={data}
-      plotWidth={300}
-      plotHeight={300}
-      colorMap={lineColors}
-      legendProps={legendProps}
-      direction={direction}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-    />
-  );
+  const chartProps: VennChartProps = {
+    data,
+    plotWidth: 300,
+    plotHeight: 300,
+    colorMap: lineColors,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Venn {...chartProps} />;
 };
 
 export default PlaygroundGeneration(Preview);

@@ -3,7 +3,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, LineChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
 import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
 
@@ -74,10 +74,10 @@ const Preview = (preview) => {
     options: ['No curve', ...Object.keys(curveMap)],
   });
 
-  const disableDots = bool({
-    key: 'disableDots',
+  const hideDots = bool({
+    key: 'hideDots',
     defaultValue: false,
-    label: 'Disable dots',
+    label: 'hide dots',
   });
 
   const withArea = bool({
@@ -93,29 +93,32 @@ const Preview = (preview) => {
     options: ['No curve', ...Object.keys(curveMap)],
   });
 
-  return (
-    // @ts-ignore
-    <Chart.Line
-      data={data}
-      groupKey={'x'}
-      colorMap={lineColors}
-      showTotalInTooltip={showTotalInTooltip}
-      plotWidth={500}
-      plotHeight={300}
-      legendProps={legendProps}
-      direction={direction}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      disableDots={disableDots}
-      curve={curveMap[curveName]}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      area={withArea ? area : undefined}
-      areaCurve={curveMap[areaCurve]}
-    />
-  );
+  const chartProps: LineChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 500,
+    plotHeight: 300,
+    colorMap: lineColors,
+    showTotalInTooltip,
+    direction,
+    hideTooltip,
+    hideDots,
+    curve: curveMap[curveName],
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+    area: withArea ? area : undefined,
+    areaCurve: curveMap[areaCurve],
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Line {...chartProps} />;
 };
 
 export default PlaygroundGeneration(Preview);

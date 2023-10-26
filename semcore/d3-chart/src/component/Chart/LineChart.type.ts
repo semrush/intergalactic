@@ -6,16 +6,15 @@ import { CurveFactory } from 'd3-shape';
 import { BaseChartProps } from './AbstractChart.type';
 import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 
-type LineChartValue = number | typeof interpolateValue | Date;
-
 type AreaItem = {
   x: number;
   y0: number;
   y1: number;
 };
 
-export type LineChartProps = BaseChartProps & {
-  data: Array<Record<string, string | LineChartValue>>;
+export type LineChartData = Array<Record<string, string | number | typeof interpolateValue | Date>>;
+
+export type LineChartProps = BaseChartProps<LineChartData> & {
   groupKey: string;
   area?: Record<LegendItemKey, AreaItem[]>;
   xScale?: ScaleLinear<any, any> | ScaleTime<any, any>;

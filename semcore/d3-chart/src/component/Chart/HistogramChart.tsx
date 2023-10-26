@@ -5,11 +5,11 @@ import { scaleBand, scaleLinear, ScaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, BarProps } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { HistogramChartProps } from './HistogramChart.type';
+import { HistogramChartData, HistogramChartProps } from './HistogramChart.type';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
-class HistogramChartComponent extends AbstractChart<HistogramChartProps> {
+class HistogramChartComponent extends AbstractChart<HistogramChartData, HistogramChartProps> {
   static displayName = 'Chart.Histogram';
 
   get xScale() {

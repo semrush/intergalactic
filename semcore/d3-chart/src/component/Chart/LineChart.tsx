@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent from '@semcore/core';
 import { ChartMap } from './AbstractChart.type';
-import { LineChartProps } from './LineChart.type';
+import { LineChartData, LineChartProps } from './LineChart.type';
 import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
@@ -9,7 +9,7 @@ import { AbstractChart } from './AbstractChart';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
-class LineChartComponent extends AbstractChart<LineChartProps> {
+class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
   static displayName = 'Chart.Line';
 
   protected get xScale() {

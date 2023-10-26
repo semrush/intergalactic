@@ -2,18 +2,18 @@ import React from 'react';
 import createComponent from '@semcore/core';
 import { scaleLinear, ScaleLinear } from 'd3-scale';
 import { AbstractChart } from './AbstractChart';
-import { RadarChartProps } from './RadarChart.type';
+import { RadarChartData, RadarChartProps } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
 import { ChartMap } from './AbstractChart.type';
 
-class RadarChartComponent extends AbstractChart<RadarChartProps> {
+class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps> {
   protected renderChart(): React.ReactNode {
-    const { groupKey, hideDots } = this.asProps;
+    const { groupKey, hideDots, circle } = this.asProps;
     const { legendItems, highlightedLine } = this.state;
 
     return (
-      <Radar scale={this.xScale}>
+      <Radar scale={this.xScale} type={circle ? 'circle' : undefined}>
         <Radar.Axis dataKey={groupKey}>
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />

@@ -6,10 +6,10 @@ import { scaleLinear } from 'd3-scale';
 import { Donut } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
-import { DonutChartProps } from './DonutChart.type';
+import { DonutChartData, DonutChartProps } from './DonutChart.type';
 import { Flex } from '@semcore/flex-box';
 
-class DonutChartComponent extends AbstractChart<DonutChartProps> {
+class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps> {
   static displayName = 'Chart.Donut';
   static defaultProps: Partial<DonutChartProps> = {
     direction: 'row-reverse',

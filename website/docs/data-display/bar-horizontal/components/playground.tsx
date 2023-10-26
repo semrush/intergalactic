@@ -3,7 +3,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, BarChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
 
 const lineColors = {
@@ -32,34 +32,28 @@ const Preview = (preview) => {
     legendProps,
   } = chartPlayground({ select, radio, label, bool }, { invertAxis: true });
 
-  const withTrend = bool({
-    key: 'withTrend',
-    defaultValue: false,
-    label: 'With trend',
-  });
+  const chartProps: BarChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 500,
+    plotHeight: 300,
+    colorMap: lineColors,
+    showTotalInTooltip,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
 
-  legendProps.withTrend = withTrend;
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
 
-  return (
-    // @ts-ignore
-    <Chart.Bar
-      groupKey={'x'}
-      colorMap={lineColors}
-      invertAxis={true}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      showTotalInTooltip={showTotalInTooltip}
-      plotWidth={500}
-      plotHeight={300}
-      legendProps={legendProps}
-      direction={direction}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      data={data}
-    />
-  );
+  return <Chart.Bar {...chartProps} invertAxis={true} />;
 };
 
 export default PlaygroundGeneration(Preview);

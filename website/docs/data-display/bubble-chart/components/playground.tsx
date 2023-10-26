@@ -3,9 +3,8 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart } from '@semcore/d3-chart';
+import { Chart, BubbleChartProps } from '@semcore/d3-chart';
 import resolveColor from '@semcore/ui/utils/lib/color';
-import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
 
 const data = [
   { x: 2, y: 3, value: 5040, label: 'label 1', color: '#2BB3FF' },
@@ -39,22 +38,25 @@ const Preview = (preview) => {
 
   legendProps.shape = 'Circle';
 
-  return (
-    // @ts-ignore
-    <Chart.Bubble
-      data={data}
-      plotWidth={500}
-      plotHeight={300}
-      legendProps={legendProps}
-      direction={direction}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-    />
-  );
+  const chartProps: BubbleChartProps = {
+    data,
+    plotWidth: 500,
+    plotHeight: 300,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Bubble {...chartProps} />;
 };
 
 export default PlaygroundGeneration(Preview);

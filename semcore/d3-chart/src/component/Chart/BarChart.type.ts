@@ -9,8 +9,9 @@ type TrendItem = {
   y: number;
 };
 
-export type BarChartProps = BaseChartProps & {
-  data: Array<Record<string, number | Date>>;
+export type BarChartData = Array<Record<string, string | number | Date>>;
+
+export type BarChartProps = BaseChartProps<BarChartData> & {
   groupKey: string;
   xScale?: ScaleBand<any> | ScaleTime<any, any>;
   yScale?: ScaleLinear<any, any>;

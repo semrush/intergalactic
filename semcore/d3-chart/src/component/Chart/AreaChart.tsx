@@ -5,11 +5,11 @@ import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { AreaChartProps } from './AreaChart.type';
+import { AreaChartData, AreaChartProps } from './AreaChart.type';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
-class AreaChartComponent extends AbstractChart<AreaChartProps> {
+class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
   static displayName = 'Chart.Area';
 
   get xScale() {

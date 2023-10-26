@@ -46,11 +46,14 @@ export type BaseLegendProps = BaseChartLegendProps & {
       }
   );
 
-export type BaseChartProps = FlexProps & {
+export type ListData = Array<Record<string, unknown>>;
+export type ObjectData = Record<string, unknown>;
+
+export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
   /**
    * Chart data. For all charts except Donut(Pie), Radar and Venn should be an Array
    */
-  data: Array<Record<string, unknown>> | Record<string, unknown>;
+  data: T;
   /**
    * Width of plot
    */
