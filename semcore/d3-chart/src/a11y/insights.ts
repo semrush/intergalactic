@@ -19,6 +19,7 @@ export type TrendNode = {
   from: unknown;
   to: unknown;
   dataKey: string | number;
+  label?: string;
 };
 export type GeneralTrendNode = Omit<TrendNode, 'type'> & { type: 'general-trend' };
 export type ComparisonNode = {
@@ -228,7 +229,7 @@ export const extractDataInsights = (
         }: {
           value: { from: number; to: number };
           width: number;
-          label: { from: unknown; to: unknown; dataKey: string | number };
+          label: { from: unknown; to: unknown; dataKey: string | number; displayValue?: string };
           type: 'general-trend' | 'trend';
         }): GeneralTrendNode | TrendNode | undefined => {
           for (let i = 0; i < trendStrengths.length; i++) {
@@ -254,6 +255,7 @@ export const extractDataInsights = (
                 from: label.from,
                 to: label.to,
                 dataKey: label.dataKey,
+                label: label.displayValue,
               };
             }
           }
@@ -266,7 +268,7 @@ export const extractDataInsights = (
             to: shortMovingAverage[shortMovingAverage.length - 1],
           },
           width: data.length,
-          label: { from, to, dataKey: hints.titles.valuesAxes[valueKey] ?? valueKey },
+          label: { from, to, dataKey: valueKey, displayValue: hints.titles.valuesAxes[valueKey] },
         })!;
         const localTrends: Insight[] = [];
         {
@@ -302,7 +304,12 @@ export const extractDataInsights = (
                   to: shortMovingAverage[i],
                 },
                 width: i - lastSwitch,
-                label: { from, to, dataKey: hints.titles.valuesAxes[valueKey] ?? valueKey },
+                label: {
+                  from,
+                  to,
+                  dataKey: valueKey,
+                  displayValue: hints.titles.valuesAxes[valueKey],
+                },
               })!,
             );
             lastSwitch = i;
@@ -325,7 +332,8 @@ export const extractDataInsights = (
                   label: {
                     from: data[lastSwitch][labelsKey],
                     to: data[lastIndex][labelsKey],
-                    dataKey: hints.titles.valuesAxes[valueKey] ?? valueKey,
+                    dataKey: valueKey,
+                    displayValue: hints.titles.valuesAxes[valueKey],
                   },
                 })!,
               );
@@ -340,10 +348,10 @@ export const extractDataInsights = (
       const guessedYKey = [...hints.fields.verticalAxes.values(), 'y'][0];
       const guessedValueKey = [...hints.fields.valueAxes.values(), 'value'][0];
       const guessedLabelKey = keysMap['label'] ? 'label' : guessedValueKey;
-      const normalized = data.map((row, index) => ({
+      const normalized = data.map((row) => ({
         x: row[guessedXKey] as number,
         y: row[guessedYKey] as number,
-        label: hints.titles.valuesAxes[index] ?? row[guessedLabelKey],
+        label: row[guessedLabelKey],
         value: row[guessedValueKey] as number,
       }));
       let gridSize =

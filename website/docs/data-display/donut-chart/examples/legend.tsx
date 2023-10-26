@@ -17,16 +17,14 @@ export default () => {
   const height = 250;
 
   const [legendItems, setLegendItems] = React.useState(
-    Object.keys(data).reduce<LegendItem[]>((res, item) => {
-      res.push({
+    Object.keys(data).map((item) => {
+      return {
         id: item,
         label: `Dataset${item}`,
         checked: true,
         color: pieColors[item],
-      });
-
-      return res;
-    }, []),
+      };
+    }),
   );
 
   const [highlightedLine, setHighlightedLine] = React.useState(-1);

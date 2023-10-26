@@ -41,16 +41,14 @@ export default () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'time')
-      .reduce<LegendItem[]>((res, item) => {
-        res.push({
+      .map((item) => {
+        return {
           id: item,
           label: `Line (${item})`,
           checked: true,
           color: lineColors[item],
-        });
-
-        return res;
-      }, []),
+        };
+      }),
   );
 
   const [highlightedLine, setHighlightedLine] = React.useState(-1);

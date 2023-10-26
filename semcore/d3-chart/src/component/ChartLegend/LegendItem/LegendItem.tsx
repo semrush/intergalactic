@@ -163,7 +163,7 @@ function Label({ styles, children: hasChildren, Children }: IRootComponentProps)
   }
 
   return sstyled(styles)(
-    <SLabel render={TypographyText}>
+    <SLabel render={TypographyText} use={'primary'}>
       <Children />
     </SLabel>,
   );

@@ -43,16 +43,14 @@ export default () => {
 
   const legendItems = Object.keys(data[0])
     .filter((name) => name !== 'time')
-    .reduce<LegendItem[]>((res, item) => {
-      res.push({
+    .map((item) => {
+      return {
         id: item,
         label: `Stack ${item}`,
         checked: true,
         color: lineColors[item],
-      });
-
-      return res;
-    }, []);
+      };
+    });
 
   return (
     <>
