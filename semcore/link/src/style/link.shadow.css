@@ -54,8 +54,8 @@ SLink[keyboardFocused]::after {
 SLink[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none;
   /* Disable link interactions */
+  pointer-events: none;
 }
 
 SLink[noWrapText] {
