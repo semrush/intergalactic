@@ -4,7 +4,6 @@ import {
   Bubble,
   XAxis,
   YAxis,
-  LegendItem,
   ChartLegend,
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';

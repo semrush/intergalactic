@@ -4,7 +4,6 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart, VennChartProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/utils/src/color';
 
 const data = {
   G: 200,
@@ -15,13 +14,6 @@ const data = {
   'G/C': 100,
   'F/C': 100,
   'G/F/C': 100,
-};
-
-const lineColors = {
-  G: resolveColor('blue-300'),
-  F: resolveColor('green-200'),
-  C: resolveColor('orange-400'),
-  U: resolveColor('red-400'),
 };
 
 const Preview = (preview) => {
@@ -49,7 +41,6 @@ const Preview = (preview) => {
     data,
     plotWidth: 300,
     plotHeight: 300,
-    colorMap: lineColors,
     direction,
     hideTooltip,
     hideXAxis,

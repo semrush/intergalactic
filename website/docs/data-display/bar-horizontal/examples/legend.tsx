@@ -5,19 +5,12 @@ import {
   YAxis,
   XAxis,
   HoverRect,
-  LegendItem,
   makeDataHintsContainer,
   ChartLegend,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
-import resolveColor from '@semcore/utils/src/color';
-
-const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -39,12 +32,12 @@ export default () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'category')
-      .map((item) => {
+      .map((item, index) => {
         return {
           id: item,
           label: `Bar ${item}`,
           checked: true,
-          color: lineColors[item],
+          color: `--intergalactic-chart-palette-order-${index + 1}`,
         };
       }),
   );
@@ -101,7 +94,7 @@ export default () => {
                 <GroupBar.HorizontalBar
                   key={item.id}
                   x={item.id}
-                  color={lineColors[item.id]}
+                  color={item.color}
                   transparent={highlightedLine !== -1 && highlightedLine !== index}
                 />
               );
@@ -113,13 +106,13 @@ export default () => {
               <>
                 <HoverRect.Tooltip.Title>{data[yIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={lineColors[1]}>
+                  <HoverRect.Tooltip.Dot mr={4} color={legendItems[0].color}>
                     Bar 1
                   </HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex][1]}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={lineColors[2]}>
+                  <HoverRect.Tooltip.Dot mr={4} color={legendItems[1].color}>
                     Bar 2
                   </HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex][2]}</Text>

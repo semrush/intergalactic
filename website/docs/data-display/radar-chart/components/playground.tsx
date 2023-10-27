@@ -3,12 +3,7 @@ import React from 'react';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
-import { Chart, RadarChartProps, colors } from '@semcore/d3-chart';
-
-const colorMap = {
-  data_1: colors['orange-04'],
-  data_2: colors['violet-04'],
-};
+import { Chart, RadarChartProps } from '@semcore/d3-chart';
 
 const data = {
   categories: ['Variable 1', 'Variable 2', 'Variable 3', 'Variable 4', 'Variable 5', 'Variable 6'],
@@ -49,7 +44,6 @@ const Preview = (preview) => {
     groupKey: 'categories',
     plotWidth: 500,
     plotHeight: 500,
-    colorMap,
     direction,
     hideTooltip,
     hideXAxis,

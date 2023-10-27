@@ -47,9 +47,9 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
 
   renderChart() {
     const { innerRadius, halfsize, innerLabel } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
-    const checkedLegendItems = legendItems.filter((item) => item.checked);
+    const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
 
     return (
       <Donut halfsize={halfsize} innerRadius={innerRadius}>
@@ -60,7 +60,7 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
               key={item.id}
               dataKey={item.id}
               name={item.label}
-              color={this.resolveColor(item.id)}
+              color={item.color}
               active={highlightedLine === index}
             />
           );
@@ -72,12 +72,12 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
 
   renderTooltip() {
     const { data } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <Donut.Tooltip>
         {({ dataKey }: any) => {
-          const title = legendItems.find((item) => item.id === dataKey);
+          const title = dataDefinitions.find((item) => item.id === dataKey);
 
           return {
             children: (

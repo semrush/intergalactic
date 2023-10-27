@@ -4,12 +4,6 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/utils/src/color';
-
-const colorMap = {
-  y: resolveColor('blue-300'),
-  y2: resolveColor('green-200'),
-};
 
 const data = [...Array(25).keys()].map((d, i) => ({
   x: i,
@@ -37,7 +31,6 @@ const Preview = (preview) => {
     groupKey: 'x',
     plotWidth: 500,
     plotHeight: 300,
-    colorMap,
     direction,
     hideTooltip,
     hideXAxis,

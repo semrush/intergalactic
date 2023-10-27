@@ -44,7 +44,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
 
   renderTrend(key: LegendItemKey) {
     const { groupKey, type = 'group', invertAxis, trend } = this.asProps;
-    const { legendItems, withTrend } = this.state;
+    const { withTrend } = this.state;
     const trendItem = trend?.[key];
 
     if (withTrend && trendItem) {
@@ -54,7 +54,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
           key={`${key}_${groupKey}`}
           x={invertAxis ? 'y' : 'x'}
           y={invertAxis ? 'x' : 'y'}
-          color={legendItems.length > 1 ? this.resolveColor(key) : 'wall'}
+          color={'wall'}
           style={{ strokeWidth: 3, strokeDasharray: 5 }}
         >
           <Line.Dots data={trendItem} display />
@@ -67,10 +67,10 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
 
   renderChart() {
     const { groupKey, type = 'group', invertAxis } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
-    if (legendItems.length === 1) {
-      const item = legendItems[0];
+    if (dataDefinitions.length === 1) {
+      const item = dataDefinitions[0];
       const BarComponent = invertAxis ? GroupBar.HorizontalBar : GroupBar.Bar;
 
       return (
@@ -79,7 +79,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
             x={invertAxis ? item.id : groupKey}
             y={invertAxis ? groupKey : item.id}
             key={item.id}
-            color={this.resolveColor(item.id)}
+            color={item.color}
           />
           {this.renderTrend(item.id)}
         </>
@@ -90,11 +90,11 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
       return (
         <>
           <GroupBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
-            {legendItems.map((item, index) => {
+            {dataDefinitions.map((item, index) => {
               const BarComponent = invertAxis ? GroupBar.HorizontalBar : GroupBar.Bar;
 
               const commonBarComponentProps: BarProps = {
-                color: this.resolveColor(item.id),
+                color: item.color,
                 transparent: highlightedLine !== -1 && highlightedLine !== index,
               };
 
@@ -107,7 +107,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
               return item.checked && <BarComponent key={item.id} {...commonBarComponentProps} />;
             })}
           </GroupBar>
-          {legendItems.map((item) => item.checked && this.renderTrend(item.id))}
+          {dataDefinitions.map((item) => item.checked && this.renderTrend(item.id))}
         </>
       );
     }
@@ -116,11 +116,11 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
       return (
         <>
           <StackBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
-            {legendItems.map((item, index) => {
+            {dataDefinitions.map((item, index) => {
               const BarComponent = invertAxis ? StackBar.HorizontalBar : StackBar.Bar;
 
               const commonBarComponentProps: BarProps = {
-                color: this.resolveColor(item.id),
+                color: item.color,
                 transparent: highlightedLine !== -1 && highlightedLine !== index,
               };
 
@@ -133,7 +133,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
               return item.checked && <BarComponent key={item.id} {...commonBarComponentProps} />;
             })}
           </StackBar>
-          {legendItems.map((item) => item.checked && this.renderTrend(item.id))}
+          {dataDefinitions.map((item) => item.checked && this.renderTrend(item.id))}
         </>
       );
     }
@@ -143,7 +143,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
 
   renderTooltip(): React.ReactNode {
     const { data, groupKey, showTotalInTooltip, invertAxis } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <HoverRect.Tooltip
@@ -157,7 +157,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
             const index = invertAxis ? yIndex : xIndex;
             const dataItem: any = data[index];
 
-            const total = legendItems.reduce((sum, legendItem) => {
+            const total = dataDefinitions.reduce((sum, legendItem) => {
               return sum + dataItem[legendItem.id];
             }, 0);
 
@@ -168,7 +168,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
                     {dataItem[groupKey]?.toString()}
                   </HoverRect.Tooltip.Title>
 
-                  {legendItems.map((item) => {
+                  {dataDefinitions.map((item) => {
                     return (
                       item.checked && (
                         <Flex justifyContent='space-between' key={item.id}>

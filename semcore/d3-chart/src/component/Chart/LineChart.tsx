@@ -49,16 +49,16 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
 
   protected renderChart() {
     const { groupKey, curve, hideDots, area, areaCurve } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
-    return legendItems.map((item, index) => {
+    return dataDefinitions.map((item, index) => {
       return (
         item.checked && (
           <Line
             x={groupKey.toString()}
             y={item.id}
             key={item.id}
-            color={this.resolveColor(item.id)}
+            color={item.color}
             transparent={highlightedLine !== -1 && highlightedLine !== index}
             curve={curve}
           >
@@ -74,14 +74,14 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
 
   protected renderTooltip() {
     const { data, groupKey, showTotalInTooltip } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
           const dataItem: any = data[xIndex];
 
-          const total = legendItems.reduce((sum, legendItem) => {
+          const total = dataDefinitions.reduce((sum, legendItem) => {
             return sum + dataItem[legendItem.id];
           }, 0);
 
@@ -90,7 +90,7 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
               <>
                 <HoverLine.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverLine.Tooltip.Title>
 
-                {legendItems.map((item) => {
+                {dataDefinitions.map((item) => {
                   return (
                     item.checked && (
                       <Flex justifyContent='space-between' key={item.id}>

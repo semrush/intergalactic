@@ -10,7 +10,7 @@ import { ChartMap } from './AbstractChart.type';
 class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps> {
   protected renderChart(): React.ReactNode {
     const { groupKey, hideDots, circle } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
     return (
       <Radar scale={this.xScale} type={circle ? 'circle' : undefined}>
@@ -19,7 +19,7 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
           <Radar.Axis.Labels />
         </Radar.Axis>
 
-        {legendItems.map((item) => {
+        {dataDefinitions.map((item) => {
           return (
             item.checked && (
               <Radar.Polygon dataKey={item.id} key={item.id} color={item.color}>
@@ -36,7 +36,7 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
 
   protected renderRadarTooltip(): React.ReactNode {
     const { data, groupKey, hideTooltip } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
     if (hideTooltip) {
       return null;
@@ -50,7 +50,7 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
               <>
                 <Radar.Tooltip.Title>{data[groupKey]?.[index]}</Radar.Tooltip.Title>
 
-                {legendItems.map((item) => {
+                {dataDefinitions.map((item) => {
                   const value = data[item.id]?.[index];
 
                   return (
@@ -75,7 +75,7 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
     return null;
   }
 
-  protected get legendKeys(): string[] {
+  protected get dataKeys(): string[] {
     const { data, groupKey } = this.props;
 
     const legendKeys: string[] = Object.keys(data).filter((key) => key !== groupKey);

@@ -14,7 +14,7 @@ import { Text } from '@semcore/typography';
 import { LegendFlexProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
 
 type ChartState = {
-  legendItems: Array<LegendItem & { columns: React.ReactNode[] }>;
+  dataDefinitions: Array<LegendItem & { columns: React.ReactNode[] }>;
   highlightedLine: number;
   withTrend: boolean;
 };
@@ -36,7 +36,7 @@ export abstract class AbstractChart<
   protected dataHints = makeDataHintsContainer();
 
   public state: ChartState = {
-    legendItems: this.defaultLegendItems,
+    dataDefinitions: this.defaultDataDefinitions,
     highlightedLine: -1,
     withTrend: false,
   };
@@ -55,27 +55,27 @@ export abstract class AbstractChart<
 
   public componentDidUpdate(prevProps: T) {
     if (prevProps.data !== this.props.data || prevProps.legendProps !== this.props.legendProps) {
-      this.setState({ legendItems: this.defaultLegendItems });
+      this.setState({ dataDefinitions: this.defaultDataDefinitions });
     }
   }
 
-  protected get defaultLegendItems(): Array<LegendItem & { columns: React.ReactNode[] }> {
+  protected get defaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
     const { data, legendProps } = this.props;
 
-    return this.legendKeys.map((key) => {
+    return this.dataKeys.map((key, index) => {
       const legendData = legendProps?.legendMap?.[key];
 
-      const legendItem: LegendItem & { columns: React.ReactNode[] } = {
+      const dataDefinition: LegendItem & { columns: React.ReactNode[] } = {
         id: key,
         label: legendData?.label ?? key,
         icon: legendData?.icon ?? undefined,
         checked: legendData?.defaultChecked ?? true,
-        color: this.resolveColor(key),
+        color: this.resolveColor(key, index),
         columns: [],
       };
 
       if (legendData?.additionalInfo || legendData?.count) {
-        legendItem.additionalInfo = legendData.additionalInfo
+        dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
           ? { count: legendData.count }
@@ -83,13 +83,13 @@ export abstract class AbstractChart<
       }
 
       if (legendData && 'columns' in legendData) {
-        legendItem.columns = legendData.columns || [];
+        dataDefinition.columns = legendData.columns || [];
       } else if (!Array.isArray(data)) {
         const value = (data instanceof Map ? data.get(key) : Number(data[key])) ?? 0;
         const total = Object.values(data).reduce<number>((sum, i) => sum + Number(i), 0);
         const percent = ((value / total) * 100).toFixed(2);
 
-        legendItem.columns = [
+        dataDefinition.columns = [
           <Text key={`${key}_percent`} use={'secondary'}>
             {percent}%
           </Text>,
@@ -99,7 +99,7 @@ export abstract class AbstractChart<
         ];
       }
 
-      return legendItem;
+      return dataDefinition;
     });
   }
 
@@ -109,18 +109,18 @@ export abstract class AbstractChart<
   protected abstract renderChart(): React.ReactNode;
   protected abstract renderTooltip(): React.ReactNode;
 
-  protected get legendKeys(): string[] {
+  protected get dataKeys(): string[] {
     const { data, groupKey } = this.props;
 
-    let legendKeys: string[];
+    let dataKeys: string[];
 
     if (Array.isArray(data) && groupKey) {
-      legendKeys = Object.keys(data[0]).filter((key) => key !== groupKey);
+      dataKeys = Object.keys(data[0]).filter((key) => key !== groupKey);
     } else {
-      legendKeys = Object.keys(data);
+      dataKeys = Object.keys(data);
     }
 
-    return legendKeys;
+    return dataKeys;
   }
 
   protected get xTicks(): number[] | Date[] | undefined {
@@ -228,7 +228,7 @@ export abstract class AbstractChart<
 
   protected handleChangeVisible(id: string, isVisible: boolean) {
     this.setState((prevState) => {
-      const legendItems = prevState.legendItems.map((item) => {
+      const dataDefinitions = prevState.dataDefinitions.map((item) => {
         if (item.id === id) {
           item.checked = isVisible;
         }
@@ -236,7 +236,7 @@ export abstract class AbstractChart<
         return item;
       });
 
-      return { legendItems };
+      return { dataDefinitions };
     });
   }
 
@@ -245,15 +245,15 @@ export abstract class AbstractChart<
   }
 
   protected handleMouseEnter(id: string) {
-    this.setHighlightedLine(this.state.legendItems.findIndex((line) => line.id === id));
+    this.setHighlightedLine(this.state.dataDefinitions.findIndex((line) => line.id === id));
   }
 
   protected handleMouseLeave() {
     this.setHighlightedLine(-1);
   }
 
-  protected resolveColor(id: string) {
-    return this.props.colorMap?.[id] ?? '';
+  protected resolveColor(id: string, index: number) {
+    return this.props.colorMap?.[id] ?? `--intergalactic-chart-palette-order-${index + 1}`;
   }
 
   protected tooltipValueFormatter(
@@ -281,7 +281,7 @@ export abstract class AbstractChart<
       return null;
     }
 
-    const { legendItems, withTrend } = this.state;
+    const { dataDefinitions, withTrend } = this.state;
     const lProps = {
       ...this.defaultLegendProps(),
       ...legendProps,
@@ -289,7 +289,7 @@ export abstract class AbstractChart<
 
     const commonLegendProps = {
       dataHints: this.dataHints,
-      items: legendItems,
+      items: dataDefinitions,
       size: lProps.size,
       shape: lProps.shape,
       direction:

@@ -4,14 +4,7 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart, LineChartProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
-
-const lineColors = {
-  Line1: resolveColor('blue-300'),
-  Line2: resolveColor('green-200'),
-  Line3: resolveColor('orange-400'),
-};
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
@@ -98,7 +91,6 @@ const Preview = (preview) => {
     groupKey: 'x',
     plotWidth: 500,
     plotHeight: 300,
-    colorMap: lineColors,
     showTotalInTooltip,
     direction,
     hideTooltip,

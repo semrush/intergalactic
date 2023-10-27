@@ -1,21 +1,6 @@
 import React from 'react';
-import {
-  Plot,
-  ScatterPlot,
-  XAxis,
-  YAxis,
-  minMax,
-  ChartLegend,
-  LegendItem,
-} from '@semcore/ui/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import resolveColor from '@semcore/utils/src/color';
-
-const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-  3: resolveColor('orange-400'),
-};
 
 export default () => {
   const MARGIN = 40;
@@ -32,12 +17,12 @@ export default () => {
 
   const legendItems = Object.keys(data[0])
     .filter((name) => name !== 'x' && name !== 'value')
-    .map((item) => {
+    .map((item, index) => {
       return {
         id: item,
         label: `Point ${item}`,
         checked: true,
-        color: lineColors[item],
+        color: `--intergalactic-chart-palette-order-${index + 1}`,
       };
     });
 

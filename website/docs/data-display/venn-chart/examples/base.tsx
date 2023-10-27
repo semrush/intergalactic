@@ -1,17 +1,10 @@
 import React from 'react';
 import { Chart } from '@semcore/d3-chart';
-import resolveColor from '@semcore/utils/src/color';
 
 export default () => {
   return (
     <div style={{ width: '500px' }}>
-      <Chart.Venn
-        data={data}
-        plotWidth={300}
-        plotHeight={300}
-        colorMap={lineColors}
-        legendProps={legendProps}
-      />
+      <Chart.Venn data={data} plotWidth={300} plotHeight={300} legendProps={legendProps} />
     </div>
   );
 };
@@ -25,13 +18,6 @@ const data = {
   'G/C': 100,
   'F/C': 100,
   'G/F/C': 100, // intersection key must be `${key1}/${key2}/...`
-};
-
-const lineColors = {
-  G: resolveColor('blue-300'),
-  F: resolveColor('green-200'),
-  C: resolveColor('orange-400'),
-  U: resolveColor('red-400'),
 };
 
 const legendProps = {

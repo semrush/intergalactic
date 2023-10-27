@@ -2,7 +2,6 @@ import React from 'react';
 import { Plot, Venn, colors } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { ChartLegend } from '@semcore/d3-chart';
-import resolveColor from '@semcore/utils/lib/color';
 
 const data = {
   G: 200,
@@ -20,25 +19,25 @@ const legendItems = [
     id: 'G',
     label: 'Good',
     checked: true,
-    color: resolveColor('blue'),
+    color: '--intergalactic-chart-palette-order-1',
   },
   {
     id: 'F',
     label: 'Fast',
     checked: true,
-    color: resolveColor('green'),
+    color: '--intergalactic-chart-palette-order-2',
   },
   {
     id: 'C',
     label: 'Cheap',
     checked: true,
-    color: resolveColor('orange'),
+    color: '--intergalactic-chart-palette-order-3',
   },
   {
     id: 'U',
     label: 'Unknown',
     checked: true,
-    color: resolveColor('pink'),
+    color: '--intergalactic-chart-palette-order-4',
   },
 ];
 

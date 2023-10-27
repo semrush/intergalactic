@@ -4,13 +4,6 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart, DonutChartProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
-
-const colorMap = {
-  a: resolveColor('blue-300'),
-  b: resolveColor('green-200'),
-  c: resolveColor('orange-400'),
-};
 
 const data = {
   a: 3,
@@ -65,7 +58,6 @@ const Preview = (preview) => {
     data,
     plotWidth: 500,
     plotHeight: 300,
-    colorMap,
     direction,
     hideTooltip,
     hideXAxis,

@@ -4,13 +4,6 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart, BarChartProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
-
-const lineColors = {
-  Line1: resolveColor('blue-300'),
-  Line2: resolveColor('green-200'),
-  Line3: resolveColor('yellow-200'),
-};
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
@@ -42,7 +35,6 @@ const Preview = (preview) => {
     groupKey: 'x',
     plotWidth: 500,
     plotHeight: 300,
-    colorMap: lineColors,
     showTotalInTooltip,
     direction,
     hideTooltip,

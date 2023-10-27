@@ -39,7 +39,7 @@ class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
     return scaleLinear();
   }
 
-  protected get legendKeys(): string[] {
+  protected get dataKeys(): string[] {
     const { data, groupKey } = this.props;
 
     const legendKeys: string[] = Object.keys(data).filter((item) => {
@@ -59,9 +59,9 @@ class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
 
   renderChart() {
     const { data } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
-    const checkedLegendItems = legendItems.filter((item) => item.checked);
+    const checkedLegendItems = dataDefinitions.filter((item) => item.checked);
     const checkedLegendItemsMap = checkedLegendItems.reduce<Record<string, LegendItem>>(
       (result, item) => {
         result[item.id] = item;
@@ -108,7 +108,7 @@ class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
 
           const name = intersectionKeys
             .map((id) => {
-              return legendItems.find((legendItem) => legendItem.id === id)?.label || '';
+              return dataDefinitions.find((legendItem) => legendItem.id === id)?.label || '';
             })
             .join(' & ');
 

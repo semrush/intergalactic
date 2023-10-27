@@ -14,7 +14,7 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
     hideLegend: true,
   };
 
-  protected get legendKeys(): string[] {
+  protected get dataKeys(): string[] {
     const { data, groupKey, valueKey } = this.props;
 
     return Object.keys(data[0]).filter((key) => key !== groupKey && key !== valueKey);
@@ -73,18 +73,12 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
 
   protected renderChart() {
     const { groupKey, valueKey } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
-    return legendItems.map((item, index) => {
+    return dataDefinitions.map((item) => {
       return (
         item.checked && (
-          <ScatterPlot
-            x={groupKey}
-            y={item.id}
-            key={item.id}
-            color={this.resolveColor(item.id)}
-            value={valueKey}
-          />
+          <ScatterPlot x={groupKey} y={item.id} key={item.id} color={item.color} value={valueKey} />
         )
       );
     });
@@ -92,9 +86,9 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
 
   protected renderTooltip() {
     const { data, groupKey } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
-    return legendItems
+    return dataDefinitions
       .filter((item) => item.checked)
       .map((item) => {
         return (

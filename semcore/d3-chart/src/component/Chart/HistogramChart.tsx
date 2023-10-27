@@ -94,23 +94,23 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
   }
 
   get isStack(): boolean {
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
-    return legendItems.length > 1;
+    return dataDefinitions.length > 1;
   }
 
   renderChart() {
     const { groupKey, invertAxis } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
     if (this.isStack) {
       return (
         <StackBar x={invertAxis ? undefined : groupKey} y={invertAxis ? groupKey : undefined}>
-          {legendItems.map((item, index) => {
+          {dataDefinitions.map((item, index) => {
             const BarComponent = invertAxis ? StackBar.HorizontalBar : StackBar.Bar;
 
             const commonBarComponentProps: BarProps = {
-              color: this.resolveColor(item.id),
+              color: item.color,
               transparent: highlightedLine !== -1 && highlightedLine !== index,
             };
 
@@ -126,21 +126,21 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
       );
     }
 
-    const item = legendItems[0];
+    const item = dataDefinitions[0];
 
     return (
       <Bar
         x={invertAxis ? item.id : groupKey}
         y={invertAxis ? groupKey : item.id}
         key={item.id}
-        color={this.resolveColor(item.id)}
+        color={item.color}
       />
     );
   }
 
   renderTooltip(): React.ReactNode {
     const { data, groupKey, showTotalInTooltip, invertAxis } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <HoverRect.Tooltip
@@ -152,7 +152,7 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
           const index = invertAxis ? yIndex : xIndex;
           const dataItem: any = data[index];
 
-          const total = legendItems.reduce((sum, legendItem) => {
+          const total = dataDefinitions.reduce((sum, legendItem) => {
             return sum + dataItem[legendItem.id];
           }, 0);
 
@@ -161,7 +161,7 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
               <>
                 <HoverRect.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverRect.Tooltip.Title>
 
-                {legendItems.map((item) => {
+                {dataDefinitions.map((item) => {
                   return (
                     item.checked && (
                       <Flex justifyContent='space-between' key={item.id}>

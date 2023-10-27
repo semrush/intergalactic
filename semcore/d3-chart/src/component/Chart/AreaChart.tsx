@@ -48,19 +48,19 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
 
   renderChart() {
     const { groupKey, curve, hideDots, stacked } = this.asProps;
-    const { legendItems, highlightedLine } = this.state;
+    const { dataDefinitions, highlightedLine } = this.state;
 
     if (stacked) {
       return (
         <StackedArea x={groupKey}>
-          {legendItems.map((item, index) => {
+          {dataDefinitions.map((item, index) => {
             return (
               item.checked && (
                 <StackedArea.Area
                   x={groupKey}
                   y={item.id}
                   key={item.id}
-                  color={this.resolveColor(item.id)}
+                  color={item.color}
                   transparent={highlightedLine !== -1 && highlightedLine !== index}
                   curve={curve}
                 >
@@ -73,14 +73,14 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
       );
     }
 
-    return legendItems.map((item, index) => {
+    return dataDefinitions.map((item, index) => {
       return (
         item.checked && (
           <Area
             x={groupKey}
             y={item.id}
             key={item.id}
-            color={this.resolveColor(item.id)}
+            color={item.color}
             transparent={highlightedLine !== -1 && highlightedLine !== index}
             curve={curve}
           >
@@ -93,7 +93,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
 
   renderTooltip() {
     const { data, groupKey, showTotalInTooltip } = this.asProps;
-    const { legendItems } = this.state;
+    const { dataDefinitions } = this.state;
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
@@ -102,7 +102,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
           ({ xIndex }) => {
             const dataItem: any = data[xIndex];
 
-            const total = legendItems.reduce((sum, legendItem) => {
+            const total = dataDefinitions.reduce((sum, legendItem) => {
               return sum + dataItem[legendItem.id];
             }, 0);
 
@@ -113,7 +113,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
                     {dataItem[groupKey]?.toString()}
                   </HoverLine.Tooltip.Title>
 
-                  {legendItems.map((item) => {
+                  {dataDefinitions.map((item) => {
                     return (
                       item.checked && (
                         <Flex justifyContent='space-between' key={item.id}>

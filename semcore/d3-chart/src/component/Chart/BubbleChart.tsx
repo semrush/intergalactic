@@ -12,37 +12,41 @@ import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartProps> {
   static displayName = 'Chart.Bubble';
 
-  protected get legendKeys(): string[] {
+  protected get dataKeys(): string[] {
     const { data } = this.props;
 
     return data.map((_, index) => index.toString());
   }
 
-  get defaultLegendItems(): Array<LegendItem & { columns: React.ReactNode[] }> {
+  get defaultDataDefinitions(): Array<LegendItem & { columns: React.ReactNode[] }> {
     const { legendProps, data } = this.props;
 
     return data.map((item, index) => {
       const key = index.toString();
       const legendData = legendProps?.legendMap?.[key];
 
-      const legendItem: LegendItem & { columns: React.ReactNode[] } = {
+      if (item.color === undefined) {
+        item.color = this.resolveColor(key, index);
+      }
+
+      const dataDefinition: LegendItem & { columns: React.ReactNode[] } = {
         id: key,
         label: legendData?.label ?? item.label ?? key,
         icon: legendData?.icon ?? undefined,
         checked: legendData?.defaultChecked ?? true,
-        color: item.color ?? this.resolveColor(key),
+        color: item.color,
         columns: [],
       };
 
       if (legendData?.additionalInfo || legendData?.count) {
-        legendItem.additionalInfo = legendData.additionalInfo
+        dataDefinition.additionalInfo = legendData.additionalInfo
           ? { label: legendData.additionalInfo }
           : legendData.count
           ? { count: legendData.count }
           : undefined;
       }
 
-      return legendItem;
+      return dataDefinition;
     });
   }
 
