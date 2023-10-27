@@ -12,7 +12,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Default color of grouped charts (e.g for pie chart) are different by default.
 - Default text color is based on inversed and processed background color.
-- Default styles for `RadialTree` chart.
 
 ## [3.15.2] - 2023-10-24
 
