@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text as TypographyText } from '@semcore/typography';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
@@ -89,7 +89,7 @@ class ValueRoot extends Component {
   static defaultProps = {
     includeInputProps: inputProps,
   };
-  static enhance = [autoFocusEnhance()];
+  static enhance = [autoFocusEnhance(), resolveColorEnhance()];
   static displayName = 'Value';
   static style = style;
 
@@ -118,8 +118,16 @@ class ValueRoot extends Component {
   }
 
   getCheckMarkProps() {
-    const { size, state, theme, keyboardFocused, checked, includeInputProps, ...other } =
-      this.asProps;
+    const {
+      size,
+      state,
+      theme,
+      keyboardFocused,
+      checked,
+      includeInputProps,
+      resolveColor,
+      ...other
+    } = this.asProps;
     const [, checkMarkProps] = getInputProps(other, includeInputProps);
     const { children, Children, ...propsWithoutChildren } = checkMarkProps;
     return {
@@ -128,6 +136,7 @@ class ValueRoot extends Component {
       state,
       keyboardFocused,
       checked,
+      resolveColor,
       ...propsWithoutChildren,
     };
   }
@@ -176,7 +185,7 @@ Control.displayName = 'Control';
 
 const CheckMark = (props) => {
   const SCheckbox = Root;
-  const { theme, styles } = props;
+  const { theme, styles, resolveColor } = props;
   return sstyled(styles)(<SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)} />);
 };
 CheckMark.displayName = 'CheckMark';

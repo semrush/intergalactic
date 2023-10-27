@@ -2,7 +2,7 @@ import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import Close from '@semcore/icon/Close/m';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import { FadeInOut } from '@semcore/animation';
 import logger from '@semcore/utils/lib/logger';
 import NoticeGlobal from '@semcore/notice-global';
@@ -27,6 +27,7 @@ class RootNotice extends Component {
       map: Number.parseInt,
       prop: 'duration',
     }),
+    resolveColorEnhance(),
   ];
   static defaultProps = {
     theme: 'info',
@@ -35,9 +36,9 @@ class RootNotice extends Component {
   };
 
   getLabelProps() {
-    const { theme } = this.asProps;
+    const { theme, resolveColor } = this.asProps;
 
-    return { theme };
+    return { theme, resolveColor };
   }
 
   getCloseIconProps() {
@@ -48,7 +49,7 @@ class RootNotice extends Component {
 
   render() {
     const SNotice = Root;
-    const { Children, styles, hidden, theme, use } = this.asProps;
+    const { Children, styles, hidden, theme, use, resolveColor } = this.asProps;
     const isAssertive = theme === 'danger' || theme === 'warning';
     const color = resolveColor(theme);
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
@@ -77,7 +78,7 @@ class RootNotice extends Component {
   }
 }
 
-function Label({ styles, theme }) {
+function Label({ styles, theme, resolveColor }) {
   const SLabel = Root;
   const useTheme = isCustomTheme(theme) ? 'custom' : theme;
   const color = resolveColor(theme);

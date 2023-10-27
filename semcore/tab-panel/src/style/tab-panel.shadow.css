@@ -22,8 +22,7 @@ STabPanelItem {
   color: var(--intergalactic-text-secondary, #6c6e79);
   border: 1px solid transparent;
   border-bottom: none;
-  border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px)
-    0 0;
+  border-radius: var(--intergalactic-control-rounded, 6px) var(--intergalactic-control-rounded, 6px) 0 0;
   background: transparent;
   align-items: center;
   justify-content: center;
@@ -76,7 +75,9 @@ STabPanelItem {
 
 STabPanelItem[disabled] {
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
+
   & SText,
   & SAddon {
     opacity: var(--intergalactic-disabled-opacity, 0.3);
@@ -95,6 +96,7 @@ STabPanelItem[selected] {
   &:hover {
     color: var(--intergalactic-text-link-hover-active, #044792);
   }
+
   &::after {
     border-bottom: none;
   }

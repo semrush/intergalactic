@@ -3,7 +3,7 @@ import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
@@ -82,7 +82,7 @@ class Switch extends Component {
 
 class Value extends Component {
   static hoistProps = ['checked', 'disabled'];
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
   static defaultProps = {
     includeInputProps: inputProps,
     defaultChecked: false,
@@ -142,6 +142,7 @@ class Value extends Component {
       theme,
       uid,
       active,
+      resolveColor,
       ...other
     } = this.asProps;
 

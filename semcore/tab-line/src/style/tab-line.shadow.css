@@ -57,12 +57,15 @@ STabLineItem {
     width: 100%;
     background-color: transparent;
   }
+
   &::before {
     transition: background-color calc(var(--intergalactic-duration-control, 200) * 1ms) ease-in-out;
   }
+
   &:hover::before {
     background-color: var(--intergalactic-border-primary, #c4c7cf);
   }
+
   &[selected]::after {
     transition-delay: calc(var(--intergalactic-duration-control, 200) * 1ms);
     background-color: var(--intergalactic-border-info-active, #006dca);
@@ -76,6 +79,7 @@ STabLineItem {
     margin-right: var(--intergalactic-spacing-2x, 8px);
   }
 }
+
 SCaret {
   position: absolute;
   bottom: -1px;
@@ -91,7 +95,8 @@ STabLineItem[selected] {
 STabLineItem[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
 }
 
 STabLineItem[keyboardFocused] {
@@ -114,6 +119,7 @@ SAddon {
 STabLineItem[size='m'] {
   height: 28px;
   min-width: 18px;
+
   & SText {
     font-size: var(--intergalactic-fs-200, 14px);
     line-height: var(--intergalactic-lh-200, 142%);
@@ -123,6 +129,7 @@ STabLineItem[size='m'] {
 STabLineItem[size='l'] {
   height: 40px;
   min-width: 26px;
+
   & SText {
     font-size: var(--intergalactic-fs-300, 16px);
     line-height: var(--intergalactic-lh-300, 150%);
@@ -135,10 +142,12 @@ STabLineItem[neighborLocation='left'] {
 
 @media (prefers-reduced-motion) {
   STabLineItem {
+
     &::before,
     &::after {
       transition: none;
     }
+
     &[selected]::after {
       transition: none;
     }

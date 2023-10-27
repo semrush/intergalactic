@@ -2,13 +2,6 @@ import React from 'react';
 import { ChartLegend, Donut, LegendItem, makeDataHintsContainer, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
-import resolveColor from '@semcore/ui/utils/lib/color';
-
-const pieColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('violet-400'),
-  3: resolveColor('green-200'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -17,12 +10,12 @@ export default () => {
   const height = 250;
 
   const [legendItems, setLegendItems] = React.useState(
-    Object.keys(data).map((item) => {
+    Object.keys(data).map((item, index) => {
       return {
         id: item,
         label: `Dataset${item}`,
         checked: true,
-        color: pieColors[item],
+        color: `chart-palette-order-${index + 1}`,
       };
     }),
   );
@@ -67,14 +60,14 @@ export default () => {
         />
         <Plot width={width} height={height} data={data} dataHints={dataHints}>
           <Donut innerRadius={height / 2 - 50}>
-            {legendItems.map((pie, index) => {
+            {legendItems.map((item, index) => {
               return (
-                pie.checked && (
+                item.checked && (
                   <Donut.Pie
-                    dataKey={pie.id}
-                    key={pie.id}
-                    name={pie.label}
-                    color={pieColors[pie.id]}
+                    dataKey={item.id}
+                    key={item.id}
+                    name={item.label}
+                    color={item.color}
                     transparent={highlightedLine !== -1 && highlightedLine !== index}
                   />
                 )
