@@ -1,14 +1,6 @@
 import React from 'react';
 import { ChartLegend, LegendItem } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
-
-const lineColors = {
-  Line1: resolveColor('blue-300'),
-  Line2: resolveColor('green-200'),
-  Line3: resolveColor('orange-400'),
-  Line4: resolveColor('pink-300'),
-  Line5: resolveColor('yellow-200'),
-};
+import { useColorResolver } from '@semcore/utils/src/use/useColorResolver';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
@@ -20,7 +12,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
 }));
 
 const Shape = (props) => {
-  const { color } = props;
+  const colorResolver = useColorResolver();
 
   return (
     <div
@@ -28,7 +20,7 @@ const Shape = (props) => {
         width: '0',
         height: '0',
         borderTop: '8px solid transparent',
-        borderLeft: `16px solid ${color}`,
+        borderLeft: `16px solid ${colorResolver(props.color)}`,
         borderBottom: '8px solid transparent',
         marginRight: '4px',
       }}
@@ -39,12 +31,12 @@ const Shape = (props) => {
 export default () => {
   const lines = Object.keys(data[0])
     .filter((name) => name !== 'x')
-    .reduce<LegendItem[]>((res, item) => {
+    .reduce<LegendItem[]>((res, item, index) => {
       res.push({
         id: item,
         label: item,
         checked: true,
-        color: lineColors[item],
+        color: `--intergalactic-chart-palette-order-${index + 1}`,
       });
 
       return res;
