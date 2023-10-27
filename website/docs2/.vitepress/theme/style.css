@@ -629,6 +629,18 @@ img {
   color: none;
 }
 
+@media (min-width: 960px) {
+  .VPDoc .content {
+    padding-bottom: 32px;
+  }
+}
+
+@media (max-width: 959px) {
+  .VPDoc.VPDoc {
+    padding-bottom: 32px;
+  }
+}
+
 :root {
   /* base */
   --vp-c-bg: #ffffff;
