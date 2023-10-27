@@ -1,3 +1,86 @@
+## [15.30.0-prerelease.0] - 2023-10-27
+
+### @semcore/badge
+
+- **Added** Design tokens resolving for prop `color`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/base-trigger
+
+- **Added** Design tokens resolving for prop `color`.
+
+### @semcore/checkbox
+
+- **Added** Design tokens resolving for prop `theme`.
+
+### @semcore/counter
+
+- **Added** Design tokens resolving for prop `theme`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/d3-chart
+
+- **Added** Design tokens resolving for `color` props.
+- **Changed** Default color of grouped charts (e.g for pie chart) are different by default.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/icon
+
+- **Added** Design tokens resolving for `color` prop.
+
+### @semcore/link
+
+- **Added** Design tokens resolving for `color` prop.
+
+### @semcore/notice
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/notice-global
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/progress-bar
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/radio
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/select
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/spin
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/spin-container
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/switch
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/tag
+
+- **Added** Design tokens resolving for prop `color`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/tooltip
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/typography
+
+- **Added** Design tokens resolving for `color` prop of `<Text />`.
+
+### @semcore/utils
+
+- **Added** Internal api for design tokens resolving.
+
 ## [15.29.0] - 2023-10-26
 
 ### @semcore/icon
