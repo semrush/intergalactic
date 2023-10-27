@@ -4,9 +4,9 @@ import { Text } from '@semcore/typography';
 import { Box } from '@semcore/flex-box';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
-import resolveColor, { shade } from '@semcore/utils/lib/color';
 import logger from '@semcore/utils/lib/logger';
 import hasLabels from '@semcore/utils/lib/hasLabels';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/link.shadow.css';
 
@@ -16,7 +16,7 @@ class RootLink extends Component {
     noWrap: true,
   };
   static style = style;
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
   containerRef = React.createRef();
 
   componentDidMount() {
@@ -31,8 +31,8 @@ class RootLink extends Component {
 
   render() {
     const SLink = Root;
-    const { Children, styles, noWrap, addonLeft, addonRight, color, disabled } = this.asProps;
-    const colorHoverText = shade(resolveColor(color), -0.12);
+    const { Children, styles, noWrap, addonLeft, addonRight, color, resolveColor, disabled } =
+      this.asProps;
 
     return sstyled(styles)(
       <SLink
@@ -40,8 +40,8 @@ class RootLink extends Component {
         tabIndex={disabled ? -1 : 0}
         aria-disabled={!!disabled}
         render={Text}
+        text-color={resolveColor(color)}
         tag='a'
-        colorHoverText={colorHoverText}
         noWrapText={noWrap}
         use:noWrap={false}
         ref={this.containerRef}

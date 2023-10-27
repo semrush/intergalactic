@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -30,7 +30,7 @@ export default () => {
       </XAxis>
       <StackBar x='category'>
         <StackBar.Bar y='stack1' />
-        <StackBar.Bar y='stack2' color={colors['blue-02']} />
+        <StackBar.Bar y='stack2' />
       </StackBar>
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {
@@ -43,9 +43,7 @@ export default () => {
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['blue-02']}>
-                    Stack 2
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Stack 2</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>

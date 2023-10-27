@@ -7,8 +7,8 @@ export default () => {
       <Donut innerRadius={100}>
         <Donut.EmptyData />
         <Donut.Pie dataKey='a' name='a' />
-        <Donut.Pie dataKey='b' name='b' color={colors['green-02']} />
-        <Donut.Pie dataKey='c' name='c' color={colors['pink-03']} />
+        <Donut.Pie dataKey='b' name='b' />
+        <Donut.Pie dataKey='c' name='c' />
       </Donut>
     </Plot>
   );

@@ -62,6 +62,7 @@ class BarRoot extends Component {
     const {
       styles,
       color,
+      resolveColor,
       x,
       y,
       y0,
@@ -118,7 +119,7 @@ class BarRoot extends Component {
         value={d}
         index={i}
         hide={hide}
-        color={color}
+        color={resolveColor(color)}
         x={barX}
         y={barY}
         width={width}
