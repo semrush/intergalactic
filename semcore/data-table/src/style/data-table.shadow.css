@@ -182,7 +182,7 @@ SSortWrapper:before {
 
 SSortIcon {
   display: none;
-  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  fill: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   position: absolute;
   top: calc(1em * 1.25 - 16px);
   right: 0;

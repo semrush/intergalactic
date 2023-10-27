@@ -18,7 +18,7 @@ SNotice[theme='info'] {
     color: var(--intergalactic-icon-primary-neutral, #6c6e79);
 
     &:hover {
-      color: var(--intergalactic-icon-primary-neutral-hover-active, #484a54);
+      color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
     }
   }
 }
@@ -31,7 +31,7 @@ SNotice[theme='danger'] {
     color: var(--intergalactic-icon-primary-critical, #ff4953);
 
     &:hover {
-      color: var(--intergalactic-icon-primary-critical-hover-active, #d1002f);
+      color: var(--intergalactic-icon-primary-critical-hover-active, #CC3A42);
     }
   }
 }
@@ -44,7 +44,7 @@ SNotice[theme='warning'] {
     color: var(--intergalactic-icon-primary-warning, #ff642d);
 
     &:hover {
-      color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
+      color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
     }
   }
 }
@@ -57,7 +57,7 @@ SNotice[theme='success'] {
     color: var(--intergalactic-icon-primary-success, #009f81);
 
     &:hover {
-      color: var(--intergalactic-icon-primary-success-hover-active, #007c65);
+      color: var(--intergalactic-icon-primary-success-hover-active, #037E68);
     }
   }
 }

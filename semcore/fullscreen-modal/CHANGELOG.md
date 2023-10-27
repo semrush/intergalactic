@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/icon` [4.12.0 ~> 4.13.0], `@semcore/typography` [5.13.0 ~> 5.14.0], `@semcore/flex-box` [5.8.2 ~> 5.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
 
+## [3.13.1] - 2023-10-27
+
+### Changed
+
+- Value for `--intergalactic-icon-secondary-neutral-hover-active` token.
+
 ## [3.13.0] - 2023-10-26
 
 ### Changed

@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/spin` [5.8.2 ~> 5.9.0], `@semcore/utils` [4.8.4 ~> 4.9.0]).
 
+## [5.9.4] - 2023-10-27
+
+### Changed
+
+- Value for `--intergalactic-icon-primary-warning-hover-active` token.
+
 ## [5.9.3] - 2023-10-24
 
 ### Changed

@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.13.1] - 2023-10-27
+
+### Changed
+
+- Value for hover and active states' token for Close icons in all Notice themes.
+
 ## [5.13.0] - 2023-10-26
 
 ### Added
