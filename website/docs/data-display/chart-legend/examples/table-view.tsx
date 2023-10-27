@@ -1,15 +1,6 @@
 import React from 'react';
 import { ChartLegend, LegendTableProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import { Text } from '@semcore/typography';
-
-const lineColors = {
-  Line1: resolveColor('blue-300'),
-  Line2: resolveColor('green-200'),
-  Line3: resolveColor('orange-400'),
-  Line4: resolveColor('pink-300'),
-  Line5: resolveColor('yellow-200'),
-};
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
@@ -21,24 +12,22 @@ const data = [...Array(5).keys()].map((d, i) => ({
 }));
 
 export default () => {
-  const lines = Object.keys(data[0]).reduce<LegendTableProps['items']>((res, item, index) => {
-    if (item === 'x') {
+  const lines = Object.keys(data[0])
+    .filter((key) => key !== 'x')
+    .reduce<LegendTableProps['items']>((res, item, index) => {
+      res.push({
+        id: item,
+        label: `Item ${index + 1}`,
+        checked: true,
+        color: `--intergalactic-chart-palette-order-${index + 1}`,
+        columns: [
+          <Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>,
+          <Text use={'primary'}>{42 * (index + 3)}</Text>,
+        ],
+      });
+
       return res;
-    }
-
-    res.push({
-      id: item,
-      label: `Item ${index + 1}`,
-      checked: true,
-      color: lineColors[item],
-      columns: [
-        <Text use={'secondary'}>{(42 * (index + 3)) / 10}%</Text>,
-        <Text use={'primary'}>{42 * (index + 3)}</Text>,
-      ],
-    });
-
-    return res;
-  }, []);
+    }, []);
 
   return (
     <div style={{ width: '300px' }}>

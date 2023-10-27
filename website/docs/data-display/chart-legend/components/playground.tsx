@@ -2,7 +2,6 @@ import React from 'react';
 // @ts-ignore
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 import { ChartLegend as ChartL, LegendItem, LegendFlexProps } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import DesktopIcon from '@semcore/ui/icon/Desktop/m';
 import { Intergalactic } from '@semcore/core';
 import { IconProps } from '@semcore/icon';
@@ -68,14 +67,6 @@ const Preview = (preview) => {
   );
 };
 
-const lineColors = {
-  Line1: resolveColor('blue-300'),
-  Line2: resolveColor('green-200'),
-  Line3: resolveColor('orange-400'),
-  Line4: resolveColor('pink-300'),
-  Line5: resolveColor('yellow-200'),
-};
-
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
   Line1: Math.random() * 10,
@@ -97,12 +88,12 @@ const ChartLegend = (props: ChartLProps) => {
   const [lines, setLines] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .reduce<LegendItem[]>((res, item) => {
+      .reduce<LegendItem[]>((res, item, index) => {
         res.push({
           id: item,
           label: item,
           checked: true,
-          color: lineColors[item],
+          color: `--intergalactic-chart-palette-order-${index + 1}`,
         });
 
         return res;
