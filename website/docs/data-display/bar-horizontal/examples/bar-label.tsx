@@ -1,13 +1,14 @@
 import React from 'react';
 import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import { useColorResolver } from '@semcore/ui/utils/lib/use/useColorResolver';
 
 export default () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
 
+  const resolveColor = useColorResolver();
   const xScale = scaleLinear()
     .range([MARGIN * 2, width - MARGIN * 2])
     .domain([0, Math.max(...data.map((d) => Number.parseFloat(d.bar)))]);
@@ -32,7 +33,7 @@ export default () => {
                 y={y + height / 2}
                 textAnchor='start'
                 alignmentBaseline='middle'
-                fill={resolveColor('gray60')}
+                fill={resolveColor('--intergalactic-text-secondary')}
               >
                 $ {data[index].bar}
               </text>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 export default () => {
@@ -15,11 +15,11 @@ export default () => {
           <Radar.Axis.Ticks tickSize={30} />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']}>
+        <Radar.Polygon dataKey='data_1'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']}>
+        <Radar.Polygon dataKey='data_2'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>

@@ -30,7 +30,7 @@ export default () => {
       </XAxis>
       <GroupBar x='category'>
         <GroupBar.Bar y='bar1' />
-        <GroupBar.Bar y='bar2' color={colors['green-02']} />
+        <GroupBar.Bar y='bar2' />
       </GroupBar>
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => ({
@@ -42,9 +42,7 @@ export default () => {
                 <Text bold>{data[xIndex].bar1}</Text>
               </Flex>
               <Flex mt={2} justifyContent='space-between'>
-                <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
-                  Bar 2
-                </HoverRect.Tooltip.Dot>
+                <HoverRect.Tooltip.Dot mr={4}>Bar 2</HoverRect.Tooltip.Dot>
                 <Text bold>{data[xIndex].bar2}</Text>
               </Flex>
             </>

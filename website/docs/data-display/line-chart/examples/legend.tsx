@@ -2,15 +2,8 @@ import React from 'react';
 import Card from '@semcore/ui/card';
 import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
 import Checkbox from '@semcore/ui/checkbox';
-
-const lineColors = {
-  line1: resolveColor('blue-300'),
-  line2: resolveColor('orange-400'),
-  line3: resolveColor('green-200'),
-};
 
 export default () => {
   const MARGIN = 30;
@@ -67,11 +60,11 @@ export default () => {
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
-          {linesList.map((line) => {
+          {linesList.map((line, index) => {
             return (
               <Checkbox
                 key={line}
-                theme={lineColors[line]}
+                theme={`chart-palette-order-${index + 1}`}
                 mr={4}
                 mb={2}
                 onMouseEnter={handleMouseEnter(line)}
@@ -99,13 +92,13 @@ export default () => {
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks(5)} />
           </XAxis>
-          {displayedLinesList.map((line) => {
+          {displayedLinesList.map((line, index) => {
             return (
               <Line
                 x='x'
                 y={line}
                 key={line}
-                color={lineColors[line]}
+                color={`chart-palette-order-${index + 1}`}
                 transparent={opacityLines[line]}
               >
                 <Line.Dots display />

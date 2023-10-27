@@ -3,6 +3,10 @@ export declare function minMax(data: any, key: string | number): any;
 export declare const interpolateValue: Symbol;
 
 // Color
+/**
+ * @deprecated
+ * This export will be removed in the next major release.
+ */
 export declare const colors: { [key: string]: string };
 
 export { default as Plot } from './Plot';

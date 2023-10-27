@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, GroupBar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
+import { Plot, GroupBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -30,7 +30,7 @@ export default () => {
       </XAxis>
       <GroupBar y='category'>
         <GroupBar.HorizontalBar x='bar1' />
-        <GroupBar.HorizontalBar x='bar2' color={colors['green-02']} />
+        <GroupBar.HorizontalBar x='bar2' />
       </GroupBar>
       <HoverRect.Tooltip y='category' wMin={100}>
         {({ yIndex }) => {
@@ -43,9 +43,7 @@ export default () => {
                   <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
-                    Bar 2
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Bar 2</HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex].bar2}</Text>
                 </Flex>
               </>
