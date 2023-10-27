@@ -141,7 +141,6 @@ export const getIndexFromData = <
   }
   // detect bar chart
   else if ('step' in scale && typeof scale.step !== 'undefined') {
-    // console.log({ key, scale, value });
     const index = data.findIndex((d) => d[key] === value);
     return index >= 0 ? index : null;
   } else {
@@ -240,3 +239,11 @@ let idCounter = 0;
 export const uniqueId = (prefix = 'id-') => `${prefix}${idCounter++}`;
 
 export const interpolateValue = Symbol('intergalactic-d3-chart-line-interpolate');
+
+export const getChartDefaultColorName = (index: number) => {
+  index++;
+  if (index < 1) index = 1;
+  if (index > 24) index %= 24;
+
+  return `chart-palette-order-${index}`;
+};

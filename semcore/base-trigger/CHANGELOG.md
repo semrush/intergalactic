@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.14.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for prop `color`.
+
 ## [4.13.0] - 2023-10-26
 
 ### Changed

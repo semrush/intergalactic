@@ -55,7 +55,7 @@ export default () => {
               return {
                 children: (
                   <Flex alignItems='center'>
-                    <Accordion.Item.Chevron color='stone' mr={2} />
+                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
                     {props.children}
                   </Flex>
                 ),

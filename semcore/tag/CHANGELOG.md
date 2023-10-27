@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.14.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for prop `color`.
+
+### Changed
+
+- Default text color is based on inversed and processed background color.
+
 ## [5.13.0] - 2023-10-26
 
 ### Changed

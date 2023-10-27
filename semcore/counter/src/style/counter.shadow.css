@@ -24,22 +24,29 @@ SCounter[size='l'] {
   height: 20px;
   min-width: 20px;
   font-size: var(--intergalactic-fs-100, 12px);
-  padding: var(--intergalactic-spacing-05x, 2px)
-    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
+  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[size='xl'] {
   height: 24px;
   min-width: 24px;
   font-size: var(--intergalactic-fs-200, 14px);
-  padding: var(--intergalactic-spacing-05x, 2px)
-    calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
+  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-05x, 2px) + var(--intergalactic-spacing-1x, 4px));
 }
 
 SCounter[theme] {
   border-color: transparent;
+  position: relative;
   background: var(--theme);
-  color: var(--colorText);
+  color: var(--theme);
+}
+
+SCounter[theme] SText {
+  filter: invert(1) saturate(0) contrast(10) brightness(10);
+}
+
+SText {
+  display: inline;
 }
 
 SCounter[theme='warning'] {

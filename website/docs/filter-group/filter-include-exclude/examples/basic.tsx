@@ -36,11 +36,11 @@ export default () => {
         aria-label='List of excluded keywords'
         aria-modal='false'
       >
-        <Text tag='label' htmlFor='textarea' size={200} color='gray20'>
+        <Text tag='label' htmlFor='textarea' size={200} color='text-primary'>
           Enter keywords separated by commas or one per line. For exact matches, enter your keyword
           with square brackets around it.
         </Text>
-        <RadioGroup my={4} defaultValue='1'>
+        <RadioGroup my={4} defaultValue='1' direction='row'>
           <Radio>
             <Radio.Value value='1' />
             <Radio.Text>All keywords</Radio.Text>

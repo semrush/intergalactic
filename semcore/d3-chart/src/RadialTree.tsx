@@ -2,7 +2,6 @@ import React from 'react';
 import { transition } from 'd3-transition';
 import { Component, sstyled, ReturnEl, UnknownProperties, Intergalactic } from '@semcore/core';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
-import { shade } from '@semcore/utils/lib/color';
 import assignProps from '@semcore/utils/lib/assignProps';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
@@ -396,7 +395,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   getLineProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
     const data = $rootProps.data?.[index];
     const { xStart, yStart, xEnd, yEnd } = this.computeRadianPosition(data!, index);
-    const { uid, transparent } = this.asProps;
+    const { uid, transparent, resolveColor } = this.asProps;
     const color = data!.color ?? this.asProps.color;
 
     return {
@@ -405,6 +404,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       x2: xEnd,
       y2: yEnd,
       stroke: color,
+      resolveColor,
       transparent,
       ['data-x1']: xStart,
       ['data-y1']: yStart,
@@ -418,7 +418,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   getCapProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
     const data = $rootProps.data?.[index];
     const { xEnd, yEnd, capSize } = this.computeRadianPosition(data!, index);
-    const { uid, transparent } = this.asProps;
+    const { uid, transparent, resolveColor } = this.asProps;
     const color = data!.color ?? this.asProps.color;
 
     return {
@@ -428,6 +428,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       ['data-cy']: yEnd,
       radius: capSize,
       color,
+      resolveColor,
       transparent,
       ['data-radial-animation']: `${uid}-cap-circle`,
       ['data-radian-index']: index,
@@ -437,7 +438,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
   getIconProps({ $rootProps }: { $rootProps: IRadialTreeProps }, index: number) {
     const data = $rootProps.data?.[index];
     const { xEnd, yEnd, isActive } = this.computeRadianPosition(data!, index);
-    const { uid } = this.asProps;
+    const { uid, resolveColor } = this.asProps;
     const iconColor = data!.iconColor ?? this.asProps.iconColor;
     const iconSize = data!.iconSize ?? this.asProps.iconSize;
     const icon = data!.icon ?? this.asProps.icon;
@@ -450,6 +451,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       ['data-y']: y,
       iconSize,
       color: iconColor ?? '#fff',
+      resolveColor,
       ['data-radial-animation']: `${uid}-cap-icon`,
       ['data-radian-index']: index,
       icon,
@@ -464,7 +466,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       data!,
       index,
     );
-    const { uid, textSize, transparent } = this.asProps;
+    const { uid, textSize, transparent, resolveColor } = this.asProps;
     const { label } = data!;
     const color = data!.color ?? this.asProps.color;
 
@@ -476,6 +478,7 @@ class RadialTreeRadian extends Component<RadianAsProps> {
       ['data-radian-index']: index,
       label,
       color,
+      resolveColor,
       isHorizontal,
       textSize,
       transparent,
@@ -620,15 +623,17 @@ export type RadialTreeRadianLineProps = {
 type RadialTreeRadianLineAsProps = IRadialTreeRadianLineProps & {
   Element: React.FC<{ render: string; transparent: boolean } & React.SVGProps<any>>;
   styles: React.CSSProperties;
+  resolveColor: (color?: string) => string;
 };
 const Line: React.FC<RadialTreeRadianLineAsProps> = ({
   Element: SLine,
   styles,
   stroke,
+  resolveColor,
   transparent,
 }) => {
   return sstyled(styles)(
-    <SLine render='line' stroke={stroke} transparent={transparent!} />,
+    <SLine render='line' stroke={resolveColor(stroke)} transparent={transparent!} />,
   ) as React.ReactElement;
 };
 
@@ -647,6 +652,7 @@ export type RadialTreeRadianCapProps = {
 type RadialTreeRadianCapAsProps = IRadialTreeRadianCapProps & {
   Element: React.FC<{ render: string; transparent: boolean } & React.SVGProps<any>>;
   styles: React.CSSProperties;
+  resolveColor: (color?: string) => string;
 };
 const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   Element: SCap,
@@ -655,10 +661,18 @@ const Cap: React.FC<RadialTreeRadianCapAsProps> = ({
   y,
   radius,
   color,
+  resolveColor,
   transparent,
 }) => {
   return sstyled(styles)(
-    <SCap render='circle' cx={x} cy={y} r={radius} fill={color} transparent={transparent!} />,
+    <SCap
+      render='circle'
+      cx={x}
+      cy={y}
+      r={radius}
+      fill={resolveColor(color)}
+      transparent={transparent!}
+    />,
   ) as React.ReactElement;
 };
 
@@ -726,6 +740,7 @@ type RadialTreeRadianLabelAsProps = IRadialTreeRadianLabelProps & {
   y: number;
   angle: number;
   textSize: number;
+  resolveColor: (color?: string) => string;
 };
 const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   Element: SLabel,
@@ -733,6 +748,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
   styles,
   label,
   color,
+  resolveColor,
   isHorizontal,
   x,
   y,
@@ -750,8 +766,7 @@ const Label: React.FC<RadialTreeRadianLabelAsProps> = ({
 
   const sstyles = sstyled(styles);
   const sLabelStyles = sstyles.cn('SLabel', {
-    color,
-    'color-hovered': shade(color, -0.12),
+    color: resolveColor(color),
     'text-cursor': isHorizontal ? 'text' : 'vertical-text',
     transparent,
   });
@@ -806,6 +821,7 @@ type RadialTreeTitleAsProps = IRadialTreeTitleProps & {
   children: React.ReactNode;
   styles: React.CSSProperties;
   dataHintsHandler: DataHintsHandler;
+  resolveColor: (color?: string) => string;
 };
 const Title: React.FC<RadialTreeTitleAsProps> = ({
   Element: STitle,
@@ -814,6 +830,7 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
   styles,
   textSize,
   color,
+  resolveColor,
   x,
   y,
   dataHintsHandler,
@@ -828,7 +845,7 @@ const Title: React.FC<RadialTreeTitleAsProps> = ({
       textAnchor='middle'
       dominantBaseline='central'
       fontSize={textSize}
-      fill={color}
+      fill={resolveColor(color)}
       x={x}
       y={y}
     >

@@ -20,7 +20,7 @@ export default () => (
       </Button.Addon>
       <Button.Text>Manage columns</Button.Text>
       <Button.Addon>
-        <Counter theme='white'>23</Counter>
+        <Counter theme='bg-primary-neutral'>23</Counter>
       </Button.Addon>
     </Button>
   </>
