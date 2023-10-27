@@ -53,8 +53,21 @@ class ScatterPlotRoot extends Component {
   }
 
   renderCircle(d, i) {
-    const { color, scale, x, y, r, offset, styles, uid, duration, value, valueColor, transparent } =
-      this.asProps;
+    const {
+      color,
+      scale,
+      x,
+      y,
+      r,
+      offset,
+      styles,
+      uid,
+      duration,
+      value,
+      valueColor,
+      transparent,
+      resolveColor,
+    } = this.asProps;
     const [xScale, yScale] = scale;
     const SScatterPlot = this.Element;
     const SValue = 'text';
@@ -74,7 +87,7 @@ class ScatterPlotRoot extends Component {
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
-          color={color}
+          color={resolveColor(color)}
           r={r}
           use:duration={`${duration}ms`}
           transparent={transparent}
@@ -86,7 +99,7 @@ class ScatterPlotRoot extends Component {
             y={yScale(d[y]) + offset[1]}
             dy='.3em'
             clipPath={`url(#${uid})`}
-            color={valueColor}
+            color={resolveColor(valueColor)}
             transparent={transparent}
           >
             {d[value]}

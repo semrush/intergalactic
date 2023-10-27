@@ -1,7 +1,6 @@
 import React from 'react';
 import { Root, sstyled } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import { opacity } from '@semcore/utils/lib/color';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import CloseM from '@semcore/icon/Close/m';
 
@@ -30,7 +29,6 @@ export function Item(props: ItemAsProps) {
       selected={selected}
       value={value}
       displayLabel={displayLabel}
-      lightBackground={opacity(value, 0.15)}
       role='listitem'
       aria-atomic='true'
       aria-label={value ? getI18nText('itemColor', { color: value }) : getI18nText('clearColor')}

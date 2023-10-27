@@ -113,7 +113,7 @@ class ReferenceLineRoot extends Component {
 
   render() {
     const SReferenceLine = this.Element;
-    const { title, scale, position, value, color, styles } = this.asProps;
+    const { title, scale, position, value, color, resolveColor, styles } = this.asProps;
     const positionProps = lineDirection2props[side2direction[position]];
 
     return sstyled(styles)(
@@ -121,7 +121,7 @@ class ReferenceLineRoot extends Component {
         <SReferenceLine
           render='line'
           __excludeProps={['data', 'scale', 'format', 'value', 'color']}
-          stroke={color}
+          stroke={resolveColor(color)}
           {...positionProps(scale, value)}
         />
         {title && <ReferenceLine.Title>{title}</ReferenceLine.Title>}

@@ -2,15 +2,8 @@ import React from 'react';
 import { Plot, StackBar, YAxis, XAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
-
-const barColors = {
-  stack1: resolveColor('blue-300'),
-  stack2: resolveColor('orange-400'),
-  stack3: resolveColor('green-200'),
-};
 
 export default () => {
   const MARGIN = 30;
@@ -65,11 +58,11 @@ export default () => {
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
-          {barsList.map((stack) => {
+          {barsList.map((stack, index) => {
             return (
               <Checkbox
                 key={stack}
-                theme={barColors[stack]}
+                theme={`chart-palette-order-${index + 1}`}
                 mr={4}
                 mb={2}
                 onMouseEnter={handleMouseEnter(stack)}
@@ -99,12 +92,7 @@ export default () => {
           </XAxis>
           <StackBar x='category'>
             {displayedBarsList.map((stack) => (
-              <StackBar.Bar
-                y={stack}
-                key={stack}
-                color={barColors[stack]}
-                transparent={opacityBars[stack]}
-              />
+              <StackBar.Bar y={stack} key={stack} transparent={opacityBars[stack]} />
             ))}
           </StackBar>
         </Plot>

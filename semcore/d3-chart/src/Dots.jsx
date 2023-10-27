@@ -25,6 +25,7 @@ function Dots(props) {
     duration = 500,
     transparent,
     radius = 6,
+    resolveColor,
   } = props;
   const SDots = 'g';
   const bisect = bisector((d) => d[x]).center;
@@ -89,7 +90,7 @@ function Dots(props) {
           cy={d3.y()(d)}
           active={active}
           hide={hide}
-          color={color}
+          color={resolveColor(color)}
           transparent={transparent}
           radius={radius}
         />,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
 export interface IWithAnimatedSizeEnhanceProps
