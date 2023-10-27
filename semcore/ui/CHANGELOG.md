@@ -1,3 +1,9 @@
+## [15.29.0] - 2023-10-26
+
+### @semcore/icon
+
+- **Changed** Made `Twitter` and `TwitterCarousel` icons bolder.
+
 ## [15.28.2] - 2023-10-24
 
 ### @semcore/popper

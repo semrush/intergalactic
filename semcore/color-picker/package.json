@@ -1,7 +1,7 @@
 {
   "name": "@semcore/color-picker",
   "description": "Semrush ColorPicker Component",
-  "version": "2.11.3",
+  "version": "2.12.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -16,7 +16,7 @@
     "@semcore/divider": "4.8.2",
     "@semcore/dropdown": "4.8.3",
     "@semcore/flex-box": "5.8.2",
-    "@semcore/icon": "4.11.2",
+    "@semcore/icon": "4.12.0",
     "@semcore/input": "4.10.2",
     "@semcore/utils": "4.8.4"
   },

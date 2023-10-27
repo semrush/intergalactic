@@ -1,7 +1,7 @@
 {
   "name": "@semcore/modal",
   "description": "Semrush Modal Component",
-  "version": "4.13.2",
+  "version": "4.14.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,10 +14,10 @@
   "dependencies": {
     "@semcore/animation": "2.8.2",
     "@semcore/flex-box": "5.8.2",
-    "@semcore/icon": "4.11.2",
+    "@semcore/icon": "4.12.0",
     "@semcore/outside-click": "3.7.7",
     "@semcore/portal": "3.7.7",
-    "@semcore/typography": "5.12.2",
+    "@semcore/typography": "5.13.0",
     "@semcore/utils": "4.8.4"
   },
   "peerDependencies": {
