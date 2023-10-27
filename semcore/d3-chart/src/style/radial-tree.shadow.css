@@ -31,7 +31,6 @@ SIcon[transparent] {
 
 SLabel {
   fill: var(--color);
-  cursor: var(--text-cursor);
 }
 
 SLabel[transparent] {
@@ -39,7 +38,8 @@ SLabel[transparent] {
 }
 
 SRadian:hover SLabel {
-  fill: var(--color-hovered);
+  cursor: pointer;
+  filter: brightness(0.6);
 }
 
 @media (prefers-reduced-motion) {

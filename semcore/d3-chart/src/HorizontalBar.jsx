@@ -59,6 +59,7 @@ class HorizontalBarRoot extends Component {
       groupKey,
       transparent,
       maxBarSize = Infinity,
+      resolveColor,
     } = this.asProps;
 
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
@@ -100,7 +101,7 @@ class HorizontalBarRoot extends Component {
         value={d}
         index={i}
         hide={hide}
-        color={color}
+        color={resolveColor(color)}
         transparent={transparent}
         x={barX}
         y={barY}

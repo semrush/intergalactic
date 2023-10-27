@@ -33,19 +33,20 @@ class LineRoot extends Component {
   };
 
   getDotsProps() {
-    const { x, y, d3, color, duration, transparent } = this.asProps;
+    const { x, y, d3, color, resolveColor, duration, transparent } = this.asProps;
     return {
       x,
       y,
       d3,
       color,
+      resolveColor,
       duration,
       transparent,
     };
   }
 
   getNullProps() {
-    const { x, y, d3, color } = this.asProps;
+    const { x, y, d3, color, resolveColor } = this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     return {
@@ -53,6 +54,7 @@ class LineRoot extends Component {
       // TODO: vertical
       data: getNullData(data, definedNullData(x, y), y),
       color,
+      resolveColor,
     };
   }
 
@@ -73,7 +75,8 @@ class LineRoot extends Component {
 
   render() {
     const SLine = this.Element;
-    const { styles, hide, color, uid, size, d3, duration, x, y, transparent } = this.asProps;
+    const { styles, hide, color, resolveColor, uid, size, d3, duration, x, y, transparent } =
+      this.asProps;
     const data = this.asProps.data.filter((item) => item[y] !== interpolateValue);
 
     this.asProps.dataHintsHandler.specifyDataRowFields(x, y);
@@ -86,7 +89,7 @@ class LineRoot extends Component {
           clipPath={`url(#${uid})`}
           render='path'
           hide={hide}
-          color={color}
+          color={resolveColor(color)}
           transparent={transparent}
           d={d3(data)}
           use:duration={`${duration}ms`}

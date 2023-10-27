@@ -35,14 +35,14 @@ export default () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree color='#008FF8' textSize={textSize}>
+      <RadialTree color='blue-400' textSize={textSize}>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <RadialTree.Title textSize={lineHeight} color='#AB6CFE'>
+        <RadialTree.Title textSize={lineHeight} color='blue-400'>
           {textLines.map((line, lineIndex) => (
             <tspan
               key={line}

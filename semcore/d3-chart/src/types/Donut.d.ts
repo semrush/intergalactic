@@ -37,9 +37,7 @@ export type PieProps = Context & {
    * Human readable name of the segment
    * */
   name: string;
-  /** Color pie
-    @default #50aef4
-   **/
+  /** Color pie **/
   color?: string;
   /**
    * Active sector

@@ -7,18 +7,10 @@ import {
   XAxis,
   YAxis,
   ChartLegend,
-  LegendItem,
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
-
-const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-  3: resolveColor('orange-400'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -38,12 +30,12 @@ export default () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .map((item) => {
+      .map((item, index) => {
         return {
           id: item,
           label: `Line${item}`,
           checked: true,
-          color: lineColors[item],
+          color: `chart-palette-order-${index + 1}`,
         };
       }),
   );
@@ -105,7 +97,7 @@ export default () => {
                   x='x'
                   y={item.id}
                   key={item.id}
-                  color={lineColors[item.id]}
+                  color={item.color}
                   transparent={highlightedLine !== -1 && highlightedLine !== index}
                 >
                   <Line.Dots display />

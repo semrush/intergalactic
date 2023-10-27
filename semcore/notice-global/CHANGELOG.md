@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.23.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for `theme` prop.
+
+## [2.12.0] - 2023-10-26
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.11.2 ~> 4.12.0]).
+
 ## [2.11.2] - 2023-10-24
 
 ### Changed
