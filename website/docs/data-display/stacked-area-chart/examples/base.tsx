@@ -23,7 +23,7 @@ export default () => {
     <Chart.Area
       data={data}
       plotWidth={500}
-      plotHeight={300}
+      plotHeight={200}
       groupKey={'time'}
       tooltipValueFormatter={formatDate('tooltip')}
       axisXValueFormatter={formatDate('axis')}

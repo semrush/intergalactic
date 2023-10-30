@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart } from '@semcore/d3-chart';
 
 export default () => {
-  return <Chart.Bubble data={data} plotWidth={500} plotHeight={300} />;
+  return <Chart.Bubble data={data} plotWidth={500} plotHeight={200} />;
 };
 
 const data = [

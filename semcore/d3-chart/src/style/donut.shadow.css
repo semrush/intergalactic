@@ -24,4 +24,7 @@ SEmptyData[color] {
 SLabel {
   text-anchor: middle;
   vertical-anchor: middle;
+  font-size: var(--intergalactic-fs-200, 14px);
+  line-height: var(--intergalactic-lh-200, 142%);
+
 }

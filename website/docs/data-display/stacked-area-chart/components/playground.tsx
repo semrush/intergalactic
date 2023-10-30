@@ -59,7 +59,7 @@ const Preview = (preview) => {
     data,
     groupKey: 'x',
     plotWidth: 500,
-    plotHeight: 300,
+    plotHeight: 200,
     showTotalInTooltip,
     direction,
     hideTooltip,

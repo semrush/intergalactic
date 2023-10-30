@@ -14,7 +14,7 @@ class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
 
   static defaultProps: Partial<BaseChartProps<VennChartData>> = {
     direction: 'row-reverse',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginY: 0,
     marginX: 0,
   };

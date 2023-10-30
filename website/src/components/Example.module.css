@@ -7,7 +7,7 @@
 
 .view {
   width: 100%;
-  padding: var(--intergalactic-spacing-6x);
+  padding: var(--intergalactic-spacing-5x);
   box-sizing: border-box;
   font-size: var(--intergalactic-fs-100);
   background-color: var(--intergalactic-bg-primary-neutral);

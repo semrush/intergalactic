@@ -33,7 +33,7 @@ const Preview = (preview) => {
   const chartProps: BubbleChartProps = {
     data,
     plotWidth: 500,
-    plotHeight: 300,
+    plotHeight: 200,
     direction,
     hideTooltip,
     hideXAxis,

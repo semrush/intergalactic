@@ -571,7 +571,7 @@ describe('Venn', () => {
       const [order, setOrder] = React.useState(0);
 
       return (
-        <Flex alignItems='center' direction='column'>
+        <Flex alignItems='flex-start' direction='column'>
           <Plot height={300} width={400} data={data}>
             <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
               <Venn.Circle dataKey='F' />

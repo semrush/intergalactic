@@ -50,13 +50,13 @@ const Preview = (preview) => {
 
   legendProps.legendMap = {
     a: { label: 'Nuts' },
-    b: { label: 'fruits' },
+    b: { label: 'Fruits' },
     c: { label: 'Milk' },
   };
 
   const chartProps: DonutChartProps = {
     data,
-    plotWidth: 500,
+    plotWidth: 300,
     plotHeight: 300,
     direction,
     hideTooltip,

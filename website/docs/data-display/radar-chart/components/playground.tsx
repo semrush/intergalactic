@@ -42,8 +42,8 @@ const Preview = (preview) => {
   const chartProps: RadarChartProps = {
     data,
     groupKey: 'categories',
-    plotWidth: 500,
-    plotHeight: 500,
+    plotWidth: 400,
+    plotHeight: 400,
     direction,
     hideTooltip,
     hideXAxis,

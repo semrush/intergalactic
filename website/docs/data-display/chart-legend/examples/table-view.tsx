@@ -28,8 +28,8 @@ export default () => {
     });
 
   return (
-    <div style={{ width: '300px' }}>
-      <ChartLegendTable items={lines} />
+    <div style={{ width: '200px' }}>
+      <ChartLegend.Table items={lines} />
     </div>
   );
 };

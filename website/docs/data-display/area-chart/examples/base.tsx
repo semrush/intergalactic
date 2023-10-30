@@ -16,7 +16,7 @@ export default () => {
       groupKey={'time'}
       data={data}
       plotWidth={500}
-      plotHeight={300}
+      plotHeight={200}
       tooltipValueFormatter={formatDate}
     />
   );

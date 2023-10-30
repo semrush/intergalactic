@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart, colors } from '@semcore/ui/d3-chart';
 
 export default () => {
-  return <Chart.Radar data={data} groupKey={'categories'} plotWidth={500} plotHeight={500} />;
+  return <Chart.Radar data={data} groupKey={'categories'} plotWidth={400} plotHeight={400} />;
 };
 
 const data = {

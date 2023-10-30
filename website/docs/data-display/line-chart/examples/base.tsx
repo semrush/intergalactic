@@ -6,7 +6,7 @@ export default () => {
     <Chart.Line
       data={data}
       plotWidth={500}
-      plotHeight={300}
+      plotHeight={200}
       groupKey={'x'}
       xTicksCount={data.length / 2}
     />

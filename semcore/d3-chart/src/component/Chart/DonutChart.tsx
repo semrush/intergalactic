@@ -13,7 +13,7 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
   static displayName = 'Chart.Donut';
   static defaultProps: Partial<DonutChartProps> = {
     direction: 'row-reverse',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     innerRadius: 100,
     marginX: 0,
     marginY: 0,
