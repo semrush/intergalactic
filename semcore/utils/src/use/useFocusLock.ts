@@ -1,7 +1,6 @@
 import canUseDOM from '../canUseDOM';
-import { useUID } from '../uniqueID';
 import moveFocusInside, { focusInside, getFocusableIn } from 'focus-lock';
-import React from 'react';
+import LocalReact from 'react';
 
 /** "safe" focus movement means that function wrapper tries
  * to detect focus war (when two focus locks are trying to
@@ -75,9 +74,16 @@ const areBordersPlacedCorrectly = () => {
     return false;
   return true;
 };
-const useFocusBorders = (disabled?: boolean) => {
-  const id = useUID('focus-borders-consumer');
+
+type ReactT = typeof LocalReact;
+
+let uniqueId = 0;
+const getUniqueId = (prefix: string) =>
+  `${prefix}-${Math.random().toString(36).slice(2)}-${uniqueId++}`;
+const useFocusBorders = (React: ReactT, disabled?: boolean) => {
+  useUniqueIdHookMock(React);
   React.useEffect(() => {
+    const id = getUniqueId('focus-borders-consumer');
     if (!disabled) {
       focusBordersConsumers.add(id);
     }
@@ -89,8 +95,10 @@ const useFocusBorders = (disabled?: boolean) => {
       focusBordersConsumers.delete(id);
       if (focusBordersConsumers.size === 0) removeBorders();
     };
-  }, [id, disabled]);
-}; /**
+  }, [disabled]);
+};
+/**
+ * # Focus lock hook merging
  * In some cases same page might contain different versions of components.
  * In such cases, we need to ensure that only one version of focus lock hook is used.
  * So, it's why we have `useFocusLockHook` function that is wrapped into `useFocusLock`.
@@ -100,16 +108,25 @@ const useFocusBorders = (disabled?: boolean) => {
  * The last condition is very important because we are unable to replace React hook without reimplementing
  * React hooks lifecycle in some kind of wrapper.
  *
+ * ## Versioning
  * Such versions merging requires us to keep hook api backward compatible.
  * When hook logic changes, the variable `focusLockVersion` should be incremented.
  *
- * update version `1 -> 2`. Fixed call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target)
- *
+ * Version update `1 -> 2`. Fixed call `safeMoveFocusInside` in `handleFocusIn` with correct second parameter (focusCameFrom instead of event.target)
+ * Version update `2 -> 3`. Fixed React version isolation in nested hooks (`useFocusBorders`, `useUniqueId`).
  *
  * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
  * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
+ *
+ * ## React hooks order
+ * When updating from version 2 to version 3 `useUniqueId` hook was removed.
+ * Due to replacing useFocusLock hook in runtime, the order of hooks must be preserved.
+ * So, useUniqueIdHookMock helps to preserve hooks order when hook is being replaced from version 2 to version 3.
+ *
+ * If new update requires to remove some hooks – add mocks instead of them.
+ * If new update requires to add some hooks and no workaround with current hooks list is possible – probably focus lock hook key should be changed.
  */
-const focusLockVersion = 2;
+const focusLockVersion = 3;
 const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
 
 const focusLockAllTraps = new Set<HTMLElement>();
@@ -124,7 +141,12 @@ const focusLockUsedInMountedComponents = new Set<string>();
  */
 const focusMastersStack: HTMLElement[] = [];
 
-type ReactT = typeof React;
+const noop = () => {};
+const useUniqueIdHookMock = (React: ReactT) => {
+  React.useState(undefined);
+  const useEnhancedEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
+  useEnhancedEffect(noop, []);
+};
 
 const useFocusLockHook = (
   React: ReactT,
@@ -134,7 +156,7 @@ const useFocusLockHook = (
   disabled = false,
   focusMaster = false,
 ) => {
-  useFocusBorders(disabled);
+  useFocusBorders(React, disabled);
 
   const autoTriggerRef = React.useRef<HTMLElement | null>(null);
   const lastUserInteractionRef = React.useRef<'mouse' | 'keyboard' | undefined>(undefined);
@@ -241,8 +263,9 @@ const useFocusLockHook = (
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
 
-  const id = useUID('focus-lock-consumer');
+  useUniqueIdHookMock(React);
   React.useEffect(() => {
+    const id = getUniqueId('focus-lock-consumer');
     if (disabled) return;
     focusLockUsedInMountedComponents.add(id);
     return () => {
@@ -276,7 +299,7 @@ export const useFocusLock = (
   focusMaster = false,
 ) => {
   const hook = (globalThis as any)[globalFocusLockHookKey]?.hook ?? useFocusLockHook;
-  return hook(React, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
+  return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
 };
 
 export const isFocusInside = focusInside;

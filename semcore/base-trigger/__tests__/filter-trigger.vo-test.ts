@@ -18,7 +18,7 @@ test('Users can interact with FilterTrigger via VoiceOver', async ({
   await voiceOver.interact();
 
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toContain('Select option');
+  expect(await voiceOver.lastSpokenPhrase()).toContain('Select option');
   await voiceOver.act();
   await voiceOver.next();
   await voiceOver.next();
@@ -33,7 +33,7 @@ test('Users can interact with FilterTrigger via VoiceOver', async ({
   await voiceOver.stopInteracting();
   await voiceOver.interact();
   await voiceOver.next();
-  expect(await voiceOver.itemText()).toBe('Select option Filter list box pop up group');
+  expect(await voiceOver.lastSpokenPhrase()).toBe('Filter Select option list box pop up button');
 
   const report = (await getReportHeader()) + '\n\n' + (await getReport(standPath));
 

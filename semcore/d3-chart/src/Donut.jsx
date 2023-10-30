@@ -7,7 +7,7 @@ import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import createElement from './createElement';
-import { CONSTANT } from './utils';
+import { CONSTANT, getChartDefaultColorName } from './utils';
 import Tooltip from './Tooltip';
 
 import style from './style/donut.shadow.css';
@@ -216,17 +216,18 @@ class DonutRoot extends Component {
     }
   };
 
-  getPieProps(props, ind) {
-    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize } = this.asProps;
+  getPieProps(props, index) {
+    const { d3Arc, d3ArcOut, innerRadius, outerRadius, halfsize, resolveColor } = this.asProps;
     const { active } = props;
     const data = this.arcs.find((arc) => arc.data[0] === props.dataKey);
     if (active) {
-      this.activeIndexPie = ind;
+      this.activeIndexPie = index;
     }
     const tooltipProps = {
       dataKey: props.dataKey,
       name: props.name,
-      color: props.color,
+      resolveColor,
+      color: props.color || getChartDefaultColorName(index),
       active: props.active,
       transparent: props.transparent,
     };
@@ -238,6 +239,8 @@ class DonutRoot extends Component {
       innerRadius,
       outerRadius,
       halfsize,
+      color: props.color || getChartDefaultColorName(index),
+      resolveColor,
       $animationActivePie: this.animationActivePie,
       onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
@@ -316,6 +319,7 @@ function Pie({
   transparent,
   innerRadius,
   outerRadius,
+  resolveColor,
   halfsize,
   ...other
 }) {
@@ -354,16 +358,20 @@ function Pie({
     <SPie
       render='path'
       ref={pieRef}
-      color={color}
+      color={resolveColor(color)}
       d={active ? d3ArcOut(data) : d3Arc(data)}
       transparent={transparent}
     />,
   );
 }
 
-function EmptyData({ Element: SEmptyData, styles, d3Arc, color }) {
+function EmptyData({ Element: SEmptyData, styles, d3Arc, color, resolveColor }) {
   return sstyled(styles)(
-    <SEmptyData render='path' color={color} d={d3Arc({ endAngle: Math.PI * 2, startAngle: 0 })} />,
+    <SEmptyData
+      render='path'
+      color={resolveColor(color)}
+      d={d3Arc({ endAngle: Math.PI * 2, startAngle: 0 })}
+    />,
   );
 }
 

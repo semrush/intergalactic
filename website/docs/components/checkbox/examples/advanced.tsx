@@ -1,12 +1,13 @@
 import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
-import { inputProps } from '@semcore/ui/utils/lib/inputProps';
 
 const Demo = () => {
-  const includeInputProps = [...inputProps, 'data-test-id'];
   return (
     <Checkbox>
-      <Checkbox.Value includeInputProps={includeInputProps} data-test-id='value' />
+      <Checkbox.Value>
+        <Checkbox.Value.Control data-testid='checkbox_input_tag' />
+        <Checkbox.Value.CheckMark />
+      </Checkbox.Value>
       <Checkbox.Text>Value</Checkbox.Text>
     </Checkbox>
   );

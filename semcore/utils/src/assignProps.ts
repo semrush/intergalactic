@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { sstyled } from '@semcore/core';
 import { forkRef } from './ref';
 
-export function callAllEventHandlers(...fns: any[]) {
+export function callAllEventHandlers(...fns: Array<Function | undefined>) {
   return (...args: any[]) =>
     !fns.some((fn) => {
       let result;
@@ -58,6 +58,18 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
     ...props,
     ...assignHandlersInner(props, source),
   };
+  for (const key in source) {
+    if (key.startsWith('use:')) {
+      const originalKey = key.slice('use:'.length);
+      newProps[originalKey] = source[key];
+    }
+  }
+  for (const key in props) {
+    if (key.startsWith('use:')) {
+      const originalKey = key.slice('use:'.length);
+      newProps[originalKey] = props[key];
+    }
+  }
 
   // because react set getter for ref
   const sourceDescriptorRef = Object.getOwnPropertyDescriptor(source, 'ref');
@@ -68,6 +80,7 @@ export default function assignProps<P extends AssignableProps, S extends Assigna
 
   if (props.forwardRef) {
     newProps.ref = forkRef(newProps.ref as any, props.forwardRef as any);
+    newProps.forwardRef = newProps.ref;
   }
 
   if (source.style && props.style) {

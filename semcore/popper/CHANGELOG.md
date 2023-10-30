@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.8.0] - 2023-10-27
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.8.2 ~> 2.9.0], `@semcore/flex-box` [5.8.2 ~> 5.9.0], `@semcore/neighbor-location` [4.7.7 ~> 4.8.0], `@semcore/outside-click` [3.7.7 ~> 3.8.0], `@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
+
+## [5.7.8] - 2023-10-24
+
+### Fixed
+
+- Undelivered ResizeObserver's loop in popper after it is closed.
+
+## [5.7.7] - 2023-10-10
+
+### Fixed
+
+- Added additional checks to prevent focus catching after popper close in some cases when focus is moved to another component and focus catch is not necessary.
+
+## [5.7.6] - 2023-10-10
+
+### Fixed
+
+- Prevent to scroll to `Trigger` item after `Popper` is closed. 
+
+## [5.7.5] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.4 ~> 2.7.5], `@semcore/flex-box` [5.7.4 ~> 5.7.5], `@semcore/neighbor-location` [4.7.4 ~> 4.7.5], `@semcore/outside-click` [3.7.4 ~> 3.7.5], `@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [5.7.4] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.3 ~> 2.7.4], `@semcore/flex-box` [5.7.3 ~> 5.7.4], `@semcore/neighbor-location` [4.7.3 ~> 4.7.4], `@semcore/outside-click` [3.7.3 ~> 3.7.4], `@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
+## [5.7.3] - 2023-10-02
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.2 ~> 2.7.3], `@semcore/flex-box` [5.7.2 ~> 5.7.3], `@semcore/neighbor-location` [4.7.2 ~> 4.7.3], `@semcore/outside-click` [3.7.2 ~> 3.7.3], `@semcore/utils` [4.7.2 ~> 4.8.0], `@semcore/core` [2.7.2 ~> 2.7.3]).
+
 ## [5.7.2] - 2023-09-20
 
 ### Changed

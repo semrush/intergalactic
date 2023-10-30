@@ -58,7 +58,8 @@ SBaseTrigger {
 SBaseTrigger[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
 }
 
 SInner {
@@ -157,7 +158,7 @@ SBaseTrigger[neighborLocation='left'] {
   margin-left: -1px;
 }
 
-SText[placeholder] {
+SText[display-placeholder] {
   color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
 

@@ -1,3 +1,322 @@
+## [15.30.0] - 2023-10-27
+
+### @semcore/badge
+
+- **Added** Design tokens resolving for prop `color`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/base-trigger
+
+- **Added** Design tokens resolving for prop `color`.
+
+### @semcore/checkbox
+
+- **Added** Design tokens resolving for prop `theme`.
+
+### @semcore/counter
+
+- **Added** Design tokens resolving for prop `theme`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/d3-chart
+
+- **Added** Design tokens resolving for `color` props.
+- **Changed** Default color of grouped charts (e.g for pie chart) are different by default.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/icon
+
+- **Added** Design tokens resolving for `color` prop.
+
+### @semcore/link
+
+- **Added** Design tokens resolving for `color` prop.
+
+### @semcore/notice
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/notice-global
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/progress-bar
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/radio
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/select
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/spin
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/spin-container
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/switch
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/tag
+
+- **Added** Design tokens resolving for prop `color`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/tooltip
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/typography
+
+- **Added** Design tokens resolving for `color` prop of `<Text />`.
+
+### @semcore/utils
+
+- **Added** Internal api for design tokens resolving.
+
+## [15.29.0] - 2023-10-26
+
+### @semcore/icon
+
+- **Changed** Made `Twitter` and `TwitterCarousel` icons bolder.
+
+## [15.28.2] - 2023-10-24
+
+### @semcore/popper
+
+- **Fixed** Undelivered ResizeObserver's loop in popper after it is closed.
+
+### @semcore/switch
+
+- **Fixed** View of `Switch` with long text in addons.
+
+### @semcore/utils
+
+- **Fixed** Focus lock merging was causing invalid hooks order error.
+
+## [15.28.1] - 2023-10-16
+
+### @semcore/button
+
+- **Fixed** Improved `focus` for `Buttons` in `disabled` states.
+
+### @semcore/popper
+
+- **Fixed** Added additional checks to prevent focus catching after popper close in some cases when focus is moved to another component and focus catch is not necessary.
+
+### @semcore/utils
+
+- **Changed** Fixed name for `--intergalactic-text-secondary-invert` (from `--intergalactic-text-secondary-Invert`) and changed it's value, from `0.75` to `0.8`.
+
+## [15.28.0] - 2023-10-13
+
+### @semcore/button
+
+- **Fixed** Removed `box-shadow` for focused `Buttons` in `loading` or `disabled` states.
+
+### @semcore/d3-chart
+
+- **Added** `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
+- **Added** `Line.Area` component.
+
+## [15.27.0] - 2023-10-10
+
+### @semcore/flex-box
+
+- **Added** `display` css property as prop to `Box` component.
+
+### @semcore/notice-bubble
+
+- **Changed** For `NoticeBubbleContainer` with `disabledPortal` added new styles for `position sticky` behavior.
+
+### @semcore/popper
+
+- **Fixed** Prevent to scroll to `Trigger` item after `Popper` is closed. 
+
+## [15.26.0] - 2023-10-09
+
+### @semcore/base-trigger
+
+- **Added** `nl` locale support.
+
+### @semcore/breadcrumbs
+
+- **Added** `nl` locale support.
+
+### @semcore/carousel
+
+- **Added** `nl` locale support.
+
+### @semcore/color-picker
+
+- **Added** `nl` locale support.
+
+### @semcore/d3-chart
+
+- **Added** `nl` locale support.
+
+### @semcore/date-picker
+
+- **Added** `nl` locale support.
+
+### @semcore/drag-and-drop
+
+- **Added** `nl` locale support.
+
+### @semcore/dropdown
+
+- **Added** `nl` locale support.
+
+### @semcore/dropdown-menu
+
+- **Added** `nl` locale support.
+
+### @semcore/errors
+
+- **Added** `nl` locale support.
+
+### @semcore/feature-popover
+
+- **Added** `nl` locale support.
+
+### @semcore/fullscreen-modal
+
+- **Added** `nl` locale support.
+
+### @semcore/inline-edit
+
+- **Added** `nl` locale support.
+
+### @semcore/inline-input
+
+- **Added** `nl` locale support.
+
+### @semcore/input-number
+
+- **Added** `nl` locale support.
+
+### @semcore/modal
+
+- **Added** `nl` locale support.
+
+### @semcore/notice
+
+- **Added** `nl` locale support.
+
+### @semcore/notice-bubble
+
+- **Added** `nl` locale support.
+
+### @semcore/notice-global
+
+- **Added** `nl` locale support.
+
+### @semcore/pagination
+
+- **Added** `nl` locale support.
+
+### @semcore/select
+
+- **Added** `nl` locale support.
+
+### @semcore/tag
+
+- **Added** `nl` locale support.
+
+### @semcore/time-picker
+
+- **Added** `nl` locale support.
+
+### @semcore/widget-empty
+
+- **Added** `nl` locale support.
+
+### @semcore/wizard
+
+- **Added** `nl` locale support.
+
+## [15.25.2] - 2023-10-06
+
+### @semcore/base-trigger
+
+- **Fixed** Invalid attribute React warnings. 
+
+### @semcore/button
+
+- **Fixed** added `aria-busy='true'` for loading state and `aria-disable` for disabled state.
+
+### @semcore/data-table
+
+- **Fixed** Table with columns with fixed position was not displayed correctly. 
+
+### @semcore/pills
+
+- **Fixed** Pills with `behavior="tabs"` had focus ring both on container and on pills. Now focus ring is only on pills.
+- **Fixed** Focus ring of every pill was overlaped by the next sibling pill. 
+
+### @semcore/scroll-area
+
+- **Fixed** In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge. 
+
+### @semcore/utils
+
+- **Fixed** Duplicated ref function callback.
+
+## [15.25.1] - 2023-10-03
+
+### @semcore/radio
+
+- **Fixed** Radio in invalid state was missing red outline.
+
+### @semcore/switch
+
+- **Fixed** Incorrect animation on mouse right button click.
+
+### @semcore/utils
+
+- **Fixed** After getting disabled components were not loosing focus visual state.
+
+## [15.25.0] - 2023-10-02
+
+### @semcore/base-trigger
+
+- **Fixed** Empty FilterTrigger now gets role `button` during empty state instead of `group`.
+
+### @semcore/checkbox
+
+- **Added** simplified use: `<Checkbox />`.
+- **Added** advanced use with new sub-components `<Checkbox.Value.Control />` and `<Checkbox.Value.CheckMark />`
+- **Added** added warning about using `disabled` prop on `Checkbox.Value` with recommendation to use `disabled` prop on root `Checkbox` because it may cause SSR related issues.
+- **Added** input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
+### @semcore/core
+
+- **Changed** Improved core component typings flexibility
+
+### @semcore/icon
+
+- **Changed** `Redo` and `Undo` icons according to their actual design.
+- **Fixed** Fixed bug with strange crop in icons if there are a lot of them on a page
+
+### @semcore/radio
+
+- **Added** simplified use: `<Radio />`.
+- **Added** advanced use with new sub-components `<Radio.Value.Control />` and `<Radio.Value.RadioMark />`
+- **Added** added warning about using `disabled` prop on `Radio.Value` with recommendation to use `disabled` prop on root `Radio` because it may cause SSR related issues.
+- **Added** input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
+### @semcore/utils
+
+- **Fixed** Extended internal mechanism of component wrapper props modifying.
+- **Fixed** React invalid Hooks call caused by `useFocusLock` in some rare cases from it's nested hooks.
+
 ## [15.24.0] - 2023-09-21
 
 ### @semcore/data-table

@@ -4,7 +4,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import ChevronDown from '@semcore/icon/ChevronDown/m';
 import Spin from '@semcore/spin';
 import { Box } from '@semcore/flex-box';
-import resolveColor, { shade } from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 
 import style from './style/link-trigger.shadow.css';
@@ -15,7 +15,7 @@ class RootLinkTrigger extends Component {
   static defaultProps = {
     size: 'm',
   };
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [keyboardFocusEnhance(), resolveColorEnhance()];
 
   getTextProps() {
     const { placeholder, empty } = this.asProps;
@@ -28,13 +28,12 @@ class RootLinkTrigger extends Component {
   render() {
     const SLinkTrigger = Root;
     const SLinkAddon = LinkTrigger.Addon;
-    const { Children, loading, styles, empty, color: providedColor } = this.asProps;
+    const { Children, loading, styles, empty, color: providedColor, resolveColor } = this.asProps;
 
     const color = resolveColor(providedColor);
-    const colorHover = shade(color, -0.12);
 
     return sstyled(styles)(
-      <SLinkTrigger render={Box} use:color={color} use:color-hover={colorHover}>
+      <SLinkTrigger render={Box} use:color={color}>
         {addonTextChildren(Children, LinkTrigger.Text, LinkTrigger.Addon, empty)}
         <SLinkAddon>
           {loading ? <Spin size='xs' theme='currentColor' /> : <ChevronDown />}
@@ -50,7 +49,7 @@ function Text(props) {
 
   return sstyled(styles)(
     /* "use:" prefix was used for backward compatibility (by lsroman) */
-    <SText render={Box} use:placeholder={empty}>
+    <SText render={Box} display-placeholder={empty}>
       {empty ? placeholder : children}
     </SText>,
   );

@@ -2,6 +2,54 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.0] - 2023-10-27
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.12.0 ~> 4.13.0], `@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
+
+## [4.14.0] - 2023-10-26
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.11.2 ~> 4.12.0]).
+
+## [4.13.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/core` [2.7.6 ~> 2.7.7]).
+
+## [4.13.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
+## [4.13.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
+## [4.12.3] - 2023-10-03
+
+### Fixed
+
+- Table with columns with fixed position was not displayed correctly. 
+
+## [4.12.2] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
+## [4.12.1] - 2023-10-02
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/icon` [4.9.2 ~> 4.10.0], `@semcore/utils` [4.7.2 ~> 4.8.0], `@semcore/core` [2.7.2 ~> 2.7.3]).
+
 ## [4.12.0] - 2023-09-21
 
 ### Added

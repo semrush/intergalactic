@@ -295,8 +295,8 @@ class Body extends Component<AsProps, State> {
         <SScrollArea
           shadow
           styles={scrollStyles}
-          use:left={`${offsetLeftSum}px`}
-          use:right={`${offsetRightSum}px`}
+          left-offset={`${offsetLeftSum}px`}
+          right-offset={`${offsetRightSum}px`}
           onResize={callAllEventHandlers(onResize, this.handleScrollAreaResize)}
           onScroll={callAllEventHandlers(onScroll, this.handleScrollAreaScroll)}
         >

@@ -2,6 +2,60 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for `theme` prop.
+
+## [4.14.0] - 2023-10-26
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.12.2 ~> 4.13.0], `@semcore/icon` [4.11.2 ~> 4.12.0]).
+
+## [4.13.3] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.12.1 ~> 4.12.2], `@semcore/checkbox` [7.11.1 ~> 7.11.2], `@semcore/divider` [4.8.1 ~> 4.8.2], `@semcore/dropdown-menu` [4.10.2 ~> 4.10.3], `@semcore/flex-box` [5.8.1 ~> 5.8.2], `@semcore/icon` [4.11.1 ~> 4.11.2], `@semcore/input` [4.10.1 ~> 4.10.2], `@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/core` [2.7.6 ~> 2.7.7]).
+
+## [4.13.2] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.12.0 ~> 4.12.1], `@semcore/checkbox` [7.11.0 ~> 7.11.1], `@semcore/divider` [4.8.0 ~> 4.8.1], `@semcore/dropdown-menu` [4.10.1 ~> 4.10.2], `@semcore/flex-box` [5.8.0 ~> 5.8.1], `@semcore/icon` [4.11.0 ~> 4.11.1], `@semcore/input` [4.10.0 ~> 4.10.1], `@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
+## [4.13.1] - 2023-10-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.11.0 ~> 4.12.0], `@semcore/checkbox` [7.10.2 ~> 7.11.0], `@semcore/divider` [4.7.5 ~> 4.8.0], `@semcore/dropdown-menu` [4.10.0 ~> 4.10.1], `@semcore/flex-box` [5.7.5 ~> 5.8.0], `@semcore/icon` [4.10.2 ~> 4.11.0], `@semcore/input` [4.9.5 ~> 4.10.0]).
+
+## [4.13.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
+## [4.12.5] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.10.1 ~> 4.10.2], `@semcore/checkbox` [7.10.1 ~> 7.10.2], `@semcore/divider` [4.7.4 ~> 4.7.5], `@semcore/dropdown-menu` [4.9.4 ~> 4.9.5], `@semcore/flex-box` [5.7.4 ~> 5.7.5], `@semcore/icon` [4.10.1 ~> 4.10.2], `@semcore/input` [4.9.4 ~> 4.9.5], `@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [4.12.4] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.10.0 ~> 4.10.1], `@semcore/checkbox` [7.10.0 ~> 7.10.1], `@semcore/divider` [4.7.3 ~> 4.7.4], `@semcore/dropdown-menu` [4.9.3 ~> 4.9.4], `@semcore/flex-box` [5.7.3 ~> 5.7.4], `@semcore/icon` [4.10.0 ~> 4.10.1], `@semcore/input` [4.9.3 ~> 4.9.4], `@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
+## [4.12.3] - 2023-10-02
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.9.2 ~> 4.10.0], `@semcore/checkbox` [7.9.2 ~> 7.10.0], `@semcore/divider` [4.7.2 ~> 4.7.3], `@semcore/dropdown-menu` [4.9.2 ~> 4.9.3], `@semcore/flex-box` [5.7.2 ~> 5.7.3], `@semcore/icon` [4.9.2 ~> 4.10.0], `@semcore/input` [4.9.2 ~> 4.9.3], `@semcore/utils` [4.7.2 ~> 4.8.0], `@semcore/core` [2.7.2 ~> 2.7.3]).
+
 ## [4.12.2] - 2023-09-20
 
 ### Changed

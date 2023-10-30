@@ -21,6 +21,7 @@ function flatChildComponent(childComponents: any) {
   }, []);
 }
 
+/** @deprecated Doesn't work in ssr and sometimes breakes rulles of hooks. We should never use it. */
 function Enhancement(childComponents: any, Context: any) {
   return {
     condition: function (Component: any) {

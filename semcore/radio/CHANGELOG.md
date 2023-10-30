@@ -2,6 +2,51 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.12.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for `theme` prop.
+
+## [6.11.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/flex-box` [5.8.1 ~> 5.8.2], `@semcore/core` [2.7.6 ~> 2.7.7]).
+
+## [6.11.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/flex-box` [5.8.0 ~> 5.8.1], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
+## [6.11.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
+## [6.10.2] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/flex-box` [5.7.4 ~> 5.7.5], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [6.10.1] - 2023-10-03
+
+### Fixed
+
+- Radio in invalid state was missing red outline.
+
+## [6.10.0] - 2023-09-29
+
+### Added
+
+- simplified use: `<Radio />`.
+- advanced use with new sub-components `<Radio.Value.Control />` and `<Radio.Value.RadioMark />`
+- added warning about using `disabled` prop on `Radio.Value` with recommendation to use `disabled` prop on root `Radio` because it may cause SSR related issues.
+- input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
 ## [6.9.2] - 2023-09-20
 
 ### Changed

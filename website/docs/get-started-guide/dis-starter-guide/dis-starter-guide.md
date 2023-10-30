@@ -73,7 +73,7 @@ Check out [Data visualization](/data-display/d3-chart) for a detailed guideline 
 
 @## Tables
 
-Tables are crucial components of our product interfaces, with primary tables offering various functionalities and secondary tables used to visualize smaller data sets.
+Tables are crucial components of our product interfaces, with primary tables offering various functionalities and secondary tables used to visualize smaller datasets.
 
 Because of the large number of use cases and edge states we have separate guidelines for [Table principles](/table-group/table/), [Table controls](/table-group/table-controls/) and [Table states](/table-group/table-states/). We highly recommend you give all of them a look.
 

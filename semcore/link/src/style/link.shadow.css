@@ -26,6 +26,7 @@ SLink {
     border: none;
     padding: 0;
   }
+
   &[active],
   &:hover,
   &:active {
@@ -35,6 +36,7 @@ SLink {
       border-color: currentColor;
     }
   }
+
   &[enableVisited]:visited,
   &[enableVisited]:visited:hover {
     color: var(--intergalactic-text-link-visited, #8649e1);
@@ -52,7 +54,8 @@ SLink[keyboardFocused]::after {
 SLink[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
 }
 
 SLink[noWrapText] {
@@ -88,9 +91,14 @@ SText {
   transition: border-bottom-color 0.15s ease-in-out;
 }
 
-SLink[color] {
-  &:hover {
-    color: var(--colorHoverText);
+SLink[text-color] {
+  color: var(--text-color);
+
+  &[active],
+  &:hover,
+  &:active {
+    color: var(--text-color);
+    filter: brightness(0.8);
   }
 }
 

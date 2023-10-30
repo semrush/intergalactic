@@ -4,7 +4,7 @@ import { Component, Root, sstyled } from '@semcore/core';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import { FadeInOut } from '@semcore/animation';
 import createElement from './createElement';
-import { CONSTANT } from './utils';
+import { CONSTANT, getChartDefaultColorName } from './utils';
 import Tooltip from './Tooltip';
 
 import style from './style/venn.shadow.css';
@@ -47,11 +47,13 @@ class VennRoot extends Component {
     );
   }
 
-  getCircleProps(props) {
+  getCircleProps(props, index) {
+    const colorBackwardCapabilityOffset = 1;
+    const color = props.color || getChartDefaultColorName(index + colorBackwardCapabilityOffset);
     const tooltipProps = {
       dataKey: props.dataKey,
       name: props.name,
-      color: props.color,
+      color,
     };
 
     return {
@@ -61,6 +63,8 @@ class VennRoot extends Component {
       onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       transparent: this.asProps.transparent,
+      resolveColor: this.asProps.resolveColor,
+      color,
     };
   }
 
@@ -83,6 +87,7 @@ class VennRoot extends Component {
       onMouseMove: this.bindHandlerTooltip(true, props, tooltipProps),
       onMouseLeave: this.bindHandlerTooltip(false, props, tooltipProps),
       transparent,
+      resolveColor: this.asProps.resolveColor,
     };
   }
 
@@ -109,6 +114,7 @@ function Circle({
   Element: SCircle,
   styles,
   color,
+  resolveColor,
   data,
   duration,
   name,
@@ -122,7 +128,7 @@ function Circle({
     <SCircle
       aria-hidden
       render='circle'
-      color={color}
+      color={resolveColor(color)}
       cx={data.x}
       cy={data.y}
       r={data.radius}

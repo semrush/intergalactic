@@ -23,6 +23,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
     'red-500',
     'pink-500',
     'violet-500',
+    'white',
   ];
 
   const color = select({

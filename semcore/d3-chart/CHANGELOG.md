@@ -2,6 +2,66 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.16.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for `color` props.
+
+### Changed
+
+- Default color of grouped charts (e.g for pie chart) are different by default.
+- Default text color is based on inversed and processed background color.
+
+## [3.15.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.1 ~> 2.8.2], `@semcore/popper` [5.7.7 ~> 5.7.8], `@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/core` [2.7.6 ~> 2.7.7]).
+
+## [3.15.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.0 ~> 2.8.1], `@semcore/popper` [5.7.6 ~> 5.7.7], `@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
+## [3.15.0] - 2023-10-11
+
+### Added
+
+- `maxBarSize` prop for `Bars` (Bar, GroupBar, StackBar and horizontals).
+- `Line.Area` component.
+
+## [3.14.1] - 2023-10-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.5 ~> 2.8.0], `@semcore/flex-box` [5.7.5 ~> 5.8.0], `@semcore/popper` [5.7.5 ~> 5.7.6]).
+
+## [3.14.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
+## [3.13.4] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.4 ~> 2.7.5], `@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [3.13.3] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.3 ~> 2.7.4], `@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
+## [3.13.2] - 2023-10-02
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.2 ~> 2.7.3], `@semcore/utils` [4.7.2 ~> 4.8.0], `@semcore/core` [2.7.2 ~> 2.7.3]).
+
 ## [3.13.1] - 2023-09-20
 
 ### Changed

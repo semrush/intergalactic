@@ -12,6 +12,12 @@ fileSource: d3-chart
 
 @example line
 
+@## Line with area
+
+- You must define `y0` and `y1` in `Line.Area` props and in the `data`.
+
+@example line-with-area
+
 @## Hover line
 
 - The `HoverLine` component is responsible for the hover effect. Use it with line charts.

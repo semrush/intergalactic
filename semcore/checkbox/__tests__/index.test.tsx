@@ -26,8 +26,8 @@ describe('Checkbox', () => {
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked />
+        <Checkbox checked>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
@@ -39,8 +39,8 @@ describe('Checkbox', () => {
   test.concurrent('Should not be check icon in unchecked and disabled state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px' style={{ backgroundColor: '#b880ff' }}>
-        <Checkbox>
-          <Checkbox.Value checked={false} disabled={true} />
+        <Checkbox checked={false} disabled={true}>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
@@ -69,24 +69,24 @@ describe('Checkbox', () => {
   test.concurrent('Should support normal state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px'>
-        <Checkbox>
-          <Checkbox.Value disabled />
+        <Checkbox disabled>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox>
           <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked />
+        <Checkbox checked>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked disabled />
+        <Checkbox checked disabled>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked keyboardFocused />
+        <Checkbox checked>
+          <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
@@ -102,24 +102,24 @@ describe('Checkbox', () => {
           <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value disabled />
+        <Checkbox state='invalid' disabled>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
         <Checkbox state='invalid'>
           <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value checked />
+        <Checkbox state='invalid' checked>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value checked disabled />
+        <Checkbox state='invalid' checked disabled>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value checked keyboardFocused />
+        <Checkbox state='invalid' checked>
+          <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
@@ -131,52 +131,52 @@ describe('Checkbox', () => {
   test.concurrent('Should support intermediate state', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px'>
-        <Checkbox>
+        <Checkbox indeterminate>
+          <Checkbox.Value />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox disabled indeterminate>
+          <Checkbox.Value />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox indeterminate>
+          <Checkbox.Value keyboardFocused />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox indeterminate>
+          <Checkbox.Value checked />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox indeterminate disabled>
+          <Checkbox.Value checked />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox indeterminate>
+          <Checkbox.Value checked keyboardFocused />
+          <Checkbox.Text>Label</Checkbox.Text>
+        </Checkbox>
+        <Checkbox state='invalid'>
           <Checkbox.Value indeterminate />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value disabled indeterminate />
+        <Checkbox state='invalid' indeterminate disabled>
+          <Checkbox.Value />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value keyboardFocused indeterminate />
+        <Checkbox state='invalid' indeterminate>
+          <Checkbox.Value keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked indeterminate />
+        <Checkbox state='invalid' indeterminate>
+          <Checkbox.Value checked />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked disabled indeterminate />
+        <Checkbox state='invalid' indeterminate disabled>
+          <Checkbox.Value checked />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
-        <Checkbox>
-          <Checkbox.Value checked keyboardFocused indeterminate />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value indeterminate />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value disabled indeterminate />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value keyboardFocused indeterminate />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value checked indeterminate />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value checked disabled indeterminate />
-          <Checkbox.Text>Label</Checkbox.Text>
-        </Checkbox>
-        <Checkbox state='invalid'>
-          <Checkbox.Value checked keyboardFocused indeterminate />
+        <Checkbox state='invalid' indeterminate>
+          <Checkbox.Value checked keyboardFocused />
           <Checkbox.Text>Label</Checkbox.Text>
         </Checkbox>
       </snapshot.ProxyProps>
@@ -192,8 +192,8 @@ describe('Checkbox', () => {
           <Checkbox.Value />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme='pink'>
-          <Checkbox.Value disabled />
+        <Checkbox theme='pink' disabled>
+          <Checkbox.Value />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
         <Checkbox theme='pink'>
@@ -204,8 +204,8 @@ describe('Checkbox', () => {
           <Checkbox.Value checked />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
-        <Checkbox theme='pink'>
-          <Checkbox.Value checked disabled />
+        <Checkbox theme='pink' disabled>
+          <Checkbox.Value checked />
           <Checkbox.Text>Princess</Checkbox.Text>
         </Checkbox>
         <Checkbox theme='pink'>

@@ -1,0 +1,7 @@
+{
+  "title": "Tijdsinvoer, ingevoerde tijd is {time} {meridiem}",
+  "titleEmpty": "Tijdsinvoer, geen tijd ingevoerd",
+  "hours": "Invoerveld voor uren",
+  "minutes": "Invoerveld voor minuten",
+  "format": "Tijdsindeling {meridiem}"
+}

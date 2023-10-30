@@ -1,4 +1,4 @@
-export const getAutoOrScaleIndent = (indent: number | string, scaleIndent: number) => {
+export const getAutoOrScaleIndent = (indent: number | string | undefined, scaleIndent: number) => {
   if (typeof indent === 'string') {
     return indent;
   }

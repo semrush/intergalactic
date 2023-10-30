@@ -2,6 +2,51 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.12.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for prop `theme`.
+
+## [7.11.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
+
+## [7.11.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3]).
+
+## [7.11.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
+## [7.10.2] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2]).
+
+## [7.10.1] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1]).
+
+## [7.10.0] - 2023-09-21
+
+### Added
+
+- simplified use: `<Checkbox />`.
+- advanced use with new sub-components `<Checkbox.Value.Control />` and `<Checkbox.Value.CheckMark />`
+- added warning about using `disabled` prop on `Checkbox.Value` with recommendation to use `disabled` prop on root `Checkbox` because it may cause SSR related issues.
+- input tag now gets `aria-invalid` if `state` prop is `invalid`.
+
 ## [7.9.2] - 2023-09-20
 
 ### Changed

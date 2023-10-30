@@ -2,6 +2,60 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.14.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for prop `color`.
+
+## [4.13.0] - 2023-10-26
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.11.2 ~> 4.12.0]).
+
+## [4.12.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4]).
+
+## [4.12.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3]).
+
+## [4.12.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.7.5 ~> 5.8.0]).
+
+## [4.11.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
+## [4.10.2] - 2023-10-06
+
+### Fixed
+
+- Invalid attribute React warnings. 
+
+## [4.10.1] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1]).
+
+## [4.10.0] - 2023-10-22
+
+### Fixed
+
+- Empty FilterTrigger now gets role `button` during empty state instead of `group`.
+
 ## [4.9.2] - 2023-09-20
 
 ### Changed

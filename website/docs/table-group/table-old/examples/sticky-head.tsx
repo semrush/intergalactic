@@ -100,7 +100,7 @@ const Demo = () => {
               <Table.CellHead width='200'>
                 <Tooltip title='Lorem ipsum'>
                   <span>
-                    Keyword <Text color='gray60'>(1 - 100)</Text>
+                    Keyword <Text color='text-secondary'>(1 – 100)</Text>
                   </span>
                 </Tooltip>
               </Table.CellHead>

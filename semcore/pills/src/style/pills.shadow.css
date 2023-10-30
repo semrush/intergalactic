@@ -56,16 +56,21 @@ SPill[selected] {
 
 SPill[disabled] {
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
 
-  & > * {
+  &>* {
     opacity: var(--intergalactic-disabled-opacity, 0.3);
   }
 }
 
-SPills[keyboardFocused],
+SPills[keyboardFocused]:not([behavior=tabs]) {
+  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+}
+
 SPill[keyboardFocused] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  z-index: 1;
 }
 
 SText {

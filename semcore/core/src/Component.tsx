@@ -151,6 +151,9 @@ export namespace Intergalactic {
       ? HighPriorityProps[K]
       : LowPriorityProps[K];
   } & HighPriorityProps;
+  type RemoveFields<Type, Keys> = {
+    [Property in keyof Type as Exclude<Property, Keys>]: Type[Property];
+  };
   /** @private */
   export namespace InternalTypings {
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
@@ -188,14 +191,14 @@ export namespace Intergalactic {
     > = {
       tag?: Tag;
       children?: ComponentChildren<
-        Omit<Props, 'children'> & { children: React.ReactNode },
+        RemoveFields<Props, 'children'> & { children: React.ReactNode },
         Context,
         ReturnResult,
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
       MergeProps<
-        Omit<Props, 'tag' | 'children'>,
+        RemoveFields<Props, 'tag' | 'children'>,
         MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
       >;
     export type PropsRenderingResultComponentProps<
@@ -206,17 +209,20 @@ export namespace Intergalactic {
     > = {
       tag?: Tag;
       children?: ComponentChildren<
-        Omit<Props, 'children'> & { children: React.ReactNode },
+        RemoveFields<Props, 'children'> & { children: React.ReactNode },
         Context,
         Partial<
-          Omit<MergeProps<Props, ComponentPropsNesting<Tag>>, 'children' | 'tag' | 'ref'> & {
+          RemoveFields<
+            MergeProps<Props, ComponentPropsNesting<Tag>>,
+            'children' | 'tag' | 'ref'
+          > & {
             children?: React.ReactNode;
           }
         >,
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
-      MergeProps<Omit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
+      MergeProps<RemoveFields<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;

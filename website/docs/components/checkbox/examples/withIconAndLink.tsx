@@ -12,12 +12,9 @@ const Demo = () => (
   <>
     {[0, 1, 2].map((item) => (
       <div key={item}>
-        <Checkbox mb={3}>
-          <Checkbox.Value />
-          <Checkbox.Text>{`Note ${item + 1}`}</Checkbox.Text>
-        </Checkbox>
+        <Checkbox mb={3} label={`Note ${item + 1}`} />
         <Tooltip title='There is information about point.' placement='right-start' ml={1}>
-          <InfoM color='stone' interactive aria-label='Additional info' />
+          <InfoM color='icon-secondary-neutral' interactive aria-label='Additional info' />
         </Tooltip>
       </div>
     ))}

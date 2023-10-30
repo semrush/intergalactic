@@ -1,0 +1,21 @@
+extends: substitution
+message: "Use '%s' instead of '%s'."
+level: warning
+ignorecase: false
+action:
+  name: replace
+swap:
+  Api: API
+  api: API
+  css: CSS
+  Css: CSS
+  e-mail: email
+  E-mail: Email
+  data are: data is
+  Javascript: JavaScript
+  javascript: JavaScript
+  Macos: macOS
+  MacOS: macOS
+  SEMrush: Semrush
+  semrush: Semrush
+  in order to: to

@@ -5,7 +5,7 @@ import createElement from './createElement';
 import Bar from './Bar';
 import HorizontalBar from './HorizontalBar';
 import { scaleBand } from 'd3-scale';
-import { scaleToBand } from './utils';
+import { getChartDefaultColorName, scaleToBand } from './utils';
 
 class GroupBarRoot extends Component {
   static displayName = 'GroupBar';
@@ -34,27 +34,37 @@ class GroupBarRoot extends Component {
     return scaleBand()
       .range([0, scaleToBand(xyScale).bandwidth()])
       .domain(domain)
-      .paddingInner(scaleToBand(xyScale).paddingOuter())
-      .paddingOuter(0);
+      .paddingInner(0.1)
+      .paddingOuter(0.1);
   }
 
-  getBarProps({ y }) {
-    const { x } = this.asProps;
+  getBarProps({ y }, index) {
+    const { x, maxBarSize = Infinity } = this.asProps;
+
+    const bandWidth = this.scaleGroup.bandwidth();
+    const width = Math.min(bandWidth, maxBarSize);
+    const offsetX = this.scaleGroup(y) + bandWidth / 2 - width / 2;
 
     return {
-      offset: [this.scaleGroup(y), 0],
-      width: scaleToBand(this.scaleGroup).bandwidth(),
+      offset: [offsetX, 0],
+      width,
+      color: getChartDefaultColorName(index),
       x,
       groupKey: x,
     };
   }
 
-  getHorizontalBarProps({ x }) {
-    const { y } = this.asProps;
+  getHorizontalBarProps({ x }, index) {
+    const { y, maxBarSize = Infinity } = this.asProps;
+
+    const bandWidth = this.scaleGroup.bandwidth();
+    const height = Math.min(bandWidth, maxBarSize);
+    const offsetY = this.scaleGroup(x) + bandWidth / 2 - height / 2;
 
     return {
-      offset: [0, this.scaleGroup(x)],
-      height: scaleToBand(this.scaleGroup).bandwidth(),
+      offset: [0, offsetY],
+      height,
+      color: getChartDefaultColorName(index),
       y,
       groupKey: y,
     };

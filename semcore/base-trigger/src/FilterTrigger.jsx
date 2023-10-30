@@ -70,14 +70,18 @@ class RootFilterTrigger extends Component {
       id,
     } = this.asProps;
 
-    if (this.asProps.role === 'button') {
-      this.asProps.role = 'group';
-    }
+    const role = empty ? this.asProps.role ?? 'button' : 'group';
 
     const [controlProps] = getInputProps(this.asProps, includeInputProps);
 
     return sstyled(styles)(
-      <SWrapper render={Box} aria-label={getI18nText('filter')} __excludeProps={['id']}>
+      <SWrapper
+        render={Box}
+        aria-label={getI18nText('filter')}
+        __excludeProps={['id']}
+        use:role={role}
+        data-role={role}
+      >
         <NeighborLocation>
           <SFilterTrigger
             w='100%'

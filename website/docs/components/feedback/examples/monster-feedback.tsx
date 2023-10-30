@@ -37,7 +37,7 @@ const validate = (values: Data) => {
 };
 
 const Demo = () => (
-  <FeedbackForm validate={validate} p={1}>
+  <FeedbackForm validate={validate} p={1} onSubmit={() => ({})}>
     <FeedbackForm.Item name='title'>
       {({ input }) => {
         const { state, className, ...other } = input;

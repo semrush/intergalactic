@@ -12,9 +12,9 @@ tabName: Design
 
 > **Difference from histogram chart**
 >
-> Bar chart displays distribution of data sets by quality categories.
+> Bar chart displays distribution of datasets by quality categories.
 >
-> Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+> Histogram charts are used to display distribution of datasets: how often values fall into quantitative ranges.
 
 Important points to keep in mind when presenting data as a bar chart:
 
@@ -64,7 +64,7 @@ If there is only one category of values in the bar chart, you don't need legend.
 | ------------------------------- | ------------------------------- |
 | ![](static/legend.png)          | ![](static/hor-bar-example.png) |
 
-> **Legend is required when there are two or more categories in the data set.**
+> **Legend is required when there are two or more categories in the dataset.**
 
 | Vertical bar chart example   | Horizontal bar chart example      |
 | ---------------------------- | --------------------------------- |

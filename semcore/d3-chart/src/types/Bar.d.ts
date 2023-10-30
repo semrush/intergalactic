@@ -1,6 +1,7 @@
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
 import { IntergalacticD3Component } from './Plot';
+import { ScaleBand, ScaleLinear } from 'd3-scale';
 
 /** @deprecated */
 export interface IBarProps extends BarProps, UnknownProperties {}
@@ -9,8 +10,7 @@ export type BarProps = Context & {
   x?: string;
   /** Field name from `data` array item for the YAxis */
   y?: string;
-  /** Line color
-   * @default '#50aef4'*/
+  /** Line color */
   color?: string;
   /** Element hide property */
   hide?: boolean;
@@ -32,11 +32,16 @@ export type BarProps = Context & {
   onClick?: (data: { [key: string]: string | number }, event: Event) => void;
   /** Enables element transparency */
   transparent?: boolean;
+  /**
+   * The maximum width of each Bar
+   */
+  maxBarSize?: number;
 };
 
 /** @deprecated */
 export interface IBarContext extends BarContext, UnknownProperties {}
 export type BarContext = {
+  scale: [ScaleBand<any>, ScaleLinear<any, any>];
   /** @deprecated */
   value: unknown;
   /** Index in `data` array */

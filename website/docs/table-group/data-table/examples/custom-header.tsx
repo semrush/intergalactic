@@ -12,14 +12,14 @@ export default () => {
         <DataTable.Column name='keyword'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             <Text noWrap>
-              Keyword <Text color='gray60'>(1 - 100)</Text>
+              Keyword <Text color='text-secondary'>(1 – 100)</Text>
             </Text>
           </Tooltip>
         </DataTable.Column>
         <DataTable.Column name='kd'>
           <DropdownMenu>
             <DropdownMenu.Trigger>
-              <LinkTrigger color='gray20' style={{ fontSize: '12px' }}>
+              <LinkTrigger color='text-primary' style={{ fontSize: '12px' }}>
                 KD,%
               </LinkTrigger>
             </DropdownMenu.Trigger>

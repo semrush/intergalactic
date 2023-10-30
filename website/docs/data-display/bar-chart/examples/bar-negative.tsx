@@ -28,8 +28,8 @@ export default () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bar x='category' y='bar1' color={colors['green-02']} />
-      <Bar x='category' y='bar2' color={colors['orange-04']} />
+      <Bar x='category' y='bar1' color='chart-palette-order-1' />
+      <Bar x='category' y='bar2' color='chart-palette-order-3' />
       <XAxis position={0} />
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {
@@ -38,15 +38,11 @@ export default () => {
               <>
                 <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
-                    Positive
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Positive</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar1}</Text>
                 </Flex>
                 <Flex justifyContent='space-between' mt={2}>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['orange-04']}>
-                    Negative
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Negative</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar2}</Text>
                 </Flex>
               </>

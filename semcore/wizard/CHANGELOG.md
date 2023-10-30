@@ -2,6 +2,60 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.14.0] - 2023-10-27
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/flex-box` [5.8.2 ~> 5.9.0], `@semcore/icon` [4.12.0 ~> 4.13.0], `@semcore/modal` [4.14.0 ~> 4.15.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
+
+## [2.13.0] - 2023-10-26
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.11.2 ~> 4.12.0], `@semcore/modal` [4.13.2 ~> 4.14.0]).
+
+## [2.12.2] - 2023-10-24
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/flex-box` [5.8.1 ~> 5.8.2], `@semcore/icon` [4.11.1 ~> 4.11.2], `@semcore/modal` [4.13.1 ~> 4.13.2], `@semcore/core` [2.7.6 ~> 2.7.7]).
+
+## [2.12.1] - 2023-10-16
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/flex-box` [5.8.0 ~> 5.8.1], `@semcore/icon` [4.11.0 ~> 4.11.1], `@semcore/modal` [4.13.0 ~> 4.13.1], `@semcore/core` [2.7.5 ~> 2.7.6]).
+
+## [2.12.0] - 2023-10-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/flex-box` [5.7.5 ~> 5.8.0], `@semcore/icon` [4.10.2 ~> 4.11.0], `@semcore/modal` [4.12.0 ~> 4.13.0]).
+
+## [2.11.0] - 2023-10-09
+
+### Added
+
+- `nl` locale support.
+
+## [2.10.5] - 2023-10-06
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/flex-box` [5.7.4 ~> 5.7.5], `@semcore/icon` [4.10.1 ~> 4.10.2], `@semcore/modal` [4.11.4 ~> 4.11.5], `@semcore/core` [2.7.4 ~> 2.7.5]).
+
+## [2.10.4] - 2023-10-03
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/flex-box` [5.7.3 ~> 5.7.4], `@semcore/icon` [4.10.0 ~> 4.10.1], `@semcore/modal` [4.11.3 ~> 4.11.4], `@semcore/core` [2.7.3 ~> 2.7.4]).
+
+## [2.10.3] - 2023-10-02
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.7.2 ~> 4.8.0], `@semcore/flex-box` [5.7.2 ~> 5.7.3], `@semcore/icon` [4.9.2 ~> 4.10.0], `@semcore/modal` [4.11.2 ~> 4.11.3], `@semcore/core` [2.7.2 ~> 2.7.3]).
+
 ## [2.10.2] - 2023-09-20
 
 ### Changed

@@ -1,6 +1,6 @@
 import { UnknownProperties } from '@semcore/core';
 import { Context } from './context';
-import { CurveFactory } from 'd3-shape';
+import { curveCardinal, CurveFactory } from 'd3-shape';
 import { FadeInOutProps } from '@semcore/animation';
 import { IntergalacticD3Component } from './Plot';
 
@@ -11,8 +11,7 @@ export type LineProps = Context & {
   x?: string;
   /** Field name from `data` array item for the YAxis */
   y?: string;
-  /** Line color
-   * @default '#50aef4'*/
+  /** Line color */
   color?: string;
   /** Element hide property */
   hide?: boolean;
@@ -29,7 +28,7 @@ export type LineProps = Context & {
 /** @deprecated */
 export interface ILineDotsProps extends LineDotsProps, UnknownProperties {}
 export type LineDotsProps = Context &
-  FadeInOutProps & {
+  Omit<FadeInOutProps, 'display'> & {
     /** Show all Dot */
     display?: boolean;
     /** Hide property */
@@ -59,9 +58,21 @@ export type LineNullProps = Context & {
   hide?: boolean;
 };
 
+export type LineAreaProps = Omit<LineProps, 'transparent'> & {
+  /**
+   * Field name from `data` array for y0 point by the YAxis for the Area
+   */
+  y0: string;
+  /**
+   * Field name from `data` array for y1 point by the YAxis for the Area
+   */
+  y1: string;
+};
+
 declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {
   Dots: IntergalacticD3Component<'circle', LineDotsProps, LineDotsContext>;
   Null: IntergalacticD3Component<'path', LineNullProps>;
+  Area: IntergalacticD3Component<'path', LineAreaProps>;
 };
 
 export default Line;

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { snapshot } from '@semcore/testing-utils/snapshot';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup } from '@semcore/testing-utils/testing-library';
+import { cleanup, renderHook, act } from '@semcore/testing-utils/testing-library';
 
 import isNode from '../src/isNode';
 import compose from '../src/compose';
@@ -12,6 +12,9 @@ import { interpolate } from '../src/enhances/i18nEnhance';
 import assignProps, { assignHandlers } from '../src/assignProps';
 import reactToText from '../src/reactToText';
 import { getRef, setRef, getNodeByRef } from '../src/ref';
+import keyboardFocusEnhance, {
+  KeyboardFocusEnhanceHook,
+} from '../src/enhances/keyboardFocusEnhance';
 
 describe('Utils CSS in JS', () => {
   beforeEach(cleanup);
@@ -178,7 +181,7 @@ describe('Utils CSS in JS', () => {
     result2.ref();
     result3.ref();
     expect(result1.ref).not.toEqual(spy1);
-    expect(spy1).toBeCalledTimes(2);
+    expect(spy1).toBeCalledTimes(1);
     expect(spy2).toBeCalledTimes(1);
     expect(result2.ref).toEqual(spy2);
     expect(spy3).toBeCalledTimes(1);
@@ -471,4 +474,35 @@ describe('Utils ref', () => {
     ref.current = div;
     expect(getNodeByRef(ref)).toBe(div);
   });
+});
+
+describe('Enhances', () => {
+  beforeEach(cleanup);
+
+  test.concurrent(
+    'keyboardFocus should return keyboardFocused to false if component is disabled',
+    () => {
+      const enhance = keyboardFocusEnhance();
+
+      const { result, rerender } = renderHook<
+        ReturnType<KeyboardFocusEnhanceHook>,
+        { disabled: boolean }
+      >(enhance, { initialProps: { disabled: false } });
+
+      act(() => {
+        // @ts-ignore
+        result.current.onFocus({});
+      });
+
+      expect(result.current.keyboardFocused).toBe(true);
+
+      rerender({ disabled: true });
+
+      expect(result.current.keyboardFocused).toBe(false);
+
+      rerender({ disabled: false });
+
+      expect(result.current.keyboardFocused).toBe(false);
+    },
+  );
 });

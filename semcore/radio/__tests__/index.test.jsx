@@ -64,14 +64,14 @@ describe('Radio', () => {
         <Radio>
           <Radio.Value />
         </Radio>
-        <Radio>
-          <Radio.Value disabled />
+        <Radio disabled>
+          <Radio.Value />
         </Radio>
         <Radio>
           <Radio.Value keyboardFocused />
         </Radio>
-        <Radio>
-          <Radio.Value checked />
+        <Radio checked>
+          <Radio.Value />
         </Radio>
         <Radio>
           <Radio.Value checked disabled />
@@ -179,11 +179,33 @@ describe('RadioGroup', () => {
     );
 
     fireEvent.click(getByTestId('radio'));
+    expect(onChangeRadio).toHaveBeenCalledWith(expect.anything());
     expect(onChange).toHaveBeenCalledWith(value, expect.anything());
-    expect(onChangeRadio).toHaveBeenCalled();
   });
 
-  test.concurrent('Should support initial value', () => {
+  test('Should support cancel chain of onChanges', () => {
+    const onChange = vi.fn();
+    const onChangeRadio = vi.fn(() => false);
+    const value = 'test';
+    const { getByTestId } = render(
+      <RadioGroup onChange={onChange}>
+        <Radio>
+          <Radio.Value
+            includeInputProps={['data-testid', ...inputProps]}
+            data-testid='radio'
+            value={value}
+            onChange={onChangeRadio}
+          />
+        </Radio>
+      </RadioGroup>,
+    );
+
+    fireEvent.click(getByTestId('radio'));
+    expect(onChangeRadio).toHaveBeenCalledWith(expect.anything());
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
+  test.concurrent('Should support initial value in Radio.Value', () => {
     const { getByTestId } = render(
       <RadioGroup name='test' value='1'>
         <Radio>
@@ -205,6 +227,55 @@ describe('RadioGroup', () => {
     expect(getByTestId('radioSecond').checked).toBeFalsy();
   });
 
+  test.concurrent('Should support initial value in Radio', () => {
+    const { getByTestId } = render(
+      <RadioGroup name='test' value='2'>
+        <Radio value={'1'}>
+          <Radio.Value>
+            <Radio.Value.Control data-testid='radioControl' />
+          </Radio.Value>
+        </Radio>
+        <Radio value={'2'}>
+          <Radio.Value>
+            <Radio.Value.Control data-testid='radioControlSecond' />
+          </Radio.Value>
+        </Radio>
+      </RadioGroup>,
+    );
+
+    expect(getByTestId('radioControl').checked).toBeFalsy();
+    expect(getByTestId('radioControlSecond').checked).toBeTruthy();
+  });
+
+  test.concurrent('Should support invalid state with RadioGroup', async ({ task }) => {
+    const component = (
+      <RadioGroup>
+        <snapshot.ProxyProps m='5px'>
+          <Radio state='invalid'>
+            <Radio.Value />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value disabled />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value keyboardFocused />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value checked />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value checked disabled />
+          </Radio>
+          <Radio state='invalid'>
+            <Radio.Value checked keyboardFocused />
+          </Radio>
+        </snapshot.ProxyProps>
+      </RadioGroup>
+    );
+
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test.concurrent('Should support sizes', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps m='5px'>
@@ -220,7 +291,15 @@ describe('RadioGroup', () => {
           <Radio>
             <Radio.Value />
           </Radio>
-          <Radio>
+          <Radio size='l'>
+            <Radio.Value />
+          </Radio>
+        </RadioGroup>
+        <RadioGroup>
+          <Radio size='m'>
+            <Radio.Value />
+          </Radio>
+          <Radio size='l'>
             <Radio.Value />
           </Radio>
         </RadioGroup>

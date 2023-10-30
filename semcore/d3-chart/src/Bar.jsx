@@ -62,6 +62,7 @@ class BarRoot extends Component {
     const {
       styles,
       color,
+      resolveColor,
       x,
       y,
       y0,
@@ -76,6 +77,7 @@ class BarRoot extends Component {
       groupKey,
       onClick,
       transparent,
+      maxBarSize = Infinity,
     } = this.asProps;
     const offset = typeof offsetProps === 'function' ? offsetProps(i) : offsetProps;
     const [xScale, yScale] = scale;
@@ -83,8 +85,9 @@ class BarRoot extends Component {
       yScale(d[y]) - Math.min(yScale(yScale.domain()[0]), yScale(d[y0] ?? 0)),
     );
     const height = Number(d[y] - (d[y0] ?? 0)) === 0 ? 0 : Math.max(absHeight, hMin);
-    const width = widthProps || scaleToBand(xScale).bandwidth();
-    const barX = xScale(d[x]) + offset[0];
+    const bandWidth = widthProps || scaleToBand(xScale).bandwidth();
+    const width = Math.min(bandWidth, maxBarSize);
+    const barX = xScale(d[x]) + bandWidth / 2 - width / 2 + offset[0];
     const barY =
       yScale(Math.max(d[y0] ?? 0, height <= hMin && d[y] > 0 ? 0 : d[y])) +
       offset[1] -
@@ -116,7 +119,7 @@ class BarRoot extends Component {
         value={d}
         index={i}
         hide={hide}
-        color={color}
+        color={resolveColor(color)}
         x={barX}
         y={barY}
         width={width}

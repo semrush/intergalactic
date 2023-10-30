@@ -14,7 +14,7 @@ export default () => (
       <SettingsM
         style={{ float: 'right' }}
         mt={1}
-        color='stone'
+        color='icon-secondary-neutral'
         interactive
         aria-label='Open settings'
       />

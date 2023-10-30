@@ -10,8 +10,7 @@ export type HorizontalBarProps = Context & {
   x?: string;
   /** Field name from `data` array item for the YAxis */
   y?: string;
-  /** Line color
-   * @default '#50aef4'*/
+  /** Line color */
   color?: string;
   /** Animation duration in ms
    * @default 500
@@ -23,6 +22,10 @@ export type HorizontalBarProps = Context & {
   r?: number | number[];
   /** Enables element transparency */
   transparent?: boolean;
+  /**
+   * The maximum width of each Bar
+   */
+  maxBarSize?: number;
 };
 
 declare const HorizontalBar: IntergalacticD3Component<'path', HorizontalBarProps, BarContext> & {
