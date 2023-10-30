@@ -107,12 +107,12 @@ class Demo extends React.PureComponent {
   render() {
     return (
       <div>
-        <Link color='red-500' href='#' size={300}>
-          Warning link
+        <Link color='text-critical' href='#' size={300}>
+          Critical link
         </Link>
         <br />
         <br />
-        <Link color='green-500' href='#' size={300}>
+        <Link color='text-success' href='#' size={300}>
           Success link
         </Link>
       </div>

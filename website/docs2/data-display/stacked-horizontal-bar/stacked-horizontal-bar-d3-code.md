@@ -20,7 +20,7 @@ To draw a horizontal stacked chart, use the `<StackBar.HorizontalBar/>` componen
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex, Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -51,7 +51,7 @@ const Demo = () => {
       </XAxis>
       <StackBar y='category'>
         <StackBar.HorizontalBar x='bar1' />
-        <StackBar.HorizontalBar x='bar2' color={colors['blue-02']} />
+        <StackBar.HorizontalBar x='bar2' />
       </StackBar>
       <HoverRect.Tooltip y='category' wMin={100}>
         {({ yIndex }) => {
@@ -64,9 +64,7 @@ const Demo = () => {
                   <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['blue-02']}>
-                    Stack 2
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Stack 2</HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex].bar2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>

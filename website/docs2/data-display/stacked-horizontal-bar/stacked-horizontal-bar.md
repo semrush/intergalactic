@@ -15,9 +15,9 @@ Basic data visualization rules are described in the [Chart principles](/data-dis
 ::: tip
 **Difference from histogram chart**
 
-Bar chart displays distribution of data sets by quality categories.
+Bar chart displays distribution of datasets by quality categories.
 
-Histogram charts are used to display distribution of data sets: how often values fall into quantitative ranges.
+Histogram charts are used to display distribution of datasets: how often values fall into quantitative ranges.
 :::
 
 Important points to keep in mind when presenting data as a bar chart:

@@ -75,7 +75,7 @@ It is also possible to pass the 'color' property to `<Radar.Polygon.Line/>` and 
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 const Demo = () => {
@@ -91,11 +91,11 @@ const Demo = () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']}>
+        <Radar.Polygon dataKey='data_1' color='chart-palette-order-1'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']}>
+        <Radar.Polygon dataKey='data_2' color='chart-palette-order-2'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
@@ -137,11 +137,11 @@ const Demo = () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']} fill='transparent'>
+        <Radar.Polygon dataKey='data_1' color='chart-palette-order-1' fill='transparent'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']} fill='transparent'>
+        <Radar.Polygon dataKey='data_2' color='chart-palette-order-2' fill='transparent'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
@@ -281,7 +281,7 @@ You need to use the `<Radar.Tooltip />` component to add interactivity.
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 const Demo = () => {
@@ -297,11 +297,11 @@ const Demo = () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']}>
+        <Radar.Polygon dataKey='data_1'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']}>
+        <Radar.Polygon dataKey='data_2'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
@@ -311,12 +311,8 @@ const Demo = () => {
               children: (
                 <>
                   <Radar.Tooltip.Title>{data.categories[index]}</Radar.Tooltip.Title>
-                  <Radar.Tooltip.Dot color={colors['orange-04']}>
-                    {data['data_1'][index]}
-                  </Radar.Tooltip.Dot>
-                  <Radar.Tooltip.Dot color={colors['violet-04']}>
-                    {data['data_2'][index]}
-                  </Radar.Tooltip.Dot>
+                  <Radar.Tooltip.Dot>{data['data_1'][index]}</Radar.Tooltip.Dot>
+                  <Radar.Tooltip.Dot>{data['data_2'][index]}</Radar.Tooltip.Dot>
                 </>
               ),
             };
@@ -345,7 +341,7 @@ You can also round the polygons by passing the "curve" parameter from D3 into th
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 
@@ -362,11 +358,11 @@ const Demo = () => {
           <Radar.Axis.Ticks />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']} curve={curveCardinalClosed}>
+        <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']} curve={curveCardinalClosed}>
+        <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
@@ -376,12 +372,8 @@ const Demo = () => {
               children: (
                 <>
                   <Radar.Tooltip.Title>{data.categories[index]}</Radar.Tooltip.Title>
-                  <Radar.Tooltip.Dot color={colors['orange-04']}>
-                    {data['data_1'][index]}
-                  </Radar.Tooltip.Dot>
-                  <Radar.Tooltip.Dot color={colors['violet-04']}>
-                    {data['data_2'][index]}
-                  </Radar.Tooltip.Dot>
+                  <Radar.Tooltip.Dot>{data['data_1'][index]}</Radar.Tooltip.Dot>
+                  <Radar.Tooltip.Dot>{data['data_2'][index]}</Radar.Tooltip.Dot>
                 </>
               ),
             };
@@ -409,7 +401,7 @@ To change the distance between the grid lines, you need to change the value of t
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 
 const Demo = () => {
@@ -425,11 +417,11 @@ const Demo = () => {
           <Radar.Axis.Ticks tickSize={30} />
           <Radar.Axis.Labels />
         </Radar.Axis>
-        <Radar.Polygon dataKey='data_1' color={colors['orange-04']}>
+        <Radar.Polygon dataKey='data_1'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
-        <Radar.Polygon dataKey='data_2' color={colors['violet-04']}>
+        <Radar.Polygon dataKey='data_2'>
           <Radar.Polygon.Line />
           <Radar.Polygon.Dots />
         </Radar.Polygon>
@@ -455,7 +447,7 @@ To change base angle of the chart, set `angleOffset` (in radians) parameter.
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 import Slider from '@semcore/slider';
@@ -487,11 +479,11 @@ const Demo = () => {
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
-          <Radar.Polygon dataKey='data_1' color={colors['orange-04']} curve={curveCardinalClosed}>
+          <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>
-          <Radar.Polygon dataKey='data_2' color={colors['violet-04']} curve={curveCardinalClosed}>
+          <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>
@@ -501,12 +493,8 @@ const Demo = () => {
                 children: (
                   <>
                     <Radar.Tooltip.Title>{data.categories[index]}</Radar.Tooltip.Title>
-                    <Radar.Tooltip.Dot color={colors['orange-04']}>
-                      {data['data_1'][index]}
-                    </Radar.Tooltip.Dot>
-                    <Radar.Tooltip.Dot color={colors['violet-04']}>
-                      {data['data_2'][index]}
-                    </Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot>{data['data_1'][index]}</Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot>{data['data_2'][index]}</Radar.Tooltip.Dot>
                   </>
                 ),
               };

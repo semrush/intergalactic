@@ -17,7 +17,7 @@ const Demo = () => (
   <FilterTrigger>
     <FilterTrigger.Text>Link to website</FilterTrigger.Text>
     <FilterTrigger.Addon>
-      <Counter theme='light-blue'>
+      <Counter theme='bg-primary-info'>
         <AnimatedNumber value={500} delay={1000} formatValue={(x) => Math.round(x).toString()} />
       </Counter>
     </FilterTrigger.Addon>
@@ -58,7 +58,7 @@ const Demo = () => (
       </Button.Addon>
       <Button.Text>Manage columns</Button.Text>
       <Button.Addon>
-        <Counter theme='white'>23</Counter>
+        <Counter theme='bg-primary-neutral'>23</Counter>
       </Button.Addon>
     </Button>
   </>
@@ -97,7 +97,7 @@ const Demo = () => (
           <ScreenReaderOnly>maximum</ScreenReaderOnly>
         </Counter>
       </Text>
-      <Text size={200} color='gray70' id='limited-text-field'>
+      <Text size={200} color='text-secondary' id='limited-text-field'>
         optional
       </Text>
     </Flex>
@@ -121,11 +121,11 @@ import { Text } from '@semcore/ui/typography';
 const Demo = () => (
   <>
     <Text size={300}>
-      Lorem ipsum <Text color='gray60'>12,457</Text>
+      Lorem ipsum <Text color='text-secondary'>12,457</Text>
     </Text>
     <br />
     <Text size={300}>
-      Dolor sit amet: <Text color='gray60'>149</Text>
+      Dolor sit amet: <Text color='text-secondary'>149</Text>
     </Text>
   </>
 );
@@ -149,19 +149,19 @@ const Demo = () => (
     <Pills.Item value='all'>
       <Pills.Item.Text>All</Pills.Item.Text>
       <Pills.Item.Addon>
-        <Text color='gray60'>1,259</Text>
+        <Text color='text-secondary'>1,259</Text>
       </Pills.Item.Addon>
     </Pills.Item>
     <Pills.Item value='follow'>
       <Pills.Item.Text>Follow</Pills.Item.Text>
       <Pills.Item.Addon>
-        <Text color='gray60'>557</Text>
+        <Text color='text-secondary'>557</Text>
       </Pills.Item.Addon>
     </Pills.Item>
     <Pills.Item value='not-follow'>
       <Pills.Item.Text>Not Follow</Pills.Item.Text>
       <Pills.Item.Addon>
-        <Text color='gray60'>736</Text>
+        <Text color='text-secondary'>736</Text>
       </Pills.Item.Addon>
     </Pills.Item>
   </Pills>
@@ -186,15 +186,15 @@ import WarningM from '@semcore/ui/icon/Warning/m';
 const Demo = () => (
   <Flex direction='column' w={350}>
     <Flex mb={1} justifyContent='space-between'>
-      <Text size={100}>SEO Ideas Units</Text>
+      <Text size={200}>SEO Ideas Units</Text>
       <Flex alignItems='center'>
-        <WarningM color='orange' />
-        <Text size={100} ml={1} bold>
-          10<Text color='gray60'>/10</Text>
+        <WarningM color='icon-primary-warning' />
+        <Text size={200} ml={1} bold>
+          10<Text color='text-secondary'>/10</Text>
         </Text>
       </Flex>
     </Flex>
-    <ProgressBar theme='orange' size='s' />
+    <ProgressBar theme='bg-primary-warning' size='s' />
   </Flex>
 );
 </script>

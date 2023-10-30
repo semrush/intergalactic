@@ -18,7 +18,7 @@ See core principles, concept description, API and changelog in the [Chart princi
 
 <script lang="tsx">
 import React from 'react';
-import { Donut, Plot, colors } from '@semcore/ui/d3-chart';
+import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 
@@ -27,8 +27,8 @@ const Demo = () => {
     <Plot width={300} height={300} data={data}>
       <Donut innerRadius={100}>
         <Donut.Pie dataKey='a' name='Pie 1' />
-        <Donut.Pie dataKey='b' color={colors['green-02']} name='Pie 2' />
-        <Donut.Pie dataKey='c' color={colors['violet-04']} name='Pie 3' />
+        <Donut.Pie dataKey='b' name='Pie 2' />
+        <Donut.Pie dataKey='c' name='Pie 3' />
         <Donut.Label>Example</Donut.Label>
       </Donut>
       <Donut.Tooltip>
@@ -66,12 +66,11 @@ Use `active` property to control segments highlight.
 
 <script lang="tsx">
 import React from 'react';
-import { colors, Donut, Plot } from '@semcore/ui/d3-chart';
+import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Checkbox from '@semcore/ui/checkbox';
 
 const data = { a: 3, b: 1, c: 2 };
-const pieColors = [colors['blue-03'], colors['green-02'], colors['violet-04']];
 
 const Demo = () => {
   const [selected, setSelected] = React.useState(['b']);
@@ -96,7 +95,6 @@ const Demo = () => {
             <Donut.Pie
               key={name}
               dataKey={name}
-              color={pieColors[index]}
               name={`Pie ${index}`}
               active={selected.includes(name)}
             />
@@ -106,7 +104,7 @@ const Demo = () => {
       <Flex direction='column'>
         {Object.keys(data).map((name, index) => {
           return (
-            <Checkbox key={name} id={name} theme={pieColors[index]}>
+            <Checkbox key={name} id={name} theme={`chart-palette-order-${index + 1}`}>
               <Checkbox.Value
                 value={name}
                 checked={selected.includes(name)}
@@ -132,7 +130,7 @@ To create a half-size chart, you need to specify the `halfsize` value and reduce
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, Donut, colors } from '@semcore/ui/d3-chart';
+import { Plot, Donut } from '@semcore/ui/d3-chart';
 import { Text } from '@semcore/ui/typography';
 import { Flex } from '@semcore/ui/flex-box';
 
@@ -141,8 +139,8 @@ const Demo = () => {
     <Plot width={300} height={150} data={data}>
       <Donut halfsize innerRadius={100}>
         <Donut.Pie dataKey='a' name='Pie 1' />
-        <Donut.Pie dataKey='b' color={colors['green-02']} name='Pie 2' />
-        <Donut.Pie dataKey='c' color={colors['violet-04']} name='Pie 3' />
+        <Donut.Pie dataKey='b' name='Pie 2' />
+        <Donut.Pie dataKey='c' name='Pie 3' />
         <Donut.Label label='71,240 engagements'>
           <Text tag='tspan' x='0' dy='-1.2em' fill='#191b23' size={600}>
             71,240
@@ -229,8 +227,8 @@ const Demo = () => {
       <Donut innerRadius={100}>
         <Donut.EmptyData />
         <Donut.Pie dataKey='a' name='a' />
-        <Donut.Pie dataKey='b' name='b' color={colors['green-02']} />
-        <Donut.Pie dataKey='c' name='c' color={colors['pink-03']} />
+        <Donut.Pie dataKey='b' name='b' />
+        <Donut.Pie dataKey='c' name='c' />
       </Donut>
     </Plot>
   );
@@ -255,13 +253,6 @@ import { Donut, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
-import resolveColor from '@semcore/ui/utils/lib/color';
-
-const pieColors = {
-  a: resolveColor('blue-300'),
-  b: resolveColor('violet-400'),
-  c: resolveColor('green-200'),
-};
 
 const Demo = () => {
   const width = 250;
@@ -305,11 +296,11 @@ const Demo = () => {
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width}>
-          {piesList.map((pie) => {
+          {piesList.map((pie, index) => {
             return (
               <Checkbox
                 key={pie}
-                theme={pieColors[pie]}
+                theme={`chart-palette-order-${index + 1}`}
                 mr={4}
                 mb={2}
                 onMouseEnter={handleMouseEnter(pie)}
@@ -332,13 +323,7 @@ const Demo = () => {
         <Plot width={width} height={height} data={data}>
           <Donut innerRadius={height / 2 - 50}>
             {displayedPiesList.map((pie) => (
-              <Donut.Pie
-                dataKey={pie}
-                key={pie}
-                name={pie}
-                color={pieColors[pie]}
-                transparent={opacityPie[pie]}
-              />
+              <Donut.Pie dataKey={pie} key={pie} name={pie} transparent={opacityPie[pie]} />
             ))}
           </Donut>
         </Plot>

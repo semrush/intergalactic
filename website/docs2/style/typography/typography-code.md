@@ -31,7 +31,7 @@ const Demo = () => (
       H3, 32px
     </Text>
     <Text tag='p' mb={2} mt={0}>
-      But I do love the taste of a <Text color='green'>good burger</Text>. Mm-mm-mm.
+      But I do love the taste of a <Text color='text-success'>good burger</Text>. Mm-mm-mm.
     </Text>
     <Text size={500} tag='h4' fontWeight={500} mb={3} mt={0}>
       H4, 24px
@@ -88,9 +88,9 @@ import CheckM from '@semcore/ui/icon/Check/m';
 
 const Demo = () => (
   <div>
-    <List size={300} marker={<CheckM color='green' mt={1} />}>
+    <List size={300} marker={<CheckM color='icon-secondary-success' mt={1} />}>
       <List.Item>I'm gonna make him an offer he can't refuse.</List.Item>
-      <List.Item marker={<CheckM mt={1} />}>
+      <List.Item marker={<CheckM color='icon-secondary-success' mt={1} />}>
         (Uncheck icon) Carpe diem. Seize the day, boys. Make your lives extraordinary.
       </List.Item>
       <List.Item>Listen to them. Children of the night. What music they make.</List.Item>

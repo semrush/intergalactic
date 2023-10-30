@@ -13,59 +13,46 @@ Make sure to follow the guide's instructions on checkbox spacing.
 import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
 
-class Demo extends React.PureComponent {
-  state = {
-    checked: [false, false, false],
-  };
+const Demo = () => {
+  const [checked, setChecked] = React.useState([false, false, false]);
+  const handleGroupChange = React.useCallback(
+    (value: boolean) => {
+      setChecked((checked) => checked.map(() => value));
+    },
+    [setChecked],
+  );
+  const handleItemChange = React.useCallback(
+    (index: number) => (value: boolean) => {
+      setChecked((checked) => checked.map((item, i) => (i === index ? value : item)));
+    },
+    [setChecked],
+  );
 
-  all = (checked) => {
-    this.setState({
-      checked: this.state.checked.map(() => checked),
-    });
-  };
-
-  item = (checked, e) => {
-    const { id } = e.currentTarget;
-
-    this.setState({
-      checked: this.state.checked.map((item, i) => {
-        if (i === Number(id)) return !item;
-        return item;
-      }),
-    });
-  };
-
-  indeterminate = (checked) => {
-    return checked.includes(true) && checked.indexOf(false) >= 0;
-  };
-
-  render() {
-    const { checked } = this.state;
-
-    return (
-      <>
-        <div>
-          <Checkbox mb={3}>
-            <Checkbox.Value
-              onChange={this.all}
-              indeterminate={this.indeterminate(checked)}
-              checked={checked.indexOf(false) < 0}
-            />
-            <Checkbox.Text>Select all</Checkbox.Text>
-          </Checkbox>
+  return (
+    <>
+      <div>
+        <Checkbox
+          mb={3}
+          label='Select all'
+          onChange={handleGroupChange}
+          indeterminate={checked.includes(false) && checked.includes(true)}
+          checked={checked.includes(true)}
+        />
+      </div>
+      {checked.map((value, index) => (
+        <div key={index}>
+          <Checkbox
+            mb={3}
+            key={index}
+            checked={value}
+            onChange={handleItemChange(index)}
+            label={`Option ${index + 1}`}
+          />
         </div>
-        {checked.map((_, i) => (
-          <div key={i}>
-            <Checkbox mb={3}>
-              <Checkbox.Value id={`${i}`} checked={checked[i]} onChange={this.item} />
-              <Checkbox.Text>{`Option ${i + 1}`}</Checkbox.Text>
-            </Checkbox>
-          </div>
-        ))}
-      </>
-    );
-  }
-}
+      ))}
+    </>
+  );
+};
 
 
 </script>
@@ -91,12 +78,9 @@ const Demo = () => (
   <>
     {[0, 1, 2].map((item) => (
       <div key={item}>
-        <Checkbox mb={3}>
-          <Checkbox.Value />
-          <Checkbox.Text>{`Note ${item + 1}`}</Checkbox.Text>
-        </Checkbox>
+        <Checkbox mb={3} label={`Note ${item + 1}`} />
         <Tooltip title='There is information about point.' placement='right-start' ml={1}>
-          <InfoM color='stone' interactive aria-label='Additional info' />
+          <InfoM color='icon-secondary-neutral' interactive aria-label='Additional info' />
         </Tooltip>
       </div>
     ))}
@@ -124,21 +108,26 @@ const Demo = () => (
 
 ## Additional props for input
 
-Checkbox.Value conceals a stylistic div and a real, hidden input. We typically aim to anticipate where certain properties
-should be directed, but occasionally, this behavior needs to be modified.
+`Checkbox.Value` is made of a check-mark div and a hidden input-tag. When you pass props to Checkbox.Value, it passes specific set of them to input props and all others goes to check-mark div.
+If you need more control over input-tag, you can pass props to Checkbox.Value.Control.
+
+::: warning
+:rotating_light: `Checkbox.Value.CheckMark` should always be the next element after `Checkbox.Value.Control` in DOM.
+:::
 
 ::: sandbox
 
 <script lang="tsx">
 import React from 'react';
 import Checkbox from '@semcore/ui/checkbox';
-import { inputProps } from '@semcore/ui/utils/lib/inputProps';
 
 const Demo = () => {
-  const includeInputProps = [...inputProps, 'data-test-id'];
   return (
     <Checkbox>
-      <Checkbox.Value includeInputProps={includeInputProps} data-test-id='value' />
+      <Checkbox.Value>
+        <Checkbox.Value.Control data-testid='checkbox_input_tag' />
+        <Checkbox.Value.CheckMark />
+      </Checkbox.Value>
       <Checkbox.Text>Value</Checkbox.Text>
     </Checkbox>
   );

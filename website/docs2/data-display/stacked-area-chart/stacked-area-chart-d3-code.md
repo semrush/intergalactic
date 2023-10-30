@@ -16,7 +16,7 @@ If you need to display a part-to-whole ratio – use the `<StackedArea/>` and `<
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, XAxis, YAxis, minMax, colors, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
+import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Flex, Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -59,10 +59,10 @@ const Demo = () => {
         <StackedArea.Area y='stack1' curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack2' fill='#59DDAA50' color='#59DDAA' curve={curveCardinal}>
+        <StackedArea.Area y='stack2' curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack3' fill='#FF622D50' color='#FF622D' curve={curveCardinal}>
+        <StackedArea.Area y='stack3' curve={curveCardinal}>
           <StackedArea.Area.Dots />
         </StackedArea.Area>
       </StackedArea>
@@ -83,15 +83,11 @@ const Demo = () => {
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4} color={colors['green-02']}>
-                    Stack 2
-                  </HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Stack 2</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4} color={colors['orange-04']}>
-                    Stack 3
-                  </HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Stack 3</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
@@ -130,7 +126,7 @@ const data = [...Array(5).keys()].map((d, i) => ({
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, XAxis, YAxis, minMax, colors, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
+import { Plot, XAxis, YAxis, minMax, StackedArea, HoverLine } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -162,11 +158,11 @@ const Demo = () => {
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack2' fill='#59DDAA50' color='#59DDAA'>
+        <StackedArea.Area y='stack2'>
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
-        <StackedArea.Area y='stack3' fill='#FF622D50' color='#FF622D'>
+        <StackedArea.Area y='stack3'>
           <StackedArea.Area.Null />
           <StackedArea.Area.Dots />
         </StackedArea.Area>
@@ -182,15 +178,11 @@ const Demo = () => {
                   <Text bold>{data[xIndex].stack1 ?? 'n/a'}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4} color={colors['green-02']}>
-                    Stack 2
-                  </HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Stack 2</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2 ?? 'n/a'}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverLine.Tooltip.Dot mr={4} color={colors['orange-04']}>
-                    Stack 3
-                  </HoverLine.Tooltip.Dot>
+                  <HoverLine.Tooltip.Dot mr={4}>Stack 3</HoverLine.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack3 ?? 'n/a'}</Text>
                 </Flex>
               </>

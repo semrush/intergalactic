@@ -22,7 +22,7 @@ To draw a stacked chart, use `<StackBar/>` and `<StackBar.Bar/>`.
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
+import { Plot, StackBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Box, Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -53,7 +53,7 @@ const Demo = () => {
       </XAxis>
       <StackBar x='category'>
         <StackBar.Bar y='stack1' />
-        <StackBar.Bar y='stack2' color={colors['blue-02']} />
+        <StackBar.Bar y='stack2' />
       </StackBar>
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {
@@ -66,9 +66,7 @@ const Demo = () => {
                   <Text bold>{data[xIndex].stack1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['blue-02']}>
-                    Stack 2
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Stack 2</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].stack2}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
@@ -102,15 +100,8 @@ import React from 'react';
 import { Plot, StackBar, YAxis, XAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
 import Checkbox from '@semcore/ui/checkbox';
-
-const barColors = {
-  stack1: resolveColor('blue-300'),
-  stack2: resolveColor('orange-400'),
-  stack3: resolveColor('green-200'),
-};
 
 const Demo = () => {
   const MARGIN = 30;
@@ -165,11 +156,11 @@ const Demo = () => {
       <Card.Header pt={4}> Chart legend</Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
-          {barsList.map((stack) => {
+          {barsList.map((stack, index) => {
             return (
               <Checkbox
                 key={stack}
-                theme={barColors[stack]}
+                theme={`chart-palette-order-${index + 1}`}
                 mr={4}
                 mb={2}
                 onMouseEnter={handleMouseEnter(stack)}
@@ -199,12 +190,7 @@ const Demo = () => {
           </XAxis>
           <StackBar x='category'>
             {displayedBarsList.map((stack) => (
-              <StackBar.Bar
-                y={stack}
-                key={stack}
-                color={barColors[stack]}
-                transparent={opacityBars[stack]}
-              />
+              <StackBar.Bar y={stack} key={stack} transparent={opacityBars[stack]} />
             ))}
           </StackBar>
         </Plot>

@@ -23,12 +23,25 @@ import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import Divider from '@semcore/ui/divider';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl', 'sv'].map(
-  (o) => ({
-    value: o,
-    children: o,
-  }),
-);
+const options = [
+  'de',
+  'en',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'pt',
+  'ru',
+  'zh',
+  'ko',
+  'nl',
+  'vi',
+  'pl',
+  'sv',
+].map((o) => ({
+  value: o,
+  children: o,
+}));
 
 const Demo = () => {
   const [lang, setLang] = React.useState('en');
@@ -214,12 +227,25 @@ import { Text } from '@semcore/ui/typography';
 import Button from '@semcore/ui/button';
 import Divider from '@semcore/ui/divider';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl', 'sv'].map(
-  (o) => ({
-    value: o,
-    children: o,
-  }),
-);
+const options = [
+  'de',
+  'en',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'pt',
+  'ru',
+  'zh',
+  'ko',
+  'vi',
+  'pl',
+  'nl',
+  'sv',
+].map((o) => ({
+  value: o,
+  children: o,
+}));
 
 const Demo = () => {
   const [lang, setLang] = React.useState('en');
@@ -266,12 +292,25 @@ import ReloadM from '@semcore/ui/icon/Reload/m';
 import Link from '@semcore/ui/link';
 import Divider from '@semcore/ui/divider';
 
-const options = ['de', 'en', 'es', 'fr', 'it', 'ja', 'pt', 'ru', 'zh', 'ko', 'vi', 'pl', 'sv'].map(
-  (o) => ({
-    value: o,
-    children: o,
-  }),
-);
+const options = [
+  'de',
+  'en',
+  'es',
+  'fr',
+  'it',
+  'ja',
+  'pt',
+  'ru',
+  'zh',
+  'ko',
+  'nl',
+  'vi',
+  'pl',
+  'sv',
+].map((o) => ({
+  value: o,
+  children: o,
+}));
 
 const Demo = () => {
   const [lang, setLang] = React.useState('en');

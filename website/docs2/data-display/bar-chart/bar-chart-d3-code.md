@@ -29,7 +29,6 @@ const Demo = () => {
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
     .domain(data.map((d) => d.category))
-    .paddingInner(0.4)
     .paddingOuter(0.2);
 
   const yScale = scaleLinear()
@@ -45,7 +44,7 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bar x='category' y='bar' />
+      <Bar x='category' y='bar' maxBarSize={20} />
     </Plot>
   );
 };
@@ -272,8 +271,8 @@ const Demo = () => {
       <XAxis>
         <XAxis.Ticks />
       </XAxis>
-      <Bar x='category' y='bar1' color={colors['green-02']} />
-      <Bar x='category' y='bar2' color={colors['orange-04']} />
+      <Bar x='category' y='bar1' color='chart-palette-order-1' />
+      <Bar x='category' y='bar2' color='chart-palette-order-3' />
       <XAxis position={0} />
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => {
@@ -282,15 +281,11 @@ const Demo = () => {
               <>
                 <HoverRect.Tooltip.Title>{data[xIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
-                    Positive
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Positive</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar1}</Text>
                 </Flex>
                 <Flex justifyContent='space-between' mt={2}>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['orange-04']}>
-                    Negative
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Negative</HoverRect.Tooltip.Dot>
                   <Text bold>{data[xIndex].bar2}</Text>
                 </Flex>
               </>
@@ -356,7 +351,7 @@ const Demo = () => {
       </XAxis>
       <GroupBar x='category'>
         <GroupBar.Bar y='bar1' />
-        <GroupBar.Bar y='bar2' color={colors['green-02']} />
+        <GroupBar.Bar y='bar2' />
       </GroupBar>
       <HoverRect.Tooltip x='category' wMin={100}>
         {({ xIndex }) => ({
@@ -368,9 +363,7 @@ const Demo = () => {
                 <Text bold>{data[xIndex].bar1}</Text>
               </Flex>
               <Flex mt={2} justifyContent='space-between'>
-                <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
-                  Bar 2
-                </HoverRect.Tooltip.Dot>
+                <HoverRect.Tooltip.Dot mr={4}>Bar 2</HoverRect.Tooltip.Dot>
                 <Text bold>{data[xIndex].bar2}</Text>
               </Flex>
             </>
@@ -401,13 +394,14 @@ You can combine charts with each other. For example, to display a trend line on 
 <script lang="tsx">
 import React from 'react';
 import { Plot, Bar, Line, HoverRect, HoverLine, YAxis, XAxis, minMax } from '@semcore/ui/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import { useColorResolver } from '@semcore/ui/utils/lib/use/useColorResolver';
 import { scaleLinear, scaleBand } from 'd3-scale';
 
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
+  const resolveColor = useColorResolver();
 
   const xScale = scaleBand()
     .range([MARGIN, width - MARGIN])
@@ -434,7 +428,7 @@ const Demo = () => {
       <Line
         x='category'
         y='bar'
-        color={resolveColor('wall')}
+        color='text-secondary'
         style={{ strokeWidth: 3, strokeDasharray: 5 }}
       >
         <Line.Dots display />

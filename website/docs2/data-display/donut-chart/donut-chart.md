@@ -23,7 +23,7 @@ The length of each segment is a proportional fraction, and the entire circle is 
 
 - The number of displayed values is very limited, because the more values, the smaller the size of each individual segment. Accordingly, these charts are not suitable for working with large amounts of data.
 - They take up more space than, for example, [Bar chart](/data-display/bar-chart/bar-chart).
-- They are inconvenient for making accurate comparisons between different data sets, since visually the area of segments is more difficult to compare than the length.
+- They are inconvenient for making accurate comparisons between different datasets, since visually the area of segments is more difficult to compare than the length.
 
 ::: tip
 **Interesting fact**

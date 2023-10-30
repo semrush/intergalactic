@@ -59,6 +59,62 @@ const data = Array(20)
 
 :::
 
+## Line with area
+
+- You must define `y0` and `y1` in `Line.Area` props and in the `data`.
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Plot, Line, XAxis, YAxis, minMax } from '@semcore/ui/d3-chart';
+import { scaleLinear } from 'd3-scale';
+
+const Demo = () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+
+  const xScale = scaleLinear()
+    .range([MARGIN, width - MARGIN])
+    .domain(minMax(data, 'x'));
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 10]);
+
+  return (
+    <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+      <YAxis>
+        <YAxis.Ticks />
+        <YAxis.Grid />
+      </YAxis>
+      <XAxis>
+        <XAxis.Ticks />
+      </XAxis>
+      <Line x='x' y='y'>
+        <Line.Area y0='y0' y1='y1' />
+      </Line>
+    </Plot>
+  );
+};
+
+const data = Array(20)
+  .fill({})
+  .map((d, i) => {
+    const y = Math.random() * 10;
+
+    return {
+      x: i,
+      y,
+      y0: y + 2,
+      y1: y - 2,
+    };
+  });
+</script>
+
+:::
+
 ## Hover line
 
 - The `HoverLine` component is responsible for the hover effect. Use it with line charts.
@@ -342,15 +398,8 @@ import React from 'react';
 import Card from '@semcore/ui/card';
 import { Line, minMax, Plot, XAxis, YAxis } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import { scaleLinear } from 'd3-scale';
 import Checkbox from '@semcore/ui/checkbox';
-
-const lineColors = {
-  line1: resolveColor('blue-300'),
-  line2: resolveColor('orange-400'),
-  line3: resolveColor('green-200'),
-};
 
 const Demo = () => {
   const MARGIN = 30;
@@ -362,7 +411,7 @@ const Demo = () => {
     .domain(minMax(data, 'x'));
 
   const yScale = scaleLinear()
-    .range([height - MARGIN, 0])
+    .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
   const linesList = Object.keys(data[0]).filter((name) => name !== 'x');
@@ -400,14 +449,18 @@ const Demo = () => {
 
   return (
     <Card w={'550px'}>
-      <Card.Header pt={4}> Chart legend</Card.Header>
+      <Card.Header pt={4}>
+        <Card.Title tag={'h4'} m={0} hint={'Chart about ...'} inline={true}>
+          Chart legend
+        </Card.Title>
+      </Card.Header>
       <Card.Body tag={Flex} direction='column'>
         <Flex flexWrap w={width} mt={1}>
-          {linesList.map((line) => {
+          {linesList.map((line, index) => {
             return (
               <Checkbox
                 key={line}
-                theme={lineColors[line]}
+                theme={`chart-palette-order-${index + 1}`}
                 mr={4}
                 mb={2}
                 onMouseEnter={handleMouseEnter(line)}
@@ -435,13 +488,13 @@ const Demo = () => {
           <XAxis>
             <XAxis.Ticks ticks={xScale.ticks(5)} />
           </XAxis>
-          {displayedLinesList.map((line) => {
+          {displayedLinesList.map((line, index) => {
             return (
               <Line
                 x='x'
                 y={line}
                 key={line}
-                color={lineColors[line]}
+                color={`chart-palette-order-${index + 1}`}
                 transparent={opacityLines[line]}
               >
                 <Line.Dots display />

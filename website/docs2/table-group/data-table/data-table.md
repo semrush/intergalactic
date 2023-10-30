@@ -185,14 +185,14 @@ const Demo = () => {
         <DataTable.Column name='keyword'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             <Text noWrap>
-              Keyword <Text color='gray60'>(1 - 100)</Text>
+              Keyword <Text color='text-secondary'>(1 – 100)</Text>
             </Text>
           </Tooltip>
         </DataTable.Column>
         <DataTable.Column name='kd'>
           <DropdownMenu>
             <DropdownMenu.Trigger>
-              <LinkTrigger color='gray20' style={{ fontSize: '12px' }}>
+              <LinkTrigger color='text-primary' style={{ fontSize: '12px' }}>
                 KD,%
               </LinkTrigger>
             </DropdownMenu.Trigger>
@@ -1318,7 +1318,7 @@ const Demo = () => {
                 children: (
                   <Flex alignItems='center'>
                     {/* [6] Set the arrow (Chevron icon), if necessary. */}
-                    <Accordion.Item.Chevron color='stone' mr={2} />
+                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
                     {props.children}
                   </Flex>
                 ),
@@ -1467,7 +1467,7 @@ const Demo = () => {
               return {
                 children: (
                   <Flex alignItems='center'>
-                    <Accordion.Item.Chevron color='stone' mr={2} />
+                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
                     {props.children}
                   </Flex>
                 ),
@@ -1583,7 +1583,7 @@ const Demo = () => {
               return {
                 children: (
                   <Flex alignItems='center'>
-                    <Accordion.Item.Chevron color='stone' mr={2} />
+                    <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />
                     {props.children}
                   </Flex>
                 ),

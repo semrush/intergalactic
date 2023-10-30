@@ -83,13 +83,14 @@ To draw the values of the bars, pass the function to `<Bar/>` to receive all req
 import React from 'react';
 import { Plot, HorizontalBar, YAxis } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import { useColorResolver } from '@semcore/ui/utils/lib/use/useColorResolver';
 
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
   const height = 300;
 
+  const resolveColor = useColorResolver();
   const xScale = scaleLinear()
     .range([MARGIN * 2, width - MARGIN * 2])
     .domain([0, Math.max(...data.map((d) => Number.parseFloat(d.bar)))]);
@@ -114,7 +115,7 @@ const Demo = () => {
                 y={y + height / 2}
                 textAnchor='start'
                 alignmentBaseline='middle'
-                fill={resolveColor('gray60')}
+                fill={resolveColor('--intergalactic-text-secondary')}
               >
                 $ {data[index].bar}
               </text>
@@ -146,7 +147,7 @@ The `<GroupBar.HorizontalBar/>` component is a customized `<HorizontalBar/>` tha
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, GroupBar, YAxis, XAxis, HoverRect, colors } from '@semcore/ui/d3-chart';
+import { Plot, GroupBar, YAxis, XAxis, HoverRect } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
@@ -177,7 +178,7 @@ const Demo = () => {
       </XAxis>
       <GroupBar y='category'>
         <GroupBar.HorizontalBar x='bar1' />
-        <GroupBar.HorizontalBar x='bar2' color={colors['green-02']} />
+        <GroupBar.HorizontalBar x='bar2' />
       </GroupBar>
       <HoverRect.Tooltip y='category' wMin={100}>
         {({ yIndex }) => {
@@ -190,9 +191,7 @@ const Demo = () => {
                   <Text bold>{data[yIndex].bar1}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={colors['green-02']}>
-                    Bar 2
-                  </HoverRect.Tooltip.Dot>
+                  <HoverRect.Tooltip.Dot mr={4}>Bar 2</HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex].bar2}</Text>
                 </Flex>
               </>

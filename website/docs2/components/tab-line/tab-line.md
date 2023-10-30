@@ -54,7 +54,7 @@ const App = PlaygroundGeneration(
             ? [
                 <TabLine.Item.Text key={1}>Statistics</TabLine.Item.Text>,
                 <TabLine.Item.Addon key={2}>
-                  <Badge bg='green'>new</Badge>
+                  <Badge bg='bg-primary-success'>new</Badge>
                 </TabLine.Item.Addon>,
               ]
             : 'Statistics'}

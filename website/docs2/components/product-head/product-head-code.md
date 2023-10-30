@@ -33,7 +33,7 @@ import Header, { Info, Title } from '@semcore/ui/product-head';
 const Demo = () => {
   return (
     <>
-      <Header mx={6}>
+      <Header mx={8}>
         <Header.Row>
           <Breadcrumbs>
             <Breadcrumbs.Item href='#'>Dashboard</Breadcrumbs.Item>
@@ -130,7 +130,7 @@ const Demo = () => {
         </Header.Row>
       </Header>
 
-      <TabLine defaultValue='overview' px={6} size='l'>
+      <TabLine defaultValue='overview' px={8} size='l'>
         <TabLine.Item value='overview'>Overview</TabLine.Item>
         <TabLine.Item value='issues'>Issues</TabLine.Item>
         <TabLine.Item value='linked_in'>LinkedIn</TabLine.Item>

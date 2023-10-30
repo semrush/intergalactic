@@ -10,7 +10,7 @@ See core principles, concept description, API and changelog in the [Chart princi
 
 ## Venn
 
-A Venn chart allows you to see all kinds of intersections between two or more data sets.
+A Venn chart allows you to see all kinds of intersections between two or more datasets.
 
 - `Circle` are a component for circles.
 - `Intersection` is for intersections between the circles.
@@ -38,9 +38,9 @@ const Demo = () => {
     <Plot height={300} width={400} data={data}>
       <Venn>
         <Venn.Circle dataKey='G' name='Good' />
-        <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />
-        <Venn.Circle dataKey='C' name='Cheap' color={colors['orange-04']} />
-        <Venn.Circle dataKey='U' name='Unknown' color={colors['pink-03']} />
+        <Venn.Circle dataKey='F' name='Fast' />
+        <Venn.Circle dataKey='C' name='Cheap' />
+        <Venn.Circle dataKey='U' name='Unknown' />
         <Venn.Intersection dataKey='G/F' name='Good & Fast' />
         <Venn.Intersection dataKey='G/C' name='Good & Cheap' />
         <Venn.Intersection dataKey='F/C' name='Fast & Cheap' />
@@ -73,15 +73,15 @@ If you want to change the intersection styles, you can add additional styles to 
 
 <script lang="tsx">
 import React from 'react';
-import { colors, Plot, Venn } from '@semcore/ui/d3-chart';
+import { Plot, Venn } from '@semcore/ui/d3-chart';
 
 const Demo = () => {
   return (
     <Plot height={300} width={400} data={data}>
       <Venn>
         <Venn.Circle dataKey='G' name='G' />
-        <Venn.Circle dataKey='F' name='F' color={colors['blue-03']} />
-        <Venn.Circle dataKey='C' name='C' color={colors['orange-04']} />
+        <Venn.Circle dataKey='F' name='F' />
+        <Venn.Circle dataKey='C' name='C' />
         <Venn.Intersection dataKey='G/F' name='G/F' />
         <Venn.Intersection dataKey='G/C' name='G/C' />
         <Venn.Intersection dataKey='F/C' name='F/C' />
@@ -89,8 +89,8 @@ const Demo = () => {
           dataKey='G/F/C'
           name='G/F/C'
           style={{
-            stroke: colors['violet-04'],
-            fill: colors['violet-04'],
+            stroke: '#F00',
+            fill: '#0F0',
             fillOpacity: 0.3,
           }}
         />
@@ -140,7 +140,7 @@ const Demo = () => {
       <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
           <Venn.Circle dataKey='F' name='F' />
-          <Venn.Circle dataKey='S' name='S' color={colors['blue-03']} />
+          <Venn.Circle dataKey='S' name='S' />
           <Venn.Intersection dataKey='F/S' name='F/S' />
         </Venn>
       </Plot>

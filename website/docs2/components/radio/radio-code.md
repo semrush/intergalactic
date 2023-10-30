@@ -26,18 +26,9 @@ const Demo = () => {
             Select value
           </Text>
           <Flex mt={2} direction={'column'}>
-            <Radio mb={3}>
-              <Radio.Value value='1' />
-              <Radio.Text>Value 1</Radio.Text>
-            </Radio>
-            <Radio mb={3}>
-              <Radio.Value value='2' />
-              <Radio.Text>Value 2</Radio.Text>
-            </Radio>
-            <Radio mb={3}>
-              <Radio.Value value='3' />
-              <Radio.Text>Value 3</Radio.Text>
-            </Radio>
+            <Radio mb={3} value={'1'} label={'Value 1'} />
+            <Radio mb={3} value={'2'} label={'Value 2'} />
+            <Radio mb={3} value={'3'} label={'Value 3'} />
           </Flex>
         </div>
       </RadioGroup>
@@ -52,23 +43,32 @@ const Demo = () => {
 
 ## Additional props for input
 
-Radio.Value conceals a stylistic div and a real, hidden input. We typically aim to anticipate where certain properties
-should be directed, but occasionally, this behavior needs to be modified.
+Radio.Value conceals a stylistic div and a real, hidden input. When you pass props to Radio.Value, it passes specific set of them to input props and all others goes to check-mark div.
+
+If you need more control over input-tag, you can pass props to Radio.Value.Control.
+
+::: warning
+:rotating_light: `Radio.Value.RadioMark` should always be the next element after `Radio.Value.Control` in DOM.
+:::
 
 ::: sandbox
 
 <script lang="tsx">
 import React from 'react';
-import Radio from '@semcore/ui/radio';
-import { inputProps } from '@semcore/ui/utils/lib/inputProps';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 
 const Demo = () => {
-  const includeInputProps = [...inputProps, 'data-test-id'];
   return (
-    <Radio>
-      <Radio.Value includeInputProps={includeInputProps} data-test-id='value' />
-      <Radio.Text>Value</Radio.Text>
-    </Radio>
+    <RadioGroup>
+      <Radio mb={3} value={'1'}>
+        <Radio.Value>
+          <Radio.Value.Control data-test-id={'TEST_ID'} />
+          <Radio.Value.RadioMark />
+        </Radio.Value>
+        <Radio.Text>Value</Radio.Text>
+      </Radio>
+      <Radio mb={3} value={'2'} label={'Second value'} />
+    </RadioGroup>
   );
 };
 

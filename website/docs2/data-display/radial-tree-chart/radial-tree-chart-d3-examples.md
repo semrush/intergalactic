@@ -31,7 +31,7 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree color='#008FF8'>
+      <RadialTree color='chart-palette-order-9'>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
@@ -60,24 +60,27 @@ import { scaleLinear } from 'd3-scale';
 import LikeM from '@semcore/ui/icon/Like/m';
 
 const movies = [
-  { label: 'Action', color: '#008ff8' },
-  { label: 'Comedy', color: '#008ff8' },
-  { label: 'Drama', color: '#008ff8' },
-  { label: 'Fantasy', color: '#008ff8' },
-  { label: 'Mystery', color: '#008ff8' },
-  { label: 'Romance', color: '#008ff8' },
-  { label: 'Western', color: '#008ff8' },
-  { label: 'Thriller', color: '#007C65' },
-  { label: 'Crime Thriller', color: '#007C65' },
-  { label: 'Disaster Thriller', color: '#007C65' },
-  { label: 'Psychological\nThriller', color: '#007C65' },
-  { label: 'Techno Thriller', color: '#007C65' },
-  { label: 'Horror', color: '#ff4953' },
-  { label: 'Zombie Horror', color: '#ff4953' },
-  { label: 'Folk Horror', color: '#ff4953' },
-  { label: 'Body Horror', color: '#ff4953' },
-  { label: 'Found\nFootage Horror', color: '#ff4953' },
-];
+  'Action',
+  'Comedy',
+  'Drama',
+  'Fantasy',
+  'Mystery',
+  'Romance',
+  'Western',
+  'Thriller',
+  'Crime Thriller',
+  'Disaster Thriller',
+  'Psychological\nThriller',
+  'Techno Thriller',
+  'Horror',
+  'Zombie Horror',
+  'Folk Horror',
+  'Body Horror',
+  'Found\nFootage Horror',
+].map((label, index) => ({
+  label,
+  color: `chart-palette-order-${index + 1}`,
+}));
 
 const Demo = () => {
   const width = 500;
@@ -126,15 +129,15 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree centralMargin={85} color='#008FF8'>
+      <RadialTree centralMargin={85} color='blue-400'>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <circle r={60} cx={width / 2} cy={height / 2} fill='#AB6CFE' />
-        <RadialTree.Title color='#FFFFFF'>Sleeping</RadialTree.Title>
+        <circle r={60} cx={width / 2} cy={height / 2} fill='#008FF8' />
+        <RadialTree.Title color='white'>Sleeping</RadialTree.Title>
       </RadialTree>
     </Plot>
   );
@@ -187,14 +190,14 @@ const Demo = () => {
 
   return (
     <Plot data={data} scale={[scaleLinear(), scaleLinear()]} width={width} height={height}>
-      <RadialTree color='#008FF8' textSize={textSize}>
+      <RadialTree color='chart-palette-order-9' textSize={textSize}>
         <RadialTree.Radian>
           <RadialTree.Radian.Label />
           <RadialTree.Radian.Line />
           <RadialTree.Radian.Cap />
           <RadialTree.Radian.Icon />
         </RadialTree.Radian>
-        <RadialTree.Title textSize={lineHeight} color='#AB6CFE'>
+        <RadialTree.Title textSize={lineHeight} color='chart-palette-order-9'>
           {textLines.map((line, lineIndex) => (
             <tspan
               key={line}

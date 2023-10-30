@@ -25,7 +25,7 @@ const Demo = () => (
       <SettingsM
         style={{ float: 'right' }}
         mt={1}
-        color='stone'
+        color='icon-secondary-neutral'
         interactive
         aria-label='Open settings'
       />
@@ -75,7 +75,7 @@ const Demo = () => (
           <Text size={200} color='#6C6E79' mr={2}>
             Info about data (optiona)
           </Text>
-          <Close color='stone' ml='auto' interactive aria-label='Close card' />
+          <Close color='icon-secondary-neutral' ml='auto' interactive aria-label='Close card' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>

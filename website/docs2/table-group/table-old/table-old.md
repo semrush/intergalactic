@@ -40,7 +40,7 @@ const Demo = () => (
                   key={value}
                   style={ind === 0 ? { display: 'flex', alignItems: 'center' } : {}}
                 >
-                  {ind === 0 && <Accordion.Item.Chevron color='stone' mr={2} />}
+                  {ind === 0 && <Accordion.Item.Chevron color='icon-secondary-neutral' mr={2} />}
                   {value}
                 </Table.Cell>
               ))}
@@ -198,7 +198,7 @@ const Demo = () => {
               <Table.CellHead width='200'>
                 <Tooltip title='Lorem ipsum'>
                   <span>
-                    Keyword <Text color='gray60'>(1 - 100)</Text>
+                    Keyword <Text color='text-secondary'>(1 – 100)</Text>
                   </span>
                 </Tooltip>
               </Table.CellHead>
@@ -378,7 +378,7 @@ const Demo = () => (
         <Table.CellHead>
           <Tooltip title='Lorem ipsum'>
             <span>
-              Keyword <Text color='gray60'>(1 - 100)</Text>
+              Keyword <Text color='text-secondary'>(1 – 100)</Text>
             </span>
           </Tooltip>
         </Table.CellHead>

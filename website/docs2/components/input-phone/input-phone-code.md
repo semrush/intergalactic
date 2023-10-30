@@ -366,7 +366,6 @@ const Demo = () => {
   const [option, setOption] = React.useState(listActuallyCountryCodes['Zimbabwe']);
   const [value, setValue] = React.useState(option.dial_code);
   const [valueMask, setValueMask] = React.useState(`${option.dial_code} (___)___-____`);
-  let country;
 
   React.useEffect(() => {
     setValueMask(`${option.dial_code} (___)___-____`);
@@ -384,14 +383,17 @@ const Demo = () => {
       <Select
         value={option}
         onChange={(value) => {
-          country = listActuallyCountryCodes[value];
+          const country = listActuallyCountryCodes[value];
+
           setOption(country);
           setValue(country.dial_code);
           inputMaskRef?.current.focus();
         }}
       >
         <Select.Trigger>
-          <Flag iso2={option.code} />
+          <Select.Trigger.Addon mr={0}>
+            <Flag iso2={option.code} />
+          </Select.Trigger.Addon>
         </Select.Trigger>
 
         <Select.Popper>
@@ -409,7 +411,7 @@ const Demo = () => {
                     <Text size={200} mr={2}>
                       {countryName}
                     </Text>
-                    <Text size={200} color='gray60'>
+                    <Text size={200} color='text-secondary'>
                       {listActuallyCountryCodes[countryName].dial_code}
                     </Text>
                   </Select.Option>
@@ -418,8 +420,9 @@ const Demo = () => {
           </>
         </Select.Popper>
       </Select>
-      <InputMask w={180}>
+      <InputMask w={210}>
         <InputMask.Value
+          title={'phone number'}
           ref={inputMaskRef}
           value={value}
           onChange={setValue}
@@ -430,7 +433,7 @@ const Demo = () => {
             tag={CloseM}
             aria-label='Clear value'
             interactive
-            onClick={() => setValue(valueMask)}
+            onClick={() => setValue(option.dial_code)}
           />
         )}
       </InputMask>

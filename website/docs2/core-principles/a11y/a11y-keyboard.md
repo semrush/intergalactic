@@ -24,8 +24,8 @@ Note that the components of the design system already can be operated with the k
 ::: tip
 **Brief guide to keyboard control**
 
-- **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc.
-- **Shift** + **Tab** returns `focus` to the previous interactive element. If dropdown is open, it closes.
+- **Tab** moves `focus` between the interactive elements on the page / in the dropdown / modal window, etc. If the select list was opened, then moving with `Tab` to the next interactive element outside the select will close select list.
+- **Shift** + **Tab** returns `focus` to the previous interactive element. If the select list was opened, then moving with `Shift` + `Tab` to the previous interactive element outside the select will close select list.
 - **Enter**, **Space** or **↓** **(for the select/menu trigger)** opens a dropdown. And if it has interactive elements inside, `focus` moves to the first one.
 - `Down Arrow` inside the dropdown moves `focus` to the next `menuItem`. From the last `menuItem`, the `focus` moves to the first `menuItem`. The same logic applies to the `Top Arrow`, but backwards 🙃
 - **Esc** discards choice or closes the dropdown. If the `focus` was on the control inside the dropdown, `Esc` removes the `focus` from the interactive element and closes the dropdown.

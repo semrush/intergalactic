@@ -8,24 +8,18 @@ tabs: Design('radio'), A11y('radio-a11y'), API('radio-api'), Example('radio-code
 
 <script lang="tsx">
 import React from 'react';
-import Radio from '@semcore/ui/radio';
+import Radio, { RadioGroup } from '@semcore/ui/radio';
 import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-    const { bool, radio, select, text, onChange } = createGroupWidgets('Radio');
+    const { bool, radio, select, text } = createGroupWidgets('Radio');
 
     const size = radio({
       key: 'size',
       defaultValue: 'm',
       label: 'Size',
       options: ['m', 'l'],
-    });
-
-    const checked = bool({
-      key: 'checked',
-      defaultValue: false,
-      label: 'Checked',
     });
 
     const state = select({
@@ -51,10 +45,10 @@ const App = PlaygroundGeneration(
     });
 
     return (
-      <Radio size={size} state={state}>
-        <Radio.Value disabled={disabled} checked={checked} />
-        <Radio.Text>{children}</Radio.Text>
-      </Radio>
+      <RadioGroup size={size} state={state} disabled={disabled}>
+        <Radio mb={3} value={'1'} label={'Value 1'} />
+        <Radio mb={3} value={'2'} label={children} />
+      </RadioGroup>
     );
   },
   {

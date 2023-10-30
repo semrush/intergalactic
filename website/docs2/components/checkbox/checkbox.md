@@ -57,15 +57,15 @@ const App = PlaygroundGeneration(
     });
 
     return (
-      <Checkbox size={size} state={state}>
-        <Checkbox.Value
-          disabled={disabled}
-          checked={checked}
-          indeterminate={indeterminate}
-          onChange={(v) => onChange('checked', v)}
-        />
-        <Checkbox.Text>{children}</Checkbox.Text>
-      </Checkbox>
+      <Checkbox
+        size={size}
+        state={state}
+        disabled={disabled}
+        checked={checked}
+        onChange={(v) => onChange('checked', v)}
+        indeterminate={indeterminate}
+        label={children}
+      />
     );
   },
   {
