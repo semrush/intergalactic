@@ -20,6 +20,10 @@
     "source": "/semcore/color-picker/src/translations/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",
   },
+    {
+        "source": "/semcore/d3-chart/src/translations/en.json",
+        "translation": "/%original_path%/%two_letters_code%.json",
+    },
   {
     "source": "/semcore/d3-chart/src/a11y/translations/module/en.json",
     "translation": "/%original_path%/%two_letters_code%.json",

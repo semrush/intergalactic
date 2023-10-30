@@ -19,6 +19,7 @@ export type TrendNode = {
   from: unknown;
   to: unknown;
   dataKey: string | number;
+  label?: string;
 };
 export type GeneralTrendNode = Omit<TrendNode, 'type'> & { type: 'general-trend' };
 export type ComparisonNode = {
@@ -228,7 +229,7 @@ export const extractDataInsights = (
         }: {
           value: { from: number; to: number };
           width: number;
-          label: { from: unknown; to: unknown; dataKey: string | number };
+          label: { from: unknown; to: unknown; dataKey: string | number; displayValue?: string };
           type: 'general-trend' | 'trend';
         }): GeneralTrendNode | TrendNode | undefined => {
           for (let i = 0; i < trendStrengths.length; i++) {
@@ -254,6 +255,7 @@ export const extractDataInsights = (
                 from: label.from,
                 to: label.to,
                 dataKey: label.dataKey,
+                label: label.displayValue,
               };
             }
           }
@@ -266,7 +268,7 @@ export const extractDataInsights = (
             to: shortMovingAverage[shortMovingAverage.length - 1],
           },
           width: data.length,
-          label: { from, to, dataKey: valueKey },
+          label: { from, to, dataKey: valueKey, displayValue: hints.titles.valuesAxes[valueKey] },
         })!;
         const localTrends: Insight[] = [];
         {
@@ -302,7 +304,12 @@ export const extractDataInsights = (
                   to: shortMovingAverage[i],
                 },
                 width: i - lastSwitch,
-                label: { from, to, dataKey: valueKey },
+                label: {
+                  from,
+                  to,
+                  dataKey: valueKey,
+                  displayValue: hints.titles.valuesAxes[valueKey],
+                },
               })!,
             );
             lastSwitch = i;
@@ -326,6 +333,7 @@ export const extractDataInsights = (
                     from: data[lastSwitch][labelsKey],
                     to: data[lastIndex][labelsKey],
                     dataKey: valueKey,
+                    displayValue: hints.titles.valuesAxes[valueKey],
                   },
                 })!,
               );
@@ -541,8 +549,8 @@ export const extractDataInsights = (
           for (const field of fields) {
             values.push({
               label:
-                hints.titles.getVerticalAxesTitle?.(field) ??
                 hints.titles.valuesAxes[field] ??
+                hints.titles.getVerticalAxesTitle?.(field) ??
                 (field as string),
               value: getPropByPath(row, field),
             });
@@ -587,8 +595,8 @@ export const extractDataInsights = (
     }
     const values = fields.map((field) => ({
       label:
-        hints.titles.getValueAxesTitle?.(field) ??
         hints.titles.valuesAxes[field] ??
+        hints.titles.getValueAxesTitle?.(field) ??
         (field as string),
       value: getPropByPath(data, field),
     }));
