@@ -1519,25 +1519,6 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             collapsed: true,
             items: [
               {
-                link: '/data-display/d3-chart/d3-chart-code',
-                text: 'Concept and code',
-                collapsed: true,
-                items: [
-                  {
-                    link: '/data-display/d3-chart/d3-chart-api',
-                    text: 'API',
-                  },
-                  {
-                    link: '/data-display/d3-chart/d3-chart-a11y',
-                    text: 'A11y',
-                  },
-                  {
-                    link: '/data-display/d3-chart/d3-chart-changelog',
-                    text: 'Changelog',
-                  },
-                ],
-              },
-              {
                 link: '/data-display/d3-chart/d3-chart-api',
                 text: 'API',
               },
