@@ -19,32 +19,32 @@ const legendItems = [
     id: 'G',
     label: 'Good',
     checked: true,
-    color: '--intergalactic-chart-palette-order-1',
+    color: 'chart-palette-order-1',
   },
   {
     id: 'F',
     label: 'Fast',
     checked: true,
-    color: '--intergalactic-chart-palette-order-2',
+    color: 'chart-palette-order-2',
   },
   {
     id: 'C',
     label: 'Cheap',
     checked: true,
-    color: '--intergalactic-chart-palette-order-3',
+    color: 'chart-palette-order-3',
   },
   {
     id: 'U',
     label: 'Unknown',
     checked: true,
-    color: '--intergalactic-chart-palette-order-4',
+    color: 'chart-palette-order-4',
   },
 ];
 
 export default () => {
   return (
     <>
-      <ChartLegend.Flex items={legendItems} shape={'Line'} />
+      <ChartLegend items={legendItems} shape={'Line'} />
       <Plot height={300} width={400} data={data}>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />

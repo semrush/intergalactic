@@ -2322,16 +2322,7 @@ describe('d3 charts visual regression', () => {
       const [dataLegend, setDataLegend] = React.useState(
         Object.keys(data[0])
           .filter((name) => name !== 'x')
-          .reduce<LegendItem[]>((res, item) => {
-            res.push({
-              id: item,
-              label: item,
-              checked: true,
-              color: axe2theme[item],
-            });
-
-            return res;
-          }, []),
+          .map((name) => ({ name, checked: true, opacity: false })),
       );
 
       const width = 500;
@@ -2348,7 +2339,7 @@ describe('d3 charts visual regression', () => {
       return (
         <>
           <Box>
-            <ChartLegend.Flex items={dataLegend} />
+            <ChartLegend items={dataLegend} />
           </Box>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
             <YAxis>

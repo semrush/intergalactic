@@ -1,6 +1,6 @@
-import { LegendFlex as Flex } from './LegendFlex/LegendFlex';
-import { LegendTable as Table } from './LegendTable/LegendTable';
+import { LegendFlex as ChartLegend } from './LegendFlex/LegendFlex';
+import { LegendTable as ChartLegendTable } from './LegendTable/LegendTable';
 
-const ChartLegend = { Flex, Table };
+export { ChartLegend, ChartLegendTable };
 
 export default ChartLegend;

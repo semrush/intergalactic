@@ -36,7 +36,7 @@ export default () => {
         id: item,
         label: item,
         checked: true,
-        color: `--intergalactic-chart-palette-order-${index + 1}`,
+        color: `chart-palette-order-${index + 1}`,
       });
 
       return res;
@@ -44,16 +44,16 @@ export default () => {
 
   return (
     <div>
-      <ChartLegend.Flex items={lines}>
-        <ChartLegend.Flex.LegendItem>
-          <ChartLegend.Flex.LegendItem.Shape style={{ background: 'transparent' }}>
+      <ChartLegend items={lines}>
+        <ChartLegend.LegendItem>
+          <ChartLegend.LegendItem.Shape style={{ background: 'transparent' }}>
             {(props) => {
               return <Shape {...props} />;
             }}
-          </ChartLegend.Flex.LegendItem.Shape>
-          <ChartLegend.Flex.LegendItem.Label />
-        </ChartLegend.Flex.LegendItem>
-      </ChartLegend.Flex>
+          </ChartLegend.LegendItem.Shape>
+          <ChartLegend.LegendItem.Label />
+        </ChartLegend.LegendItem>
+      </ChartLegend>
     </div>
   );
 };

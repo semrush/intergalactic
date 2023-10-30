@@ -71,7 +71,7 @@ export { default as RadialTree } from './RadialTree';
 export * from './RadialTree';
 
 // @ts-ignore
-export { default as ChartLegend } from './component/ChartLegend';
+export { ChartLegend, ChartLegendTable } from './component/ChartLegend';
 
 // @ts-ignore
 export * from './component/ChartLegend/LegendFlex/LegendFlex.type';

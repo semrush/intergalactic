@@ -88,16 +88,14 @@ const ChartLegend = (props: ChartLProps) => {
   const [lines, setLines] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .reduce<LegendItem[]>((res, item, index) => {
-        res.push({
+      .map((item, index) => {
+        return {
           id: item,
           label: item,
           checked: true,
-          color: `--intergalactic-chart-palette-order-${index + 1}`,
-        });
-
-        return res;
-      }, []),
+          color: `chart-palette-order-${index + 1}`,
+        };
+      }),
   );
 
   React.useEffect(() => {
@@ -149,7 +147,7 @@ const ChartLegend = (props: ChartLProps) => {
 
   return (
     <div>
-      <ChartL.Flex
+      <ChartL
         withTrend={withTrend}
         trendLabel={withTrend ? 'Trend' : undefined}
         direction={direction}
