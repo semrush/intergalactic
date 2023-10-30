@@ -7,9 +7,11 @@ import { sideBarConfig } from './sidebarConfig';
 import { buildHooks } from './buildHooks';
 import { algoliaConfig } from '../../algoliaConfig';
 import { figmaIcon } from './figma-icon';
+import { resolve as resolvePath } from 'path';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  outDir: resolvePath(__dirname, 'dist/intergalactic/'),
   title: 'Intergalactic',
   description: 'Design system',
   markdown: {

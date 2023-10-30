@@ -149,8 +149,7 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
   const sitemap = new SitemapStream({
     hostname: 'https://developer.semrush.com/intergalactic/',
   });
-  await fs.mkdir(resolvePath(outDir, 'intergalactic'), { recursive: true });
-  const writeStream = createWriteStream(resolvePath(outDir, 'intergalactic/sitemap.xml'));
+  const writeStream = createWriteStream(resolvePath(outDir, 'sitemap.xml'));
   sitemap.pipe(writeStream);
   sitemapLinks.forEach((link) => sitemap.write(link));
   sitemap.end();
