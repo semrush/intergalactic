@@ -11,7 +11,7 @@ The DataTable component is needed to simplify the construction of tabular data. 
 To build a table, we must provide columns with titles `<DataTable.Column name={name}/>` and data `data={data}`.
 
 ::: tip
-`<DataTable.Column/>` must be a child component of `<DataTable.Head/>`
+`<DataTable.Column/>` must be a child component of `<DataTable.Head/>`.
 :::
 
 ::: sandbox
@@ -185,7 +185,7 @@ const Demo = () => {
         <DataTable.Column name='keyword'>
           <Tooltip title="Jesus Christ, Joe, fucking forget about it. I'm Mr. Pink. Let's move on.">
             <Text noWrap>
-              Keyword <Text color='text-secondary'>(1 – 100)</Text>
+              Keyword <Text color='text-secondary'>(1 - 100)</Text>
             </Text>
           </Tooltip>
         </DataTable.Column>

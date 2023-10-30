@@ -1,8 +1,7 @@
 import { createWriteStream } from 'fs';
-import { resolve } from 'path';
+import { resolve as resolvePath } from 'path';
 import { SitemapStream } from 'sitemap';
 import { UserConfig, DefaultTheme } from 'vitepress';
-import { resolve as resolvePath } from 'path';
 import fs from 'fs/promises';
 import algoliasearch from 'algoliasearch';
 import parseMarkdownMetadata from 'parse-md';
@@ -150,7 +149,8 @@ const buildEnd: UserConfig<DefaultTheme.Config>['buildEnd'] = async ({ outDir })
   const sitemap = new SitemapStream({
     hostname: 'https://developer.semrush.com/intergalactic/',
   });
-  const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'));
+  await fs.mkdir(resolvePath(outDir, 'intergalactic'), { recursive: true });
+  const writeStream = createWriteStream(resolvePath(outDir, 'intergalactic/sitemap.xml'));
   sitemap.pipe(writeStream);
   sitemapLinks.forEach((link) => sitemap.write(link));
   sitemap.end();

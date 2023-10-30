@@ -11,7 +11,7 @@ tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog
 
 ## Table with an accordion
 
-Example of a table with an [accordion](/components/accordion/accordion) 😎
+Example of a table with an [accordion](/components/accordion/accordion) :sunglasses:.
 
 ::: sandbox
 
@@ -198,7 +198,7 @@ const Demo = () => {
               <Table.CellHead width='200'>
                 <Tooltip title='Lorem ipsum'>
                   <span>
-                    Keyword <Text color='text-secondary'>(1 – 100)</Text>
+                    Keyword <Text color='text-secondary'>(1 - 100)</Text>
                   </span>
                 </Tooltip>
               </Table.CellHead>
@@ -378,7 +378,7 @@ const Demo = () => (
         <Table.CellHead>
           <Tooltip title='Lorem ipsum'>
             <span>
-              Keyword <Text color='text-secondary'>(1 – 100)</Text>
+              Keyword <Text color='text-secondary'>(1 - 100)</Text>
             </span>
           </Tooltip>
         </Table.CellHead>
