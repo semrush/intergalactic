@@ -11,6 +11,7 @@ import { resolve as resolvePath } from 'path';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/intergalactic/',
   outDir: resolvePath(__dirname, 'dist/intergalactic/'),
   title: 'Intergalactic',
   description: 'Design system',
