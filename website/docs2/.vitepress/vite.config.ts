@@ -10,6 +10,7 @@ import { unpluginIllustrations } from './unplugins/unplugin-illustrations';
 import { unpluginCrutches } from './unplugins/unplugin-intergalactic-crutches';
 
 export const viteConfig = defineConfig({
+  base: '/intergalactic/',
   plugins: [
     pluginReact(),
     createUnplugin<{}>(() => ({
