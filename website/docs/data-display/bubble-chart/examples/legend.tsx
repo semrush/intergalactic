@@ -4,7 +4,6 @@ import {
   Bubble,
   XAxis,
   YAxis,
-  LegendItem,
   ChartLegend,
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';
@@ -27,20 +26,18 @@ export default () => {
     .range([height - MARGIN, MARGIN])
     .domain([0, 10]);
 
-  const [legendItems, setLegendItems] = React.useState(
-    data.map((item, index) => {
-      return {
-        id: index.toString(),
-        label: `Round item (${item.label}) [${index}]`,
-        checked: true,
-        color: item.color,
-      };
-    }),
-  );
+  const legendItems = data.map((item, index) => {
+    return {
+      id: index.toString(),
+      label: `Round item (${item.label}) [${index}]`,
+      checked: true,
+      color: item.color,
+    };
+  });
 
   return (
     <Flex direction='column'>
-      <ChartLegend.Flex dataHints={dataHints} items={legendItems} shape={'Circle'} />
+      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Circle'} />
       <Plot
         data={data}
         scale={[xScale, yScale]}

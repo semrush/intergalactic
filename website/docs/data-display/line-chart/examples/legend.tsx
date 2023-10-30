@@ -69,7 +69,7 @@ export default () => {
         </Card.Title>
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
-        <ChartLegend.Flex
+        <ChartLegend
           dataHints={dataHints}
           items={legendItems}
           onChangeVisibleItem={handleChangeVisible}

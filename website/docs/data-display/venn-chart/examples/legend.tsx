@@ -45,7 +45,7 @@ const legendItems = [
 export default () => {
   return (
     <>
-      <ChartLegend.Flex items={legendItems} shape={'Line'} />
+      <ChartLegend items={legendItems} shape={'Line'} />
       <Plot height={300} width={400} data={data}>
         <Venn>
           <Venn.Circle dataKey='G' name='Good' />

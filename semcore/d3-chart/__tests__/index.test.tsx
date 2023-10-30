@@ -2348,7 +2348,7 @@ describe('d3 charts visual regression', () => {
       return (
         <>
           <Box>
-            <ChartLegend.Flex items={dataLegend} />
+            <ChartLegend items={dataLegend} />
           </Box>
           <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
             <YAxis>

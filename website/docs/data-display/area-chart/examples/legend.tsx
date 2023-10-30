@@ -5,7 +5,6 @@ import {
   YAxis,
   minMax,
   Area,
-  LegendItem,
   interpolateValue,
   ChartLegend,
   makeDataHintsContainer,
@@ -51,8 +50,6 @@ export default () => {
       }),
   );
 
-  const [highlightedLine, setHighlightedLine] = React.useState(-1);
-
   const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
     setLegendItems((prevItems) => {
       return prevItems.map((item) => {
@@ -65,21 +62,12 @@ export default () => {
     });
   }, []);
 
-  const handleMouseEnter = React.useCallback((id: string) => {
-    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
-  }, []);
-  const handleMouseLeave = React.useCallback(() => {
-    setHighlightedLine(-1);
-  }, []);
-
   return (
     <>
-      <ChartLegend.Flex
+      <ChartLegend
         dataHints={dataHints}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}
-        onMouseEnterItem={handleMouseEnter}
-        onMouseLeaveItem={handleMouseLeave}
       />
       <Plot
         data={data}

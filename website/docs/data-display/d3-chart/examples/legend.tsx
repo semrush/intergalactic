@@ -58,7 +58,7 @@ export default () => {
   return (
     <>
       <Box>
-        <ChartLegend.Flex
+        <ChartLegend
           items={legendItems}
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}

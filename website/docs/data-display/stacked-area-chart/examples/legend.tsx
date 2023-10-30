@@ -54,7 +54,7 @@ export default () => {
 
   return (
     <>
-      <ChartLegend.Flex dataHints={dataHints} items={legendItems} />
+      <ChartLegend dataHints={dataHints} items={legendItems} shape={'Square'} />
       <Plot
         data={data}
         scale={[xScale, yScale]}

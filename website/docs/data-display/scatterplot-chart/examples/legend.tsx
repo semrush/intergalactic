@@ -43,7 +43,7 @@ export default () => {
 
   return (
     <>
-      <ChartLegend.Flex items={legendItems} shape={'Square'} />
+      <ChartLegend items={legendItems} shape={'Square'} />
       <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
         <YAxis>
           <YAxis.Ticks />

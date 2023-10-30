@@ -78,7 +78,7 @@ export default () => {
         </Card.Title>
       </Card.Header>
       <Card.Body tag={Flex} direction='column'>
-        <ChartLegend.Flex
+        <ChartLegend
           items={legendItems}
           onChangeVisibleItem={handleChangeVisible}
           onMouseEnterItem={handleMouseEnter}

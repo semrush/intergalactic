@@ -73,7 +73,7 @@ export default () => {
 
   return (
     <>
-      <ChartLegend.Flex
+      <ChartLegend
         dataHints={dataHints}
         items={legendItems}
         onChangeVisibleItem={handleChangeVisible}

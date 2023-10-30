@@ -93,7 +93,7 @@ const ChartLegend = (props: ChartLProps) => {
           id: item,
           label: item,
           checked: true,
-          color: `--intergalactic-chart-palette-order-${index + 1}`,
+          color: `chart-palette-order-${index + 1}`,
         });
 
         return res;
@@ -149,7 +149,7 @@ const ChartLegend = (props: ChartLProps) => {
 
   return (
     <div>
-      <ChartL.Flex
+      <ChartL
         withTrend={withTrend}
         trendLabel={withTrend ? 'Trend' : undefined}
         direction={direction}

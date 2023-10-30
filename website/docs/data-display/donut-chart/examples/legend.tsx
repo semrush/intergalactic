@@ -49,7 +49,7 @@ export default () => {
         </Card.Title>
       </Card.Header>
       <Card.Body tag={Flex} direction='row'>
-        <ChartLegend.Flex
+        <ChartLegend
           direction={'column'}
           wMin={100}
           items={legendItems}
