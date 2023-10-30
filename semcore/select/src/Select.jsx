@@ -346,7 +346,7 @@ function Checkbox(props) {
       className={cn(className, componentProps.className) || undefined}
       style={{ ...style, ...componentProps.style }}
       role='checkbox'
-      tabIndex={0}
+      tabIndex={-1}
       aria-checked={selected}
     />
   );
