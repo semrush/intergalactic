@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.17.0] - 2023-10-27
+
+### Added
+
+* `ChartLegend` component.
+
 ## [3.16.0] - 2023-10-26
 
 ### Added

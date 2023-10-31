@@ -18,3 +18,7 @@ If required, you can assign your own color to every circle in Bubble chart. For 
 @## Data loading
 
 @example skeleton-d3
+
+@## Legend
+
+@example legend

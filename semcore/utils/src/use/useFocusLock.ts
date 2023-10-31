@@ -302,5 +302,10 @@ export const useFocusLock = (
   return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
 };
 
+export const hasFocusableIn = (element: HTMLElement): boolean => {
+  return (
+    Array.from(element.children).flatMap((node) => getFocusableIn(node as HTMLElement)).length > 0
+  );
+};
 export const isFocusInside = focusInside;
 export const setFocus = safeMoveFocusInside as (topNode: HTMLElement, lastNode?: Element) => void;

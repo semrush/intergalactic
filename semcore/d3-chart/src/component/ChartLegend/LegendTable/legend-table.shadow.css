@@ -1,0 +1,16 @@
+SLegendTable[columns-count] {
+  display: grid;
+  grid-template-columns: repeat(var(--columns-count), auto);
+  align-items: center;
+  height: fit-content;
+  grid-column-gap: 18px;
+  grid-row-gap: 8px;
+}
+
+SColumnItem[size='l'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+}
+
+SColumnItem[size='m'] {
+  font-size: var(--intergalactic-fs-200, 14px);
+}

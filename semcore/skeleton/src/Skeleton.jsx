@@ -47,6 +47,7 @@ class SkeletonSVG extends Component {
 
   static defaultProps = {
     theme: 'invert',
+    duration: 2000,
   };
 
   setContext() {
@@ -57,11 +58,17 @@ class SkeletonSVG extends Component {
   }
 
   render() {
-    const { Children, styles, uid, theme } = this.asProps;
+    const { Children, styles, uid, theme, duration } = this.asProps;
     const SSkeletonSVG = Root;
 
     return sstyled(styles)(
-      <SSkeletonSVG render={Skeleton} tag='svg' preserveAspectRatio='none' theme={theme}>
+      <SSkeletonSVG
+        render={Skeleton}
+        tag='svg'
+        preserveAspectRatio='none'
+        theme={theme}
+        durationAnim={`${duration}ms`}
+      >
         <defs>
           <mask id={uid}>
             <Children />
