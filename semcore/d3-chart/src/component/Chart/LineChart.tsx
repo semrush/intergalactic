@@ -78,11 +78,8 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
         {({ xIndex }: any) => {
-          const dataItem: any = data[xIndex];
-
-          const total = dataDefinitions.reduce((sum, legendItem) => {
-            return sum + dataItem[legendItem.id];
-          }, 0);
+          const dataItem = data[xIndex];
+          const total = this.totalValue(dataItem);
 
           return {
             children: (

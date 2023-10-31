@@ -151,47 +151,39 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
         y={invertAxis ? groupKey : undefined}
         wMin={100}
       >
-        {
-          // @ts-ignore
-          ({ xIndex, yIndex }) => {
-            const index = invertAxis ? yIndex : xIndex;
-            const dataItem: any = data[index];
+        {({ xIndex, yIndex }: any) => {
+          const index = invertAxis ? yIndex : xIndex;
+          const dataItem = data[index];
+          const total = this.totalValue(dataItem);
 
-            const total = dataDefinitions.reduce((sum, legendItem) => {
-              return sum + dataItem[legendItem.id];
-            }, 0);
+          return {
+            children: (
+              <>
+                <HoverRect.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverRect.Tooltip.Title>
 
-            return {
-              children: (
-                <>
-                  <HoverRect.Tooltip.Title>
-                    {dataItem[groupKey]?.toString()}
-                  </HoverRect.Tooltip.Title>
+                {dataDefinitions.map((item) => {
+                  return (
+                    item.checked && (
+                      <Flex justifyContent='space-between' key={item.id}>
+                        <HoverRect.Tooltip.Dot mr={4} color={item.color}>
+                          {item.label}
+                        </HoverRect.Tooltip.Dot>
+                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                      </Flex>
+                    )
+                  );
+                })}
 
-                  {dataDefinitions.map((item) => {
-                    return (
-                      item.checked && (
-                        <Flex justifyContent='space-between' key={item.id}>
-                          <HoverRect.Tooltip.Dot mr={4} color={item.color}>
-                            {item.label}
-                          </HoverRect.Tooltip.Dot>
-                          <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
-                        </Flex>
-                      )
-                    );
-                  })}
-
-                  {showTotalInTooltip === true && (
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Box mr={4}>Total</Box>
-                      <Text bold>{total}</Text>
-                    </Flex>
-                  )}
-                </>
-              ),
-            };
-          }
-        }
+                {showTotalInTooltip === true && (
+                  <Flex mt={2} justifyContent='space-between'>
+                    <Box mr={4}>Total</Box>
+                    <Text bold>{total}</Text>
+                  </Flex>
+                )}
+              </>
+            ),
+          };
+        }}
       </HoverRect.Tooltip>
     );
   }

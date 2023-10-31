@@ -96,46 +96,38 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
-        {
-          // @ts-ignore
-          ({ xIndex }) => {
-            const dataItem: any = data[xIndex];
+        {({ xIndex }: any) => {
+          const dataItem = data[xIndex];
+          const total = this.totalValue(dataItem);
 
-            const total = dataDefinitions.reduce((sum, legendItem) => {
-              return sum + dataItem[legendItem.id];
-            }, 0);
+          return {
+            children: (
+              <>
+                <HoverLine.Tooltip.Title>{dataItem[groupKey]?.toString()}</HoverLine.Tooltip.Title>
 
-            return {
-              children: (
-                <>
-                  <HoverLine.Tooltip.Title>
-                    {dataItem[groupKey]?.toString()}
-                  </HoverLine.Tooltip.Title>
+                {dataDefinitions.map((item) => {
+                  return (
+                    item.checked && (
+                      <Flex justifyContent='space-between' key={item.id}>
+                        <HoverLine.Tooltip.Dot mr={4} color={item.color}>
+                          {item.label}
+                        </HoverLine.Tooltip.Dot>
+                        <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
+                      </Flex>
+                    )
+                  );
+                })}
 
-                  {dataDefinitions.map((item) => {
-                    return (
-                      item.checked && (
-                        <Flex justifyContent='space-between' key={item.id}>
-                          <HoverLine.Tooltip.Dot mr={4} color={item.color}>
-                            {item.label}
-                          </HoverLine.Tooltip.Dot>
-                          <Text bold>{this.tooltipValueFormatter(dataItem[item.id])}</Text>
-                        </Flex>
-                      )
-                    );
-                  })}
-
-                  {showTotalInTooltip === true && (
-                    <Flex mt={2} justifyContent='space-between'>
-                      <Box mr={4}>Total</Box>
-                      <Text bold>{total}</Text>
-                    </Flex>
-                  )}
-                </>
-              ),
-            };
-          }
-        }
+                {showTotalInTooltip === true && (
+                  <Flex mt={2} justifyContent='space-between'>
+                    <Box mr={4}>Total</Box>
+                    <Text bold>{total}</Text>
+                  </Flex>
+                )}
+              </>
+            ),
+          };
+        }}
       </HoverLine.Tooltip>
     );
   }

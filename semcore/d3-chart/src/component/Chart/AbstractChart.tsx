@@ -222,6 +222,26 @@ export abstract class AbstractChart<
     return max;
   }
 
+  protected totalValue(data: ObjectData): number {
+    const { dataDefinitions } = this.state;
+
+    const total = dataDefinitions.reduce((sum, legendItem) => {
+      const item = data[legendItem.id];
+
+      if (typeof item === 'number') {
+        return sum + item;
+      }
+
+      if (item instanceof Date && !Number.isNaN(item.getMilliseconds())) {
+        return sum + item.getMilliseconds();
+      }
+
+      return sum;
+    }, 0);
+
+    return total;
+  }
+
   protected setHighlightedLine(index: number) {
     this.setState({ highlightedLine: index });
   }
@@ -253,7 +273,7 @@ export abstract class AbstractChart<
   }
 
   protected resolveColor(id: string, index: number) {
-    return this.props.colorMap?.[id] ?? `--intergalactic-chart-palette-order-${index + 1}`;
+    return this.props.colorMap?.[id] ?? `chart-palette-order-${index + 1}`;
   }
 
   protected tooltipValueFormatter(
@@ -265,7 +285,15 @@ export abstract class AbstractChart<
       return tooltipValueFormatter(value);
     }
 
-    return value !== undefined ? value.toString() : 'n/a';
+    if (value === undefined || value === interpolateValue) {
+      return 'n/a';
+    }
+
+    if (value instanceof Date) {
+      return value.toDateString();
+    }
+
+    return value.toString();
   }
 
   protected defaultLegendProps(): Partial<BaseLegendProps> {
@@ -277,9 +305,10 @@ export abstract class AbstractChart<
   protected renderLegend() {
     const { legendProps, direction, hideLegend } = this.asProps;
 
-    if (hideLegend ||
-        // we hide Legend for one item on chart except not manually set to show.
-        (this.dataKeys.length === 1 && hideLegend !== false)
+    if (
+      hideLegend ||
+      // we hide Legend for one item on chart except not manually set to show.
+      (this.dataKeys.length === 1 && hideLegend !== false)
     ) {
       return null;
     }
@@ -316,7 +345,7 @@ export abstract class AbstractChart<
       const flexLegendProps: LegendFlexProps = {
         ...commonLegendProps,
         withTrend: true,
-        trendLabel: lProps.trendLabel ?? 'Trend',
+        trendLabel: lProps.trendLabel,
         trendIsVisible: withTrend,
         onTrendIsVisibleChange: this.handleWithTrendChange,
       };

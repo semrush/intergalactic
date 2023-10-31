@@ -52,8 +52,6 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
       plotWidth,
       invertAxis,
       data,
-      groupKey,
-      type,
     } = this.asProps;
 
     let max: number;
@@ -149,11 +147,8 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
       >
         {({ xIndex, yIndex }: any) => {
           const index = invertAxis ? yIndex : xIndex;
-          const dataItem: any = data[index];
-
-          const total = dataDefinitions.reduce((sum, legendItem) => {
-            return sum + dataItem[legendItem.id];
-          }, 0);
+          const dataItem = data[index];
+          const total = this.totalValue(dataItem);
 
           return {
             children: (

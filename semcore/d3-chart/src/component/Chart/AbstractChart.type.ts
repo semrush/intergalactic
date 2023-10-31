@@ -128,7 +128,7 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
          *  By default (if hideLegend don't set), for one data item on chart,
          *  Legend component will be hide, and show for more then 1 data item.
          *  If set `false` - Legend component will show always.
-        */
+         */
         hideLegend?: false;
         /**
          * Props for Legend

@@ -4,7 +4,7 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 // @ts-ignore
 import { chartPlayground } from '@components/ChartPlayground';
 import { Chart } from '@semcore/d3-chart';
-import resolveColor from '@semcore/ui/utils/lib/color';
+import { HistogramChartProps } from '@semcore/d3-chart/src/component/Chart/HistogramChart.type';
 
 const data = [...Array(5).keys()].map((d, i) => ({
   x: i,
@@ -27,24 +27,27 @@ const Preview = (preview) => {
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
-  return (
-    // @ts-ignore
-    <Chart.Histogram
-      groupKey={'x'}
-      hideXAxis={hideXAxis}
-      hideYAxis={hideYAxis}
-      showTotalInTooltip={showTotalInTooltip}
-      plotWidth={500}
-      plotHeight={200}
-      legendProps={legendProps}
-      direction={direction}
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-      hideLegend={hideLegend}
-      hideTooltip={hideTooltip}
-      data={data}
-    />
-  );
+  const chartProps: HistogramChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 500,
+    plotHeight: 200,
+    showTotalInTooltip,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Histogram {...chartProps} />;
 };
 
 export default PlaygroundGeneration(Preview);

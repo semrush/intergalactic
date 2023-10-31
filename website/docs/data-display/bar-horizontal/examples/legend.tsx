@@ -37,7 +37,7 @@ export default () => {
           id: item,
           label: `Bar ${item}`,
           checked: true,
-          color: `--intergalactic-chart-palette-order-${index + 1}`,
+          color: `chart-palette-order-${index + 1}`,
         };
       }),
   );

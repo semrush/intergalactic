@@ -69,7 +69,7 @@ export type LineAreaProps = Omit<LineProps, 'transparent'> & {
   y1: string;
 
   /**
-   * Optional dara
+   * Optional data for render area
    */
   area?: Array<{ [key: string]: number }>;
 };
