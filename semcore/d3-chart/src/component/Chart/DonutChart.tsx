@@ -1,12 +1,11 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ChartMap } from './AbstractChart.type';
 import { scaleLinear } from 'd3-scale';
 // @ts-ignore
 import { Donut } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
-import { DonutChartData, DonutChartProps } from './DonutChart.type';
+import { DonutChartData, DonutChartProps, DonutChartType } from './DonutChart.type';
 import { Flex } from '@semcore/flex-box';
 
 class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps> {
@@ -95,4 +94,4 @@ class DonutChartComponent extends AbstractChart<DonutChartData, DonutChartProps>
   }
 }
 
-export const DonutChart: ChartMap['Donut'] = createComponent(DonutChartComponent);
+export const DonutChart: DonutChartType = createComponent(DonutChartComponent);

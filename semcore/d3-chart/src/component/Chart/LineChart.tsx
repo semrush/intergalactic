@@ -1,7 +1,6 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ChartMap } from './AbstractChart.type';
-import { LineChartData, LineChartProps } from './LineChart.type';
+import { LineChartData, LineChartProps, LineChartType } from './LineChart.type';
 import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Line, minMax, HoverLine } from '../..';
@@ -23,7 +22,7 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
     const range = [marginY, plotWidth - this.plotPadding];
     const domain = minMax(data, groupKey);
 
-    if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
+    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       return scaleTime(domain, range);
     }
 
@@ -118,4 +117,4 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
   }
 }
 
-export const LineChart: ChartMap['Line'] = createComponent(LineChartComponent);
+export const LineChart: LineChartType = createComponent(LineChartComponent);

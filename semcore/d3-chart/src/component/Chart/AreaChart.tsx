@@ -1,11 +1,10 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ChartMap } from './AbstractChart.type';
 import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Area, minMax, HoverLine, StackedArea } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { AreaChartData, AreaChartProps } from './AreaChart.type';
+import { AreaChartData, AreaChartProps, AreaChartType } from './AreaChart.type';
 import { Flex, Box } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
@@ -23,7 +22,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
     const range = [marginY, plotWidth - this.plotPadding];
     const domain = minMax(data, groupKey);
 
-    if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
+    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       return scaleTime(domain, range);
     }
 
@@ -142,4 +141,4 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
   }
 }
 
-export const AreaChart: ChartMap['Area'] = createComponent(AreaChartComponent);
+export const AreaChart: AreaChartType = createComponent(AreaChartComponent);

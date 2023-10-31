@@ -1,12 +1,12 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { BaseChartProps, ChartMap } from './AbstractChart.type';
+import { BaseChartProps } from './AbstractChart.type';
 import { scaleLinear } from 'd3-scale';
 // @ts-ignore
 import { Venn } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { Text } from '@semcore/typography';
-import { VennChartData, VennChartProps } from './VennChart.type';
+import { VennChartData, VennChartProps, VennChartType } from './VennChart.type';
 import { LegendItem } from '../ChartLegend/LegendItem/LegendItem.type';
 
 class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
@@ -136,4 +136,4 @@ class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
   }
 }
 
-export const VennChart: ChartMap['Venn'] = createComponent(VennChartComponent);
+export const VennChart: VennChartType = createComponent(VennChartComponent);

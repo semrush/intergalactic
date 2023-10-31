@@ -1,11 +1,10 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ChartMap } from './AbstractChart.type';
 import { scaleBand, scaleLinear, ScaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { Bar, minMax, HoverRect, StackBar, BarProps } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { HistogramChartData, HistogramChartProps } from './HistogramChart.type';
+import { HistogramChartData, HistogramChartProps, HistogramChartType } from './HistogramChart.type';
 import { Box, Flex } from '@semcore/flex-box';
 import { Text } from '@semcore/typography';
 
@@ -33,7 +32,7 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
       ? [plotHeight - marginX, this.plotPadding]
       : [marginY, plotWidth - this.plotPadding];
 
-    if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
+    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
 
       return scaleTime(domain, range);
@@ -62,7 +61,7 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
     if (this.isStack) {
       max = data.reduce((max, item) => {
         const barSum = Object.values(item).reduce<number>((sum, val) => {
-          if (val instanceof Date && !isNaN(val.getMilliseconds())) {
+          if (val instanceof Date && !Number.isNaN(val.getMilliseconds())) {
             return sum + val.getMilliseconds();
           }
 
@@ -189,4 +188,4 @@ class HistogramChartComponent extends AbstractChart<HistogramChartData, Histogra
   }
 }
 
-export const HistogramChart: ChartMap['Histogram'] = createComponent(HistogramChartComponent);
+export const HistogramChart: HistogramChartType = createComponent(HistogramChartComponent);

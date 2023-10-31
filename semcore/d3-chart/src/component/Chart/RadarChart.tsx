@@ -2,10 +2,9 @@ import React from 'react';
 import createComponent from '@semcore/core';
 import { scaleLinear, ScaleLinear } from 'd3-scale';
 import { AbstractChart } from './AbstractChart';
-import { RadarChartData, RadarChartProps } from './RadarChart.type';
+import { RadarChartData, RadarChartProps, RadarChartType } from './RadarChart.type';
 // @ts-ignore
 import { Radar } from '../..';
-import { ChartMap } from './AbstractChart.type';
 
 class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps> {
   protected renderChart(): React.ReactNode {
@@ -96,4 +95,4 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
   }
 }
 
-export const RadarChart: ChartMap['Radar'] = createComponent(RadarChartComponent);
+export const RadarChart: RadarChartType = createComponent(RadarChartComponent);

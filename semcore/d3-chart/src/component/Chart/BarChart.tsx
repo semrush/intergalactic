@@ -1,10 +1,10 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { BaseLegendProps, ChartMap } from './AbstractChart.type';
-import { BarChartData, BarChartProps } from './BarChart.type';
+import { BaseLegendProps } from './AbstractChart.type';
+import { BarChartData, BarChartProps, BarChartType } from './BarChart.type';
 import { scaleBand, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
-import { Bar, minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
+import { minMax, GroupBar, HoverRect, StackBar, Line } from '../..';
 import { AbstractChart } from './AbstractChart';
 import { BarProps } from '../../types';
 import { Box, Flex } from '@semcore/flex-box';
@@ -212,7 +212,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
       ? [plotHeight - marginX, this.plotPadding]
       : [marginY, plotWidth - this.plotPadding];
 
-    if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
+    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       const domain = minMax(data, groupKey);
 
       return scaleTime(domain, range);
@@ -224,16 +224,7 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
   }
 
   private get valueScale() {
-    const {
-      marginY = 40,
-      marginX = 24,
-      plotWidth,
-      plotHeight,
-      invertAxis,
-      data,
-      groupKey,
-      type,
-    } = this.asProps;
+    const { marginY = 40, marginX = 24, plotWidth, plotHeight, invertAxis, type } = this.asProps;
 
     const max = type === 'stack' ? super.maxStackedValue : Math.max(...super.flatValues);
 
@@ -247,4 +238,4 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
   }
 }
 
-export const BarChart: ChartMap['Bar'] = createComponent(BarChartComponent);
+export const BarChart: BarChartType = createComponent(BarChartComponent);

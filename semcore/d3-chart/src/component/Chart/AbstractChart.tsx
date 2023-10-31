@@ -6,7 +6,7 @@ import React from 'react';
 import { Component, Root, sstyled } from '@semcore/core';
 import { BaseChartProps, BaseLegendProps, ListData, ObjectData } from './AbstractChart.type';
 import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
-import ChartLegend from '../ChartLegend';
+import ChartLegend, { ChartLegendTable } from '../ChartLegend';
 import { Flex } from '@semcore/flex-box';
 // @ts-ignore
 import { Plot, XAxis, YAxis } from '../..';
@@ -205,7 +205,7 @@ export abstract class AbstractChart<
           return sum + val;
         }
 
-        if (val instanceof Date && !isNaN(val.getMilliseconds())) {
+        if (val instanceof Date && !Number.isNaN(val.getMilliseconds())) {
           return sum + val.getMilliseconds();
         }
 
@@ -306,7 +306,7 @@ export abstract class AbstractChart<
     };
 
     if (lProps.legendType === 'Table') {
-      return <ChartLegend.Table {...commonLegendProps} />;
+      return <ChartLegendTable {...commonLegendProps} />;
     }
 
     if ('withTrend' in lProps) {
@@ -318,10 +318,10 @@ export abstract class AbstractChart<
         onTrendIsVisibleChange: this.handleWithTrendChange,
       };
 
-      return <ChartLegend.Flex {...flexLegendProps} />;
+      return <ChartLegend {...flexLegendProps} />;
     }
 
-    return <ChartLegend.Flex {...commonLegendProps} />;
+    return <ChartLegend {...commonLegendProps} />;
   }
 
   protected renderAxis(): React.ReactNode {

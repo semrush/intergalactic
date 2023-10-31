@@ -3,16 +3,7 @@ import { FlexProps } from '@semcore/flex-box';
 import { LegendItemKey } from '../ChartLegend/LegendItem/LegendItem.type';
 import Icon from '@semcore/icon';
 import { BaseChartLegendProps } from '../ChartLegend/BaseLegend.type';
-import { LineChartType } from './LineChart.type';
-import { BarChartType } from './BarChart.type';
-import { HistogramChartType } from './HistogramChart.type';
-import { ScatterPlotChartType } from './ScatterPlotChart.type';
-import { AreaChartType } from './AreaChart.type';
-import { BubbleChartType } from './BubbleChart.type';
-import { DonutChartType } from './DonutChart.type';
-import { VennChartType } from './VennChart.type';
 import { TrendProps } from '../ChartLegend/LegendFlex/LegendFlex.type';
-import { RadarChartType } from './RadarChart.type';
 
 export type BaseLegendProps = BaseChartLegendProps & {
   /**
@@ -46,8 +37,8 @@ export type BaseLegendProps = BaseChartLegendProps & {
       }
   );
 
-export type ListData = Array<Record<string, unknown>>;
 export type ObjectData = Record<string, unknown>;
+export type ListData = ObjectData[];
 
 export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
   /**
@@ -166,15 +157,3 @@ type LegendDataMap<T extends 'Flex' | 'Table'> = Record<
     defaultChecked?: boolean;
   } & (T extends 'Table' ? { columns?: React.ReactNode[] } : { columns?: never })
 >;
-
-export type ChartMap = {
-  Line: LineChartType;
-  Bar: BarChartType;
-  Histogram: HistogramChartType;
-  ScatterPlot: ScatterPlotChartType;
-  Area: AreaChartType;
-  Bubble: BubbleChartType;
-  Donut: DonutChartType;
-  Venn: VennChartType;
-  Radar: RadarChartType;
-};

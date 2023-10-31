@@ -1,11 +1,14 @@
 import React from 'react';
 import createComponent from '@semcore/core';
-import { ChartMap } from './AbstractChart.type';
 import { ScaleLinear, scaleLinear, scaleTime } from 'd3-scale';
 // @ts-ignore
 import { minMax, ScatterPlot } from '../..';
 import { AbstractChart } from './AbstractChart';
-import { ScatterPlotChartData, ScatterPlotChartProps } from './ScatterPlotChart.type';
+import {
+  ScatterPlotChartData,
+  ScatterPlotChartProps,
+  ScatterPlotChartType,
+} from './ScatterPlotChart.type';
 import { Text } from '@semcore/typography';
 
 class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, ScatterPlotChartProps> {
@@ -31,7 +34,7 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
     const range = [marginY, plotWidth - this.plotPadding];
     const domain = minMax(data, groupKey);
 
-    if (testItem instanceof Date && !isNaN(testItem.getMilliseconds())) {
+    if (testItem instanceof Date && !Number.isNaN(testItem.getMilliseconds())) {
       return scaleTime([domain[0] * 0.8, domain[1] * 1.2], range);
     }
 
@@ -110,4 +113,4 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
   }
 }
 
-export const ScatterPlotChart: ChartMap['ScatterPlot'] = createComponent(ScatterPlotChartComponent);
+export const ScatterPlotChart: ScatterPlotChartType = createComponent(ScatterPlotChartComponent);
