@@ -2695,7 +2695,7 @@ importers:
         specifier: 3.9.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.16.0
+        specifier: 3.17.0
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 4.15.0
@@ -2827,7 +2827,7 @@ importers:
         specifier: 3.14.0
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../skeleton
       '@semcore/slider':
         specifier: 4.9.0

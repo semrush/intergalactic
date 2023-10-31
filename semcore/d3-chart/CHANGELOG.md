@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-* `ChartLegend` component.
+- `ChartLegend` component.
 
 ## [3.16.0] - 2023-10-26
 
