@@ -1,3 +1,9 @@
+## [15.32.0-prerelease.0] - 2023-10-31
+
+### @semcore/select
+
+- **Changed** Disabled switch between `Select.Option.Checkbox` by press `Tab` instead of Arrows.
+
 ## [15.31.0] - 2023-10-31
 
 ### @semcore/d3-chart
