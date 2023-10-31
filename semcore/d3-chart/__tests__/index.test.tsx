@@ -2322,7 +2322,12 @@ describe('d3 charts visual regression', () => {
       const [dataLegend, setDataLegend] = React.useState(
         Object.keys(data[0])
           .filter((name) => name !== 'x')
-          .map((name) => ({ name, checked: true, opacity: false })),
+          .map((item) => ({
+            id: item,
+            label: item,
+            checked: true,
+            color: axe2theme[item],
+          })),
       );
 
       const width = 500;
