@@ -277,7 +277,10 @@ export abstract class AbstractChart<
   protected renderLegend() {
     const { legendProps, direction, hideLegend } = this.asProps;
 
-    if (hideLegend) {
+    if (hideLegend ||
+        // we hide Legend for one item on chart except not manually set to show.
+        (this.dataKeys.length === 1 && hideLegend !== false)
+    ) {
       return null;
     }
 
