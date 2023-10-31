@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Disabled switch between `Select.Option.Checkbox` by press `Tab`.
+- Disabled switch between `Select.Option.Checkbox` by press `Tab` instead of Arrows.
 
 ## [4.15.0] - 2023-10-26
 
