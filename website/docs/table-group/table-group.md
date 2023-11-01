@@ -3,7 +3,6 @@ title: Table
 ---
 
 @page table-showcase
-@page table
 @page data-table
 @page table-old
 @page table-primary

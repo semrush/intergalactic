@@ -2,7 +2,7 @@
 title: Table controls
 ---
 
-> For all the main table styles and principles, see [Table](/table-group/table/).
+> For all the main table styles and principles, see [Table](/table-group/data-table/).
 
 Here we describe all the elements and controls that are important when working with our tables.
 
@@ -217,4 +217,4 @@ When scrolling a table, this row should be pinned to the table header. In this c
 
 Use no more than 3-5 actions, which are the most popular among actions on the table rows.
 
-> For all the main table styles and principles, see [Table](/table-group/table/).
+> For all the main table styles and principles, see [Table](/table-group/data-table/).

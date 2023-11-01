@@ -71,7 +71,7 @@ Use `--bg-primary-neutral-hover` token for background-color and `border: 1px das
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | [Accordion](/components/accordion/)       | ![](static/drag-accordion.png)                                                |
 | [Card](/components/card/)                 | ![](static/draggable-card.png) ![](static/drag-card.png)      |
-| [Table](/table-group/table/)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
+| [Table](/table-group/data-table/)              | ![](static/drag-table.png) ![](static/drag-table2.png)      |
 | [TabPanel](/components/tab-panel/)        | ![](static/drag-tabpanel.png)                                                  |
 | [Select/Multiselect](/components/select/) | ![](static/drag-default.png) ![](static/dragging.png) |
 

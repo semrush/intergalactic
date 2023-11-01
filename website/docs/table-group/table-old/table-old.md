@@ -1,5 +1,5 @@
 ---
-title: Table code and API
+title: Table (old))
 fileSource: table
 tabName: Example
 deprecated: true
