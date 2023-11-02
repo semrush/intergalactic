@@ -17,7 +17,7 @@ export default () => {
         <WidgetEmpty icon={getIconPath('combined-chart')}>
           <WidgetEmpty.Title>Set up your [Name Tool]</WidgetEmpty.Title>
           <WidgetEmpty.Description>
-            [Name Tool] allows you to get daily updates on positions in Google’s top 100 organic and
+            [Name Tool] allows you to get daily updates on positions in Google's top 100 organic and
             paid search results.
           </WidgetEmpty.Description>
           <Box mt={4}>

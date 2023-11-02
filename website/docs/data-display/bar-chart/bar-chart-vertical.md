@@ -10,7 +10,7 @@ fileSource: d3-chart
 - Time change shall be used when you need to focus on the value of each point, rather than on the trend. _For example, achieving a goal in a specific month, or increasing or decreasing the audience on a specific day._
 - Compare different categories with each other.
 
-> Important! Consider [horizontal bar chart](data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
+> Important! Consider [horizontal bar chart](/data-display/bar-horizontal/) for this task first. It is easier to fit the category names in the columns.
 
 ![](/data-display/bar-chart/static/example-2.png)
 

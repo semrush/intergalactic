@@ -19,7 +19,7 @@ export default function () {
         </Card.Description>
       </Card.Header>
       <Card.Body>
-        <Text size={100}>Your awesome card content ✨</Text>
+        <Text size={100}>Your awesome card content</Text>
       </Card.Body>
     </Card>
   );
