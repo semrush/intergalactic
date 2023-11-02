@@ -10,7 +10,7 @@ export default () => {
 
   return (
     <>
-      <ChartLegend.Flex items={legendItems} shape={'Square'} />
+      <ChartLegend items={legendItems} shape={'Square'} />
       <Plot data={data} width={width} height={height}>
         <Radar scale={scale}>
           <Radar.Axis dataKey='categories'>

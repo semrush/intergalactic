@@ -85,7 +85,7 @@ type ChartLProps = Omit<LegendFlexProps, 'items'> & {
 const ChartLegend = (props: ChartLProps) => {
   const { withTrend, direction, shape, size, additionLabel, count, withIcon } = props;
 
-  const [lines, setLines] = React.useState(
+  const [lines, setLines] = React.useState<LegendItem[]>(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
       .map((item, index) => {
