@@ -52,7 +52,7 @@ Add a tooltip on hover to truncated items to show the entire text string, or phr
 
 ### Long URL links
 
-Usually, long URL links are most common for tables and other widgets. Read the detailed information about long URL links in [Table](table-group//table-controls/#long_links_and_text).
+Usually, long URL links are most common for tables and other widgets. Read the detailed information about long URL links in [Table](/table-group/table-controls/#long_links_and_text).
 
 ![](static/ellipsis-end.png)
 

@@ -7,7 +7,6 @@ function ImageFromModal({ content, ...other }) {
     <Modal visible={!!content} {...other}>
       <div
         className={styles.imageContainer}
-        // biome-ignore lint/security/noDangerouslySetInnerHtml:
         dangerouslySetInnerHTML={{ __html: content }}
         role='img'
       />

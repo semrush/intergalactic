@@ -87,7 +87,7 @@ export type MergeGetters<G1 extends (...args: any) => any, G2 extends (...args: 
   props?: P,
 ) => Merge<ReturnType<G1>, ReturnType<G2>> & P;
 
-declare const Root: Root;
+const Root: Root = undefined as any;
 
 export { Root };
 

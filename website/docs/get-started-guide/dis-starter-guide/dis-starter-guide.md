@@ -8,10 +8,6 @@ Welcome to a series of quick and convenient guides to help you get started with 
 
 @embedded_video https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e
 
-<!-- ### Intergalactic Design System principles
-
-@embedded_video https://www.loom.com/share/0e14e413ea314afda211d3845cc845f2 -->
-
 @## How to contribute?
 
 If you're interested in contributing to the Intergalactic Design System, check out this video on how to get involved.
@@ -29,8 +25,6 @@ The core principles guiding the development of the Semrush interfaces are the fo
 1. The main purpose of the interface is to assist the user, and not to be clever or look cool.
 2. Less is more. Keep things simple, and don't overthink it.
 3. Data is more important than anything else in the interface.
-
-<!-- See [Principles](/core-principles/principles/) if you want to dive deeper and learn more about them. -->
 
 @## Design tokens
 

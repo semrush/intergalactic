@@ -21,14 +21,14 @@ export default () => {
         value={value}
         onChange={setValue}
         options={options}
-        placeholder='Select an option, sir 🧐'
+        placeholder='Select an option, sir'
         m='auto'
       />
       <Select
         defaultValue={initialValue}
         onChange={setValue}
         options={options}
-        placeholder='Select an option, sir 🧐'
+        placeholder='Select an option, sir'
         m='auto'
       />
     </Flex>
