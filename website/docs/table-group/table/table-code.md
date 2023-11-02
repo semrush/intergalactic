@@ -9,7 +9,7 @@ Our library has two components for tables:
 - `Table` component is the old one.
 - `DataTable` component is completely new and based on `CSS-flex` technology and doesn't use native tables.
 
-**We recommend you to use `DataTable` component 😉**
+**We recommend you to use `DataTable` component**
 
 @## Examples
 

@@ -13,7 +13,7 @@ const Demo = () => {
   const periods = [
     { children: 'Last 7 days', value: [past6days, new Date()] },
     { children: 'Last 14 days', value: [past13days, new Date()] },
-    { children: 'Last Year 🎄', value: [pastYear, new Date()] },
+    { children: 'Last Year', value: [pastYear, new Date()] },
   ];
   return (
     <Flex>

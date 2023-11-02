@@ -10,7 +10,7 @@ export default () => (
         <Tooltip.Trigger>
           <Link>Trigger</Link>
         </Tooltip.Trigger>
-        <Tooltip.Popper>Hello, stranger 😉</Tooltip.Popper>
+        <Tooltip.Popper>Hello, stranger</Tooltip.Popper>
       </Tooltip>
     </Box>
   </Flex>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { arc, pie } from 'd3-shape';
 import { interpolate } from 'd3-interpolate';
 import { transition } from 'd3-transition';

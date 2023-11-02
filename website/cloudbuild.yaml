@@ -5,11 +5,10 @@ substitutions:
 steps:
   - id: 'Build docker'
     name: gcr.io/cloud-builders/docker
-    args:
-      - build
-      - --tag=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-      - --file=website/Dockerfile
-      - .
+    entrypoint: 'bash'
+    args: ['-c', 'docker build --build-arg="ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY" --tag=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA --file=website/Dockerfile .']
+    env:
+      - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
   - id: 'Push docker'
     name: gcr.io/cloud-builders/docker
     args:
@@ -24,17 +23,6 @@ steps:
       - --image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
       - --region=$_DEPLOY_REGION
       - --labels=gcb-trigger-id=$_TRIGGER_ID
-  - id: 'Update search'
-    name: node:16
-    entrypoint: 'bash'
-    args:
-      - -c
-      - |
-        npm install --global pnpm
-        PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 pnpm install && pnpm run upload-search-index
-    dir: website
-    env:
-      - ALGOLIA_SECRET_KEY=$_ALGOLIA_SECRET_KEY
 images:
   - $_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
 timeout: 3600s
