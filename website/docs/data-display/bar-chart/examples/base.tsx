@@ -2,15 +2,7 @@ import React from 'react';
 import { Chart } from '@semcore/ui/d3-chart';
 
 export default () => {
-  return (
-    <Chart.Bar
-      groupKey={'category'}
-      data={data}
-      plotWidth={500}
-      plotHeight={300}
-      hideLegend={true}
-    />
-  );
+  return <Chart.Bar groupKey={'category'} data={data} plotWidth={500} plotHeight={300} />;
 };
 
 const data = Array(5)

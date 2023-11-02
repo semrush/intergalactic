@@ -8,7 +8,6 @@ export default () => {
       data={data}
       plotWidth={500}
       plotHeight={300}
-      hideLegend={true}
       invertAxis={true}
     />
   );
