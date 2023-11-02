@@ -46,6 +46,7 @@ describe('Playground sources resolving', () => {
           '!!raw-loader!@semcore',
           '!css-variables-loader!@semcore',
           '@components/PlaygroundGeneration',
+          '@components/ChartPlayground',
           '@navigation',
           '@static',
           '@components/Color',
