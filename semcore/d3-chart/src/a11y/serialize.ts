@@ -200,7 +200,7 @@ export const serialize = (
       const mainSummary: string = intl.formatMessage(
         { id: 'time-series-general-trend' },
         {
-          dataKey: entitiesCount !== 1 ? dataKey : '',
+          dataKey: entitiesCount !== 1 ? primaryTrend.label ?? dataKey : '',
           trend: intl.formatMessage({ id: `trend-${primaryTrend.change.strength}` }),
           from: intl.formatNumber(primaryTrend.change.from),
           to: intl.formatNumber(primaryTrend.change.to),

@@ -12,6 +12,10 @@ export default () => (
           <Select.Option.Checkbox />
           I'm option-checkbox
         </Select.Option>
+        <Select.Option value={3} disabled>
+          <Select.Option.Checkbox />
+          I'm disabled option-checkbox
+        </Select.Option>
         <Select.OptionTitle>I'm title</Select.OptionTitle>
         <Select.OptionHint>I'm hint</Select.OptionHint>
       </Select.Menu>

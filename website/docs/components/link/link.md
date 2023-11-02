@@ -12,10 +12,13 @@ tabName: Design
 
 @## Appearance
 
+**Default link:** An accent control that links to another web page.
+
 ![](static/default-link.png)
 
-- **Default link:** An accent control that links to another web page.
-- **Custom link:** A link with customized functionality and visual appearance. When creating custom links, follow the basic rules of default links. Avoid excessive use of custom links in your interface.
+**Custom link:** A link with customized functionality and visual appearance. When creating custom links, follow the basic rules of default links. Avoid excessive use of custom links in your interface. Color for hover and active states, and color for icon is calculated with CSS filter, so you do not need to set them by yourself.
+
+![](static/custom-link.png)
 
 @## Sizes and margins
 
@@ -153,7 +156,7 @@ For links placed in one line, maintain a margin between them that is a multiple 
 
 - Use the `LinkExternal` icon with M size and `--icon-secondary-neutral` color to indicate the transition to an external resource.
 - The icon should always have a `margin-left: var(--spacing-1x)`.
-- When hovering over the icon, it should change color to `--icon-secondary-neutral-hover-active`.
+- When hovering over the icon, it changes color to the darker one with CSS filter.
 - If necessary, you can use link styles to highlight the external resource icon.
 
 @## Usage in UX/UI

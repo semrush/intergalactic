@@ -1,3 +1,19 @@
+## [15.32.0] - 2023-10-31
+
+### @semcore/select
+
+- **Changed** Disabled switch between `Select.Option.Checkbox` by press `Tab` instead of Arrows.
+
+## [15.31.0] - 2023-10-31
+
+### @semcore/d3-chart
+
+- **Added** `ChartLegend` component.
+
+### @semcore/skeleton
+
+- **Fixed** Animation wasn't working.
+
 ## [15.30.0] - 2023-10-27
 
 ### @semcore/badge
