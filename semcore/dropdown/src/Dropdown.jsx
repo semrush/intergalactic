@@ -7,6 +7,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/dropdown.shadow.css';
+import { hasFocusableIn } from '@semcore/utils/src/use/useFocusLock';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 
@@ -23,6 +24,8 @@ class Dropdown extends Component {
     locale: 'en',
   };
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
+
+  popperRef = React.createRef();
 
   uncontrolledProps() {
     return {
@@ -60,6 +63,21 @@ class Dropdown extends Component {
   ];
 
   handlerTriggerKeyDown = (e) => {
+    const { visible, interaction } = this.asProps;
+    const element = this.popperRef.current;
+
+    if (
+      interaction !== 'focus' &&
+      visible &&
+      e.key === 'Tab' &&
+      element &&
+      !hasFocusableIn(element)
+    ) {
+      e.preventDefault();
+
+      return;
+    }
+
     if (e.key === ' ' && INTERACTION_TAGS.includes(e.target.tagName)) return;
     if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA') return;
 
@@ -89,6 +107,7 @@ class Dropdown extends Component {
       tabIndex: 0,
       disablePortal,
       ignorePortalsStacking,
+      ref: this.popperRef,
     };
   }
 

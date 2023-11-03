@@ -19,6 +19,10 @@ If required, you can assign your own color to Scatter plot.
 
 @example scatterplot-values
 
+@## Legend
+
+@example legend
+
 @## Color customization and values inside
 
 If required, you can assign your own color to Scatter plot.

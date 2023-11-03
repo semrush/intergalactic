@@ -1,4 +1,4 @@
-import React, { ForwardRefExoticComponent, RefAttributes, useRef } from 'react';
+import React, { ForwardRefExoticComponent, RefAttributes } from 'react';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 // @ts-ignore
 import { useForkRef } from '@semcore/utils/lib/ref';

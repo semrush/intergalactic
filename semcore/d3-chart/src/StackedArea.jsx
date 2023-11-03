@@ -4,6 +4,7 @@ import { Component } from '@semcore/core';
 import getOriginChildren from '@semcore/utils/lib/getOriginChildren';
 import createElement from './createElement';
 import Area from './Area';
+import { getChartDefaultColorName } from './utils';
 
 const DEFAULT_INSTANCE = Symbol('DEFAULT_INSTANCE');
 const Y0 = Symbol('Y0');
@@ -33,11 +34,12 @@ class StackedAreaRoot extends Component {
     return stack(data);
   }
 
-  getAreaProps({ y }) {
+  getAreaProps({ y }, index) {
     const { x } = this.asProps;
     // or [] if hide area
     const series = this.series.find((s) => s.key === y) || [];
     return {
+      color: getChartDefaultColorName(index),
       data: series.map((s) => ({
         ...s.data,
         // if null is passed in the data, then we pass it, because d3 null leads to 0

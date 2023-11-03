@@ -32,3 +32,7 @@ If exact values of specific point is not available, you can pass `interpolateVal
 > 🚨 Interpolation doesn't works with `StackedArea`.
 
 @example area-interpolation
+
+@## Legend
+
+@example legend

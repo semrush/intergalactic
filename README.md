@@ -34,7 +34,21 @@ pnpm add @semcore/ui
 # or npm install @semcore/ui
 ```
 
-After the installation, all components will be available at `@semcore/ui/{component name}`.
+After the installation, all components will be available at `@semcore/ui/{{component_name}}`.
+
+### Package system
+
+All components are located in the `@semcore` namespace in npm and are installed separately.
+
+If the selected component is running, you must install the `@semcore/core package`.
+
+Example:
+
+```
+npm i @semcore/button @semcore/core
+```
+
+`@semcore/core` is the basic package with which we create our components, and it contains all of the common logic of the components that is discussed below. There should be only one version of the package in the project.
 
 ## How to contribute to the project
 

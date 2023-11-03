@@ -1,3 +1,3 @@
 module.exports = () => ({
-  plugins: [['replace-import-extension', { extMapping: { '': '.mjs' } }]],
+  plugins: [['replace-import-extension', { extMapping: { '.json': '.json', '': '.mjs' } }]],
 });

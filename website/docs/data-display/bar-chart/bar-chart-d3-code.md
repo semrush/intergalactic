@@ -50,3 +50,7 @@ To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 You can combine charts with each other. For example, to display a trend line on a bar chart.
 
 @example bar-trend
+
+@## Legend
+
+@example legend

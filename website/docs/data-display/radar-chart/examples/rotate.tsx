@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plot, Radar, colors } from '@semcore/ui/d3-chart';
+import { Plot, Radar } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinalClosed } from 'd3-shape';
 import Slider from '@semcore/slider';
@@ -31,11 +31,11 @@ export default () => {
             <Radar.Axis.Ticks />
             <Radar.Axis.Labels />
           </Radar.Axis>
-          <Radar.Polygon dataKey='data_1' color={colors['orange-04']} curve={curveCardinalClosed}>
+          <Radar.Polygon dataKey='data_1' curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>
-          <Radar.Polygon dataKey='data_2' color={colors['violet-04']} curve={curveCardinalClosed}>
+          <Radar.Polygon dataKey='data_2' curve={curveCardinalClosed}>
             <Radar.Polygon.Line />
             <Radar.Polygon.Dots />
           </Radar.Polygon>
@@ -45,12 +45,8 @@ export default () => {
                 children: (
                   <>
                     <Radar.Tooltip.Title>{data.categories[index]}</Radar.Tooltip.Title>
-                    <Radar.Tooltip.Dot color={colors['orange-04']}>
-                      {data['data_1'][index]}
-                    </Radar.Tooltip.Dot>
-                    <Radar.Tooltip.Dot color={colors['violet-04']}>
-                      {data['data_2'][index]}
-                    </Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot>{data['data_1'][index]}</Radar.Tooltip.Dot>
+                    <Radar.Tooltip.Dot>{data['data_2'][index]}</Radar.Tooltip.Dot>
                   </>
                 ),
               };

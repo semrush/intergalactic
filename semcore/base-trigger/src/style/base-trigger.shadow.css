@@ -58,7 +58,8 @@ SBaseTrigger {
 SBaseTrigger[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
 }
 
 SInner {

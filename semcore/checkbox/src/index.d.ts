@@ -30,7 +30,8 @@ export type CheckboxProps = BoxProps & {
    */
   size?: CheckboxSize;
   /**
-   * @deprecated */
+   * Checkbox color
+   */
   theme?: string;
 };
 

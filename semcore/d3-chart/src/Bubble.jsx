@@ -78,6 +78,7 @@ class BubbleRoot extends Component {
       size,
       data,
       transparent,
+      resolveColor,
     } = this.asProps;
     const [xScale, yScale] = scale;
 
@@ -112,7 +113,7 @@ class BubbleRoot extends Component {
             y={yScale(d[y]) + offset[1]}
             dy='.3em'
             clipPath={`url(#${uid})`}
-            color={d[color] ?? color}
+            color={resolveColor(d[color] ?? color)}
             transparent={transparent}
           >
             &#43;
@@ -126,7 +127,7 @@ class BubbleRoot extends Component {
           clipPath={`url(#${uid})`}
           cx={xScale(d[x]) + offset[0]}
           cy={yScale(d[y]) + offset[1]}
-          color={d[color]}
+          color={resolveColor(d[color])}
           r={z(d[value])}
           use:duration={`${duration}ms`}
           transparent={transparent}
@@ -139,7 +140,7 @@ class BubbleRoot extends Component {
             dy='.3em'
             clipPath={`url(#${uid})`}
             position={labelPosition}
-            color={d[color]}
+            color={resolveColor(d[color])}
             transparent={transparent}
           >
             {d[label]}

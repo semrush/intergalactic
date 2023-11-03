@@ -1,13 +1,14 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/spin.shadow.css';
 
 class RootSpin extends Component {
   static displayName = 'Spin';
   static style = style;
+  static enhance = [resolveColorEnhance()];
   static defaultProps = {
     size: 'm',
     theme: 'dark',
@@ -15,7 +16,7 @@ class RootSpin extends Component {
 
   render() {
     const SSpin = Root;
-    const { Children, styles, theme } = this.asProps;
+    const { Children, styles, theme, resolveColor } = this.asProps;
     return sstyled(styles)(
       <SSpin
         render={Box}

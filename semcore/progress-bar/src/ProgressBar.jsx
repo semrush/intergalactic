@@ -1,7 +1,7 @@
 import React from 'react';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 import { Box } from '@semcore/flex-box';
-import resolveColor from '@semcore/utils/lib/color';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/progress-bar.shadow.css';
 
@@ -12,6 +12,7 @@ function isCustomTheme(theme) {
 class ProgressBarRoot extends Component {
   static displayName = 'ProgressBar';
   static style = style;
+  static enhance = [resolveColorEnhance()];
   static defaultProps = () => ({
     duration: 1000,
     size: 'm',
@@ -20,17 +21,18 @@ class ProgressBarRoot extends Component {
   });
 
   getValueProps() {
-    const { value, duration, size } = this.asProps;
+    const { value, duration, size, resolveColor } = this.asProps;
     return {
       value,
       duration,
       size,
+      resolveColor,
     };
   }
 
   render() {
     const SProgressBar = Root;
-    const { Children, styles, duration, theme, value } = this.asProps;
+    const { Children, styles, duration, theme, value, resolveColor } = this.asProps;
     const useTheme = isCustomTheme(theme) ? 'custom' : theme;
 
     return sstyled(styles)(
@@ -51,7 +53,7 @@ class ProgressBarRoot extends Component {
 
 function Value(props) {
   const SValue = Root;
-  const { styles, value, theme, duration } = props;
+  const { styles, value, theme, duration, resolveColor } = props;
   const width = `${value}%`;
 
   return sstyled(styles)(

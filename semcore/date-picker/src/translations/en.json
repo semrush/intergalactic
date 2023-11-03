@@ -12,5 +12,6 @@
   "last12Months": "Last 12 months",
   "prev": "Previous period",
   "next": "Next period",
-  "input": "Date field"
+  "input": "Date field",
+  "compare": "Compare to"
 }

@@ -3,7 +3,7 @@ import Card from '@semcore/ui/card';
 import { Text } from '@semcore/ui/typography';
 import SettingsM from '@semcore/ui/icon/Settings/m';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
+const tooltipContent = `Hey! Don't forget to place some useful info here`;
 
 export default () => (
   <Card>
@@ -14,14 +14,14 @@ export default () => (
       <SettingsM
         style={{ float: 'right' }}
         mt={1}
-        color='stone'
+        color='icon-secondary-neutral'
         interactive
         aria-label='Open settings'
       />
       <Card.Description>This is card additional information or insights.</Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text size={100}>Your awesome card content ✨</Text>
+      <Text size={100}>Your awesome card content</Text>
     </Card.Body>
   </Card>
 );

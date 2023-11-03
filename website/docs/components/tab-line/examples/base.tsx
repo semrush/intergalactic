@@ -17,10 +17,10 @@ const Demo = () => {
         </TabLine.Item.Addon>
         <TabLine.Item.Text>LinkedIn</TabLine.Item.Text>
         <TabLine.Item.Addon>
-          <Badge bg='green'>new</Badge>
+          <Badge bg='green-400'>new</Badge>
         </TabLine.Item.Addon>
       </TabLine.Item>
-      <Tooltip title='Progress isn’t available during collecting process' placement='top'>
+      <Tooltip title="Progress isn't available during collecting process" placement='top'>
         <TabLine.Item disabled value={3}>
           Progress
         </TabLine.Item>

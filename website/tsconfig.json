@@ -22,5 +22,5 @@
       "@semcore/ui/utils/lib/*": ["../semcore/utils/src/*"]
     }
   },
-  "include": ["src", "docs", "types"]
+  "include": ["src", "docs", "types", "algoliaConfig.ts"]
 }

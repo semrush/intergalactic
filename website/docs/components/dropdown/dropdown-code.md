@@ -12,3 +12,7 @@ The component is a wrap over [@semcore/ui/popper](/utils/popper/) with styles fo
 The component API is completely identical to [@semcore/ui/popper](/utils/popper/)
 
 @example dropdown
+
+@## Focus interaction
+
+@example dropdown-focus

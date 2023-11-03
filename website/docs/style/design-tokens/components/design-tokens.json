@@ -24,6 +24,7 @@
       "side-panel",
       "slider",
       "switch",
+      "tag",
       "wizard"
     ]
   },
@@ -720,7 +721,7 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
-    "components": ["tag"]
+    "components": []
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
@@ -1880,6 +1881,7 @@
       "button",
       "card",
       "checkbox",
+      "d3-chart",
       "dropdown-menu",
       "errors",
       "format-text",
@@ -1904,6 +1906,7 @@
       "base-trigger",
       "button",
       "checkbox",
+      "d3-chart",
       "data-table",
       "dropdown-menu",
       "format-text",
@@ -2037,6 +2040,7 @@
       "card",
       "checkbox",
       "counter",
+      "d3-chart",
       "data-table",
       "date-picker",
       "dropdown-menu",
@@ -2073,6 +2077,7 @@
       "button",
       "card",
       "checkbox",
+      "d3-chart",
       "dropdown-menu",
       "errors",
       "format-text",
@@ -2910,7 +2915,7 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Hover and active (selected) state of the primary white tag.",
-    "components": ["tag"]
+    "components": []
   },
   {
     "name": "--intergalactic-tag-primary-gray-text",
@@ -2990,7 +2995,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover and active (selected) states of the background color for the default secondary tag.",
-    "components": ["tag"]
+    "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-white-normal",

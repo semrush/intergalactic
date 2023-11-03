@@ -1,3 +1,122 @@
+## [15.32.0] - 2023-10-31
+
+### @semcore/select
+
+- **Changed** Disabled switch between `Select.Option.Checkbox` by press `Tab` instead of Arrows.
+
+## [15.31.0] - 2023-10-31
+
+### @semcore/d3-chart
+
+- **Added** `ChartLegend` component.
+
+### @semcore/skeleton
+
+- **Fixed** Animation wasn't working.
+
+## [15.30.0] - 2023-10-27
+
+### @semcore/badge
+
+- **Added** Design tokens resolving for prop `color`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/base-trigger
+
+- **Added** Design tokens resolving for prop `color`.
+
+### @semcore/checkbox
+
+- **Added** Design tokens resolving for prop `theme`.
+
+### @semcore/counter
+
+- **Added** Design tokens resolving for prop `theme`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/d3-chart
+
+- **Added** Design tokens resolving for `color` props.
+- **Changed** Default color of grouped charts (e.g for pie chart) are different by default.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/icon
+
+- **Added** Design tokens resolving for `color` prop.
+
+### @semcore/link
+
+- **Added** Design tokens resolving for `color` prop.
+
+### @semcore/notice
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/notice-global
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/progress-bar
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/radio
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/select
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/spin
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/spin-container
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/switch
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/tag
+
+- **Added** Design tokens resolving for prop `color`.
+- **Changed** Default text color is based on inversed and processed background color.
+
+### @semcore/tooltip
+
+- **Added** Design tokens resolving for `theme` prop.
+
+### @semcore/typography
+
+- **Added** Design tokens resolving for `color` prop of `<Text />`.
+
+### @semcore/utils
+
+- **Added** Internal api for design tokens resolving.
+
+## [15.29.0] - 2023-10-26
+
+### @semcore/icon
+
+- **Changed** Made `Twitter` and `TwitterCarousel` icons bolder.
+
+## [15.28.2] - 2023-10-24
+
+### @semcore/popper
+
+- **Fixed** Undelivered ResizeObserver's loop in popper after it is closed.
+
+### @semcore/switch
+
+- **Fixed** View of `Switch` with long text in addons.
+
+### @semcore/utils
+
+- **Fixed** Focus lock merging was causing invalid hooks order error.
+
 ## [15.28.1] - 2023-10-16
 
 ### @semcore/button

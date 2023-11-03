@@ -26,7 +26,6 @@ class RootProjectNotFound extends Component {
     return (
       <Root render={Error}>
         <Error.Title tag={titleTag}>{getI18nText('title')}</Error.Title>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: */}
         <Error.Description tag={FormatText} size='l' dangerouslySetInnerHTML={{ __html: text }} />
         <Children />
         <Error.Controls>

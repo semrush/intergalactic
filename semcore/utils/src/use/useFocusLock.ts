@@ -81,6 +81,7 @@ let uniqueId = 0;
 const getUniqueId = (prefix: string) =>
   `${prefix}-${Math.random().toString(36).slice(2)}-${uniqueId++}`;
 const useFocusBorders = (React: ReactT, disabled?: boolean) => {
+  useUniqueIdHookMock(React);
   React.useEffect(() => {
     const id = getUniqueId('focus-borders-consumer');
     if (!disabled) {
@@ -97,6 +98,7 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
   }, [disabled]);
 };
 /**
+ * # Focus lock hook merging
  * In some cases same page might contain different versions of components.
  * In such cases, we need to ensure that only one version of focus lock hook is used.
  * So, it's why we have `useFocusLockHook` function that is wrapped into `useFocusLock`.
@@ -106,6 +108,7 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
  * The last condition is very important because we are unable to replace React hook without reimplementing
  * React hooks lifecycle in some kind of wrapper.
  *
+ * ## Versioning
  * Such versions merging requires us to keep hook api backward compatible.
  * When hook logic changes, the variable `focusLockVersion` should be incremented.
  *
@@ -114,6 +117,14 @@ const useFocusBorders = (React: ReactT, disabled?: boolean) => {
  *
  * Initially (for a several versions) key was `__intergalactic_focus_lock_hook_`.
  * Making it respect react version required to change key. So key was changed to `__intergalactic_focus_lock_hook_react_v_respectful`.
+ *
+ * ## React hooks order
+ * When updating from version 2 to version 3 `useUniqueId` hook was removed.
+ * Due to replacing useFocusLock hook in runtime, the order of hooks must be preserved.
+ * So, useUniqueIdHookMock helps to preserve hooks order when hook is being replaced from version 2 to version 3.
+ *
+ * If new update requires to remove some hooks – add mocks instead of them.
+ * If new update requires to add some hooks and no workaround with current hooks list is possible – probably focus lock hook key should be changed.
  */
 const focusLockVersion = 3;
 const globalFocusLockHookKey = '__intergalactic_focus_lock_hook_react_v_respectful';
@@ -129,6 +140,13 @@ const focusLockUsedInMountedComponents = new Set<string>();
  * The last element in focus masters stack is considered as a current focus master.
  */
 const focusMastersStack: HTMLElement[] = [];
+
+const noop = () => {};
+const useUniqueIdHookMock = (React: ReactT) => {
+  React.useState(undefined);
+  const useEnhancedEffect = canUseDOM() ? React.useLayoutEffect : React.useEffect;
+  useEnhancedEffect(noop, []);
+};
 
 const useFocusLockHook = (
   React: ReactT,
@@ -245,6 +263,7 @@ const useFocusLockHook = (
     };
   }, [disabled, autoFocus, returnFocusTo, returnFocus]);
 
+  useUniqueIdHookMock(React);
   React.useEffect(() => {
     const id = getUniqueId('focus-lock-consumer');
     if (disabled) return;
@@ -283,5 +302,10 @@ export const useFocusLock = (
   return hook(LocalReact, trapRef, autoFocus, returnFocusTo, disabled, focusMaster);
 };
 
+export const hasFocusableIn = (element: HTMLElement): boolean => {
+  return (
+    Array.from(element.children).flatMap((node) => getFocusableIn(node as HTMLElement)).length > 0
+  );
+};
 export const isFocusInside = focusInside;
 export const setFocus = safeMoveFocusInside as (topNode: HTMLElement, lastNode?: Element) => void;

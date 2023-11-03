@@ -6,23 +6,17 @@ import DataTable from '@semcore/data-table';
 import Link from '@semcore/link';
 import Tooltip from '@semcore/tooltip';
 import Ellipsis, { useResizeObserver } from '@semcore/ellipsis';
-import { brightness } from '@semcore/utils/lib/color';
 import Copy from '@components/Copy';
 import Fuse from 'fuse.js';
 
 export const ColorPreview = ({ color }) => {
   if (!color.startsWith('#') && !color.startsWith('rgba(')) return null;
 
-  const needsBorder = React.useMemo(
-    () => color.startsWith('rgba(') || brightness(color) > 230,
-    [color],
-  );
-
   return (
     <div
       style={{
         background: color,
-        borderColor: needsBorder ? '#E0E1E9' : 'transparent',
+        '--cell-bg-color': color,
       }}
       className={styles.colorPreview}
     />
@@ -50,7 +44,7 @@ const DesignTokens = ({ tokens }) => {
   return (
     <div>
       <Input className={styles.searchInput} size='l'>
-        <Input.Addon tag={SearchIcon} />
+        <Input.Addon className={styles.searchInputIcon} tag={SearchIcon} />
         <Input.Value placeholder='Find token' value={filter} onChange={setFilter} />
       </Input>
       <DataTable data={filteredTokens}>

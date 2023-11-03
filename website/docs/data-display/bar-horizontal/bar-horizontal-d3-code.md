@@ -30,3 +30,7 @@ To combine multiple horizontal bars, use `<GroupBar.HorizontalBar/>`.
 Use the `<Bar.Background/>` and `<HorizontalBar.Background/>` components if you need to add a background to a chart plot.
 
 @example bar-background
+
+@## Legend
+
+@example legend
