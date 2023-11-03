@@ -467,4 +467,6 @@ declare const MonthRangePicker: Intergalactic.Component<
   subtract: (date: number | Date, amount: number, unit: dayjs.OpUnitType) => Date;
 };
 
-export { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker };
+declare const DateRangeComparator: any;
+
+export { DatePicker, DateRangePicker, MonthPicker, MonthRangePicker, DateRangeComparator };
