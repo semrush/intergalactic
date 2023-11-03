@@ -1,5 +1,5 @@
 <p align="center">
-  <img src=".github/images/galaxy-whale.png" alt="Intergalactic galaxy whale" width="300" height="250">
+  <img src=".github/images/intergalactic-hero.png" alt="Intergalactic Design System">
 </p>
 
 [![codecov](https://codecov.io/gh/semrush/intergalactic/branch/master/graph/badge.svg?token=OILALW3YQE)](https://codecov.io/gh/semrush/intergalactic)
