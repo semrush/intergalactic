@@ -223,10 +223,10 @@ Connection timed out
 
 The initial connection between Cloudflare’s network and the origin web server timed out. As a result, the webpage cannot be displayed.
 
-- Ray ID: {000000000000000}
-- Your IP address: {84.52.114.132}
+- Ray ID: \{000000000000000\}
+- Your IP address: \{84.52.114.132\}
 - Error reference number: 522
-- Cloudflare Location POP: {undef}
+- Cloudflare Location POP: \{undef\}
 
 ## Blocked (Bad) request
 
@@ -309,19 +309,19 @@ You've requested a page on a website ([cloudflarepreview.com](http://cloudflarep
 
 - Less likely: something is wrong with this site's configuration. Usually this happens when accounts have been signed up with a partner organization (for example, a hosting provider) and the provider's DNS fails.
 
-  - Ray ID: {000000000000000}
+  - Ray ID: \{000000000000000\}
 
-  - Timestamp: {Thu, 01-Jan-70 00:00:00 GMT}
+  - Timestamp: \{Thu, 01-Jan-70 00:00:00 GMT\}
 
-  - Your IP address: {84.52.114.132}
+  - Your IP address: \{84.52.114.132\}
 
-  - Requested URL: {example.url/foo}
+  - Requested URL: \{example.url/foo\}
 
   - Error reference number: 1001
 
-  - Server ID: {FL_FOO}
+  - Server ID: \{FL_FOO\}
 
-  - User-Agent: {Example}
+  - User-Agent: \{Example\}
 
 ## Global errors usage
 
