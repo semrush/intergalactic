@@ -540,16 +540,16 @@ img {
   background: transparent;
 }
 
-.vp-doc a,
-.vp-doc a:visited {
+.vp-doc a:not([class]),
+.vp-doc a:not([class]):visited {
   color: var(--vp-c-indigo-2);
 }
 
-.vp-doc a:hover {
+.vp-doc a:not([class]):hover {
   color: var(--vp-c-indigo-1);
 }
 
-.dark .vp-doc a:hover {
+.dark .vp-doc a:not([class]):hover {
   color: var(--vp-c-indigo-2);
 }
 
@@ -594,12 +594,16 @@ img {
   background-color: var(--vp-c-bg-elv);
 }
 
-.vp-doc a {
+.vp-doc a[class]:hover {
+  color: inherit;
+}
+
+.vp-doc a:not([class]) {
   text-decoration: none;
 }
 
-.vp-doc a:hover,
-.vp-doc a:active {
+.vp-doc a:not([class]):hover,
+.vp-doc a:not([class]):active {
   text-decoration: underline;
 }
 
