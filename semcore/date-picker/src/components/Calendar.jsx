@@ -69,6 +69,41 @@ function CalendarWeekUnit(props) {
   return sstyled(props.styles)(<SWeekDay render={Box} />);
 }
 
+function resolveHighlighting(date, unit, highlighted) {
+  let highlighted0 = highlighted[0] ? dayjs(highlighted[0]) : null;
+  let highlighted1 = highlighted[1] ? dayjs(highlighted[1]) : highlighted0;
+  if (highlighted0 && highlighted1) {
+    if (highlighted0 > highlighted1) [highlighted1, highlighted0] = [highlighted0, highlighted1];
+    return {
+      highlighted: date.isBetween(highlighted0, highlighted1, unit, '[]'),
+      startHighlighted: highlighted0 && date.isSame(highlighted0, 'date'),
+      endHighlighted: highlighted1 && date.isSame(highlighted1, 'date'),
+    };
+  }
+  return {
+    highlighted: undefined,
+    startHighlighted: undefined,
+    endHighlighted: undefined,
+  };
+}
+function resolveSelecting(date, unit, value) {
+  let value0 = value[0] ? dayjs(value[0]) : null;
+  let value1 = value[1] ? dayjs(value[1]) : null;
+  let selected;
+  if (value0 && value1) {
+    if (value0 > value1) [value1, value0] = [value0, value1];
+    selected = date.isBetween(value0, value1, unit, '()');
+  }
+  const startSelected = value0 && date.isSame(value0, unit);
+  const endSelected = value1 && date.isSame(value1, unit);
+
+  return {
+    selected,
+    startSelected,
+    endSelected,
+  };
+}
+
 class CalendarAbstract extends Component {
   static style = style;
 
@@ -76,44 +111,42 @@ class CalendarAbstract extends Component {
 
   createUnit({ date, ...other }, unit) {
     const self = this;
-    const { disabled: _disabled, value, locale, highlighted: _highlighted } = this.asProps;
-    let value0 = value[0] ? dayjs(value[0]) : null;
-    let value1 = value[1] ? dayjs(value[1]) : null;
-    let selected;
-    if (value0 && value1) {
-      if (value0 > value1) [value1, value0] = [value0, value1];
-      selected = date.isBetween(value0, value1, unit, '()');
-    }
-    const startSelected = value0 && date.isSame(value0, unit);
-    const endSelected = value1 && date.isSame(value1, unit);
+    const {
+      disabled: _disabled,
+      value,
+      compare,
+      highlighted,
+      compareHighlighted,
+      locale,
+    } = this.asProps;
 
-    let highlighted0 = _highlighted[0] ? dayjs(_highlighted[0]) : null;
-    let highlighted1 = _highlighted[1] ? dayjs(_highlighted[1]) : highlighted0;
-    let startHighlighted;
-    let endHighlighted;
-    let highlighted;
-    if (highlighted0 && highlighted1) {
-      if (highlighted0 > highlighted1) [highlighted1, highlighted0] = [highlighted0, highlighted1];
-      highlighted = date.isBetween(highlighted0, highlighted1, unit, '[]');
-      startHighlighted = highlighted0 && date.isSame(highlighted0, 'date');
-      endHighlighted = highlighted1 && date.isSame(highlighted1, 'date');
-    }
+    const highlighting = resolveHighlighting(date, unit, highlighted ?? []);
+    const comparedHighlighting = resolveHighlighting(date, unit, compareHighlighted ?? []);
+    const selecting = resolveSelecting(date, unit, value ?? []);
+    const comparing = resolveSelecting(date, unit, compare ?? []);
 
     const disabled = _disabled.some(includesDate(date, unit));
 
     return {
       date: getLocaleDate(date, locale),
       children: '',
-      startSelected,
-      endSelected,
-      selected,
+      startSelected: selecting.startSelected,
+      endSelected: selecting.endSelected,
+      selected: selecting.selected,
+      highlighted: highlighting.highlighted,
+      startHighlighted: highlighting.startHighlighted,
+      endHighlighted: highlighting.endHighlighted,
+
+      compareHighlighted: comparedHighlighting.highlighted || comparing.selected,
+      compareStartHighlighted: comparedHighlighting.startHighlighted,
+      compareEndHighlighted: comparedHighlighting.endHighlighted,
+      compareStart: comparing.startSelected,
+      compareEnd: comparing.endSelected,
+
       disabled,
-      highlighted,
-      startHighlighted,
-      endHighlighted,
       today: date.isSame(self.today, unit),
       onClick: () => {
-        const { highlighted: _highlighted } = this.asProps;
+        const { range, highlighted: _highlighted } = this.asProps;
         let highlighted = [date.valueOf()];
 
         if (_highlighted.length === 1) {
@@ -122,15 +155,24 @@ class CalendarAbstract extends Component {
           highlighted = [];
         }
 
-        fire(this, 'onHighlightedChange', highlighted);
+        if (range === 'compare') {
+          fire(this, 'onCompareHighlightedChange', highlighted);
+        } else {
+          fire(this, 'onHighlightedChange', highlighted);
+        }
         fire(this, 'onChange', date.toDate());
       },
       onMouseEnter: () => {
-        const { value, highlighted: _highlighted } = this.asProps;
-        if (_highlighted[0] || value.length === 1) {
-          const startDate = _highlighted[0] || value[0];
+        const { range, highlighted: _highlighted } = this.asProps;
+        const value = range === 'compare' ? this.asProps.compare : this.asProps.value;
+        if (_highlighted[0] || (value ?? []).length === 1) {
+          const startDate = _highlighted[0] || (value ?? [])[0];
           const highlighted = [startDate.valueOf(), date.valueOf()];
-          fire(this, 'onHighlightedChange', highlighted);
+          if (range === 'compare') {
+            fire(this, 'onCompareHighlightedChange', highlighted);
+          } else {
+            fire(this, 'onHighlightedChange', highlighted);
+          }
         }
       },
       ...other,
