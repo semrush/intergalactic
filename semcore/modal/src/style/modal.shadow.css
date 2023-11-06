@@ -48,7 +48,7 @@ SClose {
   outline: none;
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   }
 }
 

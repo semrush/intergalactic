@@ -552,7 +552,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Modal.Close now changes visibility state only because of closable prop.
+- Modal. Close now changes visibility state only because of closable prop.
 
 ## [2.1.1] - 2020-09-08
 
