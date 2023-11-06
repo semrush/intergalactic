@@ -5,7 +5,7 @@ a11y: AA
 
 @## What component has
 
-Note that the Pills component can function as either a group of radio buttons or a group of tabs, depending on the use case. To select the desired behavior, use the `behavior` property (refer to the [example](/components/pills/pills-code/#behavior_arrows)).
+Note that the Pills component can function as either a group of radio buttons or a group of tabs, depending on the use case. To select the desired behavior, use the `behavior` property (refer to the [example](/components/pills/pills-code#behavior_arrows)).
 
 ### Keyboard support
 

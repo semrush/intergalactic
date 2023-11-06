@@ -10,11 +10,19 @@ Let's explore the design system used at [Semrush](https://semrush.com), which yo
 
 All components are bundled together in a single package, making the installation process straightforward. For example:
 
-```bash
-npm i @semcore/ui
+::: code-group
+
+```sh [pnpm]
+pnpm add @semcore/ui
 ```
 
-After the installation, you can access each component at `@semcore/ui/{{ component name }}`.
+```sh [npm]
+npm install @semcore/ui
+```
+
+:::
+
+After the installation, you can access each component at `@semcore/ui/{{component_name}}`.
 
 @## Key features
 

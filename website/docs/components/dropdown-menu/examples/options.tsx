@@ -6,7 +6,7 @@ export default function () {
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger>
-        <ButtonTrigger>I'll show u some options, buddy 😉</ButtonTrigger>
+        <ButtonTrigger>I'll show u some options, buddy</ButtonTrigger>
       </DropdownMenu.Trigger>
       <DropdownMenu.Menu>
         <DropdownMenu.ItemTitle>I'm title</DropdownMenu.ItemTitle>

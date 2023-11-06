@@ -13,8 +13,8 @@ import Code from '../components/Code';
 import Copy from '../components/Copy';
 import styles from './PlaygroundGeneration.module.css';
 import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
-import lightThemeTokens from '@semcore/utils/lib/themes/light.json';
-import darkThemeTokens from '@semcore/utils/lib/themes/dark.json';
+import { getHighlighter, setCDN } from 'shiki';
+import githubDarkTheme from 'shiki/themes/github-dark.json';
 
 Playground.createWidget('label', ({ label }) => {
   return <h3>{label}</h3>;
@@ -120,115 +120,46 @@ Playground.createWidget(
   },
 );
 
-const PaintPlaygroundView = ({ backgroundColor, onChange, ...other }) => {
-  const [color, setColor] = React.useState(backgroundColor || 'white');
+const PlaygroundView = ({ result, source, widgetControls }) => {
+  const [highlightedSource, setHighlightedSource] = React.useState('');
+
+  const hasWidget = !!widgetControls.length;
+
+  React.useEffect(() => {
+    setCDN('https://unpkg.com/shiki/');
+    getHighlighter({ theme: 'github-dark', themes: [githubDarkTheme], langs: ['tsx'] }).then(
+      (highlighter) => {
+        const html = highlighter.codeToHtml(source, { lang: 'tsx', theme: 'github-dark' });
+        setHighlightedSource(html);
+      },
+    );
+  });
 
   return (
-    <RadioGroup
-      aria-hidden='true'
-      name='background-color'
-      value={color}
-      onChange={(color) => {
-        setColor(color);
-        onChange(color);
-      }}
-    >
-      <Flex
-        alignItems='center'
-        style={{ position: 'absolute', right: '16px', bottom: '16px' }}
-        {...other}
-      >
-        <Radio mr={2}>
-          <Radio.Value style={{ display: 'none' }} value='white' checked={color === 'white'} />
-          <div
-            className={styles.chooseBackgroundColor}
-            style={{
-              backgroundColor: 'white',
-              borderColor: color === 'white' ? '#2595e4' : '#e3e3e3',
-            }}
-          />
-        </Radio>
-        <Radio>
-          <Radio.Value style={{ display: 'none' }} value='#1E2231' checked={color === '#1E2231'} />
-          <div
-            className={styles.chooseBackgroundColor}
-            style={{
-              backgroundColor: '#1E2231',
-              borderColor: color === '#1E2231' ? '#2595e4' : '#e3e3e3',
-            }}
-          />
-        </Radio>
-      </Flex>
-    </RadioGroup>
+    <div className={styles.wrapperPlayground} aria-hidden='true'>
+      <div className={styles.workArea}>
+        <div className={`playground-runtime ${styles.playgroundRuntime}`} style={{ margin: 0 }}>
+          <div>{result}</div>
+        </div>
+        {highlightedSource && (
+          <div className='language-tsx vp-adaptive-theme'>
+            <span dangerouslySetInnerHTML={{ __html: highlightedSource }} />
+          </div>
+        )}
+      </div>
+      {hasWidget ? (
+        <div className={styles.widgetsBar}>
+          {widgetControls.map((control, i) => {
+            return (
+              <div className={styles.widgetGroup} key={i}>
+                {control.widgets}
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
+    </div>
   );
 };
-
-class PlaygroundView extends React.Component {
-  static defaultProps = {
-    LayoutPreview: (props) => <div {...props} />,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { backgroundColor: props.backgroundColor || 'white' };
-  }
-
-  onChangeBackground = (color) => {
-    fire(this, 'onChange', color);
-    this.setState({ backgroundColor: color });
-  };
-
-  render() {
-    const { result, source, widgetControls, LayoutPreview } = this.props;
-    const { backgroundColor } = this.state;
-
-    const hasWidget = !!widgetControls.length;
-
-    return (
-      <div className={styles.wrapperPlayground} aria-hidden='true'>
-        <div
-          className={styles.workArea}
-          style={{ width: !hasWidget ? '100%' : '70%', backgroundColor }}
-        >
-          <ThemeProvider tokens={backgroundColor === 'white' ? lightThemeTokens : darkThemeTokens}>
-            <div className={styles.resultView} style={{ backgroundColor }}>
-              <LayoutPreview>{result}</LayoutPreview>
-              <PaintPlaygroundView
-                backgroundColor={backgroundColor}
-                onChange={this.onChangeBackground}
-              />
-            </div>
-          </ThemeProvider>
-          <div className={styles.resultCode}>
-            <Code lang='jsx' block>
-              {source}
-            </Code>
-            <div className={styles.iconCopy}>
-              <Copy toCopy={source} title='Click to copy code'>
-                <CopyM />
-              </Copy>
-            </div>
-          </div>
-        </div>
-        {hasWidget ? (
-          <div
-            className={styles.widgetsBar}
-            ref={(node) => {
-              this.container = node;
-            }}
-          >
-            {widgetControls.map((control, i) => {
-              return (
-                <div className={styles.widgetGroup} key={i}>
-                  {control.widgets}
-                </div>
-              );
-            })}
-          </div>
-        ) : null}
-      </div>
-    );
-  }
-}
 
 export default createPlayground(PlaygroundView);

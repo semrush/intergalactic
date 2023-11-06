@@ -10,11 +10,18 @@ WORKDIR /app
 
 COPY ./ ./
 
+ARG ALGOLIA_SECRET_KEY
+ENV ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY
+
+RUN apk add git
 RUN npm install --global pnpm
 RUN pnpm install --frozen-lockfile --ignore-scripts 
+RUN pnpm --filter core run build
+RUN pnpm --filter utils run build
 RUN pnpm build:icons
 RUN pnpm build:illustration
-RUN pnpm --filter intergalactic-documentation run build
+RUN echo "ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY" > .env
+RUN NODE_OPTIONS=--max-old-space-size=32768 CI=true ALGOLIA_SECRET_KEY=$ALGOLIA_SECRET_KEY pnpm --filter intergalactic-documentation run build
 
 FROM nginx:alpine
 
@@ -22,7 +29,7 @@ WORKDIR /app
 
 COPY ./website/nginx.conf /etc/nginx/nginx.conf
 
-COPY --from=builder /app/website/dist ./static
+COPY --from=builder /app/website/docs2/.vitepress/dist ./static
 
 EXPOSE 8080
 
