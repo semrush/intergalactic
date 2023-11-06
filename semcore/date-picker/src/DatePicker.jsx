@@ -17,6 +17,7 @@ import {
 import { CalendarDays as Calendar } from './components/Calendar';
 import PickerAbstract from './components/PickerAbstract';
 import { getLocaleDate } from './utils/formatDate';
+import includesDate from './utils/includesDate';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 export class DatePickerRoot extends PickerAbstract {
@@ -96,11 +97,13 @@ export class DatePickerRoot extends PickerAbstract {
   }
 
   getTodayProps() {
-    const { i18n, locale } = this.asProps;
+    const { i18n, locale, disabled } = this.asProps;
+
     return {
       i18n,
       locale,
       onClick: this.handlerToday,
+      disabled: disabled.some(includesDate(dayjs(), 'day'))
     };
   }
 }
@@ -110,10 +113,10 @@ class Today extends Component {
 
   render() {
     const SToday = Root;
-    const { styles, getI18nText } = this.asProps;
+    const { styles, getI18nText, disabled, onClick } = this.asProps;
     return sstyled(styles)(
-      <SToday render={Box}>
-        <Button use='tertiary' children={getI18nText('today')} />
+      <SToday render={Box} __excludeProps={['onClick']}>
+        <Button use='tertiary' children={getI18nText('today')} disabled={disabled} onClick={onClick} />
       </SToday>,
     );
   }
