@@ -3798,6 +3798,40 @@ importers:
         specifier: 0.1.0
         version: 0.1.0(vitest@0.34.5)
 
+  ui-kit-lib:
+    dependencies:
+      react:
+        specifier: 16.8 - 18
+        version: 18.2.0
+      react-dom:
+        specifier: 16.8 - 18
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@ast-grep/napi':
+        specifier: 0.13.0
+        version: 0.13.0
+      '@semcore/continuous-delivery':
+        specifier: '*'
+        version: link:../tools/continuous-delivery
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../tools/testing-utils
+      '@types/fs-extra':
+        specifier: 9.0.13
+        version: 9.0.13
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
+      fast-glob:
+        specifier: 3.2.11
+        version: 3.2.11
+      fs-extra:
+        specifier: 9.0.1
+        version: 9.0.1
+      tsm:
+        specifier: 2.2.2
+        version: 2.2.2
+
   website:
     dependencies:
       '@vitejs/plugin-react':
@@ -4276,6 +4310,72 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
+
+  /@ast-grep/napi-darwin-arm64@0.13.0:
+    resolution: {integrity: sha512-O9TgxfWQX1A7ppTCuoxhCe66vFrCNiqFPhWBzqfVZy4b4htDrZgt9XtuPfkau0tJgybpyv6G+aiURf5ejEqaFg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@ast-grep/napi-darwin-x64@0.13.0:
+    resolution: {integrity: sha512-85N0WNEK/iicakQd+vDmGg500JjC3WVbSv2zJFpEPc+1SvAwZLpaRIPY1Y+XTOFvN9XKy7h9hczcoDobvJVl1Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@ast-grep/napi-linux-x64-gnu@0.13.0:
+    resolution: {integrity: sha512-/k0MNAGdInIB7Mf/68Ma+TQnY11KC5Jp2fnUFDyIPm08chCeDxFiPiaz8WryD8NEC+y0H0p33Tdytn86H0FbiA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@ast-grep/napi-win32-arm64-msvc@0.13.0:
+    resolution: {integrity: sha512-tQVZnb9OdDRAC+tZMiqhJeNMUsmq+c5xtyQIjftf6edfYlClXq0bT9QgImjzZhEHnMKhKCZOLrg6ruVgjEaQsw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@ast-grep/napi-win32-ia32-msvc@0.13.0:
+    resolution: {integrity: sha512-rhm4TQI9fNmWCgJmB94JuJPBdvRrBxD7rHWLgFj3v3GDUBdsMpsUJwxs9ZCDzMpLIW/lhKgjQtb6EHHBIliKAA==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@ast-grep/napi-win32-x64-msvc@0.13.0:
+    resolution: {integrity: sha512-fYoVxKJv54+23XNP/oI0IPuAH/XISQV59nRrbRQefiMhaMZl+O5dqvbq6jY4Z/ObLK1acYTDKEFuA5rWujEwnA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@ast-grep/napi@0.13.0:
+    resolution: {integrity: sha512-MRDAK5i/OceZMXNYDqJebJRp7EkzV0tGex0Tc2JajvlqC26++4lDODdxIvsZjdeBhi1oNjgiPdoQ7g5ji2HOhw==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@ast-grep/napi-darwin-arm64': 0.13.0
+      '@ast-grep/napi-darwin-x64': 0.13.0
+      '@ast-grep/napi-linux-x64-gnu': 0.13.0
+      '@ast-grep/napi-win32-arm64-msvc': 0.13.0
+      '@ast-grep/napi-win32-ia32-msvc': 0.13.0
+      '@ast-grep/napi-win32-x64-msvc': 0.13.0
+    dev: true
 
   /@babel/cli@7.12.0(@babel/core@7.19.1):
     resolution: {integrity: sha512-0EO6EN6brF4g0HaR6qQr2USkCvFjKNgBdmaYNW5NzB1IeHhqQkGhErX3/hvWA7+g/onS41IM/wm+yD+hcSwgVQ==}
@@ -13024,7 +13124,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.2.11
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
