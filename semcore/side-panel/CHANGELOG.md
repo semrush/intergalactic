@@ -1,6 +1,11 @@
 # Changelog
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
+## [3.15.0] - 2023-11-01
+
+### Added
+
+- Added passing `ignorePortalsStacking` prop to `Portal`.
 
 ## [3.14.0] - 2023-10-27
 
