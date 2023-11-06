@@ -67,7 +67,13 @@ export const isValidSemver = (version: string) => {
 };
 
 export const formatMarkdown = (markdown: string) => {
-  return markdown.replace(/\n\*\s/g, '\n- ').replace(/\*\*\s\s+/g, '** ') + '\n';
+  return (
+    markdown
+      .replace(/\n\*\s/g, '\n- ')
+      .replace(/\*\*\s\s+/g, '** ')
+      .replace(/ +/g, ' ')
+      .replace(/ \n/g, '\n') + '\n'
+  );
 };
 
 const start = Date.now();

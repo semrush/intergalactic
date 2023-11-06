@@ -148,7 +148,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Remove tag button aria-label now refers both to the tag and remove button itself. 
+- Remove tag button aria-label now refers both to the tag and remove button itself.
 
 ## [5.3.1] - 2023-08-16
 
