@@ -469,7 +469,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed top margin of Notice.Actions
+- Fixed top margin of Notice. Actions
 
 ## [2.0.4] - 2020-10-29
 
