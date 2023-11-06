@@ -143,7 +143,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Fixed core invalid peer dependencies warning. 
+- Fixed core invalid peer dependencies warning.
 
 ## [4.0.0] - 2023-07-17
 

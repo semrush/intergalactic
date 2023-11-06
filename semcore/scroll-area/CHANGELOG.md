@@ -30,7 +30,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge. 
+- In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge.
 
 ## [5.9.4] - 2023-10-03
 

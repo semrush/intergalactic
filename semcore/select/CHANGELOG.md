@@ -222,7 +222,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `InputSearch` clear button keyboard support. 
+- `InputSearch` clear button keyboard support.
 
 ## [3.10.3] - 2023-06-30
 
@@ -236,7 +236,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
+- Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering.
 
 ## [3.10.0] - 2023-06-23
 

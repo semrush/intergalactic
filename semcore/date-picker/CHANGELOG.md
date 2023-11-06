@@ -162,7 +162,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- MonthPicker default locale wasn't `en` and was based on the system locale.  
+- MonthPicker default locale wasn't `en` and was based on the system locale.
 
 ## [4.3.1] - 2023-08-21
 
@@ -198,7 +198,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Different calendar cells color for selected and highlighted states. 
+- Different calendar cells color for selected and highlighted states.
 
 ## [4.1.0] - 2023-07-27
 
