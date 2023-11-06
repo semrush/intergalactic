@@ -8,12 +8,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/flex-box` [5.8.2 ~> 5.9.0], `@semcore/icon` [4.12.0 ~> 4.13.0], `@semcore/spin` [5.8.2 ~> 5.9.0], `@semcore/tooltip` [6.8.8 ~> 6.9.0], `@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
 
-## [4.13.1] - 2023-10-27
-
-### Changed
-
-- Value for hover and active states' tokens in ConfirmIcon and CancelIcon controls.
-
 ## [4.13.0] - 2023-10-26
 
 ### Changed

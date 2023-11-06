@@ -8,12 +8,6 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/flex-box` [5.8.2 ~> 5.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
 
-## [4.10.3] - 2023-10-27
-
-### Changed
-
-- Value for hover and active states' token for interactive Addon.
-
 ## [4.10.2] - 2023-10-24
 
 ### Changed

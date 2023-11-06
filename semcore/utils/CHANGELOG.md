@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.1] - 2023-10-27
+
+### Changed
+
+- Updated colors of hover/active states a little to sync it across components.
+- Tag component design tokens are transformed from rgba colors with opacity to hex colors without opacity.
+
 ## [4.10.0] - 2023-11-01
 
 ### Changed
