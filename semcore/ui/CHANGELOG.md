@@ -1,3 +1,24 @@
+## [15.33.0] - 2023-11-06
+
+### @semcore/core
+
+- **Fixed** Fixed components css output of complex selectors.
+
+### @semcore/icon
+
+- **Added** New `AttacheCase` icon.
+
+### @semcore/side-panel
+
+- **Added** Added passing `ignorePortalsStacking` prop to `Portal`.
+
+### @semcore/utils
+
+- **Changed** Updated colors of hover/active states a little to sync it across components.
+- **Changed** Tag component design tokens are transformed from rgba colors with opacity to hex colors without opacity.
+- **Changed** Don't animate the width/height of a node if they are specified as a percentage.
+- **Changed** Values for tag and icon tokens that are built with CSS filters.
+
 ## [15.32.0] - 2023-10-31
 
 ### @semcore/select
@@ -154,7 +175,7 @@
 
 ### @semcore/popper
 
-- **Fixed** Prevent to scroll to `Trigger` item after `Popper` is closed. 
+- **Fixed** Prevent to scroll to `Trigger` item after `Popper` is closed.
 
 ## [15.26.0] - 2023-10-09
 
@@ -262,7 +283,7 @@
 
 ### @semcore/base-trigger
 
-- **Fixed** Invalid attribute React warnings. 
+- **Fixed** Invalid attribute React warnings.
 
 ### @semcore/button
 
@@ -270,16 +291,16 @@
 
 ### @semcore/data-table
 
-- **Fixed** Table with columns with fixed position was not displayed correctly. 
+- **Fixed** Table with columns with fixed position was not displayed correctly.
 
 ### @semcore/pills
 
 - **Fixed** Pills with `behavior="tabs"` had focus ring both on container and on pills. Now focus ring is only on pills.
-- **Fixed** Focus ring of every pill was overlaped by the next sibling pill. 
+- **Fixed** Focus ring of every pill was overlaped by the next sibling pill.
 
 ### @semcore/scroll-area
 
-- **Fixed** In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge. 
+- **Fixed** In some rare cases due to wrong rounding scroll shadow was displayed even if content was scrolled to the edge.
 
 ### @semcore/utils
 
@@ -590,7 +611,7 @@
 
 ### @semcore/input-tags
 
-- **Changed** Improved visual state of focused tags container. 
+- **Changed** Improved visual state of focused tags container.
 
 ### @semcore/outside-click
 
@@ -616,7 +637,7 @@
 
 ### @semcore/date-picker
 
-- **Fixed** MonthPicker default locale wasn't `en` and was based on the system locale.  
+- **Fixed** MonthPicker default locale wasn't `en` and was based on the system locale.
 
 ### @semcore/pagination
 
@@ -694,7 +715,7 @@
 
 ### @semcore/tag
 
-- **Changed** Remove tag button aria-label now refers both to the tag and remove button itself. 
+- **Changed** Remove tag button aria-label now refers both to the tag and remove button itself.
 
 ## [15.6.1] - 2023-08-16
 
@@ -738,13 +759,13 @@
 
 ### @semcore/d3-chart
 
-- **Changed** Added `exports` fields for better nextjs support.  
+- **Changed** Added `exports` fields for better nextjs support.
 
 ## [15.3.0] - 2023-08-07
 
 ### @semcore/utils
 
-- **Fixed** Fixed core invalid peer dependencies warning. 
+- **Fixed** Fixed core invalid peer dependencies warning.
 
 ## [15.2.4] - 2023-08-04
 
@@ -768,7 +789,7 @@
 
 ### @semcore/data-table
 
-- **Fixed** Using special characters and spaces in the data keys were braking columns width. 
+- **Fixed** Using special characters and spaces in the data keys were braking columns width.
 
 ## [15.2.0] - 2023-08-01
 
@@ -778,7 +799,7 @@
 
 ### @semcore/date-picker
 
-- **Fixed** Different calendar cells color for selected and highlighted states. 
+- **Fixed** Different calendar cells color for selected and highlighted states.
 
 ### @semcore/flex-box
 
@@ -872,7 +893,7 @@
 
 ### @semcore/pills
 
-- **Fix** `PillsProps` wasn't including `BoxProps`. 
+- **Fix** `PillsProps` wasn't including `BoxProps`.
 
 ### @semcore/popper
 
@@ -904,8 +925,8 @@
 
 ### @semcore/skeleton
 
-- **BREAK** Changed all skeleton for chart from svg to HTMLDivElement with styled background.  
-- **BREAK** Renamed `PieChartSkeleton` to `DonutChartSkeleton`.  
+- **BREAK** Changed all skeleton for chart from svg to HTMLDivElement with styled background.
+- **BREAK** Renamed `PieChartSkeleton` to `DonutChartSkeleton`.
 
 ### @semcore/date-picker
 
@@ -940,13 +961,13 @@
 
 ### @semcore/select
 
-- **Fixed** `InputSearch` clear button keyboard support. 
+- **Fixed** `InputSearch` clear button keyboard support.
 
 ## [14.10.0] - 2023-07-04
 
 ### @semcore/textarea
 
-- **Changed** Textarea `minRows` now works without `maxRows`. 
+- **Changed** Textarea `minRows` now works without `maxRows`.
 
 ## [14.9.0] - 2023-06-29
 
@@ -985,7 +1006,7 @@
 
 ### @semcore/select
 
-- **Fixed** Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
+- **Fixed** Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering.
 - **Changed** Improved focus handling with `FilterTrigger`.
 
 ### @semcore/utils
