@@ -10,8 +10,6 @@ tabName: Tokens
 
 Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.
 
-<!-- With design tokens, designers and developers can quickly access and apply a range of visual attributes for any given element in a UI. -->
-
 Intergalactic design system has:
 
 - set of base tokens that define a base palette;
@@ -52,29 +50,6 @@ If you are creating a product that differs in style from other products of Semru
 
 Theme is a set of design tokens represented in CSS variables that differs from the default sets (base or semantic, or both). You can redefine them globally or only for a specific subtree of React app. Refer to [Usage in development](/style/design-tokens/design-tokens-usage-development/).
 
-<!-- ### Global theme
-
-Global themes should be preferred over local ones until multiple themes appear on the same page.
-
-To apply a global theme, define CSS variables on the `:root` via CSS or JS. For example, following CSS will make all main backgrounds black and all primary texts white.
-
-```css
-:root {
-  --intergalactic-bg-primary-neutral: #000;
-  --intergalactic-text-primary: #fff;
-}
-```
-
-Any design token from the [tokens list](/style/design-tokens/#semantic_tokens) may be applied. -->
-
-<!-- ### Local theme
-
-Theme for React components subtree may be applied via `<ThemeProvider />`.
-
-`<ThemeProvider />` applies provided tokens on DOM node and handles passing them into React Portal created with `@semcore/portal`.
-
-@example theme-provider -->
-
 @## Creating your own theme
 
 **First of all, answer these questions for your case:**
@@ -114,7 +89,6 @@ This is where the magic of converting the json file with tokens into a new theme
 
 We recommend you to check:
 
-<!-- - [Themes section](/style/design-tokens/#themes); -->
 - [Usage in development](/style/design-tokens/design-tokens-usage-development/);
 - [Example for custom component](/style/design-tokens/design-tokens-code/);
 - [CSS Injection guide](/style/css-injection/).

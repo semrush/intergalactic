@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index 626538e372f137d4452566cc04aae2375ef355da..7eb50fa874d2762d8eb1e334a182bfb9b393a2da 100644
+--- a/package.json
++++ b/package.json
+@@ -10,6 +10,7 @@
+   ],
+   "main": "lib/index.js",
+   "module": "es/index.js",
++  "type": "module",
+   "exports": {
+     "import": "./es/index.js",
+     "require": "./lib/index.js"

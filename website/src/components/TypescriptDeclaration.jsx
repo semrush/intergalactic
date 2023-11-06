@@ -142,7 +142,6 @@ export const TypescriptDeclarationView = ({
                     </div>
                   </td>
                   <td className={styles.descriptionCell}>
-                    {/* biome-ignore lint/security/noDangerouslySetInnerHtml: */}
                     <span dangerouslySetInnerHTML={{ __html: property.description }} />
                   </td>
                 </tr>

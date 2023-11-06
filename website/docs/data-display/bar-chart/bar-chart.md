@@ -8,7 +8,7 @@ tabName: Design
 
 @## Description
 
-**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](../bar-chart/bar-chart-vertical/) or [horizontal](/data-display/bar-horizontal/).
+**Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical (like columns)](/data-display/bar-chart/bar-chart-vertical/) or [horizontal](/data-display/bar-horizontal/).
 
 > **Difference from histogram chart**
 >

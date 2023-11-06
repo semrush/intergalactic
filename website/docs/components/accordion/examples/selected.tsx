@@ -17,9 +17,17 @@ const styles = `
   }
 `;
 
-const Demo = () => (
-  <>
-    <style>{styles}</style>
+const Demo = () => {
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.innerHTML = styles;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  return (
     <Accordion>
       {[...new Array(3)].map((_, index) => (
         <Accordion.Item value={index} key={index}>
@@ -40,7 +48,6 @@ const Demo = () => (
         </Accordion.Item>
       ))}
     </Accordion>
-  </>
-);
-
+  );
+};
 export default Demo;

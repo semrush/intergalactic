@@ -63,7 +63,7 @@ ButtonTrigger has the same sizes as BaseTrigger has.
 
 ### FilterTrigger
 
-This type has separate detailed [FilterTrigger guide](/components/filter-trigger) since it operates as an active state of a filter.
+This type has separate detailed [FilterTrigger guide](/components/filter-trigger/filter-trigger) since it operates as an active state of a filter.
 
 ![](static/filter-trigger.png) ![](static/advanced-filter-trigger.png)
 

@@ -50,7 +50,7 @@ export default PlaygroundGeneration((createGroupWidgets) => {
       <Dropdown.Trigger>
         <ButtonTrigger>Trigger</ButtonTrigger>
       </Dropdown.Trigger>
-      <Dropdown.Popper>Hello there! I'm Dropdown's content 🤓</Dropdown.Popper>
+      <Dropdown.Popper>Hello there! I'm Dropdown's content</Dropdown.Popper>
     </Dropdown>
   );
 });
