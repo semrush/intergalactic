@@ -23,13 +23,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.1 ~> 2.8.2], `@semcore/popper` [5.7.7 ~> 5.7.8], `@semcore/utils` [4.8.3 ~> 4.8.4], `@semcore/core` [2.7.6 ~> 2.7.7]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.1 ~> 2.8.2],  `@semcore/popper` [5.7.7 ~> 5.7.8],  `@semcore/utils` [4.8.3 ~> 4.8.4],  `@semcore/core` [2.7.6 ~> 2.7.7]).
 
 ## [3.15.1] - 2023-10-16
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.0 ~> 2.8.1], `@semcore/popper` [5.7.6 ~> 5.7.7], `@semcore/utils` [4.8.2 ~> 4.8.3], `@semcore/core` [2.7.5 ~> 2.7.6]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.8.0 ~> 2.8.1],  `@semcore/popper` [5.7.6 ~> 5.7.7],  `@semcore/utils` [4.8.2 ~> 4.8.3],  `@semcore/core` [2.7.5 ~> 2.7.6]).
 
 ## [3.15.0] - 2023-10-11
 
@@ -42,7 +42,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.5 ~> 2.8.0], `@semcore/flex-box` [5.7.5 ~> 5.8.0], `@semcore/popper` [5.7.5 ~> 5.7.6]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.5 ~> 2.8.0],  `@semcore/flex-box` [5.7.5 ~> 5.8.0],  `@semcore/popper` [5.7.5 ~> 5.7.6]).
 
 ## [3.14.0] - 2023-10-09
 
@@ -54,50 +54,50 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.4 ~> 2.7.5], `@semcore/utils` [4.8.1 ~> 4.8.2], `@semcore/core` [2.7.4 ~> 2.7.5]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.4 ~> 2.7.5],  `@semcore/utils` [4.8.1 ~> 4.8.2],  `@semcore/core` [2.7.4 ~> 2.7.5]).
 
 ## [3.13.3] - 2023-10-03
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.3 ~> 2.7.4], `@semcore/utils` [4.8.0 ~> 4.8.1], `@semcore/core` [2.7.3 ~> 2.7.4]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.3 ~> 2.7.4],  `@semcore/utils` [4.8.0 ~> 4.8.1],  `@semcore/core` [2.7.3 ~> 2.7.4]).
 
 ## [3.13.2] - 2023-10-02
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.2 ~> 2.7.3], `@semcore/utils` [4.7.2 ~> 4.8.0], `@semcore/core` [2.7.2 ~> 2.7.3]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.2 ~> 2.7.3],  `@semcore/utils` [4.7.2 ~> 4.8.0],  `@semcore/core` [2.7.2 ~> 2.7.3]).
 
 ## [3.13.1] - 2023-09-20
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.1 ~> 2.7.2], `@semcore/core` [2.7.1 ~> 2.7.2]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.7.1 ~> 2.7.2],  `@semcore/core` [2.7.1 ~> 2.7.2]).
 
 ## [3.13.0] - 2023-09-20
 
 ### Added
 
 - `index` to render function context type of `HoverLine` and `HoverRect`.
-- `size`, `x` and `y` to render function context type of `XAxis.Ticks` and `YAxis.Ticks`.
+- `size`,  `x` and `y` to render function context type of `XAxis.Ticks` and `YAxis.Ticks`.
 
 ## [3.12.0] - 2023-09-13
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/animation` [2.6.3 ~> 2.7.0], `@semcore/utils` [4.6.3 ~> 4.7.0], `@semcore/core` [2.6.3 ~> 2.7.0]).
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.6.3 ~> 2.7.0],  `@semcore/utils` [4.6.3 ~> 4.7.0],  `@semcore/core` [2.6.3 ~> 2.7.0]).
 
 ## [3.11.3] - 2023-09-12
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.2 ~> 2.6.3], `@semcore/core` [2.6.2 ~> 2.6.3]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.2 ~> 2.6.3],  `@semcore/core` [2.6.2 ~> 2.6.3]).
 
 ## [3.11.2] - 2023-09-08
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.1 ~> 2.6.2], `@semcore/utils` [4.6.1 ~> 4.6.2], `@semcore/core` [2.6.1 ~> 2.6.2]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.6.1 ~> 2.6.2],  `@semcore/utils` [4.6.1 ~> 4.6.2],  `@semcore/core` [2.6.1 ~> 2.6.2]).
 
 ## [3.11.1] - 2023-09-05
 
@@ -109,7 +109,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/animation` [2.5.0 ~> 2.6.0], `@semcore/core` [2.5.0 ~> 2.6.0]).
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.5.0 ~> 2.6.0],  `@semcore/core` [2.5.0 ~> 2.6.0]).
 
 ## [3.10.0] - 2023-08-28
 
@@ -126,7 +126,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version preminor update due to children dependencies update (`@semcore/animation` [2.4.1 ~> 2.5.0], `@semcore/utils` [4.4.1 ~> 4.5.0], `@semcore/core` [2.4.1 ~> 2.5.0]).
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.4.1 ~> 2.5.0],  `@semcore/utils` [4.4.1 ~> 4.5.0],  `@semcore/core` [2.4.1 ~> 2.5.0]).
 
 ## [3.8.2] - 2023-08-24
 
@@ -138,7 +138,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.4.0 ~> 2.4.1], `@semcore/utils` [4.4.0 ~> 4.4.1], `@semcore/core` [2.4.0 ~> 2.4.1]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.4.0 ~> 2.4.1],  `@semcore/utils` [4.4.0 ~> 4.4.1],  `@semcore/core` [2.4.0 ~> 2.4.1]).
 
 ## [3.8.0] - 2023-08-23
 
@@ -168,7 +168,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version prepatch update due to children dependencies update (`@semcore/animation` [2.2.0 ~> 2.2.1], `@semcore/flex-box` [5.2.0 ~> 5.2.1], `@semcore/utils` [4.1.0 ~> 4.2.0], `@semcore/core` [2.2.0 ~> 2.2.1]).
+- Version prepatch update due to children dependencies update (`@semcore/animation` [2.2.0 ~> 2.2.1],  `@semcore/flex-box` [5.2.0 ~> 5.2.1],  `@semcore/utils` [4.1.0 ~> 4.2.0],  `@semcore/core` [2.2.0 ~> 2.2.1]).
 
 ## [3.4.0] - 2023-09-08
 
@@ -186,13 +186,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version minor update due to children dependencies update (`@semcore/animation` [2.1.0 ~> 2.2.0], `@semcore/utils` [4.0.0 ~> 4.1.0]).
+- Version minor update due to children dependencies update (`@semcore/animation` [2.1.0 ~> 2.2.0],  `@semcore/utils` [4.0.0 ~> 4.1.0]).
 
 ## [3.2.0] - 2023-08-01
 
 ### Changed
 
-- Version minor update due to children dependencies update (`@semcore/animation` [2.0.0 ~> 2.1.0], `@semcore/flex-box` [5.0.0 ~> 5.1.0]).
+- Version minor update due to children dependencies update (`@semcore/animation` [2.0.0 ~> 2.1.0],  `@semcore/flex-box` [5.0.0 ~> 5.1.0]).
 
 ## [3.1.1] - 2023-07-31
 
@@ -232,7 +232,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Typed `HoverLine.Tooltip`, `HoverRect.Tooltip`, `Radar.Tooltip`, `Bubble.Tooltip`, `Donut.Tooltip`, `ScatterPlot.Tooltip` and `Venn.Tooltip`.
+- Typed `HoverLine.Tooltip`,   `HoverRect.Tooltip`,   `Radar.Tooltip`,   `Bubble.Tooltip`,   `Donut.Tooltip`,  `ScatterPlot.Tooltip` and `Venn.Tooltip`.
 
 ## [2.17.5] - 2023-06-30
 
@@ -246,19 +246,19 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.19 ~> 1.10.20], `@semcore/utils` [3.53.4 ~> 3.54.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.19 ~> 1.10.20],  `@semcore/utils` [3.53.4 ~> 3.54.0]).
 
 ## [2.17.2] - 2023-06-22
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.18 ~> 1.10.19], `@semcore/utils` [3.53.3 ~> 3.53.4]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.18 ~> 1.10.19],  `@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [2.17.1] - 2023-06-14
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.18 ~> 1.10.19], `@semcore/utils` [3.53.3 ~> 3.53.4]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.18 ~> 1.10.19],  `@semcore/utils` [3.53.3 ~> 3.53.4]).
 
 ## [2.17.0] - 2023-06-12
 
@@ -270,13 +270,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.17 ~> 1.10.18], `@semcore/utils` [3.53.2 ~> 3.53.3]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.17 ~> 1.10.18],  `@semcore/utils` [3.53.2 ~> 3.53.3]).
 
 ## [2.16.1] - 2023-06-09
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.16 ~> 1.10.17], `@semcore/utils` [3.53.1 ~> 3.53.2]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.16 ~> 1.10.17],  `@semcore/utils` [3.53.1 ~> 3.53.2]).
 
 ## [2.16.0] - 2023-06-09
 
@@ -288,7 +288,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.15 ~> 1.10.16], `@semcore/popper` [4.17.17 ~> 4.19.0], `@semcore/utils` [3.53.0 ~> 3.53.1]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.15 ~> 1.10.16],  `@semcore/popper` [4.17.17 ~> 4.19.0],  `@semcore/utils` [3.53.0 ~> 3.53.1]).
 
 ## [2.15.4] - 2023-06-02
 
@@ -300,7 +300,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.13 ~> 1.10.14], `@semcore/utils` [3.52.0 ~> 3.53.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.13 ~> 1.10.14],  `@semcore/utils` [3.52.0 ~> 3.53.0]).
 
 ## [2.15.2] - 2023-05-29
 
@@ -312,7 +312,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.11 ~> 1.10.12], `@semcore/utils` [3.51.1 ~> 3.52.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.11 ~> 1.10.12],  `@semcore/utils` [3.51.1 ~> 3.52.0]).
 
 ## [2.15.0] - 2023-05-24
 
@@ -324,7 +324,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.9 ~> 1.10.10], `@semcore/utils` [3.50.7 ~> 3.51.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.9 ~> 1.10.10],  `@semcore/utils` [3.50.7 ~> 3.51.0]).
 
 ## [2.14.9] - 2023-05-22
 
@@ -342,13 +342,13 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9], `@semcore/utils` [3.50.6 ~> 3.50.7]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.8 ~> 1.10.9],  `@semcore/utils` [3.50.6 ~> 3.50.7]).
 
 ## [2.14.6] - 2023-05-04
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.7 ~> 1.10.8], `@semcore/utils` [3.50.5 ~> 3.50.6]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.7 ~> 1.10.8],  `@semcore/utils` [3.50.5 ~> 3.50.6]).
 
 ## [2.14.3] - 2023-05-02
 
@@ -374,7 +374,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2], `@semcore/utils` [3.50.0 ~> 3.50.3]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.10.1 ~> 1.10.2],  `@semcore/utils` [3.50.0 ~> 3.50.3]).
 
 ## [2.13.8] - 2023-03-31
 
@@ -404,7 +404,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0], `@semcore/utils` [3.49.1 ~> 3.50.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.9 ~> 1.10.0],  `@semcore/utils` [3.49.1 ~> 3.50.0]).
 
 ## [2.13.3] - 2023-03-27
 
@@ -416,7 +416,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.7 ~> 1.9.8], `@semcore/popper` [4.16.9 ~> 4.16.10], `@semcore/utils` [3.48.1 ~> 3.49.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.7 ~> 1.9.8],  `@semcore/popper` [4.16.9 ~> 4.16.10],  `@semcore/utils` [3.48.1 ~> 3.49.0]).
 
 ## [2.13.0] - 2023-03-23
 
@@ -428,7 +428,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.4 ~> 1.9.5], `@semcore/utils` [3.47.3 ~> 3.47.4]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.4 ~> 1.9.5],  `@semcore/utils` [3.47.3 ~> 3.47.4]).
 
 ## [2.12.1] - 2023-03-21
 
@@ -446,7 +446,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.3 ~> 1.9.4], `@semcore/utils` [3.47.2 ~> 3.47.3]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.3 ~> 1.9.4],  `@semcore/utils` [3.47.2 ~> 3.47.3]).
 
 ## [2.11.0] - 2023-03-13
 
@@ -496,7 +496,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.9.0 ~> 1.9.1], `@semcore/utils` [3.47.0 ~> 3.47.1]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.9.0 ~> 1.9.1],  `@semcore/utils` [3.47.0 ~> 3.47.1]).
 
 ## [2.8.14] - 2023-02-11
 
@@ -550,7 +550,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.8.8 ~> 1.8.9], `@semcore/utils` [3.44.3 ~> 3.45.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.8 ~> 1.8.9],  `@semcore/utils` [3.44.3 ~> 3.45.0]).
 
 ## [2.8.3] - 2022-01-10
 
@@ -564,7 +564,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.8.5 ~> 1.8.6], `@semcore/utils` [3.44.1 ~> 3.44.2]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.5 ~> 1.8.6],  `@semcore/utils` [3.44.1 ~> 3.44.2]).
 
 ## [2.8.0] - 2022-01-05
 
@@ -582,7 +582,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.8.4 ~> 1.8.5], `@semcore/utils` [3.44.0 ~> 3.44.1]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.8.4 ~> 1.8.5],  `@semcore/utils` [3.44.0 ~> 3.44.1]).
 
 ## [2.7.0] - 2022-12-14
 
@@ -662,7 +662,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.7.0 ~> 1.7.1], `@semcore/utils` [3.40.0 ~> 3.40.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.7.0 ~> 1.7.1],  `@semcore/utils` [3.40.0 ~> 3.40.0]).
 
 ## [2.4.3] - 2022-10-20
 
@@ -674,7 +674,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.6.1 ~> 1.6.2], `@semcore/utils` [3.39.0 ~> 3.39.1]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.6.1 ~> 1.6.2],  `@semcore/utils` [3.39.0 ~> 3.39.1]).
 
 ## [2.4.0] - 2022-10-10
 
@@ -698,7 +698,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.10 ~> 1.5.11], `@semcore/utils` [3.37.1 ~> 3.37.2]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.5.10 ~> 1.5.11],  `@semcore/utils` [3.37.1 ~> 3.37.2]).
 
 ## [2.3.5] - 2022-09-23
 
@@ -722,7 +722,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.9 ~> 1.5.10], `@semcore/utils` [3.37.0 ~> 3.37.1]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.5.9 ~> 1.5.10],  `@semcore/utils` [3.37.0 ~> 3.37.1]).
 
 ## [2.3.0] - 2022-08-22
 
@@ -734,7 +734,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.7 ~> 1.5.8], `@semcore/utils` [3.36.0 ~> 3.37.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.5.7 ~> 1.5.8],  `@semcore/utils` [3.36.0 ~> 3.37.0]).
 
 ## [2.2.5] - 2022-08-04
 
@@ -752,7 +752,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.4 ~> 1.5.5], `@semcore/utils` [3.34.0 ~> 3.35.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.5.4 ~> 1.5.5],  `@semcore/utils` [3.34.0 ~> 3.35.0]).
 
 ## [2.2.2] - 2022-07-20
 
@@ -767,7 +767,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.3 ~> 1.5.4], `@semcore/utils` [3.33.0 ~> 3.34.0]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.5.3 ~> 1.5.4],  `@semcore/utils` [3.33.0 ~> 3.34.0]).
 
 ## [2.2.0] - 2022-06-30
 
@@ -794,7 +794,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/animation` [1.5.1 ~> 1.5.2], `@semcore/utils` [3.32.1 ~> 3.32.2], `@semcore/button` [4.0.4 ~> 4.0.5], `@semcore/checkbox` [6.0.3 ~> 6.0.4]).
+- Version patch update due to children dependencies update (`@semcore/animation` [1.5.1 ~> 1.5.2],  `@semcore/utils` [3.32.1 ~> 3.32.2],  `@semcore/button` [4.0.4 ~> 4.0.5],  `@semcore/checkbox` [6.0.3 ~> 6.0.4]).
 
 ## [2.0.7] - 2022-05-25
 
@@ -842,7 +842,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2], `@semcore/animation` [1.4.1 ~> 1.4.2]).
+- Version patch update due to children dependencies update (`@semcore/utils` [3.31.2 ~> 3.31.2],  `@semcore/animation` [1.4.1 ~> 1.4.2]).
 
 ## [1.6.8] - 2022-03-10
 
