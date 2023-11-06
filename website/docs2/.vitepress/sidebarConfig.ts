@@ -1523,6 +1523,10 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
                 text: 'API',
               },
               {
+                link: '/data-display/d3-chart/d3-chart-code',
+                text: 'Concept and code',
+              },
+              {
                 link: '/data-display/d3-chart/d3-chart-a11y',
                 text: 'A11y',
               },
