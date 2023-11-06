@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.0] - 2023-11-01
+
+### Changed
+
+- Don't animate the width/height of a node if they are specified as a percentage.
+
 ## [4.9.0] - 2023-10-26
 
 ### Added
