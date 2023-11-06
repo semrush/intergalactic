@@ -31,7 +31,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 ### Fixed
 
 - Pills with `behavior="tabs"` had focus ring both on container and on pills. Now focus ring is only on pills.
-- Focus ring of every pill was overlaped by the next sibling pill. 
+- Focus ring of every pill was overlaped by the next sibling pill.
 
 ## [5.8.4] - 2023-10-03
 
@@ -157,7 +157,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fix
 
-- `PillsProps` wasn't including `BoxProps`. 
+- `PillsProps` wasn't including `BoxProps`.
 
 ## [5.0.0] - 2023-07-17
 

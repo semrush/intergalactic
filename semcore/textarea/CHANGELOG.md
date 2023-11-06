@@ -156,7 +156,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Textarea `minRows` now works without `maxRows`. 
+- Textarea `minRows` now works without `maxRows`.
 
 ## [4.3.32] - 2023-06-27
 

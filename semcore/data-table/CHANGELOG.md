@@ -36,7 +36,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Table with columns with fixed position was not displayed correctly. 
+- Table with columns with fixed position was not displayed correctly.
 
 ## [4.12.2] - 2023-10-03
 
@@ -178,7 +178,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Using special characters and spaces in the data keys were braking columns width. 
+- Using special characters and spaces in the data keys were braking columns width.
 
 ## [4.2.0] - 2023-08-01
 

@@ -42,7 +42,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Invalid attribute React warnings. 
+- Invalid attribute React warnings.
 
 ## [4.10.1] - 2023-10-03
 

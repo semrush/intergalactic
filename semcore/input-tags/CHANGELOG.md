@@ -114,7 +114,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Improved visual state of focused tags container. 
+- Improved visual state of focused tags container.
 
 ## [4.4.1] - 2023-08-21
 
