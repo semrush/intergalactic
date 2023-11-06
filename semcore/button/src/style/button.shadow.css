@@ -96,12 +96,12 @@ SButton[theme='primary-warning'] {
   background-color: var(--intergalactic-icon-primary-warning, #ff642d);
 
   &:hover {
-    background-color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
+    background-color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
   }
 
   &:active,
   &[active] {
-    background-color: var(--intergalactic-icon-primary-warning-hover-active, #c33909);
+    background-color: var(--intergalactic-icon-primary-warning-hover-active, #CC5024);
   }
 }
 
