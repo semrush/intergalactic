@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.12.1] - 2023-11-07
+
+### Changed
+
+- Deprecated `notInteractive` prop.
+
 ## [4.12.0] - 2023-11-06
 
 ### Changed
@@ -255,7 +261,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Added visual cue to the `selected` DropdownMenu.Item.
+- Added visual cue to the `selected` DropdownMenu. Item.
 
 ## [3.6.36] - 2023-05-22
 
