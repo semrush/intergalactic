@@ -13,7 +13,7 @@ import {
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
-import resolveColor from '@semcore/utils/src/color';
+import resolveColor from '@semcore/utils/lib/color';
 
 const lineColors = {
   1: resolveColor('blue-300'),
