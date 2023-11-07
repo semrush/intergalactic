@@ -466,6 +466,10 @@ img {
   isolation: isolate;
 }
 
+.playground-runtime+div[class*='language-'] {
+  max-width: 430px;
+}
+
 .vp-doc div[class*='language-'],
 .vp-block {
   border-radius: 6px;
@@ -474,6 +478,8 @@ img {
 
 .vp-doc .documentation-sandbox div[class*='language-'] {
   border-radius: 0;
+  /* overflow: auto;
+  max-width: 100%; */
 }
 
 .playground-runtime a {
