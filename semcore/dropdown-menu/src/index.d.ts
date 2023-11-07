@@ -57,7 +57,7 @@ export type DropdownMenuItemProps = FlexProps & {
    */
   selected?: boolean;
   /**
-   * Disables the component
+   * Disables item
    */
   disabled?: boolean;
   /**
@@ -65,7 +65,8 @@ export type DropdownMenuItemProps = FlexProps & {
    */
   highlighted?: boolean;
   /**
-   * Makes the element non-interactive
+   * Disables hover state
+   * @deprecated use `disabled` instead
    */
   notInteractive?: boolean;
   /**

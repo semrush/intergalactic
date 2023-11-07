@@ -80,23 +80,19 @@ describe('DropdownMenu', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent(
-    'supports disabled, selected, notInteractive & highlighted props ',
-    async ({ task }) => {
-      const component = (
-        <DropdownMenu>
-          <DropdownMenu.List>
-            <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
-            <DropdownMenu.Item>notInteractive</DropdownMenu.Item>
-            <DropdownMenu.Item selected>selected</DropdownMenu.Item>
-            <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
-          </DropdownMenu.List>
-        </DropdownMenu>
-      );
+  test.concurrent('supports disabled, selected & highlighted props ', async ({ task }) => {
+    const component = (
+      <DropdownMenu>
+        <DropdownMenu.List>
+          <DropdownMenu.Item disabled>disabled</DropdownMenu.Item>
+          <DropdownMenu.Item selected>selected</DropdownMenu.Item>
+          <DropdownMenu.Item highlighted>highlighted</DropdownMenu.Item>
+        </DropdownMenu.List>
+      </DropdownMenu>
+    );
 
-      await expect(await snapshot(component)).toMatchImageSnapshot(task);
-    },
-  );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
 
   test.concurrent('supports addons', async ({ task }) => {
     const component = (
