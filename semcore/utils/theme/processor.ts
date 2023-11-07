@@ -52,15 +52,15 @@ for (const theme of themes) {
     }
   }
 
-  await fs.writeFile(`./semcore/utils/lib/themes/${theme}.css`, tokensToCss(processedTokens));
-  await fs.writeFile(`./semcore/utils/lib/themes/${theme}.json`, tokensToJson(processedTokens));
+  await fs.writeFile(`./semcore/utils/src/themes/${theme}.css`, tokensToCss(processedTokens));
+  await fs.writeFile(`./semcore/utils/src/themes/${theme}.json`, tokensToJson(processedTokens));
 
   autoTheme[theme] = processedTokens;
 
   const usages: { [tokenName: string]: string[] } = {};
   if (theme === defaultTheme) {
-    await fs.writeFile('./semcore/utils/lib/themes/default.css', tokensToCss(processedTokens));
-    await fs.writeFile('./semcore/utils/lib/themes/default.json', tokensToJson(processedTokens));
+    await fs.writeFile('./semcore/utils/src/themes/default.css', tokensToCss(processedTokens));
+    await fs.writeFile('./semcore/utils/src/themes/default.json', tokensToJson(processedTokens));
 
     const projectCssPaths = (
       await glob('./semcore/*/src/**/*.shadow.css', {
@@ -299,7 +299,7 @@ for (const theme in autoTheme) {
   autoThemeLines.push(tokensToCss(autoTheme[theme], selector));
 }
 
-await fs.writeFile('./semcore/utils/lib/themes/auto.css', autoThemeLines.join('\n'));
+await fs.writeFile('./semcore/utils/src/themes/auto.css', autoThemeLines.join('\n'));
 
 execSync('pnpm lint:css --fix', {
   encoding: 'utf-8',

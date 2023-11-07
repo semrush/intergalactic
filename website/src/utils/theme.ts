@@ -1,5 +1,5 @@
-import lightThemeTokens from '../../../semcore/utils/lib/themes/light.json';
-import darkThemeTokens from '../../../semcore/utils/lib/themes/dark.json';
+import lightThemeTokens from '../../../semcore/utils/src/themes/light.json';
+import darkThemeTokens from '../../../semcore/utils/src/themes/dark.json';
 import darkWebsiteTokens from './dark-theme.json';
 import lightWebsiteTokens from './light-theme.json';
 
