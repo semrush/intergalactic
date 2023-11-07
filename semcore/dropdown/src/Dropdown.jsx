@@ -7,7 +7,7 @@ import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 
 import style from './style/dropdown.shadow.css';
-import { hasFocusableIn } from '@semcore/utils/src/use/useFocusLock';
+import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
 
 const INTERACTION_TAGS = ['INPUT', 'TEXTAREA'];
 

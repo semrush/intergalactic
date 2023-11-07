@@ -14,7 +14,7 @@ import { scaleLinear } from 'd3-scale';
 import { Flex, Box } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
 import { curveCardinal } from 'd3-shape';
-import resolveColor from '@semcore/utils/src/color';
+import resolveColor from '@semcore/utils/lib/color';
 
 function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);

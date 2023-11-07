@@ -9,7 +9,7 @@ import {
   LegendItem,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import resolveColor from '@semcore/utils/src/color';
+import resolveColor from '@semcore/utils/lib/color';
 
 const lineColors = {
   1: resolveColor('blue-300'),
