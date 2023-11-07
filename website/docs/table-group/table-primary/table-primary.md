@@ -53,6 +53,6 @@ In other cases, when space is limited, wrap text to the next line within the cel
 
 @## Row states
 
-For more information, refer to the general [Table principles](/table-group/data-table/#a1c3dd) guide.
+For more information, refer to the general [DataTable](/table-group/data-table/#a1c3dd) guide.
 
 @page table-primary-code

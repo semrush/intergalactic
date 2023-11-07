@@ -1931,25 +1931,18 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
             text: 'Table showcase',
           },
           {
-            link: '/table-group/table/table',
-            text: 'Table principles',
+            link: '/table-group/data-table/data-table',
+            text: 'DataTable',
             collapsed: true,
             items: [
               {
-                link: '/table-group/table/table-a11y',
-                text: 'A11y',
-              },
-              {
-                link: '/table-group/table/table-code',
+                link: '/table-group/data-table/data-table-code',
                 text: 'Example',
               },
-            ],
-          },
-          {
-            link: '/table-group/data-table/data-table',
-            text: 'DataTable code and API',
-            collapsed: true,
-            items: [
+              {
+                link: '/table-group/data-table/data-table-a11y',
+                text: 'A11y',
+              },
               {
                 link: '/table-group/data-table/data-table-api',
                 text: 'API',
@@ -1962,7 +1955,7 @@ export const sideBarConfig: DefaultTheme.Sidebar = [
           },
           {
             link: '/table-group/table-old/table-old',
-            text: 'Table code and API',
+            text: 'Table (old)',
             collapsed: true,
             items: [
               {

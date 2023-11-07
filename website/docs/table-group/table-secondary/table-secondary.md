@@ -27,6 +27,6 @@ In a secondary table, whether it's a header or a row, cells use `--spacing-2x` t
 
 @## Row states
 
-For more information, refer to the general [Table principles](/table-group/data-table/#a1c3dd) guide.
+For more information, refer to the general [DataTable](/table-group/data-table/#a1c3dd) guide.
 
 @page table-secondary-code
