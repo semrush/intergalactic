@@ -18,4 +18,6 @@ If you need to show different states of the table rows or cells, please don’t 
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
-<!--@include: ./data-table-a11y-report.md-->
+## Automated screen reader testing
+
+@include data-table-a11y-report
