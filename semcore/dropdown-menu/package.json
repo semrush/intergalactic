@@ -1,7 +1,7 @@
 {
   "name": "@semcore/dropdown-menu",
   "description": "Semrush DropdownMenu Component",
-  "version": "4.12.1-prerelease.0",
+  "version": "4.12.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -19,7 +19,7 @@
     "classnames": "2.2.6"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.9.0-prerelease.0",
+    "@semcore/core": "^2.9.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
