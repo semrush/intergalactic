@@ -49,6 +49,6 @@ In other cases, if there is insufficient space, two lines of text in one cell ca
 
 @## Row states
 
-See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
+For more information, refer to the general [DataTable](/table-group/data-table/#a1c3dd) guide.
 
 @page table-primary-code

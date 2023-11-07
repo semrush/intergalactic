@@ -1,5 +1,5 @@
 ---
-title: Table code and API
+title: Table (old)
 fileSource: table
 deprecated: true
 tabs: Example('table-old'), API('table-old-api'), Changelog('table-old-changelog')
