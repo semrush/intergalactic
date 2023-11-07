@@ -5,14 +5,17 @@ tabName: Design
 docs: true
 ---
 
-Here you will find all quick links for our table and its specific use cases.
+Here, you can find quick links related to our table and its specific use cases.
 
-* [Primary table](/table-group/table-primary/table-primary)
-* [Secondary table](/table-group/table-secondary/table-secondary)
+## Table types
+
+* [Primary table](/table-group/table-primary/): This is the fundamental table type designed for presenting extensive data volumes and complex functionality.
+* [Secondary table](/table-group/table-secondary/): A table type for displaying a small amount of data in a compact format, without complex functionality within widgets and cards.
+
 
 ## Controls
 
-Here you’ll find all controls and recommendations which are important when working with our tables.
+In this section, you'll find all the essential recommendations for table controls.
 
 ::: react-view
 
@@ -28,7 +31,7 @@ const group = {
   accordion: {
 
     title: 'Accordion',
-    route: '/table-group/table-controls/#a4d5aa',
+    route: '/table-group/table-controls#accordion',
     disabled: false,
     type: 'table',
 
@@ -36,7 +39,7 @@ const group = {
   checkboxes: {
 
     title: 'Checkboxes',
-    route: '/table-group/table-controls/#ac425f',
+    route: '/table-group/table-controls#checkboxes',
     disabled: false,
     type: 'table',
 
@@ -44,39 +47,7 @@ const group = {
   resizing: {
 
     title: 'Columns resizing',
-    route: '/table-group/table-controls/#aaac27',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  editing: {
-
-    title: 'Editing and adding content',
-    route: '/table-group/table-controls/#af4b38',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  highlighting: {
-
-    title: 'Highlighting content',
-    route: '/table-group/table-controls/#a25eaa',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  links: {
-
-    title: 'Internal and external links',
-    route: '/table-group/table-controls/#a5d124',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  linksLong: {
-
-    title: 'Long links and text',
-    route: '/table-group/table-controls/#a5b913',
+    route: '/table-group/table-controls#columns-resizing',
     disabled: false,
     type: 'table',
 
@@ -84,7 +55,7 @@ const group = {
   pagination: {
 
     title: 'Pagination',
-    route: '/table-group/table-controls/#acbb81',
+    route: '/table-group/table-controls#pagination',
     disabled: false,
     type: 'table',
 
@@ -92,7 +63,7 @@ const group = {
   sorting: {
 
     title: 'Sorting',
-    route: '/table-group/table-controls/#a2808a',
+    route: '/table-group/table-controls#sorting',
     disabled: false,
     type: 'table',
 
@@ -100,67 +71,11 @@ const group = {
   actionsRow: {
 
     title: 'Status and actions row',
-    route: '/table-group/table-controls/#a02c09',
+    route: '/table-group/table-controls#status-and-actions-row',
     disabled: false,
     type: 'table',
 
-  }, 
-  empty: {
-
-    title: 'Empty table',
-    route: '/table-group/table-states/#a2d2d0',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  loading: {
-
-    title: 'Loading',
-    route: '/table-group/table-states/#a16bfb',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  noData: {
-
-    title: 'No data',
-    route: '/table-group/table-states/#a42a7b',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  nothingFound: {
-
-    title: 'Nothing found',
-    route: '/table-group/table-states/#a9076c',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  progressbar: {
-
-    title: 'Progressbar',
-    route: '/table-group/table-states/#a6ab48',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  skeleton: {
-
-    title: 'Skeleton',
-    route: '/table-group/table-states/#a6ab48',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  error: {
-
-    title: 'Something went wrong',
-    route: '/table-group/table-states/#a6609d',
-    disabled: false,
-    type: 'table',
-
-  }, 
+  },
 }; 
 
 const styles = `
@@ -213,7 +128,7 @@ const App = function () {
 
 ## Use cases
 
-This section describes the most common table use cases.
+This section outlines the most common scenarios for using our tables.
 
 ::: react-view
 
@@ -226,34 +141,10 @@ const getImageName = (title) => {
 }; 
 
 const group = {
-  accordion: {
-
-    title: 'Accordion',
-    route: '/table-group/table-controls/#a4d5aa',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  checkboxes: {
-
-    title: 'Checkboxes',
-    route: '/table-group/table-controls/#ac425f',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  resizing: {
-
-    title: 'Columns resizing',
-    route: '/table-group/table-controls/#aaac27',
-    disabled: false,
-    type: 'table',
-
-  }, 
   editing: {
 
     title: 'Editing and adding content',
-    route: '/table-group/table-controls/#af4b38',
+    route: '/table-group/table-controls#editing-and-adding-content',
     disabled: false,
     type: 'table',
 
@@ -261,7 +152,7 @@ const group = {
   highlighting: {
 
     title: 'Highlighting content',
-    route: '/table-group/table-controls/#a25eaa',
+    route: '/table-group/table-controls#highlighting-content',
     disabled: false,
     type: 'table',
 
@@ -269,7 +160,7 @@ const group = {
   links: {
 
     title: 'Internal and external links',
-    route: '/table-group/table-controls/#a5d124',
+    route: '/table-group/table-controls#internal-and-external-links',
     disabled: false,
     type: 'table',
 
@@ -277,91 +168,11 @@ const group = {
   linksLong: {
 
     title: 'Long links and text',
-    route: '/table-group/table-controls/#a5b913',
+    route: '/table-group/table-controls#long-links-and-text',
     disabled: false,
     type: 'table',
 
-  }, 
-  pagination: {
-
-    title: 'Pagination',
-    route: '/table-group/table-controls/#acbb81',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  sorting: {
-
-    title: 'Sorting',
-    route: '/table-group/table-controls/#a2808a',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  actionsRow: {
-
-    title: 'Status and actions row',
-    route: '/table-group/table-controls/#a02c09',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  empty: {
-
-    title: 'Empty table',
-    route: '/table-group/table-states/#a2d2d0',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  loading: {
-
-    title: 'Loading',
-    route: '/table-group/table-states/#a16bfb',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  noData: {
-
-    title: 'No data',
-    route: '/table-group/table-states/#a42a7b',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  nothingFound: {
-
-    title: 'Nothing found',
-    route: '/table-group/table-states/#a9076c',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  progressbar: {
-
-    title: 'Progressbar',
-    route: '/table-group/table-states/#a6ab48',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  skeleton: {
-
-    title: 'Skeleton',
-    route: '/table-group/table-states/#a6ab48',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  error: {
-
-    title: 'Something went wrong',
-    route: '/table-group/table-states/#a6609d',
-    disabled: false,
-    type: 'table',
-
-  }, 
+  },
 }; 
 
 const styles = `
@@ -414,7 +225,7 @@ const App = function () {
 
 ## States
 
-Here we have descriptions for all table states.
+Here, you'll find descriptions of all the different states that our tables can have.
 
 ::: react-view
 
@@ -427,90 +238,10 @@ const getImageName = (title) => {
 }; 
 
 const group = {
-  accordion: {
-
-    title: 'Accordion',
-    route: '/table-group/table-controls/#a4d5aa',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  checkboxes: {
-
-    title: 'Checkboxes',
-    route: '/table-group/table-controls/#ac425f',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  resizing: {
-
-    title: 'Columns resizing',
-    route: '/table-group/table-controls/#aaac27',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  editing: {
-
-    title: 'Editing and adding content',
-    route: '/table-group/table-controls/#af4b38',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  highlighting: {
-
-    title: 'Highlighting content',
-    route: '/table-group/table-controls/#a25eaa',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  links: {
-
-    title: 'Internal and external links',
-    route: '/table-group/table-controls/#a5d124',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  linksLong: {
-
-    title: 'Long links and text',
-    route: '/table-group/table-controls/#a5b913',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  pagination: {
-
-    title: 'Pagination',
-    route: '/table-group/table-controls/#acbb81',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  sorting: {
-
-    title: 'Sorting',
-    route: '/table-group/table-controls/#a2808a',
-    disabled: false,
-    type: 'table',
-
-  }, 
-  actionsRow: {
-
-    title: 'Status and actions row',
-    route: '/table-group/table-controls/#a02c09',
-    disabled: false,
-    type: 'table',
-
-  }, 
   empty: {
 
     title: 'Empty table',
-    route: '/table-group/table-states/#a2d2d0',
+    route: '/table-group/table-states#empty-table',
     disabled: false,
     type: 'table',
 
@@ -518,7 +249,7 @@ const group = {
   loading: {
 
     title: 'Loading',
-    route: '/table-group/table-states/#a16bfb',
+    route: '/table-group/table-states#loading',
     disabled: false,
     type: 'table',
 
@@ -526,7 +257,7 @@ const group = {
   noData: {
 
     title: 'No data',
-    route: '/table-group/table-states/#a42a7b',
+    route: '/table-group/table-states#no-data',
     disabled: false,
     type: 'table',
 
@@ -534,7 +265,7 @@ const group = {
   nothingFound: {
 
     title: 'Nothing found',
-    route: '/table-group/table-states/#a9076c',
+    route: '/table-group/table-states#nothing-found',
     disabled: false,
     type: 'table',
 
@@ -542,7 +273,7 @@ const group = {
   progressbar: {
 
     title: 'Progressbar',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/table-group/table-states#progressbar',
     disabled: false,
     type: 'table',
 
@@ -550,7 +281,7 @@ const group = {
   skeleton: {
 
     title: 'Skeleton',
-    route: '/table-group/table-states/#a6ab48',
+    route: '/table-group/table-states#skeleton',
     disabled: false,
     type: 'table',
 
@@ -558,7 +289,7 @@ const group = {
   error: {
 
     title: 'Something went wrong',
-    route: '/table-group/table-states/#a6609d',
+    route: '/table-group/table-states#something-went-wrong',
     disabled: false,
     type: 'table',
 
@@ -580,7 +311,7 @@ const styles = `
   }
 `; 
 
-const App = function (props) {
+const App = function () {
   React.useEffect(() => {
 
     const styleSheet = document.createElement('style');
