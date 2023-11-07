@@ -2760,7 +2760,7 @@
 
 ### @semcore/link
 
-* **Changed** `Link.Addon` is centered vertically.
+* **Changed** centered `Link.Addon` vertically.
 
 ## [13.2.3] - 2022-12-09
 
@@ -3445,7 +3445,6 @@
 ### @semcore/link
 
 * **Fixed** Change tag for `Link.Addon` from `div` to `span`
-
 * **Fixed** Update version `@semcore/utils` to use additional functions.
 * **Added** Added screen reader support and empty link aria-label check
 
