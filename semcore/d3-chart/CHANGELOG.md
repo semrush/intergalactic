@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.18.1] - 2023-11-08
+
+### Fixed
+
+- Generating base64 strings from `svg`.
+
 ## [3.18.0] - 2023-11-06
 
 ### Changed
