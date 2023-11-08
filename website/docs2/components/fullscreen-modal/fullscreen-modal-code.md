@@ -74,14 +74,14 @@ const Demo = () => {
           </FullscreenModal.Section>
         </FullscreenModal.Body>
         <FullscreenModal.Footer justifyContent='center' alignItems='center'>
-          <Button size='m' color='gray60' theme='muted' use='tertiary'>
+          <Button size='m' theme='muted' use='tertiary'>
             <Button.Addon>
               <ArrowLeftM />
             </Button.Addon>
             <Button.Text ml={2}>Previous content</Button.Text>
           </Button>
           <Divider orientation='vertical' h={26} mx={6} />
-          <Button size='m' color='gray60' theme='muted' use='tertiary'>
+          <Button size='m' theme='muted' use='tertiary'>
             <Button.Text mr={2}>Next content</Button.Text>
             <Button.Addon>
               <ArrowRightM />

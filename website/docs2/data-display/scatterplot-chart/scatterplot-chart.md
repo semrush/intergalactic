@@ -84,8 +84,8 @@ We recommend using the vertical legend. It helps to "read" the categories and th
 
 Show the following values in the tooltip for this chart type:
 
-- the value for the point on the X axis;
-- the value for the point on the Y axis.
+- the value for the point on the X-axis;
+- the value for the point on the Y-axis.
 
 **In the tooltip, focus on values rather than axis names or data categories.**
 
@@ -117,7 +117,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ![](static/color-yes-no.png)
 
-### Always start the Y axis at 0
+### Always start the Y-axis at 0
 
 Otherwise, it can visually distort the presence of a correlation between the data along the Y and X axes.
 

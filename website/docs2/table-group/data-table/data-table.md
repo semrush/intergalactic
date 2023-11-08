@@ -78,6 +78,8 @@ const data = [
 If you don't see horizontal scrolling in the example, reduce the window size.
 :::
 
+As you can see the most common case is scroll showed at the bottom of the table. But you can add it to the table header either. Scroll in the table header is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll can be either in the header and at the bottom of the table. Refer to the examples in the [Fixed header section](/table-group/data-table/data-table#fixed_header).
+
 ::: sandbox
 
 <script lang="tsx">
@@ -480,6 +482,8 @@ To fix the table header, use the `<Box position="sticky" top={top} />` component
 Set `zIndex=2` for correct display.
 :::
 
+Note that scroll in the table header is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll can be either in the header and at the bottom of the table.
+
 ::: sandbox
 
 <script lang="tsx">
@@ -771,9 +775,9 @@ const Demo = () => {
   const portalRef = React.useRef(null);
   return (
     <>
-      <div style={{ border: '1px solid' }} ref={portalRef} />
+      <div ref={portalRef} />
       <Divider my={5} />
-      <DataTable style={{ border: '1px solid' }} data={data}>
+      <DataTable data={data}>
         <PortalProvider value={portalRef}>
           <Portal>
             <DataTable.Head>

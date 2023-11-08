@@ -73,9 +73,9 @@ Avoid making the additional lines overly bright and colorful – the emphasis sh
 
 ### Styles
 
-- The Y axis is hidden by default.
+- The Y-axis is hidden by default.
 - The color of additional axes is `--chart-grid-line`.
-- The color of the X axis and additional active lines on the grid (if needed) is `--chart-grid-x-axis`.
+- The color of the X-axis and additional active lines on the grid (if needed) is `--chart-grid-x-axis`.
 - The left and right margins for Y-axis values are 16px.
 - The `margin-top` for X-axis values is 12px.
 
