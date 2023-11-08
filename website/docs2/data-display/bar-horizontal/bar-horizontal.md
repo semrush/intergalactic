@@ -40,7 +40,7 @@ const App = PlaygroundGeneration((preview) => {
   const chartProps: BarChartProps = {
     data,
     groupKey: 'x',
-    plotWidth: 500,
+    plotWidth: 300,
     plotHeight: 300,
     showTotalInTooltip,
     direction,

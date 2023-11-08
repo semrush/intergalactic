@@ -53,8 +53,8 @@ const App = PlaygroundGeneration((preview) => {
   const chartProps: RadarChartProps = {
     data,
     groupKey: 'categories',
-    plotWidth: 400,
-    plotHeight: 400,
+    plotWidth: 300,
+    plotHeight: 300,
     direction,
     hideTooltip,
     hideXAxis,

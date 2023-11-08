@@ -100,7 +100,7 @@ const App = PlaygroundGeneration((preview) => {
   const chartProps: LineChartProps = {
     data,
     groupKey: 'x',
-    plotWidth: 500,
+    plotWidth: 300,
     plotHeight: 200,
     showTotalInTooltip,
     direction,

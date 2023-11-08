@@ -43,7 +43,7 @@ const App = PlaygroundGeneration((preview) => {
 
   const chartProps: BubbleChartProps = {
     data,
-    plotWidth: 500,
+    plotWidth: 300,
     plotHeight: 200,
     direction,
     hideTooltip,

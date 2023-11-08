@@ -40,7 +40,7 @@ const App = PlaygroundGeneration((preview) => {
   const chartProps: ScatterPlotChartProps = {
     data,
     groupKey: 'x',
-    plotWidth: 500,
+    plotWidth: 300,
     plotHeight: 300,
     direction,
     hideTooltip,
