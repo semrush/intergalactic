@@ -97,11 +97,20 @@ const data = [...Array(5).keys()].map((d, i) => ({
 
 <script lang="tsx">
 import React from 'react';
-import { Plot, StackBar, YAxis, XAxis } from '@semcore/ui/d3-chart';
+import {
+  Plot,
+  StackBar,
+  YAxis,
+  XAxis,
+  ChartLegend,
+  LegendItem,
+  makeDataHintsContainer,
+} from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
-import Checkbox from '@semcore/ui/checkbox';
+
+const dataHints = makeDataHintsContainer();
 
 const Demo = () => {
   const MARGIN = 30;
@@ -118,69 +127,62 @@ const Demo = () => {
     .range([height - MARGIN, 0])
     .domain([0, 15]);
 
-  const barsList = Object.keys(data[0]).filter((name) => name !== 'category');
-  const [displayedBars, setDisplayedBars] = React.useState(
-    barsList.reduce((o, key) => ({ ...o, [key]: true }), {}),
-  );
-  const [opacityBars, setOpacityBars] = React.useState(
-    barsList.reduce((o, key) => ({ ...o, [key]: false }), {}),
-  );
-  const displayedBarsList = React.useMemo(
-    () =>
-      Object.entries(displayedBars)
-        .filter(([, displayed]) => displayed)
-        .map(([stack]) => stack),
-    [displayedBars],
+  const [legendItems, setLegendItems] = React.useState(
+    Object.keys(data[0])
+      .filter((name) => name !== 'category')
+      .map((item, index) => {
+        return {
+          id: item,
+          label: `Dataset${item}`,
+          checked: true,
+          color: `chart-palette-order-${index + 1}`,
+        };
+      }),
   );
 
-  const handleMouseEnter = (stack) => () => {
-    if (displayedBarsList.includes(stack)) {
-      const opacity = { ...opacityBars };
+  const [highlightedLine, setHighlightedLine] = React.useState(-1);
 
-      Object.keys(opacity).forEach((key) => {
-        if (key !== stack) {
-          opacity[key] = true;
+  const handleChangeVisible = React.useCallback((id: string, isVisible: boolean) => {
+    setLegendItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.id === id) {
+          item.checked = isVisible;
         }
+
+        return item;
       });
+    });
+  }, []);
 
-      setOpacityBars({ ...opacity });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setOpacityBars(barsList.reduce((o, key) => ({ ...o, [key]: false }), {}));
-  };
+  const handleMouseEnter = React.useCallback((id: string) => {
+    setHighlightedLine(legendItems.findIndex((line) => line.id === id));
+  }, []);
+  const handleMouseLeave = React.useCallback(() => {
+    setHighlightedLine(-1);
+  }, []);
 
   return (
     <Card w={'550px'}>
-      <Card.Header pt={4}> Chart legend</Card.Header>
+      <Card.Header pt={4}>
+        <Card.Title tag={'h4'} m={0} inline={true}>
+          Chart legend
+        </Card.Title>
+      </Card.Header>
       <Card.Body tag={Flex} direction='column'>
-        <Flex flexWrap w={width} mt={1}>
-          {barsList.map((stack, index) => {
-            return (
-              <Checkbox
-                key={stack}
-                theme={`chart-palette-order-${index + 1}`}
-                mr={4}
-                mb={2}
-                onMouseEnter={handleMouseEnter(stack)}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Checkbox.Value
-                  checked={displayedBars[stack]}
-                  onChange={(checked) =>
-                    setDisplayedBars((prevDisplayedBar) => ({
-                      ...prevDisplayedBar,
-                      [stack]: checked,
-                    }))
-                  }
-                />
-                <Checkbox.Text>{stack}</Checkbox.Text>
-              </Checkbox>
-            );
-          })}
-        </Flex>
-        <Plot data={data} scale={[xScale, yScale]} width={width} height={height}>
+        <ChartLegend
+          items={legendItems}
+          onChangeVisibleItem={handleChangeVisible}
+          onMouseEnterItem={handleMouseEnter}
+          onMouseLeaveItem={handleMouseLeave}
+          dataHints={dataHints}
+        />
+        <Plot
+          data={data}
+          scale={[xScale, yScale]}
+          width={width}
+          height={height}
+          dataHints={dataHints}
+        >
           <YAxis>
             <YAxis.Ticks />
             <YAxis.Grid />
@@ -189,9 +191,18 @@ const Demo = () => {
             <XAxis.Ticks />
           </XAxis>
           <StackBar x='category'>
-            {displayedBarsList.map((stack) => (
-              <StackBar.Bar y={stack} key={stack} transparent={opacityBars[stack]} />
-            ))}
+            {legendItems.map((stack, index) => {
+              return (
+                stack.checked && (
+                  <StackBar.Bar
+                    y={stack.id}
+                    key={stack.id}
+                    color={stack.color}
+                    transparent={highlightedLine !== -1 && highlightedLine !== index}
+                  />
+                )
+              );
+            })}
           </StackBar>
         </Plot>
       </Card.Body>
@@ -201,9 +212,9 @@ const Demo = () => {
 
 const data = [...Array(5).keys()].map((d, i) => ({
   category: `Category ${i}`,
-  stack1: Math.random() * 5,
-  stack2: Math.random() * 5,
-  stack3: Math.random() * 5,
+  1: Math.random() * 5,
+  2: Math.random() * 5,
+  3: Math.random() * 5,
 }));
 </script>
 

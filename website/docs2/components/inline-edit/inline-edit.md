@@ -36,10 +36,10 @@ Table: InlineEdit states
 | State                   | Appearance example     | Styles  |
 | ----------------------- | ---------------------- | ------- |
 | Normal                  | ![](static/normal.png)        | The placeholder's color matches that of a default input `--text-placeholder`.    |
-| Hover                   | ![](static/hover.png)         | The cursor changes to a `pointer`. The icon's color shifts to `--icon-secondary-neutral-hover-active`.    |
+| Hover                   | ![](static/hover.png)         | The cursor changes to a `pointer`. The icon's color shifts to the darker one with CSS filters.    |
 | Focus                   | ![](static/opened.png)        | Display the input type required for data entry ([normal](/components/input/input), [textarea](/components/textarea/textarea), [select](/components/select/select), [color-picker](/components/color-picker/color-picker), [time-picker](/components/time-picker/time-picker), for example). |
 | Entered data            | ![](static/success.png)       | Text color changes to `--text-primary`.      |
-| Entered data with hover | ![](static/success-hover.png) | The cursor changes to a `pointer`. The interactive trailing add-on's color shifts to `--icon-secondary-neutral-hover-active`.|
+| Entered data with hover | ![](static/success-hover.png) | The cursor changes to a `pointer`. The interactive trailing addon's color shifts to the darker one with CSS filters.|
 
 ## Animation
 

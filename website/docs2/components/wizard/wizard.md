@@ -60,7 +60,7 @@ Table: Wizard content area styles
 | -------- | ------------------ |
 | Content area paddings | ![padding: 40px; background-color: var(--white); color: var(--gray-800); font-size: var(--fs-200); line-height: var(--lh-200); font-weight: 400;](static/wizard-paddings.png) |
 | Header styles | ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500); font-weight: 700;](static/header.png) |
-| Icon for closing window | The `Close` icon uses L size, and `--icon-secondary-neutral` token for color. On hover, the color of the icon changes to the next one in the palette – `--icon-secondary-neutral-hover-active`. ![](static/close-paddings.png) |
+| Icon for closing window | The `Close` icon uses L size, and `--icon-secondary-neutral` token for color. On hover, the color of the icon changes to the darker one using CSS filter. ![](static/close-paddings.png) |
 | Footer styles | For basic controls use L size. ![margin-bottom: 20px; color: var(--gray-800); font-size: var(--fs-500); line-height: var(--lh-500);](static/footer.png) |
 
 ## Keyboard control
