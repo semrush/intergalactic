@@ -185,19 +185,19 @@ importers:
   semcore/accordion:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -222,13 +222,13 @@ importers:
   semcore/animation:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -247,13 +247,13 @@ importers:
   semcore/badge:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -272,25 +272,25 @@ importers:
   semcore/base-trigger:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/dot':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../dot
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/spin':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../spin
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -315,16 +315,16 @@ importers:
   semcore/breadcrumbs:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -343,7 +343,7 @@ importers:
   semcore/breakpoints:
     dependencies:
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -362,19 +362,19 @@ importers:
   semcore/button:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/spin':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../spin
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -396,22 +396,22 @@ importers:
   semcore/card:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/tooltip':
-        specifier: 6.9.0
+        specifier: 6.10.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -430,16 +430,16 @@ importers:
   semcore/carousel:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -464,16 +464,16 @@ importers:
   semcore/checkbox:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -492,28 +492,28 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/divider':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../dropdown
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -541,7 +541,7 @@ importers:
         specifier: 0.0.1-alpha.74
         version: 0.0.1-alpha.74
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -569,13 +569,13 @@ importers:
   semcore/counter:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -597,22 +597,22 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(typescript@5.1.6)
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/divider':
-        specifier: 4.7.3
-        version: 4.7.3(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.10.0
+        version: link:../divider
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.8.0
+        specifier: 5.9.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       '@types/d3-shape':
         specifier: ^3.1.0
@@ -691,19 +691,19 @@ importers:
   semcore/data-table:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../scroll-area
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -767,40 +767,40 @@ importers:
   semcore/date-picker:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.14.0
+        specifier: 4.15.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/divider':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../dropdown
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../input-mask
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       dayjs:
         specifier: 1.8.36
@@ -828,13 +828,13 @@ importers:
   semcore/divider:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -853,19 +853,19 @@ importers:
   semcore/dot:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/portal':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../portal
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -893,19 +893,19 @@ importers:
   semcore/drag-and-drop:
     dependencies:
       '@semcore/card':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../card
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/grid':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../grid
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -939,16 +939,16 @@ importers:
   semcore/dropdown:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.8.0
+        specifier: 5.9.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -973,19 +973,19 @@ importers:
   semcore/dropdown-menu:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../dropdown
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/scroll-area':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../scroll-area
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1016,16 +1016,16 @@ importers:
   semcore/ellipsis:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/tooltip':
-        specifier: 6.9.0
+        specifier: 6.10.0
         version: link:../tooltip
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1098,25 +1098,25 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../format-text
       '@semcore/illustration':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../illustration
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1135,22 +1135,22 @@ importers:
   semcore/feature-popover:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/popper':
-        specifier: 5.8.0
+        specifier: 5.9.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1169,25 +1169,25 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/notice':
-        specifier: 5.13.0
+        specifier: 5.14.0
         version: link:../notice
       '@semcore/spin-container':
-        specifier: 7.10.0
+        specifier: 7.11.0
         version: link:../spin-container
       '@semcore/tooltip':
-        specifier: 6.9.0
+        specifier: 6.10.0
         version: link:../tooltip
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       final-form:
         specifier: 4.20.4
@@ -1215,13 +1215,13 @@ importers:
   semcore/flags:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1255,10 +1255,10 @@ importers:
   semcore/flex-box:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1286,13 +1286,13 @@ importers:
   semcore/format-text:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1311,22 +1311,22 @@ importers:
   semcore/fullscreen-modal:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.15.0
+        specifier: 4.16.0
         version: link:../modal
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1345,13 +1345,13 @@ importers:
   semcore/grid:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1370,7 +1370,7 @@ importers:
   semcore/i18n-unplugin:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       unplugin:
         specifier: 1.2.0
@@ -1401,16 +1401,16 @@ importers:
   semcore/icon:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: 'link:'
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -1441,10 +1441,10 @@ importers:
         specifier: 7.19.0
         version: 7.19.0
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       react:
         specifier: 16.8 - 18
@@ -1469,16 +1469,16 @@ importers:
   semcore/inline-edit:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1503,22 +1503,22 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/spin':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../spin
       '@semcore/tooltip':
-        specifier: 6.9.0
+        specifier: 6.10.0
         version: link:../tooltip
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1540,16 +1540,16 @@ importers:
   semcore/input:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1571,19 +1571,19 @@ importers:
   semcore/input-mask:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1611,13 +1611,13 @@ importers:
   semcore/input-number:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1636,19 +1636,19 @@ importers:
   semcore/input-tags:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/scroll-area':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../scroll-area
       '@semcore/tag':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../tag
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1673,16 +1673,16 @@ importers:
   semcore/link:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1704,28 +1704,28 @@ importers:
   semcore/modal:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/outside-click':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../outside-click
       '@semcore/portal':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1750,10 +1750,10 @@ importers:
   semcore/neighbor-location:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1772,22 +1772,22 @@ importers:
   semcore/notice:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/notice-global':
-        specifier: 2.23.0
+        specifier: 2.24.0
         version: link:../notice-global
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1806,22 +1806,22 @@ importers:
   semcore/notice-bubble:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/portal':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../portal
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1840,19 +1840,19 @@ importers:
   semcore/notice-global:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1871,10 +1871,10 @@ importers:
   semcore/outside-click:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1893,28 +1893,28 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/link':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../link
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1933,16 +1933,16 @@ importers:
   semcore/pills:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -1976,25 +1976,25 @@ importers:
         specifier: 2.11.5
         version: 2.11.5
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/outside-click':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../outside-click
       '@semcore/portal':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../portal
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2013,10 +2013,10 @@ importers:
   semcore/portal:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2038,13 +2038,13 @@ importers:
   semcore/product-head:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2063,13 +2063,13 @@ importers:
   semcore/progress-bar:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2094,16 +2094,16 @@ importers:
   semcore/radio:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2122,13 +2122,13 @@ importers:
   semcore/scroll-area:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2147,31 +2147,31 @@ importers:
   semcore/select:
     dependencies:
       '@semcore/base-trigger':
-        specifier: 4.14.0
+        specifier: 4.15.0
         version: link:../base-trigger
       '@semcore/checkbox':
-        specifier: 7.12.0
+        specifier: 7.13.0
         version: link:../checkbox
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/divider':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.11.0
+        specifier: 4.12.2-prerelease.0
         version: link:../dropdown-menu
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -2202,28 +2202,28 @@ importers:
   semcore/side-panel:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/outside-click':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../outside-click
       '@semcore/portal':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../portal
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2242,13 +2242,13 @@ importers:
   semcore/skeleton:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2267,13 +2267,13 @@ importers:
   semcore/slider:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2298,13 +2298,13 @@ importers:
   semcore/spin:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2323,19 +2323,19 @@ importers:
   semcore/spin-container:
     dependencies:
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/spin':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../spin
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2354,13 +2354,13 @@ importers:
   semcore/sticky:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2379,16 +2379,16 @@ importers:
   semcore/switch:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2413,16 +2413,16 @@ importers:
   semcore/tab-line:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2441,13 +2441,13 @@ importers:
   semcore/tab-panel:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2469,22 +2469,22 @@ importers:
   semcore/table:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/scroll-area':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../scroll-area
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       classnames:
         specifier: 2.2.6
@@ -2509,16 +2509,16 @@ importers:
   semcore/tag:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2537,13 +2537,13 @@ importers:
   semcore/textarea:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       csstype:
         specifier: 3.0.8
@@ -2565,22 +2565,22 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.16.0
+        specifier: 4.17.2-prerelease.0
         version: link:../select
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2605,16 +2605,16 @@ importers:
   semcore/tooltip:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.8.0
+        specifier: 5.9.0
         version: link:../popper
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -2633,16 +2633,16 @@ importers:
   semcore/typography:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       csstype:
         specifier: 3.0.8
@@ -2664,223 +2664,223 @@ importers:
   semcore/ui:
     dependencies:
       '@semcore/accordion':
-        specifier: 5.12.0
+        specifier: 5.13.0
         version: link:../accordion
       '@semcore/animation':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../animation
       '@semcore/badge':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../badge
       '@semcore/base-trigger':
-        specifier: 4.14.0
+        specifier: 4.15.0
         version: link:../base-trigger
       '@semcore/breadcrumbs':
-        specifier: 5.13.0
+        specifier: 5.14.0
         version: link:../breadcrumbs
       '@semcore/breakpoints':
-        specifier: 1.11.0
+        specifier: 1.12.0
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../button
       '@semcore/card':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.14.0
+        specifier: 3.15.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 7.12.0
+        specifier: 7.13.0
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: 2.13.0
+        specifier: 2.14.0
         version: link:../color-picker
       '@semcore/core':
-        specifier: 2.8.0
+        specifier: 2.9.0
         version: link:../core
       '@semcore/counter':
-        specifier: 3.9.0
+        specifier: 3.10.0
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.17.0
+        specifier: 3.18.0
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.15.0
+        specifier: 4.16.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.14.0
+        specifier: 4.15.2-prerelease.0
         version: link:../date-picker
       '@semcore/divider':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../divider
       '@semcore/dot':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../dot
       '@semcore/drag-and-drop':
-        specifier: 3.16.0
+        specifier: 3.17.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.11.0
+        specifier: 4.12.2-prerelease.0
         version: link:../dropdown-menu
       '@semcore/ellipsis':
-        specifier: 2.10.0
+        specifier: 2.11.0
         version: link:../ellipsis
       '@semcore/email':
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../errors
       '@semcore/feature-popover':
-        specifier: 4.12.0
+        specifier: 4.13.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 6.11.0
+        specifier: 6.12.0
         version: link:../feedback-form
       '@semcore/flags':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../flags
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/format-text':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../format-text
       '@semcore/fullscreen-modal':
-        specifier: 3.14.0
+        specifier: 3.15.0
         version: link:../fullscreen-modal
       '@semcore/grid':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../grid
       '@semcore/i18n-unplugin':
-        specifier: 0.8.0
+        specifier: 0.9.0
         version: link:../i18n-unplugin
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/illustration':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../illustration
       '@semcore/inline-edit':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../inline-edit
       '@semcore/inline-input':
-        specifier: 4.14.0
+        specifier: 4.15.0
         version: link:../inline-input
       '@semcore/input':
-        specifier: 4.11.0
+        specifier: 4.12.0
         version: link:../input
       '@semcore/input-mask':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../input-mask
       '@semcore/input-number':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.12.0
+        specifier: 4.13.0
         version: link:../input-tags
       '@semcore/link':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../link
       '@semcore/modal':
-        specifier: 4.15.0
+        specifier: 4.16.0
         version: link:../modal
       '@semcore/neighbor-location':
-        specifier: 4.8.0
+        specifier: 4.9.0
         version: link:../neighbor-location
       '@semcore/notice':
-        specifier: 5.13.0
+        specifier: 5.14.0
         version: link:../notice
       '@semcore/notice-bubble':
-        specifier: 5.12.0
+        specifier: 5.13.0
         version: link:../notice-bubble
       '@semcore/notice-global':
-        specifier: 2.23.0
+        specifier: 2.24.0
         version: link:../notice-global
       '@semcore/outside-click':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 4.15.0
+        specifier: 4.16.0
         version: link:../pagination
       '@semcore/pills':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../pills
       '@semcore/popper':
-        specifier: 5.8.0
+        specifier: 5.9.0
         version: link:../popper
       '@semcore/portal':
-        specifier: 3.8.0
+        specifier: 3.9.0
         version: link:../portal
       '@semcore/product-head':
-        specifier: 4.10.0
+        specifier: 4.11.0
         version: link:../product-head
       '@semcore/progress-bar':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../progress-bar
       '@semcore/radio':
-        specifier: 6.12.0
+        specifier: 6.13.0
         version: link:../radio
       '@semcore/scroll-area':
-        specifier: 5.11.0
+        specifier: 5.12.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.16.0
+        specifier: 4.17.2-prerelease.0
         version: link:../select
       '@semcore/side-panel':
-        specifier: 3.14.0
+        specifier: 3.15.0
         version: link:../side-panel
       '@semcore/skeleton':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../skeleton
       '@semcore/slider':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../slider
       '@semcore/spin':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../spin
       '@semcore/spin-container':
-        specifier: 7.10.0
+        specifier: 7.11.0
         version: link:../spin-container
       '@semcore/sticky':
-        specifier: 3.9.0
+        specifier: 3.10.0
         version: link:../sticky
       '@semcore/switch':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../switch
       '@semcore/tab-line':
-        specifier: 4.9.0
+        specifier: 4.10.0
         version: link:../tab-line
       '@semcore/tab-panel':
-        specifier: 4.10.0
+        specifier: 4.11.0
         version: link:../tab-panel
       '@semcore/tag':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../tag
       '@semcore/textarea':
-        specifier: 5.10.0
+        specifier: 5.11.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.16.0
+        specifier: 4.17.2-prerelease.0
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: 6.9.0
+        specifier: 6.10.0
         version: link:../tooltip
       '@semcore/typography':
-        specifier: 5.14.0
+        specifier: 5.15.0
         version: link:../typography
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       '@semcore/widget-empty':
-        specifier: 4.10.0
+        specifier: 4.11.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 2.14.0
+        specifier: 2.15.0
         version: link:../wizard
       react:
         specifier: 16.8 - 18
@@ -2978,16 +2978,16 @@ importers:
   semcore/widget-empty:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/illustration':
-        specifier: 2.9.0
+        specifier: 2.10.0
         version: link:../illustration
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -3006,19 +3006,19 @@ importers:
   semcore/wizard:
     dependencies:
       '@semcore/core':
-        specifier: ^2.8.0
+        specifier: ^2.9.0
         version: link:../core
       '@semcore/flex-box':
-        specifier: 5.9.0
+        specifier: 5.10.0
         version: link:../flex-box
       '@semcore/icon':
-        specifier: 4.13.0
+        specifier: 4.14.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.15.0
+        specifier: 4.16.0
         version: link:../modal
       '@semcore/utils':
-        specifier: 4.9.0
+        specifier: 4.10.1
         version: link:../utils
       react:
         specifier: 16.8 - 18
@@ -3101,8 +3101,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(postcss@8.2.13)
       postcss-preset-env:
-        specifier: 6.7.0
-        version: 6.7.0
+        specifier: 9.3.0
+        version: 9.3.0(postcss@8.2.13)
       postcss-value-parser:
         specifier: 4.1.0
         version: 4.1.0
@@ -5933,9 +5933,49 @@ packages:
       - encoding
     dev: true
 
+  /@csstools/cascade-layer-name-parser@1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
+    resolution: {integrity: sha512-v/5ODKNBMfBl0us/WQjlfsvSlYxfZLhNMVIsuCPib2ulTwGKYbKJbwqw671+qH9Y4wvWVnu7LBChvml/wBKjFg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^2.3.2
+      '@csstools/css-tokenizer': ^2.2.1
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+    dev: false
+
+  /@csstools/color-helpers@3.0.2:
+    resolution: {integrity: sha512-NMVs/l7Y9eIKL5XjbCHEgGcG8LOUT2qVcRjX6EzkCdlvftHVKr2tHIPzHavfrULRZ5Q2gxrJ9f44dAlj6fX97Q==}
+    engines: {node: ^14 || ^16 || >=18}
+    dev: false
+
   /@csstools/convert-colors@1.4.0:
     resolution: {integrity: sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==}
     engines: {node: '>=4.0.0'}
+
+  /@csstools/css-calc@1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
+    resolution: {integrity: sha512-ZV1TSmToiNcQL1P3hfzlzZzA02mmVkVmXGaUDUqpYUG84PmLhVSZpKX+KfxAuOcK7de04UXSQPBrAvaya6iiGg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^2.3.2
+      '@csstools/css-tokenizer': ^2.2.1
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+    dev: false
+
+  /@csstools/css-color-parser@1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
+    resolution: {integrity: sha512-SlGd8E6ron24JYQPQAIzu5tvmWi1H4sDKTdA7UDnwF45oJv7AVESbOlOO1YjfBhrQFuvLWUgKiOY9DwGoAxwTA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^2.3.2
+      '@csstools/css-tokenizer': ^2.2.1
+    dependencies:
+      '@csstools/color-helpers': 3.0.2
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+    dev: false
 
   /@csstools/css-parser-algorithms@2.2.0(@csstools/css-tokenizer@2.1.1):
     resolution: {integrity: sha512-9BoQ/jSrPq4vv3b9jjLW+PNNv56KlDH5JMx5yASSNrCtvq70FCNZUjXRvbCeR9hYj9ZyhURtqpU/RFIgg6kiOw==}
@@ -5946,10 +5986,24 @@ packages:
       '@csstools/css-tokenizer': 2.1.1
     dev: true
 
+  /@csstools/css-parser-algorithms@2.3.2(@csstools/css-tokenizer@2.2.1):
+    resolution: {integrity: sha512-sLYGdAdEY2x7TSw9FtmdaTrh2wFtRJO5VMbBrA8tEqEod7GEggFmxTSK9XqExib3yMuYNcvcTdCZIP6ukdjAIA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-tokenizer': ^2.2.1
+    dependencies:
+      '@csstools/css-tokenizer': 2.2.1
+    dev: false
+
   /@csstools/css-tokenizer@2.1.1:
     resolution: {integrity: sha512-GbrTj2Z8MCTUv+52GE0RbFGM527xuXZ0Xa5g0Z+YN573uveS4G0qi6WNOMyz3yrFM/jaILTTwJ0+umx81EzqfA==}
     engines: {node: ^14 || ^16 || >=18}
     dev: true
+
+  /@csstools/css-tokenizer@2.2.1:
+    resolution: {integrity: sha512-Zmsf2f/CaEPWEVgw29odOj+WEVoiJy9s9NOv5GgNY9mZ1CZ7394By6wONrONrTsnNDv6F9hR02nvFihrGVGHBg==}
+    engines: {node: ^14 || ^16 || >=18}
+    dev: false
 
   /@csstools/media-query-list-parser@2.1.1(@csstools/css-parser-algorithms@2.2.0)(@csstools/css-tokenizer@2.1.1):
     resolution: {integrity: sha512-pUjtFbaKbiFNjJo8pprrIaXLvQvWIlwPiFnRI4sEnc4F0NIGTOsw8kaJSR3CmZAKEvV8QYckovgAnWQC0bgLLQ==}
@@ -5962,6 +6016,326 @@ packages:
       '@csstools/css-tokenizer': 2.1.1
     dev: true
 
+  /@csstools/media-query-list-parser@2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1):
+    resolution: {integrity: sha512-IxVBdYzR8pYe89JiyXQuYk4aVVoCPhMJkz6ElRwlVysjwURTsTk/bmY/z4FfeRE+CRBMlykPwXEVUg8lThv7AQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      '@csstools/css-parser-algorithms': ^2.3.2
+      '@csstools/css-tokenizer': ^2.2.1
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+    dev: false
+
+  /@csstools/postcss-cascade-layers@4.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-UYFuFL9GgVnftg9v7tBvVEBRLaBeAD66euD+yYy5fYCUld9ZIWTJNCE30hm6STMEdt6FL5xzeVw1lAZ1tpvUEg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
+  /@csstools/postcss-color-function@3.0.7(postcss@8.2.13):
+    resolution: {integrity: sha512-/PIB20G1TPCXmQlaJLWIYzTZRZpj6csT4ijgnshIj/kcmniIRroAfDa0xSWnfuO1eNo0NptIaPU7jzUukWn55Q==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-color-mix-function@2.0.7(postcss@8.2.13):
+    resolution: {integrity: sha512-57/g8aGo5eKFjEeJMiRKh8Qq43K2rCyk5ZZTvJ34TNl4zUtYU5DvLkIkOnhCtL8/a4z9oMA42aOnFPddRrScUQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-exponential-functions@1.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-ZLK2iSK4DUxeypGce2PnQSdYugUqDTwxnhNiq1o6OyKMNYgYs4eKbvEhFG8JKr1sJWbeqBi5jRr0017l2EWVvg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-font-format-keywords@3.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-ntkGj+1uDa/u6lpjPxnkPcjJn7ChO/Kcy08YxctOZI7vwtrdYvFhmE476dq8bj1yna306+jQ9gzXIG/SWfOaRg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-gamut-mapping@1.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-6UQyK8l9YaG5Ao5rBDcCnKHrLsHiQ1E0zeFQuqDJqEtinVzAPb/MwSw3TenZXL1Rnd7th3tb+4CBFHBXdW5tbQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-gradients-interpolation-method@4.0.7(postcss@8.2.13):
+    resolution: {integrity: sha512-GT1CzE/Tyr/ei4j5BwKESkHAgg+Gzys/0mAY7W+UiR+XrcYk5hDbOrE/YJIx1rflfO/7La1bDoZtA0YnLl4qNA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-hwb-function@3.0.6(postcss@8.2.13):
+    resolution: {integrity: sha512-uQgWt2Ho2yy2S6qthWY7mD5v57NKxi6dD1NB8nAybU5bJSsm+hLXRGm3/zbOH4xNrqO3Cl60DFSNlSrUME3Xjg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-ic-unit@3.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-n28Er7W9qc48zNjJnvTKuVHY26/+6YlA9WzJRksIHiAWOMxSH5IksXkw7FpkIOd+jLi59BMrX/BWrZMgjkLBHg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-initial@1.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-1l7iHHjIl5qmVeGItugr4ZOlCREDP71mNKqoEyxlosIoiu3Os1nPWMHpuCvDLCLiWI/ONTOg3nzJh7gwHOrqUA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-is-pseudo-class@4.0.3(postcss@8.2.13):
+    resolution: {integrity: sha512-/dt5M9Ty/x3Yiq0Nm/5PJJzwkVFchJgdjKVnryBPtoMCb9ohb/nDIJOwr/Wr3hK3FDs1EA1GE6PyRYsUmQPS8Q==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
+  /@csstools/postcss-logical-float-and-clear@2.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-Wki4vxsF6icRvRz8eF9bPpAvwaAt0RHwhVOyzfoFg52XiIMjb6jcbHkGxwpJXP4DVrnFEwpwmrz5aTRqOW82kg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-logical-overflow@1.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-cIrZ8f7bGGvr+W53nEuMspcwaeaI2YTmz6LZ4yiAO5z14/PQgOOv+Pn+qjvPOPoadeY2BmpaoTzZKvdAQuM17w==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-logical-overscroll-behavior@1.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-e89S2LWjnxf0SB2wNUAbqDyFb/Fow/tlOe1XqOLbNx4rf3LrQokM9qldVx7sarnddml3ORE5LDUmlKpPOOeJTA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-logical-resize@2.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-lCQ1aX8c5+WI4t5EoYf3alTzJNNocMqTb+u1J9CINdDhFh1fjovqK+0aHalUHsNstZmzFPNzIkU4Mb3eM9U8SA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-logical-viewport-units@2.0.3(postcss@8.2.13):
+    resolution: {integrity: sha512-xeVxqND5rlQyqLGdH7rX34sIm/JbbQKxpKQP8oD1YQqUHHCLQR9NUS57WqJKajxKN6AcNAMWJhb5LUH5RfPcyA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-media-minmax@1.1.0(postcss@8.2.13):
+    resolution: {integrity: sha512-t5Li/DPC5QmW/6VFLfUvsw/4dNYYseWR0tOXDeJg/9EKUodBgNawz5tuk5vYKtNvoj+Q08odMuXcpS5YJj0AFA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-media-queries-aspect-ratio-number-values@2.0.3(postcss@8.2.13):
+    resolution: {integrity: sha512-IPL8AvnwMYW+cWtp+j8cW3MFN0RyXNT4hLOvs6Rf2N+NcbvXhSyKxZuE3W9Cv4KjaNoNoGx1d0UhT6tktq6tUw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-nested-calc@3.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-HsB66aDWAouOwD/GcfDTS0a7wCuVWaTpXcjl5VKP0XvFxDiU+r0T8FG7xgb6ovZNZ+qzvGIwRM+CLHhDgXrYgQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-normalize-display-values@3.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-nUvRxI+ALJwkxZdPU4EDyuM380vP91sAGvI3jAOHs/sr3jfcCOzLkY6xKI1Mr526kZ3RivmMoYM/xq+XFyE/bw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-oklab-function@3.0.7(postcss@8.2.13):
+    resolution: {integrity: sha512-vBFTQD3CARB3u/XIGO44wWbcO7xG/4GsYqJlcPuUGRSK8mtxes6n4vvNFlIByyAZy2k4d4RY63nyvTbMpeNTaQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-progressive-custom-properties@3.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-YEvTozk1SxnV/PGL5DllBVDuLQ+jiQhyCSQiZJ6CwBMU5JQ9hFde3i1qqzZHuclZfptjrU0JjlX4ePsOhxNzHw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-relative-color-syntax@2.0.7(postcss@8.2.13):
+    resolution: {integrity: sha512-2AiFbJSVF4EyymLxme4JzSrbXykHolx8DdZECHjYKMhoulhKLltx5ccYgtrK3BmXGd3v3nJrWFCc8JM8bjuiOg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-scope-pseudo-class@3.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-GFNVsD97OuEcfHmcT0/DAZWAvTM/FFBDQndIOLawNc1Wq8YqpZwBdHa063Lq+Irk7azygTT+Iinyg3Lt76p7rg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
+  /@csstools/postcss-stepped-value-functions@3.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-I3wX44MZVv+tDuWfrd3BTvRB/YRIM2F5v1MBtTI89sxpFn47mNpTwpPYUOGPVCgKlRDfZSlxIUYhUQmqRQZZFQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-text-decoration-shorthand@3.0.3(postcss@8.2.13):
+    resolution: {integrity: sha512-d5J9m49HhqXRcw1S6vTZuviHi/iknUKGjBpChiNK1ARg9sSa3b8m5lsWz5Izs8ISORZdv2bZRwbw5Z2R6gQ9kQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/color-helpers': 3.0.2
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
+  /@csstools/postcss-trigonometric-functions@3.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-AwzNhF4QOKaLOKvMljwwFkeYXwufhRO15G+kKohHkyoNOL75xWkN+W2Y9ik9tSeAyDv+cYNlYaF+o/a79WjVjg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-calc': 1.1.4(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+    dev: false
+
+  /@csstools/postcss-unset-value@3.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-P0JD1WHh3avVyKKRKjd0dZIjCEeaBer8t1BbwGMUDtSZaLhXlLNBqZ8KkqHzYWXOJgHleXAny2/sx8LYl6qhEA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
   /@csstools/selector-specificity@2.2.0(postcss-selector-parser@6.0.13):
     resolution: {integrity: sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==}
     engines: {node: ^14 || ^16 || >=18}
@@ -5970,6 +6344,15 @@ packages:
     dependencies:
       postcss-selector-parser: 6.0.13
     dev: true
+
+  /@csstools/selector-specificity@3.0.0(postcss-selector-parser@6.0.13):
+    resolution: {integrity: sha512-hBI9tfBtuPIi885ZsZ32IMEU/5nlZH/KOVYJCOh7gyMxaVLGmLedYqFN6Ui1LXkI8JlC8IsuC0rF0btcRZKd5g==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss-selector-parser: ^6.0.13
+    dependencies:
+      postcss-selector-parser: 6.0.13
+    dev: false
 
   /@docsearch/css@3.5.2:
     resolution: {integrity: sha512-SPiDHaWKQZpwR2siD0KQUwlStvIAnEyK6tAE2h2Wuoq8ue9skzhlyVQ1ddzOxX6khULnAALDiR/isSF3bnuciA==}
@@ -7014,55 +7397,9 @@ packages:
       picomatch: 2.3.1
       rollup: 2.79.1
 
-  /@semcore/divider@4.7.3(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-TiZedsjLJh851PP3GbnoxM41bW9ntOIcS6YschPwPL8XemfsEK0dD/fOYe33I2ld3YaAIdYe1+2Vz3wQnUIuWg==}
-    peerDependencies:
-      '@semcore/core': ^2.7.3
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/flex-box': 5.7.3(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/utils': 4.8.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@semcore/flex-box@5.7.3(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-plFC95WZsHoUKr5nJRiJob1kUi1Jgo8UeS4Tqo55xXXSOGcqsvX100BvJLl3/zxpn28kR6X5+He05XhjOY6RbQ==}
-    peerDependencies:
-      '@semcore/core': ^2.7.3
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@semcore/core': link:semcore/core
-      '@semcore/utils': 4.8.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
-      classnames: 2.2.6
-      csstype: 3.0.8
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@semcore/theme-redesign@1.5.12:
     resolution: {integrity: sha512-zmABHHcsbbEHCTX3YWIXcIIzQx6S1oyj2NyPkea6QOh2HE+vopSWdNbUhWYT2Zax5NhQQ3HrDRdvkolhr6aBKA==}
     dev: true
-
-  /@semcore/utils@4.8.0(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-KxLhG+3B1v539bVWen9LhXEOHA9ALDLP92LDWssGFg9RWqjmqIyLqVbQV3aFjijEbD8Z5Spk0M0SpAlok8zJCw==}
-    peerDependencies:
-      '@semcore/core': ^2.7.3
-      react: 16.8 - 18
-      react-dom: 16.8 - 18
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@phytonmk/nano-css': 5.3.7(react-dom@18.2.0)(react@18.2.0)
-      '@semcore/core': link:semcore/core
-      classnames: 2.2.6
-      focus-lock: 0.11.3
-      hoist-non-react-statics: 3.3.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /@sideway/address@4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==}
@@ -8667,6 +9004,22 @@ packages:
       postcss-value-parser: 4.1.0
     dev: true
 
+  /autoprefixer@10.4.16(postcss@8.2.13):
+    resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==}
+    engines: {node: ^10 || ^12 || >=14}
+    hasBin: true
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      browserslist: 4.22.1
+      caniuse-lite: 1.0.30001561
+      fraction.js: 4.3.7
+      normalize-range: 0.1.2
+      picocolors: 1.0.0
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /autoprefixer@9.8.8:
     resolution: {integrity: sha512-eM9d/swFopRt5gdJ7jrpCwgvEMIayITpojhkkSMRsFHYuH5bkSQ4p/9qTEHtmNudUZh22Tehu7I6CxAW0IXTKA==}
     hasBin: true
@@ -9178,6 +9531,17 @@ packages:
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10(browserslist@4.21.5)
 
+  /browserslist@4.22.1:
+    resolution: {integrity: sha512-FEVc202+2iuClEhZhrWy6ZiAcRLvNMyYcxZ8raemul1DYVOVdFsbqckWLdsixQZCpJlwe77Z3UTalE7jsjnKfQ==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+    dependencies:
+      caniuse-lite: 1.0.30001561
+      electron-to-chromium: 1.4.576
+      node-releases: 2.0.13
+      update-browserslist-db: 1.0.13(browserslist@4.22.1)
+    dev: false
+
   /bser@2.1.1:
     resolution: {integrity: sha512-gQxTNE/GAfIIrmHLUE3oJyp5FO6HRBfhjnw4/wMmA63ZGDJnWBmgY/lyQBpnDUkGmAhbSe39tx2d/iTOAfglwQ==}
     dependencies:
@@ -9348,6 +9712,10 @@ packages:
 
   /caniuse-lite@1.0.30001472:
     resolution: {integrity: sha512-xWC/0+hHHQgj3/vrKYY0AAzeIUgr7L9wlELIcAvZdDUHlhL/kNxMdnQLOSOQfP8R51ZzPhmHdyMkI0MMpmxCfg==}
+
+  /caniuse-lite@1.0.30001561:
+    resolution: {integrity: sha512-NTt0DNoKe958Q0BE0j0c1V9jbUzhBxHIEJy7asmGrpE0yG63KTV7PLHPnK2E1O9RsQrQ081I3NLuXGS6zht3cw==}
+    dev: false
 
   /caseless@0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
@@ -10054,6 +10422,16 @@ packages:
       postcss: 7.0.39
     dev: false
 
+  /css-blank-pseudo@6.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-VbfLlOWO7sBHBTn6pwDQzc07Z0SDydgDBfNfCE0nvrehdBNv9RKsuupIRa/qal0+fBZhAALyQDPMKz5lnvcchw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
   /css-color-keywords@1.0.0:
     resolution: {integrity: sha512-FyyrDHZKEjXDpNJYvVsV960FiqQyXc/LlYmsxl2BcdMb2WPx0OGRVgTg55rPSyLSNMqP52R9r8geSp7apN3Ofg==}
     engines: {node: '>=4'}
@@ -10082,6 +10460,18 @@ packages:
       postcss-selector-parser: 5.0.0
     dev: false
 
+  /css-has-pseudo@6.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-X+r+JBuoO37FBOWVNhVJhxtSBUFHgHbrcc0CjFT28JEdOw1qaDwABv/uunyodUuSy2hMPe9j/HjssxSlvUmKjg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /css-in-js-utils@3.1.0:
     resolution: {integrity: sha512-fJAcud6B3rRu+KHYk+Bwf+WFL2MDCJJ1XG9x137tJQ0xYxor7XziQtuGFbWNdqrvF4Tk26O3H73nfVqXt/fW1A==}
     dependencies:
@@ -10094,6 +10484,15 @@ packages:
     hasBin: true
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /css-prefers-color-scheme@9.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-03QGAk/FXIRseDdLb7XAiu6gidQ0Nd8945xuM7VFVPpc6goJsG9uIO8xQjTxwbPdPIIV4o4AJoOJyt8gwDl67g==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
     dev: false
 
   /css-select@1.2.0:
@@ -10164,6 +10563,10 @@ packages:
 
   /cssdb@4.4.0:
     resolution: {integrity: sha512-LsTAR1JPEM9TpGhl/0p3nQecC2LJ0kD8X5YARu1hk/9I1gril5vDtMZyNxcEpxxDj34YNck/ucjuoUd66K03oQ==}
+    dev: false
+
+  /cssdb@7.9.0:
+    resolution: {integrity: sha512-WPMT9seTQq6fPAa1yN4zjgZZeoTriSN2LqW9C+otjar12DQIWA4LuSfFrvFJiKp4oD0xIk1vumDLw8K9ur4NBw==}
     dev: false
 
   /cssesc@2.0.0:
@@ -11065,6 +11468,10 @@ packages:
 
   /electron-to-chromium@1.4.342:
     resolution: {integrity: sha512-dTei3VResi5bINDENswBxhL+N0Mw5YnfWyTqO75KGsVldurEkhC9+CelJVAse8jycWyP8pv3VSj4BSyP8wTWJA==}
+
+  /electron-to-chromium@1.4.576:
+    resolution: {integrity: sha512-yXsZyXJfAqzWk1WKryr0Wl0MN2D47xodPvEEwlVePBnhU5E7raevLQR+E6b9JAD3GfL/7MbAL9ZtWQQPcLx7wA==}
+    dev: false
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -12639,6 +13046,10 @@ packages:
   /fraction.js@4.2.0:
     resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
+
+  /fraction.js@4.3.7:
+    resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
+    dev: false
 
   /fragment-cache@0.2.1:
     resolution: {integrity: sha512-GMBAbW9antB8iZRHLoGw0b3HANt57diZYFO/HL1JGIC1MjKrdmhxvrJbupnVvpys0zsz7yBApXdQyfepKly2kA==}
@@ -16629,6 +17040,7 @@ packages:
 
   /ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
+    requiresBuild: true
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -16798,6 +17210,10 @@ packages:
 
   /node-releases@2.0.10:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}
+
+  /node-releases@2.0.13:
+    resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
+    dev: false
 
   /node-stream-zip@1.15.0:
     resolution: {integrity: sha512-LN4fydt9TqhZhThkZIVQnF9cwjU3qmUH9h78Mx/K7d3VvfRqqwthLwJEUOEL0QPZ0XQmNN7be5Ggit5+4dq3Bw==}
@@ -17577,6 +17993,16 @@ packages:
       postcss-selector-parser: 6.0.11
     dev: false
 
+  /postcss-attribute-case-insensitive@6.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-IRuCwwAAQbgaLhxQdQcIIK0dCVXg3XDUnzgKD8iwdiYdwU4rMWRWyl/W9/0nA4ihVpq5pyALiHB2veBJ0292pw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
   /postcss-calc@8.2.4(postcss@8.2.13):
     resolution: {integrity: sha512-SmWMSJmB8MRnnULldx0lQIyhSNvuDl9HfrZkaqqE/WHAhToYsAvDq+yAsA/kIyINDszOp3Rh0GFoNuH5Ypsm3Q==}
     peerDependencies:
@@ -17586,6 +18012,16 @@ packages:
       postcss-selector-parser: 6.0.11
       postcss-value-parser: 4.2.0
     dev: true
+
+  /postcss-clamp@4.1.0(postcss@8.2.13):
+    resolution: {integrity: sha512-ry4b1Llo/9zz+PKC+030KUnPITTJAHeOwjfAyyB60eT0AorGLdzp52s31OsPRHRf8NchkgFoG2y6fCfn1IV1Ow==}
+    engines: {node: '>=7.6.0'}
+    peerDependencies:
+      postcss: ^8.4.6
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
 
   /postcss-cli@7.1.0:
     resolution: {integrity: sha512-tCGK0GO2reu644dUHxks8U2SAtKnzftQTAXN1dwzFPoKXZr0b7VX4vTkQ2Pl2Lunas6+o8uHR56hlcYBm1srZg==}
@@ -17638,6 +18074,17 @@ packages:
       postcss-values-parser: 2.0.1
     dev: false
 
+  /postcss-color-functional-notation@6.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-FsjSmlSufuiFBsIqQ++VxFmvX7zKndZpBkHmfXr4wqhvzM92FTEkAh703iqWTl1U3faTgqioIqCbfqdWiFVwtw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /postcss-color-gray@5.0.0:
     resolution: {integrity: sha512-q6BuRnAGKM/ZRpfDascZlIZPjvwsRye7UDNalqVz3s7GDxMtqPY6+Q871liNxsonUw8oC61OG+PSaysYpl1bnw==}
     engines: {node: '>=6.0.0'}
@@ -17655,6 +18102,16 @@ packages:
       postcss-values-parser: 2.0.1
     dev: false
 
+  /postcss-color-hex-alpha@9.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-SfPjgr//VQ/DOCf80STIAsdAs7sbIbxATvVmd+Ec7JvR8onz9pjawhq3BJM3Pie40EE3TyB0P6hft16D33Nlyg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /postcss-color-mod-function@3.0.3:
     resolution: {integrity: sha512-YP4VG+xufxaVtzV6ZmhEtc+/aTXH3d0JLpnYfxqTvwZPbJhWqp8bSY3nfNzNRFLgB4XSaBA82OE4VjOOKpCdVQ==}
     engines: {node: '>=6.0.0'}
@@ -17669,6 +18126,16 @@ packages:
     dependencies:
       postcss: 7.0.39
       postcss-values-parser: 2.0.1
+    dev: false
+
+  /postcss-color-rebeccapurple@9.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-ds4cq5BjRieizVb2PnvbJ0omg9VCo2/KzluvoFZbxuGpsGJ5BQSD93CHBooinEtangCM5YqUOerGDl4xGmOb6Q==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
     dev: false
 
   /postcss-colormin@5.3.1(postcss@8.2.13):
@@ -17716,6 +18183,19 @@ packages:
       postcss: 8.2.13
     dev: false
 
+  /postcss-custom-media@10.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-zcEFNRmDm2fZvTPdI1pIW3W//UruMcLosmMiCdpQnrCsTRzWlKQPYMa1ud9auL0BmrryKK1+JjIGn19K0UjO/w==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/media-query-list-parser': 2.1.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      postcss: 8.2.13
+    dev: false
+
   /postcss-custom-media@7.0.8:
     resolution: {integrity: sha512-c9s5iX0Ge15o00HKbuRuTqNndsJUbaXdiNsksnVH8H4gdc+zbLzr/UasOwNG6CTDpLFekVY4672eWdiiWu2GUg==}
     engines: {node: '>=6.0.0'}
@@ -17731,6 +18211,19 @@ packages:
     dependencies:
       postcss: 8.2.13
     dev: true
+
+  /postcss-custom-properties@13.3.2(postcss@8.2.13):
+    resolution: {integrity: sha512-2Coszybpo8lpLY24vy2CYv9AasiZ39/bs8Imv0pWMq55Gl8NWzfc24OAo3zIX7rc6uUJAqESnVOMZ6V6lpMjJA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
 
   /postcss-custom-properties@8.0.11:
     resolution: {integrity: sha512-nm+o0eLdYqdnJ5abAJeXp4CEU1c1k+eB2yMCvhgzsds/e0umabFrN6HoTy/8Q4K5ilxERdl/JD1LO5ANoYBeMA==}
@@ -17748,12 +18241,35 @@ packages:
       postcss-selector-parser: 5.0.0
     dev: false
 
+  /postcss-custom-selectors@7.1.6(postcss@8.2.13):
+    resolution: {integrity: sha512-svsjWRaxqL3vAzv71dV0/65P24/FB8TbPX+lWyyf9SZ7aZm4S4NhCn7N3Bg+Z5sZunG3FS8xQ80LrCU9hb37cw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/cascade-layer-name-parser': 1.0.5(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
   /postcss-dir-pseudo-class@5.0.0:
     resolution: {integrity: sha512-3pm4oq8HYWMZePJY+5ANriPs3P07q+LW6FAdTlkFH2XqDdP4HeeJYMOzn0HYLhRSjBO3fhiqSwwU9xEULSrPgw==}
     engines: {node: '>=4.0.0'}
     dependencies:
       postcss: 7.0.39
       postcss-selector-parser: 5.0.0
+    dev: false
+
+  /postcss-dir-pseudo-class@8.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-Oy5BBi0dWPwij/IA+yDYj+/OBMQ9EPqAzTHeSNUYrUWdll/PRJmcbiUj0MNcsBi681I1gcSTLvMERPaXzdbvJg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
     dev: false
 
   /postcss-discard-comments@5.1.2(postcss@8.2.13):
@@ -17800,6 +18316,17 @@ packages:
       postcss-values-parser: 2.0.1
     dev: false
 
+  /postcss-double-position-gradients@5.0.2(postcss@8.2.13):
+    resolution: {integrity: sha512-KTbvdOOy8z8zb0BTkEg4/1vqlRlApdvjw8/pFoehgQl0WVO+fezDGlvo0B8xRA+XccA7ohkQCULKNsiNOx70Cw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /postcss-env-function@2.0.2:
     resolution: {integrity: sha512-rwac4BuZlITeUbiBq60h/xbLzXY43qOsIErngWa4l7Mt+RaSkT7QBjXVGTcBHupykkblHMDrBFh30zchYPaOUw==}
     engines: {node: '>=6.0.0'}
@@ -17821,11 +18348,31 @@ packages:
       postcss: 7.0.39
     dev: false
 
+  /postcss-focus-visible@9.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-zA4TbVaIaT8npZBEROhZmlc+GBKE8AELPHXE7i4TmIUEQhw/P/mSJfY9t6tBzpQ1rABeGtEOHYrW4SboQeONMQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
   /postcss-focus-within@3.0.0:
     resolution: {integrity: sha512-W0APui8jQeBKbCGZudW37EeMCjDeVxKgiYfIIEo8Bdh5SpB9sxds/Iq8SEuzS0Q4YFOlG7EPFulbbxujpkrV2w==}
     engines: {node: '>=6.0.0'}
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /postcss-focus-within@8.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-E7+J9nuQzZaA37D/MUZMX1K817RZGDab8qw6pFwzAkDd/QtlWJ9/WTKmzewNiuxzeq6WWY7ATiRePVoDKp+DnA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
     dev: false
 
   /postcss-font-variant@4.0.1:
@@ -17834,11 +18381,28 @@ packages:
       postcss: 7.0.39
     dev: false
 
+  /postcss-font-variant@5.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-1fmkBaCALD72CK2a9i468mA/+tr9/1cBxRRMXOUaZqO43oWPR5imcyPjXwuv7PXbCid4ndlP5zWhidQVVa3hmA==}
+    peerDependencies:
+      postcss: ^8.1.0
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
   /postcss-gap-properties@2.0.0:
     resolution: {integrity: sha512-QZSqDaMgXCHuHTEzMsS2KfVDOq7ZFiknSpkrPJY6jmxbugUPTuSzs/vuE5I3zv0WAS+3vhrlqhijiprnuQfzmg==}
     engines: {node: '>=6.0.0'}
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /postcss-gap-properties@5.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-YjsEEL6890P7MCv6fch6Am1yq0EhQCJMXyT4LBohiu87+4/WqR7y5W3RIv53WdA901hhytgRvjlrAhibhW4qsA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
     dev: false
 
   /postcss-hover-media-feature@1.0.2(postcss@8.2.13):
@@ -17867,6 +18431,16 @@ packages:
     dependencies:
       postcss: 7.0.39
       postcss-values-parser: 2.0.1
+    dev: false
+
+  /postcss-image-set-function@6.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-VlZncC9hhZ5tg0JllY4g6Z28BeoPO8DIkelioEEkXL0AA0IORlqYpTi2L8TUnl4YQrlwvBgxVy+mdZJw5R/cIQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
     dev: false
 
   /postcss-import-sync2@1.2.0(postcss@8.2.13):
@@ -17924,6 +18498,19 @@ packages:
       postcss-values-parser: 2.0.1
     dev: false
 
+  /postcss-lab-function@6.0.7(postcss@8.2.13):
+    resolution: {integrity: sha512-4d1lhDVPukHFqkMv4G5vVcK+tgY52vwb5uR1SWKOaO5389r2q8fMxBWuXSW+YtbCOEGP0/X9KERi9E9le2pJuw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/css-color-parser': 1.4.0(@csstools/css-parser-algorithms@2.3.2)(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-parser-algorithms': 2.3.2(@csstools/css-tokenizer@2.2.1)
+      '@csstools/css-tokenizer': 2.2.1
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      postcss: 8.2.13
+    dev: false
+
   /postcss-load-config@2.1.2:
     resolution: {integrity: sha512-/rDeGV6vMUo3mwJZmeHfEDvwnTKKqQ0S7OHUi/kJvvtx3aWtyWG2/0ZWnzCt2keEclwN6Tf0DST2v9kITdOKYw==}
     engines: {node: '>= 4'}
@@ -17953,6 +18540,16 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /postcss-logical@7.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-zYf3vHkoW82f5UZTEXChTJvH49Yl9X37axTZsJGxrCG2kOUwtaAoz9E7tqYg0lsIoJLybaL8fk/2mOi81zVIUw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
     dev: false
 
   /postcss-media-minmax@4.0.0:
@@ -18043,6 +18640,17 @@ packages:
       postcss: 8.2.13
       postcss-selector-parser: 6.0.11
     dev: true
+
+  /postcss-nesting@12.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-6LCqCWP9pqwXw/njMvNK0hGY44Fxc4B2EsGbn6xDcxbNRzP8GYoxT7yabVVMLrX3quqOJ9hg2jYMsnkedOf8pA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/selector-specificity': 3.0.0(postcss-selector-parser@6.0.13)
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
 
   /postcss-nesting@7.0.1:
     resolution: {integrity: sha512-FrorPb0H3nuVq0Sff7W2rnc3SmIcruVC6YwpcS+k687VxyxO33iE1amna7wHuRVzM8vfiYofXSBHNAZ3QhLvYg==}
@@ -18142,6 +18750,15 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
+  /postcss-opacity-percentage@2.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-lyDrCOtntq5Y1JZpBFzIWm2wG9kbEdujpNt4NLannF+J9c8CgFIzPa80YQfdza+Y+yFfzbYj/rfoOsYsooUWTQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.2
+    dependencies:
+      postcss: 8.2.13
+    dev: false
+
   /postcss-ordered-values@5.1.3(postcss@8.2.13):
     resolution: {integrity: sha512-9UO79VUhPwEkzbb3RNpqqghc6lcYej1aveQteWY+4POIwlqkYE21HKWaLDF6lWNuqCobEAyTovVhtI32Rbv2RQ==}
     engines: {node: ^10 || ^12 || >=14.0}
@@ -18160,10 +18777,28 @@ packages:
       postcss: 7.0.39
     dev: false
 
+  /postcss-overflow-shorthand@5.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-2rlxDyeSics/hC2FuMdPnWiP9WUPZ5x7FTuArXLFVpaSQ2woPSfZS4RD59HuEokbZhs/wPUQJ1E3MT6zVv94MQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /postcss-page-break@2.0.0:
     resolution: {integrity: sha512-tkpTSrLpfLfD9HvgOlJuigLuk39wVTbbd8RKcy8/ugV2bNBUW3xU+AIqyxhDrQr1VUj1RmyJrBn1YWrqUm9zAQ==}
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /postcss-page-break@3.0.4(postcss@8.2.13):
+    resolution: {integrity: sha512-1JGu8oCjVXLa9q9rFTo4MbeeA5FMe00/9C7lN4va606Rdb+HkxXtXsmEDrIraQ11fGz/WvKWa8gMuCKkrXpTsQ==}
+    peerDependencies:
+      postcss: ^8
+    dependencies:
+      postcss: 8.2.13
     dev: false
 
   /postcss-place@4.0.1:
@@ -18172,6 +18807,16 @@ packages:
     dependencies:
       postcss: 7.0.39
       postcss-values-parser: 2.0.1
+    dev: false
+
+  /postcss-place@9.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-qLEPD9VPH5opDVemwmRaujODF9nExn24VOC3ghgVLEvfYN7VZLwJHes0q/C9YR5hI2UC3VgBE8Wkdp1TxCXhtg==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-value-parser: 4.2.0
     dev: false
 
   /postcss-preset-env@6.7.0:
@@ -18217,12 +18862,91 @@ packages:
       postcss-selector-not: 4.0.1
     dev: false
 
+  /postcss-preset-env@9.3.0(postcss@8.2.13):
+    resolution: {integrity: sha512-ycw6doPrqV6QxDCtgiyGDef61bEfiSc59HGM4gOw/wxQxmKnhuEery61oOC/5ViENz/ycpRsuhTexs1kUBTvVw==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      '@csstools/postcss-cascade-layers': 4.0.1(postcss@8.2.13)
+      '@csstools/postcss-color-function': 3.0.7(postcss@8.2.13)
+      '@csstools/postcss-color-mix-function': 2.0.7(postcss@8.2.13)
+      '@csstools/postcss-exponential-functions': 1.0.1(postcss@8.2.13)
+      '@csstools/postcss-font-format-keywords': 3.0.0(postcss@8.2.13)
+      '@csstools/postcss-gamut-mapping': 1.0.0(postcss@8.2.13)
+      '@csstools/postcss-gradients-interpolation-method': 4.0.7(postcss@8.2.13)
+      '@csstools/postcss-hwb-function': 3.0.6(postcss@8.2.13)
+      '@csstools/postcss-ic-unit': 3.0.2(postcss@8.2.13)
+      '@csstools/postcss-initial': 1.0.0(postcss@8.2.13)
+      '@csstools/postcss-is-pseudo-class': 4.0.3(postcss@8.2.13)
+      '@csstools/postcss-logical-float-and-clear': 2.0.0(postcss@8.2.13)
+      '@csstools/postcss-logical-overflow': 1.0.0(postcss@8.2.13)
+      '@csstools/postcss-logical-overscroll-behavior': 1.0.0(postcss@8.2.13)
+      '@csstools/postcss-logical-resize': 2.0.0(postcss@8.2.13)
+      '@csstools/postcss-logical-viewport-units': 2.0.3(postcss@8.2.13)
+      '@csstools/postcss-media-minmax': 1.1.0(postcss@8.2.13)
+      '@csstools/postcss-media-queries-aspect-ratio-number-values': 2.0.3(postcss@8.2.13)
+      '@csstools/postcss-nested-calc': 3.0.0(postcss@8.2.13)
+      '@csstools/postcss-normalize-display-values': 3.0.1(postcss@8.2.13)
+      '@csstools/postcss-oklab-function': 3.0.7(postcss@8.2.13)
+      '@csstools/postcss-progressive-custom-properties': 3.0.2(postcss@8.2.13)
+      '@csstools/postcss-relative-color-syntax': 2.0.7(postcss@8.2.13)
+      '@csstools/postcss-scope-pseudo-class': 3.0.0(postcss@8.2.13)
+      '@csstools/postcss-stepped-value-functions': 3.0.2(postcss@8.2.13)
+      '@csstools/postcss-text-decoration-shorthand': 3.0.3(postcss@8.2.13)
+      '@csstools/postcss-trigonometric-functions': 3.0.2(postcss@8.2.13)
+      '@csstools/postcss-unset-value': 3.0.0(postcss@8.2.13)
+      autoprefixer: 10.4.16(postcss@8.2.13)
+      browserslist: 4.22.1
+      css-blank-pseudo: 6.0.0(postcss@8.2.13)
+      css-has-pseudo: 6.0.0(postcss@8.2.13)
+      css-prefers-color-scheme: 9.0.0(postcss@8.2.13)
+      cssdb: 7.9.0
+      postcss: 8.2.13
+      postcss-attribute-case-insensitive: 6.0.2(postcss@8.2.13)
+      postcss-clamp: 4.1.0(postcss@8.2.13)
+      postcss-color-functional-notation: 6.0.2(postcss@8.2.13)
+      postcss-color-hex-alpha: 9.0.2(postcss@8.2.13)
+      postcss-color-rebeccapurple: 9.0.1(postcss@8.2.13)
+      postcss-custom-media: 10.0.2(postcss@8.2.13)
+      postcss-custom-properties: 13.3.2(postcss@8.2.13)
+      postcss-custom-selectors: 7.1.6(postcss@8.2.13)
+      postcss-dir-pseudo-class: 8.0.0(postcss@8.2.13)
+      postcss-double-position-gradients: 5.0.2(postcss@8.2.13)
+      postcss-focus-visible: 9.0.0(postcss@8.2.13)
+      postcss-focus-within: 8.0.0(postcss@8.2.13)
+      postcss-font-variant: 5.0.0(postcss@8.2.13)
+      postcss-gap-properties: 5.0.0(postcss@8.2.13)
+      postcss-image-set-function: 6.0.1(postcss@8.2.13)
+      postcss-lab-function: 6.0.7(postcss@8.2.13)
+      postcss-logical: 7.0.0(postcss@8.2.13)
+      postcss-nesting: 12.0.1(postcss@8.2.13)
+      postcss-opacity-percentage: 2.0.0(postcss@8.2.13)
+      postcss-overflow-shorthand: 5.0.0(postcss@8.2.13)
+      postcss-page-break: 3.0.4(postcss@8.2.13)
+      postcss-place: 9.0.0(postcss@8.2.13)
+      postcss-pseudo-class-any-link: 9.0.0(postcss@8.2.13)
+      postcss-replace-overflow-wrap: 4.0.0(postcss@8.2.13)
+      postcss-selector-not: 7.0.1(postcss@8.2.13)
+      postcss-value-parser: 4.2.0
+    dev: false
+
   /postcss-pseudo-class-any-link@6.0.0:
     resolution: {integrity: sha512-lgXW9sYJdLqtmw23otOzrtbDXofUdfYzNm4PIpNE322/swES3VU9XlXHeJS46zT2onFO7V1QFdD4Q9LiZj8mew==}
     engines: {node: '>=6.0.0'}
     dependencies:
       postcss: 7.0.39
       postcss-selector-parser: 5.0.0
+    dev: false
+
+  /postcss-pseudo-class-any-link@9.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-QNCYIL98VKFKY6HGDEJpF6+K/sg9bxcUYnOmNHJxZS5wsFDFaVoPeG68WAuhsqwbIBSo/b9fjEnTwY2mTSD+uA==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
     dev: false
 
   /postcss-reduce-initial@5.1.2(postcss@8.2.13):
@@ -18250,6 +18974,14 @@ packages:
     resolution: {integrity: sha512-2T5hcEHArDT6X9+9dVSPQdo7QHzG4XKclFT8rU5TzJPDN7RIRTbO9c4drUISOVemLj03aezStHCR2AIcr8XLpw==}
     dependencies:
       postcss: 7.0.39
+    dev: false
+
+  /postcss-replace-overflow-wrap@4.0.0(postcss@8.2.13):
+    resolution: {integrity: sha512-KmF7SBPphT4gPPcKZc7aDkweHiKEEO8cla/GjcBK+ckKxiZslIu3C4GCRW3DNfL0o7yW7kMQu9xlZ1kXRXLXtw==}
+    peerDependencies:
+      postcss: ^8.0.3
+    dependencies:
+      postcss: 8.2.13
     dev: false
 
   /postcss-reporter@6.0.1:
@@ -18300,6 +19032,16 @@ packages:
       postcss: 7.0.39
     dev: false
 
+  /postcss-selector-not@7.0.1(postcss@8.2.13):
+    resolution: {integrity: sha512-1zT5C27b/zeJhchN7fP0kBr16Cc61mu7Si9uWWLoA3Px/D9tIJPKchJCkUH3tPO5D0pCFmGeApAv8XpXBQJ8SQ==}
+    engines: {node: ^14 || ^16 || >=18}
+    peerDependencies:
+      postcss: ^8.4
+    dependencies:
+      postcss: 8.2.13
+      postcss-selector-parser: 6.0.13
+    dev: false
+
   /postcss-selector-parser@5.0.0:
     resolution: {integrity: sha512-w+zLE5Jhg6Liz8+rQOWEAwtwkyqpfnmsinXjXg6cY7YIONZZtgvE0v2O0uhQBs0peNomOJwWRKt6JBfTdTd3OQ==}
     engines: {node: '>=4'}
@@ -18322,7 +19064,6 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
-    dev: true
 
   /postcss-svgo@5.1.0(postcss@8.2.13):
     resolution: {integrity: sha512-D75KsH1zm5ZrHyxPakAxJWtkyXew5qwS70v56exwvw542d9CRtTo78K0WeFxZB4G7JXKKMbEZtZayTGdIky/eA==}
@@ -18354,7 +19095,6 @@ packages:
 
   /postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
-    dev: true
 
   /postcss-values-parser@2.0.1:
     resolution: {integrity: sha512-2tLuBsA6P4rYTNKCXYG/71C7j1pU6pK503suYOmn4xYrQIzW+opD+7FAFNuGSdZC/3Qfy334QbeMu7MEb8gOxg==}
@@ -21518,6 +22258,17 @@ packages:
       browserslist: 4.21.5
       escalade: 3.1.1
       picocolors: 1.0.0
+
+  /update-browserslist-db@1.0.13(browserslist@4.22.1):
+    resolution: {integrity: sha512-xebP81SNcPuNpPP3uzeW1NYXxI3rxyJzF3pD6sH4jE7o/IX+WtSpwnVU+qIsDPyk0d3hmFQ7mjqc6AtV604hbg==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+    dependencies:
+      browserslist: 4.22.1
+      escalade: 3.1.1
+      picocolors: 1.0.0
+    dev: false
 
   /update-notifier@4.1.3:
     resolution: {integrity: sha512-Yld6Z0RyCYGB6ckIjffGOSOmHXj1gMeE7aROz4MG+XMkmixBX4jUngrGXNYz7wPKBmtoD4MnBa2Anu7RSKht/A==}

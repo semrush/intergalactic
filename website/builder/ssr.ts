@@ -33,7 +33,7 @@ const ensureDir = async (path: string) => {
 
 const outputDir = resolvePath('dist');
 const publicDir = resolvePath('src/public');
-const themesDir = resolvePath('../semcore/utils/src/themes');
+const themesDir = resolvePath('../semcore/utils/lib/themes');
 const specialRoutes = ['', 'contacts/contact-info', 'not-found'];
 
 await fs.rm(outputDir, { force: true, recursive: true });

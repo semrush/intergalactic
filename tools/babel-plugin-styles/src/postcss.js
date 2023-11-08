@@ -22,22 +22,20 @@ module.exports = function (options) {
       ...options.import,
       sync: true,
     }),
-    syncPlugin(
-      presetEnv({
-        stage: 0,
-        browsers: 'defaults',
-        features: {
-          'custom-properties': false,
-          'custom-media-queries': {
-            preserve: false,
-          },
-          'color-mod-function': {
-            unresolved: 'error',
-          },
+    presetEnv({
+      stage: 0,
+      browsers: 'defaults',
+      features: {
+        'custom-properties': false,
+        'custom-media-queries': {
+          preserve: false,
         },
-        ...options.presetEnv,
-      }),
-    ),
+        'color-mod-function': {
+          unresolved: 'error',
+        },
+      },
+      ...options.presetEnv,
+    }),
     inlineCssVariables(),
     syncPlugin(postcssColorMod()),
     shadowStyles(options.shadow),

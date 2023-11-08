@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.9.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.9.0 ~> 2.10.0], `@semcore/flex-box` [5.9.0 ~> 5.10.0], `@semcore/neighbor-location` [4.8.0 ~> 4.9.0], `@semcore/outside-click` [3.8.0 ~> 3.9.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
+## [5.8.1] - 2023-11-06
+
+### Fixed
+
+- Prevent popper from opening if `Trigger` is disabled.
+
 ## [5.8.0] - 2023-10-27
 
 ### Changed
@@ -24,7 +36,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Prevent to scroll to `Trigger` item after `Popper` is closed. 
+- Prevent to scroll to `Trigger` item after `Popper` is closed.
 
 ## [5.7.5] - 2023-10-06
 

@@ -80,7 +80,7 @@ export interface IDataTableProps<
 > extends DataTableProps<DataTableData> {}
 export type DataTableProps<DataTableData extends { [key: string]: any }[] = UnknownProperties[]> =
   BoxProps & {
-    /** Theme for table
+    /** Table theme according to visual hierarchy on the page
      * @default primary
      * */
     use?: DataTableUse;
@@ -88,20 +88,20 @@ export type DataTableProps<DataTableData extends { [key: string]: any }[] = Unkn
     data?: DataTableData;
     /** Active sort object */
     sort?: DataTableSort<keyof DataTableData[0]>;
-    /** Handler call when will request change sort */
+    /** Handler call when request will change sort */
     onSortChange?: (sort: DataTableSort<keyof DataTableData[0]>, e?: React.SyntheticEvent) => void;
-    /** Field name in one data entity that is unique accross all set of data
+    /** Field name in one data entity that is unique accross all dataset
      * @default id
      */
     uniqueKey?: keyof DataTableData[0];
-    /** Make cells less */
+    /** Make cells compact by changing left and right paddings to smaller ones*/
     compact?: boolean;
   };
 
 /** @deprecated */
 export interface IDataTableHeadProps extends DataTableHeadProps, UnknownProperties {}
 export type DataTableHeadProps = BoxProps & {
-  /** Sticky header table
+  /** Sticky table header
    * @deprecated
    * */
   sticky?: boolean;
@@ -116,22 +116,22 @@ export type DataTableHeadProps = BoxProps & {
 /** @deprecated */
 export interface IDataTableColumnProps extends DataTableColumnProps, UnknownProperties {}
 export type DataTableColumnProps = FlexProps & {
-  /** Unique name column */
+  /** Unique column name */
   name?: string;
-  /** Enable sort for column also if you pass string you can set default sort */
+  /** Enable sorting for column. And if you are passing a string, you can also set the default sorting */
   sortable?: boolean | 'desc' | 'asc';
   /** Enable resize for column
    * @ignore */
   resizable?: boolean;
-  /** Fixed column on the left/right */
+  /** Fix column on the left o right side of the table */
   fixed?: 'left' | 'right';
-  /** Fields to control the size of the column. */
+  /** Fields to control the size of the column */
   flex?: Property.Flex | 'inherit';
-  /** Add vertical borders */
+  /** Add vertical border to the column */
   vBorders?: boolean;
-  /** Add vertical border to the right side */
+  /** Add vertical border to the right side of the cell */
   borderRight?: boolean;
-  /** Add vertical border to the left side */
+  /** Add vertical border to the left side of the cell */
   borderLeft?: boolean;
 };
 
@@ -159,14 +159,14 @@ export interface IDataTableRowProps extends DataTableRowProps, UnknownProperties
 export type DataTableRowProps = BoxProps & {
   /** Theme for row */
   theme?: DataTableTheme;
-  /** Displays row as active */
+  /** Sets row state to active*/
   active?: boolean;
 };
 
 /** @deprecated */
 export interface IDataTableCellProps extends DataTableCellProps, UnknownProperties {}
 export type DataTableCellProps<Name extends string = string> = FlexProps & {
-  /** Unique name column or columns separated by / */
+  /** Unique name for column or columns separated by / */
   name: Name;
   /** Theme for cell */
   theme?: DataTableTheme;

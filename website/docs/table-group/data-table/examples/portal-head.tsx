@@ -7,9 +7,9 @@ export default () => {
   const portalRef = React.useRef(null);
   return (
     <>
-      <div style={{ border: '1px solid' }} ref={portalRef} />
+      <div ref={portalRef} />
       <Divider my={5} />
-      <DataTable style={{ border: '1px solid' }} data={data}>
+      <DataTable data={data}>
         <PortalProvider value={portalRef}>
           <Portal>
             <DataTable.Head>

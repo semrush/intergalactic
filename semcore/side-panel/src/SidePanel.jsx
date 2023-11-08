@@ -108,10 +108,10 @@ class RootSidePanel extends Component {
   }
 
   render() {
-    const { Children, disablePortal } = this.asProps;
+    const { Children, disablePortal, ignorePortalsStacking } = this.asProps;
 
     return (
-      <Portal disablePortal={disablePortal}>
+      <Portal disablePortal={disablePortal} ignorePortalsStacking={ignorePortalsStacking}>
         {this.isAdvanceMode() ? (
           <Children />
         ) : (

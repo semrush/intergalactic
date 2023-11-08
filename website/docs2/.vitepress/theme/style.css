@@ -32,17 +32,16 @@
   --vp-shadow-2: 0px 3px 12px 0px rgba(25, 27, 35, 0.07), 0px 1px 4px 0px rgba(25, 27, 35, 0.07);
   --vp-shadow-3: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
   --vp-shadow-4: 0px 3px 8px 0px rgba(25, 27, 35, 0.20);
-
   --vp-shadow-5: 0px 12px 40px 0px rgba(25, 27, 35, 0.16), 0px 0px 1px 0px rgba(25, 27, 35, 0.16);
 
 }
 
 .dark {
-  --vp-shadow-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 1);
-  --vp-shadow-2: 0px 3px 12px 0px rgba(0, 0, 0, 0.5), 0px 1px 4px 0px rgba(0, 0, 0, 0.5);
-  --vp-shadow-3: 0px 12px 20px 0px rgba(0, 0, 0, 0.4), 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
-  --vp-shadow-4: 0px 16px 28px 0px rgba(0, 0, 0, 0.6), 0px 2px 6px 0px rgba(0, 0, 0, 0.6);
-  --vp-shadow-5: 0px 16px 36px 0px rgba(0, 0, 0, 0.7), 0px 4px 16px 0px rgba(0, 0, 0, 0.7);
+  --vp-shadow-1: 0px 2px 1px 1px rgba(0, 0, 0, 0.1), 0px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  --vp-shadow-2: 0px 3px 12px 0px rgba(0, 0, 0, 0.2), 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  --vp-shadow-3: 0px 12px 12px 0px rgba(0, 0, 0, 0.2), 0px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  --vp-shadow-4: 0px 16px 24px 0px rgba(0, 0, 0, 0.5), 0px 2px 6px 0px rgba(0, 0, 0, 0.5);
+  --vp-shadow-5: 0px 16px 28px 0px rgba(0, 0, 0, 0.5), 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
 }
 
 /**
@@ -114,6 +113,10 @@
   100% {
     transform: rotate3d(0, -1, 0, 2deg) translate(-50%, -50%);
   }
+}
+
+.image-bg {
+  background-image: none !important;
 }
 
 /**
@@ -348,7 +351,7 @@
 
 .dark .VPFeatures .VPFeature {
   background-color: var(--vp-c-bg-elv) !important;
-  box-shadow: var(--vp-shadow-2);
+  box-shadow: var(--vp-shadow-1);
 }
 
 .VPFeatures .VPFeature.link:hover {
@@ -367,7 +370,7 @@
 }
 
 .dark .VPFeatures .VPFeature.link:hover {
-  box-shadow: var(--vp-shadow-4);
+  box-shadow: var(--vp-shadow-3);
   transition: box-shadow 0.25s !important;
 }
 
@@ -463,6 +466,10 @@ img {
   isolation: isolate;
 }
 
+.playground-runtime+div[class*='language-'] {
+  max-width: 430px;
+}
+
 .vp-doc div[class*='language-'],
 .vp-block {
   border-radius: 6px;
@@ -471,6 +478,8 @@ img {
 
 .vp-doc .documentation-sandbox div[class*='language-'] {
   border-radius: 0;
+  /* overflow: auto;
+  max-width: 100%; */
 }
 
 .playground-runtime a {
