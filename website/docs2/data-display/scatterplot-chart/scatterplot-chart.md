@@ -8,6 +8,60 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
+
+const data = [...Array(25).keys()].map((d, i) => ({
+  x: i,
+  y: Math.random() * 10,
+  y2: Math.random() * 10,
+  value: Math.round(Math.random() * 10),
+}));
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.ScatterPlot');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    hideXAxis,
+    hideYAxis,
+    hideTooltip,
+    hideLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool }, { direction: 'column' });
+
+  const chartProps: ScatterPlotChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 500,
+    plotHeight: 300,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.ScatterPlot {...chartProps} valueKey={'value'} xTicksCount={10} yTicksCount={6} />;
+});
+</script>
+
+:::
+
 ## Description
 
 A **scatterplot chart** visualizes the relationship between two variables in one or more datasets.

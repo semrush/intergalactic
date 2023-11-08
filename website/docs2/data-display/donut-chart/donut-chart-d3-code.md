@@ -8,6 +8,31 @@ tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), E
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+const Demo = () => {
+  return (
+    <div style={{ width: '450px' }}>
+      <Chart.Donut plotWidth={300} plotHeight={300} data={data} />;
+    </div>
+  );
+};
+
+const data = {
+  a: 3,
+  b: 1,
+  c: 2,
+};
+</script>
+
+:::
+
 ## Donut
 
 - You can draw donut and pie charts with the `Donut` component.
@@ -249,7 +274,7 @@ const data = {
 
 <script lang="tsx">
 import React from 'react';
-import { ChartLegend, Donut, LegendItem, makeDataHintsContainer, Plot } from '@semcore/ui/d3-chart';
+import { ChartLegend, Donut, makeDataHintsContainer, Plot } from '@semcore/ui/d3-chart';
 import { Flex } from '@semcore/ui/flex-box';
 import Card from '@semcore/ui/card';
 
