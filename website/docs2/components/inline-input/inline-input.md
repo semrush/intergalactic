@@ -123,10 +123,12 @@ Table: InlineInput states
 
 ## Save и Cancel icon buttons
 
-On hover, the icons change color to the next one in the palette:
+For the default state of the icons use the following tokens:
 
-- `--icon-secondary-success` to `--icon-secondary-success-hover-active`;
-- `--icon-secondary-neutral` to `--icon-secondary-neutral-hover-active`.
+- `--icon-secondary-success`
+- `--icon-secondary-neutral`
+
+On hover, the icons change their color to to the darker one using CSS filter.
 
 ![](static/tooltip2.png)
 

@@ -74,7 +74,7 @@ Table: Close button styles for Modal window
 
 | Styles                                                                                                                                                 | Appearance example                                                       |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
-| `Close` icon uses M size, `--icon-secondary-neutral` token for default color, and `--icon-secondary-neutral-hover-active` for color in hover state. | ![](static/close-hover.png)           |
+| `Close` icon uses M size, `--icon-secondary-neutral` token for the default color, and changes its color using CSS filter to the darker one in hover state. | ![](static/close-hover.png)           |
 | Paddings from top and right to the `Close` icon is 12px.                                                                                               | ![modal close button](static/close-button.png)                |
 | The target area is 48px * 48px.                                                                                                              | ![](static/close-hover-zone.png) |
 

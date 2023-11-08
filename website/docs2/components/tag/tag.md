@@ -32,6 +32,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     'red-500',
     'pink-500',
     'violet-500',
+    'white',
   ];
 
   const color = select({
@@ -152,11 +153,11 @@ The component offers several themes for tags.
 
 | Tag theme     | Appearance example            | Description     |
 | ------------- | ----------------------------- | --------------- |
-| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background gets color with 100 shade, for example, `--gray-100`). |
+| `primary`                         | ![](static/primary.png)                   | The `primary` theme of tag suitable for use on a light background. Any color from [color palette](/style/design-tokens/design-tokens#base_tokens_palette) can be set as a tag color, with the default color being `--gray-500` (background color for all states and color for icon inside the tag is calculated with CSS filter). |
 | `primary` with `color:"white"`    | ![](static/primary-invert.png)     | An inversion of the `primary` tag meant for dark or colored backgrounds.|
-| `secondary`                       | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required.|
+| `secondary`                       | ![](static/secondary.png)               | The `secondary` tag theme, useful on a light background when contrast between the primary and secondary tags is required. Border color and color for icon inside the tag is calculated with CSS filter. |
 | `secondary` with `color:"white"`  | ![](static/secondary-invert.png) | An inversion of the `secondary` tag suitable for dark or colored backgrounds.|
-| `additional`                      | ![](static/additional.png)             | Ideal for special tags that are added to other tags. |
+| `additional`                      | ![](static/additional.png)             | Ideal for special tags that are added to other tags. Border color and color for icon inside the tag is calculated with CSS filter. |
 | `additional` with `color:"white"` | ![](static/additional-invert.png)      | An inversion of the `additional` theme used for special tags that are added to other tags. |
 
 ## Interaction
@@ -170,7 +171,7 @@ Table: Tag states
 | `secondary`                      | ![](static/secondary-states.png)               |
 | `secondary` with `color:"white"` | ![](static/secondary-invert-states.png) |
 
-## Adding tag
+## Tag for adding other tags
 
 Users can create tags using tags with the `additional` theme.
 

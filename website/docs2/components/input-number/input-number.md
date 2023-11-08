@@ -142,7 +142,7 @@ Table: InputNumbers states
 | Default       | ![](static/l-placeholder.png) | ![](static/m-placeholder.png) |                                                                    |
 | Hover         | ![](static/l-hover.png)       | ![](static/m-hover.png)       |                                                                    |
 | Focus         | ![](static/l-focus.png)       | ![](static/m-focus.png)       | Icon use `--icon-secondary-neutral` token for color.               |
-| Stepper hover | ![](static/l-icon-hover.png)  | ![](static/m-icon-hover.png)  | Icon changes its color to `--icon-secondary-neutral-hover-active`. |
+| Stepper hover | ![](static/l-icon-hover.png)  | ![](static/m-icon-hover.png)  | Icon changes its color to the darker one with CSS filters. |
 
 ## Validation
 
