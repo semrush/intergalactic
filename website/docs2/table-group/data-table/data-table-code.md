@@ -75,7 +75,7 @@ const data = [
 `<DataTable/>`, `<DataTable.Head/>`, and `<DataTable.Body/>` are inherited from the Box component and accept all its parameters. `<DataTable/>` serves as a container for `<DataTable.Head/>` and `<DataTable.Body/>` where scrolling is implemented.
 
 ::: tip
-If horizontal scrolling is not visible, try reducing the window size
+If horizontal scrolling is not visible, try reducing the window size.
 :::
 
 By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to the [Fixed header section](/table-group/data-table/#fixed_header).
@@ -779,9 +779,9 @@ const Demo = () => {
   const portalRef = React.useRef(null);
   return (
     <>
-      <div style={{ border: '1px solid' }} ref={portalRef} />
+      <div ref={portalRef} />
       <Divider my={5} />
-      <DataTable style={{ border: '1px solid' }} data={data}>
+      <DataTable data={data}>
         <PortalProvider value={portalRef}>
           <Portal>
             <DataTable.Head>
@@ -1103,6 +1103,7 @@ Components added to `<DataTable.Body/>` will be inserted at the end of the table
 <script lang="tsx">
 import React from 'react';
 import DataTable from '@semcore/ui/data-table';
+import ProgressBar from '@semcore/ui/progress-bar';
 
 const Demo = () => {
   return (
@@ -1112,24 +1113,11 @@ const Demo = () => {
         <DataTable.Column name='kd' children='KD,%' />
         <DataTable.Column name='cpc' children='CPC' />
         <DataTable.Column name='vol' children='Vol.' />
+        <ProgressBar value={40} size='s' style={{ borderRadius: 0 }}>
+          <ProgressBar.Value style={{ borderRadius: 0 }} />
+        </ProgressBar>
       </DataTable.Head>
-      <DataTable.Body>
-        <div
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: 'calc(45px * 2)',
-            left: 0,
-            bottom: 0,
-            background:
-              'linear-gradient(45deg, rgba(255, 187, 51, 0.3) 25%, rgba(85, 136, 170, 0.3) 0px, rgba(85, 136,' +
-              ' 170, 0.3)' +
-              ' 50%,' +
-              ' rgba(255, 187, 51, 0.3) 0px, rgba(255, 187, 51, 0.3) 75%, rgba(85, 136, 170, 0.3) 0px) 0% 0% / 42px 42px',
-            zIndex: 2,
-          }}
-        />
-      </DataTable.Body>
+      <DataTable.Body />
     </DataTable>
   );
 };
