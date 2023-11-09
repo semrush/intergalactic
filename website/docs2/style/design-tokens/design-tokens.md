@@ -12,7 +12,7 @@ Design tokens are available for use from **@semcore/ui@13.5.0** version.
 
 Design tokens are variables that store visual design choices (colors, fonts, spaces, opacity, box-shadows, etc.). The most important thing is that tokens ensure the same style names and values are used in design files and code.
 
-Intergalactic design system has:
+Intergalactic Design System has:
 
 - set of base tokens that define a base palette;
 - set of semantic tokens which are applied across all components and even the chart library.
@@ -80,7 +80,7 @@ Theme is a set of design tokens represented in CSS variables that differs from t
 
 **First of all, answer these questions for your case:**
 
-1. Do you want to use the components of the Intergalactic design system and need a completely different look and feel for them?
+1. Do you want to use the components of the Intergalactic Design System and need a completely different look and feel for them?
 2. Is your product not a Semrush core product?
 
 If the answer to all the questions above is yes, then you definitely need a theme that is different from the default one.
