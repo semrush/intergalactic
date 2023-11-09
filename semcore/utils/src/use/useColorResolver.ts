@@ -168,13 +168,12 @@ export const useColorResolver = () => {
   return (color?: string) => {
     if (!color) return undefined as any;
     if (color.startsWith('--')) {
-      const clearColor = color.substring(2);
-      if (deprecatedPalette[clearColor]) {
+      if (deprecatedPalette[color]) {
         logger.warn(true, makeDeprecationMessage(color), undefined);
-        return deprecatedPalette[clearColor];
+        return deprecatedPalette[color];
       }
-      if (basicPalette[clearColor]) {
-        return basicPalette[clearColor];
+      if (basicPalette[color]) {
+        return basicPalette[color];
       }
       let resolvedColor: string | undefined;
 
