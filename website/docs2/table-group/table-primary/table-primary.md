@@ -4,52 +4,59 @@ fileSource: data-table
 tabs: Design('table-primary'), Example('table-primary-code')
 ---
 
-**Primary** is the basic type of tables for displaying large data volumes and complex functionality.
+## Description
 
-## Paddings
+**Primary table** is the foundational table type for displaying large data volumes and complex functionality.
 
-The cell in the primary table, whether it is a header or a row, has 12px padding.
+## Appearance
+
+### Paddings
+
+In the primary table, whether it's a header or a row, cells use `--spacing-3x` token for padding.
 
 ![](static/primary-paddings.png)
 
-You also can make a cell compact simply by using `compact` prop. In this case paddings of the cell change to 8px on the left and right.
+You can also make a cell more compact by using the `compact` property, which reduces the left and right paddings to `--spacing-2x`.
 
 ![](static/primary-compact-paddings.png)
 
-## Styles
+### Styles
 
 ::: tip
-Content inside header cells and rows is aligned to the top.
+Content inside header cells and rows is always aligned to the top.
 :::
+
+Table: Primary table styles
 
 | Description                     | Appearance                                | Styles                                                                        |
 | ------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------- |
-| Heading                         | ![](static/th-styles.png)        | `background-color: var(--table-th-primary-cell)`, `border-bottom: 1px solid var(--border-secondary)` |
-| Heading of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header shouldn't have a shadow.      |
+| Header                         | ![](static/th-styles.png)        | `background-color: var(--table-th-primary-cell)`, `border-bottom: 1px solid var(--border-secondary)` |
+| Header of the scrollable table | ![](static/th-styles-scroll.png) | When scrolling a page with a table, the header shouldn't have a shadow.      |
 | Default row                     | ![](static/td-default.png)      | `border-bottom: 1px solid var(--border-secondary)`                                   |
 | The last line of the accordion  | ![](static/accordion.png)  | `border-bottom: 1px solid var(--table-td-cell-actions-accordion)`                                   |
 
 ## Multi-level header
 
-In some cases, a header should comprise two or more rows. Following conditions are recommended to be met:
+In some cases, a header may comprise two or more rows. To maintain consistency:
 
-- the title of the merged column should be always center-aligned;
-- you can't sort by the head cell.
+- The title of the merged column should always be center-aligned.
+- Sorting is not available for the parent header cells in multi-level headers.
 
 ![](static/two-row-head.png)
 
-In other cases, if there is insufficient space, two lines of text in one cell can be used.
+In other cases, when space is limited, wrap text to the next line within the cell.
 
 ![](static/two-row-name-head.png)
 
 ## Table header states
 
-| State  | Appearance                         | Styles                                                |
-| ------ | ---------------------------------- | ----------------------------------------------------- |
-| Hover  | ![](static/th-hover.png)   | `background-color: var(--table-th-primary-cell-hover)`, `cursor: pointer` |
-| Sorted | ![](static/th-styles.png) | `background-color: var(--table-th-primary-cell-active)`, `cursor: pointer` |
+Table: Table header states
+
+| State  | Appearance                | Tokens                                                    |
+| ------ | ------------------------- | --------------------------------------------------------- |
+| Hover  | ![](static/th-hover.png)  | Use `--table-th-primary-cell-hover` for background color. |
+| Sorted | ![](static/th-styles.png) | Use `--table-th-primary-cell-active` for background color.|
 
 ## Row states
 
-See more information in the common [Table principles](/table-group/table/table#a1c3dd) guide.
-
+For more information, refer to the general [DataTable](/table-group/data-table#table-row-states) guide.

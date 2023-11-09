@@ -148,7 +148,7 @@ const redirects = {
   "/intergalactic/table-group/table-secondary": "/intergalactic/table-group/table-secondary/table-secondary",
   "/intergalactic/table-group/table-showcase": "/intergalactic/table-group/table-showcase/table-showcase",
   "/intergalactic/table-group/table-states": "/intergalactic/table-group/table-states/table-states",
-  "/intergalactic/table-group/table": "/intergalactic/table-group/table/table",
+  "/intergalactic/table-group/table": "/intergalactic/table-group/data-table/data-table",
   "/intergalactic/terms/privacy": "/intergalactic/terms/privacy/privacy",
   "/intergalactic/terms/terms-of-use": "/intergalactic/terms/terms-of-use/terms-of-use",
   "/intergalactic/utils/i18n": "/intergalactic/utils/i18n/i18n",

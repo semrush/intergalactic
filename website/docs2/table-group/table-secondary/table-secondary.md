@@ -4,19 +4,25 @@ fileSource: data-table
 tabs: Design('table-secondary'), Example('table-secondary-code')
 ---
 
-**Secondary** is a table type for compact displaying small amount of data inside widgets and [cards](/components/card/card). These tables commonly either don't have any functionality, or they have something simple like sorting.
+## Description
 
-## Paddings
+**Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/). These tables usually have limited functionality, often simple features like sorting.
 
-The cell in the primary table, whether it is a header or a row, has 8px padding.
+## Appearance
+
+### Paddings
+
+In a secondary table, whether it's a header or a row, cells use `--spacing-2x` token for padding.
 
 ![](static/secondary-paddings.png)
 
-## Styles
+### Styles
 
 ::: tip
-If there is a sorting icon in the column, icon should be in active state and has `--icon-secondary-neutral-hover-active` color.
+If there's a sorting icon in the column, the icon should be in the active state with a `--icon-secondary-neutral-hover-active` color.
 :::
+
+Table: Secondary table styles
 
 | Description | Appearance                                  | Styles                                                                      |
 | ----------- | ------------------------------------------- | --------------------------------------------------------------------------- |
@@ -25,5 +31,5 @@ If there is a sorting icon in the column, icon should be in active state and has
 
 ## Row states
 
-See more information in the common [Table principles](/table-group/table/table#a1c3dd) guide.
+For more information, refer to the general [DataTable](/table-group/data-table#table-row-states) guide.
 
