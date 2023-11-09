@@ -4,6 +4,8 @@ fileSource: data-table
 tabs: Design('table-primary'), Example('table-primary-code')
 ---
 
+## Description
+
 **Primary table** is the foundational table type for displaying large data volumes and complex functionality.
 
 ## Appearance
