@@ -1,3 +1,13 @@
+## [15.33.3] - 2023-11-09
+
+### @semcore/d3-chart
+
+- **Fixed** Charts exporting to image.
+
+### @semcore/utils
+
+- **Fixed** Fixed old palette colors resolving that was broken in `@semcore/utils@4.9.0`.
+
 ## [15.33.1] - 2023-11-07
 
 ### @semcore/date-picker
