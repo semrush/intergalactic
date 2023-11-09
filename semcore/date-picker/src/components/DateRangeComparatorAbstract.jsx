@@ -27,8 +27,8 @@ const getLatestDate = (...dateRanges) => {
   return latestDate;
 };
 
-class RangePickerAbstract extends Component {
-  static displayName = 'DatePicker';
+class DateRangeComparatorAbstract extends Component {
+  static displayName = 'DateRangeComparator';
   static style = style;
 
   static defaultProps({
@@ -41,7 +41,6 @@ class RangePickerAbstract extends Component {
       i18n: localizedMessages,
       locale: 'en',
       defaultValue: null,
-      defaultCompare: null,
       defaultHighlighted: [],
       defaultCompareHighlighted: [],
       defaultDisplayedPeriod:
@@ -71,9 +70,9 @@ class RangePickerAbstract extends Component {
     } = this.asProps;
     const { dirtyValue, dirtyCompare, range } = this.state;
 
-    let value = dirtyValue ?? this.asProps.value;
+    let value = dirtyValue ?? this.asProps.value?.value;
     if (range === 'compare') {
-      value = dirtyCompare ?? this.asProps.compare;
+      value = dirtyCompare ?? this.asProps.value?.compare;
     }
     return {
       periods,
@@ -120,19 +119,20 @@ class RangePickerAbstract extends Component {
       visible: [
         null,
         (visible) => {
-          if (!visible) {
-            this.handlers.highlighted([]);
-            this.handlers.compareHighlighted([]);
-            this.setState({
-              dirtyValue: undefined,
-              dirtyCompare: undefined,
-              dirtyToggler: undefined,
-              range: 'value',
-            });
-            this.handlers.displayedPeriod(
-              getLatestDate(this.asProps.value ?? []) || this.props.defaultDisplayedPeriod,
-            );
-          }
+          // if (!visible) {
+          //   this.handlers.highlighted([]);
+          //   this.handlers.compareHighlighted([]);
+          //   this.setState({
+          //     dirtyValue: undefined,
+          //     dirtyCompare: undefined,
+          //     dirtyToggler: undefined,
+          //     range: 'value',
+          //   });
+          //   this.handlers.displayedPeriod(
+          //     getLatestDate(this.asProps.value?.value ?? this.asProps.value?.compare ?? []) ||
+          //       this.props.defaultDisplayedPeriod,
+          //   );
+          // }
         },
       ],
       highlighted: null,
@@ -140,24 +140,19 @@ class RangePickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          if (value?.[0] && value?.[1]) this.handlers.displayedPeriod(getLatestDate(value));
-        },
-      ],
-      compare: [
-        null,
-        (value) => {
-          if (value?.[0] && value?.[1]) this.handlers.displayedPeriod(getLatestDate(value));
+          const dates = [value?.value, value?.compare].flat(2).filter((date) => date?.isValid?.());
+          if (dates.length > 0) this.handlers.displayedPeriod(getLatestDate(value));
         },
       ],
     };
   }
 
   getApplyProps() {
-    const { value, compare, getI18nText } = this.asProps;
+    const { value, getI18nText } = this.asProps;
     const { dirtyValue, dirtyCompare } = this.state;
     return {
       getI18nText,
-      onClick: () => this.handleApply(dirtyValue ?? value, dirtyCompare ?? compare),
+      onClick: () => this.handleApply(dirtyValue ?? value?.value, dirtyCompare ?? value?.compare),
     };
   }
 
@@ -170,8 +165,7 @@ class RangePickerAbstract extends Component {
   }
 
   handleApply = (value, compare) => {
-    this.handlers.value(value);
-    this.handlers.compare(compare);
+    this.handlers.value({ value, compare });
     this.handlers.visible(false);
   };
 
@@ -219,15 +213,17 @@ class RangePickerAbstract extends Component {
     };
   }
 
-  getTriggerProps() {
-    const { value, compare, locale, separator = 'vs.' } = this.asProps;
+  getTriggerProps({ placeholder = 'Select date ranges', separator = 'vs.' }) {
+    const { locale, visible } = this.asProps;
+    const value = this.asProps.value?.value;
+    const compare = this.asProps.value?.compare;
     const formattingProps = {
       locale,
       day: 'numeric',
       month: 'short',
       year: 'numeric',
     };
-    let children = 'Select date ranges';
+    let children = placeholder;
     if (value?.[0] && value?.[1]) {
       children = shortDateRangeFormat(value, formattingProps);
     }
@@ -236,6 +232,8 @@ class RangePickerAbstract extends Component {
     }
     return {
       children,
+      visible,
+      onClick: () => this.handlers.visible(!visible),
     };
   }
 
@@ -249,7 +247,7 @@ class RangePickerAbstract extends Component {
 
     return {
       focused: range === 'value' ? true : undefined,
-      value: dirtyValue ?? value,
+      value: dirtyValue ?? value?.value,
       onChange: (value) => this.setState({ dirtyValue: value }),
       onDisplayedPeriodChange,
       locale,
@@ -265,13 +263,13 @@ class RangePickerAbstract extends Component {
   }
 
   getCompareDateRangeProps() {
-    const { compare, onDisplayedPeriodChange, locale, disabled, size, getI18nText } = this.asProps;
+    const { value, onDisplayedPeriodChange, locale, disabled, size, getI18nText } = this.asProps;
     const { range, dirtyCompare, dirtyToggler } = this.state;
 
     return {
       focused: range === 'compare' ? true : undefined,
-      disabled: !(dirtyToggler ?? compare?.length),
-      value: dirtyCompare ?? compare,
+      disabled: !(dirtyToggler ?? value?.compare?.length),
+      value: dirtyCompare ?? value?.compare,
       onChange: (value) => this.setState({ dirtyCompare: value }),
       onDisplayedPeriodChange,
       locale,
@@ -287,12 +285,12 @@ class RangePickerAbstract extends Component {
   }
 
   getCompareToggleProps() {
-    const { getI18nText, compare } = this.asProps;
+    const { getI18nText, value } = this.asProps;
     const { dirtyToggler } = this.state;
 
     return {
       getI18nText,
-      checked: dirtyToggler ?? compare?.length,
+      checked: dirtyToggler ?? value?.compare?.length,
       onChange: (checked) => {
         if (checked) {
           this.setState({ range: 'compare', dirtyToggler: true });
@@ -309,7 +307,6 @@ class RangePickerAbstract extends Component {
       displayedPeriod,
       disabled,
       value,
-      compare,
       onCompareHighlightedChange,
       highlighted,
       compareHighlighted,
@@ -330,8 +327,8 @@ class RangePickerAbstract extends Component {
       onCompareHighlightedChange,
       onHighlightedChange,
       range,
-      value: dirtyValue ?? value,
-      compare: dirtyCompare ?? compare,
+      value: dirtyValue ?? value?.value,
+      compare: dirtyCompare ?? value?.compare,
     };
   }
 
@@ -439,4 +436,4 @@ function Footer(props) {
 
 export { Apply, Reset, Trigger, CompareToggle, Body, Footer, Header };
 
-export default RangePickerAbstract;
+export default DateRangeComparatorAbstract;

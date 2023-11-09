@@ -471,21 +471,13 @@ declare const MonthRangePicker: Intergalactic.Component<
 export type DateRangeComparatorProps = DropdownProps &
   WithI18nEnhanceProps & {
     /**
-     * The selected date, accepts everything which is accepted by `new Date()`
+     * Selected date ranges
      * */
-    value?: DateConstructorParams[];
+    value?: { value?: DateConstructorParams[]; compare?: DateConstructorParams[] };
     /**
-     * Default value selected date, accepts everything which is accepted by `new Date()`
+     * Default value for selected date ranges
      * */
-    defaultValue?: DateConstructorParams[];
-    /**
-     * The compared date, accepts everything which is accepted by `new Date()`
-     * */
-    compare?: DateConstructorParams[];
-    /**
-     * Default value compared date, accepts everything which is accepted by `new Date()`
-     * */
-    defaultCompare?: DateConstructorParams[];
+    defaultValue?: { value?: DateConstructorParams[]; compare?: DateConstructorParams[] };
     /**
      * Default value date for showing the necessary month
      * */
@@ -497,11 +489,10 @@ export type DateRangeComparatorProps = DropdownProps &
     /**
      * Called with selected date when user clicks `Apply` button.
      * */
-    onChange?: (date: Date[]) => void;
-    /**
-     * Called with compared date when user clicks `Apply` button.
-     * */
-    onCompareChange?: (date: Date[]) => void;
+    onChange?: (ranges: {
+      value?: DateConstructorParams[];
+      compare?: DateConstructorParams[];
+    }) => void;
     /**
      * Array of dates blocked for selection
      * */
@@ -525,13 +516,21 @@ export type DateRangeComparatorProps = DropdownProps &
      * */
     highlighted?: DateConstructorParams[];
     /**
-     * Remove the 'Reset' button
-     * */
-    unclearable?: boolean;
-    /**
      * To be activated upon selecting the date
      * */
     onHighlightedChange?: (date: Date[]) => void;
+    /**
+     * The selected date, accepts everything which is accepted by `new Date()`
+     * */
+    compareHighlighted?: DateConstructorParams[];
+    /**
+     * To be activated upon selecting the date
+     * */
+    onCompareHighlightedChange?: (date: Date[]) => void;
+    /**
+     * Remove the 'Reset' button
+     * */
+    unclearable?: boolean;
     /**
      * Array of periods
      * [{value: [new Date(), new Date()], children: "Today"}]
@@ -550,6 +549,19 @@ export type DateRangeComparatorContext = {
   getCalendarProps: PropGetterFn;
   getPeriodProps: PropGetterFn;
 };
+
+export type DateRangeComparatorTriggerProps = DropdownTriggerProps &
+  BaseTriggerProps & {
+    /**
+     * Text between the selected date range and the compared date range when both are selected.
+     * @default 'vs.'
+     */
+    separator?: string;
+    /**
+     * Trigger text when no ranges are selected.
+     */
+    placeholder?: string;
+  };
 
 declare const DateRangeComparator: Intergalactic.Component<
   'div',
