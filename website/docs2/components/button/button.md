@@ -170,7 +170,7 @@ Table: Button sizes and margins
 
 ### Types
 
-Intergalactic design system has three button types (`use` property in API):
+Intergalactic Design System has three button types (`use` property in API):
 
 - `primary`: Main accent button for filters and basic actions on the page.
 - `secondary`: Default non-accent button for secondary/repetitive actions on the page.

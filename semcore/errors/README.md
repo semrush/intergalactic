@@ -4,7 +4,7 @@
 [![downloads](https://img.shields.io/npm/dt/@semcore/errors.svg)](https://www.npmjs.com/package/@semcore/errors)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
-> This component is part of the Intergalactic design system
+> This component is part of the Intergalactic Design System
 
 ### 📖 [Component documentation](https://developer.semrush.com/intergalactic/patterns/global-errors/)
 
