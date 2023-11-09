@@ -50,4 +50,4 @@ const Preview = (preview) => {
   return <Chart.Histogram {...chartProps} />;
 };
 
-export default PlaygroundGeneration(Preview);
+export default PlaygroundGeneration(Preview, { filterProps: ['data'] });

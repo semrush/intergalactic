@@ -48,4 +48,4 @@ const Preview = (preview) => {
   return <Chart.ScatterPlot {...chartProps} valueKey={'value'} xTicksCount={10} yTicksCount={6} />;
 };
 
-export default PlaygroundGeneration(Preview);
+export default PlaygroundGeneration(Preview, { filterProps: ['data'] });

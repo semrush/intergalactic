@@ -53,4 +53,4 @@ const Preview = (preview) => {
   return <Chart.Bar {...chartProps} type={'stack'} invertAxis={true} />;
 };
 
-export default PlaygroundGeneration(Preview);
+export default PlaygroundGeneration(Preview, { filterProps: ['data'] });

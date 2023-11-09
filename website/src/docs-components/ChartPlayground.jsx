@@ -3,7 +3,7 @@ export function chartPlayground(previewData, defaults = {}) {
 
   label({ label: 'Common chart props', key: 'commonChartProps' });
 
-  const direction = radio({
+  const direction = select({
     key: 'direction',
     defaultValue: defaults.direction,
     label: 'Direction',
@@ -56,7 +56,7 @@ export function chartPlayground(previewData, defaults = {}) {
 
   label({ label: 'Legend props', key: 'legendProps' });
 
-  const legendDirection = radio({
+  const legendDirection = select({
     key: 'legendDirection',
     defaultValue: defaults.legendDirection ?? 'row',
     label: 'Direction',
