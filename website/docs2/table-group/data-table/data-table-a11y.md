@@ -1,7 +1,6 @@
 ---
-title: Table principles
-a11y: AA
-tabs: Design('table'), A11y('table-a11y'), Example('table-code')
+title: DataTable
+tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A11y('data-table-a11y'),  Changelog('data-table-changelog')
 ---
 
 ## Considerations for developers
@@ -18,5 +17,7 @@ If you need to show different states of the table rows or cells, please don’t 
 ## Other recommendations
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
+
+## Automated screen reader testing
 
 <!--@include: ./data-table-a11y-report.md-->

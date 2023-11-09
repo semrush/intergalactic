@@ -1,5 +1,3 @@
-## Automated screen reader testing
-
 _Intergalactic v15.29.0, React v18.2.0, Playwright v1.25.1,
 Guidepup v0.13.1, MacOS Monterey 12._
 
