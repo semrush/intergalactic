@@ -4,7 +4,7 @@
 [![downloads](https://img.shields.io/npm/dt/@semcore/input-number.svg)](https://www.npmjs.com/package/@semcore/input-number)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/semrush/intergalactic/blob/master/LICENSE)
 
-> This component is part of the Intergalactic design system
+> This component is part of the Intergalactic Design System
 
 ### 📖 [Component documentation](https://developer.semrush.com/intergalactic/components/input-number/)
 
