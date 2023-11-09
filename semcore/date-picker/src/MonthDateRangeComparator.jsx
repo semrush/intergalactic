@@ -18,14 +18,26 @@ import InputTriggerBase from './components/InputTrigger';
 
 const dateParts = { day: false, month: true, year: true };
 
-function RangeInput() {
-  return (
-    <Root
+function RangeInput(props) {
+  const { styles } = props;
+  const SComparatorRangeInput = Root;
+  const SRangeIndicator = Box;
+  return sstyled(styles)(
+    <SComparatorRangeInput
+      data-name='SComparatorRangeInput'
       render={Box}
       tag={InputTriggerBase}
       parts={dateParts}
       __excludeProps={['role', 'aria-haspopup', 'onChange', 'value']}
-    />
+    >
+      <InputTriggerBase.DateRange>
+        <SRangeIndicator range={props.range} w={12} h={12} ml={2} />
+        <InputTriggerBase.DateRange.Indicator />
+        <InputTriggerBase.DateRange.FromMaskedInput />
+        <InputTriggerBase.DateRange.RangeSep />
+        <InputTriggerBase.DateRange.ToMaskedInput />
+      </InputTriggerBase.DateRange>
+    </SComparatorRangeInput>,
   );
 }
 RangeInput.Indicator = InputTriggerBase.Indicator;
@@ -43,8 +55,8 @@ class MonthDateRangeComparatorRoot extends RangeComparatorAbstract {
       ...RangeComparatorAbstract.defaultProps(props),
       children: (
         <>
-          <DateRangeComparator.Trigger />
-          <DateRangeComparator.Popper />
+          <MonthDateRangeComparator.Trigger />
+          <MonthDateRangeComparator.Popper />
         </>
       ),
     };
@@ -59,41 +71,6 @@ class MonthDateRangeComparatorRoot extends RangeComparatorAbstract {
     40: 3,
   };
 
-  getDefaultPeriods() {
-    const { getI18nText } = this.asProps;
-    const today = new Date(new Date().setHours(0, 0, 0, 0));
-    return [
-      {
-        children: getI18nText('lastMonth'),
-        value: [
-          dayjs(today).subtract(1, 'month').startOf('month').toDate(),
-          dayjs(today).startOf('month').toDate(),
-        ],
-      },
-      {
-        children: getI18nText('last3Months'),
-        value: [
-          dayjs(today).subtract(2, 'month').startOf('month').toDate(),
-          dayjs(today).startOf('month').toDate(),
-        ],
-      },
-      {
-        children: getI18nText('last6Months'),
-        value: [
-          dayjs(today).subtract(5, 'month').startOf('month').toDate(),
-          dayjs(today).startOf('month').toDate(),
-        ],
-      },
-      {
-        children: getI18nText('last12Months'),
-        value: [
-          dayjs(today).subtract(11, 'month').startOf('month').toDate(),
-          dayjs(today).startOf('month').toDate(),
-        ],
-      },
-    ];
-  }
-
   getTitleProps(props, index) {
     const { displayedPeriod, locale } = this.asProps;
     return {
@@ -105,54 +82,122 @@ class MonthDateRangeComparatorRoot extends RangeComparatorAbstract {
   }
 
   getRangeInput() {
-    return <RangeInput.DateRange />;
+    return <MonthDateRangeComparator.RangeInput.DateRange />;
+  }
+
+  getValueDateRangeProps() {
+    const props = super.getValueDateRangeProps();
+    return {
+      ...props,
+      w: props.w - 60,
+    };
+  }
+
+  getCompareDateRangeProps() {
+    const props = super.getCompareDateRangeProps();
+    return {
+      ...props,
+      w: props.w - 60,
+    };
+  }
+
+  getPopperProps() {
+    return {
+      ...super.getPopperProps(),
+      children: (
+        <>
+          <MonthDateRangeComparator.Header />
+          <MonthDateRangeComparator.Body />
+          <MonthDateRangeComparator.Footer />
+        </>
+      ),
+    };
+  }
+
+  getHeaderProps() {
+    return {
+      children: (
+        <>
+          <MonthDateRangeComparator.ValueDateRange />
+          <MonthDateRangeComparator.CompareToggle />
+          <MonthDateRangeComparator.CompareDateRange />
+        </>
+      ),
+    };
+  }
+
+  getBodyProps() {
+    return {
+      children: (
+        <>
+          <MonthDateRangeComparator.RangeCalendar />
+          <MonthDateRangeComparator.Periods />
+        </>
+      ),
+    };
+  }
+
+  getFooterProps({ unclearable = false }) {
+    return {
+      children: (
+        <>
+          <MonthDateRangeComparator.Apply />
+          {!unclearable && <MonthDateRangeComparator.Reset />}
+        </>
+      ),
+    };
   }
 }
 
-function PrimaryDateRange(props) {
-  const { Root: SPrimaryDateRange, styles } = props;
-  return sstyled(styles)(<SPrimaryDateRange render={RangeInput} />);
+function ValueDateRange(props) {
+  const { Root: SValueDateRange, styles } = props;
+  return sstyled(styles)(
+    <SValueDateRange render={MonthDateRangeComparator.RangeInput} range='value' />,
+  );
 }
 
-function SecondaryDateRange(props) {
-  const { Root: SSecondaryDateRange, styles } = props;
-  return sstyled(styles)(<SSecondaryDateRange render={RangeInput} />);
+function CompareDateRange(props) {
+  const { Root: SCompareDateRange, styles } = props;
+  return sstyled(styles)(
+    <SCompareDateRange render={MonthDateRangeComparator.RangeInput} range='compare' />,
+  );
 }
 
 function RangeCalendar(props) {
   const { Root: SRangeCalendar, styles } = props;
   return sstyled(styles)(
-    <SRangeCalendar render={Flex}>
+    <SRangeCalendar render={Flex} gap={8}>
       <Flex direction='column'>
-        <DateRangeComparator.CalendarHeader tag={Flex}>
-          <DateRangeComparator.Prev />
-          <DateRangeComparator.Title />
-        </DateRangeComparator.CalendarHeader>
-        <DateRangeComparator.Calendar />
+        <MonthDateRangeComparator.CalendarHeader tag={Flex}>
+          <MonthDateRangeComparator.Prev />
+          <MonthDateRangeComparator.Title />
+        </MonthDateRangeComparator.CalendarHeader>
+        <MonthDateRangeComparator.Calendar />
       </Flex>
       <Flex direction='column'>
-        <DateRangeComparator.CalendarHeader tag={Flex}>
-          <DateRangeComparator.Title />
-          <DateRangeComparator.Next />
-        </DateRangeComparator.CalendarHeader>
-        <DateRangeComparator.Calendar />
+        <MonthDateRangeComparator.CalendarHeader tag={Flex}>
+          <MonthDateRangeComparator.Title />
+          <MonthDateRangeComparator.Next />
+        </MonthDateRangeComparator.CalendarHeader>
+        <MonthDateRangeComparator.Calendar />
       </Flex>
     </SRangeCalendar>,
   );
 }
 function Periods(props) {
   const { Root: SPeriods, styles } = props;
+  const SPeriodsList = MonthDateRangeComparator.Period;
   return sstyled(styles)(
     <SPeriods render={Flex}>
-      <Divider m='-16px 16px' orientation='vertical' h='auto' />
+      <Divider orientation='vertical' h='auto' />
       <Flex direction='column'>
-        <DateRangeComparator.Period />
+        <SPeriodsList />
       </Flex>
     </SPeriods>,
   );
 }
 
-const DateRangeComparator = createComponent(
+const MonthDateRangeComparator = createComponent(
   MonthDateRangeComparatorRoot,
   {
     Popper,
@@ -167,17 +212,18 @@ const DateRangeComparator = createComponent(
     Reset,
 
     Trigger,
-    PrimaryDateRange,
+    ValueDateRange,
     CompareToggle,
-    SecondaryDateRange,
+    CompareDateRange,
     Body,
     RangeCalendar,
     Periods,
     Footer,
+    RangeInput,
   },
   {
     parent: Calendar,
   },
 );
 
-export default DateRangeComparator;
+export default MonthDateRangeComparator;

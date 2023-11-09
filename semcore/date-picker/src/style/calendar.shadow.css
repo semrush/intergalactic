@@ -226,28 +226,6 @@ SCalendarUnit[compareEnd]:not([compareHighlighted]) {
   border-bottom-right-radius: var(--intergalactic-control-rounded, 6px);
 }
 
-
-/* 
-SCalendarUnit[comparing] {
-  border-top: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
-  border-bottom: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
-}
-
-SCalendarUnit[comparing][startHighlighted],
-SCalendarUnit[comparing][endHighlighted] {
-  border: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
-}
-
-SCalendarUnit[comparing][startSelected],
-SCalendarUnit[comparing][endSelected] {
-  background-color: 2px dashed var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
-
-  &:hover {
-    color: var(--intergalactic-text-primary-invert, #ffffff);
-    background-color: var(--intergalactic-date-picker-cell-comparison-active-hover, #5925ab);
-  }
-} */
-
 SCalendarUnit[outdated] {
   opacity: 0.2;
 }
@@ -257,11 +235,6 @@ SCalendarUnit[disabled] {
   cursor: default;
   pointer-events: none;
 }
-
-
-/* --intergalactic-date-picker-cell-comparison-active: #8649e1;
---intergalactic-date-picker-cell-comparison-active-hover: #5925ab; */
-
 
 @media (prefers-reduced-motion) {
 

@@ -781,6 +781,9 @@ importers:
       '@semcore/button':
         specifier: 5.12.0
         version: link:../button
+      '@semcore/checkbox':
+        specifier: workspace:^
+        version: link:../checkbox
       '@semcore/core':
         specifier: ^2.10.0
         version: link:../core

@@ -2,7 +2,7 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { Component, Root, sstyled } from '@semcore/core';
 import Button from '@semcore/button';
-import { Box, Flex } from '@semcore/flex-box';
+import { Flex } from '@semcore/flex-box';
 import Dropdown from '@semcore/dropdown';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from '../translations/__intergalactic-dynamic-locales';
@@ -56,9 +56,10 @@ class RangePickerAbstract extends Component {
   static enhance = [i18nEnhance(localizedMessages)];
 
   state = {
-    dirtyValue: [],
-    dirtyCompare: [],
-    range: 'value', // compare
+    dirtyValue: undefined,
+    dirtyCompare: undefined,
+    dirtyToggler: undefined,
+    range: 'value', // 'value' | 'compare'
   };
 
   getPeriodProps() {
@@ -70,9 +71,9 @@ class RangePickerAbstract extends Component {
     } = this.asProps;
     const { dirtyValue, dirtyCompare, range } = this.state;
 
-    let value = dirtyValue.length ? dirtyValue : this.asProps.value;
+    let value = dirtyValue ?? this.asProps.value;
     if (range === 'compare') {
-      value = dirtyCompare.length ? dirtyCompare : this.asProps.compare;
+      value = dirtyCompare ?? this.asProps.compare;
     }
     return {
       periods,
@@ -122,9 +123,14 @@ class RangePickerAbstract extends Component {
           if (!visible) {
             this.handlers.highlighted([]);
             this.handlers.compareHighlighted([]);
-            this.setState({ dirtyValue: [], dirtyCompare: [], range: 'value' });
+            this.setState({
+              dirtyValue: undefined,
+              dirtyCompare: undefined,
+              dirtyToggler: undefined,
+              range: 'value',
+            });
             this.handlers.displayedPeriod(
-              getLatestDate(this.asProps.value ?? undefined) || this.props.defaultDisplayedPeriod,
+              getLatestDate(this.asProps.value ?? []) || this.props.defaultDisplayedPeriod,
             );
           }
         },
@@ -134,28 +140,24 @@ class RangePickerAbstract extends Component {
       value: [
         null,
         (value) => {
-          this.handlers.displayedPeriod(getLatestDate(value));
+          if (value?.[0] && value?.[1]) this.handlers.displayedPeriod(getLatestDate(value));
         },
       ],
       compare: [
         null,
         (value) => {
-          this.handlers.displayedPeriod(getLatestDate(value));
+          if (value?.[0] && value?.[1]) this.handlers.displayedPeriod(getLatestDate(value));
         },
       ],
     };
   }
 
   getApplyProps() {
-    const { value, getI18nText } = this.asProps;
+    const { value, compare, getI18nText } = this.asProps;
     const { dirtyValue, dirtyCompare } = this.state;
     return {
       getI18nText,
-      onClick: () =>
-        this.handleApply(
-          dirtyValue.length ? dirtyValue : value,
-          dirtyCompare.length ? dirtyCompare : [],
-        ),
+      onClick: () => this.handleApply(dirtyValue ?? value, dirtyCompare ?? compare),
     };
   }
 
@@ -178,24 +180,32 @@ class RangePickerAbstract extends Component {
     const today = new Date(new Date().setHours(0, 0, 0, 0));
     return [
       {
-        children: getI18nText('last2Days'),
-        value: [dayjs(today).subtract(1, 'day').toDate(), today],
-      },
-      {
-        children: getI18nText('lastWeek'),
-        value: [dayjs(today).subtract(6, 'day').toDate(), today],
-      },
-      {
-        children: getI18nText('last2Weeks'),
-        value: [dayjs(today).subtract(13, 'day').toDate(), today],
-      },
-      {
         children: getI18nText('lastMonth'),
-        value: [dayjs(today).subtract(1, 'month').toDate(), today],
+        value: [
+          dayjs(today).subtract(1, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
+        ],
       },
       {
-        children: getI18nText('last2Months'),
-        value: [dayjs(today).subtract(2, 'month').toDate(), today],
+        children: getI18nText('last3Months'),
+        value: [
+          dayjs(today).subtract(2, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
+        ],
+      },
+      {
+        children: getI18nText('last6Months'),
+        value: [
+          dayjs(today).subtract(5, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
+        ],
+      },
+      {
+        children: getI18nText('last12Months'),
+        value: [
+          dayjs(today).subtract(11, 'month').startOf('month').toDate(),
+          dayjs(today).startOf('month').toDate(),
+        ],
       },
     ];
   }
@@ -210,7 +220,7 @@ class RangePickerAbstract extends Component {
   }
 
   getTriggerProps() {
-    const { value, compare, locale, separator = 'vs.', visible, onVisibleChange } = this.asProps;
+    const { value, compare, locale, separator = 'vs.' } = this.asProps;
     const formattingProps = {
       locale,
       day: 'numeric',
@@ -218,16 +228,14 @@ class RangePickerAbstract extends Component {
       year: 'numeric',
     };
     let children = 'Select date ranges';
-    if (value?.length) {
+    if (value?.[0] && value?.[1]) {
       children = shortDateRangeFormat(value, formattingProps);
     }
-    if (compare?.length) {
+    if (compare?.[0] && compare?.[1]) {
       children = `${children || ''} ${separator} ${shortDateRangeFormat(compare, formattingProps)}`;
     }
     return {
       children,
-      visible,
-      onVisibleChange: console.log,
     };
   }
 
@@ -235,18 +243,17 @@ class RangePickerAbstract extends Component {
     throw new Error('not implemented');
   }
 
-  getPrimaryDateRangeProps() {
-    const { value, onChange, onDisplayedPeriodChange, locale, disabled, size, getI18nText } =
-      this.asProps;
+  getValueDateRangeProps() {
+    const { value, onDisplayedPeriodChange, locale, disabled, size, getI18nText } = this.asProps;
     const { range, dirtyValue } = this.state;
 
     return {
       focused: range === 'value' ? true : undefined,
-      value: dirtyValue.length ? dirtyValue : value,
-      onChange,
+      value: dirtyValue ?? value,
+      onChange: (value) => this.setState({ dirtyValue: value }),
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 270 : 300,
+      w: size === 'm' ? 300 : 330,
       disabledDates: disabled,
       children: this.getRangeInput(),
       getI18nText,
@@ -257,26 +264,18 @@ class RangePickerAbstract extends Component {
     };
   }
 
-  getSecondaryDateRangeProps() {
-    const {
-      compare,
-      onCompareChange,
-      onDisplayedPeriodChange,
-      locale,
-      disabled,
-      size,
-      getI18nText,
-    } = this.asProps;
-    const { range, dirtyCompare } = this.state;
+  getCompareDateRangeProps() {
+    const { compare, onDisplayedPeriodChange, locale, disabled, size, getI18nText } = this.asProps;
+    const { range, dirtyCompare, dirtyToggler } = this.state;
 
     return {
       focused: range === 'compare' ? true : undefined,
-      disabled: !(compare?.length || dirtyCompare.length || range === 'compare'),
-      value: dirtyCompare.length ? dirtyCompare : compare,
-      onChange: onCompareChange,
+      disabled: !(dirtyToggler ?? compare?.length),
+      value: dirtyCompare ?? compare,
+      onChange: (value) => this.setState({ dirtyCompare: value }),
       onDisplayedPeriodChange,
       locale,
-      w: size === 'm' ? 270 : 300,
+      w: size === 'm' ? 300 : 330,
       disabledDates: disabled,
       children: this.getRangeInput(),
       getI18nText,
@@ -289,16 +288,16 @@ class RangePickerAbstract extends Component {
 
   getCompareToggleProps() {
     const { getI18nText, compare } = this.asProps;
-    const { range, dirtyCompare } = this.state;
+    const { dirtyToggler } = this.state;
 
     return {
       getI18nText,
-      checked: compare?.length || dirtyCompare.length || range === 'compare',
+      checked: dirtyToggler ?? compare?.length,
       onChange: (checked) => {
         if (checked) {
-          this.setState({ range: 'compare' });
+          this.setState({ range: 'compare', dirtyToggler: true });
         } else {
-          this.setState({ range: 'value', dirtyCompare: [] });
+          this.setState({ range: 'value', dirtyCompare: [], dirtyToggler: false });
         }
       },
     };
@@ -331,8 +330,8 @@ class RangePickerAbstract extends Component {
       onCompareHighlightedChange,
       onHighlightedChange,
       range,
-      value: dirtyValue.length ? dirtyValue : value,
-      compare: dirtyCompare.length ? dirtyCompare : compare,
+      value: dirtyValue ?? value,
+      compare: dirtyCompare ?? compare,
     };
   }
 
@@ -342,17 +341,18 @@ class RangePickerAbstract extends Component {
     let dirty = range === 'compare' ? dirtyCompare : dirtyValue;
     if (Array.isArray(date)) {
       dirty = date;
-    } else if (!dirty.length) {
+    } else if (!dirty?.length) {
       dirty = [date];
       highlighted = [date];
-    } else if (dirty.length >= 2) {
+    } else if (dirty?.length >= 2) {
       dirty = [date];
       highlighted = [date];
-    } else if (dirty[0] > date) {
-      dirty = [date, dirty[0]];
+    } else if (dirty?.[0] > date) {
+      dirty = [date, dirty?.[0]];
     } else {
-      dirty = [dirty[0], date];
+      dirty = [dirty?.[0], date];
     }
+
     const state = {};
     if (range === 'compare') {
       state['dirtyCompare'] = dirty;
@@ -369,8 +369,12 @@ class RangePickerAbstract extends Component {
     });
   };
 
+  getPopperProps() {
+    return { p: 0 };
+  }
+
   render() {
-    const { Children, styles, 'aria-label': providedAriaLabel, value, compare } = this.asProps;
+    const { Children, styles, 'aria-label': providedAriaLabel } = this.asProps;
 
     return (
       <>
@@ -410,7 +414,7 @@ function CompareToggle(props) {
 function Header(props) {
   const { Root: SRangeComparatorHeader, Children, styles } = props;
   return sstyled(styles)(
-    <SRangeComparatorHeader render={Flex} gap={4}>
+    <SRangeComparatorHeader render={Flex} gap={4} alignItems='center'>
       <Children />
     </SRangeComparatorHeader>,
   );
@@ -427,7 +431,7 @@ function Body(props) {
 function Footer(props) {
   const { Root: SFooter, styles, Children } = props;
   return sstyled(styles)(
-    <SFooter render={Box}>
+    <SFooter render={Flex} gap={2}>
       <Children />
     </SFooter>,
   );
