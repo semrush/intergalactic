@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.2] - 2023-11-09
+
+### Fixed
+
+- Fixed old palette colors resolving that was broken in `@semcore/utils@4.9.0`.
+
 ## [4.10.1] - 2023-10-27
 
 ### Changed

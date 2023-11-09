@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './Color.module.css';
 import Copy from '../components/Copy';
+import { useColorResolver } from '@semcore/ui/utils/use/useColorResolver';
 
 const cssVariableFile = `
 @custom-media --desktop (min-width: 480px);
@@ -68,6 +69,7 @@ const cssVariable = Object.fromEntries(
 const Color = ({ name, className, ...other }) => {
   const varValue = cssVariable[name];
   const value = varValue || name;
+  const resolveColor = useColorResolver();
 
   return (
     <Copy
@@ -84,7 +86,7 @@ const Color = ({ name, className, ...other }) => {
         className={cx(styles.paintedElement, className)}
         {...other}
         value={value}
-        style={{ ...(other.style ?? {}), backgroundColor: value }}
+        style={{ ...(other.style ?? {}), backgroundColor: resolveColor(value) }}
       />
     </Copy>
   );
