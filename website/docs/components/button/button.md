@@ -43,7 +43,7 @@ Addon before the text has `margin-left`, while the trailing addon has `margin-ri
 
 ### Types
 
-Intergalactic design system has three button types (`use` property in API):
+Intergalactic Design System has three button types (`use` property in API):
 
 - `primary`: Main accent button for filters and basic actions on the page.
 - `secondary`: Default non-accent button for secondary/repetitive actions on the page.
