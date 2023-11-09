@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Generating base64 strings from `svg`.
+- Charts exporting to image.
 
 ## [3.18.0] - 2023-11-06
 
