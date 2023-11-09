@@ -20,4 +20,4 @@ See more accessibility recommendations in the common [Accessibility guide](/core
 
 ## Automated screen reader testing
 
-@include data-table-a11y-report
+<!--@include: ./data-table-a11y-report.md-->
