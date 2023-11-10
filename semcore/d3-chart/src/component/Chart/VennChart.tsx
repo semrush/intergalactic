@@ -119,6 +119,12 @@ class VennChartComponent extends AbstractChart<VennChartData, VennChartProps> {
   }
 
   renderTooltip() {
+    const { showTooltip } = this.asProps;
+
+    if (!showTooltip) {
+      return null;
+    }
+
     return (
       <Venn.Tooltip>
         {({ name, dataKey, data }: any) => {

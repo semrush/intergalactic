@@ -86,6 +86,12 @@ class BubbleChartComponent extends AbstractChart<BubbleChartData, BubbleChartPro
   }
 
   renderTooltip() {
+    const { showTooltip } = this.asProps;
+
+    if (!showTooltip) {
+      return null;
+    }
+
     return (
       <Bubble.Tooltip>
         {({ index, data }: any) => {

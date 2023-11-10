@@ -88,8 +88,12 @@ class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, Scat
   }
 
   protected renderTooltip() {
-    const { data, groupKey } = this.asProps;
+    const { data, groupKey, showTooltip } = this.asProps;
     const { dataDefinitions } = this.state;
+
+    if (!showTooltip) {
+      return null;
+    }
 
     return dataDefinitions
       .filter((item) => item.checked)

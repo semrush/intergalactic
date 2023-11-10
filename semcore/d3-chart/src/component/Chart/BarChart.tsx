@@ -142,8 +142,12 @@ class BarChartComponent extends AbstractChart<BarChartData, BarChartProps> {
   }
 
   renderTooltip(): React.ReactNode {
-    const { data, groupKey, showTotalInTooltip, invertAxis } = this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip, invertAxis } = this.asProps;
     const { dataDefinitions } = this.state;
+
+    if (!showTooltip) {
+      return null;
+    }
 
     return (
       <HoverRect.Tooltip

@@ -91,8 +91,12 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
   }
 
   renderTooltip() {
-    const { data, groupKey, showTotalInTooltip } = this.asProps;
+    const { data, groupKey, showTotalInTooltip, showTooltip } = this.asProps;
     const { dataDefinitions } = this.state;
+
+    if (!showTooltip) {
+      return null;
+    }
 
     return (
       <HoverLine.Tooltip x={groupKey} wMin={100}>
