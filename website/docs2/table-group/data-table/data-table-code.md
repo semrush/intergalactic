@@ -78,7 +78,7 @@ const data = [
 If horizontal scrolling is not visible, try reducing the window size
 :::
 
-By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to the [Fixed header section](/table-group/data-table/#fixed_header).
+By default, scrolling is displayed at the bottom of the table, but it can also be added to the table header. Scroll in the table header is useful for very long tables with fixed columns, allowing users to scroll more conveniently without reaching the end. For examples, refer to the [Fixed header section](/table-group/data-table/data-table#fixed_header).
 
 ::: sandbox
 
@@ -1396,7 +1396,7 @@ const data = [
 
 ## Table in table
 
-We use the [example with the accordion above](/table-group/data-table/#accordion_in_table).
+We use the [example with the accordion above](/table-group/data-table/data-table#accordion_in_table).
 
 1. Hide the table header.
 2. Set "inherit" to use the size from the top table for each column.
@@ -1512,7 +1512,7 @@ const data = [
 
 ## Table in table with fixed column
 
-We use the [example with the table above](/table-group/data-table/#table_in_table).
+We use the [example with the table above](/table-group/data-table/data-table#table_in_table).
 
 1. Set the desired `z-index`.
 2. Set the variable to block the scroll.
@@ -1678,7 +1678,7 @@ const Demo = () => {
 
 ## Download status
 
-Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin).
+Replace the `tag` property with `<DataTable.Body/>` on the `SpinContainer` to cover the table with a [Spin](/components/spin/spin).
 
 ::: sandbox
 
