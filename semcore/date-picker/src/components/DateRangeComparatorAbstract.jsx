@@ -119,20 +119,20 @@ class DateRangeComparatorAbstract extends Component {
       visible: [
         null,
         (visible) => {
-          // if (!visible) {
-          //   this.handlers.highlighted([]);
-          //   this.handlers.compareHighlighted([]);
-          //   this.setState({
-          //     dirtyValue: undefined,
-          //     dirtyCompare: undefined,
-          //     dirtyToggler: undefined,
-          //     range: 'value',
-          //   });
-          //   this.handlers.displayedPeriod(
-          //     getLatestDate(this.asProps.value?.value ?? this.asProps.value?.compare ?? []) ||
-          //       this.props.defaultDisplayedPeriod,
-          //   );
-          // }
+          if (!visible) {
+            this.handlers.highlighted([]);
+            this.handlers.compareHighlighted([]);
+            this.setState({
+              dirtyValue: undefined,
+              dirtyCompare: undefined,
+              dirtyToggler: undefined,
+              range: 'value',
+            });
+            this.handlers.displayedPeriod(
+              getLatestDate(this.asProps.value?.value ?? this.asProps.value?.compare ?? []) ||
+                this.props.defaultDisplayedPeriod,
+            );
+          }
         },
       ],
       highlighted: null,
