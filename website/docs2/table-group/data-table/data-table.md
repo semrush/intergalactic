@@ -12,7 +12,7 @@ tabs: Design('data-table'), Example('data-table-code'), API('data-table-api'), A
 
 ### Types
 
-Our design system offers two table types – [primary](../table-primary/) and [secondary](../table-secondary/).
+Our design system offers two table types – [primary](../table-primary/table-primary) and [secondary](../table-secondary/table-secondary).
 
 ### Common styles for table content
 
@@ -25,11 +25,11 @@ Table: Common styles for table content
 | Secondary text              | Use `--text-secondary` token for color.               |
 | Stand alone icon            | Icon with M size and `--icon-secondary-neutral` token for color.    |
 | The icon next to the text   | Icon with M size and `--icon-secondary-neutral` token for color.   |
-| Header and cell checkbox    | Use [Checkbox](/components/checkbox/) with M size.  |
+| Header and cell checkbox    | Use [Checkbox](/components/checkbox/checkbox) with M size.  |
 
 ## Sorting
 
-For detailed information on sorting columns in the table, refer to [Table controls](/table-group/table-controls/).
+For detailed information on sorting columns in the table, refer to [Table controls](/table-group/table-controls/table-controls).
 
 ## Tooltip
 
@@ -144,14 +144,14 @@ Having a horizontal scroll in a large table is not a bad practice; it is a famil
 
 ### Two scroll bars
 
-You can show two scroll bars in the table if necessary, adding scroll bar to the header and to the bottom of the table. It is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll bar can be either in the header and at the bottom of the table. Refer to the [examples in the Fixed header section](/table-group/data-table/data-table-code/#fixed_header).
+You can show two scroll bars in the table if necessary, adding scroll bar to the header and to the bottom of the table. It is needed exclusively for cases when the table is very long (or potentially long) and it has fixed columns so that the user can scroll more conveniently without scrolling to the very end. In such cases, the scroll bar can be either in the header and at the bottom of the table. Refer to the [examples in the Fixed header section](/table-group/data-table/data-table-code#fixed_header).
 
 ![](static/table-scroll.png)
 
 ## Pagination
 
-Refer to the [Table controls](/table-group/table-controls/#pagination) guide for detailed recommendations on pagination.
+Refer to the [Table controls](/table-group/table-controls/table-controls#pagination) guide for detailed recommendations on pagination.
 
 ## Table states
 
-For information about table states, refer to the specific document on [Table states](/table-group/table-states/).
+For information about table states, refer to the specific document on [Table states](/table-group/table-states/table-states).
