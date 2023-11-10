@@ -14,9 +14,10 @@ With `behavior='radio'` (default):
 
 Table: Keyboard support
 
-| Key                         | Function                                                  |
-| --------------------------- | --------------------------------------------------------- |
-| `Left Arrow` , `Right Arrow` | Set checked value the next/previous button in the group.  |
+| Key                         | Function                                                         |
+| --------------------------- | ---------------------------------------------------------------- |
+| `Tab`                       | When focus moves to the Pills, it moves to the active `Pills.Item`.  |
+| `Left Arrow` , `Right Arrow` | Set `checked` value to the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively.  |
 
 With `behavior='tabs'` :
 
@@ -24,10 +25,9 @@ Table: Keyboard support
 
 | Key                    | Function                                                                                                                                                       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tab` | Moves focus to the next focusable element.                                                                                                                     |
-| `Shift + Tab` | Moves focus to the previous focusable element.                                                                                                                 |
-| `Space` , `Enter` | Change pill's state to active.                                                                                                                                 |
-| `Left Arrow` , `Right Arrow` | Moves focus to and checks the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively. |
+| `Tab`                       | When focus moves to the Pills, the active `Pills.Item` gets it. |
+| `Left Arrow` , `Right Arrow` | Moves focus to the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively. |
+| `Space`/`Enter` | Change `Pills.Item` state to `active`.                                                                                                                                 |
 
 See detailed information about the keyboard support for the clickable elements in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_button_link_input_etc).
 
