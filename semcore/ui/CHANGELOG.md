@@ -1,3 +1,9 @@
+## [15.34.1] - 2023-11-10
+
+### @semcore/popper
+
+- **Fixed** Fixed popper wasn't opening in date-picker.
+
 ## [15.34.0] - 2023-11-10
 
 ### @semcore/base-trigger
