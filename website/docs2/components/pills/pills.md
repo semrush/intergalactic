@@ -161,7 +161,7 @@ Pills are used for:
 Pills can be used in:
 
 - Lists;
-- [Tables](/table-group/table/table);
+- [Tables](/table-group/data-table/data-table);
 - [Charts](/data-display/chart-controls/chart-controls);
 - Local filters in widgets, etc.
 
