@@ -6,6 +6,16 @@ tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal
 
 ## D3 API
 
+## Chart.Bar
+
+For Horizontal view, you should pass `true` into `invertAxis` prop
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="BarChartProps" :types={...types} />
+
 ## HorizontalBar
 
 Horizontal chart Bar.

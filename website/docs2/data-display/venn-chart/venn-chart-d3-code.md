@@ -8,6 +8,45 @@ tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Exam
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/d3-chart';
+
+const Demo = () => {
+  return (
+    <div style={{ width: '500px' }}>
+      <Chart.Venn data={data} plotWidth={300} plotHeight={300} legendProps={legendProps} />
+    </div>
+  );
+};
+
+const data = {
+  G: 200,
+  F: 200,
+  C: 500,
+  U: 1,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100, // intersection key must be `${key1}/${key2}/...`
+};
+
+const legendProps = {
+  legendMap: {
+    G: { label: 'Good' },
+    F: { label: 'Fast' },
+    C: { label: 'Clean' },
+    U: { label: 'Uniq' },
+  },
+};
+</script>
+
+:::
+
 ## Venn
 
 A Venn chart allows you to see all kinds of intersections between two or more datasets.
@@ -136,7 +175,7 @@ const Demo = () => {
   const [order, setOrder] = React.useState(0);
 
   return (
-    <Flex alignItems='center' direction='column'>
+    <Flex alignItems='flex-start' direction='column'>
       <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
           <Venn.Circle dataKey='F' name='F' />
@@ -158,6 +197,89 @@ const data = {
   F: 5,
   S: 7,
   'F/S': 3,
+};
+</script>
+
+:::
+
+## Legend
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Plot, Venn, colors } from '@semcore/ui/d3-chart';
+import { Text } from '@semcore/ui/typography';
+import { ChartLegend } from '@semcore/d3-chart';
+
+const data = {
+  G: 200,
+  F: 200,
+  C: 500,
+  U: 1,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};
+
+const legendItems = [
+  {
+    id: 'G',
+    label: 'Good',
+    checked: true,
+    color: 'chart-palette-order-1',
+  },
+  {
+    id: 'F',
+    label: 'Fast',
+    checked: true,
+    color: 'chart-palette-order-2',
+  },
+  {
+    id: 'C',
+    label: 'Cheap',
+    checked: true,
+    color: 'chart-palette-order-3',
+  },
+  {
+    id: 'U',
+    label: 'Unknown',
+    checked: true,
+    color: 'chart-palette-order-4',
+  },
+];
+
+const Demo = () => {
+  return (
+    <>
+      <ChartLegend items={legendItems} shape={'Line'} />
+      <Plot height={300} width={400} data={data}>
+        <Venn>
+          <Venn.Circle dataKey='G' name='Good' />
+          <Venn.Circle dataKey='F' name='Fast' color={colors['blue-03']} />
+          <Venn.Circle dataKey='C' name='Cheap' color={colors['orange-04']} />
+          <Venn.Circle dataKey='U' name='Unknown' color={colors['pink-03']} />
+          <Venn.Intersection dataKey='G/F' name='Good & Fast' />
+          <Venn.Intersection dataKey='G/C' name='Good & Cheap' />
+          <Venn.Intersection dataKey='F/C' name='Fast & Cheap' />
+          <Venn.Intersection dataKey='G/F/C' name='Good & Fast & Cheap' />
+        </Venn>
+        <Venn.Tooltip>
+          {({ name, dataKey }) => {
+            return {
+              children: (
+                <>
+                  <Venn.Tooltip.Title>{name}</Venn.Tooltip.Title>
+                  <Text bold>{data[dataKey]}</Text>
+                </>
+              ),
+            };
+          }}
+        </Venn.Tooltip>
+      </Plot>
+    </>
+  );
 };
 </script>
 

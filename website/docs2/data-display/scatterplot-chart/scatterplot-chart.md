@@ -8,6 +8,60 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, ScatterPlotChartProps } from '@semcore/d3-chart';
+
+const data = [...Array(25).keys()].map((d, i) => ({
+  x: i,
+  y: Math.random() * 10,
+  y2: Math.random() * 10,
+  value: Math.round(Math.random() * 10),
+}));
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.ScatterPlot');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    hideXAxis,
+    hideYAxis,
+    hideTooltip,
+    hideLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool }, { direction: 'column' });
+
+  const chartProps: ScatterPlotChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 300,
+    plotHeight: 300,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.ScatterPlot {...chartProps} valueKey={'value'} xTicksCount={10} yTicksCount={6} />;
+});
+</script>
+
+:::
+
 ## Description
 
 A **scatterplot chart** visualizes the relationship between two variables in one or more datasets.
@@ -84,8 +138,8 @@ We recommend using the vertical legend. It helps to "read" the categories and th
 
 Show the following values in the tooltip for this chart type:
 
-- the value for the point on the X axis;
-- the value for the point on the Y axis.
+- the value for the point on the X-axis;
+- the value for the point on the Y-axis.
 
 **In the tooltip, focus on values rather than axis names or data categories.**
 
@@ -117,7 +171,7 @@ Here you will find the states for some specific cases. All other "empty states" 
 
 ![](static/color-yes-no.png)
 
-### Always start the Y axis at 0
+### Always start the Y-axis at 0
 
 Otherwise, it can visually distort the presence of a correlation between the data along the Y and X axes.
 

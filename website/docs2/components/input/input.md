@@ -138,7 +138,7 @@ Table: Input text label sizes
 **Addon** is a slot inside the input field – to the left and right of the text – for placing icons, badges, counters, etc. Addon can be non-clickable and clickable.
 
 - When adding an icon before the text (leading addon), use a non-clickable icon. This icon is usually colored to match the text or a different color based on the purpose it serves.
-- When adding an addon after the text (trailing addon), you have various options such as a clickable icon, a counter, a badge, a spinner, an icon button, or a link. The clickable icon should have the `--icon-secondary-neutral` color. When hovering over it, the color should change to `--icon-secondary-neutral-hover-active`, and the cursor should change to a pointer.
+- When adding an addon after the text (trailing addon), you have various options such as a clickable icon, a counter, a badge, a spinner, an icon button, or a link. The clickable icon should have the `--icon-secondary-neutral` color. When hovering over it, the color changes to the darker one with CSS filter, and the cursor changes to `pointer`.
 
 Table: Input addon indents and sizes
 

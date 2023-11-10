@@ -464,10 +464,15 @@ img {
   padding-right: 4px;
   line-height: normal;
   isolation: isolate;
+  overflow: auto;
 }
 
 .playground-runtime+div[class*='language-'] {
   max-width: 430px;
+}
+
+.vp-doc div[class*='language-'] {
+  overflow: auto;
 }
 
 .vp-doc div[class*='language-'],

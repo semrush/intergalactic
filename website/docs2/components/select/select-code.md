@@ -136,7 +136,7 @@ const Demo = () => {
   const [value, setValue] = React.useState(null);
 
   return (
-    <Flex>
+    <>
       <Select onChange={setValue} placeholder='Select country'>
         <Select.Trigger w={180}>
           <Select.Trigger.Addon>
@@ -153,7 +153,25 @@ const Demo = () => {
           ))}
         </Select.Menu>
       </Select>
-    </Flex>
+      <br />
+      <br />
+      <Select onChange={setValue} placeholder='Select country'>
+        <Select.Trigger w={'100%'}>
+          <Select.Trigger.Addon>
+            <Flags iso2={value} />
+          </Select.Trigger.Addon>
+          <Select.Trigger.Text>{formatName(iso2Name[value])}</Select.Trigger.Text>
+        </Select.Trigger>
+        <Select.Menu hMax={180}>
+          {Object.keys(iso2Name).map((value) => (
+            <Select.Option key={value} value={value}>
+              <Flags iso2={value as keyof typeof iso2Name} mr={2} />
+              {formatName(iso2Name[value])}
+            </Select.Option>
+          ))}
+        </Select.Menu>
+      </Select>
+    </>
   );
 };
 </script>
@@ -241,6 +259,10 @@ const Demo = () => (
         <Select.Option value={2}>
           <Select.Option.Checkbox />
           I'm option-checkbox
+        </Select.Option>
+        <Select.Option value={3} disabled>
+          <Select.Option.Checkbox />
+          I'm disabled option-checkbox
         </Select.Option>
         <Select.OptionTitle>I'm title</Select.OptionTitle>
         <Select.OptionHint>I'm hint</Select.OptionHint>

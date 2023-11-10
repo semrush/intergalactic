@@ -8,6 +8,62 @@ tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, BarChartProps } from '@semcore/d3-chart';
+
+const data = [...Array(5).keys()].map((d, i) => ({
+  x: i,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+  Line3: Math.random() * 10,
+}));
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Bar');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    hideXAxis,
+    hideYAxis,
+    hideTooltip,
+    showTotalInTooltip,
+    hideLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool }, { showTotalInTooltip: true });
+
+  const chartProps: BarChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 300,
+    plotHeight: 300,
+    showTotalInTooltip,
+    direction,
+    hideTooltip,
+    hideXAxis,
+    hideYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (hideLegend) {
+    chartProps.hideLegend = true;
+  } else {
+    chartProps.legendProps = legendProps;
+  }
+
+  return <Chart.Bar {...chartProps} type={'stack'} />;
+});
+</script>
+
+:::
+
 ## Description
 
 **Stacked bar chart** is used when it's necessary to display more than two categories of values and show the ratio of them to the whole.
