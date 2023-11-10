@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.2] - 2023-11-10
+
+### Fixed
+
+- Blue border for `Trigger` when it `active` and in `normal` state.
+
 ## [4.15.1] - 2023-11-09
 
 ### Changed
