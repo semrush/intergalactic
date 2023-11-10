@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Histogram chart** helps grouping numeric data for comparison by quantitative indicators. It shows the distribution of values.

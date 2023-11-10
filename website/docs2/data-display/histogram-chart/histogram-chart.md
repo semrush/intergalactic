@@ -8,6 +8,62 @@ tabs: Design('histogram-chart'), A11y('histogram-chart-a11y'), API('histogram-ch
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart } from '@semcore/d3-chart';
+import { HistogramChartProps } from '@semcore/d3-chart/src/component/Chart/HistogramChart.type';
+
+const data = [...Array(5).keys()].map((d, i) => ({
+  x: i,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+}));
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Histogram');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showTotalInTooltip,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  const chartProps: HistogramChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 300,
+    plotHeight: 200,
+    showTotalInTooltip,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Histogram {...chartProps} />;
+}, {filterProps: ['data']});
+</script>
+
+:::
+
 ## Description
 
 **Histogram chart** helps grouping numeric data for comparison by quantitative indicators. It shows the distribution of values.

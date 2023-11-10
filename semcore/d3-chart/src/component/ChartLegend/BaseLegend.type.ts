@@ -1,10 +1,10 @@
-import { BoxProps } from '@semcore/flex-box';
+import { BoxProps, FlexProps } from '@semcore/flex-box';
 import { LegendItem, LegendItemKey, ShapeType } from './LegendItem/LegendItem.type';
 import { DataStructureHints } from '../../a11y/hints';
 
 export type LSize = 'm' | 'l';
 
-export type BaseChartLegendProps = {
+export type BaseChartLegendProps = FlexProps & {
   /**
    * Size for legend items
    */

@@ -31,9 +31,9 @@ Optionally you can add the following to the LegendItem:
 
 ![](static/legend-optional-elements.png)
 
-* Leading Icon
-* Additional label
-* Counter
+- Leading Icon
+- Additional label
+- Counter
 
 ## Placement
 
@@ -49,20 +49,12 @@ Table: Chart legend placement examples
 
 | Placement | Appearance example  | Examples of cases |
 | --------- | ------------------- | ----------------- |
-| right     | 
-
-![](static/legend-right.png) ![](static/legend-right2.png)
-
- | When the chart is compact and doesn't take up much space or when you want to display legend items in a list for value comparisons. |
-| bottom    | 
-
-![](static/legend-bottom.png) ![](static/legend-bottom2.png)
-
- | For instance, when there are multiple filters above the chart or when the chart adapts for smaller screens. |
+| right     | ![](static/legend-right.png) ![](static/legend-right2.png) | When the chart is compact and doesn't take up much space or when you want to display legend items in a list for value comparisons. |
+| bottom    | ![](static/legend-bottom.png) ![](static/legend-bottom2.png) | For instance, when there are multiple filters above the chart or when the chart adapts for smaller screens. |
 
 ## Legend items
 
-Legend items can be either interactive or static. Use `Checkbox` for interactive legend items and choose from a list of default SVG shapes ( `Circle` , `Square` , `Line` ) for static legend items. You can also set a custom shape if needed.
+Legend items can be either interactive or static. Use `Checkbox` for interactive legend items and choose from a list of default SVG shapes (`Circle`, `Square`, `Line`) for static legend items. You can also set a custom shape if needed.
 
 The colors of the checkboxes or shapes correspond to the data on the chart.
 
@@ -86,8 +78,8 @@ Table: Optional legend item elements
 | Element       | Appearance example    | Styles   |
 | ------------- | --------------------- | -------- |
 | Leading icon  | ![](static/items-icon.png)      | Icon has M size and `--icon-non-interactive` color.   |
-| Additional information | ![](static/items-info.png) | For additional information, use text with 14px size ( `--fs-200` ) and `--text-secondary` token for color. |
-| Counter      | ![](static/items-counter.png)   | For a counter, use text with 14px size ( `--fs-200` ) and `--text-secondary` token for color.  |
+| Additional information | ![](static/items-info.png) | For additional information, use text with 14px size (`--fs-200`) and `--text-secondary` token for color. |
+| Counter      | ![](static/items-counter.png)   | For a counter, use text with 14px size (`--fs-200`) and `--text-secondary` token for color.  |
 
 Example of a combination of the elements above:
 
@@ -114,3 +106,4 @@ If some data is already disabled in the legend, it should remain disabled while 
 When all legend items are disabled, the chart should display the X-axis.
 
 ![](static/legend-turn-off.png)
+

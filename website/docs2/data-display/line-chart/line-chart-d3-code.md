@@ -8,6 +8,37 @@ tabs: Design('line-chart'), A11y('line-chart-a11y'), API('line-chart-api'), Exam
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+const Demo = () => {
+  return (
+    <Chart.Line
+      data={data}
+      plotWidth={500}
+      plotHeight={200}
+      groupKey={'x'}
+      xTicksCount={data.length / 2}
+    />
+  );
+};
+
+const data = Array(20)
+  .fill({})
+  .map((d, i) => ({
+    x: i,
+    y1: Math.random() * 10,
+    y2: Math.random() * 10,
+  }));
+</script>
+
+:::
+
 ## Line
 
 - Line charts are displayed using the `Line` component.

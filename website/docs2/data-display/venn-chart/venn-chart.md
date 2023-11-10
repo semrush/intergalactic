@@ -8,6 +8,71 @@ tabs: Design('venn-chart'), A11y('venn-chart-a11y'), API('venn-chart-api'), Exam
 Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, VennChartProps } from '@semcore/d3-chart';
+
+const data = {
+  G: 200,
+  F: 200,
+  C: 500,
+  U: 1,
+  'G/F': 100,
+  'G/C': 100,
+  'F/C': 100,
+  'G/F/C': 100,
+};
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Venn');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  legendProps.legendMap = {
+    G: { label: 'Good' },
+    F: { label: 'Fast' },
+    C: { label: 'Clean' },
+    U: { label: 'Uniq' },
+  };
+
+  const chartProps: VennChartProps = {
+    data,
+    plotWidth: 300,
+    plotHeight: 300,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Venn {...chartProps} />;
+}, {filterProps: ['data']});
+
+</script>
+
+:::
+
 ## Description
 
 **Venn chart** shows the relationship and intersections between two (or sometimes more) datasets. This chart type is also called a **set chart**.

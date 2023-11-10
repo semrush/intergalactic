@@ -1,7 +1,7 @@
 import React, { DOMAttributes } from 'react';
 import createComponent, { Component, sstyled, Root, IRootComponentProps } from '@semcore/core';
 import { Flex, Box } from '@semcore/flex-box';
-import Checkbox, { CheckboxProps } from '@semcore/checkbox';
+import Checkbox from '@semcore/checkbox';
 import { Text as TypographyText } from '@semcore/typography';
 
 import style from './legend-item.shadow.css';
@@ -12,10 +12,15 @@ import {
   LegendItem,
   StaticShapes,
 } from './LegendItem.type';
+import resolveColorEnhance from '@semcore/utils/src/enhances/resolveColorEnhance';
 
-class LegendItemRoot extends Component<LegendItemProps> {
+class LegendItemRoot extends Component<
+  LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
+> {
   static displayName = 'LegendItem';
   static style = style;
+
+  static enhance = [resolveColorEnhance()];
 
   static defaultProps = () => ({
     children: (
@@ -30,14 +35,14 @@ class LegendItemRoot extends Component<LegendItemProps> {
   });
 
   getShapeProps(): ShapeProps & DOMAttributes<HTMLLabelElement> {
-    const { checked, color, shape, label, id, size, onClick } = this.asProps;
+    const { checked, color, shape, label, id, size, onClick, resolveColor } = this.asProps;
 
     return {
       id,
       label,
       shape,
       checked,
-      color,
+      color: resolveColor(color),
       size,
       onKeyUp: (e: React.KeyboardEvent<HTMLLabelElement>) => {
         if (onClick && e.key === ' ') {

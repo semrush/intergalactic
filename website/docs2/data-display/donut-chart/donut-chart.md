@@ -8,6 +8,90 @@ tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), E
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, DonutChartProps } from '@semcore/d3-chart';
+
+const data = {
+  a: 3,
+  b: 1,
+  c: 2,
+};
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool, text } = preview('ChartDonut');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground(
+    { select, radio, label, bool },
+    { direction: 'row-reverse', legendDirection: 'column' },
+  );
+
+  label({ label: 'Donut props', key: 'donutProps' });
+
+  const halfSize = bool({
+    key: 'halfSize',
+    defaultValue: false,
+    label: 'Half size',
+  });
+
+  const innerRadius = text({
+    key: 'innerRadius',
+    defaultValue: 100,
+    label: 'Inner Radius',
+  });
+
+  const innerLabel = text({
+    key: 'innerLabel',
+    defaultValue: 'Example',
+    label: 'Inner Label',
+  });
+
+  legendProps.legendMap = {
+    a: { label: 'Nuts' },
+    b: { label: 'Fruits' },
+    c: { label: 'Milk' },
+  };
+
+  const chartProps: DonutChartProps = {
+    data,
+    plotWidth: 300,
+    plotHeight: 300,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+    halfsize: halfSize,
+    innerRadius,
+    innerLabel,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Donut {...chartProps} />;
+}, {filterProps: ['data']});
+</script>
+
+:::
+
 ## Description
 
 **Donut chart** visualizes parts to the whole by dividing the circle into proportional segments.

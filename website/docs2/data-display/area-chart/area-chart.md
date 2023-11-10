@@ -8,6 +8,95 @@ tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Exam
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, AreaChartProps } from '@semcore/d3-chart';
+import { curveCardinal, curveLinearClosed, curveBumpX } from 'd3-shape';
+
+const data = [...Array(5).keys()].map((d, i) => ({
+  x: i,
+  Line1: Math.random() * 10,
+  Line2: Math.random() * 10,
+  Line3: Math.random() * 10,
+}));
+
+const curveMap = {
+  curveCardinal,
+  curveLinearClosed,
+  curveBumpX,
+};
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Area');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTotalInTooltip,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  label({ label: 'Linear chart props', key: 'linearChartProps' });
+
+  const curveName = select({
+    key: 'curveName',
+    defaultValue: 'No curve',
+    label: 'Curve',
+    options: ['No curve', ...Object.keys(curveMap)],
+  });
+
+  const showDots = bool({
+    key: 'showDots',
+    defaultValue: true,
+    label: 'Show dots',
+  });
+
+  const stacked = bool({
+    key: 'stacked',
+    defaultValue: false,
+    label: 'Is stacked',
+  });
+
+  const chartProps: AreaChartProps = {
+    data,
+    groupKey: 'x',
+    plotWidth: 300,
+    plotHeight: 200,
+    showTotalInTooltip,
+    direction,
+    showTooltip,
+    showDots,
+    curve: curveMap[curveName],
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+    stacked,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Area {...chartProps} />;
+}, {filterProps: ['data']});
+
+</script>
+
+:::
+
+
 ## Description
 
 **Area chart** visualizes a trend and the ratio of numeric variables over a period of time. It can be used instead of [Line chart](/data-display/line-chart/line-chart) when it is important to demonstrate the ratio of parts to the whole.

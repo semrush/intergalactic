@@ -8,6 +8,48 @@ tabs: Design('area-chart'), A11y('area-chart-a11y'), API('area-chart-api'), Exam
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+function formatDate(value) {
+  const options = {
+    month: 'short' as const,
+    day: 'numeric' as const,
+  };
+
+  return new Intl.DateTimeFormat('en', options).format(value);
+}
+
+const Demo = () => {
+  return (
+    <Chart.Area
+      groupKey={'time'}
+      data={data}
+      plotWidth={500}
+      plotHeight={200}
+      tooltipValueFormatter={formatDate}
+    />
+  );
+};
+
+const date = new Date();
+const data = Array(10)
+  .fill({})
+  .map((d, i) => {
+    return {
+      time: new Date(date.setDate(date.getDate() + 5)),
+      line: Math.random() * 10,
+    };
+  });
+</script>
+
+:::
+
 ## Area
 
 - You can draw a chart with areas using the `Area` component.
@@ -312,16 +354,10 @@ import {
 } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
-import resolveColor from '@semcore/utils/lib/color';
 
 function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
-
-const lineColors = {
-  line1: resolveColor('blue-300'),
-  line2: resolveColor('green-200'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -341,12 +377,12 @@ const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'time')
-      .map((item) => {
+      .map((item, index) => {
         return {
           id: item,
           label: `Line (${item})`,
           checked: true,
-          color: lineColors[item],
+          color: `chart-palette-order-${index + 1}`,
         };
       }),
   );
@@ -391,12 +427,15 @@ const Demo = () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-        <Area x='time' y='line1' curve={curveCardinal} color={lineColors.line1}>
-          <Area.Dots display />
-        </Area>
-        <Area x='time' y='line2' curve={curveCardinal} color={lineColors.line2}>
-          <Area.Dots display />
-        </Area>
+        {legendItems.map((item) => {
+          return (
+            item.checked && (
+              <Area key={item.id} x='time' y={item.id} curve={curveCardinal} color={item.color}>
+                <Area.Dots display />
+              </Area>
+            )
+          );
+        })}
       </Plot>
     </>
   );

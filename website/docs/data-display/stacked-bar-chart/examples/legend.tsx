@@ -5,7 +5,6 @@ import {
   YAxis,
   XAxis,
   ChartLegend,
-  LegendItem,
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';

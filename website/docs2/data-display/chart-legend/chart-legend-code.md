@@ -115,7 +115,7 @@ const Demo = () => {
     });
 
   return (
-    <div style={{ width: '300px' }}>
+    <div style={{ width: '200px' }}>
       <ChartLegendTable items={lines} />
     </div>
   );

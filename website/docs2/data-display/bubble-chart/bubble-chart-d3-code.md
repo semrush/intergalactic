@@ -8,6 +8,29 @@ tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api')
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/d3-chart';
+
+const Demo = () => {
+  return <Chart.Bubble data={data} plotWidth={500} plotHeight={200} />;
+};
+
+const data = [
+  { x: 2, y: 3, value: 5040, label: 'label 1' },
+  { x: 1, y: 9, value: 40, label: 'label 2' },
+  { x: 6, y: 2, value: 45634, label: 'label 3' },
+  { x: 4, y: 7, value: 245, label: 'label 4' },
+  { x: 9, y: 5, value: 7462, label: 'label 5' },
+];
+</script>
+
+:::
+
 ## Bubble chart
 
 ::: sandbox
@@ -174,7 +197,7 @@ const dataHints = makeDataHintsContainer();
 const Demo = () => {
   const MARGIN = 40;
   const width = 500;
-  const height = 300;
+  const height = 200;
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])

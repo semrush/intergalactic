@@ -5,19 +5,11 @@ import {
   YAxis,
   XAxis,
   ChartLegend,
-  LegendItem,
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
-import resolveColor from '@semcore/ui/utils/lib/color';
 import Card from '@semcore/ui/card';
-
-const barColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('blue-200'),
-  3: resolveColor('yellow-200'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -39,12 +31,12 @@ export default () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'category')
-      .map((item) => {
+      .map((item, index) => {
         return {
           id: item,
           label: `Dataset${item}`,
           checked: true,
-          color: barColors[item],
+          color: `chart-palette-order-${index + 1}`,
         };
       }),
   );
@@ -106,7 +98,7 @@ export default () => {
                   <StackBar.HorizontalBar
                     x={stack.id}
                     key={stack.id}
-                    color={barColors[stack.id]}
+                    color={stack.color}
                     transparent={highlightedLine !== -1 && highlightedLine !== index}
                   />
                 )

@@ -8,6 +8,36 @@ tabs: Design('bar-horizontal'), A11y('bar-horizontal-a11y'), API('bar-horizontal
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+const Demo = () => {
+  return (
+    <Chart.Bar
+      groupKey={'category'}
+      data={data}
+      plotWidth={500}
+      plotHeight={300}
+      invertAxis={true}
+    />
+  );
+};
+
+const data = Array(5)
+  .fill({})
+  .map((d, i) => ({
+    category: `Category ${i}`,
+    bar: Math.random() * 10,
+  }));
+</script>
+
+:::
+
 ## Horizontal bar
 
 You can rotate a chart using the `<HorizontalBar/>` component by swapping `scaleBand` and `scaleLinear`. See more about `scaleBand` and `scaleLiner` in the [Bar chart guide](/data-display/bar-chart/bar-chart-d3-code#addc35).
@@ -286,20 +316,12 @@ import {
   YAxis,
   XAxis,
   HoverRect,
-  colors,
-  LegendItem,
   makeDataHintsContainer,
   ChartLegend,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
 import { Flex } from '@semcore/ui/flex-box';
 import { Text } from '@semcore/ui/typography';
-import resolveColor from '@semcore/utils/lib/color';
-
-const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -321,12 +343,12 @@ const Demo = () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'category')
-      .map((item) => {
+      .map((item, index) => {
         return {
           id: item,
           label: `Bar ${item}`,
           checked: true,
-          color: lineColors[item],
+          color: `chart-palette-order-${index + 1}`,
         };
       }),
   );
@@ -381,8 +403,9 @@ const Demo = () => {
             .map((item, index) => {
               return (
                 <GroupBar.HorizontalBar
+                  key={item.id}
                   x={item.id}
-                  color={lineColors[item.id]}
+                  color={item.color}
                   transparent={highlightedLine !== -1 && highlightedLine !== index}
                 />
               );
@@ -394,13 +417,13 @@ const Demo = () => {
               <>
                 <HoverRect.Tooltip.Title>{data[yIndex].category}</HoverRect.Tooltip.Title>
                 <Flex justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={lineColors[1]}>
+                  <HoverRect.Tooltip.Dot mr={4} color={legendItems[0].color}>
                     Bar 1
                   </HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex][1]}</Text>
                 </Flex>
                 <Flex mt={2} justifyContent='space-between'>
-                  <HoverRect.Tooltip.Dot mr={4} color={lineColors[2]}>
+                  <HoverRect.Tooltip.Dot mr={4} color={legendItems[1].color}>
                     Bar 2
                   </HoverRect.Tooltip.Dot>
                   <Text bold>{data[yIndex][2]}</Text>

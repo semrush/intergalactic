@@ -6,6 +6,19 @@ tabs: Design('stacked-area-chart'), A11y('stacked-area-chart-a11y'), API('stacke
 
 ## D3 API
 
+
+## Chart.Area
+
+For stacked view, you should pass `true` into `stacked` prop
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="AreaChartProps" :types={...types} />
+
+## StackedArea
+
 It have children components `Area`.
 
 ```js
