@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "Intergalactic"
-  text: "Design system"
+  text: "Design System"
   tagline: Intergalactic is a constantly developing system of UI components, guidelines and UX patterns.
   actions:
     - theme: brand

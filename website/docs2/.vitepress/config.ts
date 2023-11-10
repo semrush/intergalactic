@@ -14,7 +14,7 @@ export default defineConfig({
   base: '/intergalactic/',
   outDir: resolvePath(__dirname, 'dist/intergalactic/'),
   title: 'Intergalactic',
-  description: 'Design system',
+  description: 'Design System',
   markdown: {
     config(md) {
       configureMarkdownIt(md);
@@ -61,7 +61,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: '© 2008-2023 Powered by Semrush. All rights reserved.',
+      copyright: 'Copyright © 2023-present Powered by Semrush. All rights reserved.',
     },
     siteTitle: false,
 

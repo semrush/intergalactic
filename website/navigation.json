@@ -2744,19 +2744,19 @@
       {
         "route": "table-group/table",
         "hasContent": true,
-        "filePath": "table-group/table/table.md",
+        "filePath": "table-group/data-table/data-table.md",
         "title": "Table principles",
         "children": [
           {
-            "route": "table-group/table/table-a11y",
+            "route": "table-group/data-table/data-table-a11y",
             "hasContent": true,
-            "filePath": "table-group/table/table-a11y.md",
+            "filePath": "table-group/data-table/data-table-a11y.md",
             "title": "A11y"
           },
           {
-            "route": "table-group/table/table-code",
+            "route": "table-group/data-table/data-table-code",
             "hasContent": true,
-            "filePath": "table-group/table/table-code.md",
+            "filePath": "table-group/data-table/data-table-code.md",
             "title": "Example"
           }
         ]

@@ -203,5 +203,5 @@ A cell in a table may be blocked by a limit or by the need to take some action t
 ![](static/cell-locked-tooltip.png)
 
 ::: tip
-For all the main table styles and principles, see [Table](/table-group/table/table). For all svg illustrations for different states and their names, see the [empty states documentation](/components/widget-empty/widget-empty-code).
+For all the main table styles and principles, see [Table](/table-group/data-table/). For all svg illustrations for different states and their names, refer to the the [Empty states](/components/widget-empty/widget-empty-code/).
 :::
