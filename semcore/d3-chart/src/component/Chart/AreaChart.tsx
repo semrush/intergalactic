@@ -46,7 +46,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
   }
 
   renderChart() {
-    const { groupKey, curve, hideDots, stacked } = this.asProps;
+    const { groupKey, curve, showDots, stacked } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     if (stacked) {
@@ -63,7 +63,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
                   transparent={highlightedLine !== -1 && highlightedLine !== index}
                   curve={curve}
                 >
-                  {hideDots !== true && <StackedArea.Area.Dots display />}
+                  {showDots && <StackedArea.Area.Dots display />}
                 </StackedArea.Area>
               )
             );
@@ -83,7 +83,7 @@ class AreaChartComponent extends AbstractChart<AreaChartData, AreaChartProps> {
             transparent={highlightedLine !== -1 && highlightedLine !== index}
             curve={curve}
           >
-            {hideDots !== true && <Area.Dots display />}
+            {showDots && <Area.Dots display />}
           </Area>
         )
       );

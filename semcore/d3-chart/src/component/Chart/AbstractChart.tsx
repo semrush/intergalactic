@@ -26,6 +26,10 @@ export abstract class AbstractChart<
   public static style = {};
   public static defaultProps: Partial<BaseChartProps<any>> = {
     direction: 'column',
+    showXAxis: true,
+    showYAxis: true,
+    showTooltip: true,
+    showLegend: true,
   };
 
   /**
@@ -303,12 +307,12 @@ export abstract class AbstractChart<
   }
 
   protected renderLegend() {
-    const { legendProps, direction, hideLegend } = this.asProps;
+    const { legendProps, direction, showLegend } = this.asProps;
 
     if (
-      hideLegend ||
+      !showLegend ||
       // we hide Legend for one item on chart except not manually set to show.
-      (this.dataKeys.length === 1 && hideLegend !== false)
+      (this.dataKeys.length === 1 && showLegend === true)
     ) {
       return null;
     }
@@ -357,7 +361,7 @@ export abstract class AbstractChart<
   }
 
   protected renderAxis(): React.ReactNode {
-    const { invertAxis, hideXAxis, hideYAxis, data, axisXValueFormatter, axisYValueFormatter } =
+    const { invertAxis, showXAxis, showYAxis, data, axisXValueFormatter, axisYValueFormatter } =
       this.asProps;
 
     if (!Array.isArray(data)) {
@@ -376,7 +380,7 @@ export abstract class AbstractChart<
 
     return (
       <>
-        {hideYAxis !== true && (
+        {showYAxis && (
           <YAxis>
             {yTicks ? (
               <YAxis.Ticks ticks={yTicks}>{childrenY}</YAxis.Ticks>
@@ -387,7 +391,7 @@ export abstract class AbstractChart<
           </YAxis>
         )}
 
-        {hideXAxis !== true && (
+        {showXAxis && (
           <XAxis>
             {xTicks ? (
               <XAxis.Ticks ticks={xTicks}>{childrenX}</XAxis.Ticks>

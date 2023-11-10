@@ -8,7 +8,7 @@ import { Radar } from '../..';
 
 class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps> {
   protected renderChart(): React.ReactNode {
-    const { groupKey, hideDots, circle } = this.asProps;
+    const { groupKey, showDots, circle } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     return (
@@ -23,7 +23,7 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
             item.checked && (
               <Radar.Polygon dataKey={item.id} key={item.id} color={item.color}>
                 <Radar.Polygon.Line />
-                {hideDots !== true && <Radar.Polygon.Dots />}
+                {showDots && <Radar.Polygon.Dots />}
               </Radar.Polygon>
             )
           );
@@ -34,10 +34,10 @@ class RadarChartComponent extends AbstractChart<RadarChartData, RadarChartProps>
   }
 
   protected renderRadarTooltip(): React.ReactNode {
-    const { data, groupKey, hideTooltip } = this.asProps;
+    const { data, groupKey, showTooltip } = this.asProps;
     const { dataDefinitions } = this.state;
 
-    if (hideTooltip) {
+    if (!showTooltip) {
       return null;
     }
 

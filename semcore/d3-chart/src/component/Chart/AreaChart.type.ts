@@ -11,7 +11,7 @@ export type AreaChartProps = BaseChartProps<AreaChartData> & {
   groupKey: string;
   xScale?: ScaleLinear<any, any> | ScaleTime<any, any>;
   yScale?: ScaleLinear<any, any>;
-  hideDots?: boolean;
+  showDots?: boolean;
   curve?: CurveFactory;
   stacked?: boolean;
 };

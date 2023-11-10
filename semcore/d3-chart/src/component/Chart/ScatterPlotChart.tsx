@@ -14,7 +14,7 @@ import { Text } from '@semcore/typography';
 class ScatterPlotChartComponent extends AbstractChart<ScatterPlotChartData, ScatterPlotChartProps> {
   static displayName = 'Chart.ScatterPlot';
   static defaultProps: Partial<ScatterPlotChartProps> = {
-    hideLegend: true,
+    showLegend: false,
   };
 
   protected get dataKeys(): string[] {

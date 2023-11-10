@@ -47,7 +47,7 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
   }
 
   protected renderChart() {
-    const { groupKey, curve, hideDots, area, areaCurve } = this.asProps;
+    const { groupKey, curve, showDots, area, areaCurve } = this.asProps;
     const { dataDefinitions, highlightedLine } = this.state;
 
     return dataDefinitions.map((item, index) => {
@@ -61,7 +61,7 @@ class LineChartComponent extends AbstractChart<LineChartData, LineChartProps> {
             transparent={highlightedLine !== -1 && highlightedLine !== index}
             curve={curve}
           >
-            {hideDots !== true && <Line.Dots display />}
+            {showDots && <Line.Dots display />}
             {area?.[item.id] && (
               <Line.Area area={area[item.id]} y0={'y0'} y1={'y1'} curve={areaCurve} />
             )}

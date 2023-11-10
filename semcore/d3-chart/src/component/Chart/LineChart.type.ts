@@ -19,7 +19,7 @@ export type LineChartProps = BaseChartProps<LineChartData> & {
   area?: Record<LegendItemKey, AreaItem[]>;
   xScale?: ScaleLinear<any, any> | ScaleTime<any, any>;
   yScale?: ScaleLinear<any, any>;
-  hideDots?: boolean;
+  showDots?: boolean;
   curve?: CurveFactory;
   areaCurve?: CurveFactory;
 };

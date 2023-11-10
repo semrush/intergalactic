@@ -67,21 +67,24 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
   invertAxis?: boolean;
 
   /**
-   * Don't show X axis
+   * Show X axis
+   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
    */
-  hideXAxis?: boolean;
+  showXAxis?: boolean;
   /**
-   * Don't show Y axis
+   * Show Y axis
+   * @default true (for charts with axis: Area, Line, Bar, ScatterPlot, ...)
    */
-  hideYAxis?: boolean;
+  showYAxis?: boolean;
   /**
    * Map with colors for data items
    */
   colorMap?: Record<string, string>;
   /**
-   * Don't show tooltip's
+   * Show tooltip's.
+   * @default true
    */
-  hideTooltip?: boolean;
+  showTooltip?: boolean;
   /**
    * Show sum of values for selected point in tooltip
    */
@@ -115,21 +118,25 @@ export type BaseChartProps<T extends ListData | ObjectData> = FlexProps & {
    * Function for format text for tooltip
    */
   tooltipValueFormatter?: (value?: unknown) => string;
-} & (
+} & /**
+   * By default, we show the Legend for all charts with more the one data item.
+   * For hide the Legend, you should set showLegend prop to `false`.
+   */
+  (
     | {
         /**
          * Don't show legend
          */
-        hideLegend?: true;
+        showLegend?: false;
         legendProps?: never;
       }
     | {
         /**
-         *  By default (if hideLegend don't set), for one data item on chart,
+         *  By default (if showLegend don't set), for one data item on chart,
          *  Legend component will be hide, and show for more then 1 data item.
-         *  If set `false` - Legend component will show always.
+         *  If set `true` - Legend component will show always.
          */
-        hideLegend?: false;
+        showLegend?: true;
         /**
          * Props for Legend
          */

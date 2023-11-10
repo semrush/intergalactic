@@ -10,7 +10,7 @@ export type RadarChartProps = BaseChartProps<RadarChartData> & {
   scale?: ScaleLinear<any, any>;
   xScale?: never;
   yScale?: never;
-  hideDots?: boolean;
+  showDots?: boolean;
   circle?: boolean;
 };
 
