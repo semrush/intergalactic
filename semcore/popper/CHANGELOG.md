@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.9.2] - 2023-10-09
+
+### Fixed
+
+- Fixed popper wasn't opening in date-picker.
+
 ## [5.9.1] - 2023-11-09
 
 ### Changed
