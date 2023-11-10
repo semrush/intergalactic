@@ -10,6 +10,7 @@
   padding: var(--intergalactic-spacing-3x);
   border-radius: var(--intergalactic-rounded-medium);
   border: solid 1px var(--intergalactic-border-primary);
+  margin-top: var(--intergalactic-spacing-2x);
 }
 
 .previewIcon {
