@@ -3895,6 +3895,12 @@ const iconsList = {
       tags: ['trello', 'logo', 'лого', 'трелло', 'task', 'manager'],
     },
     {
+      name: 'Unsplash',
+      size: ['l', 'm'],
+      group: 'Brand',
+      tags: ['unsplash', 'logo', 'лого', 'ансплеш', 'фотосток', 'phtostock'],
+    },
+    {
       name: 'Wordpress',
       size: ['l', 'm'],
       group: 'Brand',
