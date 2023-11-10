@@ -16,9 +16,9 @@ User can navigate inside the list with the keyboard arrows.
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
-| `Space`, `Enter`, `Down Arrow` | When focus is on the trigger, opens the dropdown.                                                                                         |
+| `Enter`, `Space`, `Down Arrow` | When focus is on the trigger, opens the dropdown.                                                                                         |
 | `Up Arrow`, `Down Arrow`            | Moves focus between the options in the dropdown. If focus is on the last/first option, moves focus to the first/last option respectively. |
-| `Space`, `Enter`               | Selects the option and closes the dropdown.                                                                                               |
+| `Enter`, `Space`               | Selects the option and closes the dropdown.                                                                                               |
 | `Esc`            | Closes the dropdown.                           |
 
 See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).

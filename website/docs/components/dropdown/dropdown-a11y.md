@@ -16,7 +16,7 @@ When dropdown is closed, the focus returns to the trigger.
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
-| `Space`, `Enter` | Activates the selected item or control.        |
+| `Enter`, `Space` | Activates the selected item or control.        |
 | `Esc`            | Closes the dropdown.                           |
 
 See detailed information for the controlling dropdown with the keyboard in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard/#keyboard_support_for_popper).
