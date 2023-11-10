@@ -10,7 +10,7 @@ import { getHighlighter, setCDN } from 'shiki';
 import githubDarkTheme from 'shiki/themes/github-dark.json';
 
 Playground.createWidget('label', ({ label }) => {
-  return <h3>{label}</h3>;
+  return <h4>{label}</h4>;
 });
 
 Playground.createWidget('empty', () => {
