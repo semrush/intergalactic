@@ -1,20 +1,17 @@
 import React from 'react';
 import Button from '@semcore/button';
-import { Flex } from '@semcore/flex-box';
 import Checkbox from '@semcore/checkbox';
-import fire from '@semcore/utils/lib/fire';
 import Input from '@semcore/input';
 import Select from '@semcore/select';
-import CopyM from '@semcore/icon/Copy/m';
-import Radio, { RadioGroup } from '@semcore/radio';
 import Pills from '@semcore/pills';
 import { createPlayground, Playground } from '../components/playground';
-import Code from '../components/Code';
-import Copy from '../components/Copy';
 import styles from './PlaygroundGeneration.module.css';
-import { ThemeProvider } from '@semcore/utils/lib/ThemeProvider';
 import { getHighlighter, setCDN } from 'shiki';
 import githubDarkTheme from 'shiki/themes/github-dark.json';
+
+Playground.createWidget('label', ({ label }) => {
+  return <h3>{label}</h3>;
+});
 
 Playground.createWidget('empty', () => {
   return null;

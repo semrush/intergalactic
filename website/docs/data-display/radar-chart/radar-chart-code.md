@@ -5,6 +5,10 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
+@## Basic usage
+
+@example base
+
 @## Scale
 
 You must pass a scale with a specified `domain`, `range` doesn't need to be specified as it is calculated automatically.
@@ -61,3 +65,7 @@ To change the distance between the grid lines, you need to change the value of t
 To change base angle of the chart, set `angleOffset` (in radians) parameter.
 
 @example rotate
+
+@## Legend
+
+@example legend

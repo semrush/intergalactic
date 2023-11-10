@@ -8,6 +8,28 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+const Demo = () => {
+  return <Chart.ScatterPlot data={data} plotWidth={500} plotHeight={300} groupKey={'x'} />;
+};
+
+const data = Array(20)
+  .fill({})
+  .map((d, i) => ({
+    x: i,
+    y: Math.random() * 10,
+  }));
+</script>
+
+:::
+
 ## Scatter plot
 
 ::: sandbox
@@ -200,23 +222,8 @@ const data = Array(20)
 
 <script lang="tsx">
 import React from 'react';
-import {
-  Plot,
-  ScatterPlot,
-  XAxis,
-  YAxis,
-  minMax,
-  ChartLegend,
-  LegendItem,
-} from '@semcore/ui/d3-chart';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
-import resolveColor from '@semcore/utils/lib/color';
-
-const lineColors = {
-  1: resolveColor('blue-300'),
-  2: resolveColor('green-200'),
-  3: resolveColor('orange-400'),
-};
 
 const Demo = () => {
   const MARGIN = 40;
@@ -233,12 +240,12 @@ const Demo = () => {
 
   const legendItems = Object.keys(data[0])
     .filter((name) => name !== 'x' && name !== 'value')
-    .map((item) => {
+    .map((item, index) => {
       return {
         id: item,
         label: `Point ${item}`,
         checked: true,
-        color: lineColors[item],
+        color: `chart-palette-order-${index + 1}`,
       };
     });
 

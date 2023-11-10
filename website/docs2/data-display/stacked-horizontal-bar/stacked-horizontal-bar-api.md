@@ -6,6 +6,19 @@ tabs: Design('stacked-horizontal-bar'), A11y('stacked-horizontal-bar-a11y'), API
 
 ## D3 API
 
+
+## Chart.Bar
+
+For Horizontal view, you should pass `true` into `invertAxis` prop, for stack view, you should pass `stack` into `type` prop.
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="BarChartProps" :types={...types} />
+
+## StackBar.HorizontalBar
+
 It have children components `Bar, HorizontalBar`.
 
 ```js

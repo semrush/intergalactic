@@ -85,19 +85,17 @@ type ChartLProps = Omit<LegendFlexProps, 'items'> & {
 const ChartLegend = (props: ChartLProps) => {
   const { withTrend, direction, shape, size, additionLabel, count, withIcon } = props;
 
-  const [lines, setLines] = React.useState(
+  const [lines, setLines] = React.useState<LegendItem[]>(
     Object.keys(data[0])
       .filter((name) => name !== 'x')
-      .reduce<LegendItem[]>((res, item, index) => {
-        res.push({
+      .map((item, index) => {
+        return {
           id: item,
           label: item,
           checked: true,
           color: `chart-palette-order-${index + 1}`,
-        });
-
-        return res;
-      }, []),
+        };
+      }),
   );
 
   React.useEffect(() => {

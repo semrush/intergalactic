@@ -8,6 +8,31 @@ tabs: Design('stacked-bar-chart'), A11y('stacked-bar-chart-a11y'), API('stacked-
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+const Demo = () => {
+  return (
+    <Chart.Bar groupKey={'category'} data={data} plotWidth={500} plotHeight={300} type={'stack'} />
+  );
+};
+
+const data = Array(5)
+  .fill({})
+  .map((d, i) => ({
+    category: `Category ${i}`,
+    bar1: Math.random() * 10,
+    bar2: Math.random() * 10,
+  }));
+</script>
+
+:::
+
 ## Bar
 
 Use `scaleBand` and `scaleLinear` for creating bar charts. See [d3 Ordinal Scales](https://github.com/d3/d3-scale#ordinal-scales) for more information.
@@ -103,7 +128,6 @@ import {
   YAxis,
   XAxis,
   ChartLegend,
-  LegendItem,
   makeDataHintsContainer,
 } from '@semcore/ui/d3-chart';
 import { scaleLinear, scaleBand } from 'd3-scale';
