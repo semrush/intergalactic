@@ -82,5 +82,10 @@ export const log = (message: string) => {
   // biome-ignore lint/suspicious/noConsoleLog:
   console.log(`[${secondsPassed}s] ${message}`);
 };
-
 export const prerelaseSuffix = 'prerelease';
+/**
+ * Hardcoded but can be temporary incremented to handle broken versioning in
+ * case of unsuccessful publish
+ * @default 0
+ */
+export const prereleaseBaseIndex = 1;

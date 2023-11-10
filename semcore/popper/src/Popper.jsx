@@ -271,7 +271,7 @@ class Popper extends Component {
 
   handlerChangeVisibleWithTimer = (visible, e, cb) => {
     const { timeout, disabled } = this.asProps;
-    if (disabled && visible) return;
+    if (typeof disabled === 'boolean' && disabled && visible) return;
     const handlers = this.handlers;
 
     const timeoutConfig = typeof timeout === 'number' ? [timeout, timeout] : timeout;
