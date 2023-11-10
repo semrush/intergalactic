@@ -18,19 +18,19 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
   label({ label: 'Linear chart props', key: 'linearChartProps' });
 
-  const hideDots = bool({
-    key: 'hideDots',
-    defaultValue: false,
-    label: 'Hide dots',
+  const showDots = bool({
+    key: 'showDots',
+    defaultValue: true,
+    label: 'Show dots',
   });
 
   const circle = bool({
@@ -45,19 +45,19 @@ const Preview = (preview) => {
     plotWidth: 400,
     plotHeight: 400,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
-    hideDots,
+    showDots,
     circle,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Radar {...chartProps} />;

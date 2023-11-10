@@ -26,11 +26,11 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
+    showXAxis,
+    showYAxis,
     showTotalInTooltip,
-    hideTooltip,
-    hideLegend,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
@@ -43,10 +43,10 @@ const Preview = (preview) => {
     options: ['No curve', ...Object.keys(curveMap)],
   });
 
-  const hideDots = bool({
-    key: 'hideDots',
-    defaultValue: false,
-    label: 'Hide dots',
+  const showDots = bool({
+    key: 'showDots',
+    defaultValue: true,
+    label: 'Show dots',
   });
 
   const stacked = bool({
@@ -62,20 +62,20 @@ const Preview = (preview) => {
     plotHeight: 200,
     showTotalInTooltip,
     direction,
-    hideTooltip,
-    hideDots,
+    showTooltip,
+    showDots,
     curve: curveMap[curveName],
-    hideXAxis,
-    hideYAxis,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
     stacked,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Area {...chartProps} />;

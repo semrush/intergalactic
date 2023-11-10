@@ -21,10 +21,10 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
@@ -35,17 +35,17 @@ const Preview = (preview) => {
     plotWidth: 500,
     plotHeight: 200,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Bubble {...chartProps} />;

@@ -23,10 +23,10 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideLegend,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
+    showLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
@@ -42,17 +42,17 @@ const Preview = (preview) => {
     plotWidth: 300,
     plotHeight: 300,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Venn {...chartProps} />;

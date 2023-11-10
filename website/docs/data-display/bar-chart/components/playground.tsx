@@ -34,10 +34,10 @@ const Preview = (preview) => {
     alignItems,
     justifyContent,
     showTotalInTooltip,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
@@ -54,18 +54,18 @@ const Preview = (preview) => {
     plotHeight: 200,
     showTotalInTooltip,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
     trend: withTrend ? trendData : undefined,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Bar {...chartProps} />;

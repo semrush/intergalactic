@@ -19,11 +19,11 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
+    showXAxis,
+    showYAxis,
+    showTooltip,
     showTotalInTooltip,
-    hideLegend,
+    showLegend,
     legendProps,
   } = chartPlayground(
     { select, radio, label, bool },
@@ -37,17 +37,17 @@ const Preview = (preview) => {
     plotHeight: 300,
     showTotalInTooltip,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Bar {...chartProps} type={'stack'} invertAxis={true} />;

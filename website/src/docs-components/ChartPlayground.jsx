@@ -24,22 +24,22 @@ export function chartPlayground(previewData, defaults = {}) {
     options: ['flex-start', 'center', 'flex-end', 'space-between'],
   });
 
-  const hideXAxis = bool({
-    key: 'hideXAxis',
-    defaultValue: defaults.hideXAxis ?? false,
-    label: 'Hide X axis',
+  const showXAxis = bool({
+    key: 'showXAxis',
+    defaultValue: defaults.showXAxis ?? true,
+    label: 'Show X axis',
   });
 
-  const hideYAxis = bool({
-    key: 'hideYAxis',
-    defaultValue: defaults.hideYAxis ?? false,
-    label: 'Hide Y axis',
+  const showYAxis = bool({
+    key: 'showYAxis',
+    defaultValue: defaults.showYAxis ?? true,
+    label: 'Show Y axis',
   });
 
-  const hideTooltip = bool({
-    key: 'hideTooltip',
-    defaultValue: defaults.hideTooltip ?? false,
-    label: 'Hide tooltip',
+  const showTooltip = bool({
+    key: 'showTooltip',
+    defaultValue: defaults.showTooltip ?? true,
+    label: 'Show tooltip',
   });
 
   const showTotalInTooltip = bool({
@@ -48,10 +48,10 @@ export function chartPlayground(previewData, defaults = {}) {
     label: 'Show total in tooltip',
   });
 
-  const hideLegend = bool({
-    key: 'hideLegend',
-    defaultValue: defaults.hideLegend ?? false,
-    label: 'Hide legend',
+  const showLegend = bool({
+    key: 'showLegend',
+    defaultValue: defaults.showLegend ?? true,
+    label: 'Show legend',
   });
 
   label({ label: 'Legend props', key: 'legendProps' });
@@ -117,11 +117,11 @@ export function chartPlayground(previewData, defaults = {}) {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
+    showXAxis,
+    showYAxis,
+    showTooltip,
     showTotalInTooltip,
-    hideLegend,
+    showLegend,
     legendProps,
   };
 }

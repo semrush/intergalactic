@@ -18,10 +18,10 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground(
     { select, radio, label, bool },
@@ -59,9 +59,9 @@ const Preview = (preview) => {
     plotWidth: 300,
     plotHeight: 300,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
     halfsize: halfSize,
@@ -69,10 +69,10 @@ const Preview = (preview) => {
     innerLabel,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Donut {...chartProps} />;

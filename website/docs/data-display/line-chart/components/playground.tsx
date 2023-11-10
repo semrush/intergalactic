@@ -50,10 +50,10 @@ const Preview = (preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
     showTotalInTooltip,
   } = chartPlayground({ select, radio, label, bool });
@@ -67,10 +67,10 @@ const Preview = (preview) => {
     options: ['No curve', ...Object.keys(curveMap)],
   });
 
-  const hideDots = bool({
+  const showDots = bool({
     key: 'hideDots',
-    defaultValue: false,
-    label: 'hide dots',
+    defaultValue: true,
+    label: 'Show dots',
   });
 
   const withArea = bool({
@@ -93,21 +93,21 @@ const Preview = (preview) => {
     plotHeight: 200,
     showTotalInTooltip,
     direction,
-    hideTooltip,
-    hideDots,
+    showTooltip,
+    showDots,
     curve: curveMap[curveName],
-    hideXAxis,
-    hideYAxis,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
     area: withArea ? area : undefined,
     areaCurve: curveMap[areaCurve],
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = true;
   }
 
   return <Chart.Line {...chartProps} />;
