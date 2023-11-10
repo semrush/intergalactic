@@ -44,7 +44,7 @@ const Preview = (preview) => {
   if (showLegend) {
     chartProps.legendProps = legendProps;
   } else {
-    chartProps.showLegend = true;
+    chartProps.showLegend = false;
   }
 
   return <Chart.Bar {...chartProps} type={'stack'} />;

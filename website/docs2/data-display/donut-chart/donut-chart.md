@@ -29,10 +29,10 @@ const App = PlaygroundGeneration((preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground(
     { select, radio, label, bool },
@@ -70,9 +70,9 @@ const App = PlaygroundGeneration((preview) => {
     plotWidth: 300,
     plotHeight: 300,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
     halfsize: halfSize,
@@ -80,14 +80,14 @@ const App = PlaygroundGeneration((preview) => {
     innerLabel,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
   }
 
   return <Chart.Donut {...chartProps} />;
-});
+}, {filterProps: ['data']});
 </script>
 
 :::

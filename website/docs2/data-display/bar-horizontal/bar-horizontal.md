@@ -30,10 +30,10 @@ const App = PlaygroundGeneration((preview) => {
     alignItems,
     showTotalInTooltip,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground({ select, radio, label, bool }, { invertAxis: true });
 
@@ -44,21 +44,21 @@ const App = PlaygroundGeneration((preview) => {
     plotHeight: 300,
     showTotalInTooltip,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
   }
 
   return <Chart.Bar {...chartProps} invertAxis={true} />;
-});
+}, {filterProps: ['data']});
 </script>
 
 :::

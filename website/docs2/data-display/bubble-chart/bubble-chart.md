@@ -32,10 +32,10 @@ const App = PlaygroundGeneration((preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
-    hideLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
@@ -46,21 +46,21 @@ const App = PlaygroundGeneration((preview) => {
     plotWidth: 300,
     plotHeight: 200,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
   }
 
   return <Chart.Bubble {...chartProps} />;
-});
+}, {filterProps: ['data']});
 
 </script>
 

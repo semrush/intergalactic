@@ -34,10 +34,10 @@ const App = PlaygroundGeneration((preview) => {
     direction,
     alignItems,
     justifyContent,
-    hideLegend,
-    hideXAxis,
-    hideYAxis,
-    hideTooltip,
+    showLegend,
+    showXAxis,
+    showYAxis,
+    showTooltip,
     legendProps,
   } = chartPlayground({ select, radio, label, bool });
 
@@ -53,21 +53,21 @@ const App = PlaygroundGeneration((preview) => {
     plotWidth: 300,
     plotHeight: 300,
     direction,
-    hideTooltip,
-    hideXAxis,
-    hideYAxis,
+    showTooltip,
+    showXAxis,
+    showYAxis,
     alignItems,
     justifyContent,
   };
 
-  if (hideLegend) {
-    chartProps.hideLegend = true;
-  } else {
+  if (showLegend) {
     chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
   }
 
   return <Chart.Venn {...chartProps} />;
-});
+}, {filterProps: ['data']});
 
 </script>
 
