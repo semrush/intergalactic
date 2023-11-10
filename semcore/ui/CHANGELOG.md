@@ -1,3 +1,17 @@
+## [15.34.0-prerelease.0] - 2023-11-10
+
+### @semcore/base-trigger
+
+- **Fixed** Blue border for `Trigger` when it `active` and in `normal` state.
+
+### @semcore/icon
+
+- **Added** New icons for marking AI features: `AskAI`, `ChatAI`, `StoriesAI`, `SummaryAI`.
+
+### @semcore/scroll-area
+
+- **Fixed** Sometimes scroll area focus ring was overlapped by sibling elements.
+
 ## [15.33.3] - 2023-11-09
 
 ### @semcore/d3-chart

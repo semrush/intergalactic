@@ -1,7 +1,7 @@
 {
   "name": "@semcore/input-tags",
   "description": "Semrush InputTags Component",
-  "version": "4.13.1",
+  "version": "4.13.2-prerelease.1",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -14,8 +14,8 @@
   "dependencies": {
     "@semcore/utils": "4.10.2",
     "@semcore/input": "4.12.1",
-    "@semcore/scroll-area": "5.12.1",
-    "@semcore/tag": "5.15.1"
+    "@semcore/scroll-area": "5.12.2-prerelease.1",
+    "@semcore/tag": "5.16.0-prerelease.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.9.1",
