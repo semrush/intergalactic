@@ -2267,6 +2267,30 @@ const iconsList = {
       ],
     },
     {
+      name: 'AskAI',
+      size: ['l', 'm'],
+      group: 'AI',
+      tags: ['ai', 'искусственный', 'интелект', 'ask', 'спросить', 'bing', 'бинг'],
+    },
+    {
+      name: 'ChatAI',
+      size: ['l', 'm'],
+      group: 'AI',
+      tags: ['ai', 'искусственный', 'интелект', 'ask', 'спросить', 'chat', 'чат', 'bing', 'бинг'],
+    },
+    {
+      name: 'StoriesAI',
+      size: ['l', 'm'],
+      group: 'AI',
+      tags: ['ai', 'искусственный', 'интелект', 'stories', 'истории', 'сториз', 'bing', 'бинг'],
+    },
+    {
+      name: 'SummaryAI',
+      size: ['l', 'm'],
+      group: 'AI',
+      tags: ['ai', 'искусственный', 'интелект', 'summary', 'саммари', 'bing', 'бинг'],
+    },
+    {
       name: 'AddressPack',
       size: ['l', 'm'],
       group: 'Misc',

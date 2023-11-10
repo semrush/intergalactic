@@ -75,7 +75,7 @@ export default function ({ icons, old, json }) {
             p={5}
             style={{
               borderRadius: 'var(--intergalactic-rounded-medium)',
-              border: 'solid 1px #d1d4db',
+              border: 'solid 1px var(--intergalactic-border-secondary)',
             }}
           >
             <img src={staticFiles['search/observatory.svg']} alt='observatory' />
@@ -94,6 +94,7 @@ export default function ({ icons, old, json }) {
           <IconGroup title='Hardware' />
           <IconGroup title='Format' />
           <IconGroup title='Map' />
+          <IconGroup title='AI' />
           <IconGroup title='Misc' />
           {!old && <IconGroup title='Brand' />}
           <IconGroup title='Color' />
