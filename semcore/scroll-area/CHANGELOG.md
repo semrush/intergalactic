@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.12.2] - 2023-11-09
+
+### Fixed
+
+- Sometimes scroll area focus ring was overlapped by sibling elements.
+
 ## [5.12.1] - 2023-11-09
 
 ### Changed
