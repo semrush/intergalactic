@@ -16,5 +16,5 @@ Our library has two components for tables:
 
 ## Examples
 
-- For the old `Table` component, refer to the [Table (old)](/table-group/table-old/).
+- For the old `Table` component, refer to the [Table (old)](/table-group/table-old/table-old).
 - For `DataTable` component, refer to the [DataTable](/table-group/data-table/data-table).

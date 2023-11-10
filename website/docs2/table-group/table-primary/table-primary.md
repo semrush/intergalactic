@@ -59,4 +59,4 @@ Table: Table header states
 
 ## Row states
 
-For more information, refer to the general [DataTable](/table-group/data-table#table-row-states) guide.
+For more information, refer to the general [DataTable](/table-group/data-table/data-table#table-row-states) guide.

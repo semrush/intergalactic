@@ -9,8 +9,8 @@ Here, you can find quick links related to our table and its specific use cases.
 
 ## Table types
 
-* [Primary table](/table-group/table-primary/): This is the fundamental table type designed for presenting extensive data volumes and complex functionality.
-* [Secondary table](/table-group/table-secondary/): A table type for displaying a small amount of data in a compact format, without complex functionality within widgets and cards.
+* [Primary table](/table-group/table-primary/table-primary): This is the fundamental table type designed for presenting extensive data volumes and complex functionality.
+* [Secondary table](/table-group/table-secondary/table-secondary): A table type for displaying a small amount of data in a compact format, without complex functionality within widgets and cards.
 
 
 ## Controls
@@ -90,6 +90,10 @@ const styles = `
     margin-top: 12px;
     padding: 0;
 
+  }
+
+  ._card {
+    gap: 8px;
   }
 `; 
 

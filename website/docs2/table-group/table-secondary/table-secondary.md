@@ -6,7 +6,7 @@ tabs: Design('table-secondary'), Example('table-secondary-code')
 
 ## Description
 
-**Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/). These tables usually have limited functionality, often simple features like sorting.
+**Secondary table** is a table type designed for compactly displaying a small amount of data within widgets and [cards](/components/card/card). These tables usually have limited functionality, often simple features like sorting.
 
 ## Appearance
 
@@ -31,5 +31,5 @@ Table: Secondary table styles
 
 ## Row states
 
-For more information, refer to the general [DataTable](/table-group/data-table#table-row-states) guide.
+For more information, refer to the general [DataTable](/table-group/data-table/data-table#table-row-states) guide.
 
