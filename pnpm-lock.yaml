@@ -609,7 +609,7 @@ importers:
         specifier: 5.10.1
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.9.2-prerelease.1
+        specifier: 5.9.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.10.2
@@ -945,7 +945,7 @@ importers:
         specifier: 5.10.1
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.9.2-prerelease.1
+        specifier: 5.9.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.10.2
@@ -976,7 +976,7 @@ importers:
         specifier: ^2.9.1
         version: link:../core
       '@semcore/dropdown':
-        specifier: 4.10.2-prerelease.1
+        specifier: 4.10.2
         version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.10.1
@@ -1147,7 +1147,7 @@ importers:
         specifier: 4.15.0
         version: link:../icon
       '@semcore/popper':
-        specifier: 5.9.2-prerelease.1
+        specifier: 5.9.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.10.2
@@ -2159,7 +2159,7 @@ importers:
         specifier: 4.10.1
         version: link:../divider
       '@semcore/dropdown-menu':
-        specifier: 4.12.5-prerelease.1
+        specifier: 4.12.5
         version: link:../dropdown-menu
       '@semcore/flex-box':
         specifier: 5.10.1
@@ -2577,7 +2577,7 @@ importers:
         specifier: 4.12.1
         version: link:../input
       '@semcore/select':
-        specifier: 4.17.5-prerelease.1
+        specifier: 4.17.5
         version: link:../select
       '@semcore/utils':
         specifier: 4.10.2
@@ -2611,7 +2611,7 @@ importers:
         specifier: 5.10.1
         version: link:../flex-box
       '@semcore/popper':
-        specifier: 5.9.2-prerelease.1
+        specifier: 5.9.2
         version: link:../popper
       '@semcore/utils':
         specifier: 4.10.2
@@ -2703,7 +2703,7 @@ importers:
         specifier: 3.10.1
         version: link:../counter
       '@semcore/d3-chart':
-        specifier: 3.18.2-prerelease.1
+        specifier: 3.18.2
         version: link:../d3-chart
       '@semcore/data-table':
         specifier: 4.16.2
@@ -2721,10 +2721,10 @@ importers:
         specifier: 3.18.0
         version: link:../drag-and-drop
       '@semcore/dropdown':
-        specifier: 4.10.2-prerelease.1
+        specifier: 4.10.2
         version: link:../dropdown
       '@semcore/dropdown-menu':
-        specifier: 4.12.5-prerelease.1
+        specifier: 4.12.5
         version: link:../dropdown-menu
       '@semcore/ellipsis':
         specifier: 2.11.1
@@ -2736,7 +2736,7 @@ importers:
         specifier: 4.14.1
         version: link:../errors
       '@semcore/feature-popover':
-        specifier: 4.14.1-prerelease.1
+        specifier: 4.14.1
         version: link:../feature-popover
       '@semcore/feedback-form':
         specifier: 6.12.1
@@ -2811,7 +2811,7 @@ importers:
         specifier: 5.11.1
         version: link:../pills
       '@semcore/popper':
-        specifier: 5.9.2-prerelease.1
+        specifier: 5.9.2
         version: link:../popper
       '@semcore/portal':
         specifier: 3.9.1
@@ -2829,7 +2829,7 @@ importers:
         specifier: 5.12.2
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.17.5-prerelease.1
+        specifier: 4.17.5
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.16.0
@@ -2865,10 +2865,10 @@ importers:
         specifier: 5.11.1
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.17.5-prerelease.1
+        specifier: 4.17.5
         version: link:../time-picker
       '@semcore/tooltip':
-        specifier: 6.10.2-prerelease.1
+        specifier: 6.10.2
         version: link:../tooltip
       '@semcore/typography':
         specifier: 5.16.0
