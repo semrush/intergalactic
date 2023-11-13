@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Venn chart** shows the relationship and intersections between two (or sometimes more) datasets. This chart type is also called a **set chart**.

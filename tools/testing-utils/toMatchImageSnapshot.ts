@@ -60,7 +60,10 @@ export async function toMatchImageSnapshot(
   try {
     await stat(snapshotPath);
   } catch (err) {
-    if (this.snapshotState._updateSnapshot === 'new') {
+    if (
+      this.snapshotState._updateSnapshot === 'new' ||
+      this.snapshotState._updateSnapshot === 'all'
+    ) {
       await writeFile(snapshotPath, snapshot);
 
       return {
@@ -69,7 +72,7 @@ export async function toMatchImageSnapshot(
       };
     } else {
       return {
-        pass: true,
+        pass: false,
         message: () => `Snapshot ${snapshotPath} not found.`,
       };
     }
@@ -99,11 +102,14 @@ export async function toMatchImageSnapshot(
   );
 
   if (mismatch <= (options?.maxPixelDiff ?? 10)) {
+    // console.log('mismatch <= (options?.maxPixelDiff ?? 10)', mismatch <= (options?.maxPixelDiff ?? 10))
     return {
       pass: true,
       message: () => 'ok',
     };
   }
+
+  // console.log('this.snapshotState._updateSnapshot', this.snapshotState._updateSnapshot)
 
   if (this.snapshotState._updateSnapshot === 'all') {
     await writeFile(snapshotPath, snapshot);

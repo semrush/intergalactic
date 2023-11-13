@@ -8,6 +8,64 @@ tabs: Design('bubble-chart'), A11y('bubble-chart-a11y'), API('bubble-chart-api')
 Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+::: react-view
+
+<script lang="tsx">
+import React from 'react';
+import PlaygroundGeneration from '@components/PlaygroundGeneration';
+import { chartPlayground } from '@components/ChartPlayground';
+import { Chart, BubbleChartProps } from '@semcore/d3-chart';
+import resolveColor from '@semcore/ui/utils/lib/color';
+
+const data = [
+  { x: 2, y: 3, value: 5040, label: 'label 1' },
+  { x: 1, y: 9, value: 40, label: 'label 2' },
+  { x: 6, y: 2, value: 45634, label: 'label 3' },
+  { x: 4, y: 7, value: 245, label: 'label 4' },
+  { x: 9, y: 5, value: 7462, label: 'label 5' },
+];
+
+const App = PlaygroundGeneration((preview) => {
+  const { select, radio, label, bool } = preview('Chart.Line');
+
+  const {
+    direction,
+    alignItems,
+    justifyContent,
+    showXAxis,
+    showYAxis,
+    showTooltip,
+    showLegend,
+    legendProps,
+  } = chartPlayground({ select, radio, label, bool });
+
+  legendProps.shape = 'Circle';
+
+  const chartProps: BubbleChartProps = {
+    data,
+    plotWidth: 300,
+    plotHeight: 200,
+    direction,
+    showTooltip,
+    showXAxis,
+    showYAxis,
+    alignItems,
+    justifyContent,
+  };
+
+  if (showLegend) {
+    chartProps.legendProps = legendProps;
+  } else {
+    chartProps.showLegend = false;
+  }
+
+  return <Chart.Bubble {...chartProps} />;
+}, {filterProps: ['data']});
+
+</script>
+
+:::
+
 ## Description
 
 A **bubble chart** visualizes relationships between data categories using proportions, colors, and positioning on a coordinate axis. This chart type helps you analyze patterns between datasets.
@@ -72,8 +130,8 @@ Remember to check contrast for the text labels. We don’t recommend to use ligh
 
 Show the following values in the tooltip for this chart type:
 
-- the value for the point on the X axis;
-- the value for the point on the Y axis.
+- the value for the point on the X-axis;
+- the value for the point on the Y-axis.
 - sometimes it is necessary to show a third value for a bubble, which affects its size (this may be the difference between the axes, or there may be a different value).
 
 **In the tooltip, focus on values rather than axis names or data categories.**

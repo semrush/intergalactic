@@ -67,7 +67,13 @@ export const isValidSemver = (version: string) => {
 };
 
 export const formatMarkdown = (markdown: string) => {
-  return markdown.replace(/\n\*\s/g, '\n- ').replace(/\*\*\s\s+/g, '** ') + '\n';
+  return (
+    markdown
+      .replace(/\n\*\s/g, '\n- ')
+      .replace(/\*\*\s\s+/g, '** ')
+      .replace(/ +/g, ' ')
+      .replace(/ \n/g, '\n') + '\n'
+  );
 };
 
 const start = Date.now();
@@ -76,5 +82,10 @@ export const log = (message: string) => {
   // biome-ignore lint/suspicious/noConsoleLog:
   console.log(`[${secondsPassed}s] ${message}`);
 };
-
 export const prerelaseSuffix = 'prerelease';
+/**
+ * Hardcoded but can be temporary incremented to handle broken versioning in
+ * case of unsuccessful publish
+ * @default 0
+ */
+export const prereleaseBaseIndex = 1;

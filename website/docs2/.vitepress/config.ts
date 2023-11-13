@@ -14,7 +14,7 @@ export default defineConfig({
   base: '/intergalactic/',
   outDir: resolvePath(__dirname, 'dist/intergalactic/'),
   title: 'Intergalactic',
-  description: 'Design system',
+  description: 'Design System',
   markdown: {
     config(md) {
       configureMarkdownIt(md);
@@ -23,9 +23,36 @@ export default defineConfig({
 
   cleanUrls: true,
   lastUpdated: true,
-  vite: viteConfig,
+  vite: viteConfig as any,
 
-  head: [['link', { rel: 'icon', href: '/miniwhale.png' }]],
+  head: [
+    ['link', { rel: 'apple-touch-icon', href: '/intergalactic/favicon/apple-touch-icon.png' }],
+    ['link', { rel: 'icon', href: '/intergalactic/favicon.ico' }],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/intergalactic/favicon/favicon-32x32.png',
+      },
+    ],
+    [
+      'link',
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/intergalactic/favicon/favicon-16x16.png',
+      },
+    ],
+    ['link', { rel: 'manifest', href: '/intergalactic/site.webmanifest' }],
+    [
+      'link',
+      { rel: 'mask-icon', href: '/intergalactic/favicon/safari-pinned-tab.svg', color: '#421983' },
+    ],
+    ['meta', { name: 'msapplication-TileColor', content: '#603cba' }],
+  ],
 
   themeConfig: {
     docFooter: {
@@ -34,7 +61,7 @@ export default defineConfig({
     },
     footer: {
       message: 'Released under the MIT License.',
-      copyright: '© 2008-2023 Powered by Semrush. All rights reserved.',
+      copyright: 'Copyright © 2023-present Powered by Semrush. All rights reserved.',
     },
     siteTitle: false,
 

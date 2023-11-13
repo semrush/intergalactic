@@ -82,7 +82,7 @@ SConfirmIcon {
   cursor: pointer;
 }
 SConfirmIcon:hover {
-  color: var(--intergalactic-icon-secondary-success-hover-active, #009f81);
+  color: var(--intergalactic-icon-secondary-success-hover-active, #049B75);
 }
 
 SCancelIcon {
@@ -90,7 +90,7 @@ SCancelIcon {
   cursor: pointer;
 }
 SCancelIcon:hover {
-  color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+  color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
 }
 
 SInlineInput[focused] {

@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Stacked bar chart** is used when it's necessary to display more than two categories of values and show the ratio of them to the whole.

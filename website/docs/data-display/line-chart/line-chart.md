@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules in widgets with charts are described in [Data visualization](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Line chart** helps to visualize the trend of numeric variables over a period of time.

@@ -6,6 +6,17 @@ tabs: Design('donut-chart'), A11y('donut-chart-a11y'), API('donut-chart-api'), E
 
 ## D3 API
 
+
+## Chart.Donut
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="DonutChartProps" :types={...types} />
+
+## Donut
+
 It have children components `Pie`, `Label`, `EmptyData`.
 
 ```js

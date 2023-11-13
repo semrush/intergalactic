@@ -11,16 +11,10 @@ import {
 } from '@semcore/ui/d3-chart';
 import { scaleLinear } from 'd3-scale';
 import { curveCardinal } from 'd3-shape';
-import resolveColor from '@semcore/utils/src/color';
 
 function formatDate(value, options) {
   return new Intl.DateTimeFormat('en', options).format(value);
 }
-
-const lineColors = {
-  line1: resolveColor('blue-300'),
-  line2: resolveColor('green-200'),
-};
 
 const dataHints = makeDataHintsContainer();
 
@@ -40,12 +34,12 @@ export default () => {
   const [legendItems, setLegendItems] = React.useState(
     Object.keys(data[0])
       .filter((name) => name !== 'time')
-      .map((item) => {
+      .map((item, index) => {
         return {
           id: item,
           label: `Line (${item})`,
           checked: true,
-          color: lineColors[item],
+          color: `chart-palette-order-${index + 1}`,
         };
       }),
   );
@@ -90,12 +84,15 @@ export default () => {
             })}
           </XAxis.Ticks>
         </XAxis>
-        <Area x='time' y='line1' curve={curveCardinal} color={lineColors.line1}>
-          <Area.Dots display />
-        </Area>
-        <Area x='time' y='line2' curve={curveCardinal} color={lineColors.line2}>
-          <Area.Dots display />
-        </Area>
+        {legendItems.map((item) => {
+          return (
+            item.checked && (
+              <Area key={item.id} x='time' y={item.id} curve={curveCardinal} color={item.color}>
+                <Area.Dots display />
+              </Area>
+            )
+          );
+        })}
       </Plot>
     </>
   );

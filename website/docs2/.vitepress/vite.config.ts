@@ -56,15 +56,6 @@ export const viteConfig = defineConfig({
       },
     })).vite({}),
   ],
-  server: {
-    proxy: {
-      '/intergalactic': {
-        target: 'http://localhost:5173',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/intergalactic/, ''),
-      },
-    },
-  },
   build: {
     chunkSizeWarningLimit: 1500,
   },

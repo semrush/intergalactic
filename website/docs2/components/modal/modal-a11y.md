@@ -12,9 +12,9 @@ Table: Keyboard support
 
 | Key           | Function                                       |
 | ------------- | ---------------------------------------------- |
-| `Tab`         | Moves focus to the next focusable element.     |
+| `Tab` | Moves focus to the next focusable element.     |
 | `Shift + Tab` | Moves focus to the previous focusable element. |
-| `Esc`         | Closes the modal window.                       |
+| `Esc` | Closes the modal window.                       |
 
 See more about the focus behavior in the modal window in the [Keyboard control guide](/core-principles/a11y/a11y-keyboard#keyboard_support_for_modal_window).
 
@@ -22,11 +22,11 @@ See more about the focus behavior in the modal window in the [Keyboard control g
 
 You can close the modal window by clicking on the following controls:
 
-- `Close` icon;
-- CTA or "Cancel" button;
-- `ESC` key;
-- "Back" in the browser (nothing changes on the parent page);
-- outside the container area.
+* `Close` icon; 
+* CTA or "Cancel" button; 
+* `ESC` key; 
+* "Back" in the browser (nothing changes on the parent page); 
+* outside the container area.
 
 ::: tip
 When the modal window is closed, the focus should always return to the trigger.
@@ -40,4 +40,4 @@ When the modal window is closed, the focus should always return to the trigger.
 
 See more accessibility recommendations in the common [Accessibility guide](/core-principles/a11y/a11y).
 
-@include modal-a11y-report
+<!--@include: ./modal-a11y-report.md-->

@@ -12,7 +12,7 @@ a11y: AA
 
 | Key              | Function                                               |
 | ---------------- | ------------------------------------------------------ |
-| `Space`, `Enter` | Changes state of the switch to checked or not checked. |
+| `Enter`, `Space` | Changes state of the switch to checked or not checked. |
 
 ### Roles & attributes
 

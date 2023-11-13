@@ -1,7 +1,7 @@
 {
   "name": "@semcore/date-picker",
   "description": "Semrush DatePicker Component",
-  "version": "4.14.0",
+  "version": "4.15.4",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,21 +12,21 @@
     "build": "pnpm semcore-builder --source=js"
   },
   "dependencies": {
-    "@semcore/utils": "4.9.0",
-    "@semcore/base-trigger": "4.14.0",
-    "@semcore/button": "5.10.0",
-    "@semcore/divider": "4.9.0",
-    "@semcore/dropdown": "4.9.0",
-    "@semcore/flex-box": "5.9.0",
-    "@semcore/icon": "4.13.0",
-    "@semcore/input": "4.11.0",
-    "@semcore/input-mask": "5.11.0",
-    "@semcore/neighbor-location": "4.8.0",
-    "@semcore/typography": "5.14.0",
+    "@semcore/utils": "4.10.2",
+    "@semcore/base-trigger": "4.15.2",
+    "@semcore/button": "5.11.1",
+    "@semcore/divider": "4.10.1",
+    "@semcore/dropdown": "4.10.1",
+    "@semcore/flex-box": "5.10.1",
+    "@semcore/icon": "4.15.0",
+    "@semcore/input": "4.12.1",
+    "@semcore/input-mask": "5.12.1",
+    "@semcore/neighbor-location": "4.9.1",
+    "@semcore/typography": "5.16.0",
     "dayjs": "1.8.36"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.8.0",
+    "@semcore/core": "^2.9.1",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

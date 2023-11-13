@@ -14,7 +14,7 @@ Table: Keyboard support
 | ---------------- | ------------------------------------------------ |
 | `Tab`            | Moves focus to the next focusable element.       |
 | `Shift + Tab`    | Moves focus to the previous focusable element.   |
-| `Space`, `Enter` | When focus is on the breadcrumb, opens the link. |
+| `Enter`, `Space` | When focus is on the breadcrumb, opens the link. |
 
 ### Roles & attributes
 

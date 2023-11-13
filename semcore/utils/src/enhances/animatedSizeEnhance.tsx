@@ -50,7 +50,10 @@ function animatedSizeEnhance({
       const sizes: (number | undefined)[] = [];
       for (let i = 0; i < animateProps.length; i++) {
         sizes[i] = node.getBoundingClientRect()[animateProps[i]];
-        if (Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3) {
+        if (
+          Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3 ||
+          node.style.getPropertyValue(animateProps[i]).endsWith('%')
+        ) {
           lastSizesRef.current[i] = sizes[i];
           sizes[i] = undefined;
         }

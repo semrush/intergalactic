@@ -8,6 +8,28 @@ tabs: Design('scatterplot-chart'), A11y('scatterplot-chart-a11y'), API('scatterp
 See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/d3-chart).
 :::
 
+## Basic usage
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Chart } from '@semcore/ui/d3-chart';
+
+const Demo = () => {
+  return <Chart.ScatterPlot data={data} plotWidth={500} plotHeight={300} groupKey={'x'} />;
+};
+
+const data = Array(20)
+  .fill({})
+  .map((d, i) => ({
+    x: i,
+    y: Math.random() * 10,
+  }));
+</script>
+
+:::
+
 ## Scatter plot
 
 ::: sandbox
@@ -188,6 +210,75 @@ const data = Array(20)
   .map((d, i) => ({
     x: i,
     y: Math.random() * 10,
+    value: i,
+  }));
+</script>
+
+:::
+
+## Legend
+
+::: sandbox
+
+<script lang="tsx">
+import React from 'react';
+import { Plot, ScatterPlot, XAxis, YAxis, minMax, ChartLegend } from '@semcore/ui/d3-chart';
+import { scaleLinear } from 'd3-scale';
+
+const Demo = () => {
+  const MARGIN = 40;
+  const width = 500;
+  const height = 300;
+
+  const xScale = scaleLinear()
+    .range([MARGIN, width - MARGIN])
+    .domain(minMax(data, 'x'));
+
+  const yScale = scaleLinear()
+    .range([height - MARGIN, MARGIN])
+    .domain([0, 10]);
+
+  const legendItems = Object.keys(data[0])
+    .filter((name) => name !== 'x' && name !== 'value')
+    .map((item, index) => {
+      return {
+        id: item,
+        label: `Point ${item}`,
+        checked: true,
+        color: `chart-palette-order-${index + 1}`,
+      };
+    });
+
+  return (
+    <>
+      <ChartLegend items={legendItems} shape={'Square'} />
+      <Plot scale={[xScale, yScale]} width={width} height={height} data={data}>
+        <YAxis>
+          <YAxis.Ticks />
+          <YAxis.Grid />
+        </YAxis>
+        <XAxis>
+          <XAxis.Ticks />
+        </XAxis>
+        {legendItems
+          .filter((item) => item.checked)
+          .map((item, index) => {
+            return (
+              <ScatterPlot key={item.id} x={'x'} y={item.id} value={'value'} color={item.color} />
+            );
+          })}
+      </Plot>
+    </>
+  );
+};
+
+const data = Array(10)
+  .fill({})
+  .map((d, i) => ({
+    x: i,
+    1: Math.random() * 10,
+    2: Math.random() * 10,
+    3: Math.random() * 10,
     value: i,
   }));
 </script>

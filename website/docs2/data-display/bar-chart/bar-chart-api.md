@@ -6,7 +6,15 @@ tabs: Design('bar-chart'), Vertical bar chart('bar-chart-vertical'), A11y('bar-c
 
 ## D3 API
 
-Chart Bar.
+## Chart.Bar
+
+```js
+import { Chart } from '@semcore/ui/d3-chart';
+```
+
+<TypesView type="BarChartProps" :types={...types} />
+
+## Bar
 
 ```js
 import { Bar } from '@semcore/ui/d3-chart';

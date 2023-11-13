@@ -89,7 +89,8 @@
         "noBannedTypes": "off",
         "noUselessThisAlias": "off",
         "noStaticOnlyClass": "off",
-        "noUselessFragments": "off"
+        "noUselessFragments": "off",
+        "noForEach": "off"
       },
       "security": {
         "noDangerouslySetInnerHtml": "off"

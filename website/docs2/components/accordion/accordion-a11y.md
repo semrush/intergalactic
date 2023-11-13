@@ -14,7 +14,7 @@ Table: Keyboard support
 | ---------------- | ---------------------------------------------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.                                         |
 | `Shift + Tab`    | Moves focus to the previous focusable element.                                     |
-| `Space`, `Enter` | When focus is on the accordion header of a collapsed section, expands the section. |
+| `Enter`, `Space` | When focus is on the accordion header of a collapsed section, expands the section. |
 
 ### Roles and attributes
 

@@ -2,6 +2,36 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.17.5] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown-menu` [4.12.4 ~> 4.12.5]).
+
+## [4.17.4] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.15.1 ~> 4.15.2], `@semcore/dropdown-menu` [4.12.3 ~> 4.12.4], `@semcore/icon` [4.14.1 ~> 4.15.0]).
+
+## [4.17.3] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/base-trigger` [4.15.0 ~> 4.15.1], `@semcore/checkbox` [7.13.0 ~> 7.13.1], `@semcore/divider` [4.10.0 ~> 4.10.1], `@semcore/dropdown-menu` [4.12.2 ~> 4.12.3], `@semcore/flex-box` [5.10.0 ~> 5.10.1], `@semcore/icon` [4.14.0 ~> 4.14.1], `@semcore/input` [4.12.0 ~> 4.12.1], `@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [4.17.2] - 2023-11-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/dropdown-menu` [4.12.0 ~> 4.12.1]).
+
+## [4.17.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/base-trigger` [4.14.0 ~> 4.15.0], `@semcore/checkbox` [7.12.0 ~> 7.13.0], `@semcore/divider` [4.9.0 ~> 4.10.0], `@semcore/dropdown-menu` [4.11.0 ~> 4.12.0], `@semcore/flex-box` [5.9.0 ~> 5.10.0], `@semcore/icon` [4.13.0 ~> 4.14.0], `@semcore/input` [4.11.0 ~> 4.12.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
 ## [4.16.0] - 2023-10-30
 
 ### Changed
@@ -222,7 +252,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- `InputSearch` clear button keyboard support. 
+- `InputSearch` clear button keyboard support.
 
 ## [3.10.3] - 2023-06-30
 
@@ -236,7 +266,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering. 
+- Providing explicit `size={undefined}` to `Select` with `InputSearch` was causing breaking of page rendering.
 
 ## [3.10.0] - 2023-06-23
 

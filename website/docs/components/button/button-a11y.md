@@ -13,7 +13,7 @@ a11y: AA
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
-| `Space`, `Enter` | Activates the button.                          |
+| `Enter`, `Space` | Activates the button.                          |
 
 ### Roles & attributes
 

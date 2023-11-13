@@ -16,7 +16,7 @@ const dataHints = makeDataHintsContainer();
 export default () => {
   const MARGIN = 40;
   const width = 500;
-  const height = 300;
+  const height = 200;
 
   const xScale = scaleLinear()
     .range([MARGIN, width - MARGIN])
