@@ -2,12 +2,17 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.0] - 2023-11-13
+
+### Added
+
+- New `Unsplash` icon.
+
 ## [4.15.0] - 2023-11-10
 
 ### Added
 
 - New icons for marking AI features: `AskAI`, `ChatAI`, `StoriesAI`, `SummaryAI`.
-- New `Unsplash` icon.
 
 ## [4.14.1] - 2023-11-09
 
