@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.18.3] - 2023-11-13
+
+### Fixed
+
+- Import path in `LegendItem`.
+
 ## [3.18.2] - 2023-11-10
 
 ### Changed
