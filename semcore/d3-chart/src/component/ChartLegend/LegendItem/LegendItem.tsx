@@ -12,7 +12,7 @@ import {
   LegendItem,
   StaticShapes,
 } from './LegendItem.type';
-import resolveColorEnhance from '@semcore/utils/src/enhances/resolveColorEnhance';
+import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 class LegendItemRoot extends Component<
   LegendItemProps & { resolveColor: ReturnType<typeof resolveColorEnhance> }
