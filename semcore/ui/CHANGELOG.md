@@ -1,3 +1,13 @@
+## [15.35.0-prerelease.0] - 2023-11-13
+
+### @semcore/d3-chart
+
+- **Fixed** Import path in `LegendItem`.
+
+### @semcore/icon
+
+- **Added** New `Unsplash` icon.
+
 ## [15.34.1] - 2023-11-10
 
 ### @semcore/popper
