@@ -467,10 +467,6 @@ img {
   overflow: auto;
 }
 
-.playground-runtime+div[class*='language-'] {
-  max-width: 430px;
-}
-
 .vp-doc div[class*='language-'] {
   overflow: auto;
 }
