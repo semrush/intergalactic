@@ -130,6 +130,9 @@ importers:
       inquirer:
         specifier: 6.3.1
         version: 6.3.1
+      intergalactic:
+        specifier: workspace:*
+        version: link:ui-kit-lib
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3810,6 +3813,9 @@ importers:
       '@ast-grep/napi':
         specifier: 0.13.0
         version: 0.13.0
+      '@semcore/changelog-handler':
+        specifier: '*'
+        version: link:../tools/changelog-handler
       '@semcore/continuous-delivery':
         specifier: '*'
         version: link:../tools/continuous-delivery
@@ -3828,6 +3834,9 @@ importers:
       fs-extra:
         specifier: 9.0.1
         version: 9.0.1
+      marked-ast-markdown:
+        specifier: 2.1.0
+        version: 2.1.0
       tsm:
         specifier: 2.2.2
         version: 2.2.2
@@ -16296,7 +16305,6 @@ packages:
     dependencies:
       entities: 2.2.0
       whisk: 1.5.0
-    dev: false
 
   /marked-ast@0.3.0:
     resolution: {integrity: sha512-yQ3Bwrz9Zu3NLY5wUMekpB5g0IXLShYHmD/hee+N+uhra1FEVu8rKXokRAPhfxD2kYeYlIivyKVDjVVXjvMEng==}
@@ -23467,7 +23475,6 @@ packages:
 
   /whisk@1.5.0:
     resolution: {integrity: sha512-wvrHImN6UzkDmCK94qY5RyjQR8XhK0PdzES1Zayz56hxAtgOzUbCYD/g26srpZsWw6iH3BLtJw34sLQWbsToFA==}
-    dev: false
 
   /why-is-node-running@2.2.2:
     resolution: {integrity: sha512-6tSwToZxTOcotxHeA+qGCq1mVzKR3CwcJGmVcY+QE8SHy6TnpFnh8PAvPNHYr7EcuVeG0QSMxtYCuO1ta/G/oA==}

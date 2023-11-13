@@ -1,11 +1,10 @@
-import { Package } from './collectPackages';
 import Git from 'simple-git';
 import { log } from './utils';
 import { execSync } from 'child_process';
 
 const git = Git();
 
-export const commitVersionsPatch = async (packages: Package[]) => {
+export const commitVersionsPatch = async () => {
   log('Updating lockfile...');
   execSync('pnpm install --frozen-lockfile false', {
     stdio: 'inherit',

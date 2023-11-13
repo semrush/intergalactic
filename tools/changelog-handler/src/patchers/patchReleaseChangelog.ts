@@ -22,13 +22,11 @@ const orderedVersionIncrement: semver.ReleaseType[] = [
 export const patchReleaseChangelog = async (
   previousVersionId: string,
   previousDependencies: { [name: string]: string },
+  exportedPackages: string[],
 ) => {
   const componentChangelogs = await collectComponentChangelogs();
   const releaseChangelog = await getReleaseChangelog();
 
-  const { packages: exportedPackages }: { packages: string[] } = await fs.readJSON(
-    resolvePath(filename, '../../../../../semcore/ui/components.json'),
-  );
   const exportedPackagesMap = Object.fromEntries(
     exportedPackages.map((packageName) => [packageName, true]),
   );

@@ -4,7 +4,7 @@
  * Util for check imports in external source code and show warnings about old imports from '@semcore...'
  */
 
-import {getDirectDependencies, getImportPaths} from "./importUtils";
+import {getDirectDependencies, getImportPaths} from '../tools/importUtils';
 
 console.log('\nStart check direct dependencies');
 
@@ -31,4 +31,3 @@ Object.entries(pathsToPatchImports).forEach(([path, count]) => {
 if (haveOldImports) {
     console.warn(`\nYou could replace old @semcore/ui* imports to new intergalactic/* by run 'npx intergalactic patch-imports'\n`);
 }
-

@@ -2,21 +2,13 @@
   "name": "intergalactic",
   "version": "15.32.0",
   "license": "MIT",
-  "module": "./index.mjs",
-  "sideEffects": false,
   "scripts": {
-    "prepublishOnly": "pnpm run clear && pnpm run release",
-    "postinstall": "pnpm run checkImports",
-    "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts",
-    "release": "pnpm run updateChangelog && pnpm run copyLibs",
-    "copyLibs": "tsm --require=../.ci/tsm-filter-warnings.js tools/copyLibs.ts",
-    "checkImports": "tsm --require=../.ci/tsm-filter-warnings.js tools/checkImports.ts",
-    "patchImports": "tsm --require=../.ci/tsm-filter-warnings.js tools/patchImports.ts",
-    "updateChangelog": "tsm --require=../.ci/tsm-filter-warnings.js tools/updateChangelog.ts"
+    "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts"
   },
   "bin": {
-    "check-imports": "tools/checkImports.ts",
-    "patch-imports": "tools/patchImports.ts"
+    "publish-one-release": "bin/publish-release.ts",
+    "check-imports": "bin/check-imports.ts",
+    "patch-imports": "bin/patch-imports.ts"
   },
   "exports": {
     "./ui/*": {
@@ -37,13 +29,15 @@
   },
   "devDependencies": {
     "@semcore/continuous-delivery": "*",
+    "@semcore/changelog-handler": "*",
     "@semcore/testing-utils": "1.0.0",
     "@types/fs-extra": "9.0.13",
     "@types/react": "18.0.21",
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
     "tsm": "2.2.2",
-    "@ast-grep/napi": "0.13.0"
+    "@ast-grep/napi": "0.13.0",
+    "marked-ast-markdown": "2.1.0"
   },
   "repository": {
     "type": "git",

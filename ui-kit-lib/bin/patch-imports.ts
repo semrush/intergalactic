@@ -1,6 +1,10 @@
 #!/usr/bin/env tsm
 
-import {replaceImports} from "./importUtils";
+/**
+ * Options:
+ *   --dry-run
+ */
+import { replaceImports } from '../tools/importUtils';
 
 console.log('start replace old imports');
 

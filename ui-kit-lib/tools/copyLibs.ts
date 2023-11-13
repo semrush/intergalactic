@@ -4,11 +4,9 @@ import { fileURLToPath } from 'url';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
-const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
-const packages = Object.keys(deps);
 
 async function copyComponent(componentName: string, toCopy: string | string[]) {
-    await fs.mkdir(path.resolve(dirname, 'libs', componentName));
+    await fs.mkdir(path.resolve(dirname, 'libs', componentName), {recursive: true});
 
     const dirsToCopy = Array.isArray(toCopy) ? toCopy : [toCopy];
 
@@ -41,7 +39,7 @@ async function copyIcon(name: string) {
     await copyComponent(name, icons);
 }
 
-async function copyLib() {
+export async function copyLib(packages: string[]) {
     for (const dep of packages) {
         const [scope, name] = dep.split('/');
 
@@ -68,7 +66,3 @@ async function copyLib() {
         }
     }
 }
-
-await copyLib();
-
-export {};

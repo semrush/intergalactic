@@ -1,14 +1,10 @@
 import { log } from './utils';
-import {
-  getReleaseChangelog,
-  serializeReleaseChangelog,
-  toMarkdown,
-} from '@semcore/changelog-handler';
+import { Changelog, serializeReleaseChangelog, toMarkdown } from '@semcore/changelog-handler';
 import fs from 'fs/promises';
 import { sendMessage, makeMessageFromChangelogs } from '@semcore/slack-integration';
 import { execSync } from 'child_process';
 
-export const publishReleaseNotes = async () => {
+export const publishReleaseNotes = async (version: string, lastVersionChangelogs: Changelog[]) => {
   log('Publishing release note.');
   log('Authorizing in github...');
   await fs.writeFile('./.gh-auth-token.txt', String(process.env.GITHUB_SECRET));
@@ -19,9 +15,6 @@ export const publishReleaseNotes = async () => {
   await fs.rm('./.gh-auth-token.txt');
   log('Authorized in github.');
   log('Publishing release note...');
-  const semcoreUiChangelog = await getReleaseChangelog();
-  const version = semcoreUiChangelog.package.version;
-  const lastVersionChangelogs = semcoreUiChangelog.changelogs.slice(0, 1);
   const releaseNotes = toMarkdown(serializeReleaseChangelog(lastVersionChangelogs))
     .split('\n')
     .slice(2)

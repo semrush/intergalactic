@@ -17,6 +17,9 @@ import { commitVersionsPatch } from './src/commitVersionsPatch';
 import {
   removeBetaVersionFromReleaseChangelog,
   updateReleaseChangelog,
+  patchReleaseChangelog,
+  serializeReleaseChangelog,
+  getReleaseChangelog,
 } from '@semcore/changelog-handler';
 import semver from 'semver';
 
@@ -77,15 +80,27 @@ export const publishRelease = async () => {
   const packagesPaths = await unpackTarballs(tarballPaths);
   const versionPatches = await patchVersionsFromPrereleaseToRelease(packagesPaths, packages);
   await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
-  await removeBetaVersionFromReleaseChangelog();
+
+  const releaseChangelog = await getReleaseChangelog();
+
+  await removeBetaVersionFromReleaseChangelog(releaseChangelog.changelogs);
 
   await republishTarballs(packagesPaths);
   if (!process.argv.includes('--dry-run')) {
-    await commitVersionsPatch(packages);
+    await commitVersionsPatch();
   }
   if (!process.argv.includes('--dry-run')) {
-    await publishReleaseNotes();
+    await publishReleaseNotes(
+      releaseChangelog.package.version,
+      releaseChangelog.changelogs.slice(0, 1),
+    );
   }
 };
 
-export { fetchFromNpm, formatMarkdown, collectPackages };
+export {
+  fetchFromNpm,
+  formatMarkdown,
+  collectPackages,
+  patchReleaseChangelog,
+  serializeReleaseChangelog,
+};
