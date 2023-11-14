@@ -61,7 +61,13 @@ export function Prev({ getI18nText, children, Children }) {
       tabIndex={-1}
       aria-label={getI18nText('prev')}
     >
-      {children ? <Children /> : <ChevronLeft />}
+      {children ? (
+        <Children />
+      ) : (
+        <Button.Addon>
+          <ChevronLeft />
+        </Button.Addon>
+      )}
     </Root>
   );
 }
@@ -76,7 +82,13 @@ export function Next({ getI18nText, children, Children }) {
       tabIndex={-1}
       aria-label={getI18nText('next')}
     >
-      {children ? <Children /> : <ChevronRight />}
+      {children ? (
+        <Children />
+      ) : (
+        <Button.Addon>
+          <ChevronRight />
+        </Button.Addon>
+      )}
     </Root>
   );
 }
