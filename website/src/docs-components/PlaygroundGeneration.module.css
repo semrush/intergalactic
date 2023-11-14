@@ -60,9 +60,11 @@ h4 {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  flex: 2;
 }
 
 .widgetsBar {
+  flex: 1;
   position: relative;
   font-size: var(--intergalactic-fs-200);
   overflow-y: auto;
