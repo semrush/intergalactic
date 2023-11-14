@@ -779,8 +779,8 @@ importers:
         specifier: 4.10.1
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.10.1
-        version: 4.10.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.10.2
+        version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.10.1
         version: link:../flex-box
