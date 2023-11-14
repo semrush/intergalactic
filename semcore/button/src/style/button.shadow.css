@@ -22,6 +22,7 @@ SButton {
   -webkit-tap-highlight-color: transparent;
   font-weight: var(--intergalactic-medium, 500);
   color: var(--intergalactic-text-secondary, #6c6e79);
+  min-width: fit-content;
 
   &::-moz-focus-inner {
     padding: 0;
@@ -51,14 +52,12 @@ SButton[disabled] {
 
 SButton[size='m'] {
   height: 28px;
-  min-width: 28px;
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-200, 14px);
 }
 
 SButton[size='l'] {
   height: 40px;
-  min-width: 40px;
   border-radius: var(--intergalactic-control-rounded, 6px);
   font-size: var(--intergalactic-fs-300, 16px);
 }
@@ -340,8 +339,9 @@ SAddon[size='m'] {
   }
 
   &:only-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    /* -1px - for border width */
+    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
 }
 
@@ -355,7 +355,8 @@ SAddon[size='l'] {
   }
 
   &:only-child {
-    margin-left: calc(-1 * var(--intergalactic-spacing-1x, 4px));
-    margin-right: calc(-1 * var(--intergalactic-spacing-1x, 4px));
+    /* -1px - for border width */
+    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
   }
 }

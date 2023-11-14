@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.11.2] - 2023-11-14
+
+### Fixed
+
+- Width of `Button` by fit-content in flex containers.
+
 ## [5.11.1] - 2023-11-09
 
 ### Changed
