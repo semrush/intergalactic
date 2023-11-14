@@ -1,23 +1,25 @@
-import {publishReleaseNotes} from "@semcore/continuous-delivery/src/publishReleaseNotes";
 import {copyLib} from './copyLibs';
 import {updateReleaseChangelog} from './updateReleaseChangelog';
 import {updateComponentsVersions} from './updateComponentsVersions';
-import {republishTarballs} from '@semcore/continuous-delivery/src/republishTarballs';
+import {publishReleaseNotes} from '@semcore/continuous-delivery';
 import {fileURLToPath} from 'url';
 import path from 'path';
 import fs from 'fs-extra';
 import {log} from "./logger";
 import {commitPatch} from "./commitPatch";
+import {publishTarball} from "./publishTarball";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
 
 const publishRelease = async () => {
+
+    if (!process.argv.includes('--dry-run')) {
+        throw new Error('on test use dry-run');
+    }
+
     const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
     const packages = Object.keys(deps);
-    const packagesPaths = packages.map((name) => path.resolve(dirname, '..', 'semcore', name));
-
-    console.log(process.argv.includes('--dry-run'));
 
     log('Copy libs');
     await copyLib(packages);
@@ -26,7 +28,7 @@ const publishRelease = async () => {
     log('Update components versions');
     await updateComponentsVersions(packages);
     log('Publish');
-    await republishTarballs(packagesPaths);
+    await publishTarball('intergalactic', changelogPatch.version);
 
     if (!process.argv.includes('--dry-run')) {
         await commitPatch();

@@ -103,4 +103,5 @@ export {
   collectPackages,
   patchReleaseChangelog,
   serializeReleaseChangelog,
+  publishReleaseNotes,
 };

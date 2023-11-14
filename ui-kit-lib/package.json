@@ -1,6 +1,6 @@
 {
   "name": "intergalactic",
-  "version": "15.35.0",
+  "version": "15.35.1",
   "license": "MIT",
   "scripts": {
     "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts"
