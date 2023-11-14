@@ -331,32 +331,30 @@ SAddon {
 
 SAddon[size='m'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-2x, 8px);
+    margin-left: calc(var(--intergalactic-spacing-2x, 8px) - 1px); /* -1px - for border width */
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-2x, 8px);
+    margin-right: calc(var(--intergalactic-spacing-2x, 8px) - 1px); /* -1px - for border width */
   }
 
   &:only-child {
-    /* -1px - for border width */
-    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-left: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
+    margin-right: calc(1.5 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
   }
 }
 
 SAddon[size='l'] {
   &:not(:only-child):first-child {
-    margin-left: var(--intergalactic-spacing-3x, 12px);
+    margin-left: calc(var(--intergalactic-spacing-3x, 12px) - 1px); /* -1px - for border width */
   }
 
   &:not(:only-child):last-child {
-    margin-right: var(--intergalactic-spacing-3x, 12px);
+    margin-right: calc(var(--intergalactic-spacing-3x, 12px) - 1px); /* -1px - for border width */
   }
 
   &:only-child {
-    /* -1px - for border width */
-    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
-    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px);
+    margin-left: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
+    margin-right: calc(3 * var(--intergalactic-spacing-1x, 4px) - 1px); /* -1px - for border width */
   }
 }
