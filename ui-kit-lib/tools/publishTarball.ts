@@ -9,7 +9,7 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = resolvePath(filename, '..', '..');
 
 export const publishTarball = async (name: string, version: string) => {
-    log('Republishing prereleased package...');
+    log('Publishing package...');
 
     const pnpmOptions = process.argv.includes('--dry-run')
         ? '--dry-run --no-git-checks'
@@ -28,5 +28,5 @@ export const publishTarball = async (name: string, version: string) => {
     }
     log(`Publishing of ${name} is finished.`);
 
-    log('Prereleased packages were republished.');
+    log('Released packages were published.');
 };

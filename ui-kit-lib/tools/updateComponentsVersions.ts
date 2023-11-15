@@ -1,11 +1,14 @@
 import path from "path";
 import fs from 'fs-extra';
 import {fileURLToPath} from "url";
+import {log} from "./logger";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
 
 export function updateComponentsVersions(packages: string[]) {
+    log('Update components versions...');
+
     const newDeps: Record<string, string> = {};
 
     packages.forEach((pack) => {

@@ -82,6 +82,9 @@ importers:
       '@semcore/gcs-upload':
         specifier: workspace:*
         version: link:tools/gcs-upload
+      '@semcore/intergalactic':
+        specifier: workspace:*
+        version: link:ui-kit-lib
       '@semcore/slack-integration':
         specifier: workspace:*
         version: link:tools/slack-integration
@@ -130,9 +133,6 @@ importers:
       inquirer:
         specifier: 6.3.1
         version: 6.3.1
-      intergalactic:
-        specifier: workspace:*
-        version: link:ui-kit-lib
       jsdom:
         specifier: 22.1.0
         version: 22.1.0

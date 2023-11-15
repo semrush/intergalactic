@@ -1,14 +1,19 @@
 import fs from 'fs-extra';
 import path from 'path';
 import {js, jsx, ts, tsx} from "@ast-grep/napi";
+import {fileURLToPath} from "url";
 
 type PathsToPatchImports = Record<string, number>;
+
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.resolve(filename, '..', '..');
+const components = Object.keys(fs.readJSONSync(path.resolve(dirname, 'components.json')));
 
 export async function getDirectDependencies() {
     const packageData = await fs.readJSON(path.resolve(process.cwd(), 'package.json'), 'utf8');
     const dependencies = packageData.dependencies;
     const directImports = Object.keys(dependencies).filter((key) => {
-        return key.startsWith('@semcore/') && !key.endsWith('/ui');
+        return key.startsWith('@semcore/') && !key.endsWith('/ui') && key !== '@semcore/intergalactic';
     });
 
     return directImports;
@@ -49,7 +54,7 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
                 },
                 constraints: {
                     'SCOPE': {
-                        regex: '@semcore|@semcore/ui'
+                        regex: `@semcore/ui|${components.join('|')}`
                     }
                 }
             });
@@ -70,7 +75,8 @@ export async function getImportPaths(baseDir: string = 'src'): Promise<PathsToPa
 }
 
 export async function replaceImports(baseDir: string = 'src'): Promise<void> {
-    const newName = 'intergalactic';
+    const packageData = await fs.readJSON(path.resolve(dirname, 'package.json'), 'utf8');
+    const newName = packageData.name;
     const regexp = new RegExp(/from '@semcore\/(ui\/){0,1}(.*)';/g);
 
     const pathsToPatchImports: PathsToPatchImports = {};

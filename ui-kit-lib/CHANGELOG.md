@@ -1,4 +1,8 @@
-## [15.35.1] - 2023-11-13
+## [15.35.1] - 2023-11-14
+
+### @semcore/button
+
+- **Fixed** Width of `Button` by fit-content in flex containers.
 
 ## [15.35.0] - 2023-11-13
 

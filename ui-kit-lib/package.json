@@ -1,9 +1,10 @@
 {
-  "name": "intergalactic",
+  "name": "@semcore/intergalactic",
   "version": "15.35.1",
   "license": "MIT",
   "scripts": {
-    "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts"
+    "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts",
+    "postinstall": "pnpm check-imports"
   },
   "bin": {
     "publish-one-release": "bin/publish-release.ts",

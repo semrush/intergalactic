@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
+import {log} from "./logger";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
@@ -40,6 +41,8 @@ async function copyIcon(name: string) {
 }
 
 export async function copyLib(packages: string[]) {
+    log('Copy libs...');
+
     for (const dep of packages) {
         const [scope, name] = dep.split('/');
 
