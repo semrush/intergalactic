@@ -495,7 +495,7 @@ importers:
   semcore/color-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
@@ -773,7 +773,7 @@ importers:
         specifier: 4.16.0
         version: link:../base-trigger
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
@@ -782,8 +782,8 @@ importers:
         specifier: 4.10.1
         version: link:../divider
       '@semcore/dropdown':
-        specifier: 4.10.1
-        version: 4.10.1(@semcore/core@semcore+core)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 4.10.2
+        version: link:../dropdown
       '@semcore/flex-box':
         specifier: 5.10.1
         version: link:../flex-box
@@ -1101,7 +1101,7 @@ importers:
   semcore/errors:
     dependencies:
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
@@ -1172,7 +1172,7 @@ importers:
   semcore/feedback-form:
     dependencies:
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
@@ -1896,7 +1896,7 @@ importers:
   semcore/pagination:
     dependencies:
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
@@ -2568,7 +2568,7 @@ importers:
   semcore/time-picker:
     dependencies:
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
@@ -2685,7 +2685,7 @@ importers:
         specifier: 1.12.1
         version: link:../breakpoints
       '@semcore/button':
-        specifier: 5.11.1
+        specifier: 5.11.2
         version: link:../button
       '@semcore/card':
         specifier: 5.17.0
@@ -2697,7 +2697,7 @@ importers:
         specifier: 7.13.1
         version: link:../checkbox
       '@semcore/color-picker':
-        specifier: 2.16.0
+        specifier: 2.16.1
         version: link:../color-picker
       '@semcore/core':
         specifier: 2.9.1
@@ -2712,7 +2712,7 @@ importers:
         specifier: 4.17.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.16.0
+        specifier: 4.16.1
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.10.1
@@ -2736,13 +2736,13 @@ importers:
         specifier: 1.0.2
         version: link:../email
       '@semcore/errors':
-        specifier: 4.14.1
+        specifier: 4.14.2
         version: link:../errors
       '@semcore/feature-popover':
         specifier: 4.15.0
         version: link:../feature-popover
       '@semcore/feedback-form':
-        specifier: 6.12.1
+        specifier: 6.12.2
         version: link:../feedback-form
       '@semcore/flags':
         specifier: 4.10.1
@@ -2808,7 +2808,7 @@ importers:
         specifier: 3.9.1
         version: link:../outside-click
       '@semcore/pagination':
-        specifier: 4.18.0
+        specifier: 4.18.1
         version: link:../pagination
       '@semcore/pills':
         specifier: 5.11.1
@@ -2868,7 +2868,7 @@ importers:
         specifier: 5.11.1
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.18.0
+        specifier: 4.18.1
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.10.2
