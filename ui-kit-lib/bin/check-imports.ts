@@ -18,16 +18,20 @@ if (directImports.length > 0) {
 
 log('\nStart check old imports...');
 
-const pathsToPatchImports: Record<string, number> = await getImportPaths();
+try {
+    const pathsToPatchImports: Record<string, number> = await getImportPaths();
 
-let haveOldImports = false;
+    let haveOldImports = false;
 
-Object.entries(pathsToPatchImports).forEach(([path, count]) => {
-    haveOldImports = true;
+    Object.entries(pathsToPatchImports).forEach(([path, count]) => {
+        haveOldImports = true;
 
-    log(`  - Found ${count} old imports in: [${path}].`);
-});
+        log(`  - Found ${count} old imports in: [${path}].`);
+    });
 
-if (haveOldImports) {
-    log(`\nYou could replace old @semcore/ui* imports to new @semrush/intergalactic/* by run 'pnpm patch-imports'\n`);
+    if (haveOldImports) {
+        log(`\nYou could replace old @semcore/ui* imports to new @semrush/intergalactic/* by run 'pnpm patch-imports'\n`);
+    }
+} catch(e) {
+    console.error(e);
 }
