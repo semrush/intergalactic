@@ -55,13 +55,15 @@ class ModalRoot extends Component {
   };
 
   getOverlayProps() {
-    const { duration, visible, animationsDisabled, disablePreventScroll } = this.asProps;
+    const { duration, visible, animationsDisabled, disablePreventScroll, preserveNode } =
+      this.asProps;
     return {
       duration,
       visible,
       onOutsideClick: this.handleOutsideClick,
       animationsDisabled,
       disablePreventScroll,
+      preserveNode,
     };
   }
 
@@ -80,11 +82,12 @@ class ModalRoot extends Component {
   }
 
   getCloseProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, ghost } = this.asProps;
 
     return {
       onClick: this.handleIconCloseClick,
       getI18nText,
+      ghost,
     };
   }
 

@@ -1041,7 +1041,7 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Active (selected) state of the inverted version of the tertiary control.",
-    "components": ["button"]
+    "components": ["button", "modal"]
   },
   {
     "name": "--intergalactic-icon-primary-neutral",
@@ -1136,7 +1136,7 @@
     "rawValue": "{gray.white}",
     "computedValue": "#ffffff",
     "description": "Inverted version of the primary icon.",
-    "components": ["notice-global"]
+    "components": ["carousel", "modal", "notice-global"]
   },
   {
     "name": "--intergalactic-icon-primary-invert-hover-active",
@@ -2237,6 +2237,7 @@
       "breadcrumbs",
       "button",
       "card",
+      "carousel",
       "checkbox",
       "d3-chart",
       "data-table",

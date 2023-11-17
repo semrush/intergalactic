@@ -6,6 +6,7 @@ import React, {
   RefObject,
 } from 'react';
 import { IStyledProps } from './styled';
+import { b } from 'vitest/dist/types-198fd1d9';
 
 /** @deprecated */
 type KnownKeys<T> = {
@@ -92,21 +93,25 @@ const Root: Root = undefined as any;
 export { Root };
 
 /** @deprecated */
-abstract class RootComponent<Props = {}, Context = {}, State = {}> extends PureComponent<
-  Props & IRootComponentProps<Props, Context>,
-  State
-> {
+abstract class RootComponent<
+  Props = {},
+  Context = {},
+  State = {},
+  Enhance = {},
+> extends PureComponent<Props & IRootComponentProps<Props, Context>, State> {
   get handlers(): Readonly<IRootComponentHandlers> {
     return {};
   }
 
   get asProps() {
     return {} as Readonly<
-      Merge<Props & IRootComponentProps<Props, Context>, AllHTMLAttributes<any>>
+      Merge<Props & IRootComponentProps<Props, Context> & Enhance, AllHTMLAttributes<any>>
     >;
   }
 
   Root: Root = undefined as any;
+
+  isControlled = false;
 }
 
 export const Component = RootComponent;
@@ -117,6 +122,8 @@ export type Component<
   State = {},
   Handlers extends IRootComponentHandlers = IRootComponentHandlers,
 > = React.ComponentClass<Props, State> & {
+  isControlled: boolean;
+
   handlers: Readonly<Handlers>;
 
   asProps: Readonly<Merge<Props & IRootComponentProps<Props, Context>, AllHTMLAttributes<any>>>;
