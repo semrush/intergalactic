@@ -1,14 +1,6 @@
-import React from 'react';
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
-
-type ChildRenderFn<Props> = Props & {
-  children?: ({
-    items,
-  }: {
-    items: { active: boolean; onClick: () => void }[];
-  }) => React.ReactElement | React.ReactElement[];
-};
+import { IRootComponentProps } from '@semcore/core/src';
 
 /** @deprecated */
 export interface ICarouselProps extends CarouselProps, UnknownProperties {}
@@ -31,6 +23,8 @@ export type CarouselProps = BoxProps & {
   /** @ignore  */
   step?: number;
   locale?: string;
+  /** Width for items in zooming modal */
+  zoomWidth?: number;
 };
 
 /** @deprecated */
@@ -43,34 +37,70 @@ export type CarouselContext = {
   getIndicatorsProps: PropGetterFn;
 };
 
+export type CarouselItem = {
+  node: HTMLElement;
+  zoom?: boolean;
+};
+
+export type CarouselItemProps = BoxProps & {
+  /**
+   * Enable zoom in modal for each item.
+   * @default false
+   */
+  zoom?: boolean;
+  /** Flag for css cursor */
+  zoomIn?: boolean;
+  /** Flag for css cursor */
+  zoomOut?: boolean;
+
+  toggleItem?: (item: CarouselItem, toRemove?: boolean) => void;
+
+  /** Index of item in carousel */
+  index: number;
+
+  uid: string;
+
+  /** Flag - is current item shown now */
+  current: boolean;
+
+  /** Handler for show item in modal window */
+  onToggleZoomModal?: () => void;
+
+  /** Value for transform item */
+  transform?: number;
+};
+
 /** @deprecated */
 export interface ICarouselState extends CarouselState, UnknownProperties {}
 export type CarouselState = {
-  // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-  items: { transform: number; position: number; node: HTMLDivElement }[];
+  isOpenZoom: boolean;
+  selectedIndex: number;
+  items: CarouselItem[];
 };
 
-declare const Carousel: Intergalactic.Component<
+export type CarouselButtonProps = IRootComponentProps &
+  BoxProps & {
+    label?: string;
+    inverted?: boolean;
+  };
+
+declare const CarouselType: Intergalactic.Component<
   'div',
   CarouselProps,
   CarouselContext & CarouselState
 > & {
   Container: Intergalactic.Component<'div', BoxProps>;
-  Indicators: Intergalactic.Component<'div', BoxProps, CarouselState>;
+  Indicators: Intergalactic.Component<'div', BoxProps & { inverted?: boolean }, CarouselState>;
   Indicator: Intergalactic.Component<
     'div',
     Omit<BoxProps, 'position'> & {
       active?: boolean;
       onClick?: () => void;
-      transform?: number;
-      position?: number;
-      // eslint-disable-next-line ssr-friendly/no-dom-globals-in-module-scope
-      node?: HTMLDivElement;
-    }
+    } & CarouselItem
   >;
-  Item: Intergalactic.Component<'div', BoxProps>;
-  Prev: Intergalactic.Component<'div', BoxProps>;
-  Next: Intergalactic.Component<'div', BoxProps>;
+  Item: Intergalactic.Component<'div', CarouselItemProps>;
+  Prev: Intergalactic.Component<'div', CarouselButtonProps>;
+  Next: Intergalactic.Component<'div', CarouselButtonProps>;
 };
 
-export default Carousel;
+export default CarouselType;

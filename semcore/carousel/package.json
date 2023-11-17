@@ -14,7 +14,9 @@
   "dependencies": {
     "@semcore/flex-box": "5.10.1",
     "@semcore/icon": "4.16.0",
-    "@semcore/utils": "4.10.2"
+    "@semcore/utils": "4.10.2",
+    "@semcore/button": "5.11.2",
+    "@semcore/modal": "4.18.0"
   },
   "peerDependencies": {
     "@semcore/core": "^2.9.1",

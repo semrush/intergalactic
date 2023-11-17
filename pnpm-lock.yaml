@@ -429,6 +429,9 @@ importers:
 
   semcore/carousel:
     dependencies:
+      '@semcore/button':
+        specifier: 5.11.2
+        version: link:../button
       '@semcore/core':
         specifier: ^2.9.1
         version: link:../core
@@ -438,6 +441,9 @@ importers:
       '@semcore/icon':
         specifier: 4.16.0
         version: link:../icon
+      '@semcore/modal':
+        specifier: 4.18.0
+        version: link:../modal
       '@semcore/utils':
         specifier: 4.10.2
         version: link:../utils
