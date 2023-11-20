@@ -36,7 +36,7 @@ const Demo = () => {
       <Box mb={1}>
         <Text size={200}>{value ? `${20 * value}/2000` : 'progress...'}</Text>
       </Box>
-      <ProgressBar value={value} aria-label='Infinite emails processing' />
+      <ProgressBar tabIndex={0} value={value} aria-label='Infinite emails processing' />
     </div>
   );
 };
@@ -58,7 +58,7 @@ import ProgressBar from '@semcore/ui/progress-bar';
 
 const Demo = () => {
   return (
-    <ProgressBar value={80} theme='violet-100' aria-label='Email processing'>
+    <ProgressBar tabIndex={0} value={80} theme='violet-100' aria-label='Email processing'>
       <ProgressBar.Value theme='violet-500' />
     </ProgressBar>
   );

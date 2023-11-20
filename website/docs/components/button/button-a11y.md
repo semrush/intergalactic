@@ -24,7 +24,7 @@ The list below describes roles and attributes that component already has.
 | Role     | Attribute              | Element    | Usage                                                                                                                                       |
 | -------- | ---------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | `button` |                        | `div`, `a` | Identifies the element as a button. Accessible name for the button is defined by the text content of the element or by adding `aria-label`. |
-|          | `tabindex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it doesn't have a `href` attribute.                          |
+|          | `tabIndex="0"`         | `div`, `a` | Includes the element in the `Tab` sequence. Needed on the `a` element because it doesn't have a `href` attribute.                          |
 |          | `aria-pressed="false"` | `a`        | Identifies the button as a toggle button. Indicates the toggle button isn’t pressed.                                                       |
 |          | `aria-pressed="true"`  | `a`        | Identifies the button as a toggle button. Indicates the toggle button is pressed.                                                           |
 
