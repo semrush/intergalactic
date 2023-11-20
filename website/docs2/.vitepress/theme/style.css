@@ -473,7 +473,6 @@ img {
   padding-left: 4px;
   padding-right: 4px;
   line-height: normal;
-  isolation: isolate;
   overflow: auto;
 }
 
@@ -510,8 +509,6 @@ img {
 
 .open-codesandbox {
   color: white;
-  position: absolute;
-  top: 0;
   right: 64px;
   direction: ltr;
   position: absolute;
