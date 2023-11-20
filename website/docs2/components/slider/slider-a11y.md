@@ -28,7 +28,7 @@ Table: Roles and attributes
 | Role     | Attribute                 | Element | Usage                                                                                                                                                          |
 | -------- | ------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `slider` |                           | `div` | Identifies the element as a slider. Set on the `div` that represents as the movable thumb because it is the operable element that represents the slider value. |
-|          | `tabindex="0"` | `div` | Includes the slider thumb in the page `tab` sequence.                                                                                                          |
+|          | `tabIndex="0"` | `div` | Includes the slider thumb in the page `tab` sequence.                                                                                                          |
 |          | `aria-valuemax="255"` | `div` | Specifies the maximum value of the slider.                                                                                                                     |
 |          | `aria-valuemin="0"` | `div` | Specifies the minimum value of the slider.                                                                                                                     |
 |          | `aria-valuenow="NUMBER"` | `div` | Indicates the current value of the slider.                                                                                                                     |
