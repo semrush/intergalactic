@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.17.1] - 2023-11-20
+
+### Changed
+
+- Removed animation from sort icon.
+
 ## [4.17.0] - 2023-11-13
 
 ### Changed
