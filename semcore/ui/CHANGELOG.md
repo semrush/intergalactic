@@ -1,3 +1,9 @@
+## [15.35.2] - 2023-11-20
+
+### @semcore/data-table
+
+- **Changed** Removed animation from sort icon.
+
 ## [15.35.1] - 2023-11-14
 
 ### @semcore/button

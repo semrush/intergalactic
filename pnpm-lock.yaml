@@ -2706,7 +2706,7 @@ importers:
         specifier: 3.18.3
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.17.0
+        specifier: 4.17.1-prerelease.1
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.16.1
