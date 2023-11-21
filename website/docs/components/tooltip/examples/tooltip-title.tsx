@@ -6,7 +6,7 @@ import Link from '@semcore/ui/link';
 export default () => (
   <Flex>
     <Box m='auto' p={5}>
-      <Tooltip title='Hello, stranger 😉'>
+      <Tooltip title='Hello, stranger'>
         <Link>Trigger</Link>
       </Tooltip>
     </Box>

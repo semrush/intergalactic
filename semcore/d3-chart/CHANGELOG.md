@@ -2,6 +2,47 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.18.3] - 2023-11-13
+
+### Fixed
+
+- Import path in `LegendItem`.
+
+## [3.18.2] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.9.1 ~> 5.9.2]).
+
+## [3.18.1] - 2023-11-08
+
+### Fixed
+
+- Charts exporting to image.
+
+## [3.18.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/animation` [2.9.0 ~> 2.10.0], `@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
+## [3.17.0] - 2023-10-27
+
+### Added
+
+- `ChartLegend` component.
+
+## [3.16.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for `color` props.
+
+### Changed
+
+- Default color of grouped charts (e.g for pie chart) are different by default.
+- Default text color is based on inversed and processed background color.
+
 ## [3.15.2] - 2023-10-24
 
 ### Changed

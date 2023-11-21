@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 A **bubble chart** visualizes relationships between data categories using proportions, colors, and positioning on a coordinate axis. This chart type helps you analyze patterns between datasets.
@@ -64,8 +66,8 @@ If you need captions for bubbles (in addition to the legend), show captions to t
 
 Show the following values in the tooltip for this chart type:
 
-- the value for the point on the X axis;
-- the value for the point on the Y axis.
+- the value for the point on the X-axis;
+- the value for the point on the Y-axis.
 - sometimes it is necessary to show a third value for a bubble, which affects its size (this may be the difference between the axes, or there may be a different value).
 
 **In the tooltip, focus on values rather than axis names or data categories.**

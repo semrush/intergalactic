@@ -14,7 +14,7 @@ fileSource: tab-line
 | `Tab`         | When focus moves into the tab list, places focus on the active `tab` element. When the tab list contains the focus, moves focus to the next element in the `Tab` sequence, which is the `tabpanel` element. |
 | `Right Arrow` | Moves focus to the next tab. If focus is on the last tab, moves focus to the first tab.                                                                                                                     |
 | `Left Arrow`  | Moves focus to the previous tab. If focus is on the first tab, moves focus to the last tab.                                                                                                                 |
-| `Space`, `Enter`       | Activates focused tab.                    |
+| `Enter`, `Space`       | Activates focused tab.                    |
 
 @## Considerations for developers
 
@@ -41,7 +41,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 |          | `aria-controls="IDREF"`   | `button` | Refers to the `tabpanel` element associated with the tab.                                                                                                                                                                                                                                                                                                                                                                            |
 | `tabpanel` |                           | `div`    | Indicates the element serves as a container for tab panel content. Is hidden unless its associated `tab` control is activated.                                                                                                                                                                                                                                                                                                       |
 |          | `aria-labelledby="IDREF"` | `div`    | Refers to the `tab` element that controls the panel. Provides an accessible name for the tab panel.                                                                                                                                                                                                                                                                                                                                  |
-|          | `tabindex="0"`            | `div`    | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if there are panels that don’t contain a focusable element.                                                                                                                                                                                                                                  |
+|          | `tabIndex="0"`            | `div`    | Puts the `tabpanel` in the page `Tab` sequence. Facilitates movement to panel content for assistive technology users. Especially helpful if there are panels that don’t contain a focusable element.                                                                                                                                                                                                                                  |
 
 @## Resources
 

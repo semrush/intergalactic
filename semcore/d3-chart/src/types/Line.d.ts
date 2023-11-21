@@ -11,8 +11,7 @@ export type LineProps = Context & {
   x?: string;
   /** Field name from `data` array item for the YAxis */
   y?: string;
-  /** Line color
-   * @default '#50aef4'*/
+  /** Line color */
   color?: string;
   /** Element hide property */
   hide?: boolean;
@@ -61,13 +60,18 @@ export type LineNullProps = Context & {
 
 export type LineAreaProps = Omit<LineProps, 'transparent'> & {
   /**
-   * Field name from `data` array for y0 point by the YAxis for the Area
+   * Field name from `data` (or from `area`, if passed) array for y0 point by the YAxis for the Area
    */
   y0: string;
   /**
-   * Field name from `data` array for y1 point by the YAxis for the Area
+   * Field name from `data` (or from `area`, if passed) array for y1 point by the YAxis for the Area
    */
   y1: string;
+
+  /**
+   * Optional data for render area
+   */
+  area?: Array<{ [key: string]: number }>;
 };
 
 declare const Line: IntergalacticD3Component<'line', LineProps, Context> & {

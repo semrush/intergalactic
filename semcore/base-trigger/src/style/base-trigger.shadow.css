@@ -58,7 +58,8 @@ SBaseTrigger {
 SBaseTrigger[disabled] {
   opacity: var(--intergalactic-disabled-opacity, 0.3);
   cursor: default;
-  pointer-events: none; /* Disable link interactions */
+  /* Disable link interactions */
+  pointer-events: none;
 }
 
 SInner {
@@ -160,11 +161,6 @@ SBaseTrigger[neighborLocation='left'] {
 SText[display-placeholder] {
   color: var(--intergalactic-text-placeholder, #8a8e9b);
 }
-
-SBaseTrigger[state='normal'] {
-  border-color: var(--intergalactic-border-primary, #c4c7cf);
-}
-
 
 SBaseTrigger[state='valid'] {
   border-color: var(--intergalactic-border-success-active, #007c65);

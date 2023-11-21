@@ -1,0 +1,19 @@
+SLegendTable[columns-count] {
+  font-variant-numeric: tabular-nums;
+  display: grid;
+  grid-template-columns: auto 0.2fr 0.2fr;
+  align-items: center;
+  height: fit-content;
+  grid-column-gap: 16px;
+  grid-row-gap: 8px;
+}
+
+SColumnItem[size='l'] {
+  font-size: var(--intergalactic-fs-300, 16px);
+  text-align: right;
+}
+
+SColumnItem[size='m'] {
+  font-size: var(--intergalactic-fs-200, 14px);
+  text-align: right;
+}

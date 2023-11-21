@@ -24,7 +24,7 @@ export default class Demo extends React.Component {
         <Modal visible={visible} closable={false} onClose={this.handleClose}>
           <Modal.Overlay style={overlayStyles}>
             <Modal.Window wMax='400px' px={5} py={2.5}>
-              <Modal.Close style={closeStyles}>🦄</Modal.Close>
+              <Modal.Close style={closeStyles}>x</Modal.Close>
               <h1>Lorem Title</h1>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, autem blanditiis

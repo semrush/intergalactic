@@ -4,6 +4,7 @@ import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/v
 import { render, fireEvent, cleanup } from '@semcore/testing-utils/testing-library';
 
 import SidePanel from '../src';
+import Portal from '@semcore/portal/src';
 
 describe('SidePanel', () => {
   beforeEach(cleanup);
@@ -187,5 +188,23 @@ describe('SidePanel', () => {
         { selector: 'body', width: 320, height: 100, actions: { hover: '#back' } },
       ),
     ).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('Should support ignorePortalsStacking prop', async ({ expect }) => {
+    const component = render(
+      <Portal>
+        <SidePanel visible data-testid={'inP'}>
+          Content in portal
+          <SidePanel ignorePortalsStacking visible data-testid={'outP'}>
+            Content in body
+          </SidePanel>
+        </SidePanel>
+      </Portal>,
+    );
+
+    // 5 because: border-focus (before + after), empty div, div with `Content in portal`
+    // and div with `Content in body` should be in body too.
+    // Without `ignorePortalsStacking`, it'll be in the first `SidePanel`.
+    expect(document.body.children).toHaveLength(5);
   });
 });

@@ -8,10 +8,6 @@ Welcome to a series of quick and convenient guides to help you get started with 
 
 @embedded_video https://www.loom.com/share/573d5e8c9f4444ffaef34fd02b0b848e
 
-<!-- ### Intergalactic Design System principles
-
-@embedded_video https://www.loom.com/share/0e14e413ea314afda211d3845cc845f2 -->
-
 @## How to contribute?
 
 If you're interested in contributing to the Intergalactic Design System, check out this video on how to get involved.
@@ -29,8 +25,6 @@ The core principles guiding the development of the Semrush interfaces are the fo
 1. The main purpose of the interface is to assist the user, and not to be clever or look cool.
 2. Less is more. Keep things simple, and don't overthink it.
 3. Data is more important than anything else in the interface.
-
-<!-- See [Principles](/core-principles/principles/) if you want to dive deeper and learn more about them. -->
 
 @## Design tokens
 
@@ -81,7 +75,7 @@ Check out [Data visualization](/data-display/d3-chart) for a detailed guideline 
 
 Tables are crucial components of our product interfaces, with primary tables offering various functionalities and secondary tables used to visualize smaller datasets.
 
-Because of the large number of use cases and edge states we have separate guidelines for [Table principles](/table-group/table/), [Table controls](/table-group/table-controls/) and [Table states](/table-group/table-states/). We highly recommend you give all of them a look.
+Because of the large number of use cases and edge states we have separate guidelines for [DataTable](/table-group/data-table/), [Table controls](/table-group/table-controls/) and [Table states](/table-group/table-states/). We highly recommend you give all of them a look.
 
 @## Resources
 

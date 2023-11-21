@@ -71,7 +71,13 @@ const Filter = ({ closable, onClose, id, name, ...props }) => (
       </Flex>
     </Flex>
     {closable ? (
-      <TrashM my={2} color='stone' interactive aria-label={`Remove ${name}`} onClick={onClose} />
+      <TrashM
+        my={2}
+        color='icon-secondary-neutral'
+        interactive
+        aria-label={`Remove ${name}`}
+        onClick={onClose}
+      />
     ) : null}
   </Flex>
 );

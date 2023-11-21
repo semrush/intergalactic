@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Bar chart** visualizes distribution of values by category for value comparison. A bar chart can be [vertical](/data-display/bar-chart/) or horizontal.

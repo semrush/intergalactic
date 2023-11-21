@@ -1,7 +1,7 @@
 import semver from 'semver';
 import { ChangelogChange } from '@semcore/changelog-handler';
 import { Package } from './collectPackages';
-import { log, normalizeSemver, prerelaseSuffix } from './utils';
+import { log, normalizeSemver, prerelaseSuffix, prereleaseBaseIndex } from './utils';
 import dayjs from 'dayjs';
 import { reversedTopologicalSort } from './reversedTolopologicalSort';
 
@@ -68,14 +68,11 @@ export const makeVersionPatches = (packages: Package[]) => {
 
     const diff = semver.diff(newVersion, lastChangelog.version);
     if (diff?.startsWith('pre')) {
-      lastChangelog.version = semver.inc(
-        lastChangelog.version,
-        'prerelease' as semver.ReleaseType,
-        undefined,
-        prerelaseSuffix,
-      )!;
+      lastChangelog.version = semver
+        .inc(lastChangelog.version, 'prerelease' as semver.ReleaseType, undefined, prerelaseSuffix)!
+        .replace(`-${prerelaseSuffix}.${0}`, `-${prerelaseSuffix}.${prereleaseBaseIndex}`);
     } else if (!lastChangelog.version.includes(`-${prerelaseSuffix}.`)) {
-      lastChangelog.version += `-${prerelaseSuffix}.0`;
+      lastChangelog.version += `-${prerelaseSuffix}.${prereleaseBaseIndex}`;
     }
     if (lastChangelog.changes[0]) {
       lastChangelog.changes[0].version = lastChangelog.version;
@@ -156,12 +153,9 @@ export const makeVersionPatches = (packages: Package[]) => {
           ? packageFile.currentVersion
           : packageFile.lastPublishedVersion;
 
-        const version = semver.inc(
-          versionBase,
-          updateType || updateTypeFallback,
-          undefined,
-          updateIdentifier,
-        );
+        const version = semver
+          .inc(versionBase, updateType || updateTypeFallback, undefined, updateIdentifier)!
+          .replace(`-${prerelaseSuffix}.${0}`, `-${prerelaseSuffix}.${prereleaseBaseIndex}`);
         const updateTypeLabel = updateType || updateTypeFallback;
         const descriptionBefore = `Version ${updateTypeLabel} update due to children dependencies update (`;
         const updatedDependenciesList = updatedDependencies

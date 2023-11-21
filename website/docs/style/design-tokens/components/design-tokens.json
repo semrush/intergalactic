@@ -24,6 +24,7 @@
       "side-panel",
       "slider",
       "switch",
+      "tag",
       "wizard"
     ]
   },
@@ -526,7 +527,7 @@
     "rawValue": "{blue.400}",
     "computedValue": "#008ff8",
     "description": "Link text with font-size ≥20px.",
-    "components": []
+    "components": ["d3-chart"]
   },
   {
     "name": "--intergalactic-text-large-info-hover-active",
@@ -720,7 +721,7 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Inverted version of the neutral secondary border. Use it for borders on the dark or color background.",
-    "components": ["tag"]
+    "components": []
   },
   {
     "name": "--intergalactic-border-tooltip-invert",
@@ -1060,9 +1061,9 @@
   {
     "name": "--intergalactic-icon-primary-neutral-hover-active",
     "type": "color",
-    "rawValue": "{gray.600}",
-    "computedValue": "#484a54",
-    "description": "Hover and active (selected) states of the primary neutral icon.",
+    "rawValue": "#565861",
+    "computedValue": "#565861",
+    "description": "Gray background color for the hover and active states of the primary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-500 color.",
     "components": ["fullscreen-modal", "notice"]
   },
   {
@@ -1076,9 +1077,9 @@
   {
     "name": "--intergalactic-icon-primary-info-hover-active",
     "type": "color",
-    "rawValue": "{blue.600}",
-    "computedValue": "#044792",
-    "description": "Hover and active (selected) states of the primary link-lookalike icon.",
+    "rawValue": "#0358A1",
+    "computedValue": "#0358A1",
+    "description": "Blue background color for the hover and active states of the primary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-500 color.",
     "components": []
   },
   {
@@ -1086,15 +1087,15 @@
     "type": "color",
     "rawValue": "{green.400}",
     "computedValue": "#009f81",
-    "description": "Primary successful icon.",
+    "description": "Primary success icon.",
     "components": ["notice"]
   },
   {
     "name": "--intergalactic-icon-primary-success-hover-active",
     "type": "color",
-    "rawValue": "{green.500}",
-    "computedValue": "#007c65",
-    "description": "Hover and active (selected) states of the primary successful icon.",
+    "rawValue": "#037E68",
+    "computedValue": "#037E68",
+    "description": "Green background color for the hover and active states of the primary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-500 color.",
     "components": ["notice"]
   },
   {
@@ -1108,9 +1109,9 @@
   {
     "name": "--intergalactic-icon-primary-critical-hover-active",
     "type": "color",
-    "rawValue": "{red.500}",
-    "computedValue": "#d1002f",
-    "description": "Hover and active (selected) states of the primary critical icon.",
+    "rawValue": "#CC3A42",
+    "computedValue": "#CC3A42",
+    "description": "Red background color for the hover and active states of the primary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-500 color.",
     "components": ["notice"]
   },
   {
@@ -1124,9 +1125,9 @@
   {
     "name": "--intergalactic-icon-primary-warning-hover-active",
     "type": "color",
-    "rawValue": "{orange.500}",
-    "computedValue": "#c33909",
-    "description": "Hover and active (selected) states of the primary warning icon.",
+    "rawValue": "#CC5024",
+    "computedValue": "#CC5024",
+    "description": "Orange background color for the hover and active states of the primary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-500 color.",
     "components": ["button", "notice"]
   },
   {
@@ -1168,9 +1169,9 @@
   {
     "name": "--intergalactic-icon-secondary-neutral-hover-active",
     "type": "color",
-    "rawValue": "{gray.400}",
-    "computedValue": "#8a8e9b",
-    "description": "Hover and active (selected) states of the secondary neutral icon.",
+    "rawValue": "#878992",
+    "computedValue": "#878992",
+    "description": "Gray background color for the hover and active states of the secondary neutral icon. It’s created using a CSS filter with a brightness(0.8), applied to the gray-300 color.",
     "components": [
       "data-table",
       "fullscreen-modal",
@@ -1192,9 +1193,9 @@
   {
     "name": "--intergalactic-icon-secondary-info-hover-active",
     "type": "color",
-    "rawValue": "{blue.400}",
-    "computedValue": "#008ff8",
-    "description": "Hover and active (selected) states of the secondary link-lookalike icon.",
+    "rawValue": "#2290CC",
+    "computedValue": "#2290CC",
+    "description": "Blue background color for the hover and active states of the secondary link-lookalike icon. It’s created using a CSS filter with a brightness(0.8), applied to the blue-300 color.",
     "components": []
   },
   {
@@ -1202,15 +1203,15 @@
     "type": "color",
     "rawValue": "{green.300}",
     "computedValue": "#00c192",
-    "description": "Secondary successful icon.",
+    "description": "Secondary success icon.",
     "components": ["inline-input"]
   },
   {
     "name": "--intergalactic-icon-secondary-success-hover-active",
     "type": "color",
-    "rawValue": "{green.400}",
-    "computedValue": "#009f81",
-    "description": "Hover and active (selected) states of the secondary successful icon.",
+    "rawValue": "#049B75",
+    "computedValue": "#049B75",
+    "description": "Green background color for the hover and active states of the secondary success icon. It’s created using a CSS filter with a brightness(0.8), applied to the green-300 color.",
     "components": ["inline-input"]
   },
   {
@@ -1224,9 +1225,9 @@
   {
     "name": "--intergalactic-icon-secondary-critical-hover-active",
     "type": "color",
-    "rawValue": "{red.400}",
-    "computedValue": "#ff4953",
-    "description": "Hover and active (selected) states of the secondary critical icon.",
+    "rawValue": "#CC6C6B",
+    "computedValue": "#CC6C6B",
+    "description": "Red background color for the hover and active states of the secondary critical icon. It’s created using a CSS filter with a brightness(0.8), applied to the red-300 color.",
     "components": []
   },
   {
@@ -1240,9 +1241,9 @@
   {
     "name": "--intergalactic-icon-secondary-warning-hover-active",
     "type": "color",
-    "rawValue": "{orange.400}",
-    "computedValue": "#ff642d",
-    "description": "Hover and active (selected) states of the secondary warning icon.",
+    "rawValue": "#CC7036",
+    "computedValue": "#CC7036",
+    "description": "Orange background color for the hover and active states of the secondary warning icon. It’s created using a CSS filter with a brightness(0.8), applied to the orange-300 color.",
     "components": []
   },
   {
@@ -1880,6 +1881,7 @@
       "button",
       "card",
       "checkbox",
+      "d3-chart",
       "dropdown-menu",
       "errors",
       "format-text",
@@ -1904,6 +1906,7 @@
       "base-trigger",
       "button",
       "checkbox",
+      "d3-chart",
       "data-table",
       "dropdown-menu",
       "format-text",
@@ -2037,6 +2040,7 @@
       "card",
       "checkbox",
       "counter",
+      "d3-chart",
       "data-table",
       "date-picker",
       "dropdown-menu",
@@ -2073,6 +2077,7 @@
       "button",
       "card",
       "checkbox",
+      "d3-chart",
       "dropdown-menu",
       "errors",
       "format-text",
@@ -2787,113 +2792,113 @@
   {
     "name": "--intergalactic-tag-primary-gray-normal",
     "type": "color",
-    "rawValue": "{gray.100}, 0.5",
-    "computedValue": "rgba(224, 225, 233, 0.5)",
-    "description": "Primary gray tag.",
+    "rawValue": "#ECEDF0",
+    "computedValue": "#ECEDF0",
+    "description": "Gray background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-gray-hover-active",
     "type": "color",
-    "rawValue": "{gray.100}",
-    "computedValue": "#e0e1e9",
-    "description": "Hover and active (selected) state of the primary gray tag.",
+    "rawValue": "#E3E4E9",
+    "computedValue": "#E3E4E9",
+    "description": "Gray background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the gray-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-blue-normal",
     "type": "color",
-    "rawValue": "{blue.100}, 0.5",
-    "computedValue": "rgba(196, 229, 254, 0.5)",
-    "description": "Primary blue tag.",
+    "rawValue": "#D0EEFF",
+    "computedValue": "#D0EEFF",
+    "description": "Blue background color for primary tag. It’s built with CSS filter brightness(150%) that was applied to blue-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-blue-hover-active",
     "type": "color",
-    "rawValue": "{blue.100}",
-    "computedValue": "#c4e5fe",
-    "description": "Hover and active (selected) state of the primary blue tag.",
+    "rawValue": "#B7E4FF",
+    "computedValue": "#B7E4FF",
+    "description": "Blue background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the blue-500 color with 0.3 opacity on the white background underneath. ",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-green-normal",
     "type": "color",
-    "rawValue": "{green.100}, 0.5",
-    "computedValue": "rgba(158, 242, 201, 0.5)",
-    "description": "Primary green tag.",
+    "rawValue": "#CFF1EA",
+    "computedValue": "#CFF1EA",
+    "description": "Green background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-green-hover-active",
     "type": "color",
-    "rawValue": "{green.100}",
-    "computedValue": "#9ef2c9",
-    "description": "Hover and active (selected) state of the primary green tag.",
+    "rawValue": "#B7EAE0",
+    "computedValue": "#B7EAE0",
+    "description": "Green background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the green-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-orange-normal",
     "type": "color",
-    "rawValue": "{orange.100}, 0.5",
-    "computedValue": "rgba(255, 220, 162, 0.5)",
-    "description": "Primary orange tag.",
+    "rawValue": "#FFDDD2",
+    "computedValue": "#FFDDD2",
+    "description": "Orange background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-orange-hover-active",
     "type": "color",
-    "rawValue": "{orange.100}",
-    "computedValue": "#ffdca2",
-    "description": "Hover and active (selected) state of the primary orange tag.",
+    "rawValue": "#FFCCBB",
+    "computedValue": "#FFCCBB",
+    "description": "Orange background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the orange-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-red-normal",
     "type": "color",
-    "rawValue": "{red.100}, 0.5",
-    "computedValue": "rgba(255, 215, 223, 0.5)",
-    "description": "Primary red tag.",
+    "rawValue": "#FFCEDC",
+    "computedValue": "#FFCEDC",
+    "description": "Red background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-red-hover-active",
     "type": "color",
-    "rawValue": "{red.100}",
-    "computedValue": "#ffd7df",
-    "description": "Hover and active (selected) state of the primary red tag.",
+    "rawValue": "#FFB6CA",
+    "computedValue": "#FFB6CA",
+    "description": "Red background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the red-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-violet-normal",
     "type": "color",
-    "rawValue": "{violet.100}, 0.5",
-    "computedValue": "rgba(237, 217, 255, 0.5)",
-    "description": "Primary violet tag.",
+    "rawValue": "#F4E3FF",
+    "computedValue": "#F4E3FF",
+    "description": "Violet background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-violet-hover-active",
     "type": "color",
-    "rawValue": "{violet.100}",
-    "computedValue": "#edd9ff",
-    "description": "Hover and active (selected) state of the primary violet tag.",
+    "rawValue": "#EFD5FF",
+    "computedValue": "#EFD5FF",
+    "description": "Violet background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the violet-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-yellow-normal",
     "type": "color",
-    "rawValue": "{yellow.100}, 0.5",
-    "computedValue": "rgba(252, 224, 129, 0.5)",
-    "description": "Primary yellow tag.",
+    "rawValue": "#FEE6D1",
+    "computedValue": "#FEE6D1",
+    "description": "Yellow background color for the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.2 opacity on the white background underneath.",
     "components": []
   },
   {
     "name": "--intergalactic-tag-primary-yellow-hover-active",
     "type": "color",
-    "rawValue": "{yellow.100}",
-    "computedValue": "#fce081",
-    "description": "Hover and active (selected) state of the primary yellow tag.",
+    "rawValue": "#FEDAB9",
+    "computedValue": "#FEDAB9",
+    "description": "Yellow background color for the hover and active states of the primary tag. It’s created using a CSS filter with a brightness of 150%, applied to the yellow-500 color with 0.3 opacity on the white background underneath.",
     "components": []
   },
   {
@@ -2910,7 +2915,7 @@
     "rawValue": "{gray.white}, 0.3",
     "computedValue": "rgba(255, 255, 255, 0.3)",
     "description": "Hover and active (selected) state of the primary white tag.",
-    "components": ["tag"]
+    "components": []
   },
   {
     "name": "--intergalactic-tag-primary-gray-text",
@@ -2990,7 +2995,7 @@
     "rawValue": "{gray.50}",
     "computedValue": "#f4f5f9",
     "description": "Hover and active (selected) states of the background color for the default secondary tag.",
-    "components": ["tag"]
+    "components": []
   },
   {
     "name": "--intergalactic-tag-secondary-white-normal",

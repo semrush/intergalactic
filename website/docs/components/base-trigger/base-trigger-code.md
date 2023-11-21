@@ -9,7 +9,7 @@ fileSource: select
 
 @## FilterTrigger
 
-Check examples in the [FilterTrigger documentation](/components/filter-trigger/filter-trigger-code/).
+Check examples in the [FilterTrigger documentation](/components/filter-trigger/filter-trigger-code).
 
 @## LinkTrigger
 

@@ -15,11 +15,11 @@ export default () => {
   const [order, setOrder] = React.useState(0);
 
   return (
-    <Flex alignItems='center' direction='column'>
+    <Flex alignItems='flex-start' direction='column'>
       <Plot height={300} width={400} data={data}>
         <Venn orientation={orientations[orientation]} orientationOrder={orders[order]}>
           <Venn.Circle dataKey='F' name='F' />
-          <Venn.Circle dataKey='S' name='S' color={colors['blue-03']} />
+          <Venn.Circle dataKey='S' name='S' />
           <Venn.Intersection dataKey='F/S' name='F/S' />
         </Venn>
       </Plot>

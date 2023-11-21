@@ -2,6 +2,42 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.16.0] - 2023-11-13
+
+### Added
+
+- New `Unsplash` icon.
+
+## [4.15.0] - 2023-11-10
+
+### Added
+
+- New icons for marking AI features: `AskAI`, `ChatAI`, `StoriesAI`, `SummaryAI`.
+
+## [4.14.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/flex-box` [5.10.0 ~> 5.10.1], `@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [4.14.0] - 2023-11-03
+
+### Added
+
+- New `AttacheCase` icon.
+
+## [4.13.0] - 2023-10-26
+
+### Added
+
+- Design tokens resolving for `color` prop.
+
+## [4.12.0] - 2023-10-09
+
+### Changed
+
+- Made `Twitter` and `TwitterCarousel` icons bolder.
+
 ## [4.11.2] - 2023-10-24
 
 ### Changed

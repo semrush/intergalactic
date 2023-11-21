@@ -20,7 +20,10 @@
       "mailer",
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
-      "website/ts.json"
+      "website/ts.json",
+      "website/docs2/.vitepress/dist",
+      "website/docs2/.vitepress/cache",
+      "./tools/playground/examples/**"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -50,6 +53,8 @@
       "./tools/icon-transform-svg/__tests__",
       "**/lcov-report/**",
       "website/ts.json",
+      "website/docs2/.vitepress/dist",
+      "website/docs2/.vitepress/cache",
       "./tools/playground/examples/**"
     ],
     "rules": {
@@ -84,7 +89,11 @@
         "noBannedTypes": "off",
         "noUselessThisAlias": "off",
         "noStaticOnlyClass": "off",
-        "noUselessFragments": "off"
+        "noUselessFragments": "off",
+        "noForEach": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
       }
     }
   }

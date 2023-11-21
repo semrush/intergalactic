@@ -6,6 +6,7 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import { eventToPoint, uniqueId } from './utils';
 import { PlotA11yModule } from './a11y/PlotA11yModule';
 import { makeDataHintsHandlers, makeDataHintsContainer } from './a11y/hints';
+import colorResolverEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 
 import style from './style/plot.shadow.css';
 
@@ -23,13 +24,13 @@ class PlotRoot extends Component {
     height: 0,
   });
 
-  static enhance = [keyboardFocusEnhance()];
+  static enhance = [keyboardFocusEnhance(), colorResolverEnhance()];
 
   plotId = uniqueId();
 
   rootRef = React.createRef();
 
-  dataStructureHints = makeDataHintsContainer();
+  dataStructureHints = this.props.dataHints || makeDataHintsContainer();
   dataHintsHandler = makeDataHintsHandlers(this.dataStructureHints);
 
   handlerMouseMove = (e) => {
@@ -56,7 +57,7 @@ class PlotRoot extends Component {
   };
 
   setContext() {
-    const { scale, data, width, height, locale } = this.asProps;
+    const { scale, data, width, height, locale, resolveColor } = this.asProps;
 
     const yScaleDomain = scale?.[1]?.domain?.();
     if (yScaleDomain?.length && data?.length) {
@@ -75,6 +76,7 @@ class PlotRoot extends Component {
         eventEmitter: this.eventEmitter,
         rootRef: this.rootRef,
         dataHintsHandler: this.dataHintsHandler,
+        resolveColor,
       },
     };
   }

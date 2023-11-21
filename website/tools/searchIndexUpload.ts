@@ -26,14 +26,14 @@ if (!process.env.ALGOLIA_SECRET_KEY) {
     key.substring(key.length - 5);
 
   console.info(
-    `Publishing algolias search with application id "${CONFIG.ALGOLIA_APP}" and secret key "${escapedKey}"`,
+    `Publishing algolias search with application id "${CONFIG.appName}" and secret key "${escapedKey}"`,
   );
 }
 
-const client = algoliasearch(CONFIG.ALGOLIA_APP, process.env.ALGOLIA_SECRET_KEY);
-const index = client.initIndex(CONFIG.ALGOLIA_INDEX);
-const indexIcons = client.initIndex(CONFIG.ALGOLIA_INDEX_ICONS);
-const indexIllustrations = client.initIndex(CONFIG.ALGOLIA_INDEX_ILLUSTRATIONS);
+const client = algoliasearch(CONFIG.appName, process.env.ALGOLIA_SECRET_KEY);
+const index = client.initIndex(CONFIG.mainSearchIndexName);
+const indexIcons = client.initIndex(CONFIG.iconsSearchIndexName);
+const indexIllustrations = client.initIndex(CONFIG.illustrationsSearchIndexName);
 
 const { navigationTree, existingRoutes } = await buildNavigation(docsDir);
 
@@ -45,6 +45,7 @@ const objects: {
   disabled: boolean;
   heading: boolean;
   category: string;
+  hierarchy: {};
 }[] = [];
 
 let objectId = 1;
@@ -62,6 +63,7 @@ const traverse = async (node, parentNode?) => {
       disabled: node.metadata.disabled ?? false,
       heading: false,
       category: parentNode?.title,
+      hierarchy: {},
     });
   }
 
@@ -75,6 +77,7 @@ const traverse = async (node, parentNode?) => {
         disabled: node.metadata.disabled ?? false,
         heading: true,
         category: parentNode?.title,
+        hierarchy: {},
       });
     }
   }

@@ -26,7 +26,7 @@ SClose {
   color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
 
   &:hover {
-    color: var(--intergalactic-icon-secondary-neutral-hover-active, #8a8e9b);
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
   }
 }
 
@@ -45,7 +45,7 @@ SBack {
   outline: none;
 
   &:hover {
-    color: var(--intergalactic-icon-primary-neutral-hover-active, #484a54);
+    color: var(--intergalactic-icon-primary-neutral-hover-active, #565861);
   }
 }
 

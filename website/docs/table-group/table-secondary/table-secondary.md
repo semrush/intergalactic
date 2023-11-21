@@ -23,6 +23,6 @@ The cell in the primary table, whether it is a header or a row, has 8px padding.
 
 @## Row states
 
-See more information in the common [Table principles](/table-group/table/#a1c3dd) guide.
+For more information, refer to the general [DataTable](/table-group/data-table/#a1c3dd) guide.
 
 @page table-secondary-code

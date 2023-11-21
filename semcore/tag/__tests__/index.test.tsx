@@ -24,7 +24,15 @@ describe('Tag', () => {
   const themes = ['primary', 'secondary'] as const;
 
   test.concurrent('Renders correctly', async ({ task }) => {
-    const component = <Tag>Tag</Tag>;
+    const component = themes.flatMap((theme) =>
+      colors.map((color) => (
+        <Tag key={`${theme}-${color}`} theme={theme} color={color}>
+          <Tag.Text>Tag name</Tag.Text>
+          <Tag.Close />
+        </Tag>
+      )),
+    );
+
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 

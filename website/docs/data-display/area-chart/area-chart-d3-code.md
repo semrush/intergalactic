@@ -5,6 +5,10 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
+@## Basic usage
+
+@example base
+
 @## Area
 
 - You can draw a chart with areas using the `Area` component.
@@ -32,3 +36,7 @@ If exact values of specific point is not available, you can pass `interpolateVal
 > 🚨 Interpolation doesn't works with `StackedArea`.
 
 @example area-interpolation
+
+@## Legend
+
+@example legend

@@ -16,7 +16,7 @@ import Select from '@semcore/ui/select';
 
 @## Select.Trigger
 
-It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api/#buttontrigger).
+It is a wrap over the `<DropdownMenu.Trigger/>` component with default tag [ButtonTrigger](/components/base-trigger/base-trigger-api#buttontrigger).
 
 ```jsx
 import Select from '@semcore/ui/select';

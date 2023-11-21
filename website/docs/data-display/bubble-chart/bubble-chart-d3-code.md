@@ -5,6 +5,10 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
+@## Basic usage
+
+@example base
+
 @## Bubble chart
 
 @example bubble
@@ -18,3 +22,7 @@ If required, you can assign your own color to every circle in Bubble chart. For 
 @## Data loading
 
 @example skeleton-d3
+
+@## Legend
+
+@example legend

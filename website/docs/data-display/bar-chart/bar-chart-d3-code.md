@@ -5,6 +5,10 @@ fileSource: d3-chart
 
 > See core principles, concept description, API and changelog in the [Chart principles](/data-display/d3-chart/).
 
+@## Basic usage
+
+@example base
+
 @## Bar
 
 Use `scaleBand` and `scaleLinear` for creating bar charts. See [d3 Ordinal Scales](https://github.com/d3/d3-scale#ordinal-scales) for more information.
@@ -50,3 +54,7 @@ To combine multiple bars, use `<GroupBar/>` and `<GroupBar.Bar/>`.
 You can combine charts with each other. For example, to display a trend line on a bar chart.
 
 @example bar-trend
+
+@## Legend
+
+@example legend

@@ -6,6 +6,8 @@ tabName: Design
 
 > Basic data visualization rules are described in the [Chart principles](/data-display/d3-chart).
 
+@import playground
+
 @## Description
 
 **Radar chart** is a chart for displaying multivariate data in the form of a two-dimensional chart of three or more quantitative variables represented on axes starting from the same point.
@@ -99,7 +101,7 @@ Areas use the same color as the line, but with 20% opacity. Areas are enabled by
 
 ### Size
 
-Size can be set through the `width` and `height` properties ([check API](data-display/d3-chart/d3-chart-api/#plot)). Chart components don't have maximum and minimum size.
+Size can be set through the `width` and `height` properties ([check API](/data-display/d3-chart/d3-chart-api/#plot)). Chart components don't have maximum and minimum size.
 
 For a small radar chart, we recommend turning off scales, variables, labels, and data points to reduce visual noise. For example:
 

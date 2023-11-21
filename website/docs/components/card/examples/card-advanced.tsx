@@ -6,7 +6,7 @@ import Close from '@semcore/ui/icon/Close/m';
 import Select from '@semcore/ui/select';
 import { LinkTrigger } from '@semcore/ui/base-trigger';
 
-const tooltipContent = `Hey! Don't forget to place some useful info here 😏`;
+const tooltipContent = `Hey! Don't forget to place some useful info here`;
 const options = Array(6)
   .fill('')
   .map((_, index) => ({
@@ -26,7 +26,7 @@ export default () => (
           <Text size={200} color='#6C6E79' mr={2}>
             Info about data (optiona)
           </Text>
-          <Close color='stone' ml='auto' interactive aria-label='Close card' />
+          <Close color='icon-secondary-neutral' ml='auto' interactive aria-label='Close card' />
         </Flex>
       </Flex>
       <Card.Description tag='div'>
@@ -35,7 +35,7 @@ export default () => (
       </Card.Description>
     </Card.Header>
     <Card.Body>
-      <Text size={200}>Your awesome card content ✨</Text>
+      <Text size={200}>Your awesome card content</Text>
     </Card.Body>
   </Card>
 );

@@ -18,7 +18,7 @@ Color picker component provides basic support for keyboard and screen readers.
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
-| `Space`, `Enter` | Activates the selected color.                  |
+| `Enter`, `Space` | Activates the selected color.                  |
 | `Esc`            | Closes the dropdown.                           |
 
 ### Roles & attributes
@@ -56,7 +56,7 @@ See more accessibility recommendations in the common [Accessibility guide](/core
 | ---------------- | ---------------------------------------------- |
 | `Tab`            | Moves focus to the next focusable element.     |
 | `Shift + Tab`    | Moves focus to the previous focusable element. |
-| `Space`, `Enter` | Activates the selected color.                  |
+| `Enter`, `Space` | Activates the selected color.                  |
 | `Esc`            | Closes the dropdown.                           |
 
 @## Resources

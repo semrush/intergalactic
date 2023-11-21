@@ -67,7 +67,7 @@ By default, `<NeighborLocation/>` doesn't create an HTML wrapper, but you can pa
 
 @## Using a custom component
 
-You can apply <NeighborLocation/> to your components. You will need to use the component `<NeighborLocation.Detect/>`
+You can apply `<NeighborLocation/>` to your components. You will need to use the component `<NeighborLocation.Detect/>`
 and
 then the `neighborLocation` prop will come to your component.
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForkRef } from '../ref';
 import useEnhancedEffect from '../use/useEnhancedEffect';
-import { UnknownProperties, Intergalactic } from '@semcore/core';
+import { UnknownProperties } from '@semcore/core';
 
 /** @deprecated */
 export interface IWithAnimatedSizeEnhanceProps
@@ -50,7 +50,10 @@ function animatedSizeEnhance({
       const sizes: (number | undefined)[] = [];
       for (let i = 0; i < animateProps.length; i++) {
         sizes[i] = node.getBoundingClientRect()[animateProps[i]];
-        if (Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3) {
+        if (
+          Math.abs(lastSizesRef.current[i]! - sizes[i]!) < 3 ||
+          node.style.getPropertyValue(animateProps[i]).endsWith('%')
+        ) {
           lastSizesRef.current[i] = sizes[i];
           sizes[i] = undefined;
         }

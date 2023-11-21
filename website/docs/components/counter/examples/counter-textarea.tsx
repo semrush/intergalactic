@@ -19,7 +19,7 @@ export default () => (
           <ScreenReaderOnly>maximum</ScreenReaderOnly>
         </Counter>
       </Text>
-      <Text size={200} color='gray70' id='limited-text-field'>
+      <Text size={200} color='text-secondary' id='limited-text-field'>
         optional
       </Text>
     </Flex>

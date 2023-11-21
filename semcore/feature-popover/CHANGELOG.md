@@ -2,6 +2,48 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.0] - 2023-11-13
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.15.0 ~> 4.16.0]).
+
+## [4.14.1] - 2023-11-10
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/popper` [5.9.1 ~> 5.9.2]).
+
+## [4.14.0] - 2023-11-10
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.14.1 ~> 4.15.0]).
+
+## [4.13.1] - 2023-11-09
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.1 ~> 4.10.2], `@semcore/animation` [2.10.0 ~> 2.10.1], `@semcore/core` [2.9.0 ~> 2.9.1]).
+
+## [4.13.0] - 2023-11-06
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.9.0 ~> 4.10.1], `@semcore/icon` [4.13.0 ~> 4.14.0], `@semcore/animation` [2.9.0 ~> 2.10.0], `@semcore/core` [2.8.0 ~> 2.9.0]).
+
+## [4.12.0] - 2023-10-27
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.8.4 ~> 4.9.0], `@semcore/icon` [4.12.0 ~> 4.13.0], `@semcore/animation` [2.8.2 ~> 2.9.0], `@semcore/core` [2.7.7 ~> 2.8.0]).
+
+## [4.11.0] - 2023-10-26
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/icon` [4.11.2 ~> 4.12.0]).
+
 ## [4.10.3] - 2023-10-24
 
 ### Changed
