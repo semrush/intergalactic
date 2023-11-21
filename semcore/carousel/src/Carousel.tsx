@@ -57,6 +57,7 @@ class CarouselRoot extends Component<
   static style = style;
   static enhance = Object.values(enhance);
 
+  defaultItemsCount = 0;
   refContainer = React.createRef<HTMLElement>();
   refModalContainer = React.createRef<HTMLElement>();
   _touchStartCoord = -1;
@@ -78,10 +79,10 @@ class CarouselRoot extends Component<
   }
 
   componentDidMount() {
-    const { selectedIndex, items } = this.state;
+    const { selectedIndex } = this.state;
 
     if (selectedIndex !== 0) {
-      if (selectedIndex < 0 || selectedIndex >= items.length) {
+      if (selectedIndex < 0 || selectedIndex >= this.defaultItemsCount) {
         logger.warn(
           true,
           `You couldn't use value for the \`index\` or \`defaultIndex\` not from \`Item's\` length range.`,
@@ -109,7 +110,7 @@ class CarouselRoot extends Component<
   componentDidUpdate(prevProps: CarouselProps) {
     const { index } = this.asProps;
     if (prevProps.index !== index && this.isControlled && index !== undefined) {
-      this.setState({ selectedIndex: index });
+      this.setState({ selectedIndex: index }, () => this.transformContainer());
     }
   }
 
@@ -124,20 +125,19 @@ class CarouselRoot extends Component<
   };
 
   toggleItem = (item: CarouselItem, removeItem = false) => {
-    const { items, selectedIndex } = this.state;
-    if (removeItem) {
-      this.updateItems(items.filter((element) => element.node !== item.node));
-    } else {
-      this.setState((state) => {
-        return {
-          items: [...state.items, item],
-        };
-      });
-    }
-  };
+    this.setState((prevState) => {
+      const newItems = removeItem
+        ? prevState.items.filter((element) => element.node !== item.node)
+        : [...prevState.items, item];
 
-  updateItems = (items: CarouselItem[]) => {
-    this.setState(() => ({ items }));
+      return {
+        items: newItems,
+      };
+    });
+
+    if (!removeItem) {
+      this.defaultItemsCount++;
+    }
   };
 
   transformContainer = () => {
@@ -192,7 +192,7 @@ class CarouselRoot extends Component<
   };
 
   transformItem = (direction: 'left' | 'right') => {
-    const { bounded, step } = this.asProps;
+    const { bounded } = this.asProps;
     const { items, selectedIndex } = this.state;
     const maxIndexIndicator = items.length - 1;
 
@@ -212,7 +212,10 @@ class CarouselRoot extends Component<
         (prevState) => ({
           selectedIndex: prevState.selectedIndex + 1,
         }),
-        () => this.transformContainer(),
+        () => {
+          this.transformContainer();
+          this.handlers.index(this.state.selectedIndex);
+        },
       );
 
       return;
@@ -233,7 +236,10 @@ class CarouselRoot extends Component<
         (prevState) => ({
           selectedIndex: prevState.selectedIndex - 1,
         }),
-        () => this.transformContainer(),
+        () => {
+          this.transformContainer();
+          this.handlers.index(this.state.selectedIndex);
+        },
       );
 
       return;
@@ -400,46 +406,51 @@ class CarouselRoot extends Component<
     const { isOpenZoom } = this.state;
 
     return sstyled(styles)(
-        <Modal visible={isOpenZoom} onClose={this.handleToggleZoomModal} ghost={true} closable={!isSmall}>
-          <Flex direction={isSmall ? 'column' : 'row'}>
-            {!isSmall && (<Carousel.Prev inverted={true} />)}
-            <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
-              <SModalContainer
-                  render={Box}
-                  role='list'
-                  use:duration={`${duration}ms`}
-                  ref={this.refModalContainer}
-                  use:w={undefined}
-                  wMax={zoomWidth}
-              >
-                {ComponentItems.map((item, i) => {
-                  return (
-                      <Carousel.Item
-                          {...item.props}
-                          key={item.key}
-                          uid={uid}
-                          index={i}
-                          current={this.isSelected(i)}
-                          toggleItem={undefined}
-                          zoom={true}
-                          zoomOut={true}
-                          transform={this.isSelected(i) ? this.getTransform() : undefined}
-                      />
-                  );
-                })}
-              </SModalContainer>
-            </Box>
-            {isSmall ? (
-                <Flex justifyContent={'center'} mt={2}>
-                  <Carousel.Prev inverted={true} />
-                  <Carousel.Next inverted={true} />
-                </Flex>
-            ) : (
-                <Carousel.Next inverted={true} />
-            )}
-          </Flex>
-          {!isSmall && (<Carousel.Indicators inverted={true} />)}
-        </Modal>
+      <Modal
+        visible={isOpenZoom}
+        onClose={this.handleToggleZoomModal}
+        ghost={true}
+        closable={!isSmall}
+      >
+        <Flex direction={isSmall ? 'column' : 'row'}>
+          {!isSmall && <Carousel.Prev inverted={true} />}
+          <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
+            <SModalContainer
+              render={Box}
+              role='list'
+              use:duration={`${duration}ms`}
+              ref={this.refModalContainer}
+              use:w={undefined}
+              wMax={zoomWidth}
+            >
+              {ComponentItems.map((item, i) => {
+                return (
+                  <Carousel.Item
+                    {...item.props}
+                    key={item.key}
+                    uid={uid}
+                    index={i}
+                    current={this.isSelected(i)}
+                    toggleItem={undefined}
+                    zoom={true}
+                    zoomOut={true}
+                    transform={this.isSelected(i) ? this.getTransform() : undefined}
+                  />
+                );
+              })}
+            </SModalContainer>
+          </Box>
+          {isSmall ? (
+            <Flex justifyContent={'center'} mt={2}>
+              <Carousel.Prev inverted={true} />
+              <Carousel.Next inverted={true} />
+            </Flex>
+          ) : (
+            <Carousel.Next inverted={true} />
+          )}
+        </Flex>
+        {!isSmall && <Carousel.Indicators inverted={true} />}
+      </Modal>,
     );
   }
 
@@ -506,11 +517,11 @@ class CarouselRoot extends Component<
           <Children />
         )}
         {hasZoom && (
-            <BreakPoints>
-              <BreakPoints.Context.Consumer>
-                {(mediaIndex) => this.renderModal(isSmallScreen(mediaIndex), ComponentItems)}
-              </BreakPoints.Context.Consumer>
-            </BreakPoints>
+          <BreakPoints>
+            <BreakPoints.Context.Consumer>
+              {(mediaIndex) => this.renderModal(isSmallScreen(mediaIndex), ComponentItems)}
+            </BreakPoints.Context.Consumer>
+          </BreakPoints>
         )}
       </SCarousel>,
     );
@@ -524,37 +535,49 @@ const Container = (props: BoxProps & { duration?: number }) => {
   return sstyled(styles)(<SContainer render={Box} role='list' use:duration={`${duration}ms`} />);
 };
 
-const Item = (props: CarouselItemProps) => {
-  const { styles, toggleItem, index, uid, current, zoomIn, onToggleZoomModal, transform } = props;
-  const SItem = Root;
-  const refItem = React.createRef<HTMLElement>();
-  React.useEffect(() => {
-    // add item
-    toggleItem && refItem.current && toggleItem({ node: refItem.current });
-    return () => {
-      // remove item
-      toggleItem && refItem.current && toggleItem({ node: refItem.current }, true);
-    };
-  }, []);
+class Item extends Component<CarouselItemProps> {
+  refItem = React.createRef<HTMLElement>();
 
-  React.useEffect(() => {
-    if (refItem.current) {
-      refItem.current.style.transform = `translateX(${transform}%)`;
+  componentDidMount() {
+    const { toggleItem } = this.props;
+    const refItem = this.refItem.current;
+
+    toggleItem && refItem && toggleItem({ node: refItem });
+  }
+
+  componentWillUnmount() {
+    const { toggleItem } = this.props;
+    const refItem = this.refItem.current;
+
+    toggleItem && refItem && toggleItem({ node: refItem }, true);
+  }
+
+  componentDidUpdate(prevProps: CarouselItemProps) {
+    const transform = this.props.transform;
+    const refItem = this.refItem.current;
+
+    if (prevProps.transform !== transform && refItem) {
+      refItem.style.transform = `translateX(${transform}%)`;
     }
-  }, [transform]);
+  }
 
-  return sstyled(styles)(
-    <SItem
-      render={Box}
-      ref={refItem}
-      role='listitem'
-      id={`igc-${uid}-carousel-item-${index}`}
-      aria-current={current}
-      onClick={zoomIn ? onToggleZoomModal : undefined}
-      zoomIn={zoomIn}
-    />,
-  );
-};
+  render() {
+    const { styles, index, uid, current, zoomIn, onToggleZoomModal, transform } = this.props;
+    const SItem = Root;
+
+    return sstyled(styles)(
+      <SItem
+        render={Box}
+        ref={this.refItem}
+        role='listitem'
+        id={`igc-${uid}-carousel-item-${index}`}
+        aria-current={current}
+        onClick={zoomIn ? onToggleZoomModal : undefined}
+        zoomIn={zoomIn}
+      />,
+    );
+  }
+}
 
 const Prev = (props: CarouselButtonProps) => {
   const { styles, children, Children, label, top = 0, inverted } = props;
