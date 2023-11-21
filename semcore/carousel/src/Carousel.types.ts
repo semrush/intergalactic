@@ -1,7 +1,6 @@
 import { PropGetterFn, UnknownProperties, Intergalactic } from '@semcore/core';
 import { BoxProps } from '@semcore/flex-box';
 import { IRootComponentProps } from '@semcore/core/src';
-import { b } from 'vitest/dist/types-198fd1d9';
 
 /** @deprecated */
 export interface ICarouselProps extends CarouselProps, UnknownProperties {}
