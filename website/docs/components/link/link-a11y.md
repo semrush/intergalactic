@@ -26,7 +26,7 @@ The list below will help you to keep in mind the necessary roles and attributes 
 | Role   | Attribute      | Element       | Usage                                                 |
 | ------ | -------------- | ------------- | ----------------------------------------------------- |
 | `link` |                | `span`, `img` | Identifies the `span`/`img` element as a link.        |
-|        | `tabindex="0"` | `span`, `img` | Includes the link element in the page `Tab` sequence. |
+|        | `tabIndex="0"` | `span`, `img` | Includes the link element in the page `Tab` sequence. |
 |        | `alt`          | `img`         | Defines the accessible name of the link.              |
 |        | `aria-label`   | `span`        | Defines the accessible name of the link.              |
 
