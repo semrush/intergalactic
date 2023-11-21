@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [7.11.2-prerelease.1] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/spin` [5.10.1 ~> 5.10.2], `@semcore/flex-box` [5.10.1 ~> 5.10.2], `@semcore/animation` [2.10.1 ~> 2.10.2], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
 ## [7.11.1] - 2023-11-09
 
 ### Changed
