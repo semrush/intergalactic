@@ -429,6 +429,9 @@ importers:
 
   semcore/carousel:
     dependencies:
+      '@semcore/breakpoints':
+        specifier: 1.12.1
+        version: link:../breakpoints
       '@semcore/button':
         specifier: 5.11.2
         version: link:../button

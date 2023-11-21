@@ -16,7 +16,8 @@
     "@semcore/icon": "4.16.0",
     "@semcore/utils": "4.10.2",
     "@semcore/button": "5.11.2",
-    "@semcore/modal": "4.18.0"
+    "@semcore/modal": "4.18.0",
+    "@semcore/breakpoints": "1.12.1"
   },
   "peerDependencies": {
     "@semcore/core": "^2.9.1",

@@ -20,9 +20,9 @@ import CarouselType, {
   CarouselIndicatorsProps,
   CarouselIndicatorProps,
 } from './Carousel.types';
-import { BoxProps } from '@semcore/flex-box/src';
-import { IRootComponentProps } from '@semcore/core/src';
+import { BoxProps } from '@semcore/flex-box';
 import { findAllComponents } from '@semcore/utils/lib/findComponent';
+import { createBreakpoints } from '@semcore/breakpoints';
 
 const MAP_TRANSFORM: Record<string, 'left' | 'right'> = {
   ArrowLeft: 'left',
@@ -33,6 +33,9 @@ const enhance = {
   uid: uniqueIDEnhancement(),
   getI18nText: i18nEnhance(localizedMessages),
 };
+const media = ['(min-width: 481px)', '(max-width: 480px)'];
+const BreakPoints = createBreakpoints(media);
+const isSmallScreen = (index: number) => index === 1;
 
 class CarouselRoot extends Component<
   CarouselProps,
@@ -383,22 +386,73 @@ class CarouselRoot extends Component<
     return index === (items.length + (selectedIndex % items.length)) % items.length;
   }
 
-  render() {
-    const SCarousel = Root;
+  renderModal(isSmall: boolean, ComponentItems: any[]) {
+    const SModalContainer = Root;
     const {
       styles,
-      Children,
-      index,
       uid,
       duration,
       zoom: hasZoom,
       zoomWidth,
       'aria-label': ariaLabel,
       'aria-roledescription': ariaRoledescription,
-      indicators,
     } = this.asProps;
     const { isOpenZoom } = this.state;
-    const SModalContainer = Root;
+
+    return sstyled(styles)(
+        <Modal visible={isOpenZoom} onClose={this.handleToggleZoomModal} ghost={true} closable={!isSmall}>
+          <Flex direction={isSmall ? 'column' : 'row'}>
+            {!isSmall && (<Carousel.Prev inverted={true} />)}
+            <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
+              <SModalContainer
+                  render={Box}
+                  role='list'
+                  use:duration={`${duration}ms`}
+                  ref={this.refModalContainer}
+                  use:w={undefined}
+                  wMax={zoomWidth}
+              >
+                {ComponentItems.map((item, i) => {
+                  return (
+                      <Carousel.Item
+                          {...item.props}
+                          key={item.key}
+                          uid={uid}
+                          index={i}
+                          current={this.isSelected(i)}
+                          toggleItem={undefined}
+                          zoom={true}
+                          zoomOut={true}
+                          transform={this.isSelected(i) ? this.getTransform() : undefined}
+                      />
+                  );
+                })}
+              </SModalContainer>
+            </Box>
+            {isSmall ? (
+                <Flex justifyContent={'center'} mt={2}>
+                  <Carousel.Prev inverted={true} />
+                  <Carousel.Next inverted={true} />
+                </Flex>
+            ) : (
+                <Carousel.Next inverted={true} />
+            )}
+          </Flex>
+          {!isSmall && (<Carousel.Indicators inverted={true} />)}
+        </Modal>
+    );
+  }
+
+  render() {
+    const SCarousel = Root;
+    const {
+      styles,
+      Children,
+      zoom: hasZoom,
+      'aria-label': ariaLabel,
+      'aria-roledescription': ariaRoledescription,
+      indicators,
+    } = this.asProps;
     const ComponentItems = findAllComponents(Children, ['Carousel.Item']);
     const Controls = findAllComponents(Children, [
       'Carousel.Prev',
@@ -452,39 +506,11 @@ class CarouselRoot extends Component<
           <Children />
         )}
         {hasZoom && (
-          <Modal visible={isOpenZoom} onClose={this.handleToggleZoomModal} ghost={true}>
-            <Flex>
-              <Carousel.Prev inverted={true} />
-              <Box style={{ overflow: 'hidden', borderRadius: 6 }}>
-                <SModalContainer
-                  render={Box}
-                  role='list'
-                  use:duration={`${duration}ms`}
-                  ref={this.refModalContainer}
-                  use:w={undefined}
-                  wMax={zoomWidth}
-                >
-                  {ComponentItems.map((item, i) => {
-                    return (
-                      <Carousel.Item
-                        {...item.props}
-                        key={item.key}
-                        uid={uid}
-                        index={i}
-                        current={this.isSelected(i)}
-                        toggleItem={undefined}
-                        zoom={true}
-                        zoomOut={true}
-                        transform={this.isSelected(i) ? this.getTransform() : undefined}
-                      />
-                    );
-                  })}
-                </SModalContainer>
-              </Box>
-              <Carousel.Next inverted={true} />
-            </Flex>
-            <Carousel.Indicators inverted={true} />
-          </Modal>
+            <BreakPoints>
+              <BreakPoints.Context.Consumer>
+                {(mediaIndex) => this.renderModal(isSmallScreen(mediaIndex), ComponentItems)}
+              </BreakPoints.Context.Consumer>
+            </BreakPoints>
         )}
       </SCarousel>,
     );
