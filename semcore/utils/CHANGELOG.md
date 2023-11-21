@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.10.3] - 2023-11-21
+
+### Changed
+
+- Values for `--facebook`, `--twitter` and `--linkedIn` variables to new ones.
+
 ## [4.10.2] - 2023-11-09
 
 ### Fixed
