@@ -65,11 +65,11 @@ export const deliverPrerelease = async () => {
 };
 
 export const publishRelease = async () => {
-  const unlockedRelease = await getUnlockedPrerelease();
-  if (!unlockedRelease) {
-    log('No unlocked prerelease found.');
-    return;
-  }
+  const unlockedRelease = '15.35.2';
+  // if (!unlockedRelease) {
+  //   log('No unlocked prerelease found.');
+  //   return;
+  // }
   const npmData = await fetchFromNpm();
   const packages = await collectPackages(npmData);
   const tarballUrls = await collectTarballs(unlockedRelease);
@@ -79,7 +79,7 @@ export const publishRelease = async () => {
   await updateChangelogs(versionPatches.filter((patch) => patch.package.name !== '@semcore/ui'));
   await removeBetaVersionFromReleaseChangelog();
 
-  await republishTarballs(packagesPaths);
+  // await republishTarballs(packagesPaths);
   if (!process.argv.includes('--dry-run')) {
     await commitVersionsPatch(packages);
   }
