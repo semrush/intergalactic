@@ -1,3 +1,9 @@
+## [15.35.3] - 2023-11-21
+
+### @semcore/utils
+
+- **Changed** Values for `--facebook`, `--twitter` and `--linkedIn` variables to new ones.
+
 ## [15.35.2] - 2023-11-20
 
 ### @semcore/data-table

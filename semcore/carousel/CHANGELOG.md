@@ -8,6 +8,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Some styles in controls were changed.
 
+## [3.17.1] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
+
 ## [3.17.0] - 2023-11-13
 
 ### Changed
