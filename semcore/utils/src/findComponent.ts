@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 // @ts-ignore
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
 import getOriginChildren from './getOriginChildren';
@@ -25,4 +25,36 @@ export function isAdvanceMode(Children: any, name: string[]) {
   }
   return !!findComponent(children, name);
 }
+
+export function findAllComponents(Children: any, names: string[]): ReactElement[] {
+  const result: ReactElement[] = [];
+
+  const findAllAndAdd = (Children: any) => {
+    const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
+    React.Children.toArray(children).forEach((child) => {
+      if (React.isValidElement(child)) {
+        if (child.type === React.Fragment) {
+          findAllAndAdd(child.props.children);
+        } else {
+          // @ts-ignore
+          const inheritedNames = child.type[INHERITED_NAME] || [child.type.displayName];
+          const component = !!inheritedNames.find((name: string) => names.includes(name));
+
+          if (component) {
+            result.push(child);
+          }
+
+          if (child.props.children) {
+            return findAllAndAdd(child.props.children);
+          }
+        }
+      }
+    });
+  };
+
+  findAllAndAdd(Children);
+
+  return result;
+}
+
 export default findComponent;
