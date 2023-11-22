@@ -10,7 +10,7 @@ Note that the Pills component can function as either a group of radio buttons or
 
 ### Keyboard support
 
-With `behavior='radio'` (default):
+With `behavior='auto'` (default):
 
 Table: Keyboard support
 
@@ -19,7 +19,7 @@ Table: Keyboard support
 | `Tab`                       | When focus moves to the Pills, it moves to the active `Pills.Item`.  |
 | `Left Arrow` , `Right Arrow` | Set `checked` value to the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively.  |
 
-With `behavior='tabs'` :
+With `behavior='manual'` :
 
 Table: Keyboard support
 

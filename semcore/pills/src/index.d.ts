@@ -32,7 +32,12 @@ export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProp
      * while `tabs` behavior for navigation and layout.
      * @default tabs
      */
-    behavior?: 'tabs' | 'radio';
+    behavior?: /** @deprecated use `manual` */
+      | 'tabs'
+      /** @deprecated use `auto` */
+      | 'radio'
+      | 'auto'
+      | 'manual';
   };
 
 /** @deprecated */
