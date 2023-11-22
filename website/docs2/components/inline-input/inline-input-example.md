@@ -92,7 +92,7 @@ const Demo = Example;
 
 :::
 
-## Different states
+## States
 
 ::: sandbox
 
@@ -138,7 +138,7 @@ const Demo = Example;
 
 :::
 
-## Number in inline input
+## Number-only input
 
 ::: sandbox
 
