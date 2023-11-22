@@ -1,7 +1,7 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "4.10.3-prerelease.1",
+  "version": "4.10.3",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
@@ -32,7 +32,7 @@
     "@phytonmk/nano-css": "5.3.7"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.9.2-prerelease.1",
+    "@semcore/core": "^2.9.2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
