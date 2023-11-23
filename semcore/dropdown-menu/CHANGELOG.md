@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [14.13.0] - 2023-11-23
+
+### Added
+
+- Support for both non-focusable and focusable items in DropdownMenu.
+
 ## [4.12.6] - 2023-11-21
 
 ### Changed

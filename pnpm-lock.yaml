@@ -1003,6 +1003,9 @@ importers:
       '@playwright/test':
         specifier: 1.25.1
         version: 1.25.1
+      '@semcore/button':
+        specifier: workspace:*
+        version: link:../button
       '@semcore/testing-utils':
         specifier: 1.0.0
         version: link:../../tools/testing-utils
