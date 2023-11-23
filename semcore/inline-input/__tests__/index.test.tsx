@@ -85,6 +85,14 @@ const makePlayground = () => (
       <InlineInput.Addon>I am a don't care, I punk:</InlineInput.Addon>
       <InlineInput.Value id='const-placeholder' />
     </InlineInput>
+    <br />
+    <InlineInput>
+      <InlineInput.Addon tag={'label'} htmlFor='number-example'>
+        enter score:
+      </InlineInput.Addon>
+      <InlineInput.NumberValue id={'number-example'} defaultValue={100} />
+      <InlineInput.NumberControls showControls />
+    </InlineInput>
   </>
 );
 
