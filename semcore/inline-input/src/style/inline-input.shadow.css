@@ -47,6 +47,16 @@ SValue {
   &[disabled] {
     user-select: none;
   }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
 }
 
 SUnderline {
@@ -114,4 +124,66 @@ SInlineInput[state='invalid'] SUnderline {
 SInlineInput[state='invalid'][focused] SUnderline {
   border-bottom-color: var(--intergalactic-border-critical-active, #d1002f);
   box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
+}
+
+SValue:focus ~ SControls {
+  display: flex;
+}
+
+SControls {
+  display: none;
+  flex-flow: column;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+SControls[showControls] {
+  display: flex;
+}
+
+SUp,
+SDown {
+  padding: 0;
+  width: 16px;
+  color: var(--intergalactic-icon-secondary-neutral, #a9abb6);
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: var(--intergalactic-icon-secondary-neutral-hover-active, #878992);
+  }
+}
+
+SUp {
+  /* disable-tokens-validator */
+  padding-bottom: 1px;
+}
+
+SDown {
+  /* disable-tokens-validator */
+  padding-top: 1px;
+}
+
+SValue[disabled] ~ SControls {
+  opacity: var(--intergalactic-disabled-opacity, 0.3);
+  cursor: default;
+  pointer-events: none;
+}
+
+SValueHidden {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
 }
