@@ -1113,7 +1113,7 @@ importers:
         specifier: 4.10.2
         version: link:../format-text
       '@semcore/illustration':
-        specifier: 2.10.2
+        specifier: 2.10.1
         version: link:../illustration
       '@semcore/typography':
         specifier: 5.17.1
@@ -1506,7 +1506,7 @@ importers:
   semcore/inline-input:
     dependencies:
       '@semcore/core':
-        specifier: ^2.9.2
+        specifier: 2.9.2
         version: link:../core
       '@semcore/flex-box':
         specifier: 5.10.2
@@ -1514,6 +1514,12 @@ importers:
       '@semcore/icon':
         specifier: 4.16.1
         version: link:../icon
+      '@semcore/input':
+        specifier: 4.12.2
+        version: link:../input
+      '@semcore/input-number':
+        specifier: 5.12.2
+        version: link:../input-number
       '@semcore/spin':
         specifier: 5.10.2
         version: link:../spin
@@ -2766,7 +2772,7 @@ importers:
         specifier: 4.16.1
         version: link:../icon
       '@semcore/illustration':
-        specifier: 2.10.2
+        specifier: 2.10.1
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: 4.12.2
@@ -2987,7 +2993,7 @@ importers:
         specifier: 5.10.2
         version: link:../flex-box
       '@semcore/illustration':
-        specifier: 2.10.2
+        specifier: 2.10.1
         version: link:../illustration
       '@semcore/utils':
         specifier: 4.10.3
