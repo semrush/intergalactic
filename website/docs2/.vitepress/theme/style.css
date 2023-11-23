@@ -553,6 +553,19 @@ img {
   margin-top: 24px;
 }
 
+.vp-doc .documentation-sandbox .playground-runtime a {
+  color: var(--vp-c-indigo-2) !important;
+}
+
+.vp-doc a[class]:hover {
+  color: var(--vp-c-indigo-1) !important;
+}
+
+/* To remove double underline from the links in the sandboxes */
+.vp-doc .documentation-sandbox a:not([class]):hover, .vp-doc a:not([class]):active {
+  text-decoration: none !important;
+}
+
 .vp-doc tr:nth-child(2n) {
   background: transparent;
 }
@@ -570,7 +583,8 @@ img {
   color: var(--vp-c-indigo-2);
 }
 
-.vp-doc .anchor-like-button {
+.vp-doc .anchor-like-button,
+.vp-doc .header-anchor::before {
   color: var(--vp-c-indigo-2);
 }
 
@@ -622,6 +636,15 @@ img {
 .vp-doc a:not([class]):hover,
 .vp-doc a:not([class]):active {
   text-decoration: underline;
+}
+
+.vp-doc ul a,
+.vp-doc ul a:visited {
+  color: var(--vp-c-indigo-2);
+}
+
+.vp-doc ul a:hover {
+  color: var(--vp-c-indigo-1) !important;
 }
 
 .shiki.github-dark {
