@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.13.0] - 2023-11-22
+
+### Added
+
+- Reexport utils and types.
+
 ## [5.12.2] - 2023-11-21
 
 ### Changed

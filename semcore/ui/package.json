@@ -1,6 +1,6 @@
 {
   "name": "@semcore/ui",
-  "version": "15.35.2-prerelease.0",
+  "version": "15.35.2",
   "license": "MIT",
   "module": "./index.mjs",
   "sideEffects": false,
@@ -44,7 +44,7 @@
     "@semcore/fullscreen-modal": "3.17.1",
     "@semcore/grid": "5.10.2",
     "@semcore/icon": "4.16.1",
-    "@semcore/illustration": "2.10.2",
+    "@semcore/illustration": "2.10.1",
     "@semcore/inline-input": "4.17.1",
     "@semcore/inline-edit": "4.12.2",
     "@semcore/input": "4.12.2",
