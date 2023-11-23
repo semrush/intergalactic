@@ -1110,7 +1110,7 @@ importers:
         specifier: 4.10.2
         version: link:../format-text
       '@semcore/illustration':
-        specifier: 2.10.2
+        specifier: 2.10.1
         version: link:../illustration
       '@semcore/typography':
         specifier: 5.17.1
@@ -2769,7 +2769,7 @@ importers:
         specifier: 4.16.1
         version: link:../icon
       '@semcore/illustration':
-        specifier: 2.10.2
+        specifier: 2.10.1
         version: link:../illustration
       '@semcore/inline-edit':
         specifier: 4.12.2
@@ -2990,7 +2990,7 @@ importers:
         specifier: 5.10.2
         version: link:../flex-box
       '@semcore/illustration':
-        specifier: 2.10.2
+        specifier: 2.10.1
         version: link:../illustration
       '@semcore/utils':
         specifier: 4.10.3
