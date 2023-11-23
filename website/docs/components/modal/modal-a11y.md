@@ -27,7 +27,7 @@ You can close the modal window by clicking on the following controls:
 - "Back" in the browser (nothing changes on the parent page);
 - outside the container area.
 
-> When the modal window is closed, the focus should always return to the trigger.
+> When the modal window is closed by keyboard, the focus should always return to the trigger.
 
 @## Resources
 
