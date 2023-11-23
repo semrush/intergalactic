@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.11.0] - 2023-11-22
+
+### Added
+
+- New `findAllComponents` (for passed `Children`) util method.
+
 ## [4.10.3] - 2023-11-21
 
 ### Changed

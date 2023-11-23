@@ -51,7 +51,7 @@ export const republishTarballs = async (packagesPaths: string[]) => {
       log(`Uploading static of ${name} is finished.`);
     }
     log(`Publishing ${name}...`);
-    execSync(`pnpm publish ${pnpmOptions}`, {
+    execSync(`pnpm publish ${pnpmOptions} --force`, {
       cwd: path,
       encoding: 'utf-8',
       stdio: ['inherit', 'inherit', 'inherit'],
