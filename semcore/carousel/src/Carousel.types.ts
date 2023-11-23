@@ -61,12 +61,12 @@ export type CarouselItemProps = BoxProps & {
   toggleItem?: (item: CarouselItem, toRemove?: boolean) => void;
 
   /** Index of item in carousel */
-  index: number;
+  index?: number;
 
-  uid: string;
+  uid?: string;
 
   /** Flag - is current item shown now */
-  current: boolean;
+  current?: boolean;
 
   /** Handler for show item in modal window
    * @private

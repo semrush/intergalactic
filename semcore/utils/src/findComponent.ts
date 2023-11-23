@@ -1,9 +1,12 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 // @ts-ignore
 import { CHILDREN_COMPONENT, INHERITED_NAME } from '@semcore/core';
 import getOriginChildren from './getOriginChildren';
 
-function findComponent(Children: any, names: string[]): ReactElement {
+function findComponent(
+  Children: any,
+  names: string[],
+): Exclude<ReactNode, boolean | null | undefined> | undefined {
   const children = Children[CHILDREN_COMPONENT] ? getOriginChildren(Children) : Children;
   return React.Children.toArray(children).find((child) => {
     if (React.isValidElement(child)) {
