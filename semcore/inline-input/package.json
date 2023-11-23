@@ -16,7 +16,10 @@
     "@semcore/icon": "4.16.1",
     "@semcore/spin": "5.10.2",
     "@semcore/tooltip": "6.10.3",
-    "@semcore/utils": "4.10.3"
+    "@semcore/utils": "4.10.3",
+    "@semcore/input-number": "5.12.2",
+    "@semcore/input": "4.12.2",
+    "@semcore/core": "2.9.2"
   },
   "devDependencies": {
     "@types/react": "18.0.21",

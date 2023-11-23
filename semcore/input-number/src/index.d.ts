@@ -60,3 +60,9 @@ declare const InputNumber: Intergalactic.Component<'div', InputNumberProps, Inpu
 };
 
 export default InputNumber;
+
+declare const IncrementIcon: React.FC;
+declare const DecrementIcon: React.FC;
+declare const parseValueWithMinMax: (value: number, min?: number, max?: number) => number;
+
+export { IncrementIcon, DecrementIcon, parseValueWithMinMax };
