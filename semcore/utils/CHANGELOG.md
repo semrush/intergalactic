@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.12.0] - 2023-11-23
+
+### Added
+
+- Pass `props` from component into `onNeighborChange` in `a11yEnhance` as a second args.
+
 ## [4.11.0] - 2023-11-22
 
 ### Added
