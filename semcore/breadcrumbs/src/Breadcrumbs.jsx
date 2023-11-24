@@ -41,21 +41,20 @@ class Item extends Component {
     return {
       disabled: active,
       tag: 'a',
-      i18n: localizedMessages,
       locale: 'en',
     };
   }
 
-  static enhance = [keyboardFocusEnhance(), i18nEnhance(localizedMessages)];
+  static enhance = [keyboardFocusEnhance()];
 
   render() {
     const SBreadcrumbsItem = Root;
-    const { styles, separator, active, getI18nText } = this.asProps;
+    const { styles, separator, active } = this.asProps;
     const SSeparator = 'div';
 
     return sstyled(styles)(
       <>
-        <SBreadcrumbsItem render={Box} aria-current={active ? getI18nText('page') : undefined} />
+        <SBreadcrumbsItem render={Box} aria-current={active ? 'page' : undefined} />
         <SSeparator aria-hidden='true'>{separator}</SSeparator>
       </>,
     );
