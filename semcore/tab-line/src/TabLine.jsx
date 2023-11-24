@@ -9,10 +9,12 @@ import NeighborLocation from '@semcore/neighbor-location';
 import style from './style/tab-line.shadow.css';
 
 const optionsA11yEnhance = {
-  onNeighborChange: (neighborElement) => {
+  onNeighborChange: (neighborElement, props) => {
     if (neighborElement) {
       neighborElement.focus();
-      neighborElement.click();
+      if (props.behavior === 'auto') {
+        neighborElement.click();
+      }
     }
   },
   childSelector: ['role', 'tab'],
@@ -25,6 +27,7 @@ class TabLineRoot extends Component {
     defaultValue: null,
     size: 'm',
     underlined: true,
+    behavior: 'auto',
   };
   static enhance = [a11yEnhance(optionsA11yEnhance)];
   state = { animation: null };

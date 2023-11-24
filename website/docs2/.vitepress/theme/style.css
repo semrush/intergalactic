@@ -70,9 +70,19 @@
   --vp-home-hero-image-filter: blur(40px);
 }
 
+.image-container {
+  width: 240px !important;
+  height: 240px !important;
+}
+
 @media (min-width: 640px) {
   :root {
     --vp-home-hero-image-filter: blur(56px);
+  }
+
+  .image-container {
+    width: 280px !important;
+    height: 280px !important;
   }
 }
 
@@ -463,7 +473,6 @@ img {
   padding-left: 4px;
   padding-right: 4px;
   line-height: normal;
-  isolation: isolate;
   overflow: auto;
 }
 
@@ -500,8 +509,6 @@ img {
 
 .open-codesandbox {
   color: white;
-  position: absolute;
-  top: 0;
   right: 64px;
   direction: ltr;
   position: absolute;

@@ -23,7 +23,7 @@ The list below describes roles and attributes that component already has.
 
 | Role       | Attribute      | Element | Usage                                                                                                  |
 | ---------- | -------------- | ------- | ------------------------------------------------------------------------------------------------------ |
-|            | `tabindex="0"` | `div`   | Includes the element in the `Tab` sequence.                                                            |
+|            | `tabIndex="0"` | `div`   | Includes the element in the `Tab` sequence.                                                            |
 | `list`     |                |         | The ARIA `list` role can be used to identify a list of items. It is used to identify a list container. |
 | `listitem` |                |         | The ARIA `listitem` role can be used to identify an item inside a list of items.                       |
 |            | `aria-current="active"` | `div`   | `aria-current` state on an element indicates that this element represents the current item within a container or set of related elements. |

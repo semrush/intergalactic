@@ -28,7 +28,9 @@ class MediaList {
   });
 
   matches() {
-    return this.mediaQueries.findIndex((m) => m.matches) ?? this.defaultIndex;
+    const index = this.mediaQueries.findIndex((m) => m.matches);
+
+    return index > -1 ? index : this.defaultIndex;
   }
 
   addListener(listener) {

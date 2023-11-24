@@ -6,11 +6,11 @@ tabs: Design('pills'), A11y('pills-a11y'), API('pills-api'), Example('pills-code
 
 ## What component has
 
-Note that the Pills component can function as either a group of radio buttons or a group of tabs, depending on the use case. To select the desired behavior, use the `behavior` property (refer to the [example](/components/pills/pills-code#behavior_arrows)).
+Note that the Pills component can function as either a group of radio buttons or a group of tabs, depending on the use case. To select the desired behavior, use the `behavior` property (refer to the [example](/components/pills/pills-code#behavior-arrows)).
 
 ### Keyboard support
 
-With `behavior='radio'` (default):
+With `behavior='auto'` (default):
 
 Table: Keyboard support
 
@@ -19,7 +19,7 @@ Table: Keyboard support
 | `Tab`                       | When focus moves to the Pills, it moves to the active `Pills.Item`.  |
 | `Left Arrow` , `Right Arrow` | Set `checked` value to the next/previous button in the group. If focus is on the last/first button, moves focus to the first/last button respectively.  |
 
-With `behavior='tabs'` :
+With `behavior='manual'` :
 
 Table: Keyboard support
 
@@ -37,11 +37,11 @@ Table: Roles and attributes
 
 | Role  | Attribute              | Element | Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----- | ---------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `radiogroup` |                             | `div` | Identifies the `div` element as a container for a group of `radio` buttons. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                      |
-| `radio` |                        | `div` | Identifies the `div` element as an ARIA `radio` button. The accessible name is computed from the child text content of the `div` element.                                                                                                                                                                                                                                                                                                                                |
-| `tablist` |                           | `div` | Indicates that the element serves as a container for a set of tabs.                                                                                                                                                                                                                                                                                                                                                                  |
-| `tab` |                           | `button` | Indicates the element serves as a `tab` control.|
-|       | `tabindex="0"` | `div` | Makes the radio button focusable and includes it in the page `Tab` sequence. Set on only one radio in the radio group. On page load, is set on the first radio button in the radio group. Moves with focus inside the radio group so the most recently focused radio button is included in the page `Tab` sequence. This approach to managing focus is described in the section on [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex). |
+| `radiogroup` |                             | `div` | Used for Pills with `behavior='auto'`. Identifies the `div` element as a container for a group of `radio` buttons. Isn’t focusable because focus is managed using a roving tabindex strategy as described below.                                                                                                                                                                      |
+| `radio` |                        | `div` | `div` | Used for Pills with `behavior='auto'`. Identifies the `div` element as an ARIA `radio` button. The accessible name is computed from the child text content of the `div` element.                                                                                                                                                                                                                                                                                                                                |
+| `tablist` |                           | `div` | Used for Pills with `behavior='manual'`. Indicates that the element serves as a container for a set of tabs.                                                                                                                                                                                                                                                                                                                                                                  |
+| `tab` |                           | `button` | Used for Pills with `behavior='manual'`. Indicates the element serves as a `tab` control.|
+|       | `tabIndex="0"` | `div` | Makes the radio button focusable and includes it in the page `Tab` sequence. Set on only one radio in the radio group. On page load, is set on the first radio button in the radio group. Moves with focus inside the radio group so the most recently focused radio button is included in the page `Tab` sequence. This approach to managing focus is described in the section on [roving tabindex](https://www.w3.org/TR/wai-aria-practices-1.1/#kbd_roving_tabindex). |
 |            | `tabindex="-1"` | `div` | Makes the element focusable but not part of the page `Tab` sequence. Applied to all radio buttons contained in the radio group except for one that is included in the page `Tab` sequence. This approach to managing focus is described in the section on [Roving tabindex](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#keyboardnavigationinsidecomponents). |
 |       | `aria-checked="true"` | `div` | Identifies `radio` buttons which is checked. CSS attribute selectors (for example `[aria-checked="true"]` ) are used to synchronize the visual states with the value of the `aria-checked` attribute.                                                                                                                                                                                                                                                                            |
 |       | `aria-checked="false"` | `div` | Identifies `radio` buttons which are not checked. CSS attribute selectors (for example `[aria-checked="false"]` ) are used to synchronize the visual states with the value of the `aria-checked` attribute.                                                                                                                                                                                                                                                                      |

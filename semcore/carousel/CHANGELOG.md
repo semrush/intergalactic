@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.18.0] - 2023-11-21
+
+### Changed
+
+- Some styles in controls were changed.
+
+## [3.17.1] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3]).
+
 ## [3.17.0] - 2023-11-13
 
 ### Changed

@@ -2,6 +2,19 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.10.4] - 2023-11-24
+
+### Fixed
+
+- `aria-describedby` instead of `aria-labelledby`.
+- Working that `aria` property in uncontrolled mode.
+
+## [6.10.3] - 2023-11-21
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/utils` [4.10.2 ~> 4.10.3], `@semcore/flex-box` [5.10.1 ~> 5.10.2], `@semcore/popper` [5.9.2 ~> 5.9.3], `@semcore/core` [2.9.1 ~> 2.9.2]).
+
 ## [6.10.2] - 2023-11-10
 
 ### Changed

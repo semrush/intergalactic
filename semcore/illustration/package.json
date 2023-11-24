@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@semcore/flex-box": "5.10.1"
+    "@semcore/flex-box": "5.10.2"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.9.1",
+    "@semcore/core": "^2.9.2",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

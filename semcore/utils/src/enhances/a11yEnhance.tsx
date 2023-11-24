@@ -1,4 +1,5 @@
 import { callAllEventHandlers } from '../assignProps';
+import React from 'react';
 
 const defaultOnNeighborChange = (neighborElement: HTMLElement) => {
   neighborElement?.focus();
@@ -39,9 +40,9 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
       return neighbor;
     };
 
-    const handleKeyDown = (event: any) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
       const parent = event.currentTarget;
-      const selectedElement = event.target;
+      const selectedElement = event.target as HTMLElement;
       const [childAttrName, childAttrValue] = childSelector;
       if (!selectedElement.getAttribute(childAttrName)) return;
 
@@ -53,19 +54,19 @@ const a11yEnhance = (options: { [key: string]: any } = {}) => {
 
       switch (event.keyCode) {
         case 37:
-          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'left'));
+          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'left'), props);
           event.preventDefault();
           break;
         case 38:
-          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'top'));
+          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'top'), props);
           event.preventDefault();
           break;
         case 39:
-          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'right'));
+          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'right'), props);
           event.preventDefault();
           break;
         case 40:
-          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'bottom'));
+          onNeighborChange(getNeighbor(listSelectors, selectedElement, 'bottom'), props);
           event.preventDefault();
           break;
       }

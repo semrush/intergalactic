@@ -58,6 +58,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
       visible={visible}
       placement={placement}
       onVisibleChange={(v) => onChange('visible', v)}
+      disablePortal
     >
       <FeaturePopover.Trigger>
         <Button>
@@ -65,13 +66,13 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
           {visible && <FeaturePopover.Spot />}
         </Button>
       </FeaturePopover.Trigger>
-      <FeaturePopover.Popper closeIcon={closeIcon} wMax={350}>
+      <FeaturePopover.Popper closeIcon={closeIcon} wMax={250}>
         With this new feature, users can now enjoy improved user experience, or expanded
         capabilities.
       </FeaturePopover.Popper>
     </FeaturePopover>
   );
-});
+}, {filterProps: ['disablePortal']});
 </script>
 
 :::
