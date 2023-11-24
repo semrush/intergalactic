@@ -64,13 +64,15 @@ SPill[disabled] {
   }
 }
 
-SPills[keyboardFocused]:not([behavior=tabs]) {
+SPills[keyboardFocused][behavior=auto], SPills[keyboardFocused][behavior=radio] {
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
 }
 
-SPill[keyboardFocused] {
-  box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
-  z-index: 1;
+SPills[keyboardFocused][behavior=manual], SPills[keyboardFocused][behavior=tag] {
+  > SPill[keyboardFocused] {
+    box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+    z-index: 1;
+  }
 }
 
 SText {

@@ -14,7 +14,17 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-    const { bool, radio } = createGroupWidgets('TabLine');
+    const { bool, radio, select } = createGroupWidgets('TabLine');
+
+    const behavior = select({
+      key: 'behavior',
+      defaultValue: 'auto',
+      label: 'Behavior',
+      options: [
+        {name: 'auto', value: 'auto'},
+        {name: 'manual', value: 'manual'}
+      ]
+    });
 
     const size = radio({
       key: 'size',
@@ -42,7 +52,7 @@ const App = PlaygroundGeneration(
     });
 
     return (
-      <TabLine defaultValue={0} underlined={underlined} size={size}>
+      <TabLine defaultValue={0} underlined={underlined} size={size} behavior={behavior}>
         <TabLine.Item value={0}>All</TabLine.Item>
         <TabLine.Item value={1}>Overview</TabLine.Item>
         <TabLine.Item value={2}>Issues</TabLine.Item>

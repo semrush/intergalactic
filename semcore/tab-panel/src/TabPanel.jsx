@@ -8,9 +8,12 @@ import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhan
 import style from './style/tab-panel.shadow.css';
 
 const optionsA11yEnhance = {
-  onNeighborChange: (neighborElement) => {
+  onNeighborChange: (neighborElement, props) => {
     if (neighborElement) {
       neighborElement.focus();
+      if (props.behavior === 'auto') {
+        neighborElement.click();
+      }
     }
   },
   childSelector: ['role', 'tab'],
@@ -21,6 +24,7 @@ class TabPanelRoot extends Component {
   static style = style;
   static defaultProps = {
     defaultValue: null,
+    behavior: 'manual',
   };
   static enhance = [a11yEnhance(optionsA11yEnhance)];
 

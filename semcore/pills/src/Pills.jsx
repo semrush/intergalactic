@@ -4,6 +4,7 @@ import { Box } from '@semcore/flex-box';
 import NeighborLocation, { useNeighborLocationDetect } from '@semcore/neighbor-location';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
+import log from '@semcore/utils/lib/logger';
 
 import style from './style/pills.shadow.css';
 
@@ -13,12 +14,26 @@ class RootPills extends Component {
   static defaultProps = ({ behavior }) => ({
     size: 'm',
     defaultValue: null,
-    behavior: behavior ?? 'tabs',
-    tabIndex: behavior === 'tabs' ? -1 : 0,
+    behavior: behavior ?? 'auto',
+    tabIndex: behavior === 'tabs' || behavior === 'manual' ? -1 : 0,
   });
   itemRefs = [];
   itemValues = [];
   static enhance = [keyboardFocusEnhance()];
+
+  componentDidMount() {
+    log.warn(
+      this.asProps.behavior === 'tabs',
+      'Use behavior `manual` instead of `tabs`. \n`tabs` is deprecated and will be removed in the next major release.',
+      'Pills',
+    );
+
+    log.warn(
+      this.asProps.behavior === 'radio',
+      'Use behavior `auto` (or nothing, it is default value) instead of `radio`. \n`radio` is deprecated and will be removed in the next major release.',
+      'Pills',
+    );
+  }
 
   uncontrolledProps() {
     return {
@@ -42,30 +57,56 @@ class RootPills extends Component {
       disabled,
       selected: value === props.value,
       behavior,
-      tabIndex: behavior === 'tabs' ? 0 : -1,
+      tabIndex: behavior === 'tabs' || behavior === 'manual' ? 0 : -1,
       onClick: this.bindHandlerClick(props.value),
     };
   }
 
+  changeIndex = (startIndex, type) => {
+    let selectable = false;
+
+    while (!selectable && startIndex >= 0 && startIndex < this.itemValues.length) {
+      if (type === 'increment') startIndex++;
+      if (type === 'decrement') startIndex--;
+
+      const element = this.itemRefs[startIndex];
+
+      if (element?.disabled === false) {
+        selectable = true;
+      }
+    }
+
+    return startIndex >= 0 && startIndex < this.itemValues.length ? startIndex : undefined;
+  };
+
   handleKeyDown = (event) => {
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
-    if (this.asProps.behavior === 'radio') {
+    const behavior = this.asProps.behavior;
+    if (behavior === 'radio' || behavior === 'auto') {
       let selectedIndex = this.itemValues.findIndex((value) => value === this.asProps.value);
       if (selectedIndex === -1) return;
 
-      if (event.key === 'ArrowLeft') selectedIndex--;
-      if (event.key === 'ArrowRight') selectedIndex++;
-      if (selectedIndex < 0 || selectedIndex >= this.itemValues.length) return;
+      selectedIndex = this.changeIndex(
+        selectedIndex,
+        event.key === 'ArrowLeft' ? 'decrement' : 'increment',
+      );
 
-      this.handlers.value(this.itemValues[selectedIndex], event);
+      if (selectedIndex !== undefined) {
+        this.handlers.value(this.itemValues[selectedIndex], event);
+        this.itemRefs[selectedIndex]?.focus();
+      }
     } else {
       let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
       if (focusedIndex === -1) return;
 
-      if (event.key === 'ArrowLeft') focusedIndex--;
-      if (event.key === 'ArrowRight') focusedIndex++;
+      focusedIndex = this.changeIndex(
+        focusedIndex,
+        event.key === 'ArrowLeft' ? 'decrement' : 'increment',
+      );
 
-      this.itemRefs[focusedIndex]?.focus();
+      if (focusedIndex !== undefined) {
+        this.itemRefs[focusedIndex]?.focus();
+      }
     }
   };
 
@@ -76,7 +117,7 @@ class RootPills extends Component {
     return sstyled(styles)(
       <SPills
         render={Box}
-        role={behavior === 'radio' ? 'radiogroup' : 'tablist'}
+        role={behavior === 'radio' || behavior === 'auto' ? 'radiogroup' : 'tablist'}
         aria-disabled={disabled}
         onKeyDown={this.handleKeyDown}
       >
@@ -93,7 +134,7 @@ function Pill(props) {
   const { Children, styles, addonLeft, addonRight, selected, disabled, index, behavior } = props;
   const neighborLocation = useNeighborLocationDetect(index);
   const roleAreaProps = {};
-  if (behavior === 'radio') {
+  if (behavior === 'radio' || behavior === 'auto') {
     roleAreaProps.role = 'radio';
     roleAreaProps['aria-checked'] = selected;
   } else {

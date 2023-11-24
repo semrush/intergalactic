@@ -102,6 +102,9 @@ describe('PillGroup', () => {
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
+  /**
+   * @deprecated behavior
+   */
   test.concurrent('Should support behavior=tabs', async () => {
     const spyLeft = vi.fn();
     const spyRight = vi.fn();
@@ -130,6 +133,9 @@ describe('PillGroup', () => {
     expect(spyLeft).toHaveBeenCalledTimes(1);
   });
 
+  /**
+   * @deprecated behavior
+   */
   test('Should support behavior=radio', async () => {
     const spy = vi.fn();
 
@@ -151,16 +157,65 @@ describe('PillGroup', () => {
     expect(spy).toBeCalledWith(3, expect.anything());
   });
 
+  test.concurrent('Should support behavior=manual', async () => {
+    const spyLeft = vi.fn();
+    const spyRight = vi.fn();
+
+    const { getByTestId } = render(
+      <Pills behavior='manual'>
+        <Pills.Item value={1} onFocus={spyLeft}>
+          1
+        </Pills.Item>
+        <Pills.Item data-testid={'pill'} value={2}>
+          2
+        </Pills.Item>
+        <Pills.Item value={3} onFocus={spyRight}>
+          3
+        </Pills.Item>
+      </Pills>,
+    );
+    const pill = getByTestId('pill');
+
+    act(() => pill.focus());
+    fireEvent.keyDown(pill, { key: 'ArrowRight' });
+    expect(spyRight).toHaveBeenCalledTimes(1);
+
+    act(() => pill.focus());
+    fireEvent.keyDown(pill, { key: 'ArrowLeft' });
+    expect(spyLeft).toHaveBeenCalledTimes(1);
+  });
+
+  test('Should support behavior=auto', async () => {
+    const spy = vi.fn();
+
+    const { getByTestId } = render(
+      <Pills behavior='auto' onChange={spy} value={2}>
+        <Pills.Item value={1}>1</Pills.Item>
+        <Pills.Item data-testid={'pill'} value={2}>
+          2
+        </Pills.Item>
+        <Pills.Item value={3}>3</Pills.Item>
+      </Pills>,
+    );
+    const pill = getByTestId('pill');
+
+    fireEvent.keyDown(pill, { key: 'ArrowLeft' });
+    expect(spy).toBeCalledWith(1, expect.anything());
+
+    fireEvent.keyDown(pill, { key: 'ArrowRight' });
+    expect(spy).toBeCalledWith(3, expect.anything());
+  });
+
   test.concurrent('Should render correctly states', async ({ task }) => {
     const component = (
       <snapshot.ProxyProps style={{ margin: 5 }}>
-        <Pills value={1}>
+        <Pills value={1} behavior={'manual'} keyboardFocused>
           <Pills.Item value={1}>1</Pills.Item>
           <Pills.Item value={2} keyboardFocused>
             2
           </Pills.Item>
         </Pills>
-        <Pills value={1}>
+        <Pills value={1} behavior={'manual'} keyboardFocused>
           <Pills.Item value={1} keyboardFocused>
             1
           </Pills.Item>
