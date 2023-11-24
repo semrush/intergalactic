@@ -2,6 +2,13 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.10.4] - 2023-11-24
+
+### Fixed
+
+- `aria-describedby` instead of `aria-labelledby`.
+- Working that `aria` property in uncontrolled mode.
+
 ## [6.10.3] - 2023-11-21
 
 ### Changed

@@ -25,15 +25,22 @@ class TooltipRoot extends Component {
       flipVariations: true,
       flipVariationsByContent: true,
     },
+    defaultVisible: false,
   };
   state = { popperChildren: null };
+
+  uncontrolledProps() {
+    return {
+      visible: null,
+    };
+  }
 
   getTriggerProps() {
     const { uid, visible, interaction } = this.asProps;
 
     return {
       active: false,
-      'aria-labelledby': visible ? `igc-${uid}-popper` : undefined,
+      'aria-describedby': visible ? `igc-${uid}-popper` : undefined,
       'aria-haspopup': interaction !== 'hover' ? 'true' : 'false',
     };
   }
