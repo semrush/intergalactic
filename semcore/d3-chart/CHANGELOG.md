@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.19.5] - 2023-11-24
+
+### Fixed
+
+- Correct types for `Tooltip`s children render function.
+
 ## [3.18.4] - 2023-11-21
 
 ### Changed
