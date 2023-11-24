@@ -26,8 +26,8 @@ Use the carousel as an additional highlight of important website features and in
 Component consists of the following:
 
 - Container for items: `Carousel.Container`
-- Slide with content: `Carousel.Item`. Slide contains image, video or another type of information
-- Slides number indicator (optional): `Carousel.Indicators`
+- Slide item: `Carousel.Item`. Slide contains image, video or another type of information
+- Slides' indicators or previews (optional): `Carousel.Indicators`
 - Navigation buttons: `Carousel.Prev`, `Carousel.Next`
 
 ## Appearance
@@ -38,11 +38,11 @@ Component has default styles, but you can change them depending on your task.
 
 Table: Carousel default styles
 
-|                         | Default styles                                                        |
-| ----------------------- | --------------------------------------------------------------------- |
-| Navigation buttons      | Use L size for Chevron icons and `--icon-primary-neutral` token for color. |
-| Slides number indicator | Indicator has 12px * 12px size and `--bg-secondary-neutral` token for color.  |
-| Content slide           | `border-radius: var(--rounded-medium)`                               |
+| Element            | Default styles                                                        |
+| ------------------ | --------------------------------------------------------------------- |
+| Navigation buttons | Use L size of [Button](components/button/) with `ChevronLeft`/`ChevronRight` icons with L size as well. |
+| Indicator          | Indicator has 12px * 12px size and uses `--icon-secondary-neutral` token for color.  |
+| Carousel item (image, etc.) | Use `--surface-rounded` token for border-radius. |
 
 Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) is stretched to the height of the content.
 
@@ -54,9 +54,9 @@ Click-zone of the navigation buttons (`Carousel.Prev`, `Carousel.Next`) is stret
 
 ![](static/carousel-margins-2.png)
 
-### Example with dark background
+### Zoomed Carousel in the Modal
 
-This example has the same styles as the example on the light background, except color for buttons that change slides – it should change to `--icon-primary-invert`.
+This example has the same styles as the example on the light background, except color for indicators—they change to `--icon-primary-invert`—and navigation buttons change theme to `invert`.
 
 ![](static/carousel-dark.png)
 
@@ -64,15 +64,15 @@ This example has the same styles as the example on the light background, except 
 
 ### Navigation buttons
 
-Navigation buttons are always center aligned.
+Navigation buttons are always center aligned and have styles of [Button](components/button) with `use="tertiary"` and `theme="muted"`. Inside the modal buttons change their theme to `theme="invert"`.
 
 Table: Navigation buttons states
 
-| State    | Appearance example                      | Styles                                               |
-| -------- | --------------------------------------- | ---------------------------------------------------- |
-| Default  | ![](static/default.png)   | `color: var(--icon-primary-neutral)`              |
-| Hover    | ![](static/hover.png)  | `color: var(--icon-primary-neutral-hover-active)` |
-| Disabled | ![](static/disabled.png) | `opacity: var(--disabled-opacity)`                  |
+| State    | Appearance example        | 
+| -------- | ------------------------- |
+| Default  | ![](static/default.png)   |
+| Hover    | ![](static/hover.png)     |
+| Disabled | ![](static/disabled.png)  |
 
 ### Slides number indicators
 
@@ -80,11 +80,11 @@ Table: Navigation buttons states
 
 Table: Slides number indicators states
 
-| State               | Styles                                                                                    |
-| ------------------- | ----------------------------------------------------------------------------------------- |
-| Default + Disabled  | `color: var(--icon-secondary-neutral)` + `opacity: var(--disabled-opacity)`    |
-| Hover               | `color: var(--icon-secondary-neutral)` + `calc(2 * var(--intergalactic-disabled-opacity, 0.3))`          |
-| Active              | `color: var(--icon-secondary-neutral)`                                                  |
+| State               | Styles                                                                                             |
+| ------------------- | -------------------------------------------------------------------------------------------------- |
+| Default + Disabled  | Use `--icon-secondary-neutral` token  for color, and `--disabled-opacity` token for opacity.|
+| Hover               | Use `--icon-secondary-neutral` token  for color, and  `calc(2 * var(--intergalactic-disabled-opacity, 0.3))` for opacity.          |
+| Active              | Use `--icon-secondary-neutral` token for color.                             |
 
 ## Animation
 

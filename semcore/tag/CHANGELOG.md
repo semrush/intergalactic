@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.18.0] - 2023-11-23
+
+### Added
+
+- Behavior as `Button` when working from the keyboard.
+
 ## [5.17.1] - 2023-11-21
 
 ### Changed

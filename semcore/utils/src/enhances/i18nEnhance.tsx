@@ -119,7 +119,7 @@ export const useAsyncI18nMessages = (
   return store[locale] ?? fallbackMessages;
 };
 export default (container?: MessagesContainer) => {
-  return (props: any) => {
+  return (props: any): { getI18nText: ReturnType<typeof useI18n> } => {
     const { i18n, locale } = props;
     const getI18nText = useI18n(i18n, locale, container);
 

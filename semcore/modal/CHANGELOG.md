@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.19.0] - 2023-11-24
+
+### Added
+
+- `Ghost` view for modals.
+
 ## [4.18.1] - 2023-11-21
 
 ### Changed

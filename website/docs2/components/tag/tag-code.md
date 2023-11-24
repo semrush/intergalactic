@@ -73,7 +73,7 @@ import MathPlusM from '@semcore/ui/icon/MathPlus/m';
 
 const Demo = () => {
   return (
-    <Tag interactive theme='additional'>
+    <Tag interactive theme='additional' onClick={console.log}>
       <Tag.Addon>
         <MathPlusM />
       </Tag.Addon>

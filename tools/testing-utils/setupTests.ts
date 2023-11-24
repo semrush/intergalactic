@@ -1,4 +1,4 @@
-import { expect } from './vitest';
+import { expect, vi } from './vitest';
 import * as axeMatchers from 'vitest-axe/matchers';
 import { toHaveStyle, toHaveFocus, toHaveAttribute } from '@testing-library/jest-dom/matchers';
 import { toMatchImageSnapshot } from './toMatchImageSnapshot';
@@ -15,7 +15,13 @@ Object.defineProperty(window.SVGElement.prototype, 'getBBox', {
   }),
 });
 
-(window as any).matchMedia = () => ({ matches: false });
+(window as any).matchMedia = vi.fn().mockImplementation((query) => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: (e: any) => e('mediaQueryListEvent'),
+  removeListener: vi.fn(),
+}));
 class ResizeObserverMock {
   observe() {}
   unobserve() {}

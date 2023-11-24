@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.10.0] - 2023-11-24
+
+### Changed
+
+- Types for `abstract class RootComponent`.
+
 ## [2.9.2] - 2023-11-21
 
 ### Changed
