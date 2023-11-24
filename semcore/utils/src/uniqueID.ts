@@ -29,7 +29,7 @@ export const useUID = (prefix?: string): string => {
 };
 
 export default (prefix?: string) => {
-  return (props: any) => {
+  return (props: any): { uid: ReturnType<typeof useUID> } => {
     const uid = useUID(prefix);
     return {
       uid,

@@ -5,8 +5,6 @@ tabs: Design('carousel'), A11y('carousel-a11y'), API('carousel-api'), Example('c
 
 ## Carousel
 
-Main component.
-
 ```jsx
 import Carousel from '@semcore/ui/carousel';
 <Carousel />;
