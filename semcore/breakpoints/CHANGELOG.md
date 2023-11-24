@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.12.3] - 2023-11-24
+
+### Fixed
+
+- Matcher function in `MediaList` to use `defaultIndex`.
+
 ## [1.12.2] - 2023-11-21
 
 ### Changed
