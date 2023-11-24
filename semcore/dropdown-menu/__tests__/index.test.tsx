@@ -1,7 +1,8 @@
 import React from 'react';
 import { snapshot } from '@semcore/testing-utils/snapshot';
+import Button from '@semcore/button';
 import { expect, test, describe, beforeEach, vi } from '@semcore/testing-utils/vitest';
-import { cleanup, render, fireEvent, act } from '@semcore/testing-utils/testing-library';
+import { cleanup, render, fireEvent, act, userEvent } from '@semcore/testing-utils/testing-library';
 import { axe } from '@semcore/testing-utils/axe';
 
 import DropdownMenu from '../src';
@@ -171,6 +172,43 @@ describe('DropdownMenu', () => {
     );
 
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
+  test.concurrent('support items and focusable elements at the same time', async ({ expect }) => {
+    const spy = vi.fn();
+    const buttonSpy = vi.fn();
+    const { getByTestId } = render(
+      <DropdownMenu visible>
+        <DropdownMenu.Menu>
+          <DropdownMenu.Item onClick={spy}>Item 1</DropdownMenu.Item>
+          <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+          <Button data-testid={'acceptButton'} onClick={buttonSpy}>
+            Accept
+          </Button>
+        </DropdownMenu.Menu>
+      </DropdownMenu>,
+    );
+
+    const acceptButton = getByTestId('acceptButton');
+
+    await userEvent.keyboard('[Tab]');
+    await userEvent.keyboard('[Tab]');
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).toHaveBeenCalled();
+
+    await userEvent.keyboard('[Tab]');
+    expect(acceptButton).toHaveFocus();
+
+    await userEvent.keyboard('[Enter]');
+    expect(buttonSpy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
+
+    await userEvent.keyboard('[ArrowDown]');
+    await userEvent.keyboard('[Enter]');
+    expect(spy).toHaveBeenCalledTimes(2);
+    expect(buttonSpy).toHaveBeenCalledTimes(1);
   });
 
   test('a11y', async () => {
