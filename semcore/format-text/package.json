@@ -1,7 +1,7 @@
 {
   "name": "@semcore/format-text",
   "description": "Semrush FormatText Component",
-  "version": "4.11.0-prerelease.1",
+  "version": "4.11.0",
   "main": "lib/cjs/index.js",
   "module": "lib/es6/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,11 +12,11 @@
     "build": "pnpm semcore-builder"
   },
   "dependencies": {
-    "@semcore/utils": "4.13.0-prerelease.1",
-    "@semcore/flex-box": "5.11.0-prerelease.1"
+    "@semcore/utils": "4.13.0",
+    "@semcore/flex-box": "5.11.0"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.10.0-prerelease.1",
+    "@semcore/core": "^2.10.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
