@@ -93,6 +93,7 @@ class RootPills extends Component {
 
       if (selectedIndex !== undefined) {
         this.handlers.value(this.itemValues[selectedIndex], event);
+        this.itemRefs[selectedIndex]?.focus();
       }
     } else {
       let focusedIndex = this.itemRefs.findIndex((item) => item === document.activeElement);
