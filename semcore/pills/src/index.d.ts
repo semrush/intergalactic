@@ -11,6 +11,7 @@ export interface IPillsProps<T extends PillsValue = PillsValue>
   extends PillsProps<T>,
     UnknownProperties {}
 export type PillsProps<T extends PillsValue = PillsValue> = NeighborLocationProps &
+  KeyboardFocusProps &
   BoxProps & {
     /** Pills size */
     size?: 'l' | 'm';
