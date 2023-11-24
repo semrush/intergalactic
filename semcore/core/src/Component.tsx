@@ -6,7 +6,6 @@ import React, {
   RefObject,
 } from 'react';
 import { IStyledProps } from './styled';
-import { b } from 'vitest/dist/types-198fd1d9';
 
 /** @deprecated */
 type KnownKeys<T> = {
