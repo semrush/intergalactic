@@ -4,7 +4,7 @@ fileSource: tab-panel
 tabs: Design('tab-panel'), A11y('tab-panel-a11y'), API('tab-panel-api'), Example('tab-panel-code'), Changelog('tab-panel-changelog')
 ---
 
-## Basic usage
+## Manual tab activation
 
 Try changing the page size to observe how the tabs are compressed. Additionally, you have the flexibility to wrap the `<TabPanel.Item />` in other components.
 
@@ -51,17 +51,7 @@ const Demo = () => {
 
 :::
 
-## Custom indents and occupying the entire space
-
-As you may have noticed, the TabPanel doesn't have default margins at the edges. To make the TabPanel span the entire width of its parent block (which may have its own margins), you need to set the desired `padding` and `margin` for it.
-
-```typescript
-<Box p={5}>
-  <TabPanel px={5} mx="-20px" />
-</Box>
-```
-
-## Example of accessible TabPanel
+## Automatic tab activation
 
 ::: sandbox
 
@@ -73,7 +63,7 @@ const Demo = () => {
   const [value, onChange] = React.useState(1);
   return (
     <>
-      <TabPanel value={value} onChange={onChange} aria-label='Page'>
+      <TabPanel value={value} onChange={onChange} behavior='auto' aria-label='Page'>
         <TabPanel.Item value={1} aria-controls='tab-panel-1'>
           Overview
         </TabPanel.Item>
@@ -132,3 +122,13 @@ const Demo = () => {
 </script>
 
 :::
+
+## Custom indents and occupying the entire space
+
+As you may have noticed, the TabPanel doesn't have default margins at the edges. To make the TabPanel span the entire width of its parent block (which may have its own margins), you need to set the desired `padding` and `margin` for it.
+
+```typescript
+<Box p={5}>
+  <TabPanel px={5} mx="-20px" />
+</Box>
+```
