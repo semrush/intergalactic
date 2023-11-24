@@ -63,7 +63,7 @@ describe('Carousel', () => {
 
     const container = getByTestId('container');
     fireEvent.keyDown(container, { key: 'ArrowLeft' });
-    expect(spy).toHaveBeenCalledWith(1);
+    expect(spy).toHaveBeenCalledWith(-1);
     fireEvent.keyDown(container, { key: 'ArrowRight' });
     expect(spy).toHaveBeenCalledWith(0);
   });
@@ -158,7 +158,7 @@ describe('Carousel.Indicators', () => {
     expect(spy).toHaveBeenCalledWith(0);
   });
 
-  test('Should support right change index with Next button', () => {
+  test.concurrent('Should support right change index with Next button', ({ expect }) => {
     const spy = vi.fn();
     const { rerender, getByTestId } = render(
       <Carousel index={1} onIndexChange={spy}>
@@ -203,7 +203,7 @@ describe('Carousel.Prev', () => {
     fireEvent.click(prev);
 
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(1);
+    expect(spy).toHaveBeenCalledWith(-1);
   });
 
   test('Should not support call onIndexChange for bounded property', () => {

@@ -80,11 +80,12 @@ class ModalRoot extends Component {
   }
 
   getCloseProps() {
-    const { getI18nText } = this.asProps;
+    const { getI18nText, ghost } = this.asProps;
 
     return {
       onClick: this.handleIconCloseClick,
       getI18nText,
+      ghost,
     };
   }
 
