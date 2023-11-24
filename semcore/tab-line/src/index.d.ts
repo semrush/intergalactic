@@ -30,6 +30,14 @@ export type TabLineProps<T extends TabLineValue = TabLineValue> = BoxProps &
      * @default null
      * */
     defaultValue?: T;
+
+    /**
+     * Behavior of tabs.
+     * In `auto`, changes the tab immediately when press arrow.
+     * In `manual`, needs to press `space` or `enter` for select a choice.
+     * @default 'auto'
+     */
+    behavior?: 'auto' | 'manual';
   };
 
 /** @deprecated */
