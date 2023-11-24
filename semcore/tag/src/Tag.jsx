@@ -10,6 +10,7 @@ import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 
 import style from './style/tag.shadow.css';
+import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 
 const legacyThemeRecommendedMigration = {
   primary: {
@@ -59,12 +60,20 @@ class RootTag extends Component {
     return { getI18nText, tagId: id || `igc-${uid}-tag`, uid };
   }
 
+  handleKeyDown = (e) => {
+    switch (e.key) {
+      case ' ':
+      case 'Enter':
+        this.asProps.onClick?.(e);
+        break;
+    }
+  };
+
   render() {
     const STag = Root;
     const {
       Children,
       styles,
-      theme,
       color,
       interactive,
       disabled,
@@ -74,6 +83,7 @@ class RootTag extends Component {
       onClick,
       id: outerId,
       uid,
+      onKeyDown,
     } = this.asProps;
     const id = outerId || `igc-${uid}-tag`;
 
@@ -84,6 +94,7 @@ class RootTag extends Component {
         use:interactive={!disabled && interactive}
         tabIndex={interactive && onClick ? 0 : undefined}
         tag-color={resolveColor(color)}
+        onKeyDown={callAllEventHandlers(onKeyDown, this.handleKeyDown)}
       >
         {addonLeft ? <Tag.Addon tag={addonLeft} /> : null}
         {addonTextChildren(Children, Tag.Text, Tag.Addon)}

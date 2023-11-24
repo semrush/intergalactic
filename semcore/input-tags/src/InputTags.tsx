@@ -237,6 +237,8 @@ function InputTag(props: any) {
   const onKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
       props.onClick?.(event);
+
+      return false;
     }
   };
 
