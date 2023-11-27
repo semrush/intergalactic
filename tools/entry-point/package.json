@@ -1,23 +1,18 @@
 {
-  "name": "@semcore/intergalactic",
-  "version": "15.35.3",
+  "name": "intg",
+  "version": "15.36.0",
   "license": "MIT",
   "scripts": {
     "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts",
     "postinstall": "pnpm check-imports"
   },
   "bin": {
-    "publish-one-release": "bin/publish-release.ts",
-    "publish-one-prerelease": "bin/publish-prerelease.ts",
+    "publish-intg-release": "bin/publish-release.ts",
+    "publish-intg-prerelease": "bin/publish-prerelease.ts",
     "check-imports": "bin/check-imports.ts",
     "patch-imports": "bin/patch-imports.ts"
   },
   "exports": {
-    "./ui/*": {
-      "types": "./libs/*/lib/types/index.d.ts",
-      "main": "./libs/*/lib/cjs/index.js",
-      "module": "./libs/*/lib/es6/index.js"
-    },
     "./*": {
       "types": "./libs/*/lib/types/index.d.ts",
       "main": "./libs/*/lib/cjs/index.js",

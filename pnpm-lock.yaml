@@ -82,9 +82,6 @@ importers:
       '@semcore/gcs-upload':
         specifier: workspace:*
         version: link:tools/gcs-upload
-      '@semcore/intergalactic':
-        specifier: workspace:*
-        version: link:ui-kit-lib
       '@semcore/slack-integration':
         specifier: workspace:*
         version: link:tools/slack-integration
@@ -133,6 +130,9 @@ importers:
       inquirer:
         specifier: 6.3.1
         version: 6.3.1
+      intg:
+        specifier: workspace:*
+        version: link:tools/entry-point
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3319,6 +3319,46 @@ importers:
         specifier: 6.3.0
         version: 6.3.0
 
+  tools/entry-point:
+    dependencies:
+      react:
+        specifier: 16.8 - 18
+        version: 18.2.0
+      react-dom:
+        specifier: 16.8 - 18
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@ast-grep/napi':
+        specifier: 0.13.0
+        version: 0.13.0
+      '@semcore/changelog-handler':
+        specifier: '*'
+        version: link:../changelog-handler
+      '@semcore/continuous-delivery':
+        specifier: '*'
+        version: link:../continuous-delivery
+      '@semcore/testing-utils':
+        specifier: 1.0.0
+        version: link:../testing-utils
+      '@types/fs-extra':
+        specifier: 9.0.13
+        version: 9.0.13
+      '@types/react':
+        specifier: 18.0.21
+        version: 18.0.21
+      fast-glob:
+        specifier: 3.2.11
+        version: 3.2.11
+      fs-extra:
+        specifier: 9.0.1
+        version: 9.0.1
+      marked-ast-markdown:
+        specifier: 2.1.0
+        version: 2.1.0
+      tsm:
+        specifier: 2.2.2
+        version: 2.2.2
+
   tools/esbuild-plugin-semcore:
     dependencies:
       '@babel/core':
@@ -3818,46 +3858,6 @@ importers:
       vitest-axe:
         specifier: 0.1.0
         version: 0.1.0(vitest@0.34.5)
-
-  ui-kit-lib:
-    dependencies:
-      react:
-        specifier: 16.8 - 18
-        version: 18.2.0
-      react-dom:
-        specifier: 16.8 - 18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@ast-grep/napi':
-        specifier: 0.13.0
-        version: 0.13.0
-      '@semcore/changelog-handler':
-        specifier: '*'
-        version: link:../tools/changelog-handler
-      '@semcore/continuous-delivery':
-        specifier: '*'
-        version: link:../tools/continuous-delivery
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../tools/testing-utils
-      '@types/fs-extra':
-        specifier: 9.0.13
-        version: 9.0.13
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
-      fast-glob:
-        specifier: 3.2.11
-        version: 3.2.11
-      fs-extra:
-        specifier: 9.0.1
-        version: 9.0.1
-      marked-ast-markdown:
-        specifier: 2.1.0
-        version: 2.1.0
-      tsm:
-        specifier: 2.2.2
-        version: 2.2.2
 
   website:
     dependencies:

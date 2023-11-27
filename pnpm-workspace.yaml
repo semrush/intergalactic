@@ -4,4 +4,3 @@ packages:
   - '!tools/@types'
   - 'website'
   - vite-project
-  - 'ui-kit-lib'
