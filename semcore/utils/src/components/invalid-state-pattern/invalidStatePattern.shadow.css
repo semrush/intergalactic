@@ -1,0 +1,11 @@
+SPattern {
+  width: 6px;
+  height: calc(100% - 2px);
+  position: absolute;
+  background-image: repeating-linear-gradient(315deg,#ff4953 0,#ff4953 2px,transparent 0,transparent 50%);
+  background-size: 5px 5px;
+  background-color: #fff;
+  border-bottom-left-radius: var(--intergalactic-addon-rounded, 4px);
+  border-top-left-radius: var(--intergalactic-addon-rounded, 4px);
+  margin: 1px 0;
+}

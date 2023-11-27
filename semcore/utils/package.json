@@ -7,11 +7,12 @@
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --modules=cjs"
+    "build": "pnpm semcore-builder --modules=cjs --source=js,ts"
   },
   "devDependencies": {
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
     "@semcore/core": "^2",
+    "@semcore/flex-box": "^5",
     "@semcore/testing-utils": "1.0.0",
     "@types/chroma-js": "^2.4.0",
     "@types/hoist-non-react-statics": "^3.3.1",
@@ -33,6 +34,7 @@
   },
   "peerDependencies": {
     "@semcore/core": "^2.10.0",
+    "@semcore/flex-box": "^5.11.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

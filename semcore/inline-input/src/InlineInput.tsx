@@ -17,6 +17,7 @@ import {
   InputNumberValueProps,
 } from '@semcore/input-number';
 import { IRootComponentHandlers } from '@semcore/core';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 type OnConfirm = (
   value: string,
@@ -192,6 +193,8 @@ class InlineInputBase extends Component<RootAsProps> {
       inputHandlerRefs: this.inputHandlersRef,
       increment: this.increment,
       decrement: this.decrement,
+      onFocus: this.bindHandlerValueFocused(true),
+      onBlur: this.bindHandlerValueFocused(false),
     };
   }
   getNumberControlsProps() {
@@ -258,7 +261,7 @@ class InlineInputBase extends Component<RootAsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
-    const { Children, styles, getI18nText } = this.asProps;
+    const { Children, styles, getI18nText, state } = this.asProps;
     const { focused } = this.state;
 
     return sstyled(styles)(
@@ -270,6 +273,9 @@ class InlineInputBase extends Component<RootAsProps> {
         aria-label={getI18nText('keyboardHint')}
       >
         <SUnderline>
+          {state === 'invalid' && (
+            <InvalidPattern style={{ marginLeft: '-1px', borderRadius: '0' }} />
+          )}
           <Children />
         </SUnderline>
       </SInlineInput>,

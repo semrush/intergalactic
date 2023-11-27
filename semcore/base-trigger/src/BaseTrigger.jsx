@@ -7,6 +7,7 @@ import addonTextChildren from '@semcore/utils/lib/addonTextChildren';
 import logger from '@semcore/utils/lib/logger';
 import animatedSizeEnhance from '@semcore/utils/lib/enhances/animatedSizeEnhance';
 import { cssVariableEnhance } from '@semcore/utils/lib/useCssVariable';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/base-trigger.shadow.css';
 
@@ -42,7 +43,7 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const { Children, styles, theme, neighborLocation, empty } = this.asProps;
+    const { Children, styles, theme, neighborLocation, empty, state } = this.asProps;
 
     logger.warn(
       theme !== undefined,
@@ -56,6 +57,7 @@ class RootBaseTrigger extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SBaseTrigger render={Box} neighborLocation={neighborLocation} state={theme}>
+              {state === 'invalid' && <InvalidPattern ml={-2} />}
               <SInner>
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
               </SInner>

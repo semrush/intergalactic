@@ -4,6 +4,7 @@ import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import canUseDOM from '@semcore/utils/lib/canUseDOM';
 import cssToIntDefault from '@semcore/utils/lib/cssToIntDefault';
 import rafTrottle from '@semcore/utils/lib/rafTrottle';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 import createComponent, { Component, sstyled, Root } from '@semcore/core';
 
 import style from './style/textarea.shadow.css';
@@ -107,9 +108,15 @@ class Textarea extends Component {
 
   render() {
     const STextarea = Root;
-    const { styles } = this.asProps;
+    const SContainer = 'div';
+    const { styles, state } = this.asProps;
 
-    return sstyled(styles)(<STextarea render={Box} tag='textarea' ref={this.setRef} />);
+    return sstyled(styles)(
+      <SContainer>
+        {state === 'invalid' && <InvalidPattern style={{ marginLeft: '1px' }} />}
+        <STextarea render={Box} tag='textarea' ref={this.setRef} />
+      </SContainer>,
+    );
   }
 }
 
