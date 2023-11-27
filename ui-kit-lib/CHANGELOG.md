@@ -1,4 +1,71 @@
-## [15.35.2] - 2023-11-15
+## [15.35.3] - 2023-11-21
+
+### @semcore/breadcrumbs
+
+- **Fixed** `aria-current` value.
+
+### @semcore/breakpoints
+
+- **Fixed** Matcher function in `MediaList` to use `defaultIndex`.
+
+### @semcore/carousel
+
+- **Changed** Some styles in controls were changed.
+
+### @semcore/core
+
+- **Changed** Types for `abstract class RootComponent`.
+
+### @semcore/d3-chart
+
+- **Fixed** Correct types for `Tooltip`s children render function.
+
+### @semcore/dropdown-menu
+
+- **Added** Support for both non-focusable and focusable items in DropdownMenu.
+
+### @semcore/input-number
+
+- **Added** Reexport utils and types.
+
+### @semcore/modal
+
+- **Added** `Ghost` view for modals.
+
+### @semcore/pills
+
+- **Added** New behavior `auto` instead of `radio` and `manual` instead of `tags`.
+- **Fixed** Selection of disabled `Pills.Item`.
+
+### @semcore/tab-line
+
+- **Added** Behavior `auto` and `manual`.
+
+### @semcore/tab-panel
+
+- **Added** Behavior `auto` and `manual`.
+
+### @semcore/tag
+
+- **Added** Behavior as `Button` when working from the keyboard.
+
+### @semcore/tooltip
+
+- **Fixed** `aria-describedby` instead of `aria-labelledby`.
+- **Fixed** Working that `aria` property in uncontrolled mode.
+
+### @semcore/utils
+
+- **Added** Types for enhances.
+- **Added** Pass `props` from component into `onNeighborChange` in `a11yEnhance` as a second args.
+- **Added** New `findAllComponents` (for passed `Children`) util method.
+- **Changed** Values for `--facebook`, `--twitter` and `--linkedIn` variables to new ones.
+
+## [15.35.2] - 2023-11-20
+
+### @semcore/data-table
+
+- **Changed** Removed animation from sort icon.
 
 ## [15.35.1] - 2023-11-14
 
