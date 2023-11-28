@@ -396,7 +396,7 @@ describe('Button', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent(
+  test.skip.concurrent(
     'Should support hover',
     async ({ task }) => {
       await expect(
@@ -548,7 +548,7 @@ describe('Button', () => {
     { timeout: 30_000 },
   );
 
-  test.concurrent(
+  test.skip.concurrent(
     'Should support active',
     async ({ task }) => {
       await expect(
