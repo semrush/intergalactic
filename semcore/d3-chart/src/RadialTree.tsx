@@ -105,7 +105,7 @@ export type RadialTreeProps = {
    */
   textSize?: number;
   /**
-   * Used to define the active radian in controlled way. Active radian is highligted with inreased cap size.
+   * Used to define the active radian in controlled way. Active radian is highlighted with inreased cap size.
    */
   activeKey?: string | null;
   onActiveKeyChange?: (activeKey: string | null) => void;
