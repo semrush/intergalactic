@@ -68,7 +68,7 @@ export const deliverPrerelease = async () => {
 };
 
 export const publishRelease = async () => {
-  const unlockedRelease = await getUnlockedPrerelease();
+  const unlockedRelease = await getUnlockedPrerelease('semcore/ui/package.json');
   if (!unlockedRelease) {
     log('No unlocked prerelease found.');
     return;
@@ -104,4 +104,5 @@ export {
   patchReleaseChangelog,
   serializeReleaseChangelog,
   publishReleaseNotes,
+  getUnlockedPrerelease,
 };

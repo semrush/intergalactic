@@ -3,7 +3,7 @@ import { log } from './logger';
 
 const git = Git();
 
-export const commitPatch = async () => {
+export const commitPatch = async (tag?: string) => {
   log('Rebasing on git origin...');
   try {
     await git.pull('origin', 'master', { '--rebase': 'true' });
@@ -14,8 +14,11 @@ export const commitPatch = async () => {
   }
   log('Rebased on git origin.');
   await git.add('.');
-  await git.commit('');
+  await git.commit(['[chore] changed versions from beta prereleases to latests']);
+  if (tag) {
+    await git.tag(['-f', tag]);
+  }
   log('Pushing to git origin...');
-  await git.push('origin', 'master', { '--follow-tags': null });
+  await git.push('origin', 'master');
   log('Pushed to git origin.');
 };
