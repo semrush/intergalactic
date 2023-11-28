@@ -20,8 +20,15 @@ export const updateReleaseChangelog = async (
     currentDependencies,
     Object.keys(currentDependencies),
   );
-  const { changelogs: patchedReleaseChangelog, version: newVersion } = changelogPatch;
-  const changelogMarkdownAst = serializeReleaseChangelog(patchedReleaseChangelog);
+
+  if (changelogPatch.changelogs[0].changes.length === 0) {
+    return {
+      changelogs: [],
+      version: null,
+    };
+  }
+
+  const changelogMarkdownAst = serializeReleaseChangelog(changelogPatch.changelogs);
   const changelogText = formatMarkdown(toMarkdown(changelogMarkdownAst));
   const changelogFilePath = resolvePath(releasePackageDir, 'CHANGELOG.md');
   await fs.writeFile(changelogFilePath, changelogText);

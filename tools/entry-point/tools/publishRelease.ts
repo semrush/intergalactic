@@ -7,7 +7,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import { commitPatch } from './commitPatch';
 import { publishTarball } from './publishTarball';
-import { log } from '@semcore/continuous-delivery/src/utils';
+import { log } from './logger';
 import { updateVersionInComponents } from './updateVersionInComponents';
 
 const filename = fileURLToPath(import.meta.url);
@@ -34,10 +34,12 @@ const publishRelease = async () => {
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
   // 3.1) Check that all tests are passed and release is unlocked
-  const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath);
+  const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath, log);
   if (!unlockedRelease) {
     log('No unlocked prerelease found.');
-    return;
+    if (!process.argv.includes('--dry-run')) {
+      return;
+    }
   }
 
   // 4) Update versions in components.json

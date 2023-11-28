@@ -5,8 +5,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import { publishTarball } from './publishTarball';
 import Git from 'simple-git';
-import { commitPatch } from './commitPatch';
-import { updateComponentsVersions } from './updateComponentsVersions';
+import { log } from './logger';
 
 const git = Git();
 const filename = fileURLToPath(import.meta.url);
@@ -29,6 +28,11 @@ const publishPreRelease = async () => {
   const { version, changelogs } = await updateReleaseChangelog(packageJson, deps);
   const hash = await git.revparse(['HEAD']);
   const shortHash = hash.slice(0, 8);
+
+  if (version === null) {
+    log('No changes from previous version was found. Skip publish prerelease.');
+    return;
+  }
 
   // 3) Update version in package.json
   packageJson.version = `${version}-prerelease-${shortHash}`;

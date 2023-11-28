@@ -3332,10 +3332,10 @@ importers:
         specifier: 0.13.0
         version: 0.13.0
       '@semcore/changelog-handler':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../changelog-handler
       '@semcore/continuous-delivery':
-        specifier: '*'
+        specifier: workspace:*
         version: link:../continuous-delivery
       '@semcore/testing-utils':
         specifier: 1.0.0

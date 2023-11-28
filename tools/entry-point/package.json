@@ -3,7 +3,7 @@
   "version": "15.36.0",
   "license": "MIT",
   "scripts": {
-    "clear": "tsm --require=../.ci/tsm-filter-warnings.js tools/clear.ts",
+    "clear": "tsm --require=../../.ci/tsm-filter-warnings.js tools/clear.ts",
     "postinstall": "pnpm check-imports"
   },
   "bin": {
@@ -25,8 +25,8 @@
     "react-dom": "16.8 - 18"
   },
   "devDependencies": {
-    "@semcore/continuous-delivery": "*",
-    "@semcore/changelog-handler": "*",
+    "@semcore/continuous-delivery": "workspace:*",
+    "@semcore/changelog-handler": "workspace:*",
     "@semcore/testing-utils": "1.0.0",
     "@types/fs-extra": "9.0.13",
     "@types/react": "18.0.21",
@@ -39,6 +39,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
-    "directory": "ui-kit-lib"
+    "directory": "tools/entry-point"
   }
 }
