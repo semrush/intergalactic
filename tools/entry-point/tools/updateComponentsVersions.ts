@@ -7,11 +7,7 @@ import { Changelog } from '@semcore/changelog-handler';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
 
-export function updateComponentsVersions(
-  packages: string[],
-  changelogs: Changelog[],
-  shortHash?: string,
-) {
+export function updateComponentsVersions(packages: string[]) {
   log('Update components versions...');
 
   const newDeps: Record<string, string> = {};
@@ -23,18 +19,6 @@ export function updateComponentsVersions(
 
     newDeps[pack] = packageJsonData.version;
   });
-
-  changelogs
-    .filter((changelog) => changelog.component !== '@semcore/ui')
-    .forEach((changelog) => {
-      const newDepsVersion = newDeps[changelog.component];
-
-      if (newDepsVersion !== changelog.version) {
-        newDeps[changelog.component] = shortHash
-          ? `${changelog.version}-prerelease-${shortHash}`
-          : changelog.version;
-      }
-    });
 
   fs.writeJSONSync(path.resolve(dirname, 'components.json'), newDeps, { spaces: 2 });
 }

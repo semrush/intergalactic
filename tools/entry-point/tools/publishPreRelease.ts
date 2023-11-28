@@ -34,10 +34,7 @@ const publishPreRelease = async () => {
   packageJson.version = `${version}-prerelease-${shortHash}`;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
-  // 4) Update versions in components.json to prerelease
-  updateComponentsVersions(packages, changelogs, shortHash);
-
-  // 5) Publish package
+  // 4) Publish package
   await publishTarball(packageJson.name);
 };
 

@@ -8,6 +8,7 @@ import fs from 'fs-extra';
 import { commitPatch } from './commitPatch';
 import { publishTarball } from './publishTarball';
 import { log } from '@semcore/continuous-delivery/src/utils';
+import { updateVersionInComponents } from './updateVersionInComponents';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
@@ -18,13 +19,6 @@ const publishRelease = async () => {
   }
 
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
-
-  const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath);
-  if (!unlockedRelease) {
-    log('No unlocked prerelease found.');
-    return;
-  }
-
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
   const packages = Object.keys(deps);
@@ -39,16 +33,27 @@ const publishRelease = async () => {
   packageJson.version = version;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
+  // 3.1) Check that all tests are passed and release is unlocked
+  const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath);
+  if (!unlockedRelease) {
+    log('No unlocked prerelease found.');
+    return;
+  }
+
   // 4) Update versions in components.json
-  updateComponentsVersions(packages, changelogs);
+  updateComponentsVersions(packages);
 
-  // 5) Publish package
-  await publishTarball(packageJson.name);
+  // 4.1) Update versions in package.json in all checked components
+  // TODO - For now, they updates in old release process. Uncomment after it will be removed.
+  // updateVersionInComponents(changelogs);
 
-  // 6) Commit changes in package.json and components.json
+  // 5) Commit changes in package.json and components.json
   if (!process.argv.includes('--dry-run') && version) {
     await commitPatch(version);
   }
+
+  // 6) Publish package
+  await publishTarball(packageJson.name);
 
   // 7) Release notes in slack channel
   if (!process.argv.includes('--dry-run') && version) {
