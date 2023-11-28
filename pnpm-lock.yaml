@@ -2709,7 +2709,7 @@ importers:
         specifier: 5.17.2
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.18.0
+        specifier: 3.18.1-prerelease.1
         version: link:../carousel
       '@semcore/checkbox':
         specifier: 7.14.0
@@ -2730,7 +2730,7 @@ importers:
         specifier: 4.18.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.17.0
+        specifier: 4.18.0-prerelease.1
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.11.0
