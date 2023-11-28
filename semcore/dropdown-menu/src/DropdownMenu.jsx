@@ -26,6 +26,7 @@ class DropdownMenuRoot extends Component {
     defaultHighlightedIndex: null,
     i18n: localizedMessages,
     locale: 'en',
+    interaction: 'click',
   };
 
   popperRef = React.createRef();
@@ -48,18 +49,15 @@ class DropdownMenuRoot extends Component {
     const targetTagName = e.target.tagName;
 
     if (e.key === ' ' && INTERACTION_TAGS.includes(targetTagName)) return;
-    if (e.key === 'Enter' && (targetTagName === 'TEXTAREA' || targetTagName === 'BUTTON')) return;
+    if (e.key === 'Enter') {
+      if (targetTagName === 'TEXTAREA') return;
+      if (place === 'popper' && (targetTagName === 'BUTTON' || targetTagName === 'A')) return;
+    }
 
-    const { visible, interaction } = this.asProps;
+    const { visible } = this.asProps;
     const element = this.popperRef.current;
 
-    if (
-      place === 'popper' &&
-      interaction !== 'focus' &&
-      visible &&
-      e.key === 'Tab' &&
-      hasFocusableIn(element)
-    ) {
+    if (place === 'popper' && visible && e.key === 'Tab' && hasFocusableIn(element)) {
       this.handlers.highlightedIndex(null);
 
       return;
@@ -76,12 +74,12 @@ class DropdownMenuRoot extends Component {
     switch (e.key) {
       case 'ArrowDown': {
         isVisible && this.moveHighlightedIndex(amount, e);
-        targetTagName === 'BUTTON' && element.focus();
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && element.focus();
         break;
       }
       case 'ArrowUp': {
         isVisible && this.moveHighlightedIndex(-amount, e);
-        targetTagName === 'BUTTON' && element.focus();
+        (targetTagName === 'BUTTON' || targetTagName === 'A') && element.focus();
         break;
       }
       case ' ':
@@ -120,7 +118,8 @@ class DropdownMenuRoot extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking, interaction, highlightedIndex } =
+      this.asProps;
 
     return {
       ref: this.popperRef,
@@ -129,6 +128,8 @@ class DropdownMenuRoot extends Component {
       id: `igc-${uid}-popper`,
       disablePortal,
       ignorePortalsStacking,
+      focusMaster: interaction === 'click',
+      focusable: highlightedIndex === null,
     };
   }
 

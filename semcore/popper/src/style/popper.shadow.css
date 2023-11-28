@@ -4,7 +4,7 @@ SPopper {
   color: var(--intergalactic-text-primary, #191b23);
 }
 
-SPopper[keyboardFocused]:focus:after {
+SPopper[keyboardFocused][focusable]:focus:after {
   position: absolute;
   display: block;
   content: '';

@@ -92,6 +92,17 @@ export type PopperPopperProps = BoxProps &
      * Disabled focus trap, autofocus and focus return
      */
     disableEnforceFocus?: boolean;
+
+    /**
+     * Enable new focus lock scope in current Popover
+     */
+    focusMaster?: boolean;
+
+    /**
+     * Disable focus on popper container (disabled only styles)
+     * @default true
+     */
+    focusable?: boolean;
   };
 
 /** @deprecated */

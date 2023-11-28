@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.11.0] - 2023-11-28
+
+### Added
+
+- Prop `focusMaster` in `Popper` for enable new focus lock scope.
+
 ## [5.10.0] - 2023-11-24
 
 ### Changed

@@ -22,6 +22,7 @@ class Dropdown extends Component {
     defaultVisible: false,
     i18n: localizedMessages,
     locale: 'en',
+    interaction: 'click',
   };
   static enhance = [uniqueIDEnhancement(), i18nEnhance(localizedMessages)];
 
@@ -67,7 +68,7 @@ class Dropdown extends Component {
     const element = this.popperRef.current;
 
     if (
-      interaction !== 'focus' &&
+      interaction === 'click' &&
       visible &&
       e.key === 'Tab' &&
       element &&
@@ -100,7 +101,7 @@ class Dropdown extends Component {
   }
 
   getPopperProps() {
-    const { uid, disablePortal, ignorePortalsStacking } = this.asProps;
+    const { uid, disablePortal, ignorePortalsStacking, interaction } = this.asProps;
 
     return {
       id: `igc-${uid}-popper`,
@@ -108,6 +109,7 @@ class Dropdown extends Component {
       disablePortal,
       ignorePortalsStacking,
       ref: this.popperRef,
+      focusMaster: interaction === 'click',
     };
   }
 

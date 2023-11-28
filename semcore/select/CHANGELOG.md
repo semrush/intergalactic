@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.20.0] - 2023-11-28
+
+### Added
+
+- `aria-disable` attributes for disabled `Trigger` and `Option` components.
+
 ## [4.19.0] - 2023-11-24
 
 ### Changed
