@@ -1,11 +1,10 @@
 SPattern {
   width: 6px;
-  height: calc(100% - 2px);
+  height: 100%;
   position: absolute;
-  background-image: repeating-linear-gradient(315deg,#ff4953 0,#ff4953 2px,transparent 0,transparent 50%);
-  background-size: 5px 5px;
-  background-color: #fff;
-  border-bottom-left-radius: var(--intergalactic-addon-rounded, 4px);
-  border-top-left-radius: var(--intergalactic-addon-rounded, 4px);
-  margin: 1px 0;
+  background-image: repeating-linear-gradient(315deg,var(--intergalactic-border-critical-active, #D1002F) 0,var(--intergalactic-border-critical-active, #D1002F) 2px,transparent 0,transparent 50%);
+  background-size: 6px 6px;
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
 }

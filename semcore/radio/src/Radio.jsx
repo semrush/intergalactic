@@ -257,7 +257,7 @@ const RadioMark = (props) => {
   return sstyled(styles)(
     <SValue render={Box} tag='div' use:theme={resolveColor(theme)}>
       {state === 'invalid' && !checked && (
-        <InvalidPattern style={{ marginLeft: '1px', width: '4px' }} />
+        <InvalidPattern style={{ height: 'calc(100% - 2px)', margin: '1px 0 1px 1px', borderBottomLeftRadius: '12px', borderTopLeftRadius: '12px' }} />
       )}
     </SValue>,
   );
