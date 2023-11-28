@@ -569,7 +569,7 @@ declare const DateRangeComparator: Intergalactic.Component<
   DateRangeComparatorContext & CalendarDaysContext
 > & {
   Popper: typeof Dropdown.Popper;
-  Header: typeof Box;
+  Header: typeof Flex;
   Prev: typeof Button;
   Next: typeof Button;
   Calendar: typeof Calendar;
@@ -578,7 +578,6 @@ declare const DateRangeComparator: Intergalactic.Component<
 
   CalendarHeader: typeof Box;
   Title: typeof Box;
-  Header: typeof Flex;
 
   Trigger: Intergalactic.Component<'div', DropdownTriggerProps & BaseTriggerProps> & {
     Addon: typeof BaseTrigger.Addon;
@@ -600,7 +599,6 @@ export {
   DateRangePicker,
   MonthPicker,
   MonthRangePicker,
-  DateRangeComparator,
   DateRangeComparator,
   MonthDateRangeComparator,
 };

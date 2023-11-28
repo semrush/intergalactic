@@ -305,7 +305,7 @@ describe('DatePicker.Header', () => {
   });
 });
 
-describe.only('DateRangeComparator', () => {
+describe('DateRangeComparator', () => {
   beforeEach(() => {
     global.Date = RealDate;
     cleanup();
