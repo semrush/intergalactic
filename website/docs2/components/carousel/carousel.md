@@ -40,7 +40,7 @@ Table: Carousel default styles
 
 | Element            | Default styles                                                        |
 | ------------------ | --------------------------------------------------------------------- |
-| Navigation buttons | Use L size of [Button](components/button/) with `ChevronLeft`/`ChevronRight` icons with L size as well. |
+| Navigation buttons | Use L size of [Button](/components/button/) with `ChevronLeft`/`ChevronRight` icons with L size as well. |
 | Indicator          | Indicator has 12px * 12px size and uses `--icon-secondary-neutral` token for color.  |
 | Carousel item (image, etc.) | Use `--surface-rounded` token for border-radius. |
 
@@ -64,7 +64,7 @@ This example has the same styles as the example on the light background, except 
 
 ### Navigation buttons
 
-Navigation buttons are always center aligned and have styles of [Button](components/button) with `use="tertiary"` and `theme="muted"`. Inside the modal buttons change their theme to `theme="invert"`.
+Navigation buttons are always center aligned and have styles of [Button](/components/button/) with `use="tertiary"` and `theme="muted"`. Inside the modal buttons change their theme to `theme="invert"`.
 
 Table: Navigation buttons states
 
