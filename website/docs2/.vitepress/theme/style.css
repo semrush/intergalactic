@@ -553,7 +553,12 @@ img {
   margin-top: 24px;
 }
 
-.vp-doc .documentation-sandbox .playground-runtime a {
+.vp-doc a {
+  color: var(--vp-c-indigo-2) !important;
+}
+
+.vp-doc .documentation-sandbox .playground-runtime a,
+.vp-doc .documentation-sandbox .playground-runtime a:visited {
   color: var(--vp-c-indigo-2) !important;
 }
 
