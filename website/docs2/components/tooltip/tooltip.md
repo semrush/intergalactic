@@ -33,16 +33,6 @@ const EVENT = ['hover', 'click', 'focus'];
 const App = PlaygroundGeneration((createGroupWidgets) => {
   const { radio, select } = createGroupWidgets('Tooltip');
 
-  const interactive = select({
-    key: 'interactive',
-    defaultValue: 'hover',
-    label: 'Interactive event',
-    options: EVENT.map((value) => ({
-      name: value,
-      value,
-    })),
-  });
-
   const placement = select({
     key: 'placement',
     defaultValue: 'top',
@@ -77,7 +67,6 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     <Tooltip
       title='Hey there! I am just a tooltip, not a magic genie, but I am here to sprinkle some knowledge on you!'
       placement={placement}
-      interaction={interactive}
       theme={theme}
     >
       <Button>Button</Button>

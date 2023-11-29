@@ -5,6 +5,7 @@ import capitalizeFirstLetter from '@semcore/utils/lib/capitalizeFirstLetter';
 import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
+import logger from '@semcore/utils/lib/logger';
 
 import style from './style/dropdown.shadow.css';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
@@ -115,6 +116,12 @@ class Dropdown extends Component {
 
   render() {
     const { Children, forwardRef, modifiers = [], stretch, ...other } = this.asProps;
+
+    logger.warn(
+      other.interaction !== 'click' && other.interaction !== 'focus',
+      "You shouldn't use prop `interaction` except with `click` or `focus` value.",
+      other['data-ui-name'] || Dropdown.displayName,
+    );
 
     return (
       <Popper

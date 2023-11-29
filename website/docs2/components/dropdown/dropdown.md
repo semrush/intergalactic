@@ -34,7 +34,7 @@ const App = PlaygroundGeneration((createGroupWidgets) => {
     key: 'interactive',
     defaultValue: 'click',
     label: 'Interactive event',
-    options: ['hover', 'click', 'focus'],
+    options: ['click', 'focus'],
   });
 
   const stretch = radio({

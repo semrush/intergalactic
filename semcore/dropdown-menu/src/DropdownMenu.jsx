@@ -8,6 +8,7 @@ import uniqueIDEnhancement from '@semcore/utils/lib/uniqueID';
 import i18nEnhance from '@semcore/utils/lib/enhances/i18nEnhance';
 import { localizedMessages } from './translations/__intergalactic-dynamic-locales';
 import { hasFocusableIn } from '@semcore/utils/lib/use/useFocusLock';
+import logger from '@semcore/utils/lib/logger';
 
 import scrollStyles from './styleScrollArea';
 import style from './style/dropdown-menu.shadow.css';
@@ -217,8 +218,14 @@ class DropdownMenuRoot extends Component {
   }
 
   render() {
-    const { Children } = this.asProps;
+    const { Children, interaction, 'data-ui-name': dataUiName } = this.asProps;
     const props = {};
+
+    logger.warn(
+      interaction !== 'click' && interaction !== 'focus',
+      "You shouldn't use prop `interaction` except with `click` or `focus` value.",
+      dataUiName || DropdownMenuRoot.displayName,
+    );
 
     this.itemProps = [];
 
