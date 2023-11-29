@@ -261,6 +261,7 @@ class InlineInputBase extends Component<RootAsProps> {
   render() {
     const SInlineInput = Root;
     const SUnderline = 'div';
+    const SInvalidPattern = InvalidPattern;
     const { Children, styles, getI18nText, state } = this.asProps;
     const { focused } = this.state;
 
@@ -273,9 +274,7 @@ class InlineInputBase extends Component<RootAsProps> {
         aria-label={getI18nText('keyboardHint')}
       >
         <SUnderline>
-          {state === 'invalid' && (
-            <InvalidPattern style={{ marginLeft: '-1px', borderRadius: '0' }} />
-          )}
+          {state === 'invalid' && <SInvalidPattern />}
           <Children />
         </SUnderline>
       </SInlineInput>,

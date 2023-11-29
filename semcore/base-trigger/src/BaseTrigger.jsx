@@ -43,7 +43,8 @@ class RootBaseTrigger extends Component {
   render() {
     const SBaseTrigger = Root;
     const SInner = 'div';
-    const { Children, styles, theme, neighborLocation, empty, state } = this.asProps;
+    const SInvalidPattern = InvalidPattern;
+    const { Children, styles, theme, neighborLocation, empty, state, size } = this.asProps;
 
     logger.warn(
       theme !== undefined,
@@ -57,7 +58,7 @@ class RootBaseTrigger extends Component {
         {(neighborLocation) =>
           sstyled(styles)(
             <SBaseTrigger render={Box} neighborLocation={neighborLocation} state={theme}>
-              {state === 'invalid' && <InvalidPattern ml={-2} />}
+              {state === 'invalid' && <SInvalidPattern size={size} />}
               <SInner>
                 {addonTextChildren(Children, BaseTrigger.Text, BaseTrigger.Addon, empty)}
               </SInner>

@@ -61,4 +61,12 @@ STextarea[state='invalid'] {
 SContainer {
   display: inline-block;
   position: relative;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+SInvalidPattern {
+  margin-left: 1px;
+  margin-top: 1px;
+  height: calc(100% - 2px);
 }

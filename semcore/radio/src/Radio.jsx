@@ -252,20 +252,12 @@ Control.displayName = 'Control';
 
 const RadioMark = (props) => {
   const SValue = Root;
+  const SInvalidPattern = InvalidPattern;
   const { theme, styles, resolveColor, state, checked } = props;
 
   return sstyled(styles)(
     <SValue render={Box} tag='div' use:theme={resolveColor(theme)}>
-      {state === 'invalid' && !checked && (
-        <InvalidPattern
-          style={{
-            height: 'calc(100% - 2px)',
-            margin: '1px 0 1px 1px',
-            borderBottomLeftRadius: '12px',
-            borderTopLeftRadius: '12px'
-          }}
-        />
-      )}
+      {state === 'invalid' && !checked && <SInvalidPattern />}
     </SValue>,
   );
 };

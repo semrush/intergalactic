@@ -109,11 +109,12 @@ class Textarea extends Component {
   render() {
     const STextarea = Root;
     const SContainer = 'div';
+    const SInvalidPattern = InvalidPattern;
     const { styles, state } = this.asProps;
 
     return sstyled(styles)(
       <SContainer>
-        {state === 'invalid' && <InvalidPattern style={{ marginLeft: '1px' }} />}
+        {state === 'invalid' && <SInvalidPattern />}
         <STextarea render={Box} tag='textarea' ref={this.setRef} />
       </SContainer>,
     );

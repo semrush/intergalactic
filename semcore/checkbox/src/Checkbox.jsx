@@ -125,6 +125,7 @@ class ValueRoot extends Component {
       theme,
       keyboardFocused,
       checked,
+      indeterminate,
       includeInputProps,
       resolveColor,
       ...other
@@ -137,6 +138,7 @@ class ValueRoot extends Component {
       state,
       keyboardFocused,
       checked,
+      indeterminate,
       resolveColor,
       ...propsWithoutChildren,
     };
@@ -186,16 +188,11 @@ Control.displayName = 'Control';
 
 const CheckMark = (props) => {
   const SCheckbox = Root;
-  const { theme, styles, resolveColor, state, checked } = props;
+  const SInvalidPattern = InvalidPattern;
+  const { theme, styles, resolveColor, state, checked, indeterminate } = props;
   return sstyled(styles)(
     <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)}>
-      {state === 'invalid' && !checked && <InvalidPattern
-      style={{
-        height: 'calc(100% - 2px)',
-        margin: '1px 0 1px 1px',
-        borderBottomLeftRadius: '4px',
-        borderTopLeftRadius: '4px'
-        }} />}
+      {state === 'invalid' && !checked && !indeterminate && <SInvalidPattern />}
     </SCheckbox>,
   );
 };
