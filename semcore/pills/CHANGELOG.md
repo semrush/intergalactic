@@ -2,6 +2,16 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [5.12.0] - 2023-11-23
+
+### Added
+
+- New behavior `auto` instead of `radio` and `manual` instead of `tags`.
+
+### Fixed
+
+- Selection of disabled `Pills.Item`.
+
 ## [5.11.2] - 2023-11-21
 
 ### Changed

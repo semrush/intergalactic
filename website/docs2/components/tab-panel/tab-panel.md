@@ -14,7 +14,17 @@ import PlaygroundGeneration from '@components/PlaygroundGeneration';
 
 const App = PlaygroundGeneration(
   (createGroupWidgets) => {
-    const { bool, radio } = createGroupWidgets('TabPanel');
+    const { bool, select } = createGroupWidgets('TabPanel');
+
+    const behavior = select({
+      key: 'behavior',
+      defaultValue: 'manual',
+      label: 'Behavior',
+      options: [
+        {name: 'auto', value: 'auto'},
+        {name: 'manual', value: 'manual'}
+      ]
+    });
 
     const disabled = bool({
       key: 'disabled',
@@ -29,7 +39,7 @@ const App = PlaygroundGeneration(
     });
 
     return (
-      <TabPanel defaultValue={1}>
+      <TabPanel defaultValue={1} behavior={behavior}>
         <TabPanel.Item value={1}>Overview</TabPanel.Item>
         <TabPanel.Item value={2}>Issues</TabPanel.Item>
         <TabPanel.Item disabled={disabled} value={3}>

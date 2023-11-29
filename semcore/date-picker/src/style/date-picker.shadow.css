@@ -59,6 +59,19 @@ SIndicator {
   color: var(--intergalactic-text-secondary, #6c6e79);
 }
 
+SRangeIndicator {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+SRangeIndicator[range='value'] {
+  background-color: var(--intergalactic-date-picker-cell-active, #2bb3ff);
+}
+
+SRangeIndicator[range='compare'] {
+  background-color: var(--intergalactic-date-picker-cell-comparison-active, #8649e1);
+}
+
 SHumanizedDate {
   position: absolute;
   pointer-events: none;
@@ -107,4 +120,22 @@ SDateRange SInputMask:focus-within SMask {
 SRangeSep[fulfilled],
 SDateRange:focus-within SRangeSep {
   color: var(--intergalactic-text-primary, #191b23);
+}
+
+SRangeComparatorHeader {
+  border-bottom: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  padding: var(--intergalactic-spacing-4x, 16px);
+}
+
+SRangeCalendar {
+  padding: var(--intergalactic-spacing-4x, 16px);
+}
+
+SFooter {
+  border-top: 1px solid var(--intergalactic-border-primary, #c4c7cf);
+  padding: var(--intergalactic-spacing-4x, 16px);
+}
+
+SPeriodsList {
+  padding: var(--intergalactic-spacing-4x, 16px);
 }
