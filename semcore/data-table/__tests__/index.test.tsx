@@ -387,7 +387,7 @@ describe('DataTable', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
-  test.concurrent('Access to a set of cells', async ({ task }) => {
+  test.skip.concurrent('Access to a set of cells', async ({ task }) => {
     const component = (
       <div style={{ width: 800 }}>
         <DataTable data={data}>

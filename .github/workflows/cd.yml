@@ -138,9 +138,12 @@ jobs:
       - name: Install restored dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Test setup
+        id: test-setup
+        run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test
+        run: pnpm test:docker
       - name: Save test results as artifacts
         if: failure()
         uses: actions/upload-artifact@v3

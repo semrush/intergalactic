@@ -1,12 +1,13 @@
-import * as request from 'request';
-import * as util from 'util';
 import * as path from 'path';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from './testing-library';
 import { vi } from './vitest';
 
-const post = util.promisify(request.post);
+import playwright from 'playwright';
+
+let browser: playwright.Browser | null = null;
+
 const config: { path?: string } = {};
 
 if (process.cwd().includes('semcore')) {
@@ -19,37 +20,27 @@ const DEFAULT_OPTIONS = { selector: '#root' };
 
 export const snapshot = async (
   Component: any,
-  { afterMount, ...options } = {} as {
-    afterMount?: (root: HTMLDivElement) => void;
+  { ...options } = {} as {
     selector?: string;
-    width?: number;
-    height?: number;
     actions?: {
-      hover?: string | string[];
-      active?: string | string[];
-      focus?: string | string[];
+      hover?: string;
+      active?: string;
+      focus?: string;
     };
   },
 ) => {
+  browser = await playwright.chromium.launch();
+  const page = await browser.newPage();
+
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
-  vi.useFakeTimers();
+  // vi.useFakeTimers();
   act(() => root.render(Component));
-  if (!options) {
-    act(() => {
-      vi.runAllTimers();
-    });
-  }
-  if (afterMount) {
-    act(() => {
-      afterMount(_tmp);
-    });
-    act(() => {
-      vi.runAllTimers();
-    });
-  }
-  vi.useRealTimers();
+  // act(() => {
+  //   vi.runAllTimers();
+  // });
+  // vi.useRealTimers();
   // ReactDOM.render(Component, _tmp);
   const componentHtml = _tmp.innerHTML;
   const componentStyle = document.head.innerHTML;
@@ -64,12 +55,12 @@ export const snapshot = async (
               font-family: Inter, sans-serif;
               -webkit-font-smoothing: antialiased;
             }
-            
+
             body {
               min-height: 100vh;
               margin: 0;
             }
-            
+
             #wrap {
               display: flex;
             }
@@ -88,7 +79,7 @@ export const snapshot = async (
               transition: none !important;
               transition-delay: 0ms !important;
             }
-            
+
             *::before {
               animation: none !important;
               transition: none !important;
@@ -105,37 +96,29 @@ export const snapshot = async (
         </body>
     </html>`;
 
-  /* Uncomment line below to debug snapshot in your browser */
-  // const fs = require('fs');
-  // fs.writeFileSync('./tmp.html', html);
-  const retires = 3;
-  let body = null;
-  let lastError = null;
-  for (let retry = 0; retry < retires; retry++) {
-    try {
-      const response = await post({
-        url: 'https://intergalactic-docker-ygli5wg7pq-uk.a.run.app/?r=1',
-        encoding: null,
-        form: {
-          ...options,
-          html,
-          token: process.env.SCREENSHOT_TOKEN,
-          noCache: true,
-        },
-      });
-      body = response.body;
-      break;
-    } catch (error) {
-      lastError = error;
-    }
+  await page.setContent(html);
+  const mainElement = await page.$(options.selector! || 'body');
+  if (options.actions?.active) {
+    const element = await page.$(options.actions.active);
+    await element?.click();
   }
-  act(() => root.unmount());
-
-  if (body === null) {
-    throw lastError;
+  if (options.actions?.hover) {
+    const element = await page.$(options.actions.hover);
+    await element?.hover();
   }
+  if (options.actions?.focus) {
+    const element = await page.$(options.actions.focus);
+    await element?.focus();
+  }
+  await page.waitForLoadState('networkidle');
+  const boundingBox = await mainElement?.boundingBox();
+  const screenshot = await page.screenshot({
+    clip: boundingBox || undefined,
+  });
 
-  return body;
+  await page.close();
+
+  return screenshot;
 };
 
 snapshot.ProxyProps = function (props: any) {
