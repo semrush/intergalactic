@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.18.0] - 2023-11-28
+
+### Added
+
+- Added `DateRangeComparator` and `MonthDateRangeComparator` components.
+
 ## [4.17.0] - 2023-11-24
 
 ### Changed

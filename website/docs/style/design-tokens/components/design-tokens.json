@@ -1334,7 +1334,7 @@
     "rawValue": "{violet.500}",
     "computedValue": "#8649e1",
     "description": "Active (selected) date-picker cell background for comparison periods.",
-    "components": []
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-date-picker-cell-comparison-active-hover",
@@ -1342,7 +1342,7 @@
     "rawValue": "{violet.600}",
     "computedValue": "#5925ab",
     "description": "Hover for the active (selected) date-picker cell background for comparison periods.",
-    "components": []
+    "components": ["date-picker"]
   },
   {
     "name": "--intergalactic-dropdown-menu-item",

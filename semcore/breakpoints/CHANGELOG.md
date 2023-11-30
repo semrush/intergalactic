@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.13.0] - 2023-11-30
+
+### Removed
+
+- `defaultIndex` from `MediaList` as unusable.
+
 ## [1.12.3] - 2023-11-24
 
 ### Fixed

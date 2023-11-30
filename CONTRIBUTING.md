@@ -44,11 +44,12 @@ We have a robust playground designed for developing components. To get started:
 
 We use [vitest](https://vitest.dev/) for our testing needs.
 
-- To start the test runner, use the command `pnpm test`.
-- To execute tests and exit, use `pnpm test run`.
-- To update snapshots, use the command `pnpm test -- -u`.
-- To run tests for a specific component, use `pnpm test button`.
-- To update snapshots for a specific component, use `pnpm test button -- -u`.
+- To prepare docker images for testing, use the command `pnpm test:setup`.
+- To start the test runner, use the command `pnpm test:docker`.
+- To execute tests and exit, use `pnpm test:docker run`.
+- To update snapshots, use the command `pnpm test:docker -- -u`.
+- To run tests for a specific component, use `pnpm test:docker button`.
+- To update snapshots for a specific component, use `pnpm test:docker button -- -u`.
 
 ## Formatting & Linting
 
