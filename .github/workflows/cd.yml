@@ -150,7 +150,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-results
-          path: .
+          path: semcore/*/__tests__/__image_snapshots__/__diff_output__/
           retention-days: 3
       - name: Fail if test step actually failed
         if: steps.test.outcome != 'success'
