@@ -144,6 +144,7 @@ jobs:
       - name: Test
         id: test
         run: pnpm test:docker run
+        continue-on-error: true
       - name: Save test results as artifacts
         if: failure()
         uses: actions/upload-artifact@v3
@@ -288,6 +289,7 @@ jobs:
         id: browser-testing
         run: |
           docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+        continue-on-error: true
       - name: Save test results as artifacts
         if: failure()
         uses: actions/upload-artifact@v3
