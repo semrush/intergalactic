@@ -7,7 +7,6 @@ STextarea {
   width: 100%;
   box-sizing: border-box;
   font-family: inherit;
-  vertical-align: top;
   resize: var(--resize);
 
   &:read-only {
@@ -56,17 +55,11 @@ STextarea[state='invalid'] {
   &:focus {
     box-shadow: var(--intergalactic-keyboard-focus-invalid, 0px 0px 0px 3px rgba(255, 73, 83, 0.5));
   }
-}
 
-SContainer {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  margin-bottom: 4px;
-}
-
-SInvalidPattern {
-  margin-left: 1px;
-  margin-top: 1px;
-  height: calc(100% - 2px);
+  background-image: repeating-linear-gradient(315deg,var(--intergalactic-border-critical-active, #d1002f) 0,var(--intergalactic-border-critical-active, #d1002f) 2px,transparent 0,transparent 50%);
+  background-size: 6px 6px;
+  background-color: var(--intergalactic-bg-primary-neutral, #ffffff);
+  border-bottom-left-radius: var(--intergalactic-control-rounded, 6px);
+  border-top-left-radius: var(--intergalactic-control-rounded, 6px);
+  background-repeat: repeat-y;
 }
