@@ -4,51 +4,28 @@
   "license": "MIT",
   "scripts": {
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js tools/clear.ts",
-    "postinstall": "pnpm check-imports"
+    "build": "esbuild tools/index.ts --bundle --outfile=bin/index.js --platform=node"
   },
   "bin": {
     "publish-intg-release": "bin/publish-release.ts",
     "publish-intg-prerelease": "bin/publish-prerelease.ts",
-    "check-imports": "bin/check-imports.ts",
-    "patch-imports": "bin/patch-imports.ts"
+    "check-imports": "bin/check-imports.js",
+    "patch-imports": "bin/patch-imports.js"
   },
-  "exports": {
-    "./*": {
-      "types": "./libs/*/lib/types/index.d.ts",
-      "main": "./libs/*/lib/cjs/index.js",
-      "module": "./libs/*/lib/es6/index.js"
-    },
-    "./icon/*": {
-      "types": "./libs/icon/*/index.d.ts",
-      "main": "./libs/icon/*/index.js",
-      "module": "./libs/icon/*/index.mjs"
-    },
-    "./illustration/*": {
-      "types": "./libs/illustration/*/index.d.ts",
-      "main": "./libs/illustration/*/index.js",
-      "module": "./libs/illustration/*/index.mjs"
-    },
-    "./utils/*": {
-      "types": "./libs/utils/*/index.d.ts",
-      "main": "./libs/utils/*/index.js",
-      "module": "./libs/utils/*/index.mjs"
-    }
-  },
-  "dependencies": {},
   "peerDependencies": {
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
   "devDependencies": {
-    "@semcore/continuous-delivery": "workspace:*",
+    "@ast-grep/napi": "0.13.0",
     "@semcore/changelog-handler": "workspace:*",
+    "@semcore/continuous-delivery": "workspace:*",
     "@semcore/testing-utils": "1.0.0",
     "@types/fs-extra": "9.0.13",
     "@types/react": "18.0.21",
     "fast-glob": "3.2.11",
     "fs-extra": "9.0.1",
-    "tsm": "2.2.2",
-    "@ast-grep/napi": "0.13.0",
+    "esbuild": "0.14.29",
     "marked-ast-markdown": "2.1.0"
   },
   "repository": {

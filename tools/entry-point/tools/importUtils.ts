@@ -48,7 +48,7 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
           return;
         }
 
-        const nodes = ast.root().findAll({
+        const nodesES = ast.root().findAll({
           rule: {
             kind: 'import_statement',
             pattern: "import $A from '$SCOPE';",
@@ -60,15 +60,32 @@ async function checkFilesInDir(dir: string, pathsToPatchImports: PathsToPatchImp
           },
         });
 
-        if (nodes.length > 0) {
-          pathsToPatchImports[resolvedPath] = nodes.length;
+        const nodesCJS = ast.root().findAll({
+          rule: {
+            pattern: 'require("$SCOPE")',
+          },
+          constraints: {
+            SCOPE: {
+              regex: `@semcore/ui|${components.join('|')}`,
+            },
+          },
+        });
+
+        if (nodesES.length > 0) {
+          pathsToPatchImports[resolvedPath] = nodesES.length;
+        }
+
+        if (nodesCJS.length > 0) {
+          pathsToPatchImports[resolvedPath] = pathsToPatchImports[resolvedPath]
+            ? pathsToPatchImports[resolvedPath] + nodesCJS.length
+            : nodesCJS.length;
         }
       }
     }),
   );
 }
 
-export async function getImportPaths(baseDir = 'src'): Promise<PathsToPatchImports> {
+export async function getImportPaths(baseDir: string): Promise<PathsToPatchImports> {
   const pathsToPatchImports: PathsToPatchImports = {};
 
   await checkFilesInDir(baseDir, pathsToPatchImports);
@@ -76,10 +93,11 @@ export async function getImportPaths(baseDir = 'src'): Promise<PathsToPatchImpor
   return pathsToPatchImports;
 }
 
-export async function replaceImports(baseDir = 'src'): Promise<void> {
+export async function replaceImports(baseDir: string): Promise<void> {
   const packageData = await fs.readJSON(path.resolve(dirname, 'package.json'), 'utf8');
   const newName = packageData.name;
-  const regexp = new RegExp(/from '@semcore\/(ui\/){0,1}(.*)';/g);
+  const regexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}(.*)['|"];/g);
+  const regexpCJS = new RegExp(/require\(['|"]@semcore\/(ui\/){0,1}(.*)['|"]\)/g);
 
   const pathsToPatchImports: PathsToPatchImports = {};
 
@@ -89,7 +107,9 @@ export async function replaceImports(baseDir = 'src'): Promise<void> {
     Object.keys(pathsToPatchImports).map(async (pathToFile) => {
       const scriptData = await fs.readFile(pathToFile, 'utf8');
 
-      const dataToWrite = scriptData.replace(regexp, `from '${newName}/$2';`);
+      const dataToWrite = pathToFile.includes('es6')
+        ? scriptData.replace(regexpES, `from '${newName}/$2';`)
+        : scriptData.replace(regexpCJS, `require("${newName}/$2")`);
 
       await fs.writeFile(pathToFile, dataToWrite, 'utf8');
     }),

@@ -24,6 +24,25 @@ async function copyComponent(componentName: string, toCopy: string | string[]) {
   await replaceImports(path.resolve(dirname, 'libs', componentName));
 }
 
+async function makeIndexType(componentName: string) {
+  const from = path.resolve(dirname, 'libs', componentName, 'lib', 'types', 'index.d.ts');
+  const to = path.resolve(dirname, 'libs', componentName, 'index.d.ts');
+
+  await fs.copy(from, to);
+}
+async function makeIndexCJS(componentName: string) {
+  const dataToWrite = `require('./cjs/index.js');`;
+  const pathToFile = path.resolve(dirname, 'libs', componentName, 'index.js');
+
+  await fs.writeFile(pathToFile, dataToWrite, 'utf8');
+}
+async function makeIndexESM(componentName: string) {
+  const dataToWrite = `export * from './es6/index.js';`;
+  const pathToFile = path.resolve(dirname, 'libs', componentName, 'index.mjs');
+
+  await fs.writeFile(pathToFile, dataToWrite, 'utf8');
+}
+
 async function copyIcon(name: string) {
   const iconsPath = path.resolve(dirname, '..', '..', 'semcore', name);
 
@@ -59,14 +78,30 @@ export async function copyLib(packages: string[]) {
       }
       case 'icon': {
         await copyIcon(name);
+        await makeIndexType(name);
+        await makeIndexCJS(name);
+        await makeIndexESM(name);
         break;
       }
       case 'illustration': {
         await copyIcon(name);
+        await makeIndexType(name);
+        await makeIndexCJS(name);
+        await makeIndexESM(name);
+        break;
+      }
+      case 'email': {
+        await copyComponent(name, 'lib');
+        // We don't need to make Types file, because email has only styles
+        await makeIndexCJS(name);
+        await makeIndexESM(name);
         break;
       }
       default: {
         await copyComponent(name, 'lib');
+        await makeIndexType(name);
+        await makeIndexCJS(name);
+        await makeIndexESM(name);
       }
     }
   }
