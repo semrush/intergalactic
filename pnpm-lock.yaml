@@ -433,7 +433,7 @@ importers:
   semcore/carousel:
     dependencies:
       '@semcore/breakpoints':
-        specifier: 1.13.0-prerelease.1
+        specifier: 1.13.0
         version: link:../breakpoints
       '@semcore/button':
         specifier: 5.12.0
@@ -2703,7 +2703,7 @@ importers:
         specifier: 5.16.2
         version: link:../breadcrumbs
       '@semcore/breakpoints':
-        specifier: 1.13.0-prerelease.1
+        specifier: 1.13.0
         version: link:../breakpoints
       '@semcore/button':
         specifier: 5.12.0
@@ -2712,7 +2712,7 @@ importers:
         specifier: 5.17.2
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.19.0-prerelease.1
+        specifier: 3.19.0
         version: link:../carousel
       '@semcore/checkbox':
         specifier: 7.14.0
@@ -2730,7 +2730,7 @@ importers:
         specifier: 3.19.5
         version: link:../d3-chart
       '@semcore/data-table':
-        specifier: 4.19.0-prerelease.1
+        specifier: 4.19.0
         version: link:../data-table
       '@semcore/date-picker':
         specifier: 4.18.0
