@@ -2429,7 +2429,7 @@
     "type": "borderRadius",
     "rawValue": "4px",
     "computedValue": "4px",
-    "components": []
+    "components": ["checkbox"]
   },
   {
     "name": "--intergalactic-rounded-medium",
@@ -2443,7 +2443,7 @@
     "type": "borderRadius",
     "rawValue": "12px",
     "computedValue": "12px",
-    "components": []
+    "components": ["radio"]
   },
   {
     "name": "--intergalactic-rounded-extra-large",
