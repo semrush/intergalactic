@@ -16,6 +16,7 @@ const getCellsByColumn = (cells: NestedCells): RowData => {
   const flattenCells = cells.flat(20) as Cell[];
   return Object.fromEntries(flattenCells.map((cell) => [cell.name, cell.data]));
 };
+const displayContents = { display: 'contents' };
 
 type AsProps = {
   rows: NestedCells[];
@@ -303,13 +304,19 @@ class Body extends Component<AsProps, State> {
           <SScrollArea.Container ref={$scrollRef} disabledScroll={disabledScroll} role='rowgroup'>
             {body}
           </SScrollArea.Container>
-          <SScrollAreaBar
-            orientation='horizontal'
-            left={`${offsetLeftSum}px`}
-            right={`${offsetRightSum}px`}
-            offsetSum={`${offsetSum}px`}
-          />
-          <SScrollAreaBar orientation='vertical' />
+          <div style={displayContents} role='rowgroup'>
+            <div style={displayContents} role='row'>
+              <div style={displayContents} role='cell'>
+                <SScrollAreaBar
+                  orientation='horizontal'
+                  left={`${offsetLeftSum}px`}
+                  right={`${offsetRightSum}px`}
+                  offsetSum={`${offsetSum}px`}
+                />
+                <SScrollAreaBar orientation='vertical' />
+              </div>
+            </div>
+          </div>
         </SScrollArea>
         {Children.origin}
       </SBodyWrapper>
