@@ -149,7 +149,7 @@ jobs:
         if: steps.test.outcome != 'success'
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
+          name: unit-testing-failure-output
           path: semcore/*/__tests__/__image_snapshots__/__diff_output__/
           retention-days: 3
       - name: Fail if test step actually failed
@@ -297,7 +297,7 @@ jobs:
         if: steps.browser-testing.outcome != 'success'
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
+          name: browser-testing-failure-output
           path: test-results
           retention-days: 3
       - name: Fail if test step actually failed
