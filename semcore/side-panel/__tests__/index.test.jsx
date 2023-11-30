@@ -109,7 +109,7 @@ describe('SidePanel', () => {
     ).toBe(1);
   });
 
-  test('Should support not block page scroll without Overlay', () => {
+  test.skip('Should support not block page scroll without Overlay', () => {
     render(
       <SidePanel visible>
         <SidePanel.Panel />

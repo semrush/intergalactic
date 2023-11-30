@@ -1,3 +1,15 @@
+## [15.38.1] - 2023-11-30
+
+## [15.38.0-prerelease.0] - 2023-11-30
+
+### @semcore/breakpoints
+
+- **Removed** `defaultIndex` from `MediaList` as unusable.
+
+### @semcore/data-table
+
+- **Added** Sort icon is visible when column is focused by keyboard.
+
 ## [15.37.0] - 2023-11-28
 
 ### @semcore/carousel

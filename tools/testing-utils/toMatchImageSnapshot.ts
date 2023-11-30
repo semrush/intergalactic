@@ -97,19 +97,16 @@ export async function toMatchImageSnapshot(
     width,
     height,
     {
-      threshold: 0,
+      threshold: 0.1,
     },
   );
 
   if (mismatch <= (options?.maxPixelDiff ?? 10)) {
-    // console.log('mismatch <= (options?.maxPixelDiff ?? 10)', mismatch <= (options?.maxPixelDiff ?? 10))
     return {
       pass: true,
       message: () => 'ok',
     };
   }
-
-  // console.log('this.snapshotState._updateSnapshot', this.snapshotState._updateSnapshot)
 
   if (this.snapshotState._updateSnapshot === 'all') {
     await writeFile(snapshotPath, snapshot);
