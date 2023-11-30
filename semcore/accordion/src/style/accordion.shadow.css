@@ -3,8 +3,14 @@ SItemToggle {
   outline: 0;
 }
 
-SItemToggle[keyboardFocused] {
+SItemToggle[keyboardFocused]::after {
+  position: absolute;
+  display: block;
+  content: '';
+  inset: 3px;
   box-shadow: var(--intergalactic-keyboard-focus, 0px 0px 0px 3px rgba(0, 143, 248, 0.5));
+  pointer-events: none;
+  z-index: 3;
 }
 
 SItemToggle[disabled] {
