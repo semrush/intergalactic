@@ -9,7 +9,3 @@ COPY . .
 RUN npm install --global pnpm
 RUN pnpm install --ignore-scripts 
 RUN npx playwright install
-
-ENV PLAYWRIGHT_ARGS=
-
-CMD pnpm playwright test --config playwright.browser.config.ts $PLAYWRIGHT_ARGS
