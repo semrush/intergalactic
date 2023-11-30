@@ -2,7 +2,6 @@ import * as path from 'path';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from './testing-library';
-import { vi } from './vitest';
 
 import playwright from 'playwright';
 
@@ -37,13 +36,7 @@ export const snapshot = async (
   options = Object.assign({}, DEFAULT_OPTIONS, options);
   const _tmp = document.createElement('div');
   const root = createRoot(_tmp);
-  // vi.useFakeTimers();
   act(() => root.render(Component));
-  // act(() => {
-  //   vi.runAllTimers();
-  // });
-  // vi.useRealTimers();
-  // ReactDOM.render(Component, _tmp);
   const componentHtml = _tmp.innerHTML;
   const componentStyle = document.head.innerHTML;
   const html = `
