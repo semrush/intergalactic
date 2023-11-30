@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- New `--intergalactic-border-critical-pattern` token for non-color marking all types of inputs with `invalid` state.
+- New `--intergalactic-border-critical-pattern` token for marking controls invalid state.
 
 ## [4.13.0] - 2023-11-24
 
