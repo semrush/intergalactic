@@ -17,6 +17,21 @@
       "types": "./libs/*/lib/types/index.d.ts",
       "main": "./libs/*/lib/cjs/index.js",
       "module": "./libs/*/lib/es6/index.js"
+    },
+    "./icon/*": {
+      "types": "./libs/icon/*/index.d.ts",
+      "main": "./libs/icon/*/index.js",
+      "module": "./libs/icon/*/index.mjs"
+    },
+    "./illustration/*": {
+      "types": "./libs/illustration/*/index.d.ts",
+      "main": "./libs/illustration/*/index.js",
+      "module": "./libs/illustration/*/index.mjs"
+    },
+    "./utils/*": {
+      "types": "./libs/utils/*/index.d.ts",
+      "main": "./libs/utils/*/index.js",
+      "module": "./libs/utils/*/index.mjs"
     }
   },
   "dependencies": {},

@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { log } from './logger';
+import { replaceImports } from './importUtils';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
@@ -19,6 +20,8 @@ async function copyComponent(componentName: string, toCopy: string | string[]) {
       await fs.copy(from, to, { recursive: true });
     }),
   );
+
+  await replaceImports(path.resolve(dirname, 'libs', componentName));
 }
 
 async function copyIcon(name: string) {
