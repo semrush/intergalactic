@@ -22,6 +22,8 @@ export const snapshot = async (
   Component: any,
   { ...options } = {} as {
     selector?: string;
+    width?: number;
+    height?: number;
     actions?: {
       hover?: string;
       active?: string;
@@ -113,7 +115,9 @@ export const snapshot = async (
   await page.waitForLoadState('networkidle');
   const boundingBox = await mainElement?.boundingBox();
   const screenshot = await page.screenshot({
-    clip: boundingBox || undefined,
+    clip: options.selector
+      ? boundingBox || undefined
+      : { x: 0, y: 0, width: options.width || 500, height: options.height || 500 },
   });
 
   await page.close();
