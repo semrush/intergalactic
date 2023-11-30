@@ -112,13 +112,18 @@ export const snapshot = async (
     const element = await page.$(options.actions.focus);
     await element?.focus();
   }
+  if (options.width && options.height)
+    await page.setViewportSize({ width: options.width, height: options.height });
   await page.waitForLoadState('networkidle');
   const boundingBox = await mainElement?.boundingBox();
-  const screenshot = await page.screenshot({
-    clip: options.selector
-      ? boundingBox || undefined
-      : { x: 0, y: 0, width: options.width || 500, height: options.height || 500 },
-  });
+  const pageSize = await page.viewportSize();
+  const clip = {
+    x: boundingBox?.x ?? 0,
+    y: boundingBox?.y ?? 0,
+    width: boundingBox?.width ?? pageSize?.width ?? 300,
+    height: boundingBox?.height ?? pageSize?.height ?? 300,
+  };
+  const screenshot = await page.screenshot({ clip });
 
   await page.close();
 
