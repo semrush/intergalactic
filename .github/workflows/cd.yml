@@ -138,16 +138,23 @@ jobs:
       - name: Install restored dependencies
         run: |
           pnpm install --frozen-lockfile
+      - name: Test setup
+        id: test-setup
+        run: pnpm test:setup
       - name: Test
         id: test
-        run: pnpm test
+        run: pnpm test:docker run
+        continue-on-error: true
       - name: Save test results as artifacts
-        if: failure()
+        if: steps.test.outcome != 'success'
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
-          path: test-results
+          name: unit-testing-failure-output
+          path: semcore/*/__tests__/__image_snapshots__/__diff_output__/
           retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.test.outcome != 'success'
+        run: exit 1
   publish-components:
     runs-on: ubuntu-latest
     needs: [static-lint, unit-tests, browser-tests]
@@ -285,10 +292,14 @@ jobs:
         id: browser-testing
         run: |
           docker run --rm --network host -v $(pwd):/work -v /work/node_modules -v /work/.pnpm-store -v /work/.cache -w /work/ mcr.microsoft.com/playwright:v1.35.0-jammy bash -c "npm install --global pnpm && pnpm install --ignore-scripts && pnpm build:icons && pnpm build:illustration && npx playwright install && CI=true pnpm playwright test --config playwright.browser.config.ts"
+        continue-on-error: true
       - name: Save test results as artifacts
-        if: failure()
+        if: steps.browser-testing.outcome != 'success'
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
+          name: browser-testing-failure-output
           path: test-results
           retention-days: 3
+      - name: Fail if test step actually failed
+        if: steps.browser-testing.outcome != 'success'
+        run: exit 1

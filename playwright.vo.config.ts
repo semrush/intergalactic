@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
   ...voConfig,
   reportSlowTests: null,
   workers: 1,
-  timeout: 2 * 60 * 1000,
+  timeout: 5 * 1000,
   testMatch: /\.vo-test.ts(x){0,1}$/,
   use: {
     ...voConfig.use,

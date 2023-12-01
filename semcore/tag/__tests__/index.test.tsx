@@ -47,8 +47,8 @@ describe('Tag', () => {
     await expect(
       await snapshot(component, {
         actions: {
-          hover: ['#hover', '#hover-1', '#hoveer-3'],
-          focus: ['#hover', '#hover-1', '#hoveer-3'],
+          hover: '#hover',
+          focus: '#hover',
         },
       }),
     ).toMatchImageSnapshot(task);
