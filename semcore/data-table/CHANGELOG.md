@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.19.1] - 2023-11-30
+
+### Fixed
+
+- Lighthouse accessibility warning about existing scrollbar role element inside of the table.
+
+## [4.19.0] - 2023-11-30
+
+### Added
+
+- Sort icon is visible when column is focused by keyboard.
+
 ## [4.18.0] - 2023-11-24
 
 ### Changed

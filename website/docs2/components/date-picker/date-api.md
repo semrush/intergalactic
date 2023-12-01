@@ -74,4 +74,10 @@ import { DatePicker, MonthPicker } from '@semcore/ui/date-picker';
 
 <TypesView type="CalendarUnitProps" :types={...types} />
 
+## DateRangeComparator
+
+Same api for `MonthDateRangeComparator`.
+
+<TypesView type="DateRangeComparatorProps" :types={...types} />
+
 <script setup>import { data as types } from '@types.data.ts';</script>
