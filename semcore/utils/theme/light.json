@@ -726,7 +726,7 @@
         "description": "Active border in the focused input field with invalid state, and active state of the other components with invalid state."
       },
       "critical-pattern": {
-        "value": "repeating-linear-gradient(315deg,{border.critical-active}\n0,{border.critical-active}\n2px,transparent 0,transparent 50%)",
+        "value": "repeating-linear-gradient(315deg, rgba($border.critical-active, 1) 0, rgba($border.critical-active, 1) 2px, transparent 0, transparent 50%)",
         "type": "color",
         "description": "Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states."
       },

@@ -140,9 +140,7 @@
   /* Active border in the focused input field with invalid state, and active state of the other components with invalid state. */
   --intergalactic-border-critical-active: #d1002f;
   /* Used for the invalidStatePattern utils component to mark all kinds of inputs with invalid states. */
-  --intergalactic-border-critical-pattern: repeating-linear-gradient(315deg,{border.critical-active}
-  0,{border.critical-active}
-  2px,transparent 0,transparent 50%);
+  --intergalactic-border-critical-pattern: repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%);
   /* Subtle secondary border in the warning message. */
   --intergalactic-border-warning: #ffb26e;
   /* Active border in components with warning intention. */
