@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsm
 
-const { replaceImports } = require('./index');
+import { replaceImports } from '../tools/importUtils';
 
 // biome-ignore lint/suspicious/noConsoleLog:
 console.log('start replace old imports');

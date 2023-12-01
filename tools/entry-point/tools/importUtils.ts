@@ -11,7 +11,7 @@ const components = Object.keys(fs.readJSONSync(path.resolve(dirname, 'components
 
 export async function getDirectDependencies() {
   const packageData = await fs.readJSON(path.resolve(process.cwd(), 'package.json'), 'utf8');
-  const dependencies = packageData.dependencies;
+  const dependencies = packageData.dependencies || [];
   const directImports = Object.keys(dependencies).filter((key) => {
     return key.startsWith('@semcore/') && !key.endsWith('/ui') && key !== '@semcore/intergalactic';
   });
