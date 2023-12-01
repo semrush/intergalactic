@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Changed
 
-- Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`.
+- Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`. For INTERNAL usage only. Don't use it.
 
 ## [2.10.0] - 2023-11-24
 

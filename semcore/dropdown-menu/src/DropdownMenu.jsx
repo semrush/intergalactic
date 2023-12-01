@@ -130,7 +130,7 @@ class DropdownMenuRoot extends Component {
       disablePortal,
       ignorePortalsStacking,
       focusMaster: interaction === 'click',
-      focusable: highlightedIndex === null,
+      hideFocus: highlightedIndex !== null,
     };
   }
 
