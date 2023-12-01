@@ -41,15 +41,11 @@ SInputTags[size='m'] {
 SInputTags[size='l'] {
   min-height: var(--intergalactic-form-control-l, 40px);
   height: auto;
-  padding: 0 calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
+  padding: var(--intergalactic-spacing-05x, 2px) calc(var(--intergalactic-spacing-2x, 8px) + var(--intergalactic-spacing-05x, 2px));
 }
 
-STag[size='m'] {
+STag {
   margin: var(--intergalactic-spacing-05x, 2px);
-}
-
-STag[size='l'] {
-  margin: var(--intergalactic-spacing-1x, 4px) var(--intergalactic-spacing-05x, 2px);
 }
 
 STag[editable] {
