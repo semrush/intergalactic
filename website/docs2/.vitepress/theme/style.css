@@ -553,14 +553,12 @@ img {
   margin-top: 24px;
 }
 
-.vp-doc a {
-  color: var(--vp-c-indigo-2) !important;
-}
-
 .vp-doc .documentation-sandbox .playground-runtime a,
 .vp-doc .documentation-sandbox .playground-runtime a:visited {
   color: var(--vp-c-indigo-2) !important;
 }
+
+/* To remove hover styles that our components in the sandboxes are inheriting from the website */
 
 .vp-doc a[class]:hover {
   color: var(--vp-c-indigo-1) !important;
