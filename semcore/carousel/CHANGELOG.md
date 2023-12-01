@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.19.0] - 2023-11-30
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/breakpoints` [1.12.3 ~> 1.13.0]).
+
+## [3.18.1] - 2023-11-28
+
+### Added
+
+- Reexport for types.
+
 ## [3.18.0] - 2023-11-21
 
 ### Changed

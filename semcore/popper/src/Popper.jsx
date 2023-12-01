@@ -180,6 +180,7 @@ class Popper extends Component {
 
   createPopper() {
     if (!this.triggerRef.current || !this.popperRef.current) return;
+    if (this.asProps.__disablePopper) return;
 
     this.popper.current = createPopper(
       this.triggerRef.current,
