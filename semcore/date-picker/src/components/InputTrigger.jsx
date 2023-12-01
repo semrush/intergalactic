@@ -314,14 +314,17 @@ const MaskedInput = ({
   }, [locale, allowedParts]);
 
   const outer = React.useMemo(() => {
-    const validDate =
-      outerValue && outerValue instanceof Date && !Number.isNaN(outerValue.getTime());
+    let outerDate = outerValue;
+    if (typeof outerValue === 'number' || typeof outerValue === 'string') {
+      outerDate = new Date(outerValue);
+    }
+    const validDate = outerDate && outerDate instanceof Date && !Number.isNaN(outerDate.getTime());
     if (!validDate) return null;
 
     return {
-      year: outerValue.getFullYear().toString().padStart(4, '0'),
-      month: (outerValue.getMonth() + 1).toString().padStart(2, '0'),
-      day: outerValue.getDate().toString().padStart(2, '0'),
+      year: outerDate.getFullYear().toString().padStart(4, '0'),
+      month: (outerDate.getMonth() + 1).toString().padStart(2, '0'),
+      day: outerDate.getDate().toString().padStart(2, '0'),
     };
   }, [outerValue]);
   const stringifyValue = React.useCallback(
@@ -534,15 +537,18 @@ const MaskedInput = ({
     [sep, placeholders],
   );
   const humanizedDate = React.useMemo(() => {
-    const validDate =
-      outerValue && outerValue instanceof Date && !Number.isNaN(outerValue.getTime());
+    let outerDate = outerValue;
+    if (typeof outerValue === 'number' || typeof outerValue === 'string') {
+      outerDate = new Date(outerValue);
+    }
+    const validDate = outerDate && outerDate instanceof Date && !Number.isNaN(outerDate.getTime());
     if (!validDate) return null;
 
     return new Intl.DateTimeFormat(locale, {
       year: allowedParts.year ? 'numeric' : undefined,
       month: allowedParts.month ? 'short' : undefined,
       day: allowedParts.day ? '2-digit' : undefined,
-    }).format(outerValue);
+    }).format(outerDate);
   }, [outerValue, locale, allowedParts]);
 
   const SHumanizedDate = 'div';
