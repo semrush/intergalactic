@@ -215,7 +215,7 @@ jobs:
         run: pnpm whoami
       - name: Deliver prerelease (old release system)
         run: pnpm deliver-prerelease
-  publish-intg:
+  publish-intg-prerelease:
     runs-on: ubuntu-latest
     needs: [ static-lint, unit-tests, browser-tests, publish-components ]
     if: github.ref == 'refs/heads/master'
