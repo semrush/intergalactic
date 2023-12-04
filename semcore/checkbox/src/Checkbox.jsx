@@ -7,6 +7,7 @@ import { callAllEventHandlers } from '@semcore/utils/lib/assignProps';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
 import logger from '@semcore/utils/lib/logger';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/checkbox.shadow.css';
 
@@ -124,6 +125,7 @@ class ValueRoot extends Component {
       theme,
       keyboardFocused,
       checked,
+      indeterminate,
       includeInputProps,
       resolveColor,
       ...other
@@ -136,6 +138,7 @@ class ValueRoot extends Component {
       state,
       keyboardFocused,
       checked,
+      indeterminate,
       resolveColor,
       ...propsWithoutChildren,
     };
@@ -185,8 +188,13 @@ Control.displayName = 'Control';
 
 const CheckMark = (props) => {
   const SCheckbox = Root;
-  const { theme, styles, resolveColor } = props;
-  return sstyled(styles)(<SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)} />);
+  const SInvalidPattern = InvalidPattern;
+  const { theme, styles, resolveColor, state, checked, indeterminate } = props;
+  return sstyled(styles)(
+    <SCheckbox render={Flex} tag='span' use:theme={resolveColor(theme)}>
+      {state === 'invalid' && !checked && !indeterminate && <SInvalidPattern />}
+    </SCheckbox>,
+  );
 };
 CheckMark.displayName = 'CheckMark';
 

@@ -2,6 +2,6 @@
   "extends": "../../tsconfig.json",
   "include": ["src", "lib"],
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types", "src/types"]
+    "typeRoots": ["node_modules/@types", "src/types", "../../tools/@types"]
   }
 }

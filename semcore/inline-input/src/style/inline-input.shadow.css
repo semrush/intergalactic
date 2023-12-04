@@ -187,3 +187,10 @@ SValueHidden {
   padding: 0;
   overflow: hidden;
 }
+
+SInvalidPattern {
+  margin-left: -1px;
+  margin-top: -1px;
+  border-radius: 0;
+  height: calc(100% - 3px);
+}
