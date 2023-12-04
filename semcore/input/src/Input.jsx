@@ -4,6 +4,7 @@ import { Box } from '@semcore/flex-box';
 import NeighborLocation from '@semcore/neighbor-location';
 import autoFocusEnhance from '@semcore/utils/lib/enhances/autoFocusEnhance';
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/input.shadow.css';
 
@@ -84,7 +85,7 @@ class Input extends Component {
   render() {
     const SInput = Root;
     const SOutline = 'div';
-    const { Children, styles, neighborLocation, controlsLength } = this.asProps;
+    const { Children, styles, neighborLocation, controlsLength, state } = this.asProps;
     const { focused } = this.state;
     return (
       <NeighborLocation.Detect neighborLocation={neighborLocation}>
@@ -110,7 +111,7 @@ class Input extends Component {
               <NeighborLocation controlsLength={controlsLength}>
                 <Children />
               </NeighborLocation>
-              <SOutline />
+              <SOutline>{state === 'invalid' && <InvalidPattern />}</SOutline>
             </SInput>,
           )
         }

@@ -5,6 +5,7 @@ import assignProps, { callAllEventHandlers } from '@semcore/utils/lib/assignProp
 import keyboardFocusEnhance from '@semcore/utils/lib/enhances/keyboardFocusEnhance';
 import resolveColorEnhance from '@semcore/utils/lib/enhances/resolveColorEnhance';
 import getInputProps, { inputProps } from '@semcore/utils/lib/inputProps';
+import InvalidPattern from '@semcore/utils/lib/components/invalid-state-pattern/InvalidStatePattern';
 
 import style from './style/radio.shadow.css';
 import logger from '@semcore/utils/lib/logger';
@@ -186,7 +187,7 @@ class ValueRoot extends Component {
       resolveColor,
       ...other
     } = this.asProps;
-    const [, radioMarkProps] = getInputProps(other, includeInputProps);
+    const [commonControlProps, radioMarkProps] = getInputProps(other, includeInputProps);
     const { children, Children, ...propsWithoutChildren } = radioMarkProps;
     const inputValue = value ?? '';
 
@@ -197,6 +198,7 @@ class ValueRoot extends Component {
       keyboardFocused,
       disabled,
       resolveColor,
+      checked: commonControlProps.checked,
       ...propsWithoutChildren,
     };
 
@@ -250,9 +252,14 @@ Control.displayName = 'Control';
 
 const RadioMark = (props) => {
   const SValue = Root;
-  const { theme, styles, resolveColor } = props;
+  const SInvalidPattern = InvalidPattern;
+  const { theme, styles, resolveColor, state, checked } = props;
 
-  return sstyled(styles)(<SValue render={Box} tag='div' use:theme={resolveColor(theme)} />);
+  return sstyled(styles)(
+    <SValue render={Box} tag='div' use:theme={resolveColor(theme)}>
+      {state === 'invalid' && !checked && <SInvalidPattern />}
+    </SValue>,
+  );
 };
 RadioMark.displayName = 'RadioMark';
 
