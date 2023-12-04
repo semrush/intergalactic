@@ -12,10 +12,6 @@ import { updateVersionInComponents } from './updateVersionInComponents';
 const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
 
 const publishRelease = async () => {
-  if (!process.argv.includes('--dry-run')) {
-    throw new Error('on test use dry-run');
-  }
-
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
   const packageJson = fs.readJSONSync(packageJsonFilePath);
   const deps = fs.readJSONSync(path.resolve(dirname, 'components.json'));
