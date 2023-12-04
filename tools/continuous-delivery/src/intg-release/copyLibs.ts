@@ -31,13 +31,13 @@ async function makeIndexType(componentName: string) {
   await fs.copy(from, to, { recursive: true });
 }
 async function makeIndexCJS(componentName: string) {
-  const dataToWrite = `require('./cjs/index.js');`;
+  const dataToWrite = `require('./lib/cjs/index.js');`;
   const pathToFile = path.resolve(dirname, componentName, 'index.js');
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }
 async function makeIndexESM(componentName: string) {
-  const dataToWrite = `export * from './es6/index.js';`;
+  const dataToWrite = `export * from './lib/es6/index.js';`;
   const pathToFile = path.resolve(dirname, componentName, 'index.mjs');
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
