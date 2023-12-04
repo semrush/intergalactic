@@ -25,10 +25,10 @@ async function copyComponent(componentName: string, toCopy: string | string[]) {
 }
 
 async function makeIndexType(componentName: string) {
-  const from = path.resolve(dirname, componentName, 'lib', 'types', 'index.d.ts');
-  const to = path.resolve(dirname, componentName, 'index.d.ts');
+  const from = path.resolve(dirname, componentName, 'lib', 'types');
+  const to = path.resolve(dirname, componentName);
 
-  await fs.copy(from, to);
+  await fs.copy(from, to, { recursive: true });
 }
 async function makeIndexCJS(componentName: string) {
   const dataToWrite = `require('./cjs/index.js');`;
