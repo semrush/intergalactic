@@ -1,4 +1,20 @@
-## [15.38.1] - 2023-11-30
+## [15.39.0-prerelease.0] - 2023-12-04
+
+### @semcore/data-table
+
+- **Fixed** Lighthouse accessibility warning about existing scrollbar role element inside of the table.
+
+### @semcore/date-picker
+
+- **Fixed** Input trigger were not displaying date or date range when it is passed as number or string.
+
+### @semcore/input-tags
+
+- **Fixed** Fixed vertical gaps between tags for `l` size.
+
+### @semcore/utils
+
+- **Added** New `--intergalactic-border-critical-pattern` token for marking controls invalid state.
 
 ## [15.38.0-prerelease.0] - 2023-11-30
 
