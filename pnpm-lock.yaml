@@ -3339,10 +3339,6 @@ importers:
       react-dom:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
-    devDependencies:
-      fs-extra:
-        specifier: 9.0.1
-        version: 9.0.1
 
   tools/esbuild-plugin-semcore:
     dependencies:
