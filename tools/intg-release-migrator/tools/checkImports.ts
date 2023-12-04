@@ -30,7 +30,7 @@ export async function checkImports(baseDir = 'src') {
 
     if (haveOldImports) {
       log(
-        `\nYou could replace old @semcore/ui* imports to new intg/* by run 'intg-patch-imports'\n`,
+        `\nYou could replace old @semcore/ui* imports to new @semcore/intergalactic/* by run 'intg-patch-imports'\n`,
       );
     }
   } catch (e) {

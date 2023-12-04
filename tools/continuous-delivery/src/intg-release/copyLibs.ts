@@ -8,37 +8,37 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
 
 async function copyComponent(componentName: string, toCopy: string | string[]) {
-  await fs.mkdir(path.resolve(dirname, 'libs', componentName), { recursive: true });
+  await fs.mkdir(path.resolve(dirname, componentName), { recursive: true });
 
   const dirsToCopy = Array.isArray(toCopy) ? toCopy : [toCopy];
 
   await Promise.all(
     dirsToCopy.map(async (item) => {
       const from = path.resolve(dirname, '..', '..', 'semcore', componentName, item);
-      const to = path.resolve(dirname, 'libs', componentName, item);
+      const to = path.resolve(dirname, componentName, item);
 
       await fs.copy(from, to, { recursive: true });
     }),
   );
 
-  await replaceImports(path.resolve(dirname, 'libs', componentName));
+  await replaceImports(path.resolve(dirname, componentName));
 }
 
 async function makeIndexType(componentName: string) {
-  const from = path.resolve(dirname, 'libs', componentName, 'lib', 'types', 'index.d.ts');
-  const to = path.resolve(dirname, 'libs', componentName, 'index.d.ts');
+  const from = path.resolve(dirname, componentName, 'lib', 'types', 'index.d.ts');
+  const to = path.resolve(dirname, componentName, 'index.d.ts');
 
   await fs.copy(from, to);
 }
 async function makeIndexCJS(componentName: string) {
   const dataToWrite = `require('./cjs/index.js');`;
-  const pathToFile = path.resolve(dirname, 'libs', componentName, 'index.js');
+  const pathToFile = path.resolve(dirname, componentName, 'index.js');
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }
 async function makeIndexESM(componentName: string) {
   const dataToWrite = `export * from './es6/index.js';`;
-  const pathToFile = path.resolve(dirname, 'libs', componentName, 'index.mjs');
+  const pathToFile = path.resolve(dirname, componentName, 'index.mjs');
 
   await fs.writeFile(pathToFile, dataToWrite, 'utf8');
 }

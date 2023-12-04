@@ -10,9 +10,7 @@ export async function getDirectDependencies() {
   const packageData = await fs.readJSON(path.resolve(process.cwd(), 'package.json'), 'utf8');
   const dependencies = packageData.dependencies || [];
   const directImports = Object.keys(dependencies).filter((key) => {
-    return (
-      key.startsWith('@semcore/') && !key.endsWith('/ui') && !key.endsWith('new-release-migrator')
-    );
+    return key.startsWith('@semcore/') && !key.endsWith('/ui') && !key.includes('intergalactic');
   });
 
   return directImports;
@@ -108,8 +106,8 @@ export async function replaceImports(baseDir: string): Promise<void> {
       const scriptData = await fs.readFile(pathToFile, 'utf8');
 
       const dataToWrite = scriptData
-        .replace(regexpES, `from '${newName}/libs/$2';`)
-        .replace(regexpCJS, `require("${newName}/libs/$2")`);
+        .replace(regexpES, `from '${newName}/$2';`)
+        .replace(regexpCJS, `require("${newName}/$2")`);
 
       await fs.writeFile(pathToFile, dataToWrite, 'utf8');
     }),

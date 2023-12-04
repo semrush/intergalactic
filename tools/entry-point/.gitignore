@@ -1,6 +1,7 @@
-.DS_Store
-
-libs
-bin/index.js
-src/**/*.js
-tools/**/*.js
+*
+!.gitignore
+!.npmignore
+CHANGELOG.md
+components.json
+package.json
+tsconfig.json

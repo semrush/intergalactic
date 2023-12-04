@@ -1,19 +1,13 @@
 {
   "name": "@semcore/intergalactic",
-  "version": "15.36.0",
+  "version": "0.0.0",
   "license": "MIT",
-  "scripts": {
-    "clear": "tsm --require=../../.ci/tsm-filter-warnings.js tools/clear.ts"
-  },
   "dependencies": {
     "@semcore/intergalactic-release-migrator": "0.0.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
-  },
-  "devDependencies": {
-    "fs-extra": "9.0.1"
   },
   "repository": {
     "type": "git",
