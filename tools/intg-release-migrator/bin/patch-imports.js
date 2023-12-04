@@ -1,6 +1,6 @@
-#!/usr/bin/env tsm
+#!/usr/bin/env node
 
-import { replaceImports } from '../tools/importUtils';
+const { replaceImports } = require('../tools/importUtils');
 
 const baseDir = process.argv[2] || 'src';
 

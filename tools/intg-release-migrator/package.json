@@ -1,0 +1,26 @@
+{
+  "name": "@semcore/intergalactic-release-migrator",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "tools/index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "bin": {
+    "intg-check-imports": "bin/check-imports.js",
+    "intg-patch-imports": "bin/patch-imports.js"
+  },
+  "dependencies": {
+    "@ast-grep/napi": "0.13.0",
+    "fs-extra": "9.0.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "9.0.13",
+    "typescript": "5.3.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semrush/intergalactic.git",
+    "directory": "tools/new-release-migrator"
+  }
+}

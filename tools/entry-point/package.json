@@ -1,6 +1,6 @@
 {
-  "name": "intg",
-  "version": "15.36.0",
+  "name": "@semcore/intg",
+  "version": "0.0.0-prerelease.3",
   "license": "MIT",
   "scripts": {
     "clear": "tsm --require=../../.ci/tsm-filter-warnings.js tools/clear.ts"
@@ -8,22 +8,22 @@
   "bin": {
     "publish-intg-release": "bin/publish-release.ts",
     "publish-intg-prerelease": "bin/publish-prerelease.ts",
-    "check-imports": "bin/check-imports.ts",
-    "patch-imports": "bin/patch-imports.ts"
+    "intg-check-imports": "bin/check-imports.ts",
+    "intg-patch-imports": "bin/patch-imports.ts"
+  },
+  "dependencies": {
+    "tsm": "2.3.0",
+    "@ast-grep/napi": "0.13.0",
+    "@types/fs-extra": "9.0.13",
+    "fs-extra": "9.0.1"
   },
   "peerDependencies": {
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },
   "devDependencies": {
-    "@ast-grep/napi": "0.13.0",
     "@semcore/changelog-handler": "workspace:*",
     "@semcore/continuous-delivery": "workspace:*",
-    "@semcore/testing-utils": "1.0.0",
-    "@types/fs-extra": "9.0.13",
-    "@types/react": "18.0.21",
-    "fast-glob": "3.2.11",
-    "fs-extra": "9.0.1",
     "marked-ast-markdown": "2.1.0"
   },
   "repository": {
