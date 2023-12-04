@@ -4,6 +4,6 @@
  * Options:
  *   --dry-run
  */
-import { publishPreRelease } from '../tools/publishPreRelease';
+import { publishPreRelease } from '../src/intg-release/publishPreRelease';
 
 await publishPreRelease();

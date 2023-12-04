@@ -1,5 +1,5 @@
 import Git from 'simple-git';
-import { log } from './logger';
+import { log } from '../utils';
 
 const git = Git();
 

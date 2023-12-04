@@ -1,11 +1,11 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
-import { log } from './logger';
+import { log } from '../utils';
 import { Changelog } from '@semcore/changelog-handler';
 
 const filename = fileURLToPath(import.meta.url);
-const dirname = path.resolve(filename, '..', '..');
+const dirname = path.resolve(filename, '..', '..', '..');
 
 export function updateVersionInComponents(changelogs: Changelog[]) {
   log('Update version in components...');

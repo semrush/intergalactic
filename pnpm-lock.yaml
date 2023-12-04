@@ -82,6 +82,9 @@ importers:
       '@semcore/gcs-upload':
         specifier: workspace:*
         version: link:tools/gcs-upload
+      '@semcore/intergalactic':
+        specifier: workspace:*
+        version: link:tools/entry-point
       '@semcore/slack-integration':
         specifier: workspace:*
         version: link:tools/slack-integration
@@ -130,9 +133,6 @@ importers:
       inquirer:
         specifier: 6.3.1
         version: 6.3.1
-      intg:
-        specifier: workspace:*
-        version: link:tools/entry-point
       jsdom:
         specifier: 22.1.0
         version: 22.1.0
@@ -3266,6 +3266,9 @@ importers:
       '@semcore/changelog-handler':
         specifier: '*'
         version: link:../changelog-handler
+      '@semcore/intergalactic-release-migrator':
+        specifier: workspace:*
+        version: link:../intg-release-migrator
       '@semcore/slack-integration':
         specifier: '*'
         version: link:../slack-integration
@@ -3327,43 +3330,19 @@ importers:
 
   tools/entry-point:
     dependencies:
+      '@semcore/intergalactic-release-migrator':
+        specifier: 0.0.0
+        version: link:../intg-release-migrator
       react:
         specifier: 16.8 - 18
         version: 18.2.0
       react-dom:
         specifier: 16.8 - 18
         version: 18.2.0(react@18.2.0)
-      tsm:
-        specifier: 2.3.0
-        version: 2.3.0
     devDependencies:
-      '@ast-grep/napi':
-        specifier: 0.13.0
-        version: 0.13.0
-      '@semcore/changelog-handler':
-        specifier: workspace:*
-        version: link:../changelog-handler
-      '@semcore/continuous-delivery':
-        specifier: workspace:*
-        version: link:../continuous-delivery
-      '@semcore/testing-utils':
-        specifier: 1.0.0
-        version: link:../testing-utils
-      '@types/fs-extra':
-        specifier: 9.0.13
-        version: 9.0.13
-      '@types/react':
-        specifier: 18.0.21
-        version: 18.0.21
-      fast-glob:
-        specifier: 3.2.11
-        version: 3.2.11
       fs-extra:
         specifier: 9.0.1
         version: 9.0.1
-      marked-ast-markdown:
-        specifier: 2.1.0
-        version: 2.1.0
 
   tools/esbuild-plugin-semcore:
     dependencies:
@@ -3444,22 +3423,17 @@ importers:
         version: 7.0.1(@babel/core@7.19.1)
 
   tools/intg-release-migrator:
-    devDependencies:
+    dependencies:
       '@ast-grep/napi':
         specifier: 0.13.0
         version: 0.13.0
-      '@types/fs-extra':
-        specifier: 9.0.13
-        version: 9.0.13
-      fast-glob:
-        specifier: 3.2.11
-        version: 3.2.11
       fs-extra:
         specifier: 9.0.1
         version: 9.0.1
-      marked-ast-markdown:
-        specifier: 2.1.0
-        version: 2.1.0
+    devDependencies:
+      '@types/fs-extra':
+        specifier: 9.0.13
+        version: 9.0.13
       typescript:
         specifier: 5.3.2
         version: 5.3.2
@@ -4377,7 +4351,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@ast-grep/napi-darwin-x64@0.13.0:
@@ -4386,7 +4360,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@ast-grep/napi-linux-x64-gnu@0.13.0:
@@ -4395,7 +4369,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@ast-grep/napi-win32-arm64-msvc@0.13.0:
@@ -4404,7 +4378,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@ast-grep/napi-win32-ia32-msvc@0.13.0:
@@ -4413,7 +4387,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@ast-grep/napi-win32-x64-msvc@0.13.0:
@@ -4422,7 +4396,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: true
+    dev: false
     optional: true
 
   /@ast-grep/napi@0.13.0:
@@ -4435,7 +4409,7 @@ packages:
       '@ast-grep/napi-win32-arm64-msvc': 0.13.0
       '@ast-grep/napi-win32-ia32-msvc': 0.13.0
       '@ast-grep/napi-win32-x64-msvc': 0.13.0
-    dev: true
+    dev: false
 
   /@babel/cli@7.12.0(@babel/core@7.19.1):
     resolution: {integrity: sha512-0EO6EN6brF4g0HaR6qQr2USkCvFjKNgBdmaYNW5NzB1IeHhqQkGhErX3/hvWA7+g/onS41IM/wm+yD+hcSwgVQ==}
@@ -6626,6 +6600,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-arm@0.18.20:
@@ -6714,6 +6689,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-loong64@0.18.20:
@@ -12609,6 +12585,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-android-arm64@0.14.29:
@@ -12633,6 +12610,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-64@0.14.29:
@@ -12657,6 +12635,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-arm64@0.14.29:
@@ -12681,6 +12660,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-64@0.14.29:
@@ -12705,6 +12685,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-arm64@0.14.29:
@@ -12729,6 +12710,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-32@0.14.29:
@@ -12753,6 +12735,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-64@0.14.29:
@@ -12777,6 +12760,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm64@0.14.29:
@@ -12801,6 +12785,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm@0.14.29:
@@ -12825,6 +12810,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-mips64le@0.14.29:
@@ -12849,6 +12835,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-ppc64le@0.14.29:
@@ -12873,6 +12860,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-riscv64@0.14.29:
@@ -12897,6 +12885,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-s390x@0.14.29:
@@ -12921,6 +12910,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-netbsd-64@0.14.29:
@@ -12945,6 +12935,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-openbsd-64@0.14.29:
@@ -12969,6 +12960,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-plugin-alias@0.2.1:
@@ -13007,6 +12999,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-32@0.14.29:
@@ -13031,6 +13024,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-64@0.14.29:
@@ -13055,6 +13049,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-arm64@0.14.29:
@@ -13079,6 +13074,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild@0.14.29:
@@ -13164,6 +13160,7 @@ packages:
       esbuild-windows-32: 0.15.18
       esbuild-windows-64: 0.15.18
       esbuild-windows-arm64: 0.15.18
+    dev: true
 
   /esbuild@0.18.20:
     resolution: {integrity: sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA==}
@@ -17276,6 +17273,7 @@ packages:
     dependencies:
       entities: 2.2.0
       whisk: 1.5.0
+    dev: false
 
   /marked-ast@0.3.0:
     resolution: {integrity: sha512-yQ3Bwrz9Zu3NLY5wUMekpB5g0IXLShYHmD/hee+N+uhra1FEVu8rKXokRAPhfxD2kYeYlIivyKVDjVVXjvMEng==}
@@ -23650,14 +23648,6 @@ packages:
     dependencies:
       esbuild: 0.14.29
 
-  /tsm@2.3.0:
-    resolution: {integrity: sha512-++0HFnmmR+gMpDtKTnW3XJ4yv9kVGi20n+NfyQWB9qwJvTaIWY9kBmzek2YUQK5APTQ/1DTrXmm4QtFPmW9Rzw==}
-    engines: {node: '>=12'}
-    hasBin: true
-    dependencies:
-      esbuild: 0.15.18
-    dev: false
-
   /tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
     dependencies:
@@ -25016,6 +25006,7 @@ packages:
 
   /whisk@1.5.0:
     resolution: {integrity: sha512-wvrHImN6UzkDmCK94qY5RyjQR8XhK0PdzES1Zayz56hxAtgOzUbCYD/g26srpZsWw6iH3BLtJw34sLQWbsToFA==}
+    dev: false
 
   /why-is-node-running@2.2.2:
     resolution: {integrity: sha512-6tSwToZxTOcotxHeA+qGCq1mVzKR3CwcJGmVcY+QE8SHy6TnpFnh8PAvPNHYr7EcuVeG0QSMxtYCuO1ta/G/oA==}

@@ -4,10 +4,10 @@ import fs from 'fs-extra';
 import { toMarkdown } from 'marked-ast-markdown';
 import { formatMarkdown } from '@semcore/continuous-delivery';
 import { serializeReleaseChangelog, patchReleaseChangelog } from '@semcore/changelog-handler';
-import { log } from './logger';
+import { log } from '../utils';
 
 const filename = fileURLToPath(import.meta.url);
-const releasePackageDir = resolvePath(filename, '..', '..');
+const releasePackageDir = resolvePath(filename, '..', '..', '..', '..', 'entry-point');
 
 export const updateReleaseChangelog = async (
   packageJson: Record<string, any>,

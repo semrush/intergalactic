@@ -2,7 +2,7 @@
   "name": "@semcore/intergalactic-release-migrator",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "tools/index.ts",
+  "main": "tools/index.js",
   "scripts": {
     "build": "tsc"
   },
@@ -21,6 +21,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/semrush/intergalactic.git",
-    "directory": "tools/new-release-migrator"
+    "directory": "tools/intg-release-migrator"
   }
 }

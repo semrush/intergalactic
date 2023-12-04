@@ -5,6 +5,6 @@
  *   --dry-run
  */
 
-import { publishRelease } from '../tools/publishRelease';
+import { publishRelease } from '../src/intg-release/publishRelease';
 
 await publishRelease();

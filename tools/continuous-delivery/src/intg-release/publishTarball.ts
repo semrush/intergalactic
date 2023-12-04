@@ -1,12 +1,7 @@
-import { log } from './logger';
-import { resolve as resolvePath } from 'path';
+import { log } from '../utils';
 import { execSync } from 'child_process';
-import { fileURLToPath } from 'url';
 
-const filename = fileURLToPath(import.meta.url);
-const dirname = resolvePath(filename, '..', '..');
-
-export const publishTarball = async (name: string) => {
+export const publishTarball = async (name: string, dirname: string) => {
   log('Publishing package...');
 
   const pnpmOptions = process.argv.includes('--dry-run')

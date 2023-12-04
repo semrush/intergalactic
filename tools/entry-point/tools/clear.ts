@@ -6,4 +6,3 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..');
 
 fs.remove(path.resolve(dirname, 'libs'));
-fs.remove(path.resolve(dirname, 'pnpm-lock.yaml'));

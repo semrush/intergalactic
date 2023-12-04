@@ -1,11 +1,11 @@
 import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
-import { log } from './logger';
-import { replaceImports } from './importUtils';
+import { log } from '../utils';
+import { replaceImports } from '@semcore/intergalactic-release-migrator';
 
 const filename = fileURLToPath(import.meta.url);
-const dirname = path.resolve(filename, '..', '..');
+const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');
 
 async function copyComponent(componentName: string, toCopy: string | string[]) {
   await fs.mkdir(path.resolve(dirname, 'libs', componentName), { recursive: true });

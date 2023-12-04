@@ -1,17 +1,15 @@
 import { copyLib } from './copyLibs';
 import { updateReleaseChangelog } from './updateReleaseChangelog';
 import { updateComponentsVersions } from './updateComponentsVersions';
-import { publishReleaseNotes, getUnlockedPrerelease } from '@semcore/continuous-delivery';
-import { fileURLToPath } from 'url';
+import { publishReleaseNotes, getUnlockedPrerelease } from '../../index';
 import path from 'path';
 import fs from 'fs-extra';
 import { commitPatch } from './commitPatch';
 import { publishTarball } from './publishTarball';
-import { log } from './logger';
+import { log } from '../utils';
 import { updateVersionInComponents } from './updateVersionInComponents';
 
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.resolve(filename, '..', '..');
+const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
 
 const publishRelease = async () => {
   if (!process.argv.includes('--dry-run')) {
@@ -55,7 +53,7 @@ const publishRelease = async () => {
   }
 
   // 6) Publish package
-  await publishTarball(packageJson.name);
+  await publishTarball(packageJson.name, dirname);
 
   // 7) Release notes in slack channel
   if (!process.argv.includes('--dry-run') && version) {

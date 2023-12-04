@@ -54,7 +54,7 @@
     "@semcore/builder": "workspace:*",
     "@semcore/changelog-handler": "workspace:*",
     "@semcore/continuous-delivery": "workspace:*",
-    "intg": "workspace:*",
+    "@semcore/intergalactic": "workspace:*",
     "@semcore/core": "workspace:*",
     "@semcore/d3-chart": "workspace:*",
     "@semcore/esbuild-plugin-semcore": "workspace:*",

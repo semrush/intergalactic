@@ -66,9 +66,7 @@ jobs:
         run: pnpm whoami
       - name: Publish release
         run: pnpm publish-release
-      - name: Publish Release Intg
-        run: pnpm publish-intg-release
-  publish-unlocked-intg-release:
+  publish-unlocked-intergalactic-release:
     runs-on: ubuntu-latest
     needs: publish-unlocked-release
     env:
@@ -126,7 +124,7 @@ jobs:
       - name: NPM auth check
         run: pnpm whoami
       - name: Publish release
-        run: pnpm publish-intg-release
+        run: pnpm --filter @semcore/intergalactic-release-migrator run build && pnpm intg-publish-release
   publish-website:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'

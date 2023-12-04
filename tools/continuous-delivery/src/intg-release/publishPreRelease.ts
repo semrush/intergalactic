@@ -1,15 +1,13 @@
 import { copyLib } from './copyLibs';
 import { updateReleaseChangelog } from './updateReleaseChangelog';
-import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs-extra';
 import { publishTarball } from './publishTarball';
 import Git from 'simple-git';
-import { log } from './logger';
+import { log } from '../utils';
 
 const git = Git();
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.resolve(filename, '..', '..');
+const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
 
 const publishPreRelease = async () => {
   if (!process.argv.includes('--dry-run')) {
@@ -39,7 +37,7 @@ const publishPreRelease = async () => {
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
   // 4) Publish package
-  await publishTarball(packageJson.name);
+  await publishTarball(packageJson.name, dirname);
 };
 
 export { publishPreRelease };
