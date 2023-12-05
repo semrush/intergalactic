@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Added
 
-- Opportunity to enable new focus lock scope.
+- Internal api to enable new focus lock scope.
 
 ## [5.11.0] - 2023-12-04
 
