@@ -257,7 +257,7 @@ Example of a combination of the elements above:
 
 ## Trend and average value
 
-To display the trend or average value in the legend, apply the `--chart-palette-order-total-amount` color token. Use a [Divider](/components/divider/divider) with `margin: 0 16px` to separate it from the main legend.
+To display the trend or average value in the legend, use the `withTrend` property. It adds checkbox with [Divider](/components/divider/divider) to separate trend from the main legend.
 
 ![](static/legend-trend.png)
 
