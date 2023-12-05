@@ -1,4 +1,5 @@
 SItemToggle {
+  position: relative;
   cursor: pointer;
   outline: 0;
 }
