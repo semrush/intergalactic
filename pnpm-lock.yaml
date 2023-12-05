@@ -448,7 +448,7 @@ importers:
         specifier: 4.18.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.20.0
+        specifier: 4.21.0-prerelease.1
         version: link:../modal
       '@semcore/utils':
         specifier: 4.14.0
@@ -1338,7 +1338,7 @@ importers:
         specifier: 4.18.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.20.0
+        specifier: 4.21.0-prerelease.1
         version: link:../modal
       '@semcore/typography':
         specifier: 5.19.0
@@ -2712,7 +2712,7 @@ importers:
         specifier: 5.18.0
         version: link:../card
       '@semcore/carousel':
-        specifier: 3.20.0
+        specifier: 3.21.0-prerelease.1
         version: link:../carousel
       '@semcore/checkbox':
         specifier: 7.15.0
@@ -2775,7 +2775,7 @@ importers:
         specifier: 4.12.0
         version: link:../format-text
       '@semcore/fullscreen-modal':
-        specifier: 3.19.0
+        specifier: 3.20.0-prerelease.1
         version: link:../fullscreen-modal
       '@semcore/grid':
         specifier: 5.12.0
@@ -2811,7 +2811,7 @@ importers:
         specifier: 5.14.0
         version: link:../link
       '@semcore/modal':
-        specifier: 4.20.0
+        specifier: 4.21.0-prerelease.1
         version: link:../modal
       '@semcore/neighbor-location':
         specifier: 4.11.0
@@ -2904,7 +2904,7 @@ importers:
         specifier: 4.12.0
         version: link:../widget-empty
       '@semcore/wizard':
-        specifier: 2.19.0
+        specifier: 2.20.0-prerelease.1
         version: link:../wizard
       react:
         specifier: 16.8 - 18
@@ -3039,7 +3039,7 @@ importers:
         specifier: 4.18.0
         version: link:../icon
       '@semcore/modal':
-        specifier: 4.20.0
+        specifier: 4.21.0-prerelease.1
         version: link:../modal
       '@semcore/utils':
         specifier: 4.14.0
