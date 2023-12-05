@@ -2,11 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
-## [4.14.0-prerelease.1] - 2023-11-28
+## [4.14.0-prerelease.2] - 2023-11-28
 
 ### Added
 
 - New `--intergalactic-border-critical-pattern` token for marking controls invalid state.
+- Fixed output of css utils.
 
 ## [4.13.0] - 2023-11-24
 
