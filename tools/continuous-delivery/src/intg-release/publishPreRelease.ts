@@ -5,6 +5,7 @@ import fs from 'fs-extra';
 import { publishTarball } from './publishTarball';
 import Git from 'simple-git';
 import { log } from '../utils';
+import { updateExternalDeps } from './updateExternalDeps';
 
 const git = Git();
 const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
@@ -18,7 +19,10 @@ const publishPreRelease = async () => {
   // 1) Copy all built code
   await copyLib(packages);
 
-  // 2) Update changelog
+  // 2) Set deps from all components to root intergalactic package
+  await updateExternalDeps(packageJson, packages);
+
+  // 3) Update changelog
   const { version, changelogs } = await updateReleaseChangelog(packageJson, deps);
   const hash = await git.revparse(['HEAD']);
   const shortHash = hash.slice(0, 8);
@@ -28,11 +32,11 @@ const publishPreRelease = async () => {
     return;
   }
 
-  // 3) Update version in package.json
+  // 4) Update version in package.json
   packageJson.version = `${version}-prerelease-${shortHash}`;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
-  // 4) Publish package
+  // 5) Publish package
   await publishTarball(packageJson.name, dirname);
 };
 

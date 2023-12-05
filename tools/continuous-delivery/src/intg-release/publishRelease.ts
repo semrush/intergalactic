@@ -8,6 +8,7 @@ import { commitPatch } from './commitPatch';
 import { publishTarball } from './publishTarball';
 import { log } from '../utils';
 import { updateVersionInComponents } from './updateVersionInComponents';
+import { updateExternalDeps } from './updateExternalDeps';
 
 const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
 
@@ -20,14 +21,17 @@ const publishRelease = async () => {
   // 1) Copy all built code
   await copyLib(packages);
 
-  // 2) Update changelog
+  // 2) Set deps from all components to root intergalactic package
+  await updateExternalDeps(packageJson, packages);
+
+  // 3) Update changelog
   const { changelogs, version } = await updateReleaseChangelog(packageJson, deps);
 
-  // 3) Update version in package.json
+  // 4) Update version in package.json
   packageJson.version = version;
   fs.writeJsonSync(packageJsonFilePath, packageJson, { spaces: 2 });
 
-  // 3.1) Check that all tests are passed and release is unlocked
+  // 4.1) Check that all tests are passed and release is unlocked
   const unlockedRelease = await getUnlockedPrerelease(packageJsonFilePath, log);
   if (!unlockedRelease) {
     log('No unlocked prerelease found.');
@@ -36,22 +40,22 @@ const publishRelease = async () => {
     }
   }
 
-  // 4) Update versions in components.json
+  // 5) Update versions in components.json
   updateComponentsVersions(packages);
 
-  // 4.1) Update versions in package.json in all checked components
+  // 5.1) Update versions in package.json in all checked components
   // TODO - For now, they updates in old release process. Uncomment after it will be removed.
   // updateVersionInComponents(changelogs);
 
-  // 5) Commit changes in package.json and components.json
+  // 6) Commit changes in package.json and components.json
   if (!process.argv.includes('--dry-run') && version) {
     await commitPatch(version);
   }
 
-  // 6) Publish package
+  // 7) Publish package
   await publishTarball(packageJson.name, dirname);
 
-  // 7) Release notes in slack channel
+  // 8) Release notes in slack channel
   if (!process.argv.includes('--dry-run') && version) {
     await publishReleaseNotes(version, changelogs.slice(0, 1));
   }

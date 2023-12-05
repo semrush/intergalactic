@@ -94,8 +94,8 @@ export async function getImportPaths(baseDir: string): Promise<PathsToPatchImpor
 export async function replaceImports(baseDir: string): Promise<void> {
   const packageData = await fs.readJSON(path.resolve(intgDir, 'package.json'), 'utf8');
   const newName = packageData.name;
-  const regexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}(.*)['|"];/g);
-  const regexpCJS = new RegExp(/require\(['|"]@semcore\/(ui\/){0,1}(.*)['|"]\)/g);
+  const regexpES = new RegExp(/from ['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"];/g);
+  const regexpCJS = new RegExp(/require\(['|"]@semcore\/(ui\/){0,1}(.*)(?<!\/table)['|"]\)/g);
 
   const pathsToPatchImports: PathsToPatchImports = {};
 
