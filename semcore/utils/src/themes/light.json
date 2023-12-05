@@ -69,6 +69,7 @@
   "--intergalactic-border-success-active": "#007c65",
   "--intergalactic-border-critical": "#ffaeb5",
   "--intergalactic-border-critical-active": "#d1002f",
+  "--intergalactic-border-critical-pattern": "repeating-linear-gradient(315deg, rgba(209, 0, 47, 1) 0, rgba(209, 0, 47, 1) 2px, transparent 0, transparent 50%)",
   "--intergalactic-border-warning": "#ffb26e",
   "--intergalactic-border-warning-active": "#c33909",
   "--intergalactic-border-primary-invert": "#ffffff",
