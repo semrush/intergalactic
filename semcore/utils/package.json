@@ -1,13 +1,13 @@
 {
   "name": "@semcore/utils",
   "description": "Semrush Utils Component",
-  "version": "4.13.0",
+  "version": "4.14.0",
   "main": "lib/index.js",
   "sideEffects": false,
   "author": "UI-kit team <ui-kit-team@semrush.com>",
   "license": "MIT",
   "scripts": {
-    "build": "pnpm semcore-builder --modules=cjs"
+    "build": "pnpm semcore-builder --modules=cjs --source=js,ts"
   },
   "devDependencies": {
     "@semcore/babel-plugin-react-semcore": "^4.2.1",
@@ -32,7 +32,7 @@
     "@phytonmk/nano-css": "5.3.7"
   },
   "peerDependencies": {
-    "@semcore/core": "^2.10.0",
+    "@semcore/core": "^2.11.0",
     "react": "16.8 - 18",
     "react-dom": "16.8 - 18"
   },

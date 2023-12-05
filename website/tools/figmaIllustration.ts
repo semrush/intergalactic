@@ -21,7 +21,7 @@ const downloadIllustrations = async () => {
   const chosenPath = process.argv.slice(2);
 
   const getIllustration = async (children, category, fileId) => {
-    const folderName = `./docs/${category}/${children.name
+    const folderName = `./docs2/${category}/${children.name
       .toLowerCase()
       .split(' ')
       .join('-')}/static`;
