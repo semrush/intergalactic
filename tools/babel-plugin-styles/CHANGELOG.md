@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [1.9.1] - 2023-12-05
+
+### Fixed
+
+- Build with `--modules=cjs` flag.
+
 ## [1.9.0] - 2023-02-15
 
 ### Changed
