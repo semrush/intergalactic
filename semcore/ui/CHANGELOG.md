@@ -1,3 +1,9 @@
+## [15.41.0-prerelease.0] - 2023-12-05
+
+### @semcore/modal
+
+- **Fixed** Pass `ignorePortalsStacking` prop to the `Portal`.
+
 ## [15.39.0] - 2023-12-04
 
 ### @semcore/data-table
