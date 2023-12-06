@@ -523,6 +523,7 @@ function PopperPopper(props) {
     animationsDisabled,
     popper,
     focusableTriggerReturnFocusToRef,
+    focusMaster = false,
   } = props;
   const ref = React.useRef(null);
 
@@ -534,6 +535,7 @@ function PopperPopper(props) {
     autoFocus,
     interaction === 'focus' ? focusableTriggerReturnFocusToRef : triggerRef,
     !visible || disableEnforceFocus,
+    focusMaster,
   );
 
   useContextTheme(ref, visible);
