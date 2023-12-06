@@ -22,7 +22,8 @@ export type TooltipProps = Intergalactic.InternalTypings.EfficientOmit<PopperPro
     theme?: 'default' | 'warning' | 'invert';
 
     /**
-     * @deprecated Tooltip should have only one interaction - `hover`. You shouldn't use it with another interactions.
+     * Tooltip should have only one interaction - `hover`. You shouldn't use it with another interactions.
+     * We'll delete this prop in next major release.
      */
     interaction?:
       | 'hover'
