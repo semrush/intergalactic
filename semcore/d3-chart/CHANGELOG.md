@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [3.20.1] - 2023-12-06
+
+### Fixed
+
+- Correct base element for `Dots`.
+
 ## [3.20.0] - 2023-12-04
 
 ### Changed
