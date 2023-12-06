@@ -232,9 +232,9 @@ describe('Checkbox', () => {
 
   test('a11y indeterminate', async () => {
     const { getByTestId } = render(
-      <Checkbox>
+      <Checkbox indeterminate>
         <Checkbox.Value>
-          <Checkbox.Value.Control indeterminate data-testid={'checkboxControl'} />
+          <Checkbox.Value.Control data-testid={'checkboxControl'} />
           <Checkbox.Text>Checkbox</Checkbox.Text>
         </Checkbox.Value>
       </Checkbox>,
