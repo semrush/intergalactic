@@ -157,11 +157,11 @@ export namespace Intergalactic {
       ? HighPriorityProps[K]
       : LowPriorityProps[K];
   } & HighPriorityProps;
-  type RemoveFields<Type, Keys> = {
-    [Property in keyof Type as Exclude<Property, Keys>]: Type[Property];
-  };
   /** @private */
   export namespace InternalTypings {
+    export type EfficientOmit<Type, Keys> = {
+      [Property in keyof Type as Exclude<Property, Keys>]: Type[Property];
+    };
     export type ComponentPropsNesting<Tag extends InternalTypings.ComponentTag> = Omit<
       MergeProps<
         Tag extends React.FC
@@ -197,14 +197,14 @@ export namespace Intergalactic {
     > = {
       tag?: Tag;
       children?: ComponentChildren<
-        RemoveFields<Props, 'children'> & { children: React.ReactNode },
+        EfficientOmit<Props, 'children'> & { children: React.ReactNode },
         Context,
         ReturnResult,
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
       MergeProps<
-        RemoveFields<Props, 'tag' | 'children'>,
+        EfficientOmit<Props, 'tag' | 'children'>,
         MergeProps<ComponentPropsNesting<Tag>, ComponentPropsNesting<BaseTag>>
       >;
     export type PropsRenderingResultComponentProps<
@@ -215,10 +215,10 @@ export namespace Intergalactic {
     > = {
       tag?: Tag;
       children?: ComponentChildren<
-        RemoveFields<Props, 'children'> & { children: React.ReactNode },
+        EfficientOmit<Props, 'children'> & { children: React.ReactNode },
         Context,
         Partial<
-          RemoveFields<
+          EfficientOmit<
             MergeProps<Props, ComponentPropsNesting<Tag>>,
             'children' | 'tag' | 'ref'
           > & {
@@ -228,7 +228,7 @@ export namespace Intergalactic {
         AdditionalContext
       >;
     } & ComponentBasicProps<Tag> &
-      MergeProps<RemoveFields<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
+      MergeProps<EfficientOmit<Props, 'tag' | 'children'>, ComponentPropsNesting<Tag>>;
     export type ComponentRenderingResults = React.ReactElement;
     export type ComponentAdditive<BaseTag extends ComponentTag> = {
       __nestedProps: ComponentPropsNesting<BaseTag>;
