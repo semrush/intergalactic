@@ -313,6 +313,8 @@
   --intergalactic-progress-bar-bg-invert: rgba(255, 255, 255, 0.2);
   /* Hover state for the inverted version of the background color of the ProgressBar. */
   --intergalactic-progress-bar-bg-invert-hover: rgba(255, 255, 255, 0.4);
+  /* Value color of the ProgressBar. */
+  --intergalactic-progress-bar-value: #009f81;
   /* Value with gradient for the ProgressBar. */
   --intergalactic-progress-bar-value-gradient: linear-gradient(-45deg, rgba(0, 159, 129, 0.9) 25%, rgba(0, 159, 129, 1) 0%, rgba(0, 159, 129, 1) 50%, rgba(0, 159, 129, 0.9) 0%, rgba(0, 159, 129, 0.9) 75%, rgba(0, 159, 129, 1) 0%);
   /* Null value gradient for the ProgressBar. */
@@ -399,18 +401,14 @@
   --intergalactic-box-shadow-modal: 0px 3px 8px 0px rgba(25, 27, 35, 0.2);
   /* Default shadow of all Poppers, Dropdowns and Tooltips. */
   --intergalactic-box-shadow-popper: 0px 1px 12px 0px rgba(25, 27, 35, 0.15);
-  /* Color for default keyboard focus outline styles. */
-  --intergalactic-keyboard-focus-outline: rgba(0, 143, 248, 0.5);
-  /* Color for default keyboard focus outline styles to use on the dark and color background. */
-  --intergalactic-keyboard-focus-outline-invert: rgba(255, 255, 255, 0.7);
   /* Default keyboard focus styles. */
-  --intergalactic-keyboard-focus: 0px 0px 0px 3px rgba(0, 143, 248, 0.5);
+  --intergalactic-keyboard-focus: 0px 0px 0px 3px {keyboard-focus.outline};
   /* Keyboard focus styles for elements with invalid state. */
   --intergalactic-keyboard-focus-invalid: 0px 0px 0px 3px rgba(255, 73, 83, 0.5);
   /* Keyboard focus styles for elements with valid state. */
   --intergalactic-keyboard-focus-valid: 0px 0px 0px 3px rgba(0, 159, 129, 0.5);
   /* Default keyboard focus styles for using with dark background. */
-  --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px rgba(255, 255, 255, 0.7);
+  --intergalactic-keyboard-focus-invert: 0px 0px 0px 3px {keyboard-focus.outline-invert};
   /* Base font family. */
   --intergalactic-base: Inter;
   /* Use with font-size-800. */

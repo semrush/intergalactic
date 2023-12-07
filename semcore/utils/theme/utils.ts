@@ -55,13 +55,6 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     | DesignTokenTree;
   type DesignTokenTree = { [childrenNodeName: string]: DesignTokenNode };
   const traverse = (node: DesignTokenNode, pathParts: string[] = []) => {
-    for (const key in node) {
-      if (key === 'type') continue;
-      if (key === 'value') continue;
-      if (key === 'description') continue;
-      if (key === '$extensions') continue;
-      traverse((node as any)[key], [...pathParts, key]);
-    }
     if ('type' in node && typeof node.type === 'string') {
       const path = pathParts.join('-');
       types[path] = node.type;
@@ -84,11 +77,14 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
           }
         }
       }
+      return;
+    }
+    for (const key in node) {
+      traverse((node as any)[key], [...pathParts, key]);
     }
   };
 
   traverse(tokens);
-
   const resolveColor = (color: string): string => {
     if (color.includes('linear-gradient')) {
       return replaceColors(color);
@@ -139,9 +135,12 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
 
       return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
-    if (color.startsWith('{') && color.split('.').length === 2 && color.endsWith('}')) {
-      const [group, index] = color.substring(1, color.length - 1).split('.');
-      const resolvedColor = (base as any)[group][index].value;
+    if (color.startsWith('{') && color.includes('.') && color.endsWith('}')) {
+      const dotPath = color.substring(1, color.length - 1);
+      const resolvedColor =
+        getByDotPath<{ value: string }>(base as any, dotPath)?.value ??
+        getByDotPath<{ value: string }>(tokens as any, dotPath)?.value;
+
       if (!resolvedColor) {
         throw new Error(`Color ${color} was not found in base palette`);
       }
@@ -168,15 +167,9 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
         throw new Error(`Unsupported expression ${token}`);
       }
       return `${parseFloat(resolvedValue) * parseFloat(factor)}px`;
-    } else if (token.includes('{') && token.includes('}')) {
-      const reference = token
-        .substring(token.indexOf('{') + 1, token.indexOf('}'))
-        .replace(/\./g, '-');
-      const resolvedToken =
-        token.substring(0, token.indexOf('{')) +
-        values[reference] +
-        token.substring(token.indexOf('}') + 1);
-      if (!resolvedToken || resolvedToken.includes('{')) {
+    } else if (token.startsWith('{') && token.endsWith('}')) {
+      const resolvedToken = values[token.substring(1, token.length - 1).replace(/\./g, '-')];
+      if (!resolvedToken || resolvedToken.startsWith('{')) {
         throw new Error(`On moment of resolving ${token}, ${resolvedToken} was not resolved yet`);
       }
       return resolvedToken;
@@ -205,7 +198,7 @@ export const processTokens = (base: TokensInput, tokens: TokensInput, prefix: st
     if (types[token] === 'color') {
       values[token] = resolveColor(values[token]);
     } else if (types[token] === 'boxShadow') {
-      values[token] = resolveToken(values[token].split('; ').map(replaceColors).join(', '));
+      values[token] = values[token].split('; ').map(replaceColors).join(', ');
     } else if (
       types[token] === 'sizing' ||
       types[token] === 'spacing' ||
@@ -263,4 +256,9 @@ export const tokensToJson = (tokens: { name: string; value: string; description:
     themeFile[token.name] = token.value;
   }
   return JSON.stringify(themeFile, null, 2) + '\n';
+};
+
+const getByDotPath = <T>(obj: {}, path: string | string[], defaultValue?: T): T | undefined => {
+  const pathArray = Array.isArray(path) ? path : path.split('.');
+  return (pathArray.reduce((prevObj, key) => prevObj?.[key], obj) as T) ?? defaultValue;
 };
