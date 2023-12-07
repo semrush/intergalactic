@@ -1,3 +1,13 @@
+## [15.42.1] - 2023-12-07
+
+### @semcore/checkbox
+
+- **Fixed** How to `indeterminate` will be read by screen readers.
+
+### @semcore/input-tags
+
+- **Fixed** Removed unnecessary `role` from input element.
+
 ## [15.42.0] - 2023-12-06
 
 ### @semcore/core
