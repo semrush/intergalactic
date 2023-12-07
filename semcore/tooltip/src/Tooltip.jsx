@@ -39,7 +39,6 @@ class TooltipRoot extends Component {
     const { uid, visible, interaction } = this.asProps;
 
     return {
-      active: false,
       'aria-describedby': visible ? `igc-${uid}-popper` : undefined,
       'aria-haspopup': interaction !== 'hover' ? 'true' : 'false',
     };
@@ -99,7 +98,7 @@ function TooltipTrigger(props) {
   const STrigger = Root;
 
   return sstyled(styles)(
-    <STrigger render={Popper.Trigger} active={false} role={undefined}>
+    <STrigger render={Popper.Trigger} role={undefined}>
       <Children />
     </STrigger>,
   );

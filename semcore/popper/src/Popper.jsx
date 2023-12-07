@@ -533,7 +533,9 @@ function PopperPopper(props) {
   useFocusLock(
     ref,
     autoFocus,
-    interaction === 'focus' ? focusableTriggerReturnFocusToRef : triggerRef,
+    interaction === 'focus' || interaction === 'hover'
+      ? focusableTriggerReturnFocusToRef
+      : triggerRef,
     !visible || disableEnforceFocus,
     focusMaster,
   );
