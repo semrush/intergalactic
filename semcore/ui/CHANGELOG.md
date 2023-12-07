@@ -1,3 +1,30 @@
+## [15.42.0] - 2023-12-06
+
+### @semcore/core
+
+- **Changed** Renamed type `RemoveFields` to `EfficientOmit` and moved it into `InternalTypings`. For INTERNAL usage only. Don't use it.
+
+### @semcore/dropdown
+
+- **Changed** Deprecated some values of `interaction` property.
+
+### @semcore/dropdown-menu
+
+- **Changed** Deprecated some values of `interaction` property.
+- **Removed** unnecessary style for focused `Popper`.
+
+### @semcore/popper
+
+- **Added** Internal api to enable new focus lock scope.
+
+### @semcore/select
+
+- **Added** `aria-disable` attribute for disabled `Trigger` and `Option` components.
+
+### @semcore/tooltip
+
+- **Changed** Deprecated `interaction` property.
+
 ## [15.41.0] - 2023-12-05
 
 ### @semcore/modal
