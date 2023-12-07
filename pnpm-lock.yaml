@@ -3331,7 +3331,7 @@ importers:
   tools/entry-point:
     dependencies:
       '@semcore/intergalactic-release-migrator':
-        specifier: 0.1.0
+        specifier: 0.2.0
         version: link:../intg-release-migrator
       react:
         specifier: 16.8 - 18
