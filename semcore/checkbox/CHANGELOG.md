@@ -6,7 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Correct `indeterminate`, removed `aria-checked` from `input` element.
+- How to `indeterminate` will be read by screen readers.
 
 ## [7.16.0] - 2023-12-06
 
