@@ -4,7 +4,7 @@ import { js, jsx, ts, tsx } from '@ast-grep/napi';
 
 type PathsToPatchImports = Record<string, number>;
 
-const intgDir = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
+const intgDir = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
 export async function getDirectDependencies() {
   const packageData = await fs.readJSON(path.resolve(process.cwd(), 'package.json'), 'utf8');

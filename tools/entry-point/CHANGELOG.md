@@ -1,3 +1,13 @@
+## [15.37.0] - 2023-11-28
+
+### @semcore/carousel
+
+- **Added** Reexport for types.
+
+### @semcore/date-picker
+
+- **Added** Added `DateRangeComparator` and `MonthDateRangeComparator` components.
+
 ## [15.36.0] - 2023-11-21
 
 ### @semcore/breadcrumbs

@@ -1,9 +1,9 @@
 {
-  "name": "@semcore/intergalactic",
-  "version": "0.0.0",
+  "name": "intergalactic",
+  "version": "15.37.0",
   "license": "MIT",
   "dependencies": {
-    "@semcore/intergalactic-release-migrator": "0.0.0"
+    "@semcore/intergalactic-release-migrator": "0.2.0"
   },
   "peerDependencies": {
     "react": "16.8 - 18",

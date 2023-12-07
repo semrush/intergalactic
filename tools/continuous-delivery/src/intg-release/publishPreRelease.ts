@@ -8,7 +8,7 @@ import { log } from '../utils';
 import { updateExternalDeps } from './updateExternalDeps';
 
 const git = Git();
-const dirname = path.resolve(process.cwd(), 'node_modules', '@semcore', 'intergalactic');
+const dirname = path.resolve(process.cwd(), 'node_modules', 'intergalactic');
 
 const publishPreRelease = async () => {
   const packageJsonFilePath = path.resolve(dirname, 'package.json');
