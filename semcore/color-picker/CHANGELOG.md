@@ -2,6 +2,12 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [2.19.1] - 2023-12-07
+
+### Fixed
+
+- `d.ts` output.
+
 ## [2.19.0] - 2023-12-06
 
 ### Changed
