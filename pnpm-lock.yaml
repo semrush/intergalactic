@@ -785,7 +785,7 @@ importers:
         specifier: 5.14.0
         version: link:../button
       '@semcore/checkbox':
-        specifier: 7.16.0
+        specifier: 7.16.1-prerelease.1
         version: link:../checkbox
       '@semcore/core':
         specifier: ^2.12.0
@@ -2174,7 +2174,7 @@ importers:
         specifier: 4.19.0
         version: link:../base-trigger
       '@semcore/checkbox':
-        specifier: 7.16.0
+        specifier: 7.16.1-prerelease.1
         version: link:../checkbox
       '@semcore/core':
         specifier: ^2.12.0
@@ -2601,7 +2601,7 @@ importers:
         specifier: 4.15.0
         version: link:../input
       '@semcore/select':
-        specifier: 4.21.0
+        specifier: 4.21.1-prerelease.1
         version: link:../select
       '@semcore/utils':
         specifier: 4.15.0
@@ -2715,7 +2715,7 @@ importers:
         specifier: 3.22.0
         version: link:../carousel
       '@semcore/checkbox':
-        specifier: 7.16.0
+        specifier: 7.16.1-prerelease.1
         version: link:../checkbox
       '@semcore/color-picker':
         specifier: 2.19.0
@@ -2733,7 +2733,7 @@ importers:
         specifier: 4.20.0
         version: link:../data-table
       '@semcore/date-picker':
-        specifier: 4.20.0
+        specifier: 4.20.1-prerelease.1
         version: link:../date-picker
       '@semcore/divider':
         specifier: 4.13.0
@@ -2805,7 +2805,7 @@ importers:
         specifier: 5.15.0
         version: link:../input-number
       '@semcore/input-tags':
-        specifier: 4.15.0
+        specifier: 4.15.1-prerelease.1
         version: link:../input-tags
       '@semcore/link':
         specifier: 5.15.0
@@ -2853,7 +2853,7 @@ importers:
         specifier: 5.15.0
         version: link:../scroll-area
       '@semcore/select':
-        specifier: 4.21.0
+        specifier: 4.21.1-prerelease.1
         version: link:../select
       '@semcore/side-panel':
         specifier: 3.20.0
@@ -2889,7 +2889,7 @@ importers:
         specifier: 5.14.0
         version: link:../textarea
       '@semcore/time-picker':
-        specifier: 4.21.0
+        specifier: 4.21.1-prerelease.1
         version: link:../time-picker
       '@semcore/tooltip':
         specifier: 6.12.0
