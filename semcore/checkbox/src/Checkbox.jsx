@@ -174,12 +174,20 @@ class ValueRoot extends Component {
 const Control = (props) => {
   const SControl = Root;
   const { indeterminate, styles, state } = props;
+  const checkboxRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (checkboxRef.current) {
+      checkboxRef.current.indeterminate = indeterminate;
+    }
+  }, [indeterminate, checkboxRef]);
+
   return sstyled(styles)(
     <SControl
+      ref={checkboxRef}
       render={Box}
       tag='input'
       type='checkbox'
-      aria-checked={indeterminate ? 'mixed' : undefined}
       aria-invalid={state === 'invalid'}
     />,
   );
