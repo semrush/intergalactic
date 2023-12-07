@@ -196,6 +196,14 @@ export type DateRangePickerProps = DropdownProps &
      * */
     onHighlightedChange?: (date: Date[]) => void;
     /**
+     * Intermediate value between `highlighted` and `value` that user see before explicitly applying it.
+     */
+    preselectedValue?: DateConstructorParams[];
+    /**
+     * Normally called when user preselects a date range and when user applies this range.
+     */
+    onPreselectedValueChange?: (date: Date[]) => void;
+    /**
      * Array of periods
      * [{value: [new Date(), new Date()], children: "Today"}]
      * @default Past 2 days / Past week / Past 2 week / Past month / Past 2 month
@@ -527,6 +535,38 @@ export type DateRangeComparatorProps = DropdownProps &
      * To be activated upon selecting the date
      * */
     onCompareHighlightedChange?: (date: Date[]) => void;
+    /**
+     * Intermediate value between `highlighted` and `value` that user see before explicitly applying it.
+     */
+    preselectedValue?: DateConstructorParams[];
+    /**
+     * Normally called when user preselects a date range and when user applies this range.
+     */
+    onPreselectedValueChange?: (date: Date[]) => void;
+    /**
+     * Intermediate value between `compareHighlighted` and `compare` that user see before explicitly applying it.
+     */
+    preselectedCompare?: DateConstructorParams[];
+    /**
+     * Normally called when user preselects a compare range and when user applies ranges.
+     */
+    onPreselectedCompareChange?: (date: Date[]) => void;
+    /**
+     * Controls that compare range input is enabled.
+     */
+    compareToggle?: boolean;
+    /**
+     * Toggles when compare range input enables or disables.
+     */
+    onCompareToggleChange?: (compareToggle: boolean) => void;
+    /**
+     * Controls which date range is focused.
+     */
+    focusedRange?: 'value' | 'compare';
+    /**
+     * Called when user focuses or is focused on some of the date ranges.
+     */
+    onFocusedRangeChange?: (focusedRange: 'value' | 'compare') => void;
     /**
      * Remove the 'Reset' button
      * */
