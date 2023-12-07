@@ -6,8 +6,7 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 ### Fixed
 
-- Types for `onColorsChange` cb.
-- Build script.
+- `d.ts` output.
 
 ## [2.19.0] - 2023-12-06
 
