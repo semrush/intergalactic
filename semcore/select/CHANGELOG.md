@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.21.1] - 2023-12-07
+
+### Changed
+
+- Version prepatch update due to children dependencies update (`@semcore/checkbox` [7.16.0 ~> 7.16.1]).
+
+## [4.21.0] - 2023-12-05
+
+### Added
+
+- `aria-disable` attribute for disabled `Trigger` and `Option` components.
+
 ## [4.20.0] - 2023-12-04
 
 ### Changed

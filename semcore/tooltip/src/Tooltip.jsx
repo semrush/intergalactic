@@ -71,6 +71,12 @@ class TooltipRoot extends Component {
       other['data-ui-name'] || Tooltip.displayName,
     );
 
+    logger.warn(
+      other.interaction !== 'hover',
+      "You shouldn't use prop `interaction` except with `hover` value.",
+      other['data-ui-name'] || Tooltip.displayName,
+    );
+
     return (
       <Root render={Popper}>
         {advancedMode ? (

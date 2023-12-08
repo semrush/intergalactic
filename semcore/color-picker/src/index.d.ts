@@ -98,7 +98,7 @@ export type ColorPickerProps = DropdownProps & {
   /**
    * Fired when user changes color items. Should be used with `colors` property together
    */
-  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
+  onColorsChange?: (value: string[], event: React.ChangeEvent) => void;
   /**
    * Shows label `A` as text color icon inside all color items
    * @default false
@@ -122,7 +122,7 @@ export type PaletteManagerProps = BoxProps & {
   /**
    * Fired when user adds or removes color items. Should be used with `colors` property together
    */
-  onColorsChange?: (value: string, event: React.ChangeEvent) => void;
+  onColorsChange?: (value: string[], event: React.ChangeEvent) => void;
 };
 
 /** @deprecated */
