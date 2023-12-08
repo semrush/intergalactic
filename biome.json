@@ -22,7 +22,11 @@
       "**/lcov-report/**",
       "website/ts.json",
       "website/docs2/.vitepress/dist",
-      "website/docs2/.vitepress/cache"
+      "website/docs2/.vitepress/cache",
+      "./tools/entry-point/**/*.js",
+      "./tools/entry-point/**/*.mjs",
+      "./tools/entry-point/**/*.d.ts",
+      "./tools/intg-release-migrator/tools/*.js"
     ],
     "lineWidth": 100,
     "indentStyle": "space"
@@ -54,7 +58,11 @@
       "website/ts.json",
       "website/docs2/.vitepress/dist",
       "website/docs2/.vitepress/cache",
-      "./tools/playground/examples/**"
+      "./tools/playground/examples/**",
+      "./tools/entry-point/**/*.js",
+      "./tools/entry-point/**/*.mjs",
+      "./tools/entry-point/**/*.d.ts",
+      "./tools/intg-release-migrator/tools/*.js"
     ],
     "rules": {
       "suspicious": {
