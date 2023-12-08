@@ -1,6 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import { js, jsx, ts, tsx } from '@ast-grep/napi';
+import { log } from './logger';
 
 type PathsToPatchImports = Record<string, number>;
 
@@ -102,7 +103,7 @@ export async function replaceImports(baseDir: string): Promise<void> {
   await checkFilesInDir(baseDir, pathsToPatchImports);
 
   await Promise.all(
-    Object.keys(pathsToPatchImports).map(async (pathToFile) => {
+    Object.entries(pathsToPatchImports).map(async ([pathToFile, count]) => {
       const scriptData = await fs.readFile(pathToFile, 'utf8');
 
       const dataToWrite = scriptData
@@ -110,6 +111,8 @@ export async function replaceImports(baseDir: string): Promise<void> {
         .replace(regexpCJS, `require("${newName}/$2")`);
 
       await fs.writeFile(pathToFile, dataToWrite, 'utf8');
+
+      log(`  - Replaced ${count} old imports in: [${pathToFile}].`);
     }),
   );
 }

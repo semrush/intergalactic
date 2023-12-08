@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import { fileURLToPath } from 'url';
 import { log } from '../utils';
-import { replaceImports } from '@semcore/intergalactic-release-migrator';
+import { replaceImports } from 'intergalactic-migrate';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.resolve(filename, '..', '..', '..', '..', 'entry-point');

@@ -1,6 +1,5 @@
 .DS_Store
 
 libs
-bin/index.js
 src/**/*.js
 tools/**/*.js

@@ -3,7 +3,7 @@
   "version": "15.37.0",
   "license": "MIT",
   "dependencies": {
-    "@semcore/intergalactic-release-migrator": "0.2.0"
+    "intergalactic-migrate": "*"
   },
   "peerDependencies": {
     "react": "16.8 - 18",

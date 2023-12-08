@@ -82,6 +82,9 @@ importers:
       '@semcore/gcs-upload':
         specifier: workspace:*
         version: link:tools/gcs-upload
+      'intergalactic-migrate':
+        specifier: workspace:*
+        version: link:tools/intg-release-migrator
       '@semcore/slack-integration':
         specifier: workspace:*
         version: link:tools/slack-integration
@@ -3266,7 +3269,7 @@ importers:
       '@semcore/changelog-handler':
         specifier: '*'
         version: link:../changelog-handler
-      '@semcore/intergalactic-release-migrator':
+      'intergalactic-migrate':
         specifier: workspace:*
         version: link:../intg-release-migrator
       '@semcore/slack-integration':
@@ -3330,8 +3333,8 @@ importers:
 
   tools/entry-point:
     dependencies:
-      '@semcore/intergalactic-release-migrator':
-        specifier: 0.2.0
+      'intergalactic-migrate':
+        specifier: '*'
         version: link:../intg-release-migrator
       react:
         specifier: 16.8 - 18
@@ -3426,6 +3429,9 @@ importers:
       fs-extra:
         specifier: 9.0.1
         version: 9.0.1
+      yargs:
+        specifier: 17.7.2
+        version: 17.7.2
     devDependencies:
       '@types/fs-extra':
         specifier: 9.0.13
@@ -16653,7 +16659,7 @@ packages:
       jest-util: 29.5.0
       jest-validate: 29.5.0
       prompts: 2.4.2
-      yargs: 17.7.1
+      yargs: 17.7.2
     transitivePeerDependencies:
       - '@types/node'
       - supports-color

@@ -20,17 +20,27 @@ export async function checkImports(baseDir = 'src') {
   try {
     const pathsToPatchImports = await getImportPaths(baseDir);
 
-    let haveOldImports = false;
+    let oldImports = 0;
 
     Object.entries(pathsToPatchImports).forEach(([path, count]) => {
-      haveOldImports = true;
+      oldImports = oldImports + count;
 
-      log(`  - Found ${count} old imports in: [${path}].`);
+      // log(`  - Found ${count} old imports in: [${path}].`);
     });
 
-    if (haveOldImports) {
+    if (oldImports > 0) {
       log(
-        `\nYou could replace old @semcore/ui* imports to new intergalactic/* by run 'intg-patch-imports'\n`,
+        `\n
+***************************************************
+*                                                 *
+*         Found ${oldImports} uses of @semcore/* packages    *
+*           We are recommending you to use        *
+*              new intergalactic package          *
+*                                                 *
+*                 To migrate, run                 *
+*        npx intergalactic-migrate       *
+*                                                 *
+***************************************************\n`,
       );
     }
   } catch (e) {

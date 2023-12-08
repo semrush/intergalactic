@@ -1,16 +1,14 @@
 {
-  "name": "@semcore/intergalactic-release-migrator",
-  "version": "0.2.0",
+  "name": "intergalactic-migrate",
+  "version": "0.0.0-prerelease.1",
   "license": "MIT",
   "main": "tools/index.js",
   "scripts": {
     "build": "tsc"
   },
-  "bin": {
-    "intg-check-imports": "bin/check-imports.js",
-    "intg-patch-imports": "bin/patch-imports.js"
-  },
+  "bin": "bin/index.js",
   "dependencies": {
+    "yargs": "17.7.2",
     "@ast-grep/napi": "0.13.0",
     "fs-extra": "9.0.1"
   },
