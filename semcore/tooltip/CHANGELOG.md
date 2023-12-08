@@ -2,6 +2,18 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [6.12.0] - 2023-11-29
+
+### Changed
+
+- Deprecated `interaction` property.
+
+## [6.11.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/flex-box` [5.11.0 ~> 5.12.0], `@semcore/popper` [5.10.0 ~> 5.11.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
 ## [6.10.4] - 2023-11-24
 
 ### Fixed

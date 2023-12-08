@@ -2,6 +2,22 @@
 
 CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangelog.com/en/1.0.0/).
 
+## [4.15.0] - 2023-12-05
+
+### Changed
+
+- Deprecated some values of `interaction` property.
+
+### Removed
+
+- unnecessary style for focused `Popper`.
+
+## [4.14.0] - 2023-12-04
+
+### Changed
+
+- Version preminor update due to children dependencies update (`@semcore/dropdown` [4.11.0 ~> 4.12.0], `@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
+
 ## [4.13.0] - 2023-11-23
 
 ### Added

@@ -224,7 +224,7 @@ class Value extends Component<IInputTagsValueProps> {
 
     return sstyled(this.asProps.styles)(
       <>
-        <SValue render={Input.Value} style={{ width: this.state.width }} role='listitem' />
+        <SValue render={Input.Value} style={{ width: this.state.width }} />
         <SSpacer ref={this._spacer} role='none' />
       </>,
     );

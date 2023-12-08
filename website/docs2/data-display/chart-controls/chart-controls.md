@@ -6,7 +6,7 @@ tabs: Design('chart-controls'), Changelog('d3-chart-changelog')
 ---
 
 ::: tip
-Basic data visualization rules in widgets with charts are described in [Chart principles](/data-display/d3-chart/d3-chart).
+Basic data visualization rules in widgets with charts are described in [D3 chart](/data-display/d3-chart/d3-chart).
 :::
 
 ## Control types
