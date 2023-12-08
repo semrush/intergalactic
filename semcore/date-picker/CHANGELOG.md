@@ -20,6 +20,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Input trigger were not displaying date or date range when it is passed as number or string.
 
+## [4.18.1] - 2023-11-30
+
+### Fixed
+
+- `DateRangeComparator` and `MonthDateRangeComparator` compare date input was not visually disabled during inaccessible state.
+
 ## [4.18.0] - 2023-11-28
 
 ### Added

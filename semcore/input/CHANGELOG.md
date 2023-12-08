@@ -14,6 +14,12 @@ CHANGELOG.md standards are inspired by [keepachangelog.com](https://keepachangel
 
 - Version preminor update due to children dependencies update (`@semcore/utils` [4.13.0 ~> 4.14.0], `@semcore/flex-box` [5.11.0 ~> 5.12.0], `@semcore/core` [2.10.0 ~> 2.11.0]).
 
+## [4.13.1] - 2023-11-30
+
+### Fixed
+
+- Disabled state were not displaying properly in complex input usage such us usage via `InputMask` component.
+
 ## [4.13.0] - 2023-11-24
 
 ### Changed

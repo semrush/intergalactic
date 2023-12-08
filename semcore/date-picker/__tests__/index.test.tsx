@@ -366,6 +366,23 @@ describe('DateRangeComparator', () => {
     await expect(await snapshot(component)).toMatchImageSnapshot(task);
   });
 
+  test('Should render disabled compare input by default', async ({ task }) => {
+    const value = {
+      value: [new Date('January 5, 2021 00:00:00'), new Date('January 10, 2021 00:00:00')],
+    };
+    const displayPeriod = new Date('January 5, 2021 00:00:00');
+    const component = (
+      <DateRangeComparator
+        displayedPeriod={displayPeriod}
+        value={value}
+        visible
+        disablePortal
+        {...disablePopper}
+      />
+    );
+    await expect(await snapshot(component)).toMatchImageSnapshot(task);
+  });
+
   test('a11y', async () => {
     const { container } = render(
       <div>
